@@ -409,10 +409,6 @@ Tools
       rows: [
         [
           pricingHtml('<span id="container-usage-pricing"></span>Now'),
-          "1 GB $0.03, 4 GB $0.12, 16 GB $0.48, 64 GB $1.92 per container",
-        ],
-        [
-          "Starting March 31, 2026",
           "1 GB $0.03, 4 GB $0.12, 16 GB $0.48, 64 GB $1.92 per 20-minute session per container",
         ],
       ],
@@ -438,7 +434,7 @@ Tools
 <div
   className="pricing-section-meta"
   style={{ marginTop: "16px" }}
-  set:html={`Tokens used for built-in tools are billed at the chosen model's per-token rates. GB refers to binary gigabytes (also known as gibibytes), where 1 GB is 2^30 bytes. Web search content tokens are tokens retrieved from the search index and fed to the model alongside your prompt to generate an answer. For <code>gpt-4o-mini</code> and <code>gpt-4.1-mini</code> with the non-preview web search tool, search content tokens are billed as a fixed block of 8,000 input tokens per call. File search tool call pricing applies to the Responses API only. Container pricing includes <a href="/api/docs/guides/tools-shell#hosted-shell-quickstart">Hosted Shell</a> and <a href="/api/docs/guides/tools-code-interpreter">Code Interpreter</a>. Responses API, Chat Completions API, Realtime API, Batch API, and Assistants API are not priced separately. Tokens are billed at the chosen model's input and output rates.`}
+  set:html={`Tokens used for built-in tools are billed at the chosen model's per-token rates. GB refers to binary gigabytes (also known as gibibytes), where 1 GB is 2^30 bytes. Web search content tokens are tokens retrieved from the search index and fed to the model alongside your prompt to generate an answer. For <code>gpt-4o-mini</code> and <code>gpt-4.1-mini</code> with the non-preview web search tool, search content tokens are billed as a fixed block of 8,000 input tokens per call. File search tool call pricing applies to the Responses API only. Container pricing includes <a href="/api/docs/guides/tools-shell#hosted-shell-quickstart">Hosted Shell</a> and <a href="/api/docs/guides/tools-code-interpreter">Code Interpreter</a>. Eligible container sessions are billed at the full 20-minute session rate. Responses API, Chat Completions API, Realtime API, Batch API, and Assistants API are not priced separately. Tokens are billed at the chosen model's input and output rates.`}
 />
 
 <div className="pricing-subsection pricing-switcher-layout">

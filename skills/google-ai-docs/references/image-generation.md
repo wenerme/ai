@@ -1966,13 +1966,16 @@ lighting, and fine details to guide the model toward a photorealistic result.
 #### 2. Stylized illustrations \& stickers
 
 To create stickers, icons, or assets, be explicit about the style and request a
-transparent background.
+white background.
+
+> [!NOTE]
+> **Note:** The model does not support generating a transparent background.
 
 ### Template
 
     A [style] sticker of a [subject], featuring [key characteristics] and a
     [color palette]. The design should have [line style] and [shading style].
-    The background must be transparent.
+    The background must be white.
 
 ### Prompt
 

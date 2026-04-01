@@ -14,7 +14,7 @@ several new capabilities:
 
 - **Portrait videos** : Choose between landscape (`16:9`) and portrait (`9:16`) videos.
 - **Video extension**: Extend videos that were previously generated using Veo.
-- **Frame-specific generation**: Generate a video by specifying the first and/or last frames.
+- **Frame-specific generation**: Generate a video by specifying the first and last frames.
 - **Image-based direction**: Use up to three reference images to guide the content of your generated video.
 
 For more information about writing effective text prompts for video generation,
@@ -372,7 +372,8 @@ Veo 3.1 lets you create landscape (`16:9`, the default setting) or portrait
 
 ### Control the resolution
 
-Veo 3.1 can also directly generate 720p, 1080p or 4k videos.
+Veo 3.1 can also directly generate 720p, 1080p or 4k videos (4k not available
+for Veo 3.1 Lite).
 
 Note that the higher the resolution, the higher the latency will be. 4k videos
 are also more pricey (cf. [pricing](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1)).
@@ -537,7 +538,7 @@ are also more pricey (cf. [pricing](https://ai.google.dev/gemini-api/docs/pricin
 ## Image to video generation
 
 The following code demonstrates generating an image using
-[Gemini 2.5 Flash Image aka Nano Banana](https://ai.google.dev/gemini-api/docs/image-generation),
+[Gemini 3.1 Flash Image aka Nano Banana 2](https://ai.google.dev/gemini-api/docs/image-generation),
 then using that image as the
 starting frame for generating a video with Veo 3.1.
 
@@ -550,9 +551,9 @@ starting frame for generating a video with Veo 3.1.
 
     prompt = "Panning wide shot of a calico kitten sleeping in the sunshine"
 
-    # Step 1: Generate an image with Nano Banana.
+    # Step 1: Generate an image with Nano Banana 2.
     image = client.models.generate_content(
-        model="gemini-2.5-flash-image",
+        model="gemini-3.1-flash-image-preview",
         contents=prompt,
         config={"response_modalities":['IMAGE']}
     )
@@ -584,9 +585,9 @@ starting frame for generating a video with Veo 3.1.
 
     const prompt = "Panning wide shot of a calico kitten sleeping in the sunshine";
 
-    // Step 1: Generate an image with Nano Banana.
+    // Step 1: Generate an image with Nano Banana 2.
     const imageResponse = await ai.models.generateContent({
-      model: "gemini-2.5-flash-image",
+      model: "gemini-3.1-flash-image-preview",
       prompt: prompt,
     });
 
@@ -638,10 +639,10 @@ starting frame for generating a video with Veo 3.1.
 
         prompt := "Panning wide shot of a calico kitten sleeping in the sunshine"
 
-        // Step 1: Generate an image with Nano Banana.
+        // Step 1: Generate an image with Nano Banana 2.
         imageResponse, err := client.Models.GenerateContent(
             ctx,
-            "gemini-2.5-flash-image",
+            "gemini-3.1-flash-image-preview",
             prompt,
             nil, // GenerateImagesConfig
         )
@@ -692,9 +693,8 @@ starting frame for generating a video with Veo 3.1.
 
         String prompt = "Panning wide shot of a calico kitten sleeping in the sunshine";
 
-        // Step 1: Generate an image with Nano Banana:
-        // ...
-        // We assume 'image' contains the generated image from step 1,
+        // Step 1: Generate an image with Nano Banana 2:
+        // Assume 'image' contains the generated image,
         // or is loaded from a file:
         Image image = Image.fromFile("path/to/your/image.png");
 
@@ -1134,7 +1134,7 @@ for video generation, see the [Veo prompt guide](https://ai.google.dev/gemini-ap
 ## Extending Veo videos
 
 > [!NOTE]
-> **Note:** This feature is available for Veo 3.1 models only
+> **Note:** This feature is available for Veo 3.1 \& Veo 3.1 Fast models only, not Veo 3.1 Lite.
 
 Use Veo 3.1 to extend videos that you previously generated with Veo by 7 seconds
 and up to 20 times.
@@ -1514,22 +1514,45 @@ status.
 These are the parameters you can set in your API request to control the video
 generation process.
 
-| Parameter | Description | Veo 3.1 \& Veo 3.1 Fast | Veo 3 \& Veo 3 Fast | Veo 2 |
+| Parameter | Veo 3.1 \& Veo 3.1 Fast | Veo 3.1 Lite | Veo 3 \& Veo 3 Fast | Veo 2 |
 |---|---|---|---|---|
 | Instances |||||
-| `prompt` | The text description for the video. Supports audio cues. | `string` | `string` | `string` |
-| `image` | An initial image to animate. | `Image` object | `Image` object | `Image` object |
-| `lastFrame` | The final image for an interpolation video to transition. Must be used in combination with the `image` parameter. | `Image` object | `Image` object | `Image` object |
-| `referenceImages` | Up to three images to be used as style and content references. | `VideoGenerationReferenceImage` object (Veo 3.1 only) | n/a | n/a |
-| `video` | Video to be used for video extension. | `Video` object from a previous generation | n/a | n/a |
+| `prompt`: The text description for the video. Supports audio cues. | `string` | `string` | `string` | `string` |
+| `image`: An initial image to animate. | `Image` object | `Image` object | `Image` object | `Image` object |
+| `lastFrame`: The final image for an interpolation video to transition. Must be used in combination with the `image` parameter. | `Image` object | `Image` object | `Image` object | `Image` object |
+| `referenceImages`: Up to three images to be used as style and content references. | `VideoGenerationReferenceImage` object | `n/a` object | n/a | n/a |
+| `video`: Video to be used for video extension. | `Video` object from a previous generation | n/a | n/a | n/a |
 | Parameters |||||
-| `aspectRatio` | The video's aspect ratio. | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` |
-| `durationSeconds` | Length of the generated video. | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"5"`, `"6"`, `"8"` |
-| `personGeneration` | Controls the generation of people. (See [Limitations](https://ai.google.dev/gemini-api/docs/video#limitations) for region restrictions) | Text-to-video \& Extension: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video: `"allow_adult"` only | Text-to-video: `"allow_all"`, `"allow_adult"`, `"dont_allow"` Image-to-video: `"allow_adult"`, and `"dont_allow"` |
-| `resolution` | The video's resolution. | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | Unsupported |
+| `aspectRatio`: The video's aspect ratio. | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` |
+| `durationSeconds`: Length of the generated video. | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"4"`, `"6"`, `"8"`. * Must be "8" when using reference images or with 1080p* | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"5"`, `"6"`, `"8"` |
+| `personGeneration`: Controls the generation of people. (See [Limitations](https://ai.google.dev/gemini-api/docs/video#limitations) for region restrictions) | Text-to-video \& Extension: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video: `"allow_adult"` only | Text-to-video: `"allow_all"`, `"allow_adult"`, `"dont_allow"` <br /> Image-to-video: `"allow_adult"`, and `"dont_allow"` |
+| `resolution`: The video's resolution. | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | `"720p"` (default), `"1080p"` (only supports 8s duration) | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | Unsupported |
 
 Note that the `seed` parameter is also available for Veo 3 models.
 It doesn't guarantee determinism, but slightly improves it.
+
+## Model features
+
+| Feature | Veo 3.1 \& Veo 3.1 Fast | Veo 3.1 Lite | Veo 3 \& Veo 3 Fast | Veo 2 |
+|---|---|---|---|---|
+| **Audio:** Natively generates audio with video. | ✔️ Always on | ✔️ Always on | ✔️ Always on | ❌ Silent only |
+| **Input modalities:** The type of input used for generation. | Text-to-Video, Image-to-Video, Video-to-Video | Text-to-Video, Image-to-Video | Text-to-Video, Image-to-Video | Text-to-Video, Image-to-Video |
+| **Resolution:** The output resolution of the video. | 720p, 1080p (8s length only), 4k (8s length only) *720p only when using video extension.* | 720p, 1080p (8s length only) | 720p \& 1080p (16:9 only) | 720p |
+| **Frame rate:** The output frame rate of the video. | 24fps | 24fps | 24fps | 24fps |
+| **Video duration:** Length of the generated video. | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or 4k or using reference images* | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or using reference images* | 8 seconds | 5-8 seconds |
+| **Videos per request:** Number of videos generated per request. | 1 | 1 | 1 | 1 or 2 |
+| **Status:** Model availability | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Stable](https://ai.google.dev/gemini-api/docs/models#stable) | [Stable](https://ai.google.dev/gemini-api/docs/models#latest-stable) |
+
+## Limitations
+
+- **Request latency:** Min: 11 seconds; Max: 6 minutes (during peak hours).
+- **Regional limitations:** In EU, UK, CH, MENA locations, the following are the allowed values for `personGeneration`:
+  - Veo 3 and 3.1: `allow_adult` only.
+  - Veo 2: `dont_allow` and `allow_adult`. Default is `dont_allow`.
+- **Video retention:** Generated videos are stored on the server for 2 days, after which they are removed. To save a local copy, you must download your video within 2 days of generation. Extended videos are treated as newly generated videos.
+- **Watermarking:** Videos created by Veo are watermarked using [SynthID](https://deepmind.google/technologies/synthid/), our tool for watermarking and identifying AI-generated content. Videos can be verified using the [SynthID](https://deepmind.google/science/synthid/) verification platform.
+- **Safety:** Generated videos are passed through safety filters and memorization checking processes that help mitigate privacy, copyright and bias risks.
+- **Audio error:** Veo 3.1 will sometimes block a video from generating because of safety filters or other processing issues with the audio. You will not be charged if your video is blocked from generating.
 
 ## Veo prompt guide
 
@@ -1568,7 +1591,7 @@ prompt design](https://ai.google.dev/gemini-api/docs/prompting-intro).*
 
 ### Prompting for audio
 
-With Veo 3, you can provide cues for sound effects, ambient noise, and dialogue.
+You can provide Veo with cues for sound effects, ambient noise, and dialogue.
 The model captures the nuance of these cues to generate a synchronized
 soundtrack.
 
@@ -1586,7 +1609,7 @@ levels of detail.
 
 Try out these prompts yourself to hear the audio!
 
-[Try Veo 3](https://deepmind.google/models/veo/)
+[Try Veo](https://deepmind.google/models/veo/)
 
 ### Prompting with reference images
 
@@ -1602,7 +1625,8 @@ sound to nature scenes.
 | **Input image (Generated by Nano Banana)** A hyperrealistic macro photo of tiny, miniature surfers riding ocean waves inside a rustic stone bathroom sink. A vintage brass faucet is running, creating the perpetual surf. Surreal, whimsical, bright natural lighting. | ![Tiny, miniature surfers riding ocean waves inside a rustic stone bathroom sink.](https://storage.googleapis.com/generativeai-downloads/images/Sink_Surfers.png) |
 | **Output Video (Generated by Veo 3.1)** A surreal, cinematic macro video. Tiny surfers ride perpetual, rolling waves inside a stone bathroom sink. A running vintage brass faucet generates the endless surf. The camera slowly pans across the whimsical, sunlit scene as the miniature figures expertly carve the turquoise water. | ![Tiny surfers circling the waves in a bathroom sink.](https://storage.googleapis.com/generativeai-downloads/images/sink_surfers.gif) |
 
-Veo 3.1 lets you reference images or ingredients to direct your generated
+Veo 3.1 lets you [reference images](https://ai.google.dev/gemini-api/docs/video#reference-images) or
+ingredients to direct your generated
 video's content. Provide up to three asset images of a single person, character,
 or product. Veo preserves the subject's appearance in the output video.
 
@@ -1612,8 +1636,8 @@ or product. Veo preserves the subject's appearance in the output video.
 | **Reference image (Generated by Nano Banana)** A pink child's princess costume complete with a wand and tiara, on a plain product background. | ![A childs pink princess constume](https://storage.googleapis.com/generativeai-downloads/images/princess_dress.png) |
 | **Output Video (Generated by Veo 3.1)** Create a silly cartoon version of the fish wearing the costume, swimming and waving the wand around. | ![An angler fish wearing a princess costume](https://storage.googleapis.com/generativeai-downloads/images/angler_princess.gif) |
 
-Using Veo 3.1, you can also generate videos by specifying the first and last
-frames of the video.
+Using Veo 3.1, you can also generate videos by specifying the [first and last
+frames](https://ai.google.dev/gemini-api/docs/video#using-first-and-last-video-frames) of the video.
 
 | **Prompt** | **Generated output** |
 |---|---|
@@ -1628,9 +1652,10 @@ as you envision it.
 
 ### Prompting for extension
 
-To extend your Veo-generated video with Veo 3.1, use the video as an input along
-with an optional text prompt. Extend finalizes the final second or 24 frames of
-your video and continues the action.
+To [extend](https://ai.google.dev/gemini-api/docs/video#extending_veo_videos) your Veo-generated
+video with Veo 3.1 (not available for Veo 3.1 Lite), use the video as an input
+along with an optional text prompt. Extend finalizes the final second or 24
+frames of your video and continues the action.
 
 Note that voice is not able to be effectively extended if it's not present in
 the last 1 second of video.
@@ -1743,38 +1768,10 @@ Veo lets you specify the aspect ratio for your video.
 | **Widescreen (16:9)** Create a video with a tracking drone view of a man driving a red convertible car in Palm Springs, 1970s, warm sunlight, long shadows. | ![A man driving a red convertible car in Palm Springs, 1970s style.](https://ai.google.dev/static/gemini-api/docs/video/images/widescreen_palm_springs.gif) |
 | **Portrait (9:16)** Create a video highlighting the smooth motion of a majestic Hawaiian waterfall within a lush rainforest. Focus on realistic water flow, detailed foliage, and natural lighting to convey tranquility. Capture the rushing water, misty atmosphere, and dappled sunlight filtering through the dense canopy. Use smooth, cinematic camera movements to showcase the waterfall and its surroundings. Aim for a peaceful, realistic tone, transporting the viewer to the serene beauty of the Hawaiian rainforest. | ![A majestic Hawaiian waterfall in a lush rainforest.](https://ai.google.dev/static/gemini-api/docs/video/images/waterfall.gif) |
 
-## Limitations
-
-- **Request latency:** Min: 11 seconds; Max: 6 minutes (during peak hours).
-- **Regional limitations:** In EU, UK, CH, MENA locations, the following are the allowed values for `personGeneration`:
-  - Veo 3: `allow_adult` only.
-  - Veo 2: `dont_allow` and `allow_adult`. Default is `dont_allow`.
-- **Video retention:** Generated videos are stored on the server for 2 days, after which they are removed. To save a local copy, you must download your video within 2 days of generation. Extended videos are treated as newly generated videos.
-- **Watermarking:** Videos created by Veo are watermarked using [SynthID](https://deepmind.google/technologies/synthid/), our tool for watermarking and identifying AI-generated content. Videos can be verified using the [SynthID](https://deepmind.google/science/synthid/) verification platform.
-- **Safety:** Generated videos are passed through safety filters and memorization checking processes that help mitigate privacy, copyright and bias risks.
-- **Audio error:** Veo 3.1 will sometimes block a video from generating because of safety filters or other processing issues with the audio. You will not be charged if your video is blocked from generating.
-
-## Model features
-
-| Feature | Description | Veo 3.1 \& Veo 3.1 Fast | Veo 3 \& Veo 3 Fast | Veo 2 |
-|---|---|---|---|---|
-| **Audio** | Natively generates audio with video. | Natively generates audio with video. | ✔️ Always on | ❌ Silent only |
-| **Input Modalities** | The type of input used for generation. | Text-to-Video, Image-to-Video, Video-to-Video | Text-to-Video, Image-to-Video | Text-to-Video, Image-to-Video |
-| **Resolution** | The output resolution of the video. | 720p, 1080p (8s length only), 4k (8s length only) *720p only when using video extension.* | 720p \& 1080p (16:9 only) | 720p |
-| **Frame Rate** | The output frame rate of the video. | 24fps | 24fps | 24fps |
-| **Video Duration** | Length of the generated video. | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or 4k or using reference images* | 8 seconds | 5-8 seconds |
-| **Videos per Request** | Number of videos generated per request. | 1 | 1 | 1 or 2 |
-| **Status \& Details** | Model availability and further details. | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Stable](https://ai.google.dev/gemini-api/docs/models#stable) | [Stable](https://ai.google.dev/gemini-api/docs/models#latest-stable) |
-
 ## Model versions
 
-Check out the [Pricing](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1) and [Rate limits](https://ai.google.dev/gemini-api/docs/rate-limits) pages for more Veo model-specific usage
+Check out the [Pricing](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1) page and [Rate limits](https://aistudio.google.com/rate-limit) for more Veo model-specific usage
 details.
-
-Veo Fast versions allow developers to create videos with sound while maintaining
-high quality and optimizing for speed and business use cases. They're ideal for
-backend services that programmatically generate ads, tools for rapid A/B testing
-of creative concepts, or apps that need to quickly produce social media content.
 
 ### Veo 3.1 Preview
 
@@ -1794,6 +1791,33 @@ of creative concepts, or apps that need to quickly produce social media content.
 | Limits | **Text input** 1,024 tokens **Output video** 1 |
 | Latest update | January 2026 |
 
+### Veo 3.1 Lite Preview
+
+| Property | Description |
+|---|---|
+| Model code | **Gemini API** `veo-3.1-lite-generate-preview` |
+| Supported data types | **Input** Text, image **Output** Video with audio |
+| Limits | **Text input** 1,024 tokens **Output video** 1 |
+| Latest update | March 2026 |
+
+### Veo 3
+
+| Property | Description |
+|---|---|
+| Model code | **Gemini API** `veo-3.0-generate-001` |
+| Supported data types | **Input** Text, Image **Output** Video with audio |
+| Limits | **Text input** 1,024 tokens **Output video** 1 |
+| Latest update | July 2025 |
+
+### Veo 3 Fast
+
+| Property | Description |
+|---|---|
+| Model code | **Gemini API** `veo-3.0-fast-generate-001` |
+| Supported data types | **Input** Text, Image **Output** Video with audio |
+| Limits | **Text input** 1,024 tokens **Output video** 1 |
+| Latest update | July 2025 |
+
 ### Veo 2
 
 | Property | Description |
@@ -1802,6 +1826,20 @@ of creative concepts, or apps that need to quickly produce social media content.
 | Supported data types | **Input** Text, image **Output** Video |
 | Limits | **Text input** N/A **Image input** Any image resolution and aspect ratio up to 20MB file size **Output video** Up to 2 |
 | Latest update | April 2025 |
+
+### Veo 2
+
+| Property | Description |
+|---|---|
+| Model code | **Gemini API** `veo-2.0-generate-001` |
+| Supported data types | **Input** Text, image **Output** Video |
+| Limits | **Text input** N/A **Image input** Any image resolution and aspect ratio up to 20MB file size **Output video** Up to 2 |
+| Latest update | April 2025 |
+
+Veo Fast versions allow developers to create videos with sound while maintaining
+high quality and optimizing for speed and business use cases. They're ideal for
+backend services that programmatically generate ads, tools for rapid A/B testing
+of creative concepts, or apps that need to quickly produce social media content.
 
 ## What's next
 

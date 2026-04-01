@@ -3,9 +3,6 @@
 
 *** ** * ** ***
 
-> [!WARNING]
-> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
-
 ## Gemini 3
 
 [### Gemini 3.1 Pro
@@ -21,6 +18,9 @@ State-of-the-art image generation and editing models for highly contextual nativ
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image-preview) [### Gemini 3.1 Flash Live
 High-quality, low-latency Live API model for real-time dialogue and voice-first AI applications.
 New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview)
+
+> [!WARNING]
+> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
 
 *** ** * ** ***
 
@@ -102,9 +102,9 @@ State-of-the-art cinematic video generation with advanced creative controls and 
 
 A professional design engine with a reasoning core for studio-quality 4K visuals, complex layouts, and precise text rendering.
 
-### [Lyria Experimental](https://ai.google.dev/gemini-api/docs/models/lyria-realtime-exp)
+### [Veo 3.1 Lite Preview](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview)
 
-High-fidelity music generation model providing granular creative control over instruments, BPM, and complex compositions.
+High-efficiency, low-cost, developer-first video generation, editing, and cinematic control from the Veo 3.1 family.
 
 ### [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)
 
@@ -117,6 +117,8 @@ Text-to-image model yet, featuring fast and ultra-fast generation and exceptiona
 *** ** * ** ***
 
 ## Music generation models
+
+*This section contains all music generation models, including ones that may already be listed in other sections*
 
 ### [Lyria 3 Pro Preview](https://ai.google.dev/gemini-api/docs/models/lyria-3-pro-preview)
 

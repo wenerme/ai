@@ -93,8 +93,8 @@ refs:
 
 The following table lists the types of variables shipped with Grafana.
 
-| Variable type     | Description                                                                                                                                                                             |
-| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Variable type     | Description                                                                                                                          |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
 | Query             | Query-generated list of values such as metric names, server names, sensor IDs, data centers, and so on. [Add a query variable](#add-a-query-variable).                                  |
 | Custom            | Define the variable options manually using a comma-separated list. [Add a custom variable](#add-a-custom-variable).                                                                     |
 | Text box          | Display a free text input field with an optional default value. [Add a text box variable](#add-a-text-box-variable).                                                                    |

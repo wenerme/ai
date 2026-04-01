@@ -1,9 +1,6 @@
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
-> [!WARNING]
-> **Warning:** Gemini 3 Pro Preview is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down March 9, 2026. Migrate to [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) to avoid service disruption.
-
 Gemini 3 is our most intelligent model family to date, built on a foundation of
 state-of-the-art reasoning. It is designed to bring any idea to life by
 mastering agentic workflows, autonomous coding, and complex multimodal tasks.

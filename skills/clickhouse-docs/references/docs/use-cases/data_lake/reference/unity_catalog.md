@@ -1,5 +1,5 @@
 ---
-title: 'Unity catalog'
+title: 'Unity Catalog'
 description: 'In this guide, we will walk you through the steps to query
  your data in S3 buckets using ClickHouse and the Unity Catalog.'
 keywords: ['Unity', 'Data Lake']

@@ -101,7 +101,11 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
+| `veo-3.0-generate-001` | September 9, 2025 | Coming soon | `veo-3.1-generate-preview` |
+| `veo-3.0-fast-generate-001` | September 9, 2025 | Coming soon | `veo-3.1-lite-generate-preview` |
+| `veo-2.0-generate-001` | April 9, 2025 | Coming soon | `veo-3.1-generate-preview` |
 | Preview models ||||
+| `veo-3.1-lite-generate-preview` | March 31, 2026 | No shutdown date announced |   |
 | `veo-3.1-generate-preview` | October 15, 2025 | No shutdown date announced |   |
 | `veo-3.1-fast-generate-preview` | October 15, 2025 | No shutdown date announced |   |
 | `veo-3.0-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-generate-preview` |

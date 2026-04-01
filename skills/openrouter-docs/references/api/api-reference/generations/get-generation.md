@@ -414,6 +414,11 @@ components:
             - string
             - 'null'
           description: Referer header from the request
+        request_id:
+          type:
+            - string
+            - 'null'
+          description: Unique identifier grouping all generations from a single API request
       required:
         - id
         - upstream_id

@@ -52,7 +52,7 @@ const step1 = createStep({
 })
 ```
 
-> **info**: Visit [Step Class](/reference/workflows/step) for a full list of configuration options.
+> **info**: Visit [`Step`](/reference/workflows/step) for a full list of configuration options.
 
 ### Using agents and tools
 
@@ -86,6 +86,15 @@ export const testWorkflow = createWorkflow({
 ### Understanding control flow
 
 Workflows can be composed using a number of different methods. The method you choose determines how each step's schema should be structured. Visit the [Control Flow](/docs/workflows/control-flow) page for more information.
+
+## Studio
+
+Open [Studio](/docs/studio/overview) and select a workflow from the **Workflows** tab.
+
+- **Graph view**: The center panel visualizes the workflow's steps and execution flow.
+- **Input form**: The right sidebar generates a form from the workflow's `inputSchema`. Fill it in and start the run.
+- **Live status**: During execution, the graph updates each step's status in real time. The sidebar shows the workflow's input, output, state, and logs.
+- [**Time travel**](/docs/workflows/time-travel): After a run completes, replay individual steps to inspect or retry them.
 
 ## Workflow state
 
@@ -362,10 +371,6 @@ const step1 = createStep({
 > **info**: Visit [Request Context](/docs/server/request-context) for more information.
 
 > **tip**: For type-safe request context schema validation, see [Schema Validation](/docs/server/request-context#schema-validation).
-
-## Testing with Studio
-
-Use [Studio](/docs/getting-started/studio) to run workflows with different inputs, visualize the execution lifecycle, see the inputs and outputs for each step, and inspect each part of the workflow in more detail.
 
 ## Related
 

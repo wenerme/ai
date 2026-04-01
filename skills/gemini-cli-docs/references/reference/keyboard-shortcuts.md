@@ -125,6 +125,13 @@ available combinations.
 | `background.unfocusList`    | Move focus from background shell list to Gemini.                   | `Tab`       |
 | `background.unfocusWarning` | Show warning when trying to move focus away from background shell. | `Tab`       |
 
+#### Extension Controls
+
+| Command            | Action                                      | Keys |
+| ------------------ | ------------------------------------------- | ---- |
+| `extension.update` | Update the current extension if available.  | `I`  |
+| `extension.link`   | Link the current extension to a local path. | `L`  |
+
 ## Customizing Keybindings
 
 You can add alternative keybindings or remove default keybindings by creating a

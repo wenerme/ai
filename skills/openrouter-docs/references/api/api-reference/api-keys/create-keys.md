@@ -97,6 +97,14 @@ paths:
                   description: >-
                     Optional ISO 8601 UTC timestamp when the API key should
                     expire. Must be UTC, other timezones will be rejected
+                creator_user_id:
+                  type:
+                    - string
+                    - 'null'
+                  description: >-
+                    Optional user ID of the key creator. Only meaningful for
+                    organization-owned keys where a specific member is creating
+                    the key.
               required:
                 - name
 servers:
@@ -385,11 +393,11 @@ import requests
 url = "https://openrouter.ai/api/v1/keys"
 
 payload = {
-    "name": "Analytics Service Key",
-    "limit": 100,
-    "limit_reset": "weekly",
-    "include_byok_in_limit": False,
-    "expires_at": "2026-11-30T23:59:59Z"
+    "name": "Team Analytics Key",
+    "limit": 150,
+    "limit_reset": "monthly",
+    "include_byok_in_limit": True,
+    "expires_at": "2028-06-30T23:59:59Z"
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -406,7 +414,7 @@ const url = 'https://openrouter.ai/api/v1/keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"name":"Analytics Service Key","limit":100,"limit_reset":"weekly","include_byok_in_limit":false,"expires_at":"2026-11-30T23:59:59Z"}'
+  body: '{"name":"Team Analytics Key","limit":150,"limit_reset":"monthly","include_byok_in_limit":true,"expires_at":"2028-06-30T23:59:59Z"}'
 };
 
 try {
@@ -432,7 +440,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/keys"
 
-	payload := strings.NewReader("{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\",\n  \"include_byok_in_limit\": false,\n  \"expires_at\": \"2026-11-30T23:59:59Z\"\n}")
+	payload := strings.NewReader("{\n  \"name\": \"Team Analytics Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -462,7 +470,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\",\n  \"include_byok_in_limit\": false,\n  \"expires_at\": \"2026-11-30T23:59:59Z\"\n}"
+request.body = "{\n  \"name\": \"Team Analytics Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -475,7 +483,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\",\n  \"include_byok_in_limit\": false,\n  \"expires_at\": \"2026-11-30T23:59:59Z\"\n}")
+  .body("{\n  \"name\": \"Team Analytics Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}")
   .asString();
 ```
 
@@ -487,11 +495,11 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/keys', [
   'body' => '{
-  "name": "Analytics Service Key",
-  "limit": 100,
-  "limit_reset": "weekly",
-  "include_byok_in_limit": false,
-  "expires_at": "2026-11-30T23:59:59Z"
+  "name": "Team Analytics Key",
+  "limit": 150,
+  "limit_reset": "monthly",
+  "include_byok_in_limit": true,
+  "expires_at": "2028-06-30T23:59:59Z"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -509,7 +517,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\",\n  \"include_byok_in_limit\": false,\n  \"expires_at\": \"2026-11-30T23:59:59Z\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"Team Analytics Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -521,11 +529,11 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "name": "Analytics Service Key",
-  "limit": 100,
-  "limit_reset": "weekly",
-  "include_byok_in_limit": false,
-  "expires_at": "2026-11-30T23:59:59Z"
+  "name": "Team Analytics Key",
+  "limit": 150,
+  "limit_reset": "monthly",
+  "include_byok_in_limit": true,
+  "expires_at": "2028-06-30T23:59:59Z"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

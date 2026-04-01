@@ -10,6 +10,10 @@ Use JWT's to auth admins / users / projects into the proxy.
 
 [Contact us here to get a free trial](https://enterprise.litellm.ai/demo)
 
+> **tip**: JWT → Virtual Key Mapping
+
+Want per-user model restrictions, spend limits, and rate limits without distributing API keys? See **[JWT → Virtual Key Mapping](./jwt_key_mapping.md)** — enterprise-grade granular access control for JWT-authenticated users (e.g. Claude Code + SSO).
+
 ## Usage
 
 ### Step 1. Setup Proxy
