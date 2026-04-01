@@ -19,6 +19,7 @@ using the `/theme` command within Gemini CLI:
   - `Holiday`
   - `Shades Of Purple`
   - `Solarized Dark`
+  - `Tokyo Night`
 - **Light themes:**
   - `ANSI Light`
   - `Ayu Light`
@@ -249,6 +250,10 @@ identify their source, for example: `shades-of-green (green-extension)`.
 ### Solarized Dark
 
 [Solarized Dark theme]
+
+### Tokyo Night
+
+[Tokyo Night theme]
 
 ## Light themes
 
