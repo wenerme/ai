@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 82 skills available
+> 83 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -39,6 +39,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
 | `doris-docs` | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
+| `evalscope-cli` | Translates natural language requests into evalscope CLI commands. Core capabilities: (1) Model accuracy evaluation... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | `evalscope-docs` | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | `find-skills` | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
 | `gemini-cli-docs` | Use when working with Gemini CLI (Google's AI coding agent): CLI commands, authentication, settings, sandbox mode, model... | [google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli) |
@@ -345,6 +346,16 @@ npx skills add wenerme/ai --skill doris-docs
 ```
 
 Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL syntax, data import (Stream Load, Broker Load, INSERT INTO), data export, lakehouse (Hive/Iceberg/Hudi/Paimon catalogs), materialized views, query acceleration, inverted index, compute-storage decoupled mode, administration, or Doris ecosystem tools.
+
+</details>
+<details>
+<summary><code>evalscope-cli</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill evalscope-cli
+```
+
+Translates natural language requests into evalscope CLI commands. Core capabilities: (1) Model accuracy evaluation (eval) — runs 156+ benchmarks (Math, Coding, Chinese, Multimodal, Agent, etc.) against local checkpoints or OpenAI-compatible / Anthropic API endpoints; (2) Performance stress testing (perf) — measures TTFT, TPOT, throughput, and latency under configurable concurrency gradients or SLA auto-tuning; (3) Benchmark discovery — lists and filters benchmarks by capability tag, retrieves full metadata and sample examples; (4) Result visualization — launches a Gradio web UI to compare and explore evaluation outputs. Trigger this skill whenever the user mentions: evaluate / benchmark / score a model, throughput / latency / QPS / stress test, find benchmarks by tag or capability, or view / compare evaluation results.
 
 </details>
 <details>
