@@ -1,0 +1,60 @@
+---
+title: Error 503
+description: HTTP error 503 occurs when your origin web server is overloaded.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+Copy page
+
+# Error 503
+
+## Error 503: service temporarily unavailable
+
+HTTP error 503 occurs when your origin web server is overloaded.
+
+### Common causes
+
+There are different causes identifiable by the error message or the location of the error:
+
+* Error does not contain `cloudflare` or `cloudflare-nginx` in the HTML response body. In this case, the issue is likely from your origin server.
+* Error contains `cloudflare` or `cloudflare-nginx` in the HTML response body. In this case, the issue may stem from Cloudflare.
+* Error is only visible in logs or analytics.
+
+### Resolution
+
+To resolve a `503` error, first determine whether the issue originates from your origin web server or Cloudflare. The following sections provide guidance on troubleshooting both scenarios.
+
+#### 503 Error without `cloudflare` or `cloudflare-nginx`
+
+If the error does not contain `cloudflare` or `cloudflare-nginx` in the HTML response body, contact your hosting provider to verify if they rate limit requests to your origin web server.
+
+#### 503 Error with `cloudflare` or `cloudflare-nginx`
+
+If the error contains `cloudflare` or `cloudflare-nginx` in the HTML response body, a connectivity issue occurred in a Cloudflare data center. Provide [Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the following information:
+
+* Your domain name
+* The time and timezone of the `503` error occurrence
+* The output of `www.example.com/cdn-cgi/trace` from the browser where the `503` error was observed (replace `www.example.com` with your actual domain and hostname)
+
+#### 503 Error only visible in logs and analytics
+
+These errors result from [unsuccessful prefetches from Speed Brain](https://developers.cloudflare.com/speed/optimization/content/speed-brain/#how-speed-brain-works) and can be discarded. These errors are not visible to visitors of your website. [Speed Brain](https://developers.cloudflare.com/speed/optimization/content/speed-brain/#enable-and-disable-speed-brain) can be disabled for the zone if needed (this feature cannot be disabled for a specific path).
+
+### Workers-specific causes
+
+Error 503 can also occur when using Cloudflare Workers:
+
+* A Worker exceeds CPU time limits (see [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/))
+* Worker code encounters memory limit issues (see [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/))
+
+If you are using Workers, check the Workers dashboard for error logs and resource limit issues.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","name":"Cloudflare 5xx errors"}},{"@type":"ListItem","position":6,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-503/","name":"Error 503"}}]}
+```

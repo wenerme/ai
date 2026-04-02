@@ -1,0 +1,67 @@
+---
+title: How client-side security works
+description: Cloudflare's client-side security tracks resources (such as scripts) loaded by your website visitors and provides alerts when it detects new, changed, or malicious resources.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/client-side-security/how-it-works/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# How client-side security works
+
+Cloudflare's client-side security helps manage client-side resources (which include scripts and their connections) loaded by your website visitors, and provides visibility on the [cookies ↗](https://www.cloudflare.com/learning/privacy/what-are-cookies/) recently detected in HTTP traffic. Client-side security can trigger alert notifications when resources change or are considered malicious.
+
+Client-side security uses two types of [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) HTTP headers for different purposes:
+
+* For resource monitoring (scripts and connections)
+* To enforce content security rules or log violations of these rules
+
+## Comparison of CSP headers
+
+The following table compares the CSP HTTP headers used for monitoring resources and applying content security rules:
+
+| Resource monitoring HTTP header               | Content security rules HTTP headers                                                  |
+| --------------------------------------------- | ------------------------------------------------------------------------------------ |
+| content-security-policy-report-only           | content-security-policy-report-only (log rules)content-security-policy (allow rules) |
+| Automatic — on when monitoring is enabled     | Manual — created via rules you define                                                |
+| Added to a sample of HTML responses           | Added to 100% of matching responses (not sampled)                                    |
+| Reports everything by disallowing anything    | CSP directives come from your allowlist                                              |
+| Browser sends violation reports to Cloudflare | Log rules report violations onlyAllow rules block disallowed resources               |
+
+## Header used for resource monitoring
+
+When you turn on resource monitoring, Cloudflare automatically adds a `content-security-policy-report-only` HTTP header to a sample of HTML responses. For details on the header format, refer to [CSP HTTP header format](https://developers.cloudflare.com/client-side-security/reference/csp-header/).
+
+This header instructs the browser to report all loaded scripts and connections without blocking them. This allows Cloudflare to provide you with a list of all scripts running on your application and the connections they make to third-party endpoints. Cloudflare also monitors ingress and egress traffic for cookies, either set by origin servers or by the visitor's browser.
+
+You cannot turn off the monitoring header while resource monitoring is enabled. Because the header is added to a sample of responses, there may be a [small delay](https://developers.cloudflare.com/client-side-security/troubleshooting/#cloudflare-does-not-show-any-client-side-resources-after-activation) between deploying a script or cookie and having its data displayed in the resource monitoring dashboards.
+
+The client-side resource monitoring dashboard shows the list of [active](https://developers.cloudflare.com/client-side-security/reference/script-statuses/#available-statuses) scripts, connections, and cookies. The **All Reported Scripts** and **All Reported Connections** dashboards show the full list of detected scripts and connections in your domain, respectively, including infrequent and inactive ones.
+
+## Headers related to content security rules
+
+When you create [content security rules](https://developers.cloudflare.com/client-side-security/rules/), Cloudflare generates CSP directives based on your allow and log rules:
+
+* **Log rules** add directives to the `content-security-policy-report-only` HTTP header, reporting violations without blocking resources.
+* **Allow rules** add directives to the `content-security-policy` HTTP header, actively blocking resources not present in your allowlist.
+
+Unlike headers used for resource monitoring, these HTTP headers apply only to responses matching the expression you define in each rule and are not sampled. You have full control over these headers through your [content security rules](https://developers.cloudflare.com/client-side-security/rules/) configuration.
+
+Customers with Client-Side Security Advanced have access to additional classification mechanisms based on threat feeds to determine if a script, or a connection made by a script, is malicious. For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
+
+---
+
+## Learn more
+
+For more background on client-side security and resource monitoring, refer to our [blog post ↗](https://blog.cloudflare.com/page-shield-generally-available/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/client-side-security/","name":"Client-side security"}},{"@type":"ListItem","position":3,"item":{"@id":"/client-side-security/how-it-works/","name":"How client-side security works"}}]}
+```

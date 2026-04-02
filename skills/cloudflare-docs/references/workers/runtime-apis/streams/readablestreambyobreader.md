@@ -1,0 +1,73 @@
+---
+title: ReadableStream BYOBReader
+description: BYOB is an abbreviation of bring your own buffer. A ReadableStreamBYOBReader allows reading into a developer-supplied buffer, thus minimizing copies.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/streams/readablestreambyobreader.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# ReadableStream BYOBReader
+
+## Background
+
+`BYOB` is an abbreviation of bring your own buffer. A `ReadableStreamBYOBReader` allows reading into a developer-supplied buffer, thus minimizing copies.
+
+An instance of `ReadableStreamBYOBReader` is functionally identical to [ReadableStreamDefaultReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreamdefaultreader/) with the exception of the `read` method.
+
+A `ReadableStreamBYOBReader` is not instantiated via its constructor. Rather, it is retrieved from a [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/):
+
+JavaScript
+
+```
+
+const { readable, writable } = new TransformStream();
+
+const reader = readable.getReader({ mode: 'byob' });
+
+
+```
+
+---
+
+## Methods
+
+* `read(bufferArrayBufferView)` : Promise<ReadableStreamBYOBReadResult>  
+   * Returns a promise with the next available chunk of data read into a passed-in buffer.
+* `readAtLeast(minBytes, bufferArrayBufferView)` : Promise<ReadableStreamBYOBReadResult>  
+   * Returns a promise with the next available chunk of data read into a passed-in buffer. The promise will not resolve until at least `minBytes` bytes have been read. However, fewer than `minBytes` bytes may be returned if the end of the stream is reached or the underlying stream is closed. Specifically:  
+         * If `minBytes` or more bytes are available, the promise resolves with `{ value: <buffer view sized to bytes read>, done: false }`.  
+         * If the stream ends after some bytes have been read but fewer than `minBytes`, the promise resolves with the partial data: `{ value: <buffer view sized to bytes actually read>, done: false }`. The next call to `read` or `readAtLeast` will then return `{ value: undefined, done: true }`.  
+         * If the stream ends with zero bytes available (that is, the stream is already at EOF), the promise resolves with `{ value: <zero-length view>, done: true }`.  
+         * If the stream errors, the promise rejects.  
+         * `minBytes` must be at least 1, and must not exceed the byte length of `bufferArrayBufferView`, or the promise rejects with a `TypeError`.
+
+---
+
+## Common issues
+
+Warning
+
+`read` provides no control over the minimum number of bytes that should be read into the buffer. Even if you allocate a 1 MiB buffer, the kernel is perfectly within its rights to fulfill this read with a single byte, whether or not an EOF immediately follows.
+
+In practice, the Workers team has found that `read` typically fills only 1% of the provided buffer.
+
+`readAtLeast` is a non-standard extension to the Streams API which allows users to specify that at least `minBytes` bytes must be read into the buffer before resolving the read. If the stream ends before `minBytes` bytes are available, the partial data that was read is still returned rather than throwing an error — refer to the [readAtLeast method documentation above](#methods) for the full details.
+
+---
+
+## Related resources
+
+* [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
+* [Background about BYOB readers in the Streams API WHATWG specification ↗](https://streams.spec.whatwg.org/#byob-readers)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/streams/","name":"Streams"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/streams/readablestreambyobreader/","name":"ReadableStream BYOBReader"}}]}
+```

@@ -1,0 +1,54 @@
+---
+title: URL normalization settings
+description: The Cloudflare dashboard provides the following settings to manage URL normalization:
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/normalization/settings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# URL normalization settings
+
+The Cloudflare dashboard provides the following settings to manage URL normalization:
+
+## Normalization type
+
+Default value: _RFC-3986_
+
+Selects the type of normalization to perform:
+
+* _RFC-3986_ – Applies URL normalization strictly according to [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986).
+* _Cloudflare_ – In addition to what is defined in RFC 3986, applies [extra URL normalization techniques](https://developers.cloudflare.com/rules/normalization/how-it-works/#cloudflare-normalization).
+
+## Normalize incoming URLs
+
+Default value: _On_
+
+Configures the URLs of all incoming traffic to Cloudflare:
+
+* When enabled, all incoming URLs are normalized before they pass to subsequent Cloudflare features that can receive a URL as input, such as Page Rules, WAF custom rules, Workers, and Access.
+* When disabled, incoming URLs are not normalized before passing to subsequent Cloudflare features.
+
+## Normalize URLs to origin
+
+Default value: _Off_
+
+Configures URLs sent to the origin:
+
+* When enabled, requests sent to the origin are normalized.
+* When disabled, requests sent to the origin are not modified.
+
+You can only view and enable this option when **Normalize incoming URLs** is enabled.
+
+For examples of how these settings affect URL normalization, refer to the [URL normalization examples](https://developers.cloudflare.com/rules/normalization/examples/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/normalization/","name":"URL normalization"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/normalization/settings/","name":"URL normalization settings"}}]}
+```

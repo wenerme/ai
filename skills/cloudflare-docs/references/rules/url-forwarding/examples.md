@@ -1,0 +1,22 @@
+---
+title: Redirect examples
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/url-forwarding/examples/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Redirect examples
+
+[Perform mobile redirectsCreate a redirect rule to redirect visitors using mobile devices to a different hostname.](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/)[Redirect admin area requests to HTTPSCreate a redirect rule to redirect requests for the administration area of store.example.com to HTTPS, keeping the original path and query string.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/)[Redirect requests from one domain to anotherCreate a redirect rule to redirect all requests to a different domain, maintaining all functionality, except for the discontinued HTTP service (port 80).](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-another-domain/)[Redirect requests from one country to a domainCreate a redirect rule to redirect all website visitors from the United Kingdom to a different domain, maintaining the current functionality in the same paths.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-country/)[Redirect requests for a domain to a new domainCreate a redirect rule to redirect all URLs for a domain to point to the root of a new domain, including any subdomains of the old domain.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-domain-root/)[Redirect requests to a different hostnameCreate a redirect rule to redirect all requests for smallshop.example.com to a different hostname using HTTPS, keeping the original path and query string.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-all-different-hostname/)[Redirect local visitors to specific subdomainsCreate a redirect rule to redirect United Kingdom and France visitors from the example.com website's root path (/) to their localized subdomains https://gb.example.com and https://fr.example.com, respectively.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-country-subdomains/)[Redirect visitors to a new page URLCreate a redirect rule to redirect visitors from /contact-us/ to the page's new path /contacts/.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-new-url/)[Redirect from root to WWWCreate a redirect rule to forward HTTPS requests from the root (also known as the “apex” or “naked” domain) to the WWW subdomain.](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-root-to-www/)[Redirect from WWW to rootCreate a redirect rule to forward HTTPS requests from the WWW subdomain to the root (also known as the “apex” or “naked” domain).](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/)[Remove locale from URL pathCreate a redirect rule to redirect visitors from an old URL format with locale information to a new URL format.](https://developers.cloudflare.com/rules/url-forwarding/examples/remove-locale-url/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/examples/","name":"Redirect examples"}}]}
+```

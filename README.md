@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 83 skills available
+> 84 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -35,6 +35,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
 | `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
+| `cloudflare-docs` | USE THIS SKILL WHEN working with Cloudflare: Workers, Pages, D1, R2, KV, Durable Objects, Queues, Vectorize, Hyperdrive,... | [developers.cloudflare.com](https://developers.cloudflare.com) |
 | `codex-docs` | USE THIS SKILL WHEN working with OpenAI Codex CLI, Codex App, or Codex Cloud: configuration (config.toml), approval... | [openai/codex](https://github.com/openai/codex) |
 | `comfyui-docs` | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
 | `daisyui-v5` | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
@@ -306,6 +307,16 @@ npx skills add wenerme/ai --skill clickhouse-docs
 ```
 
 Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views, dictionaries, data modeling (denormalization, sharding, replication), integrations (Kafka, S3, PostgreSQL, MySQL), ClickHouse Cloud, Kubernetes operator, data compression, query optimization, or troubleshooting ClickHouse issues.
+
+</details>
+<details>
+<summary><code>cloudflare-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill cloudflare-docs
+```
+
+USE THIS SKILL WHEN working with Cloudflare: Workers, Pages, D1, R2, KV, Durable Objects, Queues, Vectorize, Hyperdrive, AI Gateway, Workers AI, Cloudflare Tunnel, Zero Trust, WAF, DNS, SSL/TLS, Load Balancing, CDN/Cache, Stream, Images, Turnstile, Terraform provider, Pulumi, Email Routing, or any Cloudflare developer product.
 
 </details>
 <details>

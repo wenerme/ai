@@ -1,0 +1,61 @@
+---
+title: Extensions
+description: Browser Isolation supports running native Chromium Web Extensions in the remote browser.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/remote-browser-isolation/extensions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Extensions
+
+Browser Isolation supports running native Chromium Web Extensions in the remote browser.
+
+This capability allows extending tools that require DOM access (such as password managers and ad blockers) to isolated pages.
+
+## Install an extension inside the remote browser
+
+### Prerequisite: Isolate Chrome Web Store
+
+Note
+
+This step is not required when browsing via Clientless Web Isolation. You can access the Chrome Web Store at `https://<authdomain>.cloudflareaccess.com/browser/https://chromewebstore.google.com/`.
+
+Installing extensions requires Chrome Web Store isolation. Create an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to isolate the Chrome Web Store (chromewebstore.google.com).
+
+### Install an extension
+
+1. Go to `https://chromewebstore.google.com/` while isolated.
+2. Choose your desired extension.
+3. Select **Add to Chrome**. To confirm extension installation, select **Add extension**.
+
+Remote browser extensions are automatically reinstalled across isolated sessions.
+
+## Remove an extension from the remote browser
+
+1. Go to any isolated webpage.
+2. Right-click anywhere to open the context menu and select **Show isolation toolbar**.
+3. Select the jigsaw icon in the isolation toolbar to open the extension manager.
+4. Select the hamburger icon for the desired extension to open the extension controls.
+5. Select **Remove from Chromium**. To confirm removal, select **Remove**.
+
+## Useful extensions
+
+### Modify remote browser user agent
+
+[User-Agent Switcher for Chrome ↗](https://chromewebstore.google.com/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg) enables controlling the User Agent sent from the remote browser to an isolated website.
+
+### Control remote browser request headers
+
+[ModHeader ↗](https://chromewebstore.google.com/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) enables controlling arbitrary request headers sent from the remote browser to an isolated website.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/extensions/","name":"Extensions"}}]}
+```

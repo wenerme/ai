@@ -1,0 +1,231 @@
+---
+title: Authentication
+description: Privacy Proxy requires clients to authenticate before proxying traffic. This page explains the supported authentication methods and when to use them.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/privacy-proxy/concepts/authentication.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Authentication
+
+Privacy Proxy requires clients to authenticate before proxying traffic. This page explains the supported authentication methods and when to use them.
+
+## Authentication methods
+
+Privacy Proxy supports three authentication methods:
+
+| Method               | Use case                  | Privacy level |
+| -------------------- | ------------------------- | ------------- |
+| Pre-shared key (PSK) | Proof of concept, testing | Lower         |
+| Privacy Pass tokens  | Client to server          | High          |
+| mTLS                 | Server to server          | Higher        |
+
+---
+
+## Pre-shared key (PSK)
+
+Pre-shared keys provide a simple way to authenticate during development and proof-of-concept testing. Cloudflare provides a secret key that clients include in each request.
+
+### How it works
+
+Include the PSK in the `Proxy-Authorization` header:
+
+```
+
+CONNECT example.com:443 HTTP/2
+
+Host: example.com
+
+Proxy-Authorization: Preshared <YOUR_PSK>
+
+
+```
+
+The proxy validates the key and allows the connection if it matches.
+
+### Limitations
+
+PSK authentication has limitations that make it unsuitable for production.
+
+* **Shared secret**: All clients use the same key, so you cannot revoke access for individual users.
+* **No rate limiting per user**: You cannot enforce per-user quotas or limits.
+* **Linkability**: The proxy can link all requests using the same PSK, which reduces user privacy.
+
+Use PSK only for testing. For production deployments, use [Privacy Pass tokens](#privacy-pass-tokens).
+
+---
+
+## Privacy Pass tokens
+
+[Privacy Pass ↗](https://datatracker.ietf.org/wg/privacypass/about/) is a protocol that allows clients to authenticate without revealing their identity. Tokens are cryptographically unlinkable, meaning the proxy cannot correlate different requests from the same user.
+
+### How it works
+
+Privacy Pass uses a three-party architecture:
+
+* **Attester**: Verifies that the Client is a legitimate user (for example, has a valid account) and forwards token requests to the Issuer.
+* **Issuer**: Signs blinded tokens without learning which Client requested them.
+* **Origin (Privacy Proxy)**: Accepts tokens as proof of authorization.
+
+### Token issuance
+
+```
+
+┌──────────┐    1. Attestation request   ┌──────────┐
+
+│          │ ──────────────────────────▶ │          │
+
+│  Client  │                             │ Attester │
+
+│          │ ◀────────────────────────── │          │
+
+└──────────┘    2. Attestation OK        └──────────┘
+
+     │
+
+     │ 3. Blinded token request
+
+     ▼
+
+┌──────────┐    4. Forward request       ┌──────────┐
+
+│          │ ──────────────────────────▶ │          │
+
+│ Attester │                             │  Issuer  │
+
+│          │ ◀────────────────────────── │          │
+
+└──────────┘    5. Signed blinded token  └──────────┘
+
+     │
+
+     │ 6. Return to Client
+
+     ▼
+
+┌──────────┐
+
+│  Client  │  (unblinds and stores token)
+
+└──────────┘
+
+
+```
+
+The Client sends the token request through the Attester to maintain unlinkability. This ensures the Issuer cannot correlate token requests with specific attestation events or Client identities.
+
+### Token redemption
+
+```
+
+┌──────────┐    1. Present token         ┌──────────┐
+
+│          │ ──────────────────────────▶ │          │
+
+│  Client  │                             │  Privacy │
+
+│          │ ◀────────────────────────── │  Proxy   │
+
+└──────────┘    2. Connection OK         └──────────┘
+
+
+```
+
+The Privacy Proxy validates the token using the Issuer's public key. The proxy learns only that the token is valid, not who it was issued to.
+
+The token issuance process:
+
+1. The client proves their identity to the attester (for example, by signing in with an account).
+2. The attester confirms the client is valid.
+3. The client generates blinded tokens and sends them to the issuer.
+4. The issuer signs the blinded tokens and returns them.
+5. The client unblinds the tokens and stores them.
+
+When making a request:
+
+1. The client includes a token in the `Proxy-Authorization` header.
+2. The proxy verifies the token signature with the issuer's public key.
+3. The proxy allows the connection if the token is valid.
+
+Because tokens are blinded during issuance, the issuer cannot link tokens to specific issuance requests. The proxy sees only that a token is valid, not who it was issued to.
+
+### Token format
+
+Privacy Pass tokens are included in the `Proxy-Authorization` header using the `PrivateToken` scheme:
+
+```
+
+CONNECT example.com:443 HTTP/2
+
+Host: example.com
+
+Proxy-Authorization: PrivateToken token=<base64-encoded-token>
+
+
+```
+
+### Set up Privacy Pass
+
+For production deployments using Privacy Pass:
+
+1. Choose an issuer. Cloudflare can operate a token issuer, or you can integrate with a third-party issuer.
+2. Configure attestation to define how clients prove their identity before receiving tokens.
+3. Distribute issuer configuration. Clients need the issuer's public key and endpoint to request tokens.
+
+[Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to configure Privacy Pass for your deployment.
+
+---
+
+## Mutual TLS (mTLS)
+
+[Mutual TLS (mTLS) authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) ensures that traffic is both secure and trusted in both directions. The client presents a certificate to the proxy, and the proxy validates it before allowing the connection.
+
+### How it works
+
+The client includes a TLS client certificate during the TLS handshake. The proxy validates the certificate against a configured certificate authority (CA) and allows the connection if the certificate is trusted.
+
+### Limitations
+
+You must provision and manage certificates for each client or service. mTLS is designed for server-to-server communication, not for authenticating individual users. The proxy can identify the client by its certificate, which reduces privacy compared to Privacy Pass.
+
+Use mTLS for server-to-server integrations where both parties are trusted services.
+
+---
+
+## Authentication in double-hop deployments
+
+In [double-hop deployments](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#double-hop), authentication occurs at two levels:
+
+### User to Proxy A
+
+Proxy A (which you operate) authenticates users. Common methods include:
+
+* Account credentials (username/password, SSO)
+* Privacy Pass tokens issued by your infrastructure
+* Client certificates (mTLS)
+
+### Proxy A to Proxy B
+
+Proxy B authenticates itself to Proxy A using TLS. Depending on your configuration, this can use:
+
+* Standard TLS certificates
+* Raw Public Key (RPK) TLS extension for reduced certificate overhead
+
+---
+
+## Related resources
+
+* [Privacy Pass Working Group ↗](https://datatracker.ietf.org/wg/privacypass/about/) \- IETF working group developing the Privacy Pass protocol.
+* [Supporting the latest version of the Privacy Pass protocol ↗](https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/) \- Cloudflare blog post on Privacy Pass implementation.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/concepts/authentication/","name":"Authentication"}}]}
+```

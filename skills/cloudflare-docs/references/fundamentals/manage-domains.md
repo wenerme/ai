@@ -1,0 +1,49 @@
+---
+title: Domains
+description: A domain or domain name (also known as a zone) is the location of a website or application, or what an end user types into their browser to get to your website (example.com).
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/manage-domains/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Domains
+
+A _domain_ or _domain name_ (also known as a _zone_) is the location of a website or application, or what an end user types into their browser to get to your website (`example.com`).
+
+## Get a domain name
+
+You can purchase domain names for your website from a variety of places. Cloudflare offers an at-cost registrar service to [purchase new domain names](https://developers.cloudflare.com/registrar/get-started/register-domain/) or [transfer existing domain names](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
+
+Refer to [Account and domain management best practices](https://developers.cloudflare.com/fundamentals/reference/best-practices/) for a detailed list of ways to protect your account and domain.
+
+## Host your domain
+
+A web host keeps your website online so visitors can reach it via the domain name.
+
+Cloudflare does not offer web hosting for most websites, though you can deploy and host JAMstack sites with [Cloudflare Pages](https://developers.cloudflare.com/pages/).
+
+## Add a domain to Cloudflare
+
+For help onboarding a domain to Cloudflare's CDN, refer to our [setup guide](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
+
+You will need to [update your domain's nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/) and [proxy](https://developers.cloudflare.com/dns/proxy-status/) your web traffic to benefit from caching, DDoS protection, Argo Smart Routing, and other [application security and performance products](https://developers.cloudflare.com/directory/?product-group=Application+performance%2CApplication+security).
+
+## Get free SSL certificates
+
+Cloudflare offers free, unshared, publicy trusted [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) to all Cloudflare domains.
+
+## Manage subdomains
+
+For more details about subdomains (`www.example.com` or `blog.example.com`), refer to [Manage subdomains](https://developers.cloudflare.com/fundamentals/manage-domains/manage-subdomains/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/manage-domains/","name":"Domains"}}]}
+```

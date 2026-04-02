@@ -1,0 +1,102 @@
+---
+title: Troubleshoot Rules
+description: Review common troubleshooting scenarios for Rules features.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/reference/troubleshooting.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Troubleshoot Rules
+
+## Interaction between redirects and other Cloudflare products
+
+Your redirects may interfere with Cloudflare products and features such as challenges. Consider excluding the [/cdn-cgi/\* URI path](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/) in your rule expression to avoid issues. Alternatively, you may exclude only a sub-path such as `/cdn-cgi/challenge-platform/*` to avoid issues with specific features (in this example, [Cloudflare challenges](#interaction-between-cloudflare-challenges-and-rules-features)).
+
+You may also want to exclude the `/.well-known/*` URL path used by several validation services. Refer to [Interaction between redirects and verification procedures like HTTP DCV](#interaction-between-redirects-and-verification-procedures-like-http-dcv) for more information.
+
+## Interaction between Cloudflare challenges and Rules features
+
+If you are issuing a [challenge](https://developers.cloudflare.com/cloudflare-challenges/) for a given URI path that has one or more Rules features enabled, you should exclude URI paths starting with `/cdn-cgi/challenge-platform/` in your rule expressions to avoid challenge loops.
+
+For example, define a compound expression for your rule using the `and` operator and the [starts\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts%5Fwith) function:
+
+```
+
+<OTHER_RULE_CONDITIONS> and not starts_with(http.request.uri, "/cdn-cgi/challenge-platform/")
+
+
+```
+
+## Interaction between redirects and verification procedures like HTTP DCV
+
+Paths used in validation procedures such as custom hostname verification ([Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)), [Pages domain validation](https://developers.cloudflare.com/pages/configuration/debugging-pages/), or [HTTP domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/) may be affected by redirects.
+
+Consider excluding the `/.well-known/*` URI path from your rule to avoid issues.
+
+## Content-Length header removed from response
+
+Cloudflare may remove the `Content-Length` header from responses delivered to website visitors. If the visitor must receive the `Content-Length` header, configure the origin server to include a `cache-control: no-transform` HTTP header in the response.
+
+## This rule may not apply to your traffic
+
+If your rule expression is matching a hostname for which you have neither created a DNS record nor enabled proxying traffic through Cloudflare, you will get a pop-up window with a couple of options:
+
+* **If no DNS record exists for the hostname**: Whether to proceed with the rule creation or to create a new proxied DNS record for that hostname.
+* **If there is a DNS record for the hostname, but traffic is not being proxied**: Whether to proceed with the rule creation or to enable proxying for the existing DNS record.
+
+If you choose to create a new DNS record, the new record will have a `rules` tag and the following associated comment:
+
+```
+
+Created during Cloudflare Rules deployment process for <RULE_NAME>
+
+
+```
+
+## URL rewrites affect other Rules features executed later
+
+If you rewrite a URI path using a [URL rewrite](https://developers.cloudflare.com/rules/transform/url-rewrite/), this may affect other Rules features executed later — such as [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/) — if they include the URI path in their filter expression.
+
+Consider the following origin rule configuration:
+
+* Rule expression: `http.host == "example.com" and starts_with(http.request.uri.path, "/downloads/")`
+* **Host header** \> **Rewrite to**: `assets.example.com`
+
+If you configure a new URL rewrite with the following configuration:
+
+* Rule expression: `http.host == "example.com" and starts_with(http.request.uri.path, "/downloads/")`
+* **Path** \> **Rewrite to** \> **Dynamic**: `regex_replace(http.request.uri.path, "^/downloads/", "/")`
+
+The origin rule will no longer match `/downloads/*` paths, since URL rewrites run before Origin Rules and the URI path will be rewritten from `"/downloads/"` to `"/"`.
+
+### Solution
+
+To prevent this situation, use raw fields in your rule expression. Raw fields are immutable during the entire request evaluation workflow, and they are not affected by the actions of previously matched rules.
+
+In the current example, you could use the `raw.http.request.uri.path` field in both rules:
+
+**URL rewrite**
+
+* Rule expression: `http.host == "example.com" and starts_with(raw.http.request.uri.path, "/downloads/")`
+* **Path** \> **Rewrite to** \> **Dynamic**: `regex_replace(raw.http.request.uri.path, "^/downloads/", "/")`
+
+**Origin rule**
+
+* Rule expression: `http.host == "example.com" and starts_with(raw.http.request.uri.path, "/downloads/")`
+* **Host header** \> **Rewrite to**: `assets.example.com`
+
+This way, the two rules will work as intended. Additionally, this allows you to use the same expression in the two rules, even when the first rule is updating the URI path value.
+
+For a list of raw fields, refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=Raw+fields).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/reference/troubleshooting/","name":"Troubleshoot Rules"}}]}
+```

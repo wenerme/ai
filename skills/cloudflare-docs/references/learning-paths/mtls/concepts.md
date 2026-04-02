@@ -1,0 +1,27 @@
+---
+title: Introducing mTLS
+description: Mutual TLS (mTLS) authentication is a common security practice that uses client certificates to ensure traffic between client and server is bidirectionally secure and trusted. mTLS also allows requests that do not authenticate via an identity provider — such as Internet-of-things (IoT) devices — to demonstrate they can reach a given resource.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/mtls/concepts/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Introducing mTLS
+
+[Mutual TLS (mTLS)](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) authentication is a common security practice that uses client certificates to ensure traffic between client and server is bidirectionally secure and trusted. mTLS also allows requests that do not authenticate via an identity provider — such as Internet-of-things (IoT) devices — to demonstrate they can reach a given resource.
+
+[TLS (Transport Layer Security) ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) is a widely-used protocol to ensure secure communication over a network. It ensures confidentiality and integrity by encrypting data and validating the server using digital certificates.
+
+Mutual TLS (mTLS) adds an extra layer by authenticating both parties involved in the communication. The client presents a certificate to the server (in this case Cloudflare) and vice versa.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/mtls/concepts/","name":"Introducing mTLS"}}]}
+```

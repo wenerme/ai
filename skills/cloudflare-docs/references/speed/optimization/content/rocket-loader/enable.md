@@ -1,0 +1,43 @@
+---
+title: Enable
+description: To enable or disable Rocket Loader, use the following instructions.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/speed/optimization/content/rocket-loader/enable.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Enable
+
+To enable or disable Rocket Loader, use the following instructions.
+
+* [ Dashboard ](#tab-panel-6498)
+* [ API ](#tab-panel-6499)
+
+To enable or disable **Rocket Loader** in the dashboard:
+
+1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.  
+[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+2. Go to **Content Optimization**.
+3. For **Rocket Loader**, switch the toggle to **On**.
+
+If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+
+To enable or disable **Rocket Loader** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `rocket_loader` as the setting name in the URI path, and the `value` parameter set to `"on"` or `"off"`.
+
+If you have a Content Security Policy (CSP) in place for your domain, you will need to [update your headers](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/#product-requirements) to support Rocket Loader.
+
+Note
+
+To use this feature on specific hostnames - instead of across your entire zone - use a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/rocket-loader/","name":"Rocket Loader"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/content/rocket-loader/enable/","name":"Enable"}}]}
+```

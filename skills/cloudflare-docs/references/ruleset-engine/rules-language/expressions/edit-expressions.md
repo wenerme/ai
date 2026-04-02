@@ -1,0 +1,149 @@
+---
+title: Edit expressions in the dashboard
+description: Edit expressions in the Cloudflare dashboard using the Expression Builder, which allows for a visual approach, or using the Expression Editor, in which you type the expression.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ruleset-engine/rules-language/expressions/edit-expressions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Edit expressions in the dashboard
+
+In the Cloudflare dashboard, there are two options for editing [expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/):
+
+* [Expression Builder](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder): Allows you to create expressions using drop-down lists, emphasizing a visual approach to defining an expression.
+* [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor): A text-only interface that supports advanced features, such as grouping symbols and functions for transforming and validating values.
+
+In general, you can switch back and forth between the Expression Builder and the Expression Editor. However, the Expression Builder does not support advanced features like:
+
+* [Nested expressions](#create-nested-expressions)
+* [Function calls](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/)
+
+The builder may also not show all the fields you can use in the expression you are editing.
+
+If you use advanced expression features or enter unlisted fields in your expression when using the editor, you may not be able to switch to the Expression Builder. You will get a warning popup stating that the expression is not supported in the builder. To proceed, you may discard any changes made in the editor, or cancel the switch and continue working in the editor.
+
+## Expression Builder
+
+The Expression Builder allows you to visually create rule expressions by using drop-down lists and entering field values to define one or multiple sub-expressions.
+
+![The Expression Builder interface used to visually define expressions](https://developers.cloudflare.com/_astro/expression-builder.Cg2aqK5m_gwrLy.webp) 
+
+The **Expression Preview** displays the expression in text:
+
+```
+
+(ip.src.country ne "GB")
+
+
+```
+
+The Expression Builder will [automatically escape](#escape-special-characters) the backslash (`\`) and double quote (`"`) special characters in string literals when using the [quoted string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#quoted-string-syntax).
+
+## Expression Editor
+
+The **Expression Editor** is a text-only interface for defining rule expressions that supports the entire specification of Cloudflare's [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/), including parentheses as grouping symbols.
+
+![The Expression Editor used to enter advanced expressions](https://developers.cloudflare.com/_astro/expression-editor.CI-o8RRS_Z2uXj7P.webp) 
+
+To access the Expression Editor, select **Edit expression** next to the **Expression Preview**:
+
+![Selecting Edit expression in the Create custom rule page to switch to the Expression Editor](https://developers.cloudflare.com/_astro/expression-builder.Cg2aqK5m_gwrLy.webp) 
+
+To switch back from the Expression Editor to the Expression Builder, select **Use expression builder**.
+
+### Escape special characters
+
+In expressions using the [quoted string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#quoted-string-syntax), all backslash (`\`) and double quote (`"`) characters in string literals must be escaped. The visual Expression Builder will automatically escape these special characters by prepending a backslash such that `\` and `"` become `\\` and `\"`, respectively.
+
+```
+
+# Example of an expression with a " character written using quoted string syntax
+
+http.request.uri.path eq "/foo\"bar"
+
+
+```
+
+The Expression Builder supports both the [quoted string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#quoted-string-syntax) and the [raw string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#raw-string-syntax). In the raw string syntax, there are no special characters or escape sequences, so all characters up to the ending delimiter are interpreted as is.
+
+```
+
+# Example of an expression with a " character written using the raw string syntax
+
+http.request.uri.path eq r#"/foo"bar"#
+
+
+```
+
+When you select _Matches regex_ in the **Operator** dropdown in the dashboard, the expression preview will automatically use the raw string syntax. In other situations, you may need to switch to the Expression Editor to manually enter a string using the raw string syntax. In this case, switching back to the Expression Builder will keep the syntax you used in the editor.
+
+When you write a [regular expression](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#regular-expression-matching) using the quoted string syntax, you may need to perform additional escaping — refer to [Quoted string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#quoted-string-syntax) for details.
+
+To write complex regular expressions, Cloudflare recommends that you use the [raw string syntax](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#raw-string-syntax), which needs less escaping.
+
+### Create nested expressions
+
+The Expression Editor supports parentheses as [grouping symbols](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#grouping-symbols). Use parentheses to explicitly group and nest expressions and, in turn, create highly targeted expressions.
+
+The following rule expression will match requests from any visitor who is not from Malaysia and tries to access WordPress URI paths.
+
+```
+
+((http.request.uri.path contains "/xmlrpc.php") or (http.request.uri.path
+
+contains "/wp-login.php") or (http.request.uri.path contains "/wp-admin/"
+
+and not http.request.uri.path contains "/wp-admin/admin-ajax.php" and not
+
+http.request.uri.path contains "/wp-admin/theme-editor.php")) and
+
+ip.src.country ne "MY"
+
+
+```
+
+Only the Expression Editor supports nested expressions such as the one above. If you create a rule with nested expressions in the Expression Editor and try to switch to the Expression Builder, a dialog will warn you that the expression is not supported in the builder. You will be prompted to **Discard changes** and switch to the Expression Builder or **Cancel** and continue working in the editor.
+
+Note
+
+String comparison in rule expressions is case-sensitive. To account for possible variations of string capitalization in an expression, you can use the [lower()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lower) function and compare the result with a lowercased string, like in the following example:
+
+```
+
+lower(http.request.uri.path) contains "/wp-login.php"
+
+
+```
+
+## Expression validation
+
+Cloudflare validates all expressions before saving them, so if your expression has errors, you will receive an error message in the Cloudflare dashboard, similar to the following:
+
+```
+
+Filter parsing error (1:313): ((http.request.uri.path contains
+
+"/xmlrpc.php") or (http.request.uri.path contains "/wp-login.php") or
+
+(http.request.uri.path contains "/wp-admin/" and not
+
+http.request.uri.path contains "/wp-admin/admin-ajax.php" and not
+
+http.request.uri.path contains "/wp-admin/theme-editor.php")) and
+
+ip.src.country ne "MY") ^ unrecognised input
+
+
+```
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/expressions/","name":"Expressions"}},{"@type":"ListItem","position":5,"item":{"@id":"/ruleset-engine/rules-language/expressions/edit-expressions/","name":"Edit expressions in the dashboard"}}]}
+```

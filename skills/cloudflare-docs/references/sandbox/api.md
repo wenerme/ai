@@ -1,0 +1,63 @@
+---
+title: API Reference
+description: The Sandbox SDK provides a comprehensive API for executing code, managing files, running processes, and exposing services in isolated sandboxes.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/sandbox/api/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# API Reference
+
+The Sandbox SDK provides a comprehensive API for executing code, managing files, running processes, and exposing services in isolated sandboxes.
+
+[Lifecycle](https://developers.cloudflare.com/sandbox/api/lifecycle/) 
+
+Create and manage sandbox containers. Get sandbox instances, configure options, and clean up resources.
+
+[Commands](https://developers.cloudflare.com/sandbox/api/commands/) 
+
+Execute commands and stream output. Run scripts, manage background processes, and capture execution results.
+
+[Files](https://developers.cloudflare.com/sandbox/api/files/) 
+
+Read, write, and manage files in the sandbox filesystem. Includes directory operations and file metadata.
+
+[File Watching](https://developers.cloudflare.com/sandbox/api/file-watching/) 
+
+Monitor real-time filesystem changes using native inotify. Build development tools, hot-reload systems, and responsive file processing.
+
+[Code Interpreter](https://developers.cloudflare.com/sandbox/api/interpreter/) 
+
+Execute Python and JavaScript code with rich outputs including charts, tables, and formatted data.
+
+[Ports](https://developers.cloudflare.com/sandbox/api/ports/) 
+
+Expose services running in the sandbox via preview URLs. Access web servers and APIs from the internet.
+
+[Storage](https://developers.cloudflare.com/sandbox/api/storage/) 
+
+Mount S3-compatible buckets (R2, S3, GCS) as local filesystems for persistent data storage across sandbox lifecycles.
+
+[Backups](https://developers.cloudflare.com/sandbox/api/backups/) 
+
+Create point-in-time snapshots of directories and restore them with copy-on-write overlays. Store backups in R2.
+
+[Sessions](https://developers.cloudflare.com/sandbox/api/sessions/) 
+
+Create isolated execution contexts within a sandbox. Each session maintains its own shell state, environment variables, and working directory.
+
+[Terminal](https://developers.cloudflare.com/sandbox/api/terminal/) 
+
+Connect browser-based terminal UIs to sandbox shells via WebSocket, with the xterm.js SandboxAddon for automatic reconnection and resize handling.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}}]}
+```

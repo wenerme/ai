@@ -1,0 +1,49 @@
+---
+title: Load Balancing with the China Network
+description: To enable load balancers to be deployed to the China Network, your zone will need to meet the following two criteria:
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/additional-options/load-balancing-china.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Load Balancing with the China Network
+
+## Prerequisites
+
+To enable load balancers to be deployed to the [China Network](https://developers.cloudflare.com/china-network/), your zone will need to meet the following two criteria:
+
+1. A valid [ICP license](https://developers.cloudflare.com/china-network/concepts/icp/) for the zone in question.
+2. The zone must be provisioned with access to the China Network.
+
+Once these two criteria are met, any newly created load balancer will be automatically deployed to the China Network. When choosing a region for a pool's health checks, `China` is now available to be selected in both the dashboard and API.
+
+You can also create a load balancer by sending a `POST` request to the following endpoint. To deploy to the China Network with the API, the `networks` array in the API call must contain `jdcloud` as a value in addition to `cloudflare`. Refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/) for details on the required fields and their formats.
+
+Terminal window
+
+```
+
+https://api.cloudflare.com/client/v4/zones/{zone_id}/load_balancers
+
+
+```
+
+## Limitations
+
+Load balancers deployed to the China Network currently have the following limitations:
+
+* Only cookie-based session affinity is supported.
+* Private network off-ramps (Tunnel, GRE, IPsec) are not supported.
+* Private Network Load Balancing is not available on the China Network.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/additional-options/","name":"Additional configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/load-balancing/additional-options/load-balancing-china/","name":"Load Balancing with the China Network"}}]}
+```

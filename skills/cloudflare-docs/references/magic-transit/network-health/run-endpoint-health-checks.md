@@ -1,0 +1,405 @@
+---
+title: Run endpoint health checks (beta)
+description: Magic Transit uses endpoint health checks to determine the overall health of your inter-network connections. Probes originate from Cloudflare infrastructure, outside customer network namespaces, and target IP addresses deep within your network, beyond the tunnel-terminating border router. These &#34;long distance&#34; probes are purely diagnostic.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/magic-transit/network-health/run-endpoint-health-checks.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Run endpoint health checks (beta)
+
+Magic Transit uses endpoint health checks to determine the overall health of your [inter-network connections](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/). Probes originate from Cloudflare infrastructure, outside customer network namespaces, and target IP addresses deep within your network, beyond the tunnel-terminating border router. These "long distance" probes are purely diagnostic.
+
+When choosing which endpoint IP addresses to monitor with health checks, use these guidelines:
+
+* Provide one IP address for each of the prefixes Cloudflare advertises.
+* Redundant IPs routed through the same ISP (Internet Service Provider) and infrastructure are not necessary but are useful when troubleshooting.
+
+Cloudflare pings health check IPs from within the [published Cloudflare IP range ↗](https://www.cloudflare.com/ips/), which is also available through the [Cloudflare API](https://developers.cloudflare.com/api/resources/ips/methods/list/).
+
+When configuring an endpoint health check for an IP prefix, select an IP address within the range of that IP prefix. Refer to the table for an example of an endpoint health check configuration.
+
+| Prefix          | Endpoint IP address |
+| --------------- | ------------------- |
+| 103.21.244.0/24 | 103.21.244.100      |
+| 103.21.245.0/24 | 103.21.245.100      |
+
+Refer to [Tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) for more information.
+
+## Configure endpoint health checks (beta)
+
+You can only configure endpoint health checks through the Cloudflare API. They are not available in the dashboard. Currently, configuring health checks is a beta feature.
+
+Refer to the [API documentation](https://developers.cloudflare.com/api/resources/diagnostics/subresources/endpoint-healthchecks/) to learn how to create, list, and delete endpoint health checks. The following example creates a new endpoint health check.
+
+Note
+
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthcheck" \
+
+  --request POST \
+
+  --json '{
+
+    "check_type": "icmp",
+
+    "endpoint": "8.31.160.1",
+
+    "name": "Datacenter 1 - primary"
+
+  }'
+
+
+```
+
+```
+
+{
+
+    "result": {
+
+        "id": "<HEALTH_CHECK_ID>",
+
+        "check_type": "icmp",
+
+        "endpoint": "8.31.160.1",
+
+        "name": "Datacenter 1 - primary"
+
+    },
+
+    "success": true,
+
+    "errors": [],
+
+    "messages": []
+
+}
+
+
+```
+
+## Query endpoint health checks with GraphQL
+
+Use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) to query endpoint health check results for your account. The `magicEndpointHealthCheckAdaptiveGroups` dataset returns probe results aggregated by the dimensions and time interval you specify.
+
+Send all GraphQL queries as HTTP `POST` requests to `https://api.cloudflare.com/client/v4/graphql`.
+
+### Prerequisites
+
+You need the following to query endpoint health check data:
+
+* Your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+* An [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Account > Account Analytics > Read` permissions. For details, refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
+
+### Query parameters
+
+The following parameters are some of the most common ones in the `filter` object:
+
+| Parameter     | Description                                                                                                                                                                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| date\_geq     | Start date for the query in YYYY-MM-DD format (for example, 2026-01-01). When used with a date-based truncation dimension, returns results from this date onward. You can also use a full ISO 8601 timestamp (for example, 2026-01-01T00:00:00Z). |
+| date\_leq     | _(Optional)_ End date for the query. Uses the same format as date\_geq.                                                                                                                                                                           |
+| datetime\_geq | _(Optional)_ Start timestamp in ISO 8601 format (for example, 2026-01-01T00:00:00Z). Use instead of date\_geq for time-based truncation dimensions.                                                                                               |
+| datetime\_leq | _(Optional)_ End timestamp in ISO 8601 format.                                                                                                                                                                                                    |
+| limit         | Maximum number of result groups to return.                                                                                                                                                                                                        |
+
+You can also filter on any dimension listed in the [Available dimensions](#available-dimensions) table. Append an operator suffix to the dimension name to create a filter — for example, `endpoint_in` to filter by a list of endpoints, or `checkType_neq` to exclude a specific check type. Using a dimension name without a suffix filters for equality. For the full list of supported operators, refer to [Filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/).
+
+### Available dimensions
+
+You can query the following dimensions in the `dimensions` field:
+
+| Dimension              | Description                                                                      |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| checkId                | The unique ID of the configured health check.                                    |
+| checkType              | The type of health check (for example, icmp).                                    |
+| endpoint               | The IP address of the endpoint being checked.                                    |
+| name                   | The name assigned to the health check when configured (may be empty if not set). |
+| date                   | Event timestamp truncated to the day.                                            |
+| datetime               | Full event timestamp.                                                            |
+| datetimeMinute         | Event timestamp truncated to the minute.                                         |
+| datetimeFiveMinutes    | Event timestamp truncated to five-minute intervals.                              |
+| datetimeFifteenMinutes | Event timestamp truncated to 15-minute intervals.                                |
+| datetimeHalfOfHour     | Event timestamp truncated to 30-minute intervals.                                |
+| datetimeHour           | Event timestamp truncated to the hour.                                           |
+
+### Available metrics
+
+| Metric             | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| count              | Total number of health check events in the group. |
+| sum.total          | Total number of health check probes sent.         |
+| sum.failures       | Number of failed health check probes.             |
+| avg.lossPercentage | Average calculated loss percentage (0-100).       |
+
+### API call
+
+The following example queries endpoint health check results for a specific account, returning probe counts aggregated in five-minute intervals. Replace `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and `<API_TOKEN>` with your [API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
+
+Terminal window
+
+```
+
+echo '{ "query":
+
+  "query GetEndpointHealthCheckResults($accountTag: string, $datetimeStart: string) {
+
+    viewer {
+
+      accounts(filter: {accountTag: $accountTag}) {
+
+        magicEndpointHealthCheckAdaptiveGroups(
+
+          filter: {
+
+            datetime_geq: $datetimeStart
+
+          }
+
+          limit: 10
+
+        ) {
+
+          count
+
+          dimensions {
+
+            checkId
+
+            checkType
+
+            endpoint
+
+            datetimeFiveMinutes
+
+          }
+
+          sum {
+
+            failures
+
+            total
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }",
+
+  "variables": {
+
+    "accountTag": "<ACCOUNT_ID>",
+
+    "datetimeStart": "2026-01-21T00:00:00Z"
+
+  }
+
+}' | tr -d '\n' | curl --silent \
+
+https://api.cloudflare.com/client/v4/graphql \
+
+--header "Authorization: Bearer <API_TOKEN>" \
+
+--header "Accept: application/json" \
+
+--header "Content-Type: application/json" \
+
+--data @-
+
+
+```
+
+Pipe the output to `jq` to format the JSON response for easier reading:
+
+Terminal window
+
+```
+
+... | curl --silent \
+
+https://api.cloudflare.com/client/v4/graphql \
+
+--header "Authorization: Bearer <API_TOKEN>" \
+
+--header "Accept: application/json" \
+
+--header "Content-Type: application/json" \
+
+--data @- | jq .
+
+
+```
+
+### Example response
+
+```
+
+{
+
+  "data": {
+
+    "viewer": {
+
+      "accounts": [
+
+        {
+
+          "magicEndpointHealthCheckAdaptiveGroups": [
+
+            {
+
+              "count": 288,
+
+              "dimensions": {
+
+                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",
+
+                "checkType": "icmp",
+
+                "datetimeFiveMinutes": "2026-01-21T12:00:00Z",
+
+                "endpoint": "103.21.244.100"
+
+              },
+
+              "sum": {
+
+                "failures": 0,
+
+                "total": 288
+
+              }
+
+            },
+
+            {
+
+              "count": 288,
+
+              "dimensions": {
+
+                "checkId": "90b478c7-bb51-4640-b94b-2c3050e9fa00",
+
+                "checkType": "icmp",
+
+                "datetimeFiveMinutes": "2026-01-21T12:05:00Z",
+
+                "endpoint": "103.21.244.100"
+
+              },
+
+              "sum": {
+
+                "failures": 2,
+
+                "total": 288
+
+              }
+
+            }
+
+          ]
+
+        }
+
+      ]
+
+    }
+
+  },
+
+  "errors": null
+
+}
+
+
+```
+
+In this response, `sum.total` is the number of probes sent during the interval and `sum.failures` is the number that did not receive a reply. A `failures` value of `0` indicates the endpoint was fully reachable during that period.
+
+## Configure alerts for endpoint health checks
+
+You can set up alerts to be notified when the state of your endpoint's health is below a threshold defined by you.
+
+1. Make a `GET` request to get a list of IDs for all of the endpoint health checks configured:
+
+Terminal window
+
+```
+
+curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpoint-healthcheck" \
+
+  --request GET
+
+
+```
+
+```
+
+{
+
+    "result": [
+
+        {
+
+            "id": "<HEALTH_CHECK_ID>",
+
+            "check_type": "icmp",
+
+            "endpoint": "8.31.160.1",
+
+            "name": "Datacenter 1 - primary"
+
+        }
+
+    ],
+
+    "success": true,
+
+    "errors": [],
+
+    "messages": []
+
+}
+
+
+```
+
+1. Take note of the `id` value for the endpoint you want to get alerts for.
+2. In the Cloudflare dashboard, go to the **Notifications** page.
+[ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications) 
+1. Select **Add**.
+2. From the drop-down menu, select _Magic Transit_.
+3. Select **Magic Endpoint Health Check Alert**.
+4. Provide a name for your new notification and optionally provide a description.
+5. In the _Service Level Objective (SLO)_ drop-down menu, select the SLO threshold for your notification. The SLO defines the percentage of endpoint health checks that must pass. If the number of passing endpoint health checks falls below the SLO, Cloudflare generates an alert:  
+   * **High** \- 99%  
+   * **Medium** \- 98%  
+   * **Low** \- 97%
+6. In the drop-down menu below SLOs, select the `id` value that matches the `id` you got through the API in step 1\. This `id` should match the endpoint health check you want to get notifications for.
+7. Select your preferred notification method (such as email or webhooks).
+8. Select **Save**.
+
+You will now receive notifications through your preferred method whenever the SLO for your endpoint health checks falls below your chosen threshold.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/network-health/","name":"Network health"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/network-health/run-endpoint-health-checks/","name":"Run endpoint health checks (beta)"}}]}
+```

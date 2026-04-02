@@ -1,0 +1,26 @@
+---
+title: 2023-08-25 - Emergency
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ddos-protection/change-log/http/2023-08-25-emergency.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# 2023-08-25 - Emergency
+
+| Rule ID     | Description                                                          | Previous Action | New Action | Notes                                                                                                              |
+| ----------- | -------------------------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| ...20c5afb5 | HTTP requests with unusual HTTP headers or URI path (signature #36). | block           | block      | This rule was previously readonly, but can cause false positives in rare cases. It is now possible to override it. |
+| ...cb26e2e2 | HTTP requests from known botnet (signature #69).                     | N/A             | block      |                                                                                                                    |
+| ...ebff5ef1 | HTTP requests with unusual HTTP headers or URI path (signature #43). | N/A             | block      |                                                                                                                    |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/change-log/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/change-log/http/","name":"HTTP DDoS managed ruleset"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/change-log/http/2023-08-25-emergency/","name":"2023-08-25 - Emergency"}}]}
+```

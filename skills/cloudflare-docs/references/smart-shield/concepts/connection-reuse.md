@@ -1,0 +1,37 @@
+---
+title: Connection reuse
+description: Smart Shield leverages Cloudflare's optimized infrastructure to package multiple requests from an upper-tier into a single connection to your origin. This means overall connections to your origin are lowered by 30% on average. Refer to the blog post for details.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/smart-shield/concepts/connection-reuse.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Connection reuse
+
+Smart Shield leverages Cloudflare's optimized infrastructure to package multiple requests from an [upper-tier](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/) into a single connection to your origin. This means overall connections to your origin are lowered by 30% on average. Refer to the [blog post ↗](https://blog.cloudflare.com/introducing-observatory-and-smart-shield/#protecting-and-accelerating-origins-with-smart-connection-reuse) for details.
+
+## About connection reuse
+
+Implemented by HTTP/1.1, connection reuse describes multiple requests passing through one same connection (between one source IP:port and one destination IP:port). It is commonly the case even for simple websites nowadays.
+
+For example, when a connection is initiated for `shop.example.com`, several embedded subresources may be requested - CSS, image files, advertisement, etc. This can mean hundreds of requests just for the website to load. Instead of having a one to one ratio of request per connection, a single connection is used for multiple requests.
+
+With HTTP/2, requests can use the same connection even if they are for different domains (also known as connection coalescing).
+
+For example, a connection initiated for `shop.example.com` can be used for requests for `blog.example.com` as well - as long as the requests have the same destination IP:port and the server TLS certificate is authoritative for both hostnames.
+
+## Egress IPs allocation
+
+Connection reuse and connection coalescing are also considered when allocating your [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/smart-shield/","name":"Smart Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/smart-shield/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/smart-shield/concepts/connection-reuse/","name":"Connection reuse"}}]}
+```

@@ -1,0 +1,37 @@
+---
+title: Store and Catalog AI Generated Images with R2 (Part 3)
+description: In the final part of the AI Image Playground series, Kristian teaches how to utilize Cloudflare's R2 object storage.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+### Tags
+
+[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Store and Catalog AI Generated Images with R2 (Part 3)
+
+**Last reviewed:**  about 1 year ago 
+
+In the final part of the AI Image Playground series, Kristian teaches how to utilize Cloudflare's [R2](https://developers.cloudflare.com/r2) object storage in order to maintain and keep track of each AI generated image.
+
+Refer to the AI Image Playground [GitHub repository ↗](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
+
+Video series
+
+* [ Build an AI Image Generator Playground (Part 1) ](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-flux/)
+* [ Add New AI Models to your Playground (Part 2) ](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-flux-newmodels/)
+* [ Store and Catalog AI Generated Images with R2 (Part 3) ](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/guides/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/guides/tutorials/image-generation-playground/","name":"How to Build an Image Generator using Workers AI"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/","name":"Store and Catalog AI Generated Images with R2 (Part 3)"}}]}
+```

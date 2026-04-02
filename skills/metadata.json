@@ -16,6 +16,7 @@
     "bun-docs": { "repo": "oven-sh/bun" },
     "claude-code-docs": { "repo": "anthropics/claude-code" },
     "clickhouse-docs": { "repo": "ClickHouse/clickhouse-docs" },
+    "cloudflare-docs": { "url": "https://developers.cloudflare.com" },
     "codex-docs": { "repo": "openai/codex" },
     "comfyui-docs": { "repo": "Comfy-Org/docs" },
     "daisyui-v5": { "url": "https://daisyui.com" },

@@ -1,0 +1,92 @@
+---
+title: Prefetch URLs
+description: URL prefetching means that Cloudflare pre-populates the cache with content a visitor is likely to request next. This setting — when combined with additional setup — leads to a higher cache hit rate and thus a faster experience for the user.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/speed/optimization/content/prefetch-urls.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Prefetch URLs
+
+URL prefetching means that Cloudflare pre-populates the cache with content a visitor is likely to request next. This setting — when combined with [additional setup](#setup) — leads to a higher cache hit rate and thus a faster experience for the user.
+
+---
+
+## Availability
+
+| Free         | Pro | Business | Enterprise |     |
+| ------------ | --- | -------- | ---------- | --- |
+| Availability | No  | No       | No         | Yes |
+
+---
+
+## Setup
+
+For Cloudflare to start prefetching URLs, you will need to [enable the feature](#enable-prefetch-urls) and [include a list of URLs to prefetch](#choose-urls-to-prefetch).
+
+### Enable Prefetch URLs
+
+* [ Dashboard ](#tab-panel-6496)
+* [ API ](#tab-panel-6497)
+
+To enable **Prefetch URLs** in the dashboard:
+
+1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.  
+[ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+2. Go to **Content Optimization**.
+3. For **Prefetch URLs**, switch the toggle to **On**.
+
+To enable or disable **Prefetch URLs** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `prefetch_preload` as the setting name in the URI path, and the `value` parameter set to your desired setting (`"on"` or `"off"`).
+
+### Choose URLs to prefetch
+
+After you [enable the feature](#enable-prefetch-urls), you also need to indicate which URLs Cloudflare should prefetch.
+
+To do this, include a Link HTTP response header pointing to a manifest file with the `rel="prefetch"` attribute and then serve the manifest file with `text/plain` as the Content-type response header.
+
+Example HTTP response header:  
+`Link: <http://www.example.com/manifest.txt>; rel="prefetch"`
+
+Example `manifest.txt` file:
+
+```
+
+/static/fetch1
+
+//other.example.com/fetch2
+
+http://another.example.com/fetch3
+
+
+```
+
+The manifest file should contain URIs, protocol-relative URLs or full URLs, separated by new lines. These files must be on your websites that are on Cloudflare. If you reference HTML pages, only the HTML page itself will be pre-fetched - any sub-requests from that HTML will not be fetched unless they are also defined explicitly in your manifest.
+
+Note
+
+The IP address used to make the prefetch request to the manifest file is logged as `127.0.0.1` in your Cloudflare logs.
+
+### Prefetch files limits
+
+The prefetch files limits are the following:
+
+* The maximum number of manifest files is 16.
+* The maximum number of files per manifest file is 100.
+* A manifest file has a size limit of 1 MB.
+
+## Limitations
+
+* Cloudflare will only prefetch files listed in the manifest file if the resources are those [cached by default](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions).
+* Prefetch is not compatible with the custom cache key configuration. For more information, refer to [Cache Key limitations](https://developers.cloudflare.com/cache/how-to/cache-keys/#limitations).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/content/","name":"Content optimizations"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/content/prefetch-urls/","name":"Prefetch URLs"}}]}
+```

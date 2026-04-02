@@ -1,0 +1,26 @@
+---
+title: Troubleshooting
+description: For more guidance related to common issues with load balancers, refer to the following resources:
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/troubleshooting/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Troubleshooting
+
+For more guidance related to common issues with load balancers, refer to the following resources:
+
+* [ Common error codes ](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/)
+* [ FAQs ](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/load-balancing/","name":"Load Balancing"}},{"@type":"ListItem","position":3,"item":{"@id":"/load-balancing/troubleshooting/","name":"Troubleshooting"}}]}
+```

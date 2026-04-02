@@ -1,0 +1,25 @@
+---
+title: Customize Cloudflare settings
+description: Once your gateway becomes active, you can customize the Cloudflare settings associated with your hostname.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/web3/how-to/customize-cloudflare-settings.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Customize Cloudflare settings
+
+Once your gateway becomes [active](https://developers.cloudflare.com/web3/reference/gateway-status/), you can customize the Cloudflare settings associated with your hostname.
+
+Since your traffic is automatically proxied through Cloudflare, you customize your website settings to take advantage of various [security, performance, and reliability](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy) benefits.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/how-to/customize-cloudflare-settings/","name":"Customize Cloudflare settings"}}]}
+```

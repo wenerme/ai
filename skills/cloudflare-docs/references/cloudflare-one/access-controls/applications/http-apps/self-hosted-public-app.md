@@ -1,0 +1,91 @@
+---
+title: Publish a self-hosted application to the Internet
+description: You can securely publish internal tools and applications by adding Cloudflare Access as an authentication layer between the end user and your origin server.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Publish a self-hosted application to the Internet
+
+You can securely publish internal tools and applications by adding Cloudflare Access as an authentication layer between the end user and your origin server.
+
+This guide covers how to make a web application accessible to anyone on the Internet via a public hostname. If you would like to make the application available over a private IP or hostname, refer to [Add a self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
+
+## Prerequisites
+
+* An [active domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
+* Domain uses either a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+
+## 1\. Add your application to Access
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
+2. Select **Add an application**.
+3. Select **Self-hosted**.
+4. Enter any name for the application.
+5. In **Session Duration**, choose how often the user's [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) should expire.  
+Cloudflare checks every HTTP request to your application for a valid application token. If the user's application token (and global token) has expired, they will be prompted to reauthenticate with the IdP. For more information, refer to [Session management](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/).
+1. Select **Add public hostname**.
+2. In the **Domain** dropdown, select the domain that will represent the application. Domains must belong to an active zone in your Cloudflare account. You can use [wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/) to protect multiple parts of an application that share a root path.  
+Alternatively, to use a [Cloudflare for SaaS custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/secure-with-access/), set **Input method** to _Custom_ and enter your custom hostname.
+3. (Optional) Configure **Browser rendering settings**:  
+   * [Automatic cloudflared authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/automatic-cloudflared-authentication/)  
+   * [Browser rendering for SSH, VNC, or RDP](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/browser-rendering/)
+4. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
+5. Configure how users will authenticate:  
+   1. Select the [**Identity providers**](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) you want to enable for your application.  
+   2. (Recommended) If you plan to only allow access via a single IdP, turn on **Instant Auth**. End users will not be shown the [Cloudflare Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/). Instead, Cloudflare will redirect users directly to your SSO login event.  
+   3. (Optional) Under **Device authentication identity**, allow users to authenticate to the application using their [ Cloudflare One Client session identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+6. Select **Next**.
+7. (Optional) Configure [App Launcher settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) for the application.
+8. Under **Block page**, choose what end users will see when they are denied access to the application:  
+   * **Cloudflare default**: Reload the [login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/) and display a block message below the Cloudflare Access logo. The default message is `That account does not have access`, or you can enter a custom message.  
+   * **Redirect URL**: Redirect to the specified website.  
+   * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
+9. Select **Next**.
+10. (Optional) Configure advanced settings:  
+   * [**Cross-Origin Resource Sharing (CORS) settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/)  
+   * [**Cookie settings**](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#cookie-settings)  
+   * **401 Response for Service Auth policies**: Return a `401` response code when a user (or machine) makes a request to the application without the correct [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
+11. Select **Save**.
+
+## 2\. Connect your origin to Cloudflare
+
+[Set up a Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) to publish your internal application. Only users who match your Access policies will be granted access.
+
+Note
+
+We recommend [creating an Access application](#1-add-your-application-to-access) before setting up the tunnel route. If you do not have an Access application in place, the published application will be available to anyone on the Internet.
+
+If your application is already publicly routable, a Tunnel is not strictly required. However, you will then need to protect your origin IP using [other methods](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
+
+## 3\. Validate the Access token
+
+To secure your origin, you must validate the [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/) issued by Cloudflare Access. Token validation ensures that any requests which bypass Cloudflare Access (for example, due to a network misconfiguration) are rejected.
+
+One option is to configure the Cloudflare Tunnel daemon, `cloudflared`, to validate the token on your behalf. This is done by enabling [**Protect with Access**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#access) in your Cloudflare Tunnel settings. Alternatively, if you do not wish to perform automatic validation with Cloudflare Tunnel, you can instead [manually configure your origin](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) to check all requests for a valid token.
+
+Users can now connect to your self-hosted application after authenticating with Cloudflare Access.
+
+## Product compatibility
+
+When using Access self-hosted applications, the majority of Cloudflare products will be compatible with your application.
+
+However, the following products are not supported:
+
+* [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization)
+* [Zaraz](https://developers.cloudflare.com/zaraz)
+
+You can disable Zaraz for a specific application - instead of across your entire zone - using a [Configuration Rule](https://developers.cloudflare.com/rules/configuration-rules/) scoped to the application domain.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/","name":"Publish a self-hosted application to the Internet"}}]}
+```

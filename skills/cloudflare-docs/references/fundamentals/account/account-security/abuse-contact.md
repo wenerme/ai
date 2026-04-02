@@ -1,0 +1,32 @@
+---
+title: Add abuse contact
+description: Enter an abuse contact email address to ensure you are receiving communications regarding potential abuse on your websites.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/account/account-security/abuse-contact.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Add abuse contact
+
+Enter an abuse contact email address to ensure you are receiving communications regarding potential abuse on your websites.
+
+To update your abuse contact email address:
+
+1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+2. Go to **Manage Account** \> **Configurations**.
+3. For **Abuse report contact email address**, select **Change email address**.
+4. Enter and confirm your new email and select **Save**.
+
+If you choose not to provide an abuse contact email address, communication about abuse will be directed to one of the Super Administrators on your account.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/account-security/","name":"Account security"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/account/account-security/abuse-contact/","name":"Add abuse contact"}}]}
+```

@@ -1,0 +1,32 @@
+---
+title: Concepts
+description: Learn the concepts behind load balancing, whether you are using Cloudflare or another provider.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/load-balancing/concepts/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Concepts
+
+Learn the concepts behind load balancing, whether you are using Cloudflare or another provider.
+
+## Objectives
+
+By the end of this module, you will be able to:
+
+* Explain what load balancing is.
+* Describe the differences between load balancers, pools, and servers.
+* Explain what pool health is and how it affects load balancer traffic.
+* List the different ways your traffic can be routed.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/load-balancing/concepts/","name":"Concepts"}}]}
+```

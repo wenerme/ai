@@ -1,0 +1,212 @@
+---
+title: Endpoint Management
+description: Monitor the health of your API endpoints by saving, updating, and monitoring performance metrics using API Shield’s Endpoint Management.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/api-shield/management-and-monitoring/endpoint-management/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Endpoint Management
+
+ Available on all plans 
+
+Monitor the health of your API endpoints by saving, updating, and monitoring performance metrics using API Shield’s Endpoint Management.
+
+**Add endpoints** allows customers to save endpoints directly from [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/) or manually by method, path, and host.
+
+This will add the specified endpoints to your list of managed endpoints. You can view your list of saved endpoints in the **Endpoint Management** page.
+
+Cloudflare will start collecting [performance data](https://developers.cloudflare.com/api-shield/management-and-monitoring/#endpoint-analysis) on your endpoint when you save an endpoint.
+
+Note
+
+When an endpoint is using [Cloudflare Workers](https://developers.cloudflare.com/workers/), the metrics data will not be populated.
+
+## Access
+
+* [  New dashboard ](#tab-panel-3134)
+* [ Old dashboard ](#tab-panel-3135)
+
+1. In the Cloudflare dashboard, go to the **Web Assets** page.  
+[ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Go to the **Endpoints** tab.
+3. Select **Add endpoints**.
+4. Add your endpoints [manually](#add-endpoints-manually), from [Schema validation](#add-endpoints-from-schema-validation), or from [API Discovery](#add-endpoints-from-api-discovery).
+
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
+2. Select **Security** \> **API Shield**.
+3. Add your endpoints [manually](#add-endpoints-manually), from [Schema validation](#add-endpoints-from-schema-validation), or from [API Discovery](#add-endpoints-from-api-discovery).
+
+### Add endpoints from API Discovery
+
+There are two ways to add API endpoints from Discovery.
+
+#### Add from the Endpoints tab
+
+* [  New dashboard ](#tab-panel-3124)
+* [ Old dashboard ](#tab-panel-3125)
+
+1. From **Endpoints**, go to **Add endpoints** \> **Select from Discovery** tab.
+2. Select the discovered endpoints you would like to add.
+3. Select **Add endpoints**.
+
+1. From **Endpoint Management**, select **Add endpoints** \> **Select from Discovery** tab.
+2. Select the discovered endpoints you would like to add.
+3. Select **Add endpoints**.
+
+#### Add from the Discovery tab
+
+* [  New dashboard ](#tab-panel-3126)
+* [ Old dashboard ](#tab-panel-3127)
+
+1. From **Web assets**, go to the **Discovery** tab.
+2. Select the discovered endpoints you would like to add.
+3. Select **Save selected endpoints**.
+
+1. From Endpoint Management, select the **Discovery** tab.
+2. Select the discovered endpoints you would like to add.
+3. Select **Save selected endpoints**.
+
+### Add endpoints from Schema validation
+
+* [  New dashboard ](#tab-panel-3128)
+* [ Old dashboard ](#tab-panel-3129)
+
+1. From **Web assets**, go to the **Endpoints** tab.
+2. Select **Add endpoints** \> **Upload Schema**.
+3. Upload a schema file.
+4. Select **Add schema and endpoints**.
+
+1. Add a schema by [configuring Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/).
+2. On **Review schema endpoints**, save new endpoints to endpoint management by checking the box.
+3. Select **Save as draft** or **Save and Deploy**. Endpoints will be saved regardless of whether the schema is saved as a draft or published.
+
+API Shield will look for duplicate endpoints that have the same host, method, and path. Duplicate endpoints will not be saved to endpoint management.
+
+Note
+
+If you deselect **Save new endpoints to endpoint management**, the endpoints will not be added.
+
+### Add endpoints manually
+
+* [  New dashboard ](#tab-panel-3130)
+* [ Old dashboard ](#tab-panel-3131)
+
+1. From **Web assets**, go to the **Endpoints** tab.
+2. Select **Add endpoints** \> **Manually add**.
+3. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
+4. Select **Add endpoints**.
+
+1. From Endpoint Management, select **Add endpoints** \> **Manually add**.
+2. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
+3. Select **Add endpoints**.
+
+Note
+
+By selecting multiple checkboxes, you can add several endpoints from Discovery at once instead of individually.
+
+When adding an endpoint manually, you can specify variable fields in the path or host by enclosing them in braces, `/api/user/{var1}/details` or `{hostVar1}.example.com`.
+
+Cloudflare supports hostname variables in the following formats:
+
+```
+
+{hostVar1}.example.com
+
+
+foo.{hostVar1}.example.com
+
+
+{hostVar2}.{hostVar1}.example.com
+
+
+```
+
+Hostname variables must comprise the entire domain field and must not be used with other text in the field.
+
+The following format is not supported:
+
+```
+
+foo-{hostVar1}.example.com
+
+
+```
+
+For more information on how Cloudflare uses variables in API Shield, refer to the examples from [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/).
+
+### Delete endpoints manually
+
+You can delete endpoints one at a time or in bulk.
+
+* [  New dashboard ](#tab-panel-3132)
+* [ Old dashboard ](#tab-panel-3133)
+
+1. From **Web assets**, go to the **Endpoints** tab.
+2. Select the checkboxes for the endpoints that you want to delete.
+3. Select **Delete endpoints**.
+
+1. From Endpoint Management, select the checkboxes for the endpoints that you want to delete.
+2. Select **Delete endpoints**.
+
+Warning
+
+When you delete an endpoint from Endpoint Management, Cloudflare immediately stops tracking all associated performance and analytics data. The endpoint's previous historical metrics are permanently removed and cannot be restored. If you later save this endpoint again, metric tracking will resume, starting from the point the endpoint is re-saved.
+
+## Endpoint Analysis
+
+For each saved endpoint, customers can view:
+
+* **Request count**: The total number of requests to the endpoint over time.
+* **Rate limiting recommendation**: per 10 minutes. This is guided by the request count.
+* **Latency**: The average origin response time in milliseconds (ms). This metric shows how long it takes from the moment a visitor makes a request to the moment the visitor gets a response back from the origin.
+* **Error rate** vs. overall traffic: grouped by 4xx, 5xx, and their sum.
+* **Response size**: The average size of the response (in bytes) returned to the request.
+* **Labels**: The current [labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) assigned to the endpoint.
+* **[Authentication status](https://developers.cloudflare.com/api-shield/security/authentication-posture/)**: The breakdown of which [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers) were seen on successful requests to this endpoint.
+* **Sequences**: The number of [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) sequences the endpoint was found in.
+
+Note
+
+Customers viewing analytics have the ability to toggle detailed metrics view between the last 24 hours and 7 days.
+
+## Using the Cloudflare API
+
+You can interact with Endpoint Management through the Cloudflare API. Refer to [Endpoint Management’s API documentation](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/discovery/subresources/operations/methods/list/) for more information.
+
+## Sensitive Data Detection
+
+Sensitive data comprises various personally identifiable information and financial data. Cloudflare created this ruleset to address common data loss threats, and the WAF can search for this data in HTTP response bodies from your origin.
+
+API Shield will alert users to the presence of sensitive data in the response body of API endpoints listed in Endpoint Management if the zone is also subscribed to the [Sensitive Data Detection managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/).
+
+Sensitive Data Detection is available to Enterprise customers on our Advanced application security plan.
+
+Once Sensitive Data Detection is enabled for your zone, API Shield queries firewall events from the WAF for the last seven days and places a notification icon on the Endpoint Management table row if there are any matched sensitive responses for your endpoint.
+
+API Shield displays the types of sensitive data found if you expand the Endpoint Management table row to view further details. Select **Explore Events** to view the matched events in Security Events.
+
+After Sensitive Data Detection is enabled for your zone, you can [browse the Sensitive Data Detection ruleset ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/data/ruleset/e22d83c647c64a3eae91b71b499d988e/rules). The link will not work if Sensitive Data Detection is not enabled.
+
+## Limitations
+
+Certain performance metrics, such as latency, are not supported when a request is handled by a Cloudflare service in a way that prevents it from being passed directly to your origin server.
+
+This limitation is specifically observed when:
+
+* A Cloudflare Worker is running on the URL path.
+* Other products built on top of Workers, such as [Waiting Room](https://developers.cloudflare.com/waiting-room/), are active on the application.
+
+In these scenarios, the system is unable to accurately measure the origin response time, and the metric will not be populated in the dashboard.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/management-and-monitoring/","name":"Management and Monitoring"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/management-and-monitoring/endpoint-management/","name":"Endpoint Management"}}]}
+```

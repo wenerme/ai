@@ -1,0 +1,286 @@
+---
+title: Diagnostic logs
+description: The Cloudflare One Client (formerly WARP) provides diagnostic logs that you can use to troubleshoot connectivity issues on a device.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Diagnostic logs
+
+The Cloudflare One Client (formerly WARP) provides diagnostic logs that you can use to troubleshoot connectivity issues on a device.
+
+Chapters
+
+* ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)  
+ **Introduction** 0s
+* ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)  
+ **What are warp-diag files?** 44s
+* ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)  
+ **How to download and navigate warp-diag files** 1m16s
+* ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)  
+ **warp-status.txt** 2m06s
+* ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)  
+ **warp-settings.txt** 2m29s
+* ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)  
+ **daemon.log** 3m37s
+* ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)  
+ **Addition tips** 8m07s
+* ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)  
+ **Conclusion** 8m43s
+
+## macOS/Windows/Linux
+
+### Collect logs via the CLI
+
+To view client logs on desktop devices:
+
+* [ macOS ](#tab-panel-3714)
+* [ Windows ](#tab-panel-3715)
+* [ Linux ](#tab-panel-3716)
+
+1. Open a Terminal window.
+2. Run the `warp-diag` tool:  
+Terminal window  
+```  
+warp-diag  
+```
+
+This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
+
+1. Open a Command Prompt or PowerShell window.
+2. Run the `warp-diag` tool:  
+Terminal window  
+```  
+C:\Users\JohnDoe>warp-diag  
+```
+
+This will place a `warp-debugging-info-<date>-<time>.zip` on your desktop.
+
+1. Open a Terminal window.
+2. Run the `warp-diag` tool:  
+Terminal window  
+```  
+warp-diag  
+```
+
+This will place a `warp-debugging-info-<date>-<time>.zip` in the same folder you ran the command from.
+
+### Collect logs via the dashboard
+
+Feature availability
+
+| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Traffic and DNS mode  Traffic only mode                                                                                            | All plans                                                       |
+
+| System   | Availability | Minimum client version |
+| -------- | ------------ | ---------------------- |
+| Windows  | ✅            | 2024.12.492.0          |
+| macOS    | ✅            | 2024.12.492.0          |
+| Linux    | ✅            | 2024.12.492.0          |
+| iOS      | ❌            |                        |
+| Android  | ❌            |                        |
+| ChromeOS | ❌            |                        |
+
+You can collect client diagnostic logs remotely from the Zero Trust dashboard by using Digital Experience Monitoring (DEX) [remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/).
+
+Devices must be actively connected to the Internet for remote captures to run.
+
+To capture data from a remote device:
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** \> **Remote captures**.
+2. Select up to 10 devices that you want to run a capture on. Devices must be [registered](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) in your Zero Trust organization.
+3. Configure the types of captures to run.  
+   * **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).  
+   * **Device diagnostic logs**: Generates a [Cloudflare One Client diagnostic log](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs) of the past 96 hours. To include a routing test for all IPs and domains in your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), select **Test all routes**.  
+   Note  
+   **Test all routes** will extend the time for diagnostics to run and may temporarily impact device performance during the test.
+4. Select **Run diagnostics**.
+
+DEX will now send capture requests to the configured devices. If the Cloudflare One Client is disconnected, the capture will time out after 10 minutes.
+
+#### Download remote captures
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** \> **Remote captures**.
+2. Find a successful capture.
+3. Select the three-dot menu and select **Download**.
+
+This will download a ZIP file to your local machine called `<capture-id>.zip`. DEX will store capture data according to our [log retention policy](https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention).
+
+#### Diagnostics analyzer (beta)
+
+The diagnostics analyzer highlights what Cloudflare determines to be the most important detection events in a `warp-diag` log. You can use the detection report to help parse your [log files](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs) and identify the root cause of client issues. The diagnostics analyzer is only available for logs [collected via the dashboard](#collect-logs-via-the-dashboard).
+
+To access the diagnostics analyzer:
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** \> **Remote captures**.
+2. Locate an existing `warp-diag` log from the list or select **Run diagnostics** to generate a new `warp-diag` log.
+3. Select the three dots for the `warp-diag` log that you want to analyze, then select **View Device Diag**.  
+The **Overview** tab will display an [AI-generated summary](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/) of the results, a list of detection events, and basic device information.  
+Explanation of the fields  
+| Field                         | Description                                                                                                                                                                                                                                                                                               |  
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
+| Detection type                | A common Cloudflare One Client issue that can appear in the diagnostic logs.                                                                                                                                                                                                                              |  
+| Occurences                    | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |  
+| Severity level                | Indicates the impact of the issue on Cloudflare One Client functionality. The severity levels are: **Critical**: Issue causes complete loss of functionality. **Warning**: Issue causes degraded functionality but core features should still work. **No detection**: Issue was not detected in the logs. |  
+| Operating system              | OS and OS version of the device.                                                                                                                                                                                                                                                                          |  
+| Cloudflare One Client version | [Cloudflare One Client release version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)                                                                                                                                                      |  
+| Profile ID                    | [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) UUID                                                                                                                                                       |  
+| Service mode                  | [Client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/)                                                                                                                                                                         |  
+| Configuration name            | Name of the [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) that the Cloudflare One Client is connected to.                                                                  |  
+| Device ID                     | ID generated by the Cloudflare One Client.                                                                                                                                                                                                                                                                |
+4. Select a detection type for more information about the event and recommended next steps.
+
+Cloudflare DEX will store the `warp-diag` log and its detection report per our [log retention policy](https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention). To save a copy onto your local machine, [download the log file](#download-remote-captures) and go to the **JSON file** tab to copy the report in JSON format.
+
+### `warp-diag` logs
+
+The `warp-debugging-info-<date>-<time>.zip` archive contains the following files:
+
+| File name                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .qlog                                                                     | QLog files used to debug MASQUE connection issues.                                                                                                                                                                                                                                                                                                                                         |
+| .pcap                                                                     | Packet capture (PCAP) files that were manually generated using warp-cli debug pcap commands.                                                                                                                                                                                                                                                                                               |
+| alternate-networks-check.txt                                              | Connectivity status for each [managed network](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/).                                                                                                                                                                                                             |
+| boringtun.log                                                             | Log for the WARP tunnel that serves traffic from the device to Cloudflare's global network.                                                                                                                                                                                                                                                                                                |
+| bound-dns-ports.txt                                                       | Active processes on port 53.                                                                                                                                                                                                                                                                                                                                                               |
+| captive-portal-hotspot-detect.txt                                         | HTTP response of captive.apple.com                                                                                                                                                                                                                                                                                                                                                         |
+| connectivity.txt                                                          | DNS resolution and HTTP trace requests to [validate a successful connection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). Can be used to determine whether traffic is routing through the WARP tunnel.                                                                                     |
+| daemon\_dns.log                                                           | Contains detailed DNS logs if **Log DNS queries** is enabled in the Cloudflare One Client.                                                                                                                                                                                                                                                                                                 |
+| daemon.log                                                                | Detailed log of all actions performed by the Cloudflare One Client, including all communication between the device and Cloudflare's global network. **Note:** This is the most useful debug log.                                                                                                                                                                                           |
+| date.txt                                                                  | Date and time (UTC) when you ran the warp-diag command.                                                                                                                                                                                                                                                                                                                                    |
+| dex.log                                                                   | Logs related to [DEX test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) execution.                                                                                                                                                                                                                                                                                |
+| dhcp-lease-plists.txt                                                     | DHCP lease information from /var/db/dhcpclient/leases/ for each interface that has a DHCP lease.                                                                                                                                                                                                                                                                                           |
+| dhcp-lease.txt                                                            | DHCP lease information from ipconfig (macOS) or nmcli (Linux).                                                                                                                                                                                                                                                                                                                             |
+| dig.txt                                                                   | DNS lookup query output for cloudflare.com and apple.com.                                                                                                                                                                                                                                                                                                                                  |
+| dns\_stats.log                                                            | Statistics on the DNS queries received and resolved by the Cloudflare One Client, generated every two minutes.                                                                                                                                                                                                                                                                             |
+| dns-check.txt                                                             | Verifies that the Cloudflare One Client DNS servers are set as system default. For [operating modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) where DNS filtering is enabled, this file contains the IPs of the local DNS proxy (127.0.2.2:0, 127.0.2.3:0, \[fd01:db8:1111::2\]:0, and \[fd01:db8:1111::3\]:0). |
+| dynamic.log                                                               | Reserved for use by Cloudflare Support.                                                                                                                                                                                                                                                                                                                                                    |
+| etc-hosts.txt                                                             | Static DNS config of device.                                                                                                                                                                                                                                                                                                                                                               |
+| firewall-pfctl-all.txt                                                    | Packet filter (pf) firewall configuration (macOS only).                                                                                                                                                                                                                                                                                                                                    |
+| firewall-rules.txt                                                        | The [system firewall rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#system-firewall) configured by the Cloudflare One Client.                                                                                                                                                       |
+| gui-launcher.log                                                          | macOS console log showing application launch.                                                                                                                                                                                                                                                                                                                                              |
+| gui-log.log                                                               | Log file for the GUI app that users interact with.                                                                                                                                                                                                                                                                                                                                         |
+| hostname.txt                                                              | Name of the device.                                                                                                                                                                                                                                                                                                                                                                        |
+| ifconfig.txt ipconfig.txt                                                 | IP configuration of each network interface.                                                                                                                                                                                                                                                                                                                                                |
+| installed\_applications.txt                                               | List of installed applications.                                                                                                                                                                                                                                                                                                                                                            |
+| installed\_cert.pem                                                       | [Root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) installed on the system.                                                                                                                                                                                                                                           |
+| installer.log msi-installer.log                                           | MSI or PKG installation log.                                                                                                                                                                                                                                                                                                                                                               |
+| InstallHistory.plist macos\_installer.log                                 | macOS software installation logs.                                                                                                                                                                                                                                                                                                                                                          |
+| ipc.log                                                                   | Logs IPC communication between the GUI and daemon. Useful for situations where the GUI crashes or is unable to communicate with the daemon.                                                                                                                                                                                                                                                |
+| kernel-modules.txt                                                        | List of loaded kernel modules (macOS and Linux) or drivers (Windows).                                                                                                                                                                                                                                                                                                                      |
+| launchd-dumpstate.txt                                                     | Current state of the macOS launchd system including the loaded jobs, their status, and dependencies.                                                                                                                                                                                                                                                                                       |
+| local\_policy.redacted.txt mdm.plist mdm.xml                              | [Managed deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) on the device.                                                                                                                                                                                                    |
+| lsb-release.txt                                                           | Output from the lsb\_release command (Linux only).                                                                                                                                                                                                                                                                                                                                         |
+| netstat.txt routetable.txt                                                | Routing table used by the device.                                                                                                                                                                                                                                                                                                                                                          |
+| netstat-v6.txt                                                            | IPv6 routing table (Linux only).                                                                                                                                                                                                                                                                                                                                                           |
+| platform.txt                                                              | Operating system of the device.                                                                                                                                                                                                                                                                                                                                                            |
+| ps.txt processes.txt                                                      | List of all active processes on the device when warp-diag was run.                                                                                                                                                                                                                                                                                                                         |
+| resolv.conf                                                               | The contents of the /etc/resolv.conf file on Mac/Linux, where system DNS servers are configured.                                                                                                                                                                                                                                                                                           |
+| route.txt                                                                 | Output from the ip route get command, used to verify that network traffic is going over the correct interface. You can optionally use the warp-diag --enable-all-routes flag to include tests for all IPs and domains in your Split Tunnel configuration.                                                                                                                                  |
+| scutil-dns.txt                                                            | DNS configuration on macOS/Linux (available in ipconfig.txt on Windows).                                                                                                                                                                                                                                                                                                                   |
+| scutil-networkinfo.txt                                                    | IPv4 and IPv6 network interface configuration on macOS (available in interfaces-config.txt on Windows).                                                                                                                                                                                                                                                                                    |
+| scutil-proxy.txt                                                          | Proxy configuration on macOS/Linux (available in ipconfig.txt on Windows).                                                                                                                                                                                                                                                                                                                 |
+| snapshots-collection.log                                                  | Logs generated when collecting snapshots/\*.log. Used to debug why the Cloudflare One Client failed to collect a snapshot.                                                                                                                                                                                                                                                                 |
+| snapshots/\*.log                                                          | Diagnostics generated when an error occurs.                                                                                                                                                                                                                                                                                                                                                |
+| stats.log                                                                 | Uptime and throughput stats for the WARP tunnel, generated every two minutes.                                                                                                                                                                                                                                                                                                              |
+| sw-vers.txt                                                               | Operating system of the device.                                                                                                                                                                                                                                                                                                                                                            |
+| sysinfo.json                                                              | CPU and memory usage when warp-diag was run. This information is useful for determining whether slow speeds are due to heavy system load.                                                                                                                                                                                                                                                  |
+| system-extension-diagnostics.txt                                          | Status and health of loaded system extensions (macOS only).                                                                                                                                                                                                                                                                                                                                |
+| systeminfo.txt system-profile.txt                                         | System software overview.                                                                                                                                                                                                                                                                                                                                                                  |
+| System.evtx                                                               | Windows system event log.                                                                                                                                                                                                                                                                                                                                                                  |
+| taskdump.log                                                              | If the daemon hangs, this file will contain a dump of the currently running processes. This is helpful in debugging hangs, deadlocks, and tasks.                                                                                                                                                                                                                                           |
+| timezone.txt                                                              | Local timezone of the device specified as a UTC offset.                                                                                                                                                                                                                                                                                                                                    |
+| traceroute.txt                                                            | Traceroute to the [WARP ingress IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) showing the path from the device to Cloudflare's global network.                                                                                                                                              |
+| uname.txt                                                                 | Linux-only system information including kernel version.                                                                                                                                                                                                                                                                                                                                    |
+| v4interfaces.txt v4subinterfaces.txt v6interfaces.txt v6subinterfaces.txt | IPv4 and IPv6 network configuration on Windows.                                                                                                                                                                                                                                                                                                                                            |
+| version.txt                                                               | [Cloudflare One Client version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) installed on the device.                                                                                                                                                                                                                      |
+| warp-account.txt                                                          | Cloudflare One Client device enrollment information.                                                                                                                                                                                                                                                                                                                                       |
+| warp-bus-metrics.txt                                                      | Metrics for the internal message bus framework used by the Cloudflare One Client.                                                                                                                                                                                                                                                                                                          |
+| warp-device-posture.txt                                                   | Current [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/) status.                                                                                                                                                                                                                                                       |
+| warp-dex-data.txt                                                         | Currently configured [DEX tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and their most recent statuses.                                                                                                                                                                                                                                                     |
+| warp-dns-fallbacks.txt                                                    | List of default DNS fallbacks used by the WARP DNS proxy.                                                                                                                                                                                                                                                                                                                                  |
+| warp-dns-lock.json                                                        | Default DNS providers and network interface information.                                                                                                                                                                                                                                                                                                                                   |
+| warp-dns-stats.txt                                                        | Summary of recent DNS queries on the device since dns-stats.log was generated.                                                                                                                                                                                                                                                                                                             |
+| warp-network.txt                                                          | Network settings on the device detected by the Cloudflare One Client.                                                                                                                                                                                                                                                                                                                      |
+| warp-settings.txt                                                         | [Cloudflare One Client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/) applied to the device.                                                                                                                                                                                                             |
+| warp-stats.txt                                                            | Uptime and throughput of the WARP tunnel since stats.log was generated.                                                                                                                                                                                                                                                                                                                    |
+| warp-status.txt                                                           | Status of the Cloudflare One Client connection (Connected or Disconnected).                                                                                                                                                                                                                                                                                                                |
+| wdutil-info.txt                                                           | Wi-Fi diagnostics (macOS only).                                                                                                                                                                                                                                                                                                                                                            |
+| xpc-launchd.log                                                           | Most recent log file for the launchd process on macOS.                                                                                                                                                                                                                                                                                                                                     |
+
+#### Multiple versions of the same log
+
+The `warp-debugging-info` folder may contain multiple versions of the same log, such as `daemon.log`, `daemon.1.log`, and `daemon.2.log`. Since logs can get very long, they are rotated either daily or when they exceed a certain size.
+
+* `<logfile>.log` is the most current log. This is almost always the log you should be looking at, as it shows events that occurred on the day you ran the `warp-diag` command.
+* `<logfile>.1.log` shows events from the previous day.
+* `<logfile>.2.log` shows events from two days before.
+
+Note
+
+In timestamped logs such as `daemon.log`, the most recent events will appear at the end of the file.
+
+### Log retention window
+
+Each client log file (such as `connection_stats.log`, `dns_stats.log`, `daemon.log`, `boringtun.log`, `daemon_dns.log`, `dex.log` and `captive-portal.log`) is limited by size and age:
+
+* **Maximum file size:** 10 MB
+* **Maximum file age:** 24 hours
+* **Maximum number of retained versions per log:** 4 (for example, `daemon.log`, `daemon.1.log`, `daemon.2.log`, and `daemon.3.log`)
+
+Log files may include data from up to 96 hours (four days) prior to when `warp-diag` was run, but only if log activity is minimal. In environments with high logging volume (for example, repeated errors), logs may rotate more frequently, and the captured window could be much shorter (only a few hours).
+
+Always check the timestamps at the end of each log file to verify the time range covered by the diagnostic archive.
+
+Linux log behavior
+
+On Linux, the WARP daemon logs are written to the system logs by the `warp-svc` service.
+
+If you need to adjust the maximum log level or filter what gets logged, you can configure the WARP `systemd` unit file using the [LogLevelMax= option ↗](https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#LogLevelMax=).
+
+The Cloudflare One Client does not provide an official method to configure logging levels during the installation process.
+
+## iOS/Android/ChromeOS
+
+### Collect logs
+
+To view client logs on mobile devices:
+
+1. Open the 1.1.1.1 app.
+2. Go to **Settings** \> **Advanced** \> **Diagnostics**.
+3. Scroll down to **Debug logs** and choose from the [available logs](#mobile-app-logs).
+
+### Mobile app logs
+
+Mobile app logs contain a subset of the information available for desktop clients. To learn more about these files, refer to their equivalent [warp-diag logs](#warp-diag-logs).
+
+#### iOS
+
+| Name                                     | Equivalent warp-diag log         |
+| ---------------------------------------- | -------------------------------- |
+| **DNS logs**                             | daemon\_dns.log                  |
+| **Console logs** \> **Extension logs**   | daemon.log                       |
+| **Console logs** \> **Application logs** | connectivity.txt and gui-log.log |
+| **Routing table**                        | netstat.txt                      |
+
+#### Android/ChromeOS
+
+| Name             | Equivalent warp-diag log                       |
+| ---------------- | ---------------------------------------------- |
+| **DNS logs**     | daemon\_dns.log                                |
+| **Console logs** | connectivity.txt, netstat.log, and gui-log.log |
+| **Native logs**  | daemon.log                                     |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/","name":"Troubleshoot the Cloudflare One Client"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/","name":"Diagnostic logs"}}]}
+```

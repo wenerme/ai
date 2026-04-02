@@ -1,0 +1,41 @@
+---
+title: Control user session settings
+description: Adjust these settings to control how long a user can hold their place on your site after leaving the waiting room.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waiting-room/how-to/control-user-session.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Control user session settings
+
+Adjust these settings to control how long a user can hold their place on your site after leaving the waiting room.
+
+## Session duration
+
+Once on your site, a user is considered active as long as they make an HTTP request to any URL covered by your waiting room once every **session duration** minutes. Each new request restarts a user’s time to stay active equal to **session duration**.
+
+## Disable session renewal to limit browsing time
+
+You can limit each user’s time on your site to only one session duration by checking the box next to Disable Session Renewal from the dashboard. Once a user has been active on your site for **session duration** minutes, if there is active queueing, that user will be sent to the back of the queue. If there is not an active queue when **session duration** minutes is over, this user will be given a new waiting room cookie and counted as a new user again.
+
+## Revoke a user’s session using origin commands
+
+To terminate a user's session when they perform a specific action, you can send a command to the waiting room using an HTTP header on the response from your origin. This command tells the waiting room to revoke the session of the user associated with the current response. This allows spots to open up more dynamically and may increase throughput from your queue.
+
+To enable this feature in the Cloudflare Dashboard, check the box next to Allow session termination via origin commands from the dashboard. To enable this feature through the [Cloudflare API](https://developers.cloudflare.com/api/resources/waiting%5Frooms/methods/update/), update the `enabled_origin_commands` property to include the value `”revoke”` in the list of enabled origin commands.
+
+Then, to return a revocation origin command and revoke the user's session associated with the current request, add the `Cf-Waiting-Room-Command: revoke` HTTP header to the response from your origin.
+
+To get the number of sessions revoked, you can query `sessionsRevoked` metrics from your [Waiting Room analytics](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/#graphql-analytics) data via GraphQL API.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/control-user-session/","name":"Control user session settings"}}]}
+```

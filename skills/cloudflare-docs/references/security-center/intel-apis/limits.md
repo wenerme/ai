@@ -1,0 +1,36 @@
+---
+title: Limits
+description: Limits
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/security-center/intel-apis/limits.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Limits
+
+## API request limits
+
+All API calls made to Threat Intelligence endpoints will contribute to the monthly quota. Additionally, utilizing features within the Security Center such as Investigate and Brand Protection, or other products, such as client-side security, which also leverage the Security Intelligence APIs, will also contribute to the consumption of the quota.
+
+These request limits currently do not apply to the DDoS Botnet Threat Feed API.
+
+| Cloudflare Plan        | Calls per month |
+| ---------------------- | --------------- |
+| Free                   | 100             |
+| Pro                    | 100             |
+| Business               | 100             |
+| Enterprise             | 2,500           |
+| Cloudforce One Core    | 10,000          |
+| Cloudforce One Premier | 50,000          |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/intel-apis/","name":"Threat Intelligence APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/security-center/intel-apis/limits/","name":"Limits"}}]}
+```

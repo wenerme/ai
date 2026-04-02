@@ -1,0 +1,290 @@
+---
+title: Transcription
+description: RealtimeKit provides two transcription modes powered by Cloudflare Workers AI:
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/realtimekit/ai/transcription.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Transcription
+
+RealtimeKit provides two transcription modes powered by Cloudflare Workers AI:
+
+| Mode             | Model                                                                                                 | Use Case                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------ |
+| **Real-time**    | [Deepgram Nova-3](https://developers.cloudflare.com/workers-ai/models/nova-3/)                        | Live captions during meeting   |
+| **Post-meeting** | [Whisper Large v3 Turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/) | Accurate offline transcription |
+
+## Real-time transcription
+
+Streams transcripts to participants as they speak using [Deepgram Nova-3](https://developers.cloudflare.com/workers-ai/models/nova-3/) via Cloudflare AI Gateway.
+
+### Enable via preset
+
+Set `transcription_enabled: true` in the participant's [preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/):
+
+```
+
+{
+
+  "name": "webinar_host",
+
+  "transcription_enabled": true
+
+}
+
+
+```
+
+Only participants with this flag will have their audio transcribed.
+
+### Configure
+
+Pass `ai_config.transcription` when [creating a meeting](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/):
+
+```
+
+{
+
+  "title": "Team Standup",
+
+  "ai_config": {
+
+    "transcription": {
+
+      "language": "en-US",
+
+      "keywords": ["RealtimeKit", "Cloudflare"],
+
+      "profanity_filter": false
+
+    }
+
+  }
+
+}
+
+
+```
+
+| Option            | Type       | Default | Description                                |
+| ----------------- | ---------- | ------- | ------------------------------------------ |
+| language          | string     | en-US   | Language code for transcription            |
+| keywords          | string\[\] | \[\]    | Terms to boost recognition (names, jargon) |
+| profanity\_filter | boolean    | false   | Filter offensive language                  |
+
+### Supported languages
+
+Real-time transcription is powered by [Deepgram Nova-3](https://developers.cloudflare.com/workers-ai/models/nova-3/) on Workers AI.
+
+Nova-3 on Workers AI supports the following languages for transcription:
+
+| Language   | Code(s)                               |
+| ---------- | ------------------------------------- |
+| English    | en, en-US, en-AU, en-GB, en-IN, en-NZ |
+| Spanish    | es, es-419                            |
+| French     | fr, fr-CA                             |
+| German     | de, de-CH                             |
+| Hindi      | hi                                    |
+| Russian    | ru                                    |
+| Portuguese | pt, pt-BR, pt-PT                      |
+| Japanese   | ja                                    |
+| Italian    | it                                    |
+| Dutch      | nl                                    |
+
+Use `multi` for automatic multilingual detection across all of the languages listed above.
+
+If no language is specified, the model defaults to `en-US`. For best accuracy, explicitly set the language code matching your audio.
+
+### Consume transcripts
+
+#### Client SDK
+
+JavaScript
+
+```
+
+// Get all transcripts
+
+const transcripts = meeting.ai.transcripts;
+
+
+// Listen for new transcripts
+
+meeting.ai.on("transcript", (data) => {
+
+  if (data.isPartialTranscript) {
+
+    // Interim result - speaker still talking
+
+    updateLiveCaption(data.peerId, data.transcript);
+
+  } else {
+
+    // Final result
+
+    appendToHistory(data);
+
+  }
+
+});
+
+
+```
+
+#### Transcript payload
+
+```
+
+{
+
+  "id": "1a2b3c4d-5678-90ab-cdef-1234567890ab",
+
+  "name": "Alice",
+
+  "peerId": "4f5g6h7i-8j9k-0lmn-opqr-1234567890st",
+
+  "userId": "uvwxyz-1234-5678-90ab-cdefghijklmn",
+
+  "customParticipantId": "abc123xyz",
+
+  "transcript": "Hello everyone",
+
+  "isPartialTranscript": false,
+
+  "date": "2024-08-07T10:15:30.000Z"
+
+}
+
+
+```
+
+| Field               | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| isPartialTranscript | true \= interim (still speaking), false \= final |
+| peerId              | Changes if participant rejoins                   |
+| userId              | Persistent participant ID                        |
+| customParticipantId | Your custom ID from Add Participant API          |
+
+---
+
+## Post-meeting transcription
+
+Generates transcripts after the meeting ends using [Whisper Large v3 Turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/). Transcripts from all participants are consolidated into a unified timeline and delivered via webhook or REST API.
+
+Note
+
+Post-meeting transcription is currently in closed beta. If you are interested in this feature, contact your account team.
+
+### Supported languages
+
+Supports all languages in [Whisper Large v3 Turbo](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/). Uses ISO 639-1 language codes.
+
+### Output formats
+
+| Format   | Use Case                             |
+| -------- | ------------------------------------ |
+| **CSV**  | Spreadsheets, data analysis          |
+| **SRT**  | Video subtitle files                 |
+| **VTT**  | Web video captions (<track> element) |
+| **JSON** | Programmatic access                  |
+
+#### CSV example
+
+```
+
+Timestamp,Participant ID,User ID,Custom Participant ID,Participant Name,Transcript
+
+2024-08-07T10:15:30.000Z,peer-123,user-456,cust-789,Alice,Hello everyone
+
+2024-08-07T10:15:35.000Z,peer-234,user-567,cust-890,Bob,Hi Alice
+
+
+```
+
+#### JSON example
+
+```
+
+[
+
+  {
+
+    "startTime": 0,
+
+    "endTime": 2.5,
+
+    "sentence": "Hello everyone",
+
+    "peerData": {
+
+      "id": "peer-123",
+
+      "userId": "user-456",
+
+      "displayName": "Alice",
+
+      "cpi": "cust-789"
+
+    }
+
+  }
+
+]
+
+
+```
+
+### Fetch transcripts
+
+#### Webhook
+
+Configure `meeting.transcript` event in [webhooks](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/webhooks/):
+
+```
+
+{
+
+  "event": "meeting.transcript",
+
+  "meetingId": "meeting-123",
+
+  "sessionId": "session-456",
+
+  "transcriptDownloadUrl": "https://...",
+
+  "transcriptDownloadUrlExpiry": "2024-08-14T10:15:30.000Z"
+
+}
+
+
+```
+
+#### REST API
+
+Refer to [Fetch the complete transcript for a session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Ftranscripts/).
+
+Terminal window
+
+```
+
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript" \
+
+  -H "Authorization: Bearer {api_token}"
+
+
+```
+
+Transcripts are available for **7 days** after meeting ends.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ai/","name":"AI"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ai/transcription/","name":"Transcription"}}]}
+```

@@ -1,0 +1,558 @@
+---
+title: Access
+description: Review recent changes to Cloudflare Access.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/changelog/access.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Access
+
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/access.xml) 
+
+## 2026-03-04
+
+  
+**User risk score selector in Access policies**   
+
+You can now use [user risk scores](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) in your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). The new **User Risk Score** selector allows you to create Access policies that respond to user behavior patterns detected by Cloudflare's risk scoring system, including impossible travel, high DLP policy matches, and more.
+
+For more information, refer to [Use risk scores in Access policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/#use-risk-scores-in-access-policies).
+
+## 2026-03-01
+
+  
+**Clipboard controls for browser-based RDP**   
+
+You can now configure clipboard controls for browser-based RDP with Cloudflare Access. Clipboard controls allow administrators to restrict whether users can copy or paste text between their local machine and the remote Windows server.
+
+![Enable users to copy and paste content from their local machine to remote RDP sessions in the Cloudflare One dashboard](https://developers.cloudflare.com/_astro/rdp-clipboard-controls.B0ZmliDb_Z1Ne5yg.webp) 
+
+This feature is useful for organizations that support bring-your-own-device (BYOD) policies or third-party contractors using unmanaged devices. By restricting clipboard access, you can prevent sensitive data from being transferred out of the remote session to a user's personal device.
+
+#### Configuration options
+
+Clipboard controls are configured per policy within your Access application. For each policy, you can independently allow or deny:
+
+* **Copy from local client to remote RDP session** — Users can copy/paste text from their local machine into the browser-based RDP session.
+* **Copy from remote RDP session to local client** — Users can copy/paste text from the browser-based RDP session to their local machine.
+
+By default, both directions are denied for new policies. For existing Access applications created before this feature was available, clipboard access remains enabled to preserve backwards compatibility.
+
+When a user attempts a restricted clipboard action, the clipboard content is replaced with an error message informing them that the action is not allowed.
+
+For more information, refer to [Clipboard controls for browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/#clipboard-controls).
+
+## 2026-02-27
+
+  
+**Export MCP server portal logs with Logpush**   
+
+Availability
+
+Only available on Enterprise plans.
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) now supports [Logpush](https://developers.cloudflare.com/logs/logpush/) integration. You can automatically export MCP server portal activity logs to third-party storage destinations or security information and event management (SIEM) tools for analysis and auditing.
+
+#### Available log fields
+
+The MCP server portal logs dataset includes fields such as:
+
+* `Datetime` — Timestamp of the request
+* `PortalID` / `PortalAUD` — Portal identifiers
+* `ServerID` / `ServerURL` — Upstream MCP server details
+* `Method` — JSON-RPC method (for example, `tools/call`, `prompts/get`, `resources/read`)
+* `ToolCallName` / `PromptGetName` / `ResourceReadURI` — Method-specific identifiers
+* `UserID` / `UserEmail` — Authenticated user information
+* `Success` / `Error` — Request outcome
+* `ServerResponseDurationMs` — Response time from upstream server
+
+For the complete field reference, refer to [MCP portal logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mcp%5Fportal%5Flogs/).
+
+#### Set up Logpush
+
+To configure Logpush for MCP server portal logs, refer to [Logpush integration](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+
+Note
+
+MCP server portals is currently in beta.
+
+## 2026-02-17
+
+  
+**Streamlined clientless browser isolation for private applications**   
+
+A new **Allow clientless access** setting makes it easier to connect users without a device client to internal applications, without using public DNS.
+
+![Allow clientless access setting in the Cloudflare One dashboard](https://developers.cloudflare.com/_astro/allow-clientless-access.BHKwQuVt_1mLRiX.webp) 
+
+Previously, to provide clientless access to a private hostname or IP without a [published application](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#add-a-published-application-route), you had to create a separate [bookmark application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/) pointing to a prefixed [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) URL (for example, `https://<your-teamname>.cloudflareaccess.com/browser/https://10.0.0.1/`). This bookmark was visible to all users in the App Launcher, regardless of whether they had access to the underlying application.
+
+Now, you can manage clientless access directly within your [private self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/). When **Allow clientless access** is turned on, users who pass your Access application policies will see a tile in their App Launcher pointing to the prefixed URL. Users must have [remote browser permissions](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) to open the link.
+
+## 2026-02-17
+
+  
+**Policies for bookmark applications**   
+
+You can now assign [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to [bookmark applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/). This lets you control which users see a bookmark in the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) based on identity, device posture, and other policy rules.
+
+Previously, bookmark applications were visible to all users in your organization. With policy support, you can now:
+
+* **Tailor the App Launcher to each user** — Users only see the applications they have access to, reducing clutter and preventing accidental clicks on irrelevant resources.
+* **Restrict visibility of sensitive bookmarks** — Limit who can view bookmarks to internal tools or partner resources based on group membership, identity provider, or device posture.
+
+Bookmarks support all [Access policy configurations](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) except purpose justification, temporary authentication, and application isolation. If no policy is assigned, the bookmark remains visible to all users (maintaining backwards compatibility).
+
+For more information, refer to [Add bookmarks](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/).
+
+## 2026-02-13
+
+  
+**Fine-grained permissions for Access policies and service tokens**   
+
+Fine-grained permissions for **Access policies** and **Access service tokens** are available. These new resource-scoped roles expand the existing RBAC model, enabling administrators to grant permissions scoped to individual resources.
+
+#### New roles
+
+* **Cloudflare Access policy admin**: Can edit a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in an account.
+* **Cloudflare Access service token admin**: Can edit a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) in an account.
+
+These roles complement the existing resource-scoped roles for Access applications, identity providers, and infrastructure targets.
+
+For more information:
+
+* [Resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles)
+* [Role scopes](https://developers.cloudflare.com/fundamentals/manage-members/scope/)
+
+Note
+
+Resource-scoped roles is currently in beta.
+
+## 2026-01-22
+
+  
+**Require Access protection for zones**   
+
+You can now require Cloudflare Access protection for all hostnames in your account. When enabled, traffic to any hostname that does not have a matching Access application is automatically blocked.
+
+This deny-by-default approach prevents accidental exposure of internal resources to the public Internet. If a developer deploys a new application or creates a DNS record without configuring an Access application, the traffic is blocked rather than exposed.
+
+![Require Cloudflare Access protection in the dashboard](https://developers.cloudflare.com/_astro/require-cloudflare-access-protection.BAUmTYOs_ZxNecb.webp) 
+
+#### How it works
+
+* **Blocked by default**: Traffic to all hostnames in the account is blocked unless an Access application exists for that hostname.
+* **Explicit access required**: To allow traffic, create an Access application with an Allow or Bypass policy.
+* **Hostname exemptions**: You can exempt specific hostnames from this requirement.
+
+To turn on this feature, refer to [Require Access protection](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/).
+
+## 2026-01-22
+
+  
+**New granular API token permissions for Cloudflare Access**   
+
+Three new API token permissions are available for Cloudflare Access, giving you finer-grained control when building automations and integrations:
+
+* **Access: Organizations Revoke** — Grants the ability to [revoke user sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#revoke-user-sessions) in a Zero Trust organization. Use this permission when you need a token that can terminate active sessions without broader write access to organization settings.
+* **Access: Population Read** — Grants read access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that only need to read synced user and group data.
+* **Access: Population Write** — Grants write access to the [SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) synced from an identity provider to Cloudflare Access. Use this permission for tokens that need to create or modify synced user and group data.
+
+These permissions are scoped at the account level and can be combined with existing Access permissions.
+
+For a full list of available permissions, refer to [API token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/).
+
+## 2026-01-08
+
+  
+**Cloudflare admin activity logs capture creation of DNS over HTTP (DoH) users**   
+
+Cloudflare [admin activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/) now capture each time a [DNS over HTTP (DoH) user](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/dns-over-https/) is created.
+
+These logs can be viewed from the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), pulled via the [Cloudflare API](https://developers.cloudflare.com/api/), and exported through [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+
+## 2025-11-14
+
+  
+**Generate Cloudflare Access SSH certificate authority (CA) directly from the Cloudflare dashboard**   
+
+SSH with [Cloudflare Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/) allows you to use short-lived SSH certificates to eliminate SSH key management and reduce security risks associated with lost or stolen keys.
+
+Previously, users had to generate this certificate by using the [Cloudflare API ↗](https://developers.cloudflare.com/api/) directly. With this update, you can now create and manage this certificate in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com) from the **Access controls** \> **Service credentials** page.
+
+![Navigate to Access controls and then Service credentials to see where you can generate an SSH CA](https://developers.cloudflare.com/_astro/SSH-CA-generation.DYa9RnX1_ZKuDAo.webp) 
+
+For more details, refer to [Generate a Cloudflare SSH CA](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#generate-a-cloudflare-ssh-ca).
+
+## 2025-10-28
+
+  
+**Access private hostname applications support all ports/protocols**   
+
+[Cloudflare Access for private hostname applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) can now secure traffic on all ports and protocols.
+
+Previously, applying Zero Trust policies to private applications required the application to use HTTPS on port `443` and support Server Name Indicator (SNI).
+
+This update removes that limitation. As long as the application is reachable via a Cloudflare off-ramp, you can now enforce your critical security controls — like single sign-on (SSO), MFA, device posture, and variable session lengths — to any private application. This allows you to extend Zero Trust security to services like SSH, RDP, internal databases, and other non-HTTPS applications.
+
+![Example private application on non-443 port](https://developers.cloudflare.com/_astro/internal_private_app_any_port.DNXnEy0u_2rybRJ.webp) 
+
+For example, you can now create a self-hosted application in Access for `ssh.testapp.local` running on port `22`. You can then build a policy that only allows engineers in your organization to connect after they pass an SSO/MFA check and are using a corporate device.
+
+This feature is generally available across all plans.
+
+## 2025-10-02
+
+  
+**Fine-grained Permissioning for Access for Apps, IdPs, & Targets now in Public Beta**   
+
+Fine-grained permissions for **Access Applications, Identity Providers (IdPs), and Targets** is now available in Public Beta. This expands our RBAC model beyond account & zone-scoped roles, enabling administrators to grant permissions scoped to individual resources.
+
+#### What's New
+
+* **[Access Applications ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)**: Grant admin permissions to specific Access Applications.
+* **[Identity Providers ↗](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)**: Grant admin permissions to individual Identity Providers.
+* **[Targets ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#1-add-a-target)**: Grant admin rights to specific Targets
+![Updated Permissions Policy UX](https://developers.cloudflare.com/_astro/2025-10-01-fine-grained-permissioning-ux.BWVmQsVF_Z1p4MJh.webp) 
+
+Note 
+
+During the public beta, members must also be assigned an account-scoped, read only role to view resources in the dashboard. This restriction will be lifted in a future release.
+
+* **Account Read Only** plus a fine-grained permission for a specific App, IdP, or Target
+* **Cloudflare Zero Trust Read Only** plus fine-grained permission for a specific App, IdP, or Target
+
+For more info:
+
+* [Get started with Cloudflare Permissioning](https://developers.cloudflare.com/fundamentals/manage-members/roles/)
+* [Manage Member Permissioning via the UI & API](https://developers.cloudflare.com/fundamentals/manage-members/manage)
+
+## 2025-09-22
+
+  
+**Access Remote Desktop Protocol (RDP) destinations securely from your browser — now generally available!**   
+
+[Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/) with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is now generally available for all Cloudflare customers. It enables secure, remote Windows server access without VPNs or RDP clients.
+
+Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
+
+* Support for targets with IPv6.
+* Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) as on-ramps.
+* More robust error messaging on the login page to help you if you encounter an issue.
+* Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
+* Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
+
+As a refresher, here are some benefits browser-based RDP provides:
+
+* **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
+* **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
+* **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
+* **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+![Example of a browser-based RDP Access application](https://developers.cloudflare.com/_astro/browser-based-rdp-access-app.BNXce1JL_1TDoUX.webp) 
+
+To get started, refer to [Connect to RDP in a browser](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/).
+
+## 2025-08-26
+
+  
+**Manage and restrict access to internal MCP servers with Cloudflare Access**   
+
+You can now control who within your organization has access to internal MCP servers, by putting internal MCP servers behind [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
+
+[Self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/linked-apps/) in Cloudflare Access now support OAuth for MCP server authentication. This allows Cloudflare to delegate access from any self-hosted application to an MCP server via OAuth. The OAuth access token authorizes the MCP server to make requests to your self-hosted applications on behalf of the authorized user, using that user's specific permissions and scopes.
+
+For example, if you have an MCP server designed for internal use within your organization, you can configure Access policies to ensure that only authorized users can access it, regardless of which MCP client they use. Support for internal, self-hosted MCP servers also works with MCP server portals, allowing you to provide a single MCP endpoint for multiple MCP servers. For more on MCP server portals, read the [blog post ↗](https://blog.cloudflare.com/zero-trust-mcp-server-portals/) on the Cloudflare Blog.
+
+## 2025-08-26
+
+  
+**MCP server portals**   
+![MCP server portal](https://developers.cloudflare.com/_astro/mcp-server-portal.BOKqTCoI_ZXYCcF.webp) 
+
+An [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) centralizes multiple Model Context Protocol (MCP) servers onto a single HTTP endpoint. Key benefits include:
+
+* **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers as well as MCP servers secured using any third-party or custom OAuth provider. Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
+* **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
+* **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the indiviudal requests made using the tools in the portal.
+
+This is available in an open beta for all customers across all plans! For more information check out our [blog ↗](https://blog.cloudflare.com/zero-trust-mcp-server-portals/) for this release.
+
+## 2025-08-15
+
+  
+**SFTP support for SSH with Cloudflare Access for Infrastructure**   
+
+[SSH with Cloudflare Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/) now supports SFTP. It is compatible with SFTP clients, such as Cyberduck.
+
+## 2025-08-14
+
+  
+**Cloudflare Access Logging supports the Customer Metadata Boundary (CMB)**   
+
+Cloudflare Access logs now support the [Customer Metadata Boundary (CMB)](https://developers.cloudflare.com/data-localization/metadata-boundary/). If you have configured the CMB for your account, all Access logging will respect that configuration.
+
+Note
+
+For EU CMB customers, the logs will not be stored by Access and will appear as empty in the dashboard. EU CMB customers should utilize [Logpush](https://developers.cloudflare.com/logs/logpush/) to retain their Access logging, if desired.
+
+## 2025-07-01
+
+  
+**Access RDP securely from your browser — now in open beta**   
+
+[Browser-based RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/) with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is now available in open beta for all Cloudflare customers. It enables secure, remote Windows server access without VPNs or RDP clients.
+
+With browser-based RDP, you can:
+
+* **Control how users authenticate to internal RDP resources** with single sign-on (SSO), multi-factor authentication (MFA), and granular access policies.
+* **Record who is accessing which servers and when** to support regulatory compliance requirements and to gain greater visibility in the event of a security event.
+* **Eliminate the need to install and manage software on user devices**. You will only need a web browser.
+* **Reduce your attack surface** by keeping your RDP servers off the public Internet and protecting them from common threats like credential stuffing or brute-force attacks.
+![Example of a browsed-based RDP Access application](https://developers.cloudflare.com/_astro/browser-based-rdp-access-app.BNXce1JL_1TDoUX.webp) 
+
+To get started, see [Connect to RDP in a browser](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/rdp-browser/).
+
+## 2025-06-05
+
+  
+**Cloudflare One Analytics Dashboards and Exportable Access Report**   
+
+Cloudflare One now offers powerful new analytics dashboards to help customers easily discover available insights into their application access and network activity. These dashboards provide a centralized, intuitive view for understanding user behavior, application usage, and security posture.
+
+!\[Cloudflare One Analytics Dashboards\](\~/assets/images/changelog/cloudflare-one/Analytics Dashboards.png)
+
+Additionally, a new exportable access report is available, allowing customers to quickly view high-level metrics and trends in their application access. A **preview** of the report is shown below, with more to be found in the report:
+
+![Cloudflare One Analytics Dashboards](https://developers.cloudflare.com/_astro/access-report.C744W7JR_2uzMcN.webp) 
+
+Both features are accessible in the Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/), empowering organizations with better visibility and control.
+
+## 2025-05-16
+
+  
+**New Access Analytics in the Cloudflare One Dashboard**   
+
+A new Access Analytics dashboard is now available to all Cloudflare One customers. Customers can apply and combine multiple filters to dive into specific slices of their Access metrics. These filters include:
+
+* Logins granted and denied
+* Access events by type (SSO, Login, Logout)
+* Application name (Salesforce, Jira, Slack, etc.)
+* Identity provider (Okta, Google, Microsoft, onetimepin, etc.)
+* Users (`chris@cloudflare.com`, `sally@cloudflare.com`, `rachel@cloudflare.com`, etc.)
+* Countries (US, CA, UK, FR, BR, CN, etc.)
+* Source IP address
+* App type (self-hosted, Infrastructure, RDP, etc.)
+![Access Analytics](https://developers.cloudflare.com/_astro/accessanalytics.DYXgwZCl_Z2PPi7.webp) 
+
+To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) and find Analytics in the side navigation bar.
+
+## 2025-04-21
+
+  
+**Access bulk policy tester**   
+
+The [Access bulk policy tester](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#test-all-policies-in-an-application) is now available in the Cloudflare Zero Trust dashboard. The bulk policy tester allows you to simulate Access policies against your entire user base before and after deploying any changes. The policy tester will simulate the configured policy against each user's last seen identity and device posture (if applicable).
+
+![Example policy tester](https://developers.cloudflare.com/_astro/example-policy-tester.DCY8hQvx_2nxAfs.webp) 
+
+## 2025-04-09
+
+  
+**Cloudflare Zero Trust SCIM User and Group Provisioning Logs**   
+
+[Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
+
+SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
+
+![Example SCIM Logs](https://developers.cloudflare.com/_astro/example-scim-log.Bv5Zqckh_BY26C.webp) 
+
+## 2025-03-03
+
+  
+**New SAML and OIDC Fields and SAML transforms for Access for SaaS**   
+
+[Access for SaaS applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) now include more configuration options to support a wider array of SaaS applications.
+
+**SAML and OIDC Field Additions**
+
+OIDC apps now include:
+
+* Group Filtering via RegEx
+* OIDC Claim mapping from an IdP
+* OIDC token lifetime control
+* Advanced OIDC auth flows including hybrid and implicit flows
+![OIDC field additions](https://developers.cloudflare.com/_astro/oidc-claims.2di8l9Lv_ZrD1mx.webp) 
+
+SAML apps now include improved SAML attribute mapping from an IdP.
+
+![SAML field additions](https://developers.cloudflare.com/_astro/saml-attribute-statements.CW45j5Qi_1ydeSQ.webp) 
+
+**SAML transformations**
+
+SAML identities sent to Access applications can be fully customized using JSONata expressions. This allows admins to configure the precise identity SAML statement sent to a SaaS application.
+
+![Configured SAML statement sent to application](https://developers.cloudflare.com/_astro/transformation-box.DyKn-DdN_2rtirg.webp) 
+
+## 2025-01-15
+
+  
+**Export SSH command logs with Access for Infrastructure using Logpush**   
+
+Availability
+
+Only available on Enterprise plans.
+
+Cloudflare now allows you to send SSH command logs to storage destinations configured in [Logpush](https://developers.cloudflare.com/logs/logpush/), including third-party destinations. Once exported, analyze and audit the data as best fits your organization! For a list of available data fields, refer to the [SSH logs dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ssh%5Flogs/).
+
+To set up a Logpush job, refer to [Logpush integration](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+
+## 2024-10-01
+
+  
+**Eliminate long-lived credentials and enhance SSH security with Cloudflare Access for Infrastructure**   
+
+Organizations can now eliminate long-lived credentials from their SSH setup and enable strong multi-factor authentication for SSH access, similar to other Access applications, all while generating access and command logs.
+
+SSH with [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) uses short-lived SSH certificates from Cloudflare, eliminating SSH key management and reducing the security risks associated with lost or stolen keys. It also leverages a common deployment model for Cloudflare One customers: [WARP-to-Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/).
+
+SSH with Access for Infrastructure enables you to:
+
+* **Author fine-grained policy** to control who may access your SSH servers, including specific ports, protocols, and SSH users.
+* **Monitor infrastructure access** with Access and SSH command logs, supporting regulatory compliance and providing visibility in case of security breach.
+* **Preserve your end users' workflows.** SSH with Access for Infrastructure supports native SSH clients and does not require any modifications to users’ SSH configs.
+![Example of an infrastructure Access application](https://developers.cloudflare.com/_astro/infrastructure-app.BhpJOgxs_Z1M0wLH.webp) 
+
+To get started, refer to [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/).
+
+## 2025-02-12
+
+**Access policies support filtering**
+
+You can now filter Access policies by their action, selectors, rule groups, and assigned applications.
+
+## 2025-02-11
+
+**Private self-hosted applications and reusable policies GA**
+
+[Private self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) and [reusable Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) are now generally available (GA) for all customers.
+
+## 2025-01-21
+
+**Access Applications support private hostnames/IPs and reusable Access policies.**
+
+Cloudflare Access self-hosted applications can now be defined by [private IPs](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/), [private hostnames](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) (on port 443) and [public hostnames](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/). Additionally, we made Access policies into their own object which can be reused across multiple applications. These updates involved significant updates to the overall Access dashboard experience. The updates will be slowly rolled out to different customer cohorts. If you are an Enterprise customer and would like early access, reach out to your account team.
+
+## 2025-01-15
+
+**Logpush for SSH command logs**
+
+Enterprise customers can now use Logpush to export SSH command logs for Access for Infrastructure targets.
+
+## 2024-12-04
+
+**SCIM GA for Okta and Microsoft Entra ID**
+
+Cloudflare's SCIM integrations with [Okta](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/#synchronize-users-and-groups) and [Microsoft Entra ID](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#synchronize-users-and-groups) (formerly AzureAD) are now out of beta and generally available (GA) for all customers. These integrations can be used for Access and Gateway policies and Zero Trust user management. Note: This GA release does not include [Dashboard SSO SCIM](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/) support.
+
+## 2024-10-23
+
+**SSH with Access for Infrastructure**
+
+Admins can now use [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/) to manage privileged access to SSH servers. Access for Infrastructure provides improved control and visibility over who accessed what service and what they did during their SSH session. Access for Infrastructure also eliminates the risk and overhead associated with managing SSH keys by using short-lived SSH certificates to access SSH servers.
+
+## 2024-08-26
+
+**Reduce automatic seat deprovisioning minimum to 1 month, down from 2 months.**
+
+Admins can now configure Zero Trust seats to [automatically expire](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/#enable-seat-expiration) after 1 month of user inactivity. The previous minimum was 2 months.
+
+## 2024-06-06
+
+**Scalability improvements to the App Launcher**
+
+Applications now load more quickly for customers with a large number of applications or complex policies.
+
+## 2024-04-28
+
+**Add option to bypass CORS to origin server**
+
+Access admins can [defer all CORS enforcement to their origin server](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#bypass-options-requests-to-origin) for specific Access applications.
+
+## 2024-04-15
+
+**Zero Trust User identity audit logs**
+
+All user identity changes via SCIM or Authentication events are logged against a user's registry identity.
+
+## 2024-02-22
+
+**Access for SaaS OIDC Support**
+
+Access for SaaS applications can be setup with OIDC as an authentication method. OIDC and SAML 2.0 are now both fully supported.
+
+## 2024-02-22
+
+**WARP as an identity source for Access**
+
+Allow users to log in to Access applications with their WARP session identity. Users need to reauthenticate based on default session durations. WARP authentication identity must be turned on in your device enrollment permissions and can be enabled on a per application basis.
+
+## 2023-12-20
+
+**Unique Entity IDs in Access for SaaS**
+
+All new Access for SaaS applications have unique Entity IDs. This allows for multiple integrations with the same SaaS provider if required. The unique Entity ID has the application audience tag appended. Existing apps are unchanged.
+
+## 2023-12-15
+
+**Default relay state support in Access for SaaS**
+
+Allows Access admins to set a default relay state on Access for SaaS apps.
+
+## 2023-09-15
+
+**App launcher supports tags and filters**
+
+Access admins can now tag applications and allow users to filter by those tags in the App Launcher.
+
+## 2023-09-15
+
+**App launcher customization**
+
+Allow Access admins to configure the App Launcher page within Zero Trust.
+
+## 2023-09-15
+
+**View active Access user identities in the dashboard and API**
+
+Access admins can now view the full contents of a user's identity and device information for all active application sessions.
+
+## 2023-09-08
+
+**Custom OIDC claims for named IdPs**
+
+Access admins can now add custom claims to the existing named IdP providers. Previously this was locked to the generic OIDC provider.
+
+## 2023-08-02
+
+**Azure AD authentication contexts**
+
+Support Azure AD authentication contexts directly in Access policies.
+
+## 2023-06-23
+
+**Custom block pages for Access applications**
+
+Allow Access admins to customize the block pages presented by Access to end users.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/access/","name":"Access"}}]}
+```

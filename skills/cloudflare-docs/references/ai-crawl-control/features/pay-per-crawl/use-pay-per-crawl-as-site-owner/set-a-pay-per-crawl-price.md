@@ -1,0 +1,49 @@
+---
+title: Set a pay per crawl price
+description: Once your domain's visibility is set to Visible in Account Settings, you can set a pay per crawl price and enable pay per crawl for that domain.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/set-a-pay-per-crawl-price.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Set a pay per crawl price
+
+graph LR
+A[Enable in<br>account settings] --> B[Set a pay per <br/>crawl price ]:::highlight
+B --> C[Select crawlers<br>to charge]
+C --> D[Monitor<br>activity]
+D --> E[Manage<br>payouts]
+classDef highlight fill:#F6821F,color:white
+
+click A "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/enable-in-account-settings/"
+click C "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/"
+click D "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/monitor-activity/"
+click E "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/"
+
+Once your domain's visibility is set to **Visible** in Account Settings, you can set a pay per crawl price and enable pay per crawl for that domain.
+
+1. Go to **AI Crawl Control**.  
+[ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+2. Go to the **Settings** tab.
+3. In the **Pay Per Crawl** card, select **Enable**.
+4. Set your default per crawl price. This is the amount charged for each successful content retrieval (HTTP 200 response) by an AI crawler.  
+   * (Optional) To set different prices for different content, select **Enable custom pricing**. Refer to [Advanced configuration](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/) for details.
+5. Select **Save**.
+
+After enabling and setting a price, the domain's status in Account Settings will change to **Enabled**.
+
+Pricing considerations
+
+The minimum price is $0.01 USD per crawl. Consider your content value and expected crawler volume when setting your price.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/","name":"Pay Per Crawl"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/","name":"Use pay per crawl as a site owner"}},{"@type":"ListItem","position":6,"item":{"@id":"/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/set-a-pay-per-crawl-price/","name":"Set a pay per crawl price"}}]}
+```

@@ -1,0 +1,67 @@
+---
+title: Cloud and SaaS integrations
+description: You can integrate cloud environments and SaaS applications with Cloudflare CASB. Once you have added an integration, you can view and manage findings.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/integrations/cloud-and-saas/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Cloud and SaaS integrations
+
+You can integrate cloud environments and SaaS applications with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/). Once you have added an integration, you can [view and manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/).
+
+Supported integrations include:
+
+* [ Manage findings ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/findings/)
+* [ Anthropic ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
+* [ Atlassian Confluence ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-confluence/)
+* [ Atlassian Jira ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-jira/)
+* [ Amazon Web Services (AWS) S3 ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/aws-s3/)
+* [ Bitbucket Cloud ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/bitbucket-cloud/)
+* [ Box ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/box/)
+* [ Dropbox ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/dropbox/)
+* [ Google Cloud Platform (GCP) Cloud Storage ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/gcp-cloud-storage/)
+* [ GitHub ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/github/)
+* [ Google Workspace ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/)  
+   * [ Gmail ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gmail/)  
+   * [ Google Admin ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin/)  
+   * [ Google Calendar ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar/)  
+   * [ Google Drive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive/)  
+   * [ Gmail (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gmail-fedramp/)  
+   * [ Google Admin (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-admin-fedramp/)  
+   * [ Google Calendar (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar-fedramp/)  
+   * [ Google Drive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-drive-fedramp/)  
+   * [ Gemini for Google Workspace ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
+* [ Microsoft 365 ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)  
+   * [ Admin Center ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center/)  
+   * [ OneDrive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)  
+   * [ Outlook ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook/)  
+   * [ SharePoint ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)  
+   * [ Microsoft 365 Copilot ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)  
+   * [ Admin Center (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center-fedramp/)  
+   * [ OneDrive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive-fedramp/)  
+   * [ Outlook (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/)  
+   * [ SharePoint (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint-fedramp/)  
+   * [ Microsoft 365 Copilot (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot-fedramp/)
+* [ OpenAI ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
+* [ Salesforce (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/salesforce-fedramp/)
+* [ Salesforce ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/salesforce/)
+* [ ServiceNow (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/servicenow-fedramp/)
+* [ ServiceNow ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/servicenow/)
+* [ Slack ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/slack/)
+* [ Troubleshooting ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/)  
+   * [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/casb/)  
+   * [ Troubleshoot integrations ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/)  
+   * [ Troubleshoot compute accounts ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/cloud-and-saas/","name":"Cloud and SaaS integrations"}}]}
+```

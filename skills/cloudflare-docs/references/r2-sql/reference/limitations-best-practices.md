@@ -1,0 +1,122 @@
+---
+title: Limitations and best practices
+description: This page summarizes supported features, limitations, and best practices.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+### Tags
+
+[ SQL ](https://developers.cloudflare.com/search/?tags=SQL) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2-sql/reference/limitations-best-practices.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Limitations and best practices
+
+Note
+
+R2 SQL is in open beta. Limitations and best practices will change over time.
+
+This page summarizes supported features, limitations, and best practices.
+
+## Quick reference
+
+| Feature                                                 | Supported | Notes                                                                      |
+| ------------------------------------------------------- | --------- | -------------------------------------------------------------------------- |
+| SELECT, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT        | Yes       |                                                                            |
+| Column aliases (AS)                                     | Yes       |                                                                            |
+| Expressions (CASE, CAST, LIKE, BETWEEN, IN, arithmetic) | Yes       | Full expression support                                                    |
+| EXPLAIN                                                 | Yes       | Returns execution plan                                                     |
+| 163 scalar functions                                    | Yes       | Math, string, datetime, regex, crypto, array, map, struct                  |
+| 33 aggregate functions                                  | Yes       | Basic, approximate, statistical, bitwise, boolean, positional              |
+| Approximate aggregates                                  | Yes       | approx\_distinct, approx\_median, approx\_percentile\_cont, approx\_top\_k |
+| Struct / Array / Map column types                       | Yes       | Bracket notation, get\_field(), array functions, map functions             |
+| CTEs (WITH ... AS)                                      | Yes       | Single-table only. No JOINs or cross-table references within CTEs.         |
+| JOINs                                                   | No        | Single-table only                                                          |
+| Subqueries                                              | No        |                                                                            |
+| Window functions (OVER)                                 | No        |                                                                            |
+| SELECT DISTINCT                                         | No        | Use approx\_distinct                                                       |
+| OFFSET                                                  | No        |                                                                            |
+| UNION / INTERSECT / EXCEPT                              | No        |                                                                            |
+| INSERT / UPDATE / DELETE                                | No        | Read-only                                                                  |
+| CREATE / DROP / ALTER                                   | No        | Read-only                                                                  |
+
+For the full SQL syntax, refer to the [SQL reference](https://developers.cloudflare.com/r2-sql/sql-reference/).
+
+---
+
+## Unsupported SQL features
+
+| Feature                                                            | Error                                                  |
+| ------------------------------------------------------------------ | ------------------------------------------------------ |
+| JOINs (any type)                                                   | unsupported feature: JOIN operations are not supported |
+| Multi-table CTEs (JOINs or cross-table references within WITH)     | Single-table CTEs are supported                        |
+| Subqueries (FROM, WHERE, scalar)                                   | unsupported feature: subqueries                        |
+| SELECT DISTINCT                                                    | unsupported feature: SELECT DISTINCT is not supported  |
+| OFFSET                                                             | unsupported feature: OFFSET clause is not supported    |
+| UNION / INTERSECT / EXCEPT                                         | Set operations not supported                           |
+| Window functions (OVER)                                            | unsupported feature: window functions (OVER clause)    |
+| INSERT / UPDATE / DELETE                                           | only read-only queries are allowed                     |
+| CREATE / DROP / ALTER                                              | only read-only queries are allowed                     |
+| UNNEST / PIVOT / UNPIVOT                                           | Not supported                                          |
+| Wildcard modifiers (ILIKE, EXCLUDE, EXCEPT, REPLACE, RENAME on \*) | Not supported                                          |
+| LATERAL VIEW / QUALIFY                                             | Not supported                                          |
+
+---
+
+## Unsupported expression patterns
+
+| Pattern                                               | Alternative                                                                                                                            |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| func(DISTINCT ...) on any aggregate                   | Use approx\_distinct for counting                                                                                                      |
+| PERCENTILE\_CONT / PERCENTILE\_DISC                   | Use [approx\_percentile\_cont](https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/#approx%5Fpercentile%5Fcont) |
+| MEDIAN                                                | Use [approx\_median](https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/#approx%5Fmedian)                      |
+| ARRAY\_AGG                                            | No alternative (unsupported for memory safety)                                                                                         |
+| STRING\_AGG                                           | No alternative (unsupported for memory safety)                                                                                         |
+| Scalar subqueries (SELECT ... WHERE x = (SELECT ...)) | Not supported                                                                                                                          |
+| EXISTS (SELECT ...)                                   | Not supported                                                                                                                          |
+| IN (SELECT ...)                                       | Use IN (value1, value2, ...) with a literal list                                                                                       |
+
+---
+
+## Runtime constraints
+
+| Constraint                        | Details                                                                                               |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Single table per query            | Queries must reference exactly one table. No JOINs, no subqueries. CTEs may reference a single table. |
+| Partitioned Iceberg tables only   | Unpartitioned tables are not supported.                                                               |
+| Parquet format only               | No CSV, JSON, or other formats.                                                                       |
+| Read-only                         | R2 SQL is a query engine, not a database. No writes.                                                  |
+| now() / current\_time() precision | Quantized to 10ms boundaries and forced to UTC.                                                       |
+
+---
+
+## Common error codes
+
+| Code  | Meaning                                                            |
+| ----- | ------------------------------------------------------------------ |
+| 40003 | Invalid SQL syntax                                                 |
+| 40004 | Invalid query (unsupported feature, unknown column, type mismatch) |
+| 80001 | Edge service connection failure (retry)                            |
+
+---
+
+## Best practices
+
+1. Always include time-range filters in `WHERE` to limit data scanned.
+2. Use specific column names instead of `SELECT *` for better performance.
+3. Use `LIMIT` to control result set size.
+4. Use approximate aggregation functions (`approx_distinct`, `approx_median`, `approx_percentile_cont`) instead of exact alternatives on large datasets.
+5. Enable compaction in R2 Data Catalog to reduce the number of files scanned per query.
+6. Use `EXPLAIN` to inspect the execution plan and verify predicate pushdown.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2-sql/","name":"R2 SQL"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2-sql/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2-sql/reference/limitations-best-practices/","name":"Limitations and best practices"}}]}
+```

@@ -1,0 +1,37 @@
+---
+title: Block Microsoft Exchange Autodiscover requests
+description: In some cases, Microsoft Exchange Autodiscover service requests can be &#34;noisy&#34;, triggering large numbers of HTTP 404 (Not found) errors.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/custom-rules/use-cases/block-ms-exchange-autodiscover.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Block Microsoft Exchange Autodiscover requests
+
+In some cases, Microsoft Exchange Autodiscover service requests can be "noisy", triggering large numbers of `HTTP 404` (`Not found`) errors.
+
+This example custom rule blocks requests for `autodiscover.xml` and `autodiscover.src`:
+
+* **Expression**: `(ends_with(http.request.uri.path, "/autodiscover.xml") or ends_with(http.request.uri.path, "/autodiscover.src"))`
+* **Action**: _Block_
+
+Alternatively, customers on a Business or Enterprise plan can use the `matches` [comparison operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) for the same purpose. For this example, the expression would be the following:
+
+```
+
+(http.request.uri.path matches "/autodiscover.(xml|src)$")
+
+
+```
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/use-cases/block-ms-exchange-autodiscover/","name":"Block Microsoft Exchange Autodiscover requests"}}]}
+```

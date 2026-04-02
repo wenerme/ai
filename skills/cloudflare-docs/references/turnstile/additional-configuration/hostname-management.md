@@ -1,0 +1,113 @@
+---
+title: Hostname management
+description: Hostname management controls where your Turnstile widgets can be used by specifying which domains are authorized to load and execute your widgets. This security measure prevents unauthorized use of your widgets on domains that you do not control.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/additional-configuration/hostname-management/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Hostname management
+
+Hostname management controls where your Turnstile widgets can be used by specifying which domains are authorized to load and execute your widgets. This security measure prevents unauthorized use of your widgets on domains that you do not control.
+
+You can associate hostnames with your widget to control where it can be used via Hostname Management. Managing your hostnames ensures that Turnstile works seamlessly with your setup, whether you add standalone hostnames or leverage zones registered to your Cloudflare account.
+
+---
+
+## Hostname requirements
+
+### Standard configuration
+
+By default, every widget requires at least one hostname to be configured. You cannot create a widget without specifying at least one authorized hostname.
+
+### Hostname format requirements
+
+When adding hostnames, follow these requirements:
+
+* The hostname must be fully qualified domain names (FQDNs): `example.com` or `subdomain.example.com`
+* No wildcards are supported. You must specify each hostname individually.
+
+Invalid formats
+
+The following formats are not valid and will not be accepted:
+
+* Schemes such as `http://example.com` or `https://example.com`
+* Ports such as `example.com:443` or `subdomain.example.com:8080`
+* Paths such as `example.com/path` or `subdomain.example.com/login`
+
+### Subdomain behavior
+
+Specifying a subdomain provides additional security by restricting widget usage.
+
+For example, adding `www.example.com` as a hostname will allow widgets to work on:
+
+* `www.example.com`
+* `abc.www.example.com:8080` (subdomains of the specified hostname).
+
+However, it will not work on:
+
+* `example.com` (parent domain)
+* `dash.example.com` (sibling subdomain)
+* `cloudflare.com` (unrelated domain)
+
+## Add hostnames
+
+* [ Dashboard ](#tab-panel-6692)
+* [ API ](#tab-panel-6693)
+
+Existing widget
+
+1. In the Cloudflare dashboard, go to the **Turnstile** page.  
+[ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
+2. Select an existing widget.
+3. Go to **Settings**.
+4. Under **Hostname Management**, select **Add Hostnames**.
+5. Add a custom hostname or choose from an existing hostname.
+6. Select **Add**.
+
+New widget
+
+1. In the Cloudflare dashboard, go to the **Turnstile** page.  
+[ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
+2. Select **Add widget**.
+3. In the hostname field, enter your domain(s).
+4. If you have zones registered with Cloudflare, you can select from existing zones
+
+cURL command
+
+```
+
+  curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/challenges/widgets/$WIDGET_ID" \
+
+  -H "Authorization: Bearer $API_TOKEN" \
+
+  -H "Content-Type: application/json" \
+
+  -d '{
+
+  "domains": ["example.com", "app.example.com", "api.example.com"]
+
+  }'
+
+
+```
+
+---
+
+## Limitations
+
+Free users are entitled to a maximum of 10 hostnames per widget.
+
+Enterprise customers can have up to 200 hostnames per widget.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/additional-configuration/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/additional-configuration/hostname-management/","name":"Hostname management"}}]}
+```

@@ -1,0 +1,44 @@
+---
+title: Signed agents
+description: A signed agent is controlled by an end user and a verified signature-agent from their Web Bot Auth implementation.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/concepts/bot/signed-agents/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Signed agents
+
+A signed agent is controlled by an end user and a verified signature-agent from their Web Bot Auth implementation.
+
+You can request for your agent to be added to Cloudflare's bots and agents directory by filling out an [online application ↗](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
+
+Note
+
+A bot cannot be registered as both a verified bot and a signed agent. Review Cloudflare's [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) to determine how to identify your bot.
+
+## Signed agent requirement
+
+For an agent to be recognized, it must meet the following requirements:
+
+1. The agent must follow the [signed agents policy](https://developers.cloudflare.com/bots/concepts/bot/signed-agents/policy/).
+2. The bot must be using [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/).
+
+Once Cloudflare approves a signed agent, it should appear on [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/verified-bots).
+
+---
+
+## Verification method
+
+The bot must be verified using [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/concepts/bot/","name":"Bots"}},{"@type":"ListItem","position":5,"item":{"@id":"/bots/concepts/bot/signed-agents/","name":"Signed agents"}}]}
+```

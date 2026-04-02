@@ -1,0 +1,51 @@
+---
+title: Report phish
+description: Before deploying Email security to production, you will have to consider reporting any phishing attacks, evaluating which disposition to assign a specific message, and using different screen criteria to search through your inbox.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-your-email/configure-email-security/report-phish.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Report phish
+
+Before deploying Email security to production, you will have to consider reporting any phishing attacks, evaluating which disposition to assign a specific message, and using different screen criteria to search through your inbox.
+
+PhishNet is an add-in button that helps users to submit phish samples missed by Email security detection.
+
+### PhishNet for Microsoft 365
+
+To set up PhishNet Microsoft 365:
+
+1. Log in to the Microsoft admin panel. Go to **Microsoft 365 admin center** \> **Settings** \> **Integrated Apps**.
+2. Select **Upload custom apps**.
+3. Choose **Provide link to manifest file** and paste the following URL:
+
+```
+
+https://phishnet-o365.area1cloudflare-webapps.workers.dev?clientId=ODcxNDA0MjMyNDM3NTA4NjQwNDk1Mzc3MDIxNzE0OTcxNTg0Njk5NDEyOTE2NDU5ODQyNjU5NzYzNjYyNDQ3NjEwMzIxODEyMDk1NQ
+
+
+```
+
+1. Verify and complete the wizard.
+
+### PhishNet for Google Workspace
+
+To set up PhishNet for Google Workspace:
+
+1. Log in to the Google Workspace Marketplace using an administrator account.
+2. Select **Admin intall** to install Cloudflare PhishNet.
+
+Refer to [Set up PhishNet for Google Workspace](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/phishnet-google-workspace/#set-up-phishnet-for-google-workspace) for more information.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/configure-email-security/","name":"Configure Email security"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/configure-email-security/report-phish/","name":"Report phish"}}]}
+```

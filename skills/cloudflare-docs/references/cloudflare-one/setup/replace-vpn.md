@@ -1,0 +1,41 @@
+---
+title: Replace your VPN
+description: Replace your traditional VPN with Cloudflare Zero Trust. Choose a connection scenario to get started.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/setup/replace-vpn/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Replace your VPN
+
+Cloudflare One uses Cloudflare's global network and Zero Trust Network Access (ZTNA) to replace traditional VPNs. After you securely connect your devices and resources to Cloudflare, you can set policies to verify every request based on identity and context, reducing your attack surface and improving performance for remote users. For more background, refer to [Why should you replace your VPN?](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/)
+
+How you set this up depends on what needs to connect to what. Choose the scenario that matches your use case:
+
+[Device to network](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-network/) 
+
+Connect remote users to internal applications and services through a secure connection. Best for remote access to private networks.
+
+[Device to device](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/) 
+
+Create secure, peer-to-peer connections between two or more devices through Cloudflare's network. Best for direct device communication.
+
+[Network to network](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/) 
+
+Connect two or more private networks bidirectionally through Cloudflare. Best for linking offices, data centers, or cloud environments.
+
+Note
+
+For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/setup/replace-vpn/","name":"Replace your VPN"}}]}
+```

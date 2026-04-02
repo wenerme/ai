@@ -1,0 +1,63 @@
+---
+title: FAQ
+description: Review answers to the most commonly asked questions on Cloudflare Zero Trust, as well as a troubleshooting section to help you solve common issues and errors you may come across.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/faq/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# FAQ
+
+Review answers to the most commonly asked questions on Cloudflare Zero Trust, as well as a troubleshooting section to help you solve common issues and errors you may come across.
+
+If you cannot find the answer you are looking for, go to our [community page ↗](https://community.cloudflare.com/) and post your question there.
+
+---
+
+## Getting started with Cloudflare Zero Trust
+
+For extra guidance on experiencing Cloudflare Zero Trust for the first time.
+
+[ Getting started ❯ ](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/) 
+
+## General
+
+For general questions on Cloudflare Zero Trust and how it works.
+
+[ General ❯ ](https://developers.cloudflare.com/cloudflare-one/faq/general-faq/) 
+
+## Identity
+
+For questions on identity providers and accessing applications behind Cloudflare Zero Trust.
+
+[ Identity ❯ ](https://developers.cloudflare.com/cloudflare-one/faq/authentication-faq/) 
+
+## Policies
+
+For questions on how policies work, and how to create and test them.
+
+[ Policies ❯ ](https://developers.cloudflare.com/cloudflare-one/faq/policies-faq/) 
+
+## Devices
+
+For questions on device connectivity and the Cloudflare One Client.
+
+[ Devices ❯ ](https://developers.cloudflare.com/cloudflare-one/faq/devices-faq/) 
+
+## Tunnels
+
+For questions on connecting applications with Tunnels.
+
+[ Tunnels ❯ ](https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/) 
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/faq/","name":"FAQ"}}]}
+```

@@ -1,0 +1,129 @@
+---
+title: Cisco - Cisco as MX record
+description: In this tutorial, you will learn how to configure Email security with Cisco as MX record. This tutorial is broken down into several steps.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-security/deployment/inline/setup/cisco-cisco-mx.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Cisco - Cisco as MX record
+
+**Last reviewed:**  over 3 years ago 
+
+Area 1 has been renamed
+
+Area 1 is now **Email Security (formerly Area 1)**.
+
+![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/_astro/cisco-mx.CUUww6p5_1S61Ci.webp) 
+
+In this tutorial, you will learn how to configure Email security with Cisco as MX record. This tutorial is broken down into several steps.
+
+## 1\. Add a Sender Group for Email security Email Protection IPs
+
+To add a new Sender Group:
+
+1. Go to **Mail Policies** \> **HAT Overview**.
+2. Select the **Add Sender Group** button.
+3. Configure the new Sender Group as follows:  
+   * **Name**: `Area1`.  
+   * **Order**: Order above the existing **WHITELIST** sender group.  
+   * **Comment**: `Email security Email Protection egress IP Addresses`.  
+   * **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).  
+   * **SBRS**: Leave blank.  
+   * **DNS Lists**: Leave blank.  
+   * **Connecting Host DNS Verification**: Leave all options unchecked.
+4. Select **Submit and Add Senders**, and add the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/email-security/deployment/inline/reference/egress-ips/). If you need to process emails in the EU or India regions for compliance purposes, add those IP addresses as well.
+![Sender group](https://developers.cloudflare.com/_astro/step1.DXTfpSGb_1msSgd.webp) 
+
+## 2\. Add SMTP route for the Email security Email Protection Hosts
+
+To add a new SMTP Route:
+
+1. Go to **Network** \> **SMTP Routes**.
+2. Select **Add Route**.
+3. Configure the new SMTP Route as follows:  
+   * **Receiving Domain**: `a1s.mailstream`  
+   * In **Destination Hosts**, select **Add Row**, and add the Email security MX hosts. Refer to the [Geographic locations](#5-geographic-locations) table for more information on what MX hosts to use.
+![Edit SMTP route](https://developers.cloudflare.com/_astro/step2.CI8fF8qw_Z2ep3iD.webp) 
+
+## 3\. Create Incoming Content Filters
+
+To manage the mail flow between Email security and Cisco ESA, you need two filters:
+
+* One to direct all incoming messages to Email security.
+* One to recognize messages coming back from Email security to route for normal delivery.
+
+### Incoming Content Filter - To Email security
+
+To create a new Content Filter:
+
+1. Go to **Mail Policies** \> **Incoming Content Filters**.
+2. Select **Add Filter** to create a new filter.
+3. Configure the new Incoming Content Filter as follows:  
+   * **Name**: `ESA_to_A1S`  
+   * **Description**: `Redirect messages to Email security for anti-phishing inspection`  
+   * **Order**: This will depend on your other filters.  
+   * **Condition**: No conditions.  
+   * **Actions**:  
+         * For **Action** select **Send to Alternate Destination Host**.  
+         * For **Mail Host** input `a1s.mailstream` (the SMTP route configured in step 2).
+![Content filter](https://developers.cloudflare.com/_astro/step3-to-area1.gKCbmtPN_Z8D7vy.webp) 
+
+### Incoming Content Filter - From Email security
+
+To create a new Content Filter:
+
+1. Go to **Mail Policies** \> **Incoming Content Filters**.
+2. Select the **Add Filter** button to create a new filter.
+3. Configure the new Incoming Content Filter as follows:  
+   * **Name**: `A1S_to_ESA`  
+   * **Description**: `Email security inspected messages for final delivery`  
+   * **Order**: This filter must come before the previously created filter.  
+   * **Conditions**: Add conditions of type **Remote IP/Hostname** with all the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/email-security/deployment/inline/reference/egress-ips/). For example:  
+| Order | Condition          | Rule               |  
+| ----- | ------------------ | ------------------ |  
+| 1     | Remote IP/Hostname | Remote IP/Hostname |  
+| 2     | Remote IP/Hostname | 52.89.255.11       |  
+| 3     | Remote IP/Hostname | 52.0.67.109        |  
+| 4     | Remote IP/Hostname | 54.173.50.115      |  
+| 5     | Remote IP/Hostname | 104.30.32.0/19     |  
+| 6     | Remote IP/Hostname | 158.51.64.0/26     |  
+| 7     | Remote IP/Hostname | 158.51.65.0/26     |  
+   * Ensure that the _Apply rule:_ dropdown is set to **If one or more conditions match**.  
+   * **Actions**: Select **Add Action**, and add the following:  
+   | Order | Action                                        | Rule           |  
+   | ----- | --------------------------------------------- | -------------- |  
+   | \--1  | Skip Remaining Content Filters (Final Action) | skip-filters() |
+![Content filter](https://developers.cloudflare.com/_astro/step3-from-area1.Boxw-o5P_Z1vgVsE.webp) 
+
+## 4\. Add the Incoming Content Filter to the Inbound Policy table
+
+Assign the Incoming Content Filters created in [step 3](#3-create-incoming-content-filters) to your primary mail policy in the Incoming Mail Policy table. Then, commit your changes to activate the email redirection.
+
+## 5\. Geographic locations
+
+When configuring the Email Security (formerly Area 1) MX records, it is important to configure hosts with the correct MX priority. This will allow mail flows to the preferred hosts and fail over as needed.
+
+Choose from the following Email Security MX hosts, and order them by priority. For example, if you are located outside the US and want to prioritize email processing in the EU, add `mailstream-eu1.mxrecord.io` as your first host, and then the US servers.
+
+| Host                                                                                   | Location                | Note                                                                                                               |
+| -------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| mailstream-central.mxrecord.mx mailstream-east.mxrecord.io mailstream-west.mxrecord.io | US                      | Best option to ensure all email traffic processing happens in the US.                                              |
+| mailstream-eu1.mxrecord.io                                                             | EU                      | Best option to ensure all email traffic processing happens in Germany, with backup to US data centers.             |
+| mailstream-bom.mxrecord.mx                                                             | India                   | Best option to ensure all email traffic processing happens within India.                                           |
+| mailstream-india-primary.mxrecord.mx                                                   | India                   | Same as mailstream-bom.mxrecord.mx, with backup to US data centers.                                                |
+| mailstream-asia.mxrecord.mx                                                            | India                   | Best option to ensure all email traffic processing happens in India, with Australia data centers as backup.        |
+| mailstream-syd.area1.cloudflare.net                                                    | Australia / New Zealand | Best option to ensure all email traffic processing happens within Australia.                                       |
+| mailstream-australia-primary.area1.cloudflare.net                                      | Australia / New Zealand | Best option to ensure all email traffic processing happens in Australia, with India and US data centers as backup. |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-security/","name":"Email security (formerly Area 1)"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-security/deployment/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-security/deployment/inline/","name":"Inline"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-security/deployment/inline/setup/","name":"Setup"}},{"@type":"ListItem","position":6,"item":{"@id":"/email-security/deployment/inline/setup/cisco-cisco-mx/","name":"Cisco - Cisco as MX record"}}]}
+```

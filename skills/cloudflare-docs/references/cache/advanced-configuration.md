@@ -1,0 +1,30 @@
+---
+title: Advanced configuration
+description: Learn how to complete different configuration options to customize your cache behavior.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cache/advanced-configuration/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Advanced configuration
+
+Learn how to complete different configuration options to customize your cache behavior.
+
+* [ Cache Reserve ](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/)
+* [ Crawler Hints ](https://developers.cloudflare.com/cache/advanced-configuration/crawler-hints/)
+* [ Early Hints ](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/)
+* [ Query String Sort ](https://developers.cloudflare.com/cache/advanced-configuration/query-string-sort/)
+* [ Serving tailored content with Cloudflare ](https://developers.cloudflare.com/cache/advanced-configuration/serve-tailored-content/)
+* [ Vary for images ](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}}]}
+```

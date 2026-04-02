@@ -156,6 +156,10 @@ update-tea-cli-docs:
 update-immich-docs:
     bun scripts/sync-immich-docs.ts
 
+# Fetch Cloudflare developer docs from developers.cloudflare.com
+update-cloudflare-docs:
+    bun scripts/fetch-cloudflare-docs.ts
+
 # Update all: external skills + all docs + README (tolerates individual failures)
 update:
     -just update-skills
@@ -196,6 +200,7 @@ update:
     -just update-immich-docs
     -just update-glab-docs
     -just update-tea-cli-docs
+    -just update-cloudflare-docs
     just update-readme
 
 # Lint skills for best practices

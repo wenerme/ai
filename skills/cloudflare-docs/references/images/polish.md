@@ -1,0 +1,38 @@
+---
+title: Cloudflare Polish
+description: Cloudflare Polish is a one-click image optimization product that automatically optimizes images in your site. Polish strips metadata from images and reduces image size through lossy or lossless compression to accelerate the speed of image downloads.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/images/polish/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Cloudflare Polish
+
+Cloudflare Polish is a one-click image optimization product that automatically optimizes images in your site. Polish strips metadata from images and reduces image size through lossy or lossless compression to accelerate the speed of image downloads.
+
+When an image is fetched from your origin, our systems automatically optimize it in Cloudflare's cache. Subsequent requests for the same image will get the smaller, faster, optimized version of the image, improving the speed of your website.
+
+![Example of Polish compression's quality.](https://developers.cloudflare.com/_astro/polish.DBlbPZoO_Zd4DDj.webp) 
+
+## Comparison
+
+* **Polish** automatically optimizes all images served from your origin server. It keeps the same image URLs, and does not require changing markup of your pages.
+* **Cloudflare Images** API allows you to create new images with resizing, cropping, watermarks, and other processing applied. These images get their own new URLs, and you need to embed them on your pages to take advantage of this service. Images created this way are already optimized, and there is no need to apply Polish to them.
+
+## Availability
+
+| Free         | Pro | Business | Enterprise |     |
+| ------------ | --- | -------- | ---------- | --- |
+| Availability | No  | Yes      | Yes        | Yes |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/polish/","name":"Cloudflare Polish"}}]}
+```

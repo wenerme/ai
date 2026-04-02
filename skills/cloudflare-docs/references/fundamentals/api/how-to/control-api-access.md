@@ -1,0 +1,45 @@
+---
+title: Control API Access
+description: Super administrators of an Enterprise account are capable of selectively scoping the API access. API access can be restricted for the entire account or only for specified account members.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/api/how-to/control-api-access.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Control API Access
+
+Super administrators of an Enterprise account are capable of selectively scoping the API access. API access can be restricted for the entire account or only for specified account members.
+
+Note that the feature does not disable API calls not related to the Enterprise account.
+
+## Account-level access control
+
+To restrict the API access for the entire account:
+
+1. In the Cloudflare dashboard, go to the **Members** page.  
+[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+2. Locate the **Enable API Access** section and then update the setting.
+
+## Member-level access control
+
+Note
+
+Member-level settings will override the account-level setting. If a specific member has API access enabled whereas the account has the access disabled, that member can still call APIs related to the Enterprise account.
+
+To restrict the API access for a specific member:
+
+1. In the Cloudflare dashboard, go to the **Members** page.  
+[ Go to **Members** ](https://dash.cloudflare.com/?to=/:account/members)
+2. Click on the member to expand and choose the intended **API Access**. If `Account Default`, then it follows the account level setting.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/api/","name":"Cloudflare's API"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/api/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/fundamentals/api/how-to/control-api-access/","name":"Control API Access"}}]}
+```

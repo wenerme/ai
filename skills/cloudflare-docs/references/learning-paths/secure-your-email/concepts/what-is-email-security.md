@@ -1,0 +1,25 @@
+---
+title: What is Email security?
+description: Despite email's importance as a communication method, security and privacy were not built into the The Simple Mail Transfer Protocol (SMTP) protocol. As a result, email is a major attack vector.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-your-email/concepts/what-is-email-security.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# What is Email security?
+
+Despite email's importance as a communication method, security and privacy were not built into the [The Simple Mail Transfer Protocol (SMTP) protocol ↗](https://www.cloudflare.com/learning/email-security/what-is-smtp/). As a result, email is a major attack vector.
+
+Email security is the process of preventing [email-based ↗](https://www.cloudflare.com/learning/email-security/what-is-email/) cyber attacks and unwanted communications. It spans protecting inboxes from takeover, protecting domains from [spoofing ↗](https://www.cloudflare.com/learning/ssl/what-is-domain-spoofing/), stopping [phishing attacks ↗](https://www.cloudflare.com/learning/access-management/phishing-attack/), preventing fraud, blocking [malware ↗](https://www.cloudflare.com/learning/ddos/glossary/malware/) delivery, and filtering [spam ↗](https://www.cloudflare.com/learning/email-security/how-to-stop-spam-emails/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-your-email/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-your-email/concepts/what-is-email-security/","name":"What is Email security?"}}]}
+```

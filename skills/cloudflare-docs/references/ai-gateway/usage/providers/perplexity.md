@@ -1,0 +1,151 @@
+---
+title: Perplexity
+description: Perplexity is an AI powered answer engine.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/ai-gateway/usage/providers/perplexity.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Perplexity
+
+[Perplexity ↗](https://www.perplexity.ai/) is an AI powered answer engine.
+
+## Endpoint
+
+```
+
+https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-ai
+
+
+```
+
+## Prerequisites
+
+When making requests to Perplexity, ensure you have the following:
+
+* Your AI Gateway Account ID.
+* Your AI Gateway gateway name.
+* An active Perplexity API token.
+* The name of the Perplexity model you want to use.
+
+## Examples
+
+### cURL
+
+Example fetch request
+
+```
+
+curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-ai/chat/completions \
+
+     --header 'accept: application/json' \
+
+     --header 'content-type: application/json' \
+
+     --header 'Authorization: Bearer {perplexity_token}' \
+
+     --data '{
+
+      "model": "mistral-7b-instruct",
+
+      "messages": [
+
+        {
+
+          "role": "user",
+
+          "content": "What is Cloudflare?"
+
+        }
+
+      ]
+
+    }'
+
+
+```
+
+### Use Perplexity through OpenAI SDK with JavaScript
+
+Perplexity does not have their own SDK, but they have compatibility with the OpenAI SDK. You can use the OpenAI SDK to make a Perplexity call through AI Gateway as follows:
+
+JavaScript
+
+```
+
+import OpenAI from "openai";
+
+
+const apiKey = env.PERPLEXITY_API_KEY;
+
+const accountId = "{account_id}";
+
+const gatewayId = "{gateway_id}";
+
+const baseURL = `https://gateway.ai.cloudflare.com/v1/${accountId}/${gatewayId}/perplexity-ai`;
+
+
+const perplexity = new OpenAI({
+
+  apiKey,
+
+  baseURL,
+
+});
+
+
+const model = "mistral-7b-instruct";
+
+const messages = [{ role: "user", content: "What is Cloudflare?" }];
+
+const maxTokens = 20;
+
+
+const chatCompletion = await perplexity.chat.completions.create({
+
+  model,
+
+  messages,
+
+  max_tokens: maxTokens,
+
+});
+
+
+```
+
+## OpenAI-Compatible Endpoint
+
+You can also use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) (`/ai-gateway/usage/chat-completion/`) to access Perplexity models using the OpenAI API schema. To do so, send your requests to:
+
+```
+
+https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/compat/chat/completions
+
+
+```
+
+Specify:
+
+```
+
+{
+
+"model": "perplexity/{model}"
+
+}
+
+
+```
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/perplexity/","name":"Perplexity"}}]}
+```

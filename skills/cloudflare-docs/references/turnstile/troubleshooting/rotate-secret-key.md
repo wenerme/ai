@@ -1,0 +1,31 @@
+---
+title: Rotate secret key
+description: You can rotate the secret key using the following steps:
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/turnstile/troubleshooting/rotate-secret-key.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Rotate secret key
+
+You can rotate the secret key using the following steps:
+
+1. In the Cloudflare dashboard, go to the **Turnstile** page.  
+[ Go to **Turnstile** ](https://dash.cloudflare.com/?to=/:account/turnstile)
+2. [Create a new Turnstile widget](https://developers.cloudflare.com/turnstile/get-started/).
+3. In the widget overview, select **Settings** \> **Rotate Secret Key**.
+4. Configure your website to use the new secret key.
+
+The rotation occurs over the course of two hours. During this time, both the old secret key and the new secret key are valid. This allows you to swap the secret key while avoiding any issues with your website.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/turnstile/","name":"Turnstile"}},{"@type":"ListItem","position":3,"item":{"@id":"/turnstile/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/turnstile/troubleshooting/rotate-secret-key/","name":"Rotate secret key"}}]}
+```

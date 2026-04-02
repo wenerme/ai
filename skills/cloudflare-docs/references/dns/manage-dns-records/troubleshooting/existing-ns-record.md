@@ -1,0 +1,48 @@
+---
+title: NS records already exist
+description: As you try to create a new DNS record, Cloudflare displays the following error:
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/dns/manage-dns-records/troubleshooting/existing-ns-record.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# NS records already exist
+
+As you try to create a new DNS record, Cloudflare displays the following error:
+
+```
+
+NS records with that host already exist. (Code:81056)
+
+
+```
+
+## Causes
+
+When a child domain (`blog.example.com`) of your domain (`example.com`) has been set up as a separate [subdomain zone](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/), corresponding `NS` records must have been placed within the parent zone.
+
+When you are managing DNS records for the parent zone (in this example, `example.com`), you cannot create IP address resolution records (`A`, `AAAA`, or `CNAME`) with a name that specifies the same subdomain that already exists as a separate subdomain zone.
+
+| Type | Name | Content   | TTL  |
+| ---- | ---- | --------- | ---- |
+| A    | blog | 192.0.2.0 | Auto |
+
+## Solution
+
+Before creating such records, remove any `NS` records with the same name.
+
+Important
+
+This action might be reverting an existing subdomain setup and may incur in downtime. Refer to [Rollback subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/rollback/) for more guidance.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/troubleshooting/existing-ns-record/","name":"NS records already exist"}}]}
+```

@@ -1,0 +1,35 @@
+---
+title: Migrate applications
+description: Publish internal applications that users currently access from a traditional corporate network.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/clientless-access/migrate-applications/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Migrate applications
+
+Publish internal applications that users currently access from a traditional corporate network.
+
+Note
+
+The remaining modules (Modules 6-9) discuss special considerations and setup options for enterprise environments. If you are only looking to configure a basic clientless access setup, feel free to skip them.
+
+## Objectives
+
+By the end of this module, you will be able to:
+
+* Manage applications that are directly integrated with an identity provider.
+* Pass user information from Cloudflare Access to your application.
+* Review best practices for onboarding different types of internal applications.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/clientless-access/migrate-applications/","name":"Migrate applications"}}]}
+```

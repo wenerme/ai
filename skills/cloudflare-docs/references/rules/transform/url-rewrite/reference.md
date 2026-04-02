@@ -1,0 +1,26 @@
+---
+title: Reference
+description: This section contains reference information for URL Rewrite Rules.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/transform/url-rewrite/reference/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Reference
+
+This section contains reference information for URL Rewrite Rules.
+
+* [ URL rewrite parameters ](https://developers.cloudflare.com/rules/transform/url-rewrite/reference/parameters/)
+* [ Available fields and functions ](https://developers.cloudflare.com/rules/transform/url-rewrite/reference/fields-functions/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/transform/url-rewrite/reference/","name":"Reference"}}]}
+```

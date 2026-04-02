@@ -1,0 +1,73 @@
+---
+title: HTTP test
+description: An HTTP test sends a GET request from an end-user device to a specific web application. You can use the response metrics to troubleshoot connectivity issues. For example, you can check whether the application is inaccessible for all users in your organization, or only certain ones.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/insights/dex/tests/http.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# HTTP test
+
+Feature availability
+
+| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Traffic and DNS mode  Traffic only mode                                                                                            | All plans                                                       |
+
+| System   | Availability | Minimum client version |
+| -------- | ------------ | ---------------------- |
+| Windows  | ✅            | 2023.3.381             |
+| macOS    | ✅            | 2023.3.381             |
+| Linux    | ✅            | 2023.3.398             |
+| iOS      | ❌            |                        |
+| Android  | ✅            | 1.0                    |
+| ChromeOS | ✅            | 1.0                    |
+
+An HTTP test sends a `GET` request from an end-user device to a specific web application. You can use the response metrics to troubleshoot connectivity issues. For example, you can check whether the application is inaccessible for all users in your organization, or only certain ones.
+
+## Create a test
+
+To set up an HTTP test for an application:
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Digital experience**.
+2. Select the **Tests** tab.
+3. Select **Add a Test**.
+4. Fill in the following fields:  
+   * **Name**: Enter any name for the test.  
+   * **Target**: Enter the URL of the website or application that you want to test (for example, `https://jira.site.com`). Both public and private hostnames are supported. If testing a private hostname, ensure that the domain is on your [local domain fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) list.  
+   * **Source device profiles**: (Optional) Select the [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) that you want to run the test on. If no profiles are selected, the test will run on all supported devices connected to your Zero Trust organization.  
+   * **Test type**: Select _HTTP Get_.  
+   * **Test frequency**: Specify how often the test will run. Input a minute value between 5 and 60.
+5. Select **Add test**.
+6. After the test is created and running, you can [view the results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) of your test.
+
+## Test results
+
+An HTTP test measures the following data:
+
+| Data                 | Description                                                                                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resource fetch time  | Total time of all steps of the request, measured from [startTime to responseEnd ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance%5FAPI/Resource%5Ftiming). |
+| Server response time | Round-trip time for the device to receive a response from the target.                                                                                                     |
+| DNS response time    | Round-trip time for the DNS query to resolve.                                                                                                                             |
+| HTTP status codes    | [Status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) returned by the target.                                                               |
+
+## Export DEX application test logs
+
+The log data for all [DEX application tests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fapplication%5Ftests/) (including HTTP tests) can be exported to [R2](https://developers.cloudflare.com/r2/), a cloud bucket, or a SIEM via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+
+## Related resources
+
+* [DEX rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/) \- Specify the target group of a test.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/tests/","name":"Synthetic tests"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/dex/tests/http/","name":"HTTP test"}}]}
+```

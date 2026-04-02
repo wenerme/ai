@@ -1,0 +1,38 @@
+---
+title: Error 523
+description: This error occurs when Cloudflare cannot contact your origin web server.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+Copy page
+
+# Error 523
+
+## Error 523: origin is unreachable
+
+This error occurs when Cloudflare cannot contact your origin web server.
+
+### Common causes
+
+This typically occurs when a network device between Cloudflare and the origin web server does not have a route to the origin's IP address.
+
+### Resolution
+
+Contact your hosting provider and share the necessary [error details](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to exclude the following common causes at your origin web server:
+
+* Confirm the correct origin IP address is listed for A or AAAA records within your Cloudflare DNS app.
+* Troubleshoot Internet routing issues between your origin and Cloudflare, or with the origin itself.
+
+If none of the above leads to a resolution, request the following information from your hosting provider or site administrator:
+
+* An [MTR or traceroute](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#perform-a-traceroute) from your origin web server to a [Cloudflare IP address ↗](http://www.cloudflare.com/ips) that most commonly connected to your origin web server before the issue occurred. Identify a connecting Cloudflare IP from the logs of the origin web server.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","name":"Cloudflare 5xx errors"}},{"@type":"ListItem","position":6,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-523/","name":"Error 523"}}]}
+```

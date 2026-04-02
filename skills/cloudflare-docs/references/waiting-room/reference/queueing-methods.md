@@ -1,0 +1,72 @@
+---
+title: Queueing method
+description: The queueing method determines the order that visitors exit an active waiting room and reach your application.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waiting-room/reference/queueing-methods.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Queueing method
+
+The **queueing method** determines the order that visitors exit an active waiting room and reach your application.
+
+Only certain customers can use queue methods besides First In First Out (FIFO). For more details, refer to [Plans](https://developers.cloudflare.com/waiting-room/plans/) page.
+
+Note:
+
+Regardless of the queueing method, if `queueAll` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always get a waiting room page that refreshes automatically.
+
+## First In First Out (FIFO)
+
+Your waiting room orders visitors according to when they entered the waiting room.
+
+![First In First Out flow showing visitors entering the origin by order of arrival to the waiting room](https://developers.cloudflare.com/_astro/fifo-queueing-method.CkJk7UcN_HRDnR.webp) 
+
+Technically, each user receives a [cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) that contains a timestamp of when their request first hit an actively queueing waiting room. Cloudflare uses that timestamp to order visitors and provide the estimated wait time.
+
+Use this method when you want to reward visitors who get in the queue first and wait longer.
+
+## Random
+
+When your application has open spots, your waiting room chooses visitors at random to exit the waiting room and enter your application.
+
+![Random queueing flow showing visitors randomly exiting the waiting room and entering an origin](https://developers.cloudflare.com/_astro/random-queueing-method.S1VxQnOu_9YLhG.webp) 
+
+Use this method when you want to distribute products or services more equitably. Earlier users have a better chance of exiting the waiting room before the estimated wait time because they have more chances to be selected.
+
+## Passthrough
+
+Allow all traffic to pass immediately through your waiting room and into your application by setting its `queueing_method` to **passthrough**.
+
+Use this setup when you only want to use your waiting room for events — where you can update the queueing method — and otherwise avoid queueing during low-traffic hours.
+
+Additionally, you can use this queuing method when you want to gather analytics on your traffic but do not want to queue any users. With passthrough on, all traffic will be sent directly to your origin. However, analytics will be gathered on `total active users`, `new users per minute` and `time on origin`. We recommend this as a useful test to gather insights into your traffic patterns to help determine appropriate threshold settings.
+
+## Reject
+
+Prevent any traffic from reaching your application by setting its `queueing_method` to **reject**. Users will get a static page.
+
+Use this setup for event-only endpoints or to perform application maintenance.
+
+## Change queueing methods
+
+Though you can change your [queueing method](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/), it may affect users if your waiting room is actively queueing:
+
+* **From FIFO to Random**: Users will no longer be ordered based on their cookie timestamp, which may affect the displayed wait time.
+* **From Random to FIFO**: Users will be ordered based on their cookie timestamp, meaning any new users move to the end of the FIFO queue.
+
+Note
+
+If you change the queueing method from FIFO > Random > FIFO, users will be ordered by their original entry time.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/reference/queueing-methods/","name":"Queueing method"}}]}
+```

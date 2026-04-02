@@ -1,0 +1,81 @@
+---
+title: Worker Isolation
+description: By default, Workers inside of a dispatch namespace are considered &#34;untrusted.&#34; This provides the strongest isolation between Workers and is best in cases where your customers have control over the code that's being deployed.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Worker Isolation
+
+### Untrusted Mode (Default)
+
+By default, Workers inside of a dispatch namespace are considered "untrusted." This provides the strongest isolation between Workers and is best in cases where your customers have control over the code that's being deployed.
+
+In untrusted mode:
+
+* The [request.cf](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) object is not available in Workers (see [limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/limits/#cf-object) for more information)
+* Each Worker has an isolated cache, when using the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) or when making subrequests using `fetch()`, which egress via [Cloudflare's cache](https://developers.cloudflare.com/cache/)
+* [caches.default](https://developers.cloudflare.com/workers/reference/how-the-cache-works/#cache-api) is disabled for all Workers in the namespace
+
+This mode ensures complete isolation between customer Workers, preventing any potential cross-tenant data access.
+
+### Trusted Mode
+
+If you control the Worker code and want to disable isolation mode, you can configure the namespace as "trusted". This is useful when building internal platforms where your company controls all Worker code.
+
+In trusted mode:
+
+* The [request.cf](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) object becomes available, providing access to request metadata
+* All Workers in the namespace share the same cache space when using the Cache API
+
+Note
+
+In trusted mode, Workers can potentially access cached responses from other Workers in the namespace. Only enable this if you control all Worker code or have appropriate cache key isolation strategies.
+
+To convert a namespace from untrusted to trusted:
+
+Terminal window
+
+```
+
+curl -X PUT "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/dispatch/namespaces/{namespace_name}" \
+
+  -H "Authorization: Bearer {api_token}" \
+
+  -H "Content-Type: application/json" \
+
+  -d '{
+
+    "name": "{namespace_name}",
+
+    "trusted_workers": true
+
+  }'
+
+
+```
+
+If you enable trusted mode for a namespace that already has deployed Workers, you'll need to redeploy those Workers for the `request.cf` object to become available. Any new Workers you deploy after enabling trusted mode will automatically have access to it.
+
+### Maintaining cache isolation in trusted mode
+
+If you need access to `request.cf` but want to maintain cache isolation between customers, use customer-specific [cache keys](https://developers.cloudflare.com/workers/examples/cache-using-fetch/#custom-cache-keys) or the [Cache API](https://developers.cloudflare.com/workers/examples/cache-api/) with isolated keys.
+
+## Related Resources
+
+* [Platform Limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/limits) \- Understanding script and API limits
+* [Cache API Documentation](https://developers.cloudflare.com/workers/runtime-apis/cache/) \- Learn about cache behavior in Workers
+* [Request cf object](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestcf) \- Details on the cf object properties
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-for-platforms/","name":"Cloudflare for Platforms"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/","name":"Workers for Platforms"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/","name":"Worker Isolation"}}]}
+```

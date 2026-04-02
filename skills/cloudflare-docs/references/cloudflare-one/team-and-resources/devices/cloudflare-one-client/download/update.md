@@ -1,0 +1,63 @@
+---
+title: Update the Cloudflare One Client
+description: This guide covers best practices for updating the Cloudflare One Client (formerly WARP).
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/update.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Update the Cloudflare One Client
+
+This guide covers best practices for updating the Cloudflare One Client (formerly WARP).
+
+## When to update the Cloudflare One Client
+
+Cloudflare recommends deploying the latest [stable release](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) to get new bug fixes, performance improvements, and features. If you run into issues that require troubleshooting or support tickets, one of the first requested actions by our support team will be to update your clients to the latest version.
+
+We also recognize that there is a cost associated for a business to go through an update cycle, potentially related to change management, QA version testing, and other critical activities for software updates. Customers with limited software update cycles may choose to deploy only the latest [LTS (Long-term Support) release](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/lts-releases/) rather than deploy each stable release. This strategy reduces deployment churn while still addressing security bug fixes in a timely manner.
+
+For more details on Cloudflare One Client support timelines and end-of-life (EOL) policies, refer to the [Support lifecycle](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/) page.
+
+Tip
+
+To get notified of new releases, subscribe to the [Cloudflare One Client changelog](https://developers.cloudflare.com/changelog/cloudflare-one-client/).
+
+## How to update the Cloudflare One Client
+
+### Windows, macOS, and Linux
+
+#### Managed devices
+
+JAMF, Intune, and other MDM tools perform software updates by installing a new binary file. If you deployed the Cloudflare One Client using a [device management tool](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/), the update procedure will look exactly the same as your initial installation. To update the Cloudflare One Client, simply push the [latest binary file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) with the same deployment parameters. End users will not be signed out of their client, and they will not have to manually engage with the update.
+
+#### Unmanaged devices
+
+If your users have local administration rights on their device, you can allow them to update the Cloudflare One Client on their own via the client GUI. [**Allow updates**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-updates) is usually disabled on managed devices, as it can introduce version consistency control issues if client versions are centrally managed by IT.
+
+### iOS, Android, and ChromeOS
+
+The iOS App Store and Google Play store can automatically push automatic updates to devices which have auto update enabled. We recommend using this method to keep the Cloudflare One Agent up-to-date on your mobile devices (managed or unmanaged).
+
+## Test before updates
+
+Most issues that occur after an update are due to compatibility issues between the Cloudflare One Client and third party security software. Before rolling out an update to your organization, be sure to test the new Cloudflare One Client release alongside your other software.
+
+To deploy an update incrementally:
+
+1. Install the latest version of the Cloudflare One Client on a single device.
+2. Verify connectivity in your Gateway logs, and verify that your third party software still works as expected.
+3. Deploy the update to a few more devices that represent a broad set of configurations within your organization. For example, you could include devices from a variety of departments such as Engineering, Human Resources, and IT.
+4. Verify connectivity for these devices.
+5. Once everything is working, deploy the update to the rest of your organization.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/team-and-resources/","name":"Team and resources"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/team-and-resources/devices/","name":"Devices"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/","name":"Cloudflare One Client"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/","name":"Download Cloudflare One Client stable releases"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/update/","name":"Update the Cloudflare One Client"}}]}
+```

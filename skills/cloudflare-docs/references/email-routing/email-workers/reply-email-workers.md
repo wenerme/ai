@@ -1,0 +1,91 @@
+---
+title: Reply to emails from Workers
+description: You can reply to incoming emails with another new message and implement smart auto-responders programmatically, adding any content and context in the main body of the message. Think of a customer support email automatically generating a ticket and returning the link to the sender, an out-of-office reply with instructions when you are on vacation, or a detailed explanation of why you rejected an email.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-routing/email-workers/reply-email-workers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Reply to emails from Workers
+
+You can reply to incoming emails with another new message and implement smart auto-responders programmatically, adding any content and context in the main body of the message. Think of a customer support email automatically generating a ticket and returning the link to the sender, an out-of-office reply with instructions when you are on vacation, or a detailed explanation of why you rejected an email.
+
+Reply to emails is a new method of the [EmailMessage object](https://developers.cloudflare.com/email-routing/email-workers/runtime-api/#emailmessage-definition) in the Runtime API. Here is how it works:
+
+JavaScript
+
+```
+
+import { EmailMessage } from "cloudflare:email";
+
+import { createMimeMessage } from "mimetext";
+
+
+export default {
+
+  async email(message, env, ctx) {
+
+
+    const ticket = createTicket(message);
+
+
+    const msg = createMimeMessage();
+
+    msg.setHeader("In-Reply-To", message.headers.get("Message-ID"));
+
+    msg.setSender({ name: "Thank you for your contact", addr: "<SENDER>@example.com" });
+
+    msg.setRecipient(message.from);
+
+    msg.setSubject("Email Routing Auto-reply");
+
+    msg.addMessage({
+
+      contentType: 'text/plain',
+
+      data: `We got your message, your ticket number is ${ ticket.id }`
+
+    });
+
+
+    const replyMessage = new EmailMessage(
+
+      "<SENDER>@example.com",
+
+      message.from,
+
+      msg.asRaw()
+
+    );
+
+
+    await message.reply(replyMessage);
+
+  }
+
+}
+
+
+```
+
+To mitigate security risks and abuse, replying to incoming emails has a few requirements and limits:
+
+* The incoming email has to have valid [DMARC ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/).
+* The email can only be replied to once in the same `EmailMessage` event.
+* The recipient in the reply must match the incoming sender.
+* The outgoing sender domain must match the same domain that received the email.
+* Every time an email passes through Email Routing or another MTA, an entry is added to the `References` list. We stop accepting replies to emails with more than 100 `References` entries to prevent abuse or accidental loops.
+
+If these and other internal conditions are not met, `reply()` will fail with an exception. Otherwise, you can freely compose your reply message, send it back to the original sender, and receive subsequent replies multiple times.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-routing/","name":"Email Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-routing/email-workers/","name":"Email Workers"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-routing/email-workers/reply-email-workers/","name":"Reply to emails from Workers"}}]}
+```

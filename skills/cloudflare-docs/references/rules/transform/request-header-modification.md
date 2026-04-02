@@ -1,0 +1,97 @@
+---
+title: Request Header Transform Rules
+description: Learn how to modify HTTP request headers with Cloudflare's rules.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/rules/transform/request-header-modification/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Request Header Transform Rules
+
+Use Request Header Transform Rules to manipulate the headers of HTTP requests sent to your origin server.
+
+flowchart LR
+accTitle: Header modifications diagram
+accDescr: Header transform rules can change the headers sent to your origin server (request header modifications) or sent your your website visitors (response header modifications).
+
+A[Visitor]
+B((Cloudflare))
+C[(Origin server)]
+
+A -.-> B == "Includes request<br> header modifications" ==> C
+C -.-> B -. "Includes response<br> header modifications" .-> A
+
+style A stroke-width: 2px
+style B stroke: orange,fill: orange,color: black
+linkStyle 0,2,3 stroke-width: 1px
+linkStyle 1 stroke-width: 3px
+
+  
+To modify HTTP headers in the **response** sent to website visitors, refer to [Response Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/).
+
+Through Request Header Transform Rules you can:
+
+* Set the value of an HTTP request header to a literal string value, overwriting its previous value or adding a new header to the request.
+* Set the value of an HTTP request header according to an expression, overwriting its previous value or adding a new header to the request.
+* Remove an HTTP header from the request.
+
+You can create a request header transform rule [in the dashboard](https://developers.cloudflare.com/rules/transform/request-header-modification/create-dashboard/), [via API](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/), or [using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#create-a-request-header-transform-rule).
+
+For more complex request header modifications, consider using [Snippets](https://developers.cloudflare.com/rules/snippets/).
+
+## Important remarks
+
+* You cannot modify or remove HTTP request headers whose name starts with `x-cf-` or `cf-` except for the `cf-connecting-ip` HTTP request header, which you can remove.
+* Due to protocol compliance reasons, modifying or removing request headers with [forbidden header names ↗](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden%5Fheader%5Fname) (such as `Accept-Encoding`) is generally not allowed in Request Header Transform Rules.
+* You cannot modify the value of any header commonly used to identify the website visitor's IP address or initial protocol, such as `x-forwarded-for`, `true-client-ip`, `x-real-ip`, or `x-forwarded-proto`.
+* Although you can remove the `x-forwarded-for` header, it will be added back by Cloudflare's cache service (with a different value), and this header will reach your origin server. If you remove the `x-forwarded-for` header and the request is handled by Cloudflare Workers — which [run before the cache](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) — the `x-forwarded-for` request header will be absent.
+* You cannot set or modify the value of `cookie` HTTP request headers, but you can remove these headers. Configuring a rule that removes the `cookie` HTTP request header will remove all `cookie` headers in matching requests.
+* If you modify the value of an existing HTTP request header using an expression that evaluates to an empty string (`""`) or an undefined value, the HTTP request header is **removed**.
+* The HTTP request header removal operation will remove all request headers with the provided name.
+* Currently, there is a limited number of HTTP request headers that you cannot modify. Cloudflare may remove restrictions for some of these HTTP request headers when presented with valid use cases. [Create a post in the community ↗](https://community.cloudflare.com) for consideration.
+* To use [claims inside a JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/), you must first set up a token validation configuration in API Shield.
+* Request header transform rules run in order, and later rules can overwrite changes done by previous rules.
+* The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_late_transform` phase where request header transform rules are defined. This means that later request header transform rules will not match based on changes done by previous request header transform rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
+
+## Execution order
+
+The execution order of Rules features is the following:
+
+* [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
+* [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
+* [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
+* [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
+* [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
+* [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+* [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
+* [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
+* [Snippets](https://developers.cloudflare.com/rules/snippets/)
+* [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
+
+The different types of rules listed above will take precedence over [Page Rules](https://developers.cloudflare.com/rules/page-rules/). This means that Page Rules will be overridden if there is a match for both Page Rules and the Rules products listed above.
+
+Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (_Block_, _Redirect_, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
+
+For example, if multiple rules with the _Redirect_ action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
+
+Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
+
+Warning
+
+Using Cloudflare challenges along with Rules features may cause challenge loops. Refer to [Rules troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/) for more information.
+
+## Troubleshooting
+
+When troubleshooting Request Header Transform Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/request-header-modification/","name":"Request Header Transform Rules"}}]}
+```

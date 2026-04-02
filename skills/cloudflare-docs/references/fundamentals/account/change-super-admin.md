@@ -1,0 +1,27 @@
+---
+title: Change Super Administrator
+description: If you or someone in your organization leaves or loses access to email, you can add another Super Administrator using any other Super Administrator on your Account with a verified email address.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/account/change-super-admin.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Change Super Administrator
+
+If you or someone in your organization leaves or loses access to email, you can add another Super Administrator using any other Super Administrator on your Account with a [verified email ↗](https://developers.cloudflare.com/fundamentals/account/verify-email-address/) address.
+
+First, [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) to your account and assign the **Super Administrator** role.
+
+Then, if needed, remove the previous Super Administrator.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/change-super-admin/","name":"Change Super Administrator"}}]}
+```

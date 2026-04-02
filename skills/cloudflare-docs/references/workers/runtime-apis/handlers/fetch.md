@@ -1,0 +1,57 @@
+---
+title: Fetch Handler
+description: Incoming HTTP requests to a Worker are passed to the fetch() handler as a Request object. To respond to the request with a response, return a Response object:
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/runtime-apis/handlers/fetch.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Fetch Handler
+
+## Background
+
+Incoming HTTP requests to a Worker are passed to the `fetch()` handler as a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object. To respond to the request with a response, return a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object:
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env, ctx) {
+
+    return new Response('Hello World!');
+
+  },
+
+};
+
+
+```
+
+Note
+
+The Workers runtime does not support `XMLHttpRequest` (XHR). Learn the difference between `XMLHttpRequest` and `fetch()` in the [MDN ↗](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) documentation.
+
+### Parameters
+
+* `request` Request  
+   * The incoming HTTP request.
+* `env` object  
+   * The [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) available to the Worker. As long as the [environment](https://developers.cloudflare.com/workers/wrangler/environments/) has not changed, the same object (equal by identity) may be passed to multiple requests. You can also [import env from cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access bindings from anywhere in your code.
+* `ctx.waitUntil(promisePromise)` : void  
+   * Refer to [waitUntil](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil).
+* `ctx.passThroughOnException()` : void  
+   * Refer to [passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/handlers/","name":"Handlers"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/handlers/fetch/","name":"Fetch Handler"}}]}
+```

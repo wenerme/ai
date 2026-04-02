@@ -1,0 +1,33 @@
+---
+title: Redirects
+description: Cloudflare offers a variety of ways to perform URL redirects, which tell a visitor's browser that the location of a page has been changed.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/fundamentals/reference/redirects.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Redirects
+
+Cloudflare offers a variety of ways to perform URL redirects, which tell a visitor's browser that the location of a page has been changed.
+
+Use the following table to determine when to use each option.
+
+| Option                                                                                       | Use when                                                  |
+| -------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| [Single redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) | As a default option.                                      |
+| [Bulk redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)     | When you have a large number of static redirects.         |
+| [Pages redirects](https://developers.cloudflare.com/pages/configuration/redirects/)          | If you have a Pages project.                              |
+| [Workers redirect](https://developers.cloudflare.com/workers/examples/redirect/)             | When the other redirects do not meet your needs.          |
+| [Page Rules](https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/)      | If you already rely on Page Rules for other requirements. |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/redirects/","name":"Redirects"}}]}
+```

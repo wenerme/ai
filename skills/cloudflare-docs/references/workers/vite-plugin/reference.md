@@ -1,0 +1,30 @@
+---
+title: Reference
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/vite-plugin/reference/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Reference
+
+* [ API ](https://developers.cloudflare.com/workers/vite-plugin/reference/api/)
+* [ Static Assets ](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/)
+* [ Debugging ](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/)
+* [ Migrating from wrangler dev ](https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/)
+* [ Secrets ](https://developers.cloudflare.com/workers/vite-plugin/reference/secrets/)
+* [ Vite Environments ](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/)
+* [ Cloudflare Environments ](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/)
+* [ Non-JavaScript modules ](https://developers.cloudflare.com/workers/vite-plugin/reference/non-javascript-modules/)
+* [ Programmatic configuration ](https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/vite-plugin/","name":"Vite plugin"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/vite-plugin/reference/","name":"Reference"}}]}
+```

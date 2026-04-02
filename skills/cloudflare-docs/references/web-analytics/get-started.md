@@ -1,0 +1,78 @@
+---
+title: Get started
+description: Web analytics is now set up on your website, but it may take a few minutes for Web Analytics data to appear.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/web-analytics/get-started/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Get started
+
+## Sites not proxied through Cloudflare
+
+1. In the Cloudflare dashboard, go to the **Web Analytics** page.  
+[ Go to **Web analytics** ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+2. Select **Add a site**.
+3. In **Set up hostname**, write your website's hostname.
+4. Select the message box that appears to choose the hostname you have input and select **Done**.
+5. Copy the JS snippet from **Manage site**. This is also where you can later edit the hostname you have just added.
+6. (Optional) Select **View Analytics sites** to go back on the Web Analytics interface. If you prefer to continue setting up Web Analytics website, continue reading.
+7. Add the JS snippet to any of your website’s HTML pages before the ending body tag.
+
+Web analytics is now set up on your website, but it may take a few minutes for Web Analytics data to appear.
+
+Repeat steps 3-7 for all the websites you want to track with Web Analytics by selecting **Add a site** from Web Analytics. In **Web Analytics Sites**, select **Manage site** inside each website's card to adjust Web Analytics for your site at any time.
+
+For more information on how many sites you can track, refer to [Limits](https://developers.cloudflare.com/web-analytics/limits/).
+
+---
+
+## Sites proxied through Cloudflare
+
+1. In the Cloudflare dashboard, go to the **Web Analytics** page.  
+[ Go to **Web analytics** ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+2. Select **Add a site**.
+3. Select a hostname from the drop-down menu > **Done**.
+
+Your website is now using Web Analytics through the automatic setup, which is enabled by default.
+
+You always have the option to go to **Manage Site** and change the automatic setup to one of the following:
+
+* **Enable, excluding visitor data in the EU** \- The JS Snippet will not be injected for visitors from the EU.
+* **Enable with JS Snippet installation** \- The JS Snippet needs to be installed manually.
+* **Disable** \- The JS Snippet will not be injected and has been disabled.
+
+Repeat these steps for all of the websites you want to track with Web Analytics. Web Analytics is enabled by default for sites proxied through Cloudflare that previously used Browser Insights. Adjust Web Analytics for your site at any time by selecting **Manage site** from Web Analytics.
+
+For more information on how many sites you can track, refer to [Limits](https://developers.cloudflare.com/web-analytics/limits/).
+
+For more information on how to configure which sites or pages you track with Web Analytics, refer to [Rules](https://developers.cloudflare.com/web-analytics/configuration-options/rules/).
+
+Important
+
+If you have a `Cache-Control` header set to `public, no-transform`, Cloudflare proxy will not be able to modify the original payload of the website. Therefore, the Beacon script will not be automatically injected to your site, and Web Analytics will not work. Refer to [Origin cache control](https://developers.cloudflare.com/cache/concepts/cache-control/) for more information.
+
+---
+
+## Pages projects
+
+Cloudflare Pages offers a one-click setup for Web Analytics:
+
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page.  
+[ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select your Pages project.
+3. Go to **Metrics** and select **Enable** under Web Analytics.
+
+Cloudflare will automatically add the JavaScript snippet to your Pages site on the next deployment.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web-analytics/","name":"Cloudflare Web Analytics"}},{"@type":"ListItem","position":3,"item":{"@id":"/web-analytics/get-started/","name":"Get started"}}]}
+```

@@ -1,0 +1,34 @@
+---
+title: Key considerations and best practices summary
+description: By following these best practices, you can significantly increase the likelihood of a smooth and successful migration from your on-prem BIND DNS to Cloudflare.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/dns-best-practices/concepts/summary-considerations.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Key considerations and best practices summary
+
+* Plan meticulously: Do not rush the planning and preparation phases.
+* Communicate clearly: Keep stakeholders informed.
+* Lower TTLs in advance: This is crucial for a faster cutover.
+* Disable DNSSEC before NS change (safest): Remove DS records at the registrar well before changing nameservers, then re-enable DNSSEC via Cloudflare.
+* Verify, verify, verify: Double-check record imports and functionality at each stage.
+* Test thoroughly: From multiple locations and for all critical services.
+* Have a rollback plan: Know how to revert if necessary.
+* Migrate during low traffic: Minimize potential user impact.
+* Address BIND Views/ACLs: Understand how Cloudflare will handle or replace this functionality.
+* Take advantage of Cloudflare features: Once stable, explore and implement Cloudflare's security and performance enhancements.
+
+By following these best practices, you can significantly increase the likelihood of a smooth and successful migration from your on-prem BIND DNS to Cloudflare.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/dns-best-practices/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/dns-best-practices/concepts/summary-considerations/","name":"Key considerations and best practices summary"}}]}
+```

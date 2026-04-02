@@ -1,0 +1,36 @@
+---
+title: Troubleshoot rate limiting rules
+description: Cloudflare may count Workers subrequests on the same zone as separate requests, which will cause a rate limiting rule to trigger sooner than expected. This behavior happens when the rate limiting rule is configured with Also apply rate limiting to cached assets set to false.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/rate-limiting-rules/troubleshooting.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Troubleshoot rate limiting rules
+
+## Some Workers subrequests are counted as separate requests
+
+Cloudflare may count Workers subrequests on the same zone as separate requests, which will cause a rate limiting rule to trigger sooner than expected. This behavior happens when the rate limiting rule is configured with [**Also apply rate limiting to cached assets**](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#also-apply-rate-limiting-to-cached-assets) set to false.
+
+To prevent this behavior, you must exclude any Workers subrequests coming from the same zone from your rate limiting rule using the [cf.worker.upstream\_zone](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream%5Fzone/) field. For example, you could add the following sub-expression to your [rate limiting rule expression](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#when-incoming-requests-match):
+
+```
+
+and (cf.worker.upstream_zone == "" or cf.worker.upstream_zone != "<YOUR_ZONE>")
+
+
+```
+
+The first condition (testing for an empty string) will match direct visitor requests, while the second condition will match subrequests not originating from your zone, effectively excluding subrequests from the same zone from the rate limiting rule.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/troubleshooting/","name":"Troubleshoot rate limiting rules"}}]}
+```

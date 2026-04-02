@@ -1,0 +1,38 @@
+---
+title: AI Security for Apps fields
+description: When enabled, AI Security for Apps populates the following fields:
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+### Tags
+
+[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/waf/detections/ai-security-for-apps/fields.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# AI Security for Apps fields
+
+When enabled, AI Security for Apps populates the following fields:
+
+| Field                                                                                                                                                                                                             | Description                                                                                                                                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| LLM PII detected [cf.llm.prompt.pii\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fdetected/)  Boolean                                           | Indicates whether any personally identifiable information (PII) has been detected in the LLM prompt included in the request.                                                                                                                                                      |
+| LLM PII categories [cf.llm.prompt.pii\_categories](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/)  Array<String>                               | Array of string values with the personally identifiable information (PII) categories found in the LLM prompt included in the request.[Category list](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/)            |
+| LLM Content detected [cf.llm.prompt.detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.detected/)  Boolean                                                  | Indicates whether Cloudflare detected an LLM prompt in the incoming request.                                                                                                                                                                                                      |
+| LLM Unsafe topic detected [cf.llm.prompt.unsafe\_topic\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe%5Ftopic%5Fdetected/)  Boolean             | Indicates whether the incoming request includes any unsafe topic category in the LLM prompt.                                                                                                                                                                                      |
+| LLM Unsafe topic categories [cf.llm.prompt.unsafe\_topic\_categories](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe%5Ftopic%5Fcategories/)  Array<String> | Array of string values with the type of unsafe topics detected in the LLM prompt.[Category list](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.unsafe%5Ftopic%5Fcategories/)                                                     |
+| LLM Injection score [cf.llm.prompt.injection\_score](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.injection%5Fscore/)  Number                                   | A score from 1–99 that represents the likelihood that the LLM prompt in the request is trying to perform a prompt injection attack. Lower scores indicate higher risk.                                                                                                            |
+| LLM Token count [cf.llm.prompt.token\_count](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.token%5Fcount/)  Number                                               | An estimated token count for the LLM prompt in the request. Refer to [Token counting](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/token-counting/) for details.                                                                                         |
+| LLM Custom topic categories [cf.llm.prompt.custom\_topic\_categories](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.custom%5Ftopic%5Fcategories/)  Map<Number>   | A map of custom topic labels to relevance scores (1–99). Lower scores indicate the prompt is more relevant to that topic. Only populated when [custom topics](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#custom-topics) are configured. |
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/fields/","name":"AI Security for Apps fields"}}]}
+```

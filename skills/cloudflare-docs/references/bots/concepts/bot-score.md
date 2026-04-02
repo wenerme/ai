@@ -1,0 +1,100 @@
+---
+title: Bot scores
+description: A bot score is a score from 1 to 99 that indicates how likely that request came from a bot.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/concepts/bot-score.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Bot scores
+
+A bot score is a score from _1_ to _99_ that indicates how likely that request came from a bot.
+
+For example, a score of 1 means Cloudflare is quite certain the request was automated, while a score of 99 means Cloudflare is quite certain the request came from a human.
+
+Bot scores are available to be used in rule expressions and with Workers to customize application behavior. For more details, refer to [Bot Management variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/).
+
+Note
+
+Granular bot scores are only available to Enterprise customers who have purchased Bot Management. All other customers can only access this information through [bot groupings](#bot-groupings) in Bot Analytics.
+
+## Bot groupings
+
+Customers with a Pro plan or higher can automatically see bot traffic divided into groups by going to **Security** \> **Bots**.
+
+| Category             | Range                                                                                  |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| **Not computed**     | Bot scores of 0.                                                                       |
+| **Automated**        | Bot scores of 1.                                                                       |
+| **Likely automated** | Bot scores of 2 through 29.                                                            |
+| **Likely human**     | Bot scores of 30 through 99.                                                           |
+| **Verified bot**     | Non-malicious automated traffic (used to power search engines and other applications). |
+
+Note
+
+Bot scores are not computed for requests to paths that are handled by Cloudflare and will never be blocked or forwarded to the origin. Note that some features that are enabled before Bot Management, such as Redirect Rules, may result in requests not being scored.
+
+## How Cloudflare generates bot scores
+
+Note
+
+The following detection engines only apply to Enterprise Bot Management. For specific details about the engines included in your plan, refer to [Plans](https://developers.cloudflare.com/bots/plans/).
+
+### Heuristics
+
+The **Heuristics** engine processes all requests. Cloudflare conducts a number of heuristic checks to identify automated traffic, and requests are matched against a growing database of malicious fingerprints.
+
+The Heuristics engine immediately gives automated requests a score of 1.
+
+### Machine learning
+
+The **Machine Learning (ML)** engine accounts for the majority of all detections, distinguishing between human and bot traffic. This approach leverages our global network, which proxies billions of requests daily, to identify both automated and human traffic.
+
+The ML system uses a supervised machine learning methodology to determine the final Bot Score (1–99).
+
+The core model relies on the following process:
+
+* Input Variables (X): Various request features (headers, session characteristics, and browser signals) collected from traffic across the Cloudflare network.
+* Output Variable (Y): The predicted probability that a client is human (such as the probability of successfully solving a Challenge). This probability is mapped to the final 1–99 Bot Score.
+
+We constantly train the ML engine on a periodic basis using vast, anonymized data to ensure it remains accurate and adapts to new threats. Customers can analyze the request features used by these models via their own logs, such as Cloudflare [Logpull](https://developers.cloudflare.com/logs/logpull/) or [Logpush](https://developers.cloudflare.com/logs/logpush/).
+
+### Anomaly detection
+
+The **Anomaly Detection (AD)** engine is an optional detection engine that uses a form of unsupervised learning. Cloudflare records a baseline of your domain's traffic and uses the baseline to intelligently detect outlier requests. This approach is user agent-agnostic and can be turned on or off by your account team.
+
+Cloudflare does not recommend AD for domains that use [Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) or expect large amounts of API traffic. The AD engine immediately gives automated requests a score of one.
+
+### JavaScript detections
+
+The [**JavaScript Detections (JSD)**](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/) engine identifies headless browsers and other malicious fingerprints. This engine performs a lightweight, invisible JavaScript injection on the client side of any request while honoring our [strict privacy standards ↗](https://www.cloudflare.com/privacypolicy/). We do not collect any personally identifiable information during the process. The JSD engine either blocks, challenges, or passes requests to other engines.
+
+JSD is enabled by default but completely optional. To adjust your settings, open the Bot Management Configuration page from **Security** \> **Bots**.
+
+### Cloudflare service
+
+**Cloudflare Service** is a special bot score source for Enterprise Zero Trust to avoid false positives.
+
+### Not computed
+
+A bot score of 0 means Bot Management did not run on the request. Cloudflare does not run Bot Management on internal service requests that Bot Management has no interest in blocking.
+
+### Notes on detection
+
+Cloudflare uses the `__cf_bm cookie` to smooth out the bot score and reduce false positives for actual user sessions.
+
+The Bot Management cookie measures a single user's request pattern and applies it to the machine learning data to generate a reliable bot score for all of that user's requests.
+
+For more details, refer to [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/concepts/","name":"Concepts"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/concepts/bot-score/","name":"Bot scores"}}]}
+```

@@ -1,0 +1,25 @@
+---
+title: Source IP anchoring
+description: Source IP anchoring has become increasingly common recently as businesses begin to shift more traffic out of their office perimeter but still rely on their corporate IPs as a primary source of truth for trusted egress. Cloudflare understands the relevance of this model. Because subsequent backhauling and often single-threaded points of failure are inherent to static IP egress, Cloudflare offers several similar concepts that can help organizations transition from static IP egress to source IP anchoring. You can maintain your existing services, such as SaaS apps, while applying more granular and accurate control over access and data security.
+image: https://developers.cloudflare.com/cf-twitter-card.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/secure-internet-traffic/build-egress-policies/source-ip-anchoring.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Source IP anchoring
+
+Source IP anchoring has become increasingly common recently as businesses begin to shift more traffic out of their office perimeter but still rely on their corporate IPs as a primary source of truth for trusted egress. Cloudflare understands the relevance of this model. Because subsequent backhauling and often single-threaded points of failure are inherent to static IP egress, Cloudflare offers several similar concepts that can help organizations transition from static IP egress to source IP anchoring. You can maintain your existing services, such as SaaS apps, while applying more granular and accurate control over access and data security.
+
+The next section discusses best practices for migrating from managing backhauled user traffic in the context of IP allowlisting to delivering consistent security practices and IP consistency without sacrificing performance.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-egress-policies/","name":"Control traffic egress with source IP anchoring and allowlisting"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-egress-policies/source-ip-anchoring/","name":"Source IP anchoring"}}]}
+```

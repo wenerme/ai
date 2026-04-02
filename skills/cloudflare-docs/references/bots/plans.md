@@ -1,0 +1,29 @@
+---
+title: Plans
+description: To learn more about features and functionality, select a plan.
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/bots/plans/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Plans
+
+To learn more about features and functionality, select a plan.
+
+[ Free ](https://developers.cloudflare.com/bots/plans/free/) [ Pro ](https://developers.cloudflare.com/bots/plans/pro/) [ Business ](https://developers.cloudflare.com/bots/plans/biz-and-ent/) [ Bot Management for Enterprise ](https://developers.cloudflare.com/bots/plans/bm-subscription/) 
+
+## How do I get started?
+
+To get started, review our [setup guides](https://developers.cloudflare.com/bots/get-started/). If you have any questions, visit the [community ↗](https://community.cloudflare.com/) to engage with other Cloudflare users.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/plans/","name":"Plans"}}]}
+```
