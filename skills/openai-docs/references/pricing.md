@@ -408,7 +408,9 @@ Tools
       model: "Containers",
       rows: [
         [
-          pricingHtml('<span id="container-usage-pricing"></span>Now'),
+          pricingHtml(
+            '<span id="container-usage-pricing"></span>Hosted Shell and Code Interpreter'
+          ),
           "1 GB $0.03, 4 GB $0.12, 16 GB $0.48, 64 GB $1.92 per 20-minute session per container",
         ],
       ],

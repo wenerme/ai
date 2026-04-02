@@ -34,8 +34,8 @@ For a complete list of parameters, see the [Parameters](/docs/api-reference/para
 
     stop?: string | string[];
     stream?: boolean; // Enable streaming
-    
-    // Plugins to extend model capabilities (web search, PDF parsing, response healing)
+
+    // Plugins to extend model capabilities (PDF parsing, response healing)
     // See "Plugins" section: openrouter.ai/docs/guides/features/plugins
     plugins?: Plugin[];
 
@@ -74,7 +74,7 @@ For a complete list of parameters, see the [Parameters](/docs/api-reference/para
     // See "Provider Routing" section: openrouter.ai/docs/guides/routing/provider-selection
     provider?: ProviderPreferences;
     user?: string; // A stable identifier for your end-users. Used to help detect and prevent abuse.
-    
+
     // Debug options (streaming only)
     debug?: {
       echo_upstream_body?: boolean; // If true, returns the transformed request body sent to the provider

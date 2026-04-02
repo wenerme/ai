@@ -98,7 +98,7 @@
 
     Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
 
-    1. `:online` - All requests will run a query to extract web results that are attached to the prompt. [Learn more](/docs/guides/routing/model-variants/online).
+    1. `:online` (deprecated) - All requests will run a query to extract web results that are attached to the prompt. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. [Learn more](/docs/guides/routing/model-variants/online).
     2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/features/provider-routing#nitro-shortcut).
     3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/features/provider-routing#floor-price-shortcut).
     4. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/docs/guides/routing/model-variants/exacto).

@@ -493,6 +493,24 @@ components:
             - number
             - 'null'
           format: double
+        uptime_last_5m:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: >-
+            Uptime percentage over the last 5 minutes, calculated as successful
+            requests / (successful + error requests) * 100. Rate-limited
+            requests are excluded. Returns null if insufficient data.
+        uptime_last_1d:
+          type:
+            - number
+            - 'null'
+          format: double
+          description: >-
+            Uptime percentage over the last 1 day, calculated as successful
+            requests / (successful + error requests) * 100. Rate-limited
+            requests are excluded. Returns null if insufficient data.
         supports_implicit_caching:
           type: boolean
         latency_last_30m:
@@ -512,6 +530,8 @@ components:
         - max_prompt_tokens
         - supported_parameters
         - uptime_last_30m
+        - uptime_last_5m
+        - uptime_last_1d
         - supports_implicit_caching
         - latency_last_30m
         - throughput_last_30m

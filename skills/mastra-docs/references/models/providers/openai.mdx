@@ -1,11 +1,11 @@
 ---
 title: "OpenAI | Models"
-description: "Use OpenAI models with Mastra. 47 models available."
+description: "Use OpenAI models with Mastra. 51 models available."
 ---
 
 # [OpenAI logo]OpenAI
 
-Access 47 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
+Access 51 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
 
 Learn more in the [OpenAI documentation](https://platform.openai.com/docs/models).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "openai/codex-mini-latest"
+  model: "openai/chatgpt-image-latest"
 });
 
 // Generate a response
@@ -37,6 +37,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "openai/chatgpt-image-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
   {
     "model": "openai/codex-mini-latest",
     "imageInput": false,
@@ -446,6 +458,42 @@ for await (const chunk of stream) {
     "outputCost": 180
   },
   {
+    "model": "openai/gpt-image-1",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "openai/gpt-image-1-mini",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "openai/gpt-image-1.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "openai/o1",
     "imageInput": true,
     "audioInput": false,
@@ -613,7 +661,7 @@ const agent = new Agent({
   id: "custom-agent",
   name: "custom-agent",
   model: {
-    id: "openai/codex-mini-latest",
+    id: "openai/chatgpt-image-latest",
     apiKey: process.env.OPENAI_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -632,7 +680,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "openai/text-embedding-ada-002"
-      : "openai/codex-mini-latest";
+      : "openai/chatgpt-image-latest";
   }
 });
 ```

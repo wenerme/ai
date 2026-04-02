@@ -9,17 +9,11 @@ Work with GitLab Duo
 
 ## Synopsis
 
-Work with GitLab Duo, our AI-native assistant for the command line.
+Work with GitLab Duo directly in your terminal. Receive AI-native assistance
+across the software development lifecycle, without switching contexts.
 
-The GitLab Duo CLI integrates AI capabilities directly into your terminal
-workflow. It helps you retrieve forgotten Git commands and offers guidance on
-Git operations. You can accomplish specific tasks without switching contexts.
-
-To interact with the GitLab Duo Agent Platform, use the
-[GitLab Duo CLI](https://docs.gitlab.com/user/gitlab_duo_cli/).
-
-A unified experience is proposed in
-[epic 20826](https://gitlab.com/groups/gitlab-org/-/work_items/20826).
+Retrieve forgotten Git commands and get guidance on Git operations, or interact
+with the GitLab Duo Agent Platform through the GitLab Duo CLI ([Beta](https://docs.gitlab.com/policy/development_stages_support/#beta)).
 
 ```plaintext
 glab duo <command> prompt [flags]

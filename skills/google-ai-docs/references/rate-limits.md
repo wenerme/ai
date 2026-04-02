@@ -64,6 +64,12 @@ your rate limits will automatically update.
 
 Specified rate limits are not guaranteed and actual capacity may vary.
 
+## Priority inference rate limits
+
+[Priority](https://ai.google.dev/gemini-api/docs/priority-inference) consumption holds its own rate
+limits even though consumption is counted towards overall interactive traffic
+rate limits. **Default rate limits are: 0.3x the [standard rate limit](https://aistudio.google.com/rate-limit) for each model and tier**
+
 ## Batch API rate limits
 
 [Batch API](https://ai.google.dev/gemini-api/docs/batch-api) requests are subject to their own rate

@@ -1648,16 +1648,17 @@ components:
           items:
             type: string
           description: >-
-            Limit search results to these domains. Applies to Exa and Parallel
-            engines. Not supported with Firecrawl or native provider search.
+            Limit search results to these domains. Supported by Exa, Parallel,
+            and most native providers (Anthropic, OpenAI, xAI). Not supported
+            with Firecrawl or Perplexity.
         excluded_domains:
           type: array
           items:
             type: string
           description: >-
-            Exclude search results from these domains. Applies to Exa and
-            Parallel engines. Not supported with Firecrawl or native provider
-            search.
+            Exclude search results from these domains. Supported by Exa,
+            Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
+            (silently ignored), or Perplexity.
       title: ChatWebSearchServerToolParameters
     ChatWebSearchServerTool:
       type: object
@@ -1811,16 +1812,17 @@ components:
           items:
             type: string
           description: >-
-            Limit search results to these domains. Applies to Exa and Parallel
-            engines. Not supported with Firecrawl or native provider search.
+            Limit search results to these domains. Supported by Exa, Parallel,
+            and most native providers (Anthropic, OpenAI, xAI). Not supported
+            with Firecrawl or Perplexity.
         excluded_domains:
           type: array
           items:
             type: string
           description: >-
-            Exclude search results from these domains. Applies to Exa and
-            Parallel engines. Not supported with Firecrawl or native provider
-            search.
+            Exclude search results from these domains. Supported by Exa,
+            Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
+            (silently ignored), or Perplexity.
       title: ChatWebSearchShorthandParameters
     ChatWebSearchShorthand:
       type: object
@@ -1863,16 +1865,17 @@ components:
           items:
             type: string
           description: >-
-            Limit search results to these domains. Applies to Exa and Parallel
-            engines. Not supported with Firecrawl or native provider search.
+            Limit search results to these domains. Supported by Exa, Parallel,
+            and most native providers (Anthropic, OpenAI, xAI). Not supported
+            with Firecrawl or Perplexity.
         excluded_domains:
           type: array
           items:
             type: string
           description: >-
-            Exclude search results from these domains. Applies to Exa and
-            Parallel engines. Not supported with Firecrawl or native provider
-            search.
+            Exclude search results from these domains. Supported by Exa,
+            Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
+            (silently ignored), or Perplexity.
         parameters:
           $ref: '#/components/schemas/ChatWebSearchShorthandParameters'
       required:

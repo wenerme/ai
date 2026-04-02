@@ -4,6 +4,10 @@
 
 The Responses API Beta supports web search integration, allowing models to access real-time information from the internet and provide responses with proper citations and annotations.
 
+<Warning title="Deprecated Plugin Approach">
+  The web search plugin (`plugins: [{ id: "web" }]`) shown below is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead, which works with both the Chat Completions and Responses APIs via the `tools` array.
+</Warning>
+
 ## Web Search Plugin
 
 Enable web search using the `plugins` parameter:
@@ -181,6 +185,10 @@ Use structured messages for more complex queries:
 </CodeGroup>
 
 ## Online Model Variants
+
+<Warning title="Deprecated">
+  The `:online` variant is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead.
+</Warning>
 
 Some models have built-in web search capabilities using the `:online` variant:
 

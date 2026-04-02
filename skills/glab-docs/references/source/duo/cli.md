@@ -5,7 +5,7 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Run the GitLab Duo CLI (EXPERIMENTAL)
+Run the GitLab Duo CLI (Beta)
 
 ## Synopsis
 
@@ -21,8 +21,10 @@ You only need to authenticate once.
 
 Prerequisites:
 
-- Authenticate by running `glab auth login`.
+- Use GitLab 18.11 or later.
+- Run `glab auth login` to authenticate.
 - Meet the [prerequisites for GitLab Duo Agent Platform](https://docs.gitlab.com/user/duo_agent_platform/#prerequisites).
+- Turn on [beta and experimental features](https://docs.gitlab.com/user/duo_agent_platform/turn_on_off/#turn-on-beta-and-experimental-features).
 
 Configuration options:
 
@@ -32,8 +34,10 @@ Configuration options:
 All arguments and flags are passed through to the GitLab Duo CLI binary.
 Use `--update` to check for and install updates to the binary.
 
-This feature is an experiment and is not ready for production use.
-It might be unstable or removed at any time.
+For more information, see the [GitLab Duo CLI documentation](https://docs.gitlab.com/user/gitlab_duo_cli/).
+
+This feature is in beta and might not be ready for production use.
+It might be unstable and breaking changes can occur outside of major releases.
 For more information, see
 <https://docs.gitlab.com/policy/development_stages_support/>.
 

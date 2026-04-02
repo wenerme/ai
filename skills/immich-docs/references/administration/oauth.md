@@ -12,6 +12,7 @@ Immich supports 3rd party authentication via [OpenID Connect][oidc] (OIDC), an i
 - [Authelia](https://www.authelia.com/integration/openid-connect/immich/)
 - [Okta](https://www.okta.com/openid-connect/)
 - [Google](https://developers.google.com/identity/openid-connect/openid-connect)
+- [Keycloak](https://www.keycloak.org)
 
 ## Prerequisites
 
@@ -231,5 +232,34 @@ Configuration of OAuth in Immich System Settings
 | Auto Launch                  | Enabled                                                                      |
 | Mobile Redirect URI Override | Enabled (required)                                                           |
 | Mobile Redirect URI          | `https://example.immich.app/api/oauth/mobile-redirect`                       |
+
+Keycloak Example
+
+### Keycloak Example
+
+Here's an example of OAuth configured for Keycloak:
+
+Create your immich client on your Keycloak Realm.
+
+Configuration of OAuth in Immich System Settings
+
+| Setting                      | Value                                                 |
+| ---------------------------- | ----------------------------------------------------- |
+| Issuer URL                   | `https://<KEYCLOAK_DOMAIN>/realms/<YOUR_REALM>`       |
+| Client ID                    | immich                                                |
+| Client Secret                | can be optained from Clients -> immich -> Credentials |
+| Scope                        | openid email profile                                  |
+| Signing Algorithm            | RS256                                                 |
+| Storage Label Claim          | preferred_username                                    |
+| Role Claim                   | immich_role                                           |
+| Storage Quota Claim          | immich_quota                                          |
+| Default Storage Quota (GiB)  | 0 (empty for unlimited quota)                         |
+| Button Text                  | Sign in with Keycloak (recommended)                   |
+| Auto Register                | Enabled (optional)                                    |
+| Auto Launch                  | Enabled (optional)                                    |
+| Mobile Redirect URI Override | Disabled                                              |
+| Mobile Redirect URI          |                                                       |
+
+Role Claim can be managed via Client Role. Remember to create a mapper with claim name `immich_role`.
 
 [oidc]: https://openid.net/connect/
