@@ -512,6 +512,99 @@ or [the grounding section of the Grounding with Google
 Search](https://ai.google.dev/gemini-api/docs/google-search#attributing_sources_with_inline_citations)
 docs.
 
+## Custom metadata in grounding data
+
+If you have added custom metadata to your files, you can access it in the
+grounding metadata of the model's response. This is useful for passing
+additional context (like URLs, page numbers, or authors) from your source
+documents to your application logic. Each `grounding_chunk` in the
+`retrieved_context` contains this custom metadata.
+
+### Python
+
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview",
+        contents="Tell me about [insert question]",
+        config=types.GenerateContentConfig(
+            tools=[
+                types.Tool(
+                    file_search=types.FileSearch(
+                        file_search_store_names=[file_search_store.name]
+                    )
+                )
+            ]
+        )
+    )
+
+    for chunk in response.candidates[0].grounding_metadata.grounding_chunks:
+        if chunk.retrieved_context:
+            print(f"Text: {chunk.retrieved_context.text}")
+            if chunk.retrieved_context.custom_metadata:
+                for metadata in chunk.retrieved_context.custom_metadata:
+                    print(f"Metadata Key: {metadata.key}")
+                    print(f"Value: {metadata.string_value or metadata.numeric_value}")
+
+### JavaScript
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: "Tell me about [insert question]",
+      config: {
+        tools: [
+          {
+            fileSearch: {
+              fileSearchStoreNames: [fileSearchStore.name]
+            }
+          }
+        ]
+      }
+    });
+
+    const groundingMetadata = response.candidates[0].groundingMetadata;
+    groundingMetadata.groundingChunks.forEach((chunk) => {
+      if (chunk.retrievedContext) {
+        console.log(`Text: ${chunk.retrievedContext.text}`);
+        if (chunk.retrievedContext.customMetadata) {
+          chunk.retrievedContext.customMetadata.forEach((metadata) => {
+            console.log(`Metadata Key: ${metadata.key}`);
+            console.log(`Value: ${metadata.stringValue || metadata.numericValue}`);
+          });
+        }
+      }
+    });
+
+### REST
+
+    {
+      "candidates": [
+        {
+          "content": { ... },
+          "grounding_metadata": {
+            "grounding_chunks": [
+              {
+                "retrieved_context": {
+                  "text": "...",
+                  "title": "...",
+                  "uri": "...",
+                  "custom_metadata": [
+                    {
+                      "key": "author",
+                      "string_value": "Robert Graves"
+                    },
+                    {
+                      "key": "year",
+                      "numeric_value": 1934
+                    }
+                  ]
+                }
+              }
+            ],
+            "grounding_supports": [ ... ]
+          }
+        }
+      ]
+    }
+
 ## Structured output
 
 Starting with Gemini 3 models, you can combine file search tool with

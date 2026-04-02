@@ -64,6 +64,8 @@ ClickHouse Cloud offers a UI configuration experience for creating user-defined 
 In this example we'll create the same simple executable user-defined function `isBusinessHours` that checks if a certain timestamp falls inside of regular business hours.
 Previously we created it using SQL, but this time we will create it using Python and configure it via the UI.
 
+<VerticalStepper headerLevel="h3">
+
 ### Create the Python file {#create-python-file}
 
 Create a new file `main.py` locally:
@@ -86,6 +88,9 @@ Now compress the file into a ZIP archive:
 ```bash
 zip is_business_hours.zip main.py
 ```
+
+> **note**: ClickHouse Cloud expects to find `main.py` in the zip file you will upload via the UI in the next step.
+If you name the file something else you will encounter an error.
 
 ### Create a UDF via the UI {#create-udf-via-ui}
 
@@ -129,3 +134,5 @@ true    false
 4. Upload a zip with the modified code, or change settings and then click **Create new version**
 
 You have successfully added your first user-defined function via the UI, confirmed it runs and seen how to create a new version of it if needed.
+
+</VerticalStepper>

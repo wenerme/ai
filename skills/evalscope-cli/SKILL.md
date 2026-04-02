@@ -1,5 +1,5 @@
 ---
-name: evalscope-cli
+name: evalscope
 description: >-
   Translates natural language requests into evalscope CLI commands.
   Core capabilities: (1) Model accuracy evaluation (eval) — runs 156+

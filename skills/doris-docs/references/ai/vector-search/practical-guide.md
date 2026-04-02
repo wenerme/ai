@@ -108,7 +108,7 @@ PROPERTIES ("replication_num" = "1");
 
 Common properties:
 
-- `index_type`: `hnsw` or `ivf`
+- `index_type`: `hnsw`, `ivf`, or `ivf_on_disk`
 - `metric_type`: `l2_distance` or `inner_product`
 - `dim`: vector dimension
 - `quantizer`: `flat`, `sq8`, `sq4`, `pq` (optional)
@@ -120,7 +120,7 @@ HNSW-specific:
 
 IVF-specific:
 
-- `nlist` (default `1024`)
+- `nlist` (default `1024`; used by both `ivf` and `ivf_on_disk`)
 
 Example:
 

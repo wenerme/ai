@@ -17,7 +17,7 @@ At a high level, BYOC separates the ClickHouse control plane, which runs in the 
 
 **Supported Cloud Service Providers:**
 * AWS (GA)
-* GCP (Private Preview). Please join the waitlist [here](https://clickhouse.com/cloud/bring-your-own-cloud) if you're interested.
+* GCP (GA)
 * Azure (Private Preview). Please join the waitlist [here](https://clickhouse.com/cloud/bring-your-own-cloud) if you're interested.
 
 **Supported Cloud Regions:**
