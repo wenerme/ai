@@ -117,12 +117,13 @@ async function main() {
         writeFileSync(join(OUT_DIR, filename), result.content);
         console.log(`[${i + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
         updated++;
+        const size = result.content.length;
         newManifest[filename] = {
           url: `${BASE_URL}${path}`,
           etag: result.etag,
           lastModified: result.lastModified,
-          size: result.content.length,
-          updatedAt: new Date().toISOString(),
+          size,
+          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
         };
       }
     } catch (e: any) {
@@ -150,12 +151,13 @@ async function main() {
         writeFileSync(join(OUT_DIR, filename), content);
         console.log(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(content.length / 1024).toFixed(0)}KB)`}`);
         updated++;
+        const size = content.length;
         newManifest[filename] = {
           url: CHANGELOG_URL,
           etag: result.etag,
           lastModified: result.lastModified,
-          size: content.length,
-          updatedAt: new Date().toISOString(),
+          size,
+          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
         };
       }
     } catch (e: any) {

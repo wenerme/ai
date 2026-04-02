@@ -162,13 +162,14 @@ async function main() {
         writeFileSync(fullPath, result.content);
         console.log(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
         skillStats[skill].updated++;
+        const size = result.content.length;
         newManifest[key] = {
           url: `${BASE_URL}${path}`,
           skill,
           etag: result.etag,
           lastModified: result.lastModified,
-          size: result.content.length,
-          updatedAt: new Date().toISOString(),
+          size,
+          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
         };
       }
     } catch (e: any) {
