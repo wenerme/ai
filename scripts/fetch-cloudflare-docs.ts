@@ -10,6 +10,7 @@
 
 import { mkdirSync, writeFileSync, readFileSync, existsSync, unlinkSync } from "fs";
 import { join, dirname } from "path";
+import { parseLimit } from "./fetch-utils.ts";
 
 const SITEMAP_INDEX_URL = "https://developers.cloudflare.com/sitemap.xml";
 const BASE_URL = "https://developers.cloudflare.com";
@@ -117,13 +118,15 @@ async function main() {
 
   const allUrls = await fetchSitemapUrls();
   const paths = [...new Set(allUrls.map((u) => new URL(u).pathname))].sort();
+  const limit = parseLimit();
   console.log(`\nFound ${paths.length} pages\n`);
 
   // Process in batches with concurrency
-  const tasks = paths.filter((p) => {
+  let tasks = paths.filter((p) => {
     if (shouldSkip(p)) { skipped++; return false; }
     return true;
   });
+  if (limit) tasks = tasks.slice(0, limit);
 
   let done = 0;
   const total = tasks.length;
@@ -142,18 +145,23 @@ async function main() {
         noMd++;
         if (old) newManifest[filepath] = old;
       } else {
-        const fullPath = join(SKILL_DIR, filepath);
-        mkdirSync(dirname(fullPath), { recursive: true });
-        writeFileSync(fullPath, result.content);
-        updated++;
         const size = result.content.length;
-        newManifest[filepath] = {
-          url: `${BASE_URL}${path}`,
-          etag: result.etag,
-          lastModified: result.lastModified,
-          size,
-          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
-        };
+        if (old && old.size === size) {
+          unchanged++;
+          newManifest[filepath] = old;
+        } else {
+          const fullPath = join(SKILL_DIR, filepath);
+          mkdirSync(dirname(fullPath), { recursive: true });
+          writeFileSync(fullPath, result.content);
+          updated++;
+          newManifest[filepath] = {
+            url: `${BASE_URL}${path}`,
+            etag: result.etag,
+            lastModified: result.lastModified,
+            size,
+            updatedAt: new Date().toISOString(),
+          };
+        }
       }
     } catch (e: any) {
       noMd++;
@@ -176,19 +184,22 @@ async function main() {
   });
   await Promise.all(workers);
 
-  // Cleanup stale files
-  const currentFiles = new Set(Object.keys(newManifest));
-  for (const f of Object.keys(manifest)) {
-    if (!currentFiles.has(f)) {
-      const fp = join(SKILL_DIR, f);
-      if (existsSync(fp)) {
-        unlinkSync(fp);
-        console.log(`Removed stale: ${f}`);
+  // Cleanup stale files (skip when using --limit)
+  if (!limit) {
+    const currentFiles = new Set(Object.keys(newManifest));
+    for (const f of Object.keys(manifest)) {
+      if (!currentFiles.has(f)) {
+        const fp = join(SKILL_DIR, f);
+        if (existsSync(fp)) {
+          unlinkSync(fp);
+          console.log(`Removed stale: ${f}`);
+        }
       }
     }
   }
 
-  saveManifest(newManifest);
+  const finalManifest = limit ? { ...manifest, ...newManifest } : newManifest;
+  saveManifest(finalManifest);
   console.log(`\nDone: ${updated} saved, ${unchanged} cached, ${noMd} no-md, ${skipped} skipped`);
   console.log(`Total: ${Object.keys(newManifest).length} files in manifest`);
 }

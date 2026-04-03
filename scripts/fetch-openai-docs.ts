@@ -197,12 +197,17 @@ async function main() {
         stats[skill].unchanged++;
         newManifest[key] = old;
       } else {
-        mkdirSync(dirname(fullPath), { recursive: true });
-        writeFileSync(fullPath, result.content);
-        console.log(`[${i + 1}/${routes.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
-        stats[skill].updated++;
         const size = result.content.length;
-        newManifest[key] = { url: mdUrl, skill, etag: result.etag, lastModified: result.lastModified, size, updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString() };
+        if (old && old.size === size) {
+          stats[skill].unchanged++;
+          newManifest[key] = old;
+        } else {
+          mkdirSync(dirname(fullPath), { recursive: true });
+          writeFileSync(fullPath, result.content);
+          console.log(`[${i + 1}/${routes.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
+          stats[skill].updated++;
+          newManifest[key] = { url: mdUrl, skill, etag: result.etag, lastModified: result.lastModified, size, updatedAt: new Date().toISOString() };
+        }
       }
     } catch (e: any) {
       console.log(`[${i + 1}/${routes.length}] ${skill}/${filepath} ... FAILED: ${e.message}`);

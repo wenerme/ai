@@ -11,6 +11,7 @@
 
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
+import { parseLimit } from "./fetch-utils.ts";
 
 const SITEMAP_URL = "https://platform.claude.com/sitemap.xml";
 const BASE_URL = "https://platform.claude.com";
@@ -130,8 +131,10 @@ async function main() {
   const skillStats: Record<string, { updated: number; unchanged: number; failed: number }> = {};
 
   const allUrls = await fetchSitemap();
-  const paths = filterEnglishDocs(allUrls);
-  console.log(`Found ${paths.length} English doc pages\n`);
+  let paths = filterEnglishDocs(allUrls);
+  const limit = parseLimit();
+  if (limit) paths = paths.slice(0, limit);
+  console.log(`Found ${paths.length} English doc pages${limit ? ` (limited to ${limit})` : ""}\n`);
 
   let skipped = 0;
 
@@ -158,19 +161,24 @@ async function main() {
         skillStats[skill].unchanged++;
         newManifest[key] = old;
       } else {
-        mkdirSync(dirname(fullPath), { recursive: true });
-        writeFileSync(fullPath, result.content);
-        console.log(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
-        skillStats[skill].updated++;
         const size = result.content.length;
-        newManifest[key] = {
-          url: `${BASE_URL}${path}`,
-          skill,
-          etag: result.etag,
-          lastModified: result.lastModified,
-          size,
-          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
-        };
+        if (old && old.size === size) {
+          skillStats[skill].unchanged++;
+          newManifest[key] = old;
+        } else {
+          mkdirSync(dirname(fullPath), { recursive: true });
+          writeFileSync(fullPath, result.content);
+          console.log(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
+          skillStats[skill].updated++;
+          newManifest[key] = {
+            url: `${BASE_URL}${path}`,
+            skill,
+            etag: result.etag,
+            lastModified: result.lastModified,
+            size,
+            updatedAt: new Date().toISOString(),
+          };
+        }
       }
     } catch (e: any) {
       console.log(`[${i + 1}/${paths.length}] ${skill}/${filepath} ... FAILED: ${e.message}`);
@@ -183,7 +191,9 @@ async function main() {
     }
   }
 
-  saveManifest(newManifest);
+  // When using --limit, merge with old manifest to keep entries outside the limit
+  const finalManifest = limit ? { ...manifest, ...newManifest } : newManifest;
+  saveManifest(finalManifest);
 
   console.log(`\n--- Summary ---`);
   console.log(`Skipped: ${skipped} (unsupported languages)`);

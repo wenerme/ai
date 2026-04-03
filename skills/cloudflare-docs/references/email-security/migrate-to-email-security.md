@@ -67,11 +67,11 @@ Once you have added new account members, you will have to assign each member an 
 
 Note
 
-Starting from October 1, 2025, Area 1 webhooks will be visible in Zero Trust Email security, but non-configurable. Use [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-user-action-logs) to create new webhooks or configure webhooks.
+Starting from October 1, 2025, Area 1 webhooks will be visible in Zero Trust Email security, but non-configurable. Use [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs) to create new webhooks or configure webhooks.
 
 In Area 1, you can [create alert webhooks](https://developers.cloudflare.com/email-security/email-configuration/domains-and-routing/alert-webhooks/#create-an-alert-webhook).
 
-In Zero Trust Email security, webhooks are instead referred to as logs. You can enable [detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-detection-logs) and/or [user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-user-action-logs). Additionally, you can enable [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) to protect sensitive information in outbound emails.
+In Zero Trust Email security, webhooks are instead referred to as logs. You can enable [detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs) and/or [user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs). Additionally, you can enable [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) to protect sensitive information in outbound emails.
 
 ## Set up system alerts
 
@@ -105,11 +105,11 @@ In Email security, you can view [email monitoring](https://developers.cloudflare
 
 Note
 
-Starting from October 1, 2025, emails alerts for detections will no longer be available. As an alternative, use [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-detection-logs).
+Starting from October 1, 2025, emails alerts for detections will no longer be available. As an alternative, use [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs).
 
 In Area 1, you receive an email when an email is assigned a disposition.
 
-In Email security, you enable [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-detection-logs) to enable detection logs.
+In Email security, you enable [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs) to enable detection logs.
 
 ## Search emails
 

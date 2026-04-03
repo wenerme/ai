@@ -38,9 +38,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1879)
-* [  Python ](#tab-panel-1880)
-* [  curl ](#tab-panel-1881)
+* [  TypeScript ](#tab-panel-1895)
+* [  Python ](#tab-panel-1896)
+* [  curl ](#tab-panel-1897)
 
 ```
 
@@ -189,8 +189,8 @@ Usage statistics for the inference request
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1882)
-* [ Output ](#tab-panel-1883)
+* [ Input ](#tab-panel-1898)
+* [ Output ](#tab-panel-1899)
 
 ```
 

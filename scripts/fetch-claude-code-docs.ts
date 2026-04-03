@@ -114,17 +114,22 @@ async function main() {
         unchanged++;
         newManifest[filename] = old;
       } else {
-        writeFileSync(join(OUT_DIR, filename), result.content);
-        console.log(`[${i + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
-        updated++;
         const size = result.content.length;
-        newManifest[filename] = {
-          url: `${BASE_URL}${path}`,
-          etag: result.etag,
-          lastModified: result.lastModified,
-          size,
-          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
-        };
+        if (old && old.size === size) {
+          unchanged++;
+          newManifest[filename] = old;
+        } else {
+          writeFileSync(join(OUT_DIR, filename), result.content);
+          console.log(`[${i + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(result.content.length / 1024).toFixed(0)}KB)`}`);
+          updated++;
+          newManifest[filename] = {
+            url: `${BASE_URL}${path}`,
+            etag: result.etag,
+            lastModified: result.lastModified,
+            size,
+            updatedAt: new Date().toISOString(),
+          };
+        }
       }
     } catch (e: any) {
       console.log(`[${i + 1}/${paths.length + 1}] ${filename} ... FAILED: ${e.message}`);
@@ -148,17 +153,22 @@ async function main() {
       } else {
         const header = `# Claude Code Changelog\n\n> **Source**: https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md\n\n---\n\n`;
         const content = header + result.content;
-        writeFileSync(join(OUT_DIR, filename), content);
-        console.log(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(content.length / 1024).toFixed(0)}KB)`}`);
-        updated++;
         const size = content.length;
-        newManifest[filename] = {
-          url: CHANGELOG_URL,
-          etag: result.etag,
-          lastModified: result.lastModified,
-          size,
-          updatedAt: old?.size === size ? old.updatedAt : new Date().toISOString(),
-        };
+        if (old && old.size === size) {
+          unchanged++;
+          newManifest[filename] = old;
+        } else {
+          writeFileSync(join(OUT_DIR, filename), content);
+          console.log(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... ${old ? "updated" : `new (${(content.length / 1024).toFixed(0)}KB)`}`);
+          updated++;
+          newManifest[filename] = {
+            url: CHANGELOG_URL,
+            etag: result.etag,
+            lastModified: result.lastModified,
+            size,
+            updatedAt: new Date().toISOString(),
+          };
+        }
       }
     } catch (e: any) {
       console.log(`[${paths.length + 1}/${paths.length + 1}] ${filename} ... FAILED: ${e.message}`);
