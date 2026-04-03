@@ -20,7 +20,7 @@ Copy page
 
 # Whisper-large-v3-turbo with Cloudflare Workers AI
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 In this tutorial you will learn how to:
 
@@ -135,7 +135,7 @@ In your wrangler file, add or update the following settings to enable Node.js AP
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
@@ -148,7 +148,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```

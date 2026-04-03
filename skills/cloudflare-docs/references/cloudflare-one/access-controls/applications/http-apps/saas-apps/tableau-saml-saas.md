@@ -20,7 +20,7 @@ Copy page
 
 # Tableau Cloud
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Tableau Cloud ↗](https://help.tableau.com/current/online/en-us/saml%5Fconfig%5Fsite.htm) as a SAML application in Cloudflare One.
 

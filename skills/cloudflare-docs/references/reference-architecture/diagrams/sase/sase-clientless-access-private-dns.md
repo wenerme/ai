@@ -16,7 +16,7 @@ Copy page
 
 # Access to private apps without having to deploy client agents
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 ## Introduction
 

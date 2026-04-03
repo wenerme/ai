@@ -349,33 +349,23 @@ components:
       type: object
       properties:
         temperature:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         top_p:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         top_k:
           type:
             - integer
             - 'null'
         frequency_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         presence_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         repetition_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
       description: Default parameters for this model
       title: DefaultParameters

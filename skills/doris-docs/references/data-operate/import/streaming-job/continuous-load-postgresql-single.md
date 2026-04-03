@@ -17,17 +17,7 @@ By integrating [Flink CDC](https://github.com/apache/flink-cdc) reading capabili
 1. Supports exactly-once semantics.
 2. Currently only primary key tables are supported for synchronization.
 3. LOAD privilege is required.
-3. Logical replication must be enabled on the PostgreSQL side. If you are using a cloud service, see the [Setup Guide](./continuous-load-overview.md).
-
-## Prerequisites
-
-Enable logical replication on PostgreSQL by adding the following to postgresql.conf:
-
-```ini
-wal_level=logical
-```
-
-If you are using a cloud service, refer to the corresponding prerequisites guide.
+3. Logical replication must be enabled on the PostgreSQL side. See the [Setup Guide](./continuous-load-overview.md).
 
 ## Quick Start
 
@@ -43,7 +33,7 @@ INSERT INTO db1.tbl1
 SELECT * FROM cdc_stream(
     "type" = "postgres",
     "jdbc_url" = "jdbc:postgresql://127.0.0.1:5432/postgres",
-    "driver_url" = "postgresql-42.5.0.jar",
+    "driver_url" = "postgresql-42.5.1.jar",
     "driver_class" = "org.postgresql.Driver",
     "user" = "postgres",
     "password" = "postgres",
@@ -68,7 +58,7 @@ For more common operations (pause, resume, delete, check Task, etc.), see [Conti
 | -------------- | ------- | ------------------------------------------------------------ |
 | type           | -       | Data source type, set to `postgres`                          |
 | jdbc_url       | -       | PostgreSQL JDBC connection string                            |
-| driver_url     | -       | JDBC driver jar path                                         |
+| driver_url     | -       | JDBC driver jar path. Supports file name, local absolute path, and HTTP URL. See [JDBC Catalog Overview](../../../lakehouse/catalogs/jdbc-catalog-overview.md) for details. |
 | driver_class   | -       | JDBC driver class name                                       |
 | user           | -       | Database username                                            |
 | password       | -       | Database password                                            |

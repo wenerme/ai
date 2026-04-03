@@ -586,8 +586,8 @@
   },
   "api/api-reference/analytics/get-user-activity.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/analytics/get-user-activity.md",
-    "size": 10304,
-    "updatedAt": "2026-04-03T00:24:05.729Z"
+    "size": 11764,
+    "updatedAt": "2026-04-03T10:22:55.076Z"
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
@@ -616,13 +616,13 @@
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
-    "size": 17003,
-    "updatedAt": "2026-04-03T00:24:11.644Z"
+    "size": 16828,
+    "updatedAt": "2026-04-03T10:23:00.021Z"
   },
   "api/api-reference/models/list-models-user.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-user.md",
-    "size": 17760,
-    "updatedAt": "2026-04-03T00:24:12.521Z"
+    "size": 17585,
+    "updatedAt": "2026-04-03T10:23:00.926Z"
   },
   "api/api-reference/endpoints/list-endpoints.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints.md",
@@ -668,6 +668,11 @@
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/get-current-key.md",
     "size": 10418,
     "updatedAt": "2026-04-03T00:24:20.098Z"
+  },
+  "api/api-reference/organization/list-organization-members.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/organization/list-organization-members.md",
+    "size": 9380,
+    "updatedAt": "2026-04-03T10:23:09.656Z"
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
@@ -741,8 +746,8 @@
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",
-    "size": 15966,
-    "updatedAt": "2026-04-03T00:24:32.352Z"
+    "size": 15791,
+    "updatedAt": "2026-04-03T10:23:22.919Z"
   },
   "sdks/agentic-usage.md": {
     "url": "https://openrouter.ai/docs/sdks/agentic-usage.md",

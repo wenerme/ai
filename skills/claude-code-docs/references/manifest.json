@@ -7,9 +7,9 @@
   },
   "amazon-bedrock.md": {
     "url": "https://code.claude.com/docs/en/amazon-bedrock",
-    "lastModified": "Thu, 02 Apr 2026 23:53:47 GMT",
-    "size": 12602,
-    "updatedAt": "2026-04-02T14:25:05.314Z"
+    "lastModified": "Fri, 03 Apr 2026 02:56:57 GMT",
+    "size": 12721,
+    "updatedAt": "2026-04-03T10:13:35.212Z"
   },
   "analytics.md": {
     "url": "https://code.claude.com/docs/en/analytics",
@@ -25,9 +25,9 @@
   },
   "best-practices.md": {
     "url": "https://code.claude.com/docs/en/best-practices",
-    "lastModified": "Thu, 02 Apr 2026 23:50:01 GMT",
-    "size": 35132,
-    "updatedAt": "2026-04-02T00:11:17.275Z"
+    "lastModified": "Fri, 03 Apr 2026 02:54:38 GMT",
+    "size": 35276,
+    "updatedAt": "2026-04-03T10:13:36.309Z"
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
@@ -97,9 +97,9 @@
   },
   "computer-use.md": {
     "url": "https://code.claude.com/docs/en/computer-use",
-    "lastModified": "Thu, 02 Apr 2026 23:51:06 GMT",
-    "size": 11579,
-    "updatedAt": "2026-04-02T14:25:19.969Z"
+    "lastModified": "Fri, 03 Apr 2026 02:56:16 GMT",
+    "size": 11790,
+    "updatedAt": "2026-04-03T10:13:40.771Z"
   },
   "context-window.md": {
     "url": "https://code.claude.com/docs/en/context-window",
@@ -121,9 +121,9 @@
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
-    "lastModified": "Thu, 02 Apr 2026 23:49:58 GMT",
-    "size": 60169,
-    "updatedAt": "2026-04-03T00:13:40.559Z"
+    "lastModified": "Fri, 03 Apr 2026 02:54:47 GMT",
+    "size": 60410,
+    "updatedAt": "2026-04-03T10:13:42.248Z"
   },
   "desktop-quickstart.md": {
     "url": "https://code.claude.com/docs/en/desktop-quickstart",
@@ -247,15 +247,15 @@
   },
   "mcp.md": {
     "url": "https://code.claude.com/docs/en/mcp",
-    "lastModified": "Thu, 02 Apr 2026 23:49:59 GMT",
-    "size": 53043,
-    "updatedAt": "2026-04-02T00:11:31.463Z"
+    "lastModified": "Fri, 03 Apr 2026 02:54:41 GMT",
+    "size": 53850,
+    "updatedAt": "2026-04-03T10:13:50.026Z"
   },
   "memory.md": {
     "url": "https://code.claude.com/docs/en/memory",
-    "lastModified": "Thu, 02 Apr 2026 23:49:53 GMT",
-    "size": 24938,
-    "updatedAt": "2026-04-02T00:11:31.851Z"
+    "lastModified": "Fri, 03 Apr 2026 02:54:36 GMT",
+    "size": 26206,
+    "updatedAt": "2026-04-03T10:13:50.391Z"
   },
   "microsoft-foundry.md": {
     "url": "https://code.claude.com/docs/en/microsoft-foundry",
@@ -301,9 +301,9 @@
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
-    "lastModified": "Thu, 02 Apr 2026 23:49:58 GMT",
-    "size": 31689,
-    "updatedAt": "2026-04-03T00:13:51.882Z"
+    "lastModified": "Fri, 03 Apr 2026 02:54:50 GMT",
+    "size": 32009,
+    "updatedAt": "2026-04-03T10:13:53.379Z"
   },
   "platforms.md": {
     "url": "https://code.claude.com/docs/en/platforms",
@@ -319,15 +319,15 @@
   },
   "plugins.md": {
     "url": "https://code.claude.com/docs/en/plugins",
-    "lastModified": "Thu, 02 Apr 2026 23:49:53 GMT",
-    "size": 18524,
-    "updatedAt": "2026-04-02T14:25:51.245Z"
+    "lastModified": "Fri, 03 Apr 2026 02:55:04 GMT",
+    "size": 18641,
+    "updatedAt": "2026-04-03T10:13:54.467Z"
   },
   "plugins-reference.md": {
     "url": "https://code.claude.com/docs/en/plugins-reference",
-    "lastModified": "Thu, 02 Apr 2026 23:50:33 GMT",
-    "size": 42483,
-    "updatedAt": "2026-04-02T00:11:36.438Z"
+    "lastModified": "Fri, 03 Apr 2026 02:56:01 GMT",
+    "size": 42978,
+    "updatedAt": "2026-04-03T10:13:54.826Z"
   },
   "quickstart.md": {
     "url": "https://code.claude.com/docs/en/quickstart",
@@ -343,9 +343,9 @@
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
-    "lastModified": "Thu, 02 Apr 2026 23:53:43 GMT",
-    "size": 19974,
-    "updatedAt": "2026-04-03T00:13:54.569Z"
+    "lastModified": "Fri, 03 Apr 2026 02:57:07 GMT",
+    "size": 20023,
+    "updatedAt": "2026-04-03T10:13:56.037Z"
   },
   "scheduled-tasks.md": {
     "url": "https://code.claude.com/docs/en/scheduled-tasks",

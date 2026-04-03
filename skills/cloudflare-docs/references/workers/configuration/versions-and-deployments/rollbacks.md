@@ -18,6 +18,11 @@ Copy page
 
 You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. Rolling back to a previous version of your Worker will immediately create a new [deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/#deployments) with the version specified and become the active deployment across all your deployed routes and domains.
 
+You can roll back from any deployment, including:
+
+* A single-version deployment (rolling back replaces the current version with the selected version).
+* A [split deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) with two versions (rolling back replaces both versions with the selected version at 100% traffic).
+
 ## Via Wrangler
 
 To roll back to a specified version of your Worker via Wrangler, use the [wrangler rollback](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) command.
@@ -30,6 +35,21 @@ To roll back to a specified version of your Worker via the Cloudflare dashboard:
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 3. Select the three dot icon on the right of the version you would like to roll back to and select **Rollback**.
+
+## Rolling back from a split deployment
+
+If you are using a [gradual deployment](https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/) with two versions splitting traffic, rolling back will:
+
+1. Replace the split deployment with a single-version deployment.
+2. Route 100% of traffic to the version you selected for rollback.
+
+This effectively promotes one version to handle all traffic, which is useful if you notice issues with one of the versions in your split deployment and want to revert to a stable version immediately.
+
+To roll back from a split deployment:
+
+1. Identify which version in your split deployment is stable and performing correctly.
+2. Use the [rollback procedure](#via-wrangler) or [dashboard rollback](#via-the-cloudflare-dashboard) to roll back to that version.
+3. The split deployment will be replaced with the selected version at 100% traffic.
 
 Warning
 
@@ -45,9 +65,7 @@ You can only roll back to the 100 most recently published versions.
 
 Note
 
-When using Wrangler in interactive mode, only the 10 most recent versions will be displayed for selection. To roll back to an older version (beyond the 10 most recent), you must specify the version ID directly on the command line. Refer to the [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy) documentation for details on specifying version IDs.
-
-We plan to address this limitation soon to allow displaying all 100 available versions in interactive mode.
+When using Wrangler in interactive mode, you can select from up to 100 recent versions. To roll back to a specific version, you can also specify the version ID directly on the command line. Refer to the [wrangler rollback](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) documentation for details on specifying version IDs.
 
 ### Bindings
 

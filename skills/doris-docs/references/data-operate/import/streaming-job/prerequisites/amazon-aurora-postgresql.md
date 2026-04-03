@@ -8,7 +8,7 @@
 
 ## Overview
 
-Before using Doris continuous load to synchronize data from Amazon Aurora PostgreSQL, you need to ensure that the Aurora cluster has logical replication enabled. This guide walks you through all prerequisite configuration steps.
+Doris continuous load supports Amazon Aurora PostgreSQL-Compatible Edition 14 and above. Before synchronizing data, you need to ensure that the Aurora cluster has logical replication enabled. This guide walks you through all prerequisite configuration steps.
 
 ## Step 1: Check Current Configuration
 

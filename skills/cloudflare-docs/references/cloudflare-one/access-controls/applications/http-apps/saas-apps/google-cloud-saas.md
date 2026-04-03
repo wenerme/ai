@@ -20,7 +20,7 @@ Copy page
 
 # Google Cloud
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Google Cloud ↗](https://support.google.com/cloudidentity/topic/7558767) as a SAML application in Cloudflare One.
 

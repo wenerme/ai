@@ -16,7 +16,7 @@ Copy page
 
 # Watermarks
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Draw a watermark from KV on an image from R2
 

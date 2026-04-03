@@ -19,16 +19,6 @@ By integrating [Flink CDC](https://github.com/apache/flink-cdc), Doris supports 
 3. LOAD privilege is required. If the downstream table does not exist, CREATE privilege is also required.
 4. During automatic table creation, if the target table already exists, it will be skipped, and users can customize tables according to different scenarios.
 
-## Prerequisites
-
-Enable logical replication on PostgreSQL by adding the following to postgresql.conf:
-
-```ini
-wal_level=logical
-```
-
-If you are using a cloud service, see the [Setup Guide](./continuous-load-overview.md).
-
 ## Quick Start
 
 ### Creating an Import Job
@@ -40,7 +30,7 @@ CREATE JOB test_postgres_job
 ON STREAMING
 FROM POSTGRES (
     "jdbc_url" = "jdbc:postgresql://127.0.0.1:5432/postgres",
-    "driver_url" = "postgresql-42.5.0.jar",
+    "driver_url" = "postgresql-42.5.1.jar",
     "driver_class" = "org.postgresql.Driver",
     "user" = "postgres",
     "password" = "postgres",
@@ -67,7 +57,7 @@ For more common operations (pause, resume, delete, check Task, etc.), see [Conti
 | Parameter    | Default | Description                                                  |
 | -------------- | ------- | ------------------------------------------------------------ |
 | jdbc_url       | -       | PostgreSQL JDBC connection string                            |
-| driver_url     | -       | JDBC driver jar path                                         |
+| driver_url     | -       | JDBC driver jar path. Supports file name, local absolute path, and HTTP URL. See [JDBC Catalog Overview](../../../lakehouse/catalogs/jdbc-catalog-overview.md) for details. |
 | driver_class   | -       | JDBC driver class name                                       |
 | user           | -       | Database username                                            |
 | password       | -       | Database password                                            |

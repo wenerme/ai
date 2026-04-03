@@ -12,11 +12,11 @@ Doris supports continuously loading data from multiple data sources into Doris t
 
 Continuous Load supports the following data sources and import modes:
 
-| Data Source | Single-table Import | Multi-table Import | Prerequisites |
-|:------|:--------|:--------|:--------|
-| MySQL | [MySQL Single-table](./continuous-load-mysql-single.md) | [MySQL Multi-table](./continuous-load-mysql-multi.md) | [Amazon RDS MySQL](./prerequisites/amazon-rds-mysql.md) · [Amazon Aurora MySQL](./prerequisites/amazon-aurora-mysql.md) |
-| PostgreSQL | [PostgreSQL Single-table](./continuous-load-postgresql-single.md) | [PostgreSQL Multi-table](./continuous-load-postgresql-multi.md) | [Amazon RDS PostgreSQL](./prerequisites/amazon-rds-postgresql.md) · [Amazon Aurora PostgreSQL](./prerequisites/amazon-aurora-postgresql.md) |
-| S3 | [S3 Continuous Load](./continuous-load-s3.md) | - | - |
+| Data Source | Supported Versions | Single-table Import | Multi-table Import | Setup Guide |
+|:------|:--------|:--------|:--------|:--------|
+| MySQL | 5.6, 5.7, 8.0.x | [MySQL Single-table](./continuous-load-mysql-single.md) | [MySQL Multi-table](./continuous-load-mysql-multi.md) | [Amazon RDS MySQL](./prerequisites/amazon-rds-mysql.md) · [Amazon Aurora MySQL](./prerequisites/amazon-aurora-mysql.md) |
+| PostgreSQL | 14, 15, 16, 17 | [PostgreSQL Single-table](./continuous-load-postgresql-single.md) | [PostgreSQL Multi-table](./continuous-load-postgresql-multi.md) | [Amazon RDS PostgreSQL](./prerequisites/amazon-rds-postgresql.md) · [Amazon Aurora PostgreSQL](./prerequisites/amazon-aurora-postgresql.md) |
+| S3 | - | [S3 Continuous Load](./continuous-load-s3.md) | - | - |
 
 > **tip**: - **Single-table Import**: Uses CDC Stream TVF or S3 TVF to continuously load data into a specific Doris table, supporting flexible column mapping and data transformation.
 - **Multi-table Import**: Uses native multi-table CDC capability to continuously synchronize full and incremental data from multiple source tables into Doris, automatically creating downstream tables on first sync.
@@ -104,3 +104,22 @@ DROP JOB WHERE jobName = <job_name>;
 | Parameter    | Default | Description                                    |
 | ------------ | ------- | ---------------------------------------------- |
 | max_interval | 10s     | Idle scheduling interval when no new data      |
+
+## FAQ
+
+### MySQL connection error: Public Key Retrieval is not allowed
+
+**Cause:** The MySQL user uses SHA256 password authentication, which requires TLS or other protocols to transmit the password.
+
+**Solution 1:** Add `allowPublicKeyRetrieval=true` to the JDBC URL:
+
+```
+jdbc:mysql://127.0.0.1:3306?allowPublicKeyRetrieval=true
+```
+
+**Solution 2:** Change the MySQL user's authentication method to `mysql_native_password`:
+
+```sql
+ALTER USER 'username'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+FLUSH PRIVILEGES;
+```

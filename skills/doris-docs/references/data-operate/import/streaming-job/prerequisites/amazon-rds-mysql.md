@@ -8,7 +8,7 @@
 
 ## Overview
 
-Before using Doris continuous load to synchronize data from Amazon RDS MySQL, you need to ensure that the RDS instance has Binlog enabled and properly configured. This guide walks you through all prerequisite configuration steps.
+Doris continuous load supports Amazon RDS MySQL 5.6, 5.7, and 8.0.x. Before synchronizing data, you need to ensure that the RDS instance has Binlog enabled and properly configured. This guide walks you through all prerequisite configuration steps.
 
 ## Step 1: Check Current Configuration
 

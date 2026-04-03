@@ -16,7 +16,7 @@ Copy page
 
 # Use Pages as an origin for Load Balancing
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This tutorial is intended as an introductory example of how you can leverage Cloudflare's global traffic management.
 

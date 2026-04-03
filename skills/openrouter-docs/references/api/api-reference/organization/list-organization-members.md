@@ -1,10 +1,10 @@
-# Get user activity grouped by endpoint
+# List organization members
 
-GET https://openrouter.ai/api/v1/activity
+GET https://openrouter.ai/api/v1/organization/members
 
-Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+List all members of the organization associated with the authenticated management key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
-Reference: https://openrouter.ai/docs/api/api-reference/analytics/get-user-activity
+Reference: https://openrouter.ai/docs/api/api-reference/organization/list-organization-members
 
 ## OpenAPI Specification
 
@@ -14,36 +14,26 @@ info:
   title: OpenRouter API
   version: 1.0.0
 paths:
-  /activity:
+  /organization/members:
     get:
-      operationId: get-user-activity
-      summary: Get user activity grouped by endpoint
+      operationId: list-organization-members
+      summary: List organization members
       description: >-
-        Returns user activity data grouped by endpoint for the last 30
-        (completed) UTC days. [Management
+        List all members of the organization associated with the authenticated
+        management key. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       tags:
-        - subpackage_analytics
+        - subpackage_organization
       parameters:
-        - name: date
+        - name: offset
           in: query
-          description: Filter by a single UTC date in the last 30 days (YYYY-MM-DD format).
+          description: Number of records to skip for pagination
           required: false
           schema:
             type: string
-        - name: api_key_hash
+        - name: limit
           in: query
-          description: >-
-            Filter by API key hash (SHA-256 hex string, as returned by the keys
-            API).
-          required: false
-          schema:
-            type: string
-        - name: user_id
-          in: query
-          description: >-
-            Filter by org member user ID. Only applicable for organization
-            accounts.
+          description: Maximum number of records to return (max 100)
           required: false
           schema:
             type: string
@@ -55,37 +45,26 @@ paths:
             type: string
       responses:
         '200':
-          description: Returns user activity data grouped by endpoint
+          description: List of organization members
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Analytics_getUserActivity_Response_200'
-        '400':
-          description: Bad Request - Invalid date format or date range
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BadRequestResponse'
+                $ref: >-
+                  #/components/schemas/Organization_listOrganizationMembers_Response_200
         '401':
-          description: Unauthorized - Authentication required or invalid credentials
+          description: Unauthorized - Missing or invalid authentication
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
-        '403':
-          description: Forbidden - Only management keys can fetch activity
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ForbiddenResponse'
         '404':
-          description: Not Found - User is not a member of the organization
+          description: Not Found - Organization not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
         '500':
-          description: Internal Server Error - Unexpected server error
+          description: Internal Server Error
           content:
             application/json:
               schema:
@@ -94,99 +73,59 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    ActivityItem:
+    OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItemsRole:
+      type: string
+      enum:
+        - org:admin
+        - org:member
+      description: Role of the member in the organization
+      title: OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItemsRole
+    OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItems:
       type: object
       properties:
-        date:
+        id:
           type: string
-          description: Date of the activity (YYYY-MM-DD format)
-        model:
+          description: User ID of the organization member
+        first_name:
+          type:
+            - string
+            - 'null'
+          description: First name of the member
+        last_name:
+          type:
+            - string
+            - 'null'
+          description: Last name of the member
+        email:
           type: string
-          description: Model slug (e.g., "openai/gpt-4.1")
-        model_permaslug:
-          type: string
-          description: Model permaslug (e.g., "openai/gpt-4.1-2025-04-14")
-        endpoint_id:
-          type: string
-          description: Unique identifier for the endpoint
-        provider_name:
-          type: string
-          description: Name of the provider serving this endpoint
-        usage:
-          type: number
-          format: double
-          description: Total cost in USD (OpenRouter credits spent)
-        byok_usage_inference:
-          type: number
-          format: double
-          description: BYOK inference cost in USD (external credits spent)
-        requests:
-          type: integer
-          description: Number of requests made
-        prompt_tokens:
-          type: integer
-          description: Total prompt tokens used
-        completion_tokens:
-          type: integer
-          description: Total completion tokens generated
-        reasoning_tokens:
-          type: integer
-          description: Total reasoning tokens used
+          description: Email address of the member
+        role:
+          $ref: >-
+            #/components/schemas/OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItemsRole
+          description: Role of the member in the organization
       required:
-        - date
-        - model
-        - model_permaslug
-        - endpoint_id
-        - provider_name
-        - usage
-        - byok_usage_inference
-        - requests
-        - prompt_tokens
-        - completion_tokens
-        - reasoning_tokens
-      title: ActivityItem
-    Analytics_getUserActivity_Response_200:
+        - id
+        - first_name
+        - last_name
+        - email
+        - role
+      title: OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItems
+    Organization_listOrganizationMembers_Response_200:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/ActivityItem'
-          description: List of activity items
+            $ref: >-
+              #/components/schemas/OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItems
+          description: List of organization members
+        total_count:
+          type: integer
+          description: Total number of members in the organization
       required:
         - data
-      title: Analytics_getUserActivity_Response_200
-    BadRequestResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for BadRequestResponse
-      title: BadRequestResponseErrorData
-    BadRequestResponse:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/BadRequestResponseErrorData'
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - error
-      description: Bad Request - Invalid request parameters or malformed input
-      title: BadRequestResponse
+        - total_count
+      title: Organization_listOrganizationMembers_Response_200
     UnauthorizedResponseErrorData:
       type: object
       properties:
@@ -218,37 +157,6 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
-    ForbiddenResponseErrorData:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          type:
-            - object
-            - 'null'
-          additionalProperties:
-            description: Any type
-      required:
-        - code
-        - message
-      description: Error data for ForbiddenResponse
-      title: ForbiddenResponseErrorData
-    ForbiddenResponse:
-      type: object
-      properties:
-        error:
-          $ref: '#/components/schemas/ForbiddenResponseErrorData'
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - error
-      description: Forbidden - Authentication successful but insufficient permissions
-      title: ForbiddenResponse
     NotFoundResponseErrorData:
       type: object
       properties:
@@ -324,7 +232,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1/activity"
+url = "https://openrouter.ai/api/v1/organization/members"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -334,7 +242,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1/activity';
+const url = 'https://openrouter.ai/api/v1/organization/members';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -357,7 +265,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/activity"
+	url := "https://openrouter.ai/api/v1/organization/members"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -378,7 +286,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/activity")
+url = URI("https://openrouter.ai/api/v1/organization/members")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -394,7 +302,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/activity")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/organization/members")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -405,7 +313,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/activity', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/organization/members', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -417,7 +325,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/activity");
+var client = new RestClient("https://openrouter.ai/api/v1/organization/members");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -428,7 +336,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/activity")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/organization/members")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

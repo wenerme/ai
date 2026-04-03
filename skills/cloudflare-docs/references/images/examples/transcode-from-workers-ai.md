@@ -16,7 +16,7 @@ Copy page
 
 # Transcode images
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Transcode an image from Workers AI before uploading to R2
 

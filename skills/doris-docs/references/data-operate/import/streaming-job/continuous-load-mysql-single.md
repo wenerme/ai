@@ -17,19 +17,7 @@ By integrating [Flink CDC](https://github.com/apache/flink-cdc) reading capabili
 1. Supports exactly-once semantics.
 2. Currently only primary key tables are supported for synchronization.
 3. LOAD privilege is required.
-3. Binlog must be enabled on the MySQL side. If you are using a cloud service, see the [Setup Guide](./continuous-load-overview.md).
-
-## Prerequisites
-
-Enable Binlog on MySQL by adding the following to my.cnf:
-
-```ini
-log-bin=mysql-bin
-binlog_format=ROW
-server-id=1
-```
-
-If you are using a cloud service, refer to the corresponding prerequisites guide.
+3. Binlog must be enabled on the MySQL side. See the [Setup Guide](./continuous-load-overview.md).
 
 ## Quick Start
 
@@ -45,7 +33,7 @@ INSERT INTO db1.tbl1
 SELECT * FROM cdc_stream(
     "type" = "mysql",
     "jdbc_url" = "jdbc:mysql://127.0.0.1:3306",
-    "driver_url" = "mysql-connector-j-8.0.31.jar",
+    "driver_url" = "mysql-connector-java-8.0.25.jar",
     "driver_class" = "com.mysql.cj.jdbc.Driver",
     "user" = "root",
     "password" = "123456",
@@ -69,7 +57,7 @@ For more common operations (pause, resume, delete, check Task, etc.), see [Conti
 | -------------- | ------- | ------------------------------------------------------------ |
 | type           | -       | Data source type, set to `mysql`                             |
 | jdbc_url       | -       | MySQL JDBC connection string                                 |
-| driver_url     | -       | JDBC driver jar path                                         |
+| driver_url     | -       | JDBC driver jar path. Supports file name, local absolute path, and HTTP URL. See [JDBC Catalog Overview](../../../lakehouse/catalogs/jdbc-catalog-overview.md) for details. |
 | driver_class   | -       | JDBC driver class name                                       |
 | user           | -       | Database username                                            |
 | password       | -       | Database password                                            |

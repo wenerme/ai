@@ -19,18 +19,6 @@ By integrating [Flink CDC](https://github.com/apache/flink-cdc), Doris supports 
 3. LOAD privilege is required. If the downstream table does not exist, CREATE privilege is also required.
 4. During automatic table creation, if the target table already exists, it will be skipped, and users can customize tables according to different scenarios.
 
-## Prerequisites
-
-Enable Binlog on MySQL by adding the following to my.cnf:
-
-```ini
-log-bin=mysql-bin
-binlog_format=ROW
-server-id=1
-```
-
-If you are using a cloud service, see the [Setup Guide](./continuous-load-overview.md).
-
 ## Quick Start
 
 ### Creating an Import Job
@@ -42,7 +30,7 @@ CREATE JOB multi_table_sync
 ON STREAMING
 FROM MYSQL (
         "jdbc_url" = "jdbc:mysql://127.0.0.1:3306",
-        "driver_url" = "mysql-connector-j-8.0.31.jar",
+        "driver_url" = "mysql-connector-java-8.0.25.jar",
         "driver_class" = "com.mysql.cj.jdbc.Driver",
         "user" = "root",
         "password" = "123456",
@@ -65,7 +53,7 @@ select * from jobs("type"="insert") where ExecuteType = "STREAMING"
       ExecuteType: STREAMING
 RecurringStrategy: \N
            Status: RUNNING
-       ExecuteSql: FROM MYSQL('include_tables'='user_info','database'='test','driver_class'='com.mysql.cj.jdbc.Driver','driver_url'='mysql-connector-j-8.0.31.jar','offset'='initial','jdbc_url'='jdbc:mysql://127.0.0.1:3306','user'='root' ) TO DATABASE target_test_db ('table.create.properties.replication_num'='1')
+       ExecuteSql: FROM MYSQL('include_tables'='user_info','database'='test','driver_class'='com.mysql.cj.jdbc.Driver','driver_url'='mysql-connector-java-8.0.25.jar','offset'='initial','jdbc_url'='jdbc:mysql://127.0.0.1:3306','user'='root' ) TO DATABASE target_test_db ('table.create.properties.replication_num'='1')
        CreateTime: 2025-12-10 10:19:35
  SucceedTaskCount: 1
   FailedTaskCount: 0
@@ -96,7 +84,7 @@ For more common operations (pause, resume, delete, check Task, etc.), see [Conti
 | Parameter    | Default | Description                                                  |
 | -------------- | ------- | ------------------------------------------------------------ |
 | jdbc_url       | -       | MySQL JDBC connection string                                 |
-| driver_url     | -       | JDBC driver jar path                                         |
+| driver_url     | -       | JDBC driver jar path. Supports file name, local absolute path, and HTTP URL. See [JDBC Catalog Overview](../../../lakehouse/catalogs/jdbc-catalog-overview.md) for details. |
 | driver_class   | -       | JDBC driver class name                                       |
 | user           | -       | Database username                                            |
 | password       | -       | Database password                                            |
