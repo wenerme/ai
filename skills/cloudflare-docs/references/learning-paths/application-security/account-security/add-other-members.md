@@ -26,8 +26,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5042)
-* [ API ](#tab-panel-5043)
+* [ Dashboard ](#tab-panel-5058)
+* [ API ](#tab-panel-5059)
 
 To view members using the dashboard:
 
@@ -41,8 +41,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5044)
-* [ API ](#tab-panel-5045)
+* [ Dashboard ](#tab-panel-5060)
+* [ API ](#tab-panel-5061)
 
 To add a member to your account:
 
@@ -66,8 +66,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5046)
-* [ API ](#tab-panel-5047)
+* [ Dashboard ](#tab-panel-5062)
+* [ API ](#tab-panel-5063)
 
 To edit member permissions using the dashboard:
 
@@ -135,8 +135,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-5048)
-* [ API ](#tab-panel-5049)
+* [ Dashboard ](#tab-panel-5064)
+* [ API ](#tab-panel-5065)
 
 To revoke a member's access to your account:
 

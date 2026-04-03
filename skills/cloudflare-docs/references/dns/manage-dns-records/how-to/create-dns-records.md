@@ -30,8 +30,8 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ### Create DNS records
 
-* [ Dashboard ](#tab-panel-4250)
-* [ API ](#tab-panel-4251)
+* [ Dashboard ](#tab-panel-4266)
+* [ API ](#tab-panel-4267)
 
 To create a DNS record in the dashboard:
 
@@ -51,8 +51,8 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 
 ### Edit DNS records
 
-* [ Dashboard ](#tab-panel-4246)
-* [ API ](#tab-panel-4247)
+* [ Dashboard ](#tab-panel-4262)
+* [ API ](#tab-panel-4263)
 
 To edit DNS records in the dashboard:
 
@@ -66,8 +66,8 @@ To update part of a record with the API, use a [PATCH request](https://developer
 
 ### Delete DNS records
 
-* [ Dashboard ](#tab-panel-4248)
-* [ API ](#tab-panel-4249)
+* [ Dashboard ](#tab-panel-4264)
+* [ API ](#tab-panel-4265)
 
 To delete DNS records in the dashboard:
 

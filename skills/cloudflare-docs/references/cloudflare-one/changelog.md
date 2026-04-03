@@ -18,6 +18,113 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-02
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
+
+  
+**Cloudflare One Client for Windows (version 2026.3.846.0)**   
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes and improvements.
+
+The next stable release for Windows will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
+
+**Changes and improvements**
+
+* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+* Added monitoring for tunnel statistics collection timeouts.
+* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+* Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
+* Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
+* Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
+* Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
+* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+* Fixed an issue where degraded Windows Management Instrumentation (WMI) state could put the client in a failed connection state loop during initialization.
+
+**Known issues**
+
+* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution. This warning will be omitted from future release notes. This Windows update was released in July 2025.
+* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
+* DNS resolution may be broken when the following conditions are all true:  
+   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
+   * A custom DNS server address is configured on the primary network adapter.  
+   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
+To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+
+## 2026-04-02
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
+
+  
+**Cloudflare One Client for macOS (version 2026.3.846.0)**   
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes and improvements.
+
+The next stable release for macOS will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
+
+**Changes and improvements**
+
+* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+* Added monitoring for tunnel statistics collection timeouts.
+* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+
+## 2026-04-02
+
+[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
+
+  
+**Cloudflare One Client for Linux (version 2026.3.846.0)**   
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release contains minor fixes and improvements.
+
+The next stable release for Linux will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
+
+**Changes and improvements**
+
+* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
+* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
+* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
+* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
+* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
+* Added monitoring for tunnel statistics collection timeouts.
+* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
+* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
+
+## 2026-04-01
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
+
+  
+**Logs UI refresh**   
+
+Access authentication logs and Gateway activity logs (DNS, Network, and HTTP) now feature a refreshed user interface that gives you more flexibility when viewing and analyzing your logs.
+
+![Screenshot of the new logs UI showing DNS query logs with customizable columns and filtering options](https://developers.cloudflare.com/_astro/cf1-new-logs-ui.DxF4x0l-_mRSyH.webp) 
+
+The updated UI includes:
+
+* **Filter by field** \- Select any field value to add it as a filter and narrow down your results.
+* **Customizable fields** \- Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
+* **View details** \- Select a timestamp to view the full details of a log entry.
+* **Switch to classic view** \- Return to the previous log viewer interface if needed.
+
+For more information, refer to [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+
 ## 2026-03-24
 
 [ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
@@ -2596,7 +2703,7 @@ Try them out now in the [Zero Trust dashboard ↗](https://one.dash.cloudflare.c
   
 **Cloudy summaries for Access and Gateway Logs**   
 
-Cloudy, Cloudflare's AI Agent, will now automatically summarize your [Access](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/) and [Gateway](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/) block logs.
+Cloudy, Cloudflare's AI Agent, will now automatically summarize your [Access](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) block logs.
 
 In the log itself, Cloudy will summarize what occurred and why. This will be helpful for quick troubleshooting and issue correlation.
 
@@ -3363,8 +3470,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-3427)
-* [ Core Dashboard ](#tab-panel-3428)
+* [ Zero Trust Dashboard ](#tab-panel-3443)
+* [ Core Dashboard ](#tab-panel-3444)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -3510,7 +3617,7 @@ Learn more in our documentation for [HTTP Redirect](https://developers.cloudflar
   
 **Cloudflare Zero Trust SCIM User and Group Provisioning Logs**   
 
-[Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
+[Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
 
 SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
 
@@ -3746,7 +3853,7 @@ Filter logs matching specific criteria you have set and select from over 25 fiel
 
 ![logpush-detections](https://developers.cloudflare.com/_astro/Logpush-Detections.Dc5tHta3_1PsIMk.webp) 
 
-For more information, refer to [Enable detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-detection-logs).
+For more information, refer to [Enable detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs).
 
 This feature is available across these Email security packages:
 
@@ -4041,7 +4148,7 @@ When creating a new Logpush job, remember to select **Audit logs** as the datase
 * **Value**: `"email_security"`.
 ![Logpush-user-actions](https://developers.cloudflare.com/_astro/Logpush-User-Actions.D14fWgmq_CYM35.webp) 
 
-For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-user-action-logs).
+For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs).
 
 This feature is available across all Email security packages:
 

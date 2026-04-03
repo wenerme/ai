@@ -32,9 +32,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1977)
-* [  Python ](#tab-panel-1978)
-* [  curl ](#tab-panel-1979)
+* [  TypeScript ](#tab-panel-1993)
+* [  Python ](#tab-panel-1994)
+* [  curl ](#tab-panel-1995)
 
 ```
 
@@ -170,8 +170,8 @@ Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1980)
-* [ Output ](#tab-panel-1981)
+* [ Input ](#tab-panel-1996)
+* [ Output ](#tab-panel-1997)
 
 ```
 

@@ -5,7 +5,7 @@
 Stream text content as it's generated:
 
 ```typescript
-import { OpenRouter } from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -57,7 +57,7 @@ calls, reasoning, etc.). See
 paradigm explanation.
 
 ```typescript
-import type { StreamableOutputItem } from '@openrouter/sdk';
+import type { StreamableOutputItem } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',

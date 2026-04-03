@@ -19,9 +19,9 @@ Recommendation: Use custom rules instead
 
 Cloudflare recommends that you create [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of IP Access rules to perform IP-based or geography-based blocking (geoblocking).
 
-* [  New dashboard ](#tab-panel-6876)
-* [ Old dashboard ](#tab-panel-6877)
-* [ API ](#tab-panel-6878)
+* [  New dashboard ](#tab-panel-6892)
+* [ Old dashboard ](#tab-panel-6893)
+* [ API ](#tab-panel-6894)
 
 Note
 

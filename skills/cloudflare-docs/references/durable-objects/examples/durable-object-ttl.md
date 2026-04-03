@@ -26,9 +26,9 @@ Be careful when calling `setAlarm` in the Durable Object class constructor
 
 In this example the TTL is extended upon every new fetch request to the Durable Object. It might be tempting to instead extend the TTL in the constructor of the Durable Object. This is not advised because the Durable Object's constructor will be called before invoking the alarm handler if the alarm wakes the Durable Object up from hibernation. This approach will naively result in the constructor continually extending the TTL without running the alarm handler. If you must call `setAlarm` in the Durable Object class constructor be sure to check that there is no alarm previously set.
 
-* [  JavaScript ](#tab-panel-4469)
-* [  TypeScript ](#tab-panel-4470)
-* [  Python ](#tab-panel-4471)
+* [  JavaScript ](#tab-panel-4485)
+* [  TypeScript ](#tab-panel-4486)
+* [  Python ](#tab-panel-4487)
 
 JavaScript
 
@@ -209,8 +209,8 @@ class Default(WorkerEntrypoint):
 
 To test and deploy this example, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4472)
-* [  wrangler.toml ](#tab-panel-4473)
+* [  wrangler.jsonc ](#tab-panel-4488)
+* [  wrangler.toml ](#tab-panel-4489)
 
 ```
 

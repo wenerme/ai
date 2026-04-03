@@ -34,8 +34,8 @@ By turning on the TLS 1.3 feature, traffic to and from your website will be serv
 
 TLS 1.3 can be activated in the Cloudflare dashboard or through the API:
 
-* [ Dashboard ](#tab-panel-6529)
-* [ API ](#tab-panel-6530)
+* [ Dashboard ](#tab-panel-6545)
+* [ API ](#tab-panel-6546)
 
 To enable TLS 1.3 in the dashboard:
 

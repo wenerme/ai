@@ -179,8 +179,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-3120)
-* [ Old dashboard ](#tab-panel-3121)
+* [  New dashboard ](#tab-panel-3136)
+* [ Old dashboard ](#tab-panel-3137)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -220,8 +220,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-3122)
-* [ Old dashboard ](#tab-panel-3123)
+* [  New dashboard ](#tab-panel-3138)
+* [ Old dashboard ](#tab-panel-3139)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -239,8 +239,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-3118)
-* [ Old dashboard ](#tab-panel-3119)
+* [  New dashboard ](#tab-panel-3134)
+* [ Old dashboard ](#tab-panel-3135)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

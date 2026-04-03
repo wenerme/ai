@@ -120,8 +120,8 @@ Binary string representing the image contents.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2069)
-* [ Output ](#tab-panel-2070)
+* [ Input ](#tab-panel-2085)
+* [ Output ](#tab-panel-2086)
 
 ```
 

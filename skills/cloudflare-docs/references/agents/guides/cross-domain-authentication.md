@@ -48,8 +48,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-2900)
-* [  TypeScript ](#tab-panel-2901)
+* [  JavaScript ](#tab-panel-2916)
+* [  TypeScript ](#tab-panel-2917)
 
 JavaScript
 
@@ -117,8 +117,8 @@ function ChatComponent() {
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-2906)
-* [  TypeScript ](#tab-panel-2907)
+* [  JavaScript ](#tab-panel-2922)
+* [  TypeScript ](#tab-panel-2923)
 
 JavaScript
 
@@ -242,8 +242,8 @@ function App() {
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-2908)
-* [  TypeScript ](#tab-panel-2909)
+* [  JavaScript ](#tab-panel-2924)
+* [  TypeScript ](#tab-panel-2925)
 
 JavaScript
 
@@ -429,8 +429,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-2902)
-* [  TypeScript ](#tab-panel-2903)
+* [  JavaScript ](#tab-panel-2918)
+* [  TypeScript ](#tab-panel-2919)
 
 JavaScript
 
@@ -500,8 +500,8 @@ function StaticCrossDomainAuth() {
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-2904)
-* [  TypeScript ](#tab-panel-2905)
+* [  JavaScript ](#tab-panel-2920)
+* [  TypeScript ](#tab-panel-2921)
 
 JavaScript
 
@@ -599,8 +599,8 @@ function AsyncCrossDomainAuth() {
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-2910)
-* [  TypeScript ](#tab-panel-2911)
+* [  JavaScript ](#tab-panel-2926)
+* [  TypeScript ](#tab-panel-2927)
 
 JavaScript
 

@@ -228,8 +228,8 @@ Here is a minimal package.json:
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8570)
-* [  wrangler.toml ](#tab-panel-8571)
+* [  wrangler.jsonc ](#tab-panel-8590)
+* [  wrangler.toml ](#tab-panel-8591)
 
 ```
 

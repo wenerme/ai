@@ -108,8 +108,8 @@ When you make too many requests in a short period of time, Browser Rendering wil
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ REST API ](#tab-panel-3230)
-* [ Workers Bindings ](#tab-panel-3231)
+* [ REST API ](#tab-panel-3246)
+* [ Workers Bindings ](#tab-panel-3247)
 
 JavaScript
 

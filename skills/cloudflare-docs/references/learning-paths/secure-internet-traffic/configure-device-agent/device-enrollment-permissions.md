@@ -20,8 +20,8 @@ Device enrollment permissions determine which users can connect new devices to y
 
 ## Set device enrollment permissions
 
-* [ Dashboard ](#tab-panel-5287)
-* [ Terraform (v5) ](#tab-panel-5288)
+* [ Dashboard ](#tab-panel-5303)
+* [ Terraform (v5) ](#tab-panel-5304)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **Management**.
 2. In **Device enrollment** \> **Device enrollment permissions**, select **Manage**.
@@ -99,8 +99,8 @@ Allowed signature algorithms
 
 To check for an mTLS certificate:
 
-* [ Dashboard ](#tab-panel-5289)
-* [ Terraform (v5) ](#tab-panel-5290)
+* [ Dashboard ](#tab-panel-5305)
+* [ Terraform (v5) ](#tab-panel-5306)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.

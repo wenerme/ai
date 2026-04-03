@@ -45,8 +45,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-4561)
-* [  wrangler.toml ](#tab-panel-4562)
+* [  wrangler.jsonc ](#tab-panel-4577)
+* [  wrangler.toml ](#tab-panel-4578)
 
 ```
 
@@ -82,8 +82,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-4565)
-* [  TypeScript ](#tab-panel-4566)
+* [  JavaScript ](#tab-panel-4581)
+* [  TypeScript ](#tab-panel-4582)
 
 JavaScript
 
@@ -217,8 +217,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-4563)
-* [  TypeScript ](#tab-panel-4564)
+* [  JavaScript ](#tab-panel-4579)
+* [  TypeScript ](#tab-panel-4580)
 
 JavaScript
 

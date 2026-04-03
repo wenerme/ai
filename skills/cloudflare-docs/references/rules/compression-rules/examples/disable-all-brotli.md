@@ -18,8 +18,8 @@ Copy page
 
 Create a compression rule to turn off Brotli compression for all incoming requests of a given zone.
 
-* [ Dashboard ](#tab-panel-5969)
-* [ API ](#tab-panel-5970)
+* [ Dashboard ](#tab-panel-5985)
+* [ API ](#tab-panel-5986)
 
 The following example rule will disable Brotli compression for all incoming requests of a given zone. The only available compression algorithm will be Gzip.
 

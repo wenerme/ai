@@ -67,8 +67,8 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 
 ## Obtain prefix IDs
 
-* [ Dashboard ](#tab-panel-3276)
-* [ API ](#tab-panel-3277)
+* [ Dashboard ](#tab-panel-3292)
+* [ API ](#tab-panel-3293)
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** \> **BYOIP Prefixes**.

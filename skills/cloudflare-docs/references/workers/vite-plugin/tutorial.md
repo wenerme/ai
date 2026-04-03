@@ -98,8 +98,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-7784)
-* [  wrangler.toml ](#tab-panel-7785)
+* [  wrangler.jsonc ](#tab-panel-7804)
+* [  wrangler.toml ](#tab-panel-7805)
 
 ```
 
@@ -241,8 +241,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-7786)
-* [  wrangler.toml ](#tab-panel-7787)
+* [  wrangler.jsonc ](#tab-panel-7806)
+* [  wrangler.toml ](#tab-panel-7807)
 
 ```
 
@@ -332,8 +332,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-7788)
-* [  wrangler.toml ](#tab-panel-7789)
+* [  wrangler.jsonc ](#tab-panel-7808)
+* [  wrangler.toml ](#tab-panel-7809)
 
 ```
 

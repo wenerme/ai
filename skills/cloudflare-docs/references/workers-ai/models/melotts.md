@@ -87,8 +87,8 @@ The generated audio in MP3 format
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1901)
-* [ Output ](#tab-panel-1902)
+* [ Input ](#tab-panel-1917)
+* [ Output ](#tab-panel-1918)
 
 ```
 

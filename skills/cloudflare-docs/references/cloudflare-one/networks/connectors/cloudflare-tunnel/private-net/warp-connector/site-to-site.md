@@ -187,9 +187,9 @@ If you do not have access to the router, you will need to configure each device 
 
 You can configure all traffic on a device to egress through WARP Connector with its local source IP. All traffic will be filtered by your Gateway network policies.
 
-* [ Linux ](#tab-panel-3516)
-* [ macOS ](#tab-panel-3517)
-* [ Windows ](#tab-panel-3518)
+* [ Linux ](#tab-panel-3532)
+* [ macOS ](#tab-panel-3533)
+* [ Windows ](#tab-panel-3534)
 
 Terminal window
 
@@ -224,9 +224,9 @@ Ensure that the `metric` value is lower than other default gateways.
 
 Alternatively, you can configure only certain routes to egress through WARP Connector. For example, you may only want to filter traffic destined to internal applications and devices, but allow public Internet traffic to bypass Cloudflare.
 
-* [ Linux ](#tab-panel-3513)
-* [ macOS ](#tab-panel-3514)
-* [ Windows ](#tab-panel-3515)
+* [ Linux ](#tab-panel-3529)
+* [ macOS ](#tab-panel-3530)
+* [ Windows ](#tab-panel-3531)
 
 Terminal window
 
@@ -303,7 +303,7 @@ Note
 
 If you are testing with curl using private hostnames, add the `--ipv4` flag to your curl commands.
 
-Your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/) will show traffic associated with the email `warp_connector@<your-team-name>.cloudflareaccess.com`.
+Your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) will show traffic associated with the email `warp_connector@<your-team-name>.cloudflareaccess.com`.
 
 ## Footnotes
 

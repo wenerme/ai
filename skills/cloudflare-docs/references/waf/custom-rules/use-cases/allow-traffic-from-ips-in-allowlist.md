@@ -25,15 +25,15 @@ For example, create an IP list named `allowed_ips` with one or more IP addresses
    | Field             | Operator       | Value        |  
    | ----------------- | -------------- | ------------ |  
    | IP Source Address | is not in list | allowed\_ips |  
-   If you are using the Expression Editor:  
+   If you are using the expression editor:  
    `(not ip.src in $allowed_ips)`  
-   * **Action**: _Block_
+   * **Then take action**: _Block_
 3. (Optional) Update your expression with any extra filters, like blocking non-allowlisted IPs only for specific URI paths:  
-| Field             | Operator       | Value        |     |  
-| ----------------- | -------------- | ------------ | --- |  
-| IP Source Address | is not in list | allowed\_ips | And |  
-| URI Path          | wildcard       | /admin/\*    |     |  
-If you are using the Expression Editor:  
+| Field             | Operator       | Value        | Logic |  
+| ----------------- | -------------- | ------------ | ----- |  
+| IP Source Address | is not in list | allowed\_ips | And   |  
+| URI Path          | wildcard       | /admin/\*    |       |  
+If you are using the expression editor:  
 `(not ip.src in $allowed_ips and http.request.uri.path wildcard "/admin/*")`
 
 ## Other resources

@@ -20,8 +20,8 @@ Receive webhook events from external services and route them to dedicated agent 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2984)
-* [  TypeScript ](#tab-panel-2985)
+* [  JavaScript ](#tab-panel-3000)
+* [  TypeScript ](#tab-panel-3001)
 
 JavaScript
 
@@ -367,8 +367,8 @@ The key pattern is extracting an entity identifier from the webhook and using `g
 
 Most webhooks include an identifier in the payload:
 
-* [  JavaScript ](#tab-panel-2960)
-* [  TypeScript ](#tab-panel-2961)
+* [  JavaScript ](#tab-panel-2976)
+* [  TypeScript ](#tab-panel-2977)
 
 JavaScript
 
@@ -462,8 +462,8 @@ export default {
 
 Alternatively, include the entity ID in the webhook URL:
 
-* [  JavaScript ](#tab-panel-2956)
-* [  TypeScript ](#tab-panel-2957)
+* [  JavaScript ](#tab-panel-2972)
+* [  TypeScript ](#tab-panel-2973)
 
 JavaScript
 
@@ -507,8 +507,8 @@ if (url.pathname.startsWith("/webhooks/stripe/")) {
 
 Some services include identifiers in headers:
 
-* [  JavaScript ](#tab-panel-2958)
-* [  TypeScript ](#tab-panel-2959)
+* [  JavaScript ](#tab-panel-2974)
+* [  TypeScript ](#tab-panel-2975)
 
 JavaScript
 
@@ -554,8 +554,8 @@ Always verify webhook signatures to ensure requests are authentic. Most provider
 
 ### HMAC-SHA256 pattern
 
-* [  JavaScript ](#tab-panel-2970)
-* [  TypeScript ](#tab-panel-2971)
+* [  JavaScript ](#tab-panel-2986)
+* [  TypeScript ](#tab-panel-2987)
 
 JavaScript
 
@@ -687,8 +687,8 @@ async function verifySignature(
 
 Use `onRequest()` to handle incoming webhooks in your agent:
 
-* [  JavaScript ](#tab-panel-2978)
-* [  TypeScript ](#tab-panel-2979)
+* [  JavaScript ](#tab-panel-2994)
+* [  TypeScript ](#tab-panel-2995)
 
 JavaScript
 
@@ -852,8 +852,8 @@ Use SQLite to persist webhook events for history and replay.
 
 ### Event table schema
 
-* [  JavaScript ](#tab-panel-2968)
-* [  TypeScript ](#tab-panel-2969)
+* [  JavaScript ](#tab-panel-2984)
+* [  TypeScript ](#tab-panel-2985)
 
 JavaScript
 
@@ -959,8 +959,8 @@ class WebhookAgent extends Agent {
 
 Prevent unbounded growth by keeping only recent events:
 
-* [  JavaScript ](#tab-panel-2962)
-* [  TypeScript ](#tab-panel-2963)
+* [  JavaScript ](#tab-panel-2978)
+* [  TypeScript ](#tab-panel-2979)
 
 JavaScript
 
@@ -1024,8 +1024,8 @@ this.sql`
 
 ### Query events
 
-* [  JavaScript ](#tab-panel-2974)
-* [  TypeScript ](#tab-panel-2975)
+* [  JavaScript ](#tab-panel-2990)
+* [  TypeScript ](#tab-panel-2991)
 
 JavaScript
 
@@ -1145,8 +1145,8 @@ class WebhookAgent extends Agent {
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
 
-* [  JavaScript ](#tab-panel-2964)
-* [  TypeScript ](#tab-panel-2965)
+* [  JavaScript ](#tab-panel-2980)
+* [  TypeScript ](#tab-panel-2981)
 
 JavaScript
 
@@ -1254,8 +1254,8 @@ function Dashboard() {
 
 Prevent processing duplicate events using event IDs:
 
-* [  JavaScript ](#tab-panel-2972)
-* [  TypeScript ](#tab-panel-2973)
+* [  JavaScript ](#tab-panel-2988)
+* [  TypeScript ](#tab-panel-2989)
 
 JavaScript
 
@@ -1347,8 +1347,8 @@ class WebhookAgent extends Agent {
 
 Webhook providers expect fast responses. Use the queue for heavy processing:
 
-* [  JavaScript ](#tab-panel-2976)
-* [  TypeScript ](#tab-panel-2977)
+* [  JavaScript ](#tab-panel-2992)
+* [  TypeScript ](#tab-panel-2993)
 
 JavaScript
 
@@ -1452,8 +1452,8 @@ class WebhookAgent extends Agent {
 
 Handle webhooks from multiple services in one Worker:
 
-* [  JavaScript ](#tab-panel-2982)
-* [  TypeScript ](#tab-panel-2983)
+* [  JavaScript ](#tab-panel-2998)
+* [  TypeScript ](#tab-panel-2999)
 
 JavaScript
 
@@ -1605,8 +1605,8 @@ export default {
 
 Agents can also send webhooks to external services:
 
-* [  JavaScript ](#tab-panel-2980)
-* [  TypeScript ](#tab-panel-2981)
+* [  JavaScript ](#tab-panel-2996)
+* [  TypeScript ](#tab-panel-2997)
 
 JavaScript
 
@@ -1733,8 +1733,8 @@ export class NotificationAgent extends Agent {
 5. **Log rejections** \- Track invalid signatures for security monitoring.
 6. **Use HTTPS** \- Webhook URLs should always use TLS.
 
-* [  JavaScript ](#tab-panel-2966)
-* [  TypeScript ](#tab-panel-2967)
+* [  JavaScript ](#tab-panel-2982)
+* [  TypeScript ](#tab-panel-2983)
 
 JavaScript
 

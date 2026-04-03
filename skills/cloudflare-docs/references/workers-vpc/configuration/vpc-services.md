@@ -147,8 +147,8 @@ The following is an example of a VPC Service for a service using custom HTTP and
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-6947)
-* [  wrangler.toml ](#tab-panel-6948)
+* [  wrangler.jsonc ](#tab-panel-6963)
+* [  wrangler.toml ](#tab-panel-6964)
 
 ```
 
@@ -201,8 +201,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-6949)
-* [  wrangler.toml ](#tab-panel-6950)
+* [  wrangler.jsonc ](#tab-panel-6965)
+* [  wrangler.toml ](#tab-panel-6966)
 
 ```
 

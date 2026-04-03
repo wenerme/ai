@@ -106,8 +106,8 @@ cd consumer-worker
 
 In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)\](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-5937)
-* [  wrangler.toml ](#tab-panel-5938)
+* [  wrangler.jsonc ](#tab-panel-5953)
+* [  wrangler.toml ](#tab-panel-5954)
 
 ```
 

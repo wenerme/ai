@@ -42,9 +42,9 @@ Do not return early when the input and secret have different lengths. An early r
 
 In order to compare two strings, you must use the [TextEncoder](https://developers.cloudflare.com/workers/runtime-apis/encoding/#textencoder) API.
 
-* [  TypeScript ](#tab-panel-7305)
-* [  Python ](#tab-panel-7306)
-* [  Hono ](#tab-panel-7307)
+* [  TypeScript ](#tab-panel-7325)
+* [  Python ](#tab-panel-7326)
+* [  Hono ](#tab-panel-7327)
 
 TypeScript
 

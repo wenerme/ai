@@ -72,8 +72,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-3678)
-* [ Version 2026.1 and earlier ](#tab-panel-3679)
+* [ Version 2026.2+ ](#tab-panel-3694)
+* [ Version 2026.1 and earlier ](#tab-panel-3695)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -385,9 +385,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-3680)
-* [ Linux ](#tab-panel-3681)
-* [ Android and ChromeOS ](#tab-panel-3682)
+* [ Windows and macOS ](#tab-panel-3696)
+* [ Linux ](#tab-panel-3697)
+* [ Android and ChromeOS ](#tab-panel-3698)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

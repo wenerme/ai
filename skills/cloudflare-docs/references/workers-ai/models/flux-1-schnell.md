@@ -31,9 +31,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-1697)
-* [  Worker (Image) ](#tab-panel-1698)
-* [  curl ](#tab-panel-1699)
+* [  Worker (Data URI) ](#tab-panel-1713)
+* [  Worker (Image) ](#tab-panel-1714)
+* [  curl ](#tab-panel-1715)
 
 TypeScript
 
@@ -154,8 +154,8 @@ The generated image in Base64 format.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1700)
-* [ Output ](#tab-panel-1701)
+* [ Input ](#tab-panel-1716)
+* [ Output ](#tab-panel-1717)
 
 ```
 

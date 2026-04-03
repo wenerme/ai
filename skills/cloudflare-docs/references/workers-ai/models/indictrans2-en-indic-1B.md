@@ -30,9 +30,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1772)
-* [  Python ](#tab-panel-1773)
-* [  curl ](#tab-panel-1774)
+* [  TypeScript ](#tab-panel-1788)
+* [  Python ](#tab-panel-1789)
+* [  curl ](#tab-panel-1790)
 
 ```
 
@@ -147,8 +147,8 @@ Translated texts
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1775)
-* [ Output ](#tab-panel-1776)
+* [ Input ](#tab-panel-1791)
+* [ Output ](#tab-panel-1792)
 
 ```
 

@@ -128,8 +128,8 @@ If you keep any DNS records that still refer `cdn.cloudflare.net`, HTTP traffic 
 
 1. Enable outgoing zone transfers at your primary provider and create a peer DNS server on your Cloudflare account.
 
-* [ Dashboard ](#tab-panel-4284)
-* [ API ](#tab-panel-4285)
+* [ Dashboard ](#tab-panel-4300)
+* [ API ](#tab-panel-4301)
 
 To create a peer server using the dashboard:
 
@@ -148,8 +148,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 1. Link your Cloudflare zone to the peer DNS server you just created.
 
-* [ Dashboard ](#tab-panel-4282)
-* [ API ](#tab-panel-4283)
+* [ Dashboard ](#tab-panel-4298)
+* [ API ](#tab-panel-4299)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

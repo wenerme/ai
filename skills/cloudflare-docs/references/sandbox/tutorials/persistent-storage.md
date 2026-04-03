@@ -118,8 +118,8 @@ Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in th
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
-* [  JavaScript ](#tab-panel-6477)
-* [  TypeScript ](#tab-panel-6478)
+* [  JavaScript ](#tab-panel-6493)
+* [  TypeScript ](#tab-panel-6494)
 
 JavaScript
 

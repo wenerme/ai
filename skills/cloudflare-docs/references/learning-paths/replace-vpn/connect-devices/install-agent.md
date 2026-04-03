@@ -29,8 +29,8 @@ For more information, refer to [WARP with firewall](https://developers.cloudflar
 3. Manually install the Cloudflare One Client on the device.  
 Window, macOS, and Linux  
 To enroll your device using the client GUI:  
-   * [ Version 2026.2+ ](#tab-panel-5153)  
-   * [ Version 2026.1 and earlier ](#tab-panel-5154)  
+   * [ Version 2026.2+ ](#tab-panel-5169)  
+   * [ Version 2026.1 and earlier ](#tab-panel-5170)  
    1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.  
    2. Launch the Cloudflare One Client.  
    3. On the **What would you like to use the Cloudflare One Client for?** screen, select **Zero Trust security**.  

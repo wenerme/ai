@@ -20,8 +20,8 @@ A Cloudflare Web3 gateway provides HTTP-accessible interfaces to various Web3 ne
 
 ## Create a gateway
 
-* [ Dashboard ](#tab-panel-6903)
-* [ API ](#tab-panel-6904)
+* [ Dashboard ](#tab-panel-6919)
+* [ API ](#tab-panel-6920)
 
 To create a gateway using the dashboard:
 
@@ -122,8 +122,8 @@ Once you have [created a gateway](#create-a-gateway), you can only edit the **Ga
 
 If you need to edit other fields, [delete the gateway](#delete-a-gateway) and create a new one.
 
-* [ Dashboard ](#tab-panel-6895)
-* [ API ](#tab-panel-6896)
+* [ Dashboard ](#tab-panel-6911)
+* [ API ](#tab-panel-6912)
 
 To edit a gateway using the dashboard:
 
@@ -141,8 +141,8 @@ To edit specific settings for a gateway, use a [PATCH](https://developers.cloudf
 
 When your gateway is stuck in an **Error** [status](https://developers.cloudflare.com/web3/reference/gateway-status/), you should try refreshing the gateway, which attempts to re-create the associated DNS records for the hostname.
 
-* [ Dashboard ](#tab-panel-6897)
-* [ API ](#tab-panel-6898)
+* [ Dashboard ](#tab-panel-6913)
+* [ API ](#tab-panel-6914)
 
 To refresh a gateway using the dashboard:
 
@@ -164,8 +164,8 @@ You have the ability to block access to one or more:
 * IPFS content paths (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
 * IPNS content paths (`/ipns/example.com`)
 
-* [ Dashboard ](#tab-panel-6899)
-* [ API ](#tab-panel-6900)
+* [ Dashboard ](#tab-panel-6915)
+* [ API ](#tab-panel-6916)
 
 To add an item to the blocklist using the dashboard:
 
@@ -187,8 +187,8 @@ To add a blocklist item using the API, send a [POST](https://developers.cloudfla
 
 When you delete a gateway, Cloudflare will automatically remove all associated hostname DNS records. This action will impact your traffic and cannot be undone.
 
-* [ Dashboard ](#tab-panel-6901)
-* [ API ](#tab-panel-6902)
+* [ Dashboard ](#tab-panel-6917)
+* [ API ](#tab-panel-6918)
 
 To delete a gateway using the dashboard:
 

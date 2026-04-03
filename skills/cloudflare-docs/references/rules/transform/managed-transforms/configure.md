@@ -16,9 +16,9 @@ Copy page
 
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-6062)
-* [ API ](#tab-panel-6063)
-* [ Terraform ](#tab-panel-6064)
+* [ Dashboard ](#tab-panel-6078)
+* [ API ](#tab-panel-6079)
+* [ Terraform ](#tab-panel-6080)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)

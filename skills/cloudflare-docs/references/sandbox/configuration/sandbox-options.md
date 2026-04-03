@@ -42,8 +42,8 @@ Keep the container alive indefinitely by preventing automatic shutdown. When `tr
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
-* [  JavaScript ](#tab-panel-6203)
-* [  TypeScript ](#tab-panel-6204)
+* [  JavaScript ](#tab-panel-6219)
+* [  TypeScript ](#tab-panel-6220)
 
 JavaScript
 
@@ -125,8 +125,8 @@ Bug fix in v0.2.17
 
 Prior to v0.2.17, the `sleepAfter` option passed to `getSandbox()` was ignored due to a timing issue. The option is now properly applied when creating sandbox instances.
 
-* [  JavaScript ](#tab-panel-6201)
-* [  TypeScript ](#tab-panel-6202)
+* [  JavaScript ](#tab-panel-6217)
+* [  TypeScript ](#tab-panel-6218)
 
 JavaScript
 
@@ -186,8 +186,8 @@ When `keepAlive: true` is set, `sleepAfter` is ignored and the sandbox never sle
 
 Configure timeouts for container startup operations.
 
-* [  JavaScript ](#tab-panel-6205)
-* [  TypeScript ](#tab-panel-6206)
+* [  JavaScript ](#tab-panel-6221)
+* [  TypeScript ](#tab-panel-6222)
 
 JavaScript
 
@@ -280,8 +280,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
 * `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
 
-* [  wrangler.jsonc ](#tab-panel-6199)
-* [  wrangler.toml ](#tab-panel-6200)
+* [  wrangler.jsonc ](#tab-panel-6215)
+* [  wrangler.toml ](#tab-panel-6216)
 
 ```
 
@@ -325,8 +325,8 @@ Lowercase sandbox IDs when creating sandboxes. When `true`, the ID you provide i
 
 **Why this matters**: Preview URLs extract the sandbox ID from the hostname, which is always lowercase due to DNS case-insensitivity. Without normalization, a sandbox created with "MyProject-123" becomes unreachable via preview URL because the URL routing looks for "myproject-123" (different Durable Object).
 
-* [  JavaScript ](#tab-panel-6207)
-* [  TypeScript ](#tab-panel-6208)
+* [  JavaScript ](#tab-panel-6223)
+* [  TypeScript ](#tab-panel-6224)
 
 JavaScript
 

@@ -29,8 +29,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access scraping detections:
 
-* [  New dashboard ](#tab-panel-3188)
-* [ Old dashboard ](#tab-panel-3189)
+* [  New dashboard ](#tab-panel-3204)
+* [ Old dashboard ](#tab-panel-3205)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -26,8 +26,8 @@ Text strings and JSON values are not encrypted and are useful for storing applic
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file. In the following example, `API_HOST` and `API_ACCOUNT_ID` are text values and `SERVICE_X_DATA` is a JSON value.
 
-* [  wrangler.jsonc ](#tab-panel-7053)
-* [  wrangler.toml ](#tab-panel-7054)
+* [  wrangler.jsonc ](#tab-panel-7073)
+* [  wrangler.toml ](#tab-panel-7074)
 
 ```
 
@@ -83,8 +83,8 @@ API_ACCOUNT_ID = "example_user"
 
 Refer to the following example on how to access the `API_HOST` environment variable in your Worker code:
 
-* [  JavaScript ](#tab-panel-7047)
-* [  TypeScript ](#tab-panel-7048)
+* [  JavaScript ](#tab-panel-7067)
+* [  TypeScript ](#tab-panel-7068)
 
 JavaScript
 
@@ -131,8 +131,8 @@ export default {
 
 You can also import `env` from [cloudflare:workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) to access environment variables from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-7051)
-* [  TypeScript ](#tab-panel-7052)
+* [  JavaScript ](#tab-panel-7071)
+* [  TypeScript ](#tab-panel-7072)
 
 JavaScript
 
@@ -197,8 +197,8 @@ For more details, refer to [Importing env as a global](https://developers.cloudf
 
 The example below sets up two environments, `staging` and `production`, with different values for `API_HOST`.
 
-* [  wrangler.jsonc ](#tab-panel-7049)
-* [  wrangler.toml ](#tab-panel-7050)
+* [  wrangler.jsonc ](#tab-panel-7069)
+* [  wrangler.toml ](#tab-panel-7070)
 
 ```
 

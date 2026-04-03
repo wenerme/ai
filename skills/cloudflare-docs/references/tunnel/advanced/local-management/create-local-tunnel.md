@@ -27,10 +27,10 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-6654)
-* [ macOS ](#tab-panel-6655)
-* [ Linux ](#tab-panel-6656)
-* [ Build from source ](#tab-panel-6657)
+* [ Windows ](#tab-panel-6670)
+* [ macOS ](#tab-panel-6671)
+* [ Linux ](#tab-panel-6672)
+* [ Build from source ](#tab-panel-6673)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`

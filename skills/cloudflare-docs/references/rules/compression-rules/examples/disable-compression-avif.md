@@ -18,8 +18,8 @@ Copy page
 
 Create a compression rule to turn off compression for AVIF images, based on either the content type or the file extension specified in the request.
 
-* [ Dashboard ](#tab-panel-5971)
-* [ API ](#tab-panel-5972)
+* [ Dashboard ](#tab-panel-5987)
+* [ API ](#tab-panel-5988)
 
 The following example rule will disable compression for AVIF images, based on either the content type or the file extension specified in the request.
 

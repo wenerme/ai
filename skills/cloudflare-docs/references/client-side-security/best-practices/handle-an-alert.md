@@ -23,8 +23,8 @@ If you receive a [client-side resource alert](https://developers.cloudflare.com/
 Start by identifying the [detection system](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) that triggered the alert. A link is provided in the alert that will send you directly to the Cloudflare dashboard to the relevant resource that needs reviewing. Alternatively, do the following:
 
 1. Navigate to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3296)  
-   * [ Old dashboard ](#tab-panel-3297)  
+   * [  New dashboard ](#tab-panel-3312)  
+   * [ Old dashboard ](#tab-panel-3313)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

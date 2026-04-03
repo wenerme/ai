@@ -32,8 +32,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-3991)
-* [ Worker Config ](#tab-panel-3992)
+* [ Worker Code ](#tab-panel-4009)
+* [ Worker Config ](#tab-panel-4010)
 
 JavaScript
 
@@ -72,8 +72,8 @@ export default {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3989)
-* [  wrangler.toml ](#tab-panel-3990)
+* [  wrangler.jsonc ](#tab-panel-4007)
+* [  wrangler.toml ](#tab-panel-4008)
 
 ```
 

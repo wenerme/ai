@@ -28,8 +28,8 @@ Prior to setting up DNS Firewall, you need:
 
 ### Create a DNS Firewall cluster
 
-* [ Dashboard ](#tab-panel-4222)
-* [ API ](#tab-panel-4223)
+* [ Dashboard ](#tab-panel-4238)
+* [ API ](#tab-panel-4239)
 
 1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.  
 [ Go to **Clusters** ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)

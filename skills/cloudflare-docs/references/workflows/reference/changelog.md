@@ -26,7 +26,7 @@ All `wrangler workflows` commands now accept a `--local` flag to target a Workfl
 
 All commands also accept `--port` to target a specific `wrangler dev` session (defaults to `8787`).
 
-More information available in the [changelog](https://developers.cloudflare.com/changelog/2026-03-31-wrangler-workflows-local/).
+More information available in the [changelog](https://developers.cloudflare.com/changelog/post/2026-04-01-wrangler-workflows-local/).
 
 ## 2026-03-26
 

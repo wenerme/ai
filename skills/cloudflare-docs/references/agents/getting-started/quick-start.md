@@ -65,8 +65,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-2890)
-* [  TypeScript ](#tab-panel-2891)
+* [  JavaScript ](#tab-panel-2906)
+* [  TypeScript ](#tab-panel-2907)
 
 JavaScript
 
@@ -225,8 +225,8 @@ export default {
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-2882)
-* [  wrangler.toml ](#tab-panel-2883)
+* [  wrangler.jsonc ](#tab-panel-2898)
+* [  wrangler.toml ](#tab-panel-2899)
 
 ```
 
@@ -395,8 +395,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-2886)
-* [  TypeScript ](#tab-panel-2887)
+* [  JavaScript ](#tab-panel-2902)
+* [  TypeScript ](#tab-panel-2903)
 
 JavaScript
 
@@ -495,8 +495,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-2884)
-* [  TypeScript ](#tab-panel-2885)
+* [  JavaScript ](#tab-panel-2900)
+* [  TypeScript ](#tab-panel-2901)
 
 JavaScript
 
@@ -546,8 +546,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-2888)
-* [  TypeScript ](#tab-panel-2889)
+* [  JavaScript ](#tab-panel-2904)
+* [  TypeScript ](#tab-panel-2905)
 
 JavaScript
 

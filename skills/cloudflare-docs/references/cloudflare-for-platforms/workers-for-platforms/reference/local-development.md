@@ -32,8 +32,8 @@ This is helpful when:
 
 In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespace binding](https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms) to connect to the remote namespace by setting [remote = true](https://developers.cloudflare.com/workers/development-testing/#remote-bindings):
 
-* [  wrangler.jsonc ](#tab-panel-3368)
-* [  wrangler.toml ](#tab-panel-3369)
+* [  wrangler.jsonc ](#tab-panel-3384)
+* [  wrangler.toml ](#tab-panel-3385)
 
 ```
 

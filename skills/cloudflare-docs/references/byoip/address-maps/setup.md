@@ -26,8 +26,8 @@ There is **no expected downtime** when setting up or updating your address maps.
 
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
-* [ Dashboard ](#tab-panel-3274)
-* [ API ](#tab-panel-3275)
+* [ Dashboard ](#tab-panel-3290)
+* [ API ](#tab-panel-3291)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -95,8 +95,8 @@ A zone membership will take priority over an account membership.
 
 ## Manage address maps
 
-* [ Dashboard ](#tab-panel-3272)
-* [ API ](#tab-panel-3273)
+* [ Dashboard ](#tab-panel-3288)
+* [ API ](#tab-panel-3289)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)

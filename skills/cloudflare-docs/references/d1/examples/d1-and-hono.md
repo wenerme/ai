@@ -40,8 +40,8 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-4039)
-* [ pages ](#tab-panel-4040)
+* [ workers ](#tab-panel-4057)
+* [ pages ](#tab-panel-4058)
 
 TypeScript
 

@@ -55,8 +55,8 @@ The values of the table will update according to your filter.
 
 ## Take action for each AI crawler
 
-* [ Without pay per crawl ](#tab-panel-3014)
-* [ With pay per crawl ](#tab-panel-3015)
+* [ Without pay per crawl ](#tab-panel-3030)
+* [ With pay per crawl ](#tab-panel-3031)
 
 For each AI crawler, you can choose to allow or block access.
 

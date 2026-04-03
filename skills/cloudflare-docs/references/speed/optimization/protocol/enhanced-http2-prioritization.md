@@ -34,8 +34,8 @@ For more details, refer to [the introductory blog post ↗](https://blog.cloudfl
 
 ## Enable Enhanced HTTP/2 Prioritization
 
-* [ Dashboard ](#tab-panel-6505)
-* [ API ](#tab-panel-6506)
+* [ Dashboard ](#tab-panel-6521)
+* [ API ](#tab-panel-6522)
 
 To enable **Enhanced HTTP/2 Prioritization** in the Cloudflare dashboard:
 

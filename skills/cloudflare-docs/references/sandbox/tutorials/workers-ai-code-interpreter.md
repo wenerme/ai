@@ -144,8 +144,8 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6479)
-* [  wrangler.toml ](#tab-panel-6480)
+* [  wrangler.jsonc ](#tab-panel-6495)
+* [  wrangler.toml ](#tab-panel-6496)
 
 ```
 

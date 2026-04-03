@@ -41,8 +41,8 @@ If you are using several app security features like custom rules, Managed Rules,
 
 To start using Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3198)
-* [ Old dashboard ](#tab-panel-3199)
+* [  New dashboard ](#tab-panel-3214)
+* [ Old dashboard ](#tab-panel-3215)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -70,8 +70,8 @@ If you find that **Bot Fight Mode** is causing problems with your application tr
 
 To disable Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3200)
-* [ Old dashboard ](#tab-panel-3201)
+* [  New dashboard ](#tab-panel-3216)
+* [ Old dashboard ](#tab-panel-3217)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

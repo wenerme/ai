@@ -28,9 +28,9 @@ Worker-to-Worker `fetch` requests are possible with [Service bindings](https://d
 
 ## Syntax
 
-* [  Module Worker ](#tab-panel-7560)
-* [  Service Worker ](#tab-panel-7561)
-* [  Python Worker ](#tab-panel-7562)
+* [  Module Worker ](#tab-panel-7580)
+* [  Service Worker ](#tab-panel-7581)
+* [  Python Worker ](#tab-panel-7582)
 
 JavaScript
 

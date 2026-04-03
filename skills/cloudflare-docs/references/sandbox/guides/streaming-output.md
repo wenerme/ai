@@ -38,8 +38,8 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-6463)
-* [  TypeScript ](#tab-panel-6464)
+* [  JavaScript ](#tab-panel-6479)
+* [  TypeScript ](#tab-panel-6480)
 
 JavaScript
 
@@ -147,8 +147,8 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-6459)
-* [  TypeScript ](#tab-panel-6460)
+* [  JavaScript ](#tab-panel-6475)
+* [  TypeScript ](#tab-panel-6476)
 
 JavaScript
 
@@ -230,8 +230,8 @@ export default {
 
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-6457)
-* [  TypeScript ](#tab-panel-6458)
+* [  JavaScript ](#tab-panel-6473)
+* [  TypeScript ](#tab-panel-6474)
 
 JavaScript
 
@@ -299,8 +299,8 @@ eventSource.addEventListener('complete', (event) => {
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-6461)
-* [  TypeScript ](#tab-panel-6462)
+* [  JavaScript ](#tab-panel-6477)
+* [  TypeScript ](#tab-panel-6478)
 
 JavaScript
 
@@ -368,8 +368,8 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-6465)
-* [  TypeScript ](#tab-panel-6466)
+* [  JavaScript ](#tab-panel-6481)
+* [  TypeScript ](#tab-panel-6482)
 
 JavaScript
 

@@ -42,8 +42,8 @@ The feature is available in all Cloudflare plans, and is turned on by default on
 
 ## Configure
 
-* [ Dashboard ](#tab-panel-6879)
-* [ API ](#tab-panel-6880)
+* [ Dashboard ](#tab-panel-6895)
+* [ API ](#tab-panel-6896)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

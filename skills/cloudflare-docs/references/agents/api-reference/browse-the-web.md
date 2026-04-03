@@ -24,8 +24,8 @@ The [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) al
 
 You can define a method that uses Puppeteer to pull the content of a web page, parse the DOM, and extract relevant information by calling a model via [Workers AI](https://developers.cloudflare.com/workers-ai/):
 
-* [  JavaScript ](#tab-panel-2104)
-* [  TypeScript ](#tab-panel-2105)
+* [  JavaScript ](#tab-panel-2120)
+* [  TypeScript ](#tab-panel-2121)
 
 JavaScript
 
@@ -182,8 +182,8 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-* [  wrangler.jsonc ](#tab-panel-2100)
-* [  wrangler.toml ](#tab-panel-2101)
+* [  wrangler.jsonc ](#tab-panel-2116)
+* [  wrangler.toml ](#tab-panel-2117)
 
 ```
 
@@ -272,8 +272,8 @@ pnpm add @cloudflare/puppeteer
 bun add @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-2102)
-* [  TypeScript ](#tab-panel-2103)
+* [  JavaScript ](#tab-panel-2118)
+* [  TypeScript ](#tab-panel-2119)
 
 JavaScript
 

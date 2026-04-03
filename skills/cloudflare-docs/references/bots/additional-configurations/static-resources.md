@@ -26,8 +26,8 @@ If you enable static resource protection, you may block good bots — like mail 
 
 To enable this feature as a Pro or Business customer or an Enterprise customer without Bot Management:
 
-* [  New dashboard ](#tab-panel-3194)
-* [ Old dashboard ](#tab-panel-3195)
+* [  New dashboard ](#tab-panel-3210)
+* [ Old dashboard ](#tab-panel-3211)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

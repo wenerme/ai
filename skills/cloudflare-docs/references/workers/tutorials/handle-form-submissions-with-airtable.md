@@ -387,8 +387,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7756)
-* [  wrangler.toml ](#tab-panel-7757)
+* [  wrangler.jsonc ](#tab-panel-7776)
+* [  wrangler.toml ](#tab-panel-7777)
 
 ```
 

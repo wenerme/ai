@@ -92,8 +92,8 @@ You must create an AI binding for your Worker to connect to Workers AI. [Binding
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5945)
-* [  wrangler.toml ](#tab-panel-5946)
+* [  wrangler.jsonc ](#tab-panel-5961)
+* [  wrangler.toml ](#tab-panel-5962)
 
 ```
 
@@ -125,8 +125,8 @@ Your binding is [available in your Worker code](https://developers.cloudflare.co
 
 Update the `index.ts` file in your `hello-agent` application directory with the following code:
 
-* [  JavaScript ](#tab-panel-5947)
-* [  TypeScript ](#tab-panel-5948)
+* [  JavaScript ](#tab-panel-5963)
+* [  TypeScript ](#tab-panel-5964)
 
 index.js
 

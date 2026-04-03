@@ -43,8 +43,8 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-* [ Dashboard ](#tab-panel-3032)
-* [ API ](#tab-panel-3033)
+* [ Dashboard ](#tab-panel-3048)
+* [ API ](#tab-panel-3049)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
@@ -63,8 +63,8 @@ To set up an AI Gateway using the API:
 
 ## Edit gateway
 
-* [ Dashboard ](#tab-panel-3028)
-* [ API ](#tab-panel-3029)
+* [ Dashboard ](#tab-panel-3044)
+* [ API ](#tab-panel-3045)
 
 To edit an AI Gateway in the dashboard:
 
@@ -79,12 +79,33 @@ Note
 
 For more details about what settings are available for editing, refer to [Configuration](https://developers.cloudflare.com/ai-gateway/configuration/).
 
+## Retry requests
+
+You can configure your gateway to automatically retry failed requests to upstream providers. This is useful when you do not control the client and cannot implement client-side retries or backoff logic.
+
+To configure retry settings:
+
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+2. Go to **AI** \> **AI Gateway** and select your gateway.
+3. Go to **Settings** and find the **Retry Requests** section.
+4. Turn on the toggle to turn on automatic retries.
+5. Configure the following settings:  
+   * **Retry count** — the maximum number of retry attempts (up to 5).  
+   * **Delay** — the base delay between retries. Available values: 100ms, 500ms, 1 second, 2 seconds, 3 seconds, or 5 seconds.  
+   * **Backoff** — the backoff strategy for subsequent retries: Constant, Linear, or Exponential.
+6. Select **Save**.
+![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/_astro/auto-retry-settings.UcvmkohL_Z2r7tSz.webp) 
+
+These gateway-level defaults apply to all requests routed through the gateway. Per-request headers can override these defaults — refer to [Request handling](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-retries) for details.
+
+For more complex failover scenarios where you need to fail across different providers, refer to [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/).
+
 ## Delete gateway
 
 Deleting your gateway is permanent and can not be undone.
 
-* [ Dashboard ](#tab-panel-3030)
-* [ API ](#tab-panel-3031)
+* [ Dashboard ](#tab-panel-3046)
+* [ API ](#tab-panel-3047)
 
 To delete an AI Gateway in the dashboard:
 

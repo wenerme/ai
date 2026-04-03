@@ -234,8 +234,8 @@ Each parameter in the `in` and `not_in` objects must be in CIDR notation. For ex
 
 Combine the previous information to create a token as in the following example:
 
-* [ Account token ](#tab-panel-4575)
-* [ User token ](#tab-panel-4576)
+* [ Account token ](#tab-panel-4591)
+* [ User token ](#tab-panel-4592)
 
 Terminal window
 

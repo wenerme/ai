@@ -32,8 +32,8 @@ Note that:
 
 If you use Cloudflare as a primary DNS provider, meaning that you manage your DNS records in Cloudflare, do the following:
 
-* [ Dashboard ](#tab-panel-4226)
-* [ API ](#tab-panel-4227)
+* [ Dashboard ](#tab-panel-4242)
+* [ API ](#tab-panel-4243)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -185,8 +185,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
 
 If you use Cloudflare as a secondary DNS provider, do the following:
 
-* [ Dashboard ](#tab-panel-4224)
-* [ API ](#tab-panel-4225)
+* [ Dashboard ](#tab-panel-4240)
+* [ API ](#tab-panel-4241)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

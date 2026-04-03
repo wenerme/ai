@@ -156,8 +156,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8586)
-* [  wrangler.toml ](#tab-panel-8587)
+* [  wrangler.jsonc ](#tab-panel-8606)
+* [  wrangler.toml ](#tab-panel-8607)
 
 ```
 
@@ -206,8 +206,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8588)
-* [  wrangler.toml ](#tab-panel-8589)
+* [  wrangler.jsonc ](#tab-panel-8608)
+* [  wrangler.toml ](#tab-panel-8609)
 
 ```
 

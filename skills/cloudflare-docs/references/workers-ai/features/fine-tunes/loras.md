@@ -243,8 +243,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/finetunes" \
 
 To make inference requests and apply the LoRA adapter, you will need your model and finetune `name` or `id`. You should use the chat template that your LoRA was trained on, but you can try running it with `raw: true` and the messages template like below.
 
-* [ workers ai sdk ](#tab-panel-6907)
-* [ rest api ](#tab-panel-6908)
+* [ workers ai sdk ](#tab-panel-6923)
+* [ rest api ](#tab-panel-6924)
 
 JavaScript
 

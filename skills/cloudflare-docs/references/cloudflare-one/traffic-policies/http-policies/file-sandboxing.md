@@ -24,7 +24,7 @@ In addition to [anti-virus (AV) scanning](https://developers.cloudflare.com/clou
 
 When a file download passes AV scanning without a malware detection, Gateway quarantines the file in the [sandbox](#sandbox-environment). If the file has not been downloaded before, Gateway monitors the file's behavior and compares it to known malware patterns. During this process, Gateway displays an interstitial page in the user's browser. If the sandbox does not detect malicious activity, Gateway releases the file and downloads it to the user's device. If the sandbox detects malicious activity, Gateway blocks the download. For any subsequent downloads of the same file, Gateway remembers and applies its previous allow/block decision.
 
-Gateway will log any file sandbox decisions in your [HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#http-logs).
+Gateway will log any file sandbox decisions in your [HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#http-logs).
 
 flowchart TD
     A(["User starts file download"]) --> B["File sent to AV scanner"]

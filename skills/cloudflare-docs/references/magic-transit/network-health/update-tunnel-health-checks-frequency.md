@@ -22,8 +22,8 @@ You can configure the health check frequency through the dashboard or [the API](
 
 Available options are `low`, `mid`, and `high`.
 
-* [ Dashboard ](#tab-panel-5391)
-* [ API ](#tab-panel-5392)
+* [ Dashboard ](#tab-panel-5407)
+* [ API ](#tab-panel-5408)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.

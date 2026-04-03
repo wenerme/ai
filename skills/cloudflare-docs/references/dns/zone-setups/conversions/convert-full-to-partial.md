@@ -31,8 +31,8 @@ Make sure you consider the following:
 ## 1\. Prepare DNS records
 
 1. Export a zone file  
-   * [ Dashboard ](#tab-panel-4276)  
-   * [ API ](#tab-panel-4277)  
+   * [ Dashboard ](#tab-panel-4292)  
+   * [ API ](#tab-panel-4293)  
 To export records using the dashboard:  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
@@ -61,8 +61,8 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 
 ## 2\. Convert the zone
 
-* [ Dashboard ](#tab-panel-4274)
-* [ API ](#tab-panel-4275)
+* [ Dashboard ](#tab-panel-4290)
+* [ API ](#tab-panel-4291)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.

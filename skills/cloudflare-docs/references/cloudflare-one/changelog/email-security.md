@@ -298,7 +298,7 @@ Filter logs matching specific criteria you have set and select from over 25 fiel
 
 ![logpush-detections](https://developers.cloudflare.com/_astro/Logpush-Detections.Dc5tHta3_1PsIMk.webp) 
 
-For more information, refer to [Enable detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-detection-logs).
+For more information, refer to [Enable detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs).
 
 This feature is available across these Email security packages:
 
@@ -426,7 +426,7 @@ When creating a new Logpush job, remember to select **Audit logs** as the datase
 * **Value**: `"email_security"`.
 ![Logpush-user-actions](https://developers.cloudflare.com/_astro/Logpush-User-Actions.D14fWgmq_CYM35.webp) 
 
-For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/#enable-user-action-logs).
+For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs).
 
 This feature is available across all Email security packages:
 

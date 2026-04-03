@@ -108,9 +108,9 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-3634)
-* [ macOS ](#tab-panel-3635)
-* [ Linux ](#tab-panel-3636)
+* [ Windows ](#tab-panel-3650)
+* [ macOS ](#tab-panel-3651)
+* [ Linux ](#tab-panel-3652)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:

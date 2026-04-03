@@ -40,8 +40,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4828)
-* [  wrangler.toml ](#tab-panel-4829)
+* [  wrangler.jsonc ](#tab-panel-4844)
+* [  wrangler.toml ](#tab-panel-4845)
 
 ```
 
@@ -83,8 +83,8 @@ Within your Worker code, you can interact with this binding by using `env.IMAGES
 
 For example, to draw a resized watermark on an image:
 
-* [  JavaScript ](#tab-panel-4830)
-* [  TypeScript ](#tab-panel-4831)
+* [  JavaScript ](#tab-panel-4846)
+* [  TypeScript ](#tab-panel-4847)
 
 JavaScript
 
@@ -167,8 +167,8 @@ return response;
 
 For example, to rotate, resize, and blur an image, then output the image as AVIF:
 
-* [  JavaScript ](#tab-panel-4832)
-* [  TypeScript ](#tab-panel-4833)
+* [  JavaScript ](#tab-panel-4848)
+* [  TypeScript ](#tab-panel-4849)
 
 JavaScript
 

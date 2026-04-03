@@ -106,7 +106,7 @@ For example, to block security threats for specific networks, you could create t
 | Security Categories | in       | Select all categories that apply                                | And   | Block  |
 | Source IP           | in list  | The name of the IP list containing your organization's networks |       |        |
 
-DNS queries made from IP addresses that are not in your IP list will not be filtered or populate your organization's [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/).
+DNS queries made from IP addresses that are not in your IP list will not be filtered or populate your organization's [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/","name":"Resolvers and proxies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/dns/","name":"DNS"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/dns/locations/","name":"Locations"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/","name":"DNS resolver IPs and hostnames"}}]}

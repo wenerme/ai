@@ -88,8 +88,8 @@ cd risky-users
    * `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).  
    * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
    * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
-   * [  wrangler.jsonc ](#tab-panel-3933)  
-   * [  wrangler.toml ](#tab-panel-3934)  
+   * [  wrangler.jsonc ](#tab-panel-3951)  
+   * [  wrangler.toml ](#tab-panel-3952)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  

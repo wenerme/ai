@@ -133,8 +133,8 @@ The process described on this page leverages automated [LOA](https://developers.
 ### Validate prefix ownership
 
 1. Validate prefix ownership using one of the following methods:  
-   * [ IRR record ](#tab-panel-3278)  
-   * [ Reverse DNS zone and TXT record ](#tab-panel-3279)  
+   * [ IRR record ](#tab-panel-3294)  
+   * [ Reverse DNS zone and TXT record ](#tab-panel-3295)  
    1. Copy the `ownership_validation_token` returned by the API call.  
    2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.  
 ```  

@@ -135,8 +135,8 @@ Multiplexes all SDK calls over a single persistent WebSocket connection. Avoids 
 
 Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6193)
-* [  wrangler.toml ](#tab-panel-6194)
+* [  wrangler.jsonc ](#tab-panel-6209)
+* [  wrangler.toml ](#tab-panel-6210)
 
 ```
 

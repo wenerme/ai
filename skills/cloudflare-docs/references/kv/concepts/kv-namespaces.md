@@ -37,8 +37,8 @@ To bind KV namespaces to your Worker, assign an array of the below object to the
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-4970)
-* [  wrangler.toml ](#tab-panel-4971)
+* [  wrangler.jsonc ](#tab-panel-4986)
+* [  wrangler.toml ](#tab-panel-4987)
 
 ```
 

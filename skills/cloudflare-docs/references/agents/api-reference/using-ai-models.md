@@ -34,8 +34,8 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/).
 
-* [  JavaScript ](#tab-panel-2798)
-* [  TypeScript ](#tab-panel-2799)
+* [  JavaScript ](#tab-panel-2814)
+* [  TypeScript ](#tab-panel-2815)
 
 src/index.js
 
@@ -192,8 +192,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-2792)
-* [  TypeScript ](#tab-panel-2793)
+* [  JavaScript ](#tab-panel-2808)
+* [  TypeScript ](#tab-panel-2809)
 
 src/index.js
 
@@ -282,8 +282,8 @@ export class MyAgent extends Agent<Env> {
 
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-2786)
-* [  wrangler.toml ](#tab-panel-2787)
+* [  wrangler.jsonc ](#tab-panel-2802)
+* [  wrangler.toml ](#tab-panel-2803)
 
 ```
 
@@ -313,8 +313,8 @@ binding = "AI"
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-2796)
-* [  TypeScript ](#tab-panel-2797)
+* [  JavaScript ](#tab-panel-2812)
+* [  TypeScript ](#tab-panel-2813)
 
 src/index.js
 
@@ -419,8 +419,8 @@ export class MyAgent extends Agent<Env> {
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-2788)
-* [  wrangler.toml ](#tab-panel-2789)
+* [  wrangler.jsonc ](#tab-panel-2804)
+* [  wrangler.toml ](#tab-panel-2805)
 
 ```
 
@@ -470,8 +470,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-2794)
-* [  TypeScript ](#tab-panel-2795)
+* [  JavaScript ](#tab-panel-2810)
+* [  TypeScript ](#tab-panel-2811)
 
 src/index.js
 
@@ -570,8 +570,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-2790)
-* [  TypeScript ](#tab-panel-2791)
+* [  JavaScript ](#tab-panel-2806)
+* [  TypeScript ](#tab-panel-2807)
 
 src/index.js
 
@@ -645,8 +645,8 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/api-reference/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-2800)
-* [  TypeScript ](#tab-panel-2801)
+* [  JavaScript ](#tab-panel-2816)
+* [  TypeScript ](#tab-panel-2817)
 
 src/index.js
 

@@ -7,8 +7,6 @@
 
 {/* banner:end */}
 
-(*embeddings*)
-
 ## Overview
 
 Text embedding endpoints
@@ -31,6 +29,9 @@ from openrouter import OpenRouter
 import os
 
 with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
@@ -43,16 +44,19 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter         | Type                                                                                  | Required             | Description                                                         |
-| ----------------- | ------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `input`           | [operations.InputUnion](/docs/sdks/python/api-reference/operations/inputunion)        | :heavy\_check\_mark: | N/A                                                                 |
-| `model`           | *str*                                                                                 | :heavy\_check\_mark: | N/A                                                                 |
-| `encoding_format` | [Optional\[operations.EncodingFormat\]](../../operations/encodingformat.md)           | :heavy\_minus\_sign: | N/A                                                                 |
-| `dimensions`      | *Optional\[int]*                                                                      | :heavy\_minus\_sign: | N/A                                                                 |
-| `user`            | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | N/A                                                                 |
-| `provider`        | [Optional\[components.ProviderPreferences\]](../../components/providerpreferences.md) | :heavy\_minus\_sign: | Provider routing preferences for the request.                       |
-| `input_type`      | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | N/A                                                                 |
-| `retries`         | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                    | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+| Parameter                  | Type                                                                                  | Required             | Description                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `input`                    | [operations.InputUnion](/docs/sdks/python/api-reference/operations/inputunion)        | :heavy\_check\_mark: | N/A                                                                                                                                                         |
+| `model`                    | *str*                                                                                 | :heavy\_check\_mark: | N/A                                                                                                                                                         |
+| `http_referer`             | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
+| `x_open_router_title`      | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
+| `x_open_router_categories` | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
+| `encoding_format`          | [Optional\[operations.EncodingFormat\]](../../operations/encodingformat.md)           | :heavy\_minus\_sign: | N/A                                                                                                                                                         |
+| `dimensions`               | *Optional\[int]*                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                         |
+| `user`                     | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                         |
+| `provider`                 | [Optional\[components.ProviderPreferences\]](../../components/providerpreferences.md) | :heavy\_minus\_sign: | Provider routing preferences for the request.                                                                                                               |
+| `input_type`               | *Optional\[str]*                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                         |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                    | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
 
 ### Response
 
@@ -87,6 +91,9 @@ from openrouter import OpenRouter
 import os
 
 with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
@@ -99,9 +106,12 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
 
 ### Response
 

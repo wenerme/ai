@@ -43,8 +43,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-4614)
-* [  TypeScript ](#tab-panel-4615)
+* [  JavaScript ](#tab-panel-4630)
+* [  TypeScript ](#tab-panel-4631)
 
 JavaScript
 
@@ -152,9 +152,9 @@ By default Markdown for Agents converted responses include the `Content-Signal: 
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-4611)
-* [ API ](#tab-panel-4612)
-* [ Custom Hostnames ](#tab-panel-4613)
+* [ Dashboard ](#tab-panel-4627)
+* [ API ](#tab-panel-4628)
+* [ Custom Hostnames ](#tab-panel-4629)
 
 To enable Markdown for Agents for your zone in the dashboard:
 

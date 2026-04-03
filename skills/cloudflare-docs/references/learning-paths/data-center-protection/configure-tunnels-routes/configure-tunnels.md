@@ -70,8 +70,8 @@ Warning
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
-* [ Dashboard ](#tab-panel-5072)
-* [ API ](#tab-panel-5073)
+* [ Dashboard ](#tab-panel-5088)
+* [ API ](#tab-panel-5089)
 
 1. Go to **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

@@ -341,8 +341,8 @@ To add a new microfrontend to your application after initial setup:
 1. **Create and deploy the new microfrontend worker**  
 Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**  
-   * [  wrangler.jsonc ](#tab-panel-7382)  
-   * [  wrangler.toml ](#tab-panel-7383)  
+   * [  wrangler.jsonc ](#tab-panel-7402)  
+   * [  wrangler.toml ](#tab-panel-7403)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -387,8 +387,8 @@ If you only need to work on one of the microfrontends, you can run the others re
 
 For each microfrontend you want to run remotely while in local dev, configure its service binding with the remote flag:
 
-* [  wrangler.jsonc ](#tab-panel-7384)
-* [  wrangler.toml ](#tab-panel-7385)
+* [  wrangler.jsonc ](#tab-panel-7404)
+* [  wrangler.toml ](#tab-panel-7405)
 
 ```
 

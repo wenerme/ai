@@ -47,9 +47,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-3536)
-* [ API ](#tab-panel-3537)
-* [ Terraform ](#tab-panel-3538)
+* [ Dashboard ](#tab-panel-3552)
+* [ API ](#tab-panel-3553)
+* [ Terraform ](#tab-panel-3554)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -279,9 +279,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-3533)
-* [ API ](#tab-panel-3534)
-* [ Terraform ](#tab-panel-3535)
+* [ Dashboard ](#tab-panel-3549)
+* [ API ](#tab-panel-3550)
+* [ Terraform ](#tab-panel-3551)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.

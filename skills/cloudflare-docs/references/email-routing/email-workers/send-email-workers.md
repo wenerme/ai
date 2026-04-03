@@ -20,8 +20,8 @@ You can send an email about your Worker's activity from your Worker to an email 
 
 Before you can bind an email address to your Worker, you need to [enable Email Routing](https://developers.cloudflare.com/email-routing/get-started/) and have at least one [verified email address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses). Then, create a new binding in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4571)
-* [  wrangler.toml ](#tab-panel-4572)
+* [  wrangler.jsonc ](#tab-panel-4587)
+* [  wrangler.toml ](#tab-panel-4588)
 
 ```
 
@@ -67,8 +67,8 @@ There are several types of restrictions you can configure in the bindings:
 
 You can add one or more types of bindings to your Wrangler file. However, each attribute must be on its own line:
 
-* [  wrangler.jsonc ](#tab-panel-4573)
-* [  wrangler.toml ](#tab-panel-4574)
+* [  wrangler.jsonc ](#tab-panel-4589)
+* [  wrangler.toml ](#tab-panel-4590)
 
 ```
 

@@ -22,8 +22,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-3210)
-* [ Old dashboard ](#tab-panel-3211)
+* [  New dashboard ](#tab-panel-3226)
+* [ Old dashboard ](#tab-panel-3227)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

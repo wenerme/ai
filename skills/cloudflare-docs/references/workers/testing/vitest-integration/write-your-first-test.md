@@ -174,8 +174,8 @@ If your test bindings differ from the bindings in your Wrangler config, you shou
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
 
-* [  JavaScript ](#tab-panel-7728)
-* [  TypeScript ](#tab-panel-7729)
+* [  JavaScript ](#tab-panel-7748)
+* [  TypeScript ](#tab-panel-7749)
 
 src/index.js
 
@@ -227,8 +227,8 @@ export default {
 
 By importing the Worker we can write a unit test for its `fetch` handler.
 
-* [  JavaScript ](#tab-panel-7732)
-* [  TypeScript ](#tab-panel-7733)
+* [  JavaScript ](#tab-panel-7752)
+* [  TypeScript ](#tab-panel-7753)
 
 test/unit.spec.js
 
@@ -344,8 +344,8 @@ describe("Hello World worker", () => {
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
-* [  JavaScript ](#tab-panel-7730)
-* [  TypeScript ](#tab-panel-7731)
+* [  JavaScript ](#tab-panel-7750)
+* [  TypeScript ](#tab-panel-7751)
 
 test/integration.spec.js
 

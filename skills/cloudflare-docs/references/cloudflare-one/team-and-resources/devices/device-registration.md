@@ -32,8 +32,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-3726)
-* [ API ](#tab-panel-3727)
+* [ Dashboard ](#tab-panel-3744)
+* [ API ](#tab-panel-3745)
 
 To review how many device registrations are associated with a device:
 
@@ -131,8 +131,8 @@ Registrations can have the following statuses:
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-3728)
-* [ API ](#tab-panel-3729)
+* [ Dashboard ](#tab-panel-3746)
+* [ API ](#tab-panel-3747)
 
 To delete a device registration:
 

@@ -20,9 +20,9 @@ Use the _Skip_ action in a custom rule to skip one or more security features. A 
 
 For more information on the available options, refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
 
-* [  New dashboard ](#tab-panel-6773)
-* [ Old dashboard ](#tab-panel-6774)
-* [ API ](#tab-panel-6775)
+* [  New dashboard ](#tab-panel-6789)
+* [ Old dashboard ](#tab-panel-6790)
+* [ API ](#tab-panel-6791)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -28,8 +28,8 @@ This guide provides an overview of how to use the latest Cloudflare Workers AI G
 
 To connect your Worker to Workers AI, add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-3044)
-* [  wrangler.toml ](#tab-panel-3045)
+* [  wrangler.jsonc ](#tab-panel-3060)
+* [  wrangler.toml ](#tab-panel-3061)
 
 ```
 

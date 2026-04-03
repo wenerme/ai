@@ -31,8 +31,8 @@ The **Allow** action functions as an implicit logger, providing visibility into 
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-3431)
-* [ API ](#tab-panel-3432)
+* [ Dashboard ](#tab-panel-3447)
+* [ API ](#tab-panel-3448)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |

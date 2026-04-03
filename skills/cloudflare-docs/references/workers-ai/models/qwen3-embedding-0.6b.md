@@ -31,9 +31,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2018)
-* [  Python ](#tab-panel-2019)
-* [  curl ](#tab-panel-2020)
+* [  TypeScript ](#tab-panel-2034)
+* [  Python ](#tab-panel-2035)
+* [  curl ](#tab-panel-2036)
 
 ```
 
@@ -181,8 +181,8 @@ Optional instruction for the task
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2021)
-* [ Output ](#tab-panel-2022)
+* [ Input ](#tab-panel-2037)
+* [ Output ](#tab-panel-2038)
 
 ```
 

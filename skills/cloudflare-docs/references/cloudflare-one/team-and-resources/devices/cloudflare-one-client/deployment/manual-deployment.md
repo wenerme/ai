@@ -28,8 +28,8 @@ If you plan to direct your users to manually download and configure the Cloudfla
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-3699)
-* [ Version 2026.1 and earlier ](#tab-panel-3700)
+* [ Version 2026.2+ ](#tab-panel-3715)
+* [ Version 2026.1 and earlier ](#tab-panel-3716)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

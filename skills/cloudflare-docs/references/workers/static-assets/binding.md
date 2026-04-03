@@ -28,8 +28,8 @@ Only one collection of static assets can be configured in each Worker.
 
 The folder of static assets to be served. For many frameworks, this is the `./public/`, `./dist/`, or `./build/` folder.
 
-* [  wrangler.jsonc ](#tab-panel-7648)
-* [  wrangler.toml ](#tab-panel-7649)
+* [  wrangler.jsonc ](#tab-panel-7668)
+* [  wrangler.toml ](#tab-panel-7669)
 
 ```
 
@@ -101,8 +101,8 @@ Now Wrangler will not upload these files as client-side assets when deploying th
 
 Controls whether to invoke the Worker script regardless of a request which would have otherwise matched an asset. `run_worker_first = false` (default) will serve any static asset matching a request, while `run_worker_first = true` will unconditionally [invoke your Worker script](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 
-* [  wrangler.jsonc ](#tab-panel-7650)
-* [  wrangler.toml ](#tab-panel-7651)
+* [  wrangler.jsonc ](#tab-panel-7670)
+* [  wrangler.toml ](#tab-panel-7671)
 
 ```
 
@@ -171,8 +171,8 @@ The order in which the patterns are listed is not significant.
 
 `run_worker_first` is often paired with the [not\_found\_handling = "single-page-application" setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control):
 
-* [  wrangler.jsonc ](#tab-panel-7652)
-* [  wrangler.toml ](#tab-panel-7653)
+* [  wrangler.jsonc ](#tab-panel-7672)
+* [  wrangler.toml ](#tab-panel-7673)
 
 ```
 
@@ -235,8 +235,8 @@ Common uses for `run_worker_first` include authentication checks, A/B testing, a
 
 Configuring the optional [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) gives you access to the collection of assets from within your Worker script.
 
-* [  wrangler.jsonc ](#tab-panel-7654)
-* [  wrangler.toml ](#tab-panel-7655)
+* [  wrangler.jsonc ](#tab-panel-7674)
+* [  wrangler.toml ](#tab-panel-7675)
 
 ```
 
@@ -311,8 +311,8 @@ If you need to fetch assets from within an [RPC method](https://developers.cloud
 
 Take the following example that configures a Worker script to return a response under all requests headed for `/api/`. Otherwise, the Worker script will pass the incoming request through to the asset binding. In this case, because a Worker script is only invoked when the requested route has not matched any static assets, this will always evaluate [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) behavior.
 
-* [  JavaScript ](#tab-panel-7646)
-* [  TypeScript ](#tab-panel-7647)
+* [  JavaScript ](#tab-panel-7666)
+* [  TypeScript ](#tab-panel-7667)
 
 JavaScript
 

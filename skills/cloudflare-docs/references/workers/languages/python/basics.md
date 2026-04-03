@@ -100,8 +100,8 @@ The `env` attribute on the `WorkerEntrypoint` can be used to access[environment 
 
 For example, let us try setting and using an environment variable in a Python Worker. First, add the environment variable to your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7416)
-* [  wrangler.toml ](#tab-panel-7417)
+* [  wrangler.jsonc ](#tab-panel-7436)
+* [  wrangler.toml ](#tab-panel-7437)
 
 ```
 

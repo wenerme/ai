@@ -27,8 +27,8 @@ You can configure a notification for [code change alerts](https://developers.clo
 When you receive such a notification:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3306)  
-   * [ Old dashboard ](#tab-panel-3307)  
+   * [  New dashboard ](#tab-panel-3322)  
+   * [ Old dashboard ](#tab-panel-3323)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

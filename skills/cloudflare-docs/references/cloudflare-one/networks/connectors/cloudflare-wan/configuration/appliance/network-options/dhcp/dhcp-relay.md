@@ -43,8 +43,8 @@ DHCP relay will not work if your DHCP server is behind a [Cloudflare Tunnel](htt
 
 To configure DHCP relay:
 
-* [ Dashboard ](#tab-panel-3581)
-* [ API ](#tab-panel-3582)
+* [ Dashboard ](#tab-panel-3597)
+* [ API ](#tab-panel-3598)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

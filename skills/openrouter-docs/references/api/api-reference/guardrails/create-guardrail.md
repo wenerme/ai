@@ -71,9 +71,7 @@ paths:
                     - 'null'
                   description: Description of the guardrail
                 limit_usd:
-                  type:
-                    - number
-                    - 'null'
+                  type: number
                   format: double
                   description: Spending limit in USD
                 reset_interval:
@@ -146,9 +144,7 @@ components:
             - 'null'
           description: Description of the guardrail
         limit_usd:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Spending limit in USD
         reset_interval:

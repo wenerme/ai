@@ -45,8 +45,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3064)
-* [ Unauthenticated Gateway ](#tab-panel-3065)
+* [ With Authenticated Gateway ](#tab-panel-3080)
+* [ Unauthenticated Gateway ](#tab-panel-3081)
 
 ```
 
@@ -145,8 +145,8 @@ const response = await client.chat.completions.create({
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3066)
-* [ Unauthenticated Gateway ](#tab-panel-3067)
+* [ With Authenticated Gateway ](#tab-panel-3082)
+* [ Unauthenticated Gateway ](#tab-panel-3083)
 
 Terminal window
 
@@ -214,8 +214,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3068)
-* [ Unauthenticated Gateway ](#tab-panel-3069)
+* [ With Authenticated Gateway ](#tab-panel-3084)
+* [ Unauthenticated Gateway ](#tab-panel-3085)
 
 Terminal window
 

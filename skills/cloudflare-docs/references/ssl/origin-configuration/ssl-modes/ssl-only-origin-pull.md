@@ -38,8 +38,8 @@ In addition to **Strict (SSL-Only Origin Pull)** encryption, you can also set up
 
 ### Process
 
-* [ Dashboard ](#tab-panel-6567)
-* [ API ](#tab-panel-6568)
+* [ Dashboard ](#tab-panel-6583)
+* [ API ](#tab-panel-6584)
 
 To change your encryption mode in the dashboard:
 

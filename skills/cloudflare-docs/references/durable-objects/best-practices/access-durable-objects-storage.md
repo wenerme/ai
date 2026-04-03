@@ -47,8 +47,8 @@ Only Durable Object classes with a SQLite storage backend can access SQL API.
 
 Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4373)
-* [  wrangler.toml ](#tab-panel-4374)
+* [  wrangler.jsonc ](#tab-panel-4389)
+* [  wrangler.toml ](#tab-panel-4390)
 
 ```
 

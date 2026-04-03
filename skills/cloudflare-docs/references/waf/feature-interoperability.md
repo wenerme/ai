@@ -134,8 +134,8 @@ When security features interfere with legitimate traffic, use the following step
 
 Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to identify the feature that blocked a request:
 
-* [  New dashboard ](#tab-panel-6812)
-* [ Old dashboard ](#tab-panel-6813)
+* [  New dashboard ](#tab-panel-6828)
+* [ Old dashboard ](#tab-panel-6829)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -161,8 +161,8 @@ For more information, refer to [Handle false positives from Bot Fight Mode or Su
 
 Create a custom rule with the _Skip_ action to bypass SBFM for the affected traffic:
 
-* [  New dashboard ](#tab-panel-6814)
-* [ Old dashboard ](#tab-panel-6815)
+* [  New dashboard ](#tab-panel-6830)
+* [ Old dashboard ](#tab-panel-6831)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

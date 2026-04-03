@@ -54,8 +54,8 @@ A producer is a [Cloudflare Worker](https://developers.cloudflare.com/workers/) 
 
 To produce to a queue, set up a binding in your Wrangler file. These options should be used when a Worker wants to send messages to a queue.
 
-* [  wrangler.jsonc ](#tab-panel-5609)
-* [  wrangler.toml ](#tab-panel-5610)
+* [  wrangler.jsonc ](#tab-panel-5625)
+* [  wrangler.toml ](#tab-panel-5626)
 
 ```
 
@@ -102,8 +102,8 @@ binding = "MY_QUEUE"
 
 To consume messages from one or more queues, set up a binding in your Wrangler file. These options should be used when a Worker wants to receive messages from a queue.
 
-* [  wrangler.jsonc ](#tab-panel-5611)
-* [  wrangler.toml ](#tab-panel-5612)
+* [  wrangler.jsonc ](#tab-panel-5627)
+* [  wrangler.toml ](#tab-panel-5628)
 
 ```
 

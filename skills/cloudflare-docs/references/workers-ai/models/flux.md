@@ -211,8 +211,8 @@ Confidence that no more speech is coming in this turn
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1695)
-* [ Output ](#tab-panel-1696)
+* [ Input ](#tab-panel-1711)
+* [ Output ](#tab-panel-1712)
 
 ```
 

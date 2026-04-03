@@ -64,8 +64,8 @@ Note the service IDs returned for the next step.
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6955)
-* [  wrangler.toml ](#tab-panel-6956)
+* [  wrangler.jsonc ](#tab-panel-6971)
+* [  wrangler.toml ](#tab-panel-6972)
 
 ```
 

@@ -151,8 +151,8 @@ When Cloudflare Access is in front of your [Worker](https://developers.cloudflar
 
 The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
 
-* [  JavaScript ](#tab-panel-3406)
-* [  TypeScript ](#tab-panel-3407)
+* [  JavaScript ](#tab-panel-3422)
+* [  TypeScript ](#tab-panel-3423)
 
 JavaScript
 

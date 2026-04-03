@@ -42,8 +42,8 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-2496)
-* [  TypeScript ](#tab-panel-2497)
+* [  JavaScript ](#tab-panel-2512)
+* [  TypeScript ](#tab-panel-2513)
 
 JavaScript
 
@@ -105,8 +105,8 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-2498)
-* [  TypeScript ](#tab-panel-2499)
+* [  JavaScript ](#tab-panel-2514)
+* [  TypeScript ](#tab-panel-2515)
 
 JavaScript
 
@@ -160,8 +160,8 @@ export class MqttAgent extends Agent<Env, State> {
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-2500)
-* [  TypeScript ](#tab-panel-2501)
+* [  JavaScript ](#tab-panel-2516)
+* [  TypeScript ](#tab-panel-2517)
 
 JavaScript
 
@@ -242,8 +242,8 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-2502)
-* [  TypeScript ](#tab-panel-2503)
+* [  JavaScript ](#tab-panel-2518)
+* [  TypeScript ](#tab-panel-2519)
 
 JavaScript
 

@@ -150,8 +150,8 @@ If your Astro project is entirely pre-rendered, follow these steps:
 
 1. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-7376)  
-   * [  wrangler.toml ](#tab-panel-7377)  
+   * [  wrangler.jsonc ](#tab-panel-7396)  
+   * [  wrangler.toml ](#tab-panel-7397)  
 ```  
 {  
   "name": "my-astro-app",  
@@ -220,8 +220,8 @@ _routes.json
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-7380)  
-   * [  wrangler.toml ](#tab-panel-7381)  
+   * [  wrangler.jsonc ](#tab-panel-7400)  
+   * [  wrangler.toml ](#tab-panel-7401)  
 ```  
 {  
   "name": "my-astro-app",  
@@ -317,8 +317,8 @@ You can customize the KV binding name with the [sessionKVBindingName ↗](https:
 
 To serve a custom 404 page for your Astro site, add `not_found_handling` to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7378)
-* [  wrangler.toml ](#tab-panel-7379)
+* [  wrangler.jsonc ](#tab-panel-7398)
+* [  wrangler.toml ](#tab-panel-7399)
 
 ```
 

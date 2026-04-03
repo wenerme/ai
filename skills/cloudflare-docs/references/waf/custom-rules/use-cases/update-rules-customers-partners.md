@@ -16,7 +16,7 @@ Copy page
 
 # Update custom rules for customers or partners
 
-You may want to adjust your custom rules to increase access by customers or partners.
+You may want to adjust your [custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) to increase access by customers or partners.
 
 Potential examples include:
 
@@ -40,8 +40,14 @@ This example uses:
 
 Example custom rule:
 
-* **Expression**: `(ip.src.asnum eq 64496 and cf.bot_management.score gt 30)`
-* **Action**: _Skip:_  
+* **When incoming requests match**:  
+| Field     | Operator     | Value | Logic |  
+| --------- | ------------ | ----- | ----- |  
+| AS Num    | equals       | 64496 | And   |  
+| Bot Score | greater than | 30    |       |  
+If you are using the expression editor:  
+`(ip.src.asnum eq 64496 and cf.bot_management.score gt 30)`
+* **Then take action**: _Skip:_  
    * _All remaining custom rules_
 
 Note
@@ -57,8 +63,14 @@ This example custom rule uses:
 
 If a request meets these criteria, the custom rule will skip [User Agent Blocking](https://developers.cloudflare.com/waf/tools/user-agent-blocking/) rules.
 
-* **Expression**: `(ip.src.asnum eq 64496 and cf.bot_management.score gt 50)`
-* **Action**: _Skip:_  
+* **When incoming requests match**:  
+| Field     | Operator     | Value | Logic |  
+| --------- | ------------ | ----- | ----- |  
+| AS Num    | equals       | 64496 | And   |  
+| Bot Score | greater than | 50    |       |  
+If you are using the expression editor:  
+`(ip.src.asnum eq 64496 and cf.bot_management.score gt 50)`
+* **Then take action**: _Skip:_  
    * _User Agent Blocking_
 
 ## Use IP addresses in custom rules
@@ -74,8 +86,15 @@ This example:
 
 Example custom rule:
 
-* **Expression**: `(ip.src eq 203.0.113.1 and http.host eq "example.com" and cf.bot_management.score gt 30)`
-* **Action**: _Skip:_  
+* **When incoming requests match**:  
+| Field             | Operator     | Value       | Logic |  
+| ----------------- | ------------ | ----------- | ----- |  
+| IP Source Address | equals       | 203.0.113.1 | And   |  
+| Hostname          | equals       | example.com | And   |  
+| Bot Score         | greater than | 30          |       |  
+If you are using the expression editor:  
+`(ip.src eq 203.0.113.1 and http.host eq "example.com" and cf.bot_management.score gt 30)`
+* **Then take action**: _Skip:_  
    * _All remaining custom rules_
 
 ### Adjust rules by IP address
@@ -84,8 +103,14 @@ This example custom rule specifies the source IP address and the host.
 
 If a request meets these criteria, the custom rule will skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
-* **Expression**: `(ip.src eq 203.0.113.1 and http.host eq "example.com")`
-* **Action**: _Skip:_  
+* **When incoming requests match**:  
+| Field             | Operator | Value       | Logic |  
+| ----------------- | -------- | ----------- | ----- |  
+| IP Source Address | equals   | 203.0.113.1 | And   |  
+| Hostname          | equals   | example.com |       |  
+If you are using the expression editor:  
+`(ip.src eq 203.0.113.1 and http.host eq "example.com")`
+* **Then take action**: _Skip:_  
    * _All remaining custom rules_
 
 ```json

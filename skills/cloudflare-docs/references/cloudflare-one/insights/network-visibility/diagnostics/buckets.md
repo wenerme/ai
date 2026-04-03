@@ -24,8 +24,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-3437)
-* [ API ](#tab-panel-3438)
+* [ Dashboard ](#tab-panel-3453)
+* [ API ](#tab-panel-3454)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
@@ -45,8 +45,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket set up, you need to confirm you own the bucket via an ownership challenge. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-3439)
-* [ API ](#tab-panel-3440)
+* [ Dashboard ](#tab-panel-3455)
+* [ API ](#tab-panel-3456)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. In the **Ownership token** field, enter the ownership token for your service provider.
@@ -182,8 +182,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-3441)
-* [ API ](#tab-panel-3442)
+* [ Dashboard ](#tab-panel-3457)
+* [ API ](#tab-panel-3458)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)

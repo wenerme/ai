@@ -146,7 +146,7 @@ Gateway does not support hostname-based filtering for traffic on non-`443` ports
 
 From a device, open a browser and go to `app.bank.com`.
 
-You can search for `app.bank.com` in your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/); the **DNS response details** section should show the public resolved IPs as well as an initial resolved IP. You can also check your [Cloudflare Tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing through the tunnel to the public resolved IPs.
+You can search for `app.bank.com` in your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/); the **DNS response details** section should show the public resolved IPs as well as an initial resolved IP. You can also check your [Cloudflare Tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) to confirm that requests are routing through the tunnel to the public resolved IPs.
 
 ## Limitations
 

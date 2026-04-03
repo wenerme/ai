@@ -18,8 +18,8 @@ Copy page
 
 Create a compression rule to set Gzip compression as the preferred compression method for CSV files.
 
-* [ Dashboard ](#tab-panel-5975)
-* [ API ](#tab-panel-5976)
+* [ Dashboard ](#tab-panel-5991)
+* [ API ](#tab-panel-5992)
 
 The following example rule will configure Gzip compression as the preferred compression method for CSV files. If the visitor does not support this algorithm, Cloudflare will try to compress the response using a different algorithm supported by the visitor.
 

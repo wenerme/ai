@@ -25,8 +25,8 @@ Note
 
 It is likely preferable to use the official `Container` class, which provides helper methods and a more idiomatic API for working with containers on top of Durable Objects.
 
-* [  JavaScript ](#tab-panel-4337)
-* [  TypeScript ](#tab-panel-4338)
+* [  JavaScript ](#tab-panel-4353)
+* [  TypeScript ](#tab-panel-4354)
 
 index.js
 

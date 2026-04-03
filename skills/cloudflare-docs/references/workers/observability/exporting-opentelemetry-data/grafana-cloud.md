@@ -57,8 +57,8 @@ Before you begin, ensure you have:
 
 With your destination created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-7436)
-* [  wrangler.toml ](#tab-panel-7437)
+* [  wrangler.jsonc ](#tab-panel-7456)
+* [  wrangler.toml ](#tab-panel-7457)
 
 ```
 

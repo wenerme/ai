@@ -201,9 +201,9 @@ The Cloudflare One dashboard defaults to showing devices that were last seen wit
 
 To check the device IP used by the device client's virtual network interface:
 
-* [ Windows ](#tab-panel-3643)
-* [ macOS ](#tab-panel-3644)
-* [ Linux ](#tab-panel-3645)
+* [ Windows ](#tab-panel-3659)
+* [ macOS ](#tab-panel-3660)
+* [ Linux ](#tab-panel-3661)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 

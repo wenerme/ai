@@ -31,8 +31,8 @@ Take the following directory structure:
 
 This will usually give you the desired behavior automatically: individual files (e.g. `foo.html`) will be served _without_ a trailing slash and folder index files (e.g. `foo/index.html`) will be served _with_ a trailing slash.
 
-* [  wrangler.jsonc ](#tab-panel-7696)
-* [  wrangler.toml ](#tab-panel-7697)
+* [  wrangler.jsonc ](#tab-panel-7716)
+* [  wrangler.toml ](#tab-panel-7717)
 
 ```
 
@@ -94,8 +94,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-7698)
-* [  wrangler.toml ](#tab-panel-7699)
+* [  wrangler.jsonc ](#tab-panel-7718)
+* [  wrangler.toml ](#tab-panel-7719)
 
 ```
 
@@ -157,8 +157,8 @@ Based on the incoming requests, the following assets would be served:
 
 Or you can drop trailing slashes (`drop-trailing-slash`).
 
-* [  wrangler.jsonc ](#tab-panel-7700)
-* [  wrangler.toml ](#tab-panel-7701)
+* [  wrangler.jsonc ](#tab-panel-7720)
+* [  wrangler.toml ](#tab-panel-7721)
 
 ```
 
@@ -220,8 +220,8 @@ Based on the incoming requests, the following assets would be served:
 
 Alternatively, if you have bespoke needs, you can disable the built-in HTML handling entirely (`none`).
 
-* [  wrangler.jsonc ](#tab-panel-7702)
-* [  wrangler.toml ](#tab-panel-7703)
+* [  wrangler.jsonc ](#tab-panel-7722)
+* [  wrangler.toml ](#tab-panel-7723)
 
 ```
 

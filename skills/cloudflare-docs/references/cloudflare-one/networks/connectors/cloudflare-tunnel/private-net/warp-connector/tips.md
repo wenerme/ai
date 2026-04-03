@@ -22,8 +22,8 @@ This page covers operational guidance for managing WARP Connector deployments, i
 
 Updating WARP Connector requires updating the `cloudflare-warp` package on your Linux host. During the update, the WARP Connector will briefly disconnect, which will interrupt traffic currently being routed through it.
 
-* [ Debian/Ubuntu ](#tab-panel-3519)
-* [ RedHat/CentOS ](#tab-panel-3520)
+* [ Debian/Ubuntu ](#tab-panel-3535)
+* [ RedHat/CentOS ](#tab-panel-3536)
 
 1. Check your current WARP Connector version:  
 Terminal window  

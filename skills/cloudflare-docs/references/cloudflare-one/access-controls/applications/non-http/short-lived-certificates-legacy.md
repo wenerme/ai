@@ -207,8 +207,8 @@ If there are any include statements below these lines, the configurations in tho
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-3418)
-* [ CentOS/RHEL ](#tab-panel-3419)
+* [ Debian/Ubuntu ](#tab-panel-3434)
+* [ CentOS/RHEL ](#tab-panel-3435)
 
 For Debian/Ubuntu:
 

@@ -9,8 +9,8 @@ Copy page
 
 # What are Durable Objects?
 
-* [ Watch this episode ](#tab-panel-5088)
-* [ Series overview ](#tab-panel-5089)
+* [ Watch this episode ](#tab-panel-5104)
+* [ Series overview ](#tab-panel-5105)
 
 In this video, we show how Durable Objects work and start building a video call app together.
 

@@ -33,8 +33,8 @@ Diffusion-based text-to-image generative model by Stability AI. Generates and mo
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2049)
-* [  curl ](#tab-panel-2050)
+* [  TypeScript ](#tab-panel-2065)
+* [  curl ](#tab-panel-2066)
 
 ```
 
@@ -139,8 +139,8 @@ Random seed for reproducibility of the image generation
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2051)
-* [ Output ](#tab-panel-2052)
+* [ Input ](#tab-panel-2067)
+* [ Output ](#tab-panel-2068)
 
 ```
 

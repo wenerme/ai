@@ -90,8 +90,8 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
-* [ Dashboard ](#tab-panel-5746)
-* [ Wrangler ](#tab-panel-5747)
+* [ Dashboard ](#tab-panel-5762)
+* [ Wrangler ](#tab-panel-5763)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -114,8 +114,8 @@ npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
 
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
-* [ Dashboard ](#tab-panel-5748)
-* [ Wrangler ](#tab-panel-5749)
+* [ Dashboard ](#tab-panel-5764)
+* [ Wrangler ](#tab-panel-5765)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)

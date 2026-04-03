@@ -37,8 +37,8 @@ If your domain is sensitive to downtime, instead of using Universal SSL, conside
 
 ## 1\. Convert your zone and review DNS records
 
-* [ Dashboard ](#tab-panel-4290)
-* [ API ](#tab-panel-4291)
+* [ Dashboard ](#tab-panel-4306)
+* [ API ](#tab-panel-4307)
 
 Make sure you have the correct plan
 

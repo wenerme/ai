@@ -61,8 +61,8 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-3813)
-* [ API ](#tab-panel-3814)
+* [ Dashboard ](#tab-panel-3831)
+* [ API ](#tab-panel-3832)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.

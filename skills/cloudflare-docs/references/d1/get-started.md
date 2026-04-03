@@ -53,8 +53,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Create a new Worker as the means to query your database.
 
-* [ CLI ](#tab-panel-4055)
-* [ Dashboard ](#tab-panel-4056)
+* [ CLI ](#tab-panel-4073)
+* [ Dashboard ](#tab-panel-4074)
 
 1. Create a new project named `d1-tutorial` by running:  
  npm  yarn  pnpm  
@@ -109,8 +109,8 @@ A D1 database is conceptually similar to many other SQL databases: a database ma
 
 To create your first D1 database:
 
-* [ CLI ](#tab-panel-4045)
-* [ Dashboard ](#tab-panel-4046)
+* [ CLI ](#tab-panel-4063)
+* [ Dashboard ](#tab-panel-4064)
 
 1. Change into the directory you just created for your Workers project:  
 Terminal window  
@@ -163,8 +163,8 @@ You must create a binding for your Worker to connect to your D1 database. [Bindi
 
 To bind your D1 database to your Worker:
 
-* [ CLI ](#tab-panel-4062)
-* [ Dashboard ](#tab-panel-4063)
+* [ CLI ](#tab-panel-4080)
+* [ Dashboard ](#tab-panel-4081)
 
 You can automatically add the binding to your Wrangler configuration file when you run the `wrangler d1 create` command (step 3 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database)).
 
@@ -172,8 +172,8 @@ But if you wish to add the binding manually, follow the steps below:
 
 1. Copy the lines obtained from step 2 of [2\. Create a database](https://developers.cloudflare.com/d1/get-started/#2-create-a-database) from your terminal.
 2. Add them to the end of your Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-4057)  
-   * [  wrangler.toml ](#tab-panel-4058)  
+   * [  wrangler.jsonc ](#tab-panel-4075)  
+   * [  wrangler.toml ](#tab-panel-4076)  
 ```  
 {  
   "d1_databases": [  
@@ -216,8 +216,8 @@ You create bindings by adding them to the Worker you have created.
 
 ### Populate your D1 database
 
-* [ CLI ](#tab-panel-4051)
-* [ Dashboard ](#tab-panel-4052)
+* [ CLI ](#tab-panel-4069)
+* [ Dashboard ](#tab-panel-4070)
 
 After correctly preparing your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), set up your database. Create a `schema.sql` file using the SQL syntax below to initialize your database.
 
@@ -282,15 +282,15 @@ INSERT INTO Customers (CustomerID, CompanyName, ContactName) VALUES (1, 'Alfreds
 
 After you have set up your database, run an SQL query from within your Worker.
 
-* [ CLI ](#tab-panel-4064)
-* [ Dashboard ](#tab-panel-4065)
+* [ CLI ](#tab-panel-4082)
+* [ Dashboard ](#tab-panel-4083)
 
 1. Navigate to your `d1-tutorial` Worker and open the `index.ts` file. The `index.ts` file is where you configure your Worker's interactions with D1.
 2. Clear the content of `index.ts`.
 3. Paste the following code snippet into your `index.ts` file:  
-   * [  JavaScript ](#tab-panel-4059)  
-   * [  TypeScript ](#tab-panel-4060)  
-   * [  Python ](#tab-panel-4061)  
+   * [  JavaScript ](#tab-panel-4077)  
+   * [  TypeScript ](#tab-panel-4078)  
+   * [  Python ](#tab-panel-4079)  
 index.js  
 ```  
 export default {  
@@ -399,8 +399,8 @@ export default {
 
 Deploy your application on Cloudflare's global network.
 
-* [ CLI ](#tab-panel-4053)
-* [ Dashboard ](#tab-panel-4054)
+* [ CLI ](#tab-panel-4071)
+* [ Dashboard ](#tab-panel-4072)
 
 To deploy your Worker to production using Wrangler, you must first repeat the [database configuration](https://developers.cloudflare.com/d1/get-started/#populate-your-d1-database) steps after replacing the `--local` flag with the `--remote` flag to give your Worker data to read. This creates the database tables and imports the data into the production version of your database.
 
@@ -502,8 +502,8 @@ You can only develop locally if you are using Wrangler. You cannot develop local
 
 To delete your database:
 
-* [ CLI ](#tab-panel-4047)
-* [ Dashboard ](#tab-panel-4048)
+* [ CLI ](#tab-panel-4065)
+* [ Dashboard ](#tab-panel-4066)
 
 Run:
 
@@ -529,8 +529,8 @@ Note that deleting your D1 database will stop your application from functioning 
 
 If you want to delete your Worker:
 
-* [ CLI ](#tab-panel-4049)
-* [ Dashboard ](#tab-panel-4050)
+* [ CLI ](#tab-panel-4067)
+* [ Dashboard ](#tab-panel-4068)
 
 Run:
 

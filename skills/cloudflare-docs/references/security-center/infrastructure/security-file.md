@@ -24,8 +24,8 @@ When using the API, the preferred languages field name is `preferred_languages` 
 
 To manage your security.txt file via the Cloudflare dashboard:
 
-* [  New dashboard ](#tab-panel-6494)
-* [ Old dashboard ](#tab-panel-6495)
+* [  New dashboard ](#tab-panel-6510)
+* [ Old dashboard ](#tab-panel-6511)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain.
 2. Go to **Security** \> **Settings** and filter by **Web application exploits**.

@@ -24,9 +24,9 @@ The `DurableObjectNamespace` interface is used to obtain a reference to new or e
 
 This interface defines several [methods](https://developers.cloudflare.com/durable-objects/api/namespace/#methods) that can be used to create an ID for a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after calling [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to create a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
-* [  JavaScript ](#tab-panel-4346)
-* [  TypeScript ](#tab-panel-4347)
-* [  Python ](#tab-panel-4348)
+* [  JavaScript ](#tab-panel-4362)
+* [  TypeScript ](#tab-panel-4363)
+* [  Python ](#tab-panel-4364)
 
 JavaScript
 

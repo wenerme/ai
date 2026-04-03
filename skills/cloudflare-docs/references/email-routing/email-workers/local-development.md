@@ -20,8 +20,8 @@ You can test the behavior of an Email Worker script in local development using W
 
 This is the minimal wrangler configuration required to run an Email Worker locally:
 
-* [  wrangler.jsonc ](#tab-panel-4569)
-* [  wrangler.toml ](#tab-panel-4570)
+* [  wrangler.jsonc ](#tab-panel-4585)
+* [  wrangler.toml ](#tab-panel-4586)
 
 ```
 

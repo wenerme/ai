@@ -22,8 +22,8 @@ To protect your API with a learned schema, refer to [Schema validation](https://
 
 ## Export a schema
 
-* [  New dashboard ](#tab-panel-3136)
-* [ Old dashboard ](#tab-panel-3137)
+* [  New dashboard ](#tab-panel-3152)
+* [ Old dashboard ](#tab-panel-3153)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

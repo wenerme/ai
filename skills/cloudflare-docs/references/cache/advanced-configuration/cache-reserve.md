@@ -38,8 +38,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve Plan is required for the enablement.
 
-* [ Dashboard ](#tab-panel-3288)
-* [ API ](#tab-panel-3289)
+* [ Dashboard ](#tab-panel-3304)
+* [ API ](#tab-panel-3305)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -195,8 +195,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-3290)
-* [ API ](#tab-panel-3291)
+* [ Dashboard ](#tab-panel-3306)
+* [ API ](#tab-panel-3307)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)

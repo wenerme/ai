@@ -55,8 +55,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-2876)
-* [  wrangler.toml ](#tab-panel-2877)
+* [  wrangler.jsonc ](#tab-panel-2892)
+* [  wrangler.toml ](#tab-panel-2893)
 
 ```
 
@@ -131,8 +131,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-2878)
-* [  TypeScript ](#tab-panel-2879)
+* [  JavaScript ](#tab-panel-2894)
+* [  TypeScript ](#tab-panel-2895)
 
 JavaScript
 
@@ -540,8 +540,8 @@ export default {
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-2880)
-* [  TypeScript ](#tab-panel-2881)
+* [  JavaScript ](#tab-panel-2896)
+* [  TypeScript ](#tab-panel-2897)
 
 JavaScript
 

@@ -109,7 +109,7 @@ flowchart TD
     style G stroke:#00C853
     style H stroke:#D50000
 
-Connections to Zero Trust will always appear in your [Zero Trust network session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) regardless of connection success. Because Gateway does not inspect failed connections, they will not appear in your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/).
+Connections to Zero Trust will always appear in your [Zero Trust network session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) regardless of connection success. Because Gateway does not inspect failed connections, they will not appear in your [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
 ### Filter TCP SYN packets with Cloudflare Network Firewall
 

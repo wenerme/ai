@@ -45,9 +45,9 @@ curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*" # Python W
 
 ## Syntax
 
-* [  JavaScript ](#tab-panel-7563)
-* [  TypeScript ](#tab-panel-7564)
-* [  Python ](#tab-panel-7565)
+* [  JavaScript ](#tab-panel-7583)
+* [  TypeScript ](#tab-panel-7584)
+* [  Python ](#tab-panel-7585)
 
 JavaScript
 
@@ -126,8 +126,8 @@ class Default(WorkerEntrypoint):
 
 When you configure multiple [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for a single Worker, each trigger invokes the same `scheduled()` handler. Use `controller.cron` to distinguish which schedule fired and run different logic for each.
 
-* [  wrangler.jsonc ](#tab-panel-7568)
-* [  wrangler.toml ](#tab-panel-7569)
+* [  wrangler.jsonc ](#tab-panel-7588)
+* [  wrangler.toml ](#tab-panel-7589)
 
 ```
 
@@ -153,8 +153,8 @@ crons = [ "*/5 * * * *", "0 0 * * *" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-7566)
-* [  TypeScript ](#tab-panel-7567)
+* [  JavaScript ](#tab-panel-7586)
+* [  TypeScript ](#tab-panel-7587)
 
 JavaScript
 

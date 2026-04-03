@@ -1,7 +1,7 @@
 ## Basic Usage
 
 ```typescript
-import { OpenRouter, stepCountIs } from '@openrouter/sdk';
+import { OpenRouter, stepCountIs } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -22,7 +22,7 @@ const result = openrouter.callModel({
 Stop after a specific number of steps:
 
 ```typescript
-import { stepCountIs } from '@openrouter/sdk';
+import { stepCountIs } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -37,7 +37,7 @@ const result = openrouter.callModel({
 Stop when a specific tool is called:
 
 ```typescript
-import { hasToolCall } from '@openrouter/sdk';
+import { hasToolCall } from '@openrouter/agent';
 
 const finishTool = tool({
   name: 'finish',
@@ -61,7 +61,7 @@ const result = openrouter.callModel({
 Stop after using a certain number of tokens:
 
 ```typescript
-import { maxTokensUsed } from '@openrouter/sdk';
+import { maxTokensUsed } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -76,7 +76,7 @@ const result = openrouter.callModel({
 Stop after reaching a cost threshold:
 
 ```typescript
-import { maxCost } from '@openrouter/sdk';
+import { maxCost } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5.2',
@@ -91,7 +91,7 @@ const result = openrouter.callModel({
 Stop on a specific finish reason:
 
 ```typescript
-import { finishReasonIs } from '@openrouter/sdk';
+import { finishReasonIs } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -106,7 +106,7 @@ const result = openrouter.callModel({
 Pass an array to stop on any condition:
 
 ```typescript
-import { stepCountIs, hasToolCall, maxCost } from '@openrouter/sdk';
+import { stepCountIs, hasToolCall, maxCost } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5.2',
@@ -239,7 +239,7 @@ const result = openrouter.callModel({
 Combine conditions for complex logic:
 
 ```typescript
-import { stepCountIs, maxCost } from '@openrouter/sdk';
+import { stepCountIs, maxCost } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5.2',
@@ -276,7 +276,7 @@ const result = openrouter.callModel({
 });
 
 // After: stopWhen
-import { stepCountIs } from '@openrouter/sdk';
+import { stepCountIs } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',

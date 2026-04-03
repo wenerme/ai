@@ -55,8 +55,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to download objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-5788)
-* [ Python ](#tab-panel-5789)
+* [ JavaScript ](#tab-panel-5804)
+* [ Python ](#tab-panel-5805)
 
 TypeScript
 

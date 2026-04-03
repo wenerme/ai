@@ -35,8 +35,8 @@ However, even though you do not need to update the `compatibility_date` field, i
 
 The compatibility date can be set in a Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
-* [  wrangler.jsonc ](#tab-panel-7028)
-* [  wrangler.toml ](#tab-panel-7029)
+* [  wrangler.jsonc ](#tab-panel-7048)
+* [  wrangler.toml ](#tab-panel-7049)
 
 ```
 

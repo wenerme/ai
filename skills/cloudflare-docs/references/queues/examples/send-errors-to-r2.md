@@ -22,8 +22,8 @@ Example of how to use Queues to batch data and store it in an R2 bucket.
 
 The following Worker will catch JavaScript errors and send them to a queue. The same Worker will receive those errors in batches and store them to a log file in an R2 bucket.
 
-* [  wrangler.jsonc ](#tab-panel-5634)
-* [  wrangler.toml ](#tab-panel-5635)
+* [  wrangler.jsonc ](#tab-panel-5650)
+* [  wrangler.toml ](#tab-panel-5651)
 
 ```
 

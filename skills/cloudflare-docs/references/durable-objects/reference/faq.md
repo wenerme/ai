@@ -65,8 +65,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4555)
-* [  wrangler.toml ](#tab-panel-4556)
+* [  wrangler.jsonc ](#tab-panel-4571)
+* [  wrangler.toml ](#tab-panel-4572)
 
 ```
 

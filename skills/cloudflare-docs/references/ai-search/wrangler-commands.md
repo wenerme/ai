@@ -20,9 +20,9 @@ Copy page
 
 List all AI Search instances
 
-* [  npm ](#tab-panel-3085)
-* [  pnpm ](#tab-panel-3086)
-* [  yarn ](#tab-panel-3087)
+* [  npm ](#tab-panel-3101)
+* [  pnpm ](#tab-panel-3102)
+* [  yarn ](#tab-panel-3103)
 
 Terminal window
 
@@ -79,9 +79,9 @@ Automatically provision draft bindings with new resources
 
 Create a new AI Search instance
 
-* [  npm ](#tab-panel-3088)
-* [  pnpm ](#tab-panel-3089)
-* [  yarn ](#tab-panel-3090)
+* [  npm ](#tab-panel-3104)
+* [  pnpm ](#tab-panel-3105)
+* [  yarn ](#tab-panel-3106)
 
 Terminal window
 
@@ -166,9 +166,9 @@ Automatically provision draft bindings with new resources
 
 Get details of an AI Search instance
 
-* [  npm ](#tab-panel-3091)
-* [  pnpm ](#tab-panel-3092)
-* [  yarn ](#tab-panel-3093)
+* [  npm ](#tab-panel-3107)
+* [  pnpm ](#tab-panel-3108)
+* [  yarn ](#tab-panel-3109)
 
 Terminal window
 
@@ -223,9 +223,9 @@ Automatically provision draft bindings with new resources
 
 Update an AI Search instance configuration
 
-* [  npm ](#tab-panel-3094)
-* [  pnpm ](#tab-panel-3095)
-* [  yarn ](#tab-panel-3096)
+* [  npm ](#tab-panel-3110)
+* [  pnpm ](#tab-panel-3111)
+* [  yarn ](#tab-panel-3112)
 
 Terminal window
 
@@ -302,9 +302,9 @@ Automatically provision draft bindings with new resources
 
 Delete an AI Search instance
 
-* [  npm ](#tab-panel-3097)
-* [  pnpm ](#tab-panel-3098)
-* [  yarn ](#tab-panel-3099)
+* [  npm ](#tab-panel-3113)
+* [  pnpm ](#tab-panel-3114)
+* [  yarn ](#tab-panel-3115)
 
 Terminal window
 
@@ -359,9 +359,9 @@ Automatically provision draft bindings with new resources
 
 Get usage statistics for an AI Search instance
 
-* [  npm ](#tab-panel-3100)
-* [  pnpm ](#tab-panel-3101)
-* [  yarn ](#tab-panel-3102)
+* [  npm ](#tab-panel-3116)
+* [  pnpm ](#tab-panel-3117)
+* [  yarn ](#tab-panel-3118)
 
 Terminal window
 
@@ -416,9 +416,9 @@ Automatically provision draft bindings with new resources
 
 Execute a semantic search query against an AI Search instance
 
-* [  npm ](#tab-panel-3103)
-* [  pnpm ](#tab-panel-3104)
-* [  yarn ](#tab-panel-3105)
+* [  npm ](#tab-panel-3119)
+* [  pnpm ](#tab-panel-3120)
+* [  yarn ](#tab-panel-3121)
 
 Terminal window
 

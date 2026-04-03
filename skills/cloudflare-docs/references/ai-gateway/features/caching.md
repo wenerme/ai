@@ -32,8 +32,8 @@ This configuration benefits use cases with limited prompt options. For example, 
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-3034)
-* [ API ](#tab-panel-3035)
+* [ Dashboard ](#tab-panel-3050)
+* [ API ](#tab-panel-3051)
 
 To set the default caching configuration in the dashboard:
 

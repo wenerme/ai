@@ -43,8 +43,8 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:  
-   * [  wrangler.jsonc ](#tab-panel-4527)  
-   * [  wrangler.toml ](#tab-panel-4528)  
+   * [  wrangler.jsonc ](#tab-panel-4543)  
+   * [  wrangler.toml ](#tab-panel-4544)  
 ```  
 {  
     "observability": {  

@@ -102,8 +102,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Rendering API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-3270)
-* [  wrangler.toml ](#tab-panel-3271)
+* [  wrangler.jsonc ](#tab-panel-3286)
+* [  wrangler.toml ](#tab-panel-3287)
 
 ```
 
@@ -183,8 +183,8 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-3268)
-* [  TypeScript ](#tab-panel-3269)
+* [  JavaScript ](#tab-panel-3284)
+* [  TypeScript ](#tab-panel-3285)
 
 Update `src/index.js` with your Worker code:
 

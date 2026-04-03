@@ -22,8 +22,8 @@ Copy page
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-2406)
-* [  TypeScript ](#tab-panel-2407)
+* [  JavaScript ](#tab-panel-2422)
+* [  TypeScript ](#tab-panel-2423)
 
 JavaScript
 
@@ -134,8 +134,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-2408)
-* [  TypeScript ](#tab-panel-2409)
+* [  JavaScript ](#tab-panel-2424)
+* [  TypeScript ](#tab-panel-2425)
 
 JavaScript
 
@@ -215,8 +215,8 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-2402)
-* [  TypeScript ](#tab-panel-2403)
+* [  JavaScript ](#tab-panel-2418)
+* [  TypeScript ](#tab-panel-2419)
 
 JavaScript
 
@@ -270,8 +270,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-2400)
-* [  TypeScript ](#tab-panel-2401)
+* [  JavaScript ](#tab-panel-2416)
+* [  TypeScript ](#tab-panel-2417)
 
 JavaScript
 
@@ -297,8 +297,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-2404)
-* [  TypeScript ](#tab-panel-2405)
+* [  JavaScript ](#tab-panel-2420)
+* [  TypeScript ](#tab-panel-2421)
 
 JavaScript
 
@@ -379,8 +379,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-2412)
-* [  TypeScript ](#tab-panel-2413)
+* [  JavaScript ](#tab-panel-2428)
+* [  TypeScript ](#tab-panel-2429)
 
 JavaScript
 
@@ -587,8 +587,8 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-2414)
-* [  TypeScript ](#tab-panel-2415)
+* [  JavaScript ](#tab-panel-2430)
+* [  TypeScript ](#tab-panel-2431)
 
 JavaScript
 
@@ -926,8 +926,8 @@ const schema = {
 
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-2410)
-* [  TypeScript ](#tab-panel-2411)
+* [  JavaScript ](#tab-panel-2426)
+* [  TypeScript ](#tab-panel-2427)
 
 JavaScript
 

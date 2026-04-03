@@ -27,9 +27,9 @@ To create a new policy, open [Cloudflare One ↗](https://one.dash.cloudflare.co
 
 ## Example DNS policy
 
-* [ Dashboard ](#tab-panel-5119)
-* [ API ](#tab-panel-5120)
-* [ Terraform (v5) ](#tab-panel-5121)
+* [ Dashboard ](#tab-panel-5135)
+* [ API ](#tab-panel-5136)
+* [ Terraform (v5) ](#tab-panel-5137)
 
 | Traffic Selector | Operator | Value                |
 | ---------------- | -------- | -------------------- |
@@ -153,9 +153,9 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_allow_wiki_domains" {
 
 ## Example network policy
 
-* [ Dashboard ](#tab-panel-5122)
-* [ API ](#tab-panel-5123)
-* [ Terraform (v5) ](#tab-panel-5124)
+* [ Dashboard ](#tab-panel-5138)
+* [ API ](#tab-panel-5139)
+* [ Terraform (v5) ](#tab-panel-5140)
 
 | Traffic Selector | Operator | Value            |
 | ---------------- | -------- | ---------------- |
@@ -273,9 +273,9 @@ resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
 
 We recommend adding a catch-all policy to the bottom of your network policy list. An effective Zero Trust model should prioritize default-deny actions to avoid any overly permissive policy building. For example,
 
-* [ Dashboard ](#tab-panel-5125)
-* [ API ](#tab-panel-5126)
-* [ Terraform (v5) ](#tab-panel-5127)
+* [ Dashboard ](#tab-panel-5141)
+* [ API ](#tab-panel-5142)
+* [ Terraform (v5) ](#tab-panel-5143)
 
 | Traffic Selector | Operator | Value                      | Logic |
 | ---------------- | -------- | -------------------------- | ----- |
@@ -398,7 +398,7 @@ Network policies are evaluated in [top-down order](https://developers.cloudflare
 
 Note
 
-It is not recommended to employ a default-deny model while testing. Instead, build your explicit application policies and [monitor your logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/) to determine if your policies are working as expected. If you do not see the policies triggering in your logs, you may need to tune your policies and review what kind of information (identity groups, device posture values, etc.) is being sent with your traffic.
+It is not recommended to employ a default-deny model while testing. Instead, build your explicit application policies and [monitor your logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to determine if your policies are working as expected. If you do not see the policies triggering in your logs, you may need to tune your policies and review what kind of information (identity groups, device posture values, etc.) is being sent with your traffic.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/build-policies/","name":"Build secure access policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/build-policies/create-policy/","name":"Secure your first application"}}]}

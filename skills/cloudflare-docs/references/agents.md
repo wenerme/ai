@@ -62,8 +62,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-2096)
-* [  TypeScript ](#tab-panel-2097)
+* [  JavaScript ](#tab-panel-2112)
+* [  TypeScript ](#tab-panel-2113)
 
 JavaScript
 
@@ -146,8 +146,8 @@ function Counter() {
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-2098)
-* [  TypeScript ](#tab-panel-2099)
+* [  JavaScript ](#tab-panel-2114)
+* [  TypeScript ](#tab-panel-2115)
 
 JavaScript
 

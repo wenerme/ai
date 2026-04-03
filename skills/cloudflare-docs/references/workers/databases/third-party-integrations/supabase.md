@@ -24,8 +24,8 @@ The Supabase client (`@supabase/supabase-js`) provides access to Supabase's vari
 
 If you want to connect directly to the Supabase Postgres database, connect using [Hyperdrive](https://developers.cloudflare.com/hyperdrive). Hyperdrive can provide lower latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Supabase client ](#tab-panel-7131)
-* [ Hyperdrive ](#tab-panel-7132)
+* [ Supabase client ](#tab-panel-7151)
+* [ Hyperdrive ](#tab-panel-7152)
 
 ### Supabase client setup
 
@@ -122,8 +122,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-7127)
-* [ Wrangler CLI ](#tab-panel-7128)
+* [ Dashboard ](#tab-panel-7147)
+* [ Wrangler CLI ](#tab-panel-7148)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -141,8 +141,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-7125)  
-   * [  wrangler.toml ](#tab-panel-7126)  
+   * [  wrangler.jsonc ](#tab-panel-7145)  
+   * [  wrangler.toml ](#tab-panel-7146)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -226,8 +226,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7129)
-* [  wrangler.toml ](#tab-panel-7130)
+* [  wrangler.jsonc ](#tab-panel-7149)
+* [  wrangler.toml ](#tab-panel-7150)
 
 ```
 

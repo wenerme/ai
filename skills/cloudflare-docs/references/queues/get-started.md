@@ -97,8 +97,8 @@ To expose your queue to the code inside your Worker, you need to connect your qu
 
 To create a binding, open your newly generated `wrangler.jsonc` file and add the following:
 
-* [  wrangler.jsonc ](#tab-panel-5638)
-* [  wrangler.toml ](#tab-panel-5639)
+* [  wrangler.jsonc ](#tab-panel-5654)
+* [  wrangler.toml ](#tab-panel-5655)
 
 ```
 
@@ -295,8 +295,8 @@ Each queue can only have one consumer Worker connected to it. If you try to conn
 
 To connect your queue to your consumer Worker, open your Wrangler file and add this to the bottom:
 
-* [  wrangler.jsonc ](#tab-panel-5640)
-* [  wrangler.toml ](#tab-panel-5641)
+* [  wrangler.jsonc ](#tab-panel-5656)
+* [  wrangler.toml ](#tab-panel-5657)
 
 ```
 

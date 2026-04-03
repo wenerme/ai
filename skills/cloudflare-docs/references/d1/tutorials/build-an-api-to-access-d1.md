@@ -202,8 +202,8 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.  
-   * [  wrangler.jsonc ](#tab-panel-4088)  
-   * [  wrangler.toml ](#tab-panel-4089)  
+   * [  wrangler.jsonc ](#tab-panel-4106)  
+   * [  wrangler.toml ](#tab-panel-4107)  
 ```  
 {  
   "d1_databases": [  

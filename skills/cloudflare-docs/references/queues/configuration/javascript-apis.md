@@ -28,9 +28,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-5620)
-* [  TypeScript ](#tab-panel-5621)
-* [  Python ](#tab-panel-5622)
+* [  JavaScript ](#tab-panel-5636)
+* [  TypeScript ](#tab-panel-5637)
+* [  Python ](#tab-panel-5638)
 
 index.js
 
@@ -123,9 +123,9 @@ class Default(WorkerEntrypoint):
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-5617)
-* [  TypeScript ](#tab-panel-5618)
-* [  Python ](#tab-panel-5619)
+* [  JavaScript ](#tab-panel-5633)
+* [  TypeScript ](#tab-panel-5634)
+* [  Python ](#tab-panel-5635)
 
 index.js
 
@@ -309,9 +309,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-5623)
-* [  TypeScript ](#tab-panel-5624)
-* [  Python ](#tab-panel-5625)
+* [  JavaScript ](#tab-panel-5639)
+* [  TypeScript ](#tab-panel-5640)
+* [  Python ](#tab-panel-5641)
 
 index.js
 

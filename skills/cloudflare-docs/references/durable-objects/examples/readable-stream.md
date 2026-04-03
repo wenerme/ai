@@ -27,8 +27,8 @@ This example demonstrates:
 * The Worker reads and logs the values from the stream.
 * The Worker then cancels the stream after 5 values.
 
-* [  JavaScript ](#tab-panel-4474)
-* [  TypeScript ](#tab-panel-4475)
+* [  JavaScript ](#tab-panel-4490)
+* [  TypeScript ](#tab-panel-4491)
 
 JavaScript
 

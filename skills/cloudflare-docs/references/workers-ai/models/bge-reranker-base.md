@@ -32,9 +32,9 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1631)
-* [  Python ](#tab-panel-1632)
-* [  curl ](#tab-panel-1633)
+* [  TypeScript ](#tab-panel-1647)
+* [  Python ](#tab-panel-1648)
+* [  curl ](#tab-panel-1649)
 
 ```
 
@@ -165,8 +165,8 @@ List of provided contexts. Note that the index in this array is important, as th
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1634)
-* [ Output ](#tab-panel-1635)
+* [ Input ](#tab-panel-1650)
+* [ Output ](#tab-panel-1651)
 
 ```
 

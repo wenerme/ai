@@ -1,6 +1,6 @@
 ---
 title: Block traffic by geographical location
-description: This example custom rule blocks requests by autonomous system number (ASN), continent, country of origin, or region.
+description: This example custom rule blocks requests by autonomous system number (ASN), continent, or country of origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,10 +16,17 @@ Copy page
 
 # Block traffic by geographical location
 
-This example custom rule blocks requests by autonomous system number (ASN), continent, country of origin, or region.
+This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests by autonomous system number (ASN), continent, or country of origin.
 
-* **Expression**: `(ip.src.asnum eq 131279) or (ip.src.continent eq "AS") or (ip.src.country eq "KP") or (ip.src.region_code eq "CA")`
-* **Action**: _Block_
+* **When incoming requests match**:  
+| Field     | Operator | Value        | Logic |  
+| --------- | -------- | ------------ | ----- |  
+| AS Num    | equals   | 131279       | Or    |  
+| Continent | equals   | Asia         | Or    |  
+| Country   | equals   | Korea, North |       |  
+If you are using the expression editor:  
+`(ip.src.asnum eq 131279) or (ip.src.continent eq "AS") or (ip.src.country eq "KP")`
+* **Then take action**: _Block_
 
 ## Other resources
 

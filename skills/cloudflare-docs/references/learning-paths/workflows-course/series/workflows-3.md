@@ -11,9 +11,9 @@ Copy page
 
 # Use cron triggers to develop time-aware applications
 
-* [ Watch this episode ](#tab-panel-5325)
-* [ Step-by-step tutorial ](#tab-panel-5326)
-* [ Series overview ](#tab-panel-5327)
+* [ Watch this episode ](#tab-panel-5341)
+* [ Step-by-step tutorial ](#tab-panel-5342)
+* [ Series overview ](#tab-panel-5343)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using cron triggers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 

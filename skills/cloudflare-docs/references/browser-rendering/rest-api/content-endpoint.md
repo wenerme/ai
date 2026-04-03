@@ -45,8 +45,8 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-3242)
-* [ TypeScript SDK ](#tab-panel-3243)
+* [ curl ](#tab-panel-3258)
+* [ TypeScript SDK ](#tab-panel-3259)
 
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 

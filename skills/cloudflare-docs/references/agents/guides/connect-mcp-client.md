@@ -55,8 +55,8 @@ Terminal window
 cd my-mcp-client  
 ```  
 Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-2894)  
-   * [  TypeScript ](#tab-panel-2895)  
+   * [  JavaScript ](#tab-panel-2910)  
+   * [  TypeScript ](#tab-panel-2911)  
 JavaScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
@@ -98,8 +98,8 @@ export default {
 ## 2\. Add MCP connection endpoint
 
 1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-2898)  
-   * [  TypeScript ](#tab-panel-2899)  
+   * [  JavaScript ](#tab-panel-2914)  
+   * [  TypeScript ](#tab-panel-2915)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  
@@ -183,8 +183,8 @@ You should see a response with the server ID:
 ## 4\. List available tools
 
 1. Add an endpoint to see which tools are available from connected servers:  
-   * [  JavaScript ](#tab-panel-2896)  
-   * [  TypeScript ](#tab-panel-2897)  
+   * [  JavaScript ](#tab-panel-2912)  
+   * [  TypeScript ](#tab-panel-2913)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  

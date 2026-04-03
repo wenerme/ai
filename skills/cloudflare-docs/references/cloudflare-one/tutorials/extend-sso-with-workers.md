@@ -264,8 +264,8 @@ Example user identity
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-3935)
-* [  wrangler.toml ](#tab-panel-3936)
+* [  wrangler.jsonc ](#tab-panel-3953)
+* [  wrangler.toml ](#tab-panel-3954)
 
 ```
 

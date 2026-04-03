@@ -30,9 +30,9 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-6884)
-* [ Old dashboard ](#tab-panel-6885)
-* [ API ](#tab-panel-6886)
+* [  New dashboard ](#tab-panel-6900)
+* [ Old dashboard ](#tab-panel-6901)
+* [ API ](#tab-panel-6902)
 
 To enable **Hotlink Protection** in the dashboard:
 

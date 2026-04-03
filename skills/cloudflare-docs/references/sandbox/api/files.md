@@ -40,8 +40,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):  
    * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-6119)
-* [  TypeScript ](#tab-panel-6120)
+* [  JavaScript ](#tab-panel-6135)
+* [  TypeScript ](#tab-panel-6136)
 
 JavaScript
 
@@ -96,8 +96,8 @@ const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Pr
 
 **Returns**: `Promise<FileInfo>` with `content` and `encoding`
 
-* [  JavaScript ](#tab-panel-6127)
-* [  TypeScript ](#tab-panel-6128)
+* [  JavaScript ](#tab-panel-6143)
+* [  TypeScript ](#tab-panel-6144)
 
 JavaScript
 
@@ -168,8 +168,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-6131)
-* [  TypeScript ](#tab-panel-6132)
+* [  JavaScript ](#tab-panel-6147)
+* [  TypeScript ](#tab-panel-6148)
 
 JavaScript
 
@@ -250,8 +250,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):  
    * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-6123)
-* [  TypeScript ](#tab-panel-6124)
+* [  JavaScript ](#tab-panel-6139)
+* [  TypeScript ](#tab-panel-6140)
 
 JavaScript
 
@@ -298,8 +298,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-6121)
-* [  TypeScript ](#tab-panel-6122)
+* [  JavaScript ](#tab-panel-6137)
+* [  TypeScript ](#tab-panel-6138)
 
 JavaScript
 
@@ -337,8 +337,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-6125)
-* [  TypeScript ](#tab-panel-6126)
+* [  JavaScript ](#tab-panel-6141)
+* [  TypeScript ](#tab-panel-6142)
 
 JavaScript
 
@@ -376,8 +376,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-6129)
-* [  TypeScript ](#tab-panel-6130)
+* [  JavaScript ](#tab-panel-6145)
+* [  TypeScript ](#tab-panel-6146)
 
 JavaScript
 
@@ -418,8 +418,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
    * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)  
    * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-6133)
-* [  TypeScript ](#tab-panel-6134)
+* [  JavaScript ](#tab-panel-6149)
+* [  TypeScript ](#tab-panel-6150)
 
 JavaScript
 

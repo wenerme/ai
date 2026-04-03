@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-4343)
-* [  TypeScript ](#tab-panel-4344)
-* [  Python ](#tab-panel-4345)
+* [  JavaScript ](#tab-panel-4359)
+* [  TypeScript ](#tab-panel-4360)
+* [  Python ](#tab-panel-4361)
 
 JavaScript
 

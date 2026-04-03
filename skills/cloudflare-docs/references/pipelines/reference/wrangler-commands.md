@@ -20,9 +20,9 @@ Copy page
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-5470)
-* [  pnpm ](#tab-panel-5471)
-* [  yarn ](#tab-panel-5472)
+* [  npm ](#tab-panel-5486)
+* [  pnpm ](#tab-panel-5487)
+* [  yarn ](#tab-panel-5488)
 
 Terminal window
 
@@ -75,9 +75,9 @@ Automatically provision draft bindings with new resources
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-5473)
-* [  pnpm ](#tab-panel-5474)
-* [  yarn ](#tab-panel-5475)
+* [  npm ](#tab-panel-5489)
+* [  pnpm ](#tab-panel-5490)
+* [  yarn ](#tab-panel-5491)
 
 Terminal window
 
@@ -134,9 +134,9 @@ Automatically provision draft bindings with new resources
 
 List all pipelines
 
-* [  npm ](#tab-panel-5476)
-* [  pnpm ](#tab-panel-5477)
-* [  yarn ](#tab-panel-5478)
+* [  npm ](#tab-panel-5492)
+* [  pnpm ](#tab-panel-5493)
+* [  yarn ](#tab-panel-5494)
 
 Terminal window
 
@@ -193,9 +193,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-5479)
-* [  pnpm ](#tab-panel-5480)
-* [  yarn ](#tab-panel-5481)
+* [  npm ](#tab-panel-5495)
+* [  pnpm ](#tab-panel-5496)
+* [  yarn ](#tab-panel-5497)
 
 Terminal window
 
@@ -250,9 +250,9 @@ Automatically provision draft bindings with new resources
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-5482)
-* [  pnpm ](#tab-panel-5483)
-* [  yarn ](#tab-panel-5484)
+* [  npm ](#tab-panel-5498)
+* [  pnpm ](#tab-panel-5499)
+* [  yarn ](#tab-panel-5500)
 
 Terminal window
 
@@ -329,9 +329,9 @@ Automatically provision draft bindings with new resources
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-5485)
-* [  pnpm ](#tab-panel-5486)
-* [  yarn ](#tab-panel-5487)
+* [  npm ](#tab-panel-5501)
+* [  pnpm ](#tab-panel-5502)
+* [  yarn ](#tab-panel-5503)
 
 Terminal window
 
@@ -386,9 +386,9 @@ Automatically provision draft bindings with new resources
 
 Create a new stream
 
-* [  npm ](#tab-panel-5488)
-* [  pnpm ](#tab-panel-5489)
-* [  yarn ](#tab-panel-5490)
+* [  npm ](#tab-panel-5504)
+* [  pnpm ](#tab-panel-5505)
+* [  yarn ](#tab-panel-5506)
 
 Terminal window
 
@@ -449,9 +449,9 @@ Automatically provision draft bindings with new resources
 
 List all streams
 
-* [  npm ](#tab-panel-5491)
-* [  pnpm ](#tab-panel-5492)
-* [  yarn ](#tab-panel-5493)
+* [  npm ](#tab-panel-5507)
+* [  pnpm ](#tab-panel-5508)
+* [  yarn ](#tab-panel-5509)
 
 Terminal window
 
@@ -510,9 +510,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-5494)
-* [  pnpm ](#tab-panel-5495)
-* [  yarn ](#tab-panel-5496)
+* [  npm ](#tab-panel-5510)
+* [  pnpm ](#tab-panel-5511)
+* [  yarn ](#tab-panel-5512)
 
 Terminal window
 
@@ -567,9 +567,9 @@ Automatically provision draft bindings with new resources
 
 Delete a stream
 
-* [  npm ](#tab-panel-5497)
-* [  pnpm ](#tab-panel-5498)
-* [  yarn ](#tab-panel-5499)
+* [  npm ](#tab-panel-5513)
+* [  pnpm ](#tab-panel-5514)
+* [  yarn ](#tab-panel-5515)
 
 Terminal window
 
@@ -624,9 +624,9 @@ Automatically provision draft bindings with new resources
 
 Create a new sink
 
-* [  npm ](#tab-panel-5500)
-* [  pnpm ](#tab-panel-5501)
-* [  yarn ](#tab-panel-5502)
+* [  npm ](#tab-panel-5516)
+* [  pnpm ](#tab-panel-5517)
+* [  yarn ](#tab-panel-5518)
 
 Terminal window
 
@@ -707,9 +707,9 @@ Automatically provision draft bindings with new resources
 
 List all sinks
 
-* [  npm ](#tab-panel-5503)
-* [  pnpm ](#tab-panel-5504)
-* [  yarn ](#tab-panel-5505)
+* [  npm ](#tab-panel-5519)
+* [  pnpm ](#tab-panel-5520)
+* [  yarn ](#tab-panel-5521)
 
 Terminal window
 
@@ -768,9 +768,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-5506)
-* [  pnpm ](#tab-panel-5507)
-* [  yarn ](#tab-panel-5508)
+* [  npm ](#tab-panel-5522)
+* [  pnpm ](#tab-panel-5523)
+* [  yarn ](#tab-panel-5524)
 
 Terminal window
 
@@ -825,9 +825,9 @@ Automatically provision draft bindings with new resources
 
 Delete a sink
 
-* [  npm ](#tab-panel-5509)
-* [  pnpm ](#tab-panel-5510)
-* [  yarn ](#tab-panel-5511)
+* [  npm ](#tab-panel-5525)
+* [  pnpm ](#tab-panel-5526)
+* [  yarn ](#tab-panel-5527)
 
 Terminal window
 

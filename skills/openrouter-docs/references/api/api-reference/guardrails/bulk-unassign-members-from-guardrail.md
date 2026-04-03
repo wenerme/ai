@@ -92,8 +92,7 @@ components:
       type: object
       properties:
         unassigned_count:
-          type: number
-          format: double
+          type: integer
           description: Number of members successfully unassigned
       required:
         - unassigned_count

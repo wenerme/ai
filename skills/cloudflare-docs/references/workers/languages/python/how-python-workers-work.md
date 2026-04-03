@@ -42,8 +42,8 @@ class Default(WorkerEntrypoint):
 
 ...and a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) that points to this `.py` file:
 
-* [  wrangler.jsonc ](#tab-panel-7420)
-* [  wrangler.toml ](#tab-panel-7421)
+* [  wrangler.jsonc ](#tab-panel-7440)
+* [  wrangler.toml ](#tab-panel-7441)
 
 ```
 

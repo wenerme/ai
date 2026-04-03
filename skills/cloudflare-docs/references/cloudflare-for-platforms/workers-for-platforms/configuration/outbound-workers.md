@@ -41,8 +41,8 @@ To use Outbound Workers:
 
 Make sure that you have `wrangler@3.3.0` or later [installed](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-* [  wrangler.jsonc ](#tab-panel-3364)
-* [  wrangler.toml ](#tab-panel-3365)
+* [  wrangler.jsonc ](#tab-panel-3380)
+* [  wrangler.toml ](#tab-panel-3381)
 
 ```
 

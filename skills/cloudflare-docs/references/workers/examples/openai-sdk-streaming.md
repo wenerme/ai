@@ -36,8 +36,8 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-7299)
-* [  Hono ](#tab-panel-7300)
+* [  TypeScript ](#tab-panel-7319)
+* [  Hono ](#tab-panel-7320)
 
 TypeScript
 

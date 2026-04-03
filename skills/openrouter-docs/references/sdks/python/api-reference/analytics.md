@@ -7,8 +7,6 @@
 
 {/* banner:end */}
 
-(*analytics*)
-
 ## Overview
 
 Analytics and usage endpoints
@@ -19,7 +17,7 @@ Analytics and usage endpoints
 
 ## get\_user\_activity
 
-Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -30,10 +28,13 @@ from openrouter import OpenRouter
 import os
 
 with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.analytics.get_user_activity(date_="2025-08-24")
+    res = open_router.analytics.get_user_activity()
 
     # Handle response
     print(res)
@@ -42,10 +43,13 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter | Type                                                               | Required             | Description                                                          | Example    |
-| --------- | ------------------------------------------------------------------ | -------------------- | -------------------------------------------------------------------- | ---------- |
-| `date_`   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by a single UTC date in the last 30 days (YYYY-MM-DD format). | 2025-08-24 |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.  |            |
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example    |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |            |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |            |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |            |
+| `date_`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by a single UTC date in the last 30 days (YYYY-MM-DD format).                                                                                        | 2025-08-24 |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |            |
 
 ### Response
 

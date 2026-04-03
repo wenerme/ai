@@ -24,8 +24,8 @@ Note
 
 You do not need to manually create a dataset in the Cloudflare dashboard. Workers Analytics Engine datasets are created automatically the first time you write to them after defining the binding in your Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-3106)
-* [  wrangler.toml ](#tab-panel-3107)
+* [  wrangler.jsonc ](#tab-panel-3122)
+* [  wrangler.toml ](#tab-panel-3123)
 
 ```
 

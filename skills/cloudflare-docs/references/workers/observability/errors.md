@@ -377,8 +377,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, pass the request promise to [event.waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
-* [  Module Worker ](#tab-panel-7428)
-* [  Service Worker ](#tab-panel-7429)
+* [  Module Worker ](#tab-panel-7448)
+* [  Service Worker ](#tab-panel-7449)
 
 JavaScript
 
@@ -466,8 +466,8 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-7430)
-* [  Service Worker ](#tab-panel-7431)
+* [  Module Worker ](#tab-panel-7450)
+* [  Service Worker ](#tab-panel-7451)
 
 JavaScript
 

@@ -50,8 +50,8 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 
 ## Submit a report
 
-* [  New dashboard ](#tab-panel-3196)
-* [ Old dashboard ](#tab-panel-3197)
+* [  New dashboard ](#tab-panel-3212)
+* [ Old dashboard ](#tab-panel-3213)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

@@ -30,8 +30,8 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-4031)
-* [  TypeScript ](#tab-panel-4032)
+* [  JavaScript ](#tab-panel-4049)
+* [  TypeScript ](#tab-panel-4050)
 
 JavaScript
 
@@ -346,8 +346,8 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-4025)
-* [ TypeScript ](#tab-panel-4026)
+* [ cURL ](#tab-panel-4043)
+* [ TypeScript ](#tab-panel-4044)
 
 Terminal window
 
@@ -404,8 +404,8 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-4027)
-* [ TypeScript ](#tab-panel-4028)
+* [ cURL ](#tab-panel-4045)
+* [ TypeScript ](#tab-panel-4046)
 
 Terminal window
 
@@ -460,8 +460,8 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-4029)
-* [ TypeScript ](#tab-panel-4030)
+* [ cURL ](#tab-panel-4047)
+* [ TypeScript ](#tab-panel-4048)
 
 Terminal window
 

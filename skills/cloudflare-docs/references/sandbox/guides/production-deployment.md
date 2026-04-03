@@ -57,8 +57,8 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6445)
-* [  wrangler.toml ](#tab-panel-6446)
+* [  wrangler.jsonc ](#tab-panel-6461)
+* [  wrangler.toml ](#tab-panel-6462)
 
 ```
 

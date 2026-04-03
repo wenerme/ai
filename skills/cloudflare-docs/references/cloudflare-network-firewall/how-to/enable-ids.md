@@ -24,8 +24,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-3382)
-* [ API ](#tab-panel-3383)
+* [ Dashboard ](#tab-panel-3398)
+* [ API ](#tab-panel-3399)
 
 1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
 2. Select **IDS** and turn on **IDS**.

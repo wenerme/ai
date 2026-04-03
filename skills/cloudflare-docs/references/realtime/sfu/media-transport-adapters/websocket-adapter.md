@@ -33,8 +33,8 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## How it works
 
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-5961)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-5962)
+* [ Ingest (WebSocket → WebRTC) ](#tab-panel-5977)
+* [ Stream (WebRTC → WebSocket) ](#tab-panel-5978)
 
 ### Create WebRTC tracks from external audio
 
@@ -92,8 +92,8 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 ```
 
-* [ Ingest ](#tab-panel-5963)
-* [ Stream ](#tab-panel-5964)
+* [ Ingest ](#tab-panel-5979)
+* [ Stream ](#tab-panel-5980)
 
 #### Request body
 

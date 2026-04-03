@@ -36,8 +36,8 @@ To create a zone apex record, use `@` for the record **Name**, as in the followi
 | ---- | ---- | ------------ | ------------ |
 | A    | @    | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-4254)
-* [ API ](#tab-panel-4255)
+* [ Dashboard ](#tab-panel-4270)
+* [ API ](#tab-panel-4271)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

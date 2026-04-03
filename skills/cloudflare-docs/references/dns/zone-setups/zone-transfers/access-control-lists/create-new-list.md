@@ -20,8 +20,8 @@ You need to create an Access Control List (ACL) if Cloudflare is your [secondary
 
 An ACL is configured at the account level, which means that it will apply to every primary and secondary zone in your account.
 
-* [ Dashboard ](#tab-panel-4296)
-* [ API ](#tab-panel-4297)
+* [ Dashboard ](#tab-panel-4312)
+* [ API ](#tab-panel-4313)
 
 To create a new ACL using the dashboard:
 

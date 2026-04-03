@@ -16,10 +16,15 @@ Copy page
 
 # Block traffic from specific countries
 
-This example custom rule blocks requests based on country code using the [ip.src.country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/) field.
+This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests based on country code using the [ip.src.country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/) field.
 
-* **Expression**: `(ip.src.country in {"KP" "SY"})`
-* **Action**: _Block_
+* **When incoming requests match**:  
+| Field   | Operator | Value               |  
+| ------- | -------- | ------------------- |  
+| Country | is in    | Korea, North, Syria |  
+If you are using the expression editor:  
+`(ip.src.country in {"KP" "SY"})`
+* **Then take action**: _Block_
 
 ## Other resources
 

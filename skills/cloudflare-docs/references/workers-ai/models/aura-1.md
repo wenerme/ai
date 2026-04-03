@@ -34,8 +34,8 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1604)
-* [  curl ](#tab-panel-1605)
+* [  TypeScript ](#tab-panel-1620)
+* [  curl ](#tab-panel-1621)
 
 ```
 
@@ -103,8 +103,8 @@ The bitrate of the audio in bits per second. Choose from predefined ranges or sp
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1606)
-* [ Output ](#tab-panel-1607)
+* [ Input ](#tab-panel-1622)
+* [ Output ](#tab-panel-1623)
 
 ```
 

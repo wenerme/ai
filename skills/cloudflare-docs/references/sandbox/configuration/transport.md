@@ -90,8 +90,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-6213)
-* [  wrangler.toml ](#tab-panel-6214)
+* [  wrangler.jsonc ](#tab-panel-6229)
+* [  wrangler.toml ](#tab-panel-6230)
 
 ```
 
@@ -236,8 +236,8 @@ Switching between transports requires no code changes.
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-6209)
-* [  wrangler.toml ](#tab-panel-6210)
+* [  wrangler.jsonc ](#tab-panel-6225)
+* [  wrangler.toml ](#tab-panel-6226)
 
 ```
 
@@ -278,8 +278,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-6211)
-* [  wrangler.toml ](#tab-panel-6212)
+* [  wrangler.jsonc ](#tab-panel-6227)
+* [  wrangler.toml ](#tab-panel-6228)
 
 ```
 

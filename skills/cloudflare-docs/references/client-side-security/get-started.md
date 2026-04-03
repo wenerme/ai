@@ -20,8 +20,8 @@ Copy page
 
 To enable client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-3314)
-* [ Old dashboard ](#tab-panel-3315)
+* [  New dashboard ](#tab-panel-3330)
+* [ Old dashboard ](#tab-panel-3331)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -42,8 +42,8 @@ When you enable client-side resource monitoring, it may take a while to get the 
 To review the scripts detected by Cloudflare:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3312)  
-   * [ Old dashboard ](#tab-panel-3313)  
+   * [  New dashboard ](#tab-panel-3328)  
+   * [ Old dashboard ](#tab-panel-3329)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -89,8 +89,8 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-3318)
-* [ Old dashboard ](#tab-panel-3319)
+* [  New dashboard ](#tab-panel-3334)
+* [ Old dashboard ](#tab-panel-3335)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -124,8 +124,8 @@ Resources not covered by the content security rule you created will be reported 
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-3316)
-* [ Old dashboard ](#tab-panel-3317)
+* [  New dashboard ](#tab-panel-3332)
+* [ Old dashboard ](#tab-panel-3333)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

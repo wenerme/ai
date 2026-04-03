@@ -59,8 +59,8 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-6682)
-* [ CLI ](#tab-panel-6683)
+* [ Dashboard ](#tab-panel-6698)
+* [ CLI ](#tab-panel-6699)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

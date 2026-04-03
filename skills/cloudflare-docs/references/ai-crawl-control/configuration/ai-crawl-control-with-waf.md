@@ -95,8 +95,8 @@ You may have both of the following features enabled:
 
 In this scenario, you have two custom rules, each directing a different logic for handling AI crawlers. To resolve this issue:
 
-* [  New dashboard ](#tab-panel-3012)
-* [ Old dashboard ](#tab-panel-3013)
+* [  New dashboard ](#tab-panel-3028)
+* [ Old dashboard ](#tab-panel-3029)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

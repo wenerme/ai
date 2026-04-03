@@ -33,8 +33,8 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1892)
-* [  curl ](#tab-panel-1893)
+* [  TypeScript ](#tab-panel-1908)
+* [  curl ](#tab-panel-1909)
 
 ```
 
@@ -128,8 +128,8 @@ The generated image in Base64 format.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1894)
-* [ Output ](#tab-panel-1895)
+* [ Input ](#tab-panel-1910)
+* [ Output ](#tab-panel-1911)
 
 ```
 

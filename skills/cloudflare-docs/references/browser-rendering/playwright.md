@@ -58,8 +58,8 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-3232)
-* [  wrangler.toml ](#tab-panel-3233)
+* [  wrangler.jsonc ](#tab-panel-3248)
+* [  wrangler.toml ](#tab-panel-3249)
 
 ```
 
@@ -377,8 +377,8 @@ npx wrangler kv namespace create KV
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3234)
-* [  wrangler.toml ](#tab-panel-3235)
+* [  wrangler.jsonc ](#tab-panel-3250)
+* [  wrangler.toml ](#tab-panel-3251)
 
 ```
 

@@ -22,9 +22,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a Hyperdrive config
 
-* [  npm ](#tab-panel-4807)
-* [  pnpm ](#tab-panel-4808)
-* [  yarn ](#tab-panel-4809)
+* [  npm ](#tab-panel-4823)
+* [  pnpm ](#tab-panel-4824)
+* [  yarn ](#tab-panel-4825)
 
 Terminal window
 
@@ -115,9 +115,9 @@ Automatically provision draft bindings with new resources
 
 Delete a Hyperdrive config
 
-* [  npm ](#tab-panel-4810)
-* [  pnpm ](#tab-panel-4811)
-* [  yarn ](#tab-panel-4812)
+* [  npm ](#tab-panel-4826)
+* [  pnpm ](#tab-panel-4827)
+* [  yarn ](#tab-panel-4828)
 
 Terminal window
 
@@ -170,9 +170,9 @@ Automatically provision draft bindings with new resources
 
 Get a Hyperdrive config
 
-* [  npm ](#tab-panel-4813)
-* [  pnpm ](#tab-panel-4814)
-* [  yarn ](#tab-panel-4815)
+* [  npm ](#tab-panel-4829)
+* [  pnpm ](#tab-panel-4830)
+* [  yarn ](#tab-panel-4831)
 
 Terminal window
 
@@ -225,9 +225,9 @@ Automatically provision draft bindings with new resources
 
 List Hyperdrive configs
 
-* [  npm ](#tab-panel-4816)
-* [  pnpm ](#tab-panel-4817)
-* [  yarn ](#tab-panel-4818)
+* [  npm ](#tab-panel-4832)
+* [  pnpm ](#tab-panel-4833)
+* [  yarn ](#tab-panel-4834)
 
 Terminal window
 
@@ -277,9 +277,9 @@ Automatically provision draft bindings with new resources
 
 Update a Hyperdrive config
 
-* [  npm ](#tab-panel-4819)
-* [  pnpm ](#tab-panel-4820)
-* [  yarn ](#tab-panel-4821)
+* [  npm ](#tab-panel-4835)
+* [  pnpm ](#tab-panel-4836)
+* [  yarn ](#tab-panel-4837)
 
 Terminal window
 

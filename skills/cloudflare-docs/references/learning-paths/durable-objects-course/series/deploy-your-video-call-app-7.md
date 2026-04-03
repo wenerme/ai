@@ -9,8 +9,8 @@ Copy page
 
 # Deploy your video call app
 
-* [ Watch this episode ](#tab-panel-5078)
-* [ Series overview ](#tab-panel-5079)
+* [ Watch this episode ](#tab-panel-5094)
+* [ Series overview ](#tab-panel-5095)
 
 We are almost done with the project, and in this final episode, we add the finishing touches, such as learning how to handle call disconnections, wiring up essential media controls like muting/unmuting and video toggling, and integrating a TURN server to ensure reliable connections even behind firewalls. By the end of this video, your app will be fully functional and ready for deployment.
 

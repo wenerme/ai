@@ -111,8 +111,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-5703)
-* [  wrangler.toml ](#tab-panel-5704)
+* [  wrangler.jsonc ](#tab-panel-5719)
+* [  wrangler.toml ](#tab-panel-5720)
 
 ```
 
@@ -181,8 +181,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-5705)
-* [  wrangler.toml ](#tab-panel-5706)
+* [  wrangler.jsonc ](#tab-panel-5721)
+* [  wrangler.toml ](#tab-panel-5722)
 
 ```
 

@@ -47,8 +47,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-3408)
-* [ enterprise plan ](#tab-panel-3409)
+* [ business plan ](#tab-panel-3424)
+* [ enterprise plan ](#tab-panel-3425)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

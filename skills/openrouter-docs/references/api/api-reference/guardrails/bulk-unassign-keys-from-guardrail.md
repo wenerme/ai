@@ -91,8 +91,7 @@ components:
       type: object
       properties:
         unassigned_count:
-          type: number
-          format: double
+          type: integer
           description: Number of keys successfully unassigned
       required:
         - unassigned_count

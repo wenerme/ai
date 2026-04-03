@@ -47,8 +47,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` \- Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-6185)
-* [  TypeScript ](#tab-panel-6186)
+* [  JavaScript ](#tab-panel-6201)
+* [  TypeScript ](#tab-panel-6202)
 
 JavaScript
 
@@ -208,8 +208,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-6183)
-* [  TypeScript ](#tab-panel-6184)
+* [  JavaScript ](#tab-panel-6199)
+* [  TypeScript ](#tab-panel-6200)
 
 JavaScript
 

@@ -44,8 +44,8 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-6117)
-* [  TypeScript ](#tab-panel-6118)
+* [  JavaScript ](#tab-panel-6133)
+* [  TypeScript ](#tab-panel-6134)
 
 JavaScript
 

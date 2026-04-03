@@ -27,8 +27,8 @@ The following tutorial shows some snippets for how to use Server-Side Encryption
 
 ## Workers
 
-* [  TypeScript ](#tab-panel-5766)
-* [  JavaScript ](#tab-panel-5767)
+* [  TypeScript ](#tab-panel-5782)
+* [  JavaScript ](#tab-panel-5783)
 
 TypeScript
 
@@ -314,7 +314,7 @@ export default {
 
 ## S3-API
 
-* [  @aws-sdk/client-s3 ](#tab-panel-5765)
+* [  @aws-sdk/client-s3 ](#tab-panel-5781)
 
 TypeScript
 

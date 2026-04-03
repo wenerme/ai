@@ -59,8 +59,8 @@ Your worker has access to the following bindings:
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-4017)
-* [  wrangler.toml ](#tab-panel-4018)
+* [  wrangler.jsonc ](#tab-panel-4035)
+* [  wrangler.toml ](#tab-panel-4036)
 
 ```
 
@@ -112,8 +112,8 @@ It is currently not possible to develop against a _remote_ D1 database when usin
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) should resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-4019)
-* [  wrangler.toml ](#tab-panel-4020)
+* [  wrangler.jsonc ](#tab-panel-4037)
+* [  wrangler.toml ](#tab-panel-4038)
 
 ```
 
@@ -190,8 +190,8 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
-* [  wrangler.jsonc ](#tab-panel-4021)
-* [  wrangler.toml ](#tab-panel-4022)
+* [  wrangler.jsonc ](#tab-panel-4039)
+* [  wrangler.toml ](#tab-panel-4040)
 
 ```
 
@@ -271,8 +271,8 @@ Wrangler exposes an [unstable\_dev()](https://developers.cloudflare.com/workers/
 
 Given the below Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4023)
-* [  wrangler.toml ](#tab-panel-4024)
+* [  wrangler.jsonc ](#tab-panel-4041)
+* [  wrangler.toml ](#tab-panel-4042)
 
 ```
 

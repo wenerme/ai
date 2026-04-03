@@ -60,8 +60,8 @@ However, it will not work on:
 
 ## Add hostnames
 
-* [ Dashboard ](#tab-panel-6692)
-* [ API ](#tab-panel-6693)
+* [ Dashboard ](#tab-panel-6708)
+* [ API ](#tab-panel-6709)
 
 Existing widget
 

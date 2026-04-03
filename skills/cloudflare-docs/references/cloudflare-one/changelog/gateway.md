@@ -18,6 +18,24 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/gateway.xml) 
 
+## 2026-04-01
+
+  
+**Logs UI refresh**   
+
+Access authentication logs and Gateway activity logs (DNS, Network, and HTTP) now feature a refreshed user interface that gives you more flexibility when viewing and analyzing your logs.
+
+![Screenshot of the new logs UI showing DNS query logs with customizable columns and filtering options](https://developers.cloudflare.com/_astro/cf1-new-logs-ui.DxF4x0l-_mRSyH.webp) 
+
+The updated UI includes:
+
+* **Filter by field** \- Select any field value to add it as a filter and narrow down your results.
+* **Customizable fields** \- Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
+* **View details** \- Select a timestamp to view the full details of a log entry.
+* **Switch to classic view** \- Return to the previous log viewer interface if needed.
+
+For more information, refer to [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+
 ## 2026-03-24
 
   
@@ -543,7 +561,7 @@ Gateway now offers [time-based DNS policy duration](https://developers.cloudflar
 
 **Expanded Gateway log fields**
 
-Gateway now offers new fields in [activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/) for DNS, network, and HTTP policies to provide greater insight into your users' traffic routed through Gateway.
+Gateway now offers new fields in [activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) for DNS, network, and HTTP policies to provide greater insight into your users' traffic routed through Gateway.
 
 ## 2024-09-30
 

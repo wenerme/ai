@@ -86,8 +86,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-3613)
-* [ API ](#tab-panel-3614)
+* [ Dashboard ](#tab-panel-3629)
+* [ API ](#tab-panel-3630)
 
 Authorization endpoint
 
@@ -324,8 +324,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-3611)
-* [ API ](#tab-panel-3612)
+* [ Dashboard ](#tab-panel-3627)
+* [ API ](#tab-panel-3628)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -356,8 +356,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-3609)
-* [ Windows ](#tab-panel-3610)
+* [ macOS and Linux ](#tab-panel-3625)
+* [ Windows ](#tab-panel-3626)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  
@@ -433,7 +433,7 @@ You can modify proxy endpoint settings after creation.
 Proxy endpoint traffic is logged in the following locations:
 
 * **Authentication logs**: When users authenticate through an authorization endpoint, login events appear in your [Access logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/).
-* **Traffic logs**: HTTP and network traffic proxied through the endpoint appears in [Gateway logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/), with the specific proxy endpoint indicated.
+* **Traffic logs**: HTTP and network traffic proxied through the endpoint appears in [Gateway logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/), with the specific proxy endpoint indicated.
 
 ## Billing
 

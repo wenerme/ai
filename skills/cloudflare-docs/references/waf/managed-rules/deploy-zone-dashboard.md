@@ -32,8 +32,8 @@ To deploy a managed ruleset for several Enterprise domains in your account, refe
 
 To deploy a managed ruleset for a zone:
 
-* [  New dashboard ](#tab-panel-6830)
-* [ Old dashboard ](#tab-panel-6831)
+* [  New dashboard ](#tab-panel-6846)
+* [ Old dashboard ](#tab-panel-6847)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -71,8 +71,8 @@ Some managed rulesets may not allow custom configuration, depending on your Clou
 
 To configure (or override) settings for all the rules in a managed ruleset:
 
-* [  New dashboard ](#tab-panel-6828)
-* [ Old dashboard ](#tab-panel-6829)
+* [  New dashboard ](#tab-panel-6844)
+* [ Old dashboard ](#tab-panel-6845)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -100,8 +100,8 @@ If you are editing a managed ruleset you already deployed, select **Save**.
 
 To configure (or override) settings of rules tagged with specific tags:
 
-* [  New dashboard ](#tab-panel-6836)
-* [ Old dashboard ](#tab-panel-6837)
+* [  New dashboard ](#tab-panel-6852)
+* [ Old dashboard ](#tab-panel-6853)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -135,8 +135,8 @@ If not all the rules are displayed in the current page, extend your selection to
 
 To configure (or override) settings of individual rules of a managed ruleset:
 
-* [  New dashboard ](#tab-panel-6834)
-* [ Old dashboard ](#tab-panel-6835)
+* [  New dashboard ](#tab-panel-6850)
+* [ Old dashboard ](#tab-panel-6851)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -162,8 +162,8 @@ To configure multiple rules with the same value, select the checkboxes for all t
 
 You can browse the available rules in a managed ruleset and search for individual rules or tags.
 
-* [  New dashboard ](#tab-panel-6832)
-* [ Old dashboard ](#tab-panel-6833)
+* [  New dashboard ](#tab-panel-6848)
+* [ Old dashboard ](#tab-panel-6849)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -179,8 +179,8 @@ If you have not deployed the managed ruleset, select the ruleset name under **Ma
 
 ### Delete a managed ruleset deployment rule or an exception
 
-* [  New dashboard ](#tab-panel-6826)
-* [ Old dashboard ](#tab-panel-6827)
+* [  New dashboard ](#tab-panel-6842)
+* [ Old dashboard ](#tab-panel-6843)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -202,8 +202,8 @@ In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nux
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-5415)
-* [  TypeScript ](#tab-panel-5416)
+* [  JavaScript ](#tab-panel-5431)
+* [  TypeScript ](#tab-panel-5432)
 
 JavaScript
 

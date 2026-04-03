@@ -24,10 +24,10 @@ Copy page
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-7197)
-* [  TypeScript ](#tab-panel-7198)
-* [  Python ](#tab-panel-7199)
-* [  Hono ](#tab-panel-7200)
+* [  JavaScript ](#tab-panel-7217)
+* [  TypeScript ](#tab-panel-7218)
+* [  Python ](#tab-panel-7219)
+* [  Hono ](#tab-panel-7220)
 
 JavaScript
 

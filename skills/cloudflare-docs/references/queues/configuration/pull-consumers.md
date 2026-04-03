@@ -120,9 +120,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-5626)
-* [  TypeScript ](#tab-panel-5627)
-* [  Python ](#tab-panel-5628)
+* [  JavaScript ](#tab-panel-5642)
+* [  TypeScript ](#tab-panel-5643)
+* [  Python ](#tab-panel-5644)
 
 index.js
 
@@ -331,9 +331,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-5629)
-* [  TypeScript ](#tab-panel-5630)
-* [  Python ](#tab-panel-5631)
+* [  JavaScript ](#tab-panel-5645)
+* [  TypeScript ](#tab-panel-5646)
+* [  Python ](#tab-panel-5647)
 
 index.js
 

@@ -44,7 +44,7 @@ The Customer Metadata Boundary is for customers who want to limit personal data 
 
 HTTP and Firewall analytics are available.
 
-At the moment, there are no analytics available for Workers, DNS, and Load Balancing. Additionally, there are no dashboard logs or analytics for [Gateway](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#limitations). Enterprise users can still export Gateway logs via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+At the moment, there are no analytics available for Workers, DNS, and Load Balancing. Additionally, there are no dashboard logs or analytics for [Gateway](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#limitations). Enterprise users can still export Gateway logs via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/data-localization/","name":"Data Localization Suite"}},{"@type":"ListItem","position":3,"item":{"@id":"/data-localization/metadata-boundary/","name":"Customer Metadata Boundary"}},{"@type":"ListItem","position":4,"item":{"@id":"/data-localization/metadata-boundary/faq/","name":"FAQs"}}]}

@@ -32,11 +32,11 @@ This creates a repository in your GitHub account and deploys the application to 
 
 To inject CSP nonces into inline `<script>` tags using HTMLRewriter, refer to this [CSP nonce example](https://developers.cloudflare.com/workers/examples/spa-shell/#add-csp-nonces).
 
-* [  JavaScript ](#tab-panel-7340)
-* [  TypeScript ](#tab-panel-7341)
-* [  Python ](#tab-panel-7342)
-* [  Rust ](#tab-panel-7343)
-* [  Hono ](#tab-panel-7344)
+* [  JavaScript ](#tab-panel-7360)
+* [  TypeScript ](#tab-panel-7361)
+* [  Python ](#tab-panel-7362)
+* [  Rust ](#tab-panel-7363)
+* [  Hono ](#tab-panel-7364)
 
 JavaScript
 

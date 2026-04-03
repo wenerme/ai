@@ -28,8 +28,8 @@ You must add Source Endpoints to Endpoint Management through established methods
 
 To create a route, you will need the operation ID of the Source Endpoint. To find the operation ID in the dashboard:
 
-* [  New dashboard ](#tab-panel-3112)
-* [ Old dashboard ](#tab-panel-3113)
+* [  New dashboard ](#tab-panel-3128)
+* [ Old dashboard ](#tab-panel-3129)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -47,8 +47,8 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 
 ### Create a route
 
-* [  New dashboard ](#tab-panel-3114)
-* [ Old dashboard ](#tab-panel-3115)
+* [  New dashboard ](#tab-panel-3130)
+* [ Old dashboard ](#tab-panel-3131)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

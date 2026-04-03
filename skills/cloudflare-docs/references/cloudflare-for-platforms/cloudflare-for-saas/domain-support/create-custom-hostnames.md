@@ -24,8 +24,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-3342)
-* [ API ](#tab-panel-3343)
+* [ Dashboard ](#tab-panel-3358)
+* [ API ](#tab-panel-3359)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

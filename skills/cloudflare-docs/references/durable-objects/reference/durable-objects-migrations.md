@@ -41,8 +41,8 @@ The most common migration performed is a new class migration, which informs the 
 To apply a Create migration:
 
 1. Add the following lines to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-4531)  
-   * [  wrangler.toml ](#tab-panel-4532)  
+   * [  wrangler.jsonc ](#tab-panel-4547)  
+   * [  wrangler.toml ](#tab-panel-4548)  
 ```  
 {  
   "migrations": [  
@@ -70,8 +70,8 @@ Create migration example
 
 To create a new Durable Object binding `DURABLE_OBJECT_A`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-4537)
-* [  wrangler.toml ](#tab-panel-4538)
+* [  wrangler.jsonc ](#tab-panel-4553)
+* [  wrangler.toml ](#tab-panel-4554)
 
 ```
 
@@ -148,8 +148,8 @@ The [key-value storage backend](https://developers.cloudflare.com/durable-object
 
 Use `new_classes` on the migration in your Worker's Wrangler file to create a Durable Object class with the key-value storage backend:
 
-* [  wrangler.jsonc ](#tab-panel-4533)
-* [  wrangler.toml ](#tab-panel-4534)
+* [  wrangler.jsonc ](#tab-panel-4549)
+* [  wrangler.toml ](#tab-panel-4550)
 
 ```
 
@@ -211,8 +211,8 @@ To apply a Delete migration:
 1. Remove the binding for the class you wish to delete from the Wrangler configuration file.
 2. Remove references for the class you wish to delete from your Worker code.
 3. Add the following lines to your Wrangler configuration file.  
-   * [  wrangler.jsonc ](#tab-panel-4535)  
-   * [  wrangler.toml ](#tab-panel-4536)  
+   * [  wrangler.jsonc ](#tab-panel-4551)  
+   * [  wrangler.toml ](#tab-panel-4552)  
 ```  
 {  
   "migrations": [  
@@ -239,8 +239,8 @@ Delete migration example
 
 To delete a Durable Object binding `DEPRECATED_OBJECT`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-4539)
-* [  wrangler.toml ](#tab-panel-4540)
+* [  wrangler.jsonc ](#tab-panel-4555)
+* [  wrangler.toml ](#tab-panel-4556)
 
 ```
 
@@ -299,8 +299,8 @@ Rename migrations are used to transfer stored Durable Objects between two Durabl
 To apply a Rename migration:
 
 1. Update the previous class name to the new class name by editing your Wrangler configuration file in the following way:  
-   * [  wrangler.jsonc ](#tab-panel-4541)  
-   * [  wrangler.toml ](#tab-panel-4542)  
+   * [  wrangler.jsonc ](#tab-panel-4557)  
+   * [  wrangler.toml ](#tab-panel-4558)  
 ```  
 {  
   "durable_objects": {  
@@ -346,8 +346,8 @@ Rename migration example
 
 To rename a Durable Object class, from `OldName` to `UpdatedName`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-4543)
-* [  wrangler.toml ](#tab-panel-4544)
+* [  wrangler.jsonc ](#tab-panel-4559)
+* [  wrangler.toml ](#tab-panel-4560)
 
 ```
 
@@ -438,8 +438,8 @@ Do not run a [Create migration](#create-migration) for the destination class bef
 To apply a Transfer migration:
 
 1. Edit your Wrangler configuration file in the following way:  
-   * [  wrangler.jsonc ](#tab-panel-4545)  
-   * [  wrangler.toml ](#tab-panel-4546)  
+   * [  wrangler.jsonc ](#tab-panel-4561)  
+   * [  wrangler.toml ](#tab-panel-4562)  
 ```  
 {  
   "durable_objects": {  
@@ -488,8 +488,8 @@ Transfer migration example
 
 You can transfer stored Durable Objects from `DurableObjectExample` to `TransferredClass` from a Worker script named `OldWorkerScript`. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-4547)
-* [  wrangler.toml ](#tab-panel-4548)
+* [  wrangler.jsonc ](#tab-panel-4563)
+* [  wrangler.toml ](#tab-panel-4564)
 
 ```
 

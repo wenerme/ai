@@ -92,8 +92,7 @@ components:
       type: object
       properties:
         assigned_count:
-          type: number
-          format: double
+          type: integer
           description: Number of members successfully assigned
       required:
         - assigned_count

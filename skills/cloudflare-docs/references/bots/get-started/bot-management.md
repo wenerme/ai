@@ -30,8 +30,8 @@ This Enterprise product provides the most flexibility to customers by:
 
 Bot Management is automatically enabled for Enterprise zones entitled with the add-on.
 
-* [  New dashboard ](#tab-panel-3202)
-* [ Old dashboard ](#tab-panel-3203)
+* [  New dashboard ](#tab-panel-3218)
+* [ Old dashboard ](#tab-panel-3219)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -66,8 +66,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-3204)
-* [ Old dashboard ](#tab-panel-3205)
+* [  New dashboard ](#tab-panel-3220)
+* [ Old dashboard ](#tab-panel-3221)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

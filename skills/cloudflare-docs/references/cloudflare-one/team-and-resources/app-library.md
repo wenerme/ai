@@ -47,7 +47,7 @@ The **Policies** tab shows any [Gateway](https://developers.cloudflare.com/cloud
 
 ### Usage
 
-The **Usage** tab shows any logs for [Gateway traffic requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/), [Access authentication events](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/#authentication-logs), [Shadow IT Discovery user sessions](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/), and [generative AI prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#view-prompt-logs) sent to the selected application. This section requires logs to be turned on for each feature.
+The **Usage** tab shows any logs for [Gateway traffic requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/), [Access authentication events](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#authentication-logs), [Shadow IT Discovery user sessions](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/), and [generative AI prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#view-prompt-logs) sent to the selected application. This section requires logs to be turned on for each feature.
 
 The Shadow IT Discovery dashboard will provide more details for discovered applications. To access Shadow IT Discovery in [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Dashboards**, then select **Shadow IT: SaaS analytics** or **Shadow IT: Private Network analytics**.
 

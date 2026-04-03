@@ -103,8 +103,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-7774)
-* [  wrangler.toml ](#tab-panel-7775)
+* [  wrangler.jsonc ](#tab-panel-7794)
+* [  wrangler.toml ](#tab-panel-7795)
 
 ```
 

@@ -38,8 +38,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-6283)
-* [  TypeScript ](#tab-panel-6284)
+* [  JavaScript ](#tab-panel-6299)
+* [  TypeScript ](#tab-panel-6300)
 
 JavaScript
 
@@ -115,8 +115,8 @@ const jsContext = await sandbox.createCodeContext({
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-6285)
-* [  TypeScript ](#tab-panel-6286)
+* [  JavaScript ](#tab-panel-6301)
+* [  TypeScript ](#tab-panel-6302)
 
 JavaScript
 
@@ -194,8 +194,8 @@ console.log('Success:', result.success);
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-6291)
-* [  TypeScript ](#tab-panel-6292)
+* [  JavaScript ](#tab-panel-6307)
+* [  TypeScript ](#tab-panel-6308)
 
 JavaScript
 
@@ -303,8 +303,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-6295)
-* [  TypeScript ](#tab-panel-6296)
+* [  JavaScript ](#tab-panel-6311)
+* [  TypeScript ](#tab-panel-6312)
 
 JavaScript
 
@@ -440,8 +440,8 @@ if (result.outputs.json) {
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-6293)
-* [  TypeScript ](#tab-panel-6294)
+* [  JavaScript ](#tab-panel-6309)
+* [  TypeScript ](#tab-panel-6310)
 
 JavaScript
 
@@ -567,8 +567,8 @@ print("Done!")
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-6297)
-* [  TypeScript ](#tab-panel-6298)
+* [  JavaScript ](#tab-panel-6313)
+* [  TypeScript ](#tab-panel-6314)
 
 JavaScript
 
@@ -698,8 +698,8 @@ console.log('Success:', result.success);
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-6287)
-* [  TypeScript ](#tab-panel-6288)
+* [  JavaScript ](#tab-panel-6303)
+* [  TypeScript ](#tab-panel-6304)
 
 JavaScript
 
@@ -741,8 +741,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-6289)
-* [  TypeScript ](#tab-panel-6290)
+* [  JavaScript ](#tab-panel-6305)
+* [  TypeScript ](#tab-panel-6306)
 
 JavaScript
 

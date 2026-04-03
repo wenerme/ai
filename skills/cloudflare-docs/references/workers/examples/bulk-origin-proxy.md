@@ -24,10 +24,10 @@ Copy page
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-7193)
-* [  TypeScript ](#tab-panel-7194)
-* [  Hono ](#tab-panel-7195)
-* [  Python ](#tab-panel-7196)
+* [  JavaScript ](#tab-panel-7213)
+* [  TypeScript ](#tab-panel-7214)
+* [  Hono ](#tab-panel-7215)
+* [  Python ](#tab-panel-7216)
 
 JavaScript
 

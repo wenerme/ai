@@ -604,8 +604,8 @@ Additionally, KV namespaces can be used with environments. This is useful for wh
 
 A Wrangler file with two environments:
 
-* [  wrangler.jsonc ](#tab-panel-8466)
-* [  wrangler.toml ](#tab-panel-8467)
+* [  wrangler.jsonc ](#tab-panel-8486)
+* [  wrangler.toml ](#tab-panel-8487)
 
 ```
 
@@ -708,8 +708,8 @@ wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
 
 Most `kv` subcommands also allow you to specify an environment with the optional `--env` flag. This allows you to publish Workers running the same code but with different namespaces. For example, you could use separate staging and production namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8468)
-* [  wrangler.toml ](#tab-panel-8469)
+* [  wrangler.jsonc ](#tab-panel-8488)
+* [  wrangler.toml ](#tab-panel-8489)
 
 ```
 

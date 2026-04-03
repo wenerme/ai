@@ -105,8 +105,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-3038)
-* [ API ](#tab-panel-3039)
+* [ Dashboard ](#tab-panel-3054)
+* [ API ](#tab-panel-3055)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 

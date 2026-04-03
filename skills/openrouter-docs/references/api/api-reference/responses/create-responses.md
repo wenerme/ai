@@ -1707,11 +1707,9 @@ components:
         type:
           $ref: '#/components/schemas/ComputerUseServerToolType'
         display_height:
-          type: number
-          format: double
+          type: integer
         display_width:
-          type: number
-          format: double
+          type: integer
         environment:
           $ref: '#/components/schemas/ComputerUseServerToolEnvironment'
       required:
@@ -1960,13 +1958,11 @@ components:
         moderation:
           $ref: '#/components/schemas/ImageGenerationServerToolModeration'
         output_compression:
-          type: number
-          format: double
+          type: integer
         output_format:
           $ref: '#/components/schemas/ImageGenerationServerToolOutputFormat'
         partial_images:
-          type: number
-          format: double
+          type: integer
         quality:
           $ref: '#/components/schemas/ImageGenerationServerToolQuality'
         size:
@@ -2113,14 +2109,12 @@ components:
       type: object
       properties:
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5.
         max_total_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum total number of search results across all search calls in a
             single request. Once this limit is reached, the tool will stop
@@ -2212,6 +2206,45 @@ components:
       required:
         - type
       title: OpenAiResponsesToolChoice4
+    ToolChoiceAllowedType:
+      type: string
+      enum:
+        - allowed_tools
+      title: ToolChoiceAllowedType
+    ToolChoiceAllowedMode0:
+      type: string
+      enum:
+        - auto
+      title: ToolChoiceAllowedMode0
+    ToolChoiceAllowedMode1:
+      type: string
+      enum:
+        - required
+      title: ToolChoiceAllowedMode1
+    ToolChoiceAllowedMode:
+      oneOf:
+        - $ref: '#/components/schemas/ToolChoiceAllowedMode0'
+        - $ref: '#/components/schemas/ToolChoiceAllowedMode1'
+      title: ToolChoiceAllowedMode
+    ToolChoiceAllowed:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ToolChoiceAllowedType'
+        mode:
+          $ref: '#/components/schemas/ToolChoiceAllowedMode'
+        tools:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+      required:
+        - type
+        - mode
+        - tools
+      description: Constrains the model to a pre-defined set of allowed tools
+      title: ToolChoiceAllowed
     OpenAIResponsesToolChoice:
       oneOf:
         - $ref: '#/components/schemas/OpenAiResponsesToolChoice0'
@@ -2219,6 +2252,7 @@ components:
         - $ref: '#/components/schemas/OpenAiResponsesToolChoice2'
         - $ref: '#/components/schemas/OpenAiResponsesToolChoice3'
         - $ref: '#/components/schemas/OpenAiResponsesToolChoice4'
+        - $ref: '#/components/schemas/ToolChoiceAllowed'
       title: OpenAIResponsesToolChoice
     FormatTextConfigType:
       type: string
@@ -2326,10 +2360,7 @@ components:
         summary:
           $ref: '#/components/schemas/ReasoningSummaryVerbosityEnum'
         max_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         enabled:
           type:
             - boolean
@@ -3052,41 +3083,25 @@ components:
         reasoning:
           $ref: '#/components/schemas/ReasoningConfig'
         max_output_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         temperature:
-          type:
-            - number
-            - 'null'
-          format: double
-        top_p:
-          type:
-            - number
-            - 'null'
-          format: double
-        top_logprobs:
-          type:
-            - integer
-            - 'null'
-        max_tool_calls:
-          type:
-            - integer
-            - 'null'
-        presence_penalty:
-          type:
-            - number
-            - 'null'
-          format: double
-        frequency_penalty:
-          type:
-            - number
-            - 'null'
-          format: double
-        top_k:
           type: number
           format: double
+        top_p:
+          type: number
+          format: double
+        top_logprobs:
+          type: integer
+        max_tool_calls:
+          type: integer
+        presence_penalty:
+          type: number
+          format: double
+        frequency_penalty:
+          type: number
+          format: double
+        top_k:
+          type: integer
         image_config:
           type: object
           additionalProperties:
@@ -3801,9 +3816,7 @@ components:
       type: object
       properties:
         upstream_inference_cost:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         upstream_inference_input_cost:
           type: number
@@ -3858,17 +3871,13 @@ components:
         object:
           $ref: '#/components/schemas/BaseResponsesResultObject'
         created_at:
-          type: number
-          format: double
+          type: integer
         model:
           type: string
         status:
           $ref: '#/components/schemas/OpenAIResponsesResponseStatus'
         completed_at:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         output:
           type: array
           items:
@@ -3894,37 +3903,22 @@ components:
         usage:
           $ref: '#/components/schemas/Usage'
         max_tool_calls:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         top_logprobs:
+          type: integer
+        max_output_tokens:
+          type: integer
+        temperature:
           type: number
           format: double
-        max_output_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
-        temperature:
-          type:
-            - number
-            - 'null'
-          format: double
         top_p:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         presence_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         frequency_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         instructions:
           $ref: '#/components/schemas/BaseInputs'

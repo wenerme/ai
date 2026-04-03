@@ -124,8 +124,8 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-6469)
-* [  TypeScript ](#tab-panel-6470)
+* [  JavaScript ](#tab-panel-6485)
+* [  TypeScript ](#tab-panel-6486)
 
 JavaScript
 
@@ -211,8 +211,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-6471)
-* [  TypeScript ](#tab-panel-6472)
+* [  JavaScript ](#tab-panel-6487)
+* [  TypeScript ](#tab-panel-6488)
 
 JavaScript
 
@@ -345,8 +345,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-6473)
-* [  TypeScript ](#tab-panel-6474)
+* [  JavaScript ](#tab-panel-6489)
+* [  TypeScript ](#tab-panel-6490)
 
 JavaScript
 
@@ -528,8 +528,8 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-6467)
-* [  TypeScript ](#tab-panel-6468)
+* [  JavaScript ](#tab-panel-6483)
+* [  TypeScript ](#tab-panel-6484)
 
 JavaScript
 

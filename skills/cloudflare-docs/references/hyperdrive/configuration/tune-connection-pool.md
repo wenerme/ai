@@ -28,9 +28,9 @@ Hyperdrive does have a limit of _origin_ connections that can be made from Hyper
 
 You can configure the connection pool size using the Cloudflare dashboard, the Wrangler CLI, or the Cloudflare API.
 
-* [ Dashboard ](#tab-panel-4654)
-* [ Wrangler ](#tab-panel-4655)
-* [ API ](#tab-panel-4656)
+* [ Dashboard ](#tab-panel-4670)
+* [ Wrangler ](#tab-panel-4671)
+* [ API ](#tab-panel-4672)
 
 To configure connection pool size via the dashboard:
 

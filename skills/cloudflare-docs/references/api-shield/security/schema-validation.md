@@ -44,8 +44,8 @@ To view the contents in your learned schema, refer to [Export a schema](https://
 
 ### Add validation by uploading a schema
 
-* [  New dashboard ](#tab-panel-3148)
-* [ Old dashboard ](#tab-panel-3149)
+* [  New dashboard ](#tab-panel-3164)
+* [ Old dashboard ](#tab-panel-3165)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -68,8 +68,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 ### Add validation by applying a learned schema to a single endpoint
 
-* [  New dashboard ](#tab-panel-3150)
-* [ Old dashboard ](#tab-panel-3151)
+* [  New dashboard ](#tab-panel-3166)
+* [ Old dashboard ](#tab-panel-3167)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -88,8 +88,8 @@ Changes may take a few minutes to process depending on the number of added endpo
 
 At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
 
-* [  New dashboard ](#tab-panel-3152)
-* [ Old dashboard ](#tab-panel-3153)
+* [  New dashboard ](#tab-panel-3168)
+* [ Old dashboard ](#tab-panel-3169)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -120,8 +120,8 @@ By ensuring that all your endpoints in a schema are added to Endpoint Management
 
 To set up a fallthrough action:
 
-* [  New dashboard ](#tab-panel-3166)
-* [ Old dashboard ](#tab-panel-3167)
+* [  New dashboard ](#tab-panel-3182)
+* [ Old dashboard ](#tab-panel-3183)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -150,8 +150,8 @@ You can use the `cf.api_gateway.fallthrough_detected` field in your own custom r
 
 ### Change the action of an entire schema
 
-* [  New dashboard ](#tab-panel-3154)
-* [ Old dashboard ](#tab-panel-3155)
+* [  New dashboard ](#tab-panel-3170)
+* [ Old dashboard ](#tab-panel-3171)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -180,8 +180,8 @@ Schema validation’s default action is visible on the main Schema validation pa
 
 To change the default action:
 
-* [  New dashboard ](#tab-panel-3156)
-* [ Old dashboard ](#tab-panel-3157)
+* [  New dashboard ](#tab-panel-3172)
+* [ Old dashboard ](#tab-panel-3173)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -207,8 +207,8 @@ This allows you to be stricter on blocking non-compliant requests on certain end
 
 To change the action on an individual endpoint:
 
-* [  New dashboard ](#tab-panel-3158)
-* [ Old dashboard ](#tab-panel-3159)
+* [  New dashboard ](#tab-panel-3174)
+* [ Old dashboard ](#tab-panel-3175)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -230,8 +230,8 @@ You can disable Schema validation entirely for temporary troubleshooting. You ca
 
 To disable Schema validation without changing actions:
 
-* [  New dashboard ](#tab-panel-3160)
-* [ Old dashboard ](#tab-panel-3161)
+* [  New dashboard ](#tab-panel-3176)
+* [ Old dashboard ](#tab-panel-3177)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -249,8 +249,8 @@ Your per-endpoint configurations will be saved when modifying the setting, so th
 
 ### View active schemas
 
-* [  New dashboard ](#tab-panel-3162)
-* [ Old dashboard ](#tab-panel-3163)
+* [  New dashboard ](#tab-panel-3178)
+* [ Old dashboard ](#tab-panel-3179)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -275,8 +275,8 @@ Deleting the schema will remove validation from the currently associated endpoin
 
 To delete currently uploaded or learned schemas:
 
-* [  New dashboard ](#tab-panel-3164)
-* [ Old dashboard ](#tab-panel-3165)
+* [  New dashboard ](#tab-panel-3180)
+* [ Old dashboard ](#tab-panel-3181)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

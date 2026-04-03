@@ -34,8 +34,8 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-3174)
-* [ API ](#tab-panel-3175)
+* [ Dashboard ](#tab-panel-3190)
+* [ API ](#tab-panel-3191)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
@@ -56,8 +56,8 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-3176)
-* [ API ](#tab-panel-3177)
+* [ Dashboard ](#tab-panel-3192)
+* [ API ](#tab-panel-3193)
 
 To change the duration of your Cloudflare plan in the dashboard:
 

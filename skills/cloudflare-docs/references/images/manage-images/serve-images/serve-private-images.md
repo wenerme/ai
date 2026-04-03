@@ -37,8 +37,8 @@ Note
 
 Never hardcode your signing key in source code. Store it as a secret using [npx wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
-* [  JavaScript ](#tab-panel-4826)
-* [  TypeScript ](#tab-panel-4827)
+* [  JavaScript ](#tab-panel-4842)
+* [  TypeScript ](#tab-panel-4843)
 
 JavaScript
 

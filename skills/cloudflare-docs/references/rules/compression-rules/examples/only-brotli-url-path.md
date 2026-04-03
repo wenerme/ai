@@ -18,8 +18,8 @@ Copy page
 
 Create a compression rule to set Brotli as the only supported compression algorithm for a specific URI path.
 
-* [ Dashboard ](#tab-panel-5977)
-* [ API ](#tab-panel-5978)
+* [ Dashboard ](#tab-panel-5993)
+* [ API ](#tab-panel-5994)
 
 The following example rule will configure only Brotli compression for a specific URI path.
 

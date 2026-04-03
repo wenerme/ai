@@ -45,8 +45,8 @@ Where you previously would configure a "build output directory" for Pages (in ei
 
 Before, with **Cloudflare Pages**:
 
-* [  wrangler.jsonc ](#tab-panel-7662)
-* [  wrangler.toml ](#tab-panel-7663)
+* [  wrangler.jsonc ](#tab-panel-7682)
+* [  wrangler.toml ](#tab-panel-7683)
 
 ```
 
@@ -72,8 +72,8 @@ pages_build_output_dir = "./dist/client/"
 
 Now, with **Cloudflare Workers**:
 
-* [  wrangler.jsonc ](#tab-panel-7664)
-* [  wrangler.toml ](#tab-panel-7665)
+* [  wrangler.jsonc ](#tab-panel-7684)
+* [  wrangler.toml ](#tab-panel-7685)
 
 ```
 
@@ -124,8 +124,8 @@ In Workers, to prevent accidental misconfiguration, this behavior is explicit an
 
 For a Single Page Application (SPA):
 
-* [  wrangler.jsonc ](#tab-panel-7666)
-* [  wrangler.toml ](#tab-panel-7667)
+* [  wrangler.jsonc ](#tab-panel-7686)
+* [  wrangler.toml ](#tab-panel-7687)
 
 ```
 
@@ -170,8 +170,8 @@ not_found_handling = "single-page-application"
 
 For custom 404 pages:
 
-* [  wrangler.jsonc ](#tab-panel-7668)
-* [  wrangler.toml ](#tab-panel-7669)
+* [  wrangler.jsonc ](#tab-panel-7688)
+* [  wrangler.toml ](#tab-panel-7689)
 
 ```
 
@@ -252,8 +252,8 @@ _worker.js
 
 Then, update your configuration file's `main` field to point to the location of this Worker script:
 
-* [  wrangler.jsonc ](#tab-panel-7670)
-* [  wrangler.toml ](#tab-panel-7671)
+* [  wrangler.jsonc ](#tab-panel-7690)
+* [  wrangler.toml ](#tab-panel-7691)
 
 ```
 
@@ -318,8 +318,8 @@ Although this command will remain available to you to run at any time, we do rec
 
 Once the Worker script has been compiled, you can update your configuration file's `main` field to point to the location it was built to:
 
-* [  wrangler.jsonc ](#tab-panel-7672)
-* [  wrangler.toml ](#tab-panel-7673)
+* [  wrangler.jsonc ](#tab-panel-7692)
+* [  wrangler.toml ](#tab-panel-7693)
 
 ```
 
@@ -368,8 +368,8 @@ If you authored [a \_routes.json file](https://developers.cloudflare.com/pages/f
 
 Workers, on the other hand, will default to serving static assets ahead of your Worker script, unless you have configured [assets.run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first). This option is required if you are, for example, performing any authentication checks or logging requests before serving static assets.
 
-* [  wrangler.jsonc ](#tab-panel-7674)
-* [  wrangler.toml ](#tab-panel-7675)
+* [  wrangler.jsonc ](#tab-panel-7694)
+* [  wrangler.toml ](#tab-panel-7695)
 
 ```
 
@@ -420,8 +420,8 @@ run_worker_first = true
 
 If you wish to, you can start a new Worker script from scratch and take advantage of all of Wrangler's and the latest runtime features (e.g. [WorkerEntrypoints](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/), [TypeScript support](https://developers.cloudflare.com/workers/languages/typescript/), [bundling](https://developers.cloudflare.com/workers/wrangler/bundling), etc.):
 
-* [  JavaScript ](#tab-panel-7684)
-* [  TypeScript ](#tab-panel-7685)
+* [  JavaScript ](#tab-panel-7704)
+* [  TypeScript ](#tab-panel-7705)
 
 ./worker/index.js
 
@@ -463,8 +463,8 @@ export default class extends WorkerEntrypoint {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7676)
-* [  wrangler.toml ](#tab-panel-7677)
+* [  wrangler.jsonc ](#tab-panel-7696)
+* [  wrangler.toml ](#tab-panel-7697)
 
 ```
 
@@ -511,8 +511,8 @@ directory = "./dist/client/"
 
 Pages automatically provided [an ASSETS binding](https://developers.cloudflare.com/pages/functions/api-reference/#envassetsfetch) to access static assets from Pages Functions. In Workers, the name of this binding is customizable and it must be manually configured:
 
-* [  wrangler.jsonc ](#tab-panel-7678)
-* [  wrangler.toml ](#tab-panel-7679)
+* [  wrangler.jsonc ](#tab-panel-7698)
+* [  wrangler.toml ](#tab-panel-7699)
 
 ```
 
@@ -563,8 +563,8 @@ binding = "ASSETS"
 
 If you had customized [placement](https://developers.cloudflare.com/workers/configuration/placement/), or set a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) or any [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) in your Pages project, you can define the same in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7686)
-* [  wrangler.toml ](#tab-panel-7687)
+* [  wrangler.jsonc ](#tab-panel-7706)
+* [  wrangler.toml ](#tab-panel-7707)
 
 ```
 
@@ -653,8 +653,8 @@ Pages automatically creates a preview environment for each project, and can be i
 To get a similar experience in Workers, you must:
 
 1. Ensure [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled (they are on by default).  
-   * [  wrangler.jsonc ](#tab-panel-7682)  
-   * [  wrangler.toml ](#tab-panel-7683)  
+   * [  wrangler.jsonc ](#tab-panel-7702)  
+   * [  wrangler.toml ](#tab-panel-7703)  
 ```  
 {  
   "name": "my-worker",  
@@ -692,8 +692,8 @@ Unlike Pages, Workers does not natively support defining different bindings in p
 
 Where previously you were offered a `pages.dev` subdomain for your Pages project, you can now configure a personalized `workers.dev` subdomain for all of your Worker projects. You can [configure this subdomain in the Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#configure-workersdev), and opt-in to using it with the [workers\_dev option](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#disabling-workersdev-in-the-wrangler-configuration-file) in your configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-7680)
-* [  wrangler.toml ](#tab-panel-7681)
+* [  wrangler.jsonc ](#tab-panel-7700)
+* [  wrangler.toml ](#tab-panel-7701)
 
 ```
 
@@ -829,7 +829,7 @@ This compatibility matrix compares the features of Workers and Pages. Unless oth
 | [Monorepos](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/)                                                         | ✅                          | ✅                          |
 | [Build Watch Paths](https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/)                                               | ✅                          | ✅                          |
 | [Build Caching](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/)                                                       | ✅                          | ✅                          |
-| [Deploy Hooks](https://developers.cloudflare.com/pages/configuration/deploy-hooks/)                                                          | ⏳                          | ✅                          |
+| [Deploy Hooks](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/)                                                         | ✅                          | ✅                          |
 | [Branch Deploy Controls](https://developers.cloudflare.com/pages/configuration/branch-build-controls/)                                       | 🟡 [3](#user-content-fn-3) | ✅                          |
 | [Custom Branch Aliases](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/)                                               | ⏳                          | ✅                          |
 | **Pages Functions**                                                                                                                          |                            |                            |

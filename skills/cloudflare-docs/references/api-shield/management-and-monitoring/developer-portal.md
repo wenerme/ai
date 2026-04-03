@@ -20,8 +20,8 @@ Once your endpoints are saved, API Shield doubles as an API catalog. API Shield 
 
 To create a developer portal:
 
-* [  New dashboard ](#tab-panel-3116)
-* [ Old dashboard ](#tab-panel-3117)
+* [  New dashboard ](#tab-panel-3132)
+* [ Old dashboard ](#tab-panel-3133)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

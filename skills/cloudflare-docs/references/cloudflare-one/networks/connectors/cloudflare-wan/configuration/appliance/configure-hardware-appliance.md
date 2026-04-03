@@ -106,8 +106,8 @@ To create a profile:
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-3565)
-* [ API ](#tab-panel-3566)
+* [ Dashboard ](#tab-panel-3581)
+* [ API ](#tab-panel-3582)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -164,8 +164,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-3563)
-* [ API ](#tab-panel-3564)
+* [ Dashboard ](#tab-panel-3579)
+* [ API ](#tab-panel-3580)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.

@@ -48,8 +48,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-4216)
-* [ Old dashboard ](#tab-panel-4217)
+* [  New dashboard ](#tab-panel-4232)
+* [ Old dashboard ](#tab-panel-4233)
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.  
 [ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)

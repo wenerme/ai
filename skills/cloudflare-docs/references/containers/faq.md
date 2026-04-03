@@ -22,8 +22,8 @@ Frequently Asked Questions:
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-4001)
-* [  wrangler.toml ](#tab-panel-4002)
+* [  wrangler.jsonc ](#tab-panel-4019)
+* [  wrangler.toml ](#tab-panel-4020)
 
 ```
 

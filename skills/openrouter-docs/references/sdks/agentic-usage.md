@@ -51,7 +51,7 @@ After installing the skill, your AI assistant can help you with tasks like:
 The assistant will know to use:
 
 ```typescript
-import { callModel } from '@openrouter/sdk';
+import { callModel } from '@openrouter/agent';
 
 const response = await callModel({
   model: 'anthropic/claude-sonnet-4',
@@ -66,7 +66,7 @@ const response = await callModel({
 The assistant understands the streaming API:
 
 ```typescript
-import { callModel } from '@openrouter/sdk';
+import { callModel } from '@openrouter/agent';
 
 const stream = await callModel({
   model: 'anthropic/claude-sonnet-4',

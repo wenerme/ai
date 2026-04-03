@@ -42,8 +42,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-7692)
-* [  wrangler.toml ](#tab-panel-7693)
+* [  wrangler.jsonc ](#tab-panel-7712)
+* [  wrangler.toml ](#tab-panel-7713)
 
 ```
 
@@ -84,8 +84,8 @@ directory = "<your-build-directory>"
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-7694)
-* [  wrangler.toml ](#tab-panel-7695)
+* [  wrangler.jsonc ](#tab-panel-7714)
+* [  wrangler.toml ](#tab-panel-7715)
 
 ```
 

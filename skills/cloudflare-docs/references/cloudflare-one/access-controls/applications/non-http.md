@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ RDP ](https://developers.cloudflare.com/search/?tags=RDP)[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
+
 Was this helpful?
 
 YesNo

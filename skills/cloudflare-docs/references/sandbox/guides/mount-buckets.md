@@ -33,8 +33,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-6419)
-* [  TypeScript ](#tab-panel-6420)
+* [  JavaScript ](#tab-panel-6435)
+* [  TypeScript ](#tab-panel-6436)
 
 JavaScript
 
@@ -153,8 +153,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-6405)
-* [  TypeScript ](#tab-panel-6406)
+* [  JavaScript ](#tab-panel-6421)
+* [  TypeScript ](#tab-panel-6422)
 
 JavaScript
 
@@ -190,8 +190,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-6407)
-* [  TypeScript ](#tab-panel-6408)
+* [  JavaScript ](#tab-panel-6423)
+* [  TypeScript ](#tab-panel-6424)
 
 JavaScript
 
@@ -239,8 +239,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-6429)
-* [  TypeScript ](#tab-panel-6430)
+* [  JavaScript ](#tab-panel-6445)
+* [  TypeScript ](#tab-panel-6446)
 
 JavaScript
 
@@ -356,8 +356,8 @@ The `prefix` must start and end with `/` (e.g., `/data/`, `/logs/2024/`). This i
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-6411)
-* [  TypeScript ](#tab-panel-6412)
+* [  JavaScript ](#tab-panel-6427)
+* [  TypeScript ](#tab-panel-6428)
 
 JavaScript
 
@@ -417,8 +417,8 @@ You can mount R2 buckets during local development with `wrangler dev` by passing
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6403)
-* [  wrangler.toml ](#tab-panel-6404)
+* [  wrangler.jsonc ](#tab-panel-6419)
+* [  wrangler.toml ](#tab-panel-6420)
 
 ```
 
@@ -456,8 +456,8 @@ bucket_name = "my-test-bucket"
 
 Pass `localBucket: true` in the options to mount the bucket locally:
 
-* [  JavaScript ](#tab-panel-6409)
-* [  TypeScript ](#tab-panel-6410)
+* [  JavaScript ](#tab-panel-6425)
+* [  TypeScript ](#tab-panel-6426)
 
 JavaScript
 
@@ -522,8 +522,8 @@ When `localBucket` is `true`, the `endpoint` is ignored and the SDK uses the R2 
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-6415)
-* [  TypeScript ](#tab-panel-6416)
+* [  JavaScript ](#tab-panel-6431)
+* [  TypeScript ](#tab-panel-6432)
 
 JavaScript
 
@@ -595,8 +595,8 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-6413)
-* [  TypeScript ](#tab-panel-6414)
+* [  JavaScript ](#tab-panel-6429)
+* [  TypeScript ](#tab-panel-6430)
 
 JavaScript
 
@@ -650,8 +650,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-6417)
-* [  TypeScript ](#tab-panel-6418)
+* [  JavaScript ](#tab-panel-6433)
+* [  TypeScript ](#tab-panel-6434)
 
 JavaScript
 
@@ -697,8 +697,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-6421)
-* [  TypeScript ](#tab-panel-6422)
+* [  JavaScript ](#tab-panel-6437)
+* [  TypeScript ](#tab-panel-6438)
 
 JavaScript
 
@@ -750,8 +750,8 @@ Generate HMAC keys in GCS console under Settings → Interoperability.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-6423)
-* [  TypeScript ](#tab-panel-6424)
+* [  JavaScript ](#tab-panel-6439)
+* [  TypeScript ](#tab-panel-6440)
 
 JavaScript
 
@@ -842,8 +842,8 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your endpoint format and credentials:
 
-* [  JavaScript ](#tab-panel-6427)
-* [  TypeScript ](#tab-panel-6428)
+* [  JavaScript ](#tab-panel-6443)
+* [  TypeScript ](#tab-panel-6444)
 
 JavaScript
 
@@ -897,8 +897,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-6425)
-* [  TypeScript ](#tab-panel-6426)
+* [  JavaScript ](#tab-panel-6441)
+* [  TypeScript ](#tab-panel-6442)
 
 JavaScript
 
@@ -938,8 +938,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-6431)
-* [  TypeScript ](#tab-panel-6432)
+* [  JavaScript ](#tab-panel-6447)
+* [  TypeScript ](#tab-panel-6448)
 
 JavaScript
 

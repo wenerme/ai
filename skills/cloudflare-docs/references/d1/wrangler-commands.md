@@ -24,9 +24,9 @@ Creates a new D1 database, and provides the binding and UUID that you will put i
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-4158)
-* [  pnpm ](#tab-panel-4159)
-* [  yarn ](#tab-panel-4160)
+* [  npm ](#tab-panel-4176)
+* [  pnpm ](#tab-panel-4177)
+* [  yarn ](#tab-panel-4178)
 
 Terminal window
 
@@ -91,9 +91,9 @@ Get information about a D1 database, including the current database size and sta
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-4161)
-* [  pnpm ](#tab-panel-4162)
-* [  yarn ](#tab-panel-4163)
+* [  npm ](#tab-panel-4179)
+* [  pnpm ](#tab-panel-4180)
+* [  yarn ](#tab-panel-4181)
 
 Terminal window
 
@@ -150,9 +150,9 @@ List all D1 databases in your account
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-4164)
-* [  pnpm ](#tab-panel-4165)
-* [  yarn ](#tab-panel-4166)
+* [  npm ](#tab-panel-4182)
+* [  pnpm ](#tab-panel-4183)
+* [  yarn ](#tab-panel-4184)
 
 Terminal window
 
@@ -207,9 +207,9 @@ Delete a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-4167)
-* [  pnpm ](#tab-panel-4168)
-* [  yarn ](#tab-panel-4169)
+* [  npm ](#tab-panel-4185)
+* [  pnpm ](#tab-panel-4186)
+* [  yarn ](#tab-panel-4187)
 
 Terminal window
 
@@ -266,9 +266,9 @@ Execute a command or SQL file
 
 You must provide either --command or --file for this command to run successfully.
 
-* [  npm ](#tab-panel-4170)
-* [  pnpm ](#tab-panel-4171)
-* [  yarn ](#tab-panel-4172)
+* [  npm ](#tab-panel-4188)
+* [  pnpm ](#tab-panel-4189)
+* [  yarn ](#tab-panel-4190)
 
 Terminal window
 
@@ -337,9 +337,9 @@ Automatically provision draft bindings with new resources
 
 Export the contents or schema of your database as a .sql file
 
-* [  npm ](#tab-panel-4173)
-* [  pnpm ](#tab-panel-4174)
-* [  yarn ](#tab-panel-4175)
+* [  npm ](#tab-panel-4191)
+* [  pnpm ](#tab-panel-4192)
+* [  yarn ](#tab-panel-4193)
 
 Terminal window
 
@@ -408,9 +408,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-4176)
-* [  pnpm ](#tab-panel-4177)
-* [  yarn ](#tab-panel-4178)
+* [  npm ](#tab-panel-4194)
+* [  pnpm ](#tab-panel-4195)
+* [  yarn ](#tab-panel-4196)
 
 Terminal window
 
@@ -471,9 +471,9 @@ This command acts on remote D1 Databases.
 
 For more information about Time Travel, see <https://developers.cloudflare.com/d1/reference/time-travel/>
 
-* [  npm ](#tab-panel-4179)
-* [  pnpm ](#tab-panel-4180)
-* [  yarn ](#tab-panel-4181)
+* [  npm ](#tab-panel-4197)
+* [  pnpm ](#tab-panel-4198)
+* [  yarn ](#tab-panel-4199)
 
 Terminal window
 
@@ -541,9 +541,9 @@ This will generate a new versioned file inside the 'migrations' folder. Name you
 
 The filename will include a version number and the migration name you specify.
 
-* [  npm ](#tab-panel-4182)
-* [  pnpm ](#tab-panel-4183)
-* [  yarn ](#tab-panel-4184)
+* [  npm ](#tab-panel-4200)
+* [  pnpm ](#tab-panel-4201)
+* [  yarn ](#tab-panel-4202)
 
 Terminal window
 
@@ -598,9 +598,9 @@ Automatically provision draft bindings with new resources
 
 View a list of unapplied migration files
 
-* [  npm ](#tab-panel-4185)
-* [  pnpm ](#tab-panel-4186)
-* [  yarn ](#tab-panel-4187)
+* [  npm ](#tab-panel-4203)
+* [  pnpm ](#tab-panel-4204)
+* [  yarn ](#tab-panel-4205)
 
 Terminal window
 
@@ -669,9 +669,9 @@ When running the apply command in a CI/CD environment or another non-interactive
 
 If applying a migration results in an error, this migration will be rolled back, and the previous successful migration will remain applied.
 
-* [  npm ](#tab-panel-4188)
-* [  pnpm ](#tab-panel-4189)
-* [  yarn ](#tab-panel-4190)
+* [  npm ](#tab-panel-4206)
+* [  pnpm ](#tab-panel-4207)
+* [  yarn ](#tab-panel-4208)
 
 Terminal window
 
@@ -737,9 +737,9 @@ Get information about the queries run on a D1 database
 
 This command acts on remote D1 Databases.
 
-* [  npm ](#tab-panel-4191)
-* [  pnpm ](#tab-panel-4192)
-* [  yarn ](#tab-panel-4193)
+* [  npm ](#tab-panel-4209)
+* [  pnpm ](#tab-panel-4210)
+* [  yarn ](#tab-panel-4211)
 
 Terminal window
 

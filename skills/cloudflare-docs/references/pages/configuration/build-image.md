@@ -26,9 +26,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-5403)
-* [ v2 ](#tab-panel-5404)
-* [ v1 ](#tab-panel-5405)
+* [ v3 ](#tab-panel-5419)
+* [ v2 ](#tab-panel-5420)
+* [ v1 ](#tab-panel-5421)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -66,9 +66,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-5406)
-* [ v2 ](#tab-panel-5407)
-* [ v1 ](#tab-panel-5408)
+* [ v3 ](#tab-panel-5422)
+* [ v2 ](#tab-panel-5423)
+* [ v1 ](#tab-panel-5424)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -196,9 +196,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-5409)
-* [ v2 ](#tab-panel-5410)
-* [ v1 ](#tab-panel-5411)
+* [ v3 ](#tab-panel-5425)
+* [ v2 ](#tab-panel-5426)
+* [ v1 ](#tab-panel-5427)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

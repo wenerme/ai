@@ -208,8 +208,8 @@ ws.on("message", function incoming(message) {
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-3072)
-* [  wrangler.toml ](#tab-panel-3073)
+* [  wrangler.jsonc ](#tab-panel-3088)
+* [  wrangler.toml ](#tab-panel-3089)
 
 ```
 

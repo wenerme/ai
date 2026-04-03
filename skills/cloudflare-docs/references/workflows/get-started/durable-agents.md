@@ -555,8 +555,8 @@ export class ResearchAgent extends Agent<Env, State> {
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-8578)  
-   * [  wrangler.toml ](#tab-panel-8579)  
+   * [  wrangler.jsonc ](#tab-panel-8598)  
+   * [  wrangler.toml ](#tab-panel-8599)  
 ```  
 {  
   "$schema": "node_modules/wrangler/config-schema.json",  

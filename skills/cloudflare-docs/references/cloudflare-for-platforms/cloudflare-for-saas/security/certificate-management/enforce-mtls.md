@@ -175,8 +175,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-3350)
-* [ API ](#tab-panel-3351)
+* [ Dashboard ](#tab-panel-3366)
+* [ API ](#tab-panel-3367)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

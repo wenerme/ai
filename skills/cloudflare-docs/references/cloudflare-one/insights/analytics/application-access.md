@@ -18,7 +18,7 @@ Copy page
 
 The Application Access Report provides a high-level summary of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) usage across your organization. This dashboard helps administrators monitor authentication patterns, identity provider usage, and Access configuration metrics. If Access is not configured in your account, the dashboard appears empty.
 
-The Application Access Report is powered by [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/)
+The Application Access Report is powered by [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/).
 
 To view the Application Access Report dashboard:
 

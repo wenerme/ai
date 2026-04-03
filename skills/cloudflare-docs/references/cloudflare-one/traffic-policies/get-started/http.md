@@ -53,8 +53,8 @@ An HTTP policy defines which requests to match (for example, uploads to file-sha
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-3821)
-* [ API ](#tab-panel-3822)
+* [ Dashboard ](#tab-panel-3839)
+* [ API ](#tab-panel-3840)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.

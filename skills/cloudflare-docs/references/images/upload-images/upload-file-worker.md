@@ -20,8 +20,8 @@ You can use a Worker to upload your image to Cloudflare Images.
 
 Refer to the example below or refer to the [Workers documentation](https://developers.cloudflare.com/workers/) for more information.
 
-* [  JavaScript ](#tab-panel-4956)
-* [  TypeScript ](#tab-panel-4957)
+* [  JavaScript ](#tab-panel-4972)
+* [  TypeScript ](#tab-panel-4973)
 
 JavaScript
 
@@ -103,8 +103,8 @@ const response = await fetch(API_URL, {
 
 You can use an AI Worker to generate an image and then upload that image to store it in Cloudflare Images. For more information about using Workers AI to generate an image, refer to the [SDXL-Lightning Model](https://developers.cloudflare.com/workers-ai/models/stable-diffusion-xl-lightning).
 
-* [  JavaScript ](#tab-panel-4958)
-* [  TypeScript ](#tab-panel-4959)
+* [  JavaScript ](#tab-panel-4974)
+* [  TypeScript ](#tab-panel-4975)
 
 JavaScript
 

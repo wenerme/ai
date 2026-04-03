@@ -31,9 +31,9 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1626)
-* [  Python ](#tab-panel-1627)
-* [  curl ](#tab-panel-1628)
+* [  TypeScript ](#tab-panel-1642)
+* [  Python ](#tab-panel-1643)
+* [  curl ](#tab-panel-1644)
 
 ```
 
@@ -228,8 +228,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1629)
-* [ Output ](#tab-panel-1630)
+* [ Input ](#tab-panel-1645)
+* [ Output ](#tab-panel-1646)
 
 ```
 

@@ -51,8 +51,8 @@ This guide covers how to configure [Slack ↗](https://slack.com/help/articles/2
 
 ## 3\. Add a SAML SSO provider to Slack
 
-* [ business+ plan ](#tab-panel-3410)
-* [ enterprise grid plan ](#tab-panel-3411)
+* [ business+ plan ](#tab-panel-3426)
+* [ enterprise grid plan ](#tab-panel-3427)
 
 1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
 2. Select **Configure**.

@@ -42,8 +42,8 @@ const response = await sandbox.terminal(request: Request, options?: PtyOptions):
 
 **Returns**: `Promise<Response>` — WebSocket upgrade response
 
-* [  JavaScript ](#tab-panel-6187)
-* [  TypeScript ](#tab-panel-6188)
+* [  JavaScript ](#tab-panel-6203)
+* [  TypeScript ](#tab-panel-6204)
 
 JavaScript
 
@@ -69,8 +69,8 @@ return await sandbox.terminal(request, { cols: 120, rows: 30 });
 
 Works with both [default and explicitly created sessions](https://developers.cloudflare.com/sandbox/concepts/sessions/):
 
-* [  JavaScript ](#tab-panel-6189)
-* [  TypeScript ](#tab-panel-6190)
+* [  JavaScript ](#tab-panel-6205)
+* [  TypeScript ](#tab-panel-6206)
 
 JavaScript
 
@@ -135,8 +135,8 @@ const addon = new SandboxAddon(options: SandboxAddonOptions);
 * `reconnect` \- Enable automatic reconnection with exponential backoff (default: `true`)
 * `onStateChange(state, error?)` \- Callback for connection state changes
 
-* [  JavaScript ](#tab-panel-6191)
-* [  TypeScript ](#tab-panel-6192)
+* [  JavaScript ](#tab-panel-6207)
+* [  TypeScript ](#tab-panel-6208)
 
 JavaScript
 

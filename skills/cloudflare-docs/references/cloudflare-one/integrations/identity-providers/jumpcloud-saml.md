@@ -97,7 +97,7 @@ The SCIM secret never expires, but you can manually regenerate the secret at any
 10. Select **Activate**. You will receive a confirmation that the Identity Management integration has been successfully verified.
 11. Select **Save**.
 
-To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/).
+To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 Note
 

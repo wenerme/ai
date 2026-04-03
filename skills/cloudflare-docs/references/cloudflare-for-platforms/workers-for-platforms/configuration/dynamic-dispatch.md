@@ -41,8 +41,8 @@ You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Wor
 
 To allow your dynamic dispatch Worker to dynamically route requests to Workers in a namespace, you need to configure a dispatch namespace [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). This binding enables your dynamic dispatch Worker to call any user Worker within that namespace using `env.dispatcher.get()`.
 
-* [  wrangler.jsonc ](#tab-panel-3362)
-* [  wrangler.toml ](#tab-panel-3363)
+* [  wrangler.jsonc ](#tab-panel-3378)
+* [  wrangler.toml ](#tab-panel-3379)
 
 ```
 

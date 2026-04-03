@@ -32,8 +32,8 @@ When an endpoint is using [Cloudflare Workers](https://developers.cloudflare.com
 
 ## Access
 
-* [  New dashboard ](#tab-panel-3134)
-* [ Old dashboard ](#tab-panel-3135)
+* [  New dashboard ](#tab-panel-3150)
+* [ Old dashboard ](#tab-panel-3151)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -51,8 +51,8 @@ There are two ways to add API endpoints from Discovery.
 
 #### Add from the Endpoints tab
 
-* [  New dashboard ](#tab-panel-3124)
-* [ Old dashboard ](#tab-panel-3125)
+* [  New dashboard ](#tab-panel-3140)
+* [ Old dashboard ](#tab-panel-3141)
 
 1. From **Endpoints**, go to **Add endpoints** \> **Select from Discovery** tab.
 2. Select the discovered endpoints you would like to add.
@@ -64,8 +64,8 @@ There are two ways to add API endpoints from Discovery.
 
 #### Add from the Discovery tab
 
-* [  New dashboard ](#tab-panel-3126)
-* [ Old dashboard ](#tab-panel-3127)
+* [  New dashboard ](#tab-panel-3142)
+* [ Old dashboard ](#tab-panel-3143)
 
 1. From **Web assets**, go to the **Discovery** tab.
 2. Select the discovered endpoints you would like to add.
@@ -77,8 +77,8 @@ There are two ways to add API endpoints from Discovery.
 
 ### Add endpoints from Schema validation
 
-* [  New dashboard ](#tab-panel-3128)
-* [ Old dashboard ](#tab-panel-3129)
+* [  New dashboard ](#tab-panel-3144)
+* [ Old dashboard ](#tab-panel-3145)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Upload Schema**.
@@ -97,8 +97,8 @@ If you deselect **Save new endpoints to endpoint management**, the endpoints wil
 
 ### Add endpoints manually
 
-* [  New dashboard ](#tab-panel-3130)
-* [ Old dashboard ](#tab-panel-3131)
+* [  New dashboard ](#tab-panel-3146)
+* [ Old dashboard ](#tab-panel-3147)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -147,8 +147,8 @@ For more information on how Cloudflare uses variables in API Shield, refer to th
 
 You can delete endpoints one at a time or in bulk.
 
-* [  New dashboard ](#tab-panel-3132)
-* [ Old dashboard ](#tab-panel-3133)
+* [  New dashboard ](#tab-panel-3148)
+* [ Old dashboard ](#tab-panel-3149)
 
 1. From **Web assets**, go to the **Endpoints** tab.
 2. Select the checkboxes for the endpoints that you want to delete.

@@ -34,8 +34,8 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 
 ## Sample Wrangler configuration
 
-* [  wrangler.jsonc ](#tab-panel-8380)
-* [  wrangler.toml ](#tab-panel-8381)
+* [  wrangler.jsonc ](#tab-panel-8400)
+* [  wrangler.toml ](#tab-panel-8401)
 
 ```
 
@@ -184,8 +184,8 @@ This currently works for KV, R2, and D1 bindings.
 
 To use this feature, add bindings to your configuration file _without_ adding resource IDs, or in the case of R2, a bucket name. Resources will be created with the name of your worker as the prefix.
 
-* [  wrangler.jsonc ](#tab-panel-8358)
-* [  wrangler.toml ](#tab-panel-8359)
+* [  wrangler.jsonc ](#tab-panel-8378)
+* [  wrangler.toml ](#tab-panel-8379)
 
 ```
 
@@ -350,8 +350,8 @@ There are three types of [routes](https://developers.cloudflare.com/workers/conf
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8360)
-* [  wrangler.toml ](#tab-panel-8361)
+* [  wrangler.jsonc ](#tab-panel-8380)
+* [  wrangler.toml ](#tab-panel-8381)
 
 ```
 
@@ -398,8 +398,8 @@ custom_domain = true
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8364)
-* [  wrangler.toml ](#tab-panel-8365)
+* [  wrangler.jsonc ](#tab-panel-8384)
+* [  wrangler.toml ](#tab-panel-8385)
 
 ```
 
@@ -442,8 +442,8 @@ zone_id = "<YOUR_ZONE_ID>"
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8368)
-* [  wrangler.toml ](#tab-panel-8369)
+* [  wrangler.jsonc ](#tab-panel-8388)
+* [  wrangler.toml ](#tab-panel-8389)
 
 ```
 
@@ -483,8 +483,8 @@ This is a simple route that only requires a pattern.
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8362)
-* [  wrangler.toml ](#tab-panel-8363)
+* [  wrangler.jsonc ](#tab-panel-8382)
+* [  wrangler.toml ](#tab-panel-8383)
 
 ```
 
@@ -511,8 +511,8 @@ Cloudflare Workers accounts come with a `workers.dev` subdomain that is configur
 * `workers_dev` ` boolean ` optional  
    * Whether the Worker runs on a custom `workers.dev` account subdomain. Defaults to `true`.
 
-* [  wrangler.jsonc ](#tab-panel-8366)
-* [  wrangler.toml ](#tab-panel-8367)
+* [  wrangler.jsonc ](#tab-panel-8386)
+* [  wrangler.toml ](#tab-panel-8387)
 
 ```
 
@@ -542,8 +542,8 @@ Triggers allow you to define the `cron` expression to invoke your Worker's `sche
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8370)
-* [  wrangler.toml ](#tab-panel-8371)
+* [  wrangler.jsonc ](#tab-panel-8390)
+* [  wrangler.toml ](#tab-panel-8391)
 
 ```
 
@@ -580,8 +580,8 @@ The [Observability](https://developers.cloudflare.com/workers/observability/logs
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8372)
-* [  wrangler.toml ](#tab-panel-8373)
+* [  wrangler.jsonc ](#tab-panel-8392)
+* [  wrangler.toml ](#tab-panel-8393)
 
 ```
 
@@ -628,8 +628,8 @@ You can configure a custom build step that will be run before your Worker is dep
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8374)
-* [  wrangler.toml ](#tab-panel-8375)
+* [  wrangler.jsonc ](#tab-panel-8394)
+* [  wrangler.toml ](#tab-panel-8395)
 
 ```
 
@@ -677,8 +677,8 @@ Each [isolate](https://developers.cloudflare.com/workers/reference/how-workers-w
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8376)
-* [  wrangler.toml ](#tab-panel-8377)
+* [  wrangler.jsonc ](#tab-panel-8396)
+* [  wrangler.toml ](#tab-panel-8397)
 
 ```
 
@@ -721,8 +721,8 @@ A [browser binding](https://developers.cloudflare.com/workers/runtime-apis/bindi
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8378)
-* [  wrangler.toml ](#tab-panel-8379)
+* [  wrangler.jsonc ](#tab-panel-8398)
+* [  wrangler.toml ](#tab-panel-8399)
 
 ```
 
@@ -772,8 +772,8 @@ When using Wrangler in the default local development mode, files will be written
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8382)
-* [  wrangler.toml ](#tab-panel-8383)
+* [  wrangler.jsonc ](#tab-panel-8402)
+* [  wrangler.toml ](#tab-panel-8403)
 
 ```
 
@@ -823,8 +823,8 @@ Dispatch namespace bindings allow for communication between a [dynamic dispatch 
    * `service` ` string ` required The name of the [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) to bind to.  
    * `parameters` array optional A list of parameters to pass data from your [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) to the [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/).
 
-* [  wrangler.jsonc ](#tab-panel-8384)
-* [  wrangler.toml ](#tab-panel-8385)
+* [  wrangler.jsonc ](#tab-panel-8404)
+* [  wrangler.toml ](#tab-panel-8405)
 
 ```
 
@@ -890,8 +890,8 @@ To bind Durable Objects to your Worker, assign an array of the below object to t
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8386)
-* [  wrangler.toml ](#tab-panel-8387)
+* [  wrangler.jsonc ](#tab-panel-8406)
+* [  wrangler.toml ](#tab-panel-8407)
 
 ```
 
@@ -944,8 +944,8 @@ When making changes to your Durable Object classes, you must perform a migration
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8400)
-* [  wrangler.toml ](#tab-panel-8401)
+* [  wrangler.jsonc ](#tab-panel-8420)
+* [  wrangler.toml ](#tab-panel-8421)
 
 ```
 
@@ -1042,8 +1042,8 @@ Before you can bind an email address to your Worker, you need to [enable Email R
 
 You can add one or more types of bindings to your Wrangler file. However, each attribute must be on its own line:
 
-* [  wrangler.jsonc ](#tab-panel-8444)
-* [  wrangler.toml ](#tab-panel-8445)
+* [  wrangler.jsonc ](#tab-panel-8464)
+* [  wrangler.toml ](#tab-panel-8465)
 
 ```
 
@@ -1115,8 +1115,8 @@ allowed_destination_addresses = [ "<YOUR_EMAIL>@example.com", "<YOUR_EMAIL2>@exa
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8442)
-* [  wrangler.toml ](#tab-panel-8443)
+* [  wrangler.jsonc ](#tab-panel-8462)
+* [  wrangler.toml ](#tab-panel-8463)
 
 ```
 
@@ -1181,8 +1181,8 @@ API_ACCOUNT_ID = "example_user"
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8390)
-* [  wrangler.toml ](#tab-panel-8391)
+* [  wrangler.jsonc ](#tab-panel-8410)
+* [  wrangler.toml ](#tab-panel-8411)
 
 ```
 
@@ -1231,8 +1231,8 @@ To bind Images to your Worker, assign an array of the below object to the `image
 
 `binding` (required). The name of the binding used to refer to the Images API.
 
-* [  wrangler.jsonc ](#tab-panel-8388)
-* [  wrangler.toml ](#tab-panel-8389)
+* [  wrangler.jsonc ](#tab-panel-8408)
+* [  wrangler.toml ](#tab-panel-8409)
 
 ```
 
@@ -1277,8 +1277,8 @@ When using Wrangler in the default local development mode, files will be written
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8392)
-* [  wrangler.toml ](#tab-panel-8393)
+* [  wrangler.jsonc ](#tab-panel-8412)
+* [  wrangler.toml ](#tab-panel-8413)
 
 ```
 
@@ -1342,8 +1342,8 @@ To bind Queues to your producer Worker, assign an array of the below object to t
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8394)
-* [  wrangler.toml ](#tab-panel-8395)
+* [  wrangler.jsonc ](#tab-panel-8414)
+* [  wrangler.toml ](#tab-panel-8415)
 
 ```
 
@@ -1407,8 +1407,8 @@ To bind Queues to your consumer Worker, assign an array of the below object to t
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8402)
-* [  wrangler.toml ](#tab-panel-8403)
+* [  wrangler.jsonc ](#tab-panel-8422)
+* [  wrangler.toml ](#tab-panel-8423)
 
 ```
 
@@ -1487,8 +1487,8 @@ When using Wrangler in the default local development mode, files will be written
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8398)
-* [  wrangler.toml ](#tab-panel-8399)
+* [  wrangler.jsonc ](#tab-panel-8418)
+* [  wrangler.toml ](#tab-panel-8419)
 
 ```
 
@@ -1550,8 +1550,8 @@ To bind Vectorize indexes to your Worker, assign an array of the below object to
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8396)
-* [  wrangler.toml ](#tab-panel-8397)
+* [  wrangler.jsonc ](#tab-panel-8416)
+* [  wrangler.toml ](#tab-panel-8417)
 
 ```
 
@@ -1601,8 +1601,8 @@ To bind other Workers to your Worker, assign an array of the below object to the
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8404)
-* [  wrangler.toml ](#tab-panel-8405)
+* [  wrangler.jsonc ](#tab-panel-8424)
+* [  wrangler.toml ](#tab-panel-8425)
 
 ```
 
@@ -1657,8 +1657,8 @@ To bind Analytics Engine datasets to your Worker, assign an array of the below o
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8406)
-* [  wrangler.toml ](#tab-panel-8407)
+* [  wrangler.jsonc ](#tab-panel-8426)
+* [  wrangler.toml ](#tab-panel-8427)
 
 ```
 
@@ -1705,8 +1705,8 @@ To create a [binding](https://developers.cloudflare.com/workers/runtime-apis/bin
 
 Example of a Wrangler configuration file that includes an mTLS certificate binding:
 
-* [  wrangler.jsonc ](#tab-panel-8410)
-* [  wrangler.toml ](#tab-panel-8411)
+* [  wrangler.jsonc ](#tab-panel-8430)
+* [  wrangler.toml ](#tab-panel-8431)
 
 ```
 
@@ -1772,8 +1772,8 @@ Unlike other bindings, this binding is limited to one AI binding per Worker proj
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8408)
-* [  wrangler.toml ](#tab-panel-8409)
+* [  wrangler.jsonc ](#tab-panel-8428)
+* [  wrangler.toml ](#tab-panel-8429)
 
 ```
 
@@ -1816,8 +1816,8 @@ To bind Workflows to your Worker, assign an array of the below object to the `wo
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8412)
-* [  wrangler.toml ](#tab-panel-8413)
+* [  wrangler.jsonc ](#tab-panel-8432)
+* [  wrangler.toml ](#tab-panel-8433)
 
 ```
 
@@ -1877,8 +1877,8 @@ The following options are available under the `assets` key.
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8414)
-* [  wrangler.toml ](#tab-panel-8415)
+* [  wrangler.jsonc ](#tab-panel-8434)
+* [  wrangler.toml ](#tab-panel-8435)
 
 ```
 
@@ -1918,8 +1918,8 @@ not_found_handling = "404-page"
 
 You can also configure `run_worker_first` with an array of route patterns:
 
-* [  wrangler.jsonc ](#tab-panel-8416)
-* [  wrangler.toml ](#tab-panel-8417)
+* [  wrangler.jsonc ](#tab-panel-8436)
+* [  wrangler.toml ](#tab-panel-8437)
 
 ```
 
@@ -2000,8 +2000,8 @@ The following options are available:
 * `authorized_keys` ` object[] ` optional  
    * Public keys that should be added to the Container's `authorized_keys` file.
 
-* [  wrangler.jsonc ](#tab-panel-8436)
-* [  wrangler.toml ](#tab-panel-8437)
+* [  wrangler.jsonc ](#tab-panel-8456)
+* [  wrangler.toml ](#tab-panel-8457)
 
 ```
 
@@ -2109,8 +2109,8 @@ The following options are available:
 * `disk_mb` ` number ` optional  
    * The disk to be used by your container, in MB. Defaults to `2000` (2GB).
 
-* [  wrangler.jsonc ](#tab-panel-8422)
-* [  wrangler.toml ](#tab-panel-8423)
+* [  wrangler.jsonc ](#tab-panel-8442)
+* [  wrangler.toml ](#tab-panel-8443)
 
 ```
 
@@ -2201,8 +2201,8 @@ It is also possible to include additional modules into your Worker, which are up
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8420)
-* [  wrangler.toml ](#tab-panel-8421)
+* [  wrangler.jsonc ](#tab-panel-8440)
+* [  wrangler.toml ](#tab-panel-8441)
 
 ```
 
@@ -2276,8 +2276,8 @@ By default, Python Workers bundle the files and folders in `python_modules` at t
 
 To fix this, you can exclude certain files from being included. To do this use the `python_modules.excludes` option, for example:
 
-* [  wrangler.jsonc ](#tab-panel-8418)
-* [  wrangler.toml ](#tab-panel-8419)
+* [  wrangler.jsonc ](#tab-panel-8438)
+* [  wrangler.toml ](#tab-panel-8439)
 
 ```
 
@@ -2332,8 +2332,8 @@ You can configure various aspects of local development, such as the local protoc
 * `generate_types` ` boolean ` optional  
    * Generate types from your Worker configuration. Defaults to `false`.
 
-* [  wrangler.jsonc ](#tab-panel-8424)
-* [  wrangler.toml ](#tab-panel-8425)
+* [  wrangler.jsonc ](#tab-panel-8444)
+* [  wrangler.toml ](#tab-panel-8445)
 
 ```
 
@@ -2428,8 +2428,8 @@ This property is experimental and subject to change.
 
 The `secrets` configuration property lets you declare the secret names your Worker requires in your Wrangler configuration file. Required secrets are validated during local development and deploy, and used as the source of truth for type generation.
 
-* [  wrangler.jsonc ](#tab-panel-8426)
-* [  wrangler.toml ](#tab-panel-8427)
+* [  wrangler.jsonc ](#tab-panel-8446)
+* [  wrangler.toml ](#tab-panel-8447)
 
 ```
 
@@ -2473,8 +2473,8 @@ If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/w
 
 You can configure Wrangler to replace all calls to import a particular package with a module of your choice, by configuring the `alias` field:
 
-* [  wrangler.jsonc ](#tab-panel-8428)
-* [  wrangler.toml ](#tab-panel-8429)
+* [  wrangler.jsonc ](#tab-panel-8448)
+* [  wrangler.toml ](#tab-panel-8449)
 
 ```
 
@@ -2545,8 +2545,8 @@ For example, some NPM packages depend on [node-fetch ↗](https://www.npmjs.com/
 
 You can alias all imports of `node-fetch` to instead point directly to the `fetch()` API that is built into the Workers runtime:
 
-* [  wrangler.jsonc ](#tab-panel-8430)
-* [  wrangler.toml ](#tab-panel-8431)
+* [  wrangler.jsonc ](#tab-panel-8450)
+* [  wrangler.toml ](#tab-panel-8451)
 
 ```
 
@@ -2587,8 +2587,8 @@ You can use module aliasing to provide your own polyfill implementation of a Nod
 
 For example, let's say the NPM package you rely on calls [fs.readFile ↗](https://nodejs.org/api/fs.html#fsreadfilepath-options-callback). You can alias the fs module by adding the following to your Worker's Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8432)
-* [  wrangler.toml ](#tab-panel-8433)
+* [  wrangler.jsonc ](#tab-panel-8452)
+* [  wrangler.toml ](#tab-panel-8453)
 
 ```
 
@@ -2638,8 +2638,8 @@ In many cases, this allows you to work provide just enough of an API to make a d
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8434)
-* [  wrangler.toml ](#tab-panel-8435)
+* [  wrangler.jsonc ](#tab-panel-8454)
+* [  wrangler.toml ](#tab-panel-8455)
 
 ```
 
@@ -2676,8 +2676,8 @@ You should use [Workers Static Assets](https://developers.cloudflare.com/workers
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-8438)
-* [  wrangler.toml ](#tab-panel-8439)
+* [  wrangler.jsonc ](#tab-panel-8458)
+* [  wrangler.toml ](#tab-panel-8459)
 
 ```
 
@@ -2788,8 +2788,8 @@ The generated configuration file should not include any [environments](#environm
 A common example of using a redirected configuration is where a custom build tool, or framework, wants to modify the user's configuration to be used when deploying, by generating a new configuration in a `dist` directory.
 
 * First, the user writes code that uses Cloudflare Workers resources, configured via a user's Wrangler configuration file like the following:  
-   * [  wrangler.jsonc ](#tab-panel-8440)  
-   * [  wrangler.toml ](#tab-panel-8441)  
+   * [  wrangler.jsonc ](#tab-panel-8460)  
+   * [  wrangler.toml ](#tab-panel-8461)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  

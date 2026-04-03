@@ -51,8 +51,8 @@ The Minimum TLS version that you set up following these steps does not apply to 
 
 To manage the TLS version applied to your whole zone when proxied through Cloudflare:
 
-* [ Dashboard ](#tab-panel-6525)
-* [ API ](#tab-panel-6526)
+* [ Dashboard ](#tab-panel-6541)
+* [ API ](#tab-panel-6542)
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)

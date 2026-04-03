@@ -34,8 +34,8 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-7718)
-* [  wrangler.toml ](#tab-panel-7719)
+* [  wrangler.jsonc ](#tab-panel-7738)
+* [  wrangler.toml ](#tab-panel-7739)
 
 ```
 
@@ -86,8 +86,8 @@ run_worker_first = true
 
 ```
 
-* [  JavaScript ](#tab-panel-7722)
-* [  TypeScript ](#tab-panel-7723)
+* [  JavaScript ](#tab-panel-7742)
+* [  TypeScript ](#tab-panel-7743)
 
 ./worker/index.js
 
@@ -195,8 +195,8 @@ export default class extends WorkerEntrypoint<Env> {
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-7720)
-* [  wrangler.toml ](#tab-panel-7721)
+* [  wrangler.jsonc ](#tab-panel-7740)
+* [  wrangler.toml ](#tab-panel-7741)
 
 ```
 
@@ -251,8 +251,8 @@ run_worker_first = [ "/oauth/callback" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-7724)
-* [  TypeScript ](#tab-panel-7725)
+* [  JavaScript ](#tab-panel-7744)
+* [  TypeScript ](#tab-panel-7745)
 
 ./worker/index.js
 

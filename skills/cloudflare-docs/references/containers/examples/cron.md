@@ -26,8 +26,8 @@ For a full example, see the [Cron Container Template ↗](https://github.com/mik
 
 Use a cron expression in your Wrangler config to specify the schedule:
 
-* [  wrangler.jsonc ](#tab-panel-3995)
-* [  wrangler.toml ](#tab-panel-3996)
+* [  wrangler.jsonc ](#tab-panel-4013)
+* [  wrangler.toml ](#tab-panel-4014)
 
 ```
 

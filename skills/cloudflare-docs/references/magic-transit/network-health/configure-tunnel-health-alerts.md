@@ -57,8 +57,8 @@ For details, refer to [How Cloudflare calculates Tunnel health alerts](https://d
 
 ## Set up Tunnel Health Alerts
 
-* [ Dashboard ](#tab-panel-5389)
-* [ API ](#tab-panel-5390)
+* [ Dashboard ](#tab-panel-5405)
+* [ API ](#tab-panel-5406)
 
 1. Go to the **Notifications** page.  
 [ Go to **Notifications** ](https://dash.cloudflare.com/?to=/:account/notifications)

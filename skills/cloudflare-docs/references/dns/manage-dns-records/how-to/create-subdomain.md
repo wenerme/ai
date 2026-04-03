@@ -30,8 +30,8 @@ Then, you would create a corresponding [IP address resolution record](https://de
 | ---- | ---- | ------------ | ------------ |
 | A    | blog | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-4252)
-* [ API ](#tab-panel-4253)
+* [ Dashboard ](#tab-panel-4268)
+* [ API ](#tab-panel-4269)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

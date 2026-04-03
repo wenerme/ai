@@ -56,8 +56,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3461)
-* [ Terraform (v5) ](#tab-panel-3462)
+* [ Dashboard ](#tab-panel-3477)
+* [ Terraform (v5) ](#tab-panel-3478)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
@@ -132,7 +132,7 @@ If you would like to build policies based on IdP groups:
 
 ### 3\. Verify SCIM provisioning
 
-To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/).
+To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 Note
 

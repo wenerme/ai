@@ -32,8 +32,8 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 
 ## Access
 
-* [  New dashboard ](#tab-panel-4208)
-* [ Old dashboard ](#tab-panel-4209)
+* [  New dashboard ](#tab-panel-4224)
+* [ Old dashboard ](#tab-panel-4225)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -66,8 +66,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-4210)
-* [ Old dashboard ](#tab-panel-4211)
+* [  New dashboard ](#tab-panel-4226)
+* [ Old dashboard ](#tab-panel-4227)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

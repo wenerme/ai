@@ -37,8 +37,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-3983)
-* [ API ](#tab-panel-3984)
+* [ Dashboard ](#tab-panel-4001)
+* [ API ](#tab-panel-4002)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -191,8 +191,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-3985)
-* [ API ](#tab-panel-3986)
+* [ Dashboard ](#tab-panel-4003)
+* [ API ](#tab-panel-4004)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -334,8 +334,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-3979)
-* [ API ](#tab-panel-3980)
+* [ Dashboard ](#tab-panel-3997)
+* [ API ](#tab-panel-3998)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -447,8 +447,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-3981)
-* [ API ](#tab-panel-3982)
+* [ Dashboard ](#tab-panel-3999)
+* [ API ](#tab-panel-4000)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.

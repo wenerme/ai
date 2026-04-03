@@ -43,8 +43,8 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="mysql://
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-4657)
-* [  wrangler.toml ](#tab-panel-4658)
+* [  wrangler.jsonc ](#tab-panel-4673)
+* [  wrangler.toml ](#tab-panel-4674)
 
 ```
 
@@ -122,8 +122,8 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-4659)
-* [  wrangler.toml ](#tab-panel-4660)
+* [  wrangler.jsonc ](#tab-panel-4675)
+* [  wrangler.toml ](#tab-panel-4676)
 
 ```
 
@@ -207,8 +207,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4661)
-* [  wrangler.toml ](#tab-panel-4662)
+* [  wrangler.jsonc ](#tab-panel-4677)
+* [  wrangler.toml ](#tab-panel-4678)
 
 ```
 
@@ -362,8 +362,8 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4663)
-* [  wrangler.toml ](#tab-panel-4664)
+* [  wrangler.jsonc ](#tab-panel-4679)
+* [  wrangler.toml ](#tab-panel-4680)
 
 ```
 

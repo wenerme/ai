@@ -912,25 +912,10 @@ automate tasks.
 | Output price | Not available | $10.00, prompts \<= 200k tokens $15.00, prompts \> 200k |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemma 3
+## Gemma 4
 
 Our lightweight, state-of the art, open model built from the same technology
 that powers our Gemini models.
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | Not available |
-| Output price | Free of charge | Not available |
-| Context caching price | Free of charge | Not available |
-| Context caching (storage) | Free of charge | Not available |
-| Tuning price | Not available | Not available |
-| Grounding with Google Search | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Gemma 3n
-
-Our open model built for efficient performance on everyday devices like mobile
-phones, laptops, and tablets.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|

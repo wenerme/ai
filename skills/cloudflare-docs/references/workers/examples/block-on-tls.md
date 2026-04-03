@@ -24,10 +24,10 @@ Copy page
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-7189)
-* [  TypeScript ](#tab-panel-7190)
-* [  Hono ](#tab-panel-7191)
-* [  Python ](#tab-panel-7192)
+* [  JavaScript ](#tab-panel-7209)
+* [  TypeScript ](#tab-panel-7210)
+* [  Hono ](#tab-panel-7211)
+* [  Python ](#tab-panel-7212)
 
 JavaScript
 

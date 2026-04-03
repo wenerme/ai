@@ -37,8 +37,8 @@ When `cloudflared` receives a request from a device, it uses the ports on the ho
 * `cloudflared` should be deployed on a dedicated host machine. This model is typically appropriate, but there may be serverless or clustered workflows where a dedicated host is not possible.
 * The host machine should allocate 50,000 ports to be available for use by the `cloudflared` service. The remaining ports are reserved for system administrative processes.
 
-* [ Linux ](#tab-panel-3475)
-* [ Windows ](#tab-panel-3476)
+* [ Linux ](#tab-panel-3491)
+* [ Windows ](#tab-panel-3492)
 
 To increase the number of ports available to `cloudflared` on Linux:
 

@@ -27,6 +27,9 @@ List all providers
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -50,6 +53,9 @@ import { providersList } from "@openrouter/sdk/funcs/providersList.js";
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -68,11 +74,12 @@ run();
 
 ### Parameters
 
-| Parameter              | Type                                                                                    | Required             | Description                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `options`              | RequestOptions                                                                          | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options) | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/docs/sdks/typescript/api-reference/lib/retryconfig)                      | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter              | Type                                                                                                   | Required             | Description                                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.ListProvidersRequest](/docs/sdks/typescript/api-reference/operations/listprovidersrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                                         | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](/docs/sdks/typescript/api-reference/lib/retryconfig)                                     | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 

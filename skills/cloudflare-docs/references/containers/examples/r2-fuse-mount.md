@@ -118,8 +118,8 @@ The startup script creates a mount point, starts tigrisfs in the background to m
 
 Your Container needs [R2 credentials](https://developers.cloudflare.com/r2/api/tokens/) and configuration passed as environment variables. Store credentials as [Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/), then pass them through the `envVars` property:
 
-* [  JavaScript ](#tab-panel-3999)
-* [  TypeScript ](#tab-panel-4000)
+* [  JavaScript ](#tab-panel-4017)
+* [  TypeScript ](#tab-panel-4018)
 
 src/index.js
 

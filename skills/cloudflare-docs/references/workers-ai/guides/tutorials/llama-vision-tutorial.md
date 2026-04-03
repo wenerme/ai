@@ -145,8 +145,8 @@ export default {
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6941)
-* [  wrangler.toml ](#tab-panel-6942)
+* [  wrangler.jsonc ](#tab-panel-6957)
+* [  wrangler.toml ](#tab-panel-6958)
 
 ```
 

@@ -89,8 +89,8 @@ Ensure you are using the latest version of [wrangler](https://developers.cloudfl
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5613)
-* [  wrangler.toml ](#tab-panel-5614)
+* [  wrangler.jsonc ](#tab-panel-5629)
+* [  wrangler.toml ](#tab-panel-5630)
 
 ```
 

@@ -36,8 +36,8 @@ Warning
 
 If you add a pool to a region, you cannot [delete this pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#delete-a-pool) until you remove it from the **Geo steering** configuration. The configuration is **not** automatically removed when you change to a different **Traffic Steering** method.
 
-* [ Dashboard ](#tab-panel-5358)
-* [ API ](#tab-panel-5359)
+* [ Dashboard ](#tab-panel-5374)
+* [ API ](#tab-panel-5375)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 
@@ -116,8 +116,8 @@ If you only define `WNAM`, then traffic from the East Coast will be routed to th
 
 ### Country steering
 
-* [ Dashboard ](#tab-panel-5360)
-* [ API ](#tab-panel-5361)
+* [ Dashboard ](#tab-panel-5376)
+* [ API ](#tab-panel-5377)
 
 When [creating or editing a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/):
 

@@ -9,8 +9,8 @@ Copy page
 
 # Build the app frontend and UI
 
-* [ Watch this episode ](#tab-panel-5076)
-* [ Series overview ](#tab-panel-5077)
+* [ Watch this episode ](#tab-panel-5092)
+* [ Series overview ](#tab-panel-5093)
 
 In this video, we set up the frontend starter code (the starter code is located in the Veet GitHub repository), connect to Durable Objects using a call room ID, and display a local video preview.
 

@@ -9,8 +9,8 @@ Copy page
 
 # Introduction to the series
 
-* [ Watch this episode ](#tab-panel-5080)
-* [ Series overview ](#tab-panel-5081)
+* [ Watch this episode ](#tab-panel-5096)
+* [ Series overview ](#tab-panel-5097)
 
 In this episode, we present an overview of the series, discuss its underlying architecture, and access resources to set up the project locally.
 

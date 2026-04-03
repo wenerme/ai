@@ -26,9 +26,9 @@ EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embeddin
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1684)
-* [  Python ](#tab-panel-1685)
-* [  curl ](#tab-panel-1686)
+* [  TypeScript ](#tab-panel-1700)
+* [  Python ](#tab-panel-1701)
+* [  curl ](#tab-panel-1702)
 
 ```
 
@@ -165,8 +165,8 @@ Embeddings of the requested text values
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1687)
-* [ Output ](#tab-panel-1688)
+* [ Input ](#tab-panel-1703)
+* [ Output ](#tab-panel-1704)
 
 ```
 

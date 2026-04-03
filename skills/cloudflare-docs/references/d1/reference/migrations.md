@@ -40,8 +40,8 @@ By default, migrations are created in the `migrations/` folder in your Worker pr
 
 This location and table name can be customized in your Wrangler file, inside the D1 binding.
 
-* [  wrangler.jsonc ](#tab-panel-4066)
-* [  wrangler.toml ](#tab-panel-4067)
+* [  wrangler.jsonc ](#tab-panel-4084)
+* [  wrangler.toml ](#tab-panel-4085)
 
 ```
 

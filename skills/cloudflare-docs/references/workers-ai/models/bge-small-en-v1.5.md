@@ -34,9 +34,9 @@ BAAI general embedding (Small) model that transforms any given text into a 384-d
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1636)
-* [  Python ](#tab-panel-1637)
-* [  curl ](#tab-panel-1638)
+* [  TypeScript ](#tab-panel-1652)
+* [  Python ](#tab-panel-1653)
+* [  curl ](#tab-panel-1654)
 
 ```
 
@@ -195,8 +195,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1639)
-* [ Output ](#tab-panel-1640)
+* [ Input ](#tab-panel-1655)
+* [ Output ](#tab-panel-1656)
 
 ```
 

@@ -38,8 +38,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access account takeover detections:
 
-* [  New dashboard ](#tab-panel-3184)
-* [ Old dashboard ](#tab-panel-3185)
+* [  New dashboard ](#tab-panel-3200)
+* [ Old dashboard ](#tab-panel-3201)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -68,8 +68,8 @@ Rate limiting rules can limit the number of logins from a particular IP, JA4 fin
 
 To use rate limiting rules with account takeover detections:
 
-* [  New dashboard ](#tab-panel-3186)
-* [ Old dashboard ](#tab-panel-3187)
+* [  New dashboard ](#tab-panel-3202)
+* [ Old dashboard ](#tab-panel-3203)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

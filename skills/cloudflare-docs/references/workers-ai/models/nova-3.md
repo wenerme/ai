@@ -62,8 +62,8 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1951)
-* [  curl ](#tab-panel-1952)
+* [  TypeScript ](#tab-panel-1967)
+* [  curl ](#tab-panel-1968)
 
 ```
 
@@ -226,8 +226,8 @@ Indicates how long model will wait to send an UtteranceEnd message after a word 
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1953)
-* [ Output ](#tab-panel-1954)
+* [ Input ](#tab-panel-1969)
+* [ Output ](#tab-panel-1970)
 
 ```
 

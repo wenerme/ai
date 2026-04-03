@@ -34,9 +34,9 @@ For more information, refer to [Workflows local development](https://developers.
 
 List Workflows associated to account
 
-* [  npm ](#tab-panel-8325)
-* [  pnpm ](#tab-panel-8326)
-* [  yarn ](#tab-panel-8327)
+* [  npm ](#tab-panel-8345)
+* [  pnpm ](#tab-panel-8346)
+* [  yarn ](#tab-panel-8347)
 
 Terminal window
 
@@ -95,9 +95,9 @@ Automatically provision draft bindings with new resources
 
 Describe Workflow resource
 
-* [  npm ](#tab-panel-8328)
-* [  pnpm ](#tab-panel-8329)
-* [  yarn ](#tab-panel-8330)
+* [  npm ](#tab-panel-8348)
+* [  pnpm ](#tab-panel-8349)
+* [  yarn ](#tab-panel-8350)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Automatically provision draft bindings with new resources
 
 Delete workflow - when deleting a workflow, it will also delete it's own instances
 
-* [  npm ](#tab-panel-8331)
-* [  pnpm ](#tab-panel-8332)
-* [  yarn ](#tab-panel-8333)
+* [  npm ](#tab-panel-8351)
+* [  pnpm ](#tab-panel-8352)
+* [  yarn ](#tab-panel-8353)
 
 Terminal window
 
@@ -213,9 +213,9 @@ Automatically provision draft bindings with new resources
 
 Trigger a workflow, creating a new instance. Can optionally take a JSON string to pass a parameter into the workflow instance
 
-* [  npm ](#tab-panel-8334)
-* [  pnpm ](#tab-panel-8335)
-* [  yarn ](#tab-panel-8336)
+* [  npm ](#tab-panel-8354)
+* [  pnpm ](#tab-panel-8355)
+* [  yarn ](#tab-panel-8356)
 
 Terminal window
 
@@ -276,9 +276,9 @@ Automatically provision draft bindings with new resources
 
 Instance related commands (list, describe, terminate, pause, resume)
 
-* [  npm ](#tab-panel-8337)
-* [  pnpm ](#tab-panel-8338)
-* [  yarn ](#tab-panel-8339)
+* [  npm ](#tab-panel-8357)
+* [  pnpm ](#tab-panel-8358)
+* [  yarn ](#tab-panel-8359)
 
 Terminal window
 
@@ -343,9 +343,9 @@ Automatically provision draft bindings with new resources
 
 Describe a workflow instance - see its logs, retries and errors
 
-* [  npm ](#tab-panel-8340)
-* [  pnpm ](#tab-panel-8341)
-* [  yarn ](#tab-panel-8342)
+* [  npm ](#tab-panel-8360)
+* [  pnpm ](#tab-panel-8361)
+* [  yarn ](#tab-panel-8362)
 
 Terminal window
 
@@ -408,9 +408,9 @@ Automatically provision draft bindings with new resources
 
 Send an event to a workflow instance
 
-* [  npm ](#tab-panel-8343)
-* [  pnpm ](#tab-panel-8344)
-* [  yarn ](#tab-panel-8345)
+* [  npm ](#tab-panel-8363)
+* [  pnpm ](#tab-panel-8364)
+* [  yarn ](#tab-panel-8365)
 
 Terminal window
 
@@ -473,9 +473,9 @@ Automatically provision draft bindings with new resources
 
 Terminate a workflow instance
 
-* [  npm ](#tab-panel-8346)
-* [  pnpm ](#tab-panel-8347)
-* [  yarn ](#tab-panel-8348)
+* [  npm ](#tab-panel-8366)
+* [  pnpm ](#tab-panel-8367)
+* [  yarn ](#tab-panel-8368)
 
 Terminal window
 
@@ -534,9 +534,9 @@ Automatically provision draft bindings with new resources
 
 Restart a workflow instance
 
-* [  npm ](#tab-panel-8349)
-* [  pnpm ](#tab-panel-8350)
-* [  yarn ](#tab-panel-8351)
+* [  npm ](#tab-panel-8369)
+* [  pnpm ](#tab-panel-8370)
+* [  yarn ](#tab-panel-8371)
 
 Terminal window
 
@@ -595,9 +595,9 @@ Automatically provision draft bindings with new resources
 
 Pause a workflow instance
 
-* [  npm ](#tab-panel-8352)
-* [  pnpm ](#tab-panel-8353)
-* [  yarn ](#tab-panel-8354)
+* [  npm ](#tab-panel-8372)
+* [  pnpm ](#tab-panel-8373)
+* [  yarn ](#tab-panel-8374)
 
 Terminal window
 
@@ -656,9 +656,9 @@ Automatically provision draft bindings with new resources
 
 Resume a workflow instance
 
-* [  npm ](#tab-panel-8355)
-* [  pnpm ](#tab-panel-8356)
-* [  yarn ](#tab-panel-8357)
+* [  npm ](#tab-panel-8375)
+* [  pnpm ](#tab-panel-8376)
+* [  yarn ](#tab-panel-8377)
 
 Terminal window
 

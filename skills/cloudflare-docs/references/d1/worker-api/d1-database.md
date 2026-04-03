@@ -18,8 +18,8 @@ Copy page
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
-* [  JavaScript ](#tab-panel-4098)
-* [  Python ](#tab-panel-4099)
+* [  JavaScript ](#tab-panel-4116)
+* [  Python ](#tab-panel-4117)
 
 JavaScript
 
@@ -60,8 +60,8 @@ A D1 binding has the type `D1Database`, and supports a number of methods, as lis
 
 Prepares a query statement to be later executed.
 
-* [  JavaScript ](#tab-panel-4100)
-* [  Python ](#tab-panel-4101)
+* [  JavaScript ](#tab-panel-4118)
+* [  Python ](#tab-panel-4119)
 
 JavaScript
 
@@ -100,8 +100,8 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 You can use the `bind` method to dynamically bind a value into the query statement, as shown below.
 
 * Example of a static statement without using `bind`:  
-   * [  JavaScript ](#tab-panel-4102)  
-   * [  Python ](#tab-panel-4103)  
+   * [  JavaScript ](#tab-panel-4120)  
+   * [  Python ](#tab-panel-4121)  
 JavaScript  
 ```  
 const stmt = db  
@@ -112,8 +112,8 @@ Python
 stmt = db.prepare("SELECT * FROM Customers WHERE CompanyName = 'Alfreds Futterkiste' AND CustomerId = 1")  
 ```
 * Example of an ordered statement using `bind`:  
-   * [  JavaScript ](#tab-panel-4104)  
-   * [  Python ](#tab-panel-4105)  
+   * [  JavaScript ](#tab-panel-4122)  
+   * [  Python ](#tab-panel-4123)  
 JavaScript  
 ```  
 const stmt = db  
@@ -135,8 +135,8 @@ Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang%5Ftran
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 
-* [  JavaScript ](#tab-panel-4106)
-* [  Python ](#tab-panel-4107)
+* [  JavaScript ](#tab-panel-4124)
+* [  Python ](#tab-panel-4125)
 
 JavaScript
 
@@ -196,8 +196,8 @@ batch_result = await self.env.DB.batch(to_js([
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-4108)
-* [  Python ](#tab-panel-4109)
+* [  JavaScript ](#tab-panel-4126)
+* [  Python ](#tab-panel-4127)
 
 JavaScript
 
@@ -345,8 +345,8 @@ return Response.json(stmt)
 
 ```
 
-* [  JavaScript ](#tab-panel-4110)
-* [  Python ](#tab-panel-4111)
+* [  JavaScript ](#tab-panel-4128)
+* [  Python ](#tab-panel-4129)
 
 JavaScript
 
@@ -388,8 +388,8 @@ print(stmt[1].results.to_py())
 #### Guidance
 
 * You can construct batches reusing the same prepared statement:  
-   * [  JavaScript ](#tab-panel-4112)  
-   * [  Python ](#tab-panel-4113)  
+   * [  JavaScript ](#tab-panel-4130)  
+   * [  Python ](#tab-panel-4131)  
 JavaScript  
 ```  
 const companyName1 = `Bs Beverages`;  
@@ -419,8 +419,8 @@ return Response.json(batch_result)
 
 Executes one or more queries directly without prepared statements or parameter bindings.
 
-* [  JavaScript ](#tab-panel-4114)
-* [  Python ](#tab-panel-4115)
+* [  JavaScript ](#tab-panel-4132)
+* [  Python ](#tab-panel-4133)
 
 JavaScript
 
@@ -454,8 +454,8 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 Example of return values
 
-* [  JavaScript ](#tab-panel-4116)
-* [  Python ](#tab-panel-4117)
+* [  JavaScript ](#tab-panel-4134)
+* [  Python ](#tab-panel-4135)
 
 JavaScript
 
@@ -510,8 +510,8 @@ This API only works on databases created during D1's alpha period. Check which v
 
 Dumps the entire D1 database to an SQLite compatible file inside an ArrayBuffer.
 
-* [  JavaScript ](#tab-panel-4118)
-* [  Python ](#tab-panel-4119)
+* [  JavaScript ](#tab-panel-4136)
+* [  Python ](#tab-panel-4137)
 
 JavaScript
 
@@ -560,8 +560,8 @@ return Response(dump, status=200, headers={"Content-Type": "application/octet-st
 
 Starts a D1 session which maintains sequential consistency among queries executed on the returned `D1DatabaseSession` object.
 
-* [  JavaScript ](#tab-panel-4120)
-* [  Python ](#tab-panel-4121)
+* [  JavaScript ](#tab-panel-4138)
+* [  Python ](#tab-panel-4139)
 
 JavaScript
 
@@ -611,8 +611,8 @@ session = self.env.DB.withSession("<parameter>")
 
 Retrieves the latest `bookmark` from the D1 Session.
 
-* [  JavaScript ](#tab-panel-4122)
-* [  Python ](#tab-panel-4123)
+* [  JavaScript ](#tab-panel-4140)
+* [  Python ](#tab-panel-4141)
 
 JavaScript
 

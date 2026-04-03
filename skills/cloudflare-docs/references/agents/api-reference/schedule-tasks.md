@@ -35,8 +35,8 @@ Under the hood, scheduling uses [Durable Object alarms](https://developers.cloud
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2722)
-* [  TypeScript ](#tab-panel-2723)
+* [  JavaScript ](#tab-panel-2738)
+* [  TypeScript ](#tab-panel-2739)
 
 JavaScript
 
@@ -180,8 +180,8 @@ export class ReminderAgent extends Agent {
 
 Pass a number to schedule a task to run after a delay in **seconds**:
 
-* [  JavaScript ](#tab-panel-2704)
-* [  TypeScript ](#tab-panel-2705)
+* [  JavaScript ](#tab-panel-2720)
+* [  TypeScript ](#tab-panel-2721)
 
 JavaScript
 
@@ -236,8 +236,8 @@ await this.schedule(3600, "checkStatus", { orderId: "abc" });
 
 Pass a `Date` object to schedule a task at a specific time:
 
-* [  JavaScript ](#tab-panel-2708)
-* [  TypeScript ](#tab-panel-2709)
+* [  JavaScript ](#tab-panel-2724)
+* [  TypeScript ](#tab-panel-2725)
 
 JavaScript
 
@@ -316,8 +316,8 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 Pass a cron expression string for recurring schedules:
 
-* [  JavaScript ](#tab-panel-2712)
-* [  TypeScript ](#tab-panel-2713)
+* [  JavaScript ](#tab-panel-2728)
+* [  TypeScript ](#tab-panel-2729)
 
 JavaScript
 
@@ -393,8 +393,8 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 **Common patterns:**
 
-* [  JavaScript ](#tab-panel-2706)
-* [  TypeScript ](#tab-panel-2707)
+* [  JavaScript ](#tab-panel-2722)
+* [  TypeScript ](#tab-panel-2723)
 
 JavaScript
 
@@ -450,8 +450,8 @@ TypeScript
 
 Use `scheduleEvery()` to run a task at fixed intervals (in seconds). Unlike cron, intervals support sub-minute precision and arbitrary durations:
 
-* [  JavaScript ](#tab-panel-2710)
-* [  TypeScript ](#tab-panel-2711)
+* [  JavaScript ](#tab-panel-2726)
+* [  TypeScript ](#tab-panel-2727)
 
 JavaScript
 
@@ -508,8 +508,8 @@ await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
 
 If a callback takes longer than the interval, the next execution is skipped (not queued). This prevents runaway resource usage:
 
-* [  JavaScript ](#tab-panel-2716)
-* [  TypeScript ](#tab-panel-2717)
+* [  JavaScript ](#tab-panel-2732)
+* [  TypeScript ](#tab-panel-2733)
 
 JavaScript
 
@@ -580,8 +580,8 @@ Skipping interval schedule abc123: previous execution still running
 
 If the callback throws an error, the interval continues — only that execution fails:
 
-* [  JavaScript ](#tab-panel-2714)
-* [  TypeScript ](#tab-panel-2715)
+* [  JavaScript ](#tab-panel-2730)
+* [  TypeScript ](#tab-panel-2731)
 
 JavaScript
 
@@ -642,8 +642,8 @@ class SyncAgent extends Agent {
 
 Retrieve a scheduled task by its ID:
 
-* [  JavaScript ](#tab-panel-2718)
-* [  TypeScript ](#tab-panel-2719)
+* [  JavaScript ](#tab-panel-2734)
+* [  TypeScript ](#tab-panel-2735)
 
 JavaScript
 
@@ -705,8 +705,8 @@ if (schedule) {
 
 Query scheduled tasks with optional filters:
 
-* [  JavaScript ](#tab-panel-2728)
-* [  TypeScript ](#tab-panel-2729)
+* [  JavaScript ](#tab-panel-2744)
+* [  TypeScript ](#tab-panel-2745)
 
 JavaScript
 
@@ -818,8 +818,8 @@ const upcomingCronJobs = this.getSchedules({
 
 Remove a scheduled task before it executes:
 
-* [  JavaScript ](#tab-panel-2720)
-* [  TypeScript ](#tab-panel-2721)
+* [  JavaScript ](#tab-panel-2736)
+* [  TypeScript ](#tab-panel-2737)
 
 JavaScript
 
@@ -863,8 +863,8 @@ if (cancelled) {
 
 **Example: Cancellable reminders**
 
-* [  JavaScript ](#tab-panel-2740)
-* [  TypeScript ](#tab-panel-2741)
+* [  JavaScript ](#tab-panel-2756)
+* [  TypeScript ](#tab-panel-2757)
 
 JavaScript
 
@@ -1033,8 +1033,8 @@ type Schedule<T> = {
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2724)
-* [  TypeScript ](#tab-panel-2725)
+* [  JavaScript ](#tab-panel-2740)
+* [  TypeScript ](#tab-panel-2741)
 
 JavaScript
 
@@ -1098,8 +1098,8 @@ console.log(schedule);
 
 For dynamic recurring schedules, schedule the next run from within the callback:
 
-* [  JavaScript ](#tab-panel-2738)
-* [  TypeScript ](#tab-panel-2739)
+* [  JavaScript ](#tab-panel-2754)
+* [  TypeScript ](#tab-panel-2755)
 
 JavaScript
 
@@ -1219,8 +1219,8 @@ class PollingAgent extends Agent {
 
 ### Exponential backoff retry
 
-* [  JavaScript ](#tab-panel-2742)
-* [  TypeScript ](#tab-panel-2743)
+* [  JavaScript ](#tab-panel-2758)
+* [  TypeScript ](#tab-panel-2759)
 
 JavaScript
 
@@ -1364,8 +1364,8 @@ class RetryAgent extends Agent {
 
 You can safely call `this.destroy()` from within a scheduled callback:
 
-* [  JavaScript ](#tab-panel-2730)
-* [  TypeScript ](#tab-panel-2731)
+* [  JavaScript ](#tab-panel-2746)
+* [  TypeScript ](#tab-panel-2747)
 
 JavaScript
 
@@ -1445,8 +1445,8 @@ The SDK includes utilities for parsing natural language scheduling requests with
 
 Returns a system prompt for parsing natural language into scheduling parameters:
 
-* [  JavaScript ](#tab-panel-2744)
-* [  TypeScript ](#tab-panel-2745)
+* [  JavaScript ](#tab-panel-2760)
+* [  TypeScript ](#tab-panel-2761)
 
 JavaScript
 
@@ -1642,8 +1642,8 @@ class SmartScheduler extends Agent {
 
 A Zod schema for validating parsed scheduling data. Uses a discriminated union on `when.type` so each variant only contains the fields it needs:
 
-* [  JavaScript ](#tab-panel-2734)
-* [  TypeScript ](#tab-panel-2735)
+* [  JavaScript ](#tab-panel-2750)
+* [  TypeScript ](#tab-panel-2751)
 
 JavaScript
 
@@ -1875,8 +1875,8 @@ Prevent the Durable Object from being evicted due to inactivity by creating a 30
 
 Always call the disposer when the work is done — otherwise the heartbeat continues indefinitely.
 
-* [  JavaScript ](#tab-panel-2732)
-* [  TypeScript ](#tab-panel-2733)
+* [  JavaScript ](#tab-panel-2748)
+* [  TypeScript ](#tab-panel-2749)
 
 JavaScript
 
@@ -1939,8 +1939,8 @@ Run an async function while keeping the Durable Object alive. The heartbeat is a
 
 This is the recommended way to use `keepAlive` — it guarantees cleanup.
 
-* [  JavaScript ](#tab-panel-2726)
-* [  TypeScript ](#tab-panel-2727)
+* [  JavaScript ](#tab-panel-2742)
+* [  TypeScript ](#tab-panel-2743)
 
 JavaScript
 
@@ -1986,8 +1986,8 @@ Durable Objects are evicted after a period of inactivity (typically 70-140 secon
 
 Each `keepAlive()` call returns an independent disposer:
 
-* [  JavaScript ](#tab-panel-2736)
-* [  TypeScript ](#tab-panel-2737)
+* [  JavaScript ](#tab-panel-2752)
+* [  TypeScript ](#tab-panel-2753)
 
 JavaScript
 

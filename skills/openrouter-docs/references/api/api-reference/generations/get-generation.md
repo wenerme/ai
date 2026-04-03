@@ -236,15 +236,11 @@ components:
           format: double
           description: Total cost of the generation in USD
         cache_discount:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Discount applied due to caching
         upstream_inference_cost:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Cost charged by the upstream provider
         created_at:
@@ -254,10 +250,7 @@ components:
           type: string
           description: Model used for the generation
         app_id:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: ID of the app that made the request
         streamed:
           type:
@@ -275,21 +268,15 @@ components:
             - 'null'
           description: Name of the provider that served the request
         latency:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Total latency in milliseconds
         moderation_latency:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Moderation latency in milliseconds
         generation_time:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Time taken for generation in milliseconds
         finish_reason:
@@ -298,70 +285,37 @@ components:
             - 'null'
           description: Reason the generation finished
         tokens_prompt:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of tokens in the prompt
         tokens_completion:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of tokens in the completion
         native_tokens_prompt:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Native prompt tokens as reported by provider
         native_tokens_completion:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Native completion tokens as reported by provider
         native_tokens_completion_images:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Native completion image tokens as reported by provider
         native_tokens_reasoning:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Native reasoning tokens as reported by provider
         native_tokens_cached:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Native cached tokens as reported by provider
         num_media_prompt:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of media items in the prompt
         num_input_audio_prompt:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of audio inputs in the prompt
         num_media_completion:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of media items in the completion
         num_search_results:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of search results included
         origin:
           type: string

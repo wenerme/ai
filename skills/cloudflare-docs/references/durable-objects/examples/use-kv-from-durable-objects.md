@@ -30,8 +30,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-4499)
-* [  wrangler.toml ](#tab-panel-4500)
+* [  wrangler.jsonc ](#tab-panel-4515)
+* [  wrangler.toml ](#tab-panel-4516)
 
 ```
 
@@ -101,8 +101,8 @@ class_name = "YourDurableObject"
 
 ```
 
-* [  TypeScript ](#tab-panel-4497)
-* [  Python ](#tab-panel-4498)
+* [  TypeScript ](#tab-panel-4513)
+* [  Python ](#tab-panel-4514)
 
 TypeScript
 

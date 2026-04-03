@@ -20,8 +20,8 @@ Create an origin rule to change the destination port.
 
 The following origin rule overrides the destination port to `8081` for all requests where the URI path starts with `/team/calendar/`.
 
-* [ Dashboard ](#tab-panel-5991)
-* [ API ](#tab-panel-5992)
+* [ Dashboard ](#tab-panel-6007)
+* [ API ](#tab-panel-6008)
 
 Text in Expression Editor:
 

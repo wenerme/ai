@@ -50,8 +50,8 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-3020)
-* [ Dashboard ](#tab-panel-3021)
+* [ API ](#tab-panel-3036)
+* [ Dashboard ](#tab-panel-3037)
 
 To create a new custom provider using the API:
 
@@ -164,8 +164,8 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-3022)
-* [ Dashboard ](#tab-panel-3023)
+* [ API ](#tab-panel-3038)
+* [ Dashboard ](#tab-panel-3039)
 
 Retrieve all custom providers with optional filtering and pagination:
 
@@ -272,7 +272,7 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-3019)
+* [ API ](#tab-panel-3035)
 
 Retrieve details for a specific custom provider by its ID:
 
@@ -336,8 +336,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ## Update a custom provider
 
-* [ API ](#tab-panel-3024)
-* [ Dashboard ](#tab-panel-3025)
+* [ API ](#tab-panel-3040)
+* [ Dashboard ](#tab-panel-3041)
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
@@ -426,8 +426,8 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-3026)
-* [ Dashboard ](#tab-panel-3027)
+* [ API ](#tab-panel-3042)
+* [ Dashboard ](#tab-panel-3043)
 
 Delete a custom provider:
 

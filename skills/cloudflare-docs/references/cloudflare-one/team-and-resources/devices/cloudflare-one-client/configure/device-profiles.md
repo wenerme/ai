@@ -22,9 +22,9 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-* [ Dashboard ](#tab-panel-3646)
-* [ API ](#tab-panel-3647)
-* [ Terraform (v5) ](#tab-panel-3648)
+* [ Dashboard ](#tab-panel-3662)
+* [ API ](#tab-panel-3663)
+* [ Terraform (v5) ](#tab-panel-3664)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.

@@ -23,9 +23,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-3467)
-* [ API ](#tab-panel-3468)
-* [ Terraform (v5) ](#tab-panel-3469)
+* [ Dashboard ](#tab-panel-3483)
+* [ API ](#tab-panel-3484)
+* [ Terraform (v5) ](#tab-panel-3485)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
@@ -139,8 +139,8 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-3470)  
-   * [ API ](#tab-panel-3471)  
+   * [ Dashboard ](#tab-panel-3486)  
+   * [ API ](#tab-panel-3487)  
    1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
    2. Select a `cloudflared` tunnel and select **Edit**.  
    3. Select **Refresh token**.  

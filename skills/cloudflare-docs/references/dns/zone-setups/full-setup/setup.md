@@ -66,8 +66,8 @@ If your previous provider allows you to add DNSKEY records on the zone apex and 
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-4288)
-* [ API ](#tab-panel-4289)
+* [ Dashboard ](#tab-panel-4304)
+* [ API ](#tab-panel-4305)
 
 In the Cloudflare dashboard, [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
 
@@ -155,8 +155,8 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 ### Get nameserver names
 
-* [ Dashboard ](#tab-panel-4286)
-* [ API ](#tab-panel-4287)
+* [ Dashboard ](#tab-panel-4302)
+* [ API ](#tab-panel-4303)
 
 1. In the Cloudflare dashboard, go to the zone **Overview** page.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)

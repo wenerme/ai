@@ -513,23 +513,23 @@ type TypedToolCall<T extends Tool> = {
 ## Exports
 
 ```typescript
-// Main SDK
-export { OpenRouter } from '@openrouter/sdk';
+// Agent client
+export { OpenRouter } from '@openrouter/agent';
 
 // Tool helpers
-export { tool, ToolType } from '@openrouter/sdk';
+export { tool, ToolType } from '@openrouter/agent';
 
 // Format helpers
-export { fromChatMessages, toChatMessage, fromClaudeMessages, toClaudeMessage } from '@openrouter/sdk';
+export { fromChatMessages, toChatMessage, fromClaudeMessages, toClaudeMessage } from '@openrouter/agent';
 
 // Stop condition helpers
-export { stepCountIs, hasToolCall, maxTokensUsed, maxCost, finishReasonIs } from '@openrouter/sdk';
+export { stepCountIs, hasToolCall, maxTokensUsed, maxCost, finishReasonIs } from '@openrouter/agent';
 
 // Context helpers
 export {
   buildToolExecuteContext,
   ToolContextStore,
-} from '@openrouter/sdk';
+} from '@openrouter/agent';
 
 // Types
 export type {
@@ -549,5 +549,5 @@ export type {
   InferToolInput,
   InferToolOutput,
   InferToolEvent,
-} from '@openrouter/sdk';
+} from '@openrouter/agent';
 ```

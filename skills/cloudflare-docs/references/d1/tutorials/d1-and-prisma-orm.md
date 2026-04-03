@@ -213,8 +213,8 @@ You now have a D1 database in your Cloudflare account with a binding to your Clo
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
 
-* [  wrangler.jsonc ](#tab-panel-4092)
-* [  wrangler.toml ](#tab-panel-4093)
+* [  wrangler.jsonc ](#tab-panel-4110)
+* [  wrangler.toml ](#tab-panel-4111)
 
 ```
 
@@ -348,8 +348,8 @@ model User {
 
 Now, run the following command in your terminal to generate the SQL statement that creates a `User` table equivalent to the `User` model above:
 
-* [ Prisma (v7) ](#tab-panel-4090)
-* [ Prisma (v6) ](#tab-panel-4091)
+* [ Prisma (v7) ](#tab-panel-4108)
+* [ Prisma (v6) ](#tab-panel-4109)
 
 Terminal window
 
@@ -487,8 +487,8 @@ To query your database from the Worker using Prisma ORM, you need to:
 
 Open `src/index.ts` and replace the entire content with the following:
 
-* [  JavaScript ](#tab-panel-4094)
-* [  TypeScript ](#tab-panel-4095)
+* [  JavaScript ](#tab-panel-4112)
+* [  TypeScript ](#tab-panel-4113)
 
 JavaScript
 

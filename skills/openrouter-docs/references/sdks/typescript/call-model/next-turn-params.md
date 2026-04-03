@@ -12,7 +12,7 @@ With `nextTurnParams`, tools can modify any `callModel` parameter for the next t
 ## Basic Example
 
 ```typescript
-import { tool } from '@openrouter/sdk';
+import { tool } from '@openrouter/agent';
 import { z } from 'zod';
 
 const expertModeTool = tool({
@@ -48,7 +48,7 @@ EXPERT MODE ENABLED for ${params.domain}:
 This example shows how to recreate Claude Code's skills system as a single encapsulated tool:
 
 ```typescript
-import { tool } from '@openrouter/sdk';
+import { tool } from '@openrouter/agent';
 import { readFileSync } from 'fs';
 import { z } from 'zod';
 

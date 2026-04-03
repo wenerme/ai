@@ -163,6 +163,7 @@ components:
         - GPT
         - Claude
         - Gemini
+        - Gemma
         - Grok
         - Cohere
         - Nova
@@ -258,16 +259,10 @@ components:
       type: object
       properties:
         context_length:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Context length from the top provider
         max_completion_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Maximum completion tokens from the top provider
         is_moderated:
           type: boolean
@@ -372,8 +367,7 @@ components:
           type: string
           description: Display name of the model
         created:
-          type: number
-          format: double
+          type: integer
           description: Unix timestamp of when the model was created
         description:
           type: string
@@ -381,10 +375,7 @@ components:
         pricing:
           $ref: '#/components/schemas/PublicPricing'
         context_length:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Maximum context length in tokens
         architecture:
           $ref: '#/components/schemas/ModelArchitecture'

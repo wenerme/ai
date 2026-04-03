@@ -22,8 +22,8 @@ When running `wrangler deploy`, if you set the `image` attribute in your [Wrangl
 
 Just provide the path to your Dockerfile:
 
-* [  wrangler.jsonc ](#tab-panel-4005)
-* [  wrangler.toml ](#tab-panel-4006)
+* [  wrangler.jsonc ](#tab-panel-4023)
+* [  wrangler.toml ](#tab-panel-4024)
 
 ```
 
@@ -77,8 +77,8 @@ To use a public Docker Hub image, set `image` to a fully qualified Docker Hub im
 
 For example:
 
-* [  wrangler.jsonc ](#tab-panel-4007)
-* [  wrangler.toml ](#tab-panel-4008)
+* [  wrangler.jsonc ](#tab-panel-4025)
+* [  wrangler.toml ](#tab-panel-4026)
 
 ```
 
@@ -262,8 +262,8 @@ printf '%s' "$AWS_SECRET_ACCESS_KEY" | npx wrangler containers registries config
 
 After you configure the registry, use the fully qualified Amazon ECR image reference in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4009)
-* [  wrangler.toml ](#tab-panel-4010)
+* [  wrangler.jsonc ](#tab-panel-4027)
+* [  wrangler.toml ](#tab-panel-4028)
 
 ```
 
@@ -342,8 +342,8 @@ pnpm wrangler containers build -p -t <TAG> .
 
 This will output an image registry URI that you can then use in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4011)
-* [  wrangler.toml ](#tab-panel-4012)
+* [  wrangler.jsonc ](#tab-panel-4029)
+* [  wrangler.toml ](#tab-panel-4030)
 
 ```
 

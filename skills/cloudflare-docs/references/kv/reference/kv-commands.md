@@ -32,9 +32,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Create a new namespace
 
-* [  npm ](#tab-panel-5009)
-* [  pnpm ](#tab-panel-5010)
-* [  yarn ](#tab-panel-5011)
+* [  npm ](#tab-panel-5025)
+* [  pnpm ](#tab-panel-5026)
+* [  yarn ](#tab-panel-5027)
 
 Terminal window
 
@@ -95,9 +95,9 @@ Automatically provision draft bindings with new resources
 
 Output a list of all KV namespaces associated with your account id
 
-* [  npm ](#tab-panel-5012)
-* [  pnpm ](#tab-panel-5013)
-* [  yarn ](#tab-panel-5014)
+* [  npm ](#tab-panel-5028)
+* [  pnpm ](#tab-panel-5029)
+* [  yarn ](#tab-panel-5030)
 
 Terminal window
 
@@ -147,9 +147,9 @@ Automatically provision draft bindings with new resources
 
 Delete a given namespace.
 
-* [  npm ](#tab-panel-5015)
-* [  pnpm ](#tab-panel-5016)
-* [  yarn ](#tab-panel-5017)
+* [  npm ](#tab-panel-5031)
+* [  pnpm ](#tab-panel-5032)
+* [  yarn ](#tab-panel-5033)
 
 Terminal window
 
@@ -210,9 +210,9 @@ Automatically provision draft bindings with new resources
 
 Rename a KV namespace
 
-* [  npm ](#tab-panel-5018)
-* [  pnpm ](#tab-panel-5019)
-* [  yarn ](#tab-panel-5020)
+* [  npm ](#tab-panel-5034)
+* [  pnpm ](#tab-panel-5035)
+* [  yarn ](#tab-panel-5036)
 
 Terminal window
 
@@ -281,9 +281,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Write a single key/value pair to the given namespace
 
-* [  npm ](#tab-panel-5021)
-* [  pnpm ](#tab-panel-5022)
-* [  yarn ](#tab-panel-5023)
+* [  npm ](#tab-panel-5037)
+* [  pnpm ](#tab-panel-5038)
+* [  yarn ](#tab-panel-5039)
 
 Terminal window
 
@@ -358,9 +358,9 @@ Automatically provision draft bindings with new resources
 
 Output a list of all keys in a given namespace
 
-* [  npm ](#tab-panel-5024)
-* [  pnpm ](#tab-panel-5025)
-* [  yarn ](#tab-panel-5026)
+* [  npm ](#tab-panel-5040)
+* [  pnpm ](#tab-panel-5041)
+* [  yarn ](#tab-panel-5042)
 
 Terminal window
 
@@ -425,9 +425,9 @@ Automatically provision draft bindings with new resources
 
 Read a single value by key from the given namespace
 
-* [  npm ](#tab-panel-5027)
-* [  pnpm ](#tab-panel-5028)
-* [  yarn ](#tab-panel-5029)
+* [  npm ](#tab-panel-5043)
+* [  pnpm ](#tab-panel-5044)
+* [  yarn ](#tab-panel-5045)
 
 Terminal window
 
@@ -494,9 +494,9 @@ Automatically provision draft bindings with new resources
 
 Remove a single key value pair from the given namespace
 
-* [  npm ](#tab-panel-5030)
-* [  pnpm ](#tab-panel-5031)
-* [  yarn ](#tab-panel-5032)
+* [  npm ](#tab-panel-5046)
+* [  pnpm ](#tab-panel-5047)
+* [  yarn ](#tab-panel-5048)
 
 Terminal window
 
@@ -573,9 +573,9 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 Gets multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-5033)
-* [  pnpm ](#tab-panel-5034)
-* [  yarn ](#tab-panel-5035)
+* [  npm ](#tab-panel-5049)
+* [  pnpm ](#tab-panel-5050)
+* [  yarn ](#tab-panel-5051)
 
 Terminal window
 
@@ -640,9 +640,9 @@ Automatically provision draft bindings with new resources
 
 Upload multiple key-value pairs to a namespace
 
-* [  npm ](#tab-panel-5036)
-* [  pnpm ](#tab-panel-5037)
-* [  yarn ](#tab-panel-5038)
+* [  npm ](#tab-panel-5052)
+* [  pnpm ](#tab-panel-5053)
+* [  yarn ](#tab-panel-5054)
 
 Terminal window
 
@@ -713,9 +713,9 @@ Automatically provision draft bindings with new resources
 
 Delete multiple key-value pairs from a namespace
 
-* [  npm ](#tab-panel-5039)
-* [  pnpm ](#tab-panel-5040)
-* [  yarn ](#tab-panel-5041)
+* [  npm ](#tab-panel-5055)
+* [  pnpm ](#tab-panel-5056)
+* [  yarn ](#tab-panel-5057)
 
 Terminal window
 

@@ -28,8 +28,8 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-5417)
-* [  TypeScript ](#tab-panel-5418)
+* [  JavaScript ](#tab-panel-5433)
+* [  TypeScript ](#tab-panel-5434)
 
 JavaScript
 

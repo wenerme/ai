@@ -91,8 +91,8 @@ You should always create database clients inside your request handlers (`fetch`,
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
-* [  JavaScript ](#tab-panel-4622)
-* [  TypeScript ](#tab-panel-4623)
+* [  JavaScript ](#tab-panel-4638)
+* [  TypeScript ](#tab-panel-4639)
 
 index.js
 

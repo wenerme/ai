@@ -9,8 +9,8 @@ Copy page
 
 # WARP diagnostic logs
 
-* [ Watch this episode ](#tab-panel-5315)
-* [ Series overview ](#tab-panel-5316)
+* [ Watch this episode ](#tab-panel-5331)
+* [ Series overview ](#tab-panel-5332)
 
 In this more advanced episode, we explain how to use warp-diag files to identify and resolve connection issues with the WARP client. You will learn how to locate and interpret three key files: `warp-status`, `warp-settings`, and `daemon.log`. The video also provides troubleshooting tips including specific keyword searches and guidance on how to cross-reference logs to identify a bigger picture of the problem.
 

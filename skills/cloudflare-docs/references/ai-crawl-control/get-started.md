@@ -36,8 +36,8 @@ This guide instructs you on how to:
 
 ## 2\. Block specific AI crawlers
 
-* [ All plans ](#tab-panel-3017)
-* [ Paid plans ](#tab-panel-3018)
+* [ All plans ](#tab-panel-3033)
+* [ Paid plans ](#tab-panel-3034)
 
 To block specific AI crawlers:
 
@@ -65,7 +65,7 @@ You can also create more complex rules when taking action on AI crawlers, using 
 
 ## 3\. Explore detailed metrics
 
-* [ All plans ](#tab-panel-3016)
+* [ All plans ](#tab-panel-3032)
 
 For more detailed analytics, use the **Metrics** tab.
 

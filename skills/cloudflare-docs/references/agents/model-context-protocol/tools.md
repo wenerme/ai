@@ -28,8 +28,8 @@ Tools are defined using the `@modelcontextprotocol/sdk` package. The Agents SDK 
 
 Use `server.tool()` to register a tool on an `McpServer` instance. Each tool has a name, a description (used by the LLM to decide when to call it), an input schema defined with [Zod ↗](https://zod.dev), and a handler function.
 
-* [  JavaScript ](#tab-panel-2986)
-* [  TypeScript ](#tab-panel-2987)
+* [  JavaScript ](#tab-panel-3002)
+* [  TypeScript ](#tab-panel-3003)
 
 JavaScript
 
@@ -113,8 +113,8 @@ The tool handler receives the validated input and must return an object with a `
 
 Tool results are returned as an array of content parts. The most common type is `text`, but you can also return images and embedded resources.
 
-* [  JavaScript ](#tab-panel-2988)
-* [  TypeScript ](#tab-panel-2989)
+* [  JavaScript ](#tab-panel-3004)
+* [  TypeScript ](#tab-panel-3005)
 
 JavaScript
 
@@ -216,8 +216,8 @@ The `description` parameter is critical — it is what the LLM reads to decide w
 
 Tool inputs are defined as Zod schemas and validated automatically before the handler runs. Use Zod's `.describe()` method to give the LLM context about each parameter.
 
-* [  JavaScript ](#tab-panel-2992)
-* [  TypeScript ](#tab-panel-2993)
+* [  JavaScript ](#tab-panel-3008)
+* [  TypeScript ](#tab-panel-3009)
 
 JavaScript
 
@@ -329,8 +329,8 @@ server.tool(
 
 For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/):
 
-* [  JavaScript ](#tab-panel-2990)
-* [  TypeScript ](#tab-panel-2991)
+* [  JavaScript ](#tab-panel-3006)
+* [  TypeScript ](#tab-panel-3007)
 
 JavaScript
 
@@ -422,8 +422,8 @@ export default {
 
 For stateful MCP servers, define tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/). Tools have access to the agent instance via `this`, which means they can read and write state.
 
-* [  JavaScript ](#tab-panel-2994)
-* [  TypeScript ](#tab-panel-2995)
+* [  JavaScript ](#tab-panel-3010)
+* [  TypeScript ](#tab-panel-3011)
 
 JavaScript
 

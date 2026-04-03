@@ -54,8 +54,8 @@ The template project contains the following files and directories:
 ## Customize the `wrangler.jsonc` file:
 
 * Change the `name` property to the name of your project:  
-   * [  wrangler.jsonc ](#tab-panel-7101)  
-   * [  wrangler.toml ](#tab-panel-7102)  
+   * [  wrangler.jsonc ](#tab-panel-7121)  
+   * [  wrangler.toml ](#tab-panel-7122)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -67,8 +67,8 @@ The template project contains the following files and directories:
 name = "my-site"  
 ```
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:  
-   * [  wrangler.jsonc ](#tab-panel-7103)  
-   * [  wrangler.toml ](#tab-panel-7104)  
+   * [  wrangler.jsonc ](#tab-panel-7123)  
+   * [  wrangler.toml ](#tab-panel-7124)  
 ```  
 {  
   "compatibility_date": "yyyy-mm-dd"  
@@ -78,8 +78,8 @@ name = "my-site"
 compatibility_date = "yyyy-mm-dd"  
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:  
-   * [  wrangler.jsonc ](#tab-panel-7105)  
-   * [  wrangler.toml ](#tab-panel-7106)  
+   * [  wrangler.jsonc ](#tab-panel-7125)  
+   * [  wrangler.toml ](#tab-panel-7126)  
 ```  
 {  
   "route": "https://example.com/*"  

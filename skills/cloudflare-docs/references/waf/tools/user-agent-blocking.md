@@ -42,9 +42,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-6887)
-* [ Old dashboard ](#tab-panel-6888)
-* [ API ](#tab-panel-6889)
+* [  New dashboard ](#tab-panel-6903)
+* [ Old dashboard ](#tab-panel-6904)
+* [ API ](#tab-panel-6905)
 
 Note
 

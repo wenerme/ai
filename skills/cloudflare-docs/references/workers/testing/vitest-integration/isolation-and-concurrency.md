@@ -51,8 +51,8 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-7726)
-* [  wrangler.toml ](#tab-panel-7727)
+* [  wrangler.jsonc ](#tab-panel-7746)
+* [  wrangler.toml ](#tab-panel-7747)
 
 ```
 

@@ -154,8 +154,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-3901)
-* [ API ](#tab-panel-3902)
+* [ Dashboard ](#tab-panel-3919)
+* [ API ](#tab-panel-3920)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -270,8 +270,8 @@ cat /etc/ssh/sshd_config
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-3899)
-* [ CentOS/RHEL ](#tab-panel-3900)
+* [ Debian/Ubuntu ](#tab-panel-3917)
+* [ CentOS/RHEL ](#tab-panel-3918)
 
 For Debian/Ubuntu:
 

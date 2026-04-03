@@ -83,8 +83,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-3501)
-* [ Terraform (v5) ](#tab-panel-3502)
+* [ Dashboard ](#tab-panel-3517)
+* [ Terraform (v5) ](#tab-panel-3518)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -252,7 +252,7 @@ Name:  wiki.internal.local
 Address: 100.80.200.48  
 ```  
 The query should resolve using [WARP's DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) and return a Gateway initial resolved IP. If the query fails to resolve or returns a different IP, check your [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) configuration and [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/).
-2. **Check Gateway logs** \- Review your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/) to see if the connection is being blocked by a policy.
+2. **Check Gateway logs** \- Review your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) to see if the connection is being blocked by a policy.
 3. **Verify tunnel status** \- Confirm that your tunnel is healthy and connected by checking [tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/).
 4. **Test connectivity to initial resolved IP** \- When you connect to the application using its private hostname, the device should make a connection to the initial resolved IP:  
 Terminal window  

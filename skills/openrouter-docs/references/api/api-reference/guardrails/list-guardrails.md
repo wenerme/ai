@@ -89,9 +89,7 @@ components:
             - 'null'
           description: Description of the guardrail
         limit_usd:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Spending limit in USD
         reset_interval:
@@ -149,8 +147,7 @@ components:
               #/components/schemas/GuardrailsGetResponsesContentApplicationJsonSchemaDataItems
           description: List of guardrails
         total_count:
-          type: number
-          format: double
+          type: integer
           description: Total number of guardrails
       required:
         - data

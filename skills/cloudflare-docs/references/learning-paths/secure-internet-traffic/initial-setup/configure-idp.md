@@ -24,8 +24,8 @@ Some admins choose to test by authenticating with a [one-time PIN (OTP)](https:/
 
 To add an identity provider:
 
-* [ Dashboard ](#tab-panel-5306)
-* [ Terraform (v5) ](#tab-panel-5307)
+* [ Dashboard ](#tab-panel-5322)
+* [ Terraform (v5) ](#tab-panel-5323)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.

@@ -81,8 +81,8 @@ You must create an AI binding for your Worker to connect to Workers AI. Bindings
 
 To bind Workers AI to your Worker, add the following to the end of your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-3042)
-* [  wrangler.toml ](#tab-panel-3043)
+* [  wrangler.jsonc ](#tab-panel-3058)
+* [  wrangler.toml ](#tab-panel-3059)
 
 ```
 

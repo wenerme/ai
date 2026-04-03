@@ -35,8 +35,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3056)
-* [ Unauthenticated Gateway ](#tab-panel-3057)
+* [ With Authenticated Gateway ](#tab-panel-3072)
+* [ Unauthenticated Gateway ](#tab-panel-3073)
 
 Terminal window
 
@@ -133,8 +133,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3058)
-* [ Unauthenticated Gateway ](#tab-panel-3059)
+* [ With Authenticated Gateway ](#tab-panel-3074)
+* [ Unauthenticated Gateway ](#tab-panel-3075)
 
 ```
 

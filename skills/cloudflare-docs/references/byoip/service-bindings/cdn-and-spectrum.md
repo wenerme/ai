@@ -217,8 +217,8 @@ Note
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-3280)
-* [ API ](#tab-panel-3281)
+* [ Dashboard ](#tab-panel-3296)
+* [ API ](#tab-panel-3297)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -240,8 +240,8 @@ Note
 
 As you create the necessary DNS records, [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) can help making sure that you have SSL/TLS certificates in place for all your hostnames.
 
-* [ Dashboard ](#tab-panel-3282)
-* [ API ](#tab-panel-3283)
+* [ Dashboard ](#tab-panel-3298)
+* [ API ](#tab-panel-3299)
 
 To create a DNS record in the dashboard:
 

@@ -37,8 +37,8 @@ HTTP/2 is enabled by default for all plans (though it does require an [SSL certi
 
 Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
 
-* [ Dashboard ](#tab-panel-6507)
-* [ API ](#tab-panel-6508)
+* [ Dashboard ](#tab-panel-6523)
+* [ API ](#tab-panel-6524)
 
 To disable **HTTP/2** in the dashboard:
 

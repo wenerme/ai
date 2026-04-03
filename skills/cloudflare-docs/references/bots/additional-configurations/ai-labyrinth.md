@@ -26,8 +26,8 @@ These links do not impact your search engine optimization (SEO) or your website'
 
 To enable [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth):
 
-* [  New dashboard ](#tab-panel-3178)
-* [ Old dashboard ](#tab-panel-3179)
+* [  New dashboard ](#tab-panel-3194)
+* [ Old dashboard ](#tab-panel-3195)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

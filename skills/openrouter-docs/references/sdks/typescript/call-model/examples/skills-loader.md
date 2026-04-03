@@ -19,7 +19,7 @@ mkdir -p ~/.claude/skills/code-review
 ## Basic Skills Tool
 
 ```typescript
-import { OpenRouter, tool } from '@openrouter/sdk';
+import { OpenRouter, tool } from '@openrouter/agent';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import path from 'path';
 import { z } from 'zod';
@@ -388,7 +388,7 @@ const skillDiscoveryTool = tool({
 Putting it all together:
 
 ```typescript
-import { OpenRouter, tool, stepCountIs } from '@openrouter/sdk';
+import { OpenRouter, tool, stepCountIs } from '@openrouter/agent';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import path from 'path';
 import { z } from 'zod';

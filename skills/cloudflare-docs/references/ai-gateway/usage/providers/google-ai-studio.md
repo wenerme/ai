@@ -39,8 +39,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3060)
-* [ Unauthenticated Gateway ](#tab-panel-3061)
+* [ With Authenticated Gateway ](#tab-panel-3076)
+* [ Unauthenticated Gateway ](#tab-panel-3077)
 
 Terminal window
 
@@ -151,8 +151,8 @@ If you are using the `@google/genai` package, you can set your endpoint like thi
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3062)
-* [ Unauthenticated Gateway ](#tab-panel-3063)
+* [ With Authenticated Gateway ](#tab-panel-3078)
+* [ Unauthenticated Gateway ](#tab-panel-3079)
 
 ```
 

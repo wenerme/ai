@@ -16,14 +16,14 @@ Copy page
 
 # Create a custom rule in the dashboard
 
-* [  New dashboard ](#tab-panel-6771)
-* [ Old dashboard ](#tab-panel-6772)
+* [  New dashboard ](#tab-panel-6787)
+* [ Old dashboard ](#tab-panel-6788)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 3. Enter a descriptive name for the rule in **Rule name**.  
-![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/firewall-custom-rule-create.D_QlkxnD_1R2B5e.webp)
+![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/firewall-custom-rule-create.tVXiVklq_1Tgdjc.webp)
 4. Under **When incoming requests match**, use the **Field** drop-down list to choose an HTTP property. For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value** using the operator selected in **Operator**.
 5. Under **Then take action**, select the rule action in the **Choose action** dropdown. For example, selecting _Block_ tells Cloudflare to refuse requests that match the conditions you specified.
 6. (Optional) If you selected the _Block_ action, you can [configure a custom response](#configure-a-custom-response-for-blocked-requests).
@@ -33,7 +33,7 @@ Copy page
 2. Go to **Security** \> **WAF** \> **Custom rules**.
 3. To create a new empty rule, select **Create rule**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 4. Enter a descriptive name for the rule in **Rule name**.  
-![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/firewall-custom-rule-create.D_QlkxnD_1R2B5e.webp)
+![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/firewall-custom-rule-create.tVXiVklq_1Tgdjc.webp)
 5. Under **When incoming requests match**, use the **Field** drop-down list to choose an HTTP property. For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value** using the operator selected in **Operator**.
 6. Under **Then take action**, select the rule action in the **Choose action** dropdown. For example, selecting _Block_ tells Cloudflare to refuse requests that match the conditions you specified.
 7. (Optional) If you selected the _Block_ action, you can [configure a custom response](#configure-a-custom-response-for-blocked-requests).

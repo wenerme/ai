@@ -57,8 +57,7 @@ components:
       type: object
       properties:
         requests:
-          type: number
-          format: double
+          type: integer
           description: Number of requests allowed per interval
         interval:
           type: string
@@ -79,9 +78,7 @@ components:
           type: string
           description: Human-readable label for the API key
         limit:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Spending limit for the API key in USD
         usage:
@@ -130,9 +127,7 @@ components:
           type: boolean
           description: Whether this is a management key
         limit_remaining:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Remaining spending limit in USD
         limit_reset:

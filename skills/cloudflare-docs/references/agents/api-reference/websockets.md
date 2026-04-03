@@ -35,8 +35,8 @@ Agents have several lifecycle hooks that fire at different points:
 
 `onStart()` is called once when the agent first starts, before any connections are established:
 
-* [  JavaScript ](#tab-panel-2804)
-* [  TypeScript ](#tab-panel-2805)
+* [  JavaScript ](#tab-panel-2820)
+* [  TypeScript ](#tab-panel-2821)
 
 JavaScript
 
@@ -116,8 +116,8 @@ export class MyAgent extends Agent {
 
 Define `onConnect` and `onMessage` methods on your Agent to accept WebSocket connections:
 
-* [  JavaScript ](#tab-panel-2810)
-* [  TypeScript ](#tab-panel-2811)
+* [  JavaScript ](#tab-panel-2826)
+* [  TypeScript ](#tab-panel-2827)
 
 JavaScript
 
@@ -245,8 +245,8 @@ Each connected client has a unique `Connection` object:
 
 Store data specific to each connection (user info, preferences, etc.):
 
-* [  JavaScript ](#tab-panel-2814)
-* [  TypeScript ](#tab-panel-2815)
+* [  JavaScript ](#tab-panel-2830)
+* [  TypeScript ](#tab-panel-2831)
 
 JavaScript
 
@@ -343,8 +343,8 @@ export class ChatAgent extends Agent {
 
 Use `this.broadcast()` to send a message to all connected clients:
 
-* [  JavaScript ](#tab-panel-2808)
-* [  TypeScript ](#tab-panel-2809)
+* [  JavaScript ](#tab-panel-2824)
+* [  TypeScript ](#tab-panel-2825)
 
 JavaScript
 
@@ -430,8 +430,8 @@ export class ChatAgent extends Agent {
 
 Pass an array of connection IDs to exclude from the broadcast:
 
-* [  JavaScript ](#tab-panel-2802)
-* [  TypeScript ](#tab-panel-2803)
+* [  JavaScript ](#tab-panel-2818)
+* [  TypeScript ](#tab-panel-2819)
 
 JavaScript
 
@@ -471,8 +471,8 @@ this.broadcast(
 
 Tag connections for easy filtering. Override `getConnectionTags()` to assign tags when a connection is established:
 
-* [  JavaScript ](#tab-panel-2816)
-* [  TypeScript ](#tab-panel-2817)
+* [  JavaScript ](#tab-panel-2832)
+* [  TypeScript ](#tab-panel-2833)
 
 JavaScript
 
@@ -571,8 +571,8 @@ export class ChatAgent extends Agent {
 
 Messages can be strings or binary (`ArrayBuffer` / `ArrayBufferView`):
 
-* [  JavaScript ](#tab-panel-2812)
-* [  TypeScript ](#tab-panel-2813)
+* [  JavaScript ](#tab-panel-2828)
+* [  TypeScript ](#tab-panel-2829)
 
 JavaScript
 
@@ -660,8 +660,8 @@ Agents automatically send JSON text frames (identity, state, MCP servers) to eve
 
 Handle connection errors and disconnections:
 
-* [  JavaScript ](#tab-panel-2820)
-* [  TypeScript ](#tab-panel-2821)
+* [  JavaScript ](#tab-panel-2836)
+* [  TypeScript ](#tab-panel-2837)
 
 JavaScript
 
@@ -771,8 +771,8 @@ Agents support hibernation — they can sleep when inactive and wake when needed
 
 Hibernation is enabled by default. To disable:
 
-* [  JavaScript ](#tab-panel-2806)
-* [  TypeScript ](#tab-panel-2807)
+* [  JavaScript ](#tab-panel-2822)
+* [  TypeScript ](#tab-panel-2823)
 
 JavaScript
 
@@ -819,8 +819,8 @@ export class AlwaysOnAgent extends Agent {
 
 Store important data in `this.state` or SQLite, not in class properties:
 
-* [  JavaScript ](#tab-panel-2818)
-* [  TypeScript ](#tab-panel-2819)
+* [  JavaScript ](#tab-panel-2834)
+* [  TypeScript ](#tab-panel-2835)
 
 JavaScript
 
@@ -892,8 +892,8 @@ export class MyAgent extends Agent<Env, { counter: number }> {
 
 Track who is online using per-connection state. Connection state is automatically cleaned up when users disconnect:
 
-* [  JavaScript ](#tab-panel-2824)
-* [  TypeScript ](#tab-panel-2825)
+* [  JavaScript ](#tab-panel-2840)
+* [  TypeScript ](#tab-panel-2841)
 
 JavaScript
 
@@ -1148,8 +1148,8 @@ export class PresenceAgent extends Agent {
 
 ### Chat room with broadcast
 
-* [  JavaScript ](#tab-panel-2822)
-* [  TypeScript ](#tab-panel-2823)
+* [  JavaScript ](#tab-panel-2838)
+* [  TypeScript ](#tab-panel-2839)
 
 JavaScript
 

@@ -241,8 +241,8 @@ export default {
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-5644)
-* [  wrangler.toml ](#tab-panel-5645)
+* [  wrangler.jsonc ](#tab-panel-5660)
+* [  wrangler.toml ](#tab-panel-5661)
 
 ```
 

@@ -30,9 +30,9 @@ Note
 
 WebSocket Hibernation is unavailable for outgoing WebSocket use cases. Hibernation is only supported when the Durable Object acts as a server. For use cases where outgoing WebSockets are required, refer to [Write a WebSocket client](https://developers.cloudflare.com/workers/examples/websockets/#write-a-websocket-client).
 
-* [  JavaScript ](#tab-panel-4503)
-* [  TypeScript ](#tab-panel-4504)
-* [  Python ](#tab-panel-4505)
+* [  JavaScript ](#tab-panel-4519)
+* [  TypeScript ](#tab-panel-4520)
+* [  Python ](#tab-panel-4521)
 
 JavaScript
 
@@ -746,8 +746,8 @@ class WebSocketHibernationServer(DurableObject):
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4501)
-* [  wrangler.toml ](#tab-panel-4502)
+* [  wrangler.jsonc ](#tab-panel-4517)
+* [  wrangler.toml ](#tab-panel-4518)
 
 ```
 

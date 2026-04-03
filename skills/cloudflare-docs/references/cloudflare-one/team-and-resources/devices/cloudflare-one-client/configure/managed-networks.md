@@ -165,8 +165,8 @@ The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https:
 
 The SHA-256 fingerprint is only required if your TLS endpoint uses a self-signed certificate.
 
-* [ Local certificate ](#tab-panel-3653)
-* [ Remote server ](#tab-panel-3654)
+* [ Local certificate ](#tab-panel-3669)
+* [ Remote server ](#tab-panel-3670)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -210,8 +210,8 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ## 3\. Add managed network to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3649)
-* [ Terraform (v5) ](#tab-panel-3650)
+* [ Dashboard ](#tab-panel-3665)
+* [ Terraform (v5) ](#tab-panel-3666)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
@@ -245,8 +245,8 @@ If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloud
 
 ## 4\. Configure device profile
 
-* [ Dashboard ](#tab-panel-3651)
-* [ Terraform (v5) ](#tab-panel-3652)
+* [ Dashboard ](#tab-panel-3667)
+* [ Terraform (v5) ](#tab-panel-3668)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.

@@ -22,8 +22,8 @@ In the following sections, we will give you some details about how to configure 
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that processing of a Pages project occurs only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-4200)
-* [ API ](#tab-panel-4201)
+* [ Dashboard ](#tab-panel-4218)
+* [ API ](#tab-panel-4219)
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)

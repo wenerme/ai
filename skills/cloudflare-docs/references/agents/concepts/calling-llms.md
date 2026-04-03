@@ -28,8 +28,8 @@ This page covers the patterns that become possible when your LLM calls happen in
 
 Every Agent has a built-in [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) and key-value state. Instead of passing an entire conversation history from the client on every request, the Agent stores it and builds prompts from its own storage.
 
-* [  JavaScript ](#tab-panel-2826)
-* [  TypeScript ](#tab-panel-2827)
+* [  JavaScript ](#tab-panel-2842)
+* [  TypeScript ](#tab-panel-2843)
 
 JavaScript
 
@@ -119,8 +119,8 @@ Reasoning models like DeepSeek R1 or GLM-4 can take 30 seconds to several minute
 
 An Agent keeps running after the client disconnects. When the response arrives, the Agent can persist it to state and deliver it when the client reconnects — even hours or days later.
 
-* [  JavaScript ](#tab-panel-2828)
-* [  TypeScript ](#tab-panel-2829)
+* [  JavaScript ](#tab-panel-2844)
+* [  TypeScript ](#tab-panel-2845)
 
 JavaScript
 
@@ -222,8 +222,8 @@ With [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-a
 
 Agents do not need a user request to call a model. You can schedule model calls to run in the background — for nightly summarization, periodic classification, monitoring, or any task that should happen without human interaction.
 
-* [  JavaScript ](#tab-panel-2830)
-* [  TypeScript ](#tab-panel-2831)
+* [  JavaScript ](#tab-panel-2846)
+* [  TypeScript ](#tab-panel-2847)
 
 JavaScript
 
@@ -329,8 +329,8 @@ export class DigestAgent extends Agent<Env> {
 
 Because an Agent maintains state across calls, you can chain multiple models in a single method — using a fast model for classification, a reasoning model for planning, and an embedding model for retrieval — without losing context between steps.
 
-* [  JavaScript ](#tab-panel-2834)
-* [  TypeScript ](#tab-panel-2835)
+* [  JavaScript ](#tab-panel-2850)
+* [  TypeScript ](#tab-panel-2851)
 
 JavaScript
 
@@ -460,8 +460,8 @@ Each intermediate result stays in the Agent's memory for the duration of the met
 
 Persistent storage means you can cache model responses and avoid redundant calls. This is especially useful for expensive operations like embeddings or long reasoning chains.
 
-* [  JavaScript ](#tab-panel-2832)
-* [  TypeScript ](#tab-panel-2833)
+* [  JavaScript ](#tab-panel-2848)
+* [  TypeScript ](#tab-panel-2849)
 
 JavaScript
 

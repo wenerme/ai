@@ -39,8 +39,8 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 ## Example Wrangler file
 
-* [  wrangler.jsonc ](#tab-panel-5452)
-* [  wrangler.toml ](#tab-panel-5453)
+* [  wrangler.jsonc ](#tab-panel-5468)
+* [  wrangler.toml ](#tab-panel-5469)
 
 ```
 
@@ -141,8 +141,8 @@ Before you could use the Wrangler configuration file to define your preview and 
 
 If you have been using a Wrangler configuration file for local development, you may already have a file in your Pages project that looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-5448)
-* [  wrangler.toml ](#tab-panel-5449)
+* [  wrangler.jsonc ](#tab-panel-5464)
+* [  wrangler.toml ](#tab-panel-5465)
 
 ```
 
@@ -193,9 +193,9 @@ You can continue to use your Wrangler file for local development without migrati
 
 If you have an existing Pages project with configuration set up via the Cloudflare dashboard and do not have an existing Wrangler file in your Project, run the `wrangler pages download config` command in your Pages project directory. The `wrangler pages download config` command will download your existing Cloudflare dashboard configuration and generate a valid Wrangler file in your Pages project directory.
 
-* [ npm ](#tab-panel-5445)
-* [ yarn ](#tab-panel-5446)
-* [ pnpm ](#tab-panel-5447)
+* [ npm ](#tab-panel-5461)
+* [ yarn ](#tab-panel-5462)
+* [ pnpm ](#tab-panel-5463)
 
 Terminal window
 
@@ -251,8 +251,8 @@ With a Wrangler configuration file, you can quickly set configuration across you
 
 The Wrangler configuration file applies locally when using `wrangler pages dev`. This means that you can test out configuration changes quickly without a need to login to the Cloudflare dashboard. Refer to the following config file for an example:
 
-* [  wrangler.jsonc ](#tab-panel-5450)
-* [  wrangler.toml ](#tab-panel-5451)
+* [  wrangler.jsonc ](#tab-panel-5466)
+* [  wrangler.toml ](#tab-panel-5467)
 
 ```
 
@@ -367,8 +367,8 @@ Unlike [Workers Environments](https://developers.cloudflare.com/workers/wrangler
 
 Refer to the following Wrangler configuration file for an example of how to override preview deployment configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5454)
-* [  wrangler.toml ](#tab-panel-5455)
+* [  wrangler.jsonc ](#tab-panel-5470)
+* [  wrangler.toml ](#tab-panel-5471)
 
 ```
 
@@ -468,8 +468,8 @@ If you deployed this file via `wrangler pages deploy`, `name`, `pages_build_outp
 
 If you wanted to have configuration values apply to local and preview, but override production, your file would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-5458)
-* [  wrangler.toml ](#tab-panel-5459)
+* [  wrangler.jsonc ](#tab-panel-5474)
+* [  wrangler.toml ](#tab-panel-5475)
 
 ```
 
@@ -567,8 +567,8 @@ API_KEY = "8901234bfgd"
 
 You can always be explicit and override both preview and production:
 
-* [  wrangler.jsonc ](#tab-panel-5460)
-* [  wrangler.toml ](#tab-panel-5461)
+* [  wrangler.jsonc ](#tab-panel-5476)
+* [  wrangler.toml ](#tab-panel-5477)
 
 ```
 
@@ -725,8 +725,8 @@ Non-inheritable keys are configurable at the top-level, but, if any one non-inhe
 
 For example, this configuration will not work:
 
-* [  wrangler.jsonc ](#tab-panel-5456)
-* [  wrangler.toml ](#tab-panel-5457)
+* [  wrangler.jsonc ](#tab-panel-5472)
+* [  wrangler.toml ](#tab-panel-5473)
 
 ```
 

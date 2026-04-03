@@ -82,8 +82,8 @@ Then, enable the Authenticated Origin Pulls feature as an option for your Cloudf
 
 This step sets the TLS Client Auth to require Cloudflare to use a client certificate when connecting to your origin server.
 
-* [ Dashboard ](#tab-panel-6555)
-* [ API ](#tab-panel-6556)
+* [ Dashboard ](#tab-panel-6571)
+* [ API ](#tab-panel-6572)
 
 To enable **Authenticated Origin Pulls** in the dashboard:
 

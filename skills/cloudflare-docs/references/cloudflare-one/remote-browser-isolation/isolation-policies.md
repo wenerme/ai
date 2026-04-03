@@ -142,8 +142,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-3615)
-* [ API ](#tab-panel-3616)
+* [ Dashboard ](#tab-panel-3631)
+* [ API ](#tab-panel-3632)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -190,8 +190,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-3617)
-* [ API ](#tab-panel-3618)
+* [ Dashboard ](#tab-panel-3633)
+* [ API ](#tab-panel-3634)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -238,8 +238,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-3619)
-* [ API ](#tab-panel-3620)
+* [ Dashboard ](#tab-panel-3635)
+* [ API ](#tab-panel-3636)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -286,8 +286,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-3621)
-* [ API ](#tab-panel-3622)
+* [ Dashboard ](#tab-panel-3637)
+* [ API ](#tab-panel-3638)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -334,8 +334,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-3623)
-* [ API ](#tab-panel-3624)
+* [ Dashboard ](#tab-panel-3639)
+* [ API ](#tab-panel-3640)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |

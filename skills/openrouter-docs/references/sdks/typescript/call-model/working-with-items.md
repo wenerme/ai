@@ -86,8 +86,8 @@ item ID and let React's reconciliation handle updates:
 
 ```tsx
 import { useState } from 'react';
-import type { StreamableOutputItem } from '@openrouter/sdk';
-import { OpenRouter } from '@openrouter/sdk';
+import type { StreamableOutputItem } from '@openrouter/agent';
+import { OpenRouter } from '@openrouter/agent';
 
 const client = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 

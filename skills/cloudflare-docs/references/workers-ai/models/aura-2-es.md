@@ -59,8 +59,8 @@ The bitrate of the audio in bits per second. Choose from predefined ranges or sp
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1610)
-* [ Output ](#tab-panel-1611)
+* [ Input ](#tab-panel-1626)
+* [ Output ](#tab-panel-1627)
 
 ```
 

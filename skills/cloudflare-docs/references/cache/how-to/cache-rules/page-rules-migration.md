@@ -26,8 +26,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-3292)
-* [ visual guide ](#tab-panel-3293)
+* [ Dashboard ](#tab-panel-3308)
+* [ visual guide ](#tab-panel-3309)
 
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
@@ -37,8 +37,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 2
 
-* [ Dashboard ](#tab-panel-3294)
-* [ visual guide ](#tab-panel-3295)
+* [ Dashboard ](#tab-panel-3310)
+* [ visual guide ](#tab-panel-3311)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.

@@ -43,9 +43,9 @@ export AWS_SECRET_ACCESS_KEY=your_secret_access_key
 
 ```
 
-* [  JavaScript ](#tab-panel-5762)
-* [  Python ](#tab-panel-5763)
-* [  Go ](#tab-panel-5764)
+* [  JavaScript ](#tab-panel-5778)
+* [  Python ](#tab-panel-5779)
+* [  Go ](#tab-panel-5780)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 

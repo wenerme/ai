@@ -26,8 +26,8 @@ You must have a [Super Administrator or Secrets Store Admin role](https://develo
 
 ## Create a secret
 
-* [ Dashboard ](#tab-panel-6492)
-* [ API ](#tab-panel-6493)
+* [ Dashboard ](#tab-panel-6508)
+* [ API ](#tab-panel-6509)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -100,8 +100,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/st
 
 Duplicate a secret to keep the same secret value but change name, scope, or comments.
 
-* [ Dashboard ](#tab-panel-6486)
-* [ API ](#tab-panel-6487)
+* [ Dashboard ](#tab-panel-6502)
+* [ API ](#tab-panel-6503)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -147,8 +147,8 @@ This action will cause the replacement in all services using the secret.
 
 You can also edit the secret **Permission scope** and **Comment**.
 
-* [ Dashboard ](#tab-panel-6488)
-* [ API ](#tab-panel-6489)
+* [ Dashboard ](#tab-panel-6504)
+* [ API ](#tab-panel-6505)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -189,8 +189,8 @@ Warning
 
 Before deleting a secret, make sure it is not deployed in your [Workers applications ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
 
-* [ Dashboard ](#tab-panel-6490)
-* [ API ](#tab-panel-6491)
+* [ Dashboard ](#tab-panel-6506)
+* [ API ](#tab-panel-6507)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)

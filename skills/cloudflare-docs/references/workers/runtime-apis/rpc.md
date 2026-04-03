@@ -35,8 +35,8 @@ The RPC system is designed to feel as similar as possible to calling a JavaScrip
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-7606)
-* [  wrangler.toml ](#tab-panel-7607)
+* [  wrangler.jsonc ](#tab-panel-7626)
+* [  wrangler.toml ](#tab-panel-7627)
 
 ```
 
@@ -64,9 +64,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-7623)
-* [  TypeScript ](#tab-panel-7624)
-* [  Python ](#tab-panel-7625)
+* [  JavaScript ](#tab-panel-7643)
+* [  TypeScript ](#tab-panel-7644)
+* [  Python ](#tab-panel-7645)
 
 JavaScript
 
@@ -145,8 +145,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-7610)
-* [  wrangler.toml ](#tab-panel-7611)
+* [  wrangler.jsonc ](#tab-panel-7630)
+* [  wrangler.toml ](#tab-panel-7631)
 
 ```
 
@@ -195,9 +195,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-7618)
-* [  TypeScript ](#tab-panel-7619)
-* [  Python ](#tab-panel-7620)
+* [  JavaScript ](#tab-panel-7638)
+* [  TypeScript ](#tab-panel-7639)
+* [  Python ](#tab-panel-7640)
 
 JavaScript
 
@@ -287,8 +287,8 @@ You can send a function over RPC. When you do so, the function is replaced by a 
 
 Consider the following two Workers, connected via a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc). The counter service provides the RPC method `newCounter()`, which returns a function:
 
-* [  wrangler.jsonc ](#tab-panel-7612)
-* [  wrangler.toml ](#tab-panel-7613)
+* [  wrangler.jsonc ](#tab-panel-7632)
+* [  wrangler.toml ](#tab-panel-7633)
 
 ```
 
@@ -316,8 +316,8 @@ main = "./src/counterService.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-7621)
-* [  TypeScript ](#tab-panel-7622)
+* [  JavaScript ](#tab-panel-7641)
+* [  TypeScript ](#tab-panel-7642)
 
 JavaScript
 
@@ -391,8 +391,8 @@ export default class extends WorkerEntrypoint {
 
 This function can then be called by the client Worker:
 
-* [  wrangler.jsonc ](#tab-panel-7614)
-* [  wrangler.toml ](#tab-panel-7615)
+* [  wrangler.jsonc ](#tab-panel-7634)
+* [  wrangler.toml ](#tab-panel-7635)
 
 ```
 
@@ -439,8 +439,8 @@ service = "counter-service"
 
 ```
 
-* [  JavaScript ](#tab-panel-7616)
-* [  TypeScript ](#tab-panel-7617)
+* [  JavaScript ](#tab-panel-7636)
+* [  TypeScript ](#tab-panel-7637)
 
 JavaScript
 
@@ -514,8 +514,8 @@ To use an instance of a class that you define as a parameter or return value of 
 
 Consider the following example:
 
-* [  wrangler.jsonc ](#tab-panel-7588)
-* [  wrangler.toml ](#tab-panel-7589)
+* [  wrangler.jsonc ](#tab-panel-7608)
+* [  wrangler.toml ](#tab-panel-7609)
 
 ```
 
@@ -543,8 +543,8 @@ main = "./src/counter.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-7604)
-* [  TypeScript ](#tab-panel-7605)
+* [  JavaScript ](#tab-panel-7624)
+* [  TypeScript ](#tab-panel-7625)
 
 JavaScript
 
@@ -656,8 +656,8 @@ export default {
 
 The method `increment` can be called directly by the client, as can the public property `value`:
 
-* [  wrangler.jsonc ](#tab-panel-7590)
-* [  wrangler.toml ](#tab-panel-7591)
+* [  wrangler.jsonc ](#tab-panel-7610)
+* [  wrangler.toml ](#tab-panel-7611)
 
 ```
 
@@ -708,8 +708,8 @@ entrypoint = "CounterService"
 
 ```
 
-* [  JavaScript ](#tab-panel-7596)
-* [  TypeScript ](#tab-panel-7597)
+* [  JavaScript ](#tab-panel-7616)
+* [  TypeScript ](#tab-panel-7617)
 
 JavaScript
 
@@ -791,8 +791,8 @@ Classes which do not inherit `RpcTarget` cannot be sent over RPC at all. This di
 
 When you call an RPC method and get back an object, it's common to immediately call a method on the object:
 
-* [  JavaScript ](#tab-panel-7592)
-* [  TypeScript ](#tab-panel-7593)
+* [  JavaScript ](#tab-panel-7612)
+* [  TypeScript ](#tab-panel-7613)
 
 JavaScript
 
@@ -826,8 +826,8 @@ With most RPC systems, the only way to avoid the problem would be to combine the
 
 Workers RPC allows a different approach: You can simply omit the first `await`:
 
-* [  JavaScript ](#tab-panel-7594)
-* [  TypeScript ](#tab-panel-7595)
+* [  JavaScript ](#tab-panel-7614)
+* [  TypeScript ](#tab-panel-7615)
 
 JavaScript
 
@@ -861,8 +861,8 @@ How does this work? The promise returned by an RPC is not a real JavaScript `Pro
 
 This works when calling properties of objects returned by RPC methods as well. For example:
 
-* [  JavaScript ](#tab-panel-7598)
-* [  TypeScript ](#tab-panel-7599)
+* [  JavaScript ](#tab-panel-7618)
+* [  TypeScript ](#tab-panel-7619)
 
 JavaScript
 
@@ -920,8 +920,8 @@ export class MyService extends WorkerEntrypoint {
 
 ```
 
-* [  JavaScript ](#tab-panel-7602)
-* [  TypeScript ](#tab-panel-7603)
+* [  JavaScript ](#tab-panel-7622)
+* [  TypeScript ](#tab-panel-7623)
 
 JavaScript
 
@@ -979,8 +979,8 @@ In all cases, ownership of the stream is transferred to the recipient. The sende
 
 A stub received over RPC from one Worker can be forwarded over RPC to another Worker.
 
-* [  JavaScript ](#tab-panel-7600)
-* [  TypeScript ](#tab-panel-7601)
+* [  JavaScript ](#tab-panel-7620)
+* [  TypeScript ](#tab-panel-7621)
 
 JavaScript
 
@@ -1032,8 +1032,8 @@ In this video, we explore how Cloudflare Workers support Remote Procedure Calls 
 
 * [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is currently ignored when making RPC calls. If Smart Placement is enabled for Worker A, and Worker B declares a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to it, when Worker B calls Worker A via RPC, Worker A will run locally, on the same machine.
 * The maximum serialized RPC limit is 32 MiB. Consider using [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.  
-   * [  JavaScript ](#tab-panel-7608)  
-   * [  TypeScript ](#tab-panel-7609)  
+   * [  JavaScript ](#tab-panel-7628)  
+   * [  TypeScript ](#tab-panel-7629)  
 JavaScript  
 ```  
 export class MyService extends WorkerEntrypoint {  

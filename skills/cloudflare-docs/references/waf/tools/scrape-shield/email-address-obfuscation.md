@@ -32,9 +32,9 @@ When Email Address Obfuscation is enabled, Cloudflare replaces visible email add
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-6881)
-* [ Old dashboard ](#tab-panel-6882)
-* [ API ](#tab-panel-6883)
+* [  New dashboard ](#tab-panel-6897)
+* [ Old dashboard ](#tab-panel-6898)
+* [ API ](#tab-panel-6899)
 
 To disable **Email Address Obfuscation** in the dashboard:
 

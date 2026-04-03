@@ -124,8 +124,7 @@ components:
               #/components/schemas/GuardrailsIdAssignmentsMembersGetResponsesContentApplicationJsonSchemaDataItems
           description: List of member assignments
         total_count:
-          type: number
-          format: double
+          type: integer
           description: Total number of member assignments
       required:
         - data

@@ -32,8 +32,8 @@ FLUX.2 \[klein\] is an ultra-fast, distilled image model. It unifies image gener
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1706)
-* [  curl ](#tab-panel-1707)
+* [  TypeScript ](#tab-panel-1722)
+* [  curl ](#tab-panel-1723)
 
 ```
 
@@ -134,8 +134,8 @@ Generated image as Base64 string.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1708)
-* [ Output ](#tab-panel-1709)
+* [ Input ](#tab-panel-1724)
+* [ Output ](#tab-panel-1725)
 
 ```
 

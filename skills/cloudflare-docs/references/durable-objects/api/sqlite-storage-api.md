@@ -60,9 +60,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-4357)
-* [  TypeScript ](#tab-panel-4358)
-* [  Python ](#tab-panel-4359)
+* [  JavaScript ](#tab-panel-4373)
+* [  TypeScript ](#tab-panel-4374)
+* [  Python ](#tab-panel-4375)
 
 JavaScript
 
@@ -160,8 +160,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-4349)
-* [  Python ](#tab-panel-4350)
+* [  TypeScript ](#tab-panel-4365)
+* [  Python ](#tab-panel-4366)
 
 TypeScript
 
@@ -287,8 +287,8 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-4351)
-* [  Python ](#tab-panel-4352)
+* [  TypeScript ](#tab-panel-4367)
+* [  Python ](#tab-panel-4368)
 
 TypeScript
 
@@ -572,8 +572,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-4353)
-* [  Python ](#tab-panel-4354)
+* [  TypeScript ](#tab-panel-4369)
+* [  Python ](#tab-panel-4370)
 
 TypeScript
 
@@ -619,8 +619,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-4355)
-* [  Python ](#tab-panel-4356)
+* [  TypeScript ](#tab-panel-4371)
+* [  Python ](#tab-panel-4372)
 
 TypeScript
 

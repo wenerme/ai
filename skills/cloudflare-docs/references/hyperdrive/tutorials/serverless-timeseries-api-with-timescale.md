@@ -182,8 +182,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs your Hyperdrive ID. You can now bind your Hyperdrive configuration to your Worker in your Wrangler configuration by replacing the content with the following:
 
-* [  wrangler.jsonc ](#tab-panel-4822)
-* [  wrangler.toml ](#tab-panel-4823)
+* [  wrangler.jsonc ](#tab-panel-4838)
+* [  wrangler.toml ](#tab-panel-4839)
 
 ```
 

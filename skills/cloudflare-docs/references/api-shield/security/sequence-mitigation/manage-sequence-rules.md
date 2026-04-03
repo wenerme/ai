@@ -24,8 +24,8 @@ Sequence mitigation is currently in a closed beta and is only available for Ente
 
 ## Create a sequence rule
 
-* [  New dashboard ](#tab-panel-3170)
-* [ Old dashboard ](#tab-panel-3171)
+* [  New dashboard ](#tab-panel-3186)
+* [ Old dashboard ](#tab-panel-3187)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

@@ -63,8 +63,8 @@ When automatic configuration runs, the following files may be created or modifie
 
 A new Wrangler configuration file is created with settings appropriate for your framework:
 
-* [  wrangler.jsonc ](#tab-panel-7374)
-* [  wrangler.toml ](#tab-panel-7375)
+* [  wrangler.jsonc ](#tab-panel-7394)
+* [  wrangler.toml ](#tab-panel-7395)
 
 ```
 

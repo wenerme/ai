@@ -18,8 +18,8 @@ Copy page
 
 A Worker config file may contain configuration for multiple [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/). With the Cloudflare Vite plugin, you select a Cloudflare environment at dev or build time by providing the `CLOUDFLARE_ENV` environment variable. Consider the following example Worker config file:
 
-* [  wrangler.jsonc ](#tab-panel-7776)
-* [  wrangler.toml ](#tab-panel-7777)
+* [  wrangler.jsonc ](#tab-panel-7796)
+* [  wrangler.toml ](#tab-panel-7797)
 
 ```
 
@@ -186,8 +186,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
 
-* [  wrangler.jsonc ](#tab-panel-7778)
-* [  wrangler.toml ](#tab-panel-7779)
+* [  wrangler.jsonc ](#tab-panel-7798)
+* [  wrangler.toml ](#tab-panel-7799)
 
 ```
 

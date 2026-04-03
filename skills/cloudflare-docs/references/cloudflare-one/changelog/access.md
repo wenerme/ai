@@ -18,6 +18,24 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/access.xml) 
 
+## 2026-04-01
+
+  
+**Logs UI refresh**   
+
+Access authentication logs and Gateway activity logs (DNS, Network, and HTTP) now feature a refreshed user interface that gives you more flexibility when viewing and analyzing your logs.
+
+![Screenshot of the new logs UI showing DNS query logs with customizable columns and filtering options](https://developers.cloudflare.com/_astro/cf1-new-logs-ui.DxF4x0l-_mRSyH.webp) 
+
+The updated UI includes:
+
+* **Filter by field** \- Select any field value to add it as a filter and narrow down your results.
+* **Customizable fields** \- Choose which fields to display in the log table. Querying for fewer fields improves log loading performance.
+* **View details** \- Select a timestamp to view the full details of a log entry.
+* **Switch to classic view** \- Return to the previous log viewer interface if needed.
+
+For more information, refer to [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
+
 ## 2026-03-04
 
   
@@ -369,7 +387,7 @@ The [Access bulk policy tester](https://developers.cloudflare.com/cloudflare-one
   
 **Cloudflare Zero Trust SCIM User and Group Provisioning Logs**   
 
-[Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
+[Cloudflare Zero Trust SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim) now has a full audit log of all create, update and delete event from any SCIM Enabled IdP. The [SCIM logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/) support filtering by IdP, Event type, Result and many more fields. This will help with debugging user and group update issues and questions.
 
 SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
 

@@ -45,8 +45,8 @@ For help determining which data center to select for a packet capture, visit [ht
 * `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-3390)
-* [ API ](#tab-panel-3391)
+* [ Dashboard ](#tab-panel-3406)
+* [ API ](#tab-panel-3407)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
@@ -247,8 +247,8 @@ Sample PCAP example response
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-3384)
-* [ API ](#tab-panel-3385)
+* [ Dashboard ](#tab-panel-3400)
+* [ API ](#tab-panel-3401)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -330,8 +330,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-3386)
-* [ API ](#tab-panel-3387)
+* [ Dashboard ](#tab-panel-3402)
+* [ API ](#tab-panel-3403)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -366,8 +366,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-3388)
-* [ API ](#tab-panel-3389)
+* [ Dashboard ](#tab-panel-3404)
+* [ API ](#tab-panel-3405)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics** \> **Network packet captures**.

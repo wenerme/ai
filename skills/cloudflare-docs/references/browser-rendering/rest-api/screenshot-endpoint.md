@@ -45,8 +45,8 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-3254)
-* [ TypeScript SDK ](#tab-panel-3255)
+* [ curl ](#tab-panel-3270)
+* [ TypeScript SDK ](#tab-panel-3271)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 

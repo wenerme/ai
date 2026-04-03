@@ -4606,8 +4606,7 @@ components:
         model:
           type: string
         max_tokens:
-          type: number
-          format: double
+          type: integer
         messages:
           type:
             - array

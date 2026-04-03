@@ -55,8 +55,8 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-2920)
-* [  TypeScript ](#tab-panel-2921)
+* [  JavaScript ](#tab-panel-2936)
+* [  TypeScript ](#tab-panel-2937)
 
 JavaScript
 
@@ -232,8 +232,8 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-2924)
-* [  TypeScript ](#tab-panel-2925)
+* [  JavaScript ](#tab-panel-2940)
+* [  TypeScript ](#tab-panel-2941)
 
 JavaScript
 
@@ -505,8 +505,8 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-2914)
-* [  TypeScript ](#tab-panel-2915)
+* [  JavaScript ](#tab-panel-2930)
+* [  TypeScript ](#tab-panel-2931)
 
 JavaScript
 
@@ -560,8 +560,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-2916)
-* [  TypeScript ](#tab-panel-2917)
+* [  JavaScript ](#tab-panel-2932)
+* [  TypeScript ](#tab-panel-2933)
 
 JavaScript
 
@@ -717,8 +717,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-2918)
-* [  TypeScript ](#tab-panel-2919)
+* [  JavaScript ](#tab-panel-2934)
+* [  TypeScript ](#tab-panel-2935)
 
 JavaScript
 
@@ -866,8 +866,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-2912)
-* [  wrangler.toml ](#tab-panel-2913)
+* [  wrangler.jsonc ](#tab-panel-2928)
+* [  wrangler.toml ](#tab-panel-2929)
 
 ```
 
@@ -954,8 +954,8 @@ When building MCP servers with `McpAgent`, you can request additional user input
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-2926)
-* [  TypeScript ](#tab-panel-2927)
+* [  JavaScript ](#tab-panel-2942)
+* [  TypeScript ](#tab-panel-2943)
 
 JavaScript
 
@@ -1315,8 +1315,8 @@ function PendingApprovals() {
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-2922)
-* [  TypeScript ](#tab-panel-2923)
+* [  JavaScript ](#tab-panel-2938)
+* [  TypeScript ](#tab-panel-2939)
 
 JavaScript
 

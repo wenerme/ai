@@ -10,9 +10,9 @@ There are a few behavioral differences to note.
   **Bundling by default.** Unlike esbuild, Bun always bundles by default. This is why the `--bundle` flag isn't
   necessary in the Bun example. To transpile each file individually, use `Bun.Transpiler`.
 
-  **It's just a bundler.** Unlike esbuild, Bun's bundler does not include a built-in development server or file watcher.
-  It's just a bundler. The bundler is intended for use in conjunction with `Bun.serve` and other runtime APIs to achieve
-  the same effect. As such, all options relating to HTTP/file watching are not applicable.
+  **Bundler only.** Unlike esbuild, Bun's bundler does not include a built-in development server or file watcher. The
+  bundler is intended for use in conjunction with `Bun.serve` and other runtime APIs to achieve the same effect. As
+  such, all options relating to HTTP/file watching are not applicable.
 
 ## Performance
 

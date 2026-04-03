@@ -127,8 +127,7 @@ components:
               #/components/schemas/GuardrailsIdAssignmentsKeysGetResponsesContentApplicationJsonSchemaDataItems
           description: List of key assignments
         total_count:
-          type: number
-          format: double
+          type: integer
           description: Total number of key assignments for this guardrail
       required:
         - data

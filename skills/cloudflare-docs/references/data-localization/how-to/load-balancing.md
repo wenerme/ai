@@ -24,8 +24,8 @@ You can load balance traffic at different levels of the networking stack dependi
 
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and ensure that the Load Balancer is available only in-region, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-4198)
-* [ API ](#tab-panel-4199)
+* [ Dashboard ](#tab-panel-4216)
+* [ API ](#tab-panel-4217)
 
 1. In the Cloudflare dashboard, go to the **Load balancing** page.  
 [ Go to **Load Balancing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing)

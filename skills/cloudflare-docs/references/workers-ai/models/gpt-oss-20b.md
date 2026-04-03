@@ -33,9 +33,9 @@ OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, an
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1755)
-* [  Python ](#tab-panel-1756)
-* [  curl ](#tab-panel-1757)
+* [  TypeScript ](#tab-panel-1771)
+* [  Python ](#tab-panel-1772)
+* [  curl ](#tab-panel-1773)
 
 ```
 
@@ -277,8 +277,8 @@ This model supports three different API formats:
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1758)
-* [ Output ](#tab-panel-1759)
+* [ Input ](#tab-panel-1774)
+* [ Output ](#tab-panel-1775)
 
 ```
 

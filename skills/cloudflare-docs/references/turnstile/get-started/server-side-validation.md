@@ -75,11 +75,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-6708)
-* [  PHP ](#tab-panel-6709)
-* [  Python ](#tab-panel-6710)
-* [  Java ](#tab-panel-6711)
-* [  C# ](#tab-panel-6712)
+* [  JavaScript ](#tab-panel-6724)
+* [  PHP ](#tab-panel-6725)
+* [  Python ](#tab-panel-6726)
+* [  Java ](#tab-panel-6727)
+* [  C# ](#tab-panel-6728)
 
 #### JSON
 
@@ -906,8 +906,8 @@ if (result.valid) {
 
 ## API response format
 
-* [ Successful response ](#tab-panel-6713)
-* [ Failed response ](#tab-panel-6714)
+* [ Successful response ](#tab-panel-6729)
+* [ Failed response ](#tab-panel-6730)
 
 Example
 

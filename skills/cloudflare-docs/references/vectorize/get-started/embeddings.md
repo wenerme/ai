@@ -148,8 +148,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6717)
-* [  wrangler.toml ](#tab-panel-6718)
+* [  wrangler.jsonc ](#tab-panel-6733)
+* [  wrangler.toml ](#tab-panel-6734)
 
 ```
 
@@ -195,8 +195,8 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-6719)
-* [  wrangler.toml ](#tab-panel-6720)
+* [  wrangler.jsonc ](#tab-panel-6735)
+* [  wrangler.toml ](#tab-panel-6736)
 
 ```
 

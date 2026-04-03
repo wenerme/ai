@@ -61,9 +61,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-3526)
-* [ US region ](#tab-panel-3527)
-* [ FedRAMP High region ](#tab-panel-3528)
+* [ Global region ](#tab-panel-3542)
+* [ US region ](#tab-panel-3543)
+* [ FedRAMP High region ](#tab-panel-3544)
 
 Terminal window
 

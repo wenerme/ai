@@ -36,8 +36,8 @@ CSR indicates the false positive percentage of a rule. A high CSR means a large 
 
 You can find the CSR of a rule by going to its corresponding dashboard page:
 
-* [  New dashboard ](#tab-panel-3340)
-* [ Old dashboard ](#tab-panel-3341)
+* [  New dashboard ](#tab-panel-3356)
+* [ Old dashboard ](#tab-panel-3357)
 
 For [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), go to your zone > **Security** \> **Security rules**.
 

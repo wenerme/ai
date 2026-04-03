@@ -31,8 +31,8 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Set up
 
-* [ Dashboard ](#tab-panel-4242)
-* [ API ](#tab-panel-4243)
+* [ Dashboard ](#tab-panel-4258)
+* [ API ](#tab-panel-4259)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

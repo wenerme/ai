@@ -29,8 +29,8 @@ Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, an
 
 ## View analytics
 
-* [ Dashboard ](#tab-panel-3046)
-* [ graphql ](#tab-panel-3047)
+* [ Dashboard ](#tab-panel-3062)
+* [ graphql ](#tab-panel-3063)
 
 To view analytics in the dashboard:
 

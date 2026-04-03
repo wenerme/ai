@@ -133,8 +133,8 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
-* [ Wrangler ](#tab-panel-4632)
-* [ Terraform ](#tab-panel-4633)
+* [ Wrangler ](#tab-panel-4648)
+* [ Terraform ](#tab-panel-4649)
 
 Terminal window
 
@@ -202,8 +202,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4634)
-* [  wrangler.toml ](#tab-panel-4635)
+* [  wrangler.jsonc ](#tab-panel-4650)
+* [  wrangler.toml ](#tab-panel-4651)
 
 ```
 
@@ -245,8 +245,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-4636)
-* [  wrangler.toml ](#tab-panel-4637)
+* [  wrangler.jsonc ](#tab-panel-4652)
+* [  wrangler.toml ](#tab-panel-4653)
 
 ```
 
@@ -292,8 +292,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-* [ PostgreSQL ](#tab-panel-4642)
-* [ MySQL ](#tab-panel-4643)
+* [ PostgreSQL ](#tab-panel-4658)
+* [ MySQL ](#tab-panel-4659)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -343,8 +343,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4638)
-* [  wrangler.toml ](#tab-panel-4639)
+* [  wrangler.jsonc ](#tab-panel-4654)
+* [  wrangler.toml ](#tab-panel-4655)
 
 ```
 
@@ -508,8 +508,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4640)
-* [  wrangler.toml ](#tab-panel-4641)
+* [  wrangler.jsonc ](#tab-panel-4656)
+* [  wrangler.toml ](#tab-panel-4657)
 
 ```
 

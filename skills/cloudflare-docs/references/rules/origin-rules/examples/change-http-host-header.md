@@ -22,8 +22,8 @@ The following origin rule overrides the HTTP `Host` header to `hr-server.example
 
 The `Host` header override only updates the header value; the DNS record override will handle the rerouting of incoming requests. For more information on these overrides, refer to [Origin Rules settings](https://developers.cloudflare.com/rules/origin-rules/features/).
 
-* [ Dashboard ](#tab-panel-5989)
-* [ API ](#tab-panel-5990)
+* [ Dashboard ](#tab-panel-6005)
+* [ API ](#tab-panel-6006)
 
 Expression when using the Expression Builder:
 

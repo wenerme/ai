@@ -24,7 +24,7 @@ With Cloudflare's global anycast network, you get:
 * Built-in redundancy and failover. Every server runs Cloudflare's IDS software, and traffic is automatically attracted to the closest network location to its source.
 * Continuous deployment for improvements to Cloudflare's IDS capabilities.
 
-Refer to [Enable IDS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/enable-ids/#enable-ids) for more information on enabling IDS and creating new rulesets. After IDS is enabled, your traffic will be scanned to find malicious traffic. The detections are logged to destinations that can be configured from the dashboard. Refer to [Use Logpush with IDS](https://developers.cloudflare.com/cloudflare-one/insights/logs/use-logpush-with-ids) for instructions on configuring a destination to receive the detections. Additionally, all traffic that is analyzed can be accessed via [network analytics](https://developers.cloudflare.com/analytics/network-analytics/). Refer to [GraphQL Analytics](https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/) to query the analytics data.
+Refer to [Enable IDS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/enable-ids/#enable-ids) for more information on enabling IDS and creating new rulesets. After IDS is enabled, your traffic will be scanned to find malicious traffic. The detections are logged to destinations that can be configured from the dashboard. Refer to [IDS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/ids-logs/) for instructions on configuring a destination to receive the detections. Additionally, all traffic that is analyzed can be accessed via [network analytics](https://developers.cloudflare.com/analytics/network-analytics/). Refer to [GraphQL Analytics](https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/) to query the analytics data.
 
 Cloudflare's IDS takes advantage of the threat intelligence powered by our global network and extends the capabilities of the Cloudflare Firewall to monitor and protect your network from malicious actors.
 
@@ -36,8 +36,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-3817)
-* [ API ](#tab-panel-3818)
+* [ Dashboard ](#tab-panel-3835)
+* [ API ](#tab-panel-3836)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Traffic policies**.
 2. Select **Policy settings** and turn on **IDS**.

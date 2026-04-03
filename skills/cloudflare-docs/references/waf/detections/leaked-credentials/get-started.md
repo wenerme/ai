@@ -20,10 +20,10 @@ Copy page
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-* [  New dashboard ](#tab-panel-6800)
-* [ Old dashboard ](#tab-panel-6801)
-* [ API ](#tab-panel-6802)
-* [ Terraform ](#tab-panel-6803)
+* [  New dashboard ](#tab-panel-6816)
+* [ Old dashboard ](#tab-panel-6817)
+* [ API ](#tab-panel-6818)
+* [ Terraform ](#tab-panel-6819)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -152,10 +152,10 @@ Only available for Enterprise customers.
 
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
-* [  New dashboard ](#tab-panel-6796)
-* [ Old dashboard ](#tab-panel-6797)
-* [ API ](#tab-panel-6798)
-* [ Terraform ](#tab-panel-6799)
+* [  New dashboard ](#tab-panel-6812)
+* [ Old dashboard ](#tab-panel-6813)
+* [ API ](#tab-panel-6814)
+* [ Terraform ](#tab-panel-6815)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

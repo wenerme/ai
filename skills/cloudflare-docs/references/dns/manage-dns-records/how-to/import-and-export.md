@@ -33,8 +33,8 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 ### Import zone file to Cloudflare
 
-* [ Dashboard ](#tab-panel-4256)
-* [ API ](#tab-panel-4257)
+* [ Dashboard ](#tab-panel-4272)
+* [ API ](#tab-panel-4273)
 
 To import a zone file using the dashboard:
 
@@ -72,8 +72,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
 
 You can also bulk export records from Cloudflare.
 
-* [ Dashboard ](#tab-panel-4258)
-* [ API ](#tab-panel-4259)
+* [ Dashboard ](#tab-panel-4274)
+* [ API ](#tab-panel-4275)
 
 To export records using the dashboard:
 

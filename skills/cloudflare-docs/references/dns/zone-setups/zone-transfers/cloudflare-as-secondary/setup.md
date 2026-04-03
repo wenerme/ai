@@ -67,8 +67,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-4318)
-* [ API ](#tab-panel-4319)
+* [ Dashboard ](#tab-panel-4334)
+* [ API ](#tab-panel-4335)
 
 To create a TSIG using the dashboard:
 
@@ -86,8 +86,8 @@ To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/
 
 ## 2\. Create Peer Server
 
-* [ Dashboard ](#tab-panel-4314)
-* [ API ](#tab-panel-4315)
+* [ Dashboard ](#tab-panel-4330)
+* [ API ](#tab-panel-4331)
 
 To create a peer server using the dashboard:
 
@@ -106,8 +106,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 ## 3\. Create the Secondary Zone
 
-* [ Dashboard ](#tab-panel-4316)
-* [ API ](#tab-panel-4317)
+* [ Dashboard ](#tab-panel-4332)
+* [ API ](#tab-panel-4333)
 
 To create a secondary zone using the dashboard:
 

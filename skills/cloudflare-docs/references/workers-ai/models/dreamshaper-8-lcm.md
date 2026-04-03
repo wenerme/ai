@@ -30,8 +30,8 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1680)
-* [  curl ](#tab-panel-1681)
+* [  TypeScript ](#tab-panel-1696)
+* [  curl ](#tab-panel-1697)
 
 ```
 
@@ -136,8 +136,8 @@ Random seed for reproducibility of the image generation
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1682)
-* [ Output ](#tab-panel-1683)
+* [ Input ](#tab-panel-1698)
+* [ Output ](#tab-panel-1699)
 
 ```
 

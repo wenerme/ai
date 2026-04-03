@@ -81,13 +81,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-5516)
-* [  TypeScript ](#tab-panel-5517)
-* [  Python ](#tab-panel-5518)
-* [ go ](#tab-panel-5519)
-* [ Java ](#tab-panel-5520)
-* [ .NET ](#tab-panel-5521)
-* [ YAML ](#tab-panel-5522)
+* [  JavaScript ](#tab-panel-5532)
+* [  TypeScript ](#tab-panel-5533)
+* [  Python ](#tab-panel-5534)
+* [ go ](#tab-panel-5535)
+* [ Java ](#tab-panel-5536)
+* [ .NET ](#tab-panel-5537)
+* [ YAML ](#tab-panel-5538)
 
 Terminal window
 
@@ -241,13 +241,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-5523)
-* [  TypeScript ](#tab-panel-5524)
-* [  Python ](#tab-panel-5525)
-* [ go ](#tab-panel-5526)
-* [ Java ](#tab-panel-5527)
-* [ .NET ](#tab-panel-5528)
-* [ YAML ](#tab-panel-5529)
+* [  JavaScript ](#tab-panel-5539)
+* [  TypeScript ](#tab-panel-5540)
+* [  Python ](#tab-panel-5541)
+* [ go ](#tab-panel-5542)
+* [ Java ](#tab-panel-5543)
+* [ .NET ](#tab-panel-5544)
+* [ YAML ](#tab-panel-5545)
 
 Terminal window
 
@@ -387,13 +387,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-5530)
-* [  TypeScript ](#tab-panel-5531)
-* [  Python ](#tab-panel-5532)
-* [ go ](#tab-panel-5533)
-* [ Java ](#tab-panel-5534)
-* [ .NET ](#tab-panel-5535)
-* [ YAML ](#tab-panel-5536)
+* [  JavaScript ](#tab-panel-5546)
+* [  TypeScript ](#tab-panel-5547)
+* [  Python ](#tab-panel-5548)
+* [ go ](#tab-panel-5549)
+* [ Java ](#tab-panel-5550)
+* [ .NET ](#tab-panel-5551)
+* [ YAML ](#tab-panel-5552)
 
 **Filename: `index.js`**
 
@@ -752,13 +752,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-5537)
-* [  TypeScript ](#tab-panel-5538)
-* [  Python ](#tab-panel-5539)
-* [ go ](#tab-panel-5540)
-* [ Java ](#tab-panel-5541)
-* [ .NET ](#tab-panel-5542)
-* [ YAML ](#tab-panel-5543)
+* [  JavaScript ](#tab-panel-5553)
+* [  TypeScript ](#tab-panel-5554)
+* [  Python ](#tab-panel-5555)
+* [ go ](#tab-panel-5556)
+* [ Java ](#tab-panel-5557)
+* [ .NET ](#tab-panel-5558)
+* [ YAML ](#tab-panel-5559)
 
 **Filename: `index.js`**
 

@@ -338,8 +338,8 @@ If you prefer a CLI-based approach and your platform setup allows direct publish
 
 Create or update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to specify where Wrangler should look for static files:
 
-* [  wrangler.jsonc ](#tab-panel-3366)
-* [  wrangler.toml ](#tab-panel-3367)
+* [  wrangler.jsonc ](#tab-panel-3382)
+* [  wrangler.toml ](#tab-panel-3383)
 
 ```
 

@@ -93,8 +93,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-7480)
-* [  wrangler.toml ](#tab-panel-7481)
+* [  wrangler.jsonc ](#tab-panel-7500)
+* [  wrangler.toml ](#tab-panel-7501)
 
 ```
 

@@ -67,6 +67,7 @@ components:
         - GPT
         - Claude
         - Gemini
+        - Gemma
         - Grok
         - Cohere
         - Nova
@@ -547,8 +548,7 @@ components:
           type: string
           description: Display name of the model
         created:
-          type: number
-          format: double
+          type: integer
           description: Unix timestamp of when the model was created
         description:
           type: string

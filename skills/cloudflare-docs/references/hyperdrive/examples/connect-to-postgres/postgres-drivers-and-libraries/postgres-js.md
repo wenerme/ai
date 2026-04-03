@@ -50,8 +50,8 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4791)
-* [  wrangler.toml ](#tab-panel-4792)
+* [  wrangler.jsonc ](#tab-panel-4807)
+* [  wrangler.toml ](#tab-panel-4808)
 
 ```
 

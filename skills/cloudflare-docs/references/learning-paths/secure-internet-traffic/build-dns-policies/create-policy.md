@@ -22,9 +22,9 @@ You can filter DNS traffic based on query or response parameters (such as domain
 
 To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-5178)
-* [ API ](#tab-panel-5179)
-* [ Terraform ](#tab-panel-5180)
+* [ Dashboard ](#tab-panel-5194)
+* [ API ](#tab-panel-5195)
+* [ Terraform ](#tab-panel-5196)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.

@@ -59,8 +59,8 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-3244)
-* [ TypeScript SDK ](#tab-panel-3245)
+* [ curl ](#tab-panel-3260)
+* [ TypeScript SDK ](#tab-panel-3261)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 

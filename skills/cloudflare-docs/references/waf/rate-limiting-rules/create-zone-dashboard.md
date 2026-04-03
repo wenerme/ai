@@ -16,14 +16,14 @@ Copy page
 
 # Create a rate limiting rule in the dashboard
 
-* [  New dashboard ](#tab-panel-6870)
-* [ Old dashboard ](#tab-panel-6871)
+* [  New dashboard ](#tab-panel-6886)
+* [ Old dashboard ](#tab-panel-6887)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Rate limiting rules**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 3. Enter a descriptive name for the rule in **Rule name**.  
-![The Create rate limiting rule page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create.BP_vm64k_1et4qt.webp)
+![The Create rate limiting rule page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create.qwL_1SJt_Z1hMrFF.webp)
 4. In the **Field** drop-down, choose an HTTP property. For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value** using the operator selected in **Operator**.
 5. (Optional) Under **Cache status**, disable **Also apply rate limiting to cached assets** to consider only the requests that reach the origin when determining the rate.
 6. Under **With the same characteristics**, add one or more characteristics that will define the request counters for rate limiting purposes. Each value combination will have its own counter to determine the rate. Refer to [How Cloudflare determines the request rate](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/) for more information.
@@ -39,7 +39,7 @@ Enterprise customers with a paid add-on can [throttle requests](https://develope
 2. Go to **Security** \> **WAF** \> **Rate limiting rules**.
 3. To create a new empty rule, select **Create rule**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 4. Enter a descriptive name for the rule in **Rule name**.  
-![The Create rate limiting rule page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create.BP_vm64k_1et4qt.webp)
+![The Create rate limiting rule page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create.qwL_1SJt_Z1hMrFF.webp)
 5. In the **Field** drop-down, choose an HTTP property. For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value** using the operator selected in **Operator**.
 6. (Optional) Under **Cache status**, disable **Also apply rate limiting to cached assets** to consider only the requests that reach the origin when determining the rate.
 7. Under **With the same characteristics**, add one or more [characteristics](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#with-the-same-characteristics) that will define the request counters for rate limiting purposes. Each value combination will have its own counter to determine the rate. For more information, refer to [Request rate calculation](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/).

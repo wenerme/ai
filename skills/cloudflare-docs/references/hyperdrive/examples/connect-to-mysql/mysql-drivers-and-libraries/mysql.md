@@ -43,8 +43,8 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4683)
-* [  wrangler.toml ](#tab-panel-4684)
+* [  wrangler.jsonc ](#tab-panel-4699)
+* [  wrangler.toml ](#tab-panel-4700)
 
 ```
 

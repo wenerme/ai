@@ -256,8 +256,8 @@ If you plan to expose ports from sandboxes (using `exposePort()` for preview URL
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-6223)
-* [  wrangler.toml ](#tab-panel-6224)
+* [  wrangler.jsonc ](#tab-panel-6239)
+* [  wrangler.toml ](#tab-panel-6240)
 
 ```
 

@@ -99,8 +99,8 @@ After your new R2 bucket is ready, use it inside your Worker application.
 
 Use your R2 bucket inside your Worker project by modifying the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include an R2 bucket [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Add the following R2 bucket binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7770)
-* [  wrangler.toml ](#tab-panel-7771)
+* [  wrangler.jsonc ](#tab-panel-7790)
+* [  wrangler.toml ](#tab-panel-7791)
 
 ```
 

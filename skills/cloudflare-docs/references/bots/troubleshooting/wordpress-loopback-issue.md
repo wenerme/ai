@@ -26,8 +26,8 @@ Loopback requests may also be blocked by [I’m Under Attack mode](https://devel
 
 ## Enable Optimize for WordPress
 
-* [  New dashboard ](#tab-panel-3212)
-* [ Old dashboard ](#tab-panel-3213)
+* [  New dashboard ](#tab-panel-3228)
+* [ Old dashboard ](#tab-panel-3229)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

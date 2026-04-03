@@ -142,8 +142,8 @@ id = "<GENERATED_NAMESPACE_ID>"
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-5709)
-* [  wrangler.toml ](#tab-panel-5710)
+* [  wrangler.jsonc ](#tab-panel-5725)
+* [  wrangler.toml ](#tab-panel-5726)
 
 ```
 
@@ -236,8 +236,8 @@ bun add robots-parser
 
 Then, add a Browser Rendering binding. Adding a Browser Rendering binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-5707)
-* [  wrangler.toml ](#tab-panel-5708)
+* [  wrangler.jsonc ](#tab-panel-5723)
+* [  wrangler.toml ](#tab-panel-5724)
 
 ```
 
@@ -296,8 +296,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-5711)
-* [  wrangler.toml ](#tab-panel-5712)
+* [  wrangler.jsonc ](#tab-panel-5727)
+* [  wrangler.toml ](#tab-panel-5728)
 
 ```
 
@@ -358,8 +358,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-5713)
-* [  wrangler.toml ](#tab-panel-5714)
+* [  wrangler.jsonc ](#tab-panel-5729)
+* [  wrangler.toml ](#tab-panel-5730)
 
 ```
 

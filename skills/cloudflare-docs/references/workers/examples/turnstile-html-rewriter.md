@@ -24,10 +24,10 @@ Copy page
 
 Inject [Turnstile](https://developers.cloudflare.com/turnstile/) implicitly into HTML elements using the HTMLRewriter runtime API.
 
-* [  JavaScript ](#tab-panel-7361)
-* [  TypeScript ](#tab-panel-7362)
-* [  Hono ](#tab-panel-7363)
-* [  Python ](#tab-panel-7364)
+* [  JavaScript ](#tab-panel-7381)
+* [  TypeScript ](#tab-panel-7382)
+* [  Hono ](#tab-panel-7383)
+* [  Python ](#tab-panel-7384)
 
 JavaScript
 

@@ -35,8 +35,8 @@ You should remove a customer's custom hostname from your zone if they decide to 
 
 If your customer's domain is not using Cloudflare, you must remove a customer's custom hostname from your zone if they decide to churn.
 
-* [ Dashboard ](#tab-panel-3346)
-* [ API ](#tab-panel-3347)
+* [ Dashboard ](#tab-panel-3362)
+* [ API ](#tab-panel-3363)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

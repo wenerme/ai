@@ -20,8 +20,8 @@ Copy page
 
 Draw a watermark from KV on an image from R2
 
-* [  JavaScript ](#tab-panel-4824)
-* [  TypeScript ](#tab-panel-4825)
+* [  JavaScript ](#tab-panel-4840)
+* [  TypeScript ](#tab-panel-4841)
 
 JavaScript
 

@@ -32,8 +32,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-5383)
-* [ API ](#tab-panel-5384)
+* [ Dashboard ](#tab-panel-5399)
+* [ API ](#tab-panel-5400)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -186,8 +186,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-5385)
-* [ API ](#tab-panel-5386)
+* [ Dashboard ](#tab-panel-5401)
+* [ API ](#tab-panel-5402)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -329,8 +329,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-5381)
-* [ API ](#tab-panel-5382)
+* [ Dashboard ](#tab-panel-5397)
+* [ API ](#tab-panel-5398)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.

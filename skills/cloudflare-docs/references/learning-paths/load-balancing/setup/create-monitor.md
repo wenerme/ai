@@ -20,8 +20,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-5092)
-* [ API ](#tab-panel-5093)
+* [ Dashboard ](#tab-panel-5108)
+* [ API ](#tab-panel-5109)
 
 **Set up the monitor**
 

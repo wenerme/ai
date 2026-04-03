@@ -98,8 +98,8 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-4801)
-* [  wrangler.toml ](#tab-panel-4802)
+* [  wrangler.jsonc ](#tab-panel-4817)
+* [  wrangler.toml ](#tab-panel-4818)
 
 ```
 
@@ -157,8 +157,8 @@ To create your first Hyperdrive, you will need:
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
-* [ PostgreSQL ](#tab-panel-4795)
-* [ MySQL ](#tab-panel-4796)
+* [ PostgreSQL ](#tab-panel-4811)
+* [ MySQL ](#tab-panel-4812)
 
 ```
 
@@ -243,8 +243,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4803)
-* [  wrangler.toml ](#tab-panel-4804)
+* [  wrangler.jsonc ](#tab-panel-4819)
+* [  wrangler.toml ](#tab-panel-4820)
 
 ```
 
@@ -286,8 +286,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-4805)
-* [  wrangler.toml ](#tab-panel-4806)
+* [  wrangler.jsonc ](#tab-panel-4821)
+* [  wrangler.toml ](#tab-panel-4822)
 
 ```
 
@@ -335,8 +335,8 @@ Once you have created a Hyperdrive configuration and bound it to your Worker, yo
 
 ### Install a database driver
 
-* [ PostgreSQL ](#tab-panel-4799)
-* [ MySQL ](#tab-panel-4800)
+* [ PostgreSQL ](#tab-panel-4815)
+* [ MySQL ](#tab-panel-4816)
 
 To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
@@ -420,8 +420,8 @@ With the driver installed, you can now create a Worker script that queries your 
 
 ### Write a Worker
 
-* [ PostgreSQL ](#tab-panel-4797)
-* [ MySQL ](#tab-panel-4798)
+* [ PostgreSQL ](#tab-panel-4813)
+* [ MySQL ](#tab-panel-4814)
 
 After you have set up your database, you will run a SQL query from within your Worker.
 

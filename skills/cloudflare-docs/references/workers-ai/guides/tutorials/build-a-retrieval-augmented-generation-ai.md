@@ -117,8 +117,8 @@ If you have issues with this step or you do not have access to a browser interfa
 
 This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
-* [  wrangler.jsonc ](#tab-panel-6929)
-* [  wrangler.toml ](#tab-panel-6930)
+* [  wrangler.jsonc ](#tab-panel-6945)
+* [  wrangler.toml ](#tab-panel-6946)
 
 ```
 
@@ -222,8 +222,8 @@ npx wrangler vectorize create vector-index --dimensions=768 --metric=cosine
 
 Then, add the configuration details for your new Vectorize index to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6931)
-* [  wrangler.toml ](#tab-panel-6932)
+* [  wrangler.jsonc ](#tab-panel-6947)
+* [  wrangler.toml ](#tab-panel-6948)
 
 ```
 
@@ -276,8 +276,8 @@ npx wrangler d1 create database
 
 Then, paste the configuration details output from the previous command into the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6933)
-* [  wrangler.toml ](#tab-panel-6934)
+* [  wrangler.jsonc ](#tab-panel-6949)
+* [  wrangler.toml ](#tab-panel-6950)
 
 ```
 
@@ -345,8 +345,8 @@ Before we begin creating notes, we will introduce a [Cloudflare Workflow](https:
 
 To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6935)
-* [  wrangler.toml ](#tab-panel-6936)
+* [  wrangler.jsonc ](#tab-panel-6951)
+* [  wrangler.toml ](#tab-panel-6952)
 
 ```
 

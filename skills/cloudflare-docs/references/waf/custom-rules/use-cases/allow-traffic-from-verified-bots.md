@@ -16,12 +16,18 @@ Copy page
 
 # Allow traffic from search engine bots
 
-This example custom rule challenges requests from a list of countries, but allows traffic from search engine bots — such as Googlebot and Bingbot — and from other [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) challenges requests from a list of countries, but allows traffic from search engine bots — such as Googlebot and Bingbot — and from other [verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
 The rule expression uses the [cf.client.bot](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.client.bot/) field to determine if the request originated from a known good bot or crawler.
 
-* **Expression**: `(ip.src.country in {"US" "MX"} and not cf.client.bot)`
-* **Action**: _Managed Challenge_
+* **When incoming requests match**:  
+| Field      | Operator | Value                 | Logic |  
+| ---------- | -------- | --------------------- | ----- |  
+| Country    | is in    | Mexico, United States | And   |  
+| Known Bots | equals   | false                 |       |  
+If you are using the expression editor:  
+`(ip.src.country in {"US" "MX"} and not cf.client.bot)`
+* **Then take action**: _Managed Challenge_
 
 ## Other resources
 

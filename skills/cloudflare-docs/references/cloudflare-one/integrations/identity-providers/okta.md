@@ -156,7 +156,7 @@ Groups in this SCIM app Push Groups integration should match the groups in your 
 
 To verify the integration, select **View Logs** in the Okta SCIM application.
 
-To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/).
+To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 Note
 

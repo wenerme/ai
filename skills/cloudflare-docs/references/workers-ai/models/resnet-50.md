@@ -31,8 +31,8 @@ Image Classification • Microsoft
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2029)
-* [  curl ](#tab-panel-2030)
+* [  TypeScript ](#tab-panel-2045)
+* [  curl ](#tab-panel-2046)
 
 ```
 
@@ -118,8 +118,8 @@ The image to classify
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2031)
-* [ Output ](#tab-panel-2032)
+* [ Input ](#tab-panel-2047)
+* [ Output ](#tab-panel-2048)
 
 ```
 

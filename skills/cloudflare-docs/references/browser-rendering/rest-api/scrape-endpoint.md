@@ -45,8 +45,8 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-3252)
-* [ TypeScript SDK ](#tab-panel-3253)
+* [ curl ](#tab-panel-3268)
+* [ TypeScript SDK ](#tab-panel-3269)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 

@@ -20,8 +20,8 @@ With Cloudflare Gateway, you can log and filter DNS, network, and HTTP traffic f
 
 ## Enable the proxy
 
-* [ Dashboard ](#tab-panel-5137)
-* [ Terraform (v5) ](#tab-panel-5138)
+* [ Dashboard ](#tab-panel-5153)
+* [ Terraform (v5) ](#tab-panel-5154)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

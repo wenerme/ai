@@ -36,8 +36,8 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-3868)
-* [ Terraform (v5) ](#tab-panel-3869)
+* [ Dashboard ](#tab-panel-3886)
+* [ Terraform (v5) ](#tab-panel-3887)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -90,9 +90,9 @@ Google Chrome can automatically upgrade HTTP requests to HTTPS requests, even wh
 
 You can turn off automatic HTTPS upgrades via a Gateway pass through policy, a Chrome browser flag, or a Chrome Enterprise policy.
 
-* [ Pass through policy ](#tab-panel-3865)
-* [ Chrome browser flag ](#tab-panel-3866)
-* [ Chrome enterprise policy ](#tab-panel-3867)
+* [ Pass through policy ](#tab-panel-3883)
+* [ Chrome browser flag ](#tab-panel-3884)
+* [ Chrome enterprise policy ](#tab-panel-3885)
 
 To disable automatic HTTPS upgrades for a URL across your Zero Trust organization, create a Gateway pass through policy.
 
@@ -132,8 +132,8 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 
 ### Enable FIPS compliance
 
-* [ Dashboard ](#tab-panel-3870)
-* [ Terraform (v5) ](#tab-panel-3871)
+* [ Dashboard ](#tab-panel-3888)
+* [ Terraform (v5) ](#tab-panel-3889)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

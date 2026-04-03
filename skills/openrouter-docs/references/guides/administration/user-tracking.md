@@ -2,9 +2,7 @@ The OpenRouter API supports **User Tracking** through the optional `user` parame
 
 ## What is User Tracking?
 
-User tracking enables you to specify an arbitrary string identifier for your end-users in API requests. This optional metadata helps OpenRouter understand your sub-users, leading to several benefits:
-
-1. **Enhanced Reporting**: View detailed analytics and activity feeds broken down by your user IDs
+User tracking enables you to specify an arbitrary string identifier for your end-users in API requests. This optional metadata helps OpenRouter understand your sub-users.
 
 ## How It Works
 
@@ -19,16 +17,6 @@ Simply include a `user` parameter in your API requests with any string identifie
   "user": "user_12345"
 }
 ```
-
-## Benefits
-
-### Enhanced Reporting and Analytics
-
-The user parameter is available in the /activity page, in the exports from that page, and in the /generations API.
-
-* **Activity Feed**: View requests broken down by user ID in your OpenRouter dashboard
-* **Usage Analytics**: Understand which users are making the most requests
-* **Export Data**: Get detailed exports that include user-level breakdowns
 
 ## Implementation Example
 

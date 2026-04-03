@@ -23,8 +23,8 @@ To replicate this example remember to:
 * Disable `rewrite_query`, as you want to match the original user query
 * Configure your AI Search to have small chunk sizes, usually 256 tokens is enough
 
-* [  JavaScript ](#tab-panel-3081)
-* [  TypeScript ](#tab-panel-3082)
+* [  JavaScript ](#tab-panel-3097)
+* [  TypeScript ](#tab-panel-3098)
 
 JavaScript
 

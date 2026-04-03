@@ -312,9 +312,9 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-4577)
-* [ PowerShell ](#tab-panel-4578)
-* [ Windows Command Prompt ](#tab-panel-4579)
+* [ Linux and macOS ](#tab-panel-4593)
+* [ PowerShell ](#tab-panel-4594)
+* [ Windows Command Prompt ](#tab-panel-4595)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
@@ -381,9 +381,9 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-4580)
-* [ PowerShell ](#tab-panel-4581)
-* [ Windows Command Prompt ](#tab-panel-4582)
+* [ Linux and macOS ](#tab-panel-4596)
+* [ PowerShell ](#tab-panel-4597)
+* [ Windows Command Prompt ](#tab-panel-4598)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 

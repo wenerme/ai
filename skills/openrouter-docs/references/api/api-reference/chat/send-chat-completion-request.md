@@ -1176,8 +1176,7 @@ components:
           type: string
           description: Audio output identifier
         expires_at:
-          type: number
-          format: double
+          type: integer
           description: Audio expiration timestamp
         data:
           type: string
@@ -1999,9 +1998,7 @@ components:
         models:
           $ref: '#/components/schemas/ChatModelNames'
         frequency_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Frequency penalty (-2.0 to 2.0)
         logit_bias:
@@ -2018,22 +2015,13 @@ components:
             - 'null'
           description: Return log probabilities
         top_logprobs:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Number of top log probabilities to return (0-20)
         max_completion_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Maximum tokens in completion
         max_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: >-
             Maximum tokens (deprecated, use max_completion_tokens). Note: some
             providers enforce a minimum of 16.
@@ -2045,9 +2033,7 @@ components:
             Key-value pairs for additional object information (max 16 pairs, 64
             char keys, 512 char values)
         presence_penalty:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Presence penalty (-2.0 to 2.0)
         reasoning:
@@ -2057,9 +2043,7 @@ components:
           $ref: '#/components/schemas/ChatRequestResponseFormat'
           description: Response format configuration
         seed:
-          type:
-            - integer
-            - 'null'
+          type: integer
           description: Random seed for deterministic outputs
         stop:
           $ref: '#/components/schemas/ChatRequestStop'
@@ -2071,11 +2055,8 @@ components:
         stream_options:
           $ref: '#/components/schemas/ChatStreamOptions'
         temperature:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
-          default: 1
           description: Sampling temperature (0-2)
         parallel_tool_calls:
           type:
@@ -2089,11 +2070,8 @@ components:
             $ref: '#/components/schemas/ChatFunctionTool'
           description: Available tools for function calling
         top_p:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
-          default: 1
           description: Nucleus sampling parameter (0-1)
         debug:
           $ref: '#/components/schemas/ChatDebugOptions'
@@ -2156,8 +2134,7 @@ components:
             - array
             - 'null'
           items:
-            type: number
-            format: double
+            type: integer
       required:
         - token
         - logprob
@@ -2178,8 +2155,7 @@ components:
             - array
             - 'null'
           items:
-            type: number
-            format: double
+            type: integer
           description: UTF-8 bytes of the token
         top_logprobs:
           type: array
@@ -2220,8 +2196,7 @@ components:
         finish_reason:
           $ref: '#/components/schemas/ChatChoiceFinishReason'
         index:
-          type: number
-          format: double
+          type: integer
           description: Choice index
         message:
           $ref: '#/components/schemas/ChatAssistantMessage'
@@ -2242,28 +2217,16 @@ components:
       type: object
       properties:
         reasoning_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Tokens used for reasoning
         audio_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Tokens used for audio output
         accepted_prediction_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Accepted prediction tokens
         rejected_prediction_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
           description: Rejected prediction tokens
       description: Detailed completion token usage
       title: ChatUsageCompletionTokensDetails
@@ -2271,22 +2234,18 @@ components:
       type: object
       properties:
         cached_tokens:
-          type: number
-          format: double
+          type: integer
           description: Cached prompt tokens
         cache_write_tokens:
-          type: number
-          format: double
+          type: integer
           description: >-
             Tokens written to cache. Only returned for models with explicit
             caching and cache write pricing.
         audio_tokens:
-          type: number
-          format: double
+          type: integer
           description: Audio input tokens
         video_tokens:
-          type: number
-          format: double
+          type: integer
           description: Video input tokens
       description: Detailed prompt token usage
       title: ChatUsagePromptTokensDetails
@@ -2294,16 +2253,13 @@ components:
       type: object
       properties:
         completion_tokens:
-          type: number
-          format: double
+          type: integer
           description: Number of tokens in the completion
         prompt_tokens:
-          type: number
-          format: double
+          type: integer
           description: Number of tokens in the prompt
         total_tokens:
-          type: number
-          format: double
+          type: integer
           description: Total number of tokens
         completion_tokens_details:
           oneOf:
@@ -2333,8 +2289,7 @@ components:
             $ref: '#/components/schemas/ChatChoice'
           description: List of completion choices
         created:
-          type: number
-          format: double
+          type: integer
           description: Unix timestamp of creation
         model:
           type: string

@@ -179,8 +179,8 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 To implement a `robots.txt` file on your domain:
 
-* [  New dashboard ](#tab-panel-3190)
-* [ Old dashboard ](#tab-panel-3191)
+* [  New dashboard ](#tab-panel-3206)
+* [ Old dashboard ](#tab-panel-3207)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

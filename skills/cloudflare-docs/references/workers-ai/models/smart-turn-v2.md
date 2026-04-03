@@ -60,8 +60,8 @@ probability of the end-of-turn detection
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2033)
-* [ Output ](#tab-panel-2034)
+* [ Input ](#tab-panel-2049)
+* [ Output ](#tab-panel-2050)
 
 ```
 

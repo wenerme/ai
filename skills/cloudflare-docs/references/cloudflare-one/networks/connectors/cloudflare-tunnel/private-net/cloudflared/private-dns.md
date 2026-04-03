@@ -74,7 +74,7 @@ Use the following troubleshooting strategies if you are running into issues whil
 * Ensure that the machine where `cloudflared` is running is allowed to egress via UDP to port 7844 to talk out to Cloudflare.
 * Ensure that end-user devices are enrolled into the Cloudflare One Client by visiting [https://help.teams.cloudflare.com ↗](https://help.teams.cloudflare.com).
 * Double-check the [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) for your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). Ensure that a more global Block or Allow policy will not supersede application-specific policies.
-* Check your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#network-logs) to see whether your UDP DNS resolutions are being allowed or blocked.
+* Check your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs) to see whether your UDP DNS resolutions are being allowed or blocked.
 * Ensure that your internal DNS resolver is available over a routable private IP address. You can check that by trying the `dig` command on your machine running `cloudflared`.
 * Check your set up by using `dig ... +tcp` to force the DNS resolution to use TCP instead of UDP.
 

@@ -22,8 +22,8 @@ Starting with a test domain allows you to verify everything is working correctly
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-5096)
-* [ API ](#tab-panel-5097)
+* [ Dashboard ](#tab-panel-5112)
+* [ API ](#tab-panel-5113)
 
 To create a Public or a Private load balancer in the dashboard:
 

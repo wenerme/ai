@@ -38,9 +38,9 @@ Presigned URLs are generated client-side with no communication with R2, requirin
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-5732)
-* [ Python ](#tab-panel-5733)
-* [ CLI ](#tab-panel-5734)
+* [ JavaScript ](#tab-panel-5748)
+* [ Python ](#tab-panel-5749)
+* [ CLI ](#tab-panel-5750)
 
 TypeScript
 

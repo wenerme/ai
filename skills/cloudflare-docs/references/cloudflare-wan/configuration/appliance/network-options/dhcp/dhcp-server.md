@@ -18,8 +18,8 @@ Copy page
 
 When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
 
-* [ Dashboard ](#tab-panel-3963)
-* [ API ](#tab-panel-3964)
+* [ Dashboard ](#tab-panel-3981)
+* [ API ](#tab-panel-3982)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

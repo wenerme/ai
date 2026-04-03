@@ -32,8 +32,8 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-3036)
-* [ API ](#tab-panel-3037)
+* [ Dashboard ](#tab-panel-3052)
+* [ API ](#tab-panel-3053)
 
 To set the default rate limiting configuration in the dashboard:
 

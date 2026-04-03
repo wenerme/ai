@@ -9,8 +9,8 @@ Copy page
 
 # Create a serverless websocket 'backend'
 
-* [ Watch this episode ](#tab-panel-5086)
-* [ Series overview ](#tab-panel-5087)
+* [ Watch this episode ](#tab-panel-5102)
+* [ Series overview ](#tab-panel-5103)
 
 In this video, we'll create a WebSocket backend using serverless technology, making the process simpler than ever before. You'll learn how to create your first Durable Object, set up a WebSocket server to coordinate connections, and keep track of connected clients.
 

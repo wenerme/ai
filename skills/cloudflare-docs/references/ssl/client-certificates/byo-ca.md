@@ -88,8 +88,8 @@ There can be multiple CAs (Cloudflare-managed or BYOCA) associated with the same
 
 If you wish to remove the association from the Cloudflare-managed certificate and only use your BYOCA certificate(s):
 
-* [ Dashboard ](#tab-panel-6511)
-* [ API ](#tab-panel-6512)
+* [ Dashboard ](#tab-panel-6527)
+* [ API ](#tab-panel-6528)
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)

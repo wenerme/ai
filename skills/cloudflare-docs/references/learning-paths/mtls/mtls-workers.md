@@ -28,8 +28,8 @@ All Client Certificate details can be found in the [tlsClientAuth](https://devel
 
 Example Cloudflare Workers code to return all headers and gain visibility, including [Client Certificate headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#cloudflare-workers):
 
-* [  Module Worker ](#tab-panel-5098)
-* [  Service Worker ](#tab-panel-5099)
+* [  Module Worker ](#tab-panel-5114)
+* [  Service Worker ](#tab-panel-5115)
 
 JavaScript
 

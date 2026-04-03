@@ -87,8 +87,8 @@ Your API endpoints are discovered with both the Session Identifier-based Discove
 
 To access Machine Learning-based Discovery:
 
-* [  New dashboard ](#tab-panel-3140)
-* [ Old dashboard ](#tab-panel-3141)
+* [  New dashboard ](#tab-panel-3156)
+* [ Old dashboard ](#tab-panel-3157)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

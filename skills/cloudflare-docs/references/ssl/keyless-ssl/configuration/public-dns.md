@@ -63,8 +63,8 @@ Upload certificates to Cloudflare with only SANs that you wish to use with Cloud
 
 You will have to upload each certificate used with Keyless SSL.
 
-* [ Dashboard ](#tab-panel-6553)
-* [ API ](#tab-panel-6554)
+* [ Dashboard ](#tab-panel-6569)
+* [ API ](#tab-panel-6570)
 
 To create a Keyless certificate in the dashboard:
 

@@ -41,8 +41,8 @@ Some applications and networking implementations require specific custom headers
 4. Select **Edit code**.
 5. Input the following Worker:
 
-* [  JavaScript ](#tab-panel-3924)
-* [  TypeScript ](#tab-panel-3925)
+* [  JavaScript ](#tab-panel-3942)
+* [  TypeScript ](#tab-panel-3943)
 
 JavaScript
 

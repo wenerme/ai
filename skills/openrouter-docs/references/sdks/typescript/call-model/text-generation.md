@@ -3,7 +3,7 @@
 The simplest way to generate text:
 
 ```typescript
-import { OpenRouter } from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,

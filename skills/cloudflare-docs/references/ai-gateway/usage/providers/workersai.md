@@ -135,8 +135,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/workers-ai/v
 
 You can integrate Workers AI with AI Gateway using an environment binding. To include an AI Gateway within your Worker, add the gateway as an object in your Workers AI request.
 
-* [  JavaScript ](#tab-panel-3070)
-* [  TypeScript ](#tab-panel-3071)
+* [  JavaScript ](#tab-panel-3086)
+* [  TypeScript ](#tab-panel-3087)
 
 JavaScript
 

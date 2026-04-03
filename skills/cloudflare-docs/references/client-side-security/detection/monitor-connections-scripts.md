@@ -30,8 +30,8 @@ Notes
 To review the resources detected by Cloudflare:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3298)  
-   * [ Old dashboard ](#tab-panel-3299)  
+   * [  New dashboard ](#tab-panel-3314)  
+   * [ Old dashboard ](#tab-panel-3315)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -53,8 +53,8 @@ Available filters
 The All Reported Connections and All Reported Scripts dashboards show all the detected resources including infrequent or inactive ones, reported in the last 30 days. After 30 days without any report, Cloudflare will delete information about a previously reported resource, and it will no longer appear in any of the dashboards.
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3300)  
-   * [ Old dashboard ](#tab-panel-3301)  
+   * [  New dashboard ](#tab-panel-3316)  
+   * [ Old dashboard ](#tab-panel-3317)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -73,8 +73,8 @@ Note
 Only available to customers on Business and Enterprise plans.
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3302)  
-   * [ Old dashboard ](#tab-panel-3303)  
+   * [  New dashboard ](#tab-panel-3318)  
+   * [ Old dashboard ](#tab-panel-3319)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -121,8 +121,8 @@ Use this feature to extract data for review and annotation. The data in the expo
 To export script, connection, or cookie information in CSV format:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3304)  
-   * [ Old dashboard ](#tab-panel-3305)  
+   * [  New dashboard ](#tab-panel-3320)  
+   * [ Old dashboard ](#tab-panel-3321)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

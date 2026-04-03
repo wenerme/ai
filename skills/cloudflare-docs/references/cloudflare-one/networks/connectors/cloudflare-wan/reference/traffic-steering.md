@@ -223,6 +223,82 @@ Unified Routing is currently in closed beta. To sign up:
 * **Existing Cloudflare WAN or Magic Transit customers**: Cloudflare recommends you evaluate the new functionality with your use case in a non-production account. Contact your account team to enable Unified Routing.
 * **New customers**: Contact your account team to enable Unified Routing in a proof-of-concept for your use case.
 
+## Route evaluation with Zero Trust connections
+
+When your account uses both Zero Trust routes (Cloudflare Tunnel, WARP Connector) and WAN routes (IPsec, GRE, CNI), route selection behavior depends on your [routing mode](#unified-routing-mode-beta).
+
+### Terminology
+
+| Route type        | Connection methods                |
+| ----------------- | --------------------------------- |
+| Zero Trust routes | Cloudflare Tunnel, WARP Connector |
+| WAN routes        | IPsec, GRE, and CNI               |
+
+### Unified Routing mode
+
+Unified Routing uses a single routing fabric for all connection types. Route selection applies longest-prefix-match consistently across all traffic types and connection methods.
+
+| Zero Trust route | WAN route    | Traffic destination | Selected route                  |
+| ---------------- | ------------ | ------------------- | ------------------------------- |
+| 10.0.0.0/24      | 10.0.0.64/28 | 10.0.0.70           | WAN (more specific)             |
+| 10.0.0.0/28      | 10.0.0.0/24  | 10.0.0.10           | Zero Trust (more specific)      |
+| 10.0.0.0/24      | 10.0.0.0/24  | 10.0.0.10           | Zero Trust (same prefix length) |
+
+When routes have the same prefix length, Zero Trust routes take precedence over WAN routes.
+
+For scenarios with overlapping IP space across sites, enable [Automatic Return Routing](#automatic-return-routing-beta) to ensure return traffic reaches the correct origin.
+
+### Legacy Routing mode
+
+For accounts using Legacy Routing, route selection depends on the traffic source.
+
+#### Cloudflare One Client to private network
+
+For accounts using only Zero Trust, Cloudflare One Client traffic is routed using the Zero Trust IP routing table only, following longest-prefix-match logic.
+
+If your account has Cloudflare WAN enabled, traffic from Cloudflare One Client follows the same route selection behavior as [site-to-site traffic with Gateway](#site-to-site-traffic-with-gateway). Contact your account team if you want Cloudflare One Client to continue to behave as if WAN is not enabled.
+
+#### Site-to-site traffic (WAN to WAN)
+
+For traffic between WAN connections (IPsec to IPsec, GRE to GRE, and CNI to CNI) that does not require Gateway filtering, longest-prefix-match applies within the WAN routing table. This traffic does not interact with Zero Trust routing.
+
+#### Site-to-site traffic with Gateway
+
+When [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) are applied to site-to-site WAN traffic, route selection follows these rules:
+
+| Scenario                                      | Behavior                                                                              |
+| --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| More specific Zero Trust route than WAN route | **Works** — longest-prefix-match honored for both inbound and outbound traffic        |
+| More specific WAN route than Zero Trust route | **Not guaranteed** — Zero Trust route can take precedence regardless of prefix length |
+| Equal prefix length                           | Zero Trust route wins (by design)                                                     |
+
+Note 
+
+If you need consistent longest-prefix-match across all scenarios, migrate to [Unified Routing](#unified-routing-mode-beta).
+
+#### Cross-system traffic (WAN to Zero Trust or Zero Trust to WAN)
+
+Legacy Routing uses two routing components:
+
+* **Zero Trust routing** (handles Cloudflare One Client, Cloudflare Tunnel, and WARP Connector)
+* **WAN routing** (handles IPsec, GRE, and CNI)
+
+Cross-system traffic follows the same rules as [site-to-site traffic with Gateway](#site-to-site-traffic-with-gateway). A more specific Zero Trust route works correctly; a more specific WAN route is not guaranteed to be selected.
+
+**Recommendation:** If overlap is required, migrate to [Unified Routing](#unified-routing-mode-beta) or contact your account team.
+
+### Check your routing mode
+
+To determine the routing mode for your account:
+
+1. Go to **Routes**.
+[ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+1. Check the banner at the top of the page:
+* **Your account is using Unified Routing mode.** — Your account uses Unified Routing.
+* **Unified routing is available.** — Your account uses Legacy Routing.
+
+To migrate to Unified Routing, contact your account team.
+
 ## Scoping routes to specific regions
 
 If you have multiple connectivity paths to a network segment and want to apply different route prioritization based on where traffic arrives at the Cloudflare network, you can scope routes to specific Cloudflare data center regions. This is useful if you run your own anycast network and want your end-user traffic to arrive at your network location closest to the user.

@@ -71,8 +71,8 @@ Workflows can communicate with Agents through several mechanisms:
 * **State updates**: Modify Agent state via `step.updateAgentState()` or `step.mergeAgentState()`, which broadcasts to connected clients
 * **Client broadcasts**: Send messages to all WebSocket clients via `this.broadcastToClients()`
 
-* [  JavaScript ](#tab-panel-2836)
-* [  TypeScript ](#tab-panel-2837)
+* [  JavaScript ](#tab-panel-2852)
+* [  TypeScript ](#tab-panel-2853)
 
 JavaScript
 
@@ -166,8 +166,8 @@ When an Agent starts a workflow using `runWorkflow()`, the workflow is automatic
 
 An Agent receives a request, starts a Workflow for heavy processing, and broadcasts progress updates to connected clients as the Workflow executes each step.
 
-* [  JavaScript ](#tab-panel-2838)
-* [  TypeScript ](#tab-panel-2839)
+* [  JavaScript ](#tab-panel-2854)
+* [  TypeScript ](#tab-panel-2855)
 
 JavaScript
 
@@ -227,8 +227,8 @@ A Workflow prepares a request, pauses to wait for approval using `waitForApprova
 
 A Workflow wraps external API calls in durable steps with retry logic. If the API fails or the workflow restarts, completed calls are not repeated and failed calls retry automatically.
 
-* [  JavaScript ](#tab-panel-2840)
-* [  TypeScript ](#tab-panel-2841)
+* [  JavaScript ](#tab-panel-2856)
+* [  TypeScript ](#tab-panel-2857)
 
 JavaScript
 

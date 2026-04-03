@@ -20,7 +20,7 @@ Once you have chosen a domain to scan, Email security allows you to monitor the 
 
 Note
 
-With Email security, you can enable logs to send detection data to an endpoint of your choice. Refer to [Enable Email security logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/) for more information.
+With Email security, you can enable logs to send detection data to an endpoint of your choice. Refer to [Enable Email security logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) for more information.
 
 To monitor your inbox:
 

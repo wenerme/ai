@@ -50,8 +50,8 @@ The current version is [@cloudflare/puppeteer v1.0.4 ↗](https://github.com/clo
 
 Once the [browser binding](https://developers.cloudflare.com/browser-rendering/reference/wrangler/#bindings) is configured and the `@cloudflare/puppeteer` library is installed, Puppeteer can be used in a Worker:
 
-* [  JavaScript ](#tab-panel-3238)
-* [  TypeScript ](#tab-panel-3239)
+* [  JavaScript ](#tab-panel-3254)
+* [  TypeScript ](#tab-panel-3255)
 
 JavaScript
 

@@ -63,8 +63,8 @@ When you format a CSV file for upload:
 
 To upload the list to Cloudflare One:
 
-* [ Dashboard ](#tab-panel-3629)
-* [ Terraform (v5) ](#tab-panel-3630)
+* [ Dashboard ](#tab-panel-3645)
+* [ Terraform (v5) ](#tab-panel-3646)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -95,9 +95,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-3631)
-* [ API ](#tab-panel-3632)
-* [ Terraform (v5) ](#tab-panel-3633)
+* [ Dashboard ](#tab-panel-3647)
+* [ API ](#tab-panel-3648)
+* [ Terraform (v5) ](#tab-panel-3649)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

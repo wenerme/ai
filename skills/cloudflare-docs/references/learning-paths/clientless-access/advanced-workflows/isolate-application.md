@@ -69,8 +69,8 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-5054)
-* [ API ](#tab-panel-5055)
+* [ Dashboard ](#tab-panel-5070)
+* [ API ](#tab-panel-5071)
 
 | Action  | Rule type                                                                                                                                             | Selector                 | Value     |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------- |
@@ -138,8 +138,8 @@ To create a list of serial numbers, refer to [Create Zero Trust list](https://de
 
 **Policy 2: Allow and isolate contractors**
 
-* [ Dashboard ](#tab-panel-5056)
-* [ API ](#tab-panel-5057)
+* [ Dashboard ](#tab-panel-5072)
+* [ API ](#tab-panel-5073)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -208,8 +208,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-* [ Dashboard ](#tab-panel-5058)
-* [ API ](#tab-panel-5059)
+* [ Dashboard ](#tab-panel-5074)
+* [ API ](#tab-panel-5075)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -346,8 +346,8 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-5060)
-* [ API ](#tab-panel-5061)
+* [ Dashboard ](#tab-panel-5076)
+* [ API ](#tab-panel-5077)
 
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |

@@ -45,8 +45,8 @@ npm i -D drizzle-kit tsx @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4681)
-* [  wrangler.toml ](#tab-panel-4682)
+* [  wrangler.jsonc ](#tab-panel-4697)
+* [  wrangler.toml ](#tab-panel-4698)
 
 ```
 

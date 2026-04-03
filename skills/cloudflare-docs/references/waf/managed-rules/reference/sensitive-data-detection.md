@@ -48,8 +48,8 @@ Note
 
 Requires an Enterprise plan.
 
-* [  New dashboard ](#tab-panel-6858)
-* [ Old dashboard ](#tab-panel-6859)
+* [  New dashboard ](#tab-panel-6874)
+* [ Old dashboard ](#tab-panel-6875)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -78,8 +78,8 @@ You can configure (or override) the following Cloudflare Sensitive Data Detectio
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
-* [  New dashboard ](#tab-panel-6860)
-* [ Old dashboard ](#tab-panel-6861)
+* [  New dashboard ](#tab-panel-6876)
+* [ Old dashboard ](#tab-panel-6877)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -107,8 +107,8 @@ Setting the rule status for specific tags affects all current and future rules w
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
-* [  New dashboard ](#tab-panel-6862)
-* [ Old dashboard ](#tab-panel-6863)
+* [  New dashboard ](#tab-panel-6878)
+* [ Old dashboard ](#tab-panel-6879)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -149,8 +149,8 @@ You can configure (or override) the following setting in the dashboard for the s
 
 Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
-* [  New dashboard ](#tab-panel-6864)
-* [ Old dashboard ](#tab-panel-6865)
+* [  New dashboard ](#tab-panel-6880)
+* [ Old dashboard ](#tab-panel-6881)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

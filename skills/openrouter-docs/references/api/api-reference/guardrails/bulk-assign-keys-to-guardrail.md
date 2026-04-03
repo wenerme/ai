@@ -91,8 +91,7 @@ components:
       type: object
       properties:
         assigned_count:
-          type: number
-          format: double
+          type: integer
           description: Number of keys successfully assigned
       required:
         - assigned_count

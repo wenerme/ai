@@ -30,7 +30,7 @@ The following [rate limiting rule](https://developers.cloudflare.com/waf/rate-li
 | Country           | equals         | United States | And |
 | IP Source Address | does not equal | 192.0.0.1     |     |
 
-If you are using the Expression Editor:  
+If you are using the expression editor:  
 `(http.request.uri.path eq "/login" and ip.src.country eq "US" and ip.src ne 192.0.0.1)`
 
 **With the same characteristics:**
@@ -49,7 +49,7 @@ The following [rate limiting rule](https://developers.cloudflare.com/waf/rate-li
 | URI Path       | contains | /product | And |
 | Request Method | equals   | POST     |     |
 
-If you are using the Expression Editor:  
+If you are using the expression editor:  
 `(http.request.uri.path contains "/product" and http.request.method eq "POST")`
 
 **With the same characteristics:**
@@ -88,7 +88,7 @@ The counter with the total score is updated when there is a match for the rate l
 | -------- | -------- | ----------- |
 | URI Path | wildcard | /graphql/\* |
 
-If you are using the Expression Editor:  
+If you are using the expression editor:  
 `(http.request.uri.path wildcard "/graphql/*")`
 
 **With the same characteristics:**

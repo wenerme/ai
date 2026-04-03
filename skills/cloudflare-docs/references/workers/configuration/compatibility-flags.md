@@ -30,8 +30,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-7032)
-* [  wrangler.toml ](#tab-panel-7033)
+* [  wrangler.jsonc ](#tab-panel-7052)
+* [  wrangler.toml ](#tab-panel-7053)
 
 ```
 
@@ -83,8 +83,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7036)
-* [  wrangler.toml ](#tab-panel-7037)
+* [  wrangler.jsonc ](#tab-panel-7056)
+* [  wrangler.toml ](#tab-panel-7057)
 
 ```
 
@@ -116,8 +116,8 @@ compatibility_date = "2026-04-02"
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7030)
-* [  wrangler.toml ](#tab-panel-7031)
+* [  wrangler.jsonc ](#tab-panel-7050)
+* [  wrangler.toml ](#tab-panel-7051)
 
 ```
 
@@ -145,8 +145,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-7034)
-* [  wrangler.toml ](#tab-panel-7035)
+* [  wrangler.jsonc ](#tab-panel-7054)
+* [  wrangler.toml ](#tab-panel-7055)
 
 ```
 

@@ -46,8 +46,8 @@ You must provide either `url` or `html`:
 
 ### Convert a URL to Markdown
 
-* [ curl ](#tab-panel-3248)
-* [ TypeScript SDK ](#tab-panel-3249)
+* [ curl ](#tab-panel-3264)
+* [ TypeScript SDK ](#tab-panel-3265)
 
 This example fetches the Markdown representation of a webpage.
 

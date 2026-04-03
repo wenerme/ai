@@ -38,9 +38,9 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-3930)
-* [ API ](#tab-panel-3931)
-* [ Terraform (v5) ](#tab-panel-3932)
+* [ Dashboard ](#tab-panel-3948)
+* [ API ](#tab-panel-3949)
+* [ Terraform (v5) ](#tab-panel-3950)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

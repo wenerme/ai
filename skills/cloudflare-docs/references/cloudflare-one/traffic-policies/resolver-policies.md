@@ -97,8 +97,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-3905)
-* [ Terraform (v5) ](#tab-panel-3906)
+* [ Dashboard ](#tab-panel-3923)
+* [ Terraform (v5) ](#tab-panel-3924)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

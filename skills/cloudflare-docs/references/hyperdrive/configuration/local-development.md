@@ -72,8 +72,8 @@ npx wrangler dev
 
 Alternatively, you can set `localConnectionString` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4644)
-* [  wrangler.toml ](#tab-panel-4645)
+* [  wrangler.jsonc ](#tab-panel-4660)
+* [  wrangler.toml ](#tab-panel-4661)
 
 ```
 
@@ -126,8 +126,8 @@ This mode is useful for testing how your Worker behaves with Hyperdrive's featur
 
 Configure your Hyperdrive binding in `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-4646)
-* [  wrangler.toml ](#tab-panel-4647)
+* [  wrangler.jsonc ](#tab-panel-4662)
+* [  wrangler.toml ](#tab-panel-4663)
 
 ```
 

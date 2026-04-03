@@ -20,8 +20,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-5094)
-* [ API ](#tab-panel-5095)
+* [ Dashboard ](#tab-panel-5110)
+* [ API ](#tab-panel-5111)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 

@@ -22,8 +22,8 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing is a one-click solution to speed up your global traffic.
 
-* [ Dashboard ](#tab-panel-3172)
-* [ API ](#tab-panel-3173)
+* [ Dashboard ](#tab-panel-3188)
+* [ API ](#tab-panel-3189)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 

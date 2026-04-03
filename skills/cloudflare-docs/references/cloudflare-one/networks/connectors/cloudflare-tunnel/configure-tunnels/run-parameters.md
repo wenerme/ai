@@ -23,9 +23,9 @@ This page lists the configuration flags for the `cloudflared tunnel run` command
 
 Remotely-managed tunnels run as a service on your OS. To add run parameters to the tunnel service file:
 
-* [ Linux ](#tab-panel-3472)
-* [ macOS ](#tab-panel-3473)
-* [ Windows ](#tab-panel-3474)
+* [ Linux ](#tab-panel-3488)
+* [ macOS ](#tab-panel-3489)
+* [ Windows ](#tab-panel-3490)
 
 On Linux, Cloudflare Tunnel installs itself as a system service using `systemctl`. By default, the service will be named `cloudflared.service`. To configure your tunnel on Linux:
 

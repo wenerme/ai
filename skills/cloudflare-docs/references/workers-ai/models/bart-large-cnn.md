@@ -31,8 +31,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1612)
-* [  curl ](#tab-panel-1613)
+* [  TypeScript ](#tab-panel-1628)
+* [  curl ](#tab-panel-1629)
 
 ```
 
@@ -103,8 +103,8 @@ The summarized version of the input text
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1614)
-* [ Output ](#tab-panel-1615)
+* [ Input ](#tab-panel-1630)
+* [ Output ](#tab-panel-1631)
 
 ```
 

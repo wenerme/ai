@@ -31,9 +31,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1675)
-* [  Python ](#tab-panel-1676)
-* [  curl ](#tab-panel-1677)
+* [  TypeScript ](#tab-panel-1691)
+* [  Python ](#tab-panel-1692)
+* [  curl ](#tab-panel-1693)
 
 ```
 
@@ -128,8 +128,8 @@ The text that you want to classify
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1678)
-* [ Output ](#tab-panel-1679)
+* [ Input ](#tab-panel-1694)
+* [ Output ](#tab-panel-1695)
 
 ```
 

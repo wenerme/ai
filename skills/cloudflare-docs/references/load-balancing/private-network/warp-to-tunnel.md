@@ -67,8 +67,8 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-5356)
-* [ API ](#tab-panel-5357)
+* [ Dashboard ](#tab-panel-5372)
+* [ API ](#tab-panel-5373)
 
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 

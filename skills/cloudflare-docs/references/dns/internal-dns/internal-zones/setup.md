@@ -34,8 +34,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-4244)
-* [ API ](#tab-panel-4245)
+* [ Dashboard ](#tab-panel-4260)
+* [ API ](#tab-panel-4261)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

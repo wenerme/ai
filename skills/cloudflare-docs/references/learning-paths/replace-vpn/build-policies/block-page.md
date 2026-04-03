@@ -43,8 +43,8 @@ The Gateway custom block page is a different concept from [Access custom block p
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-* [ Dashboard ](#tab-panel-5112)
-* [ Terraform (v5) ](#tab-panel-5113)
+* [ Dashboard ](#tab-panel-5128)
+* [ Terraform (v5) ](#tab-panel-5129)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
@@ -95,8 +95,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-5110)
-* [ Terraform (v5) ](#tab-panel-5111)
+* [ Dashboard ](#tab-panel-5126)
+* [ Terraform (v5) ](#tab-panel-5127)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.

@@ -24,8 +24,8 @@ DLP not inspecting or blocking content is the most common issue reported. If you
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-3433)
-* [ Terraform (v5) ](#tab-panel-3434)
+* [ Dashboard ](#tab-panel-3449)
+* [ Terraform (v5) ](#tab-panel-3450)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

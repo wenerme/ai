@@ -24,8 +24,8 @@ Use outbound Workers to route requests to Workers functions and their bindings (
 
 Use `outbound` to intercept outbound HTTP traffic regardless of destination:
 
-* [  JavaScript ](#tab-panel-6433)
-* [  TypeScript ](#tab-panel-6434)
+* [  JavaScript ](#tab-panel-6449)
+* [  TypeScript ](#tab-panel-6450)
 
 JavaScript
 
@@ -93,8 +93,8 @@ Even though this is just using HTTP, traffic to Workers is secure and runs on th
 
 Use `outboundByHost` to map specific domain names or IP addresses to handler functions:
 
-* [  JavaScript ](#tab-panel-6435)
-* [  TypeScript ](#tab-panel-6436)
+* [  JavaScript ](#tab-panel-6451)
+* [  TypeScript ](#tab-panel-6452)
 
 JavaScript
 
@@ -158,8 +158,8 @@ If you define both, `outboundByHost` handlers take precedence over the catch-all
 
 Outbound handlers have access to your Worker's bindings. Route sandbox traffic to internal platform resources without changing application code.
 
-* [  JavaScript ](#tab-panel-6441)
-* [  TypeScript ](#tab-panel-6442)
+* [  JavaScript ](#tab-panel-6457)
+* [  TypeScript ](#tab-panel-6458)
 
 JavaScript
 
@@ -247,8 +247,8 @@ The sandbox calls `http://my.kv/some-key` and the outbound handler resolves it u
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-6437)
-* [  TypeScript ](#tab-panel-6438)
+* [  JavaScript ](#tab-panel-6453)
+* [  TypeScript ](#tab-panel-6454)
 
 JavaScript
 
@@ -310,8 +310,8 @@ You can also use `containerId` to apply different rules per sandbox instance —
 
 Use `outboundHandlers` to define named handlers, then assign them to specific hosts at runtime using `setOutboundByHost()`. You can also apply a handler globally with `setOutboundHandler()`.
 
-* [  JavaScript ](#tab-panel-6439)
-* [  TypeScript ](#tab-panel-6440)
+* [  JavaScript ](#tab-panel-6455)
+* [  TypeScript ](#tab-panel-6456)
 
 JavaScript
 
@@ -373,8 +373,8 @@ return new Response(value ?? "", { status: value ? 200 : 404 });
 
 Apply handlers to hosts programmatically from your Worker:
 
-* [  JavaScript ](#tab-panel-6443)
-* [  TypeScript ](#tab-panel-6444)
+* [  JavaScript ](#tab-panel-6459)
+* [  TypeScript ](#tab-panel-6460)
 
 JavaScript
 

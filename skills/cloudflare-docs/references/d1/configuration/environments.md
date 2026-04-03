@@ -20,8 +20,8 @@ Copy page
 
 To specify different D1 databases for different environments, use the following syntax in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4035)
-* [  wrangler.toml ](#tab-panel-4036)
+* [  wrangler.jsonc ](#tab-panel-4053)
+* [  wrangler.toml ](#tab-panel-4054)
 
 ```
 
@@ -104,8 +104,8 @@ In the code above, the `staging` environment is using a different database (`DAT
 
 If you need to specify different D1 databases for different environments, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) may contain bindings that resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-4033)
-* [  wrangler.toml ](#tab-panel-4034)
+* [  wrangler.jsonc ](#tab-panel-4051)
+* [  wrangler.toml ](#tab-panel-4052)
 
 ```
 
@@ -183,8 +183,8 @@ Therefore, the above binding is equivalent to:
 
 ### Example
 
-* [  wrangler.jsonc ](#tab-panel-4037)
-* [  wrangler.toml ](#tab-panel-4038)
+* [  wrangler.jsonc ](#tab-panel-4055)
+* [  wrangler.toml ](#tab-panel-4056)
 
 ```
 

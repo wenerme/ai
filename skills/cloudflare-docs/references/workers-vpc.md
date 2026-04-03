@@ -28,8 +28,8 @@ Note
 
 Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
 
-* [ index.ts ](#tab-panel-6945)
-* [ wrangler.jsonc ](#tab-panel-6946)
+* [ index.ts ](#tab-panel-6961)
+* [ wrangler.jsonc ](#tab-panel-6962)
 
 TypeScript
 

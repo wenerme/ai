@@ -49,8 +49,8 @@ Account owners that want to [use their own IP prefix](https://developers.cloudfl
 
 1. Create ACNS names and sets:
 
-* [ Dashboard ](#tab-panel-4268)
-* [ API ](#tab-panel-4269)
+* [ Dashboard ](#tab-panel-4284)
+* [ API ](#tab-panel-4285)
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
@@ -82,8 +82,8 @@ Cloudflare will assign an IPv4 and an IPv6 address to each ACNS name, and these 
 
 1. Choose an ACNS set as custom nameservers for a zone:
 
-* [ Dashboard ](#tab-panel-4262)
-* [ API ](#tab-panel-4263)
+* [ Dashboard ](#tab-panel-4278)
+* [ API ](#tab-panel-4279)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -102,8 +102,8 @@ Use the endpoint [Update DNS Settings for a Zone](https://developers.cloudflare.
 
 To make ACNS the default option for all new zones added to your account from now on:
 
-* [ Dashboard ](#tab-panel-4266)
-* [ API ](#tab-panel-4267)
+* [ Dashboard ](#tab-panel-4282)
+* [ API ](#tab-panel-4283)
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)
@@ -136,8 +136,8 @@ Use the endpoint [Update DNS Settings for an Account](https://developers.cloudfl
 
 To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 
-* [ Dashboard ](#tab-panel-4260)
-* [ API ](#tab-panel-4261)
+* [ Dashboard ](#tab-panel-4276)
+* [ API ](#tab-panel-4277)
 
 * If you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to set your nameservers back to the regular Cloudflare branded nameservers.
 * If you are not using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/), modify the domain's registrar to use your regular Cloudflare branded nameservers.
@@ -149,8 +149,8 @@ To remove ACNS from a zone, first update your nameservers to stop using ACNS:
 
 Following the [configuration conditions](#configuration-conditions), each set must have between two and five different nameserver names. When you delete all names or leave a set with only one nameserver name, the set will no longer be listed as an option for the zones in your account.
 
-* [ Dashboard ](#tab-panel-4264)
-* [ API ](#tab-panel-4265)
+* [ Dashboard ](#tab-panel-4280)
+* [ API ](#tab-panel-4281)
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.  
 [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)

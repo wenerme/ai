@@ -18,8 +18,8 @@ The Web Application Firewall provides the following [phases](https://developers.
 
 These phases exist both at the account level and at the zone level. Considering the available phases and the two different levels, rules will be evaluated in the following order:
 
-* [  New dashboard ](#tab-panel-6872)
-* [ Old dashboard ](#tab-panel-6873)
+* [  New dashboard ](#tab-panel-6888)
+* [ Old dashboard ](#tab-panel-6889)
 
 | Security feature                                                                                | Scope   | Phase                            | Ruleset kind                 | Location in the dashboard                                                                                               |
 | ----------------------------------------------------------------------------------------------- | ------- | -------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |

@@ -69,12 +69,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 ## 3\. (Optional) Verify the client certificate
 
 1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-3655)  
-   * [ macOS ](#tab-panel-3656)  
-   * [ Linux ](#tab-panel-3657)  
-   * [ iOS ](#tab-panel-3658)  
-   * [ Android ](#tab-panel-3659)  
-   * [ ChromeOS ](#tab-panel-3660)  
+   * [ Windows ](#tab-panel-3671)  
+   * [ macOS ](#tab-panel-3672)  
+   * [ Linux ](#tab-panel-3673)  
+   * [ iOS ](#tab-panel-3674)  
+   * [ Android ](#tab-panel-3675)  
+   * [ ChromeOS ](#tab-panel-3676)  
    1. Open the **Start** menu and select **Run**.  
    2. Enter `certlm.msc`.  
    3. Go to **Personal** \> **Certificates**.  

@@ -69,9 +69,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-4439)
-* [  TypeScript ](#tab-panel-4440)
-* [  Python ](#tab-panel-4441)
+* [  JavaScript ](#tab-panel-4455)
+* [  TypeScript ](#tab-panel-4456)
+* [  Python ](#tab-panel-4457)
 
 JavaScript
 
@@ -298,8 +298,8 @@ self.ctx = state
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4448)
-* [  wrangler.toml ](#tab-panel-4449)
+* [  wrangler.jsonc ](#tab-panel-4464)
+* [  wrangler.toml ](#tab-panel-4465)
 
 ```
 
@@ -391,8 +391,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-4452)
-* [  TypeScript ](#tab-panel-4453)
+* [  JavaScript ](#tab-panel-4468)
+* [  TypeScript ](#tab-panel-4469)
 
 JavaScript
 
@@ -579,8 +579,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-4454)
-* [  TypeScript ](#tab-panel-4455)
+* [  JavaScript ](#tab-panel-4470)
+* [  TypeScript ](#tab-panel-4471)
 
 JavaScript
 
@@ -743,9 +743,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-4442)
-* [  TypeScript ](#tab-panel-4443)
-* [  Python ](#tab-panel-4444)
+* [  JavaScript ](#tab-panel-4458)
+* [  TypeScript ](#tab-panel-4459)
+* [  Python ](#tab-panel-4460)
 
 JavaScript
 
@@ -967,9 +967,9 @@ headers={
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-4445)
-* [  TypeScript ](#tab-panel-4446)
-* [  Python ](#tab-panel-4447)
+* [  JavaScript ](#tab-panel-4461)
+* [  TypeScript ](#tab-panel-4462)
+* [  Python ](#tab-panel-4463)
 
 JavaScript
 
@@ -1208,8 +1208,8 @@ self.currently_connected_websockets = 0
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4450)
-* [  wrangler.toml ](#tab-panel-4451)
+* [  wrangler.jsonc ](#tab-panel-4466)
+* [  wrangler.toml ](#tab-panel-4467)
 
 ```
 

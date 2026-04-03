@@ -34,8 +34,8 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-6227)
-* [  TypeScript ](#tab-panel-6228)
+* [  JavaScript ](#tab-panel-6243)
+* [  TypeScript ](#tab-panel-6244)
 
 JavaScript
 
@@ -99,8 +99,8 @@ console.log('Status:', server.status); // 'running'
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-6229)
-* [  TypeScript ](#tab-panel-6230)
+* [  JavaScript ](#tab-panel-6245)
+* [  TypeScript ](#tab-panel-6246)
 
 JavaScript
 
@@ -162,8 +162,8 @@ console.log('API server started');
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-6235)
-* [  TypeScript ](#tab-panel-6236)
+* [  JavaScript ](#tab-panel-6251)
+* [  TypeScript ](#tab-panel-6252)
 
 JavaScript
 
@@ -221,8 +221,8 @@ const isRunning = processes.some(p => p.id === processId && p.status === 'runnin
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-6225)
-* [  TypeScript ](#tab-panel-6226)
+* [  JavaScript ](#tab-panel-6241)
+* [  TypeScript ](#tab-panel-6242)
 
 JavaScript
 
@@ -260,8 +260,8 @@ console.log('Server is ready');
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-6231)
-* [  TypeScript ](#tab-panel-6232)
+* [  JavaScript ](#tab-panel-6247)
+* [  TypeScript ](#tab-panel-6248)
 
 JavaScript
 
@@ -299,8 +299,8 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-6237)
-* [  TypeScript ](#tab-panel-6238)
+* [  JavaScript ](#tab-panel-6253)
+* [  TypeScript ](#tab-panel-6254)
 
 JavaScript
 
@@ -352,8 +352,8 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-6233)
-* [  TypeScript ](#tab-panel-6234)
+* [  JavaScript ](#tab-panel-6249)
+* [  TypeScript ](#tab-panel-6250)
 
 JavaScript
 
@@ -381,8 +381,8 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-6239)
-* [  TypeScript ](#tab-panel-6240)
+* [  JavaScript ](#tab-panel-6255)
+* [  TypeScript ](#tab-panel-6256)
 
 JavaScript
 
@@ -430,8 +430,8 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-6241)
-* [  TypeScript ](#tab-panel-6242)
+* [  JavaScript ](#tab-panel-6257)
+* [  TypeScript ](#tab-panel-6258)
 
 JavaScript
 
@@ -477,8 +477,8 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-6247)
-* [  TypeScript ](#tab-panel-6248)
+* [  JavaScript ](#tab-panel-6263)
+* [  TypeScript ](#tab-panel-6264)
 
 JavaScript
 
@@ -550,8 +550,8 @@ console.log('All services running');
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-6249)
-* [  TypeScript ](#tab-panel-6250)
+* [  JavaScript ](#tab-panel-6265)
+* [  TypeScript ](#tab-panel-6266)
 
 JavaScript
 
@@ -705,8 +705,8 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-6245)
-* [  TypeScript ](#tab-panel-6246)
+* [  JavaScript ](#tab-panel-6261)
+* [  TypeScript ](#tab-panel-6262)
 
 JavaScript
 
@@ -756,8 +756,8 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-6243)
-* [  TypeScript ](#tab-panel-6244)
+* [  JavaScript ](#tab-panel-6259)
+* [  TypeScript ](#tab-panel-6260)
 
 JavaScript
 

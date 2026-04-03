@@ -72,8 +72,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3236)
-* [  wrangler.toml ](#tab-panel-3237)
+* [  wrangler.jsonc ](#tab-panel-3252)
+* [  wrangler.toml ](#tab-panel-3253)
 
 ```
 

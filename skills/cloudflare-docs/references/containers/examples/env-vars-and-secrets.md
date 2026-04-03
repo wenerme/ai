@@ -119,8 +119,8 @@ For full details on how to create secrets, see the [Workers Secrets documentatio
 
 Next, we need to add bindings to access our secrets, KV values, and environment variables in Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-3997)
-* [  wrangler.toml ](#tab-panel-3998)
+* [  wrangler.jsonc ](#tab-panel-4015)
+* [  wrangler.toml ](#tab-panel-4016)
 
 ```
 

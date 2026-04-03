@@ -26,12 +26,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-6069)
-* [ Code Interpreter ](#tab-panel-6070)
-* [ File Operations ](#tab-panel-6071)
-* [ File Watching ](#tab-panel-6072)
-* [ Terminal Access ](#tab-panel-6073)
-* [ WebSocket Connections ](#tab-panel-6074)
+* [ Execute Commands ](#tab-panel-6085)
+* [ Code Interpreter ](#tab-panel-6086)
+* [ File Operations ](#tab-panel-6087)
+* [ File Watching ](#tab-panel-6088)
+* [ Terminal Access ](#tab-panel-6089)
+* [ WebSocket Connections ](#tab-panel-6090)
 
 TypeScript
 

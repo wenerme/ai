@@ -32,8 +32,8 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-* [ Dashboard ](#tab-panel-3453)
-* [ Terraform (v5) ](#tab-panel-3454)
+* [ Dashboard ](#tab-panel-3469)
+* [ Terraform (v5) ](#tab-panel-3470)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.

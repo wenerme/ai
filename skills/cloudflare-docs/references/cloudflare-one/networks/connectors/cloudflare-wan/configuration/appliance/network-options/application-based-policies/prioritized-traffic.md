@@ -92,8 +92,8 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-3579)
-* [ API ](#tab-panel-3580)
+* [ Dashboard ](#tab-panel-3595)
+* [ API ](#tab-panel-3596)
 
 1. Log in to the [Cloudflare One dashboard](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -168,8 +168,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-3577)
-* [ API ](#tab-panel-3578)
+* [ Dashboard ](#tab-panel-3593)
+* [ API ](#tab-panel-3594)
 
 1. Log in to the [Cloudflare One dashboard](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

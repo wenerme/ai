@@ -36,8 +36,8 @@ With Workers KV, the data is persisted by default to [central stores](https://de
 
 In the following `index.ts` file, the Worker fetches data from an external server and caches the response in Workers KV. If the data is already cached in Workers KV, the Worker reads the cached data from Workers KV instead of calling the external API.
 
-* [ index.ts ](#tab-panel-4972)
-* [ wrangler.jsonc ](#tab-panel-4973)
+* [ index.ts ](#tab-panel-4988)
+* [ wrangler.jsonc ](#tab-panel-4989)
 
 index.ts
 

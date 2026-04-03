@@ -20,10 +20,12 @@ By default, Cloudflare allows requests on a [number of different HTTP ports](htt
 
 You can target requests based on their HTTP port with the [cf.edge.server\_port](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.edge.server%5Fport/) field. Use the `in` [comparison operator](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) to target a set of ports.
 
-This example custom rule blocks requests to `www.example.com` that are not on ports `80` or `443`:
+This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests to `www.example.com` that are not on ports `80` or `443`:
 
-* **Expression**: `(http.host eq "www.example.com" and not cf.edge.server_port in {80 443})`
-* **Action**: _Block_
+* **When incoming requests match**:  
+Use the expression editor:  
+`(http.host eq "www.example.com" and not cf.edge.server_port in {80 443})`
+* **Then take action**: _Block_
 
 Open server ports and blocked traffic
 

@@ -36,8 +36,8 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 ## Set up Secondary DNS override
 
-* [ Dashboard ](#tab-panel-4312)
-* [ API ](#tab-panel-4313)
+* [ Dashboard ](#tab-panel-4328)
+* [ API ](#tab-panel-4329)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

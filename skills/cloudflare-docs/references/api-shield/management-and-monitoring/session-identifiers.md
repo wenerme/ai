@@ -30,8 +30,8 @@ You must have specific entitlements to configure session identifiers or cookies 
 
 ## To set up session identifiers
 
-* [  New dashboard ](#tab-panel-3138)
-* [ Old dashboard ](#tab-panel-3139)
+* [  New dashboard ](#tab-panel-3154)
+* [ Old dashboard ](#tab-panel-3155)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

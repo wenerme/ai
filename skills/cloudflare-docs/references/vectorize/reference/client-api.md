@@ -342,8 +342,8 @@ Bindings are defined in either the [Wrangler configuration file](https://develop
 
 Vectorize indexes are bound by name. A binding for an index named `production-doc-search` would resemble the below:
 
-* [  wrangler.jsonc ](#tab-panel-6723)
-* [  wrangler.toml ](#tab-panel-6724)
+* [  wrangler.jsonc ](#tab-panel-6739)
+* [  wrangler.toml ](#tab-panel-6740)
 
 ```
 

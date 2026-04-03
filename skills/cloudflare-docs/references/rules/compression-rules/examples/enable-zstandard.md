@@ -18,8 +18,8 @@ Copy page
 
 Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.
 
-* [ Dashboard ](#tab-panel-5973)
-* [ API ](#tab-panel-5974)
+* [ Dashboard ](#tab-panel-5989)
+* [ API ](#tab-panel-5990)
 
 The following example rule will turn on Zstandard compression for response content types where [Cloudflare applies compression by default](https://developers.cloudflare.com/speed/optimization/content/compression/). If the client does not support Zstandard compression, it will use Brotli or Gzip compression as a fallback.
 

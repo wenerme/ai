@@ -41,8 +41,8 @@ If your project uses [environments](https://developers.cloudflare.com/workers/wr
 
 Example of a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7093)
-* [  wrangler.toml ](#tab-panel-7094)
+* [  wrangler.jsonc ](#tab-panel-7113)
+* [  wrangler.toml ](#tab-panel-7114)
 
 ```
 
@@ -127,8 +127,8 @@ This means that you should use gitignore semantics when declaring which director
 
 If you want to include only a certain set of files or directories in your `bucket`, you can add an `include` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7089)
-* [  wrangler.toml ](#tab-panel-7090)
+* [  wrangler.jsonc ](#tab-panel-7109)
+* [  wrangler.toml ](#tab-panel-7110)
 
 ```
 
@@ -168,8 +168,8 @@ Wrangler will only upload files or directories matching the patterns in the `inc
 
 If you want to exclude files or directories in your `bucket`, you can add an `exclude` field to your `[site]` section of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7091)
-* [  wrangler.toml ](#tab-panel-7092)
+* [  wrangler.jsonc ](#tab-panel-7111)
+* [  wrangler.toml ](#tab-panel-7112)
 
 ```
 

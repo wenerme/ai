@@ -50,8 +50,8 @@ Administrators typically start with Analytics Dashboards because they offer:
    * Visibility into trends, provided through time-series graphs, to track the evolution of key metrics (such as [DNS queries](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#dns-query-analytics), [network sessions](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#network-session-analytics), [HTTP requests](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/#http-request-analytics), and [CASB posture/content findings](https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/)) over time.
 2. Use [Logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/) as needed for event-level verification.  
 Use Logs when you need to:  
-   * Investigate a specific event; for example, a user's [failed authentication attempt](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/) when trying to log into an application.  
-   * Validate identity or device details; for example, confirming which user made the request, how they authenticated, and whether their device met required [posture conditions](https://developers.cloudflare.com/cloudflare-one/insights/logs/posture-logs/).  
+   * Investigate a specific event; for example, a user's [failed authentication attempt](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) when trying to log into an application.  
+   * Validate identity or device details; for example, confirming which user made the request, how they authenticated, and whether their device met required [posture conditions](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/).  
    * Confirm policy matches; for example, verifying which [specific rule](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) allowed, blocked, or challenged a user's request and why it was applied.
 
 ### User-reported issues

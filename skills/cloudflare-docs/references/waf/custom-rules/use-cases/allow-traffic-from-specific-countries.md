@@ -16,10 +16,15 @@ Copy page
 
 # Allow traffic from specific countries only
 
-This example custom rule blocks requests based on country code using the [ip.src.country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/) field, only allowing requests from two countries: United States and Mexico.
+This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) blocks requests based on country code using the [ip.src.country](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.country/) field, only allowing requests from two countries: United States and Mexico.
 
-* **Expression**: `(not ip.src.country in {"US" "MX"})`
-* **Action**: _Block_
+* **When incoming requests match**:  
+| Field   | Operator  | Value                 |  
+| ------- | --------- | --------------------- |  
+| Country | is not in | Mexico, United States |  
+If you are using the expression editor:  
+`(not ip.src.country in {"US" "MX"})`
+* **Then take action**: _Block_
 
 ## Other resources
 

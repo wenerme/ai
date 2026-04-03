@@ -34,9 +34,9 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1621)
-* [  Python ](#tab-panel-1622)
-* [  curl ](#tab-panel-1623)
+* [  TypeScript ](#tab-panel-1637)
+* [  Python ](#tab-panel-1638)
+* [  curl ](#tab-panel-1639)
 
 ```
 
@@ -195,8 +195,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1624)
-* [ Output ](#tab-panel-1625)
+* [ Input ](#tab-panel-1640)
+* [ Output ](#tab-panel-1641)
 
 ```
 

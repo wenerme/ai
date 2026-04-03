@@ -46,8 +46,8 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-6075)
-* [  TypeScript ](#tab-panel-6076)
+* [  JavaScript ](#tab-panel-6091)
+* [  TypeScript ](#tab-panel-6092)
 
 JavaScript
 
@@ -142,8 +142,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-6077)
-* [  TypeScript ](#tab-panel-6078)
+* [  JavaScript ](#tab-panel-6093)
+* [  TypeScript ](#tab-panel-6094)
 
 JavaScript
 
@@ -220,8 +220,8 @@ The FUSE mount is lost when the sandbox sleeps or restarts. Re-restore from the 
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-6079)
-* [  TypeScript ](#tab-panel-6080)
+* [  JavaScript ](#tab-panel-6095)
+* [  TypeScript ](#tab-panel-6096)
 
 JavaScript
 
@@ -287,8 +287,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-6081)
-* [  TypeScript ](#tab-panel-6082)
+* [  JavaScript ](#tab-panel-6097)
+* [  TypeScript ](#tab-panel-6098)
 
 JavaScript
 
@@ -344,8 +344,8 @@ try {
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-6083)
-* [  TypeScript ](#tab-panel-6084)
+* [  JavaScript ](#tab-panel-6099)
+* [  TypeScript ](#tab-panel-6100)
 
 JavaScript
 

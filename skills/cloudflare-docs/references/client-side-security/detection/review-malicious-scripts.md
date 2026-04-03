@@ -27,8 +27,8 @@ Cloudflare displays scripts and connections considered malicious at the top of t
 To review the scripts considered malicious:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3308)  
-   * [ Old dashboard ](#tab-panel-3309)  
+   * [  New dashboard ](#tab-panel-3324)  
+   * [ Old dashboard ](#tab-panel-3325)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  
@@ -51,8 +51,8 @@ You can configure alerts for detected malicious scripts. Refer to [Alerts](https
 To review the connections considered malicious:
 
 1. Go to the client-side resources page:  
-   * [  New dashboard ](#tab-panel-3310)  
-   * [ Old dashboard ](#tab-panel-3311)  
+   * [  New dashboard ](#tab-panel-3326)  
+   * [ Old dashboard ](#tab-panel-3327)  
    1. In the Cloudflare dashboard, go to the **Web assets** page.  
    [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)  
    2. Select the **Client-side resources** tab.  

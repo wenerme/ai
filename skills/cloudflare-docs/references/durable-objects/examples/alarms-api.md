@@ -26,8 +26,8 @@ When a request is received and no alarm is set, it sets an alarm for 10 seconds 
 
 If no new requests are received, no further alarms will be set until the next request arrives.
 
-* [  JavaScript ](#tab-panel-4456)
-* [  Python ](#tab-panel-4457)
+* [  JavaScript ](#tab-panel-4472)
+* [  Python ](#tab-panel-4473)
 
 JavaScript
 
@@ -224,8 +224,8 @@ The `alarm()` handler will be called once every 10 seconds. If an unexpected err
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4458)
-* [  wrangler.toml ](#tab-panel-4459)
+* [  wrangler.jsonc ](#tab-panel-4474)
+* [  wrangler.toml ](#tab-panel-4475)
 
 ```
 

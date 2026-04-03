@@ -42,9 +42,9 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-6890)
-* [ Old dashboard ](#tab-panel-6891)
-* [ API ](#tab-panel-6892)
+* [  New dashboard ](#tab-panel-6906)
+* [ Old dashboard ](#tab-panel-6907)
+* [ API ](#tab-panel-6908)
 
 Note
 

@@ -24,8 +24,8 @@ You can connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyp
 
 Hyperdrive can provide the lowest possible latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-7117)
-* [ Neon serverless driver ](#tab-panel-7118)
+* [ Hyperdrive (recommended) ](#tab-panel-7137)
+* [ Neon serverless driver ](#tab-panel-7138)
 
 To connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -62,8 +62,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-7113)
-* [ Wrangler CLI ](#tab-panel-7114)
+* [ Dashboard ](#tab-panel-7133)
+* [ Wrangler CLI ](#tab-panel-7134)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -81,8 +81,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-7111)  
-   * [  wrangler.toml ](#tab-panel-7112)  
+   * [  wrangler.jsonc ](#tab-panel-7131)  
+   * [  wrangler.toml ](#tab-panel-7132)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -166,8 +166,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7115)
-* [  wrangler.toml ](#tab-panel-7116)
+* [  wrangler.jsonc ](#tab-panel-7135)
+* [  wrangler.toml ](#tab-panel-7136)
 
 ```
 

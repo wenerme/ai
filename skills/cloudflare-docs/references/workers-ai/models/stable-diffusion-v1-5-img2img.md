@@ -33,8 +33,8 @@ Stable Diffusion is a latent text-to-image diffusion model capable of generating
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2041)
-* [  curl ](#tab-panel-2042)
+* [  TypeScript ](#tab-panel-2057)
+* [  curl ](#tab-panel-2058)
 
 ```
 
@@ -150,8 +150,8 @@ Random seed for reproducibility of the image generation
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2043)
-* [ Output ](#tab-panel-2044)
+* [ Input ](#tab-panel-2059)
+* [ Output ](#tab-panel-2060)
 
 ```
 

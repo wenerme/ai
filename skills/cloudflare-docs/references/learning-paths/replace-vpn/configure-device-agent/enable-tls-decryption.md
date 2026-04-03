@@ -32,8 +32,8 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 
 ## Enable TLS decryption
 
-* [ Dashboard ](#tab-panel-5139)
-* [ Terraform (v5) ](#tab-panel-5140)
+* [ Dashboard ](#tab-panel-5155)
+* [ Terraform (v5) ](#tab-panel-5156)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

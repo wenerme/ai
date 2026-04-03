@@ -22,12 +22,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-6674)
-* [ macOS ](#tab-panel-6675)
-* [ Debian ](#tab-panel-6676)
-* [ Red Hat ](#tab-panel-6677)
-* [ Docker ](#tab-panel-6678)
-* [ Other ](#tab-panel-6679)
+* [ Windows ](#tab-panel-6690)
+* [ macOS ](#tab-panel-6691)
+* [ Debian ](#tab-panel-6692)
+* [ Red Hat ](#tab-panel-6693)
+* [ Docker ](#tab-panel-6694)
+* [ Other ](#tab-panel-6695)
 
 Run the following command:
 

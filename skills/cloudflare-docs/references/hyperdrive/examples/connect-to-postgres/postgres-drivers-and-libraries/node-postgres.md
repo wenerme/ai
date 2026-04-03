@@ -70,8 +70,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4789)
-* [  wrangler.toml ](#tab-panel-4790)
+* [  wrangler.jsonc ](#tab-panel-4805)
+* [  wrangler.toml ](#tab-panel-4806)
 
 ```
 

@@ -95,8 +95,8 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
 
 1. **Add a Wrangler configuration file.**  
 In your project root, create a Wrangler configuration file with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-7386)  
-   * [  wrangler.toml ](#tab-panel-7387)  
+   * [  wrangler.jsonc ](#tab-panel-7406)  
+   * [  wrangler.toml ](#tab-panel-7407)  
 ```  
   {  
     "name": "my-docusaurus-app",  

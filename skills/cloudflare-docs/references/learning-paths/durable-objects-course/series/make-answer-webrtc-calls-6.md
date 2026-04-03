@@ -9,8 +9,8 @@ Copy page
 
 # Make and answer WebRTC calls
 
-* [ Watch this episode ](#tab-panel-5082)
-* [ Series overview ](#tab-panel-5083)
+* [ Watch this episode ](#tab-panel-5098)
+* [ Series overview ](#tab-panel-5099)
 
 In this video, we build on the frontend we set up earlier by adding functionality for making and answering WebRTC video calls. You will learn how to create peer-to-peer connections, handle ICE candidates, and seamlessly send and receive video streams between users.
 

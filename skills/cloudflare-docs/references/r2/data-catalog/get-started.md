@@ -34,8 +34,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-5750)
-* [ Dashboard ](#tab-panel-5751)
+* [ Wrangler CLI ](#tab-panel-5766)
+* [ Dashboard ](#tab-panel-5767)
 
 1. If not already logged in, run:  
 ```  
@@ -54,8 +54,8 @@ npx wrangler r2 bucket create r2-data-catalog-tutorial
 
 ## 2\. Enable the data catalog for your bucket
 
-* [ Wrangler CLI ](#tab-panel-5752)
-* [ Dashboard ](#tab-panel-5753)
+* [ Wrangler CLI ](#tab-panel-5768)
+* [ Dashboard ](#tab-panel-5769)
 
 Then, enable the catalog on your chosen R2 bucket:
 

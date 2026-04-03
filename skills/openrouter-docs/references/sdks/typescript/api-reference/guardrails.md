@@ -29,7 +29,7 @@ Guardrails endpoints
 
 ## list
 
-List all guardrails for the authenticated user. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+List all guardrails for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -39,6 +39,9 @@ List all guardrails for the authenticated user. [Provisioning key](/docs/guides/
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -62,6 +65,9 @@ import { guardrailsList } from "@openrouter/sdk/funcs/guardrailsList.js";
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -101,7 +107,7 @@ run();
 
 ## create
 
-Create a new guardrail for the authenticated user. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Create a new guardrail for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -111,12 +117,17 @@ Create a new guardrail for the authenticated user. [Provisioning key](/docs/guid
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
 async function run() {
   const result = await openRouter.guardrails.create({
-    name: "My New Guardrail",
+    requestBody: {
+      name: "My New Guardrail",
+    },
   });
 
   console.log(result);
@@ -136,12 +147,17 @@ import { guardrailsCreate } from "@openrouter/sdk/funcs/guardrailsCreate.js";
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
 async function run() {
   const res = await guardrailsCreate(openRouter, {
-    name: "My New Guardrail",
+    requestBody: {
+      name: "My New Guardrail",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -178,7 +194,7 @@ run();
 
 ## get
 
-Get a single guardrail by ID. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Get a single guardrail by ID. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -188,6 +204,9 @@ Get a single guardrail by ID. [Provisioning key](/docs/guides/overview/auth/prov
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -213,6 +232,9 @@ import { guardrailsGet } from "@openrouter/sdk/funcs/guardrailsGet.js";
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -255,7 +277,7 @@ run();
 
 ## update
 
-Update an existing guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Update an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -265,6 +287,9 @@ Update an existing guardrail. [Provisioning key](/docs/guides/overview/auth/prov
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -291,6 +316,9 @@ import { guardrailsUpdate } from "@openrouter/sdk/funcs/guardrailsUpdate.js";
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -335,7 +363,7 @@ run();
 
 ## delete
 
-Delete an existing guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Delete an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -345,6 +373,9 @@ Delete an existing guardrail. [Provisioning key](/docs/guides/overview/auth/prov
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -370,6 +401,9 @@ import { guardrailsDelete } from "@openrouter/sdk/funcs/guardrailsDelete.js";
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -412,7 +446,7 @@ run();
 
 ## listKeyAssignments
 
-List all API key guardrail assignments for the authenticated user. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -422,6 +456,9 @@ List all API key guardrail assignments for the authenticated user. [Provisioning
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -445,6 +482,9 @@ import { guardrailsListKeyAssignments } from "@openrouter/sdk/funcs/guardrailsLi
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -484,7 +524,7 @@ run();
 
 ## listMemberAssignments
 
-List all organization member guardrail assignments for the authenticated user. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -494,6 +534,9 @@ List all organization member guardrail assignments for the authenticated user. [
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -517,6 +560,9 @@ import { guardrailsListMemberAssignments } from "@openrouter/sdk/funcs/guardrail
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -556,7 +602,7 @@ run();
 
 ## listGuardrailKeyAssignments
 
-List all API key assignments for a specific guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+List all API key assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -566,6 +612,9 @@ List all API key assignments for a specific guardrail. [Provisioning key](/docs/
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -591,6 +640,9 @@ import { guardrailsListGuardrailKeyAssignments } from "@openrouter/sdk/funcs/gua
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -633,7 +685,7 @@ run();
 
 ## bulkAssignKeys
 
-Assign multiple API keys to a specific guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Assign multiple API keys to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -643,6 +695,9 @@ Assign multiple API keys to a specific guardrail. [Provisioning key](/docs/guide
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -673,6 +728,9 @@ import { guardrailsBulkAssignKeys } from "@openrouter/sdk/funcs/guardrailsBulkAs
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -721,7 +779,7 @@ run();
 
 ## listGuardrailMemberAssignments
 
-List all organization member assignments for a specific guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+List all organization member assignments for a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -731,6 +789,9 @@ List all organization member assignments for a specific guardrail. [Provisioning
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -756,6 +817,9 @@ import { guardrailsListGuardrailMemberAssignments } from "@openrouter/sdk/funcs/
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -798,7 +862,7 @@ run();
 
 ## bulkAssignMembers
 
-Assign multiple organization members to a specific guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Assign multiple organization members to a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -808,6 +872,9 @@ Assign multiple organization members to a specific guardrail. [Provisioning key]
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -839,6 +906,9 @@ import { guardrailsBulkAssignMembers } from "@openrouter/sdk/funcs/guardrailsBul
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -888,7 +958,7 @@ run();
 
 ## bulkUnassignKeys
 
-Unassign multiple API keys from a specific guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -898,6 +968,9 @@ Unassign multiple API keys from a specific guardrail. [Provisioning key](/docs/g
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -928,6 +1001,9 @@ import { guardrailsBulkUnassignKeys } from "@openrouter/sdk/funcs/guardrailsBulk
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -976,7 +1052,7 @@ run();
 
 ## bulkUnassignMembers
 
-Unassign multiple organization members from a specific guardrail. [Provisioning key](/docs/guides/overview/auth/provisioning-api-keys) required.
+Unassign multiple organization members from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -986,6 +1062,9 @@ Unassign multiple organization members from a specific guardrail. [Provisioning 
 import { OpenRouter } from "@openrouter/sdk";
 
 const openRouter = new OpenRouter({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 
@@ -1017,6 +1096,9 @@ import { guardrailsBulkUnassignMembers } from "@openrouter/sdk/funcs/guardrailsB
 // Use `OpenRouterCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const openRouter = new OpenRouterCore({
+  httpReferer: "<value>",
+  appTitle: "<value>",
+  appCategories: "<value>",
   apiKey: process.env["OPENROUTER_API_KEY"] ?? "",
 });
 

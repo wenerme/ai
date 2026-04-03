@@ -62,8 +62,8 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-6541)
-* [ Windows ](#tab-panel-6542)
+* [ macOS and Linux ](#tab-panel-6557)
+* [ Windows ](#tab-panel-6558)
 
 Terminal window
 

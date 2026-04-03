@@ -26,9 +26,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-3463)
-* [ API ](#tab-panel-3464)
-* [ Terraform (v5) ](#tab-panel-3465)
+* [ Dashboard ](#tab-panel-3479)
+* [ API ](#tab-panel-3480)
+* [ Terraform (v5) ](#tab-panel-3481)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -101,7 +101,7 @@ By design, blocked users will not receive an email. The login page will always s
 
 Note
 
-Access only logs an authentication attempt after the user enters a code. If the user enters their email but never submits a code, the event will not appear in your [audit logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/#authentication-logs).
+Access only logs an authentication attempt after the user enters a code. If the user enters their email but never submits a code, the event will not appear in your [audit logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#authentication-logs).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/one-time-pin/","name":"One-time PIN login"}}]}

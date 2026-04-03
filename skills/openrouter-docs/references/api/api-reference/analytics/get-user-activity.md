@@ -99,20 +99,16 @@ components:
           format: double
           description: BYOK inference cost in USD (external credits spent)
         requests:
-          type: number
-          format: double
+          type: integer
           description: Number of requests made
         prompt_tokens:
-          type: number
-          format: double
+          type: integer
           description: Total prompt tokens used
         completion_tokens:
-          type: number
-          format: double
+          type: integer
           description: Total completion tokens generated
         reasoning_tokens:
-          type: number
-          format: double
+          type: integer
           description: Total reasoning tokens used
       required:
         - date

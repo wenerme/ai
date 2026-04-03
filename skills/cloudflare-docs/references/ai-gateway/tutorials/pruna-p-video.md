@@ -36,8 +36,8 @@ This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/
 
 ## 2\. Create an AI Gateway
 
-* [ Dashboard ](#tab-panel-3054)
-* [ API ](#tab-panel-3055)
+* [ Dashboard ](#tab-panel-3070)
+* [ API ](#tab-panel-3071)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

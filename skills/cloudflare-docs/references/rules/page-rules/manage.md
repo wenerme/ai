@@ -26,8 +26,8 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Create a page rule
 
-* [ Dashboard ](#tab-panel-5997)
-* [ API ](#tab-panel-5998)
+* [ Dashboard ](#tab-panel-6013)
+* [ API ](#tab-panel-6014)
 
 To create a page rule in the dashboard:
 
@@ -53,8 +53,8 @@ Notes
 
 ## Edit a page rule
 
-* [ Dashboard ](#tab-panel-5993)
-* [ API ](#tab-panel-5994)
+* [ Dashboard ](#tab-panel-6009)
+* [ API ](#tab-panel-6010)
 
 To edit a page rule in the dashboard:
 
@@ -70,8 +70,8 @@ To entirely replace the configuration of a page rule, send a [PUT request](https
 
 ## Delete a page rule
 
-* [ Dashboard ](#tab-panel-5995)
-* [ API ](#tab-panel-5996)
+* [ Dashboard ](#tab-panel-6011)
+* [ API ](#tab-panel-6012)
 
 To delete a page rule in the dashboard:
 

@@ -69,8 +69,8 @@ npm install ai zod
 
 Use the standard AI SDK `tool()` function:
 
-* [  JavaScript ](#tab-panel-2282)
-* [  TypeScript ](#tab-panel-2283)
+* [  JavaScript ](#tab-panel-2298)
+* [  TypeScript ](#tab-panel-2299)
 
 JavaScript
 
@@ -164,8 +164,8 @@ const tools = {
 
 `createCodeTool` takes your tools and an executor, and returns a single AI SDK tool:
 
-* [  JavaScript ](#tab-panel-2272)
-* [  TypeScript ](#tab-panel-2273)
+* [  JavaScript ](#tab-panel-2288)
+* [  TypeScript ](#tab-panel-2289)
 
 JavaScript
 
@@ -213,8 +213,8 @@ const codemode = createCodeTool({ tools, executor });
 
 Pass the codemode tool to `streamText` or `generateText` like any other tool. You choose the model:
 
-* [  JavaScript ](#tab-panel-2276)
-* [  TypeScript ](#tab-panel-2277)
+* [  JavaScript ](#tab-panel-2292)
+* [  TypeScript ](#tab-panel-2293)
 
 JavaScript
 
@@ -299,8 +299,8 @@ The code runs in an isolated Worker sandbox, tool calls are dispatched back to t
 
 Add a `worker_loaders` binding to your `wrangler.jsonc`. This is the only binding required:
 
-* [  wrangler.jsonc ](#tab-panel-2270)
-* [  wrangler.toml ](#tab-panel-2271)
+* [  wrangler.jsonc ](#tab-panel-2286)
+* [  wrangler.toml ](#tab-panel-2287)
 
 ```
 
@@ -353,8 +353,8 @@ External `fetch()` and `connect()` are blocked by default — enforced at the Wo
 
 To allow controlled outbound access, pass a `Fetcher`:
 
-* [  JavaScript ](#tab-panel-2274)
-* [  TypeScript ](#tab-panel-2275)
+* [  JavaScript ](#tab-panel-2290)
+* [  TypeScript ](#tab-panel-2291)
 
 JavaScript
 
@@ -394,8 +394,8 @@ const executor = new DynamicWorkerExecutor({
 
 The typical pattern is to create the executor and codemode tool inside an Agent's message handler:
 
-* [  JavaScript ](#tab-panel-2292)
-* [  TypeScript ](#tab-panel-2293)
+* [  JavaScript ](#tab-panel-2308)
+* [  TypeScript ](#tab-panel-2309)
 
 JavaScript
 
@@ -515,8 +515,8 @@ export class MyAgent extends Agent<Env, State> {
 
 MCP tools work the same way — merge them into the tool set:
 
-* [  JavaScript ](#tab-panel-2278)
-* [  TypeScript ](#tab-panel-2279)
+* [  JavaScript ](#tab-panel-2294)
+* [  TypeScript ](#tab-panel-2295)
 
 JavaScript
 
@@ -570,8 +570,8 @@ The `@cloudflare/codemode/mcp` export provides two functions that wrap MCP serve
 
 Wraps an existing MCP server with a single `code` tool. Each upstream tool becomes a typed `codemode.*` method inside the sandbox:
 
-* [  JavaScript ](#tab-panel-2280)
-* [  TypeScript ](#tab-panel-2281)
+* [  JavaScript ](#tab-panel-2296)
+* [  TypeScript ](#tab-panel-2297)
 
 JavaScript
 
@@ -609,8 +609,8 @@ const server = await codeMcpServer({ server: upstreamMcp, executor });
 
 Creates an MCP server with `search` and `execute` tools from an OpenAPI spec. All `$ref` pointers are resolved before being passed to the sandbox, and the host-side `request` handler keeps authentication out of the sandbox:
 
-* [  JavaScript ](#tab-panel-2290)
-* [  TypeScript ](#tab-panel-2291)
+* [  JavaScript ](#tab-panel-2306)
+* [  TypeScript ](#tab-panel-2307)
 
 JavaScript
 
@@ -757,8 +757,8 @@ Code and tool names are normalized and sanitized internally — you do not need 
 
 Generates TypeScript type definitions from your tools. Used internally by `createCodeTool` but exported for custom use (for example, displaying types in a frontend).
 
-* [  JavaScript ](#tab-panel-2286)
-* [  TypeScript ](#tab-panel-2287)
+* [  JavaScript ](#tab-panel-2302)
+* [  TypeScript ](#tab-panel-2303)
 
 JavaScript
 
@@ -806,8 +806,8 @@ const types = generateTypes(myTools);
 
 For JSON Schema inputs that do not depend on the AI SDK, use the main entry point:
 
-* [  JavaScript ](#tab-panel-2284)
-* [  TypeScript ](#tab-panel-2285)
+* [  JavaScript ](#tab-panel-2300)
+* [  TypeScript ](#tab-panel-2301)
 
 JavaScript
 
@@ -837,8 +837,8 @@ const types = generateTypesFromJsonSchema(jsonSchemaToolDescriptors);
 
 Converts tool names into valid JavaScript identifiers.
 
-* [  JavaScript ](#tab-panel-2288)
-* [  TypeScript ](#tab-panel-2289)
+* [  JavaScript ](#tab-panel-2304)
+* [  TypeScript ](#tab-panel-2305)
 
 JavaScript
 

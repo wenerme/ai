@@ -209,8 +209,8 @@ bun add -d wrangler@latest
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-7388)  
-   * [  wrangler.toml ](#tab-panel-7389)  
+   * [  wrangler.jsonc ](#tab-panel-7408)  
+   * [  wrangler.toml ](#tab-panel-7409)  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  

@@ -5,7 +5,7 @@ Any parameter in `callModel` can be a function that computes its value based on 
 Pass a function instead of a static value:
 
 ```typescript
-import { OpenRouter } from '@openrouter/sdk';
+import { OpenRouter } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,

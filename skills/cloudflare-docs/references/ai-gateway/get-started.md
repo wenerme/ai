@@ -70,8 +70,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-3040)
-* [ API ](#tab-panel-3041)
+* [ Dashboard ](#tab-panel-3056)
+* [ API ](#tab-panel-3057)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

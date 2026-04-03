@@ -66,8 +66,8 @@ To create your fallback origin:
 
 1. Designate that record as your fallback origin.
 
-* [ Dashboard ](#tab-panel-3354)
-* [ API ](#tab-panel-3355)
+* [ Dashboard ](#tab-panel-3370)
+* [ API ](#tab-panel-3371)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -113,8 +113,8 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-* [ Dashboard ](#tab-panel-3356)
-* [ API ](#tab-panel-3357)
+* [ Dashboard ](#tab-panel-3372)
+* [ API ](#tab-panel-3373)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

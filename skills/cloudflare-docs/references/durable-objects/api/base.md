@@ -18,9 +18,9 @@ Copy page
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-4334)
-* [  TypeScript ](#tab-panel-4335)
-* [  Python ](#tab-panel-4336)
+* [  JavaScript ](#tab-panel-4350)
+* [  TypeScript ](#tab-panel-4351)
+* [  Python ](#tab-panel-4352)
 
 JavaScript
 
@@ -111,8 +111,8 @@ fetch(request ` Request `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4324)
-* [  TypeScript ](#tab-panel-4325)
+* [  JavaScript ](#tab-panel-4340)
+* [  TypeScript ](#tab-panel-4341)
 
 JavaScript
 
@@ -186,8 +186,8 @@ alarm(alarmInfo? ` AlarmInvocationInfo `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4326)
-* [  TypeScript ](#tab-panel-4327)
+* [  JavaScript ](#tab-panel-4342)
+* [  TypeScript ](#tab-panel-4343)
 
 JavaScript
 
@@ -253,8 +253,8 @@ webSocketMessage(ws ` WebSocket `, message ` string | ArrayBuffer `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4328)
-* [  TypeScript ](#tab-panel-4329)
+* [  JavaScript ](#tab-panel-4344)
+* [  TypeScript ](#tab-panel-4345)
 
 JavaScript
 
@@ -326,8 +326,8 @@ webSocketClose(ws ` WebSocket `, code ` number `, reason ` string `, wasClean ` 
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4330)
-* [  TypeScript ](#tab-panel-4331)
+* [  JavaScript ](#tab-panel-4346)
+* [  TypeScript ](#tab-panel-4347)
 
 JavaScript
 
@@ -388,8 +388,8 @@ webSocketError(ws ` WebSocket `, error ` unknown `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4332)
-* [  TypeScript ](#tab-panel-4333)
+* [  JavaScript ](#tab-panel-4348)
+* [  TypeScript ](#tab-panel-4349)
 
 JavaScript
 

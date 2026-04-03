@@ -281,7 +281,7 @@ Warning
 
 If the override destination IP is unreachable, Gateway still rewrites the destination but does not log the connection. The traffic fails silently with no log entry. Verify that your override IP is reachable before deploying this policy.
 
-Gateway will only log successful override connections in your [network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#network-logs).
+Gateway will only log successful override connections in your [network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs).
 
 ## Selectors
 

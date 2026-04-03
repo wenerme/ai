@@ -22,8 +22,8 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-2394)
-* [  TypeScript ](#tab-panel-2395)
+* [  JavaScript ](#tab-panel-2410)
+* [  TypeScript ](#tab-panel-2411)
 
 JavaScript
 
@@ -145,8 +145,8 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-2398)
-* [  TypeScript ](#tab-panel-2399)
+* [  JavaScript ](#tab-panel-2414)
+* [  TypeScript ](#tab-panel-2415)
 
 JavaScript
 
@@ -294,8 +294,8 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://sdk.vercel.ai/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-2392)
-* [  TypeScript ](#tab-panel-2393)
+* [  JavaScript ](#tab-panel-2408)
+* [  TypeScript ](#tab-panel-2409)
 
 JavaScript
 
@@ -390,8 +390,8 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/api-reference/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-2396)
-* [  TypeScript ](#tab-panel-2397)
+* [  JavaScript ](#tab-panel-2412)
+* [  TypeScript ](#tab-panel-2413)
 
 JavaScript
 

@@ -155,8 +155,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6721)
-* [  wrangler.toml ](#tab-panel-6722)
+* [  wrangler.jsonc ](#tab-panel-6737)
+* [  wrangler.toml ](#tab-panel-6738)
 
 ```
 

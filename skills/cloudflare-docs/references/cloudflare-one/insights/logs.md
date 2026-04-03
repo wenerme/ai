@@ -18,15 +18,8 @@ Copy page
 
 Review detailed logs for your Zero Trust organization.
 
-* [ Access authentication logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/)
-* [ Enable Email security logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/enable-logs/)
-* [ Filter different views ](https://developers.cloudflare.com/cloudflare-one/insights/logs/filter-views/)
-* [ Gateway activity logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/)
-* [ SCIM activity logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/)
-* [ Tunnel audit logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/tunnel-audit-logs/)
-* [ Posture logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/posture-logs/)
+* [ Dashboard logs ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/)
 * [ Logpush integration ](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/)
-* [ Use Logpush with IDS ](https://developers.cloudflare.com/cloudflare-one/insights/logs/use-logpush-with-ids/)
 
 ## Log retention
 

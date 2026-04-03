@@ -34,8 +34,8 @@ For Cloudflare to start prefetching URLs, you will need to [enable the feature](
 
 ### Enable Prefetch URLs
 
-* [ Dashboard ](#tab-panel-6496)
-* [ API ](#tab-panel-6497)
+* [ Dashboard ](#tab-panel-6512)
+* [ API ](#tab-panel-6513)
 
 To enable **Prefetch URLs** in the dashboard:
 

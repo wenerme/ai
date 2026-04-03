@@ -22,12 +22,14 @@ When enabled, [Cloudflare Hotlink Protection](https://developers.cloudflare.com/
 
 You can use custom rules to protect against hotlinking while allowing inline links from your partners. In this case, you will need to disable [Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/) so that partner referrals are not blocked by that feature.
 
-This example custom rule uses the [http.referer](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.referer/) field to target HTTP referrals from partner sites.
+This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) uses the [http.referer](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.referer/) field to target HTTP referrals from partner sites.
 
 The `not` operator matches HTTP referrals that are not from partner sites, and the action blocks them:
 
-* **Expression**: `not (http.referer contains "example.com" or http.referer eq "www.example.net" or http.referer eq "www.cloudflare.com")`
-* **Action**: _Block_
+* **When incoming requests match**:  
+Use the expression editor:  
+`not (http.referer contains "example.com" or http.referer eq "www.example.net" or http.referer eq "www.cloudflare.com")`
+* **Then take action**: _Block_
 
 ## Allow requests from partners using Configuration Rules
 

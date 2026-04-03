@@ -133,8 +133,7 @@ components:
           type: string
           description: The authorization code ID to use in the exchange request
         app_id:
-          type: number
-          format: double
+          type: integer
           description: The application ID associated with this auth code
         created_at:
           type: string

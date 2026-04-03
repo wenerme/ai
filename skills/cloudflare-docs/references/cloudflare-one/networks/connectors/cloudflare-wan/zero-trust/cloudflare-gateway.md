@@ -126,7 +126,7 @@ To check if Gateway is working properly with your Cloudflare WAN connection, ope
 
 If you are still testing Gateway and Cloudflare is not your default route, configure a policy-based route on your router to send traffic to Cloudflare Gateway first.
 
-Confirm there is an entry for the test in [HTTP Gateway Activity Logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#http-logs).
+Confirm there is an entry for the test in [HTTP Gateway Activity Logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#http-logs).
 
 Verify the following details:
 

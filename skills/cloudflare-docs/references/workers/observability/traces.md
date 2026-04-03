@@ -39,8 +39,8 @@ For a full list of instrumented operations , see the [spans and attributes docum
 
 You can configure tracing by setting `observability.traces.enabled = true` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#observability).
 
-* [  wrangler.jsonc ](#tab-panel-7460)
-* [  wrangler.toml ](#tab-panel-7461)
+* [  wrangler.jsonc ](#tab-panel-7480)
+* [  wrangler.toml ](#tab-panel-7481)
 
 ```
 
@@ -102,8 +102,8 @@ The valid sampling range is from `0` to `1`, where `0` indicates zero out of one
 
 If you have not specified a sampling rate, it defaults to `1`, meaning 100% of requests will be traced.
 
-* [  wrangler.jsonc ](#tab-panel-7462)
-* [  wrangler.toml ](#tab-panel-7463)
+* [  wrangler.jsonc ](#tab-panel-7482)
+* [  wrangler.toml ](#tab-panel-7483)
 
 ```
 

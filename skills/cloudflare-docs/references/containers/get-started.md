@@ -143,8 +143,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-4003)
-* [  wrangler.toml ](#tab-panel-4004)
+* [  wrangler.jsonc ](#tab-panel-4021)
+* [  wrangler.toml ](#tab-panel-4022)
 
 ```
 

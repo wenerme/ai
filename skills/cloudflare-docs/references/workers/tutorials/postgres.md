@@ -80,8 +80,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7768)
-* [  wrangler.toml ](#tab-panel-7769)
+* [  wrangler.jsonc ](#tab-panel-7788)
+* [  wrangler.toml ](#tab-panel-7789)
 
 ```
 
@@ -218,8 +218,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7764)
-* [  wrangler.toml ](#tab-panel-7765)
+* [  wrangler.jsonc ](#tab-panel-7784)
+* [  wrangler.toml ](#tab-panel-7785)
 
 ```
 
@@ -605,8 +605,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-7766)
-* [  wrangler.toml ](#tab-panel-7767)
+* [  wrangler.jsonc ](#tab-panel-7786)
+* [  wrangler.toml ](#tab-panel-7787)
 
 ```
 

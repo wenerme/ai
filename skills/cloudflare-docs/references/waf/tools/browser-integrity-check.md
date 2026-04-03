@@ -28,8 +28,8 @@ Browser Integrity Check is enabled by default.
 
 To disable BIC globally for your zone:
 
-* [  New dashboard ](#tab-panel-6874)
-* [ Old dashboard ](#tab-panel-6875)
+* [  New dashboard ](#tab-panel-6890)
+* [ Old dashboard ](#tab-panel-6891)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

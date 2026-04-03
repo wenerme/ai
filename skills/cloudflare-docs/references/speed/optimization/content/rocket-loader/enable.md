@@ -18,8 +18,8 @@ Copy page
 
 To enable or disable Rocket Loader, use the following instructions.
 
-* [ Dashboard ](#tab-panel-6498)
-* [ API ](#tab-panel-6499)
+* [ Dashboard ](#tab-panel-6514)
+* [ API ](#tab-panel-6515)
 
 To enable or disable **Rocket Loader** in the dashboard:
 

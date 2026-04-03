@@ -56,8 +56,8 @@ The first step is to add the MCP server to Cloudflare Access as an OIDC-based Sa
 
 ## 2\. Create an Access policy with a Linked App Token
 
-* [ Dashboard ](#tab-panel-3398)
-* [ API ](#tab-panel-3399)
+* [ Dashboard ](#tab-panel-3414)
+* [ API ](#tab-panel-3415)
 
 1. [Create a new Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy).
 2. Set the policy **Action** to _Service Auth_.

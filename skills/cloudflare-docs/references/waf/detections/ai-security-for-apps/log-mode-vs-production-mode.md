@@ -67,8 +67,8 @@ In log mode:
 
 ### Enable log mode
 
-* [ Dashboard ](#tab-panel-6792)
-* [ API ](#tab-panel-6793)
+* [ Dashboard ](#tab-panel-6808)
+* [ API ](#tab-panel-6809)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -31,8 +31,8 @@ Use `addStyleTag` to inject a `@font-face` rule into the page before capturing y
 
 ### From a CDN URL
 
-* [  JavaScript ](#tab-panel-3216)
-* [  TypeScript ](#tab-panel-3217)
+* [  JavaScript ](#tab-panel-3232)
+* [  TypeScript ](#tab-panel-3233)
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) and a CDN source:
 
@@ -118,8 +118,8 @@ await page.addStyleTag({
 
 The following examples use [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), but this method works the same way with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/).
 
-* [  JavaScript ](#tab-panel-3218)
-* [  TypeScript ](#tab-panel-3219)
+* [  JavaScript ](#tab-panel-3234)
+* [  TypeScript ](#tab-panel-3235)
 
 Example with a Base64-encoded data source:
 

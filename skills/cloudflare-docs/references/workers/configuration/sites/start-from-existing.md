@@ -43,8 +43,8 @@ This command adds/update the following files:
    * `tsconfig.json`: Added if not already there to support writing the Worker in TypeScript.  
    * `src/index.ts`: A basic Cloudflare Worker, written in TypeScript.
 2. Add your site's build/output directory to the Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-7097)  
-   * [  wrangler.toml ](#tab-panel-7098)  
+   * [  wrangler.jsonc ](#tab-panel-7117)  
+   * [  wrangler.toml ](#tab-panel-7118)  
 ```  
 {  
   "site": {  
@@ -68,8 +68,8 @@ npm i -D @cloudflare/kv-asset-handler
 ```
 4. Replace the contents of `src/index.ts` with the following code snippet:
 
-* [  Module Worker ](#tab-panel-7095)
-* [  Service Worker ](#tab-panel-7096)
+* [  Module Worker ](#tab-panel-7115)
+* [  Service Worker ](#tab-panel-7116)
 
 JavaScript
 
@@ -182,8 +182,8 @@ Terminal window
 npx wrangler deploy  
 ```
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.  
-   * [  wrangler.jsonc ](#tab-panel-7099)  
-   * [  wrangler.toml ](#tab-panel-7100)  
+   * [  wrangler.jsonc ](#tab-panel-7119)  
+   * [  wrangler.toml ](#tab-panel-7120)  
 ```  
 {  
   "route": "https://example.com/*"  

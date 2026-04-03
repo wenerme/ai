@@ -125,13 +125,13 @@ the request.
 | Feature | Priority | Standard | Flex | Batch |
 |---|---|---|---|---|
 | **Pricing** | 75-100% more than Standard | Full price | 50% discount | 50% discount |
-| **Latency** | Low (Seconds) | Seconds to minutes | Minutes (1--15 min target) | Up to 24 hours |
+| **Latency** | Seconds | Seconds to minutes | Minutes (1--15 min target) | Up to 24 hours |
 | **Reliability** | High (Non-sheddable) | High / Medium-high | Best-effort (Sheddable) | High (for throughput) |
 | **Interface** | Synchronous | Synchronous | Synchronous | Asynchronous |
 
 ### Key benefits
 
-- **Low latency**: Designed for msec-second response times for interactive, user-facing AI tools.
+- **Low latency**: Designed for second response times for interactive, user-facing AI tools.
 - **High reliability**: Traffic is treated with the highest criticality and is strictly non-sheddable.
 - **Graceful degradation**: Traffic spikes exceeding dynamic limits are automatically downgraded to the Standard tier for processing instead of failing, preventing service outages.
 - **Low friction** : Uses the same synchronous `generateContent` method as the standard and Flex tiers.

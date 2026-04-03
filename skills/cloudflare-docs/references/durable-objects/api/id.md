@@ -66,8 +66,8 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-4339)
-* [  Python ](#tab-panel-4340)
+* [  JavaScript ](#tab-panel-4355)
+* [  Python ](#tab-panel-4356)
 
 JavaScript
 
@@ -115,8 +115,8 @@ Note
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-4341)
-* [  Python ](#tab-panel-4342)
+* [  JavaScript ](#tab-panel-4357)
+* [  Python ](#tab-panel-4358)
 
 JavaScript
 

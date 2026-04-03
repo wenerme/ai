@@ -14,7 +14,7 @@ Add `requireApproval` directly on a tool definition. It accepts a boolean or a f
 ### Always Require Approval
 
 ```typescript
-import { tool } from '@openrouter/sdk';
+import { tool } from '@openrouter/agent';
 import { z } from 'zod';
 
 const sendEmailTool = tool({
@@ -97,7 +97,7 @@ When tools with approval gates are called by the model, the SDK follows this flo
 The `StateAccessor` interface enables any storage backend:
 
 ```typescript
-import type { StateAccessor, ConversationState } from '@openrouter/sdk';
+import type { StateAccessor, ConversationState } from '@openrouter/agent';
 
 interface StateAccessor<TTools> {
   /** Load the current conversation state, or null if none exists */
@@ -155,8 +155,8 @@ The state object tracks everything needed to resume a conversation:
 Here is an end-to-end example showing approval gates with state persistence:
 
 ```typescript
-import { OpenRouter, tool } from '@openrouter/sdk';
-import type { ConversationState, StateAccessor } from '@openrouter/sdk';
+import { OpenRouter, tool } from '@openrouter/agent';
+import type { ConversationState, StateAccessor } from '@openrouter/agent';
 import { z } from 'zod';
 
 // 1. Define a tool with approval required

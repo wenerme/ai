@@ -30,8 +30,8 @@ The `error-callback` option for explicitly rendering widgets and the `data-error
 
 This callback mechanism gives you complete control over how errors are presented to visitors and allows you to implement custom recovery strategies tailored to your application's needs.
 
-* [ Explicit rendering with error callback ](#tab-panel-6715)
-* [ Implicit rendering with error callback ](#tab-panel-6716)
+* [ Explicit rendering with error callback ](#tab-panel-6731)
+* [ Implicit rendering with error callback ](#tab-panel-6732)
 
 JavaScript
 

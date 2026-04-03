@@ -66,8 +66,8 @@ Events are routed to eight named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-2490)
-* [  TypeScript ](#tab-panel-2491)
+* [  JavaScript ](#tab-panel-2506)
+* [  TypeScript ](#tab-panel-2507)
 
 JavaScript
 
@@ -145,8 +145,8 @@ The callback is fully typed — `event` is narrowed to only the event types that
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-2486)
-* [  TypeScript ](#tab-panel-2487)
+* [  JavaScript ](#tab-panel-2502)
+* [  TypeScript ](#tab-panel-2503)
 
 JavaScript
 
@@ -184,8 +184,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-2492)
-* [  TypeScript ](#tab-panel-2493)
+* [  JavaScript ](#tab-panel-2508)
+* [  TypeScript ](#tab-panel-2509)
 
 JavaScript
 
@@ -251,8 +251,8 @@ This gives you structured, filterable observability in production with zero over
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-2494)
-* [  TypeScript ](#tab-panel-2495)
+* [  JavaScript ](#tab-panel-2510)
+* [  TypeScript ](#tab-panel-2511)
 
 JavaScript
 
@@ -323,8 +323,8 @@ class MyAgent extends Agent {
 
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-2488)
-* [  TypeScript ](#tab-panel-2489)
+* [  JavaScript ](#tab-panel-2504)
+* [  TypeScript ](#tab-panel-2505)
 
 JavaScript
 

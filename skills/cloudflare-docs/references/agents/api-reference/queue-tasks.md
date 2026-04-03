@@ -67,8 +67,8 @@ async queue<T>(callback: keyof this, payload: T): Promise<string>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2514)
-* [  TypeScript ](#tab-panel-2515)
+* [  JavaScript ](#tab-panel-2530)
+* [  TypeScript ](#tab-panel-2531)
 
 JavaScript
 
@@ -163,8 +163,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2504)
-* [  TypeScript ](#tab-panel-2505)
+* [  JavaScript ](#tab-panel-2520)
+* [  TypeScript ](#tab-panel-2521)
 
 JavaScript
 
@@ -203,8 +203,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2506)
-* [  TypeScript ](#tab-panel-2507)
+* [  JavaScript ](#tab-panel-2522)
+* [  TypeScript ](#tab-panel-2523)
 
 JavaScript
 
@@ -247,8 +247,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2508)
-* [  TypeScript ](#tab-panel-2509)
+* [  JavaScript ](#tab-panel-2524)
+* [  TypeScript ](#tab-panel-2525)
 
 JavaScript
 
@@ -295,8 +295,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2512)
-* [  TypeScript ](#tab-panel-2513)
+* [  JavaScript ](#tab-panel-2528)
+* [  TypeScript ](#tab-panel-2529)
 
 JavaScript
 
@@ -356,8 +356,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2510)
-* [  TypeScript ](#tab-panel-2511)
+* [  JavaScript ](#tab-panel-2526)
+* [  TypeScript ](#tab-panel-2527)
 
 JavaScript
 
@@ -406,8 +406,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2518)
-* [  TypeScript ](#tab-panel-2519)
+* [  JavaScript ](#tab-panel-2534)
+* [  TypeScript ](#tab-panel-2535)
 
 JavaScript
 
@@ -505,8 +505,8 @@ class MyAgent extends Agent {
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-2516)
-* [  TypeScript ](#tab-panel-2517)
+* [  JavaScript ](#tab-panel-2532)
+* [  TypeScript ](#tab-panel-2533)
 
 JavaScript
 
@@ -584,8 +584,8 @@ class DataProcessor extends Agent {
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-2522)
-* [  TypeScript ](#tab-panel-2523)
+* [  JavaScript ](#tab-panel-2538)
+* [  TypeScript ](#tab-panel-2539)
 
 JavaScript
 
@@ -681,8 +681,8 @@ class BatchProcessor extends Agent {
 
 ## Error handling
 
-* [  JavaScript ](#tab-panel-2520)
-* [  TypeScript ](#tab-panel-2521)
+* [  JavaScript ](#tab-panel-2536)
+* [  TypeScript ](#tab-panel-2537)
 
 JavaScript
 

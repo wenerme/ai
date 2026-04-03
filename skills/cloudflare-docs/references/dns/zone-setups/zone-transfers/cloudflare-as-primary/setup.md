@@ -38,8 +38,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-4304)
-* [ API ](#tab-panel-4305)
+* [ Dashboard ](#tab-panel-4320)
+* [ API ](#tab-panel-4321)
 
 To create a TSIG using the dashboard:
 
@@ -62,8 +62,8 @@ You only need to create a peer DNS server if you want:
 * Your secondary nameservers to receive **NOTIFYs** for changes to your Cloudflare DNS records.
 * A **TSIG** to sign zone transfer requests and **NOTIFYs**.
 
-* [ Dashboard ](#tab-panel-4300)
-* [ API ](#tab-panel-4301)
+* [ Dashboard ](#tab-panel-4316)
+* [ API ](#tab-panel-4317)
 
 To create a peer using the dashboard:
 
@@ -88,8 +88,8 @@ Note
 
 The maximum number of linked peers per zone is 30.
 
-* [ Dashboard ](#tab-panel-4302)
-* [ API ](#tab-panel-4303)
+* [ Dashboard ](#tab-panel-4318)
+* [ API ](#tab-panel-4319)
 
 To link a primary zone to a peer using the dashboard:
 
@@ -121,8 +121,8 @@ Note
 
 If your account [zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) are already defined to have **Multi-provider DNS** enabled, this step may not be necessary.
 
-* [ Dashboard ](#tab-panel-4306)
-* [ API ](#tab-panel-4307)
+* [ Dashboard ](#tab-panel-4322)
+* [ API ](#tab-panel-4323)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -163,8 +163,8 @@ In case you want to keep Cloudflare as the only authoritative DNS provider, do n
 
 When you enable outgoing zone transfers, this will send a DNS NOTIFY message to your secondary DNS provider.
 
-* [ Dashboard ](#tab-panel-4298)
-* [ API ](#tab-panel-4299)
+* [ Dashboard ](#tab-panel-4314)
+* [ API ](#tab-panel-4315)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

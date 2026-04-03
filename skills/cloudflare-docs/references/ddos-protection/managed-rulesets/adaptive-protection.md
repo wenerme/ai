@@ -62,8 +62,8 @@ HTTP Adaptive DDoS Protection rules calculate the traffic profile at the zone-le
 
 To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-4204)
-* [ Old dashboard ](#tab-panel-4205)
+* [  New dashboard ](#tab-panel-4220)
+* [ Old dashboard ](#tab-panel-4221)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -76,8 +76,8 @@ To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 
 To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
-* [  New dashboard ](#tab-panel-4206)
-* [ Old dashboard ](#tab-panel-4207)
+* [  New dashboard ](#tab-panel-4222)
+* [ Old dashboard ](#tab-panel-4223)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)

@@ -54,8 +54,8 @@ New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn 
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3206)
-* [ Old dashboard ](#tab-panel-3207)
+* [  New dashboard ](#tab-panel-3222)
+* [ Old dashboard ](#tab-panel-3223)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -92,8 +92,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3208)
-* [ Old dashboard ](#tab-panel-3209)
+* [  New dashboard ](#tab-panel-3224)
+* [ Old dashboard ](#tab-panel-3225)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -32,8 +32,8 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1710)
-* [  curl ](#tab-panel-1711)
+* [  TypeScript ](#tab-panel-1726)
+* [  curl ](#tab-panel-1727)
 
 ```
 
@@ -134,8 +134,8 @@ Generated image as Base64 string.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1712)
-* [ Output ](#tab-panel-1713)
+* [ Input ](#tab-panel-1728)
+* [ Output ](#tab-panel-1729)
 
 ```
 

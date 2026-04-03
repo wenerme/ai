@@ -79,8 +79,8 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-5163)
-* [ Windows ](#tab-panel-5164)
+* [ macOS and Linux ](#tab-panel-5179)
+* [ Windows ](#tab-panel-5180)
 
 Open Terminal and run the following command:
 

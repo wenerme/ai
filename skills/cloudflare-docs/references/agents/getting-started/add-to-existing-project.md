@@ -69,8 +69,8 @@ bun add agents hono-agents
 
 Create a new file for your agent (for example, `src/agents/counter.ts`):
 
-* [  JavaScript ](#tab-panel-2856)
-* [  TypeScript ](#tab-panel-2857)
+* [  JavaScript ](#tab-panel-2872)
+* [  TypeScript ](#tab-panel-2873)
 
 JavaScript
 
@@ -159,8 +159,8 @@ export class CounterAgent extends Agent<Env, CounterState> {
 
 Add the Durable Object binding and migration:
 
-* [  wrangler.jsonc ](#tab-panel-2844)
-* [  wrangler.toml ](#tab-panel-2845)
+* [  wrangler.jsonc ](#tab-panel-2860)
+* [  wrangler.toml ](#tab-panel-2861)
 
 ```
 
@@ -251,8 +251,8 @@ new_sqlite_classes = [ "CounterAgent" ]
 
 Your agent class must be exported from your main entry point. Update your `src/index.ts`:
 
-* [  JavaScript ](#tab-panel-2848)
-* [  TypeScript ](#tab-panel-2849)
+* [  JavaScript ](#tab-panel-2864)
+* [  TypeScript ](#tab-panel-2865)
 
 JavaScript
 
@@ -300,8 +300,8 @@ Choose the approach that matches your project structure:
 
 ### Plain Workers (fetch handler)
 
-* [  JavaScript ](#tab-panel-2858)
-* [  TypeScript ](#tab-panel-2859)
+* [  JavaScript ](#tab-panel-2874)
+* [  TypeScript ](#tab-panel-2875)
 
 JavaScript
 
@@ -385,8 +385,8 @@ export default {
 
 ### Hono
 
-* [  JavaScript ](#tab-panel-2852)
-* [  TypeScript ](#tab-panel-2853)
+* [  JavaScript ](#tab-panel-2868)
+* [  TypeScript ](#tab-panel-2869)
 
 JavaScript
 
@@ -450,8 +450,8 @@ export default app;
 
 If you are serving static assets alongside agents, static assets are served first by default. Your Worker code only runs for paths that do not match a static asset:
 
-* [  JavaScript ](#tab-panel-2860)
-* [  TypeScript ](#tab-panel-2861)
+* [  JavaScript ](#tab-panel-2876)
+* [  TypeScript ](#tab-panel-2877)
 
 JavaScript
 
@@ -523,8 +523,8 @@ export default {
 
 Configure assets in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-2842)
-* [  wrangler.toml ](#tab-panel-2843)
+* [  wrangler.jsonc ](#tab-panel-2858)
+* [  wrangler.toml ](#tab-panel-2859)
 
 ```
 
@@ -573,8 +573,8 @@ Refer to [Configuration](https://developers.cloudflare.com/agents/api-reference/
 
 ### React
 
-* [  JavaScript ](#tab-panel-2868)
-* [  TypeScript ](#tab-panel-2869)
+* [  JavaScript ](#tab-panel-2884)
+* [  TypeScript ](#tab-panel-2885)
 
 JavaScript
 
@@ -663,8 +663,8 @@ function CounterWidget() {
 
 ### Vanilla JavaScript
 
-* [  JavaScript ](#tab-panel-2864)
-* [  TypeScript ](#tab-panel-2865)
+* [  JavaScript ](#tab-panel-2880)
+* [  TypeScript ](#tab-panel-2881)
 
 JavaScript
 
@@ -728,8 +728,8 @@ document.getElementById("increment").onclick = () => agent.call("increment");
 
 Add more agents by extending the configuration:
 
-* [  JavaScript ](#tab-panel-2862)
-* [  TypeScript ](#tab-panel-2863)
+* [  JavaScript ](#tab-panel-2878)
+* [  TypeScript ](#tab-panel-2879)
 
 JavaScript
 
@@ -781,8 +781,8 @@ export class Scheduler extends Agent {
 
 Update the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-2850)
-* [  wrangler.toml ](#tab-panel-2851)
+* [  wrangler.jsonc ](#tab-panel-2866)
+* [  wrangler.toml ](#tab-panel-2867)
 
 ```
 
@@ -853,8 +853,8 @@ new_sqlite_classes = [ "CounterAgent", "Chat", "Scheduler" ]
 
 Export all agents from your entry point:
 
-* [  JavaScript ](#tab-panel-2854)
-* [  TypeScript ](#tab-panel-2855)
+* [  JavaScript ](#tab-panel-2870)
+* [  TypeScript ](#tab-panel-2871)
 
 JavaScript
 
@@ -888,8 +888,8 @@ export { Scheduler } from "./agents/scheduler";
 
 Check auth before routing to agents:
 
-* [  JavaScript ](#tab-panel-2872)
-* [  TypeScript ](#tab-panel-2873)
+* [  JavaScript ](#tab-panel-2888)
+* [  TypeScript ](#tab-panel-2889)
 
 JavaScript
 
@@ -969,8 +969,8 @@ export default {
 
 By default, agents are routed at `/agents/{agent-name}/{instance-name}`. You can customize this:
 
-* [  JavaScript ](#tab-panel-2866)
-* [  TypeScript ](#tab-panel-2867)
+* [  JavaScript ](#tab-panel-2882)
+* [  TypeScript ](#tab-panel-2883)
 
 JavaScript
 
@@ -1010,8 +1010,8 @@ Refer to [Routing](https://developers.cloudflare.com/agents/api-reference/routin
 
 You can interact with agents directly from your Worker code:
 
-* [  JavaScript ](#tab-panel-2874)
-* [  TypeScript ](#tab-panel-2875)
+* [  JavaScript ](#tab-panel-2890)
+* [  TypeScript ](#tab-panel-2891)
 
 JavaScript
 
@@ -1089,8 +1089,8 @@ export default {
 
 Add the migration to the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-2846)
-* [  wrangler.toml ](#tab-panel-2847)
+* [  wrangler.jsonc ](#tab-panel-2862)
+* [  wrangler.toml ](#tab-panel-2863)
 
 ```
 
@@ -1128,8 +1128,8 @@ new_sqlite_classes = [ "YourAgentClass" ]
 
 Ensure your routing passes the response unchanged:
 
-* [  JavaScript ](#tab-panel-2870)
-* [  TypeScript ](#tab-panel-2871)
+* [  JavaScript ](#tab-panel-2886)
+* [  TypeScript ](#tab-panel-2887)
 
 JavaScript
 

@@ -78,8 +78,8 @@ npx wrangler kv namespace create cities
 
 To add this configuration to your project, open the Wrangler file and create an entry for `kv_namespaces` above the build command:
 
-* [  wrangler.jsonc ](#tab-panel-7772)
-* [  wrangler.toml ](#tab-panel-7773)
+* [  wrangler.jsonc ](#tab-panel-7792)
+* [  wrangler.toml ](#tab-panel-7793)
 
 ```
 

@@ -18,8 +18,8 @@ Copy page
 
 By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Functions](https://developers.cloudflare.com/pages/functions/) run in a data center closest to where the request was received. If your Worker makes requests to back-end infrastructure such as databases or APIs, it may be more performant to run that Worker closer to your back-end than the end user.
 
-* [  wrangler.jsonc ](#tab-panel-7057)
-* [  wrangler.toml ](#tab-panel-7058)
+* [  wrangler.jsonc ](#tab-panel-7077)
+* [  wrangler.toml ](#tab-panel-7078)
 
 ```
 
@@ -105,8 +105,8 @@ Smart Placement is available on all Workers plans.
 
 Add the following to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7055)
-* [  wrangler.toml ](#tab-panel-7056)
+* [  wrangler.jsonc ](#tab-panel-7075)
+* [  wrangler.toml ](#tab-panel-7076)
 
 ```
 
@@ -207,8 +207,8 @@ Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/netw
 
 If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` property using the format `{provider}:{region}`:
 
-* [  wrangler.jsonc ](#tab-panel-7059)
-* [  wrangler.toml ](#tab-panel-7060)
+* [  wrangler.jsonc ](#tab-panel-7079)
+* [  wrangler.toml ](#tab-panel-7080)
 
 ```
 
@@ -246,8 +246,8 @@ Host-based placement is experimental.
 
 Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-7061)
-* [  wrangler.toml ](#tab-panel-7062)
+* [  wrangler.jsonc ](#tab-panel-7081)
+* [  wrangler.toml ](#tab-panel-7082)
 
 ```
 
@@ -275,8 +275,8 @@ host = "my_database_host.com:5432"
 
 Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEAD checks to measure latency and selects the best data center.
 
-* [  wrangler.jsonc ](#tab-panel-7063)
-* [  wrangler.toml ](#tab-panel-7064)
+* [  wrangler.jsonc ](#tab-panel-7083)
+* [  wrangler.toml ](#tab-panel-7084)
 
 ```
 
@@ -356,11 +356,11 @@ This example shows two Workers:
 * `auth-worker` — runs at the edge (no placement), handles authentication
 * `app-worker` — placed near your database, handles data queries
 
-* [ auth-worker ](#tab-panel-7069)
-* [ app-worker ](#tab-panel-7070)
+* [ auth-worker ](#tab-panel-7089)
+* [ app-worker ](#tab-panel-7090)
 
-* [  wrangler.jsonc ](#tab-panel-7065)
-* [  wrangler.toml ](#tab-panel-7066)
+* [  wrangler.jsonc ](#tab-panel-7085)
+* [  wrangler.toml ](#tab-panel-7086)
 
 ```
 
@@ -449,8 +449,8 @@ async function validateToken(token: string): Promise<string | null> {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7067)
-* [  wrangler.toml ](#tab-panel-7068)
+* [  wrangler.jsonc ](#tab-panel-7087)
+* [  wrangler.toml ](#tab-panel-7088)
 
 ```
 

@@ -28,8 +28,8 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
-* [  JavaScript ](#tab-panel-2942)
-* [  TypeScript ](#tab-panel-2943)
+* [  JavaScript ](#tab-panel-2958)
+* [  TypeScript ](#tab-panel-2959)
 
 JavaScript
 
@@ -95,8 +95,8 @@ When your MCP server proxies to third-party OAuth providers, you must implement 
 
 Without CSRF protection, attackers can trick users into approving malicious OAuth clients. Use a random token stored in a secure cookie:
 
-* [  JavaScript ](#tab-panel-2946)
-* [  TypeScript ](#tab-panel-2947)
+* [  JavaScript ](#tab-panel-2962)
+* [  TypeScript ](#tab-panel-2963)
 
 JavaScript
 
@@ -219,8 +219,8 @@ Include the token as a hidden field in your consent form:
 
 User-controlled content (client names, logos, URIs) can execute malicious scripts if not sanitized:
 
-* [  JavaScript ](#tab-panel-2950)
-* [  TypeScript ](#tab-panel-2951)
+* [  JavaScript ](#tab-panel-2966)
+* [  TypeScript ](#tab-panel-2967)
 
 JavaScript
 
@@ -340,8 +340,8 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 CSP headers instruct browsers to block dangerous content:
 
-* [  JavaScript ](#tab-panel-2948)
-* [  TypeScript ](#tab-panel-2949)
+* [  JavaScript ](#tab-panel-2964)
+* [  TypeScript ](#tab-panel-2965)
 
 JavaScript
 
@@ -443,8 +443,8 @@ function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {
 
 Between the consent dialog and the OAuth callback, you need to ensure it is the same user. Use a state token stored in KV with a short expiration:
 
-* [  JavaScript ](#tab-panel-2952)
-* [  TypeScript ](#tab-panel-2953)
+* [  JavaScript ](#tab-panel-2968)
+* [  TypeScript ](#tab-panel-2969)
 
 JavaScript
 
@@ -663,8 +663,8 @@ __Host-APPROVED_CLIENTS_GOOGLE
 
 Maintain a registry of approved client IDs per user to avoid showing the consent dialog repeatedly:
 
-* [  JavaScript ](#tab-panel-2944)
-* [  TypeScript ](#tab-panel-2945)
+* [  JavaScript ](#tab-panel-2960)
+* [  TypeScript ](#tab-panel-2961)
 
 JavaScript
 

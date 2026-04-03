@@ -40,10 +40,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-1653)
-* [  TypeScript ](#tab-panel-1654)
-* [  Python ](#tab-panel-1655)
-* [  curl ](#tab-panel-1656)
+* [  Worker (Streaming) ](#tab-panel-1669)
+* [  TypeScript ](#tab-panel-1670)
+* [  Python ](#tab-panel-1671)
+* [  curl ](#tab-panel-1672)
 
 TypeScript
 
@@ -347,8 +347,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1657)
-* [ Output ](#tab-panel-1658)
+* [ Input ](#tab-panel-1673)
+* [ Output ](#tab-panel-1674)
 
 ```
 

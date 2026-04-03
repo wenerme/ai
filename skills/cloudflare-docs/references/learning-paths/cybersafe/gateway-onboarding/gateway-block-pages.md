@@ -37,8 +37,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-5064)
-* [ Terraform (v5) ](#tab-panel-5065)
+* [ Dashboard ](#tab-panel-5080)
+* [ Terraform (v5) ](#tab-panel-5081)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.

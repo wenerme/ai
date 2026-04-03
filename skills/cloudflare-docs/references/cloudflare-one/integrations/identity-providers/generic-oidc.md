@@ -40,9 +40,9 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3458)
-* [ API ](#tab-panel-3459)
-* [ Terraform (v5) ](#tab-panel-3460)
+* [ Dashboard ](#tab-panel-3474)
+* [ API ](#tab-panel-3475)
+* [ Terraform (v5) ](#tab-panel-3476)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -181,7 +181,7 @@ If you would like to build policies based on IdP groups:
 
 ### 3\. Verify SCIM provisioning
 
-To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/).
+To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 Note
 

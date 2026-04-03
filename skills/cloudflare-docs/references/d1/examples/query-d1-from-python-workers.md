@@ -87,8 +87,8 @@ npx wrangler d1 info some-existing-db
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-4043)
-* [  wrangler.toml ](#tab-panel-4044)
+* [  wrangler.jsonc ](#tab-panel-4061)
+* [  wrangler.toml ](#tab-panel-4062)
 
 ```
 

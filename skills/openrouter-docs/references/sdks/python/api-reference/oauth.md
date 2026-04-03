@@ -7,8 +7,6 @@
 
 {/* banner:end */}
 
-(*o\_auth*)
-
 ## Overview
 
 OAuth authentication endpoints
@@ -31,6 +29,9 @@ from openrouter import OpenRouter
 import os
 
 with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
@@ -43,12 +44,15 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter               | Type                                                                                                                                            | Required             | Description                                                                | Example                                      |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------- | -------------------------------------------- |
-| `code`                  | *str*                                                                                                                                           | :heavy\_check\_mark: | The authorization code received from the OAuth redirect                    | auth\_code\_abc123def456                     |
-| `code_verifier`         | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | The code verifier if code\_challenge was used in the authorization request | dBjftJeZ4CVP-mB92K27uhbUJU1p1r\_wW1gFWFOEjXk |
-| `code_challenge_method` | [OptionalNullable\[operations.ExchangeAuthCodeForAPIKeyCodeChallengeMethod\]](../../operations/exchangeauthcodeforapikeycodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                             | S256                                         |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.        |                                              |
+| Parameter                  | Type                                                                                                                                            | Required             | Description                                                                                                                                                 | Example                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `code`                     | *str*                                                                                                                                           | :heavy\_check\_mark: | The authorization code received from the OAuth redirect                                                                                                     | auth\_code\_abc123def456                     |
+| `http_referer`             | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                              |
+| `x_open_router_title`      | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                              |
+| `x_open_router_categories` | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                              |
+| `code_verifier`            | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | The code verifier if code\_challenge was used in the authorization request                                                                                  | dBjftJeZ4CVP-mB92K27uhbUJU1p1r\_wW1gFWFOEjXk |
+| `code_challenge_method`    | [OptionalNullable\[operations.ExchangeAuthCodeForAPIKeyCodeChallengeMethod\]](../../operations/exchangeauthcodeforapikeycodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                                                                                                              | S256                                         |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                              |
 
 ### Response
 
@@ -76,6 +80,9 @@ from openrouter import OpenRouter
 import os
 
 with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
@@ -88,14 +95,19 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter               | Type                                                                                                                      | Required             | Description                                                                                                   | Example                                                            |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `callback_url`          | *str*                                                                                                                     | :heavy\_check\_mark: | The callback URL to redirect to after authorization. Note, only https URLs on ports 443 and 3000 are allowed. | [https://myapp.com/auth/callback](https://myapp.com/auth/callback) |
-| `code_challenge`        | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | PKCE code challenge for enhanced security                                                                     | E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM                        |
-| `code_challenge_method` | [Optional\[operations.CreateAuthKeysCodeCodeChallengeMethod\]](../../operations/createauthkeyscodecodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                                                                | S256                                                               |
-| `limit`                 | *Optional\[float]*                                                                                                        | :heavy\_minus\_sign: | Credit limit for the API key to be created                                                                    | 100                                                                |
-| `expires_at`            | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                      | :heavy\_minus\_sign: | Optional expiration time for the API key to be created                                                        |                                                                    |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                           |                                                                    |
+| Parameter                  | Type                                                                                                                      | Required             | Description                                                                                                                                                 | Example                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `callback_url`             | *str*                                                                                                                     | :heavy\_check\_mark: | The callback URL to redirect to after authorization. Note, only https URLs on ports 443 and 3000 are allowed.                                               | [https://myapp.com/auth/callback](https://myapp.com/auth/callback) |
+| `http_referer`             | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                                                    |
+| `x_open_router_title`      | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                                    |
+| `x_open_router_categories` | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                    |
+| `code_challenge`           | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | PKCE code challenge for enhanced security                                                                                                                   | E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM                        |
+| `code_challenge_method`    | [Optional\[operations.CreateAuthKeysCodeCodeChallengeMethod\]](../../operations/createauthkeyscodecodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                                                                                                              | S256                                                               |
+| `limit`                    | *Optional\[float]*                                                                                                        | :heavy\_minus\_sign: | Credit limit for the API key to be created                                                                                                                  | 100                                                                |
+| `expires_at`               | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                      | :heavy\_minus\_sign: | Optional expiration time for the API key to be created                                                                                                      |                                                                    |
+| `key_label`                | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | Optional custom label for the API key. Defaults to the app name if not provided.                                                                            | My Custom Key                                                      |
+| `usage_limit_type`         | [Optional\[operations.UsageLimitType\]](../../operations/usagelimittype.md)                                               | :heavy\_minus\_sign: | Optional credit limit reset interval. When set, the credit limit resets on this interval.                                                                   | monthly                                                            |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                    |
 
 ### Response
 
@@ -107,5 +119,6 @@ with OpenRouter(
 | ---------------------------------- | ----------- | ---------------- |
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.ConflictResponseError       | 409         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

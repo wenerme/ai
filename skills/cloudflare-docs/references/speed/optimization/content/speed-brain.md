@@ -96,9 +96,9 @@ While you can use Speed Brain without RUM enabled, you will not have visibility 
 
 Speed Brain is available in Cloudflare's **Speed** tab of the dashboard and also in the API.
 
-* [ Dashboard ](#tab-panel-6500)
-* [ API ](#tab-panel-6501)
-* [ Terraform ](#tab-panel-6502)
+* [ Dashboard ](#tab-panel-6516)
+* [ API ](#tab-panel-6517)
+* [ Terraform ](#tab-panel-6518)
 
 To enable or disable **Speed Brain** in the dashboard:
 

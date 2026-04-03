@@ -3,7 +3,7 @@
 The `tool()` function creates type-safe tools with Zod schema validation:
 
 ```typescript
-import { OpenRouter, tool } from '@openrouter/sdk';
+import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
 
 const weatherTool = tool({
@@ -182,7 +182,7 @@ const eventSchema = z.object({
 The SDK provides utilities to extract types from tools:
 
 ```typescript
-import type { InferToolInput, InferToolOutput, InferToolEvent } from '@openrouter/sdk';
+import type { InferToolInput, InferToolOutput, InferToolEvent } from '@openrouter/agent';
 
 // Get the input type
 type WeatherInput = InferToolInput<typeof weatherTool>;
@@ -471,7 +471,7 @@ callModel automatically executes tools and handles multi-turn conversations. Whe
 When you provide tools with execute functions:
 
 ```typescript
-import { OpenRouter, tool } from '@openrouter/sdk';
+import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
 
 const weatherTool = tool({

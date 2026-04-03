@@ -57,9 +57,9 @@ The following table summarizes the available operations.
 
 ### Debug Packet CAPture (PCAP) API endpoint
 
-| Operation                   | Verb + Endpoint                                                                                                                      |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Debug Packet CAPture (PCAP) | POST /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}/pcap?ip\_offset={ip\_offset\_value} |
+| Operation                   | Verb + Endpoint                                                                                       |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Debug Packet CAPture (PCAP) | POST /accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}/pcap |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/","name":"API configuration"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","name":"Programmable Flow Protection (Beta)"}}]}

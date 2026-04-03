@@ -56,8 +56,8 @@ By default, Cloudflare will store and deliver logs from data centers across our 
 
 Customers also have the option to reduce the logs that Cloudflare stores:
 
-* You can [exclude PII from logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/manage-pii/)
-* You can [disable logging, or only log blocked requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/#selective-logging).
+* You can [exclude PII from logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/)
+* You can [disable logging, or only log blocked requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#selective-logging).
 
 #### Verify regional map application
 

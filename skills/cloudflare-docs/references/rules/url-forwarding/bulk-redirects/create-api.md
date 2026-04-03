@@ -563,8 +563,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 The API token used in API requests to manage Bulk Redirects objects (lists, list items, and rules) must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-6065)
-* [ API ](#tab-panel-6066)
+* [ Dashboard ](#tab-panel-6081)
+* [ API ](#tab-panel-6082)
 
 * _Account_ \> _Bulk URL Redirects_ \> _Edit_
 * _Account_ \> _Account Filter Lists_ \> _Edit_

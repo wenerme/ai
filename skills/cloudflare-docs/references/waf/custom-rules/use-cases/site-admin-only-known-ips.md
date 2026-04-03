@@ -21,13 +21,13 @@ If an attack compromises the administrative area of your website, the consequenc
 This example [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) limits access to the WordPress admin area, `/wp-admin/`, by blocking requests that do not originate from a specified set of IP addresses:
 
 * **When incoming requests match**:  
-| Field             | Operator  | Value                      |     |  
-| ----------------- | --------- | -------------------------- | --- |  
-| IP Source Address | is not in | 10.20.30.40 192.168.1.0/24 | And |  
-| URI Path          | wildcard  | /wp-admin/\*               |     |  
-If you are using the Expression Editor:  
+| Field             | Operator  | Value                      | Logic |  
+| ----------------- | --------- | -------------------------- | ----- |  
+| IP Source Address | is not in | 10.20.30.40 192.168.1.0/24 | And   |  
+| URI Path          | wildcard  | /wp-admin/\*               |       |  
+If you are using the expression editor:  
 `(not ip.src in {10.20.30.40 192.168.1.0/24} and http.request.uri.path wildcard "/wp-admin/*")`
-* **Action**: _Block_
+* **Then take action**: _Block_
 
 ## Other resources
 

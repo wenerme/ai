@@ -31,8 +31,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2077)
-* [  curl ](#tab-panel-2078)
+* [  TypeScript ](#tab-panel-2093)
+* [  curl ](#tab-panel-2094)
 
 ```
 
@@ -127,8 +127,8 @@ The transcription
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2079)
-* [ Output ](#tab-panel-2080)
+* [ Input ](#tab-panel-2095)
+* [ Output ](#tab-panel-2096)
 
 ```
 

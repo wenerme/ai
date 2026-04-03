@@ -23,8 +23,8 @@ For more details about load balancers, refer to [Load balancers](https://develop
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-5340)
-* [ API ](#tab-panel-5341)
+* [ Dashboard ](#tab-panel-5356)
+* [ API ](#tab-panel-5357)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -272,8 +272,8 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-5336)
-* [ API ](#tab-panel-5337)
+* [ Dashboard ](#tab-panel-5352)
+* [ API ](#tab-panel-5353)
 
 To edit a load balancer in the dashboard:
 
@@ -292,8 +292,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
 
-* [ Dashboard ](#tab-panel-5338)
-* [ API ](#tab-panel-5339)
+* [ Dashboard ](#tab-panel-5354)
+* [ API ](#tab-panel-5355)
 
 To delete a load balancer in the dashboard:
 

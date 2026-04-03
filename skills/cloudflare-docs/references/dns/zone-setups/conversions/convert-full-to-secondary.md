@@ -44,8 +44,8 @@ A Transaction Signature (TSIG) authenticates communication between a primary and
 Note  
 The TSIG names configured at your primary and secondary DNS providers have to be exactly the same. Any differences in TSIG names will cause zone transfers to fail.  
 While optional, this step is highly recommended.  
-   * [ Dashboard ](#tab-panel-4280)  
-   * [ API ](#tab-panel-4281)  
+   * [ Dashboard ](#tab-panel-4296)  
+   * [ API ](#tab-panel-4297)  
 To create a TSIG using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  
@@ -58,8 +58,8 @@ To create a TSIG using the dashboard:
    5. Select **Create**.  
 To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/zone%5Ftransfers/subresources/tsigs/methods/create/) request.
 3. Create a peer server.  
-   * [ Dashboard ](#tab-panel-4278)  
-   * [ API ](#tab-panel-4279)  
+   * [ Dashboard ](#tab-panel-4294)  
+   * [ API ](#tab-panel-4295)  
 To create a peer server using the dashboard:  
    1. In the Cloudflare dashboard, go to the account **Settings** page.  
    [ Go to **Configurations** ](https://dash.cloudflare.com/?to=/:account/configurations)  

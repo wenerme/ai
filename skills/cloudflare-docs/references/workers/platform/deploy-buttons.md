@@ -33,9 +33,9 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-7467)
-* [ HTML ](#tab-panel-7468)
-* [ URL ](#tab-panel-7469)
+* [ Markdown ](#tab-panel-7487)
+* [ HTML ](#tab-panel-7488)
+* [ URL ](#tab-panel-7489)
 
 ```
 
@@ -77,8 +77,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-7470)
-* [  wrangler.toml ](#tab-panel-7471)
+* [  wrangler.jsonc ](#tab-panel-7490)
+* [  wrangler.toml ](#tab-panel-7491)
 
 ```
 
@@ -134,8 +134,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-7472)
-* [  wrangler.toml ](#tab-panel-7473)
+* [  wrangler.jsonc ](#tab-panel-7492)
+* [  wrangler.toml ](#tab-panel-7493)
 
 ```
 

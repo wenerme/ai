@@ -104,8 +104,8 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-6957)
-* [ Wrangler CLI ](#tab-panel-6958)
+* [ Dashboard ](#tab-panel-6973)
+* [ Wrangler CLI ](#tab-panel-6974)
 
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
@@ -155,8 +155,8 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6959)
-* [  wrangler.toml ](#tab-panel-6960)
+* [  wrangler.jsonc ](#tab-panel-6975)
+* [  wrangler.toml ](#tab-panel-6976)
 
 ```
 

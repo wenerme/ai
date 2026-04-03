@@ -38,7 +38,7 @@ The application will show up on the Applications page labeled as `BOOKMARK`. You
 
 ## Authentication logs
 
-Bookmark applications do not generate individual [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/audit-logs/#authentication-logs) when a user selects the bookmark tile. Only the authentication event to the App Launcher itself is logged.
+Bookmark applications do not generate individual [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#authentication-logs) when a user selects the bookmark tile. Only the authentication event to the App Launcher itself is logged.
 
 ## Supported bookmark policies
 

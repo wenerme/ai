@@ -14,7 +14,7 @@ export OPENROUTER_API_KEY=your_openrouter_key
 ## Basic Implementation
 
 ```typescript
-import { OpenRouter, tool } from '@openrouter/sdk';
+import { OpenRouter, tool } from '@openrouter/agent';
 import { z } from 'zod';
 
 const openrouter = new OpenRouter({

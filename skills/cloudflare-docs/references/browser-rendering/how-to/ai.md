@@ -62,8 +62,8 @@ npm i zod-to-json-schema
 
 1. Activate the nodejs compatibility flag and add your Browser Rendering binding to your new Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-3224)
-* [  wrangler.toml ](#tab-panel-3225)
+* [  wrangler.jsonc ](#tab-panel-3240)
+* [  wrangler.toml ](#tab-panel-3241)
 
 ```
 
@@ -87,8 +87,8 @@ compatibility_flags = [ "nodejs_compat" ]
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3226)
-* [  wrangler.toml ](#tab-panel-3227)
+* [  wrangler.jsonc ](#tab-panel-3242)
+* [  wrangler.toml ](#tab-panel-3243)
 
 ```
 

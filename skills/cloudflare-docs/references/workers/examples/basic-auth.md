@@ -32,10 +32,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-7185)
-* [  TypeScript ](#tab-panel-7186)
-* [  Rust ](#tab-panel-7187)
-* [  Hono ](#tab-panel-7188)
+* [  JavaScript ](#tab-panel-7205)
+* [  TypeScript ](#tab-panel-7206)
+* [  Rust ](#tab-panel-7207)
+* [  Hono ](#tab-panel-7208)
 
 JavaScript
 

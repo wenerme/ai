@@ -48,8 +48,8 @@ bun add @cloudflare/ai-utils
 
 Update the `index.ts` file in your application directory with the following code:
 
-* [  JavaScript ](#tab-panel-6911)
-* [  TypeScript ](#tab-panel-6912)
+* [  JavaScript ](#tab-panel-6927)
+* [  TypeScript ](#tab-panel-6928)
 
 index.js
 

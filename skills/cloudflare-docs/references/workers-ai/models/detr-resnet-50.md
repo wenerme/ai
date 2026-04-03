@@ -31,8 +31,8 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1665)
-* [  curl ](#tab-panel-1666)
+* [  TypeScript ](#tab-panel-1681)
+* [  curl ](#tab-panel-1682)
 
 ```
 
@@ -128,8 +128,8 @@ The image to use for detection
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1667)
-* [ Output ](#tab-panel-1668)
+* [ Input ](#tab-panel-1683)
+* [ Output ](#tab-panel-1684)
 
 ```
 

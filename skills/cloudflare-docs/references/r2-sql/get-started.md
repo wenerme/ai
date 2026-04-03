@@ -35,8 +35,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-5715)
-* [ Dashboard ](#tab-panel-5716)
+* [ Wrangler CLI ](#tab-panel-5731)
+* [ Dashboard ](#tab-panel-5732)
 
 1. If not already logged in, run:  
 ```  
@@ -55,8 +55,8 @@ npx wrangler r2 bucket create pipelines-tutorial
 
 ## 2\. Enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-5717)
-* [ Dashboard ](#tab-panel-5718)
+* [ Wrangler CLI ](#tab-panel-5733)
+* [ Dashboard ](#tab-panel-5734)
 
 Enable the catalog on your R2 bucket:
 
@@ -94,8 +94,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 4\. Create a pipeline
 
-* [ Wrangler CLI ](#tab-panel-5719)
-* [ Dashboard ](#tab-panel-5720)
+* [ Wrangler CLI ](#tab-panel-5735)
+* [ Dashboard ](#tab-panel-5736)
 
 First, create a schema file that defines your ecommerce data structure:
 

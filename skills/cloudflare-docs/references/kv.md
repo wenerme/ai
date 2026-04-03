@@ -30,11 +30,11 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-4964)
-* [ REST API ](#tab-panel-4965)
+* [ Workers Binding API ](#tab-panel-4980)
+* [ REST API ](#tab-panel-4981)
 
-* [ index.ts ](#tab-panel-4960)
-* [ wrangler.jsonc ](#tab-panel-4961)
+* [ index.ts ](#tab-panel-4976)
+* [ wrangler.jsonc ](#tab-panel-4977)
 
 TypeScript
 
@@ -124,8 +124,8 @@ export default {
 
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-4962)
-* [ TypeScript ](#tab-panel-4963)
+* [ cURL ](#tab-panel-4978)
+* [ TypeScript ](#tab-panel-4979)
 
 ```
 

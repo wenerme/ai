@@ -48,8 +48,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-3717)
-* [ Version 2026.1 and earlier ](#tab-panel-3718)
+* [ Version 2026.2+ ](#tab-panel-3735)
+* [ Version 2026.1 and earlier ](#tab-panel-3736)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -212,9 +212,9 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-3721)
-* [ Windows ](#tab-panel-3722)
-* [ Linux ](#tab-panel-3723)
+* [ macOS ](#tab-panel-3739)
+* [ Windows ](#tab-panel-3740)
+* [ Linux ](#tab-panel-3741)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -637,8 +637,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-3719)
-* [ Version 2026.1 and earlier ](#tab-panel-3720)
+* [ Version 2026.2+ ](#tab-panel-3737)
+* [ Version 2026.1 and earlier ](#tab-panel-3738)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -666,8 +666,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-3724)
-* [ Version 2026.1 and earlier ](#tab-panel-3725)
+* [ Version 2026.2+ ](#tab-panel-3742)
+* [ Version 2026.1 and earlier ](#tab-panel-3743)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**

@@ -208,9 +208,9 @@ Most projects will have existing build and development scripts, as well as some 
 
 We recommend you commit your generated types file for use in CI. You can run `wrangler types` before other CI commands, as it should not take more than a few seconds. For example:
 
-* [ npm ](#tab-panel-7422)
-* [ yarn ](#tab-panel-7423)
-* [ pnpm ](#tab-panel-7424)
+* [ npm ](#tab-panel-7442)
+* [ yarn ](#tab-panel-7443)
+* [ pnpm ](#tab-panel-7444)
 
 ```
 
@@ -247,9 +247,9 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 
 Alternatively, if you commit your generated types file and want to verify it stays up-to-date in CI, you can use the `--check` flag:
 
-* [ npm ](#tab-panel-7425)
-* [ yarn ](#tab-panel-7426)
-* [ pnpm ](#tab-panel-7427)
+* [ npm ](#tab-panel-7445)
+* [ yarn ](#tab-panel-7446)
+* [ pnpm ](#tab-panel-7447)
 
 ```
 

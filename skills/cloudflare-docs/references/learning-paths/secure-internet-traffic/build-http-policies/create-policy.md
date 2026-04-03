@@ -24,8 +24,8 @@ Use a standard naming convention when building all policies. Policy names should
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-5217)
-* [ API ](#tab-panel-5218)
+* [ Dashboard ](#tab-panel-5233)
+* [ API ](#tab-panel-5234)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.

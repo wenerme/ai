@@ -32,8 +32,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1702)
-* [  curl ](#tab-panel-1703)
+* [  TypeScript ](#tab-panel-1718)
+* [  curl ](#tab-panel-1719)
 
 ```
 
@@ -134,8 +134,8 @@ Generated image as Base64 string.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1704)
-* [ Output ](#tab-panel-1705)
+* [ Input ](#tab-panel-1720)
+* [ Output ](#tab-panel-1721)
 
 ```
 

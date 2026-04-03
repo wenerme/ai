@@ -30,11 +30,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7213)
-* [  TypeScript ](#tab-panel-7214)
-* [  Hono ](#tab-panel-7215)
-* [  Python ](#tab-panel-7216)
-* [  Rust ](#tab-panel-7217)
+* [  JavaScript ](#tab-panel-7233)
+* [  TypeScript ](#tab-panel-7234)
+* [  Hono ](#tab-panel-7235)
+* [  Python ](#tab-panel-7236)
+* [  Rust ](#tab-panel-7237)
 
 JavaScript
 
@@ -390,9 +390,9 @@ fetch(event.request, { cf: { cacheKey: "some-string" } });
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you may like different URLs to be treated as if they were the same for caching purposes. For example, if your website content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you can use a Worker to randomly balance between the two. However, you do not want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
-* [  JavaScript ](#tab-panel-7218)
-* [  TypeScript ](#tab-panel-7219)
-* [  Hono ](#tab-panel-7220)
+* [  JavaScript ](#tab-panel-7238)
+* [  TypeScript ](#tab-panel-7239)
+* [  Hono ](#tab-panel-7240)
 
 JavaScript
 
@@ -551,8 +551,8 @@ Using custom cache keys and overrides based on response code, you can write a Wo
 
 The following example demonstrates how you might use this to cache requests for streaming media assets:
 
-* [  Module Worker ](#tab-panel-7221)
-* [  Service Worker ](#tab-panel-7222)
+* [  Module Worker ](#tab-panel-7241)
+* [  Service Worker ](#tab-panel-7242)
 
 index.js
 

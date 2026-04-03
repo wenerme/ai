@@ -93,8 +93,8 @@ class Default(WorkerEntrypoint):
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-8582)
-* [  wrangler.toml ](#tab-panel-8583)
+* [  wrangler.jsonc ](#tab-panel-8602)
+* [  wrangler.toml ](#tab-panel-8603)
 
 ```
 

@@ -141,9 +141,9 @@ If you do not have access to the router, you will need to configure each device 
 
 To route all CGNAT IP traffic through WARP Connector:
 
-* [ Linux ](#tab-panel-3521)
-* [ macOS ](#tab-panel-3522)
-* [ Windows ](#tab-panel-3523)
+* [ Linux ](#tab-panel-3537)
+* [ macOS ](#tab-panel-3538)
+* [ Windows ](#tab-panel-3539)
 
 Terminal window
 

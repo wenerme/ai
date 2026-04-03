@@ -109,8 +109,8 @@ You can now add this new app to the Breakout traffic list in your Cloudflare One
 
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-3955)
-* [ API ](#tab-panel-3956)
+* [ Dashboard ](#tab-panel-3973)
+* [ API ](#tab-panel-3974)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -187,8 +187,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-3953)
-* [ API ](#tab-panel-3954)
+* [ Dashboard ](#tab-panel-3971)
+* [ API ](#tab-panel-3972)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

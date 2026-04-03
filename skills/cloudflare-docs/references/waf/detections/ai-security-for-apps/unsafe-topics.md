@@ -93,8 +93,8 @@ Scores follow the same convention as other AI Security for Apps scores, where lo
 
 ### Define custom topics
 
-* [ Dashboard ](#tab-panel-6794)
-* [ API ](#tab-panel-6795)
+* [ Dashboard ](#tab-panel-6810)
+* [ API ](#tab-panel-6811)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -36,8 +36,8 @@ In this example, a multi-tenant e-Commerce application is built on Cloudflare Wo
 
 For simplicity of demonstration, the storefront will be identified with a path element containing the storefront ID, where`https://<WORKER_HOSTNAME>/<STOREFRONT_ID>/...` is the URL pattern for the storefront. You may prefer to use subdomains to identify storefronts in a real-world scenario.
 
-* [ index.ts ](#tab-panel-4979)
-* [ wrangler.jsonc ](#tab-panel-4980)
+* [ index.ts ](#tab-panel-4995)
+* [ wrangler.jsonc ](#tab-panel-4996)
 
 index.ts
 

@@ -29,8 +29,8 @@ The following example shows you how to publish messages to a Queue from a Worker
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-5632)
-* [  wrangler.toml ](#tab-panel-5633)
+* [  wrangler.jsonc ](#tab-panel-5648)
+* [  wrangler.toml ](#tab-panel-5649)
 
 ```
 

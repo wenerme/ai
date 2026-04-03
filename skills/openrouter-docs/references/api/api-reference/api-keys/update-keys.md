@@ -87,9 +87,7 @@ paths:
                   type: boolean
                   description: Whether to disable the API key
                 limit:
-                  type:
-                    - number
-                    - 'null'
+                  type: number
                   format: double
                   description: New spending limit for the API key in USD
                 limit_reset:
@@ -135,15 +133,11 @@ components:
           type: boolean
           description: Whether the API key is disabled
         limit:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Spending limit for the API key in USD
         limit_remaining:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Remaining spending limit in USD
         limit_reset:

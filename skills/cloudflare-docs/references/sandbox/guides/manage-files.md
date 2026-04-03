@@ -26,8 +26,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-6385)
-* [  TypeScript ](#tab-panel-6386)
+* [  JavaScript ](#tab-panel-6401)
+* [  TypeScript ](#tab-panel-6402)
 
 JavaScript
 
@@ -75,8 +75,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-6393)
-* [  TypeScript ](#tab-panel-6394)
+* [  JavaScript ](#tab-panel-6409)
+* [  TypeScript ](#tab-panel-6410)
 
 JavaScript
 
@@ -158,8 +158,8 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 ## Read files
 
-* [  JavaScript ](#tab-panel-6399)
-* [  TypeScript ](#tab-panel-6400)
+* [  JavaScript ](#tab-panel-6415)
+* [  TypeScript ](#tab-panel-6416)
 
 JavaScript
 
@@ -247,8 +247,8 @@ const textAsBase64 = await sandbox.readFile('/workspace/data.txt', { encoding: '
 
 ## Organize files
 
-* [  JavaScript ](#tab-panel-6389)
-* [  TypeScript ](#tab-panel-6390)
+* [  JavaScript ](#tab-panel-6405)
+* [  TypeScript ](#tab-panel-6406)
 
 JavaScript
 
@@ -310,8 +310,8 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-6391)
-* [  TypeScript ](#tab-panel-6392)
+* [  JavaScript ](#tab-panel-6407)
+* [  TypeScript ](#tab-panel-6408)
 
 JavaScript
 
@@ -371,8 +371,8 @@ await Promise.all(
 
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-6397)
-* [  TypeScript ](#tab-panel-6398)
+* [  JavaScript ](#tab-panel-6413)
+* [  TypeScript ](#tab-panel-6414)
 
 JavaScript
 
@@ -454,8 +454,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-6387)
-* [  TypeScript ](#tab-panel-6388)
+* [  JavaScript ](#tab-panel-6403)
+* [  TypeScript ](#tab-panel-6404)
 
 JavaScript
 
@@ -487,8 +487,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use base64 for binary files:
 
-* [  JavaScript ](#tab-panel-6395)
-* [  TypeScript ](#tab-panel-6396)
+* [  JavaScript ](#tab-panel-6411)
+* [  TypeScript ](#tab-panel-6412)
 
 JavaScript
 
@@ -542,8 +542,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-6401)
-* [  TypeScript ](#tab-panel-6402)
+* [  JavaScript ](#tab-panel-6417)
+* [  TypeScript ](#tab-panel-6418)
 
 JavaScript
 

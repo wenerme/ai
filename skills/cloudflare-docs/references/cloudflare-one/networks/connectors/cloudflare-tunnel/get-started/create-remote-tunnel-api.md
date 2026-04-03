@@ -225,10 +225,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 Install `cloudflared` on your server and run the tunnel using the `token` value obtained in [2\. Create a tunnel](#2-create-a-tunnel). You can also get the tunnel token using the [Cloudflare Tunnel token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/subresources/token/methods/get/) endpoint.
 
-* [ Linux ](#tab-panel-3493)
-* [ Windows ](#tab-panel-3494)
-* [ macOS ](#tab-panel-3495)
-* [ Docker ](#tab-panel-3496)
+* [ Linux ](#tab-panel-3509)
+* [ Windows ](#tab-panel-3510)
+* [ macOS ](#tab-panel-3511)
+* [ Docker ](#tab-panel-3512)
 
 1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
 2. Run the following command:  

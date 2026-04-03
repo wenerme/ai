@@ -63,8 +63,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-7365)
-* [  Rust ](#tab-panel-7366)
+* [  JavaScript ](#tab-panel-7385)
+* [  Rust ](#tab-panel-7386)
 
 JavaScript
 
@@ -115,8 +115,8 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-7367)
-* [  Rust ](#tab-panel-7368)
+* [  JavaScript ](#tab-panel-7387)
+* [  Rust ](#tab-panel-7388)
 
 JavaScript
 
@@ -198,8 +198,8 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-7369)
-* [  Rust ](#tab-panel-7370)
+* [  JavaScript ](#tab-panel-7389)
+* [  Rust ](#tab-panel-7390)
 
 JavaScript
 
@@ -280,9 +280,9 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-7371)
-* [  Rust ](#tab-panel-7372)
-* [  Hono ](#tab-panel-7373)
+* [  JavaScript ](#tab-panel-7391)
+* [  Rust ](#tab-panel-7392)
+* [  Hono ](#tab-panel-7393)
 
 JavaScript
 

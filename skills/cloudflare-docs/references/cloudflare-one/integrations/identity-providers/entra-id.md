@@ -80,9 +80,9 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-3455)
-* [ API ](#tab-panel-3456)
-* [ Terraform ](#tab-panel-3457)
+* [ Dashboard ](#tab-panel-3471)
+* [ API ](#tab-panel-3472)
+* [ Terraform ](#tab-panel-3473)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -232,13 +232,13 @@ Groups in this SCIM application should match the groups in your other [Cloudflar
 
 To check which users and groups were synchronized, select **Provisioning logs**.
 
-To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/).
+To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 Note
 
 New users must first [register the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) or authenticate to an Access application before SCIM provisioning can begin.
 
-To monitor the exchange of identity details between Cloudflare Access and Microsoft Entra ID, go to [Cloudflare One ↗](https://one.dash.cloudflare.com) \> **Insights** \> **Logs** \> **SCIM provisioning logs** and view the [SCIM activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/scim-logs/).
+To monitor the exchange of identity details between Cloudflare Access and Microsoft Entra ID, go to [Cloudflare One ↗](https://one.dash.cloudflare.com) \> **Insights** \> **Logs** \> **SCIM provisioning logs** and view the [SCIM activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
 ### Provisioning attributes
 

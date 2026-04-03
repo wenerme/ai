@@ -51,8 +51,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 2\. Create your first pipeline
 
-* [ Wrangler CLI ](#tab-panel-5468)
-* [ Dashboard ](#tab-panel-5469)
+* [ Wrangler CLI ](#tab-panel-5484)
+* [ Dashboard ](#tab-panel-5485)
 
 First, create a schema file that defines your ecommerce data structure:
 

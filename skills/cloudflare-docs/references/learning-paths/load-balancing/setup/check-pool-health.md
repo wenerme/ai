@@ -18,8 +18,8 @@ Copy page
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-5090)
-* [ API ](#tab-panel-5091)
+* [ Dashboard ](#tab-panel-5106)
+* [ API ](#tab-panel-5107)
 
 To confirm pool health using the dashboard:
 

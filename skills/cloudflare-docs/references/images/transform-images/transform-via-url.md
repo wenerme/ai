@@ -57,8 +57,8 @@ You must specify at least one option. Options are comma-separated (spaces are no
 
 Whether to preserve animation frames from input files. Default is `true`. Setting it to `false` reduces animations to still images. This setting is recommended when enlarging images or processing arbitrary user content, because large GIF animations can weigh tens or even hundreds of megabytes. It is also useful to set `anim:false` when using `format:"json"` to get the response quicker without the number of frames.
 
-* [ URL format ](#tab-panel-4836)
-* [ Workers ](#tab-panel-4837)
+* [ URL format ](#tab-panel-4852)
+* [ Workers ](#tab-panel-4853)
 
 ```
 
@@ -80,8 +80,8 @@ cf: {image: {anim: false}}
 
 Background color to add underneath the image. Applies to images with transparency (for example, PNG) and images resized with `fit=pad`. Accepts any CSS color using CSS4 modern syntax, such as `rgb(255 255 0)` and `rgba(255 255 0 100)`.
 
-* [ URL format ](#tab-panel-4838)
-* [ Workers ](#tab-panel-4839)
+* [ URL format ](#tab-panel-4854)
+* [ Workers ](#tab-panel-4855)
 
 ```
 
@@ -121,8 +121,8 @@ cf:{image: {background: "rgba(240,40,145,0)"}}
 
 Blur radius between `1` (slight blur) and `250` (maximum). Be aware that you cannot use this option to reliably obscure image content, because savvy users can modify an image's URL and remove the blur option. Use Workers to control which options can be set.
 
-* [ URL format ](#tab-panel-4840)
-* [ Workers ](#tab-panel-4841)
+* [ URL format ](#tab-panel-4856)
+* [ Workers ](#tab-panel-4857)
 
 ```
 
@@ -144,7 +144,7 @@ cf: {image: {blur: 50}}
 
 Adds a border around the image. The border is added after resizing. Border width takes `dpr` into account, and can be specified either using a single `width` property, or individually for each side.
 
-* [ Workers ](#tab-panel-4834)
+* [ Workers ](#tab-panel-4850)
 
 JavaScript
 
@@ -161,8 +161,8 @@ cf: {image: {border: {color: "#FFFFFF", width: 10}}}
 
 Increase brightness by a factor. A value of `1.0` equals no change, a value of `0.5` equals half brightness, and a value of `2.0` equals twice as bright. `0` is ignored.
 
-* [ URL format ](#tab-panel-4842)
-* [ Workers ](#tab-panel-4843)
+* [ URL format ](#tab-panel-4858)
+* [ Workers ](#tab-panel-4859)
 
 ```
 
@@ -184,8 +184,8 @@ cf: {image: {brightness: 0.5}}
 
 Slightly reduces latency on a cache miss by selecting a quickest-to-compress file format, at a cost of increased file size and lower image quality. It will usually override the `format` option and choose JPEG over WebP or AVIF. We do not recommend using this option, except in unusual circumstances like resizing uncacheable dynamically-generated images.
 
-* [ URL format ](#tab-panel-4844)
-* [ Workers ](#tab-panel-4845)
+* [ URL format ](#tab-panel-4860)
+* [ Workers ](#tab-panel-4861)
 
 ```
 
@@ -207,8 +207,8 @@ cf: {image: {compression: "fast"}}
 
 Increase contrast by a factor. A value of `1.0` equals no change, a value of `0.5` equals low contrast, and a value of `2.0` equals high contrast. `0` is ignored.
 
-* [ URL format ](#tab-panel-4846)
-* [ Workers ](#tab-panel-4847)
+* [ URL format ](#tab-panel-4862)
+* [ Workers ](#tab-panel-4863)
 
 ```
 
@@ -230,8 +230,8 @@ cf: {image: {contrast: 0.5}}
 
 Device Pixel Ratio. Default is `1`. Multiplier for `width`/`height` that makes it easier to specify higher-DPI sizes in `<img srcset>`.
 
-* [ URL format ](#tab-panel-4848)
-* [ Workers ](#tab-panel-4849)
+* [ URL format ](#tab-panel-4864)
+* [ Workers ](#tab-panel-4865)
 
 ```
 
@@ -265,8 +265,8 @@ Image will be shrunk and cropped to fit within the area specified by `width` and
 Resizes to the maximum size that fits within the given `width` and `height`, and then fills the remaining area with a `background` color (white by default). This mode is not recommended, since you can achieve the same effect more efficiently with the `contain` mode and the CSS `object-fit: contain` property.
 * `squeeze`Resizes the image to the exact width and height specified. This mode does not preserve the original aspect ratio and will cause the image to appear stretched or squashed.
 
-* [ URL format ](#tab-panel-4850)
-* [ Workers ](#tab-panel-4851)
+* [ URL format ](#tab-panel-4866)
+* [ Workers ](#tab-panel-4867)
 
 ```
 
@@ -296,8 +296,8 @@ Available options are:
 * `v`: Flips the image vertically.
 * `hv`: Flips the image vertically and horizontally.
 
-* [ URL format ](#tab-panel-4852)
-* [ Workers ](#tab-panel-4853)
+* [ URL format ](#tab-panel-4868)
+* [ Workers ](#tab-panel-4869)
 
 ```
 
@@ -329,9 +329,9 @@ Other supported options:
 
 **Alias:** `f`
 
-* [ URL format ](#tab-panel-4854)
-* [ URL format alias ](#tab-panel-4855)
-* [ Workers ](#tab-panel-4856)
+* [ URL format ](#tab-panel-4870)
+* [ URL format alias ](#tab-panel-4871)
+* [ Workers ](#tab-panel-4872)
 
 ```
 
@@ -387,8 +387,8 @@ return fetch(url, { cf: { image } });
 
 Increase exposure by a factor. A value of `1.0` equals no change, a value of `0.5` darkens the image, and a value of `2.0` lightens the image. `0` is ignored.
 
-* [ URL format ](#tab-panel-4857)
-* [ Workers ](#tab-panel-4858)
+* [ URL format ](#tab-panel-4873)
+* [ Workers ](#tab-panel-4874)
 
 ```
 
@@ -427,9 +427,9 @@ This feature uses an open-source model called RetinaFace through WorkersAI. Our 
 
 **Alias:** `g`
 
-* [ URL format ](#tab-panel-4859)
-* [ URL format alias ](#tab-panel-4860)
-* [ Workers ](#tab-panel-4861)
+* [ URL format ](#tab-panel-4875)
+* [ URL format alias ](#tab-panel-4876)
+* [ Workers ](#tab-panel-4877)
 
 ```
 
@@ -518,9 +518,9 @@ Specifies maximum height of the image in pixels. Exact behavior depends on the `
 
 **Alias:** `h`
 
-* [ URL format ](#tab-panel-4862)
-* [ URL format alias ](#tab-panel-4863)
-* [ Workers ](#tab-panel-4864)
+* [ URL format ](#tab-panel-4878)
+* [ URL format alias ](#tab-panel-4879)
+* [ Workers ](#tab-panel-4880)
 
 ```
 
@@ -565,8 +565,8 @@ Preserves most of EXIF metadata, including GPS location if present. If C2PA meta
 * `none`  
 Discards all invisible EXIF and C2PA metadata. If the output format is WebP or PNG, then all metadata will be discarded.
 
-* [ URL format ](#tab-panel-4865)
-* [ Workers ](#tab-panel-4866)
+* [ URL format ](#tab-panel-4881)
+* [ Workers ](#tab-panel-4882)
 
 ```
 
@@ -592,7 +592,7 @@ This setting only works directly with [image transformations](https://developers
 
 In case of a [fatal error](https://developers.cloudflare.com/images/reference/troubleshooting/#error-responses-from-resizing) that prevents the image from being resized, redirects to the unresized source image URL. This may be useful in case some images require user authentication and cannot be fetched anonymously via Worker. This option should not be used if there is a chance the source image is very large. This option is ignored if the image is from another domain, but you can use it with subdomains.
 
-* [ URL format ](#tab-panel-4835)
+* [ URL format ](#tab-panel-4851)
 
 ```
 
@@ -609,9 +609,9 @@ We also allow setting one of the perceptual quality levels `high|medium-high|med
 
 **Alias:** `q`
 
-* [ URL format ](#tab-panel-4867)
-* [ URL format alias ](#tab-panel-4868)
-* [ Workers ](#tab-panel-4869)
+* [ URL format ](#tab-panel-4883)
+* [ URL format alias ](#tab-panel-4884)
+* [ Workers ](#tab-panel-4885)
 
 ```
 
@@ -658,8 +658,8 @@ cf: {image: {quality: "high"}}
 
 Number of degrees (`90`, `180`, or `270`) to rotate the image by. `width` and `height` options refer to axes after rotation.
 
-* [ URL format ](#tab-panel-4870)
-* [ Workers ](#tab-panel-4871)
+* [ URL format ](#tab-panel-4886)
+* [ Workers ](#tab-panel-4887)
 
 ```
 
@@ -681,8 +681,8 @@ cf: {image: {rotate: 90}}
 
 Increases saturation by a factor. A value of `1.0` equals no change, a value of `0.5` equals half saturation, and a value of `2.0` equals twice as saturated. A value of `0` will convert the image to grayscale.
 
-* [ URL format ](#tab-panel-4872)
-* [ Workers ](#tab-panel-4873)
+* [ URL format ](#tab-panel-4888)
+* [ Workers ](#tab-panel-4889)
 
 ```
 
@@ -706,8 +706,8 @@ Automatically isolates the subject of an image by replacing the background with 
 
 This feature uses an open-source model called BiRefNet through Workers AI. Read more about Cloudflare's [approach to responsible AI ↗](https://www.cloudflare.com/trust-hub/responsible-ai/).
 
-* [ URL format ](#tab-panel-4874)
-* [ Workers ](#tab-panel-4875)
+* [ URL format ](#tab-panel-4890)
+* [ Workers ](#tab-panel-4891)
 
 ```
 
@@ -729,8 +729,8 @@ cf: {segment: "foreground"}
 
 Specifies strength of sharpening filter to apply to the image. The value is a floating-point number between `0` (no sharpening, default) and `10` (maximum). `1` is a recommended value for downscaled images.
 
-* [ URL format ](#tab-panel-4876)
-* [ Workers ](#tab-panel-4877)
+* [ URL format ](#tab-panel-4892)
+* [ Workers ](#tab-panel-4893)
 
 ```
 
@@ -756,8 +756,8 @@ Available options are same as [quality](https://developers.cloudflare.com/images
 
 **Alias:** `scq`
 
-* [ URL format ](#tab-panel-4878)
-* [ URL format alias ](#tab-panel-4879)
+* [ URL format ](#tab-panel-4894)
+* [ URL format alias ](#tab-panel-4895)
 
 ```
 
@@ -795,8 +795,8 @@ slow-connection-quality applies whenever any of the following is true and the cl
 
 Specifies a number of pixels to cut off on each side. Allows removal of borders or cutting out a specific fragment of an image. Trimming is performed before resizing or rotation. Takes `dpr` into account. For image transformations and Cloudflare Images, use as four numbers in pixels separated by a semicolon, in the form of `top;right;bottom;left` or via separate values `trim.width`,`trim.height`, `trim.left`,`trim.top`. For the Workers integration, specify an object with properties: `{top, right, bottom, left, width, height}`.
 
-* [ URL format ](#tab-panel-4880)
-* [ Workers ](#tab-panel-4881)
+* [ URL format ](#tab-panel-4896)
+* [ Workers ](#tab-panel-4897)
 
 ```
 
@@ -830,8 +830,8 @@ The API also supports automatic border removal based on color. This can be enabl
 
 `trim.border.keep`The number of pixels of the original border to leave untrimmed.
 
-* [ URL format ](#tab-panel-4882)
-* [ Workers ](#tab-panel-4883)
+* [ URL format ](#tab-panel-4898)
+* [ Workers ](#tab-panel-4899)
 
 ```
 
@@ -873,9 +873,9 @@ Available options are a specified width in pixels or `auto`.
 
 **Alias:** `w`
 
-* [ URL format ](#tab-panel-4884)
-* [ URL format alias ](#tab-panel-4885)
-* [ Workers ](#tab-panel-4886)
+* [ URL format ](#tab-panel-4900)
+* [ URL format alias ](#tab-panel-4901)
+* [ Workers ](#tab-panel-4902)
 
 ```
 
@@ -912,9 +912,9 @@ Specifies how closely the image is cropped toward the face when combined with th
 
 This controls the threshold for how much of the surrounding pixels around the face will be included in the image and takes effect only if face(s) are detected in the image.
 
-* [ URL format ](#tab-panel-4887)
-* [ URL format alias ](#tab-panel-4888)
-* [ Workers ](#tab-panel-4889)
+* [ URL format ](#tab-panel-4903)
+* [ URL format alias ](#tab-panel-4904)
+* [ Workers ](#tab-panel-4905)
 
 ```
 

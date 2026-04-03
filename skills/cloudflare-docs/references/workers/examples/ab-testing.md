@@ -24,10 +24,10 @@ Copy page
 
 Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.
 
-* [  JavaScript ](#tab-panel-7161)
-* [  TypeScript ](#tab-panel-7162)
-* [  Python ](#tab-panel-7163)
-* [  Hono ](#tab-panel-7164)
+* [  JavaScript ](#tab-panel-7181)
+* [  TypeScript ](#tab-panel-7182)
+* [  Python ](#tab-panel-7183)
+* [  Hono ](#tab-panel-7184)
 
 JavaScript
 

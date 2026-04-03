@@ -107,8 +107,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-7484)
-* [  wrangler.toml ](#tab-panel-7485)
+* [  wrangler.jsonc ](#tab-panel-7504)
+* [  wrangler.toml ](#tab-panel-7505)
 
 ```
 
@@ -241,8 +241,8 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7486)
-* [  wrangler.toml ](#tab-panel-7487)
+* [  wrangler.jsonc ](#tab-panel-7506)
+* [  wrangler.toml ](#tab-panel-7507)
 
 ```
 
@@ -325,8 +325,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-7488)
-* [  TypeScript ](#tab-panel-7489)
+* [  JavaScript ](#tab-panel-7508)
+* [  TypeScript ](#tab-panel-7509)
 
 JavaScript
 

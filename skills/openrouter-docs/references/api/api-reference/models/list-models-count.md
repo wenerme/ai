@@ -61,8 +61,7 @@ components:
       type: object
       properties:
         count:
-          type: number
-          format: double
+          type: integer
           description: Total number of available models
       required:
         - count

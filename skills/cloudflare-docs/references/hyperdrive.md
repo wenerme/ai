@@ -26,11 +26,11 @@ Hyperdrive supports any Postgres or MySQL database, including those hosted on AW
 
 Use Hyperdrive's connection string from your Cloudflare Workers application with your existing Postgres drivers and object-relational mapping (ORM) libraries:
 
-* [ PostgreSQL ](#tab-panel-4620)
-* [ MySQL ](#tab-panel-4621)
+* [ PostgreSQL ](#tab-panel-4636)
+* [ MySQL ](#tab-panel-4637)
 
-* [ index.ts ](#tab-panel-4616)
-* [ wrangler.jsonc ](#tab-panel-4617)
+* [ index.ts ](#tab-panel-4632)
+* [ wrangler.jsonc ](#tab-panel-4633)
 
 TypeScript
 
@@ -123,8 +123,8 @@ export default {
 
 ```
 
-* [ index.ts ](#tab-panel-4618)
-* [ wrangler.jsonc ](#tab-panel-4619)
+* [ index.ts ](#tab-panel-4634)
+* [ wrangler.jsonc ](#tab-panel-4635)
 
 TypeScript
 

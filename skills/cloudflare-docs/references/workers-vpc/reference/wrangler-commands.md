@@ -22,9 +22,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-6961)
-* [  pnpm ](#tab-panel-6962)
-* [  yarn ](#tab-panel-6963)
+* [  npm ](#tab-panel-6977)
+* [  pnpm ](#tab-panel-6978)
+* [  yarn ](#tab-panel-6979)
 
 Terminal window
 
@@ -99,9 +99,9 @@ Automatically provision draft bindings with new resources
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-6964)
-* [  pnpm ](#tab-panel-6965)
-* [  yarn ](#tab-panel-6966)
+* [  npm ](#tab-panel-6980)
+* [  pnpm ](#tab-panel-6981)
+* [  yarn ](#tab-panel-6982)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Automatically provision draft bindings with new resources
 
 Get a VPC service
 
-* [  npm ](#tab-panel-6967)
-* [  pnpm ](#tab-panel-6968)
-* [  yarn ](#tab-panel-6969)
+* [  npm ](#tab-panel-6983)
+* [  pnpm ](#tab-panel-6984)
+* [  yarn ](#tab-panel-6985)
 
 Terminal window
 
@@ -209,9 +209,9 @@ Automatically provision draft bindings with new resources
 
 List VPC services
 
-* [  npm ](#tab-panel-6970)
-* [  pnpm ](#tab-panel-6971)
-* [  yarn ](#tab-panel-6972)
+* [  npm ](#tab-panel-6986)
+* [  pnpm ](#tab-panel-6987)
+* [  yarn ](#tab-panel-6988)
 
 Terminal window
 
@@ -261,9 +261,9 @@ Automatically provision draft bindings with new resources
 
 Update a VPC service
 
-* [  npm ](#tab-panel-6973)
-* [  pnpm ](#tab-panel-6974)
-* [  yarn ](#tab-panel-6975)
+* [  npm ](#tab-panel-6989)
+* [  pnpm ](#tab-panel-6990)
+* [  yarn ](#tab-panel-6991)
 
 Terminal window
 

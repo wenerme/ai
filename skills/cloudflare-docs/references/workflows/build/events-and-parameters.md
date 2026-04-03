@@ -36,8 +36,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-8520)
-* [  TypeScript ](#tab-panel-8521)
+* [  JavaScript ](#tab-panel-8540)
+* [  TypeScript ](#tab-panel-8541)
 
 JavaScript
 
@@ -154,8 +154,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-8516)
-* [  TypeScript ](#tab-panel-8517)
+* [  JavaScript ](#tab-panel-8536)
+* [  TypeScript ](#tab-panel-8537)
 
 JavaScript
 
@@ -219,8 +219,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-8514)
-* [  TypeScript ](#tab-panel-8515)
+* [  JavaScript ](#tab-panel-8534)
+* [  TypeScript ](#tab-panel-8535)
 
 JavaScript
 
@@ -258,8 +258,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-8518)
-* [  TypeScript ](#tab-panel-8519)
+* [  JavaScript ](#tab-panel-8538)
+* [  TypeScript ](#tab-panel-8539)
 
 JavaScript
 
@@ -319,8 +319,8 @@ try {
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-8522)
-* [  TypeScript ](#tab-panel-8523)
+* [  JavaScript ](#tab-panel-8542)
+* [  TypeScript ](#tab-panel-8543)
 
 JavaScript
 

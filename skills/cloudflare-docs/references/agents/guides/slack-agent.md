@@ -158,8 +158,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
 1. Update your `wrangler.jsonc` to configure your Agent:
 
-* [  wrangler.jsonc ](#tab-panel-2954)
-* [  wrangler.toml ](#tab-panel-2955)
+* [  wrangler.jsonc ](#tab-panel-2970)
+* [  wrangler.toml ](#tab-panel-2971)
 
 ```
 

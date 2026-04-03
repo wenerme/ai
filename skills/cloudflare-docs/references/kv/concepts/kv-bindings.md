@@ -38,8 +38,8 @@ To execute your Worker, define the binding.
 
 In the following example, the binding is called `TODO`. In the `kv_namespaces` portion of your Wrangler configuration file, add:
 
-* [  wrangler.jsonc ](#tab-panel-4966)
-* [  wrangler.toml ](#tab-panel-4967)
+* [  wrangler.jsonc ](#tab-panel-4982)
+* [  wrangler.toml ](#tab-panel-4983)
 
 ```
 
@@ -118,8 +118,8 @@ When you use Wrangler to develop locally with the `wrangler dev` command, Wrangl
 
 To have `wrangler dev` connect to your Workers KV namespace running on Cloudflare's global network, set `"remote" : true` in the KV binding configuration. Refer to the [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) for more information.
 
-* [  wrangler.jsonc ](#tab-panel-4968)
-* [  wrangler.toml ](#tab-panel-4969)
+* [  wrangler.jsonc ](#tab-panel-4984)
+* [  wrangler.toml ](#tab-panel-4985)
 
 ```
 

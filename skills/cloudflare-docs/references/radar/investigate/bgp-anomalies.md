@@ -329,8 +329,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-5941)
-* [  wrangler.toml ](#tab-panel-5942)
+* [  wrangler.jsonc ](#tab-panel-5957)
+* [  wrangler.toml ](#tab-panel-5958)
 
 ```
 
@@ -383,8 +383,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-5939)
-* [  wrangler.toml ](#tab-panel-5940)
+* [  wrangler.jsonc ](#tab-panel-5955)
+* [  wrangler.toml ](#tab-panel-5956)
 
 ```
 
@@ -659,8 +659,8 @@ If you have [Email Routing](https://developers.cloudflare.com/email-routing/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-5943)
-* [  wrangler.toml ](#tab-panel-5944)
+* [  wrangler.jsonc ](#tab-panel-5959)
+* [  wrangler.toml ](#tab-panel-5960)
 
 ```
 

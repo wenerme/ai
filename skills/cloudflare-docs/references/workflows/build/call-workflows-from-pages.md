@@ -42,8 +42,8 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-8504)
-* [  wrangler.toml ](#tab-panel-8505)
+* [  wrangler.jsonc ](#tab-panel-8524)
+* [  wrangler.toml ](#tab-panel-8525)
 
 ```
 
@@ -81,8 +81,8 @@ Your Worker can expose a specific method (or methods) that only other Workers or
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-8512)
-* [  TypeScript ](#tab-panel-8513)
+* [  JavaScript ](#tab-panel-8532)
+* [  TypeScript ](#tab-panel-8533)
 
 index.js
 
@@ -184,8 +184,8 @@ export default class WorkflowsService extends WorkerEntrypoint<Env> {
 
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-8506)
-* [  TypeScript ](#tab-panel-8507)
+* [  JavaScript ](#tab-panel-8526)
+* [  TypeScript ](#tab-panel-8527)
 
 functions/request.js
 
@@ -240,8 +240,8 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-8508)
-* [  TypeScript ](#tab-panel-8509)
+* [  JavaScript ](#tab-panel-8528)
+* [  TypeScript ](#tab-panel-8529)
 
 index.js
 
@@ -307,8 +307,8 @@ export default {
 
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-8510)
-* [  TypeScript ](#tab-panel-8511)
+* [  JavaScript ](#tab-panel-8530)
+* [  TypeScript ](#tab-panel-8531)
 
 functions/request.js
 

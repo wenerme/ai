@@ -20,8 +20,8 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-* [  New dashboard ](#tab-panel-3330)
-* [ Old dashboard ](#tab-panel-3331)
+* [  New dashboard ](#tab-panel-3346)
+* [ Old dashboard ](#tab-panel-3347)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

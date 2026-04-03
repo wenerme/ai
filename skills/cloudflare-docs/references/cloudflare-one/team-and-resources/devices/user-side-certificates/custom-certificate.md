@@ -103,8 +103,8 @@ When preparing your certificate and private key for upload, be sure to remove an
 
 You can upload a single root certificate or a full certificate chain. When uploading a certificate chain via the dashboard, API, or Terraform, concatenate the root certificate and any intermediate certificates in PEM format, with the root certificate first.
 
-* [ Dashboard ](#tab-panel-3736)
-* [ API ](#tab-panel-3737)
+* [ Dashboard ](#tab-panel-3754)
+* [ API ](#tab-panel-3755)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings** \> **Certificates**.
 2. Select **Upload certificate**.

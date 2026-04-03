@@ -43,8 +43,8 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-3815)
-* [ API ](#tab-panel-3816)
+* [ Dashboard ](#tab-panel-3833)
+* [ API ](#tab-panel-3834)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.

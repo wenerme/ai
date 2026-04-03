@@ -20,23 +20,30 @@ To secure a sensitive area such as a development area, you can share a cookie wi
 
 Use the [http.cookie](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.cookie/) field to target requests based on the presence of a specific cookie.
 
-This example comprises two custom rules:
+This example comprises two [custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/):
 
-* The first rule targets requests to `dev.www.example.com` that have a specific cookie key, `devaccess`. As long as the value of the cookie key contains one of three authorized users — `james`, `matt`, or `michael` — the expression matches and the request is allowed, skipping all other custom rules.
-* The second rule blocks all access to `dev.www.example.com`.
+* Rule #1 targets requests to `dev.www.example.com` that have a specific cookie key, `devaccess`. As long as the value of the cookie key contains one of three authorized users — `james`, `matt`, or `michael` — the expression matches and the request is allowed, skipping all other custom rules.
+* Rule #2 blocks all access to `dev.www.example.com`.
 
 Since custom rules are evaluated in order, Cloudflare grants access to requests that satisfy rule 1 and blocks all other requests to `dev.www.example.com`:
 
-**Rule 1:**
+**Rule #1:**
 
-* **Expression**: `(http.cookie contains "devaccess=james" or http.cookie contains "devaccess=matt" or http.cookie contains "devaccess=michael") and http.host eq "dev.www.example.com"`
-* **Action**: _Skip:_  
+* **When incoming requests match**:  
+Use the expression editor:  
+`(http.cookie contains "devaccess=james" or http.cookie contains "devaccess=matt" or http.cookie contains "devaccess=michael") and http.host eq "dev.www.example.com"`
+* **Then take action**: _Skip:_  
    * _All remaining custom rules_
 
-**Rule 2:**
+**Rule #2:**
 
-* **Expression**: `(http.host eq "dev.www.example.com")`
-* **Action**: _Block_
+* **When incoming requests match**:  
+| Field    | Operator | Value               |  
+| -------- | -------- | ------------------- |  
+| Hostname | equals   | dev.www.example.com |  
+If using the expression editor:  
+`(http.host eq "dev.www.example.com")`
+* **Then take action**: _Block_
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/custom-rules/","name":"Custom rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/custom-rules/use-cases/","name":"Common use cases"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/custom-rules/use-cases/require-specific-cookie/","name":"Require a specific cookie"}}]}

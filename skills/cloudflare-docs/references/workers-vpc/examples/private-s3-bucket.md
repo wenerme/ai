@@ -151,8 +151,8 @@ curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6953)
-* [  wrangler.toml ](#tab-panel-6954)
+* [  wrangler.jsonc ](#tab-panel-6969)
+* [  wrangler.toml ](#tab-panel-6970)
 
 ```
 

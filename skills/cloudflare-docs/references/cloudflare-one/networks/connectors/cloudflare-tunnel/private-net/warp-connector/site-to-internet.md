@@ -137,9 +137,9 @@ If you do not have access to the router, you will need to configure each device 
 
 You can configure all traffic on a device to egress through WARP Connector with its local source IP. All traffic will be filtered by your Gateway network policies.
 
-* [ Linux ](#tab-panel-3510)
-* [ macOS ](#tab-panel-3511)
-* [ Windows ](#tab-panel-3512)
+* [ Linux ](#tab-panel-3526)
+* [ macOS ](#tab-panel-3527)
+* [ Windows ](#tab-panel-3528)
 
 Terminal window
 
@@ -188,7 +188,7 @@ You will also need to [add an IP route](#add-ip-route-to-devices) which routes t
 You can now test if traffic from your subnet routes through Cloudflare. For example,
 
 1. On the `10.0.0.2` device, run `curl --ipv4 www.google.com`.
-2. Check your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/gateway-logs/) for queries from `warp_connector@<your-team-name>.cloudflareaccess.com`. Logs may take a few minutes to populate.
+2. Check your [Gateway DNS logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) for queries from `warp_connector@<your-team-name>.cloudflareaccess.com`. Logs may take a few minutes to populate.
 
     flowchart LR
       subgraph subnet1[Subnet 10.0.0.0/24]

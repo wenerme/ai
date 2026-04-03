@@ -5,7 +5,7 @@
 Convert OpenAI chat-style messages to OpenResponses input:
 
 ```typescript
-import { OpenRouter, fromChatMessages } from '@openrouter/sdk';
+import { OpenRouter, fromChatMessages } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -32,7 +32,7 @@ const text = await result.getText();
 Convert an OpenResponses response to chat message format:
 
 ```typescript
-import { toChatMessage } from '@openrouter/sdk';
+import { toChatMessage } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'openai/gpt-5-nano',
@@ -90,7 +90,7 @@ const input = fromChatMessages(chatMessages);
 Convert Anthropic Claude-style messages to OpenResponses input:
 
 ```typescript
-import { OpenRouter, fromClaudeMessages } from '@openrouter/sdk';
+import { OpenRouter, fromClaudeMessages } from '@openrouter/agent';
 
 // Claude format
 const claudeMessages = [
@@ -110,7 +110,7 @@ const result = openrouter.callModel({
 Convert an OpenResponses response to Claude message format:
 
 ```typescript
-import { toClaudeMessage } from '@openrouter/sdk';
+import { toClaudeMessage } from '@openrouter/agent';
 
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4.5',
@@ -228,7 +228,7 @@ const completion = await openai.chat.completions.create({
 });
 
 // After: OpenRouter SDK
-import { OpenRouter, fromChatMessages } from '@openrouter/sdk';
+import { OpenRouter, fromChatMessages } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 const result = openrouter.callModel({
@@ -258,7 +258,7 @@ const message = await anthropic.messages.create({
 });
 
 // After: OpenRouter SDK
-import { OpenRouter, fromClaudeMessages } from '@openrouter/sdk';
+import { OpenRouter, fromClaudeMessages } from '@openrouter/agent';
 
 const openrouter = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 const result = openrouter.callModel({
@@ -277,7 +277,7 @@ const text = await result.getText();
 Accumulate messages across multiple calls:
 
 ```typescript
-import { fromChatMessages, toChatMessage } from '@openrouter/sdk';
+import { fromChatMessages, toChatMessage } from '@openrouter/agent';
 
 // Start with initial message
 let messages = [

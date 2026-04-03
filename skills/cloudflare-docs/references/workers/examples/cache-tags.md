@@ -30,10 +30,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7209)
-* [  TypeScript ](#tab-panel-7210)
-* [  Hono ](#tab-panel-7211)
-* [  Python ](#tab-panel-7212)
+* [  JavaScript ](#tab-panel-7229)
+* [  TypeScript ](#tab-panel-7230)
+* [  Hono ](#tab-panel-7231)
+* [  Python ](#tab-panel-7232)
 
 JavaScript
 

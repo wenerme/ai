@@ -30,8 +30,8 @@ Terminal window
 npx wrangler r2 bucket create my-backup-bucket  
 ```
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:  
-   * [  wrangler.jsonc ](#tab-panel-6251)  
-   * [  wrangler.toml ](#tab-panel-6252)  
+   * [  wrangler.jsonc ](#tab-panel-6267)  
+   * [  wrangler.toml ](#tab-panel-6268)  
 ```  
 {  
   "name": "my-sandbox-worker",  
@@ -105,8 +105,8 @@ You can create R2 API tokens in the [Cloudflare dashboard ↗](https://dash.clou
 
 Use `createBackup()` to snapshot a directory and upload it to R2:
 
-* [  JavaScript ](#tab-panel-6253)
-* [  TypeScript ](#tab-panel-6254)
+* [  JavaScript ](#tab-panel-6269)
+* [  TypeScript ](#tab-panel-6270)
 
 JavaScript
 
@@ -152,8 +152,8 @@ The SDK creates a compressed squashfs archive of the directory and uploads it di
 
 Use `restoreBackup()` to restore a directory from a backup:
 
-* [  JavaScript ](#tab-panel-6255)
-* [  TypeScript ](#tab-panel-6256)
+* [  JavaScript ](#tab-panel-6271)
+* [  TypeScript ](#tab-panel-6272)
 
 JavaScript
 
@@ -211,8 +211,8 @@ The FUSE mount is lost when the sandbox sleeps or the container restarts. Re-res
 
 When backing up a directory inside a git repository, set `useGitignore: true` to exclude files matching `.gitignore` rules. This is useful for skipping large generated directories like `node_modules/`, `dist/`, or `build/` that can be recreated.
 
-* [  JavaScript ](#tab-panel-6257)
-* [  TypeScript ](#tab-panel-6258)
+* [  JavaScript ](#tab-panel-6273)
+* [  TypeScript ](#tab-panel-6274)
 
 JavaScript
 
@@ -272,8 +272,8 @@ Requirements
 
 Save state before risky operations and restore if something fails:
 
-* [  JavaScript ](#tab-panel-6261)
-* [  TypeScript ](#tab-panel-6262)
+* [  JavaScript ](#tab-panel-6277)
+* [  TypeScript ](#tab-panel-6278)
 
 JavaScript
 
@@ -341,8 +341,8 @@ try {
 
 The `DirectoryBackup` handle is serializable. Persist it to KV, D1, or Durable Object storage for later use:
 
-* [  JavaScript ](#tab-panel-6265)
-* [  TypeScript ](#tab-panel-6266)
+* [  JavaScript ](#tab-panel-6281)
+* [  TypeScript ](#tab-panel-6282)
 
 JavaScript
 
@@ -424,8 +424,8 @@ if (stored) {
 
 Add a `name` option to identify backups. Names can be up to 256 characters:
 
-* [  JavaScript ](#tab-panel-6259)
-* [  TypeScript ](#tab-panel-6260)
+* [  JavaScript ](#tab-panel-6275)
+* [  TypeScript ](#tab-panel-6276)
 
 JavaScript
 
@@ -473,8 +473,8 @@ console.log(`Backup ID: ${backup.id}`);
 
 Set a custom time-to-live for backups. The default TTL is 3 days (259200 seconds). The `ttl` value must be a positive number of seconds:
 
-* [  JavaScript ](#tab-panel-6267)
-* [  TypeScript ](#tab-panel-6268)
+* [  JavaScript ](#tab-panel-6283)
+* [  TypeScript ](#tab-panel-6284)
 
 JavaScript
 
@@ -562,8 +562,8 @@ Backup archives are stored in your R2 bucket under the `backups/` prefix with th
 
 If you only need the most recent backup, delete the previous one before creating a new one:
 
-* [  JavaScript ](#tab-panel-6269)
-* [  TypeScript ](#tab-panel-6270)
+* [  JavaScript ](#tab-panel-6285)
+* [  TypeScript ](#tab-panel-6286)
 
 JavaScript
 
@@ -647,8 +647,8 @@ await env.KV.put("latest-backup", JSON.stringify(backup));
 
 To clean up multiple old backups, list objects under the `backups/` prefix and delete them by key:
 
-* [  JavaScript ](#tab-panel-6271)
-* [  TypeScript ](#tab-panel-6272)
+* [  JavaScript ](#tab-panel-6287)
+* [  TypeScript ](#tab-panel-6288)
 
 JavaScript
 
@@ -728,8 +728,8 @@ for (const object of listed.objects) {
 
 If you have the backup ID, delete both its archive and metadata directly:
 
-* [  JavaScript ](#tab-panel-6263)
-* [  TypeScript ](#tab-panel-6264)
+* [  JavaScript ](#tab-panel-6279)
+* [  TypeScript ](#tab-panel-6280)
 
 JavaScript
 
@@ -763,8 +763,8 @@ await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
 
 Restore uses FUSE overlayfs to mount the backup as a read-only lower layer. New writes go to a writable upper layer and do not affect the original backup:
 
-* [  JavaScript ](#tab-panel-6273)
-* [  TypeScript ](#tab-panel-6274)
+* [  JavaScript ](#tab-panel-6289)
+* [  TypeScript ](#tab-panel-6290)
 
 JavaScript
 
@@ -840,8 +840,8 @@ await sandbox.restoreBackup(backup);
 
 Backup and restore operations can throw specific errors. Wrap calls in [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks:
 
-* [  JavaScript ](#tab-panel-6275)
-* [  TypeScript ](#tab-panel-6276)
+* [  JavaScript ](#tab-panel-6291)
+* [  TypeScript ](#tab-panel-6292)
 
 JavaScript
 

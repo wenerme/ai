@@ -50,8 +50,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-* [  New dashboard ](#tab-panel-3192)
-* [ Old dashboard ](#tab-panel-3193)
+* [  New dashboard ](#tab-panel-3208)
+* [ Old dashboard ](#tab-panel-3209)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
