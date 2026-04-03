@@ -1,0 +1,398 @@
+{
+  "google-ai-api/overview.md": {
+    "url": "https://ai.google.dev/api",
+    "skill": "google-ai-api",
+    "size": 13197,
+    "updatedAt": "2026-04-02T10:28:30.107Z"
+  },
+  "google-ai-api/generate-content.md": {
+    "url": "https://ai.google.dev/api/generate-content",
+    "skill": "google-ai-api",
+    "size": 155908,
+    "updatedAt": "2026-04-02T10:28:30.515Z"
+  },
+  "google-ai-api/caching.md": {
+    "url": "https://ai.google.dev/api/caching",
+    "skill": "google-ai-api",
+    "size": 83814,
+    "updatedAt": "2026-04-02T10:28:30.884Z"
+  },
+  "google-ai-api/embeddings.md": {
+    "url": "https://ai.google.dev/api/embeddings",
+    "skill": "google-ai-api",
+    "size": 25688,
+    "updatedAt": "2026-04-02T10:28:31.264Z"
+  },
+  "google-ai-api/files.md": {
+    "url": "https://ai.google.dev/api/files",
+    "skill": "google-ai-api",
+    "size": 39480,
+    "updatedAt": "2026-04-02T10:28:31.663Z"
+  },
+  "google-ai-api/live.md": {
+    "url": "https://ai.google.dev/api/live",
+    "skill": "google-ai-api",
+    "size": 27429,
+    "updatedAt": "2026-04-02T10:28:32.044Z"
+  },
+  "google-ai-api/models.md": {
+    "url": "https://ai.google.dev/api/models",
+    "skill": "google-ai-api",
+    "size": 13258,
+    "updatedAt": "2026-04-02T10:28:32.423Z"
+  },
+  "google-ai-api/tokens.md": {
+    "url": "https://ai.google.dev/api/tokens",
+    "skill": "google-ai-api",
+    "size": 31503,
+    "updatedAt": "2026-04-02T10:28:32.846Z"
+  },
+  "google-ai-api/batch-mode.md": {
+    "url": "https://ai.google.dev/api/batch-mode",
+    "skill": "google-ai-api",
+    "size": 26292,
+    "updatedAt": "2026-04-02T10:28:33.230Z"
+  },
+  "google-ai-api/tuning.md": {
+    "url": "https://ai.google.dev/api/tuning",
+    "skill": "google-ai-api",
+    "size": 131155,
+    "updatedAt": "2026-04-02T10:28:34.275Z"
+  },
+  "google-ai-docs/quickstart.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/quickstart",
+    "skill": "google-ai-docs",
+    "size": 8118,
+    "updatedAt": "2026-04-02T10:28:34.652Z"
+  },
+  "google-ai-docs/api-versions.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/api-versions",
+    "skill": "google-ai-docs",
+    "size": 2662,
+    "updatedAt": "2026-04-02T10:28:35.005Z"
+  },
+  "google-ai-docs/thinking.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/thinking",
+    "skill": "google-ai-docs",
+    "size": 24528,
+    "updatedAt": "2026-04-02T10:28:35.423Z"
+  },
+  "google-ai-docs/text-generation.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/text-generation",
+    "skill": "google-ai-docs",
+    "size": 37600,
+    "updatedAt": "2026-04-02T10:28:35.907Z"
+  },
+  "google-ai-docs/image-understanding.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+    "skill": "google-ai-docs",
+    "size": 27435,
+    "updatedAt": "2026-04-02T10:28:36.472Z"
+  },
+  "google-ai-docs/audio.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/audio",
+    "skill": "google-ai-docs",
+    "size": 27094,
+    "updatedAt": "2026-04-02T10:28:36.849Z"
+  },
+  "google-ai-docs/video.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/video",
+    "skill": "google-ai-docs",
+    "size": 82094,
+    "updatedAt": "2026-04-02T10:28:37.277Z"
+  },
+  "google-ai-docs/document-processing.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/document-processing",
+    "skill": "google-ai-docs",
+    "size": 30483,
+    "updatedAt": "2026-04-02T10:28:37.803Z"
+  },
+  "google-ai-docs/structured-output.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+    "skill": "google-ai-docs",
+    "size": 22664,
+    "updatedAt": "2026-04-02T10:28:38.243Z"
+  },
+  "google-ai-docs/function-calling.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/function-calling",
+    "skill": "google-ai-docs",
+    "size": 69103,
+    "updatedAt": "2026-04-02T10:28:38.706Z"
+  },
+  "google-ai-docs/code-execution.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/code-execution",
+    "skill": "google-ai-docs",
+    "size": 22902,
+    "updatedAt": "2026-04-02T10:28:39.079Z"
+  },
+  "google-ai-docs/caching.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/caching",
+    "skill": "google-ai-docs",
+    "size": 19347,
+    "updatedAt": "2026-04-02T10:28:40.301Z"
+  },
+  "google-ai-docs/long-context.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/long-context",
+    "skill": "google-ai-docs",
+    "size": 10889,
+    "updatedAt": "2026-04-02T10:28:41.238Z"
+  },
+  "google-ai-docs/prompting-strategies.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+    "skill": "google-ai-docs",
+    "size": 36090,
+    "updatedAt": "2026-04-02T10:28:42.239Z"
+  },
+  "google-ai-docs/embeddings.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/embeddings",
+    "skill": "google-ai-docs",
+    "size": 39339,
+    "updatedAt": "2026-04-02T10:28:43.087Z"
+  },
+  "google-ai-docs/pricing.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "skill": "google-ai-docs",
+    "size": 49979,
+    "updatedAt": "2026-04-03T00:25:02.678Z"
+  },
+  "google-ai-docs/rate-limits.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
+    "skill": "google-ai-docs",
+    "size": 7197,
+    "updatedAt": "2026-04-02T10:28:44.274Z"
+  },
+  "google-ai-docs/openai.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/openai",
+    "skill": "google-ai-docs",
+    "size": 38113,
+    "updatedAt": "2026-04-02T10:28:44.654Z"
+  },
+  "google-ai-docs/files.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/files",
+    "skill": "google-ai-docs",
+    "size": 28040,
+    "updatedAt": "2026-04-02T10:28:45.172Z"
+  },
+  "google-ai-docs/live.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/live",
+    "skill": "google-ai-docs",
+    "size": 13458,
+    "updatedAt": "2026-04-02T10:28:45.554Z"
+  },
+  "google-ai-docs/imagen.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/imagen",
+    "skill": "google-ai-docs",
+    "size": 29965,
+    "updatedAt": "2026-04-02T10:28:45.914Z"
+  },
+  "google-ai-docs/batch-mode.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/batch-mode",
+    "skill": "google-ai-docs",
+    "size": 20500,
+    "updatedAt": "2026-04-02T10:28:46.292Z"
+  },
+  "google-ai-docs/api-key.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/api-key",
+    "skill": "google-ai-docs",
+    "size": 11233,
+    "updatedAt": "2026-04-02T10:28:47.609Z"
+  },
+  "google-ai-docs/music-generation.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/music-generation",
+    "skill": "google-ai-docs",
+    "size": 36287,
+    "updatedAt": "2026-04-02T10:28:48.007Z"
+  },
+  "google-ai-docs/model-tuning.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/model-tuning",
+    "skill": "google-ai-docs",
+    "size": 488,
+    "updatedAt": "2026-04-02T10:28:50.376Z"
+  },
+  "google-ai-docs/safety-settings.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/safety-settings",
+    "skill": "google-ai-docs",
+    "size": 10492,
+    "updatedAt": "2026-04-02T10:28:50.834Z"
+  },
+  "google-ai-docs/safety-guidance.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/safety-guidance",
+    "skill": "google-ai-docs",
+    "size": 15471,
+    "updatedAt": "2026-04-02T10:28:51.202Z"
+  },
+  "google-ai-api/batch-api.md": {
+    "url": "https://ai.google.dev/api/batch-api",
+    "skill": "google-ai-api",
+    "size": 34786,
+    "updatedAt": "2026-04-02T10:28:52.635Z"
+  },
+  "google-ai-docs/tokens.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/tokens",
+    "skill": "google-ai-docs",
+    "size": 21954,
+    "updatedAt": "2026-04-02T10:28:53.432Z"
+  },
+  "google-ai-docs/libraries.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/libraries",
+    "skill": "google-ai-docs",
+    "size": 5168,
+    "updatedAt": "2026-04-02T10:28:54.520Z"
+  },
+  "google-ai-docs/image-generation.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+    "skill": "google-ai-docs",
+    "size": 183673,
+    "updatedAt": "2026-04-02T10:28:55.009Z"
+  },
+  "google-ai-docs/models.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/models",
+    "skill": "google-ai-docs",
+    "size": 10162,
+    "updatedAt": "2026-04-02T10:28:55.395Z"
+  },
+  "google-ai-docs/thought-signatures.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/thought-signatures",
+    "skill": "google-ai-docs",
+    "size": 28823,
+    "updatedAt": "2026-04-02T10:28:55.760Z"
+  },
+  "google-ai-docs/video-understanding.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/video-understanding",
+    "skill": "google-ai-docs",
+    "size": 20875,
+    "updatedAt": "2026-04-02T10:28:56.174Z"
+  },
+  "google-ai-docs/file-input-methods.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/file-input-methods",
+    "skill": "google-ai-docs",
+    "size": 22122,
+    "updatedAt": "2026-04-02T10:28:56.646Z"
+  },
+  "google-ai-docs/media-resolution.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/media-resolution",
+    "skill": "google-ai-docs",
+    "size": 11007,
+    "updatedAt": "2026-04-02T10:28:57.114Z"
+  },
+  "google-ai-docs/usage-policies.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/usage-policies",
+    "skill": "google-ai-docs",
+    "size": 2921,
+    "updatedAt": "2026-04-02T10:28:57.481Z"
+  },
+  "google-ai-docs/google-search.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "skill": "google-ai-docs",
+    "size": 11238,
+    "updatedAt": "2026-04-02T10:28:58.860Z"
+  },
+  "google-ai-docs/url-context.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/url-context",
+    "skill": "google-ai-docs",
+    "size": 11813,
+    "updatedAt": "2026-04-02T10:28:59.251Z"
+  },
+  "google-ai-docs/file-search.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/file-search",
+    "skill": "google-ai-docs",
+    "size": 30338,
+    "updatedAt": "2026-04-02T10:28:59.621Z"
+  },
+  "google-ai-docs/tool-combination.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/tool-combination",
+    "skill": "google-ai-docs",
+    "size": 22334,
+    "updatedAt": "2026-04-02T10:28:59.996Z"
+  },
+  "google-ai-docs/live-api/tools.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/live-api/tools",
+    "skill": "google-ai-docs",
+    "size": 16572,
+    "updatedAt": "2026-04-02T10:29:00.545Z"
+  },
+  "google-ai-docs/gemini-3.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/gemini-3",
+    "skill": "google-ai-docs",
+    "size": 49684,
+    "updatedAt": "2026-04-02T10:29:01.026Z"
+  },
+  "google-ai-docs/deprecations.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+    "skill": "google-ai-docs",
+    "size": 7030,
+    "updatedAt": "2026-04-02T10:29:02.011Z"
+  },
+  "google-ai-docs/batch-api.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/batch-api",
+    "skill": "google-ai-docs",
+    "size": 47965,
+    "updatedAt": "2026-04-02T10:29:02.378Z"
+  },
+  "google-ai-docs/maps-grounding.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/maps-grounding",
+    "skill": "google-ai-docs",
+    "size": 29955,
+    "updatedAt": "2026-04-02T10:29:02.832Z"
+  },
+  "google-ai-docs/computer-use.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/computer-use",
+    "skill": "google-ai-docs",
+    "size": 39855,
+    "updatedAt": "2026-04-02T10:29:03.203Z"
+  },
+  "google-ai-docs/deep-research.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/deep-research",
+    "skill": "google-ai-docs",
+    "size": 27028,
+    "updatedAt": "2026-04-02T10:29:03.612Z"
+  },
+  "google-ai-docs/available-regions.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/available-regions",
+    "skill": "google-ai-docs",
+    "size": 4220,
+    "updatedAt": "2026-04-02T10:29:04.131Z"
+  },
+  "google-ai-docs/billing.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/billing",
+    "skill": "google-ai-docs",
+    "size": 32267,
+    "updatedAt": "2026-04-02T10:29:04.505Z"
+  },
+  "google-ai-docs/priority-inference.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/priority-inference",
+    "skill": "google-ai-docs",
+    "size": 7680,
+    "updatedAt": "2026-04-03T00:25:24.744Z"
+  },
+  "google-ai-docs/optimization.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/optimization",
+    "skill": "google-ai-docs",
+    "size": 4300,
+    "updatedAt": "2026-04-02T10:29:06.348Z"
+  },
+  "google-ai-docs/live-guide.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/live-guide",
+    "skill": "google-ai-docs",
+    "size": 32513,
+    "updatedAt": "2026-04-02T10:29:06.719Z"
+  },
+  "google-ai-docs/live-tools.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/live-tools",
+    "skill": "google-ai-docs",
+    "size": 16501,
+    "updatedAt": "2026-04-02T10:29:07.106Z"
+  },
+  "google-ai-docs/live-session.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/live-session",
+    "skill": "google-ai-docs",
+    "size": 9697,
+    "updatedAt": "2026-04-02T10:29:07.651Z"
+  },
+  "google-ai-docs/ephemeral-tokens.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/ephemeral-tokens",
+    "skill": "google-ai-docs",
+    "size": 7499,
+    "updatedAt": "2026-04-02T10:29:08.008Z"
+  }
+}
