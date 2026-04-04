@@ -101,7 +101,7 @@ function customMatcher(this: MatcherState, received: unknown, arg1: unknown, arg
 expect.extend({ customMatcher })
 ```
 
-> **tip**: To build custom **snapshot matchers** (wrappers around `toMatchSnapshot` / `toMatchInlineSnapshot` / `toMatchFileSnapshot`), use the composable functions from `vitest/runtime`. See [Custom Snapshot Matchers](/guide/snapshot#custom-snapshot-matchers).
+> **tip**: To build custom **snapshot matchers** (wrappers around `toMatchSnapshot()` / `toMatchInlineSnapshot()` / `toMatchFileSnapshot()`), use `Snapshots` exported from `vitest`. See [Custom Snapshot Matchers](/guide/snapshot#custom-snapshot-matchers).
 
 Matcher function has access to `this` context with the following properties:
 

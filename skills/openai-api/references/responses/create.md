@@ -60,6 +60,8 @@ as input for the model's response.
 
   - `"file_search_call.results"`
 
+  - `"web_search_call.results"`
+
   - `"web_search_call.action.sources"`
 
   - `"message.input_image.image_url"`

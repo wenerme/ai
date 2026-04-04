@@ -1,11 +1,11 @@
 ---
 title: "Alibaba (China) | Models"
-description: "Use Alibaba (China) models with Mastra. 74 models available."
+description: "Use Alibaba (China) models with Mastra. 75 models available."
 ---
 
 # [Alibaba (China) logo]Alibaba (China)
 
-Access 74 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
+Access 75 Alibaba (China) models through Mastra's model router. Authentication is handled automatically using the `DASHSCOPE_API_KEY` environment variable.
 
 Learn more in the [Alibaba (China) documentation](https://www.alibabacloud.com/help/en/model-studio/models).
 
@@ -232,7 +232,7 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
-    "model": "alibaba-cn/MiniMax/MiniMax-M2.5",
+    "model": "alibaba-cn/MiniMax/MiniMax-M2.7",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -240,8 +240,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 204800,
     "maxOutput": 131072,
-    "inputCost": 0.301,
-    "outputCost": 1.205
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "alibaba-cn/moonshot-kimi-k2-instruct",
@@ -842,6 +842,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.573,
     "outputCost": 3.44
+  },
+  {
+    "model": "alibaba-cn/qwen3.6-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 1.146,
+    "outputCost": 6.88
   },
   {
     "model": "alibaba-cn/qwq-32b",

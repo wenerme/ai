@@ -31,9 +31,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"43ba5c77a9eb734fabcd1681b1e28cfdd24fd5258c6026ab140646cf9036e82e\"",
-    "size": 194783,
-    "updatedAt": "2026-04-03T00:14:01.015Z"
+    "etag": "W/\"f9ab711c2f801cae17b6c808c4f6dd9c061e3ad653b45a82ecf65cb41a718791\"",
+    "size": 197456,
+    "updatedAt": "2026-04-04T10:08:55.979Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -151,9 +151,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Thu, 02 Apr 2026 23:51:07 GMT",
-    "size": 121773,
-    "updatedAt": "2026-04-03T00:13:42.074Z"
+    "lastModified": "Sat, 04 Apr 2026 03:24:14 GMT",
+    "size": 121118,
+    "updatedAt": "2026-04-04T10:08:36.343Z"
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
@@ -448,6 +448,12 @@
     "lastModified": "Fri, 03 Apr 2026 23:28:36 GMT",
     "size": 10532,
     "updatedAt": "2026-04-04T00:12:49.912Z"
+  },
+  "whats-new.md": {
+    "url": "https://code.claude.com/docs/en/whats-new",
+    "lastModified": "Sat, 04 Apr 2026 03:30:07 GMT",
+    "size": 1646,
+    "updatedAt": "2026-04-04T10:08:55.608Z"
   },
   "zero-data-retention.md": {
     "url": "https://code.claude.com/docs/en/zero-data-retention",
