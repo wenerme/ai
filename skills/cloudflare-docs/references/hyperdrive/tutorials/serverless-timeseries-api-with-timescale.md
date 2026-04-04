@@ -185,6 +185,8 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 * [  wrangler.jsonc ](#tab-panel-4838)
 * [  wrangler.toml ](#tab-panel-4839)
 
+JSONC
+
 ```
 
 {
@@ -197,7 +199,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -222,6 +224,8 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -232,7 +236,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

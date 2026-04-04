@@ -29,6 +29,8 @@ To enable source maps, add the following to your Worker's [Wrangler configuratio
 * [  wrangler.jsonc ](#tab-panel-7478)
 * [  wrangler.toml ](#tab-panel-7479)
 
+JSONC
+
 ```
 
 {
@@ -39,6 +41,8 @@ To enable source maps, add the following to your Worker's [Wrangler configuratio
 
 
 ```
+
+TOML
 
 ```
 

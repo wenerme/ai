@@ -270,6 +270,8 @@ To run the resulting Wasm binary on Workers, `workers-rs` includes a build tool 
 
 Unoptimized Rust Wasm binaries can be large and may exceed Worker bundle size limits or experience long startup times. The template project pre-configures several useful size optimizations in your `Cargo.toml` file:
 
+TOML
+
 ```
 
 [profile.release]

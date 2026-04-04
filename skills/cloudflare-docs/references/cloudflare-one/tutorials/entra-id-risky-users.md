@@ -90,12 +90,13 @@ cd risky-users
    * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
    * [  wrangler.jsonc ](#tab-panel-3951)  
    * [  wrangler.toml ](#tab-panel-3952)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "risky-users",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "main": "src/index.js",  
   "workers_dev": false,  
   "account_id": "<ACCOUNT-ID>",  
@@ -108,11 +109,12 @@ cd risky-users
   },  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "risky-users"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 main = "src/index.js"  
 workers_dev = false  
 account_id = "<ACCOUNT-ID>"  

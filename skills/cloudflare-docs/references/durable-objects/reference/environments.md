@@ -29,6 +29,8 @@ Durable Object bindings are not inherited. For example, you can define an enviro
 * [  wrangler.jsonc ](#tab-panel-4565)
 * [  wrangler.toml ](#tab-panel-4566)
 
+JSONC
+
 ```
 
 {
@@ -62,6 +64,8 @@ Durable Object bindings are not inherited. For example, you can define an enviro
 
 ```
 
+TOML
+
 ```
 
 [[env.staging.durable_objects.bindings]]
@@ -77,6 +81,8 @@ Because Wrangler appends the [environment name](https://developers.cloudflare.co
 
 * [  wrangler.jsonc ](#tab-panel-4567)
 * [  wrangler.toml ](#tab-panel-4568)
+
+JSONC
 
 ```
 
@@ -113,6 +119,8 @@ Because Wrangler appends the [environment name](https://developers.cloudflare.co
 
 ```
 
+TOML
+
 ```
 
 [[env.staging.durable_objects.bindings]]
@@ -132,6 +140,8 @@ If you want an environment-specific binding that accesses the same Objects as th
 
 * [  wrangler.jsonc ](#tab-panel-4569)
 * [  wrangler.toml ](#tab-panel-4570)
+
+JSONC
 
 ```
 
@@ -167,6 +177,8 @@ If you want an environment-specific binding that accesses the same Objects as th
 
 
 ```
+
+TOML
 
 ```
 

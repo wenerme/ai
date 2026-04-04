@@ -147,6 +147,8 @@ The template includes the proper Wrangler configuration:
 * [  wrangler.jsonc ](#tab-panel-6495)
 * [  wrangler.toml ](#tab-panel-6496)
 
+JSONC
+
 ```
 
 {
@@ -157,7 +159,7 @@ The template includes the proper Wrangler configuration:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "ai": {
 
@@ -204,6 +206,8 @@ The template includes the proper Wrangler configuration:
 
 ```
 
+TOML
+
 ```
 
 name = "sandbox-code-interpreter-example"
@@ -212,7 +216,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [ai]

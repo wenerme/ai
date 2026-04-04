@@ -85,7 +85,7 @@ components:
         - video
       description: Type of API used for the generation
       title: GenerationGetResponsesContentApplicationJsonSchemaDataApiType
-    GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItemsProviderName:
+    ProviderResponseProviderName:
       type: string
       enum:
         - AnyScale
@@ -192,34 +192,40 @@ components:
         - xAI
         - Z.AI
         - FakeProvider
-      title: >-
-        GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItemsProviderName
-    GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItems:
+      description: Name of the provider
+      title: ProviderResponseProviderName
+    ProviderResponse:
       type: object
       properties:
         id:
           type: string
+          description: Upstream provider response identifier
         endpoint_id:
           type: string
+          description: Internal endpoint identifier
         model_permaslug:
           type: string
+          description: Canonical model slug
         provider_name:
-          $ref: >-
-            #/components/schemas/GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItemsProviderName
+          $ref: '#/components/schemas/ProviderResponseProviderName'
+          description: Name of the provider
         status:
           type:
             - number
             - 'null'
           format: double
+          description: HTTP status code from the provider
         latency:
           type: number
           format: double
+          description: Response latency in milliseconds
         is_byok:
           type: boolean
+          description: Whether the request used a bring-your-own-key
       required:
         - status
-      title: >-
-        GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItems
+      description: Details of a provider response for a generation attempt
+      title: ProviderResponse
     GenerationGetResponsesContentApplicationJsonSchemaData:
       type: object
       properties:
@@ -353,8 +359,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: >-
-              #/components/schemas/GenerationGetResponsesContentApplicationJsonSchemaDataProviderResponsesItems
+            $ref: '#/components/schemas/ProviderResponse'
           description: >-
             List of provider responses for this generation, including fallback
             attempts

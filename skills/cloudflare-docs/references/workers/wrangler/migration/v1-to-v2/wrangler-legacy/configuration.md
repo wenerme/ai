@@ -35,6 +35,8 @@ The layout of a top-level configuration in a Wrangler file is displayed below:
 * [  wrangler.jsonc ](#tab-panel-8494)
 * [  wrangler.toml ](#tab-panel-8495)
 
+JSONC
+
 ```
 
 {
@@ -72,6 +74,8 @@ The layout of a top-level configuration in a Wrangler file is displayed below:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -107,6 +111,8 @@ An example of an `[env.name]` configuration looks like this:
 
 * [  wrangler.jsonc ](#tab-panel-8514)
 * [  wrangler.toml ](#tab-panel-8515)
+
+JSONC
 
 ```
 
@@ -188,6 +194,8 @@ An example of an `[env.name]` configuration looks like this:
 
 
 ```
+
+TOML
 
 ```
 
@@ -299,6 +307,8 @@ Usage:
 * [  wrangler.jsonc ](#tab-panel-8490)
 * [  wrangler.toml ](#tab-panel-8491)
 
+JSONC
+
 ```
 
 {
@@ -315,6 +325,8 @@ Usage:
 
 
 ```
+
+TOML
 
 ```
 
@@ -352,6 +364,8 @@ Alternatively, you can define `vars` using an inline table format. This style sh
 * [  wrangler.jsonc ](#tab-panel-8492)
 * [  wrangler.toml ](#tab-panel-8493)
 
+JSONC
+
 ```
 
 {
@@ -368,6 +382,8 @@ Alternatively, you can define `vars` using an inline table format. This style sh
 
 
 ```
+
+TOML
 
 ```
 
@@ -392,6 +408,8 @@ Usage:
 
 * [  wrangler.jsonc ](#tab-panel-8498)
 * [  wrangler.toml ](#tab-panel-8499)
+
+JSONC
 
 ```
 
@@ -426,6 +444,8 @@ Usage:
 
 ```
 
+TOML
+
 ```
 
 [[kv_namespaces]]
@@ -452,6 +472,8 @@ Alternatively, you can define `kv namespaces` like so:
 
 * [  wrangler.jsonc ](#tab-panel-8502)
 * [  wrangler.toml ](#tab-panel-8503)
+
+JSONC
 
 ```
 
@@ -485,6 +507,8 @@ Alternatively, you can define `kv namespaces` like so:
 
 
 ```
+
+TOML
 
 ```
 
@@ -550,6 +574,8 @@ Usage:
 * [  wrangler.jsonc ](#tab-panel-8496)
 * [  wrangler.toml ](#tab-panel-8497)
 
+JSONC
+
 ```
 
 {
@@ -566,6 +592,8 @@ Usage:
 
 
 ```
+
+TOML
 
 ```
 
@@ -600,6 +628,8 @@ If you want to include only a certain set of files or directories in your `bucke
 * [  wrangler.jsonc ](#tab-panel-8500)
 * [  wrangler.toml ](#tab-panel-8501)
 
+JSONC
+
 ```
 
 {
@@ -623,6 +653,8 @@ If you want to include only a certain set of files or directories in your `bucke
 
 ```
 
+TOML
+
 ```
 
 [site]
@@ -644,6 +676,8 @@ If you want to exclude files or directories in your `bucket`, add an `exclude` f
 
 * [  wrangler.jsonc ](#tab-panel-8504)
 * [  wrangler.toml ](#tab-panel-8505)
+
+JSONC
 
 ```
 
@@ -667,6 +701,8 @@ If you want to exclude files or directories in your `bucket`, add an `exclude` f
 
 
 ```
+
+TOML
 
 ```
 
@@ -714,6 +750,8 @@ Usage:
 * [  wrangler.jsonc ](#tab-panel-8506)
 * [  wrangler.toml ](#tab-panel-8507)
 
+JSONC
+
 ```
 
 {
@@ -734,6 +772,8 @@ Usage:
 
 
 ```
+
+TOML
 
 ```
 
@@ -756,6 +796,8 @@ Usage:
 * [  wrangler.jsonc ](#tab-panel-8508)
 * [  wrangler.toml ](#tab-panel-8509)
 
+JSONC
+
 ```
 
 {
@@ -772,6 +814,8 @@ Usage:
 
 
 ```
+
+TOML
 
 ```
 
@@ -823,6 +867,8 @@ Usage:
 * [  wrangler.jsonc ](#tab-panel-8510)
 * [  wrangler.toml ](#tab-panel-8511)
 
+JSONC
+
 ```
 
 {
@@ -843,6 +889,8 @@ Usage:
 
 
 ```
+
+TOML
 
 ```
 
@@ -925,6 +973,8 @@ To create a Workers project using Wrangler and Modules, add a `[build]` section:
 * [  wrangler.jsonc ](#tab-panel-8512)
 * [  wrangler.toml ](#tab-panel-8513)
 
+JSONC
+
 ```
 
 {
@@ -947,6 +997,8 @@ To create a Workers project using Wrangler and Modules, add a `[build]` section:
 
 
 ```
+
+TOML
 
 ```
 
@@ -993,6 +1045,8 @@ Defaults:
 
 * [  wrangler.jsonc ](#tab-panel-8516)
 * [  wrangler.toml ](#tab-panel-8517)
+
+JSONC
 
 ```
 
@@ -1049,6 +1103,8 @@ Defaults:
 
 ```
 
+TOML
+
 ```
 
 [build.upload]
@@ -1089,6 +1145,8 @@ To illustrate how these levels are applied, here is a Wrangler file using multip
 
 * [  wrangler.jsonc ](#tab-panel-8518)
 * [  wrangler.toml ](#tab-panel-8519)
+
+JSONC
 
 ```
 
@@ -1232,6 +1290,8 @@ To illustrate how these levels are applied, here is a Wrangler file using multip
 
 
 ```
+
+TOML
 
 ```
 

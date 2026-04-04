@@ -550,6 +550,8 @@ To deploy your Worker, open your Wrangler file and update the `name` key with yo
 * [  wrangler.jsonc ](#tab-panel-7770)
 * [  wrangler.toml ](#tab-panel-7771)
 
+JSONC
+
 ```
 
 {
@@ -562,6 +564,8 @@ To deploy your Worker, open your Wrangler file and update the `name` key with yo
 
 
 ```
+
+TOML
 
 ```
 
@@ -829,6 +833,8 @@ To deploy your Worker, open your Wrangler file and update the `name` key with yo
 * [  wrangler.jsonc ](#tab-panel-7772)
 * [  wrangler.toml ](#tab-panel-7773)
 
+JSONC
+
 ```
 
 {
@@ -841,6 +847,8 @@ To deploy your Worker, open your Wrangler file and update the `name` key with yo
 
 
 ```
+
+TOML
 
 ```
 

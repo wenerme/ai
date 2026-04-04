@@ -46,6 +46,8 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 * [  wrangler.jsonc ](#tab-panel-8574)
 * [  wrangler.toml ](#tab-panel-8575)
 
+JSONC
+
 ```
 
 {
@@ -58,7 +60,7 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "workflows": [
 
@@ -89,6 +91,8 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -99,7 +103,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[workflows]]

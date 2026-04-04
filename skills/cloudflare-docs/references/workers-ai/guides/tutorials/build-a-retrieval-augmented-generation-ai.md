@@ -120,6 +120,8 @@ This example features the [@cf/meta/llama-3-8b-instruct model](https://developer
 * [  wrangler.jsonc ](#tab-panel-6945)
 * [  wrangler.toml ](#tab-panel-6946)
 
+JSONC
+
 ```
 
 {
@@ -136,6 +138,8 @@ This example features the [@cf/meta/llama-3-8b-instruct model](https://developer
 
 
 ```
+
+TOML
 
 ```
 
@@ -225,6 +229,8 @@ Then, add the configuration details for your new Vectorize index to the [Wrangle
 * [  wrangler.jsonc ](#tab-panel-6947)
 * [  wrangler.toml ](#tab-panel-6948)
 
+JSONC
+
 ```
 
 {
@@ -247,6 +253,8 @@ Then, add the configuration details for your new Vectorize index to the [Wrangle
 
 
 ```
+
+TOML
 
 ```
 
@@ -279,6 +287,8 @@ Then, paste the configuration details output from the previous command into the 
 * [  wrangler.jsonc ](#tab-panel-6949)
 * [  wrangler.toml ](#tab-panel-6950)
 
+JSONC
+
 ```
 
 {
@@ -303,6 +313,8 @@ Then, paste the configuration details output from the previous command into the 
 
 
 ```
+
+TOML
 
 ```
 
@@ -348,6 +360,8 @@ To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](
 * [  wrangler.jsonc ](#tab-panel-6951)
 * [  wrangler.toml ](#tab-panel-6952)
 
+JSONC
+
 ```
 
 {
@@ -372,6 +386,8 @@ To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](
 
 
 ```
+
+TOML
 
 ```
 

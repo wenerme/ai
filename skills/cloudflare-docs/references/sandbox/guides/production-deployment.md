@@ -60,6 +60,8 @@ Add a wildcard route to your Wrangler configuration:
 * [  wrangler.jsonc ](#tab-panel-6461)
 * [  wrangler.toml ](#tab-panel-6462)
 
+JSONC
+
 ```
 
 {
@@ -72,7 +74,7 @@ Add a wildcard route to your Wrangler configuration:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "routes": [
 
@@ -91,6 +93,8 @@ Add a wildcard route to your Wrangler configuration:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -101,7 +105,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[routes]]

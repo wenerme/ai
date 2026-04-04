@@ -109,6 +109,8 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 * [  wrangler.jsonc ](#tab-panel-5953)
 * [  wrangler.toml ](#tab-panel-5954)
 
+JSONC
+
 ```
 
 {
@@ -121,7 +123,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -164,6 +166,8 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -174,7 +178,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

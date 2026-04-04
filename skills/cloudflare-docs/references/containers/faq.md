@@ -25,6 +25,8 @@ To get logs in the Dashboard, including live tailing of logs, toggle `observabil
 * [  wrangler.jsonc ](#tab-panel-4019)
 * [  wrangler.toml ](#tab-panel-4020)
 
+JSONC
+
 ```
 
 {
@@ -39,6 +41,8 @@ To get logs in the Dashboard, including live tailing of logs, toggle `observabil
 
 
 ```
+
+TOML
 
 ```
 

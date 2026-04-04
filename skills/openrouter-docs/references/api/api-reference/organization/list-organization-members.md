@@ -30,13 +30,13 @@ paths:
           description: Number of records to skip for pagination
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: Maximum number of records to return (max 100)
           required: false
           schema:
-            type: string
+            type: integer
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header

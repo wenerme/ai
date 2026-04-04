@@ -161,6 +161,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 * [  wrangler.jsonc ](#tab-panel-2970)
 * [  wrangler.toml ](#tab-panel-2971)
 
+JSONC
+
 ```
 
 {
@@ -173,7 +175,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -220,6 +222,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -230,7 +234,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

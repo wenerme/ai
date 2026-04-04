@@ -109,6 +109,7 @@ Terminal window
 sudo vim /etc/systemd/system/vncserver@.service  
 ```  
    1. Copy and paste the following content. Replace `[YOUR_USERNAME]` with the VNC server user. If needed, update `/usr/bin/vncserver` to your `vncserver` path.  
+   TOML  
    ```  
    [Unit]  
    Description=Start TightVNC server at startup  

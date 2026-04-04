@@ -35,6 +35,8 @@ tokio-quiche powers Privacy Proxy infrastructure, including Proxy B for iCloud P
 
 Add tokio-quiche to your `Cargo.toml`:
 
+TOML
+
 ```
 
 [dependencies]

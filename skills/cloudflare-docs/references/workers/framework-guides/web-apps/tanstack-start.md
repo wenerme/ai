@@ -152,12 +152,13 @@ export default defineConfig({
 3. Add a `wrangler.jsonc` configuration file:  
    * [  wrangler.jsonc ](#tab-panel-7414)  
    * [  wrangler.toml ](#tab-panel-7415)  
+JSONC  
 ```  
 {  
   "$schema": "node_modules/wrangler/config-schema.json",  
   "name": "<YOUR_PROJECT_NAME>",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "compatibility_flags": ["nodejs_compat"],  
   "main": "@tanstack/react-start/server-entry",  
   "observability": {  
@@ -165,11 +166,12 @@ export default defineConfig({
   },  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "node_modules/wrangler/config-schema.json"  
 name = "<YOUR_PROJECT_NAME>"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 compatibility_flags = [ "nodejs_compat" ]  
 main = "@tanstack/react-start/server-entry"  
 [observability]  
@@ -275,11 +277,13 @@ export default {
 2. Update your Wrangler configuration to point to your custom entrypoint:  
    * [  wrangler.jsonc ](#tab-panel-7412)  
    * [  wrangler.toml ](#tab-panel-7413)  
+JSONC  
 ```  
 {  
   "main": "src/server.ts",  
 }  
 ```  
+TOML  
 ```  
 main = "src/server.ts"  
 ```
@@ -393,6 +397,8 @@ Add the Workflow configuration to your Wrangler configuration:
 * [  wrangler.jsonc ](#tab-panel-7416)
 * [  wrangler.toml ](#tab-panel-7417)
 
+JSONC
+
 ```
 
 {
@@ -416,6 +422,8 @@ Add the Workflow configuration to your Wrangler configuration:
 
 ```
 
+TOML
+
 ```
 
 [[workflows]]
@@ -435,6 +443,8 @@ Add a service binding to call another Worker's RPC methods from your TanStack St
 
 * [  wrangler.jsonc ](#tab-panel-7418)
 * [  wrangler.toml ](#tab-panel-7419)
+
+JSONC
 
 ```
 
@@ -456,6 +466,8 @@ Add a service binding to call another Worker's RPC methods from your TanStack St
 
 
 ```
+
+TOML
 
 ```
 
@@ -633,6 +645,8 @@ Add an [R2 bucket binding](https://developers.cloudflare.com/r2/api/workers/work
 * [  wrangler.jsonc ](#tab-panel-7420)
 * [  wrangler.toml ](#tab-panel-7421)
 
+JSONC
+
 ```
 
 {
@@ -653,6 +667,8 @@ Add an [R2 bucket binding](https://developers.cloudflare.com/r2/api/workers/work
 
 
 ```
+
+TOML
 
 ```
 

@@ -174,6 +174,7 @@ But if you wish to add the binding manually, follow the steps below:
 2. Add them to the end of your Wrangler file.  
    * [  wrangler.jsonc ](#tab-panel-4075)  
    * [  wrangler.toml ](#tab-panel-4076)  
+JSONC  
 ```  
 {  
   "d1_databases": [  
@@ -185,6 +186,7 @@ But if you wish to add the binding manually, follow the steps below:
   ]  
 }  
 ```  
+TOML  
 ```  
 [[d1_databases]]  
 binding = "prod_d1_tutorial"  

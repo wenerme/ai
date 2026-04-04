@@ -46,6 +46,8 @@ Then, update your Worker project's Wrangler file to create an mTLS certificate b
 * [  wrangler.jsonc ](#tab-panel-7528)
 * [  wrangler.toml ](#tab-panel-7529)
 
+JSONC
+
 ```
 
 {
@@ -66,6 +68,8 @@ Then, update your Worker project's Wrangler file to create an mTLS certificate b
 
 
 ```
+
+TOML
 
 ```
 

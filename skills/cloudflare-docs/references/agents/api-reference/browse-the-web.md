@@ -185,6 +185,8 @@ bun add -d @cloudflare/puppeteer
 * [  wrangler.jsonc ](#tab-panel-2116)
 * [  wrangler.toml ](#tab-panel-2117)
 
+JSONC
+
 ```
 
 {
@@ -209,6 +211,8 @@ bun add -d @cloudflare/puppeteer
 
 
 ```
+
+TOML
 
 ```
 

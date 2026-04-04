@@ -50,6 +50,8 @@ Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 * [  wrangler.jsonc ](#tab-panel-4389)
 * [  wrangler.toml ](#tab-panel-4390)
 
+JSONC
+
 ```
 
 {
@@ -74,6 +76,8 @@ Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
 
 ```
+
+TOML
 
 ```
 

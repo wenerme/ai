@@ -63,6 +63,8 @@ To configure a Custom Domain in your [Wrangler configuration file](https://devel
 * [  wrangler.jsonc ](#tab-panel-7095)
 * [  wrangler.toml ](#tab-panel-7096)
 
+JSONC
+
 ```
 
 {
@@ -84,6 +86,8 @@ To configure a Custom Domain in your [Wrangler configuration file](https://devel
 
 ```
 
+TOML
+
 ```
 
 [[routes]]
@@ -99,6 +103,8 @@ To configure multiple Custom Domains:
 
 * [  wrangler.jsonc ](#tab-panel-7099)
 * [  wrangler.toml ](#tab-panel-7100)
+
+JSONC
 
 ```
 
@@ -128,6 +134,8 @@ To configure multiple Custom Domains:
 
 
 ```
+
+TOML
 
 ```
 
@@ -259,6 +267,7 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 3. Add the following to your Wrangler file:  
    * [  wrangler.jsonc ](#tab-panel-7097)  
    * [  wrangler.toml ](#tab-panel-7098)  
+JSONC  
 ```  
 {  
   "routes": [  
@@ -269,6 +278,7 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
   ]  
 }  
 ```  
+TOML  
 ```  
 [[routes]]  
 pattern = "example.com"  

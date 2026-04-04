@@ -23,6 +23,8 @@ The following code in the Wrangler file shows you how to have two environments t
 * [  wrangler.jsonc ](#tab-panel-5021)
 * [  wrangler.toml ](#tab-panel-5022)
 
+JSONC
+
 ```
 
 {
@@ -67,6 +69,8 @@ The following code in the Wrangler file shows you how to have two environments t
 
 
 ```
+
+TOML
 
 ```
 
@@ -125,6 +129,8 @@ For example, you could use separate staging and production KV namespaces for KV 
 * [  wrangler.jsonc ](#tab-panel-5023)
 * [  wrangler.toml ](#tab-panel-5024)
 
+JSONC
+
 ```
 
 {
@@ -179,6 +185,8 @@ For example, you could use separate staging and production KV namespaces for KV 
 
 
 ```
+
+TOML
 
 ```
 

@@ -547,6 +547,7 @@ Terminal window
 gem sources --add-trusted-cert ~/.gem/ssl/rubygems.org.pem  
 ```  
 Alternatively, add the following line to your RubyGems configuration file located in `~/.gemrc` file to globally trust the certificate:  
+YAML  
 ```  
 :ssl_cert: ~/.gem/ssl/rubygems.org.pem  
 ```
@@ -574,6 +575,7 @@ PowerShell
 gem sources --add-trusted-cert "$env:USERPROFILE\.gem\ssl\rubygems.org.pem"  
 ```  
 Alternatively, add the following line to your RubyGems configuration file located in `$HOME\.gemrc` to globally trust the certificate:  
+YAML  
 ```  
 :ssl_cert: C:/Users/<username>/.gem/ssl/rubygems.org.pem  
 ```
@@ -596,6 +598,8 @@ PowerShell
 
 Alternatively, you can configure this in your Cargo configuration file at `%USERPROFILE%\.cargo\config.toml`:
 
+TOML
+
 ```
 
 [http]
@@ -614,6 +618,8 @@ export CARGO_HTTP_CAINFO="$HOME/Downloads/certificate.pem"
 3. Restart your terminal.
 
 Alternatively, you can configure this in your Cargo configuration file at `~/.cargo/config.toml`:
+
+TOML
 
 ```
 

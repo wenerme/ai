@@ -183,6 +183,8 @@ You'll also need to connect your Agent to your vector indexes:
 * [  wrangler.jsonc ](#tab-panel-2540)
 * [  wrangler.toml ](#tab-panel-2541)
 
+JSONC
+
 ```
 
 {
@@ -207,6 +209,8 @@ You'll also need to connect your Agent to your vector indexes:
 
 
 ```
+
+TOML
 
 ```
 

@@ -643,6 +643,8 @@ Finally, configure your Wrangler file to include a Durable Object [binding](http
 * [  wrangler.jsonc ](#tab-panel-4522)
 * [  wrangler.toml ](#tab-panel-4523)
 
+JSONC
+
 ```
 
 {
@@ -689,6 +691,8 @@ Finally, configure your Wrangler file to include a Durable Object [binding](http
 
 
 ```
+
+TOML
 
 ```
 

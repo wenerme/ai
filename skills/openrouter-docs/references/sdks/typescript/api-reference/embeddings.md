@@ -37,8 +37,8 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.embeddings.generate({
     requestBody: {
-      input: "<value>",
-      model: "Taurus",
+      input: "The quick brown fox jumps over the lazy dog",
+      model: "openai/text-embedding-3-small",
     },
   });
 
@@ -68,8 +68,8 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await embeddingsGenerate(openRouter, {
     requestBody: {
-      input: "<value>",
-      model: "Taurus",
+      input: "The quick brown fox jumps over the lazy dog",
+      model: "openai/text-embedding-3-small",
     },
   });
   if (res.ok) {

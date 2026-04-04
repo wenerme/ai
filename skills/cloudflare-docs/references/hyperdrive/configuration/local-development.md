@@ -75,6 +75,8 @@ Alternatively, you can set `localConnectionString` in your [Wrangler configurati
 * [  wrangler.jsonc ](#tab-panel-4660)
 * [  wrangler.toml ](#tab-panel-4661)
 
+JSONC
+
 ```
 
 {
@@ -97,6 +99,8 @@ Alternatively, you can set `localConnectionString` in your [Wrangler configurati
 
 
 ```
+
+TOML
 
 ```
 
@@ -129,6 +133,8 @@ Configure your Hyperdrive binding in `wrangler.jsonc`:
 * [  wrangler.jsonc ](#tab-panel-4662)
 * [  wrangler.toml ](#tab-panel-4663)
 
+JSONC
+
 ```
 
 {
@@ -149,6 +155,8 @@ Configure your Hyperdrive binding in `wrangler.jsonc`:
 
 
 ```
+
+TOML
 
 ```
 

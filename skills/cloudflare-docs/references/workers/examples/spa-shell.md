@@ -48,6 +48,8 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 * [  wrangler.jsonc ](#tab-panel-7369)
 * [  wrangler.toml ](#tab-panel-7370)
 
+JSONC
+
 ```
 
 {
@@ -58,7 +60,7 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -79,6 +81,8 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 
 ```
 
+TOML
+
 ```
 
 name = "my-spa"
@@ -87,7 +91,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -355,6 +359,8 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 * [  wrangler.jsonc ](#tab-panel-7371)
 * [  wrangler.toml ](#tab-panel-7372)
 
+JSONC
+
 ```
 
 {
@@ -365,7 +371,7 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -382,6 +388,8 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 
 ```
 
+TOML
+
 ```
 
 name = "my-spa-proxy"
@@ -390,7 +398,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

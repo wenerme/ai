@@ -42,6 +42,8 @@ Enable [Workers Logs](https://developers.cloudflare.com/workers/observability/lo
 * [  wrangler.jsonc ](#tab-panel-4583)
 * [  wrangler.toml ](#tab-panel-4584)
 
+JSONC
+
 ```
 
 {
@@ -60,6 +62,8 @@ Enable [Workers Logs](https://developers.cloudflare.com/workers/observability/lo
 
 
 ```
+
+TOML
 
 ```
 

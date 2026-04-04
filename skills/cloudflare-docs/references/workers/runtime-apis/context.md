@@ -34,6 +34,8 @@ For example, imagine that you are configuring a Worker called "frontend-worker",
 * [  wrangler.jsonc ](#tab-panel-7576)
 * [  wrangler.toml ](#tab-panel-7577)
 
+JSONC
+
 ```
 
 {
@@ -71,6 +73,8 @@ For example, imagine that you are configuring a Worker called "frontend-worker",
 
 ```
 
+TOML
+
 ```
 
 [[services]]
@@ -101,6 +105,8 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 * [  wrangler.jsonc ](#tab-panel-7578)
 * [  wrangler.toml ](#tab-panel-7579)
+
+JSONC
 
 ```
 
@@ -138,6 +144,8 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 
 ```
+
+TOML
 
 ```
 

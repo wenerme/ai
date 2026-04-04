@@ -90,6 +90,8 @@ In your Wrangler file, create a new `[[d1_databases]]` configuration block and s
 * [  wrangler.jsonc ](#tab-panel-4061)
 * [  wrangler.toml ](#tab-panel-4062)
 
+JSONC
+
 ```
 
 {
@@ -108,7 +110,7 @@ In your Wrangler file, create a new `[[d1_databases]]` configuration block and s
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "d1_databases": [
 
@@ -129,6 +131,8 @@ In your Wrangler file, create a new `[[d1_databases]]` configuration block and s
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -141,7 +145,7 @@ compatibility_flags = [ "python_workers" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[d1_databases]]

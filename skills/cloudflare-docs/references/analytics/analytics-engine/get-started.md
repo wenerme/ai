@@ -27,6 +27,8 @@ You do not need to manually create a dataset in the Cloudflare dashboard. Worker
 * [  wrangler.jsonc ](#tab-panel-3122)
 * [  wrangler.toml ](#tab-panel-3123)
 
+JSONC
+
 ```
 
 {
@@ -47,6 +49,8 @@ You do not need to manually create a dataset in the Cloudflare dashboard. Worker
 
 
 ```
+
+TOML
 
 ```
 

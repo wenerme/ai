@@ -90,6 +90,8 @@ With your destinations created in the Cloudflare dashboard, update your Worker's
 * [  wrangler.jsonc ](#tab-panel-7460)
 * [  wrangler.toml ](#tab-panel-7461)
 
+JSONC
+
 ```
 
 {
@@ -122,6 +124,8 @@ With your destinations created in the Cloudflare dashboard, update your Worker's
 
 
 ```
+
+TOML
 
 ```
 

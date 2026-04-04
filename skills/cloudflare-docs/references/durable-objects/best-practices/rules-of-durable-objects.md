@@ -1140,6 +1140,8 @@ Configure your Durable Object class to use SQLite storage in your Wrangler confi
 * [  wrangler.jsonc ](#tab-panel-4397)
 * [  wrangler.toml ](#tab-panel-4398)
 
+JSONC
+
 ```
 
 {
@@ -1154,6 +1156,8 @@ Configure your Durable Object class to use SQLite storage in your Wrangler confi
 
 
 ```
+
+TOML
 
 ```
 
@@ -4566,6 +4570,8 @@ For schema changes, run migrations in the constructor using `blockConcurrencyWhi
 * [  wrangler.jsonc ](#tab-panel-4399)
 * [  wrangler.toml ](#tab-panel-4400)
 
+JSONC
+
 ```
 
 {
@@ -4586,6 +4592,8 @@ For schema changes, run migrations in the constructor using `blockConcurrencyWhi
 
 
 ```
+
+TOML
 
 ```
 

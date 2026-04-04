@@ -244,6 +244,8 @@ You then connect that consumer to a queue with `wrangler queues consumer <queue-
 * [  wrangler.jsonc ](#tab-panel-5660)
 * [  wrangler.toml ](#tab-panel-5661)
 
+JSONC
+
 ```
 
 {
@@ -270,6 +272,8 @@ You then connect that consumer to a queue with `wrangler queues consumer <queue-
 
 
 ```
+
+TOML
 
 ```
 

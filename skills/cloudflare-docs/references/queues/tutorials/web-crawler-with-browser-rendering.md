@@ -145,6 +145,8 @@ Then, in your Wrangler file, add the following with the values generated in the 
 * [  wrangler.jsonc ](#tab-panel-5725)
 * [  wrangler.toml ](#tab-panel-5726)
 
+JSONC
+
 ```
 
 {
@@ -173,6 +175,8 @@ Then, in your Wrangler file, add the following with the values generated in the 
 
 
 ```
+
+TOML
 
 ```
 
@@ -239,6 +243,8 @@ Then, add a Browser Rendering binding. Adding a Browser Rendering binding gives 
 * [  wrangler.jsonc ](#tab-panel-5723)
 * [  wrangler.toml ](#tab-panel-5724)
 
+JSONC
+
 ```
 
 {
@@ -253,6 +259,8 @@ Then, add a Browser Rendering binding. Adding a Browser Rendering binding gives 
 
 
 ```
+
+TOML
 
 ```
 
@@ -299,6 +307,8 @@ Then, in your Wrangler file, add the following:
 * [  wrangler.jsonc ](#tab-panel-5727)
 * [  wrangler.toml ](#tab-panel-5728)
 
+JSONC
+
 ```
 
 {
@@ -336,6 +346,8 @@ Then, in your Wrangler file, add the following:
 
 ```
 
+TOML
+
 ```
 
 [[queues.consumers]]
@@ -361,6 +373,8 @@ Your final Wrangler file should look similar to the one below.
 * [  wrangler.jsonc ](#tab-panel-5729)
 * [  wrangler.toml ](#tab-panel-5730)
 
+JSONC
+
 ```
 
 {
@@ -373,7 +387,7 @@ Your final Wrangler file should look similar to the one below.
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -440,6 +454,8 @@ Your final Wrangler file should look similar to the one below.
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -450,7 +466,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

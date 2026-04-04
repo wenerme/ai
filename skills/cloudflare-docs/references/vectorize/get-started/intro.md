@@ -158,6 +158,8 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 * [  wrangler.jsonc ](#tab-panel-6737)
 * [  wrangler.toml ](#tab-panel-6738)
 
+JSONC
+
 ```
 
 {
@@ -178,6 +180,8 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 
 
 ```
+
+TOML
 
 ```
 

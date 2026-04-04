@@ -212,6 +212,8 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 * [ yarn ](#tab-panel-7443)
 * [ pnpm ](#tab-panel-7444)
 
+YAML
+
 ```
 
 - run: npm run generate-types
@@ -223,6 +225,8 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 
 ```
 
+YAML
+
 ```
 
 - run: yarn generate-types
@@ -233,6 +237,8 @@ We recommend you commit your generated types file for use in CI. You can run `wr
 
 
 ```
+
+YAML
 
 ```
 
@@ -251,6 +257,8 @@ Alternatively, if you commit your generated types file and want to verify it sta
 * [ yarn ](#tab-panel-7446)
 * [ pnpm ](#tab-panel-7447)
 
+YAML
+
 ```
 
 - run: npx wrangler types --check
@@ -262,6 +270,8 @@ Alternatively, if you commit your generated types file and want to verify it sta
 
 ```
 
+YAML
+
 ```
 
 - run: yarn wrangler types --check
@@ -272,6 +282,8 @@ Alternatively, if you commit your generated types file and want to verify it sta
 
 
 ```
+
+YAML
 
 ```
 

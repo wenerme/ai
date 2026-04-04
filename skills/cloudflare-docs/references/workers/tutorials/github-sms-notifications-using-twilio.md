@@ -236,6 +236,8 @@ Add the nodejs\_compat flag to your Wrangler file:
 * [  wrangler.jsonc ](#tab-panel-7774)
 * [  wrangler.toml ](#tab-panel-7775)
 
+JSONC
+
 ```
 
 {
@@ -250,6 +252,8 @@ Add the nodejs\_compat flag to your Wrangler file:
 
 
 ```
+
+TOML
 
 ```
 

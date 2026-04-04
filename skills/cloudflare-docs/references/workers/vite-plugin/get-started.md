@@ -106,6 +106,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 * [  wrangler.jsonc ](#tab-panel-7794)
 * [  wrangler.toml ](#tab-panel-7795)
 
+JSONC
+
 ```
 
 {
@@ -116,7 +118,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./src/index.ts"
 
@@ -124,6 +126,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 
 ```
+
+TOML
 
 ```
 
@@ -133,7 +137,7 @@ name = "cloudflare-vite-get-started"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./src/index.ts"
 

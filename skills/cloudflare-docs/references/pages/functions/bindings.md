@@ -905,6 +905,8 @@ PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) 
 * [  wrangler.jsonc ](#tab-panel-5457)
 * [  wrangler.toml ](#tab-panel-5458)
 
+JSONC
+
 ```
 
 {
@@ -917,12 +919,14 @@ PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -930,7 +934,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```

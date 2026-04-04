@@ -102,6 +102,8 @@ Use your R2 bucket inside your Worker project by modifying the [Wrangler configu
 * [  wrangler.jsonc ](#tab-panel-7790)
 * [  wrangler.toml ](#tab-panel-7791)
 
+JSONC
+
 ```
 
 {
@@ -122,6 +124,8 @@ Use your R2 bucket inside your Worker project by modifying the [Wrangler configu
 
 
 ```
+
+TOML
 
 ```
 

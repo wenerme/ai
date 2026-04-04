@@ -285,6 +285,8 @@ function Chat() {
 
 ### Wrangler configuration
 
+JSONC
+
 ```
 
 // wrangler.jsonc

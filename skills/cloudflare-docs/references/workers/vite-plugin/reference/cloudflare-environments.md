@@ -21,6 +21,8 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 * [  wrangler.jsonc ](#tab-panel-7796)
 * [  wrangler.toml ](#tab-panel-7797)
 
+JSONC
+
 ```
 
 {
@@ -31,7 +33,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./src/index.ts",
 
@@ -70,6 +72,8 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -78,7 +82,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./src/index.ts"
 
@@ -189,6 +193,8 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 * [  wrangler.jsonc ](#tab-panel-7798)
 * [  wrangler.toml ](#tab-panel-7799)
 
+JSONC
+
 ```
 
 {
@@ -199,7 +205,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./src/index.ts",
 
@@ -238,6 +244,8 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -246,7 +254,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./src/index.ts"
 

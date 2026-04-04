@@ -31,6 +31,8 @@ To connect your Worker to Workers AI, add the following to your [Wrangler config
 * [  wrangler.jsonc ](#tab-panel-3060)
 * [  wrangler.toml ](#tab-panel-3061)
 
+JSONC
+
 ```
 
 {
@@ -45,6 +47,8 @@ To connect your Worker to Workers AI, add the following to your [Wrangler config
 
 
 ```
+
+TOML
 
 ```
 

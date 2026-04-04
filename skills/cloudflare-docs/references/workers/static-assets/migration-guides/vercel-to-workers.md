@@ -45,6 +45,8 @@ For a **static site**, you will need to add the following to your wrangler file.
 * [  wrangler.jsonc ](#tab-panel-7712)
 * [  wrangler.toml ](#tab-panel-7713)
 
+JSONC
+
 ```
 
 {
@@ -53,7 +55,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -66,13 +68,15 @@ For a **static site**, you will need to add the following to your wrangler file.
 
 ```
 
+TOML
+
 ```
 
 name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -87,6 +91,8 @@ For a **single page application**, you will need to add the following to your wr
 * [  wrangler.jsonc ](#tab-panel-7714)
 * [  wrangler.toml ](#tab-panel-7715)
 
+JSONC
+
 ```
 
 {
@@ -95,7 +101,7 @@ For a **single page application**, you will need to add the following to your wr
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -110,13 +116,15 @@ For a **single page application**, you will need to add the following to your wr
 
 ```
 
+TOML
+
 ```
 
 name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]

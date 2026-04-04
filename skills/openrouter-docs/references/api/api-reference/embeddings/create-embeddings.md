@@ -93,19 +93,25 @@ paths:
                 input:
                   $ref: >-
                     #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput
+                  description: Text, token, or multimodal input(s) to embed
                 model:
                   type: string
+                  description: The model to use for embeddings
                 encoding_format:
                   $ref: >-
                     #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat
+                  description: The format of the output embeddings
                 dimensions:
                   type: integer
+                  description: The number of dimensions for the output embeddings
                 user:
                   type: string
+                  description: A unique identifier for the end-user
                 provider:
                   $ref: '#/components/schemas/ProviderPreferences'
                 input_type:
                   type: string
+                  description: The type of input (e.g. search_query, search_document)
               required:
                 - input
                 - model
@@ -204,28 +210,19 @@ components:
               format: double
         - $ref: >-
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput4
+      description: Text, token, or multimodal input(s) to embed
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat:
       type: string
       enum:
         - float
         - base64
+      description: The format of the output embeddings
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat
-    DataCollection:
-      type: string
-      enum:
-        - deny
-        - allow
-      description: >-
-        Data collection setting. If no available model provider meets the
-        requirement, your request will return an error.
-
-        - allow: (default) allow providers which store user data non-transiently
-        and may train on it
-
-
-        - deny: use only providers which do not collect user data.
-      title: DataCollection
+    ProviderPreferencesDataCollection:
+      type: object
+      properties: {}
+      title: ProviderPreferencesDataCollection
     ProviderName:
       type: string
       enum:
@@ -489,7 +486,7 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         data_collection:
-          $ref: '#/components/schemas/DataCollection'
+          $ref: '#/components/schemas/ProviderPreferencesDataCollection'
         zdr:
           type:
             - boolean
@@ -573,6 +570,7 @@ components:
             type: number
             format: double
         - type: string
+      description: Embedding vector as an array of floats or a base64 string
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsEmbedding
     EmbeddingsPostResponsesContentApplicationJsonSchemaDataItems:
       type: object
@@ -583,34 +581,39 @@ components:
         embedding:
           $ref: >-
             #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsEmbedding
+          description: Embedding vector as an array of floats or a base64 string
         index:
-          type: number
-          format: double
+          type: integer
+          description: Index of the embedding in the input list
       required:
         - object
         - embedding
+      description: A single embedding object
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaDataItems
     EmbeddingsPostResponsesContentApplicationJsonSchemaUsage:
       type: object
       properties:
         prompt_tokens:
-          type: number
-          format: double
+          type: integer
+          description: Number of tokens in the input
         total_tokens:
-          type: number
-          format: double
+          type: integer
+          description: Total number of tokens used
         cost:
           type: number
           format: double
+          description: Cost of the request in credits
       required:
         - prompt_tokens
         - total_tokens
+      description: Token usage statistics
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaUsage
     Embeddings_createEmbeddings_Response_200:
       type: object
       properties:
         id:
           type: string
+          description: Unique identifier for the embeddings response
         object:
           $ref: >-
             #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaObject
@@ -619,15 +622,19 @@ components:
           items:
             $ref: >-
               #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaDataItems
+          description: List of embedding objects
         model:
           type: string
+          description: The model used for embeddings
         usage:
           $ref: >-
             #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaUsage
+          description: Token usage statistics
       required:
         - object
         - data
         - model
+      description: Embeddings response containing embedding vectors
       title: Embeddings_createEmbeddings_Response_200
     BadRequestResponseErrorData:
       type: object
@@ -894,7 +901,8 @@ url = "https://openrouter.ai/api/v1/embeddings"
 
 payload = {
     "input": "The quick brown fox jumps over the lazy dog",
-    "model": "text-embedding-ada-002"
+    "model": "openai/text-embedding-3-small",
+    "dimensions": 1536
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -911,7 +919,7 @@ const url = 'https://openrouter.ai/api/v1/embeddings';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"input":"The quick brown fox jumps over the lazy dog","model":"text-embedding-ada-002"}'
+  body: '{"input":"The quick brown fox jumps over the lazy dog","model":"openai/text-embedding-3-small","dimensions":1536}'
 };
 
 try {
@@ -937,7 +945,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/embeddings"
 
-	payload := strings.NewReader("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"text-embedding-ada-002\"\n}")
+	payload := strings.NewReader("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -967,7 +975,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"text-embedding-ada-002\"\n}"
+request.body = "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -980,7 +988,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/embeddings")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"text-embedding-ada-002\"\n}")
+  .body("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
   .asString();
 ```
 
@@ -993,7 +1001,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/embeddings', [
   'body' => '{
   "input": "The quick brown fox jumps over the lazy dog",
-  "model": "text-embedding-ada-002"
+  "model": "openai/text-embedding-3-small",
+  "dimensions": 1536
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -1011,7 +1020,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/embeddings");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"text-embedding-ada-002\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1024,7 +1033,8 @@ let headers = [
 ]
 let parameters = [
   "input": "The quick brown fox jumps over the lazy dog",
-  "model": "text-embedding-ada-002"
+  "model": "openai/text-embedding-3-small",
+  "dimensions": 1536
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

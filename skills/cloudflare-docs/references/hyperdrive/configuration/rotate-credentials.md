@@ -43,6 +43,8 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 * [  wrangler.jsonc ](#tab-panel-4664)
 * [  wrangler.toml ](#tab-panel-4665)
 
+JSONC
+
 ```
 
 {
@@ -57,7 +59,7 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -76,13 +78,15 @@ The command above will output the ID of your Hyperdrive. Set this ID in the [Wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

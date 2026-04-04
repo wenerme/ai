@@ -29,13 +29,13 @@ paths:
           description: Number of records to skip for pagination
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: Maximum number of records to return (max 100)
           required: false
           schema:
-            type: string
+            type: integer
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -48,7 +48,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Guardrails_listGuardrails_Response_200'
+                $ref: '#/components/schemas/ListGuardrailsResponse'
         '401':
           description: Unauthorized - Missing or invalid authentication
           content:
@@ -65,15 +65,15 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GuardrailsGetResponsesContentApplicationJsonSchemaDataItemsResetInterval:
+    GuardrailInterval:
       type: string
       enum:
         - daily
         - weekly
         - monthly
       description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailsGetResponsesContentApplicationJsonSchemaDataItemsResetInterval
-    GuardrailsGetResponsesContentApplicationJsonSchemaDataItems:
+      title: GuardrailInterval
+    Guardrail:
       type: object
       properties:
         id:
@@ -93,11 +93,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/GuardrailsGetResponsesContentApplicationJsonSchemaDataItemsResetInterval
-            - type: 'null'
-          description: Interval at which the limit resets (daily, weekly, monthly)
+          $ref: '#/components/schemas/GuardrailInterval'
         allowed_providers:
           type:
             - array
@@ -136,15 +132,14 @@ components:
         - id
         - name
         - created_at
-      title: GuardrailsGetResponsesContentApplicationJsonSchemaDataItems
-    Guardrails_listGuardrails_Response_200:
+      title: Guardrail
+    ListGuardrailsResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: >-
-              #/components/schemas/GuardrailsGetResponsesContentApplicationJsonSchemaDataItems
+            $ref: '#/components/schemas/Guardrail'
           description: List of guardrails
         total_count:
           type: integer
@@ -152,7 +147,7 @@ components:
       required:
         - data
         - total_count
-      title: Guardrails_listGuardrails_Response_200
+      title: ListGuardrailsResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:

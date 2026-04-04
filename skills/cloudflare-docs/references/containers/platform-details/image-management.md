@@ -25,6 +25,8 @@ Just provide the path to your Dockerfile:
 * [  wrangler.jsonc ](#tab-panel-4023)
 * [  wrangler.toml ](#tab-panel-4024)
 
+JSONC
+
 ```
 
 {
@@ -43,6 +45,8 @@ Just provide the path to your Dockerfile:
 
 
 ```
+
+TOML
 
 ```
 
@@ -80,6 +84,8 @@ For example:
 * [  wrangler.jsonc ](#tab-panel-4025)
 * [  wrangler.toml ](#tab-panel-4026)
 
+JSONC
+
 ```
 
 {
@@ -98,6 +104,8 @@ For example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -265,6 +273,8 @@ After you configure the registry, use the fully qualified Amazon ECR image refer
 * [  wrangler.jsonc ](#tab-panel-4027)
 * [  wrangler.toml ](#tab-panel-4028)
 
+JSONC
+
 ```
 
 {
@@ -283,6 +293,8 @@ After you configure the registry, use the fully qualified Amazon ECR image refer
 
 
 ```
+
+TOML
 
 ```
 
@@ -345,6 +357,8 @@ This will output an image registry URI that you can then use in your Wrangler co
 * [  wrangler.jsonc ](#tab-panel-4029)
 * [  wrangler.toml ](#tab-panel-4030)
 
+JSONC
+
 ```
 
 {
@@ -363,6 +377,8 @@ This will output an image registry URI that you can then use in your Wrangler co
 
 
 ```
+
+TOML
 
 ```
 

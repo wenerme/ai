@@ -43,6 +43,8 @@ To bind Images to your Worker, add the following to the end of your Wrangler con
 * [  wrangler.jsonc ](#tab-panel-4844)
 * [  wrangler.toml ](#tab-panel-4845)
 
+JSONC
+
 ```
 
 {
@@ -57,6 +59,8 @@ To bind Images to your Worker, add the following to the end of your Wrangler con
 
 
 ```
+
+TOML
 
 ```
 

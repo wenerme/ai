@@ -29,6 +29,8 @@ Add a pipeline binding to your Wrangler file that points to your stream:
 * [  wrangler.jsonc ](#tab-panel-5528)
 * [  wrangler.toml ](#tab-panel-5529)
 
+JSONC
+
 ```
 
 {
@@ -49,6 +51,8 @@ Add a pipeline binding to your Wrangler file that points to your stream:
 
 
 ```
+
+TOML
 
 ```
 

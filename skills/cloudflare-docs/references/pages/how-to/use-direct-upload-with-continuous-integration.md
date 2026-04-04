@@ -84,6 +84,8 @@ Create a `.github/workflows/pages-deployment.yaml` file at the root of your proj
 
 In your `pages-deployment.yaml` file, copy the following content:
 
+YAML
+
 ```
 
 on: [push]
@@ -162,6 +164,8 @@ To add environment variables, in the CircleCI web application:
 
 Create a `.circleci/config.yml` file at the root of your project. This file contains the jobs that will be executed based on the order of your workflow. In your `config.yml` file, copy the following content:
 
+YAML
+
 ```
 
 version: 2.1
@@ -222,6 +226,8 @@ Set the environment variable's name and value and the branch you want it to be a
 ### Setup
 
 Go to [Travis-ci.com ↗](https://Travis-ci.com) and enable your repository by login in with your preferred provider. This guide uses GitHub. Next, create a `.travis.yml` file and copy the following into the file:
+
+YAML
 
 ```
 

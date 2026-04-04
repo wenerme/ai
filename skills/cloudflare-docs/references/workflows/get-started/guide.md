@@ -131,13 +131,14 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:  
    * [  wrangler.jsonc ](#tab-panel-8600)  
    * [  wrangler.toml ](#tab-panel-8601)  
+JSONC  
 ```  
 {  
   "$schema": "node_modules/wrangler/config-schema.json",  
   "name": "my-workflow",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "observability": {  
     "enabled": true  
   },  
@@ -150,12 +151,13 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
   ]  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "node_modules/wrangler/config-schema.json"  
 name = "my-workflow"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 [observability]  
 enabled = true  
 [[workflows]]  

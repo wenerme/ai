@@ -65,6 +65,8 @@ npm i zod-to-json-schema
 * [  wrangler.jsonc ](#tab-panel-3240)
 * [  wrangler.toml ](#tab-panel-3241)
 
+JSONC
+
 ```
 
 {
@@ -80,6 +82,8 @@ npm i zod-to-json-schema
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
@@ -89,6 +93,8 @@ compatibility_flags = [ "nodejs_compat" ]
 
 * [  wrangler.jsonc ](#tab-panel-3242)
 * [  wrangler.toml ](#tab-panel-3243)
+
+JSONC
 
 ```
 
@@ -104,6 +110,8 @@ compatibility_flags = [ "nodejs_compat" ]
 
 
 ```
+
+TOML
 
 ```
 

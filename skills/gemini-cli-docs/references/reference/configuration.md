@@ -264,7 +264,7 @@ their corresponding top-level category object in your `settings.json` file.
 - **`ui.compactToolOutput`** (boolean):
   - **Description:** Display tool outputs (like directory listings and file
     reads) in a compact, structured format.
-  - **Default:** `false`
+  - **Default:** `true`
 
 - **`ui.hideBanner`** (boolean):
   - **Description:** Hide the application banner
@@ -1401,7 +1401,7 @@ their corresponding top-level category object in your `settings.json` file.
 
 - **`tools.shell.showColor`** (boolean):
   - **Description:** Show color in shell output.
-  - **Default:** `false`
+  - **Default:** `true`
 
 - **`tools.shell.inactivityTimeout`** (number):
   - **Description:** The maximum time in seconds allowed without output from the

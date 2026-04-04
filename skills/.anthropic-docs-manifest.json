@@ -482,10 +482,10 @@
   "anthropic-docs/build-with-claude/skills-guide.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/skills-guide",
     "skill": "anthropic-docs",
-    "etag": "W/\"23492-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 144530,
-    "updatedAt": "2026-04-02T10:18:48.697Z"
+    "etag": "W/\"23494-19d556b07f8\"",
+    "lastModified": "Fri, 03 Apr 2026 22:16:11 GMT",
+    "size": 144532,
+    "updatedAt": "2026-04-04T00:13:16.473Z"
   },
   "anthropic-agent-sdk/agent-sdk/overview.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/overview",

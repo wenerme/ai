@@ -31,6 +31,8 @@ To SSH into a Container with Wrangler, you must first enable Wrangler SSH. The f
 * [  wrangler.jsonc ](#tab-panel-4033)
 * [  wrangler.toml ](#tab-panel-4034)
 
+JSONC
+
 ```
 
 {
@@ -67,6 +69,8 @@ To SSH into a Container with Wrangler, you must first enable Wrangler SSH. The f
 
 
 ```
+
+TOML
 
 ```
 

@@ -44,6 +44,8 @@ To allow your dynamic dispatch Worker to dynamically route requests to Workers i
 * [  wrangler.jsonc ](#tab-panel-3378)
 * [  wrangler.toml ](#tab-panel-3379)
 
+JSONC
+
 ```
 
 {
@@ -64,6 +66,8 @@ To allow your dynamic dispatch Worker to dynamically route requests to Workers i
 
 
 ```
+
+TOML
 
 ```
 

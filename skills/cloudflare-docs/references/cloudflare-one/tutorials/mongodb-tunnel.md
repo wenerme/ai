@@ -57,6 +57,8 @@ To be accessible over SSH, the Kubernetes deployment should manage both the Mong
 
  StatefulSet Configuration
 
+YAML
+
 ```
 
 apiVersion: apps/v1
@@ -236,6 +238,8 @@ The corresponding service definition should also specify the ports and target po
 
 Service Definition
 
+YAML
+
 ```
 
 apiVersion: v1
@@ -380,6 +384,8 @@ The previous setps used `cloudflared` to generate a credentials file for your Cl
 The configuration below will run a single replica of `cloudflared` as an ingress point alongside the MongoDB and SSH proxy services. `cloudflared` will proxy traffic to the SSH proxy service. The `cloudflared` instance will run as its own deployment in a different namespace and, if network policy allows, ingress to any service in the Kubernetes node.
 
 `cloudflared` Configuration
+
+YAML
 
 ```
 

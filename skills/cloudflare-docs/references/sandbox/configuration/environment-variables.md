@@ -33,6 +33,8 @@ Controls the transport protocol for SDK-to-container communication. WebSocket tr
 * [  wrangler.jsonc ](#tab-panel-6211)
 * [  wrangler.toml ](#tab-panel-6212)
 
+JSONC
+
 ```
 
 {
@@ -47,6 +49,8 @@ Controls the transport protocol for SDK-to-container communication. WebSocket tr
 
 
 ```
+
+TOML
 
 ```
 
@@ -72,6 +76,8 @@ Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [creat
 * [  wrangler.jsonc ](#tab-panel-6213)
 * [  wrangler.toml ](#tab-panel-6214)
 
+JSONC
+
 ```
 
 {
@@ -86,6 +92,8 @@ Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [creat
 
 
 ```
+
+TOML
 
 ```
 

@@ -80,6 +80,8 @@ To configure a route in your Wrangler configuration file, add the following to y
 * [  wrangler.jsonc ](#tab-panel-7760)
 * [  wrangler.toml ](#tab-panel-7761)
 
+JSONC
+
 ```
 
 {
@@ -101,6 +103,8 @@ To configure a route in your Wrangler configuration file, add the following to y
 
 ```
 
+TOML
+
 ```
 
 [[routes]]
@@ -118,6 +122,8 @@ To configure a subdomain in your Wrangler configuration file, add the following 
 
 * [  wrangler.jsonc ](#tab-panel-7762)
 * [  wrangler.toml ](#tab-panel-7763)
+
+JSONC
 
 ```
 
@@ -139,6 +145,8 @@ To configure a subdomain in your Wrangler configuration file, add the following 
 
 
 ```
+
+TOML
 
 ```
 
@@ -166,6 +174,8 @@ To uninstall your chat application, modify your Wrangler file to remove the `dur
 
 * [  wrangler.jsonc ](#tab-panel-7764)
 * [  wrangler.toml ](#tab-panel-7765)
+
+JSONC
 
 ```
 
@@ -215,6 +225,8 @@ To uninstall your chat application, modify your Wrangler file to remove the `dur
 
 
 ```
+
+TOML
 
 ```
 

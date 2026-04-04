@@ -116,6 +116,8 @@ vim ~/.cloudflared/config.yml
 
 Next, configure the Tunnel, replacing the example ID below with the ID of the Tunnel created above. Additionally, replace the hostname in this example with the hostname of the application configured with Cloudflare Access.
 
+YAML
+
 ```
 
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef

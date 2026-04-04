@@ -29,6 +29,8 @@ Use a cron expression in your Wrangler config to specify the schedule:
 * [  wrangler.jsonc ](#tab-panel-4013)
 * [  wrangler.toml ](#tab-panel-4014)
 
+JSONC
+
 ```
 
 {
@@ -91,6 +93,8 @@ Use a cron expression in your Wrangler config to specify the schedule:
 
 
 ```
+
+TOML
 
 ```
 

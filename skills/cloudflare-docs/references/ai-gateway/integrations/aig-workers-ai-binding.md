@@ -84,6 +84,8 @@ To bind Workers AI to your Worker, add the following to the end of your [Wrangle
 * [  wrangler.jsonc ](#tab-panel-3058)
 * [  wrangler.toml ](#tab-panel-3059)
 
+JSONC
+
 ```
 
 {
@@ -98,6 +100,8 @@ To bind Workers AI to your Worker, add the following to the end of your [Wrangle
 
 
 ```
+
+TOML
 
 ```
 

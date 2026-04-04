@@ -72,6 +72,33 @@ It will be rendered with issue titles to:
 * the other issue title (#456)
 ```
 
+## Theme-based image display
+
+Gitea supports the GitHub-like theme-based image display. Supported syntax:
+
+* Use Markdown image
+
+```
+![My-Light](my-light.png#gh-light-mode-only)![My-Dark](my-dark.png#gh-dark-mode-only)
+```
+
+* Use `<img>` HTML tag
+
+```
+<img src="my-light.png#gh-light-mode-only" height="120" width="120"/>
+<img src="my-dark.png#gh-dark-mode-only" height="120" width="120"/>
+```
+
+* Use `<picture>` with `<source media>` (only works for themes with "auto" color preference)
+
+```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="my-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="my-light.png">
+  <img src="my-light.png">
+</picture>
+```
+
 ## Math expressions
 
 Gitea supports GitHub-like math expression formatting.

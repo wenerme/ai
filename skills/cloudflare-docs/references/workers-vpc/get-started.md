@@ -158,6 +158,8 @@ Add the VPC Service binding to your Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-6975)
 * [  wrangler.toml ](#tab-panel-6976)
 
+JSONC
+
 ```
 
 {
@@ -170,7 +172,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "vpc_services": [
 
@@ -189,6 +191,8 @@ Add the VPC Service binding to your Wrangler configuration file:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -199,7 +203,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[vpc_services]]

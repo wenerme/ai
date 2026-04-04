@@ -151,6 +151,8 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 * [  wrangler.jsonc ](#tab-panel-6733)
 * [  wrangler.toml ](#tab-panel-6734)
 
+JSONC
+
 ```
 
 {
@@ -171,6 +173,8 @@ To bind your index to your Worker, add the following to the end of your Wrangler
 
 
 ```
+
+TOML
 
 ```
 
@@ -198,6 +202,8 @@ From within the `embeddings-tutorial` directory, open your Wrangler file in your
 * [  wrangler.jsonc ](#tab-panel-6735)
 * [  wrangler.toml ](#tab-panel-6736)
 
+JSONC
+
 ```
 
 {
@@ -224,6 +230,8 @@ From within the `embeddings-tutorial` directory, open your Wrangler file in your
 
 
 ```
+
+TOML
 
 ```
 

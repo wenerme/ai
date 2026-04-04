@@ -326,6 +326,8 @@ Each workflow on Workers Paid supports 10,000 steps by default. You can increase
 * [  wrangler.jsonc ](#tab-panel-8578)
 * [  wrangler.toml ](#tab-panel-8579)
 
+JSONC
+
 ```
 
 {
@@ -356,6 +358,8 @@ Each workflow on Workers Paid supports 10,000 steps by default. You can increase
 
 
 ```
+
+TOML
 
 ```
 
@@ -396,6 +400,8 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 * [  wrangler.jsonc ](#tab-panel-8580)
 * [  wrangler.toml ](#tab-panel-8581)
 
+JSONC
+
 ```
 
 {
@@ -408,7 +414,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "workflows": [
 
@@ -435,6 +441,8 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -445,7 +453,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[workflows]]
@@ -474,6 +482,8 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 * [  wrangler.jsonc ](#tab-panel-8584)
 * [  wrangler.toml ](#tab-panel-8585)
 
+JSONC
+
 ```
 
 {
@@ -486,7 +496,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "workflows": [
 
@@ -519,6 +529,8 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -529,7 +541,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[workflows]]

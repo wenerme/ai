@@ -80,6 +80,7 @@ Authorization: Bearer EXAMPLE_GRAFANA_API_KEY
 - [Preferences API](preferences/)
 - [Shared dashboards API](dashboard_public/)
 - [Query history API](query_history/)
+- [Resource history API](resource-history/)
 - [Service account API](serviceaccount/)
 - [Short URL API](short_url/)
 - [Snapshot API](snapshot/)

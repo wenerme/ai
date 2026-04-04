@@ -114,6 +114,8 @@ In your Wrangler file, add the following:
 * [  wrangler.jsonc ](#tab-panel-5719)
 * [  wrangler.toml ](#tab-panel-5720)
 
+JSONC
+
 ```
 
 {
@@ -155,6 +157,8 @@ In your Wrangler file, add the following:
 
 ```
 
+TOML
+
 ```
 
 [[queues.producers]]
@@ -184,6 +188,8 @@ Your final Wrangler file should look similar to the example below.
 * [  wrangler.jsonc ](#tab-panel-5721)
 * [  wrangler.toml ](#tab-panel-5722)
 
+JSONC
+
 ```
 
 {
@@ -196,7 +202,7 @@ Your final Wrangler file should look similar to the example below.
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -241,6 +247,8 @@ Your final Wrangler file should look similar to the example below.
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -251,7 +259,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

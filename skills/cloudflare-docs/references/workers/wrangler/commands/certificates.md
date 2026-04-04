@@ -118,6 +118,8 @@ You can then add this certificate as a [binding](https://developers.cloudflare.c
 * [  wrangler.jsonc ](#tab-panel-7841)
 * [  wrangler.toml ](#tab-panel-7842)
 
+JSONC
+
 ```
 
 {
@@ -138,6 +140,8 @@ You can then add this certificate as a [binding](https://developers.cloudflare.c
 
 
 ```
+
+TOML
 
 ```
 

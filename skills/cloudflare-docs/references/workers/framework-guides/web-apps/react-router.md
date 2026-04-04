@@ -268,6 +268,8 @@ Configure it in your Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-7410)
 * [  wrangler.toml ](#tab-panel-7411)
 
+JSONC
+
 ```
 
 {
@@ -290,6 +292,8 @@ Configure it in your Wrangler configuration file:
 
 
 ```
+
+TOML
 
 ```
 

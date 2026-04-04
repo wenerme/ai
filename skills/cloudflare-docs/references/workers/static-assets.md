@@ -53,6 +53,8 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
 * [  wrangler.jsonc ](#tab-panel-7662)
 * [  wrangler.toml ](#tab-panel-7663)
 
+JSONC
+
 ```
 
 {
@@ -65,7 +67,7 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -80,6 +82,8 @@ The **assets directory** specified in your [Wrangler configuration file](https:/
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -90,7 +94,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -184,6 +188,8 @@ The default behavior for requests which don't match a static asset can be change
 * [  wrangler.jsonc ](#tab-panel-7660)
 * [  wrangler.toml ](#tab-panel-7661)
 
+JSONC
+
 ```
 
 {
@@ -200,6 +206,8 @@ The default behavior for requests which don't match a static asset can be change
 
 
 ```
+
+TOML
 
 ```
 
@@ -219,6 +227,8 @@ If you want the Worker code to execute before serving assets, you can use the `r
 * [  wrangler.jsonc ](#tab-panel-7664)
 * [  wrangler.toml ](#tab-panel-7665)
 
+JSONC
+
 ```
 
 {
@@ -227,7 +237,7 @@ If you want the Worker code to execute before serving assets, you can use the `r
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./src/index.ts",
 
@@ -248,13 +258,15 @@ If you want the Worker code to execute before serving assets, you can use the `r
 
 ```
 
+TOML
+
 ```
 
 name = "my-spa-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./src/index.ts"
 

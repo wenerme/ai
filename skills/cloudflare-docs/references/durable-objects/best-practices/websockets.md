@@ -301,6 +301,8 @@ Configure your Wrangler file with a Durable Object [binding](https://developers.
 * [  wrangler.jsonc ](#tab-panel-4464)
 * [  wrangler.toml ](#tab-panel-4465)
 
+JSONC
+
 ```
 
 {
@@ -341,6 +343,8 @@ Configure your Wrangler file with a Durable Object [binding](https://developers.
 
 
 ```
+
+TOML
 
 ```
 
@@ -1211,6 +1215,8 @@ Configure your Wrangler file with a Durable Object [binding](https://developers.
 * [  wrangler.jsonc ](#tab-panel-4466)
 * [  wrangler.toml ](#tab-panel-4467)
 
+JSONC
+
 ```
 
 {
@@ -1251,6 +1257,8 @@ Configure your Wrangler file with a Durable Object [binding](https://developers.
 
 
 ```
+
+TOML
 
 ```
 

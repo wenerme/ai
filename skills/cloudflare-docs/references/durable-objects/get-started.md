@@ -383,6 +383,8 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 * [  wrangler.jsonc ](#tab-panel-4527)
 * [  wrangler.toml ](#tab-panel-4528)
 
+JSONC
+
 ```
 
 {
@@ -407,6 +409,8 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 
 
 ```
+
+TOML
 
 ```
 
@@ -436,6 +440,8 @@ The Durable Object migration to create a new Durable Object class with SQLite st
 * [  wrangler.jsonc ](#tab-panel-4529)
 * [  wrangler.toml ](#tab-panel-4530)
 
+JSONC
+
 ```
 
 {
@@ -460,6 +466,8 @@ The Durable Object migration to create a new Durable Object class with SQLite st
 
 
 ```
+
+TOML
 
 ```
 

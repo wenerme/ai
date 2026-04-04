@@ -36,13 +36,13 @@ paths:
           description: Number of records to skip for pagination
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: Maximum number of records to return (max 100)
           required: false
           schema:
-            type: string
+            type: integer
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -55,8 +55,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/Guardrails_listGuardrailKeyAssignments_Response_200
+                $ref: '#/components/schemas/ListKeyAssignmentsResponse'
         '401':
           description: Unauthorized - Missing or invalid authentication
           content:
@@ -79,7 +78,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GuardrailsIdAssignmentsKeysGetResponsesContentApplicationJsonSchemaDataItems:
+    KeyAssignment:
       type: object
       properties:
         id:
@@ -115,16 +114,14 @@ components:
         - key_label
         - assigned_by
         - created_at
-      title: >-
-        GuardrailsIdAssignmentsKeysGetResponsesContentApplicationJsonSchemaDataItems
-    Guardrails_listGuardrailKeyAssignments_Response_200:
+      title: KeyAssignment
+    ListKeyAssignmentsResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: >-
-              #/components/schemas/GuardrailsIdAssignmentsKeysGetResponsesContentApplicationJsonSchemaDataItems
+            $ref: '#/components/schemas/KeyAssignment'
           description: List of key assignments
         total_count:
           type: integer
@@ -132,7 +129,7 @@ components:
       required:
         - data
         - total_count
-      title: Guardrails_listGuardrailKeyAssignments_Response_200
+      title: ListKeyAssignmentsResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:

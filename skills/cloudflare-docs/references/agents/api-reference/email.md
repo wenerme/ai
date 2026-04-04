@@ -800,6 +800,7 @@ When your agent sends emails and expects replies, use secure reply routing to pr
 1. Add a secret to your `wrangler.jsonc`:  
    * [  wrangler.jsonc ](#tab-panel-2358)  
    * [  wrangler.toml ](#tab-panel-2359)  
+JSONC  
 ```  
 {  
   "vars": {  
@@ -807,6 +808,7 @@ When your agent sends emails and expects replies, use secure reply routing to pr
   },  
 }  
 ```  
+TOML  
 ```  
 [vars]  
 EMAIL_SECRET = "change-me-in-production"  

@@ -228,6 +228,8 @@ Update `wrangler.jsonc` to register the agent:
 * [  wrangler.jsonc ](#tab-panel-2898)
 * [  wrangler.toml ](#tab-panel-2899)
 
+JSONC
+
 ```
 
 {
@@ -238,7 +240,7 @@ Update `wrangler.jsonc` to register the agent:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -275,6 +277,8 @@ Update `wrangler.jsonc` to register the agent:
 
 ```
 
+TOML
+
 ```
 
 name = "my-agent"
@@ -283,7 +287,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

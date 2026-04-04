@@ -32,12 +32,13 @@ npx wrangler r2 bucket create my-backup-bucket
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:  
    * [  wrangler.jsonc ](#tab-panel-6267)  
    * [  wrangler.toml ](#tab-panel-6268)  
+JSONC  
 ```  
 {  
   "name": "my-sandbox-worker",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "compatibility_flags": ["nodejs_compat"],  
   "containers": [  
     {  
@@ -71,11 +72,12 @@ npx wrangler r2 bucket create my-backup-bucket
   ],  
 }  
 ```  
+TOML  
 ```  
 name = "my-sandbox-worker"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[containers]]  
 class_name = "Sandbox"  

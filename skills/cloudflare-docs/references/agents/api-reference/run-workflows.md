@@ -291,6 +291,8 @@ export class MyAgent extends Agent {
 * [  wrangler.jsonc ](#tab-panel-2666)
 * [  wrangler.toml ](#tab-panel-2667)
 
+JSONC
+
 ```
 
 {
@@ -301,7 +303,7 @@ export class MyAgent extends Agent {
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "durable_objects": {
 
@@ -330,6 +332,8 @@ export class MyAgent extends Agent {
 
 ```
 
+TOML
+
 ```
 
 name = "my-app"
@@ -338,7 +342,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[durable_objects.bindings]]

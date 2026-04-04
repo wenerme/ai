@@ -48,6 +48,8 @@ Before, with **Cloudflare Pages**:
 * [  wrangler.jsonc ](#tab-panel-7682)
 * [  wrangler.toml ](#tab-panel-7683)
 
+JSONC
+
 ```
 
 {
@@ -60,6 +62,8 @@ Before, with **Cloudflare Pages**:
 
 
 ```
+
+TOML
 
 ```
 
@@ -75,6 +79,8 @@ Now, with **Cloudflare Workers**:
 * [  wrangler.jsonc ](#tab-panel-7684)
 * [  wrangler.toml ](#tab-panel-7685)
 
+JSONC
+
 ```
 
 {
@@ -83,7 +89,7 @@ Now, with **Cloudflare Workers**:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -96,13 +102,15 @@ Now, with **Cloudflare Workers**:
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -127,6 +135,8 @@ For a Single Page Application (SPA):
 * [  wrangler.jsonc ](#tab-panel-7686)
 * [  wrangler.toml ](#tab-panel-7687)
 
+JSONC
+
 ```
 
 {
@@ -135,7 +145,7 @@ For a Single Page Application (SPA):
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -150,13 +160,15 @@ For a Single Page Application (SPA):
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -173,6 +185,8 @@ For custom 404 pages:
 * [  wrangler.jsonc ](#tab-panel-7688)
 * [  wrangler.toml ](#tab-panel-7689)
 
+JSONC
+
 ```
 
 {
@@ -181,7 +195,7 @@ For custom 404 pages:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -196,13 +210,15 @@ For custom 404 pages:
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -255,6 +271,8 @@ Then, update your configuration file's `main` field to point to the location of 
 * [  wrangler.jsonc ](#tab-panel-7690)
 * [  wrangler.toml ](#tab-panel-7691)
 
+JSONC
+
 ```
 
 {
@@ -263,7 +281,7 @@ Then, update your configuration file's `main` field to point to the location of 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
 
@@ -278,13 +296,15 @@ Then, update your configuration file's `main` field to point to the location of 
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./dist/client/_worker.js"
 
@@ -321,6 +341,8 @@ Once the Worker script has been compiled, you can update your configuration file
 * [  wrangler.jsonc ](#tab-panel-7692)
 * [  wrangler.toml ](#tab-panel-7693)
 
+JSONC
+
 ```
 
 {
@@ -329,7 +351,7 @@ Once the Worker script has been compiled, you can update your configuration file
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./dist/worker/index.js",
 
@@ -344,13 +366,15 @@ Once the Worker script has been compiled, you can update your configuration file
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./dist/worker/index.js"
 
@@ -371,6 +395,8 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 * [  wrangler.jsonc ](#tab-panel-7694)
 * [  wrangler.toml ](#tab-panel-7695)
 
+JSONC
+
 ```
 
 {
@@ -379,7 +405,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./dist/worker/index.js",
 
@@ -396,13 +422,15 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./dist/worker/index.js"
 
@@ -466,6 +494,8 @@ export default class extends WorkerEntrypoint {
 * [  wrangler.jsonc ](#tab-panel-7696)
 * [  wrangler.toml ](#tab-panel-7697)
 
+JSONC
+
 ```
 
 {
@@ -474,7 +504,7 @@ export default class extends WorkerEntrypoint {
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./worker/index.ts",
 
@@ -489,13 +519,15 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 
@@ -514,6 +546,8 @@ Pages automatically provided [an ASSETS binding](https://developers.cloudflare.c
 * [  wrangler.jsonc ](#tab-panel-7698)
 * [  wrangler.toml ](#tab-panel-7699)
 
+JSONC
+
 ```
 
 {
@@ -522,7 +556,7 @@ Pages automatically provided [an ASSETS binding](https://developers.cloudflare.c
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./worker/index.ts",
 
@@ -539,13 +573,15 @@ Pages automatically provided [an ASSETS binding](https://developers.cloudflare.c
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 
@@ -566,6 +602,8 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 * [  wrangler.jsonc ](#tab-panel-7706)
 * [  wrangler.toml ](#tab-panel-7707)
 
+JSONC
+
 ```
 
 {
@@ -574,7 +612,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -599,13 +637,15 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -655,11 +695,12 @@ To get a similar experience in Workers, you must:
 1. Ensure [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled (they are on by default).  
    * [  wrangler.jsonc ](#tab-panel-7702)  
    * [  wrangler.toml ](#tab-panel-7703)  
+JSONC  
 ```  
 {  
   "name": "my-worker",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "main": "./worker/index.ts",  
   "assets": {  
     "directory": "./dist/client/"  
@@ -667,10 +708,11 @@ To get a similar experience in Workers, you must:
   "preview_urls": true  
 }  
 ```  
+TOML  
 ```  
 name = "my-worker"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 main = "./worker/index.ts"  
 preview_urls = true  
 [assets]  
@@ -695,6 +737,8 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 * [  wrangler.jsonc ](#tab-panel-7700)
 * [  wrangler.toml ](#tab-panel-7701)
 
+JSONC
+
 ```
 
 {
@@ -703,7 +747,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./worker/index.ts",
 
@@ -714,13 +758,15 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 

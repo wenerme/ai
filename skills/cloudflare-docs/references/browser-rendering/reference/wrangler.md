@@ -37,6 +37,8 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 * [  wrangler.jsonc ](#tab-panel-3256)
 * [  wrangler.toml ](#tab-panel-3257)
 
+JSONC
+
 ```
 
 {
@@ -67,6 +69,8 @@ To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibil
 
 
 ```
+
+TOML
 
 ```
 

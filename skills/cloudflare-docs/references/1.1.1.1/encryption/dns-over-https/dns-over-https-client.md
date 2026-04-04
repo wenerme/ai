@@ -36,6 +36,7 @@ dnscrypt-proxy -version
 2.0.8  
 ```
 3. Set up the configuration file using the [official instructions ↗](https://github.com/jedisct1/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:  
+TOML  
 ```  
 server_names = ['cloudflare', 'cloudflare-ipv6']  
 ```

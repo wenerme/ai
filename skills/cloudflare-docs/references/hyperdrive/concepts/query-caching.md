@@ -244,6 +244,8 @@ The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 * [  wrangler.jsonc ](#tab-panel-4646)
 * [  wrangler.toml ](#tab-panel-4647)
 
+JSONC
+
 ```
 
 {
@@ -272,6 +274,8 @@ The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
 
 ```
+
+TOML
 
 ```
 

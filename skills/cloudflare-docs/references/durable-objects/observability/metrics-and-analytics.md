@@ -45,6 +45,7 @@ To start using Durable Object logging:
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:  
    * [  wrangler.jsonc ](#tab-panel-4543)  
    * [  wrangler.toml ](#tab-panel-4544)  
+JSONC  
 ```  
 {  
     "observability": {  
@@ -52,6 +53,7 @@ To start using Durable Object logging:
     }  
 }  
 ```  
+TOML  
 ```  
 [observability]  
 enabled = true  

@@ -32,6 +32,8 @@ Here is an example configuration that sets a 5 minute grace period and a two ste
 * [  wrangler.jsonc ](#tab-panel-4031)
 * [  wrangler.toml ](#tab-panel-4032)
 
+JSONC
+
 ```
 
 {
@@ -96,6 +98,8 @@ Here is an example configuration that sets a 5 minute grace period and a two ste
 
 
 ```
+
+TOML
 
 ```
 

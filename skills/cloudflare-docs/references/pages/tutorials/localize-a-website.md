@@ -449,6 +449,8 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 * [  wrangler.jsonc ](#tab-panel-5480)
 * [  wrangler.toml ](#tab-panel-5481)
 
+JSONC
+
 ```
 
 {
@@ -461,12 +463,14 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -478,7 +482,7 @@ pages_build_output_dir = "./public"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```

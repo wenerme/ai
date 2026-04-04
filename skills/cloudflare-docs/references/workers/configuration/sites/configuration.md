@@ -44,6 +44,8 @@ Example of a [Wrangler configuration file](https://developers.cloudflare.com/wor
 * [  wrangler.jsonc ](#tab-panel-7113)
 * [  wrangler.toml ](#tab-panel-7114)
 
+JSONC
+
 ```
 
 {
@@ -82,6 +84,8 @@ Example of a [Wrangler configuration file](https://developers.cloudflare.com/wor
 
 
 ```
+
+TOML
 
 ```
 
@@ -130,6 +134,8 @@ If you want to include only a certain set of files or directories in your `bucke
 * [  wrangler.jsonc ](#tab-panel-7109)
 * [  wrangler.toml ](#tab-panel-7110)
 
+JSONC
+
 ```
 
 {
@@ -151,6 +157,8 @@ If you want to include only a certain set of files or directories in your `bucke
 
 ```
 
+TOML
+
 ```
 
 [site]
@@ -170,6 +178,8 @@ If you want to exclude files or directories in your `bucket`, you can add an `ex
 
 * [  wrangler.jsonc ](#tab-panel-7111)
 * [  wrangler.toml ](#tab-panel-7112)
+
+JSONC
 
 ```
 
@@ -191,6 +201,8 @@ If you want to exclude files or directories in your `bucket`, you can add an `ex
 
 
 ```
+
+TOML
 
 ```
 

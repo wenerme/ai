@@ -68,6 +68,8 @@ To configure a route using your [Wrangler configuration file](https://developers
 * [  wrangler.jsonc ](#tab-panel-7101)
 * [  wrangler.toml ](#tab-panel-7102)
 
+JSONC
+
 ```
 
 {
@@ -99,6 +101,8 @@ To configure a route using your [Wrangler configuration file](https://developers
 
 ```
 
+TOML
+
 ```
 
 [[routes]]
@@ -128,6 +132,8 @@ To add multiple routes:
 * [  wrangler.jsonc ](#tab-panel-7103)
 * [  wrangler.toml ](#tab-panel-7104)
 
+JSONC
+
 ```
 
 {
@@ -156,6 +162,8 @@ To add multiple routes:
 
 
 ```
+
+TOML
 
 ```
 

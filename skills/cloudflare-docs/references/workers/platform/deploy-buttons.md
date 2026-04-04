@@ -80,6 +80,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 * [  wrangler.jsonc ](#tab-panel-7490)
 * [  wrangler.toml ](#tab-panel-7491)
 
+JSONC
+
 ```
 
 {
@@ -90,7 +92,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "vars": {
 
@@ -103,6 +105,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
@@ -111,7 +115,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [vars]
@@ -137,6 +141,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 * [  wrangler.jsonc ](#tab-panel-7492)
 * [  wrangler.toml ](#tab-panel-7493)
 
+JSONC
+
 ```
 
 {
@@ -147,7 +153,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "secrets_store_secrets": [
 
@@ -168,6 +174,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
@@ -176,7 +184,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[secrets_store_secrets]]

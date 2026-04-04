@@ -37,6 +37,8 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 * [  wrangler.jsonc ](#tab-panel-8400)
 * [  wrangler.toml ](#tab-panel-8401)
 
+JSONC
+
 ```
 
 {
@@ -51,7 +53,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "workers_dev": false,
 
@@ -110,6 +112,8 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -120,7 +124,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 workers_dev = false
 
@@ -187,6 +191,8 @@ To use this feature, add bindings to your configuration file _without_ adding re
 * [  wrangler.jsonc ](#tab-panel-8378)
 * [  wrangler.toml ](#tab-panel-8379)
 
+JSONC
+
 ```
 
 {
@@ -205,6 +211,8 @@ To use this feature, add bindings to your configuration file _without_ adding re
 
 
 ```
+
+TOML
 
 ```
 
@@ -353,6 +361,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8380)
 * [  wrangler.toml ](#tab-panel-8381)
 
+JSONC
+
 ```
 
 {
@@ -373,6 +383,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -401,6 +413,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8384)
 * [  wrangler.toml ](#tab-panel-8385)
 
+JSONC
+
 ```
 
 {
@@ -421,6 +435,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -445,6 +461,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8388)
 * [  wrangler.toml ](#tab-panel-8389)
 
+JSONC
+
 ```
 
 {
@@ -466,6 +484,8 @@ Example:
 
 ```
 
+TOML
+
 ```
 
 [[routes]]
@@ -486,6 +506,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8382)
 * [  wrangler.toml ](#tab-panel-8383)
 
+JSONC
+
 ```
 
 {
@@ -496,6 +518,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -514,6 +538,8 @@ Cloudflare Workers accounts come with a `workers.dev` subdomain that is configur
 * [  wrangler.jsonc ](#tab-panel-8386)
 * [  wrangler.toml ](#tab-panel-8387)
 
+JSONC
+
 ```
 
 {
@@ -524,6 +550,8 @@ Cloudflare Workers accounts come with a `workers.dev` subdomain that is configur
 
 
 ```
+
+TOML
 
 ```
 
@@ -545,6 +573,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8390)
 * [  wrangler.toml ](#tab-panel-8391)
 
+JSONC
+
 ```
 
 {
@@ -559,6 +589,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -583,6 +615,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8392)
 * [  wrangler.toml ](#tab-panel-8393)
 
+JSONC
+
 ```
 
 {
@@ -599,6 +633,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -631,6 +667,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8394)
 * [  wrangler.toml ](#tab-panel-8395)
 
+JSONC
+
 ```
 
 {
@@ -649,6 +687,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -680,6 +720,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8396)
 * [  wrangler.toml ](#tab-panel-8397)
 
+JSONC
+
 ```
 
 {
@@ -696,6 +738,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -724,6 +768,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8398)
 * [  wrangler.toml ](#tab-panel-8399)
 
+JSONC
+
 ```
 
 {
@@ -738,6 +784,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -775,6 +823,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8402)
 * [  wrangler.toml ](#tab-panel-8403)
 
+JSONC
+
 ```
 
 {
@@ -797,6 +847,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -826,6 +878,8 @@ Dispatch namespace bindings allow for communication between a [dynamic dispatch 
 * [  wrangler.jsonc ](#tab-panel-8404)
 * [  wrangler.toml ](#tab-panel-8405)
 
+JSONC
+
 ```
 
 {
@@ -854,6 +908,8 @@ Dispatch namespace bindings allow for communication between a [dynamic dispatch 
 
 
 ```
+
+TOML
 
 ```
 
@@ -893,6 +949,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8406)
 * [  wrangler.toml ](#tab-panel-8407)
 
+JSONC
+
 ```
 
 {
@@ -917,6 +975,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -946,6 +1006,8 @@ Example:
 
 * [  wrangler.jsonc ](#tab-panel-8420)
 * [  wrangler.toml ](#tab-panel-8421)
+
+JSONC
 
 ```
 
@@ -1002,6 +1064,8 @@ Example:
 
 ```
 
+TOML
+
 ```
 
 [[migrations]]
@@ -1045,6 +1109,8 @@ You can add one or more types of bindings to your Wrangler file. However, each a
 * [  wrangler.jsonc ](#tab-panel-8464)
 * [  wrangler.toml ](#tab-panel-8465)
 
+JSONC
+
 ```
 
 {
@@ -1086,6 +1152,8 @@ You can add one or more types of bindings to your Wrangler file. However, each a
 
 ```
 
+TOML
+
 ```
 
 [[send_email]]
@@ -1118,6 +1186,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8462)
 * [  wrangler.toml ](#tab-panel-8463)
 
+JSONC
+
 ```
 
 {
@@ -1146,6 +1216,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1184,6 +1256,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8410)
 * [  wrangler.toml ](#tab-panel-8411)
 
+JSONC
+
 ```
 
 {
@@ -1208,6 +1282,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1234,6 +1310,8 @@ To bind Images to your Worker, assign an array of the below object to the `image
 * [  wrangler.jsonc ](#tab-panel-8408)
 * [  wrangler.toml ](#tab-panel-8409)
 
+JSONC
+
 ```
 
 {
@@ -1248,6 +1326,8 @@ To bind Images to your Worker, assign an array of the below object to the `image
 
 
 ```
+
+TOML
 
 ```
 
@@ -1280,6 +1360,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8412)
 * [  wrangler.toml ](#tab-panel-8413)
 
+JSONC
+
 ```
 
 {
@@ -1308,6 +1390,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1345,6 +1429,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8414)
 * [  wrangler.toml ](#tab-panel-8415)
 
+JSONC
+
 ```
 
 {
@@ -1371,6 +1457,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1410,6 +1498,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8422)
 * [  wrangler.toml ](#tab-panel-8423)
 
+JSONC
+
 ```
 
 {
@@ -1444,6 +1534,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1490,6 +1582,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8418)
 * [  wrangler.toml ](#tab-panel-8419)
 
+JSONC
+
 ```
 
 {
@@ -1518,6 +1612,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1553,6 +1649,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8416)
 * [  wrangler.toml ](#tab-panel-8417)
 
+JSONC
+
 ```
 
 {
@@ -1573,6 +1671,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1604,6 +1704,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8424)
 * [  wrangler.toml ](#tab-panel-8425)
 
+JSONC
+
 ```
 
 {
@@ -1626,6 +1728,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1660,6 +1764,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8426)
 * [  wrangler.toml ](#tab-panel-8427)
 
+JSONC
+
 ```
 
 {
@@ -1680,6 +1786,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1707,6 +1815,8 @@ Example of a Wrangler configuration file that includes an mTLS certificate bindi
 
 * [  wrangler.jsonc ](#tab-panel-8430)
 * [  wrangler.toml ](#tab-panel-8431)
+
+JSONC
 
 ```
 
@@ -1736,6 +1846,8 @@ Example of a Wrangler configuration file that includes an mTLS certificate bindi
 
 
 ```
+
+TOML
 
 ```
 
@@ -1775,6 +1887,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8428)
 * [  wrangler.toml ](#tab-panel-8429)
 
+JSONC
+
 ```
 
 {
@@ -1789,6 +1903,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1819,6 +1935,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8432)
 * [  wrangler.toml ](#tab-panel-8433)
 
+JSONC
+
 ```
 
 {
@@ -1841,6 +1959,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1880,6 +2000,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8434)
 * [  wrangler.toml ](#tab-panel-8435)
 
+JSONC
+
 ```
 
 {
@@ -1901,6 +2023,8 @@ Example:
 
 ```
 
+TOML
+
 ```
 
 [assets]
@@ -1920,6 +2044,8 @@ You can also configure `run_worker_first` with an array of route patterns:
 
 * [  wrangler.jsonc ](#tab-panel-8436)
 * [  wrangler.toml ](#tab-panel-8437)
+
+JSONC
 
 ```
 
@@ -1945,6 +2071,8 @@ You can also configure `run_worker_first` with an array of route patterns:
 
 
 ```
+
+TOML
 
 ```
 
@@ -2002,6 +2130,8 @@ The following options are available:
 
 * [  wrangler.jsonc ](#tab-panel-8456)
 * [  wrangler.toml ](#tab-panel-8457)
+
+JSONC
 
 ```
 
@@ -2062,6 +2192,8 @@ The following options are available:
 
 ```
 
+TOML
+
 ```
 
 [[containers]]
@@ -2112,6 +2244,8 @@ The following options are available:
 * [  wrangler.jsonc ](#tab-panel-8442)
 * [  wrangler.toml ](#tab-panel-8443)
 
+JSONC
+
 ```
 
 {
@@ -2140,6 +2274,8 @@ The following options are available:
 
 
 ```
+
+TOML
 
 ```
 
@@ -2204,6 +2340,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8440)
 * [  wrangler.toml ](#tab-panel-8441)
 
+JSONC
+
 ```
 
 {
@@ -2226,6 +2364,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -2279,6 +2419,8 @@ To fix this, you can exclude certain files from being included. To do this use t
 * [  wrangler.jsonc ](#tab-panel-8438)
 * [  wrangler.toml ](#tab-panel-8439)
 
+JSONC
+
 ```
 
 {
@@ -2293,6 +2435,8 @@ To fix this, you can exclude certain files from being included. To do this use t
 
 
 ```
+
+TOML
 
 ```
 
@@ -2335,6 +2479,8 @@ You can configure various aspects of local development, such as the local protoc
 * [  wrangler.jsonc ](#tab-panel-8444)
 * [  wrangler.toml ](#tab-panel-8445)
 
+JSONC
+
 ```
 
 {
@@ -2353,6 +2499,8 @@ You can configure various aspects of local development, such as the local protoc
 
 
 ```
+
+TOML
 
 ```
 
@@ -2431,6 +2579,8 @@ The `secrets` configuration property lets you declare the secret names your Work
 * [  wrangler.jsonc ](#tab-panel-8446)
 * [  wrangler.toml ](#tab-panel-8447)
 
+JSONC
+
 ```
 
 {
@@ -2445,6 +2595,8 @@ The `secrets` configuration property lets you declare the secret names your Work
 
 
 ```
+
+TOML
 
 ```
 
@@ -2476,6 +2628,8 @@ You can configure Wrangler to replace all calls to import a particular package w
 * [  wrangler.jsonc ](#tab-panel-8448)
 * [  wrangler.toml ](#tab-panel-8449)
 
+JSONC
+
 ```
 
 {
@@ -2490,6 +2644,8 @@ You can configure Wrangler to replace all calls to import a particular package w
 
 
 ```
+
+TOML
 
 ```
 
@@ -2548,6 +2704,8 @@ You can alias all imports of `node-fetch` to instead point directly to the `fetc
 * [  wrangler.jsonc ](#tab-panel-8450)
 * [  wrangler.toml ](#tab-panel-8451)
 
+JSONC
+
 ```
 
 {
@@ -2562,6 +2720,8 @@ You can alias all imports of `node-fetch` to instead point directly to the `fetc
 
 
 ```
+
+TOML
 
 ```
 
@@ -2590,6 +2750,8 @@ For example, let's say the NPM package you rely on calls [fs.readFile ↗](https
 * [  wrangler.jsonc ](#tab-panel-8452)
 * [  wrangler.toml ](#tab-panel-8453)
 
+JSONC
+
 ```
 
 {
@@ -2604,6 +2766,8 @@ For example, let's say the NPM package you rely on calls [fs.readFile ↗](https
 
 
 ```
+
+TOML
 
 ```
 
@@ -2641,6 +2805,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8454)
 * [  wrangler.toml ](#tab-panel-8455)
 
+JSONC
+
 ```
 
 {
@@ -2651,6 +2817,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -2679,6 +2847,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-8458)
 * [  wrangler.toml ](#tab-panel-8459)
 
+JSONC
+
 ```
 
 {
@@ -2697,6 +2867,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -2790,6 +2962,7 @@ A common example of using a redirected configuration is where a custom build too
 * First, the user writes code that uses Cloudflare Workers resources, configured via a user's Wrangler configuration file like the following:  
    * [  wrangler.jsonc ](#tab-panel-8460)  
    * [  wrangler.toml ](#tab-panel-8461)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -2807,6 +2980,7 @@ A common example of using a redirected configuration is where a custom build too
   },  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "my-worker"  

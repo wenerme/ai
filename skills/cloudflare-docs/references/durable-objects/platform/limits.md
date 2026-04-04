@@ -103,6 +103,8 @@ By default, the maximum CPU time per Durable Objects invocation (HTTP request, W
 * [  wrangler.jsonc ](#tab-panel-4545)
 * [  wrangler.toml ](#tab-panel-4546)
 
+JSONC
+
 ```
 
 {
@@ -121,6 +123,8 @@ By default, the maximum CPU time per Durable Objects invocation (HTTP request, W
 
 
 ```
+
+TOML
 
 ```
 

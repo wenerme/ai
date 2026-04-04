@@ -56,12 +56,14 @@ The template project contains the following files and directories:
 * Change the `name` property to the name of your project:  
    * [  wrangler.jsonc ](#tab-panel-7121)  
    * [  wrangler.toml ](#tab-panel-7122)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "my-site"  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "my-site"  
@@ -69,22 +71,26 @@ name = "my-site"
 * Consider updating`compatibility_date` to today's date to get access to the most recent Workers features:  
    * [  wrangler.jsonc ](#tab-panel-7123)  
    * [  wrangler.toml ](#tab-panel-7124)  
+JSONC  
 ```  
 {  
   "compatibility_date": "yyyy-mm-dd"  
 }  
 ```  
+TOML  
 ```  
 compatibility_date = "yyyy-mm-dd"  
 ```
 * Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone:  
    * [  wrangler.jsonc ](#tab-panel-7125)  
    * [  wrangler.toml ](#tab-panel-7126)  
+JSONC  
 ```  
 {  
   "route": "https://example.com/*"  
 }  
 ```  
+TOML  
 ```  
 route = "https://example.com/*"  
 ```  

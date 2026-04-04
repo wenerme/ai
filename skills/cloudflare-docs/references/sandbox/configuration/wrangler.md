@@ -23,6 +23,8 @@ The minimum required configuration for using Sandbox SDK:
 * [  wrangler.jsonc ](#tab-panel-6237)
 * [  wrangler.toml ](#tab-panel-6238)
 
+JSONC
+
 ```
 
 {
@@ -33,7 +35,7 @@ The minimum required configuration for using Sandbox SDK:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -82,6 +84,8 @@ The minimum required configuration for using Sandbox SDK:
 
 ```
 
+TOML
+
 ```
 
 name = "my-sandbox-worker"
@@ -90,7 +94,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -148,6 +152,8 @@ npx wrangler r2 bucket create my-backup-bucket
 * [  wrangler.jsonc ](#tab-panel-6231)
 * [  wrangler.toml ](#tab-panel-6232)
 
+JSONC
+
 ```
 
 {
@@ -176,6 +182,8 @@ npx wrangler r2 bucket create my-backup-bucket
 
 
 ```
+
+TOML
 
 ```
 
@@ -223,6 +231,8 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 * [  wrangler.jsonc ](#tab-panel-6233)
 * [  wrangler.toml ](#tab-panel-6234)
 
+JSONC
+
 ```
 
 {
@@ -248,6 +258,8 @@ The SDK uses these credentials to generate presigned URLs that allow the contain
 
 ```
 
+TOML
+
 ```
 
 [[durable_objects.bindings]]
@@ -267,6 +279,8 @@ name = "Sandbox"
 
 * [  wrangler.jsonc ](#tab-panel-6235)
 * [  wrangler.toml ](#tab-panel-6236)
+
+JSONC
 
 ```
 
@@ -288,6 +302,8 @@ name = "Sandbox"
 
 
 ```
+
+TOML
 
 ```
 

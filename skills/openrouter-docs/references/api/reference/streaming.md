@@ -159,6 +159,8 @@ For SSE (Server-Sent Events) streams, OpenRouter occasionally sends comments to 
 
 Comment payload can be safely ignored per the [SSE specs](https://html.spec.whatwg.org/multipage/server-sent-events.html#event-stream-interpretation). However, you can leverage it to improve UX as needed, e.g. by showing a dynamic loading indicator.
 
+The generation ID is returned in the `X-Generation-Id` response header for all endpoints (chat completions, completions, responses, and messages), which can be useful for debugging and correlating requests.
+
 Some SSE client implementations might not parse the payload according to spec, which leads to an uncaught error when you `JSON.stringify` the non-JSON payloads. We recommend the following clients:
 
 * [eventsource-parser](https://github.com/rexxars/eventsource-parser)

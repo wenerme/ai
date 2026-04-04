@@ -174,6 +174,7 @@ To bind your KV namespace to your Worker:
 1. In your Wrangler file, add the following with the values generated in your terminal from [step 2](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace):  
    * [  wrangler.jsonc ](#tab-panel-5009)  
    * [  wrangler.toml ](#tab-panel-5010)  
+JSONC  
 ```  
 {  
   "kv_namespaces": [  
@@ -184,6 +185,7 @@ To bind your KV namespace to your Worker:
   ]  
 }  
 ```  
+TOML  
 ```  
 [[kv_namespaces]]  
 binding = "USERS_NOTIFICATION_CONFIG"  

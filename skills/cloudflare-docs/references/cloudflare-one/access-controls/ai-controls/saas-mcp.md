@@ -88,6 +88,7 @@ The command will output the binding name and KV namespace ID:
 }  
 ```
 4. Open `wrangler.jsonc` in an editor and insert your `OAUTH_KV` namespace ID:  
+JSONC  
 ```  
 "kv_namespaces": [  
   {  

@@ -27,6 +27,8 @@ To use your AI Search with Workers or Pages, create an AI binding either in the 
 * [  wrangler.jsonc ](#tab-panel-3099)
 * [  wrangler.toml ](#tab-panel-3100)
 
+JSONC
+
 ```
 
 {
@@ -41,6 +43,8 @@ To use your AI Search with Workers or Pages, create an AI binding either in the 
 
 
 ```
+
+TOML
 
 ```
 

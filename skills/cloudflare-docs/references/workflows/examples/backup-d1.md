@@ -231,6 +231,8 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 * [  wrangler.jsonc ](#tab-panel-8590)
 * [  wrangler.toml ](#tab-panel-8591)
 
+JSONC
+
 ```
 
 {
@@ -243,7 +245,7 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -292,6 +294,8 @@ Here is a [Wrangler configuration file](https://developers.cloudflare.com/worker
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -302,7 +306,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

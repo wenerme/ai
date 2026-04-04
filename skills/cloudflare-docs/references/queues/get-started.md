@@ -100,6 +100,8 @@ To create a binding, open your newly generated `wrangler.jsonc` file and add the
 * [  wrangler.jsonc ](#tab-panel-5654)
 * [  wrangler.toml ](#tab-panel-5655)
 
+JSONC
+
 ```
 
 {
@@ -124,6 +126,8 @@ To create a binding, open your newly generated `wrangler.jsonc` file and add the
 
 
 ```
+
+TOML
 
 ```
 
@@ -298,6 +302,8 @@ To connect your queue to your consumer Worker, open your Wrangler file and add t
 * [  wrangler.jsonc ](#tab-panel-5656)
 * [  wrangler.toml ](#tab-panel-5657)
 
+JSONC
+
 ```
 
 {
@@ -328,6 +334,8 @@ To connect your queue to your consumer Worker, open your Wrangler file and add t
 
 
 ```
+
+TOML
 
 ```
 

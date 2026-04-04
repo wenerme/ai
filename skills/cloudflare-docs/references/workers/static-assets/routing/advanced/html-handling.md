@@ -34,6 +34,8 @@ This will usually give you the desired behavior automatically: individual files 
 * [  wrangler.jsonc ](#tab-panel-7716)
 * [  wrangler.toml ](#tab-panel-7717)
 
+JSONC
+
 ```
 
 {
@@ -42,7 +44,7 @@ This will usually give you the desired behavior automatically: individual files 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -57,13 +59,15 @@ This will usually give you the desired behavior automatically: individual files 
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -97,6 +101,8 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 * [  wrangler.jsonc ](#tab-panel-7718)
 * [  wrangler.toml ](#tab-panel-7719)
 
+JSONC
+
 ```
 
 {
@@ -105,7 +111,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -120,13 +126,15 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -160,6 +168,8 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 * [  wrangler.jsonc ](#tab-panel-7720)
 * [  wrangler.toml ](#tab-panel-7721)
 
+JSONC
+
 ```
 
 {
@@ -168,7 +178,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -183,13 +193,15 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -223,6 +235,8 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 * [  wrangler.jsonc ](#tab-panel-7722)
 * [  wrangler.toml ](#tab-panel-7723)
 
+JSONC
+
 ```
 
 {
@@ -231,7 +245,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -246,13 +260,15 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]

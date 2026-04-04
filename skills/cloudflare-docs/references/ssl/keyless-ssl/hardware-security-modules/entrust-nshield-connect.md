@@ -59,6 +59,8 @@ Public Key Object; RSA 2048 bits
 
 The key piece of information is the label of the object, `rsa-privkey`. Open up `/etc/keyless/gokeyless.yaml` and immediately after
 
+YAML
+
 ```
 
 private_key_stores:
@@ -69,6 +71,8 @@ private_key_stores:
 ```
 
 add
+
+YAML
 
 ```
 

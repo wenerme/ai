@@ -204,6 +204,7 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.  
    * [  wrangler.jsonc ](#tab-panel-4106)  
    * [  wrangler.toml ](#tab-panel-4107)  
+JSONC  
 ```  
 {  
   "d1_databases": [  
@@ -215,6 +216,7 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
   ]  
 }  
 ```  
+TOML  
 ```  
 [[d1_databases]]  
 binding = "DB"  

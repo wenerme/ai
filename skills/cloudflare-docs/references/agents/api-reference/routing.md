@@ -1518,6 +1518,8 @@ export default {
 * [  wrangler.jsonc ](#tab-panel-2610)
 * [  wrangler.toml ](#tab-panel-2611)
 
+JSONC
+
 ```
 
 {
@@ -1552,6 +1554,8 @@ export default {
 
 
 ```
+
+TOML
 
 ```
 

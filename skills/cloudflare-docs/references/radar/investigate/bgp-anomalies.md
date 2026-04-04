@@ -332,6 +332,8 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 * [  wrangler.jsonc ](#tab-panel-5957)
 * [  wrangler.toml ](#tab-panel-5958)
 
+JSONC
+
 ```
 
 {
@@ -344,7 +346,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "triggers": {
 
@@ -361,6 +363,8 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -371,7 +375,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [triggers]
@@ -385,6 +389,8 @@ In this example, we will also need to use Cloudflare KV to save the latest check
 
 * [  wrangler.jsonc ](#tab-panel-5955)
 * [  wrangler.toml ](#tab-panel-5956)
+
+JSONC
 
 ```
 
@@ -408,6 +414,8 @@ In this example, we will also need to use Cloudflare KV to save the latest check
 
 
 ```
+
+TOML
 
 ```
 
@@ -662,6 +670,8 @@ For this alert to work, you will need to configure the proper email bindings in 
 * [  wrangler.jsonc ](#tab-panel-5959)
 * [  wrangler.toml ](#tab-panel-5960)
 
+JSONC
+
 ```
 
 {
@@ -684,6 +694,8 @@ For this alert to work, you will need to configure the proper email bindings in 
 
 
 ```
+
+TOML
 
 ```
 

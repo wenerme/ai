@@ -76,13 +76,14 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
    * [  wrangler.jsonc ](#tab-panel-4753)  
    * [  wrangler.toml ](#tab-panel-4754)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -95,12 +96,13 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
   ]  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -162,6 +164,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4757)
 * [  wrangler.toml ](#tab-panel-4758)
 
+JSONC
+
 ```
 
 {
@@ -176,7 +180,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -195,13 +199,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

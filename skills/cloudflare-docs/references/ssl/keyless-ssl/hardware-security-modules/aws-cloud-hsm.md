@@ -104,6 +104,8 @@ Now that the keys are in place, we need to modify the configuration file that th
 
 Open `/etc/keyless/gokeyless.yaml` and immediately after:
 
+YAML
+
 ```
 
 private_key_stores:
@@ -114,6 +116,8 @@ private_key_stores:
 ```
 
 add:
+
+YAML
 
 ```
 

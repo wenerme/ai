@@ -26,6 +26,7 @@ Review the following environments flow:
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.  
    * [  wrangler.jsonc ](#tab-panel-8468)  
    * [  wrangler.toml ](#tab-panel-8469)  
+JSONC  
 ```  
 {  
   "name": "my-worker",  
@@ -36,6 +37,7 @@ Review the following environments flow:
   }  
 }  
 ```  
+TOML  
 ```  
 name = "my-worker"  
 [env]  
@@ -44,6 +46,7 @@ name = "my-worker"
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:  
    * [  wrangler.jsonc ](#tab-panel-8470)  
    * [  wrangler.toml ](#tab-panel-8471)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -56,6 +59,7 @@ name = "my-worker"
   }  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "your-worker"  
@@ -78,6 +82,8 @@ Review the following example Wrangler file:
 
 * [  wrangler.jsonc ](#tab-panel-8478)
 * [  wrangler.toml ](#tab-panel-8479)
+
+JSONC
 
 ```
 
@@ -136,6 +142,8 @@ Review the following example Wrangler file:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -176,6 +184,8 @@ To use a [service binding](https://developers.cloudflare.com/workers/wrangler/co
 * [  wrangler.jsonc ](#tab-panel-8472)
 * [  wrangler.toml ](#tab-panel-8473)
 
+JSONC
+
 ```
 
 {
@@ -209,6 +219,8 @@ To use a [service binding](https://developers.cloudflare.com/workers/wrangler/co
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -230,6 +242,8 @@ FOO = "<staging-var>"
 
 * [  wrangler.jsonc ](#tab-panel-8476)
 * [  wrangler.toml ](#tab-panel-8477)
+
+JSONC
 
 ```
 
@@ -269,6 +283,8 @@ FOO = "<staging-var>"
 
 
 ```
+
+TOML
 
 ```
 
@@ -359,6 +375,8 @@ The following Wrangler file adds two environments, `[env.staging]` and `[env.pro
 * [  wrangler.jsonc ](#tab-panel-8480)
 * [  wrangler.toml ](#tab-panel-8481)
 
+JSONC
+
 ```
 
 {
@@ -413,6 +431,8 @@ The following Wrangler file adds two environments, `[env.staging]` and `[env.pro
 
 
 ```
+
+TOML
 
 ```
 
@@ -542,6 +562,8 @@ To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = tr
 * [  wrangler.jsonc ](#tab-panel-8474)
 * [  wrangler.toml ](#tab-panel-8475)
 
+JSONC
+
 ```
 
 {
@@ -566,6 +588,8 @@ To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = tr
 
 
 ```
+
+TOML
 
 ```
 

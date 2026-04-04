@@ -68,6 +68,8 @@ The command will output the binding name and KV namespace ID, for example
 * [  wrangler.jsonc ](#tab-panel-3436)
 * [  wrangler.toml ](#tab-panel-3437)
 
+JSONC
+
 ```
 
 {
@@ -80,7 +82,7 @@ The command will output the binding name and KV namespace ID, for example
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "index.js",
 
@@ -109,6 +111,8 @@ The command will output the binding name and KV namespace ID, for example
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -119,7 +123,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "index.js"
 

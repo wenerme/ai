@@ -302,6 +302,8 @@ Add a `worker_loaders` binding to your `wrangler.jsonc`. This is the only bindin
 * [  wrangler.jsonc ](#tab-panel-2286)
 * [  wrangler.toml ](#tab-panel-2287)
 
+JSONC
+
 ```
 
 {
@@ -328,6 +330,8 @@ Add a `worker_loaders` binding to your `wrangler.jsonc`. This is the only bindin
 
 
 ```
+
+TOML
 
 ```
 

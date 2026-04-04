@@ -70,6 +70,8 @@ After setting up destinations in the dashboard, configure your Worker to export 
 * [  wrangler.jsonc ](#tab-panel-7452)
 * [  wrangler.toml ](#tab-panel-7453)
 
+JSONC
+
 ```
 
 {
@@ -121,6 +123,8 @@ After setting up destinations in the dashboard, configure your Worker to export 
 
 
 ```
+
+TOML
 
 ```
 

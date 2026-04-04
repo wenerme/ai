@@ -110,6 +110,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 * [  wrangler.jsonc ](#tab-panel-7504)
 * [  wrangler.toml ](#tab-panel-7505)
 
+JSONC
+
 ```
 
 {
@@ -130,6 +132,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 
 
 ```
+
+TOML
 
 ```
 
@@ -244,6 +248,8 @@ Review the following example environment variable configuration in the [Wrangler
 * [  wrangler.jsonc ](#tab-panel-7506)
 * [  wrangler.toml ](#tab-panel-7507)
 
+JSONC
+
 ```
 
 {
@@ -266,6 +272,8 @@ Review the following example environment variable configuration in the [Wrangler
 
 
 ```
+
+TOML
 
 ```
 

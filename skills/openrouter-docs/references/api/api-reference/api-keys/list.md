@@ -35,7 +35,7 @@ paths:
           description: Number of API keys to skip for pagination
           required: false
           schema:
-            type: string
+            type: integer
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header

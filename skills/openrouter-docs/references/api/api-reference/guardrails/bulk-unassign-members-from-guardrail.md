@@ -45,8 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/Guardrails_bulkUnassignMembersFromGuardrail_Response_200
+                $ref: '#/components/schemas/BulkUnassignMembersResponse'
         '400':
           description: Bad Request - Invalid input
           content:
@@ -75,20 +74,23 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                member_user_ids:
-                  type: array
-                  items:
-                    type: string
-                  description: Array of member user IDs to unassign from the guardrail
-              required:
-                - member_user_ids
+              $ref: '#/components/schemas/BulkUnassignMembersRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    Guardrails_bulkUnassignMembersFromGuardrail_Response_200:
+    BulkUnassignMembersRequest:
+      type: object
+      properties:
+        member_user_ids:
+          type: array
+          items:
+            type: string
+          description: Array of member user IDs to unassign from the guardrail
+      required:
+        - member_user_ids
+      title: BulkUnassignMembersRequest
+    BulkUnassignMembersResponse:
       type: object
       properties:
         unassigned_count:
@@ -96,7 +98,7 @@ components:
           description: Number of members successfully unassigned
       required:
         - unassigned_count
-      title: Guardrails_bulkUnassignMembersFromGuardrail_Response_200
+      title: BulkUnassignMembersResponse
     BadRequestResponseErrorData:
       type: object
       properties:

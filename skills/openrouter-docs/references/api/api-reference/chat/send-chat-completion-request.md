@@ -113,21 +113,10 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    DataCollection:
-      type: string
-      enum:
-        - deny
-        - allow
-      description: >-
-        Data collection setting. If no available model provider meets the
-        requirement, your request will return an error.
-
-        - allow: (default) allow providers which store user data non-transiently
-        and may train on it
-
-
-        - deny: use only providers which do not collect user data.
-      title: DataCollection
+    ChatRequestProviderDataCollection:
+      type: object
+      properties: {}
+      title: ChatRequestProviderDataCollection
     ProviderName:
       type: string
       enum:
@@ -391,7 +380,7 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         data_collection:
-          $ref: '#/components/schemas/DataCollection'
+          $ref: '#/components/schemas/ChatRequestProviderDataCollection'
         zdr:
           type:
             - boolean
@@ -679,24 +668,24 @@ components:
       enum:
         - text
       title: ChatContentTextType
-    ChatContentCacheControlType:
+    AnthropicCacheControlDirectiveType:
       type: string
       enum:
         - ephemeral
-      title: ChatContentCacheControlType
-    ChatContentCacheControlTtl:
+      title: AnthropicCacheControlDirectiveType
+    AnthropicCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: ChatContentCacheControlTtl
+      title: AnthropicCacheControlTtl
     ChatContentCacheControl:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatContentCacheControlType'
+          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
         ttl:
-          $ref: '#/components/schemas/ChatContentCacheControlTtl'
+          $ref: '#/components/schemas/AnthropicCacheControlTtl'
       required:
         - type
       description: Cache control for the content part
@@ -860,11 +849,6 @@ components:
         - video_url
       description: Video input content part
       title: ChatContentVideo
-    ChatContentItems3:
-      oneOf:
-        - $ref: '#/components/schemas/Legacy_ChatContentVideo'
-        - $ref: '#/components/schemas/ChatContentVideo'
-      title: ChatContentItems3
     ChatContentFileType:
       type: string
       enum:
@@ -900,7 +884,8 @@ components:
         - $ref: '#/components/schemas/ChatContentText'
         - $ref: '#/components/schemas/ChatContentImage'
         - $ref: '#/components/schemas/ChatContentAudio'
-        - $ref: '#/components/schemas/ChatContentItems3'
+        - $ref: '#/components/schemas/Legacy_ChatContentVideo'
+        - $ref: '#/components/schemas/ChatContentVideo'
         - $ref: '#/components/schemas/ChatContentFile'
       description: Content part for chat completion messages
       title: ChatContentItems
@@ -1296,12 +1281,6 @@ components:
         - concise
         - detailed
       title: ChatReasoningSummaryVerbosityEnum
-    ChatRequestReasoningSummary:
-      oneOf:
-        - $ref: '#/components/schemas/ChatReasoningSummaryVerbosityEnum'
-        - description: Any type
-        - description: Any type
-      title: ChatRequestReasoningSummary
     ChatRequestReasoning:
       type: object
       properties:
@@ -1311,7 +1290,7 @@ components:
             - type: 'null'
           description: Constrains effort on reasoning for reasoning models
         summary:
-          $ref: '#/components/schemas/ChatRequestReasoningSummary'
+          $ref: '#/components/schemas/ChatReasoningSummaryVerbosityEnum'
       description: Configuration options for reasoning models
       title: ChatRequestReasoning
     ChatFormatTextConfigType:
@@ -1561,7 +1540,7 @@ components:
       enum:
         - openrouter:web_search
       title: ChatWebSearchServerToolType
-    ChatWebSearchServerToolParametersEngine:
+    WebSearchEngineEnum:
       type: string
       enum:
         - auto
@@ -1574,8 +1553,8 @@ components:
         supports it, otherwise Exa. "native" forces the provider's built-in
         search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
         (requires BYOK). "parallel" uses the Parallel search API.
-      title: ChatWebSearchServerToolParametersEngine
-    ChatWebSearchServerToolParametersSearchContextSize:
+      title: WebSearchEngineEnum
+    SearchQualityLevel:
       type: string
       enum:
         - low
@@ -1585,18 +1564,17 @@ components:
         How much context to retrieve per result. Defaults to medium (15000
         chars). Only applies when using the Exa engine; ignored with native
         provider search.
-      title: ChatWebSearchServerToolParametersSearchContextSize
-    ChatWebSearchServerToolParametersUserLocationType:
+      title: SearchQualityLevel
+    WebSearchUserLocationServerToolType:
       type: string
       enum:
         - approximate
-      title: ChatWebSearchServerToolParametersUserLocationType
-    ChatWebSearchServerToolParametersUserLocation:
+      title: WebSearchUserLocationServerToolType
+    WebSearchUserLocationServerTool:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/ChatWebSearchServerToolParametersUserLocationType
+          $ref: '#/components/schemas/WebSearchUserLocationServerToolType'
         city:
           type: string
         region:
@@ -1606,17 +1584,12 @@ components:
         timezone:
           type: string
       description: Approximate user location for location-biased results.
-      title: ChatWebSearchServerToolParametersUserLocation
-    ChatWebSearchServerToolParameters:
+      title: WebSearchUserLocationServerTool
+    WebSearchConfig:
       type: object
       properties:
         engine:
-          $ref: '#/components/schemas/ChatWebSearchServerToolParametersEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -1633,15 +1606,9 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops.
         search_context_size:
-          $ref: >-
-            #/components/schemas/ChatWebSearchServerToolParametersSearchContextSize
-          description: >-
-            How much context to retrieve per result. Defaults to medium (15000
-            chars). Only applies when using the Exa engine; ignored with native
-            provider search.
+          $ref: '#/components/schemas/SearchQualityLevel'
         user_location:
-          $ref: '#/components/schemas/ChatWebSearchServerToolParametersUserLocation'
-          description: Approximate user location for location-biased results.
+          $ref: '#/components/schemas/WebSearchUserLocationServerTool'
         allowed_domains:
           type: array
           items:
@@ -1658,14 +1625,14 @@ components:
             Exclude search results from these domains. Supported by Exa,
             Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
             (silently ignored), or Perplexity.
-      title: ChatWebSearchServerToolParameters
+      title: WebSearchConfig
     ChatWebSearchServerTool:
       type: object
       properties:
         type:
           $ref: '#/components/schemas/ChatWebSearchServerToolType'
         parameters:
-          $ref: '#/components/schemas/ChatWebSearchServerToolParameters'
+          $ref: '#/components/schemas/WebSearchConfig'
       required:
         - type
       description: >-
@@ -1680,161 +1647,13 @@ components:
         - web_search_preview_2025_03_11
         - web_search_2025_08_26
       title: ChatWebSearchShorthandType
-    ChatWebSearchShorthandEngine:
-      type: string
-      enum:
-        - auto
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: >-
-        Which search engine to use. "auto" (default) uses native if the provider
-        supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
-        (requires BYOK). "parallel" uses the Parallel search API.
-      title: ChatWebSearchShorthandEngine
-    ChatWebSearchShorthandSearchContextSize:
-      type: string
-      enum:
-        - low
-        - medium
-        - high
-      description: >-
-        How much context to retrieve per result. Defaults to medium (15000
-        chars). Only applies when using the Exa engine; ignored with native
-        provider search.
-      title: ChatWebSearchShorthandSearchContextSize
-    ChatWebSearchShorthandUserLocationType:
-      type: string
-      enum:
-        - approximate
-      title: ChatWebSearchShorthandUserLocationType
-    ChatWebSearchShorthandUserLocation:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ChatWebSearchShorthandUserLocationType'
-        city:
-          type: string
-        region:
-          type: string
-        country:
-          type: string
-        timezone:
-          type: string
-      description: Approximate user location for location-biased results.
-      title: ChatWebSearchShorthandUserLocation
-    ChatWebSearchShorthandParametersEngine:
-      type: string
-      enum:
-        - auto
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: >-
-        Which search engine to use. "auto" (default) uses native if the provider
-        supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
-        (requires BYOK). "parallel" uses the Parallel search API.
-      title: ChatWebSearchShorthandParametersEngine
-    ChatWebSearchShorthandParametersSearchContextSize:
-      type: string
-      enum:
-        - low
-        - medium
-        - high
-      description: >-
-        How much context to retrieve per result. Defaults to medium (15000
-        chars). Only applies when using the Exa engine; ignored with native
-        provider search.
-      title: ChatWebSearchShorthandParametersSearchContextSize
-    ChatWebSearchShorthandParametersUserLocationType:
-      type: string
-      enum:
-        - approximate
-      title: ChatWebSearchShorthandParametersUserLocationType
-    ChatWebSearchShorthandParametersUserLocation:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/ChatWebSearchShorthandParametersUserLocationType
-        city:
-          type: string
-        region:
-          type: string
-        country:
-          type: string
-        timezone:
-          type: string
-      description: Approximate user location for location-biased results.
-      title: ChatWebSearchShorthandParametersUserLocation
-    ChatWebSearchShorthandParameters:
-      type: object
-      properties:
-        engine:
-          $ref: '#/components/schemas/ChatWebSearchShorthandParametersEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
-        max_results:
-          type: number
-          format: double
-          description: >-
-            Maximum number of search results to return per search call. Defaults
-            to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
-            native provider search.
-        max_total_results:
-          type: number
-          format: double
-          description: >-
-            Maximum total number of search results across all search calls in a
-            single request. Once this limit is reached, the tool will stop
-            returning new results. Useful for controlling cost and context size
-            in agentic loops.
-        search_context_size:
-          $ref: >-
-            #/components/schemas/ChatWebSearchShorthandParametersSearchContextSize
-          description: >-
-            How much context to retrieve per result. Defaults to medium (15000
-            chars). Only applies when using the Exa engine; ignored with native
-            provider search.
-        user_location:
-          $ref: '#/components/schemas/ChatWebSearchShorthandParametersUserLocation'
-          description: Approximate user location for location-biased results.
-        allowed_domains:
-          type: array
-          items:
-            type: string
-          description: >-
-            Limit search results to these domains. Supported by Exa, Parallel,
-            and most native providers (Anthropic, OpenAI, xAI). Not supported
-            with Firecrawl or Perplexity.
-        excluded_domains:
-          type: array
-          items:
-            type: string
-          description: >-
-            Exclude search results from these domains. Supported by Exa,
-            Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
-            (silently ignored), or Perplexity.
-      title: ChatWebSearchShorthandParameters
     ChatWebSearchShorthand:
       type: object
       properties:
         type:
           $ref: '#/components/schemas/ChatWebSearchShorthandType'
         engine:
-          $ref: '#/components/schemas/ChatWebSearchShorthandEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -1851,14 +1670,9 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops.
         search_context_size:
-          $ref: '#/components/schemas/ChatWebSearchShorthandSearchContextSize'
-          description: >-
-            How much context to retrieve per result. Defaults to medium (15000
-            chars). Only applies when using the Exa engine; ignored with native
-            provider search.
+          $ref: '#/components/schemas/SearchQualityLevel'
         user_location:
-          $ref: '#/components/schemas/ChatWebSearchShorthandUserLocation'
-          description: Approximate user location for location-biased results.
+          $ref: '#/components/schemas/WebSearchUserLocationServerTool'
         allowed_domains:
           type: array
           items:
@@ -1876,7 +1690,7 @@ components:
             Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
             (silently ignored), or Perplexity.
         parameters:
-          $ref: '#/components/schemas/ChatWebSearchShorthandParameters'
+          $ref: '#/components/schemas/WebSearchConfig'
       required:
         - type
       description: >-
@@ -1919,30 +1733,15 @@ components:
         - image
         - audio
       title: ChatRequestModalitiesItems
-    ChatRequestCacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: ChatRequestCacheControlType
-    ChatRequestCacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: ChatRequestCacheControlTtl
     ChatRequestCacheControl:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/ChatRequestCacheControlType'
+          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
         ttl:
-          $ref: '#/components/schemas/ChatRequestCacheControlTtl'
+          $ref: '#/components/schemas/AnthropicCacheControlTtl'
       required:
         - type
-      description: >-
-        Enable automatic prompt caching. When set, the system automatically
-        applies cache breakpoints to the last cacheable block in the request.
-        Currently supported for Anthropic Claude models.
       title: ChatRequestCacheControl
     ChatRequestServiceTier:
       type: string
@@ -2062,6 +1861,10 @@ components:
           type:
             - boolean
             - 'null'
+          description: >-
+            Whether to enable parallel function calling during tool use. When
+            true, the model may generate multiple tool calls in a single
+            response.
         tool_choice:
           $ref: '#/components/schemas/ChatToolChoice'
         tools:
@@ -2093,10 +1896,6 @@ components:
             "image", and "audio".
         cache_control:
           $ref: '#/components/schemas/ChatRequestCacheControl'
-          description: >-
-            Enable automatic prompt caching. When set, the system automatically
-            applies cache breakpoints to the last cacheable block in the
-            request. Currently supported for Anthropic Claude models.
         service_tier:
           oneOf:
             - $ref: '#/components/schemas/ChatRequestServiceTier'
@@ -2115,12 +1914,6 @@ components:
         - content_filter
         - error
       title: ChatFinishReasonEnum
-    ChatChoiceFinishReason:
-      oneOf:
-        - $ref: '#/components/schemas/ChatFinishReasonEnum'
-        - description: Any type
-        - description: Any type
-      title: ChatChoiceFinishReason
     ChatTokenLogprobTopLogprobsItems:
       type: object
       properties:
@@ -2194,7 +1987,7 @@ components:
       type: object
       properties:
         finish_reason:
-          $ref: '#/components/schemas/ChatChoiceFinishReason'
+          $ref: '#/components/schemas/ChatFinishReasonEnum'
         index:
           type: integer
           description: Choice index

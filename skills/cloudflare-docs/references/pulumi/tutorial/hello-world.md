@@ -738,6 +738,8 @@ return await Deployment.RunAsync(() =>
 
 **Filename: `Pulumi.yaml`**
 
+YAML
+
 ```
 
 name: serverless-cloudflare
@@ -970,6 +972,8 @@ var route = new Cloudflare.WorkersRoute("hello-world-route", new()
 
 Below the `runtime` key, add the following code:
 
+YAML
+
 ```
 
 # new top-level section
@@ -992,6 +996,8 @@ variables:
 ```
 
 Below the `worker` resource, add the following code:
+
+YAML
 
 ```
 
@@ -1193,6 +1199,8 @@ return new Dictionary<string, object?>
 ```
 
 Notice the new top-level `outputs` section.
+
+YAML
 
 ```
 
@@ -1845,6 +1853,8 @@ return await Deployment.RunAsync(() =>
 ```
 
 **Filename: `Pulumi.yaml`**
+
+YAML
 
 ```
 

@@ -44,8 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/Guardrails_bulkAssignKeysToGuardrail_Response_200
+                $ref: '#/components/schemas/BulkAssignKeysResponse'
         '400':
           description: Bad Request - Invalid input
           content:
@@ -74,20 +73,23 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                key_hashes:
-                  type: array
-                  items:
-                    type: string
-                  description: Array of API key hashes to assign to the guardrail
-              required:
-                - key_hashes
+              $ref: '#/components/schemas/BulkAssignKeysRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    Guardrails_bulkAssignKeysToGuardrail_Response_200:
+    BulkAssignKeysRequest:
+      type: object
+      properties:
+        key_hashes:
+          type: array
+          items:
+            type: string
+          description: Array of API key hashes to assign to the guardrail
+      required:
+        - key_hashes
+      title: BulkAssignKeysRequest
+    BulkAssignKeysResponse:
       type: object
       properties:
         assigned_count:
@@ -95,7 +97,7 @@ components:
           description: Number of keys successfully assigned
       required:
         - assigned_count
-      title: Guardrails_bulkAssignKeysToGuardrail_Response_200
+      title: BulkAssignKeysResponse
     BadRequestResponseErrorData:
       type: object
       properties:

@@ -38,6 +38,8 @@ For example, if Worker B implements the public method `add(a, b)`:
 * [  wrangler.jsonc ](#tab-panel-7626)
 * [  wrangler.toml ](#tab-panel-7627)
 
+JSONC
+
 ```
 
 {
@@ -52,6 +54,8 @@ For example, if Worker B implements the public method `add(a, b)`:
 
 
 ```
+
+TOML
 
 ```
 
@@ -148,6 +152,8 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 * [  wrangler.jsonc ](#tab-panel-7630)
 * [  wrangler.toml ](#tab-panel-7631)
 
+JSONC
+
 ```
 
 {
@@ -174,6 +180,8 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 
 
 ```
+
+TOML
 
 ```
 
@@ -290,6 +298,8 @@ Consider the following two Workers, connected via a [Service Binding](https://de
 * [  wrangler.jsonc ](#tab-panel-7632)
 * [  wrangler.toml ](#tab-panel-7633)
 
+JSONC
+
 ```
 
 {
@@ -304,6 +314,8 @@ Consider the following two Workers, connected via a [Service Binding](https://de
 
 
 ```
+
+TOML
 
 ```
 
@@ -394,6 +406,8 @@ This function can then be called by the client Worker:
 * [  wrangler.jsonc ](#tab-panel-7634)
 * [  wrangler.toml ](#tab-panel-7635)
 
+JSONC
+
 ```
 
 {
@@ -420,6 +434,8 @@ This function can then be called by the client Worker:
 
 
 ```
+
+TOML
 
 ```
 
@@ -517,6 +533,8 @@ Consider the following example:
 * [  wrangler.jsonc ](#tab-panel-7608)
 * [  wrangler.toml ](#tab-panel-7609)
 
+JSONC
+
 ```
 
 {
@@ -531,6 +549,8 @@ Consider the following example:
 
 
 ```
+
+TOML
 
 ```
 
@@ -659,6 +679,8 @@ The method `increment` can be called directly by the client, as can the public p
 * [  wrangler.jsonc ](#tab-panel-7610)
 * [  wrangler.toml ](#tab-panel-7611)
 
+JSONC
+
 ```
 
 {
@@ -687,6 +709,8 @@ The method `increment` can be called directly by the client, as can the public p
 
 
 ```
+
+TOML
 
 ```
 

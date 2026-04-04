@@ -43,44 +43,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessagesRequestBadRequestError'
+                $ref: '#/components/schemas/MessagesErrorResponse'
         '401':
           description: Authentication error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessagesRequestUnauthorizedError'
+                $ref: '#/components/schemas/MessagesErrorResponse'
         '403':
           description: Permission denied error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessagesRequestForbiddenError'
+                $ref: '#/components/schemas/MessagesErrorResponse'
         '404':
           description: Not found error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessagesRequestNotFoundError'
+                $ref: '#/components/schemas/MessagesErrorResponse'
         '429':
           description: Rate limit error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessagesRequestTooManyRequestsError'
+                $ref: '#/components/schemas/MessagesErrorResponse'
         '500':
           description: API error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateMessagesRequestInternalServerError'
+                $ref: '#/components/schemas/MessagesErrorResponse'
         '503':
           description: Overloaded error
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/CreateMessagesRequestServiceUnavailableError
+                $ref: '#/components/schemas/MessagesErrorResponse'
       requestBody:
         content:
           application/json:
@@ -90,43 +89,33 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    MessagesMessageParamRole:
-      type: string
-      enum:
-        - user
-        - assistant
-      title: MessagesMessageParamRole
-    MessagesMessageParamContentOneOf1ItemsOneOf0Type:
+    AnthropicTextBlockParamType:
       type: string
       enum:
         - text
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
+      title: AnthropicTextBlockParamType
+    AnthropicCitationCharLocationParamType:
       type: string
       enum:
         - char_location
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems0:
+      title: AnthropicCitationCharLocationParamType
+    AnthropicCitationCharLocationParam:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
+          $ref: '#/components/schemas/AnthropicCitationCharLocationParamType'
         cited_text:
           type: string
         document_index:
-          type: number
-          format: double
+          type: integer
         document_title:
           type:
             - string
             - 'null'
         start_char_index:
-          type: number
-          format: double
+          type: integer
         end_char_index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - cited_text
@@ -134,33 +123,29 @@ components:
         - document_title
         - start_char_index
         - end_char_index
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems0
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
+      title: AnthropicCitationCharLocationParam
+    AnthropicCitationPageLocationParamType:
       type: string
       enum:
         - page_location
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems1:
+      title: AnthropicCitationPageLocationParamType
+    AnthropicCitationPageLocationParam:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
+          $ref: '#/components/schemas/AnthropicCitationPageLocationParamType'
         cited_text:
           type: string
         document_index:
-          type: number
-          format: double
+          type: integer
         document_title:
           type:
             - string
             - 'null'
         start_page_number:
-          type: number
-          format: double
+          type: integer
         end_page_number:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - cited_text
@@ -168,33 +153,29 @@ components:
         - document_title
         - start_page_number
         - end_page_number
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems1
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
+      title: AnthropicCitationPageLocationParam
+    AnthropicCitationContentBlockLocationParamType:
       type: string
       enum:
         - content_block_location
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems2:
+      title: AnthropicCitationContentBlockLocationParamType
+    AnthropicCitationContentBlockLocationParam:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
+          $ref: '#/components/schemas/AnthropicCitationContentBlockLocationParamType'
         cited_text:
           type: string
         document_index:
-          type: number
-          format: double
+          type: integer
         document_title:
           type:
             - string
             - 'null'
         start_block_index:
-          type: number
-          format: double
+          type: integer
         end_block_index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - cited_text
@@ -202,18 +183,18 @@ components:
         - document_title
         - start_block_index
         - end_block_index
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems2
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
+      title: AnthropicCitationContentBlockLocationParam
+    AnthropicCitationWebSearchResultLocationParamType:
       type: string
       enum:
         - web_search_result_location
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems3:
+      title: AnthropicCitationWebSearchResultLocationParamType
+    AnthropicCitationWebSearchResultLocationParam:
       type: object
       properties:
         type:
           $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
+            #/components/schemas/AnthropicCitationWebSearchResultLocationParamType
         cited_text:
           type: string
         encrypted_index:
@@ -230,23 +211,21 @@ components:
         - encrypted_index
         - title
         - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems3
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
+      title: AnthropicCitationWebSearchResultLocationParam
+    AnthropicCitationSearchResultLocationParamType:
       type: string
       enum:
         - search_result_location
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems4:
+      title: AnthropicCitationSearchResultLocationParamType
+    AnthropicCitationSearchResultLocationParam:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
+          $ref: '#/components/schemas/AnthropicCitationSearchResultLocationParamType'
         cited_text:
           type: string
         search_result_index:
-          type: number
-          format: double
+          type: integer
         source:
           type: string
         title:
@@ -254,11 +233,9 @@ components:
             - string
             - 'null'
         start_block_index:
-          type: number
-          format: double
+          type: integer
         end_block_index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - cited_text
@@ -267,49 +244,41 @@ components:
         - title
         - start_block_index
         - end_block_index
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems4
-    MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems:
+      title: AnthropicCitationSearchResultLocationParam
+    AnthropicTextBlockParamCitationsItems:
       oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems4
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems
-    MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlType:
+        - $ref: '#/components/schemas/AnthropicCitationCharLocationParam'
+        - $ref: '#/components/schemas/AnthropicCitationPageLocationParam'
+        - $ref: '#/components/schemas/AnthropicCitationContentBlockLocationParam'
+        - $ref: '#/components/schemas/AnthropicCitationWebSearchResultLocationParam'
+        - $ref: '#/components/schemas/AnthropicCitationSearchResultLocationParam'
+      title: AnthropicTextBlockParamCitationsItems
+    AnthropicCacheControlDirectiveType:
       type: string
       enum:
         - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlTtl:
+      title: AnthropicCacheControlDirectiveType
+    AnthropicCacheControlTtl:
       type: string
       enum:
         - 5m
         - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf0CacheControl:
+      title: AnthropicCacheControlTtl
+    AnthropicCacheControlDirective:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlType
+          $ref: '#/components/schemas/AnthropicCacheControlDirectiveType'
         ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CacheControlTtl
+          $ref: '#/components/schemas/AnthropicCacheControlTtl'
       required:
         - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf0CacheControl
-    MessagesMessageParamContentOneOf1Items0:
+      title: AnthropicCacheControlDirective
+    AnthropicTextBlockParam:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0Type
+          $ref: '#/components/schemas/AnthropicTextBlockParamType'
         text:
           type: string
         citations:
@@ -317,2770 +286,17 @@ components:
             - array
             - 'null'
           items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CitationsItems
+            $ref: '#/components/schemas/AnthropicTextBlockParamCitationsItems'
         cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf0CacheControl
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
       required:
         - type
         - text
-      title: MessagesMessageParamContentOneOf1Items0
-    MessagesMessageParamContentOneOf1ItemsOneOf1Type:
-      type: string
-      enum:
-        - image
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type:
-      type: string
-      enum:
-        - base64
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
-      type: string
-      enum:
-        - image/jpeg
-        - image/png
-        - image/gif
-        - image/webp
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf1Source0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1Source0
-    MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type:
-      type: string
-      enum:
-        - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf1Source1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1SourceOneOf1Type
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1Source1
-    MessagesMessageParamContentOneOf1ItemsOneOf1Source:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Source0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Source1
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1Source
-    MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf1CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf1CacheControl
-    MessagesMessageParamContentOneOf1Items1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Type
-        source:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1Source
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf1CacheControl
-      required:
-        - type
-        - source
-      title: MessagesMessageParamContentOneOf1Items1
-    MessagesMessageParamContentOneOf1ItemsOneOf2Type:
-      type: string
-      enum:
-        - document
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type:
-      type: string
-      enum:
-        - base64
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType:
-      type: string
-      enum:
-        - application/pdf
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf2Source0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf0MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source0
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type:
-      type: string
-      enum:
-        - text
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType:
-      type: string
-      enum:
-        - text/plain
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf2Source1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf1MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source1
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type:
-      type: string
-      enum:
-        - content
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type:
-      type: string
-      enum:
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
-      type: string
-      enum:
-        - char_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: number
-          format: double
-        end_char_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_char_index
-        - end_char_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
-      type: string
-      enum:
-        - page_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: number
-          format: double
-        end_page_number:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_page_number
-        - end_page_number
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
-      type: string
-      enum:
-        - content_block_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
-      type: string
-      enum:
-        - web_search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        url:
-          type: string
-      required:
-        - type
-        - cited_text
-        - encrypted_index
-        - title
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
-      type: string
-      enum:
-        - search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-        cited_text:
-          type: string
-        search_result_index:
-          type: number
-          format: double
-        source:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - search_result_index
-        - source
-        - title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0Type
-        text:
-          type: string
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
-      required:
-        - type
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type:
-      type: string
-      enum:
-        - image
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type:
-      type: string
-      enum:
-        - base64
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
-      type: string
-      enum:
-        - image/jpeg
-        - image/png
-        - image/gif
-        - image/webp
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type:
-      type: string
-      enum:
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source1
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Type
-        source:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1Source
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
-      required:
-        - type
-        - source
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items1
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1:
-      type: array
-      items:
-        $ref: >-
-          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2ContentOneOf1Items
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content:
-      oneOf:
-        - type: string
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content1
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content
-    MessagesMessageParamContentOneOf1ItemsOneOf2Source2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Type
-        content:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf2Content
-      required:
-        - type
-        - content
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source2
-    MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type:
-      type: string
-      enum:
-        - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf2Source3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2SourceOneOf3Type
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source3
-    MessagesMessageParamContentOneOf1ItemsOneOf2Source:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source3
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Source
-    MessagesMessageParamContentOneOf1ItemsOneOf2Citations:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2Citations
-    MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf2CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf2CacheControl
-    MessagesMessageParamContentOneOf1Items2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Type
-        source:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Source
-        citations:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2Citations
-            - type: 'null'
-        context:
-          type:
-            - string
-            - 'null'
-        title:
-          type:
-            - string
-            - 'null'
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf2CacheControl
-      required:
-        - type
-        - source
-      title: MessagesMessageParamContentOneOf1Items2
-    MessagesMessageParamContentOneOf1ItemsOneOf3Type:
-      type: string
-      enum:
-        - tool_use
-      title: MessagesMessageParamContentOneOf1ItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf3CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf3CacheControl
-    MessagesMessageParamContentOneOf1Items3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3Type
-        id:
-          type: string
-        name:
-          type: string
-        input:
-          oneOf:
-            - description: Any type
-            - type: 'null'
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3CacheControl
-      required:
-        - type
-        - id
-        - name
-      title: MessagesMessageParamContentOneOf1Items3
-    MessagesMessageParamContentOneOf1ItemsOneOf4Type:
-      type: string
-      enum:
-        - tool_result
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type:
-      type: string
-      enum:
-        - text
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
-      type: string
-      enum:
-        - char_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: number
-          format: double
-        end_char_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_char_index
-        - end_char_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
-      type: string
-      enum:
-        - page_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: number
-          format: double
-        end_page_number:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_page_number
-        - end_page_number
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
-      type: string
-      enum:
-        - content_block_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
-      type: string
-      enum:
-        - web_search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        url:
-          type: string
-      required:
-        - type
-        - cited_text
-        - encrypted_index
-        - title
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
-      type: string
-      enum:
-        - search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-        cited_text:
-          type: string
-        search_result_index:
-          type: number
-          format: double
-        source:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - search_result_index
-        - source
-        - title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems4
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0Type
-        text:
-          type: string
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CitationsItems
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf0CacheControl
-      required:
-        - type
-        - text
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type:
-      type: string
-      enum:
-        - image
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type:
-      type: string
-      enum:
-        - base64
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
-      type: string
-      enum:
-        - image/jpeg
-        - image/png
-        - image/gif
-        - image/webp
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type:
-      type: string
-      enum:
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1SourceOneOf1Type
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source1
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Type
-        source:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1Source
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf1CacheControl
-      required:
-        - type
-        - source
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type:
-      type: string
-      enum:
-        - tool_reference
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
-        tool_name:
-          type: string
-      required:
-        - type
-        - tool_name
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type:
-      type: string
-      enum:
-        - search_result
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType:
-      type: string
-      enum:
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type:
-      type: string
-      enum:
-        - char_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf0Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: number
-          format: double
-        end_char_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_char_index
-        - end_char_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type:
-      type: string
-      enum:
-        - page_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf1Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: number
-          format: double
-        end_page_number:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_page_number
-        - end_page_number
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type:
-      type: string
-      enum:
-        - content_block_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf2Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type:
-      type: string
-      enum:
-        - web_search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf3Type
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        url:
-          type: string
-      required:
-        - type
-        - cited_text
-        - encrypted_index
-        - title
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type:
-      type: string
-      enum:
-        - search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItemsOneOf4Type
-        cited_text:
-          type: string
-        search_result_index:
-          type: number
-          format: double
-        source:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - search_result_index
-        - source
-        - title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems4
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsType
-        text:
-          type: string
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCitationsItems
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItemsCacheControl
-      required:
-        - type
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Type
-        source:
-          type: string
-        title:
-          type: string
-        content:
-          type: array
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3ContentItems
-        citations:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3Citations
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf3CacheControl
-      required:
-        - type
-        - source
-        - title
-        - content
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type:
-      type: string
-      enum:
-        - document
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type:
-      type: string
-      enum:
-        - base64
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType:
-      type: string
-      enum:
-        - application/pdf
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf0MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type:
-      type: string
-      enum:
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType:
-      type: string
-      enum:
-        - text/plain
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf1MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type:
-      type: string
-      enum:
-        - content
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type:
-      type: string
-      enum:
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type:
-      type: string
-      enum:
-        - char_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf0Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: number
-          format: double
-        end_char_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_char_index
-        - end_char_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type:
-      type: string
-      enum:
-        - page_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf1Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: number
-          format: double
-        end_page_number:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_page_number
-        - end_page_number
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type:
-      type: string
-      enum:
-        - content_block_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf2Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type:
-      type: string
-      enum:
-        - web_search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf3Type
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        url:
-          type: string
-      required:
-        - type
-        - cited_text
-        - encrypted_index
-        - title
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type:
-      type: string
-      enum:
-        - search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItemsOneOf4Type
-        cited_text:
-          type: string
-        search_result_index:
-          type: number
-          format: double
-        source:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - search_result_index
-        - source
-        - title
-        - start_block_index
-        - end_block_index
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems4
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0Type
-        text:
-          type: string
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CitationsItems
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf0CacheControl
-      required:
-        - type
-        - text
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type:
-      type: string
-      enum:
-        - image
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type:
-      type: string
-      enum:
-        - base64
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType:
-      type: string
-      enum:
-        - image/jpeg
-        - image/png
-        - image/gif
-        - image/webp
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0Type
-        media_type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf0MediaType
-        data:
-          type: string
-      required:
-        - type
-        - media_type
-        - data
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type:
-      type: string
-      enum:
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1SourceOneOf1Type
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source1
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Type
-        source:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1Source
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1ItemsOneOf1CacheControl
-      required:
-        - type
-        - source
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items1
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1:
-      type: array
-      items:
-        $ref: >-
-          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2ContentOneOf1Items
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content:
-      oneOf:
-        - type: string
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content1
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Type
-        content:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf2Content
-      required:
-        - type
-        - content
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type:
-      type: string
-      enum:
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4SourceOneOf3Type
-        url:
-          type: string
-      required:
-        - type
-        - url
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source3
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControlTtl
-      required:
-        - type
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Type
-        source:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Source
-        citations:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4Citations
-            - type: 'null'
-        context:
-          type:
-            - string
-            - 'null'
-        title:
-          type:
-            - string
-            - 'null'
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf4CacheControl
-      required:
-        - type
-        - source
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4
-    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items4
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
-    MessagesMessageParamContentOneOf1ItemsOneOf4Content1:
-      type: array
-      items:
-        $ref: >-
-          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4Content1
-    MessagesMessageParamContentOneOf1ItemsOneOf4Content:
-      oneOf:
-        - type: string
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Content1
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4Content
-    MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf4CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf4CacheControl
-    MessagesMessageParamContentOneOf1Items4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Type
-        tool_use_id:
-          type: string
-        content:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Content
-        is_error:
-          type: boolean
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4CacheControl
-      required:
-        - type
-        - tool_use_id
-      title: MessagesMessageParamContentOneOf1Items4
-    MessagesMessageParamContentOneOf1ItemsOneOf5Type:
-      type: string
-      enum:
-        - thinking
-      title: MessagesMessageParamContentOneOf1ItemsOneOf5Type
-    MessagesMessageParamContentOneOf1Items5:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf5Type
-        thinking:
-          type: string
-        signature:
-          type: string
-      required:
-        - type
-        - thinking
-        - signature
-      title: MessagesMessageParamContentOneOf1Items5
-    MessagesMessageParamContentOneOf1ItemsOneOf6Type:
-      type: string
-      enum:
-        - redacted_thinking
-      title: MessagesMessageParamContentOneOf1ItemsOneOf6Type
-    MessagesMessageParamContentOneOf1Items6:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf6Type
-        data:
-          type: string
-      required:
-        - type
-        - data
-      title: MessagesMessageParamContentOneOf1Items6
-    MessagesMessageParamContentOneOf1ItemsOneOf7Type:
-      type: string
-      enum:
-        - server_tool_use
-      title: MessagesMessageParamContentOneOf1ItemsOneOf7Type
-    MessagesMessageParamContentOneOf1ItemsOneOf7Name:
-      type: string
-      enum:
-        - web_search
-        - web_fetch
-        - code_execution
-        - bash_code_execution
-        - text_editor_code_execution
-        - tool_search_tool_regex
-        - tool_search_tool_bm25
-      title: MessagesMessageParamContentOneOf1ItemsOneOf7Name
-    MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf7CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf7CacheControl
-    MessagesMessageParamContentOneOf1Items7:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Type
-        id:
-          type: string
-        name:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Name
-        input:
-          oneOf:
-            - description: Any type
-            - type: 'null'
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7CacheControl
-      required:
-        - type
-        - id
-        - name
-      title: MessagesMessageParamContentOneOf1Items7
-    MessagesMessageParamContentOneOf1ItemsOneOf8Type:
-      type: string
-      enum:
-        - web_search_tool_result
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8Type
-    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType:
-      type: string
-      enum:
-        - web_search_result
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType
-    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0ItemsType
-        encrypted_content:
-          type: string
-        title:
-          type: string
-        url:
-          type: string
-        page_age:
-          type:
-            - string
-            - 'null'
-      required:
-        - type
-        - encrypted_content
-        - title
-        - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items
-    MessagesMessageParamContentOneOf1ItemsOneOf8Content0:
-      type: array
-      items:
-        $ref: >-
-          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf0Items
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content0
-    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type:
-      type: string
-      enum:
-        - web_search_tool_result_error
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode:
-      type: string
-      enum:
-        - invalid_tool_input
-        - unavailable
-        - max_uses_exceeded
-        - too_many_requests
-        - query_too_long
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
-    MessagesMessageParamContentOneOf1ItemsOneOf8Content1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
-        error_code:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
-      required:
-        - type
-        - error_code
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content1
-    MessagesMessageParamContentOneOf1ItemsOneOf8Content:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content1
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content
-    MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf8CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf8CacheControl
-    MessagesMessageParamContentOneOf1Items8:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Type
-        tool_use_id:
-          type: string
-        content:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8CacheControl
-      required:
-        - type
-        - tool_use_id
-        - content
-      title: MessagesMessageParamContentOneOf1Items8
-    MessagesMessageParamContentOneOf1ItemsOneOf9Type:
-      type: string
-      enum:
-        - search_result
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9Type
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsType:
-      type: string
-      enum:
-        - text
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsType
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type:
-      type: string
-      enum:
-        - char_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf0Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: number
-          format: double
-        end_char_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_char_index
-        - end_char_index
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type:
-      type: string
-      enum:
-        - page_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf1Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: number
-          format: double
-        end_page_number:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_page_number
-        - end_page_number
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type:
-      type: string
-      enum:
-        - content_block_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf2Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_block_index
-        - end_block_index
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type:
-      type: string
-      enum:
-        - web_search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf3Type
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        url:
-          type: string
-      required:
-        - type
-        - cited_text
-        - encrypted_index
-        - title
-        - url
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type:
-      type: string
-      enum:
-        - search_result_location
-      title: >-
-        MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItemsOneOf4Type
-        cited_text:
-          type: string
-        search_result_index:
-          type: number
-          format: double
-        source:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - search_result_index
-        - source
-        - title
-        - start_block_index
-        - end_block_index
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems:
-      oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems0
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems1
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems2
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems3
-        - $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems4
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl
-    MessagesMessageParamContentOneOf1ItemsOneOf9ContentItems:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsType
-        text:
-          type: string
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCitationsItems
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItemsCacheControl
-      required:
-        - type
-        - text
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9ContentItems
-    MessagesMessageParamContentOneOf1ItemsOneOf9Citations:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9Citations
-    MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlType
-    MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlTtl
-    MessagesMessageParamContentOneOf1ItemsOneOf9CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlType
-        ttl:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9CacheControlTtl
-      required:
-        - type
-      title: MessagesMessageParamContentOneOf1ItemsOneOf9CacheControl
-    MessagesMessageParamContentOneOf1Items9:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9Type
-        source:
-          type: string
-        title:
-          type: string
-        content:
-          type: array
-          items:
-            $ref: >-
-              #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9ContentItems
-        citations:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9Citations
-        cache_control:
-          $ref: >-
-            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf9CacheControl
-      required:
-        - type
-        - source
-        - title
-        - content
-      title: MessagesMessageParamContentOneOf1Items9
-    MessagesMessageParamContentOneOf1Items:
-      oneOf:
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items0'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items1'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items2'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items3'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items4'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items5'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items6'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items7'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items8'
-        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items9'
-      title: MessagesMessageParamContentOneOf1Items
-    MessagesMessageParamContent1:
-      type: array
-      items:
-        $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items'
-      title: MessagesMessageParamContent1
-    MessagesMessageParamContent:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/MessagesMessageParamContent1'
-      title: MessagesMessageParamContent
-    MessagesMessageParam:
-      type: object
-      properties:
-        role:
-          $ref: '#/components/schemas/MessagesMessageParamRole'
-        content:
-          $ref: '#/components/schemas/MessagesMessageParamContent'
-      required:
-        - role
-        - content
-      description: Anthropic message with OpenRouter extensions
-      title: MessagesMessageParam
-    MessagesRequestSystemOneOf1ItemsType:
-      type: string
-      enum:
-        - text
-      title: MessagesRequestSystemOneOf1ItemsType
-    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type:
-      type: string
-      enum:
-        - char_location
-      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type
-    MessagesRequestSystemOneOf1ItemsCitationsItems0:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf0Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_char_index:
-          type: number
-          format: double
-        end_char_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_char_index
-        - end_char_index
-      title: MessagesRequestSystemOneOf1ItemsCitationsItems0
-    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type:
-      type: string
-      enum:
-        - page_location
-      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type
-    MessagesRequestSystemOneOf1ItemsCitationsItems1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf1Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_page_number:
-          type: number
-          format: double
-        end_page_number:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_page_number
-        - end_page_number
-      title: MessagesRequestSystemOneOf1ItemsCitationsItems1
-    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type:
-      type: string
-      enum:
-        - content_block_location
-      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type
-    MessagesRequestSystemOneOf1ItemsCitationsItems2:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf2Type
-        cited_text:
-          type: string
-        document_index:
-          type: number
-          format: double
-        document_title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - document_index
-        - document_title
-        - start_block_index
-        - end_block_index
-      title: MessagesRequestSystemOneOf1ItemsCitationsItems2
-    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type:
-      type: string
-      enum:
-        - web_search_result_location
-      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type
-    MessagesRequestSystemOneOf1ItemsCitationsItems3:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf3Type
-        cited_text:
-          type: string
-        encrypted_index:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        url:
-          type: string
-      required:
-        - type
-        - cited_text
-        - encrypted_index
-        - title
-        - url
-      title: MessagesRequestSystemOneOf1ItemsCitationsItems3
-    MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type:
-      type: string
-      enum:
-        - search_result_location
-      title: MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type
-    MessagesRequestSystemOneOf1ItemsCitationsItems4:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItemsOneOf4Type
-        cited_text:
-          type: string
-        search_result_index:
-          type: number
-          format: double
-        source:
-          type: string
-        title:
-          type:
-            - string
-            - 'null'
-        start_block_index:
-          type: number
-          format: double
-        end_block_index:
-          type: number
-          format: double
-      required:
-        - type
-        - cited_text
-        - search_result_index
-        - source
-        - title
-        - start_block_index
-        - end_block_index
-      title: MessagesRequestSystemOneOf1ItemsCitationsItems4
-    MessagesRequestSystemOneOf1ItemsCitationsItems:
-      oneOf:
-        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems0'
-        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems1'
-        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems2'
-        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems3'
-        - $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems4'
-      title: MessagesRequestSystemOneOf1ItemsCitationsItems
-    MessagesRequestSystemOneOf1ItemsCacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesRequestSystemOneOf1ItemsCacheControlType
-    MessagesRequestSystemOneOf1ItemsCacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesRequestSystemOneOf1ItemsCacheControlTtl
-    MessagesRequestSystemOneOf1ItemsCacheControl:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestSystemOneOf1ItemsCacheControlType
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCacheControlTtl'
-      required:
-        - type
-      title: MessagesRequestSystemOneOf1ItemsCacheControl
-    MessagesRequestSystemOneOf1Items:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsType'
-        text:
-          type: string
-        citations:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: >-
-              #/components/schemas/MessagesRequestSystemOneOf1ItemsCitationsItems
-        cache_control:
-          $ref: '#/components/schemas/MessagesRequestSystemOneOf1ItemsCacheControl'
-      required:
-        - type
-        - text
-      title: MessagesRequestSystemOneOf1Items
+      title: AnthropicTextBlockParam
     MessagesRequestSystem1:
       type: array
       items:
-        $ref: '#/components/schemas/MessagesRequestSystemOneOf1Items'
+        $ref: '#/components/schemas/AnthropicTextBlockParam'
       title: MessagesRequestSystem1
     MessagesRequestSystem:
       oneOf:
@@ -3117,27 +333,6 @@ components:
       enum:
         - custom
       title: MessagesRequestToolsItemsOneOf0Type
-    MessagesRequestToolsItemsOneOf0CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesRequestToolsItemsOneOf0CacheControlType
-    MessagesRequestToolsItemsOneOf0CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesRequestToolsItemsOneOf0CacheControlTtl
-    MessagesRequestToolsItemsOneOf0CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0CacheControlType'
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0CacheControlTtl'
-      required:
-        - type
-      title: MessagesRequestToolsItemsOneOf0CacheControl
     MessagesRequestToolsItems0:
       type: object
       properties:
@@ -3150,7 +345,7 @@ components:
         type:
           $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0Type'
         cache_control:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf0CacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
       required:
         - name
         - input_schema
@@ -3165,27 +360,6 @@ components:
       enum:
         - bash
       title: MessagesRequestToolsItemsOneOf1Name
-    MessagesRequestToolsItemsOneOf1CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesRequestToolsItemsOneOf1CacheControlType
-    MessagesRequestToolsItemsOneOf1CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesRequestToolsItemsOneOf1CacheControlTtl
-    MessagesRequestToolsItemsOneOf1CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1CacheControlType'
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1CacheControlTtl'
-      required:
-        - type
-      title: MessagesRequestToolsItemsOneOf1CacheControl
     MessagesRequestToolsItems1:
       type: object
       properties:
@@ -3194,7 +368,7 @@ components:
         name:
           $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1Name'
         cache_control:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf1CacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
       required:
         - type
         - name
@@ -3209,27 +383,6 @@ components:
       enum:
         - str_replace_editor
       title: MessagesRequestToolsItemsOneOf2Name
-    MessagesRequestToolsItemsOneOf2CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesRequestToolsItemsOneOf2CacheControlType
-    MessagesRequestToolsItemsOneOf2CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesRequestToolsItemsOneOf2CacheControlTtl
-    MessagesRequestToolsItemsOneOf2CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2CacheControlType'
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2CacheControlTtl'
-      required:
-        - type
-      title: MessagesRequestToolsItemsOneOf2CacheControl
     MessagesRequestToolsItems2:
       type: object
       properties:
@@ -3238,7 +391,7 @@ components:
         name:
           $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2Name'
         cache_control:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf2CacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
       required:
         - type
         - name
@@ -3253,16 +406,16 @@ components:
       enum:
         - web_search
       title: MessagesRequestToolsItemsOneOf3Name
-    MessagesRequestToolsItemsOneOf3UserLocationType:
+    PreviewWebSearchUserLocationType:
       type: string
       enum:
         - approximate
-      title: MessagesRequestToolsItemsOneOf3UserLocationType
-    MessagesRequestToolsItemsOneOf3UserLocation:
+      title: PreviewWebSearchUserLocationType
+    Preview_WebSearchUserLocation:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3UserLocationType'
+          $ref: '#/components/schemas/PreviewWebSearchUserLocationType'
         city:
           type:
             - string
@@ -3281,28 +434,7 @@ components:
             - 'null'
       required:
         - type
-      title: MessagesRequestToolsItemsOneOf3UserLocation
-    MessagesRequestToolsItemsOneOf3CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesRequestToolsItemsOneOf3CacheControlType
-    MessagesRequestToolsItemsOneOf3CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesRequestToolsItemsOneOf3CacheControlTtl
-    MessagesRequestToolsItemsOneOf3CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3CacheControlType'
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3CacheControlTtl'
-      required:
-        - type
-      title: MessagesRequestToolsItemsOneOf3CacheControl
+      title: Preview_WebSearchUserLocation
     MessagesRequestToolsItems3:
       type: object
       properties:
@@ -3323,16 +455,11 @@ components:
           items:
             type: string
         max_uses:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         user_location:
-          oneOf:
-            - $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3UserLocation'
-            - type: 'null'
+          $ref: '#/components/schemas/Preview_WebSearchUserLocation'
         cache_control:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3CacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
       required:
         - type
         - name
@@ -3354,56 +481,6 @@ components:
         - code_execution_20250825
         - code_execution_20260120
       title: MessagesRequestToolsItemsOneOf4AllowedCallersItems
-    MessagesRequestToolsItemsOneOf4UserLocationType:
-      type: string
-      enum:
-        - approximate
-      title: MessagesRequestToolsItemsOneOf4UserLocationType
-    MessagesRequestToolsItemsOneOf4UserLocation:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4UserLocationType'
-        city:
-          type:
-            - string
-            - 'null'
-        country:
-          type:
-            - string
-            - 'null'
-        region:
-          type:
-            - string
-            - 'null'
-        timezone:
-          type:
-            - string
-            - 'null'
-      required:
-        - type
-      title: MessagesRequestToolsItemsOneOf4UserLocation
-    MessagesRequestToolsItemsOneOf4CacheControlType:
-      type: string
-      enum:
-        - ephemeral
-      title: MessagesRequestToolsItemsOneOf4CacheControlType
-    MessagesRequestToolsItemsOneOf4CacheControlTtl:
-      type: string
-      enum:
-        - 5m
-        - 1h
-      title: MessagesRequestToolsItemsOneOf4CacheControlTtl
-    MessagesRequestToolsItemsOneOf4CacheControl:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4CacheControlType'
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4CacheControlTtl'
-      required:
-        - type
-      title: MessagesRequestToolsItemsOneOf4CacheControl
     MessagesRequestToolsItems4:
       type: object
       properties:
@@ -3429,16 +506,11 @@ components:
           items:
             type: string
         max_uses:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         user_location:
-          oneOf:
-            - $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4UserLocation'
-            - type: 'null'
+          $ref: '#/components/schemas/Preview_WebSearchUserLocation'
         cache_control:
-          $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4CacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
       required:
         - type
         - name
@@ -3471,7 +543,7 @@ components:
       enum:
         - openrouter:web_search
       title: MessagesWebSearchServerToolType
-    MessagesWebSearchServerToolParametersEngine:
+    WebSearchEngineEnum:
       type: string
       enum:
         - auto
@@ -3484,8 +556,8 @@ components:
         supports it, otherwise Exa. "native" forces the provider's built-in
         search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
         (requires BYOK). "parallel" uses the Parallel search API.
-      title: MessagesWebSearchServerToolParametersEngine
-    MessagesWebSearchServerToolParametersSearchContextSize:
+      title: WebSearchEngineEnum
+    SearchQualityLevel:
       type: string
       enum:
         - low
@@ -3495,18 +567,17 @@ components:
         How much context to retrieve per result. Defaults to medium (15000
         chars). Only applies when using the Exa engine; ignored with native
         provider search.
-      title: MessagesWebSearchServerToolParametersSearchContextSize
-    MessagesWebSearchServerToolParametersUserLocationType:
+      title: SearchQualityLevel
+    WebSearchUserLocationServerToolType:
       type: string
       enum:
         - approximate
-      title: MessagesWebSearchServerToolParametersUserLocationType
-    MessagesWebSearchServerToolParametersUserLocation:
+      title: WebSearchUserLocationServerToolType
+    WebSearchUserLocationServerTool:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesWebSearchServerToolParametersUserLocationType
+          $ref: '#/components/schemas/WebSearchUserLocationServerToolType'
         city:
           type: string
         region:
@@ -3516,17 +587,12 @@ components:
         timezone:
           type: string
       description: Approximate user location for location-biased results.
-      title: MessagesWebSearchServerToolParametersUserLocation
-    MessagesWebSearchServerToolParameters:
+      title: WebSearchUserLocationServerTool
+    WebSearchConfig:
       type: object
       properties:
         engine:
-          $ref: '#/components/schemas/MessagesWebSearchServerToolParametersEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -3543,16 +609,9 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops.
         search_context_size:
-          $ref: >-
-            #/components/schemas/MessagesWebSearchServerToolParametersSearchContextSize
-          description: >-
-            How much context to retrieve per result. Defaults to medium (15000
-            chars). Only applies when using the Exa engine; ignored with native
-            provider search.
+          $ref: '#/components/schemas/SearchQualityLevel'
         user_location:
-          $ref: >-
-            #/components/schemas/MessagesWebSearchServerToolParametersUserLocation
-          description: Approximate user location for location-biased results.
+          $ref: '#/components/schemas/WebSearchUserLocationServerTool'
         allowed_domains:
           type: array
           items:
@@ -3569,14 +628,14 @@ components:
             Exclude search results from these domains. Supported by Exa,
             Parallel, Anthropic, and xAI. Not supported with Firecrawl, OpenAI
             (silently ignored), or Perplexity.
-      title: MessagesWebSearchServerToolParameters
+      title: WebSearchConfig
     MessagesWebSearchServerTool:
       type: object
       properties:
         type:
           $ref: '#/components/schemas/MessagesWebSearchServerToolType'
         parameters:
-          $ref: '#/components/schemas/MessagesWebSearchServerToolParameters'
+          $ref: '#/components/schemas/WebSearchConfig'
       required:
         - type
       description: >-
@@ -3672,8 +731,7 @@ components:
         type:
           $ref: '#/components/schemas/MessagesRequestThinkingOneOf0Type'
         budget_tokens:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - budget_tokens
@@ -3772,50 +830,564 @@ components:
         Configuration for controlling output behavior. Supports the effort
         parameter and structured output format.
       title: MessagesOutputConfig
-    MessagesRequestCacheControlType:
+    MessagesMessageParamRole:
       type: string
       enum:
-        - ephemeral
-      title: MessagesRequestCacheControlType
-    MessagesRequestCacheControlTtl:
+        - user
+        - assistant
+      title: MessagesMessageParamRole
+    AnthropicImageBlockParamType:
       type: string
       enum:
-        - 5m
-        - 1h
-      title: MessagesRequestCacheControlTtl
-    MessagesRequestCacheControl:
+        - image
+      title: AnthropicImageBlockParamType
+    AnthropicBase64ImageSourceType:
+      type: string
+      enum:
+        - base64
+      title: AnthropicBase64ImageSourceType
+    AnthropicImageMimeType:
+      type: string
+      enum:
+        - image/jpeg
+        - image/png
+        - image/gif
+        - image/webp
+      title: AnthropicImageMimeType
+    AnthropicBase64ImageSource:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/MessagesRequestCacheControlType'
-        ttl:
-          $ref: '#/components/schemas/MessagesRequestCacheControlTtl'
+          $ref: '#/components/schemas/AnthropicBase64ImageSourceType'
+        media_type:
+          $ref: '#/components/schemas/AnthropicImageMimeType'
+        data:
+          type: string
       required:
         - type
-      title: MessagesRequestCacheControl
+        - media_type
+        - data
+      title: AnthropicBase64ImageSource
+    WebSearchSourceType:
+      type: string
+      enum:
+        - url
+      title: WebSearchSourceType
+    WebSearchSource:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WebSearchSourceType'
+        url:
+          type: string
+      required:
+        - type
+        - url
+      title: WebSearchSource
+    AnthropicImageBlockParamSource:
+      oneOf:
+        - $ref: '#/components/schemas/AnthropicBase64ImageSource'
+        - $ref: '#/components/schemas/WebSearchSource'
+      title: AnthropicImageBlockParamSource
+    AnthropicImageBlockParam:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicImageBlockParamType'
+        source:
+          $ref: '#/components/schemas/AnthropicImageBlockParamSource'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - source
+      title: AnthropicImageBlockParam
+    AnthropicDocumentBlockParamType:
+      type: string
+      enum:
+        - document
+      title: AnthropicDocumentBlockParamType
+    AnthropicBase64PdfSourceType:
+      type: string
+      enum:
+        - base64
+      title: AnthropicBase64PdfSourceType
+    AnthropicBase64PdfSourceMediaType:
+      type: string
+      enum:
+        - application/pdf
+      title: AnthropicBase64PdfSourceMediaType
+    AnthropicBase64PdfSource:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicBase64PdfSourceType'
+        media_type:
+          $ref: '#/components/schemas/AnthropicBase64PdfSourceMediaType'
+        data:
+          type: string
+      required:
+        - type
+        - media_type
+        - data
+      title: AnthropicBase64PdfSource
+    AnthropicPlainTextSourceType:
+      type: string
+      enum:
+        - text
+      title: AnthropicPlainTextSourceType
+    AnthropicPlainTextSourceMediaType:
+      type: string
+      enum:
+        - text/plain
+      title: AnthropicPlainTextSourceMediaType
+    AnthropicPlainTextSource:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicPlainTextSourceType'
+        media_type:
+          $ref: '#/components/schemas/AnthropicPlainTextSourceMediaType'
+        data:
+          type: string
+      required:
+        - type
+        - media_type
+        - data
+      title: AnthropicPlainTextSource
+    AnthropicDocumentBlockParamSourceOneOf2Type:
+      type: string
+      enum:
+        - content
+      title: AnthropicDocumentBlockParamSourceOneOf2Type
+    AnthropicDocumentBlockParamSourceOneOf2ContentOneOf1Items:
+      oneOf:
+        - $ref: '#/components/schemas/AnthropicTextBlockParam'
+        - $ref: '#/components/schemas/AnthropicImageBlockParam'
+      title: AnthropicDocumentBlockParamSourceOneOf2ContentOneOf1Items
+    AnthropicDocumentBlockParamSourceOneOf2Content1:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/AnthropicDocumentBlockParamSourceOneOf2ContentOneOf1Items
+      title: AnthropicDocumentBlockParamSourceOneOf2Content1
+    AnthropicDocumentBlockParamSourceOneOf2Content:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/AnthropicDocumentBlockParamSourceOneOf2Content1'
+      title: AnthropicDocumentBlockParamSourceOneOf2Content
+    AnthropicDocumentBlockParamSource2:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicDocumentBlockParamSourceOneOf2Type'
+        content:
+          $ref: '#/components/schemas/AnthropicDocumentBlockParamSourceOneOf2Content'
+      required:
+        - type
+        - content
+      title: AnthropicDocumentBlockParamSource2
+    AnthropicDocumentBlockParamSource:
+      oneOf:
+        - $ref: '#/components/schemas/AnthropicBase64PdfSource'
+        - $ref: '#/components/schemas/AnthropicPlainTextSource'
+        - $ref: '#/components/schemas/AnthropicDocumentBlockParamSource2'
+        - $ref: '#/components/schemas/WebSearchSource'
+      title: AnthropicDocumentBlockParamSource
+    AnthropicDocumentBlockParamCitations:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      title: AnthropicDocumentBlockParamCitations
+    AnthropicDocumentBlockParam:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicDocumentBlockParamType'
+        source:
+          $ref: '#/components/schemas/AnthropicDocumentBlockParamSource'
+        citations:
+          oneOf:
+            - $ref: '#/components/schemas/AnthropicDocumentBlockParamCitations'
+            - type: 'null'
+        context:
+          type:
+            - string
+            - 'null'
+        title:
+          type:
+            - string
+            - 'null'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - source
+      title: AnthropicDocumentBlockParam
+    MessagesMessageParamContentOneOf1ItemsOneOf3Type:
+      type: string
+      enum:
+        - tool_use
+      title: MessagesMessageParamContentOneOf1ItemsOneOf3Type
+    MessagesMessageParamContentOneOf1Items3:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf3Type
+        id:
+          type: string
+        name:
+          type: string
+        input:
+          oneOf:
+            - description: Any type
+            - type: 'null'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - id
+        - name
+      title: MessagesMessageParamContentOneOf1Items3
+    MessagesMessageParamContentOneOf1ItemsOneOf4Type:
+      type: string
+      enum:
+        - tool_result
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type:
+      type: string
+      enum:
+        - tool_reference
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1ItemsOneOf2Type
+        tool_name:
+          type: string
+      required:
+        - type
+        - tool_name
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
+    AnthropicSearchResultBlockParamType:
+      type: string
+      enum:
+        - search_result
+      title: AnthropicSearchResultBlockParamType
+    AnthropicSearchResultBlockParamCitations:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      title: AnthropicSearchResultBlockParamCitations
+    AnthropicSearchResultBlockParam:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicSearchResultBlockParamType'
+        source:
+          type: string
+        title:
+          type: string
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnthropicTextBlockParam'
+        citations:
+          $ref: '#/components/schemas/AnthropicSearchResultBlockParamCitations'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - source
+        - title
+        - content
+      title: AnthropicSearchResultBlockParam
+    MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items:
+      oneOf:
+        - $ref: '#/components/schemas/AnthropicTextBlockParam'
+        - $ref: '#/components/schemas/AnthropicImageBlockParam'
+        - $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items2
+        - $ref: '#/components/schemas/AnthropicSearchResultBlockParam'
+        - $ref: '#/components/schemas/AnthropicDocumentBlockParam'
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
+    MessagesMessageParamContentOneOf1ItemsOneOf4Content1:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4ContentOneOf1Items
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4Content1
+    MessagesMessageParamContentOneOf1ItemsOneOf4Content:
+      oneOf:
+        - type: string
+        - $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Content1
+      title: MessagesMessageParamContentOneOf1ItemsOneOf4Content
+    MessagesMessageParamContentOneOf1Items4:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Type
+        tool_use_id:
+          type: string
+        content:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf4Content
+        is_error:
+          type: boolean
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - tool_use_id
+      title: MessagesMessageParamContentOneOf1Items4
+    MessagesMessageParamContentOneOf1ItemsOneOf5Type:
+      type: string
+      enum:
+        - thinking
+      title: MessagesMessageParamContentOneOf1ItemsOneOf5Type
+    MessagesMessageParamContentOneOf1Items5:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf5Type
+        thinking:
+          type: string
+        signature:
+          type: string
+      required:
+        - type
+        - thinking
+        - signature
+      title: MessagesMessageParamContentOneOf1Items5
+    MessagesMessageParamContentOneOf1ItemsOneOf6Type:
+      type: string
+      enum:
+        - redacted_thinking
+      title: MessagesMessageParamContentOneOf1ItemsOneOf6Type
+    MessagesMessageParamContentOneOf1Items6:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf6Type
+        data:
+          type: string
+      required:
+        - type
+        - data
+      title: MessagesMessageParamContentOneOf1Items6
+    MessagesMessageParamContentOneOf1ItemsOneOf7Type:
+      type: string
+      enum:
+        - server_tool_use
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7Type
+    MessagesMessageParamContentOneOf1ItemsOneOf7Name:
+      type: string
+      enum:
+        - web_search
+        - web_fetch
+        - code_execution
+        - bash_code_execution
+        - text_editor_code_execution
+        - tool_search_tool_regex
+        - tool_search_tool_bm25
+      title: MessagesMessageParamContentOneOf1ItemsOneOf7Name
+    MessagesMessageParamContentOneOf1Items7:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Type
+        id:
+          type: string
+        name:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf7Name
+        input:
+          oneOf:
+            - description: Any type
+            - type: 'null'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - id
+        - name
+      title: MessagesMessageParamContentOneOf1Items7
+    MessagesMessageParamContentOneOf1ItemsOneOf8Type:
+      type: string
+      enum:
+        - web_search_tool_result
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Type
+    AnthropicWebSearchResultBlockParamType:
+      type: string
+      enum:
+        - web_search_result
+      title: AnthropicWebSearchResultBlockParamType
+    AnthropicWebSearchResultBlockParam:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/AnthropicWebSearchResultBlockParamType'
+        encrypted_content:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+        page_age:
+          type:
+            - string
+            - 'null'
+      required:
+        - type
+        - encrypted_content
+        - title
+        - url
+      title: AnthropicWebSearchResultBlockParam
+    MessagesMessageParamContentOneOf1ItemsOneOf8Content0:
+      type: array
+      items:
+        $ref: '#/components/schemas/AnthropicWebSearchResultBlockParam'
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content0
+    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type:
+      type: string
+      enum:
+        - web_search_tool_result_error
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
+    MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode:
+      type: string
+      enum:
+        - invalid_tool_input
+        - unavailable
+        - max_uses_exceeded
+        - too_many_requests
+        - query_too_long
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
+    MessagesMessageParamContentOneOf1ItemsOneOf8Content1:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1Type
+        error_code:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8ContentOneOf1ErrorCode
+      required:
+        - type
+        - error_code
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content1
+    MessagesMessageParamContentOneOf1ItemsOneOf8Content:
+      oneOf:
+        - $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content0
+        - $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content1
+      title: MessagesMessageParamContentOneOf1ItemsOneOf8Content
+    MessagesMessageParamContentOneOf1Items8:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Type
+        tool_use_id:
+          type: string
+        content:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf8Content
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - tool_use_id
+        - content
+      title: MessagesMessageParamContentOneOf1Items8
+    MessagesMessageParamContentOneOf1ItemsOneOf10Type:
+      type: string
+      enum:
+        - compaction
+      title: MessagesMessageParamContentOneOf1ItemsOneOf10Type
+    MessagesMessageParamContentOneOf1Items10:
+      type: object
+      properties:
+        type:
+          $ref: >-
+            #/components/schemas/MessagesMessageParamContentOneOf1ItemsOneOf10Type
+        content:
+          type:
+            - string
+            - 'null'
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+      required:
+        - type
+        - content
+      title: MessagesMessageParamContentOneOf1Items10
+    MessagesMessageParamContentOneOf1Items:
+      oneOf:
+        - $ref: '#/components/schemas/AnthropicTextBlockParam'
+        - $ref: '#/components/schemas/AnthropicImageBlockParam'
+        - $ref: '#/components/schemas/AnthropicDocumentBlockParam'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items3'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items4'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items5'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items6'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items7'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items8'
+        - $ref: '#/components/schemas/AnthropicSearchResultBlockParam'
+        - $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items10'
+      title: MessagesMessageParamContentOneOf1Items
+    MessagesMessageParamContent1:
+      type: array
+      items:
+        $ref: '#/components/schemas/MessagesMessageParamContentOneOf1Items'
+      title: MessagesMessageParamContent1
+    MessagesMessageParamContent:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/MessagesMessageParamContent1'
+      title: MessagesMessageParamContent
+    MessagesMessageParam:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/MessagesMessageParamRole'
+        content:
+          $ref: '#/components/schemas/MessagesMessageParamContent'
+      required:
+        - role
+        - content
+      description: Anthropic message with OpenRouter extensions
+      title: MessagesMessageParam
     MessagesRequestContextManagementEditsItemsOneOf0Type:
       type: string
       enum:
         - clear_tool_uses_20250919
       title: MessagesRequestContextManagementEditsItemsOneOf0Type
-    MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType:
+    AnthropicInputTokensClearAtLeastType:
       type: string
       enum:
         - input_tokens
-      title: MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType
-    MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast:
+      title: AnthropicInputTokensClearAtLeastType
+    AnthropicInputTokensClearAtLeast:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeastType
+          $ref: '#/components/schemas/AnthropicInputTokensClearAtLeastType'
         value:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - value
-      title: MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast
+      title: AnthropicInputTokensClearAtLeast
     MessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs:
       oneOf:
         - type: boolean
@@ -3824,66 +1396,42 @@ components:
             type: string
         - description: Any type
       title: MessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs
-    MessagesRequestContextManagementEditsItemsOneOf0KeepType:
+    AnthropicToolUsesKeepType:
       type: string
       enum:
         - tool_uses
-      title: MessagesRequestContextManagementEditsItemsOneOf0KeepType
-    MessagesRequestContextManagementEditsItemsOneOf0Keep:
+      title: AnthropicToolUsesKeepType
+    AnthropicToolUsesKeep:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0KeepType
+          $ref: '#/components/schemas/AnthropicToolUsesKeepType'
         value:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - value
-      title: MessagesRequestContextManagementEditsItemsOneOf0Keep
-    MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type:
+      title: AnthropicToolUsesKeep
+    AnthropicInputTokensTriggerType:
       type: string
       enum:
         - input_tokens
-      title: MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type
-    MessagesRequestContextManagementEditsItemsOneOf0Trigger0:
+      title: AnthropicInputTokensTriggerType
+    AnthropicInputTokensTrigger:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf0Type
+          $ref: '#/components/schemas/AnthropicInputTokensTriggerType'
         value:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - value
-      title: MessagesRequestContextManagementEditsItemsOneOf0Trigger0
-    MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type:
-      type: string
-      enum:
-        - tool_uses
-      title: MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type
-    MessagesRequestContextManagementEditsItemsOneOf0Trigger1:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0TriggerOneOf1Type
-        value:
-          type: number
-          format: double
-      required:
-        - type
-        - value
-      title: MessagesRequestContextManagementEditsItemsOneOf0Trigger1
+      title: AnthropicInputTokensTrigger
     MessagesRequestContextManagementEditsItemsOneOf0Trigger:
       oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Trigger0
-        - $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Trigger1
+        - $ref: '#/components/schemas/AnthropicInputTokensTrigger'
+        - $ref: '#/components/schemas/AnthropicToolUsesKeep'
       title: MessagesRequestContextManagementEditsItemsOneOf0Trigger
     MessagesRequestContextManagementEditsItems0:
       type: object
@@ -3892,10 +1440,7 @@ components:
           $ref: >-
             #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Type
         clear_at_least:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0ClearAtLeast
-            - type: 'null'
+          $ref: '#/components/schemas/AnthropicInputTokensClearAtLeast'
         clear_tool_inputs:
           $ref: >-
             #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0ClearToolInputs
@@ -3906,8 +1451,7 @@ components:
           items:
             type: string
         keep:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Keep
+          $ref: '#/components/schemas/AnthropicToolUsesKeep'
         trigger:
           $ref: >-
             #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf0Trigger
@@ -3919,24 +1463,22 @@ components:
       enum:
         - clear_thinking_20251015
       title: MessagesRequestContextManagementEditsItemsOneOf1Type
-    MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type:
+    AnthropicThinkingTurnsType:
       type: string
       enum:
         - thinking_turns
-      title: MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type
-    MessagesRequestContextManagementEditsItemsOneOf1Keep0:
+      title: AnthropicThinkingTurnsType
+    AnthropicThinkingTurns:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf0Type
+          $ref: '#/components/schemas/AnthropicThinkingTurnsType'
         value:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - value
-      title: MessagesRequestContextManagementEditsItemsOneOf1Keep0
+      title: AnthropicThinkingTurns
     MessagesRequestContextManagementEditsItemsOneOf1KeepOneOf1Type:
       type: string
       enum:
@@ -3958,8 +1500,7 @@ components:
       title: MessagesRequestContextManagementEditsItemsOneOf1Keep2
     MessagesRequestContextManagementEditsItemsOneOf1Keep:
       oneOf:
-        - $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Keep0
+        - $ref: '#/components/schemas/AnthropicThinkingTurns'
         - $ref: >-
             #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf1Keep1
         - $ref: >-
@@ -3982,20 +1523,13 @@ components:
       enum:
         - compact_20260112
       title: MessagesRequestContextManagementEditsItemsOneOf2Type
-    MessagesRequestContextManagementEditsItemsOneOf2TriggerType:
-      type: string
-      enum:
-        - input_tokens
-      title: MessagesRequestContextManagementEditsItemsOneOf2TriggerType
     MessagesRequestContextManagementEditsItemsOneOf2Trigger:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2TriggerType
+          $ref: '#/components/schemas/AnthropicInputTokensTriggerType'
         value:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - value
@@ -4013,10 +1547,8 @@ components:
         pause_after_compaction:
           type: boolean
         trigger:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2Trigger
-            - type: 'null'
+          $ref: >-
+            #/components/schemas/MessagesRequestContextManagementEditsItemsOneOf2Trigger
       required:
         - type
       title: MessagesRequestContextManagementEditsItems2
@@ -4034,21 +1566,10 @@ components:
           items:
             $ref: '#/components/schemas/MessagesRequestContextManagementEditsItems'
       title: MessagesRequestContextManagement
-    DataCollection:
-      type: string
-      enum:
-        - deny
-        - allow
-      description: >-
-        Data collection setting. If no available model provider meets the
-        requirement, your request will return an error.
-
-        - allow: (default) allow providers which store user data non-transiently
-        and may train on it
-
-
-        - deny: use only providers which do not collect user data.
-      title: DataCollection
+    MessagesRequestProviderDataCollection:
+      type: object
+      properties: {}
+      title: MessagesRequestProviderDataCollection
     ProviderName:
       type: string
       enum:
@@ -4312,7 +1833,7 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         data_collection:
-          $ref: '#/components/schemas/DataCollection'
+          $ref: '#/components/schemas/MessagesRequestProviderDataCollection'
         zdr:
           type:
             - boolean
@@ -4607,12 +2128,6 @@ components:
           type: string
         max_tokens:
           type: integer
-        messages:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/MessagesMessageParam'
         system:
           $ref: '#/components/schemas/MessagesRequestSystem'
         metadata:
@@ -4628,8 +2143,7 @@ components:
           type: number
           format: double
         top_k:
-          type: number
-          format: double
+          type: integer
         tools:
           type: array
           items:
@@ -4643,7 +2157,13 @@ components:
         output_config:
           $ref: '#/components/schemas/MessagesOutputConfig'
         cache_control:
-          $ref: '#/components/schemas/MessagesRequestCacheControl'
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        messages:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/MessagesMessageParam'
         stream:
           type: boolean
         context_management:
@@ -4741,18 +2261,15 @@ components:
         cited_text:
           type: string
         document_index:
-          type: number
-          format: double
+          type: integer
         document_title:
           type:
             - string
             - 'null'
         start_char_index:
-          type: number
-          format: double
+          type: integer
         end_char_index:
-          type: number
-          format: double
+          type: integer
         file_id:
           type:
             - string
@@ -4780,18 +2297,15 @@ components:
         cited_text:
           type: string
         document_index:
-          type: number
-          format: double
+          type: integer
         document_title:
           type:
             - string
             - 'null'
         start_page_number:
-          type: number
-          format: double
+          type: integer
         end_page_number:
-          type: number
-          format: double
+          type: integer
         file_id:
           type:
             - string
@@ -4819,18 +2333,15 @@ components:
         cited_text:
           type: string
         document_index:
-          type: number
-          format: double
+          type: integer
         document_title:
           type:
             - string
             - 'null'
         start_block_index:
-          type: number
-          format: double
+          type: integer
         end_block_index:
-          type: number
-          format: double
+          type: integer
         file_id:
           type:
             - string
@@ -4886,8 +2397,7 @@ components:
         cited_text:
           type: string
         search_result_index:
-          type: number
-          format: double
+          type: integer
         source:
           type: string
         title:
@@ -4895,11 +2405,9 @@ components:
             - string
             - 'null'
         start_block_index:
-          type: number
-          format: double
+          type: integer
         end_block_index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - cited_text
@@ -5414,39 +2922,35 @@ components:
         - media_type
         - type
       title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource0
-    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType:
+    AnthropicPlainTextSourceResponseMediaType:
       type: string
       enum:
         - text/plain
-      title: >-
-        BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType
-    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type:
+      title: AnthropicPlainTextSourceResponseMediaType
+    AnthropicPlainTextSourceResponseType:
       type: string
       enum:
         - text
-      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type
-    BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource1:
+      title: AnthropicPlainTextSourceResponseType
+    AnthropicPlainTextSourceResponse:
       type: object
       properties:
         data:
           type: string
         media_type:
-          $ref: >-
-            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1MediaType
+          $ref: '#/components/schemas/AnthropicPlainTextSourceResponseMediaType'
         type:
-          $ref: >-
-            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSourceOneOf1Type
+          $ref: '#/components/schemas/AnthropicPlainTextSourceResponseType'
       required:
         - data
         - media_type
         - type
-      title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource1
+      title: AnthropicPlainTextSourceResponse
     BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource:
       oneOf:
         - $ref: >-
             #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource0
-        - $ref: >-
-            #/components/schemas/BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource1
+        - $ref: '#/components/schemas/AnthropicPlainTextSourceResponse'
       title: BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentSource
     BaseMessagesResultContentItemsOneOf6ContentOneOf1ContentType:
       type: string
@@ -5587,8 +3091,7 @@ components:
             $ref: >-
               #/components/schemas/BaseMessagesResultContentItemsOneOf7ContentOneOf1ContentItems
         return_code:
-          type: number
-          format: double
+          type: integer
         stderr:
           type: string
         stdout:
@@ -5636,8 +3139,7 @@ components:
         encrypted_stdout:
           type: string
         return_code:
-          type: number
-          format: double
+          type: integer
         stderr:
           type: string
         type:
@@ -5733,8 +3235,7 @@ components:
             $ref: >-
               #/components/schemas/BaseMessagesResultContentItemsOneOf8ContentOneOf1ContentItems
         return_code:
-          type: number
-          format: double
+          type: integer
         stderr:
           type: string
         stdout:
@@ -5827,19 +3328,16 @@ components:
             #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf1FileType
         num_lines:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         start_line:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         total_lines:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         type:
           $ref: >-
             #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf1Type
@@ -5884,24 +3382,20 @@ components:
             type: string
         new_lines:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         new_start:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         old_lines:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         old_start:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         type:
           $ref: >-
             #/components/schemas/BaseMessagesResultContentItemsOneOf9ContentOneOf3Type
@@ -6043,6 +3537,24 @@ components:
         - type
         - file_id
       title: BaseMessagesResultContentItems11
+    BaseMessagesResultContentItemsOneOf12Type:
+      type: string
+      enum:
+        - compaction
+      title: BaseMessagesResultContentItemsOneOf12Type
+    BaseMessagesResultContentItems12:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/BaseMessagesResultContentItemsOneOf12Type'
+        content:
+          type:
+            - string
+            - 'null'
+      required:
+        - type
+        - content
+      title: BaseMessagesResultContentItems12
     BaseMessagesResultContentItems:
       oneOf:
         - $ref: '#/components/schemas/BaseMessagesResultContentItems0'
@@ -6057,6 +3569,7 @@ components:
         - $ref: '#/components/schemas/BaseMessagesResultContentItems9'
         - $ref: '#/components/schemas/BaseMessagesResultContentItems10'
         - $ref: '#/components/schemas/BaseMessagesResultContentItems11'
+        - $ref: '#/components/schemas/BaseMessagesResultContentItems12'
       title: BaseMessagesResultContentItems
     BaseMessagesResultStopReason:
       type: string
@@ -6067,16 +3580,15 @@ components:
         - tool_use
         - pause_turn
         - refusal
+        - compaction
       title: BaseMessagesResultStopReason
     BaseMessagesResultUsageCacheCreation:
       type: object
       properties:
         ephemeral_5m_input_tokens:
-          type: number
-          format: double
+          type: integer
         ephemeral_1h_input_tokens:
-          type: number
-          format: double
+          type: integer
       required:
         - ephemeral_5m_input_tokens
         - ephemeral_1h_input_tokens
@@ -6085,11 +3597,9 @@ components:
       type: object
       properties:
         web_search_requests:
-          type: number
-          format: double
+          type: integer
         web_fetch_requests:
-          type: number
-          format: double
+          type: integer
       required:
         - web_search_requests
         - web_fetch_requests
@@ -6107,25 +3617,144 @@ components:
         - fast
         - standard
       title: BaseMessagesResultUsageSpeed
+    BaseMessagesResultUsageIterationsItemsOneOf0CacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: integer
+          default: 0
+        ephemeral_1h_input_tokens:
+          type: integer
+          default: 0
+      title: BaseMessagesResultUsageIterationsItemsOneOf0CacheCreation
+    BaseMessagesResultUsageIterationsItemsOneOf0Type:
+      type: string
+      enum:
+        - compaction
+      title: BaseMessagesResultUsageIterationsItemsOneOf0Type
+    BaseMessagesResultUsageIterationsItems0:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          default: 0
+        output_tokens:
+          type: integer
+          default: 0
+        cache_creation_input_tokens:
+          type: integer
+          default: 0
+        cache_read_input_tokens:
+          type: integer
+          default: 0
+        cache_creation:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/BaseMessagesResultUsageIterationsItemsOneOf0CacheCreation
+            - type: 'null'
+        type:
+          $ref: >-
+            #/components/schemas/BaseMessagesResultUsageIterationsItemsOneOf0Type
+      required:
+        - type
+      title: BaseMessagesResultUsageIterationsItems0
+    BaseMessagesResultUsageIterationsItemsOneOf1CacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: integer
+          default: 0
+        ephemeral_1h_input_tokens:
+          type: integer
+          default: 0
+      title: BaseMessagesResultUsageIterationsItemsOneOf1CacheCreation
+    BaseMessagesResultUsageIterationsItemsOneOf1Type:
+      type: string
+      enum:
+        - message
+      title: BaseMessagesResultUsageIterationsItemsOneOf1Type
+    BaseMessagesResultUsageIterationsItems1:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          default: 0
+        output_tokens:
+          type: integer
+          default: 0
+        cache_creation_input_tokens:
+          type: integer
+          default: 0
+        cache_read_input_tokens:
+          type: integer
+          default: 0
+        cache_creation:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/BaseMessagesResultUsageIterationsItemsOneOf1CacheCreation
+            - type: 'null'
+        type:
+          $ref: >-
+            #/components/schemas/BaseMessagesResultUsageIterationsItemsOneOf1Type
+      required:
+        - type
+      title: BaseMessagesResultUsageIterationsItems1
+    BaseMessagesResultUsageIterationsItemsOneOf2CacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: integer
+          default: 0
+        ephemeral_1h_input_tokens:
+          type: integer
+          default: 0
+      title: BaseMessagesResultUsageIterationsItemsOneOf2CacheCreation
+    BaseMessagesResultUsageIterationsItems2:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          default: 0
+        output_tokens:
+          type: integer
+          default: 0
+        cache_creation_input_tokens:
+          type: integer
+          default: 0
+        cache_read_input_tokens:
+          type: integer
+          default: 0
+        cache_creation:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/BaseMessagesResultUsageIterationsItemsOneOf2CacheCreation
+            - type: 'null'
+        type:
+          type: string
+      required:
+        - type
+      title: BaseMessagesResultUsageIterationsItems2
+    BaseMessagesResultUsageIterationsItems:
+      oneOf:
+        - $ref: '#/components/schemas/BaseMessagesResultUsageIterationsItems0'
+        - $ref: '#/components/schemas/BaseMessagesResultUsageIterationsItems1'
+        - $ref: '#/components/schemas/BaseMessagesResultUsageIterationsItems2'
+      title: BaseMessagesResultUsageIterationsItems
     BaseMessagesResultUsage:
       type: object
       properties:
         input_tokens:
-          type: number
-          format: double
+          type: integer
         output_tokens:
-          type: number
-          format: double
+          type: integer
         cache_creation_input_tokens:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         cache_read_input_tokens:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         cache_creation:
           oneOf:
             - $ref: '#/components/schemas/BaseMessagesResultUsageCacheCreation'
@@ -6146,6 +3775,10 @@ components:
           oneOf:
             - $ref: '#/components/schemas/BaseMessagesResultUsageSpeed'
             - type: 'null'
+        iterations:
+          type: array
+          items:
+            $ref: '#/components/schemas/BaseMessagesResultUsageIterationsItems'
       required:
         - input_tokens
         - output_tokens
@@ -6160,11 +3793,9 @@ components:
       type: object
       properties:
         ephemeral_5m_input_tokens:
-          type: number
-          format: double
+          type: integer
         ephemeral_1h_input_tokens:
-          type: number
-          format: double
+          type: integer
       required:
         - ephemeral_5m_input_tokens
         - ephemeral_1h_input_tokens
@@ -6173,11 +3804,9 @@ components:
       type: object
       properties:
         web_search_requests:
-          type: number
-          format: double
+          type: integer
         web_fetch_requests:
-          type: number
-          format: double
+          type: integer
       required:
         - web_search_requests
         - web_fetch_requests
@@ -6188,13 +3817,132 @@ components:
         - fast
         - standard
       title: MessagesResultUsageSpeed
+    MessagesResultUsageIterationsItemsOneOf0CacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: integer
+          default: 0
+        ephemeral_1h_input_tokens:
+          type: integer
+          default: 0
+      title: MessagesResultUsageIterationsItemsOneOf0CacheCreation
+    MessagesResultUsageIterationsItemsOneOf0Type:
+      type: string
+      enum:
+        - compaction
+      title: MessagesResultUsageIterationsItemsOneOf0Type
+    MessagesResultUsageIterationsItems0:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          default: 0
+        output_tokens:
+          type: integer
+          default: 0
+        cache_creation_input_tokens:
+          type: integer
+          default: 0
+        cache_read_input_tokens:
+          type: integer
+          default: 0
+        cache_creation:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/MessagesResultUsageIterationsItemsOneOf0CacheCreation
+            - type: 'null'
+        type:
+          $ref: '#/components/schemas/MessagesResultUsageIterationsItemsOneOf0Type'
+      required:
+        - type
+      title: MessagesResultUsageIterationsItems0
+    MessagesResultUsageIterationsItemsOneOf1CacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: integer
+          default: 0
+        ephemeral_1h_input_tokens:
+          type: integer
+          default: 0
+      title: MessagesResultUsageIterationsItemsOneOf1CacheCreation
+    MessagesResultUsageIterationsItemsOneOf1Type:
+      type: string
+      enum:
+        - message
+      title: MessagesResultUsageIterationsItemsOneOf1Type
+    MessagesResultUsageIterationsItems1:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          default: 0
+        output_tokens:
+          type: integer
+          default: 0
+        cache_creation_input_tokens:
+          type: integer
+          default: 0
+        cache_read_input_tokens:
+          type: integer
+          default: 0
+        cache_creation:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/MessagesResultUsageIterationsItemsOneOf1CacheCreation
+            - type: 'null'
+        type:
+          $ref: '#/components/schemas/MessagesResultUsageIterationsItemsOneOf1Type'
+      required:
+        - type
+      title: MessagesResultUsageIterationsItems1
+    MessagesResultUsageIterationsItemsOneOf2CacheCreation:
+      type: object
+      properties:
+        ephemeral_5m_input_tokens:
+          type: integer
+          default: 0
+        ephemeral_1h_input_tokens:
+          type: integer
+          default: 0
+      title: MessagesResultUsageIterationsItemsOneOf2CacheCreation
+    MessagesResultUsageIterationsItems2:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+          default: 0
+        output_tokens:
+          type: integer
+          default: 0
+        cache_creation_input_tokens:
+          type: integer
+          default: 0
+        cache_read_input_tokens:
+          type: integer
+          default: 0
+        cache_creation:
+          oneOf:
+            - $ref: >-
+                #/components/schemas/MessagesResultUsageIterationsItemsOneOf2CacheCreation
+            - type: 'null'
+        type:
+          type: string
+      required:
+        - type
+      title: MessagesResultUsageIterationsItems2
+    MessagesResultUsageIterationsItems:
+      oneOf:
+        - $ref: '#/components/schemas/MessagesResultUsageIterationsItems0'
+        - $ref: '#/components/schemas/MessagesResultUsageIterationsItems1'
+        - $ref: '#/components/schemas/MessagesResultUsageIterationsItems2'
+      title: MessagesResultUsageIterationsItems
     MessagesResultUsageCostDetails:
       type: object
       properties:
         upstream_inference_cost:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         upstream_inference_prompt_cost:
           type: number
@@ -6210,21 +3958,17 @@ components:
       type: object
       properties:
         input_tokens:
-          type: number
-          format: double
+          type: integer
         output_tokens:
-          type: number
-          format: double
+          type: integer
         cache_creation_input_tokens:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         cache_read_input_tokens:
           type:
-            - number
+            - integer
             - 'null'
-          format: double
         cache_creation:
           oneOf:
             - $ref: '#/components/schemas/MessagesResultUsageCacheCreation'
@@ -6245,10 +3989,12 @@ components:
           oneOf:
             - $ref: '#/components/schemas/MessagesResultUsageSpeed'
             - type: 'null'
+        iterations:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessagesResultUsageIterationsItems'
         cost:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         is_byok:
           type: boolean
@@ -6419,12 +4165,12 @@ components:
         Non-streaming response from the Anthropic Messages API with OpenRouter
         extensions
       title: MessagesResult
-    MessagesPostResponsesContentApplicationJsonSchemaType:
+    MessagesErrorResponseType:
       type: string
       enum:
         - error
-      title: MessagesPostResponsesContentApplicationJsonSchemaType
-    MessagesPostResponsesContentApplicationJsonSchemaError:
+      title: MessagesErrorResponseType
+    MessagesErrorDetail:
       type: object
       properties:
         type:
@@ -6434,98 +4180,18 @@ components:
       required:
         - type
         - message
-      title: MessagesPostResponsesContentApplicationJsonSchemaError
-    CreateMessagesRequestBadRequestError:
+      title: MessagesErrorDetail
+    MessagesErrorResponse:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
+          $ref: '#/components/schemas/MessagesErrorResponseType'
         error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
+          $ref: '#/components/schemas/MessagesErrorDetail'
       required:
         - type
         - error
-      title: CreateMessagesRequestBadRequestError
-    CreateMessagesRequestUnauthorizedError:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
-        error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
-      required:
-        - type
-        - error
-      title: CreateMessagesRequestUnauthorizedError
-    CreateMessagesRequestForbiddenError:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
-        error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
-      required:
-        - type
-        - error
-      title: CreateMessagesRequestForbiddenError
-    CreateMessagesRequestNotFoundError:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
-        error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
-      required:
-        - type
-        - error
-      title: CreateMessagesRequestNotFoundError
-    CreateMessagesRequestTooManyRequestsError:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
-        error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
-      required:
-        - type
-        - error
-      title: CreateMessagesRequestTooManyRequestsError
-    CreateMessagesRequestInternalServerError:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
-        error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
-      required:
-        - type
-        - error
-      title: CreateMessagesRequestInternalServerError
-    CreateMessagesRequestServiceUnavailableError:
-      type: object
-      properties:
-        type:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaType
-        error:
-          $ref: >-
-            #/components/schemas/MessagesPostResponsesContentApplicationJsonSchemaError
-      required:
-        - type
-        - error
-      title: CreateMessagesRequestServiceUnavailableError
+      title: MessagesErrorResponse
   securitySchemes:
     apiKey:
       type: http
@@ -6542,15 +4208,14 @@ import requests
 url = "https://openrouter.ai/api/v1/messages"
 
 payload = {
-    "model": "anthropic/claude-4.5-sonnet-20250929",
+    "model": "anthropic/claude-sonnet-4",
     "messages": [
         {
             "role": "user",
             "content": "Hello, how are you?"
         }
     ],
-    "max_tokens": 1024,
-    "temperature": 0.7
+    "max_tokens": 1024
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -6567,7 +4232,7 @@ const url = 'https://openrouter.ai/api/v1/messages';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"model":"anthropic/claude-4.5-sonnet-20250929","messages":[{"role":"user","content":"Hello, how are you?"}],"max_tokens":1024,"temperature":0.7}'
+  body: '{"model":"anthropic/claude-sonnet-4","messages":[{"role":"user","content":"Hello, how are you?"}],"max_tokens":1024}'
 };
 
 try {
@@ -6593,7 +4258,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/messages"
 
-	payload := strings.NewReader("{\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024,\n  \"temperature\": 0.7\n}")
+	payload := strings.NewReader("{\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -6623,7 +4288,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024,\n  \"temperature\": 0.7\n}"
+request.body = "{\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -6636,7 +4301,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/messages")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024,\n  \"temperature\": 0.7\n}")
+  .body("{\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024\n}")
   .asString();
 ```
 
@@ -6648,15 +4313,14 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/messages', [
   'body' => '{
-  "model": "anthropic/claude-4.5-sonnet-20250929",
+  "model": "anthropic/claude-sonnet-4",
   "messages": [
     {
       "role": "user",
       "content": "Hello, how are you?"
     }
   ],
-  "max_tokens": 1024,
-  "temperature": 0.7
+  "max_tokens": 1024
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -6674,7 +4338,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/messages");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024,\n  \"temperature\": 0.7\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"model\": \"anthropic/claude-sonnet-4\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"max_tokens\": 1024\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -6686,15 +4350,14 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "model": "anthropic/claude-4.5-sonnet-20250929",
+  "model": "anthropic/claude-sonnet-4",
   "messages": [
     [
       "role": "user",
       "content": "Hello, how are you?"
     ]
   ],
-  "max_tokens": 1024,
-  "temperature": 0.7
+  "max_tokens": 1024
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

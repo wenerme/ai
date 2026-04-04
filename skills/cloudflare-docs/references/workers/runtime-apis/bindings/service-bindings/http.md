@@ -23,6 +23,8 @@ For example, consider the following Worker that implements a [fetch() handler](h
 * [  wrangler.jsonc ](#tab-panel-7544)
 * [  wrangler.toml ](#tab-panel-7545)
 
+JSONC
+
 ```
 
 {
@@ -37,6 +39,8 @@ For example, consider the following Worker that implements a [fetch() handler](h
 
 
 ```
+
+TOML
 
 ```
 
@@ -71,6 +75,8 @@ The following Worker declares a binding to the Worker above:
 * [  wrangler.jsonc ](#tab-panel-7546)
 * [  wrangler.toml ](#tab-panel-7547)
 
+JSONC
+
 ```
 
 {
@@ -97,6 +103,8 @@ The following Worker declares a binding to the Worker above:
 
 
 ```
+
+TOML
 
 ```
 

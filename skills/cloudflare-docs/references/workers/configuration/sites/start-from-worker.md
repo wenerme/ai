@@ -30,6 +30,7 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 2. Add configuration to your Wrangler file to point to it.  
    * [  wrangler.jsonc ](#tab-panel-7129)  
    * [  wrangler.toml ](#tab-panel-7130)  
+JSONC  
 ```  
 {  
   "site": {  
@@ -37,6 +38,7 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
   }  
 }  
 ```  
+TOML  
 ```  
 [site]  
 bucket = "./public"  

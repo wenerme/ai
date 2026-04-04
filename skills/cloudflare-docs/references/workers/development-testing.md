@@ -96,6 +96,8 @@ During local development, your Worker code interacts with these bindings using t
 * [  wrangler.jsonc ](#tab-panel-7161)
 * [  wrangler.toml ](#tab-panel-7162)
 
+JSONC
+
 ```
 
 {
@@ -104,7 +106,7 @@ During local development, your Worker code interacts with these bindings using t
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
 
   "r2_buckets": [
@@ -126,13 +128,15 @@ During local development, your Worker code interacts with these bindings using t
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[r2_buckets]]
@@ -157,6 +161,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 * [  wrangler.jsonc ](#tab-panel-7173)
 * [  wrangler.toml ](#tab-panel-7174)
 
+JSONC
+
 ```
 
 {
@@ -165,7 +171,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
 
   "env": {
@@ -211,13 +217,15 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[env.production.r2_buckets]]
@@ -256,6 +264,8 @@ To interact with a real headless browser for rendering. There is no current loca
 * [  wrangler.jsonc ](#tab-panel-7159)
 * [  wrangler.toml ](#tab-panel-7160)
 
+JSONC
+
 ```
 
 {
@@ -272,6 +282,8 @@ To interact with a real headless browser for rendering. There is no current loca
 
 
 ```
+
+TOML
 
 ```
 
@@ -291,6 +303,8 @@ To utilize actual AI models deployed on Cloudflare's network for inference. Ther
 * [  wrangler.jsonc ](#tab-panel-7163)
 * [  wrangler.toml ](#tab-panel-7164)
 
+JSONC
+
 ```
 
 {
@@ -307,6 +321,8 @@ To utilize actual AI models deployed on Cloudflare's network for inference. Ther
 
 
 ```
+
+TOML
 
 ```
 
@@ -325,6 +341,8 @@ To connect to your production Vectorize indexes for accurate vector search and s
 
 * [  wrangler.jsonc ](#tab-panel-7165)
 * [  wrangler.toml ](#tab-panel-7166)
+
+JSONC
 
 ```
 
@@ -349,6 +367,8 @@ To connect to your production Vectorize indexes for accurate vector search and s
 
 ```
 
+TOML
+
 ```
 
 [[vectorize]]
@@ -368,6 +388,8 @@ To verify that the certificate exchange and validation process work as expected.
 
 * [  wrangler.jsonc ](#tab-panel-7169)
 * [  wrangler.toml ](#tab-panel-7170)
+
+JSONC
 
 ```
 
@@ -392,6 +414,8 @@ To verify that the certificate exchange and validation process work as expected.
 
 ```
 
+TOML
+
 ```
 
 [[mtls_certificates]]
@@ -412,6 +436,8 @@ To connect to a high-fidelity version of the Images API, and verify that all tra
 * [  wrangler.jsonc ](#tab-panel-7167)
 * [  wrangler.toml ](#tab-panel-7168)
 
+JSONC
+
 ```
 
 {
@@ -428,6 +454,8 @@ To connect to a high-fidelity version of the Images API, and verify that all tra
 
 
 ```
+
+TOML
 
 ```
 
@@ -453,6 +481,8 @@ Workers for Platforms users can configure `remote: true` in dispatch namespace b
 * [  wrangler.jsonc ](#tab-panel-7171)
 * [  wrangler.toml ](#tab-panel-7172)
 
+JSONC
+
 ```
 
 {
@@ -475,6 +505,8 @@ Workers for Platforms users can configure `remote: true` in dispatch namespace b
 
 
 ```
+
+TOML
 
 ```
 

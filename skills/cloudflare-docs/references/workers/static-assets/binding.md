@@ -31,6 +31,8 @@ The folder of static assets to be served. For many frameworks, this is the `./pu
 * [  wrangler.jsonc ](#tab-panel-7668)
 * [  wrangler.toml ](#tab-panel-7669)
 
+JSONC
+
 ```
 
 {
@@ -41,7 +43,7 @@ The folder of static assets to be served. For many frameworks, this is the `./pu
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -54,6 +56,8 @@ The folder of static assets to be served. For many frameworks, this is the `./pu
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -62,7 +66,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -104,6 +108,8 @@ Controls whether to invoke the Worker script regardless of a request which would
 * [  wrangler.jsonc ](#tab-panel-7670)
 * [  wrangler.toml ](#tab-panel-7671)
 
+JSONC
+
 ```
 
 {
@@ -114,7 +120,7 @@ Controls whether to invoke the Worker script regardless of a request which would
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "src/index.ts",
 
@@ -137,6 +143,8 @@ Controls whether to invoke the Worker script regardless of a request which would
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -145,7 +153,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "src/index.ts"
 
@@ -174,6 +182,8 @@ The order in which the patterns are listed is not significant.
 * [  wrangler.jsonc ](#tab-panel-7672)
 * [  wrangler.toml ](#tab-panel-7673)
 
+JSONC
+
 ```
 
 {
@@ -182,7 +192,7 @@ The order in which the patterns are listed is not significant.
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./src/index.ts",
 
@@ -203,13 +213,15 @@ The order in which the patterns are listed is not significant.
 
 ```
 
+TOML
+
 ```
 
 name = "my-spa-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./src/index.ts"
 
@@ -238,6 +250,8 @@ Configuring the optional [binding](https://developers.cloudflare.com/workers/run
 * [  wrangler.jsonc ](#tab-panel-7674)
 * [  wrangler.toml ](#tab-panel-7675)
 
+JSONC
+
 ```
 
 {
@@ -250,7 +264,7 @@ Configuring the optional [binding](https://developers.cloudflare.com/workers/run
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -265,6 +279,8 @@ Configuring the optional [binding](https://developers.cloudflare.com/workers/run
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -275,7 +291,7 @@ main = "./src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]

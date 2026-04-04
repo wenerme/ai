@@ -25,6 +25,8 @@ The following Worker will catch JavaScript errors and send them to a queue. The 
 * [  wrangler.jsonc ](#tab-panel-5650)
 * [  wrangler.toml ](#tab-panel-5651)
 
+JSONC
+
 ```
 
 {
@@ -79,6 +81,8 @@ The following Worker will catch JavaScript errors and send them to a queue. The 
 
 
 ```
+
+TOML
 
 ```
 

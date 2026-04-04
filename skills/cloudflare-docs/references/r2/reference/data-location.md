@@ -107,6 +107,8 @@ To access R2 buckets that belong to a jurisdiction from [Workers](https://develo
 * [  wrangler.jsonc ](#tab-panel-5826)
 * [  wrangler.toml ](#tab-panel-5827)
 
+JSONC
+
 ```
 
 {
@@ -137,6 +139,8 @@ To access R2 buckets that belong to a jurisdiction from [Workers](https://develo
 
 
 ```
+
+TOML
 
 ```
 

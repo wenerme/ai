@@ -498,6 +498,8 @@ For RPC transport, if `addMcpServer` is called with a name that already has an a
 
 In your `wrangler.jsonc`, define bindings for both Durable Objects:
 
+JSONC
+
 ```
 
 {

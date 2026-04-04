@@ -101,6 +101,8 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 * [  wrangler.jsonc ](#tab-panel-4817)
 * [  wrangler.toml ](#tab-panel-4818)
 
+JSONC
+
 ```
 
 {
@@ -113,12 +115,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -126,7 +130,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```
@@ -246,6 +250,8 @@ To bind your Hyperdrive configuration to your Worker, add the following to the e
 * [  wrangler.jsonc ](#tab-panel-4819)
 * [  wrangler.toml ](#tab-panel-4820)
 
+JSONC
+
 ```
 
 {
@@ -266,6 +272,8 @@ To bind your Hyperdrive configuration to your Worker, add the following to the e
 
 
 ```
+
+TOML
 
 ```
 
@@ -289,6 +297,8 @@ If you wish to use a local database during development, you can add a `localConn
 * [  wrangler.jsonc ](#tab-panel-4821)
 * [  wrangler.toml ](#tab-panel-4822)
 
+JSONC
+
 ```
 
 {
@@ -311,6 +321,8 @@ If you wish to use a local database during development, you can add a `localConn
 
 
 ```
+
+TOML
 
 ```
 
@@ -632,6 +644,8 @@ You can test your Worker locally before deploying by running `wrangler dev`. Thi
 The `localConnectionString` field works with both local and remote databases and allows you to connect directly to your database from your Worker project running locally. You must specify the SSL/TLS mode if required (`sslmode=require` for Postgres, `sslMode=REQUIRED` for MySQL).
 
 To connect to a database during local development, configure `localConnectionString` in your `wrangler.jsonc`:
+
+JSONC
 
 ```
 

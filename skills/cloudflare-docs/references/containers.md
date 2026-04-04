@@ -75,6 +75,8 @@ export default {
 * [  wrangler.jsonc ](#tab-panel-4007)
 * [  wrangler.toml ](#tab-panel-4008)
 
+JSONC
+
 ```
 
 {
@@ -85,7 +87,7 @@ export default {
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "containers": [
 
@@ -134,6 +136,8 @@ export default {
 
 ```
 
+TOML
+
 ```
 
 name = "container-starter"
@@ -142,7 +146,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[containers]]

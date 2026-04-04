@@ -267,6 +267,8 @@ In the [Wrangler configuration file](https://developers.cloudflare.com/workers/w
 * [  wrangler.jsonc ](#tab-panel-3953)
 * [  wrangler.toml ](#tab-panel-3954)
 
+JSONC
+
 ```
 
 {
@@ -283,6 +285,8 @@ In the [Wrangler configuration file](https://developers.cloudflare.com/workers/w
 
 
 ```
+
+TOML
 
 ```
 

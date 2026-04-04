@@ -31,6 +31,8 @@ Add an Analytics Engine dataset binding to your Wrangler configuration file. The
 * [  wrangler.jsonc ](#tab-panel-7197)
 * [  wrangler.toml ](#tab-panel-7198)
 
+JSONC
+
 ```
 
 {
@@ -51,6 +53,8 @@ Add an Analytics Engine dataset binding to your Wrangler configuration file. The
 
 
 ```
+
+TOML
 
 ```
 

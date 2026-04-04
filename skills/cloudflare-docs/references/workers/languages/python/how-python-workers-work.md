@@ -45,6 +45,8 @@ class Default(WorkerEntrypoint):
 * [  wrangler.jsonc ](#tab-panel-7440)
 * [  wrangler.toml ](#tab-panel-7441)
 
+JSONC
+
 ```
 
 {
@@ -57,12 +59,14 @@ class Default(WorkerEntrypoint):
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -74,7 +78,7 @@ main = "src/entry.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```

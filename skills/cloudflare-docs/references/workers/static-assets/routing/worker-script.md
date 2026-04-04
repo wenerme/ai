@@ -37,6 +37,8 @@ If you need to always run your Worker script before serving static assets (for e
 * [  wrangler.jsonc ](#tab-panel-7738)
 * [  wrangler.toml ](#tab-panel-7739)
 
+JSONC
+
 ```
 
 {
@@ -45,7 +47,7 @@ If you need to always run your Worker script before serving static assets (for e
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./worker/index.ts",
 
@@ -64,13 +66,15 @@ If you need to always run your Worker script before serving static assets (for e
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 
@@ -198,6 +202,8 @@ You can also configure selective Worker-first routing using an array of route pa
 * [  wrangler.jsonc ](#tab-panel-7740)
 * [  wrangler.toml ](#tab-panel-7741)
 
+JSONC
+
 ```
 
 {
@@ -206,7 +212,7 @@ You can also configure selective Worker-first routing using an array of route pa
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./worker/index.ts",
 
@@ -227,13 +233,15 @@ You can also configure selective Worker-first routing using an array of route pa
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 

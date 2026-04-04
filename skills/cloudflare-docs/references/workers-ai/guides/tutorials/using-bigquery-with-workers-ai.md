@@ -779,6 +779,8 @@ Uncomment the following lines from the Wrangler file in your project:
 * [  wrangler.jsonc ](#tab-panel-6959)
 * [  wrangler.toml ](#tab-panel-6960)
 
+JSONC
+
 ```
 
 {
@@ -793,6 +795,8 @@ Uncomment the following lines from the Wrangler file in your project:
 
 
 ```
+
+TOML
 
 ```
 

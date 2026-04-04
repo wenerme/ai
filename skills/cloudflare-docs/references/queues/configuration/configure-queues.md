@@ -57,6 +57,8 @@ To produce to a queue, set up a binding in your Wrangler file. These options sho
 * [  wrangler.jsonc ](#tab-panel-5625)
 * [  wrangler.toml ](#tab-panel-5626)
 
+JSONC
+
 ```
 
 {
@@ -82,6 +84,8 @@ To produce to a queue, set up a binding in your Wrangler file. These options sho
 
 ```
 
+TOML
+
 ```
 
 [[queues.producers]]
@@ -104,6 +108,8 @@ To consume messages from one or more queues, set up a binding in your Wrangler f
 
 * [  wrangler.jsonc ](#tab-panel-5627)
 * [  wrangler.toml ](#tab-panel-5628)
+
+JSONC
 
 ```
 
@@ -135,6 +141,8 @@ To consume messages from one or more queues, set up a binding in your Wrangler f
 
 
 ```
+
+TOML
 
 ```
 

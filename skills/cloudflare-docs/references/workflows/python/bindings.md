@@ -29,6 +29,8 @@ From the configuration perspective, enabling Python Workflows requires adding th
 * [  wrangler.jsonc ](#tab-panel-8604)
 * [  wrangler.toml ](#tab-panel-8605)
 
+JSONC
+
 ```
 
 {
@@ -41,7 +43,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["python_workflows", "python_workers"],
 
@@ -70,6 +72,8 @@ From the configuration perspective, enabling Python Workflows requires adding th
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -80,7 +84,7 @@ main = "src/index.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "python_workflows", "python_workers" ]
 

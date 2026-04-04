@@ -221,6 +221,8 @@ With the keys in place, it’s time to build the configuration file that the key
 
 Open up `/etc/keyless/gokeyless.yaml` and immediately after
 
+YAML
+
 ```
 
 private_key_stores:
@@ -231,6 +233,8 @@ private_key_stores:
 ```
 
 add
+
+YAML
 
 ```
 

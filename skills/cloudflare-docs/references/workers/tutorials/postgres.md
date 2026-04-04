@@ -83,6 +83,8 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 * [  wrangler.jsonc ](#tab-panel-7788)
 * [  wrangler.toml ](#tab-panel-7789)
 
+JSONC
+
 ```
 
 {
@@ -95,12 +97,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -108,7 +112,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```
@@ -221,6 +225,8 @@ Configure each database parameter as an [environment variable](https://developer
 * [  wrangler.jsonc ](#tab-panel-7784)
 * [  wrangler.toml ](#tab-panel-7785)
 
+JSONC
+
 ```
 
 {
@@ -243,6 +249,8 @@ Configure each database parameter as an [environment variable](https://developer
 
 
 ```
+
+TOML
 
 ```
 
@@ -608,6 +616,8 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 * [  wrangler.jsonc ](#tab-panel-7786)
 * [  wrangler.toml ](#tab-panel-7787)
 
+JSONC
+
 ```
 
 {
@@ -620,7 +630,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -647,6 +657,8 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -657,7 +669,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

@@ -159,6 +159,8 @@ If you are deploying with Wrangler, set the cron syntax (once per hour as shown 
 * [  wrangler.jsonc ](#tab-panel-7260)
 * [  wrangler.toml ](#tab-panel-7261)
 
+JSONC
+
 ```
 
 {
@@ -184,6 +186,8 @@ If you are deploying with Wrangler, set the cron syntax (once per hour as shown 
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -202,6 +206,8 @@ You also can set a different Cron Trigger for each [environment](https://develop
 
 * [  wrangler.jsonc ](#tab-panel-7262)
 * [  wrangler.toml ](#tab-panel-7263)
+
+JSONC
 
 ```
 
@@ -229,6 +235,8 @@ You also can set a different Cron Trigger for each [environment](https://develop
 
 
 ```
+
+TOML
 
 ```
 

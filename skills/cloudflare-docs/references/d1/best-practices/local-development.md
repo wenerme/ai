@@ -62,6 +62,8 @@ In this example, the Worker has access to local-only D1 database. The correspond
 * [  wrangler.jsonc ](#tab-panel-4035)
 * [  wrangler.toml ](#tab-panel-4036)
 
+JSONC
+
 ```
 
 {
@@ -84,6 +86,8 @@ In this example, the Worker has access to local-only D1 database. The correspond
 
 
 ```
+
+TOML
 
 ```
 
@@ -115,6 +119,8 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wra
 * [  wrangler.jsonc ](#tab-panel-4037)
 * [  wrangler.toml ](#tab-panel-4038)
 
+JSONC
+
 ```
 
 {
@@ -141,6 +147,8 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wra
 
 
 ```
+
+TOML
 
 ```
 
@@ -193,6 +201,8 @@ You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) t
 * [  wrangler.jsonc ](#tab-panel-4039)
 * [  wrangler.toml ](#tab-panel-4040)
 
+JSONC
+
 ```
 
 {
@@ -215,6 +225,8 @@ You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) t
 
 
 ```
+
+TOML
 
 ```
 
@@ -274,6 +286,8 @@ Given the below Wrangler configuration:
 * [  wrangler.jsonc ](#tab-panel-4041)
 * [  wrangler.toml ](#tab-panel-4042)
 
+JSONC
+
 ```
 
 {
@@ -298,6 +312,8 @@ Given the below Wrangler configuration:
 
 
 ```
+
+TOML
 
 ```
 

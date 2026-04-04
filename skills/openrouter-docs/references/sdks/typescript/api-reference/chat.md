@@ -44,6 +44,9 @@ async function run() {
           content: "What is the capital of France?",
         },
       ],
+      model: "openai/gpt-4",
+      maxTokens: 150,
+      temperature: 0.7,
     },
   });
 
@@ -83,6 +86,9 @@ async function run() {
           content: "What is the capital of France?",
         },
       ],
+      model: "openai/gpt-4",
+      maxTokens: 150,
+      temperature: 0.7,
     },
   });
   if (res.ok) {

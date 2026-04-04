@@ -36,6 +36,8 @@ With a [Wrangler configuration file](https://developers.cloudflare.com/workers/w
 * [  wrangler.jsonc ](#tab-panel-7724)
 * [  wrangler.toml ](#tab-panel-7725)
 
+JSONC
+
 ```
 
 {
@@ -58,6 +60,8 @@ With a [Wrangler configuration file](https://developers.cloudflare.com/workers/w
 
 
 ```
+
+TOML
 
 ```
 

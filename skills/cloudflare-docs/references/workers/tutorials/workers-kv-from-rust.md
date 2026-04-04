@@ -81,6 +81,8 @@ To add this configuration to your project, open the Wrangler file and create an 
 * [  wrangler.jsonc ](#tab-panel-7792)
 * [  wrangler.toml ](#tab-panel-7793)
 
+JSONC
+
 ```
 
 {
@@ -101,6 +103,8 @@ To add this configuration to your project, open the Wrangler file and create an 
 
 
 ```
+
+TOML
 
 ```
 

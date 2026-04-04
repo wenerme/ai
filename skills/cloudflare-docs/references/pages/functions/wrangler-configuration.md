@@ -42,6 +42,8 @@ Using the Wrangler configuration file to configure your Pages project allows you
 * [  wrangler.jsonc ](#tab-panel-5468)
 * [  wrangler.toml ](#tab-panel-5469)
 
+JSONC
+
 ```
 
 {
@@ -88,6 +90,8 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 
 ```
+
+TOML
 
 ```
 
@@ -144,6 +148,8 @@ If you have been using a Wrangler configuration file for local development, you 
 * [  wrangler.jsonc ](#tab-panel-5464)
 * [  wrangler.toml ](#tab-panel-5465)
 
+JSONC
+
 ```
 
 {
@@ -164,6 +170,8 @@ If you have been using a Wrangler configuration file for local development, you 
 
 
 ```
+
+TOML
 
 ```
 
@@ -254,6 +262,8 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 * [  wrangler.jsonc ](#tab-panel-5466)
 * [  wrangler.toml ](#tab-panel-5467)
 
+JSONC
+
 ```
 
 {
@@ -266,7 +276,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -291,6 +301,8 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -301,7 +313,7 @@ pages_build_output_dir = "./dist"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -370,6 +382,8 @@ Refer to the following Wrangler configuration file for an example of how to over
 * [  wrangler.jsonc ](#tab-panel-5470)
 * [  wrangler.toml ](#tab-panel-5471)
 
+JSONC
+
 ```
 
 {
@@ -429,6 +443,8 @@ Refer to the following Wrangler configuration file for an example of how to over
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -470,6 +486,8 @@ If you wanted to have configuration values apply to local and preview, but overr
 
 * [  wrangler.jsonc ](#tab-panel-5474)
 * [  wrangler.toml ](#tab-panel-5475)
+
+JSONC
 
 ```
 
@@ -530,6 +548,8 @@ If you wanted to have configuration values apply to local and preview, but overr
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -569,6 +589,8 @@ You can always be explicit and override both preview and production:
 
 * [  wrangler.jsonc ](#tab-panel-5476)
 * [  wrangler.toml ](#tab-panel-5477)
+
+JSONC
 
 ```
 
@@ -651,6 +673,8 @@ You can always be explicit and override both preview and production:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -728,6 +752,8 @@ For example, this configuration will not work:
 * [  wrangler.jsonc ](#tab-panel-5472)
 * [  wrangler.toml ](#tab-panel-5473)
 
+JSONC
+
 ```
 
 {
@@ -774,6 +800,8 @@ For example, this configuration will not work:
 
 
 ```
+
+TOML
 
 ```
 

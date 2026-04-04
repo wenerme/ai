@@ -20,7 +20,7 @@ Copy page
 
 # Build a Comments API
 
-**Last reviewed:**  18 days ago 
+**Last reviewed:**  19 days ago 
 
 In this tutorial, you will use D1 and [Hono ↗](https://hono.dev/) to build a JSON API that stores and retrieves comments for a blog. You will create a D1 database, define a schema, and wire up `GET` and `POST` endpoints that read from and write to the database.
 
@@ -91,13 +91,14 @@ npx wrangler@latest d1 create d1-comments-api
 Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:  
    * [  wrangler.jsonc ](#tab-panel-4086)  
    * [  wrangler.toml ](#tab-panel-4087)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "d1-comments-api",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "d1_databases": [  
     {  
       "binding": "DB",  
@@ -107,11 +108,12 @@ Confirm that your Wrangler configuration file contains the `d1_databases` bindin
   ]  
 }  
 ```  
+TOML  
 ```  
 name = "d1-comments-api"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 [[d1_databases]]  
 binding = "DB" # available in your Worker on env.DB  
 database_name = "d1-comments-api"  

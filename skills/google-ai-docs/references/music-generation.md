@@ -235,6 +235,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
                  "strings, and climaxes with a massive wall of sound.",
         config=types.GenerateContentConfig(
             response_modalities=["AUDIO", "TEXT"],
+            response_mime_type="audio/wav",
         ),
     )
 
@@ -296,6 +297,91 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
                 "strings, and climaxes with a massive wall of sound.",
       config: config
     );
+
+## Select output format
+
+By default, the Lyria 3 models generate audio in **MP3** format. For
+Lyria 3 Pro, you can also request the output in **WAV** format by setting
+the `response_mime_type` in the `generationConfig`.
+
+### Python
+
+    response = client.models.generate_content(
+        model="lyria-3-pro-preview",
+        contents="An atmospheric ambient track.",
+        config=types.GenerateContentConfig(
+            response_modalities=["AUDIO", "TEXT"],
+            response_mime_type="audio/wav",
+        ),
+    )
+
+### JavaScript
+
+    const response = await ai.models.generateContent({
+      model: "lyria-3-pro-preview",
+      contents: "An atmospheric ambient track.",
+      config: {
+        responseModalities: ["AUDIO", "TEXT"],
+        responseMimeType: "audio/wav",
+      },
+    });
+
+### Go
+
+    config := &genai.GenerateContentConfig{
+        ResponseModalities: []string{"AUDIO", "TEXT"},
+        ResponseMIMEType:   "audio/wav",
+    }
+
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "lyria-3-pro-preview",
+        genai.Text("An atmospheric ambient track."),
+        config,
+    )
+
+### Java
+
+    GenerateContentConfig config = GenerateContentConfig.builder()
+        .responseModalities("AUDIO", "TEXT")
+        .responseMimeType("audio/wav")
+        .build();
+
+    GenerateContentResponse response = client.models.generateContent(
+        "lyria-3-pro-preview",
+        "An atmospheric ambient track.",
+        config);
+
+### C#
+
+    var config = new GenerateContentConfig {
+      ResponseModalities = { "AUDIO", "TEXT" },
+      ResponseMimeType = "audio/wav"
+    };
+
+    var response = await client.Models.GenerateContentAsync(
+      model: "lyria-3-pro-preview",
+      contents: "An atmospheric ambient track.",
+      config: config
+    );
+
+### REST
+
+    curl -s -X POST \
+      "https://generativelanguage.googleapis.com/v1beta/models/lyria-3-pro-preview:generateContent" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "contents": [{
+          "parts": [
+            {"text": "An atmospheric ambient track."}
+          ]
+        }],
+        "generationConfig": {
+          "responseModalities": ["AUDIO", "TEXT"],
+          "responseMimeType": "audio/wav"
+        }
+      }'
 
 ## Parse the response
 

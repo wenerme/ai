@@ -60,6 +60,8 @@ By default, the maximum CPU time per consumer Worker invocation is set to 30 sec
 * [  wrangler.jsonc ](#tab-panel-5658)
 * [  wrangler.toml ](#tab-panel-5659)
 
+JSONC
+
 ```
 
 {
@@ -78,6 +80,8 @@ By default, the maximum CPU time per consumer Worker invocation is set to 30 sec
 
 
 ```
+
+TOML
 
 ```
 

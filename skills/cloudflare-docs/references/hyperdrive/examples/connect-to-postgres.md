@@ -44,6 +44,8 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 * [  wrangler.jsonc ](#tab-panel-4705)
 * [  wrangler.toml ](#tab-panel-4706)
 
+JSONC
+
 ```
 
 {
@@ -58,7 +60,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -77,13 +79,15 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]
@@ -128,6 +132,8 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 * [  wrangler.jsonc ](#tab-panel-4703)
 * [  wrangler.toml ](#tab-panel-4704)
 
+JSONC
+
 ```
 
 {
@@ -140,12 +146,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -153,7 +161,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```
@@ -217,6 +225,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4707)
 * [  wrangler.toml ](#tab-panel-4708)
 
+JSONC
+
 ```
 
 {
@@ -231,7 +241,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -250,13 +260,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]
@@ -369,6 +381,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4709)
 * [  wrangler.toml ](#tab-panel-4710)
 
+JSONC
+
 ```
 
 {
@@ -383,7 +397,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -402,13 +416,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

@@ -216,6 +216,8 @@ Copy the last part of the command output and paste it into your Wrangler file. I
 * [  wrangler.jsonc ](#tab-panel-4110)
 * [  wrangler.toml ](#tab-panel-4111)
 
+JSONC
+
 ```
 
 {
@@ -228,7 +230,7 @@ Copy the last part of the command output and paste it into your Wrangler file. I
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -261,6 +263,8 @@ Copy the last part of the command output and paste it into your Wrangler file. I
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -271,7 +275,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

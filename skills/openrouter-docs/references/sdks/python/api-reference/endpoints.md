@@ -35,7 +35,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.endpoints.list(author="<value>", slug="<value>")
+    res = open_router.endpoints.list(author="openai", slug="gpt-4")
 
     # Handle response
     print(res)
@@ -44,14 +44,14 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 |
-| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `author`                   | *str*                                                              | :heavy\_check\_mark: | N/A                                                                                                                                                         |
-| `slug`                     | *str*                                                              | :heavy\_check\_mark: | N/A                                                                                                                                                         |
-| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
-| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
-| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `author`                   | *str*                                                              | :heavy\_check\_mark: | The author/organization of the model                                                                                                                        | openai  |
+| `slug`                     | *str*                                                              | :heavy\_check\_mark: | The model slug                                                                                                                                              | gpt-4   |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
 ### Response
 

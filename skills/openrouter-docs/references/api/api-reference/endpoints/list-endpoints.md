@@ -21,11 +21,13 @@ paths:
       parameters:
         - name: author
           in: path
+          description: The author/organization of the model
           required: true
           schema:
             type: string
         - name: slug
           in: path
+          description: The model slug
           required: true
           schema:
             type: string
@@ -652,7 +654,7 @@ components:
 ```python
 import requests
 
-url = "https://openrouter.ai/api/v1/models/author/slug/endpoints"
+url = "https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints"
 
 headers = {"Authorization": "Bearer <token>"}
 
@@ -662,7 +664,7 @@ print(response.json())
 ```
 
 ```javascript
-const url = 'https://openrouter.ai/api/v1/models/author/slug/endpoints';
+const url = 'https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints';
 const options = {method: 'GET', headers: {Authorization: 'Bearer <token>'}};
 
 try {
@@ -685,7 +687,7 @@ import (
 
 func main() {
 
-	url := "https://openrouter.ai/api/v1/models/author/slug/endpoints"
+	url := "https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints"
 
 	req, _ := http.NewRequest("GET", url, nil)
 
@@ -706,7 +708,7 @@ func main() {
 require 'uri'
 require 'net/http'
 
-url = URI("https://openrouter.ai/api/v1/models/author/slug/endpoints")
+url = URI("https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -722,7 +724,7 @@ puts response.read_body
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/models/author/slug/endpoints")
+HttpResponse<String> response = Unirest.get("https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints")
   .header("Authorization", "Bearer <token>")
   .asString();
 ```
@@ -733,7 +735,7 @@ require_once('vendor/autoload.php');
 
 $client = new \GuzzleHttp\Client();
 
-$response = $client->request('GET', 'https://openrouter.ai/api/v1/models/author/slug/endpoints', [
+$response = $client->request('GET', 'https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints', [
   'headers' => [
     'Authorization' => 'Bearer <token>',
   ],
@@ -745,7 +747,7 @@ echo $response->getBody();
 ```csharp
 using RestSharp;
 
-var client = new RestClient("https://openrouter.ai/api/v1/models/author/slug/endpoints");
+var client = new RestClient("https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints");
 var request = new RestRequest(Method.GET);
 request.AddHeader("Authorization", "Bearer <token>");
 IRestResponse response = client.Execute(request);
@@ -756,7 +758,7 @@ import Foundation
 
 let headers = ["Authorization": "Bearer <token>"]
 
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/models/author/slug/endpoints")! as URL,
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/models/openai/gpt-4/endpoints")! as URL,
                                         cachePolicy: .useProtocolCachePolicy,
                                     timeoutInterval: 10.0)
 request.httpMethod = "GET"

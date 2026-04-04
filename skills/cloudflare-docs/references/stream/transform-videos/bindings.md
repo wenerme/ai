@@ -45,6 +45,8 @@ To bind Media Transformations to your Worker, add the following to the end of yo
 * [  wrangler.jsonc ](#tab-panel-6587)
 * [  wrangler.toml ](#tab-panel-6588)
 
+JSONC
+
 ```
 
 {
@@ -61,6 +63,8 @@ To bind Media Transformations to your Worker, add the following to the end of yo
 
 
 ```
+
+TOML
 
 ```
 
@@ -338,6 +342,8 @@ To enable usage in local development, add `remote` to the binding configuration:
 * [  wrangler.jsonc ](#tab-panel-6589)
 * [  wrangler.toml ](#tab-panel-6590)
 
+JSONC
+
 ```
 
 {
@@ -356,6 +362,8 @@ To enable usage in local development, add `remote` to the binding configuration:
 
 
 ```
+
+TOML
 
 ```
 

@@ -869,6 +869,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 * [  wrangler.jsonc ](#tab-panel-2928)
 * [  wrangler.toml ](#tab-panel-2929)
 
+JSONC
+
 ```
 
 {
@@ -879,7 +881,7 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -910,6 +912,8 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
+TOML
+
 ```
 
 name = "expense-approval"
@@ -918,7 +922,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

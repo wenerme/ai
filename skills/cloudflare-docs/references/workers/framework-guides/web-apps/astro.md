@@ -152,20 +152,22 @@ If your Astro project is entirely pre-rendered, follow these steps:
 In your project root, create a Wrangler configuration file with the following content:  
    * [  wrangler.jsonc ](#tab-panel-7396)  
    * [  wrangler.toml ](#tab-panel-7397)  
+JSONC  
 ```  
 {  
   "name": "my-astro-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "assets": {  
     "directory": "./dist"  
   }  
 }  
 ```  
+TOML  
 ```  
 name = "my-astro-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 [assets]  
 directory = "./dist"  
 ```  
@@ -222,13 +224,14 @@ _routes.json
 In your project root, create a Wrangler configuration file with the following content:  
    * [  wrangler.jsonc ](#tab-panel-7400)  
    * [  wrangler.toml ](#tab-panel-7401)  
+JSONC  
 ```  
 {  
   "name": "my-astro-app",  
   "main": "./dist/_worker.js/index.js",  
   // Update to today's date  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "compatibility_flags": ["nodejs_compat"],  
   "assets": {  
     "binding": "ASSETS",  
@@ -239,11 +242,12 @@ In your project root, create a Wrangler configuration file with the following co
   }  
 }  
 ```  
+TOML  
 ```  
 name = "my-astro-app"  
 main = "./dist/_worker.js/index.js"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 binding = "ASSETS"  
@@ -320,6 +324,8 @@ To serve a custom 404 page for your Astro site, add `not_found_handling` to your
 * [  wrangler.jsonc ](#tab-panel-7398)
 * [  wrangler.toml ](#tab-panel-7399)
 
+JSONC
+
 ```
 
 {
@@ -336,6 +342,8 @@ To serve a custom 404 page for your Astro site, add `not_found_handling` to your
 
 
 ```
+
+TOML
 
 ```
 

@@ -96,6 +96,8 @@ To bind your R2 bucket to your Worker, add the following to your Wrangler file. 
 * [  wrangler.jsonc ](#tab-panel-5760)
 * [  wrangler.toml ](#tab-panel-5761)
 
+JSONC
+
 ```
 
 {
@@ -116,6 +118,8 @@ To bind your R2 bucket to your Worker, add the following to your Wrangler file. 
 
 
 ```
+
+TOML
 
 ```
 

@@ -420,6 +420,8 @@ Add an R2 bucket binding to your Wrangler configuration:
 * [  wrangler.jsonc ](#tab-panel-6419)
 * [  wrangler.toml ](#tab-panel-6420)
 
+JSONC
+
 ```
 
 {
@@ -440,6 +442,8 @@ Add an R2 bucket binding to your Wrangler configuration:
 
 
 ```
+
+TOML
 
 ```
 

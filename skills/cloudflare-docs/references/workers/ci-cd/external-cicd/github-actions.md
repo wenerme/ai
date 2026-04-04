@@ -58,6 +58,8 @@ Don't store the value of `CLOUDFLARE_API_TOKEN` in your repository, as it gives 
 
 Cloudflare provides [an official action ↗](https://github.com/cloudflare/wrangler-action) for deploying Workers. Refer to the following example workflow which deploys your Worker on push to the `main` branch.
 
+YAML
+
 ```
 
 name: Deploy Worker

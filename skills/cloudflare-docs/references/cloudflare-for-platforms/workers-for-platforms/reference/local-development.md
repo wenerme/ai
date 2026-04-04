@@ -35,6 +35,8 @@ In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespac
 * [  wrangler.jsonc ](#tab-panel-3384)
 * [  wrangler.toml ](#tab-panel-3385)
 
+JSONC
+
 ```
 
 {
@@ -57,6 +59,8 @@ In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespac
 
 
 ```
+
+TOML
 
 ```
 

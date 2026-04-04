@@ -37,13 +37,13 @@ paths:
           description: Number of records to skip for pagination
           required: false
           schema:
-            type: string
+            type: integer
         - name: limit
           in: query
           description: Maximum number of records to return (max 100)
           required: false
           schema:
-            type: string
+            type: integer
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -56,8 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/Guardrails_listGuardrailMemberAssignments_Response_200
+                $ref: '#/components/schemas/ListMemberAssignmentsResponse'
         '401':
           description: Unauthorized - Missing or invalid authentication
           content:
@@ -80,7 +79,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GuardrailsIdAssignmentsMembersGetResponsesContentApplicationJsonSchemaDataItems:
+    MemberAssignment:
       type: object
       properties:
         id:
@@ -112,16 +111,14 @@ components:
         - guardrail_id
         - assigned_by
         - created_at
-      title: >-
-        GuardrailsIdAssignmentsMembersGetResponsesContentApplicationJsonSchemaDataItems
-    Guardrails_listGuardrailMemberAssignments_Response_200:
+      title: MemberAssignment
+    ListMemberAssignmentsResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: >-
-              #/components/schemas/GuardrailsIdAssignmentsMembersGetResponsesContentApplicationJsonSchemaDataItems
+            $ref: '#/components/schemas/MemberAssignment'
           description: List of member assignments
         total_count:
           type: integer
@@ -129,7 +126,7 @@ components:
       required:
         - data
         - total_count
-      title: Guardrails_listGuardrailMemberAssignments_Response_200
+      title: ListMemberAssignmentsResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:

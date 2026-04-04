@@ -27,6 +27,8 @@ The [compatibility\_date](https://developers.cloudflare.com/workers/configuratio
 * [  wrangler.jsonc ](#tab-panel-6992)
 * [  wrangler.toml ](#tab-panel-6993)
 
+JSONC
+
 ```
 
 {
@@ -37,7 +39,7 @@ The [compatibility\_date](https://developers.cloudflare.com/workers/configuratio
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -45,6 +47,8 @@ The [compatibility\_date](https://developers.cloudflare.com/workers/configuratio
 
 
 ```
+
+TOML
 
 ```
 
@@ -54,7 +58,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -70,6 +74,8 @@ The [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/node
 * [  wrangler.jsonc ](#tab-panel-6994)
 * [  wrangler.toml ](#tab-panel-6995)
 
+JSONC
+
 ```
 
 {
@@ -80,7 +86,7 @@ The [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/node
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -88,6 +94,8 @@ The [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/node
 
 
 ```
+
+TOML
 
 ```
 
@@ -97,7 +105,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -190,6 +198,8 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 * [  wrangler.jsonc ](#tab-panel-6996)
 * [  wrangler.toml ](#tab-panel-6997)
 
+JSONC
+
 ```
 
 {
@@ -200,7 +210,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -223,6 +233,8 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
@@ -231,7 +243,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -287,6 +299,8 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 * [  wrangler.jsonc ](#tab-panel-7006)
 * [  wrangler.toml ](#tab-panel-7007)
 
+JSONC
+
 ```
 
 {
@@ -297,7 +311,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -344,6 +358,8 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 
 ```
 
+TOML
+
 ```
 
 name = "my-api"
@@ -352,7 +368,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -424,6 +440,8 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 * [  wrangler.jsonc ](#tab-panel-7002)
 * [  wrangler.toml ](#tab-panel-7003)
 
+JSONC
+
 ```
 
 {
@@ -434,7 +452,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -459,6 +477,8 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
@@ -467,7 +487,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1234,6 +1254,8 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 * [  wrangler.jsonc ](#tab-panel-6998)
 * [  wrangler.toml ](#tab-panel-6999)
 
+JSONC
+
 ```
 
 {
@@ -1244,7 +1266,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1256,6 +1278,8 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
@@ -1264,7 +1288,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1635,6 +1659,8 @@ For a purely static site, point `assets.directory` at your build output. No Work
 * [  wrangler.jsonc ](#tab-panel-7000)
 * [  wrangler.toml ](#tab-panel-7001)
 
+JSONC
+
 ```
 
 {
@@ -1645,7 +1671,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1661,13 +1687,15 @@ For a purely static site, point `assets.directory` at your build output. No Work
 
 ```
 
+TOML
+
 ```
 
 name = "my-static-site"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1694,6 +1722,8 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 * [  wrangler.jsonc ](#tab-panel-7008)
 * [  wrangler.toml ](#tab-panel-7009)
 
+JSONC
+
 ```
 
 {
@@ -1704,7 +1734,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1736,6 +1766,8 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 
 ```
 
+TOML
+
 ```
 
 name = "my-worker"
@@ -1744,7 +1776,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

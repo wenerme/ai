@@ -48,7 +48,9 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.list();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -75,7 +77,9 @@ async function run() {
   const res = await guardrailsList(openRouter);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("guardrailsList failed:", res.error);
   }
@@ -125,7 +129,7 @@ const openRouter = new OpenRouter({
 
 async function run() {
   const result = await openRouter.guardrails.create({
-    requestBody: {
+    createGuardrailRequest: {
       name: "My New Guardrail",
     },
   });
@@ -155,7 +159,7 @@ const openRouter = new OpenRouterCore({
 
 async function run() {
   const res = await guardrailsCreate(openRouter, {
-    requestBody: {
+    createGuardrailRequest: {
       name: "My New Guardrail",
     },
   });
@@ -181,7 +185,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateGuardrailResponse](/docs/sdks/typescript/api-reference/operations/createguardrailresponse)>**
+**Promise\<[models.CreateGuardrailResponse](/docs/sdks/typescript/api-reference/models/createguardrailresponse)>**
 
 ### Errors
 
@@ -264,7 +268,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetGuardrailResponse](/docs/sdks/typescript/api-reference/operations/getguardrailresponse)>**
+**Promise\<[models.GetGuardrailResponse](/docs/sdks/typescript/api-reference/models/getguardrailresponse)>**
 
 ### Errors
 
@@ -296,7 +300,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.update({
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {},
+    updateGuardrailRequest: {},
   });
 
   console.log(result);
@@ -325,7 +329,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await guardrailsUpdate(openRouter, {
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {},
+    updateGuardrailRequest: {},
   });
   if (res.ok) {
     const { value: result } = res;
@@ -349,7 +353,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.UpdateGuardrailResponse](/docs/sdks/typescript/api-reference/operations/updateguardrailresponse)>**
+**Promise\<[models.UpdateGuardrailResponse](/docs/sdks/typescript/api-reference/models/updateguardrailresponse)>**
 
 ### Errors
 
@@ -433,7 +437,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteGuardrailResponse](/docs/sdks/typescript/api-reference/operations/deleteguardrailresponse)>**
+**Promise\<[models.DeleteGuardrailResponse](/docs/sdks/typescript/api-reference/models/deleteguardrailresponse)>**
 
 ### Errors
 
@@ -465,7 +469,9 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.listKeyAssignments();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -492,7 +498,9 @@ async function run() {
   const res = await guardrailsListKeyAssignments(openRouter);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("guardrailsListKeyAssignments failed:", res.error);
   }
@@ -543,7 +551,9 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.listMemberAssignments();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -570,7 +580,9 @@ async function run() {
   const res = await guardrailsListMemberAssignments(openRouter);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("guardrailsListMemberAssignments failed:", res.error);
   }
@@ -623,7 +635,9 @@ async function run() {
     id: "550e8400-e29b-41d4-a716-446655440000",
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -652,7 +666,9 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("guardrailsListGuardrailKeyAssignments failed:", res.error);
   }
@@ -704,7 +720,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.bulkAssignKeys({
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkAssignKeysRequest: {
       keyHashes: [
         "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93",
       ],
@@ -737,7 +753,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await guardrailsBulkAssignKeys(openRouter, {
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkAssignKeysRequest: {
       keyHashes: [
         "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93",
       ],
@@ -765,7 +781,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.BulkAssignKeysToGuardrailResponse](/docs/sdks/typescript/api-reference/operations/bulkassignkeystoguardrailresponse)>**
+**Promise\<[models.BulkAssignKeysResponse](/docs/sdks/typescript/api-reference/models/bulkassignkeysresponse)>**
 
 ### Errors
 
@@ -800,7 +816,9 @@ async function run() {
     id: "550e8400-e29b-41d4-a716-446655440000",
   });
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -829,7 +847,9 @@ async function run() {
   });
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("guardrailsListGuardrailMemberAssignments failed:", res.error);
   }
@@ -881,7 +901,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.bulkAssignMembers({
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkAssignMembersRequest: {
       memberUserIds: [
         "user_abc123",
         "user_def456",
@@ -915,7 +935,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await guardrailsBulkAssignMembers(openRouter, {
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkAssignMembersRequest: {
       memberUserIds: [
         "user_abc123",
         "user_def456",
@@ -944,7 +964,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.BulkAssignMembersToGuardrailResponse](/docs/sdks/typescript/api-reference/operations/bulkassignmemberstoguardrailresponse)>**
+**Promise\<[models.BulkAssignMembersResponse](/docs/sdks/typescript/api-reference/models/bulkassignmembersresponse)>**
 
 ### Errors
 
@@ -977,7 +997,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.bulkUnassignKeys({
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkUnassignKeysRequest: {
       keyHashes: [
         "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93",
       ],
@@ -1010,7 +1030,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await guardrailsBulkUnassignKeys(openRouter, {
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkUnassignKeysRequest: {
       keyHashes: [
         "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93",
       ],
@@ -1038,7 +1058,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.BulkUnassignKeysFromGuardrailResponse](/docs/sdks/typescript/api-reference/operations/bulkunassignkeysfromguardrailresponse)>**
+**Promise\<[models.BulkUnassignKeysResponse](/docs/sdks/typescript/api-reference/models/bulkunassignkeysresponse)>**
 
 ### Errors
 
@@ -1071,7 +1091,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.bulkUnassignMembers({
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkUnassignMembersRequest: {
       memberUserIds: [
         "user_abc123",
         "user_def456",
@@ -1105,7 +1125,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await guardrailsBulkUnassignMembers(openRouter, {
     id: "550e8400-e29b-41d4-a716-446655440000",
-    requestBody: {
+    bulkUnassignMembersRequest: {
       memberUserIds: [
         "user_abc123",
         "user_def456",
@@ -1134,7 +1154,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.BulkUnassignMembersFromGuardrailResponse](/docs/sdks/typescript/api-reference/operations/bulkunassignmembersfromguardrailresponse)>**
+**Promise\<[models.BulkUnassignMembersResponse](/docs/sdks/typescript/api-reference/models/bulkunassignmembersresponse)>**
 
 ### Errors
 

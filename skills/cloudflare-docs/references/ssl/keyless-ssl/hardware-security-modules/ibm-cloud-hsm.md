@@ -196,6 +196,8 @@ Lastly, we need to modify the configuration file that the key server will read o
 
 Open `/etc/keyless/gokeyless.yaml` and immediately after:
 
+YAML
+
 ```
 
 private_key_stores:
@@ -206,6 +208,8 @@ private_key_stores:
 ```
 
 add:
+
+YAML
 
 ```
 

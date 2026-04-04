@@ -162,6 +162,8 @@ Add the Durable Object binding and migration:
 * [  wrangler.jsonc ](#tab-panel-2860)
 * [  wrangler.toml ](#tab-panel-2861)
 
+JSONC
+
 ```
 
 {
@@ -172,7 +174,7 @@ Add the Durable Object binding and migration:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -211,6 +213,8 @@ Add the Durable Object binding and migration:
 
 ```
 
+TOML
+
 ```
 
 name = "my-existing-project"
@@ -219,7 +223,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -526,6 +530,8 @@ Configure assets in the Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-2858)
 * [  wrangler.toml ](#tab-panel-2859)
 
+JSONC
+
 ```
 
 {
@@ -540,6 +546,8 @@ Configure assets in the Wrangler configuration file:
 
 
 ```
+
+TOML
 
 ```
 
@@ -784,6 +792,8 @@ Update the Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-2866)
 * [  wrangler.toml ](#tab-panel-2867)
 
+JSONC
+
 ```
 
 {
@@ -818,6 +828,8 @@ Update the Wrangler configuration file:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1092,6 +1104,8 @@ Add the migration to the Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-2862)
 * [  wrangler.toml ](#tab-panel-2863)
 
+JSONC
+
 ```
 
 {
@@ -1112,6 +1126,8 @@ Add the migration to the Wrangler configuration file:
 
 
 ```
+
+TOML
 
 ```
 

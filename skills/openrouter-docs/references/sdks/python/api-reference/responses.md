@@ -34,7 +34,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.beta.responses.send(service_tier="auto", stream=False)
+    res = open_router.beta.responses.send(input="Tell me a joke", model="openai/gpt-4o", service_tier="auto", stream=False)
 
     with res as event_stream:
         for event in event_stream:

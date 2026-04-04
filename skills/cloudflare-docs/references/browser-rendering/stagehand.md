@@ -69,6 +69,8 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 * [  wrangler.jsonc ](#tab-panel-3274)
 * [  wrangler.toml ](#tab-panel-3275)
 
+JSONC
+
 ```
 
   {
@@ -81,7 +83,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 
     // Set this to today's date
 
-    "compatibility_date": "2026-04-02",
+    "compatibility_date": "2026-04-03",
 
     "observability": {
 
@@ -106,6 +108,8 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 
 ```
 
+TOML
+
 ```
 
 name = "stagehand-example"
@@ -116,7 +120,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [observability]
@@ -162,6 +166,8 @@ export default defineConfig({
 ```
 
 If you are not using the Cloudflare Vite plugin, you need to include the following [module alias ↗](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) to the wrangler configuration:
+
+JSONC
 
 ```
 

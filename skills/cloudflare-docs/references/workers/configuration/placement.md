@@ -21,6 +21,8 @@ By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Fun
 * [  wrangler.jsonc ](#tab-panel-7077)
 * [  wrangler.toml ](#tab-panel-7078)
 
+JSONC
+
 ```
 
 {
@@ -43,6 +45,8 @@ By default, [Workers](https://developers.cloudflare.com/workers/) and [Pages Fun
 
 
 ```
+
+TOML
 
 ```
 
@@ -108,6 +112,8 @@ Add the following to your Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-7075)
 * [  wrangler.toml ](#tab-panel-7076)
 
+JSONC
+
 ```
 
 {
@@ -122,6 +128,8 @@ Add the following to your Wrangler configuration file:
 
 
 ```
+
+TOML
 
 ```
 
@@ -210,6 +218,8 @@ If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` pr
 * [  wrangler.jsonc ](#tab-panel-7079)
 * [  wrangler.toml ](#tab-panel-7080)
 
+JSONC
+
 ```
 
 {
@@ -224,6 +234,8 @@ If your infrastructure runs in AWS, GCP, or Azure, set the `placement.region` pr
 
 
 ```
+
+TOML
 
 ```
 
@@ -249,6 +261,8 @@ Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT 
 * [  wrangler.jsonc ](#tab-panel-7081)
 * [  wrangler.toml ](#tab-panel-7082)
 
+JSONC
+
 ```
 
 {
@@ -264,6 +278,8 @@ Set `placement.host` to identify a layer 4 service. Cloudflare uses TCP CONNECT 
 
 ```
 
+TOML
+
 ```
 
 [placement]
@@ -277,6 +293,8 @@ Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEA
 
 * [  wrangler.jsonc ](#tab-panel-7083)
 * [  wrangler.toml ](#tab-panel-7084)
+
+JSONC
 
 ```
 
@@ -292,6 +310,8 @@ Set `placement.hostname` to identify a layer 7 service. Cloudflare uses HTTP HEA
 
 
 ```
+
+TOML
 
 ```
 
@@ -362,6 +382,8 @@ This example shows two Workers:
 * [  wrangler.jsonc ](#tab-panel-7085)
 * [  wrangler.toml ](#tab-panel-7086)
 
+JSONC
+
 ```
 
 {
@@ -376,6 +398,8 @@ This example shows two Workers:
 
 
 ```
+
+TOML
 
 ```
 
@@ -452,6 +476,8 @@ async function validateToken(token: string): Promise<string | null> {
 * [  wrangler.jsonc ](#tab-panel-7087)
 * [  wrangler.toml ](#tab-panel-7088)
 
+JSONC
+
 ```
 
 {
@@ -478,6 +504,8 @@ async function validateToken(token: string): Promise<string | null> {
 
 
 ```
+
+TOML
 
 ```
 

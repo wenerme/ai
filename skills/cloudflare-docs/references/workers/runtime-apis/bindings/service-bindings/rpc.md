@@ -39,6 +39,8 @@ For example, if Worker B implements the public method `add(a, b)`:
 * [  wrangler.jsonc ](#tab-panel-7558)
 * [  wrangler.toml ](#tab-panel-7559)
 
+JSONC
+
 ```
 
 {
@@ -53,6 +55,8 @@ For example, if Worker B implements the public method `add(a, b)`:
 
 
 ```
+
+TOML
 
 ```
 
@@ -149,6 +153,8 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 * [  wrangler.jsonc ](#tab-panel-7560)
 * [  wrangler.toml ](#tab-panel-7561)
 
+JSONC
+
 ```
 
 {
@@ -175,6 +181,8 @@ Worker A can declare a [binding](https://developers.cloudflare.com/workers/runti
 
 
 ```
+
+TOML
 
 ```
 
@@ -289,6 +297,8 @@ For example, a Worker that declares a binding to the [environment variable](http
 * [  wrangler.jsonc ](#tab-panel-7548)
 * [  wrangler.toml ](#tab-panel-7549)
 
+JSONC
+
 ```
 
 {
@@ -307,6 +317,8 @@ For example, a Worker that declares a binding to the [environment variable](http
 
 
 ```
+
+TOML
 
 ```
 
@@ -478,6 +490,8 @@ You can use this to group multiple pieces of compute together. For example, you 
 * [  wrangler.jsonc ](#tab-panel-7550)
 * [  wrangler.toml ](#tab-panel-7551)
 
+JSONC
+
 ```
 
 {
@@ -504,6 +518,8 @@ You can use this to group multiple pieces of compute together. For example, you 
 
 
 ```
+
+TOML
 
 ```
 
@@ -608,6 +624,8 @@ You can then declare a Service binding directly to `AdminEntrypoint` in another 
 * [  wrangler.jsonc ](#tab-panel-7554)
 * [  wrangler.toml ](#tab-panel-7555)
 
+JSONC
+
 ```
 
 {
@@ -634,6 +652,8 @@ You can then declare a Service binding directly to `AdminEntrypoint` in another 
 
 
 ```
+
+TOML
 
 ```
 

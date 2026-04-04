@@ -31,6 +31,8 @@ This flag is automatically enabled for Workers using a [compatibility date](http
 * [  wrangler.jsonc ](#tab-panel-7596)
 * [  wrangler.toml ](#tab-panel-7597)
 
+JSONC
+
 ```
 
 {
@@ -48,6 +50,8 @@ This flag is automatically enabled for Workers using a [compatibility date](http
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_modules" ]
@@ -63,6 +67,8 @@ This flag is automatically enabled for Workers using a [compatibility date](http
 
 * [  wrangler.jsonc ](#tab-panel-7598)
 * [  wrangler.toml ](#tab-panel-7599)
+
+JSONC
 
 ```
 
@@ -81,6 +87,8 @@ This flag is automatically enabled for Workers using a [compatibility date](http
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
@@ -92,6 +100,8 @@ To use both client-side and server-side methods, enable both flags:
 
 * [  wrangler.jsonc ](#tab-panel-7600)
 * [  wrangler.toml ](#tab-panel-7601)
+
+JSONC
 
 ```
 
@@ -111,6 +121,8 @@ To use both client-side and server-side methods, enable both flags:
 
 
 ```
+
+TOML
 
 ```
 

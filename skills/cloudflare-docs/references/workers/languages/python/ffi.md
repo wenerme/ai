@@ -33,6 +33,8 @@ For example, to access a [KV](https://developers.cloudflare.com/kv) namespace fr
 * [  wrangler.jsonc ](#tab-panel-7438)
 * [  wrangler.toml ](#tab-panel-7439)
 
+JSONC
+
 ```
 
 {
@@ -55,6 +57,8 @@ For example, to access a [KV](https://developers.cloudflare.com/kv) namespace fr
 
 
 ```
+
+TOML
 
 ```
 

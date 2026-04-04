@@ -366,6 +366,8 @@ Create an ARB JSON file with a `@locale` key and the string keys you want to ove
 
 **2\. Register the asset** in `pubspec.yaml`:
 
+YAML
+
 ```
 
 flutter:

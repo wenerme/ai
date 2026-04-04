@@ -341,6 +341,8 @@ Create or update your [Wrangler configuration file](https://developers.cloudflar
 * [  wrangler.jsonc ](#tab-panel-3382)
 * [  wrangler.toml ](#tab-panel-3383)
 
+JSONC
+
 ```
 
 {
@@ -353,7 +355,7 @@ Create or update your [Wrangler configuration file](https://developers.cloudflar
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -368,6 +370,8 @@ Create or update your [Wrangler configuration file](https://developers.cloudflar
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -378,7 +382,7 @@ main = "./src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]

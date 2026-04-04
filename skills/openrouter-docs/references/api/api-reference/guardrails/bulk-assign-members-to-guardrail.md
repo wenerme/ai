@@ -45,8 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/Guardrails_bulkAssignMembersToGuardrail_Response_200
+                $ref: '#/components/schemas/BulkAssignMembersResponse'
         '400':
           description: Bad Request - Invalid input
           content:
@@ -75,20 +74,23 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                member_user_ids:
-                  type: array
-                  items:
-                    type: string
-                  description: Array of member user IDs to assign to the guardrail
-              required:
-                - member_user_ids
+              $ref: '#/components/schemas/BulkAssignMembersRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    Guardrails_bulkAssignMembersToGuardrail_Response_200:
+    BulkAssignMembersRequest:
+      type: object
+      properties:
+        member_user_ids:
+          type: array
+          items:
+            type: string
+          description: Array of member user IDs to assign to the guardrail
+      required:
+        - member_user_ids
+      title: BulkAssignMembersRequest
+    BulkAssignMembersResponse:
       type: object
       properties:
         assigned_count:
@@ -96,7 +98,7 @@ components:
           description: Number of members successfully assigned
       required:
         - assigned_count
-      title: Guardrails_bulkAssignMembersToGuardrail_Response_200
+      title: BulkAssignMembersResponse
     BadRequestResponseErrorData:
       type: object
       properties:

@@ -79,6 +79,8 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 * [  wrangler.jsonc ](#tab-panel-3280)
 * [  wrangler.toml ](#tab-panel-3281)
 
+JSONC
+
 ```
 
 {
@@ -91,7 +93,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -110,6 +112,8 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -120,7 +124,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

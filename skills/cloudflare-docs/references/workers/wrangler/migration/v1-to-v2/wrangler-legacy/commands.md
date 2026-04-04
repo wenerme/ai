@@ -607,6 +607,8 @@ A Wrangler file with two environments:
 * [  wrangler.jsonc ](#tab-panel-8486)
 * [  wrangler.toml ](#tab-panel-8487)
 
+JSONC
+
 ```
 
 {
@@ -651,6 +653,8 @@ A Wrangler file with two environments:
 
 
 ```
+
+TOML
 
 ```
 
@@ -711,6 +715,8 @@ Most `kv` subcommands also allow you to specify an environment with the optional
 * [  wrangler.jsonc ](#tab-panel-8488)
 * [  wrangler.toml ](#tab-panel-8489)
 
+JSONC
+
 ```
 
 {
@@ -765,6 +771,8 @@ Most `kv` subcommands also allow you to specify an environment with the optional
 
 
 ```
+
+TOML
 
 ```
 

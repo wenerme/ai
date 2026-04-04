@@ -343,6 +343,7 @@ Deploy your new microfrontend as a separate Worker. This can be a [framework app
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**  
    * [  wrangler.jsonc ](#tab-panel-7402)  
    * [  wrangler.toml ](#tab-panel-7403)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
@@ -354,6 +355,7 @@ Deploy your new microfrontend as a separate Worker. This can be a [framework app
   ]  
 }  
 ```  
+TOML  
 ```  
 [[services]]  
 binding = "MICROFRONTEND_C"  
@@ -390,6 +392,8 @@ For each microfrontend you want to run remotely while in local dev, configure it
 * [  wrangler.jsonc ](#tab-panel-7404)
 * [  wrangler.toml ](#tab-panel-7405)
 
+JSONC
+
 ```
 
 {
@@ -412,6 +416,8 @@ For each microfrontend you want to run remotely while in local dev, configure it
 
 
 ```
+
+TOML
 
 ```
 

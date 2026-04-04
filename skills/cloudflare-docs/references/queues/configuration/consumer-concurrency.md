@@ -92,6 +92,8 @@ To set a fixed maximum number of concurrent consumer invocations for a given que
 * [  wrangler.jsonc ](#tab-panel-5629)
 * [  wrangler.toml ](#tab-panel-5630)
 
+JSONC
+
 ```
 
 {
@@ -116,6 +118,8 @@ To set a fixed maximum number of concurrent consumer invocations for a given que
 
 
 ```
+
+TOML
 
 ```
 

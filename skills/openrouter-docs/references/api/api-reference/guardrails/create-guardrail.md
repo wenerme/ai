@@ -37,7 +37,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Guardrails_createGuardrail_Response_201'
+                $ref: '#/components/schemas/CreateGuardrailResponse'
         '400':
           description: Bad Request - Invalid request parameters
           content:
@@ -60,75 +60,74 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: Name for the new guardrail
-                description:
-                  type:
-                    - string
-                    - 'null'
-                  description: Description of the guardrail
-                limit_usd:
-                  type: number
-                  format: double
-                  description: Spending limit in USD
-                reset_interval:
-                  oneOf:
-                    - $ref: >-
-                        #/components/schemas/GuardrailsPostRequestBodyContentApplicationJsonSchemaResetInterval
-                    - type: 'null'
-                  description: Interval at which the limit resets (daily, weekly, monthly)
-                allowed_providers:
-                  type:
-                    - array
-                    - 'null'
-                  items:
-                    type: string
-                  description: List of allowed provider IDs
-                ignored_providers:
-                  type:
-                    - array
-                    - 'null'
-                  items:
-                    type: string
-                  description: List of provider IDs to exclude from routing
-                allowed_models:
-                  type:
-                    - array
-                    - 'null'
-                  items:
-                    type: string
-                  description: Array of model identifiers (slug or canonical_slug accepted)
-                enforce_zdr:
-                  type:
-                    - boolean
-                    - 'null'
-                  description: Whether to enforce zero data retention
-              required:
-                - name
+              $ref: '#/components/schemas/CreateGuardrailRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GuardrailsPostRequestBodyContentApplicationJsonSchemaResetInterval:
+    CreateGuardrailRequestResetInterval:
+      type: object
+      properties: {}
+      title: CreateGuardrailRequestResetInterval
+    CreateGuardrailRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name for the new guardrail
+        description:
+          type:
+            - string
+            - 'null'
+          description: Description of the guardrail
+        limit_usd:
+          type: number
+          format: double
+          description: Spending limit in USD
+        reset_interval:
+          $ref: '#/components/schemas/CreateGuardrailRequestResetInterval'
+        allowed_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of allowed provider IDs
+        ignored_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of provider IDs to exclude from routing
+        allowed_models:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: Array of model identifiers (slug or canonical_slug accepted)
+        enforce_zdr:
+          type:
+            - boolean
+            - 'null'
+          description: Whether to enforce zero data retention
+      required:
+        - name
+      title: CreateGuardrailRequest
+    GuardrailInterval:
       type: string
       enum:
         - daily
         - weekly
         - monthly
       description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailsPostRequestBodyContentApplicationJsonSchemaResetInterval
-    GuardrailsPostResponsesContentApplicationJsonSchemaDataResetInterval:
-      type: string
-      enum:
-        - daily
-        - weekly
-        - monthly
-      description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailsPostResponsesContentApplicationJsonSchemaDataResetInterval
-    GuardrailsPostResponsesContentApplicationJsonSchemaData:
+      title: GuardrailInterval
+    CreateGuardrailResponseDataResetInterval:
+      type: object
+      properties: {}
+      title: CreateGuardrailResponseDataResetInterval
+    CreateGuardrailResponseData:
       type: object
       properties:
         id:
@@ -148,11 +147,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/GuardrailsPostResponsesContentApplicationJsonSchemaDataResetInterval
-            - type: 'null'
-          description: Interval at which the limit resets (daily, weekly, monthly)
+          $ref: '#/components/schemas/CreateGuardrailResponseDataResetInterval'
         allowed_providers:
           type:
             - array
@@ -191,18 +186,15 @@ components:
         - id
         - name
         - created_at
-      description: The created guardrail
-      title: GuardrailsPostResponsesContentApplicationJsonSchemaData
-    Guardrails_createGuardrail_Response_201:
+      title: CreateGuardrailResponseData
+    CreateGuardrailResponse:
       type: object
       properties:
         data:
-          $ref: >-
-            #/components/schemas/GuardrailsPostResponsesContentApplicationJsonSchemaData
-          description: The created guardrail
+          $ref: '#/components/schemas/CreateGuardrailResponseData'
       required:
         - data
-      title: Guardrails_createGuardrail_Response_201
+      title: CreateGuardrailResponse
     BadRequestResponseErrorData:
       type: object
       properties:

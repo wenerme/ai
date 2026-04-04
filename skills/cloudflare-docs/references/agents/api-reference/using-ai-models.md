@@ -285,6 +285,8 @@ Your Wrangler configuration needs an `ai` binding:
 * [  wrangler.jsonc ](#tab-panel-2802)
 * [  wrangler.toml ](#tab-panel-2803)
 
+JSONC
+
 ```
 
 {
@@ -299,6 +301,8 @@ Your Wrangler configuration needs an `ai` binding:
 
 
 ```
+
+TOML
 
 ```
 
@@ -422,6 +426,8 @@ The `ai` binding in your Wrangler configuration is shared across both Workers AI
 * [  wrangler.jsonc ](#tab-panel-2804)
 * [  wrangler.toml ](#tab-panel-2805)
 
+JSONC
+
 ```
 
 {
@@ -436,6 +442,8 @@ The `ai` binding in your Wrangler configuration is shared across both Workers AI
 
 
 ```
+
+TOML
 
 ```
 

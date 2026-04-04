@@ -154,6 +154,8 @@ Update your Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-6969)
 * [  wrangler.toml ](#tab-panel-6970)
 
+JSONC
+
 ```
 
 {
@@ -166,7 +168,7 @@ Update your Wrangler configuration file:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "vpc_services": [
 
@@ -185,6 +187,8 @@ Update your Wrangler configuration file:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -195,7 +199,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[vpc_services]]

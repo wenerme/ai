@@ -100,6 +100,8 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 * [  wrangler.jsonc ](#tab-panel-4693)
 * [  wrangler.toml ](#tab-panel-4694)
 
+JSONC
+
 ```
 
 {
@@ -112,7 +114,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -139,6 +141,8 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -149,7 +153,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -194,6 +198,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4695)
 * [  wrangler.toml ](#tab-panel-4696)
 
+JSONC
+
 ```
 
 {
@@ -208,7 +214,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -227,13 +233,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

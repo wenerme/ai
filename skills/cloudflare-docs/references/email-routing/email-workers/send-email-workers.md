@@ -23,6 +23,8 @@ Before you can bind an email address to your Worker, you need to [enable Email R
 * [  wrangler.jsonc ](#tab-panel-4587)
 * [  wrangler.toml ](#tab-panel-4588)
 
+JSONC
+
 ```
 
 {
@@ -43,6 +45,8 @@ Before you can bind an email address to your Worker, you need to [enable Email R
 
 
 ```
+
+TOML
 
 ```
 
@@ -69,6 +73,8 @@ You can add one or more types of bindings to your Wrangler file. However, each a
 
 * [  wrangler.jsonc ](#tab-panel-4589)
 * [  wrangler.toml ](#tab-panel-4590)
+
+JSONC
 
 ```
 
@@ -110,6 +116,8 @@ You can add one or more types of bindings to your Wrangler file. However, each a
 
 
 ```
+
+TOML
 
 ```
 

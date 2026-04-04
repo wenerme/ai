@@ -23,45 +23,6 @@ Copy page
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
 
   
-**Cloudflare One Client for Windows (version 2026.3.846.0)**   
-
-A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains minor fixes and improvements.
-
-The next stable release for Windows will introduce the new Cloudflare One Client UI, providing a cleaner and more intuitive design as well as easier access to common actions and information.
-
-**Changes and improvements**
-
-* Consumer-only CLI commands are now clearly distinguished from Zero Trust commands.
-* Added detailed QUIC connection metrics to diagnostic logs for better troubleshooting.
-* Added monitoring for tunnel statistics collection timeouts.
-* Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
-* Fixed packet capture failing on tunnel interface when the tunnel interface is renamed by SCCM VPN boundary support.
-* Fixed unnecessary registration deletion caused by RDP connections in multi-user mode.
-* Fixed increased tunnel interface start-up time due to a race between duplicate address detection (DAD) and disabling NetBT.
-* Fixed tunnel failing to connect when the system DNS search list contains unexpected characters.
-* Empty MDM files are now rejected instead of being incorrectly accepted as a single MDM config.
-* Fixed an issue in local proxy mode where the client could become unresponsive due to upstream connection timeouts.
-* Fixed an issue where the emergency disconnect status of a prior organization persisted after a switch to a different organization.
-* Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
-* Fixed an issue where degraded Windows Management Instrumentation (WMI) state could put the client in a failed connection state loop during initialization.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution. This warning will be omitted from future release notes. This Windows update was released in July 2025.
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later. This warning will be omitted from future release notes. This Microsoft Security Intelligence update was released in May 2025.
-* DNS resolution may be broken when the following conditions are all true:  
-   * The client is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while the client is connected.  
-To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
-
-## 2026-04-02
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
 **Cloudflare One Client for macOS (version 2026.3.846.0)**   
 
 A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
@@ -145,6 +106,27 @@ For example, you can create a policy that routes traffic differently for users w
 To get started, configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) on your identity provider and use the **OIDC Claims** selector in the Gateway policy builder.
 
 For more information, refer to [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/).
+
+## 2026-03-20
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Route MCP server portal traffic through Cloudflare Gateway**   
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) can now route traffic through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) for richer HTTP request logging and data loss prevention (DLP) scanning.
+
+When Gateway routing is turned on, portal traffic appears in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). You can create [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) with [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) to detect and block sensitive data sent to upstream MCP servers.
+
+Note
+
+DLP [AI prompt profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#ai-prompt) do not apply to MCP server portal traffic.
+
+To enable Gateway routing, go to **Access controls** \> **AI controls**, edit the portal, and turn on **Route traffic through Cloudflare Gateway** under **Basic information**.
+
+![Route MCP server portal traffic through Cloudflare Gateway](https://developers.cloudflare.com/_astro/portal-route-through-gateway.0KMUAXBm_Z1B5rry.webp) 
+
+For more details, refer to [Route traffic through Gateway](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#route-portal-traffic-through-gateway).
 
 ## 2026-03-20
 

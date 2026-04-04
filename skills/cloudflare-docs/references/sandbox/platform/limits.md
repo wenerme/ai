@@ -42,6 +42,8 @@ Enable WebSocket transport to multiplex all SDK calls over a single persistent c
 * [  wrangler.jsonc ](#tab-panel-6491)
 * [  wrangler.toml ](#tab-panel-6492)
 
+JSONC
+
 ```
 
 {
@@ -56,6 +58,8 @@ Enable WebSocket transport to multiplex all SDK calls over a single persistent c
 
 
 ```
+
+TOML
 
 ```
 

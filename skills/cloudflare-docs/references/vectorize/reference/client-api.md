@@ -345,6 +345,8 @@ Vectorize indexes are bound by name. A binding for an index named `production-do
 * [  wrangler.jsonc ](#tab-panel-6739)
 * [  wrangler.toml ](#tab-panel-6740)
 
+JSONC
+
 ```
 
 {
@@ -365,6 +367,8 @@ Vectorize indexes are bound by name. A binding for an index named `production-do
 
 
 ```
+
+TOML
 
 ```
 

@@ -122,6 +122,8 @@ Next, we need to add bindings to access our secrets, KV values, and environment 
 * [  wrangler.jsonc ](#tab-panel-4015)
 * [  wrangler.toml ](#tab-panel-4016)
 
+JSONC
+
 ```
 
 {
@@ -166,6 +168,8 @@ Next, we need to add bindings to access our secrets, KV values, and environment 
 
 
 ```
+
+TOML
 
 ```
 

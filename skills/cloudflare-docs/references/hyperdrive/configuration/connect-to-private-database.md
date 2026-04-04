@@ -205,6 +205,8 @@ To bind your Hyperdrive configuration to your Worker, add the following to the e
 * [  wrangler.jsonc ](#tab-panel-4650)
 * [  wrangler.toml ](#tab-panel-4651)
 
+JSONC
+
 ```
 
 {
@@ -225,6 +227,8 @@ To bind your Hyperdrive configuration to your Worker, add the following to the e
 
 
 ```
+
+TOML
 
 ```
 
@@ -248,6 +252,8 @@ If you wish to use a local database during development, you can add a `localConn
 * [  wrangler.jsonc ](#tab-panel-4652)
 * [  wrangler.toml ](#tab-panel-4653)
 
+JSONC
+
 ```
 
 {
@@ -270,6 +276,8 @@ If you wish to use a local database during development, you can add a `localConn
 
 
 ```
+
+TOML
 
 ```
 
@@ -346,6 +354,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4654)
 * [  wrangler.toml ](#tab-panel-4655)
 
+JSONC
+
 ```
 
 {
@@ -360,7 +370,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -379,13 +389,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]
@@ -511,6 +523,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4656)
 * [  wrangler.toml ](#tab-panel-4657)
 
+JSONC
+
 ```
 
 {
@@ -525,7 +539,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -544,13 +558,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

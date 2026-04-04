@@ -516,6 +516,8 @@ Delays can also be configured in the [Wrangler configuration file](https://devel
 * [  wrangler.jsonc ](#tab-panel-5602)
 * [  wrangler.toml ](#tab-panel-5603)
 
+JSONC
+
 ```
 
 {
@@ -554,6 +556,8 @@ Delays can also be configured in the [Wrangler configuration file](https://devel
 
 
 ```
+
+TOML
 
 ```
 

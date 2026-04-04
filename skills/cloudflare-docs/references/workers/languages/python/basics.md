@@ -103,6 +103,8 @@ For example, let us try setting and using an environment variable in a Python Wo
 * [  wrangler.jsonc ](#tab-panel-7436)
 * [  wrangler.toml ](#tab-panel-7437)
 
+JSONC
+
 ```
 
 {
@@ -121,7 +123,7 @@ For example, let us try setting and using an environment variable in a Python Wo
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "vars": {
 
@@ -133,6 +135,8 @@ For example, let us try setting and using an environment variable in a Python Wo
 
 
 ```
+
+TOML
 
 ```
 
@@ -146,7 +150,7 @@ compatibility_flags = [ "python_workers" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [vars]
@@ -218,6 +222,8 @@ Once you edit `src/entry.py`, [pywrangler](https://developers.cloudflare.com/wor
 When developing Python Workers, you can take advantage of type hints and autocompletion in your IDE.
 
 To enable them, install the `workers-runtime-sdk` package in your `pyproject.toml` file.
+
+TOML
 
 ```
 

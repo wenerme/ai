@@ -147,6 +147,8 @@ To toggle Preview URLs for a Worker, include any of the following in your Worker
 * [  wrangler.jsonc ](#tab-panel-7091)
 * [  wrangler.toml ](#tab-panel-7092)
 
+JSONC
+
 ```
 
 {
@@ -158,6 +160,8 @@ To toggle Preview URLs for a Worker, include any of the following in your Worker
 
 ```
 
+TOML
+
 ```
 
 preview_urls = true
@@ -167,6 +171,8 @@ preview_urls = true
 
 * [  wrangler.jsonc ](#tab-panel-7093)
 * [  wrangler.toml ](#tab-panel-7094)
+
+JSONC
 
 ```
 
@@ -178,6 +184,8 @@ preview_urls = true
 
 
 ```
+
+TOML
 
 ```
 

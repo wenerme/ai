@@ -58,6 +58,8 @@ Replace your `wrangler.jsonc` with:
 * [  wrangler.jsonc ](#tab-panel-2892)
 * [  wrangler.toml ](#tab-panel-2893)
 
+JSONC
+
 ```
 
 {
@@ -68,7 +70,7 @@ Replace your `wrangler.jsonc` with:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -87,6 +89,8 @@ Replace your `wrangler.jsonc` with:
 
 ```
 
+TOML
+
 ```
 
 name = "chat-agent"
@@ -95,7 +99,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

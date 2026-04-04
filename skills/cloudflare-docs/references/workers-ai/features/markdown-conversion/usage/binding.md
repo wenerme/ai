@@ -23,6 +23,8 @@ To use our Markdown Conversion service directly from your Workers, create an AI 
 * [  wrangler.jsonc ](#tab-panel-6929)
 * [  wrangler.toml ](#tab-panel-6930)
 
+JSONC
+
 ```
 
 {
@@ -39,6 +41,8 @@ To use our Markdown Conversion service directly from your Workers, create an AI 
 
 
 ```
+
+TOML
 
 ```
 

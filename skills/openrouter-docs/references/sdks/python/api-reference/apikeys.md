@@ -54,7 +54,7 @@ with OpenRouter(
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
 | `include_disabled`         | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Whether to include disabled API keys in the response                                                                                                        | false   |
-| `offset`                   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of API keys to skip for pagination                                                                                                                   | 0       |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of API keys to skip for pagination                                                                                                                   | 0       |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
 ### Response
@@ -80,6 +80,7 @@ Create a new API key for the authenticated user. [Management key](/docs/guides/o
 
 ```python
 from openrouter import OpenRouter
+from openrouter.utils import parse_datetime
 import os
 
 with OpenRouter(
@@ -89,7 +90,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.api_keys.create(name="My New API Key")
+    res = open_router.api_keys.create(name="My New API Key", limit=50, limit_reset="monthly", include_byok_in_limit=True, expires_at=parse_datetime("2027-12-31T23:59:59Z"))
 
     # Handle response
     print(res)
@@ -144,7 +145,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.api_keys.update(hash="f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943")
+    res = open_router.api_keys.update(hash="f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943", name="Updated API Key Name", disabled=False, limit=75, limit_reset="daily", include_byok_in_limit=True)
 
     # Handle response
     print(res)

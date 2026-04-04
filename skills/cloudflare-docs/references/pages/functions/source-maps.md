@@ -33,6 +33,8 @@ To enable source maps, provide the `--upload-source-maps` flag to [wrangler page
 * [  wrangler.jsonc ](#tab-panel-5459)
 * [  wrangler.toml ](#tab-panel-5460)
 
+JSONC
+
 ```
 
 {
@@ -43,6 +45,8 @@ To enable source maps, provide the `--upload-source-maps` flag to [wrangler page
 
 
 ```
+
+TOML
 
 ```
 

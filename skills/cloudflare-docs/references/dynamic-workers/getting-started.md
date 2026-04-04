@@ -48,6 +48,8 @@ Configure it like so, in your Worker's `wrangler.jsonc`:
 * [  wrangler.jsonc ](#tab-panel-4577)
 * [  wrangler.toml ](#tab-panel-4578)
 
+JSONC
+
 ```
 
 {
@@ -66,6 +68,8 @@ Configure it like so, in your Worker's `wrangler.jsonc`:
 
 
 ```
+
+TOML
 
 ```
 

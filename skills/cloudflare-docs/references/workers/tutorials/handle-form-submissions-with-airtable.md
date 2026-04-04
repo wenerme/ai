@@ -390,6 +390,8 @@ Add a `vars` table at the end of your Wrangler file:
 * [  wrangler.jsonc ](#tab-panel-7776)
 * [  wrangler.toml ](#tab-panel-7777)
 
+JSONC
+
 ```
 
 {
@@ -402,7 +404,7 @@ Add a `vars` table at the end of your Wrangler file:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "vars": {
 
@@ -417,6 +419,8 @@ Add a `vars` table at the end of your Wrangler file:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -427,7 +431,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [vars]

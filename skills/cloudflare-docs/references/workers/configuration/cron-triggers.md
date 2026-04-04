@@ -120,6 +120,8 @@ Refer to the example below for a Cron Triggers configuration:
 * [  wrangler.jsonc ](#tab-panel-7063)
 * [  wrangler.toml ](#tab-panel-7064)
 
+JSONC
+
 ```
 
 {
@@ -151,6 +153,8 @@ Refer to the example below for a Cron Triggers configuration:
 
 ```
 
+TOML
+
 ```
 
 [triggers]
@@ -164,6 +168,8 @@ You also can set a different Cron Trigger for each [environment](https://develop
 
 * [  wrangler.jsonc ](#tab-panel-7065)
 * [  wrangler.toml ](#tab-panel-7066)
+
+JSONC
 
 ```
 
@@ -191,6 +197,8 @@ You also can set a different Cron Trigger for each [environment](https://develop
 
 
 ```
+
+TOML
 
 ```
 
@@ -322,6 +330,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * [  wrangler.jsonc ](#tab-panel-7061)
 * [  wrangler.toml ](#tab-panel-7062)
 
+JSONC
+
 ```
 
 {
@@ -338,6 +348,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 
 
 ```
+
+TOML
 
 ```
 

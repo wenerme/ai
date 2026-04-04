@@ -41,6 +41,8 @@ In the following example, the binding is called `TODO`. In the `kv_namespaces` p
 * [  wrangler.jsonc ](#tab-panel-4982)
 * [  wrangler.toml ](#tab-panel-4983)
 
+JSONC
+
 ```
 
 {
@@ -67,6 +69,8 @@ In the following example, the binding is called `TODO`. In the `kv_namespaces` p
 
 
 ```
+
+TOML
 
 ```
 
@@ -121,6 +125,8 @@ To have `wrangler dev` connect to your Workers KV namespace running on Cloudflar
 * [  wrangler.jsonc ](#tab-panel-4984)
 * [  wrangler.toml ](#tab-panel-4985)
 
+JSONC
+
 ```
 
 {
@@ -147,6 +153,8 @@ To have `wrangler dev` connect to your Workers KV namespace running on Cloudflar
 
 
 ```
+
+TOML
 
 ```
 

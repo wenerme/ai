@@ -129,6 +129,8 @@ When you configure multiple [Cron Triggers](https://developers.cloudflare.com/wo
 * [  wrangler.jsonc ](#tab-panel-7588)
 * [  wrangler.toml ](#tab-panel-7589)
 
+JSONC
+
 ```
 
 {
@@ -143,6 +145,8 @@ When you configure multiple [Cron Triggers](https://developers.cloudflare.com/wo
 
 
 ```
+
+TOML
 
 ```
 

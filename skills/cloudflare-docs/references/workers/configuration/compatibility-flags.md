@@ -33,6 +33,8 @@ This example enables the specific flag `formdata_parser_supports_files`, which i
 * [  wrangler.jsonc ](#tab-panel-7052)
 * [  wrangler.toml ](#tab-panel-7053)
 
+JSONC
+
 ```
 
 {
@@ -53,6 +55,8 @@ This example enables the specific flag `formdata_parser_supports_files`, which i
 
 
 ```
+
+TOML
 
 ```
 
@@ -86,6 +90,8 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 * [  wrangler.jsonc ](#tab-panel-7056)
 * [  wrangler.toml ](#tab-panel-7057)
 
+JSONC
+
 ```
 
 {
@@ -98,12 +104,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -111,13 +119,15 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```
 
 * [  wrangler.jsonc ](#tab-panel-7050)
 * [  wrangler.toml ](#tab-panel-7051)
+
+JSONC
 
 ```
 
@@ -133,6 +143,8 @@ compatibility_date = "2026-04-02"
 
 
 ```
+
+TOML
 
 ```
 
@@ -148,6 +160,8 @@ The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers
 * [  wrangler.jsonc ](#tab-panel-7054)
 * [  wrangler.toml ](#tab-panel-7055)
 
+JSONC
+
 ```
 
 {
@@ -162,6 +176,8 @@ The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers
 
 
 ```
+
+TOML
 
 ```
 

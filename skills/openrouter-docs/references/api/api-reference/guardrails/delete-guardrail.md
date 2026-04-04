@@ -43,7 +43,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Guardrails_deleteGuardrail_Response_200'
+                $ref: '#/components/schemas/DeleteGuardrailResponse'
         '401':
           description: Unauthorized - Missing or invalid authentication
           content:
@@ -66,7 +66,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    Guardrails_deleteGuardrail_Response_200:
+    DeleteGuardrailResponse:
       type: object
       properties:
         deleted:
@@ -76,7 +76,7 @@ components:
           description: Confirmation that the guardrail was deleted
       required:
         - deleted
-      title: Guardrails_deleteGuardrail_Response_200
+      title: DeleteGuardrailResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:

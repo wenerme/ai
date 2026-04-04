@@ -38,6 +38,8 @@ The compatibility date can be set in a Worker's [Wrangler configuration file](ht
 * [  wrangler.jsonc ](#tab-panel-7048)
 * [  wrangler.toml ](#tab-panel-7049)
 
+JSONC
+
 ```
 
 {
@@ -50,6 +52,8 @@ The compatibility date can be set in a Worker's [Wrangler configuration file](ht
 
 
 ```
+
+TOML
 
 ```
 

@@ -97,21 +97,23 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
 In your project root, create a Wrangler configuration file with the following content:  
    * [  wrangler.jsonc ](#tab-panel-7406)  
    * [  wrangler.toml ](#tab-panel-7407)  
+JSONC  
 ```  
   {  
     "name": "my-docusaurus-app",  
     // Update to today's date  
     // Set this to today's date  
-    "compatibility_date": "2026-04-02",  
+    "compatibility_date": "2026-04-03",  
     "assets": {  
       "directory": "./build"  
     }  
   }  
 ```  
+TOML  
 ```  
 name = "my-docusaurus-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 [assets]  
 directory = "./build"  
 ```  

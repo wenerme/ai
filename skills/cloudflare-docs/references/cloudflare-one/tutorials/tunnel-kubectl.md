@@ -44,6 +44,7 @@ Terminal window
 cloudflared tunnel create k8s-tunnel  
 ```
 3. Configure your tunnel by creating a configuration file named `config.yml`:  
+YAML  
 ```  
 tunnel: <TUNNEL_ID>  
 credentials-file: /path/to/credentials.json  
@@ -82,6 +83,7 @@ Terminal window
 chmod +x cloudflare-k8s-auth.sh  
 ```
 2. Update your `~/.kube/config` file to use the credential plugin:  
+YAML  
 ```  
 apiVersion: v1  
 kind: Config  

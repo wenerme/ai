@@ -46,6 +46,8 @@ For example, if you want Worker A to be able to call Worker B — you'd add the 
 * [  wrangler.jsonc ](#tab-panel-7540)
 * [  wrangler.toml ](#tab-panel-7541)
 
+JSONC
+
 ```
 
 {
@@ -66,6 +68,8 @@ For example, if you want Worker A to be able to call Worker B — you'd add the 
 
 
 ```
+
+TOML
 
 ```
 
@@ -95,6 +99,8 @@ This example [extends the WorkerEntrypoint class](https://developers.cloudflare.
 * [  wrangler.jsonc ](#tab-panel-7538)
 * [  wrangler.toml ](#tab-panel-7539)
 
+JSONC
+
 ```
 
 {
@@ -109,6 +115,8 @@ This example [extends the WorkerEntrypoint class](https://developers.cloudflare.
 
 
 ```
+
+TOML
 
 ```
 
@@ -155,6 +163,8 @@ Next, create the Worker that will call Worker B. Let's call this "Worker A". Wor
 * [  wrangler.jsonc ](#tab-panel-7542)
 * [  wrangler.toml ](#tab-panel-7543)
 
+JSONC
+
 ```
 
 {
@@ -181,6 +191,8 @@ Next, create the Worker that will call Worker B. Let's call this "Worker A". Wor
 
 
 ```
+
+TOML
 
 ```
 

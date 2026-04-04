@@ -61,6 +61,8 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 * [  wrangler.jsonc ](#tab-panel-3248)
 * [  wrangler.toml ](#tab-panel-3249)
 
+JSONC
+
 ```
 
 {
@@ -81,7 +83,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "upload_source_maps": true,
 
@@ -95,6 +97,8 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 
 
 ```
+
+TOML
 
 ```
 
@@ -110,7 +114,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 upload_source_maps = true
 
@@ -380,6 +384,8 @@ Then, add the KV namespace to your Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-3250)
 * [  wrangler.toml ](#tab-panel-3251)
 
+JSONC
+
 ```
 
 {
@@ -392,7 +398,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "browser": {
 
@@ -417,6 +423,8 @@ Then, add the KV namespace to your Wrangler configuration file:
 
 ```
 
+TOML
+
 ```
 
 name = "storage-state-examples"
@@ -427,7 +435,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [browser]

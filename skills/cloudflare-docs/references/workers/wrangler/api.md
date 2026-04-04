@@ -440,6 +440,8 @@ The `getPlatformProxy` function uses bindings found in the [Wrangler configurati
 * [  wrangler.jsonc ](#tab-panel-7814)
 * [  wrangler.toml ](#tab-panel-7815)
 
+JSONC
+
 ```
 
 {
@@ -454,6 +456,8 @@ The `getPlatformProxy` function uses bindings found in the [Wrangler configurati
 
 
 ```
+
+TOML
 
 ```
 
@@ -514,6 +518,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
    For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.  
          * [  wrangler.jsonc ](#tab-panel-7818)  
          * [  wrangler.toml ](#tab-panel-7819)  
+   JSONC  
    ```  
    {  
      "durable_objects": {  
@@ -527,6 +532,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
      }  
    }  
    ```  
+   TOML  
    ```  
    [[durable_objects.bindings]]  
    name = "MyDurableObject"  
@@ -549,6 +555,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
    That Worker also needs a Wrangler configuration file that looks like this:  
          * [  wrangler.jsonc ](#tab-panel-7816)  
          * [  wrangler.toml ](#tab-panel-7817)  
+   JSONC  
    ```  
    {  
      "name": "external-do-worker",  
@@ -556,6 +563,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
      "compatibility_date": "XXXX-XX-XX"  
    }  
    ```  
+   TOML  
    ```  
    name = "external-do-worker"  
    main = "src/index.ts"  

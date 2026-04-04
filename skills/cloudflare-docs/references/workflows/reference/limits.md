@@ -159,6 +159,8 @@ By default, the maximum CPU time per Workflow invocation is set to 30 seconds, b
 * [  wrangler.jsonc ](#tab-panel-8606)
 * [  wrangler.toml ](#tab-panel-8607)
 
+JSONC
+
 ```
 
 {
@@ -177,6 +179,8 @@ By default, the maximum CPU time per Workflow invocation is set to 30 seconds, b
 
 
 ```
+
+TOML
 
 ```
 
@@ -209,6 +213,8 @@ By default, the maximum number of subrequests per Workflow instance is 10,000 on
 * [  wrangler.jsonc ](#tab-panel-8608)
 * [  wrangler.toml ](#tab-panel-8609)
 
+JSONC
+
 ```
 
 {
@@ -227,6 +233,8 @@ By default, the maximum number of subrequests per Workflow instance is 10,000 on
 
 
 ```
+
+TOML
 
 ```
 

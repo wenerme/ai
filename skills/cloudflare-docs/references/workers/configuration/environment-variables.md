@@ -29,6 +29,8 @@ To add env variables using Wrangler, define text and JSON via the `[vars]` confi
 * [  wrangler.jsonc ](#tab-panel-7073)
 * [  wrangler.toml ](#tab-panel-7074)
 
+JSONC
+
 ```
 
 {
@@ -57,6 +59,8 @@ To add env variables using Wrangler, define text and JSON via the `[vars]` confi
 
 
 ```
+
+TOML
 
 ```
 
@@ -200,6 +204,8 @@ The example below sets up two environments, `staging` and `production`, with dif
 * [  wrangler.jsonc ](#tab-panel-7069)
 * [  wrangler.toml ](#tab-panel-7070)
 
+JSONC
+
 ```
 
 {
@@ -244,6 +250,8 @@ The example below sets up two environments, `staging` and `production`, with dif
 
 
 ```
+
+TOML
 
 ```
 

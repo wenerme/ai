@@ -1015,6 +1015,8 @@ The command returns whichever authentication method is currently configured, in 
 
 When using `--json`, the output includes the token type:
 
+JSONC
+
 ```
 
 // API token

@@ -66,6 +66,8 @@ A new Wrangler configuration file is created with settings appropriate for your 
 * [  wrangler.jsonc ](#tab-panel-7394)
 * [  wrangler.toml ](#tab-panel-7395)
 
+JSONC
+
 ```
 
 {
@@ -78,7 +80,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -101,6 +103,8 @@ A new Wrangler configuration file is created with settings appropriate for your 
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "node_modules/wrangler/config-schema.json"
@@ -111,7 +115,7 @@ main = "dist/_worker.js/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

@@ -506,13 +506,10 @@ components:
       enum:
         - function_call
       title: FunctionCallItemType
-    ToolCallStatusEnum:
-      type: string
-      enum:
-        - in_progress
-        - completed
-        - incomplete
-      title: ToolCallStatusEnum
+    FunctionCallItemStatus:
+      type: object
+      properties: {}
+      title: FunctionCallItemStatus
     FunctionCallItem:
       type: object
       properties:
@@ -527,7 +524,7 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/ToolCallStatusEnum'
+          $ref: '#/components/schemas/FunctionCallItemStatus'
       required:
         - type
         - call_id
@@ -573,6 +570,10 @@ components:
         - type: string
         - $ref: '#/components/schemas/FunctionCallOutputItemOutput1'
       title: FunctionCallOutputItemOutput
+    FunctionCallOutputItemStatus:
+      type: object
+      properties: {}
+      title: FunctionCallOutputItemStatus
     FunctionCallOutputItem:
       type: object
       properties:
@@ -587,7 +588,7 @@ components:
         output:
           $ref: '#/components/schemas/FunctionCallOutputItemOutput'
         status:
-          $ref: '#/components/schemas/ToolCallStatusEnum'
+          $ref: '#/components/schemas/FunctionCallOutputItemStatus'
       required:
         - type
         - call_id
@@ -964,23 +965,22 @@ components:
       enum:
         - search
       title: OutputItemWebSearchCallActionOneOf0Type
-    OutputItemWebSearchCallActionOneOf0SourcesItemsType:
+    WebSearchSourceType:
       type: string
       enum:
         - url
-      title: OutputItemWebSearchCallActionOneOf0SourcesItemsType
-    OutputItemWebSearchCallActionOneOf0SourcesItems:
+      title: WebSearchSourceType
+    WebSearchSource:
       type: object
       properties:
         type:
-          $ref: >-
-            #/components/schemas/OutputItemWebSearchCallActionOneOf0SourcesItemsType
+          $ref: '#/components/schemas/WebSearchSourceType'
         url:
           type: string
       required:
         - type
         - url
-      title: OutputItemWebSearchCallActionOneOf0SourcesItems
+      title: WebSearchSource
     OutputItemWebSearchCallAction0:
       type: object
       properties:
@@ -995,8 +995,7 @@ components:
         sources:
           type: array
           items:
-            $ref: >-
-              #/components/schemas/OutputItemWebSearchCallActionOneOf0SourcesItems
+            $ref: '#/components/schemas/WebSearchSource'
       required:
         - type
         - query
@@ -1289,7 +1288,7 @@ components:
       required:
         - type
       title: Preview_WebSearchUserLocation
-    PreviewWebSearchServerToolEngine:
+    WebSearchEngineEnum:
       type: string
       enum:
         - auto
@@ -1302,8 +1301,8 @@ components:
         supports it, otherwise Exa. "native" forces the provider's built-in
         search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
         (requires BYOK). "parallel" uses the Parallel search API.
-      title: PreviewWebSearchServerToolEngine
-    PreviewWebSearchServerToolFilters:
+      title: WebSearchEngineEnum
+    WebSearchDomainFilter:
       type: object
       properties:
         allowed_domains:
@@ -1318,7 +1317,7 @@ components:
             - 'null'
           items:
             type: string
-      title: PreviewWebSearchServerToolFilters
+      title: WebSearchDomainFilter
     Preview_WebSearchServerTool:
       type: object
       properties:
@@ -1329,12 +1328,7 @@ components:
         user_location:
           $ref: '#/components/schemas/Preview_WebSearchUserLocation'
         engine:
-          $ref: '#/components/schemas/PreviewWebSearchServerToolEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -1343,9 +1337,7 @@ components:
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
             native provider search.
         filters:
-          oneOf:
-            - $ref: '#/components/schemas/PreviewWebSearchServerToolFilters'
-            - type: 'null'
+          $ref: '#/components/schemas/WebSearchDomainFilter'
       required:
         - type
       description: Web search preview tool configuration
@@ -1355,36 +1347,6 @@ components:
       enum:
         - web_search_preview_2025_03_11
       title: Preview20250311WebSearchServerToolType
-    Preview20250311WebSearchServerToolEngine:
-      type: string
-      enum:
-        - auto
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: >-
-        Which search engine to use. "auto" (default) uses native if the provider
-        supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
-        (requires BYOK). "parallel" uses the Parallel search API.
-      title: Preview20250311WebSearchServerToolEngine
-    Preview20250311WebSearchServerToolFilters:
-      type: object
-      properties:
-        allowed_domains:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-        excluded_domains:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-      title: Preview20250311WebSearchServerToolFilters
     Preview_20250311_WebSearchServerTool:
       type: object
       properties:
@@ -1395,12 +1357,7 @@ components:
         user_location:
           $ref: '#/components/schemas/Preview_WebSearchUserLocation'
         engine:
-          $ref: '#/components/schemas/Preview20250311WebSearchServerToolEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -1409,9 +1366,7 @@ components:
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
             native provider search.
         filters:
-          oneOf:
-            - $ref: '#/components/schemas/Preview20250311WebSearchServerToolFilters'
-            - type: 'null'
+          $ref: '#/components/schemas/WebSearchDomainFilter'
       required:
         - type
       description: Web search preview tool configuration (2025-03-11 version)
@@ -1421,22 +1376,6 @@ components:
       enum:
         - web_search
       title: LegacyWebSearchServerToolType
-    LegacyWebSearchServerToolFilters:
-      type: object
-      properties:
-        allowed_domains:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-        excluded_domains:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-      title: LegacyWebSearchServerToolFilters
     WebSearchUserLocationType:
       type: string
       enum:
@@ -1465,40 +1404,19 @@ components:
             - 'null'
       description: User location information for web search
       title: WebSearchUserLocation
-    LegacyWebSearchServerToolEngine:
-      type: string
-      enum:
-        - auto
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: >-
-        Which search engine to use. "auto" (default) uses native if the provider
-        supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
-        (requires BYOK). "parallel" uses the Parallel search API.
-      title: LegacyWebSearchServerToolEngine
     Legacy_WebSearchServerTool:
       type: object
       properties:
         type:
           $ref: '#/components/schemas/LegacyWebSearchServerToolType'
         filters:
-          oneOf:
-            - $ref: '#/components/schemas/LegacyWebSearchServerToolFilters'
-            - type: 'null'
+          $ref: '#/components/schemas/WebSearchDomainFilter'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocation'
         engine:
-          $ref: '#/components/schemas/LegacyWebSearchServerToolEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -1515,56 +1433,19 @@ components:
       enum:
         - web_search_2025_08_26
       title: WebSearchServerToolType
-    WebSearchServerToolFilters:
-      type: object
-      properties:
-        allowed_domains:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-        excluded_domains:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-      title: WebSearchServerToolFilters
-    WebSearchServerToolEngine:
-      type: string
-      enum:
-        - auto
-        - native
-        - exa
-        - firecrawl
-        - parallel
-      description: >-
-        Which search engine to use. "auto" (default) uses native if the provider
-        supports it, otherwise Exa. "native" forces the provider's built-in
-        search. "exa" forces the Exa search API. "firecrawl" uses Firecrawl
-        (requires BYOK). "parallel" uses the Parallel search API.
-      title: WebSearchServerToolEngine
     WebSearchServerTool:
       type: object
       properties:
         type:
           $ref: '#/components/schemas/WebSearchServerToolType'
         filters:
-          oneOf:
-            - $ref: '#/components/schemas/WebSearchServerToolFilters'
-            - type: 'null'
+          $ref: '#/components/schemas/WebSearchDomainFilter'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocation'
         engine:
-          $ref: '#/components/schemas/WebSearchServerToolEngine'
-          description: >-
-            Which search engine to use. "auto" (default) uses native if the
-            provider supports it, otherwise Exa. "native" forces the provider's
-            built-in search. "exa" forces the Exa search API. "firecrawl" uses
-            Firecrawl (requires BYOK). "parallel" uses the Parallel search API.
+          $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
           type: number
           format: double
@@ -3587,6 +3468,13 @@ components:
         - type: string
         - $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf2Output1'
       title: BaseInputsOneOf1ItemsOneOf2Output
+    ToolCallStatusEnum:
+      type: string
+      enum:
+        - in_progress
+        - completed
+        - incomplete
+      title: ToolCallStatusEnum
     BaseInputsOneOf1Items2:
       type: object
       properties:
@@ -3612,6 +3500,10 @@ components:
       enum:
         - function_call
       title: BaseInputsOneOf1ItemsOneOf3Type
+    BaseInputsOneOf1ItemsOneOf3Status:
+      type: object
+      properties: {}
+      title: BaseInputsOneOf1ItemsOneOf3Status
     BaseInputsOneOf1Items3:
       type: object
       properties:
@@ -3626,7 +3518,7 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/ToolCallStatusEnum'
+          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf3Status'
       required:
         - type
         - call_id
@@ -3647,12 +3539,10 @@ components:
       items:
         $ref: '#/components/schemas/BaseInputsOneOf1Items'
       title: BaseInputs1
-    BaseInputs:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/BaseInputs1'
-        - description: Any type
-      title: BaseInputs
+    BaseResponsesResultInstructions:
+      type: object
+      properties: {}
+      title: BaseResponsesResultInstructions
     BaseResponsesResultToolsItems0:
       type: object
       properties:
@@ -3697,14 +3587,22 @@ components:
         - $ref: '#/components/schemas/ApplyPatchServerTool'
         - $ref: '#/components/schemas/CustomTool'
       title: BaseResponsesResultToolsItems
-    BaseReasoningConfig:
+    BaseResponsesResultReasoningEffort:
+      type: object
+      properties: {}
+      title: BaseResponsesResultReasoningEffort
+    BaseResponsesResultReasoningSummary:
+      type: object
+      properties: {}
+      title: BaseResponsesResultReasoningSummary
+    BaseResponsesResultReasoning:
       type: object
       properties:
         effort:
-          $ref: '#/components/schemas/ReasoningEffortEnum'
+          $ref: '#/components/schemas/BaseResponsesResultReasoningEffort'
         summary:
-          $ref: '#/components/schemas/ReasoningSummaryVerbosityEnum'
-      title: BaseReasoningConfig
+          $ref: '#/components/schemas/BaseResponsesResultReasoningSummary'
+      title: BaseResponsesResultReasoning
     ServiceTierEnum:
       type: string
       enum:
@@ -3714,12 +3612,10 @@ components:
         - priority
         - scale
       title: ServiceTierEnum
-    TruncationEnum:
-      type: string
-      enum:
-        - auto
-        - disabled
-      title: TruncationEnum
+    BaseResponsesResultTruncation:
+      type: object
+      properties: {}
+      title: BaseResponsesResultTruncation
     TextConfig:
       type: object
       properties:
@@ -3845,9 +3741,7 @@ components:
           type: number
           format: double
         cost:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Cost of the completion
         is_byok:
@@ -3863,6 +3757,26 @@ components:
         - total_tokens
       description: Token usage information for the response
       title: Usage
+    BaseInputs:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/BaseInputs1'
+        - description: Any type
+      title: BaseInputs
+    BaseReasoningConfig:
+      type: object
+      properties:
+        effort:
+          $ref: '#/components/schemas/ReasoningEffortEnum'
+        summary:
+          $ref: '#/components/schemas/ReasoningSummaryVerbosityEnum'
+      title: BaseReasoningConfig
+    TruncationEnum:
+      type: string
+      enum:
+        - auto
+        - disabled
+      title: TruncationEnum
     OpenResponsesResult:
       type: object
       properties:
@@ -4332,27 +4246,8 @@ import requests
 url = "https://openrouter.ai/api/v1/responses"
 
 payload = {
-    "input": [
-        {
-            "type": "message",
-            "role": "user",
-            "content": "Hello, how are you?"
-        }
-    ],
-    "tools": [
-        {
-            "type": "function",
-            "name": "get_current_weather",
-            "description": "Get the current weather in a given location",
-            "parameters": {
-                "type": "object",
-                "properties": { "location": { "type": "string" } }
-            }
-        }
-    ],
-    "model": "anthropic/claude-4.5-sonnet-20250929",
-    "temperature": 0.7,
-    "top_p": 0.9
+    "input": "Tell me a joke",
+    "model": "openai/gpt-4o"
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -4369,7 +4264,7 @@ const url = 'https://openrouter.ai/api/v1/responses';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"input":[{"type":"message","role":"user","content":"Hello, how are you?"}],"tools":[{"type":"function","name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string"}}}}],"model":"anthropic/claude-4.5-sonnet-20250929","temperature":0.7,"top_p":0.9}'
+  body: '{"input":"Tell me a joke","model":"openai/gpt-4o"}'
 };
 
 try {
@@ -4395,7 +4290,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/responses"
 
-	payload := strings.NewReader("{\n  \"input\": [\n    {\n      \"type\": \"message\",\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"name\": \"get_current_weather\",\n      \"description\": \"Get the current weather in a given location\",\n      \"parameters\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"location\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"temperature\": 0.7,\n  \"top_p\": 0.9\n}")
+	payload := strings.NewReader("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -4425,7 +4320,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"input\": [\n    {\n      \"type\": \"message\",\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"name\": \"get_current_weather\",\n      \"description\": \"Get the current weather in a given location\",\n      \"parameters\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"location\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"temperature\": 0.7,\n  \"top_p\": 0.9\n}"
+request.body = "{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -4438,7 +4333,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/responses")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"input\": [\n    {\n      \"type\": \"message\",\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"name\": \"get_current_weather\",\n      \"description\": \"Get the current weather in a given location\",\n      \"parameters\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"location\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"temperature\": 0.7,\n  \"top_p\": 0.9\n}")
+  .body("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
   .asString();
 ```
 
@@ -4450,31 +4345,8 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/responses', [
   'body' => '{
-  "input": [
-    {
-      "type": "message",
-      "role": "user",
-      "content": "Hello, how are you?"
-    }
-  ],
-  "tools": [
-    {
-      "type": "function",
-      "name": "get_current_weather",
-      "description": "Get the current weather in a given location",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "location": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  ],
-  "model": "anthropic/claude-4.5-sonnet-20250929",
-  "temperature": 0.7,
-  "top_p": 0.9
+  "input": "Tell me a joke",
+  "model": "openai/gpt-4o"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -4492,7 +4364,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/responses");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"input\": [\n    {\n      \"type\": \"message\",\n      \"role\": \"user\",\n      \"content\": \"Hello, how are you?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"name\": \"get_current_weather\",\n      \"description\": \"Get the current weather in a given location\",\n      \"parameters\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"location\": {\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  ],\n  \"model\": \"anthropic/claude-4.5-sonnet-20250929\",\n  \"temperature\": 0.7,\n  \"top_p\": 0.9\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4504,27 +4376,8 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "input": [
-    [
-      "type": "message",
-      "role": "user",
-      "content": "Hello, how are you?"
-    ]
-  ],
-  "tools": [
-    [
-      "type": "function",
-      "name": "get_current_weather",
-      "description": "Get the current weather in a given location",
-      "parameters": [
-        "type": "object",
-        "properties": ["location": ["type": "string"]]
-      ]
-    ]
-  ],
-  "model": "anthropic/claude-4.5-sonnet-20250929",
-  "temperature": 0.7,
-  "top_p": 0.9
+  "input": "Tell me a joke",
+  "model": "openai/gpt-4o"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

@@ -77,6 +77,8 @@ module.exports = {
 * [  wrangler.jsonc ](#tab-panel-8520)
 * [  wrangler.toml ](#tab-panel-8521)
 
+JSONC
+
 ```
 
 {
@@ -97,6 +99,8 @@ module.exports = {
 
 
 ```
+
+TOML
 
 ```
 
@@ -121,6 +125,8 @@ It is possible to use different webpack configuration files within different [Wr
 
 * [  wrangler.jsonc ](#tab-panel-8522)
 * [  wrangler.toml ](#tab-panel-8523)
+
+JSONC
 
 ```
 
@@ -162,6 +168,8 @@ It is possible to use different webpack configuration files within different [Wr
 
 
 ```
+
+TOML
 
 ```
 

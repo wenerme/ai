@@ -233,6 +233,8 @@ Open the [Wrangler configuration file](https://developers.cloudflare.com/workers
 * [  wrangler.jsonc ](#tab-panel-7756)
 * [  wrangler.toml ](#tab-panel-7757)
 
+JSONC
+
 ```
 
 {
@@ -247,6 +249,8 @@ Open the [Wrangler configuration file](https://developers.cloudflare.com/workers
 
 
 ```
+
+TOML
 
 ```
 

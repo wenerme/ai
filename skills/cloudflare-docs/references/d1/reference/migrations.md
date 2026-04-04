@@ -43,6 +43,8 @@ This location and table name can be customized in your Wrangler file, inside the
 * [  wrangler.jsonc ](#tab-panel-4084)
 * [  wrangler.toml ](#tab-panel-4085)
 
+JSONC
+
 ```
 
 {
@@ -71,6 +73,8 @@ This location and table name can be customized in your Wrangler file, inside the
 
 
 ```
+
+TOML
 
 ```
 

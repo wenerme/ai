@@ -29,6 +29,8 @@ The Query Builder is available to all developers and requires no enablement. Que
 * [  wrangler.jsonc ](#tab-panel-7476)
 * [  wrangler.toml ](#tab-panel-7477)
 
+JSONC
+
 ```
 
 {
@@ -51,6 +53,8 @@ The Query Builder is available to all developers and requires no enablement. Que
 
 
 ```
+
+TOML
 
 ```
 

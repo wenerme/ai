@@ -211,13 +211,14 @@ bun add -d wrangler@latest
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
    * [  wrangler.jsonc ](#tab-panel-7408)  
    * [  wrangler.toml ](#tab-panel-7409)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "main": ".open-next/worker.js",  
   "name": "my-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -227,12 +228,13 @@ In your project root, create a [Wrangler configuration file](https://developers.
   }  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 main = ".open-next/worker.js"  
 name = "my-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 directory = ".open-next/assets"  

@@ -44,6 +44,8 @@ Make sure that you have `wrangler@3.3.0` or later [installed](https://developers
 * [  wrangler.jsonc ](#tab-panel-3380)
 * [  wrangler.toml ](#tab-panel-3381)
 
+JSONC
+
 ```
 
 {
@@ -76,6 +78,8 @@ Make sure that you have `wrangler@3.3.0` or later [installed](https://developers
 
 
 ```
+
+TOML
 
 ```
 

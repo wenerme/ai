@@ -110,6 +110,8 @@ To operate your Workers function alongside your Pages application, deploy it to 
 * [  wrangler.jsonc ](#tab-panel-5478)
 * [  wrangler.toml ](#tab-panel-5479)
 
+JSONC
+
 ```
 
 {
@@ -130,6 +132,8 @@ To operate your Workers function alongside your Pages application, deploy it to 
 
 
 ```
+
+TOML
 
 ```
 

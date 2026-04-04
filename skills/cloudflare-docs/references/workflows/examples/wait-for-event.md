@@ -231,6 +231,8 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 * [  wrangler.jsonc ](#tab-panel-8594)
 * [  wrangler.toml ](#tab-panel-8595)
 
+JSONC
+
 ```
 
 {
@@ -243,7 +245,7 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "observability": {
 
@@ -304,6 +306,8 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "node_modules/wrangler/config-schema.json"
@@ -314,7 +318,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [observability]

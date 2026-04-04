@@ -557,13 +557,14 @@ export class ResearchAgent extends Agent<Env, State> {
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
    * [  wrangler.jsonc ](#tab-panel-8598)  
    * [  wrangler.toml ](#tab-panel-8599)  
+JSONC  
 ```  
 {  
   "$schema": "node_modules/wrangler/config-schema.json",  
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "observability": {  
     "enabled": true  
   },  
@@ -590,12 +591,13 @@ export class ResearchAgent extends Agent<Env, State> {
   ]  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "node_modules/wrangler/config-schema.json"  
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  

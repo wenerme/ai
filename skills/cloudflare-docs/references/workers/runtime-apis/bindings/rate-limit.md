@@ -38,6 +38,8 @@ First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bi
 * [  wrangler.jsonc ](#tab-panel-7534)
 * [  wrangler.toml ](#tab-panel-7535)
 
+JSONC
+
 ```
 
 {
@@ -78,6 +80,8 @@ First, add a [binding](https://developers.cloudflare.com/workers/runtime-apis/bi
 
 
 ```
+
+TOML
 
 ```
 
@@ -182,6 +186,8 @@ For example, here is how you can define two rate limiting configurations for fre
 * [  wrangler.jsonc ](#tab-panel-7536)
 * [  wrangler.toml ](#tab-panel-7537)
 
+JSONC
+
 ```
 
 {
@@ -232,6 +238,8 @@ For example, here is how you can define two rate limiting configurations for fre
 
 
 ```
+
+TOML
 
 ```
 
@@ -290,6 +298,8 @@ For example, to apply a rate limit of 1500 requests per minute, you would define
 * [  wrangler.jsonc ](#tab-panel-7532)
 * [  wrangler.toml ](#tab-panel-7533)
 
+JSONC
+
 ```
 
 {
@@ -320,6 +330,8 @@ For example, to apply a rate limit of 1500 requests per minute, you would define
 
 
 ```
+
+TOML
 
 ```
 

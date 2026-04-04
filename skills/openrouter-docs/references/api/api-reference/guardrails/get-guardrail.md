@@ -43,7 +43,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Guardrails_getGuardrail_Response_200'
+                $ref: '#/components/schemas/GetGuardrailResponse'
         '401':
           description: Unauthorized - Missing or invalid authentication
           content:
@@ -66,15 +66,19 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GuardrailsIdGetResponsesContentApplicationJsonSchemaDataResetInterval:
+    GuardrailInterval:
       type: string
       enum:
         - daily
         - weekly
         - monthly
       description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailsIdGetResponsesContentApplicationJsonSchemaDataResetInterval
-    GuardrailsIdGetResponsesContentApplicationJsonSchemaData:
+      title: GuardrailInterval
+    GetGuardrailResponseDataResetInterval:
+      type: object
+      properties: {}
+      title: GetGuardrailResponseDataResetInterval
+    GetGuardrailResponseData:
       type: object
       properties:
         id:
@@ -94,11 +98,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/GuardrailsIdGetResponsesContentApplicationJsonSchemaDataResetInterval
-            - type: 'null'
-          description: Interval at which the limit resets (daily, weekly, monthly)
+          $ref: '#/components/schemas/GetGuardrailResponseDataResetInterval'
         allowed_providers:
           type:
             - array
@@ -137,18 +137,15 @@ components:
         - id
         - name
         - created_at
-      description: The guardrail
-      title: GuardrailsIdGetResponsesContentApplicationJsonSchemaData
-    Guardrails_getGuardrail_Response_200:
+      title: GetGuardrailResponseData
+    GetGuardrailResponse:
       type: object
       properties:
         data:
-          $ref: >-
-            #/components/schemas/GuardrailsIdGetResponsesContentApplicationJsonSchemaData
-          description: The guardrail
+          $ref: '#/components/schemas/GetGuardrailResponseData'
       required:
         - data
-      title: Guardrails_getGuardrail_Response_200
+      title: GetGuardrailResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:

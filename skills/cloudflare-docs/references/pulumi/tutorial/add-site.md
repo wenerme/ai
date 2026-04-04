@@ -710,6 +710,8 @@ class Program
 
 **Filename: `Pulumi.yaml`**
 
+YAML
+
 ```
 
 name: addsite-cloudflare
@@ -910,6 +912,8 @@ new Record("my-record", new RecordArgs
 ```
 
 **Filename: `Pulumi.yaml`**
+
+YAML
 
 ```
 

@@ -67,6 +67,8 @@ If your origin service presents a certificate that is not issued by a publicly t
 
 The following is an example of a VPC Service for a service using custom HTTP and HTTPS ports, and both IPv4 and IPv6 addresses. These configurations represent the expected contract of the [REST API for creating a VPC Service](https://developers.cloudflare.com/api/resources/connectivity/subresources/directory/subresources/services/), a type of service within the broader connectivity directory.
 
+JSONC
+
 ```
 
 {
@@ -105,6 +107,8 @@ The following is an example of a VPC Service for a service using custom HTTP and
 ```
 
 The following is an example of a VPC Service for a service using custom HTTP and HTTPS ports as well, using a hostname. Note that since we are using a hostname, we must provide our service with a `resolver_network` that optionally has `resolver_ips`.
+
+JSONC
 
 ```
 
@@ -150,6 +154,8 @@ Once you have created a VPC Service, you can bind it to your Worker:
 * [  wrangler.jsonc ](#tab-panel-6963)
 * [  wrangler.toml ](#tab-panel-6964)
 
+JSONC
+
 ```
 
 {
@@ -179,6 +185,8 @@ Once you have created a VPC Service, you can bind it to your Worker:
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -203,6 +211,8 @@ You can have multiple VPC service bindings:
 
 * [  wrangler.jsonc ](#tab-panel-6965)
 * [  wrangler.toml ](#tab-panel-6966)
+
+JSONC
 
 ```
 
@@ -246,6 +256,8 @@ You can have multiple VPC service bindings:
 
 
 ```
+
+TOML
 
 ```
 

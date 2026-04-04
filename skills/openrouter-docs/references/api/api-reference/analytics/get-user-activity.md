@@ -59,7 +59,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Analytics_getUserActivity_Response_200'
+                $ref: '#/components/schemas/ActivityResponse'
         '400':
           description: Bad Request - Invalid date format or date range
           content:
@@ -145,7 +145,7 @@ components:
         - completion_tokens
         - reasoning_tokens
       title: ActivityItem
-    Analytics_getUserActivity_Response_200:
+    ActivityResponse:
       type: object
       properties:
         data:
@@ -155,7 +155,7 @@ components:
           description: List of activity items
       required:
         - data
-      title: Analytics_getUserActivity_Response_200
+      title: ActivityResponse
     BadRequestResponseErrorData:
       type: object
       properties:

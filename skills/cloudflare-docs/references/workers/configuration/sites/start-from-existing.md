@@ -45,6 +45,7 @@ This command adds/update the following files:
 2. Add your site's build/output directory to the Wrangler file:  
    * [  wrangler.jsonc ](#tab-panel-7117)  
    * [  wrangler.toml ](#tab-panel-7118)  
+JSONC  
 ```  
 {  
   "site": {  
@@ -52,6 +53,7 @@ This command adds/update the following files:
   }  
 }  
 ```  
+TOML  
 ```  
 [site]  
 bucket = "./public"  
@@ -184,11 +186,13 @@ npx wrangler deploy
 2. Deploy your site to a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) that you own and have already attached as a Cloudflare zone. Add a `route` property to the Wrangler file.  
    * [  wrangler.jsonc ](#tab-panel-7119)  
    * [  wrangler.toml ](#tab-panel-7120)  
+JSONC  
 ```  
 {  
   "route": "https://example.com/*"  
 }  
 ```  
+TOML  
 ```  
 route = "https://example.com/*"  
 ```  

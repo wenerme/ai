@@ -45,6 +45,8 @@ For example, if you have a Worker called `workflows-starter`, you would create a
 * [  wrangler.jsonc ](#tab-panel-8524)
 * [  wrangler.toml ](#tab-panel-8525)
 
+JSONC
+
 ```
 
 {
@@ -65,6 +67,8 @@ For example, if you have a Worker called `workflows-starter`, you would create a
 
 
 ```
+
+TOML
 
 ```
 

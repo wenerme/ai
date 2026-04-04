@@ -212,6 +212,8 @@ To test and deploy this example, configure your Wrangler file to include a Durab
 * [  wrangler.jsonc ](#tab-panel-4488)
 * [  wrangler.toml ](#tab-panel-4489)
 
+JSONC
+
 ```
 
 {
@@ -258,6 +260,8 @@ To test and deploy this example, configure your Wrangler file to include a Durab
 
 
 ```
+
+TOML
 
 ```
 

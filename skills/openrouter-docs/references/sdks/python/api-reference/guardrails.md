@@ -48,8 +48,10 @@ with OpenRouter(
 
     res = open_router.guardrails.list()
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -60,8 +62,8 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
-| `limit`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
 ### Response
@@ -112,7 +114,7 @@ with OpenRouter(
 | `x_open_router_categories` | *Optional\[str]*                                                                                                              | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                                                                   |
 | `description`              | *OptionalNullable\[str]*                                                                                                      | :heavy\_minus\_sign: | Description of the guardrail                                                                                                                                | A guardrail for limiting API usage                                                                                |
 | `limit_usd`                | *Optional\[float]*                                                                                                            | :heavy\_minus\_sign: | Spending limit in USD                                                                                                                                       | 50                                                                                                                |
-| `reset_interval`           | [OptionalNullable\[operations.CreateGuardrailResetIntervalRequest\]](../../operations/createguardrailresetintervalrequest.md) | :heavy\_minus\_sign: | Interval at which the limit resets (daily, weekly, monthly)                                                                                                 | monthly                                                                                                           |
+| `reset_interval`           | [OptionalNullable\[components.CreateGuardrailRequestResetInterval\]](../../components/createguardrailrequestresetinterval.md) | :heavy\_minus\_sign: | N/A                                                                                                                                                         | monthly                                                                                                           |
 | `allowed_providers`        | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | List of allowed provider IDs                                                                                                                                | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />]                                                        |
 | `ignored_providers`        | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | List of provider IDs to exclude from routing                                                                                                                | \[<br />"azure"<br />]                                                                                            |
 | `allowed_models`           | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                               | \[<br />"openai/gpt-5.2",<br />"anthropic/claude-4.5-opus-20251124",<br />"deepseek/deepseek-r1-0528:free"<br />] |
@@ -121,7 +123,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.CreateGuardrailResponse](/docs/sdks/python/api-reference/operations/createguardrailresponse)**
+**[components.CreateGuardrailResponse](/docs/sdks/python/api-reference/components/createguardrailresponse)**
 
 ### Errors
 
@@ -170,7 +172,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.GetGuardrailResponse](/docs/sdks/python/api-reference/operations/getguardrailresponse)**
+**[components.GetGuardrailResponse](/docs/sdks/python/api-reference/components/getguardrailresponse)**
 
 ### Errors
 
@@ -218,7 +220,7 @@ with OpenRouter(
 | `name`                     | *Optional\[str]*                                                                                                              | :heavy\_minus\_sign: | New name for the guardrail                                                                                                                                  | Updated Guardrail Name                                     |
 | `description`              | *OptionalNullable\[str]*                                                                                                      | :heavy\_minus\_sign: | New description for the guardrail                                                                                                                           | Updated description                                        |
 | `limit_usd`                | *Optional\[float]*                                                                                                            | :heavy\_minus\_sign: | New spending limit in USD                                                                                                                                   | 75                                                         |
-| `reset_interval`           | [OptionalNullable\[operations.UpdateGuardrailResetIntervalRequest\]](../../operations/updateguardrailresetintervalrequest.md) | :heavy\_minus\_sign: | Interval at which the limit resets (daily, weekly, monthly)                                                                                                 | monthly                                                    |
+| `reset_interval`           | [OptionalNullable\[components.UpdateGuardrailRequestResetInterval\]](../../components/updateguardrailrequestresetinterval.md) | :heavy\_minus\_sign: | N/A                                                                                                                                                         | monthly                                                    |
 | `allowed_providers`        | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | New list of allowed provider IDs                                                                                                                            | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />] |
 | `ignored_providers`        | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | List of provider IDs to exclude from routing                                                                                                                | \[<br />"azure"<br />]                                     |
 | `allowed_models`           | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                               | \[<br />"openai/gpt-5.2"<br />]                            |
@@ -227,7 +229,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.UpdateGuardrailResponse](/docs/sdks/python/api-reference/operations/updateguardrailresponse)**
+**[components.UpdateGuardrailResponse](/docs/sdks/python/api-reference/components/updateguardrailresponse)**
 
 ### Errors
 
@@ -277,7 +279,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.DeleteGuardrailResponse](/docs/sdks/python/api-reference/operations/deleteguardrailresponse)**
+**[components.DeleteGuardrailResponse](/docs/sdks/python/api-reference/components/deleteguardrailresponse)**
 
 ### Errors
 
@@ -309,8 +311,10 @@ with OpenRouter(
 
     res = open_router.guardrails.list_key_assignments()
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -321,8 +325,8 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
-| `limit`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
 ### Response
@@ -358,8 +362,10 @@ with OpenRouter(
 
     res = open_router.guardrails.list_member_assignments()
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -370,8 +376,8 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
-| `limit`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
 ### Response
@@ -407,8 +413,10 @@ with OpenRouter(
 
     res = open_router.guardrails.list_guardrail_key_assignments(id="550e8400-e29b-41d4-a716-446655440000")
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -420,8 +428,8 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `offset`                   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
-| `limit`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
 
 ### Response
@@ -478,7 +486,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.BulkAssignKeysToGuardrailResponse](/docs/sdks/python/api-reference/operations/bulkassignkeystoguardrailresponse)**
+**[components.BulkAssignKeysResponse](/docs/sdks/python/api-reference/components/bulkassignkeysresponse)**
 
 ### Errors
 
@@ -511,8 +519,10 @@ with OpenRouter(
 
     res = open_router.guardrails.list_guardrail_member_assignments(id="550e8400-e29b-41d4-a716-446655440000")
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 
@@ -524,8 +534,8 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `offset`                   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
-| `limit`                    | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0                                    |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50                                   |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
 
 ### Response
@@ -583,7 +593,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.BulkAssignMembersToGuardrailResponse](/docs/sdks/python/api-reference/operations/bulkassignmemberstoguardrailresponse)**
+**[components.BulkAssignMembersResponse](/docs/sdks/python/api-reference/components/bulkassignmembersresponse)**
 
 ### Errors
 
@@ -636,7 +646,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.BulkUnassignKeysFromGuardrailResponse](/docs/sdks/python/api-reference/operations/bulkunassignkeysfromguardrailresponse)**
+**[components.BulkUnassignKeysResponse](/docs/sdks/python/api-reference/components/bulkunassignkeysresponse)**
 
 ### Errors
 
@@ -690,7 +700,7 @@ with OpenRouter(
 
 ### Response
 
-**[operations.BulkUnassignMembersFromGuardrailResponse](/docs/sdks/python/api-reference/operations/bulkunassignmembersfromguardrailresponse)**
+**[components.BulkUnassignMembersResponse](/docs/sdks/python/api-reference/components/bulkunassignmembersresponse)**
 
 ### Errors
 

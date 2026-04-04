@@ -42,6 +42,8 @@ bun add workers-ai-provider
 
 Then, add an AI binding in your Workers project Wrangler file:
 
+TOML
+
 ```
 
 [ai]

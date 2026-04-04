@@ -64,6 +64,8 @@ To disable the `workers.dev` route for a Worker, include the following in your W
 * [  wrangler.jsonc ](#tab-panel-7105)
 * [  wrangler.toml ](#tab-panel-7106)
 
+JSONC
+
 ```
 
 {
@@ -74,6 +76,8 @@ To disable the `workers.dev` route for a Worker, include the following in your W
 
 
 ```
+
+TOML
 
 ```
 

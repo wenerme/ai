@@ -56,6 +56,8 @@ import module
 
 In this case, the main module is set to `src/main.py` in the wrangler.toml file like so:
 
+TOML
+
 ```
 
 main = "src/main.py"

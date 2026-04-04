@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Guardrails_updateGuardrail_Response_200'
+                $ref: '#/components/schemas/UpdateGuardrailResponse'
         '400':
           description: Bad Request - Invalid request parameters
           content:
@@ -73,73 +73,72 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: New name for the guardrail
-                description:
-                  type:
-                    - string
-                    - 'null'
-                  description: New description for the guardrail
-                limit_usd:
-                  type: number
-                  format: double
-                  description: New spending limit in USD
-                reset_interval:
-                  oneOf:
-                    - $ref: >-
-                        #/components/schemas/GuardrailsIdPatchRequestBodyContentApplicationJsonSchemaResetInterval
-                    - type: 'null'
-                  description: Interval at which the limit resets (daily, weekly, monthly)
-                allowed_providers:
-                  type:
-                    - array
-                    - 'null'
-                  items:
-                    type: string
-                  description: New list of allowed provider IDs
-                ignored_providers:
-                  type:
-                    - array
-                    - 'null'
-                  items:
-                    type: string
-                  description: List of provider IDs to exclude from routing
-                allowed_models:
-                  type:
-                    - array
-                    - 'null'
-                  items:
-                    type: string
-                  description: Array of model identifiers (slug or canonical_slug accepted)
-                enforce_zdr:
-                  type:
-                    - boolean
-                    - 'null'
-                  description: Whether to enforce zero data retention
+              $ref: '#/components/schemas/UpdateGuardrailRequest'
 servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GuardrailsIdPatchRequestBodyContentApplicationJsonSchemaResetInterval:
+    UpdateGuardrailRequestResetInterval:
+      type: object
+      properties: {}
+      title: UpdateGuardrailRequestResetInterval
+    UpdateGuardrailRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the guardrail
+        description:
+          type:
+            - string
+            - 'null'
+          description: New description for the guardrail
+        limit_usd:
+          type: number
+          format: double
+          description: New spending limit in USD
+        reset_interval:
+          $ref: '#/components/schemas/UpdateGuardrailRequestResetInterval'
+        allowed_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: New list of allowed provider IDs
+        ignored_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of provider IDs to exclude from routing
+        allowed_models:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: Array of model identifiers (slug or canonical_slug accepted)
+        enforce_zdr:
+          type:
+            - boolean
+            - 'null'
+          description: Whether to enforce zero data retention
+      title: UpdateGuardrailRequest
+    GuardrailInterval:
       type: string
       enum:
         - daily
         - weekly
         - monthly
       description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailsIdPatchRequestBodyContentApplicationJsonSchemaResetInterval
-    GuardrailsIdPatchResponsesContentApplicationJsonSchemaDataResetInterval:
-      type: string
-      enum:
-        - daily
-        - weekly
-        - monthly
-      description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailsIdPatchResponsesContentApplicationJsonSchemaDataResetInterval
-    GuardrailsIdPatchResponsesContentApplicationJsonSchemaData:
+      title: GuardrailInterval
+    UpdateGuardrailResponseDataResetInterval:
+      type: object
+      properties: {}
+      title: UpdateGuardrailResponseDataResetInterval
+    UpdateGuardrailResponseData:
       type: object
       properties:
         id:
@@ -159,11 +158,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          oneOf:
-            - $ref: >-
-                #/components/schemas/GuardrailsIdPatchResponsesContentApplicationJsonSchemaDataResetInterval
-            - type: 'null'
-          description: Interval at which the limit resets (daily, weekly, monthly)
+          $ref: '#/components/schemas/UpdateGuardrailResponseDataResetInterval'
         allowed_providers:
           type:
             - array
@@ -202,18 +197,15 @@ components:
         - id
         - name
         - created_at
-      description: The updated guardrail
-      title: GuardrailsIdPatchResponsesContentApplicationJsonSchemaData
-    Guardrails_updateGuardrail_Response_200:
+      title: UpdateGuardrailResponseData
+    UpdateGuardrailResponse:
       type: object
       properties:
         data:
-          $ref: >-
-            #/components/schemas/GuardrailsIdPatchResponsesContentApplicationJsonSchemaData
-          description: The updated guardrail
+          $ref: '#/components/schemas/UpdateGuardrailResponseData'
       required:
         - data
-      title: Guardrails_updateGuardrail_Response_200
+      title: UpdateGuardrailResponse
     BadRequestResponseErrorData:
       type: object
       properties:

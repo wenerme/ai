@@ -54,6 +54,8 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 * [  wrangler.jsonc ](#tab-panel-7746)
 * [  wrangler.toml ](#tab-panel-7747)
 
+JSONC
+
 ```
 
 { "name": "test",
@@ -62,7 +64,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
   # no nodejs_compat flags here
 
@@ -70,6 +72,8 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 
 
 ```
+
+TOML
 
 ```
 
@@ -79,7 +83,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```

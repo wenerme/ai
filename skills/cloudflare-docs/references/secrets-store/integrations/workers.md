@@ -163,6 +163,8 @@ To bind an account secret to your Worker, you must have one of the following [ro
 * [  wrangler.jsonc ](#tab-panel-6497)
 * [  wrangler.toml ](#tab-panel-6498)
 
+JSONC
+
 ```
 
 {
@@ -187,6 +189,8 @@ To bind an account secret to your Worker, you must have one of the following [ro
 
 
 ```
+
+TOML
 
 ```
 

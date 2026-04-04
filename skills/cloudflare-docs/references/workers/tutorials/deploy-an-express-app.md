@@ -100,6 +100,8 @@ Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility fla
 * [  wrangler.jsonc ](#tab-panel-7766)
 * [  wrangler.toml ](#tab-panel-7767)
 
+JSONC
+
 ```
 
 {
@@ -114,6 +116,8 @@ Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility fla
 
 
 ```
+
+TOML
 
 ```
 
@@ -184,6 +188,8 @@ The binding will be added to your Wrangler configuration file.
 * [  wrangler.jsonc ](#tab-panel-7768)
 * [  wrangler.toml ](#tab-panel-7769)
 
+JSONC
+
 ```
 
 {
@@ -206,6 +212,8 @@ The binding will be added to your Wrangler configuration file.
 
 
 ```
+
+TOML
 
 ```
 

@@ -41,6 +41,7 @@ Cloudflare recommends using IPv6, but some Internet service providers may not su
 fly config save --app <pg-app-name>  
 ```  
 Then, replace the `services` and `services.ports` section of the file with the following `toml` snippet:  
+TOML  
 ```  
 [[services]]  
   internal_port = 5432 # Postgres instance  
@@ -96,13 +97,14 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
    * [  wrangler.jsonc ](#tab-panel-4735)  
    * [  wrangler.toml ](#tab-panel-4736)  
+JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-02",  
+  "compatibility_date": "2026-04-03",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -115,12 +117,13 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
   ]  
 }  
 ```  
+TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-02"  
+compatibility_date = "2026-04-03"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
@@ -182,6 +185,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-4739)
 * [  wrangler.toml ](#tab-panel-4740)
 
+JSONC
+
 ```
 
 {
@@ -196,7 +201,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -215,13 +220,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

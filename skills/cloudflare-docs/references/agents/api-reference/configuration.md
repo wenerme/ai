@@ -41,6 +41,8 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 * [  wrangler.jsonc ](#tab-panel-2330)
 * [  wrangler.toml ](#tab-panel-2331)
 
+JSONC
+
 ```
 
 {
@@ -53,7 +55,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -133,6 +135,8 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "node_modules/wrangler/config-schema.json"
@@ -143,7 +147,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -197,6 +201,8 @@ The `nodejs_compat` flag is required for agents:
 * [  wrangler.jsonc ](#tab-panel-2310)
 * [  wrangler.toml ](#tab-panel-2311)
 
+JSONC
+
 ```
 
 {
@@ -207,6 +213,8 @@ The `nodejs_compat` flag is required for agents:
 
 
 ```
+
+TOML
 
 ```
 
@@ -223,6 +231,8 @@ Each agent class needs a binding:
 
 * [  wrangler.jsonc ](#tab-panel-2312)
 * [  wrangler.toml ](#tab-panel-2313)
+
+JSONC
 
 ```
 
@@ -249,6 +259,8 @@ Each agent class needs a binding:
 
 ```
 
+TOML
+
 ```
 
 [[durable_objects.bindings]]
@@ -271,6 +283,8 @@ When `name` and `class_name` differ, follow the pattern shown below:
 
 * [  wrangler.jsonc ](#tab-panel-2314)
 * [  wrangler.toml ](#tab-panel-2315)
+
+JSONC
 
 ```
 
@@ -297,6 +311,8 @@ When `name` and `class_name` differ, follow the pattern shown below:
 
 ```
 
+TOML
+
 ```
 
 [[durable_objects.bindings]]
@@ -316,6 +332,8 @@ Migrations tell Cloudflare how to set up storage for your Durable Objects:
 
 * [  wrangler.jsonc ](#tab-panel-2316)
 * [  wrangler.toml ](#tab-panel-2317)
+
+JSONC
 
 ```
 
@@ -337,6 +355,8 @@ Migrations tell Cloudflare how to set up storage for your Durable Objects:
 
 
 ```
+
+TOML
 
 ```
 
@@ -363,6 +383,8 @@ For serving static files (HTML, CSS, JS):
 * [  wrangler.jsonc ](#tab-panel-2318)
 * [  wrangler.toml ](#tab-panel-2319)
 
+JSONC
+
 ```
 
 {
@@ -379,6 +401,8 @@ For serving static files (HTML, CSS, JS):
 
 
 ```
+
+TOML
 
 ```
 
@@ -461,6 +485,8 @@ For Workers AI integration:
 * [  wrangler.jsonc ](#tab-panel-2320)
 * [  wrangler.toml ](#tab-panel-2321)
 
+JSONC
+
 ```
 
 {
@@ -475,6 +501,8 @@ For Workers AI integration:
 
 
 ```
+
+TOML
 
 ```
 
@@ -759,6 +787,8 @@ For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-2322)
 * [  wrangler.toml ](#tab-panel-2323)
 
+JSONC
+
 ```
 
 {
@@ -777,6 +807,8 @@ For non-sensitive configuration, use `vars` in the Wrangler configuration file:
 
 
 ```
+
+TOML
 
 ```
 
@@ -825,6 +857,8 @@ Use `env` sections for different environments (for example, staging, production)
 * [  wrangler.jsonc ](#tab-panel-2328)
 * [  wrangler.toml ](#tab-panel-2329)
 
+JSONC
+
 ```
 
 {
@@ -866,6 +900,8 @@ Use `env` sections for different environments (for example, staging, production)
 
 
 ```
+
+TOML
 
 ```
 
@@ -1058,6 +1094,8 @@ Add a route in the Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-2324)
 * [  wrangler.toml ](#tab-panel-2325)
 
+JSONC
+
 ```
 
 {
@@ -1079,6 +1117,8 @@ Add a route in the Wrangler configuration file:
 
 ```
 
+TOML
+
 ```
 
 [[routes]]
@@ -1094,6 +1134,8 @@ Or use a custom domain (simpler):
 
 * [  wrangler.jsonc ](#tab-panel-2326)
 * [  wrangler.toml ](#tab-panel-2327)
+
+JSONC
 
 ```
 
@@ -1115,6 +1157,8 @@ Or use a custom domain (simpler):
 
 
 ```
+
+TOML
 
 ```
 
@@ -1166,6 +1210,8 @@ Define environments in the Wrangler configuration file:
 * [  wrangler.jsonc ](#tab-panel-2354)
 * [  wrangler.toml ](#tab-panel-2355)
 
+JSONC
+
 ```
 
 {
@@ -1179,7 +1225,7 @@ Define environments in the Wrangler configuration file:
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1227,6 +1273,8 @@ Define environments in the Wrangler configuration file:
 
 ```
 
+TOML
+
 ```
 
 name = "my-agent"
@@ -1235,7 +1283,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1310,6 +1358,8 @@ To explicitly separate:
 * [  wrangler.jsonc ](#tab-panel-2334)
 * [  wrangler.toml ](#tab-panel-2335)
 
+JSONC
+
 ```
 
 {
@@ -1345,6 +1395,8 @@ To explicitly separate:
 
 ```
 
+TOML
+
 ```
 
 [[env.staging.durable_objects.bindings]]
@@ -1368,6 +1420,8 @@ Add to `new_sqlite_classes` in a new migration:
 
 * [  wrangler.jsonc ](#tab-panel-2332)
 * [  wrangler.toml ](#tab-panel-2333)
+
+JSONC
 
 ```
 
@@ -1398,6 +1452,8 @@ Add to `new_sqlite_classes` in a new migration:
 
 ```
 
+TOML
+
 ```
 
 [[migrations]]
@@ -1422,6 +1478,8 @@ Use `renamed_classes`:
 
 * [  wrangler.jsonc ](#tab-panel-2346)
 * [  wrangler.toml ](#tab-panel-2347)
+
+JSONC
 
 ```
 
@@ -1462,6 +1520,8 @@ Use `renamed_classes`:
 
 ```
 
+TOML
+
 ```
 
 [[migrations]]
@@ -1498,6 +1558,8 @@ Use `deleted_classes`:
 * [  wrangler.jsonc ](#tab-panel-2340)
 * [  wrangler.toml ](#tab-panel-2341)
 
+JSONC
+
 ```
 
 {
@@ -1526,6 +1588,8 @@ Use `deleted_classes`:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1565,6 +1629,8 @@ The class is not in migrations:
 * [  wrangler.jsonc ](#tab-panel-2336)
 * [  wrangler.toml ](#tab-panel-2337)
 
+JSONC
+
 ```
 
 {
@@ -1585,6 +1651,8 @@ The class is not in migrations:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1632,6 +1700,8 @@ Migration tags must be unique. If you see conflicts:
 * [  wrangler.jsonc ](#tab-panel-2338)
 * [  wrangler.toml ](#tab-panel-2339)
 
+JSONC
+
 ```
 
 {
@@ -1650,6 +1720,8 @@ Migration tags must be unique. If you see conflicts:
 
 
 ```
+
+TOML
 
 ```
 
@@ -1672,6 +1744,8 @@ new_sqlite_classes = [ "B" ]
 * [  wrangler.jsonc ](#tab-panel-2342)
 * [  wrangler.toml ](#tab-panel-2343)
 
+JSONC
+
 ```
 
 {
@@ -1690,6 +1764,8 @@ new_sqlite_classes = [ "B" ]
 
 
 ```
+
+TOML
 
 ```
 

@@ -330,6 +330,8 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
 * [  wrangler.jsonc ](#tab-panel-4495)
 * [  wrangler.toml ](#tab-panel-4496)
 
+JSONC
+
 ```
 
 {
@@ -340,7 +342,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "durable_objects": {
 
@@ -363,6 +365,8 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
 
 ```
 
+TOML
+
 ```
 
 name = "counter-worker"
@@ -371,7 +375,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[durable_objects.bindings]]

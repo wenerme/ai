@@ -71,6 +71,7 @@ cd r2-worker
 3. Add an R2 binding to your Wrangler configuration file. Replace `my-bucket` with your bucket name:  
    * [  wrangler.jsonc ](#tab-panel-5800)  
    * [  wrangler.toml ](#tab-panel-5801)  
+JSONC  
 ```  
 {  
   "r2_buckets": [  
@@ -81,6 +82,7 @@ cd r2-worker
   ]  
 }  
 ```  
+TOML  
 ```  
 [[r2_buckets]]  
 binding = "MY_BUCKET"  

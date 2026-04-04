@@ -34,6 +34,8 @@ The `assets` configuration should be used, however, if you wish to set [routing 
 * [  wrangler.jsonc ](#tab-panel-7800)
 * [  wrangler.toml ](#tab-panel-7801)
 
+JSONC
+
 ```
 
 {
@@ -48,6 +50,8 @@ The `assets` configuration should be used, however, if you wish to set [routing 
 
 
 ```
+
+TOML
 
 ```
 

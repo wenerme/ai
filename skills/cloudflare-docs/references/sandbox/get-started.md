@@ -259,6 +259,8 @@ Your `wrangler.jsonc` connects three pieces together:
 * [  wrangler.jsonc ](#tab-panel-6239)
 * [  wrangler.toml ](#tab-panel-6240)
 
+JSONC
+
 ```
 
 {
@@ -311,6 +313,8 @@ Your `wrangler.jsonc` connects three pieces together:
 
 
 ```
+
+TOML
 
 ```
 

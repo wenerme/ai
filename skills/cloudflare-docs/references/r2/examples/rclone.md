@@ -66,6 +66,8 @@ rclone config file
 
 Then use an editor (`nano` or `vim`, for example) to add or edit the new provider. This example assumes you are adding a new `r2` provider:
 
+TOML
+
 ```
 
 [r2]

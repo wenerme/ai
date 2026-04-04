@@ -35,6 +35,8 @@ In the following example we have a Worker named `my-worker` that is associated w
 * [  wrangler.jsonc ](#tab-panel-7802)
 * [  wrangler.toml ](#tab-panel-7803)
 
+JSONC
+
 ```
 
 {
@@ -45,7 +47,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "main": "./src/index.ts"
 
@@ -53,6 +55,8 @@ In the following example we have a Worker named `my-worker` that is associated w
 
 
 ```
+
+TOML
 
 ```
 
@@ -62,7 +66,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./src/index.ts"
 

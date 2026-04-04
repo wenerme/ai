@@ -160,6 +160,8 @@ Remove the `type` and `webpack_config` keys from your Wrangler file, as they are
 * [  wrangler.jsonc ](#tab-panel-8482)
 * [  wrangler.toml ](#tab-panel-8483)
 
+JSONC
+
 ```
 
 {
@@ -174,6 +176,8 @@ Remove the `type` and `webpack_config` keys from your Wrangler file, as they are
 
 
 ```
+
+TOML
 
 ```
 
@@ -191,6 +195,8 @@ Wrangler no longer has any knowledge of how to build your Worker. You will need 
 * [  wrangler.jsonc ](#tab-panel-8484)
 * [  wrangler.toml ](#tab-panel-8485)
 
+JSONC
+
 ```
 
 {
@@ -207,6 +213,8 @@ Wrangler no longer has any knowledge of how to build your Worker. You will need 
 
 
 ```
+
+TOML
 
 ```
 

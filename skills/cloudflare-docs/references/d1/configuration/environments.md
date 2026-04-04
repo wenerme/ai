@@ -23,6 +23,8 @@ To specify different D1 databases for different environments, use the following 
 * [  wrangler.jsonc ](#tab-panel-4053)
 * [  wrangler.toml ](#tab-panel-4054)
 
+JSONC
+
 ```
 
 {
@@ -76,6 +78,8 @@ To specify different D1 databases for different environments, use the following 
 
 ```
 
+TOML
+
 ```
 
 [[env.staging.d1_databases]]
@@ -107,6 +111,8 @@ If you need to specify different D1 databases for different environments, your [
 * [  wrangler.jsonc ](#tab-panel-4051)
 * [  wrangler.toml ](#tab-panel-4052)
 
+JSONC
+
 ```
 
 {
@@ -133,6 +139,8 @@ If you need to specify different D1 databases for different environments, your [
 
 
 ```
+
+TOML
 
 ```
 
@@ -186,6 +194,8 @@ Therefore, the above binding is equivalent to:
 * [  wrangler.jsonc ](#tab-panel-4055)
 * [  wrangler.toml ](#tab-panel-4056)
 
+JSONC
+
 ```
 
 {
@@ -234,6 +244,8 @@ Therefore, the above binding is equivalent to:
 
 
 ```
+
+TOML
 
 ```
 

@@ -89,6 +89,8 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 * [  wrangler.jsonc ](#tab-panel-7780)
 * [  wrangler.toml ](#tab-panel-7781)
 
+JSONC
+
 ```
 
 {
@@ -101,12 +103,14 @@ To enable both built-in runtime APIs and polyfills for your Worker or Pages proj
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -114,7 +118,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```
@@ -137,6 +141,8 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 * [  wrangler.jsonc ](#tab-panel-7778)
 * [  wrangler.toml ](#tab-panel-7779)
 
+JSONC
+
 ```
 
 {
@@ -149,7 +155,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -176,6 +182,8 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -186,7 +194,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -231,6 +239,8 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 * [  wrangler.jsonc ](#tab-panel-7782)
 * [  wrangler.toml ](#tab-panel-7783)
 
+JSONC
+
 ```
 
 {
@@ -245,7 +255,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "hyperdrive": [
 
@@ -264,13 +274,15 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 
 ```
 
+TOML
+
 ```
 
 compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [[hyperdrive]]

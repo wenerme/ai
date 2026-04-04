@@ -23,6 +23,8 @@ This is the minimal wrangler configuration required to run an Email Worker local
 * [  wrangler.jsonc ](#tab-panel-4585)
 * [  wrangler.toml ](#tab-panel-4586)
 
+JSONC
+
 ```
 
 {
@@ -41,6 +43,8 @@ This is the minimal wrangler configuration required to run an Email Worker local
 
 
 ```
+
+TOML
 
 ```
 

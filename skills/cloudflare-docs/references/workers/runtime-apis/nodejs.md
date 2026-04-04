@@ -30,6 +30,8 @@ To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compa
 * [  wrangler.jsonc ](#tab-panel-7590)
 * [  wrangler.toml ](#tab-panel-7591)
 
+JSONC
+
 ```
 
 {
@@ -42,12 +44,14 @@ To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compa
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02"
+  "compatibility_date": "2026-04-03"
 
 }
 
 
 ```
+
+TOML
 
 ```
 
@@ -55,7 +59,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 ```
@@ -138,6 +142,8 @@ If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable t
 * [  wrangler.jsonc ](#tab-panel-7592)
 * [  wrangler.toml ](#tab-panel-7593)
 
+JSONC
+
 ```
 
 {
@@ -152,6 +158,8 @@ If you need to enable only the Node.js `AsyncLocalStorage` API, you can enable t
 
 
 ```
+
+TOML
 
 ```
 

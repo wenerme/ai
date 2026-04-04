@@ -55,6 +55,8 @@ When you declare a binding on your Worker, you grant it a specific capability, s
 * [  wrangler.jsonc ](#tab-panel-7524)
 * [  wrangler.toml ](#tab-panel-7525)
 
+JSONC
+
 ```
 
 {
@@ -77,6 +79,8 @@ When you declare a binding on your Worker, you grant it a specific capability, s
 
 
 ```
+
+TOML
 
 ```
 

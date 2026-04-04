@@ -138,6 +138,8 @@ Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your W
 * [  wrangler.jsonc ](#tab-panel-6209)
 * [  wrangler.toml ](#tab-panel-6210)
 
+JSONC
+
 ```
 
 {
@@ -152,6 +154,8 @@ Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your W
 
 
 ```
+
+TOML
 
 ```
 

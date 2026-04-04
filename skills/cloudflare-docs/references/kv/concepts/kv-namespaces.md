@@ -40,6 +40,8 @@ Example:
 * [  wrangler.jsonc ](#tab-panel-4986)
 * [  wrangler.toml ](#tab-panel-4987)
 
+JSONC
+
 ```
 
 {
@@ -60,6 +62,8 @@ Example:
 
 
 ```
+
+TOML
 
 ```
 

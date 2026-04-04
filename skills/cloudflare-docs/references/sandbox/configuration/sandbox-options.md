@@ -283,6 +283,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * [  wrangler.jsonc ](#tab-panel-6215)
 * [  wrangler.toml ](#tab-panel-6216)
 
+JSONC
+
 ```
 
 {
@@ -299,6 +301,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 
 
 ```
+
+TOML
 
 ```
 

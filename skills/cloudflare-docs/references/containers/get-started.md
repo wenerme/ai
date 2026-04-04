@@ -146,6 +146,8 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wra
 * [  wrangler.jsonc ](#tab-panel-4021)
 * [  wrangler.toml ](#tab-panel-4022)
 
+JSONC
+
 ```
 
 {
@@ -196,6 +198,8 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wra
 
 
 ```
+
+TOML
 
 ```
 

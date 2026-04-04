@@ -96,6 +96,8 @@ On the Workers Paid plan, you can increase the maximum CPU time from the default
 * [  wrangler.jsonc ](#tab-panel-7500)
 * [  wrangler.toml ](#tab-panel-7501)
 
+JSONC
+
 ```
 
 {
@@ -114,6 +116,8 @@ On the Workers Paid plan, you can increase the maximum CPU time from the default
 
 
 ```
+
+TOML
 
 ```
 

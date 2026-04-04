@@ -161,6 +161,8 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 * [  wrangler.jsonc ](#tab-panel-3238)
 * [  wrangler.toml ](#tab-panel-3239)
 
+JSONC
+
 ```
 
 {
@@ -173,7 +175,7 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "compatibility_flags": [
 
@@ -206,6 +208,8 @@ Update your [Wrangler configuration file](https://developers.cloudflare.com/work
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -216,7 +220,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 compatibility_flags = [ "nodejs_compat" ]
 

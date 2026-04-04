@@ -25,6 +25,8 @@ For example, the following consumer configuration would send messages to our DLQ
 * [  wrangler.jsonc ](#tab-panel-5631)
 * [  wrangler.toml ](#tab-panel-5632)
 
+JSONC
+
 ```
 
 {
@@ -49,6 +51,8 @@ For example, the following consumer configuration would send messages to our DLQ
 
 
 ```
+
+TOML
 
 ```
 

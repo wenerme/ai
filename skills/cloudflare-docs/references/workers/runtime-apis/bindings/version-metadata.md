@@ -25,6 +25,8 @@ To use the version metadata binding, update your Worker's Wrangler file:
 * [  wrangler.jsonc ](#tab-panel-7570)
 * [  wrangler.toml ](#tab-panel-7571)
 
+JSONC
+
 ```
 
 {
@@ -39,6 +41,8 @@ To use the version metadata binding, update your Worker's Wrangler file:
 
 
 ```
+
+TOML
 
 ```
 

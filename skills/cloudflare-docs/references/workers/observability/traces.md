@@ -42,6 +42,8 @@ You can configure tracing by setting `observability.traces.enabled = true` in yo
 * [  wrangler.jsonc ](#tab-panel-7480)
 * [  wrangler.toml ](#tab-panel-7481)
 
+JSONC
+
 ```
 
 {
@@ -64,6 +66,8 @@ You can configure tracing by setting `observability.traces.enabled = true` in yo
 
 
 ```
+
+TOML
 
 ```
 
@@ -105,6 +109,8 @@ If you have not specified a sampling rate, it defaults to `1`, meaning 100% of r
 * [  wrangler.jsonc ](#tab-panel-7482)
 * [  wrangler.toml ](#tab-panel-7483)
 
+JSONC
+
 ```
 
 {
@@ -137,6 +143,8 @@ If you have not specified a sampling rate, it defaults to `1`, meaning 100% of r
 
 
 ```
+
+TOML
 
 ```
 

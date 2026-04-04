@@ -211,6 +211,8 @@ ws.on("message", function incoming(message) {
 * [  wrangler.jsonc ](#tab-panel-3088)
 * [  wrangler.toml ](#tab-panel-3089)
 
+JSONC
+
 ```
 
 {
@@ -225,6 +227,8 @@ ws.on("message", function incoming(message) {
 
 
 ```
+
+TOML
 
 ```
 

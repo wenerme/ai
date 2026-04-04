@@ -101,6 +101,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 * [  wrangler.jsonc ](#tab-panel-7804)
 * [  wrangler.toml ](#tab-panel-7805)
 
+JSONC
+
 ```
 
 {
@@ -111,7 +113,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -124,6 +126,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -132,7 +136,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [assets]
@@ -244,6 +248,8 @@ tsconfig.json
 * [  wrangler.jsonc ](#tab-panel-7806)
 * [  wrangler.toml ](#tab-panel-7807)
 
+JSONC
+
 ```
 
 {
@@ -254,7 +260,7 @@ tsconfig.json
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -269,6 +275,8 @@ tsconfig.json
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -277,7 +285,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 
@@ -335,6 +343,8 @@ If you would instead like to define the routes that invoke your Worker explicitl
 * [  wrangler.jsonc ](#tab-panel-7808)
 * [  wrangler.toml ](#tab-panel-7809)
 
+JSONC
+
 ```
 
 {
@@ -345,7 +355,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "assets": {
 
@@ -366,6 +376,8 @@ If you would instead like to define the routes that invoke your Worker explicitl
 
 ```
 
+TOML
+
 ```
 
 "$schema" = "./node_modules/wrangler/config-schema.json"
@@ -374,7 +386,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 main = "./worker/index.ts"
 

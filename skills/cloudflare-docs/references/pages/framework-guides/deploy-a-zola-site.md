@@ -150,6 +150,8 @@ You can now add that subdomain as the `base_url` in your `config.toml` file.
 
 For example:
 
+YAML
+
 ```
 
 # The URL the site will be built for

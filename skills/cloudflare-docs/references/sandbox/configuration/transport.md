@@ -93,6 +93,8 @@ Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`
 * [  wrangler.jsonc ](#tab-panel-6229)
 * [  wrangler.toml ](#tab-panel-6230)
 
+JSONC
+
 ```
 
 {
@@ -103,7 +105,7 @@ Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-02",
+  "compatibility_date": "2026-04-03",
 
   "vars": {
 
@@ -144,6 +146,8 @@ Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`
 
 ```
 
+TOML
+
 ```
 
 name = "my-sandbox-worker"
@@ -152,7 +156,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-02"
+compatibility_date = "2026-04-03"
 
 
 [vars]
@@ -239,6 +243,8 @@ Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 * [  wrangler.jsonc ](#tab-panel-6225)
 * [  wrangler.toml ](#tab-panel-6226)
 
+JSONC
+
 ```
 
 {
@@ -253,6 +259,8 @@ Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
 
 ```
+
+TOML
 
 ```
 
@@ -281,6 +289,8 @@ Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 * [  wrangler.jsonc ](#tab-panel-6227)
 * [  wrangler.toml ](#tab-panel-6228)
 
+JSONC
+
 ```
 
 {
@@ -295,6 +305,8 @@ Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
 
 ```
+
+TOML
 
 ```
 
