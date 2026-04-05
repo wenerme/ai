@@ -133,7 +133,7 @@ delete-everything:
   rm -rf *
 ```
 
-The confirmation prompt may also be an expression<sup>master</sup> which may
+The confirmation prompt may also be an expression<sup>1.49.0</sup> which may
 reference assignments or recipe arguments:
 
 ```just

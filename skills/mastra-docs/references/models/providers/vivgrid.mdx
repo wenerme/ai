@@ -1,11 +1,11 @@
 ---
 title: "Vivgrid | Models"
-description: "Use Vivgrid models with Mastra. 9 models available."
+description: "Use Vivgrid models with Mastra. 12 models available."
 ---
 
 # [Vivgrid logo]Vivgrid
 
-Access 9 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
+Access 12 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
 
 Learn more in the [Vivgrid documentation](https://docs.vivgrid.com/models).
 
@@ -136,6 +136,18 @@ for await (const chunk of stream) {
     "outputCost": 14
   },
   {
+    "model": "vivgrid/gpt-5.3-codex",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 1.75,
+    "outputCost": 14
+  },
+  {
     "model": "vivgrid/gpt-5.4",
     "imageInput": true,
     "audioInput": false,
@@ -146,6 +158,30 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2.5,
     "outputCost": 15
+  },
+  {
+    "model": "vivgrid/gpt-5.4-mini",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 0.75,
+    "outputCost": 4.5
+  },
+  {
+    "model": "vivgrid/gpt-5.4-nano",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 1.25
   }
 ]}
 />
@@ -178,7 +214,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "vivgrid/gpt-5.4"
+      ? "vivgrid/gpt-5.4-nano"
       : "vivgrid/deepseek-v3.2";
   }
 });

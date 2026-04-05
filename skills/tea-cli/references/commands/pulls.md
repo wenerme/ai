@@ -130,6 +130,36 @@ Change state of one or more pull requests to 'open'
 
 **--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
 
+### edit, e
+
+Edit one or more pull requests
+
+**--add-assignees, -a**="": Comma-separated list of usernames to assign
+
+**--add-labels, -L**="": Comma-separated list of labels to assign. Takes precedence over --remove-labels
+
+**--add-reviewers, -r**="": Comma-separated list of usernames to request review from
+
+**--deadline, -D**="": Deadline timestamp to assign
+
+**--description, -d**="": 
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--milestone, -m**="": Milestone to assign
+
+**--referenced-version, -v**="": commit-hash or tag name to assign
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--remove-labels**="": Comma-separated list of labels to remove
+
+**--remove-reviewers**="": Comma-separated list of usernames to remove from reviewers
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+**--title, -t**="": 
+
 ### review
 
 Interactively review a pull request

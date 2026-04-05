@@ -26,7 +26,7 @@ hello
 ```
 
 All variables in a submodule or a single variable in a submodule may be printed
-with a path to the submodule or variable<sup>master</sup>:
+with a path to the submodule or variable<sup>1.49.0</sup>:
 
 ```console
 $ just --evaluate bob::bar
@@ -37,7 +37,7 @@ hello
 ```
 
 The format of exported variables may be controlled with
-`--evaluate-format`<sup>master</sup>:
+`--evaluate-format`<sup>1.49.0</sup>:
 
 ```console
 $ just --evaluate --evaluate-format shell

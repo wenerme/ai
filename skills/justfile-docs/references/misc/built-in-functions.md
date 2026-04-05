@@ -1,4 +1,4 @@
-### Functions
+### Built-in Functions
 
 `just` provides many built-in functions for use in expressions, including
 recipe body `{{…}}` substitutions, assignments, and default parameter values.

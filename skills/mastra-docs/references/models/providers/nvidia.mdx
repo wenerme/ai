@@ -1,11 +1,11 @@
 ---
 title: "Nvidia | Models"
-description: "Use Nvidia models with Mastra. 74 models available."
+description: "Use Nvidia models with Mastra. 75 models available."
 ---
 
 # [Nvidia logo]Nvidia
 
-Access 74 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 75 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -228,6 +228,18 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/google/gemma-4-31b-it",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 16384,
     "inputCost": null,
     "outputCost": null
   },
