@@ -18,6 +18,11 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/workers-ai/changelog/index.xml)
 
+## 2026-04-04
+
+**Google Gemma 4 26B A4B now available on Workers AI**
+* [@cf/google/gemma-4-26b-a4b-it](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/) now available on Workers AI. A Mixture-of-Experts model with 26B total parameters and 4B active, featuring a 256K context window, vision, built-in thinking mode, and function calling. Read [changelog](https://developers.cloudflare.com/changelog/post/2026-04-04-gemma-4-26b-a4b-workers-ai/) to get started.
+
 ## 2026-03-19
 
 **Moonshot AI Kimi K2.5 now available on Workers AI**

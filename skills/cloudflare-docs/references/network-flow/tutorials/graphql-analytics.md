@@ -20,7 +20,7 @@ Copy page
 
 # GraphQL Analytics
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 Use the GraphQL Analytics API to retrieve Network Flow (formerly Magic Network Monitoring) flow data.
 
@@ -83,7 +83,7 @@ query MagicNetworkMonitoring($accountTag: string!, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYRAZmQBGAOyZpAzAFZuALQYgApvAAmXPoJHjeU7hIVLVGgL5A)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgQwOYEsDGA5MAXA7gewgGs58A7FbQlMpACgBIE018QzsAVZALhgGdsEGkgCEAGhgNBCCNj6cUAWzCSGYMgBMFysAEoYAbwBQMGADcUYXJCOmzMZq3bZ+dAGYoANtkh9DjixsHNxIfExBLqEwAL4GJg4OSmRKAGJe+LgAIgjYCACCmggADtgo5mAA4hBsxW72iWaePn5GMEW+ZSoA+kjyUjJykh04ut1eYMDhGpqxDY1eypR8AIwADPOJhJqQAEJQfADaI11gqeVgcDQgvvzdWQCiAMoAwgC6mzDxn2b8IEp2RqNABGlH4PwcxWYRBw4KBZhiEM0ujI-BQ5H4gPhZhOunOFSuZBuYDh8MRQPJDkpiJiQA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYRo5LwCcmbqMwBGABwAtBiACm8ACZc+giROSKArHIUr1AXyA)
 
 Note
 

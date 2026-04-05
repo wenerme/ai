@@ -73,6 +73,7 @@ The Price in Tokens column is equivalent to the Price in Neurons column - the di
 | @cf/zai-org/glm-4.7-flash                    | $0.060 per M input tokens  $0.400 per M output tokens                                   | 5500 neurons per M input tokens  36400 neurons per M output tokens                                           |
 | @cf/nvidia/nemotron-3-120b-a12b              | $0.500 per M input tokens  $1.500 per M output tokens                                   | 45455 neurons per M input tokens  136364 neurons per M output tokens                                         |
 | @cf/moonshotai/kimi-k2.5                     | $0.600 per M input tokens  $0.100 per M cached input tokens  $3.000 per M output tokens | 54545 neurons per M input tokens  9091 neurons per M cached input tokens  272727 neurons per M output tokens |
+| @cf/google/gemma-4-26b-a4b-it                | $0.100 per M input tokens  $0.300 per M output tokens                                   | 9091 neurons per M input tokens  27273 neurons per M output tokens                                           |
 
 ## Embeddings model pricing
 

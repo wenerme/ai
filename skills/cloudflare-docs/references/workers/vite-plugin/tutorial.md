@@ -16,7 +16,7 @@ Copy page
 
 # Tutorial - React SPA with an API
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 This tutorial takes you through the steps needed to adapt a Vite project to use the Cloudflare Vite plugin. Much of the content can also be applied to adapting existing Vite projects and to front-end frameworks other than React.
 
@@ -98,8 +98,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-7804)
-* [  wrangler.toml ](#tab-panel-7805)
+* [  wrangler.jsonc ](#tab-panel-7810)
+* [  wrangler.toml ](#tab-panel-7811)
 
 JSONC
 
@@ -113,7 +113,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-04",
 
   "assets": {
 
@@ -136,7 +136,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-04"
 
 
 [assets]
@@ -245,8 +245,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-7806)
-* [  wrangler.toml ](#tab-panel-7807)
+* [  wrangler.jsonc ](#tab-panel-7812)
+* [  wrangler.toml ](#tab-panel-7813)
 
 JSONC
 
@@ -260,7 +260,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-04",
 
   "assets": {
 
@@ -285,7 +285,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-04"
 
 main = "./worker/index.ts"
 
@@ -340,8 +340,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-7808)
-* [  wrangler.toml ](#tab-panel-7809)
+* [  wrangler.jsonc ](#tab-panel-7814)
+* [  wrangler.toml ](#tab-panel-7815)
 
 JSONC
 
@@ -355,7 +355,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-04",
 
   "assets": {
 
@@ -386,7 +386,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-04"
 
 main = "./worker/index.ts"
 
