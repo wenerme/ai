@@ -209,6 +209,7 @@ components:
         - embeddings
         - audio
         - video
+        - rerank
       title: OutputModality
     ModelArchitecture:
       type: object

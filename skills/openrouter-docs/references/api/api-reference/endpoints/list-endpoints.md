@@ -129,6 +129,7 @@ components:
         - embeddings
         - audio
         - video
+        - rerank
       title: OutputModality
     ListEndpointsResponseArchitectureTokenizer:
       type: object

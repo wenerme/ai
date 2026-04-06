@@ -419,6 +419,11 @@
     "size": 3793,
     "updatedAt": "2026-04-02T10:27:25.151Z"
   },
+  "guides/get-started/sovereign-ai.md": {
+    "url": "https://openrouter.ai/docs/guides/get-started/sovereign-ai.md",
+    "size": 5916,
+    "updatedAt": "2026-04-06T00:22:34.460Z"
+  },
   "guides/community/frameworks-and-integrations-overview.md": {
     "url": "https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview.md",
     "size": 0,
@@ -606,8 +611,8 @@
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
-    "size": 19880,
-    "updatedAt": "2026-04-04T00:23:19.929Z"
+    "size": 19897,
+    "updatedAt": "2026-04-06T00:22:59.492Z"
   },
   "api/api-reference/models/list-models-count.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-count.md",
@@ -616,18 +621,18 @@
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
-    "size": 16828,
-    "updatedAt": "2026-04-03T10:23:00.021Z"
+    "size": 16845,
+    "updatedAt": "2026-04-06T00:23:02.301Z"
   },
   "api/api-reference/models/list-models-user.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-user.md",
-    "size": 17585,
-    "updatedAt": "2026-04-03T10:23:00.926Z"
+    "size": 17602,
+    "updatedAt": "2026-04-06T00:23:03.470Z"
   },
   "api/api-reference/endpoints/list-endpoints.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints.md",
-    "size": 19698,
-    "updatedAt": "2026-04-04T00:23:27.236Z"
+    "size": 19715,
+    "updatedAt": "2026-04-06T00:23:04.797Z"
   },
   "api/api-reference/endpoints/list-endpoints-zdr.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr.md",
@@ -746,8 +751,8 @@
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",
-    "size": 15791,
-    "updatedAt": "2026-04-03T10:23:22.919Z"
+    "size": 15808,
+    "updatedAt": "2026-04-06T00:23:34.479Z"
   },
   "sdks/agentic-usage.md": {
     "url": "https://openrouter.ai/docs/sdks/agentic-usage.md",

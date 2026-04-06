@@ -61,7 +61,9 @@ Aliases aren't supported at this time (ex. you can not use `column as "alias"`).
 
 ## Saved searches {#saved-searches}
 
-You can save your searches for quick access later. Once saved, your searches will appear in the left sidebar, making it easy to revisit frequently used search queries without having to reconstruct them.
+You can save your searches for quick access later. Once saved, your searches will appear on the `Saved Searches` page, making it easy to revisit frequently used search queries without having to reconstruct them.
+
+<Image img={saved_search_listing} alt="Saved Search Listing Page" size="lg" />
 
 To save a search, simply configure your search query and click the save button. You can give your saved search a descriptive name to help identify it later.
 

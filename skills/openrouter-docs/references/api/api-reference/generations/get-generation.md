@@ -82,6 +82,7 @@ components:
       enum:
         - completions
         - embeddings
+        - rerank
         - video
       description: Type of API used for the generation
       title: GenerationGetResponsesContentApplicationJsonSchemaDataApiType
