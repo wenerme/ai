@@ -48,7 +48,9 @@ function loadManifest(): Manifest {
 }
 
 function saveManifest(manifest: Manifest) {
-  writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + "\n");
+  const content = JSON.stringify(manifest, null, 2) + "\n";
+  if (existsSync(MANIFEST_PATH) && readFileSync(MANIFEST_PATH, "utf-8") === content) return;
+  writeFileSync(MANIFEST_PATH, content);
 }
 
 /** Determine which skill a path belongs to, and its relative filepath within that skill's references/ */

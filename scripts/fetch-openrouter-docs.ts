@@ -30,7 +30,9 @@ function loadManifest(): Manifest {
   return {};
 }
 function saveManifest(m: Manifest) {
-  writeFileSync(MANIFEST_PATH, JSON.stringify(m, null, 2) + "\n");
+  const content = JSON.stringify(m, null, 2) + "\n";
+  if (existsSync(MANIFEST_PATH) && readFileSync(MANIFEST_PATH, "utf-8") === content) return;
+  writeFileSync(MANIFEST_PATH, content);
 }
 
 /** Strip OpenRouter's *** frontmatter block */
