@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 84 skills available
+> 85 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -32,6 +32,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `brainstorming` | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... | [obra/superpowers](https://github.com/obra/superpowers) |
 | `bun-docs` | Use when working with the Bun JavaScript runtime, package manager, bundler, or test runner: HTTP server, file I/O,... | [oven-sh/bun](https://github.com/oven-sh/bun) |
 | `bun-ffi-interop-pattern` | Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C... |  |
+| `caddy-docs` | USE THIS SKILL WHEN working with the Caddy web server: Caddyfile configuration, reverse_proxy, automatic HTTPS, TLS,... |  |
 | `chrome-devtools` | Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web... | [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | `claude-code-docs` | Use when answering questions about Claude Code CLI features, configuration, hooks, skills, MCP, permissions, settings,... | [anthropics/claude-code](https://github.com/anthropics/claude-code) |
 | `clickhouse-docs` | Use when working with ClickHouse: MergeTree engine family, SQL syntax, data types, table functions, materialized views,... | [ClickHouse/clickhouse-docs](https://github.com/ClickHouse/clickhouse-docs) |
@@ -277,6 +278,16 @@ npx skills add wenerme/ai --skill bun-ffi-interop-pattern
 ```
 
 Use when calling native libraries via bun:ffi, loading shared libraries with dlopen, or working with FFI pointers and C struct memory layouts
+
+</details>
+<details>
+<summary><code>caddy-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill caddy-docs
+```
+
+USE THIS SKILL WHEN working with the Caddy web server: Caddyfile configuration, reverse_proxy, automatic HTTPS, TLS, file_server, headers, rewrite, redir, encode, handle, route, templates, basic_auth, forward_auth, php_fastcgi, logging, metrics, tracing, try_files, map, vars, import, invoke, bind, Caddy JSON API, Caddy CLI commands, Caddy modules, extending Caddy, or any Caddy server configuration and deployment.
 
 </details>
 <details>
