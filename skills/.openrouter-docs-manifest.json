@@ -399,6 +399,11 @@
     "size": 6129,
     "updatedAt": "2026-04-02T10:27:23.404Z"
   },
+  "guides/evaluate-and-optimize/rag.md": {
+    "url": "https://openrouter.ai/docs/guides/evaluate-and-optimize/rag.md",
+    "size": 27614,
+    "updatedAt": "2026-04-06T10:33:31.825Z"
+  },
   "guides/evaluate-and-optimize/red-teaming.md": {
     "url": "https://openrouter.ai/docs/guides/evaluate-and-optimize/red-teaming.md",
     "size": 1928,
@@ -754,6 +759,11 @@
     "size": 15808,
     "updatedAt": "2026-04-06T00:23:34.479Z"
   },
+  "api/api-reference/rerank/create-rerank.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/rerank/create-rerank.md",
+    "size": 28233,
+    "updatedAt": "2026-04-06T10:34:56.178Z"
+  },
   "sdks/agentic-usage.md": {
     "url": "https://openrouter.ai/docs/sdks/agentic-usage.md",
     "size": 3438,
@@ -894,6 +904,11 @@
     "size": 3997,
     "updatedAt": "2026-04-03T00:24:43.662Z"
   },
+  "sdks/typescript/api-reference/rerank.md": {
+    "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/rerank.md",
+    "size": 5162,
+    "updatedAt": "2026-04-06T10:35:08.941Z"
+  },
   "sdks/typescript/api-reference/responses.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/responses.md",
     "size": 5240,
@@ -963,6 +978,11 @@
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/providers.md",
     "size": 2900,
     "updatedAt": "2026-04-03T00:24:49.683Z"
+  },
+  "sdks/python/api-reference/rerank.md": {
+    "url": "https://openrouter.ai/docs/sdks/python/api-reference/rerank.md",
+    "size": 6431,
+    "updatedAt": "2026-04-06T10:35:15.287Z"
   },
   "sdks/python/api-reference/responses.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/responses.md",
