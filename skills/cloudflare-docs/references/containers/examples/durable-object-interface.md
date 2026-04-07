@@ -16,7 +16,7 @@ Copy page
 
 # Using Durable Objects Directly
 
-**Last reviewed:**  9 months ago 
+**Last reviewed:**  10 months ago 
 
 Various examples calling Containers directly from Durable Objects
 

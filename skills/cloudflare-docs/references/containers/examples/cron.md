@@ -16,7 +16,7 @@ Copy page
 
 # Cron Container
 
-**Last reviewed:**  9 months ago 
+**Last reviewed:**  10 months ago 
 
 Running a container on a schedule using Cron Triggers
 
@@ -26,8 +26,8 @@ For a full example, see the [Cron Container Template ↗](https://github.com/mik
 
 Use a cron expression in your Wrangler config to specify the schedule:
 
-* [  wrangler.jsonc ](#tab-panel-4013)
-* [  wrangler.toml ](#tab-panel-4014)
+* [  wrangler.jsonc ](#tab-panel-4019)
+* [  wrangler.toml ](#tab-panel-4020)
 
 JSONC
 

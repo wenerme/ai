@@ -29,6 +29,7 @@ Browser Rendering offers multiple integration methods depending on your use case
 | Browser automation                | [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/)                                                                                | Full control with built-in tracing and assertions |
 | Porting existing scripts          | [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) or [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/) | Minimal code changes from standard libraries      |
 | AI-powered data extraction        | [JSON endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/)                                                                 | Structured data via natural language prompts      |
+| Site-wide crawling                | [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/)                                                               | Multi-page content extraction with async results  |
 | AI agent browsing                 | [Playwright MCP](https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp/)                                                             | LLMs control browsers via MCP                     |
 | Resilient scraping                | [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/)                                                                                  | AI finds elements by intent, not selectors        |
 
@@ -66,6 +67,7 @@ The REST API can also be used to:
 
 * [Fetch HTML](https://developers.cloudflare.com/browser-rendering/rest-api/content-endpoint/)
 * [Generate a PDF](https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint/)
+* [Crawl web content](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/)
 * [Explore all REST API endpoints](https://developers.cloudflare.com/browser-rendering/rest-api/)
 
 ## Workers Bindings
@@ -158,8 +160,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Rendering API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-3238)
-* [  wrangler.toml ](#tab-panel-3239)
+* [  wrangler.jsonc ](#tab-panel-3244)
+* [  wrangler.toml ](#tab-panel-3245)
 
 JSONC
 
@@ -175,7 +177,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-06",
 
   "compatibility_flags": [
 
@@ -220,7 +222,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-06"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -243,8 +245,8 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-3236)
-* [  TypeScript ](#tab-panel-3237)
+* [  JavaScript ](#tab-panel-3242)
+* [  TypeScript ](#tab-panel-3243)
 
 Update `src/index.js` with your Worker code:
 

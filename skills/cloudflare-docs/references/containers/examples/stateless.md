@@ -16,7 +16,7 @@ Copy page
 
 # Stateless Instances
 
-**Last reviewed:**  9 months ago 
+**Last reviewed:**  10 months ago 
 
 Run multiple instances across Cloudflare's network
 

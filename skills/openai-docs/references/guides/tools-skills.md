@@ -234,4 +234,4 @@ For workflows that can perform write or high-impact actions, require explicit ap
 
 #### Validate data residency and retention requirements
 
-We support Skills in two form factors: local execution and hosted container-based execution. Skills running in OpenAI hosted containers can't be used when Zero Data Retention is enabled. Read more about our [data controls](https://developers.openai.com/api/docs/guides/your-data).
+We support Skills in two form factors: local execution and hosted container-based execution. Hosted skills follow the same container lifecycle as hosted shell: mounted skills and container files remain available while the container is active and are discarded when the container expires or is deleted. If you want execution to stay entirely on infrastructure you manage, use local shell mode. Read more about our [data controls](https://developers.openai.com/api/docs/guides/your-data).

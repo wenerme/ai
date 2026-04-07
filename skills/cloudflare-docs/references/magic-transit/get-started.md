@@ -220,6 +220,13 @@ Also, when using [Cloudflare Network Interconnect](https://developers.cloudflare
 
 MSS clamps are used to backhaul data from the data center where traffic is ingested (close to the end user) to the facility with the CNI link.
 
+## Next steps
+
+After your prefixes are advertised, configure your DDoS protection settings:
+
+1. Review and customize your [DDoS protection](https://developers.cloudflare.com/magic-transit/ddos/) settings, including [network-layer DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/).
+2. If your network handles TCP traffic, enable [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/). If your network receives DNS over UDP traffic, enable [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/). These systems provide stateful analysis beyond the managed rulesets.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/get-started/","name":"Get started"}}]}
 ```

@@ -65,7 +65,7 @@ The UDP proxy forwards UDP traffic such as VoIP, [internal DNS requests](https:/
 
 HTTP/3 uses the QUIC protocol over UDP. To inspect HTTP/3 traffic, turn on both TLS decryption and the UDP proxy. Gateway will then intercept the HTTP/3 connection and connect to the origin server over HTTP/2\. Otherwise, HTTP/3 traffic will bypass inspection. For more information on browser-specific behavior, refer to [HTTP/3 inspection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/).
 
-### ICMP (Internet Control Message Protocol) Beta
+### ICMP (Internet Control Message Protocol)
 
 The ICMP proxy allows ICMP traffic to reach your private network through Gateway. For example, this would allow a Cloudflare One Client user to run diagnostic commands such as `ping` and `traceroute` to an internal server IP.
 
@@ -77,8 +77,8 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-3921)
-* [  Docker ](#tab-panel-3922)
+* [  Linux ](#tab-panel-3927)
+* [  Docker ](#tab-panel-3928)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:  
 a. Find the user that owns the `cloudflared` process:  

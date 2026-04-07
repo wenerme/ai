@@ -29,7 +29,7 @@ To turn on protocol detection:
 
 You can now use _Detected Protocol_ as a selector in a [Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol).
 
-### Inspect on all ports Beta
+### Inspect on all ports
 
 By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you [turn on TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), Gateway will inspect HTTPS traffic through port `443`.
 
@@ -49,22 +49,22 @@ To use HTTP policies to filter all HTTPS traffic on all ports when using a defau
 
 Gateway supports detection and filtering of the following protocols:
 
-| Protocol          | Notes                                                                                        |
-| ----------------- | -------------------------------------------------------------------------------------------- |
-| HTTP              | Hypertext Transfer Protocol (HTTP/1.1).                                                      |
-| HTTP2             | Hypertext Transfer Protocol Version 2.                                                       |
-| SSH               | Secure Shell Protocol — remote login and command execution.                                  |
-| TLS               | Transport Layer Security. Gateway detects TLS versions 1.1 through 1.3 with the _TLS_ value. |
-| DCERPC            | Distributed Computing Environment / Remote Procedure Call.                                   |
-| MQTT              | Message Queuing Telemetry Transport — lightweight IoT messaging protocol.                    |
-| TPKT              | TPKT commonly initiates RDP sessions, so you can use it to identify and filter RDP traffic.  |
-| IMAP Beta         | Internet Message Access Protocol — email retrieval.                                          |
-| POP3 Beta         | Post Office Protocol v3 — email retrieval.                                                   |
-| SMTP Beta         | Simple Mail Transfer Protocol — email sending.                                               |
-| MYSQL Beta        | MySQL database wire protocol.                                                                |
-| RSYNC-DAEMON Beta | rsync daemon protocol.                                                                       |
-| LDAP Beta         | Lightweight Directory Access Protocol.                                                       |
-| NTP Beta          | Network Time Protocol.                                                                       |
+| Protocol     | Notes                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| HTTP         | Hypertext Transfer Protocol (HTTP/1.1).                                                      |
+| HTTP2        | Hypertext Transfer Protocol Version 2.                                                       |
+| SSH          | Secure Shell Protocol — remote login and command execution.                                  |
+| TLS          | Transport Layer Security. Gateway detects TLS versions 1.1 through 1.3 with the _TLS_ value. |
+| DCERPC       | Distributed Computing Environment / Remote Procedure Call.                                   |
+| MQTT         | Message Queuing Telemetry Transport — lightweight IoT messaging protocol.                    |
+| TPKT         | TPKT commonly initiates RDP sessions, so you can use it to identify and filter RDP traffic.  |
+| IMAP         | Internet Message Access Protocol — email retrieval.                                          |
+| POP3         | Post Office Protocol v3 — email retrieval.                                                   |
+| SMTP         | Simple Mail Transfer Protocol — email sending.                                               |
+| MYSQL        | MySQL database wire protocol.                                                                |
+| RSYNC-DAEMON | rsync daemon protocol.                                                                       |
+| LDAP         | Lightweight Directory Access Protocol.                                                       |
+| NTP          | Network Time Protocol.                                                                       |
 
 ## Example network policy
 

@@ -155,7 +155,7 @@ The response should show a `loc` value corresponding to the geohash region.
 
 * Learn about [deployment models](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/) to understand single-hop versus double-hop architectures.
 * Review [authentication methods](https://developers.cloudflare.com/privacy-proxy/concepts/authentication/) for production deployments using Privacy Pass.
-* Configure [observability](https://developers.cloudflare.com/privacy-proxy/reference/observability/) to monitor proxy traffic with OpenTelemetry.
+* Configure [observability](https://developers.cloudflare.com/privacy-proxy/reference/metrics/) to monitor proxy traffic with GraphQL Analytics and OpenTelemetry.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/get-started/","name":"Get started"}}]}

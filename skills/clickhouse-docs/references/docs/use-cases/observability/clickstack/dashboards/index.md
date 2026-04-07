@@ -13,7 +13,7 @@ Visualizations can be created from traces, metrics, logs, or any user-defined wi
 
 The **Chart Explorer** interface in HyperDX allows you to visualize metrics, traces, and logs over time, making it easy to create quick visualizations for data analysis. This interface is also reused when creating dashboards. The following section walks through the process of creating a visualization using Chart Explorer.
 
-Each visualization begins by selecting a **data source**, followed by a **metric**, with optional **filter expressions** and **group by** fields. Conceptually, visualizations in HyperDX map to a SQL `GROUP BY` query under the hood — users define metrics to aggregate across selected dimensions.
+Each visualization begins by selecting a **data source**, followed by a **metric**, with optional **filter expressions** and **group by** fields. Conceptually, visualizations in HyperDX map to a SQL `GROUP BY` query under the hood — you define metrics to aggregate across selected dimensions.
 
 > **tip**: AI-powered chart generation
 ClickStack also supports creating charts from natural language prompts using the [text-to-chart](/use-cases/observability/clickstack/text-to-chart) feature. Describe what you want to see, and ClickStack generates the visualization automatically.
@@ -127,7 +127,7 @@ The dashboard will be auto-saved. To set the dashboard name, select the title an
 
 </VerticalStepper>
 
-## Dashboards - Editing visualizations {#dashboards-editing-visualizations}
+## Dashboards - editing visualizations {#dashboards-editing-visualizations}
 
 To remove, edit, or duplicate a visualization, hover over it and use the corresponding action buttons.
 
@@ -141,7 +141,7 @@ Dashboards can be favorited for easy access on the sidebar and at the top of the
 
 <Image img={dashboard_search} alt="Dashboard search" size="lg"/>
 
-## Dashboards - Tagging {#tagging}
+## Dashboards - tagging {#tagging}
 <Tagging />
 
 ## Custom filters {#custom-filters}
@@ -224,7 +224,7 @@ This dashboard queries the ClickHouse [system tables](/operations/system-tables)
 
 ### Services dashboard {#services-dashboard}
 
-The Services dashboard displays currently active services based on trace data. This requires users to have collected traces and configured a valid Traces data source.
+The Services dashboard displays currently active services based on trace data. This requires you to have collected traces and configured a valid Traces data source.
 
 Service names are auto-detected from the trace data, with a series of prebuilt visualizations organized across three tabs: HTTP Services, Database, and Errors.
 

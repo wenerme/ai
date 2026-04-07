@@ -1,6 +1,6 @@
 ---
-title: Observability
-description: Privacy Proxy supports OpenTelemetry for monitoring and observability. You can collect metrics and traces to understand proxy performance and usage.
+title: OpenTelemetry
+description: Privacy Proxy exports telemetry data using the OpenTelemetry Protocol (OTLP). You can configure an endpoint to receive this data and forward it to your observability platform.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,28 +10,28 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/privacy-proxy/reference/observability.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/privacy-proxy/reference/metrics/opentelemetry.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
-# Observability
-
-Privacy Proxy supports OpenTelemetry for monitoring and observability. You can collect metrics and traces to understand proxy performance and usage.
-
-## OpenTelemetry integration
+# OpenTelemetry
 
 Privacy Proxy exports telemetry data using the [OpenTelemetry Protocol (OTLP) ↗](https://opentelemetry.io/docs/specs/otlp/). You can configure an endpoint to receive this data and forward it to your observability platform.
 
-### Configure telemetry export
+---
+
+## Configure telemetry export
 
 During onboarding, provide Cloudflare with your OpenTelemetry collector endpoint:
 
 * **Endpoint URL**: The HTTPS endpoint where telemetry data should be sent.
-* **Authentication**: Headers or credentials required to authenticate with your collector.
+* **Authentication**: Headers or credentials required to authenticate with your collector. Supported authentication types include bearer token headers, custom header-based authentication, and mutual TLS (mTLS).
 
 Cloudflare configures your Privacy Proxy instance to export telemetry to this endpoint.
 
-### Supported signals
+---
+
+## Supported signals
 
 Privacy Proxy exports the following telemetry signals:
 
@@ -39,6 +39,8 @@ Privacy Proxy exports the following telemetry signals:
 | ------- | ----------------------------------------------------------------------------------------------------- |
 | Metrics | Connection counts, request rates, latency histograms, error rates                                     |
 | Traces  | Per-request traces showing proxy processing time. Traces are sampled at approximately 1% of requests. |
+
+---
 
 ## Metrics
 
@@ -67,6 +69,8 @@ Privacy Proxy exports metrics that help you understand usage patterns and perfor
 | --------------------------------------------- | ------------------------------------------- |
 | privacy\_proxy\_connect\_latency\_seconds     | Time to establish connection to destination |
 | privacy\_proxy\_first\_byte\_latency\_seconds | Time to first byte from destination         |
+
+---
 
 ## `Server-Timing` header
 
@@ -110,21 +114,13 @@ sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privac
 
 ```
 
-## Data privacy
-
-Telemetry data does not include:
-
-* User IP addresses
-* Request content or headers (beyond what is needed for metrics)
-* Destination URLs or hostnames (aggregated only)
-* Authentication tokens or credentials
-
-Cloudflare exports only operational metrics that help you monitor service health without compromising user privacy.
+---
 
 ## Related resources
 
-* [OpenTelemetry documentation ↗](https://opentelemetry.io/docs/) \- Learn more about OpenTelemetry concepts and configuration.
+* [OpenTelemetry documentation ↗](https://opentelemetry.io/docs/) — Learn more about OpenTelemetry concepts and configuration.
+* [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) — Query metrics programmatically via Cloudflare's GraphQL API.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/reference/observability/","name":"Observability"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/privacy-proxy/","name":"Privacy Proxy"}},{"@type":"ListItem","position":3,"item":{"@id":"/privacy-proxy/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/privacy-proxy/reference/metrics/","name":"Observability"}},{"@type":"ListItem","position":5,"item":{"@id":"/privacy-proxy/reference/metrics/opentelemetry/","name":"OpenTelemetry"}}]}
 ```

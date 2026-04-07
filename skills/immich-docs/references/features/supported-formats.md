@@ -26,17 +26,17 @@ Immich supports a number of image and video formats, the most common of which ar
 
 ## Video formats
 
-| Format      | Extension(s)          |     Supported?     | Notes |
-| :---------- | :-------------------- | :----------------: | :---- |
-| `3GPP`      | `.3gp` `.3gpp`        | :white_check_mark: |       |
-| `AVI`       | `.avi`                | :white_check_mark: |       |
-| `FLV`       | `.flv`                | :white_check_mark: |       |
-| `M4V`       | `.m4v`                | :white_check_mark: |       |
-| `MATROSKA`  | `.mkv`                | :white_check_mark: |       |
-| `MP2T`      | `.mts` `.m2ts` `.m2t` | :white_check_mark: |       |
-| `MP4`       | `.mp4` `.insv`        | :white_check_mark: |       |
-| `MPEG`      | `.mpg` `.mpe` `.mpeg` | :white_check_mark: |       |
-| `MXF`       | `.mxf`                | :white_check_mark: |       |
-| `QUICKTIME` | `.mov`                | :white_check_mark: |       |
-| `WEBM`      | `.webm`               | :white_check_mark: |       |
-| `WMV`       | `.wmv`                | :white_check_mark: |       |
+| Format      | Extension(s)                |     Supported?     | Notes |
+| :---------- | :-------------------------- | :----------------: | :---- |
+| `3GPP`      | `.3gp` `.3gpp`              | :white_check_mark: |       |
+| `AVI`       | `.avi`                      | :white_check_mark: |       |
+| `FLV`       | `.flv`                      | :white_check_mark: |       |
+| `M4V`       | `.m4v`                      | :white_check_mark: |       |
+| `MATROSKA`  | `.mkv`                      | :white_check_mark: |       |
+| `MP2T`      | `.mts` `.m2ts` `.m2t` `.ts` | :white_check_mark: |       |
+| `MP4`       | `.mp4` `.insv`              | :white_check_mark: |       |
+| `MPEG`      | `.mpg` `.mpe` `.mpeg`       | :white_check_mark: |       |
+| `MXF`       | `.mxf`                      | :white_check_mark: |       |
+| `QUICKTIME` | `.mov`                      | :white_check_mark: |       |
+| `WEBM`      | `.webm`                     | :white_check_mark: |       |
+| `WMV`       | `.wmv`                      | :white_check_mark: |       |

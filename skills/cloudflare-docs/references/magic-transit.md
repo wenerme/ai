@@ -79,6 +79,10 @@ Get Cloudflare's security and performance while using your own IPs. With Bring Y
 
 ## More resources
 
+[Data Center Protection](https://developers.cloudflare.com/learning-paths/data-center-protection/concepts/) 
+
+Follow a guided learning path to set up Magic Transit, configure DDoS protection, and go live with your network.
+
 [Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/) 
 
 Deep dive into the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.

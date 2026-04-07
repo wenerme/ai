@@ -370,6 +370,16 @@ components:
           format: double
       description: Default parameters for this model
       title: DefaultParameters
+    ModelLinks:
+      type: object
+      properties:
+        details:
+          type: string
+          description: URL for the model details/endpoints API
+      required:
+        - details
+      description: Related API endpoints and resources for this model.
+      title: ModelLinks
     Model:
       type: object
       properties:
@@ -425,6 +435,8 @@ components:
           description: >-
             The date after which the model may be removed. ISO 8601 date string
             (YYYY-MM-DD) or null if no expiration.
+        links:
+          $ref: '#/components/schemas/ModelLinks'
       required:
         - id
         - canonical_slug
@@ -437,6 +449,7 @@ components:
         - per_request_limits
         - supported_parameters
         - default_parameters
+        - links
       description: Information about an AI model available on OpenRouter
       title: Model
     ModelsListResponseData:

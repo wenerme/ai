@@ -74,10 +74,10 @@
   "anthropic-docs/build-with-claude/working-with-messages.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
     "skill": "anthropic-docs",
-    "etag": "W/\"7d73-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 32115,
-    "updatedAt": "2026-04-02T10:18:33.037Z"
+    "etag": "W/\"7dff-19d64b5eed0\"",
+    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
+    "size": 32255,
+    "updatedAt": "2026-04-07T00:14:16.848Z"
   },
   "anthropic-docs/build-with-claude/handling-stop-reasons.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons",
@@ -106,18 +106,18 @@
   "anthropic-docs/build-with-claude/adaptive-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking",
     "skill": "anthropic-docs",
-    "etag": "W/\"7e7a-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 32376,
-    "updatedAt": "2026-04-02T10:18:34.235Z"
+    "etag": "W/\"7e69-19d64b5eed0\"",
+    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
+    "size": 32359,
+    "updatedAt": "2026-04-07T00:14:18.133Z"
   },
   "anthropic-docs/build-with-claude/effort.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
     "skill": "anthropic-docs",
-    "etag": "W/\"30e6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 12518,
-    "updatedAt": "2026-04-02T10:18:34.527Z"
+    "etag": "W/\"3124-19d64b5eed0\"",
+    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
+    "size": 12580,
+    "updatedAt": "2026-04-07T00:14:18.509Z"
   },
   "anthropic-docs/build-with-claude/fast-mode.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/fast-mode",
@@ -802,10 +802,10 @@
   "anthropic-docs/test-and-evaluate/strengthen-guardrails/increase-consistency.md": {
     "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/increase-consistency",
     "skill": "anthropic-docs",
-    "etag": "W/\"37f7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 14327,
-    "updatedAt": "2026-04-02T10:19:00.416Z"
+    "etag": "W/\"37d4-19d64b5eed0\"",
+    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
+    "size": 14292,
+    "updatedAt": "2026-04-07T00:14:47.629Z"
   },
   "anthropic-docs/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks.md": {
     "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks",
@@ -826,10 +826,10 @@
   "anthropic-docs/test-and-evaluate/strengthen-guardrails/reduce-prompt-leak.md": {
     "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-prompt-leak",
     "skill": "anthropic-docs",
-    "etag": "W/\"bf3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3055,
-    "updatedAt": "2026-04-02T10:19:01.271Z"
+    "etag": "W/\"bd7-19d64b5eed0\"",
+    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
+    "size": 3027,
+    "updatedAt": "2026-04-07T00:14:48.682Z"
   },
   "anthropic-docs/build-with-claude/administration-api.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/administration-api",
@@ -1018,10 +1018,10 @@
   "anthropic-docs/resources/overview.md": {
     "url": "https://platform.claude.com/docs/en/resources/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"ce5-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3301,
-    "updatedAt": "2026-04-02T10:19:08.228Z"
+    "etag": "W/\"c69-19d64b5eed0\"",
+    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
+    "size": 3177,
+    "updatedAt": "2026-04-07T00:14:56.804Z"
   },
   "anthropic-docs/about-claude/glossary.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/glossary",

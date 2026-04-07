@@ -16,7 +16,7 @@ Copy page
 
 # About
 
-Magic Transit is a network security and performance solution that offers Distributed Denial of Service (DDoS) protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks.
+Magic Transit is a network security and performance solution that offers Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks.
 
 Magic Transit delivers its connectivity, security, and performance benefits by serving as the front door to your IP network. This means it accepts IP packets destined for your network, processes them, and then outputs them to your origin infrastructure.
 

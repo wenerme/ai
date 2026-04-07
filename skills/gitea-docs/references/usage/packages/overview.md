@@ -33,6 +33,7 @@ The following package managers are currently supported:
 | [RPM](usage/packages/rpm.md) | - | `yum`, `dnf`, `zypper` |
 | [RubyGems](usage/packages/rubygems.md) | Ruby | `gem`, `Bundler` |
 | [Swift](usage/packages/swift.md) | Swift | `swift` |
+| [Terraform](usage/packages/terraform.md) | - | `terraform` |
 | [Vagrant](usage/packages/vagrant.md) | - | `vagrant` |
 
 **The following paragraphs only apply if Packages are not globally disabled!**

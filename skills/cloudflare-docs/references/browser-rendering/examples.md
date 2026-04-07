@@ -40,6 +40,12 @@ Use these [REST API](https://developers.cloudflare.com/browser-rendering/rest-ap
 
 [ Retrieve links from a URL ](https://developers.cloudflare.com/browser-rendering/rest-api/links-endpoint/#get-all-links-on-a-page) Retrieve all links from a webpage, including hidden ones. 
 
+[ Crawl a documentation site ](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#documentation-site-crawl) Crawl documentation pages with include/exclude patterns to build a knowledge base. 
+
+[ Extract structured product data with AI ](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#product-catalog-extraction-with-ai) Crawl a product catalog and extract structured JSON data using AI. 
+
+[ Fast static content fetch ](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#fast-static-content-fetch) Crawl static sites without JavaScript rendering for faster results. 
+
 ## Workers Bindings examples
 
 Use [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) for dynamic, multi-step browser automation with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), or [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/).

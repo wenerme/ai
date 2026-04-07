@@ -129,13 +129,13 @@ All requests, including those with fewer than 1024 tokens, will display a `cache
 
 6. **Does Prompt Caching work on Zero Data Retention requests?**
 
-   In-memory cache retention is Zero Data Retention eligible.
-   If you specify extended caching in the request, then that request is not considered Zero Data Retention eligible because the key/value tensors may be held in GPU-local storage, and the key-value tensors are derived from customer content.
-   However, the extended caching request will not be blocked if Zero Data Retention is enabled for your project. The other Zero Data Retention still applies, such as excluding customer content from abuse logs and preventing use of `store=True`.
+   In-memory cache retention does not save any data to disk.
+   Extended prompt caching may store key/value tensors in GPU-local storage, and the key-value tensors are derived from customer content. This data is not retained beyond cache expiration -- the key-value tensors are retained for 1-2 hours (most usage) and at most 24 hours.
+   Extended prompt caching requests are not blocked if Zero Data Retention is enabled for your project. Other Zero Data Retention still applies, such as excluding customer content from abuse logs and preventing use of `store=True`.
    See the [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for more context on Zero Data Retention.
 
 7. **Does Prompt Caching work with Data Residency?**
 
    In-memory Prompt Caching is compatable with all Data Residency regions.
 
-   Extended caching is only compatible with Data Residency regions that include Regional Inference.
+   Extended caching temporarily stores data on GPU machines and will only be kept in-region when using Regional Inference.

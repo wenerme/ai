@@ -1,11 +1,11 @@
 ---
 title: "ZenMux | Models"
-description: "Use ZenMux models with Mastra. 88 models available."
+description: "Use ZenMux models with Mastra. 86 models available."
 ---
 
 # [ZenMux logo]ZenMux
 
-Access 88 ZenMux models through Mastra's model router. Authentication is handled automatically using the `ZENMUX_API_KEY` environment variable.
+Access 86 ZenMux models through Mastra's model router. Authentication is handled automatically using the `ZENMUX_API_KEY` environment variable.
 
 Learn more in the [ZenMux documentation](https://docs.zenmux.ai).
 
@@ -256,18 +256,6 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
-    "model": "zenmux/google/gemini-3-pro-preview",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048000,
-    "maxOutput": 64000,
-    "inputCost": 2,
-    "outputCost": 12
-  },
-  {
     "model": "zenmux/google/gemini-3.1-flash-lite-preview",
     "imageInput": true,
     "audioInput": true,
@@ -314,30 +302,6 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 0.56,
     "outputCost": 2.24
-  },
-  {
-    "model": "zenmux/kuaishou/kat-coder-pro-v1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": 0.3,
-    "outputCost": 1.2
-  },
-  {
-    "model": "zenmux/kuaishou/kat-coder-pro-v1-free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "zenmux/kuaishou/kat-coder-pro-v2",
@@ -712,6 +676,30 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
+    "model": "zenmux/sapiens-ai/agnes-1.5-lite",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.12,
+    "outputCost": 0.6
+  },
+  {
+    "model": "zenmux/sapiens-ai/agnes-1.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.16,
+    "outputCost": 0.8
+  },
+  {
     "model": "zenmux/stepfun/step-3",
     "imageInput": true,
     "audioInput": false,
@@ -914,18 +902,6 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 0.1,
     "outputCost": 0.3
-  },
-  {
-    "model": "zenmux/xiaomi/mimo-v2-flash-free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262000,
-    "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "zenmux/xiaomi/mimo-v2-omni",

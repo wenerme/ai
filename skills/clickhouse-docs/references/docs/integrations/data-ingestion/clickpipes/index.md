@@ -77,17 +77,17 @@ Steps:
 ## Adjusting ClickPipes advanced settings {#clickpipes-advanced-settings}
 ClickPipes provides sensible defaults that cover the requirements of most use cases. If your use case requires additional fine-tuning, you can adjust the following settings:
 
-### Object Storage ClickPipes {#clickpipes-advanced-settings-object-storage}
+### Object storage ClickPipes {#clickpipes-advanced-settings-object-storage}
 
-| Setting                            | Default value |  Description                     |                    
+| Setting                            | Default value |  Description                     |
 |------------------------------------|---------------|---------------------------------------------------------------------------------------|
-| `Max insert bytes`                 | 10GB          | Number of bytes to process in a single insert batch.                                  |
+| `Max insert bytes`                 | 10 GB         | Number of bytes to process in a single insert batch.                                  |
 | `Max file count`                   | 100           | Maximum number of files to process in a single insert batch.                          |
 | `Max threads`                      | auto(3)       | [Maximum number of concurrent threads](/operations/settings/settings#max_threads) for file processing. |
 | `Max insert threads`               | 1             | [Maximum number of concurrent insert threads](/operations/settings/settings#max_insert_threads) for file processing. |
-| `Min insert block size bytes`      | 1GB           | [Minimum size of bytes in the block](/operations/settings/settings#min_insert_block_size_bytes) which can be inserted into a table. |
+| `Min insert block size bytes`      | 1 GB          | [Minimum size of bytes in the block](/operations/settings/settings#min_insert_block_size_bytes) which can be inserted into a table. |
 | `Max download threads`             | 4             | [Maximum number of concurrent download threads](/operations/settings/settings#max_download_threads). |
-| `Object storage polling interval`  | 30s           | Configures the maximum wait period before inserting data into the ClickHouse cluster. |
+| `Object storage polling interval`  | 30 s          | Configures the maximum wait period before inserting data into the ClickHouse cluster. |
 | `Parallel distributed insert select` | 2           | [Parallel distributed insert select setting](/operations/settings/settings#parallel_distributed_insert_select). |
 | `Parallel view processing`         | false         | Whether to enable pushing to attached views [concurrently instead of sequentially](/operations/settings/settings#parallel_view_processing). |
 | `Use cluster function`             | true          | Whether to process files in parallel across multiple nodes. |
@@ -96,15 +96,15 @@ ClickPipes provides sensible defaults that cover the requirements of most use ca
 
 ### Streaming ClickPipes {#clickpipes-advanced-settings-streaming}
 
-| Setting                            | Default value |  Description                     |                    
+| Setting                            | Default value |  Description                     |
 |------------------------------------|---------------|---------------------------------------------------------------------------------------|
-| `Streaming max insert wait time`   | 5s            | Configures the maximum wait period before inserting data into the ClickHouse cluster. |
+| `Streaming max insert wait time`   | 5 s           | Configures the maximum wait period before inserting data into the ClickHouse cluster. |
 
 ## Error reporting {#error-reporting}
 ClickPipes will store errors in two separate tables depending on the type of error encountered during the ingestion process.
-### Record Errors {#record-errors}
+### Record errors {#record-errors}
 ClickPipes will create a table next to your destination table with the postfix `<destination_table_name>_clickpipes_error`. This table will contain any errors from malformed data or mismatched schema and will include the entirety of the invalid message. This table has a [TTL](/engines/table-engines/mergetree-family/mergetree#table_engine-mergetree-ttl) of 7 days.
-### System Errors {#system-errors}
+### System errors {#system-errors}
 Errors related to the operation of the ClickPipe will be stored in the `system.clickpipes_log` table. This will store all other errors related to the operation of your ClickPipe (network, connectivity, etc.). This table has a [TTL](/engines/table-engines/mergetree-family/mergetree#table_engine-mergetree-ttl) of 7 days.
 
 If ClickPipes can't connect to a data source after 15 min or to a destination after 1 hr, the ClickPipes instance stops and stores an appropriate message in the system error table (provided the ClickHouse instance is available).

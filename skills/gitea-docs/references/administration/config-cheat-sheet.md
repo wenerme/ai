@@ -1446,6 +1446,7 @@ in this mapping or the filetype using heuristics.
 - `LIMIT_SIZE_RUBYGEMS`: **-1**: Maximum size of a RubyGems upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 - `LIMIT_SIZE_SWIFT`: **-1**: Maximum size of a Swift upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 - `LIMIT_SIZE_VAGRANT`: **-1**: Maximum size of a Vagrant upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
+- `LIMIT_SIZE_TERRAFORM_STATE``: **-1**: Maximum size of a Terraform state upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 
 ## Mirror (`mirror`)
 

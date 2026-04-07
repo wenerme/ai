@@ -32,9 +32,9 @@ To prevent their customers from facing issues, Entrust has partnered with SSL.co
 
 This means that Entrust certificates will be issued using SSL.com roots.
 
-## Cloudflare managed certificates
+## Cloudflare-managed certificates
 
-Since Cloudflare also [partners with SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), you can switch from uploading custom certificates to using Cloudflare's managed certificates. This change brings the following advantages:
+Since Cloudflare also [partners with SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), you can switch from uploading custom certificates to using Cloudflare-managed certificates. This change brings the following advantages:
 
 * Use [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) to have more control and flexibility while also benefitting from automatic renewals.
 * Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically issue certificates for your [proxied hostnames](https://developers.cloudflare.com/dns/proxy-status/).

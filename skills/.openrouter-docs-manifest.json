@@ -626,13 +626,13 @@
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
-    "size": 16845,
-    "updatedAt": "2026-04-06T00:23:02.301Z"
+    "size": 17211,
+    "updatedAt": "2026-04-07T00:24:54.858Z"
   },
   "api/api-reference/models/list-models-user.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/list-models-user.md",
-    "size": 17602,
-    "updatedAt": "2026-04-06T00:23:03.470Z"
+    "size": 17968,
+    "updatedAt": "2026-04-07T00:24:55.948Z"
   },
   "api/api-reference/endpoints/list-endpoints.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints.md",
@@ -756,8 +756,8 @@
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",
-    "size": 15808,
-    "updatedAt": "2026-04-06T00:23:34.479Z"
+    "size": 16174,
+    "updatedAt": "2026-04-07T00:25:29.531Z"
   },
   "api/api-reference/rerank/create-rerank.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/rerank/create-rerank.md",

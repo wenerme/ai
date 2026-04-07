@@ -36,8 +36,8 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-3886)
-* [ Terraform (v5) ](#tab-panel-3887)
+* [ Dashboard ](#tab-panel-3892)
+* [ Terraform (v5) ](#tab-panel-3893)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -66,7 +66,7 @@ Gateway does not support TLS decryption for applications which use:
 * [ESNI and ECH handshake encryption](#esni-and-ech)
 * [Automatic HTTPS upgrades](#google-chrome-automatic-https-upgrades)
 
-### Inspect on all ports Beta
+### Inspect on all ports
 
 By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you [turn on TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), Gateway will inspect HTTPS traffic through port `443`.
 
@@ -90,9 +90,9 @@ Google Chrome can automatically upgrade HTTP requests to HTTPS requests, even wh
 
 You can turn off automatic HTTPS upgrades via a Gateway pass through policy, a Chrome browser flag, or a Chrome Enterprise policy.
 
-* [ Pass through policy ](#tab-panel-3883)
-* [ Chrome browser flag ](#tab-panel-3884)
-* [ Chrome enterprise policy ](#tab-panel-3885)
+* [ Pass through policy ](#tab-panel-3889)
+* [ Chrome browser flag ](#tab-panel-3890)
+* [ Chrome enterprise policy ](#tab-panel-3891)
 
 To disable automatic HTTPS upgrades for a URL across your Zero Trust organization, create a Gateway pass through policy.
 
@@ -132,8 +132,8 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 
 ### Enable FIPS compliance
 
-* [ Dashboard ](#tab-panel-3888)
-* [ Terraform (v5) ](#tab-panel-3889)
+* [ Dashboard ](#tab-panel-3894)
+* [ Terraform (v5) ](#tab-panel-3895)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

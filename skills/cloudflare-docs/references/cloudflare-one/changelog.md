@@ -18,6 +18,24 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-06
+
+[ Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/) 
+
+  
+**DANE Support for MX Deployments**   
+
+Cloudflare Email Security now supports DANE (DNS-based Authentication of Named Entities) for MX deployments. This enhancement strengthens email transport security by enabling DNSSEC-backed certificate verification for our regional MX records.
+
+* Regional MX hostnames now publish DANE TLSA records backed by DNSSEC, enabling DANE-capable SMTP senders to cryptographically validate certificate identities before establishing TLS connections—moving beyond opportunistic encryption to verified encrypted delivery.
+* DANE support is automatically available for all customers using regional MX deployments. No additional configuration is required; DANE-capable mail infrastructure will automatically validate MX certificates using the published records.
+
+This applies to all Email Security packages:
+
+* **Advantage**
+* **Enterprise**
+* **Enterprise + PhishGuard**
+
 ## 2026-04-02
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
@@ -3452,8 +3470,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-3443)
-* [ Core Dashboard ](#tab-panel-3444)
+* [ Zero Trust Dashboard ](#tab-panel-3449)
+* [ Core Dashboard ](#tab-panel-3450)
 
 To update your view preference in the Zero Trust dashboard:
 

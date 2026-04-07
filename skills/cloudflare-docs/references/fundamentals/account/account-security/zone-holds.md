@@ -20,6 +20,10 @@ Zone holds prevent other teams in your organization from adding zones that are a
 
 For example, you might already have an active Cloudflare zone for `example.com`. If another team does not realize this, they could add and activate `example.com` in another Cloudflare account, which may cause downtimes or security issues until the original zone could be re-activated.
 
+Note
+
+Zone holds are enabled by default for all Enterprise zones.
+
 ## Availability
 
 | Free         | Pro | Business | Enterprise |     |

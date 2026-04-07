@@ -16,7 +16,7 @@ Copy page
 
 # AI Security for Apps Reference Architecture
 
-**Last reviewed:**  28 days ago 
+**Last reviewed:**  about 1 month ago 
 
 ## Abstract
 

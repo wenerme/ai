@@ -1,5 +1,5 @@
 ---
-title: Managed service providers (MSPs)
+title: Tenant API
 description: Gateway supports the Cloudflare Tenant API, which allows Cloudflare-partnered managed service providers (MSPs) to set up and manage Cloudflare accounts and services for their customers. With the Tenant API, MSPs can create Zero Trust deployments with global Gateway policy control. Policies can be customized or overridden at a group or individual account level.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
@@ -10,21 +10,21 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/traffic-policies/managed-service-providers.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/traffic-policies/tiered-policies/tenant-api.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
-# Managed service providers (MSPs)
+# Tenant API
 
 Note
 
-Only available on Enterprise plans. For more information, contact your account team.
+Only available for [Cloudflare Partners ↗](https://www.cloudflare.com/partners/) on Enterprise plans. To gain access, contact your account team.
 
 Gateway supports the [Cloudflare Tenant API](https://developers.cloudflare.com/tenant/), which allows Cloudflare-partnered managed service providers (MSPs) to set up and manage Cloudflare accounts and services for their customers. With the Tenant API, MSPs can create Zero Trust deployments with global Gateway policy control. Policies can be customized or overridden at a group or individual account level.
 
 Warning
 
-The Tenant platform only supports [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/). HTTP, network, egress, and resolver policies are not available through the Tenant API.
+The Tenant API platform only supports [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/). To apply HTTP, network, and resolver policies, use [Cloudflare Organizations](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/) instead.
 
 For more information, refer to the [Cloudflare Zero Trust for managed service providers ↗](https://blog.cloudflare.com/gateway-managed-service-provider/) blog post.
 
@@ -38,12 +38,12 @@ The Gateway Tenant platform supports tiered and siloed account configurations.
 
 ### Tiered accounts
 
-In a tiered account configuration, a top-level parent account enforces global security policies that apply to all of its child accounts. Child accounts can override or add policies as needed while still being managed by the parent account. MSPs can also configure child accounts independently from the parent account, including:
+In a tiered account configuration, a top-level parent account enforces global security policies that apply to all of its child accounts. Child accounts can override or add policies as needed while still being managed by the parent account. MSPs can also configure child accounts independently from the parent account for the following Gateway features:
 
-* Configuring a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/)
-* Generating or uploading [root certificates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/)
-* Mapping [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/)
-* Creating [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)
+* **[Custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/)**: Child accounts will use the block page setting used by the parent account unless you configure separate block settings for the child account. This applies to both redirects and custom block pages. The block page uses the account certificate for each child account.
+* **[Root certificates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/)**: If Gateway cannot attribute an incoming DNS query to a child account, it will use the parent account's certificate. This happens when the source IP address of the DNS query does not match a child account or if a custom DNS resolver endpoint is not configured.
+* **[DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/)**
+* **[Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)**
 
 Each child account is subject to the default Zero Trust [account limits](https://developers.cloudflare.com/cloudflare-one/account-limits/).
 
@@ -103,5 +103,5 @@ flowchart TD
     n3@{ shape: lean-l}
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/managed-service-providers/","name":"Managed service providers (MSPs)"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/tiered-policies/","name":"Tiered policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/tiered-policies/tenant-api/","name":"Tenant API"}}]}
 ```

@@ -36,9 +36,9 @@ The following limits apply to gateway configurations, logs, and related features
 | [Logpush jobs](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/)            | 4 per account                   |
 | [Logpush size limit](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/)      | 1MB per log                     |
 
-1 If you have reached 10 million logs stored per gateway, new logs will stop being saved. To continue saving logs, you must delete older logs in that gateway to free up space or create a new gateway. Refer to [Auto Log Cleanup](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion) for more details on how to automatically delete logs.
+1 When you reach the log storage limit for a gateway, you can configure your gateway to either automatically delete the oldest logs to make room for new ones, or stop saving new logs. You can also use[Logpush](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/) to export logs to external storage. Refer to [Automatic log deletion](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion)for more details.
 
-2 If you have reached 100,000 logs stored per account, across all gateways, new logs will stop being saved. To continue saving logs, you must delete older logs. Refer to [Auto Log Cleanup](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion) for more details on how to automatically delete logs.
+2 On the free plan, the log storage limit applies to total logs across all gateways in your account. Same auto-delete or stop-saving behavior as 1.
 
 3 Logs larger than 10 MB will not be stored.
 

@@ -1,6 +1,6 @@
 ---
 title: HTTP headers
-description: This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability.
+description: This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability. For full observability details, refer to GraphQL Analytics API and OpenTelemetry.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # HTTP headers
 
-This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability.
+This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability. For full observability details, refer to [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) and [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/).
 
 ## Request headers
 
@@ -48,6 +48,10 @@ Proxy-Authorization: PrivateToken token=<base64-encoded-token>
 | ---------------------- | ----------------------------------------- |
 | <key>                  | The pre-shared key provided by Cloudflare |
 | <base64-encoded-token> | A base64-encoded Privacy Pass token       |
+
+### GraphQL Analytics API request headers
+
+When querying Privacy Proxy metrics via the GraphQL Analytics API, send a `POST` request to `https://api.cloudflare.com/client/v4/graphql`. For required headers and authentication details, refer to [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/).
 
 ### `sec-ch-geohash`
 
@@ -84,7 +88,7 @@ Privacy Proxy includes the following headers in responses.
 
 ### `Server-Timing`
 
-Provides timing information about proxy processing. Use this to measure latency introduced by the proxy.
+Provides timing information about proxy processing. This is part of the [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/) observability pipeline.
 
 ```
 
@@ -93,9 +97,9 @@ Server-Timing: proxy;dur=<milliseconds>
 
 ```
 
-| Parameter      | Description                     |
-| -------------- | ------------------------------- |
-| <milliseconds> | Processing time in milliseconds |
+| Parameter      | Description                                             |
+| -------------- | ------------------------------------------------------- |
+| <milliseconds> | Processing time in milliseconds introduced by the proxy |
 
 Example
 
@@ -105,6 +109,10 @@ Server-Timing: proxy;dur=8.2
 
 
 ```
+
+### GraphQL Analytics API response headers
+
+For response headers returned by the GraphQL API, refer to [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/).
 
 ---
 

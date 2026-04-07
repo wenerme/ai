@@ -783,7 +783,7 @@ paid tier of the Gemini API.
 |   | Free Tier | Paid Tier, per second in USD |
 |---|---|---|
 | Veo 3 Standard video with audio price (default) | Not available | $0.40 |
-| Veo 3 Fast video with audio price (default) | Not available | $0.15 |
+| Veo 3 Fast video with audio price (default) | Not available | $0.10 (720p) $0.12 (1080p) $0.30 (4k) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 > [!NOTE]

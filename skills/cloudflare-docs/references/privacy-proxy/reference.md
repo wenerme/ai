@@ -18,8 +18,9 @@ Copy page
 
 Technical reference documentation for Privacy Proxy configuration and monitoring.
 
-* [ Observability ](https://developers.cloudflare.com/privacy-proxy/reference/observability/)
 * [ HTTP headers ](https://developers.cloudflare.com/privacy-proxy/reference/http-headers/)
+* [ Proxy status reference ](https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/)
+* [ Observability ](https://developers.cloudflare.com/privacy-proxy/reference/metrics/)
 * [ Client libraries ](https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/)
 
 ```json

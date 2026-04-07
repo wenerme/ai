@@ -78,7 +78,7 @@ The table below indicates when application state is stored for each endpoint. Ze
 - Audio outputs application state is stored for 1 hour to enable [multi-turn conversations](https://developers.openai.com/api/docs/guides/audio).
 - When Zero Data Retention is enabled for an organization, the `store` parameter will always be treated as `false`, even if the request attempts to set the value to `true`.
 - See [image and file inputs](#image-and-file-inputs).
-- Extended prompt caching requires storing key/value tensors to GPU-local storage as application state. This storage requirement means that requests leveraging extended prompt caching are not Zero Data Retention eligible. To learn more, see the [prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention).
+- Extended prompt caching requires storing key/value tensors to GPU-local storage as application state. This data is stored on the local GPU machines and is not retained after the 24 hour data expiration. To learn more, see the [prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention).
 
 #### `/v1/responses`
 
@@ -89,9 +89,10 @@ The table below indicates when application state is stored for each endpoint. Ze
 - See [image and file inputs](#image-and-file-inputs).
 - MCP servers (used with the [remote MCP server tool](https://developers.openai.com/api/docs/guides/tools-remote-mcp)) are third-party services, and data sent to an MCP server is subject to their data retention policies.
 - OpenAI-hosted containers cannot be used when Zero Data Retention is enabled. [Hosted Shell](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart) and [Code Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter) can be used with [Modified Abuse Monitoring](https://developers.openai.com/api/docs/guides/your-data#modified-abuse-monitoring) instead.
+- Hosted containers used by [Hosted Shell](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart) and [Code Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter) may write temporary application state to the container filesystem (backed by ephemeral block storage) while the container is active. Container data is deleted when the container expires or is explicitly deleted.
 - Extended prompt caching requires storing key/value tensors to GPU-local storage as application state. This storage requirement means that requests leveraging extended prompt caching are not Zero Data Retention eligible. To learn more, see the [prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention).
 - For server-side compaction, no data is retained when `store="false"`.
-- We support [Skills](https://developers.openai.com/api/docs/guides/tools-skills) in two form factors, both local execution and hosted container-based execution. Skills running in OpenAI-hosted containers cannot be used when Zero Data Retention is enabled.
+- We support [Skills](https://developers.openai.com/api/docs/guides/tools-skills) in two form factors, both local execution and hosted container-based execution. Hosted skills follow the same container lifecycle as hosted shell: mounted skills and container files remain available while the container is active and are discarded when the container expires or is deleted.
 - Data transmitted to third-party services over network connections is subject to their data retention policies.
 
 #### `/v1/assistants`, `/v1/threads`, and `/v1/vector_stores`

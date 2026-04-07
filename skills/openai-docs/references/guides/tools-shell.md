@@ -307,6 +307,169 @@ When multiple controls are present:
 - Request-level `network_policy` further restricts access.
 - Requests fail if `allowed_domains` includes domains outside your org allow list.
 
+## Data retention and container lifecycle
+
+Hosted containers used by Hosted Shell and Code Interpreter may write temporary application state to the container filesystem (backed by ephemeral block storage) while the container is active. Container data is deleted when the container expires or is explicitly deleted.
+
+For more details on data controls, see [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data).
+
+### Download artifacts
+
+Hosted shell can produce downloadable files. Use the same container/files APIs as code interpreter to retrieve artifacts written under `/mnt/data`.
+
+### Additional data controls
+
+If you want to keep content and files ephemeral within the hosted lifecycle, you can inline files in the request and mount inline skills in the container.
+
+Use inline files and inline skills
+
+```javascript
+import fs from "fs";
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const inlineZip = fs.readFileSync("csv_insights.zip").toString("base64");
+const reportCsv = fs.readFileSync("report.csv").toString("base64");
+
+const container = await client.containers.create({
+  name: "inline-skill-container",
+  skills: [
+    {
+      type: "inline",
+      name: "csv-insights",
+      description: "Summarize CSV files and produce a markdown report.",
+      source: {
+        type: "base64",
+        media_type: "application/zip",
+        data: inlineZip,
+      },
+    },
+  ],
+});
+
+const response = await client.responses.create({
+  model: "gpt-5.4",
+  tools: [
+    {
+      type: "shell",
+      environment: {
+        type: "container_reference",
+        container_id: container.id,
+      },
+    },
+  ],
+  input: [
+    {
+      role: "user",
+      content: [
+        {
+          type: "input_file",
+          filename: "report.csv",
+          file_data: \`data:text/csv;base64,\${reportCsv}\`,
+        },
+        {
+          type: "input_text",
+          text: "Use the csv-insights skill to summarize report.csv.",
+        },
+      ],
+    },
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+import base64
+from openai import OpenAI
+
+client = OpenAI()
+
+with open("csv_insights.zip", "rb") as f:
+    inline_zip = base64.b64encode(f.read()).decode("utf-8")
+
+with open("report.csv", "rb") as f:
+    base64_string = base64.b64encode(f.read()).decode("utf-8")
+
+container = client.containers.create(
+    name="inline-skill-container",
+    skills=[
+        {
+            "type": "inline",
+            "name": "csv-insights",
+            "description": "Summarize CSV files and produce a markdown report.",
+            "source": {
+                "type": "base64",
+                "media_type": "application/zip",
+                "data": inline_zip,
+            },
+        }
+    ],
+)
+
+response = client.responses.create(
+    model="gpt-5.4",
+    tools=[
+        {
+            "type": "shell",
+            "environment": {
+                "type": "container_reference",
+                "container_id": container.id,
+            },
+        }
+    ],
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_file",
+                    "filename": "report.csv",
+                    "file_data": f"data:text/csv;base64,{base64_string}",
+                },
+                {
+                    "type": "input_text",
+                    "text": "Use the csv-insights skill to summarize report.csv.",
+                },
+            ],
+        }
+    ],
+)
+
+print(response.output_text)
+```
+
+
+For follow-up requests, pass the same `container_id` with `container_reference`. The mounted skills and existing container files remain available while the container is active.
+
+### Proactively delete a container
+
+You can explicitly delete the container when the work is done instead of waiting for inactivity expiration.
+
+Delete a container
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const deleted = await client.containers.delete("container_id");
+
+console.log(deleted);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+deleted = client.containers.delete("container_id")
+
+print(deleted)
+```
+
+
 ## Domain secrets
 
 Use `domain_secrets` when a domain in your `allowed_domains` list requires private authorization headers, such as `Authorization: Bearer <token>`.
@@ -457,23 +620,6 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-
-## Download artifacts
-
-Hosted shell can produce downloadable files. Use the same container/files APIs as code interpreter to retrieve artifacts written under `/mnt/data`.
-
-### Data retention and container lifecycle
-
-Hosted shell runs in OpenAI-hosted containers. If your org or project enables Zero Data Retention (ZDR), OpenAI-hosted containers aren't available, so hosted shell can't run in ZDR mode. Hosted shell and Code Interpreter work with Modified Abuse Monitoring (MAM) instead.
-
-If you need shell execution while using ZDR, use [local shell mode](#local-shell-mode) so commands run in infrastructure you manage.
-
-For data controls details, see [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data).
-
-Hosted shell uses the same container lifecycle as Code Interpreter. Treat hosted containers as ephemeral and store any data you need on your own systems. Files and artifacts created or uploaded in hosted shell live in the container filesystem (for example, under `/mnt/data`) while the container is active so you can reuse the container and download artifacts.
-
-- A hosted shell container expires after 20 minutes of inactivity. Download any files you need while the container is active. When the container expires, OpenAI discards the container data and you can't recover it.
-- You can't reactivate an expired container. Create a new container and upload files again.
 
 ## Shell output in Responses
 

@@ -20,7 +20,7 @@ Copy page
 
 # Isolate risky Entra ID users
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 Microsoft Entra ID (formerly Azure Active Directory) calculates a user's [risk level ↗](https://learn.microsoft.com/entra/id-protection/howto-identity-protection-investigate-risk) based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.
 
@@ -88,15 +88,15 @@ cd risky-users
    * `<ACCOUNT_ID>`: your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).  
    * `<TENANT_ID>`: your Entra ID **Directory (tenant) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
    * `<CLIENT_ID>`: your Entra ID **Application (client) ID**, obtained when [setting up Entra ID as an identity provider](#1-set-up-entra-id-as-an-identity-provider).  
-   * [  wrangler.jsonc ](#tab-panel-3951)  
-   * [  wrangler.toml ](#tab-panel-3952)  
+   * [  wrangler.jsonc ](#tab-panel-3957)  
+   * [  wrangler.toml ](#tab-panel-3958)  
 JSONC  
 ```  
 {  
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "risky-users",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-06",  
   "main": "src/index.js",  
   "workers_dev": false,  
   "account_id": "<ACCOUNT-ID>",  
@@ -114,7 +114,7 @@ TOML
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "risky-users"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-06"  
 main = "src/index.js"  
 workers_dev = false  
 account_id = "<ACCOUNT-ID>"  
