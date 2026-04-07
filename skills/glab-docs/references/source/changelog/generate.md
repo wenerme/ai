@@ -21,7 +21,7 @@ glab changelog generate
 ## Options
 
 ```plaintext
-      --config-file string          Path of the changelog configuration file in the project's Git repository. Defaults to '.gitlab/changelog_config.yml'.
+      --config-file string          Path of the changelog configuration file in the project's Git repository. Defaults to '.gitlab/changelog_config.yml'. For more information, see <https://docs.gitlab.com/user/project/changelogs/>.
       --date 2016-03-11T03:45:40Z   Date and time of the release. Uses ISO 8601 (2016-03-11T03:45:40Z) format. Defaults to the current time.
       --from string                 Start of the range of commits (as a SHA) to use when generating the changelog. This commit itself isn't included in the list.
       --to string                   End of the range of commits (as a SHA) to use when generating the changelog. This commit is included in the list. Defaults to the HEAD of the project's default branch.

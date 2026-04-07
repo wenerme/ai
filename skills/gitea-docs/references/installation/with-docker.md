@@ -10,9 +10,16 @@ Gitea provides automatically updated Docker images within its Docker Hub organiz
 possible to always use the latest stable tag or to use another service that handles updating
 Docker images.
 
-This reference setup guides users through the setup based on docker `compose`-plugin, but the installation
-of the docker `compose`-plugin is out of scope of this documentation. To install the docker `compose`-plugin itself, follow
-the official [install instructions](https://docs.docker.com/compose/install/).
+This reference setup guides users through the setup based on `docker compose`.
+Docker compose has been included in the Docker Engine since the shift to Compose v2.
+If, for some reason, compose is not available on your system, follow the official [install instructions](https://docs.docker.com/compose/install/).
+
+This document targets for the default rootful image. For the rootless image,
+see "[Installation with Docker (rootless)](./with-docker-rootless.md)"
+
+ATTENTION: the rootful/rootless images are not compatible with the other.
+If you have chosen one, you should always use the same one,
+don't switch to the other one by changing the compose file's `image` value.
 
 ## Basics
 
@@ -215,11 +222,7 @@ MySQL or PostgreSQL containers will need to be created separately.
 
 ## Startup
 
-> **note**: From July 2023 Compose V1 stopped receiving updates. It's also no longer available in new releases of Docker Desktop.
-
-Compose V2 is included with all currently supported versions of Docker Desktop. Please use V2 to do below operations.
-
-To start this setup based on the docker `compose`-plugin, execute `docker compose up -d`,
+To start this setup based on `docker compose`, execute `docker compose up -d`,
 to launch Gitea in the background. Using `docker compose ps` will show if Gitea
 started properly. Logs can be viewed with `docker compose logs`.
 
@@ -231,9 +234,9 @@ and kill the containers. The volumes will still exist.
 
 ## Installation
 
-After starting the Docker setup via the docker `compose`-plugin, Gitea should be available using a
+After starting the Docker setup via `docker compose`, Gitea should be available using a
 favorite browser to finalize the installation. Visit http://server-ip:3000 and follow the
-installation wizard. If the database was started with the docker `compose`-plugin setup as
+installation wizard. If the database was started with the `docker compose` setup as
 documented above, please note that `db` must be used as the database hostname.
 
 ## Configure the user inside Gitea using environment variables
@@ -269,8 +272,10 @@ docker compose up -d
 ## Managing Deployments With Environment Variables
 
 In addition to the environment variables above, any settings in `app.ini` can be set
-or overridden with an environment variable of the form: `GITEA__<section>__<KEY>`.
-These settings are applied each time the docker container starts, and won't be passed into Gitea's sub-processes.
+or overridden with an environment variable of the form: `GITEA__section_name__KEY_NAME=value`.
+These settings are applied each time the docker container starts by `environment-to-ini` command
+(a warpper of `gitea config edit-ini`), and won't be passed into Gitea's sub-processes.
+See `./gitea config edit-ini --help` for more details.
 
 These environment variables can be passed to the docker container in `docker-compose.yml`.
 The following example will enable an smtp mail server if the required env variables
@@ -313,5 +318,6 @@ services:
 ```
 
 ### SSH with multiple IP addresses
+
 This assumes that the host machine has more than one reachable IP address: `192.168.1.1` (host) `192.168.1.2` (gitea)
 On the host machine, configure SSHD in `/etc/ssh/sshd_config` to listen on one IP address `ListenAddress 192.168.1.1`. In the compose file the SSH port forwarding then needs to be changed to `"192.168.1.2:22:22"`. The port forwarding needs to be adjusted similarily for all other forwarded ports to avoid problems with DNS.

@@ -20,7 +20,7 @@ Copy page
 
 # Query D1 from SvelteKit
 
-**Last reviewed:**  over 2 years ago 
+**Last reviewed:**  almost 3 years ago 
 
 Query a D1 database from a SvelteKit application.
 
@@ -40,7 +40,7 @@ The following example shows you how to create a server endpoint configured to qu
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 
-* [  TypeScript ](#tab-panel-4060)
+* [  TypeScript ](#tab-panel-4066)
 
 TypeScript
 

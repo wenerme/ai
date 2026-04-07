@@ -1,16 +1,17 @@
 ---
 {
-    "title": "MySQL Multi-table Import",
+    "title": "MySQL Full Database Sync",
+    "sidebar_label": "Full Database Sync",
     "language": "en",
-    "description": "Doris can continuously synchronize full and incremental data from multiple MySQL tables into Doris using Streaming Job."
+    "description": "Doris can continuously synchronize full and incremental data from an entire database or selected tables in MySQL into Doris using Streaming Job."
 }
 ---
 
 ## Overview
 
-Supports using Job to continuously synchronize full and incremental data from multiple tables in a MySQL database to Doris via Stream Load. Suitable for scenarios requiring real-time multi-table data synchronization to Doris.
+Supports using Job to continuously synchronize full and incremental data from an entire database or selected tables in a MySQL database to Doris via Stream Load. Suitable for scenarios requiring real-time full database sync to Doris.
 
-By integrating [Flink CDC](https://github.com/apache/flink-cdc), Doris supports reading change logs from MySQL databases, enabling full and incremental multi-table data synchronization. When synchronizing for the first time, Doris automatically creates downstream tables (primary key tables) and keeps the primary key consistent with the upstream.
+By integrating [Flink CDC](https://github.com/apache/flink-cdc), Doris supports reading change logs from MySQL databases, enabling full and incremental full database sync. When synchronizing for the first time, Doris automatically creates downstream tables (primary key tables) and keeps the primary key consistent with the upstream.
 
 **Notes:**
 
@@ -98,7 +99,7 @@ For more common operations (pause, resume, delete, check Task, etc.), see [Conti
 
 ### Import Command
 
-Syntax for creating a multi-table sync job:
+Syntax for creating a full database sync job:
 
 ```sql
 CREATE JOB <job_name>

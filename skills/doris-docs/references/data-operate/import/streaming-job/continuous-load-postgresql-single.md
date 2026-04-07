@@ -1,10 +1,13 @@
 ---
 {
-    "title": "PostgreSQL Single-table Import",
+    "title": "PostgreSQL Single Table Sync",
+    "sidebar_label": "Single Table Sync",
     "language": "en",
     "description": "Doris supports continuously synchronizing full and incremental data from a single PostgreSQL table into Doris using Job + CDC Stream TVF."
 }
 ---
+
+> **tip**: This feature is supported since version 4.1.0.
 
 ## Overview
 

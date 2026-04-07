@@ -143,6 +143,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/rules.xml)
 * [SDK](https://developers.cloudflare.com/sdk/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/sdk.xml)
+* [Support](https://developers.cloudflare.com/support/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/support.xml)
 * [Terraform](https://developers.cloudflare.com/terraform/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/terraform.xml)
 * [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)  

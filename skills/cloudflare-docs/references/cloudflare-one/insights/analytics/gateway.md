@@ -142,7 +142,7 @@ query GatewaySampleQuery($accountTag: string!, $start: Time) {
   }  
 }  
 ```  
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYRA5AEYA7JlEAOTAGZlALRABfIA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBA4gQwC5gO4KgZQQWwA4A2YAiuNABQAkCAxjQPYgB2SAKggOYBcMAzkhACWTDgEIANDEr8EEJD1aCcYAJQwA3gCgYMAG6C0kDdp0xaDZkl7kAZoIIoIPdWbqMW7blPPu2nGAC+alqmphzIaBgASmC89AS6kKSQBrwAggAmCHhIgolwEIx41iahOnYOkM4wWSi5ygD6HPJSMnKBpWUESoItAIwADJ06wcOmFixjOhlKYEy8gvTzxmVloJBQAHK4YDGJELxgGVOmELHx+wAiYDSCC0snAWNPoS8dAUA&variables=N4IghgxhD2CuB2AXAKmA5iAXCAggYTwHkBVAOWQH0BJAERABoQBnRMAJ0SxACYAGbgGwBaXgBYRAdmS8AzJgCsvBQA4AWiAC+QA)
 
 For more information, refer to [Compose a query in GraphiQL](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 
