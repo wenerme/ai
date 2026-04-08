@@ -36,8 +36,10 @@ with OpenRouter(
 
     res = open_router.organization.list_members()
 
-    # Handle response
-    print(res)
+    while res is not None:
+        # Handle items
+
+        res = res.next()
 
 ```
 

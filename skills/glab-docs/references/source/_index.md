@@ -98,6 +98,7 @@ in the main README.
 - [`glab snippet`](snippet/_index.md)
 - [`glab ssh-key`](ssh-key/_index.md)
 - [`glab stack`](stack/_index.md)
+- [`glab todo`](todo/_index.md)
 - [`glab token`](token/_index.md)
 - [`glab user`](user/_index.md)
 - [`glab variable`](variable/_index.md)

@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This week's release introduces new detections for a critical authentication bypass vulnerability in Fortinet products (CVE-2025-59718), alongside three new generic detection rules designed to identify and block HTTP Parameter Pollution attempts. Additionally, this release includes targeted protection for a high-impact unrestricted file upload vulnerability in Magento and Adobe Commerce.
+description: This week's release introduces new detections for a critical Remote Code Execution (RCE) vulnerability in MCP Server (CVE-2026-23744), alongside targeted protection for an authentication bypass vulnerability in SolarWinds products (CVE-2025-40552). Additionally, this release includes a new generic detection rule designed to identify and block Cross-Site Scripting (XSS) injection attempts leveraging &#34;OnEvent&#34; handlers within HTTP cookies.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -11,6 +11,39 @@ Copy page
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-04-07
+
+  
+**WAF Release - 2026-04-07**   
+
+This week's release introduces new detections for a critical Remote Code Execution (RCE) vulnerability in MCP Server (CVE-2026-23744), alongside targeted protection for an authentication bypass vulnerability in SolarWinds products (CVE-2025-40552). Additionally, this release includes a new generic detection rule designed to identify and block Cross-Site Scripting (XSS) injection attempts leveraging "OnEvent" handlers within HTTP cookies.
+
+**Key Findings**
+
+* MCP Server (CVE-2026-23744): A vulnerability in the Model Context Protocol (MCP) server implementation where malformed input payloads can trigger a memory corruption state, allowing for arbitrary code execution.
+* SolarWinds (CVE-2025-40552): A critical flaw in the authentication module allows unauthenticated attackers to bypass security filters and gain unauthorized access to the management console due to improper identity token validation.
+* XSS OnEvents Cookies: This generic rule identifies malicious event handlers (such as onload or onerror) embedded within HTTP cookie values.
+
+**Impact**
+
+Successful exploitation of the MCP Server and SolarWinds vulnerabilities could allow unauthenticated attackers to execute arbitrary code or gain administrative control, leading to a full system takeover. Additionally, the new generic XSS detection prevents attackers from leveraging browser event handlers in cookies to hijack user sessions or execute malicious scripts.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description | Previous Action | New Action                                              | Comments                 |
+| -------------------------- | ----------- | -------------- | ----------- | --------------- | ------------------------------------------------------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...0aa410af | N/A            | Log         | Disabled        | Generic Rules - Command Execution - 5 - Body            | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9131ec2f | N/A            | Log         | Disabled        | Generic Rules - Command Execution - 5 - Header          | This is a new detection. |
+| Cloudflare Managed Ruleset | ...551eb9e5 | N/A            | Log         | Block           | Generic Rules - Command Execution - 5 - URI             | This is a new detection. |
+| Cloudflare Managed Ruleset | ...d46229eb | N/A            | Log         | Block           | MCP Server - Remote Code Execution - CVE:CVE-2026-23744 | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a864b9c2 | N/A            | Log         | Block           | XSS - OnEvents - Cookies                                | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a78ad04e | N/A            | Log         | Disabled        | SQLi - Evasion - Body                                   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...40732d48 | N/A            | Log         | Disabled        | SQLi - Evasion - Headers                                | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e68a99b5 | N/A            | Log         | Disabled        | SQLi - Evasion - URI                                    | This is a new detection. |
+| Cloudflare Managed Ruleset | ...3e8143d2 | N/A            | Log         | Disabled        | SQLi - LIKE 3 - Body                                    | This is a new detection. |
+| Cloudflare Managed Ruleset | ...70e7fb97 | N/A            | Log         | Disabled        | SQLi - LIKE 3 - URI                                     | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4c538bd9 | N/A            | Log         | Disabled        | SQLi - UNION - 2 - Body                                 | This is a new detection. |
+| Cloudflare Managed Ruleset | ...61c439c9 | N/A            | Log         | Disabled        | SQLi - UNION - 2 - URI                                  | This is a new detection. |
+| Cloudflare Managed Ruleset | ...cf33ea10 | N/A            | Log         | Block           | SolarWinds - Auth Bypass - CVE:CVE-2025-40552           | This is a new detection. |
 
 ## 2026-03-30
 
@@ -466,25 +499,6 @@ Successful exploitation of CVE-2025-11953 may result in remote command execution
 | Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                 | Previous Action | New Action | Comments                |
 | -------------------------- | ----------- | -------------- | ----------------------------------------------------------- | --------------- | ---------- | ----------------------- |
 | Cloudflare Managed Ruleset | ...c8e30c5b | N/A            | React Native Metro - Command Injection - CVE:CVE-2025-11953 | N/A             | Block      | This is a New Detection |
-
-## 2025-11-03
-
-  
-**WAF Release - 2025-11-03**   
-
-This week highlights enhancements to detection signatures improving coverage for vulnerabilities in Adobe Commerce and Magento Open Source, linked to CVE-2025-54236.
-
-**Key Findings**
-
-This vulnerability allows unauthenticated attackers to take over customer accounts through the Commerce REST API and, in certain configurations, may lead to remote code execution. The latest update provides enhanced detection logic for resilient protection against exploitation attempts.
-
-**Impact**
-
-* Adobe Commerce (CVE-2025-54236): Exploitation may allow attackers to hijack sessions, execute arbitrary commands, steal data, and disrupt storefronts, resulting in confidentiality and integrity risks for merchants. Administrators are strongly encouraged to apply vendor patches without delay.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                 | Previous Action | New Action | Comments                       |
-| -------------------------- | ----------- | -------------- | ----------------------------------------------------------- | --------------- | ---------- | ------------------------------ |
-| Cloudflare Managed Ruleset | ...cb6d5fe5 | 100774C        | Adobe Commerce - Remote Code Execution - CVE:CVE-2025-54236 | Log             | Block      | This is an improved detection. |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

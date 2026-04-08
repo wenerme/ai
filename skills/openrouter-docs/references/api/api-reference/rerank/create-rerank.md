@@ -105,7 +105,8 @@ paths:
                   type: integer
                   description: Number of most relevant documents to return
                 provider:
-                  $ref: '#/components/schemas/ProviderPreferences'
+                  $ref: >-
+                    #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProvider
               required:
                 - model
                 - query
@@ -115,8 +116,19 @@ servers:
 components:
   schemas:
     ProviderPreferencesDataCollection:
-      type: object
-      properties: {}
+      type: string
+      enum:
+        - deny
+        - allow
+      description: >-
+        Data collection setting. If no available model provider meets the
+        requirement, your request will return an error.
+
+        - allow: (default) allow providers which store user data non-transiently
+        and may train on it
+
+
+        - deny: use only providers which do not collect user data.
       title: ProviderPreferencesDataCollection
     ProviderName:
       type: string
@@ -226,9 +238,60 @@ components:
         - fp32
         - unknown
       title: Quantization
-    ProviderPreferencesSort:
+    ProviderSort:
+      type: string
+      enum:
+        - price
+        - throughput
+        - latency
+        - exacto
+      description: The provider sorting strategy (price, throughput, latency)
+      title: ProviderSort
+    ProviderSortConfigBy:
+      type: string
+      enum:
+        - price
+        - throughput
+        - latency
+        - exacto
+      description: The provider sorting strategy (price, throughput, latency)
+      title: ProviderSortConfigBy
+    ProviderSortConfigPartition:
+      type: string
+      enum:
+        - model
+        - none
+      description: >-
+        Partitioning strategy for sorting: "model" (default) groups endpoints by
+        model before sorting (fallback models remain fallbacks), "none" sorts
+        all endpoints together regardless of model.
+      title: ProviderSortConfigPartition
+    ProviderSortConfig:
       type: object
-      properties: {}
+      properties:
+        by:
+          oneOf:
+            - $ref: '#/components/schemas/ProviderSortConfigBy'
+            - type: 'null'
+          description: The provider sorting strategy (price, throughput, latency)
+        partition:
+          oneOf:
+            - $ref: '#/components/schemas/ProviderSortConfigPartition'
+            - type: 'null'
+          description: >-
+            Partitioning strategy for sorting: "model" (default) groups
+            endpoints by model before sorting (fallback models remain
+            fallbacks), "none" sorts all endpoints together regardless of model.
+      description: The provider sorting strategy (price, throughput, latency)
+      title: ProviderSortConfig
+    ProviderPreferencesSort:
+      oneOf:
+        - $ref: '#/components/schemas/ProviderSort'
+        - $ref: '#/components/schemas/ProviderSortConfig'
+        - description: Any type
+      description: >-
+        The sorting strategy to use for this request, if "order" is not
+        specified. When set, no load balancing is performed.
       title: ProviderPreferencesSort
     BigNumberUnion:
       type: string
@@ -271,27 +334,19 @@ components:
       type: object
       properties:
         p50:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-
@@ -316,27 +371,19 @@ components:
       type: object
       properties:
         p50:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -356,7 +403,7 @@ components:
         using fallback models, this may cause a fallback model to be used
         instead of the primary model if it meets the threshold.
       title: PreferredMaxLatency
-    ProviderPreferences:
+    RerankPostRequestBodyContentApplicationJsonSchemaProvider:
       type: object
       properties:
         allow_fallbacks:
@@ -381,7 +428,18 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         data_collection:
-          $ref: '#/components/schemas/ProviderPreferencesDataCollection'
+          oneOf:
+            - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
+            - type: 'null'
+          description: >-
+            Data collection setting. If no available model provider meets the
+            requirement, your request will return an error.
+
+            - allow: (default) allow providers which store user data
+            non-transiently and may train on it
+
+
+            - deny: use only providers which do not collect user data.
         zdr:
           type:
             - boolean
@@ -437,6 +495,9 @@ components:
           description: A list of quantization levels to filter the provider by.
         sort:
           $ref: '#/components/schemas/ProviderPreferencesSort'
+          description: >-
+            The sorting strategy to use for this request, if "order" is not
+            specified. When set, no load balancing is performed.
         max_price:
           $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
           description: >-
@@ -446,8 +507,7 @@ components:
           $ref: '#/components/schemas/PreferredMinThroughput'
         preferred_max_latency:
           $ref: '#/components/schemas/PreferredMaxLatency'
-      description: Provider routing preferences for the request.
-      title: ProviderPreferences
+      title: RerankPostRequestBodyContentApplicationJsonSchemaProvider
     RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument:
       type: object
       properties:
@@ -786,8 +846,7 @@ url = "https://openrouter.ai/api/v1/rerank"
 payload = {
     "model": "cohere/rerank-v3.5",
     "query": "What is the capital of France?",
-    "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany."],
-    "top_n": 3
+    "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany.", "Madrid is the capital of Spain."]
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -804,7 +863,7 @@ const url = 'https://openrouter.ai/api/v1/rerank';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"model":"cohere/rerank-v3.5","query":"What is the capital of France?","documents":["Paris is the capital of France.","Berlin is the capital of Germany."],"top_n":3}'
+  body: '{"model":"cohere/rerank-v3.5","query":"What is the capital of France?","documents":["Paris is the capital of France.","Berlin is the capital of Germany.","Madrid is the capital of Spain."]}'
 };
 
 try {
@@ -830,7 +889,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/rerank"
 
-	payload := strings.NewReader("{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"top_n\": 3\n}")
+	payload := strings.NewReader("{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -860,7 +919,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"top_n\": 3\n}"
+request.body = "{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -873,7 +932,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/rerank")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"top_n\": 3\n}")
+  .body("{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}")
   .asString();
 ```
 
@@ -889,9 +948,9 @@ $response = $client->request('POST', 'https://openrouter.ai/api/v1/rerank', [
   "query": "What is the capital of France?",
   "documents": [
     "Paris is the capital of France.",
-    "Berlin is the capital of Germany."
-  ],
-  "top_n": 3
+    "Berlin is the capital of Germany.",
+    "Madrid is the capital of Spain."
+  ]
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -909,7 +968,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/rerank");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"top_n\": 3\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -923,8 +982,7 @@ let headers = [
 let parameters = [
   "model": "cohere/rerank-v3.5",
   "query": "What is the capital of France?",
-  "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany."],
-  "top_n": 3
+  "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany.", "Madrid is the capital of Spain."]
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

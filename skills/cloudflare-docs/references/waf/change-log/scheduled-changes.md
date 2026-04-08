@@ -12,26 +12,17 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
 
-## 2026-03-30
+## 2026-04-07
 
   
-**WAF Release - Scheduled changes for 2026-04-06**   
+**WAF Release - Scheduled changes for 2026-04-13**   
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                             | Comments                 |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------------- | ------------------------ |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...0aa410af | Generic Rules - Command Execution - 5 - Body            | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...9131ec2f | Generic Rules - Command Execution - 5 - Header          | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...551eb9e5 | Generic Rules - Command Execution - 5 - URI             | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...d46229eb | MCP Server - Remote Code Execution - CVE:CVE-2026-23744 | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...a864b9c2 | XSS - OnEvents - Cookies                                | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...9712a863 | SQLi - Evasion - Body                                   | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...40732d48 | SQLi - Evasion - Headers                                | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...e68a99b5 | SQLi - Evasion - URI                                    | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...3e8143d2 | SQLi - LIKE 3 - Body                                    | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...70e7fb97 | SSQLi - LIKE 3 - URI                                    | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...4c538bd9 | SQLi - UNION - 2 - Body                                 | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...61c439c9 | SQLi - UNION - 2 - URI                                  | This is a new detection. |
-| 2026-03-30        | 2026-04-06   | Log              | N/A            | ...cf33ea10 | SolarWinds - Auth Bypass - CVE:CVE-2025-40552           | This is a new detection. |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                          | Comments                                                                                                           |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| 2026-04-07        | 2026-04-13   | Log              | N/A            | ...aef9415b | Cisco Secure FMC - RCE via upgradeReadinessCall - CVE:CVE-2026-20079 | This is a new detection.                                                                                           |
+| 2026-04-07        | 2026-04-13   | Log              | N/A            | ...ee7be621 | FortiClient EMS - Pre-Auth SQL Injection - CVE:CVE-2026-21643        | This is a new detection.                                                                                           |
+| 2026-04-07        | 2026-04-13   | Log              | N/A            | ...c953a72b | Mesop - Remote Code Execution - Base64 Payload - CVE:CVE-2026-33057  | This is a new detection.                                                                                           |
+| 2026-04-07        | 2026-04-13   | Log              | N/A            | ...50c08f6f | React Server - DOS - CVE:CVE-2026-23864 - 1 - Beta                   | This rule has been merged into the original rule "React Server - DOS - CVE:CVE-2026-23864 - 1" (ID: ...61680354  ) |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

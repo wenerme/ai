@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Posture ](https://developers.cloudflare.com/search/?tags=Posture)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API)[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
+
 Was this helpful?
 
 YesNo

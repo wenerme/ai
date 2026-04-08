@@ -644,7 +644,7 @@ For legacy migration details, see the older [Local shell guide](https://develope
 
 ## Use local shell with Agents SDK
 
-If you are using the [Agents SDK](https://developers.openai.com/api/docs/guides/agents-sdk), you can pass your own shell executor implementation to the shell tool helper.
+If you are using the [Agents SDK](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk), you can pass your own shell executor implementation to the shell tool helper.
 
 You can find working examples in the SDK repositories.
 

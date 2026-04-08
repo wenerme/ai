@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ SSH ](https://developers.cloudflare.com/search/?tags=SSH)[ RDP ](https://developers.cloudflare.com/search/?tags=RDP) 
+
 Was this helpful?
 
 YesNo
@@ -50,8 +54,8 @@ To verify your device is connected to Cloudflare One:
 3. On your Cloudflare One Client device, open a browser and visit any website. This generates traffic that should appear in the logs.
 4. Determine the **Source IP** for your device (the public-facing address Cloudflare sees for your connection):
 
-* [ Version 2026.2+ ](#tab-panel-3841)
-* [ Version 2026.1 and earlier ](#tab-panel-3842)
+* [ Version 2026.2+ ](#tab-panel-3847)
+* [ Version 2026.1 and earlier ](#tab-panel-3848)
 
 1. Open the Cloudflare One Client.
 2. Go to **Profile**.
@@ -71,8 +75,8 @@ A network policy has two parts: a matcher that selects which traffic to act on (
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-3843)
-* [ API ](#tab-panel-3844)
+* [ Dashboard ](#tab-panel-3849)
+* [ API ](#tab-panel-3850)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.

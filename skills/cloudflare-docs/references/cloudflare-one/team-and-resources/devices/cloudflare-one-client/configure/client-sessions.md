@@ -1,10 +1,14 @@
 ---
 title: Client sessions
-description: Cloudflare Zero Trust enforces Cloudflare One Client (formerly WARP) reauthentication on a per-application basis, unlike legacy VPNs which treat it as a global setting. You can configure device client session timeouts for your Access applications or as part of your Gateway policies.
+description: Client sessions control how often users must re-authenticate with your identity provider (IdP) while using the Cloudflare One Client (formerly WARP). Unlike legacy VPNs, which enforce a single global session timeout, Cloudflare One allows you to set session timeouts per application or per policy. You can configure session timeouts for your Access applications or as part of your Gateway policies.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Microsoft Entra ID ](https://developers.cloudflare.com/search/?tags=Microsoft%20Entra%20ID) 
 
 Was this helpful?
 
@@ -16,7 +20,7 @@ Copy page
 
 # Client sessions
 
-Cloudflare Zero Trust enforces Cloudflare One Client (formerly WARP) reauthentication on a per-application basis, unlike legacy VPNs which treat it as a global setting. You can configure device client session timeouts for your [Access applications](#configure-warp-sessions-in-access) or as part of your [Gateway policies](#configure-warp-sessions-in-gateway).
+Client sessions control how often users must re-authenticate with your identity provider (IdP) while using the Cloudflare One Client (formerly WARP). Unlike legacy VPNs, which enforce a single global session timeout, Cloudflare One allows you to set session timeouts per application or per policy. You can configure session timeouts for your [Access applications](#configure-warp-sessions-in-access) or as part of your [Gateway policies](#configure-warp-sessions-in-gateway).
 
 When a user goes to a protected application or website, Cloudflare checks their device client session duration against the configured session timeout. If the session has expired, the user will be prompted to re-authenticate with the identity provider (IdP) used to enroll in the Cloudflare One Client.
 
@@ -38,8 +42,8 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-* [ Dashboard ](#tab-panel-3657)
-* [ Terraform (v5) ](#tab-panel-3658)
+* [ Dashboard ](#tab-panel-3663)
+* [ Terraform (v5) ](#tab-panel-3664)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to either **Traffic policies** \> **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the _Allow_ action. Alternatively, choose any existing _Allow_ policy.

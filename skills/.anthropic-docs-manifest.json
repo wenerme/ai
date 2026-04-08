@@ -18,10 +18,10 @@
   "anthropic-docs/about-claude/models/overview.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"2570-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 9584,
-    "updatedAt": "2026-04-02T10:18:30.954Z"
+    "etag": "W/\"2735-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10037,
+    "updatedAt": "2026-04-08T00:15:28.762Z"
   },
   "anthropic-docs/about-claude/models/choosing-a-model.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
@@ -58,26 +58,26 @@
   "anthropic-docs/about-claude/pricing.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/pricing",
     "skill": "anthropic-docs",
-    "etag": "W/\"50a2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 20642,
-    "updatedAt": "2026-04-02T10:18:32.461Z"
+    "etag": "W/\"5195-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 20885,
+    "updatedAt": "2026-04-08T00:15:30.336Z"
   },
   "anthropic-docs/build-with-claude/overview.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"31ca-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 12746,
-    "updatedAt": "2026-04-02T10:18:32.748Z"
+    "etag": "W/\"31ad-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 12717,
+    "updatedAt": "2026-04-08T00:15:30.644Z"
   },
   "anthropic-docs/build-with-claude/working-with-messages.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/working-with-messages",
     "skill": "anthropic-docs",
-    "etag": "W/\"7dff-19d64b5eed0\"",
-    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
-    "size": 32255,
-    "updatedAt": "2026-04-07T00:14:16.848Z"
+    "etag": "W/\"7e3a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 32314,
+    "updatedAt": "2026-04-08T00:15:30.977Z"
   },
   "anthropic-docs/build-with-claude/handling-stop-reasons.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons",
@@ -90,34 +90,34 @@
   "anthropic-docs/build-with-claude/prompt-engineering/claude-prompting-best-practices.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
     "skill": "anthropic-docs",
-    "etag": "W/\"b65c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 46677,
-    "updatedAt": "2026-04-02T10:18:33.642Z"
+    "etag": "W/\"b6eb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 46820,
+    "updatedAt": "2026-04-08T00:15:31.652Z"
   },
   "anthropic-docs/build-with-claude/extended-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
     "skill": "anthropic-docs",
-    "etag": "W/\"20268-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 131659,
-    "updatedAt": "2026-04-02T10:18:33.941Z"
+    "etag": "W/\"20e79-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 134748,
+    "updatedAt": "2026-04-08T00:15:32.007Z"
   },
   "anthropic-docs/build-with-claude/adaptive-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking",
     "skill": "anthropic-docs",
-    "etag": "W/\"7e69-19d64b5eed0\"",
-    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
-    "size": 32359,
-    "updatedAt": "2026-04-07T00:14:18.133Z"
+    "etag": "W/\"8281-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 33407,
+    "updatedAt": "2026-04-08T00:15:32.309Z"
   },
   "anthropic-docs/build-with-claude/effort.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
     "skill": "anthropic-docs",
-    "etag": "W/\"3124-19d64b5eed0\"",
-    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
-    "size": 12580,
-    "updatedAt": "2026-04-07T00:14:18.509Z"
+    "etag": "W/\"328c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 12940,
+    "updatedAt": "2026-04-08T00:15:32.609Z"
   },
   "anthropic-docs/build-with-claude/fast-mode.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/fast-mode",
@@ -130,10 +130,10 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "etag": "W/\"14fb0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 85936,
-    "updatedAt": "2026-04-02T10:18:35.102Z"
+    "etag": "W/\"15046-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 86086,
+    "updatedAt": "2026-04-08T00:15:33.221Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -226,10 +226,10 @@
   "anthropic-docs/agents-and-tools/tool-use/define-tools.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools",
     "skill": "anthropic-docs",
-    "etag": "W/\"5a67-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23143,
-    "updatedAt": "2026-04-02T10:18:38.823Z"
+    "etag": "W/\"5bdb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23515,
+    "updatedAt": "2026-04-08T00:15:37.016Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/handle-tool-calls.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls",
@@ -242,10 +242,10 @@
   "anthropic-docs/agents-and-tools/tool-use/parallel-tool-use.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/parallel-tool-use",
     "skill": "anthropic-docs",
-    "etag": "W/\"7805-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 30647,
-    "updatedAt": "2026-04-02T10:18:39.479Z"
+    "etag": "W/\"7643-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 30197,
+    "updatedAt": "2026-04-08T00:15:37.589Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/tool-runner.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-runner",
@@ -298,26 +298,26 @@
   "anthropic-docs/agents-and-tools/tool-use/web-search-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"4ea0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 20126,
-    "updatedAt": "2026-04-02T10:18:41.460Z"
+    "etag": "W/\"4fa9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 20391,
+    "updatedAt": "2026-04-08T00:15:39.634Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/web-fetch-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"59fb-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23035,
-    "updatedAt": "2026-04-02T10:18:41.737Z"
+    "etag": "W/\"5b01-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23297,
+    "updatedAt": "2026-04-08T00:15:39.930Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/code-execution-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"cdd3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 52691,
-    "updatedAt": "2026-04-02T10:18:42.019Z"
+    "etag": "W/\"cb9c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 52124,
+    "updatedAt": "2026-04-08T00:15:40.205Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/memory-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool",
@@ -370,10 +370,10 @@
   "anthropic-docs/agents-and-tools/tool-use/tool-search-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"73a6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 29602,
-    "updatedAt": "2026-04-02T10:18:44.138Z"
+    "etag": "W/\"73e0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 29660,
+    "updatedAt": "2026-04-08T00:15:42.273Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/programmatic-tool-calling.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling",
@@ -394,34 +394,34 @@
   "anthropic-docs/build-with-claude/context-windows.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
     "skill": "anthropic-docs",
-    "etag": "W/\"3477-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 13431,
-    "updatedAt": "2026-04-02T10:18:44.999Z"
+    "etag": "W/\"34b9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 13497,
+    "updatedAt": "2026-04-08T00:15:43.219Z"
   },
   "anthropic-docs/build-with-claude/compaction.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
     "skill": "anthropic-docs",
-    "etag": "W/\"17596-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 95638,
-    "updatedAt": "2026-04-02T10:18:45.287Z"
+    "etag": "W/\"175eb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 95723,
+    "updatedAt": "2026-04-08T00:15:43.528Z"
   },
   "anthropic-docs/build-with-claude/context-editing.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
     "skill": "anthropic-docs",
-    "etag": "W/\"12bf6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 76788,
-    "updatedAt": "2026-04-02T10:18:45.591Z"
+    "etag": "W/\"12aa5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 76451,
+    "updatedAt": "2026-04-08T00:15:43.834Z"
   },
   "anthropic-docs/build-with-claude/prompt-caching.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
     "skill": "anthropic-docs",
-    "etag": "W/\"1bb8b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 113485,
-    "updatedAt": "2026-04-02T10:18:45.873Z"
+    "etag": "W/\"1b9bd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 113023,
+    "updatedAt": "2026-04-08T00:15:44.143Z"
   },
   "anthropic-docs/build-with-claude/token-counting.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
@@ -506,10 +506,10 @@
   "anthropic-agent-sdk/agent-sdk/agent-loop.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/agent-loop",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"73b9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 29625,
-    "updatedAt": "2026-04-03T00:14:24.412Z"
+    "etag": "W/\"73c8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 29640,
+    "updatedAt": "2026-04-08T00:15:47.639Z"
   },
   "anthropic-agent-sdk/agent-sdk/claude-code-features.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/claude-code-features",
@@ -530,10 +530,10 @@
   "anthropic-agent-sdk/agent-sdk/streaming-vs-single-mode.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/streaming-vs-single-mode",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"1e00-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7680,
-    "updatedAt": "2026-04-02T10:18:50.482Z"
+    "etag": "W/\"1de0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7648,
+    "updatedAt": "2026-04-08T00:15:48.488Z"
   },
   "anthropic-agent-sdk/agent-sdk/streaming-output.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/streaming-output",
@@ -554,26 +554,26 @@
   "anthropic-agent-sdk/agent-sdk/custom-tools.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/custom-tools",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"79f3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 31214,
-    "updatedAt": "2026-04-02T10:18:51.401Z"
+    "etag": "W/\"7b08-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 31491,
+    "updatedAt": "2026-04-08T00:15:49.374Z"
   },
   "anthropic-agent-sdk/agent-sdk/tool-search.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/tool-search",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"192d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6445,
-    "updatedAt": "2026-04-02T10:18:51.683Z"
+    "etag": "W/\"18cd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6349,
+    "updatedAt": "2026-04-08T00:15:49.660Z"
   },
   "anthropic-agent-sdk/agent-sdk/permissions.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/permissions",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"2a07-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10759,
-    "updatedAt": "2026-04-03T00:14:28.544Z"
+    "etag": "W/\"2ae6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10982,
+    "updatedAt": "2026-04-08T00:15:52.740Z"
   },
   "anthropic-agent-sdk/agent-sdk/user-input.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/user-input",
@@ -634,10 +634,10 @@
   "anthropic-agent-sdk/agent-sdk/subagents.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/subagents",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"62aa-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 25258,
-    "updatedAt": "2026-04-02T10:18:54.307Z"
+    "etag": "W/\"61d2-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 25042,
+    "updatedAt": "2026-04-08T00:15:55.155Z"
   },
   "anthropic-agent-sdk/agent-sdk/slash-commands.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/slash-commands",
@@ -650,10 +650,10 @@
   "anthropic-agent-sdk/agent-sdk/skills.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/skills",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"28df-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10457,
-    "updatedAt": "2026-04-02T10:18:54.879Z"
+    "etag": "W/\"29c1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10683,
+    "updatedAt": "2026-04-08T00:15:55.772Z"
   },
   "anthropic-agent-sdk/agent-sdk/cost-tracking.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/cost-tracking",
@@ -682,10 +682,10 @@
   "anthropic-agent-sdk/agent-sdk/typescript.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/typescript",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"11dc1-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 73153,
-    "updatedAt": "2026-04-03T00:14:32.847Z"
+    "etag": "W/\"11e07-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 73223,
+    "updatedAt": "2026-04-08T00:15:56.974Z"
   },
   "anthropic-agent-sdk/agent-sdk/typescript-v2-preview.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/typescript-v2-preview",
@@ -698,10 +698,10 @@
   "anthropic-agent-sdk/agent-sdk/python.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/python",
     "skill": "anthropic-agent-sdk",
-    "etag": "W/\"1ba56-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 113217,
-    "updatedAt": "2026-04-03T00:14:33.454Z"
+    "etag": "W/\"1ba5e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 113225,
+    "updatedAt": "2026-04-08T00:15:57.552Z"
   },
   "anthropic-agent-sdk/agent-sdk/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/agent-sdk/migration-guide",
@@ -727,29 +727,37 @@
     "size": 1271,
     "updatedAt": "2026-04-02T10:18:57.424Z"
   },
+  "anthropic-docs/build-with-claude/claude-in-amazon-bedrock.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock",
+    "skill": "anthropic-docs",
+    "etag": "W/\"2c94-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 11412,
+    "updatedAt": "2026-04-08T00:15:58.779Z"
+  },
   "anthropic-docs/build-with-claude/claude-on-amazon-bedrock.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock",
     "skill": "anthropic-docs",
-    "etag": "W/\"6e20-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 28180,
-    "updatedAt": "2026-04-02T10:18:57.706Z"
+    "etag": "W/\"704d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 28737,
+    "updatedAt": "2026-04-08T00:15:59.098Z"
   },
   "anthropic-docs/build-with-claude/claude-in-microsoft-foundry.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry",
     "skill": "anthropic-docs",
-    "etag": "W/\"5027-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 20519,
-    "updatedAt": "2026-04-02T10:18:57.976Z"
+    "etag": "W/\"5112-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 20754,
+    "updatedAt": "2026-04-08T00:15:59.408Z"
   },
   "anthropic-docs/build-with-claude/claude-on-vertex-ai.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-vertex-ai",
     "skill": "anthropic-docs",
-    "etag": "W/\"49f7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 18923,
-    "updatedAt": "2026-04-02T10:18:58.255Z"
+    "etag": "W/\"5b6f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23395,
+    "updatedAt": "2026-04-08T00:15:59.748Z"
   },
   "anthropic-docs/build-with-claude/prompt-engineering/overview.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview",
@@ -802,10 +810,10 @@
   "anthropic-docs/test-and-evaluate/strengthen-guardrails/increase-consistency.md": {
     "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/increase-consistency",
     "skill": "anthropic-docs",
-    "etag": "W/\"37d4-19d64b5eed0\"",
-    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
-    "size": 14292,
-    "updatedAt": "2026-04-07T00:14:47.629Z"
+    "etag": "W/\"380f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 14351,
+    "updatedAt": "2026-04-08T00:16:01.944Z"
   },
   "anthropic-docs/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks.md": {
     "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks",
@@ -826,10 +834,10 @@
   "anthropic-docs/test-and-evaluate/strengthen-guardrails/reduce-prompt-leak.md": {
     "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-prompt-leak",
     "skill": "anthropic-docs",
-    "etag": "W/\"bd7-19d64b5eed0\"",
-    "lastModified": "Mon, 06 Apr 2026 21:32:18 GMT",
-    "size": 3027,
-    "updatedAt": "2026-04-07T00:14:48.682Z"
+    "etag": "W/\"c12-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3086,
+    "updatedAt": "2026-04-08T00:16:02.880Z"
   },
   "anthropic-docs/build-with-claude/administration-api.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/administration-api",
@@ -874,10 +882,10 @@
   "anthropic-docs/build-with-claude/api-and-data-retention.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/api-and-data-retention",
     "skill": "anthropic-docs",
-    "etag": "W/\"5761-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 22369,
-    "updatedAt": "2026-04-03T00:14:40.283Z"
+    "etag": "W/\"5744-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 22340,
+    "updatedAt": "2026-04-08T00:16:04.765Z"
   },
   "anthropic-api/api/overview.md": {
     "url": "https://platform.claude.com/docs/en/api/overview",
@@ -898,10 +906,10 @@
   "anthropic-api/api/errors.md": {
     "url": "https://platform.claude.com/docs/en/api/errors",
     "skill": "anthropic-api",
-    "etag": "W/\"1968-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6504,
-    "updatedAt": "2026-04-02T10:19:04.032Z"
+    "etag": "W/\"1a42-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6722,
+    "updatedAt": "2026-04-08T00:16:05.635Z"
   },
   "anthropic-api/api/client-sdks.md": {
     "url": "https://platform.claude.com/docs/en/api/client-sdks",
@@ -978,10 +986,10 @@
   "anthropic-api/api/service-tiers.md": {
     "url": "https://platform.claude.com/docs/en/api/service-tiers",
     "skill": "anthropic-api",
-    "etag": "W/\"1698-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5784,
-    "updatedAt": "2026-04-02T10:19:06.823Z"
+    "etag": "W/\"15c7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5575,
+    "updatedAt": "2026-04-08T00:16:08.729Z"
   },
   "anthropic-api/api/versioning.md": {
     "url": "https://platform.claude.com/docs/en/api/versioning",
@@ -1082,42 +1090,42 @@
   "anthropic-docs/release-notes/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"93aa-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 37796,
-    "updatedAt": "2026-04-02T10:19:10.511Z"
+    "etag": "W/\"966d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 38503,
+    "updatedAt": "2026-04-08T00:16:12.929Z"
   },
   "anthropic-api/api/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/completions",
     "skill": "anthropic-api",
-    "etag": "W/\"2ccf-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 11467,
-    "updatedAt": "2026-04-02T10:19:10.793Z"
+    "etag": "W/\"2d15-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 11537,
+    "updatedAt": "2026-04-08T00:16:13.238Z"
   },
   "anthropic-api/api/completions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/completions/create",
     "skill": "anthropic-api",
-    "etag": "W/\"22be-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 8892,
-    "updatedAt": "2026-04-02T10:19:11.070Z"
+    "etag": "W/\"2304-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 8962,
+    "updatedAt": "2026-04-08T00:16:13.525Z"
   },
   "anthropic-api/api/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/messages",
     "skill": "anthropic-api",
-    "etag": "W/\"d9a04-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 891380,
-    "updatedAt": "2026-04-02T10:19:11.368Z"
+    "etag": "W/\"db179-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 897385,
+    "updatedAt": "2026-04-08T00:16:13.844Z"
   },
   "anthropic-api/api/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/messages/create",
     "skill": "anthropic-api",
-    "etag": "W/\"1db16-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 121618,
-    "updatedAt": "2026-04-02T10:19:11.653Z"
+    "etag": "W/\"1dd12-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 122126,
+    "updatedAt": "2026-04-08T00:16:14.197Z"
   },
   "anthropic-api/api/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/messages/count_tokens",
@@ -1130,10 +1138,10 @@
   "anthropic-api/api/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/messages/batches",
     "skill": "anthropic-api",
-    "etag": "W/\"38f8c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 233352,
-    "updatedAt": "2026-04-02T10:19:12.235Z"
+    "etag": "W/\"39854-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 235600,
+    "updatedAt": "2026-04-08T00:16:14.847Z"
   },
   "anthropic-api/api/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/messages/batches/create",
@@ -1178,306 +1186,354 @@
   "anthropic-api/api/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/messages/batches/results",
     "skill": "anthropic-api",
-    "etag": "W/\"6d5d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 27997,
-    "updatedAt": "2026-04-02T10:19:14.036Z"
+    "etag": "W/\"6fa1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 28577,
+    "updatedAt": "2026-04-08T00:16:16.789Z"
   },
   "anthropic-api/api/models.md": {
     "url": "https://platform.claude.com/docs/en/api/models",
     "skill": "anthropic-api",
-    "etag": "W/\"5a24-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23076,
-    "updatedAt": "2026-04-02T10:19:14.342Z"
+    "etag": "W/\"5ab0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23216,
+    "updatedAt": "2026-04-08T00:16:17.089Z"
   },
   "anthropic-api/api/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/models/list",
     "skill": "anthropic-api",
-    "etag": "W/\"18ff-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6399,
-    "updatedAt": "2026-04-02T10:19:14.624Z"
+    "etag": "W/\"1945-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6469,
+    "updatedAt": "2026-04-08T00:16:17.398Z"
   },
   "anthropic-api/api/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/models/retrieve",
     "skill": "anthropic-api",
-    "etag": "W/\"1674-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5748,
-    "updatedAt": "2026-04-02T10:19:14.889Z"
+    "etag": "W/\"16ba-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5818,
+    "updatedAt": "2026-04-08T00:16:17.726Z"
   },
   "anthropic-api/api/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/beta",
     "skill": "anthropic-api",
-    "etag": "W/\"11c1f7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1163751,
-    "updatedAt": "2026-04-02T10:19:15.211Z"
+    "etag": "W/\"1223d9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1188809,
+    "updatedAt": "2026-04-08T00:16:18.133Z"
   },
   "anthropic-api/api/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/models",
     "skill": "anthropic-api",
-    "etag": "W/\"5beb-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23531,
-    "updatedAt": "2026-04-02T10:19:15.498Z"
+    "etag": "W/\"5c63-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23651,
+    "updatedAt": "2026-04-08T00:16:18.427Z"
   },
   "anthropic-api/api/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/models/list",
     "skill": "anthropic-api",
-    "etag": "W/\"195d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6493,
-    "updatedAt": "2026-04-02T10:19:15.777Z"
+    "etag": "W/\"1999-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6553,
+    "updatedAt": "2026-04-08T00:16:18.718Z"
   },
   "anthropic-api/api/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/models/retrieve",
     "skill": "anthropic-api",
-    "etag": "W/\"16d2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5842,
-    "updatedAt": "2026-04-02T10:19:16.051Z"
+    "etag": "W/\"170e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5902,
+    "updatedAt": "2026-04-08T00:16:19.004Z"
   },
   "anthropic-api/api/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages",
     "skill": "anthropic-api",
-    "etag": "W/\"10dd33-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1105187,
-    "updatedAt": "2026-04-02T10:19:16.431Z"
+    "etag": "W/\"10f7fd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1112045,
+    "updatedAt": "2026-04-08T00:16:19.466Z"
   },
   "anthropic-api/api/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/create",
     "skill": "anthropic-api",
-    "etag": "W/\"255a9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 152997,
-    "updatedAt": "2026-04-02T10:19:16.708Z"
+    "etag": "W/\"25883-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 153727,
+    "updatedAt": "2026-04-08T00:16:19.751Z"
   },
   "anthropic-api/api/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/count_tokens",
     "skill": "anthropic-api",
-    "etag": "W/\"1d1de-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 119258,
-    "updatedAt": "2026-04-02T10:19:16.998Z"
+    "etag": "W/\"1d21a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 119318,
+    "updatedAt": "2026-04-08T00:16:20.066Z"
   },
   "anthropic-api/api/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches",
     "skill": "anthropic-api",
-    "etag": "W/\"496bf-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 300731,
-    "updatedAt": "2026-04-02T10:19:17.265Z"
+    "etag": "W/\"4a1a5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 303521,
+    "updatedAt": "2026-04-08T00:16:20.377Z"
   },
   "anthropic-api/api/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches/create",
     "skill": "anthropic-api",
-    "etag": "W/\"21348-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 136004,
-    "updatedAt": "2026-04-02T10:19:17.595Z"
+    "etag": "W/\"2142a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 136230,
+    "updatedAt": "2026-04-08T00:16:20.725Z"
   },
   "anthropic-api/api/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches/retrieve",
     "skill": "anthropic-api",
-    "etag": "W/\"11c4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4548,
-    "updatedAt": "2026-04-02T10:19:17.873Z"
+    "etag": "W/\"1200-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4608,
+    "updatedAt": "2026-04-08T00:16:21.018Z"
   },
   "anthropic-api/api/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches/list",
     "skill": "anthropic-api",
-    "etag": "W/\"13c4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5060,
-    "updatedAt": "2026-04-02T10:19:18.247Z"
+    "etag": "W/\"1400-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5120,
+    "updatedAt": "2026-04-08T00:16:21.355Z"
   },
   "anthropic-api/api/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches/cancel",
     "skill": "anthropic-api",
-    "etag": "W/\"1315-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4885,
-    "updatedAt": "2026-04-02T10:19:18.529Z"
+    "etag": "W/\"1351-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4945,
+    "updatedAt": "2026-04-08T00:16:21.635Z"
   },
   "anthropic-api/api/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches/delete",
     "skill": "anthropic-api",
-    "etag": "W/\"7d3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2003,
-    "updatedAt": "2026-04-02T10:19:19.031Z"
+    "etag": "W/\"80f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2063,
+    "updatedAt": "2026-04-08T00:16:21.929Z"
   },
   "anthropic-api/api/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/messages/batches/results",
     "skill": "anthropic-api",
-    "etag": "W/\"96da-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 38618,
-    "updatedAt": "2026-04-02T10:19:19.321Z"
+    "etag": "W/\"995e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 39262,
+    "updatedAt": "2026-04-08T00:16:22.213Z"
   },
   "anthropic-api/api/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/files",
     "skill": "anthropic-api",
-    "etag": "W/\"2915-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10517,
-    "updatedAt": "2026-04-02T10:19:19.682Z"
+    "etag": "W/\"2a41-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10817,
+    "updatedAt": "2026-04-08T00:16:22.552Z"
   },
   "anthropic-api/api/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/files/upload",
     "skill": "anthropic-api",
-    "etag": "W/\"7c4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1988,
-    "updatedAt": "2026-04-02T10:19:19.959Z"
+    "etag": "W/\"800-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2048,
+    "updatedAt": "2026-04-08T00:16:22.840Z"
   },
   "anthropic-api/api/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/files/list",
     "skill": "anthropic-api",
-    "etag": "W/\"a2d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2605,
-    "updatedAt": "2026-04-02T10:19:20.222Z"
+    "etag": "W/\"a69-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2665,
+    "updatedAt": "2026-04-08T00:16:23.111Z"
   },
   "anthropic-api/api/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/files/download",
     "skill": "anthropic-api",
-    "etag": "W/\"563-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1379,
-    "updatedAt": "2026-04-02T10:19:20.590Z"
+    "etag": "W/\"59f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1439,
+    "updatedAt": "2026-04-08T00:16:23.446Z"
   },
   "anthropic-api/api/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/files/retrieve_metadata",
     "skill": "anthropic-api",
-    "etag": "W/\"7d8-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2008,
-    "updatedAt": "2026-04-02T10:19:20.875Z"
+    "etag": "W/\"814-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2068,
+    "updatedAt": "2026-04-08T00:16:23.747Z"
   },
   "anthropic-api/api/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/files/delete",
     "skill": "anthropic-api",
-    "etag": "W/\"655-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1621,
-    "updatedAt": "2026-04-02T10:19:21.155Z"
+    "etag": "W/\"691-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1681,
+    "updatedAt": "2026-04-08T00:16:24.129Z"
   },
   "anthropic-api/api/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills",
     "skill": "anthropic-api",
-    "etag": "W/\"4a94-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 19092,
-    "updatedAt": "2026-04-02T10:19:21.435Z"
+    "etag": "W/\"66ea-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26346,
+    "updatedAt": "2026-04-08T00:16:24.457Z"
   },
   "anthropic-api/api/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/create",
     "skill": "anthropic-api",
-    "etag": "W/\"85c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2140,
-    "updatedAt": "2026-04-02T10:19:21.737Z"
+    "etag": "W/\"898-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2200,
+    "updatedAt": "2026-04-08T00:16:24.743Z"
   },
   "anthropic-api/api/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/list",
     "skill": "anthropic-api",
-    "etag": "W/\"c64-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3172,
-    "updatedAt": "2026-04-02T10:19:22.030Z"
+    "etag": "W/\"ca0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3232,
+    "updatedAt": "2026-04-08T00:16:25.034Z"
   },
   "anthropic-api/api/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/retrieve",
     "skill": "anthropic-api",
-    "etag": "W/\"8e6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2278,
-    "updatedAt": "2026-04-02T10:19:22.344Z"
+    "etag": "W/\"922-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2338,
+    "updatedAt": "2026-04-08T00:16:25.330Z"
   },
   "anthropic-api/api/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/delete",
     "skill": "anthropic-api",
-    "etag": "W/\"67e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1662,
-    "updatedAt": "2026-04-02T10:19:22.707Z"
+    "etag": "W/\"6ba-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1722,
+    "updatedAt": "2026-04-08T00:16:25.668Z"
   },
   "anthropic-api/api/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/versions",
     "skill": "anthropic-api",
-    "etag": "W/\"2662-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 9826,
-    "updatedAt": "2026-04-02T10:19:22.994Z"
+    "etag": "W/\"3526-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 13606,
+    "updatedAt": "2026-04-08T00:16:25.957Z"
   },
   "anthropic-api/api/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/versions/create",
     "skill": "anthropic-api",
-    "etag": "W/\"961-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2401,
-    "updatedAt": "2026-04-02T10:19:23.281Z"
+    "etag": "W/\"99d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2461,
+    "updatedAt": "2026-04-08T00:16:26.242Z"
   },
   "anthropic-api/api/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/versions/list",
     "skill": "anthropic-api",
-    "etag": "W/\"b98-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2968,
-    "updatedAt": "2026-04-02T10:19:23.557Z"
+    "etag": "W/\"bd4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3028,
+    "updatedAt": "2026-04-08T00:16:26.526Z"
   },
   "anthropic-api/api/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/versions/retrieve",
     "skill": "anthropic-api",
-    "etag": "W/\"9f2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2546,
-    "updatedAt": "2026-04-02T10:19:24.089Z"
+    "etag": "W/\"a2e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2606,
+    "updatedAt": "2026-04-08T00:16:26.822Z"
   },
   "anthropic-api/api/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/skills/versions/delete",
     "skill": "anthropic-api",
-    "etag": "W/\"768-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1896,
-    "updatedAt": "2026-04-02T10:19:24.381Z"
+    "etag": "W/\"7a4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1956,
+    "updatedAt": "2026-04-08T00:16:27.100Z"
+  },
+  "anthropic-api/api/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/beta/user_profiles",
+    "skill": "anthropic-api",
+    "etag": "W/\"28d7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10455,
+    "updatedAt": "2026-04-08T00:16:27.384Z"
+  },
+  "anthropic-api/api/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/beta/user_profiles/create",
+    "skill": "anthropic-api",
+    "etag": "W/\"818-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2072,
+    "updatedAt": "2026-04-08T00:16:27.669Z"
+  },
+  "anthropic-api/api/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/beta/user_profiles/list",
+    "skill": "anthropic-api",
+    "etag": "W/\"7b7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1975,
+    "updatedAt": "2026-04-08T00:16:27.957Z"
+  },
+  "anthropic-api/api/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/beta/user_profiles/retrieve",
+    "skill": "anthropic-api",
+    "etag": "W/\"703-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1795,
+    "updatedAt": "2026-04-08T00:16:28.248Z"
+  },
+  "anthropic-api/api/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/beta/user_profiles/update",
+    "skill": "anthropic-api",
+    "etag": "W/\"8a0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2208,
+    "updatedAt": "2026-04-08T00:16:28.547Z"
+  },
+  "anthropic-api/api/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-api",
+    "etag": "W/\"67a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1658,
+    "updatedAt": "2026-04-08T00:16:28.858Z"
   },
   "anthropic-sdk-typescript/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/completions",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"2f3a-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 12086,
-    "updatedAt": "2026-04-02T10:19:24.652Z"
+    "etag": "W/\"2f88-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 12164,
+    "updatedAt": "2026-04-08T00:16:29.155Z"
   },
   "anthropic-sdk-typescript/completions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/completions/create",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"2604-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 9730,
-    "updatedAt": "2026-04-02T10:19:24.943Z"
+    "etag": "W/\"2652-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 9808,
+    "updatedAt": "2026-04-08T00:16:29.459Z"
   },
   "anthropic-sdk-typescript/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/messages",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"cbb74-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 834404,
-    "updatedAt": "2026-04-02T10:19:25.232Z"
+    "etag": "W/\"cd379-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 840553,
+    "updatedAt": "2026-04-08T00:16:29.787Z"
   },
   "anthropic-sdk-typescript/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/messages/create",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"1d6e6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 120546,
-    "updatedAt": "2026-04-02T10:19:25.614Z"
+    "etag": "W/\"1d8f6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 121074,
+    "updatedAt": "2026-04-08T00:16:30.123Z"
   },
   "anthropic-sdk-typescript/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/messages/count_tokens",
@@ -1490,10 +1546,10 @@
   "anthropic-sdk-typescript/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/messages/batches",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"36294-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 221840,
-    "updatedAt": "2026-04-02T10:19:26.183Z"
+    "etag": "W/\"36bac-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 224168,
+    "updatedAt": "2026-04-08T00:16:30.802Z"
   },
   "anthropic-sdk-typescript/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/messages/batches/create",
@@ -1538,306 +1594,354 @@
   "anthropic-sdk-typescript/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/messages/batches/results",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"6678-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 26232,
-    "updatedAt": "2026-04-02T10:19:27.975Z"
+    "etag": "W/\"68d0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26832,
+    "updatedAt": "2026-04-08T00:16:32.693Z"
   },
   "anthropic-sdk-typescript/models.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/models",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"5a43-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23107,
-    "updatedAt": "2026-04-02T10:19:28.239Z"
+    "etag": "W/\"5ad7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23255,
+    "updatedAt": "2026-04-08T00:16:33.020Z"
   },
   "anthropic-sdk-typescript/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/models/list",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"1922-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6434,
-    "updatedAt": "2026-04-02T10:19:28.532Z"
+    "etag": "W/\"196c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6508,
+    "updatedAt": "2026-04-08T00:16:33.322Z"
   },
   "anthropic-sdk-typescript/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/models/retrieve",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"1758-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5976,
-    "updatedAt": "2026-04-02T10:19:28.836Z"
+    "etag": "W/\"17a2-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6050,
+    "updatedAt": "2026-04-08T00:16:33.625Z"
   },
   "anthropic-sdk-typescript/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"10b574-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1095012,
-    "updatedAt": "2026-04-02T10:19:29.139Z"
+    "etag": "W/\"111c0f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1121279,
+    "updatedAt": "2026-04-08T00:16:34.028Z"
   },
   "anthropic-sdk-typescript/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/models",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"5c22-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23586,
-    "updatedAt": "2026-04-02T10:19:29.427Z"
+    "etag": "W/\"5cb6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23734,
+    "updatedAt": "2026-04-08T00:16:34.327Z"
   },
   "anthropic-sdk-typescript/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/models/list",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"198c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6540,
-    "updatedAt": "2026-04-02T10:19:29.699Z"
+    "etag": "W/\"19d6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6614,
+    "updatedAt": "2026-04-08T00:16:34.610Z"
   },
   "anthropic-sdk-typescript/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/models/retrieve",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"17c2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6082,
-    "updatedAt": "2026-04-02T10:19:29.978Z"
+    "etag": "W/\"180c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6156,
+    "updatedAt": "2026-04-08T00:16:34.898Z"
   },
   "anthropic-sdk-typescript/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"fc886-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1034358,
-    "updatedAt": "2026-04-02T10:19:30.260Z"
+    "etag": "W/\"fe46a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1041498,
+    "updatedAt": "2026-04-08T00:16:35.223Z"
   },
   "anthropic-sdk-typescript/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/create",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"25018-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 151572,
-    "updatedAt": "2026-04-02T10:19:30.665Z"
+    "etag": "W/\"2532b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 152359,
+    "updatedAt": "2026-04-08T00:16:35.535Z"
   },
   "anthropic-sdk-typescript/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/count_tokens",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"1c014-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 114704,
-    "updatedAt": "2026-04-02T10:19:30.971Z"
+    "etag": "W/\"1c05e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 114778,
+    "updatedAt": "2026-04-08T00:16:35.849Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"45b1c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 285464,
-    "updatedAt": "2026-04-02T10:19:31.299Z"
+    "etag": "W/\"466a9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 288421,
+    "updatedAt": "2026-04-08T00:16:36.160Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/create",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"20003-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 131071,
-    "updatedAt": "2026-04-02T10:19:31.585Z"
+    "etag": "W/\"200f6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 131314,
+    "updatedAt": "2026-04-08T00:16:36.494Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/retrieve",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"127f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4735,
-    "updatedAt": "2026-04-02T10:19:31.873Z"
+    "etag": "W/\"12c9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4809,
+    "updatedAt": "2026-04-08T00:16:36.800Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/list",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"13c0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5056,
-    "updatedAt": "2026-04-02T10:19:32.163Z"
+    "etag": "W/\"140a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5130,
+    "updatedAt": "2026-04-08T00:16:37.137Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/cancel",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"13b3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5043,
-    "updatedAt": "2026-04-02T10:19:32.449Z"
+    "etag": "W/\"13fd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5117,
+    "updatedAt": "2026-04-08T00:16:37.441Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/delete",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"895-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2197,
-    "updatedAt": "2026-04-02T10:19:32.732Z"
+    "etag": "W/\"8df-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2271,
+    "updatedAt": "2026-04-08T00:16:37.745Z"
   },
   "anthropic-sdk-typescript/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/results",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"8d33-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 36147,
-    "updatedAt": "2026-04-02T10:19:33.055Z"
+    "etag": "W/\"8fd9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 36825,
+    "updatedAt": "2026-04-08T00:16:38.054Z"
   },
   "anthropic-sdk-typescript/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/files",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"2ba9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 11177,
-    "updatedAt": "2026-04-02T10:19:33.581Z"
+    "etag": "W/\"2d1b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 11547,
+    "updatedAt": "2026-04-08T00:16:38.332Z"
   },
   "anthropic-sdk-typescript/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/files/upload",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"879-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2169,
-    "updatedAt": "2026-04-02T10:19:33.894Z"
+    "etag": "W/\"8c3-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2243,
+    "updatedAt": "2026-04-08T00:16:38.629Z"
   },
   "anthropic-sdk-typescript/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/files/list",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"a17-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2583,
-    "updatedAt": "2026-04-02T10:19:34.185Z"
+    "etag": "W/\"a61-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2657,
+    "updatedAt": "2026-04-08T00:16:38.926Z"
   },
   "anthropic-sdk-typescript/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/files/download",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"679-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1657,
-    "updatedAt": "2026-04-02T10:19:34.471Z"
+    "etag": "W/\"6c3-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1731,
+    "updatedAt": "2026-04-08T00:16:39.235Z"
   },
   "anthropic-sdk-typescript/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/files/retrieve_metadata",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"883-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2179,
-    "updatedAt": "2026-04-02T10:19:34.799Z"
+    "etag": "W/\"8cd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2253,
+    "updatedAt": "2026-04-08T00:16:39.527Z"
   },
   "anthropic-sdk-typescript/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/files/delete",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"6dd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1757,
-    "updatedAt": "2026-04-02T10:19:35.076Z"
+    "etag": "W/\"727-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1831,
+    "updatedAt": "2026-04-08T00:16:39.824Z"
   },
   "anthropic-sdk-typescript/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"5304-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 21252,
-    "updatedAt": "2026-04-02T10:19:35.360Z"
+    "etag": "W/\"6e9c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 28316,
+    "updatedAt": "2026-04-08T00:16:40.121Z"
   },
   "anthropic-sdk-typescript/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/create",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"ae9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2793,
-    "updatedAt": "2026-04-02T10:19:35.825Z"
+    "etag": "W/\"b33-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2867,
+    "updatedAt": "2026-04-08T00:16:40.494Z"
   },
   "anthropic-sdk-typescript/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/list",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"bfe-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3070,
-    "updatedAt": "2026-04-02T10:19:36.102Z"
+    "etag": "W/\"c48-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3144,
+    "updatedAt": "2026-04-08T00:16:40.793Z"
   },
   "anthropic-sdk-typescript/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/retrieve",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"9fc-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2556,
-    "updatedAt": "2026-04-02T10:19:36.394Z"
+    "etag": "W/\"a46-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2630,
+    "updatedAt": "2026-04-08T00:16:41.097Z"
   },
   "anthropic-sdk-typescript/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/delete",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"74c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1868,
-    "updatedAt": "2026-04-02T10:19:36.700Z"
+    "etag": "W/\"796-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1942,
+    "updatedAt": "2026-04-08T00:16:41.395Z"
   },
   "anthropic-sdk-typescript/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/versions",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"2ac7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10951,
-    "updatedAt": "2026-04-02T10:19:36.984Z"
+    "etag": "W/\"391a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 14618,
+    "updatedAt": "2026-04-08T00:16:41.694Z"
   },
   "anthropic-sdk-typescript/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/versions/create",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"b43-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2883,
-    "updatedAt": "2026-04-02T10:19:37.344Z"
+    "etag": "W/\"b8d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2957,
+    "updatedAt": "2026-04-08T00:16:41.987Z"
   },
   "anthropic-sdk-typescript/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/versions/list",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"bb9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3001,
-    "updatedAt": "2026-04-02T10:19:37.669Z"
+    "etag": "W/\"c03-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3075,
+    "updatedAt": "2026-04-08T00:16:42.326Z"
   },
   "anthropic-sdk-typescript/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/versions/retrieve",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"b41-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2881,
-    "updatedAt": "2026-04-02T10:19:37.954Z"
+    "etag": "W/\"b8b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2955,
+    "updatedAt": "2026-04-08T00:16:42.610Z"
   },
   "anthropic-sdk-typescript/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/typescript/beta/skills/versions/delete",
     "skill": "anthropic-sdk-typescript",
-    "etag": "W/\"87b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2171,
-    "updatedAt": "2026-04-02T10:19:38.236Z"
+    "etag": "W/\"8c5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2245,
+    "updatedAt": "2026-04-08T00:16:42.900Z"
+  },
+  "anthropic-sdk-typescript/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/typescript/beta/user_profiles",
+    "skill": "anthropic-sdk-typescript",
+    "etag": "W/\"2cd2-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 11474,
+    "updatedAt": "2026-04-08T00:16:43.203Z"
+  },
+  "anthropic-sdk-typescript/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/typescript/beta/user_profiles/create",
+    "skill": "anthropic-sdk-typescript",
+    "etag": "W/\"8cb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2251,
+    "updatedAt": "2026-04-08T00:16:43.509Z"
+  },
+  "anthropic-sdk-typescript/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/typescript/beta/user_profiles/list",
+    "skill": "anthropic-sdk-typescript",
+    "etag": "W/\"8db-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2267,
+    "updatedAt": "2026-04-08T00:16:43.811Z"
+  },
+  "anthropic-sdk-typescript/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/typescript/beta/user_profiles/retrieve",
+    "skill": "anthropic-sdk-typescript",
+    "etag": "W/\"7cf-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1999,
+    "updatedAt": "2026-04-08T00:16:44.111Z"
+  },
+  "anthropic-sdk-typescript/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/typescript/beta/user_profiles/update",
+    "skill": "anthropic-sdk-typescript",
+    "etag": "W/\"948-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2376,
+    "updatedAt": "2026-04-08T00:16:44.402Z"
+  },
+  "anthropic-sdk-typescript/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/typescript/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-sdk-typescript",
+    "etag": "W/\"77a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1914,
+    "updatedAt": "2026-04-08T00:16:44.916Z"
   },
   "anthropic-sdk-python/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/python/completions",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"3c12-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 15370,
-    "updatedAt": "2026-04-02T10:19:38.555Z"
+    "etag": "W/\"3c52-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 15434,
+    "updatedAt": "2026-04-08T00:16:45.203Z"
   },
   "anthropic-sdk-python/completions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/completions/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"2ced-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 11497,
-    "updatedAt": "2026-04-02T10:19:38.837Z"
+    "etag": "W/\"2d2d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 11561,
+    "updatedAt": "2026-04-08T00:16:45.514Z"
   },
   "anthropic-sdk-python/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"d2358-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 857828,
-    "updatedAt": "2026-04-02T10:19:39.176Z"
+    "etag": "W/\"d3c56-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 864224,
+    "updatedAt": "2026-04-08T00:16:46.028Z"
   },
   "anthropic-sdk-python/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1d000-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 118412,
-    "updatedAt": "2026-04-02T10:19:39.494Z"
+    "etag": "W/\"1d221-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 118957,
+    "updatedAt": "2026-04-08T00:16:46.325Z"
   },
   "anthropic-sdk-python/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages/count_tokens",
@@ -1850,18 +1954,18 @@
   "anthropic-sdk-python/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages/batches",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"385f7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 230139,
-    "updatedAt": "2026-04-02T10:19:40.070Z"
+    "etag": "W/\"38f65-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 232553,
+    "updatedAt": "2026-04-08T00:16:48.032Z"
   },
   "anthropic-sdk-python/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages/batches/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1a7bd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 108195,
-    "updatedAt": "2026-04-02T10:19:40.372Z"
+    "etag": "W/\"1a7b7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 108189,
+    "updatedAt": "2026-04-08T00:16:48.365Z"
   },
   "anthropic-sdk-python/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages/batches/retrieve",
@@ -1898,306 +2002,354 @@
   "anthropic-sdk-python/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/python/messages/batches/results",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"6e21-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 28075,
-    "updatedAt": "2026-04-02T10:19:41.791Z"
+    "etag": "W/\"7090-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 28698,
+    "updatedAt": "2026-04-08T00:16:49.864Z"
   },
   "anthropic-sdk-python/models.md": {
     "url": "https://platform.claude.com/docs/en/api/python/models",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"588f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 22653,
-    "updatedAt": "2026-04-02T10:19:42.100Z"
+    "etag": "W/\"591b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 22793,
+    "updatedAt": "2026-04-08T00:16:50.154Z"
   },
   "anthropic-sdk-python/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/python/models/list",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1829-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6183,
-    "updatedAt": "2026-04-02T10:19:42.383Z"
+    "etag": "W/\"186f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6253,
+    "updatedAt": "2026-04-08T00:16:50.459Z"
   },
   "anthropic-sdk-python/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/python/models/retrieve",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"16c6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5828,
-    "updatedAt": "2026-04-02T10:19:42.647Z"
+    "etag": "W/\"170c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5898,
+    "updatedAt": "2026-04-08T00:16:50.769Z"
   },
   "anthropic-sdk-python/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1106be-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1111882,
-    "updatedAt": "2026-04-02T10:19:42.965Z"
+    "etag": "W/\"116a2e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1137304,
+    "updatedAt": "2026-04-08T00:16:51.459Z"
   },
   "anthropic-sdk-python/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/models",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"5a68-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 23126,
-    "updatedAt": "2026-04-02T10:19:43.245Z"
+    "etag": "W/\"5af4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 23266,
+    "updatedAt": "2026-04-08T00:16:51.755Z"
   },
   "anthropic-sdk-python/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/models/list",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"188b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6281,
-    "updatedAt": "2026-04-02T10:19:43.532Z"
+    "etag": "W/\"18d1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6351,
+    "updatedAt": "2026-04-08T00:16:52.049Z"
   },
   "anthropic-sdk-python/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/models/retrieve",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1732-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5936,
-    "updatedAt": "2026-04-02T10:19:43.820Z"
+    "etag": "W/\"1778-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6006,
+    "updatedAt": "2026-04-08T00:16:52.344Z"
   },
   "anthropic-sdk-python/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"102235-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1053479,
-    "updatedAt": "2026-04-02T10:19:44.126Z"
+    "etag": "W/\"103ed4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1060804,
+    "updatedAt": "2026-04-08T00:16:52.801Z"
   },
   "anthropic-sdk-python/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"2432e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 147814,
-    "updatedAt": "2026-04-02T10:19:44.418Z"
+    "etag": "W/\"24635-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 148589,
+    "updatedAt": "2026-04-08T00:16:53.145Z"
   },
   "anthropic-sdk-python/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/count_tokens",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1c205-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 114865,
-    "updatedAt": "2026-04-02T10:19:44.717Z"
+    "etag": "W/\"1c24b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 114935,
+    "updatedAt": "2026-04-08T00:16:53.444Z"
   },
   "anthropic-sdk-python/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"47c53-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 293051,
-    "updatedAt": "2026-04-02T10:19:45.000Z"
+    "etag": "W/\"48819-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 296065,
+    "updatedAt": "2026-04-08T00:16:53.750Z"
   },
   "anthropic-sdk-python/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"20321-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 131531,
-    "updatedAt": "2026-04-02T10:19:45.286Z"
+    "etag": "W/\"20405-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 131759,
+    "updatedAt": "2026-04-08T00:16:54.044Z"
   },
   "anthropic-sdk-python/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches/retrieve",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"122f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4653,
-    "updatedAt": "2026-04-02T10:19:45.577Z"
+    "etag": "W/\"1275-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4723,
+    "updatedAt": "2026-04-08T00:16:54.340Z"
   },
   "anthropic-sdk-python/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches/list",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"12ef-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4845,
-    "updatedAt": "2026-04-02T10:19:45.863Z"
+    "etag": "W/\"1335-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4915,
+    "updatedAt": "2026-04-08T00:16:54.649Z"
   },
   "anthropic-sdk-python/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches/cancel",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"1365-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4963,
-    "updatedAt": "2026-04-02T10:19:46.172Z"
+    "etag": "W/\"13ab-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5033,
+    "updatedAt": "2026-04-08T00:16:54.962Z"
   },
   "anthropic-sdk-python/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches/delete",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"83e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2108,
-    "updatedAt": "2026-04-02T10:19:46.465Z"
+    "etag": "W/\"884-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2178,
+    "updatedAt": "2026-04-08T00:16:55.250Z"
   },
   "anthropic-sdk-python/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/messages/batches/results",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"94b9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 37931,
-    "updatedAt": "2026-04-02T10:19:46.814Z"
+    "etag": "W/\"9772-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 38628,
+    "updatedAt": "2026-04-08T00:16:55.566Z"
   },
   "anthropic-sdk-python/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/files",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"290c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10496,
-    "updatedAt": "2026-04-02T10:19:47.145Z"
+    "etag": "W/\"2a6a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10846,
+    "updatedAt": "2026-04-08T00:16:55.911Z"
   },
   "anthropic-sdk-python/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/files/upload",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"7d8-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2006,
-    "updatedAt": "2026-04-02T10:19:47.436Z"
+    "etag": "W/\"81e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2076,
+    "updatedAt": "2026-04-08T00:16:56.248Z"
   },
   "anthropic-sdk-python/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/files/list",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"943-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2369,
-    "updatedAt": "2026-04-02T10:19:47.722Z"
+    "etag": "W/\"989-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2439,
+    "updatedAt": "2026-04-08T00:16:56.546Z"
   },
   "anthropic-sdk-python/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/files/download",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"5f1-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1521,
-    "updatedAt": "2026-04-02T10:19:48.005Z"
+    "etag": "W/\"637-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1591,
+    "updatedAt": "2026-04-08T00:16:56.841Z"
   },
   "anthropic-sdk-python/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/files/retrieve_metadata",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"815-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2067,
-    "updatedAt": "2026-04-02T10:19:48.273Z"
+    "etag": "W/\"85b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2137,
+    "updatedAt": "2026-04-08T00:16:57.128Z"
   },
   "anthropic-sdk-python/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/files/delete",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"681-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1663,
-    "updatedAt": "2026-04-02T10:19:48.552Z"
+    "etag": "W/\"6c7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1733,
+    "updatedAt": "2026-04-08T00:16:57.442Z"
   },
   "anthropic-sdk-python/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"4d79-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 19817,
-    "updatedAt": "2026-04-02T10:19:48.841Z"
+    "etag": "W/\"68bc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26780,
+    "updatedAt": "2026-04-08T00:16:57.742Z"
   },
   "anthropic-sdk-python/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"a38-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2614,
-    "updatedAt": "2026-04-02T10:19:49.234Z"
+    "etag": "W/\"a78-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2678,
+    "updatedAt": "2026-04-08T00:16:58.129Z"
   },
   "anthropic-sdk-python/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/list",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"af5-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2803,
-    "updatedAt": "2026-04-02T10:19:49.604Z"
+    "etag": "W/\"b3b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2873,
+    "updatedAt": "2026-04-08T00:16:58.485Z"
   },
   "anthropic-sdk-python/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/retrieve",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"97e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2428,
-    "updatedAt": "2026-04-02T10:19:49.889Z"
+    "etag": "W/\"9c4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2498,
+    "updatedAt": "2026-04-08T00:16:58.788Z"
   },
   "anthropic-sdk-python/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/delete",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"6d9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1751,
-    "updatedAt": "2026-04-02T10:19:50.181Z"
+    "etag": "W/\"71f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1821,
+    "updatedAt": "2026-04-08T00:16:59.099Z"
   },
   "anthropic-sdk-python/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/versions",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"27e7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10207,
-    "updatedAt": "2026-04-02T10:19:50.468Z"
+    "etag": "W/\"3602-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 13810,
+    "updatedAt": "2026-04-08T00:16:59.411Z"
   },
   "anthropic-sdk-python/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/versions/create",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"aa6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2724,
-    "updatedAt": "2026-04-02T10:19:50.747Z"
+    "etag": "W/\"ae6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2788,
+    "updatedAt": "2026-04-08T00:16:59.712Z"
   },
   "anthropic-sdk-python/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/versions/list",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"ac0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2750,
-    "updatedAt": "2026-04-02T10:19:51.038Z"
+    "etag": "W/\"b06-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2820,
+    "updatedAt": "2026-04-08T00:17:00.008Z"
   },
   "anthropic-sdk-python/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/versions/retrieve",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"a92-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2704,
-    "updatedAt": "2026-04-02T10:19:51.324Z"
+    "etag": "W/\"ad8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2774,
+    "updatedAt": "2026-04-08T00:17:00.304Z"
   },
   "anthropic-sdk-python/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/python/beta/skills/versions/delete",
     "skill": "anthropic-sdk-python",
-    "etag": "W/\"7e0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2014,
-    "updatedAt": "2026-04-02T10:19:51.604Z"
+    "etag": "W/\"826-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2084,
+    "updatedAt": "2026-04-08T00:17:00.598Z"
+  },
+  "anthropic-sdk-python/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/python/beta/user_profiles",
+    "skill": "anthropic-sdk-python",
+    "etag": "W/\"295d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10573,
+    "updatedAt": "2026-04-08T00:17:00.885Z"
+  },
+  "anthropic-sdk-python/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/python/beta/user_profiles/create",
+    "skill": "anthropic-sdk-python",
+    "etag": "W/\"80c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2058,
+    "updatedAt": "2026-04-08T00:17:01.192Z"
+  },
+  "anthropic-sdk-python/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/python/beta/user_profiles/list",
+    "skill": "anthropic-sdk-python",
+    "etag": "W/\"7e9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2023,
+    "updatedAt": "2026-04-08T00:17:01.533Z"
+  },
+  "anthropic-sdk-python/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/python/beta/user_profiles/retrieve",
+    "skill": "anthropic-sdk-python",
+    "etag": "W/\"741-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1855,
+    "updatedAt": "2026-04-08T00:17:01.900Z"
+  },
+  "anthropic-sdk-python/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/python/beta/user_profiles/update",
+    "skill": "anthropic-sdk-python",
+    "etag": "W/\"88d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2187,
+    "updatedAt": "2026-04-08T00:17:02.203Z"
+  },
+  "anthropic-sdk-python/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/python/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-sdk-python",
+    "etag": "W/\"6f8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1782,
+    "updatedAt": "2026-04-08T00:17:02.522Z"
   },
   "anthropic-sdk-java/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/java/completions",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"2867-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 10339,
-    "updatedAt": "2026-04-02T10:19:51.889Z"
+    "etag": "W/\"28df-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10459,
+    "updatedAt": "2026-04-08T00:17:02.816Z"
   },
   "anthropic-sdk-java/completions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/completions/create",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1e6c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7786,
-    "updatedAt": "2026-04-02T10:19:52.217Z"
+    "etag": "W/\"1ee4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7906,
+    "updatedAt": "2026-04-08T00:17:03.111Z"
   },
   "anthropic-sdk-java/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/java/messages",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"dec8d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 912513,
-    "updatedAt": "2026-04-02T10:19:52.575Z"
+    "etag": "W/\"e062f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 919075,
+    "updatedAt": "2026-04-08T00:17:03.656Z"
   },
   "anthropic-sdk-java/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/messages/create",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1dc65-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 121955,
-    "updatedAt": "2026-04-02T10:19:52.864Z"
+    "etag": "W/\"1de9a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 122520,
+    "updatedAt": "2026-04-08T00:17:03.953Z"
   },
   "anthropic-sdk-java/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/java/messages/count_tokens",
@@ -2210,10 +2362,10 @@
   "anthropic-sdk-java/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/java/messages/batches",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"3c04e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 245834,
-    "updatedAt": "2026-04-02T10:19:53.416Z"
+    "etag": "W/\"3c9fa-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 248310,
+    "updatedAt": "2026-04-08T00:17:04.599Z"
   },
   "anthropic-sdk-java/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/messages/batches/create",
@@ -2258,306 +2410,354 @@
   "anthropic-sdk-java/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/java/messages/batches/results",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"748b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 29835,
-    "updatedAt": "2026-04-02T10:19:55.347Z"
+    "etag": "W/\"7708-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 30472,
+    "updatedAt": "2026-04-08T00:17:06.403Z"
   },
   "anthropic-sdk-java/models.md": {
     "url": "https://platform.claude.com/docs/en/api/java/models",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"5eb2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 24242,
-    "updatedAt": "2026-04-02T10:19:55.625Z"
+    "etag": "W/\"5fa2-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 24482,
+    "updatedAt": "2026-04-08T00:17:06.701Z"
   },
   "anthropic-sdk-java/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/java/models/list",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1b37-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6967,
-    "updatedAt": "2026-04-02T10:19:55.885Z"
+    "etag": "W/\"1baf-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7087,
+    "updatedAt": "2026-04-08T00:17:07.006Z"
   },
   "anthropic-sdk-java/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/java/models/retrieve",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"19cd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6605,
-    "updatedAt": "2026-04-02T10:19:56.165Z"
+    "etag": "W/\"1a45-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6725,
+    "updatedAt": "2026-04-08T00:17:07.297Z"
   },
   "anthropic-sdk-java/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"120b7b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1182575,
-    "updatedAt": "2026-04-02T10:19:56.457Z"
+    "etag": "W/\"126b29-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1207069,
+    "updatedAt": "2026-04-08T00:17:07.616Z"
   },
   "anthropic-sdk-java/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/models",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"60a5-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 24741,
-    "updatedAt": "2026-04-02T10:19:56.765Z"
+    "etag": "W/\"6195-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 24981,
+    "updatedAt": "2026-04-08T00:17:07.894Z"
   },
   "anthropic-sdk-java/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/models/list",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1ba3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7075,
-    "updatedAt": "2026-04-02T10:19:57.043Z"
+    "etag": "W/\"1c1b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7195,
+    "updatedAt": "2026-04-08T00:17:08.206Z"
   },
   "anthropic-sdk-java/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/models/retrieve",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1a49-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6729,
-    "updatedAt": "2026-04-02T10:19:57.344Z"
+    "etag": "W/\"1ac1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6849,
+    "updatedAt": "2026-04-08T00:17:08.500Z"
   },
   "anthropic-sdk-java/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"10f824-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1112088,
-    "updatedAt": "2026-04-02T10:19:57.650Z"
+    "etag": "W/\"1116ff-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1119987,
+    "updatedAt": "2026-04-08T00:17:08.825Z"
   },
   "anthropic-sdk-java/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/create",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"24b0c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 150282,
-    "updatedAt": "2026-04-02T10:19:57.954Z"
+    "etag": "W/\"24e5d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 151131,
+    "updatedAt": "2026-04-08T00:17:09.116Z"
   },
   "anthropic-sdk-java/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/count_tokens",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1c7d7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 116693,
-    "updatedAt": "2026-04-02T10:19:58.246Z"
+    "etag": "W/\"1c84f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 116813,
+    "updatedAt": "2026-04-08T00:17:09.396Z"
   },
   "anthropic-sdk-java/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"4c6c2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 313022,
-    "updatedAt": "2026-04-02T10:19:58.529Z"
+    "etag": "W/\"4d3f6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 316402,
+    "updatedAt": "2026-04-08T00:17:09.681Z"
   },
   "anthropic-sdk-java/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches/create",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"22a32-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 141870,
-    "updatedAt": "2026-04-02T10:19:58.842Z"
+    "etag": "W/\"22b52-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 142158,
+    "updatedAt": "2026-04-08T00:17:09.976Z"
   },
   "anthropic-sdk-java/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches/retrieve",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1560-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5472,
-    "updatedAt": "2026-04-02T10:19:59.107Z"
+    "etag": "W/\"15d8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5592,
+    "updatedAt": "2026-04-08T00:17:10.261Z"
   },
   "anthropic-sdk-java/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches/list",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"162c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5676,
-    "updatedAt": "2026-04-02T10:19:59.393Z"
+    "etag": "W/\"16a4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5796,
+    "updatedAt": "2026-04-08T00:17:10.555Z"
   },
   "anthropic-sdk-java/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches/cancel",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"1690-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5776,
-    "updatedAt": "2026-04-02T10:19:59.674Z"
+    "etag": "W/\"1708-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5896,
+    "updatedAt": "2026-04-08T00:17:10.849Z"
   },
   "anthropic-sdk-java/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches/delete",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"b68-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2920,
-    "updatedAt": "2026-04-02T10:20:00.001Z"
+    "etag": "W/\"be0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3040,
+    "updatedAt": "2026-04-08T00:17:11.251Z"
   },
   "anthropic-sdk-java/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/messages/batches/results",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"9ce0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 40160,
-    "updatedAt": "2026-04-02T10:20:00.387Z"
+    "etag": "W/\"9fd9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 40921,
+    "updatedAt": "2026-04-08T00:17:11.600Z"
   },
   "anthropic-sdk-java/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/files",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"3895-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 14485,
-    "updatedAt": "2026-04-02T10:20:00.717Z"
+    "etag": "W/\"3af1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 15089,
+    "updatedAt": "2026-04-08T00:17:11.883Z"
   },
   "anthropic-sdk-java/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/files/upload",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"b7f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2943,
-    "updatedAt": "2026-04-02T10:20:00.985Z"
+    "etag": "W/\"bfb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3067,
+    "updatedAt": "2026-04-08T00:17:12.183Z"
   },
   "anthropic-sdk-java/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/files/list",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"c54-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3156,
-    "updatedAt": "2026-04-02T10:20:01.286Z"
+    "etag": "W/\"ccc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3276,
+    "updatedAt": "2026-04-08T00:17:12.460Z"
   },
   "anthropic-sdk-java/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/files/download",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"899-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2201,
-    "updatedAt": "2026-04-02T10:20:01.587Z"
+    "etag": "W/\"911-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2321,
+    "updatedAt": "2026-04-08T00:17:12.742Z"
   },
   "anthropic-sdk-java/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/files/retrieve_metadata",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"b40-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2880,
-    "updatedAt": "2026-04-02T10:20:01.861Z"
+    "etag": "W/\"bb8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3000,
+    "updatedAt": "2026-04-08T00:17:13.055Z"
   },
   "anthropic-sdk-java/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/files/delete",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"973-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2419,
-    "updatedAt": "2026-04-02T10:20:02.141Z"
+    "etag": "W/\"9eb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2539,
+    "updatedAt": "2026-04-08T00:17:13.351Z"
   },
   "anthropic-sdk-java/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"678a-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 26506,
-    "updatedAt": "2026-04-02T10:20:02.443Z"
+    "etag": "W/\"6b4a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 27466,
+    "updatedAt": "2026-04-08T00:17:13.639Z"
   },
   "anthropic-sdk-java/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/create",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"d60-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3424,
-    "updatedAt": "2026-04-02T10:20:02.777Z"
+    "etag": "W/\"dd8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3544,
+    "updatedAt": "2026-04-08T00:17:13.963Z"
   },
   "anthropic-sdk-java/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/list",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"dff-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3583,
-    "updatedAt": "2026-04-02T10:20:03.082Z"
+    "etag": "W/\"e77-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3703,
+    "updatedAt": "2026-04-08T00:17:14.250Z"
   },
   "anthropic-sdk-java/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/retrieve",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"ca5-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3237,
-    "updatedAt": "2026-04-02T10:20:03.363Z"
+    "etag": "W/\"d1d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3357,
+    "updatedAt": "2026-04-08T00:17:14.529Z"
   },
   "anthropic-sdk-java/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/delete",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"9f0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2544,
-    "updatedAt": "2026-04-02T10:20:03.645Z"
+    "etag": "W/\"a68-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2664,
+    "updatedAt": "2026-04-08T00:17:14.818Z"
   },
   "anthropic-sdk-java/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/versions",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"3588-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 13704,
-    "updatedAt": "2026-04-02T10:20:03.943Z"
+    "etag": "W/\"3768-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 14184,
+    "updatedAt": "2026-04-08T00:17:15.101Z"
   },
   "anthropic-sdk-java/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/versions/create",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"ddd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3549,
-    "updatedAt": "2026-04-02T10:20:04.224Z"
+    "etag": "W/\"e55-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3669,
+    "updatedAt": "2026-04-08T00:17:15.416Z"
   },
   "anthropic-sdk-java/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/versions/list",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"dd4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3540,
-    "updatedAt": "2026-04-02T10:20:04.514Z"
+    "etag": "W/\"e4c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3660,
+    "updatedAt": "2026-04-08T00:17:15.691Z"
   },
   "anthropic-sdk-java/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/versions/retrieve",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"e48-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3656,
-    "updatedAt": "2026-04-02T10:20:04.893Z"
+    "etag": "W/\"ec0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3776,
+    "updatedAt": "2026-04-08T00:17:16.020Z"
   },
   "anthropic-sdk-java/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/java/beta/skills/versions/delete",
     "skill": "anthropic-sdk-java",
-    "etag": "W/\"b80-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2944,
-    "updatedAt": "2026-04-02T10:20:05.186Z"
+    "etag": "W/\"bf8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3064,
+    "updatedAt": "2026-04-08T00:17:16.322Z"
+  },
+  "anthropic-sdk-java/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/java/beta/user_profiles",
+    "skill": "anthropic-sdk-java",
+    "etag": "W/\"39c6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 14790,
+    "updatedAt": "2026-04-08T00:17:16.602Z"
+  },
+  "anthropic-sdk-java/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/java/beta/user_profiles/create",
+    "skill": "anthropic-sdk-java",
+    "etag": "W/\"b4e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2894,
+    "updatedAt": "2026-04-08T00:17:16.937Z"
+  },
+  "anthropic-sdk-java/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/java/beta/user_profiles/list",
+    "skill": "anthropic-sdk-java",
+    "etag": "W/\"b25-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2853,
+    "updatedAt": "2026-04-08T00:17:17.265Z"
+  },
+  "anthropic-sdk-java/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/java/beta/user_profiles/retrieve",
+    "skill": "anthropic-sdk-java",
+    "etag": "W/\"a86-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2694,
+    "updatedAt": "2026-04-08T00:17:17.681Z"
+  },
+  "anthropic-sdk-java/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/java/beta/user_profiles/update",
+    "skill": "anthropic-sdk-java",
+    "etag": "W/\"bcc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3020,
+    "updatedAt": "2026-04-08T00:17:17.964Z"
+  },
+  "anthropic-sdk-java/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/java/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-sdk-java",
+    "etag": "W/\"a77-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2679,
+    "updatedAt": "2026-04-08T00:17:18.251Z"
   },
   "anthropic-sdk-go/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/go/completions",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"2ebf-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 11959,
-    "updatedAt": "2026-04-02T10:20:05.499Z"
+    "etag": "W/\"2f7b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 12147,
+    "updatedAt": "2026-04-08T00:17:18.551Z"
   },
   "anthropic-sdk-go/completions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/completions/create",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"22c7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 8899,
-    "updatedAt": "2026-04-02T10:20:05.779Z"
+    "etag": "W/\"2383-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 9087,
+    "updatedAt": "2026-04-08T00:17:18.832Z"
   },
   "anthropic-sdk-go/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/go/messages",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"109e10-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1085850,
-    "updatedAt": "2026-04-02T10:20:06.105Z"
+    "etag": "W/\"10bc75-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1093629,
+    "updatedAt": "2026-04-08T00:17:19.171Z"
   },
   "anthropic-sdk-go/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/messages/create",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"230b1-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 143181,
-    "updatedAt": "2026-04-02T10:20:06.395Z"
+    "etag": "W/\"23353-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 143855,
+    "updatedAt": "2026-04-08T00:17:19.467Z"
   },
   "anthropic-sdk-go/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/go/messages/count_tokens",
@@ -2570,10 +2770,10 @@
   "anthropic-sdk-go/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/go/messages/batches",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"458a5-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 284071,
-    "updatedAt": "2026-04-02T10:20:06.950Z"
+    "etag": "W/\"46405-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 286983,
+    "updatedAt": "2026-04-08T00:17:20.041Z"
   },
   "anthropic-sdk-go/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/messages/batches/create",
@@ -2618,306 +2818,354 @@
   "anthropic-sdk-go/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/go/messages/batches/results",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"88f7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 34945,
-    "updatedAt": "2026-04-02T10:20:08.770Z"
+    "etag": "W/\"8be1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 35691,
+    "updatedAt": "2026-04-08T00:17:21.778Z"
   },
   "anthropic-sdk-go/models.md": {
     "url": "https://platform.claude.com/docs/en/api/go/models",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"61d2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 25024,
-    "updatedAt": "2026-04-02T10:20:09.097Z"
+    "etag": "W/\"634a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 25400,
+    "updatedAt": "2026-04-08T00:17:22.057Z"
   },
   "anthropic-sdk-go/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/go/models/list",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1d51-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7503,
-    "updatedAt": "2026-04-02T10:20:09.383Z"
+    "etag": "W/\"1e0d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7691,
+    "updatedAt": "2026-04-08T00:17:22.360Z"
   },
   "anthropic-sdk-go/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/go/models/retrieve",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1ba8-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7078,
-    "updatedAt": "2026-04-02T10:20:09.673Z"
+    "etag": "W/\"1c64-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7266,
+    "updatedAt": "2026-04-08T00:17:22.651Z"
   },
   "anthropic-sdk-go/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"159935-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1411543,
-    "updatedAt": "2026-04-02T10:20:09.978Z"
+    "etag": "W/\"161339-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1442761,
+    "updatedAt": "2026-04-08T00:17:23.024Z"
   },
   "anthropic-sdk-go/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/models",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"63b9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 25511,
-    "updatedAt": "2026-04-02T10:20:10.257Z"
+    "etag": "W/\"6531-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 25887,
+    "updatedAt": "2026-04-08T00:17:23.330Z"
   },
   "anthropic-sdk-go/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/models/list",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1dbb-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7609,
-    "updatedAt": "2026-04-02T10:20:10.520Z"
+    "etag": "W/\"1e77-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7797,
+    "updatedAt": "2026-04-08T00:17:23.636Z"
   },
   "anthropic-sdk-go/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/models/retrieve",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1c1a-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7192,
-    "updatedAt": "2026-04-02T10:20:10.792Z"
+    "etag": "W/\"1cd6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7380,
+    "updatedAt": "2026-04-08T00:17:23.925Z"
   },
   "anthropic-sdk-go/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"145a67-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1330037,
-    "updatedAt": "2026-04-02T10:20:11.090Z"
+    "etag": "W/\"148106-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1339922,
+    "updatedAt": "2026-04-08T00:17:24.247Z"
   },
   "anthropic-sdk-go/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/create",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"2bc41-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 178839,
-    "updatedAt": "2026-04-02T10:20:11.375Z"
+    "etag": "W/\"2c066-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 179900,
+    "updatedAt": "2026-04-08T00:17:24.543Z"
   },
   "anthropic-sdk-go/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/count_tokens",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"21eed-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 138679,
-    "updatedAt": "2026-04-02T10:20:11.686Z"
+    "etag": "W/\"21fa9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 138867,
+    "updatedAt": "2026-04-08T00:17:24.834Z"
   },
   "anthropic-sdk-go/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"59a43-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 366249,
-    "updatedAt": "2026-04-02T10:20:11.970Z"
+    "etag": "W/\"5ab09-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 370543,
+    "updatedAt": "2026-04-08T00:17:25.133Z"
   },
   "anthropic-sdk-go/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches/create",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"2871a-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 165316,
-    "updatedAt": "2026-04-02T10:20:12.271Z"
+    "etag": "W/\"28874-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 165662,
+    "updatedAt": "2026-04-08T00:17:25.426Z"
   },
   "anthropic-sdk-go/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches/retrieve",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1847-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6213,
-    "updatedAt": "2026-04-02T10:20:12.547Z"
+    "etag": "W/\"1903-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6401,
+    "updatedAt": "2026-04-08T00:17:25.708Z"
   },
   "anthropic-sdk-go/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches/list",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1959-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6487,
-    "updatedAt": "2026-04-02T10:20:12.863Z"
+    "etag": "W/\"1a15-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6675,
+    "updatedAt": "2026-04-08T00:17:25.997Z"
   },
   "anthropic-sdk-go/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches/cancel",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"198d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6539,
-    "updatedAt": "2026-04-02T10:20:13.144Z"
+    "etag": "W/\"1a49-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6727,
+    "updatedAt": "2026-04-08T00:17:26.286Z"
   },
   "anthropic-sdk-go/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches/delete",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"dd3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3537,
-    "updatedAt": "2026-04-02T10:20:13.448Z"
+    "etag": "W/\"e8f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3725,
+    "updatedAt": "2026-04-08T00:17:26.569Z"
   },
   "anthropic-sdk-go/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/messages/batches/results",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"b8fd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 47215,
-    "updatedAt": "2026-04-02T10:20:13.759Z"
+    "etag": "W/\"bcbb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 48173,
+    "updatedAt": "2026-04-08T00:17:26.877Z"
   },
   "anthropic-sdk-go/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/files",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"4491-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 17539,
-    "updatedAt": "2026-04-02T10:20:14.049Z"
+    "etag": "W/\"483d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 18479,
+    "updatedAt": "2026-04-08T00:17:27.177Z"
   },
   "anthropic-sdk-go/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/files/upload",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"d8f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3469,
-    "updatedAt": "2026-04-02T10:20:14.375Z"
+    "etag": "W/\"e4b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3657,
+    "updatedAt": "2026-04-08T00:17:27.519Z"
   },
   "anthropic-sdk-go/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/files/list",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"ed4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3794,
-    "updatedAt": "2026-04-02T10:20:14.695Z"
+    "etag": "W/\"f90-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3982,
+    "updatedAt": "2026-04-08T00:17:27.824Z"
   },
   "anthropic-sdk-go/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/files/download",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"b30-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2862,
-    "updatedAt": "2026-04-02T10:20:15.002Z"
+    "etag": "W/\"bec-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3050,
+    "updatedAt": "2026-04-08T00:17:28.116Z"
   },
   "anthropic-sdk-go/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/files/retrieve_metadata",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"d67-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3429,
-    "updatedAt": "2026-04-02T10:20:15.300Z"
+    "etag": "W/\"e23-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3617,
+    "updatedAt": "2026-04-08T00:17:28.463Z"
   },
   "anthropic-sdk-go/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/files/delete",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"c01-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3071,
-    "updatedAt": "2026-04-02T10:20:15.592Z"
+    "etag": "W/\"cbd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3259,
+    "updatedAt": "2026-04-08T00:17:28.759Z"
   },
   "anthropic-sdk-go/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"79d5-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 31173,
-    "updatedAt": "2026-04-02T10:20:15.873Z"
+    "etag": "W/\"7fb5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 32677,
+    "updatedAt": "2026-04-08T00:17:29.070Z"
   },
   "anthropic-sdk-go/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/create",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"fad-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4011,
-    "updatedAt": "2026-04-02T10:20:16.157Z"
+    "etag": "W/\"1069-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4199,
+    "updatedAt": "2026-04-08T00:17:29.357Z"
   },
   "anthropic-sdk-go/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/list",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1091-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4239,
-    "updatedAt": "2026-04-02T10:20:16.451Z"
+    "etag": "W/\"114d-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4427,
+    "updatedAt": "2026-04-08T00:17:29.657Z"
   },
   "anthropic-sdk-go/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/retrieve",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"ec2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3776,
-    "updatedAt": "2026-04-02T10:20:16.755Z"
+    "etag": "W/\"f7e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3964,
+    "updatedAt": "2026-04-08T00:17:29.954Z"
   },
   "anthropic-sdk-go/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/delete",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"c45-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3139,
-    "updatedAt": "2026-04-02T10:20:17.083Z"
+    "etag": "W/\"d01-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3327,
+    "updatedAt": "2026-04-08T00:17:30.295Z"
   },
   "anthropic-sdk-go/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/versions",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"3e82-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 15994,
-    "updatedAt": "2026-04-02T10:20:17.367Z"
+    "etag": "W/\"4172-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 16746,
+    "updatedAt": "2026-04-08T00:17:30.586Z"
   },
   "anthropic-sdk-go/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/versions/create",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1035-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4147,
-    "updatedAt": "2026-04-02T10:20:17.678Z"
+    "etag": "W/\"10f1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4335,
+    "updatedAt": "2026-04-08T00:17:30.868Z"
   },
   "anthropic-sdk-go/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/versions/list",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"106e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4204,
-    "updatedAt": "2026-04-02T10:20:17.962Z"
+    "etag": "W/\"112a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4392,
+    "updatedAt": "2026-04-08T00:17:31.175Z"
   },
   "anthropic-sdk-go/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/versions/retrieve",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"1038-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4150,
-    "updatedAt": "2026-04-02T10:20:18.244Z"
+    "etag": "W/\"10f4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4338,
+    "updatedAt": "2026-04-08T00:17:31.458Z"
   },
   "anthropic-sdk-go/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/go/beta/skills/versions/delete",
     "skill": "anthropic-sdk-go",
-    "etag": "W/\"d98-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3478,
-    "updatedAt": "2026-04-02T10:20:18.526Z"
+    "etag": "W/\"e54-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3666,
+    "updatedAt": "2026-04-08T00:17:31.750Z"
+  },
+  "anthropic-sdk-go/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/go/beta/user_profiles",
+    "skill": "anthropic-sdk-go",
+    "etag": "W/\"47a8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 18328,
+    "updatedAt": "2026-04-08T00:17:32.037Z"
+  },
+  "anthropic-sdk-go/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/go/beta/user_profiles/create",
+    "skill": "anthropic-sdk-go",
+    "etag": "W/\"e08-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3590,
+    "updatedAt": "2026-04-08T00:17:32.322Z"
+  },
+  "anthropic-sdk-go/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/go/beta/user_profiles/list",
+    "skill": "anthropic-sdk-go",
+    "etag": "W/\"e88-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3718,
+    "updatedAt": "2026-04-08T00:17:32.615Z"
+  },
+  "anthropic-sdk-go/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/go/beta/user_profiles/retrieve",
+    "skill": "anthropic-sdk-go",
+    "etag": "W/\"d04-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3330,
+    "updatedAt": "2026-04-08T00:17:32.931Z"
+  },
+  "anthropic-sdk-go/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/go/beta/user_profiles/update",
+    "skill": "anthropic-sdk-go",
+    "etag": "W/\"e9f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3741,
+    "updatedAt": "2026-04-08T00:17:33.217Z"
+  },
+  "anthropic-sdk-go/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/go/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-sdk-go",
+    "etag": "W/\"ccc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3274,
+    "updatedAt": "2026-04-08T00:17:33.524Z"
   },
   "anthropic-sdk-ruby/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/completions",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"2ba6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 11170,
-    "updatedAt": "2026-04-02T10:20:18.815Z"
+    "etag": "W/\"2bee-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 11242,
+    "updatedAt": "2026-04-08T00:17:33.842Z"
   },
   "anthropic-sdk-ruby/completions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/completions/create",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"21cb-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 8649,
-    "updatedAt": "2026-04-02T10:20:19.097Z"
+    "etag": "W/\"2213-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 8721,
+    "updatedAt": "2026-04-08T00:17:34.145Z"
   },
   "anthropic-sdk-ruby/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/messages",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"c6672-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 812642,
-    "updatedAt": "2026-04-02T10:20:19.388Z"
+    "etag": "W/\"c7d77-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 818535,
+    "updatedAt": "2026-04-08T00:17:34.531Z"
   },
   "anthropic-sdk-ruby/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/messages/create",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"1b26b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 111207,
-    "updatedAt": "2026-04-02T10:20:19.672Z"
+    "etag": "W/\"1b460-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 111708,
+    "updatedAt": "2026-04-08T00:17:34.859Z"
   },
   "anthropic-sdk-ruby/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/messages/count_tokens",
@@ -2930,10 +3178,10 @@
   "anthropic-sdk-ruby/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/messages/batches",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"34ddd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 216537,
-    "updatedAt": "2026-04-02T10:20:20.232Z"
+    "etag": "W/\"35689-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 218757,
+    "updatedAt": "2026-04-08T00:17:35.492Z"
   },
   "anthropic-sdk-ruby/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/messages/batches/create",
@@ -2978,274 +3226,322 @@
   "anthropic-sdk-ruby/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/messages/batches/results",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"664e-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 26190,
-    "updatedAt": "2026-04-02T10:20:21.941Z"
+    "etag": "W/\"688b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26763,
+    "updatedAt": "2026-04-08T00:17:37.332Z"
   },
   "anthropic-sdk-ruby/models.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/models",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"568f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 22159,
-    "updatedAt": "2026-04-02T10:20:22.213Z"
+    "etag": "W/\"571f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 22303,
+    "updatedAt": "2026-04-08T00:17:37.648Z"
   },
   "anthropic-sdk-ruby/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/models/list",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"176a-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5994,
-    "updatedAt": "2026-04-02T10:20:22.513Z"
+    "etag": "W/\"17b2-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6066,
+    "updatedAt": "2026-04-08T00:17:37.942Z"
   },
   "anthropic-sdk-ruby/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/models/retrieve",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"1621-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5665,
-    "updatedAt": "2026-04-02T10:20:22.818Z"
+    "etag": "W/\"1669-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5737,
+    "updatedAt": "2026-04-08T00:17:38.230Z"
   },
   "anthropic-sdk-ruby/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"103770-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1062752,
-    "updatedAt": "2026-04-02T10:20:23.095Z"
+    "etag": "W/\"109701-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1087217,
+    "updatedAt": "2026-04-08T00:17:38.614Z"
   },
   "anthropic-sdk-ruby/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/models",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"5868-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 22632,
-    "updatedAt": "2026-04-02T10:20:23.427Z"
+    "etag": "W/\"58f8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 22776,
+    "updatedAt": "2026-04-08T00:17:38.967Z"
   },
   "anthropic-sdk-ruby/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/models/list",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"17cc-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6092,
-    "updatedAt": "2026-04-02T10:20:23.843Z"
+    "etag": "W/\"1814-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6164,
+    "updatedAt": "2026-04-08T00:17:39.286Z"
   },
   "anthropic-sdk-ruby/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/models/retrieve",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"168d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5773,
-    "updatedAt": "2026-04-02T10:20:24.136Z"
+    "etag": "W/\"16d5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5845,
+    "updatedAt": "2026-04-08T00:17:39.608Z"
   },
   "anthropic-sdk-ruby/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"f5bd9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1006537,
-    "updatedAt": "2026-04-02T10:20:24.459Z"
+    "etag": "W/\"f7681-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1013361,
+    "updatedAt": "2026-04-08T00:17:40.104Z"
   },
   "anthropic-sdk-ruby/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/create",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"221e7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 139747,
-    "updatedAt": "2026-04-02T10:20:24.754Z"
+    "etag": "W/\"224bd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 140473,
+    "updatedAt": "2026-04-08T00:17:40.438Z"
   },
   "anthropic-sdk-ruby/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/count_tokens",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"1a873-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 108655,
-    "updatedAt": "2026-04-02T10:20:25.033Z"
+    "etag": "W/\"1a8bb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 108727,
+    "updatedAt": "2026-04-08T00:17:40.745Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"43eeb-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 278247,
-    "updatedAt": "2026-04-02T10:20:25.343Z"
+    "etag": "W/\"449f4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 281072,
+    "updatedAt": "2026-04-08T00:17:41.122Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/create",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"1e842-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 124990,
-    "updatedAt": "2026-04-02T10:20:25.667Z"
+    "etag": "W/\"1e927-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 125219,
+    "updatedAt": "2026-04-08T00:17:41.416Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/retrieve",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"1185-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4485,
-    "updatedAt": "2026-04-02T10:20:25.978Z"
+    "etag": "W/\"11cd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4557,
+    "updatedAt": "2026-04-08T00:17:41.711Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/list",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"1233-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4659,
-    "updatedAt": "2026-04-02T10:20:26.266Z"
+    "etag": "W/\"127b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4731,
+    "updatedAt": "2026-04-08T00:17:42.003Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/cancel",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"12bd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 4797,
-    "updatedAt": "2026-04-02T10:20:26.547Z"
+    "etag": "W/\"1305-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 4869,
+    "updatedAt": "2026-04-08T00:17:42.307Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/delete",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"7c8-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1992,
-    "updatedAt": "2026-04-02T10:20:26.880Z"
+    "etag": "W/\"810-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2064,
+    "updatedAt": "2026-04-08T00:17:42.642Z"
   },
   "anthropic-sdk-ruby/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/results",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"8c6d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 35949,
-    "updatedAt": "2026-04-02T10:20:27.157Z"
+    "etag": "W/\"8ef6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 36598,
+    "updatedAt": "2026-04-08T00:17:42.947Z"
   },
   "anthropic-sdk-ruby/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/files",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"2669-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 9833,
-    "updatedAt": "2026-04-02T10:20:27.438Z"
+    "etag": "W/\"27d1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10193,
+    "updatedAt": "2026-04-08T00:17:43.256Z"
   },
   "anthropic-sdk-ruby/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/files/upload",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"77b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1915,
-    "updatedAt": "2026-04-02T10:20:27.743Z"
+    "etag": "W/\"7c3-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1987,
+    "updatedAt": "2026-04-08T00:17:43.559Z"
   },
   "anthropic-sdk-ruby/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/files/list",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"8b6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2230,
-    "updatedAt": "2026-04-02T10:20:28.036Z"
+    "etag": "W/\"8fe-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2302,
+    "updatedAt": "2026-04-08T00:17:43.865Z"
   },
   "anthropic-sdk-ruby/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/files/download",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"550-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1360,
-    "updatedAt": "2026-04-02T10:20:28.308Z"
+    "etag": "W/\"598-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1432,
+    "updatedAt": "2026-04-08T00:17:44.142Z"
   },
   "anthropic-sdk-ruby/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/files/retrieve_metadata",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"79b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1947,
-    "updatedAt": "2026-04-02T10:20:28.634Z"
+    "etag": "W/\"7e3-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2019,
+    "updatedAt": "2026-04-08T00:17:44.429Z"
   },
   "anthropic-sdk-ruby/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/files/delete",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"60b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1547,
-    "updatedAt": "2026-04-02T10:20:28.917Z"
+    "etag": "W/\"653-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1619,
+    "updatedAt": "2026-04-08T00:17:44.724Z"
   },
   "anthropic-sdk-ruby/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"4a32-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 18994,
-    "updatedAt": "2026-04-02T10:20:29.202Z"
+    "etag": "W/\"65c0-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26048,
+    "updatedAt": "2026-04-08T00:17:45.014Z"
   },
   "anthropic-sdk-ruby/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/create",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"9c4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2500,
-    "updatedAt": "2026-04-02T10:20:29.483Z"
+    "etag": "W/\"a0c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2572,
+    "updatedAt": "2026-04-08T00:17:45.313Z"
   },
   "anthropic-sdk-ruby/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/list",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"a74-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2676,
-    "updatedAt": "2026-04-02T10:20:29.875Z"
+    "etag": "W/\"abc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2748,
+    "updatedAt": "2026-04-08T00:17:45.654Z"
   },
   "anthropic-sdk-ruby/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/retrieve",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"917-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2327,
-    "updatedAt": "2026-04-02T10:20:30.158Z"
+    "etag": "W/\"95f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2399,
+    "updatedAt": "2026-04-08T00:17:45.947Z"
   },
   "anthropic-sdk-ruby/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/delete",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"679-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1657,
-    "updatedAt": "2026-04-02T10:20:30.448Z"
+    "etag": "W/\"6c1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1729,
+    "updatedAt": "2026-04-08T00:17:46.239Z"
   },
   "anthropic-sdk-ruby/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/versions",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"265c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 9820,
-    "updatedAt": "2026-04-02T10:20:30.726Z"
+    "etag": "W/\"34bf-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 13503,
+    "updatedAt": "2026-04-08T00:17:46.522Z"
   },
   "anthropic-sdk-ruby/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/versions/create",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"a40-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2624,
-    "updatedAt": "2026-04-02T10:20:31.066Z"
+    "etag": "W/\"a88-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2696,
+    "updatedAt": "2026-04-08T00:17:46.813Z"
   },
   "anthropic-sdk-ruby/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/versions/list",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"a4d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2637,
-    "updatedAt": "2026-04-02T10:20:31.358Z"
+    "etag": "W/\"a95-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2709,
+    "updatedAt": "2026-04-08T00:17:47.105Z"
   },
   "anthropic-sdk-ruby/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/versions/retrieve",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"a41-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2625,
-    "updatedAt": "2026-04-02T10:20:31.694Z"
+    "etag": "W/\"a89-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2697,
+    "updatedAt": "2026-04-08T00:17:47.415Z"
   },
   "anthropic-sdk-ruby/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/ruby/beta/skills/versions/delete",
     "skill": "anthropic-sdk-ruby",
-    "etag": "W/\"77f-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1919,
-    "updatedAt": "2026-04-02T10:20:31.976Z"
+    "etag": "W/\"7c7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1991,
+    "updatedAt": "2026-04-08T00:17:47.723Z"
+  },
+  "anthropic-sdk-ruby/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/ruby/beta/user_profiles",
+    "skill": "anthropic-sdk-ruby",
+    "etag": "W/\"271a-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 10010,
+    "updatedAt": "2026-04-08T00:17:48.006Z"
+  },
+  "anthropic-sdk-ruby/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/ruby/beta/user_profiles/create",
+    "skill": "anthropic-sdk-ruby",
+    "etag": "W/\"7a8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1960,
+    "updatedAt": "2026-04-08T00:17:48.349Z"
+  },
+  "anthropic-sdk-ruby/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/ruby/beta/user_profiles/list",
+    "skill": "anthropic-sdk-ruby",
+    "etag": "W/\"757-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1879,
+    "updatedAt": "2026-04-08T00:17:48.695Z"
+  },
+  "anthropic-sdk-ruby/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/ruby/beta/user_profiles/retrieve",
+    "skill": "anthropic-sdk-ruby",
+    "etag": "W/\"6de-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1758,
+    "updatedAt": "2026-04-08T00:17:48.969Z"
+  },
+  "anthropic-sdk-ruby/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/ruby/beta/user_profiles/update",
+    "skill": "anthropic-sdk-ruby",
+    "etag": "W/\"821-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2081,
+    "updatedAt": "2026-04-08T00:17:49.281Z"
+  },
+  "anthropic-sdk-ruby/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/ruby/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-sdk-ruby",
+    "etag": "W/\"681-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1665,
+    "updatedAt": "2026-04-08T00:17:49.582Z"
   },
   "anthropic-sdk-csharp/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/completions",
@@ -3266,18 +3562,18 @@
   "anthropic-sdk-csharp/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/messages",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"c57e3-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 808919,
-    "updatedAt": "2026-04-02T10:20:32.837Z"
+    "etag": "W/\"c6ffe-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 815090,
+    "updatedAt": "2026-04-08T00:17:51.357Z"
   },
   "anthropic-sdk-csharp/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/messages/create",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"1a60b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 108041,
-    "updatedAt": "2026-04-02T10:20:33.149Z"
+    "etag": "W/\"1a81f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 108573,
+    "updatedAt": "2026-04-08T00:17:51.637Z"
   },
   "anthropic-sdk-csharp/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/messages/count_tokens",
@@ -3290,10 +3586,10 @@
   "anthropic-sdk-csharp/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/messages/batches",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"36499-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 222357,
-    "updatedAt": "2026-04-02T10:20:33.751Z"
+    "etag": "W/\"36daf-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 224683,
+    "updatedAt": "2026-04-08T00:17:52.243Z"
   },
   "anthropic-sdk-csharp/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/messages/batches/create",
@@ -3338,274 +3634,322 @@
   "anthropic-sdk-csharp/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/messages/batches/results",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"6584-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 25988,
-    "updatedAt": "2026-04-02T10:20:35.543Z"
+    "etag": "W/\"67da-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26586,
+    "updatedAt": "2026-04-08T00:17:54.045Z"
   },
   "anthropic-sdk-csharp/models.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/models",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"6378-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 25464,
-    "updatedAt": "2026-04-02T10:20:35.828Z"
+    "etag": "W/\"6458-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 25688,
+    "updatedAt": "2026-04-08T00:17:54.340Z"
   },
   "anthropic-sdk-csharp/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/models/list",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"1d37-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7479,
-    "updatedAt": "2026-04-02T10:20:36.119Z"
+    "etag": "W/\"1da7-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7591,
+    "updatedAt": "2026-04-08T00:17:54.625Z"
   },
   "anthropic-sdk-csharp/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/models/retrieve",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"1952-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6482,
-    "updatedAt": "2026-04-02T10:20:36.386Z"
+    "etag": "W/\"19c2-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6594,
+    "updatedAt": "2026-04-08T00:17:54.909Z"
   },
   "anthropic-sdk-csharp/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"104131-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1065253,
-    "updatedAt": "2026-04-02T10:20:36.683Z"
+    "etag": "W/\"109942-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1087798,
+    "updatedAt": "2026-04-08T00:17:55.240Z"
   },
   "anthropic-sdk-csharp/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/models",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"654b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 25931,
-    "updatedAt": "2026-04-02T10:20:36.946Z"
+    "etag": "W/\"662b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 26155,
+    "updatedAt": "2026-04-08T00:17:55.513Z"
   },
   "anthropic-sdk-csharp/beta/models/list.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/models/list",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"1d95-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 7573,
-    "updatedAt": "2026-04-02T10:20:37.272Z"
+    "etag": "W/\"1e05-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 7685,
+    "updatedAt": "2026-04-08T00:17:55.832Z"
   },
   "anthropic-sdk-csharp/beta/models/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/models/retrieve",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"19bc-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 6588,
-    "updatedAt": "2026-04-02T10:20:37.562Z"
+    "etag": "W/\"1a2c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 6700,
+    "updatedAt": "2026-04-08T00:17:56.117Z"
   },
   "anthropic-sdk-csharp/beta/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"f3e0d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 998913,
-    "updatedAt": "2026-04-02T10:20:37.855Z"
+    "etag": "W/\"f5b4e-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1006402,
+    "updatedAt": "2026-04-08T00:17:56.415Z"
   },
   "anthropic-sdk-csharp/beta/messages/create.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/create",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"20dbd-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 134587,
-    "updatedAt": "2026-04-02T10:20:38.177Z"
+    "etag": "W/\"210e8-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 135398,
+    "updatedAt": "2026-04-08T00:17:56.755Z"
   },
   "anthropic-sdk-csharp/beta/messages/count_tokens.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/count_tokens",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"19565-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 103779,
-    "updatedAt": "2026-04-02T10:20:38.486Z"
+    "etag": "W/\"195d5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 103891,
+    "updatedAt": "2026-04-08T00:17:57.235Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"4621d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 287257,
-    "updatedAt": "2026-04-02T10:20:38.775Z"
+    "etag": "W/\"46eb5-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 290481,
+    "updatedAt": "2026-04-08T00:17:57.507Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches/create.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches/create",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"20515-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 132369,
-    "updatedAt": "2026-04-02T10:20:39.068Z"
+    "etag": "W/\"20657-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 132691,
+    "updatedAt": "2026-04-08T00:17:57.786Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches/retrieve",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"13b9-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5049,
-    "updatedAt": "2026-04-02T10:20:39.350Z"
+    "etag": "W/\"1429-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5161,
+    "updatedAt": "2026-04-08T00:17:58.072Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches/list.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches/list",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"16a2-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5794,
-    "updatedAt": "2026-04-02T10:20:39.631Z"
+    "etag": "W/\"1712-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5906,
+    "updatedAt": "2026-04-08T00:17:58.348Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches/cancel.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches/cancel",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"14eb-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 5355,
-    "updatedAt": "2026-04-02T10:20:39.914Z"
+    "etag": "W/\"155b-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 5467,
+    "updatedAt": "2026-04-08T00:17:58.674Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches/delete",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"95d-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2397,
-    "updatedAt": "2026-04-02T10:20:40.206Z"
+    "etag": "W/\"9cd-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2509,
+    "updatedAt": "2026-04-08T00:17:58.974Z"
   },
   "anthropic-sdk-csharp/beta/messages/batches/results.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/messages/batches/results",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"8c27-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 35879,
-    "updatedAt": "2026-04-02T10:20:40.490Z"
+    "etag": "W/\"8ef1-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 36593,
+    "updatedAt": "2026-04-08T00:17:59.269Z"
   },
   "anthropic-sdk-csharp/beta/files.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/files",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"3141-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 12609,
-    "updatedAt": "2026-04-02T10:20:40.784Z"
+    "etag": "W/\"3371-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 13169,
+    "updatedAt": "2026-04-08T00:17:59.561Z"
   },
   "anthropic-sdk-csharp/beta/files/upload.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/files/upload",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"974-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2420,
-    "updatedAt": "2026-04-02T10:20:41.066Z"
+    "etag": "W/\"9e4-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2532,
+    "updatedAt": "2026-04-08T00:17:59.832Z"
   },
   "anthropic-sdk-csharp/beta/files/list.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/files/list",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"c39-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3129,
-    "updatedAt": "2026-04-02T10:20:41.346Z"
+    "etag": "W/\"ca9-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3241,
+    "updatedAt": "2026-04-08T00:18:00.118Z"
   },
   "anthropic-sdk-csharp/beta/files/download.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/files/download",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"6dc-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1756,
-    "updatedAt": "2026-04-02T10:20:41.654Z"
+    "etag": "W/\"74c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 1868,
+    "updatedAt": "2026-04-08T00:18:00.402Z"
   },
   "anthropic-sdk-csharp/beta/files/retrieve_metadata.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/files/retrieve_metadata",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"986-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2438,
-    "updatedAt": "2026-04-02T10:20:41.937Z"
+    "etag": "W/\"9f6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2550,
+    "updatedAt": "2026-04-08T00:18:00.692Z"
   },
   "anthropic-sdk-csharp/beta/files/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/files/delete",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"7b1-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 1969,
-    "updatedAt": "2026-04-02T10:20:42.210Z"
+    "etag": "W/\"821-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2081,
+    "updatedAt": "2026-04-08T00:18:00.972Z"
   },
   "anthropic-sdk-csharp/beta/skills.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"5df7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 24055,
-    "updatedAt": "2026-04-02T10:20:42.495Z"
+    "etag": "W/\"6177-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 24951,
+    "updatedAt": "2026-04-08T00:18:01.286Z"
   },
   "anthropic-sdk-csharp/beta/skills/create.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/create",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"bc7-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3015,
-    "updatedAt": "2026-04-02T10:20:42.794Z"
+    "etag": "W/\"c37-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3127,
+    "updatedAt": "2026-04-08T00:18:01.762Z"
   },
   "anthropic-sdk-csharp/beta/skills/list.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/list",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"eb0-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3760,
-    "updatedAt": "2026-04-02T10:20:43.110Z"
+    "etag": "W/\"f20-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3872,
+    "updatedAt": "2026-04-08T00:18:02.063Z"
   },
   "anthropic-sdk-csharp/beta/skills/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/retrieve",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"af6-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2806,
-    "updatedAt": "2026-04-02T10:20:43.611Z"
+    "etag": "W/\"b66-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2918,
+    "updatedAt": "2026-04-08T00:18:02.339Z"
   },
   "anthropic-sdk-csharp/beta/skills/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/delete",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"82c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2092,
-    "updatedAt": "2026-04-02T10:20:43.940Z"
+    "etag": "W/\"89c-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2204,
+    "updatedAt": "2026-04-08T00:18:02.633Z"
   },
   "anthropic-sdk-csharp/beta/skills/versions.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/versions",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"3050-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 12368,
-    "updatedAt": "2026-04-02T10:20:44.217Z"
+    "etag": "W/\"3210-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 12816,
+    "updatedAt": "2026-04-08T00:18:02.930Z"
   },
   "anthropic-sdk-csharp/beta/skills/versions/create.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/versions/create",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"c5b-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3163,
-    "updatedAt": "2026-04-02T10:20:44.549Z"
+    "etag": "W/\"ccb-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3275,
+    "updatedAt": "2026-04-08T00:18:03.232Z"
   },
   "anthropic-sdk-csharp/beta/skills/versions/list.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/versions/list",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"e04-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3588,
-    "updatedAt": "2026-04-02T10:20:44.838Z"
+    "etag": "W/\"e74-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3700,
+    "updatedAt": "2026-04-08T00:18:03.571Z"
   },
   "anthropic-sdk-csharp/beta/skills/versions/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/versions/retrieve",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"c6c-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 3180,
-    "updatedAt": "2026-04-02T10:20:45.127Z"
+    "etag": "W/\"cdc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 3292,
+    "updatedAt": "2026-04-08T00:18:03.868Z"
   },
   "anthropic-sdk-csharp/beta/skills/versions/delete.md": {
     "url": "https://platform.claude.com/docs/en/api/csharp/beta/skills/versions/delete",
     "skill": "anthropic-sdk-csharp",
-    "etag": "W/\"976-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 2422,
-    "updatedAt": "2026-04-02T10:20:45.416Z"
+    "etag": "W/\"9e6-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2534,
+    "updatedAt": "2026-04-08T00:18:04.173Z"
+  },
+  "anthropic-sdk-csharp/beta/user_profiles.md": {
+    "url": "https://platform.claude.com/docs/en/api/csharp/beta/user_profiles",
+    "skill": "anthropic-sdk-csharp",
+    "etag": "W/\"343f-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 13375,
+    "updatedAt": "2026-04-08T00:18:04.464Z"
+  },
+  "anthropic-sdk-csharp/beta/user_profiles/create.md": {
+    "url": "https://platform.claude.com/docs/en/api/csharp/beta/user_profiles/create",
+    "skill": "anthropic-sdk-csharp",
+    "etag": "W/\"a13-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2579,
+    "updatedAt": "2026-04-08T00:18:04.754Z"
+  },
+  "anthropic-sdk-csharp/beta/user_profiles/list.md": {
+    "url": "https://platform.claude.com/docs/en/api/csharp/beta/user_profiles/list",
+    "skill": "anthropic-sdk-csharp",
+    "etag": "W/\"a60-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2656,
+    "updatedAt": "2026-04-08T00:18:05.061Z"
+  },
+  "anthropic-sdk-csharp/beta/user_profiles/retrieve.md": {
+    "url": "https://platform.claude.com/docs/en/api/csharp/beta/user_profiles/retrieve",
+    "skill": "anthropic-sdk-csharp",
+    "etag": "W/\"936-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2358,
+    "updatedAt": "2026-04-08T00:18:05.337Z"
+  },
+  "anthropic-sdk-csharp/beta/user_profiles/update.md": {
+    "url": "https://platform.claude.com/docs/en/api/csharp/beta/user_profiles/update",
+    "skill": "anthropic-sdk-csharp",
+    "etag": "W/\"abc-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2748,
+    "updatedAt": "2026-04-08T00:18:05.646Z"
+  },
+  "anthropic-sdk-csharp/beta/user_profiles/create_enrollment_url.md": {
+    "url": "https://platform.claude.com/docs/en/api/csharp/beta/user_profiles/create_enrollment_url",
+    "skill": "anthropic-sdk-csharp",
+    "etag": "W/\"8ad-19d6a60f3c0\"",
+    "lastModified": "Tue, 07 Apr 2026 23:57:12 GMT",
+    "size": 2221,
+    "updatedAt": "2026-04-08T00:18:05.942Z"
   },
   "anthropic-api/api/admin.md": {
     "url": "https://platform.claude.com/docs/en/api/admin",

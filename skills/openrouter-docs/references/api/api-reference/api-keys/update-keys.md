@@ -45,19 +45,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/API Keys_updateKeys_Response_200'
         '400':
-          description: Bad Request - Invalid request parameters
+          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '401':
-          description: Unauthorized - Missing or invalid authentication
+          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: Not Found - API key does not exist
+          description: Not Found - Resource does not exist
           content:
             application/json:
               schema:
@@ -69,7 +69,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:

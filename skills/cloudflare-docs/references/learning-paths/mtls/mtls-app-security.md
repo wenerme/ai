@@ -22,14 +22,15 @@ This implementation requires an active [Zone](https://developers.cloudflare.com/
 
 API Shield is not required to use mTLS.   
 
-By default, mTLS uses Client Certificates issued by a Cloudflare Managed CA and set at account-level. If you have an Enterprise account, you also have the option to [bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
+By default, mTLS uses Client Certificates issued by a Cloudflare-managed CA and set at account-level. If you have an Enterprise account, you also have the option to [bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
 ## 1\. Enable mTLS
 
 1. Go to your Cloudflare dashboard and select your account and domain.
-2. Go to **SSL/TLS** \> **[Client Certificates](https://developers.cloudflare.com/ssl/client-certificates/)** tab and select **Edit** to add the Hosts (hostnames) you want to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) for.  
+2. Go to **SSL/TLS** \> **[Client Certificates](https://developers.cloudflare.com/ssl/client-certificates/)** and, on the **Hosts** section, select **Edit** to add the hostnames you want to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) for.  
 Example host: `mtls-test.example.com`
-3. Select **Create Certificate** and fill in the required fields. You can choose one of the following options:
+3. Select **Add Certificate**. The Cloudflare-managed CA is the default **Certificate Authority**.
+4. Fill in the required fields. You can choose one of the following options:
 * Generate a private key (usually referred to as Private Certificate) and Certificate Signing Request (CSR) with Cloudflare (which includes the Public Certificate).
 * Use your own private key and CSR which allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).
 
@@ -94,7 +95,7 @@ Example WAF Custom Rule with action block:
 
 Note
 
-When using CNAME, enforce mTLS on the specific hostname where it should be checked. It is not enough to have it set on the CNAME target.
+When using [CNAME records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname), enforce mTLS on the specific hostname where it should be checked. It is not enough to have it set on the CNAME target.
 
 ## Demo
 

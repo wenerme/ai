@@ -50,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/API Keys_list_Response_200'
         '401':
-          description: Unauthorized - Missing or invalid authentication
+          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
@@ -62,7 +62,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TooManyRequestsResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:

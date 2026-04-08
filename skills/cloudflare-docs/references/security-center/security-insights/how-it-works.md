@@ -1,6 +1,6 @@
 ---
 title: How it works
-description: Once you enable Security Insights, Cloudflare runs regular security scans on the infrastructure associated with your Cloudflare account. These scans perform a series of checks on your Cloudflare account settings and on the configurations of different Cloudflare products for the domains in your Cloudflare account.
+description: Once you enable Security Insights, Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,24 +16,26 @@ Copy page
 
 # How it works
 
-Once you [enable Security Insights](https://developers.cloudflare.com/security-center/get-started/), Cloudflare runs regular security scans on the infrastructure associated with your Cloudflare account. These scans perform a series of checks on your Cloudflare account settings and on the configurations of different Cloudflare products for the domains in your Cloudflare account.
+Once you [enable Security Insights](https://developers.cloudflare.com/security-center/get-started/), Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
 
-The performed checks take into account a set of ideal product configurations and states that indicate a good security posture. If your current configuration does not meet this ideal configuration for one or more checks, the Security Center will report these situations as **Security Insights**.
+Each scan compares your current configuration against a set of ideal product configurations that indicate a strong security posture. When your configuration does not match an ideal configuration for one or more checks, the scan produces a **Security Insight** — a finding that represents a potential risk.
 
-The list of insights may include potential security threats, vulnerabilities, compliance risks, insecure configurations, or any other identified risks.
+The [list of insights](https://developers.cloudflare.com/security-center/security-insights/) may include potential security threats, vulnerabilities, compliance risks, insecure configurations, or any other identified risks.
 
 Note
 
-Security Insights will check non-proxied hostnames.
+Security Insights also checks [non-proxied (DNS-only) hostnames](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records). Because these records are not routed through Cloudflare, they do not benefit from Cloudflare's application security features.
 
 ## Scan properties
 
-Each insight will have the following properties assigned to them:
+Each insight has the following properties:
 
 * **Severity**: The security risk of the insight. The severity values are: _Moderate_, _High_, and _Critical_. The higher the severity level, the higher the risk of threat to your environment.
 * **Insight**: The insight description detailing the current configuration that is causing the risk or vulnerability.
 * **Risk**: A description of the risk associated with not addressing the issue.
 * **Type**: The insight category.
+
+For a full list of insight types and their descriptions, refer to [Security Insights](https://developers.cloudflare.com/security-center/security-insights/).
 
 ## Scan frequency
 
@@ -43,6 +45,8 @@ Once you enable Security Insights, Cloudflare performs scans automatically. Payi
 | ----------------------------------------- | -------------- | --------- |
 | Accounts on a Free, Pro, or Business plan | Every 7 days   | Yes       |
 | Accounts on an Enterprise plan            | Every 3 days   | Yes       |
+
+Eligible accounts (Business, Enterprise, or Teams plans) can also manually start a scan. Refer to [Get started](https://developers.cloudflare.com/security-center/get-started/) for instructions.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/security-insights/","name":"Security Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/security-center/security-insights/how-it-works/","name":"How it works"}}]}

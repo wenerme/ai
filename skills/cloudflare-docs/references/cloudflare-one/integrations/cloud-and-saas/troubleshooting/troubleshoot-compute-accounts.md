@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AWS ](https://developers.cloudflare.com/search/?tags=AWS)[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 Was this helpful?
 
 YesNo
@@ -64,15 +68,14 @@ If you roll your API token in CASB but do not update it in your compute account,
 
 You may need to roll the Cloudflare API token used for your compute account if a security or operational issue appears, your API token is compromised, or your API token is removed from your compute account.
 
-If your token is lost or compromised, you can either create a new token or roll your token to generate a new secret. Rolling your API token into a new one will invalidate the previous token, but the access and permissions will be the same as the previous API token.
+If your token is lost or compromised, you can either create a new token or roll your token to generate a new secret. Rolling your API token into a new one will invalidate the previous token, but the access and permissions will be the same as the previous API token. The new token uses the [scannable format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which allows credential scanning tools to detect leaked tokens.
 
 To roll your API token:
 
-1. Log in to the Cloudflare dashboard.  
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
-2. Go to **My Profile** \> **API Tokens**.
-3. Next to the API token you want to roll, select the **three dot icon** \> **Roll**.
-4. Select **Confirm** to generate a new API token.
+1. Go to **My Profile** \> **API Tokens**.  
+[ Go to **API Tokens** ](https://dash.cloudflare.com/profile/api-tokens)
+2. Next to the API token you want to roll, select the **three dot icon** \> **Roll**.
+3. Select **Confirm** to generate a new API token.
 1. Copy your API token.
 
 Once you roll your API token in Cloudflare, you can update the API token value in your secrets manager for [Amazon Web Services (AWS) ↗](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage%5Fupdate-secret-value.html) or [Google Cloud Platform (GCP) ↗](https://cloud.google.com/secret-manager/docs/edit-secrets).

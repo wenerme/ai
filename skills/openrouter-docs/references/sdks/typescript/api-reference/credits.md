@@ -14,7 +14,6 @@ Credit management endpoints
 ### Available Operations
 
 * [getCredits](#getcredits) - Get remaining credits
-* [~~createCoinbaseCharge~~](#createcoinbasecharge) - Deprecated Coinbase Commerce charge endpoint :warning: **Deprecated**
 
 ## getCredits
 
@@ -94,79 +93,3 @@ run();
 | errors.ForbiddenResponseError      | 403         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## ~~createCoinbaseCharge~~
-
-Deprecated. The Coinbase APIs used by this endpoint have been deprecated, so Coinbase Commerce charges have been removed. Use the web credits purchase flow instead.
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-{/* UsageSnippet language="typescript" operationID="createCoinbaseCharge" method="post" path="/credits/coinbase" */}
-
-```typescript
-import { OpenRouter } from "@openrouter/sdk";
-
-const openRouter = new OpenRouter({
-  httpReferer: "<value>",
-  appTitle: "<value>",
-  appCategories: "<value>",
-});
-
-async function run() {
-  await openRouter.credits.createCoinbaseCharge();
-
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { OpenRouterCore } from "@openrouter/sdk/core.js";
-import { creditsCreateCoinbaseCharge } from "@openrouter/sdk/funcs/creditsCreateCoinbaseCharge.js";
-
-// Use `OpenRouterCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const openRouter = new OpenRouterCore({
-  httpReferer: "<value>",
-  appTitle: "<value>",
-  appCategories: "<value>",
-});
-
-async function run() {
-  const res = await creditsCreateCoinbaseCharge(openRouter);
-  if (res.ok) {
-    const { value: result } = res;
-    
-  } else {
-    console.log("creditsCreateCoinbaseCharge failed:", res.error);
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter              | Type                                                                                                                 | Required             | Description                                                                                                                                                                    |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreateCoinbaseChargeRequest](/docs/sdks/typescript/api-reference/operations/createcoinbasechargerequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
-| `options`              | RequestOptions                                                                                                       | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                              | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/docs/sdks/typescript/api-reference/lib/retryconfig)                                                   | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<void>**
-
-### Errors
-
-| Error Type                    | Status Code | Content Type     |
-| ----------------------------- | ----------- | ---------------- |
-| errors.GoneResponseError      | 410         | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX    | \*/\*            |

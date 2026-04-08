@@ -20,7 +20,9 @@ Note
 
 Only available to customers with Client-Side Security Advanced.
 
-Shortly after you configure content security rules, the Cloudflare dashboard will start displaying any violations of those rules. This information will be available for rules with any [action](https://developers.cloudflare.com/client-side-security/rules/#rule-actions) (_Allow_ and _Log_).
+A rule violation occurs when a browser loads a resource that is not covered by one of your [content security rules](https://developers.cloudflare.com/client-side-security/rules/). For log rules, the resource loads normally but is reported. For allow rules, the browser blocks the resource.
+
+Shortly after you configure content security rules, the Cloudflare dashboard will start displaying any violations of those rules. This information is available for rules with any [action](https://developers.cloudflare.com/client-side-security/rules/#rule-actions) (_Allow_ and _Log_).
 
 Information about rule violations is also available via [GraphQL API](#get-rule-violations-via-graphql-api) and [Logpush](#get-rule-violations-via-logpush).
 
@@ -48,7 +50,7 @@ Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/gra
 
 * `pageShieldReportsAdaptiveGroups`
 
-You can query the dataset for rule violations occurred in the past 30 days.
+You can query the dataset for rule violations that occurred in the past 30 days.
 
 Use [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/) to explore the available fields the GraphQL schema. For more information, refer to [Explore the GraphQL schema](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/).
 
@@ -133,7 +135,7 @@ query PageShieldReports(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkEAWCQHY4ggMyoArIJWSMFanQYsYeKFT5DRE6YLmCAnCrXKNIAL5A)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkEAWCQHY4ARn6ohy-hgrU6DFjDxQqfIaInTBc+QA5lg1eoC+QA)
 
 Example curl request
 

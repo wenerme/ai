@@ -51,7 +51,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '409':
-          description: Conflict - App upsert conflict during auth code creation
+          description: Conflict - Resource conflict or concurrent modification
           content:
             application/json:
               schema:

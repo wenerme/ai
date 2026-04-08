@@ -35,7 +35,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.o_auth.exchange_auth_code_for_api_key(code="auth_code_abc123def456")
+    res = open_router.o_auth.exchange_auth_code_for_api_key(code="auth_code_abc123def456", code_verifier="dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk", code_challenge_method="S256")
 
     # Handle response
     print(res)
@@ -86,7 +86,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.o_auth.create_auth_code(callback_url="https://myapp.com/auth/callback")
+    res = open_router.o_auth.create_auth_code(callback_url="https://myapp.com/auth/callback", code_challenge="E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM", code_challenge_method="S256", limit=100)
 
     # Handle response
     print(res)
@@ -104,7 +104,7 @@ with OpenRouter(
 | `code_challenge`           | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | PKCE code challenge for enhanced security                                                                                                                   | E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM                        |
 | `code_challenge_method`    | [Optional\[operations.CreateAuthKeysCodeCodeChallengeMethod\]](../../operations/createauthkeyscodecodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                                                                                                              | S256                                                               |
 | `limit`                    | *Optional\[float]*                                                                                                        | :heavy\_minus\_sign: | Credit limit for the API key to be created                                                                                                                  | 100                                                                |
-| `expires_at`               | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                      | :heavy\_minus\_sign: | Optional expiration time for the API key to be created                                                                                                      |                                                                    |
+| `expires_at`               | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                      | :heavy\_minus\_sign: | Optional expiration time for the API key to be created                                                                                                      | 2027-12-31T23:59:59Z                                               |
 | `key_label`                | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | Optional custom label for the API key. Defaults to the app name if not provided.                                                                            | My Custom Key                                                      |
 | `usage_limit_type`         | [Optional\[operations.UsageLimitType\]](../../operations/usagelimittype.md)                                               | :heavy\_minus\_sign: | Optional credit limit reset interval. When set, the credit limit resets on this interval.                                                                   | monthly                                                            |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                    |

@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ MCP ](https://developers.cloudflare.com/search/?tags=MCP) 
+
 Was this helpful?
 
 YesNo

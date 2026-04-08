@@ -1,6 +1,6 @@
 ---
 title: Scan HTTP traffic
-description: You can scan HTTP traffic for sensitive data through Secure Web Gateway policies. To perform DLP filtering, first configure a DLP profile with the data patterns you want to detect, and then build a Gateway HTTP policy to allow or block the sensitive data from leaving your organization. Gateway will parse and scan your HTTP traffic for strings matching the keywords or regular expressions (regexes) specified in the DLP profile.
+description: You can scan HTTP traffic for sensitive data through Secure Web Gateway policies. Setting up DLP is a two-step process: first, configure a DLP profile that defines what sensitive data patterns to detect, and then build a Gateway HTTP policy that defines what action to take (allow, block, or log) when Gateway finds matching data. Gateway will parse and scan your HTTP traffic for strings matching the keywords or regular expressions (regexes) specified in the DLP profile.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Scan HTTP traffic
 
-You can scan HTTP traffic for sensitive data through Secure Web Gateway policies. To perform DLP filtering, first configure a DLP profile with the data patterns you want to detect, and then build a Gateway HTTP policy to allow or block the sensitive data from leaving your organization. Gateway will parse and scan your HTTP traffic for strings matching the keywords or regular expressions (regexes) specified in the DLP profile.
+You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies. Setting up DLP is a two-step process: first, configure a **DLP profile** that defines what sensitive data patterns to detect, and then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data. Gateway will parse and scan your HTTP traffic for strings matching the keywords or regular expressions (regexes) specified in the DLP profile.
 
 Note
 
@@ -24,17 +24,17 @@ To scan AI prompts and responses without Gateway HTTP filtering, you can also en
 
 ## Prerequisites
 
-* Set up [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).  
+* Set up [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/). This routes your users' web traffic through Cloudflare Gateway so it can be inspected.  
    * HTTP filtering requires turning on the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy) for TCP traffic.
-* Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption).
+* Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption). Because most web traffic is encrypted with HTTPS, Gateway must decrypt it before DLP can scan the request body for sensitive data.
 
 ## 1\. Configure a DLP profile
 
-Refer to [Configure a DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/). We recommend getting started with a predefined profile.
+A DLP profile defines the sensitive data patterns you want to detect — for example, social security number formats, credit card numbers, or custom patterns specific to your organization. Refer to [Configure a DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/). We recommend getting started with a predefined profile.
 
 Important
 
-DLP scans will not start until you [create a DLP policy](#2-create-a-dlp-policy).
+A DLP profile only defines detection patterns. DLP scans will not start until you [create a DLP policy](#2-create-a-dlp-policy).
 
 ## 2\. Create a DLP policy
 
@@ -42,19 +42,19 @@ DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies**. Select **HTTP**.
 2. Select **Add a policy**.
-3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy prevents users from uploading sensitive data to any location other than an approved corporate application:  
-| Selector    | Operator | Value                                                    | Logic | Action |  
-| ----------- | -------- | -------------------------------------------------------- | ----- | ------ |  
-| DLP Profile | in       | _Social Security, Insurance, Tax, and Identifer Numbers_ | And   | Block  |  
-| HTTP Method | in       | _POST_                                                   | And   |        |  
-| Application | not in   | _Workday_                                                |       |        |
+3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:  
+| Selector    | Operator | Value                                                     | Logic | Action |  
+| ----------- | -------- | --------------------------------------------------------- | ----- | ------ |  
+| DLP Profile | in       | _Social Security, Insurance, Tax, and Identifier Numbers_ | And   | Block  |  
+| HTTP Method | in       | _POST_                                                    | And   |        |  
+| Application | not in   | _Workday_                                                 |       |        |
 4. Select **Create policy**.
 
-DLP scanning is now turned on.
+DLP scanning is now turned on for HTTP traffic matching this policy.
 
 ## 3\. Test DLP policy
 
-You can test your DLP policy on any device connected to your Zero Trust organization. To perform a basic test:
+You can test your DLP policy on any device connected to your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/). To perform a basic test:
 
 1. Go to [dlptest.com ↗](http://dlptest.com/http-post/).
 2. Enter a text message or upload a file containing the sensitive data.
@@ -72,9 +72,11 @@ Different sites will send requests in different ways. For example, some sites wi
    * **DLP Profiles** shows the requests which matched a specific DLP profile.  
    * **Policy** shows the requests which matched a specific DLP policy.
 
-You can expand an individual row to view details about the request. To see the data that triggered the DLP policy, [configure logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/).
+You can expand an individual row to view details about the request. By default, logs show that a match occurred but do not include the actual matched content. To see the data that triggered the DLP policy, [configure logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/).
 
 ### Report false positives
+
+If DLP flags a request that does not actually contain sensitive data (a false positive), you can report it to Cloudflare:
 
 1. Select the log you want to report.
 2. Select **Report DLP false positive** under **DLP details**.

@@ -75,7 +75,9 @@ Bar!
 
 `just` normally prints error messages when a recipe line fails. These error
 messages can be suppressed using the `[no-exit-message]`<sup>1.7.0</sup>
-attribute. You may find this especially useful with a recipe that wraps a tool:
+attribute on individual recipes, or module-wide with
+`set no-exit-message`<sup>1.39.0</sup>. You may find this especially useful
+with a recipe that wraps a tool:
 
 ```just
 git *args:

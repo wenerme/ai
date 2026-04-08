@@ -34,7 +34,7 @@ Since traffic steering decisions or failover mechanisms rely on the health infor
 
 ### Tunnel
 
-Currently, to be able to connect to private IP origins, Cloudflare load balancers require a [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) with an associated [virtual network (VNet)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). If you are connecting to your endpoints using a [published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers) a VNet is not necessary.
+Currently, to be able to connect to private IP origins, Cloudflare load balancers require a [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) with an associated [virtual network (VNet)](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/). If you are connecting to your endpoints using a [published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers) a VNet is not necessary.
 
 Once the endpoint and virtual network (VNet) tunnel association is configured, Cloudflare can determine not only the tunnel health but also the health of the corresponding virtual or private IP targets.
 

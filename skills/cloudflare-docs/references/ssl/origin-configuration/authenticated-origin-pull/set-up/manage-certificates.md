@@ -1,6 +1,6 @@
 ---
 title: Manage certificates
-description: Refer to the following sections to learn how to manage certificates used with the different Authenticated Origin Pulls setups.
+description: Refer to the following sections to learn how to manage certificates used with zone-level and per-hostname Authenticated Origin Pulls. Global AOP uses a Cloudflare-provided certificate and does not require certificate management.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Manage certificates
 
-Refer to the following sections to learn how to manage certificates used with the different Authenticated Origin Pulls setups.
+Refer to the following sections to learn how to manage certificates used with [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) and [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) Authenticated Origin Pulls. [Global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/) uses a Cloudflare-provided certificate and does not require certificate management.
 
 ---
 
@@ -30,13 +30,13 @@ Make sure you have [notifications](https://developers.cloudflare.com/notificatio
 
 ## Use specialized certificates
 
-To apply different client certificates simultaneously at both the zone and hostname level, you can combine zone-level and per-hostname custom certificates.
+To apply different client certificates simultaneously at the zone and hostname level, you can combine zone-level and per-hostname custom certificates.
 
-First, set up [zone-level pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) using a certificate. Then, upload multiple, specialized certificates for [individual hostnames](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/). Since per-hostname certificates are more specific, they take precedence over zone certificates.
+First, set up [zone-level AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) using your certificate. Then, upload specialized certificates for [individual hostnames](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/). Per-hostname certificates take precedence over zone-level certificates for the specified hostname.
 
 ---
 
-## Replace a certificate without downtime
+## Replace a certificate without downtime via API
 
 No automatic removal
 

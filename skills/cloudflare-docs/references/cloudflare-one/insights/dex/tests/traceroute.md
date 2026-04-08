@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Windows ](https://developers.cloudflare.com/search/?tags=Windows)[ MacOS ](https://developers.cloudflare.com/search/?tags=MacOS)[ Android ](https://developers.cloudflare.com/search/?tags=Android) 
+
 Was this helpful?
 
 YesNo

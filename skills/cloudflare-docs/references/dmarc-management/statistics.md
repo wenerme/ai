@@ -1,6 +1,6 @@
 ---
 title: Statistics and details
-description: DMARC Management (beta) allows you to review how emails sent on your behalf have fared regarding security policies such as DMARC, SFP, and DKIM.
+description: DMARC Management (beta) allows you to review whether emails sent on your behalf passed or failed DMARC, SPF, and DKIM authentication checks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,11 +16,11 @@ Copy page
 
 # Statistics and details
 
-DMARC Management (beta) allows you to review how emails sent on your behalf have fared regarding security policies such as DMARC, SFP, and DKIM.
+DMARC Management (beta) allows you to review whether emails sent on your behalf passed or failed DMARC, SPF, and DKIM authentication checks.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Email** \> **DMARC Management**.
-3. The graph shows you the volume of emails during a certain period of time. Select the dropdown to select a period of time up to 30 days.
+3. The graph shows the volume of emails over a selected time period. Use the dropdown to select a period of up to 30 days.
 4. Moving your mouse through the graph gives you details for a particular day. Select **View reports** for a list of DMARC reports by date.
 5. Select one of the dates shown to open a window with more details.
 

@@ -22,6 +22,7 @@ Copy page
 * [ Maximum transmission unit and maximum segment size ](https://developers.cloudflare.com/cloudflare-wan/reference/mtu-mss/)
 * [ Traffic steering ](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/)
 * [ Tunnel health checks ](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/)
+* [ Virtual networks ](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/)
 * [ How Cloudflare calculates tunnel health alerts ](https://developers.cloudflare.com/cloudflare-wan/reference/how-cloudflare-calculates-tunnel-health-alerts/)
 
 ```json

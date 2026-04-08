@@ -38,6 +38,8 @@ async function run() {
   const result = await openRouter.oAuth.exchangeAuthCodeForAPIKey({
     requestBody: {
       code: "auth_code_abc123def456",
+      codeVerifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+      codeChallengeMethod: "S256",
     },
   });
 
@@ -68,6 +70,8 @@ async function run() {
   const res = await oAuthExchangeAuthCodeForAPIKey(openRouter, {
     requestBody: {
       code: "auth_code_abc123def456",
+      codeVerifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+      codeChallengeMethod: "S256",
     },
   });
   if (res.ok) {
@@ -125,6 +129,9 @@ async function run() {
   const result = await openRouter.oAuth.createAuthCode({
     requestBody: {
       callbackUrl: "https://myapp.com/auth/callback",
+      codeChallenge: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+      codeChallengeMethod: "S256",
+      limit: 100,
     },
   });
 
@@ -155,6 +162,9 @@ async function run() {
   const res = await oAuthCreateAuthCode(openRouter, {
     requestBody: {
       callbackUrl: "https://myapp.com/auth/callback",
+      codeChallenge: "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+      codeChallengeMethod: "S256",
+      limit: 100,
     },
   });
   if (res.ok) {

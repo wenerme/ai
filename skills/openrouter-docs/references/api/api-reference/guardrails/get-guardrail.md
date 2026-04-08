@@ -45,19 +45,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/GetGuardrailResponse'
         '401':
-          description: Unauthorized - Missing or invalid authentication
+          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: Not Found - Guardrail does not exist
+          description: Not Found - Resource does not exist
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:
@@ -74,10 +74,6 @@ components:
         - monthly
       description: Interval at which the limit resets (daily, weekly, monthly)
       title: GuardrailInterval
-    GetGuardrailResponseDataResetInterval:
-      type: object
-      properties: {}
-      title: GetGuardrailResponseDataResetInterval
     GetGuardrailResponseData:
       type: object
       properties:
@@ -98,7 +94,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          $ref: '#/components/schemas/GetGuardrailResponseDataResetInterval'
+          $ref: '#/components/schemas/GuardrailInterval'
         allowed_providers:
           type:
             - array

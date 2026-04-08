@@ -13,7 +13,7 @@ The OpenAI Realtime API enables low-latency communication with [models](https://
 
 ## Voice agents
 
-One of the most common use cases for the Realtime API is building voice agents for speech-to-speech model interactions in the browser. Our recommended starting point for these types of applications is the [Agents SDK for TypeScript](https://openai.github.io/openai-agents-js/guides/voice-agents/), which uses a [WebRTC connection](https://developers.openai.com/api/docs/guides/realtime-webrtc) to the Realtime model in the browser, and [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket) when used on the server.
+One of the most common use cases for the Realtime API is building voice agents for speech-to-speech model interactions in the browser. Our recommended starting point for these applications is the on-site [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide, which uses a [WebRTC connection](https://developers.openai.com/api/docs/guides/realtime-webrtc) to the Realtime model in the browser, and [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket) when used on the server.
 
 ```js
 
@@ -31,16 +31,13 @@ await session.connect({
 });
 ```
 
-<a
-  href="https://openai.github.io/openai-agents-js/guides/voice-agents/quickstart/"
-  target="_blank"
-  rel="noreferrer"
->
+<a href="/api/docs/guides/voice-agents#speech-to-speech-realtime-architecture">
   
 
 <span slot="icon">
       </span>
-    Follow the voice agent quickstart to build Realtime agents in the browser.
+    See the speech-to-speech path for building Realtime voice agents in the
+    browser.
 
 
 </a>
@@ -49,7 +46,7 @@ To use the Realtime API directly outside the context of voice agents, check out 
 
 ## Connection methods
 
-While building [voice agents with the Agents SDK](https://openai.github.io/openai-agents-js/guides/voice-agents/) is the fastest path to one specific type of application, the Realtime API provides an entire suite of flexible tools for a variety of use cases.
+While building [voice agents with the Agents SDK](https://developers.openai.com/api/docs/guides/voice-agents) is the fastest path to one specific type of application, the Realtime API provides an entire suite of flexible tools for a variety of use cases.
 
 There are three primary supported interfaces for the Realtime API:
 

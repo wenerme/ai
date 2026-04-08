@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ SSO ](https://developers.cloudflare.com/search/?tags=SSO) 
+
 Was this helpful?
 
 YesNo

@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ Video ](https://developers.cloudflare.com/search/?tags=Video) 
+
 Was this helpful?
 
 YesNo

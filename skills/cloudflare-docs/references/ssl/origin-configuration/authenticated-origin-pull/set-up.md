@@ -15,6 +15,7 @@ Copy page
 
 # Setup
 
+* [ Global ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/)
 * [ Zone-level ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/)
 * [ Per-hostname ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/)
 * [ Manage certificates ](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/manage-certificates/)

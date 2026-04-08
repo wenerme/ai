@@ -42,13 +42,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModelsCountResponse'
         '400':
-          description: Bad Request - Invalid output_modalities value
+          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:

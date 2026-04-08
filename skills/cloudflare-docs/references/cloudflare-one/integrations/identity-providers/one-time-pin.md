@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
+
 Was this helpful?
 
 YesNo
@@ -26,9 +30,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-3479)
-* [ API ](#tab-panel-3480)
-* [ Terraform (v5) ](#tab-panel-3481)
+* [ Dashboard ](#tab-panel-3485)
+* [ API ](#tab-panel-3486)
+* [ Terraform (v5) ](#tab-panel-3487)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

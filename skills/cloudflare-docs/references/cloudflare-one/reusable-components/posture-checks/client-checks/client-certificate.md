@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Posture ](https://developers.cloudflare.com/search/?tags=Posture)[ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS) 
+
 Was this helpful?
 
 YesNo
@@ -108,9 +112,9 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-3650)
-* [ macOS ](#tab-panel-3651)
-* [ Linux ](#tab-panel-3652)
+* [ Windows ](#tab-panel-3656)
+* [ macOS ](#tab-panel-3657)
+* [ Linux ](#tab-panel-3658)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:

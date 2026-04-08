@@ -1,0 +1,32 @@
+---
+title: '`glab todo done`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Mark a to-do item as done.
+
+```plaintext
+glab todo done [<id>] [flags]
+```
+
+## Examples
+
+```console
+glab todo done 123
+glab todo done --all
+
+```
+
+## Options
+
+```plaintext
+      --all   Mark all pending to-do items as done.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help   Show help for this command.
+```

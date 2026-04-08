@@ -27,6 +27,7 @@ foo:
 | `export` | boolean | `false` | Export all variables as environment variables. |
 | `fallback` | boolean | `false` | Search `justfile` in parent directory if the first recipe on the command line is not found. |
 | `ignore-comments` | boolean | `false` | Ignore recipe lines beginning with `#`. |
+| `no-exit-message`<sup>1.39.0</sup> | boolean | `false` | Don't print exit messages if recipes fail. |
 | `lazy`<sup>1.47.0</sup> | boolean | `false` | Don't evaluate unused variables. |
 | `positional-arguments` | boolean | `false` | Pass positional arguments. |
 | `quiet` | boolean | `false` | Disable echoing recipe lines before executing. |
@@ -51,7 +52,7 @@ set NAME := true
 ```
 
 Non-boolean settings can be set to both strings and
-expressions.<sup>1.46.0</sup>
+expressions<sup>1.46.0</sup>.
 
 However, because settings affect the behavior of backticks and many functions,
 those expressions may not contain backticks or function calls, directly or

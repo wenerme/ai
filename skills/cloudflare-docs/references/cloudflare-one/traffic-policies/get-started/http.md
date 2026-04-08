@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
+
 Was this helpful?
 
 YesNo
@@ -53,8 +57,8 @@ An HTTP policy defines which requests to match (for example, uploads to file-sha
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-3839)
-* [ API ](#tab-panel-3840)
+* [ Dashboard ](#tab-panel-3845)
+* [ API ](#tab-panel-3846)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.

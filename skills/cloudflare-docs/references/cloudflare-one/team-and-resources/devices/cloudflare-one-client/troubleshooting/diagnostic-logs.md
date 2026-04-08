@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging)[ Video ](https://developers.cloudflare.com/search/?tags=Video) 
+
 Was this helpful?
 
 YesNo
@@ -43,9 +47,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-3732)
-* [ Windows ](#tab-panel-3733)
-* [ Linux ](#tab-panel-3734)
+* [ macOS ](#tab-panel-3738)
+* [ Windows ](#tab-panel-3739)
+* [ Linux ](#tab-panel-3740)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -187,6 +191,7 @@ The `warp-debugging-info-<date>-<time>.zip` archive contains the following files
 | ps.txt processes.txt                                                      | List of all active processes on the device when warp-diag was run.                                                                                                                                                                                                                                                                                                                         |
 | resolv.conf                                                               | The contents of the /etc/resolv.conf file on Mac/Linux, where system DNS servers are configured.                                                                                                                                                                                                                                                                                           |
 | route.txt                                                                 | Output from the ip route get command, used to verify that network traffic is going over the correct interface. You can optionally use the warp-diag --enable-all-routes flag to include tests for all IPs and domains in your Split Tunnel configuration.                                                                                                                                  |
+| route-change.log                                                          | Changes to the IP routing table.                                                                                                                                                                                                                                                                                                                                                           |
 | scutil-dns.txt                                                            | DNS configuration on macOS/Linux (available in ipconfig.txt on Windows).                                                                                                                                                                                                                                                                                                                   |
 | scutil-networkinfo.txt                                                    | IPv4 and IPv6 network interface configuration on macOS (available in interfaces-config.txt on Windows).                                                                                                                                                                                                                                                                                    |
 | scutil-proxy.txt                                                          | Proxy configuration on macOS/Linux (available in ipconfig.txt on Windows).                                                                                                                                                                                                                                                                                                                 |
@@ -256,8 +261,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-3730)
-* [ Android/ChromeOS ](#tab-panel-3731)
+* [ iOS ](#tab-panel-3736)
+* [ Android/ChromeOS ](#tab-panel-3737)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

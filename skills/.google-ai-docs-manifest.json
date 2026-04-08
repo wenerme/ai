@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 50011,
-    "updatedAt": "2026-04-07T00:26:06.986Z"
+    "size": 49956,
+    "updatedAt": "2026-04-08T00:26:12.312Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -326,8 +326,8 @@
   "google-ai-docs/batch-api.md": {
     "url": "https://ai.google.dev/gemini-api/docs/batch-api",
     "skill": "google-ai-docs",
-    "size": 47965,
-    "updatedAt": "2026-04-02T10:29:02.378Z"
+    "size": 47970,
+    "updatedAt": "2026-04-08T00:26:29.437Z"
   },
   "google-ai-docs/maps-grounding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/maps-grounding",

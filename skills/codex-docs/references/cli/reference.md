@@ -17,7 +17,7 @@ export const globalFlagOptions = [
     key: "--model, -m",
     type: "string",
     description:
-      "Override the model set in configuration (for example `gpt-5-codex`).",
+      "Override the model set in configuration (for example `gpt-5.4`).",
   },
   {
     key: "--oss",

@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ SSO ](https://developers.cloudflare.com/search/?tags=SSO)[ Authentication ](https://developers.cloudflare.com/search/?tags=Authentication) 
+
 Was this helpful?
 
 YesNo

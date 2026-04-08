@@ -1,6 +1,6 @@
 ---
 title: First-time setup
-description: This is a high-level, step-by-step walkthrough on how to get started with the Cloudflare One Client (formerly WARP) in your organization. From downloading the client to sending the first queries to Cloudflare's edge, here is a guide on how to do it for the first time.
+description: This guide walks you through setting up the Cloudflare One Client (formerly WARP) for your organization for the first time. After completing these steps, your devices will route traffic through Cloudflare's network, where you can apply security policies.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,11 +16,16 @@ Copy page
 
 # First-time setup
 
-This is a high-level, step-by-step walkthrough on how to get started with the Cloudflare One Client (formerly WARP) in your organization. From downloading the client to sending the first queries to Cloudflare's edge, here is a guide on how to do it for the first time.
+This guide walks you through setting up the Cloudflare One Client (formerly WARP) for your organization for the first time. After completing these steps, your devices will route traffic through Cloudflare's network, where you can apply security policies.
+
+Choose a setup mode based on your needs:
+
+* [**Traffic and DNS mode** (default)](#traffic-and-dns-mode-default) — Enables the full suite of security features, including HTTP inspection, identity-based policies, and device posture checks.
+* [**DNS-only mode**](#dns-only-mode) — Filters only DNS queries. Does not inspect HTTP traffic or enforce device posture checks.
 
 ## Traffic and DNS mode (default)
 
-This mode enables our complete suite of [device security features](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
+This mode enables the complete suite of [device security features](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
 
 ### 1\. Create a Cloudflare Zero Trust account.
 
@@ -32,7 +37,7 @@ As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudf
 
 Configure [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) in Zero Trust. This is the login method your users will utilize when authenticating to add a new device to your Cloudflare Zero Trust setup.
 
-### 3\. Next, define device enrollment permissions.
+### 3\. Define device enrollment permissions.
 
 Create [device enrollment rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to define which users in your organization should be able to connect devices to your organization's Cloudflare Zero Trust setup. As you create your rule, you will be asked to select which login method you would like users to authenticate with.
 
@@ -64,13 +69,13 @@ As you complete the [Cloudflare Zero Trust onboarding](https://developers.cloudf
 
 Configure [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) in Zero Trust. This is the login method your users will utilize when authenticating to add a new device to your Cloudflare Zero Trust setup.
 
-### 3\. Next, define device enrollment permissions.
+### 3\. Define device enrollment permissions.
 
 Create [device enrollment rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to define which users in your organization should be able to connect devices to your organization's Cloudflare Zero Trust setup. As you create your rule, you will be asked to select which login method you would like users to authenticate with.
 
-### 4\. (optional) Add a DNS location to Gateway.
+### 4\. (Optional) Add a DNS location to Gateway.
 
-The Cloudflare One Client will direct DoH queries to a default DNS endpoint when enrolled to your Zero Trust organization. If you need to direct these queries to a separate DNS endpoint, [add a DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) to Gateway. Gateway will assign a DoH subdomain to that location, which you can add when deploying the Cloudflare One Client to your devices.
+By default, the Cloudflare One Client sends DNS queries to Cloudflare using an encrypted protocol called DNS-over-HTTPS (DoH). If you need to apply different DNS policies to different offices or network locations, [add a DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) to Gateway. Gateway will assign a unique DoH subdomain to each location, which you provide as a parameter when deploying the Cloudflare One Client to your devices.
 
 ### 5\. Download and deploy the Cloudflare One Client to your devices.
 

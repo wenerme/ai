@@ -1,6 +1,6 @@
 ---
 title: Integration profiles
-description: Cloudflare DLP integration profiles enable data loss prevention support for third-party data classification providers. Data classification information is retrieved from the third-party platform and populated into a DLP Profile. You can then enable detection entries in the profile and create a DLP policy to allow or block matching data.
+description: Integration profiles let you use data classifications from a third-party platform (such as Microsoft Purview sensitivity labels) directly in Cloudflare DLP. Instead of recreating classification rules in Cloudflare, DLP retrieves them from the third-party platform and populates them as detection entries in a DLP profile. You can then enable the entries you want and create a DLP policy to allow or block matching data.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -24,9 +24,9 @@ Note
 
 Integration profiles require [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
 
-Cloudflare DLP integration profiles enable data loss prevention support for third-party data classification providers. Data classification information is retrieved from the third-party platform and populated into a DLP Profile. You can then enable detection entries in the profile and create a DLP policy to allow or block matching data.
+Integration profiles let you use data classifications from a third-party platform (such as Microsoft Purview sensitivity labels) directly in Cloudflare DLP. Instead of recreating classification rules in Cloudflare, DLP retrieves them from the third-party platform and populates them as detection entries in a DLP profile. You can then enable the entries you want and create a DLP policy to allow or block matching data.
 
-Detection entries in integration profiles are managed by the third-party platform and cannot be manually added, edited, or deleted within Cloudflare DLP.
+Detection entries in integration profiles are managed by the third-party platform. You cannot manually add, edit, or delete these entries within Cloudflare DLP.
 
 ## Microsoft Purview Information Protection (MIP) sensitivity labels
 
@@ -40,7 +40,7 @@ To ensure DLP will detect and filter all sensitive data, use only [MIP top-level
 
 ### Setup
 
-To add MIP sensitivity labels to a DLP Profile, simply integrate your Microsoft account with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/). A new integration profile will appear under **Data loss prevention** \> **DLP profiles**. The profile is named **MIP Sensitivity Labels** followed by the name of the CASB integration.
+To add MIP sensitivity labels to a DLP Profile, integrate your Microsoft account with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/). A new integration profile will appear under **Data loss prevention** \> **DLP profiles**. The profile is named **MIP Sensitivity Labels** followed by the name of the CASB integration.
 
 MIP sensitivity labels can also be added to a [custom DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile) as an existing entry.
 

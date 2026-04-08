@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 Was this helpful?
 
 YesNo
@@ -276,8 +280,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-3728)
-* [ Version 2026.1 and earlier ](#tab-panel-3729)
+* [ Version 2026.2+ ](#tab-panel-3734)
+* [ Version 2026.1 and earlier ](#tab-panel-3735)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

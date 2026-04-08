@@ -15,7 +15,8 @@ import {
 
 
 
-When generating model responses, you can extend capabilities using built‑in tools, function calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, or access third‑party services. Only `gpt-5.4` and later models support `tool_search`.
+
+When generating model responses or building agents, you can extend capabilities using built‑in tools, function calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, or access third‑party services. Only `gpt-5.4` and later models support `tool_search`.
 
 
 
@@ -200,7 +201,7 @@ Here's an overview of the tools available in the OpenAI platform—select one of
 
 </a>
 
-<a href="/api/docs/guides/tools-remote-mcp">
+<a href="/api/docs/guides/tools-connectors-mcp">
   
 
 <span slot="icon">
@@ -280,6 +281,84 @@ When making a request to generate a [model response](https://developers.openai.c
 
 Based on the provided [prompt](https://developers.openai.com/api/docs/guides/text), the model automatically decides whether to use a configured tool. For instance, if your prompt requests information beyond the model's training cutoff date and web search is enabled, the model will typically invoke the web search tool to retrieve relevant, up-to-date information.
 
-Some advanced workflows can also load additional tool definitions during the interaction. For example, [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) can defer function definitions until the model decides they are needed.
+Some advanced workflows can also load more tool definitions during the interaction. For example, [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) can defer function definitions until the model decides they're needed.
 
 You can explicitly control or guide this behavior by setting the `tool_choice` parameter [in the API request](https://developers.openai.com/api/docs/api-reference/responses/create).
+
+## Usage in the Agents SDK
+
+In the Agents SDK, the tool semantics stay the same, but the wiring moves into the agent definition and workflow design rather than a single Responses API request.
+
+- Attach hosted tools, function tools, or hosted MCP tools directly on the agent when one specialist should call them itself.
+- Expose a specialist as a tool when a manager should stay in control of the user-facing reply.
+- Keep shell, apply patch, and computer-use harnesses in your runtime even when the SDK models the tool decision.
+
+Wrap local logic as a function tool
+
+```typescript
+import { tool } from "@openai/agents";
+import { z } from "zod";
+
+const getWeatherTool = tool({
+  name: "get_weather",
+  description: "Get the weather for a given city.",
+  parameters: z.object({ city: z.string() }),
+  async execute({ city }) {
+    return \`The weather in \${city} is sunny.\`;
+  },
+});
+```
+
+```python
+from agents import function_tool
+
+
+@function_tool
+def get_weather(city: str) -> str:
+    """Get the weather for a given city."""
+    return f"The weather in {city} is sunny."
+```
+
+
+Expose a specialist as a tool
+
+```typescript
+import { Agent } from "@openai/agents";
+
+const summarizer = new Agent({
+  name: "Summarizer",
+  instructions: "Generate a concise summary of the supplied text.",
+});
+
+const mainAgent = new Agent({
+  name: "Research assistant",
+  tools: [
+    summarizer.asTool({
+      toolName: "summarize_text",
+      toolDescription: "Generate a concise summary of the supplied text.",
+    }),
+  ],
+});
+```
+
+```python
+from agents import Agent
+
+summarizer = Agent(
+    name="Summarizer",
+    instructions="Generate a concise summary of the supplied text.",
+)
+
+main_agent = Agent(
+    name="Research assistant",
+    tools=[
+        summarizer.as_tool(
+            tool_name="summarize_text",
+            tool_description="Generate a concise summary of the supplied text.",
+        )
+    ],
+)
+```
+
+
+Use [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents) when you are shaping a single specialist, [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration) when tools affect ownership, [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals) when tools affect approvals, and [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability#mcp) when the capability comes from MCP.

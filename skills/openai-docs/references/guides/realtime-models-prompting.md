@@ -482,4 +482,4 @@ This guide is long but not exhaustive! For more in a specific area, see the foll
 - [Function calling](https://developers.openai.com/api/docs/guides/realtime-function-calling): How to call functions in your realtime app
 - [MCP servers](https://developers.openai.com/api/docs/guides/realtime-mcp): How to use MCP servers to access additional tools in realtime apps
 - [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription): How to transcribe audio with the Realtime API
-- [Voice agents](https://openai.github.io/openai-agents-js/guides/voice-agents/quickstart/): A quickstart for building a voice agent with the Agents SDK
+- [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents): A guide for building voice agents with the Agents SDK

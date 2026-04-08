@@ -963,7 +963,7 @@ batch jobs.
     BATCH_NAME="batches/123456" # Your batch job name
 
     # Delete the batch job
-    curl https://generativelanguage.googleapis.com/v1beta/$BATCH_NAME:delete \
+    curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/$BATCH_NAME" \
     -H "x-goog-api-key: $GEMINI_API_KEY"
 
 ## Generating images in batch

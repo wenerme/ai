@@ -39,19 +39,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/CreateGuardrailResponse'
         '400':
-          description: Bad Request - Invalid request parameters
+          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '401':
-          description: Unauthorized - Missing or invalid authentication
+          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:
@@ -65,10 +65,14 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    CreateGuardrailRequestResetInterval:
-      type: object
-      properties: {}
-      title: CreateGuardrailRequestResetInterval
+    GuardrailInterval:
+      type: string
+      enum:
+        - daily
+        - weekly
+        - monthly
+      description: Interval at which the limit resets (daily, weekly, monthly)
+      title: GuardrailInterval
     CreateGuardrailRequest:
       type: object
       properties:
@@ -85,7 +89,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          $ref: '#/components/schemas/CreateGuardrailRequestResetInterval'
+          $ref: '#/components/schemas/GuardrailInterval'
         allowed_providers:
           type:
             - array
@@ -115,18 +119,6 @@ components:
       required:
         - name
       title: CreateGuardrailRequest
-    GuardrailInterval:
-      type: string
-      enum:
-        - daily
-        - weekly
-        - monthly
-      description: Interval at which the limit resets (daily, weekly, monthly)
-      title: GuardrailInterval
-    CreateGuardrailResponseDataResetInterval:
-      type: object
-      properties: {}
-      title: CreateGuardrailResponseDataResetInterval
     CreateGuardrailResponseData:
       type: object
       properties:
@@ -147,7 +139,7 @@ components:
           format: double
           description: Spending limit in USD
         reset_interval:
-          $ref: '#/components/schemas/CreateGuardrailResponseDataResetInterval'
+          $ref: '#/components/schemas/GuardrailInterval'
         allowed_providers:
           type:
             - array

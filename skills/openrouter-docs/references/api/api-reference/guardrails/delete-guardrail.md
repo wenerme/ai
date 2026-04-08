@@ -45,19 +45,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteGuardrailResponse'
         '401':
-          description: Unauthorized - Missing or invalid authentication
+          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: Not Found - Guardrail does not exist
+          description: Not Found - Resource does not exist
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:

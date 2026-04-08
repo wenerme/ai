@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ SAML ](https://developers.cloudflare.com/search/?tags=SAML) 
+
 Was this helpful?
 
 YesNo
@@ -22,9 +26,9 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-* [ Dashboard ](#tab-panel-3662)
-* [ API ](#tab-panel-3663)
-* [ Terraform (v5) ](#tab-panel-3664)
+* [ Dashboard ](#tab-panel-3668)
+* [ API ](#tab-panel-3669)
+* [ Terraform (v5) ](#tab-panel-3670)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.

@@ -66,8 +66,8 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-4355)
-* [  Python ](#tab-panel-4356)
+* [  JavaScript ](#tab-panel-4361)
+* [  Python ](#tab-panel-4362)
 
 JavaScript
 
@@ -109,14 +109,14 @@ assert not id1.equals(id2), "Different unique ids should never be equal."
 
 `name` is an optional property of a `DurableObjectId`, which returns the name that was used to create the `DurableObjectId` via [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the `DurableObjectId` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-The `name` property is available on `ctx.id` inside the Durable Object. Names longer than 1,024 bytes are not passed through and will be `undefined` on `ctx.id`.
+The `name` property is available on `ctx.id` inside the Durable Object when the caller uses `idFromName()` or `getByName()`. If the caller accesses the Durable Object using `idFromString()`, `ctx.id.name` will be `undefined`, even if the ID was originally created with `idFromName()`. Names longer than 1,024 bytes are not passed through and will be `undefined` on `ctx.id`.
 
 Note
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-4357)
-* [  Python ](#tab-panel-4358)
+* [  JavaScript ](#tab-panel-4363)
+* [  Python ](#tab-panel-4364)
 
 JavaScript
 

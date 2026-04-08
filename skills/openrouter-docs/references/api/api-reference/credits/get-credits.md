@@ -45,7 +45,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '403':
-          description: Forbidden - Only management keys can fetch credits
+          description: Forbidden - Authentication successful but insufficient permissions
           content:
             application/json:
               schema:

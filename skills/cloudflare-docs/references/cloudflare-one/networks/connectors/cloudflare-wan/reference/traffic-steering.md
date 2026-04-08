@@ -27,6 +27,10 @@ The Cloudflare Virtual Network is a virtual network overlay, private to your acc
 
 The Cloudflare Virtual Network supports routing the Cloudflare WAN traffic through anycast tunnels using [GRE and Internet Protocol Security (IPsec)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/) or [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/). You can add entries to the Cloudflare Virtual Network routing table through static route configuration or through routes learned through BGP peering (beta). Traffic can also be routed automatically according to tracked flow state.
 
+Note 
+
+For a conceptual overview of virtual networks, including how they work across Cloudflare products, refer to [Virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/). Cloudflare WAN connections (IPsec, GRE, CNI) currently use only the default virtual network.
+
 ### Allowed IP ranges
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:

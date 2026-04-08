@@ -1,6 +1,6 @@
 ---
 title: Virtual networks
-description: Virtual networks allow you to connect private networks that have overlapping IP ranges without creating conflicts for users or services.
+description: Virtual networks provide routing isolation within your Cloudflare account. Each virtual network maintains its own routing table, allowing you to separate traffic between different environments, partners, or applications.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -35,9 +35,11 @@ Feature availability
 | Android  | ✅            |
 | ChromeOS | ✅            |
 
-Virtual networks allow you to connect private networks that have overlapping IP ranges without creating conflicts for users or services.
+Virtual networks provide routing isolation within your Cloudflare account. Each virtual network maintains its own routing table, allowing you to separate traffic between different environments, partners, or applications.
 
-For example, an organization may have separate "production" and "staging" VPC networks that both use the same private IP range (such as `10.128.0.0/24`). Without virtual networks, Cloudflare cannot distinguish between `10.128.0.1` in production and `10.128.0.1` in staging. By creating two virtual networks, you can deterministically route traffic to the correct environment. Users select which virtual network they want to connect to in the Cloudflare One Client GUI.
+For example, an organization may have separate "production" and "staging" VPC networks that both use the same private IP range (such as `10.128.0.0/24`). Without virtual networks, Cloudflare cannot distinguish between `10.128.0.1` in production and `10.128.0.1` in staging. By creating two virtual networks, you can deterministically route traffic to the correct environment. Users select which virtual network they want to connect to in the Cloudflare One Client.
+
+For a conceptual overview of virtual networks, including how they work across Cloudflare products, refer to [Virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
 
 ## Use cases
 
@@ -58,9 +60,9 @@ Here are a few scenarios where virtual networks may prove useful:
 
 In this example, "private network" refers to a distinct environment (such as staging or production) that has its own overlapping IP address space (`10.128.0.1/32` staging and `10.128.0.1/32` production). If your environments use non-overlapping IPs, you do not need a separate tunnel for each. Instead, you can add multiple routes to a single tunnel.
 
-* [ Dashboard ](#tab-panel-3523)
-* [ Terraform (v5) ](#tab-panel-3524)
-* [ Locally-managed tunnels ](#tab-panel-3525)
+* [ Dashboard ](#tab-panel-3529)
+* [ Terraform (v5) ](#tab-panel-3530)
+* [ Locally-managed tunnels ](#tab-panel-3531)
 
 To route overlapping IPs over virtual networks:
 
@@ -206,8 +208,8 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 
 ## Delete a virtual network
 
-* [ Dashboard ](#tab-panel-3519)
-* [ Locally-managed tunnels ](#tab-panel-3520)
+* [ Dashboard ](#tab-panel-3525)
+* [ Locally-managed tunnels ](#tab-panel-3526)
 
 To delete a virtual network:
 
@@ -242,8 +244,8 @@ You can verify that the virtual network was successfully deleted by typing `clou
 
 ### Windows, macOS, and Linux
 
-* [ Version 2026.2+ ](#tab-panel-3521)
-* [ Version 2026.1 and earlier ](#tab-panel-3522)
+* [ Version 2026.2+ ](#tab-panel-3527)
+* [ Version 2026.1 and earlier ](#tab-panel-3528)
 
 1. Open the Cloudflare One Client.
 2. Go to **Home**.

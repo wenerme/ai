@@ -1,6 +1,6 @@
 ---
 title: Enable DMARC Management
-description: You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains and not domains in subdomain setups.
+description: You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains (for example, example.com, not blog.example.com) and not domains in subdomain setups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Enable DMARC Management
 
-You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains and not domains in [subdomain setups](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
+You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains (for example, `example.com`, not `blog.example.com`) and not domains in [subdomain setups](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
 A warning on DMARC Management and SPF records
 
@@ -29,7 +29,7 @@ To enable DMARC Management:
 3. Select **Enable DMARC Management**.
 4. DMARC Management will scan your zone for DMARC records, and will present you with two outcomes:  
    * If no DMARC record is found, Cloudflare will automatically invite you to add one that you can edit later. Select **Add** to continue.  
-   * If a DMARC record is found in your zone, Cloudflare will add another `rua` entry to it. This additional `rua` tag has a Cloudflare email address and is needed for Cloudflare to be able to start processing DMARC reports on your behalf. Select **Next** to continue.
+   * If a DMARC record is found in your zone, Cloudflare will add another `rua` (Reporting URI for Aggregate data) entry to it. The `rua` tag specifies the URI (typically a `mailto:` address) where aggregate DMARC reports are sent. This additional entry uses a Cloudflare email address so that Cloudflare can receive and process DMARC reports on your behalf. Select **Next** to continue.
 
 DMARC Management (beta) is now active. However, it may take up to 24 hours to receive your first DMARC report and to display this information in DMARC Management.
 

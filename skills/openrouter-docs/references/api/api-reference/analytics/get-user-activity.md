@@ -61,7 +61,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ActivityResponse'
         '400':
-          description: Bad Request - Invalid date format or date range
+          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
               schema:
@@ -73,13 +73,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '403':
-          description: Forbidden - Only management keys can fetch activity
+          description: Forbidden - Authentication successful but insufficient permissions
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ForbiddenResponse'
         '404':
-          description: Not Found - User is not a member of the organization
+          description: Not Found - Resource does not exist
           content:
             application/json:
               schema:

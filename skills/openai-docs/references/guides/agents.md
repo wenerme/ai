@@ -1,46 +1,78 @@
-# Agents
+# Agents SDK
 
-Agents are systems that intelligently accomplish tasks—from simple goals to complex, open-ended workflows. OpenAI provides models with agentic strengths, a toolkit for agent creation and deploys, and dashboard features for monitoring and optimizing agents.
+Agents are applications that plan, call tools, collaborate across specialists, and keep enough state to complete multi-step work.
 
-## AgentKit
+- Use the **Agents SDK** pages when your application owns orchestration, tool execution, approvals, and state.
+- Use **Agent Builder** only when you specifically want the hosted workflow editor and ChatKit path.
 
-AgentKit is a modular toolkit for building, deploying, and optimizing agents.
+## Get the SDKs
 
-## How to build an agent
+Use the GitHub repositories for installation, issues, examples, and language-specific reference details.
 
-Building an agent is a process of designing workflows and connecting pieces of the OpenAI platform to meet your goals. Agent Builder brings all these primitives into one UI.
+<div class="not-prose mt-4 grid gap-3">
+  <a
+    href="https://github.com/openai/openai-agents-js"
+    class="block no-underline hover:no-underline"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    
 
-| <div style={{ minWidth: '150px', whiteSpace: 'nowrap' }}>Goal</div> | What to use                                                                                                                                             | Description                                                                                                                                                                                                                                                                                                               |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Build an agent workflow                                             | [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder)                                                                                                         | Visual canvas for creating agent workflows. Brings models, tools, knowledge, and logic all into one place.                                                                                                                                                                                                                |
-| Connect to LLMs                                                     | [OpenAI models](https://developers.openai.com/api/docs/models)                                                                                                                       | Core intelligence capable of reasoning, making decisions, and processing data. Select your model in Agent Builder.                                                                                                                                                                                                        |
-| Equip your agent                                                    | [Tools](https://developers.openai.com/api/docs/guides/node-reference#tool-nodes), [guardrails](https://developers.openai.com/api/docs/guides/node-reference#guardrails)                                           | Access to third-party services with connectors and MCP, search vector stores, and prevent misuse. See [Function calling](https://developers.openai.com/api/docs/guides/function-calling), [Web search](https://developers.openai.com/api/docs/guides/tools-web-search), [File search](https://developers.openai.com/api/docs/guides/tools-file-search), and [Computer use](https://developers.openai.com/api/docs/guides/tools-computer-use). |
-| Provide knowledge and memory                                        | [Vector stores](https://developers.openai.com/api/docs/guides/retrieval#vector-stores), [file search](https://developers.openai.com/api/docs/guides/tools-file-search), [embeddings](https://developers.openai.com/api/docs/guides/embeddings) | External and persistent knowledge for more relevant information for your use case, hosted by OpenAI.                                                                                                                                                                                                                      |
-| Add control-flow logic                                              | [Logic nodes](https://developers.openai.com/api/docs/guides/node-reference#logic-nodes)                                                                                              | Custom logic for how agents work together, handle conditions, and route to other agents.                                                                                                                                                                                                                                  |
-| Write your own code                                                 | [Agents SDK](https://developers.openai.com/api/docs/guides/agents-sdk)                                                                                                               | Build agentic applications, with tools and orchestration, instead of using Agent Builder as the backend.                                                                                                                                                                                                                  |
+<span slot="icon">
+        </span>
+      Open the TypeScript SDK repository on GitHub.
 
-To build a voice agent that understands audio and responds in natural language, see the [voice agents docs](https://developers.openai.com/api/docs/guides/voice-agents). Voice agents are not supported in Agent Builder.
 
-## Deploy agents in your product
+  </a>
+  <a
+    href="https://github.com/openai/openai-agents-python"
+    class="block no-underline hover:no-underline"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    
 
-When you're ready to bring your agent to production, use ChatKit to bring the agent workflow into your product UI, with an embeddable chat connected to your agentic backend.
+<span slot="icon">
+        </span>
+      Open the Python SDK repository on GitHub.
 
-| <div style={{ minWidth: '175px', whiteSpace: 'nowrap' }}>Goal</div> | <div style={{ minWidth: '130px', whiteSpace: 'nowrap' }}>What to use</div> | Description                                                                                       |
-| ------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Embed your agent                                                    | [ChatKit](https://developers.openai.com/api/docs/guides/chatkit)                                        | Customizable UI component. Paste your workflow ID to embed your agent workflow in your product.   |
-| Get more customization                                              | [Advanced ChatKit](https://developers.openai.com/api/docs/guides/agents-sdk)                            | Run ChatKit on your own infrastructure. Use widgets and connect to any agentic backend with SDKs. |
 
-## Optimize agent performance
+  </a>
+</div>
 
-Use the OpenAI platform to evaluate agent performance and automate improvements.
+## Choose your starting point
 
-| <div style={{ minWidth: '175px', whiteSpace: 'nowrap' }}>Goal</div> | <div style={{ minWidth: '130px', whiteSpace: 'nowrap' }}>What to use</div> | Description                                                                        |
-| ------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Evaluate agent performance                                          | [Evals features](https://developers.openai.com/api/docs/guides/agent-evals)                             | Full evaluation platform, including support for external model evaluation.         |
-| Automate trace grading                                              | [Trace grading](https://developers.openai.com/api/docs/guides/trace-grading)                            | Develop, deploy, monitor, and improve agents.                                      |
-| Build and track evals                                               | [Datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started)                    | A collaborative interface to build agent-level evals in a test environment.        |
-| Optimize prompts                                                    | [Prompt optimizer](https://developers.openai.com/api/docs/guides/prompt-optimizer)                      | Measure agent performance, identify areas for improvement, and refine your agents. |
+| If you want to                           | Start here                                                                                                                                             | Why                                                                                     |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| Build a code-first agent app             | [Quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart)                                                                                                       | This is the shortest path to a working SDK integration.                                 |
+| Define one specialist cleanly            | [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents)                                                                                             | Start here when you are still shaping the contract for a single agent.                  |
+| Choose models, defaults, and transport   | [Models and providers](https://developers.openai.com/api/docs/guides/agents/models)                                                                                                 | Use this when model choice, provider setup, or transport strategy affects the workflow. |
+| Understand the runtime loop and state    | [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)                                                                                               | This is where the agent loop, streaming, and continuation strategies live.              |
+| Design specialist ownership              | [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)                                                                                    | Use this when you need more than one agent and must decide who owns the reply.          |
+| Add validation or human review           | [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)                                                                            | Use this when the workflow should block or pause before risky work continues.           |
+| Understand what a run returns            | [Results and state](https://developers.openai.com/api/docs/guides/agents/results)                                                                                                   | This page explains final output, resumable state, and next-turn surfaces.               |
+| Add hosted tools, function tools, or MCP | [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk) and [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) | Tool semantics live in the platform tools docs; SDK-specific MCP and tracing live here. |
+| Inspect and improve runs                 | [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) and [evaluate agent workflows](https://developers.openai.com/api/docs/guides/agent-evals)      | Use traces for debugging first, then move into evaluation loops.                        |
+| Build a voice-first workflow             | [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)                                                                                                          | Voice is still an SDK-first path because Agent Builder doesn't support it.              |
 
-## Get started
+## Build with the SDK
 
-Design an agent workflow with [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder) →
+Use the SDK track when your server owns orchestration, tool execution, state, and approvals. That path is the best fit when you want:
+
+- typed application code in TypeScript or Python
+- direct control over tools, MCP servers, and runtime behavior
+- custom storage or server-managed conversation strategies
+- tight integration with existing product logic or infrastructure
+
+A typical SDK reading order is:
+
+- Start with [Quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart) to get one working run on screen.
+- Use [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents) and [Models and providers](https://developers.openai.com/api/docs/guides/agents/models) to shape one specialist cleanly.
+- Continue to [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents), [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration), and [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals) as the workflow grows more complex.
+- Use [Results and state](https://developers.openai.com/api/docs/guides/agents/results) and [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) when application logic depends on the run object or deeper visibility into behavior.
+
+## Use Agent Builder for the hosted workflow path
+
+Use Agent Builder when you want OpenAI-hosted workflow creation, publishing, and ChatKit deployment. Those pages stay grouped together because they describe one product surface: building a workflow in the visual editor, publishing versions, embedding them, customizing the UI, and evaluating the results.
+
+Voice agents are an exception: they live in the SDK track because Agent Builder doesn't currently support voice workflows. Use [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) when you need speech-to-speech or chained voice pipelines.

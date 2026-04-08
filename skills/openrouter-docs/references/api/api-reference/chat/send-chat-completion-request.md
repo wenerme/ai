@@ -113,10 +113,21 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    ChatRequestProviderDataCollection:
-      type: object
-      properties: {}
-      title: ChatRequestProviderDataCollection
+    ProviderPreferencesDataCollection:
+      type: string
+      enum:
+        - deny
+        - allow
+      description: >-
+        Data collection setting. If no available model provider meets the
+        requirement, your request will return an error.
+
+        - allow: (default) allow providers which store user data non-transiently
+        and may train on it
+
+
+        - deny: use only providers which do not collect user data.
+      title: ProviderPreferencesDataCollection
     ProviderName:
       type: string
       enum:
@@ -197,21 +208,21 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ChatRequestProviderOrderItems:
+    ProviderPreferencesOrderItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ChatRequestProviderOrderItems
-    ChatRequestProviderOnlyItems:
+      title: ProviderPreferencesOrderItems
+    ProviderPreferencesOnlyItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ChatRequestProviderOnlyItems
-    ChatRequestProviderIgnoreItems:
+      title: ProviderPreferencesOnlyItems
+    ProviderPreferencesIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ChatRequestProviderIgnoreItems
+      title: ProviderPreferencesIgnoreItems
     Quantization:
       type: string
       enum:
@@ -225,72 +236,115 @@ components:
         - fp32
         - unknown
       title: Quantization
-    ChatRequestProviderSort:
+    ProviderSort:
+      type: string
+      enum:
+        - price
+        - throughput
+        - latency
+        - exacto
+      description: The provider sorting strategy (price, throughput, latency)
+      title: ProviderSort
+    ProviderSortConfigBy:
+      type: string
+      enum:
+        - price
+        - throughput
+        - latency
+        - exacto
+      description: The provider sorting strategy (price, throughput, latency)
+      title: ProviderSortConfigBy
+    ProviderSortConfigPartition:
+      type: string
+      enum:
+        - model
+        - none
+      description: >-
+        Partitioning strategy for sorting: "model" (default) groups endpoints by
+        model before sorting (fallback models remain fallbacks), "none" sorts
+        all endpoints together regardless of model.
+      title: ProviderSortConfigPartition
+    ProviderSortConfig:
       type: object
-      properties: {}
-      title: ChatRequestProviderSort
+      properties:
+        by:
+          oneOf:
+            - $ref: '#/components/schemas/ProviderSortConfigBy'
+            - type: 'null'
+          description: The provider sorting strategy (price, throughput, latency)
+        partition:
+          oneOf:
+            - $ref: '#/components/schemas/ProviderSortConfigPartition'
+            - type: 'null'
+          description: >-
+            Partitioning strategy for sorting: "model" (default) groups
+            endpoints by model before sorting (fallback models remain
+            fallbacks), "none" sorts all endpoints together regardless of model.
+      description: The provider sorting strategy (price, throughput, latency)
+      title: ProviderSortConfig
+    ProviderPreferencesSort:
+      oneOf:
+        - $ref: '#/components/schemas/ProviderSort'
+        - $ref: '#/components/schemas/ProviderSortConfig'
+        - description: Any type
+      description: >-
+        The sorting strategy to use for this request, if "order" is not
+        specified. When set, no load balancing is performed.
+      title: ProviderPreferencesSort
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ChatRequestProviderMaxPriceCompletion:
+    ProviderPreferencesMaxPriceCompletion:
       type: object
       properties: {}
-      title: ChatRequestProviderMaxPriceCompletion
-    ChatRequestProviderMaxPriceImage:
+      title: ProviderPreferencesMaxPriceCompletion
+    ProviderPreferencesMaxPriceImage:
       type: object
       properties: {}
-      title: ChatRequestProviderMaxPriceImage
-    ChatRequestProviderMaxPriceAudio:
+      title: ProviderPreferencesMaxPriceImage
+    ProviderPreferencesMaxPriceAudio:
       type: object
       properties: {}
-      title: ChatRequestProviderMaxPriceAudio
-    ChatRequestProviderMaxPriceRequest:
+      title: ProviderPreferencesMaxPriceAudio
+    ProviderPreferencesMaxPriceRequest:
       type: object
       properties: {}
-      title: ChatRequestProviderMaxPriceRequest
-    ChatRequestProviderMaxPrice:
+      title: ProviderPreferencesMaxPriceRequest
+    ProviderPreferencesMaxPrice:
       type: object
       properties:
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ChatRequestProviderMaxPriceCompletion'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
         image:
-          $ref: '#/components/schemas/ChatRequestProviderMaxPriceImage'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
         audio:
-          $ref: '#/components/schemas/ChatRequestProviderMaxPriceAudio'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
         request:
-          $ref: '#/components/schemas/ChatRequestProviderMaxPriceRequest'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
-      title: ChatRequestProviderMaxPrice
+      title: ProviderPreferencesMaxPrice
     PercentileThroughputCutoffs:
       type: object
       properties:
         p50:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-
@@ -315,27 +369,19 @@ components:
       type: object
       properties:
         p50:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -355,7 +401,7 @@ components:
         using fallback models, this may cause a fallback model to be used
         instead of the primary model if it meets the threshold.
       title: PreferredMaxLatency
-    ChatRequestProvider:
+    ProviderPreferences:
       type: object
       properties:
         allow_fallbacks:
@@ -380,7 +426,18 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         data_collection:
-          $ref: '#/components/schemas/ChatRequestProviderDataCollection'
+          oneOf:
+            - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
+            - type: 'null'
+          description: >-
+            Data collection setting. If no available model provider meets the
+            requirement, your request will return an error.
+
+            - allow: (default) allow providers which store user data
+            non-transiently and may train on it
+
+
+            - deny: use only providers which do not collect user data.
         zdr:
           type:
             - boolean
@@ -402,7 +459,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatRequestProviderOrderItems'
+            $ref: '#/components/schemas/ProviderPreferencesOrderItems'
           description: >-
             An ordered list of provider slugs. The router will attempt to use
             the first provider in the subset of this list that supports your
@@ -414,7 +471,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatRequestProviderOnlyItems'
+            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
           description: >-
             List of provider slugs to allow. If provided, this list is merged
             with your account-wide allowed provider settings for this request.
@@ -423,7 +480,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ChatRequestProviderIgnoreItems'
+            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
             with your account-wide ignored provider settings for this request.
@@ -435,9 +492,12 @@ components:
             $ref: '#/components/schemas/Quantization'
           description: A list of quantization levels to filter the provider by.
         sort:
-          $ref: '#/components/schemas/ChatRequestProviderSort'
+          $ref: '#/components/schemas/ProviderPreferencesSort'
+          description: >-
+            The sorting strategy to use for this request, if "order" is not
+            specified. When set, no load balancing is performed.
         max_price:
-          $ref: '#/components/schemas/ChatRequestProviderMaxPrice'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
           description: >-
             The object specifying the maximum price you want to pay for this
             request. USD price per million tokens, for prompt and completion.
@@ -448,17 +508,17 @@ components:
       description: >-
         When multiple model providers are available, optionally indicate your
         routing preference.
-      title: ChatRequestProvider
-    ChatRequestPluginsItemsOneOf0Id:
+      title: ProviderPreferences
+    AutoRouterPluginId:
       type: string
       enum:
         - auto-router
-      title: ChatRequestPluginsItemsOneOf0Id
-    ChatRequestPluginsItems0:
+      title: AutoRouterPluginId
+    AutoRouterPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf0Id'
+          $ref: '#/components/schemas/AutoRouterPluginId'
         enabled:
           type: boolean
           description: >-
@@ -475,25 +535,25 @@ components:
             models list.
       required:
         - id
-      title: ChatRequestPluginsItems0
-    ChatRequestPluginsItemsOneOf1Id:
+      title: AutoRouterPlugin
+    ModerationPluginId:
       type: string
       enum:
         - moderation
-      title: ChatRequestPluginsItemsOneOf1Id
-    ChatRequestPluginsItems1:
+      title: ModerationPluginId
+    ModerationPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf1Id'
+          $ref: '#/components/schemas/ModerationPluginId'
       required:
         - id
-      title: ChatRequestPluginsItems1
-    ChatRequestPluginsItemsOneOf2Id:
+      title: ModerationPlugin
+    WebSearchPluginId:
       type: string
       enum:
         - web
-      title: ChatRequestPluginsItemsOneOf2Id
+      title: WebSearchPluginId
     WebSearchEngine:
       type: string
       enum:
@@ -503,19 +563,18 @@ components:
         - parallel
       description: The search engine to use for web search.
       title: WebSearchEngine
-    ChatRequestPluginsItems2:
+    WebSearchPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf2Id'
+          $ref: '#/components/schemas/WebSearchPluginId'
         enabled:
           type: boolean
           description: >-
             Set to false to disable the web-search plugin for this request.
             Defaults to true.
         max_results:
-          type: number
-          format: double
+          type: integer
         search_prompt:
           type: string
         engine:
@@ -538,12 +597,12 @@ components:
             "openai.com/blog").
       required:
         - id
-      title: ChatRequestPluginsItems2
-    ChatRequestPluginsItemsOneOf3Id:
+      title: WebSearchPlugin
+    FileParserPluginId:
       type: string
       enum:
         - file-parser
-      title: ChatRequestPluginsItemsOneOf3Id
+      title: FileParserPluginId
     PdfParserEngine0:
       type: string
       enum:
@@ -571,11 +630,11 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
-    ChatRequestPluginsItems3:
+    FileParserPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf3Id'
+          $ref: '#/components/schemas/FileParserPluginId'
         enabled:
           type: boolean
           description: >-
@@ -585,17 +644,17 @@ components:
           $ref: '#/components/schemas/PDFParserOptions'
       required:
         - id
-      title: ChatRequestPluginsItems3
-    ChatRequestPluginsItemsOneOf4Id:
+      title: FileParserPlugin
+    ResponseHealingPluginId:
       type: string
       enum:
         - response-healing
-      title: ChatRequestPluginsItemsOneOf4Id
-    ChatRequestPluginsItems4:
+      title: ResponseHealingPluginId
+    ResponseHealingPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf4Id'
+          $ref: '#/components/schemas/ResponseHealingPluginId'
         enabled:
           type: boolean
           description: >-
@@ -603,23 +662,23 @@ components:
             request. Defaults to true.
       required:
         - id
-      title: ChatRequestPluginsItems4
-    ChatRequestPluginsItemsOneOf5Id:
+      title: ResponseHealingPlugin
+    ContextCompressionPluginId:
       type: string
       enum:
         - context-compression
-      title: ChatRequestPluginsItemsOneOf5Id
+      title: ContextCompressionPluginId
     ContextCompressionEngine:
       type: string
       enum:
         - middle-out
       description: The compression engine to use. Defaults to "middle-out".
       title: ContextCompressionEngine
-    ChatRequestPluginsItems5:
+    ContextCompressionPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ChatRequestPluginsItemsOneOf5Id'
+          $ref: '#/components/schemas/ContextCompressionPluginId'
         enabled:
           type: boolean
           description: >-
@@ -629,17 +688,17 @@ components:
           $ref: '#/components/schemas/ContextCompressionEngine'
       required:
         - id
-      title: ChatRequestPluginsItems5
+      title: ContextCompressionPlugin
     ChatRequestPluginsItems:
       oneOf:
-        - $ref: '#/components/schemas/ChatRequestPluginsItems0'
-        - $ref: '#/components/schemas/ChatRequestPluginsItems1'
-        - $ref: '#/components/schemas/ChatRequestPluginsItems2'
-        - $ref: '#/components/schemas/ChatRequestPluginsItems3'
-        - $ref: '#/components/schemas/ChatRequestPluginsItems4'
-        - $ref: '#/components/schemas/ChatRequestPluginsItems5'
+        - $ref: '#/components/schemas/AutoRouterPlugin'
+        - $ref: '#/components/schemas/ModerationPlugin'
+        - $ref: '#/components/schemas/WebSearchPlugin'
+        - $ref: '#/components/schemas/FileParserPlugin'
+        - $ref: '#/components/schemas/ResponseHealingPlugin'
+        - $ref: '#/components/schemas/ContextCompressionPlugin'
       title: ChatRequestPluginsItems
-    ChatRequestTrace:
+    TraceConfig:
       type: object
       properties:
         trace_id:
@@ -657,7 +716,7 @@ components:
         trace_name, span_name, generation_name, parent_span_id) have special
         handling. Additional keys are passed through as custom metadata to
         configured broadcast destinations.
-      title: ChatRequestTrace
+      title: TraceConfig
     ChatSystemMessageRole:
       type: string
       enum:
@@ -1004,7 +1063,7 @@ components:
       enum:
         - reasoning.summary
       title: ReasoningDetailSummaryType
-    ReasoningDetailSummaryFormat:
+    ReasoningFormat:
       type: string
       enum:
         - unknown
@@ -1013,7 +1072,7 @@ components:
         - xai-responses-v1
         - anthropic-claude-v1
         - google-gemini-v1
-      title: ReasoningDetailSummaryFormat
+      title: ReasoningFormat
     ReasoningDetailSummary:
       type: object
       properties:
@@ -1026,12 +1085,9 @@ components:
             - string
             - 'null'
         format:
-          oneOf:
-            - $ref: '#/components/schemas/ReasoningDetailSummaryFormat'
-            - type: 'null'
+          $ref: '#/components/schemas/ReasoningFormat'
         index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - summary
@@ -1042,16 +1098,6 @@ components:
       enum:
         - reasoning.encrypted
       title: ReasoningDetailEncryptedType
-    ReasoningDetailEncryptedFormat:
-      type: string
-      enum:
-        - unknown
-        - openai-responses-v1
-        - azure-openai-responses-v1
-        - xai-responses-v1
-        - anthropic-claude-v1
-        - google-gemini-v1
-      title: ReasoningDetailEncryptedFormat
     ReasoningDetailEncrypted:
       type: object
       properties:
@@ -1064,12 +1110,9 @@ components:
             - string
             - 'null'
         format:
-          oneOf:
-            - $ref: '#/components/schemas/ReasoningDetailEncryptedFormat'
-            - type: 'null'
+          $ref: '#/components/schemas/ReasoningFormat'
         index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - data
@@ -1080,16 +1123,6 @@ components:
       enum:
         - reasoning.text
       title: ReasoningDetailTextType
-    ReasoningDetailTextFormat:
-      type: string
-      enum:
-        - unknown
-        - openai-responses-v1
-        - azure-openai-responses-v1
-        - xai-responses-v1
-        - anthropic-claude-v1
-        - google-gemini-v1
-      title: ReasoningDetailTextFormat
     ReasoningDetailText:
       type: object
       properties:
@@ -1108,12 +1141,9 @@ components:
             - string
             - 'null'
         format:
-          oneOf:
-            - $ref: '#/components/schemas/ReasoningDetailTextFormat'
-            - type: 'null'
+          $ref: '#/components/schemas/ReasoningFormat'
         index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
       description: Reasoning detail text schema
@@ -1591,15 +1621,13 @@ components:
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
             native provider search.
         max_total_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum total number of search results across all search calls in a
             single request. Once this limit is reached, the tool will stop
@@ -1655,15 +1683,13 @@ components:
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
             native provider search.
         max_total_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum total number of search results across all search calls in a
             single request. Once this limit is reached, the tool will stop
@@ -1757,12 +1783,7 @@ components:
       type: object
       properties:
         provider:
-          oneOf:
-            - $ref: '#/components/schemas/ChatRequestProvider'
-            - type: 'null'
-          description: >-
-            When multiple model providers are available, optionally indicate
-            your routing preference.
+          $ref: '#/components/schemas/ProviderPreferences'
         plugins:
           type: array
           items:
@@ -1770,6 +1791,8 @@ components:
           description: >-
             Plugins you want to enable for this request, including their
             settings.
+        route:
+          description: Any type
         user:
           type: string
           description: Unique user identifier
@@ -1781,12 +1804,7 @@ components:
             both the request body and the x-session-id header, the body value
             takes precedence. Maximum of 256 characters.
         trace:
-          $ref: '#/components/schemas/ChatRequestTrace'
-          description: >-
-            Metadata for observability and tracing. Known keys (trace_id,
-            trace_name, span_name, generation_name, parent_span_id) have special
-            handling. Additional keys are passed through as custom metadata to
-            configured broadcast destinations.
+          $ref: '#/components/schemas/TraceConfig'
         messages:
           type: array
           items:

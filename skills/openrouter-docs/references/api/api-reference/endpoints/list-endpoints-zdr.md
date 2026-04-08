@@ -317,8 +317,7 @@ components:
         model_name:
           type: string
         context_length:
-          type: number
-          format: double
+          type: integer
         pricing:
           $ref: '#/components/schemas/PublicEndpointPricing'
         provider_name:
@@ -328,15 +327,9 @@ components:
         quantization:
           $ref: '#/components/schemas/PublicEndpointQuantization'
         max_completion_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         max_prompt_tokens:
-          type:
-            - number
-            - 'null'
-          format: double
+          type: integer
         supported_parameters:
           type: array
           items:
@@ -344,23 +337,17 @@ components:
         status:
           $ref: '#/components/schemas/EndpointStatus'
         uptime_last_30m:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
         uptime_last_5m:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: >-
             Uptime percentage over the last 5 minutes, calculated as successful
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
         uptime_last_1d:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: >-
             Uptime percentage over the last 1 day, calculated as successful

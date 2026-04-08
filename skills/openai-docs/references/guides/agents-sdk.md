@@ -7,11 +7,10 @@ Welcome to the OpenAI Agents SDK. This library makes it straightforward to build
 Access the latest version in the following GitHub repositories:
 
 - [Agents SDK Python](https://github.com/openai/openai-agents-python)
-- [Agents SDK TypeScript](https://openai.github.io/openai-agents-js)
+- [Agents SDK TypeScript](https://github.com/openai/openai-agents-js)
 
 ## Documentation
 
-Documentation for the Agents SDK lives in the SDK docs:
+Documentation for the Agents SDK lives in the platform guides:
 
-- [Agents SDK JavaScript](https://openai.github.io/openai-agents-js)
-- [Agents SDK Python](https://openai.github.io/openai-agents-python)
+- [Agents SDK](https://developers.openai.com/api/docs/guides/agents)

@@ -26,9 +26,9 @@ This block also applies for requests to [unproxied DNS records](https://develope
 
 Warning
 
-Note that the certificate Cloudflare provides for you to [set up Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) is not exclusive to your account, only guaranteeing that a request is coming from the Cloudflare network.
+The Cloudflare-provided certificate used by [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/) is not exclusive to your account. It only guarantees that a request is coming from the Cloudflare network.
 
-For more strict security, you should set up Authenticated Origin Pulls with your own certificate and consider [other security measures for your origin](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
+For stricter security, set up [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) or [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP with your own certificate and consider [other security measures for your origin](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
 
 ## Detailed explanation
 

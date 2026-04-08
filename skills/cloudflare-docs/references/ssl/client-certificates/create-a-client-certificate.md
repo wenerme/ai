@@ -1,6 +1,6 @@
 ---
 title: Create a client certificate
-description: To create a client certificate on the Cloudflare dashboard:
+description: Use Cloudflare's public key infrastructure (PKI) to create client certificates issued from a Cloudflare-managed CA. You can then complete your mTLS configuration, as explained in How mTLS works.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,11 +16,18 @@ Copy page
 
 # Create a client certificate
 
+Use Cloudflare's public key infrastructure (PKI) to create client certificates issued from a Cloudflare-managed CA. You can then complete your mTLS configuration, as explained in [How mTLS works](https://developers.cloudflare.com/ssl/client-certificates/#how-it-works).
+
+Cloudflare-issued or BYOCA
+
+The following process only refers to certificates issued from the Cloudflare-managed CA. To bring your own CA, refer to [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/) instead. Only available to Enterprise accounts.
+
 To create a client certificate on the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
+1. Go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
-2. Select **Create Certificate** and fill in the required fields. You can choose one of the following options:
+2. Select **Add Certificate**. The Cloudflare-managed CA is the default **Certificate Authority**.
+3. Fill in the required fields. You can choose one of the following options:
 * Generate a private key and Certificate Signing Request (CSR) with Cloudflare.
 * Use your own private key and CSR. This option allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).  
 Example OpenSSL command  
@@ -29,14 +36,11 @@ Terminal window
 ```  
 openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'  
 ```
-
-Note
-
-Client certificates created on the dashboard are issued by a [Cloudflare-managed CA](https://developers.cloudflare.com/ssl/client-certificates/#how-it-works). If you need to use certificates issued by another CA, use the API to [bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/) instead.
-
-1. Select a value for **Certificate Validity**, and choose **Create**.
+1. Select a value for **Certificate Validity**, and choose **Continue**.
 2. Make sure to copy the certificate and private key as they will no longer be displayed after creation.
-3. Select **OK** to confirm.
+3. (Optional) Specify hostnames where you wish to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/).  
+When associating hostnames via this form, they should be in fully qualified domain name (FQDN) format and correspond to a hostname that exists in the zone you are in. For example, if you are in zone `example.com`, you can specify `host.example.com` but not `host.example.net`.
+4. Select **Save** to confirm.
 
 ## Next steps
 

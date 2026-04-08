@@ -36,7 +36,9 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.organization.listMembers();
 
-  console.log(result);
+  for await (const page of result) {
+    console.log(page);
+  }
 }
 
 run();
@@ -63,7 +65,9 @@ async function run() {
   const res = await organizationListMembers(openRouter);
   if (res.ok) {
     const { value: result } = res;
-    console.log(result);
+    for await (const page of result) {
+    console.log(page);
+  }
   } else {
     console.log("organizationListMembers failed:", res.error);
   }

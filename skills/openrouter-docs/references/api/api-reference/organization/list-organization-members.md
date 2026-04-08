@@ -52,19 +52,19 @@ paths:
                 $ref: >-
                   #/components/schemas/Organization_listOrganizationMembers_Response_200
         '401':
-          description: Unauthorized - Missing or invalid authentication
+          description: Unauthorized - Authentication required or invalid credentials
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
         '404':
-          description: Not Found - Organization not found
+          description: Not Found - Resource does not exist
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: This guide covers the steps you need to take to set up Security Center in your Cloudflare account for the first time.
+description: Security Center scans your Cloudflare account configuration and identifies potential security risks, misconfigurations, and vulnerabilities across your domains. This guide covers the initial setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,14 +16,16 @@ Copy page
 
 # Get started
 
-This guide covers the steps you need to take to set up Security Center in your Cloudflare account for the first time.
+Security Center scans your Cloudflare account configuration and identifies potential security risks, misconfigurations, and vulnerabilities across your domains. This guide covers the initial setup.
 
 ## Prerequisites
 
-* A Cloudflare account
-* At least one zone onboarded to Cloudflare
+* A Cloudflare account.
+* At least one [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) (domain or subdomain) added to your Cloudflare account.
 
 ## Enable Security Insights and start initial scan
+
+Security Insights scans are enabled by default. The scan reviews your Cloudflare account settings and product configurations across all your domains, then reports any issues it finds as [insights](https://developers.cloudflare.com/security-center/security-insights/) — potential security risks, misconfigurations, or vulnerabilities.
 
 Security Insights start scans by default. Security Insights will scan your Cloudflare environment and provide you with a list of detected [insights](https://developers.cloudflare.com/security-center/security-insights/). Refer to [How it works](https://developers.cloudflare.com/security-center/security-insights/how-it-works/) to learn more about how Security Insights perform a scan.
 
@@ -51,9 +53,20 @@ To manually start a scan:
 [ Go to **Infrastructure** ](https://dash.cloudflare.com/?to=/:account/security-center/inventory)
 2. Select **Scan now**.
 
-### Scan Frequency
+Note
 
-Once you enable Security Insights, Cloudflare performs scans at a [regular frequency](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency), according to your Cloudflare plan.
+Only accounts with at least one Business or Enterprise zone, or accounts on the Teams Standard or Teams Enterprise plan, can start manual scans. All plans receive automatic scans.
+
+### Scan frequency
+
+After you enable Security Insights, Cloudflare performs scans automatically on a recurring schedule based on your plan:
+
+| Plan                   | Scan frequency | On-demand scans |
+| ---------------------- | -------------- | --------------- |
+| Free, Pro, or Business | Every 7 days   | Yes             |
+| Enterprise             | Every 3 days   | Yes             |
+
+For more details, refer to [How it works](https://developers.cloudflare.com/security-center/security-insights/how-it-works/#scan-frequency).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/security-center/","name":"Security Center"}},{"@type":"ListItem","position":3,"item":{"@id":"/security-center/get-started/","name":"Get started"}}]}

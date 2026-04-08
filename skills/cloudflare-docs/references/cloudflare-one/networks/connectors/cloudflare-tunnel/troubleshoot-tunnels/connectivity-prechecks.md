@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 Was this helpful?
 
 YesNo
@@ -61,9 +65,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-3542)
-* [ US region ](#tab-panel-3543)
-* [ FedRAMP High region ](#tab-panel-3544)
+* [ Global region ](#tab-panel-3548)
+* [ US region ](#tab-panel-3549)
+* [ FedRAMP High region ](#tab-panel-3550)
 
 Terminal window
 

@@ -131,6 +131,17 @@ async function run() {
   const result = await openRouter.guardrails.create({
     createGuardrailRequest: {
       name: "My New Guardrail",
+      description: "A guardrail for limiting API usage",
+      limitUsd: 50,
+      resetInterval: "monthly",
+      allowedProviders: [
+        "openai",
+        "anthropic",
+        "deepseek",
+      ],
+      ignoredProviders: null,
+      allowedModels: null,
+      enforceZdr: false,
     },
   });
 
@@ -161,6 +172,17 @@ async function run() {
   const res = await guardrailsCreate(openRouter, {
     createGuardrailRequest: {
       name: "My New Guardrail",
+      description: "A guardrail for limiting API usage",
+      limitUsd: 50,
+      resetInterval: "monthly",
+      allowedProviders: [
+        "openai",
+        "anthropic",
+        "deepseek",
+      ],
+      ignoredProviders: null,
+      allowedModels: null,
+      enforceZdr: false,
     },
   });
   if (res.ok) {
@@ -300,7 +322,12 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.guardrails.update({
     id: "550e8400-e29b-41d4-a716-446655440000",
-    updateGuardrailRequest: {},
+    updateGuardrailRequest: {
+      name: "Updated Guardrail Name",
+      description: "Updated description",
+      limitUsd: 75,
+      resetInterval: "weekly",
+    },
   });
 
   console.log(result);
@@ -329,7 +356,12 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await guardrailsUpdate(openRouter, {
     id: "550e8400-e29b-41d4-a716-446655440000",
-    updateGuardrailRequest: {},
+    updateGuardrailRequest: {
+      name: "Updated Guardrail Name",
+      description: "Updated description",
+      limitUsd: 75,
+      resetInterval: "weekly",
+    },
   });
   if (res.ok) {
     const { value: result } = res;

@@ -16,7 +16,7 @@ Copy page
 
 # DNS lookup limit
 
-The [Sender Policy Framework (SPF) ↗](https://datatracker.ietf.org/doc/rfc4408/) specification has a limit on the number of DNS lookups required to fully resolve an SPF record. According to the specification, SPF must limit the number of DNS lookups to 10 per SPF check. If your SPF records exceed this number, your emails might not reach their destination.
+An [SPF record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/) lists which servers are authorized to send email for your domain. SPF records can reference other domains and services (for example, using `include:` or `mx` mechanisms), and each such reference requires a separate DNS lookup to verify. The [SPF specification (RFC 7208) ↗](https://www.rfc-editor.org/rfc/rfc7208.html) limits the total number of these lookups to 10 per SPF check. If your SPF record exceeds this limit, receiving mail servers may treat the SPF check as a permanent error and reject or flag your emails.
 
 To check if your SPF records are compliant with the SPF specification:
 
@@ -24,7 +24,7 @@ To check if your SPF records are compliant with the SPF specification:
 2. Go to **Email** \> **DMARC Management**.
 3. In **Email record overview**, select **View records**.
 4. Find your SPF record, and select the three dots next to it > **Edit**.
-5. DMARC Management will inspect your records and check for the total number of DNS lookups. If the record exceeds the maximum number of DNS lookups, DMARC Management will warn you about this. You should edit and remove unnecessary records in the DNS page. Refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#delete-dns-records) for more information on how to delete DNS records.
+5. DMARC Management will inspect your records and check for the total number of DNS lookups. If the record exceeds the limit, DMARC Management will display a warning. To fix this, remove unnecessary entries in your SPF record. Refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#delete-dns-records) for more information.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dmarc-management/","name":"DMARC Management"}},{"@type":"ListItem","position":3,"item":{"@id":"/dmarc-management/dns-lookup-limits/","name":"DNS lookup limit"}}]}

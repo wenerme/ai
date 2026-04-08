@@ -171,7 +171,7 @@ components:
         - $ref: '#/components/schemas/OutputItemReasoningStatus1'
         - $ref: '#/components/schemas/OutputItemReasoningStatus2'
       title: OutputItemReasoningStatus
-    ReasoningItemFormat:
+    ReasoningFormat:
       type: string
       enum:
         - unknown
@@ -180,7 +180,7 @@ components:
         - xai-responses-v1
         - anthropic-claude-v1
         - google-gemini-v1
-      title: ReasoningItemFormat
+      title: ReasoningFormat
     ReasoningItem:
       type: object
       properties:
@@ -209,9 +209,7 @@ components:
             - string
             - 'null'
         format:
-          oneOf:
-            - $ref: '#/components/schemas/ReasoningItemFormat'
-            - type: 'null'
+          $ref: '#/components/schemas/ReasoningFormat'
       required:
         - type
         - id
@@ -501,20 +499,23 @@ components:
       required:
         - role
       title: InputMessageItem
-    FunctionCallItemType:
+    OpenAiResponseFunctionToolCallType:
       type: string
       enum:
         - function_call
-      title: FunctionCallItemType
-    FunctionCallItemStatus:
-      type: object
-      properties: {}
-      title: FunctionCallItemStatus
+      title: OpenAiResponseFunctionToolCallType
+    ToolCallStatus:
+      type: string
+      enum:
+        - in_progress
+        - completed
+        - incomplete
+      title: ToolCallStatus
     FunctionCallItem:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/FunctionCallItemType'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallType'
         call_id:
           type: string
         name:
@@ -524,20 +525,56 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/FunctionCallItemStatus'
+          $ref: '#/components/schemas/ToolCallStatus'
       required:
         - type
         - call_id
         - name
         - arguments
-        - id
       description: A function call initiated by the model
       title: FunctionCallItem
-    FunctionCallOutputItemType:
+    OpenAiResponseFunctionToolCallOutputType:
       type: string
       enum:
         - function_call_output
-      title: FunctionCallOutputItemType
+      title: OpenAiResponseFunctionToolCallOutputType
+    InputImage:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/InputImageType'
+        detail:
+          $ref: '#/components/schemas/InputImageDetail'
+        image_url:
+          type:
+            - string
+            - 'null'
+      required:
+        - type
+        - detail
+      description: Image input content item
+      title: InputImage
+    OpenAiResponseFunctionToolCallOutputOutputOneOf1Items:
+      oneOf:
+        - $ref: '#/components/schemas/InputText'
+        - $ref: '#/components/schemas/InputImage'
+        - $ref: '#/components/schemas/InputFile'
+      title: OpenAiResponseFunctionToolCallOutputOutputOneOf1Items
+    OpenAiResponseFunctionToolCallOutputOutput1:
+      type: array
+      items:
+        $ref: >-
+          #/components/schemas/OpenAiResponseFunctionToolCallOutputOutputOneOf1Items
+      title: OpenAiResponseFunctionToolCallOutputOutput1
+    OpenAiResponseFunctionToolCallOutputOutput:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/OpenAiResponseFunctionToolCallOutputOutput1'
+      title: OpenAiResponseFunctionToolCallOutputOutput
+    OpenAiResponseFunctionToolCallOutputStatus:
+      type: object
+      properties: {}
+      title: OpenAiResponseFunctionToolCallOutputStatus
     FunctionCallOutputItemOutputOneOf1Items1:
       type: object
       properties:
@@ -570,15 +607,11 @@ components:
         - type: string
         - $ref: '#/components/schemas/FunctionCallOutputItemOutput1'
       title: FunctionCallOutputItemOutput
-    FunctionCallOutputItemStatus:
-      type: object
-      properties: {}
-      title: FunctionCallOutputItemStatus
     FunctionCallOutputItem:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/FunctionCallOutputItemType'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallOutputType'
         id:
           type:
             - string
@@ -588,7 +621,7 @@ components:
         output:
           $ref: '#/components/schemas/FunctionCallOutputItemOutput'
         status:
-          $ref: '#/components/schemas/FunctionCallOutputItemStatus'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallOutputStatus'
       required:
         - type
         - call_id
@@ -646,8 +679,7 @@ components:
         filename:
           type: string
         index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - file_id
@@ -669,11 +701,9 @@ components:
         title:
           type: string
         start_index:
-          type: number
-          format: double
+          type: integer
         end_index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - url
@@ -694,8 +724,7 @@ components:
         file_id:
           type: string
         index:
-          type: number
-          format: double
+          type: integer
       required:
         - type
         - file_id
@@ -715,8 +744,7 @@ components:
         bytes:
           type: array
           items:
-            type: number
-            format: double
+            type: integer
         logprob:
           type: number
           format: double
@@ -733,8 +761,7 @@ components:
         bytes:
           type: array
           items:
-            type: number
-            format: double
+            type: integer
         logprob:
           type: number
           format: double
@@ -856,17 +883,6 @@ components:
         - content
       description: An output message item
       title: InputsOneOf1Items5
-    OutputReasoningItemFormat:
-      type: string
-      enum:
-        - unknown
-        - openai-responses-v1
-        - azure-openai-responses-v1
-        - xai-responses-v1
-        - anthropic-claude-v1
-        - google-gemini-v1
-      description: The format of the reasoning content
-      title: OutputReasoningItemFormat
     InputsOneOf1Items6:
       type: object
       properties:
@@ -898,10 +914,7 @@ components:
             - 'null'
           description: A signature for the reasoning content, used for verification
         format:
-          oneOf:
-            - $ref: '#/components/schemas/OutputReasoningItemFormat'
-            - type: 'null'
-          description: The format of the reasoning content
+          $ref: '#/components/schemas/ReasoningFormat'
       required:
         - type
         - id
@@ -1127,13 +1140,6 @@ components:
       enum:
         - openrouter:datetime
       title: OutputDatetimeItemType
-    OutputDatetimeItemStatus:
-      type: string
-      enum:
-        - completed
-        - in_progress
-        - incomplete
-      title: OutputDatetimeItemStatus
     OutputDatetimeItem:
       type: object
       properties:
@@ -1142,7 +1148,7 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/OutputDatetimeItemStatus'
+          $ref: '#/components/schemas/ToolCallStatus'
         datetime:
           type: string
           description: ISO 8601 datetime string
@@ -1156,13 +1162,6 @@ components:
         - timezone
       description: An openrouter:datetime server tool output item
       title: OutputDatetimeItem
-    OutputServerToolItemStatus:
-      type: string
-      enum:
-        - completed
-        - in_progress
-        - incomplete
-      title: OutputServerToolItemStatus
     OutputServerToolItem:
       type: object
       properties:
@@ -1172,7 +1171,7 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/OutputServerToolItemStatus'
+          $ref: '#/components/schemas/ToolCallStatus'
       required:
         - type
         - status
@@ -1330,8 +1329,7 @@ components:
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
@@ -1359,8 +1357,7 @@ components:
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
@@ -1418,8 +1415,7 @@ components:
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
@@ -1447,8 +1443,7 @@ components:
         engine:
           $ref: '#/components/schemas/WebSearchEngineEnum'
         max_results:
-          type: number
-          format: double
+          type: integer
           description: >-
             Maximum number of search results to return per search call. Defaults
             to 5. Applies to Exa, Firecrawl, and Parallel engines; ignored with
@@ -1674,7 +1669,6 @@ components:
             type: string
         - $ref: '#/components/schemas/McpServerToolAllowedTools1'
         - description: Any type
-        - description: Any type
       title: McpServerToolAllowedTools
     McpServerToolConnectorId:
       type: string
@@ -1727,7 +1721,6 @@ components:
         - $ref: '#/components/schemas/McpServerToolRequireApproval0'
         - $ref: '#/components/schemas/McpServerToolRequireApproval1'
         - $ref: '#/components/schemas/McpServerToolRequireApproval2'
-        - description: Any type
         - description: Any type
       title: McpServerToolRequireApproval
     McpServerTool:
@@ -2216,7 +2209,7 @@ components:
             - type: 'null'
       description: Text output configuration including format and verbosity
       title: TextExtendedConfig
-    ReasoningEffortEnum:
+    ReasoningEffort:
       type: string
       enum:
         - xhigh
@@ -2225,21 +2218,21 @@ components:
         - low
         - minimal
         - none
-      title: ReasoningEffortEnum
-    ReasoningSummaryVerbosityEnum:
+      title: ReasoningEffort
+    ReasoningSummaryVerbosity:
       type: string
       enum:
         - auto
         - concise
         - detailed
-      title: ReasoningSummaryVerbosityEnum
+      title: ReasoningSummaryVerbosity
     ReasoningConfig:
       type: object
       properties:
         effort:
-          $ref: '#/components/schemas/ReasoningEffortEnum'
+          $ref: '#/components/schemas/ReasoningEffort'
         summary:
-          $ref: '#/components/schemas/ReasoningSummaryVerbosityEnum'
+          $ref: '#/components/schemas/ReasoningSummaryVerbosity'
         max_tokens:
           type: integer
         enabled:
@@ -2260,22 +2253,6 @@ components:
         - text
         - image
       title: OutputModalityEnum
-    InputImage:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/InputImageType'
-        detail:
-          $ref: '#/components/schemas/InputImageDetail'
-        image_url:
-          type:
-            - string
-            - 'null'
-      required:
-        - type
-        - detail
-      description: Image input content item
-      title: InputImage
     StoredPromptTemplateVariables:
       oneOf:
         - type: string
@@ -2322,7 +2299,7 @@ components:
         - auto
         - disabled
       title: OpenAIResponsesTruncation
-    DataCollection:
+    ProviderPreferencesDataCollection:
       type: string
       enum:
         - deny
@@ -2336,7 +2313,7 @@ components:
 
 
         - deny: use only providers which do not collect user data.
-      title: DataCollection
+      title: ProviderPreferencesDataCollection
     ProviderName:
       type: string
       enum:
@@ -2417,21 +2394,21 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ResponsesRequestProviderOrderItems:
+    ProviderPreferencesOrderItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ResponsesRequestProviderOrderItems
-    ResponsesRequestProviderOnlyItems:
+      title: ProviderPreferencesOrderItems
+    ProviderPreferencesOnlyItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ResponsesRequestProviderOnlyItems
-    ResponsesRequestProviderIgnoreItems:
+      title: ProviderPreferencesOnlyItems
+    ProviderPreferencesIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
-      title: ResponsesRequestProviderIgnoreItems
+      title: ProviderPreferencesIgnoreItems
     Quantization:
       type: string
       enum:
@@ -2491,7 +2468,7 @@ components:
             fallbacks), "none" sorts all endpoints together regardless of model.
       description: The provider sorting strategy (price, throughput, latency)
       title: ProviderSortConfig
-    ResponsesRequestProviderSort:
+    ProviderPreferencesSort:
       oneOf:
         - $ref: '#/components/schemas/ProviderSort'
         - $ref: '#/components/schemas/ProviderSortConfig'
@@ -2499,69 +2476,61 @@ components:
       description: >-
         The sorting strategy to use for this request, if "order" is not
         specified. When set, no load balancing is performed.
-      title: ResponsesRequestProviderSort
+      title: ProviderPreferencesSort
     BigNumberUnion:
       type: string
       description: Price per million prompt tokens
       title: BigNumberUnion
-    ResponsesRequestProviderMaxPriceCompletion:
+    ProviderPreferencesMaxPriceCompletion:
       type: object
       properties: {}
-      title: ResponsesRequestProviderMaxPriceCompletion
-    ResponsesRequestProviderMaxPriceImage:
+      title: ProviderPreferencesMaxPriceCompletion
+    ProviderPreferencesMaxPriceImage:
       type: object
       properties: {}
-      title: ResponsesRequestProviderMaxPriceImage
-    ResponsesRequestProviderMaxPriceAudio:
+      title: ProviderPreferencesMaxPriceImage
+    ProviderPreferencesMaxPriceAudio:
       type: object
       properties: {}
-      title: ResponsesRequestProviderMaxPriceAudio
-    ResponsesRequestProviderMaxPriceRequest:
+      title: ProviderPreferencesMaxPriceAudio
+    ProviderPreferencesMaxPriceRequest:
       type: object
       properties: {}
-      title: ResponsesRequestProviderMaxPriceRequest
-    ResponsesRequestProviderMaxPrice:
+      title: ProviderPreferencesMaxPriceRequest
+    ProviderPreferencesMaxPrice:
       type: object
       properties:
         prompt:
           $ref: '#/components/schemas/BigNumberUnion'
         completion:
-          $ref: '#/components/schemas/ResponsesRequestProviderMaxPriceCompletion'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
         image:
-          $ref: '#/components/schemas/ResponsesRequestProviderMaxPriceImage'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
         audio:
-          $ref: '#/components/schemas/ResponsesRequestProviderMaxPriceAudio'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
         request:
-          $ref: '#/components/schemas/ResponsesRequestProviderMaxPriceRequest'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
       description: >-
         The object specifying the maximum price you want to pay for this
         request. USD price per million tokens, for prompt and completion.
-      title: ResponsesRequestProviderMaxPrice
+      title: ProviderPreferencesMaxPrice
     PercentileThroughputCutoffs:
       type: object
       properties:
         p50:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-
@@ -2586,27 +2555,19 @@ components:
       type: object
       properties:
         p50:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type:
-            - number
-            - 'null'
+          type: number
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -2626,7 +2587,7 @@ components:
         using fallback models, this may cause a fallback model to be used
         instead of the primary model if it meets the threshold.
       title: PreferredMaxLatency
-    ResponsesRequestProvider:
+    ProviderPreferences:
       type: object
       properties:
         allow_fallbacks:
@@ -2651,7 +2612,18 @@ components:
             false, then providers will receive only the parameters they support,
             and ignore the rest.
         data_collection:
-          $ref: '#/components/schemas/DataCollection'
+          oneOf:
+            - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
+            - type: 'null'
+          description: >-
+            Data collection setting. If no available model provider meets the
+            requirement, your request will return an error.
+
+            - allow: (default) allow providers which store user data
+            non-transiently and may train on it
+
+
+            - deny: use only providers which do not collect user data.
         zdr:
           type:
             - boolean
@@ -2673,7 +2645,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ResponsesRequestProviderOrderItems'
+            $ref: '#/components/schemas/ProviderPreferencesOrderItems'
           description: >-
             An ordered list of provider slugs. The router will attempt to use
             the first provider in the subset of this list that supports your
@@ -2685,7 +2657,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ResponsesRequestProviderOnlyItems'
+            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
           description: >-
             List of provider slugs to allow. If provided, this list is merged
             with your account-wide allowed provider settings for this request.
@@ -2694,7 +2666,7 @@ components:
             - array
             - 'null'
           items:
-            $ref: '#/components/schemas/ResponsesRequestProviderIgnoreItems'
+            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
           description: >-
             List of provider slugs to ignore. If provided, this list is merged
             with your account-wide ignored provider settings for this request.
@@ -2706,12 +2678,12 @@ components:
             $ref: '#/components/schemas/Quantization'
           description: A list of quantization levels to filter the provider by.
         sort:
-          $ref: '#/components/schemas/ResponsesRequestProviderSort'
+          $ref: '#/components/schemas/ProviderPreferencesSort'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
         max_price:
-          $ref: '#/components/schemas/ResponsesRequestProviderMaxPrice'
+          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
           description: >-
             The object specifying the maximum price you want to pay for this
             request. USD price per million tokens, for prompt and completion.
@@ -2722,17 +2694,17 @@ components:
       description: >-
         When multiple model providers are available, optionally indicate your
         routing preference.
-      title: ResponsesRequestProvider
-    ResponsesRequestPluginsItemsOneOf0Id:
+      title: ProviderPreferences
+    AutoRouterPluginId:
       type: string
       enum:
         - auto-router
-      title: ResponsesRequestPluginsItemsOneOf0Id
-    ResponsesRequestPluginsItems0:
+      title: AutoRouterPluginId
+    AutoRouterPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ResponsesRequestPluginsItemsOneOf0Id'
+          $ref: '#/components/schemas/AutoRouterPluginId'
         enabled:
           type: boolean
           description: >-
@@ -2749,25 +2721,25 @@ components:
             models list.
       required:
         - id
-      title: ResponsesRequestPluginsItems0
-    ResponsesRequestPluginsItemsOneOf1Id:
+      title: AutoRouterPlugin
+    ModerationPluginId:
       type: string
       enum:
         - moderation
-      title: ResponsesRequestPluginsItemsOneOf1Id
-    ResponsesRequestPluginsItems1:
+      title: ModerationPluginId
+    ModerationPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ResponsesRequestPluginsItemsOneOf1Id'
+          $ref: '#/components/schemas/ModerationPluginId'
       required:
         - id
-      title: ResponsesRequestPluginsItems1
-    ResponsesRequestPluginsItemsOneOf2Id:
+      title: ModerationPlugin
+    WebSearchPluginId:
       type: string
       enum:
         - web
-      title: ResponsesRequestPluginsItemsOneOf2Id
+      title: WebSearchPluginId
     WebSearchEngine:
       type: string
       enum:
@@ -2777,19 +2749,18 @@ components:
         - parallel
       description: The search engine to use for web search.
       title: WebSearchEngine
-    ResponsesRequestPluginsItems2:
+    WebSearchPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ResponsesRequestPluginsItemsOneOf2Id'
+          $ref: '#/components/schemas/WebSearchPluginId'
         enabled:
           type: boolean
           description: >-
             Set to false to disable the web-search plugin for this request.
             Defaults to true.
         max_results:
-          type: number
-          format: double
+          type: integer
         search_prompt:
           type: string
         engine:
@@ -2812,12 +2783,12 @@ components:
             "openai.com/blog").
       required:
         - id
-      title: ResponsesRequestPluginsItems2
-    ResponsesRequestPluginsItemsOneOf3Id:
+      title: WebSearchPlugin
+    FileParserPluginId:
       type: string
       enum:
         - file-parser
-      title: ResponsesRequestPluginsItemsOneOf3Id
+      title: FileParserPluginId
     PdfParserEngine0:
       type: string
       enum:
@@ -2845,11 +2816,11 @@ components:
           $ref: '#/components/schemas/PDFParserEngine'
       description: Options for PDF parsing.
       title: PDFParserOptions
-    ResponsesRequestPluginsItems3:
+    FileParserPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ResponsesRequestPluginsItemsOneOf3Id'
+          $ref: '#/components/schemas/FileParserPluginId'
         enabled:
           type: boolean
           description: >-
@@ -2859,17 +2830,17 @@ components:
           $ref: '#/components/schemas/PDFParserOptions'
       required:
         - id
-      title: ResponsesRequestPluginsItems3
-    ResponsesRequestPluginsItemsOneOf4Id:
+      title: FileParserPlugin
+    ResponseHealingPluginId:
       type: string
       enum:
         - response-healing
-      title: ResponsesRequestPluginsItemsOneOf4Id
-    ResponsesRequestPluginsItems4:
+      title: ResponseHealingPluginId
+    ResponseHealingPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ResponsesRequestPluginsItemsOneOf4Id'
+          $ref: '#/components/schemas/ResponseHealingPluginId'
         enabled:
           type: boolean
           description: >-
@@ -2877,23 +2848,23 @@ components:
             request. Defaults to true.
       required:
         - id
-      title: ResponsesRequestPluginsItems4
-    ResponsesRequestPluginsItemsOneOf5Id:
+      title: ResponseHealingPlugin
+    ContextCompressionPluginId:
       type: string
       enum:
         - context-compression
-      title: ResponsesRequestPluginsItemsOneOf5Id
+      title: ContextCompressionPluginId
     ContextCompressionEngine:
       type: string
       enum:
         - middle-out
       description: The compression engine to use. Defaults to "middle-out".
       title: ContextCompressionEngine
-    ResponsesRequestPluginsItems5:
+    ContextCompressionPlugin:
       type: object
       properties:
         id:
-          $ref: '#/components/schemas/ResponsesRequestPluginsItemsOneOf5Id'
+          $ref: '#/components/schemas/ContextCompressionPluginId'
         enabled:
           type: boolean
           description: >-
@@ -2903,17 +2874,17 @@ components:
           $ref: '#/components/schemas/ContextCompressionEngine'
       required:
         - id
-      title: ResponsesRequestPluginsItems5
+      title: ContextCompressionPlugin
     ResponsesRequestPluginsItems:
       oneOf:
-        - $ref: '#/components/schemas/ResponsesRequestPluginsItems0'
-        - $ref: '#/components/schemas/ResponsesRequestPluginsItems1'
-        - $ref: '#/components/schemas/ResponsesRequestPluginsItems2'
-        - $ref: '#/components/schemas/ResponsesRequestPluginsItems3'
-        - $ref: '#/components/schemas/ResponsesRequestPluginsItems4'
-        - $ref: '#/components/schemas/ResponsesRequestPluginsItems5'
+        - $ref: '#/components/schemas/AutoRouterPlugin'
+        - $ref: '#/components/schemas/ModerationPlugin'
+        - $ref: '#/components/schemas/WebSearchPlugin'
+        - $ref: '#/components/schemas/FileParserPlugin'
+        - $ref: '#/components/schemas/ResponseHealingPlugin'
+        - $ref: '#/components/schemas/ContextCompressionPlugin'
       title: ResponsesRequestPluginsItems
-    ResponsesRequestTrace:
+    TraceConfig:
       type: object
       properties:
         trace_id:
@@ -2931,7 +2902,7 @@ components:
         trace_name, span_name, generation_name, parent_span_id) have special
         handling. Additional keys are passed through as custom metadata to
         configured broadcast destinations.
-      title: ResponsesRequestTrace
+      title: TraceConfig
     ResponsesRequest:
       type: object
       properties:
@@ -3037,12 +3008,7 @@ components:
           type: boolean
           default: false
         provider:
-          oneOf:
-            - $ref: '#/components/schemas/ResponsesRequestProvider'
-            - type: 'null'
-          description: >-
-            When multiple model providers are available, optionally indicate
-            your routing preference.
+          $ref: '#/components/schemas/ProviderPreferences'
         plugins:
           type: array
           items:
@@ -3050,6 +3016,8 @@ components:
           description: >-
             Plugins you want to enable for this request, including their
             settings.
+        route:
+          description: Any type
         user:
           type: string
           description: >-
@@ -3066,12 +3034,7 @@ components:
             both the request body and the x-session-id header, the body value
             takes precedence. Maximum of 256 characters.
         trace:
-          $ref: '#/components/schemas/ResponsesRequestTrace'
-          description: >-
-            Metadata for observability and tracing. Known keys (trace_id,
-            trace_name, span_name, generation_name, parent_span_id) have special
-            handling. Additional keys are passed through as custom metadata to
-            configured broadcast destinations.
+          $ref: '#/components/schemas/TraceConfig'
       description: Request schema for Responses endpoint
       title: ResponsesRequest
     BaseResponsesResultObject:
@@ -3279,8 +3242,7 @@ components:
       type: object
       properties:
         cached_tokens:
-          type: number
-          format: double
+          type: integer
       required:
         - cached_tokens
       title: OpenAiResponsesUsageInputTokensDetails
@@ -3288,8 +3250,7 @@ components:
       type: object
       properties:
         reasoning_tokens:
-          type: number
-          format: double
+          type: integer
       required:
         - reasoning_tokens
       title: OpenAiResponsesUsageOutputTokensDetails
@@ -3297,18 +3258,15 @@ components:
       type: object
       properties:
         input_tokens:
-          type: number
-          format: double
+          type: integer
         input_tokens_details:
           $ref: '#/components/schemas/OpenAiResponsesUsageInputTokensDetails'
         output_tokens:
-          type: number
-          format: double
+          type: integer
         output_tokens_details:
           $ref: '#/components/schemas/OpenAiResponsesUsageOutputTokensDetails'
         total_tokens:
-          type: number
-          format: double
+          type: integer
       required:
         - input_tokens
         - input_tokens_details
@@ -3396,90 +3354,62 @@ components:
         - role
         - content
       title: BaseInputsOneOf1Items0
-    BaseInputsOneOf1ItemsOneOf1Type:
+    OpenAiResponseInputMessageItemType:
       type: string
       enum:
         - message
-      title: BaseInputsOneOf1ItemsOneOf1Type
-    BaseInputsOneOf1ItemsOneOf1Role0:
+      title: OpenAiResponseInputMessageItemType
+    OpenAiResponseInputMessageItemRole0:
       type: string
       enum:
         - user
-      title: BaseInputsOneOf1ItemsOneOf1Role0
-    BaseInputsOneOf1ItemsOneOf1Role1:
+      title: OpenAiResponseInputMessageItemRole0
+    OpenAiResponseInputMessageItemRole1:
       type: string
       enum:
         - system
-      title: BaseInputsOneOf1ItemsOneOf1Role1
-    BaseInputsOneOf1ItemsOneOf1Role2:
+      title: OpenAiResponseInputMessageItemRole1
+    OpenAiResponseInputMessageItemRole2:
       type: string
       enum:
         - developer
-      title: BaseInputsOneOf1ItemsOneOf1Role2
-    BaseInputsOneOf1ItemsOneOf1Role:
+      title: OpenAiResponseInputMessageItemRole2
+    OpenAiResponseInputMessageItemRole:
       oneOf:
-        - $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf1Role0'
-        - $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf1Role1'
-        - $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf1Role2'
-      title: BaseInputsOneOf1ItemsOneOf1Role
-    BaseInputsOneOf1ItemsOneOf1ContentItems:
+        - $ref: '#/components/schemas/OpenAiResponseInputMessageItemRole0'
+        - $ref: '#/components/schemas/OpenAiResponseInputMessageItemRole1'
+        - $ref: '#/components/schemas/OpenAiResponseInputMessageItemRole2'
+      title: OpenAiResponseInputMessageItemRole
+    OpenAiResponseInputMessageItemContentItems:
       oneOf:
         - $ref: '#/components/schemas/InputText'
         - $ref: '#/components/schemas/InputImage'
         - $ref: '#/components/schemas/InputFile'
         - $ref: '#/components/schemas/InputAudio'
-      title: BaseInputsOneOf1ItemsOneOf1ContentItems
-    BaseInputsOneOf1Items1:
+      title: OpenAiResponseInputMessageItemContentItems
+    OpenAIResponseInputMessageItem:
       type: object
       properties:
         id:
           type: string
         type:
-          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf1Type'
+          $ref: '#/components/schemas/OpenAiResponseInputMessageItemType'
         role:
-          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf1Role'
+          $ref: '#/components/schemas/OpenAiResponseInputMessageItemRole'
         content:
           type: array
           items:
-            $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf1ContentItems'
+            $ref: '#/components/schemas/OpenAiResponseInputMessageItemContentItems'
       required:
         - id
         - role
         - content
-      title: BaseInputsOneOf1Items1
-    BaseInputsOneOf1ItemsOneOf2Type:
-      type: string
-      enum:
-        - function_call_output
-      title: BaseInputsOneOf1ItemsOneOf2Type
-    BaseInputsOneOf1ItemsOneOf2OutputOneOf1Items:
-      oneOf:
-        - $ref: '#/components/schemas/InputText'
-        - $ref: '#/components/schemas/InputImage'
-        - $ref: '#/components/schemas/InputFile'
-      title: BaseInputsOneOf1ItemsOneOf2OutputOneOf1Items
-    BaseInputsOneOf1ItemsOneOf2Output1:
-      type: array
-      items:
-        $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf2OutputOneOf1Items'
-      title: BaseInputsOneOf1ItemsOneOf2Output1
-    BaseInputsOneOf1ItemsOneOf2Output:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf2Output1'
-      title: BaseInputsOneOf1ItemsOneOf2Output
-    ToolCallStatusEnum:
-      type: string
-      enum:
-        - in_progress
-        - completed
-        - incomplete
-      title: ToolCallStatusEnum
-    BaseInputsOneOf1Items2:
+      title: OpenAIResponseInputMessageItem
+    OpenAIResponseFunctionToolCallOutput:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf2Type'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallOutputType'
         id:
           type:
             - string
@@ -3487,28 +3417,19 @@ components:
         call_id:
           type: string
         output:
-          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf2Output'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallOutputOutput'
         status:
-          $ref: '#/components/schemas/ToolCallStatusEnum'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallOutputStatus'
       required:
         - type
         - call_id
         - output
-      title: BaseInputsOneOf1Items2
-    BaseInputsOneOf1ItemsOneOf3Type:
-      type: string
-      enum:
-        - function_call
-      title: BaseInputsOneOf1ItemsOneOf3Type
-    BaseInputsOneOf1ItemsOneOf3Status:
-      type: object
-      properties: {}
-      title: BaseInputsOneOf1ItemsOneOf3Status
-    BaseInputsOneOf1Items3:
+      title: OpenAIResponseFunctionToolCallOutput
+    OpenAIResponseFunctionToolCall:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf3Type'
+          $ref: '#/components/schemas/OpenAiResponseFunctionToolCallType'
         call_id:
           type: string
         name:
@@ -3518,19 +3439,19 @@ components:
         id:
           type: string
         status:
-          $ref: '#/components/schemas/BaseInputsOneOf1ItemsOneOf3Status'
+          $ref: '#/components/schemas/ToolCallStatus'
       required:
         - type
         - call_id
         - name
         - arguments
-      title: BaseInputsOneOf1Items3
+      title: OpenAIResponseFunctionToolCall
     BaseInputsOneOf1Items:
       oneOf:
         - $ref: '#/components/schemas/BaseInputsOneOf1Items0'
-        - $ref: '#/components/schemas/BaseInputsOneOf1Items1'
-        - $ref: '#/components/schemas/BaseInputsOneOf1Items2'
-        - $ref: '#/components/schemas/BaseInputsOneOf1Items3'
+        - $ref: '#/components/schemas/OpenAIResponseInputMessageItem'
+        - $ref: '#/components/schemas/OpenAIResponseFunctionToolCallOutput'
+        - $ref: '#/components/schemas/OpenAIResponseFunctionToolCall'
         - $ref: '#/components/schemas/OutputItemImageGenerationCall'
         - $ref: '#/components/schemas/OutputMessage'
       title: BaseInputsOneOf1Items
@@ -3539,10 +3460,12 @@ components:
       items:
         $ref: '#/components/schemas/BaseInputsOneOf1Items'
       title: BaseInputs1
-    BaseResponsesResultInstructions:
-      type: object
-      properties: {}
-      title: BaseResponsesResultInstructions
+    BaseInputs:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/BaseInputs1'
+        - description: Any type
+      title: BaseInputs
     BaseResponsesResultToolsItems0:
       type: object
       properties:
@@ -3587,23 +3510,15 @@ components:
         - $ref: '#/components/schemas/ApplyPatchServerTool'
         - $ref: '#/components/schemas/CustomTool'
       title: BaseResponsesResultToolsItems
-    BaseResponsesResultReasoningEffort:
-      type: object
-      properties: {}
-      title: BaseResponsesResultReasoningEffort
-    BaseResponsesResultReasoningSummary:
-      type: object
-      properties: {}
-      title: BaseResponsesResultReasoningSummary
-    BaseResponsesResultReasoning:
+    BaseReasoningConfig:
       type: object
       properties:
         effort:
-          $ref: '#/components/schemas/BaseResponsesResultReasoningEffort'
+          $ref: '#/components/schemas/ReasoningEffort'
         summary:
-          $ref: '#/components/schemas/BaseResponsesResultReasoningSummary'
-      title: BaseResponsesResultReasoning
-    ServiceTierEnum:
+          $ref: '#/components/schemas/ReasoningSummaryVerbosity'
+      title: BaseReasoningConfig
+    ServiceTier:
       type: string
       enum:
         - auto
@@ -3611,11 +3526,13 @@ components:
         - flex
         - priority
         - scale
-      title: ServiceTierEnum
-    BaseResponsesResultTruncation:
-      type: object
-      properties: {}
-      title: BaseResponsesResultTruncation
+      title: ServiceTier
+    Truncation:
+      type: string
+      enum:
+        - auto
+        - disabled
+      title: Truncation
     TextConfig:
       type: object
       properties:
@@ -3687,10 +3604,7 @@ components:
             - 'null'
           description: A signature for the reasoning content, used for verification
         format:
-          oneOf:
-            - $ref: '#/components/schemas/OutputReasoningItemFormat'
-            - type: 'null'
-          description: The format of the reasoning content
+          $ref: '#/components/schemas/ReasoningFormat'
       required:
         - type
         - id
@@ -3728,18 +3642,15 @@ components:
       type: object
       properties:
         input_tokens:
-          type: number
-          format: double
+          type: integer
         input_tokens_details:
           $ref: '#/components/schemas/OpenAiResponsesUsageInputTokensDetails'
         output_tokens:
-          type: number
-          format: double
+          type: integer
         output_tokens_details:
           $ref: '#/components/schemas/OpenAiResponsesUsageOutputTokensDetails'
         total_tokens:
-          type: number
-          format: double
+          type: integer
         cost:
           type: number
           format: double
@@ -3757,26 +3668,6 @@ components:
         - total_tokens
       description: Token usage information for the response
       title: Usage
-    BaseInputs:
-      oneOf:
-        - type: string
-        - $ref: '#/components/schemas/BaseInputs1'
-        - description: Any type
-      title: BaseInputs
-    BaseReasoningConfig:
-      type: object
-      properties:
-        effort:
-          $ref: '#/components/schemas/ReasoningEffortEnum'
-        summary:
-          $ref: '#/components/schemas/ReasoningSummaryVerbosityEnum'
-      title: BaseReasoningConfig
-    TruncationEnum:
-      type: string
-      enum:
-        - auto
-        - disabled
-      title: TruncationEnum
     OpenResponsesResult:
       type: object
       properties:
@@ -3865,7 +3756,7 @@ components:
         store:
           type: boolean
         truncation:
-          $ref: '#/components/schemas/TruncationEnum'
+          $ref: '#/components/schemas/Truncation'
         text:
           $ref: '#/components/schemas/TextConfig'
       required:
@@ -4246,7 +4137,7 @@ import requests
 url = "https://openrouter.ai/api/v1/responses"
 
 payload = {
-    "input": "Tell me a joke",
+    "input": "Tell me a joke about computers",
     "model": "openai/gpt-4o"
 }
 headers = {
@@ -4264,7 +4155,7 @@ const url = 'https://openrouter.ai/api/v1/responses';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"input":"Tell me a joke","model":"openai/gpt-4o"}'
+  body: '{"input":"Tell me a joke about computers","model":"openai/gpt-4o"}'
 };
 
 try {
@@ -4290,7 +4181,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/responses"
 
-	payload := strings.NewReader("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
+	payload := strings.NewReader("{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -4320,7 +4211,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}"
+request.body = "{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -4333,7 +4224,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/responses")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
+  .body("{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}")
   .asString();
 ```
 
@@ -4345,7 +4236,7 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/responses', [
   'body' => '{
-  "input": "Tell me a joke",
+  "input": "Tell me a joke about computers",
   "model": "openai/gpt-4o"
 }',
   'headers' => [
@@ -4364,7 +4255,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/responses");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4376,7 +4267,7 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "input": "Tell me a joke",
+  "input": "Tell me a joke about computers",
   "model": "openai/gpt-4o"
 ] as [String : Any]
 

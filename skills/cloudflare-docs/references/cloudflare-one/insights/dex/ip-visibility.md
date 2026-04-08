@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ IPv4 ](https://developers.cloudflare.com/search/?tags=IPv4)[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6)[ Windows ](https://developers.cloudflare.com/search/?tags=Windows)[ Linux ](https://developers.cloudflare.com/search/?tags=Linux)[ MacOS ](https://developers.cloudflare.com/search/?tags=MacOS) 
+
 Was this helpful?
 
 YesNo

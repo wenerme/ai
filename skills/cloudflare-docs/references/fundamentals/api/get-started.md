@@ -25,6 +25,7 @@ You can also authenticate with [API keys](https://developers.cloudflare.com/fund
 * [ Create API token ](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/)
 * [ Get Global API key (legacy) ](https://developers.cloudflare.com/fundamentals/api/get-started/keys/)
 * [ Get Origin CA keys ](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/)
+* [ Token formats ](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/)
 * [ Account API tokens ](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/)
 
 ```json

@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GCP ](https://developers.cloudflare.com/search/?tags=GCP)[ Linux ](https://developers.cloudflare.com/search/?tags=Linux) 
+
 Was this helpful?
 
 YesNo

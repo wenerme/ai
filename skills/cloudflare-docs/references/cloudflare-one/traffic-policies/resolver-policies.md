@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS)[ IPv4 ](https://developers.cloudflare.com/search/?tags=IPv4)[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6)[ QUIC ](https://developers.cloudflare.com/search/?tags=QUIC) 
+
 Was this helpful?
 
 YesNo
@@ -97,8 +101,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-3923)
-* [ Terraform (v5) ](#tab-panel-3924)
+* [ Dashboard ](#tab-panel-3929)
+* [ Terraform (v5) ](#tab-panel-3930)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

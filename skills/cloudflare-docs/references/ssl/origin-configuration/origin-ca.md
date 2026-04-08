@@ -42,9 +42,9 @@ Using Cloudflare origin CA certificates does not prevent you from using [delegat
 
 To create an Origin CA certificate in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Origin Server** page.  
+1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
-2. Select **Create Certificate**.
+2. On the **Origin Certificates** tab, select **Create Certificate**.
 3. Choose either:  
    * **Generate private key and CSR with Cloudflare**: Private key type can be RSA or ECC.  
    * **Use my private key and CSR**: Paste the Certificate Signing Request into the text field.
@@ -91,7 +91,8 @@ After you have installed the Origin CA certificate on your origin web server, up
 
 If all your origin hosts are protected by Origin CA certificates or publicly trusted certificates:
 
-1. Go to **SSL/TLS**.
+1. Go to the **SSL/TLS** overview page.  
+[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. For **SSL/TLS encryption mode**, select **Full (strict)**.
 
 If you have origin hosts that are not protected by certificates, set the **SSL/TLS encryption** mode for a specific application to **Full (strict)** by using a [Page Rule](https://developers.cloudflare.com/rules/page-rules/).
@@ -108,9 +109,9 @@ To prevent visitors from seeing warnings about an insecure certificate, you may 
 
 To revoke a certificate:
 
-1. In the Cloudflare dashboard, go to the **Origin Server** page.  
+1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
-2. In **Origin Certificates**, choose a certificate.
+2. On the **Origin Certificates** tab, choose a certificate.
 3. Select **Revoke**.
 
 ## Additional details

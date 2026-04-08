@@ -1,10 +1,14 @@
 ---
 title: Device registration
-description: A device registration represents an individual session of the Cloudflare One Client on a physical device, linking a user (or service token) and the device to your Zero Trust organization. A device registration is created when the Cloudflare One Client first authenticates. Each device registration has associated configuration, which includes a unique public key, device profile, and virtual IP addresses (one IPv4 and one IPv6).
+description: A device registration represents an individual session of the Cloudflare One Client on a physical device, linking a user (or service token) and the device to your Zero Trust organization. It is created the first time the Cloudflare One Client authenticates on that device.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
 
 Was this helpful?
 
@@ -16,24 +20,26 @@ Copy page
 
 # Device registration
 
-A device registration represents an individual session of the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on a physical device, linking a user (or service token) and the device to your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization). A device registration is created when the Cloudflare One Client first authenticates. Each device registration has associated configuration, which includes a unique public key, device profile, and virtual IP addresses (one IPv4 and one IPv6).
+A device registration represents an individual session of the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on a physical device, linking a user (or service token) and the device to your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization). It is created the first time the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) authenticates on that device.
+
+Each device registration includes a unique public key, [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), and [virtual IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) (one IPv4 and one IPv6) that identify the device on your network.
 
 A single physical device can have [multiple device registrations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/), for example, if multiple users share a single laptop and each enrolls the Cloudflare One Client with their own credentials.
 
 ## Key concepts
 
-| Concept                                                                                                               | Definition                                                                                                                                                                                                                                                                                                                                        |
-| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [User](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/#manage-users)       | An identity provider (IdP)-backed human identity that can connect new devices to your Zero Trust organization.                                                                                                                                                                                                                                    |
-| [Seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/)                    | A unique, billable user within your Zero Trust organization who has performed [an authentication event](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/#authentication-events). Service tokens do not consume seats.                                                                                   |
-| [Service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) | A token used by automated systems (a non-human identity) to authenticate against your Cloudflare One policies.                                                                                                                                                                                                                                    |
-| Device registration                                                                                                   | An individual session of the Cloudflare One Client on a physical device, with associated configuration including a unique public key, device profile, and [virtual IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) (one IPv4 and one IPv6).                |
-| [Session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/)       | JSON Web Tokens (JWTs) that are generated when Access validates user identity against your Access policies and determines how long a user can access an Access application without re-authenticating. Unlike these session-based tokens, device registration is a persistent state that does not expire and will exist until permanently deleted. |
+| Concept                                                                                                               | Definition                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [User](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/#manage-users)       | A person whose identity is verified through your identity provider (IdP) and who can enroll devices in your Zero Trust organization.                                                                                                                                                                                                                                                                                           |
+| [Seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/)                    | A billable unit consumed when a user authenticates to your Zero Trust organization. Each user occupies one seat regardless of how many devices they enroll. Service tokens do not consume seats.                                                                                                                                                                                                                               |
+| [Service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) | Credentials used by automated systems to authenticate against your Cloudflare One policies.                                                                                                                                                                                                                                                                                                                                    |
+| Device registration                                                                                                   | An individual session of the Cloudflare One Client on a physical device, with its own public key, [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), and [virtual IP addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) (one IPv4 and one IPv6). |
+| [Session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/)       | A time-limited JSON Web Token (JWT) that controls how long a user can access an Access application before re-authenticating. Unlike sessions, a device registration is persistent — it does not expire and exists until you delete it.                                                                                                                                                                                         |
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-3744)
-* [ API ](#tab-panel-3745)
+* [ Dashboard ](#tab-panel-3750)
+* [ API ](#tab-panel-3751)
 
 To review how many device registrations are associated with a device:
 
@@ -127,12 +133,22 @@ Registrations can have the following statuses:
 | **Active**  | Registered and able to connect via the Cloudflare One Client. This is the expected operational state.        |
 | **Revoked** | The registration's public key is invalidated. Revocation does not release the assigned virtual IP addresses. |
 
-## Delete a device registration
+## Manage device registrations
+
+The following table summarizes the actions available for managing device registrations and devices. For all actions, if the user or service token can still re-authenticate, a new registration will be created automatically. To permanently remove access, refer to [Device management](#device-management).
+
+| Action                                                 | What it does                                                                                             | Virtual IPs released? | When to use                                                                                  |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
+| [Delete a registration](#delete-a-device-registration) | Permanently removes a single device registration and its configuration.                                  | Yes                   | You want to fully remove a user's enrollment from a device and free up the virtual IP.       |
+| [Revoke a registration](#revoke-a-device-registration) | Invalidates the registration's public key, blocking it from connecting. The registration record remains. | No                    | You want to temporarily block a device from connecting but preserve the registration record. |
+| [Delete a device](#delete-a-device)                    | Removes the physical device record and all its associated registrations.                                 | Yes                   | You want to fully remove a device and all associated registrations.                          |
+
+### Delete a device registration
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-3746)
-* [ API ](#tab-panel-3747)
+* [ Dashboard ](#tab-panel-3752)
+* [ API ](#tab-panel-3753)
 
 To delete a device registration:
 
@@ -180,7 +196,7 @@ Automatic device re-registration
 
 If you delete a device registration, but the Cloudflare One Client remains installed and is successfully able to re-authenticate, a new device registration will be created for the user or service token. For long-term, permanent denial of access, you should [remove the user from your device enrollment policies or your IdP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#remove-user-access) or [remove service token access](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/#remove-service-token-access).
 
-## Revoke a device registration
+### Revoke a device registration
 
 Revoking a device registration invalidates its associated public key, which disallows the specific device registration from connecting to Cloudflare's network. Revoking a device registration does not release the virtual IPs that are assigned to the registration. Because virtual IPs are a finite resource, Cloudflare strongly advises deleting a registration rather than revoking it.
 
@@ -193,7 +209,7 @@ If a user re-authenticates while the device registration is revoked, a new devic
 3. To revoke access, select **Revoke access**. This revokes access for all associated registrations on the device.
 4. To unrevoke access, scroll down to the **Users** section and select one or more users using the checkbox. Select **Actions** \> **Unrevoke access**.
 
-## Delete a device
+### Delete a device
 
 Deleting a device removes the physical device from your Cloudflare Zero Trust account. This action automatically deletes all associated device registrations.
 
@@ -211,7 +227,7 @@ To delete a device:
 
 ## Device management
 
-Seat management (billing) and access management are separate processes. Deleting a device registration does not remove seat usage nor access to internal company resources.
+Seat management (billing) and access management are separate processes. Deleting a device registration does not free up the user's seat or block them from accessing internal resources. To fully remove a user's access, you must take additional steps as described below.
 
 ### Remove user access
 

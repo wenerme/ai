@@ -33,7 +33,7 @@ While API Shield is not required to use mTLS, many teams may use mTLS to protect
 
 Warning
 
-By default, API Shield mTLS uses client certificates issued by a Cloudflare-managed CA. If you need to use certificates issued by another CA, you can use the API to [bring your own CA for mTLS](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
+By default, API Shield mTLS uses client certificates issued by a Cloudflare-managed CA. If you need to use certificates issued by another CA, refer to [Bring your own CA for mTLS](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
 ## Create an mTLS rule via the Cloudflare dashboard
 
@@ -103,7 +103,7 @@ When a request includes a revoked certificate, the `cf.tls_client_auth.cert_revo
 
 Warning
 
-This check only applies to client certificates issued by the Cloudflare managed CA. Cloudflare currently does not check certificate revocation lists (CRL) for [CAs that have been uploaded](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
+This check only applies to client certificates issued by the Cloudflare-managed CA. Cloudflare currently does not check certificate revocation lists (CRL) for [CAs that have been uploaded](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/mtls/","name":"Mutual TLS (mTLS)"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/mtls/configure/","name":"Configure mTLS"}}]}

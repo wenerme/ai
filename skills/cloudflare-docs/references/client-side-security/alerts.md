@@ -24,8 +24,8 @@ Once you have activated client-side security's resource monitoring, you can set 
 
 You can configure unscoped or scoped alerts:
 
-* **Unscoped alert**: An alert configured for all zones in your Cloudflare account. Unscoped alerts are triggered either daily, hourly, or immediately, depending on the [alert type](https://developers.cloudflare.com/client-side-security/alerts/alert-types/).
-* **Scoped alert**: An alert scoped to one or more zones. You must configure [content security rules](https://developers.cloudflare.com/client-side-security/rules/) for the zones you select to receive any notifications. Scoped alerts are triggered immediately. Rule violations will not trigger an alert. For more information, refer to [Scoped alerts](#scoped-alerts).
+* **Unscoped alert**: Covers all zones in your Cloudflare account. Unscoped alerts are triggered either daily, hourly, or immediately, depending on the [alert type](https://developers.cloudflare.com/client-side-security/alerts/alert-types/).
+* **Scoped alert**: Covers one or more specific zones. Requires [content security rules](https://developers.cloudflare.com/client-side-security/rules/) configured in those zones. Scoped alerts are triggered immediately and only notify you about resources that are covered by your rules. [Rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/) do not trigger these alerts. For more information, refer to [Scoped alerts](#scoped-alerts).
 
 For alerts sent at regular intervals, you might experience a delay between adding a new script and receiving an alert.
 
@@ -48,7 +48,7 @@ For each scoped alert, Cloudflare does the following:
 3. If the resource is allowed by the rule, check if the new or modified resource should trigger the current alert.
 4. If the alert should trigger, send an alert notification to the configured destinations.
 
-When you create a scoped alert you will not receive notifications for resources that are not allowed by a policy (either [in allow or in log mode](https://developers.cloudflare.com/client-side-security/rules/#rule-actions)). These are [rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/) that you can review in the dashboard, through GraphQL, or via Logpush.
+When you create a scoped alert you will not receive notifications for resources that are not allowed by a content security rule (either [in allow or in log mode](https://developers.cloudflare.com/client-side-security/rules/#rule-actions)). These are [rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/) that you can review in the dashboard, through GraphQL, or via Logpush.
 
 Note
 

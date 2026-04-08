@@ -1,6 +1,6 @@
 ---
 title: Per-hostname
-description: When you enable Authenticated Origin Pulls per hostname, all proxied traffic to the specified hostname is authenticated at the origin web server. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
+description: When you enable per-hostname Authenticated Origin Pulls (AOP), all proxied traffic to the specified hostname is authenticated at the origin web server using a certificate that you upload. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,13 +16,15 @@ Copy page
 
 # Per-hostname
 
-When you enable Authenticated Origin Pulls per hostname, all proxied traffic to the specified hostname is authenticated at the origin web server. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
+When you enable per-hostname Authenticated Origin Pulls (AOP), all proxied traffic to the specified hostname is authenticated at the origin web server using a certificate that you upload. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
+
+[Global](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/), [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/), and per-hostname AOP are independent configurations. Enabling or disabling one does not affect the others. Per-hostname certificates take precedence over zone-level and global certificates for the specified hostname.
 
 ## Before you begin
 
 Warning
 
-It is not possible to set up per-hostname authenticated origin pulls with the [Cloudflare certificate](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/#aspects-to-consider).
+It is not possible to set up per-hostname authenticated origin pulls with the Cloudflare-provided certificate used by [global AOP](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/global/). You must upload your own certificate.
 
 Refer to the steps below for an example of how to generate a custom certificate using OpenSSL. The CA root certificate that you use to issue the custom certificate should be the same CA that you will [upload to your origin](#2-configure-origin-to-accept-client-certificates).
 
@@ -83,7 +85,21 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload custom certificate
 
-Use the [Upload A Hostname Client Certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/create/) endpoint to upload your custom certificate.
+* [ Dashboard ](#tab-panel-6587)
+* [ API ](#tab-panel-6588)
+
+1. Go to the **Origin Server** page.  
+[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+2. Select the **Authenticated Origin Pulls** tab.
+3. In the **Per-hostname** section, select **Upload certificate**.
+4. Paste the certificate and private key, then select **Continue**.  
+Note  
+You must upload a [leaf certificate](https://developers.cloudflare.com/ssl/concepts/#chain-of-trust). If you upload a root CA instead, the upload will fail.
+5. Review your certificate details, save the certificate ID for future reference, and select **Continue**.
+6. On the **Associate Hostnames** page, enter the fully qualified domain name that should use this certificate and select **Add** for each one. You can also skip this step and associate hostnames later.
+7. Select **Save** to confirm.
+
+Use the [Upload a Hostname Client Certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/create/) endpoint to upload your custom certificate.
 
 Note
 
@@ -133,13 +149,13 @@ curl --silent \
 
 ```
 
-In the API response, save the certificate `id` since it will be required in step 4.
+In the API response, save the certificate `id` since it will be required in step 3.
 
 ## 2\. Configure origin to accept client certificates
 
 With the certificate installed, set up your origin web server to accept client certificates.
 
-Check the examples below for Apache and NGINX or refer to your origin web server documentation - e.g. [HAProxy ↗](https://www.haproxy.com/documentation/hapee/latest/security/authentication/client-certificate-authentication/), [Traefik ↗](https://doc.traefik.io/traefik/https/tls/#client-authentication-mtls), [Caddy ↗](https://caddyserver.com/docs/json/apps/http/servers/tls%5Fconnection%5Fpolicies/client%5Fauthentication/mode/).
+Check the examples below for Apache and NGINX or refer to your origin web server documentation - for example, [HAProxy ↗](https://www.haproxy.com/documentation/hapee/latest/security/authentication/client-certificate-authentication/), [Traefik ↗](https://doc.traefik.io/traefik/https/tls/#client-authentication-mtls), [Caddy ↗](https://caddyserver.com/docs/json/apps/http/servers/tls%5Fconnection%5Fpolicies/client%5Fauthentication/mode/).
 
 Apache example
 
@@ -169,7 +185,21 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-Use the Cloudflare API to send a [PUT](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostnames/methods/update/) request to enable Authenticated Origin Pulls for specific hostnames.
+* [ Dashboard ](#tab-panel-6585)
+* [ API ](#tab-panel-6586)
+
+Note
+
+For per-hostname AOP, the enablement happens as you associate a hostname. If you had already associated hostnames as you uploaded the certificate, you can skip this step.
+
+1. Go to the **Origin Server** page.  
+[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+2. Select the **Authenticated Origin Pulls** tab.
+3. In the **Per-hostname** section, find the certificate that should be used and associate the hostname with it.
+
+If you had set up logging on your origin during step 2, test and confirm that Authenticated Origin Pulls is working.
+
+Use the [Enable or Disable a Hostname for Client Authentication](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostnames/methods/update/) endpoint to enable Authenticated Origin Pulls for specific hostnames.
 
 If you had set up logging on your origin during step 2, test and confirm that Authenticated Origin Pulls is working.
 

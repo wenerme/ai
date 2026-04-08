@@ -29,7 +29,12 @@ To get access to Custom Origin Trust Store, [Advanced Certificate Manager](https
 
 ## How to
 
-To manage origin trust stores in the dashboard, go to the [**Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin) page and use the **Custom Origin Trust Store** card.
+To manage origin trust stores in the dashboard:
+
+1. Go to the **Origin Server** page.  
+[ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+2. Select the **Custom Origin Trust Store** tab.
+3. Select **Upload trust store** to add a CA certificate, or use the table to manage existing trust stores.
 
 To manage origin trust stores using the API, refer to the [API commands](#api-commands).
 

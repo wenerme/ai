@@ -1,11 +1,11 @@
 ---
 title: "Ollama Cloud | Models"
-description: "Use Ollama Cloud models with Mastra. 34 models available."
+description: "Use Ollama Cloud models with Mastra. 35 models available."
 ---
 
 # [Ollama Cloud logo]Ollama Cloud
 
-Access 34 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
+Access 35 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
 
 Learn more in the [Ollama Cloud documentation](https://docs.ollama.com/cloud).
 
@@ -173,6 +173,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "ollama-cloud/glm-5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 202752,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "ollama-cloud/glm-5.1",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

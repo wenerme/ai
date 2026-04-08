@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
+
 Was this helpful?
 
 YesNo

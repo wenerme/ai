@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 Was this helpful?
 
 YesNo
@@ -36,8 +40,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-3835)
-* [ API ](#tab-panel-3836)
+* [ Dashboard ](#tab-panel-3841)
+* [ API ](#tab-panel-3842)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Traffic policies**.
 2. Select **Policy settings** and turn on **IDS**.

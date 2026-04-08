@@ -1,10 +1,14 @@
 ---
 title: Managed networks
-description: The Cloudflare One Client (formerly WARP) allows you to selectively apply specific device profiles and device client settings when a device connects to a secure network location, such as an office. The Cloudflare One Client identifies these managed networks by detecting a TLS endpoint you set up on the network.
+description: The Cloudflare One Client (formerly WARP) allows you to selectively apply specific device profiles and device client settings when a device connects to a known network location, such as an office. To detect which network a device is on, the Cloudflare One Client connects to a TLS endpoint that you host on that network and validates its certificate. If the certificate matches, the device is on your managed network and receives the corresponding device profile (if one has been configured for that network).
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ PowerShell ](https://developers.cloudflare.com/search/?tags=PowerShell) 
 
 Was this helpful?
 
@@ -31,7 +35,7 @@ Feature availability
 | Android  | ✅            | 1.0                    |
 | ChromeOS | ✅            | 1.0                    |
 
-The Cloudflare One Client (formerly WARP) allows you to selectively apply specific [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and device client settings when a device connects to a secure network location, such as an office. The Cloudflare One Client identifies these managed networks by detecting a TLS endpoint you set up on the network.
+The Cloudflare One Client (formerly WARP) allows you to selectively apply specific [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and device client settings when a device connects to a known network location, such as an office. To detect which network a device is on, the Cloudflare One Client connects to a TLS endpoint that you host on that network and validates its certificate. If the certificate matches, the device is on your managed network and receives the corresponding [device profile](#4-configure-device-profile) (if one has been configured for that network).
 
 On this page, you will learn how to:
 
@@ -165,8 +169,8 @@ The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https:
 
 The SHA-256 fingerprint is only required if your TLS endpoint uses a self-signed certificate.
 
-* [ Local certificate ](#tab-panel-3669)
-* [ Remote server ](#tab-panel-3670)
+* [ Local certificate ](#tab-panel-3675)
+* [ Remote server ](#tab-panel-3676)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -210,8 +214,8 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ## 3\. Add managed network to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3665)
-* [ Terraform (v5) ](#tab-panel-3666)
+* [ Dashboard ](#tab-panel-3671)
+* [ Terraform (v5) ](#tab-panel-3672)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
@@ -245,8 +249,8 @@ If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloud
 
 ## 4\. Configure device profile
 
-* [ Dashboard ](#tab-panel-3667)
-* [ Terraform (v5) ](#tab-panel-3668)
+* [ Dashboard ](#tab-panel-3673)
+* [ Terraform (v5) ](#tab-panel-3674)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.

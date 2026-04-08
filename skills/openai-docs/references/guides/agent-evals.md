@@ -1,16 +1,36 @@
-# Agent evals
+# Evaluate agent workflows
 
 The OpenAI Platform offers a suite of evaluation tools to help you ensure your agents perform consistently and accurately.
 
-For identifying errors at the workflow-level, we recommend our [trace grading](https://developers.openai.com/api/docs/guides/trace-grading) functionality.
+Use this page as the decision point for the evaluation surfaces that matter most for agent workflows.
 
-For an easy way to build and iterate on your evals, we recommend exploring [Datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started).
+## Start with traces when you are still debugging behavior
 
-If you need advanced features such as evaluation against external models, want to interact with your eval runs via API, or want to run evaluations on a larger scale, consider using [Evals](https://developers.openai.com/api/docs/guides/evals) instead.
+Trace grading is the fastest way to identify workflow-level issues. A trace captures the end-to-end record of model calls, tool calls, guardrails, and handoffs for one run. Graders let you score those traces with structured criteria so you can find regressions and failure modes at scale.
 
-## Next steps
+Use trace grading when you want to answer questions like:
 
-For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook), which contains example code and links to third-party resources, or learn more about our tools for evals:
+- Did the agent pick the right tool?
+- Did a handoff happen when it should have?
+- Did the workflow violate an instruction or safety policy?
+- Did a prompt or routing change improve the end-to-end behavior?
+
+### Trace-grading workflow
+
+1. Open **Logs** > **Traces** in the dashboard.
+2. Inspect a representative workflow trace from Agent Builder or an SDK-based app with tracing enabled.
+3. Create a grader and run it against the selected traces.
+4. Use the results to refine prompts, tool surfaces, routing logic, or guardrails.
+
+For code-first SDK workflows, start with [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability#tracing) to get high-signal traces before you formalize graders.
+
+## Move to datasets and eval runs when you need repeatability
+
+Once you know what “good” looks like, move from individual traces to repeatable datasets and eval runs. This is the right step when you want to benchmark changes, compare prompts, or run larger-scale evaluations over time.
+
+If you need advanced features such as evaluation against external models, evaluation APIs, or larger-scale batch evaluation, use [Evals](https://developers.openai.com/api/docs/guides/evals) alongside datasets.
+
+## Related evaluation surfaces
 
 <a
   href="/api/docs/guides/evaluation-getting-started"

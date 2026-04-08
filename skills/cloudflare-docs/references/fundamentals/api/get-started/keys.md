@@ -18,6 +18,8 @@ Copy page
 
 Global API key is the previous authorization scheme for interacting with the Cloudflare API. When possible, use [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) instead of Global API key.
 
+New and rolled Global API Keys use the `cfk_` prefixed [scannable format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which allows credential scanning tools to detect leaked keys.
+
 Note
 
 Global API key is only available after the [account email address is verified](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).

@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Wireguard ](https://developers.cloudflare.com/search/?tags=Wireguard)[ MASQUE ](https://developers.cloudflare.com/search/?tags=MASQUE) 
+
 Was this helpful?
 
 YesNo
@@ -147,7 +151,7 @@ Because this check happens inside of the tunnel, you do not need to add these IP
 
 ## NEL reporting (optional)
 
-The Cloudflare One Client reports connectivity issues to our NEL endpoint via `a.nel.cloudflare.com`. This is not technically required to operate but will result in errors in our logs if not excluded properly.
+The Cloudflare One Client reports connectivity issues to the Network Error Logging (NEL) endpoint via `a.nel.cloudflare.com`. This is not technically required to operate but will result in errors in our logs if not excluded properly.
 
 ## Latency statistics (optional)
 

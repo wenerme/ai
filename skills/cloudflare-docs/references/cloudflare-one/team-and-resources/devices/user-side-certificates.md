@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
+
 Was this helpful?
 
 YesNo
@@ -41,8 +45,8 @@ Zero Trust will indicate if a certificate is ready for use in inspection based o
 
 To generate a new Cloudflare root certificate for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-3748)
-* [ API ](#tab-panel-3749)
+* [ Dashboard ](#tab-panel-3754)
+* [ API ](#tab-panel-3755)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -81,8 +85,8 @@ Once a certificate is generated in or uploaded to Zero Trust, you need to activa
 
 To activate your root certificate:
 
-* [ Dashboard ](#tab-panel-3750)
-* [ API ](#tab-panel-3751)
+* [ Dashboard ](#tab-panel-3756)
+* [ API ](#tab-panel-3757)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -108,8 +112,8 @@ The status of the certificate will change to **Pending** while it deploys. Once 
 
 Once you deploy and install your certificate, you can turn it on for use in inspection:
 
-* [ Dashboard ](#tab-panel-3752)
-* [ API ](#tab-panel-3753)
+* [ Dashboard ](#tab-panel-3758)
+* [ API ](#tab-panel-3759)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.

@@ -1,11 +1,11 @@
 ---
 title: "StepFun | Models"
-description: "Use StepFun models with Mastra. 3 models available."
+description: "Use StepFun models with Mastra. 4 models available."
 ---
 
 # [StepFun logo]StepFun
 
-Access 3 StepFun models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
+Access 4 StepFun models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
 
 Learn more in the [StepFun documentation](https://platform.stepfun.com/docs/zh/overview/concept).
 
@@ -74,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.096,
     "outputCost": 0.288
+  },
+  {
+    "model": "stepfun/step-3.5-flash-2603",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.1,
+    "outputCost": 0.3
   }
 ]}
 />
@@ -106,7 +118,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "stepfun/step-3.5-flash"
+      ? "stepfun/step-3.5-flash-2603"
       : "stepfun/step-1-32k";
   }
 });

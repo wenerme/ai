@@ -763,7 +763,7 @@ limits.
 |   | Free Tier | Paid Tier, per second in USD |
 |---|---|---|
 | Veo 3.1 Standard video with audio price (default) | Not available | $0.40 (720p and 1080p) $0.60 (4k) |
-| Veo 3.1 Fast video with audio price (default) | Not available | $0.15 (720p and 1080p) $0.35 (4k) **Coming soon:** *$0.10 (720p), $0.12 (1080p), $0.30 (4k)* |
+| Veo 3.1 Fast video with audio price (default) | Not available | $0.10 (720p) $0.12 (1080p) $0.30 (4k) |
 | Veo 3.1 Lite video with audio price (default) | Not available | $0.05 (720p) $0.08 (1080p) (4k output not supported) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 

@@ -27,6 +27,7 @@ paths:
             $ref: '#/components/schemas/ModelsGetParametersCategory'
         - name: supported_parameters
           in: query
+          description: Filter models by supported parameter (comma-separated)
           required: false
           schema:
             type: string
@@ -41,11 +42,13 @@ paths:
             type: string
         - name: use_rss
           in: query
+          description: Return results as RSS feed
           required: false
           schema:
             type: string
         - name: use_rss_chat_links
           in: query
+          description: Use chat links in RSS feed items
           required: false
           schema:
             type: string
@@ -63,13 +66,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ModelsListResponse'
         '400':
-          description: Bad Request - Invalid request parameters
+          description: Bad Request - Invalid request parameters or malformed input
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
         '500':
-          description: Internal Server Error
+          description: Internal Server Error - Unexpected server error
           content:
             application/json:
               schema:

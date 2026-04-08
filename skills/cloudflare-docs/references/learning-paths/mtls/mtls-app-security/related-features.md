@@ -56,7 +56,7 @@ There are multiple ways to [forward a client certificate](https://developers.clo
 
 If you already have mTLS implemented, client certificates are already installed on devices, and therefore you would like to use your own Certificate Authority (CA), this is possible by [bringing your own CA for mTLS](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
 
-Here you can use the [Replace Hostname Associations API endpoint](https://developers.cloudflare.com/api/resources/certificate%5Fauthorities/subresources/hostname%5Fassociations/methods/update/) to enable mTLS in each hostname that should use the CA for mTLS validation, essentially associating your CAs specific with hostnames.
+You can associate your uploaded CAs with specific hostnames via the dashboard or the [Replace Hostname Associations API endpoint](https://developers.cloudflare.com/api/resources/certificate%5Fauthorities/subresources/hostname%5Fassociations/methods/update/).
 
 Note
 

@@ -2,7 +2,7 @@
 
 [WebRTC](https://webrtc.org/) is a powerful set of standard interfaces for building real-time applications. The OpenAI Realtime API supports connecting to realtime models through a WebRTC peer connection.
 
-For browser-based speech-to-speech voice applications, we recommend starting with the [Agents SDK for TypeScript](https://openai.github.io/openai-agents-js/guides/voice-agents/quickstart/), which provides higher-level helpers and APIs for managing Realtime sessions. The WebRTC interface is powerful and flexible, but lower level than the Agents SDK.
+For browser-based speech-to-speech voice applications, we recommend starting with [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents), which covers the Agents SDK's higher-level helpers and APIs for managing Realtime sessions. The WebRTC interface is powerful and flexible, but lower level than the Agents SDK.
 
 When connecting to a Realtime model from the client (like a web browser or
   mobile device), we recommend using WebRTC rather than WebSockets for more

@@ -206,7 +206,7 @@ An example file would look like this:
 
 ```
 
-Pattern, Pattern Type, Verify Email, Trusted Sender, Exempt Recipient, Acceptable Sender, Notes
+Values, Rule Type, Sender Verification, Trusted Sender, Exempt Recipient, Acceptable Sender, Notes
 
 whale@notaphish.com, EMAIL, true, true, false, true, not a phish
 

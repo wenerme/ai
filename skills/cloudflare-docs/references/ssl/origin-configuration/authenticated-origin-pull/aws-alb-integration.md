@@ -138,7 +138,7 @@ curl --verbose https://<your-application-load-balancer>
 
 ## 3\. Configure Cloudflare
 
-1. [Upload the certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#upload-a-custom-certificate) you created in [Step 1](#1-generate-a-custom-certificate) to Cloudflare. You should use the leaf certificate, not the root CA.
+1. [Upload the certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/create/) you created in [Step 1](#1-generate-a-custom-certificate) to Cloudflare. You should use the leaf certificate, not the root CA.
 
 Terminal window
 
@@ -216,32 +216,6 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth
         }
 
     ]
-
-  }'
-
-
-```
-
-1. [Enable the Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/#3-enable-authenticated-origin-pulls-globally) feature on your zone.
-
-Required API token permissions
-
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:
-* `Zone Settings Write`
-
-Edit zone setting
-
-```
-
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/tls_client_auth" \
-
-  --request PATCH \
-
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-
-  --json '{
-
-    "value": "on"
 
   }'
 

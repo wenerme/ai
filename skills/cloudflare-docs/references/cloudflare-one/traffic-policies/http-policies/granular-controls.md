@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
+
 Was this helpful?
 
 YesNo
@@ -32,8 +36,8 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-3881)
-* [ API ](#tab-panel-3882)
+* [ Dashboard ](#tab-panel-3887)
+* [ API ](#tab-panel-3888)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.

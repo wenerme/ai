@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ OIDC ](https://developers.cloudflare.com/search/?tags=OIDC)[ SAML ](https://developers.cloudflare.com/search/?tags=SAML)[ SCIM ](https://developers.cloudflare.com/search/?tags=SCIM) 
+
 Was this helpful?
 
 YesNo

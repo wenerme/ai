@@ -13,7 +13,7 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     {
       key: "model",
       type: "string",
-      description: "Model to use (e.g., `gpt-5-codex`).",
+      description: "Model to use (e.g., `gpt-5.4`).",
     },
     {
       key: "review_model",

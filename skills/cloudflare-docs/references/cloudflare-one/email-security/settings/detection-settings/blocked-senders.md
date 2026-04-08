@@ -51,11 +51,11 @@ An example file would look like this:
 
 ```
 
-Blocked Sender, Pattern Type, Notes
+Blocked Sender, Blocked Sender Type, Is Regex, Notes
 
-john.smith@gmail.com, EMAIL, John Smith
+john.smith@gmail.com, EMAIL, false, John Smith
 
-example.com, DOMAIN, Melanie Turner
+example.com, DOMAIN, false, Melanie Turner
 
 
 ```

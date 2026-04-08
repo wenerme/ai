@@ -552,25 +552,13 @@ Select your appropriate plan type in the table below to see rates.
             <td style="text-align:center">375 credits</td>
           </tr>
           <tr>
-            <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">43.75 credits</td>
-            <td style="text-align:center">4.375 credits</td>
-            <td style="text-align:center">350 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.1-Codex-mini</td>
-            <td style="text-align:center">6.25 credits</td>
-            <td style="text-align:center">0.625 credits</td>
-            <td style="text-align:center">50 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.4-Mini</td>
+            <td>GPT-5.4-mini</td>
             <td style="text-align:center">18.75 credits</td>
             <td style="text-align:center">1.875 credits</td>
             <td style="text-align:center">113 credits</td>
           </tr>
           <tr>
-            <td>GPT-5.2-Codex</td>
+            <td>GPT-5.3-Codex</td>
             <td style="text-align:center">43.75 credits</td>
             <td style="text-align:center">4.375 credits</td>
             <td style="text-align:center">350 credits</td>
@@ -580,12 +568,6 @@ Select your appropriate plan type in the table below to see rates.
             <td style="text-align:center">43.75 credits</td>
             <td style="text-align:center">4.375 credits</td>
             <td style="text-align:center">350 credits</td>
-          </tr>
-          <tr>
-            <td>GPT-5.1-Codex-Max</td>
-            <td style="text-align:center">31.25 credits</td>
-            <td style="text-align:center">3.125 credits</td>
-            <td style="text-align:center">250 credits</td>
           </tr>
           <tr>
             <td>GPT-5.3-Codex-Spark</td>
@@ -628,7 +610,7 @@ Select your appropriate plan type in the table below to see rates.
               GPT-5.3-Codex
             </th>
             <th scope="col" style="text-align:center">
-              GPT-5.1-Codex-mini
+              GPT-5.4-mini
             </th>
           </tr>
         </thead>
@@ -638,7 +620,7 @@ Select your appropriate plan type in the table below to see rates.
             <td style="text-align:center">1 message</td>
             <td style="text-align:center">\~7 credits</td>
             <td style="text-align:center">\~5 credits</td>
-            <td style="text-align:center">\~1 credit</td>
+            <td style="text-align:center">\~2 credits</td>
           </tr>
           <tr>
             <td>Cloud Tasks</td>
@@ -663,9 +645,7 @@ Select your appropriate plan type in the table below to see rates.
           </tr>
           <tr>
             <td colspan="5" style="text-align:center">
-              These averages also apply to legacy GPT-5.2, GPT-5.2-Codex,
-              GPT-5.1, GPT-5.1-Codex-Max, GPT-5, GPT-5-Codex, and
-              GPT-5-Codex-Mini.
+              These averages also apply to GPT-5.2.
             </td>
           </tr>
         </tfoot>

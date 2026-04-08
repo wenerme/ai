@@ -18,18 +18,19 @@ Copy page
 
 You can enable mutual Transport Layer Security (mTLS) for any hostname. For more information, refer to the [Client certificates overview](https://developers.cloudflare.com/ssl/client-certificates/).
 
+Cloudflare-issued or BYOCA
+
+The following process only refers to certificates issued from the Cloudflare-managed CA. For hostnames that should be validated using your own CA, refer to the [BYOCA documentation](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/).
+
 To enable mTLS for a host from the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Client Certificates** page.  
 [ Go to **Client Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. On the **Hosts** section of the **Client Certificates** card, select **Edit**.
-3. Enter the name of a host in your current domain.
-
-Note
-
+3. Enter the name of a host in your current domain.  
+Note  
 The domain (`example.com`) is automatically appended for you. This means that, if you want to enable mTLS for `abc.example.com`, you only need to type `abc`.
-
-1. Select **Save** to confirm.
+4. Select **Save** to confirm.
 
 ## CAs in use
 
@@ -37,7 +38,7 @@ As explained in the [Client certificates overview](https://developers.cloudflare
 
 Bring your own CA
 
-If you need to use your own CA (instead of the Cloudflare Managed CA), refer to [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/). This is an API-only option, available on Enterprise accounts. In this case, certificates and hostname associations are **not** listed on your dashboard.
+If you need to use your own CA (instead of the Cloudflare-managed CA), refer to [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/). This option is available on Enterprise accounts.
 
 ## Next steps
 

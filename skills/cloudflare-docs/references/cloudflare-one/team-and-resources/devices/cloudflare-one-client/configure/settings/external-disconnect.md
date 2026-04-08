@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS)[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
+
 Was this helpful?
 
 YesNo
@@ -143,8 +147,8 @@ curl --insecure https://<server-ip>:3333/status/disconnect
 
 ### 2\. Extract the SHA-256 fingerprint
 
-* [ Local certificate ](#tab-panel-3707)
-* [ Remote server ](#tab-panel-3708)
+* [ Local certificate ](#tab-panel-3713)
+* [ Remote server ](#tab-panel-3714)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -188,9 +192,9 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ### 3\. Turn on External Emergency Disconnect
 
-* [ Dashboard ](#tab-panel-3701)
-* [ API ](#tab-panel-3702)
-* [ MDM ](#tab-panel-3703)
+* [ Dashboard ](#tab-panel-3707)
+* [ API ](#tab-panel-3708)
+* [ MDM ](#tab-panel-3709)
 
 To configure External Emergency Disconnect using the dashboard:
 
@@ -307,9 +311,9 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-* [ Dashboard ](#tab-panel-3704)
-* [ API ](#tab-panel-3705)
-* [ MDM ](#tab-panel-3706)
+* [ Dashboard ](#tab-panel-3710)
+* [ API ](#tab-panel-3711)
+* [ MDM ](#tab-panel-3712)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Management**.
 2. Select **Global disconnection settings**.

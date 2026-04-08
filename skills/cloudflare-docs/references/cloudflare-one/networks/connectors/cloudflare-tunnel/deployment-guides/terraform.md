@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GCP ](https://developers.cloudflare.com/search/?tags=GCP) 
+
 Was this helpful?
 
 YesNo
@@ -160,8 +164,8 @@ Terminal window
 touch providers.tf  
 ```
 2. Add the following providers to `providers.tf`. The `random` provider is used to generate a tunnel secret.  
-   * [ Terraform (v5) ](#tab-panel-3497)  
-   * [ Terraform (v4) ](#tab-panel-3498)  
+   * [ Terraform (v5) ](#tab-panel-3503)  
+   * [ Terraform (v4) ](#tab-panel-3504)  
 ```  
 terraform {  
   required_providers {  
@@ -222,8 +226,8 @@ Terminal window
 touch Cloudflare-config.tf  
 ```
 2. Add the following resources to `Cloudflare-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-3493)  
-   * [ Terraform (v4) ](#tab-panel-3494)  
+   * [ Terraform (v5) ](#tab-panel-3499)  
+   * [ Terraform (v4) ](#tab-panel-3500)  
 ```  
 # Creates a new remotely-managed tunnel for the GCP VM.  
 resource "cloudflare_zero_trust_tunnel_cloudflared" "gcp_tunnel" {  
@@ -371,8 +375,8 @@ Terminal window
 touch GCP-config.tf  
 ```
 2. Add the following content to `GCP-config.tf`:  
-   * [ Terraform (v5) ](#tab-panel-3495)  
-   * [ Terraform (v4) ](#tab-panel-3496)  
+   * [ Terraform (v5) ](#tab-panel-3501)  
+   * [ Terraform (v4) ](#tab-panel-3502)  
 ```  
 # OS the server will use  
 data "google_compute_image" "image" {  
