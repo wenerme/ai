@@ -413,7 +413,7 @@ To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗]
 ## 2025-05-27
 
   
-**Gateway Protocol Detection Now Available for PAYGO and Free Plans**   
+**Gateway Protocol Detection Now Available for Pay-as-you-go and Free Plans**   
 
 All Cloudflare One Gateway users can now use Protocol detection logging and filtering, including those on Pay-as-you-go and Free plans.
 

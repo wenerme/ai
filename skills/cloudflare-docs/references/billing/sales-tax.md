@@ -57,11 +57,11 @@ Contact [billing@cloudflare.com](mailto:billing@cloudflare.com) with any questio
 
 ## Taiwan (VAT)
 
-Cloudflare collects VAT on all pay-as-you-go customers in Taiwan. The eGUI Invoice ID and eGUI Code are shown in the Cloudflare dashboard and are required to retrieve an invoice from the Taiwan government.
+Cloudflare collects VAT on all Pay-as-you-go customers in Taiwan. The eGUI Invoice ID and eGUI Code are shown in the Cloudflare dashboard and are required to retrieve an invoice from the Taiwan government.
 
 ## Japan (CT)
 
-Cloudflare Inc. is currently registered in Japan as of October 1st, 2023\. Due to some constraints, Cloudflare will be only able to start collecting tax from PAYGO customers on April 1st, 2024.
+Cloudflare Inc. is currently registered in Japan as of October 1st, 2023\. Due to some constraints, Cloudflare will be only able to start collecting tax from Pay-as-you-go customers on April 1st, 2024.
 
 ## Canada
 

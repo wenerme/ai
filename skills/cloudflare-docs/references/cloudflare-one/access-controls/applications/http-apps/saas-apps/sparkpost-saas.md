@@ -20,7 +20,7 @@ Copy page
 
 # SparkPost
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 This guide covers how to configure [SparkPost or SparkPost EU ↗](https://support.sparkpost.com/docs/my-account-and-profile/sso) as a SAML application in Cloudflare Zero Trust.
 

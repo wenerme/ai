@@ -92,6 +92,10 @@ You can prevent this by enforcing the [no-floating-promises eslint rule ↗](htt
 
 If a WebSocket is missing the proper code to close its server-side connection, the Workers runtime will throw a `script will never generate a response` error. In the example below, the `'close'` event from the client is not properly handled by calling `server.close()`, and the error is thrown. In order to avoid this, ensure that the WebSocket's server-side connection is properly closed via an event listener or other server-side logic.
 
+Note
+
+With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the WebSocket close handshake. This specific error scenario is less likely to occur because the runtime handles the close for you. The example below applies to Workers on older compatibility dates.
+
 JavaScript
 
 ```
@@ -377,8 +381,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, pass the request promise to [event.waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
-* [  Module Worker ](#tab-panel-7448)
-* [  Service Worker ](#tab-panel-7449)
+* [  Module Worker ](#tab-panel-7468)
+* [  Service Worker ](#tab-panel-7469)
 
 JavaScript
 
@@ -466,8 +470,8 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-7450)
-* [  Service Worker ](#tab-panel-7451)
+* [  Module Worker ](#tab-panel-7470)
+* [  Service Worker ](#tab-panel-7471)
 
 JavaScript
 

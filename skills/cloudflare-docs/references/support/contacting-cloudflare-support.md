@@ -80,18 +80,22 @@ To submit a support case, follow these steps:
 2. Choose the category and subcategories that best define your issue.
 3. Choose the affected domains (if applicable).
 4. Enter a detailed summary of the issue you’re experiencing.
-5. Complete the case submission fields as completely as possible with the following information. _(**Please note** that missing information will increase the time it takes to resolve your issue and our team may not be able to investigate without enough information. Please review [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) and make sure you include all needed information.)_\- A detailed description of the issue with the following information:  
+5. Complete the case submission fields as completely as possible with the following information. _(**Please note** that missing information will increase the time it takes to resolve your issue and our team may not be able to investigate without enough information. Please review [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) and make sure you include all needed information.)_  
+   * A detailed description of the issue with the following information:  
    * Timestamp (UTC)  
    * ZoneName/ZoneID  
    * Problem frequency  
-   * Steps to reproduce the issue, with actual results vs expected results - Any necessary information for a technical investigation  
+   * Steps to reproduce the issue, with actual results vs expected results  
+         * Any necessary information for a technical investigation  
    * A description of the actual results vs expected results  
    * Steps to reproduce the issue, with example URLs  
    * Exact error messages  
    * [HAR files](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file)  
    * Screenshots  
    * Relevant logs from the origin web server  
-   * Output from [test tools](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) such as MTR, traceroute, dig/nslookup, and cURL - Priority level, impact to service / production - Any collaborators whom you wish to be cc'd on the case
+   * Output from [test tools](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) such as MTR, traceroute, dig/nslookup, and cURL  
+         * Priority level, impact to service / production  
+         * Any collaborators whom you wish to be cc'd on the case
 6. Click **Submit Case**
 
 \*\* Available to certain plan types only. Refer to chart above for details.
@@ -206,7 +210,7 @@ Below are definitions of the priority levels Cloudflare assigns to cases and the
 
 ### SLOs for other plans
 
-* PAYGO and Free customers - No SLAs are offered, but customers are responded to in the order in which their request is received. For a quicker answer, we highly recommend searching or posting on our [Community forums ↗](https://community.cloudflare.com/).
+* Pay-as-you-go and Free customers - No SLAs are offered, but customers are responded to in the order in which their request is received. For a quicker answer, we highly recommend searching or posting on our [Community forums ↗](https://community.cloudflare.com/).
 
 ## Supported languages
 

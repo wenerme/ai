@@ -32,6 +32,7 @@ Configuration options:
 - `duo_cli_auto_download`: Skip the download confirmation prompt.
 
 All arguments and flags are passed through to the GitLab Duo CLI binary.
+
 Use `--update` to check for and install updates to the binary.
 
 For more information, see the [GitLab Duo CLI documentation](https://docs.gitlab.com/user/gitlab_duo_cli/).

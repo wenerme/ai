@@ -1,11 +1,11 @@
 ---
 title: "Friendli | Models"
-description: "Use Friendli models with Mastra. 7 models available."
+description: "Use Friendli models with Mastra. 6 models available."
 ---
 
 # [Friendli logo]Friendli
 
-Access 7 Friendli models through Mastra's model router. Authentication is handled automatically using the `FRIENDLI_TOKEN` environment variable.
+Access 6 Friendli models through Mastra's model router. Authentication is handled automatically using the `FRIENDLI_TOKEN` environment variable.
 
 Learn more in the [Friendli documentation](https://friendli.ai/docs/guides/serverless_endpoints/introduction).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "friendli/MiniMaxAI/MiniMax-M2.1"
+  model: "friendli/MiniMaxAI/MiniMax-M2.5"
 });
 
 // Generate a response
@@ -64,18 +64,6 @@ for await (const chunk of stream) {
     "outputCost": 0.6
   },
   {
-    "model": "friendli/MiniMaxAI/MiniMax-M2.1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 196608,
-    "maxOutput": 196608,
-    "inputCost": 0.3,
-    "outputCost": 1.2
-  },
-  {
     "model": "friendli/MiniMaxAI/MiniMax-M2.5",
     "imageInput": false,
     "audioInput": false,
@@ -100,18 +88,6 @@ for await (const chunk of stream) {
     "outputCost": 0.8
   },
   {
-    "model": "friendli/zai-org/GLM-4.7",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "friendli/zai-org/GLM-5",
     "imageInput": false,
     "audioInput": false,
@@ -122,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 202752,
     "inputCost": 1,
     "outputCost": 3.2
+  },
+  {
+    "model": "friendli/zai-org/GLM-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 202752,
+    "maxOutput": 202752,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   }
 ]}
 />
@@ -136,7 +124,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.friendli.ai/serverless/v1",
-    id: "friendli/MiniMaxAI/MiniMax-M2.1",
+    id: "friendli/MiniMaxAI/MiniMax-M2.5",
     apiKey: process.env.FRIENDLI_TOKEN,
     headers: {
       "X-Custom-Header": "value"
@@ -154,8 +142,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "friendli/zai-org/GLM-5"
-      : "friendli/MiniMaxAI/MiniMax-M2.1";
+      ? "friendli/zai-org/GLM-5.1"
+      : "friendli/MiniMaxAI/MiniMax-M2.5";
   }
 });
 ```

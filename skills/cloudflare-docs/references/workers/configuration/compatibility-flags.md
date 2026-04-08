@@ -30,8 +30,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-7052)
-* [  wrangler.toml ](#tab-panel-7053)
+* [  wrangler.jsonc ](#tab-panel-7072)
+* [  wrangler.toml ](#tab-panel-7073)
 
 JSONC
 
@@ -87,8 +87,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7056)
-* [  wrangler.toml ](#tab-panel-7057)
+* [  wrangler.jsonc ](#tab-panel-7076)
+* [  wrangler.toml ](#tab-panel-7077)
 
 JSONC
 
@@ -104,7 +104,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03"
+  "compatibility_date": "2026-04-08"
 
 }
 
@@ -119,13 +119,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-08"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7050)
-* [  wrangler.toml ](#tab-panel-7051)
+* [  wrangler.jsonc ](#tab-panel-7070)
+* [  wrangler.toml ](#tab-panel-7071)
 
 JSONC
 
@@ -157,8 +157,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-7054)
-* [  wrangler.toml ](#tab-panel-7055)
+* [  wrangler.jsonc ](#tab-panel-7074)
+* [  wrangler.toml ](#tab-panel-7075)
 
 JSONC
 
@@ -200,6 +200,109 @@ Newest flags are listed first.
 When `containers_pid_namespace` is set, containers will use an isolated PID namespace. The `ENTRYPOINT` of your container will have PID 1.
 
 When unset, the container shares the PID namespace with the virtual machine (VM) containing the container. The `ENTRYPOINT` of your container will _not_ have PID 1 and other processes running on the VM (that are not part of your container) will be visible.
+
+### WebSocket auto-reply to close
+
+| **Default as of**   | 2026-04-07                            |
+| ------------------- | ------------------------------------- |
+| **Flag to enable**  | web\_socket\_auto\_reply\_to\_close   |
+| **Flag to disable** | web\_socket\_manual\_reply\_to\_close |
+
+When a server sends a WebSocket Close frame, the Workers runtime now automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before firing the `close` event. This matches the [WebSocket spec ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close%5Fevent) and browser behavior.
+
+Previously, receiving a server-initiated Close frame left the WebSocket in `CLOSING` and required the application to call `close()` itself. With this flag active, you no longer need to call `close()` in your `close` event handler. The runtime handles the close handshake automatically.
+
+JavaScript
+
+```
+
+const [client, server] = Object.values(new WebSocketPair());
+
+server.accept();
+
+
+server.addEventListener("close", (event) => {
+
+  // readyState is already CLOSED — no need to call server.close().
+
+  console.log(server.readyState); // WebSocket.CLOSED
+
+  console.log(event.code); // 1000
+
+  console.log(event.wasClean); // true
+
+}, { once: true });
+
+
+```
+
+If you do still call `close()` inside the handler, the call is silently ignored. This means existing code that manually replies to Close frames will not break when you update your compatibility date.
+
+The automatic close behavior can interfere with WebSocket proxying. When a Worker proxies between a client and a backend, the old behavior allowed the Worker to observe a backend Close frame without the runtime tearing down the connection, giving the Worker time to coordinate a clean close on the client side. To support this pattern, the `accept()` method now accepts an option `allowHalfOpen`. Call `ws.accept({ allowHalfOpen: true })` to restore the old half-open behavior regardless of the compatibility flag.
+
+JavaScript
+
+```
+
+const [client, server] = Object.values(new WebSocketPair());
+
+
+// Opt into half-open mode for proxying
+
+server.accept({ allowHalfOpen: true });
+
+
+server.addEventListener("close", (event) => {
+
+  // With allowHalfOpen true, readyState is still CLOSING here,
+
+  // giving you time to coordinate the close on the other side.
+
+  console.log(server.readyState); // WebSocket.CLOSING
+
+
+  // Manually close when ready.
+
+  server.close(1000, "done");
+
+}, { once: true });
+
+
+```
+
+Note that there is no corresponding option to the `WebSocket` constructor. WebSockets constructed with `new WebSocket` will always auto-reply to closes after this flag takes effect. WebSockets constructed this way are automatically "accepted", so there is no opportunity to pass the option to `accept()`. If you are creating a WebSocket with `new WebSocket`, but you need half-open behavior, you will need to switch to using `fetch()` instead.
+
+JavaScript
+
+```
+
+// This does not allow half-open:
+
+let ws = new WebSocket("wss://example.com");
+
+
+// But you can do this instead:
+
+let resp = await fetch("https://example.com", {
+
+  headers: { "Upgrade": "websocket" }
+
+});
+
+if (!resp.webSocket) {
+
+  throw new Error("WebSocket handshake not accepted");
+
+}
+
+let ws = resp.webSocket;
+
+ws.accept({ allowHalfOpen: true });
+
+
+```
+
+For more information, refer to the [WebSocket API documentation](https://developers.cloudflare.com/workers/runtime-apis/websockets/).
 
 ### Durable Object `deleteAll()` deletes alarms
 

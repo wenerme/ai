@@ -63,8 +63,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-7385)
-* [  Rust ](#tab-panel-7386)
+* [  JavaScript ](#tab-panel-7405)
+* [  Rust ](#tab-panel-7406)
 
 JavaScript
 
@@ -115,8 +115,8 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-7387)
-* [  Rust ](#tab-panel-7388)
+* [  JavaScript ](#tab-panel-7407)
+* [  Rust ](#tab-panel-7408)
 
 JavaScript
 
@@ -198,8 +198,8 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-7389)
-* [  Rust ](#tab-panel-7390)
+* [  JavaScript ](#tab-panel-7409)
+* [  Rust ](#tab-panel-7410)
 
 JavaScript
 
@@ -280,9 +280,9 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-7391)
-* [  Rust ](#tab-panel-7392)
-* [  Hono ](#tab-panel-7393)
+* [  JavaScript ](#tab-panel-7411)
+* [  Rust ](#tab-panel-7412)
+* [  Hono ](#tab-panel-7413)
 
 JavaScript
 
@@ -534,6 +534,10 @@ async function websocket(url) {
 
   // in JavaScript, as opposed to returning it on to a client.
 
+  // You can pass { allowHalfOpen: true } if you need to coordinate
+
+  // the close handshake manually (for example, when proxying).
+
   ws.accept();
 
 
@@ -551,6 +555,14 @@ async function websocket(url) {
 
 
 ```
+
+## WebSocket close behavior
+
+With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the Workers runtime automatically replies to incoming Close frames and transitions `readyState` to `CLOSED` before firing the `close` event. You do not need to call `close()` in your `close` event handler, but doing so is safe (the call is silently ignored).
+
+If you need half-open behavior (for example, for WebSocket proxying), pass `{ allowHalfOpen: true }` to `accept()`. Note that `new WebSocket(url)` always auto-replies after this flag takes effect. To get half-open behavior for a client WebSocket, use the `fetch()`\-based pattern shown above and call `ws.accept({ allowHalfOpen: true })`.
+
+For more details, refer to [WebSocket close behavior](https://developers.cloudflare.com/workers/runtime-apis/websockets/#close-behavior).
 
 ## WebSocket compression
 

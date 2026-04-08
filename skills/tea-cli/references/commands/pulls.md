@@ -213,3 +213,43 @@ Merge a pull request
 **--style, -s**="": Kind of merge to perform: merge, rebase, squash, rebase-merge (default: "merge")
 
 **--title, -t**="": Merge commit title
+
+### review-comments, rc
+
+List review comments on a pull request
+
+**--fields, -f**="": Comma-separated list of fields to print. Available values:
+			id,body,reviewer,path,line,resolver,created,updated,url
+		 (default: "id,path,line,body,reviewer,resolver")
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+### resolve
+
+Resolve a review comment on a pull request
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+### unresolve
+
+Unresolve a review comment on a pull request
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional

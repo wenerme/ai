@@ -22,9 +22,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-4376)
-* [  TypeScript ](#tab-panel-4377)
-* [  Python ](#tab-panel-4378)
+* [  JavaScript ](#tab-panel-4382)
+* [  TypeScript ](#tab-panel-4383)
+* [  Python ](#tab-panel-4384)
 
 JavaScript
 
@@ -150,8 +150,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-4379)
-* [  Python ](#tab-panel-4380)
+* [  JavaScript ](#tab-panel-4385)
+* [  Python ](#tab-panel-4386)
 
 JavaScript
 
@@ -249,7 +249,9 @@ The WebSocket Hibernation API permits a maximum of 32,768 WebSocket connections 
 
 `waitUntil` is not necessary
 
-Disconnected WebSockets are not returned by this method, but `getWebSockets` may still return WebSockets even after `ws.close` has been called. For example, if the server-side WebSocket sends a close, but does not receive one back (and has not detected a disconnect from the client), then the connection is in the CLOSING 'readyState'. The client might send more messages, so the WebSocket is technically not disconnected.
+Disconnected WebSockets are not returned by this method, but `getWebSockets` may still return WebSockets even after `ws.close` has been called. For example, if the server-side WebSocket sends a close, but does not receive one back (and has not detected a disconnect from the client), then the connection is in the `CLOSING` readyState. The client might send more messages, so the WebSocket is technically not disconnected.
+
+With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the close handshake, so WebSockets transition from `CLOSING` to `CLOSED` much faster and are less likely to be observed in the `CLOSING` state.
 
 #### Parameters
 
@@ -353,8 +355,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-4381)
-* [  Python ](#tab-panel-4382)
+* [  TypeScript ](#tab-panel-4387)
+* [  Python ](#tab-panel-4388)
 
 JavaScript
 

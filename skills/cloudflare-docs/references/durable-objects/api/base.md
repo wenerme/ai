@@ -18,9 +18,9 @@ Copy page
 
 The `DurableObject` base class is an abstract class which all Durable Objects inherit from. This base class provides a set of optional methods, frequently referred to as handler methods, which can respond to events, for example a `webSocketMessage` when using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api). To provide a concrete example, here is a Durable Object `MyDurableObject` which extends `DurableObject` and implements the fetch handler to return "Hello, World!" to the calling Worker.
 
-* [  JavaScript ](#tab-panel-4350)
-* [  TypeScript ](#tab-panel-4351)
-* [  Python ](#tab-panel-4352)
+* [  JavaScript ](#tab-panel-4356)
+* [  TypeScript ](#tab-panel-4357)
+* [  Python ](#tab-panel-4358)
 
 JavaScript
 
@@ -111,8 +111,8 @@ fetch(request ` Request `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4340)
-* [  TypeScript ](#tab-panel-4341)
+* [  JavaScript ](#tab-panel-4346)
+* [  TypeScript ](#tab-panel-4347)
 
 JavaScript
 
@@ -186,8 +186,8 @@ alarm(alarmInfo? ` AlarmInvocationInfo `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4342)
-* [  TypeScript ](#tab-panel-4343)
+* [  JavaScript ](#tab-panel-4348)
+* [  TypeScript ](#tab-panel-4349)
 
 JavaScript
 
@@ -253,8 +253,8 @@ webSocketMessage(ws ` WebSocket `, message ` string | ArrayBuffer `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4344)
-* [  TypeScript ](#tab-panel-4345)
+* [  JavaScript ](#tab-panel-4350)
+* [  TypeScript ](#tab-panel-4351)
 
 JavaScript
 
@@ -310,7 +310,9 @@ export class MyDurableObject extends DurableObject<Env> {
 
 * ``  
 webSocketClose(ws ` WebSocket `, code ` number `, reason ` string `, wasClean ` boolean `)  
- ``: ` void ` | ` Promise<void> `\- Called by the system when a WebSocket connection is closed. - You **must** call `ws.close(code, reason)` inside this handler to complete the WebSocket close handshake. Failing to reciprocate the close will result in `1006` errors on the client, representing an abnormal closure per the WebSocket specification.  
+ ``: ` void ` | ` Promise<void> `\- Called by the system when a WebSocket connection is closed.  
+   * With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before this handler is called. You do not need to call `ws.close()` — but doing so is safe (the call is silently ignored).  
+   * On older compatibility dates (before `2026-04-07`), you **must** call `ws.close(code, reason)` inside this handler to complete the WebSocket close handshake. Failing to reciprocate the close will result in `1006` errors on the client, representing an abnormal closure per the WebSocket specification.  
    * This method can be `async`.
 
 #### Parameters
@@ -326,8 +328,8 @@ webSocketClose(ws ` WebSocket `, code ` number `, reason ` string `, wasClean ` 
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4346)
-* [  TypeScript ](#tab-panel-4347)
+* [  JavaScript ](#tab-panel-4354)
+* [  TypeScript ](#tab-panel-4355)
 
 JavaScript
 
@@ -337,7 +339,11 @@ export class MyDurableObject extends DurableObject {
 
   async webSocketClose(ws, code, reason, wasClean) {
 
-    // Complete the WebSocket close handshake
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
+
+    // the runtime has already completed the close handshake.
+
+    // On older compat dates, call ws.close(code, reason) here.
 
     ws.close(code, reason);
 
@@ -358,7 +364,11 @@ export class MyDurableObject extends DurableObject<Env> {
 
   async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
 
-    // Complete the WebSocket close handshake
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07),
+
+    // the runtime has already completed the close handshake.
+
+    // On older compat dates, call ws.close(code, reason) here.
 
     ws.close(code, reason);
 
@@ -388,8 +398,8 @@ webSocketError(ws ` WebSocket `, error ` unknown `)
 
 #### Example
 
-* [  JavaScript ](#tab-panel-4348)
-* [  TypeScript ](#tab-panel-4349)
+* [  JavaScript ](#tab-panel-4352)
+* [  TypeScript ](#tab-panel-4353)
 
 JavaScript
 

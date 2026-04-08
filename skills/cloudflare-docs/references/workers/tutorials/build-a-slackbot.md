@@ -1,6 +1,6 @@
 ---
 title: Build a Slackbot
-description: Learn how to build a Slackbot with Hono and TypeScript in Cloudflare Workerss
+description: Learn how to build a Slackbot with Hono and TypeScript in Cloudflare Workers
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

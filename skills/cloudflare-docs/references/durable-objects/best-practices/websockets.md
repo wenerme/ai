@@ -69,9 +69,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-4455)
-* [  TypeScript ](#tab-panel-4456)
-* [  Python ](#tab-panel-4457)
+* [  JavaScript ](#tab-panel-4461)
+* [  TypeScript ](#tab-panel-4462)
+* [  Python ](#tab-panel-4463)
 
 JavaScript
 
@@ -130,7 +130,9 @@ export class WebSocketHibernationServer extends DurableObject {
 
   async webSocketClose(ws, code, reason, wasClean) {
 
-    // Calling close() on the server completes the WebSocket close handshake
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
 
     ws.close(code, reason);
 
@@ -215,7 +217,9 @@ export class WebSocketHibernationServer extends DurableObject {
 
   ) {
 
-    // Calling close() on the server completes the WebSocket close handshake
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
 
     ws.close(code, reason);
 
@@ -289,7 +293,9 @@ self.ctx = state
 
     async def webSocketClose(self, ws, code, reason, was_clean):
 
-        # Calling close() on the server completes the WebSocket close handshake
+        # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+        # auto-replies to Close frames. Calling close() is safe but no longer required.
 
         ws.close(code, reason)
 
@@ -298,8 +304,8 @@ self.ctx = state
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4464)
-* [  wrangler.toml ](#tab-panel-4465)
+* [  wrangler.jsonc ](#tab-panel-4470)
+* [  wrangler.toml ](#tab-panel-4471)
 
 JSONC
 
@@ -395,8 +401,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-4468)
-* [  TypeScript ](#tab-panel-4469)
+* [  JavaScript ](#tab-panel-4474)
+* [  TypeScript ](#tab-panel-4475)
 
 JavaScript
 
@@ -583,8 +589,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-4470)
-* [  TypeScript ](#tab-panel-4471)
+* [  JavaScript ](#tab-panel-4476)
+* [  TypeScript ](#tab-panel-4477)
 
 JavaScript
 
@@ -645,6 +651,10 @@ export class WebSocketServer extends DurableObject {
 
     console.log(`${state.orderId} disconnected`);
 
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
+
     ws.close(code, reason);
 
   }
@@ -679,53 +689,56 @@ export class WebSocketServer extends DurableObject<Env> {
     const orderId = url.searchParams.get("orderId") ?? "anonymous";
 
 
-      const webSocketPair = new WebSocketPair();
+    const webSocketPair = new WebSocketPair();
 
-      const [client, server] = Object.values(webSocketPair);
-
-
-      this.ctx.acceptWebSocket(server);
+    const [client, server] = Object.values(webSocketPair);
 
 
-      // Persist per-connection state that survives hibernation
-
-      const state: ConnectionState = {
-
-        orderId,
-
-        joinedAt: Date.now(),
-
-      };
-
-      server.serializeAttachment(state);
+    this.ctx.acceptWebSocket(server);
 
 
-      return new Response(null, { status: 101, webSocket: client });
+    // Persist per-connection state that survives hibernation
 
-    }
+    const state: ConnectionState = {
 
+      orderId,
 
-    async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
+      joinedAt: Date.now(),
 
-      // Restore state after potential hibernation
+    };
 
-      const state = ws.deserializeAttachment() as ConnectionState;
-
-      ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);
-
-    }
+    server.serializeAttachment(state);
 
 
-    async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
+    return new Response(null, { status: 101, webSocket: client });
 
-      const state = ws.deserializeAttachment() as ConnectionState;
+  }
 
-      console.log(`${state.orderId} disconnected`);
 
-      ws.close(code, reason);
+  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
 
-    }
+    // Restore state after potential hibernation
 
+    const state = ws.deserializeAttachment() as ConnectionState;
+
+    ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);
+
+  }
+
+
+  async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
+
+    const state = ws.deserializeAttachment() as ConnectionState;
+
+    console.log(`${state.orderId} disconnected`);
+
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
+
+    ws.close(code, reason);
+
+  }
 
 }
 
@@ -747,9 +760,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-4458)
-* [  TypeScript ](#tab-panel-4459)
-* [  Python ](#tab-panel-4460)
+* [  JavaScript ](#tab-panel-4464)
+* [  TypeScript ](#tab-panel-4465)
+* [  Python ](#tab-panel-4466)
 
 JavaScript
 
@@ -971,9 +984,9 @@ headers={
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-4461)
-* [  TypeScript ](#tab-panel-4462)
-* [  Python ](#tab-panel-4463)
+* [  JavaScript ](#tab-panel-4467)
+* [  TypeScript ](#tab-panel-4468)
+* [  Python ](#tab-panel-4469)
 
 JavaScript
 
@@ -1029,7 +1042,11 @@ export class WebSocketServer extends DurableObject {
     });
 
 
-    // If the client closes the connection, the runtime will close the connection too.
+    // When the client closes the connection, clean up the server side.
+
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
 
     server.addEventListener("close", (cls) => {
 
@@ -1106,7 +1123,11 @@ export class WebSocketServer extends DurableObject {
     });
 
 
-    // If the client closes the connection, the runtime will close the connection too.
+    // When the client closes the connection, clean up the server side.
+
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
 
     server.addEventListener("close", (cls: CloseEvent) => {
 
@@ -1185,7 +1206,11 @@ self.currently_connected_websockets = 0
         server.addEventListener("message", create_proxy(on_message))
 
 
-        # If the client closes the connection, the runtime will close the connection too.
+        # When the client closes the connection, clean up the server side.
+
+        # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+        # auto-replies to Close frames. Calling close() is safe but no longer required.
 
         def on_close(event):
 
@@ -1212,8 +1237,8 @@ self.currently_connected_websockets = 0
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4466)
-* [  wrangler.toml ](#tab-panel-4467)
+* [  wrangler.jsonc ](#tab-panel-4472)
+* [  wrangler.toml ](#tab-panel-4473)
 
 JSONC
 

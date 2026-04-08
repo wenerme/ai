@@ -16,7 +16,7 @@ Copy page
 
 # PlanetScale
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Connect Hyperdrive to a PlanetScale MySQL database.
 
@@ -97,8 +97,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4693)
-* [  wrangler.toml ](#tab-panel-4694)
+* [  wrangler.jsonc ](#tab-panel-4699)
+* [  wrangler.toml ](#tab-panel-4700)
 
 JSONC
 
@@ -114,7 +114,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-08",
 
   "compatibility_flags": [
 
@@ -153,7 +153,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-08"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -195,8 +195,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4695)
-* [  wrangler.toml ](#tab-panel-4696)
+* [  wrangler.jsonc ](#tab-panel-4701)
+* [  wrangler.toml ](#tab-panel-4702)
 
 JSONC
 
@@ -214,7 +214,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-08",
 
   "hyperdrive": [
 
@@ -241,7 +241,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-08"
 
 
 [[hyperdrive]]

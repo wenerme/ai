@@ -30,9 +30,9 @@ Note
 
 WebSocket Hibernation is unavailable for outgoing WebSocket use cases. Hibernation is only supported when the Durable Object acts as a server. For use cases where outgoing WebSockets are required, refer to [Write a WebSocket client](https://developers.cloudflare.com/workers/examples/websockets/#write-a-websocket-client).
 
-* [  JavaScript ](#tab-panel-4519)
-* [  TypeScript ](#tab-panel-4520)
-* [  Python ](#tab-panel-4521)
+* [  JavaScript ](#tab-panel-4525)
+* [  TypeScript ](#tab-panel-4526)
+* [  Python ](#tab-panel-4527)
 
 JavaScript
 
@@ -281,7 +281,9 @@ export class WebSocketHibernationServer extends DurableObject {
 
   async webSocketClose(ws, code, reason, wasClean) {
 
-    // Calling close() on the server completes the WebSocket close handshake
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
 
     ws.close(code, reason);
 
@@ -525,7 +527,9 @@ export class WebSocketHibernationServer extends DurableObject {
 
   async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
 
-    // Calling close() on the server completes the WebSocket close handshake
+    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    // auto-replies to Close frames. Calling close() is safe but no longer required.
 
     ws.close(code, reason);
 
@@ -729,7 +733,9 @@ class WebSocketHibernationServer(DurableObject):
 
   async def webSocketClose(self, ws, code, reason, wasClean):
 
-    # Calling close() on the server completes the WebSocket close handshake
+    # With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+    # auto-replies to Close frames. Calling close() is safe but no longer required.
 
     ws.close(code, reason)
 
@@ -746,8 +752,8 @@ class WebSocketHibernationServer(DurableObject):
 
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4517)
-* [  wrangler.toml ](#tab-panel-4518)
+* [  wrangler.jsonc ](#tab-panel-4523)
+* [  wrangler.toml ](#tab-panel-4524)
 
 JSONC
 
