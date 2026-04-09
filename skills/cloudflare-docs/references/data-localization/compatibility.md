@@ -97,7 +97,7 @@ The table below provides a summary of the Data Localization Suite product's beha
 | Static IP/BYOIP             | ⚫️              | ✅ [30](#user-content-fn-26) | ⚫️                          |
 | Cloudflare Network Firewall | ⚫️              | ⚫️                          | ✅                           |
 | Network Flow                | ⚫️              | ⚫️                          | 🚧 [4](#user-content-fn-1)  |
-| Magic Transit               | ⚫️              | ⚫️                          | ✅                           |
+| Magic Transit               | ⚫️              | ⚫️                          | ✅ [8](#user-content-fn-3)   |
 | Cloudflare WAN              | ⚫️              | ⚫️                          | ✅                           |
 | Spectrum                    | ✅               | ✅ [31](#user-content-fn-42) | ✅                           |
 
@@ -136,7 +136,7 @@ The table below provides a summary of the Data Localization Suite product's beha
 6. Regular/Generic and Custom Tiered Cache works; Smart Tiered Caching does not work with Customer Metadata Boundary (CMB).  
  With CMB set to EU, the Zone Dashboard **Caching** \> **Tiered Cache** \> **Smart Tiered Caching** option will not populate the Dashboard Analytics. [↩](#user-content-fnref-30)
 7. Web Analytics collects the [minimum amount of information](https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/). Alternatively, you can [exclude EU Visitors from RUM](https://developers.cloudflare.com/speed/observatory/rum-beacon/#rum-excluding-eeaeu). [↩](#user-content-fnref-43)
-8. [Adaptive DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/) is only supported for CMB = US. All other features are available to all CMB regions. [↩](#user-content-fnref-3)
+8. [Adaptive DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/) is only supported for CMB = US. All other features are available to all CMB regions. [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
 9. API Discovery, Volumetric Abuse Detection and [Sequence Analytics and Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) will not work with CMB = EU. All other features are available to all CMB regions. [↩](#user-content-fnref-4)
 10. Legacy Zone Analytics & Logs section not available outside US region when using CMB. Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead. [↩](#user-content-fnref-37)
 11. [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/) are available. However, there are no regionalization guarantees for the Siteverify API yet. [↩](#user-content-fnref-38)

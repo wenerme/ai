@@ -37,8 +37,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-4001)
-* [ API ](#tab-panel-4002)
+* [ Dashboard ](#tab-panel-4007)
+* [ API ](#tab-panel-4008)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -191,8 +191,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-4003)
-* [ API ](#tab-panel-4004)
+* [ Dashboard ](#tab-panel-4009)
+* [ API ](#tab-panel-4010)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -334,8 +334,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-3997)
-* [ API ](#tab-panel-3998)
+* [ Dashboard ](#tab-panel-4003)
+* [ API ](#tab-panel-4004)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -447,8 +447,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-3999)
-* [ API ](#tab-panel-4000)
+* [ Dashboard ](#tab-panel-4005)
+* [ API ](#tab-panel-4006)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.
@@ -591,7 +591,8 @@ If the tunnel is to an Azure VPN gateway, the tunnel interface address must not 
 * Your CPE may advertise up to 5,000 prefixes on one BGP session.
 * MD5 authentication is optional. You can use a maximum of 80 characters. Supported characters include `` a-zA-Z0-9'!@#$%^&*()+[]{}<>/.,;:_-~`= \\| ``  
 Warning  
-MD5 authentication is not a security measure nor is it a valid security mechanism. The MD5 key is not treated as a secret value. This is only supported for preventing misconfiguration, not for defending against malicious attacks.
+MD5 authentication is not a valid security mechanism. The MD5 key is not treated as a secret value. This is only supported for preventing misconfiguration, not for defending against malicious attacks.  
+When MD5 is enabled, you cannot use Telnet to test BGP connectivity (Telnet does not support TCP MD5 authentication).
 
 ## Next steps
 

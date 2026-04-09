@@ -60,6 +60,7 @@ response = completion(
 - modalities
 - reasoning_content
 - audio (for TTS models only)
+- service_tier
 
 **Anthropic Params**
 - thinking (used to set max budget tokens across anthropic/gemini models)
@@ -253,6 +254,20 @@ curl http://0.0.0.0:4000/v1/chat/completions \
     "thinking": {"type": "enabled", "budget_tokens": 1024}
   }'
 ```
+
+## Usage - `service_tier`
+
+LiteLLM propagates OpenAI's `service_tier` parameter to Gemini, and also extracts it from the response headers (`x-gemini-service-tier`) into `model_response.service_tier`.
+
+| OpenAI `service_tier` | Gemini `service_tier` | Notes |
+| --------------------- | --------------------- | ----- |
+| `"auto"`              | `"priority"`          | LiteLLM maps OpenAI's `"auto"` to Gemini's `"priority"` tier, as `priority` will fall back on Gemini. |
+| `"flex"`              | `"flex"`              | Direct mapping. |
+| `"priority"`          | `"priority"`          | Direct mapping. |
+| `"default"`           | `"standard"`          | LiteLLM maps `"default"` to `"standard"`. |
+| Any other value       | Passed as-is (lowercased) | Values are case-insensitive and normalized to lowercase. |
+
+On the response, LiteLLM maps `"standard"` back to `"default"` for the Gemini API.
 
 ## Text-to-Speech (TTS) Audio Output
 

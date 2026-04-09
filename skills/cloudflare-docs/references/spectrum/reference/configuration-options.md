@@ -111,11 +111,11 @@ For DNS origins:
 
 ```
 
-The number of ports in an origin port range must match the number of ports specified in the `protocol` field. Connections to a port within a port range at the edge will be proxied to the equivalent port offset in the origin range. For example, in the configurations above, a connection to `range.example.com:1005` would be proxied to port 3005 on the origin.
+The number of ports in an origin port range must match the number of ports specified in the `protocol` field. Connections to a port within a port range at the edge will be proxied to the equivalent port offset in the origin range. For example, in the configurations above, a connection to `range.example.com:1005` would be proxied to port `3005` on the origin.
 
 ## IP Access rules
 
-If IP Access rules are enabled for a Spectrum application, Cloudflare will respect the IP Access rules created under **Security** \> **WAF** \> **Tools** for that domain. Cloudflare only respects rules created for specific IP addresses, IP blocks, countries, or ASNs for Spectrum applications. Spectrum will also only respect rules created with the actions `allow` or `block`.
+If [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/create/) are enabled for a Spectrum application, Cloudflare will respect the IP Access rules configured for that domain. Cloudflare only respects rules created for specific IP addresses, IP blocks, countries, or ASNs for Spectrum applications. Spectrum will also only respect rules created with the actions `allow` or `block`.
 
 Note
 

@@ -32,8 +32,8 @@ Cloudflare uses anycast to route traffic. Anycast is a network addressing and ro
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-5084)
-* [ API ](#tab-panel-5085)
+* [ Dashboard ](#tab-panel-5090)
+* [ API ](#tab-panel-5091)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -186,8 +186,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-5086)
-* [ API ](#tab-panel-5087)
+* [ Dashboard ](#tab-panel-5092)
+* [ API ](#tab-panel-5093)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -329,8 +329,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-5082)
-* [ API ](#tab-panel-5083)
+* [ Dashboard ](#tab-panel-5088)
+* [ API ](#tab-panel-5089)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -524,7 +524,8 @@ If the tunnel is to an Azure VPN gateway, the tunnel interface address must not 
 * Your CPE may advertise up to 5,000 prefixes on one BGP session.
 * MD5 authentication is optional. You can use a maximum of 80 characters. Supported characters include `` a-zA-Z0-9'!@#$%^&*()+[]{}<>/.,;:_-~`= \\| ``  
 Warning  
-MD5 authentication is not a security measure nor is it a valid security mechanism. The MD5 key is not treated as a secret value. This is only supported for preventing misconfiguration, not for defending against malicious attacks.
+MD5 authentication is not a valid security mechanism. The MD5 key is not treated as a secret value. This is only supported for preventing misconfiguration, not for defending against malicious attacks.  
+When MD5 is enabled, you cannot use Telnet to test BGP connectivity (Telnet does not support TCP MD5 authentication).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/data-center-protection/configure-tunnels-routes/","name":"Configure tunnels and routes"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","name":"Configure routes"}}]}
