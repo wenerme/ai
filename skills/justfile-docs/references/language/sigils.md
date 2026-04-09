@@ -15,7 +15,7 @@ foo:
   echo "This line won't be echoed!"
 ```
 
-The `-` sigil cause recipe execution to continue even if the command returns a
+The `-` sigil causes recipe execution to continue even if the command returns a
 nonzero exit status:
 
 ```just

@@ -20,7 +20,7 @@ Copy page
 
 # Pingboard
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Pingboard ↗](https://support.pingboard.com/hc/en-us/articles/360046585994-Set-Up-a-Custom-SSO-Solution) as a SAML application in Cloudflare One.
 

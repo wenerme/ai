@@ -20,6 +20,11 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-rendering/changelog/index.xml)
 
+## 2026-04-06
+
+**Local development: headful mode (experimental)**
+* You can now run Chrome in visible (headful) mode during local development by setting `X_BROWSER_HEADFUL=true` before running `wrangler dev` or `vite dev`. This makes it easier to visually debug your browser automation scripts. This feature is experimental and may change without notice.
+
 ## 2026-03-23
 
 **@cloudflare/playwright v1.2.0 released**

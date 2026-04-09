@@ -37,7 +37,7 @@ if the value of `argument` contains single quotes.
 
 The `positional-arguments` setting causes all arguments to be passed as
 positional arguments, allowing them to be accessed with `$1`, `$2`, …, and
-`$@`, which can be then double-quoted to avoid further splitting by the shell:
+`$@`, which can then be double-quoted to avoid further splitting by the shell:
 
 ```just
 set positional-arguments

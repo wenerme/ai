@@ -14,7 +14,7 @@ All functions ending in `_directory` can be abbreviated to `_dir`. So
   `"arm"`, `"asmjs"`, `"hexagon"`, `"mips"`, `"msp430"`, `"powerpc"`,
   `"powerpc64"`, `"s390x"`, `"sparc"`, `"wasm32"`, `"x86"`, `"x86_64"`, and
   `"xcore"`.
-- `num_cpus()`<sup>1.15.0</sup> - Number of logical CPUs.
+- `num_cpus()`<sup>1.15.0</sup> — Number of logical CPUs.
 - `os()` — Operating system. Possible values are: `"android"`, `"bitrig"`,
   `"dragonfly"`, `"emscripten"`, `"freebsd"`, `"haiku"`, `"ios"`, `"linux"`,
   `"macos"`, `"netbsd"`, `"openbsd"`, `"solaris"`, and `"windows"`.
@@ -25,12 +25,12 @@ For example:
 
 ```just
 system-info:
-  @echo "This is an {{arch()}} machine".
+  @echo "This is an {{arch()}} machine."
 ```
 
 ```console
 $ just system-info
-This is an x86_64 machine
+This is an x86_64 machine.
 ```
 
 The `os_family()` function can be used to create cross-platform `justfile`s
@@ -155,14 +155,14 @@ foo := env('FOO', '') || 'DEFAULT_VALUE'
 #### Invocation Directory
 
 - `invocation_directory()` - Retrieves the absolute path to the current
-  directory when `just` was invoked, before  `just` changed it (chdir'd) prior
+  directory when `just` was invoked, before `just` changed it (chdir'd) prior
   to executing commands. On Windows, `invocation_directory()` uses `cygpath` to
   convert the invocation directory to a Cygwin-compatible `/`-separated path.
   Use `invocation_directory_native()` to return the verbatim invocation
   directory on all platforms.
 
 For example, to call `rustfmt` on files just under the "current directory"
-(from the user/invoker's perspective), use the following rule:
+(from the user/invoker's perspective), use the following recipe:
 
 ```just
 rustfmt:
@@ -178,7 +178,7 @@ build:
 ```
 
 - `invocation_directory_native()` - Retrieves the absolute path to the current
-  directory when `just` was invoked, before  `just` changed it (chdir'd) prior
+  directory when `just` was invoked, before `just` changed it (chdir'd) prior
   to executing commands.
 
 #### Justfile and Justfile Directory
@@ -210,15 +210,17 @@ called from within an import or submodule.
 
 #### Module and Module Directory
 
-- `module_file()` - Retrieves the path of the current module file.
+- `module_file()` - Returns the path of the current module file.
 
-- `module_directory()` - Retrieves the path of the parent directory of the
+- `module_directory()` - Returns the path of the parent directory of the
   current module file.
+
+- `module_path()` - Returns the `::`-separated path to the current module.
 
 `module_file()` and `module_directory()` behave the same as `justfile()` and
 `justfile_directory()` in the root `justfile`, but will return the path and
 directory, respectively, of the current `mod` source file when called from
-within submodule.
+within a submodule.
 
 #### Just Executable
 
@@ -254,9 +256,9 @@ The process ID is: 420
 
 #### String Manipulation
 
-- `append(suffix, s)`<sup>1.27.0</sup> Append `suffix` to whitespace-separated
+- `append(suffix, s)`<sup>1.27.0</sup> - Append `suffix` to whitespace-separated
   strings in `s`. `append('/src', 'foo bar baz')` → `'foo/src bar/src baz/src'`
-- `prepend(prefix, s)`<sup>1.27.0</sup> Prepend `prefix` to
+- `prepend(prefix, s)`<sup>1.27.0</sup> - Prepend `prefix` to
   whitespace-separated strings in `s`. `prepend('src/', 'foo bar baz')` →
   `'src/foo src/bar src/baz'`
 - `encode_uri_component(s)`<sup>1.27.0</sup> - Percent-encode characters in `s`
@@ -325,7 +327,7 @@ which will halt execution.
   intermediate `.` components, and `..` where possible. `clean("foo//bar")` is
   `foo/bar`, `clean("foo/..")` is `.`, `clean("foo/./bar")` is `foo/bar`.
 - `join(a, b…)` - *This function uses `/` on Unix and `\` on Windows, which can
-  be lead to unwanted behavior. The `/` operator, e.g., `a / b`, which always
+  lead to unwanted behavior. The `/` operator, e.g., `a / b`, which always
   uses `/`, should be considered as a replacement unless `\`s are specifically
   desired on Windows.* Join path `a` with path `b`. `join("foo/bar", "baz")` is
   `foo/bar/baz`. Accepts two or more arguments.
@@ -339,8 +341,10 @@ which will halt execution.
 - `read(path)`<sup>1.39.0</sup> - Returns the content of file at `path` as
   string.
 
-##### Error Reporting
+#### Assertions and Error Reporting
 
+- `assert(CONDITION, EXPRESSION)`<sup>1.27.0</sup> - Error with message
+  `EXPRESSION` if `CONDITION` is false.
 - `error(message)` - Abort execution and report error `message` to user.
 
 #### UUID and Hash Generation
@@ -406,9 +410,9 @@ directory.
 On Unix, these functions follow the
 [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html).
 
-On MacOS and Windows, these functions return the system-specified user-specific
+On macOS and Windows, these functions return the system-specified user-specific
 directories. For example, `cache_directory()` returns `~/Library/Caches` on
-MacOS and `{FOLDERID_LocalAppData}` on Windows.
+macOS and `{FOLDERID_LocalAppData}` on Windows.
 
 See the [`dirs`](https://docs.rs/dirs/latest/dirs/index.html) crate for more
 details.

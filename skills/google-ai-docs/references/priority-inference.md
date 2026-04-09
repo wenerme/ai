@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Preview:** The Gemini Priority API is in [Preview](https://cloud.google.com/products#product-launch-stages).
+
 The Gemini Priority API is a premium inference tier designed for
 business-critical workloads that require lower latency and the highest
 reliability at a premium price point. Priority tier traffic is prioritized above

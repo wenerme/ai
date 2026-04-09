@@ -1296,45 +1296,6 @@ A new Beta release for the macOS WARP client is now available on the [beta relea
 
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 
-## 2025-04-08
-
-  
-**WARP client for Windows (version 2025.2.664.0)**   
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for captive portal detection for the 2025.2.600.0 release.
-
-**Changes and improvements**
-
-* Fix to reduce the number of browser tabs opened during captive portal logins.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-04-08
-
-  
-**WARP client for macOS (version 2025.2.664.0)**   
-
-A new GA release for the macOS WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for captive portal detection and PF state tables for the 2025.2.600.0 release.
-
-**Changes and improvements**
-
-* Fix to reduce the number of browser tabs opened during captive portal logins.
-* Improvement to exclude local DNS traffic entries from PF state table to reduce risk of connectivity issues from exceeding table capacity.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
 ## 2025-03-17
 
   

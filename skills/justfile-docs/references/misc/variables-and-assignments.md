@@ -21,7 +21,7 @@ foo := "hello"
 Or the value of a single variable:
 
 ```console
-$ just --evalaute foo
+$ just --evaluate foo
 hello
 ```
 

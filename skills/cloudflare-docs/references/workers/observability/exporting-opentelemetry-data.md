@@ -38,6 +38,7 @@ Below are common OTLP endpoint formats for popular observability providers. Refe
 | [**Firetiger** ↗](https://docs.firetiger.com/ingest/cloudflare-workers.html)                                             | https://ingest.cloud.firetiger.com/v1/traces                | https://ingest.cloud.firetiger.com/v1/logs                   |
 | [**Axiom**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/)                 | https://api.axiom.co/v1/traces                              | https://api.axiom.co/v1/logs                                 |
 | [**Sentry**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/)               | https://{HOST}/api/{PROJECT\_ID}/integration/otlp/v1/traces | https://{HOST}/api/{PROJECT\_ID}/integration/otlp/v1/logs    |
+| [**PostHog**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/)             | Not supported                                               | https://{REGION}.i.posthog.com/i/v1/logs                     |
 | [**Datadog** ↗](https://docs.datadoghq.com/opentelemetry/setup/otlp%5Fingest/)                                           | Coming soon, pending release from Datadog                   | https://otlp.{SITE}.datadoghq.com/v1/logs                    |
 | [**Splunk Observability** ↗](https://dev.splunk.com/observability/reference/api/ingest%5Fdata/latest)                    | https://ingest.{REALM}.signalfx.com/v2/trace/otlp           | N/A                                                          |
 | [**Splunk Platform** ↗](https://github.com/splunk/splunk-connect-for-otlp)                                               | http://splunk.internal:4318/v1/traces                       | http://splunk.internal:4318/v1/logs                          |
@@ -67,8 +68,8 @@ To start sending data to your destination, you'll need to create a destination i
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-7452)
-* [  wrangler.toml ](#tab-panel-7453)
+* [  wrangler.jsonc ](#tab-panel-7472)
+* [  wrangler.toml ](#tab-panel-7473)
 
 JSONC
 

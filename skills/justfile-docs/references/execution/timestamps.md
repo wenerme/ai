@@ -1,6 +1,6 @@
 ### Timestamps
 
-`just` can print timestamps before each recipe commands:
+`just` can print timestamps before each recipe command:
 
 ```just
 recipe:

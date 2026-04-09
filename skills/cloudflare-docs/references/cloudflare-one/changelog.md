@@ -18,6 +18,60 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-09
+
+[ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) 
+
+  
+**Send CASB posture finding instances with webhooks**   
+
+You can now use **CASB webhooks** in Cloudflare One to send posture finding instances to external systems such as chat platforms, ticketing systems, SIEMs, SOAR tools, and custom automation services.
+
+This gives security teams a simple way to route CASB posture findings into the tools and workflows they already use for triage and response.
+
+To get started, go to **Integrations** \> **Webhooks** in the Cloudflare One dashboard to create a webhook destination. After you configure a webhook, open a posture finding instance and select **Send webhook** to send it.
+
+#### Key capabilities
+
+* **Flexible authentication** — Configure destinations using **None**, **Basic Auth**, **Bearer Auth**, **Static Headers**, or **HMAC-Signing**.
+* **Built-in testing** — Use **Test delivery** to send a test request before sending a live finding instance.
+* **Posture finding workflows** — Send posture finding instances directly from the finding details workflow in **Cloud & SaaS findings**.
+* **HTTPS destinations** — Configure webhook destinations with public `https://` URLs.
+
+#### Learn more
+
+* Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) in Cloudflare.
+* Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare.
+
+CASB webhooks are now available in Cloudflare One.
+
+## 2026-04-08
+
+[ Risk Score ](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) 
+
+  
+**User risk scoring for high risk browsing activity**   
+
+Cloudflare One's **User Risk Scoring** now incorporates direct signals from **Gateway DNS traffic patterns**. This update allows security teams to automatically elevate a user's risk score when they visit high-risk or malicious domains, providing a more holistic view of internal threats.
+
+#### Why this matters
+
+Browsing activity is a primary indicator of potential compromise. By tying Gateway DNS logs to specific users, administrators can now flag individuals interacting with:
+
+* **Security threats**: Domains associated with malware, phishing, or command-and-control (C2) centers.
+* **High-risk content**: Categories such as questionable content or violence that may violate corporate compliance.
+
+Even if a Gateway policy is set to **Block** the traffic, the interaction is still captured as a "hit" to ensure the user's risk profile reflects the attempted activity.
+
+#### New risk behaviors
+
+Two new behaviors are now available in the dashboard:
+
+* **Suspicious Security Domain Visited**: Triggers when a user visits a domain in the security threats or security risk categories.
+* **High risk domain visited**: Triggers when a user visits domains categorized as questionable content, violence, or CIPA.
+
+To learn more and get started, refer to the [User Risk Scoring documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
+
 ## 2026-04-07
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
@@ -57,6 +111,19 @@ The next stable release for Windows will introduce the new Cloudflare One Client
    * A custom DNS server address is configured on the primary network adapter.  
    * The custom DNS server address on the primary network adapter is changed while the client is connected.  
 To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
+
+## 2026-04-07
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
+
+  
+**Link aggregation (LACP) support for Cloudflare One Appliance**   
+
+Cloudflare One Appliance now supports Link Aggregation Control Protocol (LACP), allowing you to bundle up to six physical LAN ports into a single logical interface. Link aggregation increases available bandwidth and eliminates single points of failure on the LAN side of the appliance.
+
+This feature is available in beta on physical appliance hardware with the latest OS. No entitlement is required.
+
+To configure a Link Aggregation Group, refer to [Configure link aggregation groups](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/).
 
 ## 2026-04-06
 
@@ -3662,49 +3729,6 @@ Learn more in our documentation for [HTTP Redirect](https://developers.cloudflar
 SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
 
 ![Example SCIM Logs](https://developers.cloudflare.com/_astro/example-scim-log.Bv5Zqckh_BY26C.webp) 
-
-## 2025-04-08
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for Windows (version 2025.2.664.0)**   
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for captive portal detection for the 2025.2.600.0 release.
-
-**Changes and improvements**
-
-* Fix to reduce the number of browser tabs opened during captive portal logins.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-04-08
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for macOS (version 2025.2.664.0)**   
-
-A new GA release for the macOS WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for captive portal detection and PF state tables for the 2025.2.600.0 release.
-
-**Changes and improvements**
-
-* Fix to reduce the number of browser tabs opened during captive portal logins.
-* Improvement to exclude local DNS traffic entries from PF state table to reduce risk of connectivity issues from exceeding table capacity.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 
 ## 2025-04-07
 

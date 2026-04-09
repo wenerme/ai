@@ -1,7 +1,7 @@
 ### Paths on Windows
 
-On Windows, all functions that return paths, except `invocation_directory()`
-will return `\`-separated paths. When not using PowerShell or `cmd.exe` these
+On Windows, all functions that return paths, except `invocation_directory()`,
+will return `\`-separated paths. When not using PowerShell or `cmd.exe`, these
 paths should be quoted to prevent the `\`s from being interpreted as character
 escapes:
 
@@ -22,7 +22,7 @@ convert the invocation directory into a unix-style `/`-separated path. Use
 `invocation_directory()` and `invocation_directory_native()` both return the
 same unix-style path.
 
-`cygpath.exe` is used also used to convert Unix-style shebang lines into
+`cygpath.exe` is also used to convert Unix-style shebang lines into
 Windows paths. As an alternative, the `[script]` attribute can be used, which
 does not depend on `cygpath.exe`.
 

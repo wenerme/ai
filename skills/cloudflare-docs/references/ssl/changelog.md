@@ -1,6 +1,7 @@
 ---
 title: Changelog
-description: Cloudflare Secrets Store is now integrated with AI Gateway, allowing you to store, manage, and deploy your AI provider keys in a secure and seamless configuration through Bring Your Own Key. Instead of passing your AI provider keys directly in every request header, you can centrally manage each key with Secrets Store and deploy in your gateway configuration using only a reference, rather than passing the value in plain text.
+description: You can now manage mutual TLS (mTLS) and Bring Your Own Certificate Authority
+(BYO CA) configurations directly from the Cloudflare dashboard — no API required.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -17,6 +18,19 @@ Copy page
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ssl.xml) 
+
+## 2026-04-07
+
+  
+**Manage mTLS and BYO CA certificates from the Cloudflare dashboard**   
+
+You can now manage mutual TLS (mTLS) and Bring Your Own Certificate Authority (BYO CA) configurations directly from the Cloudflare dashboard — no API required.
+
+Previously, these advanced workflows required the Cloudflare API. The following are now available in the dashboard:
+
+* **AOP certificate management** — Upload and manage your own certificate authorities for [Authenticated Origin Pulls (AOP)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/)directly from the dashboard.
+* **BYO Client mTLS certificate management** — Upload and manage your own CA certificates for [client mTLS enforcement](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/)without needing API access.
+* **CDN hostname to client mTLS certificate mapping** — Associate client mTLS certificates with specific hostnames directly from the dashboard.
 
 ## 2025-08-25
 
@@ -82,11 +96,11 @@ For more information, check out the [blog ↗](https://blog.cloudflare.com/ai-ga
 ## 2025-05-27
 
   
-**Increased limits for Cloudflare for SaaS and Secrets Store free and pay-as-you-go plans**   
+**Increased limits for Cloudflare for SaaS and Secrets Store free and Pay-as-you-go plans**   
 
 With upgraded limits to [all free and paid plans ↗](https://www.cloudflare.com/plans/), you can now scale more easily with [Cloudflare for SaaS ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) and [Secrets Store ↗](https://developers.cloudflare.com/secrets-store/).
 
-[Cloudflare for SaaS ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) allows you to extend the benefits of Cloudflare to your customers via their own custom or vanity domains. Now, the [limit for custom hostnames ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/) on a Cloudflare for SaaS pay-as-you-go plan has been **raised from 5,000 custom hostnames to 50,000 custom hostnames.**
+[Cloudflare for SaaS ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/) allows you to extend the benefits of Cloudflare to your customers via their own custom or vanity domains. Now, the [limit for custom hostnames ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/) on a Cloudflare for SaaS Pay-as-you-go plan has been **raised from 5,000 custom hostnames to 50,000 custom hostnames.**
 
 With custom origin server -- previously an enterprise-only feature -- you can route traffic from one or more custom hostnames somewhere other than your default proxy fallback. [Custom origin server ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/) is now available to Cloudflare for SaaS customers on Free, Pro, and Business plans.
 

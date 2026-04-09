@@ -38,7 +38,7 @@ $ just bar::b
 B
 ```
 
-If a module is named `foo`, just will search for the module file in `foo.just`,
+If a module is named `foo`, `just` will search for the module file in `foo.just`,
 `foo/mod.just`, `foo/justfile`, and `foo/.justfile`. In the latter two cases,
 the module file may have any capitalization.
 
@@ -55,9 +55,9 @@ containing the module source file with the name `mod.just`, `justfile`, or
 `.justfile`. In the latter two cases, the module file may have any
 capitalization.
 
-Environment files are only loaded for the root justfile, and loaded environment
-variables are available in submodules. Settings in submodules that affect
-environment file loading are ignored.
+Environment files are loaded for each module, respecting that module's related
+settings. Environment variables from parent modules are visible in child
+modules.
 
 Recipes in submodules without the `[no-cd]` attribute run with the working
 directory set to the directory containing the submodule source file.

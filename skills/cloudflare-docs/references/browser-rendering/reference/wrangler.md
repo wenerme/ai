@@ -34,8 +34,8 @@ Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-* [  wrangler.jsonc ](#tab-panel-3256)
-* [  wrangler.toml ](#tab-panel-3257)
+* [  wrangler.jsonc ](#tab-panel-3262)
+* [  wrangler.toml ](#tab-panel-3263)
 
 JSONC
 
@@ -104,6 +104,25 @@ const browser = await puppeteer.launch(env.MYBROWSER);
 ```
 
 Run `npx wrangler dev` to test your Worker locally.
+
+### Headful mode (experimental)
+
+By default, local development runs Chrome in headless mode. To launch Chrome in visible (headful) mode for debugging, set the `X_BROWSER_HEADFUL` environment variable:
+
+Terminal window
+
+```
+
+X_BROWSER_HEADFUL=true npx wrangler dev
+
+
+```
+
+This opens a browser window on screen so you can watch navigations, interactions, and rendering in real time. Headful mode is for local development only and does not affect deployed Workers. This feature is experimental and may change without notice.
+
+Note
+
+When using [@cloudflare/playwright](https://developers.cloudflare.com/browser-rendering/playwright/), two Chrome windows may appear. This is expected behavior due to how Playwright handles browser contexts via CDP.
 
 Use real headless browser during local development
 

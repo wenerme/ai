@@ -18,9 +18,12 @@ Copy page
 
 You can integrate cloud environments and SaaS applications with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/). Once you have added an integration, you can [view and manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/).
 
-Supported integrations include:
+You can also configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) to send posture finding instances to external systems.
+
+The workflow pages for managing findings and webhooks appear first, followed by supported integrations and troubleshooting guides:
 
 * [ Manage findings ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/findings/)
+* [ Webhooks ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/)
 * [ Anthropic ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
 * [ Atlassian Confluence ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-confluence/)
 * [ Atlassian Jira ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-jira/)

@@ -20,7 +20,7 @@ Copy page
 
 # Geolocation: Weather application
 
-**Last reviewed:**  almost 5 years ago 
+**Last reviewed:**  about 5 years ago 
 
 Fetch weather data from an API using the user's geolocation data.
 
@@ -30,10 +30,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7284)
-* [  TypeScript ](#tab-panel-7285)
-* [  Hono ](#tab-panel-7286)
-* [  Python ](#tab-panel-7287)
+* [  JavaScript ](#tab-panel-7304)
+* [  TypeScript ](#tab-panel-7305)
+* [  Hono ](#tab-panel-7306)
+* [  Python ](#tab-panel-7307)
 
 JavaScript
 

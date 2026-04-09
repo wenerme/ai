@@ -24,13 +24,6 @@ Github Actions doesn't support that. https://docs.github.com/en/actions/using-wo
 
 ## Unsupported workflows syntax
 
-### `concurrency`
-
-It's used to run a single job at a time.
-See [Using concurrency](https://docs.github.com/en/actions/using-jobs/using-concurrency).
-
-It's ignored by Gitea Actions now.
-
 ### `jobs.<job_id>.timeout-minutes`
 
 See [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes).
@@ -91,14 +84,6 @@ Pre and Post steps don't have their own section in the job log user interface.
 Services steps don't have their own section in the job log user interface.
 
 ## Different behavior
-
-### Concurrency
-
-As of v1.21.0, gitea behaves as if `concurrency.cancel-in-progress` is set to `true`.
-
-This means that newly-triggered workflows will pre-empt runs already in progress for previous triggers.
-
-See [PR #25716](https://github.com/go-gitea/gitea/pull/25716) for additional details.
 
 ### Job token permissions (`permissions`)
 

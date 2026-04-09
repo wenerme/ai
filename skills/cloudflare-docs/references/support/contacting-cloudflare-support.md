@@ -35,42 +35,63 @@ Before notifying Cloudflare of an issue with your site, refer to the [Cloudflare
 
 As a Cloudflare customer, you can contact Cloudflare for support via the community portal or by opening a support case, live chat, or phone. Support options can vary depending on your plan.
 
-| Enterprise                                                                                                                                                                                                        | Business | Pro | Free        |             |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- | ----------- | ----------- |
-| [Community ↗](https://community.cloudflare.com/)Join the community to ask basic troubleshooting questions and to view the latest resources (such as tips for resolving common issues and configuration guidance). | Yes      | Yes | Recommended | Recommended |
-| [Discord ↗](https://discord.cloudflare.com/)Join the Discord community to ask basic troubleshooting questions (mainly focused on the Developer Platform).                                                         | Yes      | Yes | Recommended | Recommended |
-| [Support case](#getting-help-with-an-issue)Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                     | Yes      | Yes | Yes         | No\*        |
-| **Chat**Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                                                        | Yes      | Yes | No          | No          |
-| **Emergency Phone** Use phone support to reach out during emergencies such as site outages or DDoS attacks.                                                                                                       | Yes      | No  | No          | No          |
+| Enterprise                                                                                                                                                                                                        | Business | Pro | Free        |                           |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- | ----------- | ------------------------- |
+| [Community ↗](https://community.cloudflare.com/)Join the community to ask basic troubleshooting questions and to view the latest resources (such as tips for resolving common issues and configuration guidance). | Yes      | Yes | Recommended | Recommended               |
+| [Discord ↗](https://discord.cloudflare.com/)Join the Discord community to ask basic troubleshooting questions (mainly focused on the Developer Platform).                                                         | Yes      | Yes | Recommended | Recommended               |
+| [Support case](#getting-help-with-an-issue)Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                     | Yes      | Yes | Yes         | No[1](#user-content-fn-1) |
+| **Chat**Use to troubleshoot specific issues or errors. Response times depend on your plan.                                                                                                                        | Yes      | Yes | No          | No                        |
+| **Emergency Phone** Use phone support to reach out during emergencies such as site outages or DDoS attacks.                                                                                                       | Yes      | No  | No          | No                        |
 
 ---
 
-Note
+## Emergency Phone Support
 
-Customers on Free plans are encouraged to utilize our Cloudflare Community and will only receive standard case support for billing, account, and registrar issues.
+Availability
 
-## Verifying your identity on phone calls
+Available for Enterprise plans only.
 
-_(For Enterprise Emergency Phone Support)_
+In case of an emergency, Enterprise customers can reach Cloudflare Support directly via our global emergency phone line.
 
-For account security, you must verify your identity and account ownership in the Cloudflare dashboard before discussing account settings and sensitive details with Cloudflare Support. There are two verification options:
+For account security, you must verify your identity and account ownership before discussing account settings and sensitive details with Cloudflare Support. There are two verification options:
 
-* a single-use token that automatically refreshes every thirty (30) seconds, or
+* a single-use token generated in the Dashboard that automatically refreshes every thirty (30) seconds
 * an [authenticator app token](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication) on your mobile device.
 
-### Authenticating your account
+In both cases, you will also need your **Unique Customer ID** (refer to [Finding your Unique Customer ID](#finding-your-unique-customer-id) for more information).
+
+### Single-use token (no setup required)
 
 1. In the Cloudflare dashboard, go to the **Support** page and select the account you are calling about.
 [ Go to Support ](https://dash.cloudflare.com/?to=/:account/support) 
-1. Click on the **Technical Support** tile and then the **Emergency Phone Line** tile.
-2. To authenticate using a single-use token, click on the **Get a single-use token** button. A pop-up window will appear with your Unique Customer Id and One Time Passcode. The code automatically refreshes every 30 seconds.
+1. Click on the **Emergency hotline** tile.
+2. Click **Get a single-use token**. A pop-up window will appear with your **Unique Customer ID** and **One Time Passcode**. The code automatically refreshes every 30 seconds.
 ![](https://developers.cloudflare.com/_astro/Emergency_Phone_Support.IYDzAqH8_Z57Dpr.webp) 
-1. To authenticate using an authenticator app, click **Configure authenticator app** and follow the [configuration instructions](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication) on the following screen. After configuration, the token code will appear in your mobile authentication application.
-2. When calling the emergency phone line, you can authenticate automatically by entering your ID and Code when requested.
+
+### Authenticator app (one-time setup)
+
+1. In the Cloudflare dashboard, go to the **Support** page and select the account you are calling about.
+[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support) 
+1. Click on the **Emergency hotline** tile.
+2. Click **Configure authenticator app** and follow the [configuration instructions](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication).
+3. After configuration, the token code will appear in your mobile authentication app when you need it.
+
+### Finding your Unique Customer ID
+
+Your Unique Customer ID is required when calling the emergency phone line, regardless of which verification method you use.
+
+1. In the Cloudflare dashboard, go to the **Support** page and select the account you are calling about.
+[ Go to Support ](https://dash.cloudflare.com/?to=/:account/support) 
+1. Click on the **Emergency hotline** tile.
+2. Click **Get a single-use token**. Your **Unique Customer ID** will appear in the pop-up window.
 
 ---
 
-## Getting help with an issue
+## Submit a support case
+
+Availability
+
+Available for all paid plans. Free users can only submit cases for billing, account, and registrar issues.
 
 To submit a support case, follow these steps:
 
@@ -80,27 +101,21 @@ To submit a support case, follow these steps:
 2. Choose the category and subcategories that best define your issue.
 3. Choose the affected domains (if applicable).
 4. Enter a detailed summary of the issue you’re experiencing.
-5. Complete the case submission fields as completely as possible with the following information. _(**Please note** that missing information will increase the time it takes to resolve your issue and our team may not be able to investigate without enough information. Please review [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) and make sure you include all needed information.)_  
-   * A detailed description of the issue with the following information:  
+5. Complete the case submission fields as completely as possible with the following information. _(**Please note** that missing information will increase the time it takes to resolve your issue and our team may not be able to investigate without enough information. Please review [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) and make sure you include all needed information.)_\- A detailed description of the issue with the following information:  
    * Timestamp (UTC)  
    * ZoneName/ZoneID  
    * Problem frequency  
-   * Steps to reproduce the issue, with actual results vs expected results  
-         * Any necessary information for a technical investigation  
+   * Steps to reproduce the issue, with actual results vs expected results - Any necessary information for a technical investigation  
    * A description of the actual results vs expected results  
    * Steps to reproduce the issue, with example URLs  
    * Exact error messages  
    * [HAR files](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file)  
    * Screenshots  
    * Relevant logs from the origin web server  
-   * Output from [test tools](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) such as MTR, traceroute, dig/nslookup, and cURL  
-         * Priority level, impact to service / production  
-         * Any collaborators whom you wish to be cc'd on the case
-6. Click **Submit Case**
+   * Output from [test tools](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/) such as MTR, traceroute, dig/nslookup, and cURL - Priority level, impact to service / production - Any collaborators whom you wish to be cc'd on the case
+6. Click **Submit Case**.
 
-\*\* Available to certain plan types only. Refer to chart above for details.
-
-### Accepted file formats in cases and chats
+### Accepted attachment file formats
 
 You can only upload the following file types in a case or a chat:
 
@@ -134,16 +149,14 @@ When sending Cloudflare Support packet captures, please do the following:
 
 1. In the Cloudflare dashboard, go to the **Support** page.
 [ Go to Support ](https://dash.cloudflare.com/?to=/:account/support) 
-1. Click on **Get help**
-2. Select the account you require assistance for
-3. Click on the **Technical Support** tile followed by **View My Cases**.
-4. You will be redirected to the portal where you can see your own cases and cases you are CC'd on.
+1. Click on the **My Cases** tile.
+2. You will be redirected to the portal where you can see your own cases and cases you are CC'd on.
 
 ### Add participants to open support tickets
 
-1. In the Cloudflare dashboard, go to the **Support** page and select the account you require assistance for.
+1. In the Cloudflare dashboard, go to the **Support** page.
 [ Go to Support ](https://dash.cloudflare.com/?to=/:account/support) 
-1. Click on the **Technical Support** tile followed by **View My Cases**.
+1. Click on the **My Cases** tile.
 2. You will be redirected to the portal where you can see your own cases and cases you are CC'd on.
 3. Select the case you want to add participants to.
 4. Enter their email in the `Case Participants` box in the top right and click **Add**.
@@ -152,13 +165,15 @@ When sending Cloudflare Support packet captures, please do the following:
 
 ## Live chat support
 
-Available for Business and Enterprise plans only. Use **live chat** for quick questions that do not require deep technical investigation:
+Availability
 
-1. In the Cloudflare dashboard, go to the **Support** page and select the account you require assistance for.
+Available for Business and Enterprise plans only.
+
+Use **live chat** for quick questions that do not require deep technical investigation:
+
+1. In the Cloudflare dashboard, go to the **Support** page.
 [ Go to Support ](https://dash.cloudflare.com/?to=/:account/support) 
-1. Select **Technical Support** tile > **Chat with an agent**.  
-   * **Business plans**: Complete the support form and select **Start Live Chat**. The widget will open automatically, pre-filled with your details.  
-   * **Enterprise plans**: The chat widget will open immediately. Enter a brief description of your problem to begin.
+1. Click on the **Chat with a human** tile. The chat widget will open immediately. Enter a brief description of your problem to begin.
 2. Wait for an agent to join the conversation. Response times may vary based on current chat volume.
 
 ---
@@ -230,6 +245,10 @@ Cloudflare offers worldwide support, which covers:
 * Asia-Pacific
 * Europe, Middle East, and Africa
 * North and South America
+
+## Footnotes
+
+1. Customers on Free plans are encouraged to utilize our Cloudflare Community and will only receive standard case support for billing, account, and registrar issues. [↩](#user-content-fnref-1)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/contacting-cloudflare-support/","name":"Contacting Cloudflare Support"}}]}

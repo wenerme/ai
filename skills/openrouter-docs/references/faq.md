@@ -208,7 +208,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     If you specify [provider routing](/docs/features/provider-routing) in your request, but none of the providers
     match the level of privacy specified in your account settings, you will get an error and your request will not complete.
 
-    [Learn more about provider logging policies](/docs/guides/privacy/logging).
+    [Learn more about provider logging policies](/docs/guides/privacy/provider-logging).
   </Accordion>
 </AccordionGroup>
 

@@ -18,6 +18,31 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/casb.xml) 
 
+## 2026-04-09
+
+  
+**Send CASB posture finding instances with webhooks**   
+
+You can now use **CASB webhooks** in Cloudflare One to send posture finding instances to external systems such as chat platforms, ticketing systems, SIEMs, SOAR tools, and custom automation services.
+
+This gives security teams a simple way to route CASB posture findings into the tools and workflows they already use for triage and response.
+
+To get started, go to **Integrations** \> **Webhooks** in the Cloudflare One dashboard to create a webhook destination. After you configure a webhook, open a posture finding instance and select **Send webhook** to send it.
+
+#### Key capabilities
+
+* **Flexible authentication** — Configure destinations using **None**, **Basic Auth**, **Bearer Auth**, **Static Headers**, or **HMAC-Signing**.
+* **Built-in testing** — Use **Test delivery** to send a test request before sending a live finding instance.
+* **Posture finding workflows** — Send posture finding instances directly from the finding details workflow in **Cloud & SaaS findings**.
+* **HTTPS destinations** — Configure webhook destinations with public `https://` URLs.
+
+#### Learn more
+
+* Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) in Cloudflare.
+* Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare.
+
+CASB webhooks are now available in Cloudflare One.
+
 ## 2026-02-20
 
   

@@ -50,8 +50,8 @@ variables.
 
 #### Unexporting Environment Variables
 
-Environment variables can be unexported with the `unexport
-keyword`<sup>1.29.0</sup>:
+Environment variables can be unexported with the `unexport`
+keyword<sup>1.29.0</sup>:
 
 ```just
 unexport FOO
@@ -66,19 +66,19 @@ $ just foo
 sh: FOO: unbound variable
 ```
 
-#### Getting Environment Variables from the environment
+#### Getting Environment Variables from the Environment
 
 Environment variables from the environment are passed automatically to the
 recipes.
 
 ```just
 print_home_folder:
-  echo "HOME is: '${HOME}'"
+  @echo "HOME is: '${HOME}'"
 ```
 
 ```console
 $ just
-HOME is '/home/myuser'
+HOME is: '/home/myuser'
 ```
 
 #### Setting `just` Variables from Environment Variables

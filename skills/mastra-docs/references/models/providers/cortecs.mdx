@@ -1,11 +1,11 @@
 ---
 title: "Cortecs | Models"
-description: "Use Cortecs models with Mastra. 29 models available."
+description: "Use Cortecs models with Mastra. 30 models available."
 ---
 
 # [Cortecs logo]Cortecs
 
-Access 29 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 30 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -374,6 +374,18 @@ for await (const chunk of stream) {
     "maxOutput": 262000,
     "inputCost": 0.441,
     "outputCost": 1.984
+  },
+  {
+    "model": "cortecs/qwen3-coder-next",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 65536,
+    "inputCost": 0.158,
+    "outputCost": 0.84
   },
   {
     "model": "cortecs/qwen3-next-80b-a3b-thinking",

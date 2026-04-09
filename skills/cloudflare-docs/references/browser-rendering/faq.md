@@ -96,6 +96,17 @@ Not yet. Local development currently has the following limitation(s):
 
 * Requests larger than 1 MB are not supported.
 
+You can also run Chrome in visible (headful) mode during local development to visually debug your automation scripts (experimental). Set the `X_BROWSER_HEADFUL` environment variable before starting your dev server:
+
+Terminal window
+
+```
+
+X_BROWSER_HEADFUL=true npx wrangler dev
+
+
+```
+
 Use real headless browser during local development
 
 To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).

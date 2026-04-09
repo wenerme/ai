@@ -20,9 +20,9 @@ Cloudflare One provides multiple connectivity options for your users, devices, a
 
 This page helps you understand which connectivity options to use based on your requirements, and how to combine multiple options in a single deployment.
 
-## On-ramps and off-ramps
+## Cloudflare One on-ramps and off-ramps
 
-Before exploring individual connectivity options, understand the concept of on-ramps and off-ramps:
+Cloudflare One connectivity options use the concept of on-ramps and off-ramps:
 
 * **On-ramps** send traffic into Cloudflare's network. For example, a user's device with the Cloudflare One Client installed on-ramps their traffic to Cloudflare for inspection and policy enforcement.
 * **Off-ramps** send traffic from Cloudflare's network to your infrastructure. For example, Cloudflare Tunnel off-ramps traffic to your private applications without exposing them to the public Internet.
@@ -32,6 +32,8 @@ Some connectivity options support both directions (bidirectional), while others 
 ## Connectivity options comparison
 
 The following table provides a high-level comparison of all connectivity options available to Cloudflare One customers.
+
+**Table 1: All Cloudflare One connectivity options**
 
 | Connectivity option                                                     | Protocol                    | Direction     | Typical deployment model                | Use when                                          |
 | ----------------------------------------------------------------------- | --------------------------- | ------------- | --------------------------------------- | ------------------------------------------------- |
@@ -93,7 +95,7 @@ Cloudflare WAN compatibility
 
 Accounts on Legacy routing mode do not support WARP Connector when Cloudflare WAN (formerly Magic WAN) is enabled. Your account must be on [Cloudflare One Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta) for both to work together.
 
-Important to know
+No high availability
 
 WARP Connector does not currently support high availability or redundancy configurations. A single WARP Connector instance represents a single point of failure for that subnet.
 
@@ -127,9 +129,9 @@ For detailed configuration, refer to the [DNS locations documentation](https://d
 
 ## Proxy endpoints
 
-Proxy endpoints allow you to apply Gateway HTTP policies without installing a client on devices. By configuring a Proxy Auto-Configuration (PAC) file at the browser level, you route web traffic through Gateway for filtering and policy enforcement.
+Proxy endpoints allow you to apply Cloudflare Gateway HTTP policies without installing a client on devices. By configuring a Proxy Auto-Configuration (PAC) file at the browser level, you route web traffic through Gateway for filtering and policy enforcement.
 
-Cloudflare supports two types of proxy endpoints:
+Cloudflare One supports two types of proxy endpoints:
 
 * **Authorization endpoints**: Use Cloudflare Access for identity-based authentication
 * **Source IP endpoints**: Authorize traffic based on originating IP address (Enterprise only)
@@ -214,7 +216,11 @@ Cloudflare Network Interconnect (CNI) allows you to connect your network infrast
 
 Use CNI when you need to meet security requirements that prohibit public Internet traffic, reduce cloud egress costs, or deploy in highly regulated industries (financial services, healthcare).
 
-### Connection types
+### CNI connection types
+
+The following table describes the Cloudflare Network Interconnect (CNI) connection types.
+
+**Table 2: Cloudflare One CNI connection types**
 
 | Type                     | Description                                                                               | Ideal for                                                                       |
 | ------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -247,7 +253,11 @@ Multi-Cloud Networking is not a separate tunnel type — it orchestrates your cl
 * Connect multiple VPCs through a hub architecture (AWS Transit Gateway)
 * Simplify multi-cloud networking across different providers
 
-### On-ramp types
+### Cloudflare One Multi-Cloud on-ramp types
+
+The following table describes the Multi-Cloud Networking on-ramp types.
+
+**Table 3: Cloudflare One Multi-Cloud Networking on-ramp types**
 
 | Type           | Description                                                                   | Use when                                                       |
 | -------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -262,7 +272,7 @@ Multi-Cloud Networking is not a separate tunnel type — it orchestrates your cl
 
 Key consideration
 
-Multi-Cloud Networking requires a Cloudflare WAN subscription and Multi-Cloud Networking entitlement. Contact your account team to enable Multi-Cloud Networking.
+Multi-Cloud Networking requires a Cloudflare WAN subscription with Multi-Cloud Networking. Contact your account team to enable Multi-Cloud Networking.
 
 ### Deployment notes
 
@@ -274,9 +284,11 @@ For detailed configuration, refer to the [Multi-Cloud Networking documentation](
 
 ---
 
-## Choose the right connectivity option
+## Choose the right Cloudflare One connectivity option
 
-Use the following guidance to select the appropriate connectivity option for your use case. These are not exhaustive recommendations.
+The following table maps common requirements to recommended Cloudflare One connectivity options. These are not exhaustive recommendations.
+
+**Table 4\. Recommend Cloudflare One connectivity options for common requirements**
 
 | Requirement                                                     | Recommended option                                                                                                                                                                                                                  |
 | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -298,9 +310,11 @@ The connectivity options on this page connect your private infrastructure, sites
 * **Non-HTTP traffic** (TCP/UDP protocols such as gaming, email, or custom services) — refer to [Spectrum](https://developers.cloudflare.com/spectrum/).
 * **Network-level DDoS protection** (for on-premises, cloud-hosted, and hybrid networks) — refer to [Magic Transit](https://developers.cloudflare.com/magic-transit/).
 
-### Recommendations by team
+### Cloudflare One recommendations by team
 
-The team driving your connectivity project influences which option provides the smoothest adoption path. In this table you can find a few examples of what that might look like:
+The team driving your Cloudflare One connectivity project influences which option provides the smoothest adoption path. The following table provides examples.
+
+**Table 5\. Cloudflare One connectivity recommendations for teams**
 
 | Primary team                  | Recommended starting point                                                                            | Rationale                                                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -311,7 +325,9 @@ The team driving your connectivity project influences which option provides the 
 
 ### WARP Connector and Cloudflare One Appliance comparison
 
-WARP Connector and Cloudflare One Appliance both provide site-level connectivity, but serve different deployment scenarios.
+WARP Connector and Cloudflare One Appliance both provide site-level Cloudflare One connectivity, but serve different deployment scenarios. The following table compares WARP Connector and Cloudflare One Appliance.
+
+**Table 6\. WARP Connector and Cloudflare One Appliance comparison**
 
 | Aspect                | WARP Connector                                                                         | Cloudflare One Appliance                                                           |
 | --------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -326,13 +342,15 @@ Use WARP Connector when you need lightweight, software-only connectivity for clo
 
 ---
 
-## Combine multiple connectivity options
+## Combine Cloudflare One connectivity options
 
-Most enterprise deployments use multiple connectivity options together. This section covers compatibility considerations and common deployment patterns.
+Most enterprise Cloudflare One deployments use multiple connectivity options together. This section covers compatibility considerations and common deployment patterns.
 
-### Compatibility matrix
+### Cloudflare One connectivity compatibility matrix
 
-Not all connectivity options work together in the same account. Review the following compatibility information before designing your deployment.
+Not all Cloudflare One connectivity options work together in the same account. Review the following compatibility information before designing your deployment.
+
+**Table 7\. Cloudflare One connectivity compatability**
 
 | Combination                                                | Compatible  | Notes                                                                                                                                                                                                                                             |
 | ---------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -344,17 +362,19 @@ Not all connectivity options work together in the same account. Review the follo
 | Cloudflare One Client + Cloudflare Tunnel + WARP Connector | Yes         | Common pattern for remote access to private applications. All three work together.                                                                                                                                                                |
 | CNI + Cloudflare Tunnel                                    | Conditional | cloudflared connects to multiple Cloudflare regions for redundancy. If CNI only advertises one region, the tunnel operates with reduced redundancy. Evaluate whether Cloudflare Tunnel is necessary if CNI already provides private connectivity. |
 
-### Routing considerations
+### Cloudflare One routing considerations
 
-When using multiple connectivity options, follow these guidelines to avoid routing conflicts:
+When using multiple Cloudflare One connectivity options, follow these guidelines to avoid routing conflicts:
 
 * **Avoid overlapping CIDR ranges**: Do not configure the same IP range for multiple tunnel types. If an overlap exists, Cloudflare Tunnel takes priority over Cloudflare WAN routes.
 * **No automatic failover**: Cloudflare does not automatically fail over traffic between different connectivity options. Plan your routing to handle failures within each tunnel type.
 * **Virtual Networks**: Use [Virtual Networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) to handle overlapping private IP ranges from different environments (for example, multiple cloud VPCs using `10.0.0.0/8`).
 
-### MTU planning
+### Cloudflare One MTU planning
 
-When layering tunnels or using multiple encapsulation methods, account for overhead to prevent fragmentation:
+When layering Cloudflare One tunnels or using multiple encapsulation methods, account for overhead to prevent fragmentation.
+
+**Table 8\. Effective MTU values for Cloudflare One tunnel types**
 
 | Scenario                                                           | Effective MTU                            | MSS clamping                                                                                                                                       |
 | ------------------------------------------------------------------ | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -365,9 +385,11 @@ When layering tunnels or using multiple encapsulation methods, account for overh
 
 Configure MSS clamping on your edge devices to ensure TCP traffic does not require fragmentation.
 
-### Source IP preservation
+### Cloudflare One source IP preservation
 
-Different connectivity options handle source IP addresses differently:
+Cloudflare One connectivity options handle source IP addresses differently. The following table shows how each Cloudflare One connectivity option handles source IP addresses.
+
+**Table 9\. Cloudflare One source IP behavior**
 
 | Connectivity option      | Source IP behavior                                                                    |
 | ------------------------ | ------------------------------------------------------------------------------------- |
@@ -382,7 +404,11 @@ Source IP preservation is required for:
 * Audit logging that requires client IP visibility
 * Applications that make authorization decisions based on source IP
 
-### Traffic direction capabilities
+### Cloudflare One Traffic direction capabilities
+
+The following table shows traffic direction support for each Cloudflare One connectivity option.
+
+**Table 10\. Cloudflare One connectivity traffic direction support**
 
 | Connectivity option      | Client-initiated traffic | Server-initiated traffic |
 | ------------------------ | ------------------------ | ------------------------ |
@@ -397,9 +423,9 @@ If your application requires server-initiated connections (for example, VoIP cal
 
 ---
 
-## Common deployment patterns
+## Common Cloudflare One deployment patterns
 
-The following patterns illustrate how organizations combine connectivity options for different scenarios.
+The following patterns illustrate how organizations combine Cloudflare One connectivity options for different scenarios.
 
 ### Enterprise with remote workers and branch offices
 
@@ -472,6 +498,8 @@ This pattern serves organizations with strict compliance requirements that prohi
 * [DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) \- Filter DNS traffic without device agents
 * [Proxy endpoints](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) \- Filter web traffic using PAC files
 * [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) \- Secure web access without device agents
+
+For implementation guidance on combining Cloudflare One connectivity options, refer to the [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/zero-trust/connectivity-options/","name":"Connectivity options"}}]}

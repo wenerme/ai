@@ -116,8 +116,8 @@
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
     "skill": "google-ai-docs",
-    "size": 69103,
-    "updatedAt": "2026-04-02T10:28:38.706Z"
+    "size": 69736,
+    "updatedAt": "2026-04-09T00:24:55.393Z"
   },
   "google-ai-docs/code-execution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/code-execution",
@@ -302,8 +302,8 @@
   "google-ai-docs/tool-combination.md": {
     "url": "https://ai.google.dev/gemini-api/docs/tool-combination",
     "skill": "google-ai-docs",
-    "size": 22334,
-    "updatedAt": "2026-04-02T10:28:59.996Z"
+    "size": 22337,
+    "updatedAt": "2026-04-09T00:25:18.970Z"
   },
   "google-ai-docs/live-api/tools.md": {
     "url": "https://ai.google.dev/gemini-api/docs/live-api/tools",
@@ -316,6 +316,12 @@
     "skill": "google-ai-docs",
     "size": 49684,
     "updatedAt": "2026-04-02T10:29:01.026Z"
+  },
+  "google-ai-docs/models/gemini-3-flash-preview.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview",
+    "skill": "google-ai-docs",
+    "size": 1554,
+    "updatedAt": "2026-04-09T00:25:20.057Z"
   },
   "google-ai-docs/deprecations.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deprecations",
@@ -332,8 +338,8 @@
   "google-ai-docs/maps-grounding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/maps-grounding",
     "skill": "google-ai-docs",
-    "size": 29955,
-    "updatedAt": "2026-04-02T10:29:02.832Z"
+    "size": 29969,
+    "updatedAt": "2026-04-09T00:25:21.728Z"
   },
   "google-ai-docs/computer-use.md": {
     "url": "https://ai.google.dev/gemini-api/docs/computer-use",
@@ -362,8 +368,8 @@
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",
     "skill": "google-ai-docs",
-    "size": 7680,
-    "updatedAt": "2026-04-03T00:25:24.744Z"
+    "size": 7807,
+    "updatedAt": "2026-04-09T00:25:23.918Z"
   },
   "google-ai-docs/optimization.md": {
     "url": "https://ai.google.dev/gemini-api/docs/optimization",

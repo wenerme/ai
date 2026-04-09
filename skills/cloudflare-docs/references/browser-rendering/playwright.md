@@ -58,8 +58,8 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-3248)
-* [  wrangler.toml ](#tab-panel-3249)
+* [  wrangler.jsonc ](#tab-panel-3254)
+* [  wrangler.toml ](#tab-panel-3255)
 
 JSONC
 
@@ -83,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-09",
 
   "upload_source_maps": true,
 
@@ -114,7 +114,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-09"
 
 upload_source_maps = true
 
@@ -381,8 +381,8 @@ npx wrangler kv namespace create KV
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3250)
-* [  wrangler.toml ](#tab-panel-3251)
+* [  wrangler.jsonc ](#tab-panel-3256)
+* [  wrangler.toml ](#tab-panel-3257)
 
 JSONC
 
@@ -398,7 +398,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-09",
 
   "browser": {
 
@@ -435,7 +435,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-09"
 
 
 [browser]
@@ -572,6 +572,36 @@ const context = await browser.newContext({
 Note
 
 The `userAgent` parameter does not bypass bot protection. Requests from Browser Rendering will always be identified as a bot.
+
+## Local debugging with headful mode (experimental)
+
+When developing locally with `wrangler dev` or `vite dev`, Chrome runs in headless mode by default. To launch Chrome in visible (headful) mode, set the `X_BROWSER_HEADFUL` environment variable:
+
+Terminal window
+
+```
+
+X_BROWSER_HEADFUL=true npx wrangler dev
+
+
+```
+
+Or with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/):
+
+Terminal window
+
+```
+
+X_BROWSER_HEADFUL=true npx vite dev
+
+
+```
+
+This opens a browser window so you can watch your Playwright automation in real time, making it easier to debug navigation, element selection, and page interactions.
+
+Note
+
+When using `@cloudflare/playwright` in headful mode, two Chrome windows may appear. This is expected behavior due to how Playwright handles browser contexts via CDP.
 
 ## Session management
 

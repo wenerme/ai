@@ -50,8 +50,8 @@ The current version is [@cloudflare/puppeteer v1.0.4 ↗](https://github.com/clo
 
 Once the [browser binding](https://developers.cloudflare.com/browser-rendering/reference/wrangler/#bindings) is configured and the `@cloudflare/puppeteer` library is installed, Puppeteer can be used in a Worker:
 
-* [  JavaScript ](#tab-panel-3254)
-* [  TypeScript ](#tab-panel-3255)
+* [  JavaScript ](#tab-panel-3260)
+* [  TypeScript ](#tab-panel-3261)
 
 JavaScript
 
@@ -161,6 +161,32 @@ await page.setUserAgent(
 Note
 
 The `userAgent` parameter does not bypass bot protection. Requests from Browser Rendering will always be identified as a bot.
+
+## Local debugging with headful mode (experimental)
+
+When developing locally with `wrangler dev` or `vite dev`, Chrome runs in headless mode by default. To launch Chrome in visible (headful) mode, set the `X_BROWSER_HEADFUL` environment variable:
+
+Terminal window
+
+```
+
+X_BROWSER_HEADFUL=true npx wrangler dev
+
+
+```
+
+Or with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/):
+
+Terminal window
+
+```
+
+X_BROWSER_HEADFUL=true npx vite dev
+
+
+```
+
+This opens a browser window so you can watch your Puppeteer automation in real time, making it easier to debug navigation, element selection, and page interactions.
 
 ## Element selection
 

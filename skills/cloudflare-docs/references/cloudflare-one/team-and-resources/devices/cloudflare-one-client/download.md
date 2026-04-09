@@ -78,7 +78,7 @@ The next stable release for Windows will introduce the new Cloudflare One Client
    * The custom DNS server address on the primary network adapter is changed while the client is connected.  
 To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
 
-Previous version history (12)
+Previous version history (11)
 
 Windows 2026.1.150.0
 
@@ -406,28 +406,6 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 * Microsoft has confirmed a regression with Windows 11 starting around 24H2 that may cause performance issues for some users. These performance issues could manifest as mouse lag, audio cracking, or other slowdowns. A fix from Microsoft is expected in early July.
 * Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
 
-Windows 2025.2.664.0
-
-**Version:**  Windows 2025.2.664.0 **Date:**  2025-04-08 **Size:** 128 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.2.664.0) 
-
-#### Release notes
-
-This release contains a hotfix for captive portal detection for the 2025.2.600.0 release.
-
-**Changes and improvements**
-
-* Fix to reduce the number of browser tabs opened during captive portal logins.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [ Download latest stable release ](https://downloads.cloudflareclient.com/v1/download/macos/ga) 
@@ -467,7 +445,7 @@ The next stable release for macOS will introduce the new Cloudflare One Client U
 * Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
 * Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
 
-Previous version history (11)
+Previous version history (10)
 
 macOS 2026.1.150.0
 
@@ -683,25 +661,6 @@ This release contains two significant changes all customers should be aware of:
 * Fixed an issue where frequent network changes could cause WARP to become unresponsive.
 * Improvement for WARP to check if tunnel connectivity fails or times out at device wake before attempting to reconnect.
 * Fixed an issue causing WARP connection disruptions after network changes.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
-macOS 2025.2.664.0
-
-**Version:**  macOS 2025.2.664.0 **Date:**  2025-04-08 **Size:** 91.8 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.2.664.0) 
-
-#### Release notes
-
-This release contains a hotfix for captive portal detection and PF state tables for the 2025.2.600.0 release.
-
-**Changes and improvements**
-
-* Fix to reduce the number of browser tabs opened during captive portal logins.
-* Improvement to exclude local DNS traffic entries from PF state table to reduce risk of connectivity issues from exceeding table capacity.
 
 **Known issues**
 

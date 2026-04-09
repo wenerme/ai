@@ -2,7 +2,7 @@
 
 `just` can be installed on GitHub Actions in a few ways.
 
-Using package managers pre-installed on GitHub Actions runners on MacOS with
+Using package managers pre-installed on GitHub Actions runners on macOS with
 `brew install just`, and on Windows with `choco install just`.
 
 With [extractions/setup-just](https://github.com/extractions/setup-just):

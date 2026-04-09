@@ -16,7 +16,7 @@ Copy page
 
 # Designing a distributed web performance architecture
 
-**Last reviewed:**  24 days ago 
+**Last reviewed:**  about 1 month ago 
 
 ## Introduction
 

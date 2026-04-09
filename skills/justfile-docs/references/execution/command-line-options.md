@@ -39,6 +39,6 @@ $ just
 
 Since environment variables are inherited by child processes, command-line
 options set with environment variables are inherited by recursive invocations
-of `just`, where as command line options set with arguments are not.
+of `just`, whereas command-line options set with arguments are not.
 
 Consult `just --help` for which options can be set with environment variables.

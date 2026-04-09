@@ -20,7 +20,7 @@ Copy page
 
 # Use fetch() handler
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 A very common use case is to provide the LLM with the ability to perform API calls via function calling.
 

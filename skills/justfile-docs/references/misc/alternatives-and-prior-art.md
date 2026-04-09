@@ -4,7 +4,7 @@ There is no shortage of command runners! Some more or less similar alternatives
 to `just` include:
 
 - [make](https://en.wikipedia.org/wiki/Make_(software)): The Unix build tool
-  that inspired `just`. There are a few different modern day descendents of the
+  that inspired `just`. There are a few different modern day descendants of the
   original `make`, including
   [FreeBSD Make](https://www.freebsd.org/cgi/man.cgi?make(1)) and
   [GNU Make](https://www.gnu.org/software/make/).

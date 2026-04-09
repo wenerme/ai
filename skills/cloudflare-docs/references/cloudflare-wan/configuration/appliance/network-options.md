@@ -16,6 +16,7 @@ Copy page
 # Network options
 
 * [ Application-aware policies ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/)
+* [ Configure link aggregation groups ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/)
 * [ DHCP options ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/)
 * [ Enable NAT for a subnet ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/)
 * [ Network segmentation ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/network-segmentation/)

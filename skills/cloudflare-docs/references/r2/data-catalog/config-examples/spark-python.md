@@ -16,7 +16,7 @@ Copy page
 
 # Spark (PySpark)
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Below is an example of using [PySpark ↗](https://spark.apache.org/docs/latest/api/python/index.html) to connect to R2 Data Catalog.
 

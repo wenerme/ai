@@ -84,7 +84,7 @@ If you use AWS NLB with the MySQL interface, you have to ask AWS support to enab
 
 1. Copy the user certificate, user key and CA certificate to a remote node.
 
-2. Configure OpenSSL in the ClickHouse [client config](/interfaces/cli.md#configuration_files) with certificate and paths.
+2. Configure OpenSSL in the ClickHouse [client config](/interfaces/client#configuration_files) with certificate and paths.
 
     ```xml
     <openSSL>

@@ -25,7 +25,7 @@ You can search the following types of content:
 | Time frame                          | Start and end date of a specific time bucket          |
 | Media type                          | Image or video or both                                |
 | Display options                     | In Archive, in Favorites or Not in any album          |
-| Start rating                        | User-assigned start rating                            |
+| Star rating                         | User-assigned star rating                             |
 
 ## Configuration
 

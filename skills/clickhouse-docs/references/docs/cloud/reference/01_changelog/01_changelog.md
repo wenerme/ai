@@ -1396,10 +1396,10 @@ This release updates the ClickHouse version to 22.12, enables dictionaries for m
   - New s3source macro
 - Python client [v0.4.8](https://github.com/ClickHouse/clickhouse-connect/blob/main/CHANGELOG.md#048-2023-01-02)
   - File insert support
-  - Server-side query [parameters binding](/interfaces/cli.md/#cli-queries-with-parameters)
+  - Server-side query [parameters binding](/interfaces/client#cli-queries-with-parameters)
 - Go client [v2.5.0](https://github.com/ClickHouse/clickhouse-go/releases/tag/v2.5.0)
   - Reduced memory usage for compression
-  - Server-side query [parameters binding](/interfaces/cli.md/#cli-queries-with-parameters)
+  - Server-side query [parameters binding](/interfaces/client#cli-queries-with-parameters)
 
 ### Reliability and performance {#reliability-and-performance-2}
 - Improved read performance for queries that fetch a large number of small files on object store

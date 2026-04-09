@@ -35,7 +35,7 @@ foo:
 | `shell` | `[COMMAND, ARGS…]` | - | Set command used to invoke recipes and evaluate backticks. |
 | `tempdir` | string | - | Create temporary directories in `tempdir` instead of the system default temporary directory. |
 | `unstable`<sup>1.31.0</sup> | boolean | `false` | Enable unstable features. |
-| `windows-powershell` | boolean | `false` | Use PowerShell on Windows as default shell. (Deprecated. Use `windows-shell` instead. |
+| `windows-powershell` | boolean | `false` | Use PowerShell on Windows as default shell. (Deprecated. Use `windows-shell` instead.) |
 | `windows-shell` | `[COMMAND, ARGS…]` | - | Set the command used to invoke recipes and evaluate backticks. |
 | `working-directory`<sup>1.33.0</sup> | string | - | Set the working directory for recipes and backticks, relative to the default working directory. |
 
@@ -112,11 +112,11 @@ may be absolute, or relative to the working directory.
 The command-line option `--dotenv-path`, short form `-E`, can be used to set or
 override `dotenv-path` at runtime.
 
-If `dotenv-filename` is set `just` will look for a file at the given path,
+If `dotenv-filename` is set, `just` will look for a file at the given path,
 relative to the working directory and each of its ancestors.
 
 If `dotenv-filename` is not set, but `dotenv-load` or `dotenv-required` are
-set, just will look for a file named `.env`, relative to the working directory
+set, `just` will look for a file named `.env`, relative to the working directory
 and each of its ancestors.
 
 `dotenv-filename` and `dotenv-path` are similar, but `dotenv-path` is only
@@ -161,8 +161,8 @@ Starting server with database localhost:6379 on port 1337…
 Variables in environment files loaded in parent modules are inherited by
 submodules.
 
-Environment files are loaded in submodules<sup>1.49.0<sup> and may override
-variable defined in parent module environment files.
+Environment files are loaded in submodules<sup>1.49.0</sup> and may override
+variables defined in parent module environment files.
 
 #### Export
 

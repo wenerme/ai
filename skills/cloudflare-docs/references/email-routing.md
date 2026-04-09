@@ -24,7 +24,7 @@ Cloudflare Email Routing is designed to simplify the way you create and manage e
 
 Email Routing is free and private by design. Cloudflare will not store or access the emails routed to your inbox.
 
-It is available to all Cloudflare customers [using Cloudflare as an authoritative nameserver](https://developers.cloudflare.com/dns/zone-setups/full-setup/).
+It is available to all Cloudflare customers [using Cloudflare as an authoritative nameserver](https://developers.cloudflare.com/dns/zone-setups/full-setup/), meaning Cloudflare manages your domain's DNS records.
 
 ---
 
@@ -32,13 +32,13 @@ It is available to all Cloudflare customers [using Cloudflare as an authoritativ
 
 ### Email Workers
 
-Leverage the power of Cloudflare Workers to implement any logic you need to process your emails. Create rules as complex or simple as you need.
+Process incoming emails with code using Cloudflare Workers. Filter by sender, auto-reply, forward based on content, or build any custom logic you need.
 
 [ Use Email Workers ](https://developers.cloudflare.com/email-routing/email-workers/) 
 
 ### Custom addresses
 
-With Email Routing you can have many custom email addresses to use for specific situations.
+Create separate email addresses for different purposes, such as shopping, newsletters, or work contacts, all forwarding to a single inbox.
 
 [ Use Custom addresses ](https://developers.cloudflare.com/email-routing/get-started/enable-email-routing/) 
 

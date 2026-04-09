@@ -2,7 +2,7 @@
 
 GET https://openrouter.ai/api/v1/models/user
 
-List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/logging#enterprise-eu-in-region-routing).
+List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing).
 
 Reference: https://openrouter.ai/docs/api/api-reference/models/list-models-user
 
@@ -22,11 +22,11 @@ paths:
         guardrails
       description: >-
         List models filtered by user provider preferences, [privacy
-        settings](https://openrouter.ai/docs/guides/privacy/logging), and
-        [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If
-        requesting through `eu.openrouter.ai/api/v1/...` the results will be
+        settings](https://openrouter.ai/docs/guides/privacy/provider-logging),
+        and [guardrails](https://openrouter.ai/docs/guides/features/guardrails).
+        If requesting through `eu.openrouter.ai/api/v1/...` the results will be
         filtered to models that satisfy [EU in-region
-        routing](https://openrouter.ai/docs/guides/privacy/logging#enterprise-eu-in-region-routing).
+        routing](https://openrouter.ai/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing).
       tags:
         - subpackage_models
       parameters:
@@ -65,120 +65,15 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    PublicPricingPrompt:
-      type: object
-      properties: {}
-      title: PublicPricingPrompt
-    PublicPricingCompletion:
-      type: object
-      properties: {}
-      title: PublicPricingCompletion
-    PublicPricingRequest:
-      type: object
-      properties: {}
-      title: PublicPricingRequest
-    PublicPricingImage:
-      type: object
-      properties: {}
-      title: PublicPricingImage
-    PublicPricingImageToken:
-      type: object
-      properties: {}
-      title: PublicPricingImageToken
-    PublicPricingImageOutput:
-      type: object
-      properties: {}
-      title: PublicPricingImageOutput
-    PublicPricingAudio:
-      type: object
-      properties: {}
-      title: PublicPricingAudio
-    PublicPricingAudioOutput:
-      type: object
-      properties: {}
-      title: PublicPricingAudioOutput
-    PublicPricingInputAudioCache:
-      type: object
-      properties: {}
-      title: PublicPricingInputAudioCache
-    PublicPricingWebSearch:
-      type: object
-      properties: {}
-      title: PublicPricingWebSearch
-    PublicPricingInternalReasoning:
-      type: object
-      properties: {}
-      title: PublicPricingInternalReasoning
-    PublicPricingInputCacheRead:
-      type: object
-      properties: {}
-      title: PublicPricingInputCacheRead
-    PublicPricingInputCacheWrite:
-      type: object
-      properties: {}
-      title: PublicPricingInputCacheWrite
-    PublicPricing:
-      type: object
-      properties:
-        prompt:
-          $ref: '#/components/schemas/PublicPricingPrompt'
-        completion:
-          $ref: '#/components/schemas/PublicPricingCompletion'
-        request:
-          $ref: '#/components/schemas/PublicPricingRequest'
-        image:
-          $ref: '#/components/schemas/PublicPricingImage'
-        image_token:
-          $ref: '#/components/schemas/PublicPricingImageToken'
-        image_output:
-          $ref: '#/components/schemas/PublicPricingImageOutput'
-        audio:
-          $ref: '#/components/schemas/PublicPricingAudio'
-        audio_output:
-          $ref: '#/components/schemas/PublicPricingAudioOutput'
-        input_audio_cache:
-          $ref: '#/components/schemas/PublicPricingInputAudioCache'
-        web_search:
-          $ref: '#/components/schemas/PublicPricingWebSearch'
-        internal_reasoning:
-          $ref: '#/components/schemas/PublicPricingInternalReasoning'
-        input_cache_read:
-          $ref: '#/components/schemas/PublicPricingInputCacheRead'
-        input_cache_write:
-          $ref: '#/components/schemas/PublicPricingInputCacheWrite'
-        discount:
-          type: number
-          format: double
-      required:
-        - prompt
-        - completion
-      description: Pricing information for the model
-      title: PublicPricing
-    ModelGroup:
+    InputModality:
       type: string
       enum:
-        - Router
-        - Media
-        - Other
-        - GPT
-        - Claude
-        - Gemini
-        - Gemma
-        - Grok
-        - Cohere
-        - Nova
-        - Qwen
-        - Yi
-        - DeepSeek
-        - Mistral
-        - Llama2
-        - Llama3
-        - Llama4
-        - PaLM
-        - RWKV
-        - Qwen3
-      description: Tokenizer type used by the model
-      title: ModelGroup
+        - text
+        - image
+        - file
+        - audio
+        - video
+      title: InputModality
     ModelArchitectureInstructType:
       type: string
       enum:
@@ -206,15 +101,6 @@ components:
         - qwen3
       description: Instruction format type
       title: ModelArchitectureInstructType
-    InputModality:
-      type: string
-      enum:
-        - text
-        - image
-        - file
-        - audio
-        - video
-      title: InputModality
     OutputModality:
       type: string
       enum:
@@ -225,11 +111,39 @@ components:
         - video
         - rerank
       title: OutputModality
+    ModelGroup:
+      type: string
+      enum:
+        - Router
+        - Media
+        - Other
+        - GPT
+        - Claude
+        - Gemini
+        - Gemma
+        - Grok
+        - Cohere
+        - Nova
+        - Qwen
+        - Yi
+        - DeepSeek
+        - Mistral
+        - Llama2
+        - Llama3
+        - Llama4
+        - PaLM
+        - RWKV
+        - Qwen3
+      description: Tokenizer type used by the model
+      title: ModelGroup
     ModelArchitecture:
       type: object
       properties:
-        tokenizer:
-          $ref: '#/components/schemas/ModelGroup'
+        input_modalities:
+          type: array
+          items:
+            $ref: '#/components/schemas/InputModality'
+          description: Supported input modalities
         instruct_type:
           oneOf:
             - $ref: '#/components/schemas/ModelArchitectureInstructType'
@@ -240,54 +154,158 @@ components:
             - string
             - 'null'
           description: Primary modality of the model
-        input_modalities:
-          type: array
-          items:
-            $ref: '#/components/schemas/InputModality'
-          description: Supported input modalities
         output_modalities:
           type: array
           items:
             $ref: '#/components/schemas/OutputModality'
           description: Supported output modalities
+        tokenizer:
+          $ref: '#/components/schemas/ModelGroup'
       required:
-        - modality
         - input_modalities
+        - modality
         - output_modalities
       description: Model architecture information
       title: ModelArchitecture
-    TopProviderInfo:
+    DefaultParameters:
       type: object
       properties:
-        context_length:
-          type: integer
-          description: Context length from the top provider
-        max_completion_tokens:
-          type: integer
-          description: Maximum completion tokens from the top provider
-        is_moderated:
-          type: boolean
-          description: Whether the top provider moderates content
+        frequency_penalty:
+          type: number
+          format: double
+        presence_penalty:
+          type: number
+          format: double
+        repetition_penalty:
+          type: number
+          format: double
+        temperature:
+          type: number
+          format: double
+        top_k:
+          type:
+            - integer
+            - 'null'
+        top_p:
+          type: number
+          format: double
+      description: Default parameters for this model
+      title: DefaultParameters
+    ModelLinks:
+      type: object
+      properties:
+        details:
+          type: string
+          description: URL for the model details/endpoints API
       required:
-        - is_moderated
-      description: Information about the top provider for this model
-      title: TopProviderInfo
+        - details
+      description: Related API endpoints and resources for this model.
+      title: ModelLinks
     PerRequestLimits:
       type: object
       properties:
-        prompt_tokens:
-          type: number
-          format: double
-          description: Maximum prompt tokens per request
         completion_tokens:
           type: number
           format: double
           description: Maximum completion tokens per request
+        prompt_tokens:
+          type: number
+          format: double
+          description: Maximum prompt tokens per request
       required:
-        - prompt_tokens
         - completion_tokens
+        - prompt_tokens
       description: Per-request token limits
       title: PerRequestLimits
+    PublicPricingAudio:
+      type: object
+      properties: {}
+      title: PublicPricingAudio
+    PublicPricingAudioOutput:
+      type: object
+      properties: {}
+      title: PublicPricingAudioOutput
+    PublicPricingCompletion:
+      type: object
+      properties: {}
+      title: PublicPricingCompletion
+    PublicPricingImage:
+      type: object
+      properties: {}
+      title: PublicPricingImage
+    PublicPricingImageOutput:
+      type: object
+      properties: {}
+      title: PublicPricingImageOutput
+    PublicPricingImageToken:
+      type: object
+      properties: {}
+      title: PublicPricingImageToken
+    PublicPricingInputAudioCache:
+      type: object
+      properties: {}
+      title: PublicPricingInputAudioCache
+    PublicPricingInputCacheRead:
+      type: object
+      properties: {}
+      title: PublicPricingInputCacheRead
+    PublicPricingInputCacheWrite:
+      type: object
+      properties: {}
+      title: PublicPricingInputCacheWrite
+    PublicPricingInternalReasoning:
+      type: object
+      properties: {}
+      title: PublicPricingInternalReasoning
+    PublicPricingPrompt:
+      type: object
+      properties: {}
+      title: PublicPricingPrompt
+    PublicPricingRequest:
+      type: object
+      properties: {}
+      title: PublicPricingRequest
+    PublicPricingWebSearch:
+      type: object
+      properties: {}
+      title: PublicPricingWebSearch
+    PublicPricing:
+      type: object
+      properties:
+        audio:
+          $ref: '#/components/schemas/PublicPricingAudio'
+        audio_output:
+          $ref: '#/components/schemas/PublicPricingAudioOutput'
+        completion:
+          $ref: '#/components/schemas/PublicPricingCompletion'
+        discount:
+          type: number
+          format: double
+        image:
+          $ref: '#/components/schemas/PublicPricingImage'
+        image_output:
+          $ref: '#/components/schemas/PublicPricingImageOutput'
+        image_token:
+          $ref: '#/components/schemas/PublicPricingImageToken'
+        input_audio_cache:
+          $ref: '#/components/schemas/PublicPricingInputAudioCache'
+        input_cache_read:
+          $ref: '#/components/schemas/PublicPricingInputCacheRead'
+        input_cache_write:
+          $ref: '#/components/schemas/PublicPricingInputCacheWrite'
+        internal_reasoning:
+          $ref: '#/components/schemas/PublicPricingInternalReasoning'
+        prompt:
+          $ref: '#/components/schemas/PublicPricingPrompt'
+        request:
+          $ref: '#/components/schemas/PublicPricingRequest'
+        web_search:
+          $ref: '#/components/schemas/PublicPricingWebSearch'
+      required:
+        - completion
+        - prompt
+      description: Pricing information for the model
+      title: PublicPricing
     Parameter:
       type: string
       enum:
@@ -300,6 +318,7 @@ components:
         - presence_penalty
         - repetition_penalty
         - max_tokens
+        - max_completion_tokens
         - logit_bias
         - logprobs
         - top_logprobs
@@ -316,88 +335,41 @@ components:
         - web_search_options
         - verbosity
       title: Parameter
-    DefaultParameters:
+    TopProviderInfo:
       type: object
       properties:
-        temperature:
-          type: number
-          format: double
-        top_p:
-          type: number
-          format: double
-        top_k:
-          type:
-            - integer
-            - 'null'
-        frequency_penalty:
-          type: number
-          format: double
-        presence_penalty:
-          type: number
-          format: double
-        repetition_penalty:
-          type: number
-          format: double
-      description: Default parameters for this model
-      title: DefaultParameters
-    ModelLinks:
-      type: object
-      properties:
-        details:
-          type: string
-          description: URL for the model details/endpoints API
+        context_length:
+          type: integer
+          description: Context length from the top provider
+        is_moderated:
+          type: boolean
+          description: Whether the top provider moderates content
+        max_completion_tokens:
+          type: integer
+          description: Maximum completion tokens from the top provider
       required:
-        - details
-      description: Related API endpoints and resources for this model.
-      title: ModelLinks
+        - is_moderated
+      description: Information about the top provider for this model
+      title: TopProviderInfo
     Model:
       type: object
       properties:
-        id:
-          type: string
-          description: Unique identifier for the model
+        architecture:
+          $ref: '#/components/schemas/ModelArchitecture'
         canonical_slug:
           type: string
           description: Canonical slug for the model
-        hugging_face_id:
-          type:
-            - string
-            - 'null'
-          description: Hugging Face model identifier, if applicable
-        name:
-          type: string
-          description: Display name of the model
-        created:
-          type: integer
-          description: Unix timestamp of when the model was created
-        description:
-          type: string
-          description: Description of the model
-        pricing:
-          $ref: '#/components/schemas/PublicPricing'
         context_length:
           type: integer
           description: Maximum context length in tokens
-        architecture:
-          $ref: '#/components/schemas/ModelArchitecture'
-        top_provider:
-          $ref: '#/components/schemas/TopProviderInfo'
-        per_request_limits:
-          $ref: '#/components/schemas/PerRequestLimits'
-        supported_parameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Parameter'
-          description: List of supported parameters for this model
+        created:
+          type: integer
+          description: Unix timestamp of when the model was created
         default_parameters:
           $ref: '#/components/schemas/DefaultParameters'
-        knowledge_cutoff:
-          type:
-            - string
-            - 'null'
-          description: >-
-            The date up to which the model was trained on data. ISO 8601 date
-            string (YYYY-MM-DD) or null if unknown.
+        description:
+          type: string
+          description: Description of the model
         expiration_date:
           type:
             - string
@@ -405,21 +377,50 @@ components:
           description: >-
             The date after which the model may be removed. ISO 8601 date string
             (YYYY-MM-DD) or null if no expiration.
+        hugging_face_id:
+          type:
+            - string
+            - 'null'
+          description: Hugging Face model identifier, if applicable
+        id:
+          type: string
+          description: Unique identifier for the model
+        knowledge_cutoff:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The date up to which the model was trained on data. ISO 8601 date
+            string (YYYY-MM-DD) or null if unknown.
         links:
           $ref: '#/components/schemas/ModelLinks'
+        name:
+          type: string
+          description: Display name of the model
+        per_request_limits:
+          $ref: '#/components/schemas/PerRequestLimits'
+        pricing:
+          $ref: '#/components/schemas/PublicPricing'
+        supported_parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Parameter'
+          description: List of supported parameters for this model
+        top_provider:
+          $ref: '#/components/schemas/TopProviderInfo'
       required:
-        - id
-        - canonical_slug
-        - name
-        - created
-        - pricing
-        - context_length
         - architecture
-        - top_provider
-        - per_request_limits
-        - supported_parameters
+        - canonical_slug
+        - context_length
+        - created
         - default_parameters
+        - id
         - links
+        - name
+        - per_request_limits
+        - pricing
+        - supported_parameters
+        - top_provider
       description: Information about an AI model available on OpenRouter
       title: Model
     ModelsListResponseData:

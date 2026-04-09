@@ -50,7 +50,7 @@ Yay, all your tests passed!
   [`make`'s complexity and idiosyncrasies](#what-are-the-idiosyncrasies-of-make-that-just-avoids).
   No need for `.PHONY` recipes!
 
-- Linux, MacOS, Windows, and other reasonable unices are supported with no
+- Linux, macOS, Windows, and other reasonable unixes are supported with no
   additional dependencies. (Although if your system doesn't have an `sh`,
   you'll need to [choose a different shell](#shell).)
 
@@ -71,14 +71,14 @@ Yay, all your tests passed!
   [available for most popular shells](#shell-completion-scripts).
 
 - Recipes can be written in
-  [arbitrary languages](#shebang-recipes), like Python or NodeJS.
+  [arbitrary languages](#shebang-recipes), like Python or Node.js.
 
 - `just` can be invoked from any subdirectory, not just the directory that
   contains the `justfile`.
 
 - And [much more](https://just.systems/man/en/)!
 
-If you need help with `just` please feel free to open an issue or ping me on
+If you need help with `just`, please feel free to open an issue or ping me on
 [Discord](https://discord.gg/ezYScXR). Feature requests and bug reports are
 always welcome!
 

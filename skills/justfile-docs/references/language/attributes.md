@@ -20,8 +20,9 @@ change their behavior.
 | `[exit-message]`<sup>1.39.0</sup> | recipe | Print error message if recipe fails regardless of `set no-exit-message`. |
 | `[freebsd]`<sup>1.47.0</sup> | recipe | Enable recipe on FreeBSD. |
 | `[group(NAME)]`<sup>1.27.0</sup> | module, recipe | Put recipe or module in [group](#groups) `NAME`. |
+| `[android]`<sup>master</sup> | recipe | Enable recipe on Android. |
 | `[linux]`<sup>1.8.0</sup> | recipe | Enable recipe on Linux. |
-| `[macos]`<sup>1.8.0</sup> | recipe | Enable recipe on MacOS. |
+| `[macos]`<sup>1.8.0</sup> | recipe | Enable recipe on macOS. |
 | `[metadata(METADATA)]`<sup>1.42.0</sup> | recipe | Attach `METADATA` to recipe. |
 | `[netbsd]`<sup>1.47.0</sup> | recipe | Enable recipe on NetBSD. |
 | `[no-cd]`<sup>1.9.0</sup> | recipe | Don't change directory before executing recipe. |
@@ -33,7 +34,7 @@ change their behavior.
 | `[private]`<sup>1.10.0</sup> | alias, recipe | Make recipe, alias, or variable private. See [Private Recipes](#private-recipes). |
 | `[script(COMMAND)]`<sup>1.32.0</sup> | recipe | Execute recipe as a script interpreted by `COMMAND`. See [script recipes](#script-recipes) for more details. |
 | `[script]`<sup>1.33.0</sup> | recipe | Execute recipe as script. See [script recipes](#script-recipes) for more details. |
-| `[unix]`<sup>1.8.0</sup> | recipe | Enable recipe on Unixes. (Includes MacOS). |
+| `[unix]`<sup>1.8.0</sup> | recipe | Enable recipe on unixes. (Includes macOS). |
 | `[windows]`<sup>1.8.0</sup> | recipe | Enable recipe on Windows. |
 | `[working-directory(PATH)]`<sup>1.38.0</sup> | recipe | Set recipe working directory. `PATH` may be relative or absolute. If relative, it is interpreted relative to the default working directory. |
 
@@ -109,7 +110,7 @@ Can be used with paths that are relative to the current directory, because
 #### Requiring Confirmation for Recipes
 
 `just` normally executes all recipes unless there is an error. The `[confirm]`
-attribute<sup>1.17.0</sup> allows recipes require confirmation in the terminal
+attribute<sup>1.17.0</sup> allows recipes to require confirmation in the terminal
 prior to running. This can be overridden by passing `--yes` to `just`, which
 will automatically confirm any recipes marked by this attribute.
 

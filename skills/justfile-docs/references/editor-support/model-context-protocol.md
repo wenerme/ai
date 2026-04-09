@@ -1,6 +1,6 @@
 ### Model Context Protocol
 
-[just-mcp](http://github.com/promptexecution/just-mcp) provides a
+[just-mcp](https://github.com/promptexecution/just-mcp) provides a
 [model context protocol](https://en.wikipedia.org/wiki/Model_Context_Protocol)
 adapter to allow LLMs to query the contents of `justfiles` and run recipes.
 
@@ -25,8 +25,9 @@ another-recipe:
   @echo 'This is another recipe.'
 ```
 
-When you invoke `just` it looks for file `justfile` in the current directory
-and upwards, so you can invoke it from any subdirectory of your project.
+When you invoke `just`, it looks for a file named `justfile` in the current
+directory and upwards, so you can invoke it from any subdirectory of your
+project.
 
 The search for a `justfile` is case insensitive, so any case, like `Justfile`,
 `JUSTFILE`, or `JuStFiLe`, will work. `just` will also look for files with the

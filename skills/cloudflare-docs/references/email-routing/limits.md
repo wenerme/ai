@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: When you process emails with Email Workers and you are on Workers’ free pricing tier you might encounter an allocation error. This may happen due to the size of the emails you are processing and/or the complexity of your Email Worker. Refer to Worker limits for more information.
+description: When you process emails with Email Workers on the Workers Free plan, your Worker may exceed its CPU or memory allocation and fail with an error. This is more likely with large emails or complex processing logic. Refer to Worker limits for more information.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -18,7 +18,7 @@ Copy page
 
 ## Email Workers size limits
 
-When you process emails with Email Workers and you are on [Workers’ free pricing tier](https://developers.cloudflare.com/workers/platform/pricing/) you might encounter an allocation error. This may happen due to the size of the emails you are processing and/or the complexity of your Email Worker. Refer to [Worker limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) for more information.
+When you process emails with Email Workers on the [Workers Free plan](https://developers.cloudflare.com/workers/platform/pricing/), your Worker may exceed its CPU or memory allocation and fail with an error. This is more likely with large emails or complex processing logic. Refer to [Worker limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) for more information.
 
 You can use the [log functionality for Workers](https://developers.cloudflare.com/workers/observability/logs/) to look for messages related to CPU limits (such as `EXCEEDED_CPU`) and troubleshoot any issues regarding allocation errors.
 
@@ -29,6 +29,8 @@ If you encounter these error messages frequently, consider upgrading to the [Wor
 Currently, Email Routing does not support messages bigger than 25 MiB.
 
 ## Rules and addresses
+
+Each rule maps one custom email address (like `info@yourdomain.com`) to one destination address or an [Email Worker](https://developers.cloudflare.com/email-routing/email-workers/).
 
 | Feature                                                                                                           | Limit |
 | ----------------------------------------------------------------------------------------------------------------- | ----- |

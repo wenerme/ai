@@ -99,7 +99,7 @@ with OpenRouter(
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                  |             |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                         |             |
 | `category`                 | [Optional\[operations.Category\]](../../operations/category.md)    | :heavy\_minus\_sign: | Filter models by use case category                                                                                                                                  | programming |
-| `supported_parameters`     | *Optional\[str]*                                                   | :heavy\_minus\_sign: | N/A                                                                                                                                                                 |             |
+| `supported_parameters`     | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter models by supported parameter (comma-separated)                                                                                                              | temperature |
 | `output_modalities`        | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter models by output modality. Accepts a comma-separated list of modalities (text, image, audio, embeddings) or "all" to include all models. Defaults to "text". | text        |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                 |             |
 
@@ -117,7 +117,7 @@ with OpenRouter(
 
 ## list\_for\_user
 
-List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/logging#enterprise-eu-in-region-routing).
+List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through `eu.openrouter.ai/api/v1/...` the results will be filtered to models that satisfy [EU in-region routing](https://openrouter.ai/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing).
 
 ### Example Usage
 

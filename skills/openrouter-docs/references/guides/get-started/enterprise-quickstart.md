@@ -48,7 +48,7 @@ See [Zero Data Retention](/docs/guides/features/zdr) for the full list of ZDR-co
 
 OpenRouter does not store your prompts or responses unless you opt in to prompt logging. Only metadata (token counts, latency, etc.) is stored for reporting and your activity feed.
 
-See [Data Collection](/docs/guides/privacy/data-collection) and [Provider Logging](/docs/guides/privacy/logging) for complete privacy documentation.
+See [Data Collection](/docs/guides/privacy/data-collection) and [Provider Logging](/docs/guides/privacy/provider-logging) for complete privacy documentation.
 
 ## 4. Set Up Observability
 

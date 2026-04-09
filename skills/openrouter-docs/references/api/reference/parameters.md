@@ -113,6 +113,14 @@ If specified, the inferencing will sample deterministically, such that repeated 
 
 This sets the upper limit for the number of tokens the model can generate in response. It won't produce more than this limit. The maximum value is the context length minus the prompt length.
 
+## Max Completion Tokens
+
+* Key: `max_completion_tokens`
+
+* Optional, **integer**, 1 or above
+
+This sets the upper limit for the number of tokens the model can generate in response. It won't produce more than this limit. The maximum value is the context length minus the prompt length.
+
 ## Logit Bias
 
 * Key: `logit_bias`

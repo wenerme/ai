@@ -4,7 +4,7 @@ By default, recipes run with the working directory set to the directory that
 contains the `justfile`.
 
 The `[no-cd]` attribute can be used to make recipes run with the working
-directory set to directory in which `just` was invoked.
+directory set to the directory in which `just` was invoked.
 
 ```just
 @foo:

@@ -241,6 +241,10 @@ Policies with Override actions replace the real DNS answer with a destination yo
 | -------- | -------- | --------------- | -------- | ----------------- |
 | Hostname | is       | www.example.com | Override | 1.2.3.4           |
 
+Note
+
+The Override action only supports queries for A, AAAA, and HTTPS records. If a query for a different type of record matches an Override policy, Gateway will return REFUSED.
+
 ### Safe Search
 
 API value: `safesearch`

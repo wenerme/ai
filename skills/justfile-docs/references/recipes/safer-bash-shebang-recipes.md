@@ -13,7 +13,7 @@ foo:
 
 It isn't strictly necessary, but `set -euxo pipefail` turns on a few useful
 features that make `bash` shebang recipes behave more like normal, linewise
-`just` recipe:
+`just` recipes:
 
 - `set -e` makes `bash` exit if a command fails.
 

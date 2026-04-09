@@ -1062,14 +1062,12 @@ The Gemini API lets you control how the model uses the provided tools
 (function declarations). Specifically, you can set the mode within
 the.`function_calling_config`.
 
-- `AUTO (Default)`: The model decides whether to generate a natural language response or suggest a function call based on the prompt and context. This is the most flexible mode and recommended for most scenarios.
-- `ANY`: The model is constrained to always predict a function call and guarantees function schema adherence. If `allowed_function_names` is not specified, the model can choose from any of the provided function declarations. If `allowed_function_names` is provided as a list, the model can only choose from the functions in that list. Use this mode when you require a function call response to every prompt (if applicable).
-- `NONE`: The model is *prohibited* from making function calls. This is equivalent to sending a request without any function declarations. Use this to temporarily disable function calling without removing your tool definitions.
-- `VALIDATED` (Preview): The model is constrained to predict either function
-  calls or natural language, and ensures function schema adherence. If
-  `allowed_function_names` is not provided, the model picks from all of the
-  available function declarations. If `allowed_function_names` is provided, the
-  model picks from the set of allowed functions.
+- `VALIDATED`: Default mode for tool combination (when built-in tools or structured outputs also enabled). The model is constrained to predict either function calls or natural language, and ensures function schema adherence. If `allowed_function_names` is not provided, the model picks from all of the available function declarations. If `allowed_function_names` is provided, the model picks from the set of allowed functions. This mode reduces malformed function calls (compared to `AUTO` mode).
+- `AUTO`: Default mode when only function_declarations tool enabled. The model decides whether to generate a natural language response or suggest a function call based on the prompt and context.
+- `ANY`: The model is constrained to always predict a function call and ensures function schema adherence. If `allowed_function_names` is not specified, the model can choose from any of the provided function declarations. If `allowed_function_names` is provided as a list, the model can only choose from the functions in that list. Use this mode when you require a function call response to every prompt (if applicable).
+- `NONE`: The model is *prohibited* from making function calls. This is
+  equivalent to sending a request without any function declarations. Use this to
+  temporarily disable function calling without removing your tool definitions.
 
 ### Python
 
@@ -1680,7 +1678,7 @@ your platform of choice.
 
                 # Send request to the model with MCP function declarations
                 response = await client.aio.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model="gemini-3-flash-preview",
                     contents=prompt,
                     config=genai.types.GenerateContentConfig(
                         temperature=0,
@@ -1731,7 +1729,7 @@ of choice.
 
     // Send request to the model with MCP tools
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3-flash-preview",
       contents: `What is the weather in London in ${new Date().toLocaleDateString()}?`,
       config: {
         tools: [mcpToTool(client)],  // uses the session, will automatically call the tool
@@ -1764,15 +1762,15 @@ This section lists models and their function calling capabilities. Experimental
 models are not included. You can find a comprehensive capabilities overview on
 the [model overview](https://ai.google.dev/gemini-api/docs/models) page.
 
-| Model | Function Calling | Parallel Function Calling | Compositional Function Calling |
+| Model | Function calling | Parallel function calling | Compositional function calling |
 |---|---|---|---|
-| Gemini 3.1 Pro Preview | ✔️ | ✔️ | ✔️ |
-| Gemini 3 Flash Preview | ✔️ | ✔️ | ✔️ |
-| Gemini 2.5 Pro | ✔️ | ✔️ | ✔️ |
-| Gemini 2.5 Flash | ✔️ | ✔️ | ✔️ |
-| Gemini 2.5 Flash-Lite | ✔️ | ✔️ | ✔️ |
-| Gemini 2.0 Flash | ✔️ | ✔️ | ✔️ |
-| Gemini 2.0 Flash-Lite | X | X | X |
+| [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ✔️ | ✔️ | ✔️ |
+| [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) | ✔️ | ✔️ | ✔️ |
+| [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ✔️ | ✔️ | ✔️ |
+| [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro) | ✔️ | ✔️ | ✔️ |
+| [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash) | ✔️ | ✔️ | ✔️ |
+| [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | ✔️ | ✔️ | ✔️ |
+| [Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash) | ✔️ | ✔️ | ✔️ |
 
 ## Best practices
 

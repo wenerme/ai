@@ -30,4 +30,4 @@ As you can see from the above example - there was a threshold invoice sent durin
 If your organization reaches 90% of the payment threshold and is on-track to exceed the payment threshold mid-period, the billing contact email associated with the organization will receive an email notification.
 You will also receive an email notification as well as an invoice when you exceed the payment threshold.
 
-> **note**: Payment threshold notifications are not currently supported for PAYG orgs
+> **note**: Payment threshold notifications are currently only supported for orgs being billed in arrears (PAYG)

@@ -24,7 +24,7 @@ Free users can configure up to two CASB integrations. You must upgrade to an Ent
 
 Cloudflare's API-driven [Cloud Access Security Broker ↗](https://www.cloudflare.com/learning/access-management/what-is-a-casb/) (CASB) integrates with SaaS applications and cloud environments to scan for misconfigurations, unauthorized user activity, [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), and other data security issues that can occur after a user has successfully logged in.
 
-For a list of available findings, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
+For a list of available findings, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). You can also send posture finding instances to external systems with [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/).
 
 ## Manage CASB integrations
 

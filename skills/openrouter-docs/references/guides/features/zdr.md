@@ -14,7 +14,7 @@ Note that a provider's general policy may differ from the specific policy for a 
   If OpenRouter is not able to establish or ascertain a clear policy for a provider or endpoint, we take a conservative stance and assume that the endpoint both retains and trains on data and mark it as such.
 </Note>
 
-A full list of providers and their data policies can be found [here](/docs/guides/privacy/logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
+A full list of providers and their data policies can be found [here](/docs/guides/privacy/provider-logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
 
 ## Per-Request ZDR Enforcement
 

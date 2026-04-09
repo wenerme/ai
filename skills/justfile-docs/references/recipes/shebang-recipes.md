@@ -44,7 +44,7 @@ Hola from a nushell script!
 Hello from ruby!
 ```
 
-On Unix-like operating systems, including Linux and MacOS, shebang recipes are
+On Unix-like operating systems, including Linux and macOS, shebang recipes are
 executed by saving the recipe body to a file in a temporary directory, marking
 the file as executable, and executing it. The OS then parses the shebang line
 into a command line and invokes it, including the path to the file. For

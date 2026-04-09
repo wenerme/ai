@@ -161,6 +161,30 @@ Add these to the same shell profile or project settings file where you set `ANTH
 
 Claude Code is optimized for Anthropic models and may not work correctly with other providers.
 
+## Fast Mode
+
+Anthropic's fast mode provides up to 2.5x faster output for Claude Opus 4.6 at premium pricing. When enabled, OpenRouter automatically routes your request to the Anthropic first-party provider and injects the required beta header.
+
+### Using `/fast` in Claude Code
+
+Claude Code has a built-in `/fast` command that toggles fast mode. When enabled, Claude Code sends `speed: "fast"` in its requests. OpenRouter fully supports this parameter — you just need to set the following environment variable:
+
+```bash
+export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
+```
+
+### Pricing
+
+Fast mode requests are billed at a multiplier on top of the model's standard token pricing. See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
+
+<Note>
+  If `speed: "fast"` is sent for a model that does not support fast mode, the parameter is silently ignored and the request proceeds at standard speed with standard pricing.
+</Note>
+
+### Routing behavior
+
+When `speed: "fast"` is present, OpenRouter restricts routing to the Anthropic first-party provider, since other providers (e.g. Amazon Bedrock, Google Vertex) do not support Anthropic's fast mode. If no Anthropic endpoints are available, the request proceeds normally without fast mode.
+
 ## Agent SDK
 
 The [Anthropic Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) lets you build AI agents programmatically using Python or TypeScript. Since the Agent SDK uses Claude Code as its runtime, you can connect it to OpenRouter using the same environment variables described above.

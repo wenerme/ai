@@ -12,7 +12,7 @@ foo := if "hello" == "goodbye" {
 }
 ```
 
-Which produce the following error when run:
+Which produces the following error when run:
 
 ```
 error: Call to function `error` failed: 123

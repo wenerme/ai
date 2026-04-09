@@ -132,7 +132,7 @@ This gives you a single API with unified billing while maintaining full control 
 Sovereign AI features are available to all OpenRouter users, with EU in-region routing available for enterprise customers. To get started:
 
 * [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/docs/guides/routing/provider-selection) to control where your requests are processed
-* Enable [ZDR](/docs/guides/features/zdr) and [data collection controls](/docs/guides/privacy/logging) for privacy compliance
+* Enable [ZDR](/docs/guides/features/zdr) and [data collection controls](/docs/guides/privacy/provider-logging) for privacy compliance
 * [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable EU in-region routing and discuss additional sovereign AI requirements
 
 For a complete enterprise setup guide, see the [Enterprise Quickstart](/docs/guides/get-started/enterprise-quickstart).

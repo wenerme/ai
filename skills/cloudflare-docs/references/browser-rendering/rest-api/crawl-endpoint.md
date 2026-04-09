@@ -307,7 +307,9 @@ A successful cancellation will return a `200 OK` status code. The job status wil
 
 ## Optional parameters
 
-The following optional parameters can be used in your crawl request, in addition to the required `url` parameter. For the full list, refer to the [API docs](https://developers.cloudflare.com/api/resources/browser%5Frendering/).
+The following optional parameters can be used in your crawl request, in addition to the required `url` parameter. These are parameters specific to the `/crawl` endpoint.
+
+When `render` is `true` (the default), crawl jobs also support all standard Browser Rendering parameters such as `rejectResourceTypes`, `rejectRequestPattern`, `cookies`, and `setExtraHTTPHeaders`. When `render` is `false`, only the crawl-specific parameters listed in the table below are supported. For the full list, refer to the [API reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/crawl/methods/create/).
 
 | Optional parameter           | Type             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -671,7 +673,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 ### Block unnecessary resources
 
-Speed up crawling by blocking images and media:
+Speed up crawling by blocking images and media. `rejectResourceTypes` is only available when `render` is `true` (the default).
 
 Terminal window
 

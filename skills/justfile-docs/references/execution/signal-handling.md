@@ -39,7 +39,7 @@ receives a fatal signal, `just` halts execution.
 `SIGINFO` is sent to all processes in the foreground process group when the
 user types `ctrl-t` on
 [BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution)-derived
-operating systems, including MacOS, but not Linux.
+operating systems, including macOS, but not Linux.
 
 `just` responds by printing a list of all child process IDs and
 commands<sup>1.41.0</sup>.

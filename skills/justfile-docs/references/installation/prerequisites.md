@@ -1,6 +1,6 @@
 ### Prerequisites
 
-`just` should run on any system with a reasonable `sh`, including Linux, MacOS,
+`just` should run on any system with a reasonable `sh`, including Linux, macOS,
 and the BSDs.
 
 #### Windows
@@ -38,5 +38,5 @@ You can also set the shell using command-line arguments. For example, to use
 PowerShell, launch `just` with `--shell powershell.exe --shell-arg -c`.
 
 (PowerShell is installed by default on Windows 7 SP1 and Windows Server 2008 R2
-S1 and later, and `cmd.exe` is quite fiddly, so PowerShell is recommended for
+SP1 and later, and `cmd.exe` is quite fiddly, so PowerShell is recommended for
 most Windows users.)

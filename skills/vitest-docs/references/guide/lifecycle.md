@@ -4,6 +4,8 @@ title: Test Run Lifecycle | Guide
 
 # Test Run Lifecycle
 
+> **tip**: Looking for a practical introduction to `beforeEach`, `afterEach`, and other hooks? See the [Setup and Teardown](/guide/learn/setup-teardown) tutorial.
+
 Understanding the test run lifecycle is essential for writing effective tests, debugging issues, and optimizing your test suite. This guide explains when and in what order different lifecycle phases occur in Vitest, from initialization to teardown.
 
 ## Overview

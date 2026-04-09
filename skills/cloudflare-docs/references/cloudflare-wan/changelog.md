@@ -18,6 +18,17 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-wan.xml) 
 
+## 2026-04-07
+
+  
+**Link aggregation (LACP) support for Cloudflare One Appliance**   
+
+Cloudflare One Appliance now supports Link Aggregation Control Protocol (LACP), allowing you to bundle up to six physical LAN ports into a single logical interface. Link aggregation increases available bandwidth and eliminates single points of failure on the LAN side of the appliance.
+
+This feature is available in beta on physical appliance hardware with the latest OS. No entitlement is required.
+
+To configure a Link Aggregation Group, refer to [Configure link aggregation groups](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/link-aggregation/).
+
 ## 2026-02-17
 
   

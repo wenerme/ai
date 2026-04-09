@@ -41,7 +41,7 @@ Optical Character Recognition (OCR) analyzes and interprets text within image fi
 
 OCR supports scanning `.jpg`/`.jpeg` and `.png` files between 4 KB and 1 MB in size. Text is encoded in UTF-8 format, including support for non-Latin characters.
 
-### AI context analysis Beta
+### AI context analysis
 
 Note
 

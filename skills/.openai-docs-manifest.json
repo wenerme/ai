@@ -1002,10 +1002,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"249cd5aef06662b0689a0a68bdcc9b52\"",
-    "lastModified": "Tue, 07 Apr 2026 00:16:59 GMT",
-    "size": 43982,
-    "updatedAt": "2026-04-07T00:17:32.087Z"
+    "etag": "W/\"dad204032cb157237016c24bb2bde06a\"",
+    "lastModified": "Thu, 09 Apr 2026 00:17:11 GMT",
+    "size": 43575,
+    "updatedAt": "2026-04-09T00:17:11.151Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
@@ -9370,10 +9370,10 @@
   "codex-docs/hooks.md": {
     "url": "https://developers.openai.com/codex/hooks.md",
     "skill": "codex-docs",
-    "etag": "W/\"e7029970d84187a3c8bb9513676cd6d1\"",
-    "lastModified": "Fri, 27 Mar 2026 00:21:09 GMT",
-    "size": 13776,
-    "updatedAt": "2026-03-27T00:21:09.085Z"
+    "etag": "W/\"5d4fcd0f25e0985856eda66d3ec1c78d\"",
+    "lastModified": "Thu, 09 Apr 2026 00:22:24 GMT",
+    "size": 14403,
+    "updatedAt": "2026-04-09T00:22:24.166Z"
   },
   "codex-docs/ide.md": {
     "url": "https://developers.openai.com/codex/ide.md",
@@ -9466,10 +9466,10 @@
   "codex-docs/noninteractive.md": {
     "url": "https://developers.openai.com/codex/noninteractive.md",
     "skill": "codex-docs",
-    "etag": "\"c80f1f4685c1722f0c52c7a00d201383\"",
-    "lastModified": "Mon, 09 Mar 2026 03:50:53 GMT",
-    "size": 8540,
-    "updatedAt": "2026-03-09T03:50:53.293Z"
+    "etag": "W/\"734304765558e003cd99f5856156a917\"",
+    "lastModified": "Thu, 09 Apr 2026 00:22:27 GMT",
+    "size": 11453,
+    "updatedAt": "2026-04-09T00:22:27.345Z"
   },
   "codex-docs/overview.md": {
     "url": "https://developers.openai.com/codex/overview.md",

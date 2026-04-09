@@ -10,7 +10,7 @@ interpolated into the format string.
 This can be combined with indented, triple quoted strings to emulate shell
 heredocs.
 
-Substitution complex strings into recipe bodies with `{…}` can also lead to
+Substituting complex strings into recipe bodies with `{{…}}` can also lead to
 trouble as it may be split by the shell into multiple arguments depending on
 the presence of whitespace and quotes. Exporting complex strings as environment
 variables and referring to them with `"$NAME"`, note the double quotes, can

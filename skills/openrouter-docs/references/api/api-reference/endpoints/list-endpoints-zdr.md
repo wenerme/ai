@@ -42,30 +42,35 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    PublicEndpointPricingPrompt:
+    PercentileStats:
       type: object
-      properties: {}
-      title: PublicEndpointPricingPrompt
-    PublicEndpointPricingCompletion:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingCompletion
-    PublicEndpointPricingRequest:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingRequest
-    PublicEndpointPricingImage:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingImage
-    PublicEndpointPricingImageToken:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingImageToken
-    PublicEndpointPricingImageOutput:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingImageOutput
+      properties:
+        p50:
+          type: number
+          format: double
+          description: Median (50th percentile)
+        p75:
+          type: number
+          format: double
+          description: 75th percentile
+        p90:
+          type: number
+          format: double
+          description: 90th percentile
+        p99:
+          type: number
+          format: double
+          description: 99th percentile
+      required:
+        - p50
+        - p75
+        - p90
+        - p99
+      description: >-
+        Latency percentiles in milliseconds over the last 30 minutes. Latency
+        measures time to first token. Only visible when authenticated with an
+        API key or cookie; returns null for unauthenticated requests.
+      title: PercentileStats
     PublicEndpointPricingAudio:
       type: object
       properties: {}
@@ -74,18 +79,26 @@ components:
       type: object
       properties: {}
       title: PublicEndpointPricingAudioOutput
+    PublicEndpointPricingCompletion:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingCompletion
+    PublicEndpointPricingImage:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingImage
+    PublicEndpointPricingImageOutput:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingImageOutput
+    PublicEndpointPricingImageToken:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingImageToken
     PublicEndpointPricingInputAudioCache:
       type: object
       properties: {}
       title: PublicEndpointPricingInputAudioCache
-    PublicEndpointPricingWebSearch:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingWebSearch
-    PublicEndpointPricingInternalReasoning:
-      type: object
-      properties: {}
-      title: PublicEndpointPricingInternalReasoning
     PublicEndpointPricingInputCacheRead:
       type: object
       properties: {}
@@ -94,41 +107,57 @@ components:
       type: object
       properties: {}
       title: PublicEndpointPricingInputCacheWrite
+    PublicEndpointPricingInternalReasoning:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingInternalReasoning
+    PublicEndpointPricingPrompt:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingPrompt
+    PublicEndpointPricingRequest:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingRequest
+    PublicEndpointPricingWebSearch:
+      type: object
+      properties: {}
+      title: PublicEndpointPricingWebSearch
     PublicEndpointPricing:
       type: object
       properties:
-        prompt:
-          $ref: '#/components/schemas/PublicEndpointPricingPrompt'
-        completion:
-          $ref: '#/components/schemas/PublicEndpointPricingCompletion'
-        request:
-          $ref: '#/components/schemas/PublicEndpointPricingRequest'
-        image:
-          $ref: '#/components/schemas/PublicEndpointPricingImage'
-        image_token:
-          $ref: '#/components/schemas/PublicEndpointPricingImageToken'
-        image_output:
-          $ref: '#/components/schemas/PublicEndpointPricingImageOutput'
         audio:
           $ref: '#/components/schemas/PublicEndpointPricingAudio'
         audio_output:
           $ref: '#/components/schemas/PublicEndpointPricingAudioOutput'
+        completion:
+          $ref: '#/components/schemas/PublicEndpointPricingCompletion'
+        discount:
+          type: number
+          format: double
+        image:
+          $ref: '#/components/schemas/PublicEndpointPricingImage'
+        image_output:
+          $ref: '#/components/schemas/PublicEndpointPricingImageOutput'
+        image_token:
+          $ref: '#/components/schemas/PublicEndpointPricingImageToken'
         input_audio_cache:
           $ref: '#/components/schemas/PublicEndpointPricingInputAudioCache'
-        web_search:
-          $ref: '#/components/schemas/PublicEndpointPricingWebSearch'
-        internal_reasoning:
-          $ref: '#/components/schemas/PublicEndpointPricingInternalReasoning'
         input_cache_read:
           $ref: '#/components/schemas/PublicEndpointPricingInputCacheRead'
         input_cache_write:
           $ref: '#/components/schemas/PublicEndpointPricingInputCacheWrite'
-        discount:
-          type: number
-          format: double
+        internal_reasoning:
+          $ref: '#/components/schemas/PublicEndpointPricingInternalReasoning'
+        prompt:
+          $ref: '#/components/schemas/PublicEndpointPricingPrompt'
+        request:
+          $ref: '#/components/schemas/PublicEndpointPricingRequest'
+        web_search:
+          $ref: '#/components/schemas/PublicEndpointPricingWebSearch'
       required:
-        - prompt
         - completion
+        - prompt
       title: PublicEndpointPricing
     ProviderName:
       type: string
@@ -214,6 +243,16 @@ components:
       type: object
       properties: {}
       title: PublicEndpointQuantization
+    EndpointStatus:
+      type: string
+      enum:
+        - '0'
+        - '-1'
+        - '-2'
+        - '-3'
+        - '-5'
+        - '-10'
+      title: EndpointStatus
     Parameter:
       type: string
       enum:
@@ -226,6 +265,7 @@ components:
         - presence_penalty
         - repetition_penalty
         - max_tokens
+        - max_completion_tokens
         - logit_bias
         - logprobs
         - top_logprobs
@@ -242,45 +282,6 @@ components:
         - web_search_options
         - verbosity
       title: Parameter
-    EndpointStatus:
-      type: string
-      enum:
-        - '0'
-        - '-1'
-        - '-2'
-        - '-3'
-        - '-5'
-        - '-10'
-      title: EndpointStatus
-    PercentileStats:
-      type: object
-      properties:
-        p50:
-          type: number
-          format: double
-          description: Median (50th percentile)
-        p75:
-          type: number
-          format: double
-          description: 75th percentile
-        p90:
-          type: number
-          format: double
-          description: 90th percentile
-        p99:
-          type: number
-          format: double
-          description: 99th percentile
-      required:
-        - p50
-        - p75
-        - p90
-        - p99
-      description: >-
-        Latency percentiles in milliseconds over the last 30 minutes. Latency
-        measures time to first token. Only visible when authenticated with an
-        API key or cookie; returns null for unauthenticated requests.
-      title: PercentileStats
     PublicEndpointThroughputLast30M:
       type: object
       properties:
@@ -309,33 +310,46 @@ components:
     PublicEndpoint:
       type: object
       properties:
-        name:
-          type: string
+        context_length:
+          type: integer
+        latency_last_30m:
+          $ref: '#/components/schemas/PercentileStats'
+        max_completion_tokens:
+          type: integer
+        max_prompt_tokens:
+          type: integer
         model_id:
           type: string
           description: The unique identifier for the model (permaslug)
         model_name:
           type: string
-        context_length:
-          type: integer
+        name:
+          type: string
         pricing:
           $ref: '#/components/schemas/PublicEndpointPricing'
         provider_name:
           $ref: '#/components/schemas/ProviderName'
-        tag:
-          type: string
         quantization:
           $ref: '#/components/schemas/PublicEndpointQuantization'
-        max_completion_tokens:
-          type: integer
-        max_prompt_tokens:
-          type: integer
+        status:
+          $ref: '#/components/schemas/EndpointStatus'
         supported_parameters:
           type: array
           items:
             $ref: '#/components/schemas/Parameter'
-        status:
-          $ref: '#/components/schemas/EndpointStatus'
+        supports_implicit_caching:
+          type: boolean
+        tag:
+          type: string
+        throughput_last_30m:
+          $ref: '#/components/schemas/PublicEndpointThroughputLast30M'
+        uptime_last_1d:
+          type: number
+          format: double
+          description: >-
+            Uptime percentage over the last 1 day, calculated as successful
+            requests / (successful + error requests) * 100. Rate-limited
+            requests are excluded. Returns null if insufficient data.
         uptime_last_30m:
           type: number
           format: double
@@ -346,37 +360,24 @@ components:
             Uptime percentage over the last 5 minutes, calculated as successful
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
-        uptime_last_1d:
-          type: number
-          format: double
-          description: >-
-            Uptime percentage over the last 1 day, calculated as successful
-            requests / (successful + error requests) * 100. Rate-limited
-            requests are excluded. Returns null if insufficient data.
-        supports_implicit_caching:
-          type: boolean
-        latency_last_30m:
-          $ref: '#/components/schemas/PercentileStats'
-        throughput_last_30m:
-          $ref: '#/components/schemas/PublicEndpointThroughputLast30M'
       required:
-        - name
-        - model_id
-        - model_name
         - context_length
-        - pricing
-        - provider_name
-        - tag
-        - quantization
+        - latency_last_30m
         - max_completion_tokens
         - max_prompt_tokens
+        - model_id
+        - model_name
+        - name
+        - pricing
+        - provider_name
+        - quantization
         - supported_parameters
+        - supports_implicit_caching
+        - tag
+        - throughput_last_30m
+        - uptime_last_1d
         - uptime_last_30m
         - uptime_last_5m
-        - uptime_last_1d
-        - supports_implicit_caching
-        - latency_last_30m
-        - throughput_last_30m
       description: Information about a specific model endpoint
       title: PublicEndpoint
     Endpoints_listEndpointsZdr_Response_200:

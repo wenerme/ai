@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Explore guides to resolve issues with Cloudflare Zero Trust integrations, including CASB and third-party SaaS applications.
+description: Explore guides to resolve issues with Cloudflare Zero Trust integrations, including CASB, webhooks, and third-party SaaS applications.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Troubleshooting
 
-Explore guides to resolve issues with Cloudflare Zero Trust integrations, including CASB and third-party SaaS applications.
+Explore guides to resolve issues with Cloudflare Zero Trust integrations, including CASB, webhooks, and third-party SaaS applications.
 
 * [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/casb/)
 * [ Troubleshoot integrations ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-integrations/)

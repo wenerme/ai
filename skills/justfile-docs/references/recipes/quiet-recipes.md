@@ -19,7 +19,7 @@ goodbye
 # all done!
 ```
 
-All recipes in a Justfile can be made quiet with `set quiet`:
+All recipes in a justfile can be made quiet with `set quiet`:
 
 ```just
 set quiet

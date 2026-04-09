@@ -110,7 +110,7 @@ Yes, contact our [Sales Team ↗](https://www.cloudflare.com/plans/enterprise/co
 
 ## Pricing for Media Transformations
 
-Media Transformations and Image Transformations use the same subscriptions and usage metrics.
+Media Transformations and [Image Transformations](https://developers.cloudflare.com/images/pricing/#images-transformed) use the same subscriptions and usage metrics.
 
 When transforming a video via URL:
 
@@ -122,7 +122,7 @@ When transforming a video via URL:
 When transforming assets via the Workers binding:
 
 * While binding Media Transformations to Workers Bindings is in beta, operations via the binding are not billed.
-* After beta, the costs for transforming via bindings will be the same as for transforming via URL, but all operations will be billed individually, not based on uniqueness. Cache or store results for cost optimization and performance.
+* After beta, the costs for transforming via bindings will be the same as for transforming via URL, but **all operations will be billed individually,** not based on uniqueness. Cache or store results for cost optimization and performance.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/pricing/","name":"Pricing"}}]}

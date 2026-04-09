@@ -80,7 +80,7 @@ cc main.c
 
 #### Running Recipes at the End of a Recipe
 
-Normal dependencies of a recipes always run before a recipe starts. That is to
+Normal dependencies of a recipe always run before a recipe starts. That is to
 say, the dependee always runs before the depender. These dependencies are
 called "prior dependencies".
 

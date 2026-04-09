@@ -21,7 +21,7 @@ The `provider` object can contain the following fields:
 | `max_price`                | object            | -       | The maximum pricing you want to pay for this request. [Learn more](#maximum-price)                                                                               |
 
 <Note title="EU data residency (Enterprise)">
-  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/docs/guides/privacy/logging#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
+  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
 </Note>
 
 ## Price-Based Load Balancing (Default Strategy)

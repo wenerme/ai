@@ -40,7 +40,7 @@ _build version:
 build: (_build target)
 ```
 
-A command's arguments can be passed to dependency by putting the dependency in
+A command's arguments can be passed to a dependency by putting the dependency in
 parentheses along with the arguments:
 
 ```just
