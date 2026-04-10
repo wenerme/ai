@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/api-keys/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/api-keys/llms-full.txt.
+
 # Get current API key
 
 GET https://openrouter.ai/api/v1/key
@@ -56,49 +58,24 @@ components:
     KeyGetResponsesContentApplicationJsonSchemaDataRateLimit:
       type: object
       properties:
-        requests:
-          type: integer
-          description: Number of requests allowed per interval
         interval:
           type: string
           description: Rate limit interval
         note:
           type: string
           description: Note about the rate limit
+        requests:
+          type: integer
+          description: Number of requests allowed per interval
       required:
-        - requests
         - interval
         - note
+        - requests
       description: Legacy rate limit information about a key. Will always return -1.
       title: KeyGetResponsesContentApplicationJsonSchemaDataRateLimit
     KeyGetResponsesContentApplicationJsonSchemaData:
       type: object
       properties:
-        label:
-          type: string
-          description: Human-readable label for the API key
-        limit:
-          type: number
-          format: double
-          description: Spending limit for the API key in USD
-        usage:
-          type: number
-          format: double
-          description: Total OpenRouter credit usage (in USD) for the API key
-        usage_daily:
-          type: number
-          format: double
-          description: OpenRouter credit usage (in USD) for the current UTC day
-        usage_weekly:
-          type: number
-          format: double
-          description: >-
-            OpenRouter credit usage (in USD) for the current UTC week
-            (Monday-Sunday)
-        usage_monthly:
-          type: number
-          format: double
-          description: OpenRouter credit usage (in USD) for the current UTC month
         byok_usage:
           type: number
           format: double
@@ -107,16 +84,35 @@ components:
           type: number
           format: double
           description: External BYOK usage (in USD) for the current UTC day
+        byok_usage_monthly:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for current UTC month
         byok_usage_weekly:
           type: number
           format: double
           description: >-
             External BYOK usage (in USD) for the current UTC week
             (Monday-Sunday)
-        byok_usage_monthly:
-          type: number
-          format: double
-          description: External BYOK usage (in USD) for current UTC month
+        creator_user_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The user ID of the key creator. For organization-owned keys, this is
+            the member who created the key. For individual users, this is the
+            user's own ID.
+        expires_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            ISO 8601 UTC timestamp when the API key expires, or null if no
+            expiration
+        include_byok_in_limit:
+          type: boolean
+          description: Whether to include external BYOK usage in the credit limit
         is_free_tier:
           type: boolean
           description: Whether this is a free tier API key
@@ -126,6 +122,13 @@ components:
         is_provisioning_key:
           type: boolean
           description: Whether this is a management key
+        label:
+          type: string
+          description: Human-readable label for the API key
+        limit:
+          type: number
+          format: double
+          description: Spending limit for the API key in USD
         limit_remaining:
           type: number
           format: double
@@ -135,48 +138,47 @@ components:
             - string
             - 'null'
           description: Type of limit reset for the API key
-        include_byok_in_limit:
-          type: boolean
-          description: Whether to include external BYOK usage in the credit limit
-        expires_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            ISO 8601 UTC timestamp when the API key expires, or null if no
-            expiration
-        creator_user_id:
-          type:
-            - string
-            - 'null'
-          description: >-
-            The user ID of the key creator. For organization-owned keys, this is
-            the member who created the key. For individual users, this is the
-            user's own ID.
         rate_limit:
           $ref: >-
             #/components/schemas/KeyGetResponsesContentApplicationJsonSchemaDataRateLimit
           description: Legacy rate limit information about a key. Will always return -1.
+        usage:
+          type: number
+          format: double
+          description: Total OpenRouter credit usage (in USD) for the API key
+        usage_daily:
+          type: number
+          format: double
+          description: OpenRouter credit usage (in USD) for the current UTC day
+        usage_monthly:
+          type: number
+          format: double
+          description: OpenRouter credit usage (in USD) for the current UTC month
+        usage_weekly:
+          type: number
+          format: double
+          description: >-
+            OpenRouter credit usage (in USD) for the current UTC week
+            (Monday-Sunday)
       required:
-        - label
-        - limit
-        - usage
-        - usage_daily
-        - usage_weekly
-        - usage_monthly
         - byok_usage
         - byok_usage_daily
-        - byok_usage_weekly
         - byok_usage_monthly
+        - byok_usage_weekly
+        - creator_user_id
+        - include_byok_in_limit
         - is_free_tier
         - is_management_key
         - is_provisioning_key
+        - label
+        - limit
         - limit_remaining
         - limit_reset
-        - include_byok_in_limit
-        - creator_user_id
         - rate_limit
+        - usage
+        - usage_daily
+        - usage_monthly
+        - usage_weekly
       description: Current API key information
       title: KeyGetResponsesContentApplicationJsonSchemaData
     API Keys_getCurrentKey_Response_200:

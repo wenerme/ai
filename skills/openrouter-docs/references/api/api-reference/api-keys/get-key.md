@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/api-keys/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/api-keys/llms-full.txt.
+
 # Get a single API key
 
 GET https://openrouter.ai/api/v1/keys/{hash}
@@ -74,18 +76,55 @@ components:
     KeysHashGetResponsesContentApplicationJsonSchemaData:
       type: object
       properties:
-        hash:
+        byok_usage:
+          type: number
+          format: double
+          description: Total external BYOK usage (in USD) for the API key
+        byok_usage_daily:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for the current UTC day
+        byok_usage_monthly:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for current UTC month
+        byok_usage_weekly:
+          type: number
+          format: double
+          description: >-
+            External BYOK usage (in USD) for the current UTC week
+            (Monday-Sunday)
+        created_at:
           type: string
-          description: Unique hash identifier for the API key
-        name:
-          type: string
-          description: Name of the API key
-        label:
-          type: string
-          description: Human-readable label for the API key
+          description: ISO 8601 timestamp of when the API key was created
+        creator_user_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The user ID of the key creator. For organization-owned keys, this is
+            the member who created the key. For individual users, this is the
+            user's own ID.
         disabled:
           type: boolean
           description: Whether the API key is disabled
+        expires_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            ISO 8601 UTC timestamp when the API key expires, or null if no
+            expiration
+        hash:
+          type: string
+          description: Unique hash identifier for the API key
+        include_byok_in_limit:
+          type: boolean
+          description: Whether to include external BYOK usage in the credit limit
+        label:
+          type: string
+          description: Human-readable label for the API key
         limit:
           type: number
           format: double
@@ -99,9 +138,14 @@ components:
             - string
             - 'null'
           description: Type of limit reset for the API key
-        include_byok_in_limit:
-          type: boolean
-          description: Whether to include external BYOK usage in the credit limit
+        name:
+          type: string
+          description: Name of the API key
+        updated_at:
+          type:
+            - string
+            - 'null'
+          description: ISO 8601 timestamp of when the API key was last updated
         usage:
           type: number
           format: double
@@ -110,78 +154,36 @@ components:
           type: number
           format: double
           description: OpenRouter credit usage (in USD) for the current UTC day
+        usage_monthly:
+          type: number
+          format: double
+          description: OpenRouter credit usage (in USD) for the current UTC month
         usage_weekly:
           type: number
           format: double
           description: >-
             OpenRouter credit usage (in USD) for the current UTC week
             (Monday-Sunday)
-        usage_monthly:
-          type: number
-          format: double
-          description: OpenRouter credit usage (in USD) for the current UTC month
-        byok_usage:
-          type: number
-          format: double
-          description: Total external BYOK usage (in USD) for the API key
-        byok_usage_daily:
-          type: number
-          format: double
-          description: External BYOK usage (in USD) for the current UTC day
-        byok_usage_weekly:
-          type: number
-          format: double
-          description: >-
-            External BYOK usage (in USD) for the current UTC week
-            (Monday-Sunday)
-        byok_usage_monthly:
-          type: number
-          format: double
-          description: External BYOK usage (in USD) for current UTC month
-        created_at:
-          type: string
-          description: ISO 8601 timestamp of when the API key was created
-        updated_at:
-          type:
-            - string
-            - 'null'
-          description: ISO 8601 timestamp of when the API key was last updated
-        expires_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            ISO 8601 UTC timestamp when the API key expires, or null if no
-            expiration
-        creator_user_id:
-          type:
-            - string
-            - 'null'
-          description: >-
-            The user ID of the key creator. For organization-owned keys, this is
-            the member who created the key. For individual users, this is the
-            user's own ID.
       required:
-        - hash
-        - name
-        - label
+        - byok_usage
+        - byok_usage_daily
+        - byok_usage_monthly
+        - byok_usage_weekly
+        - created_at
+        - creator_user_id
         - disabled
+        - hash
+        - include_byok_in_limit
+        - label
         - limit
         - limit_remaining
         - limit_reset
-        - include_byok_in_limit
+        - name
+        - updated_at
         - usage
         - usage_daily
-        - usage_weekly
         - usage_monthly
-        - byok_usage
-        - byok_usage_daily
-        - byok_usage_weekly
-        - byok_usage_monthly
-        - created_at
-        - updated_at
-        - creator_user_id
+        - usage_weekly
       description: The API key information
       title: KeysHashGetResponsesContentApplicationJsonSchemaData
     API Keys_getKey_Response_200:

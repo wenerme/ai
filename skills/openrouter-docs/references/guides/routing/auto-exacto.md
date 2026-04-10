@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/routing/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/routing/llms-full.txt.
+
 Auto Exacto is a routing step that automatically optimizes provider ordering for all requests that include tools. It runs by default on every tool-calling request, requiring no configuration.
 
 ## How It Works

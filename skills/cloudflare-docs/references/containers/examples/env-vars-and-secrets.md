@@ -20,7 +20,7 @@ Copy page
 
 Pass in environment variables and secrets to your container
 
-Environment variables can be passed into a Container using the `envVars` field in the [Container](https://developers.cloudflare.com/containers/container-package) class, or by setting manually when the Container starts.
+Environment variables can be passed into a Container using the `envVars` field in the [Container](https://developers.cloudflare.com/containers/container-class/) class, or by setting manually when the Container starts.
 
 Secrets can be passed into a Container by using [Worker Secrets](https://developers.cloudflare.com/workers/configuration/secrets/)or the [Secret Store](https://developers.cloudflare.com/secrets-store/integrations/workers/), then passing them into the Container as environment variables.
 
@@ -119,8 +119,8 @@ For full details on how to create secrets, see the [Workers Secrets documentatio
 
 Next, we need to add bindings to access our secrets, KV values, and environment variables in Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-4021)
-* [  wrangler.toml ](#tab-panel-4022)
+* [  wrangler.jsonc ](#tab-panel-4059)
+* [  wrangler.toml ](#tab-panel-4060)
 
 JSONC
 

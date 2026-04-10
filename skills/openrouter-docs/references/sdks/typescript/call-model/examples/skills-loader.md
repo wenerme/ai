@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/typescript/call-model/examples/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/typescript/call-model/examples/llms-full.txt.
+
 ## Overview
 
 This example shows how to build encapsulated, self-managing tools that inject domain-specific context into conversations. When a skill is loaded, it automatically enriches subsequent turns with specialized instructions.

@@ -26,19 +26,19 @@ Deploy your Pages project by connecting to [your Git provider](https://developer
 
 ## Features
 
-### Pages Functions
+###  Pages Functions 
 
 Use Pages Functions to deploy server-side code to enable dynamic functionality without running a dedicated server.
 
 [ Use Pages Functions ](https://developers.cloudflare.com/pages/functions/) 
 
-### Rollbacks
+###  Rollbacks 
 
 Rollbacks allow you to instantly revert your project to a previous production deployment.
 
 [ Use Rollbacks ](https://developers.cloudflare.com/pages/configuration/rollbacks/) 
 
-### Redirects
+###  Redirects 
 
 Set up redirects for your Cloudflare Pages project.
 

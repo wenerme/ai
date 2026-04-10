@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/python/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/python/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -13,12 +15,59 @@ API key management endpoints
 
 ### Available Operations
 
+* [get\_current\_key\_metadata](#get_current_key_metadata) - Get current API key
 * [list](#list) - List API keys
 * [create](#create) - Create a new API key
-* [update](#update) - Update an API key
 * [delete](#delete) - Delete an API key
 * [get](#get) - Get a single API key
-* [get\_current\_key\_metadata](#get_current_key_metadata) - Get current API key
+* [update](#update) - Update an API key
+
+## get\_current\_key\_metadata
+
+Get information on the API key associated with the current authentication session
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="getCurrentKey" method="get" path="/key" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.api_keys.get_current_key_metadata()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+
+### Response
+
+**[operations.GetCurrentKeyResponse](/docs/sdks/python/api-reference/operations/getcurrentkeyresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
 ## list
 
@@ -53,7 +102,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `include_disabled`         | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Whether to include disabled API keys in the response                                                                                                        | false   |
+| `include_disabled`         | *Optional\[bool]*                                                  | :heavy\_minus\_sign: | Whether to include disabled API keys in the response                                                                                                        | false   |
 | `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of API keys to skip for pagination                                                                                                                   | 0       |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 
@@ -90,7 +139,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.api_keys.create(name="My New API Key", limit=50, limit_reset="monthly", include_byok_in_limit=True, expires_at=parse_datetime("2027-12-31T23:59:59Z"))
+    res = open_router.api_keys.create(name="My New API Key", expires_at=parse_datetime("2027-12-31T23:59:59Z"), include_byok_in_limit=True, limit=50, limit_reset="monthly")
 
     # Handle response
     print(res)
@@ -105,11 +154,11 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />           |                                   |
 | `x_open_router_title`      | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                    |                                   |
 | `x_open_router_categories` | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                           |                                   |
+| `creator_user_id`          | *OptionalNullable\[str]*                                                                        | :heavy\_minus\_sign: | Optional user ID of the key creator. Only meaningful for organization-owned keys where a specific member is creating the key.                                         | user\_2dHFtVWx2n56w6HkM0000000000 |
+| `expires_at`               | [date](https://docs.python.org/3/library/datetime.html#date-objects)                            | :heavy\_minus\_sign: | Optional ISO 8601 UTC timestamp when the API key should expire. Must be UTC, other timezones will be rejected                                                         | 2027-12-31T23:59:59Z              |
+| `include_byok_in_limit`    | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                            | true                              |
 | `limit`                    | *Optional\[float]*                                                                              | :heavy\_minus\_sign: | Optional spending limit for the API key in USD                                                                                                                        | 50                                |
 | `limit_reset`              | [OptionalNullable\[operations.CreateKeysLimitReset\]](../../operations/createkeyslimitreset.md) | :heavy\_minus\_sign: | Type of limit reset for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | monthly                           |
-| `include_byok_in_limit`    | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                            | true                              |
-| `expires_at`               | [date](https://docs.python.org/3/library/datetime.html#date-objects)                            | :heavy\_minus\_sign: | Optional ISO 8601 UTC timestamp when the API key should expire. Must be UTC, other timezones will be rejected                                                         | 2027-12-31T23:59:59Z              |
-| `creator_user_id`          | *OptionalNullable\[str]*                                                                        | :heavy\_minus\_sign: | Optional user ID of the key creator. Only meaningful for organization-owned keys where a specific member is creating the key.                                         | user\_2dHFtVWx2n56w6HkM0000000000 |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                   |                                   |
 
 ### Response
@@ -122,62 +171,6 @@ with OpenRouter(
 | ----------------------------------- | ----------- | ---------------- |
 | errors.BadRequestResponseError      | 400         | application/json |
 | errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-## update
-
-Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    http_referer="<value>",
-    x_open_router_title="<value>",
-    x_open_router_categories="<value>",
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.update(hash="f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943", name="Updated API Key Name", disabled=False, limit=75, limit_reset="daily", include_byok_in_limit=True)
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                  | Type                                                                                            | Required             | Description                                                                                                                                                            | Example                                                          |
-| -------------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `hash`                     | *str*                                                                                           | :heavy\_check\_mark: | The hash identifier of the API key to update                                                                                                                           | f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943 |
-| `http_referer`             | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />            |                                                                  |
-| `x_open_router_title`      | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                     |                                                                  |
-| `x_open_router_categories` | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                            |                                                                  |
-| `name`                     | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | New name for the API key                                                                                                                                               | Updated API Key Name                                             |
-| `disabled`                 | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to disable the API key                                                                                                                                         | false                                                            |
-| `limit`                    | *Optional\[float]*                                                                              | :heavy\_minus\_sign: | New spending limit for the API key in USD                                                                                                                              | 75                                                               |
-| `limit_reset`              | [OptionalNullable\[operations.UpdateKeysLimitReset\]](../../operations/updatekeyslimitreset.md) | :heavy\_minus\_sign: | New limit reset type for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | daily                                                            |
-| `include_byok_in_limit`    | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                             | true                                                             |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                    |                                                                  |
-
-### Response
-
-**[operations.UpdateKeysResponse](/docs/sdks/python/api-reference/operations/updatekeysresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
 | errors.TooManyRequestsResponseError | 429         | application/json |
 | errors.InternalServerResponseError  | 500         | application/json |
 | errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
@@ -282,13 +275,13 @@ with OpenRouter(
 | errors.InternalServerResponseError  | 500         | application/json |
 | errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
 
-## get\_current\_key\_metadata
+## update
 
-Get information on the API key associated with the current authentication session
+Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
-{/* UsageSnippet language="python" operationID="getCurrentKey" method="get" path="/key" */}
+{/* UsageSnippet language="python" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
 
 ```python
 from openrouter import OpenRouter
@@ -301,7 +294,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.api_keys.get_current_key_metadata()
+    res = open_router.api_keys.update(hash="f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943", disabled=False, include_byok_in_limit=True, limit=75, limit_reset="daily", name="Updated API Key Name")
 
     # Handle response
     print(res)
@@ -310,21 +303,30 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 |
-| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
-| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
-| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+| Parameter                  | Type                                                                                            | Required             | Description                                                                                                                                                            | Example                                                          |
+| -------------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `hash`                     | *str*                                                                                           | :heavy\_check\_mark: | The hash identifier of the API key to update                                                                                                                           | f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943 |
+| `http_referer`             | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />            |                                                                  |
+| `x_open_router_title`      | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                     |                                                                  |
+| `x_open_router_categories` | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                            |                                                                  |
+| `disabled`                 | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to disable the API key                                                                                                                                         | false                                                            |
+| `include_byok_in_limit`    | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                             | true                                                             |
+| `limit`                    | *Optional\[float]*                                                                              | :heavy\_minus\_sign: | New spending limit for the API key in USD                                                                                                                              | 75                                                               |
+| `limit_reset`              | [OptionalNullable\[operations.UpdateKeysLimitReset\]](../../operations/updatekeyslimitreset.md) | :heavy\_minus\_sign: | New limit reset type for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | daily                                                            |
+| `name`                     | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | New name for the API key                                                                                                                                               | Updated API Key Name                                             |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                    |                                                                  |
 
 ### Response
 
-**[operations.GetCurrentKeyResponse](/docs/sdks/python/api-reference/operations/getcurrentkeyresponse)**
+**[operations.UpdateKeysResponse](/docs/sdks/python/api-reference/operations/updatekeysresponse)**
 
 ### Errors
 
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError      | 400         | application/json |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.NotFoundResponseError        | 404         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |

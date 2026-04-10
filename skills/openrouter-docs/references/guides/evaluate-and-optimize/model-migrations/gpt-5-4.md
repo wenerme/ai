@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/llms-full.txt.
+
 ## What's New
 
 GPT-5.4, GPT-5.4 Pro, and GPT-5.3 Codex introduce the

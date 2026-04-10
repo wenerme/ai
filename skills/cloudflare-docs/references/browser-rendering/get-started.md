@@ -23,15 +23,17 @@ Browser Rendering offers multiple integration methods depending on your use case
 * **[REST API](https://developers.cloudflare.com/browser-rendering/rest-api/)**: Simple HTTP endpoints for stateless tasks like screenshots, PDFs, and scraping.
 * **[Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/)**: Full browser automation within Workers using [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), or [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/).
 
-| Use case                          | Recommended                                                                                                                                                  | Why                                               |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| Simple screenshot, PDF, or scrape | [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/)                                                                                    | No code deployment; single HTTP request           |
-| Browser automation                | [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/)                                                                                | Full control with built-in tracing and assertions |
-| Porting existing scripts          | [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) or [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/) | Minimal code changes from standard libraries      |
-| AI-powered data extraction        | [JSON endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/)                                                                 | Structured data via natural language prompts      |
-| Site-wide crawling                | [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/)                                                               | Multi-page content extraction with async results  |
-| AI agent browsing                 | [Playwright MCP](https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp/)                                                             | LLMs control browsers via MCP                     |
-| Resilient scraping                | [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/)                                                                                  | AI finds elements by intent, not selectors        |
+| Use case                                    | Recommended                                                                                                                                                                         | Why                                                              |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Simple screenshot, PDF, or scrape           | [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/)                                                                                                           | No code deployment; single HTTP request                          |
+| Browser automation                          | [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/)                                                                                                       | Full control with built-in tracing and assertions                |
+| Porting existing scripts                    | [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) or [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/)                        | Minimal code changes from standard libraries                     |
+| AI-powered data extraction                  | [JSON endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/)                                                                                        | Structured data via natural language prompts                     |
+| AI agent browsing                           | [Playwright MCP](https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp/) or [CDP MCP](https://developers.cloudflare.com/browser-rendering/cdp/mcp-clients/) | LLMs control browsers via MCP                                    |
+| Site-wide crawling                          | [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/)                                                                                      | Multi-page content extraction with async results                 |
+| AI agent browsing                           | [Playwright MCP](https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp/)                                                                                    | LLMs control browsers via MCP                                    |
+| Resilient scraping                          | [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/)                                                                                                         | AI finds elements by intent, not selectors                       |
+| Direct browser control from any environment | [CDP](https://developers.cloudflare.com/browser-rendering/cdp/)                                                                                                                     | WebSocket access from local machines, CI/CD, or external servers |
 
 ## REST API
 
@@ -177,7 +179,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-06",
+  "compatibility_date": "2026-04-09",
 
   "compatibility_flags": [
 
@@ -222,7 +224,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-06"
+compatibility_date = "2026-04-09"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -423,6 +425,7 @@ To take your first screenshot, go to the following URL:
 
 * Check out all the [REST API endpoints](https://developers.cloudflare.com/browser-rendering/rest-api/)
 * Try out the [Playwright MCP](https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp/)
+* Connect from any environment using [CDP](https://developers.cloudflare.com/browser-rendering/cdp/)
 * Learn more about Browser Rendering [limits](https://developers.cloudflare.com/browser-rendering/limits/) and [pricing](https://developers.cloudflare.com/browser-rendering/pricing/)
 
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com/).

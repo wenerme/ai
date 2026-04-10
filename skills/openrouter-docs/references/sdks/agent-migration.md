@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/llms-full.txt.
+
 {/* banner:start */}
 
 <Tip>

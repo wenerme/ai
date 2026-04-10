@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/generations/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/generations/llms-full.txt.
+
 # Get request & usage metadata for a generation
 
 GET https://openrouter.ai/api/v1/generation
@@ -199,12 +201,19 @@ components:
     ProviderResponse:
       type: object
       properties:
-        id:
-          type: string
-          description: Upstream provider response identifier
         endpoint_id:
           type: string
           description: Internal endpoint identifier
+        id:
+          type: string
+          description: Upstream provider response identifier
+        is_byok:
+          type: boolean
+          description: Whether the request used a bring-your-own-key
+        latency:
+          type: number
+          format: double
+          description: Response latency in milliseconds
         model_permaslug:
           type: string
           description: Canonical model slug
@@ -217,13 +226,6 @@ components:
             - 'null'
           format: double
           description: HTTP status code from the provider
-        latency:
-          type: number
-          format: double
-          description: Response latency in milliseconds
-        is_byok:
-          type: boolean
-          description: Whether the request used a bring-your-own-key
       required:
         - status
       description: Details of a provider response for a generation attempt
@@ -231,131 +233,103 @@ components:
     GenerationGetResponsesContentApplicationJsonSchemaData:
       type: object
       properties:
-        id:
-          type: string
-          description: Unique identifier for the generation
-        upstream_id:
-          type:
-            - string
-            - 'null'
-          description: Upstream provider's identifier for this generation
-        total_cost:
-          type: number
-          format: double
-          description: Total cost of the generation in USD
-        cache_discount:
-          type: number
-          format: double
-          description: Discount applied due to caching
-        upstream_inference_cost:
-          type: number
-          format: double
-          description: Cost charged by the upstream provider
-        created_at:
-          type: string
-          description: ISO 8601 timestamp of when the generation was created
-        model:
-          type: string
-          description: Model used for the generation
-        app_id:
-          type: integer
-          description: ID of the app that made the request
-        streamed:
-          type:
-            - boolean
-            - 'null'
-          description: Whether the response was streamed
-        cancelled:
-          type:
-            - boolean
-            - 'null'
-          description: Whether the generation was cancelled
-        provider_name:
-          type:
-            - string
-            - 'null'
-          description: Name of the provider that served the request
-        latency:
-          type: number
-          format: double
-          description: Total latency in milliseconds
-        moderation_latency:
-          type: number
-          format: double
-          description: Moderation latency in milliseconds
-        generation_time:
-          type: number
-          format: double
-          description: Time taken for generation in milliseconds
-        finish_reason:
-          type:
-            - string
-            - 'null'
-          description: Reason the generation finished
-        tokens_prompt:
-          type: integer
-          description: Number of tokens in the prompt
-        tokens_completion:
-          type: integer
-          description: Number of tokens in the completion
-        native_tokens_prompt:
-          type: integer
-          description: Native prompt tokens as reported by provider
-        native_tokens_completion:
-          type: integer
-          description: Native completion tokens as reported by provider
-        native_tokens_completion_images:
-          type: integer
-          description: Native completion image tokens as reported by provider
-        native_tokens_reasoning:
-          type: integer
-          description: Native reasoning tokens as reported by provider
-        native_tokens_cached:
-          type: integer
-          description: Native cached tokens as reported by provider
-        num_media_prompt:
-          type: integer
-          description: Number of media items in the prompt
-        num_input_audio_prompt:
-          type: integer
-          description: Number of audio inputs in the prompt
-        num_media_completion:
-          type: integer
-          description: Number of media items in the completion
-        num_search_results:
-          type: integer
-          description: Number of search results included
-        origin:
-          type: string
-          description: Origin URL of the request
-        usage:
-          type: number
-          format: double
-          description: Usage amount in USD
-        is_byok:
-          type: boolean
-          description: Whether this used bring-your-own-key
-        native_finish_reason:
-          type:
-            - string
-            - 'null'
-          description: Native finish reason as reported by provider
-        external_user:
-          type:
-            - string
-            - 'null'
-          description: External user identifier
         api_type:
           oneOf:
             - $ref: >-
                 #/components/schemas/GenerationGetResponsesContentApplicationJsonSchemaDataApiType
             - type: 'null'
           description: Type of API used for the generation
-        router:
+        app_id:
+          type: integer
+          description: ID of the app that made the request
+        cache_discount:
+          type: number
+          format: double
+          description: Discount applied due to caching
+        cancelled:
+          type:
+            - boolean
+            - 'null'
+          description: Whether the generation was cancelled
+        created_at:
+          type: string
+          description: ISO 8601 timestamp of when the generation was created
+        external_user:
           type:
             - string
             - 'null'
-          description: Router used for the request (e.g., openrouter/auto)
+          description: External user identifier
+        finish_reason:
+          type:
+            - string
+            - 'null'
+          description: Reason the generation finished
+        generation_time:
+          type: number
+          format: double
+          description: Time taken for generation in milliseconds
+        http_referer:
+          type:
+            - string
+            - 'null'
+          description: Referer header from the request
+        id:
+          type: string
+          description: Unique identifier for the generation
+        is_byok:
+          type: boolean
+          description: Whether this used bring-your-own-key
+        latency:
+          type: number
+          format: double
+          description: Total latency in milliseconds
+        model:
+          type: string
+          description: Model used for the generation
+        moderation_latency:
+          type: number
+          format: double
+          description: Moderation latency in milliseconds
+        native_finish_reason:
+          type:
+            - string
+            - 'null'
+          description: Native finish reason as reported by provider
+        native_tokens_cached:
+          type: integer
+          description: Native cached tokens as reported by provider
+        native_tokens_completion:
+          type: integer
+          description: Native completion tokens as reported by provider
+        native_tokens_completion_images:
+          type: integer
+          description: Native completion image tokens as reported by provider
+        native_tokens_prompt:
+          type: integer
+          description: Native prompt tokens as reported by provider
+        native_tokens_reasoning:
+          type: integer
+          description: Native reasoning tokens as reported by provider
+        num_input_audio_prompt:
+          type: integer
+          description: Number of audio inputs in the prompt
+        num_media_completion:
+          type: integer
+          description: Number of media items in the completion
+        num_media_prompt:
+          type: integer
+          description: Number of media items in the prompt
+        num_search_results:
+          type: integer
+          description: Number of search results included
+        origin:
+          type: string
+          description: Origin URL of the request
+        provider_name:
+          type:
+            - string
+            - 'null'
+          description: Name of the provider that served the request
         provider_responses:
           type:
             - array
@@ -365,63 +339,91 @@ components:
           description: >-
             List of provider responses for this generation, including fallback
             attempts
-        user_agent:
-          type:
-            - string
-            - 'null'
-          description: User-Agent header from the request
-        http_referer:
-          type:
-            - string
-            - 'null'
-          description: Referer header from the request
         request_id:
           type:
             - string
             - 'null'
           description: Unique identifier grouping all generations from a single API request
+        router:
+          type:
+            - string
+            - 'null'
+          description: Router used for the request (e.g., openrouter/auto)
         session_id:
           type:
             - string
             - 'null'
           description: Session identifier grouping multiple generations in the same session
+        streamed:
+          type:
+            - boolean
+            - 'null'
+          description: Whether the response was streamed
+        tokens_completion:
+          type: integer
+          description: Number of tokens in the completion
+        tokens_prompt:
+          type: integer
+          description: Number of tokens in the prompt
+        total_cost:
+          type: number
+          format: double
+          description: Total cost of the generation in USD
+        upstream_id:
+          type:
+            - string
+            - 'null'
+          description: Upstream provider's identifier for this generation
+        upstream_inference_cost:
+          type: number
+          format: double
+          description: Cost charged by the upstream provider
+        usage:
+          type: number
+          format: double
+          description: Usage amount in USD
+        user_agent:
+          type:
+            - string
+            - 'null'
+          description: User-Agent header from the request
       required:
-        - id
-        - upstream_id
-        - total_cost
-        - cache_discount
-        - upstream_inference_cost
-        - created_at
-        - model
+        - api_type
         - app_id
-        - streamed
+        - cache_discount
         - cancelled
-        - provider_name
-        - latency
-        - moderation_latency
-        - generation_time
+        - created_at
+        - external_user
         - finish_reason
-        - tokens_prompt
-        - tokens_completion
-        - native_tokens_prompt
+        - generation_time
+        - http_referer
+        - id
+        - is_byok
+        - latency
+        - model
+        - moderation_latency
+        - native_finish_reason
+        - native_tokens_cached
         - native_tokens_completion
         - native_tokens_completion_images
+        - native_tokens_prompt
         - native_tokens_reasoning
-        - native_tokens_cached
-        - num_media_prompt
         - num_input_audio_prompt
         - num_media_completion
+        - num_media_prompt
         - num_search_results
         - origin
-        - usage
-        - is_byok
-        - native_finish_reason
-        - external_user
-        - api_type
-        - router
+        - provider_name
         - provider_responses
+        - router
+        - streamed
+        - tokens_completion
+        - tokens_prompt
+        - total_cost
+        - upstream_id
+        - upstream_inference_cost
+        - usage
         - user_agent
-        - http_referer
       description: Generation data
       title: GenerationGetResponsesContentApplicationJsonSchemaData
     Generations_getGeneration_Response_200:

@@ -30,13 +30,13 @@ Learn how to [get started](https://developers.cloudflare.com/byoip/get-started/)
 
 ## Features
 
-### Service bindings
+###  Service bindings 
 
 Control whether traffic destined for a given IP address is routed to Magic Transit, CDN, or Spectrum.
 
 [ Use Service bindings ](https://developers.cloudflare.com/byoip/service-bindings/) 
 
-### Address maps
+###  Address maps 
 
 Specify which IP addresses should be mapped to DNS records when they are proxied through Cloudflare.
 

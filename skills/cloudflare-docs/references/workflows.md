@@ -98,25 +98,25 @@ export class ImageProcessingWorkflow extends WorkflowEntrypoint {
 
 ## Features
 
-### Durable step execution
+###  Durable step execution 
 
 Break complex operations into durable steps with automatic retries and error handling.
 
 [ Learn about steps ](https://developers.cloudflare.com/workflows/build/workers-api/) 
 
-### Sleep and scheduling
+###  Sleep and scheduling 
 
 Pause workflows for seconds, hours, or days with `step.sleep()` and `step.sleepUntil()`.
 
 [ Add delays ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) 
 
-### Wait for external events
+###  Wait for external events 
 
 Wait for webhooks, user input, or external system responses before continuing execution.
 
 [ Handle events ](https://developers.cloudflare.com/workflows/build/events-and-parameters/) 
 
-### Workflow lifecycle management
+###  Workflow lifecycle management 
 
 Trigger, pause, resume, and terminate workflow instances programmatically or via API.
 

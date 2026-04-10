@@ -36,25 +36,25 @@ The opt-out option will be available for a limited time.
 
 ## Features
 
-### Security overview
+###  Security overview 
 
 Get a high-level overview of your domain's security posture.
 
 [ Explore Security overview ](https://developers.cloudflare.com/security/overview/) 
 
-### Security Analytics
+###  Security Analytics 
 
 Shows information about all incoming HTTP requests or mitigated requests (rule matches). Tailor your security configurations based on sampled logs.
 
 [ Explore Security Analytics ](https://developers.cloudflare.com/security/analytics/) 
 
-### Web assets
+###  Web assets 
 
 Discover your web assets (including API endpoints) and instruct Cloudflare how to best protect them.
 
 [ Use Web assets ](https://developers.cloudflare.com/security/web-assets/) 
 
-### Security rules
+###  Security rules 
 
 Perform security actions on incoming requests that match specified filters.
 

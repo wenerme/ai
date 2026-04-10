@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+
 [Weights & Biases Weave](https://wandb.ai/site/weave) is an observability platform for tracking and evaluating LLM applications.
 
 ## Step 1: Get your W\&B API key

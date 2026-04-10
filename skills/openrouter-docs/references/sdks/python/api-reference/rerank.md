@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/python/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/python/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -9,7 +11,7 @@
 
 ## Overview
 
-Reranking endpoints
+Rerank endpoints
 
 ### Available Operations
 
@@ -34,11 +36,10 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.rerank.rerank(model="cohere/rerank-v3.5", query="What is the capital of France?", documents=[
+    res = open_router.rerank.rerank(documents=[
         "Paris is the capital of France.",
         "Berlin is the capital of Germany.",
-        "Madrid is the capital of Spain.",
-    ])
+    ], model="cohere/rerank-v3.5", query="What is the capital of France?")
 
     # Handle response
     print(res)
@@ -49,14 +50,14 @@ with OpenRouter(
 
 | Parameter                  | Type                                                                                          | Required             | Description                                                                                                                                                 | Example                                                                                    |
 | -------------------------- | --------------------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `documents`                | List\[*str*]                                                                                  | :heavy\_check\_mark: | The list of documents to rerank                                                                                                                             | \[<br />"Paris is the capital of France.",<br />"Berlin is the capital of Germany."<br />] |
 | `model`                    | *str*                                                                                         | :heavy\_check\_mark: | The rerank model to use                                                                                                                                     | cohere/rerank-v3.5                                                                         |
 | `query`                    | *str*                                                                                         | :heavy\_check\_mark: | The search query to rerank documents against                                                                                                                | What is the capital of France?                                                             |
-| `documents`                | List\[*str*]                                                                                  | :heavy\_check\_mark: | The list of documents to rerank                                                                                                                             | \[<br />"Paris is the capital of France.",<br />"Berlin is the capital of Germany."<br />] |
 | `http_referer`             | *Optional\[str]*                                                                              | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                                                                            |
 | `x_open_router_title`      | *Optional\[str]*                                                                              | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                                                            |
 | `x_open_router_categories` | *Optional\[str]*                                                                              | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                                            |
-| `top_n`                    | *Optional\[int]*                                                                              | :heavy\_minus\_sign: | Number of most relevant documents to return                                                                                                                 | 3                                                                                          |
 | `provider`                 | [OptionalNullable\[components.ProviderPreferences\]](../../components/providerpreferences.md) | :heavy\_minus\_sign: | N/A                                                                                                                                                         | `{"allow_fallbacks": true}`                                                                |
+| `top_n`                    | *Optional\[int]*                                                                              | :heavy\_minus\_sign: | Number of most relevant documents to return                                                                                                                 | 3                                                                                          |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                            | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                                            |
 
 ### Response

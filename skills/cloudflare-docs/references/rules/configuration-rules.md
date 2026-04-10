@@ -1,6 +1,6 @@
 ---
 title: Configuration Rules
-description: Configuration Rules allow you to customize certain Cloudflare configuration settings for matching incoming requests.
+description: Configuration Rules allow you to customize certain Cloudflare configuration settings for matching incoming requests. For example, you can turn off specific features for certain URL paths or change settings based on the visitor's country.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,9 +16,9 @@ Copy page
 
 # Configuration Rules
 
-Configuration Rules allow you to customize certain Cloudflare [configuration settings](https://developers.cloudflare.com/rules/configuration-rules/settings/) for matching incoming requests.
+Configuration Rules allow you to customize certain Cloudflare [configuration settings](https://developers.cloudflare.com/rules/configuration-rules/settings/) for matching incoming requests. For example, you can turn off specific features for certain URL paths or change settings based on the visitor's country.
 
-The configuration rule expression will determine to which requests the rule settings will apply. For more information on expressions, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) and [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
+Each configuration rule includes an expression that defines which requests the rule applies to, based on properties like URL path, hostname, or request header. For more information on expressions, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) and [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
 
 Note
 

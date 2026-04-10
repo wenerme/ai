@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/typescript/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/typescript/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -9,7 +11,7 @@
 
 ## Overview
 
-Reranking endpoints
+Rerank endpoints
 
 ### Available Operations
 
@@ -36,13 +38,12 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.rerank.rerank({
     requestBody: {
-      model: "cohere/rerank-v3.5",
-      query: "What is the capital of France?",
       documents: [
         "Paris is the capital of France.",
         "Berlin is the capital of Germany.",
-        "Madrid is the capital of Spain.",
       ],
+      model: "cohere/rerank-v3.5",
+      query: "What is the capital of France?",
     },
   });
 
@@ -72,13 +73,12 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await rerankRerank(openRouter, {
     requestBody: {
-      model: "cohere/rerank-v3.5",
-      query: "What is the capital of France?",
       documents: [
         "Paris is the capital of France.",
         "Berlin is the capital of Germany.",
-        "Madrid is the capital of Spain.",
       ],
+      model: "cohere/rerank-v3.5",
+      query: "What is the capital of France?",
     },
   });
   if (res.ok) {

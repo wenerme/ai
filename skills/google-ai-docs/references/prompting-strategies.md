@@ -299,10 +299,18 @@ or the response triggers a safety filter. An example of a fallback response is
 
 If the model responds with a fallback response, try increasing the temperature.
 
-## Things to avoid
+## Grounding and code execution
 
-- Avoid relying on models to generate factual information.
-- Use with care on math and logic problems.
+Gemini is able to use tools to avoid hallucinations in scenarios where it might
+otherwise produce incorrect responses.
+
+[Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search) connects the
+Gemini model to real-time web content, and should be enabled whenever the model
+may need to know obscure or recent facts.
+
+Gemini's [code execution tool](https://ai.google.dev/gemini-api/docs/code-execution) enables the
+model to generate and run Python code, and should be enabled whenever the model
+needs to perform any kind of arithmetic, counting, or calculation.
 
 ## Gemini 3
 
@@ -355,22 +363,15 @@ optimal results with Gemini 3:
 
 ### Enhancing reasoning and planning
 
-You can leverage Gemini 3's advanced thinking capabilities to improve its
-response quality for complex tasks by prompting it to plan or
-self-critique before providing the final response.
+Gemini 2.5 and 3 series models automatically generate internal "thinking" text
+to improve reasoning performance. As such, it's generally not necessary to have
+the model outline, plan, or detail reasoning steps in the returned response
+itself. For problems that require heavy reasoning, simple requests like "Think
+very hard before answering" can improve performance, though at the cost of
+extra thinking tokens.
 
-**Example - Explicit planning:**
-
-    Before providing the final answer, please:
-    1. Parse the stated goal into distinct sub-tasks.
-    2. Check if the input information is complete.
-    3. Create a structured outline to achieve the goal.
-
-**Example - Self-critique:**
-
-    Before returning your final response, review your generated output against the user's original constraints.
-    1. Did I answer the user's *intent*, not just their literal words?
-    2. Is the tone authentic to the requested persona?
+See the [Gemini thinking](https://ai.google.dev/gemini-api/docs/thinking) documentation for more
+detail.
 
 ### Structured prompting examples
 

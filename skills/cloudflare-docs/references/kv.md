@@ -30,11 +30,11 @@ For example, you can use Workers KV for:
 
 Access your Workers KV namespace from Cloudflare Workers using [Workers Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or from your external application using the REST API:
 
-* [ Workers Binding API ](#tab-panel-4980)
-* [ REST API ](#tab-panel-4981)
+* [ Workers Binding API ](#tab-panel-5024)
+* [ REST API ](#tab-panel-5025)
 
-* [ index.ts ](#tab-panel-4976)
-* [ wrangler.jsonc ](#tab-panel-4977)
+* [ index.ts ](#tab-panel-5020)
+* [ wrangler.jsonc ](#tab-panel-5021)
 
 TypeScript
 
@@ -124,8 +124,8 @@ export default {
 
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
-* [ cURL ](#tab-panel-4978)
-* [ TypeScript ](#tab-panel-4979)
+* [ cURL ](#tab-panel-5022)
+* [ TypeScript ](#tab-panel-5023)
 
 ```
 
@@ -210,19 +210,19 @@ See the full Workers KV [REST API and SDK reference](https://developers.cloudfla
 
 ## Features
 
-### Key-value storage
+###  Key-value storage 
 
 Learn how Workers KV stores and retrieves data.
 
 [ Use Key-value storage ](https://developers.cloudflare.com/kv/get-started/) 
 
-### Wrangler
+###  Wrangler 
 
 The Workers command-line interface, Wrangler, allows you to [create](https://developers.cloudflare.com/workers/wrangler/commands/general/#init), [test](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), and [deploy](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deploy) your Workers projects.
 
 [ Use Wrangler ](https://developers.cloudflare.com/workers/wrangler/install-and-update/) 
 
-### Bindings
+###  Bindings 
 
 Bindings allow your Workers to interact with resources on the Cloudflare developer platform, including [R2](https://developers.cloudflare.com/r2/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), and [D1](https://developers.cloudflare.com/d1/).
 

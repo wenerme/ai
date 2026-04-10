@@ -36,19 +36,19 @@ The vectors returned can reference images stored in Cloudflare R2, documents in 
 
 ## Features
 
-### Vector database
+###  Vector database 
 
 Learn how to create your first Vectorize database, upload vector embeddings, and query those embeddings from [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
 [ Create your Vector database ](https://developers.cloudflare.com/vectorize/get-started/intro/) 
 
-### Vector embeddings using Workers AI
+###  Vector embeddings using Workers AI 
 
 Learn how to use Vectorize to generate vector embeddings using Workers AI.
 
 [ Create vector embeddings using Workers AI ](https://developers.cloudflare.com/vectorize/get-started/embeddings/) 
 
-### Search using Vectorize and AI Search
+###  Search using Vectorize and AI Search 
 
 Learn how to automatically index your data and store it in Vectorize, then query it to generate context-aware responses using AI Search.
 

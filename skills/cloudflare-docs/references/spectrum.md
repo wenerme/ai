@@ -26,13 +26,13 @@ Spectrum allows you to route MQTT, email, file transfer, version control, games,
 
 ## Features
 
-### Enable Proxy protocol
+###  Enable Proxy protocol 
 
 Use a proxy protocol for Cloudflare to pass on the client IP to your service.
 
 [ Use Enable Proxy protocol ](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/) 
 
-### DDoS Protection for Spectrum
+###  DDoS Protection for Spectrum 
 
 Learn more about what L3/4 DDoS Protection is included as part of the Spectrum service.
 

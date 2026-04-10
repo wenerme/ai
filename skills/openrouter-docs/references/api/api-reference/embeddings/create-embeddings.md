@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/embeddings/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/embeddings/llms-full.txt.
+
 # Submit an embedding request
 
 POST https://openrouter.ai/api/v1/embeddings
@@ -90,29 +92,29 @@ paths:
             schema:
               type: object
               properties:
-                input:
-                  $ref: >-
-                    #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput
-                  description: Text, token, or multimodal input(s) to embed
-                model:
-                  type: string
-                  description: The model to use for embeddings
+                dimensions:
+                  type: integer
+                  description: The number of dimensions for the output embeddings
                 encoding_format:
                   $ref: >-
                     #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat
                   description: The format of the output embeddings
-                dimensions:
-                  type: integer
-                  description: The number of dimensions for the output embeddings
-                user:
-                  type: string
-                  description: A unique identifier for the end-user
-                provider:
+                input:
                   $ref: >-
-                    #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProvider
+                    #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput
+                  description: Text, token, or multimodal input(s) to embed
                 input_type:
                   type: string
                   description: The type of input (e.g. search_query, search_document)
+                model:
+                  type: string
+                  description: The model to use for embeddings
+                provider:
+                  $ref: >-
+                    #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaProvider
+                user:
+                  type: string
+                  description: A unique identifier for the end-user
               required:
                 - input
                 - model
@@ -120,6 +122,13 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat:
+      type: string
+      enum:
+        - float
+        - base64
+      description: The format of the output embeddings
+      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf0Type:
       type: string
       enum:
@@ -129,22 +138,16 @@ components:
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems0:
       type: object
       properties:
+        text:
+          type: string
         type:
           $ref: >-
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf0Type
-        text:
-          type: string
       required:
-        - type
         - text
+        - type
       title: >-
         EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems0
-    EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1Type:
-      type: string
-      enum:
-        - image_url
-      title: >-
-        EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1Type
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1ImageUrl:
       type: object
       properties:
@@ -154,18 +157,24 @@ components:
         - url
       title: >-
         EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1ImageUrl
+    EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1Type:
+      type: string
+      enum:
+        - image_url
+      title: >-
+        EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1Type
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems1:
       type: object
       properties:
-        type:
-          $ref: >-
-            #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1Type
         image_url:
           $ref: >-
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1ImageUrl
+        type:
+          $ref: >-
+            #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItemsOneOf1Type
       required:
-        - type
         - image_url
+        - type
       title: >-
         EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems1
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaInputOneOf4ItemsContentItems:
@@ -213,13 +222,6 @@ components:
             #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput4
       description: Text, token, or multimodal input(s) to embed
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaInput
-    EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat:
-      type: string
-      enum:
-        - float
-        - base64
-      description: The format of the output embeddings
-      title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat
     ProviderPreferencesDataCollection:
       type: string
       enum:
@@ -315,21 +317,131 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ProviderPreferencesOrderItems:
-      oneOf:
-        - $ref: '#/components/schemas/ProviderName'
-        - type: string
-      title: ProviderPreferencesOrderItems
-    ProviderPreferencesOnlyItems:
-      oneOf:
-        - $ref: '#/components/schemas/ProviderName'
-        - type: string
-      title: ProviderPreferencesOnlyItems
     ProviderPreferencesIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
       title: ProviderPreferencesIgnoreItems
+    ProviderPreferencesMaxPriceAudio:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceAudio
+    ProviderPreferencesMaxPriceCompletion:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceCompletion
+    ProviderPreferencesMaxPriceImage:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceImage
+    BigNumberUnion:
+      type: string
+      description: Price per million prompt tokens
+      title: BigNumberUnion
+    ProviderPreferencesMaxPriceRequest:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceRequest
+    ProviderPreferencesMaxPrice:
+      type: object
+      properties:
+        audio:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
+        completion:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
+        image:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
+        prompt:
+          $ref: '#/components/schemas/BigNumberUnion'
+        request:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
+      description: >-
+        The object specifying the maximum price you want to pay for this
+        request. USD price per million tokens, for prompt and completion.
+      title: ProviderPreferencesMaxPrice
+    ProviderPreferencesOnlyItems:
+      oneOf:
+        - $ref: '#/components/schemas/ProviderName'
+        - type: string
+      title: ProviderPreferencesOnlyItems
+    ProviderPreferencesOrderItems:
+      oneOf:
+        - $ref: '#/components/schemas/ProviderName'
+        - type: string
+      title: ProviderPreferencesOrderItems
+    PercentileLatencyCutoffs:
+      type: object
+      properties:
+        p50:
+          type: number
+          format: double
+          description: Maximum p50 latency (seconds)
+        p75:
+          type: number
+          format: double
+          description: Maximum p75 latency (seconds)
+        p90:
+          type: number
+          format: double
+          description: Maximum p90 latency (seconds)
+        p99:
+          type: number
+          format: double
+          description: Maximum p99 latency (seconds)
+      description: >-
+        Percentile-based latency cutoffs. All specified cutoffs must be met for
+        an endpoint to be preferred.
+      title: PercentileLatencyCutoffs
+    PreferredMaxLatency:
+      oneOf:
+        - type: number
+          format: double
+        - $ref: '#/components/schemas/PercentileLatencyCutoffs'
+        - description: Any type
+      description: >-
+        Preferred maximum latency (in seconds). Can be a number (applies to p50)
+        or an object with percentile-specific cutoffs. Endpoints above the
+        threshold(s) may still be used, but are deprioritized in routing. When
+        using fallback models, this may cause a fallback model to be used
+        instead of the primary model if it meets the threshold.
+      title: PreferredMaxLatency
+    PercentileThroughputCutoffs:
+      type: object
+      properties:
+        p50:
+          type: number
+          format: double
+          description: Minimum p50 throughput (tokens/sec)
+        p75:
+          type: number
+          format: double
+          description: Minimum p75 throughput (tokens/sec)
+        p90:
+          type: number
+          format: double
+          description: Minimum p90 throughput (tokens/sec)
+        p99:
+          type: number
+          format: double
+          description: Minimum p99 throughput (tokens/sec)
+      description: >-
+        Percentile-based throughput cutoffs. All specified cutoffs must be met
+        for an endpoint to be preferred.
+      title: PercentileThroughputCutoffs
+    PreferredMinThroughput:
+      oneOf:
+        - type: number
+          format: double
+        - $ref: '#/components/schemas/PercentileThroughputCutoffs'
+        - description: Any type
+      description: >-
+        Preferred minimum throughput (in tokens per second). Can be a number
+        (applies to p50) or an object with percentile-specific cutoffs.
+        Endpoints below the threshold(s) may still be used, but are
+        deprioritized in routing. When using fallback models, this may cause a
+        fallback model to be used instead of the primary model if it meets the
+        threshold.
+      title: PreferredMinThroughput
     Quantization:
       type: string
       enum:
@@ -398,116 +510,6 @@ components:
         The sorting strategy to use for this request, if "order" is not
         specified. When set, no load balancing is performed.
       title: ProviderPreferencesSort
-    BigNumberUnion:
-      type: string
-      description: Price per million prompt tokens
-      title: BigNumberUnion
-    ProviderPreferencesMaxPriceCompletion:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceCompletion
-    ProviderPreferencesMaxPriceImage:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceImage
-    ProviderPreferencesMaxPriceAudio:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceAudio
-    ProviderPreferencesMaxPriceRequest:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceRequest
-    ProviderPreferencesMaxPrice:
-      type: object
-      properties:
-        prompt:
-          $ref: '#/components/schemas/BigNumberUnion'
-        completion:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
-        image:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
-        audio:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
-        request:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
-      description: >-
-        The object specifying the maximum price you want to pay for this
-        request. USD price per million tokens, for prompt and completion.
-      title: ProviderPreferencesMaxPrice
-    PercentileThroughputCutoffs:
-      type: object
-      properties:
-        p50:
-          type: number
-          format: double
-          description: Minimum p50 throughput (tokens/sec)
-        p75:
-          type: number
-          format: double
-          description: Minimum p75 throughput (tokens/sec)
-        p90:
-          type: number
-          format: double
-          description: Minimum p90 throughput (tokens/sec)
-        p99:
-          type: number
-          format: double
-          description: Minimum p99 throughput (tokens/sec)
-      description: >-
-        Percentile-based throughput cutoffs. All specified cutoffs must be met
-        for an endpoint to be preferred.
-      title: PercentileThroughputCutoffs
-    PreferredMinThroughput:
-      oneOf:
-        - type: number
-          format: double
-        - $ref: '#/components/schemas/PercentileThroughputCutoffs'
-        - description: Any type
-      description: >-
-        Preferred minimum throughput (in tokens per second). Can be a number
-        (applies to p50) or an object with percentile-specific cutoffs.
-        Endpoints below the threshold(s) may still be used, but are
-        deprioritized in routing. When using fallback models, this may cause a
-        fallback model to be used instead of the primary model if it meets the
-        threshold.
-      title: PreferredMinThroughput
-    PercentileLatencyCutoffs:
-      type: object
-      properties:
-        p50:
-          type: number
-          format: double
-          description: Maximum p50 latency (seconds)
-        p75:
-          type: number
-          format: double
-          description: Maximum p75 latency (seconds)
-        p90:
-          type: number
-          format: double
-          description: Maximum p90 latency (seconds)
-        p99:
-          type: number
-          format: double
-          description: Maximum p99 latency (seconds)
-      description: >-
-        Percentile-based latency cutoffs. All specified cutoffs must be met for
-        an endpoint to be preferred.
-      title: PercentileLatencyCutoffs
-    PreferredMaxLatency:
-      oneOf:
-        - type: number
-          format: double
-        - $ref: '#/components/schemas/PercentileLatencyCutoffs'
-        - description: Any type
-      description: >-
-        Preferred maximum latency (in seconds). Can be a number (applies to p50)
-        or an object with percentile-specific cutoffs. Endpoints above the
-        threshold(s) may still be used, but are deprioritized in routing. When
-        using fallback models, this may cause a fallback model to be used
-        instead of the primary model if it meets the threshold.
-      title: PreferredMaxLatency
     EmbeddingsPostRequestBodyContentApplicationJsonSchemaProvider:
       type: object
       properties:
@@ -523,15 +525,6 @@ components:
 
             - false: use only the primary/custom provider, and return the
             upstream error if it's unavailable.
-        require_parameters:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to filter providers to only those that support the
-            parameters you've provided. If this setting is omitted or set to
-            false, then providers will receive only the parameters they support,
-            and ignore the rest.
         data_collection:
           oneOf:
             - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
@@ -545,14 +538,6 @@ components:
 
 
             - deny: use only providers which do not collect user data.
-        zdr:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to restrict routing to only ZDR (Zero Data Retention)
-            endpoints. When true, only endpoints that do not retain prompts will
-            be used.
         enforce_distillable_text:
           type:
             - boolean
@@ -561,6 +546,29 @@ components:
             Whether to restrict routing to only models that allow text
             distillation. When true, only models where the author has allowed
             distillation will be used.
+        ignore:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
+          description: >-
+            List of provider slugs to ignore. If provided, this list is merged
+            with your account-wide ignored provider settings for this request.
+        max_price:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
+          description: >-
+            The object specifying the maximum price you want to pay for this
+            request. USD price per million tokens, for prompt and completion.
+        only:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
+          description: >-
+            List of provider slugs to allow. If provided, this list is merged
+            with your account-wide allowed provider settings for this request.
         order:
           type:
             - array
@@ -573,24 +581,10 @@ components:
             requested model, and fall back to the next if it is unavailable. If
             no providers are available, the request will fail with an error
             message.
-        only:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
-          description: >-
-            List of provider slugs to allow. If provided, this list is merged
-            with your account-wide allowed provider settings for this request.
-        ignore:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
-          description: >-
-            List of provider slugs to ignore. If provided, this list is merged
-            with your account-wide ignored provider settings for this request.
+        preferred_max_latency:
+          $ref: '#/components/schemas/PreferredMaxLatency'
+        preferred_min_throughput:
+          $ref: '#/components/schemas/PreferredMinThroughput'
         quantizations:
           type:
             - array
@@ -598,31 +592,29 @@ components:
           items:
             $ref: '#/components/schemas/Quantization'
           description: A list of quantization levels to filter the provider by.
+        require_parameters:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to filter providers to only those that support the
+            parameters you've provided. If this setting is omitted or set to
+            false, then providers will receive only the parameters they support,
+            and ignore the rest.
         sort:
           $ref: '#/components/schemas/ProviderPreferencesSort'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
-        max_price:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
+        zdr:
+          type:
+            - boolean
+            - 'null'
           description: >-
-            The object specifying the maximum price you want to pay for this
-            request. USD price per million tokens, for prompt and completion.
-        preferred_min_throughput:
-          $ref: '#/components/schemas/PreferredMinThroughput'
-        preferred_max_latency:
-          $ref: '#/components/schemas/PreferredMaxLatency'
+            Whether to restrict routing to only ZDR (Zero Data Retention)
+            endpoints. When true, only endpoints that do not retain prompts will
+            be used.
       title: EmbeddingsPostRequestBodyContentApplicationJsonSchemaProvider
-    EmbeddingsPostResponsesContentApplicationJsonSchemaObject:
-      type: string
-      enum:
-        - list
-      title: EmbeddingsPostResponsesContentApplicationJsonSchemaObject
-    EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsObject:
-      type: string
-      enum:
-        - embedding
-      title: EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsObject
     EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsEmbedding:
       oneOf:
         - type: array
@@ -632,12 +624,14 @@ components:
         - type: string
       description: Embedding vector as an array of floats or a base64 string
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsEmbedding
+    EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsObject:
+      type: string
+      enum:
+        - embedding
+      title: EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsObject
     EmbeddingsPostResponsesContentApplicationJsonSchemaDataItems:
       type: object
       properties:
-        object:
-          $ref: >-
-            #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsObject
         embedding:
           $ref: >-
             #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsEmbedding
@@ -645,24 +639,32 @@ components:
         index:
           type: integer
           description: Index of the embedding in the input list
+        object:
+          $ref: >-
+            #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaDataItemsObject
       required:
-        - object
         - embedding
+        - object
       description: A single embedding object
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaDataItems
+    EmbeddingsPostResponsesContentApplicationJsonSchemaObject:
+      type: string
+      enum:
+        - list
+      title: EmbeddingsPostResponsesContentApplicationJsonSchemaObject
     EmbeddingsPostResponsesContentApplicationJsonSchemaUsage:
       type: object
       properties:
+        cost:
+          type: number
+          format: double
+          description: Cost of the request in credits
         prompt_tokens:
           type: integer
           description: Number of tokens in the input
         total_tokens:
           type: integer
           description: Total number of tokens used
-        cost:
-          type: number
-          format: double
-          description: Cost of the request in credits
       required:
         - prompt_tokens
         - total_tokens
@@ -671,29 +673,29 @@ components:
     Embeddings_createEmbeddings_Response_200:
       type: object
       properties:
-        id:
-          type: string
-          description: Unique identifier for the embeddings response
-        object:
-          $ref: >-
-            #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaObject
         data:
           type: array
           items:
             $ref: >-
               #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaDataItems
           description: List of embedding objects
+        id:
+          type: string
+          description: Unique identifier for the embeddings response
         model:
           type: string
           description: The model used for embeddings
+        object:
+          $ref: >-
+            #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaObject
         usage:
           $ref: >-
             #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaUsage
           description: Token usage statistics
       required:
-        - object
         - data
         - model
+        - object
       description: Embeddings response containing embedding vectors
       title: Embeddings_createEmbeddings_Response_200
     BadRequestResponseErrorData:
@@ -961,7 +963,8 @@ url = "https://openrouter.ai/api/v1/embeddings"
 
 payload = {
     "input": "The quick brown fox jumps over the lazy dog",
-    "model": "openai/text-embedding-3-small"
+    "model": "openai/text-embedding-3-small",
+    "dimensions": 1536
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -978,7 +981,7 @@ const url = 'https://openrouter.ai/api/v1/embeddings';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"input":"The quick brown fox jumps over the lazy dog","model":"openai/text-embedding-3-small"}'
+  body: '{"input":"The quick brown fox jumps over the lazy dog","model":"openai/text-embedding-3-small","dimensions":1536}'
 };
 
 try {
@@ -1004,7 +1007,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/embeddings"
 
-	payload := strings.NewReader("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\"\n}")
+	payload := strings.NewReader("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -1034,7 +1037,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\"\n}"
+request.body = "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -1047,7 +1050,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/embeddings")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\"\n}")
+  .body("{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}")
   .asString();
 ```
 
@@ -1060,7 +1063,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/embeddings', [
   'body' => '{
   "input": "The quick brown fox jumps over the lazy dog",
-  "model": "openai/text-embedding-3-small"
+  "model": "openai/text-embedding-3-small",
+  "dimensions": 1536
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -1078,7 +1082,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/embeddings");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"input\": \"The quick brown fox jumps over the lazy dog\",\n  \"model\": \"openai/text-embedding-3-small\",\n  \"dimensions\": 1536\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -1091,7 +1095,8 @@ let headers = [
 ]
 let parameters = [
   "input": "The quick brown fox jumps over the lazy dog",
-  "model": "openai/text-embedding-3-small"
+  "model": "openai/text-embedding-3-small",
+  "dimensions": 1536
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

@@ -26,19 +26,19 @@ Speed allows you to assess the performance of your website and get recommendatio
 
 ## Features
 
-### Observatory
+###  Observatory 
 
 Use Observatory to conduct tests with both synthetic and real user data to identify potential website performance enhancements.
 
 [ Use Observatory ](https://developers.cloudflare.com/speed/observatory/) 
 
-### Settings
+###  Settings 
 
 Get recommendations of Cloudflare products and settings to improve your website’s performance.
 
 [ Use Settings ](https://developers.cloudflare.com/speed/optimization/) 
 
-### Aggregated Internet Measurement
+###  Aggregated Internet Measurement 
 
 Understand your Internet quality to identify scenarios that your Internet connection is good or bad for.
 

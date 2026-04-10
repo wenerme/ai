@@ -32,13 +32,13 @@ Learn how to [get started](https://developers.cloudflare.com/multi-cloud-network
 
 ## Features
 
-### Discover your cloud resources automatically
+###  Discover your cloud resources automatically 
 
 Discover your cloud resources like virtual private clouds (VPCs), subnets, virtual machines (VMs), route tables, and routes automatically, and easily set up your integrations.
 
 [ Use cloud resource discovery ](https://developers.cloudflare.com/multi-cloud-networking/get-started/) 
 
-### Automatically connect a cloud network
+###  Automatically connect a cloud network 
 
 Automatically build VPN tunnels between cloud networks and Cloudflare WAN.
 

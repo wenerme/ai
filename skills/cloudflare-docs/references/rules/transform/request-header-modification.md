@@ -16,7 +16,7 @@ Copy page
 
 # Request Header Transform Rules
 
-Use Request Header Transform Rules to manipulate the headers of HTTP requests sent to your origin server.
+Use Request Header Transform Rules to manipulate the headers of HTTP requests sent to your origin server (the server where your website or application is hosted).
 
 flowchart LR
 accTitle: Header modifications diagram
@@ -40,7 +40,7 @@ To modify HTTP headers in the **response** sent to website visitors, refer to [R
 Through Request Header Transform Rules you can:
 
 * Set the value of an HTTP request header to a literal string value, overwriting its previous value or adding a new header to the request.
-* Set the value of an HTTP request header according to an expression, overwriting its previous value or adding a new header to the request.
+* Set the value of an HTTP request header according to an expression (a formula that computes a value based on request properties), overwriting its previous value or adding a new header to the request.
 * Remove an HTTP header from the request.
 
 You can create a request header transform rule [in the dashboard](https://developers.cloudflare.com/rules/transform/request-header-modification/create-dashboard/), [via API](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/), or [using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#create-a-request-header-transform-rule).
@@ -52,14 +52,14 @@ For more complex request header modifications, consider using [Snippets](https:/
 * You cannot modify or remove HTTP request headers whose name starts with `x-cf-` or `cf-` except for the `cf-connecting-ip` HTTP request header, which you can remove.
 * Due to protocol compliance reasons, modifying or removing request headers with [forbidden header names ↗](https://developer.mozilla.org/en-US/docs/Glossary/Forbidden%5Fheader%5Fname) (such as `Accept-Encoding`) is generally not allowed in Request Header Transform Rules.
 * You cannot modify the value of any header commonly used to identify the website visitor's IP address or initial protocol, such as `x-forwarded-for`, `true-client-ip`, `x-real-ip`, or `x-forwarded-proto`.
-* Although you can remove the `x-forwarded-for` header, it will be added back by Cloudflare's cache service (with a different value), and this header will reach your origin server. If you remove the `x-forwarded-for` header and the request is handled by Cloudflare Workers — which [run before the cache](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) — the `x-forwarded-for` request header will be absent.
+* Although you can remove the `x-forwarded-for` header, Cloudflare's cache service will add it back (with a different value) before the request reaches your origin server. However, if the request is handled by Cloudflare Workers — which [run before the cache](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) — the `x-forwarded-for` request header will be absent because the cache service has not yet re-added it.
 * You cannot set or modify the value of `cookie` HTTP request headers, but you can remove these headers. Configuring a rule that removes the `cookie` HTTP request header will remove all `cookie` headers in matching requests.
 * If you modify the value of an existing HTTP request header using an expression that evaluates to an empty string (`""`) or an undefined value, the HTTP request header is **removed**.
 * The HTTP request header removal operation will remove all request headers with the provided name.
 * Currently, there is a limited number of HTTP request headers that you cannot modify. Cloudflare may remove restrictions for some of these HTTP request headers when presented with valid use cases. [Create a post in the community ↗](https://community.cloudflare.com) for consideration.
 * To use [claims inside a JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/transform-rules/), you must first set up a token validation configuration in API Shield.
 * Request header transform rules run in order, and later rules can overwrite changes done by previous rules.
-* The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_late_transform` phase where request header transform rules are defined. This means that later request header transform rules will not match based on changes done by previous request header transform rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
+* The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_late_transform` phase where request header transform rules are defined. This means that later request header transform rules will still use the original field values when evaluating their filter expressions, not the values changed by previous rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
 
 ## Execution order
 

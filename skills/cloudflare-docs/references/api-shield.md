@@ -39,13 +39,13 @@ Refer to the [Get started](https://developers.cloudflare.com/api-shield/get-star
 
 ## Features
 
-### Security features
+###  Security features 
 
 Secure your APIs using API Shield's security features.
 
 [ Use Security features ](https://developers.cloudflare.com/api-shield/security/) 
 
-### Management, monitoring, and more
+###  Management, monitoring, and more 
 
 Monitor the health of your API endpoints.
 

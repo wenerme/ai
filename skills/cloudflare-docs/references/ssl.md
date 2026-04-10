@@ -26,19 +26,19 @@ Through [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/
 
 ## Features
 
-### Total TLS
+###  Total TLS 
 
 Extending the protection offered by Universal SSL, Total TLS is an easy way to automatically issue certificates for all levels of subdomains that you have.
 
 [ Use Total TLS ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) 
 
-### Delegated DCV
+###  Delegated DCV 
 
 Even if you use a different provider for authoritative DNS, you can delegate domain control validation (DCV) to Cloudflare, reducing the need of manual intervention.
 
 [ Use Delegated DCV ](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) 
 
-### Custom TLS settings
+###  Custom TLS settings 
 
 Cloudflare also allows you to specify the minimum TLS version that visitors must use to connect to your website or application, and [restrict cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) according to your security requirements.
 

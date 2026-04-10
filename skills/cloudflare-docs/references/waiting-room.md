@@ -40,25 +40,25 @@ Waiting Room also benefits your visitors by:
 
 ## Features
 
-### Scheduled Event
+###  Scheduled Event 
 
 Customize the behavior of a waiting room for a specific period of time.
 
 [ Use Scheduled Event ](https://developers.cloudflare.com/waiting-room/additional-options/create-events/) 
 
-### Waiting Room Rules
+###  Waiting Room Rules 
 
 Create rules to indicate specific traffic or areas of your site or application that you do not want a waiting room to apply to.
 
 [ Use Waiting Room Rules ](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/) 
 
-### Waiting Room Analytics
+###  Waiting Room Analytics 
 
 Get insights into the traffic going through your waiting room.
 
 [ Use Waiting Room Analytics ](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/) 
 
-### Additional hostname and path coverage
+###  Additional hostname and path coverage 
 
 Apply a single waiting room to multiple hostnames and paths within the same zone.
 

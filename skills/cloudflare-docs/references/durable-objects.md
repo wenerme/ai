@@ -47,25 +47,25 @@ For more information, refer to the full [What are Durable Objects?](https://deve
 
 ## Features
 
-### In-memory State
+###  In-memory State 
 
 Learn how Durable Objects coordinate connections among multiple clients or events.
 
 [ Use In-memory State ](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/) 
 
-### Storage API
+###  Storage API 
 
 Learn how Durable Objects provide transactional, strongly consistent, and serializable storage.
 
 [ Use Storage API ](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) 
 
-### WebSocket Hibernation
+###  WebSocket Hibernation 
 
 Learn how WebSocket Hibernation allows you to manage the connections of multiple clients at scale.
 
 [ Use WebSocket Hibernation ](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api) 
 
-### Durable Objects Alarms
+###  Durable Objects Alarms 
 
 Learn how to use alarms to trigger a Durable Object and perform compute in the future at customizable intervals.
 

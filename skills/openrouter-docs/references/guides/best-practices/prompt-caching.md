@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+
 To save on inference costs, you can enable prompt caching on supported providers and models.
 
 Most providers automatically enable prompt caching, but note that some (see Anthropic below) require you to enable it on a per-message basis.

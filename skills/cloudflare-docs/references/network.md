@@ -23,19 +23,19 @@ Manage network settings for your website.
 
 ## Features
 
-### IP Geolocation
+###  IP Geolocation 
 
 Include the country code of the visitor location with all requests to your website.
 
 [ Use IP Geolocation ](https://developers.cloudflare.com/network/ip-geolocation/) 
 
-### IPv6 Compatibility
+###  IPv6 Compatibility 
 
 Enable IPv6 support and gateway.
 
 [ Use IPv6 Compatibility ](https://developers.cloudflare.com/network/ipv6-compatibility/) 
 
-### WebSockets
+###  WebSockets 
 
 Allow WebSockets connections to your origin server.
 

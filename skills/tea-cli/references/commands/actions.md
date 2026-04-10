@@ -190,13 +190,65 @@ Manage repository workflows
 
 List repository workflows
 
-**--limit, --lm**="": specify limit of items per page (default: 30)
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+#### view, show, get
+
+View workflow details
 
 **--login, -l**="": Use a different Gitea Login. Optional
 
 **--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
 
-**--page, -p**="": specify page (default: 1)
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+#### dispatch, trigger, run
+
+Dispatch a workflow run
+
+**--follow, -f**: follow log output after dispatching
+
+**--input, -i**="": workflow input in key=value format (can be specified multiple times)
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--ref, -r**="": branch or tag to dispatch on (default: current branch)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+#### enable
+
+Enable a workflow
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
+
+**--remote, -R**="": Discover Gitea login from remote. Optional
+
+**--repo, -r**="": Override local repository path or gitea repository slug to interact with. Optional
+
+#### disable
+
+Disable a workflow
+
+**--confirm, -y**: confirm disable without prompting
+
+**--login, -l**="": Use a different Gitea Login. Optional
+
+**--output, -o**="": Output format. (simple, table, csv, tsv, yaml, json)
 
 **--remote, -R**="": Discover Gitea login from remote. Optional
 

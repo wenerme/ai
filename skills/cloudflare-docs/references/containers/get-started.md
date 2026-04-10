@@ -143,8 +143,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-4021)
-* [  wrangler.toml ](#tab-panel-4022)
+* [  wrangler.jsonc ](#tab-panel-4065)
+* [  wrangler.toml ](#tab-panel-4066)
 
 JSONC
 
@@ -316,7 +316,7 @@ This defines basic configuration for the container:
 * `envVars` sets environment variables that will be passed to the container when it starts.
 * `onStart`, `onStop`, and `onError` are hooks that run when the container starts, stops, or errors, respectively.
 
-See the [Container class documentation](https://developers.cloudflare.com/containers/container-package) for more details and configuration options.
+See the [Container class documentation](https://developers.cloudflare.com/containers/container-class/) for more details and configuration options.
 
 #### Routing to Containers
 

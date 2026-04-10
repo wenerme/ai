@@ -28,25 +28,25 @@ Learn how to [get started](https://developers.cloudflare.com/waf/get-started/).
 
 ## Features
 
-### Custom rules
+###  Custom rules 
 
 Create your own custom rules to protect your website and your APIs from malicious incoming traffic. Use advanced features like [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) and [malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/) in your custom rules.
 
 [ Use Custom rules ](https://developers.cloudflare.com/waf/custom-rules/) 
 
-### Rate limiting rules
+###  Rate limiting rules 
 
 Define rate limits for incoming requests matching an expression, and the action to take when those rate limits are reached.
 
 [ Use Rate limiting rules ](https://developers.cloudflare.com/waf/rate-limiting-rules/) 
 
-### Managed rules
+###  Managed rules 
 
 Enable the pre-configured managed rulesets to get immediate protection. These rulesets are [regularly updated](https://developers.cloudflare.com/waf/change-log/), offering advanced zero-day vulnerability protections, and you can adjust their behavior.
 
 [ Use Managed rules ](https://developers.cloudflare.com/waf/managed-rules/) 
 
-### Account-level configuration
+###  Account-level configuration 
 
  Enterprise-only 
 
@@ -54,13 +54,13 @@ Create and deploy rulesets to multiple Enterprise zones.
 
 [ Use Account-level configuration ](https://developers.cloudflare.com/waf/account/) 
 
-### Security Events
+###  Security Events 
 
 Review mitigated requests (rule matches) using an intuitive interface. Tailor your security configurations based on sampled logs.
 
 [ Explore Security Events ](https://developers.cloudflare.com/waf/analytics/security-events/) 
 
-### Security Analytics
+###  Security Analytics 
 
 Displays information about all incoming HTTP requests, including those not affected by security measures.
 

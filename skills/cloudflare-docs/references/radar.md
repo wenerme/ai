@@ -32,19 +32,19 @@ Data available via Radar API endpoints is made available under the [CC BY-NC 4.0
 
 ## Features
 
-### Make your first API request
+###  Make your first API request 
 
 Start learning how to use Radar's API by making your first request.
 
 [ Make your first API request ](https://developers.cloudflare.com/radar/get-started/first-request/) 
 
-### Compare data
+###  Compare data 
 
 What to know before making comparisons between locations, [autonomous systems ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/), and more.
 
 [ Compare data ](https://developers.cloudflare.com/radar/get-started/making-comparisons/) 
 
-### URL Scanner
+###  URL Scanner 
 
 Understand the security, performance, technology, and network details of a URL with a publicly shareable report.
 

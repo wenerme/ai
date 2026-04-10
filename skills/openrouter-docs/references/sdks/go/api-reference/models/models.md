@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/go/api-reference/models/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/go/api-reference/models/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -13,64 +15,9 @@ Model information endpoints
 
 ### Available Operations
 
-* [Count](#count) - Get total count of available models
 * [List](#list) - List all models and their properties
+* [Count](#count) - Get total count of available models
 * [ListForUser](#listforuser) - List models filtered by user provider preferences, privacy settings, and guardrails
-
-## Count
-
-Get total count of available models
-
-### Example Usage
-
-{/* UsageSnippet language="go" operationID="listModelsCount" method="get" path="/models/count" */}
-
-```go
-package main
-
-import(
-	"context"
-	"os"
-	openrouter "github.com/OpenRouterTeam/go-sdk"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := openrouter.New(
-        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
-    )
-
-    res, err := s.Models.Count(ctx, nil)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter          | Type                                                                  | Required             | Description                                                                                                                                                         | Example |
-| ------------------ | --------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `ctx`              | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                 |         |
-| `outputModalities` | `*string`                                                             | :heavy\_minus\_sign: | Filter models by output modality. Accepts a comma-separated list of modalities (text, image, audio, embeddings) or "all" to include all models. Defaults to "text". | text    |
-| `opts`             | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                                                                                                                                       |         |
-
-### Response
-
-**[\*components.ModelsCountResponse](/docs/sdks/go/api-reference/models/modelscountresponse), error**
-
-### Errors
-
-| Error Type                            | Status Code | Content Type     |
-| ------------------------------------- | ----------- | ---------------- |
-| sdkerrors.BadRequestResponseError     | 400         | application/json |
-| sdkerrors.InternalServerResponseError | 500         | application/json |
-| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
 
 ## List
 
@@ -120,6 +67,61 @@ func main() {
 ### Response
 
 **[\*components.ModelsListResponse](/docs/sdks/go/api-reference/models/modelslistresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError     | 400         | application/json |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
+
+## Count
+
+Get total count of available models
+
+### Example Usage
+
+{/* UsageSnippet language="go" operationID="listModelsCount" method="get" path="/models/count" */}
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Models.Count(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter          | Type                                                                  | Required             | Description                                                                                                                                                         | Example |
+| ------------------ | --------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `ctx`              | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                 |         |
+| `outputModalities` | `*string`                                                             | :heavy\_minus\_sign: | Filter models by output modality. Accepts a comma-separated list of modalities (text, image, audio, embeddings) or "all" to include all models. Defaults to "text". | text    |
+| `opts`             | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                                                                                                                                       |         |
+
+### Response
+
+**[\*components.ModelsCountResponse](/docs/sdks/go/api-reference/models/modelscountresponse), error**
 
 ### Errors
 

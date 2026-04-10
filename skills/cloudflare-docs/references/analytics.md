@@ -22,25 +22,25 @@ Cloudflare visualizes the metadata collected by our products in the Cloudflare d
 
 ## Features
 
-### Workers Analytics Engine
+###  Workers Analytics Engine 
 
 Send unlimited-cardinality data from your Worker to a time-series database. Query it with SQL.
 
 [ Use Workers Analytics Engine ](https://developers.cloudflare.com/analytics/analytics-engine/) 
 
-### Account and zone analytics
+###  Account and zone analytics 
 
 Provides details about the requests and traffic related to your Cloudflare accounts and zones.
 
 [ Use Account and zone analytics ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/) 
 
-### Cloudflare Network Analytics
+###  Cloudflare Network Analytics 
 
 Provides near real-time visibility into network and transport-layer traffic patterns and DDoS attacks.
 
 [ Use Cloudflare Network Analytics ](https://developers.cloudflare.com/analytics/network-analytics/) 
 
-### GraphQL Analytics API
+###  GraphQL Analytics API 
 
 Provides all of your performance, security, and reliability data from one endpoint. Select exactly what you need, from one metric for a domain to multiple metrics aggregated for your account.
 

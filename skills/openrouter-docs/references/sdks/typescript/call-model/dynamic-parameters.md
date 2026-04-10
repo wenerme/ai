@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/typescript/call-model/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/typescript/call-model/llms-full.txt.
+
 ## Basic Usage
 
 Any parameter in `callModel` can be a function that computes its value based on conversation context. This enables adaptive behavior - changing models, adjusting temperature, or modifying instructions as the conversation evolves.

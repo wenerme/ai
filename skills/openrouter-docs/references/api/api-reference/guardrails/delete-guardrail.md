@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/guardrails/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/guardrails/llms-full.txt.
+
 # Delete a guardrail
 
 DELETE https://openrouter.ai/api/v1/guardrails/{id}

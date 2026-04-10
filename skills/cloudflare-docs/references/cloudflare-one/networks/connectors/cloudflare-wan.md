@@ -32,37 +32,37 @@ Refer to [WAN transformation](https://developers.cloudflare.com/cloudflare-one/n
 
 ## Features
 
-### Connect your network automatically
+###  Connect your network automatically 
 
 Use Cloudflare One Appliance to automatically connect, steer, and shape any IP traffic.
 
 [ Use Cloudflare One Appliance ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/) 
 
-### Connect your network manually
+###  Connect your network manually 
 
 Set up Cloudflare WAN with your existing routers and firewalls. If you do not have Cloudflare One Appliance, start here to configure IPsec or GRE tunnels from a third-party device.
 
 [ Use a third-party device ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/third-party/) 
 
-### Zero Trust integration
+###  Zero Trust integration 
 
 Learn how you can use Cloudflare WAN with other Cloudflare Zero Trust products.
 
 [ Integrate with other Zero Trust products ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/) 
 
-### BGP peering (beta)
+###  BGP peering (beta) 
 
 Use Border Gateway Protocol (BGP) peering between your networks and Cloudflare to automatically announce and withdraw routes as your network changes, rather than managing static routes manually.
 
 [ Use BGP peering (beta) ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes) 
 
-### WAN transformation
+###  WAN transformation 
 
 Replace MPLS circuits and hub-and-spoke routing with cloud-native networking. Compare WAN approaches and plan an incremental migration.
 
 [ Plan your migration ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/wan-transformation/) 
 
-### Virtual networks
+###  Virtual networks 
 
  Understand how virtual networks provide routing isolation within your Cloudflare account, keeping traffic separated between environments, partners, or applications. 
 

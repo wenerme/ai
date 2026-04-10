@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/api-keys/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/api-keys/llms-full.txt.
+
 # Delete an API key
 
 DELETE https://openrouter.ai/api/v1/keys/{hash}

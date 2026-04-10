@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/analytics/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/analytics/llms-full.txt.
+
 # Get user activity grouped by endpoint
 
 GET https://openrouter.ai/api/v1/activity
@@ -97,53 +99,53 @@ components:
     ActivityItem:
       type: object
       properties:
+        byok_usage_inference:
+          type: number
+          format: double
+          description: BYOK inference cost in USD (external credits spent)
+        completion_tokens:
+          type: integer
+          description: Total completion tokens generated
         date:
           type: string
           description: Date of the activity (YYYY-MM-DD format)
+        endpoint_id:
+          type: string
+          description: Unique identifier for the endpoint
         model:
           type: string
           description: Model slug (e.g., "openai/gpt-4.1")
         model_permaslug:
           type: string
           description: Model permaslug (e.g., "openai/gpt-4.1-2025-04-14")
-        endpoint_id:
-          type: string
-          description: Unique identifier for the endpoint
+        prompt_tokens:
+          type: integer
+          description: Total prompt tokens used
         provider_name:
           type: string
           description: Name of the provider serving this endpoint
+        reasoning_tokens:
+          type: integer
+          description: Total reasoning tokens used
+        requests:
+          type: integer
+          description: Number of requests made
         usage:
           type: number
           format: double
           description: Total cost in USD (OpenRouter credits spent)
-        byok_usage_inference:
-          type: number
-          format: double
-          description: BYOK inference cost in USD (external credits spent)
-        requests:
-          type: integer
-          description: Number of requests made
-        prompt_tokens:
-          type: integer
-          description: Total prompt tokens used
-        completion_tokens:
-          type: integer
-          description: Total completion tokens generated
-        reasoning_tokens:
-          type: integer
-          description: Total reasoning tokens used
       required:
+        - byok_usage_inference
+        - completion_tokens
         - date
+        - endpoint_id
         - model
         - model_permaslug
-        - endpoint_id
-        - provider_name
-        - usage
-        - byok_usage_inference
-        - requests
         - prompt_tokens
-        - completion_tokens
+        - provider_name
         - reasoning_tokens
+        - requests
+        - usage
       title: ActivityItem
     ActivityResponse:
       type: object

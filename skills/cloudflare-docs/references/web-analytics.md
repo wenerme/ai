@@ -26,19 +26,19 @@ Cloudflare Web Analytics helps you understand the performance of your web pages 
 
 ## Features
 
-### Filters
+###  Filters 
 
 Use filters to refine the data displayed in Web Analytics.
 
 [ Use Filters ](https://developers.cloudflare.com/web-analytics/configuration-options/filters/) 
 
-### Rules
+###  Rules 
 
 Use rules to configure tracking of Web Analytics for specific websites or paths.
 
 [ Use Rules ](https://developers.cloudflare.com/web-analytics/configuration-options/rules) 
 
-### Dimensions
+###  Dimensions 
 
 Use dimensions to categorize and organize various metrics or data types effectively.
 

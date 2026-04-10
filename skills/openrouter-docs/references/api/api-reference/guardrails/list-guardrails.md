@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/guardrails/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/guardrails/llms-full.txt.
+
 # List guardrails
 
 GET https://openrouter.ai/api/v1/guardrails
@@ -76,38 +78,6 @@ components:
     Guardrail:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the guardrail
-        name:
-          type: string
-          description: Name of the guardrail
-        description:
-          type:
-            - string
-            - 'null'
-          description: Description of the guardrail
-        limit_usd:
-          type: number
-          format: double
-          description: Spending limit in USD
-        reset_interval:
-          $ref: '#/components/schemas/GuardrailInterval'
-        allowed_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of allowed provider IDs
-        ignored_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of provider IDs to exclude from routing
         allowed_models:
           type:
             - array
@@ -115,23 +85,55 @@ components:
           items:
             type: string
           description: Array of model canonical_slugs (immutable identifiers)
+        allowed_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of allowed provider IDs
+        created_at:
+          type: string
+          description: ISO 8601 timestamp of when the guardrail was created
+        description:
+          type:
+            - string
+            - 'null'
+          description: Description of the guardrail
         enforce_zdr:
           type:
             - boolean
             - 'null'
           description: Whether to enforce zero data retention
-        created_at:
+        id:
           type: string
-          description: ISO 8601 timestamp of when the guardrail was created
+          format: uuid
+          description: Unique identifier for the guardrail
+        ignored_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of provider IDs to exclude from routing
+        limit_usd:
+          type: number
+          format: double
+          description: Spending limit in USD
+        name:
+          type: string
+          description: Name of the guardrail
+        reset_interval:
+          $ref: '#/components/schemas/GuardrailInterval'
         updated_at:
           type:
             - string
             - 'null'
           description: ISO 8601 timestamp of when the guardrail was last updated
       required:
+        - created_at
         - id
         - name
-        - created_at
       title: Guardrail
     ListGuardrailsResponse:
       type: object

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/go/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/go/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -45,8 +47,8 @@ func main() {
 
     res, err := s.OAuth.ExchangeAuthCodeForAPIKey(ctx, operations.ExchangeAuthCodeForAPIKeyRequest{
         Code: "auth_code_abc123def456",
-        CodeVerifier: openrouter.Pointer("dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"),
         CodeChallengeMethod: optionalnullable.From(openrouter.Pointer(operations.ExchangeAuthCodeForAPIKeyCodeChallengeMethodS256)),
+        CodeVerifier: openrouter.Pointer("dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"),
     })
     if err != nil {
         log.Fatal(err)

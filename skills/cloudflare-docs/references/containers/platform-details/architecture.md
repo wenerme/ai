@@ -35,7 +35,7 @@ Because all Container requests are passed through a Worker, end-users cannot mak
 
 ### Worker to Durable Object
 
-From the Worker, a request passes through a Durable Object instance (the [Container package](https://developers.cloudflare.com/containers/container-package) extends a Durable Object class). Each Durable Object instance is a globally routable isolate that can execute code and store state. This allows developers to easily address and route to specific container instances (no matter where they are placed), define and run hooks on container status changes, execute recurring checks on the instance, and store persistent state associated with each instance.
+From the Worker, a request passes through a Durable Object instance (the [Container class](https://developers.cloudflare.com/containers/container-class/) extends a Durable Object class). Each Durable Object instance is a globally routable isolate that can execute code and store state. This allows developers to easily address and route to specific container instances (no matter where they are placed), define and run hooks on container status changes, execute recurring checks on the instance, and store persistent state associated with each instance.
 
 ### Starting a Container
 

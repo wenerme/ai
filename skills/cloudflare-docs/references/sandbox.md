@@ -26,12 +26,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-6085)
-* [ Code Interpreter ](#tab-panel-6086)
-* [ File Operations ](#tab-panel-6087)
-* [ File Watching ](#tab-panel-6088)
-* [ Terminal Access ](#tab-panel-6089)
-* [ WebSocket Connections ](#tab-panel-6090)
+* [ Execute Commands ](#tab-panel-6129)
+* [ Code Interpreter ](#tab-panel-6130)
+* [ File Operations ](#tab-panel-6131)
+* [ File Watching ](#tab-panel-6132)
+* [ Terminal Access ](#tab-panel-6133)
+* [ WebSocket Connections ](#tab-panel-6134)
 
 TypeScript
 
@@ -312,49 +312,49 @@ Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connec
 
 ## Features
 
-### Execute commands securely
+###  Execute commands securely 
 
 Run shell commands, Python scripts, Node.js applications, and more with streaming output support and automatic timeout handling.
 
 [ Learn about command execution ](https://developers.cloudflare.com/sandbox/guides/execute-commands/) 
 
-### Manage files and processes
+###  Manage files and processes 
 
 Read, write, and manipulate files in the sandbox filesystem. Run background processes, monitor output, and manage long-running operations.
 
 [ Learn about file operations ](https://developers.cloudflare.com/sandbox/guides/manage-files/) 
 
-### Expose services with preview URLs
+###  Expose services with preview URLs 
 
 Expose HTTP services running in your sandbox with automatically generated preview URLs, perfect for interactive development environments and application hosting.
 
 [ Learn about preview URLs ](https://developers.cloudflare.com/sandbox/guides/expose-services/) 
 
-### Execute code directly
+###  Execute code directly 
 
 Execute Python and JavaScript code with rich outputs including charts, tables, and images. Maintain persistent state between executions for AI-generated code and interactive workflows.
 
 [ Learn about code execution ](https://developers.cloudflare.com/sandbox/guides/code-execution/) 
 
-### Build interactive terminals
+###  Build interactive terminals 
 
 Create browser-based terminal interfaces that connect directly to sandbox shells via WebSocket. Build collaborative terminals, interactive development environments, and real-time shell access with automatic reconnection.
 
 [ Learn about terminal UIs ](https://developers.cloudflare.com/sandbox/guides/browser-terminals/) 
 
-### Persistent storage with object storage
+###  Persistent storage with object storage 
 
 Mount S3-compatible object storage (R2, S3, GCS, and more) as local filesystems. Access buckets using standard file operations with data that persists across sandbox lifecycles. Production deployment required.
 
 [ Learn about bucket mounting ](https://developers.cloudflare.com/sandbox/guides/mount-buckets/) 
 
-### Watch files for real-time changes
+###  Watch files for real-time changes 
 
 Monitor files and directories for changes using native filesystem events. Perfect for building hot reloading development servers, build automation systems, and configuration monitoring tools.
 
 [ Learn about file watching ](https://developers.cloudflare.com/sandbox/guides/file-watching/) 
 
-### Proxy external API requests securely
+###  Proxy external API requests securely 
 
 Keep credentials in your Worker while allowing sandboxes to access external APIs. A Worker proxy validates short-lived JWT tokens from the sandbox and injects real credentials at request time.
 

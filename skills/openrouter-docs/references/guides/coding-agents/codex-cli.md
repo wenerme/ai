@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
+
 ## What is Codex CLI?
 
 [Codex CLI](https://github.com/openai/codex) is OpenAI's open-source local coding agent that runs in your terminal. It supports multiple model providers, including OpenRouter, so you can use OpenRouter's unified API, provider failover, and organizational controls with Codex's agentic coding workflows.

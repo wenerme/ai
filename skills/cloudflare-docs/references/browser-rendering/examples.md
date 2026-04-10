@@ -64,6 +64,14 @@ Use [Workers Bindings](https://developers.cloudflare.com/browser-rendering/worke
 
 [ AI-powered browser automation with Stagehand ](https://developers.cloudflare.com/browser-rendering/stagehand/#use-stagehand-in-a-worker-with-workers-ai) Use natural language instructions to automate browser tasks with AI. 
 
+## CDP examples
+
+Use [CDP](https://developers.cloudflare.com/browser-rendering/cdp/) to connect to Browser Rendering from any environment using the Chrome DevTools Protocol.
+
+[ Connect Puppeteer from your local machine ](https://developers.cloudflare.com/browser-rendering/cdp/puppeteer/) Run Puppeteer scripts against Browser Rendering from Node.js on your local machine, CI/CD, or any external server. 
+
+[ Configure AI agents with MCP ](https://developers.cloudflare.com/browser-rendering/cdp/mcp-clients/) Set up Claude Desktop, Claude Code, Cursor, or other MCP clients to control browsers via Browser Rendering. 
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/examples/","name":"Examples"}}]}
 ```

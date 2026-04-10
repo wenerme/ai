@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/auth/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/auth/llms-full.txt.
+
 ## Bring your own API Keys
 
 OpenRouter supports both OpenRouter credits and the option to bring your own provider keys (BYOK).

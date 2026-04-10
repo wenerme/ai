@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/llms-full.txt.
+
 Tool calls (also known as function calls) give an LLM access to external tools. The LLM does not call the tools directly. Instead, it suggests the tool to call. The user then calls the tool separately and provides the results back to the LLM. Finally, the LLM formats the response into an answer to the user's original question.
 
 OpenRouter standardizes the tool calling interface across models and providers, making it easy to integrate external tools with any supported model.

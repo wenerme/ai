@@ -1,3 +1,5 @@
+# Billing
+
 This guide provides an overview of different Gemini API billing options,
 explains how to enable billing and monitor usage, and provides answers to
 frequently asked questions (FAQs) about billing.

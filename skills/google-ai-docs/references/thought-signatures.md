@@ -1,3 +1,5 @@
+# Thought Signatures
+
 > [!IMPORTANT]
 > **Important:** **Thought signatures are handled automatically** when you use the official [Google Gen AI SDKs](https://ai.google.dev/gemini-api/docs/libraries) and append the full model response object directly to history. **You
 > only need to work with thought signatures directly when using the REST API** , or if you are *manually extracting and returning parts history in multi-turn

@@ -23,7 +23,7 @@ There are several types of Transform Rules:
 * [**URL Rewrite Rules**](https://developers.cloudflare.com/rules/transform/url-rewrite/): Rewrite the URL path and query string of an HTTP request.
 * [**Request Header Transform Rules**](https://developers.cloudflare.com/rules/transform/request-header-modification/): Set the value of an HTTP request header or remove a request header.
 * [**Response Header Transform Rules**](https://developers.cloudflare.com/rules/transform/response-header-modification/): Set the value of an HTTP response header or remove a response header.
-* [**Managed Transforms**](https://developers.cloudflare.com/rules/transform/managed-transforms/): Perform common adjustments to HTTP request and response headers with the click of a button.
+* [**Managed Transforms**](https://developers.cloudflare.com/rules/transform/managed-transforms/): Perform common adjustments to HTTP request and response headers with pre-built, one-step configurations.
 
 For more complex header modifications and rewrite logic, consider using [Snippets](https://developers.cloudflare.com/rules/snippets/).
 
@@ -76,7 +76,7 @@ Managed Transforms run before other types of Transform Rules that modify HTTP he
 
 Transform Rules run in order. Rules that appear later in the list of Transform Rules can overwrite changes done by previous rules. You can define the rule order in the dashboard or via API.
 
-Request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) while evaluating Transform Rules for a request/response. For more information, refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation).
+Request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) while evaluating Transform Rules for a request/response. This means that later rules in the same phase cannot match on changes made by earlier rules (they always use the original field values). For more information, refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation).
 
 Warning
 

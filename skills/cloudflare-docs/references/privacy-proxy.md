@@ -30,25 +30,25 @@ Privacy Proxy powers services like [Microsoft Edge Secure Network ↗](https://b
 
 ## Features
 
-### Single-hop deployment
+###  Single-hop deployment 
 
 Deploy Privacy Proxy as a standalone proxy where Cloudflare handles authentication, proxying, and egress.
 
 [ Use Single-hop deployment ](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#single-hop) 
 
-### Double-hop deployment
+###  Double-hop deployment 
 
 Operate your own first-hop proxy to authenticate users, then relay traffic through Cloudflare for additional privacy separation.
 
 [ Use Double-hop deployment ](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/#double-hop) 
 
-### Geolocation preservation
+###  Geolocation preservation 
 
 Maintain accurate geolocation for users without exposing their real IP addresses, ensuring location-relevant content and services work correctly.
 
 [ Use Geolocation preservation ](https://developers.cloudflare.com/privacy-proxy/concepts/geolocation/) 
 
-### Privacy Pass authentication
+###  Privacy Pass authentication 
 
 Authenticate users with Privacy Pass tokens for production deployments, ensuring privacy-preserving access control.
 

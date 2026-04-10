@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
+
 ## What is OpenClaw?
 
 [OpenClaw](https://github.com/openclaw/openclaw) (formerly Moltbot, formerly Clawdbot) is an open-source AI agent platform that brings conversational AI to multiple messaging channels including Telegram, Discord, Slack, Signal, iMessage, and WhatsApp. It supports multiple LLM providers and allows you to run AI agents that can interact across all these platforms.

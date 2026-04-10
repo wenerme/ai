@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms-full.txt.
+
 Retrieval-Augmented Generation (RAG) grounds LLM responses in your own data by retrieving relevant documents before generating an answer. This prevents hallucinations and keeps responses up to date without fine-tuning.
 
 OpenRouter provides all three building blocks for a RAG pipeline through a single API:

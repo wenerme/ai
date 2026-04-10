@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/reference/responses/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/reference/responses/llms-full.txt.
+
 <Warning title="Beta API">
   This API is in **beta stage** and may have breaking changes.
 </Warning>

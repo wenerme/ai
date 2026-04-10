@@ -16,9 +16,9 @@ Copy page
 
 # Request handling
 
-Deprecated
+Note
 
-While the request handling features described on this page still work, [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) is now the preferred way to achieve advanced request handling, including timeouts, retries, and fallbacks. Dynamic Routing provides a more powerful and flexible approach with a visual interface for managing complex routing scenarios.
+[Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) also offers timeouts and retries per model, along with conditional routing, rate limiting, and budget limiting through a visual interface. This page documents request-handling configuration available through Universal Endpoint provider `config` settings as well as per-request `cf-aig-*` headers that work with any provider endpoint. You can also configure retries at the [gateway level](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#retry-requests).
 
 Your AI gateway supports different strategies for handling requests to providers, which allows you to manage AI interactions effectively and ensure your applications remain responsive and reliable.
 

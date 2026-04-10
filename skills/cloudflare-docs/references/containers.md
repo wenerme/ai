@@ -32,8 +32,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-4009)
-* [ Worker Config ](#tab-panel-4010)
+* [ Worker Code ](#tab-panel-4015)
+* [ Worker Config ](#tab-panel-4016)
 
 JavaScript
 
@@ -72,8 +72,8 @@ export default {
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-4007)
-* [  wrangler.toml ](#tab-panel-4008)
+* [  wrangler.jsonc ](#tab-panel-4013)
+* [  wrangler.toml ](#tab-panel-4014)
 
 JSONC
 
@@ -87,7 +87,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-09",
 
   "containers": [
 
@@ -146,7 +146,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-09"
 
 
 [[containers]]
@@ -180,13 +180,13 @@ tag = "v1"
 
 ## Next Steps
 
-### Deploy your first Container
+###  Deploy your first Container 
 
 Build and push an image, call a Container from a Worker, and understand scaling and routing.
 
 [ Deploy a Container ](https://developers.cloudflare.com/containers/get-started/) 
 
-### Container Examples
+###  Container Examples 
 
 See examples of how to use a Container with a Worker, including stateless and stateful routing, regional placement, Workflow and Queue integrations, AI-generated code execution, and short-lived workloads.
 

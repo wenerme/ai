@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+
 OpenRouter supports sending video files to compatible models via the API. This guide will show you how to work with video using our API.
 
 OpenRouter supports both **direct URLs** and **base64-encoded data URLs** for videos:

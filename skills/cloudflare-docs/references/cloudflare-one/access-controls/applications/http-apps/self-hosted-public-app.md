@@ -1,6 +1,6 @@
 ---
 title: Publish a self-hosted application to the Internet
-description: You can securely publish internal tools and applications by adding Cloudflare Access as an authentication layer between the end user and your origin server.
+description: Publish a self-hosted web application with Cloudflare Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -18,12 +18,16 @@ Copy page
 
 You can securely publish internal tools and applications by adding Cloudflare Access as an authentication layer between the end user and your origin server.
 
-This guide covers how to make a web application accessible to anyone on the Internet via a public hostname. If you would like to make the application available over a private IP or hostname, refer to [Add a self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
+This page describes how to make a web application accessible to anyone on the Internet via a public hostname. To make the application available over a private IP or hostname, refer to [Add a self-hosted private application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
 
 ## Prerequisites
 
 * An [active domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 * Domain uses either a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+
+Note
+
+If your domain uses a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), refer to [Partial (CNAME) setup](#partial-cname-setup) for additional DNS configuration steps.
 
 ## 1\. Add your application to Access
 
@@ -65,7 +69,7 @@ Note
 
 We recommend [creating an Access application](#1-add-your-application-to-access) before setting up the tunnel route. If you do not have an Access application in place, the published application will be available to anyone on the Internet.
 
-If your application is already publicly routable, a Tunnel is not strictly required. However, you will then need to protect your origin IP using [other methods](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
+If your application is already publicly routable, a tunnel is not strictly required. However, you will then need to protect your origin IP using [other methods](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
 
 ## 3\. Validate the Access token
 
@@ -74,6 +78,27 @@ To secure your origin, you must validate the [application token](https://develop
 One option is to configure the Cloudflare Tunnel daemon, `cloudflared`, to validate the token on your behalf. This is done by enabling [**Protect with Access**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#access) in your Cloudflare Tunnel settings. Alternatively, if you do not wish to perform automatic validation with Cloudflare Tunnel, you can instead [manually configure your origin](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) to check all requests for a valid token.
 
 Users can now connect to your self-hosted application after authenticating with Cloudflare Access.
+
+## Partial (CNAME) setup
+
+If your domain uses a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), Cloudflare does not manage your DNS zone. You must manually create DNS records at your external provider after adding a published application route to your tunnel.
+
+### Add a published application route
+
+In the tunnel configuration, [add a published application route](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#add-a-published-application-route) that maps a hostname to your internal service. For example, set the hostname to `app.example.com` and point it to `http://localhost:8080`.
+
+### Create a CNAME record at your DNS provider
+
+In a [full DNS setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/), Cloudflare automatically creates DNS records when you add a published application route to a tunnel. In a partial (`CNAME`) setup, you must add a CNAME record at the DNS provider that hosts your domain (your authoritative DNS provider).
+
+At your external DNS provider, create a CNAME record with the following values:
+
+* **Name**: The hostname you configured in the tunnel (for example, `app.example.com`)
+* **Target**: `<HOSTNAME>.cdn.cloudflare.net` (for example, `app.example.com.cdn.cloudflare.net`)
+
+Note
+
+The zone apex (for example, `example.com`) cannot use a CNAME record due to [DNS specification restrictions ↗](https://datatracker.ietf.org/doc/html/rfc1912#section-2.4). Some DNS providers work around this with [CNAME flattening](https://developers.cloudflare.com/dns/zone-setups/partial-setup/#cname-flattening), which resolves the CNAME at the provider level. If your provider does not support CNAME flattening, use a subdomain instead.
 
 ## Product compatibility
 

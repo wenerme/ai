@@ -34,25 +34,25 @@ It supports retrieval-augmented generation (RAG) patterns, enabling you to build
 
 ## Features
 
-### Automated indexing
+###  Automated indexing 
 
 Automatically and continuously index your data source, keeping your content fresh without manual reprocessing.
 
 [ View indexing ](https://developers.cloudflare.com/ai-search/configuration/indexing/) 
 
-### Multitenancy support
+###  Multitenancy support 
 
 Create multitenancy by scoping search to each tenant’s data using folder-based metadata filters.
 
 [ Add filters ](https://developers.cloudflare.com/ai-search/how-to/multitenancy/) 
 
-### Workers Binding
+###  Workers Binding 
 
 Call your AI Search instance for search or AI Search directly from a Cloudflare Worker using the native binding integration.
 
 [ Add to Worker ](https://developers.cloudflare.com/ai-search/usage/workers-binding/) 
 
-### Similarity caching
+###  Similarity caching 
 
 Cache repeated queries and results to improve latency and reduce compute on repeated requests.
 

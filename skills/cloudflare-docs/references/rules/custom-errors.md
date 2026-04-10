@@ -1,6 +1,6 @@
 ---
 title: Custom Errors
-description: Use Custom Errors to return custom content to your website visitors in case of HTTP errors returned by an origin server or by a Cloudflare product (including Cloudflare Workers), or when showing a security challenge.
+description: Use Custom Errors to replace default Cloudflare error pages with your own custom content. Custom error content is shown to visitors when an HTTP error occurs, whether the error comes from your origin server, a Cloudflare product (including Cloudflare Workers), or a security challenge.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Custom Errors
 
-Use Custom Errors to return custom content to your website visitors in case of HTTP errors returned by an origin server or by a Cloudflare product (including [Cloudflare Workers](https://developers.cloudflare.com/workers/)), or when showing a [security challenge](https://developers.cloudflare.com/cloudflare-challenges/).
+Use Custom Errors to replace default Cloudflare error pages with your own custom content. Custom error content is shown to visitors when an HTTP error occurs, whether the error comes from your origin server, a Cloudflare product (including [Cloudflare Workers](https://developers.cloudflare.com/workers/)), or a [security challenge](https://developers.cloudflare.com/cloudflare-challenges/).
 
 You can configure custom error content using the following methods:
 
@@ -33,8 +33,8 @@ When an error of a [specific type](https://developers.cloudflare.com/rules/custo
 
 1. Search for a configured Error Page at the account level for the specific error.
 2. Search for a configured Error Page at the zone level for the specific error (it will have priority over the account-level Error Page, if any).
-3. Search for a matching custom error rule at the account level. The rule will have priority over 500 and 1000 class Error Pages at the account or zone level.
-4. Search for a matching custom error rule at the zone level. The rule will have priority over 500 and 1000 class Error Pages at the account or zone level and over custom error rules at the account level.
+3. Search for a matching custom error rule at the account level. The rule will have priority over [500 class and 1000 class](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/) Error Pages at the account or zone level.
+4. Search for a matching custom error rule at the zone level. The rule will have priority over [500 class and 1000 class](https://developers.cloudflare.com/rules/custom-errors/reference/error-page-types/) Error Pages at the account or zone level and over custom error rules at the account level.
 5. If a security rule like a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/) or a [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) triggers a custom block response instead of a default Cloudflare WAF block page, the rule-specific block response will have priority over Error Pages or a matching custom error rule.
 6. If any of the previous configurations apply, serve the custom error content to the visitor. If not, serve the default error page for the specific error type.
 

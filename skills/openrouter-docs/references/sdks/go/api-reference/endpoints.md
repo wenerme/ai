@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/go/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/go/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -13,8 +15,61 @@ Endpoint information
 
 ### Available Operations
 
-* [List](#list) - List all endpoints for a model
 * [ListZdrEndpoints](#listzdrendpoints) - Preview the impact of ZDR on the available endpoints
+* [List](#list) - List all endpoints for a model
+
+## ListZdrEndpoints
+
+Preview the impact of ZDR on the available endpoints
+
+### Example Usage
+
+{/* UsageSnippet language="go" operationID="listEndpointsZdr" method="get" path="/endpoints/zdr" */}
+
+```go
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Endpoints.ListZdrEndpoints(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter | Type                                                                  | Required             | Description                         |
+| --------- | --------------------------------------------------------------------- | -------------------- | ----------------------------------- |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request. |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.       |
+
+### Response
+
+**[\*operations.ListEndpointsZdrResponse](/docs/sdks/go/api-reference/operations/listendpointszdrresponse), error**
+
+### Errors
+
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| sdkerrors.InternalServerResponseError | 500         | application/json |
+| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
 
 ## List
 
@@ -69,58 +124,5 @@ func main() {
 | Error Type                            | Status Code | Content Type     |
 | ------------------------------------- | ----------- | ---------------- |
 | sdkerrors.NotFoundResponseError       | 404         | application/json |
-| sdkerrors.InternalServerResponseError | 500         | application/json |
-| sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
-
-## ListZdrEndpoints
-
-Preview the impact of ZDR on the available endpoints
-
-### Example Usage
-
-{/* UsageSnippet language="go" operationID="listEndpointsZdr" method="get" path="/endpoints/zdr" */}
-
-```go
-package main
-
-import(
-	"context"
-	"os"
-	openrouter "github.com/OpenRouterTeam/go-sdk"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := openrouter.New(
-        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
-    )
-
-    res, err := s.Endpoints.ListZdrEndpoints(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter | Type                                                                  | Required             | Description                         |
-| --------- | --------------------------------------------------------------------- | -------------------- | ----------------------------------- |
-| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request. |
-| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.       |
-
-### Response
-
-**[\*operations.ListEndpointsZdrResponse](/docs/sdks/go/api-reference/operations/listendpointszdrresponse), error**
-
-### Errors
-
-| Error Type                            | Status Code | Content Type     |
-| ------------------------------------- | ----------- | ---------------- |
 | sdkerrors.InternalServerResponseError | 500         | application/json |
 | sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |

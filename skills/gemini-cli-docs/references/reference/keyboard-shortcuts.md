@@ -89,7 +89,7 @@ available combinations.
 | `input.submit`                       | Submit the current prompt.                                                | `Enter`                                                                             |
 | `input.queueMessage`                 | Queue the current prompt to be processed after the current task finishes. | `Tab`                                                                               |
 | `input.newline`                      | Insert a newline without submitting.                                      | `Ctrl+Enter``Cmd/Win+Enter``Alt+Enter``Shift+Enter``Ctrl+J` |
-| `input.openExternalEditor`           | Open the current prompt or the plan in an external editor.                | `Ctrl+G`                                                                            |
+| `input.openExternalEditor`           | Open the current prompt or the plan in an external editor.                | `Ctrl+G``Ctrl+Shift+G`                                                        |
 | `input.deprecatedOpenExternalEditor` | Deprecated command to open external editor.                               | `Ctrl+X`                                                                            |
 | `input.paste`                        | Paste from the clipboard.                                                 | `Ctrl+V``Cmd/Win+V``Alt+V`                                              |
 

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/llms-full.txt.
+
 ## What's New
 
 See Anthropic's [What's new in Claude 4.6](https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-6) for a full overview of new features.

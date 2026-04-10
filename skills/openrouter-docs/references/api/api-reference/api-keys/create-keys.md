@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/api-keys/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/api-keys/llms-full.txt.
+
 # Create a new API key
 
 POST https://openrouter.ai/api/v1/keys
@@ -68,9 +70,25 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: string
-                  description: Name for the new API key
+                creator_user_id:
+                  type:
+                    - string
+                    - 'null'
+                  description: >-
+                    Optional user ID of the key creator. Only meaningful for
+                    organization-owned keys where a specific member is creating
+                    the key.
+                expires_at:
+                  type:
+                    - string
+                    - 'null'
+                  format: date-time
+                  description: >-
+                    Optional ISO 8601 UTC timestamp when the API key should
+                    expire. Must be UTC, other timezones will be rejected
+                include_byok_in_limit:
+                  type: boolean
+                  description: Whether to include BYOK usage in the limit
                 limit:
                   type: number
                   format: double
@@ -84,25 +102,9 @@ paths:
                     Type of limit reset for the API key (daily, weekly, monthly,
                     or null for no reset). Resets happen automatically at
                     midnight UTC, and weeks are Monday through Sunday.
-                include_byok_in_limit:
-                  type: boolean
-                  description: Whether to include BYOK usage in the limit
-                expires_at:
-                  type:
-                    - string
-                    - 'null'
-                  format: date-time
-                  description: >-
-                    Optional ISO 8601 UTC timestamp when the API key should
-                    expire. Must be UTC, other timezones will be rejected
-                creator_user_id:
-                  type:
-                    - string
-                    - 'null'
-                  description: >-
-                    Optional user ID of the key creator. Only meaningful for
-                    organization-owned keys where a specific member is creating
-                    the key.
+                name:
+                  type: string
+                  description: Name for the new API key
               required:
                 - name
 servers:
@@ -123,18 +125,55 @@ components:
     KeysPostResponsesContentApplicationJsonSchemaData:
       type: object
       properties:
-        hash:
+        byok_usage:
+          type: number
+          format: double
+          description: Total external BYOK usage (in USD) for the API key
+        byok_usage_daily:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for the current UTC day
+        byok_usage_monthly:
+          type: number
+          format: double
+          description: External BYOK usage (in USD) for current UTC month
+        byok_usage_weekly:
+          type: number
+          format: double
+          description: >-
+            External BYOK usage (in USD) for the current UTC week
+            (Monday-Sunday)
+        created_at:
           type: string
-          description: Unique hash identifier for the API key
-        name:
-          type: string
-          description: Name of the API key
-        label:
-          type: string
-          description: Human-readable label for the API key
+          description: ISO 8601 timestamp of when the API key was created
+        creator_user_id:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The user ID of the key creator. For organization-owned keys, this is
+            the member who created the key. For individual users, this is the
+            user's own ID.
         disabled:
           type: boolean
           description: Whether the API key is disabled
+        expires_at:
+          type:
+            - string
+            - 'null'
+          format: date-time
+          description: >-
+            ISO 8601 UTC timestamp when the API key expires, or null if no
+            expiration
+        hash:
+          type: string
+          description: Unique hash identifier for the API key
+        include_byok_in_limit:
+          type: boolean
+          description: Whether to include external BYOK usage in the credit limit
+        label:
+          type: string
+          description: Human-readable label for the API key
         limit:
           type: number
           format: double
@@ -148,9 +187,14 @@ components:
             - string
             - 'null'
           description: Type of limit reset for the API key
-        include_byok_in_limit:
-          type: boolean
-          description: Whether to include external BYOK usage in the credit limit
+        name:
+          type: string
+          description: Name of the API key
+        updated_at:
+          type:
+            - string
+            - 'null'
+          description: ISO 8601 timestamp of when the API key was last updated
         usage:
           type: number
           format: double
@@ -159,78 +203,36 @@ components:
           type: number
           format: double
           description: OpenRouter credit usage (in USD) for the current UTC day
+        usage_monthly:
+          type: number
+          format: double
+          description: OpenRouter credit usage (in USD) for the current UTC month
         usage_weekly:
           type: number
           format: double
           description: >-
             OpenRouter credit usage (in USD) for the current UTC week
             (Monday-Sunday)
-        usage_monthly:
-          type: number
-          format: double
-          description: OpenRouter credit usage (in USD) for the current UTC month
-        byok_usage:
-          type: number
-          format: double
-          description: Total external BYOK usage (in USD) for the API key
-        byok_usage_daily:
-          type: number
-          format: double
-          description: External BYOK usage (in USD) for the current UTC day
-        byok_usage_weekly:
-          type: number
-          format: double
-          description: >-
-            External BYOK usage (in USD) for the current UTC week
-            (Monday-Sunday)
-        byok_usage_monthly:
-          type: number
-          format: double
-          description: External BYOK usage (in USD) for current UTC month
-        created_at:
-          type: string
-          description: ISO 8601 timestamp of when the API key was created
-        updated_at:
-          type:
-            - string
-            - 'null'
-          description: ISO 8601 timestamp of when the API key was last updated
-        expires_at:
-          type:
-            - string
-            - 'null'
-          format: date-time
-          description: >-
-            ISO 8601 UTC timestamp when the API key expires, or null if no
-            expiration
-        creator_user_id:
-          type:
-            - string
-            - 'null'
-          description: >-
-            The user ID of the key creator. For organization-owned keys, this is
-            the member who created the key. For individual users, this is the
-            user's own ID.
       required:
-        - hash
-        - name
-        - label
+        - byok_usage
+        - byok_usage_daily
+        - byok_usage_monthly
+        - byok_usage_weekly
+        - created_at
+        - creator_user_id
         - disabled
+        - hash
+        - include_byok_in_limit
+        - label
         - limit
         - limit_remaining
         - limit_reset
-        - include_byok_in_limit
+        - name
+        - updated_at
         - usage
         - usage_daily
-        - usage_weekly
         - usage_monthly
-        - byok_usage
-        - byok_usage_daily
-        - byok_usage_weekly
-        - byok_usage_monthly
-        - created_at
-        - updated_at
-        - creator_user_id
+        - usage_weekly
       description: The created API key information
       title: KeysPostResponsesContentApplicationJsonSchemaData
     API Keys_createKeys_Response_201:
@@ -388,10 +390,10 @@ url = "https://openrouter.ai/api/v1/keys"
 
 payload = {
     "name": "Analytics Service Key",
-    "limit": 150,
-    "limit_reset": "monthly",
-    "include_byok_in_limit": True,
-    "expires_at": "2028-06-30T23:59:59Z"
+    "expires_at": "2029-11-30T23:59:59Z",
+    "include_byok_in_limit": False,
+    "limit": 100,
+    "limit_reset": "weekly"
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -408,7 +410,7 @@ const url = 'https://openrouter.ai/api/v1/keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"name":"Analytics Service Key","limit":150,"limit_reset":"monthly","include_byok_in_limit":true,"expires_at":"2028-06-30T23:59:59Z"}'
+  body: '{"name":"Analytics Service Key","expires_at":"2029-11-30T23:59:59Z","include_byok_in_limit":false,"limit":100,"limit_reset":"weekly"}'
 };
 
 try {
@@ -434,7 +436,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/keys"
 
-	payload := strings.NewReader("{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}")
+	payload := strings.NewReader("{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -464,7 +466,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}"
+request.body = "{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -477,7 +479,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}")
+  .body("{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}")
   .asString();
 ```
 
@@ -490,10 +492,10 @@ $client = new \GuzzleHttp\Client();
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/keys', [
   'body' => '{
   "name": "Analytics Service Key",
-  "limit": 150,
-  "limit_reset": "monthly",
-  "include_byok_in_limit": true,
-  "expires_at": "2028-06-30T23:59:59Z"
+  "expires_at": "2029-11-30T23:59:59Z",
+  "include_byok_in_limit": false,
+  "limit": 100,
+  "limit_reset": "weekly"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -511,7 +513,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"Analytics Service Key\",\n  \"limit\": 150,\n  \"limit_reset\": \"monthly\",\n  \"include_byok_in_limit\": true,\n  \"expires_at\": \"2028-06-30T23:59:59Z\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"Analytics Service Key\",\n  \"expires_at\": \"2029-11-30T23:59:59Z\",\n  \"include_byok_in_limit\": false,\n  \"limit\": 100,\n  \"limit_reset\": \"weekly\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -524,10 +526,10 @@ let headers = [
 ]
 let parameters = [
   "name": "Analytics Service Key",
-  "limit": 150,
-  "limit_reset": "monthly",
-  "include_byok_in_limit": true,
-  "expires_at": "2028-06-30T23:59:59Z"
+  "expires_at": "2029-11-30T23:59:59Z",
+  "include_byok_in_limit": false,
+  "limit": 100,
+  "limit_reset": "weekly"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

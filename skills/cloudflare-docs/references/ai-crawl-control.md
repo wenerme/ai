@@ -39,25 +39,25 @@ With AI Crawl Control, you can:
 
 ## Features
 
-### Manage AI crawlers
+###  Manage AI crawlers 
 
 Control how AI crawlers interact with your domain.
 
 [ Manage AI crawlers ](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/) 
 
-### Analyze AI traffic
+###  Analyze AI traffic 
 
 Gain insight into how AI crawlers are interacting with your pages.
 
 [ Analyze AI traffic ](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/) 
 
-### Track robots.txt
+###  Track robots.txt 
 
 Track the health of `robots.txt` files and identify which crawlers are violating your directives.
 
 [ Track robots.txt ](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/) 
 
-### Pay Per Crawl
+###  Pay Per Crawl 
 
 Allow AI crawlers to access content by paying per crawl.
 

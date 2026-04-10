@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/get-started/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/get-started/llms-full.txt.
+
 OpenRouter offers free models that let you experiment with AI without any cost. The easiest way to try these models is through the [Chat Playground](https://openrouter.ai/chat), where you can start chatting immediately.
 
 ## Using the Free Models Router

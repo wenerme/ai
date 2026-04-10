@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/administration/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/administration/llms-full.txt.
+
 <Warning>
   Coinbase deprecated the APIs used by this flow, so `POST /api/v1/credits/coinbase` has been
   removed and now returns `410 Gone`.

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/get-started/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/get-started/llms-full.txt.
+
 ## For Providers
 
 If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/how-to-list) to get started.

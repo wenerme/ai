@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/llms-full.txt.
+
 Help us improve OpenRouter by reporting issues with AI generations. You can submit feedback directly from the Chatroom or the Activity page.
 
 ## Overview

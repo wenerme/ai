@@ -34,19 +34,19 @@ Refer to [Get started](https://developers.cloudflare.com/network-flow/get-starte
 
 ## Features
 
-### Rules
+###  Rules 
 
 Create rules to set thresholds for network traffic volume and receive alerts when thresholds are exceeded.
 
 [ Use Rules ](https://developers.cloudflare.com/network-flow/rules/) 
 
-### Magic Transit integration
+###  Magic Transit integration 
 
 Magic Transit On Demand customers can automatically enable DDoS mitigation when the service detects a DDoS attack.
 
 [ Use Magic Transit integration ](https://developers.cloudflare.com/network-flow/magic-transit-integration/) 
 
-### Rule notifications
+###  Rule notifications 
 
 Configure email, webhook, or PagerDuty notifications to receive alerts when rule thresholds are exceeded.
 

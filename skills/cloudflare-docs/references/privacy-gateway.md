@@ -34,19 +34,19 @@ Privacy Gateway is currently in closed beta – available to select privacy-orie
 
 ## Features
 
-### Get started
+###  Get started 
 
 Learn how to set up Privacy Gateway for your application.
 
 [ Get started ](https://developers.cloudflare.com/privacy-gateway/get-started/) 
 
-### Legal
+###  Legal 
 
 Learn about the different parties and data shared in Privacy Gateway.
 
 [ Learn more ](https://developers.cloudflare.com/privacy-gateway/reference/legal/) 
 
-### Metrics
+###  Metrics 
 
 Learn about how to query Privacy Gateway metrics.
 

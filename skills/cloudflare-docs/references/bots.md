@@ -36,25 +36,25 @@ To see the differences in features and functionality, visit [Plans](https://deve
 
 ## Features
 
-### Bot Fight Mode
+###  Bot Fight Mode 
 
 Detect and mitigate bot traffic on your domain.
 
 [ Use Bot Fight Mode ](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) 
 
-### Super Bot Fight Mode
+###  Super Bot Fight Mode 
 
 Identify traffic matching patterns of known bots, challenge or block bots, protect static resources, and view analytics to help you understand bot traffic using Super Bot Fight Mode.
 
 [ Use Super Bot Fight Mode ](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) 
 
-### Bot Analytics
+###  Bot Analytics 
 
 Use Bot Analytics to dynamically examine bot traffic.
 
 [ Use Bot Analytics ](https://developers.cloudflare.com/bots/bot-analytics/) 
 
-### Firewall variables
+###  Firewall variables 
 
 Access several new variables within the Firewall expression builder.
 

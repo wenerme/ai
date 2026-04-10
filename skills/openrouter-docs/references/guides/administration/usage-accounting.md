@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/administration/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/administration/llms-full.txt.
+
 The OpenRouter API provides built-in **Usage Accounting** that allows you to track AI model usage without making additional API calls. This feature provides detailed information about token counts, costs, and caching status directly in your API responses.
 
 ## Usage Information

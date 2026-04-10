@@ -30,7 +30,7 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 ## Features
 
-### IPFS Gateway
+###  IPFS Gateway 
 
  Paid add-on 
 
@@ -38,7 +38,7 @@ Provides a read-only, HTTP-accessible interface to the [Interplanetary File Syst
 
 [ Use IPFS Gateway ](https://developers.cloudflare.com/web3/ipfs-gateway/) 
 
-### Ethereum Gateway
+###  Ethereum Gateway 
 
  Paid add-on 
 

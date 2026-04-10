@@ -36,19 +36,19 @@ With globally distributed sensors and comprehensive attack analytics, Email Secu
 
 ## Features
 
-### Deployment
+###  Deployment 
 
 Email security (formerly Area 1) provides two architectures to protect your organization: inline or API setup. Inline architecture evaluates email messages before they reach a user's inbox. API architecture evaluates emails when they have already reached a user's inbox.
 
 [ Evaluate deployment options ](https://developers.cloudflare.com/email-security/deployment/) 
 
-### SSO integration
+###  SSO integration 
 
 In addition to standard logins, Email security (formerly Area 1) offers support for SAML based single sign-on (SSO) logins to your dashboard.
 
 [ Use SSO integration ](https://developers.cloudflare.com/email-security/account-setup/sso/) 
 
-### Business email compromise
+###  Business email compromise 
 
 Attackers often try to impersonate executives within an organization when sending malicious emails. The Business email compromise (BEC) feature protects against these attacks.
 

@@ -46,7 +46,7 @@ To report bugs or give feedback, go to the [#workers-ai Discord channel ↗](htt
 
 ## Features
 
-### Models
+###  Models 
 
 Workers AI comes with a curated set of popular open-source models that enable you to do tasks such as image classification, text generation, object detection and more.
 

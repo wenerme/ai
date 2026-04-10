@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/guardrails/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/guardrails/llms-full.txt.
+
 # List all key assignments
 
 GET https://openrouter.ai/api/v1/guardrails/assignments/keys
@@ -69,23 +71,6 @@ components:
     KeyAssignment:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the assignment
-        key_hash:
-          type: string
-          description: Hash of the assigned API key
-        guardrail_id:
-          type: string
-          format: uuid
-          description: ID of the guardrail
-        key_name:
-          type: string
-          description: Name of the API key
-        key_label:
-          type: string
-          description: Label of the API key
         assigned_by:
           type:
             - string
@@ -94,14 +79,31 @@ components:
         created_at:
           type: string
           description: ISO 8601 timestamp of when the assignment was created
+        guardrail_id:
+          type: string
+          format: uuid
+          description: ID of the guardrail
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the assignment
+        key_hash:
+          type: string
+          description: Hash of the assigned API key
+        key_label:
+          type: string
+          description: Label of the API key
+        key_name:
+          type: string
+          description: Name of the API key
       required:
-        - id
-        - key_hash
-        - guardrail_id
-        - key_name
-        - key_label
         - assigned_by
         - created_at
+        - guardrail_id
+        - id
+        - key_hash
+        - key_label
+        - key_name
       title: KeyAssignment
     ListKeyAssignmentsResponse:
       type: object

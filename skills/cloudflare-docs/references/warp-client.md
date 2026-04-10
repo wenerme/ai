@@ -28,13 +28,13 @@ This documentation is for the consumer version of WARP (1.1.1.1 with WARP). If y
 
 ## Features
 
-### WARP modes
+###  WARP modes 
 
 The WARP client has several modes to better suit your connection needs.
 
 [ Use WARP modes ](https://developers.cloudflare.com/warp-client/warp-modes/) 
 
-### OS clients
+###  OS clients 
 
 The WARP client runs on several operating systems, including iOS and Android.
 

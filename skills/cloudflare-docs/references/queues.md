@@ -28,19 +28,19 @@ Cloudflare Queues integrate with [Cloudflare Workers](https://developers.cloudfl
 
 ## Features
 
-### Batching, Retries and Delays
+###  Batching, Retries and Delays 
 
 Cloudflare Queues allows you to batch, retry and delay messages.
 
 [ Use Batching, Retries and Delays ](https://developers.cloudflare.com/queues/configuration/batching-retries/) 
 
-### Dead Letter Queues
+###  Dead Letter Queues 
 
 Redirect your messages when a delivery failure occurs.
 
 [ Use Dead Letter Queues ](https://developers.cloudflare.com/queues/configuration/dead-letter-queues/) 
 
-### Pull consumers
+###  Pull consumers 
 
 Configure pull-based consumers to pull from a queue over HTTP from infrastructure outside of Cloudflare Workers.
 

@@ -1,6 +1,6 @@
 ---
 title: Cloud Connector
-description: Cloud Connector (Beta) allows you to route matching incoming traffic from your website to a public cloud provider that you define: Cloudflare R2 object storage or an external provider such as AWS, Google Cloud, and Azure. With Cloud Connector you can make Cloudflare the control center for your web traffic, including traffic served from public cloud providers, without having to configure additional rules.
+description: Cloud Connector (Beta) allows you to route matching incoming traffic from your website to a public cloud provider that you define: Cloudflare R2 object storage or an external provider such as AWS, Google Cloud, and Azure. With Cloud Connector, you can manage traffic to cloud-hosted content through the same Cloudflare dashboard you use for the rest of your website, without having to configure additional rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Cloud Connector
 
-Cloud Connector (Beta) allows you to route matching incoming traffic from your website to a public cloud provider that you define: [Cloudflare R2](https://developers.cloudflare.com/r2/) object storage or an external provider such as AWS, Google Cloud, and Azure. With Cloud Connector you can make Cloudflare the control center for your web traffic, including traffic served from public cloud providers, without having to configure additional rules.
+Cloud Connector (Beta) allows you to route matching incoming traffic from your website to a public cloud provider that you define: [Cloudflare R2](https://developers.cloudflare.com/r2/) object storage or an external provider such as AWS, Google Cloud, and Azure. With Cloud Connector, you can manage traffic to cloud-hosted content through the same Cloudflare dashboard you use for the rest of your website, without having to configure additional rules.
 
 Note
 
@@ -29,9 +29,9 @@ First, you configure a Cloud Connector rule that specifies:
 * The cloud provider and a supported cloud service that will accept traffic.
 * The traffic that will be routed to that cloud service.
 
-Then, Cloudflare will create the [necessary configurations](#applied-configurations) so that the content is accessible for requests matching your Cloud Connector rule. Your object storage bucket should be public for Cloud Connector to work.
+Then, Cloudflare will create the [necessary configurations](#applied-configurations) so that the content is accessible for requests matching your Cloud Connector rule. Your object storage bucket must be publicly accessible for Cloud Connector to work.
 
-Cloud Connector rules are evaluated last in the request evaluation workflow. When there is a rule match and you have other rules changing the same settings, the Cloud Connector rule will win over other rules.
+Cloud Connector rules are evaluated last in the [request evaluation workflow](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/). When a Cloud Connector rule matches and other rules have modified the same settings (such as the `Host` header), the Cloud Connector rule takes precedence.
 
 ## Applied configurations
 

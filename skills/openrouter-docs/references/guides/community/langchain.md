@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/community/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/community/llms-full.txt.
+
 ## Using LangChain
 
 LangChain provides a standard interface for working with chat models. You can use OpenRouter with LangChain using the dedicated `ChatOpenRouter` integration packages. For more details on LangChain's model interface, see the [LangChain Models documentation](https://docs.langchain.com/oss/python/langchain/models).

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/guardrails/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/guardrails/llms-full.txt.
+
 # Update a guardrail
 
 PATCH https://openrouter.ai/api/v1/guardrails/{id}
@@ -89,34 +91,6 @@ components:
     UpdateGuardrailRequest:
       type: object
       properties:
-        name:
-          type: string
-          description: New name for the guardrail
-        description:
-          type:
-            - string
-            - 'null'
-          description: New description for the guardrail
-        limit_usd:
-          type: number
-          format: double
-          description: New spending limit in USD
-        reset_interval:
-          $ref: '#/components/schemas/GuardrailInterval'
-        allowed_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: New list of allowed provider IDs
-        ignored_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of provider IDs to exclude from routing
         allowed_models:
           type:
             - array
@@ -124,40 +98,23 @@ components:
           items:
             type: string
           description: Array of model identifiers (slug or canonical_slug accepted)
-        enforce_zdr:
-          type:
-            - boolean
-            - 'null'
-          description: Whether to enforce zero data retention
-      title: UpdateGuardrailRequest
-    UpdateGuardrailResponseData:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the guardrail
-        name:
-          type: string
-          description: Name of the guardrail
-        description:
-          type:
-            - string
-            - 'null'
-          description: Description of the guardrail
-        limit_usd:
-          type: number
-          format: double
-          description: Spending limit in USD
-        reset_interval:
-          $ref: '#/components/schemas/GuardrailInterval'
         allowed_providers:
           type:
             - array
             - 'null'
           items:
             type: string
-          description: List of allowed provider IDs
+          description: New list of allowed provider IDs
+        description:
+          type:
+            - string
+            - 'null'
+          description: New description for the guardrail
+        enforce_zdr:
+          type:
+            - boolean
+            - 'null'
+          description: Whether to enforce zero data retention
         ignored_providers:
           type:
             - array
@@ -165,6 +122,19 @@ components:
           items:
             type: string
           description: List of provider IDs to exclude from routing
+        limit_usd:
+          type: number
+          format: double
+          description: New spending limit in USD
+        name:
+          type: string
+          description: New name for the guardrail
+        reset_interval:
+          $ref: '#/components/schemas/GuardrailInterval'
+      title: UpdateGuardrailRequest
+    UpdateGuardrailResponseData:
+      type: object
+      properties:
         allowed_models:
           type:
             - array
@@ -172,23 +142,55 @@ components:
           items:
             type: string
           description: Array of model canonical_slugs (immutable identifiers)
+        allowed_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of allowed provider IDs
+        created_at:
+          type: string
+          description: ISO 8601 timestamp of when the guardrail was created
+        description:
+          type:
+            - string
+            - 'null'
+          description: Description of the guardrail
         enforce_zdr:
           type:
             - boolean
             - 'null'
           description: Whether to enforce zero data retention
-        created_at:
+        id:
           type: string
-          description: ISO 8601 timestamp of when the guardrail was created
+          format: uuid
+          description: Unique identifier for the guardrail
+        ignored_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of provider IDs to exclude from routing
+        limit_usd:
+          type: number
+          format: double
+          description: Spending limit in USD
+        name:
+          type: string
+          description: Name of the guardrail
+        reset_interval:
+          $ref: '#/components/schemas/GuardrailInterval'
         updated_at:
           type:
             - string
             - 'null'
           description: ISO 8601 timestamp of when the guardrail was last updated
       required:
+        - created_at
         - id
         - name
-        - created_at
       title: UpdateGuardrailResponseData
     UpdateGuardrailResponse:
       type: object
@@ -338,9 +340,9 @@ import requests
 url = "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
 
 payload = {
-    "name": "Updated Guardrail Name",
     "description": "Updated description",
     "limit_usd": 75,
+    "name": "Updated Guardrail Name",
     "reset_interval": "weekly"
 }
 headers = {
@@ -358,7 +360,7 @@ const url = 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446
 const options = {
   method: 'PATCH',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"name":"Updated Guardrail Name","description":"Updated description","limit_usd":75,"reset_interval":"weekly"}'
+  body: '{"description":"Updated description","limit_usd":75,"name":"Updated Guardrail Name","reset_interval":"weekly"}'
 };
 
 try {
@@ -384,7 +386,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000"
 
-	payload := strings.NewReader("{\n  \"name\": \"Updated Guardrail Name\",\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"reset_interval\": \"weekly\"\n}")
+	payload := strings.NewReader("{\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"name\": \"Updated Guardrail Name\",\n  \"reset_interval\": \"weekly\"\n}")
 
 	req, _ := http.NewRequest("PATCH", url, payload)
 
@@ -414,7 +416,7 @@ http.use_ssl = true
 request = Net::HTTP::Patch.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"Updated Guardrail Name\",\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"reset_interval\": \"weekly\"\n}"
+request.body = "{\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"name\": \"Updated Guardrail Name\",\n  \"reset_interval\": \"weekly\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -427,7 +429,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.patch("https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"name\": \"Updated Guardrail Name\",\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"reset_interval\": \"weekly\"\n}")
+  .body("{\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"name\": \"Updated Guardrail Name\",\n  \"reset_interval\": \"weekly\"\n}")
   .asString();
 ```
 
@@ -439,9 +441,9 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('PATCH', 'https://openrouter.ai/api/v1/guardrails/550e8400-e29b-41d4-a716-446655440000', [
   'body' => '{
-  "name": "Updated Guardrail Name",
   "description": "Updated description",
   "limit_usd": 75,
+  "name": "Updated Guardrail Name",
   "reset_interval": "weekly"
 }',
   'headers' => [
@@ -460,7 +462,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/guardrails/550e8400-e2
 var request = new RestRequest(Method.PATCH);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"Updated Guardrail Name\",\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"reset_interval\": \"weekly\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"description\": \"Updated description\",\n  \"limit_usd\": 75,\n  \"name\": \"Updated Guardrail Name\",\n  \"reset_interval\": \"weekly\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -472,9 +474,9 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "name": "Updated Guardrail Name",
   "description": "Updated description",
   "limit_usd": 75,
+  "name": "Updated Guardrail Name",
   "reset_interval": "weekly"
 ] as [String : Any]
 

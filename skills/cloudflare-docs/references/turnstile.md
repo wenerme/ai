@@ -54,13 +54,13 @@ Turnstile is WCAG 2.2 AAA compliant.
 
 ## Features
 
-### Turnstile Analytics
+###  Turnstile Analytics 
 
 Assess the number of challenges issued, evaluate the [challenge solve rate](https://developers.cloudflare.com/cloudflare-challenges/reference/challenge-solve-rate/), and view the metrics of issued challenges.
 
 [ Use Turnstile Analytics ](https://developers.cloudflare.com/turnstile/turnstile-analytics/) 
 
-### Pre-clearance
+###  Pre-clearance 
 
 Integrate Cloudflare challenges on single-page applications (SPAs) by allowing Turnstile to issue a Pre-Clearance cookie.
 

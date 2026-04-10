@@ -24,13 +24,13 @@ Provision and manage Cloudflare using infrastructure as code through [Pulumi ↗
 
 ## Features
 
-### Open Source
+###  Open Source 
 
 [Pulumi ↗](https://github.com/pulumi/pulumi) is open source and uses the Apache 2.0 license.
 
 [ View open source commitment ](https://www.pulumi.com/blog/pulumi-hearts-opensource/) 
 
-### Multiple languages and SDKs
+###  Multiple languages and SDKs 
 
 Use TypeScript, JavaScript, Python, Go, .Net, Java, or YAML to write Pulumi programs. Each language is as capable as the other and supports the entire [Pulumi Registry ↗](https://www.pulumi.com/registry/).
 

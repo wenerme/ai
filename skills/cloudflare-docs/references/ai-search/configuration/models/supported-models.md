@@ -52,16 +52,20 @@ Production models are the actively supported and recommended models that are sta
 | @cf/meta/llama-3.1-8b-instruct-fast         | 60,000                                   |                         |
 | @cf/meta/llama-3.1-8b-instruct-fp8          | 32,000                                   |                         |
 | @cf/meta/llama-4-scout-17b-16e-instruct     | 131,000                                  |                         |
+| @cf/zai-org/glm-4.7-flash                   | 131,072                                  |                         |
+| @cf/qwen/qwen3-30b-a3b-fp8                  | 32,000                                   |                         |
 
 ### Embedding
 
-| Provider                      | Alias                                 | Vector dims | Input tokens | Metric |
-| ----------------------------- | ------------------------------------- | ----------- | ------------ | ------ |
-| **Google AI Studio**          | google-ai-studio/gemini-embedding-001 | 1,536       | 2048         | cosine |
-| **OpenAI**                    | openai/text-embedding-3-small         | 1,536       | 8192         | cosine |
-| openai/text-embedding-3-large | 1,536                                 | 8192        | cosine       |        |
-| **Workers AI**                | @cf/baai/bge-m3                       | 1,024       | 512          | cosine |
-| @cf/baai/bge-large-en-v1.5    | 1,024                                 | 512         | cosine       |        |
+| Provider                       | Alias                                 | Vector dims | Input tokens | Metric |
+| ------------------------------ | ------------------------------------- | ----------- | ------------ | ------ |
+| **Google AI Studio**           | google-ai-studio/gemini-embedding-001 | 1,536       | 2048         | cosine |
+| **OpenAI**                     | openai/text-embedding-3-small         | 1,536       | 8192         | cosine |
+| openai/text-embedding-3-large  | 1,536                                 | 8192        | cosine       |        |
+| **Workers AI**                 | @cf/baai/bge-m3                       | 1,024       | 512          | cosine |
+| @cf/baai/bge-large-en-v1.5     | 1,024                                 | 512         | cosine       |        |
+| @cf/qwen/qwen3-embedding-0.6b  | 1,024                                 | 4,096       | cosine       |        |
+| @cf/google/embeddinggemma-300m | 768                                   | 512         | cosine       |        |
 
 ### Reranking
 

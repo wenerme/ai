@@ -30,31 +30,31 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 ## Features
 
-### Load balancing and failover
+###  Load balancing and failover 
 
 Distribute traffic evenly across your healthy endpoints, automatically failing over when an endpoint is unhealthy or unresponsive.
 
 [ Use Load balancing and failover ](https://developers.cloudflare.com/load-balancing/load-balancers/) 
 
-### Active monitoring
+###  Active monitoring 
 
 Monitor your endpoints at configurable intervals and across multiple data centers to look for specific status codes, response text, and timeouts.
 
 [ Use Active monitoring ](https://developers.cloudflare.com/load-balancing/monitors/) 
 
-### Intelligent routing
+###  Intelligent routing 
 
 Choose whether to distribute requests based on endpoint latency, a visitor's geographic region, or even a visitor's GPS coordinates.
 
 [ Use Intelligent routing ](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/) 
 
-### Custom rules
+###  Custom rules 
 
 Customize the behavior of your load balancer based on the characteristics of individual requests.
 
 [ Use Custom rules ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) 
 
-### Analytics
+###  Analytics 
 
 Review comprehensive analytics to evaluate traffic flow, assess endpoint health status, and review changes in pools and pool health over time.
 

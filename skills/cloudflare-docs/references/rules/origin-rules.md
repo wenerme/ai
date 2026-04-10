@@ -1,6 +1,6 @@
 ---
 title: Origin Rules
-description: Origin Rules allow you to customize where the incoming traffic will go and with which parameters. Currently you can perform the following overrides:
+description: Origin Rules allow you to change the origin server that Cloudflare sends a request to, or modify how the request reaches that server. This is useful when you need to route specific requests to a different backend, such as a third-party service or a server on a non-standard port. You can perform the following overrides:
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,14 +16,14 @@ Copy page
 
 # Origin Rules
 
-Origin Rules allow you to customize where the incoming traffic will go and with which parameters. Currently you can perform the following overrides:
+Origin Rules allow you to change the origin server that Cloudflare sends a request to, or modify how the request reaches that server. This is useful when you need to route specific requests to a different backend, such as a third-party service or a server on a non-standard port. You can perform the following overrides:
 
 * [Host header](https://developers.cloudflare.com/rules/origin-rules/features/#host-header): Overrides the `Host` header of incoming requests.
 * [Server Name Indication (SNI)](https://developers.cloudflare.com/rules/origin-rules/features/#server-name-indication-sni): Overrides the Server Name Indication (SNI) value of incoming requests.
-* [DNS record](https://developers.cloudflare.com/rules/origin-rules/features/#dns-record): Overrides the resolved hostname of incoming requests.
+* [DNS record](https://developers.cloudflare.com/rules/origin-rules/features/#dns-record): Overrides the resolved hostname of incoming requests, sending the request to a different origin server.
 * [Destination port](https://developers.cloudflare.com/rules/origin-rules/features/#destination-port): Overrides the resolved destination port of incoming requests.
 
-The origin rule expression will determine when these overrides will be applied.
+Each origin rule includes a [filter expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) that defines which requests the overrides apply to (for example, matching on hostname, path, or other request properties).
 
 For more complex and customized modifications, consider using [Snippets](https://developers.cloudflare.com/rules/snippets/).
 

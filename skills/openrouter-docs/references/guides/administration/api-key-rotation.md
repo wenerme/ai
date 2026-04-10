@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/administration/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/administration/llms-full.txt.
+
 Regular API key rotation is a security best practice that limits the impact of compromised credentials. OpenRouter's [Management API](/docs/guides/overview/auth/management-api-keys) makes it easy to rotate keys programmatically without service interruption.
 
 ## Why Rotate API Keys?

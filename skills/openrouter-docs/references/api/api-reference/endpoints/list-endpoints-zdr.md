@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/endpoints/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/endpoints/llms-full.txt.
+
 # Preview the impact of ZDR on the available endpoints
 
 GET https://openrouter.ai/api/v1/endpoints/zdr

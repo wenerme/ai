@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/credits/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/credits/llms-full.txt.
+
 # Get remaining credits
 
 GET https://openrouter.ai/api/v1/credits

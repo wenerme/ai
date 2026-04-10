@@ -1,3 +1,5 @@
+# Tuning
+
 The Gemini API's fine tuning support provides a mechanism for curating output when you have a small dataset of input/output examples. For more details, check out the [Model tuning guide](https://ai.google.dev/gemini-api/docs/model-tuning) and [tutorial](https://ai.google.dev/gemini-api/docs/model-tuning/tutorial).
 
 ## Method: tunedModels.create
@@ -123,7 +125,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents="Write a story about a magic backpack."
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L26-L32
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L26-L32
 
 ### Node.js
 
@@ -135,7 +137,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       model: "gemini-2.0-flash",
       contents: "Write a story about a magic backpack.",
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L36-L44
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L36-L44
 
 ### Go
 
@@ -154,7 +156,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L16-L31
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L16-L31
 
 ### Shell
 
@@ -213,7 +215,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L50-L58
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L50-L58
 
 ### Node.js
 
@@ -234,7 +236,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         ]),
       ],
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L70-L87
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L70-L87
 
 ### Go
 
@@ -269,7 +271,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L66-L97
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L66-L97
 
 ### Shell
 
@@ -354,7 +356,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         model="gemini-2.0-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L118-L126
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L118-L126
 
 ### Node.js
 
@@ -375,7 +377,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         ]),
       ],
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L185-L202
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L185-L202
 
 ### Go
 
@@ -412,7 +414,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L256-L289
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L256-L289
 
 ### Shell
 
@@ -485,7 +487,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = client.models.generate_content(
         model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
     )
-    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L146-L164
+    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L146-L164
 
 ### Node.js
 
@@ -514,7 +516,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         ]),
       ],
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L237-L262
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L237-L262
 
 ### Go
 
@@ -563,7 +565,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L342-L387
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L342-L387
 
 ### Shell
 
@@ -639,7 +641,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         model="gemini-2.0-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
-    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L194-L202
+    print(f"{response.text=}")https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L194-L202
 
 ### Go
 
@@ -676,7 +678,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L452-L485
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L452-L485
 
 ### Shell
 
@@ -755,7 +757,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = chat.send_message(message="I have 2 dogs in my house.")
     print(response.text)
     response = chat.send_message(message="How many paws are in my house?")
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/chat.py#L25-L47
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/chat.py#L25-L47
 
 ### Node.js
 
@@ -784,7 +786,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const response2 = await chat.sendMessage({
       message: "How many paws are in my house?",
     });
-    console.log("Chat response 2:", response2.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/chat.js#L33-L58
+    console.log("Chat response 2:", response2.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/chat.js#L33-L58
 
 ### Go
 
@@ -818,7 +820,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(secondResp.Text())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/chat.go#L16-L46
+    fmt.Println(secondResp.Text())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/chat.go#L16-L46
 
 ### Shell
 
@@ -919,7 +921,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         contents="Please summarize this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L25-L46
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L25-L46
 
 ### Node.js
 
@@ -952,7 +954,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       contents: "Please summarize this transcript",
       config: { cachedContent: cache.name },
     });
-    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L33-L62
+    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L33-L62
 
 ### Go
 
@@ -1006,7 +1008,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L16-L66
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L16-L66
 
 ### Tuned Model
 
@@ -1035,7 +1037,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
             response_mime_type="application/json", response_schema=list[Recipe]
         ),
     )
-    print(result)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/controlled_generation.py#L25-L41
+    print(result)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/controlled_generation.py#L25-L41
 
 ### Node.js
 
@@ -1060,7 +1062,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         },
       },
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/controlled_generation.js#L33-L54
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/controlled_generation.js#L33-L54
 
 ### Go
 
@@ -1102,7 +1104,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/controlled_generation.go#L14-L52
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/controlled_generation.go#L14-L52
 
 ### Shell
 
@@ -1221,7 +1223,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     print("-" * 80)
     # The .text accessor concatenates the parts into a markdown-formatted text.
-    print("\n", response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/code_execution.py#L22-L39
+    print("\n", response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/code_execution.py#L22-L39
 
 ### Go
 
@@ -1251,7 +1253,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     printResponse(response)
 
     fmt.Println("---")
-    fmt.Println(response.Text())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/code_execution.go#L14-L40
+    fmt.Println(response.Text())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/code_execution.go#L14-L40
 
 ### Java
 
@@ -1333,7 +1335,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     response = chat.send_message(
         message="I have 57 cats, each owns 44 mittens, how many mittens is that in total?"
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/function_calling.py#L22-L51
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/function_calling.py#L22-L51
 
 ### Go
 
@@ -1435,7 +1437,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    printResponse(finalResponse)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/function_calling.go#L63-L161
+    printResponse(finalResponse)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/function_calling.go#L63-L161
 
 ### Node.js
 
@@ -1621,7 +1623,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log(chatResponse.text);
       return chatResponse;
     }
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/function_calling.js#L22-L-1
+    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/function_calling.js#L22-L-1
 
 ### Shell
 
@@ -1789,7 +1791,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
             temperature=1.0,
         ),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/configure_model_parameters.py#L22-L36
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/configure_model_parameters.py#L22-L36
 
 ### Node.js
 
@@ -1808,7 +1810,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       },
     });
 
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/configure_model_parameters.js#L22-L37
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/configure_model_parameters.js#L22-L37
 
 ### Go
 
@@ -1841,7 +1843,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/configure_model_parameters.go#L13-L42
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/configure_model_parameters.go#L13-L42
 
 ### Shell
 
@@ -1914,7 +1916,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     except Exception:
         print("No information generated by the model.")
 
-    print(response.candidates[0].safety_ratings)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/safety_settings.py#L48-L76
+    print(response.candidates[0].safety_ratings)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/safety_settings.py#L48-L76
 
 ### Node.js
 
@@ -1949,7 +1951,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("Safety ratings:", response.candidates[0].safetyRatings);
       return response;
     }
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/safety_settings.js#L49-L-1
+    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/safety_settings.js#L49-L-1
 
 ### Go
 
@@ -1999,7 +2001,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	fmt.Println("Safety ratings:", string(safetyRatings))
     } else {
     	fmt.Println("No candidate returned.")
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/safety_settings.go#L60-L106
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/safety_settings.go#L60-L106
 
 ### Shell
 
@@ -2050,7 +2052,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
             system_instruction="You are a cat. Your name is Neko."
         ),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/system_instruction.py#L22-L33
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/system_instruction.py#L22-L33
 
 ### Node.js
 
@@ -2064,7 +2066,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         systemInstruction: "You are a cat. Your name is Neko.",
       },
     });
-    console.log(response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/system_instruction.js#L22-L32
+    console.log(response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/system_instruction.js#L22-L32
 
 ### Go
 
@@ -2091,7 +2093,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/system_instruction.go#L13-L36
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/system_instruction.go#L13-L36
 
 ### Shell
 
@@ -2183,7 +2185,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L37-L45
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L37-L45
 
 ### Node.js
 
@@ -2199,7 +2201,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L51-L63
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L51-L63
 
 ### Go
 
@@ -2224,7 +2226,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(response.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L38-L59
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L38-L59
 
 ### Shell
 
@@ -2289,7 +2291,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L63-L73
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L63-L73
 
 ### Node.js
 
@@ -2314,7 +2316,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L94-L115
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L94-L115
 
 ### Go
 
@@ -2353,7 +2355,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(response.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L104-L139
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L104-L139
 
 ### Shell
 
@@ -2444,7 +2446,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L131-L141
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L131-L141
 
 ### Go
 
@@ -2487,7 +2489,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L296-L335
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L296-L335
 
 ### Shell
 
@@ -2560,7 +2562,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     )
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L169-L189
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L169-L189
 
 ### Node.js
 
@@ -2593,7 +2595,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     for await (const chunk of response) {
       console.log(chunk.text);
       text += chunk.text;
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/text_generation.js#L269-L298
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/text_generation.js#L269-L298
 
 ### Go
 
@@ -2648,7 +2650,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L394-L445
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L394-L445
 
 ### Shell
 
@@ -2722,7 +2724,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for chunk in response:
         print(chunk.text)
-        print("_" * 80)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/text_generation.py#L207-L218
+        print("_" * 80)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/text_generation.py#L207-L218
 
 ### Go
 
@@ -2765,7 +2767,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     		log.Fatal(err)
     	}
     	fmt.Print(result.Candidates[0].Content.Parts[0].Text)
-    }https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/text_generation.go#L492-L531
+    }https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/text_generation.go#L492-L531
 
 ### Shell
 
@@ -2847,7 +2849,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         print(chunk.text)
         print("_" * 80)
 
-    print(chat.get_history())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/chat.py#L52-L79
+    print(chat.get_history())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/chat.py#L52-L79
 
 ### Node.js
 
@@ -2886,7 +2888,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("_".repeat(80));
     }
 
-    console.log(chat.getHistory());https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/chat.js#L66-L101
+    console.log(chat.getHistory());https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/chat.js#L66-L101
 
 ### Go
 
@@ -2924,7 +2926,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	fmt.Println(strings.Repeat("_", 64))
     }
 
-    fmt.Println(chat.History(false))https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/chat.go#L54-L88
+    fmt.Println(chat.History(false))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/chat.go#L54-L88
 
 ### Shell
 

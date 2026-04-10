@@ -28,31 +28,31 @@ These systems include multiple dynamic mitigation rules exposed as [DDoS attack 
 
 ## Features
 
-### Managed rulesets
+###  Managed rulesets 
 
 Protect against a variety of DDoS attacks across layers 3/4 (network layer) and layer 7 (application layer) of the OSI model.
 
 [ Use Managed rulesets ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) 
 
-### Adaptive DDoS Protection
+###  Adaptive DDoS Protection 
 
 Get increased protection against sophisticated DDoS attacks on layer 7 and layers 3/4.
 
 [ Use Adaptive DDoS Protection ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/) 
 
-### Advanced TCP Protection
+###  Advanced TCP Protection 
 
 Detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods, or SYN and SYN-ACK floods.
 
 [ Use Advanced TCP Protection ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/) 
 
-### Advanced DNS Protection
+###  Advanced DNS Protection 
 
 Protect against DNS-based DDoS attacks, specifically sophisticated and fully randomized DNS attacks such as random prefix attacks.
 
 [ Use Advanced DNS Protection ](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/) 
 
-### Programmable Flow Protection
+###  Programmable Flow Protection 
 
 Deploy custom eBPF packet logic across Cloudflare's network to inspect and mitigate DDoS attacks against UDP-based Layer 7 protocols.
 

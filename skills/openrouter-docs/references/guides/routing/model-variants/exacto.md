@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/routing/model-variants/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/routing/model-variants/llms-full.txt.
+
 Exacto is a virtual model variant that explicitly applies quality-first provider sorting. When you add `:exacto` to a model slug, OpenRouter prefers providers with stronger tool-calling quality signals for that model instead of using the default price-weighted ordering.
 
 ## Using the Exacto Variant

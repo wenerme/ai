@@ -28,13 +28,13 @@ Enterprise customers can also use Cloudflare DNS for their private network with 
 
 ## Features
 
-### DNS records
+###  DNS records 
 
 DNS records make resources available on your domain, and allow you to configure services such as email.
 
 [ Use DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) 
 
-### DNSSEC
+###  DNSSEC 
 
 DNS Security Extensions (DNSSEC) adds cryptographic signatures to your DNS records, preventing anyone else from redirecting traffic intended for your domain.
 
@@ -42,7 +42,7 @@ Cloudflare also supports [Multi-signer DNSSEC](https://developers.cloudflare.com
 
 [ Use DNSSEC ](https://developers.cloudflare.com/dns/dnssec/) 
 
-### CNAME flattening
+###  CNAME flattening 
 
 CNAME flattening delivers better performance and allows you to add a CNAME record at your apex domain (`example.com`). Paid accounts can choose to flatten all CNAME records on their domain.
 

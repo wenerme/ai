@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/community/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/community/llms-full.txt.
+
 [Infisical](https://infisical.com/) is a secrets management platform that helps teams securely store, sync, and rotate secrets across their infrastructure. With Infisical's OpenRouter integration, you can automatically rotate your API keys on a schedule, ensuring your credentials stay secure with zero-downtime rotation.
 
 ## Prerequisites

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/guardrails/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/guardrails/llms-full.txt.
+
 # Create a guardrail
 
 POST https://openrouter.ai/api/v1/guardrails
@@ -76,34 +78,6 @@ components:
     CreateGuardrailRequest:
       type: object
       properties:
-        name:
-          type: string
-          description: Name for the new guardrail
-        description:
-          type:
-            - string
-            - 'null'
-          description: Description of the guardrail
-        limit_usd:
-          type: number
-          format: double
-          description: Spending limit in USD
-        reset_interval:
-          $ref: '#/components/schemas/GuardrailInterval'
-        allowed_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of allowed provider IDs
-        ignored_providers:
-          type:
-            - array
-            - 'null'
-          items:
-            type: string
-          description: List of provider IDs to exclude from routing
         allowed_models:
           type:
             - array
@@ -111,35 +85,6 @@ components:
           items:
             type: string
           description: Array of model identifiers (slug or canonical_slug accepted)
-        enforce_zdr:
-          type:
-            - boolean
-            - 'null'
-          description: Whether to enforce zero data retention
-      required:
-        - name
-      title: CreateGuardrailRequest
-    CreateGuardrailResponseData:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the guardrail
-        name:
-          type: string
-          description: Name of the guardrail
-        description:
-          type:
-            - string
-            - 'null'
-          description: Description of the guardrail
-        limit_usd:
-          type: number
-          format: double
-          description: Spending limit in USD
-        reset_interval:
-          $ref: '#/components/schemas/GuardrailInterval'
         allowed_providers:
           type:
             - array
@@ -147,6 +92,16 @@ components:
           items:
             type: string
           description: List of allowed provider IDs
+        description:
+          type:
+            - string
+            - 'null'
+          description: Description of the guardrail
+        enforce_zdr:
+          type:
+            - boolean
+            - 'null'
+          description: Whether to enforce zero data retention
         ignored_providers:
           type:
             - array
@@ -154,6 +109,21 @@ components:
           items:
             type: string
           description: List of provider IDs to exclude from routing
+        limit_usd:
+          type: number
+          format: double
+          description: Spending limit in USD
+        name:
+          type: string
+          description: Name for the new guardrail
+        reset_interval:
+          $ref: '#/components/schemas/GuardrailInterval'
+      required:
+        - name
+      title: CreateGuardrailRequest
+    CreateGuardrailResponseData:
+      type: object
+      properties:
         allowed_models:
           type:
             - array
@@ -161,23 +131,55 @@ components:
           items:
             type: string
           description: Array of model canonical_slugs (immutable identifiers)
+        allowed_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of allowed provider IDs
+        created_at:
+          type: string
+          description: ISO 8601 timestamp of when the guardrail was created
+        description:
+          type:
+            - string
+            - 'null'
+          description: Description of the guardrail
         enforce_zdr:
           type:
             - boolean
             - 'null'
           description: Whether to enforce zero data retention
-        created_at:
+        id:
           type: string
-          description: ISO 8601 timestamp of when the guardrail was created
+          format: uuid
+          description: Unique identifier for the guardrail
+        ignored_providers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: List of provider IDs to exclude from routing
+        limit_usd:
+          type: number
+          format: double
+          description: Spending limit in USD
+        name:
+          type: string
+          description: Name of the guardrail
+        reset_interval:
+          $ref: '#/components/schemas/GuardrailInterval'
         updated_at:
           type:
             - string
             - 'null'
           description: ISO 8601 timestamp of when the guardrail was last updated
       required:
+        - created_at
         - id
         - name
-        - created_at
       title: CreateGuardrailResponseData
     CreateGuardrailResponse:
       type: object
@@ -297,11 +299,11 @@ url = "https://openrouter.ai/api/v1/guardrails"
 
 payload = {
     "name": "My New Guardrail",
-    "description": "A guardrail for limiting API usage",
-    "limit_usd": 50,
-    "reset_interval": "monthly",
     "allowed_providers": ["openai", "anthropic", "deepseek"],
-    "enforce_zdr": False
+    "description": "A guardrail for limiting API usage",
+    "enforce_zdr": False,
+    "limit_usd": 50,
+    "reset_interval": "monthly"
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -318,7 +320,7 @@ const url = 'https://openrouter.ai/api/v1/guardrails';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"name":"My New Guardrail","description":"A guardrail for limiting API usage","limit_usd":50,"reset_interval":"monthly","allowed_providers":["openai","anthropic","deepseek"],"enforce_zdr":false}'
+  body: '{"name":"My New Guardrail","allowed_providers":["openai","anthropic","deepseek"],"description":"A guardrail for limiting API usage","enforce_zdr":false,"limit_usd":50,"reset_interval":"monthly"}'
 };
 
 try {
@@ -344,7 +346,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/guardrails"
 
-	payload := strings.NewReader("{\n  \"name\": \"My New Guardrail\",\n  \"description\": \"A guardrail for limiting API usage\",\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"enforce_zdr\": false\n}")
+	payload := strings.NewReader("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -374,7 +376,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"name\": \"My New Guardrail\",\n  \"description\": \"A guardrail for limiting API usage\",\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"enforce_zdr\": false\n}"
+request.body = "{\n  \"name\": \"My New Guardrail\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -387,7 +389,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/guardrails")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"name\": \"My New Guardrail\",\n  \"description\": \"A guardrail for limiting API usage\",\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"enforce_zdr\": false\n}")
+  .body("{\n  \"name\": \"My New Guardrail\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}")
   .asString();
 ```
 
@@ -400,15 +402,15 @@ $client = new \GuzzleHttp\Client();
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/guardrails', [
   'body' => '{
   "name": "My New Guardrail",
-  "description": "A guardrail for limiting API usage",
-  "limit_usd": 50,
-  "reset_interval": "monthly",
   "allowed_providers": [
     "openai",
     "anthropic",
     "deepseek"
   ],
-  "enforce_zdr": false
+  "description": "A guardrail for limiting API usage",
+  "enforce_zdr": false,
+  "limit_usd": 50,
+  "reset_interval": "monthly"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -426,7 +428,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/guardrails");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"name\": \"My New Guardrail\",\n  \"description\": \"A guardrail for limiting API usage\",\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"enforce_zdr\": false\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"name\": \"My New Guardrail\",\n  \"allowed_providers\": [\n    \"openai\",\n    \"anthropic\",\n    \"deepseek\"\n  ],\n  \"description\": \"A guardrail for limiting API usage\",\n  \"enforce_zdr\": false,\n  \"limit_usd\": 50,\n  \"reset_interval\": \"monthly\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -439,11 +441,11 @@ let headers = [
 ]
 let parameters = [
   "name": "My New Guardrail",
-  "description": "A guardrail for limiting API usage",
-  "limit_usd": 50,
-  "reset_interval": "monthly",
   "allowed_providers": ["openai", "anthropic", "deepseek"],
-  "enforce_zdr": false
+  "description": "A guardrail for limiting API usage",
+  "enforce_zdr": false,
+  "limit_usd": 50,
+  "reset_interval": "monthly"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

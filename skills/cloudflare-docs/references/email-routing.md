@@ -30,19 +30,19 @@ It is available to all Cloudflare customers [using Cloudflare as an authoritativ
 
 ## Features
 
-### Email Workers
+###  Email Workers 
 
 Process incoming emails with code using Cloudflare Workers. Filter by sender, auto-reply, forward based on content, or build any custom logic you need.
 
 [ Use Email Workers ](https://developers.cloudflare.com/email-routing/email-workers/) 
 
-### Custom addresses
+###  Custom addresses 
 
 Create separate email addresses for different purposes, such as shopping, newsletters, or work contacts, all forwarding to a single inbox.
 
 [ Use Custom addresses ](https://developers.cloudflare.com/email-routing/get-started/enable-email-routing/) 
 
-### Analytics
+###  Analytics 
 
 Email Routing includes metrics to help you check on your email traffic history.
 

@@ -24,19 +24,19 @@ These logs are helpful for debugging, identifying configuration adjustments, and
 
 ## Features
 
-### Logpush
+###  Logpush 
 
 Push your request or event logs to your cloud service provider using Logpush, which can be configured via the Cloudflare dashboard or API.
 
 [ Use Logpush ](https://developers.cloudflare.com/logs/logpush/) 
 
-### Instant Logs
+###  Instant Logs 
 
 View HTTP request logs instantly in the Cloudflare dashboard or the CLI.
 
 [ Use Instant Logs ](https://developers.cloudflare.com/logs/instant-logs/) 
 
-### Logpull (legacy)
+###  Logpull (legacy) 
 
 Consume request logs over HTTP using Cloudflare Logpull, a REST API designed for log retrieval.
 

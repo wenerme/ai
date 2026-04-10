@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/python/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/python/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -15,17 +17,17 @@ Guardrails endpoints
 
 * [list](#list) - List guardrails
 * [create](#create) - Create a guardrail
+* [delete](#delete) - Delete a guardrail
 * [get](#get) - Get a guardrail
 * [update](#update) - Update a guardrail
-* [delete](#delete) - Delete a guardrail
-* [list\_key\_assignments](#list_key_assignments) - List all key assignments
-* [list\_member\_assignments](#list_member_assignments) - List all member assignments
 * [list\_guardrail\_key\_assignments](#list_guardrail_key_assignments) - List key assignments for a guardrail
 * [bulk\_assign\_keys](#bulk_assign_keys) - Bulk assign keys to a guardrail
+* [bulk\_unassign\_keys](#bulk_unassign_keys) - Bulk unassign keys from a guardrail
 * [list\_guardrail\_member\_assignments](#list_guardrail_member_assignments) - List member assignments for a guardrail
 * [bulk\_assign\_members](#bulk_assign_members) - Bulk assign members to a guardrail
-* [bulk\_unassign\_keys](#bulk_unassign_keys) - Bulk unassign keys from a guardrail
 * [bulk\_unassign\_members](#bulk_unassign_members) - Bulk unassign members from a guardrail
+* [list\_key\_assignments](#list_key_assignments) - List all key assignments
+* [list\_member\_assignments](#list_member_assignments) - List all member assignments
 
 ## list
 
@@ -97,11 +99,11 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.create(name="My New Guardrail", description="A guardrail for limiting API usage", limit_usd=50, reset_interval="monthly", allowed_providers=[
+    res = open_router.guardrails.create(name="My New Guardrail", allowed_models=None, allowed_providers=[
         "openai",
         "anthropic",
         "deepseek",
-    ], ignored_providers=None, allowed_models=None, enforce_zdr=False)
+    ], description="A guardrail for limiting API usage", enforce_zdr=False, ignored_providers=None, limit_usd=50, reset_interval="monthly")
 
     # Handle response
     print(res)
@@ -116,13 +118,13 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                                                                                                   |
 | `x_open_router_title`      | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                                                                                   |
 | `x_open_router_categories` | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                                                                   |
+| `allowed_models`           | List\[*str*]                                                                              | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                               | \[<br />"openai/gpt-5.2",<br />"anthropic/claude-4.5-opus-20251124",<br />"deepseek/deepseek-r1-0528:free"<br />] |
+| `allowed_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | List of allowed provider IDs                                                                                                                                | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />]                                                        |
 | `description`              | *OptionalNullable\[str]*                                                                  | :heavy\_minus\_sign: | Description of the guardrail                                                                                                                                | A guardrail for limiting API usage                                                                                |
+| `enforce_zdr`              | *OptionalNullable\[bool]*                                                                 | :heavy\_minus\_sign: | Whether to enforce zero data retention                                                                                                                      | false                                                                                                             |
+| `ignored_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | List of provider IDs to exclude from routing                                                                                                                | \[<br />"azure"<br />]                                                                                            |
 | `limit_usd`                | *Optional\[float]*                                                                        | :heavy\_minus\_sign: | Spending limit in USD                                                                                                                                       | 50                                                                                                                |
 | `reset_interval`           | [OptionalNullable\[components.GuardrailInterval\]](../../components/guardrailinterval.md) | :heavy\_minus\_sign: | Interval at which the limit resets (daily, weekly, monthly)                                                                                                 | monthly                                                                                                           |
-| `allowed_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | List of allowed provider IDs                                                                                                                                | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />]                                                        |
-| `ignored_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | List of provider IDs to exclude from routing                                                                                                                | \[<br />"azure"<br />]                                                                                            |
-| `allowed_models`           | List\[*str*]                                                                              | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                               | \[<br />"openai/gpt-5.2",<br />"anthropic/claude-4.5-opus-20251124",<br />"deepseek/deepseek-r1-0528:free"<br />] |
-| `enforce_zdr`              | *OptionalNullable\[bool]*                                                                 | :heavy\_minus\_sign: | Whether to enforce zero data retention                                                                                                                      | false                                                                                                             |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                                                                   |
 
 ### Response
@@ -135,6 +137,55 @@ with OpenRouter(
 | ---------------------------------- | ----------- | ---------------- |
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## delete
+
+Delete an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="deleteGuardrail" method="delete" path="/guardrails/{id}" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.guardrails.delete(id="550e8400-e29b-41d4-a716-446655440000")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example                              |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `id`                       | *str*                                                              | :heavy\_check\_mark: | The unique identifier of the guardrail to delete                                                                                                            | 550e8400-e29b-41d4-a716-446655440000 |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
+
+### Response
+
+**[components.DeleteGuardrailResponse](/docs/sdks/python/api-reference/components/deleteguardrailresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
@@ -206,7 +257,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.update(id="550e8400-e29b-41d4-a716-446655440000", name="Updated Guardrail Name", description="Updated description", limit_usd=75, reset_interval="weekly")
+    res = open_router.guardrails.update(id="550e8400-e29b-41d4-a716-446655440000", description="Updated description", limit_usd=75, name="Updated Guardrail Name", reset_interval="weekly")
 
     # Handle response
     print(res)
@@ -221,14 +272,14 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                                            |
 | `x_open_router_title`      | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                            |
 | `x_open_router_categories` | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                            |
-| `name`                     | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | New name for the guardrail                                                                                                                                  | Updated Guardrail Name                                     |
-| `description`              | *OptionalNullable\[str]*                                                                  | :heavy\_minus\_sign: | New description for the guardrail                                                                                                                           | Updated description                                        |
-| `limit_usd`                | *Optional\[float]*                                                                        | :heavy\_minus\_sign: | New spending limit in USD                                                                                                                                   | 75                                                         |
-| `reset_interval`           | [OptionalNullable\[components.GuardrailInterval\]](../../components/guardrailinterval.md) | :heavy\_minus\_sign: | Interval at which the limit resets (daily, weekly, monthly)                                                                                                 | monthly                                                    |
-| `allowed_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | New list of allowed provider IDs                                                                                                                            | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />] |
-| `ignored_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | List of provider IDs to exclude from routing                                                                                                                | \[<br />"azure"<br />]                                     |
 | `allowed_models`           | List\[*str*]                                                                              | :heavy\_minus\_sign: | Array of model identifiers (slug or canonical\_slug accepted)                                                                                               | \[<br />"openai/gpt-5.2"<br />]                            |
+| `allowed_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | New list of allowed provider IDs                                                                                                                            | \[<br />"openai",<br />"anthropic",<br />"deepseek"<br />] |
+| `description`              | *OptionalNullable\[str]*                                                                  | :heavy\_minus\_sign: | New description for the guardrail                                                                                                                           | Updated description                                        |
 | `enforce_zdr`              | *OptionalNullable\[bool]*                                                                 | :heavy\_minus\_sign: | Whether to enforce zero data retention                                                                                                                      | true                                                       |
+| `ignored_providers`        | List\[*str*]                                                                              | :heavy\_minus\_sign: | List of provider IDs to exclude from routing                                                                                                                | \[<br />"azure"<br />]                                     |
+| `limit_usd`                | *Optional\[float]*                                                                        | :heavy\_minus\_sign: | New spending limit in USD                                                                                                                                   | 75                                                         |
+| `name`                     | *Optional\[str]*                                                                          | :heavy\_minus\_sign: | New name for the guardrail                                                                                                                                  | Updated Guardrail Name                                     |
+| `reset_interval`           | [OptionalNullable\[components.GuardrailInterval\]](../../components/guardrailinterval.md) | :heavy\_minus\_sign: | Interval at which the limit resets (daily, weekly, monthly)                                                                                                 | monthly                                                    |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                            |
 
 ### Response
@@ -242,157 +293,6 @@ with OpenRouter(
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## delete
-
-Delete an existing guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="deleteGuardrail" method="delete" path="/guardrails/{id}" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    http_referer="<value>",
-    x_open_router_title="<value>",
-    x_open_router_categories="<value>",
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.guardrails.delete(id="550e8400-e29b-41d4-a716-446655440000")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example                              |
-| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `id`                       | *str*                                                              | :heavy\_check\_mark: | The unique identifier of the guardrail to delete                                                                                                            | 550e8400-e29b-41d4-a716-446655440000 |
-| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
-| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
-| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
-
-### Response
-
-**[components.DeleteGuardrailResponse](/docs/sdks/python/api-reference/components/deleteguardrailresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.NotFoundResponseError       | 404         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## list\_key\_assignments
-
-List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listKeyAssignments" method="get" path="/guardrails/assignments/keys" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    http_referer="<value>",
-    x_open_router_title="<value>",
-    x_open_router_categories="<value>",
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.guardrails.list_key_assignments()
-
-    while res is not None:
-        # Handle items
-
-        res = res.next()
-
-```
-
-### Parameters
-
-| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
-| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
-| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
-| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
-| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
-
-### Response
-
-**[operations.ListKeyAssignmentsResponse](/docs/sdks/python/api-reference/operations/listkeyassignmentsresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## list\_member\_assignments
-
-List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listMemberAssignments" method="get" path="/guardrails/assignments/members" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    http_referer="<value>",
-    x_open_router_title="<value>",
-    x_open_router_categories="<value>",
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.guardrails.list_member_assignments()
-
-    while res is not None:
-        # Handle items
-
-        res = res.next()
-
-```
-
-### Parameters
-
-| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
-| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
-| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
-| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
-| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
-
-### Response
-
-**[operations.ListMemberAssignmentsResponse](/docs/sdks/python/api-reference/operations/listmemberassignmentsresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
@@ -491,6 +391,59 @@ with OpenRouter(
 ### Response
 
 **[components.BulkAssignKeysResponse](/docs/sdks/python/api-reference/components/bulkassignkeysresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## bulk\_unassign\_keys
+
+Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="bulkUnassignKeysFromGuardrail" method="post" path="/guardrails/{id}/assignments/keys/remove" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.guardrails.bulk_unassign_keys(id="550e8400-e29b-41d4-a716-446655440000", key_hashes=[
+        "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93",
+    ])
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example                                                                           |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `id`                       | *str*                                                              | :heavy\_check\_mark: | The unique identifier of the guardrail                                                                                                                      | 550e8400-e29b-41d4-a716-446655440000                                              |
+| `key_hashes`               | List\[*str*]                                                       | :heavy\_check\_mark: | Array of API key hashes to unassign from the guardrail                                                                                                      | \[<br />"c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"<br />] |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                                                                   |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                                                   |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                                   |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                                   |
+
+### Response
+
+**[components.BulkUnassignKeysResponse](/docs/sdks/python/api-reference/components/bulkunassignkeysresponse)**
 
 ### Errors
 
@@ -609,59 +562,6 @@ with OpenRouter(
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
-## bulk\_unassign\_keys
-
-Unassign multiple API keys from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="bulkUnassignKeysFromGuardrail" method="post" path="/guardrails/{id}/assignments/keys/remove" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    http_referer="<value>",
-    x_open_router_title="<value>",
-    x_open_router_categories="<value>",
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.guardrails.bulk_unassign_keys(id="550e8400-e29b-41d4-a716-446655440000", key_hashes=[
-        "c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93",
-    ])
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example                                                                           |
-| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `id`                       | *str*                                                              | :heavy\_check\_mark: | The unique identifier of the guardrail                                                                                                                      | 550e8400-e29b-41d4-a716-446655440000                                              |
-| `key_hashes`               | List\[*str*]                                                       | :heavy\_check\_mark: | Array of API key hashes to unassign from the guardrail                                                                                                      | \[<br />"c56454edb818d6b14bc0d61c46025f1450b0f4012d12304ab40aacb519fcbc93"<br />] |
-| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                                                                   |
-| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                                                   |
-| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                                   |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                                   |
-
-### Response
-
-**[components.BulkUnassignKeysResponse](/docs/sdks/python/api-reference/components/bulkunassignkeysresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError     | 400         | application/json |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.NotFoundResponseError       | 404         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
 ## bulk\_unassign\_members
 
 Unassign multiple organization members from a specific guardrail. [Management key](/docs/guides/overview/auth/management-api-keys) required.
@@ -713,5 +613,107 @@ with OpenRouter(
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## list\_key\_assignments
+
+List all API key guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="listKeyAssignments" method="get" path="/guardrails/assignments/keys" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.guardrails.list_key_assignments()
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
+
+### Response
+
+**[operations.ListKeyAssignmentsResponse](/docs/sdks/python/api-reference/operations/listkeyassignmentsresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## list\_member\_assignments
+
+List all organization member guardrail assignments for the authenticated user. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="listMemberAssignments" method="get" path="/guardrails/assignments/members" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.guardrails.list_member_assignments()
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                               | Required             | Description                                                                                                                                                 | Example |
+| -------------------------- | ------------------------------------------------------------------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `http_referer`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
+| `x_open_router_title`      | *Optional\[str]*                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
+| `x_open_router_categories` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
+| `offset`                   | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                    | 0       |
+| `limit`                    | *Optional\[int]*                                                   | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                               | 50      |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
+
+### Response
+
+**[operations.ListMemberAssignmentsResponse](/docs/sdks/python/api-reference/operations/listmemberassignmentsresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |

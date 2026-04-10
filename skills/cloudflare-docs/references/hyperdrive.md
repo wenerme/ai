@@ -26,11 +26,11 @@ Hyperdrive supports any Postgres or MySQL database, including those hosted on AW
 
 Use Hyperdrive's connection string from your Cloudflare Workers application with your existing Postgres drivers and object-relational mapping (ORM) libraries:
 
-* [ PostgreSQL ](#tab-panel-4636)
-* [ MySQL ](#tab-panel-4637)
+* [ PostgreSQL ](#tab-panel-4680)
+* [ MySQL ](#tab-panel-4681)
 
-* [ index.ts ](#tab-panel-4632)
-* [ wrangler.jsonc ](#tab-panel-4633)
+* [ index.ts ](#tab-panel-4676)
+* [ wrangler.jsonc ](#tab-panel-4677)
 
 TypeScript
 
@@ -123,8 +123,8 @@ export default {
 
 ```
 
-* [ index.ts ](#tab-panel-4634)
-* [ wrangler.jsonc ](#tab-panel-4635)
+* [ index.ts ](#tab-panel-4678)
+* [ wrangler.jsonc ](#tab-panel-4679)
 
 TypeScript
 
@@ -232,25 +232,25 @@ export default {
 
 ## Features
 
-### Connect your database
+###  Connect your database 
 
 Connect Hyperdrive to your existing database and deploy a [Worker](https://developers.cloudflare.com/workers/) that queries it.
 
 [ Connect Hyperdrive to your database ](https://developers.cloudflare.com/hyperdrive/get-started/) 
 
-### PostgreSQL support
+###  PostgreSQL support 
 
 Hyperdrive allows you to connect to any PostgreSQL or PostgreSQL-compatible database.
 
 [ Connect Hyperdrive to your PostgreSQL database ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/) 
 
-### MySQL support
+###  MySQL support 
 
 Hyperdrive allows you to connect to any MySQL database.
 
 [ Connect Hyperdrive to your MySQL database ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/) 
 
-### Query Caching
+###  Query Caching 
 
 Default-on caching for your most popular queries executed against your database.
 

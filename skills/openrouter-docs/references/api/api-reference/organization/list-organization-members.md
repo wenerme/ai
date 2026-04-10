@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/organization/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/organization/llms-full.txt.
+
 # List organization members
 
 GET https://openrouter.ai/api/v1/organization/members
@@ -83,31 +85,31 @@ components:
     OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItems:
       type: object
       properties:
-        id:
+        email:
           type: string
-          description: User ID of the organization member
+          description: Email address of the member
         first_name:
           type:
             - string
             - 'null'
           description: First name of the member
+        id:
+          type: string
+          description: User ID of the organization member
         last_name:
           type:
             - string
             - 'null'
           description: Last name of the member
-        email:
-          type: string
-          description: Email address of the member
         role:
           $ref: >-
             #/components/schemas/OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItemsRole
           description: Role of the member in the organization
       required:
-        - id
-        - first_name
-        - last_name
         - email
+        - first_name
+        - id
+        - last_name
         - role
       title: OrganizationMembersGetResponsesContentApplicationJsonSchemaDataItems
     Organization_listOrganizationMembers_Response_200:

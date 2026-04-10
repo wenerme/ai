@@ -30,37 +30,37 @@ Learn how to [get started](https://developers.cloudflare.com/client-side-securit
 
 ## Features
 
-### Resource monitoring
+###  Resource monitoring 
 
 Displays information about client-side resources loaded in your domain's pages.
 
 [ Monitor client-side resources ](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/) 
 
-### Page attribution
+###  Page attribution 
 
 Find in which page a resource first appeared, and view a list of the latest occurrences of the resource in your pages.
 
 [ Find resource occurrences ](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details) 
 
-### Malicious script detection
+###  Malicious script detection 
 
 Detects malicious scripts in your pages using threat intelligence and machine learning.
 
 [ Review malicious scripts ](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/) 
 
-### Code change detection
+###  Code change detection 
 
 Detects any changes in the scripts loaded in your pages.
 
 [ Review changed scripts ](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/) 
 
-### Alerts
+###  Alerts 
 
 Receive notifications about newly detected scripts, scripts loaded from unknown domains, new scripts considered malicious, or code changes in your existing scripts.
 
 [ Use Alerts ](https://developers.cloudflare.com/client-side-security/alerts/) 
 
-### Content security rules
+###  Content security rules 
 
 Content security rules define allowed resources on your websites. Use content security rules to enforce an allowlist of resources, effectively blocking resources not included in your rules.
 

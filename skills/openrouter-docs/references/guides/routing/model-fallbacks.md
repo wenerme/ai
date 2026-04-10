@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/routing/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/routing/llms-full.txt.
+
 The `models` parameter lets you automatically try other models if the primary model's providers are down, rate-limited, or refuse to reply due to content moderation.
 
 ## How It Works

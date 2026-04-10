@@ -39,25 +39,25 @@ If you are using a legacy plan with Image Resizing, visit the [dashboard ↗](ht
 
 ## Features
 
-### Storage
+###  Storage 
 
 Use Cloudflare’s edge network to store your images.
 
 [ Use Storage ](https://developers.cloudflare.com/images/upload-images/) 
 
-### Direct creator upload
+###  Direct creator upload 
 
 Accept uploads directly and securely from your users by generating a one-time token.
 
 [ Use Direct creator upload ](https://developers.cloudflare.com/images/upload-images/direct-creator-upload/) 
 
-### Variants
+###  Variants 
 
 Add up to 100 variants to specify how images should be resized for various use cases.
 
 [ Create variants by transforming images ](https://developers.cloudflare.com/images/transform-images) 
 
-### Signed URLs
+###  Signed URLs 
 
 Control access to your images by using signed URL tokens.
 

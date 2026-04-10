@@ -24,31 +24,31 @@ Cache stores copies of frequently accessed content (such as images, videos, or w
 
 ## Features
 
-### Default cache behavior
+###  Default cache behavior 
 
 Learn about default cache behavior, default cached file extensions and cache responses.
 
 [ Use Default cache behavior ](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) 
 
-### Cache Rules
+###  Cache Rules 
 
 Configure Cache Rules to optimize your website by specifying which resources should be cached and for how long.
 
 [ Use Cache Rules ](https://developers.cloudflare.com/cache/how-to/cache-rules/) 
 
-### Tiered Cache
+###  Tiered Cache 
 
 Enable Tiered Cache to optimize content delivery by caching frequently accessed content in multiple locations for faster delivery and reduced origin traffic.
 
 [ Use Tiered Cache ](https://developers.cloudflare.com/cache/how-to/tiered-cache/) 
 
-### Cache Reserve
+###  Cache Reserve 
 
 Use Cloudflare's persistent storage to increase cache times.
 
 [ Use Cache Reserve ](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) 
 
-### Purge
+###  Purge 
 
 Instantly purge cached files to force Cloudflare to fetch fresh versions from your web server files. You can purge specific files or all at once.
 

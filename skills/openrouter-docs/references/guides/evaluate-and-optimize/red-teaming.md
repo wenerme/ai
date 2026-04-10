@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms-full.txt.
+
 Red teaming (testing AI applications and/or models for prompt injection, jailbreaking, or other adversarial scenarios) is a valuable part of AI safety research, but may also violate model terms-of-service.
 
 ## Approval Required

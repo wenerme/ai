@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/o-auth/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/o-auth/llms-full.txt.
+
 # Create authorization code
 
 POST https://openrouter.ai/api/v1/auth/keys/code
@@ -81,10 +83,6 @@ paths:
                   $ref: >-
                     #/components/schemas/AuthKeysCodePostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod
                   description: The method used to generate the code challenge
-                limit:
-                  type: number
-                  format: double
-                  description: Credit limit for the API key to be created
                 expires_at:
                   type:
                     - string
@@ -96,6 +94,10 @@ paths:
                   description: >-
                     Optional custom label for the API key. Defaults to the app
                     name if not provided.
+                limit:
+                  type: number
+                  format: double
+                  description: Credit limit for the API key to be created
                 usage_limit_type:
                   $ref: >-
                     #/components/schemas/AuthKeysCodePostRequestBodyContentApplicationJsonSchemaUsageLimitType
@@ -129,19 +131,19 @@ components:
     AuthKeysCodePostResponsesContentApplicationJsonSchemaData:
       type: object
       properties:
-        id:
-          type: string
-          description: The authorization code ID to use in the exchange request
         app_id:
           type: integer
           description: The application ID associated with this auth code
         created_at:
           type: string
           description: ISO 8601 timestamp of when the auth code was created
+        id:
+          type: string
+          description: The authorization code ID to use in the exchange request
       required:
-        - id
         - app_id
         - created_at
+        - id
       description: Auth code data
       title: AuthKeysCodePostResponsesContentApplicationJsonSchemaData
     OAuth_createAuthKeysCode_Response_200:

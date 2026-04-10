@@ -22,7 +22,7 @@ AI Gateway provides a comprehensive set of features to help you build, deploy, a
 
 ### Performance & Cost Optimization
 
-### Caching
+###  Caching 
 
 Serve identical requests directly from Cloudflare's global cache, reducing latency by up to 90% and significantly cutting costs by avoiding repeated API calls to AI providers.
 
@@ -35,7 +35,7 @@ Serve identical requests directly from Cloudflare's global cache, reducing laten
 
 [ Use Caching ](https://developers.cloudflare.com/ai-gateway/features/caching/) 
 
-### Rate Limiting
+###  Rate Limiting 
 
 Control application scaling and protect against abuse with flexible rate limiting options. Set limits based on requests per time window with sliding or fixed window techniques.
 
@@ -48,7 +48,7 @@ Control application scaling and protect against abuse with flexible rate limitin
 
 [ Use Rate Limiting ](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/) 
 
-### Dynamic Routing
+###  Dynamic Routing 
 
 Create sophisticated request routing flows without code changes. Route requests based on user segments, geography, content analysis, or A/B testing requirements through a visual interface.
 
@@ -64,7 +64,7 @@ Create sophisticated request routing flows without code changes. Route requests 
 
 ### Security & Safety
 
-### Guardrails
+###  Guardrails 
 
 Deploy AI applications safely with real-time content moderation. Automatically detect and block harmful content in both user prompts and model responses across all providers.
 
@@ -78,7 +78,7 @@ Deploy AI applications safely with real-time content moderation. Automatically d
 
 [ Use Guardrails ](https://developers.cloudflare.com/ai-gateway/features/guardrails/) 
 
-### Data Loss Prevention (DLP)
+###  Data Loss Prevention (DLP) 
 
 Protect your organization from inadvertent exposure of sensitive data through AI interactions. Scan prompts and responses for PII, financial data, and other sensitive information.
 
@@ -92,7 +92,7 @@ Protect your organization from inadvertent exposure of sensitive data through AI
 
 [ Use Data Loss Prevention (DLP) ](https://developers.cloudflare.com/ai-gateway/features/dlp/) 
 
-### Authentication
+###  Authentication 
 
 Secure your AI Gateway with token-based authentication. Control access to your gateways and protect against unauthorized usage.
 
@@ -105,7 +105,7 @@ Secure your AI Gateway with token-based authentication. Control access to your g
 
 [ Use Authentication ](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) 
 
-### Bring Your Own Keys (BYOK)
+###  Bring Your Own Keys (BYOK) 
 
 Securely store and manage AI provider API keys in Cloudflare's encrypted infrastructure. Remove hardcoded keys from your applications while maintaining full control.
 
@@ -121,7 +121,7 @@ Securely store and manage AI provider API keys in Cloudflare's encrypted infrast
 
 ### Observability & Analytics
 
-### Analytics
+###  Analytics 
 
 Gain deep insights into your AI application usage with comprehensive analytics. Track requests, tokens, costs, errors, and performance across all providers.
 
@@ -135,7 +135,7 @@ Gain deep insights into your AI application usage with comprehensive analytics. 
 
 [ Use Analytics ](https://developers.cloudflare.com/ai-gateway/observability/analytics/) 
 
-### Logging
+###  Logging 
 
 Capture detailed logs of all AI requests and responses for debugging, compliance, and analysis. Configure log retention and export options.
 
@@ -149,7 +149,7 @@ Capture detailed logs of all AI requests and responses for debugging, compliance
 
 [ Use Logging ](https://developers.cloudflare.com/ai-gateway/observability/logging/) 
 
-### Custom Metadata
+###  Custom Metadata 
 
 Enrich your logs and analytics with custom metadata. Tag requests with user IDs, team information, or any custom data for enhanced filtering and analysis.
 
@@ -164,7 +164,7 @@ Enrich your logs and analytics with custom metadata. Tag requests with user IDs,
 
 ### Advanced Configuration
 
-### Custom Costs
+###  Custom Costs 
 
 Override default pricing with your negotiated rates or custom cost models. Apply custom costs at the request level for accurate cost tracking.
 

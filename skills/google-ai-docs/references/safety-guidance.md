@@ -1,3 +1,5 @@
+# Safety and factuality guidance
+
 Generative artificial intelligence models are powerful tools, but they are not
 without their limitations. Their versatility and applicability can sometimes
 lead to unexpected outputs, such as outputs that are inaccurate, biased, or
@@ -67,7 +69,7 @@ is to research your end users, and others who might be affected by your
 application's results. This can take many forms including researching state of
 the art studies in your app domain, observing how people are using similar apps,
 or running a user study, survey, or conducting informal interviews with
-potential users.  
+potential users.
 
 #### Advanced tips
 
@@ -93,7 +95,9 @@ For example, when designing an application consider:
   unsafe words or phrases in prompts or responses, or require human reviewers
   to manually alter or block such content.
 
-  | **Note:** Automatically blocking based on a static list can have unintended results such as targeting a particular group that commonly uses vocabulary in the blocklist.
+  > [!NOTE]
+  > **Note:** Automatically blocking based on a static list can have unintended results such as targeting a particular group that commonly uses vocabulary in the blocklist.
+
 - **Using trained classifiers to label each prompt with potential harms or
   adversarial signals.** Different strategies can then be employed on how to
   handle the request based on the type of harm detected. For example, If the
@@ -186,13 +190,14 @@ applications:
     - An input is inadvertently harmful when the input itself may be innocuous, but produces harmful output -- for example, asking a text generation model to describe a person of a particular ethnicity and receiving a racist output.
   - What distinguishes an adversarial test from a standard evaluation is the composition of the data used for testing. For adversarial tests, select test data that is most likely to elicit problematic output from the model. This means probing the model's behavior for all the types of harms that are possible, including rare or unusual examples and edge-cases that are relevant to safety policies. It should also include diversity in the different dimensions of a sentence such as structure, meaning and length. You can refer to the [Google's Responsible AI
     practices in
-    fairness](https://ai.google/responsibilities/responsible-ai-practices/?category=fairness) for more details on what to consider when building a test dataset.  
+    fairness](https://ai.google/responsibilities/responsible-ai-practices/?category=fairness) for more details on what to consider when building a test dataset.
 
     #### Advanced tips
 
     - Use [automated testing](https://www.deepmind.com/blog/red-teaming-language-models-with-language-models) instead of the traditional method of enlisting people in 'red teams' to try and break your application. In automated testing, the 'red team' is another language model that finds input text that elicit harmful outputs from the model being tested.
 
-  | **Note:** LLMs are known to sometimes produce different outputs for the same input prompt. Multiple rounds of testing may be needed to catch more of the problematic outputs.
+  > [!NOTE]
+  > **Note:** LLMs are known to sometimes produce different outputs for the same input prompt. Multiple rounds of testing may be needed to catch more of the problematic outputs.
 
 ## Monitor for problems
 
@@ -201,7 +206,7 @@ plan upfront how you'll spot and deal with problems that arise. Common
 approaches include setting up a monitored channel for users to share feedback
 (e.g., thumbs up/down rating) and running a user study to proactively solicit
 feedback from a diverse mix of users --- especially valuable if usage patterns are
-different to expectations.  
+different to expectations.
 
 #### Advanced tips
 

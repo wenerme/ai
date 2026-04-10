@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/typescript/api-reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/typescript/api-reference/llms-full.txt.
+
 {/* banner:start */}
 
 <Warning>
@@ -38,8 +40,8 @@ async function run() {
   const result = await openRouter.oAuth.exchangeAuthCodeForAPIKey({
     requestBody: {
       code: "auth_code_abc123def456",
-      codeVerifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
       codeChallengeMethod: "S256",
+      codeVerifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
     },
   });
 
@@ -70,8 +72,8 @@ async function run() {
   const res = await oAuthExchangeAuthCodeForAPIKey(openRouter, {
     requestBody: {
       code: "auth_code_abc123def456",
-      codeVerifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
       codeChallengeMethod: "S256",
+      codeVerifier: "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
     },
   });
   if (res.ok) {

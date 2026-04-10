@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/administration/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/administration/llms-full.txt.
+
 The OpenRouter API supports **User Tracking** through the optional `user` parameter, allowing you to track your own user IDs and improve your application's reporting capabilities.
 
 ## What is User Tracking?

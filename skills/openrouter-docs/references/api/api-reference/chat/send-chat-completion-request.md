@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/chat/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/chat/llms-full.txt.
+
 # Create a chat completion
 
 POST https://openrouter.ai/api/v1/chat/completions

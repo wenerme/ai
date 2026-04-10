@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/llms-full.txt.
+
 Explore and browse 300+ models and providers [on our website](/models), or [with our API](/docs/api-reference/models/get-models). You can also subscribe to our [RSS feed](/api/v1/models?use_rss=true) to stay updated on new models.
 
 ## Query Parameters

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/guardrails/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/guardrails/llms-full.txt.
+
 # List all member assignments
 
 GET https://openrouter.ai/api/v1/guardrails/assignments/members
@@ -69,20 +71,6 @@ components:
     MemberAssignment:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the assignment
-        user_id:
-          type: string
-          description: Clerk user ID of the assigned member
-        organization_id:
-          type: string
-          description: Organization ID
-        guardrail_id:
-          type: string
-          format: uuid
-          description: ID of the guardrail
         assigned_by:
           type:
             - string
@@ -91,13 +79,27 @@ components:
         created_at:
           type: string
           description: ISO 8601 timestamp of when the assignment was created
+        guardrail_id:
+          type: string
+          format: uuid
+          description: ID of the guardrail
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the assignment
+        organization_id:
+          type: string
+          description: Organization ID
+        user_id:
+          type: string
+          description: Clerk user ID of the assigned member
       required:
-        - id
-        - user_id
-        - organization_id
-        - guardrail_id
         - assigned_by
         - created_at
+        - guardrail_id
+        - id
+        - organization_id
+        - user_id
       title: MemberAssignment
     ListMemberAssignmentsResponse:
       type: object

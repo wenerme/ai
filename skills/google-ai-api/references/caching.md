@@ -1,3 +1,5 @@
+# Caching
+
 Context caching allows you to save and reuse precomputed input tokens that you wish to use repeatedly, for example when asking different questions about the same media file. This can lead to cost and speed savings, depending on the usage. For a detailed introduction, see the [Context caching](https://ai.google.dev/gemini-api/docs/caching) guide.
 
 ## Method: cachedContents.create
@@ -59,7 +61,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
         contents="Please summarize this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L25-L46
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L25-L46
 
 ### Node.js
 
@@ -92,7 +94,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       contents: "Please summarize this transcript",
       config: { cachedContent: cache.name },
     });
-    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L33-L62
+    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L33-L62
 
 ### Go
 
@@ -146,7 +148,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L16-L66
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L16-L66
 
 ### Shell
 
@@ -224,7 +226,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
         contents="Find a lighthearted moment from this transcript",
         config=types.GenerateContentConfig(cached_content=cache.name),
     )
-    print(response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L52-L75
+    print(response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L52-L75
 
 ### Node.js
 
@@ -259,7 +261,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       contents: "Find a lighthearted moment from this transcript",
       config: { cachedContent: retrievedCache.name },
     });
-    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L71-L102
+    console.log("Response text:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L71-L102
 
 ### Go
 
@@ -318,7 +320,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     	log.Fatal(err)
     }
     fmt.Println("Response from cache (create from name):")
-    printResponse(response)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L76-L131
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L76-L131
 
 ### From chat
 
@@ -363,7 +365,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     response = chat.send_message(
         message="I didn't understand that last part, could you explain it in simpler language?"
     )
-    print("\n\nmodel:  ", response.text)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L81-L120
+    print("\n\nmodel:  ", response.text)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L81-L120
 
 ### Node.js
 
@@ -417,7 +419,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       message:
         "I didn't understand that last part, could you explain it in simpler language?",
     });
-    console.log("\n\nmodel:", response.text);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L111-L161
+    console.log("\n\nmodel:", response.text);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L111-L161
 
 ### Go
 
@@ -506,7 +508,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("\n\nmodel: ", resp.Text())https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L140-L225
+    fmt.Println("\n\nmodel: ", resp.Text())https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L140-L225
 
 ### Response body
 
@@ -589,7 +591,7 @@ The request body must be empty.
             "system_instruction": "You are an expert analyzing transcripts.",
         },
     )
-    print(client.caches.get(name=cache.name))https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L144-L157
+    print(client.caches.get(name=cache.name))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L144-L157
 
 ### Node.js
 
@@ -616,7 +618,7 @@ The request body must be empty.
       },
     });
     const retrievedCache = await ai.caches.get({ name: cache.name });
-    console.log("Retrieved Cache:", retrievedCache);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L199-L222
+    console.log("Retrieved Cache:", retrievedCache);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L199-L222
 
 ### Go
 
@@ -662,7 +664,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
     fmt.Println("Retrieved cache:")
-    fmt.Println(cache)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L285-L327
+    fmt.Println(cache)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L285-L327
 
 ### Shell
 
@@ -749,7 +751,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     client.caches.update(
         name=cache.name,
         config=types.UpdateCachedContentConfig(expire_time=expire_time),
-    )https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L184-L220
+    )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L184-L220
 
 ### Node.js
 
@@ -792,7 +794,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       name: cache.name,
       config: { expireTime: expireTime },
     });
-    console.log("After update (expire_time):", cache);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L272-L311
+    console.log("After update (expire_time):", cache);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L272-L311
 
 ### Go
 
@@ -837,7 +839,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("Cache deleted:", cache.Name)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L237-L278
+    fmt.Println("Cache deleted:", cache.Name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L237-L278
 
 ### Shell
 
@@ -889,7 +891,7 @@ The request body must be empty.
             "system_instruction": "You are an expert analyzing transcripts.",
         },
     )
-    client.caches.delete(name=cache.name)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/cache.py#L126-L139
+    client.caches.delete(name=cache.name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/cache.py#L126-L139
 
 ### Node.js
 
@@ -916,7 +918,7 @@ The request body must be empty.
       },
     });
     await ai.caches.delete({ name: cache.name });
-    console.log("Cache deleted:", cache.name);https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/cache.js#L170-L193
+    console.log("Cache deleted:", cache.name);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/cache.js#L170-L193
 
 ### Go
 
@@ -961,7 +963,7 @@ The request body must be empty.
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println("Cache deleted:", cache.Name)https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/cache.go#L237-L278
+    fmt.Println("Cache deleted:", cache.Name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/cache.go#L237-L278
 
 ### Shell
 

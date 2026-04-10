@@ -34,7 +34,7 @@ Standalone Health Checks are different from health monitors associated with load
 
 ## Features
 
-### Health Checks Analytics
+###  Health Checks Analytics 
 
 You can use Health Checks Analytics to evaluate origin uptime, latency, failure reason, and specific event logs to debug possible origin issues.
 

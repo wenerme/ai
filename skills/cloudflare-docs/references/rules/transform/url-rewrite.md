@@ -34,7 +34,7 @@ For more complex rewrite logic, consider using [Snippets](https://developers.clo
 URL Rewrite Rules can perform static or dynamic rewrites:
 
 * **Static rewrite**: Replaces a given part of a request URL (path or query string) with a static string.
-* **Dynamic rewrite**: Supports more advanced scenarios where you use a rewrite expression to define the resulting path or query string.
+* **Dynamic rewrite**: Supports more advanced scenarios where you use a [rewrite expression](https://developers.cloudflare.com/ruleset-engine/rules-language/) (a formula based on request properties) to define the resulting path or query string.
 
 Create URL Rewrite Rules [in the dashboard](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/), [via Cloudflare API](https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/), or [using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/#create-a-url-rewrite-rule).
 
@@ -49,7 +49,7 @@ When troubleshooting URL Rewrite Rules, use [Cloudflare Trace](https://developer
 ## Important remarks
 
 * URL rewrite rules run in order, and later rules can overwrite changes done by previous rules.
-* The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_transform` phase where URL rewrite rules are defined. This means that later URL rewrite rules will not match based on changes done by previous URL rewrite rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
+* The values of request and response fields are immutable within each [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/), such as the `http_request_transform` phase where URL rewrite rules are defined. This means that later URL rewrite rules will still use the original field values when evaluating their filter expressions, not the values changed by previous rules. Refer to [Field values during rule evaluation](https://developers.cloudflare.com/ruleset-engine/about/rules/#field-values-during-rule-evaluation) for more information.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/transform/","name":"Transform Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/transform/url-rewrite/","name":"URL Rewrite Rules"}}]}

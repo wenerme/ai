@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
+
 <Warning>
   Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/features/provider-routing) when using Claude Code.
 </Warning>
@@ -172,6 +174,10 @@ Claude Code has a built-in `/fast` command that toggles fast mode. When enabled,
 ```bash
 export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
 ```
+
+<Note>
+  Requires Claude Code v2.1.96 or newer.
+</Note>
 
 ### Pricing
 

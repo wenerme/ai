@@ -1,6 +1,6 @@
 ---
 title: Trace a request
-description: Cloudflare Trace (Beta) follows an HTTP/S request through Cloudflare's reverse proxy to your origin. Use this tool to understand how different Cloudflare configurations interact with an HTTP/S request for one of your hostnames. If the hostname you are testing is not proxied by Cloudflare, Cloudflare Trace will still return all the configurations that Cloudflare would have applied to the request.
+description: Cloudflare Trace (Beta) simulates an HTTP/S request through Cloudflare's network to your origin server. Use this tool to understand how your Cloudflare configurations (such as rules, caching, and security settings) would affect a specific request. If the hostname you are testing is not proxied by Cloudflare, Cloudflare Trace will still return all the configurations that Cloudflare would have applied to the request.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,9 +18,9 @@ Copy page
 
  Available on all plans 
 
-Cloudflare Trace (Beta) follows an HTTP/S request through Cloudflare's reverse proxy to your origin. Use this tool to understand how different Cloudflare configurations interact with an HTTP/S request for one of your hostnames. If the hostname you are testing is not [proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/), Cloudflare Trace will still return all the configurations that Cloudflare would have applied to the request.
+Cloudflare Trace (Beta) simulates an HTTP/S request through Cloudflare's network to your origin server. Use this tool to understand how your Cloudflare configurations (such as rules, caching, and security settings) would affect a specific request. If the hostname you are testing is not [proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/), Cloudflare Trace will still return all the configurations that Cloudflare would have applied to the request.
 
-You can define specific request properties to simulate different conditions for an HTTP/S request. Inactive rules configured in Cloudflare products will not be evaluated.
+You can define specific request properties to simulate different conditions for an HTTP/S request. Rules that are turned off in Cloudflare products will not be evaluated.
 
 Cloudflare Trace is available to users with an Administrator or Super Administrator role.
 

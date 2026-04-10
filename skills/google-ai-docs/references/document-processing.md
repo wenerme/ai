@@ -1,3 +1,5 @@
+# Document understanding
+
 Gemini models can process documents in PDF format, using native
 vision to understand entire document contexts. This goes beyond
 just text extraction, allowing Gemini to:

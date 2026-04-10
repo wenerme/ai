@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Snippets
-description: Cloudflare Snippets provide a powerful and flexible way to customize the behavior of your website or application using short pieces of JavaScript code. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and much more.
+description: Cloudflare Snippets allow you to run short pieces of JavaScript code on Cloudflare's network to customize how requests and responses are handled for your website or application. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and more.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,9 +16,9 @@ Copy page
 
 # Cloudflare Snippets
 
-Cloudflare Snippets provide a powerful and flexible way to customize the behavior of your website or application using short pieces of JavaScript code. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and much more.
+Cloudflare Snippets allow you to run short pieces of JavaScript code on Cloudflare's network to customize how requests and responses are handled for your website or application. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and more.
 
-For code samples addressing common use cases, please refer to the [Examples](https://developers.cloudflare.com/rules/snippets/examples/) section.
+For code samples addressing common use cases, refer to the [Examples](https://developers.cloudflare.com/rules/snippets/examples/) section.
 
 Note
 
@@ -28,8 +28,8 @@ Snippets require that you [proxy the DNS records](https://developers.cloudflare.
 
 To create and deploy a snippet, you need to define the following elements:
 
-* **Code snippet**: JavaScript code to be executed during the request-handling process.
 * **Snippet rule**: A [filter expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) that determines which requests the Snippet will be applied to. Each snippet can only be associated with one snippet rule.
+* **Code snippet**: JavaScript code that runs on the Cloudflare network when a request matches the associated snippet rule.
 
 For more information, refer to [How Snippets work](https://developers.cloudflare.com/rules/snippets/how-it-works/) and [Create a snippet in the dashboard](https://developers.cloudflare.com/rules/snippets/create-dashboard/).
 
@@ -61,7 +61,7 @@ Currently, [Version Management](https://developers.cloudflare.com/version-manage
 
 ## Limits
 
-Cloudflare Snippets are designed for fast, lightweight edge logic. The following limits apply:
+Cloudflare Snippets are designed for fast, lightweight logic that runs on the Cloudflare network. The following limits apply:
 
 | Description                | All plans |
 | -------------------------- | --------- |

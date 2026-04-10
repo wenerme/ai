@@ -30,37 +30,37 @@ Check out the [Get started guide](https://developers.cloudflare.com/ai-gateway/g
 
 ## Features
 
-### Analytics
+###  Analytics 
 
 View metrics such as the number of requests, tokens, and the cost it takes to run your application.
 
 [ View Analytics ](https://developers.cloudflare.com/ai-gateway/observability/analytics/) 
 
-### Logging
+###  Logging 
 
 Gain insight on requests and errors.
 
 [ View Logging ](https://developers.cloudflare.com/ai-gateway/observability/logging/) 
 
-### Caching
+###  Caching 
 
 Serve requests directly from Cloudflare's cache instead of the original model provider for faster requests and cost savings.
 
 [ Use Caching ](https://developers.cloudflare.com/ai-gateway/features/caching/) 
 
-### Rate limiting
+###  Rate limiting 
 
 Control how your application scales by limiting the number of requests your application receives.
 
 [ Use Rate limiting ](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/) 
 
-### Request retry and fallback
+###  Request retry and fallback 
 
 Improve resilience by defining request retry and model fallbacks in case of an error.
 
 [ Use Request retry and fallback ](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) 
 
-### Your favorite providers
+###  Your favorite providers 
 
 Workers AI, Anthropic, Google Gemini, OpenAI, Replicate, and more work with AI Gateway.
 

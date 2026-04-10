@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/o-auth/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/o-auth/llms-full.txt.
+
 # Exchange authorization code for API key
 
 POST https://openrouter.ai/api/v1/auth/keys
@@ -66,17 +68,17 @@ paths:
                 code:
                   type: string
                   description: The authorization code received from the OAuth redirect
-                code_verifier:
-                  type: string
-                  description: >-
-                    The code verifier if code_challenge was used in the
-                    authorization request
                 code_challenge_method:
                   oneOf:
                     - $ref: >-
                         #/components/schemas/AuthKeysPostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod
                     - type: 'null'
                   description: The method used to generate the code challenge
+                code_verifier:
+                  type: string
+                  description: >-
+                    The code verifier if code_challenge was used in the
+                    authorization request
               required:
                 - code
 servers:
@@ -215,8 +217,8 @@ url = "https://openrouter.ai/api/v1/auth/keys"
 
 payload = {
     "code": "auth_code_abc123def456",
-    "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-    "code_challenge_method": "S256"
+    "code_challenge_method": "S256",
+    "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -233,7 +235,7 @@ const url = 'https://openrouter.ai/api/v1/auth/keys';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"code":"auth_code_abc123def456","code_verifier":"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk","code_challenge_method":"S256"}'
+  body: '{"code":"auth_code_abc123def456","code_challenge_method":"S256","code_verifier":"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"}'
 };
 
 try {
@@ -259,7 +261,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/auth/keys"
 
-	payload := strings.NewReader("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}")
+	payload := strings.NewReader("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_challenge_method\": \"S256\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -289,7 +291,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}"
+request.body = "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_challenge_method\": \"S256\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -302,7 +304,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}")
+  .body("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_challenge_method\": \"S256\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"\n}")
   .asString();
 ```
 
@@ -315,8 +317,8 @@ $client = new \GuzzleHttp\Client();
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys', [
   'body' => '{
   "code": "auth_code_abc123def456",
-  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-  "code_challenge_method": "S256"
+  "code_challenge_method": "S256",
+  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -334,7 +336,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/auth/keys");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_challenge_method\": \"S256\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -347,8 +349,8 @@ let headers = [
 ]
 let parameters = [
   "code": "auth_code_abc123def456",
-  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-  "code_challenge_method": "S256"
+  "code_challenge_method": "S256",
+  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk"
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

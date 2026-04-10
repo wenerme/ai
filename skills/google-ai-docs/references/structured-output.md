@@ -1,3 +1,5 @@
+# Structured outputs
+
 You can configure Gemini models to generate responses that adhere to a provided JSON
 Schema. This ensures predictable, type-safe results and simplifies extracting
 structured data from unstructured text.

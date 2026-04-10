@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/sdks/llms.txt. For full documentation content, see https://openrouter.ai/docs/sdks/llms-full.txt.
+
 Give your AI coding assistant the knowledge to work with the OpenRouter SDK
 by installing our official skill. This enables AI agents to understand the
 SDK's APIs, patterns, and best practices when helping you write code.

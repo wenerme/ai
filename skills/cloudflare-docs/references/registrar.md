@@ -26,19 +26,19 @@ Buy and manage your domain with Cloudflare Registrar, and add an additional laye
 
 ## Features
 
-### Buy domains at cost
+###  Buy domains at cost 
 
 Buy and renew domains through Cloudflare Registrar at cost, without markup fees. You only pay what is charged by [registries and ICANN ↗](https://www.cloudflare.com/products/registrar/).
 
 [ Buy domains at cost ](https://developers.cloudflare.com/registrar/get-started/register-domain/) 
 
-### Renew your domain
+###  Renew your domain 
 
 Cloudflare Registrar enrolls your domain to auto-renew by default. Unlike other registrars, your domain will only renew at the list price set by the registry.
 
 [ Renew your domain ](https://developers.cloudflare.com/registrar/account-options/renew-domains/) 
 
-### DNSSEC
+###  DNSSEC 
 
 Cloudflare Registrar offers one-click DNSSEC activation. DNSSEC secures DNS records with cryptographic signatures, and is free to all Cloudflare customers.
 

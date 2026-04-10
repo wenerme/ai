@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/rerank/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/rerank/llms-full.txt.
+
 # Submit a rerank request
 
 POST https://openrouter.ai/api/v1/rerank
@@ -90,27 +92,27 @@ paths:
             schema:
               type: object
               properties:
-                model:
-                  type: string
-                  description: The rerank model to use
-                query:
-                  type: string
-                  description: The search query to rerank documents against
                 documents:
                   type: array
                   items:
                     type: string
                   description: The list of documents to rerank
-                top_n:
-                  type: integer
-                  description: Number of most relevant documents to return
+                model:
+                  type: string
+                  description: The rerank model to use
                 provider:
                   $ref: >-
                     #/components/schemas/RerankPostRequestBodyContentApplicationJsonSchemaProvider
+                query:
+                  type: string
+                  description: The search query to rerank documents against
+                top_n:
+                  type: integer
+                  description: Number of most relevant documents to return
               required:
+                - documents
                 - model
                 - query
-                - documents
 servers:
   - url: https://openrouter.ai/api/v1
 components:
@@ -210,21 +212,131 @@ components:
         - Z.AI
         - FakeProvider
       title: ProviderName
-    ProviderPreferencesOrderItems:
-      oneOf:
-        - $ref: '#/components/schemas/ProviderName'
-        - type: string
-      title: ProviderPreferencesOrderItems
-    ProviderPreferencesOnlyItems:
-      oneOf:
-        - $ref: '#/components/schemas/ProviderName'
-        - type: string
-      title: ProviderPreferencesOnlyItems
     ProviderPreferencesIgnoreItems:
       oneOf:
         - $ref: '#/components/schemas/ProviderName'
         - type: string
       title: ProviderPreferencesIgnoreItems
+    ProviderPreferencesMaxPriceAudio:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceAudio
+    ProviderPreferencesMaxPriceCompletion:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceCompletion
+    ProviderPreferencesMaxPriceImage:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceImage
+    BigNumberUnion:
+      type: string
+      description: Price per million prompt tokens
+      title: BigNumberUnion
+    ProviderPreferencesMaxPriceRequest:
+      type: object
+      properties: {}
+      title: ProviderPreferencesMaxPriceRequest
+    ProviderPreferencesMaxPrice:
+      type: object
+      properties:
+        audio:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
+        completion:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
+        image:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
+        prompt:
+          $ref: '#/components/schemas/BigNumberUnion'
+        request:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
+      description: >-
+        The object specifying the maximum price you want to pay for this
+        request. USD price per million tokens, for prompt and completion.
+      title: ProviderPreferencesMaxPrice
+    ProviderPreferencesOnlyItems:
+      oneOf:
+        - $ref: '#/components/schemas/ProviderName'
+        - type: string
+      title: ProviderPreferencesOnlyItems
+    ProviderPreferencesOrderItems:
+      oneOf:
+        - $ref: '#/components/schemas/ProviderName'
+        - type: string
+      title: ProviderPreferencesOrderItems
+    PercentileLatencyCutoffs:
+      type: object
+      properties:
+        p50:
+          type: number
+          format: double
+          description: Maximum p50 latency (seconds)
+        p75:
+          type: number
+          format: double
+          description: Maximum p75 latency (seconds)
+        p90:
+          type: number
+          format: double
+          description: Maximum p90 latency (seconds)
+        p99:
+          type: number
+          format: double
+          description: Maximum p99 latency (seconds)
+      description: >-
+        Percentile-based latency cutoffs. All specified cutoffs must be met for
+        an endpoint to be preferred.
+      title: PercentileLatencyCutoffs
+    PreferredMaxLatency:
+      oneOf:
+        - type: number
+          format: double
+        - $ref: '#/components/schemas/PercentileLatencyCutoffs'
+        - description: Any type
+      description: >-
+        Preferred maximum latency (in seconds). Can be a number (applies to p50)
+        or an object with percentile-specific cutoffs. Endpoints above the
+        threshold(s) may still be used, but are deprioritized in routing. When
+        using fallback models, this may cause a fallback model to be used
+        instead of the primary model if it meets the threshold.
+      title: PreferredMaxLatency
+    PercentileThroughputCutoffs:
+      type: object
+      properties:
+        p50:
+          type: number
+          format: double
+          description: Minimum p50 throughput (tokens/sec)
+        p75:
+          type: number
+          format: double
+          description: Minimum p75 throughput (tokens/sec)
+        p90:
+          type: number
+          format: double
+          description: Minimum p90 throughput (tokens/sec)
+        p99:
+          type: number
+          format: double
+          description: Minimum p99 throughput (tokens/sec)
+      description: >-
+        Percentile-based throughput cutoffs. All specified cutoffs must be met
+        for an endpoint to be preferred.
+      title: PercentileThroughputCutoffs
+    PreferredMinThroughput:
+      oneOf:
+        - type: number
+          format: double
+        - $ref: '#/components/schemas/PercentileThroughputCutoffs'
+        - description: Any type
+      description: >-
+        Preferred minimum throughput (in tokens per second). Can be a number
+        (applies to p50) or an object with percentile-specific cutoffs.
+        Endpoints below the threshold(s) may still be used, but are
+        deprioritized in routing. When using fallback models, this may cause a
+        fallback model to be used instead of the primary model if it meets the
+        threshold.
+      title: PreferredMinThroughput
     Quantization:
       type: string
       enum:
@@ -293,116 +405,6 @@ components:
         The sorting strategy to use for this request, if "order" is not
         specified. When set, no load balancing is performed.
       title: ProviderPreferencesSort
-    BigNumberUnion:
-      type: string
-      description: Price per million prompt tokens
-      title: BigNumberUnion
-    ProviderPreferencesMaxPriceCompletion:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceCompletion
-    ProviderPreferencesMaxPriceImage:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceImage
-    ProviderPreferencesMaxPriceAudio:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceAudio
-    ProviderPreferencesMaxPriceRequest:
-      type: object
-      properties: {}
-      title: ProviderPreferencesMaxPriceRequest
-    ProviderPreferencesMaxPrice:
-      type: object
-      properties:
-        prompt:
-          $ref: '#/components/schemas/BigNumberUnion'
-        completion:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceCompletion'
-        image:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceImage'
-        audio:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceAudio'
-        request:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPriceRequest'
-      description: >-
-        The object specifying the maximum price you want to pay for this
-        request. USD price per million tokens, for prompt and completion.
-      title: ProviderPreferencesMaxPrice
-    PercentileThroughputCutoffs:
-      type: object
-      properties:
-        p50:
-          type: number
-          format: double
-          description: Minimum p50 throughput (tokens/sec)
-        p75:
-          type: number
-          format: double
-          description: Minimum p75 throughput (tokens/sec)
-        p90:
-          type: number
-          format: double
-          description: Minimum p90 throughput (tokens/sec)
-        p99:
-          type: number
-          format: double
-          description: Minimum p99 throughput (tokens/sec)
-      description: >-
-        Percentile-based throughput cutoffs. All specified cutoffs must be met
-        for an endpoint to be preferred.
-      title: PercentileThroughputCutoffs
-    PreferredMinThroughput:
-      oneOf:
-        - type: number
-          format: double
-        - $ref: '#/components/schemas/PercentileThroughputCutoffs'
-        - description: Any type
-      description: >-
-        Preferred minimum throughput (in tokens per second). Can be a number
-        (applies to p50) or an object with percentile-specific cutoffs.
-        Endpoints below the threshold(s) may still be used, but are
-        deprioritized in routing. When using fallback models, this may cause a
-        fallback model to be used instead of the primary model if it meets the
-        threshold.
-      title: PreferredMinThroughput
-    PercentileLatencyCutoffs:
-      type: object
-      properties:
-        p50:
-          type: number
-          format: double
-          description: Maximum p50 latency (seconds)
-        p75:
-          type: number
-          format: double
-          description: Maximum p75 latency (seconds)
-        p90:
-          type: number
-          format: double
-          description: Maximum p90 latency (seconds)
-        p99:
-          type: number
-          format: double
-          description: Maximum p99 latency (seconds)
-      description: >-
-        Percentile-based latency cutoffs. All specified cutoffs must be met for
-        an endpoint to be preferred.
-      title: PercentileLatencyCutoffs
-    PreferredMaxLatency:
-      oneOf:
-        - type: number
-          format: double
-        - $ref: '#/components/schemas/PercentileLatencyCutoffs'
-        - description: Any type
-      description: >-
-        Preferred maximum latency (in seconds). Can be a number (applies to p50)
-        or an object with percentile-specific cutoffs. Endpoints above the
-        threshold(s) may still be used, but are deprioritized in routing. When
-        using fallback models, this may cause a fallback model to be used
-        instead of the primary model if it meets the threshold.
-      title: PreferredMaxLatency
     RerankPostRequestBodyContentApplicationJsonSchemaProvider:
       type: object
       properties:
@@ -418,15 +420,6 @@ components:
 
             - false: use only the primary/custom provider, and return the
             upstream error if it's unavailable.
-        require_parameters:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to filter providers to only those that support the
-            parameters you've provided. If this setting is omitted or set to
-            false, then providers will receive only the parameters they support,
-            and ignore the rest.
         data_collection:
           oneOf:
             - $ref: '#/components/schemas/ProviderPreferencesDataCollection'
@@ -440,14 +433,6 @@ components:
 
 
             - deny: use only providers which do not collect user data.
-        zdr:
-          type:
-            - boolean
-            - 'null'
-          description: >-
-            Whether to restrict routing to only ZDR (Zero Data Retention)
-            endpoints. When true, only endpoints that do not retain prompts will
-            be used.
         enforce_distillable_text:
           type:
             - boolean
@@ -456,6 +441,29 @@ components:
             Whether to restrict routing to only models that allow text
             distillation. When true, only models where the author has allowed
             distillation will be used.
+        ignore:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
+          description: >-
+            List of provider slugs to ignore. If provided, this list is merged
+            with your account-wide ignored provider settings for this request.
+        max_price:
+          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
+          description: >-
+            The object specifying the maximum price you want to pay for this
+            request. USD price per million tokens, for prompt and completion.
+        only:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
+          description: >-
+            List of provider slugs to allow. If provided, this list is merged
+            with your account-wide allowed provider settings for this request.
         order:
           type:
             - array
@@ -468,24 +476,10 @@ components:
             requested model, and fall back to the next if it is unavailable. If
             no providers are available, the request will fail with an error
             message.
-        only:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ProviderPreferencesOnlyItems'
-          description: >-
-            List of provider slugs to allow. If provided, this list is merged
-            with your account-wide allowed provider settings for this request.
-        ignore:
-          type:
-            - array
-            - 'null'
-          items:
-            $ref: '#/components/schemas/ProviderPreferencesIgnoreItems'
-          description: >-
-            List of provider slugs to ignore. If provided, this list is merged
-            with your account-wide ignored provider settings for this request.
+        preferred_max_latency:
+          $ref: '#/components/schemas/PreferredMaxLatency'
+        preferred_min_throughput:
+          $ref: '#/components/schemas/PreferredMinThroughput'
         quantizations:
           type:
             - array
@@ -493,20 +487,28 @@ components:
           items:
             $ref: '#/components/schemas/Quantization'
           description: A list of quantization levels to filter the provider by.
+        require_parameters:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether to filter providers to only those that support the
+            parameters you've provided. If this setting is omitted or set to
+            false, then providers will receive only the parameters they support,
+            and ignore the rest.
         sort:
           $ref: '#/components/schemas/ProviderPreferencesSort'
           description: >-
             The sorting strategy to use for this request, if "order" is not
             specified. When set, no load balancing is performed.
-        max_price:
-          $ref: '#/components/schemas/ProviderPreferencesMaxPrice'
+        zdr:
+          type:
+            - boolean
+            - 'null'
           description: >-
-            The object specifying the maximum price you want to pay for this
-            request. USD price per million tokens, for prompt and completion.
-        preferred_min_throughput:
-          $ref: '#/components/schemas/PreferredMinThroughput'
-        preferred_max_latency:
-          $ref: '#/components/schemas/PreferredMaxLatency'
+            Whether to restrict routing to only ZDR (Zero Data Retention)
+            endpoints. When true, only endpoints that do not retain prompts will
+            be used.
       title: RerankPostRequestBodyContentApplicationJsonSchemaProvider
     RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument:
       type: object
@@ -521,6 +523,10 @@ components:
     RerankPostResponsesContentApplicationJsonSchemaResultsItems:
       type: object
       properties:
+        document:
+          $ref: >-
+            #/components/schemas/RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument
+          description: The document object containing the original text
         index:
           type: integer
           description: Index of the document in the original input list
@@ -528,29 +534,25 @@ components:
           type: number
           format: double
           description: Relevance score of the document to the query
-        document:
-          $ref: >-
-            #/components/schemas/RerankPostResponsesContentApplicationJsonSchemaResultsItemsDocument
-          description: The document object containing the original text
       required:
+        - document
         - index
         - relevance_score
-        - document
       description: A single rerank result
       title: RerankPostResponsesContentApplicationJsonSchemaResultsItems
     RerankPostResponsesContentApplicationJsonSchemaUsage:
       type: object
       properties:
-        total_tokens:
-          type: integer
-          description: Total number of tokens used
-        search_units:
-          type: integer
-          description: Number of search units consumed (Cohere billing)
         cost:
           type: number
           format: double
           description: Cost of the request in credits
+        search_units:
+          type: integer
+          description: Number of search units consumed (Cohere billing)
+        total_tokens:
+          type: integer
+          description: Total number of tokens used
       description: Usage statistics
       title: RerankPostResponsesContentApplicationJsonSchemaUsage
     Rerank_createRerank_Response_200:
@@ -844,9 +846,10 @@ import requests
 url = "https://openrouter.ai/api/v1/rerank"
 
 payload = {
+    "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany."],
     "model": "cohere/rerank-v3.5",
     "query": "What is the capital of France?",
-    "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany.", "Madrid is the capital of Spain."]
+    "top_n": 3
 }
 headers = {
     "Authorization": "Bearer <token>",
@@ -863,7 +866,7 @@ const url = 'https://openrouter.ai/api/v1/rerank';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"model":"cohere/rerank-v3.5","query":"What is the capital of France?","documents":["Paris is the capital of France.","Berlin is the capital of Germany.","Madrid is the capital of Spain."]}'
+  body: '{"documents":["Paris is the capital of France.","Berlin is the capital of Germany."],"model":"cohere/rerank-v3.5","query":"What is the capital of France?","top_n":3}'
 };
 
 try {
@@ -889,7 +892,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/rerank"
 
-	payload := strings.NewReader("{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}")
+	payload := strings.NewReader("{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -919,7 +922,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}"
+request.body = "{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -932,7 +935,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/rerank")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}")
+  .body("{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}")
   .asString();
 ```
 
@@ -944,13 +947,13 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/rerank', [
   'body' => '{
-  "model": "cohere/rerank-v3.5",
-  "query": "What is the capital of France?",
   "documents": [
     "Paris is the capital of France.",
-    "Berlin is the capital of Germany.",
-    "Madrid is the capital of Spain."
-  ]
+    "Berlin is the capital of Germany."
+  ],
+  "model": "cohere/rerank-v3.5",
+  "query": "What is the capital of France?",
+  "top_n": 3
 }',
   'headers' => [
     'Authorization' => 'Bearer <token>',
@@ -968,7 +971,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/rerank");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\",\n    \"Madrid is the capital of Spain.\"\n  ]\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"documents\": [\n    \"Paris is the capital of France.\",\n    \"Berlin is the capital of Germany.\"\n  ],\n  \"model\": \"cohere/rerank-v3.5\",\n  \"query\": \"What is the capital of France?\",\n  \"top_n\": 3\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -980,9 +983,10 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
+  "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany."],
   "model": "cohere/rerank-v3.5",
   "query": "What is the capital of France?",
-  "documents": ["Paris is the capital of France.", "Berlin is the capital of Germany.", "Madrid is the capital of Spain."]
+  "top_n": 3
 ] as [String : Any]
 
 let postData = JSONSerialization.data(withJSONObject: parameters, options: [])

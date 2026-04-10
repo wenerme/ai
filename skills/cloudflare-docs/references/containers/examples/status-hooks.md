@@ -20,25 +20,25 @@ Copy page
 
 Execute Workers code in reaction to Container status changes
 
-When a Container starts, stops, and errors, it can trigger code execution in a Worker that has defined status hooks on the `Container` class. Refer to the [Container package docs ↗](https://github.com/cloudflare/containers/blob/main/README.md#lifecycle-hooks) for more details.
+When a Container starts, stops, becomes idle, and errors, it can trigger code execution in a Worker that has defined status hooks on the `Container` class. Refer to the [Container package docs ↗](https://github.com/cloudflare/containers/blob/main/README.md#lifecycle-hooks) for more details.
 
-JavaScript
+TypeScript
 
 ```
 
-import { Container } from '@cloudflare/containers';
+import { Container } from "@cloudflare/containers";
 
 
 export class MyContainer extends Container {
 
   defaultPort = 4000;
 
-  sleepAfter = '5m';
+  sleepAfter = "5m";
 
 
   override onStart() {
 
-    console.log('Container successfully started');
+    console.log("Container successfully started");
 
   }
 
@@ -47,23 +47,32 @@ export class MyContainer extends Container {
 
     if (stopParams.exitCode === 0) {
 
-      console.log('Container stopped gracefully');
+      console.log("Container stopped gracefully");
 
     } else {
 
-      console.log('Container stopped with exit code:', stopParams.exitCode);
+      console.log("Container stopped with exit code:", stopParams.exitCode);
 
     }
 
 
-    console.log('Container stop reason:', stopParams.reason);
+    console.log("Container stop reason:", stopParams.reason);
+
+  }
+
+
+  override async onActivityExpired() {
+
+    console.log("Container became idle, stopping it now");
+
+    await this.stop();
 
   }
 
 
   override onError(error: string) {
 
-    console.log('Container error:', error);
+    console.log("Container error:", error);
 
   }
 

@@ -59,26 +59,23 @@ Teams can now get started with Codex with no fixed monthly costs. For a
       </PricingCard>
       <PricingCard
         name="Pro"
-        subtitle="Rely on Codex for daily full-time development."
-        price="$200"
+        subtitle="Choose 5x or 20x higher rate limits than Plus."
+        priceEyebrow="From"
+        price="$100"
         interval="/month"
         ctaLabel="Get Pro"
         ctaHref="https://chatgpt.com/explore/pro?utm_internal_source=openai_developers_codex"
         highlight="Everything in Plus and:"
+        footnoteLabel="*Codex usage boost ends May 31, 2026."
       >
         - Priority request processing
         - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
           for day-to-day coding tasks
-        - 6x higher usage limits for local and cloud tasks
-        - 10x more cloud-based code reviews
+        - 5x or 20x higher rate limits than Plus*
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
       </PricingCard>
-    </div>
-
-    <div class="mt-8 mb-10 codex-pricing-grid">
       <PricingCard
-        class="codex-pricing-card--span-two"
         name="API Key"
         subtitle="Great for automation in shared environments like CI."
         price=""
@@ -185,8 +182,12 @@ require Codex to hold more context will use significantly more per message.
         value: "plus",
       },
       {
-        label: "Pro",
+        label: "Pro 5x",
         value: "pro",
+      },
+      {
+        label: "Pro 20x",
+        value: "pro-20x",
       },
       {
         label: "Business",
@@ -212,28 +213,28 @@ require Codex to hold more context will use significantly more per message.
               Cloud Tasks[\*](#shared-limits-plus) / 5h
             </th>
             <th scope="col" style="text-align:center">
-              Code Reviews / week
+              Code Reviews / 5h
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>GPT-5.4</td>
-            <td style="text-align:center">33-168</td>
+            <td style="text-align:center">20-100</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.4-mini</td>
-            <td style="text-align:center">110-560</td>
+            <td style="text-align:center">60-350</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">45-225</td>
+            <td style="text-align:center">30-150</td>
             <td style="text-align:center">10-60</td>
-            <td style="text-align:center">10-25</td>
+            <td style="text-align:center">20-50</td>
           </tr>
         </tbody>
         <tfoot>
@@ -261,7 +262,7 @@ require Codex to hold more context will use significantly more per message.
       </table>
     </div>
     <div data-content-switcher-pane data-value="pro" hidden>
-      <div class="hidden">Pro</div>
+      <div class="hidden">Pro 5x</div>
 
       <table>
         <thead>
@@ -274,34 +275,102 @@ require Codex to hold more context will use significantly more per message.
               Cloud Tasks[\*](#shared-limits-pro) / 5h
             </th>
             <th scope="col" style="text-align:center">
-              Code Reviews / week
+              Code Reviews / 5h
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>GPT-5.4</td>
-            <td style="text-align:center">223-1120</td>
+            <td style="text-align:center">200-1000</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.4-mini</td>
-            <td style="text-align:center">743-3733</td>
+            <td style="text-align:center">600-3500</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.3-Codex</td>
             <td style="text-align:center">300-1500</td>
-            <td style="text-align:center">50-400</td>
-            <td style="text-align:center">100-250</td>
+            <td style="text-align:center">100-600</td>
+            <td style="text-align:center">200-500</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td colspan="4" style="text-align:center">
               <a id="shared-limits-pro" class="footnote">
+                *The usage limits for local messages and cloud tasks share a
+                **five-hour window**. Additional weekly limits may apply.
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align:center">
+              The limits shown for Pro 5x include a 2x usage boost that ends May
+              31, 2026.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align:center">
+              For Enterprise/Edu users, there are no fixed rate limits - usage
+              scales with [credits](#credits-overview)
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align:center">
+              Enterprise and Edu plans without flexible pricing have the same
+              per-seat usage limits as Plus for most features
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div data-content-switcher-pane data-value="pro-20x" hidden>
+      <div class="hidden">Pro 20x</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" style="text-align:center">
+              Local Messages[\*](#shared-limits-pro-20x) / 5h
+            </th>
+            <th scope="col" style="text-align:center">
+              Cloud Tasks[\*](#shared-limits-pro-20x) / 5h
+            </th>
+            <th scope="col" style="text-align:center">
+              Code Reviews / 5h
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GPT-5.4</td>
+            <td style="text-align:center">400-2000</td>
+            <td style="text-align:center">Not available</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>GPT-5.4-mini</td>
+            <td style="text-align:center">1200-7000</td>
+            <td style="text-align:center">Not available</td>
+            <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>GPT-5.3-Codex</td>
+            <td style="text-align:center">600-3000</td>
+            <td style="text-align:center">200-1200</td>
+            <td style="text-align:center">400-1000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" style="text-align:center">
+              <a id="shared-limits-pro-20x" class="footnote">
                 *The usage limits for local messages and cloud tasks share a
                 **five-hour window**. Additional weekly limits may apply.
               </a>
@@ -336,28 +405,28 @@ require Codex to hold more context will use significantly more per message.
               Cloud Tasks[\*](#shared-limits-business) / 5h
             </th>
             <th scope="col" style="text-align:center">
-              Code Reviews / week
+              Code Reviews / 5h
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>GPT-5.4</td>
-            <td style="text-align:center">15-60</td>
+            <td style="text-align:center">20-100</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.4-mini</td>
-            <td style="text-align:center">40-200</td>
+            <td style="text-align:center">60-350</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">20-90</td>
-            <td style="text-align:center">5-40</td>
-            <td style="text-align:center">15-30</td>
+            <td style="text-align:center">30-150</td>
+            <td style="text-align:center">10-60</td>
+            <td style="text-align:center">20-50</td>
           </tr>
         </tbody>
         <tfoot>
@@ -398,7 +467,7 @@ require Codex to hold more context will use significantly more per message.
               Cloud Tasks[\*](#shared-limits-api-key) / 5h
             </th>
             <th scope="col" style="text-align:center">
-              Code Reviews / week
+              Code Reviews / 5h
             </th>
           </tr>
         </thead>

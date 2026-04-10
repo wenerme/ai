@@ -28,25 +28,25 @@ Cloudflare Zaraz is built for speed, privacy, and security, and you can use it t
 
 ## Features
 
-### Third-party tools
+###  Third-party tools 
 
 You can add many third-party tools to Zaraz, and offload them from your website.
 
 [ Use Third-party tools ](https://developers.cloudflare.com/zaraz/get-started/) 
 
-### Custom Managed Components
+###  Custom Managed Components 
 
 You can add Custom Managed Components to Zaraz and run them as a tool.
 
 [ Use Custom Managed Components ](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/) 
 
-### Web API
+###  Web API 
 
 Zaraz provides a client-side web API that you can use anywhere inside the `<body>` tag of a page.
 
 [ Use Web API ](https://developers.cloudflare.com/zaraz/web-api/) 
 
-### Consent management
+###  Consent management 
 
 Zaraz provides a Consent Management platform to help you address and manage required consents.
 

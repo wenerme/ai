@@ -30,7 +30,7 @@ Cloudflare Network Firewall is available with the purchase of [Magic Transit](ht
 
 ## Features
 
-### Intrusion Detection System (IDS)
+###  Intrusion Detection System (IDS) 
 
 Actively monitor for a wide range of known threat signatures in your traffic, expanding your security coverage beyond packet-filtering rules to detect sophisticated attacks such as ransomware, data exfiltration, and network scanning.
 

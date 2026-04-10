@@ -31,25 +31,25 @@ Learn more [about how Magic Transit works](https://developers.cloudflare.com/mag
 
 ## Features
 
-### Tunnel health checks
+###  Tunnel health checks 
 
 Magic Transit sends health check probes to monitor network status and the health of specific network components.
 
 [ Learn about health checks ](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) 
 
-### Traffic steering
+###  Traffic steering 
 
 Magic Transit steers traffic along tunnel routes based on priorities you define during the onboarding process.
 
 [ Learn about traffic steering ](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/) 
 
-### Cloudflare IPs
+###  Cloudflare IPs 
 
 Use Cloudflare-owned IP addresses if you want to protect a smaller network and do not meet Magic Transit's `/24` prefix length requirements.
 
 [ Use Cloudflare IPs ](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) 
 
-### BGP peering (beta)
+###  BGP peering (beta) 
 
 Use BGP peering between your networks and Cloudflare to automate adding or removing networks and subnets, and take advantage of failure detection and session recovery features.
 

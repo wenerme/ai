@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+
 [Sentry](https://sentry.io) is an application monitoring platform that helps developers identify and fix issues in real-time. With Sentry's AI monitoring capabilities, you can track LLM performance and errors.
 
 ## Step 1: Get your Sentry OTLP endpoint and DSN

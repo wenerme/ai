@@ -1,6 +1,6 @@
 ---
 title: Managed Transforms
-description: Managed Transforms allow you to perform common adjustments to HTTP request and response headers with the click of a button. The available adjustments include:
+description: Managed Transforms allow you to perform common adjustments to HTTP request and response headers with pre-built, one-step configurations. The available adjustments include:
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,19 +16,19 @@ Copy page
 
 # Managed Transforms
 
-Managed Transforms allow you to perform common adjustments to HTTP request and response headers with the click of a button. The available adjustments include:
+Managed Transforms allow you to perform common adjustments to HTTP request and response headers with pre-built, one-step configurations. The available adjustments include:
 
 * Add bot protection request headers.
 * Remove or add headers related to the visitor's IP address.
-* Add request header when the WAF detects leaked credentials.
+* Add request header when Cloudflare detects [leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/).
 * Add security-related response headers.
-* Remove "X-Powered-By" response headers.
+* Remove `X-Powered-By` response headers.
 
 For a complete list, refer to [Available Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/).
 
 When you enable a Managed Transform, Cloudflare internally deploys one or more Transform Rules to handle the common configuration you selected. These generated rules will not count against the [maximum number of Transform Rules](https://developers.cloudflare.com/rules/transform/#availability) available in your Cloudflare plan.
 
-Enabled Managed Transforms will apply to all inbound requests for the zone.
+Enabled Managed Transforms will apply to all inbound requests for the [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) (domain or subdomain added to Cloudflare).
 
 Note
 

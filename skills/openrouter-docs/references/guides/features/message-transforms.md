@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/llms-full.txt.
+
 To help with prompts that exceed the maximum context size of a model, OpenRouter supports a context compression [plugin](/docs/guides/features/plugins) that can be enabled per-request:
 
 ```typescript

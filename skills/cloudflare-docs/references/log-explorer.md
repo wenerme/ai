@@ -46,25 +46,25 @@ Authentication with the API can be done via an API token or API key with an emai
 
 ## Features
 
-### Log Search
+###  Log Search 
 
 Explore your Cloudflare logs directly within the Cloudflare dashboard or [API](https://developers.cloudflare.com/log-explorer/api/).
 
 [ Use Log Search ](https://developers.cloudflare.com/log-explorer/log-search/) 
 
-### Custom dashboards
+###  Custom dashboards 
 
 Design customized views for tracking application security, performance, and usage metrics.
 
 [ Use Custom dashboards ](https://developers.cloudflare.com/log-explorer/custom-dashboards/) 
 
-### Manage datasets
+###  Manage datasets 
 
 Manage the data you want to store within Log Explorer.
 
 [ Use Manage datasets ](https://developers.cloudflare.com/log-explorer/manage-datasets/) 
 
-### API
+###  API 
 
 Manage configuration and perform queries via the API.
 

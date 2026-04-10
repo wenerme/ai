@@ -1,5 +1,5 @@
 Lyria 3 is Google's family of music generation models, available
-through the Gemini API. With Lyria 3, you can generate high-quality, 48kHz
+through the Gemini API. With Lyria 3, you can generate high-quality, 44.1 kHz
 stereo audio from text prompts or from images. These models deliver structural
 coherence, including vocals, timed lyrics, and full instrumental arrangements.
 
@@ -12,7 +12,7 @@ The Lyria 3 family includes two models:
 
 Both models can be used using the standard `generateContent` method and the new
 [Interactions API](https://ai.google.dev/gemini-api/docs/interactions), supporting multimodal
-inputs (text and images), and produce **48kHz high-fidelity stereo** audio.
+inputs (text and images), and produce **44.1 kHz high-fidelity stereo** audio.
 
 > [!NOTE]
 > **Note:** Looking for real-time, streaming music generation? See [Real-time music generation with Lyria RealTime](https://ai.google.dev/gemini-api/docs/realtime-music-generation).

@@ -24,19 +24,19 @@ The Data Localization Suite (DLS) is a collection of tools that enable customers
 
 ## Features
 
-### Geo Key Manager
+###  Geo Key Manager 
 
 Keep your keys within a specified region, ensuring compliance and data sovereignty.
 
 [ Use Geo Key Manager ](https://developers.cloudflare.com/data-localization/geo-key-manager/) 
 
-### Customer Metadata Boundary
+###  Customer Metadata Boundary 
 
 Ensure that any traffic metadata that can identify your end user stays in the region you selected.
 
 [ Use Customer Metadata Boundary ](https://developers.cloudflare.com/data-localization/metadata-boundary/) 
 
-### Regional Services
+###  Regional Services 
 
 Comply with regional restrictions by choosing which subset of data centers decrypts and services your HTTPS traffic.
 

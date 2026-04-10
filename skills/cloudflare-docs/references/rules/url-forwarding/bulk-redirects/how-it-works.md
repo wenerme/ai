@@ -1,6 +1,6 @@
 ---
 title: How Bulk Redirects work
-description: For each incoming request, Cloudflare evaluates all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
+description: When a request reaches Cloudflare, Bulk Redirects are evaluated before the request is sent to your origin server. Cloudflare checks all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,23 +16,23 @@ Copy page
 
 # How Bulk Redirects work
 
-For each incoming request, Cloudflare evaluates all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
+When a request reaches Cloudflare, Bulk Redirects are evaluated before the request is sent to your origin server. Cloudflare checks all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
 
-If there is a match for a URL redirect according to the URL matching algorithm, the redirect action is performed immediately, according to the URL redirect configuration parameters. Cloudflare performs no further processing once a redirect action has been executed.
+If there is a match for a URL redirect according to the [URL matching algorithm](#url-matching-algorithm), the redirect action is performed immediately according to the URL redirect configuration parameters. Cloudflare performs no further processing once a redirect action has been executed.
 
 ## Matching the source URL of redirects
 
 The following URL redirect parameters control the matching behavior between the request URL and source URLs of the configured (and enabled) URL redirects:
 
 * **Subpath matching** (default: false)  
-   * If `true`, the URL redirect will apply to all paths under the given source path. For example, consider the following source and target URLs of a URL redirect:  
+   * When `true`, the URL redirect applies not only to the exact source path, but also to all paths under it. For example, consider the following source and target URLs of a URL redirect:  
          * Source URL: `https://example.com/foo/`  
          * Target URL: `https://example.com/qux/`  
    * With this configuration and **Subpath matching** enabled, an incoming request to `example.com/foo/bar` will be redirected to `https://example.com/qux/bar`.  
 Note  
 URL redirects with **Subpath matching** enabled cannot contain more than 16 `/` (slash) characters in the source URL path.
 * **Include subdomains** (default: false)  
-   * If `true`, the source URL hostname of the URL redirect will also apply to all its subdomains. For example, consider the following source and target URLs of a URL redirect:  
+   * When `true`, the URL redirect matches not only the exact hostname in the source URL, but also any of its subdomains. For example, consider the following source and target URLs of a URL redirect:  
          * Source URL: `https://example.com/about`  
          * Target URL: `https://example.com/newpage`  
    * With this configuration and **Includes subdomains** enabled, incoming requests to `http://a.example.com/about` and `http://a.b.example.com/about` would also match, in addition to the specified domain with no subdomain (`https://example.com/about`).
@@ -44,12 +44,12 @@ For detailed information on these parameters, refer to [URL redirect parameters]
 The following parameters configure how Cloudflare determines the path and query string of the final target URL:
 
 * **Preserve query string** (default: false)  
-   * If `true`, the final target URL will keep the query string of the original request. For example, consider the following source and target URLs of a URL redirect:  
+   * When `true`, the final target URL keeps the query string of the original request. For example, consider the following source and target URLs of a URL redirect:  
          * Source URL: `https://example.com/about`  
          * Target URL: `https://example.com/newpage`  
    * With this configuration and **Preserve query string** enabled, an incoming request to `http://example.com/about?q=term` would be redirected to `https://example.com/newpage?q=term`. If **Preserve query string** is disabled, the same incoming request would be redirected to `https://example.com/newpage`.
 * **Preserve path suffix** (default: true)  
-   * Defines if the final target URL will include the parts of the request path that did not match the URL redirect's source URL.  
+   * When `true`, the final target URL includes the remaining path segments (the parts of the request path that did not match the URL redirect's source URL).  
    * When **Subpath matching** is enabled, the path that was not matched is copied over to the final target URL. For example, consider the following source and target URLs of a URL redirect:  
          * Source URL: `https://example.com/a/`  
          * Target URL: `https://example.com/b/`  
@@ -75,7 +75,7 @@ If there are two URL redirects with source URL paths `/folder` and `/folder/subf
 2. URL redirects with the exact hostname win over URL redirects with the **Include subdomains** option enabled.
 3. Given two URL redirects with **Include subdomains** enabled, the URL with the most specific domain wins over the other URL redirect.  
 If there are two URL redirects with source URL hostnames `bar.com` and `foo.bar.com`, an incoming request to `qux.foo.bar.com` will match the second redirect (`foo.bar.com`) because it is more specific.
-4. URL redirects with a concrete scheme win over URL redirects that match both `http` and `https` schemes.
+4. URL redirects with a specific scheme (either `http` or `https`) win over URL redirects that match both schemes.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/how-it-works/","name":"How Bulk Redirects work"}}]}

@@ -1,3 +1,5 @@
+For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/server-tools/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/server-tools/llms-full.txt.
+
 <Note title="Beta">
   Server tools are currently in beta. The API and behavior may change.
 </Note>

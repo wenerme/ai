@@ -1,4 +1,6 @@
-For a detailed guide on counting tokens using the Gemini API, including how images, audio and video are counted, see the[Token counting guide](https://ai.google.dev/gemini-api/docs/tokens)and accompanying[Cookbook recipe](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Counting_Tokens.ipynb).  
+# Counting tokens
+
+For a detailed guide on counting tokens using the Gemini API, including how images, audio and video are counted, see the [Token counting guide](https://ai.google.dev/gemini-api/docs/tokens) and accompanying [Cookbook recipe](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Counting_Tokens.ipynb).
 
 ## Method: models.countTokens
 
@@ -19,28 +21,25 @@ For a detailed guide on counting tokens using the Gemini API, including how imag
   - [System Instruction](https://ai.google.dev/api/tokens#body.codeSnippets.group_6)
   - [Tools](https://ai.google.dev/api/tokens#body.codeSnippets.group_7)
 
-Runs a model's tokenizer on input`Content`and returns the token count. Refer to the[tokens guide](https://ai.google.dev/gemini-api/docs/tokens)to learn more about tokens.  
+Runs a model's tokenizer on input `Content` and returns the token count. Refer to the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens) to learn more about tokens.
 
 ### Endpoint
 
-post`https:``/``/generativelanguage.googleapis.com``/v1beta``/{model=models``/*}:countTokens`  
+post `https://generativelanguage.googleapis.com/v1beta/{model=models/*}:countTokens`   
 
 ### Path parameters
 
-`model``string`  
-Required. The model's resource name. This serves as an ID for the Model to use.
+`model` `string` Required. The model's resource name. This serves as an ID for the Model to use.
 
-This name should match a model name returned by the`models.list`method.
+This name should match a model name returned by the `models.list` method.
 
-Format:`models/{model}`It takes the form`models/{model}`.
+Format: `models/{model}` It takes the form `models/{model}`.
 
 ### Request body
 
 The request body contains data with the following structure:
-Fields`contents[]``object (`[Content](https://ai.google.dev/api/caching#Content)`)`  
-Optional. The input given to the model as a prompt. This field is ignored when`generateContentRequest`is set.
-`generateContentRequest``object (`[GenerateContentRequest](https://ai.google.dev/api/batch-api#GenerateContentRequest)`)`  
-Optional. The overall input given to the`Model`. This includes the prompt as well as other model steering information like[system instructions](https://ai.google.dev/gemini-api/docs/system-instructions), and/or function declarations for[function calling](https://ai.google.dev/gemini-api/docs/function-calling).`Model`s/`Content`s and`generateContentRequest`s are mutually exclusive. You can either send`Model`+`Content`s or a`generateContentRequest`, but never both.  
+Fields `contents[]` ``object (`https://ai.google.dev/api/caching#Content`)`` Optional. The input given to the model as a prompt. This field is ignored when `generateContentRequest` is set.
+`generateContentRequest` ``object (`https://ai.google.dev/api/batch-api#GenerateContentRequest`)`` Optional. The overall input given to the `Model`. This includes the prompt as well as other model steering information like [system instructions](https://ai.google.dev/gemini-api/docs/system-instructions), and/or function declarations for [function calling](https://ai.google.dev/gemini-api/docs/function-calling). `Model`s/`Content`s and `generateContentRequest`s are mutually exclusive. You can either send `Model` + `Content`s or a `generateContentRequest`, but never both.
 
 ### Example request
 
@@ -66,8 +65,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
 
     # The usage_metadata provides detailed token counts.
     print(response.usage_metadata)
-    # ( e.g., prompt_token_count: 11, candidates_token_count: 73, total_token_count: 84 )  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/count_tokens.py#L36-L54
+    # ( e.g., prompt_token_count: 11, candidates_token_count: 73, total_token_count: 84 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L36-L54
 
 ### Node.js
 
@@ -85,8 +83,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
       model: "gemini-2.0-flash",
       contents: prompt,
     });
-    console.log(generateResponse.usageMetadata);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/count_tokens.js#L38-L52
+    console.log(generateResponse.usageMetadata);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L38-L52
 
 ### Go
 
@@ -118,8 +115,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(string(usageMetadata))  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/count_tokens.go#L38-L66
+    fmt.Println(string(usageMetadata))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L38-L66
 
 ### Shell
 
@@ -132,8 +128,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
               "text": "The quick brown fox jumps over the lazy dog."
               }],
             }],
-          }'  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L28-L38
+          }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L28-L38
 
 ### Chat
 
@@ -178,8 +173,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     history = chat.get_history()
     history.append(extra)
     print(client.models.count_tokens(model="gemini-2.0-flash", contents=history))
-    # ( e.g., total_tokens: 56 )  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/count_tokens.py#L59-L98
+    # ( e.g., total_tokens: 56 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L59-L98
 
 ### Node.js
 
@@ -222,8 +216,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     console.log(
       "Combined history token count:",
       combinedCountTokensResponse.totalTokens,
-    );  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/count_tokens.js#L62-L101
+    );https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L62-L101
 
 ### Go
 
@@ -269,8 +262,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(secondTokenResp.TotalTokens)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/count_tokens.go#L73-L115
+    fmt.Println(secondTokenResp.TotalTokens)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L73-L115
 
 ### Shell
 
@@ -286,8 +278,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
              "parts":[{"text": "Hi Bob"}],
             },
           ],
-          }'  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L42-L55
+          }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L42-L55
 
 ### Inline media
 
@@ -312,8 +303,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
         model="gemini-2.0-flash", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
-    # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/count_tokens.py#L103-L122
+    # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L103-L122
 
 ### Node.js
 
@@ -342,8 +332,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
       model: "gemini-2.0-flash",
       contents: contents,
     });
-    console.log(generateResponse.usageMetadata);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/count_tokens.js#L112-L137
+    console.log(generateResponse.usageMetadata);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L112-L137
 
 ### Go
 
@@ -372,8 +361,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     fmt.Println("prompt_token_count:", resp.UsageMetadata.PromptTokenCount)
     fmt.Println("candidates_token_count:", resp.UsageMetadata.CandidatesTokenCount)
     fmt.Println("total_token_count:", resp.UsageMetadata.TotalTokenCount)
-    // ( prompt_token_count: 264, candidates_token_count: 100, total_token_count: 364 )  
-    https://github.com/google/generative-ai-go/blob/b1a1f5eba2c10785895c91f4189f1ef7940c4764/genai/internal/samples/docs-snippets_test.go#L682-L707
+    // ( prompt_token_count: 264, candidates_token_count: 100, total_token_count: 364 )https://github.com/google/generative-ai-go/blob/b1a1f5eba2c10785895c91f4189f1ef7940c4764/genai/internal/samples/docs-snippets_test.go#L682-L707
 
 ### Shell
 
@@ -392,8 +380,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
                 }
             ]
             }]
-           }' 2> /dev/null  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L59-L75
+           }' 2> /dev/nullhttps://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L59-L75
 
 ### Video
 
@@ -424,8 +411,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
         model="gemini-2.0-flash", contents=[prompt, your_file]
     )
     print(response.usage_metadata)
-    # ( e.g., prompt_token_count: 301, candidates_token_count: 60, total_token_count: 361 )  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/count_tokens.py#L149-L174
+    # ( e.g., prompt_token_count: 301, candidates_token_count: 60, total_token_count: 361 )https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L149-L174
 
 ### Node.js
 
@@ -462,8 +448,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
         createPartFromUri(videoFile.uri, videoFile.mimeType),
       ]),
     });
-    console.log(generateResponse.usageMetadata);  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/count_tokens.js#L183-L216
+    console.log(generateResponse.usageMetadata);https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L183-L216
 
 ### Go
 
@@ -520,8 +505,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     if err != nil {
     	log.Fatal(err)
     }
-    fmt.Println(string(usageMetadata))  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/count_tokens.go#L171-L224
+    fmt.Println(string(usageMetadata))https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L171-L224
 
 ### Shell
 
@@ -575,8 +559,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
               {"text": "Describe this video clip"},
               {"file_data":{"mime_type": "video/mp4", "file_uri": '$file_uri'}}]
             }]
-           }'  
-    https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L125-L176
+           }'https://github.com/google-gemini/deprecated-generative-ai-python/blob/7a7cc5474ddaa0255a4410e05361028a24400abd/samples/rest/count_tokens.sh#L125-L176
 
 ### PDF
 
@@ -596,8 +579,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
         model="gemini-2.0-flash",
         contents=["Give me a summary of this document.", sample_pdf],
     )
-    print(response.usage_metadata)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/count_tokens.py#L179-L193
+    print(response.usage_metadata)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L179-L193
 
 ### Cache
 
@@ -635,8 +617,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: ..., cached_content_token_count: ..., candidates_token_count: ... )
-    client.caches.delete(name=cache.name)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/python/count_tokens.py#L198-L230
+    client.caches.delete(name=cache.name)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/python/count_tokens.py#L198-L230
 
 ### Node.js
 
@@ -679,8 +660,8 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
         totalTokens: countTokensResponse.totalTokens,
         usage: generateResponse.usageMetadata,
       };
-    }  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/javascript/count_tokens.js#L261-L-1
+    }
+    https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/javascript/count_tokens.js#L261-L-1
 
 ### Go
 
@@ -742,8 +723,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     }
     // Returns `nil` for some reason
     fmt.Println(string(usageMetadata))
-    _, err = client.Caches.Delete(ctx, cache.Name, &genai.DeleteCachedContentConfig{})  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/count_tokens.go#L278-L336
+    _, err = client.Caches.Delete(ctx, cache.Name, &genai.DeleteCachedContentConfig{})https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/count_tokens.go#L278-L336
 
 ### System Instruction
 
@@ -772,8 +752,7 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
     if err != nil {
     	log.Fatal(err)
     }
-    printResponse(response)  
-    https://github.com/google-gemini/api-examples/blob/856e8a0f566a2810625cecabba6e2ab1fe97e496/go/system_instruction.go#L13-L36
+    printResponse(response)https://github.com/google-gemini/api-examples/blob/4ce9033e1d2f857db3f728d78399e3d7ded8ef05/go/system_instruction.go#L13-L36
 
 ### Tools
 
@@ -826,25 +805,20 @@ Optional. The overall input given to the`Model`. This includes the prompt as wel
             t.printStackTrace();
           }
         },
-        executor);  
-    https://github.com/google-gemini/generative-ai-android/blob/a77dc5e4dc07d7aa710f59fde1908fbfff2e0e70/samples/src/main/java/com/google/ai/client/generative/samples/java/count_tokens.java#L239-L286
+        executor);https://github.com/google-gemini/generative-ai-android/blob/a77dc5e4dc07d7aa710f59fde1908fbfff2e0e70/samples/src/main/java/com/google/ai/client/generative/samples/java/count_tokens.java#L239-L286
 
 ### Response body
 
-A response from`models.countTokens`.
+A response from `models.countTokens`.
 
-It returns the model's`tokenCount`for the`prompt`.
+It returns the model's `tokenCount` for the `prompt`.
 
 If successful, the response body contains data with the following structure:
-Fields`totalTokens``integer`  
-The number of tokens that the`Model`tokenizes the`prompt`into. Always non-negative.
-`cachedContentTokenCount``integer`  
-Number of tokens in the cached part of the prompt (the cached content).
-`promptTokensDetails[]``object (`[ModalityTokenCount](https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount)`)`  
-Output only. List of modalities that were processed in the request input.
-`cacheTokensDetails[]``object (`[ModalityTokenCount](https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount)`)`  
-Output only. List of modalities that were processed in the cached content.  
+Fields `totalTokens` `integer` The number of tokens that the `Model` tokenizes the `prompt` into. Always non-negative.
+`cachedContentTokenCount` `integer` Number of tokens in the cached part of the prompt (the cached content).
+`promptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed in the request input.
+`cacheTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed in the cached content.
 
-|                                                                                                                                        JSON representation                                                                                                                                        |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ``` { "totalTokens": integer, "cachedContentTokenCount": integer, "promptTokensDetails": [ { object (https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount) } ], "cacheTokensDetails": [ { object (https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount) } ] } ``` |
+| JSON representation |
+|---|
+| ``` { "totalTokens": integer, "cachedContentTokenCount": integer, "promptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "cacheTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ] } ``` |
