@@ -65,6 +65,8 @@ Triggered when a batch request is queued.
 
 ```
 
+Explain Code
+
 #### `batch.succeeded`
 
 Triggered when a batch request has completed.
@@ -107,6 +109,8 @@ Triggered when a batch request has completed.
 
 
 ```
+
+Explain Code
 
 #### `batch.failed`
 
@@ -156,6 +160,8 @@ Triggered when a batch request has failed.
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/platform/event-subscriptions/","name":"Event subscriptions"}}]}

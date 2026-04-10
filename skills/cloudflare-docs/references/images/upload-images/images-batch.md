@@ -54,6 +54,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/batch
 
 ```
 
+Explain Code
+
 After getting your token, use it to make requests for:
 
 * [Upload an image](https://developers.cloudflare.com/api/resources/images/subresources/v1/methods/create/) \- `POST /images/v1`

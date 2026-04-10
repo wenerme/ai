@@ -33,8 +33,8 @@ This is useful for scenarios like:
 * **Multi-tenant scenarios**: Some tenants have read-only access
 * **Audit and monitoring connections**: Observers that should not affect the system
 
-* [  JavaScript ](#tab-panel-2544)
-* [  TypeScript ](#tab-panel-2545)
+* [  JavaScript ](#tab-panel-2550)
+* [  TypeScript ](#tab-panel-2551)
 
 JavaScript
 
@@ -80,8 +80,8 @@ export class DocAgent extends Agent<Env, DocState> {
 
 ```
 
-* [  JavaScript ](#tab-panel-2546)
-* [  TypeScript ](#tab-panel-2547)
+* [  JavaScript ](#tab-panel-2552)
+* [  TypeScript ](#tab-panel-2553)
 
 JavaScript
 
@@ -139,8 +139,8 @@ const agent = useAgent({
 
 Override `shouldConnectionBeReadonly` to evaluate each connection when it first connects. Return `true` to mark it readonly.
 
-* [  JavaScript ](#tab-panel-2550)
-* [  TypeScript ](#tab-panel-2551)
+* [  JavaScript ](#tab-panel-2556)
+* [  TypeScript ](#tab-panel-2557)
 
 JavaScript
 
@@ -190,14 +190,16 @@ export class MyAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 This hook runs before the initial state is sent to the client, so the connection is readonly from the very first message.
 
 ### At any time
 
 Use `setConnectionReadonly` to change a connection's readonly status dynamically:
 
-* [  JavaScript ](#tab-panel-2556)
-* [  TypeScript ](#tab-panel-2557)
+* [  JavaScript ](#tab-panel-2562)
+* [  TypeScript ](#tab-panel-2563)
 
 JavaScript
 
@@ -239,6 +241,8 @@ export class GameAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -279,12 +283,14 @@ export class GameAgent extends Agent<Env, GameState> {
 
 ```
 
+Explain Code
+
 ### Letting a connection toggle its own status
 
 A connection can toggle its own readonly status via a callable. This is useful for lock/unlock UIs where viewers can opt into editing mode:
 
-* [  JavaScript ](#tab-panel-2552)
-* [  TypeScript ](#tab-panel-2553)
+* [  JavaScript ](#tab-panel-2558)
+* [  TypeScript ](#tab-panel-2559)
 
 JavaScript
 
@@ -314,6 +320,8 @@ export class CollabAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -342,10 +350,12 @@ export class CollabAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 On the client:
 
-* [  JavaScript ](#tab-panel-2548)
-* [  TypeScript ](#tab-panel-2549)
+* [  JavaScript ](#tab-panel-2554)
+* [  TypeScript ](#tab-panel-2555)
 
 JavaScript
 
@@ -377,8 +387,8 @@ await agent.call("setMyReadonly", [false]); // unlock
 
 Use `isConnectionReadonly` to check a connection's current status:
 
-* [  JavaScript ](#tab-panel-2554)
-* [  TypeScript ](#tab-panel-2555)
+* [  JavaScript ](#tab-panel-2560)
+* [  TypeScript ](#tab-panel-2561)
 
 JavaScript
 
@@ -441,8 +451,8 @@ Note
 
 `onStateUpdateError` also fires when `validateStateChange` rejects a client-originated state update (with the message `"State update rejected"`). This makes the callback useful for handling any rejected state write, not just readonly errors.
 
-* [  JavaScript ](#tab-panel-2558)
-* [  TypeScript ](#tab-panel-2559)
+* [  JavaScript ](#tab-panel-2564)
+* [  TypeScript ](#tab-panel-2565)
 
 JavaScript
 
@@ -480,6 +490,8 @@ try {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -516,6 +528,8 @@ try {
 
 ```
 
+Explain Code
+
 To avoid showing errors in the first place, check permissions before rendering edit controls:
 
 ```
@@ -540,6 +554,8 @@ function Editor() {
 
 
 ```
+
+Explain Code
 
 ## API reference
 
@@ -585,8 +601,8 @@ Callback on `AgentClient` and `useAgent` options. Called when the server rejects
 
 ### Query parameter based access
 
-* [  JavaScript ](#tab-panel-2562)
-* [  TypeScript ](#tab-panel-2563)
+* [  JavaScript ](#tab-panel-2568)
+* [  TypeScript ](#tab-panel-2569)
 
 JavaScript
 
@@ -627,6 +643,8 @@ const agent = useAgent({
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -674,10 +692,12 @@ const agent = useAgent({
 
 ```
 
+Explain Code
+
 ### Role-based access control
 
-* [  JavaScript ](#tab-panel-2572)
-* [  TypeScript ](#tab-panel-2573)
+* [  JavaScript ](#tab-panel-2578)
+* [  TypeScript ](#tab-panel-2579)
 
 JavaScript
 
@@ -742,6 +762,8 @@ export class CollaborativeAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -813,10 +835,12 @@ export class CollaborativeAgent extends Agent<Env, CollabState> {
 
 ```
 
+Explain Code
+
 ### Admin dashboard
 
-* [  JavaScript ](#tab-panel-2574)
-* [  TypeScript ](#tab-panel-2575)
+* [  JavaScript ](#tab-panel-2580)
+* [  TypeScript ](#tab-panel-2581)
 
 JavaScript
 
@@ -883,6 +907,8 @@ const viewerAgent = useAgent({
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -956,10 +982,12 @@ const viewerAgent = useAgent({
 
 ```
 
+Explain Code
+
 ### Dynamic permission changes
 
-* [  JavaScript ](#tab-panel-2576)
-* [  TypeScript ](#tab-panel-2577)
+* [  JavaScript ](#tab-panel-2582)
+* [  TypeScript ](#tab-panel-2583)
 
 JavaScript
 
@@ -1032,6 +1060,8 @@ export class GameAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1103,6 +1133,8 @@ export class GameAgent extends Agent<Env, GameState> {
 
 ```
 
+Explain Code
+
 Client-side React component:
 
 ```
@@ -1173,6 +1205,8 @@ function GameComponent() {
 
 ```
 
+Explain Code
+
 ## How it works
 
 Readonly status is stored in the connection's WebSocket attachment, which persists through the WebSocket Hibernation API. The flag is namespaced internally so it cannot be accidentally overwritten by `connection.setState()`. The same mechanism is used by [protocol message control](https://developers.cloudflare.com/agents/api-reference/protocol-messages/) — both flag coexist safely in the attachment. This means:
@@ -1225,6 +1259,8 @@ Client (readonly)                     Agent
 
 ```
 
+Explain Code
+
 ### What readonly does and does not restrict
 
 | Action                                             | Allowed? |
@@ -1242,8 +1278,8 @@ The enforcement happens inside `setState()` itself. When a `@callable()` method 
 
 The readonly check happens inside `this.setState()`, not at the start of the callable. If your method has side effects before the state write, those will still execute:
 
-* [  JavaScript ](#tab-panel-2560)
-* [  TypeScript ](#tab-panel-2561)
+* [  JavaScript ](#tab-panel-2566)
+* [  TypeScript ](#tab-panel-2567)
 
 JavaScript
 
@@ -1293,8 +1329,8 @@ export class MyAgent extends Agent<Env, State> {
 
 To avoid this, either check permissions before side effects or structure your code so the state write comes first:
 
-* [  JavaScript ](#tab-panel-2564)
-* [  TypeScript ](#tab-panel-2565)
+* [  JavaScript ](#tab-panel-2570)
+* [  TypeScript ](#tab-panel-2571)
 
 JavaScript
 
@@ -1323,6 +1359,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1350,12 +1388,14 @@ export class MyAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 ## Best practices
 
 ### Combine with authentication
 
-* [  JavaScript ](#tab-panel-2568)
-* [  TypeScript ](#tab-panel-2569)
+* [  JavaScript ](#tab-panel-2574)
+* [  TypeScript ](#tab-panel-2575)
 
 JavaScript
 
@@ -1382,6 +1422,8 @@ export class SecureAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1415,10 +1457,12 @@ export class SecureAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 ### Provide clear user feedback
 
-* [  JavaScript ](#tab-panel-2566)
-* [  TypeScript ](#tab-panel-2567)
+* [  JavaScript ](#tab-panel-2572)
+* [  TypeScript ](#tab-panel-2573)
 
 JavaScript
 
@@ -1447,6 +1491,8 @@ const agent = useAgent({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1473,6 +1519,8 @@ const agent = useAgent({
 
 
 ```
+
+Explain Code
 
 ### Check permissions before UI actions
 
@@ -1507,10 +1555,12 @@ function EditButton() {
 
 ```
 
+Explain Code
+
 ### Log access attempts
 
-* [  JavaScript ](#tab-panel-2570)
-* [  TypeScript ](#tab-panel-2571)
+* [  JavaScript ](#tab-panel-2576)
+* [  TypeScript ](#tab-panel-2577)
 
 JavaScript
 
@@ -1543,6 +1593,8 @@ export class AuditedAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1573,6 +1625,8 @@ export class AuditedAgent extends Agent<Env, State> {
 
 
 ```
+
+Explain Code
 
 ## Limitations
 

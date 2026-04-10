@@ -242,6 +242,8 @@ To proceed with the installation, here is an example of the XML code you will ne
 
 ```
 
+Explain Code
+
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument.
 
 ## Android / ChromeOS
@@ -282,6 +284,8 @@ To proceed with the installation, here is an example of the XML code you will ne
 
 
 ```
+
+Explain Code
 
 If your MDM tool does not support XML, you may need to convert the XML to JSON. Here is an example below:
 

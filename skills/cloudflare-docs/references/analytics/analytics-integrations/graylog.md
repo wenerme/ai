@@ -97,6 +97,8 @@ Once decompressed, the integration package includes:
 
 ```
 
+Explain Code
+
 **Note:** If your Graylog cluster is running in a VPC, you may need to add the _AWSLambdaVPCAccessExecutionRole_ managed role to allow the Lambda function to route traffic to the VPC.
 
 1. Once you've created the Lambda function, upload the function code _**graylog-s3-lambda.jar**_ downloaded in [Task 1](#task-1---preparation). Specify the following method for the Handler: _org.graylog.integrations.s3.GraylogS3Function::handleRequest_.

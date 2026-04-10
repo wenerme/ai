@@ -35,8 +35,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 ## 1\. Create an R2 bucket
 
-* [ Wrangler CLI ](#tab-panel-5731)
-* [ Dashboard ](#tab-panel-5732)
+* [ Wrangler CLI ](#tab-panel-5775)
+* [ Dashboard ](#tab-panel-5776)
 
 1. If not already logged in, run:  
 ```  
@@ -55,8 +55,8 @@ npx wrangler r2 bucket create pipelines-tutorial
 
 ## 2\. Enable R2 Data Catalog
 
-* [ Wrangler CLI ](#tab-panel-5733)
-* [ Dashboard ](#tab-panel-5734)
+* [ Wrangler CLI ](#tab-panel-5777)
+* [ Dashboard ](#tab-panel-5778)
 
 Enable the catalog on your R2 bucket:
 
@@ -94,8 +94,8 @@ This token also includes the R2 SQL Read permission, which allows you to query y
 
 ## 4\. Create a pipeline
 
-* [ Wrangler CLI ](#tab-panel-5735)
-* [ Dashboard ](#tab-panel-5736)
+* [ Wrangler CLI ](#tab-panel-5779)
+* [ Dashboard ](#tab-panel-5780)
 
 First, create a schema file that defines your ecommerce data structure:
 
@@ -153,6 +153,8 @@ First, create a schema file that defines your ecommerce data structure:
 
 
 ```
+
+Explain Code
 
 Use the interactive setup to create a pipeline that writes to R2 Data Catalog:
 
@@ -227,6 +229,7 @@ After setup completes, note the HTTP endpoint URL displayed in the final output.
      ]  
    }  
    ```  
+   Explain Code  
    * Select **Next**
 5. **Define Sink**:  
    * Select your R2 bucket: `pipelines-tutorial`  
@@ -299,6 +302,8 @@ curl -X POST https://{stream-id}.ingest.cloudflare.com \
 
 
 ```
+
+Explain Code
 
 Replace `{stream-id}` with your actual stream endpoint from the pipeline setup.
 

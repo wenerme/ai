@@ -20,8 +20,8 @@ You can send an email about your Worker's activity from your Worker to an email 
 
 Before you can bind an email address to your Worker, you need to [enable Email Routing](https://developers.cloudflare.com/email-routing/get-started/) and have at least one [verified email address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses). Then, create a new binding in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4587)
-* [  wrangler.toml ](#tab-panel-4588)
+* [  wrangler.jsonc ](#tab-panel-4631)
+* [  wrangler.toml ](#tab-panel-4632)
 
 JSONC
 
@@ -71,8 +71,8 @@ There are several types of restrictions you can configure in the bindings:
 
 You can add one or more types of bindings to your Wrangler file. However, each attribute must be on its own line:
 
-* [  wrangler.jsonc ](#tab-panel-4589)
-* [  wrangler.toml ](#tab-panel-4590)
+* [  wrangler.jsonc ](#tab-panel-4633)
+* [  wrangler.toml ](#tab-panel-4634)
 
 JSONC
 
@@ -117,6 +117,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -141,6 +143,8 @@ allowed_destination_addresses = [ "<YOUR_EMAIL>@example.com", "<YOUR_EMAIL2>@exa
 
 
 ```
+
+Explain Code
 
 ## Example Worker
 
@@ -209,6 +213,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-routing/","name":"Email Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-routing/email-workers/","name":"Email Workers"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-routing/email-workers/send-email-workers/","name":"Send emails from Workers"}}]}

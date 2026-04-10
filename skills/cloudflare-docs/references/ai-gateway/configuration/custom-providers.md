@@ -50,8 +50,8 @@ To create an API token:
 
 ## Create a custom provider
 
-* [ API ](#tab-panel-3036)
-* [ Dashboard ](#tab-panel-3037)
+* [ API ](#tab-panel-3042)
+* [ Dashboard ](#tab-panel-3043)
 
 To create a new custom provider using the API:
 
@@ -84,6 +84,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gatew
 
 
 ```
+
+Explain Code
 
 **Required fields:**
 
@@ -147,6 +149,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gatew
 
 ```
 
+Explain Code
+
 Auto-generated logo
 
 A default SVG logo is automatically generated for each custom provider. The logo is returned as a base64-encoded string.
@@ -164,8 +168,8 @@ To create a new custom provider using the dashboard:
 
 ## List custom providers
 
-* [ API ](#tab-panel-3038)
-* [ Dashboard ](#tab-panel-3039)
+* [ API ](#tab-panel-3044)
+* [ Dashboard ](#tab-panel-3045)
 
 Retrieve all custom providers with optional filtering and pagination:
 
@@ -264,6 +268,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ```
 
+Explain Code
+
 To view all your custom providers:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
@@ -272,7 +278,7 @@ To view all your custom providers:
 
 ## Get a specific custom provider
 
-* [ API ](#tab-panel-3035)
+* [ API ](#tab-panel-3041)
 
 Retrieve details for a specific custom provider by its ID:
 
@@ -334,10 +340,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 ```
 
+Explain Code
+
 ## Update a custom provider
 
-* [ API ](#tab-panel-3040)
-* [ Dashboard ](#tab-panel-3041)
+* [ API ](#tab-panel-3046)
+* [ Dashboard ](#tab-panel-3047)
 
 Update an existing custom provider. All fields are optional - only include the fields you want to change:
 
@@ -426,8 +434,8 @@ To update an existing custom provider:
 
 ## Delete a custom provider
 
-* [ API ](#tab-panel-3042)
-* [ Dashboard ](#tab-panel-3043)
+* [ API ](#tab-panel-3048)
+* [ Dashboard ](#tab-panel-3049)
 
 Delete a custom provider:
 
@@ -776,6 +784,8 @@ response = client.chat.completions.create(
 
 ```
 
+Explain Code
+
 **URL mapping:**
 
 | Component          | Value                                                                                                    |
@@ -815,6 +825,8 @@ response = client.chat.completions.create(
 
 
 ```
+
+Explain Code
 
 Each custom provider slug must be unique within your account. Choose a different slug or update the existing provider.
 
@@ -871,6 +883,8 @@ The specified provider ID does not exist or you don't have access to it. Verify 
 
 
 ```
+
+Explain Code
 
 The `base_url` field must be a valid HTTPS URL. HTTP URLs are not supported for security reasons.
 

@@ -62,8 +62,8 @@ npm i zod-to-json-schema
 
 1. Activate the nodejs compatibility flag and add your Browser Rendering binding to your new Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-3240)
-* [  wrangler.toml ](#tab-panel-3241)
+* [  wrangler.jsonc ](#tab-panel-3246)
+* [  wrangler.toml ](#tab-panel-3247)
 
 JSONC
 
@@ -91,8 +91,8 @@ compatibility_flags = [ "nodejs_compat" ]
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3242)
-* [  wrangler.toml ](#tab-panel-3243)
+* [  wrangler.jsonc ](#tab-panel-3248)
+* [  wrangler.toml ](#tab-panel-3249)
 
 JSONC
 
@@ -242,6 +242,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Call an LLM
 
 Having the webpage text, the user's goal and output schema, we can now use an LLM to transform it to JSON according to the user's request. The example below uses `@hf/thebloke/deepseek-coder-6.7b-instruct-awq` but other [models](https://developers.cloudflare.com/workers-ai/models/) or services like OpenAI, could be used with minimal changes:
@@ -316,6 +318,8 @@ async function getLLMResult(env, prompt: string, schema?: any) {
 
 
 ```
+
+Explain Code
 
 If you want to use Browser Rendering with OpenAI instead you'd just need to change the `aiUrl` endpoint and `requestBody` (or check out the [llm-scraper-worker ↗](https://www.npmjs.com/package/llm-scraper-worker) package).
 
@@ -488,6 +492,8 @@ async function getLLMResult(env, prompt: string, schema?: any) {
 
 
 ```
+
+Explain Code
 
 You can run this script to test it via:
 

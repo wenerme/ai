@@ -45,8 +45,8 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-3268)
-* [ TypeScript SDK ](#tab-panel-3269)
+* [ curl ](#tab-panel-3274)
+* [ TypeScript SDK ](#tab-panel-3275)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 
@@ -80,6 +80,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -156,6 +158,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -189,6 +193,8 @@ console.log(scrapes);
 
 
 ```
+
+Explain Code
 
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters.
 

@@ -73,6 +73,8 @@ describe("worker", () => {
 
 ```
 
+Explain Code
+
 ## `unstable_dev`
 
 Start an HTTP server for testing your Worker.
@@ -127,8 +129,8 @@ To wrap up a test suite, call `await worker.stop()` in an `afterAll` function.
 
 #### Single Worker example
 
-* [  JavaScript ](#tab-panel-7810)
-* [  TypeScript ](#tab-panel-7811)
+* [  JavaScript ](#tab-panel-7870)
+* [  TypeScript ](#tab-panel-7871)
 
 JavaScript
 
@@ -174,6 +176,8 @@ describe("Worker", () => {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -222,14 +226,16 @@ describe("Worker", () => {
 
 ```
 
+Explain Code
+
 #### Multi-Worker example
 
 You can test Workers that call other Workers. In the below example, we refer to the Worker that calls other Workers as the parent Worker, and the Worker being called as a child Worker.
 
 If you shut down the child Worker prematurely, the parent Worker will not know the child Worker exists and your tests will fail.
 
-* [  JavaScript ](#tab-panel-7812)
-* [  TypeScript ](#tab-panel-7813)
+* [  JavaScript ](#tab-panel-7872)
+* [  TypeScript ](#tab-panel-7873)
 
 JavaScript
 
@@ -300,6 +306,8 @@ describe("multi-worker testing", () => {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -373,6 +381,8 @@ describe("multi-worker testing", () => {
 
 ```
 
+Explain Code
+
 ## `getPlatformProxy`
 
 The `getPlatformProxy` function provides a way to obtain an object containing proxies (to **local** `workerd` bindings) and emulations of Cloudflare Workers specific values, allowing the emulation of such in a Node.js process.
@@ -437,8 +447,8 @@ const platform = await getPlatformProxy(options);
 
 The `getPlatformProxy` function uses bindings found in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). For example, if you have an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler) configuration set up in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7814)
-* [  wrangler.toml ](#tab-panel-7815)
+* [  wrangler.jsonc ](#tab-panel-7874)
+* [  wrangler.toml ](#tab-panel-7875)
 
 JSONC
 
@@ -516,8 +526,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 * [Durable Object bindings](https://developers.cloudflare.com/durable-objects/api/)  
    * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).  
    For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.  
-         * [  wrangler.jsonc ](#tab-panel-7818)  
-         * [  wrangler.toml ](#tab-panel-7819)  
+         * [  wrangler.jsonc ](#tab-panel-7878)  
+         * [  wrangler.toml ](#tab-panel-7879)  
    JSONC  
    ```  
    {  
@@ -532,6 +542,7 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
      }  
    }  
    ```  
+   Explain Code  
    TOML  
    ```  
    [[durable_objects.bindings]]  
@@ -552,9 +563,10 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
      },  
    };  
    ```  
+   Explain Code  
    That Worker also needs a Wrangler configuration file that looks like this:  
-         * [  wrangler.jsonc ](#tab-panel-7816)  
-         * [  wrangler.toml ](#tab-panel-7817)  
+         * [  wrangler.jsonc ](#tab-panel-7876)  
+         * [  wrangler.toml ](#tab-panel-7877)  
    JSONC  
    ```  
    {  

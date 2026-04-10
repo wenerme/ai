@@ -68,6 +68,8 @@ const mf = new Miniflare({
 
 ```
 
+Explain Code
+
 ## Persistence
 
 By default, Durable Object data is stored in memory. It will persist between reloads, but not different `Miniflare` instances. To enable persistence to the file system, specify the Durable Object persistence option:
@@ -160,6 +162,8 @@ console.log(await res.text()); // "1"
 
 
 ```
+
+Explain Code
 
 ## Using a Class Exported by Another Script
 

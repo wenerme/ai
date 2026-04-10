@@ -97,6 +97,8 @@ export default function cloudflareLoader({
 
 ```
 
+Explain Code
+
 ### Custom Loaders
 
 Alternatively, define a loader for each `<Image />` component.
@@ -162,6 +164,8 @@ const MyImage = (props) => {
 
 
 ```
+
+Explain Code
 
 Note
 

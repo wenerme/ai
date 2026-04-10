@@ -133,6 +133,8 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 ```
 
+Explain Code
+
 **Key improvements over direct REST API calls:**
 
 * **Official packages**: Uses `workers-ai-provider` instead of manual API calls
@@ -144,8 +146,8 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 The template includes the proper Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6495)
-* [  wrangler.toml ](#tab-panel-6496)
+* [  wrangler.jsonc ](#tab-panel-6539)
+* [  wrangler.toml ](#tab-panel-6540)
 
 JSONC
 
@@ -159,7 +161,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "ai": {
 
@@ -206,6 +208,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -216,7 +220,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [ai]
@@ -245,6 +249,8 @@ name = "Sandbox"
 
 
 ```
+
+Explain Code
 
 **Configuration highlights:**
 
@@ -304,6 +310,8 @@ curl -X POST http://localhost:8787/run \
 
 ```
 
+Explain Code
+
 ## 5\. Deploy
 
 Deploy your Worker:
@@ -357,6 +365,8 @@ curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
 
 
 ```
+
+Explain Code
 
 ## How it works
 

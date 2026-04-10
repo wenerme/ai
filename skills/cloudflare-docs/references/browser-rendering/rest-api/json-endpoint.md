@@ -59,8 +59,8 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-3260)
-* [ TypeScript SDK ](#tab-panel-3261)
+* [ curl ](#tab-panel-3266)
+* [ TypeScript SDK ](#tab-panel-3267)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 
@@ -135,6 +135,8 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -196,6 +198,8 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 ```
 
+Explain Code
+
 ### With only a prompt
 
 In this example, only a prompt is provided. The endpoint will use the prompt to extract the data, but the response will not be structured according to a JSON schema. This is useful for simple extractions where you do not need a specific format.
@@ -247,6 +251,8 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 
 ```
+
+Explain Code
 
 ### With only a JSON schema (no prompt)
 
@@ -314,6 +320,8 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -456,6 +464,8 @@ curl --request POST 'https://api.cloudflare.com/client/v4/accounts/CF_ACCOUNT_ID
 
 ```
 
+Explain Code
+
 Below is an example using the TypeScript SDK:
 
 TypeScript
@@ -532,6 +542,8 @@ console.log(json);
 
 
 ```
+
+Explain Code
 
 ## Advanced Usage
 
@@ -617,6 +629,8 @@ curl --request POST \
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -674,6 +688,8 @@ In this example, Browser Rendering first calls Anthropic's Claude Sonnet 4 model
 
 
 ```
+
+Explain Code
 
 ## Troubleshooting
 

@@ -102,6 +102,8 @@ From the abbreviated response below, we can conclude that distributed denial-of-
 
 ```
 
+Explain Code
+
 For more information refer to [Get layer 7 attacks by mitigation technique, over time](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer7/subresources/timeseries%5Fgroups/).
 
 ### Summary
@@ -161,6 +163,8 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary?location
 
 
 ```
+
+Explain Code
 
 This response means that 75% of all mitigated requests coming from Great Britain were mitigated by the [WAF](https://developers.cloudflare.com/waf/) product.
 
@@ -277,6 +281,8 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/ta
 
 
 ```
+
+Explain Code
 
 During the specified date range, mitigation requests to zones with a billing address located in Belgium represent 18%.
 
@@ -405,6 +411,8 @@ A typical response will be similar to the following:
 
 
 ```
+
+Explain Code
 
 This means that 3.79% of all mitigated requests are from and to the US, 3.6% of all mitigated requests are from the US to Belgium, etc..
 

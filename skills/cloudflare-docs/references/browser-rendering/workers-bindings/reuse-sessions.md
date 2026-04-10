@@ -76,8 +76,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3280)
-* [  wrangler.toml ](#tab-panel-3281)
+* [  wrangler.jsonc ](#tab-panel-3286)
+* [  wrangler.toml ](#tab-panel-3287)
 
 JSONC
 
@@ -93,7 +93,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -112,6 +112,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -124,7 +126,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -142,8 +144,8 @@ The script below starts by fetching the current running sessions. If there are a
 
 Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-rendering/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
 
-* [  JavaScript ](#tab-panel-3282)
-* [  TypeScript ](#tab-panel-3283)
+* [  JavaScript ](#tab-panel-3288)
+* [  TypeScript ](#tab-panel-3289)
 
 JavaScript
 
@@ -276,6 +278,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -417,6 +421,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Besides `puppeteer.sessions()`, we have added other methods to facilitate [Session Management](https://developers.cloudflare.com/browser-rendering/puppeteer/#session-management).
 

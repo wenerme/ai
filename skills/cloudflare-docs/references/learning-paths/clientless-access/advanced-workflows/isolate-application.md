@@ -69,8 +69,8 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-5070)
-* [ API ](#tab-panel-5071)
+* [ Dashboard ](#tab-panel-5114)
+* [ API ](#tab-panel-5115)
 
 | Action  | Rule type                                                                                                                                             | Selector                 | Value     |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------- |
@@ -134,12 +134,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 
 ```
 
+Explain Code
+
 To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
 
 **Policy 2: Allow and isolate contractors**
 
-* [ Dashboard ](#tab-panel-5072)
-* [ API ](#tab-panel-5073)
+* [ Dashboard ](#tab-panel-5116)
+* [ API ](#tab-panel-5117)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -202,14 +204,16 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_
 
 ```
 
+Explain Code
+
 ## Example HTTP policies
 
 ### Disable file downloads in isolated browser
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-* [ Dashboard ](#tab-panel-5074)
-* [ API ](#tab-panel-5075)
+* [ Dashboard ](#tab-panel-5118)
+* [ API ](#tab-panel-5119)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -333,6 +337,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 ```
 
+Explain Code
+
 To create a list of serial numbers, refer to [Create Zero Trust list](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/create/).
 
 ### Block file downloads of sensitive data
@@ -346,8 +352,8 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-5076)
-* [ API ](#tab-panel-5077)
+* [ Dashboard ](#tab-panel-5120)
+* [ API ](#tab-panel-5121)
 
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |
@@ -485,6 +491,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules \
 
 
 ```
+
+Explain Code
 
 To configure a DLP profile, refer to [Update predefined profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/predefined/methods/update/) or [Create custom profile](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/dlp/subresources/profiles/subresources/custom/methods/create/).
 

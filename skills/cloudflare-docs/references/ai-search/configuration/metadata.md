@@ -131,6 +131,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 ```
 
+Explain Code
+
 ### Filter by custom metadata
 
 | Attribute | Description                                               | Example                                                                |
@@ -251,6 +253,8 @@ When you specify multiple keys, all conditions must match:
 
 
 ```
+
+Explain Code
 
 #### `$in` operator
 
@@ -402,6 +406,8 @@ You can see the metadata attributes of your retrieved data in the response under
 
 
 ```
+
+Explain Code
 
 Custom metadata fields appear alongside built-in attributes in the `attributes.file` object.
 

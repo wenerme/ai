@@ -138,6 +138,8 @@ http.request.full_uri wildcard "http*://example.com/a/*"
 
 ```
 
+Explain Code
+
 Example B
 
 ```
@@ -166,6 +168,8 @@ http.request.full_uri wildcard "*.example.com/*/page.html"
 
 
 ```
+
+Explain Code
 
 Slashes (`/`) have no special meaning in wildcard matches. In this example, the second `*` metacharacter in the expression `http.request.full_uri wildcard "*.example.com/*/page.html"` matched `folder`, `team`, and `team/subteam`.
 

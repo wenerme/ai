@@ -34,8 +34,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the name of your R2 bucket:
 
-* [  wrangler.jsonc ](#tab-panel-5753)
-* [  wrangler.toml ](#tab-panel-5754)
+* [  wrangler.jsonc ](#tab-panel-5797)
+* [  wrangler.toml ](#tab-panel-5798)
 
 JSONC
 
@@ -81,8 +81,8 @@ The following methods are available on the bucket binding object injected into y
 
 For example, to issue a `PUT` object request using the binding above:
 
-* [  JavaScript ](#tab-panel-5751)
-* [  Python ](#tab-panel-5752)
+* [  JavaScript ](#tab-panel-5795)
+* [  Python ](#tab-panel-5796)
 
 JavaScript
 
@@ -129,6 +129,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -167,6 +169,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 * `head` ` (key: string): Promise<R2Object | null> `  
    * Retrieves the `R2Object` for the given key containing only object metadata, if the key exists, and `null` if the key does not exist.
@@ -411,6 +415,8 @@ while (truncated) {
 
 
 ```
+
+Explain Code
 
 ### R2Objects
 

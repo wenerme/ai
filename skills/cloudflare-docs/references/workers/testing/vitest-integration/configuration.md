@@ -50,6 +50,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 Warning
 
 Custom Vitest `environment`s or `runner`s are not supported when using the Workers Vitest integration.
@@ -89,6 +91,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 ### `buildPagesASSETSBinding(assetsPath)`
 
@@ -138,6 +142,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 ### `readD1Migrations(migrationsPath)`
 
@@ -193,6 +199,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 ## `CloudflareTestOptions`
 
@@ -292,6 +300,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 ## `SourcelessWorkerOptions`
 

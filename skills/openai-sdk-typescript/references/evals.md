@@ -2887,6 +2887,14 @@ Get a list of runs for an evaluation.
 
                       - `"input_file"`
 
+                    - `detail?: "low" | "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
+
                     - `file_data?: string`
 
                       The content of the file to be sent to the model.
@@ -5339,6 +5347,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                       - `"input_file"`
 
+                    - `detail?: "low" | "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
+
                     - `file_data?: string`
 
                       The content of the file to be sent to the model.
@@ -7513,6 +7529,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail?: "low" | "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data?: string`
 
@@ -10001,6 +10025,14 @@ Get an evaluation run by ID.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail?: "low" | "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data?: string`
 
@@ -12532,6 +12564,14 @@ Cancel an ongoing evaluation run.
                       The type of the input item. Always `input_file`.
 
                       - `"input_file"`
+
+                    - `detail?: "low" | "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
 
                     - `file_data?: string`
 
@@ -15065,6 +15105,14 @@ console.log(deleted);
                   The type of the input item. Always `input_file`.
 
                   - `"input_file"`
+
+                - `detail?: "low" | "high"`
+
+                  The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                  - `"low"`
+
+                  - `"high"`
 
                 - `file_data?: string`
 

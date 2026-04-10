@@ -102,6 +102,7 @@ try {
   throw err;  
 }  
 ```  
+Explain Code  
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.  
 TypeScript  
 ```  
@@ -116,6 +117,7 @@ try {
   throw err;  
 }  
 ```  
+Explain Code  
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.  
 TypeScript  
 ```  
@@ -130,6 +132,7 @@ try {
   throw err;  
 }  
 ```  
+Explain Code  
 If the participant does not have the required permission, `kickAll()` returns a `HostError`.  
 Kotlin  
 ```  
@@ -145,6 +148,7 @@ if (error != null) {
     // Successfully initiated session end  
 }  
 ```  
+Explain Code  
 If the participant does not have the required permission, `kickAll()` returns a `HostError`.  
 Swift  
 ```  
@@ -162,6 +166,7 @@ if let error = error {
     // Successfully initiated session end  
 }  
 ```  
+Explain Code  
 Dart  
 ```  
 meeting.participants.kickAll(onResult: (error) {  
@@ -186,7 +191,8 @@ try {
   }  
   throw err;  
 }  
-```
+```  
+Explain Code
 3. Listen for the session end event.  
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.  
 TypeScript  
@@ -320,6 +326,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$AP
 
 
 ```
+
+Explain Code
 
 ## Disable a meeting
 

@@ -115,6 +115,8 @@ export default {
 
 ```
 
+Explain Code
+
 The implementation of `get` in Workers is a wrapper around the global[fetch API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/)and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
 
 As shown in the example above, it is necessary to arrange for requests to be correctly awaited in the `fetch` handler using a promise or the fetch may be canceled prematurely when the handler returns.
@@ -197,6 +199,8 @@ export default {
 
 ```
 
+Explain Code
+
 The following additional options are not supported: `ca`, `cert`, `ciphers`, `clientCertEngine` (deprecated), `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`, `highWaterMark`.
 
 ## createServer
@@ -229,6 +233,8 @@ export default httpServerHandler({ port: 8080 });
 
 
 ```
+
+Explain Code
 
 The `httpServerHandler` function integrates Node.js HTTPS servers with the Cloudflare Workers request model. When a request arrives at your Worker, the handler automatically routes it to your Node.js server running on the specified port. This bridge allows you to use familiar Node.js server patterns while benefiting from the Workers runtime environment, including automatic scaling, edge deployment, and integration with other Cloudflare services.
 

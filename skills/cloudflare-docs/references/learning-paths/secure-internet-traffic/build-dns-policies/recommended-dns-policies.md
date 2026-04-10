@@ -24,9 +24,9 @@ For additional commonly used DNS policy examples, refer to [Common DNS policies]
 
 Allowlist any known domains and hostnames. With this policy, you ensure that your users can access your organization's domains even if the domains fall under a blocked category, such as **Newly Seen Domains** or **Login Screens**.
 
-* [ Dashboard ](#tab-panel-5197)
-* [ API ](#tab-panel-5198)
-* [ Terraform ](#tab-panel-5199)
+* [ Dashboard ](#tab-panel-5241)
+* [ API ](#tab-panel-5242)
+* [ Terraform ](#tab-panel-5243)
 
 | Selector | Operator | Value           | Logic | Action |
 | -------- | -------- | --------------- | ----- | ------ |
@@ -68,6 +68,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_whitelist_policy" {
@@ -93,13 +95,15 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_whitelist_policy" {
 
 ```
 
+Explain Code
+
 ## Quarantined-Users-DNS-Restricted-Access
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-5200)
-* [ API ](#tab-panel-5201)
-* [ Terraform ](#tab-panel-5202)
+* [ Dashboard ](#tab-panel-5244)
+* [ API ](#tab-panel-5245)
+* [ Terraform ](#tab-panel-5246)
 
 | Selector         | Operator    | Value                         | Logic | Action |
 | ---------------- | ----------- | ----------------------------- | ----- | ------ |
@@ -144,6 +148,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_restrict_quarantined_users" {
@@ -171,13 +177,15 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_restrict_quarantined_users"
 
 ```
 
+Explain Code
+
 ## All-DNS-SecurityCategories-Blocklist
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-5218)
-* [ API ](#tab-panel-5219)
-* [ Terraform ](#tab-panel-5220)
+* [ Dashboard ](#tab-panel-5262)
+* [ API ](#tab-panel-5263)
+* [ Terraform ](#tab-panel-5264)
 
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
@@ -220,6 +228,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_security_threats" {
@@ -245,15 +255,17 @@ resource "cloudflare_zero_trust_gateway_policy" "block_security_threats" {
 
 ```
 
+Explain Code
+
 ## All-DNS-ContentCategories-Blocklist
 
 Entries in the [security risk content subcategory](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-risk-subcategories), such as **New Domains**, do not always pose a security threat. We recommend you first create an Allow policy to track policy matching and identify any false positives. You can add false positives to your **Trusted Domains** list used in **All-DNS-Domain-Allowlist**.
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-* [ Dashboard ](#tab-panel-5221)
-* [ API ](#tab-panel-5222)
-* [ Terraform ](#tab-panel-5223)
+* [ Dashboard ](#tab-panel-5265)
+* [ API ](#tab-panel-5266)
+* [ Terraform ](#tab-panel-5267)
 
 | Selector           | Operator | Value                                                     | Action |
 | ------------------ | -------- | --------------------------------------------------------- | ------ |
@@ -296,6 +308,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
@@ -321,13 +335,15 @@ resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
 
 ```
 
+Explain Code
+
 ## All-DNS-Application-Blocklist
 
 Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-5224)
-* [ API ](#tab-panel-5225)
-* [ Terraform ](#tab-panel-5226)
+* [ Dashboard ](#tab-panel-5268)
+* [ API ](#tab-panel-5269)
+* [ Terraform ](#tab-panel-5270)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -370,6 +386,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
@@ -395,13 +413,15 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 ```
 
+Explain Code
+
 ## All-DNS-GeoCountryIP-Blocklist
 
 Block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's users or through the implementation of regulations including [EAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-5203)
-* [ API ](#tab-panel-5204)
-* [ Terraform ](#tab-panel-5205)
+* [ Dashboard ](#tab-panel-5247)
+* [ API ](#tab-panel-5248)
+* [ Terraform ](#tab-panel-5249)
 
 | Selector                        | Operator | Value                                                                                                                                                           | Action |
 | ------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
@@ -442,6 +462,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_geolocation_block_policy" {
@@ -467,13 +489,15 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_geolocation_block_policy" {
 
 ```
 
+Explain Code
+
 ## All-DNS-DomainTopLevel-Blocklist
 
 Block frequently misused top-level domains (TLDs) to reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations such as [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries) and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
-* [ Dashboard ](#tab-panel-5206)
-* [ API ](#tab-panel-5207)
-* [ Terraform ](#tab-panel-5208)
+* [ Dashboard ](#tab-panel-5250)
+* [ API ](#tab-panel-5251)
+* [ Terraform ](#tab-panel-5252)
 
 | Selector | Operator      | Value                                                                                              | Action |
 | -------- | ------------- | -------------------------------------------------------------------------------------------------- | ------ |
@@ -514,6 +538,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_blacklist_policy" {
@@ -539,13 +565,15 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_blacklist_policy" {
 
 ```
 
+Explain Code
+
 ## All-DNS-DomainPhishing-Blocklist
 
 Block misused domains to protect your users against sophisticated phishing attacks, such as domains that specifically target your organization. For example, the following policy blocks specific keywords associated with an organization or its authentication services (such as `okta`, `2fa`, `cloudflare` and `sso`) while still allowing access to known domains.
 
-* [ Dashboard ](#tab-panel-5209)
-* [ API ](#tab-panel-5210)
-* [ Terraform ](#tab-panel-5211)
+* [ Dashboard ](#tab-panel-5253)
+* [ API ](#tab-panel-5254)
+* [ Terraform ](#tab-panel-5255)
 
 | Selector | Operator      | Value                                          | Logic | Action |
 | -------- | ------------- | ---------------------------------------------- | ----- | ------ |
@@ -587,6 +615,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_phishing_domains_block" {
@@ -612,15 +642,17 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_phishing_domains_block" {
 
 ```
 
+Explain Code
+
 ## All-DNS-ResolvedIP-Blocklist
 
 Block specific IP addresses that are malicious or pose a threat to your organization.
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-5212)
-* [ API ](#tab-panel-5213)
-* [ Terraform ](#tab-panel-5214)
+* [ Dashboard ](#tab-panel-5256)
+* [ API ](#tab-panel-5257)
+* [ Terraform ](#tab-panel-5258)
 
 | Selector    | Operator | Value          | Action |
 | ----------- | -------- | -------------- | ------ |
@@ -661,6 +693,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "dns_resolvedip_blocklist_rule" {
@@ -686,13 +720,15 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_resolvedip_blocklist_rule" 
 
 ```
 
+Explain Code
+
 ## All-DNS-DomainHost-Blocklist
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-DNS-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-* [ Dashboard ](#tab-panel-5215)
-* [ API ](#tab-panel-5216)
-* [ Terraform ](#tab-panel-5217)
+* [ Dashboard ](#tab-panel-5259)
+* [ API ](#tab-panel-5260)
+* [ Terraform ](#tab-panel-5261)
 
 | Selector | Operator      | Value              | Logic | Action |
 | -------- | ------------- | ------------------ | ----- | ------ |
@@ -735,6 +771,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_dns_domain_host" {
@@ -759,6 +797,8 @@ resource "cloudflare_zero_trust_gateway_policy" "block_dns_domain_host" {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-dns-policies/","name":"Build DNS security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-dns-policies/recommended-dns-policies/","name":"Recommended DNS policies"}}]}

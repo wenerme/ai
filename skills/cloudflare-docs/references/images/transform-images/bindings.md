@@ -40,8 +40,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4844)
-* [  wrangler.toml ](#tab-panel-4845)
+* [  wrangler.jsonc ](#tab-panel-4888)
+* [  wrangler.toml ](#tab-panel-4889)
 
 JSONC
 
@@ -87,8 +87,8 @@ Within your Worker code, you can interact with this binding by using `env.IMAGES
 
 For example, to draw a resized watermark on an image:
 
-* [  JavaScript ](#tab-panel-4846)
-* [  TypeScript ](#tab-panel-4847)
+* [  JavaScript ](#tab-panel-4890)
+* [  TypeScript ](#tab-panel-4891)
 
 JavaScript
 
@@ -126,6 +126,8 @@ return response;
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -162,6 +164,8 @@ return response;
 
 ```
 
+Explain Code
+
 ### `.output()`
 
 * You must define [a supported format](https://developers.cloudflare.com/images/transform-images/#supported-output-formats) such as AVIF, WebP, or JPEG for the [transformed image](https://developers.cloudflare.com/images/transform-images/).
@@ -171,8 +175,8 @@ return response;
 
 For example, to rotate, resize, and blur an image, then output the image as AVIF:
 
-* [  JavaScript ](#tab-panel-4848)
-* [  TypeScript ](#tab-panel-4849)
+* [  JavaScript ](#tab-panel-4892)
+* [  TypeScript ](#tab-panel-4893)
 
 JavaScript
 
@@ -208,6 +212,8 @@ return response;
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -241,6 +247,8 @@ return response;
 
 
 ```
+
+Explain Code
 
 ### `.info()`
 

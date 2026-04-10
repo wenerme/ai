@@ -78,6 +78,8 @@ After successfully uploading the image, you will receive a response similar to t
 
 ```
 
+Explain Code
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/upload-images/","name":"Upload images"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/upload-images/upload-custom-path/","name":"Upload via custom path"}}]}
 ```

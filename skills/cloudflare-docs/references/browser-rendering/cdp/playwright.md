@@ -107,6 +107,8 @@ main().catch(console.error);
 
 ```
 
+Explain Code
+
 Replace `ACCOUNT_ID` with your Cloudflare account ID and `API_TOKEN` with your Browser Rendering API token, or set them as environment variables:
 
 Terminal window

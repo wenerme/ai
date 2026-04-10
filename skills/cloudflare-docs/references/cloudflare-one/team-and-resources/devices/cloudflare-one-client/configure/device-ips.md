@@ -54,7 +54,7 @@ The default IPv6 range is owned by Cloudflare and therefore should not conflict 
 
 Note
 
-Custom device IP subnets require [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). If your account is on Legacy routing mode, contact your account team to discuss migration and availability.
+If your account uses [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/), custom device IP subnets require [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). If your account is on Legacy routing mode, contact your account team to discuss migration and availability.
 
 Create a custom IP subnet when the [default IPv4 range](#default-device-ips) conflicts with services on your private network.
 
@@ -257,6 +257,8 @@ Unknown adapter CloudflareWARP:
 
 ```
 
+Explain Code
+
 On macOS, run `ifconfig`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
 
 Terminal window
@@ -421,7 +423,8 @@ if __name__ == "__main__":
             print(f"\nNo devices found within the {TARGET_CIDR} range.")  
     except Exception as e:  
         print(f"Script Error: {e}")  
-```
+```  
+Explain Code
 2. In the script configuration section, input your Cloudflare API credentials and your IP subnet range.
 3. Open a terminal and navigate to the script directory. To run the script, type:  
 Terminal window  

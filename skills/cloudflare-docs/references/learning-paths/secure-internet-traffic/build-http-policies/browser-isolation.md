@@ -32,8 +32,8 @@ As you have begun deploying Cloudflare Zero Trust, you may have started to visua
 
 You can control potential risk and shape user behavior without applying heavy-handed block policies by applying policies to isolate user traffic to applications that match your defined categories. You can then set additional parameters in the policy, such as the ability to restrict copy/paste and upload/download. Users can still access information in the tools -- if not use the tools to a lesser extent -- while you minimize the risk of data loss.
 
-* [ Dashboard ](#tab-panel-5231)
-* [ API ](#tab-panel-5232)
+* [ Dashboard ](#tab-panel-5275)
+* [ API ](#tab-panel-5276)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -113,6 +113,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### Isolate all "gray-listed" traffic
 
 A common method for using Browser Isolation to protect against unknown or zero-day threats can dramatically enhance your security posture: Separate all HTTP traffic into known acceptable, known malicious, and unknown buckets. Once your sort your traffic, isolate everything in the unknown bucket.
@@ -125,8 +127,8 @@ You can accomplish this by creating the following policies:
 
 In this context, if some traffic is unknown to your organization, Cloudflare will isolate it by default. Cloudflare will also prevent any malicious code from being executed client side, with additional controls available.
 
-* [ Dashboard ](#tab-panel-5229)
-* [ API ](#tab-panel-5230)
+* [ Dashboard ](#tab-panel-5273)
+* [ API ](#tab-panel-5274)
 
 * Allow known applications and websites:  
 | Selector | Operator | Value           | Action |  
@@ -190,6 +192,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 Create a Zero Trust Gateway rule
 
 ```
@@ -239,6 +243,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 Create a Zero Trust Gateway rule
 
 ```
@@ -287,6 +293,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ### Vendor-chain using link-based isolation
 

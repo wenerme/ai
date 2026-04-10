@@ -154,6 +154,8 @@ let someState = await step.do(
 
 ```
 
+Explain Code
+
 ## Access step context
 
 Workflow step callbacks receive a context object containing the current attempt number (1-indexed). This allows you to access which retry attempt is currently executing.
@@ -225,6 +227,8 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 ```
 
+Explain Code
+
 The Workflow instance itself will fail immediately, no further steps will be invoked, and the Workflow will not be retried.
 
 ## Catch Workflow errors
@@ -284,6 +288,8 @@ await step.do('next-task', async() => {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/build/","name":"Build with Workflows"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/build/sleeping-and-retrying/","name":"Sleeping and retrying"}}]}

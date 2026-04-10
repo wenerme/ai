@@ -36,8 +36,8 @@ Note
 
 For analytics, caching, rate limiting, and more, you can also send requests like this through Cloudflare's [AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/).
 
-* [  TypeScript ](#tab-panel-7319)
-* [  Hono ](#tab-panel-7320)
+* [  TypeScript ](#tab-panel-7377)
+* [  Hono ](#tab-panel-7378)
 
 TypeScript
 
@@ -111,6 +111,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -171,6 +173,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/openai-sdk-streaming/","name":"Stream OpenAI API Responses"}}]}

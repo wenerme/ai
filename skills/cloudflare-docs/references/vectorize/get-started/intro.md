@@ -155,8 +155,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6737)
-* [  wrangler.toml ](#tab-panel-6738)
+* [  wrangler.jsonc ](#tab-panel-6795)
+* [  wrangler.toml ](#tab-panel-6796)
 
 JSONC
 
@@ -434,6 +434,8 @@ export default {
 
 ```
 
+Explain Code
+
 In the code above, you:
 
 1. Define a binding to your Vectorize index from your Workers code. This binding matches the `binding` value you set in the `wrangler.jsonc` file under the `"vectorise"` key.
@@ -669,6 +671,8 @@ export default {
 
 ```
 
+Explain Code
+
 You can also use the Vectorize `queryById()` operation to search for vectors similar to a vector that is already present in the index.
 
 ## 7\. Deploy your Worker
@@ -846,6 +850,8 @@ You will notice that `id: 4` has a `score` of `0.46348256`. Because you are usin
 
 
 ```
+
+Explain Code
 
 From here, experiment by passing a different `queryVector` and observe the results: the matches and the `score` should change based on the change in distance between the query vector and the vectors in our index.
 

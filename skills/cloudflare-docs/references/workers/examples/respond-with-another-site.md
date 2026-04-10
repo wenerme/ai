@@ -71,7 +71,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOAEwAWAIwAOGcICsANmEAuFizbAOcLjT4CREmXKXCAsACgAwuioQApnewARKAGcY6N1Gi2VJTTwCYhIqOGB7BgAiKBp7AA8AOgArNyjSVCgwR3DImLik1KjLGztHCGwAFToYe384GBgwPgIoW2RkuAA3ODdeBFgIAGpgdFxwe0tLBM8kElx7VDhwCBIAbwsSEl66Kl4A+wheAAsACgR7AEcQezcIAEp1za2A6l5fKhIAWUPjsYA5dAQACCYDA6AA7vZcOcrjc7o8Ni8XhcICAEJ8qPYISQAEq3TxUNz2U4AAx+ED+uBIABI1hdrrcIIkIpSxgBfUJA7ZgyHQxKkgA0T2RyLuBBAbn84kE8kFz1FJGO9jgCwQUpFipeoPBEP8UQA4gBRSpReVakjs82i9n3IgKy0O5DIEgAeSoYDoJGNlRIDPhEDcJAhmAA1sGfMcSJT3CQYAh0PE6IkHVBUCRYYy7izfmMSABCBgMEiGk1RR6o9GfClUwEg3lQmH+pl2h2VjEHI5nUnHCAQGBS50JcJNeyJXjoYCk1tbK0WdlESzqZiabS6Hj8IRiKSyaQKZQlWwOJyuDxeHxtKj+QLaUhhCLRVmq4LpAJZHIPqJkcFkYrWI-lFUNR1NsjTNLwrTtKkthTBYaxRMAcCxAA+qM4zZFEKj5AshRpOyS7LquwTrvoW5GLu+7CMwlhAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAmAOyCAnIIBsAFlHSAzAEYAXCxZtgHOFxp8BI8VLkKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3twOpePyoSAFkjk-GAHLoCAAQTAYHQAHcHLgLtdbvcnptXq9LhAQAgvlQHJCSAAlO5eKjuBxnAAGvwg-1wJAAJOtLjc7hAkpEqeMAL5hYE7cFQmFJMkAGmeKJR9wIIHcAVkggArEKXmKSCcHHBFghpaLla8wRDIQFogBxACiVWiip1JA5lrFHIeRCV1qdyGQJAA8lQwHQSKaqiRGQiIO4SJDMABrUO+E4kKkeEgwBDoBJ0JJOqCoEhwpn3Vl-cYkACEDAYJGNZuiTzRGK+lOpQNBfOhsMDzIdTurmMOx3OZJOEAgMGlrsSEWaDiSvHQwDJ7e2NssHKIVg0zC0Oj0PH4QjEkhk8iUylKdkczjcnm8vnaVACQR0pHCkRibPVIQygWyuSf0TIELIJRsE8KmqWp6h2JoWl4NoOjSOxpksdZomAOA4gAfTGCYcmiVQCkWIp0g5FdV3XEJNwMHdjH3MxlGYKwgA)
 
 TypeScript
 
@@ -110,6 +110,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -141,6 +143,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/respond-with-another-site/","name":"Respond with another site"}}]}

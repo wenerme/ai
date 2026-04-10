@@ -202,12 +202,14 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
 
 ```
 
+Explain Code
+
 ## Required token permissions
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-6083)
-* [ API ](#tab-panel-6084)
+* [ Dashboard ](#tab-panel-6127)
+* [ API ](#tab-panel-6128)
 
 * Account Filter Lists > Edit
 * Bulk URL Redirects > Edit

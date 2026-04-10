@@ -232,6 +232,8 @@ class ElementHandler {
 
 ```
 
+Explain Code
+
 Take your translated `string` and insert it into the original element, using the `setInnerContent` function:
 
 JavaScript
@@ -265,6 +267,8 @@ class ElementHandler {
 
 
 ```
+
+Explain Code
 
 To review that everything looks as expected, use the preview functionality built into Wrangler. Call [wrangler pages dev ./public](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to open up a live preview of your project. The command is refreshed after every code change that you make.
 
@@ -440,14 +444,16 @@ export async function onRequest(context) {
 
 ```
 
+Explain Code
+
 ## Deploy
 
 Your i18n tool built on Cloudflare Pages is complete and it is time to deploy it to your domain.
 
 To deploy your application to a `*.pages.dev` subdomain, you need to specify a directory of static assets to serve, configure the `pages_build_output_dir` in your project’s Wrangler file and set the value to `./public`:
 
-* [  wrangler.jsonc ](#tab-panel-5480)
-* [  wrangler.toml ](#tab-panel-5481)
+* [  wrangler.jsonc ](#tab-panel-5524)
+* [  wrangler.toml ](#tab-panel-5525)
 
 JSONC
 
@@ -463,7 +469,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03"
+  "compatibility_date": "2026-04-10"
 
 }
 
@@ -482,7 +488,7 @@ pages_build_output_dir = "./public"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 ```

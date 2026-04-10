@@ -63,6 +63,8 @@ subscribe("my-channel", (message) => {
 
 ```
 
+Explain Code
+
 All `Channel` instances are singletons per each Isolate/context (for example, the same entry point). Subscribers are always invoked synchronously and in the order they were registered, much like an `EventTarget` or Node.js `EventEmitter` class.
 
 ## Integration with Tail Workers
@@ -101,6 +103,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note that message published to the tail worker is passed through the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm) (same mechanism as the [structuredClone() ↗](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) API) so only values that can be successfully cloned are supported.
 
@@ -187,6 +191,8 @@ channel.tracePromise(
 
 
 ```
+
+Explain Code
 
 Refer to the [Node.js documentation for diagnostics\_channel ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics%5Fchannel.html) for more information.
 

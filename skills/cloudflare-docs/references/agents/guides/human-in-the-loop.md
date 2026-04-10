@@ -55,8 +55,8 @@ For durable, multi-step processes, use [Cloudflare Workflows](https://developers
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-2936)
-* [  TypeScript ](#tab-panel-2937)
+* [  JavaScript ](#tab-panel-2942)
+* [  TypeScript ](#tab-panel-2943)
 
 JavaScript
 
@@ -132,6 +132,8 @@ export class ExpenseWorkflow extends AgentWorkflow {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -228,12 +230,14 @@ export class ExpenseWorkflow extends AgentWorkflow<
 
 ```
 
+Explain Code
+
 ### Agent methods for approval
 
 The agent provides methods to approve or reject waiting workflows:
 
-* [  JavaScript ](#tab-panel-2940)
-* [  TypeScript ](#tab-panel-2941)
+* [  JavaScript ](#tab-panel-2946)
+* [  TypeScript ](#tab-panel-2947)
 
 JavaScript
 
@@ -352,6 +356,8 @@ export class ExpenseAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -501,12 +507,14 @@ export class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
+Explain Code
+
 ### Timeout handling
 
 Set timeouts to prevent workflows from waiting indefinitely:
 
-* [  JavaScript ](#tab-panel-2930)
-* [  TypeScript ](#tab-panel-2931)
+* [  JavaScript ](#tab-panel-2936)
+* [  TypeScript ](#tab-panel-2937)
 
 JavaScript
 
@@ -560,8 +568,8 @@ if (!approval) {
 
 Use `schedule()` to set up escalation reminders:
 
-* [  JavaScript ](#tab-panel-2932)
-* [  TypeScript ](#tab-panel-2933)
+* [  JavaScript ](#tab-panel-2938)
+* [  TypeScript ](#tab-panel-2939)
 
 JavaScript
 
@@ -638,6 +646,8 @@ class ExpenseAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -713,12 +723,14 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
+Explain Code
+
 ### Audit trail with SQL
 
 Use `this.sql` to maintain an immutable audit trail:
 
-* [  JavaScript ](#tab-panel-2934)
-* [  TypeScript ](#tab-panel-2935)
+* [  JavaScript ](#tab-panel-2940)
+* [  TypeScript ](#tab-panel-2941)
 
 JavaScript
 
@@ -787,6 +799,8 @@ class ExpenseAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -864,10 +878,12 @@ class ExpenseAgent extends Agent<Env, ExpenseState> {
 
 ```
 
+Explain Code
+
 ### Configuration
 
-* [  wrangler.jsonc ](#tab-panel-2928)
-* [  wrangler.toml ](#tab-panel-2929)
+* [  wrangler.jsonc ](#tab-panel-2934)
+* [  wrangler.toml ](#tab-panel-2935)
 
 JSONC
 
@@ -881,7 +897,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -912,6 +928,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -922,7 +940,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -952,14 +970,16 @@ new_sqlite_classes = [ "ExpenseAgent" ]
 
 ```
 
+Explain Code
+
 ## MCP elicitation
 
 When building MCP servers with `McpAgent`, you can request additional user input during tool execution using **elicitation**. The MCP client renders a form based on your JSON Schema and returns the user's response.
 
 ### Basic pattern
 
-* [  JavaScript ](#tab-panel-2942)
-* [  TypeScript ](#tab-panel-2943)
+* [  JavaScript ](#tab-panel-2948)
+* [  TypeScript ](#tab-panel-2949)
 
 JavaScript
 
@@ -1090,6 +1110,8 @@ export class CounterMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1224,6 +1246,8 @@ export class CounterMCP extends McpAgent<Env, State, {}> {
 
 ```
 
+Explain Code
+
 ## Elicitation vs workflow approval
 
 | Aspect       | MCP Elicitation               | Workflow Approval             |
@@ -1315,12 +1339,14 @@ function PendingApprovals() {
 
 ```
 
+Explain Code
+
 ## Multi-approver patterns
 
 For sensitive operations requiring multiple approvers:
 
-* [  JavaScript ](#tab-panel-2938)
-* [  TypeScript ](#tab-panel-2939)
+* [  JavaScript ](#tab-panel-2944)
+* [  TypeScript ](#tab-panel-2945)
 
 JavaScript
 
@@ -1385,6 +1411,8 @@ class MultiApprovalAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1469,6 +1497,8 @@ class MultiApprovalAgent extends Agent<Env, State> {
 
 
 ```
+
+Explain Code
 
 ## Best practices
 

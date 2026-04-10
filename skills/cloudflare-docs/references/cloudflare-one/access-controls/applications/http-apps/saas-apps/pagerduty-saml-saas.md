@@ -20,7 +20,7 @@ Copy page
 
 # PagerDuty
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [PagerDuty ↗](https://support.pagerduty.com/docs/sso) as a SAML application in Cloudflare One.
 

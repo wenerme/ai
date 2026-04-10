@@ -74,6 +74,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 ## Block security threats
@@ -125,6 +127,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_security_threats" {
@@ -149,6 +153,8 @@ resource "cloudflare_zero_trust_gateway_policy" "block_security_threats" {
 
 
 ```
+
+Explain Code
 
 ## Block content categories
 
@@ -199,6 +205,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
@@ -223,6 +231,8 @@ resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
 
 
 ```
+
+Explain Code
 
 ## Block a dynamic list of categories
 
@@ -284,6 +294,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
@@ -308,6 +320,8 @@ resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
 
 
 ```
+
+Explain Code
 
 ## Block unauthorized applications
 
@@ -362,6 +376,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
@@ -386,6 +402,8 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 
 ```
+
+Explain Code
 
 ## Block banned countries
 
@@ -432,6 +450,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Block top-level domains
 
@@ -481,6 +501,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ## Block phishing attacks
 
 To protect against [sophisticated phishing attacks ↗](https://blog.cloudflare.com/2022-07-sms-phishing-attacks/), you could prevent users from accessing phishing domains that are specifically targeting your organization. The following policy blocks specific keywords associated with an organization or its authentication services (such as _okta_, _2fa_, _cloudflare_ or _sso_), while still allowing access to official corporate domains.
@@ -527,6 +549,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
@@ -576,6 +600,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
 ## Block malicious IPs
@@ -623,6 +649,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 To get the UUIDs of your lists, use the [List Zero Trust lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/list/) endpoint.
 
@@ -672,6 +700,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ## Hide explicit search results
 
 SafeSearch is a feature of search engines that helps you filter explicit or offensive content. You can force SafeSearch on search engines like Google, Bing, Yandex, YouTube, and DuckDuckGo:
@@ -717,6 +747,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Check user identity
 
@@ -764,6 +796,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Restrict access to specific groups
 
@@ -818,6 +852,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### 2\. Block all other users
 
 * [ Dashboard ](#tab-panel-3822)
@@ -863,6 +899,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Control IP version
 
@@ -920,6 +958,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### Force IPv6
 
 Force users to connect with IPv6 by blocking `A` (IPv4) record resolution.
@@ -965,6 +1005,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/dns-policies/","name":"DNS policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/dns-policies/common-policies/","name":"Common policies"}}]}

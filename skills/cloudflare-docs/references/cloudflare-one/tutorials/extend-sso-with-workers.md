@@ -119,7 +119,8 @@ export default {
     return await fetch(request);  
   },  
 };  
-```
+```  
+Explain Code
 
 ## 2\. View the user's identity
 
@@ -260,12 +261,14 @@ Example user identity
 
 ```
 
+Explain Code
+
 ## 3\. Route the Worker to your application
 
 In the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), [set up a route](https://developers.cloudflare.com/workers/configuration/routing/routes/) that maps the Worker to your Access application domain:
 
-* [  wrangler.jsonc ](#tab-panel-3953)
-* [  wrangler.toml ](#tab-panel-3954)
+* [  wrangler.jsonc ](#tab-panel-3959)
+* [  wrangler.toml ](#tab-panel-3960)
 
 JSONC
 
@@ -340,6 +343,8 @@ Example request headers
 
 
 ```
+
+Explain Code
 
 You can verify that these headers are received by the origin server.
 

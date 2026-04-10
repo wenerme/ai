@@ -103,6 +103,8 @@ SELECT * FROM events
 
 ```
 
+Explain Code
+
 ## FROM clause
 
 The FROM clause specifies the data source for the query. It will be either a table name or subquery. The table name can be either a stream name or a table created in the WITH clause.
@@ -169,6 +171,8 @@ WHERE description IS NOT NULL
 
 
 ```
+
+Explain Code
 
 ## UNNEST operator
 

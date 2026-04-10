@@ -60,10 +60,12 @@ export default {
 
 ```
 
+Explain Code
+
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-7107)
-* [  TypeScript ](#tab-panel-7108)
+* [  JavaScript ](#tab-panel-7165)
+* [  TypeScript ](#tab-panel-7166)
 
 JavaScript
 
@@ -99,6 +101,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -132,6 +136,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 For more details on accessing `env` globally, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
 

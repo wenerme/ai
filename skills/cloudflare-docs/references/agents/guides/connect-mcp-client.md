@@ -55,8 +55,8 @@ Terminal window
 cd my-mcp-client  
 ```  
 Your Agent is ready! The template includes a minimal Agent in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-2910)  
-   * [  TypeScript ](#tab-panel-2911)  
+   * [  JavaScript ](#tab-panel-2916)  
+   * [  TypeScript ](#tab-panel-2917)  
 JavaScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
@@ -74,6 +74,7 @@ export default {
   },  
 };  
 ```  
+Explain Code  
 TypeScript  
 ```  
 import { Agent, routeAgentRequest } from "agents";  
@@ -93,13 +94,14 @@ export default {
     );  
   },  
 } satisfies ExportedHandler<Env>;  
-```
+```  
+Explain Code
 
 ## 2\. Add MCP connection endpoint
 
 1. Add an endpoint to connect to MCP servers. Update your Agent class in `src/index.ts`:  
-   * [  JavaScript ](#tab-panel-2914)  
-   * [  TypeScript ](#tab-panel-2915)  
+   * [  JavaScript ](#tab-panel-2920)  
+   * [  TypeScript ](#tab-panel-2921)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  
@@ -124,6 +126,7 @@ export class HelloAgent extends Agent {
   }  
 }  
 ```  
+Explain Code  
 TypeScript  
 ```  
 export class HelloAgent extends Agent<Env> {  
@@ -151,7 +154,8 @@ export class HelloAgent extends Agent<Env> {
     return new Response("Not found", { status: 404 });  
   }  
 }  
-```
+```  
+Explain Code
 
 The `addMcpServer()` method connects to an MCP server. If the server requires OAuth authentication, it returns an `authUrl` that users must visit to complete authorization.
 
@@ -183,8 +187,8 @@ You should see a response with the server ID:
 ## 4\. List available tools
 
 1. Add an endpoint to see which tools are available from connected servers:  
-   * [  JavaScript ](#tab-panel-2912)  
-   * [  TypeScript ](#tab-panel-2913)  
+   * [  JavaScript ](#tab-panel-2918)  
+   * [  TypeScript ](#tab-panel-2919)  
 JavaScript  
 ```  
 export class HelloAgent extends Agent {  
@@ -200,6 +204,7 @@ export class HelloAgent extends Agent {
   }  
 }  
 ```  
+Explain Code  
 TypeScript  
 ```  
 export class HelloAgent extends Agent<Env> {  
@@ -214,7 +219,8 @@ export class HelloAgent extends Agent<Env> {
     return new Response("Not found", { status: 404 });  
   }  
 }  
-```
+```  
+Explain Code
 2. Test it:  
 Terminal window  
 ```  
@@ -240,7 +246,8 @@ You'll see all connected servers, their connection states, and available tools:
     }  
   ]  
 }  
-```
+```  
+Explain Code
 
 ## Summary
 

@@ -91,6 +91,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -145,6 +147,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ### CNAME
 
@@ -234,6 +238,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -288,6 +294,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ---
 
@@ -395,6 +403,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -469,6 +479,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ### SVCB and HTTPS
 

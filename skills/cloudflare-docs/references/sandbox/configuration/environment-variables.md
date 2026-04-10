@@ -30,8 +30,8 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 Controls the transport protocol for SDK-to-container communication. WebSocket transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
-* [  wrangler.jsonc ](#tab-panel-6211)
-* [  wrangler.toml ](#tab-panel-6212)
+* [  wrangler.jsonc ](#tab-panel-6255)
+* [  wrangler.toml ](#tab-panel-6256)
 
 JSONC
 
@@ -73,8 +73,8 @@ Sets a global default timeout for every `exec()` call. When set, any command tha
 
 Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
-* [  wrangler.jsonc ](#tab-panel-6213)
-* [  wrangler.toml ](#tab-panel-6214)
+* [  wrangler.jsonc ](#tab-panel-6257)
+* [  wrangler.toml ](#tab-panel-6258)
 
 JSONC
 
@@ -152,6 +152,8 @@ await sandbox.setEnvVars({
 
 ```
 
+Explain Code
+
 **Use when:** You need the same environment variables for multiple commands.
 
 **Unsetting variables**: Pass `undefined` or `null` to unset environment variables:
@@ -209,6 +211,8 @@ await sandbox.startProcess("python server.py", {
 
 ```
 
+Explain Code
+
 **Use when:** You need different environment variables for different commands, or want to override sandbox-level variables.
 
 Note
@@ -244,6 +248,8 @@ await session.exec("python seed.py");
 
 
 ```
+
+Explain Code
 
 **Use when:** You need isolated execution contexts with different environment variables running concurrently.
 
@@ -414,6 +420,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Combine default and specific variables
 
 TypeScript
@@ -470,6 +478,8 @@ await Promise.all([
 
 
 ```
+
+Explain Code
 
 ### Configure transport mode
 
@@ -555,6 +565,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 The SDK automatically detects `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` from your Worker's environment when you call `mountBucket()` without explicit credentials.
 

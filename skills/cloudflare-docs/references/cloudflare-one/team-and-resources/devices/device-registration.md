@@ -114,6 +114,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registra
 
 ```
 
+Explain Code
+
 A `revoked_at` timestamp indicates that the device registration has a [revoked status](#registration-status). If `revoked_at` is null or not present, it means the registration status is active.
 
 A deleted device registration is permanently removed from the account and no longer appears in your device list. Deletion is permanent and requires re-registering the device.

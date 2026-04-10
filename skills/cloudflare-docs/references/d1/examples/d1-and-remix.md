@@ -41,7 +41,7 @@ The following example shows you how to define a Remix [loader ↗](https://remix
 * Bindings are passed through on the `context.cloudflare.env` parameter passed to a `LoaderFunction`.
 * If you configured a [binding](https://developers.cloudflare.com/pages/functions/bindings/#d1-databases) named `DB`, then you would access [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) methods via `context.cloudflare.env.DB`.
 
-* [  TypeScript ](#tab-panel-4065)
+* [  TypeScript ](#tab-panel-4103)
 
 TypeScript
 
@@ -107,6 +107,8 @@ export default function Index() {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-remix/","name":"Query D1 from Remix"}}]}

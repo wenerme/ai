@@ -99,6 +99,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "device_posture": ""  
   }'  
 ```  
+Explain Code  
 ```  
 {  
    "success": true,  
@@ -126,7 +127,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "identity": "",  
     "device_posture": ""  
   }'  
-```
+```  
+Explain Code
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 

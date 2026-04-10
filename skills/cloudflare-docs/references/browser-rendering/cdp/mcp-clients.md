@@ -69,6 +69,8 @@ Add to `claude_desktop_config.json` (Claude Desktop) or `~/.claude.json` (Claude
 
 ```
 
+Explain Code
+
 ### OpenCode
 
 Add to `.opencode.jsonc`:
@@ -108,6 +110,8 @@ Add to `.opencode.jsonc`:
 
 ```
 
+Explain Code
+
 ### Cursor
 
 Add to `~/.cursor/mcp.json`:
@@ -142,6 +146,8 @@ Add to `~/.cursor/mcp.json`:
 
 
 ```
+
+Explain Code
 
 Replace `ACCOUNT_ID` with your Cloudflare account ID and `API_TOKEN` with your Browser Rendering API token. You can obtain these from your Cloudflare dashboard.
 

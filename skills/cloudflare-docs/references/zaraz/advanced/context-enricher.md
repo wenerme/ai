@@ -63,6 +63,8 @@ export default {
 
 ```
 
+Explain Code
+
 Keep reading for more complete examples of different use cases or refer to [Zaraz Context](https://developers.cloudflare.com/zaraz/reference/context/).
 
 ## Configuring your Context Enricher
@@ -135,6 +137,8 @@ export default {
 
 ```
 
+Explain Code
+
 Now, you can use the weather property anywhere in Zaraz by choosing the `Track Property` from the attributes input and entering `weather`.
 
 ### Masking sensitive information, such as emails
@@ -205,6 +209,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/zaraz/","name":"Zaraz"}},{"@type":"ListItem","position":3,"item":{"@id":"/zaraz/advanced/","name":"Advanced options"}},{"@type":"ListItem","position":4,"item":{"@id":"/zaraz/advanced/context-enricher/","name":"Context Enricher"}}]}

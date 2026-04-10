@@ -67,8 +67,8 @@ async queue<T>(callback: keyof this, payload: T): Promise<string>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2530)
-* [  TypeScript ](#tab-panel-2531)
+* [  JavaScript ](#tab-panel-2536)
+* [  TypeScript ](#tab-panel-2537)
 
 JavaScript
 
@@ -107,6 +107,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -144,6 +146,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### `dequeue()`
 
 Removes a specific task from the queue by ID. This method is synchronous.
@@ -163,8 +167,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2520)
-* [  TypeScript ](#tab-panel-2521)
+* [  JavaScript ](#tab-panel-2526)
+* [  TypeScript ](#tab-panel-2527)
 
 JavaScript
 
@@ -203,8 +207,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2522)
-* [  TypeScript ](#tab-panel-2523)
+* [  JavaScript ](#tab-panel-2528)
+* [  TypeScript ](#tab-panel-2529)
 
 JavaScript
 
@@ -247,8 +251,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2524)
-* [  TypeScript ](#tab-panel-2525)
+* [  JavaScript ](#tab-panel-2530)
+* [  TypeScript ](#tab-panel-2531)
 
 JavaScript
 
@@ -295,8 +299,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2528)
-* [  TypeScript ](#tab-panel-2529)
+* [  JavaScript ](#tab-panel-2534)
+* [  TypeScript ](#tab-panel-2535)
 
 JavaScript
 
@@ -356,8 +360,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2526)
-* [  TypeScript ](#tab-panel-2527)
+* [  JavaScript ](#tab-panel-2532)
+* [  TypeScript ](#tab-panel-2533)
 
 JavaScript
 
@@ -406,8 +410,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2534)
-* [  TypeScript ](#tab-panel-2535)
+* [  JavaScript ](#tab-panel-2540)
+* [  TypeScript ](#tab-panel-2541)
 
 JavaScript
 
@@ -451,6 +455,8 @@ class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -501,12 +507,14 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Use cases
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-2532)
-* [  TypeScript ](#tab-panel-2533)
+* [  JavaScript ](#tab-panel-2538)
+* [  TypeScript ](#tab-panel-2539)
 
 JavaScript
 
@@ -545,6 +553,8 @@ class DataProcessor extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -582,10 +592,12 @@ class DataProcessor extends Agent {
 
 ```
 
+Explain Code
+
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-2538)
-* [  TypeScript ](#tab-panel-2539)
+* [  JavaScript ](#tab-panel-2544)
+* [  TypeScript ](#tab-panel-2545)
 
 JavaScript
 
@@ -633,6 +645,8 @@ class BatchProcessor extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -679,10 +693,12 @@ class BatchProcessor extends Agent {
 
 ```
 
+Explain Code
+
 ## Error handling
 
-* [  JavaScript ](#tab-panel-2536)
-* [  TypeScript ](#tab-panel-2537)
+* [  JavaScript ](#tab-panel-2542)
+* [  TypeScript ](#tab-panel-2543)
 
 JavaScript
 
@@ -724,6 +740,8 @@ class RobustAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -763,6 +781,8 @@ class RobustAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 ## Best practices
 

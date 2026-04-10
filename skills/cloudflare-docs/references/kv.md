@@ -86,6 +86,8 @@ export default {
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -122,6 +124,8 @@ export default {
 
 ```
 
+Explain Code
+
 See the full [Workers KV binding API reference](https://developers.cloudflare.com/kv/api/read-key-value-pairs/).
 
 * [ cURL ](#tab-panel-5022)
@@ -154,6 +158,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namesp
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -201,6 +207,8 @@ for await (const namespace of client.kv.namespaces.list({ account_id: '<ACCOUNT_
 
 
 ```
+
+Explain Code
 
 See the full Workers KV [REST API and SDK reference](https://developers.cloudflare.com/api/resources/kv/) for details on using REST API from external applications, with pre-generated SDK's for external TypeScript, Python, or Go applications.
 

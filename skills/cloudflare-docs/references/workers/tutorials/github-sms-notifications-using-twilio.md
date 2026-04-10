@@ -180,6 +180,8 @@ async fetch(request, env, ctx) {
 
 ```
 
+Explain Code
+
 The `checkSignature` function will use the Node.js crypto library to hash the received payload with your known secret key to ensure it matches the request hash. GitHub uses an HMAC hexdigest to compute the hash in the SHA-256 format. You will place this function at the top of your `index.js` file, before your export.
 
 JavaScript
@@ -220,6 +222,8 @@ function checkSignature(text, headers, githubSecretToken) {
 
 ```
 
+Explain Code
+
 To make this work, you need to use [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) to set your `GITHUB_SECRET_TOKEN`. This token is the secret you picked earlier when configuring you GitHub webhook:
 
 Terminal window
@@ -233,8 +237,8 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7774)
-* [  wrangler.toml ](#tab-panel-7775)
+* [  wrangler.jsonc ](#tab-panel-7834)
+* [  wrangler.toml ](#tab-panel-7835)
 
 JSONC
 
@@ -324,6 +328,8 @@ async function sendText(accountSid, authToken, message) {
 
 ```
 
+Explain Code
+
 To make this work, you need to set some secrets to hide your `ACCOUNT_SID` and `AUTH_TOKEN` from the source code. You can set secrets with [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) in your command line.
 
 Terminal window
@@ -391,6 +397,8 @@ async fetch(request, env, ctx) {
 
 
 ```
+
+Explain Code
 
 Run the `npx wrangler deploy` command to redeploy your Worker project:
 

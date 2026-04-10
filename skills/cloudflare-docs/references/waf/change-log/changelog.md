@@ -29,21 +29,21 @@ This week's release introduces new detections for a critical Remote Code Executi
 
 Successful exploitation of the MCP Server and SolarWinds vulnerabilities could allow unauthenticated attackers to execute arbitrary code or gain administrative control, leading to a full system takeover. Additionally, the new generic XSS detection prevents attackers from leveraging browser event handlers in cookies to hijack user sessions or execute malicious scripts.
 
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description | Previous Action | New Action                                              | Comments                 |
-| -------------------------- | ----------- | -------------- | ----------- | --------------- | ------------------------------------------------------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...0aa410af | N/A            | Log         | Disabled        | Generic Rules - Command Execution - 5 - Body            | This is a new detection. |
-| Cloudflare Managed Ruleset | ...9131ec2f | N/A            | Log         | Disabled        | Generic Rules - Command Execution - 5 - Header          | This is a new detection. |
-| Cloudflare Managed Ruleset | ...551eb9e5 | N/A            | Log         | Block           | Generic Rules - Command Execution - 5 - URI             | This is a new detection. |
-| Cloudflare Managed Ruleset | ...d46229eb | N/A            | Log         | Block           | MCP Server - Remote Code Execution - CVE:CVE-2026-23744 | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a864b9c2 | N/A            | Log         | Block           | XSS - OnEvents - Cookies                                | This is a new detection. |
-| Cloudflare Managed Ruleset | ...a78ad04e | N/A            | Log         | Disabled        | SQLi - Evasion - Body                                   | This is a new detection. |
-| Cloudflare Managed Ruleset | ...40732d48 | N/A            | Log         | Disabled        | SQLi - Evasion - Headers                                | This is a new detection. |
-| Cloudflare Managed Ruleset | ...e68a99b5 | N/A            | Log         | Disabled        | SQLi - Evasion - URI                                    | This is a new detection. |
-| Cloudflare Managed Ruleset | ...3e8143d2 | N/A            | Log         | Disabled        | SQLi - LIKE 3 - Body                                    | This is a new detection. |
-| Cloudflare Managed Ruleset | ...70e7fb97 | N/A            | Log         | Disabled        | SQLi - LIKE 3 - URI                                     | This is a new detection. |
-| Cloudflare Managed Ruleset | ...4c538bd9 | N/A            | Log         | Disabled        | SQLi - UNION - 2 - Body                                 | This is a new detection. |
-| Cloudflare Managed Ruleset | ...61c439c9 | N/A            | Log         | Disabled        | SQLi - UNION - 2 - URI                                  | This is a new detection. |
-| Cloudflare Managed Ruleset | ...cf33ea10 | N/A            | Log         | Block           | SolarWinds - Auth Bypass - CVE:CVE-2025-40552           | This is a new detection. |
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                             | Previous Action | New Action | Comments                 |
+| -------------------------- | ----------- | -------------- | ------------------------------------------------------- | --------------- | ---------- | ------------------------ |
+| Cloudflare Managed Ruleset | ...0aa410af | N/A            | Generic Rules - Command Execution - 5 - Body            | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...9131ec2f | N/A            | Generic Rules - Command Execution - 5 - Header          | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...551eb9e5 | N/A            | Generic Rules - Command Execution - 5 - URI             | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...d46229eb | N/A            | MCP Server - Remote Code Execution - CVE:CVE-2026-23744 | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a864b9c2 | N/A            | XSS - OnEvents - Cookies                                | Log             | Block      | This is a new detection. |
+| Cloudflare Managed Ruleset | ...a78ad04e | N/A            | SQLi - Evasion - Body                                   | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...40732d48 | N/A            | SQLi - Evasion - Headers                                | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...e68a99b5 | N/A            | SQLi - Evasion - URI                                    | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...3e8143d2 | N/A            | SQLi - LIKE 3 - Body                                    | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...70e7fb97 | N/A            | SQLi - LIKE 3 - URI                                     | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...4c538bd9 | N/A            | SQLi - UNION - 2 - Body                                 | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...61c439c9 | N/A            | SQLi - UNION - 2 - URI                                  | Log             | Disabled   | This is a new detection. |
+| Cloudflare Managed Ruleset | ...cf33ea10 | N/A            | SolarWinds - Auth Bypass - CVE:CVE-2025-40552           | Log             | Block      | This is a new detection. |
 
 ## 2026-03-30
 

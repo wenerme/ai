@@ -163,6 +163,8 @@ Use these IPv4 addresses for Office 365, instead of the `/19` and `/23` subnets:
 
 ```
 
+Explain Code
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-security/","name":"Email security (formerly Area 1)"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-security/deployment/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-security/deployment/inline/","name":"Inline"}},{"@type":"ListItem","position":5,"item":{"@id":"/email-security/deployment/inline/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/email-security/deployment/inline/reference/egress-ips/","name":"Egress IPs"}}]}
 ```

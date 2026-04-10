@@ -20,8 +20,8 @@ Copy page
 
 Draw a watermark from KV on an image from R2
 
-* [  JavaScript ](#tab-panel-4840)
-* [  TypeScript ](#tab-panel-4841)
+* [  JavaScript ](#tab-panel-4884)
+* [  TypeScript ](#tab-panel-4885)
 
 JavaScript
 
@@ -83,6 +83,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -154,6 +156,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/examples/watermark-from-kv/","name":"Watermarks"}}]}

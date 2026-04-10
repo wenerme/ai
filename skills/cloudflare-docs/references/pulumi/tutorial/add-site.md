@@ -81,13 +81,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-5532)
-* [  TypeScript ](#tab-panel-5533)
-* [  Python ](#tab-panel-5534)
-* [ go ](#tab-panel-5535)
-* [ Java ](#tab-panel-5536)
-* [ .NET ](#tab-panel-5537)
-* [ YAML ](#tab-panel-5538)
+* [  JavaScript ](#tab-panel-5576)
+* [  TypeScript ](#tab-panel-5577)
+* [  Python ](#tab-panel-5578)
+* [ go ](#tab-panel-5579)
+* [ Java ](#tab-panel-5580)
+* [ .NET ](#tab-panel-5581)
+* [ YAML ](#tab-panel-5582)
 
 Terminal window
 
@@ -241,13 +241,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-5539)
-* [  TypeScript ](#tab-panel-5540)
-* [  Python ](#tab-panel-5541)
-* [ go ](#tab-panel-5542)
-* [ Java ](#tab-panel-5543)
-* [ .NET ](#tab-panel-5544)
-* [ YAML ](#tab-panel-5545)
+* [  JavaScript ](#tab-panel-5583)
+* [  TypeScript ](#tab-panel-5584)
+* [  Python ](#tab-panel-5585)
+* [ go ](#tab-panel-5586)
+* [ Java ](#tab-panel-5587)
+* [ .NET ](#tab-panel-5588)
+* [ YAML ](#tab-panel-5589)
 
 Terminal window
 
@@ -387,13 +387,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-5546)
-* [  TypeScript ](#tab-panel-5547)
-* [  Python ](#tab-panel-5548)
-* [ go ](#tab-panel-5549)
-* [ Java ](#tab-panel-5550)
-* [ .NET ](#tab-panel-5551)
-* [ YAML ](#tab-panel-5552)
+* [  JavaScript ](#tab-panel-5590)
+* [  TypeScript ](#tab-panel-5591)
+* [  Python ](#tab-panel-5592)
+* [ go ](#tab-panel-5593)
+* [ Java ](#tab-panel-5594)
+* [ .NET ](#tab-panel-5595)
+* [ YAML ](#tab-panel-5596)
 
 **Filename: `index.js`**
 
@@ -439,6 +439,8 @@ exports.status = zone.status;
 
 ```
 
+Explain Code
+
 **Filename: `index.ts`**
 
 TypeScript
@@ -481,6 +483,8 @@ export const status = zone.status;
 
 ```
 
+Explain Code
+
 **Filename: `__main__.py`**
 
 Python
@@ -518,6 +522,8 @@ pulumi.export('status', zone.status)
 
 
 ```
+
+Explain Code
 
 **Filename: `main.go`**
 
@@ -576,6 +582,8 @@ func main() {
 
 ```
 
+Explain Code
+
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
@@ -633,6 +641,8 @@ public class App {
 
 
 ```
+
+Explain Code
 
 **Filename: `Program.cs`**
 
@@ -708,6 +718,8 @@ class Program
 
 ```
 
+Explain Code
+
 **Filename: `Pulumi.yaml`**
 
 YAML
@@ -746,6 +758,8 @@ outputs:
 
 ```
 
+Explain Code
+
 Notice that the code also outputs several properties from the Zone resource, such as the `zoneId`, `nameservers`, and `status`, so that they can easily be accessed in subsequent steps.
 
 ### b. Add a DNS Record
@@ -754,13 +768,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-5553)
-* [  TypeScript ](#tab-panel-5554)
-* [  Python ](#tab-panel-5555)
-* [ go ](#tab-panel-5556)
-* [ Java ](#tab-panel-5557)
-* [ .NET ](#tab-panel-5558)
-* [ YAML ](#tab-panel-5559)
+* [  JavaScript ](#tab-panel-5597)
+* [  TypeScript ](#tab-panel-5598)
+* [  Python ](#tab-panel-5599)
+* [ go ](#tab-panel-5600)
+* [ Java ](#tab-panel-5601)
+* [ .NET ](#tab-panel-5602)
+* [ YAML ](#tab-panel-5603)
 
 **Filename: `index.js`**
 
@@ -858,6 +872,8 @@ record = cloudflare.Record("my-record",
 
 ```
 
+Explain Code
+
 **Filename: `src/main/java/myproject/App.java`**
 
 ```
@@ -887,6 +903,8 @@ new Record("my-record", RecordArgs.builder()
 
 
 ```
+
+Explain Code
 
 **Filename: `Program.cs`**
 

@@ -109,6 +109,7 @@ struct cf_ebpf_parsed_headers {
      uint8_t        *data_end;  
 };  
 ```  
+Explain Code  
 For a full definition of helper functions and structures, refer to [Supported BPF helper functions and structures](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview#supported-bpf-helper-functions-and-structures).
 6. Write your custom logic.  
 Prior steps have established the code that should be the same for any program that you write, regardless of its logic.  
@@ -146,7 +147,8 @@ It will then check the application header value in the UDP payload and verify it
  if (*last_byte != 0xCF) {  
      return CF_EBPF_DROP;  
  }  
-```
+```  
+Explain Code
 7. Pass any packets that did not get dropped by program logic by returning `CF_EBPF_PASS`.  
 The currently supported return values are:  
    * `CF_EBPF_PASS = return value 0`  
@@ -266,6 +268,8 @@ cf_ebpf_main(void *state)
 
 ```
 
+Explain Code
+
 ### Write a complex program
 
 The example program below implements a UDP-based challenge-response mechanism using helper functions to maintain state between packets from the same source IP. This is useful for mitigating DDoS attacks by requiring clients to prove they can receive and respond to challenges before allowing their traffic through.
@@ -310,7 +314,8 @@ uint64_t cf_ebpf_main(void *state)
         return CF_EBPF_DROP;  
     }  
     struct udphdr *udp_hdr = headers.udp;  
-```
+```  
+Explain Code
 5. Check the source IP status using `get_src_ip_status`.  
 The status indicates whether this source IP is new, challenged, verified, or blocklisted. The expiry timestamp indicates when the status expires.  
 ```  
@@ -323,7 +328,8 @@ The status indicates whether this source IP is new, challenged, verified, or blo
         // Status expired, treat as new connection  
         ret = -1;  
     }  
-```
+```  
+Explain Code
 6. Handle verified source IPs.  
 The Programmable Flow Protection platform will drop packets from blocklisted IPs before the program is invoked. There is no need to explicitly handle the blocklisted case.  
 If the source IP has been verified (passed a previous challenge), allow the packet through.  
@@ -358,7 +364,8 @@ If the source IP was previously challenged, check if the current packet contains
         set_src_ip_status(CF_EBPF_SRC_IP_STATUS_BLOCKLISTED, 0);  
         return CF_EBPF_DROP;  
     }  
-```
+```  
+Explain Code
 8. Issue a new challenge for new source IPs.  
 Generate a random nonce, store it in the state table, create a challenge packet, and send it using `set_challenge`.  
 ```  
@@ -376,7 +383,8 @@ Generate a random nonce, store it in the state table, create a challenge packet,
     // Drop the original packet until client responds to challenge  
     return CF_EBPF_DROP;  
 }  
-```
+```  
+Explain Code
 
 For reference, the example below is the complex program in its entirety:
 
@@ -534,6 +542,8 @@ uint64_t cf_ebpf_main(void *state)
 
 
 ```
+
+Explain Code
 
 This program demonstrates several key concepts:
 
@@ -828,6 +838,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -870,6 +882,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
+
+Explain Code
 
 ---
 
@@ -1196,6 +1210,8 @@ uint64_t htonll(uint64_t hostlonglong);
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ddos-protection/","name":"DDoS Protection"}},{"@type":"ListItem","position":3,"item":{"@id":"/ddos-protection/advanced-ddos-systems/","name":"Advanced DDoS systems"}},{"@type":"ListItem","position":4,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/","name":"General settings"}},{"@type":"ListItem","position":5,"item":{"@id":"/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","name":"Programmable Flow Protection (Beta)"}}]}

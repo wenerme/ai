@@ -125,6 +125,8 @@ resource "cloudflare_ruleset" "zone_level_managed_waf" {
 
 ```
 
+Explain Code
+
 ## Deploy managed rulesets at the account level
 
 Notes
@@ -198,6 +200,8 @@ resource "cloudflare_ruleset" "account_level_managed_waf" {
 
 
 ```
+
+Explain Code
 
 ## Configure exceptions
 
@@ -295,6 +299,8 @@ resource "cloudflare_ruleset" "zone_level_managed_waf" {
 
 ```
 
+Explain Code
+
 Important
 
 Ensure that you place the exceptions **before** the rule that executes the managed ruleset (or some of its rules) that you wish to skip, as in the previous example.
@@ -380,6 +386,8 @@ Terraform code snippets below refer to the v4 SDK only.
 
 ```
 
+Explain Code
+
 ## Configure payload logging
 
 This example enables [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/) for matched rules of the Cloudflare Managed Ruleset, setting the public key used to encrypt the logged payload.
@@ -426,6 +434,8 @@ Terraform code snippets below refer to the v4 SDK only.
 
 
 ```
+
+Explain Code
 
 ## Configure the OWASP paranoia level, score threshold, and action
 
@@ -514,6 +524,8 @@ Terraform code snippets below refer to the v4 SDK only.
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/waf-managed-rulesets/","name":"WAF Managed Rules configuration using Terraform"}}]}

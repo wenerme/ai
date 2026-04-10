@@ -41,8 +41,8 @@ You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Wor
 
 To allow your dynamic dispatch Worker to dynamically route requests to Workers in a namespace, you need to configure a dispatch namespace [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). This binding enables your dynamic dispatch Worker to call any user Worker within that namespace using `env.dispatcher.get()`.
 
-* [  wrangler.jsonc ](#tab-panel-3378)
-* [  wrangler.toml ](#tab-panel-3379)
+* [  wrangler.jsonc ](#tab-panel-3384)
+* [  wrangler.toml ](#tab-panel-3385)
 
 JSONC
 
@@ -145,6 +145,8 @@ export default {
 
 ```
 
+Explain Code
+
 #### Subdomain-Based Routing
 
 Route subdomains to the corresponding Worker. For example, `my-customer.example.com` will route to the Worker named `my-customer` in the dispatch namespace.
@@ -196,6 +198,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 #### Path-Based routing
 
@@ -250,6 +254,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ### Enforce custom limits
 
@@ -328,6 +334,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 For more details on available limits, refer to [Custom limits](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/custom-limits/).
 

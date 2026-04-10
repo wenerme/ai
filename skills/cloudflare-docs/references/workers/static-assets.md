@@ -50,8 +50,8 @@ When you deploy your project, Cloudflare deploys both your Worker code and your 
 
 The **assets directory** specified in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) is central to this design. During deployment, Wrangler automatically uploads the files from this directory to Cloudflare's infrastructure. Once deployed, requests for these assets are routed efficiently to locations closest to your users.
 
-* [  wrangler.jsonc ](#tab-panel-7662)
-* [  wrangler.toml ](#tab-panel-7663)
+* [  wrangler.jsonc ](#tab-panel-7722)
+* [  wrangler.toml ](#tab-panel-7723)
 
 JSONC
 
@@ -67,7 +67,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "assets": {
 
@@ -82,6 +82,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -94,7 +96,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [assets]
@@ -112,8 +114,8 @@ If you are using the [Cloudflare Vite plugin](https://developers.cloudflare.com/
 
 By adding an [**assets binding**](https://developers.cloudflare.com/workers/static-assets/binding/#binding), you can directly fetch and serve assets within your Worker code.
 
-* [  JavaScript ](#tab-panel-7658)
-* [  Python ](#tab-panel-7659)
+* [  JavaScript ](#tab-panel-7718)
+* [  Python ](#tab-panel-7719)
 
 JavaScript
 
@@ -149,6 +151,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -176,6 +180,8 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 ### Routing behavior
 
 By default, if a requested URL matches a file in the static assets directory, that file will be served — without invoking Worker code. If no matching asset is found and a Worker script is present, the request will be processed by the Worker. The Worker can return a response or choose to defer again to static assets by using the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/) (e.g. `env.ASSETS.fetch(request)`). If no Worker script is present, a `404 Not Found` response is returned.
@@ -185,8 +191,8 @@ The default behavior for requests which don't match a static asset can be change
 * [not\_found\_handling = "single-page-application"](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/): Sets your application to return a `200 OK` response with `index.html` for requests which don't match a static asset. Use this if you have a Single Page Application. We recommend pairing this with selective routing using `run_worker_first` for [advanced routing control](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control).
 * [not\_found\_handling = "404-page"](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/#custom-404-pages): Sets your application to return a `404 Not Found` response with the nearest `404.html` for requests which don't match a static asset.
 
-* [  wrangler.jsonc ](#tab-panel-7660)
-* [  wrangler.toml ](#tab-panel-7661)
+* [  wrangler.jsonc ](#tab-panel-7720)
+* [  wrangler.toml ](#tab-panel-7721)
 
 JSONC
 
@@ -224,8 +230,8 @@ If you want the Worker code to execute before serving assets, you can use the `r
 
 **Invoking your Worker script on specific paths:**
 
-* [  wrangler.jsonc ](#tab-panel-7664)
-* [  wrangler.toml ](#tab-panel-7665)
+* [  wrangler.jsonc ](#tab-panel-7724)
+* [  wrangler.toml ](#tab-panel-7725)
 
 JSONC
 
@@ -237,7 +243,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "main": "./src/index.ts",
 
@@ -258,6 +264,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -266,7 +274,7 @@ name = "my-spa-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 main = "./src/index.ts"
 
@@ -283,6 +291,8 @@ run_worker_first = [ "/api/*", "!/api/docs/*" ]
 
 
 ```
+
+Explain Code
 
 For a more advanced pattern, refer to [SPA shell with bootstrap data](https://developers.cloudflare.com/workers/examples/spa-shell/), which uses HTMLRewriter to inject prefetched API data into the HTML stream.
 

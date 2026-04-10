@@ -73,6 +73,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/@cf/baai/
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -97,6 +99,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/@cf/baai/
 
 
 ```
+
+Explain Code
 
 ## 2\. Retrieving the Batch Response
 
@@ -169,6 +173,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai/run/@cf/baai/
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/batch-api/","name":"Asynchronous Batch API"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/batch-api/rest-api/","name":"REST API"}}]}

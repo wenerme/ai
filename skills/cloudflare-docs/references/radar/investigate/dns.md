@@ -86,6 +86,8 @@ The response shows that most queries come from the United States and Brazil:
 
 ```
 
+Explain Code
+
 Making the same search request for `yandex.ru`, a Russian search engine:
 
 Terminal window
@@ -147,6 +149,8 @@ Returns the following response:
 
 
 ```
+
+Explain Code
 
 As expected, most queries come from Russia.
 

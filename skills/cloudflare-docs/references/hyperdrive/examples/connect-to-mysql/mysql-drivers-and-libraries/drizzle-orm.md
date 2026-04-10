@@ -45,8 +45,8 @@ npm i -D drizzle-kit tsx @types/node
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4697)
-* [  wrangler.toml ](#tab-panel-4698)
+* [  wrangler.jsonc ](#tab-panel-4741)
+* [  wrangler.toml ](#tab-panel-4742)
 
 JSONC
 
@@ -64,7 +64,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -83,6 +83,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -91,7 +93,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -196,6 +198,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### 2.3\. Configure Drizzle-Kit for migrations (optional)
 
 Note
@@ -226,7 +230,8 @@ dbCredentials: {
 url: process.env.DATABASE_URL!,  
   },  
 });  
-```
+```  
+Explain Code
 3. Generate the migration file for your database according to your schema files and apply the migrations to your database.  
 Terminal window  
 ```  

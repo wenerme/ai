@@ -30,8 +30,8 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-4049)
-* [  TypeScript ](#tab-panel-4050)
+* [  JavaScript ](#tab-panel-4093)
+* [  TypeScript ](#tab-panel-4094)
 
 JavaScript
 
@@ -112,6 +112,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -190,6 +192,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Primary database instance vs read replicas
 
@@ -346,8 +350,8 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-4043)
-* [ TypeScript ](#tab-panel-4044)
+* [ cURL ](#tab-panel-4087)
+* [ TypeScript ](#tab-panel-4088)
 
 Terminal window
 
@@ -394,6 +398,8 @@ await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
 
 ```
 
+Explain Code
+
 ### Disable read replication via REST API
 
 With the REST API, set `read_replication.mode: disabled` to disable read replication on a D1 database.
@@ -404,8 +410,8 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-4045)
-* [ TypeScript ](#tab-panel-4046)
+* [ cURL ](#tab-panel-4089)
+* [ TypeScript ](#tab-panel-4090)
 
 Terminal window
 
@@ -452,6 +458,8 @@ await fetch ("/v4/accounts/{account_id}/d1/database/{database_id}", {
 
 ```
 
+Explain Code
+
 ### Check if read replication is enabled
 
 On the Cloudflare dashboard, check **Settings** for your D1 database to view if read replication is enabled.
@@ -460,8 +468,8 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-4047)
-* [ TypeScript ](#tab-panel-4048)
+* [ cURL ](#tab-panel-4091)
+* [ TypeScript ](#tab-panel-4092)
 
 Terminal window
 
@@ -500,6 +508,8 @@ console.log(data.read_replication.mode);
 
 
 ```
+
+Explain Code
 
 * Check the `read_replication` property of the `result` object  
    * `"mode": "auto"` indicates read replication is enabled  

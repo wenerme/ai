@@ -20,7 +20,7 @@ Copy page
 
 # Deploy the Cloudflare One Client on headless Linux machines
 
-**Last reviewed:**  6 months ago 
+**Last reviewed:**  7 months ago 
 
 This tutorial explains how to deploy the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on Linux devices using a service token and an installation script. This deployment workflow is designed for headless servers - that is, servers which do not have access to a browser for identity provider logins - and for situations where you want to fully automate the onboarding process. Because devices will not register through an identity provider, [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) and logging will be unavailable.
 
@@ -38,9 +38,9 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-3948)
-* [ API ](#tab-panel-3949)
-* [ Terraform (v5) ](#tab-panel-3950)
+* [ Dashboard ](#tab-panel-3954)
+* [ API ](#tab-panel-3955)
+* [ Terraform (v5) ](#tab-panel-3956)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -80,6 +80,7 @@ Response
   "client_secret_version": 1  
 }  
 ```  
+Explain Code  
 Warning  
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
@@ -194,7 +195,8 @@ EOF
 #main program  
 warp  
 mdm  
-```
+```  
+Explain Code
 3. If you are using Debian or RHEL / CentOS, modify the `warp()` function so that it installs the correct [WARP package ↗](https://pkg.cloudflareclient.com/) for your OS.
 4. Modify the values in the `mdm()` function:  
    1. For `auth_client_id` and `auth_client_secret`, replace the string values with the Client ID and Client Secret of your [service token](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#1-create-a-service-token).  

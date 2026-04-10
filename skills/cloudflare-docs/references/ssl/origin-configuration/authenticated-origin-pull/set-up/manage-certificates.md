@@ -84,6 +84,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth
 
 ```
 
+Explain Code
+
 Note
 
 If you keep both certificates, the API will state `active` for both but the most recently deployed certificate will be the one enabled and used.

@@ -69,6 +69,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -111,6 +113,8 @@ Response
 
 
 ```
+
+Explain Code
 
 However, this approach has some disadvantages:
 

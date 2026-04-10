@@ -43,8 +43,8 @@ If the answer to a majority of these questions is no and your organization relie
 
 To turn on TLS inspection for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-5271)
-* [ Terraform (v5) ](#tab-panel-5272)
+* [ Dashboard ](#tab-panel-5315)
+* [ Terraform (v5) ](#tab-panel-5316)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -98,8 +98,8 @@ You can build pass-through rules to accommodate any type of device or user group
 
 For example, if users are issued a corporate-managed iPhone with limited permissions, set an additional Do Not Inspect policy for all traffic matching the device posture value. That could include the OS type, OS version, or a list of serial numbers (updated via the API with hooks from your MDM tool) for those iPhones:
 
-* [ Dashboard ](#tab-panel-5275)
-* [ API ](#tab-panel-5276)
+* [ Dashboard ](#tab-panel-5319)
+* [ API ](#tab-panel-5320)
 
 | Selector              | Operator | Value                                   | Logic | Action         |
 | --------------------- | -------- | --------------------------------------- | ----- | -------------- |
@@ -122,7 +122,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
     "name": "Admin Serial Numbers",  
     "type": "SERIAL"  
   }'  
-```
+```  
+Explain Code
 2. Create a Do Not Inspect policy that checks the device against the list of serial numbers.
 
 Create a Zero Trust Gateway rule
@@ -162,10 +163,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 If you filter your network-connected devices with IPsec/GRE tunnels, the WARP Connector, or other devices that do not have a Cloudflare certificate installed, you will need to accommodate by creating pass-through policies. For these devices, you should explicitly exempt TLS inspection for the source network IP range from which that traffic will be originating. For example:
 
-* [ Dashboard ](#tab-panel-5273)
-* [ API ](#tab-panel-5274)
+* [ Dashboard ](#tab-panel-5317)
+* [ API ](#tab-panel-5318)
 
 | Selector           | Operator | Value          | Action         |
 | ------------------ | -------- | -------------- | -------------- |
@@ -197,6 +200,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/","name":"Use TLS inspection"}}]}

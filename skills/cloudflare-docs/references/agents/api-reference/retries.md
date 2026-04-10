@@ -31,8 +31,8 @@ Transient failures are common when calling external APIs, interacting with other
 
 Use `this.retry()` to retry any async operation:
 
-* [  JavaScript ](#tab-panel-2582)
-* [  TypeScript ](#tab-panel-2583)
+* [  JavaScript ](#tab-panel-2588)
+* [  TypeScript ](#tab-panel-2589)
 
 JavaScript
 
@@ -65,6 +65,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -95,6 +97,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 By default, `this.retry()` retries up to three times with jittered exponential backoff.
 
@@ -135,8 +139,8 @@ async retry<T>(
 
 **Basic retry:**
 
-* [  JavaScript ](#tab-panel-2578)
-* [  TypeScript ](#tab-panel-2579)
+* [  JavaScript ](#tab-panel-2584)
+* [  TypeScript ](#tab-panel-2585)
 
 JavaScript
 
@@ -158,8 +162,8 @@ const data = await this.retry(() => fetch("https://api.example.com/data"));
 
 **Custom retry options:**
 
-* [  JavaScript ](#tab-panel-2584)
-* [  TypeScript ](#tab-panel-2585)
+* [  JavaScript ](#tab-panel-2590)
+* [  TypeScript ](#tab-panel-2591)
 
 JavaScript
 
@@ -192,6 +196,8 @@ const data = await this.retry(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -223,10 +229,12 @@ const data = await this.retry(
 
 ```
 
+Explain Code
+
 **Using the attempt number:**
 
-* [  JavaScript ](#tab-panel-2580)
-* [  TypeScript ](#tab-panel-2581)
+* [  JavaScript ](#tab-panel-2586)
+* [  TypeScript ](#tab-panel-2587)
 
 JavaScript
 
@@ -262,8 +270,8 @@ const result = await this.retry(async (attempt) => {
 
 Use `shouldRetry` to stop retrying on specific errors. The predicate receives both the error and the next attempt number:
 
-* [  JavaScript ](#tab-panel-2590)
-* [  TypeScript ](#tab-panel-2591)
+* [  JavaScript ](#tab-panel-2596)
+* [  TypeScript ](#tab-panel-2597)
 
 JavaScript
 
@@ -306,6 +314,8 @@ const data = await this.retry(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -346,13 +356,15 @@ const data = await this.retry(
 
 
 ```
+
+Explain Code
 
 ## Retries in schedules
 
 Pass retry options when creating a schedule:
 
-* [  JavaScript ](#tab-panel-2606)
-* [  TypeScript ](#tab-panel-2607)
+* [  JavaScript ](#tab-panel-2612)
+* [  TypeScript ](#tab-panel-2613)
 
 JavaScript
 
@@ -444,6 +456,8 @@ await this.scheduleEvery(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -533,93 +547,14 @@ await this.scheduleEvery(
 
 
 ```
+
+Explain Code
 
 If the callback throws, it is retried according to the retry options. If all attempts fail, the error is logged and routed through `onError()`. The schedule is still removed (for one-time schedules) or rescheduled (for cron/interval) regardless of success or failure.
 
 ## Retries in queues
 
 Pass retry options when adding a task to the queue:
-
-* [  JavaScript ](#tab-panel-2594)
-* [  TypeScript ](#tab-panel-2595)
-
-JavaScript
-
-```
-
-await this.queue(
-
-  "sendEmail",
-
-  { to: "user@example.com" },
-
-  {
-
-    retry: { maxAttempts: 5 },
-
-  },
-
-);
-
-
-await this.queue("processWebhook", webhookData, {
-
-  retry: {
-
-    maxAttempts: 3,
-
-    baseDelayMs: 500,
-
-    maxDelayMs: 5000,
-
-  },
-
-});
-
-
-```
-
-TypeScript
-
-```
-
-await this.queue(
-
-  "sendEmail",
-
-  { to: "user@example.com" },
-
-  {
-
-    retry: { maxAttempts: 5 },
-
-  },
-
-);
-
-
-await this.queue("processWebhook", webhookData, {
-
-  retry: {
-
-    maxAttempts: 3,
-
-    baseDelayMs: 500,
-
-    maxDelayMs: 5000,
-
-  },
-
-});
-
-
-```
-
-If the callback throws, it is retried before the task is dequeued. After all attempts are exhausted, the task is dequeued and the error is logged.
-
-## Validation
-
-Retry options are validated eagerly when you call `this.retry()`, `queue()`, `schedule()`, or `scheduleEvery()`. Invalid options throw immediately instead of failing later at execution time:
 
 * [  JavaScript ](#tab-panel-2600)
 * [  TypeScript ](#tab-panel-2601)
@@ -628,6 +563,91 @@ JavaScript
 
 ```
 
+await this.queue(
+
+  "sendEmail",
+
+  { to: "user@example.com" },
+
+  {
+
+    retry: { maxAttempts: 5 },
+
+  },
+
+);
+
+
+await this.queue("processWebhook", webhookData, {
+
+  retry: {
+
+    maxAttempts: 3,
+
+    baseDelayMs: 500,
+
+    maxDelayMs: 5000,
+
+  },
+
+});
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+await this.queue(
+
+  "sendEmail",
+
+  { to: "user@example.com" },
+
+  {
+
+    retry: { maxAttempts: 5 },
+
+  },
+
+);
+
+
+await this.queue("processWebhook", webhookData, {
+
+  retry: {
+
+    maxAttempts: 3,
+
+    baseDelayMs: 500,
+
+    maxDelayMs: 5000,
+
+  },
+
+});
+
+
+```
+
+Explain Code
+
+If the callback throws, it is retried before the task is dequeued. After all attempts are exhausted, the task is dequeued and the error is logged.
+
+## Validation
+
+Retry options are validated eagerly when you call `this.retry()`, `queue()`, `schedule()`, or `scheduleEvery()`. Invalid options throw immediately instead of failing later at execution time:
+
+* [  JavaScript ](#tab-panel-2606)
+* [  TypeScript ](#tab-panel-2607)
+
+JavaScript
+
+```
+
 // Throws immediately: "retry.maxAttempts must be >= 1"
 
 await this.queue("sendEmail", data, {
@@ -673,6 +693,8 @@ await this.queue("sendEmail", data, {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -723,6 +745,8 @@ await this.queue("sendEmail", data, {
 
 
 ```
+
+Explain Code
 
 Validation resolves partial options against class-level or built-in defaults before checking cross-field constraints. This means `{ baseDelayMs: 5000 }` is caught immediately when the resolved `maxDelayMs` is 3000, rather than failing later at execution time.
 
@@ -742,8 +766,8 @@ These defaults apply to `this.retry()`, `queue()`, `schedule()`, and `scheduleEv
 
 Override the defaults for your entire agent via `static options`:
 
-* [  JavaScript ](#tab-panel-2586)
-* [  TypeScript ](#tab-panel-2587)
+* [  JavaScript ](#tab-panel-2592)
+* [  TypeScript ](#tab-panel-2593)
 
 JavaScript
 
@@ -781,8 +805,8 @@ class MyAgent extends Agent {
 
 You only need to specify the fields you want to change — unset fields fall back to the built-in defaults:
 
-* [  JavaScript ](#tab-panel-2588)
-* [  TypeScript ](#tab-panel-2589)
+* [  JavaScript ](#tab-panel-2594)
+* [  TypeScript ](#tab-panel-2595)
 
 JavaScript
 
@@ -824,8 +848,8 @@ class MyAgent extends Agent {
 
 Class-level defaults are used as fallbacks when a call site does not specify retry options. Per-call-site options always take priority:
 
-* [  JavaScript ](#tab-panel-2592)
-* [  TypeScript ](#tab-panel-2593)
+* [  JavaScript ](#tab-panel-2598)
+* [  TypeScript ](#tab-panel-2599)
 
 JavaScript
 
@@ -861,8 +885,8 @@ await this.retry(() => fetch(url), { maxAttempts: 2 });
 
 To disable retries for a specific task, set `maxAttempts: 1`:
 
-* [  JavaScript ](#tab-panel-2598)
-* [  TypeScript ](#tab-panel-2599)
+* [  JavaScript ](#tab-panel-2604)
+* [  TypeScript ](#tab-panel-2605)
 
 JavaScript
 
@@ -972,8 +996,8 @@ With `maxAttempts: 5` and `baseDelayMs: 500`:
 
 When adding an MCP server, you can configure retry options for connection and reconnection attempts:
 
-* [  JavaScript ](#tab-panel-2596)
-* [  TypeScript ](#tab-panel-2597)
+* [  JavaScript ](#tab-panel-2602)
+* [  TypeScript ](#tab-panel-2603)
 
 JavaScript
 
@@ -1012,8 +1036,8 @@ Default: 3 attempts, 500ms base delay, 5s max delay.
 
 ### Retry with logging
 
-* [  JavaScript ](#tab-panel-2604)
-* [  TypeScript ](#tab-panel-2605)
+* [  JavaScript ](#tab-panel-2610)
+* [  TypeScript ](#tab-panel-2611)
 
 JavaScript
 
@@ -1062,6 +1086,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1109,10 +1135,12 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Retry with fallback
 
-* [  JavaScript ](#tab-panel-2602)
-* [  TypeScript ](#tab-panel-2603)
+* [  JavaScript ](#tab-panel-2608)
+* [  TypeScript ](#tab-panel-2609)
 
 JavaScript
 
@@ -1153,6 +1181,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1192,12 +1222,14 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Combining retries with scheduling
 
 For operations that might take a long time to recover (minutes or hours), combine `this.retry()` for immediate retries with `this.schedule()` for delayed retries:
 
-* [  JavaScript ](#tab-panel-2608)
-* [  TypeScript ](#tab-panel-2609)
+* [  JavaScript ](#tab-panel-2614)
+* [  TypeScript ](#tab-panel-2615)
 
 JavaScript
 
@@ -1256,6 +1288,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1312,6 +1346,8 @@ class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 ## Limitations
 

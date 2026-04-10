@@ -170,6 +170,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 ```
 
+Explain Code
+
 ### Example: View available rulesets at the account level
 
 The response to the [GET request](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) obtaining the list of rulesets at the account level will include the following rulesets:
@@ -304,6 +306,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
+Explain Code
+
 ## Get an entry point ruleset
 
 You can get the definition of the [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) of a given [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) at the zone or account level.
@@ -433,6 +437,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
+
+Explain Code
 
 ### Example: Get an entry point ruleset at the account level
 
@@ -595,6 +601,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
+Explain Code
+
 ### Example: View rules in a managed ruleset
 
 The following [GET request](https://developers.cloudflare.com/api/resources/rulesets/subresources/versions/methods/get/) lists the rules in version `2` of a managed ruleset (the most recent version of that ruleset).
@@ -728,6 +736,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$MANAGE
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

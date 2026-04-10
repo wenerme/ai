@@ -38,8 +38,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve Plan is required for the enablement.
 
-* [ Dashboard ](#tab-panel-3304)
-* [ API ](#tab-panel-3305)
+* [ Dashboard ](#tab-panel-3310)
+* [ API ](#tab-panel-3311)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -195,8 +195,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-3306)
-* [ API ](#tab-panel-3307)
+* [ Dashboard ](#tab-panel-3312)
+* [ API ](#tab-panel-3313)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -254,6 +254,8 @@ Response
 
 ```
 
+Explain Code
+
 If Cache Reserve is turned off, you can proceed to the Cache Reserve Clear operation.
 
 **Request 2: Start Cache Reserve Clear**
@@ -303,6 +305,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/advanced-configuration/","name":"Advanced configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/advanced-configuration/cache-reserve/","name":"Cache Reserve"}}]}

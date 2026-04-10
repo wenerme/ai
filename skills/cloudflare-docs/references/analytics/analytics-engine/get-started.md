@@ -24,8 +24,8 @@ Note
 
 You do not need to manually create a dataset in the Cloudflare dashboard. Workers Analytics Engine datasets are created automatically the first time you write to them after defining the binding in your Wrangler configuration.
 
-* [  wrangler.jsonc ](#tab-panel-3122)
-* [  wrangler.toml ](#tab-panel-3123)
+* [  wrangler.jsonc ](#tab-panel-3128)
+* [  wrangler.toml ](#tab-panel-3129)
 
 JSONC
 
@@ -191,6 +191,8 @@ ORDER BY t, avg_humidity DESC
 
 
 ```
+
+Explain Code
 
 This query first rounds the `timestamp` field to the nearest five minutes. Then, it groups by that field and city and calculates the average humidity in each city for a five minute period.
 

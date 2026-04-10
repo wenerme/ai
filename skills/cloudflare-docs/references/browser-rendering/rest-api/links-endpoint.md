@@ -46,8 +46,8 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-* [ curl ](#tab-panel-3262)
-* [ TypeScript SDK ](#tab-panel-3263)
+* [ curl ](#tab-panel-3268)
+* [ TypeScript SDK ](#tab-panel-3269)
 
 This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 
@@ -227,6 +227,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -254,6 +256,8 @@ console.log(links);
 
 
 ```
+
+Explain Code
 
 ## Advanced usage
 
@@ -442,6 +446,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 ### Retrieve only links from the same domain
 

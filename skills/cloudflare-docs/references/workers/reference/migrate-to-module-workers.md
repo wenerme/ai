@@ -67,6 +67,8 @@ addEventListener('fetch', event => {
 
 ```
 
+Explain Code
+
 Workers using ES modules format replace the `addEventListener` syntax with an object definition, which must be the file's default export (via `export default`). The previous example code becomes:
 
 JavaScript
@@ -95,6 +97,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Bindings
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform.
@@ -107,8 +111,8 @@ To understand bindings, refer the following `TODO` KV namespace binding example.
 2. Create a Worker.
 3. Find your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add a KV namespace binding:
 
-* [  wrangler.jsonc ](#tab-panel-7504)
-* [  wrangler.toml ](#tab-panel-7505)
+* [  wrangler.jsonc ](#tab-panel-7564)
+* [  wrangler.toml ](#tab-panel-7565)
 
 JSONC
 
@@ -185,6 +189,8 @@ async function getTodos() {
 
 ```
 
+Explain Code
+
 ### Bindings in ES modules format
 
 In ES modules format, bindings are only available inside the `env` parameter that is provided at the entry point to your Worker.
@@ -245,8 +251,8 @@ export { getTodos }
 
 Review the following example environment variable configuration in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-7506)
-* [  wrangler.toml ](#tab-panel-7507)
+* [  wrangler.jsonc ](#tab-panel-7566)
+* [  wrangler.toml ](#tab-panel-7567)
 
 JSONC
 
@@ -333,8 +339,8 @@ export default {
 
 You can also import `env` from `cloudflare:workers` to access environment variables from anywhere in your code, including the top-level scope:
 
-* [  JavaScript ](#tab-panel-7508)
-* [  TypeScript ](#tab-panel-7509)
+* [  JavaScript ](#tab-panel-7568)
+* [  TypeScript ](#tab-panel-7569)
 
 JavaScript
 
@@ -363,6 +369,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -389,6 +397,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 This approach is useful for initializing configuration or accessing environment variables from deeply nested functions without passing `env` through every function call. For more details, refer to [Importing env as a global](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global).
 
@@ -488,6 +498,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Service Worker syntax
 
 A Worker written in Service Worker syntax consists of two parts:
@@ -576,6 +588,8 @@ addEventListener('fetch', event => {
 
 ```
 
+Explain Code
+
 ### `waitUntil`
 
 The `waitUntil` command extends the lifetime of the `"fetch"` event. It accepts a `Promise`\-based task which the Workers runtime will execute before the handler terminates but without blocking the response. For example, this is ideal for [caching responses](https://developers.cloudflare.com/workers/runtime-apis/cache/#put) or handling logging.
@@ -626,6 +640,8 @@ async function handler(event) {
 
 
 ```
+
+Explain Code
 
 ### `passThroughOnException`
 

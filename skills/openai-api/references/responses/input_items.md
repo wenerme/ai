@@ -118,7 +118,7 @@ Returns a list of input items for a given response.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -127,6 +127,14 @@ Returns a list of input items for a given response.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -1140,7 +1148,7 @@ Returns a list of input items for a given response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -1149,6 +1157,14 @@ Returns a list of input items for a given response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -3145,7 +3161,7 @@ Returns a list of input items for a given response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -3154,6 +3170,14 @@ Returns a list of input items for a given response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -3341,7 +3365,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -3350,6 +3374,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -4363,7 +4395,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -4372,6 +4404,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -6368,7 +6408,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -6377,6 +6417,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 

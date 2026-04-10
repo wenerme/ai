@@ -72,6 +72,8 @@ export default {
 
 ```
 
+Explain Code
+
 * [  wrangler.jsonc ](#tab-panel-4013)
 * [  wrangler.toml ](#tab-panel-4014)
 
@@ -87,7 +89,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-09",
+  "compatibility_date": "2026-04-10",
 
   "containers": [
 
@@ -136,6 +138,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -146,7 +150,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-09"
+compatibility_date = "2026-04-10"
 
 
 [[containers]]
@@ -173,6 +177,8 @@ tag = "v1"
 
 
 ```
+
+Explain Code
 
 [ Get started ](https://developers.cloudflare.com/containers/get-started/) [ Containers dashboard ](https://dash.cloudflare.com/?to=/:account/workers/containers) 
 

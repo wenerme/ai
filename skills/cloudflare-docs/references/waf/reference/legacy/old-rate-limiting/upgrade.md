@@ -109,7 +109,8 @@ resource "cloudflare_ruleset" "terraform_managed_resource_3c0b456bc2aa443089c5f4
   # (...)  
 }  
 # (...)  
-```
+```  
+Explain Code
 2. The previous command may return additional ruleset configurations for other Cloudflare products also based on the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/). Since you are updating your rate limiting rules configuration, keep only the Terraform resource for the `http_ratelimit` phase and save it to a `.tf` configuration file. You will need the full resource name in the next step.
 3. Import the `cloudflare_ruleset` resource you previously identified into Terraform state using the `terraform import` command. For example:  
 Terminal window  

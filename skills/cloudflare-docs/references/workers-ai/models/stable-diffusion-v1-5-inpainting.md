@@ -33,8 +33,8 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2061)
-* [  curl ](#tab-panel-2062)
+* [  TypeScript ](#tab-panel-2067)
+* [  curl ](#tab-panel-2068)
 
 ```
 
@@ -107,6 +107,8 @@ export default {
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -163,8 +165,8 @@ Random seed for reproducibility of the image generation
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2063)
-* [ Output ](#tab-panel-2064)
+* [ Input ](#tab-panel-2069)
+* [ Output ](#tab-panel-2070)
 
 ```
 
@@ -308,6 +310,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 

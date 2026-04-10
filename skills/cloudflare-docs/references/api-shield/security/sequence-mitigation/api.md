@@ -51,6 +51,8 @@ Example of a rule object
 
 ```
 
+Explain Code
+
 This rule enforces that a request to endpoint `0d9bf70c-92e1-4bb3-9411-34a3bcc59003` must come before a request to endpoint `b704ab4d-5be0-46e0-9875-b2b3d1ab42f9`.
 
 Otherwise, the request to endpoint `b704ab4d-5be0-46e0-9875-b2b3d1ab42f9` is blocked.
@@ -122,6 +124,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules/
 
 ```
 
+Explain Code
+
 ### Add multiple sequence rules
 
 Use the `PUT` command to set up new rules in bulk.
@@ -168,6 +172,8 @@ curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gat
 
 
 ```
+
+Explain Code
 
 ### Delete a rule
 

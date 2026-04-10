@@ -128,7 +128,8 @@ curl --request PATCH \
       "certificate_authority": ""  
   }  
 }'  
-```
+```  
+Explain Code
 * Use the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint to set the `certificate_authority` parameter to `google`: this sets Google Trust Services as the CA for your custom hostnames. In your API call, make sure to also include `method` and `type` in the `ssl` object.
 * If you are using a custom certificate for your custom hostname, refer to the [custom certificates troubleshooting](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/#lets-encrypt-chain-update).
 

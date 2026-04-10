@@ -35,8 +35,8 @@ Under the hood, scheduling uses [Durable Object alarms](https://developers.cloud
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2738)
-* [  TypeScript ](#tab-panel-2739)
+* [  JavaScript ](#tab-panel-2744)
+* [  TypeScript ](#tab-panel-2745)
 
 JavaScript
 
@@ -106,6 +106,8 @@ export class ReminderAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -174,14 +176,16 @@ export class ReminderAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Scheduling modes
 
 ### Delayed execution
 
 Pass a number to schedule a task to run after a delay in **seconds**:
 
-* [  JavaScript ](#tab-panel-2720)
-* [  TypeScript ](#tab-panel-2721)
+* [  JavaScript ](#tab-panel-2726)
+* [  TypeScript ](#tab-panel-2727)
 
 JavaScript
 
@@ -236,8 +240,8 @@ await this.schedule(3600, "checkStatus", { orderId: "abc" });
 
 Pass a `Date` object to schedule a task at a specific time:
 
-* [  JavaScript ](#tab-panel-2724)
-* [  TypeScript ](#tab-panel-2725)
+* [  JavaScript ](#tab-panel-2730)
+* [  TypeScript ](#tab-panel-2731)
 
 JavaScript
 
@@ -272,6 +276,8 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -304,6 +310,8 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 
 ```
+
+Explain Code
 
 **Use cases:**
 
@@ -316,8 +324,8 @@ await this.schedule(twoHoursFromNow, "checkIn", {});
 
 Pass a cron expression string for recurring schedules:
 
-* [  JavaScript ](#tab-panel-2728)
-* [  TypeScript ](#tab-panel-2729)
+* [  JavaScript ](#tab-panel-2734)
+* [  TypeScript ](#tab-panel-2735)
 
 JavaScript
 
@@ -350,6 +358,8 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -380,6 +390,8 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 
 ```
+
+Explain Code
 
 **Cron syntax:** `minute hour day month weekday`
 
@@ -393,8 +405,8 @@ await this.schedule("0 0 1 * *", "monthlyCleanup", {});
 
 **Common patterns:**
 
-* [  JavaScript ](#tab-panel-2722)
-* [  TypeScript ](#tab-panel-2723)
+* [  JavaScript ](#tab-panel-2728)
+* [  TypeScript ](#tab-panel-2729)
 
 JavaScript
 
@@ -450,8 +462,8 @@ TypeScript
 
 Use `scheduleEvery()` to run a task at fixed intervals (in seconds). Unlike cron, intervals support sub-minute precision and arbitrary durations:
 
-* [  JavaScript ](#tab-panel-2726)
-* [  TypeScript ](#tab-panel-2727)
+* [  JavaScript ](#tab-panel-2732)
+* [  TypeScript ](#tab-panel-2733)
 
 JavaScript
 
@@ -508,8 +520,8 @@ await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
 
 If a callback takes longer than the interval, the next execution is skipped (not queued). This prevents runaway resource usage:
 
-* [  JavaScript ](#tab-panel-2732)
-* [  TypeScript ](#tab-panel-2733)
+* [  JavaScript ](#tab-panel-2738)
+* [  TypeScript ](#tab-panel-2739)
 
 JavaScript
 
@@ -539,6 +551,8 @@ await this.scheduleEvery(30, "poll", {});
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -567,6 +581,8 @@ await this.scheduleEvery(30, "poll", {});
 
 ```
 
+Explain Code
+
 When a skip occurs, you will see a warning in logs:
 
 ```
@@ -580,8 +596,8 @@ Skipping interval schedule abc123: previous execution still running
 
 If the callback throws an error, the interval continues — only that execution fails:
 
-* [  JavaScript ](#tab-panel-2730)
-* [  TypeScript ](#tab-panel-2731)
+* [  JavaScript ](#tab-panel-2736)
+* [  TypeScript ](#tab-panel-2737)
 
 JavaScript
 
@@ -642,8 +658,8 @@ class SyncAgent extends Agent {
 
 Retrieve a scheduled task by its ID:
 
-* [  JavaScript ](#tab-panel-2734)
-* [  TypeScript ](#tab-panel-2735)
+* [  JavaScript ](#tab-panel-2740)
+* [  TypeScript ](#tab-panel-2741)
 
 JavaScript
 
@@ -673,6 +689,8 @@ if (schedule) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -700,13 +718,15 @@ if (schedule) {
 
 
 ```
+
+Explain Code
 
 ### List schedules
 
 Query scheduled tasks with optional filters:
 
-* [  JavaScript ](#tab-panel-2744)
-* [  TypeScript ](#tab-panel-2745)
+* [  JavaScript ](#tab-panel-2750)
+* [  TypeScript ](#tab-panel-2751)
 
 JavaScript
 
@@ -761,6 +781,8 @@ const upcomingCronJobs = this.getSchedules({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -814,12 +836,14 @@ const upcomingCronJobs = this.getSchedules({
 
 ```
 
+Explain Code
+
 ### Cancel a schedule
 
 Remove a scheduled task before it executes:
 
-* [  JavaScript ](#tab-panel-2736)
-* [  TypeScript ](#tab-panel-2737)
+* [  JavaScript ](#tab-panel-2742)
+* [  TypeScript ](#tab-panel-2743)
 
 JavaScript
 
@@ -863,8 +887,8 @@ if (cancelled) {
 
 **Example: Cancellable reminders**
 
-* [  JavaScript ](#tab-panel-2756)
-* [  TypeScript ](#tab-panel-2757)
+* [  JavaScript ](#tab-panel-2762)
+* [  TypeScript ](#tab-panel-2763)
 
 JavaScript
 
@@ -932,6 +956,8 @@ class ReminderAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -998,6 +1024,8 @@ class ReminderAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## The Schedule object
 
 When you create or retrieve a schedule, you get a `Schedule` object:
@@ -1031,10 +1059,12 @@ type Schedule<T> = {
 
 ```
 
+Explain Code
+
 **Example:**
 
-* [  JavaScript ](#tab-panel-2740)
-* [  TypeScript ](#tab-panel-2741)
+* [  JavaScript ](#tab-panel-2746)
+* [  TypeScript ](#tab-panel-2747)
 
 JavaScript
 
@@ -1064,6 +1094,8 @@ console.log(schedule);
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1092,14 +1124,16 @@ console.log(schedule);
 
 ```
 
+Explain Code
+
 ## Patterns
 
 ### Rescheduling from callbacks
 
 For dynamic recurring schedules, schedule the next run from within the callback:
 
-* [  JavaScript ](#tab-panel-2754)
-* [  TypeScript ](#tab-panel-2755)
+* [  JavaScript ](#tab-panel-2760)
+* [  TypeScript ](#tab-panel-2761)
 
 JavaScript
 
@@ -1159,6 +1193,8 @@ class PollingAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1217,10 +1253,12 @@ class PollingAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Exponential backoff retry
 
-* [  JavaScript ](#tab-panel-2758)
-* [  TypeScript ](#tab-panel-2759)
+* [  JavaScript ](#tab-panel-2764)
+* [  TypeScript ](#tab-panel-2765)
 
 JavaScript
 
@@ -1286,6 +1324,8 @@ class RetryAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1360,12 +1400,14 @@ class RetryAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Self-destructing agents
 
 You can safely call `this.destroy()` from within a scheduled callback:
 
-* [  JavaScript ](#tab-panel-2746)
-* [  TypeScript ](#tab-panel-2747)
+* [  JavaScript ](#tab-panel-2752)
+* [  TypeScript ](#tab-panel-2753)
 
 JavaScript
 
@@ -1400,6 +1442,8 @@ class TemporaryAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1433,6 +1477,8 @@ class TemporaryAgent extends Agent {
 
 ```
 
+Explain Code
+
 Note
 
 When `destroy()` is called from within a scheduled task, the Agent SDK defers the destruction to ensure the scheduled callback completes successfully. The Agent instance will be evicted immediately after the callback finishes executing.
@@ -1445,8 +1491,8 @@ The SDK includes utilities for parsing natural language scheduling requests with
 
 Returns a system prompt for parsing natural language into scheduling parameters:
 
-* [  JavaScript ](#tab-panel-2760)
-* [  TypeScript ](#tab-panel-2761)
+* [  JavaScript ](#tab-panel-2766)
+* [  TypeScript ](#tab-panel-2767)
 
 JavaScript
 
@@ -1543,6 +1589,8 @@ class SmartScheduler extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1638,12 +1686,14 @@ class SmartScheduler extends Agent {
 
 ```
 
+Explain Code
+
 ### `scheduleSchema`
 
 A Zod schema for validating parsed scheduling data. Uses a discriminated union on `when.type` so each variant only contains the fields it needs:
 
-* [  JavaScript ](#tab-panel-2750)
-* [  TypeScript ](#tab-panel-2751)
+* [  JavaScript ](#tab-panel-2756)
+* [  TypeScript ](#tab-panel-2757)
 
 JavaScript
 
@@ -1673,6 +1723,8 @@ import { scheduleSchema } from "agents";
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1700,6 +1752,8 @@ import { scheduleSchema } from "agents";
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -1875,8 +1929,8 @@ Prevent the Durable Object from being evicted due to inactivity by creating a 30
 
 Always call the disposer when the work is done — otherwise the heartbeat continues indefinitely.
 
-* [  JavaScript ](#tab-panel-2748)
-* [  TypeScript ](#tab-panel-2749)
+* [  JavaScript ](#tab-panel-2754)
+* [  TypeScript ](#tab-panel-2755)
 
 JavaScript
 
@@ -1939,8 +1993,8 @@ Run an async function while keeping the Durable Object alive. The heartbeat is a
 
 This is the recommended way to use `keepAlive` — it guarantees cleanup.
 
-* [  JavaScript ](#tab-panel-2742)
-* [  TypeScript ](#tab-panel-2743)
+* [  JavaScript ](#tab-panel-2748)
+* [  TypeScript ](#tab-panel-2749)
 
 JavaScript
 
@@ -1986,8 +2040,8 @@ Durable Objects are evicted after a period of inactivity (typically 70-140 secon
 
 Each `keepAlive()` call returns an independent disposer:
 
-* [  JavaScript ](#tab-panel-2752)
-* [  TypeScript ](#tab-panel-2753)
+* [  JavaScript ](#tab-panel-2758)
+* [  TypeScript ](#tab-panel-2759)
 
 JavaScript
 

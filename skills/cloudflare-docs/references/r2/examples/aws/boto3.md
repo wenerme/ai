@@ -94,6 +94,8 @@ s3.delete_object(Bucket='my-bucket', Key='dog.png')
 
 ```
 
+Explain Code
+
 ## Generate presigned URLs
 
 You can also generate presigned links that can be used to share public read or write access to a bucket temporarily.
@@ -169,6 +171,8 @@ print(put_url)
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -254,6 +258,8 @@ put_url = s3.generate_presigned_url(
 
 
 ```
+
+Explain Code
 
 When a client uses this presigned URL, they must:
 

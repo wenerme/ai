@@ -112,14 +112,16 @@ wrangler.json
 
 ```
 
+Explain Code
+
 Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2).
 
 ## 3\. Build the data processor
 
 Replace `src/index.ts` with code that mounts R2 and processes data:
 
-* [  JavaScript ](#tab-panel-6493)
-* [  TypeScript ](#tab-panel-6494)
+* [  JavaScript ](#tab-panel-6537)
+* [  TypeScript ](#tab-panel-6538)
 
 JavaScript
 
@@ -317,6 +319,8 @@ Try this flow:
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -500,6 +504,8 @@ Try this flow:
 
 ```
 
+Explain Code
+
 Replace YOUR\_ACCOUNT\_ID
 
 Replace `YOUR_ACCOUNT_ID` in the endpoint URL with your Cloudflare account ID. Find it in the [dashboard ↗](https://dash.cloudflare.com/) under **R2** \> **Overview**.
@@ -583,6 +589,8 @@ curl https://YOUR_WORKER_URL/results
 
 
 ```
+
+Explain Code
 
 The key insight: After destroying the sandbox, the next request creates a new sandbox instance, mounts the same R2 bucket, and finds the data still there.
 

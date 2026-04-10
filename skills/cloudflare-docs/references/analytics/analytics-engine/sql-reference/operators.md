@@ -88,6 +88,8 @@ WHERE blob5 NOT ILIKE '%debug%'
 
 ```
 
+Explain Code
+
 ## Boolean operators
 
 | Operator | Description                                                          |

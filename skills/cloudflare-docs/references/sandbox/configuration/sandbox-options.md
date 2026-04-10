@@ -42,8 +42,8 @@ Keep the container alive indefinitely by preventing automatic shutdown. When `tr
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
-* [  JavaScript ](#tab-panel-6219)
-* [  TypeScript ](#tab-panel-6220)
+* [  JavaScript ](#tab-panel-6263)
+* [  TypeScript ](#tab-panel-6264)
 
 JavaScript
 
@@ -78,6 +78,8 @@ try {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -111,6 +113,8 @@ try {
 
 ```
 
+Explain Code
+
 Resource management with keepAlive
 
 When `keepAlive: true` is set, containers automatically send heartbeat pings to prevent eviction and will not automatically timeout. They must be explicitly destroyed using `destroy()` or disabled with `setKeepAlive(false)` to prevent containers running indefinitely and counting toward your account limits.
@@ -125,8 +129,8 @@ Bug fix in v0.2.17
 
 Prior to v0.2.17, the `sleepAfter` option passed to `getSandbox()` was ignored due to a timing issue. The option is now properly applied when creating sandbox instances.
 
-* [  JavaScript ](#tab-panel-6217)
-* [  TypeScript ](#tab-panel-6218)
+* [  JavaScript ](#tab-panel-6261)
+* [  TypeScript ](#tab-panel-6262)
 
 JavaScript
 
@@ -186,8 +190,8 @@ When `keepAlive: true` is set, `sleepAfter` is ignored and the sandbox never sle
 
 Configure timeouts for container startup operations.
 
-* [  JavaScript ](#tab-panel-6221)
-* [  TypeScript ](#tab-panel-6222)
+* [  JavaScript ](#tab-panel-6265)
+* [  TypeScript ](#tab-panel-6266)
 
 JavaScript
 
@@ -223,6 +227,8 @@ const sandbox2 = getSandbox(env.Sandbox, "user-env", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -257,6 +263,8 @@ const sandbox2 = getSandbox(env.Sandbox, 'user-env', {
 
 ```
 
+Explain Code
+
 **Available timeout options**:
 
 * `instanceGetTimeoutMS` \- How long to wait for Cloudflare to provision a new container instance. Increase during traffic spikes when many containers provision simultaneously. **Default**: `30000` (30 seconds)
@@ -280,8 +288,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 * `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
 * `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
 
-* [  wrangler.jsonc ](#tab-panel-6215)
-* [  wrangler.toml ](#tab-panel-6216)
+* [  wrangler.jsonc ](#tab-panel-6259)
+* [  wrangler.toml ](#tab-panel-6260)
 
 JSONC
 
@@ -329,8 +337,8 @@ Lowercase sandbox IDs when creating sandboxes. When `true`, the ID you provide i
 
 **Why this matters**: Preview URLs extract the sandbox ID from the hostname, which is always lowercase due to DNS case-insensitivity. Without normalization, a sandbox created with "MyProject-123" becomes unreachable via preview URL because the URL routing looks for "myproject-123" (different Durable Object).
 
-* [  JavaScript ](#tab-panel-6223)
-* [  TypeScript ](#tab-panel-6224)
+* [  JavaScript ](#tab-panel-6267)
+* [  TypeScript ](#tab-panel-6268)
 
 JavaScript
 
@@ -364,6 +372,8 @@ const sandbox2 = getSandbox(env.Sandbox, "MyProject-123", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -395,6 +405,8 @@ const sandbox2 = getSandbox(env.Sandbox, 'MyProject-123', {
 
 
 ```
+
+Explain Code
 
 Different normalizeId values = different sandboxes
 

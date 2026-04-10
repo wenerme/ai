@@ -76,6 +76,8 @@ To enable multi-user support on Windows, [deploy an MDM file](https://developers
 
 ```
 
+Explain Code
+
 To use multi-user mode alongside the [Windows pre-login](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/) and [Switch between Zero Trust organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) options:
 
 ```
@@ -138,6 +140,8 @@ To use multi-user mode alongside the [Windows pre-login](https://developers.clou
 
 
 ```
+
+Explain Code
 
 When enabling multi-user mode for the first time, users will need to re-register even if they had a previous registration.
 

@@ -99,8 +99,8 @@ After your new R2 bucket is ready, use it inside your Worker application.
 
 Use your R2 bucket inside your Worker project by modifying the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to include an R2 bucket [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Add the following R2 bucket binding to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7790)
-* [  wrangler.toml ](#tab-panel-7791)
+* [  wrangler.jsonc ](#tab-panel-7850)
+* [  wrangler.toml ](#tab-panel-7851)
 
 JSONC
 
@@ -200,6 +200,8 @@ export default {
 
 ```
 
+Explain Code
+
 The code written above fetches and returns data from the R2 bucket when a `GET` request is made to the Worker application using a specific URL path.
 
 ## Upload securely to an R2 bucket
@@ -272,6 +274,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 This approach ensures that only clients who provide a valid bearer token, via the `Authorization` header equal to the `AUTH_SECRET` value, will be permitted to upload to the R2 bucket. If you used a different binding name than `AUTH_SECRET`, replace it in the code above.
 

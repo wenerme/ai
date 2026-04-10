@@ -80,6 +80,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ## Check user identity
 
 Configure access on a per user or group basis by adding [identity-based conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to your policies.
@@ -128,6 +130,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Enforce device posture
 
@@ -181,6 +185,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 ```
@@ -209,6 +215,8 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_applicationaccess_allow
 
 
 ```
+
+Explain Code
 
 ## Enforce session duration
 
@@ -265,6 +273,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### 2\. Block all other traffic
 
 * [ Dashboard ](#tab-panel-3902)
@@ -310,6 +320,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Filter HTTPS traffic when inspecting on all ports
 
@@ -359,6 +371,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Restrict private network access to proxy endpoint users
 
@@ -416,6 +430,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
@@ -464,6 +480,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
@@ -519,6 +537,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
 #### 2\. Block all other proxy endpoint traffic to private network
@@ -567,6 +587,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 Replace `<PROXY_ENDPOINT_ID>` with your proxy endpoint ID.
 
@@ -623,6 +645,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### 2\. Block everyone else
 
 * [ Dashboard ](#tab-panel-3916)
@@ -668,6 +692,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Override IP address
 
@@ -737,6 +763,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/network-policies/","name":"Network policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/network-policies/common-policies/","name":"Common policies"}}]}

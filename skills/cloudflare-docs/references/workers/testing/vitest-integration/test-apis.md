@@ -76,7 +76,8 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
      await waitOnExecutionContext(ctx);  
      expect(await response.text()).toMatchInlineSnapshot(...);  
    });  
-   ```
+   ```  
+   Explain Code
 * `createScheduledController(options?:FetcherScheduledOptions)`: ScheduledController  
    * Creates an instance of `ScheduledController` for use as the first argument to modules-format [scheduled()](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) exported handlers.  
          
@@ -95,7 +96,8 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
      await worker.scheduled(ctrl, env, ctx);  
      await waitOnExecutionContext(ctx);  
    });  
-   ```
+   ```  
+   Explain Code
 * `createMessageBatch(queueName:string, messages:ServiceBindingQueueMessage[])`: MessageBatch  
    * Creates an instance of `MessageBatch` for use as the first argument to modules-format [queue()](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) exported handlers.
 * `getQueueResult(batch:MessageBatch, ctx:ExecutionContext)`: Promise<FetcherQueueResult>  
@@ -123,7 +125,8 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
      expect(result.explicitAcks).toStrictEqual(["message-1"]);  
      expect(result.retryMessages).toStrictEqual([]);  
    });  
-   ```
+   ```  
+   Explain Code
 
 ### Durable Objects
 
@@ -162,7 +165,8 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
      });  
      expect(await response.text()).toBe("2");  
    });  
-   ```
+   ```  
+   Explain Code
 * `runDurableObjectAlarm(stub:DurableObjectStub)`: Promise<boolean>  
    * Immediately runs and removes the Durable Object pointed to by `stub`'s alarm if one is scheduled. Returns `true` if an alarm ran, and `false` otherwise. Note this can only be used with `stub`s pointing to Durable Objects defined in the `main` Worker.
 * `listDurableObjectIds(namespace:DurableObjectNamespace)`: Promise<DurableObjectId\[\]>  
@@ -182,7 +186,8 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
      expect(ids.length).toBe(1);  
      expect(ids[0].equals(id)).toBe(true);  
    });  
-   ```
+   ```  
+   Explain Code
 
 ### D1
 
@@ -228,6 +233,7 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
      // 4. DISPOSE: is implicit and automatic here.  
    });  
    ```  
+   Explain Code  
    * The returned `WorkflowInstanceIntrospector` object has the following methods:  
          * `modify(fn: (m: WorkflowInstanceModifier) => Promise<void>): Promise<void>`: Applies modifications to the Workflow instance's behavior.  
          * `waitForStepResult(step: { name: string; index?: number }): Promise<unknown>`: Waits for a specific step to complete and returns a result. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to target a specific occurrence.  
@@ -265,6 +271,7 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
      // 4. DISPOSE: is implicit and automatic here.  
    });  
    ```  
+   Explain Code  
    The workflow instance doesn't have to be created directly inside the test. The introspector will capture **all** instances created after it is initialized. For example, you could trigger the creation of **one or multiple** instances via a single `fetch` event to your Worker:  
    JavaScript  
    ```  
@@ -337,6 +344,7 @@ Available in `@cloudflare/vitest-pool-workers` version **0.9.0**!
      }  
    });  
    ```  
+   Explain Code  
    When targeting a step, use its `name`. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to specify the occurrence.
 
 ```json

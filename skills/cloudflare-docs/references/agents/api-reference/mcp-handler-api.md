@@ -115,6 +115,8 @@ interface CreateMcpHandlerOptions extends WorkerTransportOptions {
 
 ```
 
+Explain Code
+
 #### Options
 
 ##### route
@@ -123,8 +125,8 @@ The URL path where the MCP handler responds. Requests to other paths return a 40
 
 **Default:** `"/mcp"`
 
-* [  JavaScript ](#tab-panel-2472)
-* [  TypeScript ](#tab-panel-2473)
+* [  JavaScript ](#tab-panel-2478)
+* [  TypeScript ](#tab-panel-2479)
 
 JavaScript
 
@@ -162,8 +164,8 @@ When using the [OAuthProvider](https://developers.cloudflare.com/agents/model-co
 
 A custom `WorkerTransport` instance. If not provided, a new transport is created on every request.
 
-* [  JavaScript ](#tab-panel-2474)
-* [  TypeScript ](#tab-panel-2475)
+* [  JavaScript ](#tab-panel-2480)
+* [  TypeScript ](#tab-panel-2481)
 
 JavaScript
 
@@ -192,6 +194,8 @@ const handler = createMcpHandler(server, { transport });
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -219,6 +223,8 @@ const handler = createMcpHandler(server, { transport });
 
 ```
 
+Explain Code
+
 ## Stateless MCP Servers
 
 Many MCP Servers are stateless, meaning they do not maintain any session state between requests. The `createMcpHandler` function is a lightweight alternative to the `McpAgent` class that can be used to serve an MCP server straight from a Worker. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
@@ -233,8 +239,8 @@ MCP SDK 1.26.0 introduces a guard that prevents connecting to a server instance 
 
 See the [migration guide](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/#migration-guide-for-mcp-sdk-1260) below for details.
 
-* [  JavaScript ](#tab-panel-2494)
-* [  TypeScript ](#tab-panel-2495)
+* [  JavaScript ](#tab-panel-2500)
+* [  TypeScript ](#tab-panel-2501)
 
 JavaScript
 
@@ -311,6 +317,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -386,6 +394,8 @@ export default {
 
 ```
 
+Explain Code
+
 Each request to this MCP server creates a new session and server instance. The server does not maintain state between requests. This is the simplest way to implement an MCP server.
 
 ## Stateful MCP Servers
@@ -394,8 +404,8 @@ For stateful MCP servers that need to maintain session state across multiple req
 
 Provide a custom `WorkerTransport` with persistent storage. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation).
 
-* [  JavaScript ](#tab-panel-2496)
-* [  TypeScript ](#tab-panel-2497)
+* [  JavaScript ](#tab-panel-2502)
+* [  TypeScript ](#tab-panel-2503)
 
 JavaScript
 
@@ -459,6 +469,8 @@ export class MyStatefulMcpAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -534,10 +546,12 @@ export class MyStatefulMcpAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 In this case we are defining the `sessionIdGenerator` to return the Agent name as the session ID. To make sure we route to the correct Agent we can use `getAgentByName` in the Worker handler:
 
-* [  JavaScript ](#tab-panel-2480)
-* [  TypeScript ](#tab-panel-2481)
+* [  JavaScript ](#tab-panel-2486)
+* [  TypeScript ](#tab-panel-2487)
 
 JavaScript
 
@@ -573,6 +587,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -607,6 +623,8 @@ export default {
 
 ```
 
+Explain Code
+
 With persistent storage, the transport preserves:
 
 * Session ID across reconnections
@@ -633,103 +651,6 @@ The previous pattern of declaring `McpServer` instances in the global scope allo
 
 ### Before (broken with SDK 1.26.0)
 
-* [  JavaScript ](#tab-panel-2486)
-* [  TypeScript ](#tab-panel-2487)
-
-JavaScript
-
-```
-
-import { createMcpHandler } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-
-// INCORRECT: Global server instance
-
-const server = new McpServer({
-
-  name: "Hello MCP Server",
-
-  version: "1.0.0",
-
-});
-
-
-server.tool("hello", "Returns a greeting", {}, async () => {
-
-  return {
-
-    content: [{ text: "Hello, World!", type: "text" }],
-
-  };
-
-});
-
-
-export default {
-
-  fetch: async (request, env, ctx) => {
-
-    // This will fail on second request with MCP SDK 1.26.0+
-
-    return createMcpHandler(server)(request, env, ctx);
-
-  },
-
-};
-
-
-```
-
-TypeScript
-
-```
-
-import { createMcpHandler } from "agents/mcp";
-
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-
-
-// INCORRECT: Global server instance
-
-const server = new McpServer({
-
-  name: "Hello MCP Server",
-
-  version: "1.0.0",
-
-});
-
-
-server.tool("hello", "Returns a greeting", {}, async () => {
-
-  return {
-
-    content: [{ text: "Hello, World!", type: "text" }],
-
-  };
-
-});
-
-
-export default {
-
-  fetch: async (request: Request, env: Env, ctx: ExecutionContext) => {
-
-    // This will fail on second request with MCP SDK 1.26.0+
-
-    return createMcpHandler(server)(request, env, ctx);
-
-  },
-
-} satisfies ExportedHandler<Env>;
-
-
-```
-
-### After (correct)
-
 * [  JavaScript ](#tab-panel-2492)
 * [  TypeScript ](#tab-panel-2493)
 
@@ -742,6 +663,107 @@ import { createMcpHandler } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 
 
+// INCORRECT: Global server instance
+
+const server = new McpServer({
+
+  name: "Hello MCP Server",
+
+  version: "1.0.0",
+
+});
+
+
+server.tool("hello", "Returns a greeting", {}, async () => {
+
+  return {
+
+    content: [{ text: "Hello, World!", type: "text" }],
+
+  };
+
+});
+
+
+export default {
+
+  fetch: async (request, env, ctx) => {
+
+    // This will fail on second request with MCP SDK 1.26.0+
+
+    return createMcpHandler(server)(request, env, ctx);
+
+  },
+
+};
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+import { createMcpHandler } from "agents/mcp";
+
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+
+// INCORRECT: Global server instance
+
+const server = new McpServer({
+
+  name: "Hello MCP Server",
+
+  version: "1.0.0",
+
+});
+
+
+server.tool("hello", "Returns a greeting", {}, async () => {
+
+  return {
+
+    content: [{ text: "Hello, World!", type: "text" }],
+
+  };
+
+});
+
+
+export default {
+
+  fetch: async (request: Request, env: Env, ctx: ExecutionContext) => {
+
+    // This will fail on second request with MCP SDK 1.26.0+
+
+    return createMcpHandler(server)(request, env, ctx);
+
+  },
+
+} satisfies ExportedHandler<Env>;
+
+
+```
+
+Explain Code
+
+### After (correct)
+
+* [  JavaScript ](#tab-panel-2498)
+* [  TypeScript ](#tab-panel-2499)
+
+JavaScript
+
+```
+
+import { createMcpHandler } from "agents/mcp";
+
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+
 // CORRECT: Factory function to create server instance
 
 function createServer() {
@@ -787,6 +809,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -843,12 +867,14 @@ export default {
 
 ```
 
+Explain Code
+
 ### For raw SDK transport users
 
 If you are using the raw SDK transport directly (not via `createMcpHandler`), you must also create new transport instances per request:
 
-* [  JavaScript ](#tab-panel-2490)
-* [  TypeScript ](#tab-panel-2491)
+* [  JavaScript ](#tab-panel-2496)
+* [  TypeScript ](#tab-panel-2497)
 
 JavaScript
 
@@ -899,6 +925,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -948,6 +976,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### WorkerTransport
 
 The `WorkerTransport` class implements the MCP Transport interface, handling HTTP request/response cycles, Server-Sent Events (SSE) streaming, session management, and CORS.
@@ -996,6 +1026,8 @@ class WorkerTransport implements Transport {
 
 
 ```
+
+Explain Code
 
 #### Constructor Options
 
@@ -1068,12 +1100,14 @@ interface WorkerTransportOptions {
 
 ```
 
+Explain Code
+
 #### sessionIdGenerator
 
 Provides a custom session identifier. This session identifier is used to identify the session in the MCP Client.
 
-* [  JavaScript ](#tab-panel-2476)
-* [  TypeScript ](#tab-panel-2477)
+* [  JavaScript ](#tab-panel-2482)
+* [  TypeScript ](#tab-panel-2483)
 
 JavaScript
 
@@ -1105,8 +1139,8 @@ const transport = new WorkerTransport({
 
 Disables SSE streaming and returns responses as standard JSON.
 
-* [  JavaScript ](#tab-panel-2478)
-* [  TypeScript ](#tab-panel-2479)
+* [  JavaScript ](#tab-panel-2484)
+* [  TypeScript ](#tab-panel-2485)
 
 JavaScript
 
@@ -1138,8 +1172,8 @@ const transport = new WorkerTransport({
 
 A callback that fires when a session is initialized, either by creating a new session or restoring from storage.
 
-* [  JavaScript ](#tab-panel-2482)
-* [  TypeScript ](#tab-panel-2483)
+* [  JavaScript ](#tab-panel-2488)
+* [  TypeScript ](#tab-panel-2489)
 
 JavaScript
 
@@ -1200,8 +1234,8 @@ interface CORSOptions {
 
 ```
 
-* [  JavaScript ](#tab-panel-2484)
-* [  TypeScript ](#tab-panel-2485)
+* [  JavaScript ](#tab-panel-2490)
+* [  TypeScript ](#tab-panel-2491)
 
 JavaScript
 
@@ -1279,8 +1313,10 @@ interface TransportState {
 
 ```
 
-* [  JavaScript ](#tab-panel-2488)
-* [  TypeScript ](#tab-panel-2489)
+Explain Code
+
+* [  JavaScript ](#tab-panel-2494)
+* [  TypeScript ](#tab-panel-2495)
 
 JavaScript
 
@@ -1311,6 +1347,8 @@ const transport = new WorkerTransport({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1339,6 +1377,8 @@ const transport = new WorkerTransport({
 
 
 ```
+
+Explain Code
 
 ## Authentication Context
 
@@ -1373,8 +1413,8 @@ function getMcpAuthContext(): McpAuthContext | undefined;
 
 ```
 
-* [  JavaScript ](#tab-panel-2500)
-* [  TypeScript ](#tab-panel-2501)
+* [  JavaScript ](#tab-panel-2506)
+* [  TypeScript ](#tab-panel-2507)
 
 JavaScript
 
@@ -1425,6 +1465,8 @@ function createServer() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1474,6 +1516,8 @@ function createServer() {
 
 ```
 
+Explain Code
+
 Note
 
 For a complete guide on setting up OAuth authentication with MCP servers, see the [MCP Authorization documentation](https://developers.cloudflare.com/agents/model-context-protocol/authorization/). View the [complete authenticated MCP server in a Worker example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
@@ -1482,8 +1526,8 @@ For a complete guide on setting up OAuth authentication with MCP servers, see th
 
 The `createMcpHandler` automatically catches errors and returns JSON-RPC error responses with code `-32603` (Internal error).
 
-* [  JavaScript ](#tab-panel-2498)
-* [  TypeScript ](#tab-panel-2499)
+* [  JavaScript ](#tab-panel-2504)
+* [  TypeScript ](#tab-panel-2505)
 
 JavaScript
 
@@ -1527,6 +1571,8 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1568,6 +1614,8 @@ server.tool("riskyOperation", "An operation that might fail", {}, async () => {
 
 
 ```
+
+Explain Code
 
 ## Related Resources
 

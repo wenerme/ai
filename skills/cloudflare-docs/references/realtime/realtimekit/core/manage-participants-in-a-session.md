@@ -508,6 +508,8 @@ meeting.addParticipantsEventListener(ParticipantsEventsListener());
 
 ```
 
+Explain Code
+
 1. Check that the local participant has permission to mute other participants' audio.
 
 ```
@@ -880,6 +882,8 @@ meeting.addParticipantsEventListener(ParticipantsEventsListener());
 
 
 ```
+
+Explain Code
 
 1. Check that the local participant has permission to mute other participants' audio.
 
@@ -1258,6 +1262,8 @@ meeting.addParticipantsEventListener(ParticipantsEventsListener());
 
 ```
 
+Explain Code
+
 1. Check that the local participant has permission to disable other participants' video.
 
 ```
@@ -1630,6 +1636,8 @@ meeting.addParticipantsEventListener(ParticipantsEventsListener());
 
 
 ```
+
+Explain Code
 
 1. Check that the local participant has permission to disable other participants' video.
 
@@ -2017,6 +2025,8 @@ meeting.addParticipantsEventListener(ParticipantsEventsListener());
 
 ```
 
+Explain Code
+
 1. Check that the local participant has permission to pin participants.
 
 ```
@@ -2381,6 +2391,8 @@ meeting.addParticipantsEventListener(ParticipantsEventsListener());
 
 
 ```
+
+Explain Code
 
 1. Check that the local participant has permission to unpin participants.
 

@@ -118,6 +118,8 @@ export default {
 
 ```
 
+Explain Code
+
 You want to find which part of the code causes slow response times. How do you use DevTool profiling to identify the CPU-heavy code and fix the issue?
 
 First, as mentioned above, you open DevTools by pressing the `D` key after running `wrangler dev`. Then, you navigate to the "Profiler" tab and take a profile by pressing `Start` and sending a request.

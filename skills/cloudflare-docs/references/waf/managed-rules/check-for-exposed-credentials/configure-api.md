@@ -112,6 +112,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
+Explain Code
+
 The response returns the created ruleset. Note the presence of the `exposed_credential_check` object on the rule definition.
 
 ```
@@ -178,6 +180,8 @@ The response returns the created ruleset. Note the presence of the `exposed_cred
 
 
 ```
+
+Explain Code
 
 The example uses the `url_decode()` function because fields in the request body (available in `http.request.body.form`) are URL-encoded when the content type is `application/x-www-form-urlencoded`.
 
@@ -255,6 +259,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 
 ```
+
+Explain Code
 
 The response returns the created ruleset. Note the presence of the following elements in the rule definition:
 
@@ -342,6 +348,8 @@ The response returns the created ruleset. Note the presence of the following ele
 
 
 ```
+
+Explain Code
 
 After creating the custom ruleset, deploy it to a phase so that it executes. You will need the ruleset ID to deploy the custom ruleset. For more information, refer to [Deploy a custom ruleset](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/deploy-custom-ruleset/).
 

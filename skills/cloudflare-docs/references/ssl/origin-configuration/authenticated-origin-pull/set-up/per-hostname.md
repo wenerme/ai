@@ -85,8 +85,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload custom certificate
 
-* [ Dashboard ](#tab-panel-6587)
-* [ API ](#tab-panel-6588)
+* [ Dashboard ](#tab-panel-6625)
+* [ API ](#tab-panel-6626)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -149,6 +149,8 @@ curl --silent \
 
 ```
 
+Explain Code
+
 In the API response, save the certificate `id` since it will be required in step 3.
 
 ## 2\. Configure origin to accept client certificates
@@ -185,8 +187,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-* [ Dashboard ](#tab-panel-6585)
-* [ API ](#tab-panel-6586)
+* [ Dashboard ](#tab-panel-6623)
+* [ API ](#tab-panel-6624)
 
 Note
 

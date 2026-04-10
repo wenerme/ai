@@ -20,8 +20,8 @@ Callable methods let clients invoke agent methods over WebSocket using RPC (Remo
 
 ## Overview
 
-* [  JavaScript ](#tab-panel-2124)
-* [  TypeScript ](#tab-panel-2125)
+* [  JavaScript ](#tab-panel-2130)
+* [  TypeScript ](#tab-panel-2131)
 
 JavaScript
 
@@ -67,8 +67,8 @@ export class MyAgent extends Agent {
 
 ```
 
-* [  JavaScript ](#tab-panel-2122)
-* [  TypeScript ](#tab-panel-2123)
+* [  JavaScript ](#tab-panel-2128)
+* [  TypeScript ](#tab-panel-2129)
 
 JavaScript
 
@@ -122,8 +122,8 @@ The `@callable()` decorator is specifically for WebSocket-based RPC from externa
 
 Add the `@callable()` decorator to any method you want to expose:
 
-* [  JavaScript ](#tab-panel-2142)
-* [  TypeScript ](#tab-panel-2143)
+* [  JavaScript ](#tab-panel-2148)
+* [  TypeScript ](#tab-panel-2149)
 
 JavaScript
 
@@ -188,6 +188,8 @@ export class CounterAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -262,14 +264,16 @@ export class CounterAgent extends Agent<Env, CounterState> {
 
 ```
 
+Explain Code
+
 ### Calling from the client
 
 There are two ways to call methods from the client:
 
 #### Using `agent.stub` (recommended):
 
-* [  JavaScript ](#tab-panel-2126)
-* [  TypeScript ](#tab-panel-2127)
+* [  JavaScript ](#tab-panel-2132)
+* [  TypeScript ](#tab-panel-2133)
 
 JavaScript
 
@@ -303,8 +307,8 @@ const stats = await agent.stub.getStats();
 
 #### Using `agent.call()`:
 
-* [  JavaScript ](#tab-panel-2128)
-* [  TypeScript ](#tab-panel-2129)
+* [  JavaScript ](#tab-panel-2134)
+* [  TypeScript ](#tab-panel-2135)
 
 JavaScript
 
@@ -344,8 +348,8 @@ The `stub` proxy provides better ergonomics and TypeScript support.
 
 Arguments and return values must be JSON-serializable:
 
-* [  JavaScript ](#tab-panel-2134)
-* [  TypeScript ](#tab-panel-2135)
+* [  JavaScript ](#tab-panel-2140)
+* [  TypeScript ](#tab-panel-2141)
 
 JavaScript
 
@@ -388,6 +392,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -429,12 +435,14 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Async methods
 
 Both sync and async methods work:
 
-* [  JavaScript ](#tab-panel-2136)
-* [  TypeScript ](#tab-panel-2137)
+* [  JavaScript ](#tab-panel-2142)
+* [  TypeScript ](#tab-panel-2143)
 
 JavaScript
 
@@ -474,6 +482,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -512,12 +522,14 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Void methods
 
 Methods that do not return a value:
 
-* [  JavaScript ](#tab-panel-2132)
-* [  TypeScript ](#tab-panel-2133)
+* [  JavaScript ](#tab-panel-2138)
+* [  TypeScript ](#tab-panel-2139)
 
 JavaScript
 
@@ -559,8 +571,8 @@ class MyAgent extends Agent {
 
 On the client, these still return a Promise that resolves when the method completes:
 
-* [  JavaScript ](#tab-panel-2130)
-* [  TypeScript ](#tab-panel-2131)
+* [  JavaScript ](#tab-panel-2136)
+* [  TypeScript ](#tab-panel-2137)
 
 JavaScript
 
@@ -590,8 +602,8 @@ For methods that produce data over time (like AI text generation), use streaming
 
 ### Defining a streaming method
 
-* [  JavaScript ](#tab-panel-2144)
-* [  TypeScript ](#tab-panel-2145)
+* [  JavaScript ](#tab-panel-2150)
+* [  TypeScript ](#tab-panel-2151)
 
 JavaScript
 
@@ -642,6 +654,8 @@ export class AIAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -691,10 +705,12 @@ export class AIAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Consuming streams on the client
 
-* [  JavaScript ](#tab-panel-2152)
-* [  TypeScript ](#tab-panel-2153)
+* [  JavaScript ](#tab-panel-2158)
+* [  TypeScript ](#tab-panel-2159)
 
 JavaScript
 
@@ -750,6 +766,8 @@ await agent.call("generateText", [prompt], {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -804,6 +822,8 @@ await agent.call("generateText", [prompt], {
 
 ```
 
+Explain Code
+
 ### StreamingResponse API
 
 | Method           | Description                                      |
@@ -812,8 +832,8 @@ await agent.call("generateText", [prompt], {
 | end(finalChunk?) | End the stream, optionally with a final value    |
 | error(message)   | Send an error to the client and close the stream |
 
-* [  JavaScript ](#tab-panel-2138)
-* [  TypeScript ](#tab-panel-2139)
+* [  JavaScript ](#tab-panel-2144)
+* [  TypeScript ](#tab-panel-2145)
 
 JavaScript
 
@@ -842,6 +862,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -869,14 +891,16 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## TypeScript integration
 
 ### Typed client calls
 
 Pass your agent class as a type parameter for full type safety:
 
-* [  JavaScript ](#tab-panel-2150)
-* [  TypeScript ](#tab-panel-2151)
+* [  JavaScript ](#tab-panel-2156)
+* [  TypeScript ](#tab-panel-2157)
 
 JavaScript
 
@@ -916,6 +940,8 @@ function App() {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -959,12 +985,14 @@ function App() {
 
 ```
 
+Explain Code
+
 ### Excluding non-callable methods
 
 If you have methods that are not decorated with `@callable()`, you can exclude them from the type:
 
-* [  JavaScript ](#tab-panel-2156)
-* [  TypeScript ](#tab-panel-2157)
+* [  JavaScript ](#tab-panel-2162)
+* [  TypeScript ](#tab-panel-2163)
 
 JavaScript
 
@@ -1008,6 +1036,8 @@ agent.stub.publicMethod(); // Works
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1050,14 +1080,16 @@ agent.stub.publicMethod(); // Works
 
 ```
 
+Explain Code
+
 ## Error handling
 
 ### Throwing errors in callable methods
 
 Errors thrown in callable methods are propagated to the client:
 
-* [  JavaScript ](#tab-panel-2146)
-* [  TypeScript ](#tab-panel-2147)
+* [  JavaScript ](#tab-panel-2152)
+* [  TypeScript ](#tab-panel-2153)
 
 JavaScript
 
@@ -1093,6 +1125,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1127,10 +1161,12 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Client-side error handling
 
-* [  JavaScript ](#tab-panel-2140)
-* [  TypeScript ](#tab-panel-2141)
+* [  JavaScript ](#tab-panel-2146)
+* [  TypeScript ](#tab-panel-2147)
 
 JavaScript
 
@@ -1174,8 +1210,8 @@ try {
 
 For streaming methods, use the `onError` callback:
 
-* [  JavaScript ](#tab-panel-2148)
-* [  TypeScript ](#tab-panel-2149)
+* [  JavaScript ](#tab-panel-2154)
+* [  TypeScript ](#tab-panel-2155)
 
 JavaScript
 
@@ -1204,6 +1240,8 @@ await agent.call("streamData", [input], {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1231,10 +1269,12 @@ await agent.call("streamData", [input], {
 
 ```
 
+Explain Code
+
 Server-side, you can use `stream.error()` to gracefully send an error mid-stream:
 
-* [  JavaScript ](#tab-panel-2158)
-* [  TypeScript ](#tab-panel-2159)
+* [  JavaScript ](#tab-panel-2164)
+* [  TypeScript ](#tab-panel-2165)
 
 JavaScript
 
@@ -1273,6 +1313,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1310,12 +1352,14 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Connection errors
 
 If the WebSocket connection closes while RPC calls are pending, they automatically reject with a "Connection closed" error:
 
-* [  JavaScript ](#tab-panel-2154)
-* [  TypeScript ](#tab-panel-2155)
+* [  JavaScript ](#tab-panel-2160)
+* [  TypeScript ](#tab-panel-2161)
 
 JavaScript
 
@@ -1367,8 +1411,8 @@ try {
 
 The client automatically reconnects after disconnection. To retry a failed call after reconnection, await `agent.ready` before retrying:
 
-* [  JavaScript ](#tab-panel-2164)
-* [  TypeScript ](#tab-panel-2165)
+* [  JavaScript ](#tab-panel-2170)
+* [  TypeScript ](#tab-panel-2171)
 
 JavaScript
 
@@ -1403,6 +1447,8 @@ const result = await callWithRetry(agent, "processData", [data]);
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1446,6 +1492,8 @@ const result = await callWithRetry(agent, "processData", [data]);
 
 ```
 
+Explain Code
+
 Note
 
 Only retry idempotent operations. If the server received the request but the connection dropped before the response arrived, retrying could cause duplicate execution.
@@ -1456,8 +1504,8 @@ Only retry idempotent operations. If the server received the request but the con
 
 When calling an agent from the same Worker (for example, in your `fetch` handler), use Durable Object RPC directly:
 
-* [  JavaScript ](#tab-panel-2160)
-* [  TypeScript ](#tab-panel-2161)
+* [  JavaScript ](#tab-panel-2166)
+* [  TypeScript ](#tab-panel-2167)
 
 JavaScript
 
@@ -1489,6 +1537,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1519,12 +1569,14 @@ export default {
 
 ```
 
+Explain Code
+
 ### Agent-to-Agent calls
 
 When one agent needs to call another:
 
-* [  JavaScript ](#tab-panel-2162)
-* [  TypeScript ](#tab-panel-2163)
+* [  JavaScript ](#tab-panel-2168)
+* [  TypeScript ](#tab-panel-2169)
 
 JavaScript
 
@@ -1553,6 +1605,8 @@ class OrchestratorAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1580,6 +1634,8 @@ class OrchestratorAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Why the distinction?
 
 | RPC Type           | Transport | Use Case                          |
@@ -1595,8 +1651,8 @@ Durable Object RPC is more efficient for internal calls since it does not go thr
 
 Marks a method as callable from external clients.
 
-* [  JavaScript ](#tab-panel-2166)
-* [  TypeScript ](#tab-panel-2167)
+* [  JavaScript ](#tab-panel-2172)
+* [  TypeScript ](#tab-panel-2173)
 
 JavaScript
 
@@ -1626,6 +1682,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1654,6 +1712,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### CallableMetadata type
 
 TypeScript
@@ -1679,8 +1739,8 @@ type CallableMetadata = {
 
 Used in streaming callable methods to send data to the client.
 
-* [  JavaScript ](#tab-panel-2168)
-* [  TypeScript ](#tab-panel-2169)
+* [  JavaScript ](#tab-panel-2174)
+* [  TypeScript ](#tab-panel-2175)
 
 JavaScript
 
@@ -1708,6 +1768,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1734,6 +1796,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 | Method | Signature                      | Description                        |
 | ------ | ------------------------------ | ---------------------------------- |
 | send   | (chunk: unknown) => void       | Send a chunk to the client         |
@@ -1747,8 +1811,8 @@ class MyAgent extends Agent {
 | agent.call | (method, args?, options?) => Promise | Call a method by name |
 | agent.stub | Proxy                                | Typed method calls    |
 
-* [  JavaScript ](#tab-panel-2172)
-* [  TypeScript ](#tab-panel-2173)
+* [  JavaScript ](#tab-panel-2178)
+* [  TypeScript ](#tab-panel-2179)
 
 JavaScript
 
@@ -1777,6 +1841,8 @@ await agent.stub.methodName(arg1, arg2);
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1803,6 +1869,8 @@ await agent.stub.methodName(arg1, arg2);
 
 
 ```
+
+Explain Code
 
 ### CallOptions type
 
@@ -1833,6 +1901,8 @@ type CallOptions = {
 
 ```
 
+Explain Code
+
 Note
 
 The legacy format `{ onChunk, onDone, onError }` (without nesting under `stream`) is still supported. The client automatically detects which format you are using.
@@ -1841,8 +1911,8 @@ The legacy format `{ onChunk, onDone, onError }` (without nesting under `stream`
 
 Returns a map of all callable methods on the agent with their metadata. Useful for introspection and automatic documentation.
 
-* [  JavaScript ](#tab-panel-2170)
-* [  TypeScript ](#tab-panel-2171)
+* [  JavaScript ](#tab-panel-2176)
+* [  TypeScript ](#tab-panel-2177)
 
 JavaScript
 

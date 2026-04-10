@@ -67,6 +67,8 @@ export default {
 
 ```
 
+Explain Code
+
 Note
 
 Cloudflare Workers does not support `WebAssembly.instantiateStreaming()`.

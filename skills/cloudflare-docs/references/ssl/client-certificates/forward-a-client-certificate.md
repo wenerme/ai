@@ -193,6 +193,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/se
 
 ```
 
+Explain Code
+
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
 
 * `Cf-Client-Cert-Der-Base64`
@@ -238,6 +240,8 @@ const tlsHeaders = {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/client-certificates/","name":"Client certificates (mTLS)"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/client-certificates/forward-a-client-certificate/","name":"Forward certificate to server"}}]}

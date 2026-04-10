@@ -125,6 +125,8 @@ You will then receive a response similar to this:
 
 ```
 
+Explain Code
+
 Now that you have uploaded your image, you will use it as the background image for your video's thumbnail.
 
 ## Create a Worker to transform text to image
@@ -186,6 +188,8 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 
 ```
 
+Explain Code
+
 1. Update the `Cargo.toml` file in your `worker-to-text` project directory to use [text-to-png ↗](https://github.com/RookAndPawn/text-to-png), a Rust package for rendering text to PNG. Add the package as a dependency by running:
 
 Terminal window
@@ -232,6 +236,8 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 
 ```
 
+Explain Code
+
 1. Update `lib.rs` to create a `handle-slash` function that will activate the image transformation based on the text passed to the URL as a query parameter.
 
 ```
@@ -269,6 +275,8 @@ async fn handle_slash(text: String) -> Result<Response> {}
 
 
 ```
+
+Explain Code
 
 1. In the `handle-slash` function, call the `TextRenderer` by assigning it to a renderer value, specifying that you want to use a custom font. Then, use the `render_text_to_png_data` method to transform the text into image format. In this example, the custom font (`Inter-Bold.ttf`) is located in an `/assets` folder at the root of the project which will be used for generating the thumbnail. You must update this portion of the code to point to your custom font file.
 
@@ -316,6 +324,8 @@ async fn handle_slash(text: String) -> Result<Response> {
 
 
 ```
+
+Explain Code
 
 1. Rewrite the `Router` function to call `handle_slash` when a query is passed in the URL, otherwise return the `"Hello Worker!"` as the response.
 
@@ -375,6 +385,8 @@ async fn handle_slash(text: String) -> Result<Response> {
 
 
 ```
+
+Explain Code
 
 1. In your `lib.rs` file, set the headers to `content-type: image/png` so that the response is correctly rendered as a PNG image.
 
@@ -442,6 +454,8 @@ async fn handle_slash(text: String) -> Result<Response> {
 
 
 ```
+
+Explain Code
 
 The final `lib.rs` file should look as follows. Find the full code as an example repository on [GitHub ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/examples/worker-to-text).
 
@@ -526,6 +540,8 @@ async fn handle_slash(text: String) -> Result<Response> {
 
 ```
 
+Explain Code
+
 After you have finished updating your project, start a local server for developing your Worker by running:
 
 Terminal window
@@ -547,8 +563,8 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-7770)
-* [  wrangler.toml ](#tab-panel-7771)
+* [  wrangler.jsonc ](#tab-panel-7830)
+* [  wrangler.toml ](#tab-panel-7831)
 
 JSONC
 
@@ -659,6 +675,8 @@ export default {
 
 ```
 
+Explain Code
+
 Update `env.CLOUDFLARE_ACCOUNT_HASH` with your [Cloudflare account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/). Update `env.IMAGE_ID` with your [image ID](https://developers.cloudflare.com/images/get-started/).
 
 Run your Worker and go to the `/original-image` route to review your image.
@@ -703,6 +721,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Next, use the `fetch` method to apply the image transformation changes on top of the background image. The overlay options are nested in `options.cf.image`.
 
@@ -753,6 +773,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 The `imageURL` is the URL of the image you want to use as a background image. In the `cf.image` object, specify the options you want to apply to the background image.
 
@@ -826,12 +848,14 @@ fetch(imageURL, {
 
 ```
 
+Explain Code
+
 Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-7772)
-* [  wrangler.toml ](#tab-panel-7773)
+* [  wrangler.jsonc ](#tab-panel-7832)
+* [  wrangler.toml ](#tab-panel-7833)
 
 JSONC
 
@@ -928,6 +952,8 @@ for (const title of url.searchParams.values()) {
 
 
 ```
+
+Explain Code
 
 This will always return the text you pass as a query string in the generated image. This example URL, [https://socialcard.cdnuptime.com/thumbnail?Getting%20Started%20With%20Cloudflare%20Images ↗](https://socialcard.cdnuptime.com/thumbnail?Getting%20Started%20With%20Cloudflare%20Images), will generate the following image:
 

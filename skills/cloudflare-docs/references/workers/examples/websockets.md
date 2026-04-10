@@ -63,8 +63,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-7405)
-* [  Rust ](#tab-panel-7406)
+* [  JavaScript ](#tab-panel-7443)
+* [  Rust ](#tab-panel-7444)
 
 JavaScript
 
@@ -113,10 +113,12 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 ```
 
+Explain Code
+
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-7407)
-* [  Rust ](#tab-panel-7408)
+* [  JavaScript ](#tab-panel-7445)
+* [  Rust ](#tab-panel-7446)
 
 JavaScript
 
@@ -152,6 +154,8 @@ async function handleRequest(request) {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -194,12 +198,14 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 ```
 
+Explain Code
+
 The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys each holding a `WebSocket` instance as its value. It is common to grab the two WebSockets from this pair using [Object.values ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5Fobjects/Object/values) and [ES6 destructuring ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring%5Fassignment), as seen in the below example.
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-7409)
-* [  Rust ](#tab-panel-7410)
+* [  JavaScript ](#tab-panel-7447)
+* [  Rust ](#tab-panel-7448)
 
 JavaScript
 
@@ -237,6 +243,8 @@ async function handleRequest(request) {
 
 ```
 
+Explain Code
+
 ```
 
 use worker::*;
@@ -278,11 +286,13 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 ```
 
+Explain Code
+
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-7411)
-* [  Rust ](#tab-panel-7412)
-* [  Hono ](#tab-panel-7413)
+* [  JavaScript ](#tab-panel-7449)
+* [  Rust ](#tab-panel-7450)
+* [  Hono ](#tab-panel-7451)
 
 JavaScript
 
@@ -325,6 +335,8 @@ async function handleRequest(request) {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -387,6 +399,8 @@ async fn fetch(req: HttpRequest, _env: Env, _ctx: Context) -> Result<worker::Res
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -438,6 +452,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ### Connect to the WebSocket server from a client
 
@@ -555,6 +571,8 @@ async function websocket(url) {
 
 
 ```
+
+Explain Code
 
 ## WebSocket close behavior
 

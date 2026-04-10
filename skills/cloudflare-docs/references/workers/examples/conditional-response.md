@@ -30,10 +30,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7243)
-* [  TypeScript ](#tab-panel-7244)
-* [  Python ](#tab-panel-7245)
-* [  Hono ](#tab-panel-7246)
+* [  JavaScript ](#tab-panel-7301)
+* [  TypeScript ](#tab-panel-7302)
+* [  Python ](#tab-panel-7303)
+* [  Hono ](#tab-panel-7304)
 
 JavaScript
 
@@ -130,6 +130,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -225,6 +227,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -308,6 +312,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -436,6 +442,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/conditional-response/","name":"Conditional response"}}]}

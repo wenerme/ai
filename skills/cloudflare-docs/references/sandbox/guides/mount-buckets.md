@@ -33,8 +33,8 @@ Mount S3-compatible buckets when you need:
 
 ## Mount an R2 bucket
 
-* [  JavaScript ](#tab-panel-6435)
-* [  TypeScript ](#tab-panel-6436)
+* [  JavaScript ](#tab-panel-6479)
+* [  TypeScript ](#tab-panel-6480)
 
 JavaScript
 
@@ -87,6 +87,8 @@ df.describe().to_csv('/data/summary.csv')
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -128,6 +130,8 @@ df.describe().to_csv('/data/summary.csv')
 
 ```
 
+Explain Code
+
 Mounting affects entire sandbox
 
 Mounted buckets are visible across all sessions since they share the filesystem. Mount once per sandbox.
@@ -153,8 +157,8 @@ R2 credentials
 
 We also automatically detect `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` for compatibility with other S3-compatible providers.
 
-* [  JavaScript ](#tab-panel-6421)
-* [  TypeScript ](#tab-panel-6422)
+* [  JavaScript ](#tab-panel-6465)
+* [  TypeScript ](#tab-panel-6466)
 
 JavaScript
 
@@ -190,8 +194,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Pass credentials directly when needed:
 
-* [  JavaScript ](#tab-panel-6423)
-* [  TypeScript ](#tab-panel-6424)
+* [  JavaScript ](#tab-panel-6467)
+* [  TypeScript ](#tab-panel-6468)
 
 JavaScript
 
@@ -239,8 +243,8 @@ await sandbox.mountBucket('my-r2-bucket', '/data', {
 
 Mount a specific subdirectory within a bucket using the `prefix` option. Only contents under the prefix are visible at the mount point:
 
-* [  JavaScript ](#tab-panel-6445)
-* [  TypeScript ](#tab-panel-6446)
+* [  JavaScript ](#tab-panel-6489)
+* [  TypeScript ](#tab-panel-6490)
 
 JavaScript
 
@@ -295,6 +299,8 @@ await sandbox.mountBucket("datasets", "/test-data", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -348,6 +354,8 @@ prefix: '/ml/testing/'
 
 ```
 
+Explain Code
+
 Prefix format
 
 The `prefix` must start and end with `/` (e.g., `/data/`, `/logs/2024/`). This is required by the underlying s3fs tool.
@@ -356,8 +364,8 @@ The `prefix` must start and end with `/` (e.g., `/data/`, `/logs/2024/`). This i
 
 Protect data by mounting buckets in read-only mode:
 
-* [  JavaScript ](#tab-panel-6427)
-* [  TypeScript ](#tab-panel-6428)
+* [  JavaScript ](#tab-panel-6471)
+* [  TypeScript ](#tab-panel-6472)
 
 JavaScript
 
@@ -384,6 +392,8 @@ await sandbox.writeFile("/data/new-file.txt", "data"); // Error: Read-only files
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -409,6 +419,8 @@ await sandbox.writeFile('/data/new-file.txt', 'data');  // Error: Read-only file
 
 ```
 
+Explain Code
+
 ## Local development
 
 You can mount R2 buckets during local development with `wrangler dev` by passing the `localBucket` option. This uses the R2 binding from your Worker environment directly, so no S3-compatible endpoint or credentials are required.
@@ -417,8 +429,8 @@ You can mount R2 buckets during local development with `wrangler dev` by passing
 
 Add an R2 bucket binding to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6419)
-* [  wrangler.toml ](#tab-panel-6420)
+* [  wrangler.jsonc ](#tab-panel-6463)
+* [  wrangler.toml ](#tab-panel-6464)
 
 JSONC
 
@@ -460,8 +472,8 @@ bucket_name = "my-test-bucket"
 
 Pass `localBucket: true` in the options to mount the bucket locally:
 
-* [  JavaScript ](#tab-panel-6425)
-* [  TypeScript ](#tab-panel-6426)
+* [  JavaScript ](#tab-panel-6469)
+* [  TypeScript ](#tab-panel-6470)
 
 JavaScript
 
@@ -526,8 +538,8 @@ When `localBucket` is `true`, the `endpoint` is ignored and the SDK uses the R2 
 
 The `readOnly` and `prefix` options work the same way in local mode:
 
-* [  JavaScript ](#tab-panel-6431)
-* [  TypeScript ](#tab-panel-6432)
+* [  JavaScript ](#tab-panel-6475)
+* [  TypeScript ](#tab-panel-6476)
 
 JavaScript
 
@@ -557,6 +569,8 @@ await sandbox.mountBucket("MY_BUCKET", "/images", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -585,6 +599,8 @@ prefix: '/uploads/images/'
 
 ```
 
+Explain Code
+
 ### Local development considerations
 
 During local development, files are synchronized between R2 and the container using a periodic sync process rather than a direct filesystem mount. Keep the following in mind:
@@ -599,8 +615,8 @@ These considerations apply to local development with `wrangler dev` only. In pro
 
 ## Unmount buckets
 
-* [  JavaScript ](#tab-panel-6429)
-* [  TypeScript ](#tab-panel-6430)
+* [  JavaScript ](#tab-panel-6473)
+* [  TypeScript ](#tab-panel-6474)
 
 JavaScript
 
@@ -654,8 +670,8 @@ The SDK supports any S3-compatible object storage. Here are examples for common 
 
 ### Amazon S3
 
-* [  JavaScript ](#tab-panel-6433)
-* [  TypeScript ](#tab-panel-6434)
+* [  JavaScript ](#tab-panel-6477)
+* [  TypeScript ](#tab-panel-6478)
 
 JavaScript
 
@@ -701,8 +717,8 @@ await sandbox.mountBucket('my-s3-bucket', '/data', {
 
 ### Google Cloud Storage
 
-* [  JavaScript ](#tab-panel-6437)
-* [  TypeScript ](#tab-panel-6438)
+* [  JavaScript ](#tab-panel-6481)
+* [  TypeScript ](#tab-panel-6482)
 
 JavaScript
 
@@ -754,8 +770,8 @@ Generate HMAC keys in GCS console under Settings → Interoperability.
 
 For providers like Backblaze B2, MinIO, Wasabi, or others, use the standard mount pattern:
 
-* [  JavaScript ](#tab-panel-6439)
-* [  TypeScript ](#tab-panel-6440)
+* [  JavaScript ](#tab-panel-6483)
+* [  TypeScript ](#tab-panel-6484)
 
 JavaScript
 
@@ -846,8 +862,8 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 Verify your endpoint format and credentials:
 
-* [  JavaScript ](#tab-panel-6443)
-* [  TypeScript ](#tab-panel-6444)
+* [  JavaScript ](#tab-panel-6487)
+* [  TypeScript ](#tab-panel-6488)
 
 JavaScript
 
@@ -901,8 +917,8 @@ try {
 
 **Solution**: Unmount first or use a different path:
 
-* [  JavaScript ](#tab-panel-6441)
-* [  TypeScript ](#tab-panel-6442)
+* [  JavaScript ](#tab-panel-6485)
+* [  TypeScript ](#tab-panel-6486)
 
 JavaScript
 
@@ -942,8 +958,8 @@ File operations on mounted buckets are slower than local filesystem due to netwo
 
 **Solution**: Copy frequently accessed files locally:
 
-* [  JavaScript ](#tab-panel-6447)
-* [  TypeScript ](#tab-panel-6448)
+* [  JavaScript ](#tab-panel-6491)
+* [  TypeScript ](#tab-panel-6492)
 
 JavaScript
 
@@ -977,6 +993,8 @@ await sandbox.exec("cp", {
 
 
 ```
+
+Explain Code
 
 TypeScript
 

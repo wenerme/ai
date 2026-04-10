@@ -41,8 +41,8 @@ Once you [create a new certificate](https://developers.cloudflare.com/ssl/edge-c
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-6555)
-* [ Dashboard ](#tab-panel-6556)
+* [ API ](#tab-panel-6605)
+* [ Dashboard ](#tab-panel-6606)
 
 You can access these tokens using the API with the [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) and including `status=pending_validation` as a request parameter.
 
@@ -110,6 +110,8 @@ Response
 
 
 ```
+
+Explain Code
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.  
 [ Go to **Edge Certificates** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)

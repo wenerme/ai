@@ -90,6 +90,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 ```
 
+Explain Code
+
 ## Check your static IPs
 
 You can find your leased static IPs for Spectrum on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).

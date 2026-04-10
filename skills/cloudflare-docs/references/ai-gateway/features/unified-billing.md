@@ -84,6 +84,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/default
 
 ```
 
+Explain Code
+
 The `default` gateway is created automatically on your first request. Replace `default` with a specific gateway ID if you have already created one.
 
 ### Spend limits
@@ -105,8 +107,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-3054)
-* [ API ](#tab-panel-3055)
+* [ Dashboard ](#tab-panel-3060)
+* [ API ](#tab-panel-3061)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 
@@ -159,6 +161,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/{gatewa
 
 
 ```
+
+Explain Code
 
 ### Supported providers
 

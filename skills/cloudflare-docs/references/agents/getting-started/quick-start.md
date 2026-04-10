@@ -65,8 +65,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-2906)
-* [  TypeScript ](#tab-panel-2907)
+* [  JavaScript ](#tab-panel-2912)
+* [  TypeScript ](#tab-panel-2913)
 
 JavaScript
 
@@ -141,6 +141,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -223,10 +225,12 @@ export default {
 
 ```
 
+Explain Code
+
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-2898)
-* [  wrangler.toml ](#tab-panel-2899)
+* [  wrangler.jsonc ](#tab-panel-2904)
+* [  wrangler.toml ](#tab-panel-2905)
 
 JSONC
 
@@ -240,7 +244,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -277,6 +281,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -287,7 +293,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -307,6 +313,8 @@ new_sqlite_classes = [ "CounterAgent" ]
 
 
 ```
+
+Explain Code
 
 ## Connect from React
 
@@ -366,6 +374,8 @@ export default function App() {
 
 ```
 
+Explain Code
+
 Key points:
 
 * `useAgent` connects to your agent via WebSocket
@@ -399,8 +409,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-2902)
-* [  TypeScript ](#tab-panel-2903)
+* [  JavaScript ](#tab-panel-2908)
+* [  TypeScript ](#tab-panel-2909)
 
 JavaScript
 
@@ -433,6 +443,8 @@ await agent.call("reset");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -463,6 +475,8 @@ await agent.call("reset");
 
 
 ```
+
+Explain Code
 
 ## Deploy to Cloudflare
 
@@ -499,8 +513,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-2900)
-* [  TypeScript ](#tab-panel-2901)
+* [  JavaScript ](#tab-panel-2906)
+* [  TypeScript ](#tab-panel-2907)
 
 JavaScript
 
@@ -550,8 +564,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-2904)
-* [  TypeScript ](#tab-panel-2905)
+* [  JavaScript ](#tab-panel-2910)
+* [  TypeScript ](#tab-panel-2911)
 
 JavaScript
 
@@ -603,6 +617,8 @@ agent.stub.increment();
 
 
 ```
+
+Explain Code
 
 ### `SyntaxError: Invalid or unexpected token` with `@callable()`
 

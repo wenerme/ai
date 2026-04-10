@@ -133,8 +133,8 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
-* [ Wrangler ](#tab-panel-4648)
-* [ Terraform ](#tab-panel-4649)
+* [ Wrangler ](#tab-panel-4692)
+* [ Terraform ](#tab-panel-4693)
 
 Terminal window
 
@@ -184,6 +184,8 @@ resource "cloudflare_hyperdrive_config"  "<TERRAFORM_VARIABLE_NAME_FOR_CONFIGURA
 
 ```
 
+Explain Code
+
 This will create a Hyperdrive configuration using the usual database information (database name, database host, database user, and database password).
 
 In addition, it will also set the Access Client ID and the Access Client Secret of the Service Token. When Hyperdrive makes requests to the tunnel, requests will be intercepted by Access and validated using the credentials of the Service Token.
@@ -202,8 +204,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4650)
-* [  wrangler.toml ](#tab-panel-4651)
+* [  wrangler.jsonc ](#tab-panel-4694)
+* [  wrangler.toml ](#tab-panel-4695)
 
 JSONC
 
@@ -249,8 +251,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-4652)
-* [  wrangler.toml ](#tab-panel-4653)
+* [  wrangler.jsonc ](#tab-panel-4696)
+* [  wrangler.toml ](#tab-panel-4697)
 
 JSONC
 
@@ -300,8 +302,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-* [ PostgreSQL ](#tab-panel-4658)
-* [ MySQL ](#tab-panel-4659)
+* [ PostgreSQL ](#tab-panel-4702)
+* [ MySQL ](#tab-panel-4703)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -351,8 +353,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4654)
-* [  wrangler.toml ](#tab-panel-4655)
+* [  wrangler.jsonc ](#tab-panel-4698)
+* [  wrangler.toml ](#tab-panel-4699)
 
 JSONC
 
@@ -370,7 +372,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -389,6 +391,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -397,7 +401,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -479,6 +483,8 @@ export default {
 
 ```
 
+Explain Code
+
 Now, deploy your Worker:
 
 Terminal window
@@ -520,8 +526,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4656)
-* [  wrangler.toml ](#tab-panel-4657)
+* [  wrangler.jsonc ](#tab-panel-4700)
+* [  wrangler.toml ](#tab-panel-4701)
 
 JSONC
 
@@ -539,7 +545,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -558,6 +564,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -566,7 +574,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -648,6 +656,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

@@ -90,6 +90,8 @@ By default, the browser assumes the image will be stretched to the full width of
 
 ```
 
+Explain Code
+
 In the previous case, the number followed by `x` described _screen_ density. In this case the number followed by `w` describes the _image_ size. There is no need to specify screen density here (`2x`, etc.), because the browser automatically takes it into account and picks a higher-resolution image when necessary.
 
 If the image is not displayed at full width of the screen (or browser window), you have two options:
@@ -134,6 +136,8 @@ The `vw` unit is a percentage of the viewport (screen or window) width. If the i
 
 
 ```
+
+Explain Code
 
 In this example, `sizes` says that for screens smaller than 640 pixels the image is displayed at full viewport width; on all larger screens the image stays at 640px. Note that one of the options in `srcset` is 1280 pixels, because an image displayed at 640 CSS pixels may need twice as many image pixels on a high-dpi (`2x`) display.
 

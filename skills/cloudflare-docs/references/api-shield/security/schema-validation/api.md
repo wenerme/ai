@@ -122,6 +122,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/sche
 
 ```
 
+Explain Code
+
 By default, Schema validation is disabled for an uploaded schema so that you can inspect it first. You can upload a schema and enable it immediately by setting the form parameter `validation_enabled=true`.
 
 Use a `PATCH` request to activate a schema after inspection.
@@ -186,6 +188,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/user_schem
 
 ```
 
+Explain Code
+
 When a schema is active, it executes the mitigation action specified for each operation. Refer to [change the default and operation-specific mitigation action](#change-the-default-and-operation-specific-mitigation-action).
 
 ### Add new operations to Endpoint Management
@@ -248,6 +252,8 @@ curl --request GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gat
 
 ```
 
+Explain Code
+
 To receive information about the configuration of existing operations, Cloudflare recommends passing the `?feature=schema_info` parameter.
 
 You can add new operations in a schema to Endpoint Management using `POST`.
@@ -278,6 +284,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operation
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -315,6 +323,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operation
 
 
 ```
+
+Explain Code
 
 You can add all operations in a schema that do not already exist in Endpoint Management by combining two commands as one. There is a maximum of 20 operations for this API call. The example requires the `jq` tool.
 
@@ -381,6 +391,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/settings/
 
 ```
 
+Explain Code
+
 A new value out of `none`, `log`, and `block` can be set using `PUT`.
 
 cURL command
@@ -429,6 +441,8 @@ curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gat
 
 ```
 
+Explain Code
+
 If the mitigation action for an individual operation is of interest, the current value can be retrieved with `GET` using the operation ID.
 
 cURL command
@@ -466,6 +480,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operation
 
 
 ```
+
+Explain Code
 
 If the value is `null`, it means that no mitigation action has been specified for this operation and the default mitigation action is being used.
 
@@ -514,6 +530,8 @@ curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gat
 
 
 ```
+
+Explain Code
 
 ### List all schemas
 
@@ -578,6 +596,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/sche
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -727,6 +747,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operation
 
 ```
 
+Explain Code
+
 If you are satisfied with the inspected parameter schema, you can add and activate it using `PUT`.
 
 cURL command
@@ -814,6 +836,8 @@ curl --request PATCH "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_g
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/api-shield/","name":"API Shield"}},{"@type":"ListItem","position":3,"item":{"@id":"/api-shield/security/","name":"Security"}},{"@type":"ListItem","position":4,"item":{"@id":"/api-shield/security/schema-validation/","name":"Schema validation"}},{"@type":"ListItem","position":5,"item":{"@id":"/api-shield/security/schema-validation/api/","name":"Configure Schema validation via the API"}}]}

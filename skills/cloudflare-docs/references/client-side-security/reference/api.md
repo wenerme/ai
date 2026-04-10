@@ -121,6 +121,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield" \
 
 ```
 
+Explain Code
+
 ### Enable client-side security
 
 This example enables Cloudflare's client-side security in the specified zone.
@@ -286,6 +288,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?ho
 
 ```
 
+Explain Code
+
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
 
 For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/).
@@ -395,6 +399,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts?ho
 
 
 ```
+
+Explain Code
 
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
 
@@ -522,6 +528,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/scripts/83
 
 ```
 
+Explain Code
+
 Some fields displayed in the example response may not be available, depending on your Cloudflare plan.
 
 ### Fetch list of detected connections
@@ -620,6 +628,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connection
 
 ```
 
+Explain Code
+
 For details on the available filtering, paging, and sorting parameters, refer to the [API reference](https://developers.cloudflare.com/api/resources/page%5Fshield/subresources/scripts/methods/list/).
 
 ### Get details of a detected connection
@@ -695,6 +705,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/connection
 
 
 ```
+
+Explain Code
 
 ### Fetch list of detected cookies
 
@@ -796,6 +808,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies?pa
 
 ```
 
+Explain Code
+
 For details on the available filtering, paging, and sorting parameters, refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#pagination).
 
 ### Get details of a detected cookie
@@ -876,6 +890,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/cookies/be
 
 ```
 
+Explain Code
+
 ### Create a content security rule
 
 This `POST` request creates a content security rule (previously called a policy) with _Log_ action, defining the following scripts as allowed based on where they are hosted:
@@ -929,6 +945,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" 
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -959,6 +977,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/page_shield/policies" 
 
 
 ```
+
+Explain Code
 
 To create a content security rule with an _Allow_ action instead of _Log_, use `"action": "allow"` in the request body. In the case of such rule, all scripts not allowed by the rule would be blocked.
 

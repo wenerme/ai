@@ -41,10 +41,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-7365)
-* [  TypeScript ](#tab-panel-7366)
-* [  Hono ](#tab-panel-7367)
-* [  Python ](#tab-panel-7368)
+* [  JavaScript ](#tab-panel-7423)
+* [  TypeScript ](#tab-panel-7424)
+* [  Hono ](#tab-panel-7425)
+* [  Python ](#tab-panel-7426)
 
 JavaScript
 
@@ -237,6 +237,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -421,6 +423,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -637,6 +641,8 @@ export default app;
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -786,6 +792,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 ## Validate signed requests using the WAF
 

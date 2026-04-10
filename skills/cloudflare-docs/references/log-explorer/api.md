@@ -78,6 +78,8 @@ This command returns the following HTTP request details:
 
 ```
 
+Explain Code
+
 As another example, you could find Cloudflare Access requests with selected columns from a specific timeframe by performing the following SQL query:
 
 Terminal window
@@ -137,6 +139,8 @@ This command returns the following request details:
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/api/","name":"Log Explorer API"}}]}

@@ -119,6 +119,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 ## Test service Workers
 
 Unlike the `unstable_dev` API, the Workers Vitest integration does not support testing Workers using the service worker format. You will need to first [migrate to the ES modules format](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) in order to use the Workers Vitest integration.

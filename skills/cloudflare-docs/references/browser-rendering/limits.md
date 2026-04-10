@@ -108,8 +108,8 @@ When you make too many requests in a short period of time, Browser Rendering wil
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ REST API ](#tab-panel-3246)
-* [ Workers Bindings ](#tab-panel-3247)
+* [ REST API ](#tab-panel-3252)
+* [ Workers Bindings ](#tab-panel-3253)
 
 JavaScript
 
@@ -150,6 +150,8 @@ await new Promise(resolve => setTimeout(resolve, retryAfter \* 1000));
 
 
 ```
+
+Explain Code
 
 JavaScript
 
@@ -197,6 +199,8 @@ try {
 
 
 ```
+
+Explain Code
 
 ### Error: `429 Browser time limit exceeded for today`
 

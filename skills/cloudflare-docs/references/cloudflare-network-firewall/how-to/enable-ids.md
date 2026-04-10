@@ -24,8 +24,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-3398)
-* [ API ](#tab-panel-3399)
+* [ Dashboard ](#tab-panel-3404)
+* [ API ](#tab-panel-3405)
 
 1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
 2. Select **IDS** and turn on **IDS**.
@@ -82,6 +82,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 ```
 
+Explain Code
+
 With this ruleset added, IDS will start inspecting packets and report any anomalous traffic. Next, you can [configure Logpush](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/) to start receiving details about the anomalous traffic.
 
 1. Use the rule created in the previous step to enable or disable IDS. The Rulesets API documentation describes [how to patch a rule](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/).  
@@ -118,6 +120,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_rulese
 
 
 ```
+
+Explain Code
 
 Similarly, sending a patch request with the `enabled` field set to `true` will enable IDS.
 

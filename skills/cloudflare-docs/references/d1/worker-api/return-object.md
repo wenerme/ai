@@ -78,10 +78,12 @@ JavaScript
 
 ```
 
+Explain Code
+
 ### Example
 
-* [  JavaScript ](#tab-panel-4172)
-* [  Python ](#tab-panel-4173)
+* [  JavaScript ](#tab-panel-4216)
+* [  Python ](#tab-panel-4217)
 
 JavaScript
 
@@ -181,6 +183,8 @@ return Response.json(return_value)
 
 ```
 
+Explain Code
+
 ## `D1ExecResult`
 
 The method [D1Database::exec](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec) returns a typed [D1ExecResult](#d1execresult) object for each query statement. This object contains:
@@ -205,8 +209,8 @@ JavaScript
 
 ### Example
 
-* [  JavaScript ](#tab-panel-4174)
-* [  Python ](#tab-panel-4175)
+* [  JavaScript ](#tab-panel-4218)
+* [  Python ](#tab-panel-4219)
 
 JavaScript
 

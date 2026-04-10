@@ -16,7 +16,7 @@ Copy page
 
 # Migrating from Vercel to Pages
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 In this tutorial, you will learn how to deploy your Vercel application to Cloudflare Pages.
 

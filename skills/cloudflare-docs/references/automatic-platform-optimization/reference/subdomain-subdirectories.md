@@ -75,6 +75,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Use Cache Rules
 
 Create a [cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) to exclude non-WordPress portions of the site from caching using **Cache eligibility: Bypass cache**. This option disables all caching, including static assets for those paths. As a result, we recommend disabling APO via the response header.

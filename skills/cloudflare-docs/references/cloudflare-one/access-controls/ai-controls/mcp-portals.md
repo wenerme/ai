@@ -204,6 +204,8 @@ MCP client configuration for MCP portals
 
 ```
 
+Explain Code
+
 We do not recommend using the `serverURL` parameter since it may cause issues with portal session creation and management.
 
 If you want to force your MCP client to reauthenticate, most MCP clients will refresh a session after removing the existing MCP OAuth sessions. To clear authentication credentials used by your MCP client, open a terminal and run the following command:

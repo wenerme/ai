@@ -33,9 +33,9 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 
 Deploy to Cloudflare buttons can be embedded anywhere developers might want to launch your project. To add a Deploy to Cloudflare button, copy the following snippet and replace the Git repository URL with your project's URL. You can also optionally specify a subdirectory.
 
-* [ Markdown ](#tab-panel-7487)
-* [ HTML ](#tab-panel-7488)
-* [ URL ](#tab-panel-7489)
+* [ Markdown ](#tab-panel-7547)
+* [ HTML ](#tab-panel-7548)
+* [ URL ](#tab-panel-7549)
 
 ```
 
@@ -77,8 +77,8 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 
 [Worker environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) can be defined in your Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-7490)
-* [  wrangler.toml ](#tab-panel-7491)
+* [  wrangler.jsonc ](#tab-panel-7550)
+* [  wrangler.toml ](#tab-panel-7551)
 
 JSONC
 
@@ -92,7 +92,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "vars": {
 
@@ -115,7 +115,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [vars]
@@ -138,8 +138,8 @@ COOKIE_SIGNING_KEY=my-secret # comment
 
 [Secrets Store](https://developers.cloudflare.com/secrets-store/) secrets can be configured in the Wrangler configuration file as normal:
 
-* [  wrangler.jsonc ](#tab-panel-7492)
-* [  wrangler.toml ](#tab-panel-7493)
+* [  wrangler.jsonc ](#tab-panel-7552)
+* [  wrangler.toml ](#tab-panel-7553)
 
 JSONC
 
@@ -153,7 +153,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "secrets_store_secrets": [
 
@@ -174,6 +174,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -184,7 +186,7 @@ main = "./src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[secrets_store_secrets]]
@@ -263,6 +265,8 @@ package.json
 
 
 ```
+
+Explain Code
 
 ## Limitations
 

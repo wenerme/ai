@@ -44,8 +44,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-3577)  
-   * [ Include IPs and domains ](#tab-panel-3578)  
+   * [ Exclude IPs and domains ](#tab-panel-3583)  
+   * [ Include IPs and domains ](#tab-panel-3584)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your SSH server's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your SSH server. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  
@@ -67,9 +67,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-3569)
-* [ API ](#tab-panel-3570)
-* [ Terraform ](#tab-panel-3571)
+* [ Dashboard ](#tab-panel-3575)
+* [ API ](#tab-panel-3576)
+* [ Terraform ](#tab-panel-3577)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -129,6 +129,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/t
 
 ```
 
+Explain Code
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -151,15 +153,16 @@ resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target"
       }  
     }  
 }  
-```
+```  
+Explain Code
 
 Next, create an Access application to secure the target.
 
 ## 5\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-3572)
-* [ API ](#tab-panel-3573)
-* [ Terraform (v4) ](#tab-panel-3574)
+* [ Dashboard ](#tab-panel-3578)
+* [ API ](#tab-panel-3579)
+* [ Terraform (v4) ](#tab-panel-3580)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.
@@ -273,6 +276,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 
 ```
 
+Explain Code
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -294,7 +299,8 @@ resource "cloudflare_zero_trust_access_application" "infra-app" {
     }  
   }  
 }  
-```
+```  
+Explain Code
 3. Use the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource to add an infrastructure policy to the application:  
 ```  
 resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {  
@@ -312,7 +318,8 @@ resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {
     }  
   }  
 }  
-```
+```  
+Explain Code
 
 The targets in this application are now secured by your infrastructure policies.
 
@@ -352,8 +359,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Cloudflare SSH CA and get its public key:
 
-* [ Dashboard ](#tab-panel-3575)
-* [ API ](#tab-panel-3576)
+* [ Dashboard ](#tab-panel-3581)
+* [ API ](#tab-panel-3582)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -468,8 +475,8 @@ chmod 600 /etc/ssh/ca.pub
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-3563)
-* [ CentOS/RHEL ](#tab-panel-3564)
+* [ Debian/Ubuntu ](#tab-panel-3569)
+* [ CentOS/RHEL ](#tab-panel-3570)
 
 For Debian/Ubuntu:
 
@@ -542,8 +549,8 @@ All proxied SSH commands are immediately encrypted using this public key. The ma
 
 To turn off SSH command logging, delete your uploaded public key:
 
-* [ Dashboard ](#tab-panel-3567)
-* [ API ](#tab-panel-3568)
+* [ Dashboard ](#tab-panel-3573)
+* [ API ](#tab-panel-3574)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings** \> **SSH log encryption public key**.
 2. Select **Remove**.
@@ -982,6 +989,8 @@ Subsystem    sftp    /usr/lib/openssh/sftp-server
 
 ```
 
+Explain Code
+
 #### Replace and test with example configuration
 
 The next steps will walk you through a troubleshooting regimen. You will temporarily replace your existing `sshd_config` file with the provided example to rule out configuration issues. Before proceeding, carefully [review and compare both files](#review-your-sshd%5Fconfig-file-for-misconfigurations) to identify any conflicting directives.
@@ -1008,8 +1017,8 @@ vi /etc/ssh/sshd_config
 Do not restart  
 Restarting your `sshd` service will result in the termination of your current SSH connection. Make sure to reload instead of restarting to avoid terminating all currently open SSH sessions.  
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.  
-   * [ Debian/Ubuntu ](#tab-panel-3565)  
-   * [ CentOS/RHEL ](#tab-panel-3566)  
+   * [ Debian/Ubuntu ](#tab-panel-3571)  
+   * [ CentOS/RHEL ](#tab-panel-3572)  
 For Debian/Ubuntu:  
 Terminal window  
 ```  

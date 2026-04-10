@@ -94,7 +94,8 @@ scrape_configs:
   - job_name: "cloudflared"  
     static_configs:  
       - targets: ["198.168.1.1:60123"] ## cloudflared server IP and the --metrics port configured for the tunnel  
-```
+```  
+Explain Code
 4. Start Prometheus:  
 Terminal window  
 ```  

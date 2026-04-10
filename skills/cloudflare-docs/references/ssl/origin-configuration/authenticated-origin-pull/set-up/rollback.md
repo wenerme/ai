@@ -40,7 +40,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth
         }  
     ]  
   }'  
-```
+```  
+Explain Code
 2. (Optional) Use a [GET request](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/list/) to obtain a list of the client certificate IDs. You will need the ID of the certificate you want to remove for the following step.  
 Required API token permissions  
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  

@@ -155,6 +155,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 The `additionalExports` option is a map where keys are the export names and values are the type of export (`"WorkerEntrypoint"`, `"DurableObject"`, or `"WorkflowEntrypoint"`).
 
 ### Module resolution
@@ -206,6 +208,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 You can find an example in the [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) page.
 
@@ -259,6 +263,8 @@ async function viteImport(file: string) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -294,6 +300,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/vitest-integration/","name":"Vitest integration"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/vitest-integration/known-issues/","name":"Known issues"}}]}

@@ -45,8 +45,8 @@ For help determining which data center to select for a packet capture, visit [ht
 * `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-3406)
-* [ API ](#tab-panel-3407)
+* [ Dashboard ](#tab-panel-3412)
+* [ API ](#tab-panel-3413)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
@@ -102,6 +102,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 ```
 
+Explain Code
+
 While the collection is in progress, the response returns the `status` field as `pending`. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to `success`.
 
 Full PCAP example response
@@ -146,6 +148,8 @@ Full PCAP example response
 
 
 ```
+
+Explain Code
 
 Sample PCAP
 
@@ -193,6 +197,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 
 
 ```
+
+Explain Code
 
 The response is a JSON body that contains the details of the job running to build the packet capture. The response contains a unique identifier for the packet capture request along with the details sent in the request.
 
@@ -245,10 +251,12 @@ Sample PCAP example response
 
 ```
 
+Explain Code
+
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-3400)
-* [ API ](#tab-panel-3401)
+* [ Dashboard ](#tab-panel-3406)
+* [ API ](#tab-panel-3407)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -320,6 +328,8 @@ Sample PCAP example result
 
 ```
 
+Explain Code
+
 The capture status displays one of the following options:
 
 * **Complete:** The capture request is done and ready for download.
@@ -330,8 +340,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-3402)
-* [ API ](#tab-panel-3403)
+* [ Dashboard ](#tab-panel-3408)
+* [ API ](#tab-panel-3409)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -366,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-3404)
-* [ API ](#tab-panel-3405)
+* [ Dashboard ](#tab-panel-3410)
+* [ API ](#tab-panel-3411)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics** \> **Network packet captures**.
@@ -431,6 +441,8 @@ List response example
 
 
 ```
+
+Explain Code
 
 ## Best practices
 

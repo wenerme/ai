@@ -34,8 +34,8 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-7738)
-* [  wrangler.toml ](#tab-panel-7739)
+* [  wrangler.jsonc ](#tab-panel-7798)
+* [  wrangler.toml ](#tab-panel-7799)
 
 JSONC
 
@@ -47,7 +47,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "main": "./worker/index.ts",
 
@@ -66,6 +66,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -74,7 +76,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 main = "./worker/index.ts"
 
@@ -90,8 +92,8 @@ run_worker_first = true
 
 ```
 
-* [  JavaScript ](#tab-panel-7742)
-* [  TypeScript ](#tab-panel-7743)
+* [  JavaScript ](#tab-panel-7802)
+* [  TypeScript ](#tab-panel-7803)
 
 ./worker/index.js
 
@@ -144,6 +146,8 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+Explain Code
+
 ./worker/index.ts
 
 ```
@@ -195,12 +199,14 @@ export default class extends WorkerEntrypoint<Env> {
 
 ```
 
+Explain Code
+
 ### Run Worker first for selective paths
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-7740)
-* [  wrangler.toml ](#tab-panel-7741)
+* [  wrangler.jsonc ](#tab-panel-7800)
+* [  wrangler.toml ](#tab-panel-7801)
 
 JSONC
 
@@ -212,7 +218,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "main": "./worker/index.ts",
 
@@ -233,6 +239,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -241,7 +249,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 main = "./worker/index.ts"
 
@@ -259,8 +267,10 @@ run_worker_first = [ "/oauth/callback" ]
 
 ```
 
-* [  JavaScript ](#tab-panel-7744)
-* [  TypeScript ](#tab-panel-7745)
+Explain Code
+
+* [  JavaScript ](#tab-panel-7804)
+* [  TypeScript ](#tab-panel-7805)
 
 ./worker/index.js
 
@@ -310,6 +320,8 @@ export default class extends WorkerEntrypoint {
 
 ```
 
+Explain Code
+
 ./worker/index.ts
 
 ```
@@ -357,6 +369,8 @@ export default class extends WorkerEntrypoint<Env> {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/static-assets/","name":"Static Assets"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/static-assets/routing/","name":"Routing"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/static-assets/routing/worker-script/","name":"Worker script"}}]}

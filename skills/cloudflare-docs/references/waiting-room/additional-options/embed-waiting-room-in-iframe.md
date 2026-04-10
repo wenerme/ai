@@ -103,6 +103,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -163,6 +165,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ## Limitations
 

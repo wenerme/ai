@@ -120,6 +120,8 @@ export class AgentServer extends DurableObject {
 
 ```
 
+Explain Code
+
 ## Storage methods
 
 ### `getAlarm`
@@ -171,8 +173,8 @@ This example shows how to both set alarms with the `setAlarm(timestamp)` method 
 * If an unexpected error terminates the Durable Object, the `alarm()` handler may be re-instantiated on another machine.
 * Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
-* [  JavaScript ](#tab-panel-4336)
-* [  Python ](#tab-panel-4337)
+* [  JavaScript ](#tab-panel-4380)
+* [  Python ](#tab-panel-4381)
 
 JavaScript
 
@@ -234,6 +236,8 @@ export class AlarmExample extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -287,10 +291,12 @@ class AlarmExample(DurableObject):
 
 ```
 
+Explain Code
+
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 
-* [  JavaScript ](#tab-panel-4338)
-* [  Python ](#tab-panel-4339)
+* [  JavaScript ](#tab-panel-4382)
+* [  Python ](#tab-panel-4383)
 
 JavaScript
 

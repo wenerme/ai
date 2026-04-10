@@ -76,6 +76,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Parameters
 
 \* indicates a required field
@@ -121,8 +123,8 @@ Binary string representing the image contents.
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1906)
-* [ Output ](#tab-panel-1907)
+* [ Input ](#tab-panel-1912)
+* [ Output ](#tab-panel-1913)
 
 ```
 
@@ -280,6 +282,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 

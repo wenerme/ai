@@ -45,8 +45,8 @@ Use this variant when your SPA build output is deployed as part of your Worker u
 
 Set `not_found_handling` to `"single-page-application"` so that every route returns `index.html`. Use `run_worker_first` to route all requests through your Worker except hashed assets under `/assets/*`, which are served directly.
 
-* [  wrangler.jsonc ](#tab-panel-7375)
-* [  wrangler.toml ](#tab-panel-7376)
+* [  wrangler.jsonc ](#tab-panel-7427)
+* [  wrangler.toml ](#tab-panel-7428)
 
 JSONC
 
@@ -60,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-07",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -81,6 +81,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -91,7 +93,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-07"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -109,6 +111,8 @@ run_worker_first = [ "/*", "!/assets/*" ]
 
 ```
 
+Explain Code
+
 For more details on these options, refer to [Static Assets routing](https://developers.cloudflare.com/workers/static-assets/routing/) and the [run\_worker\_first reference](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst).
 
 ### Inject bootstrap data with HTMLRewriter
@@ -117,8 +121,8 @@ The Worker starts fetching API data immediately, then fetches the SPA shell from
 
 If the API call fails, the shell still loads and the SPA falls back to client-side data fetching.
 
-* [  JavaScript ](#tab-panel-7379)
-* [  TypeScript ](#tab-panel-7380)
+* [  JavaScript ](#tab-panel-7431)
+* [  TypeScript ](#tab-panel-7432)
 
 JavaScript
 
@@ -228,6 +232,8 @@ async function fetchBootstrapData(env, pathname, headers) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -346,6 +352,8 @@ async function fetchBootstrapData(
 
 ```
 
+Explain Code
+
 ---
 
 ## Option 2: SPA hosted on an external origin
@@ -356,8 +364,8 @@ Use this variant when your HTML, CSS, and JavaScript are deployed outside Cloudf
 
 Because the SPA is not in Workers Static Assets, you do not need an `assets` block. Instead, store the external origin URL as an environment variable. Attach the Worker to your domain with a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or a [Route](https://developers.cloudflare.com/workers/configuration/routing/routes/).
 
-* [  wrangler.jsonc ](#tab-panel-7377)
-* [  wrangler.toml ](#tab-panel-7378)
+* [  wrangler.jsonc ](#tab-panel-7429)
+* [  wrangler.toml ](#tab-panel-7430)
 
 JSONC
 
@@ -371,7 +379,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-07",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -388,6 +396,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -398,7 +408,7 @@ main = "src/worker.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-07"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -416,8 +426,8 @@ API_BASE_URL = "https://api.example.com"
 
 The Worker fetches both the SPA shell and API data in parallel. When the SPA origin responds, HTMLRewriter streams the HTML while injecting bootstrap data into `<body>`. Static assets (CSS, JS, images) are passed through to the external origin without modification.
 
-* [  JavaScript ](#tab-panel-7381)
-* [  TypeScript ](#tab-panel-7382)
+* [  JavaScript ](#tab-panel-7433)
+* [  TypeScript ](#tab-panel-7434)
 
 JavaScript
 
@@ -530,6 +540,8 @@ async function fetchBootstrapData(env, pathname, headers) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -650,6 +662,8 @@ async function fetchBootstrapData(
 
 
 ```
+
+Explain Code
 
 ## Consume prefetched data in your SPA
 
@@ -699,6 +713,8 @@ function App() {
 
 
 ```
+
+Explain Code
 
 Add a type declaration so TypeScript recognizes the global property:
 
@@ -792,6 +808,8 @@ return response;
 
 ```
 
+Explain Code
+
 ### Inject user configuration
 
 Expose feature flags or environment-specific settings to the SPA without an extra API round-trip.
@@ -828,6 +846,8 @@ new HTMLRewriter()
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

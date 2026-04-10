@@ -129,6 +129,8 @@ Your front-end code
 
 ```
 
+Explain Code
+
 ## 2\. Create a Worker project
 
 To handle the form submission, create and deploy a Worker that parses the incoming form data and prepares it for submission to Airtable.
@@ -321,6 +323,8 @@ async function submitHandler(request, env) {
 
 ```
 
+Explain Code
+
 Prevent potential errors when accessing request.body
 
 The body of a [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request) can only be accessed once. If you previously used `request.formData()` in the same request, you may encounter a TypeError when attempting to access `request.body`.
@@ -383,12 +387,14 @@ async function createAirtableRecord(env, body) {
 
 ```
 
+Explain Code
+
 To make an authenticated request to Airtable, you need to provide four constants that represent data about your Airtable account, base, and table name. You have already set `AIRTABLE_ACCESS_TOKEN` using `wrangler secret`, since it is a value that should be encrypted. The **Airtable base ID** and **table name**, and `FORM_URL` are values that can be publicly shared in places like GitHub. Use Wrangler's [vars](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#vars) feature to pass public environment variables from your Wrangler file.
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7776)
-* [  wrangler.toml ](#tab-panel-7777)
+* [  wrangler.jsonc ](#tab-panel-7836)
+* [  wrangler.toml ](#tab-panel-7837)
 
 JSONC
 
@@ -404,7 +410,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "vars": {
 
@@ -419,6 +425,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -431,7 +439,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [vars]

@@ -32,8 +32,8 @@ For industry-standard function calling, take a look at the documentation on [Tra
 
 To show you the value of embedded function calling, take a look at the example below that compares traditional function calling with embedded function calling. Embedded function calling allowed us to cut down the lines of code from 77 to 31.
 
-* [ Embedded ](#tab-panel-6925)
-* [ Traditional ](#tab-panel-6926)
+* [ Embedded ](#tab-panel-6983)
+* [ Traditional ](#tab-panel-6984)
 
 Terminal window
 
@@ -136,6 +136,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Traditional function calling example
 
@@ -308,6 +310,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## What models support function calling?
 

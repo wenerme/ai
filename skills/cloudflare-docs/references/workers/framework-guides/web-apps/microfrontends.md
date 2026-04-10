@@ -121,6 +121,8 @@ TypeScript
 
 ```
 
+Explain Code
+
 ## Path rewriting
 
 The router worker uses [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) to automatically rewrite HTML attributes to include the mount path prefix, ensuring assets load from the correct location.
@@ -332,6 +334,8 @@ The router automatically injects CSS into HTML responses:
 
 ```
 
+Explain Code
+
 This feature only works in browsers that support the View Transitions API. Browsers without support will navigate normally without animations.
 
 ## Add a new microfrontend
@@ -341,8 +345,8 @@ To add a new microfrontend to your application after initial setup:
 1. **Create and deploy the new microfrontend worker**  
 Deploy your new microfrontend as a separate Worker. This can be a [framework application](https://developers.cloudflare.com/workers/framework-guides/) (Next.js, Astro, etc.) or a static site with [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 2. **Add a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) in your router's Wrangler configuration file**  
-   * [  wrangler.jsonc ](#tab-panel-7402)  
-   * [  wrangler.toml ](#tab-panel-7403)  
+   * [  wrangler.jsonc ](#tab-panel-7460)  
+   * [  wrangler.toml ](#tab-panel-7461)  
 JSONC  
 ```  
 {  
@@ -389,8 +393,8 @@ If you only need to work on one of the microfrontends, you can run the others re
 
 For each microfrontend you want to run remotely while in local dev, configure its service binding with the remote flag:
 
-* [  wrangler.jsonc ](#tab-panel-7404)
-* [  wrangler.toml ](#tab-panel-7405)
+* [  wrangler.jsonc ](#tab-panel-7462)
+* [  wrangler.toml ](#tab-panel-7463)
 
 JSONC
 

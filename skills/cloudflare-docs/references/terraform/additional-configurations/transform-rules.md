@@ -102,6 +102,8 @@ resource "cloudflare_ruleset" "transform_url_rewrite" {
 
 ```
 
+Explain Code
+
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
 
 To create another URL rewrite rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -185,6 +187,8 @@ resource "cloudflare_ruleset" "transform_modify_request_headers" {
 
 ```
 
+Explain Code
+
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
 
 To create another request header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -267,6 +271,8 @@ resource "cloudflare_ruleset" "transform_modify_response_headers" {
 
 ```
 
+Explain Code
+
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
 
 To create another response header transform rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
@@ -309,6 +315,8 @@ resource "cloudflare_managed_headers" "tf_example" {
 
 
 ```
+
+Explain Code
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 

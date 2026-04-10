@@ -73,6 +73,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok/v1/chat
 
 ```
 
+Explain Code
+
 ### Use OpenAI SDK with JavaScript
 
 If you are using the OpenAI SDK with JavaScript, you can set your endpoint like this:
@@ -129,6 +131,8 @@ console.log(completion.choices[0].message);
 
 ```
 
+Explain Code
+
 ### Use OpenAI SDK with Python
 
 If you are using the OpenAI SDK with Python, you can set your endpoint like this:
@@ -172,6 +176,8 @@ print(completion.choices[0].message)
 
 
 ```
+
+Explain Code
 
 ### Use Anthropic SDK with JavaScript
 
@@ -225,6 +231,8 @@ console.log(msg);
 
 ```
 
+Explain Code
+
 ### Use Anthropic SDK with Python
 
 If you are using the Anthropic SDK with Python, you can set your endpoint like this:
@@ -276,6 +284,8 @@ print(message.content)
 
 
 ```
+
+Explain Code
 
 ## OpenAI-Compatible Endpoint
 

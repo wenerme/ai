@@ -31,9 +31,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2034)
-* [  Python ](#tab-panel-2035)
-* [  curl ](#tab-panel-2036)
+* [  TypeScript ](#tab-panel-2040)
+* [  Python ](#tab-panel-2041)
+* [  curl ](#tab-panel-2042)
 
 ```
 
@@ -84,6 +84,8 @@ export default {
 
 ```
 
+Explain Code
+
 ```
 
 import os
@@ -122,6 +124,8 @@ print(response.json())
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -181,8 +185,8 @@ Optional instruction for the task
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2037)
-* [ Output ](#tab-panel-2038)
+* [ Input ](#tab-panel-2043)
+* [ Output ](#tab-panel-2044)
 
 ```
 
@@ -317,6 +321,8 @@ The following schemas are based on JSON Schema
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -361,6 +367,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

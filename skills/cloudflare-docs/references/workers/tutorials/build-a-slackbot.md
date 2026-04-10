@@ -169,6 +169,8 @@ export default app;
 
 ```
 
+Explain Code
+
 This is a minimal application using Hono. If a GET access comes in on the path `/`, it will return a response with the text `Hello Hono!`. It also returns a message `404 Not Found` with status code 404 if any other path or method is accessed.
 
 To run the application on your local machine, execute the following command.
@@ -295,6 +297,8 @@ export default app;
 
 ```
 
+Explain Code
+
 ### Defining TypeScript types
 
 Before implementing the actual functions, you need to define the TypeScript types you will use in this project. Create a new file in the application at `src/types.ts` and write the code. `Bindings` is a type that describes the Cloudflare Workers environment variables. `Issue` is a type for a GitHub issue and `User` is a type for a GitHub user. You will need these later.
@@ -341,6 +345,8 @@ type User = {
 
 
 ```
+
+Explain Code
 
 ### Creating the lookup route
 
@@ -396,6 +402,8 @@ token=gIkuvaNzQIHg97ATvDxqgjtO
 
 ```
 
+Explain Code
+
 Given this payload body, you need to parse it, and get the value of the `text` key. With that `text`, for example, `cloudflare/wrangler#1`, you can parse that string into known piece of data (`owner`, `repo`, and `issue_number`), and use it to make a request to GitHub’s API, to retrieve the issue data.
 
 With Slack slash commands, you can respond to a slash command by returning structured data as the response to the incoming slash command. In this case, you should use the response from GitHub’s API to present a formatted version of the GitHub issue, including pieces of data like the title of the issue, who created it, and the date it was created. Slack’s new [Block Kit ↗](https://api.slack.com/block-kit) framework will allow you to return a detailed message response, by constructing text and image blocks with the data from GitHub’s API.
@@ -431,6 +439,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 Given a `text` variable, that contains text like `cloudflare/wrangler#1`, you should parse that text, and get the individual parts from it for use with GitHub’s API: `owner`, `repo`, and `issue_number`.
 
@@ -491,6 +501,8 @@ export default app;
 
 ```
 
+Explain Code
+
 #### Making requests to GitHub’s API
 
 With this data, you can make your first API lookup to GitHub. Again, make a new function in `src/utils/github.ts`, to make a `fetch` request to the GitHub API for the issue data:
@@ -534,6 +546,8 @@ export const fetchGithubIssue = (
 
 ```
 
+Explain Code
+
 Back in `src/handlers/lookup.ts`, use `fetchGitHubIssue` to make a request to GitHub’s API, and parse the response:
 
 TypeScript
@@ -574,6 +588,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 #### Constructing a Slack message
 
@@ -632,6 +648,8 @@ export const constructGhIssueSlackMessage = (
 
 
 ```
+
+Explain Code
 
 Slack messages accept a variant of Markdown, which supports bold text via asterisks (`*bolded text*`), and links in the format `<https://yoururl.com|Display Text>`.
 
@@ -715,6 +733,8 @@ export const constructGhIssueSlackMessage = (
 
 ```
 
+Explain Code
+
 #### Finishing the lookup route
 
 In `src/handlers/lookup.ts`, use `constructGhIssueSlackMessage` to construct `blocks`, and return them as a new response with `c.json()` when the slash command is called:
@@ -770,6 +790,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 One additional parameter passed into the response is `response_type`. By default, responses to slash commands are ephemeral, meaning that they are only seen by the user who writes the slash command. Passing a `response_type` of `in_channel`, as seen above, will cause the response to appear for all users in the channel.
 
@@ -844,6 +866,8 @@ export default app;
 
 ```
 
+Explain Code
+
 ### Creating the webhook route
 
 You are now halfway through implementing the routes for your Workers application. In implementing the next route, `src/routes/webhook.ts`, you will re-use a lot of the code that you have already written for the lookup route.
@@ -907,6 +931,8 @@ export default app;
 
 ```
 
+Explain Code
+
 An `IssueEvent`, the payload sent from GitHub as part of your webhook configuration, includes an `action` (what happened to the issue: for example, it was opened, closed, locked, etc.), the `issue` itself, and the `repository`, among other things.
 
 Use `c.req.json()` to convert the payload body of the request from JSON into a plain JS object. Use ES6 destructuring to set `action`, `issue` and `repository` as variables you can use in your code. `prefix_text` is a string indicating what happened to the issue, and `issue_string` is the familiar string `owner/repo#issue_number` that you have seen before: while the `lookup` route directly used the text sent from Slack to fill in `issue_string`, you will construct it directly based on the data passed in the JSON payload.
@@ -944,6 +970,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 Importantly, the usage of `constructGhIssueSlackMessage` in this handler adds one additional argument to the function, `prefix_text`. Update the corresponding function inside of `src/utils/slack.ts`, adding `prefix_text` to the collection of `text_lines` in the message block, if it has been passed in to the function.
 
@@ -1022,6 +1050,8 @@ export const constructGhIssueSlackMessage = (
 
 ```
 
+Explain Code
+
 Back in `src/handlers/webhook.ts`, the `blocks` that are returned from `constructGhIssueSlackMessage` become the body in a new `fetch` request, an HTTP POST request to a Slack webhook URL. Once that request completes, return a response with status code `200`, and the body text `"OK"`:
 
 TypeScript
@@ -1069,6 +1099,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you created all the way back in the [Incoming Webhook](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/#incoming-webhook) section of this tutorial.
 
@@ -1165,6 +1197,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ## Deploy
 

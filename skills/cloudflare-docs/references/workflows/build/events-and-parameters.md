@@ -36,8 +36,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-8540)
-* [  TypeScript ](#tab-panel-8541)
+* [  JavaScript ](#tab-panel-8600)
+* [  TypeScript ](#tab-panel-8601)
 
 JavaScript
 
@@ -79,6 +79,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -119,6 +121,8 @@ export default {
 
 ```
 
+Explain Code
+
 To pass parameters via the `wrangler` command-line interface, pass a JSON string as the second parameter to the `workflows trigger` sub-command:
 
 Terminal window
@@ -154,8 +158,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-8536)
-* [  TypeScript ](#tab-panel-8537)
+* [  JavaScript ](#tab-panel-8596)
+* [  TypeScript ](#tab-panel-8597)
 
 JavaScript
 
@@ -184,6 +188,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -211,6 +217,8 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 ```
 
+Explain Code
+
 The above example:
 
 * Calls `waitForEvent` with a `type` of `stripe-webhook` \- the corresponding `sendEvent` call would thus be `await instance.sendEvent({type: "stripe-webhook", payload: webhookPayload})`.
@@ -219,8 +227,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-8534)
-* [  TypeScript ](#tab-panel-8535)
+* [  JavaScript ](#tab-panel-8594)
+* [  TypeScript ](#tab-panel-8595)
 
 JavaScript
 
@@ -258,8 +266,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-8538)
-* [  TypeScript ](#tab-panel-8539)
+* [  JavaScript ](#tab-panel-8598)
+* [  TypeScript ](#tab-panel-8599)
 
 JavaScript
 
@@ -288,6 +296,8 @@ try {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -315,12 +325,14 @@ try {
 
 ```
 
+Explain Code
+
 ### Send events to running workflows
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-8542)
-* [  TypeScript ](#tab-panel-8543)
+* [  JavaScript ](#tab-panel-8602)
+* [  TypeScript ](#tab-panel-8603)
 
 JavaScript
 
@@ -363,6 +375,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -403,6 +417,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 * Similar to the [waitForEvent](#wait-for-events) example in this guide, the `type` property in our `waitForEvent` and `sendEvent` fields must match.
 * To send multiple events to a Workflow that has multiple `waitForEvent` calls, call `sendEvent` with the corresponding `type` property set (up to 100 characters [1](#user-content-fn-1)).
@@ -500,6 +516,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 
 ```
+
+Explain Code
 
 Warning
 

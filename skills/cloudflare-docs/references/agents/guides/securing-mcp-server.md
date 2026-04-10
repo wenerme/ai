@@ -28,8 +28,8 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
-* [  JavaScript ](#tab-panel-2958)
-* [  TypeScript ](#tab-panel-2959)
+* [  JavaScript ](#tab-panel-2964)
+* [  TypeScript ](#tab-panel-2965)
 
 JavaScript
 
@@ -59,6 +59,8 @@ export default new OAuthProvider({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -87,6 +89,8 @@ export default new OAuthProvider({
 
 ```
 
+Explain Code
+
 ## Consent dialog security
 
 When your MCP server proxies to third-party OAuth providers, you must implement your own consent dialog before forwarding users upstream. This prevents the "confused deputy" problem where attackers could exploit cached consent.
@@ -95,8 +99,8 @@ When your MCP server proxies to third-party OAuth providers, you must implement 
 
 Without CSRF protection, attackers can trick users into approving malicious OAuth clients. Use a random token stored in a secure cookie:
 
-* [  JavaScript ](#tab-panel-2962)
-* [  TypeScript ](#tab-panel-2963)
+* [  JavaScript ](#tab-panel-2968)
+* [  TypeScript ](#tab-panel-2969)
 
 JavaScript
 
@@ -152,6 +156,8 @@ function validateCSRFToken(formData, request) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -206,6 +212,8 @@ function validateCSRFToken(formData: FormData, request: Request) {
 
 ```
 
+Explain Code
+
 Include the token as a hidden field in your consent form:
 
 ```
@@ -219,8 +227,8 @@ Include the token as a hidden field in your consent form:
 
 User-controlled content (client names, logos, URIs) can execute malicious scripts if not sanitized:
 
-* [  JavaScript ](#tab-panel-2966)
-* [  TypeScript ](#tab-panel-2967)
+* [  JavaScript ](#tab-panel-2972)
+* [  TypeScript ](#tab-panel-2973)
 
 JavaScript
 
@@ -279,6 +287,8 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -336,12 +346,14 @@ const logoUrl = sanitizeText(sanitizeUrl(client.logoUri));
 
 ```
 
+Explain Code
+
 ### Content Security Policy
 
 CSP headers instruct browsers to block dangerous content:
 
-* [  JavaScript ](#tab-panel-2964)
-* [  TypeScript ](#tab-panel-2965)
+* [  JavaScript ](#tab-panel-2970)
+* [  TypeScript ](#tab-panel-2971)
 
 JavaScript
 
@@ -391,6 +403,8 @@ function buildSecurityHeaders(setCookie, nonce) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -439,12 +453,14 @@ function buildSecurityHeaders(setCookie: string, nonce?: string): HeadersInit {
 
 ```
 
+Explain Code
+
 ## State handling
 
 Between the consent dialog and the OAuth callback, you need to ensure it is the same user. Use a state token stored in KV with a short expiration:
 
-* [  JavaScript ](#tab-panel-2968)
-* [  TypeScript ](#tab-panel-2969)
+* [  JavaScript ](#tab-panel-2974)
+* [  TypeScript ](#tab-panel-2975)
 
 JavaScript
 
@@ -538,6 +554,8 @@ async function validateOAuthState(request, kv) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -630,6 +648,8 @@ async function validateOAuthState(request: Request, kv: KVNamespace) {
 
 ```
 
+Explain Code
+
 ## Cookie security
 
 ### Why use the `__Host-` prefix?
@@ -663,8 +683,8 @@ __Host-APPROVED_CLIENTS_GOOGLE
 
 Maintain a registry of approved client IDs per user to avoid showing the consent dialog repeatedly:
 
-* [  JavaScript ](#tab-panel-2960)
-* [  TypeScript ](#tab-panel-2961)
+* [  JavaScript ](#tab-panel-2966)
+* [  TypeScript ](#tab-panel-2967)
 
 JavaScript
 
@@ -692,6 +712,8 @@ async function addApprovedClient(request, clientId, cookieSecret) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -727,6 +749,8 @@ async function addApprovedClient(
 
 
 ```
+
+Explain Code
 
 When reading the cookie, verify the HMAC signature before trusting the data. If the client is not in the approved list, show the consent dialog.
 

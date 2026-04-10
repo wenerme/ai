@@ -106,6 +106,8 @@ JSONC
 
 ```
 
+Explain Code
+
 The following is an example of a VPC Service for a service using custom HTTP and HTTPS ports as well, using a hostname. Note that since we are using a hostname, we must provide our service with a `resolver_network` that optionally has `resolver_ips`.
 
 JSONC
@@ -147,12 +149,14 @@ JSONC
 
 ```
 
+Explain Code
+
 ## Workers binding configuration
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-6963)
-* [  wrangler.toml ](#tab-panel-6964)
+* [  wrangler.jsonc ](#tab-panel-7021)
+* [  wrangler.toml ](#tab-panel-7022)
 
 JSONC
 
@@ -185,6 +189,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -209,8 +215,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-6965)
-* [  wrangler.toml ](#tab-panel-6966)
+* [  wrangler.jsonc ](#tab-panel-7023)
+* [  wrangler.toml ](#tab-panel-7024)
 
 JSONC
 
@@ -257,6 +263,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -289,6 +297,8 @@ remote = true
 
 
 ```
+
+Explain Code
 
 ## Required roles
 

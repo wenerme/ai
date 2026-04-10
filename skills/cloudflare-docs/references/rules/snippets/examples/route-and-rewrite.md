@@ -77,6 +77,8 @@ export default {
 
 ```
 
+Explain Code
+
 This configuration will perform the following rewrites:
 
 | Request URL                       | URL after rewrite                |

@@ -110,6 +110,8 @@ mdm.xml
 
 ```
 
+Explain Code
+
 ### plist
 
 [Download](https://developers.cloudflare.com/cloudflare-one/static/mdm/multiple-orgs/com.cloudflare.warp.plist) an example `.plist` file.
@@ -122,8 +124,8 @@ mdm.xml
 
 To switch to a different organization as a user:
 
-* [ Windows, macOS, and Linux ](#tab-panel-3719)
-* [ iOS and Android ](#tab-panel-3720)
+* [ Windows, macOS, and Linux ](#tab-panel-3725)
+* [ iOS and Android ](#tab-panel-3726)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.

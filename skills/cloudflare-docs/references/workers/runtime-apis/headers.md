@@ -49,6 +49,8 @@ headers.get('x-foo'); //=> "hello, world"
 
 ```
 
+Explain Code
+
 ## Differences
 
 The Workers implementation of the `Headers` API differs from the web standard in several ways. These differences are intentional, and reflect the server-side nature of the Workers runtime.

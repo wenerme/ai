@@ -46,8 +46,8 @@ To configure a KV namespace binding via the Cloudflare dashboard:
 
 Below is an example of how to use KV in your Function. In the following example, your KV namespace binding is called `TODO_LIST` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5435)
-* [  TypeScript ](#tab-panel-5436)
+* [  JavaScript ](#tab-panel-5479)
+* [  TypeScript ](#tab-panel-5480)
 
 JavaScript
 
@@ -128,8 +128,8 @@ To configure a Durable Object binding via the Cloudflare dashboard:
 
 Below is an example of how to use Durable Objects in your Function. In the following example, your DO binding is called `DURABLE_OBJECT` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5437)
-* [  TypeScript ](#tab-panel-5438)
+* [  JavaScript ](#tab-panel-5481)
+* [  TypeScript ](#tab-panel-5482)
 
 JavaScript
 
@@ -178,6 +178,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
 ```
 
+Explain Code
+
 ### Interact with your Durable Object namespaces locally
 
 You can interact with your Durable Object bindings locally in one of two ways:
@@ -213,8 +215,8 @@ To configure a R2 bucket binding via the Cloudflare dashboard:
 
 Below is an example of how to use R2 buckets in your Function. In the following example, your R2 bucket binding is called `BUCKET` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5439)
-* [  TypeScript ](#tab-panel-5440)
+* [  JavaScript ](#tab-panel-5483)
+* [  TypeScript ](#tab-panel-5484)
 
 JavaScript
 
@@ -265,6 +267,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 ```
 
+Explain Code
+
 ### Interact with your R2 buckets locally
 
 You can interact with your R2 bucket bindings locally in one of two ways:
@@ -311,8 +315,8 @@ To configure a D1 database binding via the Cloudflare dashboard:
 
 Below is an example of how to use D1 in your Function. In the following example, your D1 database binding is `NORTHWIND_DB` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5441)
-* [  TypeScript ](#tab-panel-5442)
+* [  JavaScript ](#tab-panel-5485)
+* [  TypeScript ](#tab-panel-5486)
 
 JavaScript
 
@@ -360,6 +364,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 
 ```
+
+Explain Code
 
 ### Interact with your D1 databases locally
 
@@ -414,8 +420,8 @@ To configure a Vectorize index binding via the Cloudflare dashboard:
 
 To use Vectorize index in your Pages Function, you can access your Vectorize index binding in your Pages Function code. In the following example, your Vectorize index binding is called `VECTORIZE_INDEX` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-5443)
-* [  TypeScript ](#tab-panel-5444)
+* [  JavaScript ](#tab-panel-5487)
+* [  TypeScript ](#tab-panel-5488)
 
 JavaScript
 
@@ -518,6 +524,8 @@ export async function onRequest(context) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -632,6 +640,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 ```
 
+Explain Code
+
 ## Workers AI
 
 [Workers AI](https://developers.cloudflare.com/workers-ai/) allows you to run machine learning models, powered by serverless GPUs, on Cloudflare’s global network.
@@ -653,8 +663,8 @@ To configure a Workers AI binding via the Cloudflare dashboard:
 
 To use Workers AI in your Pages Function, you can access your Workers AI binding in your Pages Function code. In the following example, your Workers AI binding is called `AI` and you can access the binding in your Pages Function code on `context.env`.
 
-* [  JavaScript ](#tab-panel-5445)
-* [  TypeScript ](#tab-panel-5446)
+* [  JavaScript ](#tab-panel-5489)
+* [  TypeScript ](#tab-panel-5490)
 
 JavaScript
 
@@ -680,6 +690,8 @@ export async function onRequest(context) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -712,6 +724,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 
 ```
+
+Explain Code
 
 ### Interact with your Workers AI binding locally
 
@@ -757,8 +771,8 @@ To configure a Service binding via the Cloudflare dashboard:
 
 Below is an example of how to use Service bindings in your Function. In the following example, your Service binding is called `SERVICE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5447)
-* [  TypeScript ](#tab-panel-5448)
+* [  JavaScript ](#tab-panel-5491)
+* [  TypeScript ](#tab-panel-5492)
 
 JavaScript
 
@@ -834,8 +848,8 @@ To configure a queue producer binding via the Cloudflare dashboard:
 
 Below is an example of how to use a queue producer binding in your Function. In this example, the binding is named `MY_QUEUE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5449)
-* [  TypeScript ](#tab-panel-5450)
+* [  JavaScript ](#tab-panel-5493)
+* [  TypeScript ](#tab-panel-5494)
 
 JavaScript
 
@@ -892,6 +906,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 ```
 
+Explain Code
+
 ### Interact with your Queue Producer binding locally
 
 If using a queue producer binding with a Pages Function, you will be able to send events to a queue locally. However, it is not possible to consume events from a queue with a Pages Function. You will have to create a [separate consumer Worker](https://developers.cloudflare.com/queues/get-started/#5-create-your-consumer-worker) with a [queue consumer handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) to consume events from the queue. Wrangler does not yet support running separate producer Functions and consumer Workers bound to the same queue locally.
@@ -902,8 +918,8 @@ Note
 
 PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
-* [  wrangler.jsonc ](#tab-panel-5457)
-* [  wrangler.toml ](#tab-panel-5458)
+* [  wrangler.jsonc ](#tab-panel-5501)
+* [  wrangler.toml ](#tab-panel-5502)
 
 JSONC
 
@@ -919,7 +935,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03"
+  "compatibility_date": "2026-04-10"
 
 }
 
@@ -934,7 +950,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 ```
@@ -955,8 +971,8 @@ To configure a Hyperdrive binding via the Cloudflare dashboard:
 
 Below is an example of how to use Hyperdrive in your Function. In the following example, your Hyperdrive config is named `HYPERDRIVE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5451)
-* [  TypeScript ](#tab-panel-5452)
+* [  JavaScript ](#tab-panel-5495)
+* [  TypeScript ](#tab-panel-5496)
 
 JavaScript
 
@@ -989,6 +1005,8 @@ export async function onRequest(context) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1040,6 +1058,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 ```
 
+Explain Code
+
 ### Interact with your Hyperdrive binding locally
 
 To interact with your Hyperdrive binding locally, you must provide a local connection string to your database that your Pages project will connect to directly. You can set an environment variable `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` with the connection string of the database, or use the Wrangler file to configure your Hyperdrive binding with a `localConnectionString` as specified in [Hyperdrive documentation for local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/). Then, run [npx wrangler pages dev <OUTPUT\_DIR>](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
@@ -1062,8 +1082,8 @@ To configure an Analytics Engine binding via the Cloudflare dashboard:
 
 Below is an example of how to use an Analytics Engine binding in your Function. In the following example, the binding is called `ANALYTICS_ENGINE` and you can access the binding in your Function code on `context.env`:
 
-* [  JavaScript ](#tab-panel-5453)
-* [  TypeScript ](#tab-panel-5454)
+* [  JavaScript ](#tab-panel-5497)
+* [  TypeScript ](#tab-panel-5498)
 
 JavaScript
 
@@ -1091,6 +1111,8 @@ export async function onRequest(context) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1126,6 +1148,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 ```
 
+Explain Code
+
 ### Interact with your Analytics Engine binding locally
 
 You cannot use an Analytics Engine binding locally.
@@ -1146,8 +1170,8 @@ To configure an environment variable via the Cloudflare dashboard:
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
 
-* [  JavaScript ](#tab-panel-5455)
-* [  TypeScript ](#tab-panel-5456)
+* [  JavaScript ](#tab-panel-5499)
+* [  TypeScript ](#tab-panel-5500)
 
 JavaScript
 
@@ -1197,6 +1221,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 
 ```
+
+Explain Code
 
 ### Interact with your environment variables locally
 

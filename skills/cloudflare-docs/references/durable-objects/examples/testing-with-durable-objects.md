@@ -26,9 +26,9 @@ Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@clo
 
 Install Vitest and the Workers Vitest integration as dev dependencies:
 
-* [ npm ](#tab-panel-4492)
-* [ pnpm ](#tab-panel-4493)
-* [ yarn ](#tab-panel-4494)
+* [ npm ](#tab-panel-4536)
+* [ pnpm ](#tab-panel-4537)
+* [ yarn ](#tab-panel-4538)
 
 Terminal window
 
@@ -61,8 +61,8 @@ yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
 
 This example tests a simple counter Durable Object with SQLite storage:
 
-* [  JavaScript ](#tab-panel-4507)
-* [  TypeScript ](#tab-panel-4508)
+* [  JavaScript ](#tab-panel-4551)
+* [  TypeScript ](#tab-panel-4552)
 
 src/index.js
 
@@ -175,6 +175,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -295,6 +297,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Configure Vitest
 
 Create a `vitest.config.ts` file that uses the `cloudflareTest()` plugin:
@@ -325,10 +329,12 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 Make sure your Wrangler configuration includes the Durable Object binding and SQLite migration:
 
-* [  wrangler.jsonc ](#tab-panel-4495)
-* [  wrangler.toml ](#tab-panel-4496)
+* [  wrangler.jsonc ](#tab-panel-4539)
+* [  wrangler.toml ](#tab-panel-4540)
 
 JSONC
 
@@ -342,7 +348,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "durable_objects": {
 
@@ -365,6 +371,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -375,7 +383,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[durable_objects.bindings]]
@@ -393,6 +401,8 @@ new_sqlite_classes = [ "Counter" ]
 
 
 ```
+
+Explain Code
 
 ## Define types for tests
 
@@ -442,8 +452,8 @@ declare module "cloudflare:workers" {
 
 You can get a stub to a Durable Object directly from the `env` object provided by `cloudflare:workers`:
 
-* [  JavaScript ](#tab-panel-4509)
-* [  TypeScript ](#tab-panel-4510)
+* [  JavaScript ](#tab-panel-4553)
+* [  TypeScript ](#tab-panel-4554)
 
 test/counter.test.js
 
@@ -560,6 +570,8 @@ describe("Counter Durable Object", () => {
 
 ```
 
+Explain Code
+
 test/counter.test.ts
 
 ```
@@ -675,12 +687,14 @@ describe("Counter Durable Object", () => {
 
 ```
 
+Explain Code
+
 ### Integration tests with `exports`
 
 Use `exports.default.fetch()` to test your Worker's HTTP handler, which routes requests to Durable Objects:
 
-* [  JavaScript ](#tab-panel-4511)
-* [  TypeScript ](#tab-panel-4512)
+* [  JavaScript ](#tab-panel-4555)
+* [  TypeScript ](#tab-panel-4556)
 
 test/integration.test.js
 
@@ -799,6 +813,8 @@ describe("Counter Worker integration", () => {
 
 ```
 
+Explain Code
+
 test/integration.test.ts
 
 ```
@@ -878,12 +894,14 @@ describe("Counter Worker integration", () => {
 
 ```
 
+Explain Code
+
 ### Direct access to Durable Object internals
 
 Use `runInDurableObject()` to access instance properties and storage directly. This is useful for verifying internal state or testing private methods:
 
-* [  JavaScript ](#tab-panel-4505)
-* [  TypeScript ](#tab-panel-4506)
+* [  JavaScript ](#tab-panel-4549)
+* [  TypeScript ](#tab-panel-4550)
 
 test/direct-access.test.js
 
@@ -968,6 +986,8 @@ describe("Direct Durable Object access", () => {
 
 
 ```
+
+Explain Code
 
 test/direct-access.test.ts
 
@@ -1065,12 +1085,14 @@ describe("Direct Durable Object access", () => {
 
 ```
 
+Explain Code
+
 ### Test isolation
 
 Each test automatically gets isolated storage. Durable Objects created in one test do not affect other tests:
 
-* [  JavaScript ](#tab-panel-4499)
-* [  TypeScript ](#tab-panel-4500)
+* [  JavaScript ](#tab-panel-4543)
+* [  TypeScript ](#tab-panel-4544)
 
 test/isolation.test.js
 
@@ -1125,6 +1147,8 @@ describe("Test isolation", () => {
 
 ```
 
+Explain Code
+
 test/isolation.test.ts
 
 ```
@@ -1178,12 +1202,14 @@ describe("Test isolation", () => {
 
 ```
 
+Explain Code
+
 ### Testing SQLite storage
 
 SQLite-backed Durable Objects work seamlessly in tests. The SQL API is available when your Durable Object class is configured with `new_sqlite_classes` in your Wrangler configuration:
 
-* [  JavaScript ](#tab-panel-4501)
-* [  TypeScript ](#tab-panel-4502)
+* [  JavaScript ](#tab-panel-4545)
+* [  TypeScript ](#tab-panel-4546)
 
 test/sqlite.test.js
 
@@ -1249,6 +1275,8 @@ describe("SQLite in Durable Objects", () => {
 
 ```
 
+Explain Code
+
 test/sqlite.test.ts
 
 ```
@@ -1313,12 +1341,14 @@ describe("SQLite in Durable Objects", () => {
 
 ```
 
+Explain Code
+
 ### Testing alarms
 
 Use `runDurableObjectAlarm()` to immediately trigger a scheduled alarm without waiting for the timer. This allows you to test alarm handlers synchronously:
 
-* [  JavaScript ](#tab-panel-4503)
-* [  TypeScript ](#tab-panel-4504)
+* [  JavaScript ](#tab-panel-4547)
+* [  TypeScript ](#tab-panel-4548)
 
 test/alarm.test.js
 
@@ -1386,6 +1416,8 @@ describe("Durable Object alarms", () => {
 
 
 ```
+
+Explain Code
 
 test/alarm.test.ts
 
@@ -1460,10 +1492,12 @@ describe("Durable Object alarms", () => {
 
 ```
 
+Explain Code
+
 To test alarms, add an `alarm()` method to your Durable Object:
 
-* [  JavaScript ](#tab-panel-4497)
-* [  TypeScript ](#tab-panel-4498)
+* [  JavaScript ](#tab-panel-4541)
+* [  TypeScript ](#tab-panel-4542)
 
 src/index.js
 
@@ -1499,6 +1533,8 @@ export class Counter extends DurableObject {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -1532,6 +1568,8 @@ export class Counter extends DurableObject {
 
 
 ```
+
+Explain Code
 
 ## Running tests
 

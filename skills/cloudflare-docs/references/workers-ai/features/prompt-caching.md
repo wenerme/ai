@@ -82,6 +82,8 @@ curl -X POST \
 
 ```
 
+Explain Code
+
 ### Workers AI binding
 
 JavaScript
@@ -118,6 +120,8 @@ const response = await env.AI.run(
 
 
 ```
+
+Explain Code
 
 ## Structuring prompts for caching
 

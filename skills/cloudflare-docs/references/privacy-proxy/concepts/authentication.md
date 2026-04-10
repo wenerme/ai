@@ -120,6 +120,8 @@ Privacy Pass uses a three-party architecture:
 
 ```
 
+Explain Code
+
 The Client sends the token request through the Attester to maintain unlinkability. This ensures the Issuer cannot correlate token requests with specific attestation events or Client identities.
 
 ### Token redemption

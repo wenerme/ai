@@ -324,6 +324,8 @@ function getTestCommand(projectType: string): string {
 
 ```
 
+Explain Code
+
 ## 3\. Test locally
 
 Start the dev server:

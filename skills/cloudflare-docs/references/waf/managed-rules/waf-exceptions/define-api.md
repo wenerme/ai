@@ -63,6 +63,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "messages": []  
 }  
 ```  
+Explain Code  
 Save the entry point ruleset ID (`060013b1eeb14c93b0dcd896537e0d2c`) for the next step.
 2. Invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation (a `POST` request) to add an exception (or skip rule) at the beginning of the rules list, since a skip rule applies only to rules listed after it. The exact rule location is defined in the [position object](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/#define-the-rule-position-in-the-ruleset).  
 Create a zone ruleset rule  
@@ -81,7 +82,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
         "before": ""  
     }  
   }'  
-```
+```  
+Explain Code
 
 For more information on skipping all remaining rules via API, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#skip-all-remaining-rules) in the Ruleset Engine documentation.
 
@@ -130,6 +132,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "messages": []  
 }  
 ```  
+Explain Code  
 Identify the rule deploying the Cloudflare Managed Ruleset by searching for an `execute` rule with `action_parameters` \> `id` equal to ...376e9aee  (the managed ruleset ID).  
 Note  
 To get the IDs of existing WAF managed rulesets, refer to [Available managed rulesets](https://developers.cloudflare.com/waf/managed-rules/#available-managed-rulesets) or use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation.  
@@ -155,7 +158,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
         "before": "1bdb49371c1f46958fc8b985efcb79e7"  
     }  
   }'  
-```
+```  
+Explain Code
 
 For more information on skipping one or more managed rulesets via API, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/#skip-one-or-more-managed-rulesets) in the Ruleset Engine documentation.
 
@@ -204,6 +208,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/efb7b8c949ac4
   "messages": []  
 }  
 ```  
+Explain Code  
 Take note of the ID of the rule you want to skip ( ...0e48a85d  in this example).
 2. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the current configuration of the [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) of the `http_request_firewall_managed` phase.  
 Get a zone entry point ruleset  
@@ -246,6 +251,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "messages": []  
 }  
 ```  
+Explain Code  
 Identify the rule deploying the Cloudflare Managed Ruleset by searching for an `execute` rule with `action_parameters` \> `id` equal to ...376e9aee  (the managed ruleset ID).  
 Note  
 To get the IDs of existing WAF managed rulesets, refer to [Available managed rulesets](https://developers.cloudflare.com/waf/managed-rules/#available-managed-rulesets) or use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation.  
@@ -276,7 +282,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
         "before": "1bdb49371c1f46958fc8b985efcb79e7"  
     }  
   }'  
-```
+```  
+Explain Code
 
 The `action_parameters` \> `rules` object contains the ID of the Cloudflare Managed Ruleset with an associated list of rule IDs to skip (in this case, only one rule). The [position object](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/#define-the-rule-position-in-the-ruleset) defines the exact rule placement in the entry point ruleset (before rule `1bdb49371c1f46958fc8b985efcb79e7`).
 

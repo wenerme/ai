@@ -42,9 +42,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-6903)
-* [ Old dashboard ](#tab-panel-6904)
-* [ API ](#tab-panel-6905)
+* [  New dashboard ](#tab-panel-6961)
+* [ Old dashboard ](#tab-panel-6962)
+* [ API ](#tab-panel-6963)
 
 Note
 
@@ -101,6 +101,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall/ua_rules" \
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

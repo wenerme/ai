@@ -146,6 +146,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gatew
 
 ```
 
+Explain Code
+
 ### Method 3: Retrieve the `cf-aig-log-id` via a binding
 
 You can also retrieve the `cf-aig-log-id` using a binding, which streamlines the process. Here's how to retrieve the log ID directly:
@@ -181,6 +183,8 @@ const myLogId = env.AI.aiGatewayLogId;
 
 
 ```
+
+Explain Code
 
 Note:
 

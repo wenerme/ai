@@ -103,14 +103,16 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
 
 ```
 
+Explain Code
+
 You can now add this new app to the Breakout traffic list in your Cloudflare One Appliance.
 
 ### Add an application to Cloudflare One Appliance
 
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
-* [ Dashboard ](#tab-panel-3591)
-* [ API ](#tab-panel-3592)
+* [ Dashboard ](#tab-panel-3597)
+* [ API ](#tab-panel-3598)
 
 1. Log in to the [Cloudflare One dashboard](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -155,6 +157,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
     ]  
   }  
 ```  
+Explain Code  
 Take note of the `"managed_app_id"` value for any application you want to add.
 2. Send a `POST` request to add new apps to the Breakout traffic policy.  
 Required API token permissions  
@@ -182,12 +185,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 
 ### Delete an application from Cloudflare One Appliance
 
-* [ Dashboard ](#tab-panel-3589)
-* [ API ](#tab-panel-3590)
+* [ Dashboard ](#tab-panel-3595)
+* [ API ](#tab-panel-3596)
 
 1. Log in to the [Cloudflare One dashboard](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
@@ -227,6 +231,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
     ]  
   }  
 ```  
+Explain Code  
 Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Breakout traffic policy.  
 Terminal window  
@@ -246,7 +251,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites
     "errors": [],  
     "messages": []  
 }  
-```
+```  
+Explain Code
 
 ## Designate WAN ports for breakout apps
 

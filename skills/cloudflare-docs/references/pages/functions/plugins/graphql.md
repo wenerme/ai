@@ -97,6 +97,8 @@ export const onRequest: PagesFunction = graphQLPlugin({
 
 ```
 
+Explain Code
+
 This Plugin only exposes a single route, so wherever it is mounted is wherever it will be available. In the above example, because it is mounted in `functions/graphql.ts`, the server will be available on `/graphql` of your Pages project.
 
 ```json

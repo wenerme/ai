@@ -105,6 +105,8 @@ ws.on("message", (message) => {
 
 ```
 
+Explain Code
+
 ## Example response
 
 ```
@@ -148,6 +150,8 @@ ws.on("message", (message) => {
 
 ```
 
+Explain Code
+
 ## Example streaming request
 
 For streaming requests, AI Gateway sends an initial message with request metadata indicating the stream is starting:
@@ -176,6 +180,8 @@ For streaming requests, AI Gateway sends an initial message with request metadat
 
 
 ```
+
+Explain Code
 
 After this initial message, all streaming chunks are relayed in real-time to the WebSocket connection as they arrive from the inference provider. Only the `eventId` field is included in the metadata for these streaming chunks. The `eventId` allows AI Gateway to include a client-defined ID with each message, even in a streaming WebSocket environment.
 
@@ -228,6 +234,8 @@ Once all chunks for a request have been streamed, AI Gateway sends a final messa
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/websockets-api/","name":"WebSockets API"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/websockets-api/non-realtime-api/","name":"Non-realtime WebSockets API"}}]}

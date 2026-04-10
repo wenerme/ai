@@ -30,10 +30,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7189)
-* [  TypeScript ](#tab-panel-7190)
-* [  Hono ](#tab-panel-7191)
-* [  Python ](#tab-panel-7192)
+* [  JavaScript ](#tab-panel-7247)
+* [  TypeScript ](#tab-panel-7248)
+* [  Hono ](#tab-panel-7249)
+* [  Python ](#tab-panel-7250)
 
 JavaScript
 
@@ -72,6 +72,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -108,6 +110,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -152,6 +156,8 @@ export default app;
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -187,6 +193,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/aggregate-requests/","name":"Aggregate requests"}}]}

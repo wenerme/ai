@@ -38,8 +38,8 @@ Use non-streaming (`exec()`) for:
 
 Use `execStream()` to get real-time output:
 
-* [  JavaScript ](#tab-panel-6479)
-* [  TypeScript ](#tab-panel-6480)
+* [  JavaScript ](#tab-panel-6523)
+* [  TypeScript ](#tab-panel-6524)
 
 JavaScript
 
@@ -92,6 +92,8 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -143,12 +145,14 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 ```
 
+Explain Code
+
 ## Stream to client
 
 Return streaming output to users via Server-Sent Events:
 
-* [  JavaScript ](#tab-panel-6475)
-* [  TypeScript ](#tab-panel-6476)
+* [  JavaScript ](#tab-panel-6519)
+* [  TypeScript ](#tab-panel-6520)
 
 JavaScript
 
@@ -189,6 +193,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -228,10 +234,12 @@ export default {
 
 ```
 
+Explain Code
+
 Client-side consumption:
 
-* [  JavaScript ](#tab-panel-6473)
-* [  TypeScript ](#tab-panel-6474)
+* [  JavaScript ](#tab-panel-6517)
+* [  TypeScript ](#tab-panel-6518)
 
 JavaScript
 
@@ -264,6 +272,8 @@ eventSource.addEventListener("complete", (event) => {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -295,12 +305,14 @@ eventSource.addEventListener('complete', (event) => {
 
 ```
 
+Explain Code
+
 ## Stream process logs
 
 Monitor background process output:
 
-* [  JavaScript ](#tab-panel-6477)
-* [  TypeScript ](#tab-panel-6478)
+* [  JavaScript ](#tab-panel-6521)
+* [  TypeScript ](#tab-panel-6522)
 
 JavaScript
 
@@ -333,6 +345,8 @@ for await (const log of parseSSEStream(logStream)) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -364,12 +378,14 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 ```
 
+Explain Code
+
 ## Handle errors
 
 Check exit codes and handle stream errors:
 
-* [  JavaScript ](#tab-panel-6481)
-* [  TypeScript ](#tab-panel-6482)
+* [  JavaScript ](#tab-panel-6525)
+* [  TypeScript ](#tab-panel-6526)
 
 JavaScript
 
@@ -411,6 +427,8 @@ for await (const event of parseSSEStream(stream)) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -450,6 +468,8 @@ for await (const event of parseSSEStream<ExecEvent>(stream)) {
 
 
 ```
+
+Explain Code
 
 ## Best practices
 

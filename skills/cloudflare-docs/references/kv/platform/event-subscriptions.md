@@ -65,6 +65,8 @@ Triggered when a namespace is created.
 
 ```
 
+Explain Code
+
 #### `namespace.deleted`
 
 Triggered when a namespace is deleted.
@@ -107,6 +109,8 @@ Triggered when a namespace is deleted.
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/kv/","name":"KV"}},{"@type":"ListItem","position":3,"item":{"@id":"/kv/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/kv/platform/event-subscriptions/","name":"Event subscriptions"}}]}

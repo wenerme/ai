@@ -54,6 +54,8 @@ formatDateTime(toDateTime('2022-12-01 16:17:00', 'America/New_York'), '%Y-%m-%d'
 
 ```
 
+Explain Code
+
 ## now
 
 Usage:
@@ -122,6 +124,8 @@ toDateTime('2022-12-01 16:17:00', 'America/New_York')
 
 
 ```
+
+Explain Code
 
 ## toYear New
 
@@ -370,6 +374,8 @@ ORDER BY hour ASC
 
 
 ```
+
+Explain Code
 
 ## toStartOfYear New
 

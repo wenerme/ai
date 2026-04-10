@@ -171,6 +171,8 @@ Sitemap: https://www.crawlstop.com/sitemap.xml
 
 ```
 
+Explain Code
+
 ### No robots.txt file
 
 If your website does not have a `robots.txt` file, Cloudflare creates a new file with our managed block directives and serves it for you.
@@ -179,8 +181,8 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 To implement a `robots.txt` file on your domain:
 
-* [  New dashboard ](#tab-panel-3206)
-* [ Old dashboard ](#tab-panel-3207)
+* [  New dashboard ](#tab-panel-3212)
+* [ Old dashboard ](#tab-panel-3213)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -249,6 +251,8 @@ Content Signals Policy
 
 
 ```
+
+Explain Code
 
 Cloudflare's Content Signals Policy is included by default in the `robots.txt` file when you turn on **robots.txt setting**.
 

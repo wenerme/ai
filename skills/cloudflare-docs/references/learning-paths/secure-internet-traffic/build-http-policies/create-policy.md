@@ -24,8 +24,8 @@ Use a standard naming convention when building all policies. Policy names should
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-5233)
-* [ API ](#tab-panel-5234)
+* [ Dashboard ](#tab-panel-5277)
+* [ API ](#tab-panel-5278)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
@@ -66,6 +66,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "device_posture": ""  
   }'  
 ```  
+Explain Code  
 ```  
 {  
    "success": true,  
@@ -93,7 +94,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "identity": "",  
     "device_posture": ""  
   }'  
-```
+```  
+Explain Code
 
 For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 

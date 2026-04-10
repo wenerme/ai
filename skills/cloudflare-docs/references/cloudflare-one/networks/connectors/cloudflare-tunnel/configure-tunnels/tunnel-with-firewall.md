@@ -239,6 +239,8 @@ region1.v2.argotunnel.com. 86400 IN  A  198.41.192.77
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -279,6 +281,8 @@ region1.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a0::10
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -316,6 +320,8 @@ region2.v2.argotunnel.com. 86400 IN  A  198.41.200.23
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -356,6 +362,8 @@ region2.v2.argotunnel.com. 86400 IN  AAAA  2606:4700:a8::10
 
 
 ```
+
+Explain Code
 
 ### Test with PowerShell
 

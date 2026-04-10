@@ -263,10 +263,12 @@ export default {
 
 ```
 
+Explain Code
+
 Configure it in your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7410)
-* [  wrangler.toml ](#tab-panel-7411)
+* [  wrangler.jsonc ](#tab-panel-7468)
+* [  wrangler.toml ](#tab-panel-7469)
 
 JSONC
 

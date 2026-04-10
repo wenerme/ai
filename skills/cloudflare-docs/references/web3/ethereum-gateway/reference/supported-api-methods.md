@@ -142,6 +142,8 @@ curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
 
 ```
 
+Explain Code
+
 #### Response
 
 ```
@@ -202,6 +204,8 @@ curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
 
 
 ```
+
+Explain Code
 
 ### Limitations
 

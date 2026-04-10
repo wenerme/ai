@@ -30,8 +30,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-4515)
-* [  wrangler.toml ](#tab-panel-4516)
+* [  wrangler.jsonc ](#tab-panel-4559)
+* [  wrangler.toml ](#tab-panel-4560)
 
 JSONC
 
@@ -78,6 +78,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -105,8 +107,10 @@ class_name = "YourDurableObject"
 
 ```
 
-* [  TypeScript ](#tab-panel-4513)
-* [  Python ](#tab-panel-4514)
+Explain Code
+
+* [  TypeScript ](#tab-panel-4557)
+* [  Python ](#tab-panel-4558)
 
 TypeScript
 
@@ -210,6 +214,8 @@ export class YourDurableObject extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -288,6 +294,8 @@ class YourDurableObject(DurableObject):
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/use-kv-from-durable-objects/","name":"Use Workers KV from Durable Objects"}}]}

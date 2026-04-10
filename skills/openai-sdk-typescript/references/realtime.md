@@ -5222,6 +5222,14 @@
 
               - `"input_file"`
 
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
+
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -5911,6 +5919,14 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail?: "low" | "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data?: string`
 
@@ -8559,6 +8575,14 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data?: string`
 
@@ -13481,6 +13505,14 @@
 
                 - `"input_file"`
 
+              - `detail?: "low" | "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
+
               - `file_data?: string`
 
                 The content of the file to be sent to the model.
@@ -14447,6 +14479,14 @@
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail?: "low" | "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data?: string`
 
@@ -16439,6 +16479,14 @@
 
           - `"input_file"`
 
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
+
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -17091,6 +17139,14 @@
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data?: string`
 
@@ -19524,6 +19580,14 @@
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail?: "low" | "high"`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data?: string`
 
@@ -22816,6 +22880,14 @@
 
               - `"input_file"`
 
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
+
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -23789,6 +23861,14 @@
 
               - `"input_file"`
 
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
+
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -24761,6 +24841,14 @@
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data?: string`
 
@@ -25995,6 +26083,14 @@ Returns the created client secret and the effective session object. The client s
 
               - `"input_file"`
 
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
+
             - `file_data?: string`
 
               The content of the file to be sent to the model.
@@ -26961,6 +27057,14 @@ Returns the created client secret and the effective session object. The client s
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data?: string`
 
@@ -27972,6 +28076,14 @@ console.log(clientSecret.expires_at);
 
           - `"input_file"`
 
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
+
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -28907,6 +29019,14 @@ handle it.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data?: string`
 

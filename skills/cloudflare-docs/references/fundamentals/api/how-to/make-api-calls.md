@@ -264,6 +264,8 @@ Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID/
 
 ```
 
+Explain Code
+
 ConvertFrom-Json handling of DateTime values
 
 The `ConvertTo-Json` cmdlet tries to convert strings formatted as timestamps to DateTime values, according to the exact format in the string. For details on this behavior, refer to the notes in the [ConvertFrom-Json ↗](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertfrom-json#notes) documentation.
@@ -312,9 +314,9 @@ The procedure for setting and referencing environment variables depends on your 
 
 ### Define an environment variable
 
-* [ Linux and macOS ](#tab-panel-4593)
-* [ PowerShell ](#tab-panel-4594)
-* [ Windows Command Prompt ](#tab-panel-4595)
+* [ Linux and macOS ](#tab-panel-4637)
+* [ PowerShell ](#tab-panel-4638)
+* [ Windows Command Prompt ](#tab-panel-4639)
 
 To define a `ZONE_ID` environment variable for the current shell session, run the following command:
 
@@ -381,9 +383,9 @@ Running this command will not affect the current window. You will need to either
 
 ### Reference an environment variable
 
-* [ Linux and macOS ](#tab-panel-4596)
-* [ PowerShell ](#tab-panel-4597)
-* [ Windows Command Prompt ](#tab-panel-4598)
+* [ Linux and macOS ](#tab-panel-4640)
+* [ PowerShell ](#tab-panel-4641)
+* [ Windows Command Prompt ](#tab-panel-4642)
 
 When referencing an environment variable in a command, add a `$` prefix to the variable name (for example, `$ZONE_ID`). Make sure that the full string referencing the variable is either unquoted (if it does not contain spaces) or enclosed in double quotes (`""`).
 

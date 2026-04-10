@@ -211,7 +211,6 @@ You can find these values in your Google Cloud Console:
 Make sure your service account has the necessary permissions to access Vertex AI services:
 
 * `aiplatform.endpoints.predict`
-* `aiplatform.endpoints.streamingPredict` (for streaming responses)
 
 Example IAM policy:
 

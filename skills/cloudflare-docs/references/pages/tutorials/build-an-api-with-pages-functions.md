@@ -115,6 +115,8 @@ export default App;
 
 ```
 
+Explain Code
+
 1. In the `src` directory, create a new folder called `components`.
 2. In the `components` directory, create two files: `posts.js`, and `post.js`. These files will load the blog posts from your API, and render them.
 3. Populate `posts.js` with the following code:
@@ -182,6 +184,8 @@ export default Posts;
 
 
 ```
+
+Explain Code
 
 1. Populate `post.js` with the following code:
 
@@ -253,6 +257,8 @@ export default Post;
 
 
 ```
+
+Explain Code
 
 ## 2\. Build your API
 
@@ -327,6 +333,8 @@ export default posts;
 
 ```
 
+Explain Code
+
 1. In the `post` directory, create an `[[id]].js` file.
 2. Populate `[[id]].js` with the following code:
 
@@ -365,6 +373,8 @@ export function onRequestGet(context) {
 
 
 ```
+
+Explain Code
 
 `[[id]].js` is a [dynamic route](https://developers.cloudflare.com/pages/functions/routing#dynamic-routes) which is used to accept a blog post `id`.
 

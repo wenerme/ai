@@ -22,9 +22,9 @@ Gateway supports creating [lists](https://developers.cloudflare.com/cloudflare-o
 
 ## Example list policy
 
-* [ Dashboard ](#tab-panel-5191)
-* [ API ](#tab-panel-5192)
-* [ Terraform ](#tab-panel-5193)
+* [ Dashboard ](#tab-panel-5235)
+* [ API ](#tab-panel-5236)
+* [ Terraform ](#tab-panel-5237)
 
 The following DNS policy will allow access to all approved corporate domains included in a list called **Corporate Domains**.
 
@@ -67,6 +67,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 To create a new DNS policy using **Terraform** to allow access to all approved corporate domains included in a list called **Corporate Domains**.
 
 ```
@@ -93,6 +95,8 @@ resource "cloudflare_zero_trust_gateway_policy" "allow_corporate_domain_access" 
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-dns-policies/","name":"Build DNS security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-dns-policies/create-list/","name":"Create an allowlist or blocklist"}}]}

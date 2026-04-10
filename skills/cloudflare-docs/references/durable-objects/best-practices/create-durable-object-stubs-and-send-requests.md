@@ -32,8 +32,8 @@ By writing a Durable Object class which inherits from the built-in type `Durable
 
 All RPC calls are [asynchronous](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/), accept and return [serializable types](https://developers.cloudflare.com/workers/runtime-apis/rpc/), and [propagate exceptions](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) to the caller without a stack trace. Refer to [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/) for complete details.
 
-* [  JavaScript ](#tab-panel-4395)
-* [  TypeScript ](#tab-panel-4396)
+* [  JavaScript ](#tab-panel-4439)
+* [  TypeScript ](#tab-panel-4440)
 
 JavaScript
 
@@ -86,6 +86,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -146,6 +148,8 @@ export default {
 
 ```
 
+Explain Code
+
 Note
 
 With RPC, the `DurableObject` superclass defines `ctx` and `env` as class properties. What was previously called `state` is now called `ctx` when you extend the `DurableObject` class. The name `ctx` is adopted rather than `state` for the `DurableObjectState` interface to be consistent between `DurableObject` and `WorkerEntrypoint` objects.
@@ -156,8 +160,8 @@ Refer to [Build a Counter](https://developers.cloudflare.com/durable-objects/exa
 
 If your project is stuck on a compatibility date before [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc), or has the need to send a [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object and return a `Response` object, then you should send requests to a Durable Object via the fetch handler.
 
-* [  JavaScript ](#tab-panel-4391)
-* [  TypeScript ](#tab-panel-4392)
+* [  JavaScript ](#tab-panel-4435)
+* [  TypeScript ](#tab-panel-4436)
 
 JavaScript
 
@@ -210,6 +214,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -270,12 +276,14 @@ export default {
 
 ```
 
+Explain Code
+
 The `URL` associated with the [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) object passed to the `fetch()` handler of your Durable Object must be a well-formed URL, but does not have to be a publicly-resolvable hostname.
 
 Without RPC, customers frequently construct requests which corresponded to private methods on the Durable Object and dispatch requests from the `fetch` handler. RPC is obviously more ergonomic in this example.
 
-* [  JavaScript ](#tab-panel-4393)
-* [  TypeScript ](#tab-panel-4394)
+* [  JavaScript ](#tab-panel-4437)
+* [  TypeScript ](#tab-panel-4438)
 
 JavaScript
 
@@ -367,6 +375,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -465,6 +475,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/","name":"Invoke methods"}}]}

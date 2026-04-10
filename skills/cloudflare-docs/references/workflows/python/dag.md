@@ -88,6 +88,8 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 In this example, `dep_1` and `dep_2` are run concurrently before execution of `final_step`, which depends on both of them.
 
 Having `concurrent=True` allows dependencies to be resolved concurrently. If a dependency has already completed, it will be skipped and its return value will be reused.

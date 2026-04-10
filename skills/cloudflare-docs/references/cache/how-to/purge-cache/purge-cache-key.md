@@ -66,6 +66,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
 
 ```
 
+Explain Code
+
 ## Purge by geo
 
 Instantly purge resources for a location-based Cache Key by specifying the two-letter country code. Spain is used in the example below.
@@ -108,6 +110,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
 
 ```
 
+Explain Code
+
 ## Purge by language
 
 For a Cache Key based on language, purge the asset by passing the `accept-language` header. Refer to the example API request below to instantly purge all assets in Chinese (PRC).
@@ -149,6 +153,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/purge-cache/","name":"Purge cache"}},{"@type":"ListItem","position":5,"item":{"@id":"/cache/how-to/purge-cache/purge-cache-key/","name":"Purge cache key resources"}}]}

@@ -28,8 +28,8 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-5433)
-* [  TypeScript ](#tab-panel-5434)
+* [  JavaScript ](#tab-panel-5477)
+* [  TypeScript ](#tab-panel-5478)
 
 JavaScript
 
@@ -61,6 +61,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -102,6 +104,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 In the above code, you have configured your Function to return a response under all requests headed for `/api/`. Otherwise, your Function will fallback to returning static assets.
 

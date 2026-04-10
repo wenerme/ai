@@ -68,6 +68,8 @@ Command Result : 0 (Success)
 
 ```
 
+Explain Code
+
 Next, the partition needs to be assigned to the client, in this case your key server.
 
 Terminal window
@@ -139,6 +141,8 @@ Command Result : No Error
 
 
 ```
+
+Explain Code
 
 ---
 

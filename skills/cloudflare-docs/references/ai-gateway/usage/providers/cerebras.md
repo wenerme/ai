@@ -71,6 +71,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cerebras/cha
 
 ```
 
+Explain Code
+
 ## OpenAI-Compatible Endpoint
 
 You can also use the [OpenAI-compatible endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) (`/ai-gateway/usage/chat-completion/`) to access Cerebras models using the OpenAI API schema. To do so, send your requests to:

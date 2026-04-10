@@ -93,6 +93,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+Explain Code
+
 The returned results will be in JSON format (as requested), so piping the output to `jq` will make them easier to read, like in the following example:
 
 ```
@@ -306,6 +308,8 @@ The returned results will be in JSON format (as requested), so piping the output
 
 ```
 
+Explain Code
+
 ## Top 10 consuming URLs in a zone
 
 We are going to use the GraphQL Analytics API to query the top 10 consuming URLs from a zone, helping you identify the URLs with the highest resource usage. Here are some configuration instructions:
@@ -368,6 +372,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
+
+Explain Code
 
 ## Footnotes
 

@@ -77,6 +77,8 @@ curl https://<INSTANCE_ID>.search.ai.cloudflare.com/mcp \
 
 ```
 
+Explain Code
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/usage/","name":"Search API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/usage/mcp/","name":"MCP"}}]}
 ```

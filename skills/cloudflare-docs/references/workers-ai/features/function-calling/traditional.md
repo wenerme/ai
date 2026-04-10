@@ -86,6 +86,8 @@ return new Response(JSON.stringify(response.tool_calls));
 
 ```
 
+Explain Code
+
 The LLM will then return a JSON object with the required arguments and the name of the tool that was called. You can then pass this JSON object to make an API call.
 
 ```

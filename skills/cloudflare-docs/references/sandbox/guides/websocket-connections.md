@@ -80,6 +80,8 @@ console.log("WebSocket server listening on port 8080");
 
 ```
 
+Explain Code
+
 **Extend the Dockerfile:**
 
 Dockerfile
@@ -124,8 +126,8 @@ exec bun dist/index.js
 
 **Connect from your Worker:**
 
-* [  JavaScript ](#tab-panel-6485)
-* [  TypeScript ](#tab-panel-6486)
+* [  JavaScript ](#tab-panel-6529)
+* [  TypeScript ](#tab-panel-6530)
 
 JavaScript
 
@@ -158,6 +160,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -192,6 +196,8 @@ export default {
 
 ```
 
+Explain Code
+
 **Client connects:**
 
 JavaScript
@@ -211,8 +217,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Get a public URL for your WebSocket server:
 
-* [  JavaScript ](#tab-panel-6487)
-* [  TypeScript ](#tab-panel-6488)
+* [  JavaScript ](#tab-panel-6531)
+* [  TypeScript ](#tab-panel-6532)
 
 JavaScript
 
@@ -264,6 +270,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -317,6 +325,8 @@ export default {
 
 ```
 
+Explain Code
+
 **Client connects to preview URL:**
 
 JavaScript
@@ -345,8 +355,8 @@ ws.send('Hello!'); // Receives: "Echo: Hello!"
 
 Your Worker can connect to a WebSocket service to get real-time data, even when the incoming request isn't a WebSocket:
 
-* [  JavaScript ](#tab-panel-6489)
-* [  TypeScript ](#tab-panel-6490)
+* [  JavaScript ](#tab-panel-6533)
+* [  TypeScript ](#tab-panel-6534)
 
 JavaScript
 
@@ -430,6 +440,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -520,6 +532,8 @@ export default {
 
 ```
 
+Explain Code
+
 This pattern is useful when you need streaming data from sandbox services but want to return HTTP responses to clients.
 
 ## Troubleshooting
@@ -528,8 +542,8 @@ This pattern is useful when you need streaming data from sandbox services but wa
 
 Verify request has WebSocket headers:
 
-* [  JavaScript ](#tab-panel-6483)
-* [  TypeScript ](#tab-panel-6484)
+* [  JavaScript ](#tab-panel-6527)
+* [  TypeScript ](#tab-panel-6528)
 
 JavaScript
 

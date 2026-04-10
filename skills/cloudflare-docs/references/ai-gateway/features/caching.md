@@ -32,8 +32,8 @@ This configuration benefits use cases with limited prompt options. For example, 
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-3050)
-* [ API ](#tab-panel-3051)
+* [ Dashboard ](#tab-panel-3056)
+* [ API ](#tab-panel-3057)
 
 To set the default caching configuration in the dashboard:
 
@@ -114,6 +114,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 ```
 
+Explain Code
+
 ### Cache TTL (cf-aig-cache-ttl)
 
 Cache TTL, or Time To Live, is the duration a cached request remains valid before it expires and is refreshed from the original source. You can use **cf-aig-cache-ttl** to set the desired caching duration in seconds. The minimum TTL is 60 seconds and the maximum TTL is one month.
@@ -157,6 +159,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 ```
 
+Explain Code
+
 ### Custom cache key (cf-aig-cache-key)
 
 Custom cache keys let you override the default cache key in order to precisely set the cacheability setting for any resource. To override the default cache key, you can use the header **cf-aig-cache-key**.
@@ -199,6 +203,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 
 ```
+
+Explain Code
 
 AI Gateway caching behavior
 

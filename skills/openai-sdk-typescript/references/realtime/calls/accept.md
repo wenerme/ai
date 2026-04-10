@@ -446,6 +446,14 @@ handle it.
 
           - `"input_file"`
 
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
+
         - `file_data?: string`
 
           The content of the file to be sent to the model.

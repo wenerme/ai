@@ -37,8 +37,8 @@ A monitor issues health monitor requests at regular intervals to evaluate the he
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
-* [ Dashboard ](#tab-panel-5346)
-* [ API ](#tab-panel-5347)
+* [ Dashboard ](#tab-panel-5390)
+* [ API ](#tab-panel-5391)
 
 **Set up the monitor**
 
@@ -162,6 +162,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/m
 
 ```
 
+Explain Code
+
 The response contains the complete definition of the new monitor.
 
 Response
@@ -237,6 +239,8 @@ Response
 
 ```
 
+Explain Code
+
 **Prepare your servers**
 
 Make sure that your firewall or web server does not block or rate limit your configured health monitors or requests associated with [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
@@ -266,8 +270,8 @@ Within Cloudflare, pools represent your endpoints and how they are organized. As
 
 If you are familiar with DNS terminology, think of a pool as a “record set,” except Cloudflare only returns addresses that are considered healthy. You can attach health monitors to individual pools for customized monitoring. A pool can have either a single monitor or a monitor group attached — but not both.
 
-* [ Dashboard ](#tab-panel-5350)
-* [ API ](#tab-panel-5351)
+* [ Dashboard ](#tab-panel-5394)
+* [ API ](#tab-panel-5395)
 
 You can create a pool within the [load balancer workflow](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) or in the **Pools** tab:
 
@@ -405,6 +409,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 
 ```
 
+Explain Code
+
 The response contains the complete definition of the new pool.
 
 Response
@@ -516,6 +522,8 @@ Response
 
 ```
 
+Explain Code
+
 After creating the pool, you would also want to [create a new notification](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
 
 ```
@@ -539,8 +547,8 @@ After creating the pool, you would also want to [create a new notification](http
 
 Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
 
-* [ Dashboard ](#tab-panel-5344)
-* [ API ](#tab-panel-5345)
+* [ Dashboard ](#tab-panel-5388)
+* [ API ](#tab-panel-5389)
 
 To confirm pool health using the dashboard:
 
@@ -567,8 +575,8 @@ Instead of starting on your production domain, you likely should create a load b
 
 Starting with a test domain allows you to verify everything is working correctly before routing production traffic.
 
-* [ Dashboard ](#tab-panel-5348)
-* [ API ](#tab-panel-5349)
+* [ Dashboard ](#tab-panel-5392)
+* [ API ](#tab-panel-5393)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -719,6 +727,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
 
 ```
 
+Explain Code
+
 The response contains the complete definition of the new load balancer.
 
 Response
@@ -801,6 +811,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ## Optional - Review load balancing analytics
 

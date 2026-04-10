@@ -140,6 +140,8 @@ Creating a Pipfile for this project...
 
 ```
 
+Explain Code
+
 List the contents of the directory:
 
 Terminal window
@@ -209,6 +211,8 @@ Alternatively, run a command inside the virtualenv with pipenv run.
 
 
 ```
+
+Explain Code
 
 This will install Sphinx into a new virtual environment managed by Pipenv. You should see a directory structure like this:
 
@@ -303,6 +307,8 @@ my-wonderful-new-sphinx-project
 
 
 ```
+
+Explain Code
 
 You now have everything you need to start deploying your site to Cloudflare Pages. For learning how to create documentation with Sphinx, refer to the official [Sphinx documentation ↗](https://www.sphinx-doc.org/en/master/usage/quickstart.html).
 

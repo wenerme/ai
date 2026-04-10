@@ -34,8 +34,8 @@ For **one-time commands, builds, or scripts that complete and exit**, use `exec(
 
 ## Start a background process
 
-* [  JavaScript ](#tab-panel-6243)
-* [  TypeScript ](#tab-panel-6244)
+* [  JavaScript ](#tab-panel-6287)
+* [  TypeScript ](#tab-panel-6288)
 
 JavaScript
 
@@ -66,6 +66,8 @@ console.log("Status:", server.status); // 'running'
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -95,12 +97,14 @@ console.log('Status:', server.status); // 'running'
 
 ```
 
+Explain Code
+
 ## Configure process environment
 
 Set working directory and environment variables:
 
-* [  JavaScript ](#tab-panel-6245)
-* [  TypeScript ](#tab-panel-6246)
+* [  JavaScript ](#tab-panel-6289)
+* [  TypeScript ](#tab-panel-6290)
 
 JavaScript
 
@@ -130,6 +134,8 @@ console.log("API server started");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -158,12 +164,14 @@ console.log('API server started');
 
 ```
 
+Explain Code
+
 ## Monitor process status
 
 List and check running processes:
 
-* [  JavaScript ](#tab-panel-6251)
-* [  TypeScript ](#tab-panel-6252)
+* [  JavaScript ](#tab-panel-6295)
+* [  TypeScript ](#tab-panel-6296)
 
 JavaScript
 
@@ -193,6 +201,8 @@ const isRunning = processes.some(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -217,12 +227,14 @@ const isRunning = processes.some(p => p.id === processId && p.status === 'runnin
 
 ```
 
+Explain Code
+
 ## Wait for process readiness
 
 Wait for a process to be ready before proceeding:
 
-* [  JavaScript ](#tab-panel-6241)
-* [  TypeScript ](#tab-panel-6242)
+* [  JavaScript ](#tab-panel-6285)
+* [  TypeScript ](#tab-panel-6286)
 
 JavaScript
 
@@ -260,8 +272,8 @@ console.log('Server is ready');
 
 Or wait for specific log patterns:
 
-* [  JavaScript ](#tab-panel-6247)
-* [  TypeScript ](#tab-panel-6248)
+* [  JavaScript ](#tab-panel-6291)
+* [  TypeScript ](#tab-panel-6292)
 
 JavaScript
 
@@ -299,8 +311,8 @@ console.log('Server is ready:', result.line);
 
 Stream logs in real-time:
 
-* [  JavaScript ](#tab-panel-6253)
-* [  TypeScript ](#tab-panel-6254)
+* [  JavaScript ](#tab-panel-6297)
+* [  TypeScript ](#tab-panel-6298)
 
 JavaScript
 
@@ -326,6 +338,8 @@ for await (const log of parseSSEStream(logStream)) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -350,10 +364,12 @@ for await (const log of parseSSEStream<LogEvent>(logStream)) {
 
 ```
 
+Explain Code
+
 Or get accumulated logs:
 
-* [  JavaScript ](#tab-panel-6249)
-* [  TypeScript ](#tab-panel-6250)
+* [  JavaScript ](#tab-panel-6293)
+* [  TypeScript ](#tab-panel-6294)
 
 JavaScript
 
@@ -381,8 +397,8 @@ console.log('Logs:', logs);
 
 Stop background processes and their children:
 
-* [  JavaScript ](#tab-panel-6255)
-* [  TypeScript ](#tab-panel-6256)
+* [  JavaScript ](#tab-panel-6299)
+* [  TypeScript ](#tab-panel-6300)
 
 JavaScript
 
@@ -430,8 +446,8 @@ await sandbox.killAllProcesses();
 
 For example, if your process spawns multiple worker processes or background tasks, `killProcess()` will clean up the entire process tree:
 
-* [  JavaScript ](#tab-panel-6257)
-* [  TypeScript ](#tab-panel-6258)
+* [  JavaScript ](#tab-panel-6301)
+* [  TypeScript ](#tab-panel-6302)
 
 JavaScript
 
@@ -477,8 +493,8 @@ await sandbox.killProcess(batch.id);
 
 Start services in sequence, waiting for dependencies:
 
-* [  JavaScript ](#tab-panel-6263)
-* [  TypeScript ](#tab-panel-6264)
+* [  JavaScript ](#tab-panel-6307)
+* [  TypeScript ](#tab-panel-6308)
 
 JavaScript
 
@@ -513,6 +529,8 @@ console.log("All services running");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -546,12 +564,14 @@ console.log('All services running');
 
 ```
 
+Explain Code
+
 ## Keep containers alive for long-running processes
 
 By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
-* [  JavaScript ](#tab-panel-6265)
-* [  TypeScript ](#tab-panel-6266)
+* [  JavaScript ](#tab-panel-6309)
+* [  TypeScript ](#tab-panel-6310)
 
 JavaScript
 
@@ -620,6 +640,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -687,6 +709,8 @@ export default {
 
 ```
 
+Explain Code
+
 Always destroy with keepAlive
 
 When using `keepAlive: true`, containers will not automatically timeout. You **must** call `sandbox.destroy()` when finished to prevent containers running indefinitely and counting toward your account limits.
@@ -705,8 +729,8 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 Check logs to see why:
 
-* [  JavaScript ](#tab-panel-6261)
-* [  TypeScript ](#tab-panel-6262)
+* [  JavaScript ](#tab-panel-6305)
+* [  TypeScript ](#tab-panel-6306)
 
 JavaScript
 
@@ -756,8 +780,8 @@ if (!processes.find(p => p.id === process.id)) {
 
 Kill existing processes before starting:
 
-* [  JavaScript ](#tab-panel-6259)
-* [  TypeScript ](#tab-panel-6260)
+* [  JavaScript ](#tab-panel-6303)
+* [  TypeScript ](#tab-panel-6304)
 
 JavaScript
 

@@ -79,7 +79,8 @@ VALUES (1, 'Hydrogen', 1, 'H'),
   (8, 'Oxygen', 8, 'O'),  
   (9, 'Fluorine', 9, 'F'),  
   (10, 'Neon', 10, 'Ne');  
-```
+```  
+Explain Code
 4. Configure the Turso database credentials in your Worker:  
 You need to add your Turso database URL and authentication token as secrets to your Worker. First, get your database URL and create an authentication token:  
 Terminal window  
@@ -153,6 +154,7 @@ function buildLibsqlClient(env: Env): LibsqlClient {
   return createClient({ url, authToken });  
 }  
 ```  
+Explain Code  
    * The libSQL client library import `@libsql/client/web` must be imported exactly as shown when working with Cloudflare Workers. The non-web import will not work in the Workers environment.  
    * The `Env` interface contains the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) and [secret](https://developers.cloudflare.com/workers/configuration/secrets/) defined when you added the Turso integration in step 4.  
    * The `Env` interface also caches the libSQL client object and router, which was created on the first request to the Worker.  

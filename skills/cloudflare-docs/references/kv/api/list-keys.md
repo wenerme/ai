@@ -69,6 +69,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Reference
 
 The following method is provided to list the keys of KV:
@@ -132,6 +134,8 @@ The `list()` method returns a promise which resolves with an object that looks l
 
 
 ```
+
+Explain Code
 
 The `keys` property will contain an array of objects describing each key. That object will have one to three keys of its own: the `name` of the key, and optionally the key's `expiration` and `metadata` values.
 

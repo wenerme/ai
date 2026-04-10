@@ -82,6 +82,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 ## Setup VS Code to use breakpoints
 
 To setup VS Code for breakpoint debugging in your Worker tests, create a `.vscode/launch.json` file that contains the following configuration:
@@ -154,6 +156,8 @@ To setup VS Code for breakpoint debugging in your Worker tests, create a `.vscod
 
 
 ```
+
+Explain Code
 
 Select **Debug Workers tests** at the top of the **Run & Debug** panel to open an inspector with Vitest and attach a debugger to the Workers runtime. Then you can add breakpoints to your test files and start debugging.
 

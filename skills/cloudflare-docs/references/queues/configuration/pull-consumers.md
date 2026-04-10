@@ -120,9 +120,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-5642)
-* [  TypeScript ](#tab-panel-5643)
-* [  Python ](#tab-panel-5644)
+* [  JavaScript ](#tab-panel-5686)
+* [  TypeScript ](#tab-panel-5687)
+* [  Python ](#tab-panel-5688)
 
 index.js
 
@@ -157,6 +157,8 @@ let resp = await fetch(
 
 ```
 
+Explain Code
+
 index.ts
 
 ```
@@ -190,6 +192,8 @@ let resp = await fetch(
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -222,6 +226,8 @@ resp = await fetch(
 
 
 ```
+
+Explain Code
 
 This will return an array of messages (up to the specified `batch_size`) in the below format:
 
@@ -294,6 +300,8 @@ This will return an array of messages (up to the specified `batch_size`) in the 
 
 ```
 
+Explain Code
+
 Pull consumers follow a "short polling" approach: if there are messages available to be delivered, Queues will return a response immediately with messages up to the configured `batch_size`. If there are no messages to deliver, Queues will return an empty response. Queues does not hold an open connection (often referred to as "long polling") if there are no messages to deliver.
 
 Note
@@ -331,9 +339,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-5645)
-* [  TypeScript ](#tab-panel-5646)
-* [  Python ](#tab-panel-5647)
+* [  JavaScript ](#tab-panel-5689)
+* [  TypeScript ](#tab-panel-5690)
+* [  Python ](#tab-panel-5691)
 
 index.js
 
@@ -382,6 +390,8 @@ let resp = await fetch(
 
 ```
 
+Explain Code
+
 index.ts
 
 ```
@@ -429,6 +439,8 @@ let resp = await fetch(
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -475,6 +487,8 @@ resp = await fetch(
 
 
 ```
+
+Explain Code
 
 You may optionally specify the number of seconds to delay a message for when marking it for retry by providing a `{ lease_id: string, delay_seconds: number }` object in the `retries` array:
 

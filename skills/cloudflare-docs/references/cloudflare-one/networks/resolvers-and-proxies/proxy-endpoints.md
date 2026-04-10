@@ -150,6 +150,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
   "messages": []  
 }  
 ```  
+Explain Code  
 Note the `subdomain` value returned by the API. You will use this to create the Access application.
 3. Use [Add An Access Application](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/) to associate the proxy endpoint with Access policies:  
 Required API token permissions  
@@ -172,6 +173,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
     ]  
   }'  
 ```  
+Explain Code  
 Replace `<SUBDOMAIN>` with the subdomain from step 2 and `<ACCESS_POLICY_ID>` with the ID of an existing [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
 Source IP endpoint
@@ -193,6 +195,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
     ]  
   }'  
 ```  
+Explain Code  
 Replace `<PUBLIC_IP>` with the source IP address of your device in CIDR notation. For example:  
    * **IPv4**: `192.0.2.0/8`  
    * **IPv6**: `2001:0db8:0000:0000:0000:1234:5678:0000/32`  
@@ -214,6 +217,7 @@ Gateway limits the prefix length of source networks for proxy endpoints to `/8` 
   "messages": []  
 }  
 ```  
+Explain Code  
 Note the `subdomain` value returned by the API. Your Cloudflare proxy server domain is of the form:  
 ```  
 <SUBDOMAIN>.proxy.cloudflare-gateway.com  
@@ -354,7 +358,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/proxy_en
     "updated_at": "2014-01-01T05:20:00.12345Z"  
   }  
 }  
-```
+```  
+Explain Code
 2. Find the proxy endpoint you want to use.
 3. Copy the value of the `subdomain` key.
 

@@ -91,6 +91,8 @@ declare class Tensor<TensorType> {
 
 ```
 
+Explain Code
+
 ### Create new Tensor
 
 TypeScript
@@ -224,6 +226,8 @@ console.log ( tensor.value );
 
 ```
 
+Explain Code
+
 ### Tensor methods
 
 #### async tensor.toJSON()
@@ -254,6 +258,8 @@ tensor.toJSON();
 
 
 ```
+
+Explain Code
 
 #### async tensor.fromJSON()
 
@@ -366,6 +372,8 @@ const out = await session.run(tensorInputArray);
 
 
 ```
+
+Explain Code
 
 You can also use an object and name your tensors.
 

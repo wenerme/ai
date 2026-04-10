@@ -57,8 +57,8 @@ This routes all subdomains through Cloudflare's proxy. The IP address `192.0.2.0
 
 Add a wildcard route to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6461)
-* [  wrangler.toml ](#tab-panel-6462)
+* [  wrangler.jsonc ](#tab-panel-6505)
+* [  wrangler.toml ](#tab-panel-6506)
 
 JSONC
 
@@ -74,7 +74,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "routes": [
 
@@ -93,6 +93,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -105,7 +107,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[routes]]

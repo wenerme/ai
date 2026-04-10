@@ -65,6 +65,8 @@ curl https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+Explain Code
+
 ---
 
 ## Available nodes
@@ -233,6 +235,8 @@ query DailyRequestVolume(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -309,6 +313,8 @@ query ErrorBreakdown(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -383,6 +389,8 @@ query TopProxyErrors(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -454,6 +462,8 @@ query TunnelTypeDistribution(
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -535,6 +545,8 @@ query IngressTrafficOverview(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -613,6 +625,8 @@ query IngressDurationByColo(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -686,6 +700,8 @@ query IngressProtocolDistribution(
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -767,6 +783,8 @@ query EgressBytesOverview(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -844,6 +862,8 @@ query EgressLatencyByColo(
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -925,6 +945,8 @@ query EgressPerformanceTrend(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -998,6 +1020,8 @@ query AuthVolumeByMethod(
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -1073,6 +1097,8 @@ query AuthFailureSpike(
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -1144,6 +1170,8 @@ query AuthSuccessRate(
 
 
 ```
+
+Explain Code
 
 ```
 

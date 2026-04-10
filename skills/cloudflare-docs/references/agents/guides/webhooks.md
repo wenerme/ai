@@ -20,8 +20,8 @@ Receive webhook events from external services and route them to dedicated agent 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-3000)
-* [  TypeScript ](#tab-panel-3001)
+* [  JavaScript ](#tab-panel-3006)
+* [  TypeScript ](#tab-panel-3007)
 
 JavaScript
 
@@ -164,6 +164,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -315,6 +317,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Use cases
 
 Webhooks combined with agents enable patterns where each external entity gets its own isolated, stateful agent instance.
@@ -367,8 +371,8 @@ The key pattern is extracting an entity identifier from the webhook and using `g
 
 Most webhooks include an identifier in the payload:
 
-* [  JavaScript ](#tab-panel-2976)
-* [  TypeScript ](#tab-panel-2977)
+* [  JavaScript ](#tab-panel-2982)
+* [  TypeScript ](#tab-panel-2983)
 
 JavaScript
 
@@ -414,6 +418,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -458,12 +464,14 @@ export default {
 
 ```
 
+Explain Code
+
 ### Extract entity from URL
 
 Alternatively, include the entity ID in the webhook URL:
 
-* [  JavaScript ](#tab-panel-2972)
-* [  TypeScript ](#tab-panel-2973)
+* [  JavaScript ](#tab-panel-2978)
+* [  TypeScript ](#tab-panel-2979)
 
 JavaScript
 
@@ -507,8 +515,8 @@ if (url.pathname.startsWith("/webhooks/stripe/")) {
 
 Some services include identifiers in headers:
 
-* [  JavaScript ](#tab-panel-2974)
-* [  TypeScript ](#tab-panel-2975)
+* [  JavaScript ](#tab-panel-2980)
+* [  TypeScript ](#tab-panel-2981)
 
 JavaScript
 
@@ -554,8 +562,8 @@ Always verify webhook signatures to ensure requests are authentic. Most provider
 
 ### HMAC-SHA256 pattern
 
-* [  JavaScript ](#tab-panel-2986)
-* [  TypeScript ](#tab-panel-2987)
+* [  JavaScript ](#tab-panel-2992)
+* [  TypeScript ](#tab-panel-2993)
 
 JavaScript
 
@@ -609,6 +617,8 @@ async function verifySignature(payload, signature, secret) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -671,6 +681,8 @@ async function verifySignature(
 
 ```
 
+Explain Code
+
 ### Provider-specific headers
 
 | Provider | Signature Header      | Algorithm                    |
@@ -687,8 +699,8 @@ async function verifySignature(
 
 Use `onRequest()` to handle incoming webhooks in your agent:
 
-* [  JavaScript ](#tab-panel-2994)
-* [  TypeScript ](#tab-panel-2995)
+* [  JavaScript ](#tab-panel-3000)
+* [  TypeScript ](#tab-panel-3001)
 
 JavaScript
 
@@ -768,6 +780,8 @@ export class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -846,14 +860,16 @@ export class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Storing webhook events
 
 Use SQLite to persist webhook events for history and replay.
 
 ### Event table schema
 
-* [  JavaScript ](#tab-panel-2984)
-* [  TypeScript ](#tab-panel-2985)
+* [  JavaScript ](#tab-panel-2990)
+* [  TypeScript ](#tab-panel-2991)
 
 JavaScript
 
@@ -905,6 +921,8 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -955,12 +973,14 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Cleanup old events
 
 Prevent unbounded growth by keeping only recent events:
 
-* [  JavaScript ](#tab-panel-2978)
-* [  TypeScript ](#tab-panel-2979)
+* [  JavaScript ](#tab-panel-2984)
+* [  TypeScript ](#tab-panel-2985)
 
 JavaScript
 
@@ -992,6 +1012,8 @@ this.sql`
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1022,10 +1044,12 @@ this.sql`
 
 ```
 
+Explain Code
+
 ### Query events
 
-* [  JavaScript ](#tab-panel-2990)
-* [  TypeScript ](#tab-panel-2991)
+* [  JavaScript ](#tab-panel-2996)
+* [  TypeScript ](#tab-panel-2997)
 
 JavaScript
 
@@ -1084,6 +1108,8 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1141,12 +1167,14 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Real-time broadcasting
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
 
-* [  JavaScript ](#tab-panel-2980)
-* [  TypeScript ](#tab-panel-2981)
+* [  JavaScript ](#tab-panel-2986)
+* [  TypeScript ](#tab-panel-2987)
 
 JavaScript
 
@@ -1181,6 +1209,8 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1213,6 +1243,8 @@ class WebhookAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 On the client side:
 
@@ -1248,14 +1280,16 @@ function Dashboard() {
 
 ```
 
+Explain Code
+
 ## Patterns
 
 ### Event deduplication
 
 Prevent processing duplicate events using event IDs:
 
-* [  JavaScript ](#tab-panel-2988)
-* [  TypeScript ](#tab-panel-2989)
+* [  JavaScript ](#tab-panel-2994)
+* [  TypeScript ](#tab-panel-2995)
 
 JavaScript
 
@@ -1300,6 +1334,8 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1343,12 +1379,14 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Respond quickly, process asynchronously
 
 Webhook providers expect fast responses. Use the queue for heavy processing:
 
-* [  JavaScript ](#tab-panel-2992)
-* [  TypeScript ](#tab-panel-2993)
+* [  JavaScript ](#tab-panel-2998)
+* [  TypeScript ](#tab-panel-2999)
 
 JavaScript
 
@@ -1399,6 +1437,8 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1448,12 +1488,14 @@ class WebhookAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Multi-provider routing
 
 Handle webhooks from multiple services in one Worker:
 
-* [  JavaScript ](#tab-panel-2998)
-* [  TypeScript ](#tab-panel-2999)
+* [  JavaScript ](#tab-panel-3004)
+* [  TypeScript ](#tab-panel-3005)
 
 JavaScript
 
@@ -1528,6 +1570,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1601,12 +1645,14 @@ export default {
 
 ```
 
+Explain Code
+
 ## Sending outgoing webhooks
 
 Agents can also send webhooks to external services:
 
-* [  JavaScript ](#tab-panel-2996)
-* [  TypeScript ](#tab-panel-2997)
+* [  JavaScript ](#tab-panel-3002)
+* [  TypeScript ](#tab-panel-3003)
 
 JavaScript
 
@@ -1666,6 +1712,8 @@ export class NotificationAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1724,6 +1772,8 @@ export class NotificationAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Security best practices
 
 1. **Always verify signatures** \- Never trust unverified webhooks.
@@ -1733,8 +1783,8 @@ export class NotificationAgent extends Agent {
 5. **Log rejections** \- Track invalid signatures for security monitoring.
 6. **Use HTTPS** \- Webhook URLs should always use TLS.
 
-* [  JavaScript ](#tab-panel-2982)
-* [  TypeScript ](#tab-panel-2983)
+* [  JavaScript ](#tab-panel-2988)
+* [  TypeScript ](#tab-panel-2989)
 
 JavaScript
 

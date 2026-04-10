@@ -168,8 +168,8 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
    * The redirect mode to use: `follow`, `error`, or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 * `signal` AbortSignal read-only  
    * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:  
-         * [  JavaScript ](#tab-panel-7606)  
-         * [  TypeScript ](#tab-panel-7607)  
+         * [  JavaScript ](#tab-panel-7666)  
+         * [  TypeScript ](#tab-panel-7667)  
    index.js  
    ```  
    export default {  
@@ -196,6 +196,7 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
      }  
    }  
    ```  
+   Explain Code  
    index.ts  
    ```  
    export default {  
@@ -219,7 +220,8 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
        await scheduler.wait(1000);  
      }  
    }  
-   ```
+   ```  
+   Explain Code
 * `url` string read-only  
    * Contains the URL of the request.
 
@@ -367,6 +369,8 @@ async function eventHandler(event){
 
 
 ```
+
+Explain Code
 
 ### Errors when attempting to access an inactive `Request` context
 

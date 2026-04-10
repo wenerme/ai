@@ -127,6 +127,8 @@ application/geo+json
 
 ```
 
+Explain Code
+
 Cloudflare's global network can deliver content to website visitors using Gzip compression, Brotli compression, Zstandard compression, or no compression, depending on:
 
 * The values visitors provide in the `accept-encoding` request header.

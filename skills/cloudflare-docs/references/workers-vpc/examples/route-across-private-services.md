@@ -58,14 +58,16 @@ npx wrangler vpc service create order-service \
 
 ```
 
+Explain Code
+
 Note the service IDs returned for the next step.
 
 ## 2\. Configure your Worker
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6971)
-* [  wrangler.toml ](#tab-panel-6972)
+* [  wrangler.jsonc ](#tab-panel-7029)
+* [  wrangler.toml ](#tab-panel-7030)
 
 JSONC
 
@@ -81,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "vpc_services": [
 
@@ -108,6 +110,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -120,7 +124,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[vpc_services]]
@@ -138,6 +142,8 @@ service_id = "<YOUR_ORDER_SERVICE_ID>"
 
 
 ```
+
+Explain Code
 
 ## 3\. Implement the Worker
 
@@ -179,6 +185,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## 4\. Deploy and test
 

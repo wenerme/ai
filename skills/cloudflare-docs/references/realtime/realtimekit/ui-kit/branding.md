@@ -79,6 +79,8 @@ To replace RealtimeKit's default icon set with your own, pass the link to your i
 
 ```
 
+Explain Code
+
 ```
 
 import {
@@ -139,6 +141,8 @@ function App() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -180,6 +184,8 @@ class AppComponent {
 
 
 ```
+
+Explain Code
 
 ## IconPack reference
 

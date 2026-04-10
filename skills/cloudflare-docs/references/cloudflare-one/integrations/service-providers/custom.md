@@ -95,6 +95,8 @@ Example request body:
 
 ```
 
+Explain Code
+
 ### Expected response from external API
 
 For each Cloudflare `device_id`, the API service is expected to return a posture score and optionally a third-party device ID.
@@ -130,6 +132,8 @@ Example response body:
 
 
 ```
+
+Explain Code
 
 ## Set up custom device posture checks
 

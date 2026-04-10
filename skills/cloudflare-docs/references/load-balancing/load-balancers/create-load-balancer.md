@@ -23,8 +23,8 @@ For more details about load balancers, refer to [Load balancers](https://develop
 
 ## Create a load balancer
 
-* [ Dashboard ](#tab-panel-5356)
-* [ API ](#tab-panel-5357)
+* [ Dashboard ](#tab-panel-5400)
+* [ API ](#tab-panel-5401)
 
 To create a Public or a Private load balancer in the dashboard:
 
@@ -175,6 +175,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
 
 ```
 
+Explain Code
+
 The response contains the complete definition of the new load balancer.
 
 Response
@@ -258,6 +260,8 @@ Response
 
 ```
 
+Explain Code
+
 ### Sharing your load balancer with other sites
 
 You can share your load balancer with other sites in your account by [creating a canonical name (CNAME) record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/). This is useful for sharing configurations with multiple other domains so you do not have to create new load balancers for each site.
@@ -272,8 +276,8 @@ Sharing load balancers across sites is only supported if the target zone is on a
 
 ## Edit a load balancer
 
-* [ Dashboard ](#tab-panel-5352)
-* [ API ](#tab-panel-5353)
+* [ Dashboard ](#tab-panel-5396)
+* [ API ](#tab-panel-5397)
 
 To edit a load balancer in the dashboard:
 
@@ -292,8 +296,8 @@ To update specific settings without having to resubmit the entire configuration,
 
 If you delete or disable a load balancer, your endpoint's response to requests will depend on your [existing DNS records](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#disabling-a-load-balancer).
 
-* [ Dashboard ](#tab-panel-5354)
-* [ API ](#tab-panel-5355)
+* [ Dashboard ](#tab-panel-5398)
+* [ API ](#tab-panel-5399)
 
 To delete a load balancer in the dashboard:
 

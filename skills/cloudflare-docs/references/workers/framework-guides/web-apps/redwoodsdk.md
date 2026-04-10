@@ -95,6 +95,7 @@ export default defineApp([
   ]),  
 ]);  
 ```  
+Explain Code  
 Navigate to `http://localhost:5173/ping` to see "Pong!" displayed on the page.  
 Routes can return JSX directly. RedwoodSDK has support for React Server Components, which renders JSX on the server and sends HTML to the client.
 6. **Deploy your project.**  

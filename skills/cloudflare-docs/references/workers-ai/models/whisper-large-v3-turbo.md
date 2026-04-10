@@ -31,9 +31,9 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2097)
-* [  Python ](#tab-panel-2098)
-* [  curl ](#tab-panel-2099)
+* [  TypeScript ](#tab-panel-2103)
+* [  Python ](#tab-panel-2104)
+* [  curl ](#tab-panel-2105)
 
 ```
 
@@ -98,6 +98,8 @@ export default {
 
 ```
 
+Explain Code
+
 Note
 
 To enable built-in Node.js APIs and polyfills, add the nodejs\_compat compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This also enables nodejs\_compat\_v2 as long as your compatibility date is 2024-09-23 or later. [Learn more about the Node.js compatibility flag and v2](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
@@ -145,6 +147,8 @@ print(output)
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -170,6 +174,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 
 ```
+
+Explain Code
 
 ## Parameters
 
@@ -252,8 +258,8 @@ The transcription in WebVTT format, which includes timing and text information f
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2100)
-* [ Output ](#tab-panel-2101)
+* [ Input ](#tab-panel-2106)
+* [ Output ](#tab-panel-2107)
 
 ```
 
@@ -415,6 +421,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -616,6 +624,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

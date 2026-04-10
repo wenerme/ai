@@ -45,8 +45,8 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 
 Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
-* [  JavaScript ](#tab-panel-3022)
-* [  TypeScript ](#tab-panel-3023)
+* [  JavaScript ](#tab-panel-3028)
+* [  TypeScript ](#tab-panel-3029)
 
 JavaScript
 
@@ -117,6 +117,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -186,12 +188,14 @@ export default {
 
 ```
 
+Explain Code
+
 #### MCP server with authentication
 
 If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
 
-* [  JavaScript ](#tab-panel-3012)
-* [  TypeScript ](#tab-panel-3013)
+* [  JavaScript ](#tab-panel-3018)
+* [  TypeScript ](#tab-panel-3019)
 
 JavaScript
 
@@ -222,6 +226,8 @@ export default new OAuthProvider({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -251,6 +257,8 @@ export default new OAuthProvider({
 
 ```
 
+Explain Code
+
 ### Stateful MCP servers
 
 If your MCP server needs to maintain state across requests, use `createMcpHandler` with a `WorkerTransport` inside an [Agent](https://developers.cloudflare.com/agents/) class. This allows you to persist session state in Durable Object storage and use advanced MCP features like [elicitation ↗](https://modelcontextprotocol.io/specification/draft/client/elicitation) and [sampling ↗](https://modelcontextprotocol.io/specification/draft/client/sampling).
@@ -273,8 +281,8 @@ RPC transport does not support authentication. Use Streamable HTTP for external 
 
 Create your `McpAgent` with the tools you want to expose:
 
-* [  JavaScript ](#tab-panel-3024)
-* [  TypeScript ](#tab-panel-3025)
+* [  JavaScript ](#tab-panel-3030)
+* [  TypeScript ](#tab-panel-3031)
 
 JavaScript
 
@@ -334,6 +342,8 @@ export class MyMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -397,12 +407,14 @@ export class MyMCP extends McpAgent<Env, State> {
 
 ```
 
+Explain Code
+
 #### 2\. Connect your Agent to the MCP server
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
 
-* [  JavaScript ](#tab-panel-3018)
-* [  TypeScript ](#tab-panel-3019)
+* [  JavaScript ](#tab-panel-3024)
+* [  TypeScript ](#tab-panel-3025)
 
 JavaScript
 
@@ -447,6 +459,8 @@ export class Chat extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -489,6 +503,8 @@ export class Chat extends AIChatAgent<Env> {
 
 
 ```
+
+Explain Code
 
 RPC connections are automatically restored after Durable Object hibernation, just like HTTP connections. The binding name and props are persisted to storage so the connection can be re-established without any extra code.
 
@@ -533,12 +549,14 @@ JSONC
 
 ```
 
+Explain Code
+
 #### 4\. Set up your Worker fetch handler
 
 Route requests to your Chat agent:
 
-* [  JavaScript ](#tab-panel-3016)
-* [  TypeScript ](#tab-panel-3017)
+* [  JavaScript ](#tab-panel-3022)
+* [  TypeScript ](#tab-panel-3023)
 
 JavaScript
 
@@ -577,6 +595,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -614,12 +634,14 @@ export default {
 
 ```
 
+Explain Code
+
 ### Passing props to the MCP server
 
 Since RPC transport does not have an OAuth flow, you can pass user context directly as props:
 
-* [  JavaScript ](#tab-panel-3014)
-* [  TypeScript ](#tab-panel-3015)
+* [  JavaScript ](#tab-panel-3020)
+* [  TypeScript ](#tab-panel-3021)
 
 JavaScript
 
@@ -649,8 +671,8 @@ await this.addMcpServer("my-mcp", this.env.MyMCP, {
 
 Your `McpAgent` can then access these props:
 
-* [  JavaScript ](#tab-panel-3020)
-* [  TypeScript ](#tab-panel-3021)
+* [  JavaScript ](#tab-panel-3026)
+* [  TypeScript ](#tab-panel-3027)
 
 JavaScript
 
@@ -681,6 +703,8 @@ export class MyMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -724,14 +748,16 @@ export class MyMCP extends McpAgent<
 
 ```
 
+Explain Code
+
 Props are type-safe (TypeScript extracts the Props type from your `McpAgent` generic), persistent (stored in Durable Object storage), and available immediately before any tool calls are made.
 
 ### Configuring RPC transport server timeout
 
 The RPC transport has a configurable timeout for waiting for tool responses. By default, the server waits **60 seconds** for a tool handler to respond. You can customize this by overriding `getRpcTransportOptions()` in your `McpAgent`:
 
-* [  JavaScript ](#tab-panel-3026)
-* [  TypeScript ](#tab-panel-3027)
+* [  JavaScript ](#tab-panel-3032)
+* [  TypeScript ](#tab-panel-3033)
 
 JavaScript
 
@@ -780,6 +806,8 @@ export class MyMCP extends McpAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -826,6 +854,8 @@ export class MyMCP extends McpAgent<Env, State> {
 
 
 ```
+
+Explain Code
 
 ## Choosing a transport
 

@@ -160,6 +160,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 
 ```
 
+Explain Code
+
 ## Define the rule position in the ruleset
 
 To define the position of the new rule in the ruleset, include a `position` object in the request, containing one of the following:

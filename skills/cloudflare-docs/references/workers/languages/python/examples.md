@@ -108,6 +108,8 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 ## Parse JSON from the incoming request
 
 Python
@@ -220,6 +222,8 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 ## Publish to a Queue
 
 Python
@@ -267,6 +271,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 ## Query a D1 Database
 
@@ -337,6 +343,8 @@ class List(DurableObject):
 
 ```
 
+Explain Code
+
 Refer to [Durable Objects documentation](https://developers.cloudflare.com/durable-objects/get-started/) for more information.
 
 ## Cron Trigger
@@ -403,6 +411,8 @@ class MyWorkflow(WorkflowEntrypoint):
 
 
 ```
+
+Explain Code
 
 Refer to the [Python Workflows documentation](https://developers.cloudflare.com/workflows/python/) for more information.
 

@@ -198,7 +198,8 @@ export const getRepoTool = {
   },  
 };  
 export const tools = [searchReposTool, getRepoTool];  
-```
+```  
+Explain Code
 
 These tools complement each other: `search_repos` finds repositories, and `get_repo` fetches details about specific ones.
 
@@ -421,6 +422,8 @@ export class ResearchWorkflow extends AgentWorkflow<ResearchAgent, Params> {
 
 ```
 
+Explain Code
+
 Why separate steps for LLM and tools?
 
 Each `step.do()` creates a checkpoint. If your Workflow crashes or the Worker restarts:
@@ -552,11 +555,13 @@ export class ResearchAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-8598)  
-   * [  wrangler.toml ](#tab-panel-8599)  
+   * [  wrangler.jsonc ](#tab-panel-8658)  
+   * [  wrangler.toml ](#tab-panel-8659)  
 JSONC  
 ```  
 {  
@@ -564,7 +569,7 @@ JSONC
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-10",  
   "observability": {  
     "enabled": true  
   },  
@@ -591,13 +596,14 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "node_modules/wrangler/config-schema.json"  
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-10"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  
@@ -610,7 +616,8 @@ class_name = "ResearchWorkflow"
 [[migrations]]  
 tag = "v1"  
 new_sqlite_classes = [ "ResearchAgent" ]  
-```
+```  
+Explain Code
 2. Generate types for your bindings:  
 Terminal window  
 ```  
@@ -721,6 +728,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## 7\. Develop locally
 
@@ -848,6 +857,8 @@ function ResearchUI({ agentId = "default" }) {
 
 
 ```
+
+Explain Code
 
 Agent class names are automatically converted to kebab-case for URLs (`ResearchAgent` → `research-agent`).
 

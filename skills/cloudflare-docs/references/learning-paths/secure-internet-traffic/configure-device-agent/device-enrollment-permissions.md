@@ -20,8 +20,8 @@ Device enrollment permissions determine which users can connect new devices to y
 
 ## Set device enrollment permissions
 
-* [ Dashboard ](#tab-panel-5303)
-* [ Terraform (v5) ](#tab-panel-5304)
+* [ Dashboard ](#tab-panel-5347)
+* [ Terraform (v5) ](#tab-panel-5348)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **Management**.
 2. In **Device enrollment** \> **Device enrollment permissions**, select **Manage**.
@@ -55,7 +55,8 @@ resource "cloudflare_zero_trust_access_policy" "allow_company_emails" {
     }  
   ]  
 }  
-```
+```  
+Explain Code
 3. Use the [cloudflare\_zero\_trust\_access\_application ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fapplication) resource to create an application with type `warp`.  
 ```  
 resource "cloudflare_zero_trust_access_application" "device_enrollment" {  
@@ -72,7 +73,8 @@ resource "cloudflare_zero_trust_access_application" "device_enrollment" {
     }  
   ]  
 }  
-```
+```  
+Explain Code
 
 ## Only allow corporate devices
 
@@ -99,8 +101,8 @@ Allowed signature algorithms
 
 To check for an mTLS certificate:
 
-* [ Dashboard ](#tab-panel-5305)
-* [ Terraform (v5) ](#tab-panel-5306)
+* [ Dashboard ](#tab-panel-5349)
+* [ Terraform (v5) ](#tab-panel-5350)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Service credentials** \> **Mutual TLS**.
 2. Select **Add mTLS Certificate**.
@@ -138,7 +140,8 @@ resource "cloudflare_zero_trust_access_mtls_certificate" "example_mtls_cert" {
   EOT  
   associated_hostnames = ["your-team-name.cloudflareaccess.com"]  
 }  
-```
+```  
+Explain Code
 3. Create the following Access policy:  
 ```  
 resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {  
@@ -165,7 +168,8 @@ resource "cloudflare_zero_trust_access_policy" "warp_enrollment_mtls" {
     }  
   ]  
 }  
-```
+```  
+Explain Code
 4. Add the policy to your [cloudflared\_zero\_trust\_access\_application for the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#set-device-enrollment-permissions).
 5. On your device, add the client certificate to the [system keychain](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 

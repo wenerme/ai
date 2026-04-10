@@ -92,9 +92,9 @@ R -- No --> G[Cloudflare Gateway]
 
 You can verify that the operating system is using the Cloudflare One Client's local DNS proxy:
 
-* [ macOS ](#tab-panel-3677)
-* [ Windows ](#tab-panel-3678)
-* [ Linux ](#tab-panel-3679)
+* [ macOS ](#tab-panel-3683)
+* [ Windows ](#tab-panel-3684)
+* [ Linux ](#tab-panel-3685)
 
 On macOS, open a terminal window and run `scutil --dns`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -144,6 +144,8 @@ resolver #2
 
 ```
 
+Explain Code
+
 On Windows, open a PowerShell window and run `ipconfig`. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
 PowerShell
@@ -191,6 +193,8 @@ Unknown adapter CloudflareWARP:
 
 
 ```
+
+Explain Code
 
 On Linux, check the `/etc/resolv.conf` file. The DNS servers should be set to the Cloudflare One Client's local DNS proxy IPs.
 
@@ -243,9 +247,9 @@ Virtual interfaces allow the operating system to logically subdivide a physical 
 
 To view a list of all network interfaces on the operating system:
 
-* [ Windows ](#tab-panel-3683)
-* [ macOS ](#tab-panel-3684)
-* [ Linux ](#tab-panel-3685)
+* [ Windows ](#tab-panel-3689)
+* [ macOS ](#tab-panel-3690)
+* [ Linux ](#tab-panel-3691)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 
@@ -294,6 +298,8 @@ Unknown adapter CloudflareWARP:
 
 
 ```
+
+Explain Code
 
 On macOS, run `ifconfig`. When the Cloudflare One Client is turned on, you will see a `utun` interface with your device IP.
 
@@ -365,9 +371,9 @@ The Cloudflare One Client edits the system routing table to control what IP traf
 
 You can verify that the routing table matches your Split Tunnel rules:
 
-* [ macOS ](#tab-panel-3680)
-* [ Windows ](#tab-panel-3681)
-* [ Linux ](#tab-panel-3682)
+* [ macOS ](#tab-panel-3686)
+* [ Windows ](#tab-panel-3687)
+* [ Linux ](#tab-panel-3688)
 
 To view the entire routing table on macOS, run `netstat -r`.
 

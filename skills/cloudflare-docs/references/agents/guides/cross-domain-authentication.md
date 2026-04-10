@@ -48,75 +48,6 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-2916)
-* [  TypeScript ](#tab-panel-2917)
-
-JavaScript
-
-```
-
-import { useAgent } from "agents/react";
-
-
-function ChatComponent() {
-
-  const agent = useAgent({
-
-    agent: "my-agent",
-
-    query: {
-
-      token: "demo-token-123",
-
-      userId: "demo-user",
-
-    },
-
-  });
-
-
-  // Use agent to make calls, access state, etc.
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-import { useAgent } from "agents/react";
-
-
-function ChatComponent() {
-
-  const agent = useAgent({
-
-    agent: "my-agent",
-
-    query: {
-
-      token: "demo-token-123",
-
-      userId: "demo-user",
-
-    },
-
-  });
-
-
-  // Use agent to make calls, access state, etc.
-
-}
-
-
-```
-
-### Async authentication
-
-Build query values right before connect. Use Suspense for async setup.
-
 * [  JavaScript ](#tab-panel-2922)
 * [  TypeScript ](#tab-panel-2923)
 
@@ -126,6 +57,79 @@ JavaScript
 
 import { useAgent } from "agents/react";
 
+
+function ChatComponent() {
+
+  const agent = useAgent({
+
+    agent: "my-agent",
+
+    query: {
+
+      token: "demo-token-123",
+
+      userId: "demo-user",
+
+    },
+
+  });
+
+
+  // Use agent to make calls, access state, etc.
+
+}
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+import { useAgent } from "agents/react";
+
+
+function ChatComponent() {
+
+  const agent = useAgent({
+
+    agent: "my-agent",
+
+    query: {
+
+      token: "demo-token-123",
+
+      userId: "demo-user",
+
+    },
+
+  });
+
+
+  // Use agent to make calls, access state, etc.
+
+}
+
+
+```
+
+Explain Code
+
+### Async authentication
+
+Build query values right before connect. Use Suspense for async setup.
+
+* [  JavaScript ](#tab-panel-2928)
+* [  TypeScript ](#tab-panel-2929)
+
+JavaScript
+
+```
+
+import { useAgent } from "agents/react";
+
 import { Suspense, useCallback } from "react";
 
 
@@ -178,6 +182,8 @@ function App() {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -238,12 +244,14 @@ function App() {
 
 ```
 
+Explain Code
+
 ### JWT refresh pattern
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-2924)
-* [  TypeScript ](#tab-panel-2925)
+* [  JavaScript ](#tab-panel-2930)
+* [  TypeScript ](#tab-panel-2931)
 
 JavaScript
 
@@ -334,6 +342,8 @@ function useJWTAgent(agentName) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -423,14 +433,16 @@ function useJWTAgent(agentName: string) {
 
 ```
 
+Explain Code
+
 ## Cross-domain authentication
 
 Pass credentials in the URL when connecting to another host, then verify on the server.
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-2918)
-* [  TypeScript ](#tab-panel-2919)
+* [  JavaScript ](#tab-panel-2924)
+* [  TypeScript ](#tab-panel-2925)
 
 JavaScript
 
@@ -465,6 +477,8 @@ function StaticCrossDomainAuth() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -497,11 +511,13 @@ function StaticCrossDomainAuth() {
 
 
 ```
+
+Explain Code
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-2920)
-* [  TypeScript ](#tab-panel-2921)
+* [  JavaScript ](#tab-panel-2926)
+* [  TypeScript ](#tab-panel-2927)
 
 JavaScript
 
@@ -549,6 +565,8 @@ function AsyncCrossDomainAuth() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -594,13 +612,15 @@ function AsyncCrossDomainAuth() {
 
 
 ```
+
+Explain Code
 
 ## Server-side verification
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-2926)
-* [  TypeScript ](#tab-panel-2927)
+* [  JavaScript ](#tab-panel-2932)
+* [  TypeScript ](#tab-panel-2933)
 
 JavaScript
 
@@ -685,6 +705,8 @@ export class SecureAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -767,6 +789,8 @@ export class SecureAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 ## Best practices
 

@@ -134,6 +134,8 @@ Example response
 
 ```
 
+Explain Code
+
 Save the `secret` value. You will use it in the next step.
 
 ## 4\. Store the webhook secret for local development
@@ -348,6 +350,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## 6\. Start the local dev server
 

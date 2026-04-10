@@ -108,6 +108,8 @@ WHERE Date >= '2025-02-06' AND Date <= '2025-02-06' AND CreatedAt >= '2025-02-06
 
 ```
 
+Explain Code
+
 ### Headers and cookies
 
 To query request headers, response headers, and cookies you must first enable logging for these fields using [Custom fields](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/). Configure the list of custom fields using the API or the dashboard; there is no need to modify the Logpush job itself.
@@ -191,6 +193,8 @@ WHERE
 
 
 ```
+
+Explain Code
 
 ### Additional query optimization tips
 

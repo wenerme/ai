@@ -59,7 +59,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwAWQQGYATAA4ArMOEBGQQDYAXCxZtgHOFxp8BI8dLmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrK0SvJBJcB1Q4cAgSAG9LEhI+uipeQIcIXgALAAoEBwBHEAd3CABKDa3tkl47e4W76HC-KgBVABKABkSAwSNEThAIDB3KpkMhEhFmg4ku9gBkXtt3lRPvcCCB3LZFmCSGJBAoiFiSJcICAEFQSIC7l5cajLjxLrwIGdFvc4m07EDgQAaEj4ulE8YOB5U7YAXxFlnlRCsGmYWh0eh4-CEokksnkSmUpTsjmcbk83l87SoASCOlI4UiMUihB0GUC2VyLuiZDA6DIJRsZoq1Vq9R2TRavEFVE67js00s62iwDgcQA+mMJjloqoCosiul5Wr1ZqQtqDHrjIazMpmFYgA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAzDBATgAcAdgBMAVlGTxALhYs2wDnC40+AkWKlyF4gLAAoAMLoqEAKY3sAESgBnGOhdRo1pSXV4CYhIqOGBbBgAiKBpbAA8AOgArFwjSVCgwe1DwqJiE5IjzKxt7CGwAFToYW184GBgwPgIoa2REuAA3OBdeBFgIAGpgdFxwW3NzOPckElxbVDhwCBIAbzMSEm66Kl4-WwheAAsACgRbAEcQWxcIAEpV9Y2SXmsb2evoEO8qAFUAJQAMiQGCQIocIBAYC4lMhkHFQg1bPEXsBUo8Ni8qG8bgQQC4rHNgSQAMyCACMRHRJDOEBACCoJD+13cWKRZx4Z14EGOcxu0Wa1n+AIANCQcbT8SNbLdKRsAL7CsxyojmVTMdSabQ8fhCEQSGTyRRFax2BzONweLwtKi+fyaUghMKRMKETSpPwZLJOiJkMDoMiFSwm0oVKo1Tb1Rq8AVUNouawTMwrCLAODRAD6w1GmQiSlyc3yKTlqrVGsCWt0uuE+qMimY5iAA)
 
 TypeScript
 
@@ -148,6 +148,8 @@ export default app;
 
 ```
 
+Explain Code
+
 ## Redirect requests from one domain to another
 
 * [  JavaScript ](#tab-panel-7391)
@@ -188,6 +190,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -220,6 +224,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -250,6 +256,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -282,6 +290,8 @@ async fn fetch(req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -317,6 +327,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/redirect/","name":"Redirect"}}]}

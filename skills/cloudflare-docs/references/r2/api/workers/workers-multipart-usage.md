@@ -336,6 +336,8 @@ export default {
 
 ```
 
+Explain Code
+
 After you have updated your Worker with the above code, run `npx wrangler deploy`.
 
 You can now use this Worker to perform multipart uploads. You can either send requests from your existing application to this Worker to perform uploads or use a script to upload files through this Worker.
@@ -477,6 +479,8 @@ upload_file(worker_endpoint, filename, partsize)
 
 
 ```
+
+Explain Code
 
 ## State management
 

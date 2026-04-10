@@ -20,8 +20,8 @@ You can control network-level traffic by filtering requests by selectors such as
 
 To create a new network policy:
 
-* [ Dashboard ](#tab-panel-5277)
-* [ API ](#tab-panel-5278)
+* [ Dashboard ](#tab-panel-5321)
+* [ API ](#tab-panel-5322)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.
@@ -58,7 +58,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "identity": "",  
     "device_posture": "not(any(device_posture.checks.passed[*] in {\"LIST_UUID\"}))"  
   }'  
-```
+```  
+Explain Code
 
 ```
 

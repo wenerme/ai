@@ -46,8 +46,8 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-6091)
-* [  TypeScript ](#tab-panel-6092)
+* [  JavaScript ](#tab-panel-6135)
+* [  TypeScript ](#tab-panel-6136)
 
 JavaScript
 
@@ -142,8 +142,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-6093)
-* [  TypeScript ](#tab-panel-6094)
+* [  JavaScript ](#tab-panel-6137)
+* [  TypeScript ](#tab-panel-6138)
 
 JavaScript
 
@@ -220,8 +220,8 @@ The FUSE mount is lost when the sandbox sleeps or restarts. Re-restore from the 
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-6095)
-* [  TypeScript ](#tab-panel-6096)
+* [  JavaScript ](#tab-panel-6139)
+* [  TypeScript ](#tab-panel-6140)
 
 JavaScript
 
@@ -252,6 +252,8 @@ const fullBackup = await sandbox.createBackup({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -280,6 +282,8 @@ const fullBackup = await sandbox.createBackup({
 
 
 ```
+
+Explain Code
 
 If the directory is not inside a git repository, `useGitignore` has no effect and all files are included. If `useGitignore` is `true` but `git` is not installed in the container, a `BackupCreateError` is thrown.
 
@@ -287,8 +291,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-6097)
-* [  TypeScript ](#tab-panel-6098)
+* [  JavaScript ](#tab-panel-6141)
+* [  TypeScript ](#tab-panel-6142)
 
 JavaScript
 
@@ -316,6 +320,8 @@ try {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -341,11 +347,13 @@ try {
 
 
 ```
+
+Explain Code
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-6099)
-* [  TypeScript ](#tab-panel-6100)
+* [  JavaScript ](#tab-panel-6143)
+* [  TypeScript ](#tab-panel-6144)
 
 JavaScript
 
@@ -380,6 +388,8 @@ try {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -412,6 +422,8 @@ try {
 
 
 ```
+
+Explain Code
 
 ## Behavior
 

@@ -38,8 +38,8 @@ Use `exec()` for **advanced or custom workflows**:
 
 Code contexts maintain state between executions:
 
-* [  JavaScript ](#tab-panel-6299)
-* [  TypeScript ](#tab-panel-6300)
+* [  JavaScript ](#tab-panel-6343)
+* [  TypeScript ](#tab-panel-6344)
 
 JavaScript
 
@@ -76,6 +76,8 @@ const jsContext = await sandbox.createCodeContext({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -111,12 +113,14 @@ const jsContext = await sandbox.createCodeContext({
 
 ```
 
+Explain Code
+
 ## Execute code
 
 ### Simple execution
 
-* [  JavaScript ](#tab-panel-6301)
-* [  TypeScript ](#tab-panel-6302)
+* [  JavaScript ](#tab-panel-6345)
+* [  TypeScript ](#tab-panel-6346)
 
 JavaScript
 
@@ -157,6 +161,8 @@ console.log("Success:", result.success);
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -190,12 +196,14 @@ console.log('Success:', result.success);
 
 ```
 
+Explain Code
+
 ### State within a context
 
 Variables and imports remain available between executions in the same context, as long as the container stays active:
 
-* [  JavaScript ](#tab-panel-6307)
-* [  TypeScript ](#tab-panel-6308)
+* [  JavaScript ](#tab-panel-6351)
+* [  TypeScript ](#tab-panel-6352)
 
 JavaScript
 
@@ -252,6 +260,8 @@ console.log(result.output); // "Mean: 3.0"
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -295,6 +305,8 @@ console.log(result.output); // "Mean: 3.0"
 
 ```
 
+Explain Code
+
 Note
 
 Context state is lost if the container restarts due to inactivity. For critical data, store results outside the sandbox or design your code to reinitialize as needed.
@@ -303,8 +315,8 @@ Context state is lost if the container restarts due to inactivity. For critical 
 
 The code interpreter returns multiple output formats:
 
-* [  JavaScript ](#tab-panel-6311)
-* [  TypeScript ](#tab-panel-6312)
+* [  JavaScript ](#tab-panel-6355)
+* [  TypeScript ](#tab-panel-6356)
 
 JavaScript
 
@@ -374,6 +386,8 @@ if (result.outputs.json) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -436,12 +450,14 @@ if (result.outputs.json) {
 
 ```
 
+Explain Code
+
 ## Stream execution output
 
 For long-running code, stream output in real-time:
 
-* [  JavaScript ](#tab-panel-6309)
-* [  TypeScript ](#tab-panel-6310)
+* [  JavaScript ](#tab-panel-6353)
+* [  TypeScript ](#tab-panel-6354)
 
 JavaScript
 
@@ -503,6 +519,8 @@ print("Done!")
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -563,12 +581,14 @@ print("Done!")
 
 ```
 
+Explain Code
+
 ## Execute AI-generated code
 
 Run LLM-generated code safely in a sandbox:
 
-* [  JavaScript ](#tab-panel-6313)
-* [  TypeScript ](#tab-panel-6314)
+* [  JavaScript ](#tab-panel-6357)
+* [  TypeScript ](#tab-panel-6358)
 
 JavaScript
 
@@ -634,6 +654,8 @@ console.log("Success:", result.success);
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -694,12 +716,14 @@ console.log('Success:', result.success);
 
 ```
 
+Explain Code
+
 ## Manage contexts
 
 ### List all contexts
 
-* [  JavaScript ](#tab-panel-6303)
-* [  TypeScript ](#tab-panel-6304)
+* [  JavaScript ](#tab-panel-6347)
+* [  TypeScript ](#tab-panel-6348)
 
 JavaScript
 
@@ -741,8 +765,8 @@ for (const ctx of contexts) {
 
 ### Delete contexts
 
-* [  JavaScript ](#tab-panel-6305)
-* [  TypeScript ](#tab-panel-6306)
+* [  JavaScript ](#tab-panel-6349)
+* [  TypeScript ](#tab-panel-6350)
 
 JavaScript
 
@@ -770,6 +794,8 @@ console.log("All contexts deleted");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -795,6 +821,8 @@ console.log('All contexts deleted');
 
 
 ```
+
+Explain Code
 
 ## Best practices
 

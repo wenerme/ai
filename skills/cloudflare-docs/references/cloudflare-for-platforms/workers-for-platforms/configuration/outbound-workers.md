@@ -41,8 +41,8 @@ To use Outbound Workers:
 
 Make sure that you have `wrangler@3.3.0` or later [installed](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-* [  wrangler.jsonc ](#tab-panel-3380)
-* [  wrangler.toml ](#tab-panel-3381)
+* [  wrangler.jsonc ](#tab-panel-3386)
+* [  wrangler.toml ](#tab-panel-3387)
 
 JSONC
 
@@ -78,6 +78,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -168,6 +170,8 @@ export default {
 
 ```
 
+Explain Code
+
 1. The Outbound Worker will now be invoked on any `fetch()` requests from a user Worker. The user Worker will trigger a [FetchEvent](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) on the Outbound Worker. The variables declared in the binding can be accessed in the Outbound Worker through `env.<VAR_NAME>`.
 
 The following is an example of an Outbound Worker that logs the fetch request from user Worker and creates a JWT if the fetch request matches `api.example.com`.
@@ -242,6 +246,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

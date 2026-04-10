@@ -58,6 +58,8 @@ traceroute to 10.3.0.100 (10.3.0.100), 30 hops max, 60 byte packets
 
 ```
 
+Explain Code
+
 Setting the TTL explicitly returns much better results:
 
 Terminal window

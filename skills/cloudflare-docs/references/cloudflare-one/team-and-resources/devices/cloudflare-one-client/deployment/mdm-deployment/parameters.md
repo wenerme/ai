@@ -247,6 +247,8 @@ When using [multiple configurations](https://developers.cloudflare.com/cloudflar
 
 ```
 
+Explain Code
+
 ### `external_emergency_signal_fingerprint`
 
 The SHA-256 fingerprint that the Cloudflare One Client will use to validate the [external\_emergency\_signal\_url](#external%5Femergency%5Fsignal%5Furl) HTTPS endpoint. Refer to [External Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/external-disconnect) for details on how to extract this fingerprint.

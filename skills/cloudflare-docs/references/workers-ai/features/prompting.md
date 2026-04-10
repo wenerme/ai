@@ -92,6 +92,8 @@ JavaScript
 
 ```
 
+Explain Code
+
 Note that different LLMs are trained with different templates for different use cases. While Workers AI tries its best to abstract the specifics of each LLM template from the developer through a unified API, you should always refer to the model documentation for details. For example, instruct models like Codellama are fine-tuned to respond to a user-provided instruction, while chat models expect fragments of dialogs as input.
 
 ### Unscoped Prompts

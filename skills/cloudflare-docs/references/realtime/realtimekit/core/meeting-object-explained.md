@@ -78,6 +78,8 @@ meeting.self.roomState; // Current room state
 
 ```
 
+Explain Code
+
 **Common Methods:**
 
 JavaScript
@@ -123,6 +125,8 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 
 
 ```
+
+Explain Code
 
 The [meeting.self ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
@@ -168,6 +172,8 @@ meeting.self.roomState; // Current room state
 
 ```
 
+Explain Code
+
 **Common Methods:**
 
 JavaScript
@@ -213,6 +219,8 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 
 
 ```
+
+Explain Code
 
 The [meeting.self ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
@@ -258,6 +266,8 @@ meeting.self.roomState; // Current room state
 
 ```
 
+Explain Code
+
 **Common Methods:**
 
 JavaScript
@@ -303,6 +313,8 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 
 
 ```
+
+Explain Code
 
 The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
@@ -368,6 +380,8 @@ meeting.localUser.waitListStatus // Waitlist status of the local user (NONE, WAI
 
 
 ```
+
+Explain Code
 
 **Common Methods:**
 
@@ -449,6 +463,8 @@ meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media
 
 ```
 
+Explain Code
+
 The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
@@ -513,6 +529,8 @@ meeting.localUser.waitListStatus // Waitlist status of the local user (.none, .w
 
 
 ```
+
+Explain Code
 
 **Common Methods:**
 
@@ -594,6 +612,8 @@ meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media
 
 ```
 
+Explain Code
+
 The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
@@ -657,6 +677,8 @@ meeting.localUser.waitListStatus; // Waitlist status of the local user (None, Wa
 
 ```
 
+Explain Code
+
 **Common Methods:**
 
 Dart
@@ -711,6 +733,8 @@ meeting.localUser.switchCamera(); // Switch between front and back camera
 
 ```
 
+Explain Code
+
 The [meeting.self ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
@@ -754,6 +778,8 @@ meeting.self.roomState; // Current room state
 
 
 ```
+
+Explain Code
 
 **Common Methods:**
 
@@ -801,6 +827,8 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 
 ```
 
+Explain Code
+
 ## Remote participants
 
 ### `meeting.participants` \- All Remote Participants
@@ -847,6 +875,8 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 ```
 
+Explain Code
+
 **Accessing Participant Data:**
 
 JavaScript
@@ -904,6 +934,8 @@ const count = meeting.participants.joined.size();
 
 
 ```
+
+Explain Code
 
 **Participant Properties:**
 
@@ -976,6 +1008,8 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 ```
 
+Explain Code
+
 **Accessing Participant Data:**
 
 JavaScript
@@ -1033,6 +1067,8 @@ const count = meeting.participants.joined.size();
 
 
 ```
+
+Explain Code
 
 **Participant Properties:**
 
@@ -1105,6 +1141,8 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 ```
 
+Explain Code
+
 **Accessing Participant Data:**
 
 JavaScript
@@ -1162,6 +1200,8 @@ const count = meeting.participants.joined.size();
 
 
 ```
+
+Explain Code
 
 **Participant Properties:**
 
@@ -1237,6 +1277,8 @@ val totalCount: Int = meeting.participants.totalCount
 
 ```
 
+Explain Code
+
 **Accessing Participant Data:**
 
 Kotlin
@@ -1303,6 +1345,8 @@ meeting.participants.setPage(1) // Switch to specific page
 
 ```
 
+Explain Code
+
 **Participant Control Methods:**
 
 Kotlin
@@ -1357,6 +1401,8 @@ meeting.participants.disableCache() // Disable participant caching
 
 ```
 
+Explain Code
+
 **Participant Properties:**
 
 Kotlin
@@ -1391,6 +1437,8 @@ participant.flags // Participant flags (recorder, hiddenParticipant, webinarHidd
 
 
 ```
+
+Explain Code
 
 The `meeting.participants` contains lists of all remote participants in the meeting, organized by their state.
 
@@ -1436,6 +1484,8 @@ let totalCount: Int = meeting.participants.totalCount
 
 
 ```
+
+Explain Code
 
 **Accessing Participant Data:**
 
@@ -1503,6 +1553,8 @@ meeting.participants.setPage(1) // Switch to specific page
 
 ```
 
+Explain Code
+
 **Participant Control Methods:**
 
 Swift
@@ -1557,6 +1609,8 @@ meeting.participants.disableCache() // Disable participant caching
 
 ```
 
+Explain Code
+
 **Participant Properties:**
 
 Swift
@@ -1592,6 +1646,8 @@ participant.flags // Participant flags (recorder, hiddenParticipant, webinarHidd
 
 ```
 
+Explain Code
+
 The `meeting.participants` contains lists of all remote participants in the meeting, organized by their state.
 
 **Participant Lists:**
@@ -1626,6 +1682,8 @@ final screenshares = meeting.participants.screenshares; // List<RtkRemotePartici
 
 
 ```
+
+Explain Code
 
 **Accessing Participant Data:**
 
@@ -1693,6 +1751,8 @@ meeting.participants.setPage(1); // Switch to specific page
 
 ```
 
+Explain Code
+
 **Participant Control Methods:**
 
 Dart
@@ -1747,6 +1807,8 @@ meeting.participants.broadcastMessage("custom-event", {"key": "value"});
 
 ```
 
+Explain Code
+
 **Participant Properties:**
 
 Dart
@@ -1781,6 +1843,8 @@ participant.flags; // Participant flags (recorder, hiddenParticipant, webinarHid
 
 
 ```
+
+Explain Code
 
 The [meeting.participants ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
 
@@ -1823,6 +1887,8 @@ meeting.participants.pinned.toArray(); // Array of pinned participants
 
 
 ```
+
+Explain Code
 
 **Accessing Participant Data:**
 
@@ -1881,6 +1947,8 @@ const count = meeting.participants.joined.size();
 
 
 ```
+
+Explain Code
 
 **Participant Properties:**
 
@@ -1991,6 +2059,8 @@ meeting.meta.socketConnectionState // Current state of the socket connection (So
 
 ```
 
+Explain Code
+
 **Methods:**
 
 Kotlin
@@ -2040,6 +2110,8 @@ meeting.meta.socketConnectionState // Current state of the socket connection (So
 
 
 ```
+
+Explain Code
 
 **Methods:**
 
@@ -2158,42 +2230,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 
 ```
 
-The [meeting.chat ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
-
-JavaScript
-
-```
-
-// Get all chat messages
-
-const messages = meeting.chat.messages;
-
-
-// Send a text message
-
-await meeting.chat.sendTextMessage("Hello everyone!");
-
-
-// Send an image
-
-await meeting.chat.sendImageMessage(imageFile);
-
-
-// Listen to chat messages
-
-console.log("First message:", meeting.chat.messages[0]);
-
-
-meeting.chat.on("chatUpdate", ({ message, messages }) => {
-
-  console.log(`Received message ${message}`);
-
-  console.log(`All messages in chat: ${messages.join(", ")}`);
-
-});
-
-
-```
+Explain Code
 
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
@@ -2231,6 +2268,47 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 
 
 ```
+
+Explain Code
+
+The [meeting.chat ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+
+JavaScript
+
+```
+
+// Get all chat messages
+
+const messages = meeting.chat.messages;
+
+
+// Send a text message
+
+await meeting.chat.sendTextMessage("Hello everyone!");
+
+
+// Send an image
+
+await meeting.chat.sendImageMessage(imageFile);
+
+
+// Listen to chat messages
+
+console.log("First message:", meeting.chat.messages[0]);
+
+
+meeting.chat.on("chatUpdate", ({ message, messages }) => {
+
+  console.log(`Received message ${message}`);
+
+  console.log(`All messages in chat: ${messages.join(", ")}`);
+
+});
+
+
+```
+
+Explain Code
 
 The `meeting.chat` manages text messages, images, and files shared in the meeting.
 
@@ -2315,6 +2393,8 @@ when (err) {
 
 
 ```
+
+Explain Code
 
 The `meeting.chat` manages text messages, images, and files shared in the meeting.
 
@@ -2416,6 +2496,8 @@ default:
 
 
 ```
+
+Explain Code
 
 The `meeting.chat` manages text messages, images, and files shared in the meeting.
 
@@ -2536,6 +2618,8 @@ switch (err.runtimeType) {
 
 ```
 
+Explain Code
+
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
 JavaScript
@@ -2572,6 +2656,8 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 
 
 ```
+
+Explain Code
 
 ## Polls
 
@@ -2610,38 +2696,7 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 ```
 
-The [meeting.polls ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
-
-JavaScript
-
-```
-
-// Get all polls
-
-const polls = meeting.polls.items;
-
-
-// Create a poll
-
-await meeting.polls.create(
-
-  "What time works best?", //question
-
-  ["9 AM", "2 PM", "5 PM"], // options
-
-  false, // anonymous
-
-  false, // hideVotes
-
-);
-
-
-// Vote on a poll
-
-await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
-
-
-```
+Explain Code
 
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
@@ -2675,6 +2730,43 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 
 ```
+
+Explain Code
+
+The [meeting.polls ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+
+JavaScript
+
+```
+
+// Get all polls
+
+const polls = meeting.polls.items;
+
+
+// Create a poll
+
+await meeting.polls.create(
+
+  "What time works best?", //question
+
+  ["9 AM", "2 PM", "5 PM"], // options
+
+  false, // anonymous
+
+  false, // hideVotes
+
+);
+
+
+// Vote on a poll
+
+await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
+
+
+```
+
+Explain Code
 
 The `meeting.polls` manages polls in the meeting.
 
@@ -2739,6 +2831,8 @@ meeting.addPollsEventListener(object : RtkPollsEventListener {
 
 
 ```
+
+Explain Code
 
 The `meeting.polls` manages polls in the meeting.
 
@@ -2808,6 +2902,8 @@ meeting.addPollsEventListener(self)
 
 
 ```
+
+Explain Code
 
 The `meeting.polls` manages polls in the meeting.
 
@@ -2886,6 +2982,8 @@ meeting.addPollsEventListener(pollsListener);
 
 ```
 
+Explain Code
+
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPolls) manages polls in the meeting.
 
 JavaScript
@@ -2918,6 +3016,8 @@ await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.p
 
 
 ```
+
+Explain Code
 
 ## Plugins
 
@@ -3092,6 +3192,8 @@ meeting.addPluginsEventListener(pluginsEventListener)
 
 ```
 
+Explain Code
+
 The `meeting.plugins` manages meeting plugins (collaborative apps).
 
 Swift
@@ -3178,6 +3280,8 @@ meeting.addPluginsEventListener(self)
 
 
 ```
+
+Explain Code
 
 The `meeting.plugins` manages meeting plugins (collaborative apps).
 
@@ -3275,6 +3379,8 @@ meeting.addPluginsEventListener(pluginsListener);
 
 
 ```
+
+Explain Code
 
 The [meeting.plugins ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPlugins) manages meeting plugins (collaborative apps).
 
@@ -3457,6 +3563,8 @@ meeting.leave(
 
 ```
 
+Explain Code
+
 Swift
 
 ```
@@ -3501,6 +3609,8 @@ meeting.leave(
 
 ```
 
+Explain Code
+
 Dart
 
 ```
@@ -3544,6 +3654,8 @@ meeting.leave(
 
 
 ```
+
+Explain Code
 
 JavaScript
 

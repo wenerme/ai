@@ -57,7 +57,8 @@ To set up `TXT` validation:
     }  
 ]  
 }  
-```
+```  
+Explain Code
 2. Have your customer add a `TXT` record with that `name` and `value` at their authoritative DNS provider.
 3. After a few minutes, you will see the hostname status become **Active** in the UI.
 4. Once you activate the custom hostname, your customer can remove the `TXT` record.
@@ -90,7 +91,8 @@ Example response (truncated)
     }  
   ]  
 }  
-```
+```  
+Explain Code
 3. Have your customer place the `http_url` and `http_body` on their origin web server.  
 Example response (truncated)  
 ```  

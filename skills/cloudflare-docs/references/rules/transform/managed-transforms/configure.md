@@ -16,9 +16,9 @@ Copy page
 
 # Configure Managed Transforms
 
-* [ Dashboard ](#tab-panel-6078)
-* [ API ](#tab-panel-6079)
-* [ Terraform ](#tab-panel-6080)
+* [ Dashboard ](#tab-panel-6122)
+* [ API ](#tab-panel-6123)
+* [ Terraform ](#tab-panel-6124)
 
 1. In the Cloudflare dashboard, go to the Rules **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/settings)
@@ -218,6 +218,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 
 ```
 
+Explain Code
+
 **2\. Change the status of Managed Transforms**
 
 Change the status of the [desired Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/) using the [Update status of Managed Transforms](https://developers.cloudflare.com/api/resources/managed%5Ftransforms/methods/edit/) operation.
@@ -293,6 +295,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -421,6 +425,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/managed_headers" \
 
 ```
 
+Explain Code
+
 Note
 
 Terraform code snippets below refer to the v4 SDK only.
@@ -455,6 +461,8 @@ resource "cloudflare_managed_headers" "tf_example" {
 
 
 ```
+
+Explain Code
 
 Make sure you include the Managed Transforms you are updating in the correct object (`managed_request_headers` or `managed_response_headers`).
 

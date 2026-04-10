@@ -55,6 +55,7 @@ dig example.com
 ;; WHEN: Tue Mar 10 20:22:18 CDT 2020  
 ;; MSG SIZE  rcvd: 29  
 ```  
+Explain Code  
 If the [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) is enabled for the policy, you should see `NOERROR` (meaning the query was resolved) in the header with `162.159.36.12` and `162.159.46.12` as the answers. These are Cloudflare's block page IP addresses:  
 Terminal window  
 ```  
@@ -77,7 +78,8 @@ example.com.            60      IN      A                  162.159.46.12
 ;; SERVER: 172.64.36.1#53(172.64.36.1)  
 ;; WHEN: Tue Mar 10 20:19:52 CDT 2020  
 ;; MSG SIZE  rcvd: 83  
-```
+```  
+Explain Code
 
 ### Test a security or content category
 
@@ -157,7 +159,8 @@ The output should contain your EDNS client subnet:
   "Status": 0,  
   "TC": false  
 }  
-```
+```  
+Explain Code
 3. To verify your EDNS client subnet, obtain your source IP address:  
 Terminal window  
 ```  

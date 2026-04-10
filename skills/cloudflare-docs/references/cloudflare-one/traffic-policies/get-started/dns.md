@@ -66,8 +66,8 @@ To confirm that your device's DNS queries are flowing through Gateway:
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-3837)
-* [ API ](#tab-panel-3838)
+* [ Dashboard ](#tab-panel-3843)
+* [ API ](#tab-panel-3844)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
@@ -103,6 +103,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     "identity": ""  
   }'  
 ```  
+Explain Code  
 ```  
 {  
    "success": true,  

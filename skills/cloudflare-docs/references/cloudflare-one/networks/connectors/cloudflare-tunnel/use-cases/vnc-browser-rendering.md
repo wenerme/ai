@@ -129,6 +129,7 @@ sudo vim /etc/systemd/system/vncserver@.service
    [Install]  
    WantedBy=multi-user.target  
    ```  
+   Explain Code  
          1. Reload `systemd` to read in the new service file:  
    Terminal window  
    ```  

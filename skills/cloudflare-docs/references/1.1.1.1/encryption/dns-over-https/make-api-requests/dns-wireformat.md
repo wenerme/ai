@@ -56,6 +56,8 @@ content-length = 33
 
 ```
 
+Explain Code
+
 And would return the answer in wireformat:
 
 ```
@@ -81,6 +83,8 @@ cache-control = max-age=128
 
 
 ```
+
+Explain Code
 
 To try this using cURL, write:
 
@@ -164,6 +168,8 @@ cf-ray: 3ffe69838a418c4c-SFO-DOG
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/encryption/","name":"Encryption"}},{"@type":"ListItem","position":4,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/","name":"DNS over HTTPS"}},{"@type":"ListItem","position":5,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/make-api-requests/","name":"Make API requests to 1.1.1.1"}},{"@type":"ListItem","position":6,"item":{"@id":"/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/","name":"DNS Wireformat"}}]}

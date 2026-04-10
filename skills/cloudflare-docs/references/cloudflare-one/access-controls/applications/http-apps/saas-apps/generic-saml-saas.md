@@ -227,6 +227,8 @@ User identity before JSONata transform
 
 ```
 
+Explain Code
+
 Result after applying the example JSONata script:
 
 ```
@@ -309,6 +311,8 @@ Result after applying the example JSONata script:
 
 
 ```
+
+Explain Code
 
 For more JSONata transform use cases, refer to the following examples.
 
@@ -396,6 +400,8 @@ Result after applying the JSONata transform:
 
 ```
 
+Explain Code
+
 Rename groups field and remove group ID
 
 The following JSONata script changes the `groups.name` field from `name` to `group_name` and removes the `groups.id` field:
@@ -440,6 +446,8 @@ JSONata expression
 
 
 ```
+
+Explain Code
 
 Result after applying the JSONata transform:
 
@@ -533,6 +541,8 @@ Result after applying the JSONata transform:
 
 
 ```
+
+Explain Code
 
 Filter groups by name
 
@@ -637,6 +647,8 @@ Result after applying the JSONata transform:
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/access-controls/","name":"Access controls"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/access-controls/applications/","name":"Applications"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/","name":"Add web applications"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/saas-apps/","name":"SaaS applications"}},{"@type":"ListItem","position":7,"item":{"@id":"/cloudflare-one/access-controls/applications/http-apps/saas-apps/generic-saml-saas/","name":"Generic SAML application"}}]}

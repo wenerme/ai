@@ -84,6 +84,8 @@ variable "account_id" {
 
 ```
 
+Explain Code
+
 ### 2\. Define widgets
 
 ```
@@ -135,6 +137,8 @@ output "api_sitekey" {
 
 
 ```
+
+Explain Code
 
 ### 3\. Environment variables
 
@@ -273,6 +277,8 @@ resource "cloudflare_turnstile_widget" "app_widget" {
 
 
 ```
+
+Explain Code
 
 ### Widget with Enterprise features
 

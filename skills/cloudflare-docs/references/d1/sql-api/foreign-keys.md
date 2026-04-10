@@ -105,6 +105,8 @@ CREATE TABLE orders (
 
 ```
 
+Explain Code
+
 You can define multiple foreign key relationships per-table, and foreign key definitions can reference multiple tables within your overall database schema.
 
 ## Foreign key actions
@@ -152,6 +154,8 @@ CREATE TABLE scores (
 
 
 ```
+
+Explain Code
 
 ## Next Steps
 

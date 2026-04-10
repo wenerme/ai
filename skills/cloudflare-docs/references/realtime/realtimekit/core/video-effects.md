@@ -166,6 +166,8 @@ if (RealtimeKitVideoBackgroundTransformer.isSupported()) {
 
 ```
 
+Explain Code
+
 Image CORS requirements
 
 Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗](https://unsplash.com/) and [Imgur ↗](https://imgur.com).
@@ -204,6 +206,8 @@ const videoBackgroundTransformer =
 
 
 ```
+
+Explain Code
 
 ## Installation
 
@@ -371,6 +375,8 @@ function App() {
 
 ```
 
+Explain Code
+
 Image CORS requirements
 
 Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗](https://unsplash.com/) and [Imgur ↗](https://imgur.com).
@@ -405,6 +411,8 @@ const transformer = await RealtimeKitVideoBackgroundTransformer.init({
 
 
 ```
+
+Explain Code
 
 ## Installation
 
@@ -552,6 +560,8 @@ export class MeetingComponent implements OnInit {
 
 ```
 
+Explain Code
+
 In your component template:
 
 ```
@@ -612,6 +622,8 @@ this.videoBackgroundTransformer =
 
 ```
 
+Explain Code
+
 ## Installation
 
 You can add the pre-packaged filters to your project by adding the following dependency to your `build.gradle` file:
@@ -658,6 +670,8 @@ val meeting = RealtimeKitMeetingBuilder
 
 ```
 
+Explain Code
+
 ## Advanced configuration
 
 You can also create your own custom filters to apply effects, filters, or analytics directly to a live video stream. Our **VideoProcessor APIs** provide flexible and powerful ways to manipulate video frames.
@@ -701,6 +715,8 @@ class CustomVideoProcessor : VideoProcessor {
 
 ```
 
+Explain Code
+
 ### Usage example
 
 Once you have created and configured your `VideoProcessor`, pass it to the `RealtimeKitMeetingBuilder` object. This will process video frames captured by the camera before they are sent to other participants or rendered locally:
@@ -740,6 +756,8 @@ val meeting = RealtimeKitMeetingBuilder
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/core/","name":"Build using Core SDK"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/core/video-effects/","name":"Video Effects"}}]}

@@ -87,8 +87,8 @@ npx wrangler d1 info some-existing-db
 
 In your Wrangler file, create a new `[[d1_databases]]` configuration block and set `database_name` and `database_id` to the name and id (respectively) of the D1 database you want to query:
 
-* [  wrangler.jsonc ](#tab-panel-4061)
-* [  wrangler.toml ](#tab-panel-4062)
+* [  wrangler.jsonc ](#tab-panel-4105)
+* [  wrangler.toml ](#tab-panel-4106)
 
 JSONC
 
@@ -110,7 +110,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "d1_databases": [
 
@@ -131,6 +131,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -145,7 +147,7 @@ compatibility_flags = [ "python_workers" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[d1_databases]]
@@ -158,6 +160,8 @@ database_id = "YOUR_DATABASE_ID"
 
 
 ```
+
+Explain Code
 
 The value of `binding` is how you will refer to your database from within your Worker. If you change this, you must change this in your Worker script as well.
 
@@ -196,6 +200,8 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 The value of `binding` in your Wrangler file exactly must match the name of the variable in your Python code. This example refers to the database via a `DB` binding, and query this binding via `await env.DB.prepare(...)`.
 
 You can then deploy your Python Worker directly:
@@ -233,6 +239,8 @@ npx wrangler deploy
 
 
 ```
+
+Explain Code
 
 Your Worker will be available at `https://python-and-d1.YOUR_SUBDOMAIN.workers.dev`.
 

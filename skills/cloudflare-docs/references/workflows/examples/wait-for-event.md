@@ -53,8 +53,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-8596)
-* [  TypeScript ](#tab-panel-8597)
+* [  JavaScript ](#tab-panel-8656)
+* [  TypeScript ](#tab-panel-8657)
 
 JavaScript
 
@@ -143,6 +143,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -224,12 +226,14 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, WorkflowParams> {
 
 ```
 
+Explain Code
+
 ## Workflow wrangler.jsonc
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-8594)
-* [  wrangler.toml ](#tab-panel-8595)
+* [  wrangler.jsonc ](#tab-panel-8654)
+* [  wrangler.toml ](#tab-panel-8655)
 
 JSONC
 
@@ -245,7 +249,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "observability": {
 
@@ -306,6 +310,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -318,7 +324,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [observability]
@@ -359,6 +365,8 @@ database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 
 
 ```
+
+Explain Code
 
 For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
 

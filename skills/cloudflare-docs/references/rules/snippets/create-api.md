@@ -118,6 +118,8 @@ Example response
 
 ```
 
+Explain Code
+
 To deploy a new snippet you must [create a snippet rule](#createupdatedelete-snippet-rules). The expression of the snippet rule defines when the snippet code will run.
 
 ### Create/update/delete snippet rules
@@ -165,6 +167,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/snippets/snippet_rules
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/snippets/create-api/","name":"Configure Snippets via API"}}]}

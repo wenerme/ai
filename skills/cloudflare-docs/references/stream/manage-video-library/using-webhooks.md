@@ -70,6 +70,8 @@ Example response
 
 ```
 
+Explain Code
+
 ## Notifications
 
 When a video on your account finishes processing, you will receive a `POST` request notification with information about the video.
@@ -161,6 +163,8 @@ Example POST request body sent in response to successful encoding
 
 ```
 
+Explain Code
+
 * `uid` – The video's unique identifier.
 * `readytoStream` – Returns `true` when at least one quality level is encoded and ready to be streamed.
 * `status` – The processing status.  
@@ -210,6 +214,8 @@ Example error response
 
 
 ```
+
+Explain Code
 
 ## Verify webhook authenticity
 
@@ -305,6 +311,8 @@ func main() {
 
 ```
 
+Explain Code
+
 **Node.js**
 
 JavaScript
@@ -394,6 +402,8 @@ const sig = await crypto.subtle.sign("HMAC", cryptoKey, messageBytes);
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/manage-video-library/","name":"Manage videos"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/manage-video-library/using-webhooks/","name":"Use webhooks"}}]}

@@ -115,7 +115,8 @@ for zoneID in $(cat zone.txt); do
     --data '{"value":"custom"}'  
   printf "\n\n"  
 done  
-```
+```  
+Explain Code
 5. Open your command line and run:  
 Terminal window  
 ```  
@@ -134,8 +135,8 @@ To use Custom SSL/TLS, select the custom option (if you prefer to manually set t
 
 ## Update your encryption mode
 
-* [ Dashboard ](#tab-panel-6573)
-* [ API ](#tab-panel-6574)
+* [ Dashboard ](#tab-panel-6631)
+* [ API ](#tab-panel-6632)
 
 To change your encryption mode in the dashboard:
 

@@ -49,6 +49,8 @@ dig @ns3.cloudflare.com whoami.cloudflare.com txt +short
 
 ```
 
+Explain Code
+
 ### Windows
 
 Terminal window
@@ -77,6 +79,8 @@ nslookup -type=txt whoami.cloudflare.com ns3.cloudflare.com
 
 
 ```
+
+Explain Code
 
 **Note:** The network information command reveals your IP address. Only include this in reports to Cloudflare if you are comfortable sharing this information.
 
@@ -118,6 +122,8 @@ dig +tcp @1.0.0.1 id.server CH TXT
 
 ```
 
+Explain Code
+
 ### Windows
 
 Terminal window
@@ -146,6 +152,8 @@ nslookup -vc -class=chaos -type=txt id.server 1.0.0.1
 
 
 ```
+
+Explain Code
 
 ## DNS-over-TLS (DoT) troubleshooting
 

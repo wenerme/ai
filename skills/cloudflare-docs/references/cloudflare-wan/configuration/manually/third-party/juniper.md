@@ -157,6 +157,8 @@ unit 1 {
 
 ```
 
+Explain Code
+
 ### Security Zone (Cloudflare) - tunnel interfaces
 
 Define a security zone and add both tunnel interfaces to it. At a minimum, the interfaces should allow `ping`, but this zone only contains point-to-point connections between the firewall and the customer network namespace. Setting it to `all` for system-services and protocols should be fine.
@@ -230,6 +232,8 @@ interfaces {
 
 ```
 
+Explain Code
+
 ### Security zone (untrust) - `host-inbound-traffic`
 
 Add `ping` and `ike` to the security zone containing the external interface used to establish the IPsec tunnels to Cloudflare.
@@ -272,6 +276,8 @@ interfaces {
 
 
 ```
+
+Explain Code
 
 ### IKE - Phase 1
 
@@ -773,6 +779,8 @@ family inet {
 
 ```
 
+Explain Code
+
 **View Firewall Filter Counters**
 
 To view the firewall filter counter:
@@ -889,6 +897,8 @@ rib-groups {
 
 ```
 
+Explain Code
+
 ### Security policies
 
 Define security policies to permit traffic flows destined for Cloudflare WAN-protected resources. The source/destination zones must incorporate the zone containing the tunnel interfaces.
@@ -950,6 +960,8 @@ policy cloudflare_to_trust_permit {
 
 ```
 
+Explain Code
+
 **From Zone:** _trust_ **To Zone:** _Cloudflare_
 
 ```
@@ -1004,6 +1016,8 @@ policy trust_to_cloudflare_permit {
 
 
 ```
+
+Explain Code
 
 ## Troubleshooting
 

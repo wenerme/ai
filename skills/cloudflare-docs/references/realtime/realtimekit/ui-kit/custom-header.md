@@ -59,6 +59,8 @@ import {
 
 ```
 
+Explain Code
+
 In your `RtkUIProvider` from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
 
 ```
@@ -141,6 +143,8 @@ with:
 
 ```
 
+Explain Code
+
 Define the click handler:
 
 ```
@@ -213,6 +217,8 @@ with:
 
 
 ```
+
+Explain Code
 
 Register the click handler after rendering:
 
@@ -400,6 +406,8 @@ export class CustomHeaderComponent implements AfterViewInit {
 
 ```
 
+Explain Code
+
 #### Use in Your Meeting Component
 
 In your main meeting component template, replace:
@@ -512,6 +520,8 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 ```
 
+Explain Code
+
 #### Module Configuration
 
 Don't forget to declare your custom header component in your Angular module:
@@ -550,6 +560,8 @@ export class AppModule {}
 
 
 ```
+
+Explain Code
 
 This approach gives you full control over the header layout while maintaining Angular's component architecture and event handling patterns.
 

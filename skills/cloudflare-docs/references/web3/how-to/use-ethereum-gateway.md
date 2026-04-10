@@ -93,6 +93,8 @@ await fetch(
 
 ```
 
+Explain Code
+
 The response in both cases will be a JSON blob of the form:
 
 ```
@@ -151,6 +153,8 @@ The response in both cases will be a JSON blob of the form:
 
 
 ```
+
+Explain Code
 
 ## Write to the network
 
@@ -220,6 +224,8 @@ await fetch(
 
 
 ```
+
+Explain Code
 
 _(The actual command above will not work — you need to provide your own signed transaction.)_
 

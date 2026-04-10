@@ -69,6 +69,8 @@ Triggered when a bucket is created.
 
 ```
 
+Explain Code
+
 #### `bucket.deleted`
 
 Triggered when a bucket is deleted.
@@ -111,6 +113,8 @@ Triggered when a bucket is deleted.
 
 
 ```
+
+Explain Code
 
 ## Available Super Slurper events
 
@@ -183,6 +187,8 @@ Triggered when a migration job starts.
 
 ```
 
+Explain Code
+
 #### `job.paused`
 
 Triggered when a migration job pauses.
@@ -224,6 +230,8 @@ Triggered when a migration job pauses.
 
 ```
 
+Explain Code
+
 #### `job.resumed`
 
 Triggered when a migration job resumes.
@@ -264,6 +272,8 @@ Triggered when a migration job resumes.
 
 
 ```
+
+Explain Code
 
 #### `job.completed`
 
@@ -314,6 +324,8 @@ Triggered when a migration job finishes.
 
 ```
 
+Explain Code
+
 #### `job.aborted`
 
 Triggered when a migration job is manually aborted.
@@ -363,6 +375,8 @@ Triggered when a migration job is manually aborted.
 
 ```
 
+Explain Code
+
 #### `job.object.migrated`
 
 Triggered when an object is migrated.
@@ -405,6 +419,8 @@ Triggered when an object is migrated.
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/platform/event-subscriptions/","name":"Event subscriptions"}}]}

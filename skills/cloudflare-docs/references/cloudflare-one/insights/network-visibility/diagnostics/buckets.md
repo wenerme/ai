@@ -24,8 +24,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-3453)
-* [ API ](#tab-panel-3454)
+* [ Dashboard ](#tab-panel-3459)
+* [ API ](#tab-panel-3460)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
@@ -45,8 +45,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket set up, you need to confirm you own the bucket via an ownership challenge. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-3455)
-* [ API ](#tab-panel-3456)
+* [ Dashboard ](#tab-panel-3461)
+* [ API ](#tab-panel-3462)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. In the **Ownership token** field, enter the ownership token for your service provider.
@@ -112,6 +112,8 @@ Ownership challenge response example
 
 ```
 
+Explain Code
+
 Validate the bucket by inserting the copied text in the `ownership_text` below:
 
 Bucket validation example
@@ -170,6 +172,8 @@ Bucket validation response
 
 ```
 
+Explain Code
+
 If the `status` shows `success`, the bucket is configured and ready to use.
 
 The bucket status displays one of the following options:
@@ -182,8 +186,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-3457)
-* [ API ](#tab-panel-3458)
+* [ Dashboard ](#tab-panel-3463)
+* [ API ](#tab-panel-3464)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
@@ -240,6 +244,8 @@ Bucket list response example
 
 
 ```
+
+Explain Code
 
 To learn how to collect packet captures, refer to [Collect packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/).
 
@@ -316,6 +322,8 @@ The [response](https://developers.cloudflare.com/api/resources/magic%5Ftransit/s
 
 
 ```
+
+Explain Code
 
 ### Validate bucket ownership
 

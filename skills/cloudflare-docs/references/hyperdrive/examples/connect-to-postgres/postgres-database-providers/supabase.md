@@ -66,8 +66,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-4793)
-* [ Wrangler CLI ](#tab-panel-4794)
+* [ Dashboard ](#tab-panel-4831)
+* [ Wrangler CLI ](#tab-panel-4832)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -85,8 +85,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-4791)  
-   * [  wrangler.toml ](#tab-panel-4792)  
+   * [  wrangler.jsonc ](#tab-panel-4829)  
+   * [  wrangler.toml ](#tab-panel-4830)  
 JSONC  
 ```  
 {  
@@ -94,7 +94,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-09",  
+  "compatibility_date": "2026-04-10",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -107,18 +107,20 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-09"  
+compatibility_date = "2026-04-10"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
 id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
-```
+```  
+Explain Code
 
 Note
 
@@ -172,8 +174,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4795)
-* [  wrangler.toml ](#tab-panel-4796)
+* [  wrangler.jsonc ](#tab-panel-4833)
+* [  wrangler.toml ](#tab-panel-4834)
 
 JSONC
 
@@ -191,7 +193,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-09",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -210,6 +212,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -218,7 +222,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-09"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -299,6 +303,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

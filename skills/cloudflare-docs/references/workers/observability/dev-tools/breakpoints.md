@@ -68,6 +68,8 @@ To setup VS Code for breakpoint debugging in your Worker project:
 
 ```
 
+Explain Code
+
 1. Open your project in VS Code, open a new terminal window from VS Code, and run `npx wrangler dev` to start the local dev server.
 2. At the top of the **Run & Debug** panel, you should see an option to select a configuration. Choose **Wrangler**, and select the play icon. **Wrangler: Remote Process \[0\]** should show up in the Call Stack panel on the left.
 3. Go back to a `.js` or `.ts` file in your project and add at least one breakpoint.

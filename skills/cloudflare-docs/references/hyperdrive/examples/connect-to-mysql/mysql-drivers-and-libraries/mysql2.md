@@ -47,8 +47,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4701)
-* [  wrangler.toml ](#tab-panel-4702)
+* [  wrangler.jsonc ](#tab-panel-4745)
+* [  wrangler.toml ](#tab-panel-4746)
 
 JSONC
 
@@ -66,7 +66,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -85,6 +85,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -93,7 +95,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -175,6 +177,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

@@ -53,8 +53,8 @@ Use R2 [bindings](https://developers.cloudflare.com/workers/runtime-apis/binding
 
 Use `put()` to upload an object in a single request. This is the simplest approach for small to medium objects.
 
-* [  JavaScript ](#tab-panel-5818)
-* [  TypeScript ](#tab-panel-5819)
+* [  JavaScript ](#tab-panel-5862)
+* [  TypeScript ](#tab-panel-5863)
 
 JavaScript
 
@@ -111,6 +111,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -162,12 +164,14 @@ export default {
 
 ```
 
+Explain Code
+
 ### Multipart upload
 
 Use `createMultipartUpload()` and `resumeMultipartUpload()` for large files or when you need to upload parts in parallel. Each part must be at least 5 MiB (except the last part).
 
-* [  JavaScript ](#tab-panel-5820)
-* [  TypeScript ](#tab-panel-5821)
+* [  JavaScript ](#tab-panel-5864)
+* [  TypeScript ](#tab-panel-5865)
 
 JavaScript
 
@@ -231,6 +235,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -293,10 +299,12 @@ export default {
 
 ```
 
+Explain Code
+
 In most cases, the multipart state (the `uploadId` and uploaded part ETags) is tracked by the client sending requests to your Worker. The following example exposes an HTTP API that a client application can call to create, upload parts for, and complete a multipart upload:
 
-* [  JavaScript ](#tab-panel-5824)
-* [  TypeScript ](#tab-panel-5825)
+* [  JavaScript ](#tab-panel-5868)
+* [  TypeScript ](#tab-panel-5869)
 
 JavaScript
 
@@ -445,6 +453,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -588,14 +598,16 @@ export default {
 
 ```
 
+Explain Code
+
 For the complete Workers API reference, refer to [Workers API reference](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/).
 
 ### Presigned URLs (Workers)
 
 When you need clients (browsers, mobile apps) to upload directly to R2 without proxying through your Worker, generate a presigned URL server-side and hand it to the client:
 
-* [  JavaScript ](#tab-panel-5822)
-* [  TypeScript ](#tab-panel-5823)
+* [  JavaScript ](#tab-panel-5866)
+* [  TypeScript ](#tab-panel-5867)
 
 JavaScript
 
@@ -645,6 +657,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -706,6 +720,8 @@ export default {
 
 ```
 
+Explain Code
+
 For full presigned URL documentation including GET, PUT, and security best practices, refer to [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/).
 
 ## Upload via S3 API
@@ -714,9 +730,9 @@ Use S3-compatible SDKs to upload objects. You will need your [account ID](https:
 
 ### Single upload
 
-* [  TypeScript ](#tab-panel-5806)
-* [  JavaScript ](#tab-panel-5807)
-* [  Python ](#tab-panel-5808)
+* [  TypeScript ](#tab-panel-5850)
+* [  JavaScript ](#tab-panel-5851)
+* [  Python ](#tab-panel-5852)
 
 TypeScript
 
@@ -768,6 +784,8 @@ console.log(`Uploaded successfully. ETag: ${response.ETag}`);
 
 ```
 
+Explain Code
+
 JavaScript
 
 ```
@@ -818,6 +836,8 @@ console.log(`Uploaded successfully. ETag: ${response.ETag}`);
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -859,6 +879,8 @@ with open("./image.png", "rb") as f:
 
 ```
 
+Explain Code
+
 ### Multipart upload
 
 Most S3 SDKs handle multipart uploads automatically when the file exceeds a configurable threshold. The examples below show both automatic (high-level) and manual (low-level) approaches.
@@ -867,9 +889,9 @@ Most S3 SDKs handle multipart uploads automatically when the file exceeds a conf
 
 The SDK splits the file and uploads parts in parallel.
 
-* [  TypeScript ](#tab-panel-5809)
-* [  JavaScript ](#tab-panel-5810)
-* [  Python ](#tab-panel-5811)
+* [  TypeScript ](#tab-panel-5853)
+* [  JavaScript ](#tab-panel-5854)
+* [  Python ](#tab-panel-5855)
 
 TypeScript
 
@@ -934,6 +956,8 @@ console.log(`Upload complete. ETag: ${result.ETag}`);
 
 ```
 
+Explain Code
+
 JavaScript
 
 ```
@@ -995,6 +1019,8 @@ console.log(`Upload complete. ETag: ${result.ETag}`);
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -1032,13 +1058,15 @@ s3.upload_file(
 
 ```
 
+Explain Code
+
 #### Manual multipart upload
 
 Use the low-level API when you need full control over part sizes or upload order.
 
-* [  TypeScript ](#tab-panel-5812)
-* [  JavaScript ](#tab-panel-5813)
-* [  Python ](#tab-panel-5814)
+* [  TypeScript ](#tab-panel-5856)
+* [  JavaScript ](#tab-panel-5857)
+* [  Python ](#tab-panel-5858)
 
 TypeScript
 
@@ -1183,6 +1211,8 @@ try {
 
 ```
 
+Explain Code
+
 JavaScript
 
 ```
@@ -1324,6 +1354,8 @@ try {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -1433,13 +1465,15 @@ except Exception:
 
 ```
 
+Explain Code
+
 ### Presigned URLs (S3 API)
 
 For client-side uploads where users upload directly to R2 without going through your server, generate a presigned PUT URL. Your server creates the URL and the client uploads to it — no API credentials are exposed to the client.
 
-* [  TypeScript ](#tab-panel-5815)
-* [  JavaScript ](#tab-panel-5816)
-* [  Python ](#tab-panel-5817)
+* [  TypeScript ](#tab-panel-5859)
+* [  JavaScript ](#tab-panel-5860)
+* [  Python ](#tab-panel-5861)
 
 TypeScript
 
@@ -1493,6 +1527,8 @@ console.log(presignedUrl);
 
 ```
 
+Explain Code
+
 JavaScript
 
 ```
@@ -1545,6 +1581,8 @@ console.log(presignedUrl);
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -1592,6 +1630,8 @@ print(presigned_url)
 
 
 ```
+
+Explain Code
 
 For full presigned URL documentation, refer to [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/).
 

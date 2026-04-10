@@ -48,6 +48,8 @@ Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between
 
 ```
 
+Explain Code
+
 1. The client establishes an HTTP/2 or HTTP/3 connection to Privacy Proxy and presents credentials (PSK or Privacy Pass token) in the `Proxy-Authorization` header.
 2. The client sends a CONNECT request specifying the destination hostname and port.
 3. The proxy responds with `200 OK` to confirm the tunnel is ready.

@@ -90,6 +90,8 @@ Get AI crawler requests over time using detection IDs
 
 ```
 
+Explain Code
+
 Get AI crawler requests over time using user agent
 
 ```
@@ -147,6 +149,8 @@ Get AI crawler requests over time using user agent
 
 ```
 
+Explain Code
+
 Get top crawled paths
 
 ```
@@ -201,6 +205,8 @@ Get top crawled paths
 
 
 ```
+
+Explain Code
 
 Get AI referral traffic
 
@@ -263,6 +269,8 @@ Get AI referral traffic
 
 ```
 
+Explain Code
+
 Get data transfer by crawler
 
 ```
@@ -317,6 +325,8 @@ Get data transfer by crawler
 
 
 ```
+
+Explain Code
 
 ## Related
 

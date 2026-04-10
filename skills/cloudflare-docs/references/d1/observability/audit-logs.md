@@ -88,6 +88,8 @@ Below is an example of an audit log entry showing the creation of a new database
 
 ```
 
+Explain Code
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/observability/","name":"Observability"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/observability/audit-logs/","name":"Audit Logs"}}]}
 ```

@@ -93,6 +93,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists" \
 
 ```
 
+Explain Code
+
 Take note of the list ID — you will need it in the next step.
 
 For more information on list operations, refer to the [Lists API](https://developers.cloudflare.com/waf/tools/lists/lists-api/) documentation.
@@ -148,6 +150,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rules/lists/f848
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -219,6 +223,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ## 3\. Create a Bulk Redirect Rule via API
 
@@ -296,6 +302,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -360,6 +368,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 
 ```
+
+Explain Code
 
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) in the Terraform documentation.
 
@@ -451,6 +461,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -557,14 +569,16 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 ```
 
+Explain Code
+
 ---
 
 ## Required API token permissions
 
 The API token used in API requests to manage Bulk Redirects objects (lists, list items, and rules) must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-6081)
-* [ API ](#tab-panel-6082)
+* [ Dashboard ](#tab-panel-6125)
+* [ API ](#tab-panel-6126)
 
 * _Account_ \> _Bulk URL Redirects_ \> _Edit_
 * _Account_ \> _Account Filter Lists_ \> _Edit_

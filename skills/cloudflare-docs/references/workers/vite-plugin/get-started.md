@@ -53,6 +53,8 @@ package.json
 
 ```
 
+Explain Code
+
 Note
 
 Ensure that you include `"type": "module"` in order to use ES modules by default.
@@ -103,8 +105,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ## Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-7794)
-* [  wrangler.toml ](#tab-panel-7795)
+* [  wrangler.jsonc ](#tab-panel-7854)
+* [  wrangler.toml ](#tab-panel-7855)
 
 JSONC
 
@@ -118,7 +120,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "main": "./src/index.ts"
 
@@ -137,7 +139,7 @@ name = "cloudflare-vite-get-started"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 main = "./src/index.ts"
 

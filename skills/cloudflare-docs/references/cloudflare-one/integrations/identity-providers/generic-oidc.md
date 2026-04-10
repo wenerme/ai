@@ -40,9 +40,9 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3474)
-* [ API ](#tab-panel-3475)
-* [ Terraform (v5) ](#tab-panel-3476)
+* [ Dashboard ](#tab-panel-3480)
+* [ API ](#tab-panel-3481)
+* [ Terraform (v5) ](#tab-panel-3482)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -117,6 +117,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
 
 ```
 
+Explain Code
+
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
    * `Access: Organizations, Identity Providers, and Groups Write`
 2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:  
@@ -137,7 +139,8 @@ resource "cloudflare_zero_trust_access_identity_provider" "generic_oidc_example"
     scopes = ["openid", "email", "profile"]  
   }  
 }  
-```
+```  
+Explain Code
 
 ## 3\. Test the connection
 

@@ -158,8 +158,8 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 
 1. Update your `wrangler.jsonc` to configure your Agent:
 
-* [  wrangler.jsonc ](#tab-panel-2970)
-* [  wrangler.toml ](#tab-panel-2971)
+* [  wrangler.jsonc ](#tab-panel-2976)
+* [  wrangler.toml ](#tab-panel-2977)
 
 JSONC
 
@@ -175,7 +175,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -222,6 +222,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -234,7 +236,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -256,6 +258,8 @@ new_classes = [ "MyAgent" ]
 
 
 ```
+
+Explain Code
 
 ## 4\. Create your Slack Agent
 
@@ -447,6 +451,8 @@ export default MyAgent.listen({
 
 
 ```
+
+Explain Code
 
 ## 5\. Test locally
 
@@ -678,6 +684,8 @@ async onSlackEvent(event: { type: string } & Record<string, unknown>) {
 
 ```
 
+Explain Code
+
 ### Use different LLM providers
 
 Replace OpenAI with [Workers AI](https://developers.cloudflare.com/workers-ai/):
@@ -709,6 +717,8 @@ export class MyAgent extends SlackAgent {
 
 
 ```
+
+Explain Code
 
 ## Next steps
 

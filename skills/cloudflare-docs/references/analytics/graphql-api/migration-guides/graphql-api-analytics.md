@@ -63,6 +63,8 @@ For example, if you wanted to see which five data centers had the most number of
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -186,6 +188,8 @@ Response
 
 ```
 
+Explain Code
+
 ## `httpRequestsAdaptiveGroups` GraphQL API node
 
 With the deprecation of the `httpRequests1mByColoGroups` and `httpRequests1dByColoGroups` GraphQL API nodes, use the `httpRequestsAdaptiveGroups` GraphQL API node to access the same data (`count`, `sum(edgeResponseBytes)`, and `visits`).
@@ -251,7 +255,7 @@ query MigrationSample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgSwOYQIYBcEHsB2BlVAWwAcAbMACgBIAvXMAFVSQC4YBndCBHJAGhhVOqCOjYMEhMAKpgcAE3GSwAShgBvAFAwYANwRgA7pA3adMOjjDsKAMwSl0kNuov0mrQZcbMYAXzUtc3N2SAN2NgALdHRiACUwUGt0dgBBeVRiTF0wAHEILBBiGzNgnVJJBDEYAFZSsqwIeUgAISg2AG0AY0KcdAB9ABEAUTwAYQBdeuD7R2dTMrKMp0wpfqREtiF0EXRppYwwVbB+xy25eX3giETwTjxCiC6wNgAiMCgwACNUUlJXq7+faBQE9EB9QGoXRIBaLEJEMhgACSfUgul+gL8gPYIEIsLhegQ7Cq7EBOjA8g2CXYxFwoTaTlJBKxBPkyhwxLp+LhPVIWDGWGamP2LPMoqxfiAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWXgE44ARgDsqESNR9OGCiBhQAJs3ZdeAtsJYBmSdNnyAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAsgSwOYQIYBcEHsB2BlVAWwAcAbMACgBIAvXMAFVSQC4YBndCBHJAGhhVOqCOjYMEhMAKpgcAE3GSwAShgBvAFAwYANwRgA7pA3adMOjjDsKAMwSl0kNuov0mrQZcbMYAXzUtc3N2SAN2NgALdHRiACUwUGt0dgBBeVRiTF0wAHEILBBiGzNgnVJJBDEYAFZSsqwIeUgAISg2AG0AY0KcdAB9ABEAUTwAYQBdeuD7R2dTMrKMp0wpfqREtiF0EXRppYwwVbB+xy25eX3giETwTjxCiC6wNgAiMCgwACNUUlJXq7+faBQE9EB9QGoXRIBaLEJEMhgACSfUgul+gL8gPYIEIsLhegQ7Cq7EBOjA8g2CXYxFwoTaTlJBKxBPkyhwxLp+LhPVIWDGWGamP2LPMoqxfiAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbgEY2cfqkGdxfDBRAwoAE2bsuvAcLjDxkwdJABfIA)
 
 Response
 
@@ -415,6 +419,8 @@ Response
 
 
 ```
+
+Explain Code
 
 This query says:
 

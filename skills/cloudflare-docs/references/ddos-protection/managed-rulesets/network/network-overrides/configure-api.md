@@ -113,6 +113,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/phases/ddos_
 
 ```
 
+Explain Code
+
 The response returns the created (or updated) phase entry point ruleset.
 
 Response
@@ -203,6 +205,8 @@ Response
 
 
 ```
+
+Explain Code
 
 For more information on defining overrides for managed rulesets using the Rulesets API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 

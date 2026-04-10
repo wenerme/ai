@@ -49,6 +49,8 @@ console.log(new Uint8Array(myDigest));
 
 ```
 
+Explain Code
+
 Some common uses include [signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/).
 
 Warning
@@ -69,8 +71,8 @@ The Web Crypto API differs significantly from the [Node.js Crypto API](https://d
 
 ### Usage
 
-* [  JavaScript ](#tab-panel-7656)
-* [  TypeScript ](#tab-panel-7657)
+* [  JavaScript ](#tab-panel-7716)
+* [  TypeScript ](#tab-panel-7717)
 
 JavaScript
 
@@ -124,6 +126,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -175,6 +179,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Methods
 

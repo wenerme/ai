@@ -27,8 +27,8 @@ The following tutorial shows some snippets for how to use Server-Side Encryption
 
 ## Workers
 
-* [  TypeScript ](#tab-panel-5782)
-* [  JavaScript ](#tab-panel-5783)
+* [  TypeScript ](#tab-panel-5826)
+* [  JavaScript ](#tab-panel-5827)
 
 TypeScript
 
@@ -175,6 +175,8 @@ export default {
 
 ```
 
+Explain Code
+
 JavaScript
 
 ```
@@ -312,9 +314,11 @@ export default {
 
 ```
 
+Explain Code
+
 ## S3-API
 
-* [  @aws-sdk/client-s3 ](#tab-panel-5781)
+* [  @aws-sdk/client-s3 ](#tab-panel-5825)
 
 TypeScript
 
@@ -538,6 +542,8 @@ const GetObjectOutput = await s3.send(
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/ssec/","name":"Use SSE-C"}}]}

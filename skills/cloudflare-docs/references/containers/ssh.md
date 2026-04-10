@@ -28,8 +28,8 @@ The `wrangler_ssh.enabled` property only controls whether you can SSH into a Con
 
 To SSH into a Container with Wrangler, you must first enable Wrangler SSH. The following example shows a basic configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4033)
-* [  wrangler.toml ](#tab-panel-4034)
+* [  wrangler.jsonc ](#tab-panel-4077)
+* [  wrangler.toml ](#tab-panel-4078)
 
 JSONC
 
@@ -69,6 +69,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 

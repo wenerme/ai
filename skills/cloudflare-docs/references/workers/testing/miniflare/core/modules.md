@@ -72,6 +72,8 @@ export default {
 
 ```
 
+Explain Code
+
 String scripts via the `script` option are supported using the `modules` format, but you cannot import other modules using them. You must use a script file via the `scriptPath` option for this.
 
 ## Module Rules

@@ -169,6 +169,8 @@ query GetAdaptiveGroups($start: DateTime!, $end: DateTime!) {
 
 ```
 
+Explain Code
+
 Replace `cf-log-in` with any [managed label](#managed-labels) or [risk label](#risk-labels). You can also omit the `webAssetsLabelsManaged_hasany` filter and use `webAssetsOperationId` as the sole dimension to group traffic by matched operation regardless of label.
 
 ### Logpush
@@ -179,8 +181,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-3136)
-* [ Old dashboard ](#tab-panel-3137)
+* [  New dashboard ](#tab-panel-3142)
+* [ Old dashboard ](#tab-panel-3143)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -220,8 +222,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-3138)
-* [ Old dashboard ](#tab-panel-3139)
+* [  New dashboard ](#tab-panel-3144)
+* [ Old dashboard ](#tab-panel-3145)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -239,8 +241,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-3134)
-* [ Old dashboard ](#tab-panel-3135)
+* [  New dashboard ](#tab-panel-3140)
+* [ Old dashboard ](#tab-panel-3141)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

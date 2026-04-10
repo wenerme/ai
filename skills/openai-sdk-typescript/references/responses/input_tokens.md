@@ -111,6 +111,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"input_file"`
 
+              - `detail?: "low" | "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
+
               - `file_data?: string`
 
                 The content of the file to be sent to the model.
@@ -220,6 +228,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data?: string`
 
@@ -1230,6 +1246,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail?: "low" | "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data?: string | null`
 
@@ -3159,6 +3183,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail?: "low" | "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data?: string`
 

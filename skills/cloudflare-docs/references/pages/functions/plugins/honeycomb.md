@@ -70,6 +70,8 @@ export const onRequest: PagesFunction<{
 
 ```
 
+Explain Code
+
 Alternatively, you can hard-code (not advisable for API key) your settings the following way:
 
 TypeScript
@@ -138,6 +140,8 @@ export const onRequest: PagesFunction<unknown, any, PluginData> = async ({
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/pages/","name":"Pages"}},{"@type":"ListItem","position":3,"item":{"@id":"/pages/functions/","name":"Functions"}},{"@type":"ListItem","position":4,"item":{"@id":"/pages/functions/plugins/","name":"Pages Plugins"}},{"@type":"ListItem","position":5,"item":{"@id":"/pages/functions/plugins/honeycomb/","name":"Honeycomb"}}]}

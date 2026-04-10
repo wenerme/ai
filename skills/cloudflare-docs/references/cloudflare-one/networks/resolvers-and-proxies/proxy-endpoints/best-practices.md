@@ -67,6 +67,8 @@ function FindProxyForURL(url, host) {
 
 ```
 
+Explain Code
+
 You can [customize the PAC file ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy%5Fservers%5Fand%5Ftunneling/Proxy%5FAuto-Configuration%5FPAC%5Ffile) and host it somewhere your browser can access.
 
 ### Formatting considerations
@@ -213,6 +215,8 @@ function FindProxyForURL(url, host) {
 
 ```
 
+Explain Code
+
 IdP bypass requirement
 
 When using authorization endpoints, you must configure IdP bypass for your identity provider. Without this, your users will be unable to authenticate and encounter errors when trying to use the proxy.
@@ -259,6 +263,8 @@ function FindProxyForURL(url, host) {
 
 ```
 
+Explain Code
+
 ### Check for plain hostnames first
 
 NetBIOS names (hostnames without periods) are typically internal and should bypass the proxy. Check for these first:
@@ -304,6 +310,8 @@ function FindProxyForURL(url, host) {
 
 
 ```
+
+Explain Code
 
 ## Common bypass rules
 

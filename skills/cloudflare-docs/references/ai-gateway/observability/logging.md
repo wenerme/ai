@@ -80,6 +80,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 ```
 
+Explain Code
+
 ### Collect log payload (`cf-aig-collect-log-payload`)
 
 The `cf-aig-collect-log-payload` header allows you to control whether the raw request and response bodies (payloads) are stored for a given request. Unlike `cf-aig-collect-log`, which controls the entire log entry, this header only affects payload storage — metadata such as token counts, model, provider, status code, cost, and duration will still be logged.
@@ -127,6 +129,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai/chat/
 
 
 ```
+
+Explain Code
 
 Note
 

@@ -137,6 +137,8 @@ Example response
 
 ```
 
+Explain Code
+
 For more information refer to the [API documentation ↗](https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/#%28params%29%20default%20%3E%20%28param%29%20since%20%3E%20%28schema%29).
 
 ### Dashboard
@@ -335,6 +337,8 @@ Example response
 
 
 ```
+
+Explain Code
 
 ## Common terms and definitions
 

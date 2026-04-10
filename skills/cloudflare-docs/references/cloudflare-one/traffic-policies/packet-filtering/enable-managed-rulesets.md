@@ -121,6 +121,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets
 
 ```
 
+Explain Code
+
 ### 2\. Patch a Managed phase Managed kind ruleset
 
 Because the root ruleset can only contain one rule, you must PATCH that existing rule (rather than adding new rules) when you want to enable additional managed rules.
@@ -188,6 +190,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_r
 
 ```
 
+Explain Code
+
 ### 3\. Enable all rules
 
 To enable the complete ruleset or enable all rules, send the request below.
@@ -228,6 +232,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_r
 
 
 ```
+
+Explain Code
 
 ### 4\. Delete a ruleset
 

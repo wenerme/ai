@@ -62,8 +62,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-2112)
-* [  TypeScript ](#tab-panel-2113)
+* [  JavaScript ](#tab-panel-2118)
+* [  TypeScript ](#tab-panel-2119)
 
 JavaScript
 
@@ -92,6 +92,8 @@ export class CounterAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -119,6 +121,8 @@ export class CounterAgent extends Agent<Env, { count: number }> {
 
 ```
 
+Explain Code
+
 ```
 
 import { useAgent } from "agents/react";
@@ -144,10 +148,12 @@ function Counter() {
 
 ```
 
+Explain Code
+
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-2114)
-* [  TypeScript ](#tab-panel-2115)
+* [  JavaScript ](#tab-panel-2120)
+* [  TypeScript ](#tab-panel-2121)
 
 JavaScript
 
@@ -183,6 +189,8 @@ export class ChatAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -216,6 +224,8 @@ export class ChatAgent extends AIChatAgent {
 
 
 ```
+
+Explain Code
 
 Refer to the [quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/) for a full walkthrough, the [chat agents guide](https://developers.cloudflare.com/agents/api-reference/chat-agents/) for the full chat API, or the [Agents API reference](https://developers.cloudflare.com/agents/api-reference/agents-api/) for the complete SDK.
 

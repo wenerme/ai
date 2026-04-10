@@ -81,8 +81,8 @@ You must create an AI binding for your Worker to connect to Workers AI. Bindings
 
 To bind Workers AI to your Worker, add the following to the end of your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-3058)
-* [  wrangler.toml ](#tab-panel-3059)
+* [  wrangler.jsonc ](#tab-panel-3064)
+* [  wrangler.toml ](#tab-panel-3065)
 
 JSONC
 
@@ -182,6 +182,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Up to this point, you have created an AI binding for your Worker and configured your Worker to be able to execute the Llama 3.1 model. You can now test your project locally before you deploy globally.
 

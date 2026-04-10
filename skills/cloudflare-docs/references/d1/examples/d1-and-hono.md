@@ -20,7 +20,7 @@ Copy page
 
 # Query D1 from Hono
 
-**Last reviewed:**  over 2 years ago 
+**Last reviewed:**  almost 3 years ago 
 
 Query D1 from the Hono web framework
 
@@ -40,8 +40,8 @@ If you are using [Pages Functions](https://developers.cloudflare.com/pages/funct
 
 The following examples show how to access a D1 database bound to `DB` from both a Workers script and a Pages Function:
 
-* [ workers ](#tab-panel-4057)
-* [ pages ](#tab-panel-4058)
+* [ workers ](#tab-panel-4101)
+* [ pages ](#tab-panel-4102)
 
 TypeScript
 
@@ -100,6 +100,8 @@ export default app;
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -156,6 +158,8 @@ export const onRequest = handle(app);
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-hono/","name":"Query D1 from Hono"}}]}

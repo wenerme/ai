@@ -23,9 +23,9 @@ A remotely-managed tunnel only requires the tunnel token to run. Anyone with acc
 
 To get the token for a remotely-managed tunnel:
 
-* [ Dashboard ](#tab-panel-3483)
-* [ API ](#tab-panel-3484)
-* [ Terraform (v5) ](#tab-panel-3485)
+* [ Dashboard ](#tab-panel-3489)
+* [ API ](#tab-panel-3490)
+* [ Terraform (v5) ](#tab-panel-3491)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select a `cloudflared` tunnel and select **Edit**.
@@ -139,8 +139,8 @@ Cloudflare recommends rotating the tunnel token at a regular cadence to reduce t
 To rotate a tunnel token:
 
 1. Refresh the token on Cloudflare:  
-   * [ Dashboard ](#tab-panel-3486)  
-   * [ API ](#tab-panel-3487)  
+   * [ Dashboard ](#tab-panel-3492)  
+   * [ API ](#tab-panel-3493)  
    1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.  
    2. Select a `cloudflared` tunnel and select **Edit**.  
    3. Select **Refresh token**.  
@@ -191,6 +191,7 @@ To rotate a tunnel token:
      }  
    }  
    ```  
+   Explain Code  
    3. Copy the `token` value shown in the output.  
 After refreshing the token, `cloudflared` can no longer establish new connections to Cloudflare using the old token. However, existing connectors will remain active and the tunnel will continue serving traffic.
 2. On half of your `cloudflared` replicas, reinstall the `cloudflared` service with the new token. For example, on a Linux host:  

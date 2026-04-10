@@ -22,8 +22,8 @@ Create a Durable Object that stores the last location it was accessed from in-me
 
 This example shows you how Durable Objects are stateful, meaning in-memory state can be retained between requests. After a brief period of inactivity, the Durable Object will be evicted, and all in-memory state will be lost. The next request will reconstruct the object, but instead of showing the city of the previous request, it will display a message indicating that the object has been reinitialized. If you need your applications state to survive eviction, write the state to storage by using the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/), or by storing your data elsewhere.
 
-* [  JavaScript ](#tab-panel-4481)
-* [  Python ](#tab-panel-4482)
+* [  JavaScript ](#tab-panel-4525)
+* [  Python ](#tab-panel-4526)
 
 JavaScript
 
@@ -123,6 +123,8 @@ New Location: ${request.cf.city}`);
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -207,10 +209,12 @@ New Location: {request.js_object.cf.city}"""
 
 ```
 
+Explain Code
+
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4483)
-* [  wrangler.toml ](#tab-panel-4484)
+* [  wrangler.jsonc ](#tab-panel-4527)
+* [  wrangler.toml ](#tab-panel-4528)
 
 JSONC
 
@@ -261,6 +265,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -287,6 +293,8 @@ new_sqlite_classes = [ "Location" ]
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/durable-object-in-memory-state/","name":"Durable Object in-memory state"}}]}

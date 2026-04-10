@@ -96,6 +96,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -160,6 +162,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 
 ```
+
+Explain Code
 
 Warning
 

@@ -165,6 +165,8 @@ example-tf/
 
 ```
 
+Explain Code
+
 ## Avoid modules (or use them sparingly)
 
 Terraform modules are ways of encapsulating multiple resources with logic in an abstracted interface. Consider the example where a module sets up default load balancer with a pool, some DNS entries, and perhaps a page rule. The end user may use it like this:
@@ -336,6 +338,8 @@ resource "cloudflare_page_rule" "example_page_rule" {
 
 
 ```
+
+Explain Code
 
 While convenient, this setup can cause unanticipated issues. If this module is shared and then changes internally, the module may have resources out of sync or recreated.
 

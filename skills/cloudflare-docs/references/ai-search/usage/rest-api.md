@@ -68,6 +68,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 ```
 
+Explain Code
+
 Note
 
 * `ACCOUNT_ID`: Find this by going to [Workers & Pages](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#find-account-id-workers-and-pages) in the Cloudflare dashboard.
@@ -187,6 +189,8 @@ When `stream` is set to `false` (default), the response is returned as a single 
 
 ```
 
+Explain Code
+
 When `stream` is set to `true`, the response is returned as server-sent events (SSE). The retrieved chunks are sent first as a single `chunks` event, followed by multiple `data` events containing the generated response in incremental pieces:
 
 ```
@@ -241,6 +245,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -320,6 +326,8 @@ For the full list of optional parameters, refer to the [Search API reference](ht
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/usage/","name":"Search API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/usage/rest-api/","name":"REST API"}}]}

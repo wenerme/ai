@@ -45,8 +45,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3080)
-* [ Unauthenticated Gateway ](#tab-panel-3081)
+* [ With Authenticated Gateway ](#tab-panel-3086)
+* [ Unauthenticated Gateway ](#tab-panel-3087)
 
 ```
 
@@ -81,6 +81,8 @@ const response = await client.chat.completions.create({
 
 ```
 
+Explain Code
+
 ```
 
 import OpenAI from "openai";
@@ -107,6 +109,8 @@ const response = await client.chat.completions.create({
 
 
 ```
+
+Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -141,12 +145,14 @@ const response = await client.chat.completions.create({
 
 ```
 
+Explain Code
+
 ### cURL
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3082)
-* [ Unauthenticated Gateway ](#tab-panel-3083)
+* [ With Authenticated Gateway ](#tab-panel-3088)
+* [ Unauthenticated Gateway ](#tab-panel-3089)
 
 Terminal window
 
@@ -181,6 +187,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -211,11 +219,13 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 
 ```
+
+Explain Code
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3084)
-* [ Unauthenticated Gateway ](#tab-panel-3085)
+* [ With Authenticated Gateway ](#tab-panel-3090)
+* [ Unauthenticated Gateway ](#tab-panel-3091)
 
 Terminal window
 
@@ -250,6 +260,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -280,6 +292,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 
 ```
+
+Explain Code
 
 Responses API with Stored Keys (BYOK) / Unified Billing
 
@@ -314,6 +328,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 ```
 
+Explain Code
+
 Chat Completions with Stored Keys (BYOK) / Unified Billing
 
 Terminal window
@@ -346,6 +362,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/providers/","name":"Provider Native"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/providers/openai/","name":"OpenAI"}}]}

@@ -85,6 +85,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 ## Update your TypeScript configuration file
 
 If you are using TypeScript, update your `tsconfig.json` to include the correct ambient `types`:
@@ -113,6 +115,8 @@ If you are using TypeScript, update your `tsconfig.json` to include the correct 
 
 
 ```
+
+Explain Code
 
 ## Access bindings
 
@@ -179,6 +183,8 @@ it("does something", () => {
 
 ```
 
+Explain Code
+
 ## Mock outbound requests
 
 The `getMiniflareFetchMock()` function is no longer available. To mock outbound `fetch()` requests, mock `globalThis.fetch` directly or use ecosystem libraries such as [MSW ↗](https://mswjs.io/). Refer to the [request mocking example ↗](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-pool-workers-examples/request-mocking/test/imperative.test.ts) for a complete example.
@@ -244,6 +250,8 @@ it("does something", async () => {
 
 ```
 
+Explain Code
+
 The `flushMiniflareDurableObjectAlarms()` function has been replaced with the `runDurableObjectAlarm()` function from the `cloudflare:test` module. The `runDurableObjectAlarm()` function accepts a single `DurableObjectStub` and returns a `Promise` that resolves to `true` if an alarm was scheduled and the `alarm()` handler was executed, or `false` otherwise. To "flush" multiple instances' alarms, call `runDurableObjectAlarm()` in a loop.
 
 ```
@@ -269,6 +277,8 @@ it("does something", async () => {
 
 
 ```
+
+Explain Code
 
 Finally, the `getMiniflareDurableObjectIds()` function has been replaced with the `listDurableObjectIds()` function from the `cloudflare:test` module. The `listDurableObjectIds()` function now accepts a `DurableObjectNamespace` instance instead of a namespace `string` to provide stricter typing. Note the `listDurableObjectIds()` function respects storage isolation. IDs of objects created in other test files will not be returned.
 

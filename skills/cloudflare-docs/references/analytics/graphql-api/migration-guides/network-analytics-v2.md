@@ -127,6 +127,8 @@ The following example queries the top 20 logs of traffic dropped by mitigation s
 
 ```
 
+Explain Code
+
 ## Final remarks
 
 The `mitigationSystem` field can take one the following values:

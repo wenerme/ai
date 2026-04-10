@@ -163,6 +163,8 @@ export default function ContactForm() {
 
 ```
 
+Explain Code
+
 Currently, the form contains a placeholder `YOUR_FORM_ID`. You replace this with your own form endpoint later in this tutorial.
 
 The `useForm` hook returns a `state` object and a `handleSubmit` function which you pass to the `onSubmit` form attribute. Combined, these provide a way to submit the form data via AJAX and update form state depending on the response received.
@@ -252,6 +254,8 @@ export default App;
 
 
 ```
+
+Explain Code
 
 Now you have a single-page application containing a Contact Us form with several fields for the user to fill out. However, you have not set up the form to submit to a valid form endpoint yet. You will do that in the [next section](#the-formspree-back-end).
 

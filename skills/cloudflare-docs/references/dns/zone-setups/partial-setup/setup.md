@@ -37,8 +37,8 @@ If your domain is sensitive to downtime, instead of using Universal SSL, conside
 
 ## 1\. Convert your zone and review DNS records
 
-* [ Dashboard ](#tab-panel-4306)
-* [ API ](#tab-panel-4307)
+* [ Dashboard ](#tab-panel-4350)
+* [ API ](#tab-panel-4351)
 
 Make sure you have the correct plan
 
@@ -83,6 +83,8 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 
 ```
+
+Explain Code
 
 ## 2\. Verify ownership for your domain
 

@@ -66,8 +66,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3274)
-* [  wrangler.toml ](#tab-panel-3275)
+* [  wrangler.jsonc ](#tab-panel-3280)
+* [  wrangler.toml ](#tab-panel-3281)
 
 JSONC
 
@@ -83,7 +83,7 @@ JSONC
 
     // Set this to today's date
 
-    "compatibility_date": "2026-04-03",
+    "compatibility_date": "2026-04-10",
 
     "observability": {
 
@@ -108,6 +108,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -120,7 +122,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [observability]
@@ -139,6 +141,8 @@ binding = "AI"
 
 
 ```
+
+Explain Code
 
 If you are using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), you need to include the following [alias ↗](https://vite.dev/config/shared-options.html#resolve-alias) in `vite.config.ts`:
 
@@ -285,6 +289,8 @@ export default {
 
 ```
 
+Explain Code
+
 Note
 
 The snippet above requires [Zod v3 ↗](https://v3.zod.dev/) and is currently not compatible with Zod v4.
@@ -315,6 +321,8 @@ Ensure your `package.json` has the following dependencies:
 
 
 ```
+
+Explain Code
 
 ### 4\. Build the project
 

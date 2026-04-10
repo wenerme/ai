@@ -97,8 +97,8 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-4699)
-* [  wrangler.toml ](#tab-panel-4700)
+* [  wrangler.jsonc ](#tab-panel-4737)
+* [  wrangler.toml ](#tab-panel-4738)
 
 JSONC
 
@@ -114,7 +114,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -141,6 +141,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -153,7 +155,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -166,6 +168,8 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 
 ```
+
+Explain Code
 
 ## 3\. Use Hyperdrive from your Worker
 
@@ -195,8 +199,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4701)
-* [  wrangler.toml ](#tab-panel-4702)
+* [  wrangler.jsonc ](#tab-panel-4739)
+* [  wrangler.toml ](#tab-panel-4740)
 
 JSONC
 
@@ -214,7 +218,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -233,6 +237,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -241,7 +247,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -323,6 +329,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

@@ -23,8 +23,8 @@ To replicate this example remember to:
 * Disable `rewrite_query`, as you want to match the original user query
 * Configure your AI Search to have small chunk sizes, usually 256 tokens is enough
 
-* [  JavaScript ](#tab-panel-3097)
-* [  TypeScript ](#tab-panel-3098)
+* [  JavaScript ](#tab-panel-3103)
+* [  TypeScript ](#tab-panel-3104)
 
 JavaScript
 
@@ -63,6 +63,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -108,6 +110,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/simple-search-engine/","name":"Create a simple search engine"}}]}

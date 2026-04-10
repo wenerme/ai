@@ -205,6 +205,8 @@ def speed_date(models, questions):
 
 ```
 
+Explain Code
+
 ### Getting to know your models
 
 Who better to tell you about the specific models than themselves?!
@@ -243,6 +245,8 @@ speed_date(models, questions)
 
 
 ```
+
+Explain Code
 
 ---
 
@@ -408,6 +412,8 @@ speed_date(proud_translator_models, questions)
 
 
 ```
+
+Explain Code
 
 ---
 
@@ -619,6 +625,8 @@ speed_date(proud_summarizers, questions)
 
 ```
 
+Explain Code
+
 ---
 
 #### @hf/thebloke/llama-2-13b-chat-awq
@@ -731,6 +739,8 @@ speed_date(proud_content_creator_models, questions)
 
 
 ```
+
+Explain Code
 
 ---
 
@@ -897,6 +907,8 @@ speed_date(proud_classifiers, sentiment_questions)
 
 
 ```
+
+Explain Code
 
 ---
 

@@ -45,8 +45,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-4577)
-* [  wrangler.toml ](#tab-panel-4578)
+* [  wrangler.jsonc ](#tab-panel-4621)
+* [  wrangler.toml ](#tab-panel-4622)
 
 JSONC
 
@@ -86,8 +86,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-4581)
-* [  TypeScript ](#tab-panel-4582)
+* [  JavaScript ](#tab-panel-4625)
+* [  TypeScript ](#tab-panel-4626)
 
 JavaScript
 
@@ -150,6 +150,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -211,6 +213,8 @@ export default {
 
 ```
 
+Explain Code
+
 In this example, `env.LOADER.load()` creates a Dynamic Worker from the code defined in `modules` and returns a stub that represents it.
 
 `worker.getEntrypoint().fetch(request)` sends the incoming request to the Dynamic Worker's `fetch()` handler, which processes it and returns a response.
@@ -221,8 +225,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-4579)
-* [  TypeScript ](#tab-panel-4580)
+* [  JavaScript ](#tab-panel-4623)
+* [  TypeScript ](#tab-panel-4624)
 
 JavaScript
 
@@ -259,6 +263,8 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -293,6 +299,8 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 
 ```
+
+Explain Code
 
 ## Supported languages
 
@@ -348,6 +356,8 @@ const worker = env.LOADER.get("my-worker", async () => {
 
 
 ```
+
+Explain Code
 
 `createWorker()` handles TypeScript compilation, dependency resolution from npm, and bundling. It returns `mainModule` and `modules` ready to pass directly to `load()` or `get()`.
 

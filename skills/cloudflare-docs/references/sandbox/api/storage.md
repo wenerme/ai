@@ -47,8 +47,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` \- Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-6201)
-* [  TypeScript ](#tab-panel-6202)
+* [  JavaScript ](#tab-panel-6245)
+* [  TypeScript ](#tab-panel-6246)
 
 JavaScript
 
@@ -113,6 +113,8 @@ await sandbox.mountBucket("shared-bucket", "/user-data", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -176,6 +178,8 @@ await sandbox.mountBucket('shared-bucket', '/user-data', {
 
 ```
 
+Explain Code
+
 **Throws**:
 
 * `InvalidMountPointError` \- Invalid mount path or conflicts with existing mounts
@@ -208,8 +212,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-6199)
-* [  TypeScript ](#tab-panel-6200)
+* [  JavaScript ](#tab-panel-6243)
+* [  TypeScript ](#tab-panel-6244)
 
 JavaScript
 

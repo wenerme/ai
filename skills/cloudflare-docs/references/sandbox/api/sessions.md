@@ -47,8 +47,8 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-6197)
-* [  TypeScript ](#tab-panel-6198)
+* [  JavaScript ](#tab-panel-6241)
+* [  TypeScript ](#tab-panel-6242)
 
 JavaScript
 
@@ -116,6 +116,8 @@ await session.exec("sleep 10", { timeout: 3000 }); // Times out after 3s
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -182,6 +184,8 @@ await session.exec('sleep 10', { timeout: 3000 }); // Times out after 3s
 
 ```
 
+Explain Code
+
 ### `getSession()`
 
 Retrieve an existing session by ID.
@@ -201,8 +205,8 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-6191)
-* [  TypeScript ](#tab-panel-6192)
+* [  JavaScript ](#tab-panel-6235)
+* [  TypeScript ](#tab-panel-6236)
 
 JavaScript
 
@@ -273,8 +277,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-6193)
-* [  TypeScript ](#tab-panel-6194)
+* [  JavaScript ](#tab-panel-6237)
+* [  TypeScript ](#tab-panel-6238)
 
 JavaScript
 
@@ -353,8 +357,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-6195)
-* [  TypeScript ](#tab-panel-6196)
+* [  JavaScript ](#tab-panel-6239)
+* [  TypeScript ](#tab-panel-6240)
 
 JavaScript
 
@@ -385,6 +389,8 @@ await sandbox.exec("python script.py");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -413,6 +419,8 @@ await sandbox.exec('python script.py');
 
 
 ```
+
+Explain Code
 
 ---
 

@@ -81,6 +81,8 @@ export default {
 
 ```
 
+Explain Code
+
 * `connect(address: SocketAddress | string, options?: optional SocketOptions)` : `Socket`  
    * `connect()` accepts either a URL string or [SocketAddress](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketaddress) to define the hostname and port number to connect to, and an optional configuration object, [SocketOptions](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socketoptions). It returns an instance of a [Socket](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#socket).
 
@@ -202,6 +204,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Close TCP connections
 

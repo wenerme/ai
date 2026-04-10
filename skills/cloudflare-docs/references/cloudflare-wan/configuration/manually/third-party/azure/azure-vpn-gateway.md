@@ -222,6 +222,8 @@ curl https://ipinfo.io
 
 ```
 
+Explain Code
+
 Note
 
 Internet Control Message Protocol (ICMP) (ping/traceroute) will work to remote Cloudflare WAN sites, but is not forwarded to the Internet. Ensure you validate connectivity via HTTP.
@@ -414,6 +416,8 @@ curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/r
 
 ```
 
+Explain Code
+
 1. Locate the line that controls disabling IPsec anti-replay protection, and change it from `false` to `true`:
 
 ```
@@ -577,6 +581,8 @@ curl --location --request PUT \
 
 
 ```
+
+Explain Code
 
 1. Leave the replay protection setting checked in the Cloudflare dashboard, and wait several minutes before validating connectivity again.
 

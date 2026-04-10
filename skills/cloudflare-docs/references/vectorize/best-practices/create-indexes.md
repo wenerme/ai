@@ -116,6 +116,8 @@ print('Response JSON:', resp.json())
 
 ```
 
+Explain Code
+
 This script should print the response with a status code `201`, along with a JSON response body indicating the creation of an index with the provided configuration.
 
 ## Dimensions

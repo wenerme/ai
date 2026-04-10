@@ -20,8 +20,8 @@ Copy page
 
 To specify different D1 databases for different environments, use the following syntax in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4053)
-* [  wrangler.toml ](#tab-panel-4054)
+* [  wrangler.jsonc ](#tab-panel-4097)
+* [  wrangler.toml ](#tab-panel-4098)
 
 JSONC
 
@@ -78,6 +78,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -108,8 +110,8 @@ In the code above, the `staging` environment is using a different database (`DAT
 
 If you need to specify different D1 databases for different environments, your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) may contain bindings that resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-4051)
-* [  wrangler.toml ](#tab-panel-4052)
+* [  wrangler.jsonc ](#tab-panel-4095)
+* [  wrangler.toml ](#tab-panel-4096)
 
 JSONC
 
@@ -139,6 +141,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -189,10 +193,12 @@ Therefore, the above binding is equivalent to:
 
 ```
 
+Explain Code
+
 ### Example
 
-* [  wrangler.jsonc ](#tab-panel-4055)
-* [  wrangler.toml ](#tab-panel-4056)
+* [  wrangler.jsonc ](#tab-panel-4099)
+* [  wrangler.toml ](#tab-panel-4100)
 
 JSONC
 
@@ -244,6 +250,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -319,6 +327,8 @@ The above is equivalent to the following structure in JSON:
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/configuration/environments/","name":"Environments"}}]}

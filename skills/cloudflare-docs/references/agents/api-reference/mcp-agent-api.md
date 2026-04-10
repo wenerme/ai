@@ -22,8 +22,8 @@ Copy page
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp.ts), from the Agents SDK:
 
-* [  JavaScript ](#tab-panel-2422)
-* [  TypeScript ](#tab-panel-2423)
+* [  JavaScript ](#tab-panel-2428)
+* [  TypeScript ](#tab-panel-2429)
 
 JavaScript
 
@@ -64,6 +64,8 @@ export class MyMCP extends McpAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -102,6 +104,8 @@ export class MyMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 This means that each instance of your MCP server has its own durable state, backed by a [Durable Object](https://developers.cloudflare.com/durable-objects/), with its own [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state).
 
@@ -134,8 +138,8 @@ You can use the APIs below in order to do so.
 
 The `McpAgent.serve()` static method creates a Worker handler that routes requests to your MCP server:
 
-* [  JavaScript ](#tab-panel-2424)
-* [  TypeScript ](#tab-panel-2425)
+* [  JavaScript ](#tab-panel-2430)
+* [  TypeScript ](#tab-panel-2431)
 
 JavaScript
 
@@ -173,6 +177,8 @@ export default MyMCP.serve("/mcp");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -209,14 +215,16 @@ export default MyMCP.serve("/mcp");
 
 ```
 
+Explain Code
+
 This is the simplest way to deploy an MCP server — about 15 lines of code. The `serve()` method handles Streamable HTTP transport automatically.
 
 ### With OAuth authentication
 
 When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
-* [  JavaScript ](#tab-panel-2418)
-* [  TypeScript ](#tab-panel-2419)
+* [  JavaScript ](#tab-panel-2424)
+* [  TypeScript ](#tab-panel-2425)
 
 JavaScript
 
@@ -270,8 +278,8 @@ export default new OAuthProvider({
 
 For GDPR and data residency compliance, specify a jurisdiction to ensure your MCP server instances run in specific regions:
 
-* [  JavaScript ](#tab-panel-2416)
-* [  TypeScript ](#tab-panel-2417)
+* [  JavaScript ](#tab-panel-2422)
+* [  TypeScript ](#tab-panel-2423)
 
 JavaScript
 
@@ -297,8 +305,8 @@ export default MyMCP.serve("/mcp", { jurisdiction: "eu" });
 
 With OAuth:
 
-* [  JavaScript ](#tab-panel-2420)
-* [  TypeScript ](#tab-panel-2421)
+* [  JavaScript ](#tab-panel-2426)
+* [  TypeScript ](#tab-panel-2427)
 
 JavaScript
 
@@ -379,8 +387,8 @@ Currently, each client session is backed by an instance of the `McpAgent` class.
 
 For example, the following code implements an MCP server that remembers a counter value, and updates the counter when the `add` tool is called:
 
-* [  JavaScript ](#tab-panel-2428)
-* [  TypeScript ](#tab-panel-2429)
+* [  JavaScript ](#tab-panel-2434)
+* [  TypeScript ](#tab-panel-2435)
 
 JavaScript
 
@@ -470,6 +478,8 @@ export class MyMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -563,6 +573,8 @@ export class MyMCP extends McpAgent<Env, State, {}> {
 
 ```
 
+Explain Code
+
 ## Elicitation (human-in-the-loop)
 
 MCP servers can request additional user input during tool execution using **elicitation**. The MCP client (like Claude Desktop) renders a form based on your JSON Schema and returns the user's response.
@@ -587,8 +599,8 @@ Request structured input from the user during tool execution.
 
 **Returns:** `Promise<{ action: "accept" | "decline", content?: object }>`
 
-* [  JavaScript ](#tab-panel-2430)
-* [  TypeScript ](#tab-panel-2431)
+* [  JavaScript ](#tab-panel-2436)
+* [  TypeScript ](#tab-panel-2437)
 
 JavaScript
 
@@ -719,6 +731,8 @@ export class CounterMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -853,6 +867,8 @@ export class CounterMCP extends McpAgent<Env, State, {}> {
 
 ```
 
+Explain Code
+
 ### JSON Schema for forms
 
 The `requestedSchema` defines the form structure shown to the user:
@@ -924,10 +940,12 @@ const schema = {
 
 ```
 
+Explain Code
+
 ### Handling responses
 
-* [  JavaScript ](#tab-panel-2426)
-* [  TypeScript ](#tab-panel-2427)
+* [  JavaScript ](#tab-panel-2432)
+* [  TypeScript ](#tab-panel-2433)
 
 JavaScript
 
@@ -966,6 +984,8 @@ switch (result.action) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1002,6 +1022,8 @@ switch (result.action) {
 
 
 ```
+
+Explain Code
 
 MCP client support
 

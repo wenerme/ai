@@ -32,8 +32,8 @@ The default Vite environment name for a Worker is always the top-level Worker na
 
 In the following example we have a Worker named `my-worker` that is associated with a Vite environment named `my_worker`. We use the Vite config to set global constant replacements for this environment:
 
-* [  wrangler.jsonc ](#tab-panel-7802)
-* [  wrangler.toml ](#tab-panel-7803)
+* [  wrangler.jsonc ](#tab-panel-7862)
+* [  wrangler.toml ](#tab-panel-7863)
 
 JSONC
 
@@ -47,7 +47,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "main": "./src/index.ts"
 
@@ -66,7 +66,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 main = "./src/index.ts"
 
@@ -104,6 +104,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 For more information about Vite's configuration options, see [Configuring Vite ↗](https://vite.dev/config/).
 

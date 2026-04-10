@@ -43,9 +43,9 @@ export AWS_SECRET_ACCESS_KEY=your_secret_access_key
 
 ```
 
-* [  JavaScript ](#tab-panel-5778)
-* [  Python ](#tab-panel-5779)
-* [  Go ](#tab-panel-5780)
+* [  JavaScript ](#tab-panel-5822)
+* [  Python ](#tab-panel-5823)
+* [  Go ](#tab-panel-5824)
 
 Install the `@aws-sdk/client-s3` package for the S3 API:
 
@@ -118,6 +118,8 @@ console.log("Successfully fetched the object", object.$metadata);
 
 ```
 
+Explain Code
+
 Install the `boto3` S3 API client:
 
 Terminal window
@@ -188,6 +190,8 @@ except Exception as e:
 
 
 ```
+
+Explain Code
 
 Use `go get` to add the `aws-sdk-go-v2` packages to your Go project:
 
@@ -316,6 +320,8 @@ func main() {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/authenticate-r2-auth-tokens/","name":"Authenticate against R2 API using auth tokens"}}]}

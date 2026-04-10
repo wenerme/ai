@@ -72,7 +72,7 @@ Device IPs are virtual addresses assigned to each Cloudflare One Client registra
 * [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) — routes traffic between your private network and WARP devices.
 * [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) — on-ramps traffic from WAN tunnels to Cloudflare One Client devices.
 
-The default IPv4 range is `100.96.0.0/12`. If this range conflicts with services on your private network, you can configure custom IPv4 subnets drawn from RFC 1918 or CGNAT address space. Custom subnets require [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). For configuration instructions, refer to [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
+The default IPv4 range is `100.96.0.0/12`. If this range conflicts with services on your private network, you can configure custom IPv4 subnets drawn from RFC 1918 or CGNAT address space. If your account uses [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/), custom subnets require [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). For configuration instructions, refer to [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
 
 ## Private Load Balancer IPs
 

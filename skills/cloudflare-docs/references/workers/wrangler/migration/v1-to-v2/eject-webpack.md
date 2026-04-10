@@ -102,6 +102,8 @@ You should see this reflected in your `package.json` file:
 
 ```
 
+Explain Code
+
 1. Add `wranglerjs-compat-webpack-plugin` to `webpack.config.js`.
 
 Modify your `webpack.config.js` file to include the plugin you just installed.
@@ -157,8 +159,8 @@ module.exports = {
 
 Remove the `type` and `webpack_config` keys from your Wrangler file, as they are not supported anymore.
 
-* [  wrangler.jsonc ](#tab-panel-8482)
-* [  wrangler.toml ](#tab-panel-8483)
+* [  wrangler.jsonc ](#tab-panel-8542)
+* [  wrangler.toml ](#tab-panel-8543)
 
 JSONC
 
@@ -192,8 +194,8 @@ webpack_config = "webpack.config.js"
 
 Wrangler no longer has any knowledge of how to build your Worker. You will need to tell it how to call webpack and where to look for webpack's output. This translates into two fields:
 
-* [  wrangler.jsonc ](#tab-panel-8484)
-* [  wrangler.toml ](#tab-panel-8485)
+* [  wrangler.jsonc ](#tab-panel-8544)
+* [  wrangler.toml ](#tab-panel-8545)
 
 JSONC
 

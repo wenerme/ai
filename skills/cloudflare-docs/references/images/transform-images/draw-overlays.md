@@ -65,6 +65,8 @@ fetch(imageURL, {
 
 ```
 
+Explain Code
+
 ## Draw options
 
 The `draw` property is an array. Overlays are drawn in the order they appear in the array (the last array entry is the topmost layer). Each item in the `draw` array is an object, which can have the following properties:
@@ -124,6 +126,8 @@ return response;
 
 
 ```
+
+Explain Code
 
 To apply [parameters](https://developers.cloudflare.com/images/transform-images/transform-via-workers/) to the overlaid image, you can pass a child `.transform()` function inside the `.draw()` request.
 

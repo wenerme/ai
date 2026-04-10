@@ -202,6 +202,8 @@ interface GigabitEthernet2
 
 ```
 
+Explain Code
+
 ### Establish IPsec behind a NAT or CGNAT with port `4500`
 
 If your Cisco router is behind a Network Address Translation (NAT) or Carrier-Grade NAT (CGNAT) and you need to establish a connection on port `4500`, you can use the `nat force-encap` command.
@@ -309,6 +311,8 @@ Peer: 172.64.###.### port 500 fvrf: (none) ivrf: (none)
 
 ```
 
+Explain Code
+
 ## Diagnostic output: show crypto session remote `<ANYCAST 01>` detail
 
 ```
@@ -360,6 +364,8 @@ Peer: 162.159.###.### port 500 fvrf: (none) ivrf: (none)
 
 ```
 
+Explain Code
+
 ## Diagnostic output: show crypto session remote `<ANYCAST 02>` detail
 
 ```
@@ -410,6 +416,8 @@ Peer: 172.64.###.### port 500 fvrf: (none) ivrf: (none)
 
 
 ```
+
+Explain Code
 
 ## Troubleshooting
 

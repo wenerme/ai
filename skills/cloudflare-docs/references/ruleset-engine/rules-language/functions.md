@@ -414,6 +414,8 @@ remove_query_args(http.request.uri.query, "category") will return "order=desc"
 
 ```
 
+Explain Code
+
 Note
 
 You can only use the `remove_query_args()` function in [rewrite expressions of Transform Rules](https://developers.cloudflare.com/rules/transform/).
@@ -503,6 +505,8 @@ split(http.request.headers["x-categories"][0], ",", 64)  will return ["groceries
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -616,6 +620,8 @@ url_decode(http.request.uri.path) matches "(?u)\p{Hangul}+"
 
 
 ```
+
+Explain Code
 
 ### `uuidv4`
 
@@ -853,6 +859,8 @@ is_timed_hmac_valid_v0(
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rules-language/","name":"Rules language"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rules-language/functions/","name":"Functions"}}]}

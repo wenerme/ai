@@ -45,6 +45,8 @@ A fully populated Bulk Redirect Rule object has the following JSON structure:
 
 ```
 
+Explain Code
+
 The JSON object properties must comply with the following:
 
 * `action` must be `redirect`
@@ -90,6 +92,8 @@ A fully populated URL redirect list item object has the following JSON structure
 
 
 ```
+
+Explain Code
 
 For details on the `redirect` object properties, refer to [URL redirect parameters](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/).
 

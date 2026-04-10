@@ -77,6 +77,8 @@ import {
 
 ```
 
+Explain Code
+
 In your `RtkUIProvider` from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
 
 ```
@@ -181,6 +183,8 @@ with:
 
 ```
 
+Explain Code
+
 Define a ref for the fullscreen target and attach it to your container element:
 
 ```
@@ -223,6 +227,8 @@ const fullScreenRef = useRef<HTMLDivElement>(null);
 
 
 ```
+
+Explain Code
 
 A complete example to build your own UI with custom controlbar can be found [here ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-control-bar.tsx).
 
@@ -327,6 +333,8 @@ with:
 
 
 ```
+
+Explain Code
 
 Register the fullscreen target after rendering:
 
@@ -527,6 +535,8 @@ export class CustomControlbarComponent implements AfterViewInit {
 
 ```
 
+Explain Code
+
 #### Use in Your Meeting Component
 
 In your main meeting component template, replace:
@@ -643,6 +653,8 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
 ```
 
+Explain Code
+
 #### Module Configuration
 
 Don't forget to declare your custom controlbar component in your Angular module:
@@ -681,6 +693,8 @@ export class AppModule {}
 
 
 ```
+
+Explain Code
 
 #### Advanced Customization
 
@@ -857,6 +871,8 @@ export class EnhancedControlbarComponent implements AfterViewInit {
 
 
 ```
+
+Explain Code
 
 This approach gives you complete control over the controlbar layout while maintaining Angular's component architecture and leveraging RealtimeKit's built-in functionality.
 

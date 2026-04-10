@@ -40,7 +40,7 @@ The following example shows you how to create a server endpoint configured to qu
 
 The example also shows you how to configure both your app-wide types within `src/app.d.ts` to recognize your `D1Database` binding, import the `@sveltejs/adapter-cloudflare` adapter into `svelte.config.js`, and configure it to apply to all of your routes.
 
-* [  TypeScript ](#tab-panel-4066)
+* [  TypeScript ](#tab-panel-4104)
 
 TypeScript
 
@@ -79,6 +79,8 @@ export async function GET({ request, platform }) {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -126,6 +128,8 @@ export {};
 
 ```
 
+Explain Code
+
 JavaScript
 
 ```
@@ -157,6 +161,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/examples/d1-and-sveltekit/","name":"Query D1 from SvelteKit"}}]}

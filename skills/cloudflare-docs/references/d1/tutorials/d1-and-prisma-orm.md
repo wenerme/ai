@@ -209,12 +209,14 @@ Created your new D1 database.
 
 ```
 
+Explain Code
+
 You now have a D1 database in your Cloudflare account with a binding to your Cloudflare Worker.
 
 Copy the last part of the command output and paste it into your Wrangler file. It should look similar to this:
 
-* [  wrangler.jsonc ](#tab-panel-4110)
-* [  wrangler.toml ](#tab-panel-4111)
+* [  wrangler.jsonc ](#tab-panel-4154)
+* [  wrangler.toml ](#tab-panel-4155)
 
 JSONC
 
@@ -230,7 +232,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -263,6 +265,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -275,7 +279,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -295,6 +299,8 @@ database_id = "<D1_DATABASE_ID>"
 
 
 ```
+
+Explain Code
 
 Replace `<D1_DATABASE_ID>` with the database ID of your D1 instance. If you were not able to fetch this ID from the terminal output, you can also find it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), or by running `npx wrangler d1 info prisma-demo-db` in your terminal.
 
@@ -352,8 +358,8 @@ model User {
 
 Now, run the following command in your terminal to generate the SQL statement that creates a `User` table equivalent to the `User` model above:
 
-* [ Prisma (v7) ](#tab-panel-4108)
-* [ Prisma (v6) ](#tab-panel-4109)
+* [ Prisma (v7) ](#tab-panel-4152)
+* [ Prisma (v6) ](#tab-panel-4153)
 
 Terminal window
 
@@ -491,8 +497,8 @@ To query your database from the Worker using Prisma ORM, you need to:
 
 Open `src/index.ts` and replace the entire content with the following:
 
-* [  JavaScript ](#tab-panel-4112)
-* [  TypeScript ](#tab-panel-4113)
+* [  JavaScript ](#tab-panel-4156)
+* [  TypeScript ](#tab-panel-4157)
 
 JavaScript
 
@@ -524,6 +530,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -562,6 +570,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Before running the Worker, generate Prisma Client with the following command:
 

@@ -69,6 +69,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \
     ]  
   }'  
 ```  
+Explain Code  
 This creates a token with the AI Search Index Engine permission (`9e9b428a0bcd46fd80e580b46a69963c`) which grants access to run AI Search Index Engine.
 2. Save the `id` (`<CF_API_ID>`) and `value` (`<CF_API_KEY>`) from the response. You will need these values in the next step.  
 Example response:  
@@ -100,7 +101,8 @@ Example response:
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 
 ## 3\. Create an AI Search API token
 
@@ -144,7 +146,8 @@ Example response:
     "enabled": true  
   }  
 }  
-```
+```  
+Explain Code
 
 ## 5\. Create an AI Search instance
 

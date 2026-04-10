@@ -90,8 +90,8 @@ HTTP transport is the default and requires no additional configuration.
 
 Enable WebSocket transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 
-* [  wrangler.jsonc ](#tab-panel-6229)
-* [  wrangler.toml ](#tab-panel-6230)
+* [  wrangler.jsonc ](#tab-panel-6273)
+* [  wrangler.toml ](#tab-panel-6274)
 
 JSONC
 
@@ -105,7 +105,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "vars": {
 
@@ -146,6 +146,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -156,7 +158,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [vars]
@@ -179,6 +181,8 @@ name = "Sandbox"
 
 
 ```
+
+Explain Code
 
 No application code changes are needed. The SDK automatically uses the configured transport for all operations.
 
@@ -240,8 +244,8 @@ Switching between transports requires no code changes.
 
 Add `SANDBOX_TRANSPORT` to your `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-6225)
-* [  wrangler.toml ](#tab-panel-6226)
+* [  wrangler.jsonc ](#tab-panel-6269)
+* [  wrangler.toml ](#tab-panel-6270)
 
 JSONC
 
@@ -286,8 +290,8 @@ npx wrangler deploy
 
 Remove the `SANDBOX_TRANSPORT` variable (or set it to `"http"`):
 
-* [  wrangler.jsonc ](#tab-panel-6227)
-* [  wrangler.toml ](#tab-panel-6228)
+* [  wrangler.jsonc ](#tab-panel-6271)
+* [  wrangler.toml ](#tab-panel-6272)
 
 JSONC
 

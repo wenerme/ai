@@ -42,8 +42,8 @@ To do this, you will need to:
 
 For example, if you have a Worker called `workflows-starter`, you would create a new Service Binding in your Pages project as follows, ensuring that the `service` name matches the name of the Worker your Workflow is defined in:
 
-* [  wrangler.jsonc ](#tab-panel-8524)
-* [  wrangler.toml ](#tab-panel-8525)
+* [  wrangler.jsonc ](#tab-panel-8584)
+* [  wrangler.toml ](#tab-panel-8585)
 
 JSONC
 
@@ -85,8 +85,8 @@ Your Worker can expose a specific method (or methods) that only other Workers or
 
 In the following example, we expose a specific `createInstance` method that accepts our `Payload` and returns the [InstanceStatus](https://developers.cloudflare.com/workflows/build/workers-api/#instancestatus) from the Workflows API:
 
-* [  JavaScript ](#tab-panel-8532)
-* [  TypeScript ](#tab-panel-8533)
+* [  JavaScript ](#tab-panel-8592)
+* [  TypeScript ](#tab-panel-8593)
 
 index.js
 
@@ -129,6 +129,8 @@ export default class WorkflowsService extends WorkerEntrypoint {
 
 
 ```
+
+Explain Code
 
 index.ts
 
@@ -186,10 +188,12 @@ export default class WorkflowsService extends WorkerEntrypoint<Env> {
 
 ```
 
+Explain Code
+
 Your Pages Function would resemble the following:
 
-* [  JavaScript ](#tab-panel-8526)
-* [  TypeScript ](#tab-panel-8527)
+* [  JavaScript ](#tab-panel-8586)
+* [  TypeScript ](#tab-panel-8587)
 
 functions/request.js
 
@@ -244,8 +248,8 @@ Service Bindings don't require you to expose a public endpoint from your Worker,
 
 An alternative to setting up a Service Binding is to call the Worker over HTTP by using the Workflows [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to `create` a new Workflow instance for each incoming HTTP call to the Worker:
 
-* [  JavaScript ](#tab-panel-8528)
-* [  TypeScript ](#tab-panel-8529)
+* [  JavaScript ](#tab-panel-8588)
+* [  TypeScript ](#tab-panel-8589)
 
 index.js
 
@@ -278,6 +282,8 @@ export default {
 
 ```
 
+Explain Code
+
 index.ts
 
 ```
@@ -309,10 +315,12 @@ export default {
 
 ```
 
+Explain Code
+
 Your [Pages Function](https://developers.cloudflare.com/pages/functions/get-started/) can then make a regular `fetch` call to the Worker:
 
-* [  JavaScript ](#tab-panel-8530)
-* [  TypeScript ](#tab-panel-8531)
+* [  JavaScript ](#tab-panel-8590)
+* [  TypeScript ](#tab-panel-8591)
 
 functions/request.js
 
@@ -340,6 +348,8 @@ export const onRequest = async (context) => {
 
 ```
 
+Explain Code
+
 functions/request.ts
 
 ```
@@ -365,6 +375,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 
 ```
+
+Explain Code
 
 You can also choose to authenticate these requests by passing a shared secret in a header and validating that in your Worker.
 

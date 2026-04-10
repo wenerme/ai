@@ -124,6 +124,8 @@ export default async function generateMarketingCopy(input: string) {
 
 ```
 
+Explain Code
+
 ## Routing
 
 Classifies input and directs it to specialized followup tasks, allowing for separation of concerns.
@@ -219,6 +221,8 @@ async function handleCustomerQuery(query: string) {
 
 
 ```
+
+Explain Code
 
 ## Parallelization
 
@@ -360,6 +364,8 @@ async function parallelCodeReview(code: string) {
 
 ```
 
+Explain Code
+
 ## Orchestrator-Workers
 
 A central LLM dynamically breaks down tasks, delegates to Worker LLMs, and synthesizes results.
@@ -492,6 +498,8 @@ async function implementFeature(featureRequest: string) {
 
 
 ```
+
+Explain Code
 
 ## Evaluator-Optimizer
 
@@ -646,6 +654,8 @@ async function translateWithFeedback(text: string, targetLanguage: string) {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/patterns/","name":"Patterns"}}]}

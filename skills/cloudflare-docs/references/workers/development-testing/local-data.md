@@ -214,6 +214,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 #### Sharing state between tools
 
 If you want Wrangler and the Vite plugin to share the same state, configure them to use the same persistence path.

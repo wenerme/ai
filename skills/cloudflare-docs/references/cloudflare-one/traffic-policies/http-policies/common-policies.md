@@ -80,6 +80,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### Block sites by URL
 
 Block a section of a site without blocking the entire site. For example, you can block a specific subreddit, such as `reddit.com/r/gaming`, without blocking `reddit.com`.
@@ -127,6 +129,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Block content categories
 
@@ -179,6 +183,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
@@ -207,6 +213,8 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 
 ```
+
+Explain Code
 
 ## Block unauthorized applications
 
@@ -263,6 +271,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_http_application_blocklist" {
@@ -291,6 +301,8 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_application_blocklist"
 
 
 ```
+
+Explain Code
 
 ## Check user identity
 
@@ -341,6 +353,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ## Skip inspection for groups of applications
 
 Certain client applications, such as Zoom or Apple services, rely on certificate pinning. These applications verify they are connecting directly to their own servers and will reject Gateway's TLS inspection certificate. To avoid connection errors, you must add a Do Not Inspect HTTP policy for these applications.
@@ -390,6 +404,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -447,6 +463,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 ### Check for a specific file
@@ -499,6 +517,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
@@ -558,6 +578,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ## Block file types
 
 Block the upload or download of files based on their type.
@@ -606,6 +628,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 For more information on supported file types, refer to [Download and Upload File Types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types).
 
@@ -664,6 +688,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### 2\. Block unapproved applications
 
 Block applications if their approval status is _Unapproved_.
@@ -711,6 +737,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ## Block Google services
 
@@ -765,6 +793,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### Block Google Drive uploads
 
 Block file uploads from Google Drive.
@@ -815,6 +845,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ### Block Gmail downloads
 
 Block file downloads from Gmail.
@@ -863,6 +895,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ### Block Google Translate proxy
 
@@ -914,6 +948,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ## Filter WebSocket traffic
 
 Gateway does not inspect or log [WebSocket ↗](https://datatracker.ietf.org/doc/html/rfc6455) traffic. Instead, Gateway will only log the HTTP details used to make the WebSocket connection, as well as [network session information](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/). To filter your WebSocket traffic, create a policy with the `101` HTTP response code.
@@ -961,6 +997,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/traffic-policies/","name":"Traffic policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/","name":"HTTP policies"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/traffic-policies/http-policies/common-policies/","name":"Common policies"}}]}

@@ -63,6 +63,8 @@ Using a settings node on accounts nodes
 
 ```
 
+Explain Code
+
 Every subnode of `settings` node could consist of these fields:
 
 * `enabled` \- shows whether the node is available for a requester or not;
@@ -159,6 +161,8 @@ firewallEventsAdaptive limits for a given user
 
 
 ```
+
+Explain Code
 
 To get more details on how to execute queries, please refer to our how to get started [guides](https://developers.cloudflare.com/analytics/graphql-api/getting-started/).
 

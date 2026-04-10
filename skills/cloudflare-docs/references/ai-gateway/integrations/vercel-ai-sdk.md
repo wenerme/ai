@@ -76,6 +76,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -109,6 +111,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -144,6 +148,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -177,6 +183,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -212,6 +220,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -245,6 +255,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -280,6 +292,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -313,6 +327,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -348,6 +364,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -381,6 +399,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -416,6 +436,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -449,6 +471,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -484,6 +508,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -517,6 +543,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -552,6 +580,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -585,6 +615,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -620,6 +652,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -653,6 +687,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -688,6 +724,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -721,6 +759,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -756,6 +796,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -789,6 +831,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -824,6 +868,8 @@ const { text } = await generateText({
 
 ```
 
+Explain Code
+
 ```
 
 import { createAiGateway } from 'ai-gateway-provider';
@@ -857,6 +903,8 @@ const { text } = await generateText({
 
 
 ```
+
+Explain Code
 
 ### Fallback Providers
 

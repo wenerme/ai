@@ -190,6 +190,8 @@ server.addEventListener("close", (event) => {
 
 ```
 
+Explain Code
+
 Note
 
 WebSockets created with `new WebSocket(url)` always auto-reply to Close frames after this flag takes effect. There is no way to pass `allowHalfOpen` because these WebSockets are automatically accepted. If you need half-open behavior for a client WebSocket, use `fetch()` with the `Upgrade: websocket` header instead, then call `resp.webSocket.accept({ allowHalfOpen: true })`.

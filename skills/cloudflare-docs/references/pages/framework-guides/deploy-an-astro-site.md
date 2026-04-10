@@ -166,6 +166,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 ## Use bindings in your Astro application
 
 A [binding](https://developers.cloudflare.com/pages/functions/bindings/) allows your application to interact with Cloudflare developer products, such as [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Object](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1 ↗](https://blog.cloudflare.com/introducing-d1/).
@@ -204,6 +206,8 @@ declare namespace App {
 
 
 ```
+
+Explain Code
 
 You can then access your KV from an API endpoint in the following way:
 

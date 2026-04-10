@@ -179,7 +179,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-09",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -212,6 +212,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -224,7 +226,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-09"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -244,6 +246,8 @@ preview_id = "e1f8b68b68d24381b57071445f96e623"
 
 
 ```
+
+Explain Code
 
 #### 5\. Code
 
@@ -317,6 +321,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Update `src/index.ts` with your Worker code:
 
@@ -394,6 +400,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 This Worker instantiates a browser using Puppeteer, opens a new page, navigates to the location of the 'url' parameter, takes a screenshot of the page, stores the screenshot in KV, closes the browser, and responds with the JPEG image of the screenshot.
 

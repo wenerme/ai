@@ -70,7 +70,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/intel/indicator
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 3. Upload data to the feed with the [Update indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/snapshots/methods/update/). Uploaded indicator data must be in a [.stix2 ↗](https://oasis-open.github.io/cti-documentation/stix/intro) formatted file. The [maximum upload file size](https://developers.cloudflare.com/r2/platform/limits/) is 4.995 GiB.  
 Update indicator feed data  
 ```  
@@ -93,6 +94,7 @@ curl --request PUT \
   "success": true  
 }  
 ```  
+Explain Code  
 Note  
 Indicator feeds use a snapshot system. To update feeds with new data, providers must upload a file containing all previous and new indicators.
 4. (Optional) Verify the status of your feed upload with the [Get indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/methods/data/). For example:  
@@ -118,7 +120,8 @@ curl --request GET \
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 5. Grant access to subscribers with the [Grant permission to indicator feed endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/permissions/methods/create/). You can add subscribers to the feed's allowed subscribers list using their [account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/). For example:  
 Update indicator feed data  
 ```  

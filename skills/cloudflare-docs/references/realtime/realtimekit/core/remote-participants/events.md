@@ -270,6 +270,8 @@ meeting.addParticipantsEventListener(ParticipantsNotifier());
 
 ```
 
+Explain Code
+
 ```
 
 const activeSpeaker = useRealtimeKitSelector(
@@ -885,6 +887,8 @@ meeting.participants.joined.on("videoUpdate", (participant) => {
 
 ```
 
+Explain Code
+
 ```
 
 // Check for one participant
@@ -1020,6 +1024,8 @@ meeting.participants.joined.on("audioUpdate", (participant) => {
 
 ```
 
+Explain Code
+
 ```
 
 // Check for one participant
@@ -1154,6 +1160,8 @@ meeting.participants.joined.on("screenShareUpdate", (participant) => {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -1311,6 +1319,8 @@ meeting.participants.joined.on(
 
 ```
 
+Explain Code
+
 Monitor participant network quality using the `mediaScoreUpdate` event.
 
 ```
@@ -1374,6 +1384,8 @@ useEffect(() => {
 
 
 ```
+
+Explain Code
 
 This event is not available on this platform.
 
@@ -1441,6 +1453,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 ## Listen to participant events
 
 Each participant object is an event emitter:
@@ -1472,6 +1486,8 @@ meeting.participants.joined
 
 ```
 
+Explain Code
+
 Alternatively, listen on the participant map for all participants:
 
 JavaScript
@@ -1502,6 +1518,8 @@ meeting.participants.joined.on(
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -1555,6 +1573,8 @@ function ParticipantAudioListener({ participantId }) {
 
 ```
 
+Explain Code
+
 Or use the selector for specific properties:
 
 ```
@@ -1601,6 +1621,8 @@ meeting.addParticipantEventListener(object : RtkParticipantEventListener {
 
 ```
 
+Explain Code
+
 Implement the `RtkParticipantEventListener` protocol to receive participant event updates:
 
 Swift
@@ -1636,6 +1658,8 @@ meeting.addParticipantEventListener(self)
 
 
 ```
+
+Explain Code
 
 Implement the `RtkParticipantUpdateListener` interface and add the listener on a participant:
 
@@ -1715,6 +1739,8 @@ participant.removeParticipantUpdateListener(listener);
 
 ```
 
+Explain Code
+
 ```
 
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react-native";
@@ -1766,6 +1792,8 @@ function ParticipantAudioListener({ participantId }) {
 
 
 ```
+
+Explain Code
 
 Or use the selector for specific properties:
 

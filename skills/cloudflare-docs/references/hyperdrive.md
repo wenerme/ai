@@ -80,6 +80,8 @@ export default {
 
 ```
 
+Explain Code
+
 ```
 
   {
@@ -122,6 +124,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 * [ index.ts ](#tab-panel-4678)
 * [ wrangler.jsonc ](#tab-panel-4679)
@@ -183,6 +187,8 @@ export default {
 
 ```
 
+Explain Code
+
 ```
 
   {
@@ -225,6 +231,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 [ Get started ](https://developers.cloudflare.com/hyperdrive/get-started/) 
 

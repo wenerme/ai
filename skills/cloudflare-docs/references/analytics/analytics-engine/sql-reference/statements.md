@@ -124,6 +124,8 @@ SELECT
 
 ```
 
+Explain Code
+
 Additionally, expressions using supported functions and [operators](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/operators/) can be used in place of column names:
 
 ```
@@ -152,6 +154,8 @@ SELECT
 
 
 ```
+
+Explain Code
 
 ### FROM clause
 
@@ -197,6 +201,8 @@ FROM (
 
 
 ```
+
+Explain Code
 
 Note that queries can only operate on a single table. `UNION`, `JOIN` etc. are not currently supported.
 
@@ -250,6 +256,8 @@ WHERE if(unit = 'f', (temp-32)/1.8, temp) <= 0
 
 
 ```
+
+Explain Code
 
 ### GROUP BY clause
 
@@ -356,6 +364,8 @@ HAVING avg_temp > 20 AND readings >= 50
 
 
 ```
+
+Explain Code
 
 ### ORDER BY clause
 
@@ -524,6 +534,8 @@ Data is returned as a single JSON object with schema data included:
 
 
 ```
+
+Explain Code
 
 #### JSONEachRow
 

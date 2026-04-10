@@ -20,8 +20,8 @@ Customers with a Bot Management and a [Workers](https://developers.cloudflare.co
 
 The template sets a minimum and maximum delay, and delays requests where the bot score is less than 30 and the URI path starts with `/exampleURI`.
 
-* [  JavaScript ](#tab-panel-3230)
-* [  TypeScript ](#tab-panel-3231)
+* [  JavaScript ](#tab-panel-3236)
+* [  TypeScript ](#tab-panel-3237)
 
 JavaScript
 
@@ -74,6 +74,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -122,6 +124,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/bots/","name":"Bots"}},{"@type":"ListItem","position":3,"item":{"@id":"/bots/workers-templates/","name":"Workers templates"}},{"@type":"ListItem","position":4,"item":{"@id":"/bots/workers-templates/delay-action/","name":"Delay action"}}]}

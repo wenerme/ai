@@ -67,6 +67,8 @@ A fully populated ruleset object has the following JSON structure.
 
 ```
 
+Explain Code
+
 For details on the properties of rules items in the `rules` array, refer to the [Rule object structure and properties](#rule-object-structure-and-properties) section.
 
 ### Properties
@@ -131,6 +133,8 @@ A fully populated rule JSON object has the following structure:
 
 
 ```
+
+Explain Code
 
 The JSON object properties for a rule are defined as follows:
 

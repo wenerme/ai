@@ -147,6 +147,7 @@ The response will return a UUID for the certificate. For example:
   }  
 }  
 ```  
+Explain Code  
 When uploading a certificate chain, the `certificates` field should contain all certificates in PEM format. To format this field, order the root certificate first, then concatenate any intermediate certificates.
 2. Set the certificate as available for use in inspection with the [Activate a Zero Trust certificate endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/certificates/methods/activate/). This will deploy the certificate across the Cloudflare global network.  
 Activate a Zero Trust certificate  
@@ -176,7 +177,8 @@ The response will return the certificate and a `pending_deployment` binding stat
     "expires_on": "2014-01-01T05:20:00.12345Z"  
   }  
 }  
-```
+```  
+Explain Code
 3. Use the [Get Zero Trust certificate details endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/certificates/methods/get/) to verify the certificate's binding status is set to `available`.  
 Get Zero Trust certificate details  
 ```  
@@ -204,7 +206,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/certific
     "expires_on": "2014-01-01T05:20:00.12345Z"  
   }  
 }  
-```
+```  
+Explain Code
 4. (Optional) Verify the certificate is installed on your user's devices either [with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) or [manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/).
 5. Use the [Patch Zero Trust account configuration endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/configurations/methods/edit/) to turn on the certificate for use in inspection. For example:
 
@@ -236,6 +239,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configur
 
 
 ```
+
+Explain Code
 
 Once `in-use` is set to `true`, Gateway will sign your traffic using the custom root certificate and private key. If you turn off or deactivate the custom certificate, Gateway will revert to the next available Cloudflare certificate generated for your Zero Trust account.
 

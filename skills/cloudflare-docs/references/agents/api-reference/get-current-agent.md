@@ -24,8 +24,8 @@ All custom methods automatically have full agent context. The framework automati
 
 ## How it works
 
-* [  JavaScript ](#tab-panel-2390)
-* [  TypeScript ](#tab-panel-2391)
+* [  JavaScript ](#tab-panel-2396)
+* [  TypeScript ](#tab-panel-2397)
 
 JavaScript
 
@@ -64,6 +64,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -101,6 +103,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 No configuration is required. The framework automatically:
 
 1. Scans your agent class for custom methods.
@@ -109,8 +113,8 @@ No configuration is required. The framework automatically:
 
 ## Real-world example
 
-* [  JavaScript ](#tab-panel-2406)
-* [  TypeScript ](#tab-panel-2407)
+* [  JavaScript ](#tab-panel-2412)
+* [  TypeScript ](#tab-panel-2413)
 
 JavaScript
 
@@ -169,6 +173,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -226,6 +232,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 ### Built-in vs custom methods
 
 * **Built-in methods** (`onRequest`, `onEmail`, `onStateChanged`): Already have context.
@@ -234,8 +242,8 @@ export class MyAgent extends AIChatAgent {
 
 ### The context flow
 
-* [  JavaScript ](#tab-panel-2388)
-* [  TypeScript ](#tab-panel-2389)
+* [  JavaScript ](#tab-panel-2394)
+* [  TypeScript ](#tab-panel-2395)
 
 JavaScript
 
@@ -275,8 +283,8 @@ agent.customMethod();
 
 ### Working with AI SDK tools
 
-* [  JavaScript ](#tab-panel-2400)
-* [  TypeScript ](#tab-panel-2401)
+* [  JavaScript ](#tab-panel-2406)
+* [  TypeScript ](#tab-panel-2407)
 
 JavaScript
 
@@ -319,6 +327,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -360,10 +370,12 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 ### Calling external libraries
 
-* [  JavaScript ](#tab-panel-2398)
-* [  TypeScript ](#tab-panel-2399)
+* [  JavaScript ](#tab-panel-2404)
+* [  TypeScript ](#tab-panel-2405)
 
 JavaScript
 
@@ -400,6 +412,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -435,10 +449,12 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 ### Accessing request and connection context
 
-* [  JavaScript ](#tab-panel-2402)
-* [  TypeScript ](#tab-panel-2403)
+* [  JavaScript ](#tab-panel-2408)
+* [  TypeScript ](#tab-panel-2409)
 
 JavaScript
 
@@ -472,6 +488,8 @@ function logRequestInfo() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -504,14 +522,16 @@ function logRequestInfo() {
 
 ```
 
+Explain Code
+
 ## API reference
 
 ### `getCurrentAgent()`
 
 Gets the current agent from any context where it is available.
 
-* [  JavaScript ](#tab-panel-2392)
-* [  TypeScript ](#tab-panel-2393)
+* [  JavaScript ](#tab-panel-2398)
+* [  TypeScript ](#tab-panel-2399)
 
 JavaScript
 
@@ -555,8 +575,8 @@ function getCurrentAgent<T extends Agent>(): {
 
 #### Usage:
 
-* [  JavaScript ](#tab-panel-2404)
-* [  TypeScript ](#tab-panel-2405)
+* [  JavaScript ](#tab-panel-2410)
+* [  TypeScript ](#tab-panel-2411)
 
 JavaScript
 
@@ -584,6 +604,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -610,6 +632,8 @@ export class MyAgent extends AIChatAgent {
 
 ```
 
+Explain Code
+
 ### Context availability
 
 The context available depends on how the method was invoked:
@@ -629,8 +653,8 @@ The context available depends on how the method was invoked:
 1. **Use `this` when possible**: Inside agent methods, prefer `this.name`, `this.state`, etc. over `getCurrentAgent()`.
 2. **Use `getCurrentAgent()` in external functions**: When you need agent context in utility functions or libraries that do not have access to `this`.
 3. **Check for undefined**: The returned values may be `undefined` if called outside an agent context.  
-   * [  JavaScript ](#tab-panel-2396)  
-   * [  TypeScript ](#tab-panel-2397)  
+   * [  JavaScript ](#tab-panel-2402)  
+   * [  TypeScript ](#tab-panel-2403)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  
@@ -648,8 +672,8 @@ if (agent) {
 }  
 ```
 4. **Type the agent**: Pass your agent class as a type parameter for proper typing.  
-   * [  JavaScript ](#tab-panel-2394)  
-   * [  TypeScript ](#tab-panel-2395)  
+   * [  JavaScript ](#tab-panel-2400)  
+   * [  TypeScript ](#tab-panel-2401)  
 JavaScript  
 ```  
 const { agent } = getCurrentAgent();  

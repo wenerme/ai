@@ -100,6 +100,8 @@ console.log(await res.json()); // { url: "http://localhost:8787/2", header: "2" 
 
 ```
 
+Explain Code
+
 When dispatching events, you are responsible for adding[CF-\* headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/) and the[cf object](https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties). This lets you control their values for testing:
 
 JavaScript
@@ -164,6 +166,8 @@ console.log(await res.text()); // Source code of this page
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/core/","name":"Core"}},{"@type":"ListItem","position":6,"item":{"@id":"/workers/testing/miniflare/core/fetch/","name":"Fetch Events"}}]}

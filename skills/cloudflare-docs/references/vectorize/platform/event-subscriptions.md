@@ -73,6 +73,8 @@ Triggered when an index is created.
 
 ```
 
+Explain Code
+
 #### `index.deleted`
 
 Triggered when an index is deleted.
@@ -113,6 +115,8 @@ Triggered when an index is deleted.
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/vectorize/","name":"Vectorize"}},{"@type":"ListItem","position":3,"item":{"@id":"/vectorize/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/vectorize/platform/event-subscriptions/","name":"Event subscriptions"}}]}

@@ -160,6 +160,8 @@ func main() {
 
 ```
 
+Explain Code
+
 ## Generate presigned URLs
 
 You can also generate presigned links that can be used to temporarily share public write access to a bucket.
@@ -189,6 +191,8 @@ presignClient := s3.NewPresignClient(client)
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/examples/aws/","name":"S3 SDKs"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/examples/aws/aws-sdk-go/","name":"aws-sdk-go"}}]}

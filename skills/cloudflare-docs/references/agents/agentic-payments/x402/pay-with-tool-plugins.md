@@ -122,6 +122,8 @@ export const X402PaymentPlugin: Plugin = async () => ({
 
 ```
 
+Explain Code
+
 When the built-in `webfetch` returns a 402, the agent calls `x402-fetch` to retry with payment.
 
 ## Claude Code hook
@@ -239,6 +241,8 @@ function readStdin() {
 
 ```
 
+Explain Code
+
 Register the hook in `.claude/settings.json`:
 
 ```
@@ -277,6 +281,8 @@ Register the hook in `.claude/settings.json`:
 
 
 ```
+
+Explain Code
 
 ## Related
 

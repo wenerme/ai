@@ -60,8 +60,8 @@ After you have added the domain or subdomain, Cloudflare will create a new DNS r
 
 To configure a Custom Domain in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), add the `custom_domain=true` option on each pattern under `routes`. For example, to configure a Custom Domain:
 
-* [  wrangler.jsonc ](#tab-panel-7095)
-* [  wrangler.toml ](#tab-panel-7096)
+* [  wrangler.jsonc ](#tab-panel-7153)
+* [  wrangler.toml ](#tab-panel-7154)
 
 JSONC
 
@@ -101,8 +101,8 @@ custom_domain = true
 
 To configure multiple Custom Domains:
 
-* [  wrangler.jsonc ](#tab-panel-7099)
-* [  wrangler.toml ](#tab-panel-7100)
+* [  wrangler.jsonc ](#tab-panel-7157)
+* [  wrangler.toml ](#tab-panel-7158)
 
 JSONC
 
@@ -134,6 +134,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -235,6 +237,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Certificates
 
 Creating a Custom Domain will also generate an [Advanced Certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) on your target zone for your target hostname.
@@ -265,8 +269,8 @@ To migrate the route `example.com/*` in your [Wrangler configuration file](https
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:  
-   * [  wrangler.jsonc ](#tab-panel-7097)  
-   * [  wrangler.toml ](#tab-panel-7098)  
+   * [  wrangler.jsonc ](#tab-panel-7155)  
+   * [  wrangler.toml ](#tab-panel-7156)  
 JSONC  
 ```  
 {  

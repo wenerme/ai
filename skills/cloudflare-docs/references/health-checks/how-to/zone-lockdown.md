@@ -67,6 +67,8 @@ curl "https://api.cloudflare.com/client/v4/{zone_id}/rulesets/{ruleset_id}/rules
 
 ```
 
+Explain Code
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/health-checks/","name":"Health Checks"}},{"@type":"ListItem","position":3,"item":{"@id":"/health-checks/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/health-checks/how-to/zone-lockdown/","name":"Zone Lockdown"}}]}
 ```

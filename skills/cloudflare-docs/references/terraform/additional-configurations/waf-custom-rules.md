@@ -88,6 +88,8 @@ resource "cloudflare_ruleset" "zone_custom_firewall" {
 
 ```
 
+Explain Code
+
 To create another custom rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
@@ -138,6 +140,8 @@ resource "cloudflare_ruleset" "account_firewall_custom_ruleset" {
 
 ```
 
+Explain Code
+
 To create another custom rule in the custom ruleset, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
@@ -187,6 +191,8 @@ resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {
 
 
 ```
+
+Explain Code
 
 For more information on configuring and deploying custom rulesets, refer to [Work with custom rulesets](https://developers.cloudflare.com/ruleset-engine/custom-rulesets/) in the Ruleset Engine documentation.
 

@@ -92,6 +92,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpo
 
 ```
 
+Explain Code
+
 ## Query endpoint health checks with GraphQL
 
 Use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) to query endpoint health check results for your account. The `magicEndpointHealthCheckAdaptiveGroups` dataset returns probe results aggregated by the dimensions and time interval you specify.
@@ -227,6 +229,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+Explain Code
+
 Pipe the output to `jq` to format the JSON response for easier reading:
 
 Terminal window
@@ -333,6 +337,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+Explain Code
+
 In this response, `sum.total` is the number of probes sent during the interval and `sum.failures` is the number that did not receive a reply. A `failures` value of `0` indicates the endpoint was fully reachable during that period.
 
 ## Configure alerts for endpoint health checks
@@ -382,6 +388,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/account_id/diagnostics/endpo
 
 
 ```
+
+Explain Code
 
 1. Take note of the `id` value for the endpoint you want to get alerts for.
 2. In the Cloudflare dashboard, go to the **Notifications** page.

@@ -195,6 +195,8 @@ export default {
 
 ```
 
+Explain Code
+
 Requests flow: Browser → Your Worker → Durable Object (sandbox) → Your Service.
 
 ## Multiple Ports
@@ -228,6 +230,8 @@ const admin = await sandbox.exposePort(3001, { hostname, name: "admin" });
 
 
 ```
+
+Explain Code
 
 ## What Works
 
@@ -286,6 +290,8 @@ export default {
 
 ```
 
+Explain Code
+
 For custom routing scenarios where your Worker needs to control which sandbox or port to connect to based on request properties, see `wsConnect()` in the [Ports API](https://developers.cloudflare.com/sandbox/api/ports/#wsconnect).
 
 ## Security
@@ -332,6 +338,8 @@ def get_data():
 
 ```
 
+Explain Code
+
 This adds a second layer of security on top of the URL token.
 
 ## Troubleshooting
@@ -367,6 +375,8 @@ app.run((host = "127.0.0.1"), (port = 3000));
 
 
 ```
+
+Explain Code
 
 ### Production Errors
 

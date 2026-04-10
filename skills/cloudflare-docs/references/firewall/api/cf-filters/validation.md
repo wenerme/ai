@@ -62,6 +62,8 @@ Response
 
 ```
 
+Explain Code
+
 Note the validation error in the response. In this example, the error is due to an invalid IP address format:
 
 ```
@@ -124,6 +126,8 @@ Response
 
 
 ```
+
+Explain Code
 
 Note the validation error in the response. In this example, the value for the subnet mask, `/2000`, is not a valid IPv6 CIDR mask:
 

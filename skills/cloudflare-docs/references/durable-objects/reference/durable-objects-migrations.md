@@ -41,8 +41,8 @@ The most common migration performed is a new class migration, which informs the 
 To apply a Create migration:
 
 1. Add the following lines to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-4547)  
-   * [  wrangler.toml ](#tab-panel-4548)  
+   * [  wrangler.jsonc ](#tab-panel-4591)  
+   * [  wrangler.toml ](#tab-panel-4592)  
 JSONC  
 ```  
 {  
@@ -56,6 +56,7 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 [[migrations]]  
@@ -72,8 +73,8 @@ Create migration example
 
 To create a new Durable Object binding `DURABLE_OBJECT_A`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-4553)
-* [  wrangler.toml ](#tab-panel-4554)
+* [  wrangler.jsonc ](#tab-panel-4597)
+* [  wrangler.toml ](#tab-panel-4598)
 
 JSONC
 
@@ -122,6 +123,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -154,8 +157,8 @@ The [key-value storage backend](https://developers.cloudflare.com/durable-object
 
 Use `new_classes` on the migration in your Worker's Wrangler file to create a Durable Object class with the key-value storage backend:
 
-* [  wrangler.jsonc ](#tab-panel-4549)
-* [  wrangler.toml ](#tab-panel-4550)
+* [  wrangler.jsonc ](#tab-panel-4593)
+* [  wrangler.toml ](#tab-panel-4594)
 
 JSONC
 
@@ -185,6 +188,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -221,8 +226,8 @@ To apply a Delete migration:
 1. Remove the binding for the class you wish to delete from the Wrangler configuration file.
 2. Remove references for the class you wish to delete from your Worker code.
 3. Add the following lines to your Wrangler configuration file.  
-   * [  wrangler.jsonc ](#tab-panel-4551)  
-   * [  wrangler.toml ](#tab-panel-4552)  
+   * [  wrangler.jsonc ](#tab-panel-4595)  
+   * [  wrangler.toml ](#tab-panel-4596)  
 JSONC  
 ```  
 {  
@@ -236,6 +241,7 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 [[migrations]]  
@@ -251,8 +257,8 @@ Delete migration example
 
 To delete a Durable Object binding `DEPRECATED_OBJECT`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-4555)
-* [  wrangler.toml ](#tab-panel-4556)
+* [  wrangler.jsonc ](#tab-panel-4599)
+* [  wrangler.toml ](#tab-panel-4600)
 
 JSONC
 
@@ -295,6 +301,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -315,8 +323,8 @@ Rename migrations are used to transfer stored Durable Objects between two Durabl
 To apply a Rename migration:
 
 1. Update the previous class name to the new class name by editing your Wrangler configuration file in the following way:  
-   * [  wrangler.jsonc ](#tab-panel-4557)  
-   * [  wrangler.toml ](#tab-panel-4558)  
+   * [  wrangler.jsonc ](#tab-panel-4601)  
+   * [  wrangler.toml ](#tab-panel-4602)  
 JSONC  
 ```  
 {  
@@ -341,6 +349,7 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 [[durable_objects.bindings]]  
@@ -352,6 +361,7 @@ tag = "<v3>"
   from = "<OldDurableObject>"  
   to = "<UpdatedDurableObject>"  
 ```  
+Explain Code  
 The Rename migration contains:  
    * A `tag` to identify the migration.  
    * The `renamed_classes` array, which contains objects with `from` and `to` properties.  
@@ -364,8 +374,8 @@ Rename migration example
 
 To rename a Durable Object class, from `OldName` to `UpdatedName`, your Wrangler configuration file should look like the following:
 
-* [  wrangler.jsonc ](#tab-panel-4559)
-* [  wrangler.toml ](#tab-panel-4560)
+* [  wrangler.jsonc ](#tab-panel-4603)
+* [  wrangler.toml ](#tab-panel-4604)
 
 JSONC
 
@@ -422,6 +432,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -447,6 +459,8 @@ tag = "v3"
 
 ```
 
+Explain Code
+
 ## Transfer migration
 
 Transfer migrations are used to transfer stored Durable Objects between two Durable Object classes in different Worker code files.
@@ -460,8 +474,8 @@ Do not run a [Create migration](#create-migration) for the destination class bef
 To apply a Transfer migration:
 
 1. Edit your Wrangler configuration file in the following way:  
-   * [  wrangler.jsonc ](#tab-panel-4561)  
-   * [  wrangler.toml ](#tab-panel-4562)  
+   * [  wrangler.jsonc ](#tab-panel-4605)  
+   * [  wrangler.toml ](#tab-panel-4606)  
 JSONC  
 ```  
 {  
@@ -487,6 +501,7 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 [[durable_objects.bindings]]  
@@ -499,6 +514,7 @@ tag = "<v4>"
   from_script = "<SourceWorkerScript>"  
   to = "<DestinationDurableObjectClass>"  
 ```  
+Explain Code  
 The Transfer migration contains:  
    * A `tag` to identify the migration.  
    * The `transferred_class` array, which contains objects with `from`, `from_script`, and `to` properties.  
@@ -512,8 +528,8 @@ Transfer migration example
 
 You can transfer stored Durable Objects from `DurableObjectExample` to `TransferredClass` from a Worker script named `OldWorkerScript`. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-4563)
-* [  wrangler.toml ](#tab-panel-4564)
+* [  wrangler.jsonc ](#tab-panel-4607)
+* [  wrangler.toml ](#tab-panel-4608)
 
 JSONC
 
@@ -570,6 +586,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -597,6 +615,8 @@ tag = "v4"
 
 ```
 
+Explain Code
+
 ## Migration Wrangler configuration
 
 * Migrations are performed through the `[[migrations]]` configurations key in your `wrangler.toml` file or `migration` key in your `wrangler.jsonc` file.
@@ -620,6 +640,7 @@ tag = "v4"
     }  
    }  
    ```  
+   Explain Code  
    * If a migration is only specified at the top-level, but not at the environment-level, the environment will inherit the top-level migration.  
    * Migrations at at the environment-level override migrations at the top level.
 * All migrations are applied at deployment. Each migration can only be applied once per [environment](https://developers.cloudflare.com/durable-objects/reference/environments/).

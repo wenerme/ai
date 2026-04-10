@@ -30,8 +30,8 @@ Prerequisites:
 
 Configure your Wrangler file as follows:
 
-* [  wrangler.jsonc ](#tab-panel-5652)
-* [  wrangler.toml ](#tab-panel-5653)
+* [  wrangler.jsonc ](#tab-panel-5696)
+* [  wrangler.toml ](#tab-panel-5697)
 
 JSONC
 
@@ -96,6 +96,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -127,6 +129,8 @@ new_sqlite_classes = [ "YourDurableObject" ]
 
 
 ```
+
+Explain Code
 
 The following Worker script:
 
@@ -223,6 +227,8 @@ export class YourDurableObject extends DurableObject<Env> {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/queues/","name":"Queues"}},{"@type":"ListItem","position":3,"item":{"@id":"/queues/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/queues/examples/use-queues-with-durable-objects/","name":"Use Queues from Durable Objects"}}]}

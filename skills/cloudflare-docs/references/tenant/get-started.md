@@ -38,8 +38,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-6662)
-* [ API ](#tab-panel-6663)
+* [ Dashboard ](#tab-panel-6720)
+* [ API ](#tab-panel-6721)
 
 To create an account under your tenant using the dashboard:
 
@@ -134,6 +134,8 @@ Response
 
 ```
 
+Explain Code
+
 A request with a unit ID:
 
 Request
@@ -164,6 +166,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 
 ```
+
+Explain Code
 
 A request with a unit ID and KYC:
 
@@ -205,6 +209,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 
 ```
+
+Explain Code
 
 ## Step 2 - Grant user access
 
@@ -333,6 +339,8 @@ Response
 
 ```
 
+Explain Code
+
 ## Step 3 - Create a zone
 
 Now that you have a customer account and customer users (or service users), you need to create a zone.
@@ -365,6 +373,8 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 
 ```
+
+Explain Code
 
 ## Step 4 - Create a zone plan subscription
 
@@ -438,6 +448,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
 
 
 ```
+
+Explain Code
 
 ## Step 5 - Create other subscriptions
 

@@ -100,6 +100,8 @@ spark.sql("""
 
 ```
 
+Explain Code
+
 ### Dropping tables and namespaces
 
 Python
@@ -139,6 +141,8 @@ spark.sql("DROP NAMESPACE r2dc.namespace_name CASCADE")
 
 
 ```
+
+Explain Code
 
 Data loss warning
 
@@ -198,6 +202,8 @@ spark.sql("""
 
 
 ```
+
+Explain Code
 
 ## About Apache Iceberg metadata
 

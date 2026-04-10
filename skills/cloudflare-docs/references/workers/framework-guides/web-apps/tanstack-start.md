@@ -119,8 +119,8 @@ pnpm add @cloudflare/vite-plugin wrangler -D
 bun add @cloudflare/vite-plugin wrangler -D  
 ```
 2. Add the Cloudflare plugin to your Vite configuration:  
-   * [  JavaScript ](#tab-panel-7422)  
-   * [  TypeScript ](#tab-panel-7423)  
+   * [  JavaScript ](#tab-panel-7480)  
+   * [  TypeScript ](#tab-panel-7481)  
 vite.config.js  
 ```  
 import { defineConfig } from "vite";  
@@ -135,6 +135,7 @@ export default defineConfig({
   ],  
 });  
 ```  
+Explain Code  
 vite.config.ts  
 ```  
 import { defineConfig } from "vite";  
@@ -148,17 +149,18 @@ export default defineConfig({
     react(),  
   ],  
 });  
-```
+```  
+Explain Code
 3. Add a `wrangler.jsonc` configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-7414)  
-   * [  wrangler.toml ](#tab-panel-7415)  
+   * [  wrangler.jsonc ](#tab-panel-7472)  
+   * [  wrangler.toml ](#tab-panel-7473)  
 JSONC  
 ```  
 {  
   "$schema": "node_modules/wrangler/config-schema.json",  
   "name": "<YOUR_PROJECT_NAME>",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-10",  
   "compatibility_flags": ["nodejs_compat"],  
   "main": "@tanstack/react-start/server-entry",  
   "observability": {  
@@ -166,12 +168,13 @@ JSONC
   },  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "node_modules/wrangler/config-schema.json"  
 name = "<YOUR_PROJECT_NAME>"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-10"  
 compatibility_flags = [ "nodejs_compat" ]  
 main = "@tanstack/react-start/server-entry"  
 [observability]  
@@ -232,8 +235,8 @@ pnpm run preview
 TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypoint. Create a custom server entrypoint to add additional Workers handlers such as [Queues](https://developers.cloudflare.com/queues/) and [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/). This is also where you can add additional exports such as [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Workflows](https://developers.cloudflare.com/workflows/).
 
 1. Create a custom server entrypoint file:  
-   * [  JavaScript ](#tab-panel-7426)  
-   * [  TypeScript ](#tab-panel-7427)  
+   * [  JavaScript ](#tab-panel-7484)  
+   * [  TypeScript ](#tab-panel-7485)  
 src/server.js  
 ```  
 import handler from "@tanstack/react-start/server-entry";  
@@ -254,6 +257,7 @@ export default {
   },  
 };  
 ```  
+Explain Code  
 src/server.ts  
 ```  
 import handler from "@tanstack/react-start/server-entry";  
@@ -273,10 +277,11 @@ export default {
     console.log("Cron triggered:", event.cron);  
   },  
 };  
-```
+```  
+Explain Code
 2. Update your Wrangler configuration to point to your custom entrypoint:  
-   * [  wrangler.jsonc ](#tab-panel-7412)  
-   * [  wrangler.toml ](#tab-panel-7413)  
+   * [  wrangler.jsonc ](#tab-panel-7470)  
+   * [  wrangler.toml ](#tab-panel-7471)  
 JSONC  
 ```  
 {  
@@ -305,8 +310,8 @@ Example: Using Workflows
 
 Export a Workflow class from your custom entrypoint to run durable, multi-step tasks:
 
-* [  JavaScript ](#tab-panel-7428)
-* [  TypeScript ](#tab-panel-7429)
+* [  JavaScript ](#tab-panel-7486)
+* [  TypeScript ](#tab-panel-7487)
 
 app/server.js
 
@@ -350,6 +355,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ```
 
+Explain Code
+
 app/server.ts
 
 ```
@@ -392,10 +399,12 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
 ```
 
+Explain Code
+
 Add the Workflow configuration to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7416)
-* [  wrangler.toml ](#tab-panel-7417)
+* [  wrangler.jsonc ](#tab-panel-7474)
+* [  wrangler.toml ](#tab-panel-7475)
 
 JSONC
 
@@ -441,8 +450,8 @@ Example: Using Service Bindings
 
 Add a service binding to call another Worker's RPC methods from your TanStack Start application:
 
-* [  wrangler.jsonc ](#tab-panel-7418)
-* [  wrangler.toml ](#tab-panel-7419)
+* [  wrangler.jsonc ](#tab-panel-7476)
+* [  wrangler.toml ](#tab-panel-7477)
 
 JSONC
 
@@ -482,8 +491,8 @@ service = "auth-worker"
 
 Call the bound Worker's methods from a server function:
 
-* [  JavaScript ](#tab-panel-7424)
-* [  TypeScript ](#tab-panel-7425)
+* [  JavaScript ](#tab-panel-7482)
+* [  TypeScript ](#tab-panel-7483)
 
 app/routes/index.jsx
 
@@ -539,8 +548,8 @@ Your TanStack Start application can be fully integrated with the Cloudflare Deve
 
 Access bindings by [importing the env object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) in your server-side code:
 
-* [  JavaScript ](#tab-panel-7430)
-* [  TypeScript ](#tab-panel-7431)
+* [  JavaScript ](#tab-panel-7488)
+* [  TypeScript ](#tab-panel-7489)
 
 app/routes/index.jsx
 
@@ -580,6 +589,8 @@ function RouteComponent() {
 
 ```
 
+Explain Code
+
 app/routes/index.tsx
 
 ```
@@ -618,6 +629,8 @@ function RouteComponent() {
 
 ```
 
+Explain Code
+
 Generate TypeScript types for your bindings based on your Wrangler configuration:
 
  npm  yarn  pnpm 
@@ -642,8 +655,8 @@ With bindings, your application can be fully integrated with the Cloudflare Deve
 
 Add an [R2 bucket binding](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#4-bind-your-bucket-to-a-worker) to your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7420)
-* [  wrangler.toml ](#tab-panel-7421)
+* [  wrangler.jsonc ](#tab-panel-7478)
+* [  wrangler.toml ](#tab-panel-7479)
 
 JSONC
 
@@ -683,8 +696,8 @@ bucket_name = "<YOUR_BUCKET_NAME>"
 
 Access the bucket in a server function:
 
-* [  JavaScript ](#tab-panel-7432)
-* [  TypeScript ](#tab-panel-7433)
+* [  JavaScript ](#tab-panel-7490)
+* [  TypeScript ](#tab-panel-7491)
 
 app/routes/index.jsx
 
@@ -723,6 +736,8 @@ const getFile = createServerFn()
 
 ```
 
+Explain Code
+
 app/routes/index.tsx
 
 ```
@@ -760,12 +775,14 @@ const getFile = createServerFn()
 
 ```
 
+Explain Code
+
 ## Static prerendering
 
 Prerender your application to static HTML at build time and serve as [static assets](https://developers.cloudflare.com/workers/static-assets/).
 
-* [  JavaScript ](#tab-panel-7434)
-* [  TypeScript ](#tab-panel-7435)
+* [  JavaScript ](#tab-panel-7492)
+* [  TypeScript ](#tab-panel-7493)
 
 vite.config.js
 
@@ -805,6 +822,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 vite.config.ts
 
 ```
@@ -842,6 +861,8 @@ export default defineConfig({
 
 
 ```
+
+Explain Code
 
 For more options, refer to [TanStack Start static prerendering ↗](https://tanstack.com/start/latest/docs/framework/react/guide/static-prerendering).
 

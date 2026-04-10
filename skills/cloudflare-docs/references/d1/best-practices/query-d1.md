@@ -66,6 +66,8 @@ CREATE TABLE orders (
 
 ```
 
+Explain Code
+
 Refer to [Define foreign keys](https://developers.cloudflare.com/d1/sql-api/foreign-keys/) for more information.
 
 ### Query JSON
@@ -159,6 +161,8 @@ export default {
 
 ```
 
+Explain Code
+
 Refer to [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) for more information.
 
 ## Query D1 with REST API
@@ -210,6 +214,8 @@ npx wrangler d1 execute prod-d1-tutorial --command="SELECT * FROM Customers"
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/d1/","name":"D1"}},{"@type":"ListItem","position":3,"item":{"@id":"/d1/best-practices/","name":"Best practices"}},{"@type":"ListItem","position":4,"item":{"@id":"/d1/best-practices/query-d1/","name":"Query a database"}}]}

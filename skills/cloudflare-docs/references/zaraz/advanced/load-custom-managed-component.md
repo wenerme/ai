@@ -68,6 +68,8 @@ export default async function (manager) {
 
 ```
 
+Explain Code
+
 ## Deploy a Managed Component to Cloudflare
 
 1. Open a terminal in your Managed Component’s root directory.

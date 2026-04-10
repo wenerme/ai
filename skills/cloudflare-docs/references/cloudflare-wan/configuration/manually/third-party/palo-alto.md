@@ -319,6 +319,8 @@ set address VLAN0100_L3_10-1-100-254--24 tag Trust_L3_Zone
 
 ```
 
+Explain Code
+
 #### Address Group object
 
 The **Address Group** object used in this configuration provides a single object representation of the entire Cloudflare IPv4 public address space.
@@ -466,6 +468,8 @@ set network interface ethernet ethernet1/2 layer3 adjust-tcp-mss ipv4-mss-adjust
 
 
 ```
+
+Explain Code
 
 ### Tunnel interfaces
 
@@ -772,6 +776,8 @@ set network ike gateway CF_Magic_WAN_IKE_01 disabled no
 
 ```
 
+Explain Code
+
 ##### Tunnel 2 settings: `CF_Magic_WAN_IKE_02`
 
 Terminal window
@@ -806,6 +812,8 @@ set network ike gateway CF_Magic_WAN_IKE_02 disabled no
 
 
 ```
+
+Explain Code
 
 ### IPsec Tunnels
 
@@ -964,6 +972,8 @@ Show IKEv2 SA: Total 2 gateways found. 1 ike sa found.
 
 ```
 
+Explain Code
+
 ##### Example for `CF_Magic_WAN_IKE_02`
 
 Terminal window
@@ -1005,6 +1015,8 @@ Show IKEv2 SA: Total 2 gateways found. 1 ike sa found.
 
 
 ```
+
+Explain Code
 
 #### Troubleshooting IKE Phase 1 Communications
 
@@ -1213,6 +1225,8 @@ rtt min/avg/max/mdev = 1.980/2.180/2.719/0.312 ms
 
 ```
 
+Explain Code
+
 ##### Example for Tunnel 2
 
 Terminal window
@@ -1241,6 +1255,8 @@ rtt min/avg/max/mdev = 1.765/2.141/2.900/0.446 ms
 
 
 ```
+
+Explain Code
 
 ### Virtual Router
 
@@ -1393,6 +1409,8 @@ set network virtual-router default routing-table ip static-route Magic_WAN_VLAN0
 
 ```
 
+Explain Code
+
 ##### VLAN0020 - `10.1.20.0/24`
 
 Terminal window
@@ -1425,6 +1443,8 @@ set network virtual-router default routing-table ip static-route Magic_WAN_VLAN0
 
 
 ```
+
+Explain Code
 
 ### Health checks
 
@@ -1503,6 +1523,8 @@ set rulebase security rules Cloudflare_Tunnel_Bidirect_HC log-end yes
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -1587,6 +1609,8 @@ set rulebase pbf rules PBF_Cloudflare_Healthcheck_01 tag Cloudflare_L3_Zone
 
 ```
 
+Explain Code
+
 ##### Set up via command line tunnel.2
 
 Terminal window
@@ -1615,6 +1639,8 @@ set rulebase pbf rules PBF_Cloudflare_Healthcheck_02 tag Cloudflare_L3_Zone
 
 
 ```
+
+Explain Code
 
 ### Troubleshooting tunnel health checks
 
@@ -1728,6 +1754,8 @@ set rulebase security rules Trust_to_Cloudflare_Magic_WAN_Allow rule-type univer
 
 ```
 
+Explain Code
+
 ##### Cloudflare WAN to Trust dashboard
 
 | Name                                     | Option                                                  | Value                    |
@@ -1778,6 +1806,8 @@ set rulebase security rules Cloudflare_Magic_WAN_to_Trust_Allow rule-type univer
 
 
 ```
+
+Explain Code
 
 ### Policy-based forwarding - production traffic
 
@@ -1840,6 +1870,8 @@ set rulebase pbf rules PBF_Magic_WAN_Sites_01 negate-destination no
 
 ```
 
+Explain Code
+
 #### Dashboard policy-based forwarding - Cloudflare WAN production traffic via tunnel.2
 
 | Name                                    | Option                       | Value                                                   |
@@ -1888,6 +1920,8 @@ set rulebase pbf rules PBF_Magic_WAN_Sites_02 negate-destination no
 
 
 ```
+
+Explain Code
 
 ## Cloudflare WAN with Cloudflare Zero Trust (Gateway egress)
 
@@ -1964,6 +1998,8 @@ set rulebase security rules Trust_to_MWAN_Gateway_Egress_Allow negate-destinatio
 
 ```
 
+Explain Code
+
 ### Policy-based forwarding: Trust to Gateway egress via tunnel.1
 
 #### Dashboard
@@ -2012,6 +2048,8 @@ set rulebase pbf rules PBF_MWAN_Egress_01 negate-destination yes
 
 
 ```
+
+Explain Code
 
 ### Policy-based forwarding: Trust to Gateway egress via tunnel.2
 
@@ -2062,6 +2100,8 @@ set rulebase pbf rules PBF_MWAN_Egress_02 negate-destination yes
 
 
 ```
+
+Explain Code
 
 ## Troubleshooting
 

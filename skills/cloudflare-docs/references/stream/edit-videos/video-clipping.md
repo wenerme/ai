@@ -150,6 +150,8 @@ Example: Clip a video, set a new video name, and apply a watermark
 
 ```
 
+Explain Code
+
 ## Require signed URLs
 
 When clipping a video, you can make a video private and accessible only to certain users by [requiring a signed URL](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/).

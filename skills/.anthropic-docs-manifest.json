@@ -74,10 +74,10 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "etag": "W/\"16552-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 91474,
-    "updatedAt": "2026-04-09T00:12:14.461Z"
+    "etag": "W/\"1772e-19d75daf890\"",
+    "lastModified": "Fri, 10 Apr 2026 05:26:18 GMT",
+    "size": 96046,
+    "updatedAt": "2026-04-10T10:22:05.304Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -834,10 +834,10 @@
   "anthropic-api/api/sdks/java.md": {
     "url": "https://platform.claude.com/docs/en/api/sdks/java",
     "skill": "anthropic-api",
-    "etag": "W/\"aca4-19d5067cc28\"",
-    "lastModified": "Thu, 02 Apr 2026 22:54:33 GMT",
-    "size": 44196,
-    "updatedAt": "2026-04-02T10:19:05.138Z"
+    "etag": "W/\"b0b1-19d75daf890\"",
+    "lastModified": "Fri, 10 Apr 2026 05:26:18 GMT",
+    "size": 45233,
+    "updatedAt": "2026-04-10T10:22:34.737Z"
   },
   "anthropic-api/api/sdks/go.md": {
     "url": "https://platform.claude.com/docs/en/api/sdks/go",

@@ -162,7 +162,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -171,6 +171,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -272,7 +280,7 @@ as input for the model's response.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -281,6 +289,14 @@ as input for the model's response.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: optional "low" or "high"`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: optional string`
 
@@ -1284,7 +1300,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFileContent = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -1293,6 +1309,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -3227,7 +3251,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -3236,6 +3260,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -3600,7 +3632,7 @@ as input for the model's response.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
       A file input to the model.
 
@@ -3609,6 +3641,14 @@ as input for the model's response.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
+
+      - `detail: optional "low" or "high"`
+
+        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+        - `"low"`
+
+        - `"high"`
 
       - `file_data: optional string`
 
@@ -5303,7 +5343,7 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -5312,6 +5352,14 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: optional "low" or "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: optional string`
 
@@ -5413,7 +5461,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -5422,6 +5470,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -6425,7 +6481,7 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFileContent = object { type, file_data, file_id, 2 more }`
+            - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -6434,6 +6490,14 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: optional "low" or "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: optional string`
 
@@ -8368,7 +8432,7 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -8377,6 +8441,14 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: optional "low" or "high"`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: optional string`
 
@@ -9037,7 +9109,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -9046,6 +9118,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -11631,7 +11711,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -11640,6 +11720,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: optional "low" or "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: optional string`
 
@@ -13056,7 +13144,7 @@ as input for the model's response.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ResponseInputFile = object { type, file_data, file_id, 2 more }`
+      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -13065,6 +13153,14 @@ as input for the model's response.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: optional "low" or "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: optional string`
 

@@ -129,6 +129,8 @@ GROUP BY customer_id, request_endpoint
 
 ```
 
+Explain Code
+
 Running this query once for each customer at the end of each month could give you the data to produce a bill. This is just an example: most likely you'll want to adjust this example to how you want to bill.
 
 When producing a bill, most likely you will also want to provide the daily costs. The following query breaks down usage by day:
@@ -161,6 +163,8 @@ GROUP BY customer_id, date, request_endpoint
 
 
 ```
+
+Explain Code
 
 You will want to take the usage queries above, adapt them for how you charge customers, and make a backend system run those queries and calculate the customer charges based on the data returned.
 

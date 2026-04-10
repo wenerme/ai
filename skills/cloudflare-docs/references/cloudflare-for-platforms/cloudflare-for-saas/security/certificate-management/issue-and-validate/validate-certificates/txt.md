@@ -49,8 +49,8 @@ Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-fo
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-3368)
-* [ Dashboard ](#tab-panel-3369)
+* [ API ](#tab-panel-3374)
+* [ Dashboard ](#tab-panel-3375)
 
 You can access these tokens using the API with the [GET custom hostnames endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/).
 
@@ -148,6 +148,8 @@ Response
 
 
 ```
+
+Explain Code
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

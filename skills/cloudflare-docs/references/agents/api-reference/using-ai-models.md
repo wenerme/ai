@@ -34,8 +34,8 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/).
 
-* [  JavaScript ](#tab-panel-2814)
-* [  TypeScript ](#tab-panel-2815)
+* [  JavaScript ](#tab-panel-2820)
+* [  TypeScript ](#tab-panel-2821)
 
 src/index.js
 
@@ -106,6 +106,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -184,6 +186,8 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 You can also persist AI model responses back to [Agent state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) using `this.setState`. If a user disconnects, read the message history back and send it to the user when they reconnect.
 
 ## Workers AI
@@ -192,8 +196,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-2808)
-* [  TypeScript ](#tab-panel-2809)
+* [  JavaScript ](#tab-panel-2814)
+* [  TypeScript ](#tab-panel-2815)
 
 src/index.js
 
@@ -233,6 +237,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -280,10 +286,12 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-2802)
-* [  wrangler.toml ](#tab-panel-2803)
+* [  wrangler.jsonc ](#tab-panel-2808)
+* [  wrangler.toml ](#tab-panel-2809)
 
 JSONC
 
@@ -317,8 +325,8 @@ binding = "AI"
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-2812)
-* [  TypeScript ](#tab-panel-2813)
+* [  JavaScript ](#tab-panel-2818)
+* [  TypeScript ](#tab-panel-2819)
 
 src/index.js
 
@@ -366,6 +374,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -421,10 +431,12 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-2804)
-* [  wrangler.toml ](#tab-panel-2805)
+* [  wrangler.jsonc ](#tab-panel-2810)
+* [  wrangler.toml ](#tab-panel-2811)
 
 JSONC
 
@@ -478,8 +490,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-2810)
-* [  TypeScript ](#tab-panel-2811)
+* [  JavaScript ](#tab-panel-2816)
+* [  TypeScript ](#tab-panel-2817)
 
 src/index.js
 
@@ -515,6 +527,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -558,6 +572,8 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 You can swap the provider to use OpenAI, Anthropic, or any other AI SDK-compatible adapter:
 
  npm  yarn  pnpm  bun 
@@ -578,8 +594,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-2806)
-* [  TypeScript ](#tab-panel-2807)
+* [  JavaScript ](#tab-panel-2812)
+* [  TypeScript ](#tab-panel-2813)
 
 src/index.js
 
@@ -614,6 +630,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -646,6 +664,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 ## OpenAI-compatible endpoints
 
@@ -653,8 +673,8 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/api-reference/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-2816)
-* [  TypeScript ](#tab-panel-2817)
+* [  JavaScript ](#tab-panel-2822)
+* [  TypeScript ](#tab-panel-2823)
 
 src/index.js
 
@@ -730,6 +750,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -803,6 +825,8 @@ export class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/api-reference/using-ai-models/","name":"Using AI Models"}}]}

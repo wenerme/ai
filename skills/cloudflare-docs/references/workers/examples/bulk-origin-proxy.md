@@ -24,10 +24,10 @@ Copy page
 
 Resolve requests to your domain to a set of proxy third-party origin URLs.
 
-* [  JavaScript ](#tab-panel-7213)
-* [  TypeScript ](#tab-panel-7214)
-* [  Hono ](#tab-panel-7215)
-* [  Python ](#tab-panel-7216)
+* [  JavaScript ](#tab-panel-7271)
+* [  TypeScript ](#tab-panel-7272)
+* [  Hono ](#tab-panel-7273)
+* [  Python ](#tab-panel-7274)
 
 JavaScript
 
@@ -82,6 +82,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -134,6 +136,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -191,6 +195,8 @@ export default app;
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -235,6 +241,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/bulk-origin-proxy/","name":"Bulk origin override"}}]}

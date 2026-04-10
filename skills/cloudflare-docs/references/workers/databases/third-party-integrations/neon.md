@@ -24,8 +24,8 @@ You can connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyp
 
 Hyperdrive can provide the lowest possible latencies because it performs the database connection setup and connection pooling across Cloudflare's network. Hyperdrive supports native database drivers, libraries, and ORMs, and is included in all [Workers plans](https://developers.cloudflare.com/hyperdrive/platform/pricing/). Learn more about Hyperdrive in [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-* [ Hyperdrive (recommended) ](#tab-panel-7137)
-* [ Neon serverless driver ](#tab-panel-7138)
+* [ Hyperdrive (recommended) ](#tab-panel-7195)
+* [ Neon serverless driver ](#tab-panel-7196)
 
 To connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
@@ -62,8 +62,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-7133)
-* [ Wrangler CLI ](#tab-panel-7134)
+* [ Dashboard ](#tab-panel-7191)
+* [ Wrangler CLI ](#tab-panel-7192)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -81,8 +81,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-7131)  
-   * [  wrangler.toml ](#tab-panel-7132)  
+   * [  wrangler.jsonc ](#tab-panel-7189)  
+   * [  wrangler.toml ](#tab-panel-7190)  
 JSONC  
 ```  
 {  
@@ -90,7 +90,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-10",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -103,18 +103,20 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-10"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
 id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
-```
+```  
+Explain Code
 
 Note
 
@@ -168,8 +170,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-7135)
-* [  wrangler.toml ](#tab-panel-7136)
+* [  wrangler.jsonc ](#tab-panel-7193)
+* [  wrangler.toml ](#tab-panel-7194)
 
 JSONC
 
@@ -187,7 +189,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -206,6 +208,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -214,7 +218,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -296,6 +300,8 @@ export default {
 
 ```
 
+Explain Code
+
 Note
 
 When connecting to a Neon database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [Neon serverless driver ↗](https://neon.tech/docs/serverless/serverless-driver). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
@@ -332,7 +338,8 @@ VALUES
   (8, 'Oxygen', 8, 'O'),  
   (9, 'Fluorine', 9, 'F'),  
   (10, 'Neon', 10, 'Ne');  
-```
+```  
+Explain Code
 4. Configure the Neon database credentials in your Worker:  
 You need to add your Neon database connection string as a secret to your Worker. Get your connection string from the [Neon Console ↗](https://console.neon.tech) under **Connection Details**, then add it as a secret using Wrangler:  
 Terminal window  
@@ -367,7 +374,8 @@ export default {
     return new Response(JSON.stringify(rows));  
   },  
 };  
-```
+```  
+Explain Code
 
 To learn more about Neon, refer to [Neon's official documentation ↗](https://neon.tech/docs/introduction).
 

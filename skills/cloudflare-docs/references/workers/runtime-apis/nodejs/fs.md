@@ -98,6 +98,8 @@ export default {
 
 ```
 
+Explain Code
+
 The `/tmp` directory is writable, and you can use it to create temporary files or directories. You can also create symlinks in this directory. However, the contents of `/tmp` are not persistent and are unique to each request. This means that files created in `/tmp` within the context of one request will not be available in other concurrent or subsequent requests.
 
 JavaScript
@@ -127,6 +129,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 The `/dev` directory contains common character devices:
 

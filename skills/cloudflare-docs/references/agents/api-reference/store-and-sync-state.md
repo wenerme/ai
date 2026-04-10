@@ -36,8 +36,8 @@ State vs Props
 
 **State** is persistent data that survives restarts and syncs across clients. **[Props](https://developers.cloudflare.com/agents/api-reference/routing/#props)** are one-time initialization arguments passed when an agent is instantiated - use props for configuration that does not need to persist.
 
-* [  JavaScript ](#tab-panel-2776)
-* [  TypeScript ](#tab-panel-2777)
+* [  JavaScript ](#tab-panel-2782)
+* [  TypeScript ](#tab-panel-2783)
 
 JavaScript
 
@@ -92,6 +92,8 @@ export class GameAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -158,12 +160,14 @@ export class GameAgent extends Agent<Env, GameState> {
 
 ```
 
+Explain Code
+
 ## Defining initial state
 
 Use the `initialState` property to define default values for new agent instances:
 
-* [  JavaScript ](#tab-panel-2766)
-* [  TypeScript ](#tab-panel-2767)
+* [  JavaScript ](#tab-panel-2772)
+* [  TypeScript ](#tab-panel-2773)
 
 JavaScript
 
@@ -218,12 +222,14 @@ export class ChatAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 ### Type safety
 
 The second generic parameter to `Agent` defines your state type:
 
-* [  JavaScript ](#tab-panel-2762)
-* [  TypeScript ](#tab-panel-2763)
+* [  JavaScript ](#tab-panel-2768)
+* [  TypeScript ](#tab-panel-2769)
 
 JavaScript
 
@@ -281,8 +287,8 @@ Initial state is applied lazily on first access, not on every wake:
 2. **Existing agent** \- Persisted state is loaded from SQLite
 3. **No `initialState` defined** \- `this.state` is `undefined`
 
-* [  JavaScript ](#tab-panel-2764)
-* [  TypeScript ](#tab-panel-2765)
+* [  JavaScript ](#tab-panel-2770)
+* [  TypeScript ](#tab-panel-2771)
 
 JavaScript
 
@@ -330,8 +336,8 @@ class MyAgent extends Agent<Env, { count: number }> {
 
 Access the current state via the `this.state` getter:
 
-* [  JavaScript ](#tab-panel-2772)
-* [  TypeScript ](#tab-panel-2773)
+* [  JavaScript ](#tab-panel-2778)
+* [  TypeScript ](#tab-panel-2779)
 
 JavaScript
 
@@ -361,6 +367,8 @@ class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -397,12 +405,14 @@ class MyAgent extends Agent<
 
 ```
 
+Explain Code
+
 ### Undefined state
 
 If you do not define `initialState`, `this.state` returns `undefined`:
 
-* [  JavaScript ](#tab-panel-2768)
-* [  TypeScript ](#tab-panel-2769)
+* [  JavaScript ](#tab-panel-2774)
+* [  TypeScript ](#tab-panel-2775)
 
 JavaScript
 
@@ -430,6 +440,8 @@ export class MinimalAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -456,6 +468,8 @@ export class MinimalAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Updating state
 
 Use `setState()` to update state. This:
@@ -464,8 +478,8 @@ Use `setState()` to update state. This:
 2. Broadcasts to all connected clients (excluding connections where [shouldSendProtocolMessages](https://developers.cloudflare.com/agents/api-reference/protocol-messages/) returned `false`)
 3. Triggers `onStateChanged()` (after broadcast; best-effort)
 
-* [  JavaScript ](#tab-panel-2774)
-* [  TypeScript ](#tab-panel-2775)
+* [  JavaScript ](#tab-panel-2780)
+* [  TypeScript ](#tab-panel-2781)
 
 JavaScript
 
@@ -497,6 +511,8 @@ this.setState({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -526,13 +542,15 @@ this.setState({
 
 
 ```
+
+Explain Code
 
 ### State must be serializable
 
 State is stored as JSON, so it must be serializable:
 
-* [  JavaScript ](#tab-panel-2778)
-* [  TypeScript ](#tab-panel-2779)
+* [  JavaScript ](#tab-panel-2784)
+* [  TypeScript ](#tab-panel-2785)
 
 JavaScript
 
@@ -573,6 +591,8 @@ this.setState({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -612,12 +632,14 @@ this.setState({
 
 ```
 
+Explain Code
+
 ## Responding to state changes
 
 Override `onStateChanged()` to react when state changes (notifications/side-effects):
 
-* [  JavaScript ](#tab-panel-2770)
-* [  TypeScript ](#tab-panel-2771)
+* [  JavaScript ](#tab-panel-2776)
+* [  TypeScript ](#tab-panel-2777)
 
 JavaScript
 
@@ -672,8 +694,8 @@ This is useful for:
 * Validating client input
 * Triggering side effects only on client actions
 
-* [  JavaScript ](#tab-panel-2782)
-* [  TypeScript ](#tab-panel-2783)
+* [  JavaScript ](#tab-panel-2788)
+* [  TypeScript ](#tab-panel-2789)
 
 JavaScript
 
@@ -709,6 +731,8 @@ class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -751,10 +775,12 @@ class MyAgent extends Agent<
 
 ```
 
+Explain Code
+
 ### Common pattern: Client-driven actions
 
-* [  JavaScript ](#tab-panel-2784)
-* [  TypeScript ](#tab-panel-2785)
+* [  JavaScript ](#tab-panel-2790)
+* [  TypeScript ](#tab-panel-2791)
 
 JavaScript
 
@@ -796,6 +822,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -836,6 +864,8 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 
 ```
 
+Explain Code
+
 ## Validating state updates
 
 If you want to validate or reject state updates, override `validateStateChange()`:
@@ -844,8 +874,8 @@ If you want to validate or reject state updates, override `validateStateChange()
 * Must be synchronous
 * Throwing aborts the update
 
-* [  JavaScript ](#tab-panel-2780)
-* [  TypeScript ](#tab-panel-2781)
+* [  JavaScript ](#tab-panel-2786)
+* [  TypeScript ](#tab-panel-2787)
 
 JavaScript
 
@@ -879,6 +909,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -911,6 +943,8 @@ class MyAgent extends Agent<Env, GameState> {
 
 ```
 
+Explain Code
+
 Note
 
 `onStateChanged()` is not intended for validation; it is a notification hook and should not block broadcasts. Use `validateStateChange()` for validation.
@@ -921,8 +955,8 @@ State synchronizes automatically with connected clients.
 
 ### React (useAgent)
 
-* [  JavaScript ](#tab-panel-2792)
-* [  TypeScript ](#tab-panel-2793)
+* [  JavaScript ](#tab-panel-2798)
+* [  TypeScript ](#tab-panel-2799)
 
 JavaScript
 
@@ -970,6 +1004,8 @@ function GameUI() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1016,10 +1052,12 @@ function GameUI() {
 
 ```
 
+Explain Code
+
 ### Vanilla JS (AgentClient)
 
-* [  JavaScript ](#tab-panel-2786)
-* [  TypeScript ](#tab-panel-2787)
+* [  JavaScript ](#tab-panel-2792)
+* [  TypeScript ](#tab-panel-2793)
 
 JavaScript
 
@@ -1050,6 +1088,8 @@ client.setState({ ...client.state, score: 100 });
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1079,6 +1119,8 @@ client.setState({ ...client.state, score: 100 });
 
 ```
 
+Explain Code
+
 ### State flow
 
 flowchart TD
@@ -1097,8 +1139,8 @@ flowchart TD
 
 When using [Workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/), you can update agent state from workflow steps:
 
-* [  JavaScript ](#tab-panel-2790)
-* [  TypeScript ](#tab-panel-2791)
+* [  JavaScript ](#tab-panel-2796)
+* [  TypeScript ](#tab-panel-2797)
 
 JavaScript
 
@@ -1134,6 +1176,8 @@ class MyWorkflow extends Workflow {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1168,6 +1212,8 @@ class MyWorkflow extends Workflow<Env> {
 
 ```
 
+Explain Code
+
 These are durable operations - they persist even if the workflow retries.
 
 ## SQL API
@@ -1176,8 +1222,8 @@ Every individual Agent instance has its own SQL (SQLite) database that runs with
 
 You can access the SQL API within any method on an Agent via `this.sql`. The SQL API accepts template literals:
 
-* [  JavaScript ](#tab-panel-2788)
-* [  TypeScript ](#tab-panel-2789)
+* [  JavaScript ](#tab-panel-2794)
+* [  TypeScript ](#tab-panel-2795)
 
 JavaScript
 
@@ -1205,6 +1251,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1231,10 +1279,12 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 You can also supply a TypeScript type argument to the query, which will be used to infer the type of the result:
 
-* [  JavaScript ](#tab-panel-2794)
-* [  TypeScript ](#tab-panel-2795)
+* [  JavaScript ](#tab-panel-2800)
+* [  TypeScript ](#tab-panel-2801)
 
 JavaScript
 
@@ -1297,6 +1347,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 You do not need to specify an array type (`User[]` or `Array<User>`), as `this.sql` will always return an array of the specified type.
 
 Note
@@ -1346,12 +1398,14 @@ async getMessages(limit = 50) {
 
 ```
 
+Explain Code
+
 ### Optimistic updates
 
 For responsive UIs, update client state immediately:
 
-* [  JavaScript ](#tab-panel-2798)
-* [  TypeScript ](#tab-panel-2799)
+* [  JavaScript ](#tab-panel-2804)
+* [  TypeScript ](#tab-panel-2805)
 
 JavaScript
 
@@ -1424,6 +1478,8 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1495,6 +1551,8 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 
 ```
 
+Explain Code
+
 ### State vs SQL
 
 | Use State For                      | Use SQL For       |
@@ -1504,8 +1562,8 @@ class MyAgent extends Agent<Env, { messages: Message[] }> {
 | Active session data                | Relationships     |
 | Configuration                      | Queryable data    |
 
-* [  JavaScript ](#tab-panel-2796)
-* [  TypeScript ](#tab-panel-2797)
+* [  JavaScript ](#tab-panel-2802)
+* [  TypeScript ](#tab-panel-2803)
 
 JavaScript
 
@@ -1570,6 +1628,8 @@ export class ChatAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1633,6 +1693,8 @@ export class ChatAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Avoid infinite loops
 
 Be careful not to trigger state updates in response to your own updates:
@@ -1663,14 +1725,16 @@ onStateChanged(state: State, source: Connection | "server") {
 
 ```
 
+Explain Code
+
 ## Use Agent state as model context
 
 You can combine the state and SQL APIs in your Agent with its ability to [call AI models](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) to include historical context within your prompts to a model. Modern Large Language Models (LLMs) often have very large context windows (up to millions of tokens), which allows you to pull relevant context into your prompt directly.
 
 For example, you can use an Agent's built-in SQL database to pull history, query a model with it, and append to that history ahead of the next call to the model:
 
-* [  JavaScript ](#tab-panel-2800)
-* [  TypeScript ](#tab-panel-2801)
+* [  JavaScript ](#tab-panel-2806)
+* [  TypeScript ](#tab-panel-2807)
 
 JavaScript
 
@@ -1736,6 +1800,8 @@ export class ReasoningAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1808,6 +1874,8 @@ export class ReasoningAgent extends Agent<Env> {
 
 
 ```
+
+Explain Code
 
 This works because each instance of an Agent has its own database, and the state stored in that database is private to that Agent: whether it is acting on behalf of a single user, a room or channel, or a deep research tool. By default, you do not have to manage contention or reach out over the network to a centralized database to retrieve and store state.
 

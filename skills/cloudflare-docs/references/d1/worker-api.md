@@ -63,6 +63,8 @@ const result = await env.MY_DB.prepare(
 
 ```
 
+Explain Code
+
 ## Type conversion
 
 D1 automatically converts supported JavaScript (including TypeScript) types passed as parameters via the Workers Binding API to their associated D1 types 1. This conversion is permanent and one-way only. This means that when reading the written values back in your code, you will get the converted values rather than the originally inserted values.
@@ -227,6 +229,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### 3\. Deploy the Worker
 
 1. Navigate to your tutorial directory you created by following step 1.
@@ -246,7 +250,8 @@ Uploaded WORKER_NAME (7.01 sec)
 Deployed WORKER_NAME triggers (1.25 sec)  
   https://jun-d1-rr.d1-sandbox.workers.dev  
 Current Version ID: VERSION_ID  
-```
+```  
+Explain Code
 3. Open a browser at the specified address.
 
 ### 4\. Test the APIs

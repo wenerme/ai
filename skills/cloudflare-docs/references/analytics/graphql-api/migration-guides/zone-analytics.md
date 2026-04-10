@@ -502,6 +502,8 @@ Response
 
 ```
 
+Explain Code
+
 As you can see from the response, Zone Analytics returns metrics along many dimensions and does not give you the option to control what you receive. With GraphQL Analytics, you can ask for only the data that you need. However, if you wanted to get exactly the same metrics and dimensions as you would from Zone Analytics, here is the query you would make:
 
 ```
@@ -627,7 +629,7 @@ query ZoneAnalyticsMigrationSample($zoneTag: string, $start: Time, $end: Time) {
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgewHZgIJIIYBsoBcCWAxgM4Cy+A5hBgcgMoYC2ADlmABQAkAXsmACoYKALhjFcEfEgoAaGJ3EYIuUf3yMwczmCQATVerABKGAG8AUDBgA3fGADukM5asxeKYuwBm+LLkiipm58giLy7gJCMAC+JhaurgAWuLjMAEpgoGDixACMjADiEAggzJ4uCVYIELqQAEJQogDaujRgBBoAYvjWYORIIP7EAPqodADCALoVlVjq+CowuQAMyzMJPn4BZjCt-h1gwxSZogq4Srhye+2Gw36nOrox6zBxL1a6hkjE+MjEzpVKtcDt1ev1Btl3s9AVZiCBGACYVYAEbFezESCkDDMRFIqzMIRgABqdnRUISIAwdTRGIgnSYvig5OheOReEheJghAwhESYF0DSGzO5vP5GSyOWFyH8SFw-CgzD62NxrPZxGZVggmXAks5Vn5xwyxGYfzA42lOjlCrAADkmGBmdFhXNLXQ6AAZLE4+J6rUS3DqvVcl2yt3ugAKxVwCEICCwjqlIFl0C9KqRbKFQb9OoDGpguESWpogb1hBDuHNSYkUDtGgTnJ0hGgzH8ArVzMbzdb4pzJaR+GY4ywGGIZGVPs52eyuaDA-livreIJxxJDj7MKnurxWuNpro51wIDH3rzm5neoNYCNJu+YH3NCPi6RBaL5+fhbANHDNESUgoqYnbdtWndd31fb8Cz-WsHU5J0kTgmEk3wYA00qJCJShBCEiwlknWiIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWXgE44ARgDsqESNR9OGCiBhQAJs3ZdeAtsJYBmSdNnyAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAWgewHZgIJIIYBsoBcCWAxgM4Cy+A5hBgcgMoYC2ADlmABQAkAXsmACoYKALhjFcEfEgoAaGJ3EYIuUf3yMwczmCQATVerABKGAG8AUDBgA3fGADukM5asxeKYuwBm+LLkiipm58giLy7gJCMAC+JhaurgAWuLjMAEpgoGDixACMjADiEAggzJ4uCVYIELqQAEJQogDaujRgBBoAYvjWYORIIP7EAPqodADCALoVlVjq+CowuQAMyzMJPn4BZjCt-h1gwxSZogq4Srhye+2Gw36nOrox6zBxL1a6hkjE+MjEzpVKtcDt1ev1Btl3s9AVZiCBGACYVYAEbFezESCkDDMRFIqzMIRgABqdnRUISIAwdTRGIgnSYvig5OheOReEheJghAwhESYF0DSGzO5vP5GSyOWFyH8SFw-CgzD62NxrPZxGZVggmXAks5Vn5xwyxGYfzA42lOjlCrAADkmGBmdFhXNLXQ6AAZLE4+J6rUS3DqvVcl2yt3ugAKxVwCEICCwjqlIFl0C9KqRbKFQb9OoDGpguESWpogb1hBDuHNSYkUDtGgTnJ0hGgzH8ArVzMbzdb4pzJaR+GY4ywGGIZGVPs52eyuaDA-livreIJxxJDj7MKnurxWuNpro51wIDH3rzm5neoNYCNJu+YH3NCPi6RBaL5+fhbANHDNESUgoqYnbdtWndd31fb8Cz-WsHU5J0kTgmEk3wYA00qJCJShBCEiwlknWiIA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbgEY2cfqkGdxfDBRAwoAE2bsuvAcLjDxkwdJABfIA)
 
 Response
 
@@ -995,6 +997,8 @@ Response
 
 
 ```
+
+Explain Code
 
 Notice that you can specify the request time period using a dataset filter (refer to [Filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/)). The `continuous` parameter is no longer needed because GraphQL Analytics is designed to provide data as soon as it is available.
 

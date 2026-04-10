@@ -668,7 +668,8 @@ filter.lfs.smudge=git-lfs smudge -- %f
 filter.lfs.process=git-lfs filter-process  
 filter.lfs.required=true  
 credential.helper=manager  
-```
+```  
+Explain Code
 3. The `http.sslcainfo` defines the CA Certificate store. To append the Cloudflare certificate to the CA bundle, update `http.sslcainfo`.  
 PowerShell  
 ```  

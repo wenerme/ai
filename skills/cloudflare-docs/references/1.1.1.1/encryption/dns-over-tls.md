@@ -93,6 +93,8 @@ example.com.          75897  IN  A  93.184.216.34
 
 ```
 
+Explain Code
+
 ## Supported TLS versions
 
 Cloudflare's DNS over TLS supports TLS 1.3 and TLS 1.2.

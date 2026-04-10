@@ -80,6 +80,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
 
 ```
 
+Explain Code
+
 1. For an existing custom hostname, locate the `id` of that hostname via a `GET` call:
 
 Required API token permissions
@@ -144,6 +146,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 
 
 ```
+
+Explain Code
 
 Currently, all options within `settings` are required in order to prevent those options from being set to default. You can pull the current settings state prior to updating Early Hints by leveraging the output that returns the `id` for the hostname.
 

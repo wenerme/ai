@@ -143,6 +143,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/watermarks
 
 ```
 
+Explain Code
+
 #### Example response to creating a watermark profile
 
 ```
@@ -185,6 +187,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/watermarks
 
 
 ```
+
+Explain Code
 
 `downloadedFrom` will be populated if the profile was created via downloading from URL.
 
@@ -275,6 +279,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/copy
 
 
 ```
+
+Explain Code
 
 ### Upload video with tus
 
@@ -373,6 +379,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/direct_upload
 
 ```
 
+Explain Code
+
 `watermark` will be `null` if no watermark was specified.
 
 ## Get a watermark profile
@@ -432,6 +440,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/watermarks/<WA
 
 
 ```
+
+Explain Code
 
 ## List watermark profiles
 
@@ -520,6 +530,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/watermarks/
 
 
 ```
+
+Explain Code
 
 ## Delete a watermark profile
 

@@ -117,8 +117,8 @@ If you have issues with this step or you do not have access to a browser interfa
 
 This example features the [@cf/meta/llama-3-8b-instruct model](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/), which generates text.
 
-* [  wrangler.jsonc ](#tab-panel-6945)
-* [  wrangler.toml ](#tab-panel-6946)
+* [  wrangler.jsonc ](#tab-panel-7003)
+* [  wrangler.toml ](#tab-panel-7004)
 
 JSONC
 
@@ -226,8 +226,8 @@ npx wrangler vectorize create vector-index --dimensions=768 --metric=cosine
 
 Then, add the configuration details for your new Vectorize index to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6947)
-* [  wrangler.toml ](#tab-panel-6948)
+* [  wrangler.jsonc ](#tab-panel-7005)
+* [  wrangler.toml ](#tab-panel-7006)
 
 JSONC
 
@@ -284,8 +284,8 @@ npx wrangler d1 create database
 
 Then, paste the configuration details output from the previous command into the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6949)
-* [  wrangler.toml ](#tab-panel-6950)
+* [  wrangler.jsonc ](#tab-panel-7007)
+* [  wrangler.toml ](#tab-panel-7008)
 
 JSONC
 
@@ -313,6 +313,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -357,8 +359,8 @@ Before we begin creating notes, we will introduce a [Cloudflare Workflow](https:
 
 To begin, add a new `[[workflows]]` block to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-6951)
-* [  wrangler.toml ](#tab-panel-6952)
+* [  wrangler.jsonc ](#tab-panel-7009)
+* [  wrangler.toml ](#tab-panel-7010)
 
 JSONC
 
@@ -386,6 +388,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -493,6 +497,8 @@ export default app;
 
 ```
 
+Explain Code
+
 This will establish a route at the root path `/` that is functionally equivalent to the previous version of your application.
 
 Now, we can update our workflow to begin adding notes to our database, and generating the related embeddings for them.
@@ -571,6 +577,8 @@ export class RAGWorkflow extends WorkflowEntrypoint {
 
 
 ```
+
+Explain Code
 
 The workflow does the following things:
 
@@ -726,6 +734,8 @@ export default app;
 
 ```
 
+Explain Code
+
 ## 8\. Adding Anthropic Claude model (optional)
 
 If you are working with larger documents, you have the option to use Anthropic's [Claude models ↗](https://claude.ai/), which have large context windows and are well-suited to RAG workflows.
@@ -855,6 +865,8 @@ app.get('/', async (c) => {
 
 ```
 
+Explain Code
+
 Finally, you'll need to set the `ANTHROPIC_API_KEY` environment variable in your Workers application. You can do this by using `wrangler secret put`:
 
 Terminal window
@@ -893,6 +905,8 @@ app.delete("/notes/:id", async (c) => {
 
 
 ```
+
+Explain Code
 
 ## 10\. Text splitting (optional)
 
@@ -947,6 +961,8 @@ console.log(output); // [{ pageContent: 'Some long piece of text...' }]
 
 
 ```
+
+Explain Code
 
 To use this splitter, we'll update the workflow to split the text into smaller chunks. We'll then iterate over the chunks and run the rest of the workflow for each chunk of text:
 
@@ -1054,6 +1070,8 @@ export class RAGWorkflow extends WorkflowEntrypoint {
 
 
 ```
+
+Explain Code
 
 Now, when large pieces of text are submitted to the `/notes` endpoint, they will be split into smaller chunks, and each chunk will be processed by the workflow.
 

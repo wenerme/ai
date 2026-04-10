@@ -50,8 +50,8 @@ If Cloudflare is unable to detect a portion of automated traffic on your site, s
 
 ## Submit a report
 
-* [  New dashboard ](#tab-panel-3212)
-* [ Old dashboard ](#tab-panel-3213)
+* [  New dashboard ](#tab-panel-3218)
+* [ Old dashboard ](#tab-panel-3219)
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -145,6 +145,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```
 
+Explain Code
+
 ### List feedback reports
 
 Terminal window
@@ -231,6 +233,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 ```
 
+Explain Code
+
 ## API Fields
 
 | Field                    | Type    | Description                                                                 | Value Example                                                                                                                                                         |
@@ -309,6 +313,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/bot_management/feedba
 
 
 ```
+
+Explain Code
 
 ### Expression fields
 

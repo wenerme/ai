@@ -30,9 +30,9 @@ Warning
 
 WebSocket connections pin your Durable Object to memory, and so duration charges will be incurred so long as the WebSocket is connected (regardless of activity). To avoid duration charges during periods of inactivity, use the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/), which only charges for duration when JavaScript is actively executing.
 
-* [  JavaScript ](#tab-panel-4530)
-* [  TypeScript ](#tab-panel-4531)
-* [  Python ](#tab-panel-4532)
+* [  JavaScript ](#tab-panel-4568)
+* [  TypeScript ](#tab-panel-4569)
+* [  Python ](#tab-panel-4570)
 
 JavaScript
 
@@ -255,6 +255,8 @@ export class WebSocketServer extends DurableObject {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -464,6 +466,8 @@ export class WebSocketServer extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -650,10 +654,12 @@ class WebSocketServer(DurableObject):
 
 ```
 
+Explain Code
+
 Finally, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4528)
-* [  wrangler.toml ](#tab-panel-4529)
+* [  wrangler.jsonc ](#tab-panel-4566)
+* [  wrangler.toml ](#tab-panel-4567)
 
 JSONC
 
@@ -704,6 +710,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -730,6 +738,8 @@ new_sqlite_classes = [ "WebSocketServer" ]
 
 
 ```
+
+Explain Code
 
 ### Related resources
 

@@ -138,12 +138,14 @@ id = "<GENERATED_NAMESPACE_ID>"
 
 ```
 
+Explain Code
+
 ### Add KV bindings to the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
 
 Then, in your Wrangler file, add the following with the values generated in the terminal:
 
-* [  wrangler.jsonc ](#tab-panel-5725)
-* [  wrangler.toml ](#tab-panel-5726)
+* [  wrangler.jsonc ](#tab-panel-5769)
+* [  wrangler.toml ](#tab-panel-5770)
 
 JSONC
 
@@ -175,6 +177,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -240,8 +244,8 @@ bun add robots-parser
 
 Then, add a Browser Rendering binding. Adding a Browser Rendering binding gives the Worker access to a headless Chromium instance you will control with Puppeteer.
 
-* [  wrangler.jsonc ](#tab-panel-5723)
-* [  wrangler.toml ](#tab-panel-5724)
+* [  wrangler.jsonc ](#tab-panel-5767)
+* [  wrangler.toml ](#tab-panel-5768)
 
 JSONC
 
@@ -304,8 +308,8 @@ Created queue queues-web-crawler.
 
 Then, in your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-5727)
-* [  wrangler.toml ](#tab-panel-5728)
+* [  wrangler.jsonc ](#tab-panel-5771)
+* [  wrangler.toml ](#tab-panel-5772)
 
 JSONC
 
@@ -346,6 +350,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -370,8 +376,8 @@ Adding the `max_batch_timeout` of 60 seconds to the consumer queue is important 
 
 Your final Wrangler file should look similar to the one below.
 
-* [  wrangler.jsonc ](#tab-panel-5729)
-* [  wrangler.toml ](#tab-panel-5730)
+* [  wrangler.jsonc ](#tab-panel-5773)
+* [  wrangler.toml ](#tab-panel-5774)
 
 JSONC
 
@@ -387,7 +393,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -454,6 +460,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -466,7 +474,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -505,6 +513,8 @@ binding = "CRAWLER_QUEUE"
 
 
 ```
+
+Explain Code
 
 ## 5\. Add bindings to environment
 
@@ -570,6 +580,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 This will accept requests to any subpath and forwards the request's body to be crawled. It expects that the request body only contains a URL. In production, you should check that the request was a `POST` request and contains a well-formed URL in its body. This has been omitted for simplicity.
 
@@ -647,6 +659,8 @@ async queue(batch, env, ctx): Promise<void> {
 
 ```
 
+Explain Code
+
 This is a skeleton for the crawler. It launches the Puppeteer browser and iterates through the Queue's received messages. It fetches the site's `robots.txt` and uses `robots-parser` to check that this site allows crawling. If crawling is not allowed, the message is `ack`'ed, removing it from the Queue. If crawling is allowed, you can continue to crawl the site.
 
 The `puppeteer.launch()` is wrapped in a `try...catch` to allow the whole batch to be retried if the browser launch fails. The browser launch may fail due to going over the limit for number of browsers per account.
@@ -721,6 +735,8 @@ const crawlPage = async (url: string): Promise<Result> => {
 
 ```
 
+Explain Code
+
 This helper function opens a new page in Puppeteer and navigates to the provided URL. `numCloudflareLinks` uses Puppeteer's `$$eval` (equivalent to `document.querySelectorAll`) to find the number of links to a `cloudflare.com` page. Checking if the link's `href` is to a `cloudflare.com` page is wrapped in a `try...catch` to handle cases where `href`s may not be URLs.
 
 Then, the function sets the browser viewport size and takes a screenshot of the full page. The screenshot is returned as a `Buffer` so it can be converted to an `ArrayBuffer` and written to KV.
@@ -763,6 +779,8 @@ await page.$$eval("a", async (links) => {
 
 
 ```
+
+Explain Code
 
 Then, in the `queue` handler, call `crawlPage` on the URL.
 
@@ -816,6 +834,8 @@ try {
 
 
 ```
+
+Explain Code
 
 This snippet saves the results from `crawlPage` into the appropriate KV namespaces. If an unexpected error occurred, the URL will be retried and resent to the queue again.
 
@@ -878,6 +898,8 @@ for (const message of batch.messages) {
 
 
 ```
+
+Explain Code
 
 The final script is included below.
 
@@ -1144,6 +1166,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## 8\. Deploy your Worker
 

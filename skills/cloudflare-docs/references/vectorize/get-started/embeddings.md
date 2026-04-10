@@ -148,8 +148,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6733)
-* [  wrangler.toml ](#tab-panel-6734)
+* [  wrangler.jsonc ](#tab-panel-6791)
+* [  wrangler.toml ](#tab-panel-6792)
 
 JSONC
 
@@ -199,8 +199,8 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-6735)
-* [  wrangler.toml ](#tab-panel-6736)
+* [  wrangler.jsonc ](#tab-panel-6793)
+* [  wrangler.toml ](#tab-panel-6794)
 
 JSONC
 
@@ -230,6 +230,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -396,6 +398,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## 6\. Deploy your Worker
 
 Before deploying your Worker globally, log in with your Cloudflare account by running:
@@ -461,6 +465,8 @@ This should return the following JSON:
 
 
 ```
+
+Explain Code
 
 Extend this example by:
 

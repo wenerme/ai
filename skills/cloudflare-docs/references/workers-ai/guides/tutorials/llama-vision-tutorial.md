@@ -141,12 +141,14 @@ export default {
 
 ```
 
+Explain Code
+
 ## 4\. Bind Workers AI to your Worker
 
 1. Open the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and add the following configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6957)
-* [  wrangler.toml ](#tab-panel-6958)
+* [  wrangler.jsonc ](#tab-panel-7015)
+* [  wrangler.toml ](#tab-panel-7016)
 
 JSONC
 

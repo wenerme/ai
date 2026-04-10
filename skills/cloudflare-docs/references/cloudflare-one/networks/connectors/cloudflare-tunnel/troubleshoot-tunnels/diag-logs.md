@@ -81,7 +81,8 @@ This command should return a JSON:
   ],  
   "icmp_sources": ["192.168.1.243", "fe80::c59:bd4a:e815:ed6"]  
 }  
-```
+```  
+Explain Code
 4. Run the diagnostic using the Docker container ID:  
 Terminal window  
 ```  

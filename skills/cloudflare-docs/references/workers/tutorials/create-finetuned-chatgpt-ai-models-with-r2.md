@@ -118,8 +118,8 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-7758)
-* [  wrangler.toml ](#tab-panel-7759)
+* [  wrangler.jsonc ](#tab-panel-7818)
+* [  wrangler.toml ](#tab-panel-7819)
 
 JSONC
 
@@ -256,6 +256,8 @@ export default app;
 
 ```
 
+Explain Code
+
 In the above code, you first import the required packages and define the types. Then, you initialize `app` as a new Hono instance. Using the `use` middleware function, you add the OpenAI API client to the context of all routes. This middleware function allows you to access the client from within any route handler. `onError()` defines an error handler to return any errors as a JSON response.
 
 ## 5\. Read R2 files and upload them to OpenAI
@@ -322,6 +324,8 @@ app.get('/files', async c => {
 
 ```
 
+Explain Code
+
 ## 6\. Create fine-tuned models
 
 This section includes the `GET /models` route and the `createModel` function. The function `createModel` takes care of specifying the details and initiating the fine-tuning process with OpenAI. The route handles incoming requests for creating a new fine-tuned model.
@@ -365,6 +369,8 @@ app.get("/models", async (c) => {
 
 ```
 
+Explain Code
+
 ## 7\. List all fine-tune jobs
 
 This section describes the `GET /jobs` route and the corresponding `getJobs` function. The function interacts with OpenAI's API to fetch a list of all fine-tuning jobs. The route provides an interface for retrieving this information.
@@ -394,6 +400,8 @@ app.get("/jobs", async (c) => {
 
 
 ```
+
+Explain Code
 
 ## 8\. Deploy your application
 

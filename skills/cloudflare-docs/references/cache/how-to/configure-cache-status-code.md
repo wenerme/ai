@@ -129,6 +129,8 @@ curl --request PUT \
 
 ```
 
+Explain Code
+
 ### Syntax
 
 Provide a JSON object containing status codes and their corresponding TTLs. Each key-value pair in the cache TTL by status cache rule has the following syntax:

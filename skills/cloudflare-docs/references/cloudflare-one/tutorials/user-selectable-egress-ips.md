@@ -45,8 +45,8 @@ Make sure you have:
 
 First, create [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) corresponding to your dedicated egress IPs.
 
-* [ Dashboard ](#tab-panel-3955)
-* [ API ](#tab-panel-3956)
+* [ Dashboard ](#tab-panel-3961)
+* [ API ](#tab-panel-3962)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Routes**.
 2. In **Virtual networks**, select **Create virtual network**.
@@ -77,8 +77,8 @@ For more information, refer to [Create a virtual network](https://developers.clo
 
 After creating your virtual networks, route your private network CIDRs over each virtual network. This ensures that users can reach all services on your network regardless of which egress IP they use.
 
-* [ Dashboard ](#tab-panel-3957)
-* [ API ](#tab-panel-3958)
+* [ Dashboard ](#tab-panel-3963)
+* [ API ](#tab-panel-3964)
 
 1. Go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select your tunnel routing `10.0.0.0/8`, then select **Configure**.
@@ -139,8 +139,8 @@ Each tunnel connected to your private network should have each of your virtual n
 
 Next, assign your dedicated egress IPs to each virtual network using Gateway egress policies.
 
-* [ Dashboard ](#tab-panel-3959)
-* [ API ](#tab-panel-3960)
+* [ Dashboard ](#tab-panel-3965)
+* [ API ](#tab-panel-3966)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Egress policies**.
 2. Select **Add a policy**.
@@ -178,6 +178,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
     }  
   }'  
 ```  
+Explain Code  
 For more information, refer to [Create a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/).
 2. Repeat Step 1 to create an egress policy for each virtual network you created.
 

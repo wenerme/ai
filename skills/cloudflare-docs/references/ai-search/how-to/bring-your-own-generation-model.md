@@ -28,8 +28,8 @@ Note
 
 AI Search now supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended way is to configure your external model through AI Gateway.
 
-* [  JavaScript ](#tab-panel-3095)
-* [  TypeScript ](#tab-panel-3096)
+* [  JavaScript ](#tab-panel-3101)
+* [  TypeScript ](#tab-panel-3102)
 
 JavaScript
 
@@ -137,6 +137,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -253,6 +255,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/how-to/bring-your-own-generation-model/","name":"Bring your own generation model"}}]}

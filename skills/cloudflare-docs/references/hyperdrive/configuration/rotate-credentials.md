@@ -40,8 +40,8 @@ npx wrangler hyperdrive create my-updated-hyperdrive --connection-string="<YOUR_
 
 The command above will output the ID of your Hyperdrive. Set this ID in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-4664)
-* [  wrangler.toml ](#tab-panel-4665)
+* [  wrangler.jsonc ](#tab-panel-4708)
+* [  wrangler.toml ](#tab-panel-4709)
 
 JSONC
 
@@ -59,7 +59,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -78,6 +78,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -86,7 +88,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]

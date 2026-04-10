@@ -43,8 +43,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-8574)
-* [  wrangler.toml ](#tab-panel-8575)
+* [  wrangler.jsonc ](#tab-panel-8634)
+* [  wrangler.toml ](#tab-panel-8635)
 
 JSONC
 
@@ -60,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "workflows": [
 
@@ -91,6 +91,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -103,7 +105,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[workflows]]
@@ -116,6 +118,8 @@ class_name = "MyWorkflow"
 
 
 ```
+
+Explain Code
 
 The `binding = "MY_WORKFLOW"` line defines the JavaScript variable that our Workflow methods are accessible on, including `create` (which triggers a new instance) or `get` (which returns the status of an existing instance).
 
@@ -185,6 +189,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Inspect a Workflow's status
 
 You can inspect the status of any running Workflow instance by calling `status` against a specific instance ID. This allows you to programmatically inspect whether an instance is queued (waiting to be scheduled), actively running, paused, or errored.
@@ -238,6 +244,8 @@ TypeScript
 
 
 ```
+
+Explain Code
 
 ### Explicitly pause a Workflow
 
@@ -311,8 +319,8 @@ Restarting an instance will immediately cancel any in-progress steps, erase any 
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-8576)
-* [  TypeScript ](#tab-panel-8577)
+* [  JavaScript ](#tab-panel-8636)
+* [  TypeScript ](#tab-panel-8637)
 
 JavaScript
 
@@ -365,6 +373,8 @@ export class ParentWorkflow extends WorkflowEntrypoint {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -415,6 +425,8 @@ export class ParentWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 
 ```
+
+Explain Code
 
 If the child Workflow fails to start, the step will fail and be retried according to your retry configuration. Once the child instance is successfully created, it runs independently from the parent.
 

@@ -22,8 +22,8 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7570)
-* [  wrangler.toml ](#tab-panel-7571)
+* [  wrangler.jsonc ](#tab-panel-7630)
+* [  wrangler.toml ](#tab-panel-7631)
 
 JSONC
 
@@ -57,8 +57,8 @@ binding = "CF_VERSION_METADATA"
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
 
-* [  JavaScript ](#tab-panel-7568)
-* [  TypeScript ](#tab-panel-7569)
+* [  JavaScript ](#tab-panel-7628)
+* [  TypeScript ](#tab-panel-7629)
 
 JavaScript
 
@@ -88,6 +88,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -126,6 +128,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/runtime-apis/","name":"Runtime APIs"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/runtime-apis/bindings/","name":"Bindings (env)"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/runtime-apis/bindings/version-metadata/","name":"Version metadata"}}]}

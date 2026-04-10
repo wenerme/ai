@@ -55,8 +55,8 @@ npm install agents @cloudflare/ai-chat ai workers-ai-provider zod
 
 Replace your `wrangler.jsonc` with:
 
-* [  wrangler.jsonc ](#tab-panel-2892)
-* [  wrangler.toml ](#tab-panel-2893)
+* [  wrangler.jsonc ](#tab-panel-2898)
+* [  wrangler.toml ](#tab-panel-2899)
 
 JSONC
 
@@ -70,7 +70,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -89,6 +89,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -99,7 +101,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -125,6 +127,8 @@ new_sqlite_classes = [ "ChatAgent" ]
 
 ```
 
+Explain Code
+
 Key settings:
 
 * `ai` binds Workers AI — no API key needed
@@ -135,8 +139,8 @@ Key settings:
 
 Create `src/server.ts`. This is where your agent lives:
 
-* [  JavaScript ](#tab-panel-2894)
-* [  TypeScript ](#tab-panel-2895)
+* [  JavaScript ](#tab-panel-2900)
+* [  TypeScript ](#tab-panel-2901)
 
 JavaScript
 
@@ -335,6 +339,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -532,6 +538,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### What each tool type does
 
 | Tool            | execute? | needsApproval?      | Behavior                                        |
@@ -544,8 +552,8 @@ export default {
 
 Create `src/client.tsx`:
 
-* [  JavaScript ](#tab-panel-2896)
-* [  TypeScript ](#tab-panel-2897)
+* [  JavaScript ](#tab-panel-2902)
+* [  TypeScript ](#tab-panel-2903)
 
 JavaScript
 
@@ -762,6 +770,8 @@ export default function App() {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -984,6 +994,8 @@ export default function App() {
 
 
 ```
+
+Explain Code
 
 ### Key client concepts
 

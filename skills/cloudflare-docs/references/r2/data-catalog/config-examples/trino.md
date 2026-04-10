@@ -79,6 +79,8 @@ iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
 
 ```
 
+Explain Code
+
 ## Example usage
 
 1. Start Trino with the R2 catalog configuration:  
@@ -94,7 +96,8 @@ docker run -d \
   -p 8080:8080 \  
   -v $(pwd)/trino-catalog:/etc/trino/catalog \  
   trinodb/trino:latest  
-```
+```  
+Explain Code
 2. Connect to Trino and query your R2 Data Catalog:  
 Terminal window  
 ```  
@@ -122,7 +125,8 @@ AS VALUES
 SHOW TABLES IN r2.example_schema;  
 -- Query your Iceberg table  
 SELECT * FROM r2.example_schema.yearly_clicks;  
-```
+```  
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/r2/","name":"R2"}},{"@type":"ListItem","position":3,"item":{"@id":"/r2/data-catalog/","name":"R2 Data Catalog"}},{"@type":"ListItem","position":4,"item":{"@id":"/r2/data-catalog/config-examples/","name":"Connect to Iceberg engines"}},{"@type":"ListItem","position":5,"item":{"@id":"/r2/data-catalog/config-examples/trino/","name":"Apache Trino"}}]}

@@ -56,8 +56,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to delete objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-5802)
-* [ Python ](#tab-panel-5803)
+* [ JavaScript ](#tab-panel-5846)
+* [ Python ](#tab-panel-5847)
 
 TypeScript
 
@@ -102,6 +102,8 @@ await S3.send(
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -132,6 +134,8 @@ s3.delete_object(Bucket="my-bucket", Key="image.png")
 
 
 ```
+
+Explain Code
 
 For complete S3 API documentation, refer to [S3 API](https://developers.cloudflare.com/r2/api/s3/api/).
 

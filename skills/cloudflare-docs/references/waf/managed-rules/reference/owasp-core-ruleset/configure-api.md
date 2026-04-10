@@ -69,7 +69,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 2. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f  ). This rule will only exist if you have already deployed the OWASP ruleset.  
 Get a zone entry point ruleset  
 ```  
@@ -110,7 +111,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 3. Update the rule you identified using the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation, adding tag overrides that disable the rules with tags `paranoia-level-3` and `paranoia-level-4`.  
 Update a zone ruleset rule  
 ```  
@@ -137,7 +139,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
     "expression": "true",  
     "enabled": true  
   }'  
-```
+```  
+Explain Code
 
 For more information on creating overrides, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 
@@ -178,7 +181,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 2. Get the ID of the [last rule](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/) in the Cloudflare OWASP Core Ruleset. Use the [Get an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) method to obtain the list of rules in the ruleset. Alternatively, use the following rule ID directly: ...843b323c  .  
 Get an account ruleset  
 ```  
@@ -215,7 +219,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$OWASP_
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 3. Get the ID of the rule that deploys the OWASP ruleset to your zone using the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) (in this example, `<EXECUTE_RULE_ID>`). Search for a rule with `"action": "execute"` configured with the OWASP ruleset's ID in the `action_parameters` object (ID ...c25d2f1f  ). This rule will only exist if you have already deployed the OWASP ruleset.  
 Get a zone entry point ruleset  
 ```  
@@ -256,7 +261,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 4. Update the rule you identified in the entry point ruleset using the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation, adding a rule override for the last rule in the OWASP ruleset (identified in step 2) with the following properties and values:  
    * `"score_threshold": 60`  
    * `"action": "managed_challenge"`  
@@ -282,7 +288,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
     "expression": "true",  
     "enabled": true  
   }'  
-```
+```  
+Explain Code
 
 ## More resources
 

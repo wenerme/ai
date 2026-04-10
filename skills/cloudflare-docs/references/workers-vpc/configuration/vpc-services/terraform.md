@@ -64,6 +64,8 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
 
 ```
 
+Explain Code
+
 To use a custom DNS resolver within your private network, add `resolver_ips`:
 
 ```
@@ -95,6 +97,8 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
 
 
 ```
+
+Explain Code
 
 ### IP-based configuration
 
@@ -133,6 +137,8 @@ resource "cloudflare_connectivity_directory_service" "my_private_api" {
 
 
 ```
+
+Explain Code
 
 ### Port configuration
 
@@ -181,6 +187,8 @@ resource "cloudflare_worker_version" "my_worker_version" {
 
 ```
 
+Explain Code
+
 Multiple VPC Service bindings can be added to the same Worker:
 
 ```
@@ -211,6 +219,8 @@ bindings = [
 
 
 ```
+
+Explain Code
 
 The Worker code accesses each binding through `env.PRIVATE_API.fetch()` and `env.PRIVATE_DATABASE.fetch()`, as described in the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/).
 
@@ -321,6 +331,8 @@ resource "cloudflare_connectivity_directory_service" "example" {
 
 
 ```
+
+Explain Code
 
 For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice).
 

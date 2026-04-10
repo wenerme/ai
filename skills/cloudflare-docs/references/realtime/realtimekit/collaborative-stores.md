@@ -249,34 +249,7 @@ store.unsubscribe('key');
 
 ```
 
-TypeScript
-
-```
-
-const { stores } = meeting.stores;
-
-const store = stores.get('myStore');
-
-store.subscribe('key', (data) => {
-
-    console.log(data);
-
-});
-
-
-// subscribe to all keys of a store
-
-store.subscribe('\*', (data) => {
-
-console.log(data);
-
-});
-
-
-store.unsubscribe('key');
-
-
-```
+Explain Code
 
 TypeScript
 
@@ -306,6 +279,39 @@ store.unsubscribe('key');
 
 
 ```
+
+Explain Code
+
+TypeScript
+
+```
+
+const { stores } = meeting.stores;
+
+const store = stores.get('myStore');
+
+store.subscribe('key', (data) => {
+
+    console.log(data);
+
+});
+
+
+// subscribe to all keys of a store
+
+store.subscribe('\*', (data) => {
+
+console.log(data);
+
+});
+
+
+store.unsubscribe('key');
+
+
+```
+
+Explain Code
 
 Kotlin
 
@@ -336,6 +342,8 @@ store.unsubscribe("key", keyChangeCallback)
 
 ```
 
+Explain Code
+
 Swift
 
 ```
@@ -364,6 +372,8 @@ store.unsubscribe(key: "key", onChange: keyChangeCallback)
 
 
 ```
+
+Explain Code
 
 ### Fetch Store Data
 

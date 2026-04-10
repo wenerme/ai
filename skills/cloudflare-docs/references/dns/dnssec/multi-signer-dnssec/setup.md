@@ -32,8 +32,8 @@ Note that:
 
 If you use Cloudflare as a primary DNS provider, meaning that you manage your DNS records in Cloudflare, do the following:
 
-* [ Dashboard ](#tab-panel-4242)
-* [ API ](#tab-panel-4243)
+* [ Dashboard ](#tab-panel-4286)
+* [ API ](#tab-panel-4287)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
@@ -118,6 +118,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
 
 ```
 
+Explain Code
+
 1. Add your external provider(s) nameservers as NS records on your zone apex.
 
 Required API token permissions
@@ -185,8 +187,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
 
 If you use Cloudflare as a secondary DNS provider, do the following:
 
-* [ Dashboard ](#tab-panel-4240)
-* [ API ](#tab-panel-4241)
+* [ Dashboard ](#tab-panel-4284)
+* [ API ](#tab-panel-4285)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

@@ -98,8 +98,8 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 
 ### Create your Worker config file
 
-* [  wrangler.jsonc ](#tab-panel-7810)
-* [  wrangler.toml ](#tab-panel-7811)
+* [  wrangler.jsonc ](#tab-panel-7864)
+* [  wrangler.toml ](#tab-panel-7865)
 
 JSONC
 
@@ -113,7 +113,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-04",
+  "compatibility_date": "2026-04-10",
 
   "assets": {
 
@@ -136,7 +136,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-04"
+compatibility_date = "2026-04-10"
 
 
 [assets]
@@ -245,8 +245,8 @@ tsconfig.json
 
 ### Add to your Worker configuration
 
-* [  wrangler.jsonc ](#tab-panel-7812)
-* [  wrangler.toml ](#tab-panel-7813)
+* [  wrangler.jsonc ](#tab-panel-7866)
+* [  wrangler.toml ](#tab-panel-7867)
 
 JSONC
 
@@ -260,7 +260,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-04",
+  "compatibility_date": "2026-04-10",
 
   "assets": {
 
@@ -275,6 +275,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -285,7 +287,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-04"
+compatibility_date = "2026-04-10"
 
 main = "./worker/index.ts"
 
@@ -332,6 +334,8 @@ export default {
 
 ```
 
+Explain Code
+
 The Worker above will be invoked for any non-navigation request that does not match a static asset. It returns a JSON response if the `pathname` starts with `/api/` and otherwise return a `404` response.
 
 Note
@@ -340,8 +344,8 @@ For top-level navigation requests, browsers send a `Sec-Fetch-Mode: navigate` he
 
 If you would instead like to define the routes that invoke your Worker explicitly, you can provide an array of route patterns to [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst). This opts out of interpreting the `Sec-Fetch-Mode` header.
 
-* [  wrangler.jsonc ](#tab-panel-7814)
-* [  wrangler.toml ](#tab-panel-7815)
+* [  wrangler.jsonc ](#tab-panel-7868)
+* [  wrangler.toml ](#tab-panel-7869)
 
 JSONC
 
@@ -355,7 +359,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-04",
+  "compatibility_date": "2026-04-10",
 
   "assets": {
 
@@ -376,6 +380,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -386,7 +392,7 @@ name = "cloudflare-vite-tutorial"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-04"
+compatibility_date = "2026-04-10"
 
 main = "./worker/index.ts"
 
@@ -517,6 +523,8 @@ export default App;
 
 
 ```
+
+Explain Code
 
 Now, if you click the button, it will display 'Name from API is: Cloudflare'.
 

@@ -24,8 +24,8 @@ Use outbound Workers to route requests to Workers functions and their bindings (
 
 Use `outbound` to intercept outbound HTTP traffic regardless of destination:
 
-* [  JavaScript ](#tab-panel-6449)
-* [  TypeScript ](#tab-panel-6450)
+* [  JavaScript ](#tab-panel-6493)
+* [  TypeScript ](#tab-panel-6494)
 
 JavaScript
 
@@ -56,6 +56,8 @@ MySandbox.outbound = async (request, env, ctx) => {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -85,6 +87,8 @@ return fetch(request);
 
 ```
 
+Explain Code
+
 TLS support coming soon
 
 Sandboxes currently only intercept HTTP traffic. HTTPS interception is coming soon. This will enable using Workers as a transparent proxy for credential injection.
@@ -93,8 +97,8 @@ Even though this is just using HTTP, traffic to Workers is secure and runs on th
 
 Use `outboundByHost` to map specific domain names or IP addresses to handler functions:
 
-* [  JavaScript ](#tab-panel-6451)
-* [  TypeScript ](#tab-panel-6452)
+* [  JavaScript ](#tab-panel-6495)
+* [  TypeScript ](#tab-panel-6496)
 
 JavaScript
 
@@ -123,6 +127,8 @@ MySandbox.outboundByHost = {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -150,6 +156,8 @@ MySandbox.outboundByHost = {
 
 ```
 
+Explain Code
+
 The sandbox calls `http://my.worker` and the handler runs entirely inside the Workers runtime, outside of the sandbox.
 
 If you define both, `outboundByHost` handlers take precedence over the catch-all `outbound` handler.
@@ -158,8 +166,8 @@ If you define both, `outboundByHost` handlers take precedence over the catch-all
 
 Outbound handlers have access to your Worker's bindings. Route sandbox traffic to internal platform resources without changing application code.
 
-* [  JavaScript ](#tab-panel-6457)
-* [  TypeScript ](#tab-panel-6458)
+* [  JavaScript ](#tab-panel-6501)
+* [  TypeScript ](#tab-panel-6502)
 
 JavaScript
 
@@ -201,6 +209,8 @@ MySandbox.outboundByHost = {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -241,14 +251,16 @@ return new Response(object?.body ?? null, { status: object ? 200 : 404 });
 
 ```
 
+Explain Code
+
 The sandbox calls `http://my.kv/some-key` and the outbound handler resolves it using the KV binding.
 
 ## Access Durable Object state
 
 The `ctx` argument exposes `containerId`, which lets you interact with the sandbox's own Durable Object from an outbound handler.
 
-* [  JavaScript ](#tab-panel-6453)
-* [  TypeScript ](#tab-panel-6454)
+* [  JavaScript ](#tab-panel-6497)
+* [  TypeScript ](#tab-panel-6498)
 
 JavaScript
 
@@ -276,6 +288,8 @@ MySandbox.outboundByHost = {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -302,6 +316,8 @@ MySandbox.outboundByHost = {
 
 ```
 
+Explain Code
+
 Note
 
 You can also use `containerId` to apply different rules per sandbox instance — for example, to look up per-instance configuration from KV.
@@ -310,8 +326,8 @@ You can also use `containerId` to apply different rules per sandbox instance —
 
 Use `outboundHandlers` to define named handlers, then assign them to specific hosts at runtime using `setOutboundByHost()`. You can also apply a handler globally with `setOutboundHandler()`.
 
-* [  JavaScript ](#tab-panel-6455)
-* [  TypeScript ](#tab-panel-6456)
+* [  JavaScript ](#tab-panel-6499)
+* [  TypeScript ](#tab-panel-6500)
 
 JavaScript
 
@@ -342,6 +358,8 @@ MySandbox.outboundHandlers = {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -371,10 +389,12 @@ return new Response(value ?? "", { status: value ? 200 : 404 });
 
 ```
 
+Explain Code
+
 Apply handlers to hosts programmatically from your Worker:
 
-* [  JavaScript ](#tab-panel-6459)
-* [  TypeScript ](#tab-panel-6460)
+* [  JavaScript ](#tab-panel-6503)
+* [  TypeScript ](#tab-panel-6504)
 
 JavaScript
 
@@ -410,6 +430,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -444,6 +466,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Local development
 

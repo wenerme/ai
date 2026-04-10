@@ -209,6 +209,8 @@ export default {
 
 ```
 
+Explain Code
+
 Here is a minimal package.json:
 
 ```
@@ -228,8 +230,8 @@ Here is a minimal package.json:
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8590)
-* [  wrangler.toml ](#tab-panel-8591)
+* [  wrangler.jsonc ](#tab-panel-8650)
+* [  wrangler.toml ](#tab-panel-8651)
 
 JSONC
 
@@ -245,7 +247,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -294,6 +296,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -306,7 +310,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -333,6 +337,8 @@ crons = [ "0 0 * * *" ]
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/examples/backup-d1/","name":"Export and save D1 database"}}]}

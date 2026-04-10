@@ -73,7 +73,8 @@ resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {
     }  
   }  
 }  
-```
+```  
+Explain Code
 
 Session checks are now enabled for the application protected by this policy. Users can continue to reach applications outside of the policy definition.
 

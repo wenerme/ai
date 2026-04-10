@@ -79,6 +79,8 @@ const picture = useRealtimeKitSelector((m) => m.self.picture);
 
 ```
 
+Explain Code
+
 Kotlin
 
 ```
@@ -141,6 +143,8 @@ const picture = useRealtimeKitSelector((m) => m.self.picture);
 
 ```
 
+Explain Code
+
 Dart
 
 ```
@@ -193,6 +197,8 @@ meeting.self.mediaPermissions; // Current audio/video permissions
 
 ```
 
+Explain Code
+
 ```
 
 // Media state flags
@@ -227,6 +233,8 @@ const mediaPermissions = useRealtimeKitSelector((m) => m.self.mediaPermissions);
 
 
 ```
+
+Explain Code
 
 Kotlin
 
@@ -306,6 +314,8 @@ const mediaPermissions = useRealtimeKitSelector((m) => m.self.mediaPermissions);
 
 
 ```
+
+Explain Code
 
 Dart
 
@@ -609,6 +619,8 @@ function AudioControls() {
 
 ```
 
+Explain Code
+
 Kotlin
 
 ```
@@ -701,6 +713,8 @@ function AudioControls() {
 
 ```
 
+Explain Code
+
 Dart
 
 ```
@@ -729,6 +743,8 @@ final isAudioEnabled = meeting.localUser.audioEnabled;
 
 
 ```
+
+Explain Code
 
 ### Video control
 
@@ -793,6 +809,8 @@ function VideoControls() {
 
 
 ```
+
+Explain Code
 
 Kotlin
 
@@ -875,6 +893,8 @@ function VideoControls() {
 
 ```
 
+Explain Code
+
 Dart
 
 ```
@@ -903,6 +923,8 @@ final isVideoEnabled = meeting.localUser.videoEnabled;
 
 
 ```
+
+Explain Code
 
 ### Screen share control
 
@@ -971,6 +993,8 @@ function ScreenShareControls() {
 
 
 ```
+
+Explain Code
 
 Kotlin
 
@@ -1066,6 +1090,8 @@ function ScreenShareControls() {
 
 
 ```
+
+Explain Code
 
 Dart
 
@@ -1220,6 +1246,8 @@ const currentDevices = meeting.self.getCurrentDevices();
 
 ```
 
+Explain Code
+
 ```
 
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react";
@@ -1307,6 +1335,8 @@ function DeviceSelector() {
 
 ```
 
+Explain Code
+
 Get current devices being used:
 
 ```
@@ -1344,6 +1374,8 @@ val selectedVideoDevice: VideoDevice = meeting.localUser.getSelectedVideoDevice(
 
 ```
 
+Explain Code
+
 Swift
 
 ```
@@ -1369,6 +1401,8 @@ let selectedVideoDevice = meeting.localUser.getSelectedVideoDevice()
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -1449,6 +1483,8 @@ function DeviceSelector() {
 
 ```
 
+Explain Code
+
 Get current devices being used:
 
 ```
@@ -1485,6 +1521,8 @@ final selectedVideoDevice = meeting.localUser.getSelectedVideoDevice();
 
 
 ```
+
+Explain Code
 
 ### Change device
 
@@ -1538,6 +1576,8 @@ meeting.localUser.switchCamera()
 
 
 ```
+
+Explain Code
 
 Swift
 
@@ -1605,6 +1645,8 @@ meeting.localUser.switchCamera();
 
 
 ```
+
+Explain Code
 
 ## Display local video
 
@@ -1746,6 +1788,8 @@ function LocalVideoCustom() {
 
 ```
 
+Explain Code
+
 ### Get video view
 
 Retrieve a self-preview video view that renders the local camera stream:
@@ -1885,6 +1929,8 @@ class MainActivity : AppCompatActivity() {
 
 ```
 
+Explain Code
+
 ### Get video view
 
 Retrieve video views that render the participant's video streams:
@@ -1954,6 +2000,8 @@ class VideoViewController: UIViewController {
 
 ```
 
+Explain Code
+
 For screenshare:
 
 Swift
@@ -2021,6 +2069,8 @@ export default function VideoView() {
 
 ```
 
+Explain Code
+
 ### VideoView widget
 
 Display video streams with the `VideoView` widget:
@@ -2060,6 +2110,8 @@ class LocalVideoView extends StatelessWidget {
 
 
 ```
+
+Explain Code
 
 ### VideoView parameters
 
@@ -2116,6 +2168,8 @@ class MeetingScreen extends StatelessWidget {
 
 
 ```
+
+Explain Code
 
 For displaying other participants' video:
 
@@ -2449,6 +2503,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Android SDK uses a different event model. Monitor `roomJoined` property changes or use listeners for state changes.
 
 iOS SDK uses a different event model. Monitor `roomJoined` property changes or use listeners for state changes.
@@ -2501,6 +2557,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Flutter SDK uses a different event model. Monitor `roomJoined` property changes or use listeners for state changes.
 
 ### Room left
@@ -2540,6 +2598,8 @@ meeting.self.on("roomLeft", ({ state }) => {
 
 
 ```
+
+Explain Code
 
 **Possible state values:** `'left'`, `'kicked'`, `'ended'`, `'rejected'`, `'disconnected'`, `'failed'`
 
@@ -2668,6 +2728,8 @@ meeting.addSelfEventListener(MeetingSelfListener());
 
 ```
 
+Explain Code
+
 ### Video update
 
 Fires when video is enabled or disabled:
@@ -2701,6 +2763,8 @@ meeting.self.on("videoUpdate", ({ videoEnabled, videoTrack }) => {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -2966,6 +3030,8 @@ meeting.self.on(
 
 ```
 
+Explain Code
+
 ```
 
 const screenShareEnabled = useRealtimeKitSelector(
@@ -2995,6 +3061,8 @@ useEffect(() => {
 
 
 ```
+
+Explain Code
 
 Kotlin
 
@@ -3028,6 +3096,8 @@ meeting.addSelfEventListener(object : RtkSelfEventListener {
 
 ```
 
+Explain Code
+
 Swift
 
 ```
@@ -3058,6 +3128,8 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 
 ```
+
+Explain Code
 
 You can also monitor the `roomJoined` property for state changes:
 
@@ -3100,6 +3172,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Flutter SDK uses a different event model. Monitor `screenShareEnabled` property changes.
 
 ### Device update
@@ -3133,6 +3207,8 @@ meeting.self.on("deviceUpdate", ({ device }) => {
 
 ```
 
+Explain Code
+
 ```
 
 useEffect(() => {
@@ -3169,6 +3245,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Kotlin
 
 ```
@@ -3196,6 +3274,8 @@ meeting.self.addSelfEventListener(object : RtkSelfEventListener() {
 
 
 ```
+
+Explain Code
 
 Swift
 
@@ -3226,6 +3306,8 @@ func onVideoDeviceChanged(device: VideoDevice) {
 
 ```
 
+Explain Code
+
 ```
 
 useEffect(() => {
@@ -3261,6 +3343,8 @@ useEffect(() => {
 
 
 ```
+
+Explain Code
 
 Dart
 
@@ -3298,6 +3382,8 @@ meeting.addSelfEventListener(DeviceChangeListener());
 
 
 ```
+
+Explain Code
 
 ### Device List Update
 
@@ -3355,6 +3441,8 @@ useEffect(() => {
 
 
 ```
+
+Explain Code
 
 Kotlin
 
@@ -3432,6 +3520,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Dart
 
 ```
@@ -3474,6 +3564,8 @@ meeting.addSelfEventListener(DeviceListListener(meeting));
 
 
 ```
+
+Explain Code
 
 ### Network Quality Score
 
@@ -3521,6 +3613,8 @@ meeting.self.on(
 
 
 ```
+
+Explain Code
 
 The `scoreStats` object provides detailed statistics:
 
@@ -3598,6 +3692,8 @@ JavaScript
 
 ```
 
+Explain Code
+
 ```
 
 useEffect(() => {
@@ -3652,6 +3748,8 @@ useEffect(() => {
 
 
 ```
+
+Explain Code
 
 Android SDK does not currently expose network quality scores.
 
@@ -3712,6 +3810,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Flutter SDK does not currently expose network quality scores.
 
 ### Permission Updates
@@ -3757,6 +3857,8 @@ meeting.self.permissions.on("*", () => {
 
 
 ```
+
+Explain Code
 
 Monitor permissions using selectors:
 
@@ -3830,6 +3932,8 @@ meeting.self.on("mediaPermissionError", ({ message, kind }) => {
 
 ```
 
+Explain Code
+
 **Possible values:**
 
 * `message`: `'DENIED'`, `'SYSTEM_DENIED'`, `'COULD_NOT_START'`
@@ -3869,6 +3973,8 @@ useEffect(() => {
 
 
 ```
+
+Explain Code
 
 Kotlin
 
@@ -3921,6 +4027,8 @@ extension MeetingViewModel: RtkSelfEventListener {
 
 ```
 
+Explain Code
+
 You can also check permission status using properties:
 
 Swift
@@ -3969,6 +4077,8 @@ useEffect(() => {
 
 ```
 
+Explain Code
+
 Dart
 
 ```
@@ -4001,6 +4111,8 @@ meeting.addSelfEventListener(PermissionListener());
 
 
 ```
+
+Explain Code
 
 You can also check permission status using properties:
 

@@ -28,8 +28,8 @@ This page covers the patterns that become possible when your LLM calls happen in
 
 Every Agent has a built-in [SQL database](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) and key-value state. Instead of passing an entire conversation history from the client on every request, the Agent stores it and builds prompts from its own storage.
 
-* [  JavaScript ](#tab-panel-2842)
-* [  TypeScript ](#tab-panel-2843)
+* [  JavaScript ](#tab-panel-2848)
+* [  TypeScript ](#tab-panel-2849)
 
 JavaScript
 
@@ -71,6 +71,8 @@ export class ResearchAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -111,6 +113,8 @@ export class ResearchAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 This means the client does not need to send the full conversation on every message. The Agent owns the history, can prune it, enrich it with retrieved documents, or summarize older turns before sending to the model.
 
 ## Surviving disconnections
@@ -119,8 +123,8 @@ Reasoning models like DeepSeek R1 or GLM-4 can take 30 seconds to several minute
 
 An Agent keeps running after the client disconnects. When the response arrives, the Agent can persist it to state and deliver it when the client reconnects — even hours or days later.
 
-* [  JavaScript ](#tab-panel-2844)
-* [  TypeScript ](#tab-panel-2845)
+* [  JavaScript ](#tab-panel-2850)
+* [  TypeScript ](#tab-panel-2851)
 
 JavaScript
 
@@ -169,6 +173,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -216,14 +222,16 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 With [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-agents/), this is handled automatically — messages are persisted to SQLite and streams resume on reconnect.
 
 ## Autonomous model calls
 
 Agents do not need a user request to call a model. You can schedule model calls to run in the background — for nightly summarization, periodic classification, monitoring, or any task that should happen without human interaction.
 
-* [  JavaScript ](#tab-panel-2846)
-* [  TypeScript ](#tab-panel-2847)
+* [  JavaScript ](#tab-panel-2852)
+* [  TypeScript ](#tab-panel-2853)
 
 JavaScript
 
@@ -275,6 +283,8 @@ export class DigestAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -325,12 +335,14 @@ export class DigestAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 ## Multi-model pipelines
 
 Because an Agent maintains state across calls, you can chain multiple models in a single method — using a fast model for classification, a reasoning model for planning, and an embedding model for retrieval — without losing context between steps.
 
-* [  JavaScript ](#tab-panel-2850)
-* [  TypeScript ](#tab-panel-2851)
+* [  JavaScript ](#tab-panel-2856)
+* [  TypeScript ](#tab-panel-2857)
 
 JavaScript
 
@@ -393,6 +405,8 @@ export class TriageAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -454,14 +468,16 @@ export class TriageAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 Each intermediate result stays in the Agent's memory for the duration of the method, and the final result is persisted to SQL for future reference.
 
 ## Caching and cost control
 
 Persistent storage means you can cache model responses and avoid redundant calls. This is especially useful for expensive operations like embeddings or long reasoning chains.
 
-* [  JavaScript ](#tab-panel-2848)
-* [  TypeScript ](#tab-panel-2849)
+* [  JavaScript ](#tab-panel-2854)
+* [  TypeScript ](#tab-panel-2855)
 
 JavaScript
 
@@ -511,6 +527,8 @@ export class CachingAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -558,6 +576,8 @@ export class CachingAgent extends Agent<Env> {
 
 
 ```
+
+Explain Code
 
 For provider-level caching and rate limit management across multiple agents, use [AI Gateway](https://developers.cloudflare.com/ai-gateway/).
 

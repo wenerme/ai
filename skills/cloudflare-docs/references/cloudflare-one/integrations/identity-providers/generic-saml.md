@@ -56,8 +56,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3477)
-* [ Terraform (v5) ](#tab-panel-3478)
+* [ Dashboard ](#tab-panel-3483)
+* [ Terraform (v5) ](#tab-panel-3484)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
@@ -84,7 +84,8 @@ resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example"
     attributes = ["employeeID", "groups"]  
   }  
 }  
-```
+```  
+Explain Code
 
 Warning
 

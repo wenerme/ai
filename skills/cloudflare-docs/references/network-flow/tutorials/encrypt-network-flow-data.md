@@ -77,6 +77,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/config" \
 
 ```
 
+Explain Code
+
 ## 2\. Route Network Flow traffic through the Cloudflare One Client
 
 Depending on where you installed the Cloudflare One Client, you may need to configure other devices on the subnet to route traffic through the Cloudflare One Client. If you have access to your router and it runs a version/OS supported by the Cloudflare One Client, Cloudflare recommends [Option 1](#option-1-default-gateway). This also applies if you use a software-based flow exporter (such as `softflowd`) instead of a physical router to collect and export flows.

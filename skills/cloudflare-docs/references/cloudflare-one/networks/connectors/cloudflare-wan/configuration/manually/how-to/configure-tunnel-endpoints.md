@@ -67,8 +67,8 @@ Warning
 
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
-* [ Dashboard ](#tab-panel-3623)
-* [ API ](#tab-panel-3624)
+* [ Dashboard ](#tab-panel-3629)
+* [ API ](#tab-panel-3630)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Cloudflare WAN**, and select **Create**.
@@ -170,6 +170,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnel
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -243,6 +245,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnel
 
 ```
 
+Explain Code
+
 IPsec tunnel
 
 1. Create a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/create/) to create an IPsec tunnel.  
@@ -264,6 +268,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
     "customer_endpoint": "<CUSTOMER_ENDPOINT>"  
   }'  
 ```  
+Explain Code  
 ```  
 {  
   "errors": [  
@@ -301,6 +306,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
   "success": true  
 }  
 ```  
+Explain Code  
 Take note of the tunnel `id` value. We will use it to generate a pre-shared key (PSK).
 2. Create a `POST` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/psk%5Fgenerate/) to generate a PSK. Use the tunnel `id` value you received from the previous command.  
 Required API token permissions  
@@ -328,6 +334,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
   "messages": []  
 }  
 ```  
+Explain Code  
 Take note of your `psk` value.
 3. Create a `PUT` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/) to update your IPsec tunnel with the PSK.  
 Terminal window  
@@ -409,6 +416,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 
 
 ```
+
+Explain Code
 
 1. Use the `psk` value from step 3 to configure the IPsec tunnel on your equipment as well.
 
@@ -509,6 +518,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 
 
 ```
+
+Explain Code
 
 ## Bidirectional vs unidirectional health checks
 

@@ -114,6 +114,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules"
 
 ```
 
+Explain Code
+
 ### Create/update/delete Cloud Connector rules
 
 Warning
@@ -161,6 +163,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules"
 
 
 ```
+
+Explain Code
 
 The required body parameters for each rule are: `expression`, `provider`, and `parameters.host`.
 

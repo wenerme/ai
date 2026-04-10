@@ -148,6 +148,8 @@ Terminal window
 
 ```
 
+Explain Code
+
 The value of `suspended` indicates whether a waiting room is activated or suspended:
 
 * `false`: The waiting room is activated.

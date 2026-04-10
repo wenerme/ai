@@ -85,6 +85,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
 
 ```
 
+Explain Code
+
 Save the ruleset ID in the response for the next step.
 
 ### 2\. Deploy the custom ruleset
@@ -122,7 +124,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create an account ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset. By default, the rule will be added at the end of the list of rules already in the ruleset.  
 The following request creates a rule that executes the custom ruleset with ID `<CUSTOM_RULESET_ID>` for all Enterprise zones in the account:  
 Required API token permissions  
@@ -144,6 +147,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
     "enabled": true  
   }'  
 ```  
+Explain Code  
 Warning  
 At the account level, you can only apply custom rulesets to incoming traffic of zones on an Enterprise plan. To enforce this requirement, you must include `cf.zone.plan eq "ENT"` in the expression of the `execute` rule deploying the custom ruleset.
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests of Enterprise zones in your account.  
@@ -171,7 +175,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
     ],  
     "phase": "http_request_firewall_custom"  
   }'  
-```
+```  
+Explain Code
 
 ## Next steps
 

@@ -111,8 +111,8 @@ Created queue rate-limit-queue.
 
 In your Wrangler file, add the following:
 
-* [  wrangler.jsonc ](#tab-panel-5719)
-* [  wrangler.toml ](#tab-panel-5720)
+* [  wrangler.jsonc ](#tab-panel-5763)
+* [  wrangler.toml ](#tab-panel-5764)
 
 JSONC
 
@@ -157,6 +157,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -185,8 +187,8 @@ It is important to include the `max_batch_size` of two to the consumer queue is 
 
 Your final Wrangler file should look similar to the example below.
 
-* [  wrangler.jsonc ](#tab-panel-5721)
-* [  wrangler.toml ](#tab-panel-5722)
+* [  wrangler.jsonc ](#tab-panel-5765)
+* [  wrangler.toml ](#tab-panel-5766)
 
 JSONC
 
@@ -202,7 +204,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -247,6 +249,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -259,7 +263,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -283,6 +287,8 @@ max_retries = 3
 
 
 ```
+
+Explain Code
 
 ## 3\. Add bindings to environment
 
@@ -337,6 +343,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 This will accept requests to any subpath and forwards the request's body. It expects that the request body to contain only an email. In production, you should check that the request was a `POST` request. You should also avoid sending such sensitive information (email) directly to the queue. Instead, you can send a message to the queue that contains a unique identifier for the user. Then, your consumer queue can use the unique identifier to look up the email address in a database and use that to send the email.
 
@@ -411,6 +419,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 The above `queue()` handler will log the email address to the console and send the email. It will also retry the message if sending the email fails. The `delaySeconds` is set to five seconds to avoid sending the email too quickly.
 
@@ -613,6 +623,8 @@ export default {
 
 ```
 
+Explain Code
+
 The `queue()` handler will now send the email using the Resend API. It also checks if sending the email failed and will retry the message.
 
 The final script is included below:
@@ -712,6 +724,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 To test the application, start the development server using the following command:
 

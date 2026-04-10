@@ -193,6 +193,8 @@ make_date(year, month, day)
 
 ```
 
+Explain Code
+
 ## `to_char`
 
 Returns a string representation of a date, time, timestamp or duration based on a [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html). Unlike the PostgreSQL equivalent of this function numerical formatting is not supported.
@@ -281,6 +283,8 @@ to_timestamp(expression[, ..., format_n])
 
 ```
 
+Explain Code
+
 ## `to_timestamp_millis`
 
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)s are provided. Integers and unsigned integers are interpreted as milliseconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
@@ -327,6 +331,8 @@ to_timestamp_millis(expression[, ..., format_n])
 
 
 ```
+
+Explain Code
 
 ## `to_timestamp_micros`
 
@@ -375,6 +381,8 @@ to_timestamp_micros(expression[, ..., format_n])
 
 ```
 
+Explain Code
+
 ## `to_timestamp_nanos`
 
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000000000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no \[Chrono formats\] are provided. Integers and unsigned integers are interpreted as nanoseconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
@@ -422,6 +430,8 @@ to_timestamp_nanos(expression[, ..., format_n])
 
 ```
 
+Explain Code
+
 ## `to_timestamp_seconds`
 
 Converts a value to a timestamp (`YYYY-MM-DDT00:00:00.000Z`). Supports strings, integer, and unsigned integer types as input. Strings are parsed as RFC3339 (e.g. '2023-07-20T05:44:00') if no [Chrono format ↗](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)s are provided. Integers and unsigned integers are interpreted as seconds since the unix epoch (`1970-01-01T00:00:00Z`). Returns the corresponding timestamp.
@@ -468,6 +478,8 @@ to_timestamp_seconds(expression[, ..., format_n])
 
 
 ```
+
+Explain Code
 
 ## `from_unixtime`
 

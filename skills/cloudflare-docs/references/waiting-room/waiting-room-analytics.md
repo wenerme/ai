@@ -207,6 +207,8 @@ Response
 
 ```
 
+Explain Code
+
 Find the average of total active users and new users per minute over a certain period, and aggregate this data over a period of 15 minutes.
 
 This query calculates the average of total active users and new users per minute. The time dimension in the query is 15 minutes, therefore the data is aggregated over 15 minutes for the selected time period.
@@ -241,6 +243,8 @@ Request
 
 
 ```
+
+Explain Code
 
 Response
 
@@ -329,6 +333,8 @@ Response
 
 ```
 
+Explain Code
+
 Find the weighted averages of time on origin (50th percentile) and total time waited (90th percentile) for a certain period and aggregate this data over one hour.
 
 This query calculates the weighted averages of the metrics for a certain period of time aggregated hourly.
@@ -363,6 +369,8 @@ Request
 
 
 ```
+
+Explain Code
 
 Response
 
@@ -414,6 +422,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ## Why is there no data for my waiting room?
 

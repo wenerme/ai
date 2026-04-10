@@ -26,8 +26,8 @@ Agents can receive and process emails using Cloudflare [Email Routing](https://d
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2370)
-* [  TypeScript ](#tab-panel-2371)
+* [  JavaScript ](#tab-panel-2376)
+* [  TypeScript ](#tab-panel-2377)
 
 JavaScript
 
@@ -82,6 +82,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -137,6 +139,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Resolvers
 
 Resolvers determine which Agent instance receives an incoming email. Choose the resolver that matches your use case.
@@ -145,8 +149,8 @@ Resolvers determine which Agent instance receives an incoming email. Choose the 
 
 Recommended for inbound mail. Routes emails based on the recipient address.
 
-* [  JavaScript ](#tab-panel-2360)
-* [  TypeScript ](#tab-panel-2361)
+* [  JavaScript ](#tab-panel-2366)
+* [  TypeScript ](#tab-panel-2367)
 
 JavaScript
 
@@ -186,8 +190,8 @@ The sub-address format (`agent+id@domain`) allows routing to different agent nam
 
 For reply flows with signature verification. Verifies that incoming emails are authentic replies to your outbound emails, preventing attackers from routing emails to arbitrary agent instances.
 
-* [  JavaScript ](#tab-panel-2362)
-* [  TypeScript ](#tab-panel-2363)
+* [  JavaScript ](#tab-panel-2368)
+* [  TypeScript ](#tab-panel-2369)
 
 JavaScript
 
@@ -217,8 +221,8 @@ When your agent sends an email with `replyToEmail()` and a `secret`, it signs th
 
 **Options:**
 
-* [  JavaScript ](#tab-panel-2366)
-* [  TypeScript ](#tab-panel-2367)
+* [  JavaScript ](#tab-panel-2372)
+* [  TypeScript ](#tab-panel-2373)
 
 JavaScript
 
@@ -246,6 +250,8 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -272,14 +278,16 @@ const resolver = createSecureReplyEmailResolver(env.EMAIL_SECRET, {
 
 ```
 
+Explain Code
+
 **When to use:** If your agent initiates email conversations and you need replies to route back to the same agent instance securely.
 
 ### `createCatchAllEmailResolver`
 
 For single-instance routing. Routes all emails to a specific agent instance regardless of the recipient address.
 
-* [  JavaScript ](#tab-panel-2364)
-* [  TypeScript ](#tab-panel-2365)
+* [  JavaScript ](#tab-panel-2370)
+* [  TypeScript ](#tab-panel-2371)
 
 JavaScript
 
@@ -311,8 +319,8 @@ const resolver = createCatchAllEmailResolver("EmailAgent", "default");
 
 You can combine resolvers to handle different scenarios:
 
-* [  JavaScript ](#tab-panel-2382)
-* [  TypeScript ](#tab-panel-2383)
+* [  JavaScript ](#tab-panel-2388)
+* [  TypeScript ](#tab-panel-2389)
 
 JavaScript
 
@@ -367,6 +375,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -422,6 +432,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Handling emails in your Agent
 
 ### The AgentEmail interface
@@ -456,163 +468,11 @@ type AgentEmail = {
 
 ```
 
+Explain Code
+
 ### Parsing email content
 
 Use a library like [postal-mime ↗](https://www.npmjs.com/package/postal-mime) to parse the raw email:
-
-* [  JavaScript ](#tab-panel-2372)
-* [  TypeScript ](#tab-panel-2373)
-
-JavaScript
-
-```
-
-import PostalMime from "postal-mime";
-
-
-class MyAgent extends Agent {
-
-  async onEmail(email) {
-
-    const raw = await email.getRaw();
-
-    const parsed = await PostalMime.parse(raw);
-
-
-    console.log("Subject:", parsed.subject);
-
-    console.log("Text body:", parsed.text);
-
-    console.log("HTML body:", parsed.html);
-
-    console.log("Attachments:", parsed.attachments);
-
-  }
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-import PostalMime from "postal-mime";
-
-
-class MyAgent extends Agent {
-
-  async onEmail(email: AgentEmail) {
-
-    const raw = await email.getRaw();
-
-    const parsed = await PostalMime.parse(raw);
-
-
-    console.log("Subject:", parsed.subject);
-
-    console.log("Text body:", parsed.text);
-
-    console.log("HTML body:", parsed.html);
-
-    console.log("Attachments:", parsed.attachments);
-
-  }
-
-}
-
-
-```
-
-### Detecting auto-reply emails
-
-Use `isAutoReplyEmail()` to detect auto-reply emails and avoid mail loops:
-
-* [  JavaScript ](#tab-panel-2376)
-* [  TypeScript ](#tab-panel-2377)
-
-JavaScript
-
-```
-
-import { isAutoReplyEmail } from "agents/email";
-
-import PostalMime from "postal-mime";
-
-
-class MyAgent extends Agent {
-
-  async onEmail(email) {
-
-    const raw = await email.getRaw();
-
-    const parsed = await PostalMime.parse(raw);
-
-
-    // Detect auto-reply emails to avoid sending duplicate responses
-
-    if (isAutoReplyEmail(parsed.headers)) {
-
-      console.log("Skipping auto-reply email");
-
-      return;
-
-    }
-
-
-    // Process the email...
-
-  }
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-import { isAutoReplyEmail } from "agents/email";
-
-import PostalMime from "postal-mime";
-
-
-class MyAgent extends Agent {
-
-  async onEmail(email: AgentEmail) {
-
-    const raw = await email.getRaw();
-
-    const parsed = await PostalMime.parse(raw);
-
-
-    // Detect auto-reply emails to avoid sending duplicate responses
-
-    if (isAutoReplyEmail(parsed.headers)) {
-
-      console.log("Skipping auto-reply email");
-
-      return;
-
-    }
-
-
-    // Process the email...
-
-  }
-
-}
-
-
-```
-
-This checks for standard RFC 3834 headers (`Auto-Submitted`, `X-Auto-Response-Suppress`, `Precedence`) that indicate an email is an auto-reply.
-
-### Replying to emails
-
-Use `this.replyToEmail()` to send a reply:
 
 * [  JavaScript ](#tab-panel-2378)
 * [  TypeScript ](#tab-panel-2379)
@@ -621,6 +481,168 @@ JavaScript
 
 ```
 
+import PostalMime from "postal-mime";
+
+
+class MyAgent extends Agent {
+
+  async onEmail(email) {
+
+    const raw = await email.getRaw();
+
+    const parsed = await PostalMime.parse(raw);
+
+
+    console.log("Subject:", parsed.subject);
+
+    console.log("Text body:", parsed.text);
+
+    console.log("HTML body:", parsed.html);
+
+    console.log("Attachments:", parsed.attachments);
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+import PostalMime from "postal-mime";
+
+
+class MyAgent extends Agent {
+
+  async onEmail(email: AgentEmail) {
+
+    const raw = await email.getRaw();
+
+    const parsed = await PostalMime.parse(raw);
+
+
+    console.log("Subject:", parsed.subject);
+
+    console.log("Text body:", parsed.text);
+
+    console.log("HTML body:", parsed.html);
+
+    console.log("Attachments:", parsed.attachments);
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+### Detecting auto-reply emails
+
+Use `isAutoReplyEmail()` to detect auto-reply emails and avoid mail loops:
+
+* [  JavaScript ](#tab-panel-2382)
+* [  TypeScript ](#tab-panel-2383)
+
+JavaScript
+
+```
+
+import { isAutoReplyEmail } from "agents/email";
+
+import PostalMime from "postal-mime";
+
+
+class MyAgent extends Agent {
+
+  async onEmail(email) {
+
+    const raw = await email.getRaw();
+
+    const parsed = await PostalMime.parse(raw);
+
+
+    // Detect auto-reply emails to avoid sending duplicate responses
+
+    if (isAutoReplyEmail(parsed.headers)) {
+
+      console.log("Skipping auto-reply email");
+
+      return;
+
+    }
+
+
+    // Process the email...
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+import { isAutoReplyEmail } from "agents/email";
+
+import PostalMime from "postal-mime";
+
+
+class MyAgent extends Agent {
+
+  async onEmail(email: AgentEmail) {
+
+    const raw = await email.getRaw();
+
+    const parsed = await PostalMime.parse(raw);
+
+
+    // Detect auto-reply emails to avoid sending duplicate responses
+
+    if (isAutoReplyEmail(parsed.headers)) {
+
+      console.log("Skipping auto-reply email");
+
+      return;
+
+    }
+
+
+    // Process the email...
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+This checks for standard RFC 3834 headers (`Auto-Submitted`, `X-Auto-Response-Suppress`, `Precedence`) that indicate an email is an auto-reply.
+
+### Replying to emails
+
+Use `this.replyToEmail()` to send a reply:
+
+* [  JavaScript ](#tab-panel-2384)
+* [  TypeScript ](#tab-panel-2385)
+
+JavaScript
+
+```
+
 class MyAgent extends Agent {
 
   async onEmail(email) {
@@ -653,6 +675,8 @@ class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -691,10 +715,12 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### Forwarding emails
 
-* [  JavaScript ](#tab-panel-2368)
-* [  TypeScript ](#tab-panel-2369)
+* [  JavaScript ](#tab-panel-2374)
+* [  TypeScript ](#tab-panel-2375)
 
 JavaScript
 
@@ -732,8 +758,8 @@ class MyAgent extends Agent {
 
 ### Rejecting emails
 
-* [  JavaScript ](#tab-panel-2374)
-* [  TypeScript ](#tab-panel-2375)
+* [  JavaScript ](#tab-panel-2380)
+* [  TypeScript ](#tab-panel-2381)
 
 JavaScript
 
@@ -798,8 +824,8 @@ When your agent sends emails and expects replies, use secure reply routing to pr
 ### Setup
 
 1. Add a secret to your `wrangler.jsonc`:  
-   * [  wrangler.jsonc ](#tab-panel-2358)  
-   * [  wrangler.toml ](#tab-panel-2359)  
+   * [  wrangler.jsonc ](#tab-panel-2364)  
+   * [  wrangler.toml ](#tab-panel-2365)  
 JSONC  
 ```  
 {  
@@ -819,8 +845,8 @@ Terminal window
 npx wrangler secret put EMAIL_SECRET  
 ```
 2. Use the combined resolver pattern:  
-   * [  JavaScript ](#tab-panel-2384)  
-   * [  TypeScript ](#tab-panel-2385)  
+   * [  JavaScript ](#tab-panel-2390)  
+   * [  TypeScript ](#tab-panel-2391)  
 JavaScript  
 ```  
 export default {  
@@ -839,6 +865,7 @@ export default {
   },  
 };  
 ```  
+Explain Code  
 TypeScript  
 ```  
 export default {  
@@ -856,10 +883,11 @@ export default {
     });  
   },  
 } satisfies ExportedHandler<Env>;  
-```
+```  
+Explain Code
 3. Sign outbound emails:  
-   * [  JavaScript ](#tab-panel-2380)  
-   * [  TypeScript ](#tab-panel-2381)  
+   * [  JavaScript ](#tab-panel-2386)  
+   * [  TypeScript ](#tab-panel-2387)  
 JavaScript  
 ```  
 class MyAgent extends Agent {  
@@ -899,8 +927,8 @@ When an email is routed via `createSecureReplyEmailResolver`, the `replyToEmail(
 
 Here is a complete email agent with secure reply routing:
 
-* [  JavaScript ](#tab-panel-2386)
-* [  TypeScript ](#tab-panel-2387)
+* [  JavaScript ](#tab-panel-2392)
+* [  TypeScript ](#tab-panel-2393)
 
 JavaScript
 
@@ -1022,6 +1050,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1155,6 +1185,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## API reference
 
 ### `routeAgentEmail`
@@ -1228,6 +1260,8 @@ type SignatureFailureReason =
 
 
 ```
+
+Explain Code
 
 Creates a resolver for routing email replies with signature verification.
 

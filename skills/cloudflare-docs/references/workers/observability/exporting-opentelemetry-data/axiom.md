@@ -88,8 +88,8 @@ Axiom provides separate OTLP endpoints for traces and logs:
 
 With your destinations created in the Cloudflare dashboard, update your Worker's configuration to enable telemetry export.
 
-* [  wrangler.jsonc ](#tab-panel-7454)
-* [  wrangler.toml ](#tab-panel-7455)
+* [  wrangler.jsonc ](#tab-panel-7512)
+* [  wrangler.toml ](#tab-panel-7513)
 
 JSONC
 
@@ -125,6 +125,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 

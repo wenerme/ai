@@ -26,8 +26,8 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-3438)
-* [ API ](#tab-panel-3439)
+* [ Dashboard ](#tab-panel-3444)
+* [ API ](#tab-panel-3445)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.
@@ -96,6 +96,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
 
 
 ```
+
+Explain Code
 
 You can now add this group to an Access policy using the _Rule groups_ selector.
 

@@ -24,10 +24,10 @@ Copy page
 
 Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 
-* [  JavaScript ](#tab-panel-7209)
-* [  TypeScript ](#tab-panel-7210)
-* [  Hono ](#tab-panel-7211)
-* [  Python ](#tab-panel-7212)
+* [  JavaScript ](#tab-panel-7267)
+* [  TypeScript ](#tab-panel-7268)
+* [  Hono ](#tab-panel-7269)
+* [  Python ](#tab-panel-7270)
 
 JavaScript
 
@@ -78,6 +78,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -126,6 +128,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -187,6 +191,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 Python
 

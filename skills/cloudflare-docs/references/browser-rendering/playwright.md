@@ -83,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-09",
+  "compatibility_date": "2026-04-10",
 
   "upload_source_maps": true,
 
@@ -97,6 +97,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -114,7 +116,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-09"
+compatibility_date = "2026-04-10"
 
 upload_source_maps = true
 
@@ -125,6 +127,8 @@ binding = "MYBROWSER"
 
 
 ```
+
+Explain Code
 
 Install the npm package:
 
@@ -215,6 +219,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Trace
 
 A Playwright trace is a detailed log of your workflow execution that captures information like user clicks and navigation actions, screenshots of the page, and any console messages generated and used for debugging. Developers can take a `trace.zip` file and either open it [locally ↗](https://playwright.dev/docs/trace-viewer#opening-the-trace) or upload it to the [Playwright Trace Viewer ↗](https://trace.playwright.dev/), a GUI tool that helps you explore the data.
@@ -297,6 +303,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Assertions
 
 One of the most common use cases for using Playwright is software testing. Playwright includes test assertion features in its APIs; refer to [Assertions ↗](https://playwright.dev/docs/test-assertions) in the Playwright documentation for details. Here's an example of a Worker doing `expect()` test assertions of the [todomvc ↗](https://demo.playwright.dev/todomvc) demo page:
@@ -364,6 +372,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Storage state
 
 Playwright supports [storage state ↗](https://playwright.dev/docs/api/class-browsercontext#browsercontext-storage-state) to obtain and persist cookies and other storage data. In this example, you will use storage state to persist cookies and other storage data in [Workers KV](https://developers.cloudflare.com/kv).
@@ -398,7 +408,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-09",
+  "compatibility_date": "2026-04-10",
 
   "browser": {
 
@@ -423,6 +433,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -435,7 +447,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-09"
+compatibility_date = "2026-04-10"
 
 
 [browser]
@@ -451,6 +463,8 @@ id = "<YOUR-KV-NAMESPACE-ID>"
 
 
 ```
+
+Explain Code
 
 Now, you can use the storage state to persist cookies and other storage data in KV:
 
@@ -489,6 +503,8 @@ await env.KV.put('storageState', JSON.stringify(updatedStorageState));
 
 
 ```
+
+Explain Code
 
 ### Keep Alive
 
@@ -549,6 +565,8 @@ async function reuseSameSession() {
 
 
 ```
+
+Explain Code
 
 ### Set a custom user agent
 
@@ -640,6 +658,8 @@ In order to facilitate browser session management, we have extended the Playwrig
 
 ```
 
+Explain Code
+
 Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active worker connection (`connectionId=2a2246fa-e234-4dc1-8433-87e6cee80145`), while session `565e05fb-4d2a-402b-869b-5b65b1381db7` is free. While a connection is active, no other workers may connect to that session.
 
 ### List recent sessions
@@ -682,6 +702,8 @@ Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active wor
 
 
 ```
+
+Explain Code
 
 Session `2be00a21-9fb6-4bb2-9861-8cd48e40e771` was closed explicitly with `browser.close()` by the client, while session `478f4d7d-e943-40f6-a414-837d3736a1dc` was closed due to reaching the maximum idle time (check [limits](https://developers.cloudflare.com/browser-rendering/limits/)).
 

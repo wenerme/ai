@@ -96,6 +96,8 @@ Command: exit
 
 ```
 
+Explain Code
+
 ---
 
 ## 2\. Modify the gokeyless config file and restart the service

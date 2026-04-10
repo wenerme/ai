@@ -25,8 +25,8 @@ Note
 
 It is likely preferable to use the official `Container` class, which provides helper methods and a more idiomatic API for working with containers on top of Durable Objects.
 
-* [  JavaScript ](#tab-panel-4353)
-* [  TypeScript ](#tab-panel-4354)
+* [  JavaScript ](#tab-panel-4397)
+* [  TypeScript ](#tab-panel-4398)
 
 index.js
 
@@ -54,6 +54,8 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
+Explain Code
+
 index.ts
 
 ```
@@ -80,6 +82,8 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
+
+Explain Code
 
 ## Attributes
 
@@ -229,6 +233,8 @@ try {
 
 ```
 
+Explain Code
+
 #### Parameters
 
 * `port` (number): a TCP port number to use for communication with the container.
@@ -277,6 +283,8 @@ class MyContainer extends DurableObject {
 
 
 ```
+
+Explain Code
 
 #### Parameters
 
@@ -356,6 +364,8 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/container/","name":"Durable Object Container"}}]}

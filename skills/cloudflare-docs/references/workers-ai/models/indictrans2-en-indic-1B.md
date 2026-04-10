@@ -30,9 +30,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1788)
-* [  Python ](#tab-panel-1789)
-* [  curl ](#tab-panel-1790)
+* [  TypeScript ](#tab-panel-1794)
+* [  Python ](#tab-panel-1795)
+* [  curl ](#tab-panel-1796)
 
 ```
 
@@ -74,6 +74,8 @@ export default {
 
 ```
 
+Explain Code
+
 ```
 
 import requests
@@ -106,6 +108,8 @@ print(output)
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -147,8 +151,8 @@ Translated texts
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1791)
-* [ Output ](#tab-panel-1792)
+* [ Input ](#tab-panel-1797)
+* [ Output ](#tab-panel-1798)
 
 ```
 
@@ -283,6 +287,8 @@ The following schemas are based on JSON Schema
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -317,6 +323,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

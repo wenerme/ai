@@ -85,14 +85,16 @@ export default {
 
 ```
 
+Explain Code
+
 Create database clients inside your handlers
 
 You should always create database clients inside your request handlers (`fetch`, `queue`, and similar), not in the global scope. Workers do not allow [I/O across requests](https://developers.cloudflare.com/workers/runtime-apis/bindings/#making-changes-to-bindings), and Hyperdrive's distributed connection pooling already solves for connection startup latency. Using a driver-level pool (such as `new Pool()` or `createPool()`) in the global script scope will leave you with stale connections that result in failed queries and hard errors.
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
-* [  JavaScript ](#tab-panel-4638)
-* [  TypeScript ](#tab-panel-4639)
+* [  JavaScript ](#tab-panel-4682)
+* [  TypeScript ](#tab-panel-4683)
 
 index.js
 
@@ -146,6 +148,8 @@ export default {
 
 ```
 
+Explain Code
+
 index.ts
 
 ```
@@ -197,6 +201,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Connection lifecycle considerations
 

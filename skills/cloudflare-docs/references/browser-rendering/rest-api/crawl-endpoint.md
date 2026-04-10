@@ -173,6 +173,8 @@ async function waitForCrawl(accountId, jobId, apiToken) {
 
 ```
 
+Explain Code
+
 Once the job reaches a terminal status, fetch the full results without the `limit` parameter. You can also use the following query parameters to filter and paginate results:
 
 * `cursor` — Cursor for pagination. If the response exceeds 10 MB, a `cursor` value will be included. Pass it as a query parameter to retrieve the next page of results.
@@ -266,6 +268,8 @@ Example response:
 
 
 ```
+
+Explain Code
 
 ### Errored and blocked pages
 
@@ -415,6 +419,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 ```
 
+Explain Code
+
 ## Advanced usage
 
 Looking for more parameters?
@@ -467,6 +473,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 
 ```
+
+Explain Code
 
 ### Product catalog extraction with AI
 
@@ -537,6 +545,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 ```
 
+Explain Code
+
 ### Fast static content fetch
 
 Fetch static HTML without rendering for faster crawling of static sites:
@@ -599,6 +609,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 ```
 
+Explain Code
+
 You can also use cookies or custom headers for token-based authentication:
 
 Terminal window
@@ -627,6 +639,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 
 ```
+
+Explain Code
 
 ### Wait for dynamic content
 
@@ -671,6 +685,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 ```
 
+Explain Code
+
 ### Block unnecessary resources
 
 Speed up crawling by blocking images and media. `rejectResourceTypes` is only available when `render` is `true` (the default).
@@ -707,6 +723,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 
 ```
+
+Explain Code
 
 ## Crawler behavior
 

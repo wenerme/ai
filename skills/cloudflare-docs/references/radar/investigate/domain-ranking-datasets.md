@@ -105,6 +105,8 @@ curl "https://api.cloudflare.com/client/v4/radar/ranking/top?name=top&limit=5" \
 
 ```
 
+Explain Code
+
 For more information refer to [Get top domains](https://developers.cloudflare.com/api/resources/radar/subresources/ranking/methods/top/).
 
 #### Example: Download top `x` ranking bucket file
@@ -174,6 +176,8 @@ curl "https://api.cloudflare.com/client/v4/radar/datasets?limit=10&datasetType=R
 
 
 ```
+
+Explain Code
 
 If you are interested in a specific top (like the top one million), go through the `meta.top` property. After finding the top you are looking for, get its `id` to fetch the dataset using the [GET dataset download url](https://developers.cloudflare.com/api/resources/radar/subresources/datasets/methods/download/) endpoint.
 

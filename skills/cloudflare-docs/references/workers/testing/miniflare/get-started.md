@@ -100,6 +100,8 @@ await mf.dispose();
 
 ```
 
+Explain Code
+
 The [rest of these docs](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch) go into more detail on configuring specific features.
 
 ### String and File Scripts
@@ -167,6 +169,8 @@ await mf.setOptions({
 
 
 ```
+
+Explain Code
 
 ### Dispatching Events
 
@@ -298,6 +302,8 @@ console.log(queueResult); // { outcome: "ok", retryAll: true, ackAll: false, exp
 
 ```
 
+Explain Code
+
 See [📨 Fetch Events](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch) and [⏰ Scheduled Events](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled)for more details.
 
 ### HTTP Server
@@ -339,6 +345,8 @@ console.log("Listening on :5000");
 
 
 ```
+
+Explain Code
 
 #### `Request#cf` Object
 
@@ -696,6 +704,8 @@ await mf.dispose(); // Cleanup storage database connections and watcher
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/testing/","name":"Testing"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/testing/miniflare/","name":"Miniflare"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers/testing/miniflare/get-started/","name":"Get Started"}}]}

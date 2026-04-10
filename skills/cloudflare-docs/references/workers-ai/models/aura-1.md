@@ -63,6 +63,8 @@ export default {
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -232,6 +234,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 

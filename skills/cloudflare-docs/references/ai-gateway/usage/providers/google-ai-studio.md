@@ -39,8 +39,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3076)
-* [ Unauthenticated Gateway ](#tab-panel-3077)
+* [ With Authenticated Gateway ](#tab-panel-3082)
+* [ Unauthenticated Gateway ](#tab-panel-3083)
 
 Terminal window
 
@@ -77,6 +77,8 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -109,6 +111,8 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
 
 
 ```
+
+Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -145,14 +149,16 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_name}/google-ai
 
 ```
 
+Explain Code
+
 ### `@google/genai`
 
 If you are using the `@google/genai` package, you can set your endpoint like this:
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3078)
-* [ Unauthenticated Gateway ](#tab-panel-3079)
+* [ With Authenticated Gateway ](#tab-panel-3084)
+* [ Unauthenticated Gateway ](#tab-panel-3085)
 
 ```
 
@@ -192,6 +198,8 @@ console.log(response.text);
 
 ```
 
+Explain Code
+
 ```
 
 import { GoogleGenAI } from "@google/genai";
@@ -223,6 +231,8 @@ console.log(response.text);
 
 
 ```
+
+Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -257,6 +267,8 @@ console.log(response.text);
 
 
 ```
+
+Explain Code
 
 ## OpenAI-Compatible Endpoint
 

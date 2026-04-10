@@ -97,6 +97,8 @@ export const onRequestPost = [
 
 ```
 
+Explain Code
+
 This Plugin only exposes a single route to verify an incoming Turnstile response in a `POST` as the `cf-turnstile-response` parameter. It will be available wherever it is mounted. In the example above, it is mounted in `functions/register.ts`. As a result, it will validate requests to `/register`.
 
 ## Properties

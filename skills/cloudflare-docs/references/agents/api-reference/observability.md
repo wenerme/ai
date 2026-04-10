@@ -66,8 +66,8 @@ Events are routed to eight named channels based on their type:
 
 The `subscribe()` function from `agents/observability` provides type-safe access to events on a specific channel:
 
-* [  JavaScript ](#tab-panel-2506)
-* [  TypeScript ](#tab-panel-2507)
+* [  JavaScript ](#tab-panel-2512)
+* [  TypeScript ](#tab-panel-2513)
 
 JavaScript
 
@@ -104,6 +104,8 @@ unsub();
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -139,14 +141,16 @@ unsub();
 
 ```
 
+Explain Code
+
 The callback is fully typed — `event` is narrowed to only the event types that flow through that channel.
 
 ### Raw diagnostics\_channel
 
 You can also subscribe directly using the Node.js API:
 
-* [  JavaScript ](#tab-panel-2502)
-* [  TypeScript ](#tab-panel-2503)
+* [  JavaScript ](#tab-panel-2508)
+* [  TypeScript ](#tab-panel-2509)
 
 JavaScript
 
@@ -184,8 +188,8 @@ subscribe("agents:schedule", (event) => {
 
 In production, all diagnostics channel messages are automatically forwarded to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/). No subscription code is needed in the agent itself — attach a Tail Worker and access events via `event.diagnosticsChannelEvents`:
 
-* [  JavaScript ](#tab-panel-2508)
-* [  TypeScript ](#tab-panel-2509)
+* [  JavaScript ](#tab-panel-2514)
+* [  TypeScript ](#tab-panel-2515)
 
 JavaScript
 
@@ -216,6 +220,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -245,14 +251,16 @@ export default {
 
 ```
 
+Explain Code
+
 This gives you structured, filterable observability in production with zero overhead in the agent hot path.
 
 ## Custom observability
 
 You can override the default implementation by providing your own `Observability` interface:
 
-* [  JavaScript ](#tab-panel-2510)
-* [  TypeScript ](#tab-panel-2511)
+* [  JavaScript ](#tab-panel-2516)
+* [  TypeScript ](#tab-panel-2517)
 
 JavaScript
 
@@ -285,6 +293,8 @@ class MyAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -321,10 +331,12 @@ class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 Set `observability` to `undefined` to disable all event emission:
 
-* [  JavaScript ](#tab-panel-2504)
-* [  TypeScript ](#tab-panel-2505)
+* [  JavaScript ](#tab-panel-2510)
+* [  TypeScript ](#tab-panel-2511)
 
 JavaScript
 

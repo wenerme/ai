@@ -31,8 +31,8 @@ Use `addStyleTag` to inject a `@font-face` rule into the page before capturing y
 
 ### From a CDN URL
 
-* [  JavaScript ](#tab-panel-3232)
-* [  TypeScript ](#tab-panel-3233)
+* [  JavaScript ](#tab-panel-3238)
+* [  TypeScript ](#tab-panel-3239)
 
 Example with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) and a CDN source:
 
@@ -74,6 +74,8 @@ await page.addStyleTag({
 
 ```
 
+Explain Code
+
 Example with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) and a CDN source:
 
 TypeScript
@@ -113,13 +115,15 @@ await page.addStyleTag({
 
 
 ```
+
+Explain Code
 
 ### Base64-encoded
 
 The following examples use [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), but this method works the same way with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/).
 
-* [  JavaScript ](#tab-panel-3234)
-* [  TypeScript ](#tab-panel-3235)
+* [  JavaScript ](#tab-panel-3240)
+* [  TypeScript ](#tab-panel-3241)
 
 Example with a Base64-encoded data source:
 
@@ -161,6 +165,8 @@ await page.addStyleTag({
 
 ```
 
+Explain Code
+
 Example with a Base64-encoded data source:
 
 TypeScript
@@ -200,6 +206,8 @@ await page.addStyleTag({
 
 
 ```
+
+Explain Code
 
 ## REST API
 
@@ -238,6 +246,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
+Explain Code
+
 ### Base64-encoded
 
 Terminal window
@@ -270,6 +280,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 For more details on using `addStyleTag` with the REST API, refer to [Customize CSS and embed custom JavaScript](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/#customize-css-and-embed-custom-javascript).
 

@@ -164,6 +164,8 @@ Response example
 
 ```
 
+Explain Code
+
 * Whenever you make changes to a custom hostname via dashboard, the value that is set for Minimum TLS version will apply. If you have a scenario as explained in the bullet above, the dashboard change will override the zone-level configuration that was being applied.
 * For custom hostnames with wildcards enabled, the direct custom hostname you create (for example, `saas-customer.test`) will use the hostname-specific setting, while the others (`sub1.saas-customer.test`, `sub2.saas-customer.test`, etc) will default to the zone-level setting.
 
@@ -175,8 +177,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-3366)
-* [ API ](#tab-panel-3367)
+* [ Dashboard ](#tab-panel-3372)
+* [ API ](#tab-panel-3373)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
@@ -299,6 +301,8 @@ Response example
 
 ```
 
+Explain Code
+
 1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the minimum TLS version you want to define and the same `type` and `method` values that you obtained from the previous step.
 
 Required API token permissions
@@ -336,6 +340,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 
 
 ```
+
+Explain Code
 
 ## Cipher suites
 
@@ -463,6 +469,8 @@ Response example
 
 ```
 
+Explain Code
+
 1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the list of authorized cipher suites and the same `type` and `method` values that you obtained from the previous step.
 
 Required API token permissions
@@ -506,6 +514,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 
 
 ```
+
+Explain Code
 
 Restrict cipher suites for custom hostname with custom certificate
 
@@ -625,6 +635,8 @@ Response example
 
 ```
 
+Explain Code
+
 1. After you take note of these values, make a `PATCH` request to the [Edit Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) endpoint, providing both the list of authorized cipher suites and the same `type` and `method` values that you obtained from the previous step, but also the `custom_certificate` and `custom_key`.
 
 Required API token permissions
@@ -674,6 +686,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames/$CUST
 
 
 ```
+
+Explain Code
 
 ## Alerts for mutual TLS certificates
 

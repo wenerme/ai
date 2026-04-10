@@ -276,6 +276,8 @@ API configuration example
 
 ```
 
+Explain Code
+
 Refer to [Create a rule via API](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/) for complete API examples.
 
 ```json

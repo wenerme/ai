@@ -100,6 +100,8 @@ If strict isolation of assets is required, we recommend either salting with a ra
 
 ```
 
+Explain Code
+
 To start the upload process, send a POST request to the Create Assets Upload Session [API endpoint](https://developers.cloudflare.com/api/resources/workers%5Ffor%5Fplatforms/subresources/dispatch/subresources/namespaces/subresources/scripts/subresources/asset%5Fupload/methods/create/).
 
 Terminal window
@@ -158,6 +160,8 @@ curl -X POST \
 
 
 ```
+
+Explain Code
 
 #### Generating the hash
 
@@ -324,6 +328,8 @@ curl -X PUT \
 
 ```
 
+Explain Code
+
 * The `"jwt": "<completion-token>"` links the newly uploaded files to the Worker
 * Including "html\_handling" (or other fields under "config") is optional and can customize how static files are served
 * If the user's Worker code has not changed, you can omit the code file or re-upload the same index.js
@@ -338,8 +344,8 @@ If you prefer a CLI-based approach and your platform setup allows direct publish
 
 Create or update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to specify where Wrangler should look for static files:
 
-* [  wrangler.jsonc ](#tab-panel-3382)
-* [  wrangler.toml ](#tab-panel-3383)
+* [  wrangler.jsonc ](#tab-panel-3388)
+* [  wrangler.toml ](#tab-panel-3389)
 
 JSONC
 
@@ -355,7 +361,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "assets": {
 
@@ -370,6 +376,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -382,7 +390,7 @@ main = "./src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [assets]

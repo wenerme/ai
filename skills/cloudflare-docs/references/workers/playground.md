@@ -80,6 +80,8 @@ export default {
 
 ```
 
+Explain Code
+
 This is an example of a multi-module Worker that is receiving a [request](https://developers.cloudflare.com/workers/runtime-apis/request/), logging a message to the console, and then returning a [response](https://developers.cloudflare.com/workers/runtime-apis/response/) body containing the content from `welcome.html`.
 
 Refer to the [Fetch handler documentation](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) to learn more.

@@ -140,7 +140,8 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
    const res = await mf.dispatchFetch("http://localhost");  
    console.log(await res.text()); // "The count is 3"  
    await mf.dispose();  
-   ```
+   ```  
+   Explain Code
 * `metaProvider`  
    * The `cf` object and `X-Forwarded-Proto`/`X-Real-IP` headers can be specified when calling `dispatchFetch()` instead. A default `cf` object can be specified using the new `cf` option too.
 * `durableObjectAlarms`  

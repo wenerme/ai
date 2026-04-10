@@ -101,6 +101,8 @@ export default {
 
 ```
 
+Explain Code
+
 After you have deployed the JavaScript Worker, set a cron trigger in your Worker to run this script periodically. Refer to [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for more details.
 
 ### Deleting old deployments after a week
@@ -180,6 +182,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 After you have deployed the JavaScript Worker, you can set a cron trigger in your Worker to run this script periodically. Refer to the [Cron Triggers guide](https://developers.cloudflare.com/workers/configuration/cron-triggers/) for more details.
 
@@ -292,6 +296,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

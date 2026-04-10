@@ -30,8 +30,8 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2102)
-* [  curl ](#tab-panel-2103)
+* [  TypeScript ](#tab-panel-2108)
+* [  curl ](#tab-panel-2109)
 
 ```
 
@@ -80,6 +80,8 @@ export default {
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -126,8 +128,8 @@ The transcription
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2104)
-* [ Output ](#tab-panel-2105)
+* [ Input ](#tab-panel-2110)
+* [ Output ](#tab-panel-2111)
 
 ```
 
@@ -181,6 +183,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -262,6 +266,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

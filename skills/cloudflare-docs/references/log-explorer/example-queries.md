@@ -117,6 +117,8 @@ LIMIT 20
 
 ```
 
+Explain Code
+
 ## Find highest bandwidth consumers by URI
 
 Identify which request URIs consume the most bandwidth to pinpoint large assets or endpoints that drive the most data transfer.
@@ -173,6 +175,8 @@ LIMIT 20
 
 ```
 
+Explain Code
+
 ## Summarize CDN traffic by cache status
 
 Break down traffic by cache status and measure the average time to first byte (TTFB) for each status to evaluate cache effectiveness and identify opportunities to improve cache hit ratios.
@@ -228,6 +232,8 @@ LIMIT 10
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/log-explorer/","name":"Log Explorer"}},{"@type":"ListItem","position":3,"item":{"@id":"/log-explorer/example-queries/","name":"Example SQL queries"}}]}

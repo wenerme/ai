@@ -126,6 +126,14 @@ Returns a list of input items for a given response.
 
           - `"input_file"`
 
+        - `detail?: "low" | "high"`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
+
         - `file_data?: string`
 
           The content of the file to be sent to the model.
@@ -1124,6 +1132,14 @@ Returns a list of input items for a given response.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail?: "low" | "high"`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data?: string`
 
@@ -3197,6 +3213,14 @@ console.log(response.data);
 
             - `"input_file"`
 
+          - `detail?: "low" | "high"`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
+
           - `file_data?: string`
 
             The content of the file to be sent to the model.
@@ -4195,6 +4219,14 @@ console.log(response.data);
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail?: "low" | "high"`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data?: string`
 

@@ -26,8 +26,8 @@ File operations support both absolute and relative paths:
 * `/tmp` \- Temporary files (may be cleared)
 * `/home` \- User home directory
 
-* [  JavaScript ](#tab-panel-6401)
-* [  TypeScript ](#tab-panel-6402)
+* [  JavaScript ](#tab-panel-6445)
+* [  TypeScript ](#tab-panel-6446)
 
 JavaScript
 
@@ -75,8 +75,8 @@ await session.writeFile('src/index.js', code);  // Writes to /workspace/my-proje
 
 ## Write files
 
-* [  JavaScript ](#tab-panel-6409)
-* [  TypeScript ](#tab-panel-6410)
+* [  JavaScript ](#tab-panel-6453)
+* [  TypeScript ](#tab-panel-6454)
 
 JavaScript
 
@@ -123,6 +123,8 @@ await sandbox.writeFile("/workspace/image.png", base64, { encoding: "base64" });
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -156,10 +158,12 @@ await sandbox.writeFile('/workspace/image.png', base64, { encoding: 'base64' });
 
 ```
 
+Explain Code
+
 ## Read files
 
-* [  JavaScript ](#tab-panel-6415)
-* [  TypeScript ](#tab-panel-6416)
+* [  JavaScript ](#tab-panel-6459)
+* [  TypeScript ](#tab-panel-6460)
 
 JavaScript
 
@@ -207,6 +211,8 @@ const textAsBase64 = await sandbox.readFile("/workspace/data.txt", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -245,10 +251,12 @@ const textAsBase64 = await sandbox.readFile('/workspace/data.txt', { encoding: '
 
 ```
 
+Explain Code
+
 ## Organize files
 
-* [  JavaScript ](#tab-panel-6405)
-* [  TypeScript ](#tab-panel-6406)
+* [  JavaScript ](#tab-panel-6449)
+* [  TypeScript ](#tab-panel-6450)
 
 JavaScript
 
@@ -278,6 +286,8 @@ await sandbox.deleteFile("/workspace/temp.txt");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -306,12 +316,14 @@ await sandbox.deleteFile('/workspace/temp.txt');
 
 ```
 
+Explain Code
+
 ## Batch operations
 
 Write multiple files in parallel:
 
-* [  JavaScript ](#tab-panel-6407)
-* [  TypeScript ](#tab-panel-6408)
+* [  JavaScript ](#tab-panel-6451)
+* [  TypeScript ](#tab-panel-6452)
 
 JavaScript
 
@@ -341,6 +353,8 @@ await Promise.all(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -369,10 +383,12 @@ await Promise.all(
 
 ```
 
+Explain Code
+
 ## Check if file exists
 
-* [  JavaScript ](#tab-panel-6413)
-* [  TypeScript ](#tab-panel-6414)
+* [  JavaScript ](#tab-panel-6457)
+* [  TypeScript ](#tab-panel-6458)
 
 JavaScript
 
@@ -407,6 +423,8 @@ const sessionResult = await session.exists("/workspace/temp.txt");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -440,6 +458,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 ```
 
+Explain Code
+
 ## Best practices
 
 * **Use `/workspace`** \- Default working directory for app files
@@ -454,8 +474,8 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 Create parent directories first:
 
-* [  JavaScript ](#tab-panel-6403)
-* [  TypeScript ](#tab-panel-6404)
+* [  JavaScript ](#tab-panel-6447)
+* [  TypeScript ](#tab-panel-6448)
 
 JavaScript
 
@@ -487,8 +507,8 @@ await sandbox.writeFile('/workspace/data/file.txt', content);
 
 Use base64 for binary files:
 
-* [  JavaScript ](#tab-panel-6411)
-* [  TypeScript ](#tab-panel-6412)
+* [  JavaScript ](#tab-panel-6455)
+* [  TypeScript ](#tab-panel-6456)
 
 JavaScript
 
@@ -542,8 +562,8 @@ const file = await sandbox.readFile('/workspace/image.png', {
 
 When writing with `encoding: 'base64'`, content must contain only valid base64 characters:
 
-* [  JavaScript ](#tab-panel-6417)
-* [  TypeScript ](#tab-panel-6418)
+* [  JavaScript ](#tab-panel-6461)
+* [  TypeScript ](#tab-panel-6462)
 
 JavaScript
 
@@ -574,6 +594,8 @@ try {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -602,6 +624,8 @@ try {
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

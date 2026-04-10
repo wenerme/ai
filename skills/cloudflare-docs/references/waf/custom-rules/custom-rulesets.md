@@ -99,6 +99,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -156,6 +158,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 ```
 
+Explain Code
+
 Note
 
 Currently, zone-level custom rulesets are only available in the `http_request_firewall_custom` phase.
@@ -193,7 +197,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset you created in Step 1 (replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID).  
 Since the expression is `true`, the custom ruleset will run for all incoming requests. By default, the rule will be added at the end of the list of rules already in the ruleset.  
 Required API token permissions  
@@ -213,6 +218,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
     "description": "Execute custom ruleset"  
   }'  
 ```  
+Explain Code  
 ```  
 {  
   "result": {  
@@ -244,7 +250,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_
   "errors": [],  
   "messages": []  
 }  
-```
+```  
+Explain Code
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests in the zone. Replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID.  
 Required API token permissions  
 At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/)is required:  
@@ -270,7 +277,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
         }  
     ]  
   }'  
-```
+```  
+Explain Code
 
 ## Next steps
 

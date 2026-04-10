@@ -66,6 +66,8 @@ This would return a set of matches resembling the following, based on the distan
 
 ```
 
+Explain Code
+
 You can optionally change the number of results returned and/or whether results should include metadata and values:
 
 TypeScript
@@ -119,6 +121,8 @@ This would return a set of matches resembling the following, based on the distan
 
 
 ```
+
+Explain Code
 
 Refer to [Vectorize API](https://developers.cloudflare.com/vectorize/reference/client-api/) for additional examples.
 
@@ -176,6 +180,8 @@ const queryVector: EmbeddingResponse = await env.AI.run(
 
 
 ```
+
+Explain Code
 
 When passing the vector to the `query()` method of a Vectorize index, pass only the vector embedding itself on the `.data` sub-object, and not the top-level response.
 

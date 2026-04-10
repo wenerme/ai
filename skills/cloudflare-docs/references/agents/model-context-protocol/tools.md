@@ -28,8 +28,8 @@ Tools are defined using the `@modelcontextprotocol/sdk` package. The Agents SDK 
 
 Use `server.tool()` to register a tool on an `McpServer` instance. Each tool has a name, a description (used by the LLM to decide when to call it), an input schema defined with [Zod ↗](https://zod.dev), and a handler function.
 
-* [  JavaScript ](#tab-panel-3002)
-* [  TypeScript ](#tab-panel-3003)
+* [  JavaScript ](#tab-panel-3008)
+* [  TypeScript ](#tab-panel-3009)
 
 JavaScript
 
@@ -69,6 +69,8 @@ function createServer() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -106,6 +108,8 @@ function createServer() {
 
 
 ```
+
+Explain Code
 
 The tool handler receives the validated input and must return an object with a `content` array. Each content item has a `type` (typically `"text"`) and the corresponding data.
 
@@ -113,8 +117,8 @@ The tool handler receives the validated input and must return an object with a `
 
 Tool results are returned as an array of content parts. The most common type is `text`, but you can also return images and embedded resources.
 
-* [  JavaScript ](#tab-panel-3004)
-* [  TypeScript ](#tab-panel-3005)
+* [  JavaScript ](#tab-panel-3010)
+* [  TypeScript ](#tab-panel-3011)
 
 JavaScript
 
@@ -159,6 +163,8 @@ server.tool(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -201,6 +207,8 @@ server.tool(
 
 
 ```
+
+Explain Code
 
 Set `isError: true` to signal that the tool call failed. The LLM receives the error message and can decide how to proceed.
 
@@ -216,8 +224,8 @@ The `description` parameter is critical — it is what the LLM reads to decide w
 
 Tool inputs are defined as Zod schemas and validated automatically before the handler runs. Use Zod's `.describe()` method to give the LLM context about each parameter.
 
-* [  JavaScript ](#tab-panel-3008)
-* [  TypeScript ](#tab-panel-3009)
+* [  JavaScript ](#tab-panel-3014)
+* [  TypeScript ](#tab-panel-3015)
 
 JavaScript
 
@@ -272,6 +280,8 @@ server.tool(
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -325,12 +335,14 @@ server.tool(
 
 ```
 
+Explain Code
+
 ## Using tools with `createMcpHandler`
 
 For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/):
 
-* [  JavaScript ](#tab-panel-3006)
-* [  TypeScript ](#tab-panel-3007)
+* [  JavaScript ](#tab-panel-3012)
+* [  TypeScript ](#tab-panel-3013)
 
 JavaScript
 
@@ -375,6 +387,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -418,12 +432,14 @@ export default {
 
 ```
 
+Explain Code
+
 ## Using tools with `McpAgent`
 
 For stateful MCP servers, define tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/). Tools have access to the agent instance via `this`, which means they can read and write state.
 
-* [  JavaScript ](#tab-panel-3010)
-* [  TypeScript ](#tab-panel-3011)
+* [  JavaScript ](#tab-panel-3016)
+* [  TypeScript ](#tab-panel-3017)
 
 JavaScript
 
@@ -474,6 +490,8 @@ export class MyMCP extends McpAgent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -522,6 +540,8 @@ export class MyMCP extends McpAgent {
 
 
 ```
+
+Explain Code
 
 ## Next steps
 

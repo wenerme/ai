@@ -65,8 +65,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-3436)
-* [  wrangler.toml ](#tab-panel-3437)
+* [  wrangler.jsonc ](#tab-panel-3442)
+* [  wrangler.toml ](#tab-panel-3443)
 
 JSONC
 
@@ -82,7 +82,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "main": "index.js",
 
@@ -111,6 +111,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -123,7 +125,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 main = "index.js"
 
@@ -143,6 +145,8 @@ DEBUG = false
 
 
 ```
+
+Explain Code
 
 ### 2\. Program your business logic
 

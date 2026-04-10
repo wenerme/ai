@@ -88,6 +88,8 @@ ws.send(
 
 ```
 
+Explain Code
+
 ### Google AI Studio
 
 JavaScript
@@ -126,6 +128,8 @@ ws.send(
 
 
 ```
+
+Explain Code
 
 ### Cartesia
 
@@ -191,6 +195,8 @@ ws.send(
 
 ```
 
+Explain Code
+
 ### ElevenLabs
 
 JavaScript
@@ -243,6 +249,8 @@ ws.send(
 
 ```
 
+Explain Code
+
 ### Fal AI
 
 Fal AI supports WebSocket connections for real-time model interactions through their HTTP over WebSocket API.
@@ -286,6 +294,8 @@ ws.send(
 
 
 ```
+
+Explain Code
 
 For more information on Fal AI's WebSocket API, see their [HTTP over WebSocket documentation ↗](https://docs.fal.ai/model-apis/model-endpoints/websockets).
 
@@ -428,6 +438,8 @@ ws.onclose = () => {
 
 
 ```
+
+Explain Code
 
 #### Text-to-Speech (TTS)
 
@@ -680,6 +692,8 @@ rl.on("close", () => {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/usage/","name":"Using AI Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/usage/websockets-api/","name":"WebSockets API"}},{"@type":"ListItem","position":5,"item":{"@id":"/ai-gateway/usage/websockets-api/realtime-api/","name":"Realtime WebSockets API"}}]}

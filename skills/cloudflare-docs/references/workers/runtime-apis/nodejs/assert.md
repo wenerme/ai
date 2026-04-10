@@ -55,6 +55,8 @@ await doesNotReject(async () => {
 
 ```
 
+Explain Code
+
 Note
 
 In the Workers implementation of `assert`, all assertions run in, what Node.js calls, the strict assertion mode. In strict assertion mode, non-strict methods behave like their corresponding strict methods. For example, `deepEqual()` will behave like `deepStrictEqual()`.

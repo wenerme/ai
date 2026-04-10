@@ -88,6 +88,8 @@ export default defineConfig({
 
 ```
 
+Explain Code
+
 ## Before you continue
 
 All of the framework guides assume you already have a fundamental understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.

@@ -30,10 +30,10 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7272)
-* [  TypeScript ](#tab-panel-7273)
-* [  Python ](#tab-panel-7274)
-* [  Hono ](#tab-panel-7275)
+* [  JavaScript ](#tab-panel-7330)
+* [  TypeScript ](#tab-panel-7331)
+* [  Python ](#tab-panel-7332)
+* [  Hono ](#tab-panel-7333)
 
 JavaScript
 
@@ -68,6 +68,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -101,6 +103,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -133,6 +137,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -176,6 +182,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 External dependencies
 

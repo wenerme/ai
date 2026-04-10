@@ -37,10 +37,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-1853)
-* [  TypeScript ](#tab-panel-1854)
-* [  Python ](#tab-panel-1855)
-* [  curl ](#tab-panel-1856)
+* [  Worker (Streaming) ](#tab-panel-1859)
+* [  TypeScript ](#tab-panel-1860)
+* [  Python ](#tab-panel-1861)
+* [  curl ](#tab-panel-1862)
 
 TypeScript
 
@@ -95,6 +95,8 @@ export default {
 
 ```
 
+Explain Code
+
 ```
 
 export interface Env {
@@ -134,6 +136,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -175,6 +179,8 @@ print(result)
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -334,8 +340,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1857)
-* [ Output ](#tab-panel-1858)
+* [ Input ](#tab-panel-1863)
+* [ Output ](#tab-panel-1864)
 
 ```
 
@@ -1056,6 +1062,8 @@ The following schemas are based on JSON Schema
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -1132,6 +1140,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

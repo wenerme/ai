@@ -44,8 +44,8 @@ const stream = await sandbox.watch(path: string, options?: WatchOptions): Promis
 
 **Returns**: `Promise<ReadableStream<Uint8Array>>` — an SSE stream of `FileWatchSSEEvent` objects
 
-* [  JavaScript ](#tab-panel-6133)
-* [  TypeScript ](#tab-panel-6134)
+* [  JavaScript ](#tab-panel-6177)
+* [  TypeScript ](#tab-panel-6178)
 
 JavaScript
 
@@ -104,6 +104,8 @@ controller.abort();
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -172,6 +174,8 @@ controller.abort();
 
 ```
 
+Explain Code
+
 Note
 
 The `watch()` method is also available on sessions. When called on a session, the `sessionId` is set automatically:
@@ -225,6 +229,8 @@ type FileWatchSSEEvent =
 
 
 ```
+
+Explain Code
 
 * **`watching`** — Emitted once when the watch is established. Contains the `watchId` and the `path` being watched.
 * **`event`** — Emitted for each filesystem change. Contains the `eventType`, the `path` that changed, and whether it `isDirectory`.
@@ -294,6 +300,8 @@ interface WatchOptions {
 
 ```
 
+Explain Code
+
 Mutual exclusivity
 
 `include` and `exclude` cannot be used together. Use `include` to allowlist patterns, or `exclude` to blocklist patterns. Requests that specify both are rejected with a validation error.
@@ -350,6 +358,8 @@ for await (const event of parseSSEStream<FileWatchSSEEvent>(
 
 
 ```
+
+Explain Code
 
 ## Glob pattern support
 

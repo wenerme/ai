@@ -80,6 +80,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Deploying a Workers function in the dashboard
 
 The easiest way to start deploying your Workers function is by typing [workers.new ↗](https://workers.new/) in the browser. Log in to your account to be automatically directed to the Workers & Pages dashboard. From the Workers & Pages dashboard, write your function or use one of the [examples from the Workers documentation](https://developers.cloudflare.com/workers/examples/).
@@ -107,8 +109,8 @@ npm install
 
 To operate your Workers function alongside your Pages application, deploy it to the same custom domain as your Pages application. To do this, update the Wrangler file in your project with your account and zone details:
 
-* [  wrangler.jsonc ](#tab-panel-5478)
-* [  wrangler.toml ](#tab-panel-5479)
+* [  wrangler.jsonc ](#tab-panel-5522)
+* [  wrangler.toml ](#tab-panel-5523)
 
 JSONC
 

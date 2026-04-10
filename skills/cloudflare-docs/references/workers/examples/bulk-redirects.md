@@ -24,10 +24,10 @@ Copy page
 
 Redirect requests to certain URLs based on a mapped object to the request's URL.
 
-* [  JavaScript ](#tab-panel-7217)
-* [  TypeScript ](#tab-panel-7218)
-* [  Python ](#tab-panel-7219)
-* [  Hono ](#tab-panel-7220)
+* [  JavaScript ](#tab-panel-7275)
+* [  TypeScript ](#tab-panel-7276)
+* [  Python ](#tab-panel-7277)
+* [  Hono ](#tab-panel-7278)
 
 JavaScript
 
@@ -77,6 +77,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -125,6 +127,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -170,6 +174,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -239,6 +245,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/bulk-redirects/","name":"Bulk redirects"}}]}

@@ -150,6 +150,8 @@ export const useGetServerTime = routeLoader$(({ platform }) => {
 
 ```
 
+Explain Code
+
 ## Learn more
 
 By completing this guide, you have successfully deployed your Qwik site to Cloudflare Pages. To get started with other frameworks, [refer to the list of Framework guides](https://developers.cloudflare.com/pages/framework-guides/).

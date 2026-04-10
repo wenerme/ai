@@ -310,6 +310,8 @@ resource "cloudflare_zero_trust_gateway_policy" "policy_3" {
 
 ```
 
+Explain Code
+
 To avoid precedence calculation errors when reordering policies with Terraform, you should move one policy at a time before running `terraform plan` and `terraform apply`. If you use both Terraform and Cloudflare One or API, sync your polices with `terraform refresh` before reordering policies in Terraform. Alternatively, you can set your account to [read-only in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/api-terraform/#set-dashboard-to-read-only), only allowing changes using the API or Terraform.
 
 ```json

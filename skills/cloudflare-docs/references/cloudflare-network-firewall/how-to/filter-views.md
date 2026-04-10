@@ -53,6 +53,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
 
 ```
 
+Explain Code
+
 The example below only displays fields relevant to Network Firewall, and the filter only displays events for enabled rules.
 
 Terminal window
@@ -83,6 +85,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
 
 
 ```
+
+Explain Code
 
 ## Filter by allowed or blocked traffic
 
@@ -119,6 +123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
 
 ```
 
+Explain Code
+
 The example below only displays fields relevant to Network Firewall, and the filter only displays events where explicit action was taken. The example includes both enabled and disabled Network Firewall rules.
 
 Terminal window
@@ -149,6 +155,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
 
 
 ```
+
+Explain Code
 
 ## Filter by relevant fields to Network Firewall
 
@@ -182,6 +190,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logpush/jobs \
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-network-firewall/","name":"Cloudflare Network Firewall"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-network-firewall/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-network-firewall/how-to/filter-views/","name":"Filter different views"}}]}

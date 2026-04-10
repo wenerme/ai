@@ -33,9 +33,9 @@ OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, an
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1766)
-* [  Python ](#tab-panel-1767)
-* [  curl ](#tab-panel-1768)
+* [  TypeScript ](#tab-panel-1772)
+* [  Python ](#tab-panel-1773)
+* [  curl ](#tab-panel-1774)
 
 ```
 
@@ -60,6 +60,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -97,6 +99,8 @@ print(result)
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -277,8 +281,8 @@ This model supports three different API formats:
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1769)
-* [ Output ](#tab-panel-1770)
+* [ Input ](#tab-panel-1775)
+* [ Output ](#tab-panel-1776)
 
 ```
 
@@ -1241,6 +1245,8 @@ The following schemas are based on JSON Schema
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -1271,6 +1277,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

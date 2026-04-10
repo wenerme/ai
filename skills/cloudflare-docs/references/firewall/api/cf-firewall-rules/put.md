@@ -69,6 +69,8 @@ curl --request PUT \
 
 ```
 
+Explain Code
+
 Note
 
 `PUT` does not update the filter specified. It only looks at the filter ID (`<FILTER_ID>`) to update the rule with a new filter.
@@ -121,6 +123,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ## Update a single rule
 
@@ -177,6 +181,8 @@ curl --request PUT \
 
 ```
 
+Explain Code
+
 Response
 
 ```
@@ -219,6 +225,8 @@ Response
 
 
 ```
+
+Explain Code
 
 Note
 

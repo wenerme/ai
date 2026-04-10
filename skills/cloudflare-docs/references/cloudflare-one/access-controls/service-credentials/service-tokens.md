@@ -26,9 +26,9 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-3440)
-* [ API ](#tab-panel-3441)
-* [ Terraform (v5) ](#tab-panel-3442)
+* [ Dashboard ](#tab-panel-3446)
+* [ API ](#tab-panel-3447)
+* [ Terraform (v5) ](#tab-panel-3448)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.
@@ -68,6 +68,7 @@ Response
   "client_secret_version": 1  
 }  
 ```  
+Explain Code  
 Warning  
 This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 

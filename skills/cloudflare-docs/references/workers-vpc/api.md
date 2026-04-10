@@ -106,6 +106,8 @@ export default {
 
 ```
 
+Explain Code
+
 #### POST request with body
 
 JavaScript
@@ -169,6 +171,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 #### Request with HTTPS and IP address
 

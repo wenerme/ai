@@ -133,6 +133,8 @@ jobs:
 
 ```
 
+Explain Code
+
 In the above code block, you have set up an Action that runs when you push code to the repository. Replace `YOUR_PROJECT_NAME` with your Cloudflare Pages project name and `YOUR_DIRECTORY_OF_STATIC_ASSETS` with your project's output directory, respectively.
 
 The `${{ secrets.GITHUB_TOKEN }}` will be automatically provided by GitHub Actions with the `contents: read` and `deployments: write` permission. This will enable our Cloudflare Pages action to create a Deployment on your behalf.
@@ -203,6 +205,8 @@ workflows:
 
 ```
 
+Explain Code
+
 Your continuous integration workflow is broken down into jobs when using CircleCI. From the code block above, you can see that you first define a list of jobs that run on each commit. For example, your repository will run on a prebuilt docker image `cimg/node:18.7.0`. It first checks out the repository with the Node version specified in the image.
 
 Note
@@ -263,6 +267,8 @@ env:
 
 
 ```
+
+Explain Code
 
 This will set the Node.js version to 18\. You have also set branches you want your continuous integration to run on. Finally, input your `PROJECT NAME` in the script section and your CI process should work as expected.
 

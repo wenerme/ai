@@ -53,6 +53,8 @@ MyContainer.outbound = async (request, env, ctx) => {
 
 ```
 
+Explain Code
+
 TLS support coming soon
 
 Containers currently only intercept HTTP traffic. HTTPS interception is coming soon. This will enable using Workers as a transparent proxy for credential injection.
@@ -87,6 +89,8 @@ MyContainer.outboundByHost = {
 
 
 ```
+
+Explain Code
 
 The container calls `http://my.worker` and the handler runs entirely inside the Workers runtime, outside of the container sandbox.
 
@@ -135,6 +139,8 @@ MyContainer.outboundByHost = {
 
 
 ```
+
+Explain Code
 
 The container calls `http://my.kv/some-key` and the outbound handler resolves it using the KV binding.
 
@@ -220,6 +226,8 @@ async setUpContainer(req, env) {
 
 ```
 
+Explain Code
+
 ## Low-level API
 
 To configure outbound interception directly on `ctx.container`, use `interceptOutboundHttp` for a specific IP or CIDR range, or `interceptAllOutboundHttp` for all traffic. Both accept a `WorkerEntrypoint`.
@@ -255,6 +263,8 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 ```
 
+Explain Code
+
 You can call these methods before or after starting the container, and even while connections are open. In-flight TCP connections pick up the new handler automatically — no connections are dropped.
 
 JavaScript
@@ -282,6 +292,8 @@ await this.ctx.container.interceptOutboundHttp("203.0.113.0/24", updated);
 
 
 ```
+
+Explain Code
 
 The `Container` class will call these methods automatically when using the various functions shown above.
 

@@ -209,8 +209,8 @@ bun add -d wrangler@latest
 ```
 3. **Add a Wrangler configuration file**  
 In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:  
-   * [  wrangler.jsonc ](#tab-panel-7408)  
-   * [  wrangler.toml ](#tab-panel-7409)  
+   * [  wrangler.jsonc ](#tab-panel-7466)  
+   * [  wrangler.toml ](#tab-panel-7467)  
 JSONC  
 ```  
 {  
@@ -218,7 +218,7 @@ JSONC
   "main": ".open-next/worker.js",  
   "name": "my-app",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-10",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -228,18 +228,20 @@ JSONC
   }  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 main = ".open-next/worker.js"  
 name = "my-app"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-10"  
 compatibility_flags = [ "nodejs_compat" ]  
 [assets]  
 directory = ".open-next/assets"  
 binding = "ASSETS"  
 ```  
+Explain Code  
 Note  
 As shown above, you must enable the [nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) _and_ set your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) to `2024-09-23` or later for your Next.js app to work with @opennextjs/cloudflare.
 4. **Add a configuration file for OpenNext**  

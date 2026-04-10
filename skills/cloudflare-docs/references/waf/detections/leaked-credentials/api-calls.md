@@ -219,6 +219,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-chec
 
 ```
 
+Explain Code
+
 ### Delete a custom detection location
 
 To delete a custom detection location, use a `DELETE` request similar to the following:

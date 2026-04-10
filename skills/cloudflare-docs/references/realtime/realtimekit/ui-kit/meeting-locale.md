@@ -180,6 +180,8 @@ To replace RealtimeKit's default locale with your own, create a custom language 
 
 ```
 
+Explain Code
+
 The `useLanguage` function takes in your custom locale object as an argument and generates a function that retrieves the value associated with the provided key.
 
 ```
@@ -257,6 +259,8 @@ function App() {
 
 ```
 
+Explain Code
+
 The `useLanguage` hook takes in your custom locale object as an argument and generates a function that retrieves the value associated with the provided key.
 
 TypeScript
@@ -325,6 +329,8 @@ export class MeetingComponent implements OnInit {
 
 ```
 
+Explain Code
+
 The `useLanguage` function takes in your custom locale object as an argument and generates a function that retrieves the value associated with the provided key.
 
 Create an ARB JSON file with a `@locale` key and the string keys you want to override. Add the file to your Flutter assets.
@@ -363,6 +369,8 @@ Create an ARB JSON file with a `@locale` key and the string keys you want to ove
 
 
 ```
+
+Explain Code
 
 **2\. Register the asset** in `pubspec.yaml`:
 
@@ -457,6 +465,8 @@ function App() {
 
 ```
 
+Explain Code
+
 The `useLanguage` function merges your overrides with the defaults. Any key you do not override keeps its English default value.
 
 ## Use custom locale with UI provider
@@ -515,6 +525,8 @@ You can also pass the custom language pack to the UI provider component when bui
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -589,6 +601,8 @@ function App() {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -652,6 +666,8 @@ export class MeetingComponent implements OnInit {
 
 
 ```
+
+Explain Code
 
 ## Default language reference
 
@@ -1485,6 +1501,8 @@ Here is the complete default language pack offered by RealtimeKit:
 
 
 ```
+
+Explain Code
 
 You can override any of these keys in your custom language pack. For example, to translate the interface to Spanish:
 

@@ -22,8 +22,8 @@ Note
 
 For additional context on creating a waiting room, refer to [Get started](https://developers.cloudflare.com/waiting-room/get-started/).
 
-* [ Dashboard ](#tab-panel-6909)
-* [ API ](#tab-panel-6910)
+* [ Dashboard ](#tab-panel-6967)
+* [ API ](#tab-panel-6968)
 
 1. Within your application, go to **Traffic** \> **Waiting Room**.
 2. Select **Create**.
@@ -96,6 +96,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms" \
 
 ```
 
+Explain Code
+
 The response contains the complete definition of the newly created Waiting Room.
 
 Response
@@ -160,6 +162,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waiting-room/","name":"Waiting Room"}},{"@type":"ListItem","position":3,"item":{"@id":"/waiting-room/how-to/","name":"How to"}},{"@type":"ListItem","position":4,"item":{"@id":"/waiting-room/how-to/create-waiting-room/","name":"Create a waiting room"}}]}

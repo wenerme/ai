@@ -24,9 +24,9 @@ For additional commonly used network policy examples, refer to [Common network p
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-5279)
-* [ API ](#tab-panel-5280)
-* [ Terraform ](#tab-panel-5281)
+* [ Dashboard ](#tab-panel-5323)
+* [ API ](#tab-panel-5324)
+* [ Terraform ](#tab-panel-5325)
 
 | Selector         | Operator    | Value                               | Logic | Action |
 | ---------------- | ----------- | ----------------------------------- | ----- | ------ |
@@ -72,6 +72,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "quarantined_users_net_restricted_access" {
@@ -99,15 +101,17 @@ resource "cloudflare_zero_trust_gateway_policy" "quarantined_users_net_restricte
 
 ```
 
+Explain Code
+
 ## Posture-Fail-NET-Restricted-Access
 
 Restrict access for devices where baseline posture checks have not passed. If posture checks are integrated with service providers such as Crowdstrike or Intune via the API, this policy dynamically blocks access for devices that do not meet predetermined security requirements.
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-5282)
-* [ API ](#tab-panel-5283)
-* [ Terraform ](#tab-panel-5284)
+* [ Dashboard ](#tab-panel-5326)
+* [ API ](#tab-panel-5327)
+* [ Terraform ](#tab-panel-5328)
 
 | Selector                     | Operator    | Value                               | Logic | Action |
 | ---------------------------- | ----------- | ----------------------------------- | ----- | ------ |
@@ -153,6 +157,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "posture_fail_net_restricted_access" {
@@ -180,15 +186,17 @@ resource "cloudflare_zero_trust_gateway_policy" "posture_fail_net_restricted_acc
 
 ```
 
+Explain Code
+
 You can add a number of Cloudflare One Client device posture checks as needed, such as [Disk encryption](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/disk-encryption/) and [Domain joined](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/domain-joined/). For more information on device posture checks, refer to [Enforce device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 ## FinanceUsers-NET-HTTPS-FinanceServers (example)
 
 Allow HTTPS access for user groups. For example, the following policy gives finance users access to any known financial applications:
 
-* [ Dashboard ](#tab-panel-5285)
-* [ API ](#tab-panel-5286)
-* [ Terraform ](#tab-panel-5287)
+* [ Dashboard ](#tab-panel-5329)
+* [ API ](#tab-panel-5330)
+* [ Terraform ](#tab-panel-5331)
 
 | Selector         | Operator | Value             | Logic | Action |
 | ---------------- | -------- | ----------------- | ----- | ------ |
@@ -232,6 +240,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "finance_users_net_https_finance_servers" {
@@ -259,15 +269,17 @@ resource "cloudflare_zero_trust_gateway_policy" "finance_users_net_https_finance
 
 ```
 
+Explain Code
+
 ## All-NET-Internet-Blocklist
 
 Block traffic to destination IPs, SNIs, and SNI domains that are malicious or pose a threat to your organization.
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-5288)
-* [ API ](#tab-panel-5289)
-* [ Terraform ](#tab-panel-5290)
+* [ Dashboard ](#tab-panel-5332)
+* [ API ](#tab-panel-5333)
+* [ Terraform ](#tab-panel-5334)
 
 | Selector       | Operator | Value              | Logic | Action |
 | -------------- | -------- | ------------------ | ----- | ------ |
@@ -310,6 +322,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "finance_users_net_https_finance_servers" {
@@ -335,6 +349,8 @@ resource "cloudflare_zero_trust_gateway_policy" "finance_users_net_https_finance
 
 ```
 
+Explain Code
+
 Note
 
 The **Detected Protocol** selector is only available for Enterprise users. For more information, refer to [Protocol detection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/).
@@ -345,9 +361,9 @@ Allow SSH traffic to specific endpoints on the Internet for specific users. You 
 
 Optionally, you can include a selector to filter by source IP or IdP group.
 
-* [ Dashboard ](#tab-panel-5291)
-* [ API ](#tab-panel-5292)
-* [ Terraform ](#tab-panel-5293)
+* [ Dashboard ](#tab-panel-5335)
+* [ API ](#tab-panel-5336)
+* [ Terraform ](#tab-panel-5337)
 
 | Selector          | Operator | Value               | Logic | Action |
 | ----------------- | -------- | ------------------- | ----- | ------ |
@@ -393,6 +409,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_net_ssh_internet_allowlist" {
@@ -420,13 +438,15 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_ssh_internet_allowlist"
 
 ```
 
+Explain Code
+
 ## All-NET-NO-HTTP-HTTPS-Internet-Deny
 
 Block all non-web traffic towards the Internet. By using the **Detected Protocol** selector, you will ensure alternative ports for HTTP and HTTPS are allowed.
 
-* [ Dashboard ](#tab-panel-5294)
-* [ API ](#tab-panel-5295)
-* [ Terraform ](#tab-panel-5296)
+* [ Dashboard ](#tab-panel-5338)
+* [ API ](#tab-panel-5339)
+* [ Terraform ](#tab-panel-5340)
 
 | Selector          | Operator    | Value             | Logic | Action |
 | ----------------- | ----------- | ----------------- | ----- | ------ |
@@ -468,6 +488,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_net_no_http_https_internet_deny" {
@@ -493,13 +515,15 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_no_http_https_internet_
 
 ```
 
+Explain Code
+
 ## All-NET-InternalNetwork-ImplicitDeny
 
 Implicitly deny all of your internal IP ranges included in a list. We recommend you place this policy at the [bottom of your policy list](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#order-of-precedence) to ensure you explicitly approve traffic defined in the above policies.
 
-* [ Dashboard ](#tab-panel-5297)
-* [ API ](#tab-panel-5298)
-* [ Terraform ](#tab-panel-5299)
+* [ Dashboard ](#tab-panel-5341)
+* [ API ](#tab-panel-5342)
+* [ Terraform ](#tab-panel-5343)
 
 | Selector       | Operator | Value                  | Action |
 | -------------- | -------- | ---------------------- | ------ |
@@ -540,6 +564,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_net_internalnetwork_implicitdeny" {
@@ -565,15 +591,17 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_internalnetwork_implici
 
 ```
 
+Explain Code
+
 ## All-NET-ApplicationAccess-Allow
 
 Only allow network traffic from known and approved devices.
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-* [ Dashboard ](#tab-panel-5300)
-* [ API ](#tab-panel-5301)
-* [ Terraform ](#tab-panel-5302)
+* [ Dashboard ](#tab-panel-5344)
+* [ API ](#tab-panel-5345)
+* [ Terraform ](#tab-panel-5346)
 
 | Selector                     | Operator | Value                   | Logic | Action |
 | ---------------------------- | -------- | ----------------------- | ----- | ------ |
@@ -617,6 +645,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 ```
@@ -645,6 +675,8 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_applicationaccess_allow
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-network-policies/","name":"Build network security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/","name":"Recommended network policies"}}]}

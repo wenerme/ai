@@ -69,6 +69,8 @@ The client source IP and port is encoded in a fixed-length, 38-octet long header
 
 ```
 
+Explain Code
+
 The contents of the header are below.
 
 ## Magic Number

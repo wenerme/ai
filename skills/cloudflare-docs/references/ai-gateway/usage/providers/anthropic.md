@@ -35,8 +35,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3072)
-* [ Unauthenticated Gateway ](#tab-panel-3073)
+* [ With Authenticated Gateway ](#tab-panel-3078)
+* [ Unauthenticated Gateway ](#tab-panel-3079)
 
 Terminal window
 
@@ -69,6 +69,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -97,6 +99,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 
 ```
+
+Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -128,13 +132,15 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic/v1
 
 
 ```
+
+Explain Code
 
 ### Anthropic SDK
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3074)
-* [ Unauthenticated Gateway ](#tab-panel-3075)
+* [ With Authenticated Gateway ](#tab-panel-3080)
+* [ Unauthenticated Gateway ](#tab-panel-3081)
 
 ```
 
@@ -172,6 +178,8 @@ const message = await anthropic.messages.create({
 
 ```
 
+Explain Code
+
 ```
 
 import Anthropic from "@anthropic-ai/sdk";
@@ -201,6 +209,8 @@ const message = await anthropic.messages.create({
 
 
 ```
+
+Explain Code
 
 With Stored Keys (BYOK) / Unified Billing
 
@@ -237,6 +247,8 @@ const message = await anthropic.messages.create({
 
 
 ```
+
+Explain Code
 
 ## OpenAI-Compatible Endpoint
 

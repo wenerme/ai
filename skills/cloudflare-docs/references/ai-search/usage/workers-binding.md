@@ -24,8 +24,8 @@ Cloudflare’s serverless platform allows you to run code at the edge to build f
 
 To use your AI Search with Workers or Pages, create an AI binding either in the Cloudflare dashboard (refer to [AI bindings](https://developers.cloudflare.com/pages/functions/bindings/#workers-ai) for instructions), or you can update your [Wrangler file](https://developers.cloudflare.com/workers/wrangler/configuration/). To bind AI Search to your Worker, add the following to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-3099)
-* [  wrangler.toml ](#tab-panel-3100)
+* [  wrangler.jsonc ](#tab-panel-3105)
+* [  wrangler.toml ](#tab-panel-3106)
 
 JSONC
 
@@ -97,6 +97,8 @@ const answer = await env.AI.autorag("my-autorag").aiSearch({
 
 
 ```
+
+Explain Code
 
 ### Parameters
 
@@ -235,6 +237,8 @@ This is the response structure without `stream` enabled.
 
 ```
 
+Explain Code
+
 ## `search()`
 
 This method searches for results from your corpus and returns the relevant results, for the AI Search instance named `my-autorag`:
@@ -269,6 +273,8 @@ const answer = await env.AI.autorag("my-autorag").search({
 
 
 ```
+
+Explain Code
 
 ### Parameters
 
@@ -380,6 +386,8 @@ For the full list of optional parameters, refer to the [Search API reference](ht
 
 
 ```
+
+Explain Code
 
 ## Local development
 

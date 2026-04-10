@@ -99,6 +99,8 @@ If you want to use JA4 fingerprints and Signals Intelligence, your Workers scrip
 
 ```
 
+Explain Code
+
 When JA4 Signals are missing, the output appears as follows:
 
 ```

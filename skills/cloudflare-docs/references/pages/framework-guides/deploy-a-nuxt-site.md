@@ -196,14 +196,16 @@ declare module "h3" {
 
 ```
 
+Explain Code
+
 ### Access bindings in your Nuxt application
 
 In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nuxt.com/docs/guide/directory-structure/server#server-directory). The `defineEventHandler()` method is used to define your API endpoints in which you can access Cloudflare's context via the provided `context` field. The `context` field allows you to access any bindings set for your application.
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 
-* [  JavaScript ](#tab-panel-5431)
-* [  TypeScript ](#tab-panel-5432)
+* [  JavaScript ](#tab-panel-5475)
+* [  TypeScript ](#tab-panel-5476)
 
 JavaScript
 

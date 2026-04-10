@@ -69,6 +69,8 @@ export default defineWorkersConfig({
 
 ```
 
+Explain Code
+
 ### Add the Agent configuration
 
 Add a `durableObjects` configuration to `vitest.config.js` with the name of your Agent class:
@@ -110,6 +112,8 @@ export default defineWorkersConfig({
 
 
 ```
+
+Explain Code
 
 ### Write a test
 
@@ -186,6 +190,8 @@ describe("make a request to my Agent", () => {
 
 
 ```
+
+Explain Code
 
 ### Run tests
 

@@ -37,10 +37,10 @@ To serve images from a custom domain:
 2. Select **Create application** \> **Workers** \> **Create Worker** and create your Worker.
 3. In your Worker, select **Quick edit** and paste the following code.
 
-* [  JavaScript ](#tab-panel-7299)
-* [  TypeScript ](#tab-panel-7300)
-* [  Hono ](#tab-panel-7301)
-* [  Python ](#tab-panel-7302)
+* [  JavaScript ](#tab-panel-7357)
+* [  TypeScript ](#tab-panel-7358)
+* [  Hono ](#tab-panel-7359)
+* [  Python ](#tab-panel-7360)
 
 JavaScript
 
@@ -72,6 +72,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -101,6 +103,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -148,6 +152,8 @@ export default app;
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -176,6 +182,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 Another way you can serve images from a custom domain is by using the `cdn-cgi/imagedelivery` prefix path which is used as path to trigger `cdn-cgi` image proxy.
 

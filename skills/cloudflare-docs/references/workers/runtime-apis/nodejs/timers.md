@@ -24,8 +24,8 @@ Use [node:timers ↗](https://nodejs.org/api/timers.html) APIs to schedule funct
 
 This includes [setTimeout ↗](https://nodejs.org/api/timers.html#settimeoutcallback-delay-args) for calling a function after a delay,[setInterval ↗](https://nodejs.org/api/timers.html#clearintervaltimeout) for calling a function repeatedly, and [setImmediate ↗](https://nodejs.org/api/timers.html#setimmediatecallback-args) for calling a function in the next iteration of the event loop.
 
-* [  JavaScript ](#tab-panel-7604)
-* [  TypeScript ](#tab-panel-7605)
+* [  JavaScript ](#tab-panel-7664)
+* [  TypeScript ](#tab-panel-7665)
 
 index.js
 
@@ -74,6 +74,8 @@ export default {
 
 ```
 
+Explain Code
+
 index.ts
 
 ```
@@ -120,6 +122,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

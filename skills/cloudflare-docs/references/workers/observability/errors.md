@@ -86,6 +86,8 @@ export default {
 
 ```
 
+Explain Code
+
 You can prevent this by enforcing the [no-floating-promises eslint rule ↗](https://typescript-eslint.io/rules/no-floating-promises/), which reports when a Promise is created and not properly handled.
 
 #### Cause 2: WebSocket connections that are never closed
@@ -133,6 +135,8 @@ async function handleRequest(request) {
 
 ```
 
+Explain Code
+
 ### "Illegal invocation" errors
 
 The error message `TypeError: Illegal invocation: function called with incorrect this reference` can be a source of confusion.
@@ -170,6 +174,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Avoid destructuring or re-bind the function to the original context to avoid the error.
 
@@ -209,6 +215,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ### Cannot perform I/O on behalf of a different request
 
@@ -255,6 +263,8 @@ export default {
 
 ```
 
+Explain Code
+
 You can fix this by instead storing only the data in global scope, rather than the I/O object itself:
 
 JavaScript
@@ -286,6 +296,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 If you need to share state across requests, consider using [Durable Objects](https://developers.cloudflare.com/durable-objects/). If you need to cache data across requests, consider using [Workers KV](https://developers.cloudflare.com/kv/).
 
@@ -381,8 +393,8 @@ A Worker can make HTTP requests to any HTTP service on the public Internet. You 
 
 When using an external logging strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, pass the request promise to [event.waitUntil() ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
-* [  Module Worker ](#tab-panel-7468)
-* [  Service Worker ](#tab-panel-7469)
+* [  Module Worker ](#tab-panel-7506)
+* [  Service Worker ](#tab-panel-7507)
 
 JavaScript
 
@@ -417,6 +429,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Service Workers are deprecated
 
@@ -462,6 +476,8 @@ function postLog(data) {
 
 ```
 
+Explain Code
+
 ## Collect and persist Wasm core dumps
 
 Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-coredump) to collect coredumps from your Rust Workers applications and persist them to logs, Sentry, or R2 for analysis with [wasmgdb ↗](https://github.com/xtuc/wasm-coredump/tree/main/bin/wasmgdb). Read the [blog post ↗](https://blog.cloudflare.com/wasm-coredumps/) for more details.
@@ -470,8 +486,8 @@ Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-cor
 
 By using [event.passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception), a Workers application will forward requests to your origin if an exception is thrown during the Worker's execution. This allows you to add logging, tracking, or other features with Workers, without degrading your application's functionality.
 
-* [  Module Worker ](#tab-panel-7470)
-* [  Service Worker ](#tab-panel-7471)
+* [  Module Worker ](#tab-panel-7508)
+* [  Service Worker ](#tab-panel-7509)
 
 JavaScript
 
@@ -523,6 +539,8 @@ async function handleRequest(request) {
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

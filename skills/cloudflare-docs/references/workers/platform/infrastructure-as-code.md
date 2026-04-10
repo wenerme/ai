@@ -119,6 +119,8 @@ resource "cloudflare_workers_deployment" "my_worker_deployment" {
 
 ```
 
+Explain Code
+
 Notice how you do not have to manage all of these resources in Terraform. For example, you could use just the `cloudflare_worker` resource and seamlessly use Wrangler or your own deployment tools for Versions or Deployments.
 
 ## Bindings in Terraform
@@ -564,12 +566,14 @@ resource "cloudflare_worker_version" "my_worker_version" {
 
 ```
 
+Explain Code
+
 ## Cloudflare API Libraries
 
 This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
-* [  JavaScript ](#tab-panel-7498)
-* [  TypeScript ](#tab-panel-7499)
+* [  JavaScript ](#tab-panel-7558)
+* [  TypeScript ](#tab-panel-7559)
 
 JavaScript
 
@@ -873,6 +877,8 @@ main();
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1170,6 +1176,8 @@ main();
 
 ```
 
+Explain Code
+
 ## Cloudflare REST API
 
 Open a terminal or create a shell script to upload a Worker and manage versions and deployments with curl. Workers scripts are JavaScript [ES Modules ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), but we also support [Python Workers](https://developers.cloudflare.com/workers/languages/python/) (open beta) and [Rust Workers](https://developers.cloudflare.com/workers/languages/rust/).
@@ -1178,8 +1186,8 @@ Warning
 
 This API is in beta. See the multipart/form-data API below for the stable API.
 
-* [ ES Module ](#tab-panel-7494)
-* [ Python ](#tab-panel-7495)
+* [ ES Module ](#tab-panel-7554)
+* [ Python ](#tab-panel-7555)
 
 Terminal window
 
@@ -1331,6 +1339,8 @@ echo "\nDeployment ID: $deployment_id\n"
 
 
 ```
+
+Explain Code
 
 [Python Workers](https://developers.cloudflare.com/workers/languages/python/) have their own special `text/x-python` content type and `python_workers` compatibility flag.
 
@@ -1490,12 +1500,14 @@ echo "\nDeployment ID: $deployment_id\n"
 
 ```
 
+Explain Code
+
 ### multipart/form-data upload API
 
 This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
-* [ Workers ](#tab-panel-7496)
-* [ Workers for Platforms ](#tab-panel-7497)
+* [ Workers ](#tab-panel-7556)
+* [ Workers for Platforms ](#tab-panel-7557)
 
 Terminal window
 
@@ -1557,6 +1569,8 @@ EOF
 
 
 ```
+
+Explain Code
 
 For [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms), you can upload a [User Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) to a [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Note the [API endpoint](https://developers.cloudflare.com/api/resources/workers%5Ffor%5Fplatforms/subresources/dispatch/subresources/namespaces/subresources/scripts/methods/update/) is on `/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME`.
 
@@ -1640,6 +1654,8 @@ EOF
 
 ```
 
+Explain Code
+
 ### Python Workers
 
 [Python Workers](https://developers.cloudflare.com/workers/languages/python/) (open beta) have their own special `text/x-python` content type and `python_workers` compatibility flag for uploading using the multipart/form-data API.
@@ -1697,6 +1713,8 @@ EOF
 
 
 ```
+
+Explain Code
 
 ## Considerations with Durable Objects
 
@@ -1756,6 +1774,8 @@ resource "cloudflare_workers_deployment" "my_worker_deployment" {
 
 
 ```
+
+Explain Code
 
 To make this succeed, you first have to comment out the `durable_object` binding block, apply the plan, uncomment it, comment out the `migrations` block, then apply again. This time the plan will succeed. This also applies to the API or SDKs. This is an example where it makes sense to just manage the `cloudflare_worker` and/or `cloudflare_workers_deployment` resources while using Wrangler for build and Version management.
 
@@ -1822,6 +1842,8 @@ resource "cloudflare_worker_version" "content_file_example" {
 
 ```
 
+Explain Code
+
 **Using `content_base64`:**
 
 ```
@@ -1848,6 +1870,8 @@ resource "cloudflare_worker_version" "content_base64_example" {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/platform/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/platform/infrastructure-as-code/","name":"Infrastructure as Code (IaC)"}}]}

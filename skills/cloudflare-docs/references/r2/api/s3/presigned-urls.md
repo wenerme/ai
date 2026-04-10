@@ -38,9 +38,9 @@ Presigned URLs are generated client-side with no communication with R2, requirin
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-5748)
-* [ Python ](#tab-panel-5749)
-* [ CLI ](#tab-panel-5750)
+* [ JavaScript ](#tab-panel-5792)
+* [ Python ](#tab-panel-5793)
+* [ CLI ](#tab-panel-5794)
 
 TypeScript
 
@@ -112,6 +112,8 @@ const putUrl = await getSignedUrl(
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -178,6 +180,8 @@ put_url = s3.generate_presigned_url(
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -204,6 +208,8 @@ aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
 
 
 ```
+
+Explain Code
 
 For complete examples and additional operations, refer to the SDK-specific documentation:
 

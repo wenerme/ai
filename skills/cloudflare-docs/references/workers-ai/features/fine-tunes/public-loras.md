@@ -88,6 +88,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/@cf/mistr
 
 ```
 
+Explain Code
+
 ### JavaScript
 
 JavaScript
@@ -120,6 +122,8 @@ const answer = await env.AI.run("@cf/mistral/mistral-7b-instruct-v0.1", {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-ai/features/fine-tunes/","name":"Fine-tunes"}},{"@type":"ListItem","position":5,"item":{"@id":"/workers-ai/features/fine-tunes/public-loras/","name":"Public LoRA adapters"}}]}

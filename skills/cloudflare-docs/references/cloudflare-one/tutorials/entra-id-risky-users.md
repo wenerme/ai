@@ -96,7 +96,7 @@ JSONC
   "$schema": "./node_modules/wrangler/config-schema.json",  
   "name": "risky-users",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-06",  
+  "compatibility_date": "2026-04-10",  
   "main": "src/index.js",  
   "workers_dev": false,  
   "account_id": "<ACCOUNT-ID>",  
@@ -109,12 +109,13 @@ JSONC
   },  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "risky-users"  
 # Set this to today's date  
-compatibility_date = "2026-04-06"  
+compatibility_date = "2026-04-10"  
 main = "src/index.js"  
 workers_dev = false  
 account_id = "<ACCOUNT-ID>"  
@@ -123,7 +124,8 @@ AZURE_AD_TENANT_ID = "<TENANT-ID>"
 AZURE_AD_CLIENT_ID = "<CLIENT-ID>"  
 [triggers]  
 crons = [ "* * * * *" ]  
-```
+```  
+Explain Code
 
 Note
 

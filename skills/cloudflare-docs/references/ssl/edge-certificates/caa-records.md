@@ -86,6 +86,8 @@ Terminal window
 
 ```
 
+Explain Code
+
 Note
 
 This list is not exhaustive, and other CAs might be added or removed for operational reasons.
@@ -94,8 +96,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-6553)
-* [ API ](#tab-panel-6554)
+* [ Dashboard ](#tab-panel-6603)
+* [ API ](#tab-panel-6604)
 
 To add a CAA record in the dashboard,
 

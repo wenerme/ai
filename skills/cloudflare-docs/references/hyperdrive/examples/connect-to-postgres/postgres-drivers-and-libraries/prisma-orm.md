@@ -91,8 +91,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4809)
-* [  wrangler.toml ](#tab-panel-4810)
+* [  wrangler.jsonc ](#tab-panel-4853)
+* [  wrangler.toml ](#tab-panel-4854)
 
 JSONC
 
@@ -110,7 +110,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -129,6 +129,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -137,7 +139,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -206,6 +208,8 @@ model User {
 
 
 ```
+
+Explain Code
 
 ### 2.3\. Set up environment variables
 
@@ -330,6 +334,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Note
 

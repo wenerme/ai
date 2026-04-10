@@ -52,9 +52,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-3428)
-* [ API ](#tab-panel-3429)
-* [ Terraform ](#tab-panel-3430)
+* [ Dashboard ](#tab-panel-3434)
+* [ API ](#tab-panel-3435)
+* [ Terraform ](#tab-panel-3436)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -114,6 +114,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/t
 
 ```
 
+Explain Code
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -136,15 +138,16 @@ resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target"
       }  
     }  
 }  
-```
+```  
+Explain Code
 
 Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-3431)
-* [ API ](#tab-panel-3432)
-* [ Terraform (v4) ](#tab-panel-3433)
+* [ Dashboard ](#tab-panel-3437)
+* [ API ](#tab-panel-3438)
+* [ Terraform (v4) ](#tab-panel-3439)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.
@@ -258,6 +261,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps" \
 
 ```
 
+Explain Code
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -279,7 +284,8 @@ resource "cloudflare_zero_trust_access_application" "infra-app" {
     }  
   }  
 }  
-```
+```  
+Explain Code
 3. Use the [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource to add an infrastructure policy to the application:  
 ```  
 resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {  
@@ -297,7 +303,8 @@ resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {
     }  
   }  
 }  
-```
+```  
+Explain Code
 
 The targets in this application are now secured by your infrastructure policies.
 

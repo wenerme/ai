@@ -124,6 +124,8 @@ Response
 
 ```
 
+Explain Code
+
 1. Take note of the `id` assigned to the prefix you added. It will be used in future steps.
 
 Letter of Agency (LOA)
@@ -133,8 +135,8 @@ The process described on this page leverages automated [LOA](https://developers.
 ### Validate prefix ownership
 
 1. Validate prefix ownership using one of the following methods:  
-   * [ IRR record ](#tab-panel-3294)  
-   * [ Reverse DNS zone and TXT record ](#tab-panel-3295)  
+   * [ IRR record ](#tab-panel-3300)  
+   * [ Reverse DNS zone and TXT record ](#tab-panel-3301)  
    1. Copy the `ownership_validation_token` returned by the API call.  
    2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.  
 ```  
@@ -351,6 +353,8 @@ In the response body, the initial provisioning state should be `provisioning`.
 
 
 ```
+
+Explain Code
 
 Once a service binding is created (or deleted), it will take **four to six hours** to propagate across Cloudflare's global network.
 

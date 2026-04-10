@@ -29,8 +29,8 @@ Once stopped, the instance is replaced with a new instance running the updated c
 
 Here is an example configuration that sets a 5 minute grace period and a two step rollout where the first step updates 10% of instances and the second step updates 100% of instances:
 
-* [  wrangler.jsonc ](#tab-panel-4031)
-* [  wrangler.toml ](#tab-panel-4032)
+* [  wrangler.jsonc ](#tab-panel-4075)
+* [  wrangler.toml ](#tab-panel-4076)
 
 JSONC
 
@@ -99,6 +99,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -131,6 +133,8 @@ new_sqlite_classes = [ "MyContainer" ]
 
 
 ```
+
+Explain Code
 
 ## Immediate rollouts
 

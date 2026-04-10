@@ -49,8 +49,8 @@ To configure Workers Logpush for AI Gateway, follow these steps:
 
 You need to generate a key pair to encrypt and decrypt the logs. This script will output your RSA privateKey and publicKey. Keep the private key secure, as it will be used to decrypt the logs. Below is a sample script to generate the keys using Node.js and OpenSSL.
 
-* [ JavaScript ](#tab-panel-3064)
-* [ OpenSSL ](#tab-panel-3065)
+* [ JavaScript ](#tab-panel-3070)
+* [ OpenSSL ](#tab-panel-3071)
 
 JavaScript
 
@@ -88,6 +88,8 @@ console.log(privateKey);
 
 
 ```
+
+Explain Code
 
 Run the script by executing the below code on your terminal. Replace `file name` with the name of your JavaScript file.
 
@@ -127,8 +129,8 @@ After configuring Workers Logpush, logs will be sent encrypted using the public 
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, you can use the following Node.js script or OpenSSL:
 
-* [ JavaScript ](#tab-panel-3066)
-* [ OpenSSL ](#tab-panel-3067)
+* [ JavaScript ](#tab-panel-3072)
+* [ OpenSSL ](#tab-panel-3073)
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, download the logs to a folder, in this case its named `my_log.log.gz`.
 
@@ -301,6 +303,8 @@ run();
 
 
 ```
+
+Explain Code
 
 Run the script by executing the below code on your terminal. Replace `file name` with the name of your JavaScript file.
 

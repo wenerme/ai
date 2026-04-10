@@ -16,7 +16,7 @@ Copy page
 
 # Use RpcTarget class to handle Durable Object metadata
 
-**Last reviewed:**  11 months ago 
+**Last reviewed:**  12 months ago 
 
 Access the name from within a Durable Object using RpcTarget.
 
@@ -250,6 +250,8 @@ export default {
 
 ```
 
+Explain Code
+
 This example persists the Durable Object metadata. It demonstrates similar steps as the previous example, but uses Durable Object storage to store the identifier, eliminating the need to pass it through the RpcTarget.
 
 TypeScript
@@ -466,6 +468,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/reference-do-name-using-init/","name":"Use RpcTarget class to handle Durable Object metadata"}}]}

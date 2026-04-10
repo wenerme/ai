@@ -30,8 +30,8 @@ You can query a vector index (or indexes) from any method on your Agent: any Vec
 
 Here's an example of how to give an Agent retrieval capabilities:
 
-* [  JavaScript ](#tab-panel-2542)
-* [  TypeScript ](#tab-panel-2543)
+* [  JavaScript ](#tab-panel-2548)
+* [  TypeScript ](#tab-panel-2549)
 
 JavaScript
 
@@ -100,6 +100,8 @@ export class RAGAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -178,10 +180,12 @@ export class RAGAgent extends Agent {
 
 ```
 
+Explain Code
+
 You'll also need to connect your Agent to your vector indexes:
 
-* [  wrangler.jsonc ](#tab-panel-2540)
-* [  wrangler.toml ](#tab-panel-2541)
+* [  wrangler.jsonc ](#tab-panel-2546)
+* [  wrangler.toml ](#tab-panel-2547)
 
 JSONC
 
@@ -209,6 +213,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 

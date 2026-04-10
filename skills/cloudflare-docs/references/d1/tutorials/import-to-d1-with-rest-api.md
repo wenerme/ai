@@ -114,7 +114,8 @@ const headers = {
   "Content-Type": "application/json",  
   Authorization: `Bearer ${D1_API_KEY}`,  
 };  
-```
+```  
+Explain Code
 
 ## 4\. Generate example data (optional)
 
@@ -174,7 +175,8 @@ function makeSqlInsert(data, tableName, skipCols = []) {
     .join(",");  
   return `INSERT INTO ${tableName} (${columns}) VALUES ${values};`;  
 }  
-```
+```  
+Explain Code
 
 ## 6\. Import the data to D1
 
@@ -233,6 +235,7 @@ async function uploadToD1() {
   }  
 }  
 ```  
+Explain Code  
 In the above code:  
    * An `md5` hash of the SQL command is generated.  
    * `initResponse` initializes the upload process and receives the upload URL.  
@@ -267,6 +270,7 @@ async function pollImport(bookmark) {
   }  
 }  
 ```  
+Explain Code  
 The code above does the following:  
    * Sends a `poll` action to the D1 API.  
    * Polls the import process until it completes.
@@ -401,7 +405,8 @@ async function runImport() {
   console.log(result);  
 }  
 runImport();  
-```
+```  
+Explain Code
 
 ## 8\. Run the code
 

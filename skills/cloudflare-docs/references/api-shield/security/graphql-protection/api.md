@@ -49,6 +49,8 @@ GraphQL query
 
 ```
 
+Explain Code
+
 ## Gather GraphQL statistics
 
 Using the new `apiGatewayGraphqlQueryAnalyticsGroups` node in the Cloudflare GraphQL API, you can retrieve `apiGatewayGraphqlQuerySize` and `apiGatewayGraphqlQueryDepth` dimensions.
@@ -108,7 +110,7 @@ query ApiGatewayGraphqlQueryAnalytics(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWXgE44ARgDsqESNR8xGCiBhQAJs3ZdeAtsJYBmSdNnyAvkA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBAggBwJYHECGAXMB3NUURoIAWwANgIrjRwB2aZUGSAxgM4AUAUDDACQAvAPa0wAFTQBzAFww2GCElqSe-eWggZZYpAFswqvmFoATbXoMBKGAG9VANyQ5It1b2GjOAMyRksEWRsYD3EpWUERUMkYAF9rO15EmCJUTBw8AiJSSmooOgYmVjYCIRAETjckmDI9JC0YAEYABibKpKEIE0gAIShZAG02qpT0LFx8QhJyKkgoAGUkATAAfQARAFE5gGEhpJG08cypnNnVsAQMYjXNnarEgF1dmB8-SECYEzTmfWXJMGBwupNAAaD5fCzLMj-cLGEyxIbxJ4sUq0DBPEwWWhsJAiNiuO57ZCjdITLLTXILJZPXj7MYZSbZGbQM4XYhPGJDDlJLnwmJAA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhAGcAXBAJxrRACYAGFgNgFo2AWbgEY2cfqkGdxAVgwUQMKABNm7LrwHC4w8ZMEyQAXyA)
 
 With the above query, you will get the following response:
 
@@ -173,6 +175,8 @@ Response
 
 ```
 
+Explain Code
+
 In the response example, Cloudflare observed 10 requests with depth 1 and size 11, and 10 requests with depth 1 and size 2 in the selected timeframe.
 
 ## Analyze GraphQL statistics
@@ -224,6 +228,8 @@ with open(args.response) as f:
 
 
 ```
+
+Explain Code
 
 With the above query, you will get the following output:
 

@@ -55,12 +55,13 @@ Your worker has access to the following bindings:
 ⎔ Starting local server...  
 [mf:inf] Ready on http://127.0.0.1:8787/  
 [b] open a browser, [d] open Devtools, [l] turn off local mode, [c] clear console, [x] to exit  
-```
+```  
+Explain Code
 
 In this example, the Worker has access to local-only D1 database. The corresponding D1 binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) would resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-4035)
-* [  wrangler.toml ](#tab-panel-4036)
+* [  wrangler.jsonc ](#tab-panel-4079)
+* [  wrangler.toml ](#tab-panel-4080)
 
 JSONC
 
@@ -116,8 +117,8 @@ It is currently not possible to develop against a _remote_ D1 database when usin
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) should resemble the following:
 
-* [  wrangler.jsonc ](#tab-panel-4037)
-* [  wrangler.toml ](#tab-panel-4038)
+* [  wrangler.jsonc ](#tab-panel-4081)
+* [  wrangler.toml ](#tab-panel-4082)
 
 JSONC
 
@@ -147,6 +148,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -198,8 +201,8 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
-* [  wrangler.jsonc ](#tab-panel-4039)
-* [  wrangler.toml ](#tab-panel-4040)
+* [  wrangler.jsonc ](#tab-panel-4083)
+* [  wrangler.toml ](#tab-panel-4084)
 
 JSONC
 
@@ -283,8 +286,8 @@ Wrangler exposes an [unstable\_dev()](https://developers.cloudflare.com/workers/
 
 Given the below Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4041)
-* [  wrangler.toml ](#tab-panel-4042)
+* [  wrangler.jsonc ](#tab-panel-4085)
+* [  wrangler.toml ](#tab-panel-4086)
 
 JSONC
 
@@ -312,6 +315,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -418,6 +423,8 @@ describe("Test D1 Worker endpoint", () => {
 
 
 ```
+
+Explain Code
 
 Review the [unstable\_dev()](https://developers.cloudflare.com/workers/wrangler/api/#usage) documentation for more details on how to use the API within your tests.
 

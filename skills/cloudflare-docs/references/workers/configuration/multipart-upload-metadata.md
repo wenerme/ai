@@ -51,6 +51,8 @@ If you're using the [Workers Script Upload API](https://developers.cloudflare.co
 
 ```
 
+Explain Code
+
 Note
 
 See examples of metadata being used with the Workers Script Upload API [here](https://developers.cloudflare.com/workers/platform/infrastructure-as-code#cloudflare-rest-api).
@@ -284,6 +286,8 @@ Workers can interact with resources on the Cloudflare Developer Platform using [
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/configuration/multipart-upload-metadata/","name":"Multipart upload metadata"}}]}

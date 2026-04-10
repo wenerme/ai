@@ -22,8 +22,8 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-2410)
-* [  TypeScript ](#tab-panel-2411)
+* [  JavaScript ](#tab-panel-2416)
+* [  TypeScript ](#tab-panel-2417)
 
 JavaScript
 
@@ -81,6 +81,8 @@ export class APIAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -137,6 +139,8 @@ export class APIAgent extends Agent {
 
 ```
 
+Explain Code
+
 ## Server-Sent Events (SSE)
 
 SSE allows you to stream data to clients over a long-running HTTP connection. This is ideal for AI model responses that generate tokens incrementally.
@@ -145,8 +149,8 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-2414)
-* [  TypeScript ](#tab-panel-2415)
+* [  JavaScript ](#tab-panel-2420)
+* [  TypeScript ](#tab-panel-2421)
 
 JavaScript
 
@@ -206,6 +210,8 @@ export class StreamAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -266,6 +272,8 @@ export class StreamAgent extends Agent {
 
 ```
 
+Explain Code
+
 ### SSE message format
 
 SSE messages follow a specific format:
@@ -294,8 +302,8 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://sdk.vercel.ai/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-2408)
-* [  TypeScript ](#tab-panel-2409)
+* [  JavaScript ](#tab-panel-2414)
+* [  TypeScript ](#tab-panel-2415)
 
 JavaScript
 
@@ -335,6 +343,8 @@ export class ChatAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -382,6 +392,8 @@ export class ChatAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 ## Connection handling
 
 SSE connections can be long-lived. Handle client disconnects gracefully:
@@ -390,8 +402,8 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/api-reference/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-2412)
-* [  TypeScript ](#tab-panel-2413)
+* [  JavaScript ](#tab-panel-2418)
+* [  TypeScript ](#tab-panel-2419)
 
 JavaScript
 
@@ -438,6 +450,8 @@ export class ResumeAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -482,6 +496,8 @@ export class ResumeAgent extends Agent {
 
 
 ```
+
+Explain Code
 
 ## WebSockets vs SSE
 

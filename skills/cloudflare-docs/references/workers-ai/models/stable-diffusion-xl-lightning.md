@@ -32,8 +32,8 @@ SDXL-Lightning is a lightning-fast text-to-image generation model. It can genera
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2069)
-* [  curl ](#tab-panel-2070)
+* [  TypeScript ](#tab-panel-2075)
+* [  curl ](#tab-panel-2076)
 
 ```
 
@@ -81,6 +81,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -138,8 +140,8 @@ Random seed for reproducibility of the image generation
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2071)
-* [ Output ](#tab-panel-2072)
+* [ Input ](#tab-panel-2077)
+* [ Output ](#tab-panel-2078)
 
 ```
 
@@ -283,6 +285,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 

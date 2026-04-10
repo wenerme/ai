@@ -143,6 +143,8 @@ resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
 
 ```
 
+Explain Code
+
 For more information about HTTP DDoS Attack Protection, refer to [HTTP DDoS Attack Protection managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/).
 
 ## Example: Configure Network-layer DDoS Attack Protection
@@ -211,6 +213,8 @@ resource "cloudflare_ruleset" "account_level_network_ddos_config" {
 
 
 ```
+
+Explain Code
 
 For more information about Network-layer DDoS Attack Protection, refer to [Network-layer DDoS Attack Protection managed ruleset](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/).
 
@@ -397,6 +401,8 @@ resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/terraform/","name":"Terraform"}},{"@type":"ListItem","position":3,"item":{"@id":"/terraform/additional-configurations/","name":"Additional configurations"}},{"@type":"ListItem","position":4,"item":{"@id":"/terraform/additional-configurations/ddos-managed-rulesets/","name":"DDoS managed rulesets configuration using Terraform"}}]}

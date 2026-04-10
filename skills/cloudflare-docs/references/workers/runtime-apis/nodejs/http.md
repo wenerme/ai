@@ -28,8 +28,8 @@ To use the HTTP client-side methods (`http.get`, `http.request`, etc.), you must
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-08-15` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7596)
-* [  wrangler.toml ](#tab-panel-7597)
+* [  wrangler.jsonc ](#tab-panel-7656)
+* [  wrangler.toml ](#tab-panel-7657)
 
 JSONC
 
@@ -65,8 +65,8 @@ To use the HTTP server-side methods (`http.createServer`, `http.Server`, `http.S
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-09-01` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7598)
-* [  wrangler.toml ](#tab-panel-7599)
+* [  wrangler.jsonc ](#tab-panel-7658)
+* [  wrangler.toml ](#tab-panel-7659)
 
 JSONC
 
@@ -98,8 +98,8 @@ compatibility_flags = [ "nodejs_compat", "enable_nodejs_http_server_modules" ]
 
 To use both client-side and server-side methods, enable both flags:
 
-* [  wrangler.jsonc ](#tab-panel-7600)
-* [  wrangler.toml ](#tab-panel-7601)
+* [  wrangler.jsonc ](#tab-panel-7660)
+* [  wrangler.toml ](#tab-panel-7661)
 
 JSONC
 
@@ -191,6 +191,8 @@ export default {
 
 ```
 
+Explain Code
+
 The implementation of `get` in Workers is a wrapper around the global[fetch API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/)and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
 
 As shown in the example above, it is necessary to arrange for requests to be correctly awaited in the `fetch` handler using a promise or the fetch may be canceled prematurely when the handler returns.
@@ -267,6 +269,8 @@ export default {
 
 ```
 
+Explain Code
+
 The following options passed to the `request` (and `get`) method are not supported due to the differences required by Cloudflare Workers implementation of `node:http` as a wrapper around the global `fetch` API:
 
 * `maxHeaderSize`
@@ -319,6 +323,8 @@ export default {
 
 ```
 
+Explain Code
+
 The Workers implementation includes a `cloudflare` property on `IncomingMessage` objects:
 
 JavaScript
@@ -350,6 +356,8 @@ export default httpServerHandler({ port: 8080 });
 
 
 ```
+
+Explain Code
 
 The `cloudflare.cf` property contains [Cloudflare-specific request properties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties).
 
@@ -417,6 +425,8 @@ export default httpServerHandler({ port: 8080 });
 
 ```
 
+Explain Code
+
 ## Node.js integration
 
 ### httpServerHandler
@@ -452,6 +462,8 @@ export default httpServerHandler({ port: 8080 });
 
 
 ```
+
+Explain Code
 
 The handler automatically routes incoming Worker requests to your Node.js server. When using port-based routing, the port number acts as a routing key to determine which server handles requests, allowing multiple servers to coexist in the same Worker.
 
@@ -493,6 +505,8 @@ export default {
 
 ```
 
+Explain Code
+
 This approach gives you full control over the fetch handler while still leveraging Node.js HTTP servers for request processing.
 
 Note
@@ -531,6 +545,8 @@ export default httpServerHandler({ port: 8080 });
 
 
 ```
+
+Explain Code
 
 The following differences exist between the Workers implementation and Node.js:
 
@@ -593,6 +609,8 @@ export default httpServerHandler(server);
 
 
 ```
+
+Explain Code
 
 The following methods and features are not supported in the Workers implementation:
 

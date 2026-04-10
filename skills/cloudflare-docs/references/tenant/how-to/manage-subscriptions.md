@@ -91,6 +91,8 @@ curl 'https://api.cloudflare.com/client/v4/zones/{zone_id}/subscription' \
 
 ```
 
+Explain Code
+
 ### Get zone subscription details
 
 To get the details of a zone subscription, send a [GET](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/get/) request to the `/zones/<ZONE_ID>/subscription` endpoint.

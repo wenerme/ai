@@ -32,25 +32,25 @@ Cloudflare Stream runs on [Cloudflare’s global cloud network ↗](https://www.
 
 ## Features
 
-### Control access to video content
+###  Control access to video content 
 
 Restrict access to paid or authenticated content with signed URLs.
 
 [ Use Signed URLs ](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/) 
 
-### Let your users upload their own videos
+###  Let your users upload their own videos 
 
 Let users in your app upload videos directly to Stream with a unique, one-time upload URL.
 
 [ Direct Creator Uploads ](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads/) 
 
-### Play video on any device
+###  Play video on any device 
 
 Play on-demand and live video on websites, in native iOS and Android apps, and dedicated streaming devices like Apple TV.
 
 [ Play videos ](https://developers.cloudflare.com/stream/viewing-videos/) 
 
-### Get detailed analytics
+###  Get detailed analytics 
 
 Understand and analyze which videos and live streams are viewed most and break down metrics on a per-creator basis.
 

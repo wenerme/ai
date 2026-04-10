@@ -24,8 +24,8 @@ Durable Objects implement E-order semantics, a concept deriving from the [E dist
 
 If an exception is thrown by a Durable Object stub all in-flight calls and future calls will fail with [exceptions](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/). To continue invoking methods on a remote Durable Object a Worker must recreate the stub. There are no ordering guarantees between different stubs.
 
-* [  JavaScript ](#tab-panel-4387)
-* [  TypeScript ](#tab-panel-4388)
+* [  JavaScript ](#tab-panel-4431)
+* [  TypeScript ](#tab-panel-4432)
 
 JavaScript
 
@@ -78,6 +78,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -138,14 +140,16 @@ export default {
 
 ```
 
+Explain Code
+
 ## Properties
 
 ### `id`
 
 `id` is a property of the `DurableObjectStub` corresponding to the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the stub.
 
-* [  JavaScript ](#tab-panel-4383)
-* [  Python ](#tab-panel-4384)
+* [  JavaScript ](#tab-panel-4427)
+* [  Python ](#tab-panel-4428)
 
 JavaScript
 
@@ -177,8 +181,8 @@ assert id.equals(stub.id), "This should always be true"
 
 `name` is an optional property of a `DurableObjectStub`, which returns a name if it was provided upon stub creation either directly via [DurableObjectNamespace::getByName](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname) or indirectly via a [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) created by [DurableObjectNamespace::idFromName](https://developers.cloudflare.com/durable-objects/api/namespace/#idfromname). This value is undefined if the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) used to create the `DurableObjectStub` was constructed using [DurableObjectNamespace::newUniqueId](https://developers.cloudflare.com/durable-objects/api/namespace/#newuniqueid).
 
-* [  JavaScript ](#tab-panel-4385)
-* [  Python ](#tab-panel-4386)
+* [  JavaScript ](#tab-panel-4429)
+* [  Python ](#tab-panel-4430)
 
 JavaScript
 

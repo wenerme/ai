@@ -28,10 +28,10 @@ Caution when using in production
 
 The example code contains a generic header key and value of `X-Custom-PSK` and `mypresharedkey`. To best protect your resources, change the header key and value in the Workers editor before saving your code.
 
-* [  JavaScript ](#tab-panel-7201)
-* [  TypeScript ](#tab-panel-7202)
-* [  Python ](#tab-panel-7203)
-* [  Hono ](#tab-panel-7204)
+* [  JavaScript ](#tab-panel-7259)
+* [  TypeScript ](#tab-panel-7260)
+* [  Python ](#tab-panel-7261)
+* [  Hono ](#tab-panel-7262)
 
 JavaScript
 
@@ -80,6 +80,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -127,6 +129,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -159,6 +163,8 @@ class Default(WorkerEntrypoint):
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -220,6 +226,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/auth-with-headers/","name":"Auth with headers"}}]}

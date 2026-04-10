@@ -171,6 +171,14 @@ as input for the model's response.
 
               - `"input_file"`
 
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
+
             - `file_data: Optional[str]`
 
               The content of the file to be sent to the model.
@@ -280,6 +288,14 @@ as input for the model's response.
             The type of the input item. Always `input_file`.
 
             - `"input_file"`
+
+          - `detail: Optional[Literal["low", "high"]]`
+
+            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+            - `"low"`
+
+            - `"high"`
 
           - `file_data: Optional[str]`
 
@@ -1290,6 +1306,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -3234,6 +3258,14 @@ as input for the model's response.
 
               - `"input_file"`
 
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
+
             - `file_data: Optional[str]`
 
               The content of the file to be sent to the model.
@@ -3606,6 +3638,14 @@ as input for the model's response.
         The type of the input item. Always `input_file`.
 
         - `"input_file"`
+
+      - `detail: Optional[Literal["low", "high"]]`
+
+        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+        - `"low"`
+
+        - `"high"`
 
       - `file_data: Optional[str]`
 
@@ -5300,6 +5340,14 @@ as input for the model's response.
 
                 - `"input_file"`
 
+              - `detail: Optional[Literal["low", "high"]]`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
+
               - `file_data: Optional[str]`
 
                 The content of the file to be sent to the model.
@@ -5409,6 +5457,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -6419,6 +6475,14 @@ as input for the model's response.
                 The type of the input item. Always `input_file`.
 
                 - `"input_file"`
+
+              - `detail: Optional[Literal["low", "high"]]`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
 
               - `file_data: Optional[str]`
 
@@ -8363,6 +8427,14 @@ as input for the model's response.
 
                 - `"input_file"`
 
+              - `detail: Optional[Literal["low", "high"]]`
+
+                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                - `"low"`
+
+                - `"high"`
+
               - `file_data: Optional[str]`
 
                 The content of the file to be sent to the model.
@@ -9031,6 +9103,14 @@ as input for the model's response.
               The type of the input item. Always `input_file`.
 
               - `"input_file"`
+
+            - `detail: Optional[Literal["low", "high"]]`
+
+              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+              - `"low"`
+
+              - `"high"`
 
             - `file_data: Optional[str]`
 
@@ -12944,6 +13024,14 @@ as input for the model's response.
           The type of the input item. Always `input_file`.
 
           - `"input_file"`
+
+        - `detail: Optional[Literal["low", "high"]]`
+
+          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+          - `"low"`
+
+          - `"high"`
 
         - `file_data: Optional[str]`
 

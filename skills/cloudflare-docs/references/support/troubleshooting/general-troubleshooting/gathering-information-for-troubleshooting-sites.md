@@ -295,6 +295,8 @@ curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
 
 ```
 
+Explain Code
+
 [Explanation of this timing output ↗](https://blog.cloudflare.com/a-question-of-timing/) is found on the Cloudflare blog.
 
 Note

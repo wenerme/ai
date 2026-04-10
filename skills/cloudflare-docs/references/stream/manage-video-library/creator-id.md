@@ -146,6 +146,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/copy" \
 
 ```
 
+Explain Code
+
 ## Set default creators for videos
 
 You can associate videos with a single creator by setting a default creator ID value, which you can later use for searching for videos by creator ID or for analytics data.
@@ -257,6 +259,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/direct_u
 
 
 ```
+
+Explain Code
 
 ## Get videos by Creator ID
 
@@ -387,6 +391,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/stream?after=20
 
 
 ```
+
+Explain Code
 
 ## tus
 

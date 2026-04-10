@@ -627,6 +627,8 @@ curl --request PUT \
 
 ```
 
+Explain Code
+
 ## 2025-01-29
 
   
@@ -713,6 +715,8 @@ resource "cloudflare_snippet_rules" "cookie_snippet_rule" {
 
 ```
 
+Explain Code
+
 Learn more in the [Configure Snippets using Terraform](https://developers.cloudflare.com/rules/snippets/create-terraform/) documentation.
 
 ## 2024-11-22
@@ -758,6 +762,8 @@ curl --request PUT \
 
 
 ```
+
+Explain Code
 
 Get started using [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/) documentation.
 

@@ -165,6 +165,8 @@ In the response body, the initial provisioning state should be `provisioning`.
 
 ```
 
+Explain Code
+
 You can periodically check the service binding status using the [List Service Bindings](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/list/) endpoint.
 
 ### 3\. Verify all service bindings
@@ -217,8 +219,8 @@ Note
 
 If you need to map only specific subdomains (and not all proxied DNS records) to specific IP addresses, you can use a [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-* [ Dashboard ](#tab-panel-3296)
-* [ API ](#tab-panel-3297)
+* [ Dashboard ](#tab-panel-3302)
+* [ API ](#tab-panel-3303)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -240,8 +242,8 @@ Note
 
 As you create the necessary DNS records, [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) can help making sure that you have SSL/TLS certificates in place for all your hostnames.
 
-* [ Dashboard ](#tab-panel-3298)
-* [ API ](#tab-panel-3299)
+* [ Dashboard ](#tab-panel-3304)
+* [ API ](#tab-panel-3305)
 
 To create a DNS record in the dashboard:
 
@@ -349,6 +351,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 
 ```
+
+Explain Code
 
 ---
 

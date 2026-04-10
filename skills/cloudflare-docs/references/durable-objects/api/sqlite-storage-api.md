@@ -60,9 +60,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-4373)
-* [  TypeScript ](#tab-panel-4374)
-* [  Python ](#tab-panel-4375)
+* [  JavaScript ](#tab-panel-4417)
+* [  TypeScript ](#tab-panel-4418)
+* [  Python ](#tab-panel-4419)
 
 JavaScript
 
@@ -93,6 +93,8 @@ export class Counter extends DurableObject {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -125,6 +127,8 @@ export class Counter extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -152,6 +156,8 @@ class Counter(DurableObject):
 
 ```
 
+Explain Code
+
 JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ## SQL API
@@ -160,8 +166,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-4365)
-* [  Python ](#tab-panel-4366)
+* [  TypeScript ](#tab-panel-4409)
+* [  Python ](#tab-panel-4410)
 
 TypeScript
 
@@ -208,6 +214,8 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -246,6 +254,8 @@ class MyDurableObject(DurableObject):
 
 
 ```
+
+Explain Code
 
 * SQL API methods accessed with `ctx.storage.sql` are only allowed on [Durable Object classes with SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) and will return an error if called on Durable Object classes with a KV-storage backend.
 * When writing data, every row update of an index counts as an additional row. However, indexes may be beneficial for read-heavy use cases. Refer to [Index for SQLite Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#indexes-in-sqlite).
@@ -287,8 +297,8 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-4367)
-* [  Python ](#tab-panel-4368)
+* [  TypeScript ](#tab-panel-4411)
+* [  Python ](#tab-panel-4412)
 
 TypeScript
 
@@ -315,6 +325,8 @@ console.log(cursor.toArray()); // prints [{ artistid: 456, artistname: 'Bob' },{
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -339,6 +351,8 @@ print(cursor.toArray())  # prints [{ artistid: 456, artistname: 'Bob' },{ artist
 
 
 ```
+
+Explain Code
 
 `SqlStorageCursor` has the following properties:
 
@@ -398,6 +412,8 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
+
+Explain Code
 
 Iterate over query results as row objects:
 
@@ -517,6 +533,8 @@ TypeScript
 
 ```
 
+Explain Code
+
 Returned cursor and `raw()` iterator iterate over the same query results:
 
 TypeScript
@@ -543,6 +561,8 @@ TypeScript
 
 
 ```
+
+Explain Code
 
 `sql.exec().rowsRead()`:
 
@@ -572,8 +592,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-4369)
-* [  Python ](#tab-panel-4370)
+* [  TypeScript ](#tab-panel-4413)
+* [  Python ](#tab-panel-4414)
 
 TypeScript
 
@@ -619,8 +639,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-4371)
-* [  Python ](#tab-panel-4372)
+* [  TypeScript ](#tab-panel-4415)
+* [  Python ](#tab-panel-4416)
 
 TypeScript
 

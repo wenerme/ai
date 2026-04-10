@@ -61,6 +61,8 @@ Enable AI features when creating a meeting:
 
 ```
 
+Explain Code
+
 Ensure participants have `transcription_enabled: true` in their [preset](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
 
 ## Storage and retention

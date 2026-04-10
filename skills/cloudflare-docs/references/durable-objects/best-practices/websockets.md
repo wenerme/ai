@@ -69,9 +69,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-4461)
-* [  TypeScript ](#tab-panel-4462)
-* [  Python ](#tab-panel-4463)
+* [  JavaScript ](#tab-panel-4499)
+* [  TypeScript ](#tab-panel-4500)
+* [  Python ](#tab-panel-4501)
 
 JavaScript
 
@@ -142,6 +142,8 @@ export class WebSocketHibernationServer extends DurableObject {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -230,6 +232,8 @@ export class WebSocketHibernationServer extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -302,10 +306,12 @@ self.ctx = state
 
 ```
 
+Explain Code
+
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4470)
-* [  wrangler.toml ](#tab-panel-4471)
+* [  wrangler.jsonc ](#tab-panel-4508)
+* [  wrangler.toml ](#tab-panel-4509)
 
 JSONC
 
@@ -350,6 +356,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -374,6 +382,8 @@ new_sqlite_classes = [ "WebSocketHibernationServer" ]
 
 
 ```
+
+Explain Code
 
 A full example is available in [Build a WebSocket server with WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/).
 
@@ -401,8 +411,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-4474)
-* [  TypeScript ](#tab-panel-4475)
+* [  JavaScript ](#tab-panel-4512)
+* [  TypeScript ](#tab-panel-4513)
 
 JavaScript
 
@@ -463,6 +473,8 @@ export class GameRoom extends DurableObject {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -545,6 +557,8 @@ export class GameRoom extends DurableObject<Env> {
 
 ```
 
+Explain Code
+
 #### Why batching helps
 
 WebSocket reads require context switches between the kernel and JavaScript runtime. Each individual message triggers this overhead. Batching 10-100 logical messages into a single WebSocket frame reduces context switches proportionally.
@@ -589,8 +603,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-4476)
-* [  TypeScript ](#tab-panel-4477)
+* [  JavaScript ](#tab-panel-4514)
+* [  TypeScript ](#tab-panel-4515)
 
 JavaScript
 
@@ -663,6 +677,8 @@ export class WebSocketServer extends DurableObject {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -745,6 +761,8 @@ export class WebSocketServer extends DurableObject<Env> {
 
 ```
 
+Explain Code
+
 ## WebSocket Standard API
 
 WebSocket connections are established by making an HTTP GET request with the `Upgrade: websocket` header.
@@ -760,9 +778,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-4464)
-* [  TypeScript ](#tab-panel-4465)
-* [  Python ](#tab-panel-4466)
+* [  JavaScript ](#tab-panel-4502)
+* [  TypeScript ](#tab-panel-4503)
+* [  Python ](#tab-panel-4504)
 
 JavaScript
 
@@ -838,6 +856,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -912,6 +932,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -982,11 +1004,13 @@ headers={
 
 ```
 
+Explain Code
+
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-4467)
-* [  TypeScript ](#tab-panel-4468)
-* [  Python ](#tab-panel-4469)
+* [  JavaScript ](#tab-panel-4505)
+* [  TypeScript ](#tab-panel-4506)
+* [  Python ](#tab-panel-4507)
 
 JavaScript
 
@@ -1072,6 +1096,8 @@ export class WebSocketServer extends DurableObject {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -1152,6 +1178,8 @@ export class WebSocketServer extends DurableObject {
 
 
 ```
+
+Explain Code
 
 Python
 
@@ -1235,10 +1263,12 @@ self.currently_connected_websockets = 0
 
 ```
 
+Explain Code
+
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4472)
-* [  wrangler.toml ](#tab-panel-4473)
+* [  wrangler.jsonc ](#tab-panel-4510)
+* [  wrangler.toml ](#tab-panel-4511)
 
 JSONC
 
@@ -1283,6 +1313,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -1307,6 +1339,8 @@ new_sqlite_classes = [ "WebSocketServer" ]
 
 
 ```
+
+Explain Code
 
 A full example is available in [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/).
 

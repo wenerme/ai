@@ -144,6 +144,8 @@ console.log(await res.text()); // 2
 
 ```
 
+Explain Code
+
 ## Disabling
 
 Both default and named caches can be disabled with the `disableCache` option. When disabled, the caches will still be available in the sandbox, they just won't cache anything. This may be useful during development:

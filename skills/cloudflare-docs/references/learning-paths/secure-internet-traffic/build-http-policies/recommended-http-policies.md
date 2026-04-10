@@ -24,9 +24,9 @@ For additional commonly used HTTP policy examples, refer to [Common HTTP policie
 
 Bypass HTTP inspection for applications that use embedded certificates. This will help avoid any certificate pinning errors that may arise from an initial rollout.
 
-* [ Dashboard ](#tab-panel-5241)
-* [ API ](#tab-panel-5242)
-* [ Terraform ](#tab-panel-5243)
+* [ Dashboard ](#tab-panel-5285)
+* [ API ](#tab-panel-5286)
+* [ Terraform ](#tab-panel-5287)
 
 | Selector    | Operator | Value            | Action         |
 | ----------- | -------- | ---------------- | -------------- |
@@ -67,6 +67,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_http_application_inspect_bypass" {
@@ -92,13 +94,15 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_application_inspect_by
 
 ```
 
+Explain Code
+
 ## Android-HTTP-Application-InspectionBypass
 
 Bypass HTTPS inspection for Android applications (such as Google Drive) that use certificate pinning, which is incompatible with Gateway inspection.
 
-* [ Dashboard ](#tab-panel-5244)
-* [ API ](#tab-panel-5245)
-* [ Terraform ](#tab-panel-5246)
+* [ Dashboard ](#tab-panel-5288)
+* [ API ](#tab-panel-5289)
+* [ Terraform ](#tab-panel-5290)
 
 | Selector                     | Operator | Value                             | Logic | Action         |
 | ---------------------------- | -------- | --------------------------------- | ----- | -------------- |
@@ -142,6 +146,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspection_bypass" {
@@ -169,13 +175,15 @@ resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspec
 
 ```
 
+Explain Code
+
 ## All-HTTP-Domain-Inspection-Bypass
 
 Bypass HTTP inspection for a custom list of domains identified as incompatible with TLS inspection.
 
-* [ Dashboard ](#tab-panel-5247)
-* [ API ](#tab-panel-5248)
-* [ Terraform ](#tab-panel-5249)
+* [ Dashboard ](#tab-panel-5291)
+* [ API ](#tab-panel-5292)
+* [ Terraform ](#tab-panel-5293)
 
 | Selector | Operator | Value                    | Logic | Action         |
 | -------- | -------- | ------------------------ | ----- | -------------- |
@@ -217,6 +225,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspection_bypass" {
@@ -242,13 +252,15 @@ resource "cloudflare_zero_trust_gateway_policy" "android_http_application_inspec
 
 ```
 
+Explain Code
+
 ## All-HTTP-SecurityRisks-Blocklist
 
 Block [security categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories), such as **Command and Control & Botnet** and **Malware**, based on Cloudflare's threat intelligence.
 
-* [ Dashboard ](#tab-panel-5250)
-* [ API ](#tab-panel-5251)
-* [ Terraform ](#tab-panel-5252)
+* [ Dashboard ](#tab-panel-5294)
+* [ API ](#tab-panel-5295)
+* [ Terraform ](#tab-panel-5296)
 
 | Selector            | Operator | Value                | Action |
 | ------------------- | -------- | -------------------- | ------ |
@@ -289,6 +301,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_http_security_risks_blocklist" {
@@ -314,15 +328,17 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_security_risks_blockli
 
 ```
 
+Explain Code
+
 ## All-HTTP-ContentCategories-Blocklist
 
 Entries in the [security risk content subcategory](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-risk-subcategories), such as **New Domains**, do not always pose a security threat. We recommend you first create an Allow policy to track policy matching and identify any false positives. You can add false positives to your **Trusted Domains** list used in **All-HTTP-Domain-Allowlist**.
 
 After your test is complete, we recommend you change the action to Block to minimize risk to your organization.
 
-* [ Dashboard ](#tab-panel-5265)
-* [ API ](#tab-panel-5266)
-* [ Terraform ](#tab-panel-5267)
+* [ Dashboard ](#tab-panel-5309)
+* [ API ](#tab-panel-5310)
+* [ Terraform ](#tab-panel-5311)
 
 | Selector           | Operator | Value                                                                                 | Action |
 | ------------------ | -------- | ------------------------------------------------------------------------------------- | ------ |
@@ -367,6 +383,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
@@ -396,13 +414,15 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 ```
 
+Explain Code
+
 ## All-HTTP-DomainHost-Blocklist
 
 Block specific domains or hosts that are malicious or pose a threat to your organization. Like **All-HTTP-ResolvedIP-Blocklist**, this blocklist can be updated manually or via API automation.
 
-* [ Dashboard ](#tab-panel-5253)
-* [ API ](#tab-panel-5254)
-* [ Terraform ](#tab-panel-5255)
+* [ Dashboard ](#tab-panel-5297)
+* [ API ](#tab-panel-5298)
+* [ Terraform ](#tab-panel-5299)
 
 | Selector | Operator      | Value              | Logic | Action |
 | -------- | ------------- | ------------------ | ----- | ------ |
@@ -445,6 +465,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_http_domainhost_blocklist" {
@@ -470,13 +492,15 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_domainhost_blocklist" 
 
 ```
 
+Explain Code
+
 ## All-HTTP-Application-Blocklist
 
 Block unauthorized applications to limit your users' access to certain web-based tools and minimize the risk of [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/). For example, the following policy blocks known AI tools:
 
-* [ Dashboard ](#tab-panel-5268)
-* [ API ](#tab-panel-5269)
-* [ Terraform ](#tab-panel-5270)
+* [ Dashboard ](#tab-panel-5312)
+* [ API ](#tab-panel-5313)
+* [ Terraform ](#tab-panel-5314)
 
 | Selector    | Operator | Value                     | Action |
 | ----------- | -------- | ------------------------- | ------ |
@@ -521,6 +545,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_http_application_blocklist" {
@@ -550,15 +576,17 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_application_blocklist"
 
 ```
 
+Explain Code
+
 ## PrivilegedUsers-HTTP-Any-Isolate
 
 Isolate traffic for privileged users who regularly access critical systems or execute actions such as threat analysis and malware testing.
 
 Security teams often need to perform threat analysis or malware testing that could trigger malware detection. Likewise, privileged users could be the target of attackers trying to gain access to critical systems.
 
-* [ Dashboard ](#tab-panel-5256)
-* [ API ](#tab-panel-5257)
-* [ Terraform ](#tab-panel-5258)
+* [ Dashboard ](#tab-panel-5300)
+* [ API ](#tab-panel-5301)
+* [ Terraform ](#tab-panel-5302)
 
 | Selector         | Operator | Value              | Action  |
 | ---------------- | -------- | ------------------ | ------- |
@@ -599,6 +627,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "privileged_users_http_any_isolate" {
@@ -624,13 +654,15 @@ resource "cloudflare_zero_trust_gateway_policy" "privileged_users_http_any_isola
 
 ```
 
+Explain Code
+
 ## Quarantined-Users-HTTP-Restricted-Access
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-* [ Dashboard ](#tab-panel-5259)
-* [ API ](#tab-panel-5260)
-* [ Terraform ](#tab-panel-5261)
+* [ Dashboard ](#tab-panel-5303)
+* [ API ](#tab-panel-5304)
+* [ Terraform ](#tab-panel-5305)
 
 | Selector         | Operator    | Value                           | Logic | Action |
 | ---------------- | ----------- | ------------------------------- | ----- | ------ |
@@ -674,6 +706,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "quarantined_users_http_restricted_access" {
@@ -701,13 +735,15 @@ resource "cloudflare_zero_trust_gateway_policy" "quarantined_users_http_restrict
 
 ```
 
+Explain Code
+
 ## All-HTTP-Domain-Isolate
 
 Isolate high risk domains or create a custom list of known risky domains to avoid data exfiltration or malware infection. Ideally, your incident response teams can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-* [ Dashboard ](#tab-panel-5262)
-* [ API ](#tab-panel-5263)
-* [ Terraform ](#tab-panel-5264)
+* [ Dashboard ](#tab-panel-5306)
+* [ API ](#tab-panel-5307)
+* [ Terraform ](#tab-panel-5308)
 
 | Selector           | Operator | Value                               | Logic | Action  |
 | ------------------ | -------- | ----------------------------------- | ----- | ------- |
@@ -749,6 +785,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ```
 
+Explain Code
+
 ```
 
 resource "cloudflare_zero_trust_gateway_policy" "all_http_domain_isolate" {
@@ -773,6 +811,8 @@ resource "cloudflare_zero_trust_gateway_policy" "all_http_domain_isolate" {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/","name":"Build HTTP security policies"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/secure-internet-traffic/build-http-policies/recommended-http-policies/","name":"Recommended HTTP policies"}}]}

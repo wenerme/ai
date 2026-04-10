@@ -22,9 +22,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-4382)
-* [  TypeScript ](#tab-panel-4383)
-* [  Python ](#tab-panel-4384)
+* [  JavaScript ](#tab-panel-4420)
+* [  TypeScript ](#tab-panel-4421)
+* [  Python ](#tab-panel-4422)
 
 JavaScript
 
@@ -51,6 +51,8 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -84,6 +86,8 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
+
+Explain Code
 
 Python
 
@@ -150,8 +154,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-4385)
-* [  Python ](#tab-panel-4386)
+* [  JavaScript ](#tab-panel-4423)
+* [  Python ](#tab-panel-4424)
 
 JavaScript
 
@@ -186,6 +190,8 @@ export class MyDurableObject extends DurableObject {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -213,6 +219,8 @@ class MyDurableObject(DurableObject):
 
 
 ```
+
+Explain Code
 
 #### Parameters
 
@@ -355,8 +363,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-4387)
-* [  Python ](#tab-panel-4388)
+* [  TypeScript ](#tab-panel-4425)
+* [  Python ](#tab-panel-4426)
 
 JavaScript
 
@@ -385,6 +393,8 @@ export class MyDurableObject extends DurableObject {
 
 
 ```
+
+Explain Code
 
 Python
 

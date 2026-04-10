@@ -26,9 +26,9 @@ Be careful when calling `setAlarm` in the Durable Object class constructor
 
 In this example the TTL is extended upon every new fetch request to the Durable Object. It might be tempting to instead extend the TTL in the constructor of the Durable Object. This is not advised because the Durable Object's constructor will be called before invoking the alarm handler if the alarm wakes the Durable Object up from hibernation. This approach will naively result in the constructor continually extending the TTL without running the alarm handler. If you must call `setAlarm` in the Durable Object class constructor be sure to check that there is no alarm previously set.
 
-* [  JavaScript ](#tab-panel-4485)
-* [  TypeScript ](#tab-panel-4486)
-* [  Python ](#tab-panel-4487)
+* [  JavaScript ](#tab-panel-4529)
+* [  TypeScript ](#tab-panel-4530)
+* [  Python ](#tab-panel-4531)
 
 JavaScript
 
@@ -89,6 +89,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -157,6 +159,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -207,10 +211,12 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 To test and deploy this example, configure your Wrangler file to include a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) based on the namespace and class name chosen previously.
 
-* [  wrangler.jsonc ](#tab-panel-4488)
-* [  wrangler.toml ](#tab-panel-4489)
+* [  wrangler.jsonc ](#tab-panel-4532)
+* [  wrangler.toml ](#tab-panel-4533)
 
 JSONC
 
@@ -261,6 +267,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -287,6 +295,8 @@ new_sqlite_classes = [ "MyDurableObject" ]
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/examples/durable-object-ttl/","name":"Durable Object Time To Live"}}]}

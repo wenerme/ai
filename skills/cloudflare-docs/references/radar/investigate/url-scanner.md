@@ -107,6 +107,8 @@ Here's an example request body with some custom configuration options:
 
 ```
 
+Explain Code
+
 Above, the visibility level is set as `Unlisted`, which means that the scan report won't be included in the [recent scans ↗](https://radar.cloudflare.com/scan#recent-scans) list nor in search results. In effect, only users with knowledge of the scan ID will be able to access it.
 
 There will also be three screenshots taken of the webpage, one per target device type. The [User-Agent ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) will be set as "XXX-my-user-agent". Note that you can set any custom HTTP header, including [Authorization ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization).

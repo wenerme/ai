@@ -135,6 +135,8 @@ Important:
 
 ```
 
+Explain Code
+
 ## Query rewriting system prompt
 
 If query rewriting is enabled, you can provide a custom system prompt to control how the model rewrites user queries. In this step, the model receives:
@@ -184,6 +186,8 @@ Constraints:
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-search/","name":"AI Search"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-search/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-search/configuration/system-prompt/","name":"System prompt"}}]}

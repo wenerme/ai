@@ -43,8 +43,8 @@ const context = await sandbox.createCodeContext(options?: CreateContextOptions):
 
 **Returns**: `Promise<CodeContext>` with `id`, `language`, `cwd`, `createdAt`, `lastUsed`
 
-* [  JavaScript ](#tab-panel-6151)
-* [  TypeScript ](#tab-panel-6152)
+* [  JavaScript ](#tab-panel-6195)
+* [  TypeScript ](#tab-panel-6196)
 
 JavaScript
 
@@ -108,8 +108,8 @@ const result = await sandbox.runCode(code: string, options?: RunCodeOptions): Pr
 
 **Recommended usage - create explicit context**:
 
-* [  JavaScript ](#tab-panel-6153)
-* [  TypeScript ](#tab-panel-6154)
+* [  JavaScript ](#tab-panel-6197)
+* [  TypeScript ](#tab-panel-6198)
 
 JavaScript
 
@@ -149,8 +149,8 @@ Default context behavior
 
 If no `context` is provided, a default context is automatically created/reused for the specified `language`. While convenient for quick tests, **explicitly creating contexts is recommended** for production use to maintain predictable state.
 
-* [  JavaScript ](#tab-panel-6159)
-* [  TypeScript ](#tab-panel-6160)
+* [  JavaScript ](#tab-panel-6203)
+* [  TypeScript ](#tab-panel-6204)
 
 JavaScript
 
@@ -180,6 +180,8 @@ console.log(result.results[0].text); // "15"
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -204,8 +206,8 @@ console.log(result.results[0].text); // "15"
 
 **Error handling**:
 
-* [  JavaScript ](#tab-panel-6155)
-* [  TypeScript ](#tab-panel-6156)
+* [  JavaScript ](#tab-panel-6199)
+* [  TypeScript ](#tab-panel-6200)
 
 JavaScript
 
@@ -251,8 +253,8 @@ if (result.error) {
 
 JavaScript and TypeScript code execution supports top-level `await` and persistent variables across executions within the same context.
 
-* [  JavaScript ](#tab-panel-6165)
-* [  TypeScript ](#tab-panel-6166)
+* [  JavaScript ](#tab-panel-6209)
+* [  TypeScript ](#tab-panel-6210)
 
 JavaScript
 
@@ -287,6 +289,8 @@ console.log(result.logs.stdout); // Data persists across executions
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -314,10 +318,12 @@ console.log(result.logs.stdout); // Data persists across executions
 
 ```
 
+Explain Code
+
 Variables declared with `const`, `let`, or `var` persist across executions, enabling multi-step workflows:
 
-* [  JavaScript ](#tab-panel-6161)
-* [  TypeScript ](#tab-panel-6162)
+* [  JavaScript ](#tab-panel-6205)
+* [  TypeScript ](#tab-panel-6206)
 
 JavaScript
 
@@ -370,8 +376,8 @@ const contexts = await sandbox.listCodeContexts(): Promise<CodeContext[]>
 
 ```
 
-* [  JavaScript ](#tab-panel-6157)
-* [  TypeScript ](#tab-panel-6158)
+* [  JavaScript ](#tab-panel-6201)
+* [  TypeScript ](#tab-panel-6202)
 
 JavaScript
 
@@ -408,8 +414,8 @@ await sandbox.deleteCodeContext(contextId: string): Promise<void>
 
 ```
 
-* [  JavaScript ](#tab-panel-6163)
-* [  TypeScript ](#tab-panel-6164)
+* [  JavaScript ](#tab-panel-6207)
+* [  TypeScript ](#tab-panel-6208)
 
 JavaScript
 
@@ -443,8 +449,8 @@ Results include: `text`, `html`, `png`, `jpeg`, `svg`, `latex`, `markdown`, `jso
 
 **Charts (matplotlib)**:
 
-* [  JavaScript ](#tab-panel-6169)
-* [  TypeScript ](#tab-panel-6170)
+* [  JavaScript ](#tab-panel-6213)
+* [  TypeScript ](#tab-panel-6214)
 
 JavaScript
 
@@ -487,6 +493,8 @@ if (result.results[0]?.png) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -522,10 +530,12 @@ if (result.results[0]?.png) {
 
 ```
 
+Explain Code
+
 **Tables (pandas)**:
 
-* [  JavaScript ](#tab-panel-6167)
-* [  TypeScript ](#tab-panel-6168)
+* [  JavaScript ](#tab-panel-6211)
+* [  TypeScript ](#tab-panel-6212)
 
 JavaScript
 
@@ -561,6 +571,8 @@ if (result.results[0]?.html) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -588,6 +600,8 @@ if (result.results[0]?.html) {
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

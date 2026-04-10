@@ -34,8 +34,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-4260)
-* [ API ](#tab-panel-4261)
+* [ Dashboard ](#tab-panel-4304)
+* [ API ](#tab-panel-4305)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -86,6 +86,8 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 
 ```
+
+Explain Code
 
 1. Add DNS records to your internal zone using your preferred option:
 * [Import](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/import/) a formatted BIND file. Refer to the [DNS records how-to](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/) for guidance.

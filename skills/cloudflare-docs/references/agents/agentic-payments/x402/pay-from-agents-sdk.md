@@ -80,6 +80,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 For a complete working example, see [x402-mcp on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
 
 ## Environment setup

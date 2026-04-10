@@ -114,6 +114,8 @@ object R2DataCatalogDemo {
 
 ```
 
+Explain Code
+
 For building this application and managing dependencies, we will use [sbt (“simple build tool”) ↗](https://www.scala-sbt.org/). The following is an example `build.sbt` file to place at the root of your project. It is configured to produce a "fat JAR", bundling all required dependencies.
 
 ```
@@ -176,6 +178,8 @@ Compile / javacOptions ++= Seq("--release", "17")
 
 
 ```
+
+Explain Code
 
 To enable the [sbt-assembly plugin ↗](https://github.com/sbt/sbt-assembly?tab=readme-ov-file) (used to build fat JARs), add the following to a new file at `project/assembly.sbt`:
 

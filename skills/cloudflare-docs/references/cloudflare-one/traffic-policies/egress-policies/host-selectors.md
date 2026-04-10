@@ -82,6 +82,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configur
 
 ```
 
+Explain Code
+
 ## Prerequisites
 
 Traffic must be on-ramped to Gateway with the following methods:

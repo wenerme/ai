@@ -112,6 +112,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/autorag/rags/{NA
 
 ```
 
+Explain Code
+
 ### After (AI Search API)
 
 For all parameters and options, refer to the [AI Search /chat/completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/).
@@ -146,6 +148,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 
 ```
+
+Explain Code
 
 **Response:**
 
@@ -225,6 +229,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 
 ```
+
+Explain Code
 
 ### Request format changes
 
@@ -324,6 +330,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/autorag/rags/{NA
 
 ```
 
+Explain Code
+
 ### After (AI Search API)
 
 For all parameters and options, refer to the [AI Search /search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).
@@ -358,6 +366,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 
 ```
+
+Explain Code
 
 **Response:**
 
@@ -407,6 +417,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai-search/instan
 
 
 ```
+
+Explain Code
 
 ### Request format changes
 
@@ -535,6 +547,8 @@ filters: {
 
 
 ```
+
+Explain Code
 
 #### "Starts with" filter
 

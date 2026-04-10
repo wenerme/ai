@@ -90,6 +90,8 @@ await fetch(
 
 ```
 
+Explain Code
+
 To migrate away from Rinkeby, change the end of your endpoint to use another testnet.
 
 New curl
@@ -153,6 +155,8 @@ await fetch(
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/web3/","name":"Web3"}},{"@type":"ListItem","position":3,"item":{"@id":"/web3/ethereum-gateway/","name":"Ethereum Gateway"}},{"@type":"ListItem","position":4,"item":{"@id":"/web3/ethereum-gateway/reference/","name":"Reference"}},{"@type":"ListItem","position":5,"item":{"@id":"/web3/ethereum-gateway/reference/rinkeby-deprecation/","name":"Rinkeby deprecation"}}]}

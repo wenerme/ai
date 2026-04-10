@@ -90,6 +90,8 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 
 ```
 
+Explain Code
+
 ### 3\. Authorize access to your AWS account
 
 1. Create an [AWS role ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/id%5Froles%5Fcreate%5Ffor-custom.html) with the following settings:  

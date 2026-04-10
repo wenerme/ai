@@ -72,8 +72,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3252)
-* [  wrangler.toml ](#tab-panel-3253)
+* [  wrangler.jsonc ](#tab-panel-3258)
+* [  wrangler.toml ](#tab-panel-3259)
 
 JSONC
 
@@ -89,7 +89,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -140,6 +140,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -152,7 +154,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -177,6 +179,8 @@ class_name = "PlaywrightMCP"
 
 
 ```
+
+Explain Code
 
 1. Edit the code.
 
@@ -223,6 +227,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 1. Deploy the server.
 

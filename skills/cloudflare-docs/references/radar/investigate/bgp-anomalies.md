@@ -144,6 +144,8 @@ The result shows the most recent 10 BGP hijack events that affects `AS64512`.
 
 ```
 
+Explain Code
+
 In the response we can learn about the following information about each event:
 
 * `hijack_msg_count`: the number of potential BGP hijack messages observed from all peers.
@@ -267,6 +269,8 @@ The result shows the most recent 10 BGP route leak events that affects `AS64512`
 
 ```
 
+Explain Code
+
 In the response we can learn about the following information about each event:
 
 * `leak_asn`: the AS who potentially caused the leak.
@@ -329,8 +333,8 @@ cd hijack-alerts
 
 In your Wrangler file, change the default checking frequency (once per hour) to what you like. Here is an example of configuring the workers to run the script five minutes.
 
-* [  wrangler.jsonc ](#tab-panel-5957)
-* [  wrangler.toml ](#tab-panel-5958)
+* [  wrangler.jsonc ](#tab-panel-6001)
+* [  wrangler.toml ](#tab-panel-6002)
 
 JSONC
 
@@ -346,7 +350,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "triggers": {
 
@@ -363,6 +367,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -375,7 +381,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [triggers]
@@ -387,8 +393,8 @@ crons = [ "*/5 * * * *" ]
 
 In this example, we will also need to use Cloudflare KV to save the latest checked event IDs which allows us to know what events are new. Once you have created a KV, you can head back to the `wrangler.jsonc` file and add the following sections:
 
-* [  wrangler.jsonc ](#tab-panel-5955)
-* [  wrangler.toml ](#tab-panel-5956)
+* [  wrangler.jsonc ](#tab-panel-5999)
+* [  wrangler.toml ](#tab-panel-6000)
 
 JSONC
 
@@ -475,6 +481,8 @@ async function apiFetch(env, paramsStr) {
 
 
 ```
+
+Explain Code
 
 The `env` parameter is passed in from the caller, and we do not need to worry about construct it. The `paramsStr` is a string variable that holds the query parameters in a query URL.
 
@@ -578,6 +586,8 @@ while (true) {
 
 ```
 
+Explain Code
+
 Now that we have all the newly detected events saved in `new_events` variable, we can then send out alerts:
 
 JavaScript
@@ -657,6 +667,8 @@ Peer Count: *${event.peer_ip_count}*
 
 ```
 
+Explain Code
+
 Note that the webhook is considered secret and should be set to the environment via `wrangler secret put WEBHOOK_URL` command.
 
 The last step is to deploy the application with command `npx wrangler deploy` and the app should be up and running on your Cloudflare account, and will be triggered to execute every five minutes.
@@ -667,8 +679,8 @@ If you have [Email Routing](https://developers.cloudflare.com/email-routing/) en
 
 For this alert to work, you will need to configure the proper email bindings in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/#email-bindings).
 
-* [  wrangler.jsonc ](#tab-panel-5959)
-* [  wrangler.toml ](#tab-panel-5960)
+* [  wrangler.jsonc ](#tab-panel-6003)
+* [  wrangler.toml ](#tab-panel-6004)
 
 JSONC
 
@@ -773,6 +785,8 @@ async function send_email_alert(hijacker, prefixes, victims) {
 
 
 ```
+
+Explain Code
 
 ## Next steps
 

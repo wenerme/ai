@@ -112,6 +112,8 @@ When [using the API](https://developers.cloudflare.com/rules/origin-rules/create
 
 ```
 
+Explain Code
+
 The merged configuration to apply would be the following:
 
 | Parameter            | Value       |

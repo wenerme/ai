@@ -31,8 +31,8 @@ Image Classification • Microsoft
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2045)
-* [  curl ](#tab-panel-2046)
+* [  TypeScript ](#tab-panel-2051)
+* [  curl ](#tab-panel-2052)
 
 ```
 
@@ -77,6 +77,8 @@ export default {
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -118,8 +120,8 @@ The image to classify
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2047)
-* [ Output ](#tab-panel-2048)
+* [ Input ](#tab-panel-2053)
+* [ Output ](#tab-panel-2054)
 
 ```
 
@@ -176,6 +178,8 @@ The following schemas are based on JSON Schema
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -214,6 +218,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

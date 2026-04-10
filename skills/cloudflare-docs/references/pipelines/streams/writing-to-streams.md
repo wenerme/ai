@@ -26,8 +26,8 @@ Worker bindings provide a secure way to send data to streams from [Workers](http
 
 Add a pipeline binding to your Wrangler file that points to your stream:
 
-* [  wrangler.jsonc ](#tab-panel-5528)
-* [  wrangler.toml ](#tab-panel-5529)
+* [  wrangler.jsonc ](#tab-panel-5572)
+* [  wrangler.toml ](#tab-panel-5573)
 
 JSONC
 
@@ -73,8 +73,8 @@ The pipeline binding exposes a method for sending data to your stream:
 
 Sends an array of JSON-serializable records to the stream. Returns a Promise that resolves when records are confirmed as ingested.
 
-* [  JavaScript ](#tab-panel-5530)
-* [  TypeScript ](#tab-panel-5531)
+* [  JavaScript ](#tab-panel-5574)
+* [  TypeScript ](#tab-panel-5575)
 
 JavaScript
 
@@ -161,6 +161,8 @@ declare namespace Cloudflare {
 
 ```
 
+Explain Code
+
 #### Fallback behavior
 
 `wrangler types` falls back to the generic `Pipeline<PipelineRecord>` type in the following scenarios:
@@ -225,6 +227,8 @@ curl -X POST https://{stream-id}.ingest.cloudflare.com \
 
 
 ```
+
+Explain Code
 
 ### Authentication
 

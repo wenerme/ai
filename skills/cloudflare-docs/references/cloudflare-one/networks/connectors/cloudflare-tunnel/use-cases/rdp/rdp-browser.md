@@ -47,9 +47,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-3552)
-* [ API ](#tab-panel-3553)
-* [ Terraform ](#tab-panel-3554)
+* [ Dashboard ](#tab-panel-3558)
+* [ API ](#tab-panel-3559)
+* [ Terraform ](#tab-panel-3560)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -109,6 +109,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/infrastructure/t
 
 ```
 
+Explain Code
+
 Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
@@ -131,7 +133,8 @@ resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target"
       }  
     }  
 }  
-```
+```  
+Explain Code
 
 Next, create an Access application to secure the target.
 
@@ -279,9 +282,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-3549)
-* [ API ](#tab-panel-3550)
-* [ Terraform ](#tab-panel-3551)
+* [ Dashboard ](#tab-panel-3555)
+* [ API ](#tab-panel-3556)
+* [ Terraform ](#tab-panel-3557)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
@@ -349,6 +352,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 
 ```
 
+Explain Code
+
 Using the `connection_rules` attribute within a [cloudflare\_zero\_trust\_access\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fpolicy) resource, configure the allowed copy/paste formats in each direction. For example, the following policy allows users to copy text from their local client into the browser-based RDP session, but blocks copying content out of the RDP session.
 
 ```
@@ -393,6 +398,8 @@ resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
 
 
 ```
+
+Explain Code
 
 ## Compatibility
 

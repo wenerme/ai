@@ -31,8 +31,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2093)
-* [  curl ](#tab-panel-2094)
+* [  TypeScript ](#tab-panel-2099)
+* [  curl ](#tab-panel-2100)
 
 ```
 
@@ -81,6 +81,8 @@ export default {
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -127,8 +129,8 @@ The transcription
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-2095)
-* [ Output ](#tab-panel-2096)
+* [ Input ](#tab-panel-2101)
+* [ Output ](#tab-panel-2102)
 
 ```
 
@@ -182,6 +184,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -263,6 +267,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

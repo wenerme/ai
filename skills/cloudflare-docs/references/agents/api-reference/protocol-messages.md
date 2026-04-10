@@ -42,8 +42,8 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-2512)
-* [  TypeScript ](#tab-panel-2513)
+* [  JavaScript ](#tab-panel-2518)
+* [  TypeScript ](#tab-panel-2519)
 
 JavaScript
 
@@ -95,6 +95,8 @@ export class IoTAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 This hook runs during `onConnect`, before any messages are sent. When it returns `false`:
 
 * No `cf_agent_identity`, `cf_agent_state`, or `cf_agent_mcp_servers` messages are sent on connect
@@ -105,8 +107,8 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-2514)
-* [  TypeScript ](#tab-panel-2515)
+* [  JavaScript ](#tab-panel-2520)
+* [  TypeScript ](#tab-panel-2521)
 
 JavaScript
 
@@ -156,12 +158,14 @@ export class MqttAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 ## Checking protocol status
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-2516)
-* [  TypeScript ](#tab-panel-2517)
+* [  JavaScript ](#tab-panel-2522)
+* [  TypeScript ](#tab-panel-2523)
 
 JavaScript
 
@@ -193,6 +197,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -223,6 +229,8 @@ export class MyAgent extends Agent<Env, State> {
 
 ```
 
+Explain Code
+
 ## What is and is not suppressed
 
 The following table shows what still works when protocol messages are suppressed for a connection:
@@ -242,8 +250,8 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-2518)
-* [  TypeScript ](#tab-panel-2519)
+* [  JavaScript ](#tab-panel-2524)
+* [  TypeScript ](#tab-panel-2525)
 
 JavaScript
 
@@ -291,6 +299,8 @@ export class SensorHub extends Agent {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -350,6 +360,8 @@ export class SensorHub extends Agent<Env, SensorState> {
 
 
 ```
+
+Explain Code
 
 Both flags are stored in the connection's WebSocket attachment and hidden from `connection.state` — they do not interfere with each other or with user-defined connection state.
 

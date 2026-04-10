@@ -72,7 +72,7 @@ export default {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCAbAFYAnACYRAFhEBGMVIBcLFm2Ac4XGnwHDx0uYuUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWCZ5IJLj2qHDgECQA3hYkJL10VLwB9hC8ABYAFAj2AI4g9m4QAJTrm1skvLZ3JMcQwGAkDCQAAwAPABCZwAeSslQAmgAFACin2+YAAfM8tkCKLg6GiXi8gccFCiABL2MBgdAkADqmDAuCByEJuLxJCBMBRlWO7hIwEQAGsQDASAB3XokADmjnsCAI9lw5Do2xIVgpIFwqDAiHs1MwfOliQZ7PRrOQWJxAKIFmNFwgIAQVFC9mFJAASrdPFQ3PZTl8fgAaJ4sz72OALBBufwbINbKJvMpOCA1exRfxRBzxFC+sBEE6IL0QBgAVUqADFsAAOKJ+41bAC+1bxtfulrr1drREs6mYmm0uh4-CEokkMnkSikJVsDicrg8Xh8bSo-kC2lIYQi0QihG06QCWRy66iZApZGK1kn5SqSfqjWavFa7VStimFjWUV5sQA+qNxtkU-kFoUaS1p2XY9sEfb6IORgjqYUjMJYQA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBOACyiAzJIDsEgKzCJALhYs2wDnC40+AkeKkTZCiQFgAUAGF0VCAFNb2ACJQAzjHSuo0G0pLq8AmISKjhgOwYAIigaOwAPADoAK1dI0lQoMAcwiOjYxJTIi2tbBwhsABU6GDs-OBgYMD4CKBtkJLgANzhXXgRYCABqYHRccDsLC3iPJBJcO1Q4cAgSAG9zEhIeuipefzsIXgALAAoEOwBHEDtXCABKNY3Nkl4bW5IjiGAwEgYSAAMADwAQicAHlLBUAJoABQAoh8vmAAHxPTaAii4Oio57PQFHACMyIAEnYwGB0CQAOqYMC4QHIQk43EkQEwZEVI5uEjARAAaxAMBIAHceiQAOYOOwIAh2XDkOhbEiWCkgXCoMCIOzUzB86UJBnstGs5CY7H-IjmY3nCAgBBUEJ2YUkABKNw8VFcdhOn2+ABpHiyPnY4PMEK4-Osg5tIq9So4INU7JE-JF7HEUL6wERjogvRAGABVCoAMWwAA5In7jZsAL7V3G1u6WuvV2tECyqZjqTTaHj8IRiSQyeSKYo2eyOFzuTzeVpUPwBTSkULhKLhQiaNL+TLZNeRMgUshFKwTsqVJN1BpNXgtNopGyTcyrSK8mIAfRGYyyKby8wKqS1p2XY9kEfa6IOBgjiYzAWEAA)
 
 TypeScript
 
@@ -110,6 +110,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -139,6 +141,8 @@ class Default(WorkerEntrypoint):
 
 ```
 
+Explain Code
+
 ```
 
 use worker::*;
@@ -166,6 +170,8 @@ async fn fetch(_req: Request, _env: Env, _ctx: Context) -> Result<Response> {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -201,6 +207,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/examples/return-html/","name":"Return small HTML page"}}]}

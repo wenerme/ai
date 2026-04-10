@@ -45,8 +45,8 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-3270)
-* [ TypeScript SDK ](#tab-panel-3271)
+* [ curl ](#tab-panel-3276)
+* [ TypeScript SDK ](#tab-panel-3277)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 
@@ -76,6 +76,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -110,6 +112,8 @@ console.log(screenshot.status);
 
 
 ```
+
+Explain Code
 
 ### Take a screenshot from a URL
 
@@ -192,6 +196,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
+Explain Code
+
 #### HTTP Basic Auth
 
 Use the `authenticate` parameter for pages behind HTTP Basic Authentication:
@@ -225,6 +231,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
+Explain Code
+
 #### Token-based authentication
 
 Add custom authorization headers using `setExtraHTTPHeaders`:
@@ -255,6 +263,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 ### Navigate and capture a full-page screenshot
 
@@ -302,6 +312,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 ### Improve blurry screenshot resolution
 
@@ -377,6 +389,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 ```
 
+Explain Code
+
 ### Capture a specific element using the selector option
 
 To capture a screenshot of a specific element on a webpage, use the `selector` option with a valid CSS selector. You can also configure the `viewport` to control the page dimensions during rendering.
@@ -411,6 +425,8 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 
 ```
+
+Explain Code
 
 Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/screenshot/methods/create/) for all available parameters.
 

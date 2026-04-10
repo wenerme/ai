@@ -32,8 +32,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1989)
-* [  curl ](#tab-panel-1990)
+* [  TypeScript ](#tab-panel-1995)
+* [  curl ](#tab-panel-1996)
 
 ```
 
@@ -82,6 +82,8 @@ export default {
 
 ```
 
+Explain Code
+
 Terminal window
 
 ```
@@ -126,8 +128,8 @@ Specify what to exclude from the generated images
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1991)
-* [ Output ](#tab-panel-1992)
+* [ Input ](#tab-panel-1997)
+* [ Output ](#tab-panel-1998)
 
 ```
 
@@ -235,6 +237,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```
 

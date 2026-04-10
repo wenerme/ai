@@ -148,6 +148,8 @@ export default {
 
 ```
 
+Explain Code
+
 #### `` env ` object ` ``
 
 The environment object to provide to the dynamic Worker.
@@ -217,6 +219,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 #### `` tails ` ServiceStub[] ` Optional ``
 
@@ -291,6 +295,8 @@ export class LogTailer extends WorkerEntrypoint {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dynamic-workers/","name":"Dynamic Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/dynamic-workers/api-reference/","name":"API reference"}}]}

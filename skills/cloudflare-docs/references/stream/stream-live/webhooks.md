@@ -89,6 +89,8 @@ Example webhook payload
 
 ```
 
+Explain Code
+
 The `event_type` property of the data object will either be `live_input.connected`, `live_input.disconnected`, or `live_input.errored`.
 
 If there are issues detected with the input, the `event_type` will be `live_input.errored`. Additional data will be under the `live_input_errored` json key and will include a `code` with one of the values listed below.
@@ -145,6 +147,8 @@ Example live\_input.errored webhook payload
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/stream-live/","name":"Stream live video"}},{"@type":"ListItem","position":4,"item":{"@id":"/stream/stream-live/webhooks/","name":"Receive Live Webhooks"}}]}

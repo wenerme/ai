@@ -42,8 +42,8 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-6607)
-* [  wrangler.toml ](#tab-panel-6608)
+* [  wrangler.jsonc ](#tab-panel-6645)
+* [  wrangler.toml ](#tab-panel-6646)
 
 JSONC
 
@@ -157,6 +157,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Extract a still frame
 
 Extract a single frame as a JPEG thumbnail:
@@ -187,6 +189,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 #### Identify content with Media Transformations and Workers AI
 
@@ -259,6 +263,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Extract audio
 
 Extract the audio track from a video as an M4A file. This example demonstrates skipping `.transform()` since no resizing is needed:
@@ -293,6 +299,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 #### Transcribe audio with Media Transformations and Workers AI
 
@@ -372,6 +380,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Store transformed output in R2
 
 Transform a video and store the result directly in R2:
@@ -411,6 +421,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Error handling
 
@@ -474,6 +486,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Caching
 
 Unlike transformations via URL, responses from the Media binding are _not_ automatically cached. Workers lets you interact directly with the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) to customize cache behavior. You can implement logic in your script to store transformations in Cloudflare's cache or R2 storage.
@@ -488,8 +502,8 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6609)
-* [  wrangler.toml ](#tab-panel-6610)
+* [  wrangler.jsonc ](#tab-panel-6647)
+* [  wrangler.toml ](#tab-panel-6648)
 
 JSONC
 

@@ -115,8 +115,8 @@ The framework exports:
 
 Create a `ServiceConfig` for each external API you want to proxy. This example proxies a generic HTTP API that expects a Bearer token:
 
-* [  JavaScript ](#tab-panel-6469)
-* [  TypeScript ](#tab-panel-6470)
+* [  JavaScript ](#tab-panel-6513)
+* [  TypeScript ](#tab-panel-6514)
 
 JavaScript
 
@@ -150,6 +150,8 @@ export const myApi = {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -196,14 +198,16 @@ export const myApi: ServiceConfig<Env> = {
 
 ```
 
+Explain Code
+
 The `transform` function receives the outgoing request and a context object containing `ctx.env` (your Worker environment) and `ctx.jwt` (the verified token payload, including `sandboxId`). Return the modified request to forward it, or return a `Response` to short-circuit with an error.
 
 ## 5\. Wire up the Worker
 
 Register your services with `createProxyHandler` and issue tokens to sandboxes using `createProxyToken`:
 
-* [  JavaScript ](#tab-panel-6471)
-* [  TypeScript ](#tab-panel-6472)
+* [  JavaScript ](#tab-panel-6515)
+* [  TypeScript ](#tab-panel-6516)
 
 JavaScript
 
@@ -285,6 +289,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -378,6 +384,8 @@ export default {
 
 ```
 
+Explain Code
+
 The `mountPath` (`/proxy`) and service name (`myapi`) together form the proxy route. A request to `/proxy/myapi/some/path` is validated and forwarded to `https://api.example.com/some/path`.
 
 ## 6\. Call the proxy from the sandbox
@@ -448,8 +456,8 @@ The SDK then sends all requests to your Worker proxy, which validates the token 
 
 To proxy additional APIs, define another `ServiceConfig` and add it to `createProxyHandler`:
 
-* [  JavaScript ](#tab-panel-6467)
-* [  TypeScript ](#tab-panel-6468)
+* [  JavaScript ](#tab-panel-6511)
+* [  TypeScript ](#tab-panel-6512)
 
 JavaScript
 
@@ -489,6 +497,8 @@ const proxyHandler = createProxyHandler({
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -525,6 +535,8 @@ const proxyHandler = createProxyHandler<Env>({
 
 ```
 
+Explain Code
+
 Each service is reachable at `/proxy/<service-name>/*`. The sandbox uses the same JWT token for all of them.
 
 ## Troubleshooting
@@ -539,8 +551,8 @@ The JWT is missing, expired, or signed with the wrong secret. Verify that:
 
 To issue a fresh token and pass it to the sandbox:
 
-* [  JavaScript ](#tab-panel-6463)
-* [  TypeScript ](#tab-panel-6464)
+* [  JavaScript ](#tab-panel-6507)
+* [  TypeScript ](#tab-panel-6508)
 
 JavaScript
 
@@ -588,8 +600,8 @@ The service name in the URL must match the key in the `services` object. A reque
 
 Log the request URL in `transform` to confirm the path is being rewritten correctly:
 
-* [  JavaScript ](#tab-panel-6465)
-* [  TypeScript ](#tab-panel-6466)
+* [  JavaScript ](#tab-panel-6509)
+* [  TypeScript ](#tab-panel-6510)
 
 JavaScript
 

@@ -150,6 +150,8 @@ async fn main() -> Result<(), s3::Error> {
 
 ```
 
+Explain Code
+
 ## Upload Objects
 
 To upload an object to R2:
@@ -199,6 +201,8 @@ async fn upload_object(
 
 
 ```
+
+Explain Code
 
 ## Download Objects
 
@@ -254,6 +258,8 @@ async fn download_object(
 
 
 ```
+
+Explain Code
 
 ## Generate Presigned URLs
 
@@ -337,6 +343,8 @@ async fn generate_upload_presigned_url(
 
 
 ```
+
+Explain Code
 
 You can use these presigned URLs with any HTTP client. For example, to upload a file using the PUT URL:
 

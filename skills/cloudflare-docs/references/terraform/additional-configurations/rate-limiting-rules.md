@@ -97,6 +97,8 @@ resource "cloudflare_ruleset" "zone_rl" {
 
 ```
 
+Explain Code
+
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
@@ -198,6 +200,8 @@ resource "cloudflare_ruleset" "account_rl_entrypoint" {
 
 ```
 
+Explain Code
+
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 
   
@@ -271,6 +275,8 @@ resource "cloudflare_ruleset" "zone_rl_custom_response" {
 
 
 ```
+
+Explain Code
 
 To create another rate limiting rule, add a new `rules` object to the same `cloudflare_ruleset` resource.
 

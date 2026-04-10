@@ -2581,6 +2581,8 @@ async webSocketError(ws: WebSocket, error: unknown): void | Promise<void> {
 
 ```
 
+Explain Code
+
 The prompt above adopts several best practices, including:
 
 * Using `<xml>` tags to structure the prompt

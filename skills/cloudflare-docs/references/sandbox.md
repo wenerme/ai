@@ -72,6 +72,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -124,6 +126,8 @@ df['sales'].sum()  # Last expression is automatically returned
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -170,6 +174,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -231,6 +237,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -268,6 +276,8 @@ export default {
 
 ```
 
+Explain Code
+
 Connect browser terminals directly to sandbox shells via WebSocket. Learn more: [Browser terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/).
 
 TypeScript
@@ -303,6 +313,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connections](https://developers.cloudflare.com/sandbox/guides/websocket-connections/).
 

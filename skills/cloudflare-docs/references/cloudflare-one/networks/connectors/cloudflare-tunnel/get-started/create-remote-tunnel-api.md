@@ -124,6 +124,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 ```
 
+Explain Code
+
 Copy the `id` and `token` values shown in the output. You will need these values to configure and run the tunnel.
 
 The next steps depend on whether you want to [publish an application to the Internet](#3a-publish-an-application) or [connect a private network](#3b-connect-a-network).
@@ -163,6 +165,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNN
     }  
   }'  
 ```  
+Explain Code  
 Note  
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).  
 Your ingress rules must include a catch-all rule at the end. In this example, `cloudflared` will respond with a 404 status code when the request does not match any of the previous hostnames.
@@ -225,10 +228,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 Install `cloudflared` on your server and run the tunnel using the `token` value obtained in [2\. Create a tunnel](#2-create-a-tunnel). You can also get the tunnel token using the [Cloudflare Tunnel token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/subresources/token/methods/get/) endpoint.
 
-* [ Linux ](#tab-panel-3509)
-* [ Windows ](#tab-panel-3510)
-* [ macOS ](#tab-panel-3511)
-* [ Docker ](#tab-panel-3512)
+* [ Linux ](#tab-panel-3515)
+* [ Windows ](#tab-panel-3516)
+* [ macOS ](#tab-panel-3517)
+* [ Docker ](#tab-panel-3518)
 
 1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
 2. Run the following command:  
@@ -409,6 +412,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/c1744
 
 
 ```
+
+Explain Code
 
 A healthy tunnel will have four connections to Cloudflare's network.
 

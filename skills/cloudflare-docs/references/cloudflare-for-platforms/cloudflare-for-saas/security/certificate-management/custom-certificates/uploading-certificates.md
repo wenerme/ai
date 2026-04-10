@@ -26,8 +26,8 @@ Note
 
 If you must support both RSA and ECDSA refer to [certificate packs](#use-certificate-packs-rsa-and-ecdsa) below.
 
-* [ Dashboard ](#tab-panel-3364)
-* [ API ](#tab-panel-3365)
+* [ Dashboard ](#tab-panel-3370)
+* [ API ](#tab-panel-3371)
 
 To upload a custom certificate in the dashboard, select **Custom certificate** while [creating your custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/create-custom-hostnames/).
 
@@ -111,6 +111,8 @@ EOF
 
 
 ```
+
+Explain Code
 
 1. Use a [POST request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) to upload your certificate and key.
 

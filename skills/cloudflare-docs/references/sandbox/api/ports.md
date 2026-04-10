@@ -46,8 +46,8 @@ proxyToSandbox(request: Request, env: Env): Promise<Response | null>
 
 The function inspects the request hostname to determine whether it matches the subdomain pattern of an exposed port (for example, `8080-sandbox-id-token.yourdomain.com`). If it matches, `proxyToSandbox()` proxies the request to the correct Durable Object, and the sandbox service handles it. Both HTTP and WebSocket upgrade requests are supported.
 
-* [  JavaScript ](#tab-panel-6181)
-* [  TypeScript ](#tab-panel-6182)
+* [  JavaScript ](#tab-panel-6225)
+* [  TypeScript ](#tab-panel-6226)
 
 JavaScript
 
@@ -85,6 +85,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -121,6 +123,8 @@ export default {
 
 ```
 
+Explain Code
+
 Note
 
 `proxyToSandbox` is a module-level function imported directly from `@cloudflare/sandbox` — it is not a method on a `Sandbox` instance. It requires the Sandbox Durable Object binding (`env.Sandbox`) to look up and route requests to the correct container.
@@ -150,8 +154,8 @@ const response = await sandbox.exposePort(port: number, options: ExposePortOptio
 
 **Returns**: `Promise<ExposePortResponse>` with `port`, `url` (preview URL), `name`
 
-* [  JavaScript ](#tab-panel-6189)
-* [  TypeScript ](#tab-panel-6190)
+* [  JavaScript ](#tab-panel-6233)
+* [  TypeScript ](#tab-panel-6234)
 
 JavaScript
 
@@ -226,6 +230,8 @@ const frontend = await sandbox.exposePort(5173, {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -299,6 +305,8 @@ const frontend = await sandbox.exposePort(5173, {
 
 ```
 
+Explain Code
+
 Local development
 
 When using `wrangler dev`, you must add `EXPOSE` directives to your Dockerfile for each port. See [Expose Services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/#local-development) for details.
@@ -317,8 +325,8 @@ Custom tokens enable consistent preview URLs across container restarts and deplo
 * Only lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_)
 * Must be unique per sandbox (cannot reuse tokens across different ports)
 
-* [  JavaScript ](#tab-panel-6183)
-* [  TypeScript ](#tab-panel-6184)
+* [  JavaScript ](#tab-panel-6227)
+* [  TypeScript ](#tab-panel-6228)
 
 JavaScript
 
@@ -351,6 +359,8 @@ await sandbox.exposePort(8080, { hostname, token: "v1-stable" });
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -382,6 +392,8 @@ await sandbox.exposePort(8080, { hostname, token: 'v1-stable' });
 
 ```
 
+Explain Code
+
 ### `validatePortToken()`
 
 Validate if a token is authorized to access a specific exposed port. Useful for custom authentication or routing logic.
@@ -402,8 +414,8 @@ const isValid = await sandbox.validatePortToken(port: number, token: string): Pr
 
 **Returns**: `Promise<boolean>` \- `true` if token is valid for the port, `false` otherwise
 
-* [  JavaScript ](#tab-panel-6187)
-* [  TypeScript ](#tab-panel-6188)
+* [  JavaScript ](#tab-panel-6231)
+* [  TypeScript ](#tab-panel-6232)
 
 JavaScript
 
@@ -457,6 +469,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -509,6 +523,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### `unexposePort()`
 
 Remove an exposed port and close its preview URL.
@@ -526,8 +542,8 @@ await sandbox.unexposePort(port: number): Promise<void>
 
 * `port` \- Port number to unexpose
 
-* [  JavaScript ](#tab-panel-6177)
-* [  TypeScript ](#tab-panel-6178)
+* [  JavaScript ](#tab-panel-6221)
+* [  TypeScript ](#tab-panel-6222)
 
 JavaScript
 
@@ -562,8 +578,8 @@ const response = await sandbox.getExposedPorts(): Promise<GetExposedPortsRespons
 
 **Returns**: `Promise<GetExposedPortsResponse>` with `ports` array (containing `port`, `url`, `name`)
 
-* [  JavaScript ](#tab-panel-6179)
-* [  TypeScript ](#tab-panel-6180)
+* [  JavaScript ](#tab-panel-6223)
+* [  TypeScript ](#tab-panel-6224)
 
 JavaScript
 
@@ -624,8 +640,8 @@ const response = await sandbox.wsConnect(request: Request, port: number): Promis
 
 **Returns**: `Promise<Response>` \- WebSocket response establishing the connection
 
-* [  JavaScript ](#tab-panel-6185)
-* [  TypeScript ](#tab-panel-6186)
+* [  JavaScript ](#tab-panel-6229)
+* [  TypeScript ](#tab-panel-6230)
 
 JavaScript
 
@@ -659,6 +675,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -690,6 +708,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Related resources
 

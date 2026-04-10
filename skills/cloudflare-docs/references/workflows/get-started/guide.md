@@ -117,6 +117,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
   }  
 }  
 ```  
+Explain Code  
 A Workflow extends `WorkflowEntrypoint` and implements a `run` method. This code also passes in our `Params` type as a [type parameter](https://developers.cloudflare.com/workflows/build/events-and-parameters/) so that events that trigger our Workflow are typed.  
 The [step](https://developers.cloudflare.com/workflows/build/workers-api/#step) object is the core of the Workflows API. It provides methods to define durable steps in your Workflow:  
    * `step.do(name, callback)` \- Executes code and persists the result. If the Workflow is interrupted or retried, it resumes from the last successful step rather than re-running completed work. The callback returns serializable data, including `ReadableStream<Uint8Array>` for large binary output in JavaScript Workflows.  
@@ -129,8 +130,8 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 ## 3\. Configure your Workflow
 
 1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:  
-   * [  wrangler.jsonc ](#tab-panel-8600)  
-   * [  wrangler.toml ](#tab-panel-8601)  
+   * [  wrangler.jsonc ](#tab-panel-8660)  
+   * [  wrangler.toml ](#tab-panel-8661)  
 JSONC  
 ```  
 {  
@@ -138,7 +139,7 @@ JSONC
   "name": "my-workflow",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-10",  
   "observability": {  
     "enabled": true  
   },  
@@ -151,13 +152,14 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "node_modules/wrangler/config-schema.json"  
 name = "my-workflow"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-10"  
 [observability]  
 enabled = true  
 [[workflows]]  
@@ -165,6 +167,7 @@ name = "my-workflow"
 binding = "MY_WORKFLOW"  
 class_name = "MyWorkflow"  
 ```  
+Explain Code  
 The `class_name` must match your exported class, and `binding` is the variable name you use to access the Workflow in your code (like `env.MY_WORKFLOW`).  
 You can also access [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) (such as [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), or [D1](https://developers.cloudflare.com/d1/)) via `this.env` within your Workflow. For more information on bindings within Workers, refer to [Bindings (env)](https://developers.cloudflare.com/workers/runtime-apis/bindings/).
 2. Now, generate types for your bindings:  
@@ -194,7 +197,8 @@ export default {
     return Response.json({ instanceId: instance.id });  
   },  
 } satisfies ExportedHandler<Env>;  
-```
+```  
+Explain Code
 
 ## 5\. Develop locally
 

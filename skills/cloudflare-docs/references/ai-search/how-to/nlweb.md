@@ -113,6 +113,8 @@ You can also use the embeddable snippet to add a search UI directly into your we
 
 ```
 
+Explain Code
+
 This lets you serve conversational AI search directly from your own domain, with control over how people and agents access your content.
 
 ## Modifying or updating the Worker

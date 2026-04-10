@@ -49,8 +49,8 @@ The following guide assumes you have already created a site and configured your 
 
 ## Create a policy
 
-* [ Dashboard ](#tab-panel-3987)
-* [ API ](#tab-panel-3988)
+* [ Dashboard ](#tab-panel-3993)
+* [ API ](#tab-panel-3994)
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
@@ -156,6 +156,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -264,14 +266,16 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ```
 
+Explain Code
+
 Take note of the `id` parameter, as you will need it to edit or delete network policies.
 
 The new policy will ensure that traffic between the specified LANs flows locally, bypassing Cloudflare.
 
 ## Edit a policy
 
-* [ Dashboard ](#tab-panel-3989)
-* [ API ](#tab-panel-3990)
+* [ Dashboard ](#tab-panel-3995)
+* [ API ](#tab-panel-3996)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
@@ -365,6 +369,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -424,10 +430,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ```
 
+Explain Code
+
 ## Delete a policy
 
-* [ Dashboard ](#tab-panel-3985)
-* [ API ](#tab-panel-3986)
+* [ Dashboard ](#tab-panel-3991)
+* [ API ](#tab-panel-3992)
 
 1. Go to the **Connectors** page.
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)

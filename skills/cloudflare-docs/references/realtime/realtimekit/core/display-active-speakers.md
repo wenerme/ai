@@ -281,6 +281,8 @@ meeting.addParticipantsEventListener(ParticipantsNotifier());
 
 ```
 
+Explain Code
+
 Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 Use `lastActiveSpeaker` to show the most recently active participant in your UI. Access the current active speaker with the `useRealtimeKitSelector` hook:
@@ -350,6 +352,8 @@ activeParticipants.forEach((participant) => {
 
 
 ```
+
+Explain Code
 
 The `useRealtimeKitSelector` hook automatically updates your component when the set of active speakers changes.
 
@@ -671,6 +675,8 @@ activeParticipants.forEach((participant) => {
 
 
 ```
+
+Explain Code
 
 The `useRealtimeKitSelector` hook automatically updates your component when the set of active speakers changes.
 

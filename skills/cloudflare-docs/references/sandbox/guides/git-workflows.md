@@ -20,8 +20,8 @@ This guide shows you how to clone repositories, manage branches, and automate Gi
 
 ## Clone repositories
 
-* [  JavaScript ](#tab-panel-6397)
-* [  TypeScript ](#tab-panel-6398)
+* [  JavaScript ](#tab-panel-6441)
+* [  TypeScript ](#tab-panel-6442)
 
 JavaScript
 
@@ -67,6 +67,8 @@ await sandbox.gitCheckout("https://github.com/user/my-app", {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -111,12 +113,14 @@ await sandbox.gitCheckout('https://github.com/user/my-app', {
 
 ```
 
+Explain Code
+
 ## Clone private repositories
 
 Use a personal access token in the URL:
 
-* [  JavaScript ](#tab-panel-6387)
-* [  TypeScript ](#tab-panel-6388)
+* [  JavaScript ](#tab-panel-6431)
+* [  TypeScript ](#tab-panel-6432)
 
 JavaScript
 
@@ -154,8 +158,8 @@ Embedding a token in the URL passes the credential directly into the sandbox. Fo
 
 Clone a repository and run build steps:
 
-* [  JavaScript ](#tab-panel-6389)
-* [  TypeScript ](#tab-panel-6390)
+* [  JavaScript ](#tab-panel-6433)
+* [  TypeScript ](#tab-panel-6434)
 
 JavaScript
 
@@ -203,8 +207,8 @@ console.log('Build complete');
 
 ## Work with branches
 
-* [  JavaScript ](#tab-panel-6391)
-* [  TypeScript ](#tab-panel-6392)
+* [  JavaScript ](#tab-panel-6435)
+* [  TypeScript ](#tab-panel-6436)
 
 JavaScript
 
@@ -246,8 +250,8 @@ await sandbox.exec('cd repo && git checkout -b new-feature');
 
 ## Make changes and commit
 
-* [  JavaScript ](#tab-panel-6399)
-* [  TypeScript ](#tab-panel-6400)
+* [  JavaScript ](#tab-panel-6443)
+* [  TypeScript ](#tab-panel-6444)
 
 JavaScript
 
@@ -282,6 +286,8 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -309,6 +315,8 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 ```
 
+Explain Code
+
 ## Best practices
 
 * **Use shallow clones** \- Faster for large repos with `depth: 1`
@@ -321,8 +329,8 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 Verify your token is set:
 
-* [  JavaScript ](#tab-panel-6395)
-* [  TypeScript ](#tab-panel-6396)
+* [  JavaScript ](#tab-panel-6439)
+* [  TypeScript ](#tab-panel-6440)
 
 JavaScript
 
@@ -364,8 +372,8 @@ await sandbox.gitCheckout(repoUrl);
 
 Use shallow clone:
 
-* [  JavaScript ](#tab-panel-6393)
-* [  TypeScript ](#tab-panel-6394)
+* [  JavaScript ](#tab-panel-6437)
+* [  TypeScript ](#tab-panel-6438)
 
 JavaScript
 

@@ -234,6 +234,8 @@ spec:
 
 ```
 
+Explain Code
+
 The corresponding service definition should also specify the ports and target ports for the containers (in this case, the database service and the SSH proxy service).
 
 Service Definition
@@ -305,6 +307,8 @@ spec:
 
 ```
 
+Explain Code
+
 The MongoDB pod and the SSH jump host will share a Unix socket over an empty directory volume. The `entrypoint.sh` file run by the jump host, example below, will start an OpenSSH server.
 
 ```
@@ -333,6 +337,8 @@ done;
 
 
 ```
+
+Explain Code
 
 ## Configure Cloudflare Tunnel
 
@@ -511,6 +517,8 @@ data:
 
 
 ```
+
+Explain Code
 
 ## Connect from a client
 

@@ -161,6 +161,8 @@ const HandleAirtableData = (body, env) => {
 
 ```
 
+Explain Code
+
 ### Refactor your Worker
 
 To refactor the above Worker, go to your Pages project directory and create a `/functions` folder. In `/functions`, create a `form.js` file. This file will handle form submissions.
@@ -235,6 +237,8 @@ async function submitHandler(context) {
 
 ```
 
+Explain Code
+
 Finally, create a `HandleAirtableData` function. This function will send a `fetch` request to Airtable with your Airtable credentials and the body of your request:
 
 JavaScript
@@ -275,6 +279,8 @@ const HandleAirtableData = async function onRequest({ body, env }) {
 
 
 ```
+
+Explain Code
 
 You can test your Function [locally using Wrangler](https://developers.cloudflare.com/pages/functions/local-development/). By completing this guide, you have successfully refactored your form submission Worker to a form submission Pages Function.
 

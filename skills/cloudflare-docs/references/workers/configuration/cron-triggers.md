@@ -34,9 +34,9 @@ Cron Triggers execute on UTC time.
 
 To respond to a Cron Trigger, you must add a ["scheduled" handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/) to your Worker.
 
-* [  JavaScript ](#tab-panel-7058)
-* [  TypeScript ](#tab-panel-7059)
-* [  Python ](#tab-panel-7060)
+* [  JavaScript ](#tab-panel-7116)
+* [  TypeScript ](#tab-panel-7117)
+* [  Python ](#tab-panel-7118)
 
 JavaScript
 
@@ -82,6 +82,8 @@ export default {
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -117,8 +119,8 @@ If a Worker is managed with Wrangler, Cron Triggers should be exclusively manage
 
 Refer to the example below for a Cron Triggers configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7063)
-* [  wrangler.toml ](#tab-panel-7064)
+* [  wrangler.jsonc ](#tab-panel-7121)
+* [  wrangler.toml ](#tab-panel-7122)
 
 JSONC
 
@@ -153,6 +155,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -166,8 +170,8 @@ crons = [ "*/3 * * * *", "0 15 1 * *", "59 23 LW * *" ]
 
 You also can set a different Cron Trigger for each [environment](https://developers.cloudflare.com/workers/wrangler/environments/) in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). You need to put the `triggers` array under your chosen environment. For example:
 
-* [  wrangler.jsonc ](#tab-panel-7065)
-* [  wrangler.toml ](#tab-panel-7066)
+* [  wrangler.jsonc ](#tab-panel-7123)
+* [  wrangler.toml ](#tab-panel-7124)
 
 JSONC
 
@@ -197,6 +201,8 @@ JSONC
 
 
 ```
+
+Explain Code
 
 TOML
 
@@ -327,8 +333,8 @@ When deploying a Worker with Wrangler any previous Cron Triggers are replaced wi
 * If the `crons` property is an empty array then all the Cron Triggers are removed.
 * If the `triggers` or `crons` property are `undefined` then the currently deploy Cron Triggers are left in-place.
 
-* [  wrangler.jsonc ](#tab-panel-7061)
-* [  wrangler.toml ](#tab-panel-7062)
+* [  wrangler.jsonc ](#tab-panel-7119)
+* [  wrangler.toml ](#tab-panel-7120)
 
 JSONC
 

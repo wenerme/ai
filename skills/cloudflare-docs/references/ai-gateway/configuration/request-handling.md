@@ -154,6 +154,8 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
 
 ```
 
+Explain Code
+
 #### Direct provider
 
 If set on a [provider](https://developers.cloudflare.com/ai-gateway/usage/providers/) request, request timeout specifies the timeout duration for a request and - if exceeded - returns an error.
@@ -338,6 +340,8 @@ curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
 
 
 ```
+
+Explain Code
 
 #### Direct provider
 

@@ -48,8 +48,8 @@ If you are not using xterm.js, you only need `@cloudflare/sandbox` for types.
 
 Add a route that proxies WebSocket connections to the sandbox terminal. The example below supports both the default session and named sessions via a query parameter:
 
-* [  JavaScript ](#tab-panel-6293)
-* [  TypeScript ](#tab-panel-6294)
+* [  JavaScript ](#tab-panel-6337)
+* [  TypeScript ](#tab-panel-6338)
 
 JavaScript
 
@@ -104,6 +104,8 @@ export default {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -151,12 +153,14 @@ export default {
 
 ```
 
+Explain Code
+
 ## Connect with xterm.js and SandboxAddon
 
 Create the terminal in your browser code and attach the `SandboxAddon`. The addon manages the WebSocket connection, automatic reconnection, and resize forwarding.
 
-* [  JavaScript ](#tab-panel-6295)
-* [  TypeScript ](#tab-panel-6296)
+* [  JavaScript ](#tab-panel-6339)
+* [  TypeScript ](#tab-panel-6340)
 
 JavaScript
 
@@ -221,6 +225,8 @@ window.addEventListener("resize", () => fitAddon.fit());
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -284,14 +290,16 @@ window.addEventListener('resize', () => fitAddon.fit());
 
 ```
 
+Explain Code
+
 For the full addon API, refer to the [Terminal API reference](https://developers.cloudflare.com/sandbox/api/terminal/).
 
 ## Connect without xterm.js
 
 If you are building a custom terminal UI or running in an environment without xterm.js, connect directly over WebSockets. The protocol uses binary frames for terminal data and JSON text frames for control messages.
 
-* [  JavaScript ](#tab-panel-6297)
-* [  TypeScript ](#tab-panel-6298)
+* [  JavaScript ](#tab-panel-6341)
+* [  TypeScript ](#tab-panel-6342)
 
 JavaScript
 
@@ -371,6 +379,8 @@ function sendInput(text) {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -448,6 +458,8 @@ function sendInput(text: string): void {
 
 
 ```
+
+Explain Code
 
 Key protocol details:
 

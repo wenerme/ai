@@ -125,6 +125,8 @@ curl https://api.cloudflare.com/client/v4/graphql \
 
 ```
 
+Explain Code
+
 The returned values represent the total bandwidth in bits per second during the five-minute interval for a particular tunnel. To use aggregations other than five minutes, use the same time window for both your metric and datetime. For example, to analyze hourly groups, use `bitRateHour` and `datetimeHour`.
 
 The result is in JSON (as requested), so piping the output to `jq` formats it for easier parsing, as in the following example:
@@ -202,6 +204,8 @@ curl https://api.cloudflare.com/client/v4/graphql \
 
 
 ```
+
+Explain Code
 
 ## Footnotes
 

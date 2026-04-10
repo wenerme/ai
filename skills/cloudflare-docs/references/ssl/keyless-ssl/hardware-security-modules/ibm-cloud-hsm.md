@@ -55,6 +55,8 @@ Command Result : 0 (Success)
 
 ```
 
+Explain Code
+
 Next, the partition needs to be assigned to the client, in this case your key server.
 
 Terminal window
@@ -127,6 +129,8 @@ Command Result : No Error
 
 ```
 
+Explain Code
+
 ---
 
 ## 2\. Generate RSA and ECDSA key pairs and certificate signing requests (CSRs)
@@ -161,6 +165,8 @@ handle=45   label=myrsakey
 
 
 ```
+
+Explain Code
 
 Using the keys created in the previous step, generate CSRs that can be sent to a publicly trusted Certificate Authority (CA) for signing.
 

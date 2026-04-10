@@ -26,8 +26,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-6666)
-* [ API ](#tab-panel-6667)
+* [ Dashboard ](#tab-panel-6724)
+* [ API ](#tab-panel-6725)
 
 To create an account under your tenant using the dashboard:
 
@@ -122,6 +122,8 @@ Response
 
 ```
 
+Explain Code
+
 A request with a unit ID:
 
 Request
@@ -152,6 +154,8 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 
 ```
+
+Explain Code
 
 A request with a unit ID and KYC:
 
@@ -194,12 +198,14 @@ curl "https://api.cloudflare.com/client/v4/accounts" \
 
 ```
 
+Explain Code
+
 ## View accounts
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-6664)
-* [ API ](#tab-panel-6665)
+* [ Dashboard ](#tab-panel-6722)
+* [ API ](#tab-panel-6723)
 
 To view any accounts owned by your tenant using the dashboard:
 
@@ -285,6 +291,8 @@ Response
 
 
 ```
+
+Explain Code
 
 ## Update account
 

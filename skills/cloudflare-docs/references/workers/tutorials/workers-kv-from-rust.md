@@ -78,8 +78,8 @@ npx wrangler kv namespace create cities
 
 To add this configuration to your project, open the Wrangler file and create an entry for `kv_namespaces` above the build command:
 
-* [  wrangler.jsonc ](#tab-panel-7792)
-* [  wrangler.toml ](#tab-panel-7793)
+* [  wrangler.jsonc ](#tab-panel-7852)
+* [  wrangler.toml ](#tab-panel-7853)
 
 JSONC
 
@@ -167,6 +167,8 @@ async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
 
 ```
 
+Explain Code
+
 For the post handler, you will retrieve the country name from the path and the city name from the request body. Then, you will save this in KV with the country as key and the city as value. Finally, the app will respond with the city name:
 
 ```
@@ -201,6 +203,8 @@ For the post handler, you will retrieve the country name from the path and the c
 
 
 ```
+
+Explain Code
 
 Save the file and make a `POST` request to test this endpoint:
 
@@ -334,6 +338,8 @@ async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
 
 
 ```
+
+Explain Code
 
 To deploy your Worker, run the following command:
 

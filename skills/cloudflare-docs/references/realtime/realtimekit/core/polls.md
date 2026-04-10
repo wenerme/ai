@@ -128,6 +128,8 @@ interface PollOption {
 
 ```
 
+Explain Code
+
 The `Poll` type is defined as follows:
 
 TypeScript
@@ -173,6 +175,8 @@ interface PollOption {
 
 
 ```
+
+Explain Code
 
 The `Poll` type represents a poll within a meeting:
 
@@ -292,6 +296,8 @@ class PollVote {
 
 ```
 
+Explain Code
+
 The `Poll` type is defined as follows:
 
 Dart
@@ -357,6 +363,8 @@ class PollVote {
 
 ```
 
+Explain Code
+
 The `Poll` type is defined as follows:
 
 TypeScript
@@ -402,6 +410,8 @@ interface PollOption {
 
 
 ```
+
+Explain Code
 
 ## Creating a Poll
 
@@ -983,6 +993,8 @@ meeting.addPollsEventListener(object : RtkPollsEventListener {
 
 ```
 
+Explain Code
+
 To be able to receive new poll messages you need to implement a method `onPollUpdates()` method from callback `RtkPollsEventListener`. You can subscribe to this events by calling `meeting.addPollsEventListener(meetingViewModel)`
 
 Swift
@@ -1011,6 +1023,8 @@ extension MeetingViewModel: RtkPollsEventListener {
 
 
 ```
+
+Explain Code
 
 To be able to receive new poll messages you need to implement a method `onPollUpdates()` method from callback `RtkPollsEventListener`:
 
@@ -1043,6 +1057,8 @@ class PollEventsListener extends RtkPollsEventListener {
 
 
 ```
+
+Explain Code
 
 You can subscribe to these events as follows:
 

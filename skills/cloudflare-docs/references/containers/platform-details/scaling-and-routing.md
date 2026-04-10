@@ -51,6 +51,8 @@ const containerTwo = getContainer(
 
 ```
 
+Explain Code
+
 Each instance will run until its `sleepAfter` time has elapsed, or until it is manually stopped.
 
 This behavior is very useful when you want explicit control over the lifecycle of container instances. For instance, you may want to spin up a container backend instance for a specific user, or you may briefly run a code sandbox to isolate AI-generated code, or you may want to run a short-lived batch job.
@@ -96,6 +98,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 We have provided the getRandom function as a stopgap solution to route to multiple stateless container instances. It will randomly select one of N instances for each request and route to it. Unfortunately, it has two major downsides:
 

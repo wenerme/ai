@@ -65,6 +65,8 @@ Triggered when an application is created.
 
 ```
 
+Explain Code
+
 #### `application.deleted`
 
 Triggered when an application is deleted.
@@ -107,6 +109,8 @@ Triggered when an application is deleted.
 
 
 ```
+
+Explain Code
 
 ### R2
 
@@ -157,6 +161,8 @@ Triggered when a bucket is created.
 
 ```
 
+Explain Code
+
 #### `bucket.deleted`
 
 Triggered when a bucket is deleted.
@@ -199,6 +205,8 @@ Triggered when a bucket is deleted.
 
 
 ```
+
+Explain Code
 
 ### Super Slurper
 
@@ -271,6 +279,8 @@ Triggered when a migration job starts.
 
 ```
 
+Explain Code
+
 #### `job.paused`
 
 Triggered when a migration job pauses.
@@ -312,6 +322,8 @@ Triggered when a migration job pauses.
 
 ```
 
+Explain Code
+
 #### `job.resumed`
 
 Triggered when a migration job resumes.
@@ -352,6 +364,8 @@ Triggered when a migration job resumes.
 
 
 ```
+
+Explain Code
 
 #### `job.completed`
 
@@ -402,6 +416,8 @@ Triggered when a migration job finishes.
 
 ```
 
+Explain Code
+
 #### `job.aborted`
 
 Triggered when a migration job is manually aborted.
@@ -451,6 +467,8 @@ Triggered when a migration job is manually aborted.
 
 ```
 
+Explain Code
+
 #### `job.object.migrated`
 
 Triggered when an object is migrated.
@@ -493,6 +511,8 @@ Triggered when an object is migrated.
 
 
 ```
+
+Explain Code
 
 ### Vectorize
 
@@ -547,6 +567,8 @@ Triggered when an index is created.
 
 ```
 
+Explain Code
+
 #### `index.deleted`
 
 Triggered when an index is deleted.
@@ -587,6 +609,8 @@ Triggered when an index is deleted.
 
 
 ```
+
+Explain Code
 
 ### Workers AI
 
@@ -633,6 +657,8 @@ Triggered when a batch request is queued.
 
 ```
 
+Explain Code
+
 #### `batch.succeeded`
 
 Triggered when a batch request has completed.
@@ -675,6 +701,8 @@ Triggered when a batch request has completed.
 
 
 ```
+
+Explain Code
 
 #### `batch.failed`
 
@@ -724,6 +752,8 @@ Triggered when a batch request has failed.
 
 
 ```
+
+Explain Code
 
 ### Workers Builds
 
@@ -808,6 +838,8 @@ Triggered when a build starts.
 
 ```
 
+Explain Code
+
 #### `build.failed`
 
 Triggered when a build fails.
@@ -888,6 +920,8 @@ Triggered when a build fails.
 
 
 ```
+
+Explain Code
 
 #### `build.canceled`
 
@@ -970,6 +1004,8 @@ Triggered when a build is canceled.
 
 ```
 
+Explain Code
+
 #### `build.succeeded`
 
 Triggered when a build succeeds.
@@ -1051,6 +1087,8 @@ Triggered when a build succeeds.
 
 ```
 
+Explain Code
+
 ### Workers KV
 
 #### `namespace.created`
@@ -1096,6 +1134,8 @@ Triggered when a namespace is created.
 
 ```
 
+Explain Code
+
 #### `namespace.deleted`
 
 Triggered when a namespace is deleted.
@@ -1138,6 +1178,8 @@ Triggered when a namespace is deleted.
 
 
 ```
+
+Explain Code
 
 ### Workflows
 
@@ -1186,6 +1228,8 @@ Triggered when an instance was created and is awaiting execution.
 
 ```
 
+Explain Code
+
 #### `instance.started`
 
 Triggered when an instance starts or resumes execution.
@@ -1230,6 +1274,8 @@ Triggered when an instance starts or resumes execution.
 
 
 ```
+
+Explain Code
 
 #### `instance.paused`
 
@@ -1276,6 +1322,8 @@ Triggered when an instance pauses execution.
 
 ```
 
+Explain Code
+
 #### `instance.errored`
 
 Triggered when an instance step throws an error.
@@ -1320,6 +1368,8 @@ Triggered when an instance step throws an error.
 
 
 ```
+
+Explain Code
 
 #### `instance.terminated`
 
@@ -1366,6 +1416,8 @@ Triggered when an instance is manually terminated.
 
 ```
 
+Explain Code
+
 #### `instance.completed`
 
 Triggered when an instance finishes execution successfully.
@@ -1410,6 +1462,8 @@ Triggered when an instance finishes execution successfully.
 
 
 ```
+
+Explain Code
 
 ## Common schema fields
 

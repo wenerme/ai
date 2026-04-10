@@ -34,8 +34,8 @@ For **web servers, databases, or services that need to keep running**, use `star
 
 Use `exec()` for simple commands that complete quickly:
 
-* [  JavaScript ](#tab-panel-6317)
-* [  TypeScript ](#tab-panel-6318)
+* [  JavaScript ](#tab-panel-6361)
+* [  TypeScript ](#tab-panel-6362)
 
 JavaScript
 
@@ -61,6 +61,8 @@ console.log(result.success); // true
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -85,12 +87,14 @@ console.log(result.success);  // true
 
 ```
 
+Explain Code
+
 ## Pass arguments safely
 
 When passing user input or dynamic values, avoid string interpolation to prevent injection attacks:
 
-* [  JavaScript ](#tab-panel-6319)
-* [  TypeScript ](#tab-panel-6320)
+* [  JavaScript ](#tab-panel-6363)
+* [  TypeScript ](#tab-panel-6364)
 
 JavaScript
 
@@ -119,6 +123,8 @@ await sandbox.exec("python process.py /tmp/input.txt");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -146,6 +152,8 @@ await sandbox.exec('python process.py /tmp/input.txt');
 
 ```
 
+Explain Code
+
 ## Handle errors
 
 Commands can fail in two ways:
@@ -153,8 +161,8 @@ Commands can fail in two ways:
 1. **Non-zero exit code** \- Command ran but failed (result.success === false)
 2. **Execution error** \- Command couldn't start (throws exception)
 
-* [  JavaScript ](#tab-panel-6333)
-* [  TypeScript ](#tab-panel-6334)
+* [  JavaScript ](#tab-panel-6377)
+* [  TypeScript ](#tab-panel-6378)
 
 JavaScript
 
@@ -205,6 +213,8 @@ try {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -257,12 +267,14 @@ try {
 
 ```
 
+Explain Code
+
 ## Execute shell commands
 
 The sandbox supports shell features like pipes, redirects, and chaining:
 
-* [  JavaScript ](#tab-panel-6323)
-* [  TypeScript ](#tab-panel-6324)
+* [  JavaScript ](#tab-panel-6367)
+* [  TypeScript ](#tab-panel-6368)
 
 JavaScript
 
@@ -312,8 +324,8 @@ await sandbox.exec('cd /workspace && npm install && npm test');
 
 ## Execute Python scripts
 
-* [  JavaScript ](#tab-panel-6331)
-* [  TypeScript ](#tab-panel-6332)
+* [  JavaScript ](#tab-panel-6375)
+* [  TypeScript ](#tab-panel-6376)
 
 JavaScript
 
@@ -348,6 +360,8 @@ await sandbox.exec("python /workspace/analyze.py data.csv");
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -375,6 +389,8 @@ await sandbox.exec('python /workspace/analyze.py data.csv');
 
 ```
 
+Explain Code
+
 ## Timeouts
 
 Set a maximum execution time for commands to prevent long-running operations from blocking indefinitely.
@@ -383,8 +399,8 @@ Set a maximum execution time for commands to prevent long-running operations fro
 
 Pass `timeout` in the options to set a timeout for a single command:
 
-* [  JavaScript ](#tab-panel-6321)
-* [  TypeScript ](#tab-panel-6322)
+* [  JavaScript ](#tab-panel-6365)
+* [  TypeScript ](#tab-panel-6366)
 
 JavaScript
 
@@ -416,8 +432,8 @@ const result = await sandbox.exec('npm run build', {
 
 Set a default timeout for all commands in a session with `commandTimeoutMs`:
 
-* [  JavaScript ](#tab-panel-6327)
-* [  TypeScript ](#tab-panel-6328)
+* [  JavaScript ](#tab-panel-6371)
+* [  TypeScript ](#tab-panel-6372)
 
 JavaScript
 
@@ -499,8 +515,8 @@ When a command times out, the SDK raises an error and closes the connection. The
 
 Verify the command exists in the container:
 
-* [  JavaScript ](#tab-panel-6325)
-* [  TypeScript ](#tab-panel-6326)
+* [  JavaScript ](#tab-panel-6369)
+* [  TypeScript ](#tab-panel-6370)
 
 JavaScript
 
@@ -536,8 +552,8 @@ if (!check.success) {
 
 Use absolute paths or change directory:
 
-* [  JavaScript ](#tab-panel-6329)
-* [  TypeScript ](#tab-panel-6330)
+* [  JavaScript ](#tab-panel-6373)
+* [  TypeScript ](#tab-panel-6374)
 
 JavaScript
 

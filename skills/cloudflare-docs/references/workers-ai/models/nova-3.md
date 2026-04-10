@@ -62,8 +62,8 @@ If no language is specified, the model defaults to `en-US`. For best accuracy, e
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1967)
-* [  curl ](#tab-panel-1968)
+* [  TypeScript ](#tab-panel-1973)
+* [  curl ](#tab-panel-1974)
 
 ```
 
@@ -102,6 +102,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 Terminal window
 
@@ -226,8 +228,8 @@ Indicates how long model will wait to send an UtteranceEnd message after a word 
 
 The following schemas are based on JSON Schema
 
-* [ Input ](#tab-panel-1969)
-* [ Output ](#tab-panel-1970)
+* [ Input ](#tab-panel-1975)
+* [ Output ](#tab-panel-1976)
 
 ```
 
@@ -606,6 +608,8 @@ The following schemas are based on JSON Schema
 
 ```
 
+Explain Code
+
 ```
 
 {
@@ -816,6 +820,8 @@ The following schemas are based on JSON Schema
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

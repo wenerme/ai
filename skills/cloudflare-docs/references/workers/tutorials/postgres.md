@@ -80,8 +80,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7788)
-* [  wrangler.toml ](#tab-panel-7789)
+* [  wrangler.jsonc ](#tab-panel-7848)
+* [  wrangler.toml ](#tab-panel-7849)
 
 JSONC
 
@@ -97,7 +97,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03"
+  "compatibility_date": "2026-04-10"
 
 }
 
@@ -112,7 +112,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 ```
@@ -222,8 +222,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7784)
-* [  wrangler.toml ](#tab-panel-7785)
+* [  wrangler.jsonc ](#tab-panel-7844)
+* [  wrangler.toml ](#tab-panel-7845)
 
 JSONC
 
@@ -352,6 +352,8 @@ await sql.connect();
 
 ```
 
+Explain Code
+
 ## 5\. Interact with the products database
 
 To demonstrate how to interact with the products database, you will fetch data from the `products` table by querying the table when a request is received.
@@ -430,6 +432,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 This code establishes a connection to the PostgreSQL database within your Worker application and queries the `products` table, returning the results as a JSON response.
 
@@ -558,6 +562,8 @@ export default {
 
 ```
 
+Explain Code
+
 This code snippet does the following:
 
 1. Checks if the request is a `POST` request and the URL path is `/products`.
@@ -613,8 +619,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-7786)
-* [  wrangler.toml ](#tab-panel-7787)
+* [  wrangler.jsonc ](#tab-panel-7846)
+* [  wrangler.toml ](#tab-panel-7847)
 
 JSONC
 
@@ -630,7 +636,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": [
 
@@ -657,6 +663,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -669,7 +677,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -682,6 +690,8 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 
 ```
+
+Explain Code
 
 Create the types for your Hyperdrive binding using the following command:
 

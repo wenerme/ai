@@ -26,8 +26,8 @@ For a full example, see the [Cron Container Template ↗](https://github.com/mik
 
 Use a cron expression in your Wrangler config to specify the schedule:
 
-* [  wrangler.jsonc ](#tab-panel-4019)
-* [  wrangler.toml ](#tab-panel-4020)
+* [  wrangler.jsonc ](#tab-panel-4057)
+* [  wrangler.toml ](#tab-panel-4058)
 
 JSONC
 
@@ -94,6 +94,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -130,6 +132,8 @@ tag = "v1"
 
 
 ```
+
+Explain Code
 
 Then in your Worker, call your Container from the "scheduled" handler:
 
@@ -190,6 +194,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/examples/","name":"Examples"}},{"@type":"ListItem","position":4,"item":{"@id":"/containers/examples/cron/","name":"Cron Container"}}]}

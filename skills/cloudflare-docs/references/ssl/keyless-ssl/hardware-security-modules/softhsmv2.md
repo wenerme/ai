@@ -67,6 +67,8 @@ source ~/.profile
 
 ```
 
+Explain Code
+
 ---
 
 ## 2\. Create a token and private keys, and generate CSRs
@@ -138,6 +140,8 @@ cfssl genkey csr.json | cfssljson -bare certificate
 
 
 ```
+
+Explain Code
 
 ```
 

@@ -143,6 +143,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 ```
 
+Explain Code
+
 ## View a specific ruleset
 
 Returns the properties of the most recent version of the ruleset with the specified ruleset ID.
@@ -285,6 +287,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 
 ```
 
+Explain Code
+
 ## List all versions of a ruleset
 
 Returns a list of all the versions of a ruleset.
@@ -420,6 +424,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/v
 
 ```
 
+Explain Code
+
 ## View a specific version of a ruleset
 
 Returns the configuration of a specific version of a ruleset, including its rules.
@@ -554,6 +560,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/v
 
 
 ```
+
+Explain Code
 
 Note
 
@@ -693,6 +701,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESE
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ruleset-engine/","name":"Ruleset Engine"}},{"@type":"ListItem","position":3,"item":{"@id":"/ruleset-engine/rulesets-api/","name":"Rulesets API"}},{"@type":"ListItem","position":4,"item":{"@id":"/ruleset-engine/rulesets-api/view/","name":"List and view rulesets"}}]}

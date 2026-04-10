@@ -75,11 +75,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-6724)
-* [  PHP ](#tab-panel-6725)
-* [  Python ](#tab-panel-6726)
-* [  Java ](#tab-panel-6727)
-* [  C# ](#tab-panel-6728)
+* [  JavaScript ](#tab-panel-6782)
+* [  PHP ](#tab-panel-6783)
+* [  Python ](#tab-panel-6784)
+* [  Java ](#tab-panel-6785)
+* [  C# ](#tab-panel-6786)
 
 #### JSON
 
@@ -139,6 +139,8 @@ async function validateTurnstile(token, remoteip) {
 
 
 ```
+
+Explain Code
 
 #### Form Data
 
@@ -234,6 +236,8 @@ async function handleFormSubmission(request) {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -332,6 +336,8 @@ error_log('Turnstile validation failed: ' . implode(', ', $validation['error-cod
 
 ```
 
+Explain Code
+
 Python
 
 ```
@@ -421,6 +427,8 @@ def submit_form():
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -549,6 +557,8 @@ HttpServletRequest request) {
 
 
 ```
+
+Explain Code
 
 ```
 
@@ -679,6 +689,8 @@ public async Task<IActionResult> SubmitForm([FromForm] string cfTurnstileRespons
 
 ```
 
+Explain Code
+
 ---
 
 ## Advanced validation techniques
@@ -768,6 +780,8 @@ async function validateWithRetry(token, remoteip, maxRetries = 3) {
 
 
 ```
+
+Explain Code
 
 Enhanced validation with custom checks
 
@@ -902,12 +916,14 @@ if (result.valid) {
 
 ```
 
+Explain Code
+
 ---
 
 ## API response format
 
-* [ Successful response ](#tab-panel-6729)
-* [ Failed response ](#tab-panel-6730)
+* [ Successful response ](#tab-panel-6787)
+* [ Failed response ](#tab-panel-6788)
 
 Example
 
@@ -937,6 +953,8 @@ Example
 
 
 ```
+
+Explain Code
 
 Example
 
@@ -1170,6 +1188,8 @@ if (result.success) {
 
 
 ```
+
+Explain Code
 
 ---
 

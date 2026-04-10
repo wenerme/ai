@@ -24,8 +24,8 @@ Best practices for Workers based on production patterns, Cloudflare's own intern
 
 The [compatibility\_date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) controls which runtime features and bug fixes are available to your Worker. Setting it to today's date on new projects ensures you get the latest behavior. Periodically updating it on existing projects gives you access to new APIs and fixes without changing your code.
 
-* [  wrangler.jsonc ](#tab-panel-7012)
-* [  wrangler.toml ](#tab-panel-7013)
+* [  wrangler.jsonc ](#tab-panel-7050)
+* [  wrangler.toml ](#tab-panel-7051)
 
 JSONC
 
@@ -39,7 +39,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -58,7 +58,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -71,8 +71,8 @@ For more information, refer to [Compatibility dates](https://developers.cloudfla
 
 The [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag gives your Worker access to Node.js built-in modules like `node:crypto`, `node:buffer`, `node:stream`, and others. Many libraries depend on these modules, and enabling this flag avoids cryptic import errors at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-7014)
-* [  wrangler.toml ](#tab-panel-7015)
+* [  wrangler.jsonc ](#tab-panel-7052)
+* [  wrangler.toml ](#tab-panel-7053)
 
 JSONC
 
@@ -86,7 +86,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -105,7 +105,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -134,8 +134,8 @@ yarn wrangler types
 pnpm wrangler types
 ```
 
-* [  JavaScript ](#tab-panel-7024)
-* [  TypeScript ](#tab-panel-7025)
+* [  JavaScript ](#tab-panel-7062)
+* [  TypeScript ](#tab-panel-7063)
 
 src/index.js
 
@@ -163,6 +163,8 @@ export default {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -189,14 +191,16 @@ export default {
 
 ```
 
+Explain Code
+
 For more information, refer to [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types).
 
 ### Store secrets with wrangler secret, not in source
 
 Secrets (API keys, tokens, database credentials) must never appear in your Wrangler configuration or source code. Use [wrangler secret put](https://developers.cloudflare.com/workers/configuration/secrets/) to store them securely, and access them through `env` at runtime. For local development, use a `.env` file (and make sure it is in your `.gitignore`). For more information, refer to [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/).
 
-* [  wrangler.jsonc ](#tab-panel-7016)
-* [  wrangler.toml ](#tab-panel-7017)
+* [  wrangler.jsonc ](#tab-panel-7054)
+* [  wrangler.toml ](#tab-panel-7055)
 
 JSONC
 
@@ -210,7 +214,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -233,6 +237,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -243,7 +249,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -296,8 +302,8 @@ For more information, refer to [Secrets](https://developers.cloudflare.com/worke
 
 Each environment is treated separately. Bindings and vars need to be declared per environment and are not inherited. Refer to [non-inheritable keys](https://developers.cloudflare.com/workers/wrangler/configuration/#non-inheritable-keys). The root Worker (without an environment suffix) is a separate deployment. If you do not intend to use it, do not deploy without specifying an environment using `--env`.
 
-* [  wrangler.jsonc ](#tab-panel-7026)
-* [  wrangler.toml ](#tab-panel-7027)
+* [  wrangler.jsonc ](#tab-panel-7064)
+* [  wrangler.toml ](#tab-panel-7065)
 
 JSONC
 
@@ -311,7 +317,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -358,6 +364,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -368,7 +376,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -410,6 +418,8 @@ zone_name = "example.com"
 
 ```
 
+Explain Code
+
 With this configuration file, to deploy to staging:
 
  npm  yarn  pnpm 
@@ -437,8 +447,8 @@ Workers support two routing mechanisms, and they serve different purposes:
 
 The most common mistake with routes is missing the DNS record. Without a proxied DNS record, requests to the hostname return `ERR_NAME_NOT_RESOLVED` and never reach your Worker. If you do not have a real origin, add a proxied `AAAA` record pointing to `100::` as a placeholder.
 
-* [  wrangler.jsonc ](#tab-panel-7022)
-* [  wrangler.toml ](#tab-panel-7023)
+* [  wrangler.jsonc ](#tab-panel-7060)
+* [  wrangler.toml ](#tab-panel-7061)
 
 JSONC
 
@@ -452,7 +462,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -477,6 +487,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -487,7 +499,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -513,8 +525,8 @@ For request bodies you do consume entirely (JSON payloads, file uploads), enforc
 
 Stream data through your Worker using `TransformStream` to pipe from a source to a destination without holding it all in memory.
 
-* [  JavaScript ](#tab-panel-7030)
-* [  TypeScript ](#tab-panel-7031)
+* [  JavaScript ](#tab-panel-7068)
+* [  TypeScript ](#tab-panel-7069)
 
 src/index.js
 
@@ -554,6 +566,8 @@ export default {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -592,10 +606,12 @@ export default {
 
 ```
 
+Explain Code
+
 When you need to concatenate multiple responses (for example, fetching data from several upstream APIs), pipe each body sequentially into a single writable stream. This avoids buffering any of the responses in memory.
 
-* [  JavaScript ](#tab-panel-7034)
-* [  TypeScript ](#tab-panel-7035)
+* [  JavaScript ](#tab-panel-7072)
+* [  TypeScript ](#tab-panel-7073)
 
 src/concat.js
 
@@ -661,6 +677,8 @@ export default {
 
 ```
 
+Explain Code
+
 src/concat.ts
 
 ```
@@ -725,6 +743,8 @@ export default {
 
 ```
 
+Explain Code
+
 For more information, refer to [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/).
 
 ### Use waitUntil for work after the response
@@ -733,8 +753,8 @@ For more information, refer to [Streams](https://developers.cloudflare.com/worke
 
 There are two common pitfalls: destructuring `ctx` (which loses the `this` binding and throws "Illegal invocation"), and exceeding the 30-second `waitUntil` time limit after the response is sent.
 
-* [  JavaScript ](#tab-panel-7042)
-* [  TypeScript ](#tab-panel-7043)
+* [  JavaScript ](#tab-panel-7080)
+* [  TypeScript ](#tab-panel-7081)
 
 src/index.js
 
@@ -799,6 +819,8 @@ async function updateCache(env, data) {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -880,6 +902,8 @@ async function updateCache(env: Env, data: unknown): Promise<void> {
 
 ```
 
+Explain Code
+
 For more information, refer to [Context](https://developers.cloudflare.com/workers/runtime-apis/context/).
 
 ## Architecture
@@ -888,8 +912,8 @@ For more information, refer to [Context](https://developers.cloudflare.com/worke
 
 Some Cloudflare services like R2, KV, D1, Queues, and Workflows are available as [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Bindings are direct, in-process references that require no network hop, no authentication, and no extra latency. Using the REST API from within a Worker wastes time and adds unnecessary complexity.
 
-* [  JavaScript ](#tab-panel-7036)
-* [  TypeScript ](#tab-panel-7037)
+* [  JavaScript ](#tab-panel-7074)
+* [  TypeScript ](#tab-panel-7075)
 
 src/index.js
 
@@ -951,6 +975,8 @@ export default {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -1011,6 +1037,8 @@ export default {
 
 ```
 
+Explain Code
+
 ### Use Queues and Workflows for async and background work
 
 Long-running, retryable, or non-urgent tasks should not block a request. Use [Queues](https://developers.cloudflare.com/queues/) and [Workflows](https://developers.cloudflare.com/workflows/) to move work out of the critical path. They serve different purposes:
@@ -1021,8 +1049,8 @@ Long-running, retryable, or non-urgent tasks should not block a request. Use [Qu
 
 **Use both together** when a high-throughput entry point feeds into complex processing. For example, a Queue can buffer incoming orders, and the consumer can create a Workflow instance for each order that requires multi-step fulfillment.
 
-* [  JavaScript ](#tab-panel-7032)
-* [  TypeScript ](#tab-panel-7033)
+* [  JavaScript ](#tab-panel-7070)
+* [  TypeScript ](#tab-panel-7071)
 
 src/index.js
 
@@ -1069,6 +1097,8 @@ export default {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -1114,14 +1144,16 @@ export default {
 
 ```
 
+Explain Code
+
 For more information, refer to [Queues](https://developers.cloudflare.com/queues/) and [Workflows](https://developers.cloudflare.com/workflows/).
 
 ### Use service bindings for Worker-to-Worker communication
 
 When one Worker needs to call another, use [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) instead of making an HTTP request to a public URL. Service bindings are zero-cost, bypass the public internet, and support type-safe RPC.
 
-* [  JavaScript ](#tab-panel-7040)
-* [  TypeScript ](#tab-panel-7041)
+* [  JavaScript ](#tab-panel-7078)
+* [  TypeScript ](#tab-panel-7079)
 
 src/index.js
 
@@ -1181,6 +1213,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -1245,14 +1279,16 @@ export default {
 
 ```
 
+Explain Code
+
 ### Use Hyperdrive for external database connections
 
 Always use [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) when connecting to a remote PostgreSQL or MySQL database from a Worker. Hyperdrive maintains a regional connection pool close to your database, eliminating the per-request cost of TCP handshake, TLS negotiation, and connection setup. It also caches query results where possible.
 
 Create a new `Client` on each request. Hyperdrive manages the underlying pool, so client creation is fast. Requires `nodejs_compat` for database driver support.
 
-* [  wrangler.jsonc ](#tab-panel-7018)
-* [  wrangler.toml ](#tab-panel-7019)
+* [  wrangler.jsonc ](#tab-panel-7056)
+* [  wrangler.toml ](#tab-panel-7057)
 
 JSONC
 
@@ -1266,7 +1302,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1288,7 +1324,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1302,8 +1338,8 @@ id = "<YOUR_HYPERDRIVE_ID>"
 
 ```
 
-* [  JavaScript ](#tab-panel-7048)
-* [  TypeScript ](#tab-panel-7049)
+* [  JavaScript ](#tab-panel-7086)
+* [  TypeScript ](#tab-panel-7087)
 
 src/index.js
 
@@ -1377,6 +1413,8 @@ const badHandler = {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -1449,6 +1487,8 @@ const badHandler = {
 
 ```
 
+Explain Code
+
 For more information, refer to [Hyperdrive](https://developers.cloudflare.com/hyperdrive/).
 
 ### Use Durable Objects for WebSockets
@@ -1457,8 +1497,8 @@ Plain Workers can upgrade HTTP connections to WebSockets, but they lack persiste
 
 Use `this.ctx.acceptWebSocket()` instead of `ws.accept()` to enable hibernation. Use `setWebSocketAutoResponse` for ping/pong heartbeats that do not wake the object.
 
-* [  JavaScript ](#tab-panel-7056)
-* [  TypeScript ](#tab-panel-7057)
+* [  JavaScript ](#tab-panel-7094)
+* [  TypeScript ](#tab-panel-7095)
 
 src/index.js
 
@@ -1552,6 +1592,8 @@ export class ChatRoom extends DurableObject {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -1656,6 +1698,8 @@ export class ChatRoom extends DurableObject {
 
 ```
 
+Explain Code
+
 For more information, refer to [Durable Objects WebSocket best practices](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
 ### Use Workers Static Assets for new projects
@@ -1664,8 +1708,8 @@ For more information, refer to [Durable Objects WebSocket best practices](https:
 
 For a purely static site, point `assets.directory` at your build output. No Worker script is needed. For a full-stack app, add a `main` entry point and an `ASSETS` binding to serve static files alongside your API.
 
-* [  wrangler.jsonc ](#tab-panel-7020)
-* [  wrangler.toml ](#tab-panel-7021)
+* [  wrangler.jsonc ](#tab-panel-7058)
+* [  wrangler.toml ](#tab-panel-7059)
 
 JSONC
 
@@ -1679,7 +1723,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1695,6 +1739,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -1703,7 +1749,7 @@ name = "my-static-site"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1727,8 +1773,8 @@ Enable them in your Wrangler configuration and use `head_sampling_rate` to contr
 
 Use structured JSON logging with `console.log` so logs are searchable and filterable. Use `console.error` for errors and `console.warn` for warnings. These appear at the correct severity level in the Workers Observability dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-7028)
-* [  wrangler.toml ](#tab-panel-7029)
+* [  wrangler.jsonc ](#tab-panel-7066)
+* [  wrangler.toml ](#tab-panel-7067)
 
 JSONC
 
@@ -1742,7 +1788,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-08",
+  "compatibility_date": "2026-04-10",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -1774,6 +1820,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -1784,7 +1832,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-08"
+compatibility_date = "2026-04-10"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -1808,8 +1856,10 @@ enabled = true
 
 ```
 
-* [  JavaScript ](#tab-panel-7054)
-* [  TypeScript ](#tab-panel-7055)
+Explain Code
+
+* [  JavaScript ](#tab-panel-7092)
+* [  TypeScript ](#tab-panel-7093)
 
 src/index.js
 
@@ -1894,6 +1944,8 @@ const badHandler = {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -1979,6 +2031,8 @@ const badHandler = {
 
 ```
 
+Explain Code
+
 For more information, refer to [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) and [Traces](https://developers.cloudflare.com/workers/observability/traces/).
 
 For more information on all available observability tools, refer to [Workers Observability](https://developers.cloudflare.com/workers/observability/).
@@ -1991,8 +2045,8 @@ Workers reuse isolates across requests. A variable set during one request is sti
 
 Pass state through function arguments or store it on `env` bindings. Never in module-level variables.
 
-* [  JavaScript ](#tab-panel-7050)
-* [  TypeScript ](#tab-panel-7051)
+* [  JavaScript ](#tab-panel-7088)
+* [  TypeScript ](#tab-panel-7089)
 
 src/index.js
 
@@ -2046,6 +2100,8 @@ async function handleRequest(userId, env) {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -2116,6 +2172,8 @@ async function handleRequest(userId: string | null, env: Env): Promise<object> {
 
 ```
 
+Explain Code
+
 For more information, refer to [Workers errors](https://developers.cloudflare.com/workers/observability/errors/#cannot-perform-io-on-behalf-of-a-different-request).
 
 ### Always await or waitUntil your Promises
@@ -2140,8 +2198,8 @@ npx oxlint --deny typescript/no-floating-promises src/
 
 ```
 
-* [  JavaScript ](#tab-panel-7052)
-* [  TypeScript ](#tab-panel-7053)
+* [  JavaScript ](#tab-panel-7090)
+* [  TypeScript ](#tab-panel-7091)
 
 src/index.js
 
@@ -2199,6 +2257,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -2265,6 +2325,8 @@ export default {
 
 ```
 
+Explain Code
+
 ## Security
 
 ### Use Web Crypto for secure token generation
@@ -2273,8 +2335,8 @@ The Workers runtime provides the [Web Crypto API](https://developers.cloudflare.
 
 Node.js [node:crypto](https://developers.cloudflare.com/workers/runtime-apis/nodejs/crypto/) is also fully supported when `nodejs_compat` is enabled, so you can use whichever API you or your libraries prefer.
 
-* [  JavaScript ](#tab-panel-7038)
-* [  TypeScript ](#tab-panel-7039)
+* [  JavaScript ](#tab-panel-7076)
+* [  TypeScript ](#tab-panel-7077)
 
 src/index.js
 
@@ -2316,6 +2378,8 @@ export default {
 
 ```
 
+Explain Code
+
 src/index.ts
 
 ```
@@ -2356,10 +2420,12 @@ export default {
 
 ```
 
+Explain Code
+
 When comparing secret values (API keys, tokens, HMAC signatures), use `crypto.subtle.timingSafeEqual()` to prevent timing side-channel attacks. Do not short-circuit on length mismatch. Encode both values to a fixed-size hash first.
 
-* [  JavaScript ](#tab-panel-7044)
-* [  TypeScript ](#tab-panel-7045)
+* [  JavaScript ](#tab-panel-7082)
+* [  TypeScript ](#tab-panel-7083)
 
 src/verify.js
 
@@ -2398,6 +2464,8 @@ function verifyTokenInsecure(provided, expected) {
 
 
 ```
+
+Explain Code
 
 src/verify.ts
 
@@ -2443,12 +2511,14 @@ function verifyTokenInsecure(provided: string, expected: string): boolean {
 
 ```
 
+Explain Code
+
 ### Do not use passThroughOnException as error handling
 
 `passThroughOnException()` is a fail-open mechanism that sends requests to your origin when your Worker throws an unhandled exception. While it can be useful during migration from an origin server, it hides bugs and makes debugging difficult. Use explicit `try...catch` blocks with structured error responses instead.
 
-* [  JavaScript ](#tab-panel-7058)
-* [  TypeScript ](#tab-panel-7059)
+* [  JavaScript ](#tab-panel-7096)
+* [  TypeScript ](#tab-panel-7097)
 
 src/index.js
 
@@ -2520,6 +2590,8 @@ async function handleRequest(request, env) {
 
 
 ```
+
+Explain Code
 
 src/index.ts
 
@@ -2608,6 +2680,8 @@ async function handleRequest(request: Request, env: Env): Promise<object> {
 
 ```
 
+Explain Code
+
 ## Development and testing
 
 ### Test with @cloudflare/vitest-pool-workers
@@ -2616,8 +2690,8 @@ The [@cloudflare/vitest-pool-workers](https://developers.cloudflare.com/workers/
 
 One known pitfall: the Vitest pool automatically injects `nodejs_compat`, so tests pass even if your Wrangler configuration does not have the flag. Always confirm your `wrangler.jsonc` includes `nodejs_compat` if your code depends on Node.js built-in modules.
 
-* [  JavaScript ](#tab-panel-7046)
-* [  TypeScript ](#tab-panel-7047)
+* [  JavaScript ](#tab-panel-7084)
+* [  TypeScript ](#tab-panel-7085)
 
 test/index.test.js
 
@@ -2656,6 +2730,8 @@ describe("KV operations", () => {
 
 ```
 
+Explain Code
+
 test/index.test.ts
 
 ```
@@ -2692,6 +2768,8 @@ describe("KV operations", () => {
 
 
 ```
+
+Explain Code
 
 For more information, refer to [Testing with Vitest](https://developers.cloudflare.com/workers/testing/vitest-integration/).
 

@@ -73,6 +73,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/ch
 
 ```
 
+Explain Code
+
 ### Use Cohere SDK with Python
 
 If using the [cohere-python-sdk ↗](https://github.com/cohere-ai/cohere-python), set your endpoint like this:
@@ -122,6 +124,8 @@ print(chat)
 
 
 ```
+
+Explain Code
 
 ## OpenAI-Compatible Endpoint
 

@@ -30,11 +30,11 @@ If you want to get started quickly, click on the button below.
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers.
 
-* [  JavaScript ](#tab-panel-7303)
-* [  TypeScript ](#tab-panel-7304)
-* [  Python ](#tab-panel-7305)
-* [  Rust ](#tab-panel-7306)
-* [  Hono ](#tab-panel-7307)
+* [  JavaScript ](#tab-panel-7361)
+* [  TypeScript ](#tab-panel-7362)
+* [  Python ](#tab-panel-7363)
+* [  Rust ](#tab-panel-7364)
+* [  Hono ](#tab-panel-7365)
 
 JavaScript
 
@@ -159,6 +159,8 @@ export default app;
 
 
 ```
+
+Explain Code
 
 ---
 

@@ -37,8 +37,8 @@ The MCP client uses a built-in `DurableObjectOAuthClientProvider` to manage OAut
 
 When connecting to an OAuth-protected server, check if `authUrl` is returned. If present, redirect your user to complete authorization:
 
-* [  JavaScript ](#tab-panel-2948)
-* [  TypeScript ](#tab-panel-2949)
+* [  JavaScript ](#tab-panel-2954)
+* [  TypeScript ](#tab-panel-2955)
 
 JavaScript
 
@@ -87,6 +87,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -134,6 +136,8 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 ### Alternative approaches
 
 Instead of an automatic redirect, you can present the `authUrl` to your user as a:
@@ -150,8 +154,8 @@ After OAuth completes, the provider redirects back to your Agent's callback URL.
 
 Redirect users back to your application after OAuth completes:
 
-* [  JavaScript ](#tab-panel-2944)
-* [  TypeScript ](#tab-panel-2945)
+* [  JavaScript ](#tab-panel-2950)
+* [  TypeScript ](#tab-panel-2951)
 
 JavaScript
 
@@ -205,8 +209,8 @@ Users return to `/dashboard` on success or `/auth-error?error=<message>` on fail
 
 If you opened OAuth in a popup, close it automatically when complete:
 
-* [  JavaScript ](#tab-panel-2946)
-* [  TypeScript ](#tab-panel-2947)
+* [  JavaScript ](#tab-panel-2952)
+* [  TypeScript ](#tab-panel-2953)
 
 JavaScript
 
@@ -242,6 +246,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -276,6 +282,8 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 Your main application can detect the popup closing and refresh the connection status. If OAuth fails, the connection state becomes `"failed"` and the error message is stored in `server.error` for display in your UI.
 
 ## Monitor connection status
@@ -284,8 +292,8 @@ Your main application can detect the popup closing and refresh the connection st
 
 Use the `useAgent` hook for real-time updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-2952)
-* [  TypeScript ](#tab-panel-2953)
+* [  JavaScript ](#tab-panel-2958)
+* [  TypeScript ](#tab-panel-2959)
 
 JavaScript
 
@@ -365,6 +373,8 @@ function App() {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -448,14 +458,16 @@ function App() {
 
 ```
 
+Explain Code
+
 The `onMcpUpdate` callback fires automatically when MCP state changes — no polling needed.
 
 ### Other frameworks
 
 Poll the connection status via an endpoint:
 
-* [  JavaScript ](#tab-panel-2950)
-* [  TypeScript ](#tab-panel-2951)
+* [  JavaScript ](#tab-panel-2956)
+* [  TypeScript ](#tab-panel-2957)
 
 JavaScript
 
@@ -514,6 +526,8 @@ export class MyAgent extends Agent {
 
 ```
 
+Explain Code
+
 TypeScript
 
 ```
@@ -571,14 +585,16 @@ export class MyAgent extends Agent<Env> {
 
 ```
 
+Explain Code
+
 Connection states flow: `authenticating` (needs OAuth) → `connecting` (completing setup) → `ready` (available for use)
 
 ## Handle failures
 
 When OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field. Display this error in your UI and allow users to retry:
 
-* [  JavaScript ](#tab-panel-2954)
-* [  TypeScript ](#tab-panel-2955)
+* [  JavaScript ](#tab-panel-2960)
+* [  TypeScript ](#tab-panel-2961)
 
 JavaScript
 
@@ -686,6 +702,8 @@ function App() {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -805,6 +823,8 @@ function App() {
 
 ```
 
+Explain Code
+
 Common failure reasons:
 
 * **User canceled**: Closed OAuth window before completing authorization
@@ -818,8 +838,8 @@ Failed connections remain in state until removed with `removeMcpServer(serverId)
 
 This example demonstrates a complete OAuth integration with Cloudflare Observability. Users connect, authorize in a popup window, and the connection becomes available. Errors are automatically stored in the connection state for display in your UI.
 
-* [  JavaScript ](#tab-panel-2956)
-* [  TypeScript ](#tab-panel-2957)
+* [  JavaScript ](#tab-panel-2962)
+* [  TypeScript ](#tab-panel-2963)
 
 JavaScript
 
@@ -954,6 +974,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -1095,6 +1117,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Related
 

@@ -131,7 +131,8 @@ app.use("*", prettyJSON(), logger(), async (c, next) => {
   const auth = bearerAuth({ token: c.env.API_KEY });  
   return auth(c, next);  
 });  
-```
+```  
+Explain Code
 
 ## 5\. Add API endpoints
 
@@ -150,6 +151,7 @@ app.post("/api/batch", async (c) => {
 });  
 export default app;  
 ```  
+Explain Code  
 This adds the following endpoints:  
    * POST `/api/all`  
    * POST `/api/exec`  
@@ -202,8 +204,8 @@ Make a note of the displayed `database_name` and `database_id`. You will use thi
 
 1. From your `d1-http` folder, open the Wrangler file, Wrangler's configuration file.
 2. Add the following binding in the file. Make sure that the `database_name` and the `database_id` are correct.  
-   * [  wrangler.jsonc ](#tab-panel-4106)  
-   * [  wrangler.toml ](#tab-panel-4107)  
+   * [  wrangler.jsonc ](#tab-panel-4150)  
+   * [  wrangler.toml ](#tab-panel-4151)  
 JSONC  
 ```  
 {  
@@ -328,7 +330,8 @@ app.post('/api/batch', async (c) => {
   }  
 });  
 ...  
-```
+```  
+Explain Code
 
 In the above code, the endpoints are updated to receive `query` and `params`. These queries and parameters are passed to the respective functions to interact with the database.
 
@@ -391,6 +394,7 @@ Deployed d1-http triggers (5.57 sec)
   [DEPLOYED_APP_LINK]  
 Current Version ID: [BINDING_ID]  
 ```  
+Explain Code  
 Upon successful deployment, you will get the link of the deployed app in the terminal (`DEPLOYED_APP_LINK`). Make a note of it.
 3. Generate a new API key to use in production.  
 Terminal window  

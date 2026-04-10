@@ -37,8 +37,8 @@ Note
 
 Never hardcode your signing key in source code. Store it as a secret using [npx wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
-* [  JavaScript ](#tab-panel-4842)
-* [  TypeScript ](#tab-panel-4843)
+* [  JavaScript ](#tab-panel-4886)
+* [  TypeScript ](#tab-panel-4887)
 
 JavaScript
 
@@ -149,6 +149,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 TypeScript
 
@@ -265,6 +267,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/manage-images/","name":"Manage uploaded images"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/manage-images/serve-images/","name":"Serve images"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/manage-images/serve-images/serve-private-images/","name":"Serve private images"}}]}

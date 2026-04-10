@@ -282,39 +282,7 @@ if (type === "HAND_RAISE") {
 
 ```
 
-TypeScript
-
-```
-
-await meeting.participants.broadcastMessage("HAND_RAISE", {
-
-  raised: true,
-
-  userId: meeting.self.userId,
-
-  sentAt: new Date(),
-
-});
-
-
-meeting.participants.on(
-
-"broadcastedMessage",
-
-({ type, payload, timestamp }) => {
-
-if (type === "HAND_RAISE") {
-
-// payload.raised, payload.userId, payload.sentAt
-
-}
-
-},
-
-);
-
-
-```
+Explain Code
 
 TypeScript
 
@@ -349,6 +317,44 @@ if (type === "HAND_RAISE") {
 
 
 ```
+
+Explain Code
+
+TypeScript
+
+```
+
+await meeting.participants.broadcastMessage("HAND_RAISE", {
+
+  raised: true,
+
+  userId: meeting.self.userId,
+
+  sentAt: new Date(),
+
+});
+
+
+meeting.participants.on(
+
+"broadcastedMessage",
+
+({ type, payload, timestamp }) => {
+
+if (type === "HAND_RAISE") {
+
+// payload.raised, payload.userId, payload.sentAt
+
+}
+
+},
+
+);
+
+
+```
+
+Explain Code
 
 #### Broadcast to a specific set of participants.
 

@@ -114,6 +114,8 @@ GRANT hyperdrive to hyperdrive_user;
 
 ```
 
+Explain Code
+
 Refer to AWS' [documentation on user roles in PostgreSQL ↗](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.PostgreSQL.CommonDBATasks.Roles.html) for more details.
 
 With a database user, password, database endpoint (hostname and port) and database name (default: `postgres`), you can now set up Hyperdrive.
@@ -138,8 +140,8 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Most database providers will provide a connection string you can directly copy-and-paste directly into Hyperdrive.
 
-* [ Dashboard ](#tab-panel-4713)
-* [ Wrangler CLI ](#tab-panel-4714)
+* [ Dashboard ](#tab-panel-4757)
+* [ Wrangler CLI ](#tab-panel-4758)
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
@@ -157,8 +159,8 @@ Terminal window
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"  
 ```
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):  
-   * [  wrangler.jsonc ](#tab-panel-4711)  
-   * [  wrangler.toml ](#tab-panel-4712)  
+   * [  wrangler.jsonc ](#tab-panel-4755)  
+   * [  wrangler.toml ](#tab-panel-4756)  
 JSONC  
 ```  
 {  
@@ -166,7 +168,7 @@ JSONC
   "name": "hyperdrive-example",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-03",  
+  "compatibility_date": "2026-04-10",  
   "compatibility_flags": [  
     "nodejs_compat"  
   ],  
@@ -179,18 +181,20 @@ JSONC
   ]  
 }  
 ```  
+Explain Code  
 TOML  
 ```  
 "$schema" = "./node_modules/wrangler/config-schema.json"  
 name = "hyperdrive-example"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-03"  
+compatibility_date = "2026-04-10"  
 compatibility_flags = [ "nodejs_compat" ]  
 [[hyperdrive]]  
 binding = "HYPERDRIVE"  
 id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"  
-```
+```  
+Explain Code
 
 Note
 
@@ -244,8 +248,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4715)
-* [  wrangler.toml ](#tab-panel-4716)
+* [  wrangler.jsonc ](#tab-panel-4759)
+* [  wrangler.toml ](#tab-panel-4760)
 
 JSONC
 
@@ -263,7 +267,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-10",
 
   "hyperdrive": [
 
@@ -282,6 +286,8 @@ JSONC
 
 ```
 
+Explain Code
+
 TOML
 
 ```
@@ -290,7 +296,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-10"
 
 
 [[hyperdrive]]
@@ -371,6 +377,8 @@ export default {
 
 
 ```
+
+Explain Code
 
 ## Next steps
 

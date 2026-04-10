@@ -28,8 +28,8 @@ This guide provides an overview of how to use the latest Cloudflare Workers AI G
 
 To connect your Worker to Workers AI, add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-3060)
-* [  wrangler.toml ](#tab-panel-3061)
+* [  wrangler.jsonc ](#tab-panel-3066)
+* [  wrangler.toml ](#tab-panel-3067)
 
 JSONC
 
@@ -95,6 +95,8 @@ const resp = await env.AI.run(
 
 
 ```
+
+Explain Code
 
 Additionally, you can access the latest request log ID with:
 
@@ -286,6 +288,8 @@ const resp = await gateway.run({
 
 
 ```
+
+Explain Code
 
 * **Returns**: `Promise<Response>`
 * **Example Use Case**: Perform a [universal request](https://developers.cloudflare.com/ai-gateway/usage/universal/) to any supported provider.

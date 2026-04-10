@@ -123,6 +123,8 @@ export const onRequest: PagesFunction = () => {
 
 ```
 
+Explain Code
+
 We recommend storing your service account's credentials in KV rather than in plain text as above.
 
 The following functions are available on a `GoogleChatAPI` instance. Each take up to three arguments: an object of path parameters, an object of query parameters, and an object of the request body; as described in the [Google Chat API's documentation ↗](https://developers.google.com/chat/api/reference/rest).
