@@ -56,6 +56,18 @@ for (const { repo, path, name } of skills) {
   console.log(`    Syncing ${name} ...`);
   mkdirSync(dst, { recursive: true });
   await $`rsync -aL --delete ${src}/ ${dst}/`;
+
+  // Fix name field in SKILL.md to match the local directory name
+  const skillMd = join(dst, "SKILL.md");
+  if (existsSync(skillMd)) {
+    const content = await Bun.file(skillMd).text();
+    const fixed = content.replace(/^(name:\s*)(\S+)/m, `$1${name}`);
+    if (fixed !== content) {
+      await Bun.write(skillMd, fixed);
+      console.log(`    Fixed name: ${name}`);
+    }
+  }
+
   console.log(`    Done: ${name}`);
 }
 

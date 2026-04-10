@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 85 skills available
+> 86 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -82,6 +82,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | `react-resizable-panels-v3-to-v4` | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | `shadcn` | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | `skill-writer` | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
+| `sling-cli` | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... |  |
 | `slopus-happy-docs` | Happy Coder (happy-coder) documentation — mobile and web client for Claude Code & Codex with end-to-end encryption.... | [slopus/happy](https://github.com/slopus/happy) |
 | `swift-ms-docs` | USE THIS SKILL WHEN working with ms-swift (ModelScope Swift): fine-tuning LLMs/VLMs, LoRA/QLoRA/DoRA training, GRPO... | [modelscope/swift](https://github.com/modelscope/swift) |
 | `tea-cli` | tea CLI documentation — Gitea's official command-line tool. Covers login/auth, issues, pull requests (checkout, merge,... | [gitea.com](https://gitea.com/gitea/tea) |
@@ -778,6 +779,16 @@ npx skills add wenerme/ai --skill skill-writer
 ```
 
 Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large skills into references, or validating skills against best practices
+
+</details>
+<details>
+<summary><code>sling-cli</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill sling-cli
+```
+
+Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication YAML, running data pipelines, or troubleshooting sling run/conns commands
 
 </details>
 <details>
