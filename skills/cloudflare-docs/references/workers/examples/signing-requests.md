@@ -20,7 +20,7 @@ Copy page
 
 # Sign requests
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 
@@ -41,10 +41,10 @@ The following Worker will:
 * For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
 * For all other request URLs, verify the signed URL and allow the request through.
 
-* [  JavaScript ](#tab-panel-7423)
-* [  TypeScript ](#tab-panel-7424)
-* [  Hono ](#tab-panel-7425)
-* [  Python ](#tab-panel-7426)
+* [  JavaScript ](#tab-panel-7451)
+* [  TypeScript ](#tab-panel-7452)
+* [  Hono ](#tab-panel-7453)
+* [  Python ](#tab-panel-7454)
 
 JavaScript
 

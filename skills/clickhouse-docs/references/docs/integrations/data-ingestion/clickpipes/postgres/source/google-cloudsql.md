@@ -18,16 +18,15 @@ Anything on or after Postgres 12
 
 ## Enable logical replication {#enable-logical-replication}
 
-**You don't need** to follow the below steps if the settings `cloudsql. logical_decoding` is on and `wal_sender_timeout` is 0. These settings should mostly be pre-configured if you're migrating from another data replication tool.
+**You don't need** to follow the below steps if the setting `cloudsql. logical_decoding` is on. This setting should mostly be pre-configured if you're migrating from another data replication tool.
 
 1. Click on **Edit** button on the Overview page.
 
 <Image img={edit_button} alt="Edit Button in Cloud SQL Postgres" size="lg" border/>
 
-2. Go to Flags and change `cloudsql.logical_decoding` to on and `wal_sender_timeout` to 0. These changes will need restarting your Postgres server.
+2. Go to Flags and change `cloudsql.logical_decoding` to on. This change will need restarting your Postgres server.
 
 <Image img={cloudsql_logical_decoding1} alt="Change cloudsql.logical_decoding to on" size="lg" border/>
-<Image img={cloudsql_logical_decoding2} alt="Changed cloudsql.logical_decoding and wal_sender_timeout" size="lg" border/>
 <Image img={cloudsql_logical_decoding3} alt="Restart Server" size="lg" border/>
 
 ## Creating ClickPipes user and granting permissions {#creating-clickpipes-user-and-granting-permissions}

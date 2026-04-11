@@ -16,7 +16,7 @@ Copy page
 
 # Egress-free object storage in multi-cloud setups
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 ## Introduction
 

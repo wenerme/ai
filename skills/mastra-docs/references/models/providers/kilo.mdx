@@ -1,11 +1,11 @@
 ---
 title: "Kilo Gateway | Models"
-description: "Use Kilo Gateway models with Mastra. 335 models available."
+description: "Use Kilo Gateway models with Mastra. 336 models available."
 ---
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 335 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 336 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -1660,7 +1660,7 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
-    "model": "kilo/minimax/minimax-m2.5:free",
+    "model": "kilo/minimax/minimax-m2.7",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -1668,8 +1668,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 204800,
     "maxOutput": 131072,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "kilo/mistralai/codestral-2508",
@@ -4058,6 +4058,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.72,
     "outputCost": 2.3
+  },
+  {
+    "model": "kilo/z-ai/glm-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 202752,
+    "maxOutput": 131072,
+    "inputCost": 1.26,
+    "outputCost": 3.96
   }
 ]}
 />
@@ -4090,7 +4102,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "kilo/z-ai/glm-5"
+      ? "kilo/z-ai/glm-5.1"
       : "kilo/ai21/jamba-large-1.7";
   }
 });

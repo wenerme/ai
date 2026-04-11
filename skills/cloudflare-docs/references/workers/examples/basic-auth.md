@@ -20,7 +20,7 @@ Copy page
 
 # HTTP Basic Authentication
 
-**Last reviewed:**  about 2 years ago 
+**Last reviewed:**  over 2 years ago 
 
 Shows how to restrict access using the HTTP Basic schema.
 
@@ -32,10 +32,10 @@ Caution when using in production
 
 This code is provided as a sample, and is not suitable for production use. Basic Authentication sends credentials unencrypted, and must be used with an HTTPS connection to be considered secure. For a production-ready authentication system, consider using [Cloudflare Access ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 
-* [  JavaScript ](#tab-panel-7263)
-* [  TypeScript ](#tab-panel-7264)
-* [  Rust ](#tab-panel-7265)
-* [  Hono ](#tab-panel-7266)
+* [  JavaScript ](#tab-panel-7291)
+* [  TypeScript ](#tab-panel-7292)
+* [  Rust ](#tab-panel-7293)
+* [  Hono ](#tab-panel-7294)
 
 JavaScript
 

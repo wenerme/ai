@@ -16,7 +16,7 @@ Copy page
 
 # CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection
 
-**Last reviewed:**  about 2 months ago 
+**Last reviewed:**  2 months ago 
 
 ## Abstract
 
