@@ -20,7 +20,7 @@ The `/devtools` endpoints provide session management capabilities that follow th
 
 CDP endpoints can be accessed from any environment that supports WebSocket connections, including local development machines, external servers, and CI/CD pipelines. This means you can connect to Browser Rendering from Node.js scripts, Puppeteer, Playwright, or any CDP-compatible client.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the `Browser Rendering - Edit` permission. For more information, refer to [REST API — Before you begin](https://developers.cloudflare.com/browser-rendering/rest-api/#before-you-begin).
+Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-rendering/quick-actions/#before-you-begin).
 
 ## What is CDP?
 

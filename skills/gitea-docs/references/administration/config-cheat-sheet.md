@@ -598,6 +598,7 @@ And the following unique queues:
 - `LOGIN_REMEMBER_DAYS`: **31**: How long to remember that a user is logged in before requiring relogin (in days).
 - `COOKIE_REMEMBER_NAME`: **gitea\_incredible**: Name of cookie used to store authentication
    information.
+- `REVERSE_PROXY_LOGOUT_REDIRECT`: **_empty_**: URL or relative path to redirect users to after logout when authentication is handled by a reverse proxy or SSO. For example: `/my-sso/logout?return=/my-sso/home`.
 - `REVERSE_PROXY_AUTHENTICATION_USER`: **X-WEBAUTH-USER**: Header name for reverse proxy
    authentication.
 - `REVERSE_PROXY_AUTHENTICATION_EMAIL`: **X-WEBAUTH-EMAIL**: Header name for reverse proxy

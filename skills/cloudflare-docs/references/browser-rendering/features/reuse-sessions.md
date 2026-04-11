@@ -1,6 +1,6 @@
 ---
 title: Reuse sessions
-description: The best way to improve the performance of your browser rendering Worker is to reuse sessions. One way to do that is via Durable Objects, which allows you to keep a long running connection from a Worker to a browser. Another way is to keep the browser open after you've finished with it, and connect to that session each time you have a new request.
+description: By default, each Browser Sessions request launches a new browser instance. Reusing sessions eliminates cold-start time and improves performance by reconnecting to an existing browser instead of launching a new one.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -10,15 +10,20 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/workers-bindings/reuse-sessions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/features/reuse-sessions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
 # Reuse sessions
 
-The best way to improve the performance of your browser rendering Worker is to reuse sessions. One way to do that is via [Durable Objects](https://developers.cloudflare.com/browser-rendering/workers-bindings/browser-rendering-with-do/), which allows you to keep a long running connection from a Worker to a browser. Another way is to keep the browser open after you've finished with it, and connect to that session each time you have a new request.
+By default, each Browser Sessions request launches a new browser instance. Reusing sessions eliminates cold-start time and improves performance by reconnecting to an existing browser instead of launching a new one.
 
-In short, this entails using `browser.disconnect()` instead of `browser.close()`, and, if there are available sessions, using `puppeteer.connect(env.MY_BROWSER, sessionID)` instead of launching a new browser session.
+This feature applies to Browser Sessions ([Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), and [CDP](https://developers.cloudflare.com/browser-rendering/cdp/)). [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/) handle session lifecycle automatically.
+
+There are two approaches to reusing sessions:
+
+* **Disconnect and reconnect** (covered in this page): Use `browser.disconnect()` instead of `browser.close()` to keep the browser alive, then reconnect to it on the next request. Best for stateless workloads where any available browser session will do.
+* **[Durable Objects](https://developers.cloudflare.com/browser-rendering/how-to/browser-rendering-with-do/)**: Persist a long-running browser inside a Durable Object for stateful session management. Best when you need to maintain state across requests or route specific users to specific browser instances.
 
 ## 1\. Create a Worker project
 
@@ -76,8 +81,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3286)
-* [  wrangler.toml ](#tab-panel-3287)
+* [  wrangler.jsonc ](#tab-panel-3242)
+* [  wrangler.toml ](#tab-panel-3243)
 
 JSONC
 
@@ -144,8 +149,8 @@ The script below starts by fetching the current running sessions. If there are a
 
 Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-rendering/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
 
-* [  JavaScript ](#tab-panel-3288)
-* [  TypeScript ](#tab-panel-3289)
+* [  JavaScript ](#tab-panel-3244)
+* [  TypeScript ](#tab-panel-3245)
 
 JavaScript
 
@@ -445,5 +450,5 @@ Run `npx wrangler deploy` to deploy your Worker to the Cloudflare global network
 `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev/?url=https://example.com`
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/workers-bindings/","name":"Workers Bindings"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/workers-bindings/reuse-sessions/","name":"Reuse sessions"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/features/reuse-sessions/","name":"Reuse sessions"}}]}
 ```

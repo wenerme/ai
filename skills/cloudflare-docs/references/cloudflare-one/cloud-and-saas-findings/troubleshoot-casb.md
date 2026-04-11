@@ -58,11 +58,10 @@ CASB integrations do not provide real-time updates. Scans are performed periodic
 
 To trigger a new scan:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Integrations**.
 2. Find your integration and select **Configure**.
-3. Go to **CASB**.
-4. Turn off **Findings scanning**.
-5. After a few minutes, turn on **Findings scanning** again.
+3. Turn off **Scan for findings**.
+4. After a few minutes, turn on **Scan for findings** again.
 
 This action will queue a fresh scan of your integration. Allow several hours for your findings to reflect the new results.
 
@@ -104,11 +103,11 @@ Carefully examine the evidence provided in the finding. An object's status in th
 
 ### Report the issue
 
-If you confirm the finding is a false positive, report the behavior to Cloudflare Support. Provide the finding ID and as much detail as possible. This helps the Support team refine the detection logic for all customers.
+If you confirm the finding is a false positive, report the behavior to Cloudflare Support. Provide the finding ID (visible in the finding's detail view) and as much detail as possible. This helps the Support team refine the detection logic for all customers.
 
-### Ignore or hide the finding
+### Hide the finding
 
-While Cloudflare investigates the issue, you can use **Move to ignore** on the finding or **Move to hidden** on an individual instance to remove it from your active list and reduce noise.
+While Cloudflare investigates the issue, you can [ignore the finding or hide individual instances](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#hide-findings) to remove it from your active list and reduce noise.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/cloud-and-saas-findings/","name":"Cloud and SaaS findings"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/cloud-and-saas-findings/troubleshoot-casb/","name":"Troubleshoot CASB"}}]}

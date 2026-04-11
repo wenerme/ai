@@ -6,6 +6,13 @@ Use this page when you want the shortest path to a working SDK-based agent. The 
 
 Create a project, install the SDK, and set your API key.
 
+
+
+Create an API Key
+
+
+<p></p>
+
 ```bash
 # TypeScript
 npm install @openai/agents zod

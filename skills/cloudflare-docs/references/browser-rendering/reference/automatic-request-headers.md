@@ -22,11 +22,11 @@ Cloudflare automatically attaches headers to every request made through Browser 
 
 The default User-Agent depends on how you access Browser Rendering:
 
-| Method                                                                                         | Default User-Agent                                                                                              | Customizable                                |
-| ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/)                      | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 | Yes, using the userAgent parameter          |
-| [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/) | CloudflareBrowserRenderingCrawler/1.0                                                                           | No                                          |
-| [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/)      | The default User-Agent of the underlying Chrome version                                                         | Yes, via Puppeteer/Playwright configuration |
+| Method                                                                                                                                                                                                                       | Default User-Agent                                                                                              | Customizable                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/)                                                                                                                                          | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 | Yes, using the userAgent parameter          |
+| [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/)                                                                                                                          | CloudflareBrowserRenderingCrawler/1.0                                                                           | No                                          |
+| [CDP](https://developers.cloudflare.com/browser-rendering/cdp/) ([Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/)) | The default User-Agent of the underlying Chrome version                                                         | Yes, via Puppeteer/Playwright configuration |
 
 Note
 
@@ -38,13 +38,13 @@ Note
 
 The following headers are meant to ensure transparency and cannot be removed or overridden (with `setExtraHTTPHeaders`, for example).
 
-| Header                        | Description                                                                                                                                                               |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf-brapi-request-id           | A unique identifier for the Browser Rendering request when using the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/)                            |
-| cf-brapi-devtools             | A unique identifier for the Browser Rendering request when using [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/)                |
-| cf-biso-devtools              | A flag indicating the request originated from Cloudflare's rendering infrastructure                                                                                       |
-| Signature-agent               | [The location of the bot public keys ↗](https://web-bot-auth.cloudflare-browser-rendering-085.workers.dev), used to sign the request and verify it came from Cloudflare   |
-| Signature and Signature-input | A digital signature, used to validate requests, as shown in [this architecture document ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture) |
+| Header                        | Description                                                                                                                                                                                                                                                                                     |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cf-brapi-request-id           | A unique identifier for the Browser Rendering request when using [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/)                                                                                                                                            |
+| cf-brapi-devtools             | A unique identifier for the Browser Rendering request when using [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), or [CDP](https://developers.cloudflare.com/browser-rendering/cdp/) |
+| cf-biso-devtools              | A flag indicating the request originated from Cloudflare's rendering infrastructure                                                                                                                                                                                                             |
+| Signature-agent               | [The location of the bot public keys ↗](https://web-bot-auth.cloudflare-browser-rendering-085.workers.dev), used to sign the request and verify it came from Cloudflare                                                                                                                         |
+| Signature and Signature-input | A digital signature, used to validate requests, as shown in [this architecture document ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture)                                                                                                                       |
 
 ### About Web Bot Auth
 
@@ -52,12 +52,12 @@ The `Signature` headers use an authentication method called [Web Bot Auth](https
 
 ### Bot detection
 
-Browser Rendering uses different bot detection IDs depending on the method. The [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) (excluding the [crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/)) and [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) share one ID, while the crawl endpoint has its own.
+Browser Rendering uses different bot detection IDs depending on the method. [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/) (excluding the [crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/)), [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), and [CDP](https://developers.cloudflare.com/browser-rendering/cdp/) share one ID, while the crawl endpoint has its own.
 
-| Method                                                                                                                                                                  | Bot detection ID |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) and [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) | 119853733        |
-| [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/)                                                                          | 128292352        |
+| Method                                                                                                                                                                                                                                                                                                           | Bot detection ID |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/), [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), [CDP](https://developers.cloudflare.com/browser-rendering/cdp/) | 119853733        |
+| [Crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/)                                                                                                                                                                                                              | 128292352        |
 
 If you are attempting to scan your own zone and want Browser Rendering to access your website freely without your bot protection configuration interfering, you can create a WAF skip rule to [allowlist Browser Rendering](https://developers.cloudflare.com/browser-rendering/faq/#can-i-allowlist-browser-rendering-on-my-own-website).
 

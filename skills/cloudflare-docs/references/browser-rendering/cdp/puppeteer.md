@@ -18,7 +18,7 @@ Copy page
 
 You can use [Puppeteer ↗](https://pptr.dev/) to connect to Browser Rendering sessions from any Node.js environment and automate browser tasks programmatically via CDP. This is useful for scripts running on your local machine, CI/CD pipelines, or external servers.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the `Browser Rendering - Edit` permission. For more information, refer to [REST API — Before you begin](https://developers.cloudflare.com/browser-rendering/rest-api/#before-you-begin).
+Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-rendering/quick-actions/#before-you-begin).
 
 ## Prerequisites
 

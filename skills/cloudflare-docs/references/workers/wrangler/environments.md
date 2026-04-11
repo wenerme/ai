@@ -24,8 +24,8 @@ Review the following environments flow:
 
 1. Create a Worker, named `my-worker` for example.
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.  
-   * [  wrangler.jsonc ](#tab-panel-8528)  
-   * [  wrangler.toml ](#tab-panel-8529)  
+   * [  wrangler.jsonc ](#tab-panel-8558)  
+   * [  wrangler.toml ](#tab-panel-8559)  
 JSONC  
 ```  
 {  
@@ -44,8 +44,8 @@ name = "my-worker"
 "<ENV_NAME>" = { }  
 ```
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:  
-   * [  wrangler.jsonc ](#tab-panel-8530)  
-   * [  wrangler.toml ](#tab-panel-8531)  
+   * [  wrangler.jsonc ](#tab-panel-8560)  
+   * [  wrangler.toml ](#tab-panel-8561)  
 JSONC  
 ```  
 {  
@@ -54,9 +54,9 @@ JSONC
   "route": "example.com",  
   "env": {  
     "dev": {  
-      "route": "dev.example.com"  
-    }  
-  }  
+      "route": "dev.example.com",  
+    },  
+  },  
 }  
 ```  
 Explain Code  
@@ -81,8 +81,8 @@ For example, [bindings](https://developers.cloudflare.com/workers/runtime-apis/b
 
 Review the following example Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-8538)
-* [  wrangler.toml ](#tab-panel-8539)
+* [  wrangler.jsonc ](#tab-panel-8568)
+* [  wrangler.toml ](#tab-panel-8569)
 
 JSONC
 
@@ -96,7 +96,7 @@ JSONC
 
   "vars": {
 
-    "API_HOST": "example.com"
+    "API_HOST": "example.com",
 
   },
 
@@ -106,9 +106,9 @@ JSONC
 
       "binding": "<BINDING_NAME>",
 
-      "id": "<KV_NAMESPACE_ID_DEV>"
+      "id": "<KV_NAMESPACE_ID_DEV>",
 
-    }
+    },
 
   ],
 
@@ -118,7 +118,7 @@ JSONC
 
       "vars": {
 
-        "API_HOST": "production.example.com"
+        "API_HOST": "production.example.com",
 
       },
 
@@ -128,15 +128,15 @@ JSONC
 
           "binding": "<BINDING_NAME>",
 
-          "id": "<KV_NAMESPACE_ID_PRODUCTION>"
+          "id": "<KV_NAMESPACE_ID_PRODUCTION>",
 
-        }
+        },
 
-      ]
+      ],
 
-    }
+    },
 
-  }
+  },
 
 }
 
@@ -186,8 +186,8 @@ Explain Code
 
 To use a [service binding](https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings) that targets a Worker in a specific environment, you need to append the environment name to the target Worker name in the `service` field. This should be in the format `<worker-name>-<environment-name>`. In the example below, we have two Workers, both with a `staging` environment. `worker-b` has a service binding to `worker-a`. Note how the `service` field in the `staging` environment points to `worker-a-staging`, whereas the top-level service binding points to `worker-a`.
 
-* [  wrangler.jsonc ](#tab-panel-8532)
-* [  wrangler.toml ](#tab-panel-8533)
+* [  wrangler.jsonc ](#tab-panel-8562)
+* [  wrangler.toml ](#tab-panel-8563)
 
 JSONC
 
@@ -201,7 +201,7 @@ JSONC
 
   "vars": {
 
-    "FOO": "<top-level-var>"
+    "FOO": "<top-level-var>",
 
   },
 
@@ -211,13 +211,13 @@ JSONC
 
       "vars": {
 
-        "FOO": "<staging-var>"
+        "FOO": "<staging-var>",
 
-      }
+      },
 
-    }
+    },
 
-  }
+  },
 
 }
 
@@ -247,8 +247,8 @@ FOO = "<staging-var>"
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-8536)
-* [  wrangler.toml ](#tab-panel-8537)
+* [  wrangler.jsonc ](#tab-panel-8566)
+* [  wrangler.toml ](#tab-panel-8567)
 
 JSONC
 
@@ -264,7 +264,7 @@ JSONC
 
     "binding": "<BINDING_NAME>",
 
-    "service": "worker-a"
+    "service": "worker-a",
 
   },
 
@@ -278,13 +278,13 @@ JSONC
 
         "binding": "<BINDING_NAME>",
 
-        "service": "worker-a-staging"
+        "service": "worker-a-staging",
 
-      }
+      },
 
-    }
+    },
 
-  }
+  },
 
 }
 
@@ -383,8 +383,8 @@ It is possible to control how `.env` files are loaded in local development by se
 
 The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [route or routes key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
 
-* [  wrangler.jsonc ](#tab-panel-8540)
-* [  wrangler.toml ](#tab-panel-8541)
+* [  wrangler.jsonc ](#tab-panel-8570)
+* [  wrangler.toml ](#tab-panel-8571)
 
 JSONC
 
@@ -400,7 +400,7 @@ JSONC
 
   "vars": {
 
-    "ENVIRONMENT": "dev"
+    "ENVIRONMENT": "dev",
 
   },
 
@@ -410,11 +410,11 @@ JSONC
 
       "vars": {
 
-        "ENVIRONMENT": "staging"
+        "ENVIRONMENT": "staging",
 
       },
 
-      "route": "staging.example.com/*"
+      "route": "staging.example.com/*",
 
     },
 
@@ -422,21 +422,15 @@ JSONC
 
       "vars": {
 
-        "ENVIRONMENT": "production"
+        "ENVIRONMENT": "production",
 
       },
 
-      "routes": [
+      "routes": ["example.com/foo/*", "example.com/bar/*"],
 
-        "example.com/foo/*",
+    },
 
-        "example.com/bar/*"
-
-      ]
-
-    }
-
-  }
+  },
 
 }
 
@@ -549,23 +543,31 @@ Published my-worker-production
 
 ```
 
-Any defined [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) (the [vars](https://developers.cloudflare.com/workers/wrangler/configuration/) key) are exposed as global variables to your Worker.
+Any defined [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) (the [vars](https://developers.cloudflare.com/workers/wrangler/configuration/) key) are available via the [env object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#accessing-bindings) in your Worker.
 
-With this configuration, the `ENVIRONMENT` variable can be used to call specific code depending on the given environment:
+With this configuration, the `env.ENVIRONMENT` variable can be used to call specific code depending on the given environment:
 
 JavaScript
 
 ```
 
-if (ENVIRONMENT === "staging") {
+export default {
 
-  // staging-specific code
+  async fetch(request, env, ctx) {
 
-} else if (ENVIRONMENT === "production") {
+    if (env.ENVIRONMENT === "staging") {
 
-  // production-specific code
+      // staging-specific code
 
-}
+    } else if (env.ENVIRONMENT === "production") {
+
+      // production-specific code
+
+    }
+
+  },
+
+};
 
 
 ```
@@ -574,8 +576,8 @@ if (ENVIRONMENT === "staging") {
 
 To deploy your code to your `*.workers.dev` subdomain, include `workers_dev = true` in the desired environment. Your Wrangler file may look like this:
 
-* [  wrangler.jsonc ](#tab-panel-8534)
-* [  wrangler.toml ](#tab-panel-8535)
+* [  wrangler.jsonc ](#tab-panel-8564)
+* [  wrangler.toml ](#tab-panel-8565)
 
 JSONC
 
@@ -593,11 +595,11 @@ JSONC
 
     "staging": {
 
-      "workers_dev": true
+      "workers_dev": true,
 
-    }
+    },
 
-  }
+  },
 
 }
 

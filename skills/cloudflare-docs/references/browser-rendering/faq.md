@@ -44,7 +44,7 @@ This can happen if:
 * The page itself crashed or returned an error before the action completed.
 * The request exceeded one of the [timeout limits](https://developers.cloudflare.com/browser-rendering/reference/timeouts/) for page load, element load, or an action.
 
-Most often, this error is caused by a timeout. You can review the different timers and their limits in the [REST API timeouts reference](https://developers.cloudflare.com/browser-rendering/reference/timeouts/).
+Most often, this error is caused by a timeout. You can review the different timers and their limits in the [Quick Actions timeouts reference](https://developers.cloudflare.com/browser-rendering/reference/timeouts/).
 
 ### Why is my page content missing or incomplete?
 
@@ -59,7 +59,7 @@ To fix this, use the `goToOptions.waitUntil` parameter with one of these values:
 | networkidle0 | The page must be completely idle (no network requests for 500 ms). Best for pages that load all content upfront. |
 | networkidle2 | The page can have up to 2 ongoing connections (like analytics or websockets). Best for most dynamic pages.       |
 
-REST API example:
+Quick Actions example:
 
 ```
 
@@ -84,7 +84,7 @@ If content is still missing:
 * Increase `goToOptions.timeout` (up to 60 seconds) for slow-loading pages.
 * Check if the page requires authentication or returns different content to bots.
 
-For a complete reference, see [REST API timeouts](https://developers.cloudflare.com/browser-rendering/reference/timeouts/).
+For a complete reference, see [Quick Actions timeouts](https://developers.cloudflare.com/browser-rendering/reference/timeouts/).
 
 ---
 
@@ -111,9 +111,9 @@ Use real headless browser during local development
 
 To interact with a real headless browser during local development, set `"remote" : true` in the Browser binding configuration. Learn more in our [remote bindings documentation](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
 
-### How do I render authenticated pages using the REST API?
+### How do I render authenticated pages using Quick Actions?
 
-If the page you are rendering requires authentication, you can pass credentials using one of the following methods. These parameters work with all [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) endpoints.
+If the page you are rendering requires authentication, you can pass credentials using one of the following methods. These parameters work with all [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/) endpoints.
 
 HTTP Basic Auth:
 
@@ -184,7 +184,7 @@ Token-based authentication:
 
 ```
 
-For complete working examples of all three methods, refer to [Capture a screenshot of an authenticated page](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/#capture-a-screenshot-of-an-authenticated-page).
+For complete working examples of all three methods, refer to [Capture a screenshot of an authenticated page](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/#capture-a-screenshot-of-an-authenticated-page).
 
 ### Will Browser Rendering be detected by Bot Management?
 
@@ -217,14 +217,14 @@ There is no fixed limit on the number of requests per browser session. A single 
 
 ### Can I use custom fonts in Browser Rendering?
 
-Yes. If your webpage or PDF requires a font that is not pre-installed, you can load custom fonts at render time using `addStyleTag`. This works with both the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) and [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/). For instructions and examples, refer to [Custom fonts](https://developers.cloudflare.com/browser-rendering/features/custom-fonts/).
+Yes. If your webpage or PDF requires a font that is not pre-installed, you can load custom fonts at render time using `addStyleTag`. This works with [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/), [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), and [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/). For instructions and examples, refer to [Custom fonts](https://developers.cloudflare.com/browser-rendering/features/custom-fonts/).
 
 ### How can I manage concurrency and session isolation with Browser Rendering?
 
-If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid), or want to optimize concurrent browser usage with the [Workers Binding method](https://developers.cloudflare.com/browser-rendering/workers-bindings/), here are a few tips:
+If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid), or want to optimize concurrent browser usage, here are a few tips:
 
 * Optimize with tabs or shared browsers: Instead of launching a new browser for each task, consider opening multiple tabs or running multiple actions within the same browser instance.
-* [Reuse sessions](https://developers.cloudflare.com/browser-rendering/workers-bindings/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
+* [Reuse sessions](https://developers.cloudflare.com/browser-rendering/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
 
 If you are still running into concurrency limits you can [request a higher limit ↗](https://forms.gle/CdueDKvb26mTaepa9).
 
@@ -236,13 +236,13 @@ If you are still running into concurrency limits you can [request a higher limit
 
 No. Cloudflare processes content ephemerally and does not retain customer-submitted HTML or generated output (such as PDFs or screenshots) beyond what is required to perform the rendering operation. Once the response is returned, the content is immediately discarded from the rendering environment.
 
-This applies to both the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) and [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) (using `@cloudflare/puppeteer` or `@cloudflare/playwright`).
+This applies to all integration methods, including [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/), [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), and [CDP](https://developers.cloudflare.com/browser-rendering/cdp/).
 
 ### Is there any temporary caching of submitted content?
 
-For the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/), generated content is cached by default for five seconds (configurable up to one day via the `cacheTTL` parameter, or set to `0` to disable caching). This cache protects against repeated requests for the same URL by the same account. Customer-submitted HTML content itself is not cached.
+For [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/), generated content is cached by default for five seconds (configurable up to one day via the `cacheTTL` parameter, or set to `0` to disable caching). This cache protects against repeated requests for the same URL by the same account. Customer-submitted HTML content itself is not cached.
 
-For [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/), no caching is used. Content exists only in memory for the duration of the rendering operation and is discarded immediately after the response is returned.
+For [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), and [CDP](https://developers.cloudflare.com/browser-rendering/cdp/), no caching is used. Content exists only in memory for the duration of the rendering operation and is discarded immediately after the response is returned.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/faq/","name":"FAQ"}}]}

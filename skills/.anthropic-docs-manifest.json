@@ -74,10 +74,10 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "etag": "W/\"1772e-19d75daf890\"",
-    "lastModified": "Fri, 10 Apr 2026 05:26:18 GMT",
-    "size": 96046,
-    "updatedAt": "2026-04-10T10:22:05.304Z"
+    "etag": "W/\"1869b-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 99995,
+    "updatedAt": "2026-04-11T00:13:41.307Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -170,10 +170,10 @@
   "anthropic-docs/agents-and-tools/tool-use/code-execution-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
     "skill": "anthropic-docs",
-    "etag": "W/\"d55a-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 54618,
-    "updatedAt": "2026-04-09T00:12:18.385Z"
+    "etag": "W/\"d984-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 55684,
+    "updatedAt": "2026-04-11T00:13:45.067Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/advisor-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool",
@@ -234,10 +234,10 @@
   "anthropic-docs/agents-and-tools/tool-use/programmatic-tool-calling.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling",
     "skill": "anthropic-docs",
-    "etag": "W/\"b805-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 47109,
-    "updatedAt": "2026-04-09T00:12:20.190Z"
+    "etag": "W/\"b976-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 47478,
+    "updatedAt": "2026-04-11T00:13:47.493Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/fine-grained-tool-streaming.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/fine-grained-tool-streaming",
@@ -258,18 +258,18 @@
   "anthropic-docs/build-with-claude/compaction.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/compaction",
     "skill": "anthropic-docs",
-    "etag": "W/\"188c8-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 100552,
-    "updatedAt": "2026-04-09T00:12:21.132Z"
+    "etag": "W/\"188dc-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 100572,
+    "updatedAt": "2026-04-11T00:13:48.395Z"
   },
   "anthropic-docs/build-with-claude/context-editing.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/context-editing",
     "skill": "anthropic-docs",
-    "etag": "W/\"13775-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 79731,
-    "updatedAt": "2026-04-09T00:12:21.469Z"
+    "etag": "W/\"1377d-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 79739,
+    "updatedAt": "2026-04-11T00:13:48.746Z"
   },
   "anthropic-docs/build-with-claude/prompt-caching.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
@@ -498,10 +498,10 @@
   "anthropic-docs/release-notes/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/overview",
     "skill": "anthropic-docs",
-    "etag": "W/\"9af3-19d7460a118\"",
-    "lastModified": "Thu, 09 Apr 2026 22:33:03 GMT",
-    "size": 39661,
-    "updatedAt": "2026-04-10T00:15:18.833Z"
+    "etag": "W/\"9b17-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 39697,
+    "updatedAt": "2026-04-11T00:13:57.652Z"
   },
   "anthropic-docs/managed-agents/overview.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/overview",
@@ -698,10 +698,18 @@
   "anthropic-docs/build-with-claude/claude-on-amazon-bedrock.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock",
     "skill": "anthropic-docs",
-    "etag": "W/\"711d-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 28945,
-    "updatedAt": "2026-04-09T00:12:39.251Z"
+    "etag": "W/\"7178-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 29036,
+    "updatedAt": "2026-04-11T00:14:05.287Z"
+  },
+  "anthropic-docs/build-with-claude/claude-in-amazon-bedrock-research-preview.md": {
+    "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock-research-preview",
+    "skill": "anthropic-docs",
+    "etag": "W/\"2e17-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 11799,
+    "updatedAt": "2026-04-11T00:14:05.566Z"
   },
   "anthropic-docs/build-with-claude/claude-in-microsoft-foundry.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry",
@@ -722,10 +730,10 @@
   "anthropic-docs/managed-agents/migration.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/migration",
     "skill": "anthropic-docs",
-    "etag": "W/\"6c1d-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 27675,
-    "updatedAt": "2026-04-09T00:12:40.127Z"
+    "etag": "W/\"6c4b-19d799214f0\"",
+    "lastModified": "Fri, 10 Apr 2026 22:45:10 GMT",
+    "size": 27721,
+    "updatedAt": "2026-04-11T00:14:06.481Z"
   },
   "anthropic-docs/managed-agents/observability.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/observability",

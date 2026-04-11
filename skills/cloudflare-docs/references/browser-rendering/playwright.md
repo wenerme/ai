@@ -58,8 +58,8 @@ Note
 
 To use the latest version of `@cloudflare/playwright`, your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later. This change is necessary because the library's functionality requires the native `node.fs` API.
 
-* [  wrangler.jsonc ](#tab-panel-3254)
-* [  wrangler.toml ](#tab-panel-3255)
+* [  wrangler.jsonc ](#tab-panel-3266)
+* [  wrangler.toml ](#tab-panel-3267)
 
 JSONC
 
@@ -391,8 +391,8 @@ npx wrangler kv namespace create KV
 
 Then, add the KV namespace to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-3256)
-* [  wrangler.toml ](#tab-panel-3257)
+* [  wrangler.jsonc ](#tab-panel-3268)
+* [  wrangler.toml ](#tab-panel-3269)
 
 JSONC
 
@@ -508,7 +508,7 @@ Explain Code
 
 ### Keep Alive
 
-If users omit the `browser.close()` statement, the browser instance will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-rendering/workers-bindings/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
+If users omit the `browser.close()` statement, the browser instance will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-rendering/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
 
 JavaScript
 

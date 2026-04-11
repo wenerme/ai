@@ -1571,13 +1571,14 @@ components:
         - function
         - type
       title: ChatFunctionTool0
-    DatetimeServerToolParameters:
+    DatetimeServerToolConfig:
       type: object
       properties:
         timezone:
           type: string
           description: IANA timezone name (e.g. "America/New_York"). Defaults to UTC.
-      title: DatetimeServerToolParameters
+      description: Configuration for the openrouter:datetime server tool
+      title: DatetimeServerToolConfig
     DatetimeServerToolType:
       type: string
       enum:
@@ -1587,7 +1588,7 @@ components:
       type: object
       properties:
         parameters:
-          $ref: '#/components/schemas/DatetimeServerToolParameters'
+          $ref: '#/components/schemas/DatetimeServerToolConfig'
         type:
           $ref: '#/components/schemas/DatetimeServerToolType'
       required:

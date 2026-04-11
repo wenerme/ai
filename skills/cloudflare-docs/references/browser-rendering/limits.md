@@ -31,14 +31,14 @@ If you are on a Workers Free plan and you want to increase your limits, upgrade 
 | Feature                                                                         | Limit                              |
 | ------------------------------------------------------------------------------- | ---------------------------------- |
 | Browser hours                                                                   | 10 minutes per day                 |
-| Concurrent browsers per account (Workers Bindings only) [1](#user-content-fn-1) | 3 per account                      |
-| New browser instances (Workers Bindings only)                                   | 3 per minute                       |
+| Concurrent browsers per account (Browser Sessions only) [1](#user-content-fn-1) | 3 per account                      |
+| New browser instances (Browser Sessions only)                                   | 3 per minute                       |
 | Browser timeout                                                                 | 60 seconds [2](#user-content-fn-2) |
-| Total requests (REST API only) [3](#user-content-fn-3)                          | 6 per minute (1 every 10 seconds)  |
+| Total requests (Quick Actions only) [3](#user-content-fn-3)                     | 6 per minute (1 every 10 seconds)  |
 
 ### `/crawl` endpoint limits
 
-The [REST API /crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/) has additional limits for Workers Free plan users:
+The [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/) has additional limits for Workers Free plan users:
 
 | Feature                 | Limit     |
 | ----------------------- | --------- |
@@ -54,19 +54,19 @@ If you are on a Workers Paid plan and you want to increase your limits beyond th
 | Feature                                                                         | Limit                                                                                        |
 | ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | Browser hours                                                                   | No limit ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/))       |
-| Concurrent browsers per account (Workers Bindings only) [1](#user-content-fn-1) | 30 per account ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/)) |
-| New browser instances per minute (Workers Bindings only)                        | 30 per minute                                                                                |
+| Concurrent browsers per account (Browser Sessions only) [1](#user-content-fn-1) | 30 per account ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/)) |
+| New browser instances per minute (Browser Sessions only)                        | 30 per minute                                                                                |
 | Browser timeout                                                                 | 60 seconds [2](#user-content-fn-2)                                                           |
-| Total requests per min (REST API only) [3](#user-content-fn-3)                  | 600 per minute (10 per second)                                                               |
+| Total requests per min (Quick Actions only) [3](#user-content-fn-3)             | 600 per minute (10 per second)                                                               |
 
 ## FAQ
 
 ### How can I manage concurrency and session isolation with Browser Rendering?
 
-If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid), or want to optimize concurrent browser usage with the [Workers Binding method](https://developers.cloudflare.com/browser-rendering/workers-bindings/), here are a few tips:
+If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid), or want to optimize concurrent browser usage, here are a few tips:
 
 * Optimize with tabs or shared browsers: Instead of launching a new browser for each task, consider opening multiple tabs or running multiple actions within the same browser instance.
-* [Reuse sessions](https://developers.cloudflare.com/browser-rendering/workers-bindings/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
+* [Reuse sessions](https://developers.cloudflare.com/browser-rendering/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
 
 If you are still running into concurrency limits you can [request a higher limit ↗](https://forms.gle/CdueDKvb26mTaepa9).
 
@@ -108,8 +108,8 @@ When you make too many requests in a short period of time, Browser Rendering wil
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ REST API ](#tab-panel-3252)
-* [ Workers Bindings ](#tab-panel-3253)
+* [ Quick Actions ](#tab-panel-3264)
+* [ Puppeteer ](#tab-panel-3265)
 
 JavaScript
 

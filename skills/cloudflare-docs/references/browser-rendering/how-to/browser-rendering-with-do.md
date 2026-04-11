@@ -14,7 +14,7 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/workers-bindings/browser-rendering-with-DO.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/how-to/browser-rendering-with-do.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
@@ -115,8 +115,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3282)
-* [  wrangler.toml ](#tab-panel-3283)
+* [  wrangler.jsonc ](#tab-panel-3254)
+* [  wrangler.toml ](#tab-panel-3255)
 
 JSONC
 
@@ -264,8 +264,8 @@ The code below uses Durable Object to instantiate a browser using Puppeteer. It 
 
 The Durable Object keeps a browser session open for 60 seconds after last use. If a browser session is open, any requests will re-use the existing session rather than creating a new one. Update your Worker code by copy and pasting the following:
 
-* [  JavaScript ](#tab-panel-3284)
-* [  TypeScript ](#tab-panel-3285)
+* [  JavaScript ](#tab-panel-3256)
+* [  TypeScript ](#tab-panel-3257)
 
 JavaScript
 
@@ -474,7 +474,7 @@ export class Browser extends DurableObject {
 
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAyCA7AGYxANgCMY6YIAcAVgBcLFm2Ac4XGnwHDxU2fOUBYAFABhdFQgBTO9gAiUAM4x0bqNFsqSmngExCRUcMD2DABEUDT2AB4AdABWblGkqFBgjuGRMXFJqVGWNnaOENgAKnQw9v5wMDBgfARQtsjJcABucG68CLAQANTA6Ljg9paWUMCeSCQA3iTOIAhwZNkA8mTJ9rwQJAC+AQjowCRRvGCUuKhgiHUA7pgA1vYIaUQWM3MHAFQkXokGAgRr2BzvE5nC4AASuNzuD2QILBEIQ6QsFgSvxIuHsqDg4AOCwsJEBbjoVF4AXBvAAFgAKBD2ACOIHsbggABoSI4ugBKRakskkXi2TkkdA7EgMXlULqJABCACVNgB1ADKAFFlYkAObgxV0AByuQZUTIp0ebneUX5X2FZOQyBIGscuEBJGZbI5Bwg6BIEDp9mWq3W2RI212+x5QccgMecB8JB8bi9HM8VBtjtF4oOzI8MoTSYOUuSiVQtMZ3vZnPtmJF6Ygqyo6Y8XzJhy5FkODrFWYOAGktVqAAoAfRV6u1yvHAEEADIASQAalrx0vjePtVZNsbnBqi5JBA7sZgDldemnFVabQhefEHDQ0ys1ht7FG9sThZb0Nb3h2JBvDAEBzs0XT2EuVBuv2uBprKJ7CpymBwAaDpkv2nIICA+yYAynIEPYPJ8oKJKNm4oLvPhhAOMR8r1o2QbuIkyFrAaRYEQ4LH+mx9iAYcDbkpS1KVhA9JMqytYQKRObOq6-T2PGBboGAIC+FmgYBg4EqUBAOaYQcjxQLgQZFgA2tIACcABMgg8rIkiSPZShSDyUh2SQAAs0ieQAuoBGF5iQwZQHqdIHLKFmKB5IiSAoPIKJInk8klHkKJZkj+YJTougAqjagbBqKqzMnYuKEYCNCBjMIb+qKzIVXAAQqXi95YThzbMs197KtZ+lBVQf7OBVspUPYjzLIRDIMSKBm5viqBFvIwgkACx6rSQSgBbmA5epQcS4MNDhFmNE1HfYDI5mSACyBB0okpzcAyg2POd+rgpUNXTSQLpigtgoAn9qCoN2jb8ok-oahAAxUHq03bXNGBgK1RaPQdb0eM0EDmiQADi12VHaZmCFlskukui1xl17ier+-5tRy3i2JKtRUDyzJcAVPg5lAi0MgAhExbiJHTd4kAAPuLJCC3SzGi+8iTuKUY37PYuDTTJjaBVmKn2Ik1xwwABjef5i84mz+FDiDQLDoTjSmA5wFS9iGzNjH0EKWsikLIu3pCspwImyYorUaL64SVKMj7fKJNdACaU6ajqbsiscvAEPSJAMvYmteztbi6-r6Bw1dWvG3797m-4NjgB6g0HAR8zy-esQEc7iQkFqCCnAg-gACQLPYhyG6Decp52OYCWTJDKhy4JAfYIFgVAEGAqgDj3vYcCZ+nYBgJphUhubOY+8BoHgZB0F7LYcFFoh09WMGvAvCmi3Nw+7gQGmZD4pgIboKzWIepgSoXsDzPmMs5YV35KXZknVWynRnhmcUF0ogm3piQe41BM4EiyGrKIPIlicRAG4fwSgVqHHrP1Xa8B2IByDn6WWwtm6JFOqOUB8Nso-RdJUOAbwSB9GZI4NwdJ0Bf0lItLemdBGKVbN4AAXmAxsbAs7ZAOFAO+pANEAB4SBGRMvdbIsMgxaKGEMXOjZA4lhAQaFi4IVxQHGr8BkSx9FBn8G4ukZkoC+R5CFMKEB-D+PCt43yRxx7FmDqA-UYj0DmnChAGApDnTPAQG8D4iR4QgFuPcZkmSzjIDtNtbWEpMjZFNBEIshsZHCNERAccA9PGhMOPEAewSIDNMNsU-ODdqT0OsbQvWNSsx1M4aXKxyZo7yiVLlKww5KiJBBNjQ2A8katUOMgVZeCKlDxSDAPUI8BG8BTlPRsckrDXAKoQMgejgytipiGGmg0SCjC6qkl+dUf64lsP-e5RVBk5gmQcQZmTLkXSoWcl0s8bQHDPsvVecB16QlqAgTQQDAy9BeGmOqcZlibBPkwxIcKL5QRgjfeCJB76QtdPPXFmQPgHDgLk84dU3iLzxYCC+1CJS8BKuUMCiBzj9MmYS1i0SDTn0FZwxsvMs68u7vy5lMpRrgDABY2a4pC4GwZOXU2kIq4CPBDbYBTLBWu26XNSoWotw7j3AeJaggNrLUQl7IFhVmJitsTCgVWAGRvRet9IYJArU2q1LufcGoTlcLgS2O2E1oWZhtOaCivBeCMyKcKU5QkqScqleq0+i9z4r0vmS58JAhiynkOhEUcktSPndOQCuHLmiVnAVnAtS8SVX1gmmXRw4xyTlVEnWci5Vzrk3NuMNdrI2ey1phLVxdLp5xILqjBBq6RAh-vGM+nLi3dRIAPDtRaIKkuvs+Y4Noe0dzrU+HgtsW0ZidokEepcIlup9p6oZ4IfXAD9YRVhf5A0kHkE64QggIlyTjpQUUTs5QUS6ri60O0VbqRTGmHdTK91kDoOmH0nJ0UFwiExWGpc5KYBIMkEhBw1EpgvGCwEakzitF3mAHDjw7mH2pmmZ57yD5fNwD80jLoVEJHCE0IiK732EpYRBD4bQqDTUNpPXkYACpkTnZq7IRcS7LtXWbC2D401qzVpg3m-9FoD37ROROM55zLjXBuUN4aDyHGFi+r2ETZUMh9s3dVjZ51ae1YbC5Xh0UsPNaXMkUmoF6oQKCrw4LukCUbMlo4PZLDqGYJobQugeD8CEKICQMg5CKCUCUWwT4KiuA8KF9S-hAjaFIGECI0QiNwG0OkAIeDmt5A2FKYo1gKvlCqDUOogJGjNHTupDoBcqBTAsAsKIwAkxUHHKMcY2QogqHyHiQoaRDgZcy9l4IuX9AFaMMV0wShmCWCAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwA2AIwBmAJwAmaQA5pogOxyAXCxZtgHOFxp8BIiTPmKVAWABQAYXRUIAU3vYAIlADOMdO6jQ7qki08AmISKjhgBwYAIigaBwAPADoAK3do0lQoMCcIqNj45LToq1t7JwhsABU6GAcAuBgYMD4CKDtkFLgANzh3XgRYCABqYHRccAcrKyhgLyQSAG8SFxAEODIcgHkyFIdeCBIAX0CEdGASaN4wSlxUMER6gHdMAGsHBHSiS1n5w4AqEh9EgwEBNByOD6nc6XAAC11u90eyFB4MhCAylksiT+JFwDlQcHAh0WlhIQPcdCovECEN4AAsABQIBwARxADncEAANCQnN0AJRLMnkki8OxckjoXYkBh8qjdJIAIQASlsAOoAZQAoiqkgBzCFKugAOTyjOiZDOT3cH2iAu+IvJyGQJE1TlwQJILPZnMOEHQJAg9IcKzWGxyJB2ewOvODTiBTzgvhIvnc3s5XiotqdYolhxZnllieTh2lKSSqDpTJ9HK5DqxoozEDWVAznm+5KO3MsR0d4uzhwA0trtQAFAD6qo1OpVE4AggAZACSADVtRPlyaJzrrFsTS5NcXhIJHTjMIdrn100rrbaEHyEo4aOnVutNg5o-sSSKregbR8nYkO8MAQPOLTdA4y5UO6A64OmcqniKXKYHAhqOuSA5cggIAHJgjJcgQDi8vyQqkk27hgh8BGEI4JEKg2TbBh4SQoeshrFoRjisQG7EOEBRyNhSVI0lWEAMsybJ1hAZG5i6boDA4CaFugYAgH42ZBoGjiSpQEC5lhhxPFAuDBsWADaogyIIvISMIwi2QArOIDkkC5NkkAALKInkALpAZh+YkCGUD6vShxypZghyB5SjCHIvJyMInm8slHlyJIwj+UJzqugAqraQYhmKawsvYeJEUCNBBrMoYBmKLKVXAgSqfiD7YbhLYsi1D4qtIBlBVQ-4uJVcpUA4TwrERjKMaKhl5gSqDFqIgirSQgInutJCOQFeaDt6lDxLgI2OMW42TSdDiMrm5IALIEPSSRnNwjJDU8l0GhCVS1TNJCuuKi1CoCAOoKgPZNgKSQBpqECDFQ+ozbt80YGAbXFs9R0fZ4LQQBaJAAOK3VU9rmYI2Vya6y5LfG3UeF6f4Ae1nI+HYUp1FQvIslwhW+LmUBLYyACEzHuEkDP3iQAA+kskML9IseLHxJB4ZTjQcDi4DNslNoF2aqQ4SQ3AjAAGt7-hLLhbAEMOINA8NhBNqaDnA1IOMbs1MfQwo66KIti3eUJynASYpqidToobRLUkyfv8kkt0AJrTlquoe6KJy8AQDIkIyDjaz7e3uPrhvoAjN066bAcPpbAS2OAnpDYchELIrD5xIRrtJCQ2oIGcCABAAJIsDhHMb4MF2nXa5oJFMkCqnIQsBDigeBUCQUCqCOA+DhwNnmdgGAWlFaGlu5n7IFgRBUEwfsdjwcWSGz9YIa8K8qZLa3j4eBA6ZkASmChnQOzOI+oQRoQcHzAWcsFZVwFOXFkXU2znTnpmCUV1ohm0ZiQB41Bs6EmyBraIvJlhcRAO4AIjk1pHAbANfa8AOJBxDv6eWotW5JHOmOcBiMcp-VdFUOA7wSD9BZE4dw9J0A-ylEtHe2dhFKTbD4AAXhApsbAc45EOFAB+pAtEAB4SDGVMo9HI8Ngw6OGMMfOTZg6ljAYaViEJVxQAmn8RkyxDHBgCB4+k5koC+V5CFMKEAAiBPCr43yxxJ4llDuAg0Ej0AWnChAGA5CXQvAQO8T4SQEQgDuA8Fk2TzjIHtLtXWkosg5DNJEYsxs5GiPERACcQ9vHhKOAkIeoSICtONqUwuTcaSMNsfQg2dTswNO4eXGxKZY4KmVHlawI4qhJFBLjY2Q8UZtSOMgdZBCqkj1SDAfUY8hG8DTjPJs8lrA3EKoQMgBiQxthpqGOmQ0SBjG6ukt+9U-54jsIAx5xVhm5imYcYZ2TrlXRoRc1089bSHAvqvdecBN5QjqAgLQICgx9FeOmeq8YVhbDPiwpICKr7QVgnfBCJBH7QrdIvfFWRPiHDgPki49V3jLwJUCK+tDJS8FKhUcCiALiDOmcStisTDSX2Fdwps-Mc78t7oK1lsoxrgDAFYuaEpi5G0ZJXc2UIa5CIhHbUBLLhXu16fNKo2pty7n3IeZaggtorVWr0kFRUWISvsXCoVWBGQfTer9YYJAbV2u1HuA8mozk8IQa2B2k1YVZltBaSivBeDMxKSKc5wlqTcplZq8+y9L5r2vhSl8JBhhyhWhhUU8ltRPg9OQKuXKWhVkgTnItK8yU3zgumfRI5xxTjVCnOcS41wbi3DuCNDro3ex1lhHVpdroFxIPqrBRr6TAj-gmC+3LS09RIEPLtJbILktvi+E4to+1dwbc+Hg9s22ZhdkkMe5coker9t6kZEI-XAADURdh-5g0kBWi61aggonyQTpQMULt5SUW6vim0e01YaVTOmPdLKD1kDoBmX0XJMVF0iMxeG5d5KYBICkMhhwNGpkvBCoE6lzhtH3mAPDTwHnH1pumV5nyj4-NwH88jro1GJAiM0Yia7P3ErYZBT47QqAzWNtPPkYBCrkQXdqnIJcy6rvXRbK2j4M0aw1tg-mgClpD0HZOZOs4FwrnXJucNkbDxHFFm+n2UT5WMj9q3TVTZF06d1cbK53hMVsMteXckMmYEGoQOC7wkLemCSbKl44vYrAaGYFoHQegeD8CEGIKQsgFDKDkKUOwz5KhuE8OFjSAQgg6FIOESIMQSNwB0BkQIBDWv5E2NKEoNgqsVGqLUeoQImgtEzhpToRcqDTEsIsaIwBkxUAnGMCYORoiqAKPiIo6QjhZey7lkI+WDBFeMKVswchmBWCAA)
 
 TypeScript
 
@@ -713,5 +713,5 @@ Run [npx wrangler deploy](https://developers.cloudflare.com/workers/wrangler/com
 * [Using R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/workers-bindings/","name":"Workers Bindings"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/workers-bindings/browser-rendering-with-do/","name":"Deploy a Browser Rendering Worker with Durable Objects"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/how-to/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/how-to/browser-rendering-with-do/","name":"Deploy a Browser Rendering Worker with Durable Objects"}}]}
 ```

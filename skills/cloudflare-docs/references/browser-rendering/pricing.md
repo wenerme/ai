@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: There are two ways to use Browser Rendering. Depending on the method you use, here is how billing works:
+description: Billing depends on how you use Browser Rendering:
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -18,32 +18,32 @@ Copy page
 
  Available on Free and Paid plans 
 
-There are two ways to use Browser Rendering. Depending on the method you use, here is how billing works:
+Billing depends on how you use Browser Rendering:
 
-* [**REST API**](https://developers.cloudflare.com/browser-rendering/rest-api/): Charged for browser hours only
-* [**Workers Bindings**](https://developers.cloudflare.com/browser-rendering/workers-bindings/): Charged for both browser hours and concurrent browsers
+* [**Quick Actions**](https://developers.cloudflare.com/browser-rendering/quick-actions/): Charged for browser hours only.
+* **Browser Sessions** ([Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), [CDP](https://developers.cloudflare.com/browser-rendering/cdp/)): Direct browser control, charged for both browser hours and concurrent browsers.
 
-Browser hours are shared across both methods (REST API and Workers Bindings).
+Browser hours are shared across all methods.
 
 | Workers Free                                | Workers Paid       |                                                                                                                           |
 | ------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
 | Browser hours                               | 10 minutes per day | 10 hours per month, then $0.09 per additional hour                                                                        |
-| Concurrent browsers (Workers Bindings only) | 3 browsers         | 10 browsers ([averaged monthly](#how-is-the-number-of-concurrent-browsers-calculated)), then $2.00 per additional browser |
+| Concurrent browsers (Browser Sessions only) | 3 browsers         | 10 browsers ([averaged monthly](#how-is-the-number-of-concurrent-browsers-calculated)), then $2.00 per additional browser |
 
 ## Examples of Workers Paid pricing
 
   
-#### Example: REST API pricing
+#### Example: Quick Actions pricing
 
-If a Workers Paid user uses the REST API for 50 hours during the month, the estimated cost for the month is as follows.
+If a Workers Paid user uses Quick Actions for 50 hours during the month, the estimated cost for the month is as follows.
 
 For browser hours:  
 50 hours - 10 hours (included in plan) = 40 hours  
 40 hours × $0.09 per hour = $3.60
 
-#### Example: Workers Bindings pricing
+#### Example: Browser Sessions pricing
 
-If a Workers Paid plan user uses the Workers Bindings method for 50 hours during the month, and uses 10 concurrent browsers for the first 15 days and 20 concurrent browsers the last 15 days, the estimated cost for the month is as follows.
+If a Workers Paid plan user uses Browser Sessions (Puppeteer, Playwright, or CDP) for 50 hours during the month, and uses 10 concurrent browsers for the first 15 days and 20 concurrent browsers the last 15 days, the estimated cost for the month is as follows.
 
 For browser hours:  
 50 hours - 10 hours (included in plan) = 40 hours  
@@ -66,7 +66,7 @@ You can monitor Browser Rendering usage in two ways:
 
 * To monitor your Browser Rendering usage in the Cloudflare dashboard, go to the **Browser Rendering** page.  
 [ Go to **Browser Rendering** ](https://dash.cloudflare.com/?to=/:account/workers/browser-rendering)
-* The `X-Browser-Ms-Used` header, which is returned in every REST API response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:  
+* The `X-Browser-Ms-Used` header, which is returned in every Quick Actions response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:  
 TypeScript  
 ```  
 const contentRes = await client.browserRendering.content.create({  
@@ -79,7 +79,7 @@ You can then use the tables above to estimate your costs based on your usage.
 
 ### Do failed API calls, such as those that time out, add to billable browser hours?
 
-No. If a request to the Browser Rendering REST API fails with a `waitForTimeout` error, the browser session is not charged.
+No. If a Quick Actions request fails with a `waitForTimeout` error, the browser session is not charged.
 
 ### How is the number of concurrent browsers calculated?
 

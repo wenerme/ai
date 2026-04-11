@@ -23,7 +23,7 @@ This page provides general guidance on configuring `robots.txt` and sitemaps for
 Requests can be identified by the [automatic headers](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/) that Cloudflare attaches:
 
 * [User-Agent](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/#user-agent) — Each Browser Rendering method has a different default User-Agent, which you can use to write targeted `robots.txt` rules
-* `cf-brapi-request-id` — Unique identifier for REST API requests
+* `cf-brapi-request-id` — Unique identifier for Quick Actions requests
 * `Signature-agent` — Pointer to Cloudflare's bot verification keys
 
 To allow or block Browser Rendering traffic using WAF rules instead of `robots.txt`, use the [bot detection IDs](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/#bot-detection) on the automatic request headers page.
@@ -113,7 +113,7 @@ This is the most restrictive configuration and blocks all compliant bots, not ju
 
 ### Block only the /crawl endpoint
 
-The [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/) identifies itself with the User-Agent `CloudflareBrowserRenderingCrawler/1.0`. To block the `/crawl` endpoint while allowing all other traffic (including other Browser Rendering [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) endpoints, which use a [different User-Agent](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/#user-agent)):
+The [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/) identifies itself with the User-Agent `CloudflareBrowserRenderingCrawler/1.0`. To block the `/crawl` endpoint while allowing all other traffic (including other Browser Rendering [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/) endpoints, which use a [different User-Agent](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/#user-agent)):
 
 robots.txt
 
@@ -133,7 +133,7 @@ Allow: /
 
 ### Block the /crawl endpoint on specific paths
 
-To allow the [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/) to access your site but block specific sections:
+To allow the [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/) to access your site but block specific sections:
 
 robots.txt
 

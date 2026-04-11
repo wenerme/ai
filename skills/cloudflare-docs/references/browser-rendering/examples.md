@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Use these REST API examples to perform quick, common tasks.
+description: Use these Quick Actions examples to perform common tasks with a single HTTP request.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,39 +16,39 @@ Copy page
 
 # Examples
 
-## REST API examples
+## Quick Actions examples
 
-Use these [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) examples to perform quick, common tasks.
+Use these [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/) examples to perform common tasks with a single HTTP request.
 
-[ Fetch rendered HTML from a URL ](https://developers.cloudflare.com/browser-rendering/rest-api/content-endpoint/#fetch-rendered-html-from-a-url) Capture fully rendered HTML from a webpage after JavaScript execution. 
+[ Fetch rendered HTML from a URL ](https://developers.cloudflare.com/browser-rendering/quick-actions/content-endpoint/#fetch-rendered-html-from-a-url) Capture fully rendered HTML from a webpage after JavaScript execution. 
 
-[ Take a screenshot of the visible viewport ](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/#basic-usage) Capture a screenshot of a fully rendered webpage from a URL or custom HTML. 
+[ Take a screenshot of the visible viewport ](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/#basic-usage) Capture a screenshot of a fully rendered webpage from a URL or custom HTML. 
 
-[ Take a screenshot of the full page ](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/#navigate-and-capture-a-full-page-screenshot) Capture a screenshot of an entire scrollable webpage, not just the visible viewport. 
+[ Take a screenshot of the full page ](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/#navigate-and-capture-a-full-page-screenshot) Capture a screenshot of an entire scrollable webpage, not just the visible viewport. 
 
-[ Take a screenshot of an authenticated page ](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/#capture-a-screenshot-of-an-authenticated-page) Capture a screenshot of a webpage that requires login using cookies, HTTP Basic Auth, or custom headers. 
+[ Take a screenshot of an authenticated page ](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/#capture-a-screenshot-of-an-authenticated-page) Capture a screenshot of a webpage that requires login using cookies, HTTP Basic Auth, or custom headers. 
 
-[ Generate a PDF ](https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint/#basic-usage) Generate a PDF from a URL or custom HTML and CSS. 
+[ Generate a PDF ](https://developers.cloudflare.com/browser-rendering/quick-actions/pdf-endpoint/#basic-usage) Generate a PDF from a URL or custom HTML and CSS. 
 
-[ Extract Markdown from a URL ](https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint/#convert-a-url-to-markdown) Convert a webpage's content into Markdown format. 
+[ Extract Markdown from a URL ](https://developers.cloudflare.com/browser-rendering/quick-actions/markdown-endpoint/#convert-a-url-to-markdown) Convert a webpage's content into Markdown format. 
 
-[ Capture a snapshot from a URL ](https://developers.cloudflare.com/browser-rendering/rest-api/snapshot/#capture-a-snapshot-from-a-url) Capture both the rendered HTML and a screenshot from a webpage in a single request. 
+[ Capture a snapshot from a URL ](https://developers.cloudflare.com/browser-rendering/quick-actions/snapshot/#capture-a-snapshot-from-a-url) Capture both the rendered HTML and a screenshot from a webpage in a single request. 
 
-[ Scrape headings and links from a URL ](https://developers.cloudflare.com/browser-rendering/rest-api/scrape-endpoint/#extract-headings-and-links-from-a-url) Extract structured data from specific elements on a webpage using CSS selectors. 
+[ Scrape headings and links from a URL ](https://developers.cloudflare.com/browser-rendering/quick-actions/scrape-endpoint/#extract-headings-and-links-from-a-url) Extract structured data from specific elements on a webpage using CSS selectors. 
 
-[ Capture structured data with an AI prompt and JSON schema ](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/#with-a-prompt-and-json-schema) Extract structured data from a webpage using AI using a prompt or JSON schema. 
+[ Capture structured data with an AI prompt and JSON schema ](https://developers.cloudflare.com/browser-rendering/quick-actions/json-endpoint/#with-a-prompt-and-json-schema) Extract structured data from a webpage using AI using a prompt or JSON schema. 
 
-[ Retrieve links from a URL ](https://developers.cloudflare.com/browser-rendering/rest-api/links-endpoint/#get-all-links-on-a-page) Retrieve all links from a webpage, including hidden ones. 
+[ Retrieve links from a URL ](https://developers.cloudflare.com/browser-rendering/quick-actions/links-endpoint/#get-all-links-on-a-page) Retrieve all links from a webpage, including hidden ones. 
 
-[ Crawl a documentation site ](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#documentation-site-crawl) Crawl documentation pages with include/exclude patterns to build a knowledge base. 
+[ Crawl a documentation site ](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/#documentation-site-crawl) Crawl documentation pages with include/exclude patterns to build a knowledge base. 
 
-[ Extract structured product data with AI ](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#product-catalog-extraction-with-ai) Crawl a product catalog and extract structured JSON data using AI. 
+[ Extract structured product data with AI ](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/#product-catalog-extraction-with-ai) Crawl a product catalog and extract structured JSON data using AI. 
 
-[ Fast static content fetch ](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/#fast-static-content-fetch) Crawl static sites without JavaScript rendering for faster results. 
+[ Fast static content fetch ](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/#fast-static-content-fetch) Crawl static sites without JavaScript rendering for faster results. 
 
-## Workers Bindings examples
+## Browser automation examples
 
-Use [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) for dynamic, multi-step browser automation with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), or [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/).
+Use [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), or [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/) for dynamic, multi-step browser automation within Cloudflare Workers.
 
 [ Get page metrics with Puppeteer ](https://developers.cloudflare.com/browser-rendering/puppeteer/#use-puppeteer-in-a-worker) Use Puppeteer to navigate to a page and retrieve performance metrics in a Worker. 
 
@@ -58,9 +58,9 @@ Use [Workers Bindings](https://developers.cloudflare.com/browser-rendering/worke
 
 [ Generate a trace with Playwright ](https://developers.cloudflare.com/browser-rendering/playwright/#trace) Capture detailed execution logs for debugging with Playwright tracing. 
 
-[ Reuse browser sessions ](https://developers.cloudflare.com/browser-rendering/workers-bindings/reuse-sessions/) Improve performance by reusing browser sessions across requests. 
+[ Reuse browser sessions ](https://developers.cloudflare.com/browser-rendering/features/reuse-sessions/) Improve performance by reusing browser sessions across requests. 
 
-[ Persist sessions with Durable Objects ](https://developers.cloudflare.com/browser-rendering/workers-bindings/browser-rendering-with-do/) Use Durable Objects to maintain long-running browser sessions. 
+[ Persist sessions with Durable Objects ](https://developers.cloudflare.com/browser-rendering/how-to/browser-rendering-with-do/) Use Durable Objects to maintain long-running browser sessions. 
 
 [ AI-powered browser automation with Stagehand ](https://developers.cloudflare.com/browser-rendering/stagehand/#use-stagehand-in-a-worker-with-workers-ai) Use natural language instructions to automate browser tasks with AI. 
 

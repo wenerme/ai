@@ -70,15 +70,7 @@ Create a TXT record with your DNS provider. Copy the `TXT record name` to the TX
 
 ### Update default role and session timeout {#update-defaults}
 
-Once the SAML setup is complete, you can set the default role all users will be assigned when they log in and also adjust session timeout settings.
-
-Available default roles include:
-- Admin
-- Service Admin
-- Service Read Only
-- Member
-
-For more information regarding permissions assigned to these roles, please review [Console roles and permissions](/cloud/security/console-roles).
+Once the SAML setup is complete, you can set the default role(s) all users will be assigned when they log in and also adjust session timeout settings. For a list of available system roles that may be assigned, please review [Console roles and permissions](/cloud/security/console-roles).
 
 ### Configure your admin user {#configure-your-admin-user}
 

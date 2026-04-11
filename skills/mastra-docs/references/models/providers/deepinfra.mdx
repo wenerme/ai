@@ -1,11 +1,11 @@
 ---
 title: "Deep Infra | Models"
-description: "Use Deep Infra models with Mastra. 27 models available."
+description: "Use Deep Infra models with Mastra. 28 models available."
 ---
 
 # [Deep Infra logo]Deep Infra
 
-Access 27 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 28 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -360,6 +360,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.8,
     "outputCost": 2.56
+  },
+  {
+    "model": "deepinfra/zai-org/GLM-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 202752,
+    "maxOutput": 16384,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   }
 ]}
 />
@@ -391,7 +403,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "deepinfra/zai-org/GLM-5"
+      ? "deepinfra/zai-org/GLM-5.1"
       : "deepinfra/MiniMaxAI/MiniMax-M2";
   }
 });

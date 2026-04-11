@@ -1,6 +1,6 @@
 ---
 title: Manage findings
-description: Findings are security issues detected within SaaS and cloud applications that involve users, data at rest, and other configuration settings. With Cloudflare CASB, you can review a comprehensive list of findings in Cloudflare One and immediately start taking action on the issues found.
+description: Findings are security issues detected within SaaS and cloud applications that involve users, data at rest (files stored in your apps), and other configuration settings. With Cloudflare CASB, you can review a comprehensive list of findings in Cloudflare One and take action on the issues found.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Manage findings
 
-Findings are security issues detected within SaaS and cloud applications that involve users, data at rest, and other configuration settings. With Cloudflare CASB, you can review a comprehensive list of findings in Cloudflare One and immediately start taking action on the issues found.
+Findings are security issues detected within SaaS and cloud applications that involve users, data at rest (files stored in your apps), and other configuration settings. With Cloudflare CASB, you can review a comprehensive list of findings in Cloudflare One and take action on the issues found.
 
 ## Prerequisites
 
@@ -94,6 +94,9 @@ File findings for some integrations (such as [Microsoft 365](https://developers.
 
 After reviewing your findings, you may decide that certain posture findings are not applicable to your organization. Cloudflare CASB allows you to remove findings or individual instances of findings from your list of active issues. CASB will continue to scan for these issues, but any detections will appear in a separate tab.
 
+* **Ignore a finding** — Moves the entire finding type from **Active** to **Ignored**. New detections of this finding type still appear, but in the **Ignored** tab.
+* **Hide an instance** — Moves a single occurrence from **Active** to **Hidden**. Future occurrences for the same user or file go to the **Hidden** tab automatically.
+
 ### Ignore a finding
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Posture Findings**.
@@ -170,13 +173,13 @@ Remediated findings will appear in **Cloud & SaaS findings** \> **Posture Findin
 | Failed     | CASB unsuccessfully remediated the finding.                                                                     |
 | Rejected   | CASB does not have the correct permissions to remediate the finding.                                            |
 
-If the status is **Completed**, remediation succeeded. If the status is **Failed** or **Rejected**, remediation failed, and you can select the finding to take action again.
+If the status is **Completed**, remediation succeeded. If the status is **Failed** or **Rejected**, remediation failed, and you can select the finding to take action again. A **Rejected** status indicates that CASB does not have the correct permissions to remediate the finding.
 
 CASB will log remediation actions in **Logs** \> **Admin**. For more information, refer to [Cloudflare One Logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/).
 
 ## Resolve finding with a Gateway policy
 
-Using the security findings from CASB allows for fine-grained Gateway policies which prevent future unwanted behavior while still allowing usage that aligns to your organization's security policy. You can view a CASB finding, like the use of an unapproved application, then immediately prevent or control access with Gateway.
+CASB detects security issues that already exist in your SaaS environment. To prevent the same issues from recurring, you can create a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) directly from a CASB finding. For example, you can block users from sharing files publicly or accessing unsanctioned applications.
 
 CASB supports creating a Gateway policy for findings from the [Google Workspace integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/):
 

@@ -8,7 +8,7 @@ The Lyria 3 family includes two models:
 | Model | Model ID | Best for | Duration | Output |
 |---|---|---|---|---|
 | **Lyria 3 Clip** | `lyria-3-clip-preview` | Short clips, loops, previews | 30 seconds | MP3 |
-| **Lyria 3 Pro** | `lyria-3-pro-preview` | Full-length songs with verses, choruses, bridges | A couple of minutes (controllable via prompt) | MP3, WAV |
+| **Lyria 3 Pro** | `lyria-3-pro-preview` | Full-length songs with verses, choruses, bridges | A couple of minutes (controllable via prompt) | MP3 |
 
 Both models can be used using the standard `generateContent` method and the new
 [Interactions API](https://ai.google.dev/gemini-api/docs/interactions), supporting multimodal
@@ -20,14 +20,12 @@ inputs (text and images), and produce **44.1 kHz high-fidelity stereo** audio.
 ## Generate a music clip
 
 The Lyria 3 Clip model always generates a **30-second** clip. To generate a
-clip, call the `generateContent` method and set `response_modalities` to
-`["AUDIO", "TEXT"]`. Including `TEXT` lets you receive the generated lyrics
-or song structure alongside the audio.
+clip, call the `generateContent` method with a text prompt. The response always
+includes the generated lyrics and song structure alongside the audio.
 
 ### Python
 
     from google import genai
-    from google.genai import types
 
     client = genai.Client()
 
@@ -35,9 +33,6 @@ or song structure alongside the audio.
         model="lyria-3-clip-preview",
         contents="Create a 30-second cheerful acoustic folk song with "
                  "guitar and harmonica.",
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-        ),
     )
 
     # Parse the response
@@ -61,9 +56,7 @@ or song structure alongside the audio.
         model: "lyria-3-clip-preview",
         contents: "Create a 30-second cheerful acoustic folk song with " +
                   "guitar and harmonica.",
-        config: {
-          responseModalities: ["AUDIO", "TEXT"],
-        },
+
       });
 
       for (const part of response.candidates[0].content.parts) {
@@ -99,16 +92,12 @@ or song structure alongside the audio.
             log.Fatal(err)
         }
 
-        config := &genai.GenerateContentConfig{
-            ResponseModalities: []string{"AUDIO", "TEXT"},
-        }
-
         result, err := client.Models.GenerateContent(
             ctx,
             "lyria-3-clip-preview",
             genai.Text("Create a 30-second cheerful acoustic folk song " +
                        "with guitar and harmonica."),
-            config,
+            nil,
         )
         if err != nil {
             log.Fatal(err)
@@ -130,7 +119,6 @@ or song structure alongside the audio.
 ### Java
 
     import com.google.genai.Client;
-    import com.google.genai.types.GenerateContentConfig;
     import com.google.genai.types.GenerateContentResponse;
     import com.google.genai.types.Part;
 
@@ -142,15 +130,10 @@ or song structure alongside the audio.
       public static void main(String[] args) throws IOException {
 
         try (Client client = new Client()) {
-          GenerateContentConfig config = GenerateContentConfig.builder()
-              .responseModalities("AUDIO", "TEXT")
-              .build();
-
           GenerateContentResponse response = client.models.generateContent(
               "lyria-3-clip-preview",
               "Create a 30-second cheerful acoustic folk song with "
-                  + "guitar and harmonica.",
-              config);
+                  + "guitar and harmonica.");
 
           for (Part part : response.parts()) {
             if (part.text().isPresent()) {
@@ -178,10 +161,7 @@ or song structure alongside the audio.
           "parts": [
             {"text": "Create a 30-second cheerful acoustic folk song with guitar and harmonica."}
           ]
-        }],
-        "generationConfig": {
-          "responseModalities": ["AUDIO", "TEXT"]
-        }
+        }]
       }'
 
 ### C#
@@ -194,14 +174,9 @@ or song structure alongside the audio.
     public class GenerateMusicClip {
       public static async Task main() {
         var client = new Client();
-        var config = new GenerateContentConfig {
-          ResponseModalities = { "AUDIO", "TEXT" }
-        };
-
         var response = await client.Models.GenerateContentAsync(
           model: "lyria-3-clip-preview",
-          contents: "Create a 30-second cheerful acoustic folk song with guitar and harmonica.",
-          config: config
+          contents: "Create a 30-second cheerful acoustic folk song with guitar and harmonica."
         );
 
         foreach (var part in response.Candidates[0].Content.Parts) {
@@ -233,10 +208,6 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
         contents="An epic cinematic orchestral piece about a journey home. "
                  "Starts with a solo piano intro, builds through sweeping "
                  "strings, and climaxes with a massive wall of sound.",
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-            response_mime_type="audio/wav",
-        ),
     )
 
 ### JavaScript
@@ -246,9 +217,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
       contents: "An epic cinematic orchestral piece about a journey home. " +
                 "Starts with a solo piano intro, builds through sweeping " +
                 "strings, and climaxes with a massive wall of sound.",
-      config: {
-        responseModalities: ["AUDIO", "TEXT"],
-      },
+
     });
 
 ### Go
@@ -259,7 +228,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
         genai.Text("An epic cinematic orchestral piece about a journey " +
                    "home. Starts with a solo piano intro, builds through " +
                    "sweeping strings, and climaxes with a massive wall of sound."),
-        config,
+        nil,
     )
 
 ### Java
@@ -268,8 +237,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
         "lyria-3-pro-preview",
         "An epic cinematic orchestral piece about a journey home. "
             + "Starts with a solo piano intro, builds through sweeping "
-            + "strings, and climaxes with a massive wall of sound.",
-        config);
+            + "strings, and climaxes with a massive wall of sound.");
 
 ### REST
 
@@ -282,10 +250,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
           "parts": [
             {"text": "An epic cinematic orchestral piece about a journey home. Starts with a solo piano intro, builds through sweeping strings, and climaxes with a massive wall of sound."}
           ]
-        }],
-        "generationConfig": {
-          "responseModalities": ["AUDIO", "TEXT"]
-        }
+        }]
       }'
 
 ### C#
@@ -294,8 +259,7 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
       model: "lyria-3-pro-preview",
       contents: "An epic cinematic orchestral piece about a journey home. " +
                 "Starts with a solo piano intro, builds through sweeping " +
-                "strings, and climaxes with a massive wall of sound.",
-      config: config
+                "strings, and climaxes with a massive wall of sound."
     );
 
 ## Select output format
@@ -523,9 +487,6 @@ visual content.
             "colors in this image.",
             image,
         ],
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-        ),
     )
 
 ### JavaScript
@@ -545,9 +506,7 @@ visual content.
           },
         },
       ],
-      config: {
-        responseModalities: ["AUDIO", "TEXT"],
-      },
+
     });
 
 ### Go
@@ -576,7 +535,7 @@ visual content.
         ctx,
         "lyria-3-pro-preview",
         contents,
-        config,
+        nil,
     )
 
 ### Java
@@ -588,8 +547,7 @@ visual content.
                 + "the mood and colors in this image."),
             Part.fromBytes(
                 Files.readAllBytes(Path.of("desert_sunset.jpg")),
-                "image/jpeg")),
-        config);
+                "image/jpeg")));
 
 ### REST
 
@@ -608,10 +566,7 @@ visual content.
                 }
               }
           ]
-        }],
-        \"generationConfig\": {
-          \"responseModalities\": [\"AUDIO\", \"TEXT\"]
-        }
+        }]
       }"
 
 ### C#
@@ -621,8 +576,7 @@ visual content.
       contents: new List<Part> {
         Part.FromText("An atmospheric ambient track inspired by the mood and colors in this image."),
         Part.FromBytes(await File.ReadAllBytesAsync("desert_sunset.jpg"), "image/jpeg")
-      },
-      config: config
+      }
     );
 
 ![](https://storage.googleapis.com/generativeai-downloads/images/desert_sunset.jpg)  
@@ -660,9 +614,6 @@ song structure:
     response = client.models.generate_content(
         model="lyria-3-pro-preview",
         contents=prompt,
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-        ),
     )
 
 ### JavaScript
@@ -692,9 +643,7 @@ song structure:
     const response = await ai.models.generateContent({
       model: "lyria-3-pro-preview",
       contents: prompt,
-      config: {
-        responseModalities: ["AUDIO", "TEXT"],
-      },
+
     });
 
 ### Go
@@ -725,7 +674,7 @@ song structure:
         ctx,
         "lyria-3-pro-preview",
         genai.Text(prompt),
-        config,
+        nil,
     )
 
 ### Java
@@ -754,8 +703,7 @@ song structure:
 
     GenerateContentResponse response = client.models.generateContent(
         "lyria-3-pro-preview",
-        prompt,
-        config);
+        prompt);
 
 ### C#
 
@@ -783,8 +731,7 @@ song structure:
 
     var response = await client.Models.GenerateContentAsync(
       model: "lyria-3-pro-preview",
-      contents: prompt,
-      config: config
+      contents: prompt
     );
 
 ### REST
@@ -798,10 +745,7 @@ song structure:
           "parts": [
             {"text": "Create a dreamy indie pop song with the following lyrics: ..."}
           ]
-        }],
-        "generationConfig": {
-          "responseModalities": ["AUDIO", "TEXT"]
-        }
+        }]
       }'
 
 ## Control timing and structure
@@ -825,9 +769,6 @@ are delivered, and how the song progresses:
     response = client.models.generate_content(
         model="lyria-3-pro-preview",
         contents=prompt,
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-        ),
     )
 
 ### JavaScript
@@ -845,9 +786,7 @@ are delivered, and how the song progresses:
     const response = await ai.models.generateContent({
       model: "lyria-3-pro-preview",
       contents: prompt,
-      config: {
-        responseModalities: ["AUDIO", "TEXT"],
-      },
+
     });
 
 ### Go
@@ -866,7 +805,7 @@ are delivered, and how the song progresses:
         ctx,
         "lyria-3-pro-preview",
         genai.Text(prompt),
-        config,
+        nil,
     )
 
 ### Java
@@ -883,8 +822,7 @@ are delivered, and how the song progresses:
 
     GenerateContentResponse response = client.models.generateContent(
         "lyria-3-pro-preview",
-        prompt,
-        config);
+        prompt);
 
 ### C#
 
@@ -900,8 +838,7 @@ are delivered, and how the song progresses:
 
     var response = await client.Models.GenerateContentAsync(
       model: "lyria-3-pro-preview",
-      contents: prompt,
-      config: config
+      contents: prompt
     );
 
 ### REST
@@ -915,10 +852,7 @@ are delivered, and how the song progresses:
           "parts": [
             {"text": "[0:00 - 0:10] Intro: ..."}
           ]
-        }],
-        "generationConfig": {
-          "responseModalities": ["AUDIO", "TEXT"]
-        }
+        }]
       }'
 
 ## Generate instrumental tracks
@@ -932,9 +866,6 @@ required, you can prompt the model to produce instrumental-only tracks:
         model="lyria-3-clip-preview",
         contents="A bright chiptune melody in C Major, retro 8-bit "
                  "video game style. Instrumental only, no vocals.",
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-        ),
     )
 
 ### JavaScript
@@ -943,9 +874,7 @@ required, you can prompt the model to produce instrumental-only tracks:
       model: "lyria-3-clip-preview",
       contents: "A bright chiptune melody in C Major, retro 8-bit " +
                 "video game style. Instrumental only, no vocals.",
-      config: {
-        responseModalities: ["AUDIO", "TEXT"],
-      },
+
     });
 
 ### Go
@@ -955,7 +884,7 @@ required, you can prompt the model to produce instrumental-only tracks:
         "lyria-3-clip-preview",
         genai.Text("A bright chiptune melody in C Major, retro 8-bit " +
                    "video game style. Instrumental only, no vocals."),
-        config,
+        nil,
     )
 
 ### Java
@@ -963,16 +892,14 @@ required, you can prompt the model to produce instrumental-only tracks:
     GenerateContentResponse response = client.models.generateContent(
         "lyria-3-clip-preview",
         "A bright chiptune melody in C Major, retro 8-bit "
-            + "video game style. Instrumental only, no vocals.",
-        config);
+            + "video game style. Instrumental only, no vocals.");
 
 ### C#
 
     var response = await client.Models.GenerateContentAsync(
       model: "lyria-3-clip-preview",
       contents: "A bright chiptune melody in C Major, retro 8-bit " +
-                "video game style. Instrumental only, no vocals.",
-      config: config
+                "video game style. Instrumental only, no vocals."
     );
 
 ### REST
@@ -986,10 +913,7 @@ required, you can prompt the model to produce instrumental-only tracks:
           "parts": [
             {"text": "A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals."}
           ]
-        }],
-        "generationConfig": {
-          "responseModalities": ["AUDIO", "TEXT"]
-        }
+        }]
       }'
 
 > [!TIP]
@@ -1008,9 +932,6 @@ style and pronunciation to match the language.
         contents="Crée une chanson pop romantique en français sur un "
                  "coucher de soleil à Paris. Utilise du piano et de "
                  "la guitare acoustique.",
-        config=types.GenerateContentConfig(
-            response_modalities=["AUDIO", "TEXT"],
-        ),
     )
 
 ### JavaScript
@@ -1020,9 +941,7 @@ style and pronunciation to match the language.
       contents: "Crée une chanson pop romantique en français sur un " +
                 "coucher de soleil à Paris. Utilise du piano et de " +
                 "la guitare acoustique.",
-      config: {
-        responseModalities: ["AUDIO", "TEXT"],
-      },
+
     });
 
 ### Go
@@ -1033,7 +952,7 @@ style and pronunciation to match the language.
         genai.Text("Crée une chanson pop romantique en français sur un " +
                    "coucher de soleil à Paris. Utilise du piano et de " +
                    "la guitare acoustique."),
-        config,
+        nil,
     )
 
 ### Java
@@ -1042,8 +961,7 @@ style and pronunciation to match the language.
         "lyria-3-pro-preview",
         "Crée une chanson pop romantique en français sur un "
             + "coucher de soleil à Paris. Utilise du piano et de "
-            + "la guitare acoustique.",
-        config);
+            + "la guitare acoustique.");
 
 ### C#
 
@@ -1051,8 +969,7 @@ style and pronunciation to match the language.
       model: "lyria-3-pro-preview",
       contents: "Crée une chanson pop romantique en français sur un " +
                 "coucher de soleil à Paris. Utilise du piano et de " +
-                "la guitare acoustique.",
-      config: config
+                "la guitare acoustique."
     );
 
 ### REST
@@ -1066,10 +983,7 @@ style and pronunciation to match the language.
           "parts": [
             {"text": "Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique."}
           ]
-        }],
-        "generationConfig": {
-          "responseModalities": ["AUDIO", "TEXT"]
-        }
+        }]
       }'
 
 ## Model intelligence
@@ -1100,7 +1014,6 @@ state management and long-running tasks for complex multimodal use cases.
         input="A melancholic jazz fusion track in D minor, " +
               "featuring a smooth saxophone melody, walking bass line, " +
               "and complex drum rhythms.",
-        response_modalities=["AUDIO", "TEXT"]
     )
 
     for output in interaction.outputs:
@@ -1122,7 +1035,6 @@ state management and long-running tasks for complex multimodal use cases.
       input: 'A melancholic jazz fusion track in D minor, ' +
              'featuring a smooth saxophone melody, walking bass line, ' +
              'and complex drum rhythms.',
-      responseModalities: ['AUDIO', 'TEXT'],
     });
 
     for (const output of interaction.outputs) {
@@ -1142,8 +1054,7 @@ state management and long-running tasks for complex multimodal use cases.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
         "model": "lyria-3-pro-preview",
-        "input": "A melancholic jazz fusion track in D minor, featuring a smooth saxophone melody, walking bass line, and complex drum rhythms.",
-        "responseModalities": ["AUDIO", "TEXT"]
+        "input": "A melancholic jazz fusion track in D minor, featuring a smooth saxophone melody, walking bass line, and complex drum rhythms."
     }'
 
 ## Prompting guide

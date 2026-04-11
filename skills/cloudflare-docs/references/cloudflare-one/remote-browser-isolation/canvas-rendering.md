@@ -1,0 +1,89 @@
+---
+title: Canvas rendering
+description: Canvas rendering is a Browser Isolation capability that optimizes performance for web applications using the HTML5 Canvas API. It sends vector draw commands to the client instead of rasterized bitmaps, reducing bandwidth consumption and improving frame rates for productivity applications.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/remote-browser-isolation/canvas-rendering.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Canvas rendering
+
+Canvas rendering is a Browser Isolation capability that optimizes performance for web applications using the HTML5 Canvas API. It sends vector draw commands to the client instead of rasterized bitmaps, reducing bandwidth consumption and improving frame rates for productivity applications.
+
+## How it works
+
+Browser Isolation uses Network Vector Rendering (NVR) to deliver efficient vector commands rather than rendered pixels. However, HTML5 Canvas content previously required server-side rasterization, sending large bitmaps for every frame.
+
+Canvas rendering extends NVR to Canvas-based applications by:
+
+1. Capturing draw commands made to the HTML5 Canvas element.
+2. Converting and sending those commands to the client as NVR instructions.
+3. Rendering the Canvas content on the client onto an offscreen texture.
+4. Compositing the texture into the final document output.
+
+## Supported applications
+
+Canvas rendering improves performance for productivity applications that rely on the HTML5 Canvas API:
+
+| Application                          | Improvement                                |
+| ------------------------------------ | ------------------------------------------ |
+| Microsoft Word                       | 10x bandwidth reduction                    |
+| Microsoft Excel                      | Smooth scrolling and data entry            |
+| Microsoft PowerPoint                 | Fluid animations                           |
+| Google Sheets                        | Consistent 30fps rendering                 |
+| Google Maps                          | Smooth panning and zooming                 |
+| Web-based terminals and AI notebooks | Fast and responsive text input and display |
+
+## Limitations
+
+Canvas rendering supports 2D Canvas contexts only. The following are not supported:
+
+* WebGL and WebGPU contexts
+* 3D graphics applications
+* Advanced Canvas features requiring GPU acceleration
+
+## Enable or disable canvas rendering
+
+Canvas rendering is on by default for all Browser Isolation customers. No configuration is required.
+
+![Canvas rendering context menu option](https://developers.cloudflare.com/_astro/canvas-rendering-context-menu.DnzW09g1_Z2rko9U.webp) 
+
+### Disable canvas rendering for the current session
+
+1. Right-click on the background of the isolated webpage.
+2. Select **Disable Canvas Rendering** from the context menu.
+
+### Re-enable canvas rendering
+
+1. Right-click on the background of the isolated webpage.
+2. Select **Enable Canvas Rendering** from the context menu.
+
+## Troubleshooting
+
+Canvas content renders slowly
+
+If Canvas-based applications appear choppy or consume excessive bandwidth:
+
+1. Verify canvas rendering is on by right-clicking the page background.
+2. Check that the context menu shows **Disable Canvas Rendering** (indicating it is active).
+3. If the issue persists, open a support case and provide the Ray ID from the error page.
+
+Graphical glitches or missing elements
+
+If Canvas content displays incorrectly after reconnecting from a network interruption:
+
+1. Refresh the isolated page.
+2. If the issue persists, select **Disable Canvas Rendering** from the right-click menu.
+3. Re-enable canvas rendering after the page reloads.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/canvas-rendering/","name":"Canvas rendering"}}]}
+```

@@ -20,6 +20,11 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-rendering/changelog/index.xml)
 
+## 2026-04-10
+
+**Chrome DevTools Protocol (CDP) and MCP client support**
+* Browser Rendering now exposes the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-rendering/cdp/) as an endpoint. Any CDP-compatible client, including [Puppeteer](https://developers.cloudflare.com/browser-rendering/cdp/puppeteer/) and [Playwright](https://developers.cloudflare.com/browser-rendering/cdp/playwright/), can connect from any environment, whether that is [Cloudflare Workers](https://developers.cloudflare.com/workers/), your local machine, or a cloud environment. [MCP clients](https://developers.cloudflare.com/browser-rendering/cdp/mcp-clients/) like Claude Desktop, Claude Code, Cursor, and OpenCode can also use Browser Rendering as their remote browser.
+
 ## 2026-04-06
 
 **Local development: headful mode (experimental)**
@@ -33,12 +38,12 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 ## 2026-03-17
 
 **Separate bot detection IDs for Browser Rendering methods**
-* Browser Rendering now uses separate bot detection IDs for the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) and [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) versus the [crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/), allowing you to identify and control each method independently. For the full list of IDs, refer to [Automatic request headers](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/#bot-detection).
+* Browser Rendering now uses separate bot detection IDs for the [REST API](https://developers.cloudflare.com/browser-rendering/quick-actions/) and [Browser Sessions](https://developers.cloudflare.com/browser-rendering/#integration-methods) versus the [crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/), allowing you to identify and control each method independently. For the full list of IDs, refer to [Automatic request headers](https://developers.cloudflare.com/browser-rendering/reference/automatic-request-headers/#bot-detection).
 
 ## 2026-03-10
 
 **New REST API endpoint: /crawl (Beta)**
-* Added the [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint/) (beta) to the REST API. The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or structured JSON (powered by [Workers AI](https://developers.cloudflare.com/workers-ai/)).
+* Added the [/crawl endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/crawl-endpoint/) (beta) to the REST API. The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or structured JSON (powered by [Workers AI](https://developers.cloudflare.com/workers-ai/)).
 
 ## 2026-03-04
 
@@ -78,7 +83,7 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 ## 2026-01-07
 
 **Bug fixes for JSON endpoint, waitForSelector timeout, and WebSocket rendering**
-* Updated the [/json endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/) fallback model and improved error handling for when plan limits of Workers Free plan users are reached.
+* Updated the [/json endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/json-endpoint/) fallback model and improved error handling for when plan limits of Workers Free plan users are reached.
 * REST API requests using `waitForSelector` will now correctly fail if the specified selector is not found within the time limit.
 * Fixed an issue where pages using WebSockets were not rendering correctly.
 
@@ -90,7 +95,7 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 ## 2025-12-03
 
 **Improved AI JSON response parsing and debugging**
-* Added `rawAiResponse` field to [/json endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/) error responses, allowing you to inspect the unparsed AI output when JSON parsing fails for easier debugging.
+* Added `rawAiResponse` field to [/json endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/json-endpoint/) error responses, allowing you to inspect the unparsed AI output when JSON parsing fails for easier debugging.
 * Improved AI response handling to better distinguish between valid JSON objects, arrays, and invalid payloads, increasing type safety and reliability.
 
 ## 2025-10-21
@@ -104,12 +109,12 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 **Updates to Playwright, new support for Stagehand, and increased limits**
 * [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/) support in Browser Rendering is now GA. We've upgraded to [Playwright v1.55](https://playwright.dev/docs/release-notes#version-155).
 * Added support for [Stagehand](https://developers.cloudflare.com/browser-rendering/stagehand/), an open source browser automation framework, powered by [Workers AI](https://developers.cloudflare.com/workers-ai). Stagehand enables developers to build more reliably and flexibly by combining code with natural-language instructions.
-* Increased [limits](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid) for paid plans on both the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) and [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/).
+* Increased [limits](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid) for paid plans on both the [REST API](https://developers.cloudflare.com/browser-rendering/quick-actions/) and [Browser Sessions](https://developers.cloudflare.com/browser-rendering/#integration-methods).
 
 ## 2025-09-22
 
 **Added \`excludeExternalLinks\` parameter to \`/links\` REST endpoint**
-* Added `excludeExternalLinks` parameter when using the [/links endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/links-endpoint/). When set to `true`, links pointing to outside the domain of the requested URL are excluded.
+* Added `excludeExternalLinks` parameter when using the [/links endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/links-endpoint/). When set to `true`, links pointing to outside the domain of the requested URL are excluded.
 
 ## 2025-09-02
 
@@ -131,9 +136,9 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 **Updates to Playwright, local dev support, and REST API**
 * [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/) upgraded to [Playwright v1.54.1](https://github.com/microsoft/playwright/releases/tag/v1.54.1) and [Playwright MCP](https://developers.cloudflare.com/browser-rendering/playwright/playwright-mcp/) upgraded to be in sync with upstream Playwright MCP v0.0.30.
 * Local development with `npx wrangler dev` now supports [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/) when using Browser Rendering. Upgrade to the latest version of wrangler to get started.
-* The [/content endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/content-endpoint/) now returns the page's title, making it easier to identify pages.
-* The [/json endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/) now allows you to specify your own AI model for the extraction, using the `custom_ai` parameter.
-* The default viewport size on the [/screenshot endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/) has been increased from 800x600 to 1920x1080\. You can still override the viewport via request options.
+* The [/content endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/content-endpoint/) now returns the page's title, making it easier to identify pages.
+* The [/json endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/json-endpoint/) now allows you to specify your own AI model for the extraction, using the `custom_ai` parameter.
+* The default viewport size on the [/screenshot endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/) has been increased from 800x600 to 1920x1080\. You can still override the viewport via request options.
 
 ## 2025-07-25
 
@@ -179,8 +184,8 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 
 **New free tier and REST API GA with additional endpoints**
 * Browser Rendering now has a new free tier.
-* The [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) is Generally Available.
-* Released new endpoints [/json](https://developers.cloudflare.com/browser-rendering/rest-api/json-endpoint/), [/links](https://developers.cloudflare.com/browser-rendering/rest-api/links-endpoint/), and [/markdown](https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint/).
+* The [REST API](https://developers.cloudflare.com/browser-rendering/quick-actions/) is Generally Available.
+* Released new endpoints [/json](https://developers.cloudflare.com/browser-rendering/quick-actions/json-endpoint/), [/links](https://developers.cloudflare.com/browser-rendering/quick-actions/links-endpoint/), and [/markdown](https://developers.cloudflare.com/browser-rendering/quick-actions/markdown-endpoint/).
 
 ## 2025-04-04
 
@@ -190,7 +195,7 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 ## 2025-02-27
 
 **New Browser Rendering REST API**
-* Released a new [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) in open beta. Available to all customers with a Workers Paid Plan.
+* Released a new [REST API](https://developers.cloudflare.com/browser-rendering/quick-actions/) in open beta. Available to all customers with a Workers Paid Plan.
 
 ## 2025-01-31
 

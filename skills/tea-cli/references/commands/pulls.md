@@ -5,7 +5,7 @@ Manage and checkout pull requests
 **--comments**: Whether to display comments (will prompt if not provided & run interactively)
 
 **--fields, -f**="": Comma-separated list of fields to print. Available values:
-			index,state,author,author-id,url,title,body,mergeable,base,base-commit,head,diff,patch,created,updated,deadline,assignees,milestone,labels,comments
+			index,state,author,author-id,url,title,body,mergeable,base,base-commit,head,diff,patch,created,updated,deadline,assignees,milestone,labels,comments,ci
 		 (default: "index,title,state,author,milestone,updated,labels")
 
 **--limit, --lm**="": specify limit of items per page (default: 30)
@@ -27,7 +27,7 @@ Manage and checkout pull requests
 List pull requests of the repository
 
 **--fields, -f**="": Comma-separated list of fields to print. Available values:
-			index,state,author,author-id,url,title,body,mergeable,base,base-commit,head,diff,patch,created,updated,deadline,assignees,milestone,labels,comments
+			index,state,author,author-id,url,title,body,mergeable,base,base-commit,head,diff,patch,created,updated,deadline,assignees,milestone,labels,comments,ci
 		 (default: "index,title,state,author,milestone,updated,labels")
 
 **--limit, --lm**="": specify limit of items per page (default: 30)

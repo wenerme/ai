@@ -226,10 +226,10 @@
   "openai-docs/guides/agents/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents/quickstart.md",
     "skill": "openai-docs",
-    "etag": "W/\"f23fdd6af1b5d1be29cce2c350a47377\"",
-    "lastModified": "Wed, 08 Apr 2026 00:17:46 GMT",
-    "size": 7287,
-    "updatedAt": "2026-04-08T00:18:23.368Z"
+    "etag": "W/\"f5bf5fef01d6af8fbdb9648919360ff6\"",
+    "lastModified": "Sat, 11 Apr 2026 00:17:58 GMT",
+    "size": 7318,
+    "updatedAt": "2026-04-11T00:17:58.752Z"
   },
   "openai-docs/guides/agents/results.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents/results.md",
@@ -9591,6 +9591,14 @@
     "size": 14168,
     "updatedAt": "2026-03-20T00:21:23.930Z"
   },
+  "codex-docs/use-cases/agent-friendly-clis.md": {
+    "url": "https://developers.openai.com/codex/use-cases/agent-friendly-clis.md",
+    "skill": "codex-docs",
+    "etag": "W/\"568a10af04b62c7425b01080692c80f2\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:40 GMT",
+    "size": 6553,
+    "updatedAt": "2026-04-11T00:23:40.694Z"
+  },
   "codex-docs/use-cases/api-integration-migrations.md": {
     "url": "https://developers.openai.com/codex/use-cases/api-integration-migrations.md",
     "skill": "codex-docs",
@@ -9598,6 +9606,14 @@
     "lastModified": "Sat, 28 Mar 2026 00:20:26 GMT",
     "size": 3722,
     "updatedAt": "2026-03-28T00:20:26.983Z"
+  },
+  "codex-docs/use-cases/automation-bug-triage.md": {
+    "url": "https://developers.openai.com/codex/use-cases/automation-bug-triage.md",
+    "skill": "codex-docs",
+    "etag": "W/\"fc75c61182c08cb884e81d79ada60f17\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:41 GMT",
+    "size": 6512,
+    "updatedAt": "2026-04-11T00:23:41.228Z"
   },
   "codex-docs/use-cases/browser-games.md": {
     "url": "https://developers.openai.com/codex/use-cases/browser-games.md",
@@ -9663,6 +9679,38 @@
     "size": 2052,
     "updatedAt": "2026-03-28T00:20:29.221Z"
   },
+  "codex-docs/use-cases/ios-app-intents.md": {
+    "url": "https://developers.openai.com/codex/use-cases/ios-app-intents.md",
+    "skill": "codex-docs",
+    "etag": "W/\"becff7d424e776663fbb88dbbd93305d\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:43 GMT",
+    "size": 8997,
+    "updatedAt": "2026-04-11T00:23:43.610Z"
+  },
+  "codex-docs/use-cases/ios-liquid-glass.md": {
+    "url": "https://developers.openai.com/codex/use-cases/ios-liquid-glass.md",
+    "skill": "codex-docs",
+    "etag": "W/\"f19d40ffc07f64682e7332c727400b20\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:43 GMT",
+    "size": 7262,
+    "updatedAt": "2026-04-11T00:23:43.859Z"
+  },
+  "codex-docs/use-cases/ios-simulator-bug-debugging.md": {
+    "url": "https://developers.openai.com/codex/use-cases/ios-simulator-bug-debugging.md",
+    "skill": "codex-docs",
+    "etag": "W/\"8eee30384e0fe19247577dacb240bc26\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:44 GMT",
+    "size": 7298,
+    "updatedAt": "2026-04-11T00:23:44.180Z"
+  },
+  "codex-docs/use-cases/ios-swiftui-view-refactor.md": {
+    "url": "https://developers.openai.com/codex/use-cases/ios-swiftui-view-refactor.md",
+    "skill": "codex-docs",
+    "etag": "W/\"465c51af5811568f58f68856b964f869\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:44 GMT",
+    "size": 7127,
+    "updatedAt": "2026-04-11T00:23:44.481Z"
+  },
   "codex-docs/use-cases/iterate-on-difficult-problems.md": {
     "url": "https://developers.openai.com/codex/use-cases/iterate-on-difficult-problems.md",
     "skill": "codex-docs",
@@ -9671,13 +9719,61 @@
     "size": 6002,
     "updatedAt": "2026-03-28T00:20:29.503Z"
   },
-  "codex-docs/use-cases/native-ios-macos-apps.md": {
-    "url": "https://developers.openai.com/codex/use-cases/native-ios-macos-apps.md",
+  "codex-docs/use-cases/learn-a-new-concept.md": {
+    "url": "https://developers.openai.com/codex/use-cases/learn-a-new-concept.md",
     "skill": "codex-docs",
-    "etag": "W/\"758bf0705c4eab5bf72cbcea567ae89a\"",
-    "lastModified": "Sat, 28 Mar 2026 00:20:29 GMT",
-    "size": 8012,
-    "updatedAt": "2026-03-28T00:20:29.799Z"
+    "etag": "W/\"990d87161279f250ebc2961092affe01\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:45 GMT",
+    "size": 9274,
+    "updatedAt": "2026-04-11T00:23:45.126Z"
+  },
+  "codex-docs/use-cases/macos-sidebar-detail-inspector.md": {
+    "url": "https://developers.openai.com/codex/use-cases/macos-sidebar-detail-inspector.md",
+    "skill": "codex-docs",
+    "etag": "W/\"18461dc2d28d6b0a6903be9c15d33450\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:45 GMT",
+    "size": 9509,
+    "updatedAt": "2026-04-11T00:23:45.398Z"
+  },
+  "codex-docs/use-cases/macos-telemetry-logs.md": {
+    "url": "https://developers.openai.com/codex/use-cases/macos-telemetry-logs.md",
+    "skill": "codex-docs",
+    "etag": "W/\"ebc1bdf967095f2f67681689318c8bf2\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:45 GMT",
+    "size": 9132,
+    "updatedAt": "2026-04-11T00:23:45.678Z"
+  },
+  "codex-docs/use-cases/native-ios-apps.md": {
+    "url": "https://developers.openai.com/codex/use-cases/native-ios-apps.md",
+    "skill": "codex-docs",
+    "etag": "W/\"a68f4f86c780e80e0f6828e467a26026\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:45 GMT",
+    "size": 7962,
+    "updatedAt": "2026-04-11T00:23:45.931Z"
+  },
+  "codex-docs/use-cases/native-macos-apps.md": {
+    "url": "https://developers.openai.com/codex/use-cases/native-macos-apps.md",
+    "skill": "codex-docs",
+    "etag": "W/\"bec68db7b6a04738a86ddbd5f4c2cbe0\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:46 GMT",
+    "size": 6909,
+    "updatedAt": "2026-04-11T00:23:46.188Z"
+  },
+  "codex-docs/use-cases/new-hire-onboarding.md": {
+    "url": "https://developers.openai.com/codex/use-cases/new-hire-onboarding.md",
+    "skill": "codex-docs",
+    "etag": "W/\"41828790c61f4fa19c79d4ed3134b33c\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:46 GMT",
+    "size": 8535,
+    "updatedAt": "2026-04-11T00:23:46.431Z"
+  },
+  "codex-docs/use-cases/reusable-codex-skills.md": {
+    "url": "https://developers.openai.com/codex/use-cases/reusable-codex-skills.md",
+    "skill": "codex-docs",
+    "etag": "W/\"4c6806d211df602b92e77019c0146530\"",
+    "lastModified": "Sat, 11 Apr 2026 00:23:46 GMT",
+    "size": 6047,
+    "updatedAt": "2026-04-11T00:23:46.742Z"
   },
   "codex-docs/use-cases/slack-coding-tasks.md": {
     "url": "https://developers.openai.com/codex/use-cases/slack-coding-tasks.md",

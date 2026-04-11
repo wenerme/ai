@@ -5,6 +5,8 @@ doc_type: 'guide'
 keywords: ['sql console', 'role assignments', 'access management', 'permissions', 'security']
 ---
 
+> **warning**: This setting is deprecated and has been replaced with a new setting on the role creation screen in organizations that have migrated to custom roles. For more information, see [Manage cloud users](/cloud/security/manage-cloud-users).
+
 # Configuring SQL console role assignments
 
 > This guide shows you how to configure SQL console role assignments, which

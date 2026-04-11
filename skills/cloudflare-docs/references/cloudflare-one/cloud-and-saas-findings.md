@@ -1,6 +1,6 @@
 ---
 title: Cloud and SaaS findings
-description: Cloudflare's API-driven Cloud Access Security Broker (CASB) integrates with SaaS applications and cloud environments to scan for misconfigurations, unauthorized user activity, shadow IT, and other data security issues that can occur after a user has successfully logged in.
+description: Cloudflare's Cloud Access Security Broker (CASB) connects to SaaS application and cloud environment APIs to scan for security issues that can occur after a user has successfully logged in. These include misconfigurations (such as overly permissive sharing settings), unauthorized user activity, shadow IT, and other data security issues.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -22,7 +22,7 @@ Available for all Zero Trust users.
 
 Free users can configure up to two CASB integrations. You must upgrade to an Enterprise plan to view the details of a finding instance.
 
-Cloudflare's API-driven [Cloud Access Security Broker ↗](https://www.cloudflare.com/learning/access-management/what-is-a-casb/) (CASB) integrates with SaaS applications and cloud environments to scan for misconfigurations, unauthorized user activity, [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), and other data security issues that can occur after a user has successfully logged in.
+Cloudflare's [Cloud Access Security Broker ↗](https://www.cloudflare.com/learning/access-management/what-is-a-casb/) (CASB) connects to SaaS application and cloud environment APIs to scan for security issues that can occur after a user has successfully logged in. These include misconfigurations (such as overly permissive sharing settings), unauthorized user activity, [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), and other data security issues.
 
 For a list of available findings, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). You can also send posture finding instances to external systems with [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/).
 

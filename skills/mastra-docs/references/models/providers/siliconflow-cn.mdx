@@ -1,11 +1,11 @@
 ---
 title: "SiliconFlow (China) | Models"
-description: "Use SiliconFlow (China) models with Mastra. 78 models available."
+description: "Use SiliconFlow (China) models with Mastra. 79 models available."
 ---
 
 # [SiliconFlow (China) logo]SiliconFlow (China)
 
-Access 78 SiliconFlow (China) models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_CN_API_KEY` environment variable.
+Access 79 SiliconFlow (China) models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_CN_API_KEY` environment variable.
 
 Learn more in the [SiliconFlow (China) documentation](https://cloud.siliconflow.com/models).
 
@@ -398,6 +398,18 @@ for await (const chunk of stream) {
     "maxOutput": 205000,
     "inputCost": 1,
     "outputCost": 3.2
+  },
+  {
+    "model": "siliconflow-cn/Pro/zai-org/GLM-5.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 205000,
+    "maxOutput": 205000,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   },
   {
     "model": "siliconflow-cn/Qwen/Qwen2.5-14B-Instruct",

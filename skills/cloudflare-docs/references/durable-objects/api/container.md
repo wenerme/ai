@@ -25,8 +25,8 @@ Note
 
 It is likely preferable to use the official `Container` class, which provides helper methods and a more idiomatic API for working with containers on top of Durable Objects.
 
-* [  JavaScript ](#tab-panel-4397)
-* [  TypeScript ](#tab-panel-4398)
+* [  JavaScript ](#tab-panel-4401)
+* [  TypeScript ](#tab-panel-4402)
 
 index.js
 
@@ -296,7 +296,7 @@ Explain Code
 
 ### `interceptOutboundHttp`
 
-`interceptOutboundHttp` routes outbound HTTP requests matching an IP address, IP:port, or CIDR range through a `WorkerEntrypoint`. Can be called before or after starting the container. Open connections pick up the new handler without being dropped.
+`interceptOutboundHttp` routes outbound HTTP requests matching a hostname, hostname glob, IP address, IP:port, or CIDR range through a `WorkerEntrypoint`. Can be called before or after starting the container. Open connections pick up the new handler without being dropped.
 
 JavaScript
 
@@ -304,19 +304,34 @@ JavaScript
 
 const worker = this.ctx.exports.MyWorker({ props: { message: "hello" } });
 
+
+// Match a specific hostname
+
+this.ctx.container.interceptOutboundHttp("api.example.com", worker);
+
+
+// Match a hostname glob pattern
+
+this.ctx.container.interceptOutboundHttp("*.example.com", worker);
+
+
+// Match an IP:port
+
 await this.ctx.container.interceptOutboundHttp("15.0.0.1:80", worker);
 
 
-// CIDRs are also supported (IPv4 and IPv6)
+// Match a CIDR range (IPv4 and IPv6)
 
 await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 
 
 ```
 
+Explain Code
+
 #### Parameters
 
-* `target` (string): An IP address, IP:port, or CIDR range to match.
+* `target` (string): A hostname, hostname glob (for example, `*.example.com`), IP address, IP:port, or CIDR range to match.
 * `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle matching requests.
 
 #### Return values
@@ -327,45 +342,68 @@ await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 
 `interceptAllOutboundHttp` routes all outbound HTTP requests from the container through a `WorkerEntrypoint`, regardless of destination.
 
+JavaScript
+
+```
+
 await this.ctx.container.interceptAllOutboundHttp(worker);
+
 
 ```
 
 #### Parameters
 
-
-- `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle all outbound HTTP requests.
-
+* `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle all outbound HTTP requests.
 
 #### Return values
 
+* A promise that resolves once the intercept rule is installed.
 
-- None.
+### `interceptOutboundHttps`
 
+`interceptOutboundHttps` routes outbound HTTPS requests matching a hostname or hostname glob through a `WorkerEntrypoint`. Works the same way as `interceptOutboundHttp` but for HTTPS traffic. The container must trust the CA certificate at `/etc/cloudflare/certs/cloudflare-containers-ca.crt` for HTTPS interception to work.
 
-#### Parameters
+Supports glob patterns where `*` matches any sequence of characters.
 
+JavaScript
 
-- `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle all outbound HTTP requests.
+```
 
-
-#### Return values
-
-
-- A promise that resolves once the intercept rule is installed.
-
-
-## Related resources
+const worker = this.ctx.exports.MyWorker({ props: {} });
 
 
-- [Containers](/containers)
+// Match a specific hostname
 
-- [Get Started With Containers](/containers/get-started)
+this.ctx.container.interceptOutboundHttps("api.example.com", worker);
+
+
+// Match a hostname glob pattern
+
+this.ctx.container.interceptOutboundHttps("*.example.com", worker);
+
+
+// Intercept all HTTPS traffic
+
+this.ctx.container.interceptOutboundHttps("*", worker);
 
 
 ```
 
 Explain Code
+
+#### Parameters
+
+* `target` (string): A hostname or hostname glob pattern to match. Use `*` to intercept all HTTPS traffic.
+* `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle matching requests.
+
+#### Return values
+
+* None.
+
+## Related resources
+
+* [Containers](https://developers.cloudflare.com/containers)
+* [Get Started With Containers](https://developers.cloudflare.com/containers/get-started)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/durable-objects/","name":"Durable Objects"}},{"@type":"ListItem","position":3,"item":{"@id":"/durable-objects/api/","name":"Workers Binding API"}},{"@type":"ListItem","position":4,"item":{"@id":"/durable-objects/api/container/","name":"Durable Object Container"}}]}

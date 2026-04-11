@@ -1,11 +1,11 @@
 ---
 title: "Poe | Models"
-description: "Use Poe models with Mastra. 127 models available."
+description: "Use Poe models with Mastra. 128 models available."
 ---
 
 # [Poe logo]Poe
 
-Access 127 Poe models through Mastra's model router. Authentication is handled automatically using the `POE_API_KEY` environment variable.
+Access 128 Poe models through Mastra's model router. Authentication is handled automatically using the `POE_API_KEY` environment variable.
 
 Learn more in the [Poe documentation](https://creator.poe.com/docs/external-applications/openai-compatible-api).
 
@@ -713,6 +713,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "poe/novita/glm-4.7-n",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 205000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "poe/novita/glm-5",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

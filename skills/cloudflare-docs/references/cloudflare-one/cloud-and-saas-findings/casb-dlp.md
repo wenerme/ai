@@ -1,6 +1,6 @@
 ---
 title: Scan for sensitive data
-description: You can use Cloudflare Data Loss Prevention (DLP) to discover if files stored in a SaaS application contains sensitive data. To perform DLP scans in a SaaS app, first configure a DLP profile with the data patterns you want to detect, then add the profile to a CASB integration.
+description: You can use Cloudflare Data Loss Prevention (DLP) to discover if files stored in a SaaS application contain sensitive data. To perform DLP scans in a SaaS app, first configure a DLP profile (a set of patterns that define what counts as sensitive data) with the data patterns you want to detect, then add the profile to a CASB integration.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -20,7 +20,7 @@ Note
 
 Requires Cloudflare CASB and Cloudflare DLP.
 
-You can use [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) to discover if files stored in a SaaS application contains sensitive data. To perform DLP scans in a SaaS app, first configure a [DLP profile](#configure-a-dlp-profile) with the data patterns you want to detect, then [add the profile](#enable-dlp-scans-in-casb) to a CASB integration.
+You can use [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) to discover if files stored in a SaaS application contain sensitive data. To perform DLP scans in a SaaS app, first configure a [DLP profile](#configure-a-dlp-profile) (a set of patterns that define what counts as sensitive data) with the data patterns you want to detect, then [add the profile](#enable-dlp-scans-in-casb) to a CASB integration.
 
 ## Supported integrations
 
@@ -99,15 +99,16 @@ If you enable a DLP profile from the **Manage integrations** page, CASB will onl
 * Owner of the file
 * Location of the file (for example, moved to a different folder)
 
-In order to scan historical data, you must enable the DLP profile during the [integration setup flow](#add-a-new-integration).
+Warning
+
+If you add a DLP profile to an existing integration, CASB only scans files modified after you enabled the profile. To scan all files, you must enable the DLP profile during the [integration setup flow](#add-a-new-integration).
 
 ## Limitations
 
 DLP in CASB will only scan:
 
-* [Text-based files](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types) such as documents, spreadsheets, and PDFs. Images are not supported.
-* Files less than or equal 100 MB in size.
-* Source code with a minimum size of 5 KB for Java and R.
+* Files less than or equal to 100 MB in size.
+* Java and R source code files that are at least 5 KB. Smaller files in these languages are skipped.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/cloud-and-saas-findings/","name":"Cloud and SaaS findings"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/cloud-and-saas-findings/casb-dlp/","name":"Scan for sensitive data"}}]}

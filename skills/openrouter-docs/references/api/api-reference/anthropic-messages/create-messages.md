@@ -2050,13 +2050,14 @@ components:
         - name
         - type
       title: MessagesRequestToolsItems4
-    DatetimeServerToolParameters:
+    DatetimeServerToolConfig:
       type: object
       properties:
         timezone:
           type: string
           description: IANA timezone name (e.g. "America/New_York"). Defaults to UTC.
-      title: DatetimeServerToolParameters
+      description: Configuration for the openrouter:datetime server tool
+      title: DatetimeServerToolConfig
     DatetimeServerToolType:
       type: string
       enum:
@@ -2066,7 +2067,7 @@ components:
       type: object
       properties:
         parameters:
-          $ref: '#/components/schemas/DatetimeServerToolParameters'
+          $ref: '#/components/schemas/DatetimeServerToolConfig'
         type:
           $ref: '#/components/schemas/DatetimeServerToolType'
       required:
@@ -3269,6 +3270,36 @@ components:
       enum:
         - assistant
       title: BaseMessagesResultRole
+    AnthropicRefusalStopDetailsCategory:
+      type: string
+      enum:
+        - cyber
+        - bio
+      title: AnthropicRefusalStopDetailsCategory
+    AnthropicRefusalStopDetailsType:
+      type: string
+      enum:
+        - refusal
+      title: AnthropicRefusalStopDetailsType
+    AnthropicRefusalStopDetails:
+      type: object
+      properties:
+        category:
+          oneOf:
+            - $ref: '#/components/schemas/AnthropicRefusalStopDetailsCategory'
+            - type: 'null'
+        explanation:
+          type:
+            - string
+            - 'null'
+        type:
+          $ref: '#/components/schemas/AnthropicRefusalStopDetailsType'
+      required:
+        - category
+        - explanation
+        - type
+      description: Structured information about a refusal
+      title: AnthropicRefusalStopDetails
     ORAnthropicStopReason:
       type: string
       enum:
@@ -3514,6 +3545,8 @@ components:
           type: string
         role:
           $ref: '#/components/schemas/BaseMessagesResultRole'
+        stop_details:
+          $ref: '#/components/schemas/AnthropicRefusalStopDetails'
         stop_reason:
           $ref: '#/components/schemas/ORAnthropicStopReason'
         stop_sequence:
@@ -3532,6 +3565,7 @@ components:
         - id
         - model
         - role
+        - stop_details
         - stop_reason
         - stop_sequence
         - type

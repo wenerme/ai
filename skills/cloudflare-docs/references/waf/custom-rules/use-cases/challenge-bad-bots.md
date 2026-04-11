@@ -26,14 +26,7 @@ Access to [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subsc
 
 Before creating custom rules for bot protection, review the settings on your [Security Settings](https://developers.cloudflare.com/security/) page under **Bot traffic**. Built-in features auto-update with new bot signatures, do not count toward your custom rule limits, and are simpler to manage.
 
-| Use case                                            | Bot setting                    |
-| --------------------------------------------------- | ------------------------------ |
-| Block AI crawlers (GPTBot, ClaudeBot, etc.)         | **Block AI bots**              |
-| Block definitely automated traffic (bot score of 1) | **Definitely automated**       |
-| Challenge likely automated traffic (bot score 2-29) | **Likely automated**           |
-| Allow verified bots (Googlebot, Bingbot, etc.)      | **Verified bots**              |
-| Extend bot protection to static resources           | **Static resource protection** |
-| Allow WordPress loopback requests                   | **Optimize for WordPress**     |
+| Use case | Bot setting | | --------------------------------------------------- | ------------------------------ | --------------------------------------- | | Block AI crawlers (GPTBot, ClaudeBot, etc.) | **Block AI bots** | | Block definitely automated traffic (bot score of 1) | **Definitely automated** | | Challenge likely automated traffic (bot score 2-29) | **Likely automated** | | Allow verified bots (Googlebot, Bingbot, etc.) | **Verified bots** | | Extend bot protection to static resources | **Static resource protection** | **Security Settings** \> **Bot traffic** | | Allow WordPress loopback requests | **Optimize for WordPress** | **Security Settings** \> **Bot traffic** |
 
 Custom rules are still valuable when you need path-specific protection (different handling for `/api/` vs. `/login/`), custom score thresholds (for example, score below 20 instead of 30), conditional logic combining bot score with other fields, or custom actions not available in the built-in settings.
 
@@ -62,21 +55,24 @@ Custom rules execute before [Super Bot Fight Mode](https://developers.cloudflare
 
 The following three custom rules provide baseline protection against malicious bots:
 
-**Rule 1:**
+**Rule 1: Skip verified bots**
 
 * **Expression**: `(cf.bot_management.verified_bot)`
 * **Action**: _Skip:_  
    * _All remaining custom rules_
+* Known good bots (Googlebot, Bingbot, monitoring services) bypass all custom rules. Refer to the [verified bots list](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) and [Radar bots directory ↗](https://radar.cloudflare.com/bots/directory).
 
-**Rule 2:**
+**Rule 2: Block definitely automated**
 
 * **Expression**: `(cf.bot_management.score eq 1)`
 * **Action**: _Block_
+* Score 1 traffic is definitively automated. Blocking it carries minimal false positive risk.
 
-**Rule 3:**
+**Rule 3: Challenge likely automated**
 
 * **Expression**: `(cf.bot_management.score gt 1 and cf.bot_management.score lt 30)`
 * **Action**: _Managed Challenge_
+* Scores 2-29 indicate likely automated behavior. A challenge lets legitimate users through while stopping bots.
 
 ### Specific protection for browser, API, and mobile traffic
 

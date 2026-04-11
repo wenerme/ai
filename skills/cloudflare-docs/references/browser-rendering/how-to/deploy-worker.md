@@ -10,7 +10,7 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/workers-bindings/screenshots.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/how-to/deploy-worker.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
@@ -102,8 +102,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Rendering API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-3292)
-* [  wrangler.toml ](#tab-panel-3293)
+* [  wrangler.jsonc ](#tab-panel-3260)
+* [  wrangler.toml ](#tab-panel-3261)
 
 JSONC
 
@@ -191,8 +191,8 @@ Explain Code
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-3290)
-* [  TypeScript ](#tab-panel-3291)
+* [  JavaScript ](#tab-panel-3258)
+* [  TypeScript ](#tab-panel-3259)
 
 Update `src/index.js` with your Worker code:
 
@@ -374,5 +374,5 @@ To take your first screenshot, go to the following URL:
 * Other [Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/workers-bindings/","name":"Workers Bindings"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/workers-bindings/screenshots/","name":"Deploy a Browser Rendering Worker"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/how-to/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/how-to/deploy-worker/","name":"Deploy a Browser Rendering Worker"}}]}
 ```

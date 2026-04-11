@@ -37,6 +37,16 @@ Persistent logs are available on all plans. Log storage limits vary by plan.
 
 For more details on log storage behavior and automatic log deletion, refer to [Limits](https://developers.cloudflare.com/ai-gateway/reference/limits/) and [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion).
 
+## Data Loss Prevention (DLP)
+
+DLP scanning in AI Gateway is free on all plans. Accounts without a Zero Trust subscription have access to two predefined [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/): Financial Information and Social / Insurance / National Identifier Numbers.
+
+DLP profiles are shared at the account level with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/). If your account has a Zero Trust subscription that includes DLP, the full set of profiles — including all predefined profiles, custom profiles, integration profiles, DLP datasets, and OCR — is automatically available in AI Gateway.
+
+## Guardrails
+
+[Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/) evaluates prompts and responses using [@cf/meta/llama-guard-3-8b](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/) on Workers AI. Usage is billed as [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) token-based inference — cost scales with the length of the prompts and responses being evaluated.
+
 ## Logpush
 
 Logpush is only available on the Workers Paid plan.

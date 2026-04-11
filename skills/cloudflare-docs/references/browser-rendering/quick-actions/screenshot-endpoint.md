@@ -10,7 +10,7 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/rest-api/screenshot-endpoint.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/browser-rendering/quick-actions/screenshot-endpoint.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
@@ -18,7 +18,7 @@ Copy page
 
 The `/screenshot` endpoint renders the webpage by processing its HTML and JavaScript, then captures a screenshot of the fully rendered page.
 
-Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the `Browser Rendering - Edit` permission. For more information, refer to [REST API — Before you begin](https://developers.cloudflare.com/browser-rendering/rest-api/#before-you-begin).
+Before you begin, make sure you [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission. For more information, refer to [Quick Actions — Before you begin](https://developers.cloudflare.com/browser-rendering/quick-actions/#before-you-begin).
 
 ## Endpoint
 
@@ -45,8 +45,8 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-3276)
-* [ TypeScript SDK ](#tab-panel-3277)
+* [ curl ](#tab-panel-3286)
+* [ TypeScript SDK ](#tab-panel-3287)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 
@@ -153,7 +153,7 @@ Visit the [Browser Rendering API reference](https://developers.cloudflare.com/ap
 
 ### Capture a screenshot of an authenticated page
 
-Some webpages require authentication before you can view their content. Browser Rendering supports three authentication methods, which work across all [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/) endpoints. For a quick reference of all methods, refer to [How do I render authenticated pages using the REST API?](https://developers.cloudflare.com/browser-rendering/faq/#how-do-i-render-authenticated-pages-using-the-rest-api).
+Some webpages require authentication before you can view their content. Browser Rendering supports three authentication methods, which work across all [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/) endpoints. For a quick reference of all methods, refer to [How do I render authenticated pages using Quick Actions?](https://developers.cloudflare.com/browser-rendering/faq/#how-do-i-render-authenticated-pages-using-quick-actions).
 
 #### Cookie-based authentication
 
@@ -453,7 +453,7 @@ The simplest solution is to use the `gotoOptions.waitUntil` parameter set to `ne
 
 ```
 
-For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [REST API timeouts](https://developers.cloudflare.com/browser-rendering/reference/timeouts/).
+For faster responses, advanced users can use `waitForSelector` to wait for a specific element instead of waiting for all network activity to stop. This requires knowing which CSS selector indicates the content you need has loaded. For more details, refer to [Quick Actions timeouts](https://developers.cloudflare.com/browser-rendering/reference/timeouts/).
 
 ### Set a custom user agent
 
@@ -468,5 +468,5 @@ The `userAgent` parameter does not bypass bot protection. Requests from Browser 
 If you have questions or encounter an error, see the [Browser Rendering FAQ and troubleshooting guide](https://developers.cloudflare.com/browser-rendering/faq/).
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/rest-api/","name":"REST API"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/rest-api/screenshot-endpoint/","name":"/screenshot - Capture screenshot"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/quick-actions/","name":"Quick Actions"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/quick-actions/screenshot-endpoint/","name":"/screenshot - Capture screenshot"}}]}
 ```

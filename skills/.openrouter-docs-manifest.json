@@ -581,8 +581,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 128938,
-    "updatedAt": "2026-04-10T00:25:56.270Z"
+    "size": 140320,
+    "updatedAt": "2026-04-11T00:24:43.501Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -601,8 +601,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 81247,
-    "updatedAt": "2026-04-10T00:26:01.660Z"
+    "size": 81308,
+    "updatedAt": "2026-04-11T00:24:48.887Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -731,8 +731,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 114709,
-    "updatedAt": "2026-04-10T00:26:35.620Z"
+    "size": 115710,
+    "updatedAt": "2026-04-11T00:25:24.363Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",

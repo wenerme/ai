@@ -2809,13 +2809,14 @@ components:
         - type
       description: Custom tool configuration
       title: CustomTool
-    DatetimeServerToolParameters:
+    DatetimeServerToolConfig:
       type: object
       properties:
         timezone:
           type: string
           description: IANA timezone name (e.g. "America/New_York"). Defaults to UTC.
-      title: DatetimeServerToolParameters
+      description: Configuration for the openrouter:datetime server tool
+      title: DatetimeServerToolConfig
     DatetimeServerToolType:
       type: string
       enum:
@@ -2825,7 +2826,7 @@ components:
       type: object
       properties:
         parameters:
-          $ref: '#/components/schemas/DatetimeServerToolParameters'
+          $ref: '#/components/schemas/DatetimeServerToolConfig'
         type:
           $ref: '#/components/schemas/DatetimeServerToolType'
       required:
@@ -3550,8 +3551,199 @@ components:
         - output_tokens_details
         - total_tokens
       title: OpenAIResponsesUsage
+    CodeInterpreterCallItemOutputsItemsOneOf0Type:
+      type: string
+      enum:
+        - image
+      title: CodeInterpreterCallItemOutputsItemsOneOf0Type
+    CodeInterpreterCallItemOutputsItems0:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/CodeInterpreterCallItemOutputsItemsOneOf0Type'
+        url:
+          type: string
+      required:
+        - type
+        - url
+      title: CodeInterpreterCallItemOutputsItems0
+    CodeInterpreterCallItemOutputsItemsOneOf1Type:
+      type: string
+      enum:
+        - logs
+      title: CodeInterpreterCallItemOutputsItemsOneOf1Type
+    CodeInterpreterCallItemOutputsItems1:
+      type: object
+      properties:
+        logs:
+          type: string
+        type:
+          $ref: '#/components/schemas/CodeInterpreterCallItemOutputsItemsOneOf1Type'
+      required:
+        - logs
+        - type
+      title: CodeInterpreterCallItemOutputsItems1
+    CodeInterpreterCallItemOutputsItems:
+      oneOf:
+        - $ref: '#/components/schemas/CodeInterpreterCallItemOutputsItems0'
+        - $ref: '#/components/schemas/CodeInterpreterCallItemOutputsItems1'
+      title: CodeInterpreterCallItemOutputsItems
+    CodeInterpreterCallItemType:
+      type: string
+      enum:
+        - code_interpreter_call
+      title: CodeInterpreterCallItemType
+    OutputComputerCallItemPendingSafetyChecksItems:
+      type: object
+      properties:
+        code:
+          type: string
+        id:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - id
+        - message
+      title: OutputComputerCallItemPendingSafetyChecksItems
+    OutputComputerCallItemStatus:
+      type: string
+      enum:
+        - completed
+        - incomplete
+        - in_progress
+      title: OutputComputerCallItemStatus
+    OutputComputerCallItemType:
+      type: string
+      enum:
+        - computer_call
+      title: OutputComputerCallItemType
+    OutputApplyPatchServerToolItemType:
+      type: string
+      enum:
+        - openrouter:apply_patch
+      title: OutputApplyPatchServerToolItemType
+    OutputBashServerToolItemType:
+      type: string
+      enum:
+        - openrouter:bash
+      title: OutputBashServerToolItemType
+    OutputBrowserUseServerToolItemType:
+      type: string
+      enum:
+        - openrouter:browser_use
+      title: OutputBrowserUseServerToolItemType
+    OutputCodeInterpreterServerToolItemType:
+      type: string
+      enum:
+        - openrouter:code_interpreter
+      title: OutputCodeInterpreterServerToolItemType
+    OutputFileSearchServerToolItemType:
+      type: string
+      enum:
+        - openrouter:file_search
+      title: OutputFileSearchServerToolItemType
+    OutputImageGenerationServerToolItemType:
+      type: string
+      enum:
+        - openrouter:image_generation
+      title: OutputImageGenerationServerToolItemType
+    OutputMcpServerToolItemType:
+      type: string
+      enum:
+        - openrouter:mcp
+      title: OutputMcpServerToolItemType
+    OutputMemoryServerToolItemAction:
+      type: string
+      enum:
+        - read
+        - write
+        - delete
+      title: OutputMemoryServerToolItemAction
+    OutputMemoryServerToolItemType:
+      type: string
+      enum:
+        - openrouter:memory
+      title: OutputMemoryServerToolItemType
+    OutputTextEditorServerToolItemCommand:
+      type: string
+      enum:
+        - view
+        - create
+        - str_replace
+        - insert
+      title: OutputTextEditorServerToolItemCommand
+    OutputTextEditorServerToolItemType:
+      type: string
+      enum:
+        - openrouter:text_editor
+      title: OutputTextEditorServerToolItemType
+    OutputToolSearchServerToolItemType:
+      type: string
+      enum:
+        - openrouter:tool_search
+      title: OutputToolSearchServerToolItemType
+    OutputWebFetchServerToolItemType:
+      type: string
+      enum:
+        - openrouter:web_fetch
+      title: OutputWebFetchServerToolItemType
     OutputItems:
       oneOf:
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/CodeInterpreterCallItemType'
+            code:
+              type:
+                - string
+                - 'null'
+            container_id:
+              type: string
+            id:
+              type: string
+            outputs:
+              type:
+                - array
+                - 'null'
+              items:
+                $ref: '#/components/schemas/CodeInterpreterCallItemOutputsItems'
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - code
+            - container_id
+            - id
+            - outputs
+            - status
+          description: code_interpreter_call variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputComputerCallItemType'
+            action:
+              oneOf:
+                - description: Any type
+                - type: 'null'
+            call_id:
+              type: string
+            id:
+              type: string
+            pending_safety_checks:
+              type: array
+              items:
+                $ref: >-
+                  #/components/schemas/OutputComputerCallItemPendingSafetyChecksItems
+            status:
+              $ref: '#/components/schemas/OutputComputerCallItemStatus'
+          required:
+            - type
+            - call_id
+            - pending_safety_checks
+            - status
+          description: computer_call variant
         - type: object
           properties:
             type:
@@ -3639,6 +3831,80 @@ components:
         - type: object
           properties:
             type:
+              $ref: '#/components/schemas/OutputApplyPatchServerToolItemType'
+            filePath:
+              type: string
+            id:
+              type: string
+            patch:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:apply_patch variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputBashServerToolItemType'
+            command:
+              type: string
+            exitCode:
+              type: integer
+            id:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+            stderr:
+              type: string
+            stdout:
+              type: string
+          required:
+            - type
+            - status
+          description: openrouter:bash variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputBrowserUseServerToolItemType'
+            action:
+              type: string
+            id:
+              type: string
+            screenshotB64:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:browser_use variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputCodeInterpreterServerToolItemType'
+            code:
+              type: string
+            exitCode:
+              type: integer
+            id:
+              type: string
+            language:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+            stderr:
+              type: string
+            stdout:
+              type: string
+          required:
+            - type
+            - status
+          description: openrouter:code_interpreter variant
+        - type: object
+          properties:
+            type:
               $ref: '#/components/schemas/OutputDatetimeItemType'
             datetime:
               type: string
@@ -3656,6 +3922,124 @@ components:
             - status
             - timezone
           description: openrouter:datetime variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputFileSearchServerToolItemType'
+            id:
+              type: string
+            queries:
+              type: array
+              items:
+                type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:file_search variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputImageGenerationServerToolItemType'
+            id:
+              type: string
+            imageB64:
+              type: string
+            imageUrl:
+              type: string
+            revisedPrompt:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:image_generation variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputMcpServerToolItemType'
+            id:
+              type: string
+            serverLabel:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+            toolName:
+              type: string
+          required:
+            - type
+            - status
+          description: openrouter:mcp variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputMemoryServerToolItemType'
+            action:
+              $ref: '#/components/schemas/OutputMemoryServerToolItemAction'
+            id:
+              type: string
+            key:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+            value:
+              oneOf:
+                - description: Any type
+                - type: 'null'
+          required:
+            - type
+            - status
+          description: openrouter:memory variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputTextEditorServerToolItemType'
+            command:
+              $ref: '#/components/schemas/OutputTextEditorServerToolItemCommand'
+            filePath:
+              type: string
+            id:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:text_editor variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputToolSearchServerToolItemType'
+            id:
+              type: string
+            query:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:tool_search variant
+        - type: object
+          properties:
+            type:
+              $ref: '#/components/schemas/OutputWebFetchServerToolItemType'
+            content:
+              type: string
+            id:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+            title:
+              type: string
+            url:
+              type: string
+          required:
+            - type
+            - status
+          description: openrouter:web_fetch variant
         - type: object
           properties:
             type:
@@ -4237,7 +4621,7 @@ import requests
 url = "https://openrouter.ai/api/v1/responses"
 
 payload = {
-    "input": "Tell me a joke",
+    "input": "Tell me a joke about computers",
     "model": "openai/gpt-4o"
 }
 headers = {
@@ -4255,7 +4639,7 @@ const url = 'https://openrouter.ai/api/v1/responses';
 const options = {
   method: 'POST',
   headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"input":"Tell me a joke","model":"openai/gpt-4o"}'
+  body: '{"input":"Tell me a joke about computers","model":"openai/gpt-4o"}'
 };
 
 try {
@@ -4281,7 +4665,7 @@ func main() {
 
 	url := "https://openrouter.ai/api/v1/responses"
 
-	payload := strings.NewReader("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
+	payload := strings.NewReader("{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}")
 
 	req, _ := http.NewRequest("POST", url, payload)
 
@@ -4311,7 +4695,7 @@ http.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["Authorization"] = 'Bearer <token>'
 request["Content-Type"] = 'application/json'
-request.body = "{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}"
+request.body = "{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}"
 
 response = http.request(request)
 puts response.read_body
@@ -4324,7 +4708,7 @@ import com.mashape.unirest.http.Unirest;
 HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/responses")
   .header("Authorization", "Bearer <token>")
   .header("Content-Type", "application/json")
-  .body("{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}")
+  .body("{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}")
   .asString();
 ```
 
@@ -4336,7 +4720,7 @@ $client = new \GuzzleHttp\Client();
 
 $response = $client->request('POST', 'https://openrouter.ai/api/v1/responses', [
   'body' => '{
-  "input": "Tell me a joke",
+  "input": "Tell me a joke about computers",
   "model": "openai/gpt-4o"
 }',
   'headers' => [
@@ -4355,7 +4739,7 @@ var client = new RestClient("https://openrouter.ai/api/v1/responses");
 var request = new RestRequest(Method.POST);
 request.AddHeader("Authorization", "Bearer <token>");
 request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"input\": \"Tell me a joke\",\n  \"model\": \"openai/gpt-4o\"\n}", ParameterType.RequestBody);
+request.AddParameter("application/json", "{\n  \"input\": \"Tell me a joke about computers\",\n  \"model\": \"openai/gpt-4o\"\n}", ParameterType.RequestBody);
 IRestResponse response = client.Execute(request);
 ```
 
@@ -4367,7 +4751,7 @@ let headers = [
   "Content-Type": "application/json"
 ]
 let parameters = [
-  "input": "Tell me a joke",
+  "input": "Tell me a joke about computers",
   "model": "openai/gpt-4o"
 ] as [String : Any]
 

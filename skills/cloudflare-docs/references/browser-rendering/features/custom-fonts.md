@@ -22,12 +22,14 @@ If you need a specific font that is not pre-installed, you can inject it into th
 
 How you add a custom font depends on how you are using Browser Rendering:
 
-* If you are using [Workers Bindings](https://developers.cloudflare.com/browser-rendering/workers-bindings/) with [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) or [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), refer to the [Workers Bindings](#workers-bindings) section.
-* If you are using the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/), refer to the [REST API](#rest-api) section.
+* If you are using [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-rendering/playwright/), or [CDP](https://developers.cloudflare.com/browser-rendering/cdp/), refer to the [Browser sessions](#browser-sessions) section.
+* If you are using [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/), refer to the [Quick Actions](#quick-actions) section.
 
-## Workers Bindings
+## Browser sessions
 
 Use `addStyleTag` to inject a `@font-face` rule into the page before capturing your screenshot or PDF. You can load the font file from a CDN URL or embed it as a Base64-encoded string.
+
+The examples below use [Puppeteer](https://developers.cloudflare.com/browser-rendering/puppeteer/) with [Workers Bindings](https://developers.cloudflare.com/browser-rendering/puppeteer/#use-puppeteer-in-a-worker). If you are connecting via [CDP](https://developers.cloudflare.com/browser-rendering/cdp/), the only difference is how you connect to the browser. Once connected, `page.addStyleTag()` works the same way. Refer to [CDP connection example](#cdp-connection-example) for details.
 
 ### From a CDN URL
 
@@ -209,9 +211,100 @@ await page.addStyleTag({
 
 Explain Code
 
-## REST API
+### CDP connection example
 
-When using the [REST API](https://developers.cloudflare.com/browser-rendering/rest-api/), you can load custom fonts by including the `addStyleTag` parameter in your request body. This works with both the [screenshot](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/) and [PDF](https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint/) endpoints.
+When connecting via [CDP](https://developers.cloudflare.com/browser-rendering/cdp/), you connect to the browser using a WebSocket endpoint instead of a Workers Binding. Once connected, you use `page.addStyleTag()` the same way as the examples above.
+
+JavaScript
+
+```
+
+import puppeteer from "puppeteer-core";
+
+
+const ACCOUNT_ID = "your-account-id";
+
+const API_TOKEN = "your-api-token";
+
+
+// Create a browser session via CDP
+
+const response = await fetch(
+
+  `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/browser-rendering/devtools/browser`,
+
+  {
+
+    method: "POST",
+
+    headers: { Authorization: `Bearer ${API_TOKEN}` },
+
+  }
+
+);
+
+const { webSocketDebuggerUrl } = await response.json();
+
+
+// Connect Puppeteer to the session
+
+const browser = await puppeteer.connect({
+
+  browserWSEndpoint: webSocketDebuggerUrl,
+
+  headers: { Authorization: `Bearer ${API_TOKEN}` },
+
+});
+
+
+const page = await browser.newPage();
+
+
+// Add a custom font — same as with Workers Bindings
+
+await page.addStyleTag({
+
+  content: `
+
+    @font-face {
+
+      font-family: 'CustomFont';
+
+      src: url('https://your-cdn.com/fonts/MyFont.woff2') format('woff2');
+
+      font-weight: normal;
+
+      font-style: normal;
+
+    }
+
+
+    body {
+
+      font-family: 'CustomFont', sans-serif;
+
+    }
+
+  `
+
+});
+
+
+// Take a screenshot, generate a PDF, etc.
+
+await page.goto("https://example.com");
+
+
+browser.disconnect();
+
+
+```
+
+Explain Code
+
+## Quick Actions
+
+When using [Quick Actions](https://developers.cloudflare.com/browser-rendering/quick-actions/), you can load custom fonts by including the `addStyleTag` parameter in your request body. This works with both the [screenshot](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/) and [PDF](https://developers.cloudflare.com/browser-rendering/quick-actions/pdf-endpoint/) endpoints.
 
 ### From a CDN URL
 
@@ -283,7 +376,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 
 Explain Code
 
-For more details on using `addStyleTag` with the REST API, refer to [Customize CSS and embed custom JavaScript](https://developers.cloudflare.com/browser-rendering/rest-api/screenshot-endpoint/#customize-css-and-embed-custom-javascript).
+For more details on using `addStyleTag` with Quick Actions, refer to [Customize CSS and embed custom JavaScript](https://developers.cloudflare.com/browser-rendering/quick-actions/screenshot-endpoint/#customize-css-and-embed-custom-javascript).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/features/custom-fonts/","name":"Custom fonts"}}]}

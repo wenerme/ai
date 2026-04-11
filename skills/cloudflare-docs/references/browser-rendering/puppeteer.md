@@ -50,8 +50,8 @@ The current version is [@cloudflare/puppeteer v1.0.4 ↗](https://github.com/clo
 
 Once the [browser binding](https://developers.cloudflare.com/browser-rendering/reference/wrangler/#bindings) is configured and the `@cloudflare/puppeteer` library is installed, Puppeteer can be used in a Worker:
 
-* [  JavaScript ](#tab-panel-3260)
-* [  TypeScript ](#tab-panel-3261)
+* [  JavaScript ](#tab-panel-3272)
+* [  TypeScript ](#tab-panel-3273)
 
 JavaScript
 
@@ -128,7 +128,7 @@ This script [launches ↗](https://pptr.dev/api/puppeteer.puppeteernode.launch) 
 
 ### Keep Alive
 
-If users omit the `browser.close()` statement, it will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-rendering/workers-bindings/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
+If users omit the `browser.close()` statement, it will stay open, ready to be connected to again and [re-used](https://developers.cloudflare.com/browser-rendering/features/reuse-sessions/) but it will, by default, close automatically after 1 minute of inactivity. Users can optionally extend this idle time up to 10 minutes, by using the `keep_alive` option, set in milliseconds:
 
 JavaScript
 

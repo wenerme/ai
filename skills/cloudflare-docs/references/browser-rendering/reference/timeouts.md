@@ -1,5 +1,5 @@
 ---
-title: REST API timeouts
+title: Quick Actions timeouts
 description: Browser Rendering uses several independent timers to manage how long different parts of a request can take.
 If any of these timers exceed their limit, the request returns a timeout error.
 image: https://developers.cloudflare.com/dev-products-preview.png
@@ -15,20 +15,20 @@ YesNo
 
 Copy page
 
-# REST API timeouts
+# Quick Actions timeouts
 
 Browser Rendering uses several independent timers to manage how long different parts of a request can take. If any of these timers exceed their limit, the request returns a timeout error.
 
 Each timer controls a specific part of the rendering lifecycle — from page load, to selector load, to action.
 
-| Timer                 | Scope                                                                                                                                       | Default          | Max   |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ----- |
-| goToOptions.timeout   | Time to wait for the page to load before timeout.                                                                                           | 30 s             | 60 s  |
-| goToOptions.waitUntil | Determines when page load is considered complete. Refer to [waitUntil options](#waituntil-options) for details.                             | domcontentloaded | —     |
-| waitForSelector       | Time to wait for a specific element (any CSS selector) to appear on the page.                                                               | null             | 60 s  |
-| waitForTimeout        | Additional amount of time to wait after the page has loaded to proceed with actions.                                                        | null             | 60 s  |
-| actionTimeout         | Time to wait for the action itself (for example: a screenshot, PDF, or scrape) to complete after the page has loaded.                       | null             | 5 min |
-| PDFOptions.timeout    | Same as actionTimeout, but only applies to the [/pdf endpoint](https://developers.cloudflare.com/browser-rendering/rest-api/pdf-endpoint/). | 30 s             | 5 min |
+| Timer                 | Scope                                                                                                                                            | Default          | Max   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ----- |
+| goToOptions.timeout   | Time to wait for the page to load before timeout.                                                                                                | 30 s             | 60 s  |
+| goToOptions.waitUntil | Determines when page load is considered complete. Refer to [waitUntil options](#waituntil-options) for details.                                  | domcontentloaded | —     |
+| waitForSelector       | Time to wait for a specific element (any CSS selector) to appear on the page.                                                                    | null             | 60 s  |
+| waitForTimeout        | Additional amount of time to wait after the page has loaded to proceed with actions.                                                             | null             | 60 s  |
+| actionTimeout         | Time to wait for the action itself (for example: a screenshot, PDF, or scrape) to complete after the page has loaded.                            | null             | 5 min |
+| PDFOptions.timeout    | Same as actionTimeout, but only applies to the [/pdf endpoint](https://developers.cloudflare.com/browser-rendering/quick-actions/pdf-endpoint/). | 30 s             | 5 min |
 
 ### `waitUntil` options
 
@@ -54,5 +54,5 @@ If you are not getting the expected output:
 * If you are getting a `422`, it may be the action itself (ex: taking a screenshot, extracting the html content) that takes a long time. Try increasing the `actionTimeout` instead.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/reference/timeouts/","name":"REST API timeouts"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/browser-rendering/reference/timeouts/","name":"Quick Actions timeouts"}}]}
 ```
