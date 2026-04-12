@@ -1958,22 +1958,42 @@ for (const [name, meta] of methods) {
 
 ### `SyntaxError: Invalid or unexpected token`
 
-If your dev server fails with `SyntaxError: Invalid or unexpected token` when using `@callable()`, set `"target": "ES2021"` in your `tsconfig.json`. This ensures that Vite's esbuild transpiler downlevels TC39 decorators instead of passing them through as native syntax.
+If your dev server fails with `SyntaxError: Invalid or unexpected token` when using `@callable()`, you need two things:
+
+**1\. Add the `agents/vite` plugin** — Vite 8 uses Oxc for transpilation, which does not yet support TC39 decorators. The plugin adds the required transform:
+
+vite.config.ts
+
+```
+
+import agents from "agents/vite";
+
+
+export default defineConfig({
+
+  plugins: [agents(), react(), cloudflare()],
+
+});
+
+
+```
+
+**2\. Extend `agents/tsconfig`** — this sets `"target": "ES2021"` and all other recommended compiler options:
+
+tsconfig.json
 
 ```
 
 {
 
-  "compilerOptions": {
-
-    "target": "ES2021"
-
-  }
+  "extends": "agents/tsconfig"
 
 }
 
 
 ```
+
+If you cannot extend the shared config, set `"target": "ES2021"` manually in your `tsconfig.json`.
 
 Warning
 

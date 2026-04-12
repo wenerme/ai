@@ -421,8 +421,8 @@
   },
   "guides/get-started/for-providers.md": {
     "url": "https://openrouter.ai/docs/guides/get-started/for-providers.md",
-    "size": 10869,
-    "updatedAt": "2026-04-10T00:25:41.715Z"
+    "size": 10841,
+    "updatedAt": "2026-04-12T00:25:03.376Z"
   },
   "guides/get-started/free-models-router-playground.md": {
     "url": "https://openrouter.ai/docs/guides/get-started/free-models-router-playground.md",
@@ -766,8 +766,8 @@
   },
   "api/api-reference/video-generation/create-videos.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/create-videos.md",
-    "size": 28796,
-    "updatedAt": "2026-04-10T00:26:44.284Z"
+    "size": 29793,
+    "updatedAt": "2026-04-12T00:26:12.506Z"
   },
   "api/api-reference/video-generation/get-videos.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/get-videos.md",
@@ -781,8 +781,8 @@
   },
   "api/api-reference/video-generation/list-videos-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/list-videos-models.md",
-    "size": 9952,
-    "updatedAt": "2026-04-10T00:26:48.064Z"
+    "size": 10352,
+    "updatedAt": "2026-04-12T00:26:16.391Z"
   },
   "sdks/agentic-usage.md": {
     "url": "https://openrouter.ai/docs/sdks/agentic-usage.md",
@@ -1016,8 +1016,8 @@
   },
   "sdks/python/api-reference/videogeneration.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/videogeneration.md",
-    "size": 17800,
-    "updatedAt": "2026-04-10T00:27:09.798Z"
+    "size": 18169,
+    "updatedAt": "2026-04-12T00:26:39.257Z"
   },
   "sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/sdks/agent-migration.md",

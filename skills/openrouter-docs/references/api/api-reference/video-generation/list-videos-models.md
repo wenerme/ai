@@ -127,6 +127,11 @@ components:
         description:
           type: string
           description: Description of the model
+        generate_audio:
+          type:
+            - boolean
+            - 'null'
+          description: Whether the model supports generating audio alongside video
         hugging_face_id:
           type:
             - string
@@ -145,6 +150,13 @@ components:
           additionalProperties:
             type: string
           description: Pricing SKUs with provider prefix stripped, values as strings
+        seed:
+          type:
+            - boolean
+            - 'null'
+          description: >-
+            Whether the model supports deterministic generation via seed
+            parameter
         supported_aspect_ratios:
           type:
             - array
@@ -177,8 +189,10 @@ components:
         - allowed_passthrough_parameters
         - canonical_slug
         - created
+        - generate_audio
         - id
         - name
+        - seed
         - supported_aspect_ratios
         - supported_durations
         - supported_resolutions

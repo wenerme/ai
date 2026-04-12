@@ -37,8 +37,8 @@ This page covers connecting to MCP servers as a client. To create your own MCP s
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2444)
-* [  TypeScript ](#tab-panel-2445)
+* [  JavaScript ](#tab-panel-2462)
+* [  TypeScript ](#tab-panel-2463)
 
 JavaScript
 
@@ -144,8 +144,8 @@ Connections persist in the agent's [SQL storage](https://developers.cloudflare.c
 
 Use `addMcpServer()` to connect to an MCP server. For non-OAuth servers, no options are needed:
 
-* [  JavaScript ](#tab-panel-2438)
-* [  TypeScript ](#tab-panel-2439)
+* [  JavaScript ](#tab-panel-2458)
+* [  TypeScript ](#tab-panel-2459)
 
 JavaScript
 
@@ -156,7 +156,9 @@ JavaScript
 await this.addMcpServer("notion", "https://mcp.notion.so/mcp");
 
 
-// OAuth server — provide callbackHost for the OAuth redirect flow
+// OAuth server — callbackHost is auto-derived from the incoming request,
+
+// but you can set it explicitly if needed (e.g. custom domains)
 
 await this.addMcpServer("github", "https://mcp.github.com/mcp", {
 
@@ -176,7 +178,9 @@ TypeScript
 await this.addMcpServer("notion", "https://mcp.notion.so/mcp");
 
 
-// OAuth server — provide callbackHost for the OAuth redirect flow
+// OAuth server — callbackHost is auto-derived from the incoming request,
+
+// but you can set it explicitly if needed (e.g. custom domains)
 
 await this.addMcpServer("github", "https://mcp.github.com/mcp", {
 
@@ -191,8 +195,8 @@ await this.addMcpServer("github", "https://mcp.github.com/mcp", {
 
 MCP supports multiple transport types:
 
-* [  JavaScript ](#tab-panel-2440)
-* [  TypeScript ](#tab-panel-2441)
+* [  JavaScript ](#tab-panel-2456)
+* [  TypeScript ](#tab-panel-2457)
 
 JavaScript
 
@@ -238,8 +242,8 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {
 
 For servers behind authentication (like Cloudflare Access) or using bearer tokens:
 
-* [  JavaScript ](#tab-panel-2442)
-* [  TypeScript ](#tab-panel-2443)
+* [  JavaScript ](#tab-panel-2460)
+* [  TypeScript ](#tab-panel-2461)
 
 JavaScript
 
@@ -296,11 +300,15 @@ await this.addMcpServer("internal", "https://internal-mcp.example.com/mcp", {
 MCP server URLs are validated before connection to prevent Server-Side Request Forgery (SSRF). The following URL targets are blocked:
 
 * Private/internal IP ranges (RFC 1918: `10.x`, `172.16-31.x`, `192.168.x`)
-* Loopback addresses (`127.x`, `::1`)
+* Unspecified addresses (`0.0.0.0`, `[::]`)
 * Link-local addresses (`169.254.x`, `fe80::`)
-* Cloud metadata endpoints (`169.254.169.254`)
+* IPv6 unique-local addresses (`fc00::/7`)
+* IPv4-mapped IPv6 addresses that resolve to private ranges (for example, `[::ffff:10.0.0.1]`)
+* Cloud metadata endpoints (`metadata.google.internal`)
 
-If you need to connect to an internal MCP server, use the [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/transport/) with a Durable Object binding instead of HTTP.
+Loopback addresses (`localhost`, `127.x.x.x`, `[::1]`) are **allowed** for local development.
+
+For production connections to internal services, use the [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/transport/) with a Durable Object binding instead of HTTP.
 
 ### Return value
 
@@ -331,8 +339,8 @@ sequenceDiagram
 
 ### Handling OAuth in your agent
 
-* [  JavaScript ](#tab-panel-2448)
-* [  TypeScript ](#tab-panel-2449)
+* [  JavaScript ](#tab-panel-2466)
+* [  TypeScript ](#tab-panel-2467)
 
 JavaScript
 
@@ -427,8 +435,8 @@ OAuth tokens are securely stored in SQLite, and persist across agent restarts.
 
 When using `sendIdentityOnConnect: false` to hide sensitive instance names (like session IDs or user IDs), the default OAuth callback URL would expose the instance name. To prevent this security issue, you must provide a custom `callbackPath`.
 
-* [  JavaScript ](#tab-panel-2468)
-* [  TypeScript ](#tab-panel-2469)
+* [  JavaScript ](#tab-panel-2488)
+* [  TypeScript ](#tab-panel-2489)
 
 JavaScript
 
@@ -616,8 +624,8 @@ OAuth callbacks are matched by the `state` query parameter (format: `{serverId}:
 
 Configure how OAuth completion is handled. By default, successful authentication redirects to your application origin, while failed authentication displays an HTML error page.
 
-* [  JavaScript ](#tab-panel-2458)
-* [  TypeScript ](#tab-panel-2459)
+* [  JavaScript ](#tab-panel-2476)
+* [  TypeScript ](#tab-panel-2477)
 
 JavaScript
 
@@ -715,8 +723,8 @@ Once connected, access the server's capabilities:
 
 ### Getting available tools
 
-* [  JavaScript ](#tab-panel-2446)
-* [  TypeScript ](#tab-panel-2447)
+* [  JavaScript ](#tab-panel-2464)
+* [  TypeScript ](#tab-panel-2465)
 
 JavaScript
 
@@ -764,8 +772,8 @@ for (const tool of state.tools) {
 
 ### Resources and prompts
 
-* [  JavaScript ](#tab-panel-2454)
-* [  TypeScript ](#tab-panel-2455)
+* [  JavaScript ](#tab-panel-2472)
+* [  TypeScript ](#tab-panel-2473)
 
 JavaScript
 
@@ -827,8 +835,8 @@ Explain Code
 
 ### Server status
 
-* [  JavaScript ](#tab-panel-2452)
-* [  TypeScript ](#tab-panel-2453)
+* [  JavaScript ](#tab-panel-2470)
+* [  TypeScript ](#tab-panel-2471)
 
 JavaScript
 
@@ -870,8 +878,8 @@ for (const [id, server] of Object.entries(state.servers)) {
 
 To use MCP tools with the Vercel AI SDK, use `this.mcp.getAITools()` which converts MCP tools to AI SDK format:
 
-* [  JavaScript ](#tab-panel-2460)
-* [  TypeScript ](#tab-panel-2461)
+* [  JavaScript ](#tab-panel-2478)
+* [  TypeScript ](#tab-panel-2479)
 
 JavaScript
 
@@ -955,8 +963,8 @@ Note
 
 ### Removing a server
 
-* [  JavaScript ](#tab-panel-2450)
-* [  TypeScript ](#tab-panel-2451)
+* [  JavaScript ](#tab-panel-2468)
+* [  TypeScript ](#tab-panel-2469)
 
 JavaScript
 
@@ -988,8 +996,8 @@ MCP servers persist across agent restarts:
 
 ### Listing all servers
 
-* [  JavaScript ](#tab-panel-2456)
-* [  TypeScript ](#tab-panel-2457)
+* [  JavaScript ](#tab-panel-2474)
+* [  TypeScript ](#tab-panel-2475)
 
 JavaScript
 
@@ -1027,8 +1035,8 @@ for (const [id, server] of Object.entries(state.servers)) {
 
 Connected clients receive real-time MCP updates via WebSocket:
 
-* [  JavaScript ](#tab-panel-2474)
-* [  TypeScript ](#tab-panel-2475)
+* [  JavaScript ](#tab-panel-2494)
+* [  TypeScript ](#tab-panel-2495)
 
 JavaScript
 
@@ -1249,7 +1257,7 @@ Explain Code
 * `serverName` (string, required) — Display name for the MCP server
 * `url` (string, required) — URL of the MCP server endpoint
 * `options` (object, optional) — Connection configuration:  
-   * `callbackHost` — Host for OAuth callback URL. Only needed for OAuth-authenticated servers. If omitted, automatically derived from the incoming request  
+   * `callbackHost` — Host for OAuth callback URL. Only needed for OAuth-authenticated servers. If omitted, automatically derived from the incoming request or WebSocket connection URI — you typically do not need to set this unless you are using a custom domain that differs from the Worker's hostname  
    * `callbackPath` — Custom callback URL path that bypasses the default `/agents/{class}/{name}/callback` construction. **Required when `sendIdentityOnConnect` is `false`** to prevent leaking the instance name. When set, the callback URL becomes `{callbackHost}/{callbackPath}`. You must route this path to the agent instance via `getAgentByName`  
    * `agentsPrefix` — URL prefix for OAuth callback path. Default: `"agents"`. Ignored when `callbackPath` is provided  
    * `client` — MCP client configuration options (passed to `@modelcontextprotocol/sdk` Client constructor). By default, includes `CfWorkerJsonSchemaValidator` for validating tool parameters against JSON schemas  
@@ -1422,8 +1430,8 @@ If OAuth fails, the connection state becomes `"failed"` and the error message is
 
 Configure in `onStart()` before any OAuth flows begin:
 
-* [  JavaScript ](#tab-panel-2466)
-* [  TypeScript ](#tab-panel-2467)
+* [  JavaScript ](#tab-panel-2484)
+* [  TypeScript ](#tab-panel-2485)
 
 JavaScript
 
@@ -1519,8 +1527,8 @@ Override the default OAuth provider used when connecting to MCP servers by imple
 
 The override is used for both new connections (`addMcpServer`) and restored connections after a Durable Object restart.
 
-* [  JavaScript ](#tab-panel-2472)
-* [  TypeScript ](#tab-panel-2473)
+* [  JavaScript ](#tab-panel-2490)
+* [  TypeScript ](#tab-panel-2491)
 
 JavaScript
 
@@ -1645,8 +1653,8 @@ If you do not override this method, the agent uses the default provider which pe
 
 To keep the built-in OAuth logic (CSRF state, PKCE, nonce generation, token management) but route token storage to a different backend, import `DurableObjectOAuthClientProvider` and pass your own storage adapter:
 
-* [  JavaScript ](#tab-panel-2462)
-* [  TypeScript ](#tab-panel-2463)
+* [  JavaScript ](#tab-panel-2480)
+* [  TypeScript ](#tab-panel-2481)
 
 JavaScript
 
@@ -1715,8 +1723,8 @@ For fine-grained control, use `this.mcp` directly:
 
 ### Step-by-step connection
 
-* [  JavaScript ](#tab-panel-2476)
-* [  TypeScript ](#tab-panel-2477)
+* [  JavaScript ](#tab-panel-2496)
+* [  TypeScript ](#tab-panel-2497)
 
 JavaScript
 
@@ -1848,8 +1856,8 @@ Explain Code
 
 ### Event subscription
 
-* [  JavaScript ](#tab-panel-2464)
-* [  TypeScript ](#tab-panel-2465)
+* [  JavaScript ](#tab-panel-2482)
+* [  TypeScript ](#tab-panel-2483)
 
 JavaScript
 
@@ -2046,19 +2054,104 @@ TypeScript
 
 ```
 
-getAITools(): ToolSet
+getAITools(filter?: MCPServerFilter): ToolSet
 
 
 ```
 
 Tools are automatically namespaced by server ID to prevent conflicts when multiple MCP servers expose tools with the same name.
 
+Pass an `MCPServerFilter` to scope the returned tools to a subset of connected servers:
+
+* [  JavaScript ](#tab-panel-2486)
+* [  TypeScript ](#tab-panel-2487)
+
+JavaScript
+
+```
+
+// Tools from a specific server only
+
+const githubTools = this.mcp.getAITools({ serverId: "github" });
+
+
+// Tools from multiple servers
+
+const tools = this.mcp.getAITools({ serverId: ["github", "notion"] });
+
+
+// Tools from servers matching a name
+
+const tools = this.mcp.getAITools({ serverName: "GitHub" });
+
+
+// Only tools from servers that are ready
+
+const tools = this.mcp.getAITools({ state: "ready" });
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+// Tools from a specific server only
+
+const githubTools = this.mcp.getAITools({ serverId: "github" });
+
+
+// Tools from multiple servers
+
+const tools = this.mcp.getAITools({ serverId: ["github", "notion"] });
+
+
+// Tools from servers matching a name
+
+const tools = this.mcp.getAITools({ serverName: "GitHub" });
+
+
+// Only tools from servers that are ready
+
+const tools = this.mcp.getAITools({ state: "ready" });
+
+
+```
+
+Explain Code
+
+The filter type is available from `agents/mcp/client`:
+
+TypeScript
+
+```
+
+import type { MCPServerFilter } from "agents/mcp/client";
+
+
+type MCPServerFilter = {
+
+  serverId?: string | string[];
+
+  serverName?: string | string[];
+
+  state?: MCPConnectionState | MCPConnectionState[];
+
+};
+
+
+```
+
+All specified filter criteria are AND'd together. The same filter parameter is accepted by `listTools()`, `listPrompts()`, `listResources()`, and `listResourceTemplates()`.
+
 ## Error handling
 
 Use error detection utilities to handle connection errors:
 
-* [  JavaScript ](#tab-panel-2470)
-* [  TypeScript ](#tab-panel-2471)
+* [  JavaScript ](#tab-panel-2492)
+* [  TypeScript ](#tab-panel-2493)
 
 JavaScript
 

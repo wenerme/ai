@@ -17,10 +17,12 @@ Copy page
 
 * [ Implement Effective Agent Patterns ](https://github.com/cloudflare/agents/tree/main/guides/anthropic-patterns)
 * [ Human-in-the-loop patterns ](https://developers.cloudflare.com/agents/guides/human-in-the-loop/)
+* [ Autonomous responses ](https://developers.cloudflare.com/agents/guides/autonomous-responses/)
 * [ Webhooks ](https://developers.cloudflare.com/agents/guides/webhooks/)
 * [ Build a Slack Agent ](https://developers.cloudflare.com/agents/guides/slack-agent/)
 * [ Build an Interactive ChatGPT App ](https://developers.cloudflare.com/agents/guides/chatgpt-app/)
 * [ Build a Remote MCP server ](https://developers.cloudflare.com/agents/guides/remote-mcp-server/)
+* [ Push notifications ](https://developers.cloudflare.com/agents/guides/push-notifications/)
 * [ Test a Remote MCP Server ](https://developers.cloudflare.com/agents/guides/test-remote-mcp-server/)
 * [ Securing MCP servers ](https://developers.cloudflare.com/agents/guides/securing-mcp-server/)
 * [ Connect to an MCP server ](https://developers.cloudflare.com/agents/guides/connect-mcp-client/)

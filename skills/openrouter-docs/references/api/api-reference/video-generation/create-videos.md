@@ -110,6 +110,28 @@ components:
       enum:
         - image_url
       title: ContentPartImageType
+    FrameImageFrameType:
+      type: string
+      enum:
+        - first_frame
+        - last_frame
+      description: Whether this image represents the first or last frame of the video
+      title: FrameImageFrameType
+    FrameImage:
+      type: object
+      properties:
+        image_url:
+          $ref: '#/components/schemas/ContentPartImageImageUrl'
+        type:
+          $ref: '#/components/schemas/ContentPartImageType'
+        frame_type:
+          $ref: '#/components/schemas/FrameImageFrameType'
+          description: Whether this image represents the first or last frame of the video
+      required:
+        - image_url
+        - type
+        - frame_type
+      title: FrameImage
     ContentPartImage:
       type: object
       properties:
@@ -574,11 +596,18 @@ components:
         duration:
           type: integer
           description: Duration of the generated video in seconds
+        frame_images:
+          type: array
+          items:
+            $ref: '#/components/schemas/FrameImage'
+          description: >-
+            Images to use as the first and/or last frame of the generated video.
+            Each image must specify a frame_type of first_frame or last_frame.
         generate_audio:
           type: boolean
           description: >-
-            Whether to generate audio alongside the video. Defaults to true for
-            models that support audio output, false otherwise.
+            Whether to generate audio alongside the video. Defaults to the
+            endpoint's generate_audio capability flag, false if not set.
         input_references:
           type: array
           items:

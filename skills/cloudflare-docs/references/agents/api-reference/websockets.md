@@ -22,21 +22,23 @@ Agents support WebSocket connections for real-time, bi-directional communication
 
 Agents have several lifecycle hooks that fire at different points:
 
-| Hook                                        | When called                                               |
-| ------------------------------------------- | --------------------------------------------------------- |
-| onStart(props?)                             | Once when the agent first starts (before any connections) |
-| onRequest(request)                          | When an HTTP request is received (non-WebSocket)          |
-| onConnect(connection, ctx)                  | When a new WebSocket connection is established            |
-| onMessage(connection, message)              | When a WebSocket message is received                      |
-| onClose(connection, code, reason, wasClean) | When a WebSocket connection closes                        |
-| onError(connection, error)                  | When a WebSocket error occurs                             |
+| Hook                                        | When called                                                                                |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| onStart(props?)                             | Once when the agent first starts (before any connections)                                  |
+| onRequest(request)                          | When an HTTP request is received (non-WebSocket)                                           |
+| onConnect(connection, ctx)                  | When a new WebSocket connection is established                                             |
+| onMessage(connection, message)              | When a WebSocket message is received                                                       |
+| onClose(connection, code, reason, wasClean) | When a WebSocket connection closes                                                         |
+| onError(connection, error)                  | When a WebSocket error occurs on a connection                                              |
+| onError(error)                              | When a server-level error occurs (not tied to a specific connection)                       |
+| shouldSendProtocolMessages(connection, ctx) | Whether to send protocol messages (identity, state, MCP) to this connection. Default: true |
 
 ### `onStart`
 
 `onStart()` is called once when the agent first starts, before any connections are established:
 
-* [  JavaScript ](#tab-panel-2826)
-* [  TypeScript ](#tab-panel-2827)
+* [  JavaScript ](#tab-panel-2850)
+* [  TypeScript ](#tab-panel-2851)
 
 JavaScript
 
@@ -120,8 +122,8 @@ Explain Code
 
 Define `onConnect` and `onMessage` methods on your Agent to accept WebSocket connections:
 
-* [  JavaScript ](#tab-panel-2832)
-* [  TypeScript ](#tab-panel-2833)
+* [  JavaScript ](#tab-panel-2856)
+* [  TypeScript ](#tab-panel-2857)
 
 JavaScript
 
@@ -241,20 +243,23 @@ Explain Code
 
 Each connected client has a unique `Connection` object:
 
-| Property/Method       | Type   | Description                           |
-| --------------------- | ------ | ------------------------------------- |
-| id                    | string | Unique identifier for this connection |
-| state                 | State  | Per-connection state object           |
-| setState(state)       | void   | Update connection state               |
-| send(message)         | void   | Send message to this client           |
-| close(code?, reason?) | void   | Close the connection                  |
+| Property/Method       | Type                | Description                                                                             |
+| --------------------- | ------------------- | --------------------------------------------------------------------------------------- |
+| id                    | string              | Unique identifier for this connection                                                   |
+| uri                   | string \| null      | URL of the original WebSocket upgrade request. Persists across hibernation              |
+| state                 | State               | Per-connection state object                                                             |
+| setState(state)       | void                | Update connection state                                                                 |
+| send(message)         | void                | Send message to this client                                                             |
+| close(code?, reason?) | void                | Close the connection                                                                    |
+| tags                  | readonly string\[\] | Tags assigned via getConnectionTags. Always includes the connection ID as the first tag |
+| server                | string              | The agent instance name (same as this.name on the Agent)                                |
 
 ### Per-connection state
 
 Store data specific to each connection (user info, preferences, etc.):
 
-* [  JavaScript ](#tab-panel-2836)
-* [  TypeScript ](#tab-panel-2837)
+* [  JavaScript ](#tab-panel-2860)
+* [  TypeScript ](#tab-panel-2861)
 
 JavaScript
 
@@ -355,8 +360,8 @@ Explain Code
 
 Use `this.broadcast()` to send a message to all connected clients:
 
-* [  JavaScript ](#tab-panel-2830)
-* [  TypeScript ](#tab-panel-2831)
+* [  JavaScript ](#tab-panel-2854)
+* [  TypeScript ](#tab-panel-2855)
 
 JavaScript
 
@@ -446,8 +451,8 @@ Explain Code
 
 Pass an array of connection IDs to exclude from the broadcast:
 
-* [  JavaScript ](#tab-panel-2824)
-* [  TypeScript ](#tab-panel-2825)
+* [  JavaScript ](#tab-panel-2848)
+* [  TypeScript ](#tab-panel-2849)
 
 JavaScript
 
@@ -487,8 +492,8 @@ this.broadcast(
 
 Tag connections for easy filtering. Override `getConnectionTags()` to assign tags when a connection is established:
 
-* [  JavaScript ](#tab-panel-2838)
-* [  TypeScript ](#tab-panel-2839)
+* [  JavaScript ](#tab-panel-2862)
+* [  TypeScript ](#tab-panel-2863)
 
 JavaScript
 
@@ -580,19 +585,21 @@ Explain Code
 
 ### Connection management methods
 
-| Method            | Signature                               | Description                            |
-| ----------------- | --------------------------------------- | -------------------------------------- |
-| getConnections    | (tag?: string) => Iterable<Connection>  | Get all connections, optionally by tag |
-| getConnection     | (id: string) => Connection \| undefined | Get connection by ID                   |
-| getConnectionTags | (connection, ctx) => string\[\]         | Override to tag connections            |
-| broadcast         | (message, without?: string\[\]) => void | Send to all connections                |
+| Method                      | Signature                               | Description                                                                                                       |
+| --------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| getConnections              | (tag?: string) => Iterable<Connection>  | Get all connections, optionally by tag                                                                            |
+| getConnection               | (id: string) => Connection \| undefined | Get connection by ID                                                                                              |
+| getConnectionTags           | (connection, ctx) => string\[\]         | Override to tag connections                                                                                       |
+| broadcast                   | (message, without?: string\[\]) => void | Send to all connections                                                                                           |
+| isConnectionReadonly        | (connection) => boolean                 | Check if a connection is [readonly](https://developers.cloudflare.com/agents/api-reference/readonly-connections/) |
+| isConnectionProtocolEnabled | (connection) => boolean                 | Check if protocol messages are enabled for this connection                                                        |
 
 ## Handling binary data
 
 Messages can be strings or binary (`ArrayBuffer` / `ArrayBufferView`):
 
-* [  JavaScript ](#tab-panel-2834)
-* [  TypeScript ](#tab-panel-2835)
+* [  JavaScript ](#tab-panel-2858)
+* [  TypeScript ](#tab-panel-2859)
 
 JavaScript
 
@@ -682,10 +689,10 @@ Agents automatically send JSON text frames (identity, state, MCP servers) to eve
 
 ## Error and close handling
 
-Handle connection errors and disconnections:
+Handle connection errors and disconnections. The `onError` method has two overloads — one for WebSocket connection errors and one for server-level errors:
 
-* [  JavaScript ](#tab-panel-2842)
-* [  TypeScript ](#tab-panel-2843)
+* [  JavaScript ](#tab-panel-2868)
+* [  TypeScript ](#tab-panel-2869)
 
 JavaScript
 
@@ -693,11 +700,23 @@ JavaScript
 
 export class ChatAgent extends Agent {
 
-  async onError(connection, error) {
+  // WebSocket connection error
 
-    console.error(`Connection ${connection.id} error:`, error);
 
-    // Clean up any resources for this connection
+  // Server-level error (not tied to a specific connection)
+
+
+  onError(connectionOrError, error) {
+
+    if (error) {
+
+      console.error(`Connection ${connectionOrError.id} error:`, error);
+
+    } else {
+
+      console.error("Server error:", connectionOrError);
+
+    }
 
   }
 
@@ -706,8 +725,6 @@ export class ChatAgent extends Agent {
 
     console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
 
-
-    // Notify other clients
 
     this.broadcast(
 
@@ -736,11 +753,31 @@ TypeScript
 
 export class ChatAgent extends Agent {
 
-  async onError(connection: Connection, error: unknown) {
+  // WebSocket connection error
 
-    console.error(`Connection ${connection.id} error:`, error);
+  onError(connection: Connection, error: unknown): void;
 
-    // Clean up any resources for this connection
+  // Server-level error (not tied to a specific connection)
+
+  onError(error: unknown): void;
+
+  onError(connectionOrError: Connection | unknown, error?: unknown) {
+
+    if (error) {
+
+      console.error(
+
+        `Connection ${(connectionOrError as Connection).id} error:`,
+
+        error,
+
+      );
+
+    } else {
+
+      console.error("Server error:", connectionOrError);
+
+    }
 
   }
 
@@ -759,8 +796,6 @@ export class ChatAgent extends Agent {
 
     console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
 
-
-    // Notify other clients
 
     this.broadcast(
 
@@ -783,6 +818,8 @@ export class ChatAgent extends Agent {
 
 Explain Code
 
+The default `onError` implementation logs the error and rethrows it. Override it to add custom error handling, reporting, or recovery logic.
+
 ## Message types
 
 | Type            | Description                     |
@@ -799,8 +836,8 @@ Agents support hibernation — they can sleep when inactive and wake when needed
 
 Hibernation is enabled by default. To disable:
 
-* [  JavaScript ](#tab-panel-2828)
-* [  TypeScript ](#tab-panel-2829)
+* [  JavaScript ](#tab-panel-2852)
+* [  TypeScript ](#tab-panel-2853)
 
 JavaScript
 
@@ -847,8 +884,8 @@ export class AlwaysOnAgent extends Agent {
 
 Store important data in `this.state` or SQLite, not in class properties:
 
-* [  JavaScript ](#tab-panel-2840)
-* [  TypeScript ](#tab-panel-2841)
+* [  JavaScript ](#tab-panel-2864)
+* [  TypeScript ](#tab-panel-2865)
 
 JavaScript
 
@@ -924,8 +961,8 @@ Explain Code
 
 Track who is online using per-connection state. Connection state is automatically cleaned up when users disconnect:
 
-* [  JavaScript ](#tab-panel-2846)
-* [  TypeScript ](#tab-panel-2847)
+* [  JavaScript ](#tab-panel-2872)
+* [  TypeScript ](#tab-panel-2873)
 
 JavaScript
 
@@ -1184,8 +1221,8 @@ Explain Code
 
 ### Chat room with broadcast
 
-* [  JavaScript ](#tab-panel-2844)
-* [  TypeScript ](#tab-panel-2845)
+* [  JavaScript ](#tab-panel-2870)
+* [  TypeScript ](#tab-panel-2871)
 
 JavaScript
 
@@ -1389,6 +1426,74 @@ export class ChatRoom extends Agent {
 ```
 
 Explain Code
+
+## Suppressing protocol messages
+
+By default, agents send JSON text frames (identity, state sync, MCP server lists) to every connection. Override `shouldSendProtocolMessages` to suppress them for specific connections — for example, binary-only clients that cannot handle JSON text frames:
+
+* [  JavaScript ](#tab-panel-2866)
+* [  TypeScript ](#tab-panel-2867)
+
+JavaScript
+
+```
+
+export class IoTAgent extends Agent {
+
+  shouldSendProtocolMessages(connection, ctx) {
+
+    const url = new URL(ctx.request.url);
+
+    return url.searchParams.get("protocol") !== "binary";
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+export class IoTAgent extends Agent {
+
+  shouldSendProtocolMessages(
+
+    connection: Connection,
+
+    ctx: ConnectionContext,
+
+  ): boolean {
+
+    const url = new URL(ctx.request.url);
+
+    return url.searchParams.get("protocol") !== "binary";
+
+  }
+
+}
+
+
+```
+
+When this returns `false`, the connection does not receive identity, state, or MCP server list frames — neither on connect nor via broadcasts. The connection can still send and receive regular messages, use RPC, and participate in all non-protocol communication.
+
+Use `isConnectionProtocolEnabled(connection)` to check the status of any connection at runtime.
+
+## Agent properties
+
+These properties are available on `this` inside any Agent method:
+
+| Property   | Type               | Description                                                               |
+| ---------- | ------------------ | ------------------------------------------------------------------------- |
+| this.name  | string             | The instance name of this agent                                           |
+| this.state | State              | The current agent state (lazy-loaded from SQLite)                         |
+| this.env   | Env                | Worker environment bindings                                               |
+| this.ctx   | DurableObjectState | Durable Object context (storage, alarms, etc.)                            |
+| this.sql   | template tag       | SQL template tag for executing queries against the agent's SQLite storage |
+| this.mcp   | MCPClientManager   | MCP client manager for connecting to external MCP servers                 |
 
 ## Connecting from clients
 

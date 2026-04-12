@@ -35,8 +35,8 @@ Under the hood, scheduling uses [Durable Object alarms](https://developers.cloud
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2744)
-* [  TypeScript ](#tab-panel-2745)
+* [  JavaScript ](#tab-panel-2766)
+* [  TypeScript ](#tab-panel-2767)
 
 JavaScript
 
@@ -184,8 +184,8 @@ Explain Code
 
 Pass a number to schedule a task to run after a delay in **seconds**:
 
-* [  JavaScript ](#tab-panel-2726)
-* [  TypeScript ](#tab-panel-2727)
+* [  JavaScript ](#tab-panel-2746)
+* [  TypeScript ](#tab-panel-2747)
 
 JavaScript
 
@@ -240,8 +240,8 @@ await this.schedule(3600, "checkStatus", { orderId: "abc" });
 
 Pass a `Date` object to schedule a task at a specific time:
 
-* [  JavaScript ](#tab-panel-2730)
-* [  TypeScript ](#tab-panel-2731)
+* [  JavaScript ](#tab-panel-2750)
+* [  TypeScript ](#tab-panel-2751)
 
 JavaScript
 
@@ -324,8 +324,8 @@ Explain Code
 
 Pass a cron expression string for recurring schedules:
 
-* [  JavaScript ](#tab-panel-2734)
-* [  TypeScript ](#tab-panel-2735)
+* [  JavaScript ](#tab-panel-2756)
+* [  TypeScript ](#tab-panel-2757)
 
 JavaScript
 
@@ -405,8 +405,8 @@ Explain Code
 
 **Common patterns:**
 
-* [  JavaScript ](#tab-panel-2728)
-* [  TypeScript ](#tab-panel-2729)
+* [  JavaScript ](#tab-panel-2748)
+* [  TypeScript ](#tab-panel-2749)
 
 JavaScript
 
@@ -458,12 +458,14 @@ TypeScript
 * Health checks
 * Subscription renewals
 
+Cron schedules are idempotent by default — calling `schedule()` with the same cron expression, callback, and payload multiple times returns the existing schedule instead of creating a duplicate. This makes cron schedules safe to set up in `onStart()`.
+
 ### Interval
 
 Use `scheduleEvery()` to run a task at fixed intervals (in seconds). Unlike cron, intervals support sub-minute precision and arbitrary durations:
 
-* [  JavaScript ](#tab-panel-2732)
-* [  TypeScript ](#tab-panel-2733)
+* [  JavaScript ](#tab-panel-2752)
+* [  TypeScript ](#tab-panel-2753)
 
 JavaScript
 
@@ -516,12 +518,59 @@ await this.scheduleEvery(90, "syncData", { destination: "warehouse" });
 | Fixed schedule      | Yes (for example, "every day at 8am") | No (relative to start) |
 | Overlap prevention  | No                                    | Yes (built-in)         |
 
+**Idempotency:**
+
+`scheduleEvery()` is idempotent on the combination of callback name, interval, and payload — calling it multiple times with the same arguments does not create duplicate schedules. This makes it safe to call in `onStart()`, which runs on every Durable Object wake:
+
+* [  JavaScript ](#tab-panel-2754)
+* [  TypeScript ](#tab-panel-2755)
+
+JavaScript
+
+```
+
+class MyAgent extends Agent {
+
+  async onStart() {
+
+    // Safe to call on every wake — only one schedule is created
+
+    await this.scheduleEvery(30, "poll", { source: "api" });
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+class MyAgent extends Agent {
+
+  async onStart() {
+
+    // Safe to call on every wake — only one schedule is created
+
+    await this.scheduleEvery(30, "poll", { source: "api" });
+
+  }
+
+}
+
+
+```
+
+A different interval or payload creates a new, independent schedule.
+
 **Overlap prevention:**
 
 If a callback takes longer than the interval, the next execution is skipped (not queued). This prevents runaway resource usage:
 
-* [  JavaScript ](#tab-panel-2738)
-* [  TypeScript ](#tab-panel-2739)
+* [  JavaScript ](#tab-panel-2760)
+* [  TypeScript ](#tab-panel-2761)
 
 JavaScript
 
@@ -596,8 +645,8 @@ Skipping interval schedule abc123: previous execution still running
 
 If the callback throws an error, the interval continues — only that execution fails:
 
-* [  JavaScript ](#tab-panel-2736)
-* [  TypeScript ](#tab-panel-2737)
+* [  JavaScript ](#tab-panel-2758)
+* [  TypeScript ](#tab-panel-2759)
 
 JavaScript
 
@@ -658,8 +707,8 @@ class SyncAgent extends Agent {
 
 Retrieve a scheduled task by its ID:
 
-* [  JavaScript ](#tab-panel-2740)
-* [  TypeScript ](#tab-panel-2741)
+* [  JavaScript ](#tab-panel-2762)
+* [  TypeScript ](#tab-panel-2763)
 
 JavaScript
 
@@ -725,8 +774,8 @@ Explain Code
 
 Query scheduled tasks with optional filters:
 
-* [  JavaScript ](#tab-panel-2750)
-* [  TypeScript ](#tab-panel-2751)
+* [  JavaScript ](#tab-panel-2772)
+* [  TypeScript ](#tab-panel-2773)
 
 JavaScript
 
@@ -842,8 +891,8 @@ Explain Code
 
 Remove a scheduled task before it executes:
 
-* [  JavaScript ](#tab-panel-2742)
-* [  TypeScript ](#tab-panel-2743)
+* [  JavaScript ](#tab-panel-2764)
+* [  TypeScript ](#tab-panel-2765)
 
 JavaScript
 
@@ -887,8 +936,8 @@ if (cancelled) {
 
 **Example: Cancellable reminders**
 
-* [  JavaScript ](#tab-panel-2762)
-* [  TypeScript ](#tab-panel-2763)
+* [  JavaScript ](#tab-panel-2786)
+* [  TypeScript ](#tab-panel-2787)
 
 JavaScript
 
@@ -1063,8 +1112,8 @@ Explain Code
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2746)
-* [  TypeScript ](#tab-panel-2747)
+* [  JavaScript ](#tab-panel-2768)
+* [  TypeScript ](#tab-panel-2769)
 
 JavaScript
 
@@ -1132,8 +1181,8 @@ Explain Code
 
 For dynamic recurring schedules, schedule the next run from within the callback:
 
-* [  JavaScript ](#tab-panel-2760)
-* [  TypeScript ](#tab-panel-2761)
+* [  JavaScript ](#tab-panel-2784)
+* [  TypeScript ](#tab-panel-2785)
 
 JavaScript
 
@@ -1257,8 +1306,8 @@ Explain Code
 
 ### Exponential backoff retry
 
-* [  JavaScript ](#tab-panel-2764)
-* [  TypeScript ](#tab-panel-2765)
+* [  JavaScript ](#tab-panel-2788)
+* [  TypeScript ](#tab-panel-2789)
 
 JavaScript
 
@@ -1406,8 +1455,8 @@ Explain Code
 
 You can safely call `this.destroy()` from within a scheduled callback:
 
-* [  JavaScript ](#tab-panel-2752)
-* [  TypeScript ](#tab-panel-2753)
+* [  JavaScript ](#tab-panel-2774)
+* [  TypeScript ](#tab-panel-2775)
 
 JavaScript
 
@@ -1491,8 +1540,8 @@ The SDK includes utilities for parsing natural language scheduling requests with
 
 Returns a system prompt for parsing natural language into scheduling parameters:
 
-* [  JavaScript ](#tab-panel-2766)
-* [  TypeScript ](#tab-panel-2767)
+* [  JavaScript ](#tab-panel-2790)
+* [  TypeScript ](#tab-panel-2791)
 
 JavaScript
 
@@ -1692,8 +1741,8 @@ Explain Code
 
 A Zod schema for validating parsed scheduling data. Uses a discriminated union on `when.type` so each variant only contains the fields it needs:
 
-* [  JavaScript ](#tab-panel-2756)
-* [  TypeScript ](#tab-panel-2757)
+* [  JavaScript ](#tab-panel-2778)
+* [  TypeScript ](#tab-panel-2779)
 
 JavaScript
 
@@ -1806,7 +1855,7 @@ async schedule<T>(
 
   payload?: T,
 
-  options?: { retry?: RetryOptions }
+  options?: { retry?: RetryOptions; idempotent?: boolean }
 
 ): Promise<Schedule<T>>
 
@@ -1820,9 +1869,57 @@ Schedule a task for future execution.
 * `when` \- When to execute: `number` (seconds delay), `Date` (specific time), or `string` (cron expression)
 * `callback` \- Name of the method to call
 * `payload` \- Data to pass to the callback (must be JSON-serializable)
-* `options.retry` \- Optional retry configuration. Refer to [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) for details.
+* `options.retry` \- Optional retry configuration. Refer to [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) for details
+* `options.idempotent` \- Deduplicate by callback + payload. Defaults to `true` for cron schedules, `false` for delayed and Date-based schedules
 
 **Returns:** A `Schedule` object with the task details
+
+**Idempotency:**
+
+Cron schedules are idempotent by default — calling `schedule("0 * * * *", "tick")` multiple times with the same callback, cron expression, and payload returns the existing schedule instead of creating a duplicate. Set `idempotent: false` to override this.
+
+For delayed and Date-based schedules, set `idempotent: true` to opt in to the same dedup behavior (matched on callback + payload). This is especially useful when calling `schedule()` in `onStart()` to avoid accumulating duplicate rows across Durable Object restarts:
+
+* [  JavaScript ](#tab-panel-2770)
+* [  TypeScript ](#tab-panel-2771)
+
+JavaScript
+
+```
+
+class MyAgent extends Agent {
+
+  async onStart() {
+
+    // Without idempotent: true, this creates a new row on every DO restart
+
+    await this.schedule(3600, "hourlyCleanup", {}, { idempotent: true });
+
+  }
+
+}
+
+
+```
+
+TypeScript
+
+```
+
+class MyAgent extends Agent {
+
+  async onStart() {
+
+    // Without idempotent: true, this creates a new row on every DO restart
+
+    await this.schedule(3600, "hourlyCleanup", {}, { idempotent: true });
+
+  }
+
+}
+
+
+```
 
 Warning
 
@@ -1929,8 +2026,8 @@ Prevent the Durable Object from being evicted due to inactivity by creating a 30
 
 Always call the disposer when the work is done — otherwise the heartbeat continues indefinitely.
 
-* [  JavaScript ](#tab-panel-2754)
-* [  TypeScript ](#tab-panel-2755)
+* [  JavaScript ](#tab-panel-2780)
+* [  TypeScript ](#tab-panel-2781)
 
 JavaScript
 
@@ -1993,8 +2090,8 @@ Run an async function while keeping the Durable Object alive. The heartbeat is a
 
 This is the recommended way to use `keepAlive` — it guarantees cleanup.
 
-* [  JavaScript ](#tab-panel-2748)
-* [  TypeScript ](#tab-panel-2749)
+* [  JavaScript ](#tab-panel-2776)
+* [  TypeScript ](#tab-panel-2777)
 
 JavaScript
 
@@ -2040,8 +2137,8 @@ Durable Objects are evicted after a period of inactivity (typically 70-140 secon
 
 Each `keepAlive()` call returns an independent disposer:
 
-* [  JavaScript ](#tab-panel-2758)
-* [  TypeScript ](#tab-panel-2759)
+* [  JavaScript ](#tab-panel-2782)
+* [  TypeScript ](#tab-panel-2783)
 
 JavaScript
 
@@ -2115,6 +2212,8 @@ Note
 * **Interval jobs:** After execution, rescheduled for `now + intervalSeconds`; skipped if still running
 
 ## Next steps
+
+[ Push notifications ](https://developers.cloudflare.com/agents/guides/push-notifications/) Send browser push notifications using scheduling and web-push. 
 
 [ Queue tasks ](https://developers.cloudflare.com/agents/api-reference/queue-tasks/) Immediate background task processing. 
 

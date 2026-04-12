@@ -7,6 +7,7 @@ Setup Prompt Injection Detection, PII Masking on LiteLLM Proxy (AI Gateway)
 ## 1. Define guardrails on your LiteLLM config.yaml
 
 Set your guardrails under the `guardrails` section
+
 ```yaml
 model_list:
   - model_name: gpt-3.5-turbo
@@ -80,20 +81,52 @@ For generic guardrail APIs you can also set **static headers** (`headers`: key/v
 - `during_call` Run **during** LLM call, on **input** Same as `pre_call` but runs in parallel as LLM call.  Response not returned until guardrail check completes
 - A list of the above values to run multiple modes, e.g. `mode: [pre_call, post_call]`
 
+### Skip system messages in guardrail evaluation
+
+You can stop **unified** guardrails from scanning `role: system` content while still sending the full `messages` list to the model.
+
+**Global** — in `litellm_settings`:
+
+```yaml
+litellm_settings:
+  skip_system_message_in_guardrail: true
+```
+
+**Per guardrail** — under that guardrail’s `litellm_params`: set `skip_system_message_in_guardrail: true` or `false`. If omitted, the global `litellm_settings` value is used; per-guardrail `false` forces system messages to be included even when the global flag is `true`.
+
+**Via LiteLLM UI** — when **creating** or **editing** a guardrail in the LiteLLM Admin Dashboard, set **Skip system messages in guardrail** (under Basic Info on create, or in the edit / guardrail settings flows):
+
+| UI option                             | Effect                                                                                 |
+| ------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Use global default**                | Uses `litellm_settings.skip_system_message_in_guardrail` from your proxy config        |
+| **Yes — exclude from guardrail scan** | Sets per-guardrail `skip_system_message_in_guardrail: true`                            |
+| **No — always include in scan**       | Sets per-guardrail `skip_system_message_in_guardrail: false` (overrides a global skip) |
+
+<Image
+  img={require('../../../img/skip_system_message_guardrail_ui.png')}
+  alt="Create guardrail: Skip system messages in guardrail dropdown with Use global default, Yes exclude from guardrail scan, and No always include in scan"
+  style={{ width: '100%', maxWidth: '900px', height: 'auto' }}
+/>
+
+**Where this applies:** Only the **unified** guardrail path (providers that implement `apply_guardrail` and run through LiteLLM’s message translation layer) on **OpenAI Chat Completions** (`/v1/chat/completions`) and **Anthropic Messages** (`/v1/messages`). Examples include Presidio, Bedrock guardrails, `litellm_content_filter`, OpenAI Moderation, Generic Guardrail API, and custom code guardrails that define `apply_guardrail`.
+
+**Where this does *not* apply:** Guardrails that run only via direct hooks on the raw request (e.g. Lakera v2, Aporia, DynamoAI, Javelin, Lasso, Pangea, Model Armor, Azure Content Safety hooks, Guardrails AI, AIM, tool permission, MCP security). It also does not apply to other routes until those endpoints use the same translation layer (e.g. Responses API, embeddings, speech).
+
 ### Load Balancing Guardrails
 
 Need to distribute guardrail requests across multiple accounts or regions? See [Guardrail Load Balancing](./guardrail_load_balancing.md) for details on:
+
 - Load balancing across multiple AWS Bedrock accounts (useful for rate limit management)
 - Weighted distribution across guardrail instances
 - Multi-region guardrail deployments
 
-## 2. Start LiteLLM Gateway 
+## 2. Start LiteLLM Gateway
 
 ```shell
 litellm --config config.yaml --detailed_debug
 ```
 
-## 3. Test request 
+## 3. Test request
 
 **[Langchain, OpenAI SDK Usage Examples](../proxy/user_keys#request-format)**
 
@@ -189,6 +222,7 @@ x-litellm-applied-guardrails: aporia-pre-guard
 ### Guardrail Policies
 
 Need more control? Use [Guardrail Policies](./guardrail_policies.md) to:
+
 - Group guardrails into reusable policies
 - Enable/disable guardrails for specific teams, keys, or models
 - Inherit from existing policies and override specific guardrails
@@ -251,9 +285,8 @@ Expected response
 }
 ```
 
->
 This config will return the `/guardrails/list` response above. The `guardrail_info` field is optional and you can add any fields under info for consumers of your guardrail
->
+
 ```yaml
 - guardrail_name: "aporia-post-guard"
     litellm_params:
@@ -272,7 +305,9 @@ This config will return the `/guardrails/list` response above. The `guardrail_in
 ```
 
 ### 2. Apply Guardrails
+
 Add selected guardrails to your chat completion request:
+
 ```shell
 curl -i http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -387,6 +422,7 @@ Monitor which guardrails were executed and whether they passed or failed. e.g. g
 > **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
 Use this to control what guardrails run per API Key. In this tutorial we only want the following guardrails to run for 1 API Key
+
 - `guardrails`: ["aporia-pre-guard", "aporia-post-guard"]
 
 **Step 1** Create Key with guardrail settings
@@ -456,7 +492,7 @@ guardrails:
 ```
 
 ```yaml
-model_list:
+Per guardrailmodel_list:
   - model_name: gpt-3.5-turbo
     litellm_params:
       model: gpt-3.5-turbo
@@ -533,7 +569,7 @@ guardrails:
 
 > **info**: ✨ This is an Enterprise only feature [Get a free trial](https://www.litellm.ai/enterprise#trial)
 
-#### 1. Disable team from modifying guardrails 
+#### 1. Disable team from modifying guardrails
 
 ```bash
 curl -X POST 'http://0.0.0.0:4000/team/update' \
@@ -545,7 +581,7 @@ curl -X POST 'http://0.0.0.0:4000/team/update' \
 }'
 ```
 
-#### 2. Try to disable guardrails for a call 
+#### 2. Try to disable guardrails for a call
 
 ```bash
 curl --location 'http://0.0.0.0:4000/chat/completions' \
@@ -582,7 +618,7 @@ Expect to NOT see `+1 412-612-9992` in your server logs on your callback.
 
 > **info**: The `pii_masking` guardrail ran on this request because api key=sk-jNm1Zar7XfNdZXp49Z1kSQ has `"permissions": {"pii_masking": true}`
 
-## Specification 
+## Specification
 
 ### `guardrails` Configuration on YAML
 
@@ -632,6 +668,7 @@ The `guardrails` parameter can be passed to any LiteLLM Proxy endpoint (`/chat/c
 #### Format Options
 
 1. Simple List Format:
+
 ```python
 "guardrails": [
     "aporia-pre-guard",
@@ -639,9 +676,10 @@ The `guardrails` parameter can be passed to any LiteLLM Proxy endpoint (`/chat/c
 ]
 ```
 
-2. Advanced Dictionary Format:
+1. Advanced Dictionary Format:
 
 In this format the dictionary key is `guardrail_name` you want to run
+
 ```python
 "guardrails": {
     "aporia-pre-guard": {
@@ -654,6 +692,7 @@ In this format the dictionary key is `guardrail_name` you want to run
 ```
 
 #### Type Definition
+
 ```python
 guardrails: Union[
     List[str],                              # Simple list of guardrail names

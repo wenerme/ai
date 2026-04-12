@@ -58,6 +58,47 @@ This creates a project with:
 * `src/server.ts` — Your agent code
 * `src/client.tsx` — React frontend
 * `wrangler.jsonc` — Cloudflare configuration
+* `tsconfig.json` — Extends `agents/tsconfig` for correct decorator and module settings
+* `vite.config.ts` — Includes the `agents/vite` plugin for decorator support
+
+The starter template includes two important SDK integrations. If you are setting up a project manually, add both:
+
+**tsconfig.json** — extends `agents/tsconfig`, which sets `target: "ES2021"` and other recommended options:
+
+```
+
+{
+
+  "extends": "agents/tsconfig"
+
+}
+
+
+```
+
+**vite.config.ts** — includes the `agents()` plugin, which handles TC39 decorator transforms (required for `@callable()` in Vite 8):
+
+TypeScript
+
+```
+
+import { cloudflare } from "@cloudflare/vite-plugin";
+
+import react from "@vitejs/plugin-react";
+
+import agents from "agents/vite";
+
+import { defineConfig } from "vite";
+
+
+export default defineConfig({
+
+  plugins: [agents(), react(), cloudflare()],
+
+});
+
+
+```
 
 Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in action.
 
@@ -65,8 +106,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-2912)
-* [  TypeScript ](#tab-panel-2913)
+* [  JavaScript ](#tab-panel-2954)
+* [  TypeScript ](#tab-panel-2955)
 
 JavaScript
 
@@ -229,8 +270,8 @@ Explain Code
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-2904)
-* [  wrangler.toml ](#tab-panel-2905)
+* [  wrangler.jsonc ](#tab-panel-2946)
+* [  wrangler.toml ](#tab-panel-2947)
 
 JSONC
 
@@ -244,7 +285,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-11",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -293,7 +334,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-11"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -409,8 +450,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-2908)
-* [  TypeScript ](#tab-panel-2909)
+* [  JavaScript ](#tab-panel-2950)
+* [  TypeScript ](#tab-panel-2951)
 
 JavaScript
 
@@ -513,8 +554,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-2906)
-* [  TypeScript ](#tab-panel-2907)
+* [  JavaScript ](#tab-panel-2948)
+* [  TypeScript ](#tab-panel-2949)
 
 JavaScript
 
@@ -564,8 +605,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-2910)
-* [  TypeScript ](#tab-panel-2911)
+* [  JavaScript ](#tab-panel-2952)
+* [  TypeScript ](#tab-panel-2953)
 
 JavaScript
 

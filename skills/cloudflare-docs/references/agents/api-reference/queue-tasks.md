@@ -38,6 +38,8 @@ type QueueItem<T> = {
 
   created_at: number; // Timestamp when the task was created
 
+  retry?: RetryOptions; // Retry options for this task
+
 };
 
 
@@ -53,7 +55,15 @@ TypeScript
 
 ```
 
-async queue<T>(callback: keyof this, payload: T): Promise<string>
+async queue<T>(
+
+  callback: keyof this,
+
+  payload: T,
+
+  options?: { retry?: RetryOptions }
+
+): Promise<string>
 
 
 ```
@@ -62,13 +72,15 @@ async queue<T>(callback: keyof this, payload: T): Promise<string>
 
 * `callback` \- The name of the method to call when processing the task
 * `payload` \- Data to pass to the callback method
+* `options` \- Optional configuration:  
+   * `retry` \- Retry options for the callback execution. If the callback throws, it is retried with exponential backoff. Refer to [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) for details on `RetryOptions`
 
 **Returns:** The unique ID of the queued task
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2536)
-* [  TypeScript ](#tab-panel-2537)
+* [  JavaScript ](#tab-panel-2556)
+* [  TypeScript ](#tab-panel-2557)
 
 JavaScript
 
@@ -167,8 +179,8 @@ dequeue(id: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2526)
-* [  TypeScript ](#tab-panel-2527)
+* [  JavaScript ](#tab-panel-2546)
+* [  TypeScript ](#tab-panel-2547)
 
 JavaScript
 
@@ -207,8 +219,8 @@ dequeueAll(): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2528)
-* [  TypeScript ](#tab-panel-2529)
+* [  JavaScript ](#tab-panel-2548)
+* [  TypeScript ](#tab-panel-2549)
 
 JavaScript
 
@@ -251,8 +263,8 @@ dequeueAllByCallback(callback: string): void
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2530)
-* [  TypeScript ](#tab-panel-2531)
+* [  JavaScript ](#tab-panel-2550)
+* [  TypeScript ](#tab-panel-2551)
 
 JavaScript
 
@@ -299,8 +311,8 @@ The payload is automatically parsed from JSON before being returned.
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2534)
-* [  TypeScript ](#tab-panel-2535)
+* [  JavaScript ](#tab-panel-2554)
+* [  TypeScript ](#tab-panel-2555)
 
 JavaScript
 
@@ -360,8 +372,8 @@ This method fetches all queue items and filters them in memory by parsing each p
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2532)
-* [  TypeScript ](#tab-panel-2533)
+* [  JavaScript ](#tab-panel-2552)
+* [  TypeScript ](#tab-panel-2553)
 
 JavaScript
 
@@ -410,8 +422,8 @@ async callbackMethod(payload: unknown, queueItem: QueueItem): Promise<void>
 
 **Example:**
 
-* [  JavaScript ](#tab-panel-2540)
-* [  TypeScript ](#tab-panel-2541)
+* [  JavaScript ](#tab-panel-2560)
+* [  TypeScript ](#tab-panel-2561)
 
 JavaScript
 
@@ -513,8 +525,8 @@ Explain Code
 
 ### Background processing
 
-* [  JavaScript ](#tab-panel-2538)
-* [  TypeScript ](#tab-panel-2539)
+* [  JavaScript ](#tab-panel-2558)
+* [  TypeScript ](#tab-panel-2559)
 
 JavaScript
 
@@ -596,8 +608,8 @@ Explain Code
 
 ### Batch operations
 
-* [  JavaScript ](#tab-panel-2544)
-* [  TypeScript ](#tab-panel-2545)
+* [  JavaScript ](#tab-panel-2562)
+* [  TypeScript ](#tab-panel-2563)
 
 JavaScript
 
@@ -697,8 +709,10 @@ Explain Code
 
 ## Error handling
 
-* [  JavaScript ](#tab-panel-2542)
-* [  TypeScript ](#tab-panel-2543)
+Use the built-in `retry` option instead of manual re-queue logic. When a callback throws, the task is automatically retried with exponential backoff:
+
+* [  JavaScript ](#tab-panel-2564)
+* [  TypeScript ](#tab-panel-2565)
 
 JavaScript
 
@@ -708,30 +722,42 @@ class RobustAgent extends Agent {
 
   async reliableTask(payload, queueItem) {
 
-    try {
+    console.log(`Processing task ${queueItem.id}`);
 
-      await this.doSomethingRisky(payload);
+    const response = await fetch(payload.url);
 
-    } catch (error) {
+    if (!response.ok) {
 
-      console.error(`Task ${queueItem.id} failed:`, error);
-
-
-      // Optionally re-queue with retry logic
-
-      if (payload.retryCount < 3) {
-
-        await this.queue("reliableTask", {
-
-          ...payload,
-
-          retryCount: (payload.retryCount || 0) + 1,
-
-        });
-
-      }
+      throw new Error(`Request failed: ${response.status}`);
 
     }
+
+  }
+
+
+  async onMessage(connection, message) {
+
+    await this.queue(
+
+      "reliableTask",
+
+      { url: "https://api.example.com/data" },
+
+      {
+
+        retry: {
+
+          maxAttempts: 5,
+
+          baseDelayMs: 500,
+
+          maxDelayMs: 10_000,
+
+        },
+
+      },
+
+    );
 
   }
 
@@ -748,32 +774,44 @@ TypeScript
 
 class RobustAgent extends Agent {
 
-  async reliableTask(payload: any, queueItem: QueueItem) {
+  async reliableTask(payload: { url: string }, queueItem: QueueItem) {
 
-    try {
+    console.log(`Processing task ${queueItem.id}`);
 
-      await this.doSomethingRisky(payload);
+    const response = await fetch(payload.url);
 
-    } catch (error) {
+    if (!response.ok) {
 
-      console.error(`Task ${queueItem.id} failed:`, error);
-
-
-      // Optionally re-queue with retry logic
-
-      if (payload.retryCount < 3) {
-
-        await this.queue("reliableTask", {
-
-          ...payload,
-
-          retryCount: (payload.retryCount || 0) + 1,
-
-        });
-
-      }
+      throw new Error(`Request failed: ${response.status}`);
 
     }
+
+  }
+
+
+  async onMessage(connection: Connection, message: WSMessage) {
+
+    await this.queue(
+
+      "reliableTask",
+
+      { url: "https://api.example.com/data" },
+
+      {
+
+        retry: {
+
+          maxAttempts: 5,
+
+          baseDelayMs: 500,
+
+          maxDelayMs: 10_000,
+
+        },
+
+      },
+
+    );
 
   }
 
@@ -783,6 +821,8 @@ class RobustAgent extends Agent {
 ```
 
 Explain Code
+
+If no `retry` option is provided, the class-level defaults from `static options.retry` are used (3 attempts, 100ms base delay, 3s max delay). Refer to [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) for full details.
 
 ## Best practices
 
@@ -806,10 +846,6 @@ The queue system works with other Agent SDK features:
 * Tasks are processed sequentially, not in parallel.
 * No priority system (FIFO only).
 * Queue processing happens during agent execution, not as separate background jobs.
-
-Note
-
-Queue tasks support built-in retries with exponential backoff. Pass `{ retry: { maxAttempts, baseDelayMs, maxDelayMs } }` as the third argument to `queue()`. Refer to [Retries](https://developers.cloudflare.com/agents/api-reference/retries/) for details.
 
 ## Queue vs Schedule
 
