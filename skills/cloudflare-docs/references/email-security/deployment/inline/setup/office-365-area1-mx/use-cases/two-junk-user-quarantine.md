@@ -16,7 +16,7 @@ Copy page
 
 # 2 - Junk email and user managed quarantine
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 In this tutorial, you will learn how to deliver `SUSPICIOUS` and `BULK` messages to the user's junk folder, and `SPAM` and `SPOOF` messages to the user managed quarantine.
 

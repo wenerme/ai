@@ -20,7 +20,7 @@ Copy page
 
 # Connect to a PostgreSQL database with Cloudflare Workers
 
-**Last reviewed:**  9 months ago 
+**Last reviewed:**  10 months ago 
 
 In this tutorial, you will learn how to create a Cloudflare Workers application and connect it to a PostgreSQL database using [TCP Sockets](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Workers application you create in this tutorial will interact with a product database inside of PostgreSQL.
 
@@ -80,8 +80,8 @@ cd postgres-tutorial
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7848)
-* [  wrangler.toml ](#tab-panel-7849)
+* [  wrangler.jsonc ](#tab-panel-7936)
+* [  wrangler.toml ](#tab-panel-7937)
 
 JSONC
 
@@ -97,7 +97,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10"
+  "compatibility_date": "2026-04-12"
 
 }
 
@@ -112,7 +112,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-12"
 
 
 ```
@@ -222,8 +222,8 @@ DB_URL="<ENTER YOUR POSTGRESQL CONNECTION STRING>"
 
 Configure each database parameter as an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) via the [Cloudflare dashboard](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard) or in your Wrangler file. Refer to an example of a Wrangler file configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7844)
-* [  wrangler.toml ](#tab-panel-7845)
+* [  wrangler.jsonc ](#tab-panel-7932)
+* [  wrangler.toml ](#tab-panel-7933)
 
 JSONC
 
@@ -619,8 +619,8 @@ npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="
 
 This command outputs the Hyperdrive configuration `id` that will be used for your Hyperdrive [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). Set up your binding by specifying the `id` in the Wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-7846)
-* [  wrangler.toml ](#tab-panel-7847)
+* [  wrangler.jsonc ](#tab-panel-7934)
+* [  wrangler.toml ](#tab-panel-7935)
 
 JSONC
 
@@ -636,7 +636,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-12",
 
   "compatibility_flags": [
 
@@ -677,7 +677,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-12"
 
 compatibility_flags = [ "nodejs_compat" ]
 

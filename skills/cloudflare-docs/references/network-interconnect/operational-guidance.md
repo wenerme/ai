@@ -29,7 +29,9 @@ Regular network maintenance may impact Cloudflare Network Interconnect (CNI) con
 
 ### Notice periods
 
-* **Routine maintenance**: Minimum two business days notice in multi-homed PoPs.
+For Dataplane v2 connectivity in multi-homed PoPs only:
+
+* **Routine maintenance**: Minimum two business days notice.
 * **Emergency maintenance**: Best-effort notice, which may be less than two business days.
 
 To receive advance alerts, configure [CNI maintenance notifications](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/).

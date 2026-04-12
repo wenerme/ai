@@ -9186,18 +9186,18 @@
   "codex-docs/cli/features.md": {
     "url": "https://developers.openai.com/codex/cli/features.md",
     "skill": "codex-docs",
-    "etag": "\"d1b3bfe9bcc01aa8be3daf82b3776c51\"",
-    "lastModified": "Tue, 17 Mar 2026 22:36:31 GMT",
-    "size": 13194,
-    "updatedAt": "2026-03-18T00:19:52.466Z"
+    "etag": "W/\"2e198a3b5d54bd4a6653605ffb973b2a\"",
+    "lastModified": "Sun, 12 Apr 2026 10:24:25 GMT",
+    "size": 16452,
+    "updatedAt": "2026-04-12T10:24:25.432Z"
   },
   "codex-docs/cli/reference.md": {
     "url": "https://developers.openai.com/codex/cli/reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"eeb9ab3c6f45b8cc222a4f3be66a6906\"",
-    "lastModified": "Wed, 08 Apr 2026 00:07:51 GMT",
-    "size": 26878,
-    "updatedAt": "2026-04-08T00:23:54.811Z"
+    "etag": "W/\"6eb627bda1daea04a37acc023a937ab1\"",
+    "lastModified": "Sun, 12 Apr 2026 10:24:25 GMT",
+    "size": 29245,
+    "updatedAt": "2026-04-12T10:24:25.730Z"
   },
   "codex-docs/cli/slash-commands.md": {
     "url": "https://developers.openai.com/codex/cli/slash-commands.md",

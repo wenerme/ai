@@ -16,7 +16,7 @@ Copy page
 
 # 4 - User managed quarantine and administrative quarantine
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 In this tutorial, you will learn to deliver `SPAM` and `SPOOF` messages to the user managed quarantine, and `MALICIOUS` messages to the administrative quarantine (this requires an administrator to release the emails).
 

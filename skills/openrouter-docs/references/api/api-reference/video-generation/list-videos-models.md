@@ -66,6 +66,12 @@ components:
         - '21:9'
         - '9:21'
       title: VideoModelSupportedAspectRatiosItems
+    VideoModelSupportedFrameImagesItems:
+      type: string
+      enum:
+        - first_frame
+        - last_frame
+      title: VideoModelSupportedFrameImagesItems
     VideoModelSupportedResolutionsItems:
       type: string
       enum:
@@ -171,6 +177,13 @@ components:
           items:
             type: integer
           description: Supported video durations in seconds
+        supported_frame_images:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/VideoModelSupportedFrameImagesItems'
+          description: Supported frame image types (e.g. first_frame, last_frame)
         supported_resolutions:
           type:
             - array
@@ -195,6 +208,7 @@ components:
         - seed
         - supported_aspect_ratios
         - supported_durations
+        - supported_frame_images
         - supported_resolutions
         - supported_sizes
       title: VideoModel

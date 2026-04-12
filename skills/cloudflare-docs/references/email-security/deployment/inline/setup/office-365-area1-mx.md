@@ -16,7 +16,7 @@ Copy page
 
 # Office 365 - Email security (formerly Area 1) as MX Record
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 Area 1 has been renamed
 

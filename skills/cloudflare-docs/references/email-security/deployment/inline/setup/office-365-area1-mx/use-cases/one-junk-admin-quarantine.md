@@ -16,7 +16,7 @@ Copy page
 
 # 1 - Junk email and Email security (formerly Area 1) Admin Quarantine
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 In this tutorial, you will learn how to deliver emails to the Office 365 junk email folder and the Admin Quarantine in Email security.
 

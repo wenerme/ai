@@ -16,7 +16,7 @@ Copy page
 
 # Serverless ETL pipelines
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 ## Introduction
 

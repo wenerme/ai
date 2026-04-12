@@ -85,6 +85,18 @@ export const globalFlagOptions = [
       "Disable alternate screen mode for the TUI (overrides `tui.alternate_screen` for this run).",
   },
   {
+    key: "--remote",
+    type: "ws://host:port | wss://host:port",
+    description:
+      "Connect the interactive TUI to a remote app-server WebSocket endpoint. Supported for `codex`, `codex resume`, and `codex fork`; other subcommands reject remote mode.",
+  },
+  {
+    key: "--remote-auth-token-env",
+    type: "ENV_VAR",
+    description:
+      "Read a bearer token from this environment variable and send it when connecting with `--remote`. Requires `--remote`; tokens are only sent over `wss://` URLs or `ws://` URLs whose host is `localhost`, `127.0.0.1`, or `::1`.",
+  },
+  {
     key: "--enable",
     type: "feature",
     description:
@@ -338,7 +350,44 @@ export const appServerOptions = [
     type: "stdio:// | ws://IP:PORT",
     defaultValue: "stdio://",
     description:
-      "Transport listener URL. `ws://` is experimental and intended for development/testing.",
+      "Transport listener URL. Use `ws://IP:PORT` to expose a WebSocket endpoint for remote clients.",
+  },
+  {
+    key: "--ws-auth",
+    type: "capability-token | signed-bearer-token",
+    description:
+      "Authentication mode for app-server WebSocket clients. If omitted, WebSocket auth is disabled; non-local listeners warn during startup.",
+  },
+  {
+    key: "--ws-token-file",
+    type: "absolute path",
+    description:
+      "File containing the shared capability token. Required with `--ws-auth capability-token`.",
+  },
+  {
+    key: "--ws-shared-secret-file",
+    type: "absolute path",
+    description:
+      "File containing the HMAC shared secret used to validate signed JWT bearer tokens. Required with `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--ws-issuer",
+    type: "string",
+    description:
+      "Expected `iss` claim for signed bearer tokens. Requires `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--ws-audience",
+    type: "string",
+    description:
+      "Expected `aud` claim for signed bearer tokens. Requires `--ws-auth signed-bearer-token`.",
+  },
+  {
+    key: "--ws-max-clock-skew-seconds",
+    type: "number",
+    defaultValue: "30",
+    description:
+      "Clock skew allowance when validating signed bearer token `exp` and `nbf` claims. Requires `--ws-auth signed-bearer-token`.",
   },
 ];
 
@@ -717,13 +766,15 @@ The Maturity column uses feature maturity labels such as Experimental, Beta,
 
 Running `codex` with no subcommand launches the interactive terminal UI (TUI). The agent accepts the global flags above plus image attachments. Web search defaults to cached mode; use `--search` to switch to live browsing and `--full-auto` to let Codex run most commands without prompts.
 
+Use `--remote ws://host:port` or `--remote wss://host:port` to connect the TUI to an app server started with `codex app-server --listen ws://IP:PORT`. Add `--remote-auth-token-env <ENV_VAR>` when the server requires a bearer token for WebSocket authentication. See [Codex CLI features](https://developers.openai.com/codex/cli/features#connect-the-tui-to-a-remote-app-server) for setup examples and authentication guidance.
+
 ### `codex app-server`
 
 Launch the Codex app server locally. This is primarily for development and debugging and may change without notice.
 
 <ConfigTable client:load options={appServerOptions} />
 
-`codex app-server --listen stdio://` keeps the default JSONL-over-stdio behavior. `--listen ws://IP:PORT` enables WebSocket transport (experimental). If you generate schemas for client bindings, add `--experimental` to include gated fields and methods.
+`codex app-server --listen stdio://` keeps the default JSONL-over-stdio behavior. `--listen ws://IP:PORT` enables WebSocket transport for app-server clients. The server accepts `ws://` listen URLs; use TLS termination or a secure proxy when clients connect with `wss://`. If you generate schemas for client bindings, add `--experimental` to include gated fields and methods.
 
 ### `codex app`
 

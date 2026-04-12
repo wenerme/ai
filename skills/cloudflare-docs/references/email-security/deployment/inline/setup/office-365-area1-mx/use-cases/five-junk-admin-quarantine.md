@@ -16,7 +16,7 @@ Copy page
 
 # 5 - Junk email folder and administrative quarantine
 
-**Last reviewed:**  about 3 years ago 
+**Last reviewed:**  over 3 years ago 
 
 In this tutorial, you will learn to deliver `SUSPICIOUS` and `BULK` messages to the user's junk email folder, and `MALICIOUS`, `SPAM`, and `SPOOF` messages to the Administrative Quarantine (this requires an administrator to release the emails).
 
