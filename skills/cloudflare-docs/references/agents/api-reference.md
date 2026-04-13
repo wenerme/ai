@@ -30,6 +30,7 @@ Learn more about what Agents can do, the `Agent` class, and the APIs that Agents
 * [ HTTP and Server-Sent Events ](https://developers.cloudflare.com/agents/api-reference/http-sse/)
 * [ Protocol messages ](https://developers.cloudflare.com/agents/api-reference/protocol-messages/)
 * [ Schedule tasks ](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/)
+* [ Durable execution ](https://developers.cloudflare.com/agents/api-reference/durable-execution/)
 * [ Queue tasks ](https://developers.cloudflare.com/agents/api-reference/queue-tasks/)
 * [ Retries ](https://developers.cloudflare.com/agents/api-reference/retries/)
 * [ createMcpHandler ](https://developers.cloudflare.com/agents/api-reference/mcp-handler-api/)

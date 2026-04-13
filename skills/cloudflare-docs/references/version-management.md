@@ -60,6 +60,10 @@ Cache Rules when used with Cloudflare Images
 * [Image Resizing](https://developers.cloudflare.com/images/) does not work with the `additional_cacheable_ports` [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) setting and Zone Versioning.
 * If you use `additional_cacheable_ports` with Image Resizing, the image will be resized every time it is requested and will result in low performance.
 
+Cache Response Rules
+
+* [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) do not work with Version Management.
+
 Workers Cache API
 
 * [Workers Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) does not work with Version Management.

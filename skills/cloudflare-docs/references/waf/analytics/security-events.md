@@ -33,21 +33,21 @@ Security Events displays information about requests actioned or flagged by Cloud
 
 Available features vary according to your Cloudflare plan:
 
-| Free                    | Pro                     | Business                | Enterprise              |                        |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ---------------------- |
-| Availability            | Yes                     | Yes                     | Yes                     | Yes                    |
-| Dashboard features      | Sampled logs only       | All                     | All                     | All                    |
-| Account-level dashboard | No                      | No                      | No                      | Yes                    |
-| Historical time         | Up to the last 24 hours | Up to the last 24 hours | Up to the last 72 hours | Up to the last 30 days |
-| Export report           | No                      | No                      | Up to 500 events        | Up to 500 events       |
-| Print report            | No                      | Yes                     | Yes                     | Yes                    |
+| Free                    | Pro                     | Business                | Enterprise            |                        |
+| ----------------------- | ----------------------- | ----------------------- | --------------------- | ---------------------- |
+| Availability            | Yes                     | Yes                     | Yes                   | Yes                    |
+| Dashboard features      | Sampled logs only       | All                     | All                   | All                    |
+| Account-level dashboard | No                      | No                      | No                    | Yes                    |
+| Historical time         | Up to the last 24 hours | Up to the last 24 hours | Up to the last 3 days | Up to the last 30 days |
+| Export report           | No                      | No                      | Up to 500 events      | Up to 500 events       |
+| Print report            | No                      | Yes                     | Yes                   | Yes                    |
 
 ## Location in the dashboard
 
 To open Security Events for a given zone:
 
-* [  New dashboard ](#tab-panel-6785)
-* [ Old dashboard ](#tab-panel-6786)
+* [  New dashboard ](#tab-panel-6933)
+* [ Old dashboard ](#tab-panel-6934)
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.  
 [ Go to **Analytics** ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -83,7 +83,7 @@ Take the following into account when entering filter values:
 
 ### Adjust report duration
 
-To adjust report duration, select the desired duration from the dropdown. The default value is `Previous 24 hours`.
+To adjust report duration, select the desired duration from the dropdown. The default value is `Last 24 hours`.
 
 The available report duration values depend on your Cloudflare plan. Refer to [Availability](#availability) for details.
 
@@ -157,9 +157,9 @@ To export the displayed events (up to 500), select **Export** in **Sampled logs*
 
 When you add a filter and specify a report duration (time window) in Security Events, the Cloudflare dashboard URL changes to reflect the parameters you configured. You can share that URL with other users so that they can analyze the same information that you see.
 
-For example, after adding a filter for `Action equals Managed Challenge` and setting the report duration to 72 hours, the URL should look like the following:
+For example, after adding a filter for `Action equals Managed Challenge` and setting the report duration to `Last 3 days`, the URL should look like the following:
 
-`https://dash.cloudflare.com/{account_id}/example.net/security/events?action=managed_challenge&time-window=4320`
+`https://dash.cloudflare.com/{account_id}/example.net/security/analytics/events?action=managed_challenge&time-window=4320`
 
 ## Print or download PDF report
 

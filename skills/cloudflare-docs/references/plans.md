@@ -1576,7 +1576,7 @@ Varies by plan
 * **Lite:** Up to the last 24 hours
 * **Pro:** Up to the last 24 hours
 * **Pro Plus:** Up to the last 24 hours
-* **Business:** Up to the last 72 hours
+* **Business:** Up to the last 3 days
 * **Enterprise:** Up to the last 30 days
 
 **Export report**

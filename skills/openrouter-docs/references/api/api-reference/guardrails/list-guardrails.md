@@ -109,6 +109,13 @@ components:
           type: string
           format: uuid
           description: Unique identifier for the guardrail
+        ignored_models:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: Array of model canonical_slugs to exclude from routing
         ignored_providers:
           type:
             - array

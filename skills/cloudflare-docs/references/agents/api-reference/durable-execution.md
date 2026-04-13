@@ -1,0 +1,548 @@
+---
+title: Durable execution
+description: Run work that survives Durable Object eviction with runFiber(), keepAlive(), and crash recovery.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+### Tags
+
+[ AI ](https://developers.cloudflare.com/search/?tags=AI) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/agents/api-reference/durable-execution.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Durable execution
+
+Run work that survives Durable Object eviction. `runFiber()` registers a task in SQLite, keeps the agent alive during execution, lets you checkpoint intermediate state with `stash()`, and calls `onFiberRecovered()` on the next activation if the agent was evicted mid-task.
+
+Note
+
+For how fibers fit into the bigger picture of building agents that run for weeks or months, refer to [Long-running agents](https://developers.cloudflare.com/agents/concepts/long-running-agents/).
+
+## Quick start
+
+TypeScript
+
+```
+
+import { Agent } from "agents";
+
+import type { FiberRecoveryContext } from "agents";
+
+
+class MyAgent extends Agent {
+
+  async doWork() {
+
+    await this.runFiber("my-task", async (ctx) => {
+
+      const step1 = await expensiveOperation();
+
+      ctx.stash({ step1 });
+
+
+      const step2 = await anotherExpensiveOperation(step1);
+
+      this.setState({ ...this.state, result: step2 });
+
+    });
+
+  }
+
+
+  async onFiberRecovered(ctx: FiberRecoveryContext) {
+
+    if (ctx.name !== "my-task") return;
+
+    const snapshot = ctx.snapshot as { step1: unknown } | null;
+
+    if (snapshot) {
+
+      const step2 = await anotherExpensiveOperation(snapshot.step1);
+
+      this.setState({ ...this.state, result: step2 });
+
+    }
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+## Why fibers exist
+
+Durable Objects get evicted for three reasons:
+
+1. **Inactivity timeout** — \~70–140 seconds with no incoming requests or open WebSockets
+2. **Code updates / runtime restarts** — non-deterministic, 1–2x per day
+3. **Alarm handler timeout** — 15 minutes
+
+When eviction happens mid-work, the upstream HTTP connection (to an LLM provider, an API, a database) is severed permanently. In-memory state — streaming buffers, partial responses, loop counters — is lost. Multi-turn agent loops lose their position entirely.
+
+`keepAlive()` reduces the chance of eviction. `runFiber()` makes eviction survivable.
+
+For work that should run independently of the agent with per-step retries and multi-step orchestration, use [Workflows](https://developers.cloudflare.com/agents/concepts/workflows/) instead. Fibers are for work that is part of the agent's own execution. Refer to [Long-running agents: Workflows vs agent-internal patterns](https://developers.cloudflare.com/agents/concepts/long-running-agents/#when-to-use-workflows-vs-agent-internal-patterns) for a comparison.
+
+## keepAlive
+
+Prevents idle eviction by creating a 30-second alarm heartbeat that resets the inactivity timer.
+
+TypeScript
+
+```
+
+class Agent {
+
+  keepAlive(): Promise<() => void>;
+
+  keepAliveWhile<T>(fn: () => Promise<T>): Promise<T>;
+
+}
+
+
+```
+
+`keepAliveWhile()` is the recommended approach — it runs an async function and automatically cleans up the heartbeat when it completes or throws:
+
+TypeScript
+
+```
+
+const result = await this.keepAliveWhile(async () => {
+
+  return await slowAPICall();
+
+});
+
+
+```
+
+For manual control, `keepAlive()` returns a disposer. Always call it when done — otherwise the heartbeat continues indefinitely:
+
+TypeScript
+
+```
+
+const dispose = await this.keepAlive();
+
+try {
+
+  await longWork();
+
+} finally {
+
+  dispose();
+
+}
+
+
+```
+
+### How it works
+
+While any `keepAlive` ref is held, an alarm fires every 30 seconds that resets the inactivity timer. When all disposers are called, alarms stop and the DO can go idle naturally.
+
+The heartbeat is invisible to `getSchedules()` — no schedule rows are created. It does not conflict with your own schedules; the alarm system multiplexes all schedules and the keepAlive heartbeat through a single alarm slot.
+
+### Configurable interval
+
+Default: 30 seconds. The inactivity timeout is \~70–140 seconds, so 30 seconds gives comfortable margin. Override via static options:
+
+TypeScript
+
+```
+
+class MyAgent extends Agent {
+
+  static options = { keepAliveIntervalMs: 2_000 };
+
+}
+
+
+```
+
+### When to use keepAlive vs runFiber
+
+`keepAlive` prevents eviction but does nothing about recovery. If the agent _is_ evicted despite the heartbeat (code update, alarm timeout, resource limit), any in-progress work is lost.
+
+`runFiber` calls `keepAlive` internally _and_ persists the work in SQLite so it can be recovered. Use `keepAlive` alone when the work is cheap to redo or does not need checkpointing. Use `runFiber` when the work is expensive and you need to resume from where you left off.
+
+| Scenario                                         | Use                     |
+| ------------------------------------------------ | ----------------------- |
+| Waiting on a slow API call                       | keepAlive()             |
+| Streaming an LLM response (via AIChatAgent)      | Automatic (built in)    |
+| Multi-step computation with intermediate results | runFiber()              |
+| Background research loop that takes 10+ minutes  | runFiber() with stash() |
+
+## runFiber
+
+Durable execution with checkpointing and recovery.
+
+TypeScript
+
+```
+
+class Agent {
+
+  runFiber<T>(name: string, fn: (ctx: FiberContext) => Promise<T>): Promise<T>;
+
+  stash(data: unknown): void;
+
+  onFiberRecovered(ctx: FiberRecoveryContext): Promise<void>;
+
+}
+
+
+type FiberContext = {
+
+  id: string;
+
+  stash(data: unknown): void;
+
+  snapshot: unknown | null;
+
+};
+
+
+type FiberRecoveryContext = {
+
+  id: string;
+
+  name: string;
+
+  snapshot: unknown | null;
+
+};
+
+
+```
+
+Explain Code
+
+### Lifecycle
+
+#### Normal execution
+
+```
+
+runFiber("work", fn)
+
+  ├─ INSERT row into cf_agents_runs
+
+  ├─ keepAlive() — heartbeat starts
+
+  ├─ Execute fn(ctx)
+
+  │    ├─ ctx.stash(data) → UPDATE snapshot in SQLite
+
+  │    ├─ ctx.stash(data) → UPDATE snapshot in SQLite
+
+  │    └─ return result
+
+  ├─ DELETE row from cf_agents_runs
+
+  ├─ keepAlive dispose — heartbeat stops
+
+  └─ Return result to caller
+
+
+```
+
+Explain Code
+
+#### Eviction and recovery
+
+```
+
+[DO evicted — all in-memory state lost]
+
+
+  On next activation:
+
+  ├─ Request/connection → onStart() → check for orphaned fibers  [primary path]
+
+  │  OR
+
+  ├─ Persisted alarm fires → housekeeping check                   [fallback path]
+
+
+  Recovery:
+
+  ├─ SELECT * FROM cf_agents_runs
+
+  ├─ For each orphaned row:
+
+  │    ├─ Parse snapshot from JSON
+
+  │    ├─ Call onFiberRecovered(ctx)
+
+  │    └─ DELETE the row
+
+  └─ If onFiberRecovered calls runFiber() again → new row, normal execution
+
+
+```
+
+Explain Code
+
+Both recovery paths call the same hook. The alarm path is critical for background agents that have no incoming client connections — the persisted alarm wakes the agent on its own.
+
+#### Error during execution
+
+```
+
+fn(ctx) throws Error
+
+  ├─ DELETE row from cf_agents_runs
+
+  ├─ keepAlive dispose
+
+  └─ Error propagates to caller (or logged if fire-and-forget)
+
+
+```
+
+No automatic retries. Recovery logic belongs in `onFiberRecovered`, where you have the snapshot and full context about what went wrong.
+
+### Inline vs fire-and-forget
+
+`runFiber()` supports both patterns:
+
+TypeScript
+
+```
+
+// Inline — await the result
+
+const result = await this.runFiber("work", async (ctx) => {
+
+  return computeExpensiveThing();
+
+});
+
+
+// Fire-and-forget — caller does not wait
+
+void this.runFiber("background", async (ctx) => {
+
+  await longRunningProcess();
+
+});
+
+
+```
+
+If the DO is evicted during an inline `await`, the caller is gone. On recovery, `onFiberRecovered` fires — it cannot return a result to the original caller. This is the inherent limitation of durable execution across process boundaries. For long-running work that is likely to outlive a single DO lifetime, fire-and-forget with checkpoint/recovery is the safer pattern.
+
+## Checkpoints with stash
+
+`ctx.stash(data)` writes to SQLite **synchronously**. There is no async gap between "I decided to save" and "it is saved." If eviction happens after `stash()` returns, the data is guaranteed to be in SQLite.
+
+Each call **fully replaces** the previous snapshot — it is not a merge. Write the complete recovery state you need:
+
+TypeScript
+
+```
+
+await this.runFiber("research", async (ctx) => {
+
+  const steps = ["search", "analyze", "synthesize"];
+
+  const completed: string[] = [];
+
+  const results: Record<string, unknown> = {};
+
+
+  for (const step of steps) {
+
+    results[step] = await executeStep(step);
+
+    completed.push(step);
+
+
+    ctx.stash({
+
+      completed,
+
+      results,
+
+      pendingSteps: steps.slice(completed.length)
+
+    });
+
+  }
+
+});
+
+
+```
+
+Explain Code
+
+### this.stash vs ctx.stash
+
+Both do the same thing. `ctx.stash()` uses a direct closure over the fiber ID. `this.stash()` uses `AsyncLocalStorage` to find the currently executing fiber — it works correctly even with concurrent fibers, since each fiber's ALS context is independent.
+
+`this.stash()` is convenient when calling from nested functions that do not have access to `ctx`. It throws if called outside a `runFiber` callback.
+
+## Recovery
+
+Override `onFiberRecovered` to handle interrupted fibers. The default implementation logs a warning and deletes the row.
+
+TypeScript
+
+```
+
+class ResearchAgent extends Agent {
+
+  async onFiberRecovered(ctx: FiberRecoveryContext) {
+
+    if (ctx.name !== "research") return;
+
+
+    const snapshot = ctx.snapshot as {
+
+      completed: string[];
+
+      results: Record<string, unknown>;
+
+      pendingSteps: string[];
+
+    } | null;
+
+
+    if (snapshot && snapshot.pendingSteps.length > 0) {
+
+      void this.runFiber("research", async (fiberCtx) => {
+
+        const { completed, results, pendingSteps } = snapshot;
+
+
+        for (const step of pendingSteps) {
+
+          results[step] = await this.executeStep(step);
+
+          completed.push(step);
+
+
+          fiberCtx.stash({
+
+            completed,
+
+            results,
+
+            pendingSteps: pendingSteps.slice(pendingSteps.indexOf(step) + 1)
+
+          });
+
+        }
+
+      });
+
+    }
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+Key points:
+
+* **The original lambda is gone.** On recovery, you only have the `name` and `snapshot`. The lambda cannot be serialized — recovery logic must be in the hook.
+* **The row is deleted after the hook runs.** If you want to continue the work, call `runFiber()` again inside the hook — this creates a new row.
+* **You control what recovery means.** Retry from the beginning, resume from a checkpoint, skip and notify the user, or do nothing. The framework does not impose a strategy.
+* **If the hook throws, the row is still deleted.** You do not get a second chance at recovery. If your recovery logic can fail, catch errors and handle them (for example, schedule a retry, log, or re-create the fiber).
+
+### Chat recovery
+
+`AIChatAgent` builds on fibers for LLM streaming recovery. When `unstable_chatRecovery` is enabled, each chat turn is wrapped in a fiber automatically. The framework handles the internal recovery path and exposes `onChatRecovery` for provider-specific strategies. Refer to [Long-running agents: Recovering interrupted LLM streams](https://developers.cloudflare.com/agents/concepts/long-running-agents/#recovering-interrupted-llm-streams) for details.
+
+## Concurrent fibers
+
+Multiple fibers can run at the same time. Each has its own row in SQLite with its own snapshot, and each calls `keepAlive()` independently (ref-counted, so the DO stays alive until all fibers complete).
+
+TypeScript
+
+```
+
+void this.runFiber("fetch-data", async (ctx) => {
+
+  /* ... */
+
+});
+
+void this.runFiber("process-queue", async (ctx) => {
+
+  /* ... */
+
+});
+
+
+```
+
+On recovery, all orphaned rows are iterated and `onFiberRecovered` is called for each. Use `ctx.name` to distinguish between fiber types in your recovery hook.
+
+## Testing locally
+
+In `wrangler dev`, fiber recovery works identically to production. SQLite and alarm state persist to disk between restarts.
+
+1. Start your agent and trigger a fiber (`runFiber`)
+2. Kill the wrangler process (Ctrl-C or SIGKILL)
+3. Restart wrangler
+4. Recovery fires automatically — via `onStart()` if a request arrives, or via the persisted alarm if no clients connect
+
+## API reference
+
+### runFiber(name, fn)
+
+Execute a durable fiber. The fiber is registered in SQLite before `fn` runs and deleted after it completes (or throws). `keepAlive()` is held for the duration.
+
+* **`name`** — identifier for the fiber, used in `onFiberRecovered` to distinguish fiber types. Not unique — multiple fibers can share a name.
+* **`fn`** — async function receiving a `FiberContext`. Closures work naturally (`this` and local variables are captured).
+* **Returns** — the value returned by `fn`. If the DO is evicted before completion, the return value is lost; recovery happens through the hook.
+
+### stash(data) / ctx.stash(data)
+
+Checkpoint the current fiber's state. Writes synchronously to SQLite. Each call fully replaces the previous snapshot. `data` must be JSON-serializable.
+
+### onFiberRecovered(ctx)
+
+Called once per orphaned fiber row on agent restart. Override to implement recovery. The row is deleted after this hook returns.
+
+* **`ctx.id`** — unique fiber ID
+* **`ctx.name`** — the name passed to `runFiber()`
+* **`ctx.snapshot`** — the last `stash()` data, or `null` if `stash()` was never called
+
+### keepAlive()
+
+Create a 30-second alarm heartbeat. Returns a disposer function. Idempotent — calling the disposer multiple times is safe.
+
+### keepAliveWhile(fn)
+
+Run an async function while keeping the DO alive. Heartbeat starts before `fn` and stops when it completes or throws. Returns the value returned by `fn`.
+
+## Related
+
+* [Long-running agents](https://developers.cloudflare.com/agents/concepts/long-running-agents/) — how fibers compose with schedules, plans, and async operations
+* [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) — `keepAlive` details and the alarm system
+* [Workflows](https://developers.cloudflare.com/agents/concepts/workflows/) — durable multi-step execution outside the agent
+* [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/) — `unstable_chatRecovery` and `onChatRecovery`
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/api-reference/durable-execution/","name":"Durable execution"}}]}
+```

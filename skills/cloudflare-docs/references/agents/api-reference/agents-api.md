@@ -95,21 +95,22 @@ flowchart TD
 
 ## Server-side API reference
 
-| Feature               | Methods                                                                    | Documentation                                                                                        |
-| --------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **State**             | setState(), onStateChanged(), initialState                                 | [Store and sync state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) |
-| **Callable methods**  | @callable() decorator                                                      | [Callable methods](https://developers.cloudflare.com/agents/api-reference/callable-methods/)         |
-| **Scheduling**        | schedule(), scheduleEvery(), getSchedules(), cancelSchedule(), keepAlive() | [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/)             |
-| **Queue**             | queue(), dequeue(), dequeueAll(), getQueue()                               | [Queue tasks](https://developers.cloudflare.com/agents/api-reference/queue-tasks/)                   |
-| **WebSockets**        | onConnect(), onMessage(), onClose(), broadcast()                           | [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/)                     |
-| **HTTP/SSE**          | onRequest()                                                                | [HTTP and SSE](https://developers.cloudflare.com/agents/api-reference/http-sse/)                     |
-| **Email**             | onEmail(), replyToEmail()                                                  | [Email routing](https://developers.cloudflare.com/agents/api-reference/email/)                       |
-| **Workflows**         | runWorkflow(), waitForApproval()                                           | [Run Workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/)               |
-| **MCP Client**        | addMcpServer(), removeMcpServer(), getMcpServers()                         | [MCP Client API](https://developers.cloudflare.com/agents/api-reference/mcp-client-api/)             |
-| **AI Models**         | Workers AI, OpenAI, Anthropic bindings                                     | [Using AI models](https://developers.cloudflare.com/agents/api-reference/using-ai-models/)           |
-| **Protocol messages** | shouldSendProtocolMessages(), isConnectionProtocolEnabled()                | [Protocol messages](https://developers.cloudflare.com/agents/api-reference/protocol-messages/)       |
-| **Context**           | getCurrentAgent()                                                          | [getCurrentAgent()](https://developers.cloudflare.com/agents/api-reference/get-current-agent/)       |
-| **Observability**     | subscribe(), diagnostics channels, Tail Workers                            | [Observability](https://developers.cloudflare.com/agents/api-reference/observability/)               |
+| Feature               | Methods                                                                | Documentation                                                                                        |
+| --------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **State**             | setState(), onStateChanged(), initialState                             | [Store and sync state](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/) |
+| **Callable methods**  | @callable() decorator                                                  | [Callable methods](https://developers.cloudflare.com/agents/api-reference/callable-methods/)         |
+| **Scheduling**        | schedule(), scheduleEvery(), getSchedules(), cancelSchedule()          | [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/)             |
+| **Durable execution** | runFiber(), stash(), onFiberRecovered(), keepAlive(), keepAliveWhile() | [Durable execution](https://developers.cloudflare.com/agents/api-reference/durable-execution/)       |
+| **Queue**             | queue(), dequeue(), dequeueAll(), getQueue()                           | [Queue tasks](https://developers.cloudflare.com/agents/api-reference/queue-tasks/)                   |
+| **WebSockets**        | onConnect(), onMessage(), onClose(), broadcast()                       | [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/)                     |
+| **HTTP/SSE**          | onRequest()                                                            | [HTTP and SSE](https://developers.cloudflare.com/agents/api-reference/http-sse/)                     |
+| **Email**             | onEmail(), replyToEmail()                                              | [Email routing](https://developers.cloudflare.com/agents/api-reference/email/)                       |
+| **Workflows**         | runWorkflow(), waitForApproval()                                       | [Run Workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/)               |
+| **MCP Client**        | addMcpServer(), removeMcpServer(), getMcpServers()                     | [MCP Client API](https://developers.cloudflare.com/agents/api-reference/mcp-client-api/)             |
+| **AI Models**         | Workers AI, OpenAI, Anthropic bindings                                 | [Using AI models](https://developers.cloudflare.com/agents/api-reference/using-ai-models/)           |
+| **Protocol messages** | shouldSendProtocolMessages(), isConnectionProtocolEnabled()            | [Protocol messages](https://developers.cloudflare.com/agents/api-reference/protocol-messages/)       |
+| **Context**           | getCurrentAgent()                                                      | [getCurrentAgent()](https://developers.cloudflare.com/agents/api-reference/get-current-agent/)       |
+| **Observability**     | subscribe(), diagnostics channels, Tail Workers                        | [Observability](https://developers.cloudflare.com/agents/api-reference/observability/)               |
 
 ## SQL API
 

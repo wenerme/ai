@@ -21,6 +21,7 @@ Copy page
 * [ Agent class internals ](https://developers.cloudflare.com/agents/concepts/agent-class/)
 * [ Human in the Loop ](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/)
 * [ Calling LLMs ](https://developers.cloudflare.com/agents/concepts/calling-llms/)
+* [ Long-running agents ](https://developers.cloudflare.com/agents/concepts/long-running-agents/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/concepts/","name":"Concepts"}}]}

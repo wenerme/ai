@@ -133,6 +133,7 @@ func main() {
         })),
         Description: optionalnullable.From(openrouter.Pointer("A guardrail for limiting API usage")),
         EnforceZdr: optionalnullable.From(openrouter.Pointer(false)),
+        IgnoredModels: optionalnullable.From[[]string](nil),
         IgnoredProviders: optionalnullable.From[[]string](nil),
         LimitUsd: openrouter.Pointer[float64](50.0),
         Name: "My New Guardrail",

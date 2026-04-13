@@ -115,6 +115,15 @@ components:
             - boolean
             - 'null'
           description: Whether to enforce zero data retention
+        ignored_models:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: >-
+            Array of model identifiers to exclude from routing (slug or
+            canonical_slug accepted)
         ignored_providers:
           type:
             - array
@@ -166,6 +175,13 @@ components:
           type: string
           format: uuid
           description: Unique identifier for the guardrail
+        ignored_models:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: Array of model canonical_slugs to exclude from routing
         ignored_providers:
           type:
             - array

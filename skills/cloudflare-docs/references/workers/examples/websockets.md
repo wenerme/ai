@@ -20,7 +20,7 @@ Copy page
 
 # Using the WebSockets API
 
-**Last reviewed:**  almost 5 years ago 
+**Last reviewed:**  about 5 years ago 
 
 Use the WebSockets API to communicate in real time with your Cloudflare Workers.
 
@@ -63,8 +63,8 @@ For more details about creating and working with WebSockets in the client, refer
 
 When an incoming WebSocket request reaches the Workers function, it will contain an `Upgrade` header, set to the string value `websocket`. Check for this header before continuing to instantiate a WebSocket:
 
-* [  JavaScript ](#tab-panel-7443)
-* [  Rust ](#tab-panel-7444)
+* [  JavaScript ](#tab-panel-7533)
+* [  Rust ](#tab-panel-7534)
 
 JavaScript
 
@@ -117,8 +117,8 @@ Explain Code
 
 After you have appropriately checked for the `Upgrade` header, you can create a new instance of `WebSocketPair`, which contains server and client WebSockets. One of these WebSockets should be handled by the Workers function and the other should be returned as part of a `Response` with the [101 status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/101), indicating the request is switching protocols:
 
-* [  JavaScript ](#tab-panel-7445)
-* [  Rust ](#tab-panel-7446)
+* [  JavaScript ](#tab-panel-7535)
+* [  Rust ](#tab-panel-7536)
 
 JavaScript
 
@@ -204,8 +204,8 @@ The `WebSocketPair` constructor returns an Object, with the `0` and `1` keys eac
 
 In order to begin communicating with the `client` WebSocket in your Worker, call `accept` on the `server` WebSocket. This will tell the Workers runtime that it should listen for WebSocket data and keep the connection open with your `client` WebSocket:
 
-* [  JavaScript ](#tab-panel-7447)
-* [  Rust ](#tab-panel-7448)
+* [  JavaScript ](#tab-panel-7537)
+* [  Rust ](#tab-panel-7538)
 
 JavaScript
 
@@ -290,9 +290,9 @@ Explain Code
 
 WebSockets emit a number of [Events](https://developers.cloudflare.com/workers/runtime-apis/websockets/#events) that can be connected to using `addEventListener`. The below example hooks into the `message` event and emits a `console.log` with the data from it:
 
-* [  JavaScript ](#tab-panel-7449)
-* [  Rust ](#tab-panel-7450)
-* [  Hono ](#tab-panel-7451)
+* [  JavaScript ](#tab-panel-7539)
+* [  Rust ](#tab-panel-7540)
+* [  Hono ](#tab-panel-7541)
 
 JavaScript
 
