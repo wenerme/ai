@@ -156,6 +156,10 @@ update-tea-cli-docs:
 update-immich-docs:
     bun scripts/sync-immich-docs.ts
 
+# Sync Zellij docs from local zellij-org/zellij-org.github.io clone
+update-zellij-docs:
+    bun scripts/sync-zellij-docs.ts
+
 # Fetch Cloudflare developer docs from developers.cloudflare.com
 update-cloudflare-docs:
     bun scripts/fetch-cloudflare-docs.ts
@@ -198,6 +202,7 @@ update:
     -just update-k3s-docs
     -just update-justfile-docs
     -just update-immich-docs
+    -just update-zellij-docs
     -just update-glab-docs
     -just update-tea-cli-docs
     -just update-cloudflare-docs
