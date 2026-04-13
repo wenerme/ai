@@ -150,13 +150,6 @@ This is particularly useful when you have only one organization, as creating mul
 | ZO_JSON_LIMIT | 209715200 | The max payload size of JSON. |
 | ZO_PAYLOAD_LIMIT | 209715200 | The max payload size of http request body. |
 
-## Actix Server
-| Environment Variable | Default Value | Description |
-|---------------------|---------------|-------------|
-| ZO_ACTIX_REQ_TIMEOUT | 30 | Sets actix server client timeout in seconds for first request. |
-| ZO_ACTIX_KEEP_ALIVE | 30 | Sets actix server keep-alive preference in seconds. |
-| ZO_ACTIX_SHUTDOWN_TIMEOUT | | Sets timeout for graceful worker shutdown of actix workers. |
-
 ## Cookies
 | Environment Variable | Default Value | Description |
 |---------------------|---------------|-------------|

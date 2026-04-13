@@ -626,10 +626,10 @@
   "anthropic-docs/managed-agents/files.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/files",
     "skill": "anthropic-docs",
-    "etag": "W/\"46c5-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 18117,
-    "updatedAt": "2026-04-09T00:12:36.234Z"
+    "etag": "W/\"484e-19d820d31a0\"",
+    "lastModified": "Sun, 12 Apr 2026 14:16:36 GMT",
+    "size": 18510,
+    "updatedAt": "2026-04-13T00:16:22.741Z"
   },
   "anthropic-docs/managed-agents/memory.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/memory",

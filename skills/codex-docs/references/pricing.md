@@ -59,19 +59,19 @@ Teams can now get started with Codex with no fixed monthly costs. For a
       </PricingCard>
       <PricingCard
         name="Pro"
-        subtitle="Choose 5x or 20x higher rate limits than Plus."
+        subtitle="Choose 10x or 20x higher rate limits than Plus."
         priceEyebrow="From"
         price="$100"
         interval="/month"
         ctaLabel="Get Pro"
         ctaHref="https://chatgpt.com/explore/pro?utm_internal_source=openai_developers_codex"
         highlight="Everything in Plus and:"
-        footnoteLabel="*Codex usage boost ends May 31, 2026."
+        footnoteLabel="*Current usage includes an additional boost ending May 31, 2026. Pro $100 is currently 10x Plus. Pro $200 is currently 20x Plus (equivalent to the 2x promo available since February 2026)."
       >
         - Priority request processing
         - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
           for day-to-day coding tasks
-        - 5x or 20x higher rate limits than Plus*
+        - 10x or 20x higher rate limits than Plus*
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
       </PricingCard>
@@ -310,8 +310,7 @@ require Codex to hold more context will use significantly more per message.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              The limits shown for Pro 5x include a 2x usage boost that ends May
-              31, 2026.
+              Pro $100 currently runs at 10x Plus limits through May 31, 2026.
             </td>
           </tr>
           <tr>
@@ -374,6 +373,12 @@ require Codex to hold more context will use significantly more per message.
                 *The usage limits for local messages and cloud tasks share a
                 **five-hour window**. Additional weekly limits may apply.
               </a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align:center">
+              Pro $200 remains at 20x Plus limits. This is equivalent to the 2x
+              promo available since February 2026.
             </td>
           </tr>
           <tr>

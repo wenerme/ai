@@ -233,7 +233,7 @@ export const commandOverview = [
     href: "/codex/cli/reference#codex-sandbox",
     type: "experimental",
     description:
-      "Run arbitrary commands inside Codex-provided macOS seatbelt or Linux sandboxes (Landlock by default, optional bubblewrap pipeline).",
+      "Run arbitrary commands inside Codex-provided macOS seatbelt or Linux bubblewrap sandboxes.",
   },
 ];
 

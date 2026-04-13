@@ -24,8 +24,8 @@ You can get the Codex extension from the [Visual Studio Code Marketplace](https:
 - [Download for JetBrains IDEs](#jetbrains-ide-integration)
 
 The Codex VS Code extension is available on macOS and Linux. Windows support
-  is experimental. For the best Windows experience, use Codex in a WSL workspace
-  and follow our <a href="/codex/windows">Windows setup guide</a>.
+  is experimental. For the best Windows experience, use Codex in a WSL2
+  workspace and follow our <a href="/codex/windows">Windows setup guide</a>.
 
 After you install it, you'll find Codex in your editor sidebar.
 In VS Code, Codex opens in the right sidebar by default.

@@ -7,7 +7,7 @@ keywords: ['upgrades', 'version management', 'cloud features', 'maintenance', 'u
 
 # Upgrades
 
-With ClickHouse Cloud you never have to worry about patching and upgrades. We roll out upgrades that include fixes, new features and performance improvements on a periodic basis. For the full list of what is new in ClickHouse refer to our [Cloud changelog](/whats-new/cloud).
+With ClickHouse Cloud you never have to worry about patching and upgrades. We roll out upgrades that include fixes, new features and performance improvements on a periodic basis. For the full list of what is new in ClickHouse refer to our [Cloud changelog](/whats-new/changelog/cloud).
 
 > **note**: We're introducing a new upgrade mechanism, a concept we call "make before break" (or MBB). With this new approach, we add updated replicas before removing the old ones during the upgrade operation. This results in more seamless upgrades that are less disruptive to running workloads.
 
