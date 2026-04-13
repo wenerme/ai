@@ -19,7 +19,7 @@ zellij list-sessions
 
 ```bash
 # 筛选 terminal 面板（排除 tab-bar / status-bar 等 UI 插件）
-zellij --session <SESSION> action list-panes -j -t | \
+zellij --session <SESSION> action list-panes --json | \
   python3 -c "
 import json, sys
 panes = json.load(sys.stdin)
@@ -29,12 +29,13 @@ for p in [x for x in panes if not x['is_plugin']]:
 ```
 
 > `id` 是 session 内全局唯一的整数，引用格式为 `terminal_<id>` 或裸整数 `<id>`。
+> 当前 pane 内可直接读取 `$ZELLIJ_PANE_ID` 获取自身 ID，无需调用 list-panes。
 
 ### 通过面板标题定位
 
 ```bash
 # 找到 title 含 "dev-server" 的面板 ID
-zellij --session <SESSION> action list-panes -j | \
+zellij --session <SESSION> action list-panes --json | \
   python3 -c "
 import json, sys
 panes = json.load(sys.stdin)
@@ -49,21 +50,22 @@ print(match['id'] if match else 'NOT_FOUND')
 
 ## 核心操作
 
-### 执行命令
+### 发送输入（优先用 paste，更快更可靠）
 
 ```bash
-# 写入命令文本
-zellij --session $SESSION action write-chars --pane-id $PANE "你的命令"
+# 【首选】paste 使用 bracketed paste mode，支持多行，比 write-chars 更快更稳定
+zellij --session $SESSION action paste --pane-id $PANE "你的命令"
 # 发送 Enter
 zellij --session $SESSION action send-keys --pane-id $PANE "Enter"
-# 必须：读取输出确认结果
-sleep 0.5
-zellij --session $SESSION action dump-screen --pane-id $PANE
+
+# 【备用】write-chars 逐字符发送（单行简单命令可用）
+zellij --session $SESSION action write-chars --pane-id $PANE "你的命令"
+zellij --session $SESSION action send-keys --pane-id $PANE "Enter"
 ```
 
-> **重要**：`write-chars` 写入字面文本，`send-keys` 发送按键序列，两者配合使用。
+> **CRITICAL RULE**: 发送命令后必须读取输出确认结果，不假设成功。
 
-### 读取输出
+### 读取输出（快照）
 
 ```bash
 # 读取当前视口（最近 N 行）
@@ -71,6 +73,21 @@ zellij --session $SESSION action dump-screen --pane-id $PANE
 
 # 读取完整滚动缓冲（长任务输出）
 zellij --session $SESSION action dump-screen --pane-id $PANE --full
+```
+
+### 实时监控输出（流式，推荐用于等待任务完成）
+
+```bash
+# 流式输出到 stdout（直到 pane 关闭）
+zellij --session $SESSION subscribe --pane-id $PANE
+
+# JSON 格式，可用 jq 过滤
+zellij --session $SESSION subscribe --pane-id $PANE --format json \
+  | jq --unbuffered 'select(.event == "pane_update") | .viewport[]'
+
+# 过滤关键词（如等待 "Finished" 出现后退出）
+zellij --session $SESSION subscribe --pane-id $PANE \
+  | grep -m1 "Finished"
 ```
 
 ### 中断进程
@@ -92,15 +109,28 @@ zellij --session $SESSION action rename-pane --pane-id $PANE "my-pane-name"
 ### 创建新面板并获取 ID
 
 ```bash
-# 在指定会话中新建面板，返回 terminal_<id>
-PANE_ID=$(zellij --session $SESSION run -d down -- bash)
-echo "Created: $PANE_ID"  # e.g. terminal_5
+# 方式一：新建 shell pane（需额外注入命令）
+PANE=$(zellij --session $SESSION action new-pane --name "worker")
+echo "Created: $PANE"  # e.g. terminal_5
+
+# 方式二：直接启动命令（推荐，绕过 shell，pane 退出时 exited 字段为 true）
+PANE=$(zellij --session $SESSION action new-pane -- cargo build --release)
+
+# 方式三：用 zellij run（same as new-pane，返回 pane ID）
+PANE=$(zellij --session $SESSION run -d down -- bash)
 ```
 
-### 在新面板中运行命令（自动关闭）
+### 在新面板中运行命令（blocking，等待完成）
 
 ```bash
-zellij --session $SESSION run -d down --close-on-exit -- bash -c "npm run build"
+# 阻塞直到命令成功（失败时 pane 停留，Enter 可重试）
+zellij --session $SESSION action new-pane --block-until-exit-success -- cargo test
+
+# 阻塞直到命令退出（无论成功失败）
+zellij --session $SESSION action new-pane --block-until-exit -- ./deploy.sh
+
+# 阻塞直到 pane 被用户手动关闭
+zellij --session $SESSION action new-pane --blocking -- cargo build
 ```
 
 ### 关闭面板
@@ -113,16 +143,59 @@ zellij --session $SESSION action close-pane --pane-id $PANE
 
 ## 判断命令是否完成
 
-`dump-screen` 输出末尾出现 shell prompt（`% ` 或 `$ `）即表示命令已结束：
+### 方式一：blocking pane（最简单，推荐）
 
 ```bash
-# 轮询直到 prompt 出现
+# 等待命令成功，继续下一步
+zellij --session $SESSION action new-pane --block-until-exit-success -- npm run build
+echo "Build succeeded!"
+```
+
+### 方式二：subscribe 等待关键词（流式，适合 shell pane）
+
+```bash
+# 等待输出包含完成标志
+zellij --session $SESSION subscribe --pane-id $PANE | grep -m1 "DONE\|error\|failed"
+```
+
+### 方式三：轮询 pane exit status（适合直接启动命令的 pane）
+
+```bash
+# 当 pane 以 new-pane -- <cmd> 方式创建时，exited 字段会变为 true
+while true; do
+  EXITED=$(zellij --session $SESSION action list-panes --json \
+    | python3 -c "import json,sys; panes=json.load(sys.stdin); p=next((p for p in panes if p['id']==${PANE#terminal_}), None); print(p['exited'] if p else 'not_found')")
+  [ "$EXITED" = "True" ] && break
+  sleep 1
+done
+zellij --session $SESSION action dump-screen --pane-id $PANE --full
+```
+
+### 方式四：轮询 prompt（适合交互式 shell，有局限）
+
+```bash
+# 注意：仅适用于 bash/zsh（prompt 以 $ 或 % 结尾），fish 等 shell 不适用
 for i in $(seq 1 30); do
   OUTPUT=$(zellij --session $SESSION action dump-screen --pane-id $PANE)
   echo "$OUTPUT" | tail -3 | grep -qE '[%$] *$' && break
   sleep 2
 done
 echo "$OUTPUT"
+```
+
+---
+
+## 后台 Session（Headless）
+
+```bash
+# 创建后台 session（不 attach 终端）
+zellij attach --create-background my-session
+
+# 指定 layout
+zellij attach --create-background my-session options --default-layout compact
+
+# 之后通过 --session 控制
+zellij --session my-session action new-pane -- cargo build
 ```
 
 ---
@@ -143,24 +216,34 @@ echo "$OUTPUT"
 
 适合"无限 token"下的并行任务分发：
 
-```
-Coordinator Agent (Claude Code)
-    │
-    ├─ zellij --session work action write-chars --pane-id 3 "task A command"
-    │  → send-keys Enter → dump-screen 轮询结果
-    │
-    ├─ zellij --session work action write-chars --pane-id 4 "task B command"
-    │  → send-keys Enter → dump-screen 轮询结果
-    │
-    └─ 汇总结果、分发下一轮任务
+```bash
+# Coordinator 创建后台 session
+zellij attach --create-background work
+
+# 分配任务到命名 pane
+PANE_A=$(zellij --session work action new-pane --name "agent-research")
+PANE_B=$(zellij --session work action new-pane --name "agent-build")
+
+# 向各 pane 注入命令
+zellij --session work action paste --pane-id $PANE_A "python research.py" && \
+  zellij --session work action send-keys --pane-id $PANE_A "Enter"
+
+zellij --session work action paste --pane-id $PANE_B "cargo build" && \
+  zellij --session work action send-keys --pane-id $PANE_B "Enter"
+
+# 并行监控（各自后台运行）
+zellij --session work subscribe --pane-id $PANE_A | grep -m1 "DONE" &
+zellij --session work subscribe --pane-id $PANE_B | grep -m1 "Finished" &
+wait
 ```
 
 ### 推荐约定
 
-- **每个 agent 独占一个命名面板**：`rename-pane` 设置语义名（如 `agent-research`、`agent-build`）
-- **任务分发**：Coordinator 通过 `write-chars` + `send-keys Enter` 向目标面板注入命令
-- **结果回收**：通过 `dump-screen` 轮询，检测 prompt 出现确认完成
-- **标记输出**：让 agent 命令输出唯一标记（如 `echo "DONE:task-A"`），方便 grep 定位
+- **每个 agent 独占一个命名面板**：`--name` 设置语义名（如 `agent-research`、`agent-build`）
+- **发送命令**：优先用 `paste` + `send-keys Enter`，多行命令也可靠
+- **等待完成**：优先用 `--block-until-exit*`（同步）或 `subscribe` + `grep`（异步）
+- **标记输出**：让 agent 命令输出唯一标记（如 `echo "DONE:task-A"`），方便 subscribe/grep 定位
+- **独占写入**：避免多 process 同时向同一 pane 写入（会乱序）
 
 ---
 
@@ -169,10 +252,13 @@ Coordinator Agent (Claude Code)
 | 特性 | tmux | zellij |
 |------|------|--------|
 | 面板引用 | `session:window.pane`（位置相关） | `terminal_<id>`（全局稳定 ID） |
-| 写入文本 | `send-keys "text" C-m` | `write-chars "text"` + `send-keys "Enter"` |
-| 读取输出 | `capture-pane -pt $PANE` | `dump-screen --pane-id $PANE` |
+| 写入文本 | `send-keys "text" C-m` | `paste "text"` + `send-keys "Enter"` |
+| 读取输出（快照） | `capture-pane -pt $PANE` | `dump-screen --pane-id $PANE` |
+| 读取输出（实时） | `pipe-pane` | `subscribe --pane-id $PANE` |
+| 等待命令完成 | 轮询 prompt | `--block-until-exit*` 或 `subscribe` |
 | 跨会话控制 | `tmux -L ... send-keys -t ...` | `zellij --session <name> action ...` |
-| 列出面板 | `list-panes -F "..."` | `list-panes -j`（JSON，结构化） |
+| 列出面板 | `list-panes -F "..."` | `list-panes --json`（结构化 JSON） |
+| 后台 session | `tmux new-session -d` | `zellij attach --create-background` |
 
 ---
 
@@ -181,6 +267,7 @@ Coordinator Agent (Claude Code)
 | 规则 | 说明 |
 |------|------|
 | 禁止交互式 TUI | 不运行 `vim`、`top`、`htop` 等需要持续键盘输入的程序 |
-| 先读后写 | 发送命令后必须 `dump-screen` 确认结果，不假设成功 |
-| 引号转义 | `write-chars` 参数中注意 shell 引号嵌套 |
-| 长任务异步 | 确认命令已启动即可，无需等待完成，后续轮询 prompt |
+| 先写后读 | 发送命令后必须用 `dump-screen` 或 `subscribe` 确认结果 |
+| paste 优先 | 多行或含特殊字符的命令用 `paste`，不用 `write-chars` |
+| 引号转义 | `paste`/`write-chars` 参数中注意 shell 引号嵌套 |
+| 长任务异步 | 确认命令已启动即可，用 `subscribe` 或 blocking flag 等待完成 |
