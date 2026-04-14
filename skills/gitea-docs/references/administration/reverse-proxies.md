@@ -11,8 +11,8 @@ aliases:
 1. Set `[server] ROOT_URL = https://git.example.com/` in your `app.ini` file.
 2. Make the reverse-proxy pass `https://git.example.com/foo` to `http://gitea:3000/foo`.
 3. Make sure the reverse-proxy does not decode the URI. The request `https://git.example.com/a%2Fb` should be passed as `http://gitea:3000/a%2Fb`.
-4. Make sure `Host` and `X-Fowarded-Proto` headers are correctly passed to Gitea to make Gitea see the real URL being visited.
-5. Make sure your webserver has a certificate, including all intermediate and RootCA certificates, for `git clone` and `git pull` to work. 
+4. Make sure `Host` and `X-Forwarded-Proto` headers are correctly passed to Gitea to make Gitea see the real URL being visited.
+5. Make sure your webserver has a certificate, including all intermediate and RootCA certificates, for `git clone` and `git pull` to work.
 
 ### Use a sub-path
 

@@ -16,7 +16,7 @@ Copy page
 
 # SIEM integration
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 Area 1 has been renamed
 

@@ -36,6 +36,55 @@ The updated UI includes:
 
 For more information, refer to [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/) and [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/).
 
+## 2026-03-26
+
+  
+**Code mode for MCP server portals**   
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support [code mode](https://developers.cloudflare.com/agents/api-reference/codemode/), a technique that reduces context window usage by replacing individual tool definitions with a single code execution tool. Code mode is turned on by default on all portals.
+
+To turn it off, edit the portal in **Access controls** \> **AI controls** and turn off **Code mode** under **Basic information**.
+
+When code mode is active, the portal exposes a single `code` tool instead of listing every tool from every upstream MCP server. The connected AI agent writes JavaScript that calls typed `codemode.*` methods for each upstream tool. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, keeping authentication credentials and environment variables out of the model context.
+
+To use code mode, append `?codemode=search_and_execute` to your portal URL when connecting from an MCP client:
+
+```
+
+https://<subdomain>.<domain>/mcp?codemode=search_and_execute
+
+
+```
+
+For more information, refer to [code mode](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode).
+
+## 2026-03-20
+
+  
+**Managed OAuth for Cloudflare Access**   
+
+Cloudflare Access supports managed OAuth, which allows non-browser clients — such as CLIs, AI agents, SDKs, and scripts — to authenticate with Access-protected applications using a standard OAuth 2.0 authorization code flow.
+
+Previously, non-browser clients that attempted to access a protected application received a `302` redirect to a login page they could not complete. The established workaround was `cloudflared access curl`, which required installing additional tooling.
+
+With managed OAuth, clients instead receive a `401` response with a `WWW-Authenticate` header that points to Access's OAuth discovery endpoints ([RFC 8414 ↗](https://datatracker.ietf.org/doc/html/rfc8414) and [RFC 9728 ↗](https://datatracker.ietf.org/doc/html/rfc9728)). The client opens the end user's browser to the Access login page. The end user authenticates with their identity provider, and the client receives an OAuth access token for subsequent requests.
+
+Access enforces the same policies as a browser login; the OAuth layer is a new transport mechanism, not a separate authentication path.
+
+Managed OAuth can be enabled on any self-hosted Access application or [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/). It is opt-in for existing applications to avoid interfering with those that run their own OAuth servers and rely on their own `WWW-Authenticate` headers.
+
+Note
+
+For MCP server portals, managed OAuth is enabled by default on new portals. It remains opt-in for self-hosted applications.
+
+To enable managed OAuth, go to **Zero Trust** \> **Access controls** \> **Applications**, edit the application, and turn on **Managed OAuth** under **Advanced settings**.
+
+You can also enable it via the API by setting `oauth_configuration.enabled` to `true` on the [Access applications endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/update/).
+
+![Managed OAuth settings in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/managed-oauth.BirLnBpy_Zjg97R.webp) 
+
+For setup instructions, refer to [Enable managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/).
+
 ## 2026-03-20
 
   

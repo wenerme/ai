@@ -96,6 +96,7 @@ Below is a full list of all the settings, their default values, and their effect
 | UseCustomDecimals | `bool` | `true` | `UseCustomDecimals` | Use `ClickHouseDecimal` for arbitrary precision; if false, uses .NET `decimal` (128-bit limit) |
 | ReadStringsAsByteArrays | `bool` | `false` | `ReadStringsAsByteArrays` | Read `String` and `FixedString` columns as `byte[]` instead of `string`; useful for binary data |
 | UseFormDataParameters | `bool` | `false` | `UseFormDataParameters` | Send parameters as form data instead of URL query string |
+| ParameterTypeResolver | `IParameterTypeResolver` | `null` | — | Custom resolver for `@`-style parameter type mapping; see [Custom parameter type mapping](#parameter-type-mapping) |
 | JsonReadMode | `JsonReadMode` | `Binary` | `JsonReadMode` | How JSON data is returned: `Binary` (returns `JsonObject`) or `String` (returns raw JSON string) |
 | JsonWriteMode | `JsonWriteMode` | `String` | `JsonWriteMode` | How JSON data is sent: `String` (serializes via `JsonSerializer`, accepts all inputs) or `Binary` (registered POCOs only with type hints) |
 
@@ -174,6 +175,7 @@ Host=localhost;set_max_threads=4;set_readonly=1;set_max_memory_usage=10000000000
 | UseSession | `bool?` | Override session behavior for this query |
 | SessionId | `string` | Session ID for this query (requires `UseSession = true`) |
 | BearerToken | `string` | Override authentication token for this query |
+| ParameterTypeResolver | `IParameterTypeResolver` | Override client-level resolver for `@`-style parameter type mapping; see [Custom parameter type mapping](#parameter-type-mapping) |
 | MaxExecutionTime | `TimeSpan?` | Server-side query timeout (passed as `max_execution_time` setting); server cancels query if exceeded |
 
 **Example:**
@@ -413,6 +415,72 @@ var options = new InsertOptions
 * When `MaxDegreeOfParallelism > 1`, batches are uploaded in parallel. Sessions are not compatible with parallel insertion; either disable sessions or set `MaxDegreeOfParallelism = 1`.
 * Use `RowBinaryFormat.RowBinaryWithDefaults` in `InsertOptions.Format` if you want the server to apply DEFAULT values for columns not provided.
 
+#### POCO inserts {#poco-insert}
+
+Instead of constructing `object[]` arrays, you can insert strongly-typed POCO objects directly. Register the type once, then pass `IEnumerable<T>`:
+
+```csharp
+// Define a POCO matching your table columns
+public class SensorReading
+{
+    public ulong Id { get; set; }
+    public string SensorName { get; set; }
+    public double Value { get; set; }
+    public DateTime Timestamp { get; set; }
+}
+
+// Register the type (once per client lifetime)
+client.RegisterBinaryInsertType<SensorReading>();
+
+// Insert directly — column names are derived from property names
+var readings = Enumerable.Range(0, 100_000)
+    .Select(i => new SensorReading
+    {
+        Id = (ulong)i,
+        SensorName = $"sensor_{i % 10}",
+        Value = Random.Shared.NextDouble() * 100,
+        Timestamp = DateTime.UtcNow,
+    });
+
+long rowsInserted = await client.InsertBinaryAsync("sensors", readings);
+```
+
+By default, all public readable properties are mapped to columns using strict case-sensitive name matching. You can customize the mapping with attributes:
+
+```csharp
+public class Event
+{
+    [ClickHouseColumn(Name = "event_id")]     // Map to a differently-named column
+    public ulong Id { get; set; }
+
+    [ClickHouseColumn(Type = "LowCardinality(String)")]  // Explicit ClickHouse type
+    public string Category { get; set; }
+
+    public string Payload { get; set; }
+
+    [ClickHouseNotMapped]                     // Exclude from insert
+    public string InternalTag { get; set; }
+}
+```
+
+| Attribute | Purpose |
+|-----------|---------|
+| `[ClickHouseColumn(Name = "...")]` | Override the target column name |
+| `[ClickHouseColumn(Type = "...")]` | Declare the ClickHouse type explicitly |
+| `[ClickHouseNotMapped]` | Exclude the property from the insert |
+
+When **all** mapped properties specify an explicit `Type`, the schema probe query is skipped entirely. When only some properties have explicit types, the driver falls back to the schema probe for the full column set.
+
+`InsertBinaryAsync<T>` supports the same `InsertOptions` (batching, parallelism, schema caching) as the `object[]` overload.
+
+> **note**: Unlike the `object[]` overload, `InsertBinaryAsync<T>` does not accept an explicit column list. Columns are determined by the registered type's mapped properties. To control which columns are inserted, use `[ClickHouseNotMapped]` to exclude properties or `[ClickHouseColumn(Name = "...")]` to rename them.
+
+If `ColumnTypes` is set in `InsertOptions`, they will override the POCO attributes.
+
+#### Schema evolution {#poco-insert-schema-evolution}
+
+POCO inserts work seamlessly when columns are added to the target table after the type is registered. Because the driver only inserts the columns mapped by the POCO, any new columns with `DEFAULT` (or other default expressions) are filled in by the server automatically. No code changes or re-registration are needed.
+
 ---
 
 ### Reading data {#reading-data}
@@ -480,6 +548,67 @@ var reader = await client.ExecuteReaderAsync(
 ```
 
 > **tip**: If you're specifying a custom `QueryId`, ensure it is unique for every call. A random GUID is a good choice.
+
+---
+
+### Custom parameter type mapping {#parameter-type-mapping}
+
+When using `@`-style parameters (e.g., `WHERE id = @id`), the driver automatically infers the ClickHouse type from the .NET value type. For example, `int` maps to `Int32`, and `DateTime` maps to `DateTime`.
+
+To override these defaults, set `ParameterTypeResolver` on `ClickHouseClientSettings`. This is useful when you want all `DateTime` parameters to use `DateTime64(3)` for millisecond precision, or all decimals to use a specific scale, without setting `ClickHouseType` on every individual parameter.
+
+**Using `DictionaryParameterTypeResolver` for simple type mappings:**
+
+```csharp
+using ClickHouse.Driver.ADO.Parameters;
+
+var settings = new ClickHouseClientSettings("Host=localhost")
+{
+    ParameterTypeResolver = new DictionaryParameterTypeResolver(new Dictionary<Type, string>
+    {
+        [typeof(DateTime)] = "DateTime64(3)",
+        [typeof(decimal)] = "Decimal64(4)",
+    }),
+};
+using var client = new ClickHouseClient(settings);
+
+var parameters = new ClickHouseParameterCollection();
+parameters.AddParameter("dt", DateTime.UtcNow);     // Mapped to DateTime64(3)
+parameters.AddParameter("amount", 99.1234m);         // Mapped to Decimal64(4)
+
+await client.ExecuteReaderAsync("SELECT @dt, @amount", parameters);
+```
+
+**Custom `IParameterTypeResolver` for advanced scenarios:**
+
+For value-aware or name-based resolution, implement the `IParameterTypeResolver` interface directly. Return `null` to fall through to the default inference:
+
+```csharp
+public class SmartDecimalResolver : IParameterTypeResolver
+{
+    public string ResolveType(Type clrType, object value, string parameterName)
+    {
+        if (clrType != typeof(decimal))
+            return null; // Fall through to default
+
+        var scale = (decimal.GetBits((decimal)value)[3] >> 16) & 0x7F;
+        return scale <= 4 ? $"Decimal64({scale})" : $"Decimal128({scale})";
+    }
+}
+```
+
+You can also set a resolver for a single query via `QueryOptions.ParameterTypeResolver`. When set, it takes precedence over the client-level resolver.
+
+**Type resolution precedence:**
+
+The resolver is one step in a precedence chain. From highest to lowest priority:
+
+1. Explicit `ClickHouseType` set on the parameter
+2. SQL type hint from `{name:Type}` syntax in the query
+3. `IParameterTypeResolver` (from `QueryOptions.ParameterTypeResolver`, falling back to `ClickHouseClientSettings.ParameterTypeResolver`)
+4. Built-in type inference (`TypeConverter.ToClickHouseType`)
+
+The resolver also works with the ADO.NET `ClickHouseConnection` path — the settings are inherited by connections created from the client.
 
 ---
 

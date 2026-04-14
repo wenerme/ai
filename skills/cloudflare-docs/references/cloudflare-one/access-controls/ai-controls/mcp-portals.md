@@ -28,6 +28,8 @@ Key benefits include:
 
 * **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers and MCP servers secured using OAuth (for example, via [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/saas-mcp/) or a [third-party OAuth provider](https://developers.cloudflare.com/agents/model-context-protocol/authorization/)). Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
 * **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
+* **Non-browser client support**: MCP clients authenticate to the portal using a standard OAuth 2.0 authorization code flow via [managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/). Non-browser clients receive a `401` response with a `WWW-Authenticate` header pointing to Access's OAuth discovery endpoints, rather than a browser redirect.
+* **Code mode**: Code mode is available by default on all portals. It collapses all upstream tools into a single `code` tool. The AI agent writes JavaScript that calls typed methods for each tool, and the code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This keeps context window usage fixed regardless of how many tools are available. Refer to [code mode](#code-mode) for connection instructions.
 * **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal. You can optionally route portal traffic through [Cloudflare Gateway](#route-portal-traffic-through-gateway) for richer HTTP logging and data loss prevention (DLP) scanning.
 
 This guide explains how to add MCP servers to Cloudflare Access, create an MCP portal with customized tools and policies, and connect users to the portal using an MCP client.
@@ -44,7 +46,7 @@ Add individual MCP servers to Cloudflare Access to bring them under centralized 
 
 To add an MCP server:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Go to the **MCP servers** tab.
 3. Select **Add an MCP server**.
 4. Enter any name for the server.
@@ -72,7 +74,7 @@ The MCP server status indicates the synchronization status of the MCP server to 
 
 To reauthenticate an MCP server in Cloudflare Access:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Go to the **MCP servers** tab.
 3. Select the server that you want to reauthenticate, then select **Edit**.
 4. Select **Authenticate server**.
@@ -83,7 +85,7 @@ You will be redirected to log in to your OAuth provider. The account used to aut
 
 Cloudflare Access automatically synchronizes with your MCP server every 24 hours. To manually refresh the MCP server in Zero Trust:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Go to the **MCP servers** tab and find the server that you want to refresh.
 3. Select the three dots > **Sync capabilities**.
 
@@ -93,7 +95,7 @@ The MCP server page will show the updated list of tools and prompts. New tools a
 
 To create an MCP server portal:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Select **Add MCP server portal**.
 3. Enter any name for the portal.
 4. Under **Custom domain**, select a domain for the portal URL. Domains must belong to an active zone in your Cloudflare account. You can optionally specify a subdomain.
@@ -110,7 +112,7 @@ Users can now [connect to the portal](#connect-to-a-portal) at `https://<subdoma
 
 Cloudflare Access automatically creates an Access application for each MCP server portal. You can customize the portal login experience by updating Access application settings:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Find the portal that you want to configure, then select the three dots > **Edit**.
 3. To configure identity providers for the portal:  
    1. Go to the **Login methods** tab.  
@@ -124,6 +126,95 @@ Cloudflare Access automatically creates an Access application for each MCP serve
          * **Custom page template**: Display a [custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/) hosted in Cloudflare One.
 5. Select **Save application**.
 
+## Code mode
+
+[Code mode](https://developers.cloudflare.com/agents/api-reference/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
+
+To use code mode, the MCP client must request it when connecting to the portal URL. Refer to [Connect with code mode](#connect-with-code-mode) for the required query parameter.
+
+Code mode is useful for portals that aggregate many MCP servers or servers that expose a large number of tools. Context window usage stays fixed regardless of how many tools are available through the portal.
+
+### Connect with code mode
+
+To use code mode, append the `?codemode=search_and_execute` query string parameter to your portal URL when [connecting](#connect-to-a-portal) from an MCP client.
+
+For example, if your portal URL is `https://<subdomain>.<domain>/mcp`, connect to:
+
+```
+
+https://<subdomain>.<domain>/mcp?codemode=search_and_execute
+
+
+```
+
+For MCP clients with server configuration files, use the portal URL with the query string parameter:
+
+MCP client configuration with code mode
+
+```
+
+{
+
+  "mcpServers": {
+
+    "example-portal": {
+
+      "command": "npx",
+
+      "args": [
+
+        "-y",
+
+        "mcp-remote@latest",
+
+        "https://<subdomain>.<domain>/mcp?codemode=search_and_execute"
+
+      ]
+
+    }
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+When code mode is active, the portal advertises a single `code` tool to connected MCP clients. The AI agent discovers available tools by inspecting the typed method signatures in the Dynamic Worker environment and composes multiple tool calls into a single code execution.
+
+For more information on building with code mode, refer to the [code mode SDK reference](https://developers.cloudflare.com/agents/api-reference/codemode/).
+
+### Turn off code mode
+
+To turn off code mode for a portal:
+
+* [ Dashboard ](#tab-panel-3480)
+* [ API ](#tab-panel-3481)
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+2. Find the portal you want to configure, then select the three dots > **Edit**.
+3. Under **Basic information**, turn off **Code mode**.
+
+1. Get your existing MCP portal configuration:  
+Read details of an MCP Portal  
+```  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-controls/mcp/portals/$ID" \  
+  --request GET \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  
+```
+2. Send a `PUT` request to the [Update a MCP Portal](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/portals/methods/update/) endpoint with `allow_code_mode` set to `false`. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.  
+Update a MCP Portal  
+```  
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-controls/mcp/portals/$ID" \  
+  --request PUT \  
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \  
+  --json '{  
+    "allow_code_mode": false  
+  }'  
+```
+
 ## Route portal traffic through Gateway
 
 When Gateway routing is turned on, calls to MCP servers protected by your MCP server portal appear in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) alongside the rest of your organization's HTTP traffic. You can then create [Data Loss prevention (DLP) policies](#example-gateway-policy) to detect and block sensitive data from leaving your users' devices and being sent to your upstream MCP servers.
@@ -132,7 +223,7 @@ When Gateway routing is turned on, calls to MCP servers protected by your MCP se
 
 To route MCP server portal traffic through Gateway:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **AI controls**
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
 4. Select **Save**.
