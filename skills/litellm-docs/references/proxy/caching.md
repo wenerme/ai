@@ -171,7 +171,7 @@ For GCP Memorystore Redis with IAM authentication, install the required dependen
 
 > **info**: IAM authentication for redis is only supported via GCP and only on Redis Clusters for now.
 ```shell
-pip install google-cloud-iam
+uv add google-cloud-iam
 ```
 
 For Redis Cluster with GCP IAM:

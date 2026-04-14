@@ -464,11 +464,11 @@ curl -X POST http://0.0.0.0:4000/chat/completions \
 }'
 ```
 
-## (Deprecated) for `vllm pip package` 
+## (Deprecated) for packaged `vllm` installs
 ### Using - `litellm.completion`
 
 ```
-pip install litellm vllm
+uv add litellm vllm
 ```
 ```python
 import litellm 

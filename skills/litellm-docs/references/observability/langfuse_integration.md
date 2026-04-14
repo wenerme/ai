@@ -17,9 +17,9 @@ Example trace in Langfuse using multiple models via LiteLLM:
 ## Usage with LiteLLM Python SDK
 
 ### Pre-Requisites
-Ensure you have run `pip install langfuse` for this integration
+Ensure you have run `uv add langfuse` for this integration
 ```shell
-pip install langfuse==2.59.7 litellm
+uv add langfuse==2.59.7 litellm
 ```
 
 ### Quick Start
@@ -35,7 +35,7 @@ litellm.success_callback = ["langfuse"]
 litellm.failure_callback = ["langfuse"] # logs errors to langfuse
 ```
 ```python
-# pip install langfuse 
+# uv add langfuse 
 import litellm
 import os
 
@@ -321,7 +321,7 @@ Be aware that if you are continuing an existing trace, and you set `update_trace
 
 ## Troubleshooting & Errors
 ### Data not getting logged to Langfuse ? 
-- Ensure you're on the latest version of langfuse `pip install langfuse -U`. The latest version allows litellm to log JSON input/outputs to langfuse
+- Ensure you're on the latest version of langfuse `uv add langfuse -U`. The latest version allows litellm to log JSON input/outputs to langfuse
 - Follow [this checklist](https://langfuse.com/faq/all/missing-traces) if you don't see any traces in langfuse.
 
 ## Support & Talk to Founders

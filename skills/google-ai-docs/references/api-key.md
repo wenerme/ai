@@ -1,5 +1,3 @@
-# Using Gemini API keys
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -297,7 +295,8 @@ private data, such as files.
 - **Use ephemeral tokens for client-side access (Live API only):** For direct
   client-side access to the Live API, you can use ephemeral tokens. They come with
   lower security risks and can be suitable for production use. Review
-  [ephemeral tokens](https://ai.google.dev/gemini-api/docs/ephemeral-tokens) guide for more information.
+  [ephemeral tokens](https://ai.google.dev/gemini-api/docs/ephemeral-tokens) guide for more
+  information.
 
 - **Consider adding restrictions to your key:** You can limit a key's permissions
   by adding [API key restrictions](https://cloud.google.com/api-keys/docs/add-restrictions-api-keys#add-api-restrictions).
@@ -305,3 +304,24 @@ private data, such as files.
 
 For some general best practices, you can also review this
 [support article](https://support.google.com/googleapi/answer/6310037).
+
+## Troubleshooting API key creation
+
+In Google AI Studio, the **Create API key** button may appear unavailable, with
+the message: "*You do not have permission to create a key in this project*".
+
+This occurs when you lack the necessary permissions within the
+project to generate a new key:
+
+- **`resourcemanager.projects.get`**: Allows AI Studio to verify the project's existence.
+- **`apikeys.keys.create`**: Allows for the generation of the API key itself.
+- **`serviceusage.services.enable`**: Required to ensure the Gemini API is active on the project.
+- **`iam.serviceAccounts.create`** : Every new API key now requires a linked [service account](https://docs.cloud.google.com/docs/authentication/api-keys#api-keys-bound-sa), generated at API key creation.
+
+To fix your permissions, ask your project admin, or your organization's
+admin if the project belongs to an [organization](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access),
+to grant you a role with the permissions listed above (such as Project Editor or
+a custom role).
+
+If you do not have administrative access to a project, you can create
+a new project that is not associated with an organization to generate your keys.

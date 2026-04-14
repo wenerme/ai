@@ -321,9 +321,7 @@ Explain Code
 
 * `asyncResource.bind(fnfunction, thisArgany)`  
    * Binds the given function to the async context associated with this `AsyncResource`.
-* `  
-asyncResource.runInAsyncScope(fnfunction, thisArgany, ...argsarguments)  
-`  
+* `asyncResource.runInAsyncScope(fnfunction, thisArgany, ...argsarguments)`  
    * Call the provided function with the given arguments in the async context associated with this `AsyncResource`.
 
 ## Caveats

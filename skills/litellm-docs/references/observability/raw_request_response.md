@@ -6,7 +6,7 @@
 See the raw request/response sent by LiteLLM in your logging provider (OTEL/Langfuse/etc.).
 
 ```python
-# pip install langfuse 
+# uv add langfuse 
 import litellm
 import os
 

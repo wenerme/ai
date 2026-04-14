@@ -143,8 +143,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-4065)
-* [  wrangler.toml ](#tab-panel-4066)
+* [  wrangler.jsonc ](#tab-panel-4135)
+* [  wrangler.toml ](#tab-panel-4136)
 
 JSONC
 
@@ -353,28 +353,27 @@ This allows for multiple ways of using Containers:
 
 Note
 
-Currently, routing requests to one of many interchangeable Container instances is accomplished with the `getRandom` helper.
+Today, routing requests to one of many interchangeable Container instances uses the`getRandom` helper.
 
-This is temporary — we plan to add native support for latency-aware autoscaling and load balancing in the coming months.
+It randomly selects one of a fixed number of instances for each request.
 
 ## View Containers in your Dashboard
 
-The [Containers Dashboard ↗](http://dash.cloudflare.com/?to=/:account/workers/containers) shows you helpful information about your Containers, including:
+The [Containers Dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/containers) shows you helpful information about your Containers, including:
 
 * Status and Health
 * Metrics
 * Logs
-* A link to associated Workers and Durable Objects
 
-After launching your Worker, navigate to the Containers Dashboard by clicking on "Containers" under "Workers & Pages" in your sidebar.
+After launching your Worker, go to the Containers Dashboard by selecting**Workers & Pages** \> **Containers** in the dashboard sidebar.
 
 ## Next Steps
 
 To do more:
 
 * Modify the image by changing the Dockerfile and calling `wrangler deploy`
-* Review our [examples](https://developers.cloudflare.com/containers/examples) for more inspiration
-* Get [more information on the Containers Beta](https://developers.cloudflare.com/containers/beta-info)
+* Review our [examples](https://developers.cloudflare.com/containers/examples/) for more inspiration
+* Review the [Frequently Asked Questions](https://developers.cloudflare.com/containers/faq/) for current platform behavior and limitations
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/get-started/","name":"Getting started"}}]}

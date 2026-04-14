@@ -21,9 +21,9 @@ Copy page
 
 ## Deployment
 
-After you deploy an application with a Container, your image is uploaded to[Cloudflare's Registry](https://developers.cloudflare.com/containers/platform-details/image-management) and distributed globally to Cloudflare's Network. Cloudflare will pre-schedule instances and pre-fetch images across the globe to ensure quick start times when scaling up the number of concurrent container instances.
+After you deploy an application with a Container, your image is uploaded to[Cloudflare's Registry](https://developers.cloudflare.com/containers/platform-details/image-management/) and distributed globally to Cloudflare's Network. Cloudflare will pre-schedule instances and pre-fetch images across the globe to ensure quick start times when scaling up the number of concurrent container instances.
 
-Unlike Workers, which are updated immediately on deploy, container instances are updated using a rolling deploy strategy. This allows you to gracefully shutdown any running instances during a rollout. Refer to [rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/) for more details.
+Unlike Workers, which are updated immediately on deploy, container instances are updated using a rolling deploy strategy. This allows you to gracefully shut down any running instances during a rollout. Refer to [rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/) for more details.
 
 ## Lifecycle of a Request
 
@@ -43,9 +43,9 @@ When a Durable Object instance requests to start a new container instance, the *
 
 Note
 
-Currently, Durable Objects may be co-located with their associated Container instance, but often are not.
+Durable Objects and their associated Container instances are not guaranteed to run in the same location.
 
-Cloudflare is currently working on expanding the number of locations in which a Durable Object can run, which will allow container instances to always run in the same location as their Durable Object.
+Container placement is optimized for request routing and startup speed, so a Container may start in a different location than its Durable Object.
 
 Starting additional container instances will use other locations with pre-fetched images, and Cloudflare will automatically begin prepping additional machines behind the scenes for additional scaling and quick cold starts. Because there are a finite number of pre-warmed locations, some container instances may be started in locations that are farther away from the end-user. This is done to ensure that the container instance starts quickly. You are only charged for actively running instances and not for any unused pre-warmed images.
 
@@ -53,7 +53,7 @@ Starting additional container instances will use other locations with pre-fetche
 
 A cold start is when a container instance is started from a completely stopped state. If you call `env.MY_CONTAINER.get(id)` with a completely novel ID and launch this instance for the first time, it will result in a cold start. This will start the container image from its entrypoint for the first time. Depending on what this entrypoint does, it will take a variable amount of time to start.
 
-Container cold starts can often be the 2-3 second range, but this is dependent on image size and code execution time, among other factors.
+Container cold starts can often be in the 1-3 second range, but this is dependent on image size and code execution time, among other factors.
 
 ### Requests to running Containers
 
@@ -63,7 +63,7 @@ However, once that container instance stops and restarts, future requests could 
 
 ### Container runtime
 
-Each container instance runs inside its own VM, which provides strong isolation from other workloads running on Cloudflare's network. Containers should be built for the `linux/amd64` architecture, and should stay within[size limits](https://developers.cloudflare.com/containers/platform-details/limits).
+Each container instance runs inside its own VM, which provides strong isolation from other workloads running on Cloudflare's network. Containers should be built for the `linux/amd64` architecture, and should stay within[size limits](https://developers.cloudflare.com/containers/platform-details/limits/).
 
 [Logging](https://developers.cloudflare.com/containers/faq/#how-do-container-logs-work), metrics collection, and[networking](https://developers.cloudflare.com/containers/faq/#how-do-i-allow-or-disallow-egress-from-my-container) are automatically set up on each container, as configured by the developer.
 
@@ -71,13 +71,17 @@ Each container instance runs inside its own VM, which provides strong isolation 
 
 If you do not set [sleepAfter ↗](https://github.com/cloudflare/containers/blob/main/README.md#properties)on your Container class, or stop the instance manually, the container will shut down soon after the container stops receiving requests. By setting `sleepAfter`, the container will stay alive for approximately the specified duration.
 
-You can manually shutdown a container instance by calling `stop()` or `destroy()` on it - refer to the [Container package docs ↗](https://github.com/cloudflare/containers/blob/main/README.md#container-methods) for more details.
+You can manually shut down a container instance by calling `stop()` or `destroy()` on it. Refer to the [Container package docs ↗](https://github.com/cloudflare/containers/blob/main/README.md#container-methods) for more details.
 
 When a container instance is going to be shut down, it is sent a `SIGTERM` signal, and then a `SIGKILL` signal after 15 minutes. You should perform any necessary cleanup to ensure a graceful shutdown in this time.
 
 #### Persistent disk
 
-All disk is ephemeral. When a Container instance goes to sleep, the next time it is started, it will have a fresh disk as defined by its container image. Persistent disk is something the Cloudflare team is exploring in the future, but is not slated for the near term.
+All disk is ephemeral. When a Container instance goes to sleep, the next time it is started, it will have a fresh disk as defined by its container image.
+
+Snapshots are coming soon, which allow the user to quickly persist and restore the disk from an entire container or a directory.
+
+You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/) to persist disk to R2 or other object storage backends. Though you should not expect native SSD-like performance while using FUSE.
 
 ## An example request
 

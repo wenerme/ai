@@ -16,7 +16,7 @@ litellm.callbacks = ["lago"] # logs cost + usage of successful calls to lago
 ```
 
 ```python
-# pip install lago 
+# uv add lago 
 import litellm
 import os
 

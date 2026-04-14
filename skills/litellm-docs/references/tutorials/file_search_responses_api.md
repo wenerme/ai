@@ -66,7 +66,7 @@ print(response.output)
 ### 1. Install + set keys
 
 ```bash
-pip install litellm
+uv add litellm
 export OPENAI_API_KEY="sk-..."
 export ANTHROPIC_API_KEY="sk-ant-..."
 ```
@@ -121,7 +121,7 @@ flowchart TD
 ## Prerequisites
 
 ```bash
-pip install 'litellm[proxy]'
+uv tool install 'litellm[proxy]'
 export OPENAI_API_KEY="sk-..."          # for native path
 export ANTHROPIC_API_KEY="sk-ant-..."  # for emulated path
 ```

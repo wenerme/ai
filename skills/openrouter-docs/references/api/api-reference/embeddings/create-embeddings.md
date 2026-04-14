@@ -264,6 +264,7 @@ components:
         - Crusoe
         - DeepInfra
         - DeepSeek
+        - DekaLLM
         - Featherless
         - Fireworks
         - Friendli
@@ -298,6 +299,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Recraft
         - Reka
         - Relace
         - SambaNova

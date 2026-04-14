@@ -18,7 +18,7 @@
 2. Get your API key and webhook URL from the Qualifire dashboard
 
 ```bash
-pip install litellm
+uv add litellm
 ```
 
 ## Quick Start

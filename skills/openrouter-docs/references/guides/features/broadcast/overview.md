@@ -34,6 +34,7 @@ The following destinations are currently available:
 * [New Relic](/docs/guides/features/broadcast/newrelic)
 * [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector)
 * [PostHog](/docs/guides/features/broadcast/posthog)
+* [Ramp](/docs/guides/features/broadcast/ramp)
 * [S3 / S3-Compatible](/docs/guides/features/broadcast/s3)
 * [Sentry](/docs/guides/features/broadcast/sentry)
 * [Snowflake](/docs/guides/features/broadcast/snowflake)
@@ -206,6 +207,7 @@ Each observability platform may recognize different metadata keys. See the desti
 * [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector#custom-metadata) - Supports OTLP span attributes for any backend
 * [Webhook](/docs/guides/features/broadcast/webhook#custom-metadata) - Custom metadata in OTLP JSON payload
 * [PostHog](/docs/guides/features/broadcast/posthog#custom-metadata) - Supports event properties for LLM analytics
+* [Ramp](/docs/guides/features/broadcast/ramp#custom-metadata) - Supports OTLP span attributes for AI cost tracking
 * [Snowflake](/docs/guides/features/broadcast/snowflake#custom-metadata) - Queryable via VARIANT column functions
 * [ClickHouse](/docs/guides/features/broadcast/clickhouse#custom-metadata) - Queryable via JSONExtract functions
 * [S3](/docs/guides/features/broadcast/s3#custom-metadata) - Stored in trace JSON files
@@ -257,7 +259,7 @@ Broadcast can be configured at both the individual user level and the organizati
 
 ## Walkthroughs
 
-Step-by-step guides for configuring specific broadcast destinations:
+Step-by-step guides for configuring specific observability destinations:
 
 * [Arize AI](/docs/guides/features/broadcast/arize) - ML observability and monitoring
 * [Braintrust](/docs/guides/features/broadcast/braintrust) - LLM evaluation and monitoring
@@ -270,6 +272,7 @@ Step-by-step guides for configuring specific broadcast destinations:
 * [New Relic](/docs/guides/features/broadcast/newrelic) - Full-stack observability platform
 * [OpenTelemetry Collector](/docs/guides/features/broadcast/otel-collector) - Send traces to any OTLP-compatible backend
 * [PostHog](/docs/guides/features/broadcast/posthog) - Product analytics with LLM tracking
+* [Ramp](/docs/guides/features/broadcast/ramp) - AI usage tracking and cost management
 * [S3 / S3-Compatible](/docs/guides/features/broadcast/s3) - Store traces in S3, R2, or compatible storage
 * [Sentry](/docs/guides/features/broadcast/sentry) - Application monitoring and error tracking
 * [Snowflake](/docs/guides/features/broadcast/snowflake) - Cloud data warehouse for analytics

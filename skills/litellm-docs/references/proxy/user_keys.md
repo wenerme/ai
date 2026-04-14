@@ -766,13 +766,13 @@ In the [config.py](https://continue.dev/docs/reference/Models/openai) set this a
 Credits [@vividfog](https://github.com/ollama/ollama/issues/305#issuecomment-1751848077) for this tutorial. 
 
 ```shell
-$ pip install aider 
+$ uv add aider 
 
 $ aider --openai-api-base http://0.0.0.0:4000 --openai-api-key fake-key
 ```
 
 ```python
-pip install pyautogen
+uv add pyautogen
 ```
 
 ```python

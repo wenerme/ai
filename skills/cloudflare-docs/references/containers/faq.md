@@ -1,6 +1,7 @@
 ---
 title: Frequently Asked Questions
-description: Frequently Asked Questions:
+description: To get logs in the Dashboard, including live tailing of logs, toggle observability to true
+in your Worker's wrangler config:
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,14 +17,12 @@ Copy page
 
 # Frequently Asked Questions
 
-Frequently Asked Questions:
-
 ## How do Container logs work?
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-4019)
-* [  wrangler.toml ](#tab-panel-4020)
+* [  wrangler.jsonc ](#tab-panel-4133)
+* [  wrangler.toml ](#tab-panel-4134)
 
 JSONC
 
@@ -68,7 +67,7 @@ When a Container instance is requested with `this.ctx.container.start`, the near
 An Example:
 
 * A user deploys a Container. Cloudflare automatically readies instances across its Network.
-* A request is made from a client in Bariloche, Argentia. It reaches the Worker in Cloudflare's location in Neuquen, Argentina.
+* A request is made from a client in Bariloche, Argentina. It reaches the Worker in Cloudflare's location in Neuquen, Argentina.
 * This Worker request calls `MY_CONTAINER.get("session-1337")` which brings up a Durable Object, which then calls `this.ctx.container.start`.
 * This requests the nearest free Container instance.
 * Cloudflare recognizes that an instance is free in Buenos Aires, Argentina, and starts it there.
@@ -82,7 +81,15 @@ See [rollout documentation](https://developers.cloudflare.com/containers/platfor
 
 ## How does scaling work?
 
-See [scaling & routing documentation](https://developers.cloudflare.com/containers/platform-details/scaling-and-routing/) for details.
+Containers scale by creating or addressing specific instances. For stateless routing across a fixed number of interchangeable instances, use the `getRandom` helper.
+
+Refer to [scaling and routing](https://developers.cloudflare.com/containers/platform-details/scaling-and-routing/) for details.
+
+### Is built-in autoscaling for stateless applications available?
+
+Not today, though Cloudflare plans to add built-in autoscaling in a future release.
+
+Until then, use `getRandom` for simple stateless routing and specific instance IDs when you need explicit control over container lifecycle.
 
 ## What are cold starts? How fast are they?
 
@@ -92,7 +99,7 @@ If you call `env.MY_CONTAINER.get(id)` with a completely novel ID and launch thi
 
 This will start the container image from its entrypoint for the first time. Depending on what this entrypoint does, it will take a variable amount of time to start.
 
-Container cold starts can often be the 2-3 second range, but this is dependent on image size and code execution time, among other factors.
+Container cold starts can often be in the 1-3 second range, but this is dependent on image size and code execution time, among other factors.
 
 ## How do I use an existing container image?
 
@@ -102,7 +109,9 @@ See [image management documentation](https://developers.cloudflare.com/container
 
 All disk is ephemeral. When a Container instance goes to sleep, the next time it is started, it will have a fresh disk as defined by its container image.
 
-Persistent disk is something the Cloudflare team is exploring in the future, but is not slated for the near term.
+Snapshots are coming soon, which allow the user to quickly persist and restore the disk from an entire container or a directory.
+
+You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/) to persist disk to R2 or other object storage backends. Though you should not expect native SSD-like performance while using FUSE.
 
 ## What happens if I run out of memory?
 
@@ -110,7 +119,7 @@ If you run out of memory, your instance will throw an Out of Memory (OOM) error 
 
 Containers do not use swap memory.
 
-## How long can instances run for? What happens when a host server is shutdown?
+## How long can instances run for? What happens when a host server is shut down?
 
 Cloudflare will not actively shut off a container instance after a specific amount of time. If you do not set `sleepAfter` on your Container class, or stop the instance manually, it will continue to run unless its host server is restarted. This happens on an irregular cadence, but frequently enough where Cloudflare does not guarantee that any instance will run for any set period of time.
 
@@ -120,47 +129,7 @@ When a container instance is going to be shut down, it is sent a `SIGTERM` signa
 
 You can use [Worker Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or the [Secrets Store](https://developers.cloudflare.com/secrets-store/integrations/workers/)to define secrets for your Workers.
 
-Then you can pass these secrets to your Container using the `envVars` property:
-
-JavaScript
-
-```
-
-class MyContainer extends Container {
-
-  defaultPort = 5000;
-
-  envVars = {
-
-    MY_SECRET: this.env.MY_SECRET,
-
-  };
-
-}
-
-
-```
-
-Or when starting a Container instance on a Durable Object:
-
-JavaScript
-
-```
-
-this.ctx.container.start({
-
-  env: {
-
-    MY_SECRET: this.env.MY_SECRET,
-
-  },
-
-});
-
-
-```
-
-See [the Env Vars and Secrets Example](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) for details.
+For implementation details, refer to [Environment variables and secrets](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/).
 
 ## Can I run Docker inside a container (Docker-in-Docker)?
 
@@ -219,39 +188,7 @@ For a complete working example, see the [Docker-in-Docker Containers example ↗
 
 ## How do I allow or disallow egress from my container?
 
-When booting a Container, you can specify `enableInternet`, which will toggle internet access on or off.
-
-To disable it, configure it on your Container class:
-
-JavaScript
-
-```
-
-class MyContainer extends Container {
-
-  defaultPort = 7000;
-
-  enableInternet = false;
-
-}
-
-
-```
-
-or when starting a Container instance on a Durable Object:
-
-JavaScript
-
-```
-
-this.ctx.container.start({
-
-  enableInternet: false,
-
-});
-
-
-```
+Refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/) for how to control outbound traffic and internet access.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/containers/","name":"Containers"}},{"@type":"ListItem","position":3,"item":{"@id":"/containers/faq/","name":"Frequently Asked Questions"}}]}

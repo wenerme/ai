@@ -958,6 +958,7 @@ components:
         - Crusoe
         - DeepInfra
         - DeepSeek
+        - DekaLLM
         - Featherless
         - Fireworks
         - Friendli
@@ -992,6 +993,7 @@ components:
         - Parasail
         - Perplexity
         - Phala
+        - Recraft
         - Reka
         - Relace
         - SambaNova
@@ -1595,6 +1597,32 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    SearchModelsServerToolConfig:
+      type: object
+      properties:
+        max_results:
+          type: integer
+          description: Maximum number of models to return. Defaults to 5, max 20.
+      description: Configuration for the openrouter:experimental__search_models server tool
+      title: SearchModelsServerToolConfig
+    ChatSearchModelsServerToolType:
+      type: string
+      enum:
+        - openrouter:experimental__search_models
+      title: ChatSearchModelsServerToolType
+    ChatSearchModelsServerTool:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/SearchModelsServerToolConfig'
+        type:
+          $ref: '#/components/schemas/ChatSearchModelsServerToolType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: searches and filters AI models
+        available on OpenRouter
+      title: ChatSearchModelsServerTool
     WebSearchEngineEnum:
       type: string
       enum:
@@ -1757,6 +1785,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ChatFunctionTool0'
         - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
         - $ref: '#/components/schemas/ChatWebSearchShorthand'
       description: >-

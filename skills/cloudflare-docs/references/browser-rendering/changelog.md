@@ -20,6 +20,11 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-rendering/changelog/index.xml)
 
+## 2026-04-13
+
+**@cloudflare/puppeteer v1.1.0 released**
+* Released version 1.1.0 of [@cloudflare/puppeteer](https://github.com/cloudflare/puppeteer/releases/tag/v1.1.0), which replaces the internal chunked protocol with plain CDP. This fixes a compatibility issue when using the latest compatibility dates.
+
 ## 2026-04-10
 
 **Chrome DevTools Protocol (CDP) and MCP client support**

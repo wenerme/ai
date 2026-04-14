@@ -1,5 +1,3 @@
-# Gemini API optimization and inference
-
 The Gemini API offers a variety of optimization mechanisms to help you balance
 speed, cost, and reliability based on your specific workload needs.
 Whether you're building real-time conversational bots or running heavy offline
@@ -8,15 +6,15 @@ costs or boost performance.
 
 | Feature | Standard | Flex | Priority | Batch | Caching |
 |---|---|---|---|---|---|
-| **Pricing** | Full Price | 50% discount | 75% to 100% more than standard | 50% discount | Prorated token storage |
-| **Latency** | Seconds to minutes | Minutes (1--15 min target) | Low (Seconds) | Up to 24 hours | Faster time-to-first-token |
+| **Pricing** | Full Price | 50% discount | 75% to 100% more than standard | 50% discount | 90% discount + Prorated token storage |
+| **Latency** | Seconds to minutes | Minutes (1--15 min target) | Seconds | Up to 24 hours | Faster time-to-first-token |
 | **Reliability** | High / Medium-high | Best-effort (Sheddable) | High (Non-sheddable) | High (for throughput) | N/A |
 | **Interface** | Synchronous | Synchronous | Synchronous | Asynchronous | Saved state |
 | **Best use case** | General application workflows | Non-urgent sequential chains | Production, user-facing apps | Massive datasets, offline evals | Recurring queries over same file |
 
 ## Inference service tiers (Synchronous)
 
-You can shift between latency-optimized and cost-optimized synchronous traffic
+You can shift between reliability-optimized and cost-optimized synchronous traffic
 by passing the `service_tier` parameter in your standard generation calls.
 
 ### Standard inference (Default)
@@ -24,7 +22,7 @@ by passing the `service_tier` parameter in your standard generation calls.
 The standard tier is the default option for sequential content generation.
 It provides normal response times without extra premiums or heavy queuing.
 
-- **Latency:** Seconds to minutes.
+- **Reliability:** Standard criticality
 - **Price:** Standard pricing.
 - **Best For:** Most interactive day-to-day applications.
 
@@ -37,9 +35,9 @@ offers the highest reliability. If you exceed dynamic Priority limits,
 the system will gracefully downgrade the request to Standard processing instead
 of failing with an error.
 
-- **Latency:** Ultra-low (milliseconds to seconds).
+- **Reliability:** Highest criticality
 - **Price:** 75% to 100% over Standard rates.
-- **Best for:** Live customer chatbots, real-time fraud detection, and business-critical copilots.
+- **Best for:** Customer chatbots, real-time fraud detection, and business-critical copilots.
 
 ### Flex inference (Cost-optimized)
 
@@ -50,7 +48,7 @@ synchronously, meaning you don't need to rewrite code to manage batch objects.
 Because it is "sheddable" traffic, requests may be preempted if the system
 experiences standard traffic spikes.
 
-- **Latency:** Non-guaranteed, target of 1 to 15 minutes.
+- **Reliability:** Non-guaranteed, sheddable criticality
 - **Price:** 50% of Standard Pricing (billed per token).
 - **Best for:** Multi-step agentic workflows where call N+1 depends on the output of call N, background CRM updates, and offline evaluations.
 
@@ -62,7 +60,7 @@ of requests asynchronously at
 or using a JSONL input file (up to 2GB). It processes requests using background
 throughput queues with a target turnaround time of 24 hours.
 
-- **Latency:** High (up to 24 hours).
+- **Reliability:** Sheddable but with 24h automated retries and queuing system
 - **Price:** 50% of Standard pricing.
 - **Best for:** Pre-processing massive datasets, running periodic regression test suites, and high-volume image or embedding generations.
 

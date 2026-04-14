@@ -58,7 +58,7 @@ litellm.callbacks = [customHandler]
 3. Test it!
 
 ```python
-# pip install langfuse 
+# uv add langfuse 
 
 import os
 import litellm

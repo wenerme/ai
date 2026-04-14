@@ -23,7 +23,7 @@ USE_OTEL_LITELLM_REQUEST_SPAN=true
 Install the OpenTelemetry SDK:
 
 ```
-pip install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
+uv add opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp
 ```
 
 Set the environment variables (different providers may require different variables):
@@ -46,7 +46,7 @@ OTEL_EXPORTER_OTLP_PROTOCOL=grpc
 OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"
 ```
 
-> Note: OTLP gRPC requires `grpcio`. Install via `pip install "litellm[grpc]"` (or `grpcio`).
+> Note: OTLP gRPC requires `grpcio`. Install via `uv add "litellm[grpc]"` (or `grpcio`).
 
 ```shell
 OTEL_EXPORTER="otlp_grpc"
@@ -54,7 +54,7 @@ OTEL_ENDPOINT="https://api.lmnr.ai:8443"
 OTEL_HEADERS="authorization=Bearer <project-api-key>"
 ```
 
-> Note: OTLP gRPC requires `grpcio`. Install via `pip install "litellm[grpc]"` (or `grpcio`).
+> Note: OTLP gRPC requires `grpcio`. Install via `uv add "litellm[grpc]"` (or `grpcio`).
 
 Use just 1 line of code, to instantly log your LLM responses **across all providers** with OpenTelemetry:
 

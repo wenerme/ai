@@ -1,5 +1,5 @@
 ---
-title: Containers (Beta)
+title: Containers
 description: Run code written in any programming language, built for any runtime, as part of apps built on Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-# Containers (Beta)
+# Containers
 
 Enhance your Workers with serverless containers
 
@@ -32,8 +32,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-4015)
-* [ Worker Config ](#tab-panel-4016)
+* [ Worker Code ](#tab-panel-4085)
+* [ Worker Config ](#tab-panel-4086)
 
 JavaScript
 
@@ -74,8 +74,8 @@ export default {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-4013)
-* [  wrangler.toml ](#tab-panel-4014)
+* [  wrangler.jsonc ](#tab-panel-4083)
+* [  wrangler.toml ](#tab-panel-4084)
 
 JSONC
 
@@ -89,7 +89,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-13",
 
   "containers": [
 
@@ -150,7 +150,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-13"
 
 
 [[containers]]
@@ -202,15 +202,11 @@ See examples of how to use a Container with a Worker, including stateless and st
 
 ## More resources
 
-[Beta Information](https://developers.cloudflare.com/containers/beta-info/) 
-
-Learn about the Containers Beta and upcoming features.
-
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers) 
 
 Learn more about the commands to develop, build and push images, and deploy containers with Wrangler.
 
-[Limits](https://developers.cloudflare.com/containers/platform-details/#limits) 
+[Limits](https://developers.cloudflare.com/containers/platform-details/limits/) 
 
 Learn about what limits Containers have and how to work within them.
 

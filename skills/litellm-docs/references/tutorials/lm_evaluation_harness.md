@@ -33,7 +33,7 @@ source lmharness/bin/activate
 
 Pip install openai==0.28.01 in the venv
 ```shell
-pip install openai==0.28.01
+uv add openai==0.28.01
 ```
 
 **Step 3: Set OpenAI API Base & Key**
@@ -51,9 +51,9 @@ export OPENAI_API_SECRET_KEY=anything
 cd lm-evaluation-harness
 ```
 
-pip install lm harness dependencies in venv
+uv add lm harness dependencies in venv
 ```
-python3 -m pip install -e .
+uv sync
 ```
 
 ```shell

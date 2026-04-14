@@ -20,7 +20,7 @@ This tutorial shows how to call Claude models through LiteLLM proxy from Claude 
 First, install LiteLLM with proxy support:
 
 ```bash
-pip install 'litellm[proxy]'
+uv tool install 'litellm[proxy]'
 ```
 
 ### 1. Setup config.yaml

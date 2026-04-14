@@ -7,7 +7,7 @@
 ## Quick Start
 
 ```python
-# pip install braintrust
+# uv add braintrust
 import litellm
 import os
 

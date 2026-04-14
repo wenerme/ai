@@ -59,8 +59,6 @@ Get started with ClickHouse Cloud on the [Azure Marketplace](https://azuremarket
 
 <Image img={aws_marketplace_payg_8} size="md" alt="ClickHouse Cloud sign up info form" border/>
 
-<Image img={aws_marketplace_payg_9} size="md" alt="ClickHouse Cloud sign up info form 2" border/>
-
 11. Once you hit **Complete sign up**, you will be taken to your organization within ClickHouse Cloud where you can view the billing screen to ensure you're being billed via the Azure Marketplace and can create services.
 
 <Image img={azure_marketplace_payg_11} size="sm" alt="ClickHouse Cloud sign up info form" border/>

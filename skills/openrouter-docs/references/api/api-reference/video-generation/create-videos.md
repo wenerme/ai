@@ -262,6 +262,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        dekallm:
+          type: object
+          additionalProperties:
+            description: Any type
         enfer:
           type: object
           additionalProperties:
@@ -459,6 +463,10 @@ components:
           additionalProperties:
             description: Any type
         phala:
+          type: object
+          additionalProperties:
+            description: Any type
+        recraft:
           type: object
           additionalProperties:
             description: Any type

@@ -626,10 +626,10 @@
   "anthropic-docs/managed-agents/files.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/files",
     "skill": "anthropic-docs",
-    "etag": "W/\"484e-19d820d31a0\"",
-    "lastModified": "Sun, 12 Apr 2026 14:16:36 GMT",
-    "size": 18510,
-    "updatedAt": "2026-04-13T00:16:22.741Z"
+    "etag": "W/\"4824-19d892e9e38\"",
+    "lastModified": "Mon, 13 Apr 2026 23:30:27 GMT",
+    "size": 18468,
+    "updatedAt": "2026-04-14T00:19:44.310Z"
   },
   "anthropic-docs/managed-agents/memory.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/memory",
@@ -722,10 +722,10 @@
   "anthropic-docs/build-with-claude/claude-on-vertex-ai.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-vertex-ai",
     "skill": "anthropic-docs",
-    "etag": "W/\"5c39-19d6f651608\"",
-    "lastModified": "Wed, 08 Apr 2026 23:19:49 GMT",
-    "size": 23597,
-    "updatedAt": "2026-04-09T00:12:39.818Z"
+    "etag": "W/\"5c99-19d892e9a50\"",
+    "lastModified": "Mon, 13 Apr 2026 23:30:26 GMT",
+    "size": 23693,
+    "updatedAt": "2026-04-14T00:19:47.972Z"
   },
   "anthropic-docs/managed-agents/migration.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/migration",

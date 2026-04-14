@@ -18,7 +18,7 @@ given test set using litellm
 <div class="cell code" id="fBkbl4Qo9pvz">
 
 ``` python
-!pip install litellm
+!uv add litellm
 ```
 
 </div>

@@ -8,7 +8,7 @@ A fast, and lightweight OpenAI-compatible server to call 100+ LLM APIs.
 
 ## Usage 
 ```shell
-pip install 'litellm[proxy]'
+uv tool install 'litellm[proxy]'
 ```
 ```shell 
 $ litellm --model ollama/codellama 
@@ -159,7 +159,7 @@ docker compose up -d
 ```
 
 ```python
-pip install pyautogen
+uv add pyautogen
 ```
 
 ```python
@@ -268,7 +268,7 @@ git clone https://github.com/OpenBMB/ChatDev.git
 cd ChatDev
 conda create -n ChatDev_conda_env python=3.9 -y
 conda activate ChatDev_conda_env
-pip install -r requirements.txt
+uv add -r requirements.txt
 ```
 ### Run ChatDev w/ Proxy
 ```shell 
@@ -283,7 +283,7 @@ python3 run.py --task "a script that says hello world" --name "hello world"
 ```
 
 ```python
-pip install langroid
+uv add langroid
 ```
 
 ```python
@@ -318,7 +318,7 @@ Credits [@pchalasani](https://github.com/pchalasani) and [Langroid](https://gith
 Here's how to use the local proxy to test codellama/mistral/etc. models for different github repos 
 
 ```shell
-pip install litellm
+uv add litellm
 ```
 
 ```shell
@@ -368,13 +368,13 @@ In the [config.py](https://continue.dev/docs/reference/Models/openai) set this a
 Credits [@vividfog](https://github.com/ollama/ollama/issues/305#issuecomment-1751848077) for this tutorial. 
 
 ```shell
-$ pip install aider 
+$ uv add aider 
 
 $ aider --openai-api-base http://0.0.0.0:8000 --openai-api-key fake-key
 ```
 
 ```python
-pip install pyautogen
+uv add pyautogen
 ```
 
 ```python
@@ -483,7 +483,7 @@ git clone https://github.com/OpenBMB/ChatDev.git
 cd ChatDev
 conda create -n ChatDev_conda_env python=3.9 -y
 conda activate ChatDev_conda_env
-pip install -r requirements.txt
+uv add -r requirements.txt
 ```
 ### Run ChatDev w/ Proxy
 ```shell 
@@ -498,7 +498,7 @@ python3 run.py --task "a script that says hello world" --name "hello world"
 ```
 
 ```python
-pip install langroid
+uv add langroid
 ```
 
 ```python

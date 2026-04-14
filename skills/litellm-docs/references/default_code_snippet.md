@@ -8,7 +8,7 @@ displayed_sidebar: tutorialSidebar
 If you want to use the non-hosted version, [go here](https://docs.litellm.ai/docs/#quick-start)
 
 ```
-pip install litellm
+uv add litellm
 ```
 
 <QueryParamReader/>

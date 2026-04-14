@@ -68,14 +68,14 @@ curl -X POST 'http://0.0.0.0:4000/chat/completions' \
 }'
 ```
 
-> **tip**: Already have pip installed?
-You can skip the curl install and run `litellm --setup` directly after `pip install 'litellm[proxy]'`.
+> **tip**: Already have uv installed?
+You can skip the curl install and run `litellm --setup` directly after `uv tool install 'litellm[proxy]'`.
 
 ---
 
 ## Pre-Requisites 
 
-Choose your install method. **Docker Compose** users complete their full setup inside the tab and are done. **Docker** and **pip** users continue with the steps below the tabs.
+Choose your install method. **Docker Compose** users complete their full setup inside the tab and are done. **Docker** and **LiteLLM CLI** users continue with the steps below the tabs.
 
 ```bash
 docker pull docker.litellm.ai/berriai/litellm:main-latest
@@ -84,7 +84,7 @@ docker pull docker.litellm.ai/berriai/litellm:main-latest
 [**See all docker images**](https://github.com/orgs/BerriAI/packages)
 
 ```shell
-$ pip install 'litellm[proxy]'
+$ uv tool install 'litellm[proxy]'
 ```
 
 Docker Compose bundles LiteLLM with a Postgres database. Follow the steps below — the proxy will be fully running by the end.
@@ -246,7 +246,7 @@ Navigate to **Virtual Keys** and click **+ Create New Key**:
 Virtual keys let you track spend, set rate limits, and control model access per user or team.
 
 > **note**: Docker Compose users
-Your setup is complete — the steps below are for **Docker** and **pip** users only.
+Your setup is complete — the steps below are for **Docker** and **LiteLLM CLI** users only.
 
 ---
 
@@ -420,7 +420,7 @@ Track spend and control model access via virtual keys for the proxy.
 > **note**: Docker Compose users
 Your Postgres container is already running — skip ahead to [Create Key w/ RPM Limit](#create-key-w-rpm-limit) below.
 
-**Docker / pip users** — you need a Postgres database (e.g. [Supabase](https://supabase.com/), [Neon](https://neon.tech/), or self-hosted). Add `general_settings` to your `config.yaml`:
+**Docker / LiteLLM CLI users** — you need a Postgres database (e.g. [Supabase](https://supabase.com/), [Neon](https://neon.tech/), or self-hosted). Add `general_settings` to your `config.yaml`:
 
 ```yaml
 model_list:

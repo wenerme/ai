@@ -43,6 +43,7 @@ The table below shows the available permissions, which preset roles include them
 | Prompts                | Create and retrieve prompts to use as context for Responses API and Realtime API     | `Read`, `Write`       | `Read`, `Write`        | `Read`, `Write`           | `Read`, `Write`            | `Read`                     | ✓                    |
 | Webhooks               | Create and view webhooks in your project                                             | `Read`, `Write`       | `Read`                 | `Read`, `Write`           | `Read`, `Write`            | `Read`                     | ✓                    |
 | Datasets               | Create and retrieve Datasets                                                         | `Read`, `Write`       | `Read`, `Write`        | `Read`, `Write`           | `Read`, `Write`            | `Read`                     | ✓                    |
+| Apps                   | Create, manage, and submit apps for review in the Dashboard                          | `Read`, `Write`       |                        |                           |                            |                            | ✓                    |
 | Project API Keys       | Permission for a user to manage their own API keys                                   | `Read`, `Write`       | `Read`, `Write`        | `Read`, `Write`           | `Read`, `Write`            | `Read`                     | ✓                    |
 | Project Administration | Manage project users, service accounts, API keys, and rate limits via management API | `Read`, `Write`       |                        | `Read`, `Write`           |                            |                            |                      |
 | Batch                  | Create and manage batch jobs                                                         | `Read`, `Write`       | `Read`, `Write`        | `Read`, `Write`           | `Read`, `Write`            | `Read`                     |                      |
@@ -64,6 +65,7 @@ Allow up to **30 minutes** for role changes and group sync to propagate.
    Start from least privilege. For example:
    - _Model Tester_: Models Read, Model Capabilities Request, Evals
    - _Model Engineer_: Model Capabilities Request, Files Read/Write, Fine-tuning
+   - _App Publisher_: Apps Read, Apps Write
 
 3. **Assign roles**
    - **Organization level** roles apply everywhere (all projects within the organization).

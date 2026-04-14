@@ -20,13 +20,13 @@ title: Getting Started
 ## Installation
 
 ```shell
-pip install litellm
+uv add litellm
 ```
 
 To run the full Proxy Server (LLM Gateway):
 
 ```shell
-pip install 'litellm[proxy]'
+uv tool install 'litellm[proxy]'
 ```
 
 ---

@@ -1,5 +1,5 @@
 ---
-title: Sandbox SDK (Beta)
+title: Sandbox SDK
 description: The Sandbox SDK enables you to run untrusted code securely in isolated environments. Built on Containers, Sandbox SDK provides a simple API for executing commands, managing files, running background processes, and exposing services — all from your Workers applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-# Sandbox SDK (Beta)
+# Sandbox SDK
 
 Build secure, isolated code execution environments
 
@@ -26,12 +26,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-6129)
-* [ Code Interpreter ](#tab-panel-6130)
-* [ File Operations ](#tab-panel-6131)
-* [ File Watching ](#tab-panel-6132)
-* [ Terminal Access ](#tab-panel-6133)
-* [ WebSocket Connections ](#tab-panel-6134)
+* [ Execute Commands ](#tab-panel-6207)
+* [ Code Interpreter ](#tab-panel-6208)
+* [ File Operations ](#tab-panel-6209)
+* [ File Watching ](#tab-panel-6210)
+* [ Terminal Access ](#tab-panel-6211)
+* [ WebSocket Connections ](#tab-panel-6212)
 
 TypeScript
 
@@ -437,10 +437,6 @@ Learn about the configuration options for the Sandbox SDK.
 [GitHub Repository](https://github.com/cloudflare/sandbox-sdk) 
 
 View the SDK source code, report issues, and contribute to the project.
-
-[Beta Information](https://developers.cloudflare.com/sandbox/platform/beta-info/) 
-
-Learn about the Sandbox Beta, current status, and upcoming features.
 
 [Pricing](https://developers.cloudflare.com/sandbox/platform/pricing/) 
 

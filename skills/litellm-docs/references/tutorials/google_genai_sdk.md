@@ -35,7 +35,7 @@ npm install @google/genai
 ```
 
 ```bash
-pip install google-genai
+uv add google-genai
 ```
 
 ### 2. Start LiteLLM Proxy

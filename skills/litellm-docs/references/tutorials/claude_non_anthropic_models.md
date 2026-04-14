@@ -16,7 +16,7 @@ This tutorial shows how to use Claude Code with non-Anthropic models like OpenAI
 First, install LiteLLM with proxy support:
 
 ```bash
-pip install 'litellm[proxy]'
+uv tool install 'litellm[proxy]'
 ```
 
 ## Configuration

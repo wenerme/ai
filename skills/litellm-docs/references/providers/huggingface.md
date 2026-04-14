@@ -321,7 +321,7 @@ curl --location 'http://0.0.0.0:4000/chat/completions' \
 ```
 
 ```python
-# pip install openai
+# uv add openai
 from openai import OpenAI
 
 client = OpenAI(

@@ -18,6 +18,8 @@ Copy page
 
 Since the Sandbox SDK is built on top of the [Containers](https://developers.cloudflare.com/containers/) platform, it shares the same underlying platform characteristics. Refer to these pages to understand how pricing and limits work for your sandbox deployments.
 
+Sandbox also inherits current Containers lifecycle, placement, and routing behavior. For more detail, refer to [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/) and[Scaling and Routing](https://developers.cloudflare.com/containers/platform-details/scaling-and-routing/).
+
 ## Container limits
 
 Refer to [Containers limits](https://developers.cloudflare.com/containers/platform-details/limits/) for complete details on:
@@ -39,8 +41,8 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 Enable WebSocket transport to multiplex all SDK calls over a single persistent connection:
 
-* [  wrangler.jsonc ](#tab-panel-6491)
-* [  wrangler.toml ](#tab-panel-6492)
+* [  wrangler.jsonc ](#tab-panel-6623)
+* [  wrangler.toml ](#tab-panel-6624)
 
 JSONC
 

@@ -63,7 +63,7 @@ If you’re building an AI code generator and want it to be more knowledgeable a
 
 ## Development environment for executing AI-generated code
 
-Both [Sandboxes](https://developers.cloudflare.com/changelog/2025-06-24-announcing-sandboxes/) and [Containers](https://developers.cloudflare.com/containers/) provide secure, isolated environments for executing untrusted AI-generated code. They offer:
+Both [Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](https://developers.cloudflare.com/containers/) provide secure, isolated environments for executing untrusted AI-generated code. They offer:
 
 * **Strong isolation and sandboxing controls** to prevent malicious or buggy code from affecting other instances
 * **Fast startup times** to enable rapid iteration cycles with real-time feedback
@@ -71,7 +71,7 @@ Both [Sandboxes](https://developers.cloudflare.com/changelog/2025-06-24-announci
 * **Preview URLs** to allow users to test applications during development
 * **Global edge deployment** on Cloudflare's network for low-latency execution worldwide
 
-**Sandboxes provide a fully-managed solution** that works out-of-the-box, with [pre-built APIs](https://developers.cloudflare.com/changelog/2025-08-05-sandbox-sdk-major-update/) for code execution, output formatting, and developer tools, making them ideal for most AI code execution use cases.
+**Sandboxes provide a fully-managed solution** that works out-of-the-box, with [pre-built APIs](https://developers.cloudflare.com/sandbox/api/) for code execution, output formatting, and developer tools, making them ideal for most AI code execution use cases.
 
 ![Figure 3: Vibe Code Development - Sandbox SDK](https://developers.cloudflare.com/_astro/ai-platform-sandbox.DziHb_r3_ZCHeQ.svg) 
 

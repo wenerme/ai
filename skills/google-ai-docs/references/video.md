@@ -1,5 +1,3 @@
-# Generate videos with Veo 3.1 in Gemini API
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -1748,18 +1746,6 @@ warm tones," "natural light," "sunrise," or "cool blue tones."
 |---|---|
 | A close-up of a girl holding adorable golden retriever puppy in the park, sunlight. | ![A puppy in a young girl's arms.](https://ai.google.dev/static/gemini-api/docs/video/images/ambiance_puppy.gif) |
 | Cinematic close-up shot of a sad woman riding a bus in the rain, cool blue tones, sad mood. | ![A woman riding on a bus that feels sad.](https://ai.google.dev/static/gemini-api/docs/video/images/ambiance_sad.gif) |
-
-### Negative prompts
-
-Negative prompts specify elements you *don't* want in the video.
-
-- ❌ Don't use instructive language like *no* or *don't*. (e.g., "No walls").
-- ✅ Do describe what you don't want to see. (e.g., "wall, frame").
-
-| **Prompt** | **Generated output** |
-|---|---|
-| **Without Negative Prompt:** Generate a short, stylized animation of a large, solitary oak tree with leaves blowing vigorously in a strong wind... \[truncated\] | ![Tree with using words.](https://ai.google.dev/static/gemini-api/docs/video/images/tree_with_no_negative.gif) |
-| **With Negative Prompt:** \[Same prompt\] <br /> Negative prompt: urban background, man-made structures, dark, stormy, or threatening atmosphere. | ![Tree with no negative words.](https://ai.google.dev/static/gemini-api/docs/video/images/tree_with_negative.gif) |
 
 ### Aspect ratios
 

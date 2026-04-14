@@ -169,7 +169,7 @@ Before using LiteLLM with LangGraph, you need a running LangGraph server.
 ### 1. Install the LangGraph CLI
 
 ```bash
-pip install "langgraph-cli[inmem]"
+uv add "langgraph-cli[inmem]"
 ```
 
 ### 2. Create a new LangGraph project
@@ -182,7 +182,7 @@ cd my-agent
 ### 3. Install dependencies
 
 ```bash
-pip install -e .
+uv add -e .
 ```
 
 ### 4. Set your API key

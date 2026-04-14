@@ -1,11 +1,11 @@
 ---
 title: "Together AI | Models"
-description: "Use Together AI models with Mastra. 14 models available."
+description: "Use Together AI models with Mastra. 15 models available."
 ---
 
 # [Together AI logo]Together AI
 
-Access 14 Together AI models through Mastra's model router. Authentication is handled automatically using the `TOGETHER_API_KEY` environment variable.
+Access 15 Together AI models through Mastra's model router. Authentication is handled automatically using the `TOGETHER_API_KEY` environment variable.
 
 Learn more in the [Together AI documentation](https://docs.together.ai/docs/serverless-models).
 
@@ -117,6 +117,18 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "togetherai/MiniMaxAI/MiniMax-M2.7",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 202752,
     "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2

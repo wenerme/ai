@@ -35,7 +35,7 @@ Before you begin, ensure you have:
 Install LiteLLM with proxy support:
 
 ```bash
-pip install litellm[proxy]
+uv tool install litellm[proxy]
 ```
 
 ### Step 2: Configure LiteLLM Proxy

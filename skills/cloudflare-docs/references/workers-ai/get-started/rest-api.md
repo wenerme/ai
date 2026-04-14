@@ -36,7 +36,7 @@ To get these values:
    2. Review the prefilled information.  
    3. Select **Create API Token**.  
    4. Select **Copy API Token**.  
-   5. Save that value for future use.
+   5. Save that value for future use. This token will be visible [on your profile](https://developers.cloudflare.com/api/get-started/create-token/).
 4. For **Get Account ID**, copy the value for **Account ID**. Save that value for future use.
 
 Note

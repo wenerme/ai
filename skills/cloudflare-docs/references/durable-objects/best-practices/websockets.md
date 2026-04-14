@@ -69,9 +69,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-4499)
-* [  TypeScript ](#tab-panel-4500)
-* [  Python ](#tab-panel-4501)
+* [  JavaScript ](#tab-panel-4573)
+* [  TypeScript ](#tab-panel-4574)
+* [  Python ](#tab-panel-4575)
 
 JavaScript
 
@@ -310,8 +310,8 @@ Explain Code
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4508)
-* [  wrangler.toml ](#tab-panel-4509)
+* [  wrangler.jsonc ](#tab-panel-4582)
+* [  wrangler.toml ](#tab-panel-4583)
 
 JSONC
 
@@ -411,8 +411,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-4512)
-* [  TypeScript ](#tab-panel-4513)
+* [  JavaScript ](#tab-panel-4586)
+* [  TypeScript ](#tab-panel-4587)
 
 JavaScript
 
@@ -577,9 +577,7 @@ The following methods are available on the Hibernation WebSocket API. Use them t
 
 #### `WebSocket.serializeAttachment`
 
-* ``  
-serializeAttachment(value ` any `)  
- ``: ` void `
+* `` serializeAttachment(value ` any `) ``: ` void `
 
 Keeps a copy of `value` associated with the WebSocket connection.
 
@@ -603,8 +601,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-4514)
-* [  TypeScript ](#tab-panel-4515)
+* [  JavaScript ](#tab-panel-4588)
+* [  TypeScript ](#tab-panel-4589)
 
 JavaScript
 
@@ -705,56 +703,57 @@ export class WebSocketServer extends DurableObject<Env> {
     const orderId = url.searchParams.get("orderId") ?? "anonymous";
 
 
-    const webSocketPair = new WebSocketPair();
+      const webSocketPair = new WebSocketPair();
 
-    const [client, server] = Object.values(webSocketPair);
-
-
-    this.ctx.acceptWebSocket(server);
+      const [client, server] = Object.values(webSocketPair);
 
 
-    // Persist per-connection state that survives hibernation
-
-    const state: ConnectionState = {
-
-      orderId,
-
-      joinedAt: Date.now(),
-
-    };
-
-    server.serializeAttachment(state);
+      this.ctx.acceptWebSocket(server);
 
 
-    return new Response(null, { status: 101, webSocket: client });
+      // Persist per-connection state that survives hibernation
 
-  }
+      const state: ConnectionState = {
 
+        orderId,
 
-  async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
+        joinedAt: Date.now(),
 
-    // Restore state after potential hibernation
+      };
 
-    const state = ws.deserializeAttachment() as ConnectionState;
-
-    ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);
-
-  }
+      server.serializeAttachment(state);
 
 
-  async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
+      return new Response(null, { status: 101, webSocket: client });
 
-    const state = ws.deserializeAttachment() as ConnectionState;
+    }
 
-    console.log(`${state.orderId} disconnected`);
 
-    // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+    async webSocketMessage(ws: WebSocket, message: string | ArrayBuffer) {
 
-    // auto-replies to Close frames. Calling close() is safe but no longer required.
+      // Restore state after potential hibernation
 
-    ws.close(code, reason);
+      const state = ws.deserializeAttachment() as ConnectionState;
 
-  }
+      ws.send(`Hello ${state.orderId}, you joined at ${state.joinedAt}`);
+
+    }
+
+
+    async webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean) {
+
+      const state = ws.deserializeAttachment() as ConnectionState;
+
+      console.log(`${state.orderId} disconnected`);
+
+      // With web_socket_auto_reply_to_close (compat date >= 2026-04-07), the runtime
+
+      // auto-replies to Close frames. Calling close() is safe but no longer required.
+
+      ws.close(code, reason);
+
+    }
+
 
 }
 
@@ -778,9 +777,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-4502)
-* [  TypeScript ](#tab-panel-4503)
-* [  Python ](#tab-panel-4504)
+* [  JavaScript ](#tab-panel-4576)
+* [  TypeScript ](#tab-panel-4577)
+* [  Python ](#tab-panel-4578)
 
 JavaScript
 
@@ -1008,9 +1007,9 @@ Explain Code
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-4505)
-* [  TypeScript ](#tab-panel-4506)
-* [  Python ](#tab-panel-4507)
+* [  JavaScript ](#tab-panel-4579)
+* [  TypeScript ](#tab-panel-4580)
+* [  Python ](#tab-panel-4581)
 
 JavaScript
 
@@ -1267,8 +1266,8 @@ Explain Code
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4510)
-* [  wrangler.toml ](#tab-panel-4511)
+* [  wrangler.jsonc ](#tab-panel-4584)
+* [  wrangler.toml ](#tab-panel-4585)
 
 JSONC
 

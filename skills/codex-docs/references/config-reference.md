@@ -92,6 +92,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "When `true`, skill-script approval prompts are allowed to surface.",
     },
     {
+      key: "approvals_reviewer",
+      type: "user | guardian_subagent",
+      description:
+        "Select who reviews eligible approval prompts. Defaults to `user`; `guardian_subagent` routes supported reviews through the Guardian reviewer subagent.",
+    },
+    {
       key: "allow_login_shell",
       type: "boolean",
       description:
@@ -294,6 +300,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "apps.<id>.tools.<tool>.approval_mode",
       type: "auto | prompt | approve",
       description: "Per-tool approval behavior override for a single app tool.",
+    },
+    {
+      key: "tool_suggest.discoverables",
+      type: "array<table>",
+      description:
+        'Allow tool suggestions for additional discoverable connectors or plugins. Each entry uses `type = "connector"` or `"plugin"` and an `id`.',
     },
     {
       key: "features.apps",
@@ -531,6 +543,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Suppress the warning that appears when under-development feature flags are enabled.",
     },
     {
+      key: "model_providers.<id>",
+      type: "table",
+      description:
+        "Custom provider definition. Built-in provider IDs (`openai`, `ollama`, and `lmstudio`) are reserved and cannot be overridden.",
+    },
+    {
       key: "model_providers.<id>.name",
       type: "string",
       description: "Display name for a custom model provider.",
@@ -606,6 +624,40 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "boolean",
       description:
         "Whether that provider supports the Responses API WebSocket transport.",
+    },
+    {
+      key: "model_providers.<id>.auth",
+      type: "table",
+      description:
+        "Command-backed bearer token configuration for a custom provider. Do not combine with `env_key`, `experimental_bearer_token`, or `requires_openai_auth`.",
+    },
+    {
+      key: "model_providers.<id>.auth.command",
+      type: "string",
+      description:
+        "Command to run when Codex needs a bearer token. The command must print the token to stdout.",
+    },
+    {
+      key: "model_providers.<id>.auth.args",
+      type: "array<string>",
+      description: "Arguments passed to the token command.",
+    },
+    {
+      key: "model_providers.<id>.auth.timeout_ms",
+      type: "number",
+      description:
+        "Maximum token command runtime in milliseconds (default: 5000).",
+    },
+    {
+      key: "model_providers.<id>.auth.refresh_interval_ms",
+      type: "number",
+      description:
+        "How often Codex proactively refreshes the token in milliseconds (default: 300000). Set to `0` to refresh only after an authentication retry.",
+    },
+    {
+      key: "model_providers.<id>.auth.cwd",
+      type: "string (path)",
+      description: "Working directory for the token command.",
     },
     {
       key: "model_reasoning_effort",
@@ -923,6 +975,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Ordered list of TUI footer status-line item identifiers. `null` disables the status line.",
     },
     {
+      key: "tui.terminal_title",
+      type: "array<string> | null",
+      description:
+        'Ordered list of terminal window/tab title item identifiers. Defaults to `["spinner", "project"]`; `null` disables title updates.',
+    },
+    {
       key: "tui.theme",
       type: "string",
       description:
@@ -1081,20 +1139,16 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       description: "Network proxy mode used for subprocess traffic.",
     },
     {
-      key: "permissions.<name>.network.allowed_domains",
-      type: "array<string>",
-      description: "Allowlist of domains permitted through the managed proxy.",
-    },
-    {
-      key: "permissions.<name>.network.denied_domains",
-      type: "array<string>",
-      description: "Denylist of domains blocked by the managed proxy.",
-    },
-    {
-      key: "permissions.<name>.network.allow_unix_sockets",
-      type: "array<string>",
+      key: "permissions.<name>.network.domains",
+      type: "map<string, allow | deny>",
       description:
-        "Allowlist of Unix socket paths permitted through the managed proxy.",
+        "Domain rules for the managed proxy. Use domain names or wildcard patterns as keys, with `allow` or `deny` values.",
+    },
+    {
+      key: "permissions.<name>.network.unix_sockets",
+      type: "map<string, allow | none>",
+      description:
+        "Unix socket rules for the managed proxy. Use socket paths as keys, with `allow` or `none` values.",
     },
     {
       key: "permissions.<name>.network.allow_local_binding",
@@ -1181,6 +1235,12 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       type: "array<string>",
       description:
         "Allowed values for `approval_policy` (for example `untrusted`, `on-request`, `never`, and `granular`).",
+    },
+    {
+      key: "allowed_approvals_reviewers",
+      type: "array<string>",
+      description:
+        "Allowed values for `approvals_reviewer` (for example `user` and `guardian_subagent`).",
     },
     {
       key: "allowed_sandbox_modes",

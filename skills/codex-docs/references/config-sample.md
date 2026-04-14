@@ -109,6 +109,9 @@ model_provider = "openai"
 # - never: never prompt (risky)
 # - { granular = { ... } }: allow or auto-reject selected prompt categories
 approval_policy = "on-request"
+# Who reviews eligible approval prompts: user (default) | guardian_subagent
+# approvals_reviewer = "user"
+
 # Example granular policy:
 # approval_policy = { granular = {
 #   sandbox_approval = true,
@@ -127,6 +130,8 @@ allow_login_shell = true
 # - workspace-write
 # - danger-full-access (no sandbox; extremely risky)
 sandbox_mode = "read-only"
+# Named permissions profile to apply by default. Required before using [permissions.<name>].
+# default_permissions = "workspace"
 
 ################################################################################
 # Authentication & Login
@@ -274,7 +279,8 @@ experimental_use_profile = false
 # Managed network proxy settings
 ################################################################################
 
-[permissions.network]
+# Set `default_permissions = "workspace"` before enabling this profile.
+# [permissions.workspace.network]
 # enabled = true
 # proxy_url = "http://127.0.0.1:43128"
 # admin_url = "http://127.0.0.1:43129"
@@ -286,10 +292,14 @@ experimental_use_profile = false
 # dangerously_allow_non_loopback_admin = false
 # dangerously_allow_all_unix_sockets = false
 # mode = "limited"                           # limited | full
-# allowed_domains = ["api.openai.com"]
-# denied_domains = ["example.com"]
-# allow_unix_sockets = ["/var/run/docker.sock"]
 # allow_local_binding = false
+#
+# [permissions.workspace.network.domains]
+# "api.openai.com" = "allow"
+# "example.com" = "deny"
+#
+# [permissions.workspace.network.unix_sockets]
+# "/var/run/docker.sock" = "allow"
 
 ################################################################################
 # History (table)
@@ -326,6 +336,12 @@ show_tooltips = true
 # ["model-with-reasoning", "context-remaining", "current-dir"].
 # Set to [] to hide the footer.
 # status_line = ["model", "context-remaining", "git-branch"]
+
+# Ordered list of terminal window/tab title item IDs. When unset, Codex uses:
+# ["spinner", "project"]. Set to [] to clear the title.
+# Available IDs include app-name, project, spinner, status, thread, git-branch, model,
+# and task-progress.
+# terminal_title = ["spinner", "project"]
 
 # Syntax-highlighting theme (kebab-case). Use /theme in the TUI to preview and save.
 # You can also add custom .tmTheme files under $CODEX_HOME/themes.
@@ -416,6 +432,7 @@ enabled = true
 # - openai
 # - ollama
 # - lmstudio
+# These IDs are reserved. Use a different ID for custom providers.
 
 [model_providers]
 
@@ -424,7 +441,7 @@ enabled = true
 # name = "OpenAI Data Residency"
 # base_url = "https://us.api.openai.com/v1"        # example with 'us' domain prefix
 # wire_api = "responses"                           # only supported value
-# # requires_openai_auth = true                    # built-in OpenAI defaults to true
+# # requires_openai_auth = true                    # use only for providers backed by OpenAI auth
 # # request_max_retries = 4                        # default 4; max 100
 # # stream_max_retries = 5                         # default 5; max 100
 # # stream_idle_timeout_ms = 300000                # default 300_000 (5m)
@@ -443,8 +460,20 @@ enabled = true
 # env_key_instructions = "Set AZURE_OPENAI_API_KEY in your environment"
 # # supports_websockets = false
 
+# --- Example: command-backed bearer token auth ---
+# [model_providers.proxy]
+# name = "OpenAI using LLM proxy"
+# base_url = "https://proxy.example.com/v1"
+# wire_api = "responses"
+#
+# [model_providers.proxy.auth]
+# command = "/usr/local/bin/fetch-codex-token"
+# args = ["--audience", "codex"]
+# timeout_ms = 5000
+# refresh_interval_ms = 300000
+
 # --- Example: Local OSS (e.g., Ollama-compatible) ---
-# [model_providers.ollama]
+# [model_providers.local_ollama]
 # name = "Ollama"
 # base_url = "http://localhost:11434/v1"
 # wire_api = "responses"
@@ -470,6 +499,13 @@ enabled = true
 # [apps.google_drive.tools."files/delete"]
 # enabled = false
 # approval_mode = "approve"
+
+# Optional tool suggestion allowlist for connectors or plugins Codex can offer to install.
+# [tool_suggest]
+# discoverables = [
+#   { type = "connector", id = "gmail" },
+#   { type = "plugin", id = "figma@openai-curated" },
+# ]
 
 ################################################################################
 # Profiles (named presets)

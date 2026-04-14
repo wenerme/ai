@@ -795,6 +795,7 @@ try (QueryResponse response = client.query("SELECT * FROM my_table").get()) {
         Object maybeNull = inner[1]; // may be null
     }
 }
+```
 
 ## Migration Guide {#migration_guide}
 
@@ -819,26 +820,19 @@ Table below shows what old options are supported in the new client and their new
 
 **Legend:** ✔ = supported, ✗ = dropped
 
-<Tabs groupId="v1-migration">
-<TabItem value="connection-auth" label="Connection & Auth">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
 | `ClickHouseDefaults#HOST` | `Client.Builder#addEndpoint` | |
 | `ClickHouseDefaults#PROTOCOL` | ✗ | Only HTTP supported in V2 |
-| `ClickHouseDefaults#DATABASE`<br/>`ClickHouseClientOption#DATABASE` | `Client.Builder#setDefaultDatabase` | |
+| `ClickHouseDefaults#DATABASE``ClickHouseClientOption#DATABASE` | `Client.Builder#setDefaultDatabase` | |
 | `ClickHouseDefaults#USER` | `Client.Builder#setUsername` | |
 | `ClickHouseDefaults#PASSWORD` | `Client.Builder#setPassword` | |
 | `ClickHouseClientOption#CONNECTION_TIMEOUT` | `Client.Builder#setConnectTimeout` | |
 | `ClickHouseClientOption#CONNECTION_TTL` | `Client.Builder#setConnectionTTL` | |
 | `ClickHouseHttpOption#MAX_OPEN_CONNECTIONS` | `Client.Builder#setMaxConnections` | |
-| `ClickHouseHttpOption#KEEP_ALIVE`<br/>`ClickHouseHttpOption#KEEP_ALIVE_TIMEOUT` | `Client.Builder#setKeepAliveTimeout` | |
+| `ClickHouseHttpOption#KEEP_ALIVE``ClickHouseHttpOption#KEEP_ALIVE_TIMEOUT` | `Client.Builder#setKeepAliveTimeout` | |
 | `ClickHouseHttpOption#CONNECTION_REUSE_STRATEGY` | `Client.Builder#setConnectionReuseStrategy` | |
 | `ClickHouseHttpOption#USE_BASIC_AUTHENTICATION` | `Client.Builder#useHTTPBasicAuth` | |
-
-</TabItem>
-
-<TabItem value="ssl" label="SSL & Security">
 
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
@@ -857,10 +851,6 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#CUSTOM_SOCKET_FACTORY` | ✗ | |
 | `ClickHouseClientOption#CUSTOM_SOCKET_FACTORY_OPTIONS` | ✗ | See `Client.Builder#sslSocketSNI` to set SNI |
 
-</TabItem>
-
-<TabItem value="socket" label="Socket Options">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
 | `ClickHouseClientOption#SOCKET_TIMEOUT` | `Client.Builder#setSocketTimeout` | |
@@ -872,10 +862,6 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#SOCKET_RCVBUF` | `Client.Builder#setSocketRcvbuf` | |
 | `ClickHouseClientOption#SOCKET_SNDBUF` | `Client.Builder#setSocketSndbuf` | |
 
-</TabItem>
-
-<TabItem value="compression" label="Compression">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
 | `ClickHouseClientOption#COMPRESS` | `Client.Builder#compressServerResponse` | See also `useHttpCompression` |
@@ -885,10 +871,6 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#COMPRESS_LEVEL` | ✗ | |
 | `ClickHouseClientOption#DECOMPRESS_LEVEL` | ✗ | |
 
-</TabItem>
-
-<TabItem value="proxy" label="Proxy">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
 | `ClickHouseClientOption#PROXY_TYPE` | `Client.Builder#addProxy` | |
@@ -896,10 +878,6 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#PROXY_PORT` | `Client.Builder#addProxy` | |
 | `ClickHouseClientOption#PROXY_USERNAME` | `Client.Builder#setProxyCredentials` | |
 | `ClickHouseClientOption#PROXY_PASSWORD` | `Client.Builder#setProxyCredentials` | |
-
-</TabItem>
-
-<TabItem value="timeouts-retry" label="Timeouts & Retry">
 
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
@@ -912,20 +890,12 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#SESSION_CHECK` | ✗ | |
 | `ClickHouseClientOption#SESSION_TIMEOUT` | ✗ | |
 
-</TabItem>
-
-<TabItem value="timezone" label="Timezone">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
-| `ClickHouseDefaults#SERVER_TIME_ZONE`<br/>`ClickHouseClientOption#SERVER_TIME_ZONE` | `Client.Builder#setServerTimeZone` | |
+| `ClickHouseDefaults#SERVER_TIME_ZONE``ClickHouseClientOption#SERVER_TIME_ZONE` | `Client.Builder#setServerTimeZone` | |
 | `ClickHouseClientOption#USE_SERVER_TIME_ZONE` | `Client.Builder#useServerTimeZone` | |
 | `ClickHouseClientOption#USE_SERVER_TIME_ZONE_FOR_DATES` | | |
 | `ClickHouseClientOption#USE_TIME_ZONE` | `Client.Builder#useTimeZone` | |
-
-</TabItem>
-
-<TabItem value="buffers" label="Buffers & Performance">
 
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
@@ -941,22 +911,14 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#MAX_QUEUED_REQUESTS` | ✗ | |
 | `ClickHouseClientOption#REUSE_VALUE_WRAPPER` | ✗ | |
 
-</TabItem>
-
-<TabItem value="threading" label="Threading & Async">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
-| `ClickHouseDefaults#ASYNC`<br/>`ClickHouseClientOption#ASYNC` | `Client.Builder#useAsyncRequests` | |
+| `ClickHouseDefaults#ASYNC``ClickHouseClientOption#ASYNC` | `Client.Builder#useAsyncRequests` | |
 | `ClickHouseDefaults#MAX_SCHEDULER_THREADS` | ✗ | see `setSharedOperationExecutor` |
 | `ClickHouseDefaults#MAX_THREADS` | ✗ | see `setSharedOperationExecutor` |
 | `ClickHouseDefaults#THREAD_KEEPALIVE_TIMEOUT` | see `setSharedOperationExecutor` | |
 | `ClickHouseClientOption#MAX_THREADS_PER_CLIENT` | ✗ | |
 | `ClickHouseClientOption#MAX_CORE_THREAD_TTL` | ✗ | |
-
-</TabItem>
-
-<TabItem value="http-headers" label="HTTP & Headers">
 
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
@@ -968,13 +930,9 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseHttpOption#SEND_HTTP_CLIENT_ID` | ✗ | |
 | `ClickHouseHttpOption#AHC_VALIDATE_AFTER_INACTIVITY` | ✗ | Always enabled when Apache Http Client is used |
 
-</TabItem>
-
-<TabItem value="format-query" label="Format & Query">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
-| `ClickHouseDefaults#FORMAT`<br/>`ClickHouseClientOption#FORMAT` | ✗ | Moved to operation settings (`QuerySettings` and `InsertSettings`) |
+| `ClickHouseDefaults#FORMAT``ClickHouseClientOption#FORMAT` | ✗ | Moved to operation settings (`QuerySettings` and `InsertSettings`) |
 | `ClickHouseClientOption#QUERY_ID` | ✗ | See `QuerySettings` and `InsertSettings` |
 | `ClickHouseClientOption#LOG_LEADING_COMMENT` | ✗ | See `QuerySettings#logComment` and `InsertSettings#logComment` |
 | `ClickHouseClientOption#MAX_RESULT_ROWS` | ✗ | Is server side setting |
@@ -982,10 +940,6 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseHttpOption#RECEIVE_QUERY_PROGRESS` | ✗ | Server side setting |
 | `ClickHouseHttpOption#WAIT_END_OF_QUERY` | ✗ | Server side setting |
 | `ClickHouseHttpOption#REMEMBER_LAST_SET_ROLES` | `Client#setDBRoles` | Runtime config now. See also `QuerySettings#setDBRoles` and `InsertSettings#setDBRoles` |
-
-</TabItem>
-
-<TabItem value="node-discovery" label="Node Discovery & Load Balancing">
 
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
@@ -1000,17 +954,13 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#NODE_GROUP_SIZE` | ✗ | |
 | `ClickHouseClientOption#CHECK_ALL_NODES` | ✗ | |
 
-</TabItem>
-
-<TabItem value="misc" label="Miscellaneous">
-
 | V1 Configuration | V2 Builder Method | Comments |
 |------------------|-------------------|----------|
 | `ClickHouseDefaults#AUTO_SESSION` | ✗ | Session support will be reviewed |
 | `ClickHouseDefaults#BUFFERING` | ✗ | |
 | `ClickHouseDefaults#MAX_REQUESTS` | ✗ | |
 | `ClickHouseDefaults#ROUNDING_MODE` | | |
-| `ClickHouseDefaults#SERVER_VERSION`<br/>`ClickHouseClientOption#SERVER_VERSION` | `Client.Builder#setServerVersion` | |
+| `ClickHouseDefaults#SERVER_VERSION``ClickHouseClientOption#SERVER_VERSION` | `Client.Builder#setServerVersion` | |
 | `ClickHouseDefaults#SRV_RESOLVE` | ✗ | |
 | `ClickHouseClientOption#CUSTOM_SETTINGS` | | |
 | `ClickHouseClientOption#PRODUCT_NAME` | ✗ | Use client name |
@@ -1024,9 +974,6 @@ Table below shows what old options are supported in the new client and their new
 | `ClickHouseClientOption#USE_OBJECTS_IN_ARRAYS` | ✗ | |
 | `ClickHouseClientOption#MAX_MAPPER_CACHE` | ✗ | |
 | `ClickHouseClientOption#MEASURE_REQUEST_TIME` | ✗ | |
-
-</TabItem>
-</Tabs>
 
 ### General Differences
 

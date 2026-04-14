@@ -1,5 +1,3 @@
-# Billing
-
 This guide provides an overview of different Gemini API billing options,
 explains how to enable billing and monitor usage, and provides answers to
 frequently asked questions (FAQs) about billing.
@@ -122,6 +120,9 @@ introduction of Prepay and Postpay billing plans may need to [update their
 project's billing details](https://ai.google.dev/gemini-api/docs/billing#verify-billing) before continuing to use the Gemini
 API.
 
+*Note that Prepay is not available for [Invoiced (or Offline)](https://docs.cloud.google.com/billing/docs/concepts#billing_account_types)
+accounts.*
+
 #### Buy credits
 
 You can manually purchase credits in advance of your Gemini API usage to load
@@ -177,6 +178,9 @@ You can learn more about the Postpay charging cycle in the [Cloud Billing guide]
 The Gemini API supports monthly spend caps at both the billing account tier and
 project levels. These controls are designed to protect your account from
 unexpected overages, and the ecosystem to ensure service availability.
+
+*Note that spend caps are not available for [Invoiced (or Offline)](https://docs.cloud.google.com/billing/docs/concepts#billing_account_types)
+accounts.*
 
 ### Project spend caps
 

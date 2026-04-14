@@ -993,7 +993,7 @@ In production, [Router connects to a Redis Cache](#redis-queue) to track usage a
 #### Quick Start
 
 ```python
-pip install litellm
+uv add litellm
 ```
 
 ```python

@@ -44,7 +44,7 @@ for chunk in response:
 ## Example usage - Streaming + Acompletion
 Ensure you have async_generator installed for using ollama acompletion with streaming
 ```shell
-pip install async_generator
+uv add async_generator
 ```
 
 ```python
