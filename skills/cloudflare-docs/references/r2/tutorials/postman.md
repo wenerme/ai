@@ -16,7 +16,7 @@ Copy page
 
 # Postman
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 Learn how to configure Postman to interact with R2.
 

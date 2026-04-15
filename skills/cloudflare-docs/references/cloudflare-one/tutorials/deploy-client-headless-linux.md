@@ -26,7 +26,7 @@ This tutorial explains how to deploy the [Cloudflare One Client](https://develop
 
 Note
 
-This tutorial focuses on deploying the Cloudflare One Client as an endpoint device agent. If you are looking to deploy the Cloudflare One Client as a gateway to a private network, refer to the [WARP Connector documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/).
+This tutorial focuses on deploying the Cloudflare One Client as an endpoint device agent. If you are looking to deploy the Cloudflare One Client as a gateway to a private network, refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
 
 ## Prerequisites
 
@@ -38,9 +38,9 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-* [ Dashboard ](#tab-panel-3954)
-* [ API ](#tab-panel-3955)
-* [ Terraform (v5) ](#tab-panel-3956)
+* [ Dashboard ](#tab-panel-4108)
+* [ API ](#tab-panel-4109)
+* [ Terraform (v5) ](#tab-panel-4110)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

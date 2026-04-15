@@ -154,84 +154,6 @@ Create a conversation.
         A list of one or many input items to the model, containing different content
         types.
 
-        - `ResponseInputText`
-
-          A text input to the model.
-
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage`
-
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
-
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile`
-
-          A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
-
       - `role: "user" | "system" | "developer"`
 
         The role of the message input. One of `user`, `system`, or `developer`.
@@ -1427,55 +1349,6 @@ Create a conversation.
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" | "ne" | "gt" | 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string | number | boolean | Array<string | number>`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
-
                 - `unknown`
 
               - `type: "and" | "or"`
@@ -2011,39 +1884,7 @@ Create a conversation.
 
                 - `ContainerNetworkPolicyDisabled`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
                 - `ContainerNetworkPolicyAllowlist`
-
-                  - `allowed_domains: Array<string>`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
 
               - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -2232,60 +2073,6 @@ Create a conversation.
             - `CustomTool`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `defer_loading?: boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description?: string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format?: CustomToolInputFormat`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" | "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
 
           - `type: "namespace"`
 
@@ -2719,39 +2506,7 @@ Create a conversation.
 
         - `LocalEnvironment`
 
-          - `type: "local"`
-
-            Use a local computer environment.
-
-            - `"local"`
-
-          - `skills?: Array<LocalSkill>`
-
-            An optional list of skills.
-
-            - `description: string`
-
-              The description of the skill.
-
-            - `name: string`
-
-              The name of the skill.
-
-            - `path: string`
-
-              The path to the directory containing the skill.
-
         - `ContainerReference`
-
-          - `container_id: string`
-
-            The ID of the referenced container.
-
-          - `type: "container_reference"`
-
-            References a container created with the /v1/containers endpoint
-
-            - `"container_reference"`
 
       - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -3113,79 +2868,13 @@ Create a conversation.
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto" | "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url?: string | null`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `ResponseInputFile`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data?: string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url?: string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename?: string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 
@@ -4183,84 +3872,6 @@ Create items in a conversation with the given ID.
         A list of one or many input items to the model, containing different content
         types.
 
-        - `ResponseInputText`
-
-          A text input to the model.
-
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage`
-
-          An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
-
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile`
-
-          A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
-
       - `role: "user" | "system" | "developer"`
 
         The role of the message input. One of `user`, `system`, or `developer`.
@@ -5456,55 +5067,6 @@ Create items in a conversation with the given ID.
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" | "ne" | "gt" | 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string | number | boolean | Array<string | number>`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
-
                 - `unknown`
 
               - `type: "and" | "or"`
@@ -6040,39 +5602,7 @@ Create items in a conversation with the given ID.
 
                 - `ContainerNetworkPolicyDisabled`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
                 - `ContainerNetworkPolicyAllowlist`
-
-                  - `allowed_domains: Array<string>`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
 
               - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -6261,60 +5791,6 @@ Create items in a conversation with the given ID.
             - `CustomTool`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `defer_loading?: boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description?: string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format?: CustomToolInputFormat`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" | "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
 
           - `type: "namespace"`
 
@@ -6748,39 +6224,7 @@ Create items in a conversation with the given ID.
 
         - `LocalEnvironment`
 
-          - `type: "local"`
-
-            Use a local computer environment.
-
-            - `"local"`
-
-          - `skills?: Array<LocalSkill>`
-
-            An optional list of skills.
-
-            - `description: string`
-
-              The description of the skill.
-
-            - `name: string`
-
-              The name of the skill.
-
-            - `path: string`
-
-              The path to the directory containing the skill.
-
         - `ContainerReference`
-
-          - `container_id: string`
-
-            The ID of the referenced container.
-
-          - `type: "container_reference"`
-
-            References a container created with the /v1/containers endpoint
-
-            - `"container_reference"`
 
       - `status?: "in_progress" | "completed" | "incomplete" | null`
 
@@ -7142,79 +6586,13 @@ Create items in a conversation with the given ID.
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto" | "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url?: string | null`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `ResponseInputFile`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data?: string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url?: string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename?: string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 
@@ -7694,79 +7072,13 @@ Create items in a conversation with the given ID.
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto" | "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url?: string | null`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `ResponseInputFile`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data?: string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url?: string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename?: string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" | "completed" | "incomplete"`
 
@@ -8676,55 +7988,6 @@ Create items in a conversation with the given ID.
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" | "ne" | "gt" | 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string | number | boolean | Array<string | number>`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
-
                 - `unknown`
 
               - `type: "and" | "or"`
@@ -9260,39 +8523,7 @@ Create items in a conversation with the given ID.
 
                 - `ContainerNetworkPolicyDisabled`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
                 - `ContainerNetworkPolicyAllowlist`
-
-                  - `allowed_domains: Array<string>`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
 
               - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -9481,60 +8712,6 @@ Create items in a conversation with the given ID.
             - `CustomTool`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `defer_loading?: boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description?: string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format?: CustomToolInputFormat`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" | "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
 
           - `type: "namespace"`
 
@@ -10348,79 +9525,13 @@ Create items in a conversation with the given ID.
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto" | "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url?: string | null`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `ResponseInputFile`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data?: string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url?: string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename?: string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 
@@ -11016,79 +10127,13 @@ List all items for a conversation with the given ID.
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `ResponseInputFile`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
 
     - `status: "in_progress" | "completed" | "incomplete"`
 
@@ -11998,55 +11043,6 @@ List all items for a conversation with the given ID.
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" | "ne" | "gt" | 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string | number | boolean | Array<string | number>`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
-
               - `unknown`
 
             - `type: "and" | "or"`
@@ -12582,39 +11578,7 @@ List all items for a conversation with the given ID.
 
               - `ContainerNetworkPolicyDisabled`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
               - `ContainerNetworkPolicyAllowlist`
-
-                - `allowed_domains: Array<string>`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
 
             - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -12803,60 +11767,6 @@ List all items for a conversation with the given ID.
           - `CustomTool`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-            - `name: string`
-
-              The name of the custom tool, used to identify it in tool calls.
-
-            - `type: "custom"`
-
-              The type of the custom tool. Always `custom`.
-
-              - `"custom"`
-
-            - `defer_loading?: boolean`
-
-              Whether this tool should be deferred and discovered via tool search.
-
-            - `description?: string`
-
-              Optional description of the custom tool, used to provide more context.
-
-            - `format?: CustomToolInputFormat`
-
-              The input format for the custom tool. Default is unconstrained text.
-
-              - `Text`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" | "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
 
         - `type: "namespace"`
 
@@ -13670,79 +12580,13 @@ List all items for a conversation with the given ID.
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `ResponseInputFile`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -14265,79 +13109,13 @@ Get a single item from a conversation with the given IDs.
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `ResponseInputFile`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
 
     - `status: "in_progress" | "completed" | "incomplete"`
 
@@ -15247,55 +14025,6 @@ Get a single item from a conversation with the given IDs.
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" | "ne" | "gt" | 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string | number | boolean | Array<string | number>`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
-
               - `unknown`
 
             - `type: "and" | "or"`
@@ -15831,39 +14560,7 @@ Get a single item from a conversation with the given IDs.
 
               - `ContainerNetworkPolicyDisabled`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
               - `ContainerNetworkPolicyAllowlist`
-
-                - `allowed_domains: Array<string>`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
 
             - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -16052,60 +14749,6 @@ Get a single item from a conversation with the given IDs.
           - `CustomTool`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-            - `name: string`
-
-              The name of the custom tool, used to identify it in tool calls.
-
-            - `type: "custom"`
-
-              The type of the custom tool. Always `custom`.
-
-              - `"custom"`
-
-            - `defer_loading?: boolean`
-
-              Whether this tool should be deferred and discovered via tool search.
-
-            - `description?: string`
-
-              Optional description of the custom tool, used to provide more context.
-
-            - `format?: CustomToolInputFormat`
-
-              The input format for the custom tool. Default is unconstrained text.
-
-              - `Text`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" | "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
 
         - `type: "namespace"`
 
@@ -16919,79 +15562,13 @@ Get a single item from a conversation with the given IDs.
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `ResponseInputFile`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -17557,79 +16134,13 @@ console.log(conversation);
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `ResponseInputFile`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
 
     - `status: "in_progress" | "completed" | "incomplete"`
 
@@ -18539,55 +17050,6 @@ console.log(conversation);
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" | "ne" | "gt" | 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string | number | boolean | Array<string | number>`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `Array<string | number>`
-
-                    - `string`
-
-                    - `number`
-
               - `unknown`
 
             - `type: "and" | "or"`
@@ -19123,39 +17585,7 @@ console.log(conversation);
 
               - `ContainerNetworkPolicyDisabled`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
               - `ContainerNetworkPolicyAllowlist`
-
-                - `allowed_domains: Array<string>`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
 
             - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -19344,60 +17774,6 @@ console.log(conversation);
           - `CustomTool`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-            - `name: string`
-
-              The name of the custom tool, used to identify it in tool calls.
-
-            - `type: "custom"`
-
-              The type of the custom tool. Always `custom`.
-
-              - `"custom"`
-
-            - `defer_loading?: boolean`
-
-              Whether this tool should be deferred and discovered via tool search.
-
-            - `description?: string`
-
-              Optional description of the custom tool, used to provide more context.
-
-            - `format?: CustomToolInputFormat`
-
-              The input format for the custom tool. Default is unconstrained text.
-
-              - `Text`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" | "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
 
         - `type: "namespace"`
 
@@ -20211,79 +18587,13 @@ console.log(conversation);
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `ResponseInputImage`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: "low" | "high" | "auto" | "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url?: string | null`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `ResponseInputFile`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail?: "low" | "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data?: string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id?: string | null`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url?: string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename?: string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -20698,79 +19008,13 @@ console.log(conversation);
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto" | "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url?: string | null`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `ResponseInputFile`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data?: string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url?: string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename?: string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" | "completed" | "incomplete"`
 
@@ -21680,55 +19924,6 @@ console.log(conversation);
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" | "ne" | "gt" | 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string | number | boolean | Array<string | number>`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `Array<string | number>`
-
-                      - `string`
-
-                      - `number`
-
                 - `unknown`
 
               - `type: "and" | "or"`
@@ -22264,39 +20459,7 @@ console.log(conversation);
 
                 - `ContainerNetworkPolicyDisabled`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
                 - `ContainerNetworkPolicyAllowlist`
-
-                  - `allowed_domains: Array<string>`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
 
               - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -22485,60 +20648,6 @@ console.log(conversation);
             - `CustomTool`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `defer_loading?: boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description?: string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format?: CustomToolInputFormat`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" | "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
 
           - `type: "namespace"`
 
@@ -23352,79 +21461,13 @@ console.log(conversation);
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `ResponseInputImage`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: "low" | "high" | "auto" | "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url?: string | null`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `ResponseInputFile`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail?: "low" | "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data?: string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id?: string | null`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url?: string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename?: string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 

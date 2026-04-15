@@ -22,7 +22,7 @@ Modifies a user's role in the project.
 
 ### Returns
 
-- `ProjectUser = object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, email, 3 more }`
 
   Represents an individual user in a project.
 

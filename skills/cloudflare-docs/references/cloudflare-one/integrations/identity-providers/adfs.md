@@ -64,7 +64,7 @@ To create a Relying Party Trust:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 15. Select **Next**. The **Configure Identifiers** step displays.  
 ![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/_astro/adfs-7.BHM4h9Ct_Z4U7NI.webp)
 16. Paste your callback URL in the **Relying party trust identifier** field.

@@ -497,12 +497,6 @@ Create a run.
 
       - `CodeInterpreterTool`
 
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
       - `FileSearchTool`
 
         - `type: "file_search"`
@@ -594,8 +588,6 @@ Create a run.
     - `stream?: false | null`
 
       Body param: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
-
-      - `false`
 
   - `RunCreateParamsStreaming extends RunCreateParamsBase`
 

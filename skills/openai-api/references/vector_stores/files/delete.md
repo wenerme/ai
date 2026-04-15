@@ -12,7 +12,7 @@ Delete a vector store file. This will remove the file from the vector store but 
 
 ### Returns
 
-- `VectorStoreFileDeleted = object { id, deleted, object }`
+- `VectorStoreFileDeleted object { id, deleted, object }`
 
   - `id: string`
 

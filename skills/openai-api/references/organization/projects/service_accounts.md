@@ -239,7 +239,7 @@ Retrieves a service account in the project.
 
 ### Returns
 
-- `ProjectServiceAccount = object { id, created_at, name, 2 more }`
+- `ProjectServiceAccount object { id, created_at, name, 2 more }`
 
   Represents an individual service account in a project.
 
@@ -373,7 +373,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
 
 ### Project Service Account
 
-- `ProjectServiceAccount = object { id, created_at, name, 2 more }`
+- `ProjectServiceAccount object { id, created_at, name, 2 more }`
 
   Represents an individual service account in a project.
 
@@ -402,3 +402,51 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
     - `"owner"`
 
     - `"member"`
+
+### Service Account Create Response
+
+- `ServiceAccountCreateResponse object { id, api_key, created_at, 3 more }`
+
+  - `id: string`
+
+  - `api_key: object { id, created_at, name, 2 more }`
+
+    - `id: string`
+
+    - `created_at: number`
+
+    - `name: string`
+
+    - `object: "organization.project.service_account.api_key"`
+
+      The object type, which is always `organization.project.service_account.api_key`
+
+      - `"organization.project.service_account.api_key"`
+
+    - `value: string`
+
+  - `created_at: number`
+
+  - `name: string`
+
+  - `object: "organization.project.service_account"`
+
+    - `"organization.project.service_account"`
+
+  - `role: "member"`
+
+    Service accounts can only have one role of type `member`
+
+    - `"member"`
+
+### Service Account Delete Response
+
+- `ServiceAccountDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.project.service_account.deleted"`
+
+    - `"organization.project.service_account.deleted"`

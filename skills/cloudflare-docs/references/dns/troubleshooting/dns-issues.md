@@ -55,7 +55,7 @@ DNS resolution failures occur if [DNSSEC is not disabled](https://developers.clo
 
 If you manage DNS records via the Cloudflare dashboard and your domain stops pointing to Cloudflare's nameservers, DNS resolution will stop functioning.
 
-This can occur if your domain registrar switches the nameservers for your domain to point to their default nameservers. To confirm if this is the problem, [check whether your domain uses Cloudflare's nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#verify-changes).
+This can occur if your domain registrar switches the nameservers for your domain to point to their default nameservers. To confirm if this is the problem, [check whether your domain uses Cloudflare's nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#35-verify-changes).
 
 ### Unresolved IP address
 

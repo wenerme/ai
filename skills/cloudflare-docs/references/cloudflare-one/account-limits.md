@@ -74,13 +74,19 @@ This page lists the default account limits for rules, applications, fields, and 
 
 ## Cloudflare Tunnel
 
-| Feature                                            | Limit |
-| -------------------------------------------------- | ----- |
-| cloudflared tunnels per account                    | 1,000 |
-| WARP Connectors per account                        | 10    |
-| Routes (CIDR routes + Hostname routes) per account | 1,000 |
-| Active cloudflared replicas per tunnel             | 25    |
-| Virtual networks per account                       | 1,000 |
+| Feature                                            | Limit                               |
+| -------------------------------------------------- | ----------------------------------- |
+| cloudflared tunnels per account                    | 1,000                               |
+| Routes (CIDR routes + Hostname routes) per account | 1,000 (shared with Cloudflare Mesh) |
+| Active cloudflared replicas per tunnel             | 25                                  |
+| Virtual networks per account                       | 1,000                               |
+
+## Cloudflare Mesh
+
+| Feature                          | Limit                                 |
+| -------------------------------- | ------------------------------------- |
+| Mesh nodes per account           | 50                                    |
+| Routes (CIDR routes) per account | 1,000 (shared with Cloudflare Tunnel) |
 
 ## Digital Experience Monitoring (DEX)
 

@@ -1085,79 +1085,13 @@ Returns a list of input items for a given response.
 
           A text input to the model.
 
-          - `text: str`
-
-            The text input to the model.
-
-          - `type: Literal["input_text"]`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `class ResponseInputImage: …`
 
           An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-          - `detail: Literal["low", "high", "auto", "original"]`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: Literal["input_image"]`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: Optional[str]`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: Optional[str]`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
         - `class ResponseInputFile: …`
 
           A file input to the model.
-
-          - `type: Literal["input_file"]`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: Optional[Literal["low", "high"]]`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: Optional[str]`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: Optional[str]`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: Optional[str]`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: Optional[str]`
-
-            The name of the file to be sent to the model.
 
     - `status: Literal["in_progress", "completed", "incomplete"]`
 
@@ -1366,55 +1300,6 @@ Returns a list of input items for a given response.
               - `class ComparisonFilter: …`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                - `key: str`
-
-                  The key to compare against the value.
-
-                - `type: Literal["eq", "ne", "gt", 5 more]`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: Union[str, float, bool, List[Union[str, float]]]`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `str`
-
-                  - `float`
-
-                  - `bool`
-
-                  - `List[Union[str, float]]`
-
-                    - `str`
-
-                    - `float`
 
               - `object`
 
@@ -1961,39 +1846,7 @@ Returns a list of input items for a given response.
 
               - `class ContainerNetworkPolicyDisabled: …`
 
-                - `type: Literal["disabled"]`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
               - `class ContainerNetworkPolicyAllowlist: …`
-
-                - `allowed_domains: List[str]`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: Literal["allowlist"]`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: str`
-
-                    The domain associated with the secret.
-
-                  - `name: str`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: str`
-
-                    The secret value to inject for the domain.
 
             - `skills: Optional[List[Skill]]`
 
@@ -2182,60 +2035,6 @@ Returns a list of input items for a given response.
           - `class CustomTool: …`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-            - `name: str`
-
-              The name of the custom tool, used to identify it in tool calls.
-
-            - `type: Literal["custom"]`
-
-              The type of the custom tool. Always `custom`.
-
-              - `"custom"`
-
-            - `defer_loading: Optional[bool]`
-
-              Whether this tool should be deferred and discovered via tool search.
-
-            - `description: Optional[str]`
-
-              Optional description of the custom tool, used to provide more context.
-
-            - `format: Optional[CustomToolInputFormat]`
-
-              The input format for the custom tool. Default is unconstrained text.
-
-              - `class Text: …`
-
-                Unconstrained free-form text.
-
-                - `type: Literal["text"]`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `class Grammar: …`
-
-                A grammar defined by the user.
-
-                - `definition: str`
-
-                  The grammar definition.
-
-                - `syntax: Literal["lark", "regex"]`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: Literal["grammar"]`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
 
         - `type: Literal["namespace"]`
 
@@ -4187,79 +3986,13 @@ print(response.data)
 
             A text input to the model.
 
-            - `text: str`
-
-              The text input to the model.
-
-            - `type: Literal["input_text"]`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `class ResponseInputImage: …`
 
             An image input to the model. Learn about [image inputs](https://platform.openai.com/docs/guides/vision).
 
-            - `detail: Literal["low", "high", "auto", "original"]`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: Literal["input_image"]`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: Optional[str]`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: Optional[str]`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
           - `class ResponseInputFile: …`
 
             A file input to the model.
-
-            - `type: Literal["input_file"]`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: Optional[Literal["low", "high"]]`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: Optional[str]`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: Optional[str]`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: Optional[str]`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: Optional[str]`
-
-              The name of the file to be sent to the model.
 
       - `status: Literal["in_progress", "completed", "incomplete"]`
 
@@ -4468,55 +4201,6 @@ print(response.data)
                 - `class ComparisonFilter: …`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: str`
-
-                    The key to compare against the value.
-
-                  - `type: Literal["eq", "ne", "gt", 5 more]`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: Union[str, float, bool, List[Union[str, float]]]`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `str`
-
-                    - `float`
-
-                    - `bool`
-
-                    - `List[Union[str, float]]`
-
-                      - `str`
-
-                      - `float`
 
                 - `object`
 
@@ -5063,39 +4747,7 @@ print(response.data)
 
                 - `class ContainerNetworkPolicyDisabled: …`
 
-                  - `type: Literal["disabled"]`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
                 - `class ContainerNetworkPolicyAllowlist: …`
-
-                  - `allowed_domains: List[str]`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: Literal["allowlist"]`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: str`
-
-                      The domain associated with the secret.
-
-                    - `name: str`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: str`
-
-                      The secret value to inject for the domain.
 
               - `skills: Optional[List[Skill]]`
 
@@ -5284,60 +4936,6 @@ print(response.data)
             - `class CustomTool: …`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-              - `name: str`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: Literal["custom"]`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `defer_loading: Optional[bool]`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description: Optional[str]`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format: Optional[CustomToolInputFormat]`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `class Text: …`
-
-                  Unconstrained free-form text.
-
-                  - `type: Literal["text"]`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `class Grammar: …`
-
-                  A grammar defined by the user.
-
-                  - `definition: str`
-
-                    The grammar definition.
-
-                  - `syntax: Literal["lark", "regex"]`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: Literal["grammar"]`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
 
           - `type: Literal["namespace"]`
 

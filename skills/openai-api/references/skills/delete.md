@@ -10,7 +10,7 @@ Delete a skill by its ID.
 
 ### Returns
 
-- `DeletedSkill = object { id, deleted, object }`
+- `DeletedSkill object { id, deleted, object }`
 
   - `id: string`
 

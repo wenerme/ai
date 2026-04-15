@@ -1135,3 +1135,15 @@ for await (const fileContentResponse of client.vectorStores.files.content('file-
   - `object: "vector_store.file.deleted"`
 
     - `"vector_store.file.deleted"`
+
+### File Content Response
+
+- `FileContentResponse`
+
+  - `text?: string`
+
+    The text content
+
+  - `type?: string`
+
+    The content type (currently only `"text"`)

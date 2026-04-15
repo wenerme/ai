@@ -22,7 +22,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   A filter to apply based on file attributes.
 
-  - `ComparisonFilter = object { key, type, value }`
+  - `ComparisonFilter object { key, type, value }`
 
     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -75,7 +75,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
         - `number`
 
-  - `CompoundFilter = object { filters, type }`
+  - `CompoundFilter object { filters, type }`
 
     Combine multiple filters using `and` or `or`.
 
@@ -83,58 +83,9 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
       Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-      - `ComparisonFilter = object { key, type, value }`
+      - `ComparisonFilter object { key, type, value }`
 
         A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-        - `key: string`
-
-          The key to compare against the value.
-
-        - `type: "eq" or "ne" or "gt" or 5 more`
-
-          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-          - `eq`: equals
-          - `ne`: not equal
-          - `gt`: greater than
-          - `gte`: greater than or equal
-          - `lt`: less than
-          - `lte`: less than or equal
-          - `in`: in
-          - `nin`: not in
-
-          - `"eq"`
-
-          - `"ne"`
-
-          - `"gt"`
-
-          - `"gte"`
-
-          - `"lt"`
-
-          - `"lte"`
-
-          - `"in"`
-
-          - `"nin"`
-
-        - `value: string or number or boolean or array of string or number`
-
-          The value to compare against the attribute key; supports string, number, or boolean types.
-
-          - `string`
-
-          - `number`
-
-          - `boolean`
-
-          - `array of string or number`
-
-            - `string`
-
-            - `number`
 
       - `unknown`
 

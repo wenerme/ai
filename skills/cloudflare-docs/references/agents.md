@@ -54,7 +54,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 * **Think with any model** — Call [any AI model](https://developers.cloudflare.com/agents/api-reference/using-ai-models/) — Workers AI, OpenAI, Anthropic, Gemini — and stream responses over [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/) or [Server-Sent Events](https://developers.cloudflare.com/agents/api-reference/http-sse/). Long-running reasoning models that take minutes to respond work out of the box.
 * **Use and serve tools** — Define server-side tools, client-side tools that run in the browser, and [human-in-the-loop](https://developers.cloudflare.com/agents/concepts/human-in-the-loop/) approval flows. Expose your agent's tools to other agents and LLMs via [MCP](https://developers.cloudflare.com/agents/api-reference/mcp-agent-api/).
 * **Act on their own** — [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) on a delay, at a specific time, or on a cron. Agents can wake themselves up, do work, and go back to sleep — without a user present.
-* **Browse the web** — Spin up [headless browsers](https://developers.cloudflare.com/agents/api-reference/browse-the-web/) to scrape, screenshot, and interact with web pages.
+* **Browse the web** — Give your agents [browser tools](https://developers.cloudflare.com/agents/api-reference/browse-the-web/) powered by the Chrome DevTools Protocol to scrape, screenshot, debug, and interact with web pages.
+* **Talk to users** — Build real-time [voice agents](https://developers.cloudflare.com/agents/api-reference/voice/) with speech-to-text, text-to-speech, and conversation persistence — audio streams over WebSocket.
 * **Orchestrate work** — Run multi-step [workflows](https://developers.cloudflare.com/agents/api-reference/run-workflows/) with automatic retries, or coordinate across multiple agents.
 * **React to events** — Handle [inbound email](https://developers.cloudflare.com/agents/api-reference/email/), HTTP requests, WebSocket messages, and state changes — all from the same class.
 
@@ -62,8 +63,8 @@ The starter includes streaming AI chat, server-side and client-side tools, human
 
 An agent is a TypeScript class. Methods marked with `@callable()` become typed RPC that clients can call directly over WebSocket.
 
-* [  JavaScript ](#tab-panel-2118)
-* [  TypeScript ](#tab-panel-2119)
+* [  JavaScript ](#tab-panel-2134)
+* [  TypeScript ](#tab-panel-2135)
 
 JavaScript
 
@@ -152,8 +153,8 @@ Explain Code
 
 For AI chat, extend `AIChatAgent` instead. Messages are persisted automatically, streams resume on disconnect, and the React hook handles the UI.
 
-* [  JavaScript ](#tab-panel-2120)
-* [  TypeScript ](#tab-panel-2121)
+* [  JavaScript ](#tab-panel-2136)
+* [  TypeScript ](#tab-panel-2137)
 
 JavaScript
 

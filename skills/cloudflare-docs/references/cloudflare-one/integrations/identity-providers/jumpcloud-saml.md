@@ -40,7 +40,7 @@ The following steps are specific to setting up JumpCloud with Cloudflare Access.
    ```  
    https://<your-team-name>.cloudflareaccess.com/  
    ```  
-   You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
+   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
    2. Set both **SP Entity ID** and **ACS URL** to the following callback URL:  
    ```  
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  

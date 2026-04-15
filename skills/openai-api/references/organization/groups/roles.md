@@ -384,3 +384,141 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, created_at, created_by, 8 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+### Role Create Response
+
+- `RoleCreateResponse object { group, object, role }`
+
+  Role assignment linking a group to a role.
+
+  - `group: object { id, created_at, name, 2 more }`
+
+    Summary information about a group returned in role assignment responses.
+
+    - `id: string`
+
+      Identifier for the group.
+
+    - `created_at: number`
+
+      Unix timestamp (in seconds) when the group was created.
+
+    - `name: string`
+
+      Display name of the group.
+
+    - `object: "group"`
+
+      Always `group`.
+
+      - `"group"`
+
+    - `scim_managed: boolean`
+
+      Whether the group is managed through SCIM.
+
+  - `object: "group.role"`
+
+    Always `group.role`.
+
+    - `"group.role"`
+
+  - `role: object { id, description, name, 4 more }`
+
+    Details about a role that can be assigned through the public Roles API.
+
+    - `id: string`
+
+      Identifier for the role.
+
+    - `description: string`
+
+      Optional description of the role.
+
+    - `name: string`
+
+      Unique name for the role.
+
+    - `object: "role"`
+
+      Always `role`.
+
+      - `"role"`
+
+    - `permissions: array of string`
+
+      Permissions granted by the role.
+
+    - `predefined_role: boolean`
+
+      Whether the role is predefined and managed by OpenAI.
+
+    - `resource_type: string`
+
+      Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.

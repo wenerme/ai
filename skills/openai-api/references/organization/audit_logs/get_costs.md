@@ -52,7 +52,7 @@ Get costs details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -108,7 +108,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -140,7 +140,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -172,7 +172,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -212,7 +212,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -244,7 +244,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -276,7 +276,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -292,7 +292,7 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -308,7 +308,7 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 

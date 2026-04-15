@@ -162,8 +162,6 @@ Creates an image given a prompt. [Learn more](https://platform.openai.com/docs/g
       [Image generation guide](https://platform.openai.com/docs/guides/image-generation) for more information.
       This parameter is only supported for the GPT image models.
 
-      - `false`
-
   - `ImageGenerateParamsStreaming extends ImageGenerateParamsBase`
 
     - `stream: true`

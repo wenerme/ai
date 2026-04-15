@@ -34,7 +34,7 @@ List items that belong to a ChatKit thread.
 
 ### Returns
 
-- `ChatKitThreadItemList = object { data, first_id, has_more, 2 more }`
+- `ChatKitThreadItemList object { data, first_id, has_more, 2 more }`
 
   A paginated list of thread items rendered for the ChatKit API.
 
@@ -42,7 +42,7 @@ List items that belong to a ChatKit thread.
 
     A list of items
 
-    - `ChatKitThreadUserMessageItem = object { id, attachments, content, 5 more }`
+    - `ChatKitThreadUserMessageItem object { id, attachments, content, 5 more }`
 
       User-authored messages within a thread.
 
@@ -82,7 +82,7 @@ List items that belong to a ChatKit thread.
 
         Ordered content elements supplied by the user.
 
-        - `InputText = object { text, type }`
+        - `InputText object { text, type }`
 
           Text block that a user contributed to the thread.
 
@@ -96,7 +96,7 @@ List items that belong to a ChatKit thread.
 
             - `"input_text"`
 
-        - `QuotedText = object { text, type }`
+        - `QuotedText object { text, type }`
 
           Quoted snippet that the user referenced in their message.
 
@@ -144,7 +144,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.user_message"`
 
-    - `ChatKitThreadAssistantMessageItem = object { id, content, created_at, 3 more }`
+    - `ChatKitThreadAssistantMessageItem object { id, content, created_at, 3 more }`
 
       Assistant-authored message within a thread.
 
@@ -160,7 +160,7 @@ List items that belong to a ChatKit thread.
 
           Ordered list of annotations attached to the response text.
 
-          - `File = object { source, type }`
+          - `File object { source, type }`
 
             Annotation that references an uploaded file.
 
@@ -184,7 +184,7 @@ List items that belong to a ChatKit thread.
 
               - `"file"`
 
-          - `URL = object { source, type }`
+          - `URL object { source, type }`
 
             Annotation that references a URL.
 
@@ -238,7 +238,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.assistant_message"`
 
-    - `ChatKitWidgetItem = object { id, created_at, object, 3 more }`
+    - `ChatKitWidgetItem object { id, created_at, object, 3 more }`
 
       Thread item that renders a widget payload.
 
@@ -270,7 +270,7 @@ List items that belong to a ChatKit thread.
 
         Serialized widget payload rendered in the UI.
 
-    - `ChatKitClientToolCall = object { id, arguments, call_id, 7 more }`
+    - `ChatKitClientToolCall object { id, arguments, call_id, 7 more }`
 
       Record of a client side tool invocation initiated by the assistant.
 
@@ -322,7 +322,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.client_tool_call"`
 
-    - `ChatKitTask = object { id, created_at, heading, 5 more }`
+    - `ChatKitTask object { id, created_at, heading, 5 more }`
 
       Task emitted by the workflow to show progress and status updates.
 
@@ -366,7 +366,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.task"`
 
-    - `ChatKitTaskGroup = object { id, created_at, object, 3 more }`
+    - `ChatKitTaskGroup object { id, created_at, object, 3 more }`
 
       Collection of workflow tasks grouped together in the thread.
 
@@ -535,7 +535,7 @@ Retrieve a ChatKit thread by its identifier.
 
 ### Returns
 
-- `ChatKitThread = object { id, created_at, object, 3 more }`
+- `ChatKitThread object { id, created_at, object, 3 more }`
 
   Represents a ChatKit thread and its current status.
 
@@ -557,7 +557,7 @@ Retrieve a ChatKit thread by its identifier.
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
-    - `Active = object { type }`
+    - `Active object { type }`
 
       Indicates that a thread is active.
 
@@ -567,7 +567,7 @@ Retrieve a ChatKit thread by its identifier.
 
         - `"active"`
 
-    - `Locked = object { reason, type }`
+    - `Locked object { reason, type }`
 
       Indicates that a thread is locked and cannot accept new input.
 
@@ -581,7 +581,7 @@ Retrieve a ChatKit thread by its identifier.
 
         - `"locked"`
 
-    - `Closed = object { reason, type }`
+    - `Closed object { reason, type }`
 
       Indicates that a thread has been closed.
 
@@ -773,7 +773,7 @@ List ChatKit threads with optional pagination and user filters.
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
-    - `Active = object { type }`
+    - `Active object { type }`
 
       Indicates that a thread is active.
 
@@ -783,7 +783,7 @@ List ChatKit threads with optional pagination and user filters.
 
         - `"active"`
 
-    - `Locked = object { reason, type }`
+    - `Locked object { reason, type }`
 
       Indicates that a thread is locked and cannot accept new input.
 
@@ -797,7 +797,7 @@ List ChatKit threads with optional pagination and user filters.
 
         - `"locked"`
 
-    - `Closed = object { reason, type }`
+    - `Closed object { reason, type }`
 
       Indicates that a thread has been closed.
 
@@ -901,7 +901,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session
 
-- `ChatSession = object { id, chatkit_configuration, client_secret, 7 more }`
+- `ChatSession object { id, chatkit_configuration, client_secret, 7 more }`
 
   Represents a ChatKit session and its resolved configuration.
 
@@ -1021,7 +1021,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session Automatic Thread Titling
 
-- `ChatSessionAutomaticThreadTitling = object { enabled }`
+- `ChatSessionAutomaticThreadTitling object { enabled }`
 
   Automatic thread title preferences for the session.
 
@@ -1031,7 +1031,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session ChatKit Configuration
 
-- `ChatSessionChatKitConfiguration = object { automatic_thread_titling, file_upload, history }`
+- `ChatSessionChatKitConfiguration object { automatic_thread_titling, file_upload, history }`
 
   ChatKit configuration for the session.
 
@@ -1073,7 +1073,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session ChatKit Configuration Param
 
-- `ChatSessionChatKitConfigurationParam = object { automatic_thread_titling, file_upload, history }`
+- `ChatSessionChatKitConfigurationParam object { automatic_thread_titling, file_upload, history }`
 
   Optional per-session configuration settings for ChatKit behavior.
 
@@ -1115,7 +1115,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session Expires After Param
 
-- `ChatSessionExpiresAfterParam = object { anchor, seconds }`
+- `ChatSessionExpiresAfterParam object { anchor, seconds }`
 
   Controls when the session expires relative to an anchor timestamp.
 
@@ -1131,7 +1131,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session File Upload
 
-- `ChatSessionFileUpload = object { enabled, max_file_size, max_files }`
+- `ChatSessionFileUpload object { enabled, max_file_size, max_files }`
 
   Upload permissions and limits applied to the session.
 
@@ -1149,7 +1149,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session History
 
-- `ChatSessionHistory = object { enabled, recent_threads }`
+- `ChatSessionHistory object { enabled, recent_threads }`
 
   History retention preferences returned for the session.
 
@@ -1163,7 +1163,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session Rate Limits
 
-- `ChatSessionRateLimits = object { max_requests_per_1_minute }`
+- `ChatSessionRateLimits object { max_requests_per_1_minute }`
 
   Active per-minute request limit for the session.
 
@@ -1173,7 +1173,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session Rate Limits Param
 
-- `ChatSessionRateLimitsParam = object { max_requests_per_1_minute }`
+- `ChatSessionRateLimitsParam object { max_requests_per_1_minute }`
 
   Controls request rate limits for the session.
 
@@ -1193,7 +1193,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### Chat Session Workflow Param
 
-- `ChatSessionWorkflowParam = object { id, state_variables, tracing, version }`
+- `ChatSessionWorkflowParam object { id, state_variables, tracing, version }`
 
   Workflow reference and overrides applied to the chat session.
 
@@ -1225,7 +1225,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Attachment
 
-- `ChatKitAttachment = object { id, mime_type, name, 2 more }`
+- `ChatKitAttachment object { id, mime_type, name, 2 more }`
 
   Attachment metadata included on thread items.
 
@@ -1255,7 +1255,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Response Output Text
 
-- `ChatKitResponseOutputText = object { annotations, text, type }`
+- `ChatKitResponseOutputText object { annotations, text, type }`
 
   Assistant response text accompanied by optional annotations.
 
@@ -1263,7 +1263,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Ordered list of annotations attached to the response text.
 
-    - `File = object { source, type }`
+    - `File object { source, type }`
 
       Annotation that references an uploaded file.
 
@@ -1287,7 +1287,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"file"`
 
-    - `URL = object { source, type }`
+    - `URL object { source, type }`
 
       Annotation that references a URL.
 
@@ -1323,7 +1323,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Thread
 
-- `ChatKitThread = object { id, created_at, object, 3 more }`
+- `ChatKitThread object { id, created_at, object, 3 more }`
 
   Represents a ChatKit thread and its current status.
 
@@ -1345,7 +1345,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
-    - `Active = object { type }`
+    - `Active object { type }`
 
       Indicates that a thread is active.
 
@@ -1355,7 +1355,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"active"`
 
-    - `Locked = object { reason, type }`
+    - `Locked object { reason, type }`
 
       Indicates that a thread is locked and cannot accept new input.
 
@@ -1369,7 +1369,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"locked"`
 
-    - `Closed = object { reason, type }`
+    - `Closed object { reason, type }`
 
       Indicates that a thread has been closed.
 
@@ -1393,7 +1393,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Thread Assistant Message Item
 
-- `ChatKitThreadAssistantMessageItem = object { id, content, created_at, 3 more }`
+- `ChatKitThreadAssistantMessageItem object { id, content, created_at, 3 more }`
 
   Assistant-authored message within a thread.
 
@@ -1409,7 +1409,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Ordered list of annotations attached to the response text.
 
-      - `File = object { source, type }`
+      - `File object { source, type }`
 
         Annotation that references an uploaded file.
 
@@ -1433,7 +1433,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
           - `"file"`
 
-      - `URL = object { source, type }`
+      - `URL object { source, type }`
 
         Annotation that references a URL.
 
@@ -1489,7 +1489,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Thread Item List
 
-- `ChatKitThreadItemList = object { data, first_id, has_more, 2 more }`
+- `ChatKitThreadItemList object { data, first_id, has_more, 2 more }`
 
   A paginated list of thread items rendered for the ChatKit API.
 
@@ -1497,7 +1497,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     A list of items
 
-    - `ChatKitThreadUserMessageItem = object { id, attachments, content, 5 more }`
+    - `ChatKitThreadUserMessageItem object { id, attachments, content, 5 more }`
 
       User-authored messages within a thread.
 
@@ -1537,7 +1537,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Ordered content elements supplied by the user.
 
-        - `InputText = object { text, type }`
+        - `InputText object { text, type }`
 
           Text block that a user contributed to the thread.
 
@@ -1551,7 +1551,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
             - `"input_text"`
 
-        - `QuotedText = object { text, type }`
+        - `QuotedText object { text, type }`
 
           Quoted snippet that the user referenced in their message.
 
@@ -1599,7 +1599,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.user_message"`
 
-    - `ChatKitThreadAssistantMessageItem = object { id, content, created_at, 3 more }`
+    - `ChatKitThreadAssistantMessageItem object { id, content, created_at, 3 more }`
 
       Assistant-authored message within a thread.
 
@@ -1615,7 +1615,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
           Ordered list of annotations attached to the response text.
 
-          - `File = object { source, type }`
+          - `File object { source, type }`
 
             Annotation that references an uploaded file.
 
@@ -1639,7 +1639,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
               - `"file"`
 
-          - `URL = object { source, type }`
+          - `URL object { source, type }`
 
             Annotation that references a URL.
 
@@ -1693,7 +1693,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.assistant_message"`
 
-    - `ChatKitWidgetItem = object { id, created_at, object, 3 more }`
+    - `ChatKitWidgetItem object { id, created_at, object, 3 more }`
 
       Thread item that renders a widget payload.
 
@@ -1725,7 +1725,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Serialized widget payload rendered in the UI.
 
-    - `ChatKitClientToolCall = object { id, arguments, call_id, 7 more }`
+    - `ChatKitClientToolCall object { id, arguments, call_id, 7 more }`
 
       Record of a client side tool invocation initiated by the assistant.
 
@@ -1777,7 +1777,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.client_tool_call"`
 
-    - `ChatKitTask = object { id, created_at, heading, 5 more }`
+    - `ChatKitTask object { id, created_at, heading, 5 more }`
 
       Task emitted by the workflow to show progress and status updates.
 
@@ -1821,7 +1821,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.task"`
 
-    - `ChatKitTaskGroup = object { id, created_at, object, 3 more }`
+    - `ChatKitTaskGroup object { id, created_at, object, 3 more }`
 
       Collection of workflow tasks grouped together in the thread.
 
@@ -1889,7 +1889,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Thread User Message Item
 
-- `ChatKitThreadUserMessageItem = object { id, attachments, content, 5 more }`
+- `ChatKitThreadUserMessageItem object { id, attachments, content, 5 more }`
 
   User-authored messages within a thread.
 
@@ -1929,7 +1929,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Ordered content elements supplied by the user.
 
-    - `InputText = object { text, type }`
+    - `InputText object { text, type }`
 
       Text block that a user contributed to the thread.
 
@@ -1943,7 +1943,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"input_text"`
 
-    - `QuotedText = object { text, type }`
+    - `QuotedText object { text, type }`
 
       Quoted snippet that the user referenced in their message.
 
@@ -1993,7 +1993,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
 ### ChatKit Widget Item
 
-- `ChatKitWidgetItem = object { id, created_at, object, 3 more }`
+- `ChatKitWidgetItem object { id, created_at, object, 3 more }`
 
   Thread item that renders a widget payload.
 
@@ -2024,3 +2024,23 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
   - `widget: string`
 
     Serialized widget payload rendered in the UI.
+
+### Thread Delete Response
+
+- `ThreadDeleteResponse object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a thread.
+
+  - `id: string`
+
+    Identifier of the deleted thread.
+
+  - `deleted: boolean`
+
+    Indicates that the thread has been deleted.
+
+  - `object: "chatkit.thread.deleted"`
+
+    Type discriminator that is always `chatkit.thread.deleted`.
+
+    - `"chatkit.thread.deleted"`

@@ -65,7 +65,7 @@ Creates and executes a batch from an uploaded file of requests
 
 ### Returns
 
-- `Batch = object { id, completion_window, created_at, 19 more }`
+- `Batch object { id, completion_window, created_at, 19 more }`
 
   - `id: string`
 

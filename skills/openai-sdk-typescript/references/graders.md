@@ -181,16 +181,6 @@
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `OutputText`
 
           A text output from the model.
@@ -226,27 +216,6 @@
         - `ResponseInputAudio`
 
           An audio input to the model.
-
-          - `input_audio: InputAudio`
-
-            - `data: string`
-
-              Base64-encoded audio data.
-
-            - `format: "mp3" | "wav"`
-
-              The format of the audio data. Currently supported formats are `mp3` and
-              `wav`.
-
-              - `"mp3"`
-
-              - `"wav"`
-
-          - `type: "input_audio"`
-
-            The type of the input item. Always `input_audio`.
-
-            - `"input_audio"`
 
     - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -505,16 +474,6 @@
 
               A text input to the model.
 
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
             - `OutputText`
 
               A text output from the model.
@@ -550,27 +509,6 @@
             - `ResponseInputAudio`
 
               An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: string`
-
-                  Base64-encoded audio data.
-
-                - `format: "mp3" | "wav"`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: "input_audio"`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -671,16 +609,6 @@
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `OutputText`
 
             A text output from the model.
@@ -717,104 +645,10 @@
 
             An audio input to the model.
 
-            - `input_audio: InputAudio`
-
-              - `data: string`
-
-                Base64-encoded audio data.
-
-              - `format: "mp3" | "wav"`
-
-                The format of the audio data. Currently supported formats are `mp3` and
-                `wav`.
-
-                - `"mp3"`
-
-                - `"wav"`
-
-            - `type: "input_audio"`
-
-              The type of the input item. Always `input_audio`.
-
-              - `"input_audio"`
-
           - `GraderInputs = Array<string | ResponseInputText | OutputText | 2 more>`
 
             A list of inputs, each of which may be either an input text, output text, input
             image, or input audio object.
-
-            - `string`
-
-            - `ResponseInputText`
-
-              A text input to the model.
-
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
-            - `OutputText`
-
-              A text output from the model.
-
-              - `text: string`
-
-                The text output from the model.
-
-              - `type: "output_text"`
-
-                The type of the output text. Always `output_text`.
-
-                - `"output_text"`
-
-            - `InputImage`
-
-              An image input block used within EvalItem content arrays.
-
-              - `image_url: string`
-
-                The URL of the image input.
-
-              - `type: "input_image"`
-
-                The type of the image input. Always `input_image`.
-
-                - `"input_image"`
-
-              - `detail?: string`
-
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-            - `ResponseInputAudio`
-
-              An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: string`
-
-                  Base64-encoded audio data.
-
-                - `format: "mp3" | "wav"`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: "input_audio"`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -989,16 +823,6 @@
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `OutputText`
 
           A text output from the model.
@@ -1034,27 +858,6 @@
         - `ResponseInputAudio`
 
           An audio input to the model.
-
-          - `input_audio: InputAudio`
-
-            - `data: string`
-
-              Base64-encoded audio data.
-
-            - `format: "mp3" | "wav"`
-
-              The format of the audio data. Currently supported formats are `mp3` and
-              `wav`.
-
-              - `"mp3"`
-
-              - `"wav"`
-
-          - `type: "input_audio"`
-
-            The type of the input item. Always `input_audio`.
-
-            - `"input_audio"`
 
     - `role: "user" | "assistant" | "system" | "developer"`
 

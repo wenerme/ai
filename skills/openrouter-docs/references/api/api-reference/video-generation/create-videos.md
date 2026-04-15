@@ -662,7 +662,9 @@ components:
       type: object
       properties:
         cost:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: The cost of the video generation in USD.
         is_byok:

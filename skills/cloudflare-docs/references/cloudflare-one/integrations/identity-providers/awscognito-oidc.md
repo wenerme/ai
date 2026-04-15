@@ -57,7 +57,7 @@ To retrieve those values:
    ```  
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
    ```  
-   You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
+   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
    2. Select **Identity providers** to use with this app client. At minimum, enable **Cognito user pool** as a provider.  
    3. For **OAuth 2.0 grant types**, select **Authorization code grant**.  
    4. For **OpenID Connect scopes**, select **OpenID**, **Email**, and **Profile**.

@@ -15,7 +15,7 @@
 
     A text input to the model.
 
-  - `ResponseInputText = object { text, type }`
+  - `ResponseInputText object { text, type }`
 
     A text input to the model.
 
@@ -29,7 +29,7 @@
 
       - `"input_text"`
 
-  - `OutputText = object { text, type }`
+  - `OutputText object { text, type }`
 
     A text output from the model.
 
@@ -43,7 +43,7 @@
 
       - `"output_text"`
 
-  - `InputImage = object { image_url, type, detail }`
+  - `InputImage object { image_url, type, detail }`
 
     An image input block used within EvalItem content arrays.
 
@@ -61,7 +61,7 @@
 
       The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-  - `ResponseInputAudio = object { input_audio, type }`
+  - `ResponseInputAudio object { input_audio, type }`
 
     An audio input to the model.
 
@@ -88,7 +88,7 @@
 
 ### Label Model Grader
 
-- `LabelModelGrader = object { input, labels, model, 3 more }`
+- `LabelModelGrader object { input, labels, model, 3 more }`
 
   A LabelModelGrader object which uses a model to assign labels to each item
   in the evaluation.
@@ -103,7 +103,7 @@
 
         A text input to the model.
 
-      - `ResponseInputText = object { text, type }`
+      - `ResponseInputText object { text, type }`
 
         A text input to the model.
 
@@ -117,7 +117,7 @@
 
           - `"input_text"`
 
-      - `OutputText = object { text, type }`
+      - `OutputText object { text, type }`
 
         A text output from the model.
 
@@ -131,7 +131,7 @@
 
           - `"output_text"`
 
-      - `InputImage = object { image_url, type, detail }`
+      - `InputImage object { image_url, type, detail }`
 
         An image input block used within EvalItem content arrays.
 
@@ -149,7 +149,7 @@
 
           The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-      - `ResponseInputAudio = object { input_audio, type }`
+      - `ResponseInputAudio object { input_audio, type }`
 
         An audio input to the model.
 
@@ -183,21 +183,11 @@
 
           A text input to the model.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `OutputText = object { text, type }`
+        - `OutputText object { text, type }`
 
           A text output from the model.
 
@@ -211,7 +201,7 @@
 
             - `"output_text"`
 
-        - `InputImage = object { image_url, type, detail }`
+        - `InputImage object { image_url, type, detail }`
 
           An image input block used within EvalItem content arrays.
 
@@ -229,30 +219,9 @@
 
             The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-        - `ResponseInputAudio = object { input_audio, type }`
+        - `ResponseInputAudio object { input_audio, type }`
 
           An audio input to the model.
-
-          - `input_audio: object { data, format }`
-
-            - `data: string`
-
-              Base64-encoded audio data.
-
-            - `format: "mp3" or "wav"`
-
-              The format of the audio data. Currently supported formats are `mp3` and
-              `wav`.
-
-              - `"mp3"`
-
-              - `"wav"`
-
-          - `type: "input_audio"`
-
-            The type of the input item. Always `input_audio`.
-
-            - `"input_audio"`
 
     - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -297,7 +266,7 @@
 
 ### Multi Grader
 
-- `MultiGrader = object { calculate_output, graders, name, type }`
+- `MultiGrader object { calculate_output, graders, name, type }`
 
   A MultiGrader object combines the output of multiple graders to produce a single score.
 
@@ -309,7 +278,7 @@
 
     A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
 
-    - `StringCheckGrader = object { input, name, operation, 2 more }`
+    - `StringCheckGrader object { input, name, operation, 2 more }`
 
       A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
 
@@ -343,7 +312,7 @@
 
         - `"string_check"`
 
-    - `TextSimilarityGrader = object { evaluation_metric, input, name, 2 more }`
+    - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
 
       A TextSimilarityGrader object which grades text based on similarity metrics.
 
@@ -393,7 +362,7 @@
 
         - `"text_similarity"`
 
-    - `PythonGrader = object { name, source, type, image_tag }`
+    - `PythonGrader object { name, source, type, image_tag }`
 
       A PythonGrader object that runs a python script on the input.
 
@@ -415,7 +384,7 @@
 
         The image tag to use for the python script.
 
-    - `ScoreModelGrader = object { input, model, name, 3 more }`
+    - `ScoreModelGrader object { input, model, name, 3 more }`
 
       A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -431,7 +400,7 @@
 
             A text input to the model.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
@@ -445,7 +414,7 @@
 
               - `"input_text"`
 
-          - `OutputText = object { text, type }`
+          - `OutputText object { text, type }`
 
             A text output from the model.
 
@@ -459,7 +428,7 @@
 
               - `"output_text"`
 
-          - `InputImage = object { image_url, type, detail }`
+          - `InputImage object { image_url, type, detail }`
 
             An image input block used within EvalItem content arrays.
 
@@ -477,7 +446,7 @@
 
               The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-          - `ResponseInputAudio = object { input_audio, type }`
+          - `ResponseInputAudio object { input_audio, type }`
 
             An audio input to the model.
 
@@ -511,21 +480,11 @@
 
               A text input to the model.
 
-            - `ResponseInputText = object { text, type }`
+            - `ResponseInputText object { text, type }`
 
               A text input to the model.
 
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
-            - `OutputText = object { text, type }`
+            - `OutputText object { text, type }`
 
               A text output from the model.
 
@@ -539,7 +498,7 @@
 
                 - `"output_text"`
 
-            - `InputImage = object { image_url, type, detail }`
+            - `InputImage object { image_url, type, detail }`
 
               An image input block used within EvalItem content arrays.
 
@@ -557,30 +516,9 @@
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-            - `ResponseInputAudio = object { input_audio, type }`
+            - `ResponseInputAudio object { input_audio, type }`
 
               An audio input to the model.
-
-              - `input_audio: object { data, format }`
-
-                - `data: string`
-
-                  Base64-encoded audio data.
-
-                - `format: "mp3" or "wav"`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: "input_audio"`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -664,7 +602,7 @@
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `LabelModelGrader = object { input, labels, model, 3 more }`
+    - `LabelModelGrader object { input, labels, model, 3 more }`
 
       A LabelModelGrader object which uses a model to assign labels to each item
       in the evaluation.
@@ -679,21 +617,11 @@
 
             A text input to the model.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `OutputText = object { text, type }`
+          - `OutputText object { text, type }`
 
             A text output from the model.
 
@@ -707,7 +635,7 @@
 
               - `"output_text"`
 
-          - `InputImage = object { image_url, type, detail }`
+          - `InputImage object { image_url, type, detail }`
 
             An image input block used within EvalItem content arrays.
 
@@ -725,110 +653,14 @@
 
               The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-          - `ResponseInputAudio = object { input_audio, type }`
+          - `ResponseInputAudio object { input_audio, type }`
 
             An audio input to the model.
-
-            - `input_audio: object { data, format }`
-
-              - `data: string`
-
-                Base64-encoded audio data.
-
-              - `format: "mp3" or "wav"`
-
-                The format of the audio data. Currently supported formats are `mp3` and
-                `wav`.
-
-                - `"mp3"`
-
-                - `"wav"`
-
-            - `type: "input_audio"`
-
-              The type of the input item. Always `input_audio`.
-
-              - `"input_audio"`
 
           - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
 
             A list of inputs, each of which may be either an input text, output text, input
             image, or input audio object.
-
-            - `TextInput = string`
-
-              A text input to the model.
-
-            - `ResponseInputText = object { text, type }`
-
-              A text input to the model.
-
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
-            - `OutputText = object { text, type }`
-
-              A text output from the model.
-
-              - `text: string`
-
-                The text output from the model.
-
-              - `type: "output_text"`
-
-                The type of the output text. Always `output_text`.
-
-                - `"output_text"`
-
-            - `InputImage = object { image_url, type, detail }`
-
-              An image input block used within EvalItem content arrays.
-
-              - `image_url: string`
-
-                The URL of the image input.
-
-              - `type: "input_image"`
-
-                The type of the image input. Always `input_image`.
-
-                - `"input_image"`
-
-              - `detail: optional string`
-
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-            - `ResponseInputAudio = object { input_audio, type }`
-
-              An audio input to the model.
-
-              - `input_audio: object { data, format }`
-
-                - `data: string`
-
-                  Base64-encoded audio data.
-
-                - `format: "mp3" or "wav"`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: "input_audio"`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -883,7 +715,7 @@
 
 ### Python Grader
 
-- `PythonGrader = object { name, source, type, image_tag }`
+- `PythonGrader object { name, source, type, image_tag }`
 
   A PythonGrader object that runs a python script on the input.
 
@@ -907,7 +739,7 @@
 
 ### Score Model Grader
 
-- `ScoreModelGrader = object { input, model, name, 3 more }`
+- `ScoreModelGrader object { input, model, name, 3 more }`
 
   A ScoreModelGrader object that uses a model to assign a score to the input.
 
@@ -923,7 +755,7 @@
 
         A text input to the model.
 
-      - `ResponseInputText = object { text, type }`
+      - `ResponseInputText object { text, type }`
 
         A text input to the model.
 
@@ -937,7 +769,7 @@
 
           - `"input_text"`
 
-      - `OutputText = object { text, type }`
+      - `OutputText object { text, type }`
 
         A text output from the model.
 
@@ -951,7 +783,7 @@
 
           - `"output_text"`
 
-      - `InputImage = object { image_url, type, detail }`
+      - `InputImage object { image_url, type, detail }`
 
         An image input block used within EvalItem content arrays.
 
@@ -969,7 +801,7 @@
 
           The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-      - `ResponseInputAudio = object { input_audio, type }`
+      - `ResponseInputAudio object { input_audio, type }`
 
         An audio input to the model.
 
@@ -1003,21 +835,11 @@
 
           A text input to the model.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `OutputText = object { text, type }`
+        - `OutputText object { text, type }`
 
           A text output from the model.
 
@@ -1031,7 +853,7 @@
 
             - `"output_text"`
 
-        - `InputImage = object { image_url, type, detail }`
+        - `InputImage object { image_url, type, detail }`
 
           An image input block used within EvalItem content arrays.
 
@@ -1049,30 +871,9 @@
 
             The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-        - `ResponseInputAudio = object { input_audio, type }`
+        - `ResponseInputAudio object { input_audio, type }`
 
           An audio input to the model.
-
-          - `input_audio: object { data, format }`
-
-            - `data: string`
-
-              Base64-encoded audio data.
-
-            - `format: "mp3" or "wav"`
-
-              The format of the audio data. Currently supported formats are `mp3` and
-              `wav`.
-
-              - `"mp3"`
-
-              - `"wav"`
-
-          - `type: "input_audio"`
-
-            The type of the input item. Always `input_audio`.
-
-            - `"input_audio"`
 
     - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -1158,7 +959,7 @@
 
 ### String Check Grader
 
-- `StringCheckGrader = object { input, name, operation, 2 more }`
+- `StringCheckGrader object { input, name, operation, 2 more }`
 
   A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
 
@@ -1194,7 +995,7 @@
 
 ### Text Similarity Grader
 
-- `TextSimilarityGrader = object { evaluation_metric, input, name, 2 more }`
+- `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
 
   A TextSimilarityGrader object which grades text based on similarity metrics.
 

@@ -62,7 +62,7 @@ Create a vector store.
 
     The number of days after the anchor time that the vector store will expire.
 
-- `file_ids: Optional[SequenceNotStr[str]]`
+- `file_ids: Optional[Sequence[str]]`
 
   A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.
 

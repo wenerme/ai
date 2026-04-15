@@ -18,93 +18,18 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/tunnel.xml) 
 
-## 2026-03-20
-
-  
-**Stream logs from multiple replicas of Cloudflare Tunnel simultaneously**   
-
-In the Cloudflare One dashboard, the overview page for a specific Cloudflare Tunnel now shows all [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) of that tunnel and supports streaming logs from multiple replicas at once.
-
-![View replicas and stream logs from multiple connectors](https://developers.cloudflare.com/_astro/tunnel-multiconn.DEOEaLlu_ZDxArh.webp) 
-
-Previously, you could only stream logs from one replica at a time. With this update:
-
-* **Replicas on the tunnel overview** — All active replicas for the selected tunnel now appear on that tunnel's overview page under **Connectors**. Select any replica to stream its logs.
-* **Multi-connector log streaming** — Stream logs from multiple replicas simultaneously, making it easier to correlate events across your infrastructure during debugging or incident response. To try it out, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**. Select **View logs** next to the tunnel you want to monitor.
-
-For more information, refer to [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) and [Deploy replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/deploy-replicas/).
-
-## 2026-03-19
-
-  
-**Manage Cloudflare Tunnels with Wrangler**   
-
-You can now manage [Cloudflare Tunnels](https://developers.cloudflare.com/tunnel/) directly from [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for the Cloudflare Developer Platform. The new [wrangler tunnel](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/) commands let you create, run, and manage tunnels without leaving your terminal.
-
-![Wrangler tunnel commands demo](https://developers.cloudflare.com/_astro/wrangler-tunnel.DOqrtGGg_7EDX0.webp) 
-
-Available commands:
-
-* `wrangler tunnel create` — Create a new remotely managed tunnel.
-* `wrangler tunnel list` — List all tunnels in your account.
-* `wrangler tunnel info` — Display details about a specific tunnel.
-* `wrangler tunnel delete` — Delete a tunnel.
-* `wrangler tunnel run` — Run a tunnel using the cloudflared daemon.
-* `wrangler tunnel quick-start` — Start a free, temporary tunnel without an account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/setup/#quick-tunnels-development).
-
-Wrangler handles downloading and managing the [cloudflared](https://developers.cloudflare.com/tunnel/downloads/) binary automatically. On first use, you will be prompted to download `cloudflared` to a local cache directory.
-
-These commands are currently experimental and may change without notice.
-
-To get started, refer to the [Wrangler tunnel commands documentation](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/).
-
-## 2026-02-20
-
-  
-**Manage Cloudflare Tunnel directly from the main Cloudflare Dashboard**   
-
-[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is now available in the main Cloudflare Dashboard at [Networking > Tunnels ↗](https://dash.cloudflare.com/?to=/:account/tunnels), bringing first-class Tunnel management to developers using Tunnel for securing origin servers.
-
-![Manage Tunnels in the Core Dashboard](https://developers.cloudflare.com/_astro/tunnel-core-dashboard.BGPqaHfo_Pi6HO.webp) 
-
-This new experience provides everything you need to manage Tunnels for [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), including:
-
-* **Full Tunnel lifecycle management**: Create, configure, delete, and monitor all your Tunnels in one place.
-* **Native integrations**: View Tunnels by name when configuring [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) and [Workers VPC](https://developers.cloudflare.com/workers-vpc/) — no more copy-pasting UUIDs.
-* **Real-time visibility**: Monitor [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) and Tunnel [health status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status) directly in the dashboard.
-* **Routing map**: Manage all ingress routes for your Tunnel, including [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), [private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/), [private CIDRs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/), and [Workers VPC services](https://developers.cloudflare.com/workers-vpc/), from a single interactive interface.
-
-#### Choose the right dashboard for your use case
-
-**Core Dashboard**: Navigate to [Networking > Tunnels ↗](https://dash.cloudflare.com/?to=/:account/tunnels) to manage Tunnels for:
-
-* Securing origin servers and [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) with CDN, WAF, Load Balancing, and DDoS protection
-* Connecting [Workers to private services](https://developers.cloudflare.com/workers-vpc/) via Workers VPC
-
-**Cloudflare One Dashboard**: Navigate to [Zero Trust > Networks > Connectors ↗](https://one.dash.cloudflare.com/?to=/:account/networks/connectors) to manage Tunnels for:
-
-* Securing your public applications with [Zero Trust access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
-* Connecting users to [private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/)
-* Building a [private mesh network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks)
-
-Both dashboards provide complete Tunnel management capabilities — choose based on your primary workflow.
-
-#### Get started
-
-New to Tunnel? Learn how to [get started with Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or explore advanced use cases like [securing SSH servers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/) or [running Tunnels in Kubernetes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/kubernetes/).
-
 ## 2026-01-15
 
   
 **Verify WARP Connector connectivity with a simple ping**   
 
-We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
+We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
 
 You can now `ping` the WARP Connector host directly on its LAN IP address immediately after installation. This provides a fast, familiar way to confirm that the Connector is online and reachable within your network before testing access to downstream services.
 
 Starting with [version 2025.10.186.0](https://developers.cloudflare.com/changelog/2026-01-13-warp-linux-ga/), WARP Connector responds to traffic addressed to its own LAN IP, giving you immediate visibility into Connector reachability.
 
-Learn more about deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
+Learn more about deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
 
 ## 2025-11-11
 
@@ -129,31 +54,9 @@ The preferred method for enabling DNS-over-HTTPS on user devices is the [Cloudfl
 
 #### Servers, routers, and IoT devices
 
-For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/).
+For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
 
-Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-internet/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
-
-## 2025-09-18
-
-  
-**Connect and secure any private or public app by hostname, not IP — with hostname routing for Cloudflare Tunnel**   
-
-You can now route private traffic to [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) based on a hostname or domain, moving beyond the limitations of IP-based routing. This new capability is **free for all Cloudflare One customers**.
-
-Previously, Tunnel routes could only be defined by IP address or [CIDR range](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/). This created a challenge for modern applications with dynamic or ephemeral IP addresses, often forcing administrators to maintain complex and brittle IP lists.
-
-![Hostname-based routing in Cloudflare Tunnel](https://developers.cloudflare.com/_astro/tunnel-hostname-routing.DSi8MP_7_Z1E6Ym4.webp) 
-
-**What’s new:**
-
-* **Hostname & Domain Routing**: Create routes for individual hostnames (e.g., `payroll.acme.local`) or entire domains (e.g., `*.acme.local`) and direct their traffic to a specific Tunnel.
-* **Simplified Zero Trust Policies**: Build resilient policies in Cloudflare Access and Gateway using stable hostnames, making it dramatically easier to apply per-resource authorization for your private applications.
-* **Precise Egress Control**: Route traffic for public hostnames (e.g., `bank.example.com`) through a specific Tunnel to enforce a dedicated source IP, solving the IP allowlist problem for third-party services.
-* **No More IP Lists**: This feature makes the workaround of maintaining dynamic IP Lists for Tunnel connections obsolete.
-
-Get started in the Tunnels section of the Zero Trust dashboard with your first [private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [public hostname](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) route.
-
-Learn more in our [blog post ↗](https://blog.cloudflare.com/tunnel-hostname-routing/).
+Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
 
 ## 2025-09-02
 
@@ -168,7 +71,7 @@ This change affects the following API endpoints:
 
 * List all tunnels: [GET /accounts/{account\_id}/tunnels](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/methods/list/)
 * List [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/): [GET /accounts/{account\_id}/cfd\_tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/methods/list/)
-* List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) tunnels: [GET /accounts/{account\_id}/warp\_connector](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/list/)
+* List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) tunnels: [GET /accounts/{account\_id}/warp\_connector](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/list/)
 * List tunnel routes: [GET /accounts/{account\_id}/teamnet/routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/)
 * List subnets: [GET /accounts/{account\_id}/zerotrust/subnets](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/methods/list/)
 * List virtual networks: [GET /accounts/{account\_id}/teamnet/virtual\_networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/)
@@ -219,38 +122,11 @@ This update is based on user feedback and aims to:
 
 To learn more, please visit the [Cloudflare Tunnel API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/) and [Zero Trust Networks API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/) documentation.
 
-## 2025-07-15
-
-  
-**Faster, more reliable UDP traffic for Cloudflare Tunnel**   
-
-Your real-time applications running over [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) are now faster and more reliable. We've completely re-architected the way `cloudflared` proxies UDP traffic in order to isolate it from other traffic, ensuring latency-sensitive applications like private DNS are no longer slowed down by heavy TCP traffic (like file transfers) on the same Tunnel.
-
-This is a foundational improvement to Cloudflare Tunnel, delivered automatically to all customers. There are no settings to configure — your UDP traffic is already flowing faster and more reliably.
-
-**What’s new:**
-
-* **Faster UDP performance**: We've significantly reduced the latency for establishing new UDP sessions, making applications like private DNS much more responsive.
-* **Greater reliability for mixed traffic**: UDP packets are no longer affected by heavy TCP traffic, preventing timeouts and connection drops for your real-time services.
-
-Learn more about running [TCP or UDP applications](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-applications) and [private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
-
-## 2024-12-19
-
-  
-**Troubleshoot tunnels with diagnostic logs**   
-
-The latest `cloudflared` build [2024.12.2 ↗](https://github.com/cloudflare/cloudflared/releases/tag/2024.12.2) introduces the ability to collect all the diagnostic logs needed to troubleshoot a `cloudflared` instance.
-
-A diagnostic report collects data from a single instance of `cloudflared` running on the local machine and outputs it to a `cloudflared-diag` file.
-
-For more information, refer to [Diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/).
-
 ## 2024-10-17
 
 **Simplifed WARP Connector deployment**
 
-You can now deploy WARP Connector using a simplified, guided workflow similar to `cloudflared` connectors. For detailed instructions, refer to the [WARP Connector documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/).
+You can now deploy WARP Connector using a simplified, guided workflow similar to `cloudflared` connectors. For detailed instructions, refer to the [WARP Connector documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
 
 ## 2024-10-10
 

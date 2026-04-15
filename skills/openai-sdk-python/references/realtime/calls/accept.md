@@ -213,42 +213,6 @@ handle it.
 
       The format of the output audio.
 
-      - `class AudioPCM: …`
-
-        The PCM audio format. Only a 24kHz sample rate is supported.
-
-        - `rate: Optional[Literal[24000]]`
-
-          The sample rate of the audio. Always `24000`.
-
-          - `24000`
-
-        - `type: Optional[Literal["audio/pcm"]]`
-
-          The audio format. Always `audio/pcm`.
-
-          - `"audio/pcm"`
-
-      - `class AudioPCMU: …`
-
-        The G.711 μ-law format.
-
-        - `type: Optional[Literal["audio/pcmu"]]`
-
-          The audio format. Always `audio/pcmu`.
-
-          - `"audio/pcmu"`
-
-      - `class AudioPCMA: …`
-
-        The G.711 A-law format.
-
-        - `type: Optional[Literal["audio/pcma"]]`
-
-          The audio format. Always `audio/pcma`.
-
-          - `"audio/pcma"`
-
     - `speed: Optional[float]`
 
       The speed of the model's spoken response as a multiple of the original speed.

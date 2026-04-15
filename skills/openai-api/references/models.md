@@ -102,7 +102,7 @@ Retrieves a model instance, providing basic information about the model such as 
 
 ### Returns
 
-- `Model = object { id, created, object, owned_by }`
+- `Model object { id, created, object, owned_by }`
 
   Describes an OpenAI model offering that can be used with the API.
 
@@ -172,7 +172,7 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 
 ### Returns
 
-- `ModelDeleted = object { id, deleted, object }`
+- `ModelDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -220,7 +220,7 @@ curl https://api.openai.com/v1/models/ft:gpt-4o-mini:acemeco:suffix:abc123 \
 
 ### Model
 
-- `Model = object { id, created, object, owned_by }`
+- `Model object { id, created, object, owned_by }`
 
   Describes an OpenAI model offering that can be used with the API.
 
@@ -244,7 +244,7 @@ curl https://api.openai.com/v1/models/ft:gpt-4o-mini:acemeco:suffix:abc123 \
 
 ### Model Deleted
 
-- `ModelDeleted = object { id, deleted, object }`
+- `ModelDeleted object { id, deleted, object }`
 
   - `id: string`
 

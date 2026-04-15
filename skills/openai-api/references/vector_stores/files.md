@@ -118,7 +118,7 @@ Returns a list of vector store files.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -138,7 +138,7 @@ Returns a list of vector store files.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -267,7 +267,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -277,7 +277,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -301,7 +301,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -375,7 +375,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -395,7 +395,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -500,7 +500,7 @@ Update attributes on a vector store file.
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -574,7 +574,7 @@ Update attributes on a vector store file.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -594,7 +594,7 @@ Update attributes on a vector store file.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -684,7 +684,7 @@ Retrieves a vector store file.
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -758,7 +758,7 @@ Retrieves a vector store file.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -778,7 +778,7 @@ Retrieves a vector store file.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -859,7 +859,7 @@ Delete a vector store file. This will remove the file from the vector store but 
 
 ### Returns
 
-- `VectorStoreFileDeleted = object { id, deleted, object }`
+- `VectorStoreFileDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -998,7 +998,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
 ### Vector Store File
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -1072,7 +1072,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -1092,7 +1092,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -1104,7 +1104,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
 ### Vector Store File Deleted
 
-- `VectorStoreFileDeleted = object { id, deleted, object }`
+- `VectorStoreFileDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -1113,3 +1113,15 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
   - `object: "vector_store.file.deleted"`
 
     - `"vector_store.file.deleted"`
+
+### File Content Response
+
+- `FileContentResponse object { text, type }`
+
+  - `text: optional string`
+
+    The text content
+
+  - `type: optional string`
+
+    The content type (currently only `"text"`)

@@ -79,8 +79,8 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-3545)
-* [ Windows ](#tab-panel-3546)
+* [ macOS and Linux ](#tab-panel-3705)
+* [ Windows ](#tab-panel-3706)
 
 Open Terminal and run the following command:
 
@@ -113,7 +113,7 @@ You can also use a packet capture tool such as `tcpdump` or Wireshark to trace w
 ## 9\. How is your application handling requests?
 
 1. Check if the application server has a local firewall in place that is blocking requests from the `cloudflared` host machine.
-2. Check if the application server needs to initiate any connection towards the user's device. If so, this is a limitation of `cloudflared` and you should instead [deploy WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) to enable bidirectional traffic.
+2. Check if the application server needs to initiate any connection towards the user's device. If so, this is a limitation of `cloudflared` and you should instead [deploy Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to enable bidirectional traffic.
 
 ## 10\. Is TLS inspection affecting the connection to your application?
 

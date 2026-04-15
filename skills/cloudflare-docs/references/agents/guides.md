@@ -29,6 +29,7 @@ Copy page
 * [ Build a Remote MCP Client ](https://github.com/cloudflare/ai/tree/main/demos/mcp-client)
 * [ Handle OAuth with MCP servers ](https://developers.cloudflare.com/agents/guides/oauth-mcp-client/)
 * [ Cross-domain authentication ](https://developers.cloudflare.com/agents/guides/cross-domain-authentication/)
+* [ Build a voice agent ](https://developers.cloudflare.com/agents/guides/build-a-voice-agent/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/guides/","name":"Guides"}}]}

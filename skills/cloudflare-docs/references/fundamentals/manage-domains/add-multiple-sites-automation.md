@@ -16,7 +16,7 @@ Copy page
 
 # Add multiple sites via automation
 
-**Last reviewed:**  2 months ago 
+**Last reviewed:**  3 months ago 
 
 To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.
 
@@ -300,7 +300,7 @@ Explain Code
 | ---------- | ----------- | --------------------------------------------- |
 | <ZONE\_ID> | example.com | arya.ns.cloudflare.com, tim.ns.cloudflare.com |
 
-1. Use the values in the **NAME SERVERS** column to [update the nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#update-your-registrar) at the registrar of each domain.
+1. Use the values in the **NAME SERVERS** column to [update the nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#34-update-your-registrar) at the registrar of each domain.
 
 ---
 

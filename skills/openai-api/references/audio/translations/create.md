@@ -6,11 +6,11 @@ Translates audio into English.
 
 ### Returns
 
-- `Translation = object { text }`
+- `Translation object { text }`
 
   - `text: string`
 
-- `TranslationVerbose = object { duration, language, text, segments }`
+- `TranslationVerbose object { duration, language, text, segments }`
 
   - `duration: number`
 

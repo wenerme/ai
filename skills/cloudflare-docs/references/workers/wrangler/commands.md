@@ -20,6 +20,7 @@ Copy page
 
 ## Commands
 
+* [ Browser ](https://developers.cloudflare.com/workers/wrangler/commands/browser/)
 * [ Certificates ](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
 * [ Containers ](https://developers.cloudflare.com/workers/wrangler/commands/containers/)
 * [ D1 ](https://developers.cloudflare.com/workers/wrangler/commands/d1/)

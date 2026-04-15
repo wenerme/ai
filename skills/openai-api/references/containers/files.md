@@ -355,6 +355,104 @@ curl -X DELETE https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2
 }
 ```
 
+## Domain Types
+
+### File List Response
+
+- `FileListResponse object { id, bytes, container_id, 4 more }`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: string`
+
+    The type of this object (`container.file`).
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Create Response
+
+- `FileCreateResponse object { id, bytes, container_id, 4 more }`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: string`
+
+    The type of this object (`container.file`).
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Retrieve Response
+
+- `FileRetrieveResponse object { id, bytes, container_id, 4 more }`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: string`
+
+    The type of this object (`container.file`).
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
 # Content
 
 ## Retrieve container file content

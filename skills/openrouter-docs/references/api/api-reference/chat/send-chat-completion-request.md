@@ -146,7 +146,7 @@ components:
             chunk at the start of the stream. Only works with streaming mode.
       description: Debug options for inspecting request transformations (streaming only)
       title: ChatDebugOptions
-    ChatRequestImageConfig:
+    ImageConfig:
       oneOf:
         - type: string
         - type: number
@@ -154,7 +154,7 @@ components:
         - type: array
           items:
             description: Any type
-      title: ChatRequestImageConfig
+      title: ImageConfig
     ChatContentCacheControl:
       type: object
       properties:
@@ -1069,19 +1069,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -1105,19 +1113,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-
@@ -1597,6 +1613,37 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    ImageGenerationServerToolConfig:
+      type: object
+      properties:
+        model:
+          type: string
+          description: >-
+            Which image generation model to use (e.g. "openai/gpt-image-1").
+            Defaults to "openai/gpt-image-1".
+      description: >-
+        Configuration for the openrouter:image_generation server tool. Accepts
+        all image_config params (aspect_ratio, quality, size, background,
+        output_format, output_compression, moderation, etc.) plus a model field.
+      title: ImageGenerationServerToolConfig
+    ImageGenerationServerToolOpenRouterType:
+      type: string
+      enum:
+        - openrouter:image_generation
+      title: ImageGenerationServerToolOpenRouterType
+    ImageGenerationServerTool_OpenRouter:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ImageGenerationServerToolConfig'
+        type:
+          $ref: '#/components/schemas/ImageGenerationServerToolOpenRouterType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: generates images from text prompts
+        using an image generation model
+      title: ImageGenerationServerTool_OpenRouter
     SearchModelsServerToolConfig:
       type: object
       properties:
@@ -1785,6 +1832,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ChatFunctionTool0'
         - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
         - $ref: '#/components/schemas/ChatWebSearchShorthand'
@@ -1819,18 +1867,13 @@ components:
         debug:
           $ref: '#/components/schemas/ChatDebugOptions'
         frequency_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Frequency penalty (-2.0 to 2.0)
         image_config:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/ChatRequestImageConfig'
-          description: >-
-            Provider-specific image configuration options. Keys and values vary
-            by model/provider. See
-            https://openrouter.ai/docs/guides/overview/multimodal/image-generation
-            for more details.
+          $ref: '#/components/schemas/ImageConfig'
         logit_bias:
           type:
             - object
@@ -1845,10 +1888,14 @@ components:
             - 'null'
           description: Return log probabilities
         max_completion_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Maximum tokens in completion
         max_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: >-
             Maximum tokens (deprecated, use max_completion_tokens). Note: some
             providers enforce a minimum of 16.
@@ -1891,7 +1938,9 @@ components:
             Plugins you want to enable for this request, including their
             settings.
         presence_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Presence penalty (-2.0 to 2.0)
         provider:
@@ -1905,7 +1954,9 @@ components:
         route:
           description: Any type
         seed:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Random seed for deterministic outputs
         service_tier:
           oneOf:
@@ -1929,7 +1980,9 @@ components:
         stream_options:
           $ref: '#/components/schemas/ChatStreamOptions'
         temperature:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Sampling temperature (0-2)
         tool_choice:
@@ -1940,10 +1993,14 @@ components:
             $ref: '#/components/schemas/ChatFunctionTool'
           description: Available tools for function calling
         top_logprobs:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of top log probabilities to return (0-20)
         top_p:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Nucleus sampling parameter (0-1)
         trace:
@@ -2060,16 +2117,24 @@ components:
       type: object
       properties:
         accepted_prediction_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Accepted prediction tokens
         audio_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Tokens used for audio output
         reasoning_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Tokens used for reasoning
         rejected_prediction_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Rejected prediction tokens
       description: Detailed completion token usage
       title: ChatUsageCompletionTokensDetails

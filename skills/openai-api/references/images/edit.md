@@ -142,7 +142,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
 ### Returns
 
-- `ImagesResponse = object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 4 more }`
 
   The response from the image generation endpoint.
 

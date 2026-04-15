@@ -20,56 +20,21 @@ Cloudflare DNS offers a few different [setup options](https://developers.cloudfl
 
 ## Before you begin
 
-The sections below offer detailed guidance on the different steps to onboard your domain. Before you begin, make sure that you:
+Make sure that you:
 
-* Already own a domain name (such as `example.com` or `cloudflare.com`).
-
-Note
-
-If you do not already have a [domain name ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/), get one at-cost through [Cloudflare Registrar ↗](https://dash.cloudflare.com/?to=/:account/domains/register).
-
-All domains purchased through Cloudflare Registrar automatically use Cloudflare for authoritative DNS, which means you can skip the rest of this tutorial.
-
-* Have previously created a [Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/).
-* Disabled [DNSSEC](https://developers.cloudflare.com/dns/concepts/#dnssec) at your registrar (where you bought your domain name).
-
-Provider-specific DNSSEC instructions
-
-This is not an exhaustive list, but the following links may be helpful:
-
-* [DNSimple ↗](https://support.dnsimple.com/articles/cloudflare-ds-record/)
-* [Domaindiscount24 ↗](https://support.domaindiscount24.com/hc/articles/4409759478161)
-* [DreamHost ↗](https://help.dreamhost.com/hc/en-us/articles/219539467)
-* [Dynadot ↗](https://www.dynadot.com/help/question/set-DNSSEC)
-* [Enom ↗](https://support.enom.com/support/solutions/articles/201000065386)
-* [Gandi ↗](https://docs.gandi.net/en/domain%5Fnames/advanced%5Fusers/dnssec.html)
-* [GoDaddy ↗](https://www.godaddy.com/help/add-a-ds-record-23865)
-* [Hostinger ↗](https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/)
-* [Hover ↗](https://support.hover.com/support/solutions/articles/201000064716)
-* [Infomaniak ↗](https://faq.infomaniak.com/2187)
-* [InMotion Hosting ↗](https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/)
-* [INWX ↗](https://kb.inwx.com/en-us/3-nameserver/131)
-* [Joker.com ↗](https://joker.com/faq/books/jokercom-faq-en/page/dnssec)
-* [Name.com ↗](https://www.name.com/support/articles/205439058-managing-dnssec)
-* [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/)
-* [NameISP ↗](https://support.nameisp.com/knowledgebase/dns)
-* [Namesilo ↗](https://www.namesilo.com/support/v2/articles/domain-manager/ds-records)
-* [OVH ↗](https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb%5Farticle%5Fview&sysparm%5Farticle=KB0051637)
-* [Squarespace ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec)
-* [Registro.br ↗](https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns)
-* [Porkbun ↗](https://kb.porkbun.com/article/93-how-to-install-dnssec) (do not fill out **keyData**)
-* [TransIP ↗](https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/)
-
-Note
-
-If your previous provider allows you to add DNSKEY records on the zone apex and use these records in responses to DNS queries, refer to this [migration tutorial](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/) to learn how to migrate a zone with DNSSEC enabled.
+* Create a Cloudflare account — If you have not already, [sign up for a Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/).
+* Own a domain name — You need a registered domain (for example, `example.com`). If you do not have one, you can [register a domain at-cost through Cloudflare Registrar ↗](https://dash.cloudflare.com/?to=/:account/domains/register). Domains purchased through Cloudflare Registrar automatically use Cloudflare for authoritative DNS, so you can skip the rest of this tutorial.
 
 ## 1\. Add your domain to Cloudflare
 
-* [ Dashboard ](#tab-panel-4348)
-* [ API ](#tab-panel-4349)
+* [ Dashboard ](#tab-panel-4518)
+* [ API ](#tab-panel-4519)
 
-In the Cloudflare dashboard, [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).  
+[ Go to **Domains** ](https://dash.cloudflare.com/?to=/:account/domains/overview)
+2. Select **Onboard a domain**.
+3. Enter your apex domain (for example, `example.com`) and choose how you would like to add your DNS records.
+4. Select **Continue** and choose a [plan ↗](https://www.cloudflare.com/plans/#compare-features).
 
 Required API token permissions
 
@@ -102,20 +67,29 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 ```
 
+Note
+
 If Cloudflare is unable to identify your domain as a registered domain, make sure you are using an existing [top-level domain ↗](https://www.cloudflare.com/learning/dns/top-level-domain/) (`.com`, `.net`, `.biz`, or others).
 
-Cloudflare requires your `apex domain` to be one level below a valid TLD defined in the [Public Suffix List (PSL) ↗](https://github.com/publicsuffix/list/blob/master/public%5Fsuffix%5Flist.dat). Enterprise customers can onboard lower-level subdomains using [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
+Cloudflare requires your apex domain to be one level below a valid TLD defined in the [Public Suffix List (PSL) ↗](https://github.com/publicsuffix/list/blob/master/public%5Fsuffix%5Flist.dat). Enterprise customers can onboard lower-level subdomains using [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
-## 2\. Review your DNS records
-
-When you start using Cloudflare's nameservers for authoritative DNS and your zone is in a primary setup (full), Cloudflare will become your primary DNS provider. This means that your DNS records in Cloudflare need to be accurate for your domain to work properly.
+DNS records quick scan
 
 Cloudflare can [automatically scan for your records](https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/) and add them to the [DNS zone](https://developers.cloudflare.com/dns/concepts/#zone) for you, or you can add records manually. These records show up under your domain on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page of the dashboard.
 
-  
 Note
 
 If you add a zone via the [API](https://developers.cloudflare.com/api/resources/zones/methods/create/), you can manually invoke the quick scan with the [Trigger DNS Records Scan endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/scan%5Ftrigger/).
+
+## 2\. Review your DNS records
+
+Your DNS records must be accurate for your domain to work properly. If you don't know what DNS records are, consider the video below for a quick explanation.
+
+Note
+
+If you activate your domain on Cloudflare _without_ setting up the correct DNS records for your domain, your visitors may experience [DNS\_PROBE\_FINISHED\_NXDOMAIN](https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/) errors.
+
+### Common records
 
 Since the quick scan is not guaranteed to find all existing DNS records, you need to review your records, paying special attention to the following:
 
@@ -123,7 +97,7 @@ Since the quick scan is not guaranteed to find all existing DNS records, you nee
 More about zone apex records  
 Zone apex refers to the domain or subdomain that you are [adding to Cloudflare](https://developers.cloudflare.com/dns/concepts/#zone).  
 Usually, the zone apex record makes your domain accessible by visitors. In this case, the necessary record type ([A, AAAA, or CNAME](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution)) and its content will depend on the provider that [hosts](https://developers.cloudflare.com/fundamentals/manage-domains/#host-your-domain) your website or application.  
-If you are using Cloudflare Pages, refer to [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/).  
+If you are using Cloudflare Workers, refer to [Custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).  
 If you are using other providers, look for their guidance on how to connect domains managed on external DNS services. Then, make sure you have the records required by your hosting provider on your [DNS records table](https://developers.cloudflare.com/dns/manage-dns-records/#dns-records-table) at Cloudflare.
 * [Subdomain records (www.example.com or blog.example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)  
 More about subdomain records  
@@ -141,9 +115,12 @@ Below are some examples of what those DNS records might look like. The exact val
 | TXT  | \*.\_domainkey | "v=DKIM1; k=rsa; p=..."       | DNS Only     | Auto |  
 | TXT  | example.com    | "v=spf1 ip4:..."              | DNS Only     | Auto |
 
-Note
+### Proxy status
 
-If you activate your domain on Cloudflare _without_ setting up the correct DNS records for your domain and subdomain, your visitors may experience [DNS\_PROBE\_FINISHED\_NXDOMAIN](https://developers.cloudflare.com/dns/troubleshooting/dns-probe-finished-nxdomain/) errors.
+Each A, AAAA, and CNAME record has a [proxy status](https://developers.cloudflare.com/dns/proxy-status/) toggle:
+
+* **Proxied** (orange cloud): web traffic goes through the Cloudflare network, which provides caching, DDoS protection, and other security features.
+* **DNS only** (gray cloud): Cloudflare returns the DNS record value but does not proxy traffic. Use this for CNAME records that verify your domain for third-party services.
 
 ## 3\. Change your nameservers
 
@@ -153,17 +130,14 @@ Warning
 
 If your domain is particularly sensitive to downtime, review our suggestions to [minimize downtime](https://developers.cloudflare.com/fundamentals/performance/minimize-downtime/).
 
-### Get nameserver names
+### 3.1\. Get nameserver names
 
-* [ Dashboard ](#tab-panel-4346)
-* [ API ](#tab-panel-4347)
+* [ Dashboard ](#tab-panel-4516)
+* [ API ](#tab-panel-4517)
 
-1. In the Cloudflare dashboard, go to the zone **Overview** page.  
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)
-2. Locate the nameserver names in **2\. Replace with Cloudflare's nameservers**.  
-![Find nameserver names on the Overview page of your domain](https://developers.cloudflare.com/_astro/nameserver-names.ubREU1lB_Zf1DO9.webp)
-  
-1. Keep this window open while you perform the next step.
+Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
+
+[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/) 
 
 Required API token permissions
 
@@ -225,13 +199,50 @@ Note
 
 Cloudflare automatically assigns nameservers to a domain and these assignments cannot be changed. For more details, refer to [Nameserver assignments](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#assignment-method).
 
-### Update your registrar
+### 3.2\. Log in to your registrar
 
-1. Log in to the admin account for your domain registrar. If you do not know your provider, use [ICANN Lookup ↗](https://lookup.icann.org/).
+Log in to the admin account for your domain registrar. If you do not know your provider, use [ICANN Lookup ↗](https://lookup.icann.org/).
 
 Note
 
 Depending on your use case, you may have to perform this step on the DNS records management of your domain parent zone, or at a domain reseller, instead. Refer to [Nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes) for details.
+
+### 3.3\. Turn off DNSSEC
+
+If your domain has [DNSSEC](https://developers.cloudflare.com/dns/dnssec/)[1](#user-content-fn-1) active, you must [turn it off](https://developers.cloudflare.com/dns/dnssec/#disable-dnssec) at your registrar before replacing nameservers. Changing nameservers while DNSSEC is active can cause your domain to become unreachable. You can [re-enable DNSSEC through Cloudflare](https://developers.cloudflare.com/dns/dnssec/#enable-dnssec) after your domain is active.
+
+Provider-specific DNSSEC instructions
+
+This is not an exhaustive list, but the following links may be helpful:
+
+* [DNSimple ↗](https://support.dnsimple.com/articles/cloudflare-ds-record/)
+* [Domaindiscount24 ↗](https://support.domaindiscount24.com/hc/articles/4409759478161)
+* [DreamHost ↗](https://help.dreamhost.com/hc/en-us/articles/219539467)
+* [Dynadot ↗](https://www.dynadot.com/help/question/set-DNSSEC)
+* [Enom ↗](https://support.enom.com/support/solutions/articles/201000065386)
+* [Gandi ↗](https://docs.gandi.net/en/domain%5Fnames/advanced%5Fusers/dnssec.html)
+* [GoDaddy ↗](https://www.godaddy.com/help/add-a-ds-record-23865)
+* [Hostinger ↗](https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/)
+* [Hover ↗](https://support.hover.com/support/solutions/articles/201000064716)
+* [Infomaniak ↗](https://faq.infomaniak.com/2187)
+* [InMotion Hosting ↗](https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/)
+* [INWX ↗](https://kb.inwx.com/en-us/3-nameserver/131)
+* [Joker.com ↗](https://joker.com/faq/books/jokercom-faq-en/page/dnssec)
+* [Name.com ↗](https://www.name.com/support/articles/205439058-managing-dnssec)
+* [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/)
+* [NameISP ↗](https://support.nameisp.com/knowledgebase/dns)
+* [Namesilo ↗](https://www.namesilo.com/support/v2/articles/domain-manager/ds-records)
+* [OVH ↗](https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb%5Farticle%5Fview&sysparm%5Farticle=KB0051637)
+* [Squarespace ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec)
+* [Registro.br ↗](https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns)
+* [Porkbun ↗](https://kb.porkbun.com/article/93-how-to-install-dnssec) (do not fill out **keyData**)
+* [TransIP ↗](https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/)
+
+Note
+
+If your previous provider allows you to add DNSKEY records on the zone apex and use these records in responses to DNS queries, refer to this [migration tutorial](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/) to learn how to migrate a zone with DNSSEC enabled.
+
+### 3.4\. Update your registrar
 
 1. Remove your existing authoritative nameservers.
 2. Add the nameservers provided by Cloudflare. If their names are not **copied exactly**, your DNS will not resolve correctly.
@@ -276,18 +287,16 @@ This is not an exhaustive list of provider-specific instructions, but the follow
 * [Softlayer ↗](https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain)
 * [Yola ↗](https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers)
 
-Note
-
 To avoid common issues, refer to our [Nameserver replacement checklist](https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/).
 
-### Verify changes
+### 3.5\. Verify changes
 
 Wait up to 24 hours while your registrar updates your nameservers.
 
 When your domain is **Active**:
 
 * You will receive an email from Cloudflare.
-* Your domain will have a [status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) of **Active** on the **Websites** page of your account.
+* Your domain will have a [status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) of **Active** on the **Domains** page of your account.
 * Online tools such as [https://www.whatsmydns.net/ ↗](https://www.whatsmydns.net/) will show your Cloudflare-assigned nameservers (most of these tools use cached query results, so it may take longer for them to show the updated nameservers).
 * CLI commands will show your Cloudflare-assigned nameservers
 
@@ -323,9 +332,11 @@ If you see unexpected results, refer to our [troubleshooting suggestions](https:
 
 ## 4\. Re-enable DNSSEC
 
-When you updated your nameservers, you should have also disabled DNSSEC at your registrar.
+If you turned off DNSSEC before updating your nameservers, you can now [re-enable DNSSEC through Cloudflare](https://developers.cloudflare.com/dns/dnssec/) to protect your domain from spoofing.
 
-You should now [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/) to protect from domain spoofing.
+## Footnotes
+
+1. A security feature that protects DNS records from spoofing [↩](#user-content-fnref-1)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/zone-setups/","name":"DNS setups"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/zone-setups/full-setup/","name":"Primary setup (Full)"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/zone-setups/full-setup/setup/","name":"Set up a primary zone (Full setup)"}}]}

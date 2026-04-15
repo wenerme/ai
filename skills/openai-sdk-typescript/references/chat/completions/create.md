@@ -92,8 +92,6 @@ chunk objects if the request is streamed.
 
               The type of the content part.
 
-              - `"text"`
-
         - `role: "system"`
 
           The role of the messages author, in this case `system`.
@@ -128,8 +126,6 @@ chunk objects if the request is streamed.
               - `type: "text"`
 
                 The type of the content part.
-
-                - `"text"`
 
             - `ChatCompletionContentPartImage`
 
@@ -248,16 +244,6 @@ chunk objects if the request is streamed.
 
               Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
-              - `text: string`
-
-                The text content.
-
-              - `type: "text"`
-
-                The type of the content part.
-
-                - `"text"`
-
             - `ChatCompletionContentPartRefusal`
 
               - `refusal: string`
@@ -363,8 +349,6 @@ chunk objects if the request is streamed.
             - `type: "text"`
 
               The type of the content part.
-
-              - `"text"`
 
         - `role: "tool"`
 
@@ -764,8 +748,6 @@ chunk objects if the request is streamed.
           - `type: "text"`
 
             The type of the content part.
-
-            - `"text"`
 
       - `type: "content"`
 
@@ -1262,8 +1244,6 @@ chunk objects if the request is streamed.
       for more information, along with the [streaming responses](https://platform.openai.com/docs/guides/streaming-responses)
       guide for more information on how to handle the streaming events.
 
-      - `false`
-
   - `ChatCompletionCreateParamsStreaming extends ChatCompletionCreateParamsBase`
 
     - `stream: true`
@@ -1366,18 +1346,6 @@ chunk objects if the request is streamed.
         - `top_logprobs: Array<TopLogprob>`
 
           List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
-
-          - `token: string`
-
-            The token.
-
-          - `bytes: Array<number> | null`
-
-            A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
-
-          - `logprob: number`
-
-            The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely.
 
     - `message: ChatCompletionMessage`
 

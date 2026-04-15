@@ -12,7 +12,7 @@ Retrieves a service account in the project.
 
 ### Returns
 
-- `ProjectServiceAccount = object { id, created_at, name, 2 more }`
+- `ProjectServiceAccount object { id, created_at, name, 2 more }`
 
   Represents an individual service account in a project.
 

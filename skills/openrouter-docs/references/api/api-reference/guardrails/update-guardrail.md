@@ -132,7 +132,9 @@ components:
             type: string
           description: List of provider IDs to exclude from routing
         limit_usd:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: New spending limit in USD
         name:
@@ -190,7 +192,9 @@ components:
             type: string
           description: List of provider IDs to exclude from routing
         limit_usd:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Spending limit in USD
         name:

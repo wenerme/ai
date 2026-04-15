@@ -12,7 +12,7 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 
 ### Returns
 
-- `VectorStoreFileBatch = object { id, created_at, file_counts, 3 more }`
+- `VectorStoreFileBatch object { id, created_at, file_counts, 3 more }`
 
   A batch of files attached to a vector store.
 

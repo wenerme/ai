@@ -1,5 +1,3 @@
-# Models
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -158,7 +156,11 @@ Our first multimodal embedding model, mapping text, images, video, audio, and PD
 
 High-dimensional vector representations for advanced semantic search, text classification, and RAG systems.
 
-### [Gemini Robotics Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.5-preview)
+### [Gemini Robotics-ER 1.6Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview)
+
+Advanced embodied reasoning model that understands physical spaces and plans multi-step tasks for robotic agents with new capabilities like instrument reading, improved spatial and physical reasoning.
+
+### [Gemini Robotics-ER 1.5Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.5-preview)
 
 Advanced embodied reasoning model that understands physical spaces and plans multi-step tasks for robotic agents.
 

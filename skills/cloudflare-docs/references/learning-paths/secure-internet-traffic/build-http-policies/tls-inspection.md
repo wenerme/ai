@@ -43,8 +43,8 @@ If the answer to a majority of these questions is no and your organization relie
 
 To turn on TLS inspection for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-5315)
-* [ Terraform (v5) ](#tab-panel-5316)
+* [ Dashboard ](#tab-panel-5489)
+* [ Terraform (v5) ](#tab-panel-5490)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -77,7 +77,7 @@ Alternatively, if you already have a root CA that you use for other inspection o
 
 * Assuming the root certificate is already deployed on the relevant fleet of devices, using a single certificate streamlines your IT management.
 * If external services like Git workflows or CLI tools rely on an existing certificate store, presenting the same certificate in inspection is far less likely to interrupt their traffic flow, although these are things that you may wish to exempt from inspection.
-* If you are using [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) or a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) IPsec/GRE tunnel to on-ramp traffic to Cloudflare, devices behind those tunnels will not be able to use HTTP policies that require TLS inspection unless they have a certificate that matches your organization's certificate of choice. Your network infrastructure most likely already has your own device certificates deployed, so using your own existing public key infrastructure for inspection will simplify protection.
+* If you are using [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) or a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) IPsec/GRE tunnel to on-ramp traffic to Cloudflare, devices behind those tunnels will not be able to use HTTP policies that require TLS inspection unless they have a certificate that matches your organization's certificate of choice. Your network infrastructure most likely already has your own device certificates deployed, so using your own existing public key infrastructure for inspection will simplify protection.
 
 Once you generate a Cloudflare certificate or upload a custom certificate, you will need to set it as **Available** to deploy it across the Cloudflare network and as **In-Use** to use it for inspection. For more information, refer to [Activate a root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#activate-a-root-certificate).
 
@@ -98,8 +98,8 @@ You can build pass-through rules to accommodate any type of device or user group
 
 For example, if users are issued a corporate-managed iPhone with limited permissions, set an additional Do Not Inspect policy for all traffic matching the device posture value. That could include the OS type, OS version, or a list of serial numbers (updated via the API with hooks from your MDM tool) for those iPhones:
 
-* [ Dashboard ](#tab-panel-5319)
-* [ API ](#tab-panel-5320)
+* [ Dashboard ](#tab-panel-5493)
+* [ API ](#tab-panel-5494)
 
 | Selector              | Operator | Value                                   | Logic | Action         |
 | --------------------- | -------- | --------------------------------------- | ----- | -------------- |
@@ -165,10 +165,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Explain Code
 
-If you filter your network-connected devices with IPsec/GRE tunnels, the WARP Connector, or other devices that do not have a Cloudflare certificate installed, you will need to accommodate by creating pass-through policies. For these devices, you should explicitly exempt TLS inspection for the source network IP range from which that traffic will be originating. For example:
+If you filter your network-connected devices with IPsec/GRE tunnels, Cloudflare Mesh, or other devices that do not have a Cloudflare certificate installed, you will need to accommodate by creating pass-through policies. For these devices, you should explicitly exempt TLS inspection for the source network IP range from which that traffic will be originating. For example:
 
-* [ Dashboard ](#tab-panel-5317)
-* [ API ](#tab-panel-5318)
+* [ Dashboard ](#tab-panel-5491)
+* [ API ](#tab-panel-5492)
 
 | Selector           | Operator | Value          | Action         |
 | ------------------ | -------- | -------------- | -------------- |

@@ -55,7 +55,7 @@ Before you begin, ensure that:
 Cloudflare One supports multiple [connectivity options](https://developers.cloudflare.com/cloudflare-wan/zero-trust/connectivity-options/). The following connectors will receive traffic from the `cloudflare_source` subnet when a Cloudflare service initiates a request to the connected network or endpoint as an offramp:
 
 * **Anycast tunnels:** GRE, IPsec, and CNI
-* **Software connectors:** Cloudflare One Client and WARP Connector
+* **Software connectors:** Cloudflare One Client and Cloudflare Mesh
 
 Networks or endpoints connected via Cloudflare Tunnel will not receive traffic from the Cloudflare source IP subnet. Instead, the source IP address will be that of the host running the `cloudflared` software.
 
@@ -73,8 +73,8 @@ Note
 
 You need Unified Routing (beta) to configure source IPs. If your account is not yet migrated, contact your account team to discuss migration and availability.
 
-* [ Dashboard ](#tab-panel-3995)
-* [ API ](#tab-panel-3996)
+* [ Dashboard ](#tab-panel-4167)
+* [ API ](#tab-panel-4168)
 
 1. Go to the **Address space** page.  
 [ Go to **Address space** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)

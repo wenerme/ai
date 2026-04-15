@@ -42,7 +42,7 @@ Create Container
 
   Network access policy for the container.
 
-  - `ContainerNetworkPolicyDisabled = object { type }`
+  - `ContainerNetworkPolicyDisabled object { type }`
 
     - `type: "disabled"`
 
@@ -50,7 +50,7 @@ Create Container
 
       - `"disabled"`
 
-  - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
     - `allowed_domains: array of string`
 
@@ -82,7 +82,7 @@ Create Container
 
   An optional list of skills referenced by id or inline data.
 
-  - `SkillReference = object { skill_id, type, version }`
+  - `SkillReference object { skill_id, type, version }`
 
     - `skill_id: string`
 
@@ -98,7 +98,7 @@ Create Container
 
       Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-  - `InlineSkill = object { description, name, source, type }`
+  - `InlineSkill object { description, name, source, type }`
 
     - `description: string`
 

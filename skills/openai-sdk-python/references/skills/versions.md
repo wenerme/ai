@@ -16,11 +16,11 @@ Create a new immutable skill version.
 
   Whether to set this version as the default.
 
-- `files: Optional[Union[SequenceNotStr[FileTypes], FileTypes]]`
+- `files: Optional[Union[Sequence[FileTypes], FileTypes]]`
 
   Skill files to upload (directory upload) or a single zip file.
 
-  - `SequenceNotStr[FileTypes]`
+  - `Sequence[FileTypes]`
 
     Skill files to upload (directory upload) or a single zip file.
 

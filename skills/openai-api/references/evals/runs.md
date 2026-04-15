@@ -60,7 +60,7 @@ Get a list of runs for an evaluation.
 
     Information about the run's data source.
 
-    - `CreateEvalJSONLRunDataSource = object { source, type }`
+    - `CreateEvalJSONLRunDataSource object { source, type }`
 
       A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
 
@@ -68,7 +68,7 @@ Get a list of runs for an evaluation.
 
         Determines what populates the `item` namespace in the data source.
 
-        - `EvalJSONLFileContentSource = object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -84,7 +84,7 @@ Get a list of runs for an evaluation.
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource = object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -102,7 +102,7 @@ Get a list of runs for an evaluation.
 
         - `"jsonl"`
 
-    - `CreateEvalCompletionsRunDataSource = object { source, type, input_messages, 2 more }`
+    - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
 
       A CompletionsRunDataSource object describing a model sampling configuration.
 
@@ -110,7 +110,7 @@ Get a list of runs for an evaluation.
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource = object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -126,7 +126,7 @@ Get a list of runs for an evaluation.
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource = object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -138,7 +138,7 @@ Get a list of runs for an evaluation.
 
             - `"file_id"`
 
-        - `StoredCompletionsRunDataSource = object { type, created_after, created_before, 3 more }`
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
           A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -183,13 +183,13 @@ Get a list of runs for an evaluation.
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `TemplateInputMessages = object { template, type }`
+        - `TemplateInputMessages object { template, type }`
 
           - `template: array of EasyInputMessage or object { content, role, type }`
 
             A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-            - `EasyInputMessage = object { content, role, phase, type }`
+            - `EasyInputMessage object { content, role, phase, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -211,7 +211,7 @@ Get a list of runs for an evaluation.
                   A list of one or many input items to the model, containing different content
                   types.
 
-                  - `ResponseInputText = object { text, type }`
+                  - `ResponseInputText object { text, type }`
 
                     A text input to the model.
 
@@ -225,7 +225,7 @@ Get a list of runs for an evaluation.
 
                       - `"input_text"`
 
-                  - `ResponseInputImage = object { detail, type, file_id, image_url }`
+                  - `ResponseInputImage object { detail, type, file_id, image_url }`
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -255,7 +255,7 @@ Get a list of runs for an evaluation.
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                  - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
                     A file input to the model.
 
@@ -318,7 +318,7 @@ Get a list of runs for an evaluation.
 
                 - `"message"`
 
-            - `EvalMessageObject = object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -334,21 +334,11 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
+                - `OutputText object { text, type }`
 
                   A text output from the model.
 
@@ -362,7 +352,7 @@ Get a list of runs for an evaluation.
 
                     - `"output_text"`
 
-                - `InputImage = object { image_url, type, detail }`
+                - `InputImage object { image_url, type, detail }`
 
                   An image input block used within EvalItem content arrays.
 
@@ -380,7 +370,7 @@ Get a list of runs for an evaluation.
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                - `ResponseInputAudio = object { input_audio, type }`
+                - `ResponseInputAudio object { input_audio, type }`
 
                   An audio input to the model.
 
@@ -414,21 +404,11 @@ Get a list of runs for an evaluation.
 
                     A text input to the model.
 
-                  - `ResponseInputText = object { text, type }`
+                  - `ResponseInputText object { text, type }`
 
                     A text input to the model.
 
-                    - `text: string`
-
-                      The text input to the model.
-
-                    - `type: "input_text"`
-
-                      The type of the input item. Always `input_text`.
-
-                      - `"input_text"`
-
-                  - `OutputText = object { text, type }`
+                  - `OutputText object { text, type }`
 
                     A text output from the model.
 
@@ -442,7 +422,7 @@ Get a list of runs for an evaluation.
 
                       - `"output_text"`
 
-                  - `InputImage = object { image_url, type, detail }`
+                  - `InputImage object { image_url, type, detail }`
 
                     An image input block used within EvalItem content arrays.
 
@@ -460,30 +440,9 @@ Get a list of runs for an evaluation.
 
                       The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                  - `ResponseInputAudio = object { input_audio, type }`
+                  - `ResponseInputAudio object { input_audio, type }`
 
                     An audio input to the model.
-
-                    - `input_audio: object { data, format }`
-
-                      - `data: string`
-
-                        Base64-encoded audio data.
-
-                      - `format: "mp3" or "wav"`
-
-                        The format of the audio data. Currently supported formats are `mp3` and
-                        `wav`.
-
-                        - `"mp3"`
-
-                        - `"wav"`
-
-                    - `type: "input_audio"`
-
-                      The type of the input item. Always `input_audio`.
-
-                      - `"input_audio"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -510,7 +469,7 @@ Get a list of runs for an evaluation.
 
             - `"template"`
 
-        - `ItemReferenceInputMessages = object { item_reference, type }`
+        - `ItemReferenceInputMessages object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -570,7 +529,7 @@ Get a list of runs for an evaluation.
           ensures the message the model generates is valid JSON. Using `json_schema`
           is preferred for models that support it.
 
-          - `ResponseFormatText = object { type }`
+          - `ResponseFormatText object { type }`
 
             Default response format. Used to generate text responses.
 
@@ -580,7 +539,7 @@ Get a list of runs for an evaluation.
 
               - `"text"`
 
-          - `ResponseFormatJSONSchema = object { json_schema, type }`
+          - `ResponseFormatJSONSchema object { json_schema, type }`
 
             JSON Schema response format. Used to generate structured JSON responses.
             Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -618,7 +577,7 @@ Get a list of runs for an evaluation.
 
               - `"json_schema"`
 
-          - `ResponseFormatJSONObject = object { type }`
+          - `ResponseFormatJSONObject object { type }`
 
             JSON object response format. An older method of generating JSON responses.
             Using `json_schema` is recommended for models that support it. Note that the
@@ -673,7 +632,7 @@ Get a list of runs for an evaluation.
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-    - `ResponsesRunDataSource = object { source, type, input_messages, 2 more }`
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
       A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -681,7 +640,7 @@ Get a list of runs for an evaluation.
 
         Determines what populates the `item` namespace in this run's data source.
 
-        - `EvalJSONLFileContentSource = object { content, type }`
+        - `EvalJSONLFileContentSource object { content, type }`
 
           - `content: array of object { item, sample }`
 
@@ -697,7 +656,7 @@ Get a list of runs for an evaluation.
 
             - `"file_content"`
 
-        - `EvalJSONLFileIDSource = object { id, type }`
+        - `EvalJSONLFileIDSource object { id, type }`
 
           - `id: string`
 
@@ -709,7 +668,7 @@ Get a list of runs for an evaluation.
 
             - `"file_id"`
 
-        - `EvalResponsesSource = object { type, created_after, created_before, 8 more }`
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
           A EvalResponsesSource object describing a run data source configuration.
 
@@ -752,18 +711,6 @@ Get a list of runs for an evaluation.
             - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
             - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-            - `"none"`
-
-            - `"minimal"`
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-            - `"xhigh"`
-
           - `temperature: optional number`
 
             Sampling temperature. This is a query parameter used to select responses.
@@ -790,13 +737,13 @@ Get a list of runs for an evaluation.
 
         Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-        - `InputMessagesTemplate = object { template, type }`
+        - `InputMessagesTemplate object { template, type }`
 
           - `template: array of object { content, role }  or object { content, role, type }`
 
             A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-            - `ChatMessage = object { content, role }`
+            - `ChatMessage object { content, role }`
 
               - `content: string`
 
@@ -806,7 +753,7 @@ Get a list of runs for an evaluation.
 
                 The role of the message (e.g. "system", "assistant", "user").
 
-            - `EvalMessageObject = object { content, role, type }`
+            - `EvalMessageObject object { content, role, type }`
 
               A message input to the model with a role indicating instruction following
               hierarchy. Instructions given with the `developer` or `system` role take
@@ -822,21 +769,11 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
+                - `OutputText object { text, type }`
 
                   A text output from the model.
 
@@ -850,7 +787,7 @@ Get a list of runs for an evaluation.
 
                     - `"output_text"`
 
-                - `InputImage = object { image_url, type, detail }`
+                - `InputImage object { image_url, type, detail }`
 
                   An image input block used within EvalItem content arrays.
 
@@ -868,110 +805,14 @@ Get a list of runs for an evaluation.
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                - `ResponseInputAudio = object { input_audio, type }`
+                - `ResponseInputAudio object { input_audio, type }`
 
                   An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
                 - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
 
                   A list of inputs, each of which may be either an input text, output text, input
                   image, or input audio object.
-
-                  - `TextInput = string`
-
-                    A text input to the model.
-
-                  - `ResponseInputText = object { text, type }`
-
-                    A text input to the model.
-
-                    - `text: string`
-
-                      The text input to the model.
-
-                    - `type: "input_text"`
-
-                      The type of the input item. Always `input_text`.
-
-                      - `"input_text"`
-
-                  - `OutputText = object { text, type }`
-
-                    A text output from the model.
-
-                    - `text: string`
-
-                      The text output from the model.
-
-                    - `type: "output_text"`
-
-                      The type of the output text. Always `output_text`.
-
-                      - `"output_text"`
-
-                  - `InputImage = object { image_url, type, detail }`
-
-                    An image input block used within EvalItem content arrays.
-
-                    - `image_url: string`
-
-                      The URL of the image input.
-
-                    - `type: "input_image"`
-
-                      The type of the image input. Always `input_image`.
-
-                      - `"input_image"`
-
-                    - `detail: optional string`
-
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                  - `ResponseInputAudio = object { input_audio, type }`
-
-                    An audio input to the model.
-
-                    - `input_audio: object { data, format }`
-
-                      - `data: string`
-
-                        Base64-encoded audio data.
-
-                      - `format: "mp3" or "wav"`
-
-                        The format of the audio data. Currently supported formats are `mp3` and
-                        `wav`.
-
-                        - `"mp3"`
-
-                        - `"wav"`
-
-                    - `type: "input_audio"`
-
-                      The type of the input item. Always `input_audio`.
-
-                      - `"input_audio"`
 
               - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -998,7 +839,7 @@ Get a list of runs for an evaluation.
 
             - `"template"`
 
-        - `InputMessagesItemReference = object { item_reference, type }`
+        - `InputMessagesItemReference object { item_reference, type }`
 
           - `item_reference: string`
 
@@ -1033,18 +874,6 @@ Get a list of runs for an evaluation.
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `seed: optional number`
 
           A seed value to initialize the randomness, during sampling.
@@ -1077,17 +906,11 @@ Get a list of runs for an evaluation.
             ensures the message the model generates is valid JSON. Using `json_schema`
             is preferred for models that support it.
 
-            - `ResponseFormatText = object { type }`
+            - `ResponseFormatText object { type }`
 
               Default response format. Used to generate text responses.
 
-              - `type: "text"`
-
-                The type of response format being defined. Always `text`.
-
-                - `"text"`
-
-            - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+            - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
               JSON Schema response format. Used to generate structured JSON responses.
               Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -1121,18 +944,12 @@ Get a list of runs for an evaluation.
                 `strict` is `true`. To learn more, read the [Structured Outputs
                 guide](/docs/guides/structured-outputs).
 
-            - `ResponseFormatJSONObject = object { type }`
+            - `ResponseFormatJSONObject object { type }`
 
               JSON object response format. An older method of generating JSON responses.
               Using `json_schema` is recommended for models that support it. Note that the
               model will not generate JSON without a system or user message instructing it
               to do so.
-
-              - `type: "json_object"`
-
-                The type of response format being defined. Always `json_object`.
-
-                - `"json_object"`
 
         - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
@@ -1149,7 +966,7 @@ Get a list of runs for an evaluation.
             enabling the model to call your own code. Learn more about
             [function calling](/docs/guides/function-calling).
 
-          - `Function = object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 3 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1179,7 +996,7 @@ Get a list of runs for an evaluation.
 
               A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+          - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
             A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -1197,7 +1014,7 @@ Get a list of runs for an evaluation.
 
               A filter to apply.
 
-              - `ComparisonFilter = object { key, type, value }`
+              - `ComparisonFilter object { key, type, value }`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -1250,7 +1067,7 @@ Get a list of runs for an evaluation.
 
                     - `number`
 
-              - `CompoundFilter = object { filters, type }`
+              - `CompoundFilter object { filters, type }`
 
                 Combine multiple filters using `and` or `or`.
 
@@ -1258,58 +1075,9 @@ Get a list of runs for an evaluation.
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                  - `ComparisonFilter = object { key, type, value }`
+                  - `ComparisonFilter object { key, type, value }`
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" or "ne" or "gt" or 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string or number or boolean or array of string or number`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `array of string or number`
-
-                        - `string`
-
-                        - `number`
 
                   - `unknown`
 
@@ -1353,7 +1121,7 @@ Get a list of runs for an evaluation.
 
                 The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-          - `Computer = object { type }`
+          - `Computer object { type }`
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1363,7 +1131,7 @@ Get a list of runs for an evaluation.
 
               - `"computer"`
 
-          - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+          - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1395,7 +1163,7 @@ Get a list of runs for an evaluation.
 
               - `"computer_use_preview"`
 
-          - `WebSearch = object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -1455,7 +1223,7 @@ Get a list of runs for an evaluation.
 
                 - `"approximate"`
 
-          - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+          - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
             (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1478,7 +1246,7 @@ Get a list of runs for an evaluation.
 
                 A string array of allowed tool names
 
-              - `McpToolFilter = object { read_only, tool_names }`
+              - `McpToolFilter object { read_only, tool_names }`
 
                 A filter object to specify which tools are allowed.
 
@@ -1544,7 +1312,7 @@ Get a list of runs for an evaluation.
 
               Specify which of the MCP server's tools require approval.
 
-              - `McpToolApprovalFilter = object { always, never }`
+              - `McpToolApprovalFilter object { always, never }`
 
                 Specify which of the MCP server's tools require approval. Can be
                 `always`, `never`, or a filter object associated with tools
@@ -1597,7 +1365,7 @@ Get a list of runs for an evaluation.
               The URL for the MCP server. One of `server_url` or `connector_id` must be
               provided.
 
-          - `CodeInterpreter = object { container, type }`
+          - `CodeInterpreter object { container, type }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -1611,7 +1379,7 @@ Get a list of runs for an evaluation.
 
                 The container ID.
 
-              - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+              - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
                 Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -1641,7 +1409,7 @@ Get a list of runs for an evaluation.
 
                   Network access policy for the container.
 
-                  - `ContainerNetworkPolicyDisabled = object { type }`
+                  - `ContainerNetworkPolicyDisabled object { type }`
 
                     - `type: "disabled"`
 
@@ -1649,7 +1417,7 @@ Get a list of runs for an evaluation.
 
                       - `"disabled"`
 
-                  - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                     - `allowed_domains: array of string`
 
@@ -1683,7 +1451,7 @@ Get a list of runs for an evaluation.
 
               - `"code_interpreter"`
 
-          - `ImageGeneration = object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -1804,7 +1572,7 @@ Get a list of runs for an evaluation.
 
               - `"auto"`
 
-          - `LocalShell = object { type }`
+          - `LocalShell object { type }`
 
             A tool that allows the model to execute shell commands in a local environment.
 
@@ -1814,7 +1582,7 @@ Get a list of runs for an evaluation.
 
               - `"local_shell"`
 
-          - `Shell = object { type, environment }`
+          - `Shell object { type, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -1826,7 +1594,7 @@ Get a list of runs for an evaluation.
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-              - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+              - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
                 - `type: "container_auto"`
 
@@ -1854,47 +1622,15 @@ Get a list of runs for an evaluation.
 
                   Network access policy for the container.
 
-                  - `ContainerNetworkPolicyDisabled = object { type }`
+                  - `ContainerNetworkPolicyDisabled object { type }`
 
-                    - `type: "disabled"`
-
-                      Disable outbound network access. Always `disabled`.
-
-                      - `"disabled"`
-
-                  - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                    - `allowed_domains: array of string`
-
-                      A list of allowed domains when type is `allowlist`.
-
-                    - `type: "allowlist"`
-
-                      Allow outbound network access only to specified domains. Always `allowlist`.
-
-                      - `"allowlist"`
-
-                    - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                      Optional domain-scoped secrets for allowlisted domains.
-
-                      - `domain: string`
-
-                        The domain associated with the secret.
-
-                      - `name: string`
-
-                        The name of the secret to inject for the domain.
-
-                      - `value: string`
-
-                        The secret value to inject for the domain.
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
                   An optional list of skills referenced by id or inline data.
 
-                  - `SkillReference = object { skill_id, type, version }`
+                  - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
@@ -1910,7 +1646,7 @@ Get a list of runs for an evaluation.
 
                       Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                  - `InlineSkill = object { description, name, source, type }`
+                  - `InlineSkill object { description, name, source, type }`
 
                     - `description: string`
 
@@ -1946,7 +1682,7 @@ Get a list of runs for an evaluation.
 
                       - `"inline"`
 
-              - `LocalEnvironment = object { type, skills }`
+              - `LocalEnvironment object { type, skills }`
 
                 - `type: "local"`
 
@@ -1970,7 +1706,7 @@ Get a list of runs for an evaluation.
 
                     The path to the directory containing the skill.
 
-              - `ContainerReference = object { container_id, type }`
+              - `ContainerReference object { container_id, type }`
 
                 - `container_id: string`
 
@@ -1982,7 +1718,7 @@ Get a list of runs for an evaluation.
 
                   - `"container_reference"`
 
-          - `Custom = object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2008,7 +1744,7 @@ Get a list of runs for an evaluation.
 
               The input format for the custom tool. Default is unconstrained text.
 
-              - `Text = object { type }`
+              - `Text object { type }`
 
                 Unconstrained free-form text.
 
@@ -2018,7 +1754,7 @@ Get a list of runs for an evaluation.
 
                   - `"text"`
 
-              - `Grammar = object { definition, syntax, type }`
+              - `Grammar object { definition, syntax, type }`
 
                 A grammar defined by the user.
 
@@ -2040,7 +1776,7 @@ Get a list of runs for an evaluation.
 
                   - `"grammar"`
 
-          - `Namespace = object { description, name, tools, type }`
+          - `Namespace object { description, name, tools, type }`
 
             Groups function/custom tools under a shared namespace.
 
@@ -2056,7 +1792,7 @@ Get a list of runs for an evaluation.
 
               The function/custom tools available inside this namespace.
 
-              - `Function = object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, defer_loading, 3 more }`
 
                 - `name: string`
 
@@ -2074,7 +1810,7 @@ Get a list of runs for an evaluation.
 
                 - `strict: optional boolean`
 
-              - `Custom = object { name, type, defer_loading, 2 more }`
+              - `Custom object { name, type, defer_loading, 2 more }`
 
                 A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2100,45 +1836,13 @@ Get a list of runs for an evaluation.
 
                   The input format for the custom tool. Default is unconstrained text.
 
-                  - `Text = object { type }`
-
-                    Unconstrained free-form text.
-
-                    - `type: "text"`
-
-                      Unconstrained text format. Always `text`.
-
-                      - `"text"`
-
-                  - `Grammar = object { definition, syntax, type }`
-
-                    A grammar defined by the user.
-
-                    - `definition: string`
-
-                      The grammar definition.
-
-                    - `syntax: "lark" or "regex"`
-
-                      The syntax of the grammar definition. One of `lark` or `regex`.
-
-                      - `"lark"`
-
-                      - `"regex"`
-
-                    - `type: "grammar"`
-
-                      Grammar format. Always `grammar`.
-
-                      - `"grammar"`
-
             - `type: "namespace"`
 
               The type of the tool. Always `namespace`.
 
               - `"namespace"`
 
-          - `ToolSearch = object { type, description, execution, parameters }`
+          - `ToolSearch object { type, description, execution, parameters }`
 
             Hosted or BYOT tool search configuration for deferred tools.
 
@@ -2164,7 +1868,7 @@ Get a list of runs for an evaluation.
 
               Parameter schema for a client-executed tool search tool.
 
-          - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+          - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -2218,7 +1922,7 @@ Get a list of runs for an evaluation.
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch = object { type }`
+          - `ApplyPatch object { type }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2545,7 +2249,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   Details about the run's data source.
 
-  - `CreateEvalJSONLRunDataSource = object { source, type }`
+  - `CreateEvalJSONLRunDataSource object { source, type }`
 
     A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
 
@@ -2553,7 +2257,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -2569,7 +2273,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -2587,7 +2291,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       - `"jsonl"`
 
-  - `CreateEvalCompletionsRunDataSource = object { source, type, input_messages, 2 more }`
+  - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
 
     A CompletionsRunDataSource object describing a model sampling configuration.
 
@@ -2595,7 +2299,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -2611,7 +2315,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -2623,7 +2327,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource = object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -2668,13 +2372,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages = object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `EasyInputMessage = object { content, role, phase, type }`
+          - `EasyInputMessage object { content, role, phase, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -2696,7 +2400,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
@@ -2710,7 +2414,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_text"`
 
-                - `ResponseInputImage = object { detail, type, file_id, image_url }`
+                - `ResponseInputImage object { detail, type, file_id, image_url }`
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -2740,7 +2444,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -2803,7 +2507,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"message"`
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -2819,21 +2523,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -2847,7 +2541,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -2865,7 +2559,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
 
@@ -2899,21 +2593,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A text input to the model.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
+                - `OutputText object { text, type }`
 
                   A text output from the model.
 
@@ -2927,7 +2611,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"output_text"`
 
-                - `InputImage = object { image_url, type, detail }`
+                - `InputImage object { image_url, type, detail }`
 
                   An image input block used within EvalItem content arrays.
 
@@ -2945,30 +2629,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                - `ResponseInputAudio = object { input_audio, type }`
+                - `ResponseInputAudio object { input_audio, type }`
 
                   An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -2995,7 +2658,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `ItemReferenceInputMessages = object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -3055,7 +2718,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         ensures the message the model generates is valid JSON. Using `json_schema`
         is preferred for models that support it.
 
-        - `ResponseFormatText = object { type }`
+        - `ResponseFormatText object { type }`
 
           Default response format. Used to generate text responses.
 
@@ -3065,7 +2728,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"text"`
 
-        - `ResponseFormatJSONSchema = object { json_schema, type }`
+        - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
           Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -3103,7 +2766,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"json_schema"`
 
-        - `ResponseFormatJSONObject = object { type }`
+        - `ResponseFormatJSONObject object { type }`
 
           JSON object response format. An older method of generating JSON responses.
           Using `json_schema` is recommended for models that support it. Note that the
@@ -3158,7 +2821,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource = object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -3166,7 +2829,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -3182,7 +2845,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -3194,7 +2857,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `EvalResponsesSource = object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -3237,18 +2900,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `temperature: optional number`
 
           Sampling temperature. This is a query parameter used to select responses.
@@ -3275,13 +2926,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate = object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `ChatMessage = object { content, role }`
+          - `ChatMessage object { content, role }`
 
             - `content: string`
 
@@ -3291,7 +2942,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -3307,21 +2958,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -3335,7 +2976,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -3353,110 +2994,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
 
               - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
-
-                - `TextInput = string`
-
-                  A text input to the model.
-
-                - `ResponseInputText = object { text, type }`
-
-                  A text input to the model.
-
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
-
-                  A text output from the model.
-
-                  - `text: string`
-
-                    The text output from the model.
-
-                  - `type: "output_text"`
-
-                    The type of the output text. Always `output_text`.
-
-                    - `"output_text"`
-
-                - `InputImage = object { image_url, type, detail }`
-
-                  An image input block used within EvalItem content arrays.
-
-                  - `image_url: string`
-
-                    The URL of the image input.
-
-                  - `type: "input_image"`
-
-                    The type of the image input. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional string`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                - `ResponseInputAudio = object { input_audio, type }`
-
-                  An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -3483,7 +3028,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `InputMessagesItemReference = object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -3518,18 +3063,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
         - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-        - `"none"`
-
-        - `"minimal"`
-
-        - `"low"`
-
-        - `"medium"`
-
-        - `"high"`
-
-        - `"xhigh"`
-
       - `seed: optional number`
 
         A seed value to initialize the randomness, during sampling.
@@ -3562,17 +3095,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           ensures the message the model generates is valid JSON. Using `json_schema`
           is preferred for models that support it.
 
-          - `ResponseFormatText = object { type }`
+          - `ResponseFormatText object { type }`
 
             Default response format. Used to generate text responses.
 
-            - `type: "text"`
-
-              The type of response format being defined. Always `text`.
-
-              - `"text"`
-
-          - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+          - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
             Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -3606,18 +3133,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               `strict` is `true`. To learn more, read the [Structured Outputs
               guide](/docs/guides/structured-outputs).
 
-          - `ResponseFormatJSONObject = object { type }`
+          - `ResponseFormatJSONObject object { type }`
 
             JSON object response format. An older method of generating JSON responses.
             Using `json_schema` is recommended for models that support it. Note that the
             model will not generate JSON without a system or user message instructing it
             to do so.
-
-            - `type: "json_object"`
-
-              The type of response format being defined. Always `json_object`.
-
-              - `"json_object"`
 
       - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
@@ -3634,7 +3155,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -3664,7 +3185,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -3682,7 +3203,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -3735,7 +3256,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -3743,58 +3264,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -3838,7 +3310,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -3848,7 +3320,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -3880,7 +3352,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -3940,7 +3412,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -3963,7 +3435,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -4029,7 +3501,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -4082,7 +3554,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -4096,7 +3568,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -4126,7 +3598,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -4134,7 +3606,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -4168,7 +3640,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -4289,7 +3761,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -4299,7 +3771,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -4311,7 +3783,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -4339,47 +3811,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -4395,7 +3835,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -4431,7 +3871,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -4455,7 +3895,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -4467,7 +3907,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -4493,7 +3933,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -4503,7 +3943,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -4525,7 +3965,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -4541,7 +3981,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -4559,7 +3999,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -4585,45 +4025,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -4649,7 +4057,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -4703,7 +4111,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -4744,7 +4152,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   Information about the run's data source.
 
-  - `CreateEvalJSONLRunDataSource = object { source, type }`
+  - `CreateEvalJSONLRunDataSource object { source, type }`
 
     A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
 
@@ -4752,7 +4160,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -4768,7 +4176,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -4786,7 +4194,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       - `"jsonl"`
 
-  - `CreateEvalCompletionsRunDataSource = object { source, type, input_messages, 2 more }`
+  - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
 
     A CompletionsRunDataSource object describing a model sampling configuration.
 
@@ -4794,7 +4202,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -4810,7 +4218,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -4822,7 +4230,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource = object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -4867,13 +4275,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages = object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `EasyInputMessage = object { content, role, phase, type }`
+          - `EasyInputMessage object { content, role, phase, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -4895,7 +4303,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
@@ -4909,7 +4317,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_text"`
 
-                - `ResponseInputImage = object { detail, type, file_id, image_url }`
+                - `ResponseInputImage object { detail, type, file_id, image_url }`
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -4939,7 +4347,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -5002,7 +4410,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"message"`
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -5018,21 +4426,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -5046,7 +4444,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -5064,7 +4462,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
 
@@ -5098,21 +4496,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A text input to the model.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
+                - `OutputText object { text, type }`
 
                   A text output from the model.
 
@@ -5126,7 +4514,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"output_text"`
 
-                - `InputImage = object { image_url, type, detail }`
+                - `InputImage object { image_url, type, detail }`
 
                   An image input block used within EvalItem content arrays.
 
@@ -5144,30 +4532,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                - `ResponseInputAudio = object { input_audio, type }`
+                - `ResponseInputAudio object { input_audio, type }`
 
                   An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -5194,7 +4561,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `ItemReferenceInputMessages = object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -5254,7 +4621,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         ensures the message the model generates is valid JSON. Using `json_schema`
         is preferred for models that support it.
 
-        - `ResponseFormatText = object { type }`
+        - `ResponseFormatText object { type }`
 
           Default response format. Used to generate text responses.
 
@@ -5264,7 +4631,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"text"`
 
-        - `ResponseFormatJSONSchema = object { json_schema, type }`
+        - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
           Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -5302,7 +4669,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"json_schema"`
 
-        - `ResponseFormatJSONObject = object { type }`
+        - `ResponseFormatJSONObject object { type }`
 
           JSON object response format. An older method of generating JSON responses.
           Using `json_schema` is recommended for models that support it. Note that the
@@ -5357,7 +4724,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource = object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -5365,7 +4732,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -5381,7 +4748,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -5393,7 +4760,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"file_id"`
 
-      - `EvalResponsesSource = object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -5436,18 +4803,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `temperature: optional number`
 
           Sampling temperature. This is a query parameter used to select responses.
@@ -5474,13 +4829,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate = object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `ChatMessage = object { content, role }`
+          - `ChatMessage object { content, role }`
 
             - `content: string`
 
@@ -5490,7 +4845,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -5506,21 +4861,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -5534,7 +4879,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -5552,110 +4897,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
 
               - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
-
-                - `TextInput = string`
-
-                  A text input to the model.
-
-                - `ResponseInputText = object { text, type }`
-
-                  A text input to the model.
-
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
-
-                  A text output from the model.
-
-                  - `text: string`
-
-                    The text output from the model.
-
-                  - `type: "output_text"`
-
-                    The type of the output text. Always `output_text`.
-
-                    - `"output_text"`
-
-                - `InputImage = object { image_url, type, detail }`
-
-                  An image input block used within EvalItem content arrays.
-
-                  - `image_url: string`
-
-                    The URL of the image input.
-
-                  - `type: "input_image"`
-
-                    The type of the image input. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional string`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                - `ResponseInputAudio = object { input_audio, type }`
-
-                  An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -5682,7 +4931,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"template"`
 
-      - `InputMessagesItemReference = object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -5717,18 +4966,6 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
         - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-        - `"none"`
-
-        - `"minimal"`
-
-        - `"low"`
-
-        - `"medium"`
-
-        - `"high"`
-
-        - `"xhigh"`
-
       - `seed: optional number`
 
         A seed value to initialize the randomness, during sampling.
@@ -5761,17 +4998,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           ensures the message the model generates is valid JSON. Using `json_schema`
           is preferred for models that support it.
 
-          - `ResponseFormatText = object { type }`
+          - `ResponseFormatText object { type }`
 
             Default response format. Used to generate text responses.
 
-            - `type: "text"`
-
-              The type of response format being defined. Always `text`.
-
-              - `"text"`
-
-          - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+          - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
             Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -5805,18 +5036,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               `strict` is `true`. To learn more, read the [Structured Outputs
               guide](/docs/guides/structured-outputs).
 
-          - `ResponseFormatJSONObject = object { type }`
+          - `ResponseFormatJSONObject object { type }`
 
             JSON object response format. An older method of generating JSON responses.
             Using `json_schema` is recommended for models that support it. Note that the
             model will not generate JSON without a system or user message instructing it
             to do so.
-
-            - `type: "json_object"`
-
-              The type of response format being defined. Always `json_object`.
-
-              - `"json_object"`
 
       - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
@@ -5833,7 +5058,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -5863,7 +5088,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -5881,7 +5106,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -5934,7 +5159,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -5942,58 +5167,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -6037,7 +5213,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -6047,7 +5223,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -6079,7 +5255,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -6139,7 +5315,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -6162,7 +5338,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -6228,7 +5404,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -6281,7 +5457,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -6295,7 +5471,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -6325,7 +5501,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -6333,7 +5509,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -6367,7 +5543,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -6488,7 +5664,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -6498,7 +5674,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -6510,7 +5686,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -6538,47 +5714,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -6594,7 +5738,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -6630,7 +5774,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -6654,7 +5798,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -6666,7 +5810,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -6692,7 +5836,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -6702,7 +5846,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -6724,7 +5868,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -6740,7 +5884,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -6758,7 +5902,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -6784,45 +5928,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -6848,7 +5960,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -6902,7 +6014,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -7214,7 +6326,7 @@ Get an evaluation run by ID.
 
   Information about the run's data source.
 
-  - `CreateEvalJSONLRunDataSource = object { source, type }`
+  - `CreateEvalJSONLRunDataSource object { source, type }`
 
     A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
 
@@ -7222,7 +6334,7 @@ Get an evaluation run by ID.
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -7238,7 +6350,7 @@ Get an evaluation run by ID.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -7256,7 +6368,7 @@ Get an evaluation run by ID.
 
       - `"jsonl"`
 
-  - `CreateEvalCompletionsRunDataSource = object { source, type, input_messages, 2 more }`
+  - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
 
     A CompletionsRunDataSource object describing a model sampling configuration.
 
@@ -7264,7 +6376,7 @@ Get an evaluation run by ID.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -7280,7 +6392,7 @@ Get an evaluation run by ID.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -7292,7 +6404,7 @@ Get an evaluation run by ID.
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource = object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -7337,13 +6449,13 @@ Get an evaluation run by ID.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages = object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `EasyInputMessage = object { content, role, phase, type }`
+          - `EasyInputMessage object { content, role, phase, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -7365,7 +6477,7 @@ Get an evaluation run by ID.
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
@@ -7379,7 +6491,7 @@ Get an evaluation run by ID.
 
                     - `"input_text"`
 
-                - `ResponseInputImage = object { detail, type, file_id, image_url }`
+                - `ResponseInputImage object { detail, type, file_id, image_url }`
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -7409,7 +6521,7 @@ Get an evaluation run by ID.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -7472,7 +6584,7 @@ Get an evaluation run by ID.
 
               - `"message"`
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -7488,21 +6600,11 @@ Get an evaluation run by ID.
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -7516,7 +6618,7 @@ Get an evaluation run by ID.
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -7534,7 +6636,7 @@ Get an evaluation run by ID.
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
 
@@ -7568,21 +6670,11 @@ Get an evaluation run by ID.
 
                   A text input to the model.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
+                - `OutputText object { text, type }`
 
                   A text output from the model.
 
@@ -7596,7 +6688,7 @@ Get an evaluation run by ID.
 
                     - `"output_text"`
 
-                - `InputImage = object { image_url, type, detail }`
+                - `InputImage object { image_url, type, detail }`
 
                   An image input block used within EvalItem content arrays.
 
@@ -7614,30 +6706,9 @@ Get an evaluation run by ID.
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                - `ResponseInputAudio = object { input_audio, type }`
+                - `ResponseInputAudio object { input_audio, type }`
 
                   An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -7664,7 +6735,7 @@ Get an evaluation run by ID.
 
           - `"template"`
 
-      - `ItemReferenceInputMessages = object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -7724,7 +6795,7 @@ Get an evaluation run by ID.
         ensures the message the model generates is valid JSON. Using `json_schema`
         is preferred for models that support it.
 
-        - `ResponseFormatText = object { type }`
+        - `ResponseFormatText object { type }`
 
           Default response format. Used to generate text responses.
 
@@ -7734,7 +6805,7 @@ Get an evaluation run by ID.
 
             - `"text"`
 
-        - `ResponseFormatJSONSchema = object { json_schema, type }`
+        - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
           Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -7772,7 +6843,7 @@ Get an evaluation run by ID.
 
             - `"json_schema"`
 
-        - `ResponseFormatJSONObject = object { type }`
+        - `ResponseFormatJSONObject object { type }`
 
           JSON object response format. An older method of generating JSON responses.
           Using `json_schema` is recommended for models that support it. Note that the
@@ -7827,7 +6898,7 @@ Get an evaluation run by ID.
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource = object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -7835,7 +6906,7 @@ Get an evaluation run by ID.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -7851,7 +6922,7 @@ Get an evaluation run by ID.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -7863,7 +6934,7 @@ Get an evaluation run by ID.
 
           - `"file_id"`
 
-      - `EvalResponsesSource = object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -7906,18 +6977,6 @@ Get an evaluation run by ID.
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `temperature: optional number`
 
           Sampling temperature. This is a query parameter used to select responses.
@@ -7944,13 +7003,13 @@ Get an evaluation run by ID.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate = object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `ChatMessage = object { content, role }`
+          - `ChatMessage object { content, role }`
 
             - `content: string`
 
@@ -7960,7 +7019,7 @@ Get an evaluation run by ID.
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -7976,21 +7035,11 @@ Get an evaluation run by ID.
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -8004,7 +7053,7 @@ Get an evaluation run by ID.
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -8022,110 +7071,14 @@ Get an evaluation run by ID.
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
 
               - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
-
-                - `TextInput = string`
-
-                  A text input to the model.
-
-                - `ResponseInputText = object { text, type }`
-
-                  A text input to the model.
-
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
-
-                  A text output from the model.
-
-                  - `text: string`
-
-                    The text output from the model.
-
-                  - `type: "output_text"`
-
-                    The type of the output text. Always `output_text`.
-
-                    - `"output_text"`
-
-                - `InputImage = object { image_url, type, detail }`
-
-                  An image input block used within EvalItem content arrays.
-
-                  - `image_url: string`
-
-                    The URL of the image input.
-
-                  - `type: "input_image"`
-
-                    The type of the image input. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional string`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                - `ResponseInputAudio = object { input_audio, type }`
-
-                  An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -8152,7 +7105,7 @@ Get an evaluation run by ID.
 
           - `"template"`
 
-      - `InputMessagesItemReference = object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -8187,18 +7140,6 @@ Get an evaluation run by ID.
         - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
         - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-        - `"none"`
-
-        - `"minimal"`
-
-        - `"low"`
-
-        - `"medium"`
-
-        - `"high"`
-
-        - `"xhigh"`
-
       - `seed: optional number`
 
         A seed value to initialize the randomness, during sampling.
@@ -8231,17 +7172,11 @@ Get an evaluation run by ID.
           ensures the message the model generates is valid JSON. Using `json_schema`
           is preferred for models that support it.
 
-          - `ResponseFormatText = object { type }`
+          - `ResponseFormatText object { type }`
 
             Default response format. Used to generate text responses.
 
-            - `type: "text"`
-
-              The type of response format being defined. Always `text`.
-
-              - `"text"`
-
-          - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+          - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
             Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -8275,18 +7210,12 @@ Get an evaluation run by ID.
               `strict` is `true`. To learn more, read the [Structured Outputs
               guide](/docs/guides/structured-outputs).
 
-          - `ResponseFormatJSONObject = object { type }`
+          - `ResponseFormatJSONObject object { type }`
 
             JSON object response format. An older method of generating JSON responses.
             Using `json_schema` is recommended for models that support it. Note that the
             model will not generate JSON without a system or user message instructing it
             to do so.
-
-            - `type: "json_object"`
-
-              The type of response format being defined. Always `json_object`.
-
-              - `"json_object"`
 
       - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
@@ -8303,7 +7232,7 @@ Get an evaluation run by ID.
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -8333,7 +7262,7 @@ Get an evaluation run by ID.
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -8351,7 +7280,7 @@ Get an evaluation run by ID.
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -8404,7 +7333,7 @@ Get an evaluation run by ID.
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -8412,58 +7341,9 @@ Get an evaluation run by ID.
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -8507,7 +7387,7 @@ Get an evaluation run by ID.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -8517,7 +7397,7 @@ Get an evaluation run by ID.
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -8549,7 +7429,7 @@ Get an evaluation run by ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -8609,7 +7489,7 @@ Get an evaluation run by ID.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -8632,7 +7512,7 @@ Get an evaluation run by ID.
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -8698,7 +7578,7 @@ Get an evaluation run by ID.
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -8751,7 +7631,7 @@ Get an evaluation run by ID.
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -8765,7 +7645,7 @@ Get an evaluation run by ID.
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -8795,7 +7675,7 @@ Get an evaluation run by ID.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -8803,7 +7683,7 @@ Get an evaluation run by ID.
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -8837,7 +7717,7 @@ Get an evaluation run by ID.
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -8958,7 +7838,7 @@ Get an evaluation run by ID.
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -8968,7 +7848,7 @@ Get an evaluation run by ID.
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -8980,7 +7860,7 @@ Get an evaluation run by ID.
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -9008,47 +7888,15 @@ Get an evaluation run by ID.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -9064,7 +7912,7 @@ Get an evaluation run by ID.
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -9100,7 +7948,7 @@ Get an evaluation run by ID.
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -9124,7 +7972,7 @@ Get an evaluation run by ID.
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -9136,7 +7984,7 @@ Get an evaluation run by ID.
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -9162,7 +8010,7 @@ Get an evaluation run by ID.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -9172,7 +8020,7 @@ Get an evaluation run by ID.
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -9194,7 +8042,7 @@ Get an evaluation run by ID.
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -9210,7 +8058,7 @@ Get an evaluation run by ID.
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -9228,7 +8076,7 @@ Get an evaluation run by ID.
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -9254,45 +8102,13 @@ Get an evaluation run by ID.
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -9318,7 +8134,7 @@ Get an evaluation run by ID.
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -9372,7 +8188,7 @@ Get an evaluation run by ID.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -9750,7 +8566,7 @@ Cancel an ongoing evaluation run.
 
   Information about the run's data source.
 
-  - `CreateEvalJSONLRunDataSource = object { source, type }`
+  - `CreateEvalJSONLRunDataSource object { source, type }`
 
     A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
 
@@ -9758,7 +8574,7 @@ Cancel an ongoing evaluation run.
 
       Determines what populates the `item` namespace in the data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -9774,7 +8590,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -9792,7 +8608,7 @@ Cancel an ongoing evaluation run.
 
       - `"jsonl"`
 
-  - `CreateEvalCompletionsRunDataSource = object { source, type, input_messages, 2 more }`
+  - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
 
     A CompletionsRunDataSource object describing a model sampling configuration.
 
@@ -9800,7 +8616,7 @@ Cancel an ongoing evaluation run.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -9816,7 +8632,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -9828,7 +8644,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_id"`
 
-      - `StoredCompletionsRunDataSource = object { type, created_after, created_before, 3 more }`
+      - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -9873,13 +8689,13 @@ Cancel an ongoing evaluation run.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `TemplateInputMessages = object { template, type }`
+      - `TemplateInputMessages object { template, type }`
 
         - `template: array of EasyInputMessage or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `EasyInputMessage = object { content, role, phase, type }`
+          - `EasyInputMessage object { content, role, phase, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -9901,7 +8717,7 @@ Cancel an ongoing evaluation run.
                 A list of one or many input items to the model, containing different content
                 types.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
@@ -9915,7 +8731,7 @@ Cancel an ongoing evaluation run.
 
                     - `"input_text"`
 
-                - `ResponseInputImage = object { detail, type, file_id, image_url }`
+                - `ResponseInputImage object { detail, type, file_id, image_url }`
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -9945,7 +8761,7 @@ Cancel an ongoing evaluation run.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-                - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+                - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
                   A file input to the model.
 
@@ -10008,7 +8824,7 @@ Cancel an ongoing evaluation run.
 
               - `"message"`
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -10024,21 +8840,11 @@ Cancel an ongoing evaluation run.
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -10052,7 +8858,7 @@ Cancel an ongoing evaluation run.
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -10070,7 +8876,7 @@ Cancel an ongoing evaluation run.
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
 
@@ -10104,21 +8910,11 @@ Cancel an ongoing evaluation run.
 
                   A text input to the model.
 
-                - `ResponseInputText = object { text, type }`
+                - `ResponseInputText object { text, type }`
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
+                - `OutputText object { text, type }`
 
                   A text output from the model.
 
@@ -10132,7 +8928,7 @@ Cancel an ongoing evaluation run.
 
                     - `"output_text"`
 
-                - `InputImage = object { image_url, type, detail }`
+                - `InputImage object { image_url, type, detail }`
 
                   An image input block used within EvalItem content arrays.
 
@@ -10150,30 +8946,9 @@ Cancel an ongoing evaluation run.
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-                - `ResponseInputAudio = object { input_audio, type }`
+                - `ResponseInputAudio object { input_audio, type }`
 
                   An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -10200,7 +8975,7 @@ Cancel an ongoing evaluation run.
 
           - `"template"`
 
-      - `ItemReferenceInputMessages = object { item_reference, type }`
+      - `ItemReferenceInputMessages object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -10260,7 +9035,7 @@ Cancel an ongoing evaluation run.
         ensures the message the model generates is valid JSON. Using `json_schema`
         is preferred for models that support it.
 
-        - `ResponseFormatText = object { type }`
+        - `ResponseFormatText object { type }`
 
           Default response format. Used to generate text responses.
 
@@ -10270,7 +9045,7 @@ Cancel an ongoing evaluation run.
 
             - `"text"`
 
-        - `ResponseFormatJSONSchema = object { json_schema, type }`
+        - `ResponseFormatJSONSchema object { json_schema, type }`
 
           JSON Schema response format. Used to generate structured JSON responses.
           Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -10308,7 +9083,7 @@ Cancel an ongoing evaluation run.
 
             - `"json_schema"`
 
-        - `ResponseFormatJSONObject = object { type }`
+        - `ResponseFormatJSONObject object { type }`
 
           JSON object response format. An older method of generating JSON responses.
           Using `json_schema` is recommended for models that support it. Note that the
@@ -10363,7 +9138,7 @@ Cancel an ongoing evaluation run.
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-  - `ResponsesRunDataSource = object { source, type, input_messages, 2 more }`
+  - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
 
     A ResponsesRunDataSource object describing a model sampling configuration.
 
@@ -10371,7 +9146,7 @@ Cancel an ongoing evaluation run.
 
       Determines what populates the `item` namespace in this run's data source.
 
-      - `EvalJSONLFileContentSource = object { content, type }`
+      - `EvalJSONLFileContentSource object { content, type }`
 
         - `content: array of object { item, sample }`
 
@@ -10387,7 +9162,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_content"`
 
-      - `EvalJSONLFileIDSource = object { id, type }`
+      - `EvalJSONLFileIDSource object { id, type }`
 
         - `id: string`
 
@@ -10399,7 +9174,7 @@ Cancel an ongoing evaluation run.
 
           - `"file_id"`
 
-      - `EvalResponsesSource = object { type, created_after, created_before, 8 more }`
+      - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
 
         A EvalResponsesSource object describing a run data source configuration.
 
@@ -10442,18 +9217,6 @@ Cancel an ongoing evaluation run.
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `temperature: optional number`
 
           Sampling temperature. This is a query parameter used to select responses.
@@ -10480,13 +9243,13 @@ Cancel an ongoing evaluation run.
 
       Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-      - `InputMessagesTemplate = object { template, type }`
+      - `InputMessagesTemplate object { template, type }`
 
         - `template: array of object { content, role }  or object { content, role, type }`
 
           A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-          - `ChatMessage = object { content, role }`
+          - `ChatMessage object { content, role }`
 
             - `content: string`
 
@@ -10496,7 +9259,7 @@ Cancel an ongoing evaluation run.
 
               The role of the message (e.g. "system", "assistant", "user").
 
-          - `EvalMessageObject = object { content, role, type }`
+          - `EvalMessageObject object { content, role, type }`
 
             A message input to the model with a role indicating instruction following
             hierarchy. Instructions given with the `developer` or `system` role take
@@ -10512,21 +9275,11 @@ Cancel an ongoing evaluation run.
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -10540,7 +9293,7 @@ Cancel an ongoing evaluation run.
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -10558,110 +9311,14 @@ Cancel an ongoing evaluation run.
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
 
               - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
 
                 A list of inputs, each of which may be either an input text, output text, input
                 image, or input audio object.
-
-                - `TextInput = string`
-
-                  A text input to the model.
-
-                - `ResponseInputText = object { text, type }`
-
-                  A text input to the model.
-
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                - `OutputText = object { text, type }`
-
-                  A text output from the model.
-
-                  - `text: string`
-
-                    The text output from the model.
-
-                  - `type: "output_text"`
-
-                    The type of the output text. Always `output_text`.
-
-                    - `"output_text"`
-
-                - `InputImage = object { image_url, type, detail }`
-
-                  An image input block used within EvalItem content arrays.
-
-                  - `image_url: string`
-
-                    The URL of the image input.
-
-                  - `type: "input_image"`
-
-                    The type of the image input. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional string`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                - `ResponseInputAudio = object { input_audio, type }`
-
-                  An audio input to the model.
-
-                  - `input_audio: object { data, format }`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" or "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
 
             - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -10688,7 +9345,7 @@ Cancel an ongoing evaluation run.
 
           - `"template"`
 
-      - `InputMessagesItemReference = object { item_reference, type }`
+      - `InputMessagesItemReference object { item_reference, type }`
 
         - `item_reference: string`
 
@@ -10723,18 +9380,6 @@ Cancel an ongoing evaluation run.
         - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
         - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-        - `"none"`
-
-        - `"minimal"`
-
-        - `"low"`
-
-        - `"medium"`
-
-        - `"high"`
-
-        - `"xhigh"`
-
       - `seed: optional number`
 
         A seed value to initialize the randomness, during sampling.
@@ -10767,17 +9412,11 @@ Cancel an ongoing evaluation run.
           ensures the message the model generates is valid JSON. Using `json_schema`
           is preferred for models that support it.
 
-          - `ResponseFormatText = object { type }`
+          - `ResponseFormatText object { type }`
 
             Default response format. Used to generate text responses.
 
-            - `type: "text"`
-
-              The type of response format being defined. Always `text`.
-
-              - `"text"`
-
-          - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+          - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
             JSON Schema response format. Used to generate structured JSON responses.
             Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -10811,18 +9450,12 @@ Cancel an ongoing evaluation run.
               `strict` is `true`. To learn more, read the [Structured Outputs
               guide](/docs/guides/structured-outputs).
 
-          - `ResponseFormatJSONObject = object { type }`
+          - `ResponseFormatJSONObject object { type }`
 
             JSON object response format. An older method of generating JSON responses.
             Using `json_schema` is recommended for models that support it. Note that the
             model will not generate JSON without a system or user message instructing it
             to do so.
-
-            - `type: "json_object"`
-
-              The type of response format being defined. Always `json_object`.
-
-              - `"json_object"`
 
       - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
@@ -10839,7 +9472,7 @@ Cancel an ongoing evaluation run.
           enabling the model to call your own code. Learn more about
           [function calling](/docs/guides/function-calling).
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -10869,7 +9502,7 @@ Cancel an ongoing evaluation run.
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -10887,7 +9520,7 @@ Cancel an ongoing evaluation run.
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -10940,7 +9573,7 @@ Cancel an ongoing evaluation run.
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -10948,58 +9581,9 @@ Cancel an ongoing evaluation run.
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -11043,7 +9627,7 @@ Cancel an ongoing evaluation run.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -11053,7 +9637,7 @@ Cancel an ongoing evaluation run.
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -11085,7 +9669,7 @@ Cancel an ongoing evaluation run.
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -11145,7 +9729,7 @@ Cancel an ongoing evaluation run.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -11168,7 +9752,7 @@ Cancel an ongoing evaluation run.
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -11234,7 +9818,7 @@ Cancel an ongoing evaluation run.
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -11287,7 +9871,7 @@ Cancel an ongoing evaluation run.
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -11301,7 +9885,7 @@ Cancel an ongoing evaluation run.
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -11331,7 +9915,7 @@ Cancel an ongoing evaluation run.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -11339,7 +9923,7 @@ Cancel an ongoing evaluation run.
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -11373,7 +9957,7 @@ Cancel an ongoing evaluation run.
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -11494,7 +10078,7 @@ Cancel an ongoing evaluation run.
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -11504,7 +10088,7 @@ Cancel an ongoing evaluation run.
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -11516,7 +10100,7 @@ Cancel an ongoing evaluation run.
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -11544,47 +10128,15 @@ Cancel an ongoing evaluation run.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -11600,7 +10152,7 @@ Cancel an ongoing evaluation run.
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -11636,7 +10188,7 @@ Cancel an ongoing evaluation run.
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -11660,7 +10212,7 @@ Cancel an ongoing evaluation run.
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -11672,7 +10224,7 @@ Cancel an ongoing evaluation run.
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -11698,7 +10250,7 @@ Cancel an ongoing evaluation run.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -11708,7 +10260,7 @@ Cancel an ongoing evaluation run.
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -11730,7 +10282,7 @@ Cancel an ongoing evaluation run.
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -11746,7 +10298,7 @@ Cancel an ongoing evaluation run.
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -11764,7 +10316,7 @@ Cancel an ongoing evaluation run.
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -11790,45 +10342,13 @@ Cancel an ongoing evaluation run.
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -11854,7 +10374,7 @@ Cancel an ongoing evaluation run.
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -11908,7 +10428,7 @@ Cancel an ongoing evaluation run.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -12323,7 +10843,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
 ### Create Eval Completions Run Data Source
 
-- `CreateEvalCompletionsRunDataSource = object { source, type, input_messages, 2 more }`
+- `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
 
   A CompletionsRunDataSource object describing a model sampling configuration.
 
@@ -12331,7 +10851,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Determines what populates the `item` namespace in this run's data source.
 
-    - `EvalJSONLFileContentSource = object { content, type }`
+    - `EvalJSONLFileContentSource object { content, type }`
 
       - `content: array of object { item, sample }`
 
@@ -12347,7 +10867,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_content"`
 
-    - `EvalJSONLFileIDSource = object { id, type }`
+    - `EvalJSONLFileIDSource object { id, type }`
 
       - `id: string`
 
@@ -12359,7 +10879,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_id"`
 
-    - `StoredCompletionsRunDataSource = object { type, created_after, created_before, 3 more }`
+    - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
 
       A StoredCompletionsRunDataSource configuration describing a set of filters
 
@@ -12404,13 +10924,13 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
 
-    - `TemplateInputMessages = object { template, type }`
+    - `TemplateInputMessages object { template, type }`
 
       - `template: array of EasyInputMessage or object { content, role, type }`
 
         A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-        - `EasyInputMessage = object { content, role, phase, type }`
+        - `EasyInputMessage object { content, role, phase, type }`
 
           A message input to the model with a role indicating instruction following
           hierarchy. Instructions given with the `developer` or `system` role take
@@ -12432,7 +10952,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
               A list of one or many input items to the model, containing different content
               types.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
@@ -12446,7 +10966,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"input_text"`
 
-              - `ResponseInputImage = object { detail, type, file_id, image_url }`
+              - `ResponseInputImage object { detail, type, file_id, image_url }`
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -12476,7 +10996,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-              - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+              - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
                 A file input to the model.
 
@@ -12539,7 +11059,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
             - `"message"`
 
-        - `EvalMessageObject = object { content, role, type }`
+        - `EvalMessageObject object { content, role, type }`
 
           A message input to the model with a role indicating instruction following
           hierarchy. Instructions given with the `developer` or `system` role take
@@ -12555,21 +11075,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
               A text input to the model.
 
-            - `ResponseInputText = object { text, type }`
+            - `ResponseInputText object { text, type }`
 
               A text input to the model.
 
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
-            - `OutputText = object { text, type }`
+            - `OutputText object { text, type }`
 
               A text output from the model.
 
@@ -12583,7 +11093,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 - `"output_text"`
 
-            - `InputImage = object { image_url, type, detail }`
+            - `InputImage object { image_url, type, detail }`
 
               An image input block used within EvalItem content arrays.
 
@@ -12601,7 +11111,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-            - `ResponseInputAudio = object { input_audio, type }`
+            - `ResponseInputAudio object { input_audio, type }`
 
               An audio input to the model.
 
@@ -12635,21 +11145,11 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                 A text input to the model.
 
-              - `ResponseInputText = object { text, type }`
+              - `ResponseInputText object { text, type }`
 
                 A text input to the model.
 
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-              - `OutputText = object { text, type }`
+              - `OutputText object { text, type }`
 
                 A text output from the model.
 
@@ -12663,7 +11163,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   - `"output_text"`
 
-              - `InputImage = object { image_url, type, detail }`
+              - `InputImage object { image_url, type, detail }`
 
                 An image input block used within EvalItem content arrays.
 
@@ -12681,30 +11181,9 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-              - `ResponseInputAudio = object { input_audio, type }`
+              - `ResponseInputAudio object { input_audio, type }`
 
                 An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
 
           - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -12731,7 +11210,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"template"`
 
-    - `ItemReferenceInputMessages = object { item_reference, type }`
+    - `ItemReferenceInputMessages object { item_reference, type }`
 
       - `item_reference: string`
 
@@ -12791,7 +11270,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
       ensures the message the model generates is valid JSON. Using `json_schema`
       is preferred for models that support it.
 
-      - `ResponseFormatText = object { type }`
+      - `ResponseFormatText object { type }`
 
         Default response format. Used to generate text responses.
 
@@ -12801,7 +11280,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `"text"`
 
-      - `ResponseFormatJSONSchema = object { json_schema, type }`
+      - `ResponseFormatJSONSchema object { json_schema, type }`
 
         JSON Schema response format. Used to generate structured JSON responses.
         Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -12839,7 +11318,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
           - `"json_schema"`
 
-      - `ResponseFormatJSONObject = object { type }`
+      - `ResponseFormatJSONObject object { type }`
 
         JSON object response format. An older method of generating JSON responses.
         Using `json_schema` is recommended for models that support it. Note that the
@@ -12896,7 +11375,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
 ### Create Eval JSONL Run Data Source
 
-- `CreateEvalJSONLRunDataSource = object { source, type }`
+- `CreateEvalJSONLRunDataSource object { source, type }`
 
   A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
 
@@ -12904,7 +11383,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
     Determines what populates the `item` namespace in the data source.
 
-    - `EvalJSONLFileContentSource = object { content, type }`
+    - `EvalJSONLFileContentSource object { content, type }`
 
       - `content: array of object { item, sample }`
 
@@ -12920,7 +11399,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
         - `"file_content"`
 
-    - `EvalJSONLFileIDSource = object { id, type }`
+    - `EvalJSONLFileIDSource object { id, type }`
 
       - `id: string`
 
@@ -12940,7 +11419,7 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
 
 ### Eval API Error
 
-- `EvalAPIError = object { code, message }`
+- `EvalAPIError object { code, message }`
 
   An object representing an error response from the Eval API.
 
@@ -12951,6 +11430,8036 @@ curl https://api.openai.com/v1/evals/eval_123abc/runs/evalrun_abc456 \
   - `message: string`
 
     The error message.
+
+### Run List Response
+
+- `RunListResponse object { id, created_at, data_source, 11 more }`
+
+  A schema representing an evaluation run.
+
+  - `id: string`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or object { source, type, input_messages, 2 more }`
+
+    Information about the run's data source.
+
+    - `CreateEvalJSONLRunDataSource object { source, type }`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: object { content, type }  or object { id, type }`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: "jsonl"`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 3 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: "stored_completions"`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: optional number`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: optional number`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: optional number`
+
+            An optional maximum number of items to return.
+
+          - `metadata: optional Metadata`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: optional string`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: "completions"`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `TemplateInputMessages object { template, type }`
+
+          - `template: array of EasyInputMessage or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `EasyInputMessage object { content, role, phase, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputMessageContentList`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputMessageContentList = array of ResponseInputContent`
+
+                  A list of one or many input items to the model, containing different content
+                  types.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                    - `text: string`
+
+                      The text input to the model.
+
+                    - `type: "input_text"`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+                    - `detail: "low" or "high" or "auto" or "original"`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                      - `"original"`
+
+                    - `type: "input_image"`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: optional string`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+
+                    A file input to the model.
+
+                    - `type: "input_file"`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `detail: optional "low" or "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                    - `file_data: optional string`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: optional string`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: optional string`
+
+                      The name of the file to be sent to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: optional "commentary" or "final_answer"`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                  - `input_audio: object { data, format }`
+
+                    - `data: string`
+
+                      Base64-encoded audio data.
+
+                    - `format: "mp3" or "wav"`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: "input_audio"`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+                  - `TextInput = string`
+
+                    A text input to the model.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                  - `OutputText object { text, type }`
+
+                    A text output from the model.
+
+                    - `text: string`
+
+                      The text output from the model.
+
+                    - `type: "output_text"`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `InputImage object { image_url, type, detail }`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: string`
+
+                      The URL of the image input.
+
+                    - `type: "input_image"`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: optional string`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `ResponseInputAudio object { input_audio, type }`
+
+                    An audio input to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `ItemReferenceInputMessages object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `ResponseFormatText object { type }`
+
+            Default response format. Used to generate text responses.
+
+            - `type: "text"`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `ResponseFormatJSONSchema object { json_schema, type }`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+            - `json_schema: object { name, description, schema, strict }`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: optional map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `type: "json_schema"`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `ResponseFormatJSONObject object { type }`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: "json_object"`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: optional array of ChatCompletionFunctionTool`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: string`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: optional string`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: optional FunctionParameters`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: optional boolean`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+
+          - `type: "function"`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 8 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: "responses"`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: optional number`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: optional number`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: optional string`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: optional unknown`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: optional string`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: optional ReasoningEffort`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `temperature: optional number`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: optional array of string`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: optional number`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: optional array of string`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: "responses"`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `InputMessagesTemplate object { template, type }`
+
+          - `template: array of object { content, role }  or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `ChatMessage object { content, role }`
+
+              - `content: string`
+
+                The content of the message.
+
+              - `role: string`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `InputMessagesItemReference object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: optional object { format }`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
+
+          - `format: optional ResponseFormatTextConfig`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `ResponseFormatText object { type }`
+
+              Default response format. Used to generate text responses.
+
+            - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: "json_schema"`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `ResponseFormatJSONObject object { type }`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](/docs/guides/function-calling).
+
+          - `Function object { name, parameters, strict, 3 more }`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: string`
+
+              The name of the function to call.
+
+            - `parameters: map[unknown]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: boolean`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: "function"`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this function is deferred and loaded via tool search.
+
+            - `description: optional string`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `FileSearch object { type, vector_store_ids, filters, 2 more }`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: "file_search"`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: array of string`
+
+              The IDs of the vector stores to search.
+
+            - `filters: optional ComparisonFilter or CompoundFilter`
+
+              A filter to apply.
+
+              - `ComparisonFilter object { key, type, value }`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: string`
+
+                  The key to compare against the value.
+
+                - `type: "eq" or "ne" or "gt" or 5 more`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
+
+                - `value: string or number or boolean or array of string or number`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `string`
+
+                  - `number`
+
+                  - `boolean`
+
+                  - `array of string or number`
+
+                    - `string`
+
+                    - `number`
+
+              - `CompoundFilter object { filters, type }`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: array of ComparisonFilter or unknown`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `ComparisonFilter object { key, type, value }`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `unknown`
+
+                - `type: "and" or "or"`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: optional number`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
+
+              Ranking options for search.
+
+              - `hybrid_search: optional object { embedding_weight, text_weight }`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: number`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: number`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: optional "auto" or "default-2024-11-15"`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: optional number`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `Computer object { type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `type: "computer"`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `ComputerUsePreview object { display_height, display_width, environment, type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: number`
+
+              The height of the computer display.
+
+            - `display_width: number`
+
+              The width of the computer display.
+
+            - `environment: "windows" or "mac" or "linux" or 2 more`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: "computer_use_preview"`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `WebSearch object { type, filters, search_context_size, user_location }`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](/docs/guides/tools-web-search).
+
+            - `type: "web_search" or "web_search_2025_08_26"`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: optional object { allowed_domains }`
+
+              Filters for the search.
+
+              - `allowed_domains: optional array of string`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { city, country, region, 2 more }`
+
+              The approximate location of the user.
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: optional "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `Mcp object { server_label, type, allowed_tools, 7 more }`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+
+            - `server_label: string`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: "mcp"`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: optional array of string or object { read_only, tool_names }`
+
+              List of allowed tool names or a filter object.
+
+              - `McpAllowedTools = array of string`
+
+                A string array of allowed tool names
+
+              - `McpToolFilter object { read_only, tool_names }`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: optional boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: optional array of string`
+
+                  List of allowed tool names.
+
+            - `authorization: optional string`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
+
+            - `headers: optional map[string]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: optional object { always, never }  or "always" or "never"`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `McpToolApprovalFilter object { always, never }`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+                - `never: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+              - `McpToolApprovalSetting = "always" or "never"`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: optional string`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: optional string`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `CodeInterpreter object { container, type }`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `string`
+
+                The container ID.
+
+              - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: "auto"`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                    - `type: "disabled"`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                    - `allowed_domains: array of string`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: "allowlist"`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: string`
+
+                        The domain associated with the secret.
+
+                      - `name: string`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: string`
+
+                        The secret value to inject for the domain.
+
+            - `type: "code_interpreter"`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `ImageGeneration object { type, action, background, 9 more }`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: "image_generation"`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: optional "generate" or "edit" or "auto"`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: optional "transparent" or "opaque" or "auto"`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: optional "high" or "low"`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: optional object { file_id, image_url }`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: optional string`
+
+                File ID for the mask image.
+
+              - `image_url: optional string`
+
+                Base64-encoded mask image.
+
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `string`
+
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: optional "auto" or "low"`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: optional number`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: optional "png" or "webp" or "jpeg"`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: optional number`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: optional "low" or "medium" or "high" or "auto"`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: optional "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `LocalShell object { type }`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: "local_shell"`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `Shell object { type, environment }`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: "shell"`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+
+              - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
+
+                - `type: "container_auto"`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                - `skills: optional array of SkillReference or InlineSkill`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `SkillReference object { skill_id, type, version }`
+
+                    - `skill_id: string`
+
+                      The ID of the referenced skill.
+
+                    - `type: "skill_reference"`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: optional string`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `InlineSkill object { description, name, source, type }`
+
+                    - `description: string`
+
+                      The description of the skill.
+
+                    - `name: string`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: string`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: "application/zip"`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: "base64"`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: "inline"`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `LocalEnvironment object { type, skills }`
+
+                - `type: "local"`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: optional array of LocalSkill`
+
+                  An optional list of skills.
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `path: string`
+
+                    The path to the directory containing the skill.
+
+              - `ContainerReference object { container_id, type }`
+
+                - `container_id: string`
+
+                  The ID of the referenced container.
+
+                - `type: "container_reference"`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `Custom object { name, type, defer_loading, 2 more }`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+            - `name: string`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: "custom"`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this tool should be deferred and discovered via tool search.
+
+            - `description: optional string`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: optional CustomToolInputFormat`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `Text object { type }`
+
+                Unconstrained free-form text.
+
+                - `type: "text"`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `Grammar object { definition, syntax, type }`
+
+                A grammar defined by the user.
+
+                - `definition: string`
+
+                  The grammar definition.
+
+                - `syntax: "lark" or "regex"`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: "grammar"`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `Namespace object { description, name, tools, type }`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: string`
+
+              A description of the namespace shown to the model.
+
+            - `name: string`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+
+              The function/custom tools available inside this namespace.
+
+              - `Function object { name, type, defer_loading, 3 more }`
+
+                - `name: string`
+
+                - `type: "function"`
+
+                  - `"function"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                - `parameters: optional unknown`
+
+                - `strict: optional boolean`
+
+              - `Custom object { name, type, defer_loading, 2 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+                - `name: string`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: "custom"`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: optional CustomToolInputFormat`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+            - `type: "namespace"`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `ToolSearch object { type, description, execution, parameters }`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: "tool_search"`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: optional string`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: optional "server" or "client"`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: optional unknown`
+
+              Parameter schema for a client-executed tool search tool.
+
+          - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: optional array of "text" or "image"`
+
+              - `"text"`
+
+              - `"image"`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { type, city, country, 2 more }`
+
+              The user's location.
+
+              - `type: "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `ApplyPatch object { type }`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: "apply_patch"`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: string`
+
+      The error code.
+
+    - `message: string`
+
+      The error message.
+
+  - `eval_id: string`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Metadata`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: string`
+
+    The model that is evaluated, if applicable.
+
+  - `name: string`
+
+    The name of the evaluation run.
+
+  - `object: "eval.run"`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: array of object { cached_tokens, completion_tokens, invocation_count, 3 more }`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: number`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: number`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: number`
+
+      The number of invocations.
+
+    - `model_name: string`
+
+      The name of the model.
+
+    - `prompt_tokens: number`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: number`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: array of object { failed, passed, testing_criteria }`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: number`
+
+      Number of tests failed for this criteria.
+
+    - `passed: number`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: string`
+
+      A description of the testing criteria.
+
+  - `report_url: string`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: object { errored, failed, passed, total }`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: number`
+
+      Number of output items that resulted in an error.
+
+    - `failed: number`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: number`
+
+      Number of output items that passed the evaluation.
+
+    - `total: number`
+
+      Total number of executed output items.
+
+  - `status: string`
+
+    The status of the evaluation run.
+
+### Run Create Response
+
+- `RunCreateResponse object { id, created_at, data_source, 11 more }`
+
+  A schema representing an evaluation run.
+
+  - `id: string`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or object { source, type, input_messages, 2 more }`
+
+    Information about the run's data source.
+
+    - `CreateEvalJSONLRunDataSource object { source, type }`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: object { content, type }  or object { id, type }`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: "jsonl"`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 3 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: "stored_completions"`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: optional number`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: optional number`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: optional number`
+
+            An optional maximum number of items to return.
+
+          - `metadata: optional Metadata`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: optional string`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: "completions"`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `TemplateInputMessages object { template, type }`
+
+          - `template: array of EasyInputMessage or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `EasyInputMessage object { content, role, phase, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputMessageContentList`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputMessageContentList = array of ResponseInputContent`
+
+                  A list of one or many input items to the model, containing different content
+                  types.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                    - `text: string`
+
+                      The text input to the model.
+
+                    - `type: "input_text"`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+                    - `detail: "low" or "high" or "auto" or "original"`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                      - `"original"`
+
+                    - `type: "input_image"`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: optional string`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+
+                    A file input to the model.
+
+                    - `type: "input_file"`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `detail: optional "low" or "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                    - `file_data: optional string`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: optional string`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: optional string`
+
+                      The name of the file to be sent to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: optional "commentary" or "final_answer"`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                  - `input_audio: object { data, format }`
+
+                    - `data: string`
+
+                      Base64-encoded audio data.
+
+                    - `format: "mp3" or "wav"`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: "input_audio"`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+                  - `TextInput = string`
+
+                    A text input to the model.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                  - `OutputText object { text, type }`
+
+                    A text output from the model.
+
+                    - `text: string`
+
+                      The text output from the model.
+
+                    - `type: "output_text"`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `InputImage object { image_url, type, detail }`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: string`
+
+                      The URL of the image input.
+
+                    - `type: "input_image"`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: optional string`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `ResponseInputAudio object { input_audio, type }`
+
+                    An audio input to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `ItemReferenceInputMessages object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `ResponseFormatText object { type }`
+
+            Default response format. Used to generate text responses.
+
+            - `type: "text"`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `ResponseFormatJSONSchema object { json_schema, type }`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+            - `json_schema: object { name, description, schema, strict }`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: optional map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `type: "json_schema"`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `ResponseFormatJSONObject object { type }`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: "json_object"`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: optional array of ChatCompletionFunctionTool`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: string`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: optional string`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: optional FunctionParameters`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: optional boolean`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+
+          - `type: "function"`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 8 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: "responses"`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: optional number`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: optional number`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: optional string`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: optional unknown`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: optional string`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: optional ReasoningEffort`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `temperature: optional number`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: optional array of string`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: optional number`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: optional array of string`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: "responses"`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `InputMessagesTemplate object { template, type }`
+
+          - `template: array of object { content, role }  or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `ChatMessage object { content, role }`
+
+              - `content: string`
+
+                The content of the message.
+
+              - `role: string`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `InputMessagesItemReference object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: optional object { format }`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
+
+          - `format: optional ResponseFormatTextConfig`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `ResponseFormatText object { type }`
+
+              Default response format. Used to generate text responses.
+
+            - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: "json_schema"`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `ResponseFormatJSONObject object { type }`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](/docs/guides/function-calling).
+
+          - `Function object { name, parameters, strict, 3 more }`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: string`
+
+              The name of the function to call.
+
+            - `parameters: map[unknown]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: boolean`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: "function"`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this function is deferred and loaded via tool search.
+
+            - `description: optional string`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `FileSearch object { type, vector_store_ids, filters, 2 more }`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: "file_search"`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: array of string`
+
+              The IDs of the vector stores to search.
+
+            - `filters: optional ComparisonFilter or CompoundFilter`
+
+              A filter to apply.
+
+              - `ComparisonFilter object { key, type, value }`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: string`
+
+                  The key to compare against the value.
+
+                - `type: "eq" or "ne" or "gt" or 5 more`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
+
+                - `value: string or number or boolean or array of string or number`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `string`
+
+                  - `number`
+
+                  - `boolean`
+
+                  - `array of string or number`
+
+                    - `string`
+
+                    - `number`
+
+              - `CompoundFilter object { filters, type }`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: array of ComparisonFilter or unknown`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `ComparisonFilter object { key, type, value }`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `unknown`
+
+                - `type: "and" or "or"`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: optional number`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
+
+              Ranking options for search.
+
+              - `hybrid_search: optional object { embedding_weight, text_weight }`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: number`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: number`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: optional "auto" or "default-2024-11-15"`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: optional number`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `Computer object { type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `type: "computer"`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `ComputerUsePreview object { display_height, display_width, environment, type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: number`
+
+              The height of the computer display.
+
+            - `display_width: number`
+
+              The width of the computer display.
+
+            - `environment: "windows" or "mac" or "linux" or 2 more`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: "computer_use_preview"`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `WebSearch object { type, filters, search_context_size, user_location }`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](/docs/guides/tools-web-search).
+
+            - `type: "web_search" or "web_search_2025_08_26"`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: optional object { allowed_domains }`
+
+              Filters for the search.
+
+              - `allowed_domains: optional array of string`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { city, country, region, 2 more }`
+
+              The approximate location of the user.
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: optional "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `Mcp object { server_label, type, allowed_tools, 7 more }`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+
+            - `server_label: string`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: "mcp"`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: optional array of string or object { read_only, tool_names }`
+
+              List of allowed tool names or a filter object.
+
+              - `McpAllowedTools = array of string`
+
+                A string array of allowed tool names
+
+              - `McpToolFilter object { read_only, tool_names }`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: optional boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: optional array of string`
+
+                  List of allowed tool names.
+
+            - `authorization: optional string`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
+
+            - `headers: optional map[string]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: optional object { always, never }  or "always" or "never"`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `McpToolApprovalFilter object { always, never }`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+                - `never: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+              - `McpToolApprovalSetting = "always" or "never"`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: optional string`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: optional string`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `CodeInterpreter object { container, type }`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `string`
+
+                The container ID.
+
+              - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: "auto"`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                    - `type: "disabled"`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                    - `allowed_domains: array of string`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: "allowlist"`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: string`
+
+                        The domain associated with the secret.
+
+                      - `name: string`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: string`
+
+                        The secret value to inject for the domain.
+
+            - `type: "code_interpreter"`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `ImageGeneration object { type, action, background, 9 more }`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: "image_generation"`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: optional "generate" or "edit" or "auto"`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: optional "transparent" or "opaque" or "auto"`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: optional "high" or "low"`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: optional object { file_id, image_url }`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: optional string`
+
+                File ID for the mask image.
+
+              - `image_url: optional string`
+
+                Base64-encoded mask image.
+
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `string`
+
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: optional "auto" or "low"`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: optional number`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: optional "png" or "webp" or "jpeg"`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: optional number`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: optional "low" or "medium" or "high" or "auto"`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: optional "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `LocalShell object { type }`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: "local_shell"`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `Shell object { type, environment }`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: "shell"`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+
+              - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
+
+                - `type: "container_auto"`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                - `skills: optional array of SkillReference or InlineSkill`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `SkillReference object { skill_id, type, version }`
+
+                    - `skill_id: string`
+
+                      The ID of the referenced skill.
+
+                    - `type: "skill_reference"`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: optional string`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `InlineSkill object { description, name, source, type }`
+
+                    - `description: string`
+
+                      The description of the skill.
+
+                    - `name: string`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: string`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: "application/zip"`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: "base64"`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: "inline"`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `LocalEnvironment object { type, skills }`
+
+                - `type: "local"`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: optional array of LocalSkill`
+
+                  An optional list of skills.
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `path: string`
+
+                    The path to the directory containing the skill.
+
+              - `ContainerReference object { container_id, type }`
+
+                - `container_id: string`
+
+                  The ID of the referenced container.
+
+                - `type: "container_reference"`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `Custom object { name, type, defer_loading, 2 more }`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+            - `name: string`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: "custom"`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this tool should be deferred and discovered via tool search.
+
+            - `description: optional string`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: optional CustomToolInputFormat`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `Text object { type }`
+
+                Unconstrained free-form text.
+
+                - `type: "text"`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `Grammar object { definition, syntax, type }`
+
+                A grammar defined by the user.
+
+                - `definition: string`
+
+                  The grammar definition.
+
+                - `syntax: "lark" or "regex"`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: "grammar"`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `Namespace object { description, name, tools, type }`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: string`
+
+              A description of the namespace shown to the model.
+
+            - `name: string`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+
+              The function/custom tools available inside this namespace.
+
+              - `Function object { name, type, defer_loading, 3 more }`
+
+                - `name: string`
+
+                - `type: "function"`
+
+                  - `"function"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                - `parameters: optional unknown`
+
+                - `strict: optional boolean`
+
+              - `Custom object { name, type, defer_loading, 2 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+                - `name: string`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: "custom"`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: optional CustomToolInputFormat`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+            - `type: "namespace"`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `ToolSearch object { type, description, execution, parameters }`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: "tool_search"`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: optional string`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: optional "server" or "client"`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: optional unknown`
+
+              Parameter schema for a client-executed tool search tool.
+
+          - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: optional array of "text" or "image"`
+
+              - `"text"`
+
+              - `"image"`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { type, city, country, 2 more }`
+
+              The user's location.
+
+              - `type: "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `ApplyPatch object { type }`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: "apply_patch"`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: string`
+
+      The error code.
+
+    - `message: string`
+
+      The error message.
+
+  - `eval_id: string`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Metadata`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: string`
+
+    The model that is evaluated, if applicable.
+
+  - `name: string`
+
+    The name of the evaluation run.
+
+  - `object: "eval.run"`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: array of object { cached_tokens, completion_tokens, invocation_count, 3 more }`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: number`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: number`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: number`
+
+      The number of invocations.
+
+    - `model_name: string`
+
+      The name of the model.
+
+    - `prompt_tokens: number`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: number`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: array of object { failed, passed, testing_criteria }`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: number`
+
+      Number of tests failed for this criteria.
+
+    - `passed: number`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: string`
+
+      A description of the testing criteria.
+
+  - `report_url: string`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: object { errored, failed, passed, total }`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: number`
+
+      Number of output items that resulted in an error.
+
+    - `failed: number`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: number`
+
+      Number of output items that passed the evaluation.
+
+    - `total: number`
+
+      Total number of executed output items.
+
+  - `status: string`
+
+    The status of the evaluation run.
+
+### Run Retrieve Response
+
+- `RunRetrieveResponse object { id, created_at, data_source, 11 more }`
+
+  A schema representing an evaluation run.
+
+  - `id: string`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or object { source, type, input_messages, 2 more }`
+
+    Information about the run's data source.
+
+    - `CreateEvalJSONLRunDataSource object { source, type }`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: object { content, type }  or object { id, type }`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: "jsonl"`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 3 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: "stored_completions"`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: optional number`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: optional number`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: optional number`
+
+            An optional maximum number of items to return.
+
+          - `metadata: optional Metadata`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: optional string`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: "completions"`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `TemplateInputMessages object { template, type }`
+
+          - `template: array of EasyInputMessage or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `EasyInputMessage object { content, role, phase, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputMessageContentList`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputMessageContentList = array of ResponseInputContent`
+
+                  A list of one or many input items to the model, containing different content
+                  types.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                    - `text: string`
+
+                      The text input to the model.
+
+                    - `type: "input_text"`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+                    - `detail: "low" or "high" or "auto" or "original"`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                      - `"original"`
+
+                    - `type: "input_image"`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: optional string`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+
+                    A file input to the model.
+
+                    - `type: "input_file"`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `detail: optional "low" or "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                    - `file_data: optional string`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: optional string`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: optional string`
+
+                      The name of the file to be sent to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: optional "commentary" or "final_answer"`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                  - `input_audio: object { data, format }`
+
+                    - `data: string`
+
+                      Base64-encoded audio data.
+
+                    - `format: "mp3" or "wav"`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: "input_audio"`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+                  - `TextInput = string`
+
+                    A text input to the model.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                  - `OutputText object { text, type }`
+
+                    A text output from the model.
+
+                    - `text: string`
+
+                      The text output from the model.
+
+                    - `type: "output_text"`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `InputImage object { image_url, type, detail }`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: string`
+
+                      The URL of the image input.
+
+                    - `type: "input_image"`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: optional string`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `ResponseInputAudio object { input_audio, type }`
+
+                    An audio input to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `ItemReferenceInputMessages object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `ResponseFormatText object { type }`
+
+            Default response format. Used to generate text responses.
+
+            - `type: "text"`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `ResponseFormatJSONSchema object { json_schema, type }`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+            - `json_schema: object { name, description, schema, strict }`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: optional map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `type: "json_schema"`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `ResponseFormatJSONObject object { type }`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: "json_object"`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: optional array of ChatCompletionFunctionTool`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: string`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: optional string`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: optional FunctionParameters`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: optional boolean`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+
+          - `type: "function"`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 8 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: "responses"`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: optional number`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: optional number`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: optional string`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: optional unknown`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: optional string`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: optional ReasoningEffort`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `temperature: optional number`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: optional array of string`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: optional number`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: optional array of string`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: "responses"`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `InputMessagesTemplate object { template, type }`
+
+          - `template: array of object { content, role }  or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `ChatMessage object { content, role }`
+
+              - `content: string`
+
+                The content of the message.
+
+              - `role: string`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `InputMessagesItemReference object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: optional object { format }`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
+
+          - `format: optional ResponseFormatTextConfig`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `ResponseFormatText object { type }`
+
+              Default response format. Used to generate text responses.
+
+            - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: "json_schema"`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `ResponseFormatJSONObject object { type }`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](/docs/guides/function-calling).
+
+          - `Function object { name, parameters, strict, 3 more }`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: string`
+
+              The name of the function to call.
+
+            - `parameters: map[unknown]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: boolean`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: "function"`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this function is deferred and loaded via tool search.
+
+            - `description: optional string`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `FileSearch object { type, vector_store_ids, filters, 2 more }`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: "file_search"`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: array of string`
+
+              The IDs of the vector stores to search.
+
+            - `filters: optional ComparisonFilter or CompoundFilter`
+
+              A filter to apply.
+
+              - `ComparisonFilter object { key, type, value }`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: string`
+
+                  The key to compare against the value.
+
+                - `type: "eq" or "ne" or "gt" or 5 more`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
+
+                - `value: string or number or boolean or array of string or number`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `string`
+
+                  - `number`
+
+                  - `boolean`
+
+                  - `array of string or number`
+
+                    - `string`
+
+                    - `number`
+
+              - `CompoundFilter object { filters, type }`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: array of ComparisonFilter or unknown`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `ComparisonFilter object { key, type, value }`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `unknown`
+
+                - `type: "and" or "or"`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: optional number`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
+
+              Ranking options for search.
+
+              - `hybrid_search: optional object { embedding_weight, text_weight }`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: number`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: number`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: optional "auto" or "default-2024-11-15"`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: optional number`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `Computer object { type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `type: "computer"`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `ComputerUsePreview object { display_height, display_width, environment, type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: number`
+
+              The height of the computer display.
+
+            - `display_width: number`
+
+              The width of the computer display.
+
+            - `environment: "windows" or "mac" or "linux" or 2 more`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: "computer_use_preview"`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `WebSearch object { type, filters, search_context_size, user_location }`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](/docs/guides/tools-web-search).
+
+            - `type: "web_search" or "web_search_2025_08_26"`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: optional object { allowed_domains }`
+
+              Filters for the search.
+
+              - `allowed_domains: optional array of string`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { city, country, region, 2 more }`
+
+              The approximate location of the user.
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: optional "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `Mcp object { server_label, type, allowed_tools, 7 more }`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+
+            - `server_label: string`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: "mcp"`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: optional array of string or object { read_only, tool_names }`
+
+              List of allowed tool names or a filter object.
+
+              - `McpAllowedTools = array of string`
+
+                A string array of allowed tool names
+
+              - `McpToolFilter object { read_only, tool_names }`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: optional boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: optional array of string`
+
+                  List of allowed tool names.
+
+            - `authorization: optional string`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
+
+            - `headers: optional map[string]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: optional object { always, never }  or "always" or "never"`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `McpToolApprovalFilter object { always, never }`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+                - `never: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+              - `McpToolApprovalSetting = "always" or "never"`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: optional string`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: optional string`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `CodeInterpreter object { container, type }`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `string`
+
+                The container ID.
+
+              - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: "auto"`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                    - `type: "disabled"`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                    - `allowed_domains: array of string`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: "allowlist"`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: string`
+
+                        The domain associated with the secret.
+
+                      - `name: string`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: string`
+
+                        The secret value to inject for the domain.
+
+            - `type: "code_interpreter"`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `ImageGeneration object { type, action, background, 9 more }`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: "image_generation"`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: optional "generate" or "edit" or "auto"`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: optional "transparent" or "opaque" or "auto"`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: optional "high" or "low"`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: optional object { file_id, image_url }`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: optional string`
+
+                File ID for the mask image.
+
+              - `image_url: optional string`
+
+                Base64-encoded mask image.
+
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `string`
+
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: optional "auto" or "low"`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: optional number`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: optional "png" or "webp" or "jpeg"`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: optional number`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: optional "low" or "medium" or "high" or "auto"`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: optional "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `LocalShell object { type }`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: "local_shell"`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `Shell object { type, environment }`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: "shell"`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+
+              - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
+
+                - `type: "container_auto"`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                - `skills: optional array of SkillReference or InlineSkill`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `SkillReference object { skill_id, type, version }`
+
+                    - `skill_id: string`
+
+                      The ID of the referenced skill.
+
+                    - `type: "skill_reference"`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: optional string`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `InlineSkill object { description, name, source, type }`
+
+                    - `description: string`
+
+                      The description of the skill.
+
+                    - `name: string`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: string`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: "application/zip"`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: "base64"`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: "inline"`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `LocalEnvironment object { type, skills }`
+
+                - `type: "local"`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: optional array of LocalSkill`
+
+                  An optional list of skills.
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `path: string`
+
+                    The path to the directory containing the skill.
+
+              - `ContainerReference object { container_id, type }`
+
+                - `container_id: string`
+
+                  The ID of the referenced container.
+
+                - `type: "container_reference"`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `Custom object { name, type, defer_loading, 2 more }`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+            - `name: string`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: "custom"`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this tool should be deferred and discovered via tool search.
+
+            - `description: optional string`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: optional CustomToolInputFormat`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `Text object { type }`
+
+                Unconstrained free-form text.
+
+                - `type: "text"`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `Grammar object { definition, syntax, type }`
+
+                A grammar defined by the user.
+
+                - `definition: string`
+
+                  The grammar definition.
+
+                - `syntax: "lark" or "regex"`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: "grammar"`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `Namespace object { description, name, tools, type }`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: string`
+
+              A description of the namespace shown to the model.
+
+            - `name: string`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+
+              The function/custom tools available inside this namespace.
+
+              - `Function object { name, type, defer_loading, 3 more }`
+
+                - `name: string`
+
+                - `type: "function"`
+
+                  - `"function"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                - `parameters: optional unknown`
+
+                - `strict: optional boolean`
+
+              - `Custom object { name, type, defer_loading, 2 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+                - `name: string`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: "custom"`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: optional CustomToolInputFormat`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+            - `type: "namespace"`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `ToolSearch object { type, description, execution, parameters }`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: "tool_search"`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: optional string`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: optional "server" or "client"`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: optional unknown`
+
+              Parameter schema for a client-executed tool search tool.
+
+          - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: optional array of "text" or "image"`
+
+              - `"text"`
+
+              - `"image"`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { type, city, country, 2 more }`
+
+              The user's location.
+
+              - `type: "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `ApplyPatch object { type }`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: "apply_patch"`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: string`
+
+      The error code.
+
+    - `message: string`
+
+      The error message.
+
+  - `eval_id: string`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Metadata`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: string`
+
+    The model that is evaluated, if applicable.
+
+  - `name: string`
+
+    The name of the evaluation run.
+
+  - `object: "eval.run"`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: array of object { cached_tokens, completion_tokens, invocation_count, 3 more }`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: number`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: number`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: number`
+
+      The number of invocations.
+
+    - `model_name: string`
+
+      The name of the model.
+
+    - `prompt_tokens: number`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: number`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: array of object { failed, passed, testing_criteria }`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: number`
+
+      Number of tests failed for this criteria.
+
+    - `passed: number`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: string`
+
+      A description of the testing criteria.
+
+  - `report_url: string`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: object { errored, failed, passed, total }`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: number`
+
+      Number of output items that resulted in an error.
+
+    - `failed: number`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: number`
+
+      Number of output items that passed the evaluation.
+
+    - `total: number`
+
+      Total number of executed output items.
+
+  - `status: string`
+
+    The status of the evaluation run.
+
+### Run Cancel Response
+
+- `RunCancelResponse object { id, created_at, data_source, 11 more }`
+
+  A schema representing an evaluation run.
+
+  - `id: string`
+
+    Unique identifier for the evaluation run.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or object { source, type, input_messages, 2 more }`
+
+    Information about the run's data source.
+
+    - `CreateEvalJSONLRunDataSource object { source, type }`
+
+      A JsonlRunDataSource object with that specifies a JSONL file that matches the eval
+
+      - `source: object { content, type }  or object { id, type }`
+
+        Determines what populates the `item` namespace in the data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+      - `type: "jsonl"`
+
+        The type of data source. Always `jsonl`.
+
+        - `"jsonl"`
+
+    - `CreateEvalCompletionsRunDataSource object { source, type, input_messages, 2 more }`
+
+      A CompletionsRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 3 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `StoredCompletionsRunDataSource object { type, created_after, created_before, 3 more }`
+
+          A StoredCompletionsRunDataSource configuration describing a set of filters
+
+          - `type: "stored_completions"`
+
+            The type of source. Always `stored_completions`.
+
+            - `"stored_completions"`
+
+          - `created_after: optional number`
+
+            An optional Unix timestamp to filter items created after this time.
+
+          - `created_before: optional number`
+
+            An optional Unix timestamp to filter items created before this time.
+
+          - `limit: optional number`
+
+            An optional maximum number of items to return.
+
+          - `metadata: optional Metadata`
+
+            Set of 16 key-value pairs that can be attached to an object. This can be
+            useful for storing additional information about the object in a structured
+            format, and querying for objects via API or the dashboard.
+
+            Keys are strings with a maximum length of 64 characters. Values are strings
+            with a maximum length of 512 characters.
+
+          - `model: optional string`
+
+            An optional model to filter by (e.g., 'gpt-4o').
+
+      - `type: "completions"`
+
+        The type of run data source. Always `completions`.
+
+        - `"completions"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `TemplateInputMessages object { template, type }`
+
+          - `template: array of EasyInputMessage or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `EasyInputMessage object { content, role, phase, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputMessageContentList`
+
+                Text, image, or audio input to the model, used to generate a response.
+                Can also contain previous assistant responses.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputMessageContentList = array of ResponseInputContent`
+
+                  A list of one or many input items to the model, containing different content
+                  types.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                    - `text: string`
+
+                      The text input to the model.
+
+                    - `type: "input_text"`
+
+                      The type of the input item. Always `input_text`.
+
+                      - `"input_text"`
+
+                  - `ResponseInputImage object { detail, type, file_id, image_url }`
+
+                    An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+                    - `detail: "low" or "high" or "auto" or "original"`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                      - `"auto"`
+
+                      - `"original"`
+
+                    - `type: "input_image"`
+
+                      The type of the input item. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `image_url: optional string`
+
+                      The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+                  - `ResponseInputFile object { type, detail, file_data, 3 more }`
+
+                    A file input to the model.
+
+                    - `type: "input_file"`
+
+                      The type of the input item. Always `input_file`.
+
+                      - `"input_file"`
+
+                    - `detail: optional "low" or "high"`
+
+                      The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
+
+                      - `"low"`
+
+                      - `"high"`
+
+                    - `file_data: optional string`
+
+                      The content of the file to be sent to the model.
+
+                    - `file_id: optional string`
+
+                      The ID of the file to be sent to the model.
+
+                    - `file_url: optional string`
+
+                      The URL of the file to be sent to the model.
+
+                    - `filename: optional string`
+
+                      The name of the file to be sent to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `phase: optional "commentary" or "final_answer"`
+
+                Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+                For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+                phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+                - `"commentary"`
+
+                - `"final_answer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                  - `input_audio: object { data, format }`
+
+                    - `data: string`
+
+                      Base64-encoded audio data.
+
+                    - `format: "mp3" or "wav"`
+
+                      The format of the audio data. Currently supported formats are `mp3` and
+                      `wav`.
+
+                      - `"mp3"`
+
+                      - `"wav"`
+
+                  - `type: "input_audio"`
+
+                    The type of the input item. Always `input_audio`.
+
+                    - `"input_audio"`
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+                  - `TextInput = string`
+
+                    A text input to the model.
+
+                  - `ResponseInputText object { text, type }`
+
+                    A text input to the model.
+
+                  - `OutputText object { text, type }`
+
+                    A text output from the model.
+
+                    - `text: string`
+
+                      The text output from the model.
+
+                    - `type: "output_text"`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `InputImage object { image_url, type, detail }`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: string`
+
+                      The URL of the image input.
+
+                    - `type: "input_image"`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: optional string`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `ResponseInputAudio object { input_audio, type }`
+
+                    An audio input to the model.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `ItemReferenceInputMessages object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.input_trajectory"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+        - `response_format: optional ResponseFormatText or ResponseFormatJSONSchema or ResponseFormatJSONObject`
+
+          An object specifying the format that the model must output.
+
+          Setting to `{ "type": "json_schema", "json_schema": {...} }` enables
+          Structured Outputs which ensures the model will match your supplied JSON
+          schema. Learn more in the [Structured Outputs
+          guide](/docs/guides/structured-outputs).
+
+          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+          ensures the message the model generates is valid JSON. Using `json_schema`
+          is preferred for models that support it.
+
+          - `ResponseFormatText object { type }`
+
+            Default response format. Used to generate text responses.
+
+            - `type: "text"`
+
+              The type of response format being defined. Always `text`.
+
+              - `"text"`
+
+          - `ResponseFormatJSONSchema object { json_schema, type }`
+
+            JSON Schema response format. Used to generate structured JSON responses.
+            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+            - `json_schema: object { name, description, schema, strict }`
+
+              Structured Outputs configuration options, including a JSON Schema.
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `schema: optional map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `type: "json_schema"`
+
+              The type of response format being defined. Always `json_schema`.
+
+              - `"json_schema"`
+
+          - `ResponseFormatJSONObject object { type }`
+
+            JSON object response format. An older method of generating JSON responses.
+            Using `json_schema` is recommended for models that support it. Note that the
+            model will not generate JSON without a system or user message instructing it
+            to do so.
+
+            - `type: "json_object"`
+
+              The type of response format being defined. Always `json_object`.
+
+              - `"json_object"`
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `tools: optional array of ChatCompletionFunctionTool`
+
+          A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.
+
+          - `function: FunctionDefinition`
+
+            - `name: string`
+
+              The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
+
+            - `description: optional string`
+
+              A description of what the function does, used by the model to choose when and how to call the function.
+
+            - `parameters: optional FunctionParameters`
+
+              The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+
+              Omitting `parameters` defines a function with an empty parameter list.
+
+            - `strict: optional boolean`
+
+              Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
+
+          - `type: "function"`
+
+            The type of the tool. Currently, only `function` is supported.
+
+            - `"function"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+    - `ResponsesRunDataSource object { source, type, input_messages, 2 more }`
+
+      A ResponsesRunDataSource object describing a model sampling configuration.
+
+      - `source: object { content, type }  or object { id, type }  or object { type, created_after, created_before, 8 more }`
+
+        Determines what populates the `item` namespace in this run's data source.
+
+        - `EvalJSONLFileContentSource object { content, type }`
+
+          - `content: array of object { item, sample }`
+
+            The content of the jsonl file.
+
+            - `item: map[unknown]`
+
+            - `sample: optional map[unknown]`
+
+          - `type: "file_content"`
+
+            The type of jsonl source. Always `file_content`.
+
+            - `"file_content"`
+
+        - `EvalJSONLFileIDSource object { id, type }`
+
+          - `id: string`
+
+            The identifier of the file.
+
+          - `type: "file_id"`
+
+            The type of jsonl source. Always `file_id`.
+
+            - `"file_id"`
+
+        - `EvalResponsesSource object { type, created_after, created_before, 8 more }`
+
+          A EvalResponsesSource object describing a run data source configuration.
+
+          - `type: "responses"`
+
+            The type of run data source. Always `responses`.
+
+            - `"responses"`
+
+          - `created_after: optional number`
+
+            Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `created_before: optional number`
+
+            Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          - `instructions_search: optional string`
+
+            Optional string to search the 'instructions' field. This is a query parameter used to select responses.
+
+          - `metadata: optional unknown`
+
+            Metadata filter for the responses. This is a query parameter used to select responses.
+
+          - `model: optional string`
+
+            The name of the model to find responses for. This is a query parameter used to select responses.
+
+          - `reasoning_effort: optional ReasoningEffort`
+
+            Constrains effort on reasoning for
+            [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+            Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+            reasoning effort can result in faster responses and fewer tokens used
+            on reasoning in a response.
+
+            - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+            - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+            - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+            - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+          - `temperature: optional number`
+
+            Sampling temperature. This is a query parameter used to select responses.
+
+          - `tools: optional array of string`
+
+            List of tool names. This is a query parameter used to select responses.
+
+          - `top_p: optional number`
+
+            Nucleus sampling parameter. This is a query parameter used to select responses.
+
+          - `users: optional array of string`
+
+            List of user identifiers. This is a query parameter used to select responses.
+
+      - `type: "responses"`
+
+        The type of run data source. Always `responses`.
+
+        - `"responses"`
+
+      - `input_messages: optional object { template, type }  or object { item_reference, type }`
+
+        Used when sampling from a model. Dictates the structure of the messages passed into the model. Can either be a reference to a prebuilt trajectory (ie, `item.input_trajectory`), or a template with variable references to the `item` namespace.
+
+        - `InputMessagesTemplate object { template, type }`
+
+          - `template: array of object { content, role }  or object { content, role, type }`
+
+            A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
+
+            - `ChatMessage object { content, role }`
+
+              - `content: string`
+
+                The content of the message.
+
+              - `role: string`
+
+                The role of the message (e.g. "system", "assistant", "user").
+
+            - `EvalMessageObject object { content, role, type }`
+
+              A message input to the model with a role indicating instruction following
+              hierarchy. Instructions given with the `developer` or `system` role take
+              precedence over instructions given with the `user` role. Messages with the
+              `assistant` role are presumed to have been generated by the model in previous
+              interactions.
+
+              - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+                - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                  A list of inputs, each of which may be either an input text, output text, input
+                  image, or input audio object.
+
+              - `role: "user" or "assistant" or "system" or "developer"`
+
+                The role of the message input. One of `user`, `assistant`, `system`, or
+                `developer`.
+
+                - `"user"`
+
+                - `"assistant"`
+
+                - `"system"`
+
+                - `"developer"`
+
+              - `type: optional "message"`
+
+                The type of the message input. Always `message`.
+
+                - `"message"`
+
+          - `type: "template"`
+
+            The type of input messages. Always `template`.
+
+            - `"template"`
+
+        - `InputMessagesItemReference object { item_reference, type }`
+
+          - `item_reference: string`
+
+            A reference to a variable in the `item` namespace. Ie, "item.name"
+
+          - `type: "item_reference"`
+
+            The type of input messages. Always `item_reference`.
+
+            - `"item_reference"`
+
+      - `model: optional string`
+
+        The name of the model to use for generating completions (e.g. "o3-mini").
+
+      - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
+
+        - `max_completion_tokens: optional number`
+
+          The maximum number of tokens in the generated output.
+
+        - `reasoning_effort: optional ReasoningEffort`
+
+          Constrains effort on reasoning for
+          [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+          Currently supported values are `none`, `minimal`, `low`, `medium`, `high`, and `xhigh`. Reducing
+          reasoning effort can result in faster responses and fewer tokens used
+          on reasoning in a response.
+
+          - `gpt-5.1` defaults to `none`, which does not perform reasoning. The supported reasoning values for `gpt-5.1` are `none`, `low`, `medium`, and `high`. Tool calls are supported for all reasoning values in gpt-5.1.
+          - All models before `gpt-5.1` default to `medium` reasoning effort, and do not support `none`.
+          - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
+          - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
+
+        - `seed: optional number`
+
+          A seed value to initialize the randomness, during sampling.
+
+        - `temperature: optional number`
+
+          A higher temperature increases randomness in the outputs.
+
+        - `text: optional object { format }`
+
+          Configuration options for a text response from the model. Can be plain
+          text or structured JSON data. Learn more:
+
+          - [Text inputs and outputs](/docs/guides/text)
+          - [Structured Outputs](/docs/guides/structured-outputs)
+
+          - `format: optional ResponseFormatTextConfig`
+
+            An object specifying the format that the model must output.
+
+            Configuring `{ "type": "json_schema" }` enables Structured Outputs,
+            which ensures the model will match your supplied JSON schema. Learn more in the
+            [Structured Outputs guide](/docs/guides/structured-outputs).
+
+            The default format is `{ "type": "text" }` with no additional options.
+
+            **Not recommended for gpt-4o and newer models:**
+
+            Setting to `{ "type": "json_object" }` enables the older JSON mode, which
+            ensures the message the model generates is valid JSON. Using `json_schema`
+            is preferred for models that support it.
+
+            - `ResponseFormatText object { type }`
+
+              Default response format. Used to generate text responses.
+
+            - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
+
+              JSON Schema response format. Used to generate structured JSON responses.
+              Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+
+              - `name: string`
+
+                The name of the response format. Must be a-z, A-Z, 0-9, or contain
+                underscores and dashes, with a maximum length of 64.
+
+              - `schema: map[unknown]`
+
+                The schema for the response format, described as a JSON Schema object.
+                Learn how to build JSON schemas [here](https://json-schema.org/).
+
+              - `type: "json_schema"`
+
+                The type of response format being defined. Always `json_schema`.
+
+                - `"json_schema"`
+
+              - `description: optional string`
+
+                A description of what the response format is for, used by the model to
+                determine how to respond in the format.
+
+              - `strict: optional boolean`
+
+                Whether to enable strict schema adherence when generating the output.
+                If set to true, the model will always follow the exact schema defined
+                in the `schema` field. Only a subset of JSON Schema is supported when
+                `strict` is `true`. To learn more, read the [Structured Outputs
+                guide](/docs/guides/structured-outputs).
+
+            - `ResponseFormatJSONObject object { type }`
+
+              JSON object response format. An older method of generating JSON responses.
+              Using `json_schema` is recommended for models that support it. Note that the
+              model will not generate JSON without a system or user message instructing it
+              to do so.
+
+        - `tools: optional array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
+
+          An array of tools the model may call while generating a response. You
+          can specify which tool to use by setting the `tool_choice` parameter.
+
+          The two categories of tools you can provide the model are:
+
+          - **Built-in tools**: Tools that are provided by OpenAI that extend the
+            model's capabilities, like [web search](/docs/guides/tools-web-search)
+            or [file search](/docs/guides/tools-file-search). Learn more about
+            [built-in tools](/docs/guides/tools).
+          - **Function calls (custom tools)**: Functions that are defined by you,
+            enabling the model to call your own code. Learn more about
+            [function calling](/docs/guides/function-calling).
+
+          - `Function object { name, parameters, strict, 3 more }`
+
+            Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+
+            - `name: string`
+
+              The name of the function to call.
+
+            - `parameters: map[unknown]`
+
+              A JSON schema object describing the parameters of the function.
+
+            - `strict: boolean`
+
+              Whether to enforce strict parameter validation. Default `true`.
+
+            - `type: "function"`
+
+              The type of the function tool. Always `function`.
+
+              - `"function"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this function is deferred and loaded via tool search.
+
+            - `description: optional string`
+
+              A description of the function. Used by the model to determine whether or not to call the function.
+
+          - `FileSearch object { type, vector_store_ids, filters, 2 more }`
+
+            A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+
+            - `type: "file_search"`
+
+              The type of the file search tool. Always `file_search`.
+
+              - `"file_search"`
+
+            - `vector_store_ids: array of string`
+
+              The IDs of the vector stores to search.
+
+            - `filters: optional ComparisonFilter or CompoundFilter`
+
+              A filter to apply.
+
+              - `ComparisonFilter object { key, type, value }`
+
+                A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                - `key: string`
+
+                  The key to compare against the value.
+
+                - `type: "eq" or "ne" or "gt" or 5 more`
+
+                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
+
+                  - `eq`: equals
+                  - `ne`: not equal
+                  - `gt`: greater than
+                  - `gte`: greater than or equal
+                  - `lt`: less than
+                  - `lte`: less than or equal
+                  - `in`: in
+                  - `nin`: not in
+
+                  - `"eq"`
+
+                  - `"ne"`
+
+                  - `"gt"`
+
+                  - `"gte"`
+
+                  - `"lt"`
+
+                  - `"lte"`
+
+                  - `"in"`
+
+                  - `"nin"`
+
+                - `value: string or number or boolean or array of string or number`
+
+                  The value to compare against the attribute key; supports string, number, or boolean types.
+
+                  - `string`
+
+                  - `number`
+
+                  - `boolean`
+
+                  - `array of string or number`
+
+                    - `string`
+
+                    - `number`
+
+              - `CompoundFilter object { filters, type }`
+
+                Combine multiple filters using `and` or `or`.
+
+                - `filters: array of ComparisonFilter or unknown`
+
+                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
+
+                  - `ComparisonFilter object { key, type, value }`
+
+                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
+
+                  - `unknown`
+
+                - `type: "and" or "or"`
+
+                  Type of operation: `and` or `or`.
+
+                  - `"and"`
+
+                  - `"or"`
+
+            - `max_num_results: optional number`
+
+              The maximum number of results to return. This number should be between 1 and 50 inclusive.
+
+            - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
+
+              Ranking options for search.
+
+              - `hybrid_search: optional object { embedding_weight, text_weight }`
+
+                Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
+
+                - `embedding_weight: number`
+
+                  The weight of the embedding in the reciprocal ranking fusion.
+
+                - `text_weight: number`
+
+                  The weight of the text in the reciprocal ranking fusion.
+
+              - `ranker: optional "auto" or "default-2024-11-15"`
+
+                The ranker to use for the file search.
+
+                - `"auto"`
+
+                - `"default-2024-11-15"`
+
+              - `score_threshold: optional number`
+
+                The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
+
+          - `Computer object { type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `type: "computer"`
+
+              The type of the computer tool. Always `computer`.
+
+              - `"computer"`
+
+          - `ComputerUsePreview object { display_height, display_width, environment, type }`
+
+            A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+
+            - `display_height: number`
+
+              The height of the computer display.
+
+            - `display_width: number`
+
+              The width of the computer display.
+
+            - `environment: "windows" or "mac" or "linux" or 2 more`
+
+              The type of computer environment to control.
+
+              - `"windows"`
+
+              - `"mac"`
+
+              - `"linux"`
+
+              - `"ubuntu"`
+
+              - `"browser"`
+
+            - `type: "computer_use_preview"`
+
+              The type of the computer use tool. Always `computer_use_preview`.
+
+              - `"computer_use_preview"`
+
+          - `WebSearch object { type, filters, search_context_size, user_location }`
+
+            Search the Internet for sources related to the prompt. Learn more about the
+            [web search tool](/docs/guides/tools-web-search).
+
+            - `type: "web_search" or "web_search_2025_08_26"`
+
+              The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
+
+              - `"web_search"`
+
+              - `"web_search_2025_08_26"`
+
+            - `filters: optional object { allowed_domains }`
+
+              Filters for the search.
+
+              - `allowed_domains: optional array of string`
+
+                Allowed domains for the search. If not provided, all domains are allowed.
+                Subdomains of the provided domains are allowed as well.
+
+                Example: `["pubmed.ncbi.nlm.nih.gov"]`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { city, country, region, 2 more }`
+
+              The approximate location of the user.
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+              - `type: optional "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+          - `Mcp object { server_label, type, allowed_tools, 7 more }`
+
+            Give the model access to additional tools via remote Model Context Protocol
+            (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+
+            - `server_label: string`
+
+              A label for this MCP server, used to identify it in tool calls.
+
+            - `type: "mcp"`
+
+              The type of the MCP tool. Always `mcp`.
+
+              - `"mcp"`
+
+            - `allowed_tools: optional array of string or object { read_only, tool_names }`
+
+              List of allowed tool names or a filter object.
+
+              - `McpAllowedTools = array of string`
+
+                A string array of allowed tool names
+
+              - `McpToolFilter object { read_only, tool_names }`
+
+                A filter object to specify which tools are allowed.
+
+                - `read_only: optional boolean`
+
+                  Indicates whether or not a tool modifies data or is read-only. If an
+                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                  it will match this filter.
+
+                - `tool_names: optional array of string`
+
+                  List of allowed tool names.
+
+            - `authorization: optional string`
+
+              An OAuth access token that can be used with a remote MCP server, either
+              with a custom MCP server URL or a service connector. Your application
+              must handle the OAuth authorization flow and provide the token here.
+
+            - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
+
+              Identifier for service connectors, like those available in ChatGPT. One of
+              `server_url` or `connector_id` must be provided. Learn more about service
+              connectors [here](/docs/guides/tools-remote-mcp#connectors).
+
+              Currently supported `connector_id` values are:
+
+              - Dropbox: `connector_dropbox`
+              - Gmail: `connector_gmail`
+              - Google Calendar: `connector_googlecalendar`
+              - Google Drive: `connector_googledrive`
+              - Microsoft Teams: `connector_microsoftteams`
+              - Outlook Calendar: `connector_outlookcalendar`
+              - Outlook Email: `connector_outlookemail`
+              - SharePoint: `connector_sharepoint`
+
+              - `"connector_dropbox"`
+
+              - `"connector_gmail"`
+
+              - `"connector_googlecalendar"`
+
+              - `"connector_googledrive"`
+
+              - `"connector_microsoftteams"`
+
+              - `"connector_outlookcalendar"`
+
+              - `"connector_outlookemail"`
+
+              - `"connector_sharepoint"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this MCP tool is deferred and discovered via tool search.
+
+            - `headers: optional map[string]`
+
+              Optional HTTP headers to send to the MCP server. Use for authentication
+              or other purposes.
+
+            - `require_approval: optional object { always, never }  or "always" or "never"`
+
+              Specify which of the MCP server's tools require approval.
+
+              - `McpToolApprovalFilter object { always, never }`
+
+                Specify which of the MCP server's tools require approval. Can be
+                `always`, `never`, or a filter object associated with tools
+                that require approval.
+
+                - `always: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+                - `never: optional object { read_only, tool_names }`
+
+                  A filter object to specify which tools are allowed.
+
+                  - `read_only: optional boolean`
+
+                    Indicates whether or not a tool modifies data or is read-only. If an
+                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
+                    it will match this filter.
+
+                  - `tool_names: optional array of string`
+
+                    List of allowed tool names.
+
+              - `McpToolApprovalSetting = "always" or "never"`
+
+                Specify a single approval policy for all tools. One of `always` or
+                `never`. When set to `always`, all tools will require approval. When
+                set to `never`, all tools will not require approval.
+
+                - `"always"`
+
+                - `"never"`
+
+            - `server_description: optional string`
+
+              Optional description of the MCP server, used to provide more context.
+
+            - `server_url: optional string`
+
+              The URL for the MCP server. One of `server_url` or `connector_id` must be
+              provided.
+
+          - `CodeInterpreter object { container, type }`
+
+            A tool that runs Python code to help generate a response to a prompt.
+
+            - `container: string or object { type, file_ids, memory_limit, network_policy }`
+
+              The code interpreter container. Can be a container ID or an object that
+              specifies uploaded file IDs to make available to your code, along with an
+              optional `memory_limit` setting.
+
+              - `string`
+
+                The container ID.
+
+              - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
+
+                Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
+
+                - `type: "auto"`
+
+                  Always `auto`.
+
+                  - `"auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the code interpreter container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                    - `type: "disabled"`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                    - `allowed_domains: array of string`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: "allowlist"`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: string`
+
+                        The domain associated with the secret.
+
+                      - `name: string`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: string`
+
+                        The secret value to inject for the domain.
+
+            - `type: "code_interpreter"`
+
+              The type of the code interpreter tool. Always `code_interpreter`.
+
+              - `"code_interpreter"`
+
+          - `ImageGeneration object { type, action, background, 9 more }`
+
+            A tool that generates images using the GPT image models.
+
+            - `type: "image_generation"`
+
+              The type of the image generation tool. Always `image_generation`.
+
+              - `"image_generation"`
+
+            - `action: optional "generate" or "edit" or "auto"`
+
+              Whether to generate a new image or edit an existing image. Default: `auto`.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
+            - `background: optional "transparent" or "opaque" or "auto"`
+
+              Background type for the generated image. One of `transparent`,
+              `opaque`, or `auto`. Default: `auto`.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `input_fidelity: optional "high" or "low"`
+
+              Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
+
+              - `"high"`
+
+              - `"low"`
+
+            - `input_image_mask: optional object { file_id, image_url }`
+
+              Optional mask for inpainting. Contains `image_url`
+              (string, optional) and `file_id` (string, optional).
+
+              - `file_id: optional string`
+
+                File ID for the mask image.
+
+              - `image_url: optional string`
+
+                Base64-encoded mask image.
+
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+              The image generation model to use. Default: `gpt-image-1`.
+
+              - `string`
+
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
+
+                The image generation model to use. Default: `gpt-image-1`.
+
+                - `"gpt-image-1"`
+
+                - `"gpt-image-1-mini"`
+
+                - `"gpt-image-1.5"`
+
+            - `moderation: optional "auto" or "low"`
+
+              Moderation level for the generated image. Default: `auto`.
+
+              - `"auto"`
+
+              - `"low"`
+
+            - `output_compression: optional number`
+
+              Compression level for the output image. Default: 100.
+
+            - `output_format: optional "png" or "webp" or "jpeg"`
+
+              The output format of the generated image. One of `png`, `webp`, or
+              `jpeg`. Default: `png`.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
+
+            - `partial_images: optional number`
+
+              Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            - `quality: optional "low" or "medium" or "high" or "auto"`
+
+              The quality of the generated image. One of `low`, `medium`, `high`,
+              or `auto`. Default: `auto`.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"auto"`
+
+            - `size: optional "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+
+              The size of the generated image. One of `1024x1024`, `1024x1536`,
+              `1536x1024`, or `auto`. Default: `auto`.
+
+              - `"1024x1024"`
+
+              - `"1024x1536"`
+
+              - `"1536x1024"`
+
+              - `"auto"`
+
+          - `LocalShell object { type }`
+
+            A tool that allows the model to execute shell commands in a local environment.
+
+            - `type: "local_shell"`
+
+              The type of the local shell tool. Always `local_shell`.
+
+              - `"local_shell"`
+
+          - `Shell object { type, environment }`
+
+            A tool that allows the model to execute shell commands.
+
+            - `type: "shell"`
+
+              The type of the shell tool. Always `shell`.
+
+              - `"shell"`
+
+            - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+
+              - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
+
+                - `type: "container_auto"`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `ContainerNetworkPolicyDisabled object { type }`
+
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                - `skills: optional array of SkillReference or InlineSkill`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `SkillReference object { skill_id, type, version }`
+
+                    - `skill_id: string`
+
+                      The ID of the referenced skill.
+
+                    - `type: "skill_reference"`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: optional string`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `InlineSkill object { description, name, source, type }`
+
+                    - `description: string`
+
+                      The description of the skill.
+
+                    - `name: string`
+
+                      The name of the skill.
+
+                    - `source: InlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: string`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: "application/zip"`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: "base64"`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: "inline"`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
+              - `LocalEnvironment object { type, skills }`
+
+                - `type: "local"`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: optional array of LocalSkill`
+
+                  An optional list of skills.
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `path: string`
+
+                    The path to the directory containing the skill.
+
+              - `ContainerReference object { container_id, type }`
+
+                - `container_id: string`
+
+                  The ID of the referenced container.
+
+                - `type: "container_reference"`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
+
+          - `Custom object { name, type, defer_loading, 2 more }`
+
+            A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+            - `name: string`
+
+              The name of the custom tool, used to identify it in tool calls.
+
+            - `type: "custom"`
+
+              The type of the custom tool. Always `custom`.
+
+              - `"custom"`
+
+            - `defer_loading: optional boolean`
+
+              Whether this tool should be deferred and discovered via tool search.
+
+            - `description: optional string`
+
+              Optional description of the custom tool, used to provide more context.
+
+            - `format: optional CustomToolInputFormat`
+
+              The input format for the custom tool. Default is unconstrained text.
+
+              - `Text object { type }`
+
+                Unconstrained free-form text.
+
+                - `type: "text"`
+
+                  Unconstrained text format. Always `text`.
+
+                  - `"text"`
+
+              - `Grammar object { definition, syntax, type }`
+
+                A grammar defined by the user.
+
+                - `definition: string`
+
+                  The grammar definition.
+
+                - `syntax: "lark" or "regex"`
+
+                  The syntax of the grammar definition. One of `lark` or `regex`.
+
+                  - `"lark"`
+
+                  - `"regex"`
+
+                - `type: "grammar"`
+
+                  Grammar format. Always `grammar`.
+
+                  - `"grammar"`
+
+          - `Namespace object { description, name, tools, type }`
+
+            Groups function/custom tools under a shared namespace.
+
+            - `description: string`
+
+              A description of the namespace shown to the model.
+
+            - `name: string`
+
+              The namespace name used in tool calls (for example, `crm`).
+
+            - `tools: array of object { name, type, defer_loading, 3 more }  or object { name, type, defer_loading, 2 more }`
+
+              The function/custom tools available inside this namespace.
+
+              - `Function object { name, type, defer_loading, 3 more }`
+
+                - `name: string`
+
+                - `type: "function"`
+
+                  - `"function"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this function should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                - `parameters: optional unknown`
+
+                - `strict: optional boolean`
+
+              - `Custom object { name, type, defer_loading, 2 more }`
+
+                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+
+                - `name: string`
+
+                  The name of the custom tool, used to identify it in tool calls.
+
+                - `type: "custom"`
+
+                  The type of the custom tool. Always `custom`.
+
+                  - `"custom"`
+
+                - `defer_loading: optional boolean`
+
+                  Whether this tool should be deferred and discovered via tool search.
+
+                - `description: optional string`
+
+                  Optional description of the custom tool, used to provide more context.
+
+                - `format: optional CustomToolInputFormat`
+
+                  The input format for the custom tool. Default is unconstrained text.
+
+            - `type: "namespace"`
+
+              The type of the tool. Always `namespace`.
+
+              - `"namespace"`
+
+          - `ToolSearch object { type, description, execution, parameters }`
+
+            Hosted or BYOT tool search configuration for deferred tools.
+
+            - `type: "tool_search"`
+
+              The type of the tool. Always `tool_search`.
+
+              - `"tool_search"`
+
+            - `description: optional string`
+
+              Description shown to the model for a client-executed tool search tool.
+
+            - `execution: optional "server" or "client"`
+
+              Whether tool search is executed by the server or by the client.
+
+              - `"server"`
+
+              - `"client"`
+
+            - `parameters: optional unknown`
+
+              Parameter schema for a client-executed tool search tool.
+
+          - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
+
+            This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+
+            - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+
+              The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
+
+              - `"web_search_preview"`
+
+              - `"web_search_preview_2025_03_11"`
+
+            - `search_content_types: optional array of "text" or "image"`
+
+              - `"text"`
+
+              - `"image"`
+
+            - `search_context_size: optional "low" or "medium" or "high"`
+
+              High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `user_location: optional object { type, city, country, 2 more }`
+
+              The user's location.
+
+              - `type: "approximate"`
+
+                The type of location approximation. Always `approximate`.
+
+                - `"approximate"`
+
+              - `city: optional string`
+
+                Free text input for the city of the user, e.g. `San Francisco`.
+
+              - `country: optional string`
+
+                The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
+
+              - `region: optional string`
+
+                Free text input for the region of the user, e.g. `California`.
+
+              - `timezone: optional string`
+
+                The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
+
+          - `ApplyPatch object { type }`
+
+            Allows the assistant to create, delete, or update files using unified diffs.
+
+            - `type: "apply_patch"`
+
+              The type of the tool. Always `apply_patch`.
+
+              - `"apply_patch"`
+
+        - `top_p: optional number`
+
+          An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+  - `error: EvalAPIError`
+
+    An object representing an error response from the Eval API.
+
+    - `code: string`
+
+      The error code.
+
+    - `message: string`
+
+      The error message.
+
+  - `eval_id: string`
+
+    The identifier of the associated evaluation.
+
+  - `metadata: Metadata`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `model: string`
+
+    The model that is evaluated, if applicable.
+
+  - `name: string`
+
+    The name of the evaluation run.
+
+  - `object: "eval.run"`
+
+    The type of the object. Always "eval.run".
+
+    - `"eval.run"`
+
+  - `per_model_usage: array of object { cached_tokens, completion_tokens, invocation_count, 3 more }`
+
+    Usage statistics for each model during the evaluation run.
+
+    - `cached_tokens: number`
+
+      The number of tokens retrieved from cache.
+
+    - `completion_tokens: number`
+
+      The number of completion tokens generated.
+
+    - `invocation_count: number`
+
+      The number of invocations.
+
+    - `model_name: string`
+
+      The name of the model.
+
+    - `prompt_tokens: number`
+
+      The number of prompt tokens used.
+
+    - `total_tokens: number`
+
+      The total number of tokens used.
+
+  - `per_testing_criteria_results: array of object { failed, passed, testing_criteria }`
+
+    Results per testing criteria applied during the evaluation run.
+
+    - `failed: number`
+
+      Number of tests failed for this criteria.
+
+    - `passed: number`
+
+      Number of tests passed for this criteria.
+
+    - `testing_criteria: string`
+
+      A description of the testing criteria.
+
+  - `report_url: string`
+
+    The URL to the rendered evaluation run report on the UI dashboard.
+
+  - `result_counts: object { errored, failed, passed, total }`
+
+    Counters summarizing the outcomes of the evaluation run.
+
+    - `errored: number`
+
+      Number of output items that resulted in an error.
+
+    - `failed: number`
+
+      Number of output items that failed to pass the evaluation.
+
+    - `passed: number`
+
+      Number of output items that passed the evaluation.
+
+    - `total: number`
+
+      Total number of executed output items.
+
+  - `status: string`
+
+    The status of the evaluation run.
+
+### Run Delete Response
+
+- `RunDeleteResponse object { deleted, object, run_id }`
+
+  - `deleted: optional boolean`
+
+  - `object: optional string`
+
+  - `run_id: optional string`
 
 # Output Items
 
@@ -13610,3 +20119,301 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   }
 }
 ```
+
+## Domain Types
+
+### Output Item List Response
+
+- `OutputItemListResponse object { id, created_at, datasource_item, 7 more }`
+
+  A schema representing an evaluation run output item.
+
+  - `id: string`
+
+    Unique identifier for the evaluation run output item.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `datasource_item: map[unknown]`
+
+    Details of the input data source item.
+
+  - `datasource_item_id: number`
+
+    The identifier for the data source item.
+
+  - `eval_id: string`
+
+    The identifier of the evaluation group.
+
+  - `object: "eval.run.output_item"`
+
+    The type of the object. Always "eval.run.output_item".
+
+    - `"eval.run.output_item"`
+
+  - `results: array of object { name, passed, score, 2 more }`
+
+    A list of grader results for this output item.
+
+    - `name: string`
+
+      The name of the grader.
+
+    - `passed: boolean`
+
+      Whether the grader considered the output a pass.
+
+    - `score: number`
+
+      The numeric score produced by the grader.
+
+    - `sample: optional map[unknown]`
+
+      Optional sample or intermediate data produced by the grader.
+
+    - `type: optional string`
+
+      The grader type (for example, "string-check-grader").
+
+  - `run_id: string`
+
+    The identifier of the evaluation run associated with this output item.
+
+  - `sample: object { error, finish_reason, input, 7 more }`
+
+    A sample containing the input and output of the evaluation run.
+
+    - `error: EvalAPIError`
+
+      An object representing an error response from the Eval API.
+
+      - `code: string`
+
+        The error code.
+
+      - `message: string`
+
+        The error message.
+
+    - `finish_reason: string`
+
+      The reason why the sample generation was finished.
+
+    - `input: array of object { content, role }`
+
+      An array of input messages.
+
+      - `content: string`
+
+        The content of the message.
+
+      - `role: string`
+
+        The role of the message sender (e.g., system, user, developer).
+
+    - `max_completion_tokens: number`
+
+      The maximum number of tokens allowed for completion.
+
+    - `model: string`
+
+      The model used for generating the sample.
+
+    - `output: array of object { content, role }`
+
+      An array of output messages.
+
+      - `content: optional string`
+
+        The content of the message.
+
+      - `role: optional string`
+
+        The role of the message (e.g. "system", "assistant", "user").
+
+    - `seed: number`
+
+      The seed used for generating the sample.
+
+    - `temperature: number`
+
+      The sampling temperature used.
+
+    - `top_p: number`
+
+      The top_p value used for sampling.
+
+    - `usage: object { cached_tokens, completion_tokens, prompt_tokens, total_tokens }`
+
+      Token usage details for the sample.
+
+      - `cached_tokens: number`
+
+        The number of tokens retrieved from cache.
+
+      - `completion_tokens: number`
+
+        The number of completion tokens generated.
+
+      - `prompt_tokens: number`
+
+        The number of prompt tokens used.
+
+      - `total_tokens: number`
+
+        The total number of tokens used.
+
+  - `status: string`
+
+    The status of the evaluation run.
+
+### Output Item Retrieve Response
+
+- `OutputItemRetrieveResponse object { id, created_at, datasource_item, 7 more }`
+
+  A schema representing an evaluation run output item.
+
+  - `id: string`
+
+    Unique identifier for the evaluation run output item.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the evaluation run was created.
+
+  - `datasource_item: map[unknown]`
+
+    Details of the input data source item.
+
+  - `datasource_item_id: number`
+
+    The identifier for the data source item.
+
+  - `eval_id: string`
+
+    The identifier of the evaluation group.
+
+  - `object: "eval.run.output_item"`
+
+    The type of the object. Always "eval.run.output_item".
+
+    - `"eval.run.output_item"`
+
+  - `results: array of object { name, passed, score, 2 more }`
+
+    A list of grader results for this output item.
+
+    - `name: string`
+
+      The name of the grader.
+
+    - `passed: boolean`
+
+      Whether the grader considered the output a pass.
+
+    - `score: number`
+
+      The numeric score produced by the grader.
+
+    - `sample: optional map[unknown]`
+
+      Optional sample or intermediate data produced by the grader.
+
+    - `type: optional string`
+
+      The grader type (for example, "string-check-grader").
+
+  - `run_id: string`
+
+    The identifier of the evaluation run associated with this output item.
+
+  - `sample: object { error, finish_reason, input, 7 more }`
+
+    A sample containing the input and output of the evaluation run.
+
+    - `error: EvalAPIError`
+
+      An object representing an error response from the Eval API.
+
+      - `code: string`
+
+        The error code.
+
+      - `message: string`
+
+        The error message.
+
+    - `finish_reason: string`
+
+      The reason why the sample generation was finished.
+
+    - `input: array of object { content, role }`
+
+      An array of input messages.
+
+      - `content: string`
+
+        The content of the message.
+
+      - `role: string`
+
+        The role of the message sender (e.g., system, user, developer).
+
+    - `max_completion_tokens: number`
+
+      The maximum number of tokens allowed for completion.
+
+    - `model: string`
+
+      The model used for generating the sample.
+
+    - `output: array of object { content, role }`
+
+      An array of output messages.
+
+      - `content: optional string`
+
+        The content of the message.
+
+      - `role: optional string`
+
+        The role of the message (e.g. "system", "assistant", "user").
+
+    - `seed: number`
+
+      The seed used for generating the sample.
+
+    - `temperature: number`
+
+      The sampling temperature used.
+
+    - `top_p: number`
+
+      The top_p value used for sampling.
+
+    - `usage: object { cached_tokens, completion_tokens, prompt_tokens, total_tokens }`
+
+      Token usage details for the sample.
+
+      - `cached_tokens: number`
+
+        The number of tokens retrieved from cache.
+
+      - `completion_tokens: number`
+
+        The number of completion tokens generated.
+
+      - `prompt_tokens: number`
+
+        The number of prompt tokens used.
+
+      - `total_tokens: number`
+
+        The total number of tokens used.
+
+  - `status: string`
+
+    The status of the evaluation run.

@@ -16,7 +16,7 @@ Create a remix of a completed video using a refreshed prompt.
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 

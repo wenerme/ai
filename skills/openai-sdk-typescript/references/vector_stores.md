@@ -1036,55 +1036,6 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
           A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-          - `key: string`
-
-            The key to compare against the value.
-
-          - `type: "eq" | "ne" | "gt" | 5 more`
-
-            Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-            - `eq`: equals
-            - `ne`: not equal
-            - `gt`: greater than
-            - `gte`: greater than or equal
-            - `lt`: less than
-            - `lte`: less than or equal
-            - `in`: in
-            - `nin`: not in
-
-            - `"eq"`
-
-            - `"ne"`
-
-            - `"gt"`
-
-            - `"gte"`
-
-            - `"lt"`
-
-            - `"lte"`
-
-            - `"in"`
-
-            - `"nin"`
-
-          - `value: string | number | boolean | Array<string | number>`
-
-            The value to compare against the attribute key; supports string, number, or boolean types.
-
-            - `string`
-
-            - `number`
-
-            - `boolean`
-
-            - `Array<string | number>`
-
-              - `string`
-
-              - `number`
-
         - `unknown`
 
       - `type: "and" | "or"`
@@ -1471,6 +1422,50 @@ for await (const vectorStoreSearchResponse of client.vectorStores.search('vs_abc
   - `object: "vector_store.deleted"`
 
     - `"vector_store.deleted"`
+
+### Vector Store Search Response
+
+- `VectorStoreSearchResponse`
+
+  - `attributes: Record<string, string | number | boolean> | null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard. Keys are strings
+    with a maximum length of 64 characters. Values are strings with a maximum
+    length of 512 characters, booleans, or numbers.
+
+    - `string`
+
+    - `number`
+
+    - `boolean`
+
+  - `content: Array<Content>`
+
+    Content chunks from the file.
+
+    - `text: string`
+
+      The text content returned from search.
+
+    - `type: "text"`
+
+      The type of content.
+
+      - `"text"`
+
+  - `file_id: string`
+
+    The ID of the vector store file.
+
+  - `filename: string`
+
+    The name of the vector store file.
+
+  - `score: number`
+
+    The similarity score for the result.
 
 # Files
 
@@ -2610,6 +2605,18 @@ for await (const fileContentResponse of client.vectorStores.files.content('file-
 
     - `"vector_store.file.deleted"`
 
+### File Content Response
+
+- `FileContentResponse`
+
+  - `text?: string`
+
+    The text content
+
+  - `type?: string`
+
+    The content type (currently only `"text"`)
+
 # File Batches
 
 ## Create vector store file batch
@@ -2705,38 +2712,6 @@ Create a vector store file batch.
     - `chunking_strategy?: FileChunkingStrategyParam`
 
       The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
-
-      - `AutoFileChunkingStrategyParam`
-
-        The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
-
-        - `type: "auto"`
-
-          Always `auto`.
-
-          - `"auto"`
-
-      - `StaticFileChunkingStrategyObjectParam`
-
-        Customize your own chunking strategy by setting chunk size and chunk overlap.
-
-        - `static: StaticFileChunkingStrategy`
-
-          - `chunk_overlap_tokens: number`
-
-            The number of tokens that overlap between chunks. The default value is `400`.
-
-            Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-          - `max_chunk_size_tokens: number`
-
-            The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-        - `type: "static"`
-
-          Always `static`.
-
-          - `"static"`
 
 ### Returns
 

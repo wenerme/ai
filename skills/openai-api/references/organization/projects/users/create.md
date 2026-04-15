@@ -24,7 +24,7 @@ Adds a user to the project. Users must already be members of the organization to
 
 ### Returns
 
-- `ProjectUser = object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, email, 3 more }`
 
   Represents an individual user in a project.
 

@@ -29,7 +29,7 @@ Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you inte
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 3. Copy the content of these fields:  
    * Client ID  
    * Client secret  
@@ -40,9 +40,9 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3480)
-* [ API ](#tab-panel-3481)
-* [ Terraform (v5) ](#tab-panel-3482)
+* [ Dashboard ](#tab-panel-3626)
+* [ API ](#tab-panel-3627)
+* [ Terraform (v5) ](#tab-panel-3628)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

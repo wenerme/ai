@@ -237,16 +237,6 @@ Update certain properties of an evaluation.
 
               A text input to the model.
 
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
             - `OutputText`
 
               A text output from the model.
@@ -282,27 +272,6 @@ Update certain properties of an evaluation.
             - `ResponseInputAudio`
 
               An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: string`
-
-                  Base64-encoded audio data.
-
-                - `format: "mp3" | "wav"`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: "input_audio"`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: "user" | "assistant" | "system" | "developer"`
 

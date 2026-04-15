@@ -43,7 +43,7 @@ returned.
     If a content parts array was provided, this is an array of `text` and `image_url` parts.
     Otherwise, null.
 
-    - `ChatCompletionContentPartText = object { text, type }`
+    - `ChatCompletionContentPartText object { text, type }`
 
       Learn about [text inputs](/docs/guides/text-generation).
 
@@ -57,7 +57,7 @@ returned.
 
         - `"text"`
 
-    - `ChatCompletionContentPartImage = object { image_url, type }`
+    - `ChatCompletionContentPartImage object { image_url, type }`
 
       Learn about [image inputs](/docs/guides/vision).
 

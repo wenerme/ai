@@ -20,7 +20,7 @@ Copy page
 
 An organization is a top-level container in Cloudflare for managing multiple accounts. It allows administrators to govern accounts, members, and resources from a single location rather than managing each account individually. Organization Super Administrators have implicit access to all accounts within the organization. This means they do not need explicit membership on each account.
 
-Each user can create one organization, and each organization supports up to 500 accounts and 500 zones.
+Each user can create one organization.
 
 Note
 

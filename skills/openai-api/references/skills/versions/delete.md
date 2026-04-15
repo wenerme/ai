@@ -14,7 +14,7 @@ Delete a skill version.
 
 ### Returns
 
-- `DeletedSkillVersion = object { id, deleted, object, version }`
+- `DeletedSkillVersion object { id, deleted, object, version }`
 
   - `id: string`
 

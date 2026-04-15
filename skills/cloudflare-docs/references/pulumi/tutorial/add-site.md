@@ -81,13 +81,13 @@ A Pulumi program is code written in a [supported programming language ↗](https
 
 To create a program, select your language of choice and run the `pulumi` command:
 
-* [  JavaScript ](#tab-panel-5576)
-* [  TypeScript ](#tab-panel-5577)
-* [  Python ](#tab-panel-5578)
-* [ go ](#tab-panel-5579)
-* [ Java ](#tab-panel-5580)
-* [ .NET ](#tab-panel-5581)
-* [ YAML ](#tab-panel-5582)
+* [  JavaScript ](#tab-panel-5750)
+* [  TypeScript ](#tab-panel-5751)
+* [  Python ](#tab-panel-5752)
+* [ go ](#tab-panel-5753)
+* [ Java ](#tab-panel-5754)
+* [ .NET ](#tab-panel-5755)
+* [ YAML ](#tab-panel-5756)
 
 Terminal window
 
@@ -241,13 +241,13 @@ You need to install the Cloudflare package for your language of choice in order 
 
 Install the Cloudflare package by running the following command:
 
-* [  JavaScript ](#tab-panel-5583)
-* [  TypeScript ](#tab-panel-5584)
-* [  Python ](#tab-panel-5585)
-* [ go ](#tab-panel-5586)
-* [ Java ](#tab-panel-5587)
-* [ .NET ](#tab-panel-5588)
-* [ YAML ](#tab-panel-5589)
+* [  JavaScript ](#tab-panel-5757)
+* [  TypeScript ](#tab-panel-5758)
+* [  Python ](#tab-panel-5759)
+* [ go ](#tab-panel-5760)
+* [ Java ](#tab-panel-5761)
+* [ .NET ](#tab-panel-5762)
+* [ YAML ](#tab-panel-5763)
 
 Terminal window
 
@@ -387,13 +387,13 @@ A domain, or site, is known as a Zone in Cloudflare. In Pulumi, the [Zone resour
 
 Replace the contents of your entrypoint file with the following:
 
-* [  JavaScript ](#tab-panel-5590)
-* [  TypeScript ](#tab-panel-5591)
-* [  Python ](#tab-panel-5592)
-* [ go ](#tab-panel-5593)
-* [ Java ](#tab-panel-5594)
-* [ .NET ](#tab-panel-5595)
-* [ YAML ](#tab-panel-5596)
+* [  JavaScript ](#tab-panel-5764)
+* [  TypeScript ](#tab-panel-5765)
+* [  Python ](#tab-panel-5766)
+* [ go ](#tab-panel-5767)
+* [ Java ](#tab-panel-5768)
+* [ .NET ](#tab-panel-5769)
+* [ YAML ](#tab-panel-5770)
 
 **Filename: `index.js`**
 
@@ -768,13 +768,13 @@ You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/pac
 
 Add the following code snippet to your entrypoint file **after** the Zone resource definition:
 
-* [  JavaScript ](#tab-panel-5597)
-* [  TypeScript ](#tab-panel-5598)
-* [  Python ](#tab-panel-5599)
-* [ go ](#tab-panel-5600)
-* [ Java ](#tab-panel-5601)
-* [ .NET ](#tab-panel-5602)
-* [ YAML ](#tab-panel-5603)
+* [  JavaScript ](#tab-panel-5771)
+* [  TypeScript ](#tab-panel-5772)
+* [  Python ](#tab-panel-5773)
+* [ go ](#tab-panel-5774)
+* [ Java ](#tab-panel-5775)
+* [ .NET ](#tab-panel-5776)
+* [ YAML ](#tab-panel-5777)
 
 **Filename: `index.js`**
 
@@ -1005,7 +1005,7 @@ pulumi stack output
 
 ### b. Update your registrar
 
-Update the nameservers at your registrar to activate Cloudflare services for your domain. The instructions are registrar-specific. You may be able to find guidance under [this consolidated list of common registrars](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#update-your-registrar).
+Update the nameservers at your registrar to activate Cloudflare services for your domain. The instructions are registrar-specific. You may be able to find guidance under [this consolidated list of common registrars](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#34-update-your-registrar).
 
 Warning
 

@@ -209,7 +209,7 @@ This enables organization owners to share fine-tuned models with other projects 
 
 - `fine_tuned_model_checkpoint: str`
 
-- `project_ids: SequenceNotStr[str]`
+- `project_ids: Sequence[str]`
 
   The project identifiers to grant access to.
 
@@ -332,3 +332,105 @@ print(permission.id)
   "object": "checkpoint.permission"
 }
 ```
+
+## Domain Types
+
+### Permission Retrieve Response
+
+- `class PermissionRetrieveResponse: …`
+
+  - `data: List[Data]`
+
+    - `id: str`
+
+      The permission identifier, which can be referenced in the API endpoints.
+
+    - `created_at: int`
+
+      The Unix timestamp (in seconds) for when the permission was created.
+
+    - `object: Literal["checkpoint.permission"]`
+
+      The object type, which is always "checkpoint.permission".
+
+      - `"checkpoint.permission"`
+
+    - `project_id: str`
+
+      The project identifier that the permission is for.
+
+  - `has_more: bool`
+
+  - `object: Literal["list"]`
+
+    - `"list"`
+
+  - `first_id: Optional[str]`
+
+  - `last_id: Optional[str]`
+
+### Permission List Response
+
+- `class PermissionListResponse: …`
+
+  The `checkpoint.permission` object represents a permission for a fine-tuned model checkpoint.
+
+  - `id: str`
+
+    The permission identifier, which can be referenced in the API endpoints.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) for when the permission was created.
+
+  - `object: Literal["checkpoint.permission"]`
+
+    The object type, which is always "checkpoint.permission".
+
+    - `"checkpoint.permission"`
+
+  - `project_id: str`
+
+    The project identifier that the permission is for.
+
+### Permission Create Response
+
+- `class PermissionCreateResponse: …`
+
+  The `checkpoint.permission` object represents a permission for a fine-tuned model checkpoint.
+
+  - `id: str`
+
+    The permission identifier, which can be referenced in the API endpoints.
+
+  - `created_at: int`
+
+    The Unix timestamp (in seconds) for when the permission was created.
+
+  - `object: Literal["checkpoint.permission"]`
+
+    The object type, which is always "checkpoint.permission".
+
+    - `"checkpoint.permission"`
+
+  - `project_id: str`
+
+    The project identifier that the permission is for.
+
+### Permission Delete Response
+
+- `class PermissionDeleteResponse: …`
+
+  - `id: str`
+
+    The ID of the fine-tuned model checkpoint permission that was deleted.
+
+  - `deleted: bool`
+
+    Whether the fine-tuned model checkpoint permission was successfully deleted.
+
+  - `object: Literal["checkpoint.permission"]`
+
+    The object type, which is always "checkpoint.permission".
+
+    - `"checkpoint.permission"`

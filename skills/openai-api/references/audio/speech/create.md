@@ -56,7 +56,7 @@ Returns the audio file content, or a stream of audio events.
 
     - `"cedar"`
 
-  - `ID = object { id }`
+  - `ID object { id }`
 
     Custom voice reference.
 

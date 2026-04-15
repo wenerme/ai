@@ -2049,3 +2049,23 @@ for await (const chatkitThread of client.beta.chatkit.threads.list()) {
   - `widget: string`
 
     Serialized widget payload rendered in the UI.
+
+### Thread Delete Response
+
+- `ThreadDeleteResponse`
+
+  Confirmation payload returned after deleting a thread.
+
+  - `id: string`
+
+    Identifier of the deleted thread.
+
+  - `deleted: boolean`
+
+    Indicates that the thread has been deleted.
+
+  - `object: "chatkit.thread.deleted"`
+
+    Type discriminator that is always `chatkit.thread.deleted`.
+
+    - `"chatkit.thread.deleted"`

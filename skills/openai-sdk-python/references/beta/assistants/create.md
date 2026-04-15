@@ -305,13 +305,13 @@ Create an assistant with a model and instructions.
 
   - `code_interpreter: Optional[ToolResourcesCodeInterpreter]`
 
-    - `file_ids: Optional[SequenceNotStr[str]]`
+    - `file_ids: Optional[Sequence[str]]`
 
       A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
   - `file_search: Optional[ToolResourcesFileSearch]`
 
-    - `vector_store_ids: Optional[SequenceNotStr[str]]`
+    - `vector_store_ids: Optional[Sequence[str]]`
 
       The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
@@ -353,7 +353,7 @@ Create an assistant with a model and instructions.
 
             - `"static"`
 
-      - `file_ids: Optional[SequenceNotStr[str]]`
+      - `file_ids: Optional[Sequence[str]]`
 
         A list of [file](https://platform.openai.com/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
 

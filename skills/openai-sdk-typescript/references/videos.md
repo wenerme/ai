@@ -1596,3 +1596,55 @@ console.log(content);
   - `"1024x1792"`
 
   - `"1792x1024"`
+
+### Video Create Character Response
+
+- `VideoCreateCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Video Get Character Response
+
+- `VideoGetCharacterResponse`
+
+  - `id: string | null`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string | null`
+
+    Display name for the character.
+
+### Video Delete Response
+
+- `VideoDeleteResponse`
+
+  Confirmation payload returned after deleting a video.
+
+  - `id: string`
+
+    Identifier of the deleted video.
+
+  - `deleted: boolean`
+
+    Indicates that the video resource was deleted.
+
+  - `object: "video.deleted"`
+
+    The object type that signals the deletion response.
+
+    - `"video.deleted"`

@@ -22,7 +22,7 @@ Get an evaluation by ID.
 
   Configuration of data sources used in runs of the evaluation.
 
-  - `EvalCustomDataSourceConfig = object { schema, type }`
+  - `EvalCustomDataSourceConfig object { schema, type }`
 
     A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
     The response schema defines the shape of the data that will be:
@@ -41,7 +41,7 @@ Get an evaluation by ID.
 
       - `"custom"`
 
-  - `LogsDataSourceConfig = object { schema, type, metadata }`
+  - `LogsDataSourceConfig object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -68,7 +68,7 @@ Get an evaluation by ID.
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-  - `EvalStoredCompletionsDataSourceConfig = object { schema, type, metadata }`
+  - `EvalStoredCompletionsDataSourceConfig object { schema, type, metadata }`
 
     Deprecated in favor of LogsDataSourceConfig.
 
@@ -115,7 +115,7 @@ Get an evaluation by ID.
 
   A list of testing criteria.
 
-  - `LabelModelGrader = object { input, labels, model, 3 more }`
+  - `LabelModelGrader object { input, labels, model, 3 more }`
 
     A LabelModelGrader object which uses a model to assign labels to each item
     in the evaluation.
@@ -130,7 +130,7 @@ Get an evaluation by ID.
 
           A text input to the model.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -144,7 +144,7 @@ Get an evaluation by ID.
 
             - `"input_text"`
 
-        - `OutputText = object { text, type }`
+        - `OutputText object { text, type }`
 
           A text output from the model.
 
@@ -158,7 +158,7 @@ Get an evaluation by ID.
 
             - `"output_text"`
 
-        - `InputImage = object { image_url, type, detail }`
+        - `InputImage object { image_url, type, detail }`
 
           An image input block used within EvalItem content arrays.
 
@@ -176,7 +176,7 @@ Get an evaluation by ID.
 
             The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-        - `ResponseInputAudio = object { input_audio, type }`
+        - `ResponseInputAudio object { input_audio, type }`
 
           An audio input to the model.
 
@@ -210,21 +210,11 @@ Get an evaluation by ID.
 
             A text input to the model.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `OutputText = object { text, type }`
+          - `OutputText object { text, type }`
 
             A text output from the model.
 
@@ -238,7 +228,7 @@ Get an evaluation by ID.
 
               - `"output_text"`
 
-          - `InputImage = object { image_url, type, detail }`
+          - `InputImage object { image_url, type, detail }`
 
             An image input block used within EvalItem content arrays.
 
@@ -256,30 +246,9 @@ Get an evaluation by ID.
 
               The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-          - `ResponseInputAudio = object { input_audio, type }`
+          - `ResponseInputAudio object { input_audio, type }`
 
             An audio input to the model.
-
-            - `input_audio: object { data, format }`
-
-              - `data: string`
-
-                Base64-encoded audio data.
-
-              - `format: "mp3" or "wav"`
-
-                The format of the audio data. Currently supported formats are `mp3` and
-                `wav`.
-
-                - `"mp3"`
-
-                - `"wav"`
-
-            - `type: "input_audio"`
-
-              The type of the input item. Always `input_audio`.
-
-              - `"input_audio"`
 
       - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -322,7 +291,7 @@ Get an evaluation by ID.
 
       - `"label_model"`
 
-  - `StringCheckGrader = object { input, name, operation, 2 more }`
+  - `StringCheckGrader object { input, name, operation, 2 more }`
 
     A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
 

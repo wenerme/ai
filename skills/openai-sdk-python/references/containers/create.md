@@ -24,7 +24,7 @@ Create Container
 
   - `minutes: int`
 
-- `file_ids: Optional[SequenceNotStr[str]]`
+- `file_ids: Optional[Sequence[str]]`
 
   IDs of files to copy to the container.
 

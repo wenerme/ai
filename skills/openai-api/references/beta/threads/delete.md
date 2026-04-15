@@ -10,7 +10,7 @@ Delete a thread.
 
 ### Returns
 
-- `ThreadDeleted = object { id, deleted, object }`
+- `ThreadDeleted object { id, deleted, object }`
 
   - `id: string`
 

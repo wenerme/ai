@@ -175,10 +175,7 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
 
               - `"input_audio"`
 
-          - `List[GraderInputItem]`
-
-            A list of inputs, each of which may be either an input text, output text, input
-            image, or input audio object.
+          - `Sequence[GraderInputsParamItem]`
 
             - `str`
 
@@ -187,16 +184,6 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
             - `class ResponseInputText: …`
 
               A text input to the model.
-
-              - `text: str`
-
-                The text input to the model.
-
-              - `type: Literal["input_text"]`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
 
             - `class GraderInputItemOutputText: …`
 
@@ -234,27 +221,6 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
 
               An audio input to the model.
 
-              - `input_audio: InputAudio`
-
-                - `data: str`
-
-                  Base64-encoded audio data.
-
-                - `format: Literal["mp3", "wav"]`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: Literal["input_audio"]`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
-
         - `role: Literal["user", "assistant", "system", "developer"]`
 
           The role of the message input. One of `user`, `assistant`, `system`, or
@@ -274,7 +240,7 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
 
           - `"message"`
 
-    - `labels: SequenceNotStr[str]`
+    - `labels: Sequence[str]`
 
       The labels to classify to each item in the evaluation.
 
@@ -286,7 +252,7 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
 
       The name of the grader.
 
-    - `passing_labels: SequenceNotStr[str]`
+    - `passing_labels: Sequence[str]`
 
       The labels that indicate a passing result. Must be a subset of labels.
 
@@ -580,16 +546,6 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
 
               A text input to the model.
 
-              - `text: str`
-
-                The text input to the model.
-
-              - `type: Literal["input_text"]`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
             - `class GraderInputItemOutputText: …`
 
               A text output from the model.
@@ -625,27 +581,6 @@ For more information, see the [Evals guide](https://platform.openai.com/docs/gui
             - `class ResponseInputAudio: …`
 
               An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: str`
-
-                  Base64-encoded audio data.
-
-                - `format: Literal["mp3", "wav"]`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: Literal["input_audio"]`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: Literal["user", "assistant", "system", "developer"]`
 

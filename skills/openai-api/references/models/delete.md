@@ -10,7 +10,7 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 
 ### Returns
 
-- `ModelDeleted = object { id, deleted, object }`
+- `ModelDeleted object { id, deleted, object }`
 
   - `id: string`
 

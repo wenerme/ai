@@ -12,7 +12,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   The configuration for the data source used for the evaluation runs. Dictates the schema of the data used in the evaluation.
 
-  - `CustomDataSourceConfig = object { item_schema, type, include_sample_schema }`
+  - `CustomDataSourceConfig object { item_schema, type, include_sample_schema }`
 
     A CustomDataSourceConfig object that defines the schema for the data source used for the evaluation runs.
     This schema is used to define the shape of the data that will be:
@@ -34,7 +34,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       Whether the eval should expect you to populate the sample namespace (ie, by generating responses off of your data source)
 
-  - `LogsDataSourceConfig = object { type, metadata }`
+  - `LogsDataSourceConfig object { type, metadata }`
 
     A data source config which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -49,7 +49,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       Metadata filters for the logs data source.
 
-  - `StoredCompletionsDataSourceConfig = object { type, metadata }`
+  - `StoredCompletionsDataSourceConfig object { type, metadata }`
 
     Deprecated in favor of LogsDataSourceConfig.
 
@@ -67,7 +67,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   A list of graders for all eval runs in this group. Graders can reference variables in the data source using double curly braces notation, like `{{item.variable_name}}`. To reference the model's output, use the `sample` namespace (ie, `{{sample.output_text}}`).
 
-  - `LabelModelGrader = object { input, labels, model, 3 more }`
+  - `LabelModelGrader object { input, labels, model, 3 more }`
 
     A LabelModelGrader object which uses a model to assign labels to each item
     in the evaluation.
@@ -76,7 +76,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       A list of chat messages forming the prompt or context. May include variable references to the `item` namespace, ie {{item.name}}.
 
-      - `SimpleInputMessage = object { content, role }`
+      - `SimpleInputMessage object { content, role }`
 
         - `content: string`
 
@@ -86,7 +86,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
           The role of the message (e.g. "system", "assistant", "user").
 
-      - `EvalMessageObject = object { content, role, type }`
+      - `EvalMessageObject object { content, role, type }`
 
         A message input to the model with a role indicating instruction following
         hierarchy. Instructions given with the `developer` or `system` role take
@@ -102,7 +102,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             A text input to the model.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
@@ -116,7 +116,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               - `"input_text"`
 
-          - `OutputText = object { text, type }`
+          - `OutputText object { text, type }`
 
             A text output from the model.
 
@@ -130,7 +130,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               - `"output_text"`
 
-          - `InputImage = object { image_url, type, detail }`
+          - `InputImage object { image_url, type, detail }`
 
             An image input block used within EvalItem content arrays.
 
@@ -148,7 +148,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-          - `ResponseInputAudio = object { input_audio, type }`
+          - `ResponseInputAudio object { input_audio, type }`
 
             An audio input to the model.
 
@@ -182,21 +182,11 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               A text input to the model.
 
-            - `ResponseInputText = object { text, type }`
+            - `ResponseInputText object { text, type }`
 
               A text input to the model.
 
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
-            - `OutputText = object { text, type }`
+            - `OutputText object { text, type }`
 
               A text output from the model.
 
@@ -210,7 +200,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
                 - `"output_text"`
 
-            - `InputImage = object { image_url, type, detail }`
+            - `InputImage object { image_url, type, detail }`
 
               An image input block used within EvalItem content arrays.
 
@@ -228,30 +218,9 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-            - `ResponseInputAudio = object { input_audio, type }`
+            - `ResponseInputAudio object { input_audio, type }`
 
               An audio input to the model.
-
-              - `input_audio: object { data, format }`
-
-                - `data: string`
-
-                  Base64-encoded audio data.
-
-                - `format: "mp3" or "wav"`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: "input_audio"`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -294,7 +263,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"label_model"`
 
-  - `StringCheckGrader = object { input, name, operation, 2 more }`
+  - `StringCheckGrader object { input, name, operation, 2 more }`
 
     A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
 
@@ -379,7 +348,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   Configuration of data sources used in runs of the evaluation.
 
-  - `EvalCustomDataSourceConfig = object { schema, type }`
+  - `EvalCustomDataSourceConfig object { schema, type }`
 
     A CustomDataSourceConfig which specifies the schema of your `item` and optionally `sample` namespaces.
     The response schema defines the shape of the data that will be:
@@ -398,7 +367,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"custom"`
 
-  - `LogsDataSourceConfig = object { schema, type, metadata }`
+  - `LogsDataSourceConfig object { schema, type, metadata }`
 
     A LogsDataSourceConfig which specifies the metadata property of your logs query.
     This is usually metadata like `usecase=chatbot` or `prompt-version=v2`, etc.
@@ -425,7 +394,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-  - `EvalStoredCompletionsDataSourceConfig = object { schema, type, metadata }`
+  - `EvalStoredCompletionsDataSourceConfig object { schema, type, metadata }`
 
     Deprecated in favor of LogsDataSourceConfig.
 
@@ -472,7 +441,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
   A list of testing criteria.
 
-  - `LabelModelGrader = object { input, labels, model, 3 more }`
+  - `LabelModelGrader object { input, labels, model, 3 more }`
 
     A LabelModelGrader object which uses a model to assign labels to each item
     in the evaluation.
@@ -487,7 +456,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
           A text input to the model.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -501,7 +470,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             - `"input_text"`
 
-        - `OutputText = object { text, type }`
+        - `OutputText object { text, type }`
 
           A text output from the model.
 
@@ -515,7 +484,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             - `"output_text"`
 
-        - `InputImage = object { image_url, type, detail }`
+        - `InputImage object { image_url, type, detail }`
 
           An image input block used within EvalItem content arrays.
 
@@ -533,7 +502,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-        - `ResponseInputAudio = object { input_audio, type }`
+        - `ResponseInputAudio object { input_audio, type }`
 
           An audio input to the model.
 
@@ -567,21 +536,11 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
             A text input to the model.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `OutputText = object { text, type }`
+          - `OutputText object { text, type }`
 
             A text output from the model.
 
@@ -595,7 +554,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               - `"output_text"`
 
-          - `InputImage = object { image_url, type, detail }`
+          - `InputImage object { image_url, type, detail }`
 
             An image input block used within EvalItem content arrays.
 
@@ -613,30 +572,9 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
               The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
 
-          - `ResponseInputAudio = object { input_audio, type }`
+          - `ResponseInputAudio object { input_audio, type }`
 
             An audio input to the model.
-
-            - `input_audio: object { data, format }`
-
-              - `data: string`
-
-                Base64-encoded audio data.
-
-              - `format: "mp3" or "wav"`
-
-                The format of the audio data. Currently supported formats are `mp3` and
-                `wav`.
-
-                - `"mp3"`
-
-                - `"wav"`
-
-            - `type: "input_audio"`
-
-              The type of the input item. Always `input_audio`.
-
-              - `"input_audio"`
 
       - `role: "user" or "assistant" or "system" or "developer"`
 
@@ -679,7 +617,7 @@ For more information, see the [Evals guide](/docs/guides/evals).
 
       - `"label_model"`
 
-  - `StringCheckGrader = object { input, name, operation, 2 more }`
+  - `StringCheckGrader object { input, name, operation, 2 more }`
 
     A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
 

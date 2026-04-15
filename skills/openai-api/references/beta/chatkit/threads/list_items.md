@@ -32,7 +32,7 @@ List items that belong to a ChatKit thread.
 
 ### Returns
 
-- `ChatKitThreadItemList = object { data, first_id, has_more, 2 more }`
+- `ChatKitThreadItemList object { data, first_id, has_more, 2 more }`
 
   A paginated list of thread items rendered for the ChatKit API.
 
@@ -40,7 +40,7 @@ List items that belong to a ChatKit thread.
 
     A list of items
 
-    - `ChatKitThreadUserMessageItem = object { id, attachments, content, 5 more }`
+    - `ChatKitThreadUserMessageItem object { id, attachments, content, 5 more }`
 
       User-authored messages within a thread.
 
@@ -80,7 +80,7 @@ List items that belong to a ChatKit thread.
 
         Ordered content elements supplied by the user.
 
-        - `InputText = object { text, type }`
+        - `InputText object { text, type }`
 
           Text block that a user contributed to the thread.
 
@@ -94,7 +94,7 @@ List items that belong to a ChatKit thread.
 
             - `"input_text"`
 
-        - `QuotedText = object { text, type }`
+        - `QuotedText object { text, type }`
 
           Quoted snippet that the user referenced in their message.
 
@@ -142,7 +142,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.user_message"`
 
-    - `ChatKitThreadAssistantMessageItem = object { id, content, created_at, 3 more }`
+    - `ChatKitThreadAssistantMessageItem object { id, content, created_at, 3 more }`
 
       Assistant-authored message within a thread.
 
@@ -158,7 +158,7 @@ List items that belong to a ChatKit thread.
 
           Ordered list of annotations attached to the response text.
 
-          - `File = object { source, type }`
+          - `File object { source, type }`
 
             Annotation that references an uploaded file.
 
@@ -182,7 +182,7 @@ List items that belong to a ChatKit thread.
 
               - `"file"`
 
-          - `URL = object { source, type }`
+          - `URL object { source, type }`
 
             Annotation that references a URL.
 
@@ -236,7 +236,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.assistant_message"`
 
-    - `ChatKitWidgetItem = object { id, created_at, object, 3 more }`
+    - `ChatKitWidgetItem object { id, created_at, object, 3 more }`
 
       Thread item that renders a widget payload.
 
@@ -268,7 +268,7 @@ List items that belong to a ChatKit thread.
 
         Serialized widget payload rendered in the UI.
 
-    - `ChatKitClientToolCall = object { id, arguments, call_id, 7 more }`
+    - `ChatKitClientToolCall object { id, arguments, call_id, 7 more }`
 
       Record of a client side tool invocation initiated by the assistant.
 
@@ -320,7 +320,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.client_tool_call"`
 
-    - `ChatKitTask = object { id, created_at, heading, 5 more }`
+    - `ChatKitTask object { id, created_at, heading, 5 more }`
 
       Task emitted by the workflow to show progress and status updates.
 
@@ -364,7 +364,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.task"`
 
-    - `ChatKitTaskGroup = object { id, created_at, object, 3 more }`
+    - `ChatKitTaskGroup object { id, created_at, object, 3 more }`
 
       Collection of workflow tasks grouped together in the thread.
 

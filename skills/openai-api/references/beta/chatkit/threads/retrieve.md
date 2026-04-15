@@ -10,7 +10,7 @@ Retrieve a ChatKit thread by its identifier.
 
 ### Returns
 
-- `ChatKitThread = object { id, created_at, object, 3 more }`
+- `ChatKitThread object { id, created_at, object, 3 more }`
 
   Represents a ChatKit thread and its current status.
 
@@ -32,7 +32,7 @@ Retrieve a ChatKit thread by its identifier.
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
-    - `Active = object { type }`
+    - `Active object { type }`
 
       Indicates that a thread is active.
 
@@ -42,7 +42,7 @@ Retrieve a ChatKit thread by its identifier.
 
         - `"active"`
 
-    - `Locked = object { reason, type }`
+    - `Locked object { reason, type }`
 
       Indicates that a thread is locked and cannot accept new input.
 
@@ -56,7 +56,7 @@ Retrieve a ChatKit thread by its identifier.
 
         - `"locked"`
 
-    - `Closed = object { reason, type }`
+    - `Closed object { reason, type }`
 
       Indicates that a thread has been closed.
 

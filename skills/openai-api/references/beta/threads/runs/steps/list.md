@@ -125,7 +125,7 @@ Returns a list of run steps belonging to a run.
 
     The details of the run step.
 
-    - `MessageCreationStepDetails = object { message_creation, type }`
+    - `MessageCreationStepDetails object { message_creation, type }`
 
       Details of the message creation by the run step.
 
@@ -141,7 +141,7 @@ Returns a list of run steps belonging to a run.
 
         - `"message_creation"`
 
-    - `ToolCallsStepDetails = object { tool_calls, type }`
+    - `ToolCallsStepDetails object { tool_calls, type }`
 
       Details of the tool call.
 
@@ -149,7 +149,7 @@ Returns a list of run steps belonging to a run.
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-        - `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+        - `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
           Details of the Code Interpreter tool call the run step was involved in.
 
@@ -169,7 +169,7 @@ Returns a list of run steps belonging to a run.
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `CodeInterpreterLogOutput = object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -183,7 +183,7 @@ Returns a list of run steps belonging to a run.
 
                   - `"logs"`
 
-              - `CodeInterpreterImageOutput = object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
@@ -203,7 +203,7 @@ Returns a list of run steps belonging to a run.
 
             - `"code_interpreter"`
 
-        - `FileSearchToolCall = object { id, file_search, type }`
+        - `FileSearchToolCall object { id, file_search, type }`
 
           - `id: string`
 
@@ -265,7 +265,7 @@ Returns a list of run steps belonging to a run.
 
             - `"file_search"`
 
-        - `FunctionToolCall = object { id, function, type }`
+        - `FunctionToolCall object { id, function, type }`
 
           - `id: string`
 

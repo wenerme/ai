@@ -36,13 +36,13 @@ The table below summarizes the Cloudflare One products that are compatible with 
 
 End users can connect to private hostnames using the following traffic on-ramps:
 
-| On-ramp method                                                                                                                       | Compatibility             |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)          | ✅                         |
-| [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)                        | ✅                         |
-| [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                                      | ✅                         |
-| [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) | ✅                         |
-| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                                    | 🚧[1](#user-content-fn-1) |
+| On-ramp method                                                                                                              | Compatibility             |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | ✅                         |
+| [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)               | ✅                         |
+| [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                             | ✅                         |
+| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                    | ✅                         |
+| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                           | 🚧[1](#user-content-fn-1) |
 
 Feature availability
 
@@ -68,12 +68,11 @@ Feature availability
 
 Private hostname routing only works for applications connected with `cloudflared`. Other traffic off-ramps require IP-based routes.
 
-| Connector                                                                                                                            | Compatibility | Minimum version |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------- |
-| [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/)       | ✅             | 2025.7.0        |
-| [Peer-to-peer](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/)     | ❌             |                 |
-| [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) | ❌             |                 |
-| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                                    | ❌             |                 |
+| Connector                                                                                                                      | Compatibility | Minimum version |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------- |
+| [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) | ✅             | 2025.7.0        |
+| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                       | ❌             |                 |
+| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                              | ❌             |                 |
 
 ## Connect a private hostname
 
@@ -83,8 +82,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-3517)
-* [ Terraform (v5) ](#tab-panel-3518)
+* [ Dashboard ](#tab-panel-3691)
+* [ Terraform (v5) ](#tab-panel-3692)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -123,10 +122,10 @@ Cloudflare One Clients
          * **IPv6**: `2606:4700:0cf1:4000::/64`
 2. In [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/), delete the top-level domain for your private hostname. This configures WARP to send the DNS query to Cloudflare Gateway for resolution.
 
-WARP Connector
+Cloudflare Mesh
 
-1. In your [WARP Connector device profile](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-site/#3-route-traffic-between-warp-connector-and-cloudflare), ensure that the initial resolved IP listed above route through the WARP tunnel.
-2. Depending on where you installed WARP Connector, you may also need to route those destination IPs through WARP Connector and point your DNS resolver to Cloudflare Gateway. Refer to [Route traffic from subnet to WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-site/#4-route-traffic-from-subnet-to-warp-connector).
+1. In your [mesh node device profile](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), ensure that the initial resolved IP listed above route through the tunnel.
+2. Depending on where you installed the mesh node, you may also need to route those destination IPs through the node and point your DNS resolver to Cloudflare Gateway. Refer to [Routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/).
 
 Cloudflare WAN
 

@@ -12,7 +12,7 @@ Returns the Upload object with status `cancelled`.
 
 ### Returns
 
-- `Upload = object { id, bytes, created_at, 6 more }`
+- `Upload object { id, bytes, created_at, 6 more }`
 
   The Upload object can accept byte chunks in the form of Parts.
 

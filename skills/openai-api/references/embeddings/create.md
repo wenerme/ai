@@ -58,7 +58,7 @@ Creates an embedding vector representing the input text.
 
 ### Returns
 
-- `CreateEmbeddingResponse = object { data, model, object, usage }`
+- `CreateEmbeddingResponse object { data, model, object, usage }`
 
   - `data: array of Embedding`
 

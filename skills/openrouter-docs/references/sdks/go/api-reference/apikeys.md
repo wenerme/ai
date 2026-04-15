@@ -91,6 +91,7 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
 	"log"
 )
 
@@ -101,7 +102,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.APIKeys.List(ctx, nil, nil)
+    res, err := s.APIKeys.List(ctx, nil, optionalnullable.From[int64](nil))
     if err != nil {
         log.Fatal(err)
     }
@@ -117,7 +118,7 @@ func main() {
 | ----------------- | --------------------------------------------------------------------- | -------------------- | ---------------------------------------------------- | ------- |
 | `ctx`             | [context.Context](https://pkg.go.dev/context#Context)                 | :heavy\_check\_mark: | The context to use for the request.                  |         |
 | `includeDisabled` | `*bool`                                                               | :heavy\_minus\_sign: | Whether to include disabled API keys in the response | false   |
-| `offset`          | `*int64`                                                              | :heavy\_minus\_sign: | Number of API keys to skip for pagination            | 0       |
+| `offset`          | optionalnullable.OptionalNullable\[`int64`]                           | :heavy\_minus\_sign: | Number of API keys to skip for pagination            | 0       |
 | `opts`            | \[][operations.Option](/docs/sdks/go/api-reference/operations/option) | :heavy\_minus\_sign: | The options for this request.                        |         |
 
 ### Response
@@ -164,7 +165,7 @@ func main() {
     res, err := s.APIKeys.Create(ctx, operations.CreateKeysRequest{
         ExpiresAt: optionalnullable.From(openrouter.Pointer(types.MustNewTimeFromString("2027-12-31T23:59:59Z"))),
         IncludeByokInLimit: openrouter.Pointer(true),
-        Limit: openrouter.Pointer[float64](50.0),
+        Limit: optionalnullable.From(openrouter.Pointer[float64](50.0)),
         LimitReset: optionalnullable.From(openrouter.Pointer(operations.CreateKeysLimitResetMonthly)),
         Name: "My New API Key",
     })
@@ -328,8 +329,8 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
-	"github.com/OpenRouterTeam/go-sdk/models/operations"
 	"github.com/OpenRouterTeam/go-sdk/optionalnullable"
+	"github.com/OpenRouterTeam/go-sdk/models/operations"
 	"log"
 )
 
@@ -343,7 +344,7 @@ func main() {
     res, err := s.APIKeys.Update(ctx, "f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943", operations.UpdateKeysRequestBody{
         Disabled: openrouter.Pointer(false),
         IncludeByokInLimit: openrouter.Pointer(true),
-        Limit: openrouter.Pointer[float64](75.0),
+        Limit: optionalnullable.From(openrouter.Pointer[float64](75.0)),
         LimitReset: optionalnullable.From(openrouter.Pointer(operations.UpdateKeysLimitResetDaily)),
         Name: openrouter.Pointer("Updated API Key Name"),
     })

@@ -20,7 +20,7 @@ Copy page
 
 # Build a Comments API
 
-**Last reviewed:**  25 days ago 
+**Last reviewed:**  about 1 month ago 
 
 In this tutorial, you will use D1 and [Hono ↗](https://hono.dev/) to build a JSON API that stores and retrieves comments for a blog. You will create a D1 database, define a schema, and wire up `GET` and `POST` endpoints that read from and write to the database.
 
@@ -89,8 +89,8 @@ npx wrangler@latest d1 create d1-comments-api
 ```
 2. When prompted `Would you like Wrangler to add it on your behalf?`, select `Yes`. This automatically adds the `DB` binding to your Wrangler configuration file.  
 Confirm that your Wrangler configuration file contains the `d1_databases` binding and the full project configuration:  
-   * [  wrangler.jsonc ](#tab-panel-4130)  
-   * [  wrangler.toml ](#tab-panel-4131)  
+   * [  wrangler.jsonc ](#tab-panel-4300)  
+   * [  wrangler.toml ](#tab-panel-4301)  
 JSONC  
 ```  
 {  
@@ -98,7 +98,7 @@ JSONC
   "name": "d1-comments-api",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-10",  
+  "compatibility_date": "2026-04-15",  
   "d1_databases": [  
     {  
       "binding": "DB",  
@@ -114,7 +114,7 @@ TOML
 name = "d1-comments-api"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-10"  
+compatibility_date = "2026-04-15"  
 [[d1_databases]]  
 binding = "DB" # available in your Worker on env.DB  
 database_name = "d1-comments-api"  
@@ -167,8 +167,8 @@ npx wrangler d1 execute d1-comments-api --remote --file schemas/schema.sql
 
 Replace the contents of `src/index.ts` with the following code. This sets up a Hono application with a typed `Bindings` interface so that `env.DB` is correctly typed as a `D1Database`:
 
-* [  JavaScript ](#tab-panel-4136)
-* [  TypeScript ](#tab-panel-4137)
+* [  JavaScript ](#tab-panel-4306)
+* [  TypeScript ](#tab-panel-4307)
 
 JavaScript
 
@@ -251,8 +251,8 @@ Explain Code
 
 Add the logic for the `GET` endpoint to retrieve comments for a given post. This uses the D1 [Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) to prepare and execute a parameterized query:
 
-* [  JavaScript ](#tab-panel-4132)
-* [  TypeScript ](#tab-panel-4133)
+* [  JavaScript ](#tab-panel-4302)
+* [  TypeScript ](#tab-panel-4303)
 
 JavaScript
 
@@ -310,8 +310,8 @@ The code uses [prepare](https://developers.cloudflare.com/d1/worker-api/d1-datab
 
 Add the `POST` endpoint to create new comments. This validates the request body before inserting a row:
 
-* [  JavaScript ](#tab-panel-4138)
-* [  TypeScript ](#tab-panel-4139)
+* [  JavaScript ](#tab-panel-4308)
+* [  TypeScript ](#tab-panel-4309)
 
 JavaScript
 
@@ -419,8 +419,8 @@ Explain Code
 
 If you plan to call this API from a front-end application on a different origin, add CORS middleware. Import the `cors` module from Hono and add it before your routes:
 
-* [  JavaScript ](#tab-panel-4134)
-* [  TypeScript ](#tab-panel-4135)
+* [  JavaScript ](#tab-panel-4304)
+* [  TypeScript ](#tab-panel-4305)
 
 JavaScript
 
@@ -506,8 +506,8 @@ curl https://d1-comments-api.<YOUR_SUBDOMAIN>.workers.dev/api/posts/hello-world/
 
 The complete `src/index.ts` with all routes and CORS support:
 
-* [  JavaScript ](#tab-panel-4140)
-* [  TypeScript ](#tab-panel-4141)
+* [  JavaScript ](#tab-panel-4310)
+* [  TypeScript ](#tab-panel-4311)
 
 JavaScript
 

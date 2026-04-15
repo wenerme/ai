@@ -24,7 +24,7 @@ Retrieves a run step.
 
 ### Returns
 
-- `RunStep = object { id, assistant_id, cancelled_at, 13 more }`
+- `RunStep object { id, assistant_id, cancelled_at, 13 more }`
 
   Represents a step in execution of a run.
 
@@ -109,7 +109,7 @@ Retrieves a run step.
 
     The details of the run step.
 
-    - `MessageCreationStepDetails = object { message_creation, type }`
+    - `MessageCreationStepDetails object { message_creation, type }`
 
       Details of the message creation by the run step.
 
@@ -125,7 +125,7 @@ Retrieves a run step.
 
         - `"message_creation"`
 
-    - `ToolCallsStepDetails = object { tool_calls, type }`
+    - `ToolCallsStepDetails object { tool_calls, type }`
 
       Details of the tool call.
 
@@ -133,7 +133,7 @@ Retrieves a run step.
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-        - `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+        - `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
           Details of the Code Interpreter tool call the run step was involved in.
 
@@ -153,7 +153,7 @@ Retrieves a run step.
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `CodeInterpreterLogOutput = object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -167,7 +167,7 @@ Retrieves a run step.
 
                   - `"logs"`
 
-              - `CodeInterpreterImageOutput = object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
@@ -187,7 +187,7 @@ Retrieves a run step.
 
             - `"code_interpreter"`
 
-        - `FileSearchToolCall = object { id, file_search, type }`
+        - `FileSearchToolCall object { id, file_search, type }`
 
           - `id: string`
 
@@ -249,7 +249,7 @@ Retrieves a run step.
 
             - `"file_search"`
 
-        - `FunctionToolCall = object { id, function, type }`
+        - `FunctionToolCall object { id, function, type }`
 
           - `id: string`
 

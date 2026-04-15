@@ -10,7 +10,7 @@ Create a vector store.
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -20,7 +20,7 @@ Create a vector store.
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -79,7 +79,7 @@ Create a vector store.
 
 ### Returns
 
-- `VectorStore = object { id, created_at, file_counts, 8 more }`
+- `VectorStore object { id, created_at, file_counts, 8 more }`
 
   A vector store is a collection of processed files can be used by the `file_search` tool.
 

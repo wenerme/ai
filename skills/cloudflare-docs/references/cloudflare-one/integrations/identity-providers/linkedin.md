@@ -50,7 +50,7 @@ To configure LinkedIn as an IdP:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 
 To test that your connection is working, go to [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> **Integrations** \> **Identity providers** \> select **Test** next to your LinkedIn login method.
 

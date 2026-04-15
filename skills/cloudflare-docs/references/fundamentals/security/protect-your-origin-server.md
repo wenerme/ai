@@ -28,7 +28,7 @@ When you secure origin connections, it prevents attackers from discovering and o
    1. **Proxy records** (when possible): Set up [proxied (orange-clouded) DNS records](https://developers.cloudflare.com/dns/proxy-status/) to hide your origin IP addresses and provide DDoS protection. As part of this, you should [allow Cloudflare IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) at your origin to prevent requests from being blocked.  
    2. **Review DNS-only records**: Audit existing **DNS-only** records (`SPF`, `TXT`, and more) to make sure they do not contain origin IP information.  
    3. **Evaluate mail infrastructure**: If possible, do not host a mail service on the same server as the web resource you want to protect, since emails sent to non-existent addresses get bounced back to the attacker and reveal the mail server IP.  
-   4. **Rotate origin IPs**: Once [onboarded](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#verify-changes), rotate your origin IPs, as DNS records are in the public domain. Historical records are kept and would contain IP addresses prior to joining Cloudflare
+   4. **Rotate origin IPs**: Once [onboarded](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#35-verify-changes), rotate your origin IPs, as DNS records are in the public domain. Historical records are kept and would contain IP addresses prior to joining Cloudflare
 
 ### Application layer
 
@@ -144,7 +144,7 @@ If you have multiple servers and want to proactively prevent origin problems, [s
 
 ### Zero Downtime Failover
 
-If you have another _A_ or _AAAA_ record in your Cloudflare **DNS** or your Cloudflare **Load Balancer** provides another [endpoint](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/) in the same pool, **Zero-Downtime Failover** automatically retries requests to your origin even before a Load Balancing decision is made.
+If you have another `A` or `AAAA` record in your Cloudflare **DNS** or your Cloudflare **Load Balancer** provides another [endpoint](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/) in the same pool, **Zero-Downtime Failover** automatically retries requests to your origin even before a Load Balancing decision is made.
 
 Zero-downtime failover will trigger a single retry only if there is another healthy endpoint in the pool and a [521, 522, 523, 525 or 526 error code](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-521/) is occurring. No other error codes will trigger a zero-downtime failover operation.
 

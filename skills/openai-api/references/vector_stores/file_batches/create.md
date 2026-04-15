@@ -28,7 +28,7 @@ Create a vector store file batch.
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -38,7 +38,7 @@ Create a vector store file batch.
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -90,41 +90,9 @@ Create a vector store file batch.
 
     The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-    - `AutoFileChunkingStrategyParam = object { type }`
-
-      The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
-
-      - `type: "auto"`
-
-        Always `auto`.
-
-        - `"auto"`
-
-    - `StaticFileChunkingStrategyObjectParam = object { static, type }`
-
-      Customize your own chunking strategy by setting chunk size and chunk overlap.
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: number`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: number`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: "static"`
-
-        Always `static`.
-
-        - `"static"`
-
 ### Returns
 
-- `VectorStoreFileBatch = object { id, created_at, file_counts, 3 more }`
+- `VectorStoreFileBatch object { id, created_at, file_counts, 3 more }`
 
   A batch of files attached to a vector store.
 

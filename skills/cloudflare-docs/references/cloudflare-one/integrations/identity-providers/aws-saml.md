@@ -48,7 +48,7 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 
 ```
 
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 
 1. Select **Submit**.
 2. Next, select the **Actions** dropdown menu and select _Edit attribute mappings_.

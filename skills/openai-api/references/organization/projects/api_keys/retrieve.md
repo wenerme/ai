@@ -12,7 +12,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIEy = object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIEy object { id, created_at, last_used_at, 4 more }`
 
   Represents an individual API key in a project.
 

@@ -17,6 +17,7 @@ Copy page
 
 * [ Access a private API or website ](https://developers.cloudflare.com/workers-vpc/examples/private-api/)
 * [ Access a private S3 bucket ](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/)
+* [ Connect Workers to Cloudflare Mesh ](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/)
 * [ Route to private services from Workers ](https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/)
 
 ```json

@@ -11,7 +11,7 @@ created with the `store` parameter set to `true` can be deleted.
 
 ### Returns
 
-- `ChatCompletionDeleted = object { id, deleted, object }`
+- `ChatCompletionDeleted object { id, deleted, object }`
 
   - `id: string`
 

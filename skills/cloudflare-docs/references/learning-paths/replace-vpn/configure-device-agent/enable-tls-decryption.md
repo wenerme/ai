@@ -32,8 +32,8 @@ With TLS decryption turned off, Gateway can only inspect and apply HTTP policies
 
 ## Enable TLS decryption
 
-* [ Dashboard ](#tab-panel-5155)
-* [ Terraform (v5) ](#tab-panel-5156)
+* [ Dashboard ](#tab-panel-5373)
+* [ Terraform (v5) ](#tab-panel-5374)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -66,7 +66,7 @@ If you already have a certificate that you use for other inspection or trust pur
 
 * Using a single certificate streamlines IT management.
 * If other services (such as `git` workflows, other CLI tools, or thick client applications) rely on an existing certificate store, presenting the same certificate in inspection is far less likely to interrupt their traffic flow.
-* If you are using WARP Connector to connect devices to Cloudflare, those devices will not be able to leverage HTTP policies that require decrypting TLS unless they have a certificate that matches either your uploaded certificate or the Cloudflare root certificate. It is more likely that your network infrastructure already has your own device certificates deployed, so using the existing PKI infrastructure for inspection will reduce the number of steps needed to deploy Zero Trust.
+* If you are using Cloudflare Mesh to connect devices to Cloudflare, those devices will not be able to leverage HTTP policies that require decrypting TLS unless they have a certificate that matches either your uploaded certificate or the Cloudflare root certificate. It is more likely that your network infrastructure already has your own device certificates deployed, so using the existing PKI infrastructure for inspection will reduce the number of steps needed to deploy Zero Trust.
 
 MDM deployments
 

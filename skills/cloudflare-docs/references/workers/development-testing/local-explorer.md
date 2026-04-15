@@ -24,7 +24,7 @@ Local Explorer works with both [Wrangler](https://developers.cloudflare.com/work
 
 ## Prerequisites
 
-* Wrangler 4.82 or later, or the latest [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)
+* Wrangler 4.82.1 or later, or the latest [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) (1.32.0+)
 
 ## Open Local Explorer
 

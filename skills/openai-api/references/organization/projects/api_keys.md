@@ -234,7 +234,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIEy = object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIEy object { id, created_at, last_used_at, 4 more }`
 
   Represents an individual API key in a project.
 
@@ -473,7 +473,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
 ### Project API Ey
 
-- `ProjectAPIEy = object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIEy object { id, created_at, last_used_at, 4 more }`
 
   Represents an individual API key in a project.
 
@@ -576,3 +576,15 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
   - `redacted_value: string`
 
     The redacted value of the API key
+
+### API Key Delete Response
+
+- `APIKeyDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.project.api_key.deleted"`
+
+    - `"organization.project.api_key.deleted"`

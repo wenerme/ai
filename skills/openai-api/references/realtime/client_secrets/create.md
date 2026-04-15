@@ -40,7 +40,7 @@ Returns the created client secret and the effective session object. The client s
   Session configuration to use for the client secret. Choose either a realtime
   session or a transcription session.
 
-  - `RealtimeSessionCreateRequest = object { type, audio, include, 9 more }`
+  - `RealtimeSessionCreateRequest object { type, audio, include, 9 more }`
 
     Realtime session object configuration.
 
@@ -60,7 +60,7 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the input audio.
 
-          - `PCMAudioFormat = object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -76,7 +76,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcm"`
 
-          - `PCMUAudioFormat = object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -86,7 +86,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcmu"`
 
-          - `PCMAAudioFormat = object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -155,7 +155,7 @@ Returns the created client secret and the effective session object. The client s
 
           Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
 
-          - `ServerVad = object { type, create_response, idle_timeout_ms, 4 more }`
+          - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
 
             Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
 
@@ -209,7 +209,7 @@ Returns the created client secret and the effective session object. The client s
               higher threshold will require louder audio to activate the model, and
               thus might perform better in noisy environments.
 
-          - `SemanticVad = object { type, create_response, eagerness, interrupt_response }`
+          - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
 
             Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
 
@@ -245,42 +245,6 @@ Returns the created client secret and the effective session object. The client s
         - `format: optional RealtimeAudioFormats`
 
           The format of the output audio.
-
-          - `PCMAudioFormat = object { rate, type }`
-
-            The PCM audio format. Only a 24kHz sample rate is supported.
-
-            - `rate: optional 24000`
-
-              The sample rate of the audio. Always `24000`.
-
-              - `24000`
-
-            - `type: optional "audio/pcm"`
-
-              The audio format. Always `audio/pcm`.
-
-              - `"audio/pcm"`
-
-          - `PCMUAudioFormat = object { type }`
-
-            The G.711 μ-law format.
-
-            - `type: optional "audio/pcmu"`
-
-              The audio format. Always `audio/pcmu`.
-
-              - `"audio/pcmu"`
-
-          - `PCMAAudioFormat = object { type }`
-
-            The G.711 A-law format.
-
-            - `type: optional "audio/pcma"`
-
-              The audio format. Always `audio/pcma`.
-
-              - `"audio/pcma"`
 
         - `speed: optional number`
 
@@ -323,7 +287,7 @@ Returns the created client secret and the effective session object. The client s
 
             - `"cedar"`
 
-          - `ID = object { id }`
+          - `ID object { id }`
 
             Custom voice reference.
 
@@ -427,7 +391,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `string`
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -441,7 +405,7 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_text"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -471,7 +435,7 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -531,7 +495,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"required"`
 
-      - `ToolChoiceFunction = object { name, type }`
+      - `ToolChoiceFunction object { name, type }`
 
         Use this option to force the model to call a specific function.
 
@@ -545,7 +509,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `ToolChoiceMcp = object { server_label, type, name }`
+      - `ToolChoiceMcp object { server_label, type, name }`
 
         Use this option to force the model to call a specific tool on a remote MCP server.
 
@@ -567,7 +531,7 @@ Returns the created client secret and the effective session object. The client s
 
       Tools available to the model.
 
-      - `RealtimeFunctionTool = object { description, name, parameters, type }`
+      - `RealtimeFunctionTool object { description, name, parameters, type }`
 
         - `description: optional string`
 
@@ -589,7 +553,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool = object { server_label, type, allowed_tools, 7 more }`
+      - `McpTool object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -612,7 +576,7 @@ Returns the created client secret and the effective session object. The client s
 
             A string array of allowed tool names
 
-          - `McpToolFilter = object { read_only, tool_names }`
+          - `McpToolFilter object { read_only, tool_names }`
 
             A filter object to specify which tools are allowed.
 
@@ -678,7 +642,7 @@ Returns the created client secret and the effective session object. The client s
 
           Specify which of the MCP server's tools require approval.
 
-          - `McpToolApprovalFilter = object { always, never }`
+          - `McpToolApprovalFilter object { always, never }`
 
             Specify which of the MCP server's tools require approval. Can be
             `always`, `never`, or a filter object associated with tools
@@ -745,7 +709,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"auto"`
 
-      - `TracingConfiguration = object { group_id, metadata, workflow_name }`
+      - `TracingConfiguration object { group_id, metadata, workflow_name }`
 
         Granular configuration for tracing.
 
@@ -782,7 +746,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"disabled"`
 
-      - `RetentionRatioTruncation = object { retention_ratio, type, token_limits }`
+      - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
         Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -804,7 +768,7 @@ Returns the created client secret and the effective session object. The client s
 
             Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
-  - `RealtimeTranscriptionSessionCreateRequest = object { type, audio, include }`
+  - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
 
     Realtime transcription session object configuration.
 
@@ -824,42 +788,6 @@ Returns the created client secret and the effective session object. The client s
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
-          - `PCMAudioFormat = object { rate, type }`
-
-            The PCM audio format. Only a 24kHz sample rate is supported.
-
-            - `rate: optional 24000`
-
-              The sample rate of the audio. Always `24000`.
-
-              - `24000`
-
-            - `type: optional "audio/pcm"`
-
-              The audio format. Always `audio/pcm`.
-
-              - `"audio/pcm"`
-
-          - `PCMUAudioFormat = object { type }`
-
-            The G.711 μ-law format.
-
-            - `type: optional "audio/pcmu"`
-
-              The audio format. Always `audio/pcmu`.
-
-              - `"audio/pcmu"`
-
-          - `PCMAAudioFormat = object { type }`
-
-            The G.711 A-law format.
-
-            - `type: optional "audio/pcma"`
-
-              The audio format. Always `audio/pcma`.
-
-              - `"audio/pcma"`
-
         - `noise_reduction: optional object { type }`
 
           Configuration for input audio noise reduction. This can be set to `null` to turn off.
@@ -870,46 +798,9 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-            - `"near_field"`
-
-            - `"far_field"`
-
         - `transcription: optional AudioTranscription`
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
-
-          - `language: optional string`
-
-            The language of the input audio. Supplying the input language in
-            [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-            will improve accuracy and latency.
-
-          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
-
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-            - `string`
-
-            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
-
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-              - `"whisper-1"`
-
-              - `"gpt-4o-mini-transcribe"`
-
-              - `"gpt-4o-mini-transcribe-2025-12-15"`
-
-              - `"gpt-4o-transcribe"`
-
-              - `"gpt-4o-transcribe-diarize"`
-
-          - `prompt: optional string`
-
-            An optional text to guide the model's style or continue a previous audio
-            segment.
-            For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
-            For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
 
         - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
 
@@ -919,7 +810,7 @@ Returns the created client secret and the effective session object. The client s
 
           Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
 
-          - `ServerVad = object { type, create_response, idle_timeout_ms, 4 more }`
+          - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
 
             Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
 
@@ -973,7 +864,7 @@ Returns the created client secret and the effective session object. The client s
               higher threshold will require louder audio to activate the model, and
               thus might perform better in noisy environments.
 
-          - `SemanticVad = object { type, create_response, eagerness, interrupt_response }`
+          - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
 
             Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
 
@@ -1022,7 +913,7 @@ Returns the created client secret and the effective session object. The client s
 
   The session configuration for either a realtime or transcription session.
 
-  - `RealtimeSessionCreateResponse = object { client_secret, type, audio, 10 more }`
+  - `RealtimeSessionCreateResponse object { client_secret, type, audio, 10 more }`
 
     A new Realtime session configuration, with an ephemeral key. Default TTL
     for keys is one minute.
@@ -1056,7 +947,7 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the input audio.
 
-          - `PCMAudioFormat = object { rate, type }`
+          - `PCMAudioFormat object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -1072,7 +963,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcm"`
 
-          - `PCMUAudioFormat = object { type }`
+          - `PCMUAudioFormat object { type }`
 
             The G.711 μ-law format.
 
@@ -1082,7 +973,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcmu"`
 
-          - `PCMAAudioFormat = object { type }`
+          - `PCMAAudioFormat object { type }`
 
             The G.711 A-law format.
 
@@ -1151,7 +1042,7 @@ Returns the created client secret and the effective session object. The client s
 
           Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
 
-          - `ServerVad = object { type, create_response, idle_timeout_ms, 4 more }`
+          - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
 
             Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
 
@@ -1205,7 +1096,7 @@ Returns the created client secret and the effective session object. The client s
               higher threshold will require louder audio to activate the model, and
               thus might perform better in noisy environments.
 
-          - `SemanticVad = object { type, create_response, eagerness, interrupt_response }`
+          - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
 
             Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
 
@@ -1241,42 +1132,6 @@ Returns the created client secret and the effective session object. The client s
         - `format: optional RealtimeAudioFormats`
 
           The format of the output audio.
-
-          - `PCMAudioFormat = object { rate, type }`
-
-            The PCM audio format. Only a 24kHz sample rate is supported.
-
-            - `rate: optional 24000`
-
-              The sample rate of the audio. Always `24000`.
-
-              - `24000`
-
-            - `type: optional "audio/pcm"`
-
-              The audio format. Always `audio/pcm`.
-
-              - `"audio/pcm"`
-
-          - `PCMUAudioFormat = object { type }`
-
-            The G.711 μ-law format.
-
-            - `type: optional "audio/pcmu"`
-
-              The audio format. Always `audio/pcmu`.
-
-              - `"audio/pcmu"`
-
-          - `PCMAAudioFormat = object { type }`
-
-            The G.711 A-law format.
-
-            - `type: optional "audio/pcma"`
-
-              The audio format. Always `audio/pcma`.
-
-              - `"audio/pcma"`
 
         - `speed: optional number`
 
@@ -1420,7 +1275,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `string`
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -1434,7 +1289,7 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_text"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -1464,7 +1319,7 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -1524,7 +1379,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"required"`
 
-      - `ToolChoiceFunction = object { name, type }`
+      - `ToolChoiceFunction object { name, type }`
 
         Use this option to force the model to call a specific function.
 
@@ -1538,7 +1393,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `ToolChoiceMcp = object { server_label, type, name }`
+      - `ToolChoiceMcp object { server_label, type, name }`
 
         Use this option to force the model to call a specific tool on a remote MCP server.
 
@@ -1560,7 +1415,7 @@ Returns the created client secret and the effective session object. The client s
 
       Tools available to the model.
 
-      - `RealtimeFunctionTool = object { description, name, parameters, type }`
+      - `RealtimeFunctionTool object { description, name, parameters, type }`
 
         - `description: optional string`
 
@@ -1582,7 +1437,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"function"`
 
-      - `McpTool = object { server_label, type, allowed_tools, 7 more }`
+      - `McpTool object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1605,7 +1460,7 @@ Returns the created client secret and the effective session object. The client s
 
             A string array of allowed tool names
 
-          - `McpToolFilter = object { read_only, tool_names }`
+          - `McpToolFilter object { read_only, tool_names }`
 
             A filter object to specify which tools are allowed.
 
@@ -1671,7 +1526,7 @@ Returns the created client secret and the effective session object. The client s
 
           Specify which of the MCP server's tools require approval.
 
-          - `McpToolApprovalFilter = object { always, never }`
+          - `McpToolApprovalFilter object { always, never }`
 
             Specify which of the MCP server's tools require approval. Can be
             `always`, `never`, or a filter object associated with tools
@@ -1738,7 +1593,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"auto"`
 
-      - `TracingConfiguration = object { group_id, metadata, workflow_name }`
+      - `TracingConfiguration object { group_id, metadata, workflow_name }`
 
         Granular configuration for tracing.
 
@@ -1775,7 +1630,7 @@ Returns the created client secret and the effective session object. The client s
 
         - `"disabled"`
 
-      - `RetentionRatioTruncation = object { retention_ratio, type, token_limits }`
+      - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
         Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -1797,7 +1652,7 @@ Returns the created client secret and the effective session object. The client s
 
             Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
-  - `RealtimeTranscriptionSessionCreateResponse = object { id, object, type, 3 more }`
+  - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
     A Realtime transcription session configuration object.
 
@@ -1825,42 +1680,6 @@ Returns the created client secret and the effective session object. The client s
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
-          - `PCMAudioFormat = object { rate, type }`
-
-            The PCM audio format. Only a 24kHz sample rate is supported.
-
-            - `rate: optional 24000`
-
-              The sample rate of the audio. Always `24000`.
-
-              - `24000`
-
-            - `type: optional "audio/pcm"`
-
-              The audio format. Always `audio/pcm`.
-
-              - `"audio/pcm"`
-
-          - `PCMUAudioFormat = object { type }`
-
-            The G.711 μ-law format.
-
-            - `type: optional "audio/pcmu"`
-
-              The audio format. Always `audio/pcmu`.
-
-              - `"audio/pcmu"`
-
-          - `PCMAAudioFormat = object { type }`
-
-            The G.711 A-law format.
-
-            - `type: optional "audio/pcma"`
-
-              The audio format. Always `audio/pcma`.
-
-              - `"audio/pcma"`
-
         - `noise_reduction: optional object { type }`
 
           Configuration for input audio noise reduction.
@@ -1869,46 +1688,9 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-            - `"near_field"`
-
-            - `"far_field"`
-
         - `transcription: optional AudioTranscription`
 
           Configuration of the transcription model.
-
-          - `language: optional string`
-
-            The language of the input audio. Supplying the input language in
-            [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-            will improve accuracy and latency.
-
-          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
-
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-            - `string`
-
-            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 2 more`
-
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-              - `"whisper-1"`
-
-              - `"gpt-4o-mini-transcribe"`
-
-              - `"gpt-4o-mini-transcribe-2025-12-15"`
-
-              - `"gpt-4o-transcribe"`
-
-              - `"gpt-4o-transcribe-diarize"`
-
-          - `prompt: optional string`
-
-            An optional text to guide the model's style or continue a previous audio
-            segment.
-            For `whisper-1`, the [prompt is a list of keywords](/docs/guides/speech-to-text#prompting).
-            For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
 
         - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
 

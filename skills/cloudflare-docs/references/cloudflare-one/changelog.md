@@ -18,6 +18,36 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-14
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**Introducing Cloudflare Mesh**   
+
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) is now available ([blog post ↗](https://blog.cloudflare.com/mesh/)). Mesh connects your services and devices with post-quantum encrypted networking, allowing you to route traffic privately between servers, laptops, and phones over TCP, UDP, and ICMP.
+
+![Cloudflare Mesh network map showing nodes and devices connected through Cloudflare](https://developers.cloudflare.com/_astro/mesh-network-map.CED6jNHK_ZlOsym.webp) 
+
+#### What Cloudflare Mesh does
+
+* Assigns a private [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#mesh-ips) to every enrolled device and node.
+* Enables any participant to reach any other participant by IP — including client-to-client, without deploying any infrastructure.
+* Supports [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) for subnet routing through Mesh nodes.
+* Supports [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) with active-passive replicas for nodes with routes.
+* All traffic flows through Cloudflare, so [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), and access rules apply to every connection.
+
+#### What changed
+
+* **WARP Connector** is now **Cloudflare Mesh**. Existing WARP Connectors are now called mesh nodes. All existing deployments continue to work — no migration required.
+* **Peer-to-peer connectivity** is now called **Mesh connectivity** and is part of the Cloudflare Mesh documentation.
+* **Mesh node limit** increased from 10 to **50 per account**.
+* New [dashboard experience ↗](https://dash.cloudflare.com/?to=/:account/mesh) at **Networking** \> **Mesh** with an interactive network map, node management, route configuration, diagnostics, and a setup wizard.
+
+#### Get started
+
+Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to set up your first Mesh network.
+
 ## 2026-04-09
 
 [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) 
@@ -114,6 +144,26 @@ To work around this issue, reconnect the client by selecting **Disconnect** and 
 
 ## 2026-04-07
 
+[ Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/) 
+
+  
+**User Submission Triage Status Tracking**   
+
+Cloudflare Email security now supports **Triage Status Tracking for User Submissions**. This enhancement gives SOC teams a streamlined way to track, manage, and prioritize user-submitted emails directly within the Cloudflare One dashboard.
+
+* The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
+* SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
+
+Triage Status Tracking is **automatically available** for all Email security customers using the user submissions feature. No additional configuration is required; customers just need to make sure user submissions are being sent to their user submission aliases.
+
+This applies to all Email security packages:
+
+* **Advantage**
+* **Enterprise**
+* **Enterprise + PhishGuard**
+
+## 2026-04-07
+
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
@@ -154,7 +204,7 @@ We're announcing the public beta of **Organizations** for enterprise customers, 
 
 **What's New**
 
-**Organizations \[BETA\]**: [Organizations](https://developers.cloudflare.com/fundamentals/organizations/) are a new top-level container for centrally managing multiple accounts. Each Organization supports up to 500 accounts and 500 zones, giving larger teams a single place to administer resources at scale.
+**Organizations \[BETA\]**: [Organizations](https://developers.cloudflare.com/fundamentals/organizations/) are a new top-level container for centrally managing multiple accounts. Each Organization supports up to 500 accounts and 5000 zones, giving larger teams a single place to administer resources at scale.
 
 **Self-serve onboarding**: Enterprise customers can [create an Organization](https://developers.cloudflare.com/fundamentals/organizations/setup/) in the dashboard and assign accounts where they are already Super Administrators.
 
@@ -1050,13 +1100,13 @@ These scores are derived from \[CrowdStrike device posture attributes\] (/cloudf
   
 **Verify WARP Connector connectivity with a simple ping**   
 
-We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
+We have made it easier to validate connectivity when deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as part of your [software-defined private network](https://developers.cloudflare.com/reference-architecture/architectures/sase/#connecting-networks).
 
 You can now `ping` the WARP Connector host directly on its LAN IP address immediately after installation. This provides a fast, familiar way to confirm that the Connector is online and reachable within your network before testing access to downstream services.
 
 Starting with [version 2025.10.186.0](https://developers.cloudflare.com/changelog/2026-01-13-warp-linux-ga/), WARP Connector responds to traffic addressed to its own LAN IP, giving you immediate visibility into Connector reachability.
 
-Learn more about deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
+Learn more about deploying [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and building private network connectivity with [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
 
 ## 2026-01-13
 
@@ -1472,9 +1522,9 @@ The preferred method for enabling DNS-over-HTTPS on user devices is the [Cloudfl
 
 #### Servers, routers, and IoT devices
 
-For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/).
+For scenarios where installing a client on every device is not possible (such as servers, routers, or IoT devices), we recommend using the [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
 
-Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-internet/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+Instead of running `cloudflared proxy-dns` on a machine, you can install the WARP Connector on a single Linux host within your private network. This connector will act as a gateway, securely routing all DNS and network traffic from your [entire subnet](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) to Cloudflare for [filtering and logging](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
 
 ## 2025-11-06
 
@@ -2049,7 +2099,7 @@ This feature is available across these Email security packages:
 Since we announced our [open beta](https://developers.cloudflare.com/changelog/access/#2025-06-30), we've made a few improvements:
 
 * Support for targets with IPv6.
-* Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) as on-ramps.
+* Support for [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) as on-ramps.
 * More robust error messaging on the login page to help you if you encounter an issue.
 * Worldwide keyboard support. Whether your day-to-day is in Portuguese, Chinese, or something in between, your browser-based RDP experience will look and feel exactly like you are using a desktop RDP client.
 * Cleaned up some other miscellaneous issues, including but not limited to enhanced support for Entra ID accounts and support for usernames with spaces, quotes, and special characters.
@@ -2151,7 +2201,7 @@ We’re expanding the list of processing locations to match our [Data Localizati
   
 **DNS filtering for private network onramps**   
 
-[Magic WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#dns-filtering) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-internet/#configure-dns-resolver-on-devices) users can now securely route their DNS traffic to the Gateway resolver without exposing traffic to the public Internet.
+[Magic WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#dns-filtering) and [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#dns-filtering) users can now securely route their DNS traffic to the Gateway resolver without exposing traffic to the public Internet.
 
 Routing DNS traffic to the Gateway resolver allows DNS resolution and filtering for traffic coming from private networks while preserving source internal IP visibility. This ensures Magic WAN users have full integration with our Cloudflare One features, including [Internal DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#internal-dns) and [hostname-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
@@ -2252,7 +2302,7 @@ This change affects the following API endpoints:
 
 * List all tunnels: [GET /accounts/{account\_id}/tunnels](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/methods/list/)
 * List [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/): [GET /accounts/{account\_id}/cfd\_tunnel](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/methods/list/)
-* List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) tunnels: [GET /accounts/{account\_id}/warp\_connector](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/list/)
+* List [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) tunnels: [GET /accounts/{account\_id}/warp\_connector](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/list/)
 * List tunnel routes: [GET /accounts/{account\_id}/teamnet/routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/)
 * List subnets: [GET /accounts/{account\_id}/zerotrust/subnets](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/methods/list/)
 * List virtual networks: [GET /accounts/{account\_id}/teamnet/virtual\_networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/)
@@ -3663,8 +3713,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-3515)
-* [ Core Dashboard ](#tab-panel-3516)
+* [ Zero Trust Dashboard ](#tab-panel-3595)
+* [ Core Dashboard ](#tab-panel-3596)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -3815,26 +3865,6 @@ Learn more in our documentation for [HTTP Redirect](https://developers.cloudflar
 SCIM logs can be found on the Zero Trust Dashboard under **Logs** \-> **SCIM provisioning**.
 
 ![Example SCIM Logs](https://developers.cloudflare.com/_astro/example-scim-log.Bv5Zqckh_BY26C.webp) 
-
-## 2025-04-07
-
-[ Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/) 
-
-  
-**User Submission Triage Status Tracking**   
-
-Cloudflare Email security now supports **Triage Status Tracking for User Submissions**. This enhancement gives SOC teams a streamlined way to track, manage, and prioritize user-submitted emails directly within the Cloudflare One dashboard.
-
-* The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
-* SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
-
-Triage Status Tracking is **automatically available** for all Email security customers using the user submissions feature. No additional configuration is required; customers just need to make sure user submissions are being sent to their user submission aliases.
-
-This applies to all Email security packages:
-
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
 
 ## 2025-04-01
 

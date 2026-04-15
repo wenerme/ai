@@ -16,6 +16,7 @@ Copy page
 # Configuration
 
 * [ VPC Services ](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)
+* [ VPC Networks ](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
 * [ Cloudflare Tunnel ](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/)
 
 ```json

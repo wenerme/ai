@@ -24,10 +24,11 @@ Server tools are specialized tools operated by OpenRouter that any model can cal
 
 ## Available Server Tools
 
-| Tool                                                            | Type                    | Description                            |
-| --------------------------------------------------------------- | ----------------------- | -------------------------------------- |
-| [**Web Search**](/docs/guides/features/server-tools/web-search) | `openrouter:web_search` | Search the web for current information |
-| [**Datetime**](/docs/guides/features/server-tools/datetime)     | `openrouter:datetime`   | Get the current date and time          |
+| Tool                                                                        | Type                          | Description                            |
+| --------------------------------------------------------------------------- | ----------------------------- | -------------------------------------- |
+| [**Web Search**](/docs/guides/features/server-tools/web-search)             | `openrouter:web_search`       | Search the web for current information |
+| [**Datetime**](/docs/guides/features/server-tools/datetime)                 | `openrouter:datetime`         | Get the current date and time          |
+| [**Image Generation**](/docs/guides/features/server-tools/image-generation) | `openrouter:image_generation` | Generate images from text prompts      |
 
 ## How Server Tools Work
 
@@ -175,4 +176,5 @@ Server tool usage is tracked in the response `usage` object:
 
 * [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
 * [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
+* [Image Generation](/docs/guides/features/server-tools/image-generation) — Generate images from text prompts
 * [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling

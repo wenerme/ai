@@ -58,3 +58,29 @@ curl https://api.openai.com/v1/audio/voices \
   -F "consent=cons_1234" \
   -F "audio_sample=@$HOME/audio_sample.wav;type=audio/x-wav"
 ```
+
+## Domain Types
+
+### Voice Create Response
+
+- `VoiceCreateResponse object { id, created_at, name, object }`
+
+  A custom voice that can be used for audio output.
+
+  - `id: string`
+
+    The voice identifier, which can be referenced in API endpoints.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the voice was created.
+
+  - `name: string`
+
+    The name of the voice.
+
+  - `object: "audio.voice"`
+
+    The object type, which is always `audio.voice`.
+
+    - `"audio.voice"`

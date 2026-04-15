@@ -1,0 +1,117 @@
+---
+title: Tips and best practices
+description: Operational guidance for managing Cloudflare Mesh deployments — updating the client, configuring cloud providers, running alongside Cloudflare Tunnel, and common troubleshooting.
+image: https://developers.cloudflare.com/zt-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/cloudflare-one/networks/connectors/cloudflare-mesh/tips.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Tips and best practices
+
+Operational guidance for managing Cloudflare Mesh deployments — updating the client, configuring cloud providers, running alongside Cloudflare Tunnel, and common troubleshooting.
+
+## Update a Mesh node
+
+Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
+
+* [ Debian / Ubuntu ](#tab-panel-3654)
+* [ RedHat / CentOS ](#tab-panel-3655)
+
+1. Check the current version:  
+Terminal window  
+```  
+warp-cli --version  
+```
+2. Update the package:  
+Terminal window  
+```  
+sudo apt-get update && sudo apt-get install --only-upgrade cloudflare-warp  
+```
+
+1. Check the current version:  
+Terminal window  
+```  
+warp-cli --version  
+```
+2. Update the package:  
+Terminal window  
+```  
+sudo yum update cloudflare-warp  
+```
+
+1. Verify the node has reconnected:  
+Terminal window  
+```  
+warp-cli status  
+```  
+You should see `Status update: Connected` in the output.
+
+## Cloud VPC deployments
+
+When deploying Mesh nodes in a cloud VPC, you may need to configure additional provider settings so the node can forward traffic for other devices on the subnet.
+
+### Google Cloud Platform (GCP)
+
+[Enable IP forwarding ↗](https://cloud.google.com/vpc/docs/using-routes#canipforward) on the VM instance where you installed the Mesh node.
+
+### Amazon Web Services (AWS)
+
+* Disable [source/destination checking ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) on the EC2 instance.
+* In your [subnet route table ↗](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html), add a route for Mesh traffic (for example, `100.96.0.0/12`) pointing to the EC2 instance.
+
+### Microsoft Azure
+
+* [Enable IP forwarding ↗](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the network interface of the VM.
+* Add a [user-defined route ↗](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table) for Mesh traffic pointing to the VM's private IP.
+
+## Running Mesh with Cloudflare Tunnel
+
+A Mesh node (`warp-cli`) and [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) (`cloudflared`) can run on the same Linux host. This is useful when you want to use the Mesh node as a gateway for your private network while also using Cloudflare Tunnel to publish specific applications.
+
+The Mesh node captures outbound traffic and routes it through Cloudflare, which can prevent `cloudflared` from making its required outbound connections. To resolve this, use [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) to exclude the hostnames and IPs listed in [Tunnel with firewall](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/#required-for-tunnel-operation).
+
+Note
+
+Split Tunnels is the only supported method of running both connectors on the same machine. The Mesh node's kernel-level integration overrides manual routing configurations (`ip route add`, `iptables`).
+
+## Routing between Mesh and Cloudflare WAN
+
+To route traffic between Cloudflare Mesh and [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (for example, reaching a Mesh node from a WAN-connected site or vice versa), your account must be on [Unified Routing mode (beta)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Unified Routing uses a single routing fabric for all connection types (Cloudflare One Client, Cloudflare Tunnel, IPsec, GRE, CNI). Without it, Mesh and WAN connections cannot exchange traffic.
+
+## Connect Workers to Mesh
+
+Cloudflare Workers can connect to your Mesh network using [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). Bind to `cf1:network` to reach any Mesh node, client device, or subnet route in your account — without specifying a particular tunnel UUID.
+
+For setup instructions and examples, refer to [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/).
+
+## Source IPs for Cloudflare services
+
+When Cloudflare services (such as [Load Balancing](https://developers.cloudflare.com/load-balancing/) health checks or [Workers](https://developers.cloudflare.com/workers/)) send traffic to your private network through a Mesh node, the traffic originates from the Cloudflare source IP range (default `100.64.0.0/12`). You may need to [configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/) to avoid IP conflicts.
+
+## MTU and packet fragmentation
+
+Mesh nodes use encapsulation to route traffic, which adds overhead to each packet. This is especially relevant for traffic between two Mesh participants, where the packet may be encapsulated twice (once by the sending node, and again by Cloudflare before delivery to the receiving side).
+
+If source devices send packets near the maximum size (1,460 bytes or more), the double encapsulation can push packets over 1,500 bytes, causing them to be dropped.
+
+### Recommendations
+
+* Set the MTU on source devices (servers, cameras, IoT devices) to **1,280 bytes** to ensure packets fit after encapsulation.
+* For TCP-only traffic, apply MSS clamping on your router with a value of **1,240 bytes** (1,280 MTU - 20 byte IP header - 20 byte TCP header).
+* Modern applications using [Path MTU Discovery (PMTUD) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) typically handle this automatically.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/connectors/","name":"Connectors"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/","name":"Cloudflare Mesh"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/networks/connectors/cloudflare-mesh/tips/","name":"Tips and best practices"}}]}
+```

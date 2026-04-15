@@ -61,13 +61,13 @@ To learn more about how Gateway applies hostname-based egress policies, refer to
 
 User traffic must be on-ramped to Gateway using one of the following methods:
 
-| On-ramp method                                                                                                                       | Compatibility             |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- |
-| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)          | ✅                         |
-| [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)                        | ✅                         |
-| [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                                      | ✅                         |
-| [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) | ✅                         |
-| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                                    | 🚧[1](#user-content-fn-1) |
+| On-ramp method                                                                                                              | Compatibility             |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | ✅                         |
+| [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)               | ✅                         |
+| [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                             | ✅                         |
+| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                    | ✅                         |
+| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                           | 🚧[1](#user-content-fn-1) |
 
 Feature availability
 

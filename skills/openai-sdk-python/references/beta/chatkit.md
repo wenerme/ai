@@ -2623,3 +2623,23 @@ print(page.id)
   - `widget: str`
 
     Serialized widget payload rendered in the UI.
+
+### Thread Delete Response
+
+- `class ThreadDeleteResponse: …`
+
+  Confirmation payload returned after deleting a thread.
+
+  - `id: str`
+
+    Identifier of the deleted thread.
+
+  - `deleted: bool`
+
+    Indicates that the thread has been deleted.
+
+  - `object: Literal["chatkit.thread.deleted"]`
+
+    Type discriminator that is always `chatkit.thread.deleted`.
+
+    - `"chatkit.thread.deleted"`

@@ -38,7 +38,7 @@ as input for the model's response.
 
     The unique ID of the conversation.
 
-  - `ResponseConversationParam = object { id }`
+  - `ResponseConversationParam object { id }`
 
     The conversation that this response belongs to.
 
@@ -96,7 +96,7 @@ as input for the model's response.
     A list of one or many input items to the model, containing
     different content types.
 
-    - `EasyInputMessage = object { content, role, phase, type }`
+    - `EasyInputMessage object { content, role, phase, type }`
 
       A message input to the model with a role indicating instruction following
       hierarchy. Instructions given with the `developer` or `system` role take
@@ -118,7 +118,7 @@ as input for the model's response.
           A list of one or many input items to the model, containing different content
           types.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
@@ -132,7 +132,7 @@ as input for the model's response.
 
               - `"input_text"`
 
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -162,7 +162,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -225,7 +225,7 @@ as input for the model's response.
 
         - `"message"`
 
-    - `Message = object { content, role, status, type }`
+    - `Message object { content, role, status, type }`
 
       A message input to the model with a role indicating instruction following
       hierarchy. Instructions given with the `developer` or `system` role take
@@ -235,84 +235,6 @@ as input for the model's response.
 
         A list of one or many input items to the model, containing different content
         types.
-
-        - `ResponseInputText = object { text, type }`
-
-          A text input to the model.
-
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
-
-          An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
-
-          A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
       - `role: "user" or "system" or "developer"`
 
@@ -341,7 +263,7 @@ as input for the model's response.
 
         - `"message"`
 
-    - `ResponseOutputMessage = object { id, content, role, 3 more }`
+    - `ResponseOutputMessage object { id, content, role, 3 more }`
 
       An output message from the model.
 
@@ -353,7 +275,7 @@ as input for the model's response.
 
         The content of the output message.
 
-        - `ResponseOutputText = object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -361,7 +283,7 @@ as input for the model's response.
 
             The annotations of the text output.
 
-            - `FileCitation = object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               A citation to a file.
 
@@ -383,7 +305,7 @@ as input for the model's response.
 
                 - `"file_citation"`
 
-            - `URLCitation = object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               A citation for a web resource used to generate a model response.
 
@@ -409,7 +331,7 @@ as input for the model's response.
 
                 The URL of the web resource.
 
-            - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               A citation for a container file used to generate a model response.
 
@@ -439,7 +361,7 @@ as input for the model's response.
 
                 - `"container_file_citation"`
 
-            - `FilePath = object { file_id, index, type }`
+            - `FilePath object { file_id, index, type }`
 
               A path to a file.
 
@@ -483,7 +405,7 @@ as input for the model's response.
 
             - `"output_text"`
 
-        - `ResponseOutputRefusal = object { refusal, type }`
+        - `ResponseOutputRefusal object { refusal, type }`
 
           A refusal from the model.
 
@@ -530,7 +452,7 @@ as input for the model's response.
 
         - `"final_answer"`
 
-    - `FileSearchCall = object { id, queries, status, 2 more }`
+    - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
       [file search guide](/docs/guides/tools-file-search) for more information.
@@ -598,7 +520,7 @@ as input for the model's response.
 
           The text that was retrieved from the file.
 
-    - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
       [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -648,7 +570,7 @@ as input for the model's response.
 
         A click action.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
@@ -684,7 +606,7 @@ as input for the model's response.
 
             The keys being held while clicking.
 
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
@@ -706,7 +628,7 @@ as input for the model's response.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
@@ -739,7 +661,7 @@ as input for the model's response.
 
             The keys being held while dragging the mouse.
 
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
@@ -753,7 +675,7 @@ as input for the model's response.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -775,7 +697,7 @@ as input for the model's response.
 
             The keys being held while moving the mouse.
 
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
@@ -785,7 +707,7 @@ as input for the model's response.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -815,7 +737,7 @@ as input for the model's response.
 
             The keys being held while scrolling.
 
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
@@ -829,7 +751,7 @@ as input for the model's response.
 
             - `"type"`
 
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
@@ -844,198 +766,43 @@ as input for the model's response.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-    - `ComputerCallOutput = object { call_id, output, type, 3 more }`
+    - `ComputerCallOutput object { call_id, output, type, 3 more }`
 
       The output of a computer tool call.
 
@@ -1098,7 +865,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `WebSearchCall = object { id, action, status, type }`
+    - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
       [web search guide](/docs/guides/tools-web-search) for more information.
@@ -1112,7 +879,7 @@ as input for the model's response.
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
 
-        - `Search = object { query, type, queries, sources }`
+        - `Search object { query, type, queries, sources }`
 
           Action type "search" - Performs a web search query.
 
@@ -1144,7 +911,7 @@ as input for the model's response.
 
               The URL of the source.
 
-        - `OpenPage = object { type, url }`
+        - `OpenPage object { type, url }`
 
           Action type "open_page" - Opens a specific URL from search results.
 
@@ -1158,7 +925,7 @@ as input for the model's response.
 
             The URL opened by the model.
 
-        - `FindInPage = object { pattern, type, url }`
+        - `FindInPage object { pattern, type, url }`
 
           Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -1194,7 +961,7 @@ as input for the model's response.
 
         - `"web_search_call"`
 
-    - `FunctionCall = object { arguments, call_id, name, 4 more }`
+    - `FunctionCall object { arguments, call_id, name, 4 more }`
 
       A tool call to run a function. See the
       [function calling guide](/docs/guides/function-calling) for more information.
@@ -1236,7 +1003,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { call_id, output, type, 2 more }`
+    - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
       The output of a function tool call.
 
@@ -1256,7 +1023,7 @@ as input for the model's response.
 
           An array of content outputs (text, image, file) for the function tool call.
 
-          - `ResponseInputTextContent = object { text, type }`
+          - `ResponseInputTextContent object { text, type }`
 
             A text input to the model.
 
@@ -1270,7 +1037,7 @@ as input for the model's response.
 
               - `"input_text"`
 
-          - `ResponseInputImageContent = object { type, detail, file_id, image_url }`
+          - `ResponseInputImageContent object { type, detail, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision)
 
@@ -1300,7 +1067,7 @@ as input for the model's response.
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-          - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFileContent object { type, detail, file_data, 3 more }`
 
             A file input to the model.
 
@@ -1354,7 +1121,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ToolSearchCall = object { arguments, type, id, 3 more }`
+    - `ToolSearchCall object { arguments, type, id, 3 more }`
 
       - `arguments: unknown`
 
@@ -1392,13 +1159,13 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ToolSearchOutput = object { tools, type, id, 3 more }`
+    - `ToolSearchOutput object { tools, type, id, 3 more }`
 
       - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
         The loaded tool definitions returned by the tool search output.
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1428,7 +1195,7 @@ as input for the model's response.
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -1446,7 +1213,7 @@ as input for the model's response.
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -1499,7 +1266,7 @@ as input for the model's response.
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -1507,58 +1274,9 @@ as input for the model's response.
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -1602,7 +1320,7 @@ as input for the model's response.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1612,7 +1330,7 @@ as input for the model's response.
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1644,7 +1362,7 @@ as input for the model's response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -1704,7 +1422,7 @@ as input for the model's response.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1727,7 +1445,7 @@ as input for the model's response.
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -1793,7 +1511,7 @@ as input for the model's response.
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -1846,7 +1564,7 @@ as input for the model's response.
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -1860,7 +1578,7 @@ as input for the model's response.
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -1890,7 +1608,7 @@ as input for the model's response.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -1898,7 +1616,7 @@ as input for the model's response.
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -1932,7 +1650,7 @@ as input for the model's response.
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -2053,7 +1771,7 @@ as input for the model's response.
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -2063,7 +1781,7 @@ as input for the model's response.
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -2075,7 +1793,7 @@ as input for the model's response.
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -2103,47 +1821,15 @@ as input for the model's response.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -2159,7 +1845,7 @@ as input for the model's response.
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -2195,7 +1881,7 @@ as input for the model's response.
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -2219,7 +1905,7 @@ as input for the model's response.
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -2231,7 +1917,7 @@ as input for the model's response.
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2257,7 +1943,7 @@ as input for the model's response.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -2267,7 +1953,7 @@ as input for the model's response.
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -2289,7 +1975,7 @@ as input for the model's response.
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -2305,7 +1991,7 @@ as input for the model's response.
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -2323,7 +2009,7 @@ as input for the model's response.
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2349,45 +2035,13 @@ as input for the model's response.
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -2413,7 +2067,7 @@ as input for the model's response.
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -2467,7 +2121,7 @@ as input for the model's response.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2509,7 +2163,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `Reasoning = object { id, summary, type, 3 more }`
+    - `Reasoning object { id, summary, type, 3 more }`
 
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
@@ -2570,7 +2224,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `Compaction = object { encrypted_content, type, id }`
+    - `Compaction object { encrypted_content, type, id }`
 
       A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -2588,7 +2242,7 @@ as input for the model's response.
 
         The ID of the compaction item.
 
-    - `ImageGenerationCall = object { id, result, status, type }`
+    - `ImageGenerationCall object { id, result, status, type }`
 
       An image generation request made by the model.
 
@@ -2618,7 +2272,7 @@ as input for the model's response.
 
         - `"image_generation_call"`
 
-    - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+    - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
       A tool call to run code.
 
@@ -2639,7 +2293,7 @@ as input for the model's response.
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
 
-        - `Logs = object { logs, type }`
+        - `Logs object { logs, type }`
 
           The logs output from the code interpreter.
 
@@ -2653,7 +2307,7 @@ as input for the model's response.
 
             - `"logs"`
 
-        - `Image = object { type, url }`
+        - `Image object { type, url }`
 
           The image output from the code interpreter.
 
@@ -2687,7 +2341,7 @@ as input for the model's response.
 
         - `"code_interpreter_call"`
 
-    - `LocalShellCall = object { id, action, call_id, 2 more }`
+    - `LocalShellCall object { id, action, call_id, 2 more }`
 
       A tool call to run a command on the local shell.
 
@@ -2745,7 +2399,7 @@ as input for the model's response.
 
         - `"local_shell_call"`
 
-    - `LocalShellCallOutput = object { id, output, type, status }`
+    - `LocalShellCallOutput object { id, output, type, status }`
 
       The output of a local shell tool call.
 
@@ -2773,7 +2427,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ShellCall = object { action, call_id, type, 3 more }`
+    - `ShellCall object { action, call_id, type, 3 more }`
 
       A tool representing a request to execute one or more shell commands.
 
@@ -2811,41 +2465,9 @@ as input for the model's response.
 
         The environment to execute the shell commands in.
 
-        - `LocalEnvironment = object { type, skills }`
+        - `LocalEnvironment object { type, skills }`
 
-          - `type: "local"`
-
-            Use a local computer environment.
-
-            - `"local"`
-
-          - `skills: optional array of LocalSkill`
-
-            An optional list of skills.
-
-            - `description: string`
-
-              The description of the skill.
-
-            - `name: string`
-
-              The name of the skill.
-
-            - `path: string`
-
-              The path to the directory containing the skill.
-
-        - `ContainerReference = object { container_id, type }`
-
-          - `container_id: string`
-
-            The ID of the referenced container.
-
-          - `type: "container_reference"`
-
-            References a container created with the /v1/containers endpoint
-
-            - `"container_reference"`
+        - `ContainerReference object { container_id, type }`
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -2857,7 +2479,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ShellCallOutput = object { call_id, output, type, 3 more }`
+    - `ShellCallOutput object { call_id, output, type, 3 more }`
 
       The streamed output items emitted by a shell tool call.
 
@@ -2873,7 +2495,7 @@ as input for the model's response.
 
           The exit or timeout outcome associated with this shell call.
 
-          - `Timeout = object { type }`
+          - `Timeout object { type }`
 
             Indicates that the shell call exceeded its configured time limit.
 
@@ -2883,7 +2505,7 @@ as input for the model's response.
 
               - `"timeout"`
 
-          - `Exit = object { exit_code, type }`
+          - `Exit object { exit_code, type }`
 
             Indicates that the shell commands finished and returned an exit code.
 
@@ -2929,7 +2551,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ApplyPatchCall = object { call_id, operation, status, 2 more }`
+    - `ApplyPatchCall object { call_id, operation, status, 2 more }`
 
       A tool call representing a request to create, delete, or update files using diff patches.
 
@@ -2941,7 +2563,7 @@ as input for the model's response.
 
         The specific create, delete, or update instruction for the apply_patch tool call.
 
-        - `CreateFile = object { diff, path, type }`
+        - `CreateFile object { diff, path, type }`
 
           Instruction for creating a new file via the apply_patch tool.
 
@@ -2959,7 +2581,7 @@ as input for the model's response.
 
             - `"create_file"`
 
-        - `DeleteFile = object { path, type }`
+        - `DeleteFile object { path, type }`
 
           Instruction for deleting an existing file via the apply_patch tool.
 
@@ -2973,7 +2595,7 @@ as input for the model's response.
 
             - `"delete_file"`
 
-        - `UpdateFile = object { diff, path, type }`
+        - `UpdateFile object { diff, path, type }`
 
           Instruction for updating an existing file via the apply_patch tool.
 
@@ -3009,7 +2631,7 @@ as input for the model's response.
 
         The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
-    - `ApplyPatchCallOutput = object { call_id, status, type, 2 more }`
+    - `ApplyPatchCallOutput object { call_id, status, type, 2 more }`
 
       The streamed output emitted by an apply patch tool call.
 
@@ -3039,7 +2661,7 @@ as input for the model's response.
 
         Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
 
-    - `McpListTools = object { id, server_label, tools, 2 more }`
+    - `McpListTools object { id, server_label, tools, 2 more }`
 
       A list of tools available on an MCP server.
 
@@ -3081,7 +2703,7 @@ as input for the model's response.
 
         Error message if the server could not list tools.
 
-    - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+    - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
       A request for human approval of a tool invocation.
 
@@ -3107,7 +2729,7 @@ as input for the model's response.
 
         - `"mcp_approval_request"`
 
-    - `McpApprovalResponse = object { approval_request_id, approve, type, 2 more }`
+    - `McpApprovalResponse object { approval_request_id, approve, type, 2 more }`
 
       A response to an MCP approval request.
 
@@ -3133,7 +2755,7 @@ as input for the model's response.
 
         Optional reason for the decision.
 
-    - `McpCall = object { id, arguments, name, 6 more }`
+    - `McpCall object { id, arguments, name, 6 more }`
 
       An invocation of a tool on an MCP server.
 
@@ -3186,7 +2808,7 @@ as input for the model's response.
 
         - `"failed"`
 
-    - `CustomToolCallOutput = object { call_id, output, type, id }`
+    - `CustomToolCallOutput object { call_id, output, type, id }`
 
       The output of a custom tool call from your code, being sent back to the model.
 
@@ -3207,83 +2829,17 @@ as input for the model's response.
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 
@@ -3295,7 +2851,7 @@ as input for the model's response.
 
         The unique ID of the custom tool call output in the OpenAI platform.
 
-    - `CustomToolCall = object { call_id, input, name, 3 more }`
+    - `CustomToolCall object { call_id, input, name, 3 more }`
 
       A call to a custom tool created by the model.
 
@@ -3325,7 +2881,7 @@ as input for the model's response.
 
         The namespace of the custom tool being called.
 
-    - `ItemReference = object { id, type }`
+    - `ItemReference object { id, type }`
 
       An internal identifier for an item to reference.
 
@@ -3588,83 +3144,17 @@ as input for the model's response.
 
     - `string`
 
-    - `ResponseInputText = object { text, type }`
+    - `ResponseInputText object { text, type }`
 
       A text input to the model.
 
-      - `text: string`
-
-        The text input to the model.
-
-      - `type: "input_text"`
-
-        The type of the input item. Always `input_text`.
-
-        - `"input_text"`
-
-    - `ResponseInputImage = object { detail, type, file_id, image_url }`
+    - `ResponseInputImage object { detail, type, file_id, image_url }`
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-      - `detail: "low" or "high" or "auto" or "original"`
-
-        The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-        - `"low"`
-
-        - `"high"`
-
-        - `"auto"`
-
-        - `"original"`
-
-      - `type: "input_image"`
-
-        The type of the input item. Always `input_image`.
-
-        - `"input_image"`
-
-      - `file_id: optional string`
-
-        The ID of the file to be sent to the model.
-
-      - `image_url: optional string`
-
-        The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+    - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
       A file input to the model.
-
-      - `type: "input_file"`
-
-        The type of the input item. Always `input_file`.
-
-        - `"input_file"`
-
-      - `detail: optional "low" or "high"`
-
-        The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-        - `"low"`
-
-        - `"high"`
-
-      - `file_data: optional string`
-
-        The content of the file to be sent to the model.
-
-      - `file_id: optional string`
-
-        The ID of the file to be sent to the model.
-
-      - `file_url: optional string`
-
-        The URL of the file to be sent to the model.
-
-      - `filename: optional string`
-
-        The name of the file to be sent to the model.
 
   - `version: optional string`
 
@@ -3823,7 +3313,7 @@ as input for the model's response.
     ensures the message the model generates is valid JSON. Using `json_schema`
     is preferred for models that support it.
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -3833,7 +3323,7 @@ as input for the model's response.
 
         - `"text"`
 
-    - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+    - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -3867,7 +3357,7 @@ as input for the model's response.
         `strict` is `true`. To learn more, read the [Structured Outputs
         guide](/docs/guides/structured-outputs).
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -3915,7 +3405,7 @@ as input for the model's response.
 
     - `"required"`
 
-  - `ToolChoiceAllowed = object { mode, tools, type }`
+  - `ToolChoiceAllowed object { mode, tools, type }`
 
     Constrains the tools available to the model to a pre-defined set.
 
@@ -3952,7 +3442,7 @@ as input for the model's response.
 
       - `"allowed_tools"`
 
-  - `ToolChoiceTypes = object { type }`
+  - `ToolChoiceTypes object { type }`
 
     Indicates that the model should use a built-in tool to generate a response.
     [Learn more about built-in tools](/docs/guides/tools).
@@ -3988,7 +3478,7 @@ as input for the model's response.
 
       - `"code_interpreter"`
 
-  - `ToolChoiceFunction = object { name, type }`
+  - `ToolChoiceFunction object { name, type }`
 
     Use this option to force the model to call a specific function.
 
@@ -4002,7 +3492,7 @@ as input for the model's response.
 
       - `"function"`
 
-  - `ToolChoiceMcp = object { server_label, type, name }`
+  - `ToolChoiceMcp object { server_label, type, name }`
 
     Use this option to force the model to call a specific tool on a remote MCP server.
 
@@ -4020,7 +3510,7 @@ as input for the model's response.
 
       The name of the tool to call on the server.
 
-  - `ToolChoiceCustom = object { name, type }`
+  - `ToolChoiceCustom object { name, type }`
 
     Use this option to force the model to call a specific custom tool.
 
@@ -4034,7 +3524,7 @@ as input for the model's response.
 
       - `"custom"`
 
-  - `ToolChoiceApplyPatch = object { type }`
+  - `ToolChoiceApplyPatch object { type }`
 
     Forces the model to call the apply_patch tool when executing a tool call.
 
@@ -4044,7 +3534,7 @@ as input for the model's response.
 
       - `"apply_patch"`
 
-  - `ToolChoiceShell = object { type }`
+  - `ToolChoiceShell object { type }`
 
     Forces the model to call the shell tool when a tool call is required.
 
@@ -4074,7 +3564,7 @@ as input for the model's response.
     [function calling](/docs/guides/function-calling). You can also use
     custom tools to call your own code.
 
-  - `Function = object { name, parameters, strict, 3 more }`
+  - `Function object { name, parameters, strict, 3 more }`
 
     Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -4104,7 +3594,7 @@ as input for the model's response.
 
       A description of the function. Used by the model to determine whether or not to call the function.
 
-  - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+  - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
     A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -4122,129 +3612,13 @@ as input for the model's response.
 
       A filter to apply.
 
-      - `ComparisonFilter = object { key, type, value }`
+      - `ComparisonFilter object { key, type, value }`
 
         A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-        - `key: string`
-
-          The key to compare against the value.
-
-        - `type: "eq" or "ne" or "gt" or 5 more`
-
-          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-          - `eq`: equals
-          - `ne`: not equal
-          - `gt`: greater than
-          - `gte`: greater than or equal
-          - `lt`: less than
-          - `lte`: less than or equal
-          - `in`: in
-          - `nin`: not in
-
-          - `"eq"`
-
-          - `"ne"`
-
-          - `"gt"`
-
-          - `"gte"`
-
-          - `"lt"`
-
-          - `"lte"`
-
-          - `"in"`
-
-          - `"nin"`
-
-        - `value: string or number or boolean or array of string or number`
-
-          The value to compare against the attribute key; supports string, number, or boolean types.
-
-          - `string`
-
-          - `number`
-
-          - `boolean`
-
-          - `array of string or number`
-
-            - `string`
-
-            - `number`
-
-      - `CompoundFilter = object { filters, type }`
+      - `CompoundFilter object { filters, type }`
 
         Combine multiple filters using `and` or `or`.
-
-        - `filters: array of ComparisonFilter or unknown`
-
-          Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-          - `ComparisonFilter = object { key, type, value }`
-
-            A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-            - `key: string`
-
-              The key to compare against the value.
-
-            - `type: "eq" or "ne" or "gt" or 5 more`
-
-              Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-              - `eq`: equals
-              - `ne`: not equal
-              - `gt`: greater than
-              - `gte`: greater than or equal
-              - `lt`: less than
-              - `lte`: less than or equal
-              - `in`: in
-              - `nin`: not in
-
-              - `"eq"`
-
-              - `"ne"`
-
-              - `"gt"`
-
-              - `"gte"`
-
-              - `"lt"`
-
-              - `"lte"`
-
-              - `"in"`
-
-              - `"nin"`
-
-            - `value: string or number or boolean or array of string or number`
-
-              The value to compare against the attribute key; supports string, number, or boolean types.
-
-              - `string`
-
-              - `number`
-
-              - `boolean`
-
-              - `array of string or number`
-
-                - `string`
-
-                - `number`
-
-          - `unknown`
-
-        - `type: "and" or "or"`
-
-          Type of operation: `and` or `or`.
-
-          - `"and"`
-
-          - `"or"`
 
     - `max_num_results: optional number`
 
@@ -4278,7 +3652,7 @@ as input for the model's response.
 
         The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-  - `Computer = object { type }`
+  - `Computer object { type }`
 
     A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -4288,7 +3662,7 @@ as input for the model's response.
 
       - `"computer"`
 
-  - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+  - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
     A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -4320,7 +3694,7 @@ as input for the model's response.
 
       - `"computer_use_preview"`
 
-  - `WebSearch = object { type, filters, search_context_size, user_location }`
+  - `WebSearch object { type, filters, search_context_size, user_location }`
 
     Search the Internet for sources related to the prompt. Learn more about the
     [web search tool](/docs/guides/tools-web-search).
@@ -4380,7 +3754,7 @@ as input for the model's response.
 
         - `"approximate"`
 
-  - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+  - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
     (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -4403,7 +3777,7 @@ as input for the model's response.
 
         A string array of allowed tool names
 
-      - `McpToolFilter = object { read_only, tool_names }`
+      - `McpToolFilter object { read_only, tool_names }`
 
         A filter object to specify which tools are allowed.
 
@@ -4469,7 +3843,7 @@ as input for the model's response.
 
       Specify which of the MCP server's tools require approval.
 
-      - `McpToolApprovalFilter = object { always, never }`
+      - `McpToolApprovalFilter object { always, never }`
 
         Specify which of the MCP server's tools require approval. Can be
         `always`, `never`, or a filter object associated with tools
@@ -4522,7 +3896,7 @@ as input for the model's response.
       The URL for the MCP server. One of `server_url` or `connector_id` must be
       provided.
 
-  - `CodeInterpreter = object { container, type }`
+  - `CodeInterpreter object { container, type }`
 
     A tool that runs Python code to help generate a response to a prompt.
 
@@ -4536,7 +3910,7 @@ as input for the model's response.
 
         The container ID.
 
-      - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+      - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
         Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -4566,41 +3940,9 @@ as input for the model's response.
 
           Network access policy for the container.
 
-          - `ContainerNetworkPolicyDisabled = object { type }`
+          - `ContainerNetworkPolicyDisabled object { type }`
 
-            - `type: "disabled"`
-
-              Disable outbound network access. Always `disabled`.
-
-              - `"disabled"`
-
-          - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-            - `allowed_domains: array of string`
-
-              A list of allowed domains when type is `allowlist`.
-
-            - `type: "allowlist"`
-
-              Allow outbound network access only to specified domains. Always `allowlist`.
-
-              - `"allowlist"`
-
-            - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-              Optional domain-scoped secrets for allowlisted domains.
-
-              - `domain: string`
-
-                The domain associated with the secret.
-
-              - `name: string`
-
-                The name of the secret to inject for the domain.
-
-              - `value: string`
-
-                The secret value to inject for the domain.
+          - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
     - `type: "code_interpreter"`
 
@@ -4608,7 +3950,7 @@ as input for the model's response.
 
       - `"code_interpreter"`
 
-  - `ImageGeneration = object { type, action, background, 9 more }`
+  - `ImageGeneration object { type, action, background, 9 more }`
 
     A tool that generates images using the GPT image models.
 
@@ -4729,7 +4071,7 @@ as input for the model's response.
 
       - `"auto"`
 
-  - `LocalShell = object { type }`
+  - `LocalShell object { type }`
 
     A tool that allows the model to execute shell commands in a local environment.
 
@@ -4739,7 +4081,7 @@ as input for the model's response.
 
       - `"local_shell"`
 
-  - `Shell = object { type, environment }`
+  - `Shell object { type, environment }`
 
     A tool that allows the model to execute shell commands.
 
@@ -4751,163 +4093,13 @@ as input for the model's response.
 
     - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-      - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+      - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-        - `type: "container_auto"`
+      - `LocalEnvironment object { type, skills }`
 
-          Automatically creates a container for this request
+      - `ContainerReference object { container_id, type }`
 
-          - `"container_auto"`
-
-        - `file_ids: optional array of string`
-
-          An optional list of uploaded files to make available to your code.
-
-        - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
-
-          The memory limit for the container.
-
-          - `"1g"`
-
-          - `"4g"`
-
-          - `"16g"`
-
-          - `"64g"`
-
-        - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
-
-          Network access policy for the container.
-
-          - `ContainerNetworkPolicyDisabled = object { type }`
-
-            - `type: "disabled"`
-
-              Disable outbound network access. Always `disabled`.
-
-              - `"disabled"`
-
-          - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-            - `allowed_domains: array of string`
-
-              A list of allowed domains when type is `allowlist`.
-
-            - `type: "allowlist"`
-
-              Allow outbound network access only to specified domains. Always `allowlist`.
-
-              - `"allowlist"`
-
-            - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-              Optional domain-scoped secrets for allowlisted domains.
-
-              - `domain: string`
-
-                The domain associated with the secret.
-
-              - `name: string`
-
-                The name of the secret to inject for the domain.
-
-              - `value: string`
-
-                The secret value to inject for the domain.
-
-        - `skills: optional array of SkillReference or InlineSkill`
-
-          An optional list of skills referenced by id or inline data.
-
-          - `SkillReference = object { skill_id, type, version }`
-
-            - `skill_id: string`
-
-              The ID of the referenced skill.
-
-            - `type: "skill_reference"`
-
-              References a skill created with the /v1/skills endpoint.
-
-              - `"skill_reference"`
-
-            - `version: optional string`
-
-              Optional skill version. Use a positive integer or 'latest'. Omit for default.
-
-          - `InlineSkill = object { description, name, source, type }`
-
-            - `description: string`
-
-              The description of the skill.
-
-            - `name: string`
-
-              The name of the skill.
-
-            - `source: InlineSkillSource`
-
-              Inline skill payload
-
-              - `data: string`
-
-                Base64-encoded skill zip bundle.
-
-              - `media_type: "application/zip"`
-
-                The media type of the inline skill payload. Must be `application/zip`.
-
-                - `"application/zip"`
-
-              - `type: "base64"`
-
-                The type of the inline skill source. Must be `base64`.
-
-                - `"base64"`
-
-            - `type: "inline"`
-
-              Defines an inline skill for this request.
-
-              - `"inline"`
-
-      - `LocalEnvironment = object { type, skills }`
-
-        - `type: "local"`
-
-          Use a local computer environment.
-
-          - `"local"`
-
-        - `skills: optional array of LocalSkill`
-
-          An optional list of skills.
-
-          - `description: string`
-
-            The description of the skill.
-
-          - `name: string`
-
-            The name of the skill.
-
-          - `path: string`
-
-            The path to the directory containing the skill.
-
-      - `ContainerReference = object { container_id, type }`
-
-        - `container_id: string`
-
-          The ID of the referenced container.
-
-        - `type: "container_reference"`
-
-          References a container created with the /v1/containers endpoint
-
-          - `"container_reference"`
-
-  - `Custom = object { name, type, defer_loading, 2 more }`
+  - `Custom object { name, type, defer_loading, 2 more }`
 
     A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -4933,39 +4125,7 @@ as input for the model's response.
 
       The input format for the custom tool. Default is unconstrained text.
 
-      - `Text = object { type }`
-
-        Unconstrained free-form text.
-
-        - `type: "text"`
-
-          Unconstrained text format. Always `text`.
-
-          - `"text"`
-
-      - `Grammar = object { definition, syntax, type }`
-
-        A grammar defined by the user.
-
-        - `definition: string`
-
-          The grammar definition.
-
-        - `syntax: "lark" or "regex"`
-
-          The syntax of the grammar definition. One of `lark` or `regex`.
-
-          - `"lark"`
-
-          - `"regex"`
-
-        - `type: "grammar"`
-
-          Grammar format. Always `grammar`.
-
-          - `"grammar"`
-
-  - `Namespace = object { description, name, tools, type }`
+  - `Namespace object { description, name, tools, type }`
 
     Groups function/custom tools under a shared namespace.
 
@@ -4981,7 +4141,7 @@ as input for the model's response.
 
       The function/custom tools available inside this namespace.
 
-      - `Function = object { name, type, defer_loading, 3 more }`
+      - `Function object { name, type, defer_loading, 3 more }`
 
         - `name: string`
 
@@ -4999,7 +4159,7 @@ as input for the model's response.
 
         - `strict: optional boolean`
 
-      - `Custom = object { name, type, defer_loading, 2 more }`
+      - `Custom object { name, type, defer_loading, 2 more }`
 
         A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -5025,45 +4185,13 @@ as input for the model's response.
 
           The input format for the custom tool. Default is unconstrained text.
 
-          - `Text = object { type }`
-
-            Unconstrained free-form text.
-
-            - `type: "text"`
-
-              Unconstrained text format. Always `text`.
-
-              - `"text"`
-
-          - `Grammar = object { definition, syntax, type }`
-
-            A grammar defined by the user.
-
-            - `definition: string`
-
-              The grammar definition.
-
-            - `syntax: "lark" or "regex"`
-
-              The syntax of the grammar definition. One of `lark` or `regex`.
-
-              - `"lark"`
-
-              - `"regex"`
-
-            - `type: "grammar"`
-
-              Grammar format. Always `grammar`.
-
-              - `"grammar"`
-
     - `type: "namespace"`
 
       The type of the tool. Always `namespace`.
 
       - `"namespace"`
 
-  - `ToolSearch = object { type, description, execution, parameters }`
+  - `ToolSearch object { type, description, execution, parameters }`
 
     Hosted or BYOT tool search configuration for deferred tools.
 
@@ -5089,7 +4217,7 @@ as input for the model's response.
 
       Parameter schema for a client-executed tool search tool.
 
-  - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+  - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
     This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -5143,7 +4271,7 @@ as input for the model's response.
 
         The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-  - `ApplyPatch = object { type }`
+  - `ApplyPatch object { type }`
 
     Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -5189,7 +4317,7 @@ as input for the model's response.
 
 ### Returns
 
-- `Response = object { id, created_at, error, 30 more }`
+- `Response object { id, created_at, error, 30 more }`
 
   - `id: string`
 
@@ -5277,7 +4405,7 @@ as input for the model's response.
       A list of one or many input items to the model, containing
       different content types.
 
-      - `EasyInputMessage = object { content, role, phase, type }`
+      - `EasyInputMessage object { content, role, phase, type }`
 
         A message input to the model with a role indicating instruction following
         hierarchy. Instructions given with the `developer` or `system` role take
@@ -5299,7 +4427,7 @@ as input for the model's response.
             A list of one or many input items to the model, containing different content
             types.
 
-            - `ResponseInputText = object { text, type }`
+            - `ResponseInputText object { text, type }`
 
               A text input to the model.
 
@@ -5313,7 +4441,7 @@ as input for the model's response.
 
                 - `"input_text"`
 
-            - `ResponseInputImage = object { detail, type, file_id, image_url }`
+            - `ResponseInputImage object { detail, type, file_id, image_url }`
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -5343,7 +4471,7 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+            - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -5406,7 +4534,7 @@ as input for the model's response.
 
           - `"message"`
 
-      - `Message = object { content, role, status, type }`
+      - `Message object { content, role, status, type }`
 
         A message input to the model with a role indicating instruction following
         hierarchy. Instructions given with the `developer` or `system` role take
@@ -5416,84 +4544,6 @@ as input for the model's response.
 
           A list of one or many input items to the model, containing different content
           types.
-
-          - `ResponseInputText = object { text, type }`
-
-            A text input to the model.
-
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
-
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
-
-            A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
         - `role: "user" or "system" or "developer"`
 
@@ -5522,7 +4572,7 @@ as input for the model's response.
 
           - `"message"`
 
-      - `ResponseOutputMessage = object { id, content, role, 3 more }`
+      - `ResponseOutputMessage object { id, content, role, 3 more }`
 
         An output message from the model.
 
@@ -5534,7 +4584,7 @@ as input for the model's response.
 
           The content of the output message.
 
-          - `ResponseOutputText = object { annotations, logprobs, text, type }`
+          - `ResponseOutputText object { annotations, logprobs, text, type }`
 
             A text output from the model.
 
@@ -5542,7 +4592,7 @@ as input for the model's response.
 
               The annotations of the text output.
 
-              - `FileCitation = object { file_id, filename, index, type }`
+              - `FileCitation object { file_id, filename, index, type }`
 
                 A citation to a file.
 
@@ -5564,7 +4614,7 @@ as input for the model's response.
 
                   - `"file_citation"`
 
-              - `URLCitation = object { end_index, start_index, title, 2 more }`
+              - `URLCitation object { end_index, start_index, title, 2 more }`
 
                 A citation for a web resource used to generate a model response.
 
@@ -5590,7 +4640,7 @@ as input for the model's response.
 
                   The URL of the web resource.
 
-              - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
                 A citation for a container file used to generate a model response.
 
@@ -5620,7 +4670,7 @@ as input for the model's response.
 
                   - `"container_file_citation"`
 
-              - `FilePath = object { file_id, index, type }`
+              - `FilePath object { file_id, index, type }`
 
                 A path to a file.
 
@@ -5664,7 +4714,7 @@ as input for the model's response.
 
               - `"output_text"`
 
-          - `ResponseOutputRefusal = object { refusal, type }`
+          - `ResponseOutputRefusal object { refusal, type }`
 
             A refusal from the model.
 
@@ -5711,7 +4761,7 @@ as input for the model's response.
 
           - `"final_answer"`
 
-      - `FileSearchCall = object { id, queries, status, 2 more }`
+      - `FileSearchCall object { id, queries, status, 2 more }`
 
         The results of a file search tool call. See the
         [file search guide](/docs/guides/tools-file-search) for more information.
@@ -5779,7 +4829,7 @@ as input for the model's response.
 
             The text that was retrieved from the file.
 
-      - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+      - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
         A tool call to a computer use tool. See the
         [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -5829,7 +4879,7 @@ as input for the model's response.
 
           A click action.
 
-          - `Click = object { button, type, x, 2 more }`
+          - `Click object { button, type, x, 2 more }`
 
             A click action.
 
@@ -5865,7 +4915,7 @@ as input for the model's response.
 
               The keys being held while clicking.
 
-          - `DoubleClick = object { keys, type, x, y }`
+          - `DoubleClick object { keys, type, x, y }`
 
             A double click action.
 
@@ -5887,7 +4937,7 @@ as input for the model's response.
 
               The y-coordinate where the double click occurred.
 
-          - `Drag = object { path, type, keys }`
+          - `Drag object { path, type, keys }`
 
             A drag action.
 
@@ -5920,7 +4970,7 @@ as input for the model's response.
 
               The keys being held while dragging the mouse.
 
-          - `Keypress = object { keys, type }`
+          - `Keypress object { keys, type }`
 
             A collection of keypresses the model would like to perform.
 
@@ -5934,7 +4984,7 @@ as input for the model's response.
 
               - `"keypress"`
 
-          - `Move = object { type, x, y, keys }`
+          - `Move object { type, x, y, keys }`
 
             A mouse move action.
 
@@ -5956,7 +5006,7 @@ as input for the model's response.
 
               The keys being held while moving the mouse.
 
-          - `Screenshot = object { type }`
+          - `Screenshot object { type }`
 
             A screenshot action.
 
@@ -5966,7 +5016,7 @@ as input for the model's response.
 
               - `"screenshot"`
 
-          - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+          - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
             A scroll action.
 
@@ -5996,7 +5046,7 @@ as input for the model's response.
 
               The keys being held while scrolling.
 
-          - `Type = object { text, type }`
+          - `Type object { text, type }`
 
             An action to type in text.
 
@@ -6010,7 +5060,7 @@ as input for the model's response.
 
               - `"type"`
 
-          - `Wait = object { type }`
+          - `Wait object { type }`
 
             A wait action.
 
@@ -6025,198 +5075,43 @@ as input for the model's response.
           Flattened batched actions for `computer_use`. Each action includes an
           `type` discriminator and action-specific fields.
 
-          - `Click = object { button, type, x, 2 more }`
+          - `Click object { button, type, x, 2 more }`
 
             A click action.
 
-            - `button: "left" or "right" or "wheel" or 2 more`
-
-              Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-              - `"left"`
-
-              - `"right"`
-
-              - `"wheel"`
-
-              - `"back"`
-
-              - `"forward"`
-
-            - `type: "click"`
-
-              Specifies the event type. For a click action, this property is always `click`.
-
-              - `"click"`
-
-            - `x: number`
-
-              The x-coordinate where the click occurred.
-
-            - `y: number`
-
-              The y-coordinate where the click occurred.
-
-            - `keys: optional array of string`
-
-              The keys being held while clicking.
-
-          - `DoubleClick = object { keys, type, x, y }`
+          - `DoubleClick object { keys, type, x, y }`
 
             A double click action.
 
-            - `keys: array of string`
-
-              The keys being held while double-clicking.
-
-            - `type: "double_click"`
-
-              Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-              - `"double_click"`
-
-            - `x: number`
-
-              The x-coordinate where the double click occurred.
-
-            - `y: number`
-
-              The y-coordinate where the double click occurred.
-
-          - `Drag = object { path, type, keys }`
+          - `Drag object { path, type, keys }`
 
             A drag action.
 
-            - `path: array of object { x, y }`
-
-              An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-              ```
-              [
-                { x: 100, y: 200 },
-                { x: 200, y: 300 }
-              ]
-              ```
-
-              - `x: number`
-
-                The x-coordinate.
-
-              - `y: number`
-
-                The y-coordinate.
-
-            - `type: "drag"`
-
-              Specifies the event type. For a drag action, this property is always set to `drag`.
-
-              - `"drag"`
-
-            - `keys: optional array of string`
-
-              The keys being held while dragging the mouse.
-
-          - `Keypress = object { keys, type }`
+          - `Keypress object { keys, type }`
 
             A collection of keypresses the model would like to perform.
 
-            - `keys: array of string`
-
-              The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-            - `type: "keypress"`
-
-              Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-              - `"keypress"`
-
-          - `Move = object { type, x, y, keys }`
+          - `Move object { type, x, y, keys }`
 
             A mouse move action.
 
-            - `type: "move"`
-
-              Specifies the event type. For a move action, this property is always set to `move`.
-
-              - `"move"`
-
-            - `x: number`
-
-              The x-coordinate to move to.
-
-            - `y: number`
-
-              The y-coordinate to move to.
-
-            - `keys: optional array of string`
-
-              The keys being held while moving the mouse.
-
-          - `Screenshot = object { type }`
+          - `Screenshot object { type }`
 
             A screenshot action.
 
-            - `type: "screenshot"`
-
-              Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-              - `"screenshot"`
-
-          - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+          - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
             A scroll action.
 
-            - `scroll_x: number`
-
-              The horizontal scroll distance.
-
-            - `scroll_y: number`
-
-              The vertical scroll distance.
-
-            - `type: "scroll"`
-
-              Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-              - `"scroll"`
-
-            - `x: number`
-
-              The x-coordinate where the scroll occurred.
-
-            - `y: number`
-
-              The y-coordinate where the scroll occurred.
-
-            - `keys: optional array of string`
-
-              The keys being held while scrolling.
-
-          - `Type = object { text, type }`
+          - `Type object { text, type }`
 
             An action to type in text.
 
-            - `text: string`
-
-              The text to type.
-
-            - `type: "type"`
-
-              Specifies the event type. For a type action, this property is always set to `type`.
-
-              - `"type"`
-
-          - `Wait = object { type }`
+          - `Wait object { type }`
 
             A wait action.
 
-            - `type: "wait"`
-
-              Specifies the event type. For a wait action, this property is always set to `wait`.
-
-              - `"wait"`
-
-      - `ComputerCallOutput = object { call_id, output, type, 3 more }`
+      - `ComputerCallOutput object { call_id, output, type, 3 more }`
 
         The output of a computer tool call.
 
@@ -6279,7 +5174,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `WebSearchCall = object { id, action, status, type }`
+      - `WebSearchCall object { id, action, status, type }`
 
         The results of a web search tool call. See the
         [web search guide](/docs/guides/tools-web-search) for more information.
@@ -6293,7 +5188,7 @@ as input for the model's response.
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
 
-          - `Search = object { query, type, queries, sources }`
+          - `Search object { query, type, queries, sources }`
 
             Action type "search" - Performs a web search query.
 
@@ -6325,7 +5220,7 @@ as input for the model's response.
 
                 The URL of the source.
 
-          - `OpenPage = object { type, url }`
+          - `OpenPage object { type, url }`
 
             Action type "open_page" - Opens a specific URL from search results.
 
@@ -6339,7 +5234,7 @@ as input for the model's response.
 
               The URL opened by the model.
 
-          - `FindInPage = object { pattern, type, url }`
+          - `FindInPage object { pattern, type, url }`
 
             Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -6375,7 +5270,7 @@ as input for the model's response.
 
           - `"web_search_call"`
 
-      - `FunctionCall = object { arguments, call_id, name, 4 more }`
+      - `FunctionCall object { arguments, call_id, name, 4 more }`
 
         A tool call to run a function. See the
         [function calling guide](/docs/guides/function-calling) for more information.
@@ -6417,7 +5312,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `FunctionCallOutput = object { call_id, output, type, 2 more }`
+      - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
         The output of a function tool call.
 
@@ -6437,7 +5332,7 @@ as input for the model's response.
 
             An array of content outputs (text, image, file) for the function tool call.
 
-            - `ResponseInputTextContent = object { text, type }`
+            - `ResponseInputTextContent object { text, type }`
 
               A text input to the model.
 
@@ -6451,7 +5346,7 @@ as input for the model's response.
 
                 - `"input_text"`
 
-            - `ResponseInputImageContent = object { type, detail, file_id, image_url }`
+            - `ResponseInputImageContent object { type, detail, file_id, image_url }`
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision)
 
@@ -6481,7 +5376,7 @@ as input for the model's response.
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-            - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
+            - `ResponseInputFileContent object { type, detail, file_data, 3 more }`
 
               A file input to the model.
 
@@ -6535,7 +5430,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `ToolSearchCall = object { arguments, type, id, 3 more }`
+      - `ToolSearchCall object { arguments, type, id, 3 more }`
 
         - `arguments: unknown`
 
@@ -6573,13 +5468,13 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `ToolSearchOutput = object { tools, type, id, 3 more }`
+      - `ToolSearchOutput object { tools, type, id, 3 more }`
 
         - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
           The loaded tool definitions returned by the tool search output.
 
-          - `Function = object { name, parameters, strict, 3 more }`
+          - `Function object { name, parameters, strict, 3 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -6609,7 +5504,7 @@ as input for the model's response.
 
               A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+          - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
             A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -6627,7 +5522,7 @@ as input for the model's response.
 
               A filter to apply.
 
-              - `ComparisonFilter = object { key, type, value }`
+              - `ComparisonFilter object { key, type, value }`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -6680,7 +5575,7 @@ as input for the model's response.
 
                     - `number`
 
-              - `CompoundFilter = object { filters, type }`
+              - `CompoundFilter object { filters, type }`
 
                 Combine multiple filters using `and` or `or`.
 
@@ -6688,58 +5583,9 @@ as input for the model's response.
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                  - `ComparisonFilter = object { key, type, value }`
+                  - `ComparisonFilter object { key, type, value }`
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" or "ne" or "gt" or 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string or number or boolean or array of string or number`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `array of string or number`
-
-                        - `string`
-
-                        - `number`
 
                   - `unknown`
 
@@ -6783,7 +5629,7 @@ as input for the model's response.
 
                 The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-          - `Computer = object { type }`
+          - `Computer object { type }`
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -6793,7 +5639,7 @@ as input for the model's response.
 
               - `"computer"`
 
-          - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+          - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
             A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -6825,7 +5671,7 @@ as input for the model's response.
 
               - `"computer_use_preview"`
 
-          - `WebSearch = object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, filters, search_context_size, user_location }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -6885,7 +5731,7 @@ as input for the model's response.
 
                 - `"approximate"`
 
-          - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+          - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
             Give the model access to additional tools via remote Model Context Protocol
             (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -6908,7 +5754,7 @@ as input for the model's response.
 
                 A string array of allowed tool names
 
-              - `McpToolFilter = object { read_only, tool_names }`
+              - `McpToolFilter object { read_only, tool_names }`
 
                 A filter object to specify which tools are allowed.
 
@@ -6974,7 +5820,7 @@ as input for the model's response.
 
               Specify which of the MCP server's tools require approval.
 
-              - `McpToolApprovalFilter = object { always, never }`
+              - `McpToolApprovalFilter object { always, never }`
 
                 Specify which of the MCP server's tools require approval. Can be
                 `always`, `never`, or a filter object associated with tools
@@ -7027,7 +5873,7 @@ as input for the model's response.
               The URL for the MCP server. One of `server_url` or `connector_id` must be
               provided.
 
-          - `CodeInterpreter = object { container, type }`
+          - `CodeInterpreter object { container, type }`
 
             A tool that runs Python code to help generate a response to a prompt.
 
@@ -7041,7 +5887,7 @@ as input for the model's response.
 
                 The container ID.
 
-              - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+              - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
                 Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -7071,7 +5917,7 @@ as input for the model's response.
 
                   Network access policy for the container.
 
-                  - `ContainerNetworkPolicyDisabled = object { type }`
+                  - `ContainerNetworkPolicyDisabled object { type }`
 
                     - `type: "disabled"`
 
@@ -7079,7 +5925,7 @@ as input for the model's response.
 
                       - `"disabled"`
 
-                  - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                     - `allowed_domains: array of string`
 
@@ -7113,7 +5959,7 @@ as input for the model's response.
 
               - `"code_interpreter"`
 
-          - `ImageGeneration = object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 9 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -7234,7 +6080,7 @@ as input for the model's response.
 
               - `"auto"`
 
-          - `LocalShell = object { type }`
+          - `LocalShell object { type }`
 
             A tool that allows the model to execute shell commands in a local environment.
 
@@ -7244,7 +6090,7 @@ as input for the model's response.
 
               - `"local_shell"`
 
-          - `Shell = object { type, environment }`
+          - `Shell object { type, environment }`
 
             A tool that allows the model to execute shell commands.
 
@@ -7256,7 +6102,7 @@ as input for the model's response.
 
             - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-              - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+              - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
                 - `type: "container_auto"`
 
@@ -7284,47 +6130,15 @@ as input for the model's response.
 
                   Network access policy for the container.
 
-                  - `ContainerNetworkPolicyDisabled = object { type }`
+                  - `ContainerNetworkPolicyDisabled object { type }`
 
-                    - `type: "disabled"`
-
-                      Disable outbound network access. Always `disabled`.
-
-                      - `"disabled"`
-
-                  - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                    - `allowed_domains: array of string`
-
-                      A list of allowed domains when type is `allowlist`.
-
-                    - `type: "allowlist"`
-
-                      Allow outbound network access only to specified domains. Always `allowlist`.
-
-                      - `"allowlist"`
-
-                    - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                      Optional domain-scoped secrets for allowlisted domains.
-
-                      - `domain: string`
-
-                        The domain associated with the secret.
-
-                      - `name: string`
-
-                        The name of the secret to inject for the domain.
-
-                      - `value: string`
-
-                        The secret value to inject for the domain.
+                  - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                 - `skills: optional array of SkillReference or InlineSkill`
 
                   An optional list of skills referenced by id or inline data.
 
-                  - `SkillReference = object { skill_id, type, version }`
+                  - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
@@ -7340,7 +6154,7 @@ as input for the model's response.
 
                       Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                  - `InlineSkill = object { description, name, source, type }`
+                  - `InlineSkill object { description, name, source, type }`
 
                     - `description: string`
 
@@ -7376,7 +6190,7 @@ as input for the model's response.
 
                       - `"inline"`
 
-              - `LocalEnvironment = object { type, skills }`
+              - `LocalEnvironment object { type, skills }`
 
                 - `type: "local"`
 
@@ -7400,7 +6214,7 @@ as input for the model's response.
 
                     The path to the directory containing the skill.
 
-              - `ContainerReference = object { container_id, type }`
+              - `ContainerReference object { container_id, type }`
 
                 - `container_id: string`
 
@@ -7412,7 +6226,7 @@ as input for the model's response.
 
                   - `"container_reference"`
 
-          - `Custom = object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -7438,7 +6252,7 @@ as input for the model's response.
 
               The input format for the custom tool. Default is unconstrained text.
 
-              - `Text = object { type }`
+              - `Text object { type }`
 
                 Unconstrained free-form text.
 
@@ -7448,7 +6262,7 @@ as input for the model's response.
 
                   - `"text"`
 
-              - `Grammar = object { definition, syntax, type }`
+              - `Grammar object { definition, syntax, type }`
 
                 A grammar defined by the user.
 
@@ -7470,7 +6284,7 @@ as input for the model's response.
 
                   - `"grammar"`
 
-          - `Namespace = object { description, name, tools, type }`
+          - `Namespace object { description, name, tools, type }`
 
             Groups function/custom tools under a shared namespace.
 
@@ -7486,7 +6300,7 @@ as input for the model's response.
 
               The function/custom tools available inside this namespace.
 
-              - `Function = object { name, type, defer_loading, 3 more }`
+              - `Function object { name, type, defer_loading, 3 more }`
 
                 - `name: string`
 
@@ -7504,7 +6318,7 @@ as input for the model's response.
 
                 - `strict: optional boolean`
 
-              - `Custom = object { name, type, defer_loading, 2 more }`
+              - `Custom object { name, type, defer_loading, 2 more }`
 
                 A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -7530,45 +6344,13 @@ as input for the model's response.
 
                   The input format for the custom tool. Default is unconstrained text.
 
-                  - `Text = object { type }`
-
-                    Unconstrained free-form text.
-
-                    - `type: "text"`
-
-                      Unconstrained text format. Always `text`.
-
-                      - `"text"`
-
-                  - `Grammar = object { definition, syntax, type }`
-
-                    A grammar defined by the user.
-
-                    - `definition: string`
-
-                      The grammar definition.
-
-                    - `syntax: "lark" or "regex"`
-
-                      The syntax of the grammar definition. One of `lark` or `regex`.
-
-                      - `"lark"`
-
-                      - `"regex"`
-
-                    - `type: "grammar"`
-
-                      Grammar format. Always `grammar`.
-
-                      - `"grammar"`
-
             - `type: "namespace"`
 
               The type of the tool. Always `namespace`.
 
               - `"namespace"`
 
-          - `ToolSearch = object { type, description, execution, parameters }`
+          - `ToolSearch object { type, description, execution, parameters }`
 
             Hosted or BYOT tool search configuration for deferred tools.
 
@@ -7594,7 +6376,7 @@ as input for the model's response.
 
               Parameter schema for a client-executed tool search tool.
 
-          - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+          - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -7648,7 +6430,7 @@ as input for the model's response.
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-          - `ApplyPatch = object { type }`
+          - `ApplyPatch object { type }`
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -7690,7 +6472,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `Reasoning = object { id, summary, type, 3 more }`
+      - `Reasoning object { id, summary, type, 3 more }`
 
         A description of the chain of thought used by a reasoning model while generating
         a response. Be sure to include these items in your `input` to the Responses API
@@ -7751,7 +6533,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `Compaction = object { encrypted_content, type, id }`
+      - `Compaction object { encrypted_content, type, id }`
 
         A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -7769,7 +6551,7 @@ as input for the model's response.
 
           The ID of the compaction item.
 
-      - `ImageGenerationCall = object { id, result, status, type }`
+      - `ImageGenerationCall object { id, result, status, type }`
 
         An image generation request made by the model.
 
@@ -7799,7 +6581,7 @@ as input for the model's response.
 
           - `"image_generation_call"`
 
-      - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+      - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
         A tool call to run code.
 
@@ -7820,7 +6602,7 @@ as input for the model's response.
           The outputs generated by the code interpreter, such as logs or images.
           Can be null if no outputs are available.
 
-          - `Logs = object { logs, type }`
+          - `Logs object { logs, type }`
 
             The logs output from the code interpreter.
 
@@ -7834,7 +6616,7 @@ as input for the model's response.
 
               - `"logs"`
 
-          - `Image = object { type, url }`
+          - `Image object { type, url }`
 
             The image output from the code interpreter.
 
@@ -7868,7 +6650,7 @@ as input for the model's response.
 
           - `"code_interpreter_call"`
 
-      - `LocalShellCall = object { id, action, call_id, 2 more }`
+      - `LocalShellCall object { id, action, call_id, 2 more }`
 
         A tool call to run a command on the local shell.
 
@@ -7926,7 +6708,7 @@ as input for the model's response.
 
           - `"local_shell_call"`
 
-      - `LocalShellCallOutput = object { id, output, type, status }`
+      - `LocalShellCallOutput object { id, output, type, status }`
 
         The output of a local shell tool call.
 
@@ -7954,7 +6736,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `ShellCall = object { action, call_id, type, 3 more }`
+      - `ShellCall object { action, call_id, type, 3 more }`
 
         A tool representing a request to execute one or more shell commands.
 
@@ -7992,41 +6774,9 @@ as input for the model's response.
 
           The environment to execute the shell commands in.
 
-          - `LocalEnvironment = object { type, skills }`
+          - `LocalEnvironment object { type, skills }`
 
-            - `type: "local"`
-
-              Use a local computer environment.
-
-              - `"local"`
-
-            - `skills: optional array of LocalSkill`
-
-              An optional list of skills.
-
-              - `description: string`
-
-                The description of the skill.
-
-              - `name: string`
-
-                The name of the skill.
-
-              - `path: string`
-
-                The path to the directory containing the skill.
-
-          - `ContainerReference = object { container_id, type }`
-
-            - `container_id: string`
-
-              The ID of the referenced container.
-
-            - `type: "container_reference"`
-
-              References a container created with the /v1/containers endpoint
-
-              - `"container_reference"`
+          - `ContainerReference object { container_id, type }`
 
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -8038,7 +6788,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `ShellCallOutput = object { call_id, output, type, 3 more }`
+      - `ShellCallOutput object { call_id, output, type, 3 more }`
 
         The streamed output items emitted by a shell tool call.
 
@@ -8054,7 +6804,7 @@ as input for the model's response.
 
             The exit or timeout outcome associated with this shell call.
 
-            - `Timeout = object { type }`
+            - `Timeout object { type }`
 
               Indicates that the shell call exceeded its configured time limit.
 
@@ -8064,7 +6814,7 @@ as input for the model's response.
 
                 - `"timeout"`
 
-            - `Exit = object { exit_code, type }`
+            - `Exit object { exit_code, type }`
 
               Indicates that the shell commands finished and returned an exit code.
 
@@ -8110,7 +6860,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `ApplyPatchCall = object { call_id, operation, status, 2 more }`
+      - `ApplyPatchCall object { call_id, operation, status, 2 more }`
 
         A tool call representing a request to create, delete, or update files using diff patches.
 
@@ -8122,7 +6872,7 @@ as input for the model's response.
 
           The specific create, delete, or update instruction for the apply_patch tool call.
 
-          - `CreateFile = object { diff, path, type }`
+          - `CreateFile object { diff, path, type }`
 
             Instruction for creating a new file via the apply_patch tool.
 
@@ -8140,7 +6890,7 @@ as input for the model's response.
 
               - `"create_file"`
 
-          - `DeleteFile = object { path, type }`
+          - `DeleteFile object { path, type }`
 
             Instruction for deleting an existing file via the apply_patch tool.
 
@@ -8154,7 +6904,7 @@ as input for the model's response.
 
               - `"delete_file"`
 
-          - `UpdateFile = object { diff, path, type }`
+          - `UpdateFile object { diff, path, type }`
 
             Instruction for updating an existing file via the apply_patch tool.
 
@@ -8190,7 +6940,7 @@ as input for the model's response.
 
           The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
-      - `ApplyPatchCallOutput = object { call_id, status, type, 2 more }`
+      - `ApplyPatchCallOutput object { call_id, status, type, 2 more }`
 
         The streamed output emitted by an apply patch tool call.
 
@@ -8220,7 +6970,7 @@ as input for the model's response.
 
           Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
 
-      - `McpListTools = object { id, server_label, tools, 2 more }`
+      - `McpListTools object { id, server_label, tools, 2 more }`
 
         A list of tools available on an MCP server.
 
@@ -8262,7 +7012,7 @@ as input for the model's response.
 
           Error message if the server could not list tools.
 
-      - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+      - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
         A request for human approval of a tool invocation.
 
@@ -8288,7 +7038,7 @@ as input for the model's response.
 
           - `"mcp_approval_request"`
 
-      - `McpApprovalResponse = object { approval_request_id, approve, type, 2 more }`
+      - `McpApprovalResponse object { approval_request_id, approve, type, 2 more }`
 
         A response to an MCP approval request.
 
@@ -8314,7 +7064,7 @@ as input for the model's response.
 
           Optional reason for the decision.
 
-      - `McpCall = object { id, arguments, name, 6 more }`
+      - `McpCall object { id, arguments, name, 6 more }`
 
         An invocation of a tool on an MCP server.
 
@@ -8367,7 +7117,7 @@ as input for the model's response.
 
           - `"failed"`
 
-      - `CustomToolCallOutput = object { call_id, output, type, id }`
+      - `CustomToolCallOutput object { call_id, output, type, id }`
 
         The output of a custom tool call from your code, being sent back to the model.
 
@@ -8388,83 +7138,17 @@ as input for the model's response.
 
             Text, image, or file output of the custom tool call.
 
-            - `ResponseInputText = object { text, type }`
+            - `ResponseInputText object { text, type }`
 
               A text input to the model.
 
-              - `text: string`
-
-                The text input to the model.
-
-              - `type: "input_text"`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
-            - `ResponseInputImage = object { detail, type, file_id, image_url }`
+            - `ResponseInputImage object { detail, type, file_id, image_url }`
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
-
-                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
-
-              - `type: "input_image"`
-
-                The type of the input item. Always `input_image`.
-
-                - `"input_image"`
-
-              - `file_id: optional string`
-
-                The ID of the file to be sent to the model.
-
-              - `image_url: optional string`
-
-                The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-            - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+            - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
               A file input to the model.
-
-              - `type: "input_file"`
-
-                The type of the input item. Always `input_file`.
-
-                - `"input_file"`
-
-              - `detail: optional "low" or "high"`
-
-                The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-                - `"low"`
-
-                - `"high"`
-
-              - `file_data: optional string`
-
-                The content of the file to be sent to the model.
-
-              - `file_id: optional string`
-
-                The ID of the file to be sent to the model.
-
-              - `file_url: optional string`
-
-                The URL of the file to be sent to the model.
-
-              - `filename: optional string`
-
-                The name of the file to be sent to the model.
 
         - `type: "custom_tool_call_output"`
 
@@ -8476,7 +7160,7 @@ as input for the model's response.
 
           The unique ID of the custom tool call output in the OpenAI platform.
 
-      - `CustomToolCall = object { call_id, input, name, 3 more }`
+      - `CustomToolCall object { call_id, input, name, 3 more }`
 
         A call to a custom tool created by the model.
 
@@ -8506,7 +7190,7 @@ as input for the model's response.
 
           The namespace of the custom tool being called.
 
-      - `ItemReference = object { id, type }`
+      - `ItemReference object { id, type }`
 
         An internal identifier for an item to reference.
 
@@ -8743,196 +7427,11 @@ as input for the model's response.
       the model, you might consider using the `output_text` property where
       supported in SDKs.
 
-    - `ResponseOutputMessage = object { id, content, role, 3 more }`
+    - `ResponseOutputMessage object { id, content, role, 3 more }`
 
       An output message from the model.
 
-      - `id: string`
-
-        The unique ID of the output message.
-
-      - `content: array of ResponseOutputText or ResponseOutputRefusal`
-
-        The content of the output message.
-
-        - `ResponseOutputText = object { annotations, logprobs, text, type }`
-
-          A text output from the model.
-
-          - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
-
-            The annotations of the text output.
-
-            - `FileCitation = object { file_id, filename, index, type }`
-
-              A citation to a file.
-
-              - `file_id: string`
-
-                The ID of the file.
-
-              - `filename: string`
-
-                The filename of the file cited.
-
-              - `index: number`
-
-                The index of the file in the list of files.
-
-              - `type: "file_citation"`
-
-                The type of the file citation. Always `file_citation`.
-
-                - `"file_citation"`
-
-            - `URLCitation = object { end_index, start_index, title, 2 more }`
-
-              A citation for a web resource used to generate a model response.
-
-              - `end_index: number`
-
-                The index of the last character of the URL citation in the message.
-
-              - `start_index: number`
-
-                The index of the first character of the URL citation in the message.
-
-              - `title: string`
-
-                The title of the web resource.
-
-              - `type: "url_citation"`
-
-                The type of the URL citation. Always `url_citation`.
-
-                - `"url_citation"`
-
-              - `url: string`
-
-                The URL of the web resource.
-
-            - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
-
-              A citation for a container file used to generate a model response.
-
-              - `container_id: string`
-
-                The ID of the container file.
-
-              - `end_index: number`
-
-                The index of the last character of the container file citation in the message.
-
-              - `file_id: string`
-
-                The ID of the file.
-
-              - `filename: string`
-
-                The filename of the container file cited.
-
-              - `start_index: number`
-
-                The index of the first character of the container file citation in the message.
-
-              - `type: "container_file_citation"`
-
-                The type of the container file citation. Always `container_file_citation`.
-
-                - `"container_file_citation"`
-
-            - `FilePath = object { file_id, index, type }`
-
-              A path to a file.
-
-              - `file_id: string`
-
-                The ID of the file.
-
-              - `index: number`
-
-                The index of the file in the list of files.
-
-              - `type: "file_path"`
-
-                The type of the file path. Always `file_path`.
-
-                - `"file_path"`
-
-          - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
-
-            - `token: string`
-
-            - `bytes: array of number`
-
-            - `logprob: number`
-
-            - `top_logprobs: array of object { token, bytes, logprob }`
-
-              - `token: string`
-
-              - `bytes: array of number`
-
-              - `logprob: number`
-
-          - `text: string`
-
-            The text output from the model.
-
-          - `type: "output_text"`
-
-            The type of the output text. Always `output_text`.
-
-            - `"output_text"`
-
-        - `ResponseOutputRefusal = object { refusal, type }`
-
-          A refusal from the model.
-
-          - `refusal: string`
-
-            The refusal explanation from the model.
-
-          - `type: "refusal"`
-
-            The type of the refusal. Always `refusal`.
-
-            - `"refusal"`
-
-      - `role: "assistant"`
-
-        The role of the output message. Always `assistant`.
-
-        - `"assistant"`
-
-      - `status: "in_progress" or "completed" or "incomplete"`
-
-        The status of the message input. One of `in_progress`, `completed`, or
-        `incomplete`. Populated when input items are returned via API.
-
-        - `"in_progress"`
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-      - `type: "message"`
-
-        The type of the output message. Always `message`.
-
-        - `"message"`
-
-      - `phase: optional "commentary" or "final_answer"`
-
-        Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
-        For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
-        phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-        - `"commentary"`
-
-        - `"final_answer"`
-
-    - `FileSearchCall = object { id, queries, status, 2 more }`
+    - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
       [file search guide](/docs/guides/tools-file-search) for more information.
@@ -9000,7 +7499,7 @@ as input for the model's response.
 
           The text that was retrieved from the file.
 
-    - `FunctionCall = object { arguments, call_id, name, 4 more }`
+    - `FunctionCall object { arguments, call_id, name, 4 more }`
 
       A tool call to run a function. See the
       [function calling guide](/docs/guides/function-calling) for more information.
@@ -9042,7 +7541,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+    - `FunctionCallOutput object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -9065,83 +7564,17 @@ as input for the model's response.
 
           Text, image, or file output of the function call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -9164,7 +7597,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `WebSearchCall = object { id, action, status, type }`
+    - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
       [web search guide](/docs/guides/tools-web-search) for more information.
@@ -9178,7 +7611,7 @@ as input for the model's response.
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
 
-        - `Search = object { query, type, queries, sources }`
+        - `Search object { query, type, queries, sources }`
 
           Action type "search" - Performs a web search query.
 
@@ -9210,7 +7643,7 @@ as input for the model's response.
 
               The URL of the source.
 
-        - `OpenPage = object { type, url }`
+        - `OpenPage object { type, url }`
 
           Action type "open_page" - Opens a specific URL from search results.
 
@@ -9224,7 +7657,7 @@ as input for the model's response.
 
             The URL opened by the model.
 
-        - `FindInPage = object { pattern, type, url }`
+        - `FindInPage object { pattern, type, url }`
 
           Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -9260,7 +7693,7 @@ as input for the model's response.
 
         - `"web_search_call"`
 
-    - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
       [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -9310,394 +7743,12 @@ as input for the model's response.
 
         A click action.
 
-        - `Click = object { button, type, x, 2 more }`
-
-          A click action.
-
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick = object { keys, type, x, y }`
-
-          A double click action.
-
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag = object { path, type, keys }`
-
-          A drag action.
-
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress = object { keys, type }`
-
-          A collection of keypresses the model would like to perform.
-
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move = object { type, x, y, keys }`
-
-          A mouse move action.
-
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot = object { type }`
-
-          A screenshot action.
-
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
-
-          A scroll action.
-
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type = object { text, type }`
-
-          An action to type in text.
-
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait = object { type }`
-
-          A wait action.
-
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
       - `actions: optional ComputerActionList`
 
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, 2 more }`
-
-          A click action.
-
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick = object { keys, type, x, y }`
-
-          A double click action.
-
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag = object { path, type, keys }`
-
-          A drag action.
-
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress = object { keys, type }`
-
-          A collection of keypresses the model would like to perform.
-
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move = object { type, x, y, keys }`
-
-          A mouse move action.
-
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot = object { type }`
-
-          A screenshot action.
-
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
-
-          A scroll action.
-
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type = object { text, type }`
-
-          An action to type in text.
-
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait = object { type }`
-
-          A wait action.
-
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+    - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -9710,21 +7761,6 @@ as input for the model's response.
       - `output: ResponseComputerToolCallOutputScreenshot`
 
         A computer screenshot image used with the computer use tool.
-
-        - `type: "computer_screenshot"`
-
-          Specifies the event type. For a computer screenshot, this property is
-          always set to `computer_screenshot`.
-
-          - `"computer_screenshot"`
-
-        - `file_id: optional string`
-
-          The identifier of an uploaded file that contains the screenshot.
-
-        - `image_url: optional string`
-
-          The URL of the screenshot image.
 
       - `status: "completed" or "incomplete" or "failed" or "in_progress"`
 
@@ -9766,7 +7802,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `Reasoning = object { id, summary, type, 3 more }`
+    - `Reasoning object { id, summary, type, 3 more }`
 
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
@@ -9788,8 +7824,6 @@ as input for the model's response.
         - `type: "summary_text"`
 
           The type of the object. Always `summary_text`.
-
-          - `"summary_text"`
 
       - `type: "reasoning"`
 
@@ -9827,7 +7861,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
+    - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
       - `id: string`
 
@@ -9869,7 +7903,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchOutput = object { id, call_id, execution, 4 more }`
+    - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
       - `id: string`
 
@@ -9901,7 +7935,7 @@ as input for the model's response.
 
         The loaded tool definitions returned by tool search.
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -9931,7 +7965,7 @@ as input for the model's response.
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -9949,129 +7983,13 @@ as input for the model's response.
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-              - `key: string`
-
-                The key to compare against the value.
-
-              - `type: "eq" or "ne" or "gt" or 5 more`
-
-                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                - `eq`: equals
-                - `ne`: not equal
-                - `gt`: greater than
-                - `gte`: greater than or equal
-                - `lt`: less than
-                - `lte`: less than or equal
-                - `in`: in
-                - `nin`: not in
-
-                - `"eq"`
-
-                - `"ne"`
-
-                - `"gt"`
-
-                - `"gte"`
-
-                - `"lt"`
-
-                - `"lte"`
-
-                - `"in"`
-
-                - `"nin"`
-
-              - `value: string or number or boolean or array of string or number`
-
-                The value to compare against the attribute key; supports string, number, or boolean types.
-
-                - `string`
-
-                - `number`
-
-                - `boolean`
-
-                - `array of string or number`
-
-                  - `string`
-
-                  - `number`
-
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of ComparisonFilter or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter = object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 
@@ -10105,7 +8023,7 @@ as input for the model's response.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -10115,7 +8033,7 @@ as input for the model's response.
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -10147,7 +8065,7 @@ as input for the model's response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -10207,7 +8125,7 @@ as input for the model's response.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -10230,7 +8148,7 @@ as input for the model's response.
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -10296,7 +8214,7 @@ as input for the model's response.
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -10349,7 +8267,7 @@ as input for the model's response.
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -10363,7 +8281,7 @@ as input for the model's response.
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -10393,41 +8311,9 @@ as input for the model's response.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
           - `type: "code_interpreter"`
 
@@ -10435,7 +8321,7 @@ as input for the model's response.
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -10556,7 +8442,7 @@ as input for the model's response.
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -10566,7 +8452,7 @@ as input for the model's response.
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -10578,163 +8464,13 @@ as input for the model's response.
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-              - `type: "container_auto"`
+            - `LocalEnvironment object { type, skills }`
 
-                Automatically creates a container for this request
+            - `ContainerReference object { container_id, type }`
 
-                - `"container_auto"`
-
-              - `file_ids: optional array of string`
-
-                An optional list of uploaded files to make available to your code.
-
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
-
-                The memory limit for the container.
-
-                - `"1g"`
-
-                - `"4g"`
-
-                - `"16g"`
-
-                - `"64g"`
-
-              - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
-
-                Network access policy for the container.
-
-                - `ContainerNetworkPolicyDisabled = object { type }`
-
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
-
-              - `skills: optional array of SkillReference or InlineSkill`
-
-                An optional list of skills referenced by id or inline data.
-
-                - `SkillReference = object { skill_id, type, version }`
-
-                  - `skill_id: string`
-
-                    The ID of the referenced skill.
-
-                  - `type: "skill_reference"`
-
-                    References a skill created with the /v1/skills endpoint.
-
-                    - `"skill_reference"`
-
-                  - `version: optional string`
-
-                    Optional skill version. Use a positive integer or 'latest'. Omit for default.
-
-                - `InlineSkill = object { description, name, source, type }`
-
-                  - `description: string`
-
-                    The description of the skill.
-
-                  - `name: string`
-
-                    The name of the skill.
-
-                  - `source: InlineSkillSource`
-
-                    Inline skill payload
-
-                    - `data: string`
-
-                      Base64-encoded skill zip bundle.
-
-                    - `media_type: "application/zip"`
-
-                      The media type of the inline skill payload. Must be `application/zip`.
-
-                      - `"application/zip"`
-
-                    - `type: "base64"`
-
-                      The type of the inline skill source. Must be `base64`.
-
-                      - `"base64"`
-
-                  - `type: "inline"`
-
-                    Defines an inline skill for this request.
-
-                    - `"inline"`
-
-            - `LocalEnvironment = object { type, skills }`
-
-              - `type: "local"`
-
-                Use a local computer environment.
-
-                - `"local"`
-
-              - `skills: optional array of LocalSkill`
-
-                An optional list of skills.
-
-                - `description: string`
-
-                  The description of the skill.
-
-                - `name: string`
-
-                  The name of the skill.
-
-                - `path: string`
-
-                  The path to the directory containing the skill.
-
-            - `ContainerReference = object { container_id, type }`
-
-              - `container_id: string`
-
-                The ID of the referenced container.
-
-              - `type: "container_reference"`
-
-                References a container created with the /v1/containers endpoint
-
-                - `"container_reference"`
-
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -10760,39 +8496,7 @@ as input for the model's response.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
-
-              Unconstrained free-form text.
-
-              - `type: "text"`
-
-                Unconstrained text format. Always `text`.
-
-                - `"text"`
-
-            - `Grammar = object { definition, syntax, type }`
-
-              A grammar defined by the user.
-
-              - `definition: string`
-
-                The grammar definition.
-
-              - `syntax: "lark" or "regex"`
-
-                The syntax of the grammar definition. One of `lark` or `regex`.
-
-                - `"lark"`
-
-                - `"regex"`
-
-              - `type: "grammar"`
-
-                Grammar format. Always `grammar`.
-
-                - `"grammar"`
-
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -10808,7 +8512,7 @@ as input for the model's response.
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -10826,7 +8530,7 @@ as input for the model's response.
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -10852,45 +8556,13 @@ as input for the model's response.
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -10916,7 +8588,7 @@ as input for the model's response.
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -10970,7 +8642,7 @@ as input for the model's response.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -10990,7 +8662,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `Compaction = object { id, encrypted_content, type, created_by }`
+    - `Compaction object { id, encrypted_content, type, created_by }`
 
       A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -11012,7 +8684,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall = object { id, result, status, type }`
+    - `ImageGenerationCall object { id, result, status, type }`
 
       An image generation request made by the model.
 
@@ -11042,7 +8714,7 @@ as input for the model's response.
 
         - `"image_generation_call"`
 
-    - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+    - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
       A tool call to run code.
 
@@ -11063,7 +8735,7 @@ as input for the model's response.
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
 
-        - `Logs = object { logs, type }`
+        - `Logs object { logs, type }`
 
           The logs output from the code interpreter.
 
@@ -11077,7 +8749,7 @@ as input for the model's response.
 
             - `"logs"`
 
-        - `Image = object { type, url }`
+        - `Image object { type, url }`
 
           The image output from the code interpreter.
 
@@ -11111,7 +8783,7 @@ as input for the model's response.
 
         - `"code_interpreter_call"`
 
-    - `LocalShellCall = object { id, action, call_id, 2 more }`
+    - `LocalShellCall object { id, action, call_id, 2 more }`
 
       A tool call to run a command on the local shell.
 
@@ -11169,7 +8841,7 @@ as input for the model's response.
 
         - `"local_shell_call"`
 
-    - `LocalShellCallOutput = object { id, output, type, status }`
+    - `LocalShellCallOutput object { id, output, type, status }`
 
       The output of a local shell tool call.
 
@@ -11197,7 +8869,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `ShellCall = object { id, action, call_id, 4 more }`
+    - `ShellCall object { id, action, call_id, 4 more }`
 
       A tool call that executes one or more shell commands in a managed environment.
 
@@ -11227,7 +8899,7 @@ as input for the model's response.
 
         Represents the use of a local environment to perform shell actions.
 
-        - `ResponseLocalEnvironment = object { type }`
+        - `ResponseLocalEnvironment object { type }`
 
           Represents the use of a local environment to perform shell actions.
 
@@ -11237,7 +8909,7 @@ as input for the model's response.
 
             - `"local"`
 
-        - `ResponseContainerReference = object { container_id, type }`
+        - `ResponseContainerReference object { container_id, type }`
 
           Represents a container created with /v1/containers.
 
@@ -11269,7 +8941,7 @@ as input for the model's response.
 
         The ID of the entity that created this tool call.
 
-    - `ShellCallOutput = object { id, call_id, max_output_length, 4 more }`
+    - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
 
       The output of a shell tool call that was emitted.
 
@@ -11293,7 +8965,7 @@ as input for the model's response.
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
-          - `Timeout = object { type }`
+          - `Timeout object { type }`
 
             Indicates that the shell call exceeded its configured time limit.
 
@@ -11303,7 +8975,7 @@ as input for the model's response.
 
               - `"timeout"`
 
-          - `Exit = object { exit_code, type }`
+          - `Exit object { exit_code, type }`
 
             Indicates that the shell commands finished and returned an exit code.
 
@@ -11349,7 +9021,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `ApplyPatchCall = object { id, call_id, operation, 3 more }`
+    - `ApplyPatchCall object { id, call_id, operation, 3 more }`
 
       A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -11365,7 +9037,7 @@ as input for the model's response.
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
-        - `CreateFile = object { diff, path, type }`
+        - `CreateFile object { diff, path, type }`
 
           Instruction describing how to create a file via the apply_patch tool.
 
@@ -11383,7 +9055,7 @@ as input for the model's response.
 
             - `"create_file"`
 
-        - `DeleteFile = object { path, type }`
+        - `DeleteFile object { path, type }`
 
           Instruction describing how to delete a file via the apply_patch tool.
 
@@ -11397,7 +9069,7 @@ as input for the model's response.
 
             - `"delete_file"`
 
-        - `UpdateFile = object { diff, path, type }`
+        - `UpdateFile object { diff, path, type }`
 
           Instruction describing how to update a file via the apply_patch tool.
 
@@ -11433,7 +9105,7 @@ as input for the model's response.
 
         The ID of the entity that created this tool call.
 
-    - `ApplyPatchCallOutput = object { id, call_id, status, 3 more }`
+    - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
 
       The output emitted by an apply patch tool call.
 
@@ -11467,7 +9139,7 @@ as input for the model's response.
 
         Optional textual output returned by the apply patch tool.
 
-    - `McpCall = object { id, arguments, name, 6 more }`
+    - `McpCall object { id, arguments, name, 6 more }`
 
       An invocation of a tool on an MCP server.
 
@@ -11520,7 +9192,7 @@ as input for the model's response.
 
         - `"failed"`
 
-    - `McpListTools = object { id, server_label, tools, 2 more }`
+    - `McpListTools object { id, server_label, tools, 2 more }`
 
       A list of tools available on an MCP server.
 
@@ -11562,7 +9234,7 @@ as input for the model's response.
 
         Error message if the server could not list tools.
 
-    - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+    - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
       A request for human approval of a tool invocation.
 
@@ -11588,7 +9260,7 @@ as input for the model's response.
 
         - `"mcp_approval_request"`
 
-    - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+    - `McpApprovalResponse object { id, approval_request_id, approve, 2 more }`
 
       A response to an MCP approval request.
 
@@ -11614,7 +9286,7 @@ as input for the model's response.
 
         Optional reason for the decision.
 
-    - `CustomToolCall = object { call_id, input, name, 3 more }`
+    - `CustomToolCall object { call_id, input, name, 3 more }`
 
       A call to a custom tool created by the model.
 
@@ -11644,7 +9316,7 @@ as input for the model's response.
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput = object { id, call_id, output, 3 more }`
+    - `CustomToolCallOutput object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -11667,83 +9339,17 @@ as input for the model's response.
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -11798,7 +9404,7 @@ as input for the model's response.
 
       - `"required"`
 
-    - `ToolChoiceAllowed = object { mode, tools, type }`
+    - `ToolChoiceAllowed object { mode, tools, type }`
 
       Constrains the tools available to the model to a pre-defined set.
 
@@ -11835,7 +9441,7 @@ as input for the model's response.
 
         - `"allowed_tools"`
 
-    - `ToolChoiceTypes = object { type }`
+    - `ToolChoiceTypes object { type }`
 
       Indicates that the model should use a built-in tool to generate a response.
       [Learn more about built-in tools](/docs/guides/tools).
@@ -11871,7 +9477,7 @@ as input for the model's response.
 
         - `"code_interpreter"`
 
-    - `ToolChoiceFunction = object { name, type }`
+    - `ToolChoiceFunction object { name, type }`
 
       Use this option to force the model to call a specific function.
 
@@ -11885,7 +9491,7 @@ as input for the model's response.
 
         - `"function"`
 
-    - `ToolChoiceMcp = object { server_label, type, name }`
+    - `ToolChoiceMcp object { server_label, type, name }`
 
       Use this option to force the model to call a specific tool on a remote MCP server.
 
@@ -11903,7 +9509,7 @@ as input for the model's response.
 
         The name of the tool to call on the server.
 
-    - `ToolChoiceCustom = object { name, type }`
+    - `ToolChoiceCustom object { name, type }`
 
       Use this option to force the model to call a specific custom tool.
 
@@ -11917,7 +9523,7 @@ as input for the model's response.
 
         - `"custom"`
 
-    - `ToolChoiceApplyPatch = object { type }`
+    - `ToolChoiceApplyPatch object { type }`
 
       Forces the model to call the apply_patch tool when executing a tool call.
 
@@ -11927,7 +9533,7 @@ as input for the model's response.
 
         - `"apply_patch"`
 
-    - `ToolChoiceShell = object { type }`
+    - `ToolChoiceShell object { type }`
 
       Forces the model to call the shell tool when a tool call is required.
 
@@ -11957,7 +9563,7 @@ as input for the model's response.
       [function calling](/docs/guides/function-calling). You can also use
       custom tools to call your own code.
 
-    - `Function = object { name, parameters, strict, 3 more }`
+    - `Function object { name, parameters, strict, 3 more }`
 
       Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -11987,7 +9593,7 @@ as input for the model's response.
 
         A description of the function. Used by the model to determine whether or not to call the function.
 
-    - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+    - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
       A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -12005,129 +9611,13 @@ as input for the model's response.
 
         A filter to apply.
 
-        - `ComparisonFilter = object { key, type, value }`
+        - `ComparisonFilter object { key, type, value }`
 
           A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-          - `key: string`
-
-            The key to compare against the value.
-
-          - `type: "eq" or "ne" or "gt" or 5 more`
-
-            Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-            - `eq`: equals
-            - `ne`: not equal
-            - `gt`: greater than
-            - `gte`: greater than or equal
-            - `lt`: less than
-            - `lte`: less than or equal
-            - `in`: in
-            - `nin`: not in
-
-            - `"eq"`
-
-            - `"ne"`
-
-            - `"gt"`
-
-            - `"gte"`
-
-            - `"lt"`
-
-            - `"lte"`
-
-            - `"in"`
-
-            - `"nin"`
-
-          - `value: string or number or boolean or array of string or number`
-
-            The value to compare against the attribute key; supports string, number, or boolean types.
-
-            - `string`
-
-            - `number`
-
-            - `boolean`
-
-            - `array of string or number`
-
-              - `string`
-
-              - `number`
-
-        - `CompoundFilter = object { filters, type }`
+        - `CompoundFilter object { filters, type }`
 
           Combine multiple filters using `and` or `or`.
-
-          - `filters: array of ComparisonFilter or unknown`
-
-            Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-            - `ComparisonFilter = object { key, type, value }`
-
-              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-              - `key: string`
-
-                The key to compare against the value.
-
-              - `type: "eq" or "ne" or "gt" or 5 more`
-
-                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                - `eq`: equals
-                - `ne`: not equal
-                - `gt`: greater than
-                - `gte`: greater than or equal
-                - `lt`: less than
-                - `lte`: less than or equal
-                - `in`: in
-                - `nin`: not in
-
-                - `"eq"`
-
-                - `"ne"`
-
-                - `"gt"`
-
-                - `"gte"`
-
-                - `"lt"`
-
-                - `"lte"`
-
-                - `"in"`
-
-                - `"nin"`
-
-              - `value: string or number or boolean or array of string or number`
-
-                The value to compare against the attribute key; supports string, number, or boolean types.
-
-                - `string`
-
-                - `number`
-
-                - `boolean`
-
-                - `array of string or number`
-
-                  - `string`
-
-                  - `number`
-
-            - `unknown`
-
-          - `type: "and" or "or"`
-
-            Type of operation: `and` or `or`.
-
-            - `"and"`
-
-            - `"or"`
 
       - `max_num_results: optional number`
 
@@ -12161,7 +9651,7 @@ as input for the model's response.
 
           The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-    - `Computer = object { type }`
+    - `Computer object { type }`
 
       A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -12171,7 +9661,7 @@ as input for the model's response.
 
         - `"computer"`
 
-    - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+    - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
       A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -12203,7 +9693,7 @@ as input for the model's response.
 
         - `"computer_use_preview"`
 
-    - `WebSearch = object { type, filters, search_context_size, user_location }`
+    - `WebSearch object { type, filters, search_context_size, user_location }`
 
       Search the Internet for sources related to the prompt. Learn more about the
       [web search tool](/docs/guides/tools-web-search).
@@ -12263,7 +9753,7 @@ as input for the model's response.
 
           - `"approximate"`
 
-    - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+    - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
       Give the model access to additional tools via remote Model Context Protocol
       (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -12286,7 +9776,7 @@ as input for the model's response.
 
           A string array of allowed tool names
 
-        - `McpToolFilter = object { read_only, tool_names }`
+        - `McpToolFilter object { read_only, tool_names }`
 
           A filter object to specify which tools are allowed.
 
@@ -12352,7 +9842,7 @@ as input for the model's response.
 
         Specify which of the MCP server's tools require approval.
 
-        - `McpToolApprovalFilter = object { always, never }`
+        - `McpToolApprovalFilter object { always, never }`
 
           Specify which of the MCP server's tools require approval. Can be
           `always`, `never`, or a filter object associated with tools
@@ -12405,7 +9895,7 @@ as input for the model's response.
         The URL for the MCP server. One of `server_url` or `connector_id` must be
         provided.
 
-    - `CodeInterpreter = object { container, type }`
+    - `CodeInterpreter object { container, type }`
 
       A tool that runs Python code to help generate a response to a prompt.
 
@@ -12419,7 +9909,7 @@ as input for the model's response.
 
           The container ID.
 
-        - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+        - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
           Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -12449,41 +9939,9 @@ as input for the model's response.
 
             Network access policy for the container.
 
-            - `ContainerNetworkPolicyDisabled = object { type }`
+            - `ContainerNetworkPolicyDisabled object { type }`
 
-              - `type: "disabled"`
-
-                Disable outbound network access. Always `disabled`.
-
-                - `"disabled"`
-
-            - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-              - `allowed_domains: array of string`
-
-                A list of allowed domains when type is `allowlist`.
-
-              - `type: "allowlist"`
-
-                Allow outbound network access only to specified domains. Always `allowlist`.
-
-                - `"allowlist"`
-
-              - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                Optional domain-scoped secrets for allowlisted domains.
-
-                - `domain: string`
-
-                  The domain associated with the secret.
-
-                - `name: string`
-
-                  The name of the secret to inject for the domain.
-
-                - `value: string`
-
-                  The secret value to inject for the domain.
+            - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
       - `type: "code_interpreter"`
 
@@ -12491,7 +9949,7 @@ as input for the model's response.
 
         - `"code_interpreter"`
 
-    - `ImageGeneration = object { type, action, background, 9 more }`
+    - `ImageGeneration object { type, action, background, 9 more }`
 
       A tool that generates images using the GPT image models.
 
@@ -12612,7 +10070,7 @@ as input for the model's response.
 
         - `"auto"`
 
-    - `LocalShell = object { type }`
+    - `LocalShell object { type }`
 
       A tool that allows the model to execute shell commands in a local environment.
 
@@ -12622,7 +10080,7 @@ as input for the model's response.
 
         - `"local_shell"`
 
-    - `Shell = object { type, environment }`
+    - `Shell object { type, environment }`
 
       A tool that allows the model to execute shell commands.
 
@@ -12634,163 +10092,13 @@ as input for the model's response.
 
       - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-        - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+        - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-          - `type: "container_auto"`
+        - `LocalEnvironment object { type, skills }`
 
-            Automatically creates a container for this request
+        - `ContainerReference object { container_id, type }`
 
-            - `"container_auto"`
-
-          - `file_ids: optional array of string`
-
-            An optional list of uploaded files to make available to your code.
-
-          - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
-
-            The memory limit for the container.
-
-            - `"1g"`
-
-            - `"4g"`
-
-            - `"16g"`
-
-            - `"64g"`
-
-          - `network_policy: optional ContainerNetworkPolicyDisabled or ContainerNetworkPolicyAllowlist`
-
-            Network access policy for the container.
-
-            - `ContainerNetworkPolicyDisabled = object { type }`
-
-              - `type: "disabled"`
-
-                Disable outbound network access. Always `disabled`.
-
-                - `"disabled"`
-
-            - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-              - `allowed_domains: array of string`
-
-                A list of allowed domains when type is `allowlist`.
-
-              - `type: "allowlist"`
-
-                Allow outbound network access only to specified domains. Always `allowlist`.
-
-                - `"allowlist"`
-
-              - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                Optional domain-scoped secrets for allowlisted domains.
-
-                - `domain: string`
-
-                  The domain associated with the secret.
-
-                - `name: string`
-
-                  The name of the secret to inject for the domain.
-
-                - `value: string`
-
-                  The secret value to inject for the domain.
-
-          - `skills: optional array of SkillReference or InlineSkill`
-
-            An optional list of skills referenced by id or inline data.
-
-            - `SkillReference = object { skill_id, type, version }`
-
-              - `skill_id: string`
-
-                The ID of the referenced skill.
-
-              - `type: "skill_reference"`
-
-                References a skill created with the /v1/skills endpoint.
-
-                - `"skill_reference"`
-
-              - `version: optional string`
-
-                Optional skill version. Use a positive integer or 'latest'. Omit for default.
-
-            - `InlineSkill = object { description, name, source, type }`
-
-              - `description: string`
-
-                The description of the skill.
-
-              - `name: string`
-
-                The name of the skill.
-
-              - `source: InlineSkillSource`
-
-                Inline skill payload
-
-                - `data: string`
-
-                  Base64-encoded skill zip bundle.
-
-                - `media_type: "application/zip"`
-
-                  The media type of the inline skill payload. Must be `application/zip`.
-
-                  - `"application/zip"`
-
-                - `type: "base64"`
-
-                  The type of the inline skill source. Must be `base64`.
-
-                  - `"base64"`
-
-              - `type: "inline"`
-
-                Defines an inline skill for this request.
-
-                - `"inline"`
-
-        - `LocalEnvironment = object { type, skills }`
-
-          - `type: "local"`
-
-            Use a local computer environment.
-
-            - `"local"`
-
-          - `skills: optional array of LocalSkill`
-
-            An optional list of skills.
-
-            - `description: string`
-
-              The description of the skill.
-
-            - `name: string`
-
-              The name of the skill.
-
-            - `path: string`
-
-              The path to the directory containing the skill.
-
-        - `ContainerReference = object { container_id, type }`
-
-          - `container_id: string`
-
-            The ID of the referenced container.
-
-          - `type: "container_reference"`
-
-            References a container created with the /v1/containers endpoint
-
-            - `"container_reference"`
-
-    - `Custom = object { name, type, defer_loading, 2 more }`
+    - `Custom object { name, type, defer_loading, 2 more }`
 
       A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -12816,39 +10124,7 @@ as input for the model's response.
 
         The input format for the custom tool. Default is unconstrained text.
 
-        - `Text = object { type }`
-
-          Unconstrained free-form text.
-
-          - `type: "text"`
-
-            Unconstrained text format. Always `text`.
-
-            - `"text"`
-
-        - `Grammar = object { definition, syntax, type }`
-
-          A grammar defined by the user.
-
-          - `definition: string`
-
-            The grammar definition.
-
-          - `syntax: "lark" or "regex"`
-
-            The syntax of the grammar definition. One of `lark` or `regex`.
-
-            - `"lark"`
-
-            - `"regex"`
-
-          - `type: "grammar"`
-
-            Grammar format. Always `grammar`.
-
-            - `"grammar"`
-
-    - `Namespace = object { description, name, tools, type }`
+    - `Namespace object { description, name, tools, type }`
 
       Groups function/custom tools under a shared namespace.
 
@@ -12864,7 +10140,7 @@ as input for the model's response.
 
         The function/custom tools available inside this namespace.
 
-        - `Function = object { name, type, defer_loading, 3 more }`
+        - `Function object { name, type, defer_loading, 3 more }`
 
           - `name: string`
 
@@ -12882,7 +10158,7 @@ as input for the model's response.
 
           - `strict: optional boolean`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -12908,45 +10184,13 @@ as input for the model's response.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
-
-              Unconstrained free-form text.
-
-              - `type: "text"`
-
-                Unconstrained text format. Always `text`.
-
-                - `"text"`
-
-            - `Grammar = object { definition, syntax, type }`
-
-              A grammar defined by the user.
-
-              - `definition: string`
-
-                The grammar definition.
-
-              - `syntax: "lark" or "regex"`
-
-                The syntax of the grammar definition. One of `lark` or `regex`.
-
-                - `"lark"`
-
-                - `"regex"`
-
-              - `type: "grammar"`
-
-                Grammar format. Always `grammar`.
-
-                - `"grammar"`
-
       - `type: "namespace"`
 
         The type of the tool. Always `namespace`.
 
         - `"namespace"`
 
-    - `ToolSearch = object { type, description, execution, parameters }`
+    - `ToolSearch object { type, description, execution, parameters }`
 
       Hosted or BYOT tool search configuration for deferred tools.
 
@@ -12972,7 +10216,7 @@ as input for the model's response.
 
         Parameter schema for a client-executed tool search tool.
 
-    - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+    - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
       This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -13026,7 +10270,7 @@ as input for the model's response.
 
           The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-    - `ApplyPatch = object { type }`
+    - `ApplyPatch object { type }`
 
       Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -13100,83 +10344,17 @@ as input for the model's response.
 
       - `string`
 
-      - `ResponseInputText = object { text, type }`
+      - `ResponseInputText object { text, type }`
 
         A text input to the model.
 
-        - `text: string`
-
-          The text input to the model.
-
-        - `type: "input_text"`
-
-          The type of the input item. Always `input_text`.
-
-          - `"input_text"`
-
-      - `ResponseInputImage = object { detail, type, file_id, image_url }`
+      - `ResponseInputImage object { detail, type, file_id, image_url }`
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto" or "original"`
-
-          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-          - `"low"`
-
-          - `"high"`
-
-          - `"auto"`
-
-          - `"original"`
-
-        - `type: "input_image"`
-
-          The type of the input item. Always `input_image`.
-
-          - `"input_image"`
-
-        - `file_id: optional string`
-
-          The ID of the file to be sent to the model.
-
-        - `image_url: optional string`
-
-          The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
         A file input to the model.
-
-        - `type: "input_file"`
-
-          The type of the input item. Always `input_file`.
-
-          - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-          - `"low"`
-
-          - `"high"`
-
-        - `file_data: optional string`
-
-          The content of the file to be sent to the model.
-
-        - `file_id: optional string`
-
-          The ID of the file to be sent to the model.
-
-        - `file_url: optional string`
-
-          The URL of the file to be sent to the model.
-
-        - `filename: optional string`
-
-          The name of the file to be sent to the model.
 
     - `version: optional string`
 
@@ -13321,7 +10499,7 @@ as input for the model's response.
       ensures the message the model generates is valid JSON. Using `json_schema`
       is preferred for models that support it.
 
-      - `ResponseFormatText = object { type }`
+      - `ResponseFormatText object { type }`
 
         Default response format. Used to generate text responses.
 
@@ -13331,7 +10509,7 @@ as input for the model's response.
 
           - `"text"`
 
-      - `ResponseFormatTextJSONSchemaConfig = object { name, schema, type, 2 more }`
+      - `ResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
         JSON Schema response format. Used to generate structured JSON responses.
         Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -13365,7 +10543,7 @@ as input for the model's response.
           `strict` is `true`. To learn more, read the [Structured Outputs
           guide](/docs/guides/structured-outputs).
 
-      - `ResponseFormatJSONObject = object { type }`
+      - `ResponseFormatJSONObject object { type }`
 
         JSON object response format. An older method of generating JSON responses.
         Using `json_schema` is recommended for models that support it. Note that the

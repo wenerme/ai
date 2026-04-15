@@ -1145,12 +1145,6 @@ Create a run.
 
   - `class CodeInterpreterTool: …`
 
-    - `type: Literal["code_interpreter"]`
-
-      The type of tool being defined: `code_interpreter`
-
-      - `"code_interpreter"`
-
   - `class FileSearchTool: …`
 
     - `type: Literal["file_search"]`

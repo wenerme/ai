@@ -28,9 +28,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-5680)
-* [  TypeScript ](#tab-panel-5681)
-* [  Python ](#tab-panel-5682)
+* [  JavaScript ](#tab-panel-5854)
+* [  TypeScript ](#tab-panel-5855)
+* [  Python ](#tab-panel-5856)
 
 index.js
 
@@ -129,9 +129,9 @@ Explain Code
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-5677)
-* [  TypeScript ](#tab-panel-5678)
-* [  Python ](#tab-panel-5679)
+* [  JavaScript ](#tab-panel-5851)
+* [  TypeScript ](#tab-panel-5852)
+* [  Python ](#tab-panel-5853)
 
 index.js
 
@@ -315,9 +315,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-5683)
-* [  TypeScript ](#tab-panel-5684)
-* [  Python ](#tab-panel-5685)
+* [  JavaScript ](#tab-panel-5857)
+* [  TypeScript ](#tab-panel-5858)
+* [  Python ](#tab-panel-5859)
 
 index.js
 
@@ -437,7 +437,7 @@ interface MessageBatch<Body = unknown> {
 * `queue` ` string `  
    * The name of the Queue that belongs to this batch.
 * `messages` ` Message[] `  
-   * An array of messages in the batch. Ordering of messages is best effort -- not guaranteed to be exactly the same as the order in which they were published. If you are interested in guaranteed FIFO ordering, please [email the Queues team](mailto:queues@cloudflare.com).
+   * An array of messages in the batch. Ordering of messages is best effort -- not guaranteed to be exactly the same as the order in which they were published.
 * `ackAll()` ` void `  
    * Marks every message as successfully delivered, regardless of whether your `queue()` consumer handler returns successfully or not.
 * `retryAll(options?: QueueRetryOptions)` ` void `  

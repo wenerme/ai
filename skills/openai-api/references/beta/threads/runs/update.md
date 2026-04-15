@@ -23,7 +23,7 @@ Modifies a run.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -176,7 +176,7 @@ Modifies a run.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -186,7 +186,7 @@ Modifies a run.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -199,7 +199,7 @@ Modifies a run.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -285,7 +285,7 @@ Modifies a run.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -309,7 +309,7 @@ Modifies a run.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -317,7 +317,7 @@ Modifies a run.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -353,7 +353,7 @@ Modifies a run.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 

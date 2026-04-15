@@ -96,8 +96,6 @@ chunk objects if the request is streamed.
 
           The type of the content part.
 
-          - `"text"`
-
     - `role: Literal["system"]`
 
       The role of the messages author, in this case `system`.
@@ -136,8 +134,6 @@ chunk objects if the request is streamed.
           - `type: Literal["text"]`
 
             The type of the content part.
-
-            - `"text"`
 
         - `class ChatCompletionContentPartImage: …`
 
@@ -260,16 +256,6 @@ chunk objects if the request is streamed.
 
           Learn about [text inputs](https://platform.openai.com/docs/guides/text-generation).
 
-          - `text: str`
-
-            The text content.
-
-          - `type: Literal["text"]`
-
-            The type of the content part.
-
-            - `"text"`
-
         - `class ChatCompletionContentPartRefusal: …`
 
           - `refusal: str`
@@ -379,8 +365,6 @@ chunk objects if the request is streamed.
         - `type: Literal["text"]`
 
           The type of the content part.
-
-          - `"text"`
 
     - `role: Literal["tool"]`
 
@@ -788,8 +772,6 @@ chunk objects if the request is streamed.
 
         The type of the content part.
 
-        - `"text"`
-
   - `type: Literal["content"]`
 
     The type of the predicted content you want to provide. This type is
@@ -946,7 +928,7 @@ chunk objects if the request is streamed.
 
   - `"priority"`
 
-- `stop: Optional[Union[Optional[str], SequenceNotStr[str], null]]`
+- `stop: Optional[Union[Optional[str], Sequence[str], null]]`
 
   Not supported with latest reasoning models `o3` and `o4-mini`.
 
@@ -955,7 +937,7 @@ chunk objects if the request is streamed.
 
   - `Optional[str]`
 
-  - `SequenceNotStr[str]`
+  - `Sequence[str]`
 
 - `store: Optional[bool]`
 
@@ -1367,18 +1349,6 @@ chunk objects if the request is streamed.
         - `top_logprobs: List[TopLogprob]`
 
           List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned.
-
-          - `token: str`
-
-            The token.
-
-          - `bytes: Optional[List[int]]`
-
-            A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token.
-
-          - `logprob: float`
-
-            The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely.
 
     - `message: ChatCompletionMessage`
 

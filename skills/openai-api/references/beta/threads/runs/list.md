@@ -183,7 +183,7 @@ Returns a list of runs belonging to a thread.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -193,7 +193,7 @@ Returns a list of runs belonging to a thread.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -206,7 +206,7 @@ Returns a list of runs belonging to a thread.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -292,7 +292,7 @@ Returns a list of runs belonging to a thread.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -316,7 +316,7 @@ Returns a list of runs belonging to a thread.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -324,7 +324,7 @@ Returns a list of runs belonging to a thread.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -360,7 +360,7 @@ Returns a list of runs belonging to a thread.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 

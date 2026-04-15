@@ -264,3 +264,41 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### User Create Response
+
+- `UserCreateResponse object { group_id, object, user_id }`
+
+  Confirmation payload returned after adding a user to a group.
+
+  - `group_id: string`
+
+    Identifier of the group the user was added to.
+
+  - `object: "group.user"`
+
+    Always `group.user`.
+
+    - `"group.user"`
+
+  - `user_id: string`
+
+    Identifier of the user that was added.
+
+### User Delete Response
+
+- `UserDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after removing a user from a group.
+
+  - `deleted: boolean`
+
+    Whether the group membership was removed.
+
+  - `object: "group.user.deleted"`
+
+    Always `group.user.deleted`.
+
+    - `"group.user.deleted"`

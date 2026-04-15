@@ -170,8 +170,6 @@ Returns a completion object, or a sequence of completion objects if the request 
 
       Whether to stream back partial progress. If set, tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
 
-      - `false`
-
   - `CompletionCreateParamsStreaming extends CompletionCreateParamsBase`
 
     - `stream: true`

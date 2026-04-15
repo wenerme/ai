@@ -12,7 +12,7 @@ Deletes a message.
 
 ### Returns
 
-- `MessageDeleted = object { id, deleted, object }`
+- `MessageDeleted object { id, deleted, object }`
 
   - `id: string`
 

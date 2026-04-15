@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Two new fields are now available in the httpRequestsAdaptive and httpRequestsAdaptiveGroups GraphQL Analytics API datasets:
+description: API Shield now automatically detects zombie endpoints — saved endpoints that have not received traffic for an extended period. When detected, the cf-risk-zombie risk label is applied.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,101 +18,16 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/api-shield.xml) 
 
-## 2026-03-23
+## 2025-11-25
 
   
-**Web Assets fields now available in GraphQL Analytics API**   
+**New Zombie API detection for API Shield**   
 
-Two new fields are now available in the `httpRequestsAdaptive` and `httpRequestsAdaptiveGroups` [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) datasets:
+API Shield now automatically detects zombie endpoints — saved endpoints that have not received traffic for an extended period. When detected, the `cf-risk-zombie` [risk label](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels) is applied.
 
-* `webAssetsOperationId` — the ID of the [saved endpoint](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that matched the incoming request.
-* `webAssetsLabelsManaged` — the [managed labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#managed-labels) mapped to the matched operation at the time of the request (for example, `cf-llm`, `cf-log-in`). At most 10 labels are returned per request.
+The scan runs daily alongside existing risk scans. Endpoints are labeled after 32 days without traffic.
 
-Both fields are empty when no operation matched. `webAssetsLabelsManaged` is also empty when no managed labels are assigned to the matched operation.
-
-These fields allow you to determine, per request, which Web Assets operation was matched and which managed labels were active. This is useful for troubleshooting downstream security detection verdicts — for example, understanding why [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) did or did not flag a request.
-
-Refer to [Endpoint labeling service](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#analytics) for GraphQL query examples.
-
-## 2026-03-09
-
-  
-**New Vulnerability Scanner for API Shield**   
-
-Introducing Cloudflare's Web and API Vulnerability Scanner (Open Beta)
-
-Cloudflare is launching the [Open Beta of the **Web and API Vulnerability Scanner** ↗](https://blog.cloudflare.com/vulnerability-scanner) for all [API Shield](https://developers.cloudflare.com/api-shield/) customers. This new, stateful Dynamic Application Security Testing (DAST) platform helps teams proactively find logic flaws in their APIs.
-
-The initial release focuses on detecting Broken Object Level Authorization (BOLA) vulnerabilities by building API call graphs to simulate attacker and owner contexts, then testing these contexts by sending real HTTP requests to your APIs.
-
-The scanner is now available via the Cloudflare API. To scan, set up your target environment, owner and attacker credentials, and upload your OpenAPI file with response schemas. The scanner will be available in the Cloudflare dashboard in a future release.
-
-**Access**: This feature is only available to API Shield subscribers via the Cloudflare API. We hope you will use the API for programmatic integration into your CI/CD pipelines and security dashboards.
-
-**Documentation**: Refer to the [developer documentation](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) to start scanning your endpoints today.
-
-## 2025-11-12
-
-  
-**New BOLA Vulnerability Detection for API Shield**   
-
-Now, API Shield automatically searches for and highlights **Broken Object Level Authorization (BOLA) attacks** on managed API endpoints. API Shield will highlight both BOLA enumeration attacks and BOLA pollution attacks, telling you what was attacked, by who, and for how long.
-
-You can find these attacks three different ways: Security Overview, Endpoint details, or Security Analytics. If these attacks are not found on your managed API endpoints, there will not be an overview card or security analytics suspicious activity card.
-
-![BOLA attack Overview card](https://developers.cloudflare.com/_astro/bola-overview-card.hwcSeAkb_1MwSDq.webp)![BOLA attack Overview drawer](https://developers.cloudflare.com/_astro/bola-overview-drawer.DD2c0bxS_zw6Ec.webp) 
-
-From the endpoint details, you can select **View attack** to find details about the BOLA attacker’s sessions.
-
-![BOLA attack endpoint details](https://developers.cloudflare.com/_astro/bola-endpoint-attack.UQP3MDkp_1Yhqqd.webp) 
-
-From here, select **View in Analytics** to observe attacker traffic over time for the last seven days.
-
-![BOLA attack analytics drawer](https://developers.cloudflare.com/_astro/bola-analytics-drawer.DXzC6EJU_iXjmr.webp) 
-
-Your search will filter to traffic on that endpoint in the last seven days, along with the malicious session IDs found in the attack. Session IDs are hashed for privacy and will not be found in your origin logs. Refer to IP and JA4 fingerprint to cross-reference behavior at the origin.
-
-At any time, you can also start your investigation into attack traffic from Security Analytics by selecting the suspicious activity card.
-
-![Suspicious Activity card](https://developers.cloudflare.com/_astro/bola-suspicious-card._B3GB3s4_STW1N.webp) 
-
-We urge you to take all of this client information to your developer team to research the attacker behavior and ensure any broken authorization policies in your API are fixed at the source in your application, preventing further abuse.
-
-In addition, this release marks the end of the beta period for these scans. All Enterprise customers with API Shield subscriptions will see these new attacks if found on their zone.
-
-## 2025-03-18
-
-  
-**New API Posture Management for API Shield**   
-
-Now, API Shield **automatically** labels your API inventory with API-specific risks so that you can track and manage risks to your APIs.
-
-View these risks in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) by label:
-
-![A list of endpoint management labels](https://developers.cloudflare.com/_astro/endpoint-management-label.BDmf8Ai1_ZM5mgU.webp) 
-
-...or in [Security Center Insights](https://developers.cloudflare.com/security-center/security-insights/):
-
-![An example security center insight](https://developers.cloudflare.com/_astro/posture-management-insight.7vB7mzGI_Z1HKoUN.webp) 
-
-API Shield will scan for risks on your API inventory daily. Here are the new risks we're scanning for and automatically labelling:
-
-* **cf-risk-sensitive**: applied if the customer is subscribed to the [sensitive data detection ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/) and the WAF detects sensitive data returned on an endpoint in the last seven days.
-* **cf-risk-missing-auth**: applied if the customer has configured a session ID and no successful requests to the endpoint contain the session ID.
-* **cf-risk-mixed-auth**: applied if the customer has configured a session ID and some successful requests to the endpoint contain the session ID while some lack the session ID.
-* **cf-risk-missing-schema**: added when a learned schema is available for an endpoint that has no active schema.
-* **cf-risk-error-anomaly**: added when an endpoint experiences a recent increase in response errors over the last 24 hours.
-* **cf-risk-latency-anomaly**: added when an endpoint experiences a recent increase in response latency over the last 24 hours.
-* **cf-risk-size-anomaly**: added when an endpoint experiences a spike in response body size over the last 24 hours.
-
-In addition, API Shield has two new 'beta' scans for **Broken Object Level Authorization (BOLA) attacks**. If you're in the beta, you will see the following two labels when API Shield suspects an endpoint is suffering from a BOLA vulnerability:
-
-* **cf-risk-bola-enumeration**: added when an endpoint experiences successful responses with drastic differences in the number of unique elements requested by different user sessions.
-* **cf-risk-bola-pollution**: added when an endpoint experiences successful responses where parameters are found in multiple places in the request.
-
-We are currently accepting more customers into our beta. Contact your account team if you are interested in BOLA attack detection for your API.
-
-Refer to the [blog post ↗](https://blog.cloudflare.com/cloudflare-security-posture-management/) for more information about Cloudflare's expanded posture management capabilities.
+Zombie endpoints may indicate deprecated or forgotten API surface area that could pose a security risk. Review these endpoints and consider removing them from Endpoint Management if they are no longer in use. Also consider using a [fallthrough rule](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-adding-a-fallthrough-rule) to prevent communication with endpoints removed from Endpoint Management.
 
 ## 2025-02-17
 

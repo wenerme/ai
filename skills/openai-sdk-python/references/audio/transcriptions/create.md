@@ -78,11 +78,11 @@ format, or a stream of transcript events.
 
   - `"logprobs"`
 
-- `known_speaker_names: Optional[SequenceNotStr[str]]`
+- `known_speaker_names: Optional[Sequence[str]]`
 
   Optional list of speaker names that correspond to the audio samples provided in `known_speaker_references[]`. Each entry should be a short identifier (for example `customer` or `agent`). Up to 4 speakers are supported.
 
-- `known_speaker_references: Optional[SequenceNotStr[str]]`
+- `known_speaker_references: Optional[Sequence[str]]`
 
   Optional list of audio samples (as [data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)) that contain known speaker references matching `known_speaker_names[]`. Each sample must be between 2 and 10 seconds, and can use any of the same input audio formats supported by `file`.
 

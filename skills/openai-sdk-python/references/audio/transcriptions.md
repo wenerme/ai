@@ -80,11 +80,11 @@ format, or a stream of transcript events.
 
   - `"logprobs"`
 
-- `known_speaker_names: Optional[SequenceNotStr[str]]`
+- `known_speaker_names: Optional[Sequence[str]]`
 
   Optional list of speaker names that correspond to the audio samples provided in `known_speaker_references[]`. Each entry should be a short identifier (for example `customer` or `agent`). Up to 4 speakers are supported.
 
-- `known_speaker_references: Optional[SequenceNotStr[str]]`
+- `known_speaker_references: Optional[Sequence[str]]`
 
   Optional list of audio samples (as [data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)) that contain known speaker references matching `known_speaker_names[]`. Each sample must be between 2 and 10 seconds, and can use any of the same input audio formats supported by `file`.
 
@@ -1444,3 +1444,275 @@ print(transcript.words)
   - `word: str`
 
     The text content of the word.
+
+### Transcription Create Response
+
+- `TranscriptionCreateResponse`
+
+  Represents a transcription response returned by model, based on the provided input.
+
+  - `class Transcription: …`
+
+    Represents a transcription response returned by model, based on the provided input.
+
+    - `text: str`
+
+      The transcribed text.
+
+    - `logprobs: Optional[List[Logprob]]`
+
+      The log probabilities of the tokens in the transcription. Only returned with the models `gpt-4o-transcribe` and `gpt-4o-mini-transcribe` if `logprobs` is added to the `include` array.
+
+      - `token: Optional[str]`
+
+        The token in the transcription.
+
+      - `bytes: Optional[List[float]]`
+
+        The bytes of the token.
+
+      - `logprob: Optional[float]`
+
+        The log probability of the token.
+
+    - `usage: Optional[Usage]`
+
+      Token usage statistics for the request.
+
+      - `class UsageTokens: …`
+
+        Usage statistics for models billed by token usage.
+
+        - `input_tokens: int`
+
+          Number of input tokens billed for this request.
+
+        - `output_tokens: int`
+
+          Number of output tokens generated.
+
+        - `total_tokens: int`
+
+          Total number of tokens used (input + output).
+
+        - `type: Literal["tokens"]`
+
+          The type of the usage object. Always `tokens` for this variant.
+
+          - `"tokens"`
+
+        - `input_token_details: Optional[UsageTokensInputTokenDetails]`
+
+          Details about the input tokens billed for this request.
+
+          - `audio_tokens: Optional[int]`
+
+            Number of audio tokens billed for this request.
+
+          - `text_tokens: Optional[int]`
+
+            Number of text tokens billed for this request.
+
+      - `class UsageDuration: …`
+
+        Usage statistics for models billed by audio input duration.
+
+        - `seconds: float`
+
+          Duration of the input audio in seconds.
+
+        - `type: Literal["duration"]`
+
+          The type of the usage object. Always `duration` for this variant.
+
+          - `"duration"`
+
+  - `class TranscriptionDiarized: …`
+
+    Represents a diarized transcription response returned by the model, including the combined transcript and speaker-segment annotations.
+
+    - `duration: float`
+
+      Duration of the input audio in seconds.
+
+    - `segments: List[TranscriptionDiarizedSegment]`
+
+      Segments of the transcript annotated with timestamps and speaker labels.
+
+      - `id: str`
+
+        Unique identifier for the segment.
+
+      - `end: float`
+
+        End timestamp of the segment in seconds.
+
+      - `speaker: str`
+
+        Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
+
+      - `start: float`
+
+        Start timestamp of the segment in seconds.
+
+      - `text: str`
+
+        Transcript text for this segment.
+
+      - `type: Literal["transcript.text.segment"]`
+
+        The type of the segment. Always `transcript.text.segment`.
+
+        - `"transcript.text.segment"`
+
+    - `task: Literal["transcribe"]`
+
+      The type of task that was run. Always `transcribe`.
+
+      - `"transcribe"`
+
+    - `text: str`
+
+      The concatenated transcript text for the entire audio input.
+
+    - `usage: Optional[Usage]`
+
+      Token or duration usage statistics for the request.
+
+      - `class UsageTokens: …`
+
+        Usage statistics for models billed by token usage.
+
+        - `input_tokens: int`
+
+          Number of input tokens billed for this request.
+
+        - `output_tokens: int`
+
+          Number of output tokens generated.
+
+        - `total_tokens: int`
+
+          Total number of tokens used (input + output).
+
+        - `type: Literal["tokens"]`
+
+          The type of the usage object. Always `tokens` for this variant.
+
+          - `"tokens"`
+
+        - `input_token_details: Optional[UsageTokensInputTokenDetails]`
+
+          Details about the input tokens billed for this request.
+
+          - `audio_tokens: Optional[int]`
+
+            Number of audio tokens billed for this request.
+
+          - `text_tokens: Optional[int]`
+
+            Number of text tokens billed for this request.
+
+      - `class UsageDuration: …`
+
+        Usage statistics for models billed by audio input duration.
+
+        - `seconds: float`
+
+          Duration of the input audio in seconds.
+
+        - `type: Literal["duration"]`
+
+          The type of the usage object. Always `duration` for this variant.
+
+          - `"duration"`
+
+  - `class TranscriptionVerbose: …`
+
+    Represents a verbose json transcription response returned by model, based on the provided input.
+
+    - `duration: float`
+
+      The duration of the input audio.
+
+    - `language: str`
+
+      The language of the input audio.
+
+    - `text: str`
+
+      The transcribed text.
+
+    - `segments: Optional[List[TranscriptionSegment]]`
+
+      Segments of the transcribed text and their corresponding details.
+
+      - `id: int`
+
+        Unique identifier of the segment.
+
+      - `avg_logprob: float`
+
+        Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
+
+      - `compression_ratio: float`
+
+        Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      - `end: float`
+
+        End time of the segment in seconds.
+
+      - `no_speech_prob: float`
+
+        Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      - `seek: int`
+
+        Seek offset of the segment.
+
+      - `start: float`
+
+        Start time of the segment in seconds.
+
+      - `temperature: float`
+
+        Temperature parameter used for generating the segment.
+
+      - `text: str`
+
+        Text content of the segment.
+
+      - `tokens: List[int]`
+
+        Array of token IDs for the text content.
+
+    - `usage: Optional[Usage]`
+
+      Usage statistics for models billed by audio input duration.
+
+      - `seconds: float`
+
+        Duration of the input audio in seconds.
+
+      - `type: Literal["duration"]`
+
+        The type of the usage object. Always `duration` for this variant.
+
+        - `"duration"`
+
+    - `words: Optional[List[TranscriptionWord]]`
+
+      Extracted words and their corresponding timestamps.
+
+      - `end: float`
+
+        End time of the word in seconds.
+
+      - `start: float`
+
+        Start time of the word in seconds.
+
+      - `word: str`
+
+        The text content of the word.

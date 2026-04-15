@@ -43,7 +43,7 @@ Access for Infrastructure currently only supports [SSH](https://developers.cloud
 
 ## Prerequisites
 
-* [Connect your infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) to Cloudflare using `cloudflared` or WARP Connector.
+* [Connect your infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) to Cloudflare using `cloudflared` or Cloudflare Mesh.
 * [Deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on user devices in Traffic and DNS mode.
 
 ## 1\. Add a target
@@ -52,9 +52,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-3434)
-* [ API ](#tab-panel-3435)
-* [ Terraform ](#tab-panel-3436)
+* [ Dashboard ](#tab-panel-3580)
+* [ API ](#tab-panel-3581)
+* [ Terraform ](#tab-panel-3582)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -145,9 +145,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-3437)
-* [ API ](#tab-panel-3438)
-* [ Terraform (v4) ](#tab-panel-3439)
+* [ Dashboard ](#tab-panel-3583)
+* [ API ](#tab-panel-3584)
+* [ Terraform (v4) ](#tab-panel-3585)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.

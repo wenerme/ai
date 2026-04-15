@@ -173,23 +173,33 @@ components:
       type: object
       properties:
         frequency_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         presence_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         repetition_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         temperature:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         top_k:
           type:
             - integer
             - 'null'
         top_p:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
       description: Default parameters for this model
       title: DefaultParameters
@@ -341,13 +351,17 @@ components:
       type: object
       properties:
         context_length:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Context length from the top provider
         is_moderated:
           type: boolean
           description: Whether the top provider moderates content
         max_completion_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Maximum completion tokens from the top provider
       required:
         - is_moderated
@@ -362,7 +376,9 @@ components:
           type: string
           description: Canonical slug for the model
         context_length:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Maximum context length in tokens
         created:
           type: integer

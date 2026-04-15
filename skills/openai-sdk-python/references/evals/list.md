@@ -246,16 +246,6 @@ List evaluations for a project.
 
               A text input to the model.
 
-              - `text: str`
-
-                The text input to the model.
-
-              - `type: Literal["input_text"]`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
             - `class GraderInputItemOutputText: …`
 
               A text output from the model.
@@ -291,27 +281,6 @@ List evaluations for a project.
             - `class ResponseInputAudio: …`
 
               An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: str`
-
-                  Base64-encoded audio data.
-
-                - `format: Literal["mp3", "wav"]`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: Literal["input_audio"]`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: Literal["user", "assistant", "system", "developer"]`
 

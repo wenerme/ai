@@ -348,3 +348,105 @@ console.log(permission.id);
   "object": "checkpoint.permission"
 }
 ```
+
+## Domain Types
+
+### Permission Retrieve Response
+
+- `PermissionRetrieveResponse`
+
+  - `data: Array<Data>`
+
+    - `id: string`
+
+      The permission identifier, which can be referenced in the API endpoints.
+
+    - `created_at: number`
+
+      The Unix timestamp (in seconds) for when the permission was created.
+
+    - `object: "checkpoint.permission"`
+
+      The object type, which is always "checkpoint.permission".
+
+      - `"checkpoint.permission"`
+
+    - `project_id: string`
+
+      The project identifier that the permission is for.
+
+  - `has_more: boolean`
+
+  - `object: "list"`
+
+    - `"list"`
+
+  - `first_id?: string | null`
+
+  - `last_id?: string | null`
+
+### Permission List Response
+
+- `PermissionListResponse`
+
+  The `checkpoint.permission` object represents a permission for a fine-tuned model checkpoint.
+
+  - `id: string`
+
+    The permission identifier, which can be referenced in the API endpoints.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the permission was created.
+
+  - `object: "checkpoint.permission"`
+
+    The object type, which is always "checkpoint.permission".
+
+    - `"checkpoint.permission"`
+
+  - `project_id: string`
+
+    The project identifier that the permission is for.
+
+### Permission Create Response
+
+- `PermissionCreateResponse`
+
+  The `checkpoint.permission` object represents a permission for a fine-tuned model checkpoint.
+
+  - `id: string`
+
+    The permission identifier, which can be referenced in the API endpoints.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the permission was created.
+
+  - `object: "checkpoint.permission"`
+
+    The object type, which is always "checkpoint.permission".
+
+    - `"checkpoint.permission"`
+
+  - `project_id: string`
+
+    The project identifier that the permission is for.
+
+### Permission Delete Response
+
+- `PermissionDeleteResponse`
+
+  - `id: string`
+
+    The ID of the fine-tuned model checkpoint permission that was deleted.
+
+  - `deleted: boolean`
+
+    Whether the fine-tuned model checkpoint permission was successfully deleted.
+
+  - `object: "checkpoint.permission"`
+
+    The object type, which is always "checkpoint.permission".
+
+    - `"checkpoint.permission"`

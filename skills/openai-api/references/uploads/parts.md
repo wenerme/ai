@@ -16,7 +16,7 @@ It is possible to add multiple Parts in parallel. You can decide the intended or
 
 ### Returns
 
-- `UploadPart = object { id, created_at, object, upload_id }`
+- `UploadPart object { id, created_at, object, upload_id }`
 
   The upload Part represents a chunk of bytes we can add to an Upload object.
 
@@ -80,7 +80,7 @@ curl https://api.openai.com/v1/uploads/upload_abc123/parts
 
 ### Upload Part
 
-- `UploadPart = object { id, created_at, object, upload_id }`
+- `UploadPart object { id, created_at, object, upload_id }`
 
   The upload Part represents a chunk of bytes we can add to an Upload object.
 

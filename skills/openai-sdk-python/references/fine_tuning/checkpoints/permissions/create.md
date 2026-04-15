@@ -12,7 +12,7 @@ This enables organization owners to share fine-tuned models with other projects 
 
 - `fine_tuned_model_checkpoint: str`
 
-- `project_ids: SequenceNotStr[str]`
+- `project_ids: Sequence[str]`
 
   The project identifiers to grant access to.
 

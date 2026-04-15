@@ -6,7 +6,7 @@ Creates a variation of a given image. This endpoint only supports `dall-e-2`.
 
 ### Returns
 
-- `ImagesResponse = object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 4 more }`
 
   The response from the image generation endpoint.
 

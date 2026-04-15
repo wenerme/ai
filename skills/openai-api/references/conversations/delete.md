@@ -10,7 +10,7 @@ Delete a conversation. Items in the conversation will not be deleted.
 
 ### Returns
 
-- `ConversationDeletedResource = object { id, deleted, object }`
+- `ConversationDeletedResource object { id, deleted, object }`
 
   - `id: string`
 

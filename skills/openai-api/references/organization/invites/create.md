@@ -36,7 +36,7 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 

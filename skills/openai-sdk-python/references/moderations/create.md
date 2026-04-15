@@ -9,7 +9,7 @@ more in the [moderation guide](https://platform.openai.com/docs/guides/moderatio
 
 ### Parameters
 
-- `input: Union[str, SequenceNotStr[str], Iterable[ModerationMultiModalInputParam]]`
+- `input: Union[str, Sequence[str], Iterable[ModerationMultiModalInputParam]]`
 
   Input (or inputs) to classify. Can be a single string, an array of strings, or
   an array of multi-modal input objects similar to other models.
@@ -18,7 +18,7 @@ more in the [moderation guide](https://platform.openai.com/docs/guides/moderatio
 
     A string of text to classify for moderation.
 
-  - `SequenceNotStr[str]`
+  - `Sequence[str]`
 
     An array of strings to classify for moderation.
 

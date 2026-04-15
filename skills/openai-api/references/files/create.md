@@ -22,7 +22,7 @@ storage limits.
 
 ### Returns
 
-- `FileObject = object { id, bytes, created_at, 6 more }`
+- `FileObject object { id, bytes, created_at, 6 more }`
 
   The `File` object represents a document that has been uploaded to OpenAI.
 

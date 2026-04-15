@@ -10,13 +10,13 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
 - `vector_store_id: str`
 
-- `query: Union[str, SequenceNotStr[str]]`
+- `query: Union[str, Sequence[str]]`
 
   A query string for a search
 
   - `str`
 
-  - `SequenceNotStr[str]`
+  - `Sequence[str]`
 
 - `filters: Optional[Filters]`
 
@@ -86,55 +86,6 @@ Search a vector store for relevant chunks based on a query and file attributes f
       - `class ComparisonFilter: …`
 
         A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-        - `key: str`
-
-          The key to compare against the value.
-
-        - `type: Literal["eq", "ne", "gt", 5 more]`
-
-          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-          - `eq`: equals
-          - `ne`: not equal
-          - `gt`: greater than
-          - `gte`: greater than or equal
-          - `lt`: less than
-          - `lte`: less than or equal
-          - `in`: in
-          - `nin`: not in
-
-          - `"eq"`
-
-          - `"ne"`
-
-          - `"gt"`
-
-          - `"gte"`
-
-          - `"lt"`
-
-          - `"lte"`
-
-          - `"in"`
-
-          - `"nin"`
-
-        - `value: Union[str, float, bool, List[Union[str, float]]]`
-
-          The value to compare against the attribute key; supports string, number, or boolean types.
-
-          - `str`
-
-          - `float`
-
-          - `bool`
-
-          - `List[Union[str, float]]`
-
-            - `str`
-
-            - `float`
 
       - `object`
 

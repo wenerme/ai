@@ -16,7 +16,7 @@ Modifies a project in the organization.
 
 ### Returns
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 

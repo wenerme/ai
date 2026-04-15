@@ -162,7 +162,7 @@ Create an assistant with a model and instructions.
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -172,7 +172,7 @@ Create an assistant with a model and instructions.
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -185,7 +185,7 @@ Create an assistant with a model and instructions.
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -251,7 +251,7 @@ Create an assistant with a model and instructions.
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-        - `AutoChunkingStrategy = object { type }`
+        - `AutoChunkingStrategy object { type }`
 
           The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -261,7 +261,7 @@ Create an assistant with a model and instructions.
 
             - `"auto"`
 
-        - `StaticChunkingStrategy = object { static, type }`
+        - `StaticChunkingStrategy object { static, type }`
 
           - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -298,7 +298,7 @@ Create an assistant with a model and instructions.
 
   A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
-  - `CodeInterpreterTool = object { type }`
+  - `CodeInterpreterTool object { type }`
 
     - `type: "code_interpreter"`
 
@@ -306,7 +306,7 @@ Create an assistant with a model and instructions.
 
       - `"code_interpreter"`
 
-  - `FileSearchTool = object { type, file_search }`
+  - `FileSearchTool object { type, file_search }`
 
     - `type: "file_search"`
 
@@ -342,7 +342,7 @@ Create an assistant with a model and instructions.
 
           - `"default_2024_08_21"`
 
-  - `FunctionTool = object { function, type }`
+  - `FunctionTool object { function, type }`
 
     - `function: FunctionDefinition`
 
@@ -378,7 +378,7 @@ Create an assistant with a model and instructions.
 
 ### Returns
 
-- `Assistant = object { id, created_at, description, 10 more }`
+- `Assistant object { id, created_at, description, 10 more }`
 
   Represents an `assistant` that can call the model and use tools.
 
@@ -425,7 +425,7 @@ Create an assistant with a model and instructions.
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -433,7 +433,7 @@ Create an assistant with a model and instructions.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -469,7 +469,7 @@ Create an assistant with a model and instructions.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -513,7 +513,7 @@ Create an assistant with a model and instructions.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -523,7 +523,7 @@ Create an assistant with a model and instructions.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -536,7 +536,7 @@ Create an assistant with a model and instructions.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).

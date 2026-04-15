@@ -115,12 +115,15 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    ResponsesRequestImageConfig:
+    ImageConfig:
       oneOf:
         - type: string
         - type: number
           format: double
-      title: ResponsesRequestImageConfig
+        - type: array
+          items:
+            description: Any type
+      title: ImageConfig
     ResponseIncludesEnum:
       type: string
       enum:
@@ -1603,19 +1606,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -1639,19 +1650,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-
@@ -1877,7 +1896,9 @@ components:
             - boolean
             - 'null'
         max_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
       description: Configuration for reasoning mode in the response
       title: ReasoningConfig
     ResponsesRequestServiceTier:
@@ -2835,6 +2856,37 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    ImageGenerationServerToolConfig:
+      type: object
+      properties:
+        model:
+          type: string
+          description: >-
+            Which image generation model to use (e.g. "openai/gpt-image-1").
+            Defaults to "openai/gpt-image-1".
+      description: >-
+        Configuration for the openrouter:image_generation server tool. Accepts
+        all image_config params (aspect_ratio, quality, size, background,
+        output_format, output_compression, moderation, etc.) plus a model field.
+      title: ImageGenerationServerToolConfig
+    ImageGenerationServerToolOpenRouterType:
+      type: string
+      enum:
+        - openrouter:image_generation
+      title: ImageGenerationServerToolOpenRouterType
+    ImageGenerationServerTool_OpenRouter:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ImageGenerationServerToolConfig'
+        type:
+          $ref: '#/components/schemas/ImageGenerationServerToolOpenRouterType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: generates images from text prompts
+        using an image generation model
+      title: ImageGenerationServerTool_OpenRouter
     SearchModelsServerToolConfig:
       type: object
       properties:
@@ -2911,6 +2963,7 @@ components:
         - $ref: '#/components/schemas/ApplyPatchServerTool'
         - $ref: '#/components/schemas/CustomTool'
         - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/WebSearchServerTool_OpenRouter'
       title: ResponsesRequestToolsItems
@@ -2947,17 +3000,12 @@ components:
             - boolean
             - 'null'
         frequency_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         image_config:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/ResponsesRequestImageConfig'
-          description: >-
-            Provider-specific image configuration options. Keys and values vary
-            by model/provider. See
-            https://openrouter.ai/docs/features/multimodal/image-generation for
-            more details.
+          $ref: '#/components/schemas/ImageConfig'
         include:
           type:
             - array
@@ -2971,9 +3019,13 @@ components:
             - string
             - 'null'
         max_output_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_tool_calls:
-          type: integer
+          type:
+            - integer
+            - 'null'
         metadata:
           $ref: '#/components/schemas/RequestMetadata'
         modalities:
@@ -3001,7 +3053,9 @@ components:
             Plugins you want to enable for this request, including their
             settings.
         presence_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         previous_response_id:
           type:
@@ -3042,7 +3096,9 @@ components:
           type: boolean
           default: false
         temperature:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         text:
           $ref: '#/components/schemas/TextExtendedConfig'
@@ -3055,9 +3111,13 @@ components:
         top_k:
           type: integer
         top_logprobs:
-          type: integer
+          type:
+            - integer
+            - 'null'
         top_p:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         trace:
           $ref: '#/components/schemas/TraceConfig'
@@ -4139,7 +4199,9 @@ components:
       type: object
       properties:
         upstream_inference_cost:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         upstream_inference_input_cost:
           type: number
@@ -4165,7 +4227,9 @@ components:
         total_tokens:
           type: integer
         cost:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Cost of the completion
         cost_details:
@@ -4189,13 +4253,17 @@ components:
             - boolean
             - 'null'
         completed_at:
-          type: integer
+          type:
+            - integer
+            - 'null'
         created_at:
           type: integer
         error:
           $ref: '#/components/schemas/ResponsesErrorField'
         frequency_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         id:
           type: string
@@ -4204,9 +4272,13 @@ components:
         instructions:
           $ref: '#/components/schemas/BaseInputs'
         max_output_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_tool_calls:
-          type: integer
+          type:
+            - integer
+            - 'null'
         metadata:
           $ref: '#/components/schemas/RequestMetadata'
         model:
@@ -4222,7 +4294,9 @@ components:
         parallel_tool_calls:
           type: boolean
         presence_penalty:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         previous_response_id:
           type:
@@ -4249,7 +4323,9 @@ components:
         store:
           type: boolean
         temperature:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         text:
           $ref: '#/components/schemas/TextConfig'
@@ -4262,7 +4338,9 @@ components:
         top_logprobs:
           type: integer
         top_p:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         truncation:
           $ref: '#/components/schemas/Truncation'

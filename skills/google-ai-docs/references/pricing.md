@@ -813,8 +813,8 @@ before becoming stable and have more restrictive rate limits.
 
 |   | Free Tier | Paid Tier, per request in USD |
 |---|---|---|
-| Lyria 3 Pro Preview (Full Song) | Not available | $0.08 per song |
 | Lyria 3 Clip Preview (30s) | Not available | $0.04 per song |
+| Lyria 3 Pro Preview (Full Song) | Not available | $0.08 per song |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ## Gemini Embedding 2 Preview
@@ -868,6 +868,35 @@ Our Gemini Embeddings model for text-only use cases, available to developers on 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
 | Input price | Not available | $0.075 |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+## Gemini Robotics-ER 1.6 Preview
+
+*`gemini-robotics-er-1.6-preview`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-robotics-er-1.6-preview)
+
+Gemini Robotics-ER, short for Gemini Robotics-Embodied Reasoning, is a thinking
+model that enhances robots' abilities to understand and interact with the
+physical world.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $1.00 (text / image / video) $2.00 (audio) |
+| Output price (including thinking tokens) | Free of charge | $5.00 |
+| Grounding with Google Search | Free of charge, up to 1500 RPD (limit shared with Flash RPD) | 5,000 RPD (free, limit shared with Flash RPD), then $14 / 1,000 search queries for text and image-based grounding. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.50 (text / image / video) $1.00 (audio) |
+| Output price (including thinking tokens) | Not available | $2.50 |
+| Grounding with Google Search | Not available | Not available |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ## Gemini Robotics-ER 1.5 Preview

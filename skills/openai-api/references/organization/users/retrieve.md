@@ -10,7 +10,7 @@ Retrieves a user by their identifier.
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 

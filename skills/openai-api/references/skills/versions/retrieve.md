@@ -14,7 +14,7 @@ Get a specific skill version.
 
 ### Returns
 
-- `SkillVersion = object { id, created_at, description, 4 more }`
+- `SkillVersion object { id, created_at, description, 4 more }`
 
   - `id: string`
 

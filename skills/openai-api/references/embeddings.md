@@ -60,7 +60,7 @@ Creates an embedding vector representing the input text.
 
 ### Returns
 
-- `CreateEmbeddingResponse = object { data, model, object, usage }`
+- `CreateEmbeddingResponse object { data, model, object, usage }`
 
   - `data: array of Embedding`
 
@@ -180,7 +180,7 @@ curl https://api.openai.com/v1/embeddings \
 
 ### Create Embedding Response
 
-- `CreateEmbeddingResponse = object { data, model, object, usage }`
+- `CreateEmbeddingResponse object { data, model, object, usage }`
 
   - `data: array of Embedding`
 
@@ -224,7 +224,7 @@ curl https://api.openai.com/v1/embeddings \
 
 ### Embedding
 
-- `Embedding = object { embedding, index, object }`
+- `Embedding object { embedding, index, object }`
 
   Represents an embedding vector returned by embedding endpoint.
 

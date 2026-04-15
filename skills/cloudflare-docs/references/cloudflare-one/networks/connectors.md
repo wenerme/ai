@@ -16,6 +16,7 @@ Copy page
 # Connectors
 
 * [ Cloudflare Tunnel ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+* [ Cloudflare Mesh ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
 * [ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/)
 
 ```json

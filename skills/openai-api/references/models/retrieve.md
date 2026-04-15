@@ -10,7 +10,7 @@ Retrieves a model instance, providing basic information about the model such as 
 
 ### Returns
 
-- `Model = object { id, created, object, owned_by }`
+- `Model object { id, created, object, owned_by }`
 
   Describes an OpenAI model offering that can be used with the API.
 

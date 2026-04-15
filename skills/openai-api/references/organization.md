@@ -1502,7 +1502,7 @@ Get costs details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -1558,7 +1558,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -1590,7 +1590,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -1622,7 +1622,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -1662,7 +1662,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -1694,7 +1694,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -1726,7 +1726,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -1742,7 +1742,7 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -1758,7 +1758,7 @@ Get costs details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -1872,6 +1872,1208 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
     "next_page": null
 }
 ```
+
+## Domain Types
+
+### Audit Log List Response
+
+- `AuditLogListResponse object { id, actor, effective_at, 49 more }`
+
+  A log of a user action or configuration change within this organization.
+
+  - `id: string`
+
+    The ID of this log.
+
+  - `actor: object { api_key, session, type }`
+
+    The actor who performed the audit logged action.
+
+    - `api_key: optional object { id, service_account, type, user }`
+
+      The API Key used to perform the audit logged action.
+
+      - `id: optional string`
+
+        The tracking id of the API key.
+
+      - `service_account: optional object { id }`
+
+        The service account that performed the audit logged action.
+
+        - `id: optional string`
+
+          The service account id.
+
+      - `type: optional "user" or "service_account"`
+
+        The type of API key. Can be either `user` or `service_account`.
+
+        - `"user"`
+
+        - `"service_account"`
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `session: optional object { ip_address, user }`
+
+      The session in which the audit logged action was performed.
+
+      - `ip_address: optional string`
+
+        The IP address from which the action was performed.
+
+      - `user: optional object { id, email }`
+
+        The user who performed the audit logged action.
+
+        - `id: optional string`
+
+          The user id.
+
+        - `email: optional string`
+
+          The user email.
+
+    - `type: optional "session" or "api_key"`
+
+      The type of actor. Is either `session` or `api_key`.
+
+      - `"session"`
+
+      - `"api_key"`
+
+  - `effective_at: number`
+
+    The Unix timestamp (in seconds) of the event.
+
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 48 more`
+
+    The event type.
+
+    - `"api_key.created"`
+
+    - `"api_key.updated"`
+
+    - `"api_key.deleted"`
+
+    - `"certificate.created"`
+
+    - `"certificate.updated"`
+
+    - `"certificate.deleted"`
+
+    - `"certificates.activated"`
+
+    - `"certificates.deactivated"`
+
+    - `"checkpoint.permission.created"`
+
+    - `"checkpoint.permission.deleted"`
+
+    - `"external_key.registered"`
+
+    - `"external_key.removed"`
+
+    - `"group.created"`
+
+    - `"group.updated"`
+
+    - `"group.deleted"`
+
+    - `"invite.sent"`
+
+    - `"invite.accepted"`
+
+    - `"invite.deleted"`
+
+    - `"ip_allowlist.created"`
+
+    - `"ip_allowlist.updated"`
+
+    - `"ip_allowlist.deleted"`
+
+    - `"ip_allowlist.config.activated"`
+
+    - `"ip_allowlist.config.deactivated"`
+
+    - `"login.succeeded"`
+
+    - `"login.failed"`
+
+    - `"logout.succeeded"`
+
+    - `"logout.failed"`
+
+    - `"organization.updated"`
+
+    - `"project.created"`
+
+    - `"project.updated"`
+
+    - `"project.archived"`
+
+    - `"project.deleted"`
+
+    - `"rate_limit.updated"`
+
+    - `"rate_limit.deleted"`
+
+    - `"resource.deleted"`
+
+    - `"tunnel.created"`
+
+    - `"tunnel.updated"`
+
+    - `"tunnel.deleted"`
+
+    - `"role.created"`
+
+    - `"role.updated"`
+
+    - `"role.deleted"`
+
+    - `"role.assignment.created"`
+
+    - `"role.assignment.deleted"`
+
+    - `"scim.enabled"`
+
+    - `"scim.disabled"`
+
+    - `"service_account.created"`
+
+    - `"service_account.updated"`
+
+    - `"service_account.deleted"`
+
+    - `"user.added"`
+
+    - `"user.updated"`
+
+    - `"user.deleted"`
+
+  - `"api_key.created": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The tracking ID of the API key.
+
+    - `data: optional object { scopes }`
+
+      The payload used to create the API key.
+
+      - `scopes: optional array of string`
+
+        A list of scopes allowed for the API key, e.g. `["api.model.request"]`
+
+  - `"api_key.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The tracking ID of the API key.
+
+  - `"api_key.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The tracking ID of the API key.
+
+    - `changes_requested: optional object { scopes }`
+
+      The payload used to update the API key.
+
+      - `scopes: optional array of string`
+
+        A list of scopes allowed for the API key, e.g. `["api.model.request"]`
+
+  - `"certificate.created": optional object { id, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The certificate ID.
+
+    - `name: optional string`
+
+      The name of the certificate.
+
+  - `"certificate.deleted": optional object { id, certificate, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The certificate ID.
+
+    - `certificate: optional string`
+
+      The certificate content in PEM format.
+
+    - `name: optional string`
+
+      The name of the certificate.
+
+  - `"certificate.updated": optional object { id, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The certificate ID.
+
+    - `name: optional string`
+
+      The name of the certificate.
+
+  - `"certificates.activated": optional object { certificates }`
+
+    The details for events with this `type`.
+
+    - `certificates: optional array of object { id, name }`
+
+      - `id: optional string`
+
+        The certificate ID.
+
+      - `name: optional string`
+
+        The name of the certificate.
+
+  - `"certificates.deactivated": optional object { certificates }`
+
+    The details for events with this `type`.
+
+    - `certificates: optional array of object { id, name }`
+
+      - `id: optional string`
+
+        The certificate ID.
+
+      - `name: optional string`
+
+        The name of the certificate.
+
+  - `"checkpoint.permission.created": optional object { id, data }`
+
+    The project and fine-tuned model checkpoint that the checkpoint permission was created for.
+
+    - `id: optional string`
+
+      The ID of the checkpoint permission.
+
+    - `data: optional object { fine_tuned_model_checkpoint, project_id }`
+
+      The payload used to create the checkpoint permission.
+
+      - `fine_tuned_model_checkpoint: optional string`
+
+        The ID of the fine-tuned model checkpoint.
+
+      - `project_id: optional string`
+
+        The ID of the project that the checkpoint permission was created for.
+
+  - `"checkpoint.permission.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the checkpoint permission.
+
+  - `"external_key.registered": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the external key configuration.
+
+    - `data: optional unknown`
+
+      The configuration for the external key.
+
+  - `"external_key.removed": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the external key configuration.
+
+  - `"group.created": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the group.
+
+    - `data: optional object { group_name }`
+
+      Information about the created group.
+
+      - `group_name: optional string`
+
+        The group name.
+
+  - `"group.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the group.
+
+  - `"group.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the group.
+
+    - `changes_requested: optional object { group_name }`
+
+      The payload used to update the group.
+
+      - `group_name: optional string`
+
+        The updated group name.
+
+  - `"invite.accepted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the invite.
+
+  - `"invite.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the invite.
+
+  - `"invite.sent": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the invite.
+
+    - `data: optional object { email, role }`
+
+      The payload used to create the invite.
+
+      - `email: optional string`
+
+        The email invited to the organization.
+
+      - `role: optional string`
+
+        The role the email was invited to be. Is either `owner` or `member`.
+
+  - `"ip_allowlist.config.activated": optional object { configs }`
+
+    The details for events with this `type`.
+
+    - `configs: optional array of object { id, name }`
+
+      The configurations that were activated.
+
+      - `id: optional string`
+
+        The ID of the IP allowlist configuration.
+
+      - `name: optional string`
+
+        The name of the IP allowlist configuration.
+
+  - `"ip_allowlist.config.deactivated": optional object { configs }`
+
+    The details for events with this `type`.
+
+    - `configs: optional array of object { id, name }`
+
+      The configurations that were deactivated.
+
+      - `id: optional string`
+
+        The ID of the IP allowlist configuration.
+
+      - `name: optional string`
+
+        The name of the IP allowlist configuration.
+
+  - `"ip_allowlist.created": optional object { id, allowed_ips, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the IP allowlist configuration.
+
+    - `allowed_ips: optional array of string`
+
+      The IP addresses or CIDR ranges included in the configuration.
+
+    - `name: optional string`
+
+      The name of the IP allowlist configuration.
+
+  - `"ip_allowlist.deleted": optional object { id, allowed_ips, name }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the IP allowlist configuration.
+
+    - `allowed_ips: optional array of string`
+
+      The IP addresses or CIDR ranges that were in the configuration.
+
+    - `name: optional string`
+
+      The name of the IP allowlist configuration.
+
+  - `"ip_allowlist.updated": optional object { id, allowed_ips }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the IP allowlist configuration.
+
+    - `allowed_ips: optional array of string`
+
+      The updated set of IP addresses or CIDR ranges in the configuration.
+
+  - `"login.failed": optional object { error_code, error_message }`
+
+    The details for events with this `type`.
+
+    - `error_code: optional string`
+
+      The error code of the failure.
+
+    - `error_message: optional string`
+
+      The error message of the failure.
+
+  - `"login.succeeded": optional unknown`
+
+    This event has no additional fields beyond the standard audit log attributes.
+
+  - `"logout.failed": optional object { error_code, error_message }`
+
+    The details for events with this `type`.
+
+    - `error_code: optional string`
+
+      The error code of the failure.
+
+    - `error_message: optional string`
+
+      The error message of the failure.
+
+  - `"logout.succeeded": optional unknown`
+
+    This event has no additional fields beyond the standard audit log attributes.
+
+  - `"organization.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The organization ID.
+
+    - `changes_requested: optional object { api_call_logging, api_call_logging_project_ids, description, 4 more }`
+
+      The payload used to update the organization settings.
+
+      - `api_call_logging: optional string`
+
+        How your organization logs data from supported API calls. One of `disabled`, `enabled_per_call`, `enabled_for_all_projects`, or `enabled_for_selected_projects`
+
+      - `api_call_logging_project_ids: optional string`
+
+        The list of project ids if api_call_logging is set to `enabled_for_selected_projects`
+
+      - `description: optional string`
+
+        The organization description.
+
+      - `name: optional string`
+
+        The organization name.
+
+      - `threads_ui_visibility: optional string`
+
+        Visibility of the threads page which shows messages created with the Assistants API and Playground. One of `ANY_ROLE`, `OWNERS`, or `NONE`.
+
+      - `title: optional string`
+
+        The organization title.
+
+      - `usage_dashboard_visibility: optional string`
+
+        Visibility of the usage dashboard which shows activity and costs for your organization. One of `ANY_ROLE` or `OWNERS`.
+
+  - `project: optional object { id, name }`
+
+    The project that the action was scoped to. Absent for actions not scoped to projects. Note that any admin actions taken via Admin API keys are associated with the default project.
+
+    - `id: optional string`
+
+      The project ID.
+
+    - `name: optional string`
+
+      The project title.
+
+  - `"project.archived": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The project ID.
+
+  - `"project.created": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The project ID.
+
+    - `data: optional object { name, title }`
+
+      The payload used to create the project.
+
+      - `name: optional string`
+
+        The project name.
+
+      - `title: optional string`
+
+        The title of the project as seen on the dashboard.
+
+  - `"project.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The project ID.
+
+  - `"project.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The project ID.
+
+    - `changes_requested: optional object { title }`
+
+      The payload used to update the project.
+
+      - `title: optional string`
+
+        The title of the project as seen on the dashboard.
+
+  - `"rate_limit.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The rate limit ID
+
+  - `"rate_limit.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The rate limit ID
+
+    - `changes_requested: optional object { batch_1_day_max_input_tokens, max_audio_megabytes_per_1_minute, max_images_per_1_minute, 3 more }`
+
+      The payload used to update the rate limits.
+
+      - `batch_1_day_max_input_tokens: optional number`
+
+        The maximum batch input tokens per day. Only relevant for certain models.
+
+      - `max_audio_megabytes_per_1_minute: optional number`
+
+        The maximum audio megabytes per minute. Only relevant for certain models.
+
+      - `max_images_per_1_minute: optional number`
+
+        The maximum images per minute. Only relevant for certain models.
+
+      - `max_requests_per_1_day: optional number`
+
+        The maximum requests per day. Only relevant for certain models.
+
+      - `max_requests_per_1_minute: optional number`
+
+        The maximum requests per minute.
+
+      - `max_tokens_per_1_minute: optional number`
+
+        The maximum tokens per minute.
+
+  - `"role.assignment.created": optional object { id, principal_id, principal_type, 2 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The identifier of the role assignment.
+
+    - `principal_id: optional string`
+
+      The principal (user or group) that received the role.
+
+    - `principal_type: optional string`
+
+      The type of principal (user or group) that received the role.
+
+    - `resource_id: optional string`
+
+      The resource the role assignment is scoped to.
+
+    - `resource_type: optional string`
+
+      The type of resource the role assignment is scoped to.
+
+  - `"role.assignment.deleted": optional object { id, principal_id, principal_type, 2 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The identifier of the role assignment.
+
+    - `principal_id: optional string`
+
+      The principal (user or group) that had the role removed.
+
+    - `principal_type: optional string`
+
+      The type of principal (user or group) that had the role removed.
+
+    - `resource_id: optional string`
+
+      The resource the role assignment was scoped to.
+
+    - `resource_type: optional string`
+
+      The type of resource the role assignment was scoped to.
+
+  - `"role.created": optional object { id, permissions, resource_id, 2 more }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The role ID.
+
+    - `permissions: optional array of string`
+
+      The permissions granted by the role.
+
+    - `resource_id: optional string`
+
+      The resource the role is scoped to.
+
+    - `resource_type: optional string`
+
+      The type of resource the role belongs to.
+
+    - `role_name: optional string`
+
+      The name of the role.
+
+  - `"role.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The role ID.
+
+  - `"role.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The role ID.
+
+    - `changes_requested: optional object { description, metadata, permissions_added, 4 more }`
+
+      The payload used to update the role.
+
+      - `description: optional string`
+
+        The updated role description, when provided.
+
+      - `metadata: optional unknown`
+
+        Additional metadata stored on the role.
+
+      - `permissions_added: optional array of string`
+
+        The permissions added to the role.
+
+      - `permissions_removed: optional array of string`
+
+        The permissions removed from the role.
+
+      - `resource_id: optional string`
+
+        The resource the role is scoped to.
+
+      - `resource_type: optional string`
+
+        The type of resource the role belongs to.
+
+      - `role_name: optional string`
+
+        The updated role name, when provided.
+
+  - `"scim.disabled": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the SCIM was disabled for.
+
+  - `"scim.enabled": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The ID of the SCIM was enabled for.
+
+  - `"service_account.created": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The service account ID.
+
+    - `data: optional object { role }`
+
+      The payload used to create the service account.
+
+      - `role: optional string`
+
+        The role of the service account. Is either `owner` or `member`.
+
+  - `"service_account.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The service account ID.
+
+  - `"service_account.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The service account ID.
+
+    - `changes_requested: optional object { role }`
+
+      The payload used to updated the service account.
+
+      - `role: optional string`
+
+        The role of the service account. Is either `owner` or `member`.
+
+  - `"user.added": optional object { id, data }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The user ID.
+
+    - `data: optional object { role }`
+
+      The payload used to add the user to the project.
+
+      - `role: optional string`
+
+        The role of the user. Is either `owner` or `member`.
+
+  - `"user.deleted": optional object { id }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The user ID.
+
+  - `"user.updated": optional object { id, changes_requested }`
+
+    The details for events with this `type`.
+
+    - `id: optional string`
+
+      The project ID.
+
+    - `changes_requested: optional object { role }`
+
+      The payload used to update the user.
+
+      - `role: optional string`
+
+        The role of the user. Is either `owner` or `member`.
+
+### Audit Log Get Costs Response
+
+- `AuditLogGetCostsResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
 
 # Admin API Keys
 
@@ -2353,6 +3555,198 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 }
 ```
 
+## Domain Types
+
+### Admin API Key List Response
+
+- `AdminAPIKeyListResponse object { id, created_at, last_used_at, 5 more }`
+
+  Represents an individual Admin API key in an org.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the API key was created
+
+  - `last_used_at: number`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: string`
+
+    The name of the API key
+
+  - `object: string`
+
+    The object type, which is always `organization.admin_api_key`
+
+  - `owner: object { id, created_at, name, 3 more }`
+
+    - `id: optional string`
+
+      The identifier, which can be referenced in API endpoints
+
+    - `created_at: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `object: optional string`
+
+      The object type, which is always organization.user
+
+    - `role: optional string`
+
+      Always `owner`
+
+    - `type: optional string`
+
+      Always `user`
+
+  - `redacted_value: string`
+
+    The redacted value of the API key
+
+  - `value: optional string`
+
+    The value of the API key. Only shown on create.
+
+### Admin API Key Create Response
+
+- `AdminAPIKeyCreateResponse object { id, created_at, last_used_at, 5 more }`
+
+  Represents an individual Admin API key in an org.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the API key was created
+
+  - `last_used_at: number`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: string`
+
+    The name of the API key
+
+  - `object: string`
+
+    The object type, which is always `organization.admin_api_key`
+
+  - `owner: object { id, created_at, name, 3 more }`
+
+    - `id: optional string`
+
+      The identifier, which can be referenced in API endpoints
+
+    - `created_at: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `object: optional string`
+
+      The object type, which is always organization.user
+
+    - `role: optional string`
+
+      Always `owner`
+
+    - `type: optional string`
+
+      Always `user`
+
+  - `redacted_value: string`
+
+    The redacted value of the API key
+
+  - `value: optional string`
+
+    The value of the API key. Only shown on create.
+
+### Admin API Key Retrieve Response
+
+- `AdminAPIKeyRetrieveResponse object { id, created_at, last_used_at, 5 more }`
+
+  Represents an individual Admin API key in an org.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the API key was created
+
+  - `last_used_at: number`
+
+    The Unix timestamp (in seconds) of when the API key was last used
+
+  - `name: string`
+
+    The name of the API key
+
+  - `object: string`
+
+    The object type, which is always `organization.admin_api_key`
+
+  - `owner: object { id, created_at, name, 3 more }`
+
+    - `id: optional string`
+
+      The identifier, which can be referenced in API endpoints
+
+    - `created_at: optional number`
+
+      The Unix timestamp (in seconds) of when the user was created
+
+    - `name: optional string`
+
+      The name of the user
+
+    - `object: optional string`
+
+      The object type, which is always organization.user
+
+    - `role: optional string`
+
+      Always `owner`
+
+    - `type: optional string`
+
+      Always `user`
+
+  - `redacted_value: string`
+
+    The redacted value of the API key
+
+  - `value: optional string`
+
+    The value of the API key. Only shown on create.
+
+### Admin API Key Delete Response
+
+- `AdminAPIKeyDeleteResponse object { id, deleted, object }`
+
+  - `id: optional string`
+
+  - `deleted: optional boolean`
+
+  - `object: optional string`
+
 # Usage
 
 ## Audio speeches
@@ -2433,7 +3827,7 @@ Get audio speeches usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -2489,7 +3883,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -2521,7 +3915,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -2553,7 +3947,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -2593,7 +3987,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -2625,7 +4019,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -2657,7 +4051,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -2673,7 +4067,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -2689,7 +4083,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -2882,7 +4276,7 @@ Get audio transcriptions usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -2938,7 +4332,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -2970,7 +4364,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -3002,7 +4396,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -3042,7 +4436,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -3074,7 +4468,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -3106,7 +4500,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -3122,7 +4516,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -3138,7 +4532,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -3313,7 +4707,7 @@ Get code interpreter sessions usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -3369,7 +4763,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -3401,7 +4795,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -3433,7 +4827,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -3473,7 +4867,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -3505,7 +4899,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -3537,7 +4931,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -3553,7 +4947,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -3569,7 +4963,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -3766,7 +5160,7 @@ Get completions usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -3822,7 +5216,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -3854,7 +5248,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -3886,7 +5280,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -3926,7 +5320,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -3958,7 +5352,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -3990,7 +5384,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -4006,7 +5400,7 @@ Get completions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -4022,7 +5416,7 @@ Get completions usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -4221,7 +5615,7 @@ Get embeddings usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -4277,7 +5671,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -4309,7 +5703,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -4341,7 +5735,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -4381,7 +5775,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -4413,7 +5807,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -4445,7 +5839,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -4461,7 +5855,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -4477,7 +5871,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -4698,7 +6092,7 @@ Get images usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -4754,7 +6148,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -4786,7 +6180,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -4818,7 +6212,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -4858,7 +6252,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -4890,7 +6284,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -4922,7 +6316,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -4938,7 +6332,7 @@ Get images usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -4954,7 +6348,7 @@ Get images usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5149,7 +6543,7 @@ Get moderations usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -5205,7 +6599,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -5237,7 +6631,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -5269,7 +6663,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -5309,7 +6703,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -5341,7 +6735,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -5373,7 +6767,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -5389,7 +6783,7 @@ Get moderations usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -5405,7 +6799,7 @@ Get moderations usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5580,7 +6974,7 @@ Get vector stores usage details for the organization.
 
   - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
 
-    - `UsageCompletionsResult = object { input_tokens, num_model_requests, object, 10 more }`
+    - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -5636,7 +7030,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageEmbeddingsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated embeddings usage details of the specific time bucket.
 
@@ -5668,7 +7062,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageModerationsResult = object { input_tokens, num_model_requests, object, 4 more }`
+    - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
 
       The aggregated moderations usage details of the specific time bucket.
 
@@ -5700,7 +7094,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageImagesResult = object { images, num_model_requests, object, 6 more }`
+    - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
 
       The aggregated images usage details of the specific time bucket.
 
@@ -5740,7 +7134,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioSpeechesResult = object { characters, num_model_requests, object, 4 more }`
+    - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
 
       The aggregated audio speeches usage details of the specific time bucket.
 
@@ -5772,7 +7166,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageAudioTranscriptionsResult = object { num_model_requests, object, seconds, 4 more }`
+    - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
 
       The aggregated audio transcriptions usage details of the specific time bucket.
 
@@ -5804,7 +7198,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `UsageVectorStoresResult = object { object, usage_bytes, project_id }`
+    - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
 
       The aggregated vector stores usage details of the specific time bucket.
 
@@ -5820,7 +7214,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `UsageCodeInterpreterSessionsResult = object { object, num_sessions, project_id }`
+    - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
 
       The aggregated code interpreter sessions usage details of the specific time bucket.
 
@@ -5836,7 +7230,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-    - `CostsResult = object { object, amount, line_item, project_id }`
+    - `CostsResult object { object, amount, line_item, project_id }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -5946,6 +7340,2472 @@ curl "https://api.openai.com/v1/organization/usage/vector_stores?start_time=1730
     "next_page": null
 }
 ```
+
+## Domain Types
+
+### Usage Get Audio Speeches Response
+
+- `UsageGetAudioSpeechesResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Audio Transcriptions Response
+
+- `UsageGetAudioTranscriptionsResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Code Interpreter Sessions Response
+
+- `UsageGetCodeInterpreterSessionsResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Completions Response
+
+- `UsageGetCompletionsResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Embeddings Response
+
+- `UsageGetEmbeddingsResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Images Response
+
+- `UsageGetImagesResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Moderations Response
+
+- `UsageGetModerationsResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
+
+### Usage Get Vector Stores Response
+
+- `UsageGetVectorStoresResponse object { data, has_more, next_page, object }`
+
+  - `data: array of object { end_time, object, result, start_time }`
+
+    - `end_time: number`
+
+    - `object: "bucket"`
+
+      - `"bucket"`
+
+    - `result: array of object { input_tokens, num_model_requests, object, 10 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 6 more`
+
+      - `UsageCompletionsResult object { input_tokens, num_model_requests, object, 10 more }`
+
+        The aggregated completions usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of text input tokens used, including cached tokens. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.completions.result"`
+
+          - `"organization.usage.completions.result"`
+
+        - `output_tokens: number`
+
+          The aggregated number of text output tokens used. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `batch: optional boolean`
+
+          When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
+
+        - `input_audio_tokens: optional number`
+
+          The aggregated number of audio input tokens used, including cached tokens.
+
+        - `input_cached_tokens: optional number`
+
+          The aggregated number of text input tokens that has been cached from previous requests. For customers subscribe to scale tier, this includes scale tier tokens.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `output_audio_tokens: optional number`
+
+          The aggregated number of audio output tokens used.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `service_tier: optional string`
+
+          When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageEmbeddingsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated embeddings usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.embeddings.result"`
+
+          - `"organization.usage.embeddings.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageModerationsResult object { input_tokens, num_model_requests, object, 4 more }`
+
+        The aggregated moderations usage details of the specific time bucket.
+
+        - `input_tokens: number`
+
+          The aggregated number of input tokens used.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.moderations.result"`
+
+          - `"organization.usage.moderations.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageImagesResult object { images, num_model_requests, object, 6 more }`
+
+        The aggregated images usage details of the specific time bucket.
+
+        - `images: number`
+
+          The number of images processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.images.result"`
+
+          - `"organization.usage.images.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `size: optional string`
+
+          When `group_by=size`, this field provides the image size of the grouped usage result.
+
+        - `source: optional string`
+
+          When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioSpeechesResult object { characters, num_model_requests, object, 4 more }`
+
+        The aggregated audio speeches usage details of the specific time bucket.
+
+        - `characters: number`
+
+          The number of characters processed.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_speeches.result"`
+
+          - `"organization.usage.audio_speeches.result"`
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageAudioTranscriptionsResult object { num_model_requests, object, seconds, 4 more }`
+
+        The aggregated audio transcriptions usage details of the specific time bucket.
+
+        - `num_model_requests: number`
+
+          The count of requests made to the model.
+
+        - `object: "organization.usage.audio_transcriptions.result"`
+
+          - `"organization.usage.audio_transcriptions.result"`
+
+        - `seconds: number`
+
+          The number of seconds processed.
+
+        - `api_key_id: optional string`
+
+          When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+        - `model: optional string`
+
+          When `group_by=model`, this field provides the model name of the grouped usage result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+        - `user_id: optional string`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped usage result.
+
+      - `UsageVectorStoresResult object { object, usage_bytes, project_id }`
+
+        The aggregated vector stores usage details of the specific time bucket.
+
+        - `object: "organization.usage.vector_stores.result"`
+
+          - `"organization.usage.vector_stores.result"`
+
+        - `usage_bytes: number`
+
+          The vector stores usage in bytes.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `UsageCodeInterpreterSessionsResult object { object, num_sessions, project_id }`
+
+        The aggregated code interpreter sessions usage details of the specific time bucket.
+
+        - `object: "organization.usage.code_interpreter_sessions.result"`
+
+          - `"organization.usage.code_interpreter_sessions.result"`
+
+        - `num_sessions: optional number`
+
+          The number of code interpreter sessions.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped usage result.
+
+      - `CostsResult object { object, amount, line_item, project_id }`
+
+        The aggregated costs details of the specific time bucket.
+
+        - `object: "organization.costs.result"`
+
+          - `"organization.costs.result"`
+
+        - `amount: optional object { currency, value }`
+
+          The monetary value in its associated currency.
+
+          - `currency: optional string`
+
+            Lowercase ISO-4217 currency e.g. "usd"
+
+          - `value: optional number`
+
+            The numeric value of the cost.
+
+        - `line_item: optional string`
+
+          When `group_by=line_item`, this field provides the line item of the grouped costs result.
+
+        - `project_id: optional string`
+
+          When `group_by=project_id`, this field provides the project ID of the grouped costs result.
+
+    - `start_time: number`
+
+  - `has_more: boolean`
+
+  - `next_page: string`
+
+  - `object: "page"`
+
+    - `"page"`
 
 # Invites
 
@@ -6152,7 +10012,7 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -6308,7 +10168,7 @@ Retrieves an invite.
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -6485,7 +10345,7 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
 
 ### Invite
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -6548,6 +10408,20 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
       - `"member"`
 
       - `"owner"`
+
+### Invite Delete Response
+
+- `InviteDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.invite.deleted"`
+
+    The object type, which is always `organization.invite.deleted`
+
+    - `"organization.invite.deleted"`
 
 # Users
 
@@ -6684,7 +10558,7 @@ Retrieves a user by their identifier.
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 
@@ -6781,7 +10655,7 @@ Modifies a user's role in the organization.
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 
@@ -6923,7 +10797,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
 
 ### User
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 
@@ -6956,6 +10830,18 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
     - `"owner"`
 
     - `"reader"`
+
+### User Delete Response
+
+- `UserDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.user.deleted"`
+
+    - `"organization.user.deleted"`
 
 # Roles
 
@@ -7354,6 +11240,152 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
 }
 ```
 
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, created_at, created_by, 8 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+### Role Create Response
+
+- `RoleCreateResponse object { object, role, user }`
+
+  Role assignment linking a user to a role.
+
+  - `object: "user.role"`
+
+    Always `user.role`.
+
+    - `"user.role"`
+
+  - `role: object { id, description, name, 4 more }`
+
+    Details about a role that can be assigned through the public Roles API.
+
+    - `id: string`
+
+      Identifier for the role.
+
+    - `description: string`
+
+      Optional description of the role.
+
+    - `name: string`
+
+      Unique name for the role.
+
+    - `object: "role"`
+
+      Always `role`.
+
+      - `"role"`
+
+    - `permissions: array of string`
+
+      Permissions granted by the role.
+
+    - `predefined_role: boolean`
+
+      Whether the role is predefined and managed by OpenAI.
+
+    - `resource_type: string`
+
+      Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+  - `user: User`
+
+    Represents an individual `user` within an organization.
+
+    - `id: string`
+
+      The identifier, which can be referenced in API endpoints
+
+    - `added_at: number`
+
+      The Unix timestamp (in seconds) of when the user was added.
+
+    - `email: string`
+
+      The email address of the user
+
+    - `name: string`
+
+      The name of the user
+
+    - `object: "organization.user"`
+
+      The object type, which is always `organization.user`
+
+      - `"organization.user"`
+
+    - `role: "owner" or "reader"`
+
+      `owner` or `reader`
+
+      - `"owner"`
+
+      - `"reader"`
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
 # Groups
 
 ## List groups
@@ -7683,6 +11715,94 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 }
 ```
 
+## Domain Types
+
+### Group List Response
+
+- `GroupListResponse object { id, created_at, is_scim_managed, name }`
+
+  Details about an organization group.
+
+  - `id: string`
+
+    Identifier for the group.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `is_scim_managed: boolean`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: string`
+
+    Display name of the group.
+
+### Group Create Response
+
+- `GroupCreateResponse object { id, created_at, is_scim_managed, name }`
+
+  Details about an organization group.
+
+  - `id: string`
+
+    Identifier for the group.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `is_scim_managed: boolean`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: string`
+
+    Display name of the group.
+
+### Group Update Response
+
+- `GroupUpdateResponse object { id, created_at, is_scim_managed, name }`
+
+  Response returned after updating a group.
+
+  - `id: string`
+
+    Identifier for the group.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `is_scim_managed: boolean`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: string`
+
+    Updated display name for the group.
+
+### Group Delete Response
+
+- `GroupDeleteResponse object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a group.
+
+  - `id: string`
+
+    Identifier of the deleted group.
+
+  - `deleted: boolean`
+
+    Whether the group was deleted.
+
+  - `object: "group.deleted"`
+
+    Always `group.deleted`.
+
+    - `"group.deleted"`
+
 # Users
 
 ## List group users
@@ -7949,6 +12069,44 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### User Create Response
+
+- `UserCreateResponse object { group_id, object, user_id }`
+
+  Confirmation payload returned after adding a user to a group.
+
+  - `group_id: string`
+
+    Identifier of the group the user was added to.
+
+  - `object: "group.user"`
+
+    Always `group.user`.
+
+    - `"group.user"`
+
+  - `user_id: string`
+
+    Identifier of the user that was added.
+
+### User Delete Response
+
+- `UserDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after removing a user from a group.
+
+  - `deleted: boolean`
+
+    Whether the group membership was removed.
+
+  - `object: "group.user.deleted"`
+
+    Always `group.user.deleted`.
+
+    - `"group.user.deleted"`
 
 # Roles
 
@@ -8336,6 +12494,144 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, created_at, created_by, 8 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+### Role Create Response
+
+- `RoleCreateResponse object { group, object, role }`
+
+  Role assignment linking a group to a role.
+
+  - `group: object { id, created_at, name, 2 more }`
+
+    Summary information about a group returned in role assignment responses.
+
+    - `id: string`
+
+      Identifier for the group.
+
+    - `created_at: number`
+
+      Unix timestamp (in seconds) when the group was created.
+
+    - `name: string`
+
+      Display name of the group.
+
+    - `object: "group"`
+
+      Always `group`.
+
+      - `"group"`
+
+    - `scim_managed: boolean`
+
+      Whether the group is managed through SCIM.
+
+  - `object: "group.role"`
+
+    Always `group.role`.
+
+    - `"group.role"`
+
+  - `role: object { id, description, name, 4 more }`
+
+    Details about a role that can be assigned through the public Roles API.
+
+    - `id: string`
+
+      Identifier for the role.
+
+    - `description: string`
+
+      Optional description of the role.
+
+    - `name: string`
+
+      Unique name for the role.
+
+    - `object: "role"`
+
+      Always `role`.
+
+      - `"role"`
+
+    - `permissions: array of string`
+
+      Permissions granted by the role.
+
+    - `predefined_role: boolean`
+
+      Whether the role is predefined and managed by OpenAI.
+
+    - `resource_type: string`
+
+      Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
 
 # Roles
 
@@ -8765,6 +13061,136 @@ curl -X DELETE https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Create Response
+
+- `RoleCreateResponse object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Update Response
+
+- `RoleUpdateResponse object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a role.
+
+  - `id: string`
+
+    Identifier of the deleted role.
+
+  - `deleted: boolean`
+
+    Whether the role was deleted.
+
+  - `object: "role.deleted"`
+
+    Always `role.deleted`.
+
+    - `"role.deleted"`
 
 # Certificates
 
@@ -9620,6 +14046,322 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
 }
 ```
 
+## Domain Types
+
+### Certificate List Response
+
+- `CertificateListResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Create Response
+
+- `CertificateCreateResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Retrieve Response
+
+- `CertificateRetrieveResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Update Response
+
+- `CertificateUpdateResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Delete Response
+
+- `CertificateDeleteResponse object { id, object }`
+
+  - `id: string`
+
+    The ID of the certificate that was deleted.
+
+  - `object: "certificate.deleted"`
+
+    The object type, must be `certificate.deleted`.
+
+    - `"certificate.deleted"`
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
 # Projects
 
 ## List projects
@@ -9777,7 +14519,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
 ### Returns
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 
@@ -9871,7 +14613,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 
@@ -9964,7 +14706,7 @@ Modifies a project in the organization.
 
 ### Returns
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 
@@ -10045,7 +14787,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 ### Returns
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 
@@ -10125,7 +14867,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
 
 ### Project
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 
@@ -10306,7 +15048,7 @@ Adds a user to the project. Users must already be members of the organization to
 
 ### Returns
 
-- `ProjectUser = object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, email, 3 more }`
 
   Represents an individual user in a project.
 
@@ -10403,7 +15145,7 @@ Retrieves a user in the project.
 
 ### Returns
 
-- `ProjectUser = object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, email, 3 more }`
 
   Represents an individual user in a project.
 
@@ -10502,7 +15244,7 @@ Modifies a user's role in the project.
 
 ### Returns
 
-- `ProjectUser = object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, email, 3 more }`
 
   Represents an individual user in a project.
 
@@ -10649,7 +15391,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
 
 ### Project User
 
-- `ProjectUser = object { id, added_at, email, 3 more }`
+- `ProjectUser object { id, added_at, email, 3 more }`
 
   Represents an individual user in a project.
 
@@ -10682,6 +15424,567 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
     - `"owner"`
 
     - `"member"`
+
+### User Delete Response
+
+- `UserDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.project.user.deleted"`
+
+    - `"organization.project.user.deleted"`
+
+# Roles
+
+## List project user role assignments
+
+**get** `/projects/{project_id}/users/{user_id}/roles`
+
+Lists the project roles assigned to a user within a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `user_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing project roles.
+
+- `limit: optional number`
+
+  A limit on the number of project role assignments to return.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned project roles.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of object { id, created_at, created_by, 8 more }`
+
+  Role assignments returned in the current page.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+- `has_more: boolean`
+
+  Whether additional assignments are available when paginating.
+
+- `next: string`
+
+  Cursor to fetch the next page of results, or `null` when there are no more assignments.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "created_by": "created_by",
+      "created_by_user_obj": {
+        "foo": "bar"
+      },
+      "description": "description",
+      "metadata": {
+        "foo": "bar"
+      },
+      "name": "name",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type",
+      "updated_at": 0
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "role_01J1F8PROJ",
+            "name": "API Project Key Manager",
+            "permissions": [
+                "api.organization.projects.api_keys.read",
+                "api.organization.projects.api_keys.write"
+            ],
+            "resource_type": "api.project",
+            "predefined_role": false,
+            "description": "Allows managing API keys for the project",
+            "created_at": 1711471533,
+            "updated_at": 1711472599,
+            "created_by": "user_abc123",
+            "created_by_user_obj": {
+                "id": "user_abc123",
+                "name": "Ada Lovelace",
+                "email": "ada@example.com"
+            },
+            "metadata": {}
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Assign project role to user
+
+**post** `/projects/{project_id}/users/{user_id}/roles`
+
+Assigns a project role to a user within a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `user_id: string`
+
+### Body Parameters
+
+- `role_id: string`
+
+  Identifier of the role to assign.
+
+### Returns
+
+- `object: "user.role"`
+
+  Always `user.role`.
+
+  - `"user.role"`
+
+- `role: object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+- `user: User`
+
+  Represents an individual `user` within an organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `added_at: number`
+
+    The Unix timestamp (in seconds) of when the user was added.
+
+  - `email: string`
+
+    The email address of the user
+
+  - `name: string`
+
+    The name of the user
+
+  - `object: "organization.user"`
+
+    The object type, which is always `organization.user`
+
+    - `"organization.user"`
+
+  - `role: "owner" or "reader"`
+
+    `owner` or `reader`
+
+    - `"owner"`
+
+    - `"reader"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "role_id": "role_id"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "object": "user.role",
+  "role": {
+    "id": "id",
+    "description": "description",
+    "name": "name",
+    "object": "role",
+    "permissions": [
+      "string"
+    ],
+    "predefined_role": true,
+    "resource_type": "resource_type"
+  },
+  "user": {
+    "id": "id",
+    "added_at": 0,
+    "email": "email",
+    "name": "name",
+    "object": "organization.user",
+    "role": "owner"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_id": "role_01J1F8PROJ"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "user.role",
+    "user": {
+        "object": "organization.user",
+        "id": "user_abc123",
+        "name": "Ada Lovelace",
+        "email": "ada@example.com",
+        "role": "owner",
+        "added_at": 1711470000
+    },
+    "role": {
+        "object": "role",
+        "id": "role_01J1F8PROJ",
+        "name": "API Project Key Manager",
+        "description": "Allows managing API keys for the project",
+        "permissions": [
+            "api.organization.projects.api_keys.read",
+            "api.organization.projects.api_keys.write"
+        ],
+        "resource_type": "api.project",
+        "predefined_role": false
+    }
+}
+```
+
+## Unassign project role from user
+
+**delete** `/projects/{project_id}/users/{user_id}/roles/{role_id}`
+
+Unassigns a project role from a user within a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `user_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `deleted: boolean`
+
+  Whether the assignment was removed.
+
+- `object: string`
+
+  Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles/$ROLE_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "user.role.deleted",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, created_at, created_by, 8 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+### Role Create Response
+
+- `RoleCreateResponse object { object, role, user }`
+
+  Role assignment linking a user to a role.
+
+  - `object: "user.role"`
+
+    Always `user.role`.
+
+    - `"user.role"`
+
+  - `role: object { id, description, name, 4 more }`
+
+    Details about a role that can be assigned through the public Roles API.
+
+    - `id: string`
+
+      Identifier for the role.
+
+    - `description: string`
+
+      Optional description of the role.
+
+    - `name: string`
+
+      Unique name for the role.
+
+    - `object: "role"`
+
+      Always `role`.
+
+      - `"role"`
+
+    - `permissions: array of string`
+
+      Permissions granted by the role.
+
+    - `predefined_role: boolean`
+
+      Whether the role is predefined and managed by OpenAI.
+
+    - `resource_type: string`
+
+      Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+  - `user: User`
+
+    Represents an individual `user` within an organization.
+
+    - `id: string`
+
+      The identifier, which can be referenced in API endpoints
+
+    - `added_at: number`
+
+      The Unix timestamp (in seconds) of when the user was added.
+
+    - `email: string`
+
+      The email address of the user
+
+    - `name: string`
+
+      The name of the user
+
+    - `object: "organization.user"`
+
+      The object type, which is always `organization.user`
+
+      - `"organization.user"`
+
+    - `role: "owner" or "reader"`
+
+      `owner` or `reader`
+
+      - `"owner"`
+
+      - `"reader"`
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
 
 # Service Accounts
 
@@ -10924,7 +16227,7 @@ Retrieves a service account in the project.
 
 ### Returns
 
-- `ProjectServiceAccount = object { id, created_at, name, 2 more }`
+- `ProjectServiceAccount object { id, created_at, name, 2 more }`
 
   Represents an individual service account in a project.
 
@@ -11058,7 +16361,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
 
 ### Project Service Account
 
-- `ProjectServiceAccount = object { id, created_at, name, 2 more }`
+- `ProjectServiceAccount object { id, created_at, name, 2 more }`
 
   Represents an individual service account in a project.
 
@@ -11087,6 +16390,54 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
     - `"owner"`
 
     - `"member"`
+
+### Service Account Create Response
+
+- `ServiceAccountCreateResponse object { id, api_key, created_at, 3 more }`
+
+  - `id: string`
+
+  - `api_key: object { id, created_at, name, 2 more }`
+
+    - `id: string`
+
+    - `created_at: number`
+
+    - `name: string`
+
+    - `object: "organization.project.service_account.api_key"`
+
+      The object type, which is always `organization.project.service_account.api_key`
+
+      - `"organization.project.service_account.api_key"`
+
+    - `value: string`
+
+  - `created_at: number`
+
+  - `name: string`
+
+  - `object: "organization.project.service_account"`
+
+    - `"organization.project.service_account"`
+
+  - `role: "member"`
+
+    Service accounts can only have one role of type `member`
+
+    - `"member"`
+
+### Service Account Delete Response
+
+- `ServiceAccountDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.project.service_account.deleted"`
+
+    - `"organization.project.service_account.deleted"`
 
 # API Keys
 
@@ -11324,7 +16675,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIEy = object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIEy object { id, created_at, last_used_at, 4 more }`
 
   Represents an individual API key in a project.
 
@@ -11563,7 +16914,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
 ### Project API Ey
 
-- `ProjectAPIEy = object { id, created_at, last_used_at, 4 more }`
+- `ProjectAPIEy object { id, created_at, last_used_at, 4 more }`
 
   Represents an individual API key in a project.
 
@@ -11666,6 +17017,18 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
   - `redacted_value: string`
 
     The redacted value of the API key
+
+### API Key Delete Response
+
+- `APIKeyDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.project.api_key.deleted"`
+
+    - `"organization.project.api_key.deleted"`
 
 # Rate Limits
 
@@ -11931,6 +17294,96 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
     "max_images_per_1_minute": 10
   }
 ```
+
+## Domain Types
+
+### Rate Limit List Rate Limits Response
+
+- `RateLimitListRateLimitsResponse object { id, max_requests_per_1_minute, max_tokens_per_1_minute, 6 more }`
+
+  Represents a project rate limit config.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `max_requests_per_1_minute: number`
+
+    The maximum requests per minute.
+
+  - `max_tokens_per_1_minute: number`
+
+    The maximum tokens per minute.
+
+  - `model: string`
+
+    The model this rate limit applies to.
+
+  - `object: "project.rate_limit"`
+
+    The object type, which is always `project.rate_limit`
+
+    - `"project.rate_limit"`
+
+  - `batch_1_day_max_input_tokens: optional number`
+
+    The maximum batch input tokens per day. Only present for relevant models.
+
+  - `max_audio_megabytes_per_1_minute: optional number`
+
+    The maximum audio megabytes per minute. Only present for relevant models.
+
+  - `max_images_per_1_minute: optional number`
+
+    The maximum images per minute. Only present for relevant models.
+
+  - `max_requests_per_1_day: optional number`
+
+    The maximum requests per day. Only present for relevant models.
+
+### Rate Limit Update Rate Limit Response
+
+- `RateLimitUpdateRateLimitResponse object { id, max_requests_per_1_minute, max_tokens_per_1_minute, 6 more }`
+
+  Represents a project rate limit config.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `max_requests_per_1_minute: number`
+
+    The maximum requests per minute.
+
+  - `max_tokens_per_1_minute: number`
+
+    The maximum tokens per minute.
+
+  - `model: string`
+
+    The model this rate limit applies to.
+
+  - `object: "project.rate_limit"`
+
+    The object type, which is always `project.rate_limit`
+
+    - `"project.rate_limit"`
+
+  - `batch_1_day_max_input_tokens: optional number`
+
+    The maximum batch input tokens per day. Only present for relevant models.
+
+  - `max_audio_megabytes_per_1_minute: optional number`
+
+    The maximum audio megabytes per minute. Only present for relevant models.
+
+  - `max_images_per_1_minute: optional number`
+
+    The maximum images per minute. Only present for relevant models.
+
+  - `max_requests_per_1_day: optional number`
+
+    The maximum requests per day. Only present for relevant models.
 
 # Groups
 
@@ -12206,6 +17659,1182 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### Group List Response
+
+- `GroupListResponse object { created_at, group_id, group_name, 2 more }`
+
+  Details about a group's membership in a project.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: string`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: string`
+
+    Display name of the group.
+
+  - `object: "project.group"`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: string`
+
+    Identifier of the project.
+
+### Group Create Response
+
+- `GroupCreateResponse object { created_at, group_id, group_name, 2 more }`
+
+  Details about a group's membership in a project.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was granted project access.
+
+  - `group_id: string`
+
+    Identifier of the group that has access to the project.
+
+  - `group_name: string`
+
+    Display name of the group.
+
+  - `object: "project.group"`
+
+    Always `project.group`.
+
+    - `"project.group"`
+
+  - `project_id: string`
+
+    Identifier of the project.
+
+### Group Delete Response
+
+- `GroupDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after removing a group from a project.
+
+  - `deleted: boolean`
+
+    Whether the group membership in the project was removed.
+
+  - `object: "project.group.deleted"`
+
+    Always `project.group.deleted`.
+
+    - `"project.group.deleted"`
+
+# Roles
+
+## List project group role assignments
+
+**get** `/projects/{project_id}/groups/{group_id}/roles`
+
+Lists the project roles assigned to a group within a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `group_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing project roles.
+
+- `limit: optional number`
+
+  A limit on the number of project role assignments to return.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned project roles.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of object { id, created_at, created_by, 8 more }`
+
+  Role assignments returned in the current page.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+- `has_more: boolean`
+
+  Whether additional assignments are available when paginating.
+
+- `next: string`
+
+  Cursor to fetch the next page of results, or `null` when there are no more assignments.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "created_by": "created_by",
+      "created_by_user_obj": {
+        "foo": "bar"
+      },
+      "description": "description",
+      "metadata": {
+        "foo": "bar"
+      },
+      "name": "name",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type",
+      "updated_at": 0
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "role_01J1F8PROJ",
+            "name": "API Project Key Manager",
+            "permissions": [
+                "api.organization.projects.api_keys.read",
+                "api.organization.projects.api_keys.write"
+            ],
+            "resource_type": "api.project",
+            "predefined_role": false,
+            "description": "Allows managing API keys for the project",
+            "created_at": 1711471533,
+            "updated_at": 1711472599,
+            "created_by": "user_abc123",
+            "created_by_user_obj": {
+                "id": "user_abc123",
+                "name": "Ada Lovelace",
+                "email": "ada@example.com"
+            },
+            "metadata": {}
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Assign project role to group
+
+**post** `/projects/{project_id}/groups/{group_id}/roles`
+
+Assigns a project role to a group within a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `group_id: string`
+
+### Body Parameters
+
+- `role_id: string`
+
+  Identifier of the role to assign.
+
+### Returns
+
+- `group: object { id, created_at, name, 2 more }`
+
+  Summary information about a group returned in role assignment responses.
+
+  - `id: string`
+
+    Identifier for the group.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `name: string`
+
+    Display name of the group.
+
+  - `object: "group"`
+
+    Always `group`.
+
+    - `"group"`
+
+  - `scim_managed: boolean`
+
+    Whether the group is managed through SCIM.
+
+- `object: "group.role"`
+
+  Always `group.role`.
+
+  - `"group.role"`
+
+- `role: object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "role_id": "role_id"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "group": {
+    "id": "id",
+    "created_at": 0,
+    "name": "name",
+    "object": "group",
+    "scim_managed": true
+  },
+  "object": "group.role",
+  "role": {
+    "id": "id",
+    "description": "description",
+    "name": "name",
+    "object": "role",
+    "permissions": [
+      "string"
+    ],
+    "predefined_role": true,
+    "resource_type": "resource_type"
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_id": "role_01J1F8PROJ"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role",
+    "group": {
+        "object": "group",
+        "id": "group_01J1F8ABCDXYZ",
+        "name": "Support Team",
+        "created_at": 1711471533,
+        "scim_managed": false
+    },
+    "role": {
+        "object": "role",
+        "id": "role_01J1F8PROJ",
+        "name": "API Project Key Manager",
+        "description": "Allows managing API keys for the project",
+        "permissions": [
+            "api.organization.projects.api_keys.read",
+            "api.organization.projects.api_keys.write"
+        ],
+        "resource_type": "api.project",
+        "predefined_role": false
+    }
+}
+```
+
+## Unassign project role from group
+
+**delete** `/projects/{project_id}/groups/{group_id}/roles/{role_id}`
+
+Unassigns a project role from a group within a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `group_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `deleted: boolean`
+
+  Whether the assignment was removed.
+
+- `object: string`
+
+  Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles/$ROLE_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role.deleted",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, created_at, created_by, 8 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+### Role Create Response
+
+- `RoleCreateResponse object { group, object, role }`
+
+  Role assignment linking a group to a role.
+
+  - `group: object { id, created_at, name, 2 more }`
+
+    Summary information about a group returned in role assignment responses.
+
+    - `id: string`
+
+      Identifier for the group.
+
+    - `created_at: number`
+
+      Unix timestamp (in seconds) when the group was created.
+
+    - `name: string`
+
+      Display name of the group.
+
+    - `object: "group"`
+
+      Always `group`.
+
+      - `"group"`
+
+    - `scim_managed: boolean`
+
+      Whether the group is managed through SCIM.
+
+  - `object: "group.role"`
+
+    Always `group.role`.
+
+    - `"group.role"`
+
+  - `role: object { id, description, name, 4 more }`
+
+    Details about a role that can be assigned through the public Roles API.
+
+    - `id: string`
+
+      Identifier for the role.
+
+    - `description: string`
+
+      Optional description of the role.
+
+    - `name: string`
+
+      Unique name for the role.
+
+    - `object: "role"`
+
+      Always `role`.
+
+      - `"role"`
+
+    - `permissions: array of string`
+
+      Permissions granted by the role.
+
+    - `predefined_role: boolean`
+
+      Whether the role is predefined and managed by OpenAI.
+
+    - `resource_type: string`
+
+      Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+# Roles
+
+## List project roles
+
+**get** `/projects/{project_id}/roles`
+
+Lists the roles configured for a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing roles.
+
+- `limit: optional number`
+
+  A limit on the number of roles to return. Defaults to 1000.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned roles.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of object { id, description, name, 4 more }`
+
+  Roles returned in the current page.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+- `has_more: boolean`
+
+  Whether more roles are available when paginating.
+
+- `next: string`
+
+  Cursor to fetch the next page of results, or `null` when there are no additional roles.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/roles \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "description": "description",
+      "name": "name",
+      "object": "role",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/proj_abc123/roles?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "role",
+            "id": "role_01J1F8PROJ",
+            "name": "API Project Key Manager",
+            "description": "Allows managing API keys for the project",
+            "permissions": [
+                "api.organization.projects.api_keys.read",
+                "api.organization.projects.api_keys.write"
+            ],
+            "resource_type": "api.project",
+            "predefined_role": false
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Create project role
+
+**post** `/projects/{project_id}/roles`
+
+Creates a custom role for a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Body Parameters
+
+- `permissions: array of string`
+
+  Permissions to grant to the role.
+
+- `role_name: string`
+
+  Unique name for the role.
+
+- `description: optional string`
+
+  Optional description of the role.
+
+### Returns
+
+- `id: string`
+
+  Identifier for the role.
+
+- `description: string`
+
+  Optional description of the role.
+
+- `name: string`
+
+  Unique name for the role.
+
+- `object: "role"`
+
+  Always `role`.
+
+  - `"role"`
+
+- `permissions: array of string`
+
+  Permissions granted by the role.
+
+- `predefined_role: boolean`
+
+  Whether the role is predefined and managed by OpenAI.
+
+- `resource_type: string`
+
+  Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/roles \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "permissions": [
+            "string"
+          ],
+          "role_name": "role_name"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_name": "API Project Key Manager",
+      "permissions": [
+          "api.organization.projects.api_keys.read",
+          "api.organization.projects.api_keys.write"
+      ],
+      "description": "Allows managing API keys for the project"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8PROJ",
+    "name": "API Project Key Manager",
+    "description": "Allows managing API keys for the project",
+    "permissions": [
+        "api.organization.projects.api_keys.read",
+        "api.organization.projects.api_keys.write"
+    ],
+    "resource_type": "api.project",
+    "predefined_role": false
+}
+```
+
+## Update project role
+
+**post** `/projects/{project_id}/roles/{role_id}`
+
+Updates an existing project role.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `role_id: string`
+
+### Body Parameters
+
+- `description: optional string`
+
+  New description for the role.
+
+- `permissions: optional array of string`
+
+  Updated set of permissions for the role.
+
+- `role_name: optional string`
+
+  New name for the role.
+
+### Returns
+
+- `id: string`
+
+  Identifier for the role.
+
+- `description: string`
+
+  Optional description of the role.
+
+- `name: string`
+
+  Unique name for the role.
+
+- `object: "role"`
+
+  Always `role`.
+
+  - `"role"`
+
+- `permissions: array of string`
+
+  Permissions granted by the role.
+
+- `predefined_role: boolean`
+
+  Whether the role is predefined and managed by OpenAI.
+
+- `resource_type: string`
+
+  Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{}'
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "description": "description",
+  "name": "name",
+  "object": "role",
+  "permissions": [
+    "string"
+  ],
+  "predefined_role": true,
+  "resource_type": "resource_type"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "role_name": "API Project Key Manager",
+      "permissions": [
+          "api.organization.projects.api_keys.read",
+          "api.organization.projects.api_keys.write"
+      ],
+      "description": "Allows managing API keys for the project"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "role",
+    "id": "role_01J1F8PROJ",
+    "name": "API Project Key Manager",
+    "description": "Allows managing API keys for the project",
+    "permissions": [
+        "api.organization.projects.api_keys.read",
+        "api.organization.projects.api_keys.write"
+    ],
+    "resource_type": "api.project",
+    "predefined_role": false
+}
+```
+
+## Delete project role
+
+**delete** `/projects/{project_id}/roles/{role_id}`
+
+Deletes a custom role from a project.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier of the deleted role.
+
+- `deleted: boolean`
+
+  Whether the role was deleted.
+
+- `object: "role.deleted"`
+
+  Always `role.deleted`.
+
+  - `"role.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "role.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PROJ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "role.deleted",
+    "id": "role_01J1F8PROJ",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Create Response
+
+- `RoleCreateResponse object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Update Response
+
+- `RoleUpdateResponse object { id, description, name, 4 more }`
+
+  Details about a role that can be assigned through the public Roles API.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `description: string`
+
+    Optional description of the role.
+
+  - `name: string`
+
+    Unique name for the role.
+
+  - `object: "role"`
+
+    Always `role`.
+
+    - `"role"`
+
+  - `permissions: array of string`
+
+    Permissions granted by the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined and managed by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a role.
+
+  - `id: string`
+
+    Identifier of the deleted role.
+
+  - `deleted: boolean`
+
+    Whether the role was deleted.
+
+  - `object: "role.deleted"`
+
+    Always `role.deleted`.
+
+    - `"role.deleted"`
 
 # Certificates
 
@@ -12666,3 +19295,155 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
   ],
 }
 ```
+
+## Domain Types
+
+### Certificate List Response
+
+- `CertificateListResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Activate Response
+
+- `CertificateActivateResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.
+
+### Certificate Deactivate Response
+
+- `CertificateDeactivateResponse object { id, certificate_details, created_at, 3 more }`
+
+  Represents an individual `certificate` uploaded to the organization.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `certificate_details: object { content, expires_at, valid_at }`
+
+    - `content: optional string`
+
+      The content of the certificate in PEM format.
+
+    - `expires_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate expires.
+
+    - `valid_at: optional number`
+
+      The Unix timestamp (in seconds) of when the certificate becomes valid.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+  - `name: string`
+
+    The name of the certificate.
+
+  - `object: "certificate" or "organization.certificate" or "organization.project.certificate"`
+
+    The object type.
+
+    - If creating, updating, or getting a specific certificate, the object type is `certificate`.
+    - If listing, activating, or deactivating certificates for the organization, the object type is `organization.certificate`.
+    - If listing, activating, or deactivating certificates for a project, the object type is `organization.project.certificate`.
+
+    - `"certificate"`
+
+    - `"organization.certificate"`
+
+    - `"organization.project.certificate"`
+
+  - `active: optional boolean`
+
+    Whether the certificate is currently active at the specified scope. Not returned when getting details for a specific certificate.

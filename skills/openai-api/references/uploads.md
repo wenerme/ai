@@ -72,7 +72,7 @@ Returns the Upload object with status `pending`.
 
 ### Returns
 
-- `Upload = object { id, bytes, created_at, 6 more }`
+- `Upload object { id, bytes, created_at, 6 more }`
 
   The Upload object can accept byte chunks in the form of Parts.
 
@@ -283,7 +283,7 @@ Returns the Upload object with status `completed`, including an additional `file
 
 ### Returns
 
-- `Upload = object { id, bytes, created_at, 6 more }`
+- `Upload object { id, bytes, created_at, 6 more }`
 
   The Upload object can accept byte chunks in the form of Parts.
 
@@ -479,7 +479,7 @@ Returns the Upload object with status `cancelled`.
 
 ### Returns
 
-- `Upload = object { id, bytes, created_at, 6 more }`
+- `Upload object { id, bytes, created_at, 6 more }`
 
   The Upload object can accept byte chunks in the form of Parts.
 
@@ -648,7 +648,7 @@ curl https://api.openai.com/v1/uploads/upload_abc123/cancel
 
 ### Upload
 
-- `Upload = object { id, bytes, created_at, 6 more }`
+- `Upload object { id, bytes, created_at, 6 more }`
 
   The Upload object can accept byte chunks in the form of Parts.
 
@@ -776,7 +776,7 @@ It is possible to add multiple Parts in parallel. You can decide the intended or
 
 ### Returns
 
-- `UploadPart = object { id, created_at, object, upload_id }`
+- `UploadPart object { id, created_at, object, upload_id }`
 
   The upload Part represents a chunk of bytes we can add to an Upload object.
 
@@ -840,7 +840,7 @@ curl https://api.openai.com/v1/uploads/upload_abc123/parts
 
 ### Upload Part
 
-- `UploadPart = object { id, created_at, object, upload_id }`
+- `UploadPart object { id, created_at, object, upload_id }`
 
   The upload Part represents a chunk of bytes we can add to an Upload object.
 

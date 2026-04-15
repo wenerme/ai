@@ -20,7 +20,7 @@ Create a new video generation job by editing a source video or existing generate
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 

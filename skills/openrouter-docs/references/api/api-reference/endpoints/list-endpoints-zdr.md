@@ -319,9 +319,13 @@ components:
         latency_last_30m:
           $ref: '#/components/schemas/PercentileStats'
         max_completion_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         max_prompt_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         model_id:
           type: string
           description: The unique identifier for the model (permaslug)
@@ -348,17 +352,23 @@ components:
         throughput_last_30m:
           $ref: '#/components/schemas/PublicEndpointThroughputLast30M'
         uptime_last_1d:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: >-
             Uptime percentage over the last 1 day, calculated as successful
             requests / (successful + error requests) * 100. Rate-limited
             requests are excluded. Returns null if insufficient data.
         uptime_last_30m:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         uptime_last_5m:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: >-
             Uptime percentage over the last 5 minutes, calculated as successful

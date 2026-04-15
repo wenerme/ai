@@ -8,11 +8,11 @@ Create a new skill.
 
 ### Parameters
 
-- `files: Optional[Union[SequenceNotStr[FileTypes], FileTypes]]`
+- `files: Optional[Union[Sequence[FileTypes], FileTypes]]`
 
   Skill files to upload (directory upload) or a single zip file.
 
-  - `SequenceNotStr[FileTypes]`
+  - `Sequence[FileTypes]`
 
     Skill files to upload (directory upload) or a single zip file.
 

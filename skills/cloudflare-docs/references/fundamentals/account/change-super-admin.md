@@ -22,6 +22,10 @@ First, [add a member](https://developers.cloudflare.com/fundamentals/manage-memb
 
 Then, if needed, remove the previous Super Administrator.
 
+Note
+
+Cloudflare recommends having more than one user as Super Administrators for your accounts, so that if you are unable to login with your credentials for any reason, there is another one you can use to manage your domains.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/account/","name":"Accounts"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/account/change-super-admin/","name":"Change Super Administrator"}}]}
 ```

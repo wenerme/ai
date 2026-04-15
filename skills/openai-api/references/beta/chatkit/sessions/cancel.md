@@ -12,7 +12,7 @@ Cancelling prevents new requests from using the issued client secret.
 
 ### Returns
 
-- `ChatSession = object { id, chatkit_configuration, client_secret, 7 more }`
+- `ChatSession object { id, chatkit_configuration, client_secret, 7 more }`
 
   Represents a ChatKit session and its resolved configuration.
 

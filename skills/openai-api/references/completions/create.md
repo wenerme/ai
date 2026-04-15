@@ -158,7 +158,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
 ### Returns
 
-- `Completion = object { id, choices, created, 4 more }`
+- `Completion object { id, choices, created, 4 more }`
 
   Represents a completion response from the API. Note: both the streamed and non-streamed response objects share the same shape (unlike the chat endpoint).
 

@@ -43,7 +43,7 @@ To retrieve those values:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
 ![Registering an application in Azure](https://developers.cloudflare.com/_astro/name-app.BaJD5DTz_Z1qXF9G.webp)
 7. Select **Register**.
 8. Next, return to Microsoft Entra ID and go to **Applications** \> **App registrations**.
@@ -80,9 +80,9 @@ More narrow permissions may be used, however this is the set of permissions that
 
 ### 3\. Add Entra ID as an identity provider
 
-* [ Dashboard ](#tab-panel-3477)
-* [ API ](#tab-panel-3478)
-* [ Terraform ](#tab-panel-3479)
+* [ Dashboard ](#tab-panel-3623)
+* [ API ](#tab-panel-3624)
+* [ Terraform ](#tab-panel-3625)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

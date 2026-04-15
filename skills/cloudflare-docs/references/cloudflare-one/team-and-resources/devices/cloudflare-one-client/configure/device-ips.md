@@ -1,6 +1,6 @@
 ---
 title: Device IPs
-description: A device IP identifies and routes traffic to a specific device in your Zero Trust organization. When a user registers the Cloudflare One Client (formerly WARP), Cloudflare assigns a virtual IPv4 and IPv6 address to the device registration. The Cloudflare One Client uses these IP addresses to create a virtual network interface on the device, which allows your private network to reach the device via peer-to-peer, WARP Connector, or Cloudflare WAN on-ramps.
+description: A device IP identifies and routes traffic to a specific device in your Zero Trust organization. When a user registers the Cloudflare One Client (formerly WARP), Cloudflare assigns a virtual IPv4 and IPv6 address to the device registration. The Cloudflare One Client uses these IP addresses to create a virtual network interface on the device, which allows your private network to reach the device via Cloudflare Mesh or Cloudflare WAN on-ramps.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -35,7 +35,7 @@ Feature availability
 | Android  | ❌            |                        |
 | ChromeOS | ❌            |                        |
 
-A device IP identifies and routes traffic to a specific device in your Zero Trust organization. When a user registers the Cloudflare One Client (formerly WARP), Cloudflare assigns a virtual IPv4 and IPv6 address to the [device registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/). The Cloudflare One Client uses these IP addresses to create a [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic) on the device, which allows your private network to reach the device via [peer-to-peer](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/), [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/), or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) on-ramps.
+A device IP identifies and routes traffic to a specific device in your Zero Trust organization. When a user registers the Cloudflare One Client (formerly WARP), Cloudflare assigns a virtual IPv4 and IPv6 address to the [device registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/device-registration/). The Cloudflare One Client uses these IP addresses to create a [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic) on the device, which allows your private network to reach the device via [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) on-ramps.
 
 You can verify device IPs and, if needed, reconfigure address pools to avoid overlapping IPs with existing internal resources.
 
@@ -205,9 +205,9 @@ The Cloudflare One dashboard defaults to showing devices that were last seen wit
 
 To check the device IP used by the device client's virtual network interface:
 
-* [ Windows ](#tab-panel-3665)
-* [ macOS ](#tab-panel-3666)
-* [ Linux ](#tab-panel-3667)
+* [ Windows ](#tab-panel-3819)
+* [ macOS ](#tab-panel-3820)
+* [ Linux ](#tab-panel-3821)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 

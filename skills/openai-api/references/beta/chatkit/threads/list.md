@@ -54,7 +54,7 @@ List ChatKit threads with optional pagination and user filters.
 
     Current status for the thread. Defaults to `active` for newly created threads.
 
-    - `Active = object { type }`
+    - `Active object { type }`
 
       Indicates that a thread is active.
 
@@ -64,7 +64,7 @@ List ChatKit threads with optional pagination and user filters.
 
         - `"active"`
 
-    - `Locked = object { reason, type }`
+    - `Locked object { reason, type }`
 
       Indicates that a thread is locked and cannot accept new input.
 
@@ -78,7 +78,7 @@ List ChatKit threads with optional pagination and user filters.
 
         - `"locked"`
 
-    - `Closed = object { reason, type }`
+    - `Closed object { reason, type }`
 
       Indicates that a thread has been closed.
 

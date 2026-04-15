@@ -10,7 +10,7 @@ Retrieves an invite.
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 

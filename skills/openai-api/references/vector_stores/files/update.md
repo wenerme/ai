@@ -28,7 +28,7 @@ Update attributes on a vector store file.
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -102,7 +102,7 @@ Update attributes on a vector store file.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -122,7 +122,7 @@ Update attributes on a vector store file.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 

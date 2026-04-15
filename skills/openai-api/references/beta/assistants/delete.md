@@ -10,7 +10,7 @@ Delete an assistant.
 
 ### Returns
 
-- `AssistantDeleted = object { id, deleted, object }`
+- `AssistantDeleted object { id, deleted, object }`
 
   - `id: string`
 

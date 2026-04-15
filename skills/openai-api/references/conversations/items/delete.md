@@ -12,7 +12,7 @@ Delete an item from a conversation with the given IDs.
 
 ### Returns
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 

@@ -37,8 +37,8 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-* [ Dashboard ](#tab-panel-4007)
-* [ API ](#tab-panel-4008)
+* [ Dashboard ](#tab-panel-4173)
+* [ API ](#tab-panel-4174)
 
 1. Go to **Routes** page.
 [ Go to **Routes** ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
@@ -195,8 +195,8 @@ Explain Code
 
 ### Edit a static route
 
-* [ Dashboard ](#tab-panel-4009)
-* [ API ](#tab-panel-4010)
+* [ Dashboard ](#tab-panel-4175)
+* [ API ](#tab-panel-4176)
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
@@ -342,8 +342,8 @@ Explain Code
 
 ### Delete static route
 
-* [ Dashboard ](#tab-panel-4003)
-* [ API ](#tab-panel-4004)
+* [ Dashboard ](#tab-panel-4169)
+* [ API ](#tab-panel-4170)
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
@@ -457,8 +457,8 @@ Explain Code
 
 To enable ARR:
 
-* [ Dashboard ](#tab-panel-4005)
-* [ API ](#tab-panel-4006)
+* [ Dashboard ](#tab-panel-4171)
+* [ API ](#tab-panel-4172)
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels) information to learn how to create an IPsec or GRE tunnel.
 2. On the tunnel's options, select **Automatic return routing**.
@@ -567,7 +567,7 @@ Note
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
 4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:  
    * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.  
-   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/user-to-site/#add-ip-route-to-router).  
+   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).  
    * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/).
 5. Select **Save**.
 
@@ -586,7 +586,7 @@ Note
 3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
 4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:  
    * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.  
-   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/user-to-site/#add-ip-route-to-router).  
+   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).  
    * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/).
 5. Select **Save**.
 

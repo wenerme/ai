@@ -20,7 +20,7 @@ Modifies a user's role in the organization.
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 

@@ -1591,3 +1591,55 @@ print(content)
   - `"1024x1792"`
 
   - `"1792x1024"`
+
+### Video Create Character Response
+
+- `class VideoCreateCharacterResponse: …`
+
+  - `id: Optional[str]`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: Optional[str]`
+
+    Display name for the character.
+
+### Video Get Character Response
+
+- `class VideoGetCharacterResponse: …`
+
+  - `id: Optional[str]`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: Optional[str]`
+
+    Display name for the character.
+
+### Video Delete Response
+
+- `class VideoDeleteResponse: …`
+
+  Confirmation payload returned after deleting a video.
+
+  - `id: str`
+
+    Identifier of the deleted video.
+
+  - `deleted: bool`
+
+    Indicates that the video resource was deleted.
+
+  - `object: Literal["video.deleted"]`
+
+    The object type that signals the deletion response.
+
+    - `"video.deleted"`

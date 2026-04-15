@@ -137,7 +137,7 @@ Create a thread and run it in one request.
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -147,7 +147,7 @@ Create a thread and run it in one request.
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -160,7 +160,7 @@ Create a thread and run it in one request.
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -227,7 +227,7 @@ Create a thread and run it in one request.
 
         An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-        - `ImageFileContentBlock = object { image_file, type }`
+        - `ImageFileContentBlock object { image_file, type }`
 
           References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -253,7 +253,7 @@ Create a thread and run it in one request.
 
             - `"image_file"`
 
-        - `ImageURLContentBlock = object { image_url, type }`
+        - `ImageURLContentBlock object { image_url, type }`
 
           References an image URL in the content of a message.
 
@@ -279,7 +279,7 @@ Create a thread and run it in one request.
 
             - `"image_url"`
 
-        - `TextContentBlockParam = object { text, type }`
+        - `TextContentBlockParam object { text, type }`
 
           The text content that is part of a message.
 
@@ -316,7 +316,7 @@ Create a thread and run it in one request.
 
         The tools to add this file to.
 
-        - `CodeInterpreterTool = object { type }`
+        - `CodeInterpreterTool object { type }`
 
           - `type: "code_interpreter"`
 
@@ -324,7 +324,7 @@ Create a thread and run it in one request.
 
             - `"code_interpreter"`
 
-        - `FileSearchTool = object { type }`
+        - `FileSearchTool object { type }`
 
           - `type: "file_search"`
 
@@ -374,7 +374,7 @@ Create a thread and run it in one request.
 
           The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-          - `AutoChunkingStrategy = object { type }`
+          - `AutoChunkingStrategy object { type }`
 
             The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -384,7 +384,7 @@ Create a thread and run it in one request.
 
               - `"auto"`
 
-          - `StaticChunkingStrategy = object { static, type }`
+          - `StaticChunkingStrategy object { static, type }`
 
             - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -435,7 +435,7 @@ Create a thread and run it in one request.
 
     - `"required"`
 
-  - `AssistantToolChoice = object { type, function }`
+  - `AssistantToolChoice object { type, function }`
 
     Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -475,15 +475,9 @@ Create a thread and run it in one request.
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
 
-  - `CodeInterpreterTool = object { type }`
+  - `CodeInterpreterTool object { type }`
 
-    - `type: "code_interpreter"`
-
-      The type of tool being defined: `code_interpreter`
-
-      - `"code_interpreter"`
-
-  - `FileSearchTool = object { type, file_search }`
+  - `FileSearchTool object { type, file_search }`
 
     - `type: "file_search"`
 
@@ -519,7 +513,7 @@ Create a thread and run it in one request.
 
           - `"default_2024_08_21"`
 
-  - `FunctionTool = object { function, type }`
+  - `FunctionTool object { function, type }`
 
     - `function: FunctionDefinition`
 
@@ -571,7 +565,7 @@ Create a thread and run it in one request.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -724,7 +718,7 @@ Create a thread and run it in one request.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -734,7 +728,7 @@ Create a thread and run it in one request.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -747,7 +741,7 @@ Create a thread and run it in one request.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -833,7 +827,7 @@ Create a thread and run it in one request.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -857,7 +851,7 @@ Create a thread and run it in one request.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -865,7 +859,7 @@ Create a thread and run it in one request.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -901,7 +895,7 @@ Create a thread and run it in one request.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 

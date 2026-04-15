@@ -334,16 +334,6 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
                 - `OutputText`
 
                   A text output from the model.
@@ -412,16 +402,6 @@ Get a list of runs for an evaluation.
 
                     A text input to the model.
 
-                    - `text: string`
-
-                      The text input to the model.
-
-                    - `type: "input_text"`
-
-                      The type of the input item. Always `input_text`.
-
-                      - `"input_text"`
-
                   - `OutputText`
 
                     A text output from the model.
@@ -457,27 +437,6 @@ Get a list of runs for an evaluation.
                   - `ResponseInputAudio`
 
                     An audio input to the model.
-
-                    - `input_audio: InputAudio`
-
-                      - `data: string`
-
-                        Base64-encoded audio data.
-
-                      - `format: "mp3" | "wav"`
-
-                        The format of the audio data. Currently supported formats are `mp3` and
-                        `wav`.
-
-                        - `"mp3"`
-
-                        - `"wav"`
-
-                    - `type: "input_audio"`
-
-                      The type of the input item. Always `input_audio`.
-
-                      - `"input_audio"`
 
               - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -746,18 +705,6 @@ Get a list of runs for an evaluation.
             - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
             - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-            - `"none"`
-
-            - `"minimal"`
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-            - `"xhigh"`
-
           - `temperature?: number | null`
 
             Sampling temperature. This is a query parameter used to select responses.
@@ -818,16 +765,6 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
                 - `OutputText`
 
                   A text output from the model.
@@ -864,104 +801,10 @@ Get a list of runs for an evaluation.
 
                   An audio input to the model.
 
-                  - `input_audio: InputAudio`
-
-                    - `data: string`
-
-                      Base64-encoded audio data.
-
-                    - `format: "mp3" | "wav"`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: "input_audio"`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
-
                 - `GraderInputs = Array<string | ResponseInputText | OutputText | 2 more>`
 
                   A list of inputs, each of which may be either an input text, output text, input
                   image, or input audio object.
-
-                  - `string`
-
-                  - `ResponseInputText`
-
-                    A text input to the model.
-
-                    - `text: string`
-
-                      The text input to the model.
-
-                    - `type: "input_text"`
-
-                      The type of the input item. Always `input_text`.
-
-                      - `"input_text"`
-
-                  - `OutputText`
-
-                    A text output from the model.
-
-                    - `text: string`
-
-                      The text output from the model.
-
-                    - `type: "output_text"`
-
-                      The type of the output text. Always `output_text`.
-
-                      - `"output_text"`
-
-                  - `InputImage`
-
-                    An image input block used within EvalItem content arrays.
-
-                    - `image_url: string`
-
-                      The URL of the image input.
-
-                    - `type: "input_image"`
-
-                      The type of the image input. Always `input_image`.
-
-                      - `"input_image"`
-
-                    - `detail?: string`
-
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                  - `ResponseInputAudio`
-
-                    An audio input to the model.
-
-                    - `input_audio: InputAudio`
-
-                      - `data: string`
-
-                        Base64-encoded audio data.
-
-                      - `format: "mp3" | "wav"`
-
-                        The format of the audio data. Currently supported formats are `mp3` and
-                        `wav`.
-
-                        - `"mp3"`
-
-                        - `"wav"`
-
-                    - `type: "input_audio"`
-
-                      The type of the input item. Always `input_audio`.
-
-                      - `"input_audio"`
 
               - `role: "user" | "assistant" | "system" | "developer"`
 
@@ -1023,18 +866,6 @@ Get a list of runs for an evaluation.
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `seed?: number`
 
           A seed value to initialize the randomness, during sampling.
@@ -1070,12 +901,6 @@ Get a list of runs for an evaluation.
             - `ResponseFormatText`
 
               Default response format. Used to generate text responses.
-
-              - `type: "text"`
-
-                The type of response format being defined. Always `text`.
-
-                - `"text"`
 
             - `ResponseFormatTextJSONSchemaConfig`
 
@@ -1117,12 +942,6 @@ Get a list of runs for an evaluation.
               Using `json_schema` is recommended for models that support it. Note that the
               model will not generate JSON without a system or user message instructing it
               to do so.
-
-              - `type: "json_object"`
-
-                The type of response format being defined. Always `json_object`.
-
-                - `"json_object"`
 
         - `tools?: Array<Tool>`
 
@@ -1251,55 +1070,6 @@ Get a list of runs for an evaluation.
                   - `ComparisonFilter`
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" | "ne" | "gt" | 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string | number | boolean | Array<string | number>`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `Array<string | number>`
-
-                        - `string`
-
-                        - `number`
 
                   - `unknown`
 
@@ -1836,39 +1606,7 @@ Get a list of runs for an evaluation.
 
                   - `ContainerNetworkPolicyDisabled`
 
-                    - `type: "disabled"`
-
-                      Disable outbound network access. Always `disabled`.
-
-                      - `"disabled"`
-
                   - `ContainerNetworkPolicyAllowlist`
-
-                    - `allowed_domains: Array<string>`
-
-                      A list of allowed domains when type is `allowlist`.
-
-                    - `type: "allowlist"`
-
-                      Allow outbound network access only to specified domains. Always `allowlist`.
-
-                      - `"allowlist"`
-
-                    - `domain_secrets?: Array<ContainerNetworkPolicyDomainSecret>`
-
-                      Optional domain-scoped secrets for allowlisted domains.
-
-                      - `domain: string`
-
-                        The domain associated with the secret.
-
-                      - `name: string`
-
-                        The name of the secret to inject for the domain.
-
-                      - `value: string`
-
-                        The secret value to inject for the domain.
 
                 - `skills?: Array<SkillReference | InlineSkill>`
 
@@ -2057,60 +1795,6 @@ Get a list of runs for an evaluation.
               - `CustomTool`
 
                 A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-                - `name: string`
-
-                  The name of the custom tool, used to identify it in tool calls.
-
-                - `type: "custom"`
-
-                  The type of the custom tool. Always `custom`.
-
-                  - `"custom"`
-
-                - `defer_loading?: boolean`
-
-                  Whether this tool should be deferred and discovered via tool search.
-
-                - `description?: string`
-
-                  Optional description of the custom tool, used to provide more context.
-
-                - `format?: CustomToolInputFormat`
-
-                  The input format for the custom tool. Default is unconstrained text.
-
-                  - `Text`
-
-                    Unconstrained free-form text.
-
-                    - `type: "text"`
-
-                      Unconstrained text format. Always `text`.
-
-                      - `"text"`
-
-                  - `Grammar`
-
-                    A grammar defined by the user.
-
-                    - `definition: string`
-
-                      The grammar definition.
-
-                    - `syntax: "lark" | "regex"`
-
-                      The syntax of the grammar definition. One of `lark` or `regex`.
-
-                      - `"lark"`
-
-                      - `"regex"`
-
-                    - `type: "grammar"`
-
-                      Grammar format. Always `grammar`.
-
-                      - `"grammar"`
 
             - `type: "namespace"`
 

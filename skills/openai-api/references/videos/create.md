@@ -62,7 +62,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 

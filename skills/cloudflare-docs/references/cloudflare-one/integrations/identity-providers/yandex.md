@@ -37,7 +37,7 @@ To set up Yandex for Cloudflare Access:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
 ![Yandex Platform interface with Web services checked and callback URI in open form field](https://developers.cloudflare.com/_astro/yandex-3.DteBNxdB_1qShkV.webp)
 9. Select **Add**.
 10. Scroll to the **Platforms** card, and select **Submit**.  

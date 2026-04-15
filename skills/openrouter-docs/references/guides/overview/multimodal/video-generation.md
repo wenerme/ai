@@ -214,7 +214,8 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 | `resolution`       | string  | No       | Resolution of the output video (e.g., `720p`, `1080p`)                                                                 |
 | `aspect_ratio`     | string  | No       | Aspect ratio of the output video (e.g., `16:9`, `9:16`)                                                                |
 | `size`             | string  | No       | Exact pixel dimensions in `WIDTHxHEIGHT` format (e.g., `1280x720`). Interchangeable with `resolution` + `aspect_ratio` |
-| `input_references` | array   | No       | Reference images to guide video generation                                                                             |
+| `frame_images`     | array   | No       | Images for first/last frames (image-to-video)                                                                          |
+| `input_references` | array   | No       | Reference images for style guidance (reference-to-video)                                                               |
 | `generate_audio`   | boolean | No       | Whether to generate audio alongside the video. Defaults to `true` for models that support audio output                 |
 | `seed`             | integer | No       | Seed for deterministic generation (not guaranteed by all providers)                                                    |
 | `provider`         | object  | No       | Provider-specific passthrough configuration                                                                            |
@@ -238,74 +239,60 @@ Unlike text or image generation, video generation is **asynchronous** because ge
 * `21:9` — Ultra-wide
 * `9:21` — Ultra-tall
 
-### Using Reference Images
+### Using Images
 
-You can provide reference images to guide the video generation. This is useful for creating videos based on existing visual content:
+There are two ways to provide images, each
+triggering a different generation mode:
 
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/veo-3.1'
-}}
->
-  <CodeGroup>
-    ```python
-    import requests
+* **`frame_images`** — Specifies first or last frame
+  images for **image-to-video** generation. Each entry
+  must include a `frame_type` of `first_frame` or
+  `last_frame`.
+* **`input_references`** — Provides style or content
+  reference images for **reference-to-video**
+  generation. The model uses these as visual guidance
+  rather than exact frames.
 
-    url = "https://openrouter.ai/api/v1/videos"
-    headers = {
-        "Authorization": f"Bearer {API_KEY_REF}",
-        "Content-Type": "application/json"
-    }
+If both fields are provided, `frame_images` takes
+precedence and the request is treated as
+image-to-video.
 
-    payload = {
-        "model": "{{MODEL}}",
-        "prompt": "Animate this character walking through a forest",
-        "input_references": [
-            {
-                "type": "image_url",
-                "image_url": {
-                    "url": "https://example.com/character.png"
-                }
-            }
-        ],
-        "aspect_ratio": "16:9",
-        "resolution": "1080p"
-    }
+#### Image-to-Video (frame\_images)
 
-    response = requests.post(url, headers=headers, json=payload)
-    result = response.json()
-    print(f"Job submitted: {result['id']}")
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/videos', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${API_KEY_REF}`,
-        'Content-Type': 'application/json',
+```json
+{
+  "model": "alibaba/wan-2.7",
+  "prompt": "A character walking through a forest",
+  "frame_images": [
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://example.com/first-frame.png"
       },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        prompt: 'Animate this character walking through a forest',
-        input_references: [
-          {
-            type: 'image_url',
-            image_url: {
-              url: 'https://example.com/character.png',
-            },
-          },
-        ],
-        aspect_ratio: '16:9',
-        resolution: '1080p',
-      }),
-    });
+      "frame_type": "first_frame"
+    }
+  ],
+  "resolution": "1080p"
+}
+```
 
-    const result = await response.json();
-    console.log(`Job submitted: ${result.id}`);
-    ```
-  </CodeGroup>
-</Template>
+#### Reference-to-Video (input\_references)
+
+```json
+{
+  "model": "alibaba/wan-2.7",
+  "prompt": "A colossal solar flare beside a planet",
+  "input_references": [
+    {
+      "type": "image_url",
+      "image_url": {
+        "url": "https://example.com/style-ref.png"
+      }
+    }
+  ],
+  "resolution": "1080p"
+}
+```
 
 ### Provider-Specific Options
 

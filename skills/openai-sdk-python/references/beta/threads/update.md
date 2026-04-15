@@ -25,13 +25,13 @@ Modifies a thread.
 
   - `code_interpreter: Optional[ToolResourcesCodeInterpreter]`
 
-    - `file_ids: Optional[SequenceNotStr[str]]`
+    - `file_ids: Optional[Sequence[str]]`
 
       A list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
   - `file_search: Optional[ToolResourcesFileSearch]`
 
-    - `vector_store_ids: Optional[SequenceNotStr[str]]`
+    - `vector_store_ids: Optional[Sequence[str]]`
 
       The [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this thread. There can be a maximum of 1 vector store attached to the thread.
 

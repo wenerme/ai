@@ -215,42 +215,6 @@ handle it.
 
         The format of the output audio.
 
-        - `AudioPCM`
-
-          The PCM audio format. Only a 24kHz sample rate is supported.
-
-          - `rate?: 24000`
-
-            The sample rate of the audio. Always `24000`.
-
-            - `24000`
-
-          - `type?: "audio/pcm"`
-
-            The audio format. Always `audio/pcm`.
-
-            - `"audio/pcm"`
-
-        - `AudioPCMU`
-
-          The G.711 μ-law format.
-
-          - `type?: "audio/pcmu"`
-
-            The audio format. Always `audio/pcmu`.
-
-            - `"audio/pcmu"`
-
-        - `AudioPCMA`
-
-          The G.711 A-law format.
-
-          - `type?: "audio/pcma"`
-
-            The audio format. Always `audio/pcma`.
-
-            - `"audio/pcma"`
-
       - `speed?: number`
 
         The speed of the model's spoken response as a multiple of the original speed.

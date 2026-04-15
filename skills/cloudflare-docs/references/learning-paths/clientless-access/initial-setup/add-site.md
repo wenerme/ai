@@ -16,7 +16,7 @@ Copy page
 
 # Add a site
 
-In clientless access deployments, users connect to internal applications via public hostnames. You will need to own a domain, add it to Cloudflare, and configure Cloudflare as the [authoritative DNS provider](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#update-your-nameservers) for that domain. Enterprise customers who cannot change their authoritative DNS provider have the option to configure a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
+In clientless access deployments, users connect to internal applications via public hostnames. You will need to own a domain, add it to Cloudflare, and configure Cloudflare as the [authoritative DNS provider](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#34-update-your-registrar) for that domain. Enterprise customers who cannot change their authoritative DNS provider have the option to configure a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
 
 You only need to add one domain to Cloudflare, since you can create an infinite number of subdomains to manage all of your private applications.
 
@@ -35,7 +35,7 @@ If Cloudflare is unable to identify your domain as a registered domain, make sur
 Additionally, Cloudflare requires your `apex domain` to be one level below a valid TLD defined in the [Public Suffix List (PSL) ↗](https://github.com/publicsuffix/list/blob/master/public%5Fsuffix%5Flist.dat).
 
 1. Review your DNS records and select **Continue**.
-2. Before your domain can begin using Cloudflare for DNS resolution, you need to [add these nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) at your registrar. DNSSEC should still be **disabled** at this point.  
+2. Before your domain can begin using Cloudflare for DNS resolution, you need to [add these nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) at your registrar. Make sure [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) is turned off before proceeding.  
 Provider-specific instructions  
 This is not an exhaustive list of provider-specific instructions, but the following links may be helpful:  
    * [Ionos ↗](https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/)  

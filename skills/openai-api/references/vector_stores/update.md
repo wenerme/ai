@@ -39,7 +39,7 @@ Modifies a vector store.
 
 ### Returns
 
-- `VectorStore = object { id, created_at, file_counts, 8 more }`
+- `VectorStore object { id, created_at, file_counts, 8 more }`
 
   A vector store is a collection of processed files can be used by the `file_search` tool.
 

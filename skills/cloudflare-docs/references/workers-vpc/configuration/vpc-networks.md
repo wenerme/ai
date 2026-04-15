@@ -1,0 +1,195 @@
+---
+title: VPC Networks
+description: VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific Cloudflare Tunnel to reach any service behind that tunnel, or bind to Cloudflare Mesh to reach any Mesh node, client device, or IP route in your account.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers-vpc/configuration/vpc-networks/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# VPC Networks
+
+VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to reach any Mesh node, client device, or IP route in your account.
+
+At runtime, the URL you pass to `fetch()` determines the destination — any hostname or IP address reachable through the bound tunnel or Mesh network. This differs from [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/), which require you to create a separate binding for each target host and port combination.
+
+Note
+
+Workers VPC is currently in beta. Features and APIs may change before general availability. While in beta, Workers VPC is available for free to all Workers plans.
+
+## Bind to a tunnel
+
+Reference a specific Cloudflare Tunnel directly by its UUID:
+
+* [  wrangler.jsonc ](#tab-panel-7219)
+* [  wrangler.toml ](#tab-panel-7220)
+
+JSONC
+
+```
+
+{
+
+  "vpc_networks": [
+
+    {
+
+      "binding": "MY_VPC",
+
+      "tunnel_id": "550e8400-e29b-41d4-a716-446655440000",
+
+      "remote": true
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[vpc_networks]]
+
+binding = "MY_VPC"
+
+tunnel_id = "550e8400-e29b-41d4-a716-446655440000"
+
+remote = true
+
+
+```
+
+The `remote` flag must be set to `true` to enable remote bindings during local development.
+
+## Bind to Cloudflare Mesh
+
+[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker to Cloudflare Mesh using `network_id: "cf1:network"`, your Worker can reach any Mesh node, client device, or IP route in your account — without specifying a particular tunnel UUID.
+
+Use Cloudflare Mesh when:
+
+* Your Workers need to reach private services across multiple tunnels or Mesh nodes
+* You want to access your entire private network from a Worker without managing individual tunnel bindings
+* Your private network topology may change (new tunnels, new nodes) and you do not want to update Worker configuration each time
+
+Note
+
+Your account must have at least one active [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or [Mesh node](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) that can reach the target services.
+
+Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
+
+* [  wrangler.jsonc ](#tab-panel-7221)
+* [  wrangler.toml ](#tab-panel-7222)
+
+JSONC
+
+```
+
+{
+
+  "vpc_networks": [
+
+    {
+
+      "binding": "MY_VPC",
+
+      "network_id": "cf1:network",
+
+      "remote": true
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[vpc_networks]]
+
+binding = "MY_VPC"
+
+network_id = "cf1:network"
+
+remote = true
+
+
+```
+
+## Runtime usage
+
+Access any service in your network at runtime:
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request: Request, env: Env) {
+
+    // Access a service by private IP
+
+    const response = await env.MY_VPC.fetch("http://10.0.1.50/data");
+
+
+    // Access another service on a different port
+
+    const dbResponse = await env.MY_VPC.fetch("http://10.0.5.42:5432");
+
+
+    return response;
+
+  },
+
+};
+
+
+```
+
+Explain Code
+
+When a VPC Network cannot establish a connection to your target service, `fetch()` throws an exception.
+
+## VPC Networks vs VPC Services
+
+VPC Networks and [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) both connect Workers to private infrastructure, but they make different trade-offs.
+
+* **Use VPC Services** when you have a known set of targets and want each binding scoped to a specific host and port.
+* **Use VPC Networks** when you need broader access — an entire tunnel or your full Mesh network — and want the URL in your `fetch()` call to control routing at runtime.
+
+The following table summarizes the differences:
+
+| Feature              | VPC Networks                                                                  | VPC Services              |
+| -------------------- | ----------------------------------------------------------------------------- | ------------------------- |
+| Scope                | Entire tunnel or full Mesh network                                            | Specific host + port      |
+| Configuration        | tunnel\_id (single tunnel) or cf1:network (all tunnels and Mesh nodes)        | service\_id               |
+| Service registration | Not required                                                                  | Required for each target  |
+| Use when             | Dynamic discovery, network-wide access, reaching services across your account | Fixed, cataloged services |
+
+## Next steps
+
+* Set up [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/)
+* [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/)
+* Try the [Connect Workers to Cloudflare Mesh](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) example
+* Learn about the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-vpc/","name":"Workers VPC"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-vpc/configuration/","name":"Configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers-vpc/configuration/vpc-networks/","name":"VPC Networks"}}]}
+```

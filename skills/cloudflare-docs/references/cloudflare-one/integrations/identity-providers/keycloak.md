@@ -31,7 +31,7 @@ To set up Keycloak (SAML) as your identity provider:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
 ![SAML Client interface with team domain and callback in Client ID](https://developers.cloudflare.com/_astro/configure-client.gStYVFuK_uWpjQ.webp)
 3. Change the `Name ID Format` to `email`
 4. Next, set the valid redirect URI to the Keycloak domain that you are using. For example, `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback`.

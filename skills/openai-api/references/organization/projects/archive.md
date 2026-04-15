@@ -10,7 +10,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 ### Returns
 
-- `Project = object { id, created_at, name, 3 more }`
+- `Project object { id, created_at, name, 3 more }`
 
   Represents an individual project.
 

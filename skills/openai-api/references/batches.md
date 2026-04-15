@@ -67,7 +67,7 @@ Creates and executes a batch from an uploaded file of requests
 
 ### Returns
 
-- `Batch = object { id, completion_window, created_at, 19 more }`
+- `Batch object { id, completion_window, created_at, 19 more }`
 
   - `id: string`
 
@@ -371,7 +371,7 @@ Retrieves a batch.
 
 ### Returns
 
-- `Batch = object { id, completion_window, created_at, 19 more }`
+- `Batch object { id, completion_window, created_at, 19 more }`
 
   - `id: string`
 
@@ -664,7 +664,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
 ### Returns
 
-- `Batch = object { id, completion_window, created_at, 19 more }`
+- `Batch object { id, completion_window, created_at, 19 more }`
 
   - `id: string`
 
@@ -1277,7 +1277,7 @@ curl https://api.openai.com/v1/batches?limit=2 \
 
 ### Batch
 
-- `Batch = object { id, completion_window, created_at, 19 more }`
+- `Batch object { id, completion_window, created_at, 19 more }`
 
   - `id: string`
 
@@ -1456,7 +1456,7 @@ curl https://api.openai.com/v1/batches?limit=2 \
 
 ### Batch Usage
 
-- `BatchUsage = object { input_tokens, input_tokens_details, output_tokens, 2 more }`
+- `BatchUsage object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 
   Represents token usage details including input tokens, output tokens, a
   breakdown of output tokens, and the total tokens used. Only populated on

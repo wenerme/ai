@@ -47,7 +47,7 @@ format, or a stream of transcript events.
 
 ### Returns
 
-- `Transcription = object { text, logprobs, usage }`
+- `Transcription object { text, logprobs, usage }`
 
   Represents a transcription response returned by model, based on the provided input.
 
@@ -75,7 +75,7 @@ format, or a stream of transcript events.
 
     Token usage statistics for the request.
 
-    - `TokenUsage = object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -109,7 +109,7 @@ format, or a stream of transcript events.
 
           Number of text tokens billed for this request.
 
-    - `DurationUsage = object { seconds, type }`
+    - `DurationUsage object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -123,7 +123,7 @@ format, or a stream of transcript events.
 
         - `"duration"`
 
-- `TranscriptionDiarized = object { duration, segments, task, 2 more }`
+- `TranscriptionDiarized object { duration, segments, task, 2 more }`
 
   Represents a diarized transcription response returned by the model, including the combined transcript and speaker-segment annotations.
 
@@ -175,7 +175,7 @@ format, or a stream of transcript events.
 
     Token or duration usage statistics for the request.
 
-    - `Tokens = object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -209,7 +209,7 @@ format, or a stream of transcript events.
 
           Number of text tokens billed for this request.
 
-    - `Duration = object { seconds, type }`
+    - `Duration object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -223,7 +223,7 @@ format, or a stream of transcript events.
 
         - `"duration"`
 
-- `TranscriptionVerbose = object { duration, language, text, 3 more }`
+- `TranscriptionVerbose object { duration, language, text, 3 more }`
 
   Represents a verbose json transcription response returned by model, based on the provided input.
 
@@ -671,7 +671,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription
 
-- `Transcription = object { text, logprobs, usage }`
+- `Transcription object { text, logprobs, usage }`
 
   Represents a transcription response returned by model, based on the provided input.
 
@@ -699,7 +699,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Token usage statistics for the request.
 
-    - `TokenUsage = object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -733,7 +733,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Number of text tokens billed for this request.
 
-    - `DurationUsage = object { seconds, type }`
+    - `DurationUsage object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -749,7 +749,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Diarized
 
-- `TranscriptionDiarized = object { duration, segments, task, 2 more }`
+- `TranscriptionDiarized object { duration, segments, task, 2 more }`
 
   Represents a diarized transcription response returned by the model, including the combined transcript and speaker-segment annotations.
 
@@ -801,7 +801,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Token or duration usage statistics for the request.
 
-    - `Tokens = object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -835,7 +835,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Number of text tokens billed for this request.
 
-    - `Duration = object { seconds, type }`
+    - `Duration object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -851,7 +851,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Diarized Segment
 
-- `TranscriptionDiarizedSegment = object { id, end, speaker, 3 more }`
+- `TranscriptionDiarizedSegment object { id, end, speaker, 3 more }`
 
   A segment of diarized transcript text with speaker metadata.
 
@@ -889,7 +889,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Segment
 
-- `TranscriptionSegment = object { id, avg_logprob, compression_ratio, 7 more }`
+- `TranscriptionSegment object { id, avg_logprob, compression_ratio, 7 more }`
 
   - `id: number`
 
@@ -937,7 +937,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
   Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
-  - `TranscriptionTextSegmentEvent = object { id, end, speaker, 3 more }`
+  - `TranscriptionTextSegmentEvent object { id, end, speaker, 3 more }`
 
     Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
@@ -967,7 +967,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       - `"transcript.text.segment"`
 
-  - `TranscriptionTextDeltaEvent = object { delta, type, logprobs, segment_id }`
+  - `TranscriptionTextDeltaEvent object { delta, type, logprobs, segment_id }`
 
     Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
@@ -1001,7 +1001,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Identifier of the diarized segment that this delta belongs to. Only present when using `gpt-4o-transcribe-diarize`.
 
-  - `TranscriptionTextDoneEvent = object { text, type, logprobs, usage }`
+  - `TranscriptionTextDoneEvent object { text, type, logprobs, usage }`
 
     Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
@@ -1067,7 +1067,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Text Delta Event
 
-- `TranscriptionTextDeltaEvent = object { delta, type, logprobs, segment_id }`
+- `TranscriptionTextDeltaEvent object { delta, type, logprobs, segment_id }`
 
   Emitted when there is an additional text delta. This is also the first event emitted when the transcription starts. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
@@ -1103,7 +1103,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Text Done Event
 
-- `TranscriptionTextDoneEvent = object { text, type, logprobs, usage }`
+- `TranscriptionTextDoneEvent object { text, type, logprobs, usage }`
 
   Emitted when the transcription is complete. Contains the complete transcription text. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with the `Stream` parameter set to `true`.
 
@@ -1169,7 +1169,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Text Segment Event
 
-- `TranscriptionTextSegmentEvent = object { id, end, speaker, 3 more }`
+- `TranscriptionTextSegmentEvent object { id, end, speaker, 3 more }`
 
   Emitted when a diarized transcription returns a completed segment with speaker information. Only emitted when you [create a transcription](/docs/api-reference/audio/create-transcription) with `stream` set to `true` and `response_format` set to `diarized_json`.
 
@@ -1201,7 +1201,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Verbose
 
-- `TranscriptionVerbose = object { duration, language, text, 3 more }`
+- `TranscriptionVerbose object { duration, language, text, 3 more }`
 
   Represents a verbose json transcription response returned by model, based on the provided input.
 
@@ -1293,7 +1293,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 ### Transcription Word
 
-- `TranscriptionWord = object { end, start, word }`
+- `TranscriptionWord object { end, start, word }`
 
   - `end: number`
 
@@ -1307,6 +1307,278 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     The text content of the word.
 
+### Transcription Create Response
+
+- `TranscriptionCreateResponse = Transcription or TranscriptionDiarized or TranscriptionVerbose`
+
+  Represents a transcription response returned by model, based on the provided input.
+
+  - `Transcription object { text, logprobs, usage }`
+
+    Represents a transcription response returned by model, based on the provided input.
+
+    - `text: string`
+
+      The transcribed text.
+
+    - `logprobs: optional array of object { token, bytes, logprob }`
+
+      The log probabilities of the tokens in the transcription. Only returned with the models `gpt-4o-transcribe` and `gpt-4o-mini-transcribe` if `logprobs` is added to the `include` array.
+
+      - `token: optional string`
+
+        The token in the transcription.
+
+      - `bytes: optional array of number`
+
+        The bytes of the token.
+
+      - `logprob: optional number`
+
+        The log probability of the token.
+
+    - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+
+      Token usage statistics for the request.
+
+      - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
+
+        Usage statistics for models billed by token usage.
+
+        - `input_tokens: number`
+
+          Number of input tokens billed for this request.
+
+        - `output_tokens: number`
+
+          Number of output tokens generated.
+
+        - `total_tokens: number`
+
+          Total number of tokens used (input + output).
+
+        - `type: "tokens"`
+
+          The type of the usage object. Always `tokens` for this variant.
+
+          - `"tokens"`
+
+        - `input_token_details: optional object { audio_tokens, text_tokens }`
+
+          Details about the input tokens billed for this request.
+
+          - `audio_tokens: optional number`
+
+            Number of audio tokens billed for this request.
+
+          - `text_tokens: optional number`
+
+            Number of text tokens billed for this request.
+
+      - `DurationUsage object { seconds, type }`
+
+        Usage statistics for models billed by audio input duration.
+
+        - `seconds: number`
+
+          Duration of the input audio in seconds.
+
+        - `type: "duration"`
+
+          The type of the usage object. Always `duration` for this variant.
+
+          - `"duration"`
+
+  - `TranscriptionDiarized object { duration, segments, task, 2 more }`
+
+    Represents a diarized transcription response returned by the model, including the combined transcript and speaker-segment annotations.
+
+    - `duration: number`
+
+      Duration of the input audio in seconds.
+
+    - `segments: array of TranscriptionDiarizedSegment`
+
+      Segments of the transcript annotated with timestamps and speaker labels.
+
+      - `id: string`
+
+        Unique identifier for the segment.
+
+      - `end: number`
+
+        End timestamp of the segment in seconds.
+
+      - `speaker: string`
+
+        Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
+
+      - `start: number`
+
+        Start timestamp of the segment in seconds.
+
+      - `text: string`
+
+        Transcript text for this segment.
+
+      - `type: "transcript.text.segment"`
+
+        The type of the segment. Always `transcript.text.segment`.
+
+        - `"transcript.text.segment"`
+
+    - `task: "transcribe"`
+
+      The type of task that was run. Always `transcribe`.
+
+      - `"transcribe"`
+
+    - `text: string`
+
+      The concatenated transcript text for the entire audio input.
+
+    - `usage: optional object { input_tokens, output_tokens, total_tokens, 2 more }  or object { seconds, type }`
+
+      Token or duration usage statistics for the request.
+
+      - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
+
+        Usage statistics for models billed by token usage.
+
+        - `input_tokens: number`
+
+          Number of input tokens billed for this request.
+
+        - `output_tokens: number`
+
+          Number of output tokens generated.
+
+        - `total_tokens: number`
+
+          Total number of tokens used (input + output).
+
+        - `type: "tokens"`
+
+          The type of the usage object. Always `tokens` for this variant.
+
+          - `"tokens"`
+
+        - `input_token_details: optional object { audio_tokens, text_tokens }`
+
+          Details about the input tokens billed for this request.
+
+          - `audio_tokens: optional number`
+
+            Number of audio tokens billed for this request.
+
+          - `text_tokens: optional number`
+
+            Number of text tokens billed for this request.
+
+      - `Duration object { seconds, type }`
+
+        Usage statistics for models billed by audio input duration.
+
+        - `seconds: number`
+
+          Duration of the input audio in seconds.
+
+        - `type: "duration"`
+
+          The type of the usage object. Always `duration` for this variant.
+
+          - `"duration"`
+
+  - `TranscriptionVerbose object { duration, language, text, 3 more }`
+
+    Represents a verbose json transcription response returned by model, based on the provided input.
+
+    - `duration: number`
+
+      The duration of the input audio.
+
+    - `language: string`
+
+      The language of the input audio.
+
+    - `text: string`
+
+      The transcribed text.
+
+    - `segments: optional array of TranscriptionSegment`
+
+      Segments of the transcribed text and their corresponding details.
+
+      - `id: number`
+
+        Unique identifier of the segment.
+
+      - `avg_logprob: number`
+
+        Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
+
+      - `compression_ratio: number`
+
+        Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      - `end: number`
+
+        End time of the segment in seconds.
+
+      - `no_speech_prob: number`
+
+        Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      - `seek: number`
+
+        Seek offset of the segment.
+
+      - `start: number`
+
+        Start time of the segment in seconds.
+
+      - `temperature: number`
+
+        Temperature parameter used for generating the segment.
+
+      - `text: string`
+
+        Text content of the segment.
+
+      - `tokens: array of number`
+
+        Array of token IDs for the text content.
+
+    - `usage: optional object { seconds, type }`
+
+      Usage statistics for models billed by audio input duration.
+
+      - `seconds: number`
+
+        Duration of the input audio in seconds.
+
+      - `type: "duration"`
+
+        The type of the usage object. Always `duration` for this variant.
+
+        - `"duration"`
+
+    - `words: optional array of TranscriptionWord`
+
+      Extracted words and their corresponding timestamps.
+
+      - `end: number`
+
+        End time of the word in seconds.
+
+      - `start: number`
+
+        Start time of the word in seconds.
+
+      - `word: string`
+
+        The text content of the word.
+
 # Translations
 
 ## Create translation
@@ -1317,11 +1589,11 @@ Translates audio into English.
 
 ### Returns
 
-- `Translation = object { text }`
+- `Translation object { text }`
 
   - `text: string`
 
-- `TranslationVerbose = object { duration, language, text, segments }`
+- `TranslationVerbose object { duration, language, text, segments }`
 
   - `duration: number`
 
@@ -1419,13 +1691,13 @@ curl https://api.openai.com/v1/audio/translations \
 
 ### Translation
 
-- `Translation = object { text }`
+- `Translation object { text }`
 
   - `text: string`
 
 ### Translation Verbose
 
-- `TranslationVerbose = object { duration, language, text, segments }`
+- `TranslationVerbose object { duration, language, text, segments }`
 
   - `duration: number`
 
@@ -1482,6 +1754,72 @@ curl https://api.openai.com/v1/audio/translations \
     - `tokens: array of number`
 
       Array of token IDs for the text content.
+
+### Translation Create Response
+
+- `TranslationCreateResponse = Translation or TranslationVerbose`
+
+  - `Translation object { text }`
+
+    - `text: string`
+
+  - `TranslationVerbose object { duration, language, text, segments }`
+
+    - `duration: number`
+
+      The duration of the input audio.
+
+    - `language: string`
+
+      The language of the output translation (always `english`).
+
+    - `text: string`
+
+      The translated text.
+
+    - `segments: optional array of TranscriptionSegment`
+
+      Segments of the translated text and their corresponding details.
+
+      - `id: number`
+
+        Unique identifier of the segment.
+
+      - `avg_logprob: number`
+
+        Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
+
+      - `compression_ratio: number`
+
+        Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      - `end: number`
+
+        End time of the segment in seconds.
+
+      - `no_speech_prob: number`
+
+        Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      - `seek: number`
+
+        Seek offset of the segment.
+
+      - `start: number`
+
+        Start time of the segment in seconds.
+
+      - `temperature: number`
+
+        Temperature parameter used for generating the segment.
+
+      - `text: string`
+
+        Text content of the segment.
+
+      - `tokens: array of number`
+
+        Array of token IDs for the text content.
 
 # Speech
 
@@ -1543,7 +1881,7 @@ Returns the audio file content, or a stream of audio events.
 
     - `"cedar"`
 
-  - `ID = object { id }`
+  - `ID object { id }`
 
     Custom voice reference.
 
@@ -1698,6 +2036,32 @@ curl https://api.openai.com/v1/audio/voices \
   -F "consent=cons_1234" \
   -F "audio_sample=@$HOME/audio_sample.wav;type=audio/x-wav"
 ```
+
+## Domain Types
+
+### Voice Create Response
+
+- `VoiceCreateResponse object { id, created_at, name, object }`
+
+  A custom voice that can be used for audio output.
+
+  - `id: string`
+
+    The voice identifier, which can be referenced in API endpoints.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the voice was created.
+
+  - `name: string`
+
+    The name of the voice.
+
+  - `object: "audio.voice"`
+
+    The object type, which is always `audio.voice`.
+
+    - `"audio.voice"`
 
 # Voice Consents
 
@@ -2033,3 +2397,131 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
   -X DELETE \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
+
+## Domain Types
+
+### Voice Consent List Response
+
+- `VoiceConsentListResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Create Response
+
+- `VoiceConsentCreateResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Retrieve Response
+
+- `VoiceConsentRetrieveResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Update Response
+
+- `VoiceConsentUpdateResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Delete Response
+
+- `VoiceConsentDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `deleted: boolean`
+
+  - `object: "audio.voice_consent"`
+
+    - `"audio.voice_consent"`

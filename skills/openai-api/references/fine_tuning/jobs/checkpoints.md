@@ -163,7 +163,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
 
 ### Fine Tuning Job Checkpoint
 
-- `FineTuningJobCheckpoint = object { id, created_at, fine_tuned_model_checkpoint, 4 more }`
+- `FineTuningJobCheckpoint object { id, created_at, fine_tuned_model_checkpoint, 4 more }`
 
   The `fine_tuning.job.checkpoint` object represents a model checkpoint for a fine-tuning job that is ready to use.
 

@@ -62,7 +62,7 @@ Create a vector store file batch.
 
       - `"static"`
 
-- `file_ids: Optional[SequenceNotStr[str]]`
+- `file_ids: Optional[Sequence[str]]`
 
   A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.  If `attributes` or `chunking_strategy` are provided, they will be  applied to all files in the batch. The maximum batch size is 2000 files. This endpoint is recommended for multi-file ingestion and helps reduce per-vector-store write request pressure. Mutually exclusive with `files`.
 
@@ -91,38 +91,6 @@ Create a vector store file batch.
   - `chunking_strategy: Optional[FileChunkingStrategyParam]`
 
     The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
-
-    - `class AutoFileChunkingStrategyParam: …`
-
-      The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
-
-      - `type: Literal["auto"]`
-
-        Always `auto`.
-
-        - `"auto"`
-
-    - `class StaticFileChunkingStrategyObjectParam: …`
-
-      Customize your own chunking strategy by setting chunk size and chunk overlap.
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
 
 ### Returns
 

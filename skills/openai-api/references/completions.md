@@ -160,7 +160,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
 ### Returns
 
-- `Completion = object { id, choices, created, 4 more }`
+- `Completion object { id, choices, created, 4 more }`
 
   Represents a completion response from the API. Note: both the streamed and non-streamed response objects share the same shape (unlike the chat endpoint).
 
@@ -417,7 +417,7 @@ curl https://api.openai.com/v1/completions \
 
 ### Completion
 
-- `Completion = object { id, choices, created, 4 more }`
+- `Completion object { id, choices, created, 4 more }`
 
   Represents a completion response from the API. Note: both the streamed and non-streamed response objects share the same shape (unlike the chat endpoint).
 
@@ -530,7 +530,7 @@ curl https://api.openai.com/v1/completions \
 
 ### Completion Choice
 
-- `CompletionChoice = object { finish_reason, index, logprobs, text }`
+- `CompletionChoice object { finish_reason, index, logprobs, text }`
 
   - `finish_reason: "stop" or "length" or "content_filter"`
 
@@ -560,7 +560,7 @@ curl https://api.openai.com/v1/completions \
 
 ### Completion Usage
 
-- `CompletionUsage = object { completion_tokens, prompt_tokens, total_tokens, 2 more }`
+- `CompletionUsage object { completion_tokens, prompt_tokens, total_tokens, 2 more }`
 
   Usage statistics for the completion request.
 

@@ -28,7 +28,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
     - `"babbage-002"`
 
-- `prompt: Union[str, SequenceNotStr[str], Iterable[int], 2 more]`
+- `prompt: Union[str, Sequence[str], Iterable[int], 2 more]`
 
   The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.
 
@@ -36,7 +36,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   - `str`
 
-  - `SequenceNotStr[str]`
+  - `Sequence[str]`
 
   - `Iterable[int]`
 
@@ -98,7 +98,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
 
-- `stop: Optional[Union[Optional[str], SequenceNotStr[str], null]]`
+- `stop: Optional[Union[Optional[str], Sequence[str], null]]`
 
   Not supported with latest reasoning models `o3` and `o4-mini`.
 
@@ -107,7 +107,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   - `Optional[str]`
 
-  - `SequenceNotStr[str]`
+  - `Sequence[str]`
 
 - `stream: Optional[Literal[false]]`
 

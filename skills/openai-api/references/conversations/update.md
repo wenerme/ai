@@ -21,7 +21,7 @@ Update a conversation
 
 ### Returns
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 

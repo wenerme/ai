@@ -26,7 +26,7 @@ Connect remote users to internal applications and services through a secure conn
 
 [Device to device](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/device-to-device/) 
 
-Create secure, peer-to-peer connections between two or more devices through Cloudflare's network. Best for direct device communication.
+Create secure, direct connections between two or more devices through Cloudflare's network using Mesh IPs. Best for device-to-device communication.
 
 [Network to network](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/) 
 

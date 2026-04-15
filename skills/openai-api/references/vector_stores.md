@@ -234,7 +234,7 @@ Create a vector store.
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -244,7 +244,7 @@ Create a vector store.
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -303,7 +303,7 @@ Create a vector store.
 
 ### Returns
 
-- `VectorStore = object { id, created_at, file_counts, 8 more }`
+- `VectorStore object { id, created_at, file_counts, 8 more }`
 
   A vector store is a collection of processed files can be used by the `file_search` tool.
 
@@ -475,7 +475,7 @@ Retrieves a vector store.
 
 ### Returns
 
-- `VectorStore = object { id, created_at, file_counts, 8 more }`
+- `VectorStore object { id, created_at, file_counts, 8 more }`
 
   A vector store is a collection of processed files can be used by the `file_search` tool.
 
@@ -661,7 +661,7 @@ Modifies a vector store.
 
 ### Returns
 
-- `VectorStore = object { id, created_at, file_counts, 8 more }`
+- `VectorStore object { id, created_at, file_counts, 8 more }`
 
   A vector store is a collection of processed files can be used by the `file_search` tool.
 
@@ -833,7 +833,7 @@ Delete a vector store.
 
 ### Returns
 
-- `VectorStoreDeleted = object { id, deleted, object }`
+- `VectorStoreDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -906,7 +906,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   A filter to apply based on file attributes.
 
-  - `ComparisonFilter = object { key, type, value }`
+  - `ComparisonFilter object { key, type, value }`
 
     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -959,7 +959,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
         - `number`
 
-  - `CompoundFilter = object { filters, type }`
+  - `CompoundFilter object { filters, type }`
 
     Combine multiple filters using `and` or `or`.
 
@@ -967,58 +967,9 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
       Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-      - `ComparisonFilter = object { key, type, value }`
+      - `ComparisonFilter object { key, type, value }`
 
         A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-        - `key: string`
-
-          The key to compare against the value.
-
-        - `type: "eq" or "ne" or "gt" or 5 more`
-
-          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-          - `eq`: equals
-          - `ne`: not equal
-          - `gt`: greater than
-          - `gte`: greater than or equal
-          - `lt`: less than
-          - `lte`: less than or equal
-          - `in`: in
-          - `nin`: not in
-
-          - `"eq"`
-
-          - `"ne"`
-
-          - `"gt"`
-
-          - `"gte"`
-
-          - `"lt"`
-
-          - `"lte"`
-
-          - `"in"`
-
-          - `"nin"`
-
-        - `value: string or number or boolean or array of string or number`
-
-          The value to compare against the attribute key; supports string, number, or boolean types.
-
-          - `string`
-
-          - `number`
-
-          - `boolean`
-
-          - `array of string or number`
-
-            - `string`
-
-            - `number`
 
       - `unknown`
 
@@ -1214,7 +1165,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Auto File Chunking Strategy Param
 
-- `AutoFileChunkingStrategyParam = object { type }`
+- `AutoFileChunkingStrategyParam object { type }`
 
   The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -1230,7 +1181,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -1240,7 +1191,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -1264,7 +1215,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Other File Chunking Strategy Object
 
-- `OtherFileChunkingStrategyObject = object { type }`
+- `OtherFileChunkingStrategyObject object { type }`
 
   This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -1276,7 +1227,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Static File Chunking Strategy
 
-- `StaticFileChunkingStrategy = object { chunk_overlap_tokens, max_chunk_size_tokens }`
+- `StaticFileChunkingStrategy object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
   - `chunk_overlap_tokens: number`
 
@@ -1290,7 +1241,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Static File Chunking Strategy Object
 
-- `StaticFileChunkingStrategyObject = object { static, type }`
+- `StaticFileChunkingStrategyObject object { static, type }`
 
   - `static: StaticFileChunkingStrategy`
 
@@ -1312,7 +1263,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Static File Chunking Strategy Object Param
 
-- `StaticFileChunkingStrategyObjectParam = object { static, type }`
+- `StaticFileChunkingStrategyObjectParam object { static, type }`
 
   Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -1336,7 +1287,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Vector Store
 
-- `VectorStore = object { id, created_at, file_counts, 8 more }`
+- `VectorStore object { id, created_at, file_counts, 8 more }`
 
   A vector store is a collection of processed files can be used by the `file_search` tool.
 
@@ -1427,7 +1378,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
 
 ### Vector Store Deleted
 
-- `VectorStoreDeleted = object { id, deleted, object }`
+- `VectorStoreDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -1436,6 +1387,50 @@ https://api.openai.com/v1/vector_stores/vs_abc123/search \
   - `object: "vector_store.deleted"`
 
     - `"vector_store.deleted"`
+
+### Vector Store Search Response
+
+- `VectorStoreSearchResponse object { attributes, content, file_id, 2 more }`
+
+  - `attributes: map[string or number or boolean]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard. Keys are strings
+    with a maximum length of 64 characters. Values are strings with a maximum
+    length of 512 characters, booleans, or numbers.
+
+    - `string`
+
+    - `number`
+
+    - `boolean`
+
+  - `content: array of object { text, type }`
+
+    Content chunks from the file.
+
+    - `text: string`
+
+      The text content returned from search.
+
+    - `type: "text"`
+
+      The type of content.
+
+      - `"text"`
+
+  - `file_id: string`
+
+    The ID of the vector store file.
+
+  - `filename: string`
+
+    The name of the vector store file.
+
+  - `score: number`
+
+    The similarity score for the result.
 
 # Files
 
@@ -1557,7 +1552,7 @@ Returns a list of vector store files.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -1577,7 +1572,7 @@ Returns a list of vector store files.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -1706,7 +1701,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -1716,7 +1711,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -1740,7 +1735,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -1814,7 +1809,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -1834,7 +1829,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -1939,7 +1934,7 @@ Update attributes on a vector store file.
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -2013,7 +2008,7 @@ Update attributes on a vector store file.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -2033,7 +2028,7 @@ Update attributes on a vector store file.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -2123,7 +2118,7 @@ Retrieves a vector store file.
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -2197,7 +2192,7 @@ Retrieves a vector store file.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -2217,7 +2212,7 @@ Retrieves a vector store file.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -2298,7 +2293,7 @@ Delete a vector store file. This will remove the file from the vector store but 
 
 ### Returns
 
-- `VectorStoreFileDeleted = object { id, deleted, object }`
+- `VectorStoreFileDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -2437,7 +2432,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
 ### Vector Store File
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -2511,7 +2506,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -2531,7 +2526,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -2543,7 +2538,7 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
 
 ### Vector Store File Deleted
 
-- `VectorStoreFileDeleted = object { id, deleted, object }`
+- `VectorStoreFileDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -2552,6 +2547,18 @@ https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123/content \
   - `object: "vector_store.file.deleted"`
 
     - `"vector_store.file.deleted"`
+
+### File Content Response
+
+- `FileContentResponse object { text, type }`
+
+  - `text: optional string`
+
+    The text content
+
+  - `type: optional string`
+
+    The content type (currently only `"text"`)
 
 # File Batches
 
@@ -2585,7 +2592,7 @@ Create a vector store file batch.
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -2595,7 +2602,7 @@ Create a vector store file batch.
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -2647,41 +2654,9 @@ Create a vector store file batch.
 
     The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-    - `AutoFileChunkingStrategyParam = object { type }`
-
-      The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
-
-      - `type: "auto"`
-
-        Always `auto`.
-
-        - `"auto"`
-
-    - `StaticFileChunkingStrategyObjectParam = object { static, type }`
-
-      Customize your own chunking strategy by setting chunk size and chunk overlap.
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: number`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: number`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: "static"`
-
-        Always `static`.
-
-        - `"static"`
-
 ### Returns
 
-- `VectorStoreFileBatch = object { id, created_at, file_counts, 3 more }`
+- `VectorStoreFileBatch object { id, created_at, file_counts, 3 more }`
 
   A batch of files attached to a vector store.
 
@@ -2824,7 +2799,7 @@ Retrieves a vector store file batch.
 
 ### Returns
 
-- `VectorStoreFileBatch = object { id, created_at, file_counts, 3 more }`
+- `VectorStoreFileBatch object { id, created_at, file_counts, 3 more }`
 
   A batch of files attached to a vector store.
 
@@ -2949,7 +2924,7 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 
 ### Returns
 
-- `VectorStoreFileBatch = object { id, created_at, file_counts, 3 more }`
+- `VectorStoreFileBatch object { id, created_at, file_counts, 3 more }`
 
   A batch of files attached to a vector store.
 
@@ -3182,7 +3157,7 @@ Returns a list of vector store files in a batch.
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -3202,7 +3177,7 @@ Returns a list of vector store files in a batch.
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 
@@ -3301,7 +3276,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123
 
 ### Vector Store File Batch
 
-- `VectorStoreFileBatch = object { id, created_at, file_counts, 3 more }`
+- `VectorStoreFileBatch object { id, created_at, file_counts, 3 more }`
 
   A batch of files attached to a vector store.
 

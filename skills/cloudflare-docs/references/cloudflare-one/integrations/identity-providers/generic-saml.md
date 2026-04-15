@@ -41,7 +41,7 @@ The typical setup requirements are:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 3. Set the **Name ID/Email format** to `emailAddress`.
 4. (Optional) Set the signature policy to _Always Sign_.
 
@@ -56,8 +56,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3483)
-* [ Terraform (v5) ](#tab-panel-3484)
+* [ Dashboard ](#tab-panel-3629)
+* [ Terraform (v5) ](#tab-panel-3630)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.

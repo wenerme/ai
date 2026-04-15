@@ -174,7 +174,7 @@ Create Container
 
   - `minutes: int`
 
-- `file_ids: Optional[SequenceNotStr[str]]`
+- `file_ids: Optional[Sequence[str]]`
 
   IDs of files to copy to the container.
 
@@ -546,6 +546,224 @@ client.containers.delete(
 )
 ```
 
+## Domain Types
+
+### Container List Response
+
+- `class ContainerListResponse: …`
+
+  - `id: str`
+
+    Unique identifier for the container.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the container was created.
+
+  - `name: str`
+
+    Name of the container.
+
+  - `object: str`
+
+    The type of this object.
+
+  - `status: str`
+
+    Status of the container (e.g., active, deleted).
+
+  - `expires_after: Optional[ExpiresAfter]`
+
+    The container will expire after this time period.
+    The anchor is the reference point for the expiration.
+    The minutes is the number of minutes after the anchor before the container expires.
+
+    - `anchor: Optional[Literal["last_active_at"]]`
+
+      The reference point for the expiration.
+
+      - `"last_active_at"`
+
+    - `minutes: Optional[int]`
+
+      The number of minutes after the anchor before the container expires.
+
+  - `last_active_at: Optional[int]`
+
+    Unix timestamp (in seconds) when the container was last active.
+
+  - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+    The memory limit configured for the container.
+
+    - `"1g"`
+
+    - `"4g"`
+
+    - `"16g"`
+
+    - `"64g"`
+
+  - `network_policy: Optional[NetworkPolicy]`
+
+    Network access policy for the container.
+
+    - `type: Literal["allowlist", "disabled"]`
+
+      The network policy mode.
+
+      - `"allowlist"`
+
+      - `"disabled"`
+
+    - `allowed_domains: Optional[List[str]]`
+
+      Allowed outbound domains when `type` is `allowlist`.
+
+### Container Create Response
+
+- `class ContainerCreateResponse: …`
+
+  - `id: str`
+
+    Unique identifier for the container.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the container was created.
+
+  - `name: str`
+
+    Name of the container.
+
+  - `object: str`
+
+    The type of this object.
+
+  - `status: str`
+
+    Status of the container (e.g., active, deleted).
+
+  - `expires_after: Optional[ExpiresAfter]`
+
+    The container will expire after this time period.
+    The anchor is the reference point for the expiration.
+    The minutes is the number of minutes after the anchor before the container expires.
+
+    - `anchor: Optional[Literal["last_active_at"]]`
+
+      The reference point for the expiration.
+
+      - `"last_active_at"`
+
+    - `minutes: Optional[int]`
+
+      The number of minutes after the anchor before the container expires.
+
+  - `last_active_at: Optional[int]`
+
+    Unix timestamp (in seconds) when the container was last active.
+
+  - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+    The memory limit configured for the container.
+
+    - `"1g"`
+
+    - `"4g"`
+
+    - `"16g"`
+
+    - `"64g"`
+
+  - `network_policy: Optional[NetworkPolicy]`
+
+    Network access policy for the container.
+
+    - `type: Literal["allowlist", "disabled"]`
+
+      The network policy mode.
+
+      - `"allowlist"`
+
+      - `"disabled"`
+
+    - `allowed_domains: Optional[List[str]]`
+
+      Allowed outbound domains when `type` is `allowlist`.
+
+### Container Retrieve Response
+
+- `class ContainerRetrieveResponse: …`
+
+  - `id: str`
+
+    Unique identifier for the container.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the container was created.
+
+  - `name: str`
+
+    Name of the container.
+
+  - `object: str`
+
+    The type of this object.
+
+  - `status: str`
+
+    Status of the container (e.g., active, deleted).
+
+  - `expires_after: Optional[ExpiresAfter]`
+
+    The container will expire after this time period.
+    The anchor is the reference point for the expiration.
+    The minutes is the number of minutes after the anchor before the container expires.
+
+    - `anchor: Optional[Literal["last_active_at"]]`
+
+      The reference point for the expiration.
+
+      - `"last_active_at"`
+
+    - `minutes: Optional[int]`
+
+      The number of minutes after the anchor before the container expires.
+
+  - `last_active_at: Optional[int]`
+
+    Unix timestamp (in seconds) when the container was last active.
+
+  - `memory_limit: Optional[Literal["1g", "4g", "16g", "64g"]]`
+
+    The memory limit configured for the container.
+
+    - `"1g"`
+
+    - `"4g"`
+
+    - `"16g"`
+
+    - `"64g"`
+
+  - `network_policy: Optional[NetworkPolicy]`
+
+    Network access policy for the container.
+
+    - `type: Literal["allowlist", "disabled"]`
+
+      The network policy mode.
+
+      - `"allowlist"`
+
+      - `"disabled"`
+
+    - `allowed_domains: Optional[List[str]]`
+
+      Allowed outbound domains when `type` is `allowlist`.
+
 # Files
 
 ## List container files
@@ -839,6 +1057,110 @@ client.containers.files.delete(
     container_id="container_id",
 )
 ```
+
+## Domain Types
+
+### File List Response
+
+- `class FileListResponse: …`
+
+  - `id: str`
+
+    Unique identifier for the file.
+
+  - `bytes: int`
+
+    Size of the file in bytes.
+
+  - `container_id: str`
+
+    The container this file belongs to.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: Literal["container.file"]`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: str`
+
+    Path of the file in the container.
+
+  - `source: str`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Create Response
+
+- `class FileCreateResponse: …`
+
+  - `id: str`
+
+    Unique identifier for the file.
+
+  - `bytes: int`
+
+    Size of the file in bytes.
+
+  - `container_id: str`
+
+    The container this file belongs to.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: Literal["container.file"]`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: str`
+
+    Path of the file in the container.
+
+  - `source: str`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Retrieve Response
+
+- `class FileRetrieveResponse: …`
+
+  - `id: str`
+
+    Unique identifier for the file.
+
+  - `bytes: int`
+
+    Size of the file in bytes.
+
+  - `container_id: str`
+
+    The container this file belongs to.
+
+  - `created_at: int`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: Literal["container.file"]`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: str`
+
+    Path of the file in the container.
+
+  - `source: str`
+
+    Source of the file (e.g., `user`, `assistant`).
 
 # Content
 

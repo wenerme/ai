@@ -20,7 +20,7 @@ Create a new skill.
 
 ### Returns
 
-- `Skill = object { id, created_at, default_version, 4 more }`
+- `Skill object { id, created_at, default_version, 4 more }`
 
   - `id: string`
 

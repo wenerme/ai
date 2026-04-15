@@ -17,7 +17,7 @@ Returns the Upload object with status `completed`, including an additional `file
 
 - `upload_id: str`
 
-- `part_ids: SequenceNotStr[str]`
+- `part_ids: Sequence[str]`
 
   The ordered list of Part IDs.
 

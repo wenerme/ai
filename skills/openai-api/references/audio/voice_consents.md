@@ -332,3 +332,131 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
   -X DELETE \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
+
+## Domain Types
+
+### Voice Consent List Response
+
+- `VoiceConsentListResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Create Response
+
+- `VoiceConsentCreateResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Retrieve Response
+
+- `VoiceConsentRetrieveResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Update Response
+
+- `VoiceConsentUpdateResponse object { id, created_at, language, 2 more }`
+
+  A consent recording used to authorize creation of a custom voice.
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the consent recording was created.
+
+  - `language: string`
+
+    The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+  - `name: string`
+
+    The label provided when the consent recording was uploaded.
+
+  - `object: "audio.voice_consent"`
+
+    The object type, which is always `audio.voice_consent`.
+
+    - `"audio.voice_consent"`
+
+### Voice Consent Delete Response
+
+- `VoiceConsentDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+    The consent recording identifier.
+
+  - `deleted: boolean`
+
+  - `object: "audio.voice_consent"`
+
+    - `"audio.voice_consent"`

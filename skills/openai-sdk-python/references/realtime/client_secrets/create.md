@@ -248,42 +248,6 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the output audio.
 
-          - `class AudioPCM: …`
-
-            The PCM audio format. Only a 24kHz sample rate is supported.
-
-            - `rate: Optional[Literal[24000]]`
-
-              The sample rate of the audio. Always `24000`.
-
-              - `24000`
-
-            - `type: Optional[Literal["audio/pcm"]]`
-
-              The audio format. Always `audio/pcm`.
-
-              - `"audio/pcm"`
-
-          - `class AudioPCMU: …`
-
-            The G.711 μ-law format.
-
-            - `type: Optional[Literal["audio/pcmu"]]`
-
-              The audio format. Always `audio/pcmu`.
-
-              - `"audio/pcmu"`
-
-          - `class AudioPCMA: …`
-
-            The G.711 A-law format.
-
-            - `type: Optional[Literal["audio/pcma"]]`
-
-              The audio format. Always `audio/pcma`.
-
-              - `"audio/pcma"`
-
         - `speed: Optional[float]`
 
           The speed of the model's spoken response as a multiple of the original speed.
@@ -817,42 +781,6 @@ Returns the created client secret and the effective session object. The client s
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
-          - `class AudioPCM: …`
-
-            The PCM audio format. Only a 24kHz sample rate is supported.
-
-            - `rate: Optional[Literal[24000]]`
-
-              The sample rate of the audio. Always `24000`.
-
-              - `24000`
-
-            - `type: Optional[Literal["audio/pcm"]]`
-
-              The audio format. Always `audio/pcm`.
-
-              - `"audio/pcm"`
-
-          - `class AudioPCMU: …`
-
-            The G.711 μ-law format.
-
-            - `type: Optional[Literal["audio/pcmu"]]`
-
-              The audio format. Always `audio/pcmu`.
-
-              - `"audio/pcmu"`
-
-          - `class AudioPCMA: …`
-
-            The G.711 A-law format.
-
-            - `type: Optional[Literal["audio/pcma"]]`
-
-              The audio format. Always `audio/pcma`.
-
-              - `"audio/pcma"`
-
         - `noise_reduction: Optional[NoiseReduction]`
 
           Configuration for input audio noise reduction. This can be set to `null` to turn off.
@@ -863,46 +791,9 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-            - `"near_field"`
-
-            - `"far_field"`
-
         - `transcription: Optional[AudioTranscription]`
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
-
-          - `language: Optional[str]`
-
-            The language of the input audio. Supplying the input language in
-            [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-            will improve accuracy and latency.
-
-          - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
-
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-            - `str`
-
-            - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
-
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-              - `"whisper-1"`
-
-              - `"gpt-4o-mini-transcribe"`
-
-              - `"gpt-4o-mini-transcribe-2025-12-15"`
-
-              - `"gpt-4o-transcribe"`
-
-              - `"gpt-4o-transcribe-diarize"`
-
-          - `prompt: Optional[str]`
-
-            An optional text to guide the model's style or continue a previous audio
-            segment.
-            For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-            For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
 
         - `turn_detection: Optional[RealtimeTranscriptionSessionAudioInputTurnDetection]`
 
@@ -1238,42 +1129,6 @@ Returns the created client secret and the effective session object. The client s
           - `format: Optional[RealtimeAudioFormats]`
 
             The format of the output audio.
-
-            - `class AudioPCM: …`
-
-              The PCM audio format. Only a 24kHz sample rate is supported.
-
-              - `rate: Optional[Literal[24000]]`
-
-                The sample rate of the audio. Always `24000`.
-
-                - `24000`
-
-              - `type: Optional[Literal["audio/pcm"]]`
-
-                The audio format. Always `audio/pcm`.
-
-                - `"audio/pcm"`
-
-            - `class AudioPCMU: …`
-
-              The G.711 μ-law format.
-
-              - `type: Optional[Literal["audio/pcmu"]]`
-
-                The audio format. Always `audio/pcmu`.
-
-                - `"audio/pcmu"`
-
-            - `class AudioPCMA: …`
-
-              The G.711 A-law format.
-
-              - `type: Optional[Literal["audio/pcma"]]`
-
-                The audio format. Always `audio/pcma`.
-
-                - `"audio/pcma"`
 
           - `speed: Optional[float]`
 
@@ -1813,42 +1668,6 @@ Returns the created client secret and the effective session object. The client s
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
-            - `class AudioPCM: …`
-
-              The PCM audio format. Only a 24kHz sample rate is supported.
-
-              - `rate: Optional[Literal[24000]]`
-
-                The sample rate of the audio. Always `24000`.
-
-                - `24000`
-
-              - `type: Optional[Literal["audio/pcm"]]`
-
-                The audio format. Always `audio/pcm`.
-
-                - `"audio/pcm"`
-
-            - `class AudioPCMU: …`
-
-              The G.711 μ-law format.
-
-              - `type: Optional[Literal["audio/pcmu"]]`
-
-                The audio format. Always `audio/pcmu`.
-
-                - `"audio/pcmu"`
-
-            - `class AudioPCMA: …`
-
-              The G.711 A-law format.
-
-              - `type: Optional[Literal["audio/pcma"]]`
-
-                The audio format. Always `audio/pcma`.
-
-                - `"audio/pcma"`
-
           - `noise_reduction: Optional[AudioInputNoiseReduction]`
 
             Configuration for input audio noise reduction.
@@ -1857,46 +1676,9 @@ Returns the created client secret and the effective session object. The client s
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-              - `"near_field"`
-
-              - `"far_field"`
-
           - `transcription: Optional[AudioTranscription]`
 
             Configuration of the transcription model.
-
-            - `language: Optional[str]`
-
-              The language of the input audio. Supplying the input language in
-              [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
-              will improve accuracy and latency.
-
-            - `model: Optional[Union[str, Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more], null]]`
-
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-              - `str`
-
-              - `Literal["whisper-1", "gpt-4o-mini-transcribe", "gpt-4o-mini-transcribe-2025-12-15", 2 more]`
-
-                The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, and `gpt-4o-transcribe-diarize`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
-
-                - `"whisper-1"`
-
-                - `"gpt-4o-mini-transcribe"`
-
-                - `"gpt-4o-mini-transcribe-2025-12-15"`
-
-                - `"gpt-4o-transcribe"`
-
-                - `"gpt-4o-transcribe-diarize"`
-
-            - `prompt: Optional[str]`
-
-              An optional text to guide the model's style or continue a previous audio
-              segment.
-              For `whisper-1`, the [prompt is a list of keywords](https://platform.openai.com/docs/guides/speech-to-text#prompting).
-              For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
 
           - `turn_detection: Optional[RealtimeTranscriptionSessionTurnDetection]`
 

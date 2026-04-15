@@ -375,19 +375,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -411,19 +419,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-

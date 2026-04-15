@@ -293,6 +293,110 @@ const client = new OpenAI({
 await client.containers.files.delete('file_id', { container_id: 'container_id' });
 ```
 
+## Domain Types
+
+### File List Response
+
+- `FileListResponse`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: "container.file"`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Create Response
+
+- `FileCreateResponse`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: "container.file"`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Retrieve Response
+
+- `FileRetrieveResponse`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: "container.file"`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
 # Content
 
 ## Retrieve container file content

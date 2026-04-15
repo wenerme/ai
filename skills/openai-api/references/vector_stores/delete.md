@@ -10,7 +10,7 @@ Delete a vector store.
 
 ### Returns
 
-- `VectorStoreDeleted = object { id, deleted, object }`
+- `VectorStoreDeleted object { id, deleted, object }`
 
   - `id: string`
 

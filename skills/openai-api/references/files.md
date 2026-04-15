@@ -193,7 +193,7 @@ storage limits.
 
 ### Returns
 
-- `FileObject = object { id, bytes, created_at, 6 more }`
+- `FileObject object { id, bytes, created_at, 6 more }`
 
   The `File` object represents a document that has been uploaded to OpenAI.
 
@@ -320,7 +320,7 @@ Delete a file and remove it from all vector stores.
 
 ### Returns
 
-- `FileDeleted = object { id, deleted, object }`
+- `FileDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -378,7 +378,7 @@ Returns information about a specific file.
 
 ### Returns
 
-- `FileObject = object { id, bytes, created_at, 6 more }`
+- `FileObject object { id, bytes, created_at, 6 more }`
 
   The `File` object represents a document that has been uploaded to OpenAI.
 
@@ -518,7 +518,7 @@ curl https://api.openai.com/v1/files/file-abc123/content \
 
 ### File Deleted
 
-- `FileDeleted = object { id, deleted, object }`
+- `FileDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -530,7 +530,7 @@ curl https://api.openai.com/v1/files/file-abc123/content \
 
 ### File Object
 
-- `FileObject = object { id, bytes, created_at, 6 more }`
+- `FileObject object { id, bytes, created_at, 6 more }`
 
   The `File` object represents a document that has been uploaded to OpenAI.
 

@@ -148,7 +148,7 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 ### Returns
 
-- `ImagesResponse = object { created, background, data, 4 more }`
+- `ImagesResponse object { created, background, data, 4 more }`
 
   The response from the image generation endpoint.
 

@@ -20,6 +20,11 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-rendering/changelog/index.xml)
 
+## 2026-04-14
+
+**Wrangler CLI commands for Browser Rendering**
+* Added `wrangler browser` commands to create, manage, and view browser sessions directly from the terminal. Available commands: `create`, `close`, `list`, and `view`. For full usage details, refer to [Wrangler commands](https://developers.cloudflare.com/browser-rendering/reference/wrangler-commands/).
+
 ## 2026-04-13
 
 **@cloudflare/puppeteer v1.1.0 released**

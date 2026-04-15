@@ -262,3 +262,93 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
     "max_images_per_1_minute": 10
   }
 ```
+
+## Domain Types
+
+### Rate Limit List Rate Limits Response
+
+- `RateLimitListRateLimitsResponse object { id, max_requests_per_1_minute, max_tokens_per_1_minute, 6 more }`
+
+  Represents a project rate limit config.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `max_requests_per_1_minute: number`
+
+    The maximum requests per minute.
+
+  - `max_tokens_per_1_minute: number`
+
+    The maximum tokens per minute.
+
+  - `model: string`
+
+    The model this rate limit applies to.
+
+  - `object: "project.rate_limit"`
+
+    The object type, which is always `project.rate_limit`
+
+    - `"project.rate_limit"`
+
+  - `batch_1_day_max_input_tokens: optional number`
+
+    The maximum batch input tokens per day. Only present for relevant models.
+
+  - `max_audio_megabytes_per_1_minute: optional number`
+
+    The maximum audio megabytes per minute. Only present for relevant models.
+
+  - `max_images_per_1_minute: optional number`
+
+    The maximum images per minute. Only present for relevant models.
+
+  - `max_requests_per_1_day: optional number`
+
+    The maximum requests per day. Only present for relevant models.
+
+### Rate Limit Update Rate Limit Response
+
+- `RateLimitUpdateRateLimitResponse object { id, max_requests_per_1_minute, max_tokens_per_1_minute, 6 more }`
+
+  Represents a project rate limit config.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints.
+
+  - `max_requests_per_1_minute: number`
+
+    The maximum requests per minute.
+
+  - `max_tokens_per_1_minute: number`
+
+    The maximum tokens per minute.
+
+  - `model: string`
+
+    The model this rate limit applies to.
+
+  - `object: "project.rate_limit"`
+
+    The object type, which is always `project.rate_limit`
+
+    - `"project.rate_limit"`
+
+  - `batch_1_day_max_input_tokens: optional number`
+
+    The maximum batch input tokens per day. Only present for relevant models.
+
+  - `max_audio_megabytes_per_1_minute: optional number`
+
+    The maximum audio megabytes per minute. Only present for relevant models.
+
+  - `max_images_per_1_minute: optional number`
+
+    The maximum images per minute. Only present for relevant models.
+
+  - `max_requests_per_1_day: optional number`
+
+    The maximum requests per day. Only present for relevant models.

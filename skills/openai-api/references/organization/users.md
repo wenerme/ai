@@ -133,7 +133,7 @@ Retrieves a user by their identifier.
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 
@@ -230,7 +230,7 @@ Modifies a user's role in the organization.
 
 ### Returns
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 
@@ -372,7 +372,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
 
 ### User
 
-- `User = object { id, added_at, email, 3 more }`
+- `User object { id, added_at, email, 3 more }`
 
   Represents an individual `user` within an organization.
 
@@ -405,6 +405,18 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
     - `"owner"`
 
     - `"reader"`
+
+### User Delete Response
+
+- `UserDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.user.deleted"`
+
+    - `"organization.user.deleted"`
 
 # Roles
 
@@ -802,3 +814,149 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
     "deleted": true
 }
 ```
+
+## Domain Types
+
+### Role List Response
+
+- `RoleListResponse object { id, created_at, created_by, 8 more }`
+
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `created_at: number`
+
+    When the role was created.
+
+  - `created_by: string`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown]`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string`
+
+    Description of the role.
+
+  - `metadata: map[unknown]`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number`
+
+    When the role was last updated.
+
+### Role Create Response
+
+- `RoleCreateResponse object { object, role, user }`
+
+  Role assignment linking a user to a role.
+
+  - `object: "user.role"`
+
+    Always `user.role`.
+
+    - `"user.role"`
+
+  - `role: object { id, description, name, 4 more }`
+
+    Details about a role that can be assigned through the public Roles API.
+
+    - `id: string`
+
+      Identifier for the role.
+
+    - `description: string`
+
+      Optional description of the role.
+
+    - `name: string`
+
+      Unique name for the role.
+
+    - `object: "role"`
+
+      Always `role`.
+
+      - `"role"`
+
+    - `permissions: array of string`
+
+      Permissions granted by the role.
+
+    - `predefined_role: boolean`
+
+      Whether the role is predefined and managed by OpenAI.
+
+    - `resource_type: string`
+
+      Resource type the role is bound to (for example `api.organization` or `api.project`).
+
+  - `user: User`
+
+    Represents an individual `user` within an organization.
+
+    - `id: string`
+
+      The identifier, which can be referenced in API endpoints
+
+    - `added_at: number`
+
+      The Unix timestamp (in seconds) of when the user was added.
+
+    - `email: string`
+
+      The email address of the user
+
+    - `name: string`
+
+      The name of the user
+
+    - `object: "organization.user"`
+
+      The object type, which is always `organization.user`
+
+      - `"organization.user"`
+
+    - `role: "owner" or "reader"`
+
+      `owner` or `reader`
+
+      - `"owner"`
+
+      - `"reader"`
+
+### Role Delete Response
+
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.

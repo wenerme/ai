@@ -10,7 +10,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Batch Cancelled Webhook Event
 
-- `BatchCancelledWebhookEvent = object { id, created_at, data, 2 more }`
+- `BatchCancelledWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a batch API request has been cancelled.
 
@@ -44,7 +44,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Batch Completed Webhook Event
 
-- `BatchCompletedWebhookEvent = object { id, created_at, data, 2 more }`
+- `BatchCompletedWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a batch API request has been completed.
 
@@ -78,7 +78,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Batch Expired Webhook Event
 
-- `BatchExpiredWebhookEvent = object { id, created_at, data, 2 more }`
+- `BatchExpiredWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a batch API request has expired.
 
@@ -112,7 +112,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Batch Failed Webhook Event
 
-- `BatchFailedWebhookEvent = object { id, created_at, data, 2 more }`
+- `BatchFailedWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a batch API request has failed.
 
@@ -146,7 +146,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Eval Run Canceled Webhook Event
 
-- `EvalRunCanceledWebhookEvent = object { id, created_at, data, 2 more }`
+- `EvalRunCanceledWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when an eval run has been canceled.
 
@@ -180,7 +180,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Eval Run Failed Webhook Event
 
-- `EvalRunFailedWebhookEvent = object { id, created_at, data, 2 more }`
+- `EvalRunFailedWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when an eval run has failed.
 
@@ -214,7 +214,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Eval Run Succeeded Webhook Event
 
-- `EvalRunSucceededWebhookEvent = object { id, created_at, data, 2 more }`
+- `EvalRunSucceededWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when an eval run has succeeded.
 
@@ -248,7 +248,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Fine Tuning Job Cancelled Webhook Event
 
-- `FineTuningJobCancelledWebhookEvent = object { id, created_at, data, 2 more }`
+- `FineTuningJobCancelledWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a fine-tuning job has been cancelled.
 
@@ -282,7 +282,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Fine Tuning Job Failed Webhook Event
 
-- `FineTuningJobFailedWebhookEvent = object { id, created_at, data, 2 more }`
+- `FineTuningJobFailedWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a fine-tuning job has failed.
 
@@ -316,7 +316,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Fine Tuning Job Succeeded Webhook Event
 
-- `FineTuningJobSucceededWebhookEvent = object { id, created_at, data, 2 more }`
+- `FineTuningJobSucceededWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a fine-tuning job has succeeded.
 
@@ -350,7 +350,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Realtime Call Incoming Webhook Event
 
-- `RealtimeCallIncomingWebhookEvent = object { id, created_at, data, 2 more }`
+- `RealtimeCallIncomingWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when Realtime API Receives a incoming SIP call.
 
@@ -396,7 +396,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Response Cancelled Webhook Event
 
-- `ResponseCancelledWebhookEvent = object { id, created_at, data, 2 more }`
+- `ResponseCancelledWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a background response has been cancelled.
 
@@ -430,7 +430,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Response Completed Webhook Event
 
-- `ResponseCompletedWebhookEvent = object { id, created_at, data, 2 more }`
+- `ResponseCompletedWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a background response has been completed.
 
@@ -464,7 +464,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Response Failed Webhook Event
 
-- `ResponseFailedWebhookEvent = object { id, created_at, data, 2 more }`
+- `ResponseFailedWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a background response has failed.
 
@@ -498,7 +498,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Response Incomplete Webhook Event
 
-- `ResponseIncompleteWebhookEvent = object { id, created_at, data, 2 more }`
+- `ResponseIncompleteWebhookEvent object { id, created_at, data, 2 more }`
 
   Sent when a background response has been interrupted.
 
@@ -536,7 +536,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
   Sent when a batch API request has been cancelled.
 
-  - `BatchCancelledWebhookEvent = object { id, created_at, data, 2 more }`
+  - `BatchCancelledWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a batch API request has been cancelled.
 
@@ -568,7 +568,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `BatchCompletedWebhookEvent = object { id, created_at, data, 2 more }`
+  - `BatchCompletedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a batch API request has been completed.
 
@@ -600,7 +600,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `BatchExpiredWebhookEvent = object { id, created_at, data, 2 more }`
+  - `BatchExpiredWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a batch API request has expired.
 
@@ -632,7 +632,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `BatchFailedWebhookEvent = object { id, created_at, data, 2 more }`
+  - `BatchFailedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a batch API request has failed.
 
@@ -664,7 +664,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `EvalRunCanceledWebhookEvent = object { id, created_at, data, 2 more }`
+  - `EvalRunCanceledWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when an eval run has been canceled.
 
@@ -696,7 +696,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `EvalRunFailedWebhookEvent = object { id, created_at, data, 2 more }`
+  - `EvalRunFailedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when an eval run has failed.
 
@@ -728,7 +728,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `EvalRunSucceededWebhookEvent = object { id, created_at, data, 2 more }`
+  - `EvalRunSucceededWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when an eval run has succeeded.
 
@@ -760,7 +760,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `FineTuningJobCancelledWebhookEvent = object { id, created_at, data, 2 more }`
+  - `FineTuningJobCancelledWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a fine-tuning job has been cancelled.
 
@@ -792,7 +792,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `FineTuningJobFailedWebhookEvent = object { id, created_at, data, 2 more }`
+  - `FineTuningJobFailedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a fine-tuning job has failed.
 
@@ -824,7 +824,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `FineTuningJobSucceededWebhookEvent = object { id, created_at, data, 2 more }`
+  - `FineTuningJobSucceededWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a fine-tuning job has succeeded.
 
@@ -856,7 +856,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `RealtimeCallIncomingWebhookEvent = object { id, created_at, data, 2 more }`
+  - `RealtimeCallIncomingWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when Realtime API Receives a incoming SIP call.
 
@@ -900,7 +900,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `ResponseCancelledWebhookEvent = object { id, created_at, data, 2 more }`
+  - `ResponseCancelledWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a background response has been cancelled.
 
@@ -932,7 +932,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `ResponseCompletedWebhookEvent = object { id, created_at, data, 2 more }`
+  - `ResponseCompletedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a background response has been completed.
 
@@ -964,7 +964,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `ResponseFailedWebhookEvent = object { id, created_at, data, 2 more }`
+  - `ResponseFailedWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a background response has failed.
 
@@ -996,7 +996,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
-  - `ResponseIncompleteWebhookEvent = object { id, created_at, data, 2 more }`
+  - `ResponseIncompleteWebhookEvent object { id, created_at, data, 2 more }`
 
     Sent when a background response has been interrupted.
 

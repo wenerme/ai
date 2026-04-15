@@ -9,7 +9,7 @@ format, or a stream of transcript events.
 
 ### Returns
 
-- `Transcription = object { text, logprobs, usage }`
+- `Transcription object { text, logprobs, usage }`
 
   Represents a transcription response returned by model, based on the provided input.
 
@@ -37,7 +37,7 @@ format, or a stream of transcript events.
 
     Token usage statistics for the request.
 
-    - `TokenUsage = object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `TokenUsage object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -71,7 +71,7 @@ format, or a stream of transcript events.
 
           Number of text tokens billed for this request.
 
-    - `DurationUsage = object { seconds, type }`
+    - `DurationUsage object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -85,7 +85,7 @@ format, or a stream of transcript events.
 
         - `"duration"`
 
-- `TranscriptionDiarized = object { duration, segments, task, 2 more }`
+- `TranscriptionDiarized object { duration, segments, task, 2 more }`
 
   Represents a diarized transcription response returned by the model, including the combined transcript and speaker-segment annotations.
 
@@ -137,7 +137,7 @@ format, or a stream of transcript events.
 
     Token or duration usage statistics for the request.
 
-    - `Tokens = object { input_tokens, output_tokens, total_tokens, 2 more }`
+    - `Tokens object { input_tokens, output_tokens, total_tokens, 2 more }`
 
       Usage statistics for models billed by token usage.
 
@@ -171,7 +171,7 @@ format, or a stream of transcript events.
 
           Number of text tokens billed for this request.
 
-    - `Duration = object { seconds, type }`
+    - `Duration object { seconds, type }`
 
       Usage statistics for models billed by audio input duration.
 
@@ -185,7 +185,7 @@ format, or a stream of transcript events.
 
         - `"duration"`
 
-- `TranscriptionVerbose = object { duration, language, text, 3 more }`
+- `TranscriptionVerbose object { duration, language, text, 3 more }`
 
   Represents a verbose json transcription response returned by model, based on the provided input.
 

@@ -1,5 +1,3 @@
-# Video understanding
-
 > To learn about video generation, see the [Veo](https://ai.google.dev/gemini-api/docs/video) guide.
 
 Gemini models can process videos, enabling many frontier developer use cases
@@ -533,7 +531,7 @@ Gemini supports the following video format MIME types:
 
 - `video/mp4`
 - `video/mpeg`
-- `video/mov`
+- `video/quicktime`
 - `video/avi`
 - `video/x-flv`
 - `video/mpg`

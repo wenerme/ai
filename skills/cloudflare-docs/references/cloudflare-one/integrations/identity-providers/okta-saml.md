@@ -35,7 +35,7 @@ To set up SAML with Okta as your identity provider:
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 6. In the **Attribute Statements** section, enter the following information:  
    * **Name**: Enter `email`.  
    * **Value**: Enter `user.email`.

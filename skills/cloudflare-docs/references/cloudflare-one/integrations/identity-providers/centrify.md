@@ -42,7 +42,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.  
 ![Centrify Trust Identity Provider Configuration with team domain and callback](https://developers.cloudflare.com/_astro/centrify-6.ChCQ_t69_ZFR8qj.webp)
 13. Select **Save**.
 14. Copy the following values:

@@ -166,7 +166,7 @@ Modifies an assistant.
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -176,7 +176,7 @@ Modifies an assistant.
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -189,7 +189,7 @@ Modifies an assistant.
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -251,7 +251,7 @@ Modifies an assistant.
 
   A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
-  - `CodeInterpreterTool = object { type }`
+  - `CodeInterpreterTool object { type }`
 
     - `type: "code_interpreter"`
 
@@ -259,7 +259,7 @@ Modifies an assistant.
 
       - `"code_interpreter"`
 
-  - `FileSearchTool = object { type, file_search }`
+  - `FileSearchTool object { type, file_search }`
 
     - `type: "file_search"`
 
@@ -295,7 +295,7 @@ Modifies an assistant.
 
           - `"default_2024_08_21"`
 
-  - `FunctionTool = object { function, type }`
+  - `FunctionTool object { function, type }`
 
     - `function: FunctionDefinition`
 
@@ -331,7 +331,7 @@ Modifies an assistant.
 
 ### Returns
 
-- `Assistant = object { id, created_at, description, 10 more }`
+- `Assistant object { id, created_at, description, 10 more }`
 
   Represents an `assistant` that can call the model and use tools.
 
@@ -378,7 +378,7 @@ Modifies an assistant.
 
     A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant. Tools can be of types `code_interpreter`, `file_search`, or `function`.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -386,7 +386,7 @@ Modifies an assistant.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -422,7 +422,7 @@ Modifies an assistant.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -466,7 +466,7 @@ Modifies an assistant.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -476,7 +476,7 @@ Modifies an assistant.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -489,7 +489,7 @@ Modifies an assistant.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).

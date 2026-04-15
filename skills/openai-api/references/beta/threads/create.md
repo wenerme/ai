@@ -22,7 +22,7 @@ Create a thread.
 
       An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-      - `ImageFileContentBlock = object { image_file, type }`
+      - `ImageFileContentBlock object { image_file, type }`
 
         References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -48,7 +48,7 @@ Create a thread.
 
           - `"image_file"`
 
-      - `ImageURLContentBlock = object { image_url, type }`
+      - `ImageURLContentBlock object { image_url, type }`
 
         References an image URL in the content of a message.
 
@@ -74,7 +74,7 @@ Create a thread.
 
           - `"image_url"`
 
-      - `TextContentBlockParam = object { text, type }`
+      - `TextContentBlockParam object { text, type }`
 
         The text content that is part of a message.
 
@@ -111,7 +111,7 @@ Create a thread.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -119,7 +119,7 @@ Create a thread.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -169,7 +169,7 @@ Create a thread.
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-        - `AutoChunkingStrategy = object { type }`
+        - `AutoChunkingStrategy object { type }`
 
           The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -179,7 +179,7 @@ Create a thread.
 
             - `"auto"`
 
-        - `StaticChunkingStrategy = object { static, type }`
+        - `StaticChunkingStrategy object { static, type }`
 
           - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -214,7 +214,7 @@ Create a thread.
 
 ### Returns
 
-- `Thread = object { id, created_at, metadata, 2 more }`
+- `Thread object { id, created_at, metadata, 2 more }`
 
   Represents a thread that contains [messages](/docs/api-reference/messages).
 

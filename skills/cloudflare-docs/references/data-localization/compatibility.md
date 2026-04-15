@@ -173,7 +173,7 @@ The table below provides a summary of the Data Localization Suite product's beha
 42. DLP is part of Gateway HTTP, however, [DLP detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/) are not available outside US region when using Customer Metadata Boundary. [↩](#user-content-fnref-31)
 43. You can [bring your own certificate ↗](https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/) to Gateway but these cannot yet be restricted to a specific region. [↩](#user-content-fnref-20)
 44. Gateway HTTP supports Regional Services. Gateway DNS does not yet support regionalization.  
- ICMP proxy and Peer-to-peer proxy are not available to Regional Services users. [File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) (add-on) is incompatible with DLS. [↩](#user-content-fnref-21)
+ ICMP proxy and Mesh proxy are not available to Regional Services users. [File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) (add-on) is incompatible with DLS. [↩](#user-content-fnref-21)
 45. Dashboard Analytics and Logs are empty when using CMB outside the US region. Use Logpush instead. [↩](#user-content-fnref-22)
 
 ```json

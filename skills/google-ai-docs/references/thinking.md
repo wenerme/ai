@@ -1,5 +1,3 @@
-# Gemini thinking
-
 The [Gemini 3 and 2.5 series models](https://ai.google.dev/gemini-api/docs/models) use an internal
 "thinking process" that significantly improves their reasoning and multi-step
 planning abilities, making them highly effective for complex tasks such as
@@ -505,7 +503,7 @@ complexity of the request.
 | **2.5 Flash Preview** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
 | **2.5 Flash Lite** | Model does not think | `512` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` |
 | **2.5 Flash Lite Preview** | Model does not think | `512` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` |
-| **Robotics-ER 1.5 Preview** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
+| **Robotics-ER 1.6 Preview** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
 | **2.5 Flash Live Native Audio Preview (09-2025)** | Dynamic thinking | `0` to `24576` | `thinkingBudget = 0` | `thinkingBudget = -1` (Default) |
 
 ### Python

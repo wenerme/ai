@@ -76,8 +76,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-3700)
-* [ Version 2026.1 and earlier ](#tab-panel-3701)
+* [ Version 2026.2+ ](#tab-panel-3854)
+* [ Version 2026.1 and earlier ](#tab-panel-3855)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -118,7 +118,7 @@ Feature availability
 
 Overrides the default IP address of the Cloudflare One Client's [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic) such that each device has its own unique local interface IP.
 
-This setting is primarily used as a prerequisite for [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) and [MASQUE](#device-tunnel-protocol). You can also use it when the default IP conflicts with other local services on your network.
+This setting is primarily used as a prerequisite for [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and [MASQUE](#device-tunnel-protocol). You can also use it when the default IP conflicts with other local services on your network.
 
 **Value:**
 
@@ -135,13 +135,13 @@ Feature availability
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | All systems       | Traffic and DNS mode                                                                                                               | All plans                                                       |
 
-Allows traffic on-ramped using [peer-to-peer](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/), [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/), or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) to route to devices enrolled in your Zero Trust organization.
+Allows traffic on-ramped using [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) to route to devices enrolled in your Zero Trust organization.
 
 Each device is assigned a virtual IP address in the CGNAT IP space (`100.96.0.0/12`) or a [custom device IP range](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/). With this setting `Enabled`, users on your private network will be able to connect to these device IPs and access [TCP, UDP, and/or ICMP-based services](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/) on your devices. You can create [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control which users and devices can access the device IPs.
 
 Note
 
-Ensure that traffic destined to your device IPs routes from your private network to Cloudflare Gateway. For example, if you are making a [peer-to-peer](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/) connection, you must configure your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that traffic to your device IPs routes through the WARP tunnel.
+Ensure that traffic destined to your device IPs routes from your private network to Cloudflare Gateway. For example, if you are using [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) connectivity, you must configure your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that traffic to your Mesh IPs routes through the tunnel.
 
 ## Global disconnection settings
 
@@ -166,7 +166,7 @@ Note
 
 Requires the [Super Administrator](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) role.
 
-**Disconnect the Cloudflare One Client on all devices** allows administrators to fail open the Cloudflare One Client in case of an incident occurring in your environment, independent from incidents or outages affecting Cloudflare's services. When you turn on **Disconnect the Cloudflare One Client on all devices**, Cloudflare will disconnect all Windows, macOS, and Linux Cloudflare One Clients that are connected to your Zero Trust organization. This includes end user devices, [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) hosts, and [peer-to-peer](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/) devices. End users will receive a notification on their device and the Cloudflare One Client will display [Admin directed disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
+**Disconnect the Cloudflare One Client on all devices** allows administrators to fail open the Cloudflare One Client in case of an incident occurring in your environment, independent from incidents or outages affecting Cloudflare's services. When you turn on **Disconnect the Cloudflare One Client on all devices**, Cloudflare will disconnect all Windows, macOS, and Linux Cloudflare One Clients that are connected to your Zero Trust organization. This includes end user devices and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. End users will receive a notification on their device and the Cloudflare One Client will display [Admin directed disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
 
 To resume normal operations, turn off **Disconnect the Cloudflare One Client on all devices**. The Cloudflare One Client will automatically reconnect.
 
@@ -389,9 +389,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-3702)
-* [ Linux ](#tab-panel-3703)
-* [ Android and ChromeOS ](#tab-panel-3704)
+* [ Windows and macOS ](#tab-panel-3856)
+* [ Linux ](#tab-panel-3857)
+* [ Android and ChromeOS ](#tab-panel-3858)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

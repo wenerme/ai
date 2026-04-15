@@ -182,16 +182,6 @@
 
           A text input to the model.
 
-          - `text: str`
-
-            The text input to the model.
-
-          - `type: Literal["input_text"]`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `class GraderInputItemOutputText: …`
 
           A text output from the model.
@@ -227,27 +217,6 @@
         - `class ResponseInputAudio: …`
 
           An audio input to the model.
-
-          - `input_audio: InputAudio`
-
-            - `data: str`
-
-              Base64-encoded audio data.
-
-            - `format: Literal["mp3", "wav"]`
-
-              The format of the audio data. Currently supported formats are `mp3` and
-              `wav`.
-
-              - `"mp3"`
-
-              - `"wav"`
-
-          - `type: Literal["input_audio"]`
-
-            The type of the input item. Always `input_audio`.
-
-            - `"input_audio"`
 
     - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -507,16 +476,6 @@
 
               A text input to the model.
 
-              - `text: str`
-
-                The text input to the model.
-
-              - `type: Literal["input_text"]`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
             - `class GraderInputItemOutputText: …`
 
               A text output from the model.
@@ -552,27 +511,6 @@
             - `class ResponseInputAudio: …`
 
               An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: str`
-
-                  Base64-encoded audio data.
-
-                - `format: Literal["mp3", "wav"]`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: Literal["input_audio"]`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -675,16 +613,6 @@
 
             A text input to the model.
 
-            - `text: str`
-
-              The text input to the model.
-
-            - `type: Literal["input_text"]`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
           - `class InputContentOutputText: …`
 
             A text output from the model.
@@ -721,27 +649,6 @@
 
             An audio input to the model.
 
-            - `input_audio: InputAudio`
-
-              - `data: str`
-
-                Base64-encoded audio data.
-
-              - `format: Literal["mp3", "wav"]`
-
-                The format of the audio data. Currently supported formats are `mp3` and
-                `wav`.
-
-                - `"mp3"`
-
-                - `"wav"`
-
-            - `type: Literal["input_audio"]`
-
-              The type of the input item. Always `input_audio`.
-
-              - `"input_audio"`
-
           - `List[GraderInputItem]`
 
             - `str`
@@ -752,72 +659,17 @@
 
               A text input to the model.
 
-              - `text: str`
-
-                The text input to the model.
-
-              - `type: Literal["input_text"]`
-
-                The type of the input item. Always `input_text`.
-
-                - `"input_text"`
-
             - `class GraderInputItemOutputText: …`
 
               A text output from the model.
-
-              - `text: str`
-
-                The text output from the model.
-
-              - `type: Literal["output_text"]`
-
-                The type of the output text. Always `output_text`.
-
-                - `"output_text"`
 
             - `class GraderInputItemInputImage: …`
 
               An image input block used within EvalItem content arrays.
 
-              - `image_url: str`
-
-                The URL of the image input.
-
-              - `type: Literal["input_image"]`
-
-                The type of the image input. Always `input_image`.
-
-                - `"input_image"`
-
-              - `detail: Optional[str]`
-
-                The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
             - `class ResponseInputAudio: …`
 
               An audio input to the model.
-
-              - `input_audio: InputAudio`
-
-                - `data: str`
-
-                  Base64-encoded audio data.
-
-                - `format: Literal["mp3", "wav"]`
-
-                  The format of the audio data. Currently supported formats are `mp3` and
-                  `wav`.
-
-                  - `"mp3"`
-
-                  - `"wav"`
-
-              - `type: Literal["input_audio"]`
-
-                The type of the input item. Always `input_audio`.
-
-                - `"input_audio"`
 
         - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -993,16 +845,6 @@
 
           A text input to the model.
 
-          - `text: str`
-
-            The text input to the model.
-
-          - `type: Literal["input_text"]`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
         - `class GraderInputItemOutputText: …`
 
           A text output from the model.
@@ -1038,27 +880,6 @@
         - `class ResponseInputAudio: …`
 
           An audio input to the model.
-
-          - `input_audio: InputAudio`
-
-            - `data: str`
-
-              Base64-encoded audio data.
-
-            - `format: Literal["mp3", "wav"]`
-
-              The format of the audio data. Currently supported formats are `mp3` and
-              `wav`.
-
-              - `"mp3"`
-
-              - `"wav"`
-
-          - `type: Literal["input_audio"]`
-
-            The type of the input item. Always `input_audio`.
-
-            - `"input_audio"`
 
     - `role: Literal["user", "assistant", "system", "developer"]`
 

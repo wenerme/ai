@@ -44,7 +44,7 @@ Create a run.
 
       An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-      - `ImageFileContentBlock = object { image_file, type }`
+      - `ImageFileContentBlock object { image_file, type }`
 
         References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -70,7 +70,7 @@ Create a run.
 
           - `"image_file"`
 
-      - `ImageURLContentBlock = object { image_url, type }`
+      - `ImageURLContentBlock object { image_url, type }`
 
         References an image URL in the content of a message.
 
@@ -96,7 +96,7 @@ Create a run.
 
           - `"image_url"`
 
-      - `TextContentBlockParam = object { text, type }`
+      - `TextContentBlockParam object { text, type }`
 
         The text content that is part of a message.
 
@@ -133,7 +133,7 @@ Create a run.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -141,7 +141,7 @@ Create a run.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -318,7 +318,7 @@ Create a run.
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -328,7 +328,7 @@ Create a run.
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -341,7 +341,7 @@ Create a run.
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -405,7 +405,7 @@ Create a run.
 
     - `"required"`
 
-  - `AssistantToolChoice = object { type, function }`
+  - `AssistantToolChoice object { type, function }`
 
     Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -429,15 +429,9 @@ Create a run.
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
 
-  - `CodeInterpreterTool = object { type }`
+  - `CodeInterpreterTool object { type }`
 
-    - `type: "code_interpreter"`
-
-      The type of tool being defined: `code_interpreter`
-
-      - `"code_interpreter"`
-
-  - `FileSearchTool = object { type, file_search }`
+  - `FileSearchTool object { type, file_search }`
 
     - `type: "file_search"`
 
@@ -473,7 +467,7 @@ Create a run.
 
           - `"default_2024_08_21"`
 
-  - `FunctionTool = object { function, type }`
+  - `FunctionTool object { function, type }`
 
     - `function: FunctionDefinition`
 
@@ -525,7 +519,7 @@ Create a run.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -678,7 +672,7 @@ Create a run.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -688,7 +682,7 @@ Create a run.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -701,7 +695,7 @@ Create a run.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -787,7 +781,7 @@ Create a run.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -811,7 +805,7 @@ Create a run.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -819,7 +813,7 @@ Create a run.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -855,7 +849,7 @@ Create a run.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 

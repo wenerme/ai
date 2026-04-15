@@ -34,7 +34,7 @@ To configure GitHub access in both GitHub and Cloudflare One:
 ```  
 https://<your-team-name>.cloudflareaccess.com  
 ```  
-You can find your team name in [Cloudflare One ↗](https://one.dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 6. In the GitHub **Authorization callback URL** field, enter the following URL:  
 ```  
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback  

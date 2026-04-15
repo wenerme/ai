@@ -559,7 +559,7 @@ Use this selector to apply policies to the source IP address of DNS queries. For
 
 ### Source Internal IP
 
-Use this selector to apply policies to the source internal IP address of a DNS query. For example, this could be the private IP address of the hosts behind [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (formerly Magic WAN) or [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) used by your organization to send queries to Gateway.
+Use this selector to apply policies to the source internal IP address of a DNS query. For example, this could be the private IP address of the hosts behind [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (formerly Magic WAN) or [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) used by your organization to send queries to Gateway.
 
 | UI name            | API example                        | Evaluation phase      |
 | ------------------ | ---------------------------------- | --------------------- |

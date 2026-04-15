@@ -24,7 +24,7 @@ Create a thread.
 
       An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-      - `ImageFileContentBlock = object { image_file, type }`
+      - `ImageFileContentBlock object { image_file, type }`
 
         References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -50,7 +50,7 @@ Create a thread.
 
           - `"image_file"`
 
-      - `ImageURLContentBlock = object { image_url, type }`
+      - `ImageURLContentBlock object { image_url, type }`
 
         References an image URL in the content of a message.
 
@@ -76,7 +76,7 @@ Create a thread.
 
           - `"image_url"`
 
-      - `TextContentBlockParam = object { text, type }`
+      - `TextContentBlockParam object { text, type }`
 
         The text content that is part of a message.
 
@@ -113,7 +113,7 @@ Create a thread.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -121,7 +121,7 @@ Create a thread.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -171,7 +171,7 @@ Create a thread.
 
         The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-        - `AutoChunkingStrategy = object { type }`
+        - `AutoChunkingStrategy object { type }`
 
           The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -181,7 +181,7 @@ Create a thread.
 
             - `"auto"`
 
-        - `StaticChunkingStrategy = object { static, type }`
+        - `StaticChunkingStrategy object { static, type }`
 
           - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -216,7 +216,7 @@ Create a thread.
 
 ### Returns
 
-- `Thread = object { id, created_at, metadata, 2 more }`
+- `Thread object { id, created_at, metadata, 2 more }`
 
   Represents a thread that contains [messages](/docs/api-reference/messages).
 
@@ -484,7 +484,7 @@ Create a thread and run it in one request.
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -494,7 +494,7 @@ Create a thread and run it in one request.
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -507,7 +507,7 @@ Create a thread and run it in one request.
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -574,7 +574,7 @@ Create a thread and run it in one request.
 
         An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-        - `ImageFileContentBlock = object { image_file, type }`
+        - `ImageFileContentBlock object { image_file, type }`
 
           References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -600,7 +600,7 @@ Create a thread and run it in one request.
 
             - `"image_file"`
 
-        - `ImageURLContentBlock = object { image_url, type }`
+        - `ImageURLContentBlock object { image_url, type }`
 
           References an image URL in the content of a message.
 
@@ -626,7 +626,7 @@ Create a thread and run it in one request.
 
             - `"image_url"`
 
-        - `TextContentBlockParam = object { text, type }`
+        - `TextContentBlockParam object { text, type }`
 
           The text content that is part of a message.
 
@@ -663,7 +663,7 @@ Create a thread and run it in one request.
 
         The tools to add this file to.
 
-        - `CodeInterpreterTool = object { type }`
+        - `CodeInterpreterTool object { type }`
 
           - `type: "code_interpreter"`
 
@@ -671,7 +671,7 @@ Create a thread and run it in one request.
 
             - `"code_interpreter"`
 
-        - `FileSearchTool = object { type }`
+        - `FileSearchTool object { type }`
 
           - `type: "file_search"`
 
@@ -721,7 +721,7 @@ Create a thread and run it in one request.
 
           The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-          - `AutoChunkingStrategy = object { type }`
+          - `AutoChunkingStrategy object { type }`
 
             The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -731,7 +731,7 @@ Create a thread and run it in one request.
 
               - `"auto"`
 
-          - `StaticChunkingStrategy = object { static, type }`
+          - `StaticChunkingStrategy object { static, type }`
 
             - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 
@@ -782,7 +782,7 @@ Create a thread and run it in one request.
 
     - `"required"`
 
-  - `AssistantToolChoice = object { type, function }`
+  - `AssistantToolChoice object { type, function }`
 
     Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -822,15 +822,9 @@ Create a thread and run it in one request.
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
 
-  - `CodeInterpreterTool = object { type }`
+  - `CodeInterpreterTool object { type }`
 
-    - `type: "code_interpreter"`
-
-      The type of tool being defined: `code_interpreter`
-
-      - `"code_interpreter"`
-
-  - `FileSearchTool = object { type, file_search }`
+  - `FileSearchTool object { type, file_search }`
 
     - `type: "file_search"`
 
@@ -866,7 +860,7 @@ Create a thread and run it in one request.
 
           - `"default_2024_08_21"`
 
-  - `FunctionTool = object { function, type }`
+  - `FunctionTool object { function, type }`
 
     - `function: FunctionDefinition`
 
@@ -918,7 +912,7 @@ Create a thread and run it in one request.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -1071,7 +1065,7 @@ Create a thread and run it in one request.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -1081,7 +1075,7 @@ Create a thread and run it in one request.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -1094,7 +1088,7 @@ Create a thread and run it in one request.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -1180,7 +1174,7 @@ Create a thread and run it in one request.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -1204,7 +1198,7 @@ Create a thread and run it in one request.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -1212,7 +1206,7 @@ Create a thread and run it in one request.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -1248,7 +1242,7 @@ Create a thread and run it in one request.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -1618,7 +1612,7 @@ Retrieves a thread.
 
 ### Returns
 
-- `Thread = object { id, created_at, metadata, 2 more }`
+- `Thread object { id, created_at, metadata, 2 more }`
 
   Represents a thread that contains [messages](/docs/api-reference/messages).
 
@@ -1758,7 +1752,7 @@ Modifies a thread.
 
 ### Returns
 
-- `Thread = object { id, created_at, metadata, 2 more }`
+- `Thread object { id, created_at, metadata, 2 more }`
 
   Represents a thread that contains [messages](/docs/api-reference/messages).
 
@@ -1878,7 +1872,7 @@ Delete a thread.
 
 ### Returns
 
-- `ThreadDeleted = object { id, deleted, object }`
+- `ThreadDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -1947,7 +1941,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -1957,7 +1951,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -1970,7 +1964,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -2010,7 +2004,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
 ### Assistant Tool Choice
 
-- `AssistantToolChoice = object { type, function }`
+- `AssistantToolChoice object { type, function }`
 
   Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -2032,7 +2026,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
 ### Assistant Tool Choice Function
 
-- `AssistantToolChoiceFunction = object { name }`
+- `AssistantToolChoiceFunction object { name }`
 
   - `name: string`
 
@@ -2058,7 +2052,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
     - `"required"`
 
-  - `AssistantToolChoice = object { type, function }`
+  - `AssistantToolChoice object { type, function }`
 
     Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -2080,7 +2074,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
 ### Thread
 
-- `Thread = object { id, created_at, metadata, 2 more }`
+- `Thread object { id, created_at, metadata, 2 more }`
 
   Represents a thread that contains [messages](/docs/api-reference/messages).
 
@@ -2125,7 +2119,7 @@ curl https://api.openai.com/v1/threads/thread_abc123 \
 
 ### Thread Deleted
 
-- `ThreadDeleted = object { id, deleted, object }`
+- `ThreadDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -2322,7 +2316,7 @@ Returns a list of runs belonging to a thread.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -2332,7 +2326,7 @@ Returns a list of runs belonging to a thread.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -2345,7 +2339,7 @@ Returns a list of runs belonging to a thread.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -2431,7 +2425,7 @@ Returns a list of runs belonging to a thread.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -2455,7 +2449,7 @@ Returns a list of runs belonging to a thread.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -2463,7 +2457,7 @@ Returns a list of runs belonging to a thread.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -2499,7 +2493,7 @@ Returns a list of runs belonging to a thread.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -2819,7 +2813,7 @@ Create a run.
 
       An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-      - `ImageFileContentBlock = object { image_file, type }`
+      - `ImageFileContentBlock object { image_file, type }`
 
         References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -2845,7 +2839,7 @@ Create a run.
 
           - `"image_file"`
 
-      - `ImageURLContentBlock = object { image_url, type }`
+      - `ImageURLContentBlock object { image_url, type }`
 
         References an image URL in the content of a message.
 
@@ -2871,7 +2865,7 @@ Create a run.
 
           - `"image_url"`
 
-      - `TextContentBlockParam = object { text, type }`
+      - `TextContentBlockParam object { text, type }`
 
         The text content that is part of a message.
 
@@ -2908,7 +2902,7 @@ Create a run.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -2916,7 +2910,7 @@ Create a run.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -3093,7 +3087,7 @@ Create a run.
 
     - `"auto"`
 
-  - `ResponseFormatText = object { type }`
+  - `ResponseFormatText object { type }`
 
     Default response format. Used to generate text responses.
 
@@ -3103,7 +3097,7 @@ Create a run.
 
       - `"text"`
 
-  - `ResponseFormatJSONObject = object { type }`
+  - `ResponseFormatJSONObject object { type }`
 
     JSON object response format. An older method of generating JSON responses.
     Using `json_schema` is recommended for models that support it. Note that the
@@ -3116,7 +3110,7 @@ Create a run.
 
       - `"json_object"`
 
-  - `ResponseFormatJSONSchema = object { json_schema, type }`
+  - `ResponseFormatJSONSchema object { json_schema, type }`
 
     JSON Schema response format. Used to generate structured JSON responses.
     Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -3180,7 +3174,7 @@ Create a run.
 
     - `"required"`
 
-  - `AssistantToolChoice = object { type, function }`
+  - `AssistantToolChoice object { type, function }`
 
     Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -3204,15 +3198,9 @@ Create a run.
 
   Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis.
 
-  - `CodeInterpreterTool = object { type }`
+  - `CodeInterpreterTool object { type }`
 
-    - `type: "code_interpreter"`
-
-      The type of tool being defined: `code_interpreter`
-
-      - `"code_interpreter"`
-
-  - `FileSearchTool = object { type, file_search }`
+  - `FileSearchTool object { type, file_search }`
 
     - `type: "file_search"`
 
@@ -3248,7 +3236,7 @@ Create a run.
 
           - `"default_2024_08_21"`
 
-  - `FunctionTool = object { function, type }`
+  - `FunctionTool object { function, type }`
 
     - `function: FunctionDefinition`
 
@@ -3300,7 +3288,7 @@ Create a run.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -3453,7 +3441,7 @@ Create a run.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -3463,7 +3451,7 @@ Create a run.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -3476,7 +3464,7 @@ Create a run.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -3562,7 +3550,7 @@ Create a run.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -3586,7 +3574,7 @@ Create a run.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -3594,7 +3582,7 @@ Create a run.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -3630,7 +3618,7 @@ Create a run.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -3989,7 +3977,7 @@ Retrieves a run.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -4142,7 +4130,7 @@ Retrieves a run.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -4152,7 +4140,7 @@ Retrieves a run.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -4165,7 +4153,7 @@ Retrieves a run.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -4251,7 +4239,7 @@ Retrieves a run.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -4275,7 +4263,7 @@ Retrieves a run.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -4283,7 +4271,7 @@ Retrieves a run.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -4319,7 +4307,7 @@ Retrieves a run.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -4538,7 +4526,7 @@ Modifies a run.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -4691,7 +4679,7 @@ Modifies a run.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -4701,7 +4689,7 @@ Modifies a run.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -4714,7 +4702,7 @@ Modifies a run.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -4800,7 +4788,7 @@ Modifies a run.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -4824,7 +4812,7 @@ Modifies a run.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -4832,7 +4820,7 @@ Modifies a run.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -4868,7 +4856,7 @@ Modifies a run.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -5112,7 +5100,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -5265,7 +5253,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -5275,7 +5263,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -5288,7 +5276,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -5374,7 +5362,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -5398,7 +5386,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -5406,7 +5394,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -5442,7 +5430,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -5750,7 +5738,7 @@ Cancels a run that is `in_progress`.
 
 ### Returns
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -5903,7 +5891,7 @@ Cancels a run that is `in_progress`.
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -5913,7 +5901,7 @@ Cancels a run that is `in_progress`.
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -5926,7 +5914,7 @@ Cancels a run that is `in_progress`.
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -6012,7 +6000,7 @@ Cancels a run that is `in_progress`.
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -6036,7 +6024,7 @@ Cancels a run that is `in_progress`.
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -6044,7 +6032,7 @@ Cancels a run that is `in_progress`.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -6080,7 +6068,7 @@ Cancels a run that is `in_progress`.
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -6274,7 +6262,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
 ### Required Action Function Tool Call
 
-- `RequiredActionFunctionToolCall = object { id, function, type }`
+- `RequiredActionFunctionToolCall object { id, function, type }`
 
   Tool call objects
 
@@ -6302,7 +6290,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
 ### Run
 
-- `Run = object { id, assistant_id, cancelled_at, 24 more }`
+- `Run object { id, assistant_id, cancelled_at, 24 more }`
 
   Represents an execution run on a [thread](/docs/api-reference/threads).
 
@@ -6455,7 +6443,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
       - `"auto"`
 
-    - `ResponseFormatText = object { type }`
+    - `ResponseFormatText object { type }`
 
       Default response format. Used to generate text responses.
 
@@ -6465,7 +6453,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
         - `"text"`
 
-    - `ResponseFormatJSONObject = object { type }`
+    - `ResponseFormatJSONObject object { type }`
 
       JSON object response format. An older method of generating JSON responses.
       Using `json_schema` is recommended for models that support it. Note that the
@@ -6478,7 +6466,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
         - `"json_object"`
 
-    - `ResponseFormatJSONSchema = object { json_schema, type }`
+    - `ResponseFormatJSONSchema object { json_schema, type }`
 
       JSON Schema response format. Used to generate structured JSON responses.
       Learn more about [Structured Outputs](/docs/guides/structured-outputs).
@@ -6564,7 +6552,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
       - `"required"`
 
-    - `AssistantToolChoice = object { type, function }`
+    - `AssistantToolChoice object { type, function }`
 
       Specifies a tool the model should use. Use to force the model to call a specific tool.
 
@@ -6588,7 +6576,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
     The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -6596,7 +6584,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type, file_search }`
+    - `FileSearchTool object { type, file_search }`
 
       - `type: "file_search"`
 
@@ -6632,7 +6620,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
 
             - `"default_2024_08_21"`
 
-    - `FunctionTool = object { function, type }`
+    - `FunctionTool object { function, type }`
 
       - `function: FunctionDefinition`
 
@@ -6829,7 +6817,7 @@ Returns a list of run steps belonging to a run.
 
     The details of the run step.
 
-    - `MessageCreationStepDetails = object { message_creation, type }`
+    - `MessageCreationStepDetails object { message_creation, type }`
 
       Details of the message creation by the run step.
 
@@ -6845,7 +6833,7 @@ Returns a list of run steps belonging to a run.
 
         - `"message_creation"`
 
-    - `ToolCallsStepDetails = object { tool_calls, type }`
+    - `ToolCallsStepDetails object { tool_calls, type }`
 
       Details of the tool call.
 
@@ -6853,7 +6841,7 @@ Returns a list of run steps belonging to a run.
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-        - `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+        - `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
           Details of the Code Interpreter tool call the run step was involved in.
 
@@ -6873,7 +6861,7 @@ Returns a list of run steps belonging to a run.
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `CodeInterpreterLogOutput = object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -6887,7 +6875,7 @@ Returns a list of run steps belonging to a run.
 
                   - `"logs"`
 
-              - `CodeInterpreterImageOutput = object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
@@ -6907,7 +6895,7 @@ Returns a list of run steps belonging to a run.
 
             - `"code_interpreter"`
 
-        - `FileSearchToolCall = object { id, file_search, type }`
+        - `FileSearchToolCall object { id, file_search, type }`
 
           - `id: string`
 
@@ -6969,7 +6957,7 @@ Returns a list of run steps belonging to a run.
 
             - `"file_search"`
 
-        - `FunctionToolCall = object { id, function, type }`
+        - `FunctionToolCall object { id, function, type }`
 
           - `id: string`
 
@@ -7166,7 +7154,7 @@ Retrieves a run step.
 
 ### Returns
 
-- `RunStep = object { id, assistant_id, cancelled_at, 13 more }`
+- `RunStep object { id, assistant_id, cancelled_at, 13 more }`
 
   Represents a step in execution of a run.
 
@@ -7251,7 +7239,7 @@ Retrieves a run step.
 
     The details of the run step.
 
-    - `MessageCreationStepDetails = object { message_creation, type }`
+    - `MessageCreationStepDetails object { message_creation, type }`
 
       Details of the message creation by the run step.
 
@@ -7267,7 +7255,7 @@ Retrieves a run step.
 
         - `"message_creation"`
 
-    - `ToolCallsStepDetails = object { tool_calls, type }`
+    - `ToolCallsStepDetails object { tool_calls, type }`
 
       Details of the tool call.
 
@@ -7275,7 +7263,7 @@ Retrieves a run step.
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-        - `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+        - `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
           Details of the Code Interpreter tool call the run step was involved in.
 
@@ -7295,7 +7283,7 @@ Retrieves a run step.
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `CodeInterpreterLogOutput = object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -7309,7 +7297,7 @@ Retrieves a run step.
 
                   - `"logs"`
 
-              - `CodeInterpreterImageOutput = object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
@@ -7329,7 +7317,7 @@ Retrieves a run step.
 
             - `"code_interpreter"`
 
-        - `FileSearchToolCall = object { id, file_search, type }`
+        - `FileSearchToolCall object { id, file_search, type }`
 
           - `id: string`
 
@@ -7391,7 +7379,7 @@ Retrieves a run step.
 
             - `"file_search"`
 
-        - `FunctionToolCall = object { id, function, type }`
+        - `FunctionToolCall object { id, function, type }`
 
           - `id: string`
 
@@ -7542,7 +7530,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Code Interpreter Logs
 
-- `CodeInterpreterLogs = object { index, type, logs }`
+- `CodeInterpreterLogs object { index, type, logs }`
 
   Text output from the Code Interpreter tool call as part of a run step.
 
@@ -7562,7 +7550,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Code Interpreter Output Image
 
-- `CodeInterpreterOutputImage = object { index, type, image }`
+- `CodeInterpreterOutputImage object { index, type, image }`
 
   - `index: number`
 
@@ -7582,7 +7570,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Code Interpreter Tool Call
 
-- `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+- `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
   Details of the Code Interpreter tool call the run step was involved in.
 
@@ -7602,7 +7590,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-      - `CodeInterpreterLogOutput = object { logs, type }`
+      - `CodeInterpreterLogOutput object { logs, type }`
 
         Text output from the Code Interpreter tool call as part of a run step.
 
@@ -7616,7 +7604,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           - `"logs"`
 
-      - `CodeInterpreterImageOutput = object { image, type }`
+      - `CodeInterpreterImageOutput object { image, type }`
 
         - `image: object { file_id }`
 
@@ -7638,7 +7626,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Code Interpreter Tool Call Delta
 
-- `CodeInterpreterToolCallDelta = object { index, type, id, code_interpreter }`
+- `CodeInterpreterToolCallDelta object { index, type, id, code_interpreter }`
 
   Details of the Code Interpreter tool call the run step was involved in.
 
@@ -7668,7 +7656,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-      - `CodeInterpreterLogs = object { index, type, logs }`
+      - `CodeInterpreterLogs object { index, type, logs }`
 
         Text output from the Code Interpreter tool call as part of a run step.
 
@@ -7686,7 +7674,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           The text output from the Code Interpreter tool call.
 
-      - `CodeInterpreterOutputImage = object { index, type, image }`
+      - `CodeInterpreterOutputImage object { index, type, image }`
 
         - `index: number`
 
@@ -7706,7 +7694,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### File Search Tool Call
 
-- `FileSearchToolCall = object { id, file_search, type }`
+- `FileSearchToolCall object { id, file_search, type }`
 
   - `id: string`
 
@@ -7770,7 +7758,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### File Search Tool Call Delta
 
-- `FileSearchToolCallDelta = object { file_search, index, type, id }`
+- `FileSearchToolCallDelta object { file_search, index, type, id }`
 
   - `file_search: unknown`
 
@@ -7792,7 +7780,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Function Tool Call
 
-- `FunctionToolCall = object { id, function, type }`
+- `FunctionToolCall object { id, function, type }`
 
   - `id: string`
 
@@ -7822,7 +7810,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Function Tool Call Delta
 
-- `FunctionToolCallDelta = object { index, type, id, function }`
+- `FunctionToolCallDelta object { index, type, id, function }`
 
   - `index: number`
 
@@ -7856,7 +7844,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Message Creation Step Details
 
-- `MessageCreationStepDetails = object { message_creation, type }`
+- `MessageCreationStepDetails object { message_creation, type }`
 
   Details of the message creation by the run step.
 
@@ -7874,7 +7862,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Run Step
 
-- `RunStep = object { id, assistant_id, cancelled_at, 13 more }`
+- `RunStep object { id, assistant_id, cancelled_at, 13 more }`
 
   Represents a step in execution of a run.
 
@@ -7959,7 +7947,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     The details of the run step.
 
-    - `MessageCreationStepDetails = object { message_creation, type }`
+    - `MessageCreationStepDetails object { message_creation, type }`
 
       Details of the message creation by the run step.
 
@@ -7975,7 +7963,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         - `"message_creation"`
 
-    - `ToolCallsStepDetails = object { tool_calls, type }`
+    - `ToolCallsStepDetails object { tool_calls, type }`
 
       Details of the tool call.
 
@@ -7983,7 +7971,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-        - `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+        - `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
           Details of the Code Interpreter tool call the run step was involved in.
 
@@ -8003,7 +7991,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-              - `CodeInterpreterLogOutput = object { logs, type }`
+              - `CodeInterpreterLogOutput object { logs, type }`
 
                 Text output from the Code Interpreter tool call as part of a run step.
 
@@ -8017,7 +8005,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                   - `"logs"`
 
-              - `CodeInterpreterImageOutput = object { image, type }`
+              - `CodeInterpreterImageOutput object { image, type }`
 
                 - `image: object { file_id }`
 
@@ -8037,7 +8025,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
             - `"code_interpreter"`
 
-        - `FileSearchToolCall = object { id, file_search, type }`
+        - `FileSearchToolCall object { id, file_search, type }`
 
           - `id: string`
 
@@ -8099,7 +8087,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
             - `"file_search"`
 
-        - `FunctionToolCall = object { id, function, type }`
+        - `FunctionToolCall object { id, function, type }`
 
           - `id: string`
 
@@ -8163,7 +8151,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Run Step Delta Event
 
-- `RunStepDeltaEvent = object { id, delta, object }`
+- `RunStepDeltaEvent object { id, delta, object }`
 
   Represents a run step delta i.e. any changed fields on a run step during streaming.
 
@@ -8179,7 +8167,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
       The details of the run step.
 
-      - `RunStepDeltaMessageDelta = object { type, message_creation }`
+      - `RunStepDeltaMessageDelta object { type, message_creation }`
 
         Details of the message creation by the run step.
 
@@ -8195,7 +8183,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
             The ID of the message that was created by this run step.
 
-      - `ToolCallDeltaObject = object { type, tool_calls }`
+      - `ToolCallDeltaObject object { type, tool_calls }`
 
         Details of the tool call.
 
@@ -8209,7 +8197,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-          - `CodeInterpreterToolCallDelta = object { index, type, id, code_interpreter }`
+          - `CodeInterpreterToolCallDelta object { index, type, id, code_interpreter }`
 
             Details of the Code Interpreter tool call the run step was involved in.
 
@@ -8239,7 +8227,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                 The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-                - `CodeInterpreterLogs = object { index, type, logs }`
+                - `CodeInterpreterLogs object { index, type, logs }`
 
                   Text output from the Code Interpreter tool call as part of a run step.
 
@@ -8257,7 +8245,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                     The text output from the Code Interpreter tool call.
 
-                - `CodeInterpreterOutputImage = object { index, type, image }`
+                - `CodeInterpreterOutputImage object { index, type, image }`
 
                   - `index: number`
 
@@ -8275,7 +8263,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                       The [file](/docs/api-reference/files) ID of the image.
 
-          - `FileSearchToolCallDelta = object { file_search, index, type, id }`
+          - `FileSearchToolCallDelta object { file_search, index, type, id }`
 
             - `file_search: unknown`
 
@@ -8295,7 +8283,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               The ID of the tool call object.
 
-          - `FunctionToolCallDelta = object { index, type, id, function }`
+          - `FunctionToolCallDelta object { index, type, id, function }`
 
             - `index: number`
 
@@ -8335,7 +8323,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Run Step Delta Message Delta
 
-- `RunStepDeltaMessageDelta = object { type, message_creation }`
+- `RunStepDeltaMessageDelta object { type, message_creation }`
 
   Details of the message creation by the run step.
 
@@ -8359,7 +8347,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Tool Call Delta Object
 
-- `ToolCallDeltaObject = object { type, tool_calls }`
+- `ToolCallDeltaObject object { type, tool_calls }`
 
   Details of the tool call.
 
@@ -8373,7 +8361,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-    - `CodeInterpreterToolCallDelta = object { index, type, id, code_interpreter }`
+    - `CodeInterpreterToolCallDelta object { index, type, id, code_interpreter }`
 
       Details of the Code Interpreter tool call the run step was involved in.
 
@@ -8403,7 +8391,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-          - `CodeInterpreterLogs = object { index, type, logs }`
+          - `CodeInterpreterLogs object { index, type, logs }`
 
             Text output from the Code Interpreter tool call as part of a run step.
 
@@ -8421,7 +8409,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               The text output from the Code Interpreter tool call.
 
-          - `CodeInterpreterOutputImage = object { index, type, image }`
+          - `CodeInterpreterOutputImage object { index, type, image }`
 
             - `index: number`
 
@@ -8439,7 +8427,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
                 The [file](/docs/api-reference/files) ID of the image.
 
-    - `FileSearchToolCallDelta = object { file_search, index, type, id }`
+    - `FileSearchToolCallDelta object { file_search, index, type, id }`
 
       - `file_search: unknown`
 
@@ -8459,7 +8447,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         The ID of the tool call object.
 
-    - `FunctionToolCallDelta = object { index, type, id, function }`
+    - `FunctionToolCallDelta object { index, type, id, function }`
 
       - `index: number`
 
@@ -8493,7 +8481,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
 ### Tool Calls Step Details
 
-- `ToolCallsStepDetails = object { tool_calls, type }`
+- `ToolCallsStepDetails object { tool_calls, type }`
 
   Details of the tool call.
 
@@ -8501,7 +8489,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
     An array of tool calls the run step was involved in. These can be associated with one of three types of tools: `code_interpreter`, `file_search`, or `function`.
 
-    - `CodeInterpreterToolCall = object { id, code_interpreter, type }`
+    - `CodeInterpreterToolCall object { id, code_interpreter, type }`
 
       Details of the Code Interpreter tool call the run step was involved in.
 
@@ -8521,7 +8509,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
           The outputs from the Code Interpreter tool call. Code Interpreter can output one or more items, including text (`logs`) or images (`image`). Each of these are represented by a different object type.
 
-          - `CodeInterpreterLogOutput = object { logs, type }`
+          - `CodeInterpreterLogOutput object { logs, type }`
 
             Text output from the Code Interpreter tool call as part of a run step.
 
@@ -8535,7 +8523,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
               - `"logs"`
 
-          - `CodeInterpreterImageOutput = object { image, type }`
+          - `CodeInterpreterImageOutput object { image, type }`
 
             - `image: object { file_id }`
 
@@ -8555,7 +8543,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         - `"code_interpreter"`
 
-    - `FileSearchToolCall = object { id, file_search, type }`
+    - `FileSearchToolCall object { id, file_search, type }`
 
       - `id: string`
 
@@ -8617,7 +8605,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_
 
         - `"file_search"`
 
-    - `FunctionToolCall = object { id, function, type }`
+    - `FunctionToolCall object { id, function, type }`
 
       - `id: string`
 
@@ -8713,7 +8701,7 @@ Returns a list of messages for a given thread.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -8721,7 +8709,7 @@ Returns a list of messages for a given thread.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -8737,7 +8725,7 @@ Returns a list of messages for a given thread.
 
     The content of the message in array of text and/or images.
 
-    - `ImageFileContentBlock = object { image_file, type }`
+    - `ImageFileContentBlock object { image_file, type }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -8763,7 +8751,7 @@ Returns a list of messages for a given thread.
 
         - `"image_file"`
 
-    - `ImageURLContentBlock = object { image_url, type }`
+    - `ImageURLContentBlock object { image_url, type }`
 
       References an image URL in the content of a message.
 
@@ -8789,7 +8777,7 @@ Returns a list of messages for a given thread.
 
         - `"image_url"`
 
-    - `TextContentBlock = object { text, type }`
+    - `TextContentBlock object { text, type }`
 
       The text content that is part of a message.
 
@@ -8797,7 +8785,7 @@ Returns a list of messages for a given thread.
 
         - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-          - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
             A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -8821,7 +8809,7 @@ Returns a list of messages for a given thread.
 
               - `"file_citation"`
 
-          - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
             A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -8855,7 +8843,7 @@ Returns a list of messages for a given thread.
 
         - `"text"`
 
-    - `RefusalContentBlock = object { refusal, type }`
+    - `RefusalContentBlock object { refusal, type }`
 
       The refusal content generated by the assistant.
 
@@ -9086,7 +9074,7 @@ Create a message.
 
     An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
 
-    - `ImageFileContentBlock = object { image_file, type }`
+    - `ImageFileContentBlock object { image_file, type }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -9112,7 +9100,7 @@ Create a message.
 
         - `"image_file"`
 
-    - `ImageURLContentBlock = object { image_url, type }`
+    - `ImageURLContentBlock object { image_url, type }`
 
       References an image URL in the content of a message.
 
@@ -9138,7 +9126,7 @@ Create a message.
 
         - `"image_url"`
 
-    - `TextContentBlockParam = object { text, type }`
+    - `TextContentBlockParam object { text, type }`
 
       The text content that is part of a message.
 
@@ -9175,7 +9163,7 @@ Create a message.
 
     The tools to add this file to.
 
-    - `CodeInterpreterTool = object { type }`
+    - `CodeInterpreterTool object { type }`
 
       - `type: "code_interpreter"`
 
@@ -9183,7 +9171,7 @@ Create a message.
 
         - `"code_interpreter"`
 
-    - `FileSearchTool = object { type }`
+    - `FileSearchTool object { type }`
 
       - `type: "file_search"`
 
@@ -9202,7 +9190,7 @@ Create a message.
 
 ### Returns
 
-- `Message = object { id, assistant_id, attachments, 11 more }`
+- `Message object { id, assistant_id, attachments, 11 more }`
 
   Represents a message within a [thread](/docs/api-reference/threads).
 
@@ -9226,7 +9214,7 @@ Create a message.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -9234,7 +9222,7 @@ Create a message.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -9250,7 +9238,7 @@ Create a message.
 
     The content of the message in array of text and/or images.
 
-    - `ImageFileContentBlock = object { image_file, type }`
+    - `ImageFileContentBlock object { image_file, type }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -9276,7 +9264,7 @@ Create a message.
 
         - `"image_file"`
 
-    - `ImageURLContentBlock = object { image_url, type }`
+    - `ImageURLContentBlock object { image_url, type }`
 
       References an image URL in the content of a message.
 
@@ -9302,7 +9290,7 @@ Create a message.
 
         - `"image_url"`
 
-    - `TextContentBlock = object { text, type }`
+    - `TextContentBlock object { text, type }`
 
       The text content that is part of a message.
 
@@ -9310,7 +9298,7 @@ Create a message.
 
         - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-          - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
             A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -9334,7 +9322,7 @@ Create a message.
 
               - `"file_citation"`
 
-          - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
             A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -9368,7 +9356,7 @@ Create a message.
 
         - `"text"`
 
-    - `RefusalContentBlock = object { refusal, type }`
+    - `RefusalContentBlock object { refusal, type }`
 
       The refusal content generated by the assistant.
 
@@ -9565,7 +9553,7 @@ Modifies a message.
 
 ### Returns
 
-- `Message = object { id, assistant_id, attachments, 11 more }`
+- `Message object { id, assistant_id, attachments, 11 more }`
 
   Represents a message within a [thread](/docs/api-reference/threads).
 
@@ -9589,7 +9577,7 @@ Modifies a message.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -9597,7 +9585,7 @@ Modifies a message.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -9613,7 +9601,7 @@ Modifies a message.
 
     The content of the message in array of text and/or images.
 
-    - `ImageFileContentBlock = object { image_file, type }`
+    - `ImageFileContentBlock object { image_file, type }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -9639,7 +9627,7 @@ Modifies a message.
 
         - `"image_file"`
 
-    - `ImageURLContentBlock = object { image_url, type }`
+    - `ImageURLContentBlock object { image_url, type }`
 
       References an image URL in the content of a message.
 
@@ -9665,7 +9653,7 @@ Modifies a message.
 
         - `"image_url"`
 
-    - `TextContentBlock = object { text, type }`
+    - `TextContentBlock object { text, type }`
 
       The text content that is part of a message.
 
@@ -9673,7 +9661,7 @@ Modifies a message.
 
         - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-          - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
             A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -9697,7 +9685,7 @@ Modifies a message.
 
               - `"file_citation"`
 
-          - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
             A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -9731,7 +9719,7 @@ Modifies a message.
 
         - `"text"`
 
-    - `RefusalContentBlock = object { refusal, type }`
+    - `RefusalContentBlock object { refusal, type }`
 
       The refusal content generated by the assistant.
 
@@ -9919,7 +9907,7 @@ Retrieve a message.
 
 ### Returns
 
-- `Message = object { id, assistant_id, attachments, 11 more }`
+- `Message object { id, assistant_id, attachments, 11 more }`
 
   Represents a message within a [thread](/docs/api-reference/threads).
 
@@ -9943,7 +9931,7 @@ Retrieve a message.
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -9951,7 +9939,7 @@ Retrieve a message.
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -9967,7 +9955,7 @@ Retrieve a message.
 
     The content of the message in array of text and/or images.
 
-    - `ImageFileContentBlock = object { image_file, type }`
+    - `ImageFileContentBlock object { image_file, type }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -9993,7 +9981,7 @@ Retrieve a message.
 
         - `"image_file"`
 
-    - `ImageURLContentBlock = object { image_url, type }`
+    - `ImageURLContentBlock object { image_url, type }`
 
       References an image URL in the content of a message.
 
@@ -10019,7 +10007,7 @@ Retrieve a message.
 
         - `"image_url"`
 
-    - `TextContentBlock = object { text, type }`
+    - `TextContentBlock object { text, type }`
 
       The text content that is part of a message.
 
@@ -10027,7 +10015,7 @@ Retrieve a message.
 
         - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-          - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
             A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -10051,7 +10039,7 @@ Retrieve a message.
 
               - `"file_citation"`
 
-          - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
             A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -10085,7 +10073,7 @@ Retrieve a message.
 
         - `"text"`
 
-    - `RefusalContentBlock = object { refusal, type }`
+    - `RefusalContentBlock object { refusal, type }`
 
       The refusal content generated by the assistant.
 
@@ -10262,7 +10250,7 @@ Deletes a message.
 
 ### Returns
 
-- `MessageDeleted = object { id, deleted, object }`
+- `MessageDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -10314,7 +10302,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### File Citation Annotation
 
-- `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+- `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
   A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -10340,7 +10328,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### File Citation Delta Annotation
 
-- `FileCitationDeltaAnnotation = object { index, type, end_index, 3 more }`
+- `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
   A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -10374,7 +10362,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### File Path Annotation
 
-- `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+- `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
   A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -10400,7 +10388,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### File Path Delta Annotation
 
-- `FilePathDeltaAnnotation = object { index, type, end_index, 3 more }`
+- `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
 
   A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -10430,7 +10418,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image File
 
-- `ImageFile = object { file_id, detail }`
+- `ImageFile object { file_id, detail }`
 
   - `file_id: string`
 
@@ -10448,7 +10436,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image File Content Block
 
-- `ImageFileContentBlock = object { image_file, type }`
+- `ImageFileContentBlock object { image_file, type }`
 
   References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -10476,7 +10464,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image File Delta
 
-- `ImageFileDelta = object { detail, file_id }`
+- `ImageFileDelta object { detail, file_id }`
 
   - `detail: optional "auto" or "low" or "high"`
 
@@ -10494,7 +10482,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image File Delta Block
 
-- `ImageFileDeltaBlock = object { index, type, image_file }`
+- `ImageFileDeltaBlock object { index, type, image_file }`
 
   References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -10526,7 +10514,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image URL
 
-- `ImageURL = object { url, detail }`
+- `ImageURL object { url, detail }`
 
   - `url: string`
 
@@ -10544,7 +10532,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image URL Content Block
 
-- `ImageURLContentBlock = object { image_url, type }`
+- `ImageURLContentBlock object { image_url, type }`
 
   References an image URL in the content of a message.
 
@@ -10572,7 +10560,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image URL Delta
 
-- `ImageURLDelta = object { detail, url }`
+- `ImageURLDelta object { detail, url }`
 
   - `detail: optional "auto" or "low" or "high"`
 
@@ -10590,7 +10578,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Image URL Delta Block
 
-- `ImageURLDeltaBlock = object { index, type, image_url }`
+- `ImageURLDeltaBlock object { index, type, image_url }`
 
   References an image URL in the content of a message.
 
@@ -10622,7 +10610,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Message
 
-- `Message = object { id, assistant_id, attachments, 11 more }`
+- `Message object { id, assistant_id, attachments, 11 more }`
 
   Represents a message within a [thread](/docs/api-reference/threads).
 
@@ -10646,7 +10634,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
       The tools to add this file to.
 
-      - `CodeInterpreterTool = object { type }`
+      - `CodeInterpreterTool object { type }`
 
         - `type: "code_interpreter"`
 
@@ -10654,7 +10642,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           - `"code_interpreter"`
 
-      - `FileSearchTool = object { type }`
+      - `FileSearchTool object { type }`
 
         - `type: "file_search"`
 
@@ -10670,7 +10658,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     The content of the message in array of text and/or images.
 
-    - `ImageFileContentBlock = object { image_file, type }`
+    - `ImageFileContentBlock object { image_file, type }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -10696,7 +10684,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `"image_file"`
 
-    - `ImageURLContentBlock = object { image_url, type }`
+    - `ImageURLContentBlock object { image_url, type }`
 
       References an image URL in the content of a message.
 
@@ -10722,7 +10710,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `"image_url"`
 
-    - `TextContentBlock = object { text, type }`
+    - `TextContentBlock object { text, type }`
 
       The text content that is part of a message.
 
@@ -10730,7 +10718,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-          - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
             A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -10754,7 +10742,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
               - `"file_citation"`
 
-          - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
             A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -10788,7 +10776,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `"text"`
 
-    - `RefusalContentBlock = object { refusal, type }`
+    - `RefusalContentBlock object { refusal, type }`
 
       The refusal content generated by the assistant.
 
@@ -10869,7 +10857,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Message Deleted
 
-- `MessageDeleted = object { id, deleted, object }`
+- `MessageDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -10881,7 +10869,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Message Delta
 
-- `MessageDelta = object { content, role }`
+- `MessageDelta object { content, role }`
 
   The delta containing the fields that have changed on the Message.
 
@@ -10889,7 +10877,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     The content of the message in array of text and/or images.
 
-    - `ImageFileDeltaBlock = object { index, type, image_file }`
+    - `ImageFileDeltaBlock object { index, type, image_file }`
 
       References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -10919,7 +10907,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
-    - `TextDeltaBlock = object { index, type, text }`
+    - `TextDeltaBlock object { index, type, text }`
 
       The text content that is part of a message.
 
@@ -10937,7 +10925,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
-          - `FileCitationDeltaAnnotation = object { index, type, end_index, 3 more }`
+          - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
             A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -10969,7 +10957,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
               The text in the message content that needs to be replaced.
 
-          - `FilePathDeltaAnnotation = object { index, type, end_index, 3 more }`
+          - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
 
             A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -11001,7 +10989,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           The data that makes up the text.
 
-    - `RefusalDeltaBlock = object { index, type, refusal }`
+    - `RefusalDeltaBlock object { index, type, refusal }`
 
       The refusal content that is part of a message.
 
@@ -11017,7 +11005,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
       - `refusal: optional string`
 
-    - `ImageURLDeltaBlock = object { index, type, image_url }`
+    - `ImageURLDeltaBlock object { index, type, image_url }`
 
       References an image URL in the content of a message.
 
@@ -11057,7 +11045,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Message Delta Event
 
-- `MessageDeltaEvent = object { id, delta, object }`
+- `MessageDeltaEvent object { id, delta, object }`
 
   Represents a message delta i.e. any changed fields on a message during streaming.
 
@@ -11073,7 +11061,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
       The content of the message in array of text and/or images.
 
-      - `ImageFileDeltaBlock = object { index, type, image_file }`
+      - `ImageFileDeltaBlock object { index, type, image_file }`
 
         References an image [File](/docs/api-reference/files) in the content of a message.
 
@@ -11103,7 +11091,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
             The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
 
-      - `TextDeltaBlock = object { index, type, text }`
+      - `TextDeltaBlock object { index, type, text }`
 
         The text content that is part of a message.
 
@@ -11121,7 +11109,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
-            - `FileCitationDeltaAnnotation = object { index, type, end_index, 3 more }`
+            - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
               A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -11153,7 +11141,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
                 The text in the message content that needs to be replaced.
 
-            - `FilePathDeltaAnnotation = object { index, type, end_index, 3 more }`
+            - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
 
               A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -11185,7 +11173,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
             The data that makes up the text.
 
-      - `RefusalDeltaBlock = object { index, type, refusal }`
+      - `RefusalDeltaBlock object { index, type, refusal }`
 
         The refusal content that is part of a message.
 
@@ -11201,7 +11189,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `refusal: optional string`
 
-      - `ImageURLDeltaBlock = object { index, type, image_url }`
+      - `ImageURLDeltaBlock object { index, type, image_url }`
 
         References an image URL in the content of a message.
 
@@ -11247,7 +11235,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Refusal Content Block
 
-- `RefusalContentBlock = object { refusal, type }`
+- `RefusalContentBlock object { refusal, type }`
 
   The refusal content generated by the assistant.
 
@@ -11261,7 +11249,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Refusal Delta Block
 
-- `RefusalDeltaBlock = object { index, type, refusal }`
+- `RefusalDeltaBlock object { index, type, refusal }`
 
   The refusal content that is part of a message.
 
@@ -11279,11 +11267,11 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Text
 
-- `Text = object { annotations, value }`
+- `Text object { annotations, value }`
 
   - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-    - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+    - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
       A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -11307,7 +11295,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         - `"file_citation"`
 
-    - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+    - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
       A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -11337,7 +11325,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Text Content Block
 
-- `TextContentBlock = object { text, type }`
+- `TextContentBlock object { text, type }`
 
   The text content that is part of a message.
 
@@ -11345,7 +11333,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
 
-      - `FileCitationAnnotation = object { end_index, file_citation, start_index, 2 more }`
+      - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
 
         A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -11369,7 +11357,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           - `"file_citation"`
 
-      - `FilePathAnnotation = object { end_index, file_path, start_index, 2 more }`
+      - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
 
         A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -11405,7 +11393,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Text Content Block Param
 
-- `TextContentBlockParam = object { text, type }`
+- `TextContentBlockParam object { text, type }`
 
   The text content that is part of a message.
 
@@ -11421,11 +11409,11 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Text Delta
 
-- `TextDelta = object { annotations, value }`
+- `TextDelta object { annotations, value }`
 
   - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
-    - `FileCitationDeltaAnnotation = object { index, type, end_index, 3 more }`
+    - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
       A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -11457,7 +11445,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
         The text in the message content that needs to be replaced.
 
-    - `FilePathDeltaAnnotation = object { index, type, end_index, 3 more }`
+    - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
 
       A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 
@@ -11491,7 +11479,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
 ### Text Delta Block
 
-- `TextDeltaBlock = object { index, type, text }`
+- `TextDeltaBlock object { index, type, text }`
 
   The text content that is part of a message.
 
@@ -11509,7 +11497,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
     - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
 
-      - `FileCitationDeltaAnnotation = object { index, type, end_index, 3 more }`
+      - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
 
         A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
 
@@ -11541,7 +11529,7 @@ curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc1
 
           The text in the message content that needs to be replaced.
 
-      - `FilePathDeltaAnnotation = object { index, type, end_index, 3 more }`
+      - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
 
         A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
 

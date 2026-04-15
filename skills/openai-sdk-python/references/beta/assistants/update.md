@@ -237,13 +237,13 @@ Modifies an assistant.
 
   - `code_interpreter: Optional[ToolResourcesCodeInterpreter]`
 
-    - `file_ids: Optional[SequenceNotStr[str]]`
+    - `file_ids: Optional[Sequence[str]]`
 
       Overrides the list of [file](https://platform.openai.com/docs/api-reference/files) IDs made available to the `code_interpreter` tool. There can be a maximum of 20 files associated with the tool.
 
   - `file_search: Optional[ToolResourcesFileSearch]`
 
-    - `vector_store_ids: Optional[SequenceNotStr[str]]`
+    - `vector_store_ids: Optional[Sequence[str]]`
 
       Overrides the [vector store](https://platform.openai.com/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 

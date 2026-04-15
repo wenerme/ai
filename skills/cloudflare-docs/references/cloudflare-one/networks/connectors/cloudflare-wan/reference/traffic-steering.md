@@ -179,7 +179,7 @@ Automatic Return Routing applies when:
 * Internet egress through Cloudflare
 * A Cloudflare One Client
 * A private network connected to Cloudflare through Cloudflare Tunnel
-* A private network connected to Cloudflare through WARP Connector
+* A private network connected to Cloudflare through Cloudflare Mesh
 
 In this initial release, ARR does not change routing for traffic between Cloudflare WAN connections (for example, traffic from one IPsec/GRE tunnel or interconnect to another). That traffic continues to follow your configured Cloudflare WAN routes.
 
@@ -204,7 +204,7 @@ For Cloudflare One customers, there are several reasons to consider moving to Un
 * Customizable Cloudflare One Client IPv4 ranges
 * IPv6 support
 * Improved performance between Cloudflare One Client and IPsec/GRE/CNI
-* Support for WARP Connector client and IPsec/GRE/CNI connectivity in the same account.
+* Support for Cloudflare Mesh and IPsec/GRE/CNI connectivity in the same account.
 
 ### Beta limitations
 
@@ -229,14 +229,14 @@ Unified Routing is currently in closed beta. To sign up:
 
 ## Route evaluation with Zero Trust connections
 
-When your account uses both Zero Trust routes (Cloudflare Tunnel, WARP Connector) and WAN routes (IPsec, GRE, CNI), route selection behavior depends on your [routing mode](#unified-routing-mode-beta).
+When your account uses both Zero Trust routes (Cloudflare Tunnel, Cloudflare Mesh) and WAN routes (IPsec, GRE, CNI), route selection behavior depends on your [routing mode](#unified-routing-mode-beta).
 
 ### Terminology
 
-| Route type        | Connection methods                |
-| ----------------- | --------------------------------- |
-| Zero Trust routes | Cloudflare Tunnel, WARP Connector |
-| WAN routes        | IPsec, GRE, and CNI               |
+| Route type        | Connection methods                 |
+| ----------------- | ---------------------------------- |
+| Zero Trust routes | Cloudflare Tunnel, Cloudflare Mesh |
+| WAN routes        | IPsec, GRE, and CNI                |
 
 ### Unified Routing mode
 
@@ -284,7 +284,7 @@ If you need consistent longest-prefix-match across all scenarios, migrate to [Un
 
 Legacy Routing uses two routing components:
 
-* **Zero Trust routing** (handles Cloudflare One Client, Cloudflare Tunnel, and WARP Connector)
+* **Zero Trust routing** (handles Cloudflare One Client, Cloudflare Tunnel, and Cloudflare Mesh)
 * **WAN routing** (handles IPsec, GRE, and CNI)
 
 Cross-system traffic follows the same rules as [site-to-site traffic with Gateway](#site-to-site-traffic-with-gateway). A more specific Zero Trust route works correctly; a more specific WAN route is not guaranteed to be selected.

@@ -47,8 +47,8 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-3839)
-* [ API ](#tab-panel-3840)
+* [ Dashboard ](#tab-panel-3993)
+* [ API ](#tab-panel-3994)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.
@@ -88,13 +88,13 @@ Explain Code
 
 Traffic must be on-ramped to Gateway with the following methods:
 
-| On-ramp method                                                                                                                       | Compatibility |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------- |
-| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)          | ✅             |
-| [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)                        | ✅             |
-| [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                                      | ✅             |
-| [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/) | ❌             |
-| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                                    | ✅             |
+| On-ramp method                                                                                                              | Compatibility |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | ✅             |
+| [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)               | ✅             |
+| [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                             | ✅             |
+| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                    | ❌             |
+| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)                           | ✅             |
 
 Traffic from unsupported on-ramp methods resolves using your default Gateway settings. If you use DNS locations to send DNS queries to Gateway (over IPv4, IPv6, DNS over TLS, or DNS over HTTPS), Gateway does not return the initial resolved IP and the host selectors do not apply.
 

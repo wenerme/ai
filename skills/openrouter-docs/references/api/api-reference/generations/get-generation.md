@@ -242,10 +242,14 @@ components:
             - type: 'null'
           description: Type of API used for the generation
         app_id:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: ID of the app that made the request
         cache_discount:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Discount applied due to caching
         cancelled:
@@ -267,7 +271,9 @@ components:
             - 'null'
           description: Reason the generation finished
         generation_time:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Time taken for generation in milliseconds
         http_referer:
@@ -282,14 +288,18 @@ components:
           type: boolean
           description: Whether this used bring-your-own-key
         latency:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Total latency in milliseconds
         model:
           type: string
           description: Model used for the generation
         moderation_latency:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Moderation latency in milliseconds
         native_finish_reason:
@@ -298,31 +308,49 @@ components:
             - 'null'
           description: Native finish reason as reported by provider
         native_tokens_cached:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Native cached tokens as reported by provider
         native_tokens_completion:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Native completion tokens as reported by provider
         native_tokens_completion_images:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Native completion image tokens as reported by provider
         native_tokens_prompt:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Native prompt tokens as reported by provider
         native_tokens_reasoning:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Native reasoning tokens as reported by provider
         num_input_audio_prompt:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of audio inputs in the prompt
         num_media_completion:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of media items in the completion
         num_media_prompt:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of media items in the prompt
         num_search_results:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of search results included
         origin:
           type: string
@@ -362,10 +390,14 @@ components:
             - 'null'
           description: Whether the response was streamed
         tokens_completion:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of tokens in the completion
         tokens_prompt:
-          type: integer
+          type:
+            - integer
+            - 'null'
           description: Number of tokens in the prompt
         total_cost:
           type: number
@@ -377,7 +409,9 @@ components:
             - 'null'
           description: Upstream provider's identifier for this generation
         upstream_inference_cost:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Cost charged by the upstream provider
         usage:

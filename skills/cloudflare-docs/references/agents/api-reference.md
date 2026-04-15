@@ -41,6 +41,7 @@ Learn more about what Agents can do, the `Agent` class, and the APIs that Agents
 * [ Retrieval Augmented Generation ](https://developers.cloudflare.com/agents/api-reference/rag/)
 * [ Browse the web ](https://developers.cloudflare.com/agents/api-reference/browse-the-web/)
 * [ Email routing ](https://developers.cloudflare.com/agents/api-reference/email/)
+* [ Voice agents ](https://developers.cloudflare.com/agents/api-reference/voice/)
 * [ getCurrentAgent() ](https://developers.cloudflare.com/agents/api-reference/get-current-agent/)
 * [ Observability ](https://developers.cloudflare.com/agents/api-reference/observability/)
 * [ Codemode ](https://developers.cloudflare.com/agents/api-reference/codemode/)

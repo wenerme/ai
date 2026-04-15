@@ -64,7 +64,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 
@@ -241,7 +241,7 @@ Create a new video generation job by editing a source video or existing generate
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 
@@ -406,7 +406,7 @@ Create an extension of a completed video.
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 
@@ -834,7 +834,7 @@ Fetch the latest metadata for a generated video.
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 
@@ -1022,7 +1022,7 @@ Create a remix of a completed video using a refreshed prompt.
 
 ### Returns
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 
@@ -1214,7 +1214,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
 ### Image Input Reference Param
 
-- `ImageInputReferenceParam = object { file_id, image_url }`
+- `ImageInputReferenceParam object { file_id, image_url }`
 
   - `file_id: optional string`
 
@@ -1224,7 +1224,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
 ### Video
 
-- `Video = object { id, completed_at, created_at, 10 more }`
+- `Video object { id, completed_at, created_at, 10 more }`
 
   Structured information describing a generated video job.
 
@@ -1322,7 +1322,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
 
 ### Video Create Error
 
-- `VideoCreateError = object { code, message }`
+- `VideoCreateError object { code, message }`
 
   An error that occurred while generating the response.
 
@@ -1373,3 +1373,55 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID/content \
   - `"1024x1792"`
 
   - `"1792x1024"`
+
+### Video Create Character Response
+
+- `VideoCreateCharacterResponse object { id, created_at, name }`
+
+  - `id: string`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string`
+
+    Display name for the character.
+
+### Video Get Character Response
+
+- `VideoGetCharacterResponse object { id, created_at, name }`
+
+  - `id: string`
+
+    Identifier for the character creation cameo.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the character was created.
+
+  - `name: string`
+
+    Display name for the character.
+
+### Video Delete Response
+
+- `VideoDeleteResponse object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a video.
+
+  - `id: string`
+
+    Identifier of the deleted video.
+
+  - `deleted: boolean`
+
+    Indicates that the video resource was deleted.
+
+  - `object: "video.deleted"`
+
+    The object type that signals the deletion response.
+
+    - `"video.deleted"`

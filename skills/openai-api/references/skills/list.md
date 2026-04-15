@@ -24,7 +24,7 @@ List all skills for the current project.
 
 ### Returns
 
-- `SkillList = object { data, first_id, has_more, 2 more }`
+- `SkillList object { data, first_id, has_more, 2 more }`
 
   - `data: array of Skill`
 

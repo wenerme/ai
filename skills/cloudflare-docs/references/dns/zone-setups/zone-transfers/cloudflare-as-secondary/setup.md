@@ -53,7 +53,7 @@ Get the following values from your Cloudflare account:
 
 * [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
 * [Zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)
-* [Nameserver names](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#get-nameserver-names), which should have **secondary** in the name.
+* [Nameserver names](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#31-get-nameserver-names), which should have **secondary** in the name.
 
 ---
 
@@ -67,8 +67,8 @@ The TSIG names configured at your primary and secondary DNS providers have to be
 
 While optional, this step is highly recommended.
 
-* [ Dashboard ](#tab-panel-4334)
-* [ API ](#tab-panel-4335)
+* [ Dashboard ](#tab-panel-4548)
+* [ API ](#tab-panel-4549)
 
 To create a TSIG using the dashboard:
 
@@ -86,8 +86,8 @@ To create a TSIG using the API, send a [POST](https://developers.cloudflare.com/
 
 ## 2\. Create Peer Server
 
-* [ Dashboard ](#tab-panel-4330)
-* [ API ](#tab-panel-4331)
+* [ Dashboard ](#tab-panel-4544)
+* [ API ](#tab-panel-4545)
 
 To create a peer server using the dashboard:
 
@@ -106,8 +106,8 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 ## 3\. Create the Secondary Zone
 
-* [ Dashboard ](#tab-panel-4332)
-* [ API ](#tab-panel-4333)
+* [ Dashboard ](#tab-panel-4546)
+* [ API ](#tab-panel-4547)
 
 To create a secondary zone using the dashboard:
 
@@ -132,7 +132,7 @@ To create a secondary zone using the API, send a [POST](https://developers.cloud
 
 ## 4\. Update registrar
 
-At your registrar, add the secondary nameservers [specified in the Cloudflare dashboard](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#get-nameserver-names). Do not remove your primary DNS provider's nameservers.
+At your registrar, add the secondary nameservers [specified in the Cloudflare dashboard](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#31-get-nameserver-names). Do not remove your primary DNS provider's nameservers.
 
 When you have added the Cloudflare nameservers, go into your new secondary zone and select **Done, check nameservers**.
 

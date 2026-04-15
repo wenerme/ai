@@ -29,7 +29,7 @@ handle it.
 
       The format of the input audio.
 
-      - `PCMAudioFormat = object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -45,7 +45,7 @@ handle it.
 
           - `"audio/pcm"`
 
-      - `PCMUAudioFormat = object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -55,7 +55,7 @@ handle it.
 
           - `"audio/pcmu"`
 
-      - `PCMAAudioFormat = object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -124,7 +124,7 @@ handle it.
 
       Semantic VAD is more advanced and uses a turn detection model (in conjunction with VAD) to semantically estimate whether the user has finished speaking, then dynamically sets a timeout based on this probability. For example, if user audio trails off with "uhhm", the model will score a low probability of turn end and wait longer for the user to continue speaking. This can be useful for more natural conversations, but may have a higher latency.
 
-      - `ServerVad = object { type, create_response, idle_timeout_ms, 4 more }`
+      - `ServerVad object { type, create_response, idle_timeout_ms, 4 more }`
 
         Server-side voice activity detection (VAD) which flips on when user speech is detected and off after a period of silence.
 
@@ -178,7 +178,7 @@ handle it.
           higher threshold will require louder audio to activate the model, and
           thus might perform better in noisy environments.
 
-      - `SemanticVad = object { type, create_response, eagerness, interrupt_response }`
+      - `SemanticVad object { type, create_response, eagerness, interrupt_response }`
 
         Server-side semantic turn detection which uses a model to determine when the user has finished speaking.
 
@@ -214,42 +214,6 @@ handle it.
     - `format: optional RealtimeAudioFormats`
 
       The format of the output audio.
-
-      - `PCMAudioFormat = object { rate, type }`
-
-        The PCM audio format. Only a 24kHz sample rate is supported.
-
-        - `rate: optional 24000`
-
-          The sample rate of the audio. Always `24000`.
-
-          - `24000`
-
-        - `type: optional "audio/pcm"`
-
-          The audio format. Always `audio/pcm`.
-
-          - `"audio/pcm"`
-
-      - `PCMUAudioFormat = object { type }`
-
-        The G.711 μ-law format.
-
-        - `type: optional "audio/pcmu"`
-
-          The audio format. Always `audio/pcmu`.
-
-          - `"audio/pcmu"`
-
-      - `PCMAAudioFormat = object { type }`
-
-        The G.711 A-law format.
-
-        - `type: optional "audio/pcma"`
-
-          The audio format. Always `audio/pcma`.
-
-          - `"audio/pcma"`
 
     - `speed: optional number`
 
@@ -292,7 +256,7 @@ handle it.
 
         - `"cedar"`
 
-      - `ID = object { id }`
+      - `ID object { id }`
 
         Custom voice reference.
 
@@ -396,7 +360,7 @@ handle it.
 
     - `string`
 
-    - `ResponseInputText = object { text, type }`
+    - `ResponseInputText object { text, type }`
 
       A text input to the model.
 
@@ -410,7 +374,7 @@ handle it.
 
         - `"input_text"`
 
-    - `ResponseInputImage = object { detail, type, file_id, image_url }`
+    - `ResponseInputImage object { detail, type, file_id, image_url }`
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -440,7 +404,7 @@ handle it.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+    - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
       A file input to the model.
 
@@ -500,7 +464,7 @@ handle it.
 
     - `"required"`
 
-  - `ToolChoiceFunction = object { name, type }`
+  - `ToolChoiceFunction object { name, type }`
 
     Use this option to force the model to call a specific function.
 
@@ -514,7 +478,7 @@ handle it.
 
       - `"function"`
 
-  - `ToolChoiceMcp = object { server_label, type, name }`
+  - `ToolChoiceMcp object { server_label, type, name }`
 
     Use this option to force the model to call a specific tool on a remote MCP server.
 
@@ -536,7 +500,7 @@ handle it.
 
   Tools available to the model.
 
-  - `RealtimeFunctionTool = object { description, name, parameters, type }`
+  - `RealtimeFunctionTool object { description, name, parameters, type }`
 
     - `description: optional string`
 
@@ -558,7 +522,7 @@ handle it.
 
       - `"function"`
 
-  - `McpTool = object { server_label, type, allowed_tools, 7 more }`
+  - `McpTool object { server_label, type, allowed_tools, 7 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
     (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -581,7 +545,7 @@ handle it.
 
         A string array of allowed tool names
 
-      - `McpToolFilter = object { read_only, tool_names }`
+      - `McpToolFilter object { read_only, tool_names }`
 
         A filter object to specify which tools are allowed.
 
@@ -647,7 +611,7 @@ handle it.
 
       Specify which of the MCP server's tools require approval.
 
-      - `McpToolApprovalFilter = object { always, never }`
+      - `McpToolApprovalFilter object { always, never }`
 
         Specify which of the MCP server's tools require approval. Can be
         `always`, `never`, or a filter object associated with tools
@@ -714,7 +678,7 @@ handle it.
 
     - `"auto"`
 
-  - `TracingConfiguration = object { group_id, metadata, workflow_name }`
+  - `TracingConfiguration object { group_id, metadata, workflow_name }`
 
     Granular configuration for tracing.
 
@@ -751,7 +715,7 @@ handle it.
 
     - `"disabled"`
 
-  - `RetentionRatioTruncation = object { retention_ratio, type, token_limits }`
+  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 

@@ -37,7 +37,7 @@ Modifies a thread.
 
 ### Returns
 
-- `Thread = object { id, created_at, metadata, 2 more }`
+- `Thread object { id, created_at, metadata, 2 more }`
 
   Represents a thread that contains [messages](/docs/api-reference/messages).
 

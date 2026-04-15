@@ -147,8 +147,6 @@ format, or a stream of transcript events.
 
       Note: Streaming is not supported for the `whisper-1` model and will be ignored.
 
-      - `false`
-
   - `TranscriptionCreateParamsStreaming extends TranscriptionCreateParamsBase`
 
     - `stream: true`

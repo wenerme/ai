@@ -30,7 +30,7 @@ Create a new immutable skill version.
 
 ### Returns
 
-- `SkillVersion = object { id, created_at, description, 4 more }`
+- `SkillVersion object { id, created_at, description, 4 more }`
 
   - `id: string`
 
@@ -115,7 +115,7 @@ List skill versions for a skill.
 
 ### Returns
 
-- `SkillVersionList = object { data, first_id, has_more, 2 more }`
+- `SkillVersionList object { data, first_id, has_more, 2 more }`
 
   - `data: array of SkillVersion`
 
@@ -214,7 +214,7 @@ Get a specific skill version.
 
 ### Returns
 
-- `SkillVersion = object { id, created_at, description, 4 more }`
+- `SkillVersion object { id, created_at, description, 4 more }`
 
   - `id: string`
 
@@ -283,7 +283,7 @@ Delete a skill version.
 
 ### Returns
 
-- `DeletedSkillVersion = object { id, deleted, object, version }`
+- `DeletedSkillVersion object { id, deleted, object, version }`
 
   - `id: string`
 
@@ -320,7 +320,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
 ### Deleted Skill Version
 
-- `DeletedSkillVersion = object { id, deleted, object, version }`
+- `DeletedSkillVersion object { id, deleted, object, version }`
 
   - `id: string`
 
@@ -336,7 +336,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
 ### Skill Version
 
-- `SkillVersion = object { id, created_at, description, 4 more }`
+- `SkillVersion object { id, created_at, description, 4 more }`
 
   - `id: string`
 
@@ -370,7 +370,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
 ### Skill Version List
 
-- `SkillVersionList = object { data, first_id, has_more, 2 more }`
+- `SkillVersionList object { data, first_id, has_more, 2 more }`
 
   - `data: array of SkillVersion`
 

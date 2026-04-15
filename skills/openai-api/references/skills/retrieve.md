@@ -10,7 +10,7 @@ Get a skill by its ID.
 
 ### Returns
 
-- `Skill = object { id, created_at, default_version, 4 more }`
+- `Skill object { id, created_at, default_version, 4 more }`
 
   - `id: string`
 

@@ -10,7 +10,7 @@ Delete a file and remove it from all vector stores.
 
 ### Returns
 
-- `FileDeleted = object { id, deleted, object }`
+- `FileDeleted object { id, deleted, object }`
 
   - `id: string`
 

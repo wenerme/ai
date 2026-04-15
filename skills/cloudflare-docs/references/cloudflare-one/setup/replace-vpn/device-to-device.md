@@ -1,6 +1,6 @@
 ---
 title: Device to device
-description: Create a secure peer-to-peer connection between two devices using the Cloudflare One Client and Cloudflare's network.
+description: Create a secure connection between two devices using Cloudflare Mesh and Cloudflare's network.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -24,78 +24,57 @@ Create a secure connection between two devices so they can communicate directly 
 
 To explore other connection scenarios, refer to [Replace your VPN](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/).
 
-This guide follows the same steps as the **Get Started** onboarding wizard in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com).
-
 ## How it works
 
-The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) is an app that you install on each device you want to connect. When you sign in to your Cloudflare account through the Cloudflare One Client (called "enrolling"), each device is assigned a [virtual IP address](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/).
+The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) is an app that you install on each device you want to connect. When you enroll a device in your Cloudflare account, it is assigned a [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#device-ips).
 
-Devices use these virtual IPs to communicate with each other through Cloudflare's network. This works for most common types of network traffic, including web requests, remote desktop, file sharing, and ping.
+Devices use their Mesh IPs to communicate with each other through Cloudflare's network. This works for most common types of network traffic, including web requests, remote desktop, file sharing, and ping.
 
-Only devices signed in to your Cloudflare account can reach these addresses, so they are not accessible to anyone outside your organization. No tunnel infrastructure or network configuration is required, and the connection does not disrupt existing traffic on your network.
+Only devices enrolled in your Cloudflare account can reach these addresses, so they are not accessible to anyone outside your organization. No tunnel infrastructure or network configuration is required, and the connection does not disrupt existing traffic on your network.
+
+For more details, refer to [Connect client devices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/).
 
 ## Prerequisites
 
-* A Cloudflare account with a Zero Trust organization. If you have not set this up, refer to [Get started](https://developers.cloudflare.com/cloudflare-one/setup/).
+* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
 * Two Linux, Windows, macOS, Android, or iOS devices you want to connect together.
 
 ## Step 1: Enroll your first device
 
 Enrollment permissions control which users can connect devices to your account. In this step, you set an enrollment email and download the Cloudflare One Client. The email you provide becomes the first allowed login for your organization, and anyone with that email address can enroll a device.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), select the **Get Started** tab.
-2. For **Replace my client-based or site-to-site VPN**, select **Get started**.
-3. For **Device to device**, select **Continue**.
-4. On the **Create a device mesh on Cloudflare's network** screen, select **Continue**.
-5. Enter the email you want to use to enroll your first device.
-6. Select your device's operating system.
-7. Select **Download to continue** to download the Cloudflare One Client, or copy the download link to send to a different device.
-8. Select **Continue**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
+[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+2. Select **Add a node**, then follow the wizard. The wizard configures enrollment permissions and Mesh connectivity automatically.
+3. Download the Cloudflare One Client on your first device from the [downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+4. Open the client, enter your team name, and sign in with your email.
 
-Note
-
-You can manage device enrollment permissions later in **Team & Resources** \> **Devices**.
-
-## Step 2: Complete Cloudflare One Client setup
-
-On your first device, complete the Cloudflare One Client installation wizard. Then connect the Cloudflare One Client to your Zero Trust organization. For comprehensive OS-specific instructions, refer to [Manual deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/).
-
-1. Open the Cloudflare One Client. On macOS, select the Cloudflare icon in your status bar. On Windows, select the Cloudflare icon in your system tray.
-2. Go to **Preferences** \> **Account** \> **Login to Cloudflare Zero Trust**.
-3. Enter your team name when prompted. Your team name is the unique identifier for your Zero Trust organization and was set when the organization was created. The dashboard displays your team name on this screen for easy reference.  
-Note  
-To find or change your team name, go to **Settings** \> **Team name** and select **Edit**.
-4. Complete the authentication steps.
-5. The Cloudflare One Client should show as **Connected**.
-6. Select **Continue** in the dashboard.
-
-## Step 3: Enroll and set up your second device
+## Step 2: Enroll your second device
 
 Both devices must be enrolled in your Cloudflare account for the connection to work.
 
-1. Select the operating system of your second device.
-2. Copy the download link and send it to your second device (for example, by email or messaging app), or select **Download to continue** if you are on that device.
-3. On the second device, follow the same installation and login steps from [Step 2](#step-2-complete-cloudflare-one-client-setup).
-4. The Cloudflare One Client should show as **Connected** on the second device.
-5. Select **Continue** in the dashboard.
+1. Download the Cloudflare One Client on your second device.
+2. Open the client, enter the same team name, and sign in.
+3. The client should show as **Connected** on both devices.
 
-## Step 4: Verify your connection
+## Step 3: Verify your connection
 
-The dashboard confirms that your devices can securely communicate. Both devices are now connected through Cloudflare's network using their assigned virtual IPs.
+Both devices are now connected through Cloudflare's network using their assigned Mesh IPs.
 
-To view your device's assigned virtual IP:
+To view your device's assigned Mesh IP:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices**.
-2. Select a device.
-3. Select **View details**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
+[ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
+2. Your connected devices appear with their Mesh IPs.
+
+To test connectivity, `ping` the Mesh IP of one device from the other.
 
 ## Recommended next steps
 
 After verifying your connection, consider securing your connected devices with policies and access controls:
 
-* **Set up Gateway policies**: By default, all enrolled devices can reach each other over the virtual IP space. Gateway policies let you scan, filter, and log traffic between your devices. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
+* **Set up Gateway policies**: By default, all enrolled devices can reach each other over the Mesh IP space. Gateway policies let you scan, filter, and log traffic between your devices. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 * **Create an Access application**: Restrict access to specific destinations on enrolled devices with identity-based rules. For more information, refer to [Secure a private IP or hostname](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
-* **Explore more with Zero Trust**: Review your policies and connected devices in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com).
 
 For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
 
@@ -103,9 +82,8 @@ For in-depth guidance on policy design and device posture checks, refer to the [
 
 If you have issues connecting, try these steps:
 
-* **Windows users**: Windows Firewall blocks device-to-device traffic by default. You may need to add a firewall rule that allows incoming traffic from `100.96.0.0/12`. For details, refer to [Peer-to-peer connectivity](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/#troubleshooting).
-* [Troubleshoot WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/): resolve Cloudflare One Client connection and enrollment issues.
-* [Peer-to-peer connectivity](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/peer-to-peer/): review Peer-to-peer setup details and firewall requirements.
+* **Windows users**: Windows Firewall blocks device-to-device traffic by default. You may need to add a firewall rule that allows incoming traffic from `100.96.0.0/12`. For details, refer to [Connect client devices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/).
+* [Troubleshoot the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/): resolve connection and enrollment issues.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/setup/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/setup/replace-vpn/","name":"Replace your VPN"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/setup/replace-vpn/device-to-device/","name":"Device to device"}}]}

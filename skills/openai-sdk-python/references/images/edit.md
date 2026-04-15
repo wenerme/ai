@@ -8,7 +8,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
 ### Parameters
 
-- `image: Union[FileTypes, SequenceNotStr[FileTypes]]`
+- `image: Union[FileTypes, Sequence[FileTypes]]`
 
   The image(s) to edit. Must be a supported image file or an array of images.
 
@@ -21,7 +21,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
   - `FileTypes`
 
-  - `SequenceNotStr[FileTypes]`
+  - `Sequence[FileTypes]`
 
 - `prompt: str`
 

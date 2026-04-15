@@ -1,5 +1,5 @@
 ---
-title: Connect with cloudflared
+title: Connect with Cloudflare Tunnel
 description: Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any host machine and proxies local traffic once validated from the Cloudflare network. User traffic initiated from the Cloudflare One Client onramps to Cloudflare, passes down your Cloudflare Tunnel connections, and terminates automatically in your local network. Traffic reaching your internal applications or services will carry the local source IP address of the host machine running the cloudflared daemon.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-# Connect with cloudflared
+# Connect with Cloudflare Tunnel
 
 Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any host machine and proxies local traffic once validated from the Cloudflare network. User traffic initiated from the Cloudflare One Client onramps to Cloudflare, passes down your Cloudflare Tunnel connections, and terminates automatically in your local network. Traffic reaching your internal applications or services will carry the local source IP address of the host machine running the `cloudflared` daemon.
 
@@ -22,8 +22,8 @@ Cloudflare Tunnel is an outbound-only daemon service that can run on nearly any 
 
 To connect your private network:
 
-* [ Dashboard ](#tab-panel-5175)
-* [ Terraform (v5) ](#tab-panel-5176)
+* [ Dashboard ](#tab-panel-5393)
+* [ Terraform (v5) ](#tab-panel-5394)
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Select **Create a tunnel**.
@@ -96,10 +96,10 @@ resource "vault_generic_secret" "tunnel_token" {
 }  
 ```
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:  
-   * [ Linux ](#tab-panel-5171)  
-   * [ Windows ](#tab-panel-5172)  
-   * [ macOS ](#tab-panel-5173)  
-   * [ Docker ](#tab-panel-5174)  
+   * [ Linux ](#tab-panel-5389)  
+   * [ Windows ](#tab-panel-5390)  
+   * [ macOS ](#tab-panel-5391)  
+   * [ Docker ](#tab-panel-5392)  
    1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.  
    2. Run the following command:  
    Terminal window  
@@ -144,5 +144,5 @@ If the tunnel is disconnected:
 * [Update cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/) regularly.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/","name":"Connect your private network"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/cloudflared/","name":"Connect with cloudflared"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/learning-paths/","name":"Learning Paths"}},{"@type":"ListItem","position":3,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/","name":"Connect your private network"}},{"@type":"ListItem","position":4,"item":{"@id":"/learning-paths/replace-vpn/connect-private-network/cloudflared/","name":"Connect with Cloudflare Tunnel"}}]}
 ```

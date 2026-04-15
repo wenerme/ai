@@ -922,12 +922,6 @@ Create a thread and run it in one request.
 
       - `CodeInterpreterTool`
 
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
       - `FileSearchTool`
 
         - `type: "file_search"`
@@ -1019,8 +1013,6 @@ Create a thread and run it in one request.
     - `stream?: false | null`
 
       If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
-
-      - `false`
 
   - `ThreadCreateAndRunParamsStreaming extends ThreadCreateAndRunParamsBase`
 
@@ -3448,12 +3440,6 @@ Create a run.
 
       - `CodeInterpreterTool`
 
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
       - `FileSearchTool`
 
         - `type: "file_search"`
@@ -3545,8 +3531,6 @@ Create a run.
     - `stream?: false | null`
 
       Body param: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
-
-      - `false`
 
   - `RunCreateParamsStreaming extends RunCreateParamsBase`
 
@@ -5435,8 +5419,6 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
     - `stream?: false | null`
 
       Body param: If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message.
-
-      - `false`
 
   - `RunSubmitToolOutputsParamsStreaming extends RunSubmitToolOutputsParamsBase`
 

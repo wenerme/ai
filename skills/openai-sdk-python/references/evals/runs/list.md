@@ -333,16 +333,6 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                  - `text: str`
-
-                    The text input to the model.
-
-                  - `type: Literal["input_text"]`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
                 - `class InputMessagesTemplateTemplateEvalItemContentOutputText: …`
 
                   A text output from the model.
@@ -410,16 +400,6 @@ Get a list of runs for an evaluation.
 
                     A text input to the model.
 
-                    - `text: str`
-
-                      The text input to the model.
-
-                    - `type: Literal["input_text"]`
-
-                      The type of the input item. Always `input_text`.
-
-                      - `"input_text"`
-
                   - `class GraderInputItemOutputText: …`
 
                     A text output from the model.
@@ -455,27 +435,6 @@ Get a list of runs for an evaluation.
                   - `class ResponseInputAudio: …`
 
                     An audio input to the model.
-
-                    - `input_audio: InputAudio`
-
-                      - `data: str`
-
-                        Base64-encoded audio data.
-
-                      - `format: Literal["mp3", "wav"]`
-
-                        The format of the audio data. Currently supported formats are `mp3` and
-                        `wav`.
-
-                        - `"mp3"`
-
-                        - `"wav"`
-
-                    - `type: Literal["input_audio"]`
-
-                      The type of the input item. Always `input_audio`.
-
-                      - `"input_audio"`
 
               - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -744,18 +703,6 @@ Get a list of runs for an evaluation.
             - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
             - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-            - `"none"`
-
-            - `"minimal"`
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-            - `"xhigh"`
-
           - `temperature: Optional[float]`
 
             Sampling temperature. This is a query parameter used to select responses.
@@ -818,16 +765,6 @@ Get a list of runs for an evaluation.
 
                   A text input to the model.
 
-                  - `text: str`
-
-                    The text input to the model.
-
-                  - `type: Literal["input_text"]`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
                 - `class DataSourceResponsesInputMessagesTemplateTemplateEvalItemContentOutputText: …`
 
                   A text output from the model.
@@ -864,27 +801,6 @@ Get a list of runs for an evaluation.
 
                   An audio input to the model.
 
-                  - `input_audio: InputAudio`
-
-                    - `data: str`
-
-                      Base64-encoded audio data.
-
-                    - `format: Literal["mp3", "wav"]`
-
-                      The format of the audio data. Currently supported formats are `mp3` and
-                      `wav`.
-
-                      - `"mp3"`
-
-                      - `"wav"`
-
-                  - `type: Literal["input_audio"]`
-
-                    The type of the input item. Always `input_audio`.
-
-                    - `"input_audio"`
-
                 - `List[GraderInputItem]`
 
                   - `str`
@@ -895,72 +811,17 @@ Get a list of runs for an evaluation.
 
                     A text input to the model.
 
-                    - `text: str`
-
-                      The text input to the model.
-
-                    - `type: Literal["input_text"]`
-
-                      The type of the input item. Always `input_text`.
-
-                      - `"input_text"`
-
                   - `class GraderInputItemOutputText: …`
 
                     A text output from the model.
-
-                    - `text: str`
-
-                      The text output from the model.
-
-                    - `type: Literal["output_text"]`
-
-                      The type of the output text. Always `output_text`.
-
-                      - `"output_text"`
 
                   - `class GraderInputItemInputImage: …`
 
                     An image input block used within EvalItem content arrays.
 
-                    - `image_url: str`
-
-                      The URL of the image input.
-
-                    - `type: Literal["input_image"]`
-
-                      The type of the image input. Always `input_image`.
-
-                      - `"input_image"`
-
-                    - `detail: Optional[str]`
-
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
                   - `class ResponseInputAudio: …`
 
                     An audio input to the model.
-
-                    - `input_audio: InputAudio`
-
-                      - `data: str`
-
-                        Base64-encoded audio data.
-
-                      - `format: Literal["mp3", "wav"]`
-
-                        The format of the audio data. Currently supported formats are `mp3` and
-                        `wav`.
-
-                        - `"mp3"`
-
-                        - `"wav"`
-
-                    - `type: Literal["input_audio"]`
-
-                      The type of the input item. Always `input_audio`.
-
-                      - `"input_audio"`
 
               - `role: Literal["user", "assistant", "system", "developer"]`
 
@@ -1022,18 +883,6 @@ Get a list of runs for an evaluation.
           - The `gpt-5-pro` model defaults to (and only supports) `high` reasoning effort.
           - `xhigh` is supported for all models after `gpt-5.1-codex-max`.
 
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
         - `seed: Optional[int]`
 
           A seed value to initialize the randomness, during sampling.
@@ -1069,12 +918,6 @@ Get a list of runs for an evaluation.
             - `class ResponseFormatText: …`
 
               Default response format. Used to generate text responses.
-
-              - `type: Literal["text"]`
-
-                The type of response format being defined. Always `text`.
-
-                - `"text"`
 
             - `class ResponseFormatTextJSONSchemaConfig: …`
 
@@ -1116,12 +959,6 @@ Get a list of runs for an evaluation.
               Using `json_schema` is recommended for models that support it. Note that the
               model will not generate JSON without a system or user message instructing it
               to do so.
-
-              - `type: Literal["json_object"]`
-
-                The type of response format being defined. Always `json_object`.
-
-                - `"json_object"`
 
         - `tools: Optional[List[Tool]]`
 
@@ -1250,55 +1087,6 @@ Get a list of runs for an evaluation.
                   - `class ComparisonFilter: …`
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: str`
-
-                      The key to compare against the value.
-
-                    - `type: Literal["eq", "ne", "gt", 5 more]`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: Union[str, float, bool, List[Union[str, float]]]`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `str`
-
-                      - `float`
-
-                      - `bool`
-
-                      - `List[Union[str, float]]`
-
-                        - `str`
-
-                        - `float`
 
                   - `object`
 
@@ -1845,39 +1633,7 @@ Get a list of runs for an evaluation.
 
                   - `class ContainerNetworkPolicyDisabled: …`
 
-                    - `type: Literal["disabled"]`
-
-                      Disable outbound network access. Always `disabled`.
-
-                      - `"disabled"`
-
                   - `class ContainerNetworkPolicyAllowlist: …`
-
-                    - `allowed_domains: List[str]`
-
-                      A list of allowed domains when type is `allowlist`.
-
-                    - `type: Literal["allowlist"]`
-
-                      Allow outbound network access only to specified domains. Always `allowlist`.
-
-                      - `"allowlist"`
-
-                    - `domain_secrets: Optional[List[ContainerNetworkPolicyDomainSecret]]`
-
-                      Optional domain-scoped secrets for allowlisted domains.
-
-                      - `domain: str`
-
-                        The domain associated with the secret.
-
-                      - `name: str`
-
-                        The name of the secret to inject for the domain.
-
-                      - `value: str`
-
-                        The secret value to inject for the domain.
 
                 - `skills: Optional[List[Skill]]`
 
@@ -2066,60 +1822,6 @@ Get a list of runs for an evaluation.
               - `class CustomTool: …`
 
                 A custom tool that processes input using a specified format. Learn more about   [custom tools](https://platform.openai.com/docs/guides/function-calling#custom-tools)
-
-                - `name: str`
-
-                  The name of the custom tool, used to identify it in tool calls.
-
-                - `type: Literal["custom"]`
-
-                  The type of the custom tool. Always `custom`.
-
-                  - `"custom"`
-
-                - `defer_loading: Optional[bool]`
-
-                  Whether this tool should be deferred and discovered via tool search.
-
-                - `description: Optional[str]`
-
-                  Optional description of the custom tool, used to provide more context.
-
-                - `format: Optional[CustomToolInputFormat]`
-
-                  The input format for the custom tool. Default is unconstrained text.
-
-                  - `class Text: …`
-
-                    Unconstrained free-form text.
-
-                    - `type: Literal["text"]`
-
-                      Unconstrained text format. Always `text`.
-
-                      - `"text"`
-
-                  - `class Grammar: …`
-
-                    A grammar defined by the user.
-
-                    - `definition: str`
-
-                      The grammar definition.
-
-                    - `syntax: Literal["lark", "regex"]`
-
-                      The syntax of the grammar definition. One of `lark` or `regex`.
-
-                      - `"lark"`
-
-                      - `"regex"`
-
-                    - `type: Literal["grammar"]`
-
-                      Grammar format. Always `grammar`.
-
-                      - `"grammar"`
 
             - `type: Literal["namespace"]`
 

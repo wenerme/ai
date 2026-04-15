@@ -28,7 +28,7 @@ CIDR routes define the IP network segments (such as `10.0.0.0/24`) that are reac
 
 Prerequisites
 
-Before you add a CIDR route, ensure you have created a Cloudflare Tunnel using [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or [WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-site/).
+Before you add a CIDR route, ensure you have created a Cloudflare Tunnel using [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or a [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node.
 
 To add a CIDR route:
 
@@ -41,7 +41,7 @@ Note
 Virtual networks are only supported for `cloudflared` tunnels.
 6. Select **Create**.
 
-Cloudflare will now route requests to your private network. However, the route does not automatically capture traffic from end users. To enable client-side connectivity, refer to the [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/) or[WARP Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/site-to-site/) setup guides.
+Cloudflare will now route requests to your private network. However, the route does not automatically capture traffic from end users. To enable client-side connectivity, refer to the [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/) or[Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) setup guides.
 
 ## Add a hostname route
 

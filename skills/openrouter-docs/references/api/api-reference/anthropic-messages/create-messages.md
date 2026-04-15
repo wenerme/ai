@@ -1467,19 +1467,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p50 latency (seconds)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p75 latency (seconds)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p90 latency (seconds)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Maximum p99 latency (seconds)
       description: >-
@@ -1503,19 +1511,27 @@ components:
       type: object
       properties:
         p50:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p50 throughput (tokens/sec)
         p75:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p75 throughput (tokens/sec)
         p90:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p90 throughput (tokens/sec)
         p99:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Minimum p99 throughput (tokens/sec)
       description: >-
@@ -1990,7 +2006,9 @@ components:
         cache_control:
           $ref: '#/components/schemas/AnthropicCacheControlDirective'
         max_uses:
-          type: integer
+          type:
+            - integer
+            - 'null'
         name:
           $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf3Name'
         type:
@@ -2041,7 +2059,9 @@ components:
         cache_control:
           $ref: '#/components/schemas/AnthropicCacheControlDirective'
         max_uses:
-          type: integer
+          type:
+            - integer
+            - 'null'
         name:
           $ref: '#/components/schemas/MessagesRequestToolsItemsOneOf4Name'
         type:
@@ -2076,6 +2096,37 @@ components:
         - type
       description: 'OpenRouter built-in server tool: returns the current date and time'
       title: DatetimeServerTool
+    ImageGenerationServerToolConfig:
+      type: object
+      properties:
+        model:
+          type: string
+          description: >-
+            Which image generation model to use (e.g. "openai/gpt-image-1").
+            Defaults to "openai/gpt-image-1".
+      description: >-
+        Configuration for the openrouter:image_generation server tool. Accepts
+        all image_config params (aspect_ratio, quality, size, background,
+        output_format, output_compression, moderation, etc.) plus a model field.
+      title: ImageGenerationServerToolConfig
+    ImageGenerationServerToolOpenRouterType:
+      type: string
+      enum:
+        - openrouter:image_generation
+      title: ImageGenerationServerToolOpenRouterType
+    ImageGenerationServerTool_OpenRouter:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ImageGenerationServerToolConfig'
+        type:
+          $ref: '#/components/schemas/ImageGenerationServerToolOpenRouterType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: generates images from text prompts
+        using an image generation model
+      title: ImageGenerationServerTool_OpenRouter
     SearchModelsServerToolConfig:
       type: object
       properties:
@@ -2212,6 +2263,7 @@ components:
         - $ref: '#/components/schemas/MessagesRequestToolsItems3'
         - $ref: '#/components/schemas/MessagesRequestToolsItems4'
         - $ref: '#/components/schemas/DatetimeServerTool'
+        - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
       title: MessagesRequestToolsItems
@@ -3073,11 +3125,17 @@ components:
           $ref: >-
             #/components/schemas/AnthropicTextEditorCodeExecutionViewResultFileType
         num_lines:
-          type: integer
+          type:
+            - integer
+            - 'null'
         start_line:
-          type: integer
+          type:
+            - integer
+            - 'null'
         total_lines:
-          type: integer
+          type:
+            - integer
+            - 'null'
         type:
           $ref: '#/components/schemas/AnthropicTextEditorCodeExecutionViewResultType'
       required:
@@ -3120,13 +3178,21 @@ components:
           items:
             type: string
         new_lines:
-          type: integer
+          type:
+            - integer
+            - 'null'
         new_start:
-          type: integer
+          type:
+            - integer
+            - 'null'
         old_lines:
-          type: integer
+          type:
+            - integer
+            - 'null'
         old_start:
-          type: integer
+          type:
+            - integer
+            - 'null'
         type:
           $ref: >-
             #/components/schemas/AnthropicTextEditorCodeExecutionStrReplaceResultType
@@ -3464,9 +3530,13 @@ components:
         cache_creation:
           $ref: '#/components/schemas/AnthropicCacheCreation'
         cache_creation_input_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         cache_read_input_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         inference_geo:
           type:
             - string
@@ -3502,7 +3572,9 @@ components:
           type: number
           format: double
         upstream_inference_cost:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         upstream_inference_prompt_cost:
           type: number
@@ -3517,9 +3589,13 @@ components:
         cache_creation:
           $ref: '#/components/schemas/AnthropicCacheCreation'
         cache_creation_input_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         cache_read_input_tokens:
-          type: integer
+          type:
+            - integer
+            - 'null'
         inference_geo:
           type:
             - string
@@ -3535,7 +3611,9 @@ components:
             - string
             - 'null'
         cost:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
         cost_details:
           oneOf:

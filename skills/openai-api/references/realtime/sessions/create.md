@@ -93,7 +93,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `string`
 
-    - `ResponseInputText = object { text, type }`
+    - `ResponseInputText object { text, type }`
 
       A text input to the model.
 
@@ -107,7 +107,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"input_text"`
 
-    - `ResponseInputImage = object { detail, type, file_id, image_url }`
+    - `ResponseInputImage object { detail, type, file_id, image_url }`
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -137,7 +137,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+    - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
       A file input to the model.
 
@@ -228,7 +228,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"auto"`
 
-  - `TracingConfiguration = object { group_id, metadata, workflow_name }`
+  - `TracingConfiguration object { group_id, metadata, workflow_name }`
 
     Granular configuration for tracing.
 
@@ -265,7 +265,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"disabled"`
 
-  - `RetentionRatioTruncation = object { retention_ratio, type, token_limits }`
+  - `RetentionRatioTruncation object { retention_ratio, type, token_limits }`
 
     Retain a fraction of the conversation tokens when the conversation exceeds the input token limit. This allows you to amortize truncations across multiple turns, which can help improve cached token usage.
 
@@ -346,7 +346,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"cedar"`
 
-  - `ID = object { id }`
+  - `ID object { id }`
 
     Custom voice reference.
 
@@ -370,7 +370,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       The PCM audio format. Only a 24kHz sample rate is supported.
 
-      - `PCMAudioFormat = object { rate, type }`
+      - `PCMAudioFormat object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -386,7 +386,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"audio/pcm"`
 
-      - `PCMUAudioFormat = object { type }`
+      - `PCMUAudioFormat object { type }`
 
         The G.711 μ-law format.
 
@@ -396,7 +396,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"audio/pcmu"`
 
-      - `PCMAAudioFormat = object { type }`
+      - `PCMAAudioFormat object { type }`
 
         The G.711 A-law format.
 
@@ -474,42 +474,6 @@ Returns the created Realtime session object, plus an ephemeral key.
     - `format: optional RealtimeAudioFormats`
 
       The PCM audio format. Only a 24kHz sample rate is supported.
-
-      - `PCMAudioFormat = object { rate, type }`
-
-        The PCM audio format. Only a 24kHz sample rate is supported.
-
-        - `rate: optional 24000`
-
-          The sample rate of the audio. Always `24000`.
-
-          - `24000`
-
-        - `type: optional "audio/pcm"`
-
-          The audio format. Always `audio/pcm`.
-
-          - `"audio/pcm"`
-
-      - `PCMUAudioFormat = object { type }`
-
-        The G.711 μ-law format.
-
-        - `type: optional "audio/pcmu"`
-
-          The audio format. Always `audio/pcmu`.
-
-          - `"audio/pcmu"`
-
-      - `PCMAAudioFormat = object { type }`
-
-        The G.711 A-law format.
-
-        - `type: optional "audio/pcma"`
-
-          The audio format. Always `audio/pcma`.
-
-          - `"audio/pcma"`
 
     - `speed: optional number`
 
@@ -639,7 +603,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     - `"auto"`
 
-  - `TracingConfiguration = object { group_id, metadata, workflow_name }`
+  - `TracingConfiguration object { group_id, metadata, workflow_name }`
 
     Granular configuration for tracing.
 

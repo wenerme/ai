@@ -28,7 +28,7 @@ List skill versions for a skill.
 
 ### Returns
 
-- `SkillVersionList = object { data, first_id, has_more, 2 more }`
+- `SkillVersionList object { data, first_id, has_more, 2 more }`
 
   - `data: array of SkillVersion`
 

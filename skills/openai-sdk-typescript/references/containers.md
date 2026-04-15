@@ -547,6 +547,224 @@ const client = new OpenAI({
 await client.containers.delete('container_id');
 ```
 
+## Domain Types
+
+### Container List Response
+
+- `ContainerListResponse`
+
+  - `id: string`
+
+    Unique identifier for the container.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the container was created.
+
+  - `name: string`
+
+    Name of the container.
+
+  - `object: string`
+
+    The type of this object.
+
+  - `status: string`
+
+    Status of the container (e.g., active, deleted).
+
+  - `expires_after?: ExpiresAfter`
+
+    The container will expire after this time period.
+    The anchor is the reference point for the expiration.
+    The minutes is the number of minutes after the anchor before the container expires.
+
+    - `anchor?: "last_active_at"`
+
+      The reference point for the expiration.
+
+      - `"last_active_at"`
+
+    - `minutes?: number`
+
+      The number of minutes after the anchor before the container expires.
+
+  - `last_active_at?: number`
+
+    Unix timestamp (in seconds) when the container was last active.
+
+  - `memory_limit?: "1g" | "4g" | "16g" | "64g"`
+
+    The memory limit configured for the container.
+
+    - `"1g"`
+
+    - `"4g"`
+
+    - `"16g"`
+
+    - `"64g"`
+
+  - `network_policy?: NetworkPolicy`
+
+    Network access policy for the container.
+
+    - `type: "allowlist" | "disabled"`
+
+      The network policy mode.
+
+      - `"allowlist"`
+
+      - `"disabled"`
+
+    - `allowed_domains?: Array<string>`
+
+      Allowed outbound domains when `type` is `allowlist`.
+
+### Container Create Response
+
+- `ContainerCreateResponse`
+
+  - `id: string`
+
+    Unique identifier for the container.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the container was created.
+
+  - `name: string`
+
+    Name of the container.
+
+  - `object: string`
+
+    The type of this object.
+
+  - `status: string`
+
+    Status of the container (e.g., active, deleted).
+
+  - `expires_after?: ExpiresAfter`
+
+    The container will expire after this time period.
+    The anchor is the reference point for the expiration.
+    The minutes is the number of minutes after the anchor before the container expires.
+
+    - `anchor?: "last_active_at"`
+
+      The reference point for the expiration.
+
+      - `"last_active_at"`
+
+    - `minutes?: number`
+
+      The number of minutes after the anchor before the container expires.
+
+  - `last_active_at?: number`
+
+    Unix timestamp (in seconds) when the container was last active.
+
+  - `memory_limit?: "1g" | "4g" | "16g" | "64g"`
+
+    The memory limit configured for the container.
+
+    - `"1g"`
+
+    - `"4g"`
+
+    - `"16g"`
+
+    - `"64g"`
+
+  - `network_policy?: NetworkPolicy`
+
+    Network access policy for the container.
+
+    - `type: "allowlist" | "disabled"`
+
+      The network policy mode.
+
+      - `"allowlist"`
+
+      - `"disabled"`
+
+    - `allowed_domains?: Array<string>`
+
+      Allowed outbound domains when `type` is `allowlist`.
+
+### Container Retrieve Response
+
+- `ContainerRetrieveResponse`
+
+  - `id: string`
+
+    Unique identifier for the container.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the container was created.
+
+  - `name: string`
+
+    Name of the container.
+
+  - `object: string`
+
+    The type of this object.
+
+  - `status: string`
+
+    Status of the container (e.g., active, deleted).
+
+  - `expires_after?: ExpiresAfter`
+
+    The container will expire after this time period.
+    The anchor is the reference point for the expiration.
+    The minutes is the number of minutes after the anchor before the container expires.
+
+    - `anchor?: "last_active_at"`
+
+      The reference point for the expiration.
+
+      - `"last_active_at"`
+
+    - `minutes?: number`
+
+      The number of minutes after the anchor before the container expires.
+
+  - `last_active_at?: number`
+
+    Unix timestamp (in seconds) when the container was last active.
+
+  - `memory_limit?: "1g" | "4g" | "16g" | "64g"`
+
+    The memory limit configured for the container.
+
+    - `"1g"`
+
+    - `"4g"`
+
+    - `"16g"`
+
+    - `"64g"`
+
+  - `network_policy?: NetworkPolicy`
+
+    Network access policy for the container.
+
+    - `type: "allowlist" | "disabled"`
+
+      The network policy mode.
+
+      - `"allowlist"`
+
+      - `"disabled"`
+
+    - `allowed_domains?: Array<string>`
+
+      Allowed outbound domains when `type` is `allowlist`.
+
 # Files
 
 ## List container files
@@ -841,6 +1059,110 @@ const client = new OpenAI({
 
 await client.containers.files.delete('file_id', { container_id: 'container_id' });
 ```
+
+## Domain Types
+
+### File List Response
+
+- `FileListResponse`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: "container.file"`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Create Response
+
+- `FileCreateResponse`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: "container.file"`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
+
+### File Retrieve Response
+
+- `FileRetrieveResponse`
+
+  - `id: string`
+
+    Unique identifier for the file.
+
+  - `bytes: number`
+
+    Size of the file in bytes.
+
+  - `container_id: string`
+
+    The container this file belongs to.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the file was created.
+
+  - `object: "container.file"`
+
+    The type of this object (`container.file`).
+
+    - `"container.file"`
+
+  - `path: string`
+
+    Path of the file in the container.
+
+  - `source: string`
+
+    Source of the file (e.g., `user`, `assistant`).
 
 # Content
 

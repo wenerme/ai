@@ -32,7 +32,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-  - `AutoFileChunkingStrategyParam = object { type }`
+  - `AutoFileChunkingStrategyParam object { type }`
 
     The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -42,7 +42,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
       - `"auto"`
 
-  - `StaticFileChunkingStrategyObjectParam = object { static, type }`
+  - `StaticFileChunkingStrategyObjectParam object { static, type }`
 
     Customize your own chunking strategy by setting chunk size and chunk overlap.
 
@@ -66,7 +66,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
 ### Returns
 
-- `VectorStoreFile = object { id, created_at, last_error, 6 more }`
+- `VectorStoreFile object { id, created_at, last_error, 6 more }`
 
   A list of files attached to a vector store.
 
@@ -140,7 +140,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
     The strategy used to chunk the file.
 
-    - `StaticFileChunkingStrategyObject = object { static, type }`
+    - `StaticFileChunkingStrategyObject object { static, type }`
 
       - `static: StaticFileChunkingStrategy`
 
@@ -160,7 +160,7 @@ Create a vector store file by attaching a [File](/docs/api-reference/files) to a
 
         - `"static"`
 
-    - `OtherFileChunkingStrategyObject = object { type }`
+    - `OtherFileChunkingStrategyObject object { type }`
 
       This is returned when the chunking strategy is unknown. Typically, this is because the file was indexed before the `chunking_strategy` concept was introduced in the API.
 

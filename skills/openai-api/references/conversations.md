@@ -12,7 +12,7 @@ Create a conversation.
 
   Initial items to include in the conversation context. You may add up to 20 items at a time.
 
-  - `EasyInputMessage = object { content, role, phase, type }`
+  - `EasyInputMessage object { content, role, phase, type }`
 
     A message input to the model with a role indicating instruction following
     hierarchy. Instructions given with the `developer` or `system` role take
@@ -34,7 +34,7 @@ Create a conversation.
         A list of one or many input items to the model, containing different content
         types.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -48,7 +48,7 @@ Create a conversation.
 
             - `"input_text"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -78,7 +78,7 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -141,7 +141,7 @@ Create a conversation.
 
       - `"message"`
 
-  - `Message = object { content, role, status, type }`
+  - `Message object { content, role, status, type }`
 
     A message input to the model with a role indicating instruction following
     hierarchy. Instructions given with the `developer` or `system` role take
@@ -151,84 +151,6 @@ Create a conversation.
 
       A list of one or many input items to the model, containing different content
       types.
-
-      - `ResponseInputText = object { text, type }`
-
-        A text input to the model.
-
-        - `text: string`
-
-          The text input to the model.
-
-        - `type: "input_text"`
-
-          The type of the input item. Always `input_text`.
-
-          - `"input_text"`
-
-      - `ResponseInputImage = object { detail, type, file_id, image_url }`
-
-        An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-        - `detail: "low" or "high" or "auto" or "original"`
-
-          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-          - `"low"`
-
-          - `"high"`
-
-          - `"auto"`
-
-          - `"original"`
-
-        - `type: "input_image"`
-
-          The type of the input item. Always `input_image`.
-
-          - `"input_image"`
-
-        - `file_id: optional string`
-
-          The ID of the file to be sent to the model.
-
-        - `image_url: optional string`
-
-          The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
-
-        A file input to the model.
-
-        - `type: "input_file"`
-
-          The type of the input item. Always `input_file`.
-
-          - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-          - `"low"`
-
-          - `"high"`
-
-        - `file_data: optional string`
-
-          The content of the file to be sent to the model.
-
-        - `file_id: optional string`
-
-          The ID of the file to be sent to the model.
-
-        - `file_url: optional string`
-
-          The URL of the file to be sent to the model.
-
-        - `filename: optional string`
-
-          The name of the file to be sent to the model.
 
     - `role: "user" or "system" or "developer"`
 
@@ -257,7 +179,7 @@ Create a conversation.
 
       - `"message"`
 
-  - `ResponseOutputMessage = object { id, content, role, 3 more }`
+  - `ResponseOutputMessage object { id, content, role, 3 more }`
 
     An output message from the model.
 
@@ -269,7 +191,7 @@ Create a conversation.
 
       The content of the output message.
 
-      - `ResponseOutputText = object { annotations, logprobs, text, type }`
+      - `ResponseOutputText object { annotations, logprobs, text, type }`
 
         A text output from the model.
 
@@ -277,7 +199,7 @@ Create a conversation.
 
           The annotations of the text output.
 
-          - `FileCitation = object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             A citation to a file.
 
@@ -299,7 +221,7 @@ Create a conversation.
 
               - `"file_citation"`
 
-          - `URLCitation = object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             A citation for a web resource used to generate a model response.
 
@@ -325,7 +247,7 @@ Create a conversation.
 
               The URL of the web resource.
 
-          - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             A citation for a container file used to generate a model response.
 
@@ -355,7 +277,7 @@ Create a conversation.
 
               - `"container_file_citation"`
 
-          - `FilePath = object { file_id, index, type }`
+          - `FilePath object { file_id, index, type }`
 
             A path to a file.
 
@@ -399,7 +321,7 @@ Create a conversation.
 
           - `"output_text"`
 
-      - `ResponseOutputRefusal = object { refusal, type }`
+      - `ResponseOutputRefusal object { refusal, type }`
 
         A refusal from the model.
 
@@ -446,7 +368,7 @@ Create a conversation.
 
       - `"final_answer"`
 
-  - `FileSearchCall = object { id, queries, status, 2 more }`
+  - `FileSearchCall object { id, queries, status, 2 more }`
 
     The results of a file search tool call. See the
     [file search guide](/docs/guides/tools-file-search) for more information.
@@ -514,7 +436,7 @@ Create a conversation.
 
         The text that was retrieved from the file.
 
-  - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+  - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
     A tool call to a computer use tool. See the
     [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -564,7 +486,7 @@ Create a conversation.
 
       A click action.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
@@ -600,7 +522,7 @@ Create a conversation.
 
           The keys being held while clicking.
 
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
@@ -622,7 +544,7 @@ Create a conversation.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
@@ -655,7 +577,7 @@ Create a conversation.
 
           The keys being held while dragging the mouse.
 
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
@@ -669,7 +591,7 @@ Create a conversation.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -691,7 +613,7 @@ Create a conversation.
 
           The keys being held while moving the mouse.
 
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
@@ -701,7 +623,7 @@ Create a conversation.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -731,7 +653,7 @@ Create a conversation.
 
           The keys being held while scrolling.
 
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
@@ -745,7 +667,7 @@ Create a conversation.
 
           - `"type"`
 
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
@@ -760,198 +682,43 @@ Create a conversation.
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
-        - `button: "left" or "right" or "wheel" or 2 more`
-
-          Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-          - `"left"`
-
-          - `"right"`
-
-          - `"wheel"`
-
-          - `"back"`
-
-          - `"forward"`
-
-        - `type: "click"`
-
-          Specifies the event type. For a click action, this property is always `click`.
-
-          - `"click"`
-
-        - `x: number`
-
-          The x-coordinate where the click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the click occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while clicking.
-
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
-        - `keys: array of string`
-
-          The keys being held while double-clicking.
-
-        - `type: "double_click"`
-
-          Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-          - `"double_click"`
-
-        - `x: number`
-
-          The x-coordinate where the double click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the double click occurred.
-
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
-        - `path: array of object { x, y }`
-
-          An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-          ```
-          [
-            { x: 100, y: 200 },
-            { x: 200, y: 300 }
-          ]
-          ```
-
-          - `x: number`
-
-            The x-coordinate.
-
-          - `y: number`
-
-            The y-coordinate.
-
-        - `type: "drag"`
-
-          Specifies the event type. For a drag action, this property is always set to `drag`.
-
-          - `"drag"`
-
-        - `keys: optional array of string`
-
-          The keys being held while dragging the mouse.
-
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
-        - `keys: array of string`
-
-          The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-        - `type: "keypress"`
-
-          Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-          - `"keypress"`
-
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
-        - `type: "move"`
-
-          Specifies the event type. For a move action, this property is always set to `move`.
-
-          - `"move"`
-
-        - `x: number`
-
-          The x-coordinate to move to.
-
-        - `y: number`
-
-          The y-coordinate to move to.
-
-        - `keys: optional array of string`
-
-          The keys being held while moving the mouse.
-
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
-        - `type: "screenshot"`
-
-          Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-          - `"screenshot"`
-
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
-        - `scroll_x: number`
-
-          The horizontal scroll distance.
-
-        - `scroll_y: number`
-
-          The vertical scroll distance.
-
-        - `type: "scroll"`
-
-          Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-          - `"scroll"`
-
-        - `x: number`
-
-          The x-coordinate where the scroll occurred.
-
-        - `y: number`
-
-          The y-coordinate where the scroll occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while scrolling.
-
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
-        - `text: string`
-
-          The text to type.
-
-        - `type: "type"`
-
-          Specifies the event type. For a type action, this property is always set to `type`.
-
-          - `"type"`
-
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
-        - `type: "wait"`
-
-          Specifies the event type. For a wait action, this property is always set to `wait`.
-
-          - `"wait"`
-
-  - `ComputerCallOutput = object { call_id, output, type, 3 more }`
+  - `ComputerCallOutput object { call_id, output, type, 3 more }`
 
     The output of a computer tool call.
 
@@ -1014,7 +781,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `WebSearchCall = object { id, action, status, type }`
+  - `WebSearchCall object { id, action, status, type }`
 
     The results of a web search tool call. See the
     [web search guide](/docs/guides/tools-web-search) for more information.
@@ -1028,7 +795,7 @@ Create a conversation.
       An object describing the specific action taken in this web search call.
       Includes details on how the model used the web (search, open_page, find_in_page).
 
-      - `Search = object { query, type, queries, sources }`
+      - `Search object { query, type, queries, sources }`
 
         Action type "search" - Performs a web search query.
 
@@ -1060,7 +827,7 @@ Create a conversation.
 
             The URL of the source.
 
-      - `OpenPage = object { type, url }`
+      - `OpenPage object { type, url }`
 
         Action type "open_page" - Opens a specific URL from search results.
 
@@ -1074,7 +841,7 @@ Create a conversation.
 
           The URL opened by the model.
 
-      - `FindInPage = object { pattern, type, url }`
+      - `FindInPage object { pattern, type, url }`
 
         Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -1110,7 +877,7 @@ Create a conversation.
 
       - `"web_search_call"`
 
-  - `FunctionCall = object { arguments, call_id, name, 4 more }`
+  - `FunctionCall object { arguments, call_id, name, 4 more }`
 
     A tool call to run a function. See the
     [function calling guide](/docs/guides/function-calling) for more information.
@@ -1152,7 +919,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `FunctionCallOutput = object { call_id, output, type, 2 more }`
+  - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
     The output of a function tool call.
 
@@ -1172,7 +939,7 @@ Create a conversation.
 
         An array of content outputs (text, image, file) for the function tool call.
 
-        - `ResponseInputTextContent = object { text, type }`
+        - `ResponseInputTextContent object { text, type }`
 
           A text input to the model.
 
@@ -1186,7 +953,7 @@ Create a conversation.
 
             - `"input_text"`
 
-        - `ResponseInputImageContent = object { type, detail, file_id, image_url }`
+        - `ResponseInputImageContent object { type, detail, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision)
 
@@ -1216,7 +983,7 @@ Create a conversation.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFileContent object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -1270,7 +1037,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ToolSearchCall = object { arguments, type, id, 3 more }`
+  - `ToolSearchCall object { arguments, type, id, 3 more }`
 
     - `arguments: unknown`
 
@@ -1308,13 +1075,13 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ToolSearchOutput = object { tools, type, id, 3 more }`
+  - `ToolSearchOutput object { tools, type, id, 3 more }`
 
     - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
       The loaded tool definitions returned by the tool search output.
 
-      - `Function = object { name, parameters, strict, 3 more }`
+      - `Function object { name, parameters, strict, 3 more }`
 
         Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1344,7 +1111,7 @@ Create a conversation.
 
           A description of the function. Used by the model to determine whether or not to call the function.
 
-      - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+      - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
         A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -1362,7 +1129,7 @@ Create a conversation.
 
           A filter to apply.
 
-          - `ComparisonFilter = object { key, type, value }`
+          - `ComparisonFilter object { key, type, value }`
 
             A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -1415,7 +1182,7 @@ Create a conversation.
 
                 - `number`
 
-          - `CompoundFilter = object { filters, type }`
+          - `CompoundFilter object { filters, type }`
 
             Combine multiple filters using `and` or `or`.
 
@@ -1423,58 +1190,9 @@ Create a conversation.
 
               Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-              - `ComparisonFilter = object { key, type, value }`
+              - `ComparisonFilter object { key, type, value }`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" or "ne" or "gt" or 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string or number or boolean or array of string or number`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `array of string or number`
-
-                    - `string`
-
-                    - `number`
 
               - `unknown`
 
@@ -1518,7 +1236,7 @@ Create a conversation.
 
             The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-      - `Computer = object { type }`
+      - `Computer object { type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1528,7 +1246,7 @@ Create a conversation.
 
           - `"computer"`
 
-      - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+      - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -1560,7 +1278,7 @@ Create a conversation.
 
           - `"computer_use_preview"`
 
-      - `WebSearch = object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, filters, search_context_size, user_location }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -1620,7 +1338,7 @@ Create a conversation.
 
             - `"approximate"`
 
-      - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+      - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -1643,7 +1361,7 @@ Create a conversation.
 
             A string array of allowed tool names
 
-          - `McpToolFilter = object { read_only, tool_names }`
+          - `McpToolFilter object { read_only, tool_names }`
 
             A filter object to specify which tools are allowed.
 
@@ -1709,7 +1427,7 @@ Create a conversation.
 
           Specify which of the MCP server's tools require approval.
 
-          - `McpToolApprovalFilter = object { always, never }`
+          - `McpToolApprovalFilter object { always, never }`
 
             Specify which of the MCP server's tools require approval. Can be
             `always`, `never`, or a filter object associated with tools
@@ -1762,7 +1480,7 @@ Create a conversation.
           The URL for the MCP server. One of `server_url` or `connector_id` must be
           provided.
 
-      - `CodeInterpreter = object { container, type }`
+      - `CodeInterpreter object { container, type }`
 
         A tool that runs Python code to help generate a response to a prompt.
 
@@ -1776,7 +1494,7 @@ Create a conversation.
 
             The container ID.
 
-          - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+          - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
             Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -1806,7 +1524,7 @@ Create a conversation.
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
                 - `type: "disabled"`
 
@@ -1814,7 +1532,7 @@ Create a conversation.
 
                   - `"disabled"`
 
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                 - `allowed_domains: array of string`
 
@@ -1848,7 +1566,7 @@ Create a conversation.
 
           - `"code_interpreter"`
 
-      - `ImageGeneration = object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 9 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -1969,7 +1687,7 @@ Create a conversation.
 
           - `"auto"`
 
-      - `LocalShell = object { type }`
+      - `LocalShell object { type }`
 
         A tool that allows the model to execute shell commands in a local environment.
 
@@ -1979,7 +1697,7 @@ Create a conversation.
 
           - `"local_shell"`
 
-      - `Shell = object { type, environment }`
+      - `Shell object { type, environment }`
 
         A tool that allows the model to execute shell commands.
 
@@ -1991,7 +1709,7 @@ Create a conversation.
 
         - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-          - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+          - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
             - `type: "container_auto"`
 
@@ -2019,47 +1737,15 @@ Create a conversation.
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                - `allowed_domains: array of string`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
             - `skills: optional array of SkillReference or InlineSkill`
 
               An optional list of skills referenced by id or inline data.
 
-              - `SkillReference = object { skill_id, type, version }`
+              - `SkillReference object { skill_id, type, version }`
 
                 - `skill_id: string`
 
@@ -2075,7 +1761,7 @@ Create a conversation.
 
                   Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-              - `InlineSkill = object { description, name, source, type }`
+              - `InlineSkill object { description, name, source, type }`
 
                 - `description: string`
 
@@ -2111,7 +1797,7 @@ Create a conversation.
 
                   - `"inline"`
 
-          - `LocalEnvironment = object { type, skills }`
+          - `LocalEnvironment object { type, skills }`
 
             - `type: "local"`
 
@@ -2135,7 +1821,7 @@ Create a conversation.
 
                 The path to the directory containing the skill.
 
-          - `ContainerReference = object { container_id, type }`
+          - `ContainerReference object { container_id, type }`
 
             - `container_id: string`
 
@@ -2147,7 +1833,7 @@ Create a conversation.
 
               - `"container_reference"`
 
-      - `Custom = object { name, type, defer_loading, 2 more }`
+      - `Custom object { name, type, defer_loading, 2 more }`
 
         A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2173,7 +1859,7 @@ Create a conversation.
 
           The input format for the custom tool. Default is unconstrained text.
 
-          - `Text = object { type }`
+          - `Text object { type }`
 
             Unconstrained free-form text.
 
@@ -2183,7 +1869,7 @@ Create a conversation.
 
               - `"text"`
 
-          - `Grammar = object { definition, syntax, type }`
+          - `Grammar object { definition, syntax, type }`
 
             A grammar defined by the user.
 
@@ -2205,7 +1891,7 @@ Create a conversation.
 
               - `"grammar"`
 
-      - `Namespace = object { description, name, tools, type }`
+      - `Namespace object { description, name, tools, type }`
 
         Groups function/custom tools under a shared namespace.
 
@@ -2221,7 +1907,7 @@ Create a conversation.
 
           The function/custom tools available inside this namespace.
 
-          - `Function = object { name, type, defer_loading, 3 more }`
+          - `Function object { name, type, defer_loading, 3 more }`
 
             - `name: string`
 
@@ -2239,7 +1925,7 @@ Create a conversation.
 
             - `strict: optional boolean`
 
-          - `Custom = object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2265,45 +1951,13 @@ Create a conversation.
 
               The input format for the custom tool. Default is unconstrained text.
 
-              - `Text = object { type }`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar = object { definition, syntax, type }`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" or "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
-
         - `type: "namespace"`
 
           The type of the tool. Always `namespace`.
 
           - `"namespace"`
 
-      - `ToolSearch = object { type, description, execution, parameters }`
+      - `ToolSearch object { type, description, execution, parameters }`
 
         Hosted or BYOT tool search configuration for deferred tools.
 
@@ -2329,7 +1983,7 @@ Create a conversation.
 
           Parameter schema for a client-executed tool search tool.
 
-      - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+      - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
         This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -2383,7 +2037,7 @@ Create a conversation.
 
             The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-      - `ApplyPatch = object { type }`
+      - `ApplyPatch object { type }`
 
         Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -2425,7 +2079,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `Reasoning = object { id, summary, type, 3 more }`
+  - `Reasoning object { id, summary, type, 3 more }`
 
     A description of the chain of thought used by a reasoning model while generating
     a response. Be sure to include these items in your `input` to the Responses API
@@ -2486,7 +2140,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `Compaction = object { encrypted_content, type, id }`
+  - `Compaction object { encrypted_content, type, id }`
 
     A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -2504,7 +2158,7 @@ Create a conversation.
 
       The ID of the compaction item.
 
-  - `ImageGenerationCall = object { id, result, status, type }`
+  - `ImageGenerationCall object { id, result, status, type }`
 
     An image generation request made by the model.
 
@@ -2534,7 +2188,7 @@ Create a conversation.
 
       - `"image_generation_call"`
 
-  - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+  - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
     A tool call to run code.
 
@@ -2555,7 +2209,7 @@ Create a conversation.
       The outputs generated by the code interpreter, such as logs or images.
       Can be null if no outputs are available.
 
-      - `Logs = object { logs, type }`
+      - `Logs object { logs, type }`
 
         The logs output from the code interpreter.
 
@@ -2569,7 +2223,7 @@ Create a conversation.
 
           - `"logs"`
 
-      - `Image = object { type, url }`
+      - `Image object { type, url }`
 
         The image output from the code interpreter.
 
@@ -2603,7 +2257,7 @@ Create a conversation.
 
       - `"code_interpreter_call"`
 
-  - `LocalShellCall = object { id, action, call_id, 2 more }`
+  - `LocalShellCall object { id, action, call_id, 2 more }`
 
     A tool call to run a command on the local shell.
 
@@ -2661,7 +2315,7 @@ Create a conversation.
 
       - `"local_shell_call"`
 
-  - `LocalShellCallOutput = object { id, output, type, status }`
+  - `LocalShellCallOutput object { id, output, type, status }`
 
     The output of a local shell tool call.
 
@@ -2689,7 +2343,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ShellCall = object { action, call_id, type, 3 more }`
+  - `ShellCall object { action, call_id, type, 3 more }`
 
     A tool representing a request to execute one or more shell commands.
 
@@ -2727,41 +2381,9 @@ Create a conversation.
 
       The environment to execute the shell commands in.
 
-      - `LocalEnvironment = object { type, skills }`
+      - `LocalEnvironment object { type, skills }`
 
-        - `type: "local"`
-
-          Use a local computer environment.
-
-          - `"local"`
-
-        - `skills: optional array of LocalSkill`
-
-          An optional list of skills.
-
-          - `description: string`
-
-            The description of the skill.
-
-          - `name: string`
-
-            The name of the skill.
-
-          - `path: string`
-
-            The path to the directory containing the skill.
-
-      - `ContainerReference = object { container_id, type }`
-
-        - `container_id: string`
-
-          The ID of the referenced container.
-
-        - `type: "container_reference"`
-
-          References a container created with the /v1/containers endpoint
-
-          - `"container_reference"`
+      - `ContainerReference object { container_id, type }`
 
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -2773,7 +2395,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ShellCallOutput = object { call_id, output, type, 3 more }`
+  - `ShellCallOutput object { call_id, output, type, 3 more }`
 
     The streamed output items emitted by a shell tool call.
 
@@ -2789,7 +2411,7 @@ Create a conversation.
 
         The exit or timeout outcome associated with this shell call.
 
-        - `Timeout = object { type }`
+        - `Timeout object { type }`
 
           Indicates that the shell call exceeded its configured time limit.
 
@@ -2799,7 +2421,7 @@ Create a conversation.
 
             - `"timeout"`
 
-        - `Exit = object { exit_code, type }`
+        - `Exit object { exit_code, type }`
 
           Indicates that the shell commands finished and returned an exit code.
 
@@ -2845,7 +2467,7 @@ Create a conversation.
 
       - `"incomplete"`
 
-  - `ApplyPatchCall = object { call_id, operation, status, 2 more }`
+  - `ApplyPatchCall object { call_id, operation, status, 2 more }`
 
     A tool call representing a request to create, delete, or update files using diff patches.
 
@@ -2857,7 +2479,7 @@ Create a conversation.
 
       The specific create, delete, or update instruction for the apply_patch tool call.
 
-      - `CreateFile = object { diff, path, type }`
+      - `CreateFile object { diff, path, type }`
 
         Instruction for creating a new file via the apply_patch tool.
 
@@ -2875,7 +2497,7 @@ Create a conversation.
 
           - `"create_file"`
 
-      - `DeleteFile = object { path, type }`
+      - `DeleteFile object { path, type }`
 
         Instruction for deleting an existing file via the apply_patch tool.
 
@@ -2889,7 +2511,7 @@ Create a conversation.
 
           - `"delete_file"`
 
-      - `UpdateFile = object { diff, path, type }`
+      - `UpdateFile object { diff, path, type }`
 
         Instruction for updating an existing file via the apply_patch tool.
 
@@ -2925,7 +2547,7 @@ Create a conversation.
 
       The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
-  - `ApplyPatchCallOutput = object { call_id, status, type, 2 more }`
+  - `ApplyPatchCallOutput object { call_id, status, type, 2 more }`
 
     The streamed output emitted by an apply patch tool call.
 
@@ -2955,7 +2577,7 @@ Create a conversation.
 
       Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
 
-  - `McpListTools = object { id, server_label, tools, 2 more }`
+  - `McpListTools object { id, server_label, tools, 2 more }`
 
     A list of tools available on an MCP server.
 
@@ -2997,7 +2619,7 @@ Create a conversation.
 
       Error message if the server could not list tools.
 
-  - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+  - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
     A request for human approval of a tool invocation.
 
@@ -3023,7 +2645,7 @@ Create a conversation.
 
       - `"mcp_approval_request"`
 
-  - `McpApprovalResponse = object { approval_request_id, approve, type, 2 more }`
+  - `McpApprovalResponse object { approval_request_id, approve, type, 2 more }`
 
     A response to an MCP approval request.
 
@@ -3049,7 +2671,7 @@ Create a conversation.
 
       Optional reason for the decision.
 
-  - `McpCall = object { id, arguments, name, 6 more }`
+  - `McpCall object { id, arguments, name, 6 more }`
 
     An invocation of a tool on an MCP server.
 
@@ -3102,7 +2724,7 @@ Create a conversation.
 
       - `"failed"`
 
-  - `CustomToolCallOutput = object { call_id, output, type, id }`
+  - `CustomToolCallOutput object { call_id, output, type, id }`
 
     The output of a custom tool call from your code, being sent back to the model.
 
@@ -3123,83 +2745,17 @@ Create a conversation.
 
         Text, image, or file output of the custom tool call.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -3211,7 +2767,7 @@ Create a conversation.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
-  - `CustomToolCall = object { call_id, input, name, 3 more }`
+  - `CustomToolCall object { call_id, input, name, 3 more }`
 
     A call to a custom tool created by the model.
 
@@ -3241,7 +2797,7 @@ Create a conversation.
 
       The namespace of the custom tool being called.
 
-  - `ItemReference = object { id, type }`
+  - `ItemReference object { id, type }`
 
     An internal identifier for an item to reference.
 
@@ -3266,7 +2822,7 @@ Create a conversation.
 
 ### Returns
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 
@@ -3347,7 +2903,7 @@ Get a conversation
 
 ### Returns
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 
@@ -3427,7 +2983,7 @@ Update a conversation
 
 ### Returns
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 
@@ -3506,7 +3062,7 @@ Delete a conversation. Items in the conversation will not be deleted.
 
 ### Returns
 
-- `ConversationDeletedResource = object { id, deleted, object }`
+- `ConversationDeletedResource object { id, deleted, object }`
 
   - `id: string`
 
@@ -3555,7 +3111,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Computer Screenshot Content
 
-- `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+- `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
   A screenshot of a computer.
 
@@ -3587,7 +3143,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Conversation
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 
@@ -3610,7 +3166,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Conversation Deleted
 
-- `ConversationDeleted = object { id, deleted, object }`
+- `ConversationDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -3622,7 +3178,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Conversation Deleted Resource
 
-- `ConversationDeletedResource = object { id, deleted, object }`
+- `ConversationDeletedResource object { id, deleted, object }`
 
   - `id: string`
 
@@ -3634,7 +3190,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Message
 
-- `Message = object { id, content, role, 3 more }`
+- `Message object { id, content, role, 3 more }`
 
   A message to or from the model.
 
@@ -3646,7 +3202,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
     The content of the message
 
-    - `ResponseInputText = object { text, type }`
+    - `ResponseInputText object { text, type }`
 
       A text input to the model.
 
@@ -3660,7 +3216,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"input_text"`
 
-    - `ResponseOutputText = object { annotations, logprobs, text, type }`
+    - `ResponseOutputText object { annotations, logprobs, text, type }`
 
       A text output from the model.
 
@@ -3668,7 +3224,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         The annotations of the text output.
 
-        - `FileCitation = object { file_id, filename, index, type }`
+        - `FileCitation object { file_id, filename, index, type }`
 
           A citation to a file.
 
@@ -3690,7 +3246,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
             - `"file_citation"`
 
-        - `URLCitation = object { end_index, start_index, title, 2 more }`
+        - `URLCitation object { end_index, start_index, title, 2 more }`
 
           A citation for a web resource used to generate a model response.
 
@@ -3716,7 +3272,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
             The URL of the web resource.
 
-        - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+        - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
           A citation for a container file used to generate a model response.
 
@@ -3746,7 +3302,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
             - `"container_file_citation"`
 
-        - `FilePath = object { file_id, index, type }`
+        - `FilePath object { file_id, index, type }`
 
           A path to a file.
 
@@ -3790,7 +3346,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"output_text"`
 
-    - `TextContent = object { text, type }`
+    - `TextContent object { text, type }`
 
       A text content.
 
@@ -3800,7 +3356,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"text"`
 
-    - `SummaryTextContent = object { text, type }`
+    - `SummaryTextContent object { text, type }`
 
       A summary text from the model.
 
@@ -3814,7 +3370,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"summary_text"`
 
-    - `ReasoningText = object { text, type }`
+    - `ReasoningText object { text, type }`
 
       Reasoning text from the model.
 
@@ -3828,7 +3384,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"reasoning_text"`
 
-    - `ResponseOutputRefusal = object { refusal, type }`
+    - `ResponseOutputRefusal object { refusal, type }`
 
       A refusal from the model.
 
@@ -3842,7 +3398,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"refusal"`
 
-    - `ResponseInputImage = object { detail, type, file_id, image_url }`
+    - `ResponseInputImage object { detail, type, file_id, image_url }`
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -3872,7 +3428,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-    - `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+    - `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
       A screenshot of a computer.
 
@@ -3902,7 +3458,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
         - `"computer_screenshot"`
 
-    - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+    - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
       A file input to the model.
 
@@ -3982,7 +3538,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Summary Text Content
 
-- `SummaryTextContent = object { text, type }`
+- `SummaryTextContent object { text, type }`
 
   A summary text from the model.
 
@@ -3998,7 +3554,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123 \
 
 ### Text Content
 
-- `TextContent = object { text, type }`
+- `TextContent object { text, type }`
 
   A text content.
 
@@ -4049,7 +3605,7 @@ Create items in a conversation with the given ID.
 
   The items to add to the conversation. You may add up to 20 items at a time.
 
-  - `EasyInputMessage = object { content, role, phase, type }`
+  - `EasyInputMessage object { content, role, phase, type }`
 
     A message input to the model with a role indicating instruction following
     hierarchy. Instructions given with the `developer` or `system` role take
@@ -4071,7 +3627,7 @@ Create items in a conversation with the given ID.
         A list of one or many input items to the model, containing different content
         types.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -4085,7 +3641,7 @@ Create items in a conversation with the given ID.
 
             - `"input_text"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -4115,7 +3671,7 @@ Create items in a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -4178,7 +3734,7 @@ Create items in a conversation with the given ID.
 
       - `"message"`
 
-  - `Message = object { content, role, status, type }`
+  - `Message object { content, role, status, type }`
 
     A message input to the model with a role indicating instruction following
     hierarchy. Instructions given with the `developer` or `system` role take
@@ -4188,84 +3744,6 @@ Create items in a conversation with the given ID.
 
       A list of one or many input items to the model, containing different content
       types.
-
-      - `ResponseInputText = object { text, type }`
-
-        A text input to the model.
-
-        - `text: string`
-
-          The text input to the model.
-
-        - `type: "input_text"`
-
-          The type of the input item. Always `input_text`.
-
-          - `"input_text"`
-
-      - `ResponseInputImage = object { detail, type, file_id, image_url }`
-
-        An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-        - `detail: "low" or "high" or "auto" or "original"`
-
-          The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-          - `"low"`
-
-          - `"high"`
-
-          - `"auto"`
-
-          - `"original"`
-
-        - `type: "input_image"`
-
-          The type of the input item. Always `input_image`.
-
-          - `"input_image"`
-
-        - `file_id: optional string`
-
-          The ID of the file to be sent to the model.
-
-        - `image_url: optional string`
-
-          The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
-
-        A file input to the model.
-
-        - `type: "input_file"`
-
-          The type of the input item. Always `input_file`.
-
-          - `"input_file"`
-
-        - `detail: optional "low" or "high"`
-
-          The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-          - `"low"`
-
-          - `"high"`
-
-        - `file_data: optional string`
-
-          The content of the file to be sent to the model.
-
-        - `file_id: optional string`
-
-          The ID of the file to be sent to the model.
-
-        - `file_url: optional string`
-
-          The URL of the file to be sent to the model.
-
-        - `filename: optional string`
-
-          The name of the file to be sent to the model.
 
     - `role: "user" or "system" or "developer"`
 
@@ -4294,7 +3772,7 @@ Create items in a conversation with the given ID.
 
       - `"message"`
 
-  - `ResponseOutputMessage = object { id, content, role, 3 more }`
+  - `ResponseOutputMessage object { id, content, role, 3 more }`
 
     An output message from the model.
 
@@ -4306,7 +3784,7 @@ Create items in a conversation with the given ID.
 
       The content of the output message.
 
-      - `ResponseOutputText = object { annotations, logprobs, text, type }`
+      - `ResponseOutputText object { annotations, logprobs, text, type }`
 
         A text output from the model.
 
@@ -4314,7 +3792,7 @@ Create items in a conversation with the given ID.
 
           The annotations of the text output.
 
-          - `FileCitation = object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             A citation to a file.
 
@@ -4336,7 +3814,7 @@ Create items in a conversation with the given ID.
 
               - `"file_citation"`
 
-          - `URLCitation = object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             A citation for a web resource used to generate a model response.
 
@@ -4362,7 +3840,7 @@ Create items in a conversation with the given ID.
 
               The URL of the web resource.
 
-          - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             A citation for a container file used to generate a model response.
 
@@ -4392,7 +3870,7 @@ Create items in a conversation with the given ID.
 
               - `"container_file_citation"`
 
-          - `FilePath = object { file_id, index, type }`
+          - `FilePath object { file_id, index, type }`
 
             A path to a file.
 
@@ -4436,7 +3914,7 @@ Create items in a conversation with the given ID.
 
           - `"output_text"`
 
-      - `ResponseOutputRefusal = object { refusal, type }`
+      - `ResponseOutputRefusal object { refusal, type }`
 
         A refusal from the model.
 
@@ -4483,7 +3961,7 @@ Create items in a conversation with the given ID.
 
       - `"final_answer"`
 
-  - `FileSearchCall = object { id, queries, status, 2 more }`
+  - `FileSearchCall object { id, queries, status, 2 more }`
 
     The results of a file search tool call. See the
     [file search guide](/docs/guides/tools-file-search) for more information.
@@ -4551,7 +4029,7 @@ Create items in a conversation with the given ID.
 
         The text that was retrieved from the file.
 
-  - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+  - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
     A tool call to a computer use tool. See the
     [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -4601,7 +4079,7 @@ Create items in a conversation with the given ID.
 
       A click action.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
@@ -4637,7 +4115,7 @@ Create items in a conversation with the given ID.
 
           The keys being held while clicking.
 
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
@@ -4659,7 +4137,7 @@ Create items in a conversation with the given ID.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
@@ -4692,7 +4170,7 @@ Create items in a conversation with the given ID.
 
           The keys being held while dragging the mouse.
 
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
@@ -4706,7 +4184,7 @@ Create items in a conversation with the given ID.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -4728,7 +4206,7 @@ Create items in a conversation with the given ID.
 
           The keys being held while moving the mouse.
 
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
@@ -4738,7 +4216,7 @@ Create items in a conversation with the given ID.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -4768,7 +4246,7 @@ Create items in a conversation with the given ID.
 
           The keys being held while scrolling.
 
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
@@ -4782,7 +4260,7 @@ Create items in a conversation with the given ID.
 
           - `"type"`
 
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
@@ -4797,198 +4275,43 @@ Create items in a conversation with the given ID.
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
-        - `button: "left" or "right" or "wheel" or 2 more`
-
-          Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-          - `"left"`
-
-          - `"right"`
-
-          - `"wheel"`
-
-          - `"back"`
-
-          - `"forward"`
-
-        - `type: "click"`
-
-          Specifies the event type. For a click action, this property is always `click`.
-
-          - `"click"`
-
-        - `x: number`
-
-          The x-coordinate where the click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the click occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while clicking.
-
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
-        - `keys: array of string`
-
-          The keys being held while double-clicking.
-
-        - `type: "double_click"`
-
-          Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-          - `"double_click"`
-
-        - `x: number`
-
-          The x-coordinate where the double click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the double click occurred.
-
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
-        - `path: array of object { x, y }`
-
-          An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-          ```
-          [
-            { x: 100, y: 200 },
-            { x: 200, y: 300 }
-          ]
-          ```
-
-          - `x: number`
-
-            The x-coordinate.
-
-          - `y: number`
-
-            The y-coordinate.
-
-        - `type: "drag"`
-
-          Specifies the event type. For a drag action, this property is always set to `drag`.
-
-          - `"drag"`
-
-        - `keys: optional array of string`
-
-          The keys being held while dragging the mouse.
-
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
-        - `keys: array of string`
-
-          The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-        - `type: "keypress"`
-
-          Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-          - `"keypress"`
-
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
-        - `type: "move"`
-
-          Specifies the event type. For a move action, this property is always set to `move`.
-
-          - `"move"`
-
-        - `x: number`
-
-          The x-coordinate to move to.
-
-        - `y: number`
-
-          The y-coordinate to move to.
-
-        - `keys: optional array of string`
-
-          The keys being held while moving the mouse.
-
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
-        - `type: "screenshot"`
-
-          Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-          - `"screenshot"`
-
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
-        - `scroll_x: number`
-
-          The horizontal scroll distance.
-
-        - `scroll_y: number`
-
-          The vertical scroll distance.
-
-        - `type: "scroll"`
-
-          Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-          - `"scroll"`
-
-        - `x: number`
-
-          The x-coordinate where the scroll occurred.
-
-        - `y: number`
-
-          The y-coordinate where the scroll occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while scrolling.
-
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
-        - `text: string`
-
-          The text to type.
-
-        - `type: "type"`
-
-          Specifies the event type. For a type action, this property is always set to `type`.
-
-          - `"type"`
-
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
-        - `type: "wait"`
-
-          Specifies the event type. For a wait action, this property is always set to `wait`.
-
-          - `"wait"`
-
-  - `ComputerCallOutput = object { call_id, output, type, 3 more }`
+  - `ComputerCallOutput object { call_id, output, type, 3 more }`
 
     The output of a computer tool call.
 
@@ -5051,7 +4374,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `WebSearchCall = object { id, action, status, type }`
+  - `WebSearchCall object { id, action, status, type }`
 
     The results of a web search tool call. See the
     [web search guide](/docs/guides/tools-web-search) for more information.
@@ -5065,7 +4388,7 @@ Create items in a conversation with the given ID.
       An object describing the specific action taken in this web search call.
       Includes details on how the model used the web (search, open_page, find_in_page).
 
-      - `Search = object { query, type, queries, sources }`
+      - `Search object { query, type, queries, sources }`
 
         Action type "search" - Performs a web search query.
 
@@ -5097,7 +4420,7 @@ Create items in a conversation with the given ID.
 
             The URL of the source.
 
-      - `OpenPage = object { type, url }`
+      - `OpenPage object { type, url }`
 
         Action type "open_page" - Opens a specific URL from search results.
 
@@ -5111,7 +4434,7 @@ Create items in a conversation with the given ID.
 
           The URL opened by the model.
 
-      - `FindInPage = object { pattern, type, url }`
+      - `FindInPage object { pattern, type, url }`
 
         Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -5147,7 +4470,7 @@ Create items in a conversation with the given ID.
 
       - `"web_search_call"`
 
-  - `FunctionCall = object { arguments, call_id, name, 4 more }`
+  - `FunctionCall object { arguments, call_id, name, 4 more }`
 
     A tool call to run a function. See the
     [function calling guide](/docs/guides/function-calling) for more information.
@@ -5189,7 +4512,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `FunctionCallOutput = object { call_id, output, type, 2 more }`
+  - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
     The output of a function tool call.
 
@@ -5209,7 +4532,7 @@ Create items in a conversation with the given ID.
 
         An array of content outputs (text, image, file) for the function tool call.
 
-        - `ResponseInputTextContent = object { text, type }`
+        - `ResponseInputTextContent object { text, type }`
 
           A text input to the model.
 
@@ -5223,7 +4546,7 @@ Create items in a conversation with the given ID.
 
             - `"input_text"`
 
-        - `ResponseInputImageContent = object { type, detail, file_id, image_url }`
+        - `ResponseInputImageContent object { type, detail, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision)
 
@@ -5253,7 +4576,7 @@ Create items in a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ResponseInputFileContent = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFileContent object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -5307,7 +4630,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `ToolSearchCall = object { arguments, type, id, 3 more }`
+  - `ToolSearchCall object { arguments, type, id, 3 more }`
 
     - `arguments: unknown`
 
@@ -5345,13 +4668,13 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `ToolSearchOutput = object { tools, type, id, 3 more }`
+  - `ToolSearchOutput object { tools, type, id, 3 more }`
 
     - `tools: array of object { name, parameters, strict, 3 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 12 more`
 
       The loaded tool definitions returned by the tool search output.
 
-      - `Function = object { name, parameters, strict, 3 more }`
+      - `Function object { name, parameters, strict, 3 more }`
 
         Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -5381,7 +4704,7 @@ Create items in a conversation with the given ID.
 
           A description of the function. Used by the model to determine whether or not to call the function.
 
-      - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+      - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
         A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -5399,7 +4722,7 @@ Create items in a conversation with the given ID.
 
           A filter to apply.
 
-          - `ComparisonFilter = object { key, type, value }`
+          - `ComparisonFilter object { key, type, value }`
 
             A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -5452,7 +4775,7 @@ Create items in a conversation with the given ID.
 
                 - `number`
 
-          - `CompoundFilter = object { filters, type }`
+          - `CompoundFilter object { filters, type }`
 
             Combine multiple filters using `and` or `or`.
 
@@ -5460,58 +4783,9 @@ Create items in a conversation with the given ID.
 
               Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-              - `ComparisonFilter = object { key, type, value }`
+              - `ComparisonFilter object { key, type, value }`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" or "ne" or "gt" or 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string or number or boolean or array of string or number`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `array of string or number`
-
-                    - `string`
-
-                    - `number`
 
               - `unknown`
 
@@ -5555,7 +4829,7 @@ Create items in a conversation with the given ID.
 
             The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-      - `Computer = object { type }`
+      - `Computer object { type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -5565,7 +4839,7 @@ Create items in a conversation with the given ID.
 
           - `"computer"`
 
-      - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+      - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -5597,7 +4871,7 @@ Create items in a conversation with the given ID.
 
           - `"computer_use_preview"`
 
-      - `WebSearch = object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, filters, search_context_size, user_location }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -5657,7 +4931,7 @@ Create items in a conversation with the given ID.
 
             - `"approximate"`
 
-      - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+      - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -5680,7 +4954,7 @@ Create items in a conversation with the given ID.
 
             A string array of allowed tool names
 
-          - `McpToolFilter = object { read_only, tool_names }`
+          - `McpToolFilter object { read_only, tool_names }`
 
             A filter object to specify which tools are allowed.
 
@@ -5746,7 +5020,7 @@ Create items in a conversation with the given ID.
 
           Specify which of the MCP server's tools require approval.
 
-          - `McpToolApprovalFilter = object { always, never }`
+          - `McpToolApprovalFilter object { always, never }`
 
             Specify which of the MCP server's tools require approval. Can be
             `always`, `never`, or a filter object associated with tools
@@ -5799,7 +5073,7 @@ Create items in a conversation with the given ID.
           The URL for the MCP server. One of `server_url` or `connector_id` must be
           provided.
 
-      - `CodeInterpreter = object { container, type }`
+      - `CodeInterpreter object { container, type }`
 
         A tool that runs Python code to help generate a response to a prompt.
 
@@ -5813,7 +5087,7 @@ Create items in a conversation with the given ID.
 
             The container ID.
 
-          - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+          - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
             Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -5843,7 +5117,7 @@ Create items in a conversation with the given ID.
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
                 - `type: "disabled"`
 
@@ -5851,7 +5125,7 @@ Create items in a conversation with the given ID.
 
                   - `"disabled"`
 
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                 - `allowed_domains: array of string`
 
@@ -5885,7 +5159,7 @@ Create items in a conversation with the given ID.
 
           - `"code_interpreter"`
 
-      - `ImageGeneration = object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 9 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -6006,7 +5280,7 @@ Create items in a conversation with the given ID.
 
           - `"auto"`
 
-      - `LocalShell = object { type }`
+      - `LocalShell object { type }`
 
         A tool that allows the model to execute shell commands in a local environment.
 
@@ -6016,7 +5290,7 @@ Create items in a conversation with the given ID.
 
           - `"local_shell"`
 
-      - `Shell = object { type, environment }`
+      - `Shell object { type, environment }`
 
         A tool that allows the model to execute shell commands.
 
@@ -6028,7 +5302,7 @@ Create items in a conversation with the given ID.
 
         - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-          - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+          - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
             - `type: "container_auto"`
 
@@ -6056,47 +5330,15 @@ Create items in a conversation with the given ID.
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                - `allowed_domains: array of string`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
             - `skills: optional array of SkillReference or InlineSkill`
 
               An optional list of skills referenced by id or inline data.
 
-              - `SkillReference = object { skill_id, type, version }`
+              - `SkillReference object { skill_id, type, version }`
 
                 - `skill_id: string`
 
@@ -6112,7 +5354,7 @@ Create items in a conversation with the given ID.
 
                   Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-              - `InlineSkill = object { description, name, source, type }`
+              - `InlineSkill object { description, name, source, type }`
 
                 - `description: string`
 
@@ -6148,7 +5390,7 @@ Create items in a conversation with the given ID.
 
                   - `"inline"`
 
-          - `LocalEnvironment = object { type, skills }`
+          - `LocalEnvironment object { type, skills }`
 
             - `type: "local"`
 
@@ -6172,7 +5414,7 @@ Create items in a conversation with the given ID.
 
                 The path to the directory containing the skill.
 
-          - `ContainerReference = object { container_id, type }`
+          - `ContainerReference object { container_id, type }`
 
             - `container_id: string`
 
@@ -6184,7 +5426,7 @@ Create items in a conversation with the given ID.
 
               - `"container_reference"`
 
-      - `Custom = object { name, type, defer_loading, 2 more }`
+      - `Custom object { name, type, defer_loading, 2 more }`
 
         A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -6210,7 +5452,7 @@ Create items in a conversation with the given ID.
 
           The input format for the custom tool. Default is unconstrained text.
 
-          - `Text = object { type }`
+          - `Text object { type }`
 
             Unconstrained free-form text.
 
@@ -6220,7 +5462,7 @@ Create items in a conversation with the given ID.
 
               - `"text"`
 
-          - `Grammar = object { definition, syntax, type }`
+          - `Grammar object { definition, syntax, type }`
 
             A grammar defined by the user.
 
@@ -6242,7 +5484,7 @@ Create items in a conversation with the given ID.
 
               - `"grammar"`
 
-      - `Namespace = object { description, name, tools, type }`
+      - `Namespace object { description, name, tools, type }`
 
         Groups function/custom tools under a shared namespace.
 
@@ -6258,7 +5500,7 @@ Create items in a conversation with the given ID.
 
           The function/custom tools available inside this namespace.
 
-          - `Function = object { name, type, defer_loading, 3 more }`
+          - `Function object { name, type, defer_loading, 3 more }`
 
             - `name: string`
 
@@ -6276,7 +5518,7 @@ Create items in a conversation with the given ID.
 
             - `strict: optional boolean`
 
-          - `Custom = object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -6302,45 +5544,13 @@ Create items in a conversation with the given ID.
 
               The input format for the custom tool. Default is unconstrained text.
 
-              - `Text = object { type }`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar = object { definition, syntax, type }`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" or "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
-
         - `type: "namespace"`
 
           The type of the tool. Always `namespace`.
 
           - `"namespace"`
 
-      - `ToolSearch = object { type, description, execution, parameters }`
+      - `ToolSearch object { type, description, execution, parameters }`
 
         Hosted or BYOT tool search configuration for deferred tools.
 
@@ -6366,7 +5576,7 @@ Create items in a conversation with the given ID.
 
           Parameter schema for a client-executed tool search tool.
 
-      - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+      - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
         This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -6420,7 +5630,7 @@ Create items in a conversation with the given ID.
 
             The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-      - `ApplyPatch = object { type }`
+      - `ApplyPatch object { type }`
 
         Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -6462,7 +5672,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `Reasoning = object { id, summary, type, 3 more }`
+  - `Reasoning object { id, summary, type, 3 more }`
 
     A description of the chain of thought used by a reasoning model while generating
     a response. Be sure to include these items in your `input` to the Responses API
@@ -6523,7 +5733,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `Compaction = object { encrypted_content, type, id }`
+  - `Compaction object { encrypted_content, type, id }`
 
     A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -6541,7 +5751,7 @@ Create items in a conversation with the given ID.
 
       The ID of the compaction item.
 
-  - `ImageGenerationCall = object { id, result, status, type }`
+  - `ImageGenerationCall object { id, result, status, type }`
 
     An image generation request made by the model.
 
@@ -6571,7 +5781,7 @@ Create items in a conversation with the given ID.
 
       - `"image_generation_call"`
 
-  - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+  - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
     A tool call to run code.
 
@@ -6592,7 +5802,7 @@ Create items in a conversation with the given ID.
       The outputs generated by the code interpreter, such as logs or images.
       Can be null if no outputs are available.
 
-      - `Logs = object { logs, type }`
+      - `Logs object { logs, type }`
 
         The logs output from the code interpreter.
 
@@ -6606,7 +5816,7 @@ Create items in a conversation with the given ID.
 
           - `"logs"`
 
-      - `Image = object { type, url }`
+      - `Image object { type, url }`
 
         The image output from the code interpreter.
 
@@ -6640,7 +5850,7 @@ Create items in a conversation with the given ID.
 
       - `"code_interpreter_call"`
 
-  - `LocalShellCall = object { id, action, call_id, 2 more }`
+  - `LocalShellCall object { id, action, call_id, 2 more }`
 
     A tool call to run a command on the local shell.
 
@@ -6698,7 +5908,7 @@ Create items in a conversation with the given ID.
 
       - `"local_shell_call"`
 
-  - `LocalShellCallOutput = object { id, output, type, status }`
+  - `LocalShellCallOutput object { id, output, type, status }`
 
     The output of a local shell tool call.
 
@@ -6726,7 +5936,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `ShellCall = object { action, call_id, type, 3 more }`
+  - `ShellCall object { action, call_id, type, 3 more }`
 
     A tool representing a request to execute one or more shell commands.
 
@@ -6764,41 +5974,9 @@ Create items in a conversation with the given ID.
 
       The environment to execute the shell commands in.
 
-      - `LocalEnvironment = object { type, skills }`
+      - `LocalEnvironment object { type, skills }`
 
-        - `type: "local"`
-
-          Use a local computer environment.
-
-          - `"local"`
-
-        - `skills: optional array of LocalSkill`
-
-          An optional list of skills.
-
-          - `description: string`
-
-            The description of the skill.
-
-          - `name: string`
-
-            The name of the skill.
-
-          - `path: string`
-
-            The path to the directory containing the skill.
-
-      - `ContainerReference = object { container_id, type }`
-
-        - `container_id: string`
-
-          The ID of the referenced container.
-
-        - `type: "container_reference"`
-
-          References a container created with the /v1/containers endpoint
-
-          - `"container_reference"`
+      - `ContainerReference object { container_id, type }`
 
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -6810,7 +5988,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `ShellCallOutput = object { call_id, output, type, 3 more }`
+  - `ShellCallOutput object { call_id, output, type, 3 more }`
 
     The streamed output items emitted by a shell tool call.
 
@@ -6826,7 +6004,7 @@ Create items in a conversation with the given ID.
 
         The exit or timeout outcome associated with this shell call.
 
-        - `Timeout = object { type }`
+        - `Timeout object { type }`
 
           Indicates that the shell call exceeded its configured time limit.
 
@@ -6836,7 +6014,7 @@ Create items in a conversation with the given ID.
 
             - `"timeout"`
 
-        - `Exit = object { exit_code, type }`
+        - `Exit object { exit_code, type }`
 
           Indicates that the shell commands finished and returned an exit code.
 
@@ -6882,7 +6060,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `ApplyPatchCall = object { call_id, operation, status, 2 more }`
+  - `ApplyPatchCall object { call_id, operation, status, 2 more }`
 
     A tool call representing a request to create, delete, or update files using diff patches.
 
@@ -6894,7 +6072,7 @@ Create items in a conversation with the given ID.
 
       The specific create, delete, or update instruction for the apply_patch tool call.
 
-      - `CreateFile = object { diff, path, type }`
+      - `CreateFile object { diff, path, type }`
 
         Instruction for creating a new file via the apply_patch tool.
 
@@ -6912,7 +6090,7 @@ Create items in a conversation with the given ID.
 
           - `"create_file"`
 
-      - `DeleteFile = object { path, type }`
+      - `DeleteFile object { path, type }`
 
         Instruction for deleting an existing file via the apply_patch tool.
 
@@ -6926,7 +6104,7 @@ Create items in a conversation with the given ID.
 
           - `"delete_file"`
 
-      - `UpdateFile = object { diff, path, type }`
+      - `UpdateFile object { diff, path, type }`
 
         Instruction for updating an existing file via the apply_patch tool.
 
@@ -6962,7 +6140,7 @@ Create items in a conversation with the given ID.
 
       The unique ID of the apply patch tool call. Populated when this item is returned via API.
 
-  - `ApplyPatchCallOutput = object { call_id, status, type, 2 more }`
+  - `ApplyPatchCallOutput object { call_id, status, type, 2 more }`
 
     The streamed output emitted by an apply patch tool call.
 
@@ -6992,7 +6170,7 @@ Create items in a conversation with the given ID.
 
       Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
 
-  - `McpListTools = object { id, server_label, tools, 2 more }`
+  - `McpListTools object { id, server_label, tools, 2 more }`
 
     A list of tools available on an MCP server.
 
@@ -7034,7 +6212,7 @@ Create items in a conversation with the given ID.
 
       Error message if the server could not list tools.
 
-  - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+  - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
     A request for human approval of a tool invocation.
 
@@ -7060,7 +6238,7 @@ Create items in a conversation with the given ID.
 
       - `"mcp_approval_request"`
 
-  - `McpApprovalResponse = object { approval_request_id, approve, type, 2 more }`
+  - `McpApprovalResponse object { approval_request_id, approve, type, 2 more }`
 
     A response to an MCP approval request.
 
@@ -7086,7 +6264,7 @@ Create items in a conversation with the given ID.
 
       Optional reason for the decision.
 
-  - `McpCall = object { id, arguments, name, 6 more }`
+  - `McpCall object { id, arguments, name, 6 more }`
 
     An invocation of a tool on an MCP server.
 
@@ -7139,7 +6317,7 @@ Create items in a conversation with the given ID.
 
       - `"failed"`
 
-  - `CustomToolCallOutput = object { call_id, output, type, id }`
+  - `CustomToolCallOutput object { call_id, output, type, id }`
 
     The output of a custom tool call from your code, being sent back to the model.
 
@@ -7160,83 +6338,17 @@ Create items in a conversation with the given ID.
 
         Text, image, or file output of the custom tool call.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -7248,7 +6360,7 @@ Create items in a conversation with the given ID.
 
       The unique ID of the custom tool call output in the OpenAI platform.
 
-  - `CustomToolCall = object { call_id, input, name, 3 more }`
+  - `CustomToolCall object { call_id, input, name, 3 more }`
 
     A call to a custom tool created by the model.
 
@@ -7278,7 +6390,7 @@ Create items in a conversation with the given ID.
 
       The namespace of the custom tool being called.
 
-  - `ItemReference = object { id, type }`
+  - `ItemReference object { id, type }`
 
     An internal identifier for an item to reference.
 
@@ -7294,7 +6406,7 @@ Create items in a conversation with the given ID.
 
 ### Returns
 
-- `ConversationItemList = object { data, first_id, has_more, 2 more }`
+- `ConversationItemList object { data, first_id, has_more, 2 more }`
 
   A list of Conversation items.
 
@@ -7302,7 +6414,7 @@ Create items in a conversation with the given ID.
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 3 more }`
+    - `Message object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -7314,7 +6426,7 @@ Create items in a conversation with the given ID.
 
         The content of the message
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -7328,7 +6440,7 @@ Create items in a conversation with the given ID.
 
             - `"input_text"`
 
-        - `ResponseOutputText = object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -7336,7 +6448,7 @@ Create items in a conversation with the given ID.
 
             The annotations of the text output.
 
-            - `FileCitation = object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               A citation to a file.
 
@@ -7358,7 +6470,7 @@ Create items in a conversation with the given ID.
 
                 - `"file_citation"`
 
-            - `URLCitation = object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               A citation for a web resource used to generate a model response.
 
@@ -7384,7 +6496,7 @@ Create items in a conversation with the given ID.
 
                 The URL of the web resource.
 
-            - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               A citation for a container file used to generate a model response.
 
@@ -7414,7 +6526,7 @@ Create items in a conversation with the given ID.
 
                 - `"container_file_citation"`
 
-            - `FilePath = object { file_id, index, type }`
+            - `FilePath object { file_id, index, type }`
 
               A path to a file.
 
@@ -7458,7 +6570,7 @@ Create items in a conversation with the given ID.
 
             - `"output_text"`
 
-        - `TextContent = object { text, type }`
+        - `TextContent object { text, type }`
 
           A text content.
 
@@ -7468,7 +6580,7 @@ Create items in a conversation with the given ID.
 
             - `"text"`
 
-        - `SummaryTextContent = object { text, type }`
+        - `SummaryTextContent object { text, type }`
 
           A summary text from the model.
 
@@ -7482,7 +6594,7 @@ Create items in a conversation with the given ID.
 
             - `"summary_text"`
 
-        - `ReasoningText = object { text, type }`
+        - `ReasoningText object { text, type }`
 
           Reasoning text from the model.
 
@@ -7496,7 +6608,7 @@ Create items in a conversation with the given ID.
 
             - `"reasoning_text"`
 
-        - `ResponseOutputRefusal = object { refusal, type }`
+        - `ResponseOutputRefusal object { refusal, type }`
 
           A refusal from the model.
 
@@ -7510,7 +6622,7 @@ Create items in a conversation with the given ID.
 
             - `"refusal"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -7540,7 +6652,7 @@ Create items in a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+        - `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
           A screenshot of a computer.
 
@@ -7570,7 +6682,7 @@ Create items in a conversation with the given ID.
 
             - `"computer_screenshot"`
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -7648,7 +6760,7 @@ Create items in a conversation with the given ID.
 
         - `"final_answer"`
 
-    - `FunctionCall = object { id, arguments, call_id, 5 more }`
+    - `FunctionCall object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -7691,7 +6803,7 @@ Create items in a conversation with the given ID.
 
         The namespace of the function to run.
 
-    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+    - `FunctionCallOutput object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -7714,83 +6826,17 @@ Create items in a conversation with the given ID.
 
           Text, image, or file output of the function call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -7813,7 +6859,7 @@ Create items in a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `FileSearchCall = object { id, queries, status, 2 more }`
+    - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
       [file search guide](/docs/guides/tools-file-search) for more information.
@@ -7881,7 +6927,7 @@ Create items in a conversation with the given ID.
 
           The text that was retrieved from the file.
 
-    - `WebSearchCall = object { id, action, status, type }`
+    - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
       [web search guide](/docs/guides/tools-web-search) for more information.
@@ -7895,7 +6941,7 @@ Create items in a conversation with the given ID.
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
 
-        - `Search = object { query, type, queries, sources }`
+        - `Search object { query, type, queries, sources }`
 
           Action type "search" - Performs a web search query.
 
@@ -7927,7 +6973,7 @@ Create items in a conversation with the given ID.
 
               The URL of the source.
 
-        - `OpenPage = object { type, url }`
+        - `OpenPage object { type, url }`
 
           Action type "open_page" - Opens a specific URL from search results.
 
@@ -7941,7 +6987,7 @@ Create items in a conversation with the given ID.
 
             The URL opened by the model.
 
-        - `FindInPage = object { pattern, type, url }`
+        - `FindInPage object { pattern, type, url }`
 
           Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -7977,7 +7023,7 @@ Create items in a conversation with the given ID.
 
         - `"web_search_call"`
 
-    - `ImageGenerationCall = object { id, result, status, type }`
+    - `ImageGenerationCall object { id, result, status, type }`
 
       An image generation request made by the model.
 
@@ -8007,7 +7053,7 @@ Create items in a conversation with the given ID.
 
         - `"image_generation_call"`
 
-    - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
       [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -8057,7 +7103,7 @@ Create items in a conversation with the given ID.
 
         A click action.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
@@ -8093,7 +7139,7 @@ Create items in a conversation with the given ID.
 
             The keys being held while clicking.
 
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
@@ -8115,7 +7161,7 @@ Create items in a conversation with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
@@ -8148,7 +7194,7 @@ Create items in a conversation with the given ID.
 
             The keys being held while dragging the mouse.
 
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
@@ -8162,7 +7208,7 @@ Create items in a conversation with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -8184,7 +7230,7 @@ Create items in a conversation with the given ID.
 
             The keys being held while moving the mouse.
 
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
@@ -8194,7 +7240,7 @@ Create items in a conversation with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -8224,7 +7270,7 @@ Create items in a conversation with the given ID.
 
             The keys being held while scrolling.
 
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
@@ -8238,7 +7284,7 @@ Create items in a conversation with the given ID.
 
             - `"type"`
 
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
@@ -8253,198 +7299,43 @@ Create items in a conversation with the given ID.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+    - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -8513,7 +7404,7 @@ Create items in a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
+    - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
       - `id: string`
 
@@ -8555,7 +7446,7 @@ Create items in a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchOutput = object { id, call_id, execution, 4 more }`
+    - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
       - `id: string`
 
@@ -8587,7 +7478,7 @@ Create items in a conversation with the given ID.
 
         The loaded tool definitions returned by tool search.
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -8617,7 +7508,7 @@ Create items in a conversation with the given ID.
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -8635,7 +7526,7 @@ Create items in a conversation with the given ID.
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -8688,7 +7579,7 @@ Create items in a conversation with the given ID.
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -8696,58 +7587,9 @@ Create items in a conversation with the given ID.
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -8791,7 +7633,7 @@ Create items in a conversation with the given ID.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -8801,7 +7643,7 @@ Create items in a conversation with the given ID.
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -8833,7 +7675,7 @@ Create items in a conversation with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -8893,7 +7735,7 @@ Create items in a conversation with the given ID.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -8916,7 +7758,7 @@ Create items in a conversation with the given ID.
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -8982,7 +7824,7 @@ Create items in a conversation with the given ID.
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -9035,7 +7877,7 @@ Create items in a conversation with the given ID.
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -9049,7 +7891,7 @@ Create items in a conversation with the given ID.
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -9079,7 +7921,7 @@ Create items in a conversation with the given ID.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -9087,7 +7929,7 @@ Create items in a conversation with the given ID.
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -9121,7 +7963,7 @@ Create items in a conversation with the given ID.
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -9242,7 +8084,7 @@ Create items in a conversation with the given ID.
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -9252,7 +8094,7 @@ Create items in a conversation with the given ID.
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -9264,7 +8106,7 @@ Create items in a conversation with the given ID.
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -9292,47 +8134,15 @@ Create items in a conversation with the given ID.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -9348,7 +8158,7 @@ Create items in a conversation with the given ID.
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -9384,7 +8194,7 @@ Create items in a conversation with the given ID.
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -9408,7 +8218,7 @@ Create items in a conversation with the given ID.
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -9420,7 +8230,7 @@ Create items in a conversation with the given ID.
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -9446,7 +8256,7 @@ Create items in a conversation with the given ID.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -9456,7 +8266,7 @@ Create items in a conversation with the given ID.
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -9478,7 +8288,7 @@ Create items in a conversation with the given ID.
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -9494,7 +8304,7 @@ Create items in a conversation with the given ID.
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -9512,7 +8322,7 @@ Create items in a conversation with the given ID.
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -9538,45 +8348,13 @@ Create items in a conversation with the given ID.
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -9602,7 +8380,7 @@ Create items in a conversation with the given ID.
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -9656,7 +8434,7 @@ Create items in a conversation with the given ID.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -9676,7 +8454,7 @@ Create items in a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `Reasoning = object { id, summary, type, 3 more }`
+    - `Reasoning object { id, summary, type, 3 more }`
 
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
@@ -9698,8 +8476,6 @@ Create items in a conversation with the given ID.
         - `type: "summary_text"`
 
           The type of the object. Always `summary_text`.
-
-          - `"summary_text"`
 
       - `type: "reasoning"`
 
@@ -9737,7 +8513,7 @@ Create items in a conversation with the given ID.
 
         - `"incomplete"`
 
-    - `Compaction = object { id, encrypted_content, type, created_by }`
+    - `Compaction object { id, encrypted_content, type, created_by }`
 
       A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -9759,7 +8535,7 @@ Create items in a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+    - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
       A tool call to run code.
 
@@ -9780,7 +8556,7 @@ Create items in a conversation with the given ID.
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
 
-        - `Logs = object { logs, type }`
+        - `Logs object { logs, type }`
 
           The logs output from the code interpreter.
 
@@ -9794,7 +8570,7 @@ Create items in a conversation with the given ID.
 
             - `"logs"`
 
-        - `Image = object { type, url }`
+        - `Image object { type, url }`
 
           The image output from the code interpreter.
 
@@ -9828,7 +8604,7 @@ Create items in a conversation with the given ID.
 
         - `"code_interpreter_call"`
 
-    - `LocalShellCall = object { id, action, call_id, 2 more }`
+    - `LocalShellCall object { id, action, call_id, 2 more }`
 
       A tool call to run a command on the local shell.
 
@@ -9886,7 +8662,7 @@ Create items in a conversation with the given ID.
 
         - `"local_shell_call"`
 
-    - `LocalShellCallOutput = object { id, output, type, status }`
+    - `LocalShellCallOutput object { id, output, type, status }`
 
       The output of a local shell tool call.
 
@@ -9914,7 +8690,7 @@ Create items in a conversation with the given ID.
 
         - `"incomplete"`
 
-    - `ShellCall = object { id, action, call_id, 4 more }`
+    - `ShellCall object { id, action, call_id, 4 more }`
 
       A tool call that executes one or more shell commands in a managed environment.
 
@@ -9944,7 +8720,7 @@ Create items in a conversation with the given ID.
 
         Represents the use of a local environment to perform shell actions.
 
-        - `ResponseLocalEnvironment = object { type }`
+        - `ResponseLocalEnvironment object { type }`
 
           Represents the use of a local environment to perform shell actions.
 
@@ -9954,7 +8730,7 @@ Create items in a conversation with the given ID.
 
             - `"local"`
 
-        - `ResponseContainerReference = object { container_id, type }`
+        - `ResponseContainerReference object { container_id, type }`
 
           Represents a container created with /v1/containers.
 
@@ -9986,7 +8762,7 @@ Create items in a conversation with the given ID.
 
         The ID of the entity that created this tool call.
 
-    - `ShellCallOutput = object { id, call_id, max_output_length, 4 more }`
+    - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
 
       The output of a shell tool call that was emitted.
 
@@ -10010,7 +8786,7 @@ Create items in a conversation with the given ID.
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
-          - `Timeout = object { type }`
+          - `Timeout object { type }`
 
             Indicates that the shell call exceeded its configured time limit.
 
@@ -10020,7 +8796,7 @@ Create items in a conversation with the given ID.
 
               - `"timeout"`
 
-          - `Exit = object { exit_code, type }`
+          - `Exit object { exit_code, type }`
 
             Indicates that the shell commands finished and returned an exit code.
 
@@ -10066,7 +8842,7 @@ Create items in a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ApplyPatchCall = object { id, call_id, operation, 3 more }`
+    - `ApplyPatchCall object { id, call_id, operation, 3 more }`
 
       A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -10082,7 +8858,7 @@ Create items in a conversation with the given ID.
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
-        - `CreateFile = object { diff, path, type }`
+        - `CreateFile object { diff, path, type }`
 
           Instruction describing how to create a file via the apply_patch tool.
 
@@ -10100,7 +8876,7 @@ Create items in a conversation with the given ID.
 
             - `"create_file"`
 
-        - `DeleteFile = object { path, type }`
+        - `DeleteFile object { path, type }`
 
           Instruction describing how to delete a file via the apply_patch tool.
 
@@ -10114,7 +8890,7 @@ Create items in a conversation with the given ID.
 
             - `"delete_file"`
 
-        - `UpdateFile = object { diff, path, type }`
+        - `UpdateFile object { diff, path, type }`
 
           Instruction describing how to update a file via the apply_patch tool.
 
@@ -10150,7 +8926,7 @@ Create items in a conversation with the given ID.
 
         The ID of the entity that created this tool call.
 
-    - `ApplyPatchCallOutput = object { id, call_id, status, 3 more }`
+    - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
 
       The output emitted by an apply patch tool call.
 
@@ -10184,7 +8960,7 @@ Create items in a conversation with the given ID.
 
         Optional textual output returned by the apply patch tool.
 
-    - `McpListTools = object { id, server_label, tools, 2 more }`
+    - `McpListTools object { id, server_label, tools, 2 more }`
 
       A list of tools available on an MCP server.
 
@@ -10226,7 +9002,7 @@ Create items in a conversation with the given ID.
 
         Error message if the server could not list tools.
 
-    - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+    - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
       A request for human approval of a tool invocation.
 
@@ -10252,7 +9028,7 @@ Create items in a conversation with the given ID.
 
         - `"mcp_approval_request"`
 
-    - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+    - `McpApprovalResponse object { id, approval_request_id, approve, 2 more }`
 
       A response to an MCP approval request.
 
@@ -10278,7 +9054,7 @@ Create items in a conversation with the given ID.
 
         Optional reason for the decision.
 
-    - `McpCall = object { id, arguments, name, 6 more }`
+    - `McpCall object { id, arguments, name, 6 more }`
 
       An invocation of a tool on an MCP server.
 
@@ -10331,7 +9107,7 @@ Create items in a conversation with the given ID.
 
         - `"failed"`
 
-    - `CustomToolCall = object { call_id, input, name, 3 more }`
+    - `CustomToolCall object { call_id, input, name, 3 more }`
 
       A call to a custom tool created by the model.
 
@@ -10361,7 +9137,7 @@ Create items in a conversation with the given ID.
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput = object { call_id, output, type, id }`
+    - `CustomToolCallOutput object { call_id, output, type, id }`
 
       The output of a custom tool call from your code, being sent back to the model.
 
@@ -10382,83 +9158,17 @@ Create items in a conversation with the given ID.
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 
@@ -10650,7 +9360,7 @@ List all items for a conversation with the given ID.
 
 ### Returns
 
-- `ConversationItemList = object { data, first_id, has_more, 2 more }`
+- `ConversationItemList object { data, first_id, has_more, 2 more }`
 
   A list of Conversation items.
 
@@ -10658,7 +9368,7 @@ List all items for a conversation with the given ID.
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 3 more }`
+    - `Message object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -10670,7 +9380,7 @@ List all items for a conversation with the given ID.
 
         The content of the message
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -10684,7 +9394,7 @@ List all items for a conversation with the given ID.
 
             - `"input_text"`
 
-        - `ResponseOutputText = object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -10692,7 +9402,7 @@ List all items for a conversation with the given ID.
 
             The annotations of the text output.
 
-            - `FileCitation = object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               A citation to a file.
 
@@ -10714,7 +9424,7 @@ List all items for a conversation with the given ID.
 
                 - `"file_citation"`
 
-            - `URLCitation = object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               A citation for a web resource used to generate a model response.
 
@@ -10740,7 +9450,7 @@ List all items for a conversation with the given ID.
 
                 The URL of the web resource.
 
-            - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               A citation for a container file used to generate a model response.
 
@@ -10770,7 +9480,7 @@ List all items for a conversation with the given ID.
 
                 - `"container_file_citation"`
 
-            - `FilePath = object { file_id, index, type }`
+            - `FilePath object { file_id, index, type }`
 
               A path to a file.
 
@@ -10814,7 +9524,7 @@ List all items for a conversation with the given ID.
 
             - `"output_text"`
 
-        - `TextContent = object { text, type }`
+        - `TextContent object { text, type }`
 
           A text content.
 
@@ -10824,7 +9534,7 @@ List all items for a conversation with the given ID.
 
             - `"text"`
 
-        - `SummaryTextContent = object { text, type }`
+        - `SummaryTextContent object { text, type }`
 
           A summary text from the model.
 
@@ -10838,7 +9548,7 @@ List all items for a conversation with the given ID.
 
             - `"summary_text"`
 
-        - `ReasoningText = object { text, type }`
+        - `ReasoningText object { text, type }`
 
           Reasoning text from the model.
 
@@ -10852,7 +9562,7 @@ List all items for a conversation with the given ID.
 
             - `"reasoning_text"`
 
-        - `ResponseOutputRefusal = object { refusal, type }`
+        - `ResponseOutputRefusal object { refusal, type }`
 
           A refusal from the model.
 
@@ -10866,7 +9576,7 @@ List all items for a conversation with the given ID.
 
             - `"refusal"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -10896,7 +9606,7 @@ List all items for a conversation with the given ID.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+        - `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
           A screenshot of a computer.
 
@@ -10926,7 +9636,7 @@ List all items for a conversation with the given ID.
 
             - `"computer_screenshot"`
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -11004,7 +9714,7 @@ List all items for a conversation with the given ID.
 
         - `"final_answer"`
 
-    - `FunctionCall = object { id, arguments, call_id, 5 more }`
+    - `FunctionCall object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -11047,7 +9757,7 @@ List all items for a conversation with the given ID.
 
         The namespace of the function to run.
 
-    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+    - `FunctionCallOutput object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -11070,83 +9780,17 @@ List all items for a conversation with the given ID.
 
           Text, image, or file output of the function call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -11169,7 +9813,7 @@ List all items for a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `FileSearchCall = object { id, queries, status, 2 more }`
+    - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
       [file search guide](/docs/guides/tools-file-search) for more information.
@@ -11237,7 +9881,7 @@ List all items for a conversation with the given ID.
 
           The text that was retrieved from the file.
 
-    - `WebSearchCall = object { id, action, status, type }`
+    - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
       [web search guide](/docs/guides/tools-web-search) for more information.
@@ -11251,7 +9895,7 @@ List all items for a conversation with the given ID.
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
 
-        - `Search = object { query, type, queries, sources }`
+        - `Search object { query, type, queries, sources }`
 
           Action type "search" - Performs a web search query.
 
@@ -11283,7 +9927,7 @@ List all items for a conversation with the given ID.
 
               The URL of the source.
 
-        - `OpenPage = object { type, url }`
+        - `OpenPage object { type, url }`
 
           Action type "open_page" - Opens a specific URL from search results.
 
@@ -11297,7 +9941,7 @@ List all items for a conversation with the given ID.
 
             The URL opened by the model.
 
-        - `FindInPage = object { pattern, type, url }`
+        - `FindInPage object { pattern, type, url }`
 
           Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -11333,7 +9977,7 @@ List all items for a conversation with the given ID.
 
         - `"web_search_call"`
 
-    - `ImageGenerationCall = object { id, result, status, type }`
+    - `ImageGenerationCall object { id, result, status, type }`
 
       An image generation request made by the model.
 
@@ -11363,7 +10007,7 @@ List all items for a conversation with the given ID.
 
         - `"image_generation_call"`
 
-    - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
       [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -11413,7 +10057,7 @@ List all items for a conversation with the given ID.
 
         A click action.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
@@ -11449,7 +10093,7 @@ List all items for a conversation with the given ID.
 
             The keys being held while clicking.
 
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
@@ -11471,7 +10115,7 @@ List all items for a conversation with the given ID.
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
@@ -11504,7 +10148,7 @@ List all items for a conversation with the given ID.
 
             The keys being held while dragging the mouse.
 
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
@@ -11518,7 +10162,7 @@ List all items for a conversation with the given ID.
 
             - `"keypress"`
 
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -11540,7 +10184,7 @@ List all items for a conversation with the given ID.
 
             The keys being held while moving the mouse.
 
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
@@ -11550,7 +10194,7 @@ List all items for a conversation with the given ID.
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -11580,7 +10224,7 @@ List all items for a conversation with the given ID.
 
             The keys being held while scrolling.
 
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
@@ -11594,7 +10238,7 @@ List all items for a conversation with the given ID.
 
             - `"type"`
 
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
@@ -11609,198 +10253,43 @@ List all items for a conversation with the given ID.
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+    - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -11869,7 +10358,7 @@ List all items for a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
+    - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
       - `id: string`
 
@@ -11911,7 +10400,7 @@ List all items for a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchOutput = object { id, call_id, execution, 4 more }`
+    - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
       - `id: string`
 
@@ -11943,7 +10432,7 @@ List all items for a conversation with the given ID.
 
         The loaded tool definitions returned by tool search.
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -11973,7 +10462,7 @@ List all items for a conversation with the given ID.
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -11991,7 +10480,7 @@ List all items for a conversation with the given ID.
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -12044,7 +10533,7 @@ List all items for a conversation with the given ID.
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -12052,58 +10541,9 @@ List all items for a conversation with the given ID.
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -12147,7 +10587,7 @@ List all items for a conversation with the given ID.
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -12157,7 +10597,7 @@ List all items for a conversation with the given ID.
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -12189,7 +10629,7 @@ List all items for a conversation with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -12249,7 +10689,7 @@ List all items for a conversation with the given ID.
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -12272,7 +10712,7 @@ List all items for a conversation with the given ID.
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -12338,7 +10778,7 @@ List all items for a conversation with the given ID.
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -12391,7 +10831,7 @@ List all items for a conversation with the given ID.
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -12405,7 +10845,7 @@ List all items for a conversation with the given ID.
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -12435,7 +10875,7 @@ List all items for a conversation with the given ID.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -12443,7 +10883,7 @@ List all items for a conversation with the given ID.
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -12477,7 +10917,7 @@ List all items for a conversation with the given ID.
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -12598,7 +11038,7 @@ List all items for a conversation with the given ID.
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -12608,7 +11048,7 @@ List all items for a conversation with the given ID.
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -12620,7 +11060,7 @@ List all items for a conversation with the given ID.
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -12648,47 +11088,15 @@ List all items for a conversation with the given ID.
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -12704,7 +11112,7 @@ List all items for a conversation with the given ID.
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -12740,7 +11148,7 @@ List all items for a conversation with the given ID.
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -12764,7 +11172,7 @@ List all items for a conversation with the given ID.
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -12776,7 +11184,7 @@ List all items for a conversation with the given ID.
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -12802,7 +11210,7 @@ List all items for a conversation with the given ID.
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -12812,7 +11220,7 @@ List all items for a conversation with the given ID.
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -12834,7 +11242,7 @@ List all items for a conversation with the given ID.
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -12850,7 +11258,7 @@ List all items for a conversation with the given ID.
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -12868,7 +11276,7 @@ List all items for a conversation with the given ID.
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -12894,45 +11302,13 @@ List all items for a conversation with the given ID.
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -12958,7 +11334,7 @@ List all items for a conversation with the given ID.
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -13012,7 +11388,7 @@ List all items for a conversation with the given ID.
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -13032,7 +11408,7 @@ List all items for a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `Reasoning = object { id, summary, type, 3 more }`
+    - `Reasoning object { id, summary, type, 3 more }`
 
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
@@ -13054,8 +11430,6 @@ List all items for a conversation with the given ID.
         - `type: "summary_text"`
 
           The type of the object. Always `summary_text`.
-
-          - `"summary_text"`
 
       - `type: "reasoning"`
 
@@ -13093,7 +11467,7 @@ List all items for a conversation with the given ID.
 
         - `"incomplete"`
 
-    - `Compaction = object { id, encrypted_content, type, created_by }`
+    - `Compaction object { id, encrypted_content, type, created_by }`
 
       A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -13115,7 +11489,7 @@ List all items for a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+    - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
       A tool call to run code.
 
@@ -13136,7 +11510,7 @@ List all items for a conversation with the given ID.
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
 
-        - `Logs = object { logs, type }`
+        - `Logs object { logs, type }`
 
           The logs output from the code interpreter.
 
@@ -13150,7 +11524,7 @@ List all items for a conversation with the given ID.
 
             - `"logs"`
 
-        - `Image = object { type, url }`
+        - `Image object { type, url }`
 
           The image output from the code interpreter.
 
@@ -13184,7 +11558,7 @@ List all items for a conversation with the given ID.
 
         - `"code_interpreter_call"`
 
-    - `LocalShellCall = object { id, action, call_id, 2 more }`
+    - `LocalShellCall object { id, action, call_id, 2 more }`
 
       A tool call to run a command on the local shell.
 
@@ -13242,7 +11616,7 @@ List all items for a conversation with the given ID.
 
         - `"local_shell_call"`
 
-    - `LocalShellCallOutput = object { id, output, type, status }`
+    - `LocalShellCallOutput object { id, output, type, status }`
 
       The output of a local shell tool call.
 
@@ -13270,7 +11644,7 @@ List all items for a conversation with the given ID.
 
         - `"incomplete"`
 
-    - `ShellCall = object { id, action, call_id, 4 more }`
+    - `ShellCall object { id, action, call_id, 4 more }`
 
       A tool call that executes one or more shell commands in a managed environment.
 
@@ -13300,7 +11674,7 @@ List all items for a conversation with the given ID.
 
         Represents the use of a local environment to perform shell actions.
 
-        - `ResponseLocalEnvironment = object { type }`
+        - `ResponseLocalEnvironment object { type }`
 
           Represents the use of a local environment to perform shell actions.
 
@@ -13310,7 +11684,7 @@ List all items for a conversation with the given ID.
 
             - `"local"`
 
-        - `ResponseContainerReference = object { container_id, type }`
+        - `ResponseContainerReference object { container_id, type }`
 
           Represents a container created with /v1/containers.
 
@@ -13342,7 +11716,7 @@ List all items for a conversation with the given ID.
 
         The ID of the entity that created this tool call.
 
-    - `ShellCallOutput = object { id, call_id, max_output_length, 4 more }`
+    - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
 
       The output of a shell tool call that was emitted.
 
@@ -13366,7 +11740,7 @@ List all items for a conversation with the given ID.
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
-          - `Timeout = object { type }`
+          - `Timeout object { type }`
 
             Indicates that the shell call exceeded its configured time limit.
 
@@ -13376,7 +11750,7 @@ List all items for a conversation with the given ID.
 
               - `"timeout"`
 
-          - `Exit = object { exit_code, type }`
+          - `Exit object { exit_code, type }`
 
             Indicates that the shell commands finished and returned an exit code.
 
@@ -13422,7 +11796,7 @@ List all items for a conversation with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ApplyPatchCall = object { id, call_id, operation, 3 more }`
+    - `ApplyPatchCall object { id, call_id, operation, 3 more }`
 
       A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -13438,7 +11812,7 @@ List all items for a conversation with the given ID.
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
-        - `CreateFile = object { diff, path, type }`
+        - `CreateFile object { diff, path, type }`
 
           Instruction describing how to create a file via the apply_patch tool.
 
@@ -13456,7 +11830,7 @@ List all items for a conversation with the given ID.
 
             - `"create_file"`
 
-        - `DeleteFile = object { path, type }`
+        - `DeleteFile object { path, type }`
 
           Instruction describing how to delete a file via the apply_patch tool.
 
@@ -13470,7 +11844,7 @@ List all items for a conversation with the given ID.
 
             - `"delete_file"`
 
-        - `UpdateFile = object { diff, path, type }`
+        - `UpdateFile object { diff, path, type }`
 
           Instruction describing how to update a file via the apply_patch tool.
 
@@ -13506,7 +11880,7 @@ List all items for a conversation with the given ID.
 
         The ID of the entity that created this tool call.
 
-    - `ApplyPatchCallOutput = object { id, call_id, status, 3 more }`
+    - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
 
       The output emitted by an apply patch tool call.
 
@@ -13540,7 +11914,7 @@ List all items for a conversation with the given ID.
 
         Optional textual output returned by the apply patch tool.
 
-    - `McpListTools = object { id, server_label, tools, 2 more }`
+    - `McpListTools object { id, server_label, tools, 2 more }`
 
       A list of tools available on an MCP server.
 
@@ -13582,7 +11956,7 @@ List all items for a conversation with the given ID.
 
         Error message if the server could not list tools.
 
-    - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+    - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
       A request for human approval of a tool invocation.
 
@@ -13608,7 +11982,7 @@ List all items for a conversation with the given ID.
 
         - `"mcp_approval_request"`
 
-    - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+    - `McpApprovalResponse object { id, approval_request_id, approve, 2 more }`
 
       A response to an MCP approval request.
 
@@ -13634,7 +12008,7 @@ List all items for a conversation with the given ID.
 
         Optional reason for the decision.
 
-    - `McpCall = object { id, arguments, name, 6 more }`
+    - `McpCall object { id, arguments, name, 6 more }`
 
       An invocation of a tool on an MCP server.
 
@@ -13687,7 +12061,7 @@ List all items for a conversation with the given ID.
 
         - `"failed"`
 
-    - `CustomToolCall = object { call_id, input, name, 3 more }`
+    - `CustomToolCall object { call_id, input, name, 3 more }`
 
       A call to a custom tool created by the model.
 
@@ -13717,7 +12091,7 @@ List all items for a conversation with the given ID.
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput = object { call_id, output, type, id }`
+    - `CustomToolCallOutput object { call_id, output, type, id }`
 
       The output of a custom tool call from your code, being sent back to the model.
 
@@ -13738,83 +12112,17 @@ List all items for a conversation with the given ID.
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 
@@ -13947,7 +12255,7 @@ Get a single item from a conversation with the given IDs.
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](/docs/api-reference/responses/object#responses/object-output).
 
-  - `Message = object { id, content, role, 3 more }`
+  - `Message object { id, content, role, 3 more }`
 
     A message to or from the model.
 
@@ -13959,7 +12267,7 @@ Get a single item from a conversation with the given IDs.
 
       The content of the message
 
-      - `ResponseInputText = object { text, type }`
+      - `ResponseInputText object { text, type }`
 
         A text input to the model.
 
@@ -13973,7 +12281,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"input_text"`
 
-      - `ResponseOutputText = object { annotations, logprobs, text, type }`
+      - `ResponseOutputText object { annotations, logprobs, text, type }`
 
         A text output from the model.
 
@@ -13981,7 +12289,7 @@ Get a single item from a conversation with the given IDs.
 
           The annotations of the text output.
 
-          - `FileCitation = object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             A citation to a file.
 
@@ -14003,7 +12311,7 @@ Get a single item from a conversation with the given IDs.
 
               - `"file_citation"`
 
-          - `URLCitation = object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             A citation for a web resource used to generate a model response.
 
@@ -14029,7 +12337,7 @@ Get a single item from a conversation with the given IDs.
 
               The URL of the web resource.
 
-          - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             A citation for a container file used to generate a model response.
 
@@ -14059,7 +12367,7 @@ Get a single item from a conversation with the given IDs.
 
               - `"container_file_citation"`
 
-          - `FilePath = object { file_id, index, type }`
+          - `FilePath object { file_id, index, type }`
 
             A path to a file.
 
@@ -14103,7 +12411,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"output_text"`
 
-      - `TextContent = object { text, type }`
+      - `TextContent object { text, type }`
 
         A text content.
 
@@ -14113,7 +12421,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"text"`
 
-      - `SummaryTextContent = object { text, type }`
+      - `SummaryTextContent object { text, type }`
 
         A summary text from the model.
 
@@ -14127,7 +12435,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"summary_text"`
 
-      - `ReasoningText = object { text, type }`
+      - `ReasoningText object { text, type }`
 
         Reasoning text from the model.
 
@@ -14141,7 +12449,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"reasoning_text"`
 
-      - `ResponseOutputRefusal = object { refusal, type }`
+      - `ResponseOutputRefusal object { refusal, type }`
 
         A refusal from the model.
 
@@ -14155,7 +12463,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"refusal"`
 
-      - `ResponseInputImage = object { detail, type, file_id, image_url }`
+      - `ResponseInputImage object { detail, type, file_id, image_url }`
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -14185,7 +12493,7 @@ Get a single item from a conversation with the given IDs.
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+      - `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
         A screenshot of a computer.
 
@@ -14215,7 +12523,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer_screenshot"`
 
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -14293,7 +12601,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"final_answer"`
 
-  - `FunctionCall = object { id, arguments, call_id, 5 more }`
+  - `FunctionCall object { id, arguments, call_id, 5 more }`
 
     - `id: string`
 
@@ -14336,7 +12644,7 @@ Get a single item from a conversation with the given IDs.
 
       The namespace of the function to run.
 
-  - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+  - `FunctionCallOutput object { id, call_id, output, 3 more }`
 
     - `id: string`
 
@@ -14359,83 +12667,17 @@ Get a single item from a conversation with the given IDs.
 
         Text, image, or file output of the function call.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
     - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -14458,7 +12700,7 @@ Get a single item from a conversation with the given IDs.
 
       The identifier of the actor that created the item.
 
-  - `FileSearchCall = object { id, queries, status, 2 more }`
+  - `FileSearchCall object { id, queries, status, 2 more }`
 
     The results of a file search tool call. See the
     [file search guide](/docs/guides/tools-file-search) for more information.
@@ -14526,7 +12768,7 @@ Get a single item from a conversation with the given IDs.
 
         The text that was retrieved from the file.
 
-  - `WebSearchCall = object { id, action, status, type }`
+  - `WebSearchCall object { id, action, status, type }`
 
     The results of a web search tool call. See the
     [web search guide](/docs/guides/tools-web-search) for more information.
@@ -14540,7 +12782,7 @@ Get a single item from a conversation with the given IDs.
       An object describing the specific action taken in this web search call.
       Includes details on how the model used the web (search, open_page, find_in_page).
 
-      - `Search = object { query, type, queries, sources }`
+      - `Search object { query, type, queries, sources }`
 
         Action type "search" - Performs a web search query.
 
@@ -14572,7 +12814,7 @@ Get a single item from a conversation with the given IDs.
 
             The URL of the source.
 
-      - `OpenPage = object { type, url }`
+      - `OpenPage object { type, url }`
 
         Action type "open_page" - Opens a specific URL from search results.
 
@@ -14586,7 +12828,7 @@ Get a single item from a conversation with the given IDs.
 
           The URL opened by the model.
 
-      - `FindInPage = object { pattern, type, url }`
+      - `FindInPage object { pattern, type, url }`
 
         Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -14622,7 +12864,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"web_search_call"`
 
-  - `ImageGenerationCall = object { id, result, status, type }`
+  - `ImageGenerationCall object { id, result, status, type }`
 
     An image generation request made by the model.
 
@@ -14652,7 +12894,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"image_generation_call"`
 
-  - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+  - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
     A tool call to a computer use tool. See the
     [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -14702,7 +12944,7 @@ Get a single item from a conversation with the given IDs.
 
       A click action.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
@@ -14738,7 +12980,7 @@ Get a single item from a conversation with the given IDs.
 
           The keys being held while clicking.
 
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
@@ -14760,7 +13002,7 @@ Get a single item from a conversation with the given IDs.
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
@@ -14793,7 +13035,7 @@ Get a single item from a conversation with the given IDs.
 
           The keys being held while dragging the mouse.
 
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
@@ -14807,7 +13049,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"keypress"`
 
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -14829,7 +13071,7 @@ Get a single item from a conversation with the given IDs.
 
           The keys being held while moving the mouse.
 
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
@@ -14839,7 +13081,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -14869,7 +13111,7 @@ Get a single item from a conversation with the given IDs.
 
           The keys being held while scrolling.
 
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
@@ -14883,7 +13125,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"type"`
 
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
@@ -14898,198 +13140,43 @@ Get a single item from a conversation with the given IDs.
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
-        - `button: "left" or "right" or "wheel" or 2 more`
-
-          Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-          - `"left"`
-
-          - `"right"`
-
-          - `"wheel"`
-
-          - `"back"`
-
-          - `"forward"`
-
-        - `type: "click"`
-
-          Specifies the event type. For a click action, this property is always `click`.
-
-          - `"click"`
-
-        - `x: number`
-
-          The x-coordinate where the click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the click occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while clicking.
-
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
-        - `keys: array of string`
-
-          The keys being held while double-clicking.
-
-        - `type: "double_click"`
-
-          Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-          - `"double_click"`
-
-        - `x: number`
-
-          The x-coordinate where the double click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the double click occurred.
-
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
-        - `path: array of object { x, y }`
-
-          An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-          ```
-          [
-            { x: 100, y: 200 },
-            { x: 200, y: 300 }
-          ]
-          ```
-
-          - `x: number`
-
-            The x-coordinate.
-
-          - `y: number`
-
-            The y-coordinate.
-
-        - `type: "drag"`
-
-          Specifies the event type. For a drag action, this property is always set to `drag`.
-
-          - `"drag"`
-
-        - `keys: optional array of string`
-
-          The keys being held while dragging the mouse.
-
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
-        - `keys: array of string`
-
-          The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-        - `type: "keypress"`
-
-          Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-          - `"keypress"`
-
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
-        - `type: "move"`
-
-          Specifies the event type. For a move action, this property is always set to `move`.
-
-          - `"move"`
-
-        - `x: number`
-
-          The x-coordinate to move to.
-
-        - `y: number`
-
-          The y-coordinate to move to.
-
-        - `keys: optional array of string`
-
-          The keys being held while moving the mouse.
-
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
-        - `type: "screenshot"`
-
-          Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-          - `"screenshot"`
-
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
-        - `scroll_x: number`
-
-          The horizontal scroll distance.
-
-        - `scroll_y: number`
-
-          The vertical scroll distance.
-
-        - `type: "scroll"`
-
-          Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-          - `"scroll"`
-
-        - `x: number`
-
-          The x-coordinate where the scroll occurred.
-
-        - `y: number`
-
-          The y-coordinate where the scroll occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while scrolling.
-
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
-        - `text: string`
-
-          The text to type.
-
-        - `type: "type"`
-
-          Specifies the event type. For a type action, this property is always set to `type`.
-
-          - `"type"`
-
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
-        - `type: "wait"`
-
-          Specifies the event type. For a wait action, this property is always set to `wait`.
-
-          - `"wait"`
-
-  - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+  - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
     - `id: string`
 
@@ -15158,7 +13245,7 @@ Get a single item from a conversation with the given IDs.
 
       The identifier of the actor that created the item.
 
-  - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
+  - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
     - `id: string`
 
@@ -15200,7 +13287,7 @@ Get a single item from a conversation with the given IDs.
 
       The identifier of the actor that created the item.
 
-  - `ToolSearchOutput = object { id, call_id, execution, 4 more }`
+  - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
     - `id: string`
 
@@ -15232,7 +13319,7 @@ Get a single item from a conversation with the given IDs.
 
       The loaded tool definitions returned by tool search.
 
-      - `Function = object { name, parameters, strict, 3 more }`
+      - `Function object { name, parameters, strict, 3 more }`
 
         Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -15262,7 +13349,7 @@ Get a single item from a conversation with the given IDs.
 
           A description of the function. Used by the model to determine whether or not to call the function.
 
-      - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+      - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
         A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -15280,7 +13367,7 @@ Get a single item from a conversation with the given IDs.
 
           A filter to apply.
 
-          - `ComparisonFilter = object { key, type, value }`
+          - `ComparisonFilter object { key, type, value }`
 
             A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -15333,7 +13420,7 @@ Get a single item from a conversation with the given IDs.
 
                 - `number`
 
-          - `CompoundFilter = object { filters, type }`
+          - `CompoundFilter object { filters, type }`
 
             Combine multiple filters using `and` or `or`.
 
@@ -15341,58 +13428,9 @@ Get a single item from a conversation with the given IDs.
 
               Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-              - `ComparisonFilter = object { key, type, value }`
+              - `ComparisonFilter object { key, type, value }`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" or "ne" or "gt" or 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string or number or boolean or array of string or number`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `array of string or number`
-
-                    - `string`
-
-                    - `number`
 
               - `unknown`
 
@@ -15436,7 +13474,7 @@ Get a single item from a conversation with the given IDs.
 
             The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-      - `Computer = object { type }`
+      - `Computer object { type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -15446,7 +13484,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer"`
 
-      - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+      - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -15478,7 +13516,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer_use_preview"`
 
-      - `WebSearch = object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, filters, search_context_size, user_location }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -15538,7 +13576,7 @@ Get a single item from a conversation with the given IDs.
 
             - `"approximate"`
 
-      - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+      - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -15561,7 +13599,7 @@ Get a single item from a conversation with the given IDs.
 
             A string array of allowed tool names
 
-          - `McpToolFilter = object { read_only, tool_names }`
+          - `McpToolFilter object { read_only, tool_names }`
 
             A filter object to specify which tools are allowed.
 
@@ -15627,7 +13665,7 @@ Get a single item from a conversation with the given IDs.
 
           Specify which of the MCP server's tools require approval.
 
-          - `McpToolApprovalFilter = object { always, never }`
+          - `McpToolApprovalFilter object { always, never }`
 
             Specify which of the MCP server's tools require approval. Can be
             `always`, `never`, or a filter object associated with tools
@@ -15680,7 +13718,7 @@ Get a single item from a conversation with the given IDs.
           The URL for the MCP server. One of `server_url` or `connector_id` must be
           provided.
 
-      - `CodeInterpreter = object { container, type }`
+      - `CodeInterpreter object { container, type }`
 
         A tool that runs Python code to help generate a response to a prompt.
 
@@ -15694,7 +13732,7 @@ Get a single item from a conversation with the given IDs.
 
             The container ID.
 
-          - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+          - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
             Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -15724,7 +13762,7 @@ Get a single item from a conversation with the given IDs.
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
                 - `type: "disabled"`
 
@@ -15732,7 +13770,7 @@ Get a single item from a conversation with the given IDs.
 
                   - `"disabled"`
 
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                 - `allowed_domains: array of string`
 
@@ -15766,7 +13804,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"code_interpreter"`
 
-      - `ImageGeneration = object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 9 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -15887,7 +13925,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"auto"`
 
-      - `LocalShell = object { type }`
+      - `LocalShell object { type }`
 
         A tool that allows the model to execute shell commands in a local environment.
 
@@ -15897,7 +13935,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"local_shell"`
 
-      - `Shell = object { type, environment }`
+      - `Shell object { type, environment }`
 
         A tool that allows the model to execute shell commands.
 
@@ -15909,7 +13947,7 @@ Get a single item from a conversation with the given IDs.
 
         - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-          - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+          - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
             - `type: "container_auto"`
 
@@ -15937,47 +13975,15 @@ Get a single item from a conversation with the given IDs.
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                - `allowed_domains: array of string`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
             - `skills: optional array of SkillReference or InlineSkill`
 
               An optional list of skills referenced by id or inline data.
 
-              - `SkillReference = object { skill_id, type, version }`
+              - `SkillReference object { skill_id, type, version }`
 
                 - `skill_id: string`
 
@@ -15993,7 +13999,7 @@ Get a single item from a conversation with the given IDs.
 
                   Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-              - `InlineSkill = object { description, name, source, type }`
+              - `InlineSkill object { description, name, source, type }`
 
                 - `description: string`
 
@@ -16029,7 +14035,7 @@ Get a single item from a conversation with the given IDs.
 
                   - `"inline"`
 
-          - `LocalEnvironment = object { type, skills }`
+          - `LocalEnvironment object { type, skills }`
 
             - `type: "local"`
 
@@ -16053,7 +14059,7 @@ Get a single item from a conversation with the given IDs.
 
                 The path to the directory containing the skill.
 
-          - `ContainerReference = object { container_id, type }`
+          - `ContainerReference object { container_id, type }`
 
             - `container_id: string`
 
@@ -16065,7 +14071,7 @@ Get a single item from a conversation with the given IDs.
 
               - `"container_reference"`
 
-      - `Custom = object { name, type, defer_loading, 2 more }`
+      - `Custom object { name, type, defer_loading, 2 more }`
 
         A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -16091,7 +14097,7 @@ Get a single item from a conversation with the given IDs.
 
           The input format for the custom tool. Default is unconstrained text.
 
-          - `Text = object { type }`
+          - `Text object { type }`
 
             Unconstrained free-form text.
 
@@ -16101,7 +14107,7 @@ Get a single item from a conversation with the given IDs.
 
               - `"text"`
 
-          - `Grammar = object { definition, syntax, type }`
+          - `Grammar object { definition, syntax, type }`
 
             A grammar defined by the user.
 
@@ -16123,7 +14129,7 @@ Get a single item from a conversation with the given IDs.
 
               - `"grammar"`
 
-      - `Namespace = object { description, name, tools, type }`
+      - `Namespace object { description, name, tools, type }`
 
         Groups function/custom tools under a shared namespace.
 
@@ -16139,7 +14145,7 @@ Get a single item from a conversation with the given IDs.
 
           The function/custom tools available inside this namespace.
 
-          - `Function = object { name, type, defer_loading, 3 more }`
+          - `Function object { name, type, defer_loading, 3 more }`
 
             - `name: string`
 
@@ -16157,7 +14163,7 @@ Get a single item from a conversation with the given IDs.
 
             - `strict: optional boolean`
 
-          - `Custom = object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -16183,45 +14189,13 @@ Get a single item from a conversation with the given IDs.
 
               The input format for the custom tool. Default is unconstrained text.
 
-              - `Text = object { type }`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar = object { definition, syntax, type }`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" or "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
-
         - `type: "namespace"`
 
           The type of the tool. Always `namespace`.
 
           - `"namespace"`
 
-      - `ToolSearch = object { type, description, execution, parameters }`
+      - `ToolSearch object { type, description, execution, parameters }`
 
         Hosted or BYOT tool search configuration for deferred tools.
 
@@ -16247,7 +14221,7 @@ Get a single item from a conversation with the given IDs.
 
           Parameter schema for a client-executed tool search tool.
 
-      - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+      - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
         This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -16301,7 +14275,7 @@ Get a single item from a conversation with the given IDs.
 
             The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-      - `ApplyPatch = object { type }`
+      - `ApplyPatch object { type }`
 
         Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -16321,7 +14295,7 @@ Get a single item from a conversation with the given IDs.
 
       The identifier of the actor that created the item.
 
-  - `Reasoning = object { id, summary, type, 3 more }`
+  - `Reasoning object { id, summary, type, 3 more }`
 
     A description of the chain of thought used by a reasoning model while generating
     a response. Be sure to include these items in your `input` to the Responses API
@@ -16343,8 +14317,6 @@ Get a single item from a conversation with the given IDs.
       - `type: "summary_text"`
 
         The type of the object. Always `summary_text`.
-
-        - `"summary_text"`
 
     - `type: "reasoning"`
 
@@ -16382,7 +14354,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"incomplete"`
 
-  - `Compaction = object { id, encrypted_content, type, created_by }`
+  - `Compaction object { id, encrypted_content, type, created_by }`
 
     A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -16404,7 +14376,7 @@ Get a single item from a conversation with the given IDs.
 
       The identifier of the actor that created the item.
 
-  - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+  - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
     A tool call to run code.
 
@@ -16425,7 +14397,7 @@ Get a single item from a conversation with the given IDs.
       The outputs generated by the code interpreter, such as logs or images.
       Can be null if no outputs are available.
 
-      - `Logs = object { logs, type }`
+      - `Logs object { logs, type }`
 
         The logs output from the code interpreter.
 
@@ -16439,7 +14411,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"logs"`
 
-      - `Image = object { type, url }`
+      - `Image object { type, url }`
 
         The image output from the code interpreter.
 
@@ -16473,7 +14445,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"code_interpreter_call"`
 
-  - `LocalShellCall = object { id, action, call_id, 2 more }`
+  - `LocalShellCall object { id, action, call_id, 2 more }`
 
     A tool call to run a command on the local shell.
 
@@ -16531,7 +14503,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"local_shell_call"`
 
-  - `LocalShellCallOutput = object { id, output, type, status }`
+  - `LocalShellCallOutput object { id, output, type, status }`
 
     The output of a local shell tool call.
 
@@ -16559,7 +14531,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"incomplete"`
 
-  - `ShellCall = object { id, action, call_id, 4 more }`
+  - `ShellCall object { id, action, call_id, 4 more }`
 
     A tool call that executes one or more shell commands in a managed environment.
 
@@ -16589,7 +14561,7 @@ Get a single item from a conversation with the given IDs.
 
       Represents the use of a local environment to perform shell actions.
 
-      - `ResponseLocalEnvironment = object { type }`
+      - `ResponseLocalEnvironment object { type }`
 
         Represents the use of a local environment to perform shell actions.
 
@@ -16599,7 +14571,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"local"`
 
-      - `ResponseContainerReference = object { container_id, type }`
+      - `ResponseContainerReference object { container_id, type }`
 
         Represents a container created with /v1/containers.
 
@@ -16631,7 +14603,7 @@ Get a single item from a conversation with the given IDs.
 
       The ID of the entity that created this tool call.
 
-  - `ShellCallOutput = object { id, call_id, max_output_length, 4 more }`
+  - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
 
     The output of a shell tool call that was emitted.
 
@@ -16655,7 +14627,7 @@ Get a single item from a conversation with the given IDs.
 
         Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
-        - `Timeout = object { type }`
+        - `Timeout object { type }`
 
           Indicates that the shell call exceeded its configured time limit.
 
@@ -16665,7 +14637,7 @@ Get a single item from a conversation with the given IDs.
 
             - `"timeout"`
 
-        - `Exit = object { exit_code, type }`
+        - `Exit object { exit_code, type }`
 
           Indicates that the shell commands finished and returned an exit code.
 
@@ -16711,7 +14683,7 @@ Get a single item from a conversation with the given IDs.
 
       The identifier of the actor that created the item.
 
-  - `ApplyPatchCall = object { id, call_id, operation, 3 more }`
+  - `ApplyPatchCall object { id, call_id, operation, 3 more }`
 
     A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -16727,7 +14699,7 @@ Get a single item from a conversation with the given IDs.
 
       One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
-      - `CreateFile = object { diff, path, type }`
+      - `CreateFile object { diff, path, type }`
 
         Instruction describing how to create a file via the apply_patch tool.
 
@@ -16745,7 +14717,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"create_file"`
 
-      - `DeleteFile = object { path, type }`
+      - `DeleteFile object { path, type }`
 
         Instruction describing how to delete a file via the apply_patch tool.
 
@@ -16759,7 +14731,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"delete_file"`
 
-      - `UpdateFile = object { diff, path, type }`
+      - `UpdateFile object { diff, path, type }`
 
         Instruction describing how to update a file via the apply_patch tool.
 
@@ -16795,7 +14767,7 @@ Get a single item from a conversation with the given IDs.
 
       The ID of the entity that created this tool call.
 
-  - `ApplyPatchCallOutput = object { id, call_id, status, 3 more }`
+  - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
 
     The output emitted by an apply patch tool call.
 
@@ -16829,7 +14801,7 @@ Get a single item from a conversation with the given IDs.
 
       Optional textual output returned by the apply patch tool.
 
-  - `McpListTools = object { id, server_label, tools, 2 more }`
+  - `McpListTools object { id, server_label, tools, 2 more }`
 
     A list of tools available on an MCP server.
 
@@ -16871,7 +14843,7 @@ Get a single item from a conversation with the given IDs.
 
       Error message if the server could not list tools.
 
-  - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+  - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
     A request for human approval of a tool invocation.
 
@@ -16897,7 +14869,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"mcp_approval_request"`
 
-  - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+  - `McpApprovalResponse object { id, approval_request_id, approve, 2 more }`
 
     A response to an MCP approval request.
 
@@ -16923,7 +14895,7 @@ Get a single item from a conversation with the given IDs.
 
       Optional reason for the decision.
 
-  - `McpCall = object { id, arguments, name, 6 more }`
+  - `McpCall object { id, arguments, name, 6 more }`
 
     An invocation of a tool on an MCP server.
 
@@ -16976,7 +14948,7 @@ Get a single item from a conversation with the given IDs.
 
       - `"failed"`
 
-  - `CustomToolCall = object { call_id, input, name, 3 more }`
+  - `CustomToolCall object { call_id, input, name, 3 more }`
 
     A call to a custom tool created by the model.
 
@@ -17006,7 +14978,7 @@ Get a single item from a conversation with the given IDs.
 
       The namespace of the custom tool being called.
 
-  - `CustomToolCallOutput = object { call_id, output, type, id }`
+  - `CustomToolCallOutput object { call_id, output, type, id }`
 
     The output of a custom tool call from your code, being sent back to the model.
 
@@ -17027,83 +14999,17 @@ Get a single item from a conversation with the given IDs.
 
         Text, image, or file output of the custom tool call.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -17175,7 +15081,7 @@ Delete an item from a conversation with the given IDs.
 
 ### Returns
 
-- `Conversation = object { id, created_at, metadata, object }`
+- `Conversation object { id, created_at, metadata, object }`
 
   - `id: string`
 
@@ -17241,7 +15147,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
   A single item within a conversation. The set of possible types are the same as the `output` type of a [Response object](/docs/api-reference/responses/object#responses/object-output).
 
-  - `Message = object { id, content, role, 3 more }`
+  - `Message object { id, content, role, 3 more }`
 
     A message to or from the model.
 
@@ -17253,7 +15159,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The content of the message
 
-      - `ResponseInputText = object { text, type }`
+      - `ResponseInputText object { text, type }`
 
         A text input to the model.
 
@@ -17267,7 +15173,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"input_text"`
 
-      - `ResponseOutputText = object { annotations, logprobs, text, type }`
+      - `ResponseOutputText object { annotations, logprobs, text, type }`
 
         A text output from the model.
 
@@ -17275,7 +15181,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The annotations of the text output.
 
-          - `FileCitation = object { file_id, filename, index, type }`
+          - `FileCitation object { file_id, filename, index, type }`
 
             A citation to a file.
 
@@ -17297,7 +15203,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"file_citation"`
 
-          - `URLCitation = object { end_index, start_index, title, 2 more }`
+          - `URLCitation object { end_index, start_index, title, 2 more }`
 
             A citation for a web resource used to generate a model response.
 
@@ -17323,7 +15229,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The URL of the web resource.
 
-          - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+          - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
             A citation for a container file used to generate a model response.
 
@@ -17353,7 +15259,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"container_file_citation"`
 
-          - `FilePath = object { file_id, index, type }`
+          - `FilePath object { file_id, index, type }`
 
             A path to a file.
 
@@ -17397,7 +15303,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"output_text"`
 
-      - `TextContent = object { text, type }`
+      - `TextContent object { text, type }`
 
         A text content.
 
@@ -17407,7 +15313,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"text"`
 
-      - `SummaryTextContent = object { text, type }`
+      - `SummaryTextContent object { text, type }`
 
         A summary text from the model.
 
@@ -17421,7 +15327,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"summary_text"`
 
-      - `ReasoningText = object { text, type }`
+      - `ReasoningText object { text, type }`
 
         Reasoning text from the model.
 
@@ -17435,7 +15341,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"reasoning_text"`
 
-      - `ResponseOutputRefusal = object { refusal, type }`
+      - `ResponseOutputRefusal object { refusal, type }`
 
         A refusal from the model.
 
@@ -17449,7 +15355,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"refusal"`
 
-      - `ResponseInputImage = object { detail, type, file_id, image_url }`
+      - `ResponseInputImage object { detail, type, file_id, image_url }`
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -17479,7 +15385,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-      - `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+      - `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
         A screenshot of a computer.
 
@@ -17509,7 +15415,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"computer_screenshot"`
 
-      - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+      - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
         A file input to the model.
 
@@ -17587,7 +15493,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"final_answer"`
 
-  - `FunctionCall = object { id, arguments, call_id, 5 more }`
+  - `FunctionCall object { id, arguments, call_id, 5 more }`
 
     - `id: string`
 
@@ -17630,7 +15536,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The namespace of the function to run.
 
-  - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+  - `FunctionCallOutput object { id, call_id, output, 3 more }`
 
     - `id: string`
 
@@ -17653,83 +15559,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Text, image, or file output of the function call.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
     - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -17752,7 +15592,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The identifier of the actor that created the item.
 
-  - `FileSearchCall = object { id, queries, status, 2 more }`
+  - `FileSearchCall object { id, queries, status, 2 more }`
 
     The results of a file search tool call. See the
     [file search guide](/docs/guides/tools-file-search) for more information.
@@ -17820,7 +15660,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The text that was retrieved from the file.
 
-  - `WebSearchCall = object { id, action, status, type }`
+  - `WebSearchCall object { id, action, status, type }`
 
     The results of a web search tool call. See the
     [web search guide](/docs/guides/tools-web-search) for more information.
@@ -17834,7 +15674,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       An object describing the specific action taken in this web search call.
       Includes details on how the model used the web (search, open_page, find_in_page).
 
-      - `Search = object { query, type, queries, sources }`
+      - `Search object { query, type, queries, sources }`
 
         Action type "search" - Performs a web search query.
 
@@ -17866,7 +15706,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The URL of the source.
 
-      - `OpenPage = object { type, url }`
+      - `OpenPage object { type, url }`
 
         Action type "open_page" - Opens a specific URL from search results.
 
@@ -17880,7 +15720,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The URL opened by the model.
 
-      - `FindInPage = object { pattern, type, url }`
+      - `FindInPage object { pattern, type, url }`
 
         Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -17916,7 +15756,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"web_search_call"`
 
-  - `ImageGenerationCall = object { id, result, status, type }`
+  - `ImageGenerationCall object { id, result, status, type }`
 
     An image generation request made by the model.
 
@@ -17946,7 +15786,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"image_generation_call"`
 
-  - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+  - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
     A tool call to a computer use tool. See the
     [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -17996,7 +15836,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       A click action.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
@@ -18032,7 +15872,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The keys being held while clicking.
 
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
@@ -18054,7 +15894,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The y-coordinate where the double click occurred.
 
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
@@ -18087,7 +15927,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The keys being held while dragging the mouse.
 
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
@@ -18101,7 +15941,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"keypress"`
 
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
@@ -18123,7 +15963,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The keys being held while moving the mouse.
 
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
@@ -18133,7 +15973,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"screenshot"`
 
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
@@ -18163,7 +16003,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The keys being held while scrolling.
 
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
@@ -18177,7 +16017,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"type"`
 
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
@@ -18192,198 +16032,43 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       Flattened batched actions for `computer_use`. Each action includes an
       `type` discriminator and action-specific fields.
 
-      - `Click = object { button, type, x, 2 more }`
+      - `Click object { button, type, x, 2 more }`
 
         A click action.
 
-        - `button: "left" or "right" or "wheel" or 2 more`
-
-          Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-          - `"left"`
-
-          - `"right"`
-
-          - `"wheel"`
-
-          - `"back"`
-
-          - `"forward"`
-
-        - `type: "click"`
-
-          Specifies the event type. For a click action, this property is always `click`.
-
-          - `"click"`
-
-        - `x: number`
-
-          The x-coordinate where the click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the click occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while clicking.
-
-      - `DoubleClick = object { keys, type, x, y }`
+      - `DoubleClick object { keys, type, x, y }`
 
         A double click action.
 
-        - `keys: array of string`
-
-          The keys being held while double-clicking.
-
-        - `type: "double_click"`
-
-          Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-          - `"double_click"`
-
-        - `x: number`
-
-          The x-coordinate where the double click occurred.
-
-        - `y: number`
-
-          The y-coordinate where the double click occurred.
-
-      - `Drag = object { path, type, keys }`
+      - `Drag object { path, type, keys }`
 
         A drag action.
 
-        - `path: array of object { x, y }`
-
-          An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-          ```
-          [
-            { x: 100, y: 200 },
-            { x: 200, y: 300 }
-          ]
-          ```
-
-          - `x: number`
-
-            The x-coordinate.
-
-          - `y: number`
-
-            The y-coordinate.
-
-        - `type: "drag"`
-
-          Specifies the event type. For a drag action, this property is always set to `drag`.
-
-          - `"drag"`
-
-        - `keys: optional array of string`
-
-          The keys being held while dragging the mouse.
-
-      - `Keypress = object { keys, type }`
+      - `Keypress object { keys, type }`
 
         A collection of keypresses the model would like to perform.
 
-        - `keys: array of string`
-
-          The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-        - `type: "keypress"`
-
-          Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-          - `"keypress"`
-
-      - `Move = object { type, x, y, keys }`
+      - `Move object { type, x, y, keys }`
 
         A mouse move action.
 
-        - `type: "move"`
-
-          Specifies the event type. For a move action, this property is always set to `move`.
-
-          - `"move"`
-
-        - `x: number`
-
-          The x-coordinate to move to.
-
-        - `y: number`
-
-          The y-coordinate to move to.
-
-        - `keys: optional array of string`
-
-          The keys being held while moving the mouse.
-
-      - `Screenshot = object { type }`
+      - `Screenshot object { type }`
 
         A screenshot action.
 
-        - `type: "screenshot"`
-
-          Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-          - `"screenshot"`
-
-      - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+      - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
         A scroll action.
 
-        - `scroll_x: number`
-
-          The horizontal scroll distance.
-
-        - `scroll_y: number`
-
-          The vertical scroll distance.
-
-        - `type: "scroll"`
-
-          Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-          - `"scroll"`
-
-        - `x: number`
-
-          The x-coordinate where the scroll occurred.
-
-        - `y: number`
-
-          The y-coordinate where the scroll occurred.
-
-        - `keys: optional array of string`
-
-          The keys being held while scrolling.
-
-      - `Type = object { text, type }`
+      - `Type object { text, type }`
 
         An action to type in text.
 
-        - `text: string`
-
-          The text to type.
-
-        - `type: "type"`
-
-          Specifies the event type. For a type action, this property is always set to `type`.
-
-          - `"type"`
-
-      - `Wait = object { type }`
+      - `Wait object { type }`
 
         A wait action.
 
-        - `type: "wait"`
-
-          Specifies the event type. For a wait action, this property is always set to `wait`.
-
-          - `"wait"`
-
-  - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+  - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
     - `id: string`
 
@@ -18452,7 +16137,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The identifier of the actor that created the item.
 
-  - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
+  - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
     - `id: string`
 
@@ -18494,7 +16179,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The identifier of the actor that created the item.
 
-  - `ToolSearchOutput = object { id, call_id, execution, 4 more }`
+  - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
     - `id: string`
 
@@ -18526,7 +16211,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The loaded tool definitions returned by tool search.
 
-      - `Function = object { name, parameters, strict, 3 more }`
+      - `Function object { name, parameters, strict, 3 more }`
 
         Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -18556,7 +16241,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           A description of the function. Used by the model to determine whether or not to call the function.
 
-      - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+      - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
         A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -18574,7 +16259,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           A filter to apply.
 
-          - `ComparisonFilter = object { key, type, value }`
+          - `ComparisonFilter object { key, type, value }`
 
             A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -18627,7 +16312,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 - `number`
 
-          - `CompoundFilter = object { filters, type }`
+          - `CompoundFilter object { filters, type }`
 
             Combine multiple filters using `and` or `or`.
 
@@ -18635,58 +16320,9 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-              - `ComparisonFilter = object { key, type, value }`
+              - `ComparisonFilter object { key, type, value }`
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                - `key: string`
-
-                  The key to compare against the value.
-
-                - `type: "eq" or "ne" or "gt" or 5 more`
-
-                  Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                  - `eq`: equals
-                  - `ne`: not equal
-                  - `gt`: greater than
-                  - `gte`: greater than or equal
-                  - `lt`: less than
-                  - `lte`: less than or equal
-                  - `in`: in
-                  - `nin`: not in
-
-                  - `"eq"`
-
-                  - `"ne"`
-
-                  - `"gt"`
-
-                  - `"gte"`
-
-                  - `"lt"`
-
-                  - `"lte"`
-
-                  - `"in"`
-
-                  - `"nin"`
-
-                - `value: string or number or boolean or array of string or number`
-
-                  The value to compare against the attribute key; supports string, number, or boolean types.
-
-                  - `string`
-
-                  - `number`
-
-                  - `boolean`
-
-                  - `array of string or number`
-
-                    - `string`
-
-                    - `number`
 
               - `unknown`
 
@@ -18730,7 +16366,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-      - `Computer = object { type }`
+      - `Computer object { type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -18740,7 +16376,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"computer"`
 
-      - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+      - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
         A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -18772,7 +16408,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"computer_use_preview"`
 
-      - `WebSearch = object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, filters, search_context_size, user_location }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -18832,7 +16468,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"approximate"`
 
-      - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+      - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
         Give the model access to additional tools via remote Model Context Protocol
         (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -18855,7 +16491,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             A string array of allowed tool names
 
-          - `McpToolFilter = object { read_only, tool_names }`
+          - `McpToolFilter object { read_only, tool_names }`
 
             A filter object to specify which tools are allowed.
 
@@ -18921,7 +16557,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           Specify which of the MCP server's tools require approval.
 
-          - `McpToolApprovalFilter = object { always, never }`
+          - `McpToolApprovalFilter object { always, never }`
 
             Specify which of the MCP server's tools require approval. Can be
             `always`, `never`, or a filter object associated with tools
@@ -18974,7 +16610,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
           The URL for the MCP server. One of `server_url` or `connector_id` must be
           provided.
 
-      - `CodeInterpreter = object { container, type }`
+      - `CodeInterpreter object { container, type }`
 
         A tool that runs Python code to help generate a response to a prompt.
 
@@ -18988,7 +16624,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The container ID.
 
-          - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+          - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
             Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -19018,7 +16654,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
                 - `type: "disabled"`
 
@@ -19026,7 +16662,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                   - `"disabled"`
 
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                 - `allowed_domains: array of string`
 
@@ -19060,7 +16696,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"code_interpreter"`
 
-      - `ImageGeneration = object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 9 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -19181,7 +16817,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"auto"`
 
-      - `LocalShell = object { type }`
+      - `LocalShell object { type }`
 
         A tool that allows the model to execute shell commands in a local environment.
 
@@ -19191,7 +16827,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"local_shell"`
 
-      - `Shell = object { type, environment }`
+      - `Shell object { type, environment }`
 
         A tool that allows the model to execute shell commands.
 
@@ -19203,7 +16839,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-          - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+          - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
             - `type: "container_auto"`
 
@@ -19231,47 +16867,15 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               Network access policy for the container.
 
-              - `ContainerNetworkPolicyDisabled = object { type }`
+              - `ContainerNetworkPolicyDisabled object { type }`
 
-                - `type: "disabled"`
-
-                  Disable outbound network access. Always `disabled`.
-
-                  - `"disabled"`
-
-              - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                - `allowed_domains: array of string`
-
-                  A list of allowed domains when type is `allowlist`.
-
-                - `type: "allowlist"`
-
-                  Allow outbound network access only to specified domains. Always `allowlist`.
-
-                  - `"allowlist"`
-
-                - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                  Optional domain-scoped secrets for allowlisted domains.
-
-                  - `domain: string`
-
-                    The domain associated with the secret.
-
-                  - `name: string`
-
-                    The name of the secret to inject for the domain.
-
-                  - `value: string`
-
-                    The secret value to inject for the domain.
+              - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
             - `skills: optional array of SkillReference or InlineSkill`
 
               An optional list of skills referenced by id or inline data.
 
-              - `SkillReference = object { skill_id, type, version }`
+              - `SkillReference object { skill_id, type, version }`
 
                 - `skill_id: string`
 
@@ -19287,7 +16891,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                   Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-              - `InlineSkill = object { description, name, source, type }`
+              - `InlineSkill object { description, name, source, type }`
 
                 - `description: string`
 
@@ -19323,7 +16927,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                   - `"inline"`
 
-          - `LocalEnvironment = object { type, skills }`
+          - `LocalEnvironment object { type, skills }`
 
             - `type: "local"`
 
@@ -19347,7 +16951,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 The path to the directory containing the skill.
 
-          - `ContainerReference = object { container_id, type }`
+          - `ContainerReference object { container_id, type }`
 
             - `container_id: string`
 
@@ -19359,7 +16963,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"container_reference"`
 
-      - `Custom = object { name, type, defer_loading, 2 more }`
+      - `Custom object { name, type, defer_loading, 2 more }`
 
         A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -19385,7 +16989,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The input format for the custom tool. Default is unconstrained text.
 
-          - `Text = object { type }`
+          - `Text object { type }`
 
             Unconstrained free-form text.
 
@@ -19395,7 +16999,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"text"`
 
-          - `Grammar = object { definition, syntax, type }`
+          - `Grammar object { definition, syntax, type }`
 
             A grammar defined by the user.
 
@@ -19417,7 +17021,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"grammar"`
 
-      - `Namespace = object { description, name, tools, type }`
+      - `Namespace object { description, name, tools, type }`
 
         Groups function/custom tools under a shared namespace.
 
@@ -19433,7 +17037,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The function/custom tools available inside this namespace.
 
-          - `Function = object { name, type, defer_loading, 3 more }`
+          - `Function object { name, type, defer_loading, 3 more }`
 
             - `name: string`
 
@@ -19451,7 +17055,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `strict: optional boolean`
 
-          - `Custom = object { name, type, defer_loading, 2 more }`
+          - `Custom object { name, type, defer_loading, 2 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -19477,45 +17081,13 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The input format for the custom tool. Default is unconstrained text.
 
-              - `Text = object { type }`
-
-                Unconstrained free-form text.
-
-                - `type: "text"`
-
-                  Unconstrained text format. Always `text`.
-
-                  - `"text"`
-
-              - `Grammar = object { definition, syntax, type }`
-
-                A grammar defined by the user.
-
-                - `definition: string`
-
-                  The grammar definition.
-
-                - `syntax: "lark" or "regex"`
-
-                  The syntax of the grammar definition. One of `lark` or `regex`.
-
-                  - `"lark"`
-
-                  - `"regex"`
-
-                - `type: "grammar"`
-
-                  Grammar format. Always `grammar`.
-
-                  - `"grammar"`
-
         - `type: "namespace"`
 
           The type of the tool. Always `namespace`.
 
           - `"namespace"`
 
-      - `ToolSearch = object { type, description, execution, parameters }`
+      - `ToolSearch object { type, description, execution, parameters }`
 
         Hosted or BYOT tool search configuration for deferred tools.
 
@@ -19541,7 +17113,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           Parameter schema for a client-executed tool search tool.
 
-      - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+      - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
         This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -19595,7 +17167,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-      - `ApplyPatch = object { type }`
+      - `ApplyPatch object { type }`
 
         Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -19615,7 +17187,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The identifier of the actor that created the item.
 
-  - `Reasoning = object { id, summary, type, 3 more }`
+  - `Reasoning object { id, summary, type, 3 more }`
 
     A description of the chain of thought used by a reasoning model while generating
     a response. Be sure to include these items in your `input` to the Responses API
@@ -19637,8 +17209,6 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       - `type: "summary_text"`
 
         The type of the object. Always `summary_text`.
-
-        - `"summary_text"`
 
     - `type: "reasoning"`
 
@@ -19676,7 +17246,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"incomplete"`
 
-  - `Compaction = object { id, encrypted_content, type, created_by }`
+  - `Compaction object { id, encrypted_content, type, created_by }`
 
     A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -19698,7 +17268,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The identifier of the actor that created the item.
 
-  - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+  - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
     A tool call to run code.
 
@@ -19719,7 +17289,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       The outputs generated by the code interpreter, such as logs or images.
       Can be null if no outputs are available.
 
-      - `Logs = object { logs, type }`
+      - `Logs object { logs, type }`
 
         The logs output from the code interpreter.
 
@@ -19733,7 +17303,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"logs"`
 
-      - `Image = object { type, url }`
+      - `Image object { type, url }`
 
         The image output from the code interpreter.
 
@@ -19767,7 +17337,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"code_interpreter_call"`
 
-  - `LocalShellCall = object { id, action, call_id, 2 more }`
+  - `LocalShellCall object { id, action, call_id, 2 more }`
 
     A tool call to run a command on the local shell.
 
@@ -19825,7 +17395,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"local_shell_call"`
 
-  - `LocalShellCallOutput = object { id, output, type, status }`
+  - `LocalShellCallOutput object { id, output, type, status }`
 
     The output of a local shell tool call.
 
@@ -19853,7 +17423,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"incomplete"`
 
-  - `ShellCall = object { id, action, call_id, 4 more }`
+  - `ShellCall object { id, action, call_id, 4 more }`
 
     A tool call that executes one or more shell commands in a managed environment.
 
@@ -19883,7 +17453,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       Represents the use of a local environment to perform shell actions.
 
-      - `ResponseLocalEnvironment = object { type }`
+      - `ResponseLocalEnvironment object { type }`
 
         Represents the use of a local environment to perform shell actions.
 
@@ -19893,7 +17463,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"local"`
 
-      - `ResponseContainerReference = object { container_id, type }`
+      - `ResponseContainerReference object { container_id, type }`
 
         Represents a container created with /v1/containers.
 
@@ -19925,7 +17495,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The ID of the entity that created this tool call.
 
-  - `ShellCallOutput = object { id, call_id, max_output_length, 4 more }`
+  - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
 
     The output of a shell tool call that was emitted.
 
@@ -19949,7 +17519,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
-        - `Timeout = object { type }`
+        - `Timeout object { type }`
 
           Indicates that the shell call exceeded its configured time limit.
 
@@ -19959,7 +17529,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"timeout"`
 
-        - `Exit = object { exit_code, type }`
+        - `Exit object { exit_code, type }`
 
           Indicates that the shell commands finished and returned an exit code.
 
@@ -20005,7 +17575,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The identifier of the actor that created the item.
 
-  - `ApplyPatchCall = object { id, call_id, operation, 3 more }`
+  - `ApplyPatchCall object { id, call_id, operation, 3 more }`
 
     A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -20021,7 +17591,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
-      - `CreateFile = object { diff, path, type }`
+      - `CreateFile object { diff, path, type }`
 
         Instruction describing how to create a file via the apply_patch tool.
 
@@ -20039,7 +17609,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"create_file"`
 
-      - `DeleteFile = object { path, type }`
+      - `DeleteFile object { path, type }`
 
         Instruction describing how to delete a file via the apply_patch tool.
 
@@ -20053,7 +17623,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"delete_file"`
 
-      - `UpdateFile = object { diff, path, type }`
+      - `UpdateFile object { diff, path, type }`
 
         Instruction describing how to update a file via the apply_patch tool.
 
@@ -20089,7 +17659,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The ID of the entity that created this tool call.
 
-  - `ApplyPatchCallOutput = object { id, call_id, status, 3 more }`
+  - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
 
     The output emitted by an apply patch tool call.
 
@@ -20123,7 +17693,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       Optional textual output returned by the apply patch tool.
 
-  - `McpListTools = object { id, server_label, tools, 2 more }`
+  - `McpListTools object { id, server_label, tools, 2 more }`
 
     A list of tools available on an MCP server.
 
@@ -20165,7 +17735,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       Error message if the server could not list tools.
 
-  - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+  - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
     A request for human approval of a tool invocation.
 
@@ -20191,7 +17761,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"mcp_approval_request"`
 
-  - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+  - `McpApprovalResponse object { id, approval_request_id, approve, 2 more }`
 
     A response to an MCP approval request.
 
@@ -20217,7 +17787,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       Optional reason for the decision.
 
-  - `McpCall = object { id, arguments, name, 6 more }`
+  - `McpCall object { id, arguments, name, 6 more }`
 
     An invocation of a tool on an MCP server.
 
@@ -20270,7 +17840,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       - `"failed"`
 
-  - `CustomToolCall = object { call_id, input, name, 3 more }`
+  - `CustomToolCall object { call_id, input, name, 3 more }`
 
     A call to a custom tool created by the model.
 
@@ -20300,7 +17870,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
       The namespace of the custom tool being called.
 
-  - `CustomToolCallOutput = object { call_id, output, type, id }`
+  - `CustomToolCallOutput object { call_id, output, type, id }`
 
     The output of a custom tool call from your code, being sent back to the model.
 
@@ -20321,83 +17891,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Text, image, or file output of the custom tool call.
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
-          - `text: string`
-
-            The text input to the model.
-
-          - `type: "input_text"`
-
-            The type of the input item. Always `input_text`.
-
-            - `"input_text"`
-
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
-
-            The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
-
-          - `type: "input_image"`
-
-            The type of the input item. Always `input_image`.
-
-            - `"input_image"`
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `image_url: optional string`
-
-            The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
-
-          - `type: "input_file"`
-
-            The type of the input item. Always `input_file`.
-
-            - `"input_file"`
-
-          - `detail: optional "low" or "high"`
-
-            The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_data: optional string`
-
-            The content of the file to be sent to the model.
-
-          - `file_id: optional string`
-
-            The ID of the file to be sent to the model.
-
-          - `file_url: optional string`
-
-            The URL of the file to be sent to the model.
-
-          - `filename: optional string`
-
-            The name of the file to be sent to the model.
 
     - `type: "custom_tool_call_output"`
 
@@ -20411,7 +17915,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
 ### Conversation Item List
 
-- `ConversationItemList = object { data, first_id, has_more, 2 more }`
+- `ConversationItemList object { data, first_id, has_more, 2 more }`
 
   A list of Conversation items.
 
@@ -20419,7 +17923,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
     A list of conversation items.
 
-    - `Message = object { id, content, role, 3 more }`
+    - `Message object { id, content, role, 3 more }`
 
       A message to or from the model.
 
@@ -20431,7 +17935,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The content of the message
 
-        - `ResponseInputText = object { text, type }`
+        - `ResponseInputText object { text, type }`
 
           A text input to the model.
 
@@ -20445,7 +17949,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"input_text"`
 
-        - `ResponseOutputText = object { annotations, logprobs, text, type }`
+        - `ResponseOutputText object { annotations, logprobs, text, type }`
 
           A text output from the model.
 
@@ -20453,7 +17957,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The annotations of the text output.
 
-            - `FileCitation = object { file_id, filename, index, type }`
+            - `FileCitation object { file_id, filename, index, type }`
 
               A citation to a file.
 
@@ -20475,7 +17979,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 - `"file_citation"`
 
-            - `URLCitation = object { end_index, start_index, title, 2 more }`
+            - `URLCitation object { end_index, start_index, title, 2 more }`
 
               A citation for a web resource used to generate a model response.
 
@@ -20501,7 +18005,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 The URL of the web resource.
 
-            - `ContainerFileCitation = object { container_id, end_index, file_id, 3 more }`
+            - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
               A citation for a container file used to generate a model response.
 
@@ -20531,7 +18035,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 - `"container_file_citation"`
 
-            - `FilePath = object { file_id, index, type }`
+            - `FilePath object { file_id, index, type }`
 
               A path to a file.
 
@@ -20575,7 +18079,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"output_text"`
 
-        - `TextContent = object { text, type }`
+        - `TextContent object { text, type }`
 
           A text content.
 
@@ -20585,7 +18089,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"text"`
 
-        - `SummaryTextContent = object { text, type }`
+        - `SummaryTextContent object { text, type }`
 
           A summary text from the model.
 
@@ -20599,7 +18103,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"summary_text"`
 
-        - `ReasoningText = object { text, type }`
+        - `ReasoningText object { text, type }`
 
           Reasoning text from the model.
 
@@ -20613,7 +18117,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"reasoning_text"`
 
-        - `ResponseOutputRefusal = object { refusal, type }`
+        - `ResponseOutputRefusal object { refusal, type }`
 
           A refusal from the model.
 
@@ -20627,7 +18131,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"refusal"`
 
-        - `ResponseInputImage = object { detail, type, file_id, image_url }`
+        - `ResponseInputImage object { detail, type, file_id, image_url }`
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
@@ -20657,7 +18161,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
-        - `ComputerScreenshotContent = object { detail, file_id, image_url, type }`
+        - `ComputerScreenshotContent object { detail, file_id, image_url, type }`
 
           A screenshot of a computer.
 
@@ -20687,7 +18191,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"computer_screenshot"`
 
-        - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+        - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
           A file input to the model.
 
@@ -20765,7 +18269,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"final_answer"`
 
-    - `FunctionCall = object { id, arguments, call_id, 5 more }`
+    - `FunctionCall object { id, arguments, call_id, 5 more }`
 
       - `id: string`
 
@@ -20808,7 +18312,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The namespace of the function to run.
 
-    - `FunctionCallOutput = object { id, call_id, output, 3 more }`
+    - `FunctionCallOutput object { id, call_id, output, 3 more }`
 
       - `id: string`
 
@@ -20831,83 +18335,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           Text, image, or file output of the function call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `status: "in_progress" or "completed" or "incomplete"`
 
@@ -20930,7 +18368,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The identifier of the actor that created the item.
 
-    - `FileSearchCall = object { id, queries, status, 2 more }`
+    - `FileSearchCall object { id, queries, status, 2 more }`
 
       The results of a file search tool call. See the
       [file search guide](/docs/guides/tools-file-search) for more information.
@@ -20998,7 +18436,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The text that was retrieved from the file.
 
-    - `WebSearchCall = object { id, action, status, type }`
+    - `WebSearchCall object { id, action, status, type }`
 
       The results of a web search tool call. See the
       [web search guide](/docs/guides/tools-web-search) for more information.
@@ -21012,7 +18450,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
 
-        - `Search = object { query, type, queries, sources }`
+        - `Search object { query, type, queries, sources }`
 
           Action type "search" - Performs a web search query.
 
@@ -21044,7 +18482,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The URL of the source.
 
-        - `OpenPage = object { type, url }`
+        - `OpenPage object { type, url }`
 
           Action type "open_page" - Opens a specific URL from search results.
 
@@ -21058,7 +18496,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The URL opened by the model.
 
-        - `FindInPage = object { pattern, type, url }`
+        - `FindInPage object { pattern, type, url }`
 
           Action type "find_in_page": Searches for a pattern within a loaded page.
 
@@ -21094,7 +18532,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"web_search_call"`
 
-    - `ImageGenerationCall = object { id, result, status, type }`
+    - `ImageGenerationCall object { id, result, status, type }`
 
       An image generation request made by the model.
 
@@ -21124,7 +18562,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"image_generation_call"`
 
-    - `ComputerCall = object { id, call_id, pending_safety_checks, 4 more }`
+    - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
       A tool call to a computer use tool. See the
       [computer use guide](/docs/guides/tools-computer-use) for more information.
@@ -21174,7 +18612,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         A click action.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
@@ -21210,7 +18648,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The keys being held while clicking.
 
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
@@ -21232,7 +18670,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The y-coordinate where the double click occurred.
 
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
@@ -21265,7 +18703,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The keys being held while dragging the mouse.
 
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
@@ -21279,7 +18717,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"keypress"`
 
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
@@ -21301,7 +18739,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The keys being held while moving the mouse.
 
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
@@ -21311,7 +18749,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"screenshot"`
 
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
@@ -21341,7 +18779,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The keys being held while scrolling.
 
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
@@ -21355,7 +18793,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"type"`
 
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
@@ -21370,198 +18808,43 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         Flattened batched actions for `computer_use`. Each action includes an
         `type` discriminator and action-specific fields.
 
-        - `Click = object { button, type, x, 2 more }`
+        - `Click object { button, type, x, 2 more }`
 
           A click action.
 
-          - `button: "left" or "right" or "wheel" or 2 more`
-
-            Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-            - `"left"`
-
-            - `"right"`
-
-            - `"wheel"`
-
-            - `"back"`
-
-            - `"forward"`
-
-          - `type: "click"`
-
-            Specifies the event type. For a click action, this property is always `click`.
-
-            - `"click"`
-
-          - `x: number`
-
-            The x-coordinate where the click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the click occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while clicking.
-
-        - `DoubleClick = object { keys, type, x, y }`
+        - `DoubleClick object { keys, type, x, y }`
 
           A double click action.
 
-          - `keys: array of string`
-
-            The keys being held while double-clicking.
-
-          - `type: "double_click"`
-
-            Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-            - `"double_click"`
-
-          - `x: number`
-
-            The x-coordinate where the double click occurred.
-
-          - `y: number`
-
-            The y-coordinate where the double click occurred.
-
-        - `Drag = object { path, type, keys }`
+        - `Drag object { path, type, keys }`
 
           A drag action.
 
-          - `path: array of object { x, y }`
-
-            An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-            ```
-            [
-              { x: 100, y: 200 },
-              { x: 200, y: 300 }
-            ]
-            ```
-
-            - `x: number`
-
-              The x-coordinate.
-
-            - `y: number`
-
-              The y-coordinate.
-
-          - `type: "drag"`
-
-            Specifies the event type. For a drag action, this property is always set to `drag`.
-
-            - `"drag"`
-
-          - `keys: optional array of string`
-
-            The keys being held while dragging the mouse.
-
-        - `Keypress = object { keys, type }`
+        - `Keypress object { keys, type }`
 
           A collection of keypresses the model would like to perform.
 
-          - `keys: array of string`
-
-            The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-          - `type: "keypress"`
-
-            Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-            - `"keypress"`
-
-        - `Move = object { type, x, y, keys }`
+        - `Move object { type, x, y, keys }`
 
           A mouse move action.
 
-          - `type: "move"`
-
-            Specifies the event type. For a move action, this property is always set to `move`.
-
-            - `"move"`
-
-          - `x: number`
-
-            The x-coordinate to move to.
-
-          - `y: number`
-
-            The y-coordinate to move to.
-
-          - `keys: optional array of string`
-
-            The keys being held while moving the mouse.
-
-        - `Screenshot = object { type }`
+        - `Screenshot object { type }`
 
           A screenshot action.
 
-          - `type: "screenshot"`
-
-            Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-            - `"screenshot"`
-
-        - `Scroll = object { scroll_x, scroll_y, type, 3 more }`
+        - `Scroll object { scroll_x, scroll_y, type, 3 more }`
 
           A scroll action.
 
-          - `scroll_x: number`
-
-            The horizontal scroll distance.
-
-          - `scroll_y: number`
-
-            The vertical scroll distance.
-
-          - `type: "scroll"`
-
-            Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-            - `"scroll"`
-
-          - `x: number`
-
-            The x-coordinate where the scroll occurred.
-
-          - `y: number`
-
-            The y-coordinate where the scroll occurred.
-
-          - `keys: optional array of string`
-
-            The keys being held while scrolling.
-
-        - `Type = object { text, type }`
+        - `Type object { text, type }`
 
           An action to type in text.
 
-          - `text: string`
-
-            The text to type.
-
-          - `type: "type"`
-
-            Specifies the event type. For a type action, this property is always set to `type`.
-
-            - `"type"`
-
-        - `Wait = object { type }`
+        - `Wait object { type }`
 
           A wait action.
 
-          - `type: "wait"`
-
-            Specifies the event type. For a wait action, this property is always set to `wait`.
-
-            - `"wait"`
-
-    - `ComputerCallOutput = object { id, call_id, output, 4 more }`
+    - `ComputerCallOutput object { id, call_id, output, 4 more }`
 
       - `id: string`
 
@@ -21630,7 +18913,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchCall = object { id, arguments, call_id, 4 more }`
+    - `ToolSearchCall object { id, arguments, call_id, 4 more }`
 
       - `id: string`
 
@@ -21672,7 +18955,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The identifier of the actor that created the item.
 
-    - `ToolSearchOutput = object { id, call_id, execution, 4 more }`
+    - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
       - `id: string`
 
@@ -21704,7 +18987,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The loaded tool definitions returned by tool search.
 
-        - `Function = object { name, parameters, strict, 3 more }`
+        - `Function object { name, parameters, strict, 3 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -21734,7 +19017,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-        - `FileSearch = object { type, vector_store_ids, filters, 2 more }`
+        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
 
@@ -21752,7 +19035,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             A filter to apply.
 
-            - `ComparisonFilter = object { key, type, value }`
+            - `ComparisonFilter object { key, type, value }`
 
               A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
@@ -21805,7 +19088,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                   - `number`
 
-            - `CompoundFilter = object { filters, type }`
+            - `CompoundFilter object { filters, type }`
 
               Combine multiple filters using `and` or `or`.
 
@@ -21813,58 +19096,9 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
-                - `ComparisonFilter = object { key, type, value }`
+                - `ComparisonFilter object { key, type, value }`
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
 
                 - `unknown`
 
@@ -21908,7 +19142,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
 
-        - `Computer = object { type }`
+        - `Computer object { type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -21918,7 +19152,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"computer"`
 
-        - `ComputerUsePreview = object { display_height, display_width, environment, type }`
+        - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
           A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
 
@@ -21950,7 +19184,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"computer_use_preview"`
 
-        - `WebSearch = object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, filters, search_context_size, user_location }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -22010,7 +19244,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"approximate"`
 
-        - `Mcp = object { server_label, type, allowed_tools, 7 more }`
+        - `Mcp object { server_label, type, allowed_tools, 7 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
           (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
@@ -22033,7 +19267,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               A string array of allowed tool names
 
-            - `McpToolFilter = object { read_only, tool_names }`
+            - `McpToolFilter object { read_only, tool_names }`
 
               A filter object to specify which tools are allowed.
 
@@ -22099,7 +19333,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             Specify which of the MCP server's tools require approval.
 
-            - `McpToolApprovalFilter = object { always, never }`
+            - `McpToolApprovalFilter object { always, never }`
 
               Specify which of the MCP server's tools require approval. Can be
               `always`, `never`, or a filter object associated with tools
@@ -22152,7 +19386,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
             The URL for the MCP server. One of `server_url` or `connector_id` must be
             provided.
 
-        - `CodeInterpreter = object { container, type }`
+        - `CodeInterpreter object { container, type }`
 
           A tool that runs Python code to help generate a response to a prompt.
 
@@ -22166,7 +19400,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The container ID.
 
-            - `CodeInterpreterToolAuto = object { type, file_ids, memory_limit, network_policy }`
+            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
@@ -22196,7 +19430,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
                   - `type: "disabled"`
 
@@ -22204,7 +19438,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                     - `"disabled"`
 
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
                   - `allowed_domains: array of string`
 
@@ -22238,7 +19472,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"code_interpreter"`
 
-        - `ImageGeneration = object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 9 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -22359,7 +19593,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"auto"`
 
-        - `LocalShell = object { type }`
+        - `LocalShell object { type }`
 
           A tool that allows the model to execute shell commands in a local environment.
 
@@ -22369,7 +19603,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"local_shell"`
 
-        - `Shell = object { type, environment }`
+        - `Shell object { type, environment }`
 
           A tool that allows the model to execute shell commands.
 
@@ -22381,7 +19615,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
 
-            - `ContainerAuto = object { type, file_ids, memory_limit, 2 more }`
+            - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
               - `type: "container_auto"`
 
@@ -22409,47 +19643,15 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 Network access policy for the container.
 
-                - `ContainerNetworkPolicyDisabled = object { type }`
+                - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
-
-                    Disable outbound network access. Always `disabled`.
-
-                    - `"disabled"`
-
-                - `ContainerNetworkPolicyAllowlist = object { allowed_domains, type, domain_secrets }`
-
-                  - `allowed_domains: array of string`
-
-                    A list of allowed domains when type is `allowlist`.
-
-                  - `type: "allowlist"`
-
-                    Allow outbound network access only to specified domains. Always `allowlist`.
-
-                    - `"allowlist"`
-
-                  - `domain_secrets: optional array of ContainerNetworkPolicyDomainSecret`
-
-                    Optional domain-scoped secrets for allowlisted domains.
-
-                    - `domain: string`
-
-                      The domain associated with the secret.
-
-                    - `name: string`
-
-                      The name of the secret to inject for the domain.
-
-                    - `value: string`
-
-                      The secret value to inject for the domain.
+                - `ContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
 
               - `skills: optional array of SkillReference or InlineSkill`
 
                 An optional list of skills referenced by id or inline data.
 
-                - `SkillReference = object { skill_id, type, version }`
+                - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
@@ -22465,7 +19667,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                     Optional skill version. Use a positive integer or 'latest'. Omit for default.
 
-                - `InlineSkill = object { description, name, source, type }`
+                - `InlineSkill object { description, name, source, type }`
 
                   - `description: string`
 
@@ -22501,7 +19703,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                     - `"inline"`
 
-            - `LocalEnvironment = object { type, skills }`
+            - `LocalEnvironment object { type, skills }`
 
               - `type: "local"`
 
@@ -22525,7 +19727,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                   The path to the directory containing the skill.
 
-            - `ContainerReference = object { container_id, type }`
+            - `ContainerReference object { container_id, type }`
 
               - `container_id: string`
 
@@ -22537,7 +19739,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 - `"container_reference"`
 
-        - `Custom = object { name, type, defer_loading, 2 more }`
+        - `Custom object { name, type, defer_loading, 2 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -22563,7 +19765,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The input format for the custom tool. Default is unconstrained text.
 
-            - `Text = object { type }`
+            - `Text object { type }`
 
               Unconstrained free-form text.
 
@@ -22573,7 +19775,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 - `"text"`
 
-            - `Grammar = object { definition, syntax, type }`
+            - `Grammar object { definition, syntax, type }`
 
               A grammar defined by the user.
 
@@ -22595,7 +19797,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 - `"grammar"`
 
-        - `Namespace = object { description, name, tools, type }`
+        - `Namespace object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -22611,7 +19813,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The function/custom tools available inside this namespace.
 
-            - `Function = object { name, type, defer_loading, 3 more }`
+            - `Function object { name, type, defer_loading, 3 more }`
 
               - `name: string`
 
@@ -22629,7 +19831,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `strict: optional boolean`
 
-            - `Custom = object { name, type, defer_loading, 2 more }`
+            - `Custom object { name, type, defer_loading, 2 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -22655,45 +19857,13 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
                 The input format for the custom tool. Default is unconstrained text.
 
-                - `Text = object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar = object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
           - `type: "namespace"`
 
             The type of the tool. Always `namespace`.
 
             - `"namespace"`
 
-        - `ToolSearch = object { type, description, execution, parameters }`
+        - `ToolSearch object { type, description, execution, parameters }`
 
           Hosted or BYOT tool search configuration for deferred tools.
 
@@ -22719,7 +19889,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             Parameter schema for a client-executed tool search tool.
 
-        - `WebSearchPreview = object { type, search_content_types, search_context_size, user_location }`
+        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
 
@@ -22773,7 +19943,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-        - `ApplyPatch = object { type }`
+        - `ApplyPatch object { type }`
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
@@ -22793,7 +19963,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The identifier of the actor that created the item.
 
-    - `Reasoning = object { id, summary, type, 3 more }`
+    - `Reasoning object { id, summary, type, 3 more }`
 
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
@@ -22815,8 +19985,6 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         - `type: "summary_text"`
 
           The type of the object. Always `summary_text`.
-
-          - `"summary_text"`
 
       - `type: "reasoning"`
 
@@ -22854,7 +20022,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"incomplete"`
 
-    - `Compaction = object { id, encrypted_content, type, created_by }`
+    - `Compaction object { id, encrypted_content, type, created_by }`
 
       A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
 
@@ -22876,7 +20044,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The identifier of the actor that created the item.
 
-    - `CodeInterpreterCall = object { id, code, container_id, 3 more }`
+    - `CodeInterpreterCall object { id, code, container_id, 3 more }`
 
       A tool call to run code.
 
@@ -22897,7 +20065,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
 
-        - `Logs = object { logs, type }`
+        - `Logs object { logs, type }`
 
           The logs output from the code interpreter.
 
@@ -22911,7 +20079,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"logs"`
 
-        - `Image = object { type, url }`
+        - `Image object { type, url }`
 
           The image output from the code interpreter.
 
@@ -22945,7 +20113,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"code_interpreter_call"`
 
-    - `LocalShellCall = object { id, action, call_id, 2 more }`
+    - `LocalShellCall object { id, action, call_id, 2 more }`
 
       A tool call to run a command on the local shell.
 
@@ -23003,7 +20171,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"local_shell_call"`
 
-    - `LocalShellCallOutput = object { id, output, type, status }`
+    - `LocalShellCallOutput object { id, output, type, status }`
 
       The output of a local shell tool call.
 
@@ -23031,7 +20199,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"incomplete"`
 
-    - `ShellCall = object { id, action, call_id, 4 more }`
+    - `ShellCall object { id, action, call_id, 4 more }`
 
       A tool call that executes one or more shell commands in a managed environment.
 
@@ -23061,7 +20229,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Represents the use of a local environment to perform shell actions.
 
-        - `ResponseLocalEnvironment = object { type }`
+        - `ResponseLocalEnvironment object { type }`
 
           Represents the use of a local environment to perform shell actions.
 
@@ -23071,7 +20239,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"local"`
 
-        - `ResponseContainerReference = object { container_id, type }`
+        - `ResponseContainerReference object { container_id, type }`
 
           Represents a container created with /v1/containers.
 
@@ -23103,7 +20271,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The ID of the entity that created this tool call.
 
-    - `ShellCallOutput = object { id, call_id, max_output_length, 4 more }`
+    - `ShellCallOutput object { id, call_id, max_output_length, 4 more }`
 
       The output of a shell tool call that was emitted.
 
@@ -23127,7 +20295,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
 
-          - `Timeout = object { type }`
+          - `Timeout object { type }`
 
             Indicates that the shell call exceeded its configured time limit.
 
@@ -23137,7 +20305,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `"timeout"`
 
-          - `Exit = object { exit_code, type }`
+          - `Exit object { exit_code, type }`
 
             Indicates that the shell commands finished and returned an exit code.
 
@@ -23183,7 +20351,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The identifier of the actor that created the item.
 
-    - `ApplyPatchCall = object { id, call_id, operation, 3 more }`
+    - `ApplyPatchCall object { id, call_id, operation, 3 more }`
 
       A tool call that applies file diffs by creating, deleting, or updating files.
 
@@ -23199,7 +20367,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         One of the create_file, delete_file, or update_file operations applied via apply_patch.
 
-        - `CreateFile = object { diff, path, type }`
+        - `CreateFile object { diff, path, type }`
 
           Instruction describing how to create a file via the apply_patch tool.
 
@@ -23217,7 +20385,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"create_file"`
 
-        - `DeleteFile = object { path, type }`
+        - `DeleteFile object { path, type }`
 
           Instruction describing how to delete a file via the apply_patch tool.
 
@@ -23231,7 +20399,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"delete_file"`
 
-        - `UpdateFile = object { diff, path, type }`
+        - `UpdateFile object { diff, path, type }`
 
           Instruction describing how to update a file via the apply_patch tool.
 
@@ -23267,7 +20435,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The ID of the entity that created this tool call.
 
-    - `ApplyPatchCallOutput = object { id, call_id, status, 3 more }`
+    - `ApplyPatchCallOutput object { id, call_id, status, 3 more }`
 
       The output emitted by an apply patch tool call.
 
@@ -23301,7 +20469,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Optional textual output returned by the apply patch tool.
 
-    - `McpListTools = object { id, server_label, tools, 2 more }`
+    - `McpListTools object { id, server_label, tools, 2 more }`
 
       A list of tools available on an MCP server.
 
@@ -23343,7 +20511,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Error message if the server could not list tools.
 
-    - `McpApprovalRequest = object { id, arguments, name, 2 more }`
+    - `McpApprovalRequest object { id, arguments, name, 2 more }`
 
       A request for human approval of a tool invocation.
 
@@ -23369,7 +20537,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"mcp_approval_request"`
 
-    - `McpApprovalResponse = object { id, approval_request_id, approve, 2 more }`
+    - `McpApprovalResponse object { id, approval_request_id, approve, 2 more }`
 
       A response to an MCP approval request.
 
@@ -23395,7 +20563,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         Optional reason for the decision.
 
-    - `McpCall = object { id, arguments, name, 6 more }`
+    - `McpCall object { id, arguments, name, 6 more }`
 
       An invocation of a tool on an MCP server.
 
@@ -23448,7 +20616,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         - `"failed"`
 
-    - `CustomToolCall = object { call_id, input, name, 3 more }`
+    - `CustomToolCall object { call_id, input, name, 3 more }`
 
       A call to a custom tool created by the model.
 
@@ -23478,7 +20646,7 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
         The namespace of the custom tool being called.
 
-    - `CustomToolCallOutput = object { call_id, output, type, id }`
+    - `CustomToolCallOutput object { call_id, output, type, id }`
 
       The output of a custom tool call from your code, being sent back to the model.
 
@@ -23499,83 +20667,17 @@ curl -X DELETE https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           Text, image, or file output of the custom tool call.
 
-          - `ResponseInputText = object { text, type }`
+          - `ResponseInputText object { text, type }`
 
             A text input to the model.
 
-            - `text: string`
-
-              The text input to the model.
-
-            - `type: "input_text"`
-
-              The type of the input item. Always `input_text`.
-
-              - `"input_text"`
-
-          - `ResponseInputImage = object { detail, type, file_id, image_url }`
+          - `ResponseInputImage object { detail, type, file_id, image_url }`
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
-
-              The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
-
-            - `type: "input_image"`
-
-              The type of the input item. Always `input_image`.
-
-              - `"input_image"`
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `image_url: optional string`
-
-              The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-          - `ResponseInputFile = object { type, detail, file_data, 3 more }`
+          - `ResponseInputFile object { type, detail, file_data, 3 more }`
 
             A file input to the model.
-
-            - `type: "input_file"`
-
-              The type of the input item. Always `input_file`.
-
-              - `"input_file"`
-
-            - `detail: optional "low" or "high"`
-
-              The detail level of the file to be sent to the model. Use `low` for the default rendering behavior, or `high` to render the file at higher quality. Defaults to `low`.
-
-              - `"low"`
-
-              - `"high"`
-
-            - `file_data: optional string`
-
-              The content of the file to be sent to the model.
-
-            - `file_id: optional string`
-
-              The ID of the file to be sent to the model.
-
-            - `file_url: optional string`
-
-              The URL of the file to be sent to the model.
-
-            - `filename: optional string`
-
-              The name of the file to be sent to the model.
 
       - `type: "custom_tool_call_output"`
 

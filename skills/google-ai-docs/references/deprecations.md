@@ -1,5 +1,3 @@
-# Gemini deprecations
-
 <br />
 
 This page lists the known deprecation schedules for [stable (GA)](https://ai.google.dev/gemini-api/docs/models#stable) and [preview](https://ai.google.dev/gemini-api/docs/models#preview)
@@ -120,3 +118,11 @@ Already-shutdown models are indicated with gray backgrounds.
 | `lyria-3-clip-preview` | March 25, 2026 | No shutdown date announced |   |
 | `lyria-3-pro-preview` | March 25, 2026 | No shutdown date announced |   |
 | `lyria-realtime-exp` | May 20, 2025 | No shutdown date announced |   |
+
+## Robotics models
+
+| **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
+|---|---|---|---|
+| Preview models ||||
+| `gemini-robotics-er-1.6-preview` | April 14, 2026 | No shut down date announced |   |
+| `gemini-robotics-er-1.5-preview` | September 25, 2025 | April 30, 2026 | `gemini-robotics-er-1.6-preview` |

@@ -10,7 +10,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
 ### Returns
 
-- `Batch = object { id, completion_window, created_at, 19 more }`
+- `Batch object { id, completion_window, created_at, 19 more }`
 
   - `id: string`
 

@@ -1102,3 +1102,15 @@ print(page.text)
   - `object: Literal["vector_store.file.deleted"]`
 
     - `"vector_store.file.deleted"`
+
+### File Content Response
+
+- `class FileContentResponse: …`
+
+  - `text: Optional[str]`
+
+    The text content
+
+  - `type: Optional[str]`
+
+    The content type (currently only `"text"`)

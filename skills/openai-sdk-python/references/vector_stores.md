@@ -289,7 +289,7 @@ Create a vector store.
 
     The number of days after the anchor time that the vector store will expire.
 
-- `file_ids: Optional[SequenceNotStr[str]]`
+- `file_ids: Optional[Sequence[str]]`
 
   A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.
 
@@ -930,13 +930,13 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
 - `vector_store_id: str`
 
-- `query: Union[str, SequenceNotStr[str]]`
+- `query: Union[str, Sequence[str]]`
 
   A query string for a search
 
   - `str`
 
-  - `SequenceNotStr[str]`
+  - `Sequence[str]`
 
 - `filters: Optional[Filters]`
 
@@ -1006,55 +1006,6 @@ Search a vector store for relevant chunks based on a query and file attributes f
       - `class ComparisonFilter: …`
 
         A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-        - `key: str`
-
-          The key to compare against the value.
-
-        - `type: Literal["eq", "ne", "gt", 5 more]`
-
-          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-          - `eq`: equals
-          - `ne`: not equal
-          - `gt`: greater than
-          - `gte`: greater than or equal
-          - `lt`: less than
-          - `lte`: less than or equal
-          - `in`: in
-          - `nin`: not in
-
-          - `"eq"`
-
-          - `"ne"`
-
-          - `"gt"`
-
-          - `"gte"`
-
-          - `"lt"`
-
-          - `"lte"`
-
-          - `"in"`
-
-          - `"nin"`
-
-        - `value: Union[str, float, bool, List[Union[str, float]]]`
-
-          The value to compare against the attribute key; supports string, number, or boolean types.
-
-          - `str`
-
-          - `float`
-
-          - `bool`
-
-          - `List[Union[str, float]]`
-
-            - `str`
-
-            - `float`
 
       - `object`
 
@@ -1442,6 +1393,50 @@ print(page.file_id)
   - `object: Literal["vector_store.deleted"]`
 
     - `"vector_store.deleted"`
+
+### Vector Store Search Response
+
+- `class VectorStoreSearchResponse: …`
+
+  - `attributes: Optional[Dict[str, Union[str, float, bool]]]`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard. Keys are strings
+    with a maximum length of 64 characters. Values are strings with a maximum
+    length of 512 characters, booleans, or numbers.
+
+    - `str`
+
+    - `float`
+
+    - `bool`
+
+  - `content: List[Content]`
+
+    Content chunks from the file.
+
+    - `text: str`
+
+      The text content returned from search.
+
+    - `type: Literal["text"]`
+
+      The type of content.
+
+      - `"text"`
+
+  - `file_id: str`
+
+    The ID of the vector store file.
+
+  - `filename: str`
+
+    The name of the vector store file.
+
+  - `score: float`
+
+    The similarity score for the result.
 
 # Files
 
@@ -2548,6 +2543,18 @@ print(page.text)
 
     - `"vector_store.file.deleted"`
 
+### File Content Response
+
+- `class FileContentResponse: …`
+
+  - `text: Optional[str]`
+
+    The text content
+
+  - `type: Optional[str]`
+
+    The content type (currently only `"text"`)
+
 # File Batches
 
 ## Create vector store file batch
@@ -2612,7 +2619,7 @@ Create a vector store file batch.
 
       - `"static"`
 
-- `file_ids: Optional[SequenceNotStr[str]]`
+- `file_ids: Optional[Sequence[str]]`
 
   A list of [File](https://platform.openai.com/docs/api-reference/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.  If `attributes` or `chunking_strategy` are provided, they will be  applied to all files in the batch. The maximum batch size is 2000 files. This endpoint is recommended for multi-file ingestion and helps reduce per-vector-store write request pressure. Mutually exclusive with `files`.
 
@@ -2641,38 +2648,6 @@ Create a vector store file batch.
   - `chunking_strategy: Optional[FileChunkingStrategyParam]`
 
     The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
-
-    - `class AutoFileChunkingStrategyParam: …`
-
-      The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
-
-      - `type: Literal["auto"]`
-
-        Always `auto`.
-
-        - `"auto"`
-
-    - `class StaticFileChunkingStrategyObjectParam: …`
-
-      Customize your own chunking strategy by setting chunk size and chunk overlap.
-
-      - `static: StaticFileChunkingStrategy`
-
-        - `chunk_overlap_tokens: int`
-
-          The number of tokens that overlap between chunks. The default value is `400`.
-
-          Note that the overlap must not exceed half of `max_chunk_size_tokens`.
-
-        - `max_chunk_size_tokens: int`
-
-          The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
-
-      - `type: Literal["static"]`
-
-        Always `static`.
-
-        - `"static"`
 
 ### Returns
 

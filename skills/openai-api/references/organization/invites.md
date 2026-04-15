@@ -203,7 +203,7 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -359,7 +359,7 @@ Retrieves an invite.
 
 ### Returns
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -536,7 +536,7 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
 
 ### Invite
 
-- `Invite = object { id, email, expires_at, 6 more }`
+- `Invite object { id, email, expires_at, 6 more }`
 
   Represents an individual `invite` to the organization.
 
@@ -599,3 +599,17 @@ curl -X DELETE https://api.openai.com/v1/organization/invites/invite-abc \
       - `"member"`
 
       - `"owner"`
+
+### Invite Delete Response
+
+- `InviteDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.invite.deleted"`
+
+    The object type, which is always `organization.invite.deleted`
+
+    - `"organization.invite.deleted"`

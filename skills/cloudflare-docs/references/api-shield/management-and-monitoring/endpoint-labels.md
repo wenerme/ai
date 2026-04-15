@@ -84,6 +84,8 @@ Cloudflare automatically runs risk scans every 24 hours on your saved endpoints.
 
 `cf-risk-bola-pollution`: Automatically added when an endpoint experiences successful responses where parameters are found in multiple places in the request, as opposed to what is expected from the API's schema.
 
+`cf-risk-zombie`: Automatically added when a saved endpoint has not received traffic in 32 days.
+
 Note
 
 Cloudflare will only add authentication labels to endpoints with successful response codes. Refer to the below table for more details.
@@ -181,8 +183,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-3142)
-* [ Old dashboard ](#tab-panel-3143)
+* [  New dashboard ](#tab-panel-3268)
+* [ Old dashboard ](#tab-panel-3269)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -222,8 +224,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-3144)
-* [ Old dashboard ](#tab-panel-3145)
+* [  New dashboard ](#tab-panel-3270)
+* [ Old dashboard ](#tab-panel-3271)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -241,8 +243,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-3140)
-* [ Old dashboard ](#tab-panel-3141)
+* [  New dashboard ](#tab-panel-3266)
+* [ Old dashboard ](#tab-panel-3267)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

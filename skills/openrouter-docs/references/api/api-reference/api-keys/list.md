@@ -126,11 +126,15 @@ components:
           type: string
           description: Human-readable label for the API key
         limit:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Spending limit for the API key in USD
         limit_remaining:
-          type: number
+          type:
+            - number
+            - 'null'
           format: double
           description: Remaining spending limit in USD
         limit_reset:
