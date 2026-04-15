@@ -3139,6 +3139,14 @@ Learn when and how to compact long-running conversations in the [conversation st
 
     A key to use when reading from or writing to the prompt cache.
 
+  - `prompt_cache_retention?: "in_memory" | "24h" | null`
+
+    How long to retain a prompt cache entry created by this request.
+
+    - `"in_memory"`
+
+    - `"24h"`
+
 ### Returns
 
 - `CompactedResponse`

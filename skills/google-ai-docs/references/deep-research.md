@@ -1,5 +1,3 @@
-# Gemini Deep Research Agent
-
 The Gemini Deep Research Agent autonomously plans, executes, and synthesizes
 multi-step research tasks. Powered by Gemini 3.1 Pro, it navigates complex
 information landscapes using web search and your own data to produce detailed,
@@ -397,7 +395,7 @@ which lets you resume from the specific point where you disconnected.
 
 ### REST
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?alt=sse" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
@@ -563,7 +561,7 @@ drops.
     # 1. Start the research task (Initial Stream)
     # Watch for event: interaction.start to get the INTERACTION_ID
     # Watch for "event_id" fields to get the LAST_EVENT_ID
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?alt=sse" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
@@ -581,7 +579,7 @@ drops.
 
     # 2. Reconnect (Resume Stream)
     # Pass the INTERACTION_ID and the LAST_EVENT_ID you saved.
-    curl -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/INTERACTION_ID?stream=true&last_event_id=LAST_EVENT_ID&alt=sse" \
+    curl -X GET "https://generativelanguage.googleapis.com/v1beta/interactions/INTERACTION_ID?stream=true&last_event_id=LAST_EVENT_ID" \
     -H "x-goog-api-key: $GEMINI_API_KEY"
 
 ## Follow-up questions and interactions

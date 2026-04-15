@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Network Firewall
-description: There are no scheduled entries at this time.
+description: We are updating naming related to some of our Networking products to better clarify their place in the Zero Trust and Secure Access Service Edge (SASE) journey.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -18,7 +18,83 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-network-firewall.xml) 
 
-There are no scheduled entries at this time.
+## 2026-02-17
+
+  
+**Cloudflare One Product Name Updates**   
+
+We are updating naming related to some of our Networking products to better clarify their place in the Zero Trust and Secure Access Service Edge (SASE) journey.
+
+We are retiring some older brand names in favor of names that describe exactly what the products do within your network. We are doing this to help customers build better, clearer mental models for comprehensive SASE architecture delivered on Cloudflare.
+
+#### What's changing
+
+* **Magic WAN** → **Cloudflare WAN**
+* **Magic WAN IPsec** → **Cloudflare IPsec**
+* **Magic WAN GRE** → **Cloudflare GRE**
+* **Magic WAN Connector** → **Cloudflare One Appliance**
+* **Magic Firewall** → **Cloudflare Network Firewall**
+* **Magic Network Monitoring** → **Network Flow**
+* **Magic Cloud Networking** → **Cloudflare One Multi-cloud Networking**
+
+**No action is required by you** — all functionality, existing configurations, and billing will remain exactly the same.
+
+For more information, visit the [Cloudflare One documentation](https://developers.cloudflare.com/cloudflare-one/).
+
+## 2026-01-15
+
+  
+**Network Services navigation update**   
+
+The Network Services menu structure in Cloudflare's dashboard has been updated to reflect solutions and capabilities instead of product names. This will make it easier for you to find what you need and better reflects how our services work together.
+
+Your existing configurations will remain the same, and you will have access to all of the same features and functionality.
+
+The changes visible in your dashboard may vary based on the products you use. Overall, changes relate to [Magic Transit ↗](https://developers.cloudflare.com/magic-transit/), [Magic WAN ↗](https://developers.cloudflare.com/magic-wan/), and [Magic Firewall ↗](https://developers.cloudflare.com/cloudflare-network-firewall/).
+
+**Summary of changes:**
+
+* A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
+* Product names have been removed from top-level navigation.
+* Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
+* Magic Firewall policies are now called **Firewall Policies.**
+* Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
+* Network analytics, network health, and real-time analytics are now available under **Insights.**
+* Packet Captures are found under **Insights > Diagnostics.**
+* You can manage your Sites from **Insights > Network health.**
+* You can find Magic Network Monitoring under **Insights > Network flow**.
+
+If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI\] Upcoming Network Services Dashboard Navigation Update**.
+
+![Networking Navigation](https://developers.cloudflare.com/_astro/networking-overview-and-navigation.CeMgEFaZ_Z20HKl.webp) 
+
+## 2025-03-13
+
+  
+**Cloudflare IP Ranges List**   
+
+Magic Firewall now supports a new managed list of Cloudflare IP ranges. This list is available as an option when creating a Magic Firewall policy based on IP source/destination addresses. When selecting "is in list" or "is not in list", the option "**Cloudflare IP Ranges**" will appear in the dropdown menu.
+
+This list is based on the IPs listed in the Cloudflare [IP ranges ↗](https://www.cloudflare.com/en-gb/ips/). Updates to this managed list are applied automatically.
+
+![Cloudflare IPs Managed List](https://developers.cloudflare.com/_astro/cloudflare-ips.DetyOndL_10JG5B.webp) 
+
+Note: IP Lists require a Cloudflare Advanced Network Firewall subscription. For more details about Cloudflare Network Firewall plans, refer to [Plans](https://developers.cloudflare.com/cloudflare-network-firewall/plans).
+
+## 2024-10-02
+
+  
+**Search for custom rules using rule name and/or ID**   
+
+The Magic Firewall dashboard now allows you to search custom rules using the rule name and/or ID.
+
+1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+2. Go to **Analytics & Logs** \> **Network Analytics**.
+3. Select **Magic Firewall**.
+4. Add a filter for **Rule ID**.
+![Search for firewall rules with rule IDs](https://developers.cloudflare.com/_astro/search-with-rule-id.DJgzqgKk_2jJ9x8.webp) 
+
+Additionally, the rule ID URL link has been added to Network Analytics.
 
 ## 2024-09-12
 

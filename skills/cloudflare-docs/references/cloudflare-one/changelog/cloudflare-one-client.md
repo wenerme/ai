@@ -668,6 +668,13 @@ This release contains minor fixes and improvements including enhancements to [Pr
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
+## 2025-08-29
+
+  
+**Cloudflare One WARP Diagnostic AI Analyzer**   
+
+We're excited to share a new AI feature, the [WARP diagnostic analyzer ↗](https://blog.cloudflare.com/AI-troubleshoot-warp-and-network-connectivity-issues/), to help you troubleshoot and resolve WARP connectivity issues faster. This beta feature is now available in the [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) to all users. The AI analyzer makes it easier for you to identify the root cause of client connectivity issues by parsing [remote captures](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#start-a-remote-capture) of [WARP diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/#warp-diag-logs). The WARP diagnostic analyzer provides a summary of impact that may be experienced on the device, lists notable events that may contribute to performance issues, and recommended troubleshooting steps and articles to help you resolve these issues. Refer to [WARP diagnostics analyzer (beta)](https://developers.cloudflare.com/cloudflare-one/insights/dex/remote-captures/#diagnostics-analyzer-beta) to learn more about how to maximize using the WARP diagnostic analyzer to troubleshoot the WARP client.
+
 ## 2025-08-21
 
   
@@ -958,6 +965,33 @@ This release contains improvements and new exciting features, including [post-qu
 **Known issues**
 
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
+
+## 2025-06-30
+
+  
+**Cloudflare One Agent for Android (version 2.4.2)**   
+
+A new GA release for the Android Cloudflare One Agent is now available in the [Google Play Store ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent). This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate [protection of post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) without needing to upgrade any of your individual corporate applications or systems.
+
+**Changes and improvements**
+
+* QLogs are now disabled by default and can be enabled in the app by turning on **Enable qlogs** under **Settings** \> **Advanced** \> **Diagnostics** \> **Debug Logs**. The QLog setting from previous releases will no longer be respected.
+* DNS over HTTPS traffic is now included in the WARP tunnel by default.
+* The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
+* Fixed an issue that caused WARP connection failures on ChromeOS devices.
+
+## 2025-06-30
+
+  
+**Cloudflare One Agent for iOS (version 1.11)**   
+
+A new GA release for the iOS Cloudflare One Agent is now available in the [iOS App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492). This release contains improvements and new exciting features, including [post-quantum cryptography](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum). By tunneling your corporate network traffic over Cloudflare, you can now gain the immediate [protection of post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) without needing to upgrade any of your individual corporate applications or systems.
+
+**Changes and improvements**
+
+* QLogs are now disabled by default and can be enabled in the app by turning on **Enable qlogs** under **Settings** \> **Advanced** \> **Diagnostics** \> **Debug Logs**. The QLog setting from previous releases will no longer be respected.
+* DNS over HTTPS traffic is now included in the WARP tunnel by default.
+* The WARP client now applies [post-quantum cryptography ↗](https://blog.cloudflare.com/pq-2024/) end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be enabled by [MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
 
 ## 2025-06-17
 
@@ -1261,6 +1295,62 @@ A new Beta release for the macOS WARP client is now available on the [beta relea
 **Known issues**
 
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
+
+## 2025-03-17
+
+  
+**Cloudflare One Agent for Android (version 2.4)**   
+
+A new GA release for the Android Cloudflare One Agent is now available in the [Google Play Store ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent). This release includes a new feature allowing [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url) during enrollment, as well as fixes and minor improvements.
+
+**Changes and improvements**
+
+* Improved in-app error messages.
+* Improved mobile client login with support for [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url).
+* Fixed an issue preventing admin split tunnel settings taking priority for traffic from certain applications.
+
+## 2025-03-17
+
+  
+**Cloudflare One Agent for iOS (version 1.10)**   
+
+A new GA release for the iOS Cloudflare One Agent is now available in the [iOS App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492). This release includes a new feature allowing [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url) during enrollment, as well as fixes and minor improvements.
+
+**Changes and improvements**
+
+* Improved in-app error messages.
+* Improved mobile client login with support for [team name insertion by URL](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#enroll-using-a-url).
+* Bug fixes and performance improvements.
+
+## 2024-06-16
+
+  
+**Explore product updates for Cloudflare One**   
+
+Welcome to your new home for product updates on [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/).
+
+Our [new changelog](https://developers.cloudflare.com/changelog/) lets you read about changes in much more depth, offering in-depth examples, images, code samples, and even gifs.
+
+If you are looking for older product updates, refer to the following locations.
+
+Older product updates
+
+* [Access](https://developers.cloudflare.com/cloudflare-one/changelog/access/)
+* [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/)
+* [CASB](https://developers.cloudflare.com/cloudflare-one/changelog/casb/)
+* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/changelog/tunnel/)
+* [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/changelog/dlp/)
+* [Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/changelog/dex/)
+* [Email security](https://developers.cloudflare.com/cloudflare-one/changelog/email-security/)
+* [Gateway](https://developers.cloudflare.com/cloudflare-one/changelog/gateway/)
+* [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/changelog/)
+* [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/changelog/)
+* [Magic Network Monitoring](https://developers.cloudflare.com/network-flow/changelog/)
+* [Magic Transit](https://developers.cloudflare.com/magic-transit/changelog/)
+* [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/changelog/)
+* [Network Interconnect](https://developers.cloudflare.com/network-interconnect/changelog/)
+* [Risk score](https://developers.cloudflare.com/cloudflare-one/changelog/risk-score/)
+* [Cloudflare One Client](https://developers.cloudflare.com/changelog/cloudflare-one-client/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/changelog/","name":"Changelog"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/changelog/cloudflare-one-client/","name":"Cloudflare One Client"}}]}

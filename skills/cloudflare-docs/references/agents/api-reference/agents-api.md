@@ -111,6 +111,9 @@ flowchart TD
 | **Protocol messages** | shouldSendProtocolMessages(), isConnectionProtocolEnabled()            | [Protocol messages](https://developers.cloudflare.com/agents/api-reference/protocol-messages/)       |
 | **Context**           | getCurrentAgent()                                                      | [getCurrentAgent()](https://developers.cloudflare.com/agents/api-reference/get-current-agent/)       |
 | **Observability**     | subscribe(), diagnostics channels, Tail Workers                        | [Observability](https://developers.cloudflare.com/agents/api-reference/observability/)               |
+| **Sub-agents**        | subAgent(), abortSubAgent(), deleteSubAgent()                          | [Sub-agents](https://developers.cloudflare.com/agents/api-reference/sub-agents/)                     |
+| **Sessions**          | Session.create(), context blocks, compaction, search                   | [Sessions](https://developers.cloudflare.com/agents/api-reference/sessions/)                         |
+| **Think**             | Think base class, workspace tools, lifecycle hooks, extensions         | [Think](https://developers.cloudflare.com/agents/api-reference/think/)                               |
 
 ## SQL API
 

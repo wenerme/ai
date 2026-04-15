@@ -7,6 +7,22 @@
 
 # Spark Doris Connector Release Notes
 
+## 26.0.0
+
+### Improvements
+
+- Enable gzip compression by default for StreamLoad writes [#356](https://github.com/apache/doris-spark-connector/pull/356)
+- Add log for Arrow Flight read [#354](https://github.com/apache/doris-spark-connector/pull/354)
+- Support http request use UTF-8 charset [#347](https://github.com/apache/doris-spark-connector/pull/347)
+
+### Bug Fixes
+
+- Fix column projection issue in Spark 3.3, 3.4, and 3.5 [#353](https://github.com/apache/doris-spark-connector/pull/353)
+
+### Credits
+
+@JNSimba @gnehil
+
 ## 25.2.0
 
 ### Improvements

@@ -7,6 +7,16 @@
 
 # Flink Doris Connector Release Notes
 
+## 26.1.0
+
+### Features & Improvements
+
+- Enable gz compression by default for StreamLoad [#648](https://github.com/apache/doris-flink-connector/pull/648)
+
+### Credits
+
+@JNSimba
+
 ## 26.0.0
 
 ### Features & Improvements

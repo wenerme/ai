@@ -258,6 +258,16 @@ Proxied traffic through Cloudflare Tunnel is buffered by default unless the orig
 
 Long-lived connections initiated through Cloudflare One, such as SSH sessions, can last up to eight hours. However, disruptions along the service path may result in more frequent disconnects. Often, these disconnects are caused by regularly scheduled maintenance events such as data center, server, or service updates and restarts. If you believe these events are not the cause of disconnects in your environment, collect the relevant [client logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) and [Tunnel logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) and contact Support.
 
+If the disconnects mainly affect idle SSH sessions, WebSocket connections, or other long-lived connections, the transport protocol may be relevant.
+
+When `cloudflared` uses QUIC, idle sessions can be more sensitive to network devices that aggressively time out UDP traffic. If idle connections drop repeatedly, try one or more of the following:
+
+* Configure application-layer keepalives, such as `ServerAliveInterval` for SSH.
+* Test with `cloudflared` set to `protocol: http2`.
+* Review local firewalls, NAT devices, and upstream network equipment for short UDP idle timers.
+
+For connection setup failures caused by blocked QUIC traffic, refer to the QUIC troubleshooting sections above.
+
 ## `ping` and `traceroute` commands do not work.
 
 To ping an IP address behind Cloudflare Tunnel, your system must allow ICMP traffic through `cloudflared`. For configuration instructions, refer to the [ICMP proxy documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#icmp).

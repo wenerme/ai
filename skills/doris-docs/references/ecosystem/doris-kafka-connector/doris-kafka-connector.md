@@ -18,6 +18,7 @@ The Doris community provides the [doris-kafka-connector](https://github.com/apac
 | 1.1.0             | 2.4+                          | 2.0+          | 8            | 
 | 24.0.0            | 2.4+                          | 2.0+          | 8            | 
 | 25.0.0            | 2.4+                          | 2.0+          | 8            | 
+| 26.0.0            | 2.4+                          | 2.0+          | 8            | 
 
 ## Usage
 

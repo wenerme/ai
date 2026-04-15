@@ -143,7 +143,7 @@ The Codex app is available on macOS (Apple Silicon).
      />
    </ExampleGallery>
 
-   If you need more inspiration, check out the [explore section](https://developers.openai.com/codex/explore).
+   If you need more inspiration, explore [Codex use cases](https://developers.openai.com/codex/use-cases).
    If you're new to Codex, read the [best practices guide](https://developers.openai.com/codex/learn/best-practices).
 
     <CtaPillLink href="/codex/app" label="Learn more about the Codex app" class="mt-8" />

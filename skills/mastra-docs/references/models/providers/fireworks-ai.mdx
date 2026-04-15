@@ -1,11 +1,11 @@
 ---
 title: "Fireworks AI | Models"
-description: "Use Fireworks AI models with Mastra. 16 models available."
+description: "Use Fireworks AI models with Mastra. 17 models available."
 ---
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 16 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 17 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -197,6 +197,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "fireworks-ai/accounts/fireworks/models/minimax-m2p5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 196608,
+    "maxOutput": 196608,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/models/minimax-m2p7",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

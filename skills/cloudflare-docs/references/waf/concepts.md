@@ -82,6 +82,8 @@ Rules are evaluated in order. If there is a match for a rule with a [terminating
 
 For more information on the phases where each WAF feature will execute, refer to [WAF phases](https://developers.cloudflare.com/waf/reference/phases/).
 
+For common interactions between rewrites, IP Access rules, custom rules, and managed rules, refer to [Rule phase interactions](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/).
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/concepts/","name":"Concepts"}}]}
 ```

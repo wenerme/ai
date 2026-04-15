@@ -46,6 +46,28 @@ These errors do not necessarily indicate a protocol-level issue. Follow these st
 
 For more information, refer to [Chromium URL Request Header ↗](https://chromium.googlesource.com/chromium/src/+/HEAD/net/url%5Frequest/url%5Frequest.h).
 
+## Chrome stalls or fails only on HTTP/3
+
+If the issue reproduces only in Chrome over HTTP/3 and disappears when HTTP/3 is disabled, the problem may be related to a browser-side QUIC handling issue rather than your origin server.
+
+Symptoms can include:
+
+* Large downloads stall unexpectedly.
+* Pages with many concurrent requests hang for one to three minutes and then fail.
+* Chrome reports `ERR_QUIC_PROTOCOL_ERROR` or another QUIC-related browser error after the connection stops making progress.
+
+### How to isolate the issue
+
+1. Temporarily disable HTTP/3 for the zone.
+2. Test the same request again over HTTP/2.
+3. If the issue disappears over HTTP/2, capture a NetLog for Chrome and compare the behavior.
+
+### Resolution
+
+If the issue is limited to specific hostnames, you can test a more targeted workaround such as removing the `Alt-Svc` header with a [response header transform rule](https://developers.cloudflare.com/rules/transform/response-header-modification/). However, proxied hostnames can also advertise HTTP/3 through generated HTTPS records. Disabling HTTP/3 for the zone is the most reliable way to force HTTP/2 while you troubleshoot.
+
+After changing `Alt-Svc`, remember that browsers may cache the advertised alternative service for up to 24 hours.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/speed/","name":"Speed"}},{"@type":"ListItem","position":3,"item":{"@id":"/speed/optimization/","name":"Settings"}},{"@type":"ListItem","position":4,"item":{"@id":"/speed/optimization/protocol/","name":"Protocol optimization"}},{"@type":"ListItem","position":5,"item":{"@id":"/speed/optimization/protocol/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":6,"item":{"@id":"/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/","name":"Troubleshoot protocol issues"}}]}
 ```

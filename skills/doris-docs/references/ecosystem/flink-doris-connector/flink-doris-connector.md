@@ -34,6 +34,7 @@ Using the Flink Connector, you can perform the following operations:
 | 25.0.0            | 1.15 - 1.20               | 1.0+          | 8            | -             |
 | 25.1.0            | 1.15 - 1.20               | 1.0+          | 8            | -             |
 | 26.0.0            | 1.15 - 1.20,2.0 - 2.2     | 1.0+          | 8(1.x),17(2.x) | -             |
+| 26.1.0            | 1.15 - 1.20,2.0 - 2.2     | 1.0+          | 8(1.x),17(2.x) | -             |
 
 ## Usage
 
@@ -822,9 +823,9 @@ After starting the Flink cluster, you can directly run the following command:
 | Key                         | Default Value | Required | Comment                                                      |
 | --------------------------- | ------------- | -------- | ------------------------------------------------------------ |
 | sink.label-prefix           | --            | Y        | The label prefix used for Stream load import. In the 2pc scenario, it is required to be globally unique to ensure the EOS semantics of Flink. |
-| sink.properties.*           | --            | N        | Import parameters for Stream Load. For example, 'sink.properties.column_separator' = ', ' defines the column separator, and 'sink.properties.escape_delimiters' = 'true' means that special characters as delimiters, like \x01, will be converted to binary 0x01. For JSON format import, 'sink.properties.format' = 'json', 'sink.properties.read_json_by_line' = 'true'. For detailed parameters, refer to [here](../data-operate/import/import-way/stream-load-manual.md#load-configuration-parameters). For Group Commit mode, for example, 'sink.properties.group_commit' = 'sync_mode' sets the group commit to synchronous mode. The Flink connector has supported import configuration group commit since version 1.6.2. For detailed usage and limitations, refer to [group commit](../data-operate/import/group-commit-manual.md). |
+| sink.properties.*           | --            | N        | Import parameters for Stream Load. For example, 'sink.properties.column_separator' = ', ' defines the column separator, and 'sink.properties.escape_delimiters' = 'true' means that special characters as delimiters, like \x01, will be converted to binary 0x01. For JSON format import, 'sink.properties.format' = 'json', 'sink.properties.read_json_by_line' = 'true'. For detailed parameters, refer to [here](../../data-operate/import/import-way/stream-load-manual.md#load-configuration-parameters). For Group Commit mode, for example, 'sink.properties.group_commit' = 'sync_mode' sets the group commit to synchronous mode. The Flink connector has supported import configuration group commit since version 1.6.2. For detailed usage and limitations, refer to [group commit](../../data-operate/import/group-commit-manual.md). |
 | sink.enable-delete          | TRUE          | N        | Whether to enable deletion. This option requires the Doris table to have the batch deletion feature enabled (enabled by default in Doris 0.15+ versions), and only supports the Unique model. |
-| sink.enable-2pc             | TRUE          | N        | Whether to enable two-phase commit (2pc). The default is true, ensuring Exactly-Once semantics. For details about two-phase commit, refer to [here](../data-operate/transaction.md#streamload-2pc). |
+| sink.enable-2pc             | TRUE          | N        | Whether to enable two-phase commit (2pc). The default is true, ensuring Exactly-Once semantics. For details about two-phase commit, refer to [here](../../data-operate/transaction.md#streamload-2pc). |
 | sink.buffer-size            | 1MB           | N        | The size of the write data cache buffer, in bytes. It is not recommended to modify it, and the default configuration can be used. |
 | sink.buffer-count           | 3             | N        | The number of write data cache buffers. It is not recommended to modify it, and the default configuration can be used. |
 | sink.max-retries            | 3             | N        | The maximum number of retries after a Commit failure. The default is 3 times. |
@@ -1116,7 +1117,7 @@ In the whole database synchronization tool provided by the Connector, no additio
 
 3. **errCode = 2, detailMessage = current running txns on db 10006 is 100, larger than limit 100**
 
-   This is because the concurrent imports into the same database exceed 100. It can be solved by adjusting the parameter `max_running_txn_num_per_db` in `fe.conf`. For specific details, please refer to [max_running_txn_num_per_db](../admin-manual/config/fe-config#max_running_txn_num_per_db).
+   This is because the concurrent imports into the same database exceed 100. It can be solved by adjusting the parameter `max_running_txn_num_per_db` in `fe.conf`. For specific details, please refer to [max_running_txn_num_per_db](../../admin-manual/config/fe-config#max_running_txn_num_per_db).
 
    Meanwhile, frequently modifying the label and restarting a task may also lead to this error. In the 2pc scenario (for Duplicate/Aggregate models), the label of each task needs to be unique. And when restarting from a checkpoint, the Flink task will actively abort the transactions that have been pre-committed successfully but not yet committed. Frequent label modifications and restarts will result in a large number of pre-committed successful transactions that cannot be aborted and thus occupy transactions. In the Unique model, 2pc can also be disabled to achieve idempotent writes.
 

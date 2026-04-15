@@ -18,7 +18,189 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dlp.xml) 
 
-There are no scheduled entries at this time.
+## 2025-10-01
+
+  
+**Expanded File Type Controls for Executables and Disk Images**   
+
+You can now enhance your security posture by blocking additional application installer and disk image file types with Cloudflare Gateway. Preventing the download of unauthorized software packages is a critical step in securing endpoints from malware and unwanted applications.
+
+We have expanded Gateway's file type controls to include:
+
+* Apple Disk Image (dmg)
+* Microsoft Software Installer (msix, appx)
+* Apple Software Package (pkg)
+
+You can find these new options within the [_Upload File Types_ and _Download File Types_ selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
+
+* **System**: _Apple Disk Image (dmg)_
+* **Executable**: _Microsoft Software Installer (msix)_, _Microsoft Software Installer (appx)_, _Apple Software Package (pkg)_
+
+To ensure these file types are blocked effectively, please note the following behaviors:
+
+* DMG: Due to their file structure, DMG files are blocked at the very end of the transfer. A user's download may appear to progress but will fail at the last moment, preventing the browser from saving the file.
+* MSIX: To comprehensively block Microsoft Software Installers, you should also include the file type _Unscannable_. MSIX files larger than 100 MB are identified as Unscannable ZIP files during inspection.
+
+To get started, go to your HTTP policies in Zero Trust. For a full list of file types, refer to [supported file types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#supported-file-types).
+
+## 2025-09-25
+
+  
+**Refine DLP Scans with New Body Phase Selector**   
+
+You can now more precisely control your HTTP DLP policies by specifying whether to scan the request or response body, helping to reduce false positives and target specific data flows.
+
+In the Gateway HTTP policy builder, you will find a new selector called _Body Phase_. This allows you to define the direction of traffic the DLP engine will inspect:
+
+* _Request Body_: Scans data sent from a user's machine to an upstream service. This is ideal for monitoring data uploads, form submissions, or other user-initiated data exfiltration attempts.
+* _Response Body_: Scans data sent to a user's machine from an upstream service. Use this to inspect file downloads and website content for sensitive data.
+
+For example, consider a policy that blocks Social Security Numbers (SSNs). Previously, this policy might trigger when a user visits a website that contains example SSNs in its content (the response body). Now, by setting the **Body Phase** to _Request Body_, the policy will only trigger if the user attempts to upload or submit an SSN, ignoring the content of the web page itself.
+
+All policies without this selector will continue to scan both request and response bodies to ensure continued protection.
+
+For more information, refer to [Gateway HTTP policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#body-phase).
+
+## 2025-08-25
+
+  
+**New DLP topic based detection entries for AI prompt protection**   
+
+You now have access to a comprehensive suite of capabilities to secure your organization's use of generative AI. AI prompt protection introduces four key features that work together to provide deep visibility and granular control.
+
+1. **Prompt Detection for AI Applications**
+
+DLP can now natively detect and inspect user prompts submitted to popular AI applications, including **Google Gemini**, **ChatGPT**, **Claude**, and **Perplexity**.
+
+1. **Prompt Analysis and Topic Classification**
+
+Our DLP engine performs deep analysis on each prompt, applying [topic classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#ai-prompt-topics). These topics are grouped into two evaluation categories:
+
+* **Content:** PII, Source Code, Credentials and Secrets, Financial Information, and Customer Data.
+* **Intent:** Jailbreak attempts, requests for malicious code, or attempts to extract PII.
+
+To help you apply these topics quickly, we have also released five new predefined profiles (for example, AI Prompt: AI Security, AI Prompt: PII) that bundle these new topics.
+
+![DLP](https://developers.cloudflare.com/_astro/ai-prompt-detection-entry.4QmdkAuv_Z14HtSJ.webp) 
+1. **Granular Guardrails**  
+You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.  
+![DLP](https://developers.cloudflare.com/_astro/ai-prompt-policy.CF3H2rbK_2muoEC.webp)
+2. **Full Prompt Logging**  
+To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.  
+![DLP](https://developers.cloudflare.com/_astro/ai-prompt-log.ywQDc5qN_2v6nax.webp)
+
+AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#ai-prompt-topics).
+
+## 2025-07-17
+
+  
+**New detection entry type: Document Matching for DLP**   
+
+You can now create [document-based](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#documents) detection entries in DLP by uploading example documents. Cloudflare will encrypt your documents and create a unique fingerprint of the file. This fingerprint is then used to identify similar documents or snippets within your organization's traffic and stored files.
+
+![DLP](https://developers.cloudflare.com/_astro/document-match.CcN8pGgR_Z1e3PDm.webp) 
+
+**Key features and benefits:**
+
+* **Upload documents, forms, or templates:** Easily upload .docx and .txt files (up to 10 MB) that contain sensitive information you want to protect.
+* **Granular control with similarity percentage:** Define a minimum similarity percentage (0-100%) that a document must meet to trigger a detection, reducing false positives.
+* **Comprehensive coverage:** Apply these document-based detection entries in:  
+   * **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.  
+   * **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
+* **Identify sensitive data:** This new detection entry type is ideal for identifying sensitive data within completed forms, templates, or even small snippets of a larger document, helping you prevent data exfiltration and ensure compliance.
+
+Once uploaded and processed, you can add this new document entry into a DLP profile and policies to enhance your data protection strategy.
+
+## 2025-06-23
+
+  
+**Data Security Analytics in the Zero Trust dashboard**   
+
+Zero Trust now includes **Data security analytics**, providing you with unprecedented visibility into your organization sensitive data.
+
+The new dashboard includes:
+
+* **Sensitive Data Movement Over Time:**  
+   * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
+* **Sensitive Data at Rest in SaaS & Cloud:**  
+   * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
+* **DLP Policy Activity:**  
+   * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.  
+   * See which specific users are responsible for triggering DLP policies.
+![Data Security Analytics](https://developers.cloudflare.com/_astro/cf1-data-security-analytics-v1.BGl6fYXl_H3N0P.webp) 
+
+To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
+
+## 2025-05-12
+
+  
+**Case Sensitive Custom Word Lists**   
+
+You can now configure [custom word lists](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/#custom-wordlist) to enforce case sensitivity. This setting supports flexibility where needed and aims to reduce false positives where letter casing is critical.
+
+![dlp](https://developers.cloudflare.com/_astro/case-sesitive-cwl.MPuOc_3r_220dca.webp) 
+
+## 2025-05-07
+
+  
+**Send forensic copies to storage without DLP profiles**   
+
+You can now [send DLP forensic copies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#send-dlp-forensic-copies-to-logpush-destination) to third-party storage for any HTTP policy with an `Allow` or `Block` action, without needing to include a DLP profile. This change increases flexibility for data handling and forensic investigation use cases.
+
+By default, Gateway will send all matched HTTP requests to your configured DLP Forensic Copy jobs.
+
+![DLP](https://developers.cloudflare.com/_astro/forensic-copies-for-all.fxeFrCY4_Z1rCUy9.webp) 
+
+## 2025-04-14
+
+  
+**New predefined detection entry for ICD-11**   
+
+You now have access to the World Health Organization (WHO) 2025 edition of the [International Classification of Diseases 11th Revision (ICD-11) ↗](https://www.who.int/news/item/14-02-2025-who-releases-2025-update-to-the-international-classification-of-diseases-%28icd-11%29) as a predefined detection entry. The new dataset can be found in the [Health Information](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#health-information) predefined profile.
+
+ICD-10 dataset remains available for use.
+
+## 2025-02-03
+
+  
+**Block files that are password-protected, compressed, or otherwise unscannable.**   
+
+Gateway HTTP policies can now block files that are password-protected, compressed, or otherwise unscannable.
+
+These unscannable files are now matched with the [Download and Upload File Types traffic selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) for HTTP policies:
+
+* Password-protected Microsoft Office document
+* Password-protected PDF
+* Password-protected ZIP archive
+* Unscannable ZIP archive
+
+To get started inspecting and modifying behavior based on these and other rules, refer to [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
+
+## 2025-01-20
+
+  
+**Detect source code leaks with Data Loss Prevention**   
+
+You can now detect source code leaks with Data Loss Prevention (DLP) with predefined checks against common programming languages.
+
+The following programming languages are validated with natural language processing (NLP).
+
+* C
+* C++
+* C#
+* Go
+* Haskell
+* Java
+* JavaScript
+* Lua
+* Python
+* R
+* Rust
+* Swift
+
+DLP also supports confidence level for [source code profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code).
+
+For more details, refer to [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/).
 
 ## 2025-01-15
 

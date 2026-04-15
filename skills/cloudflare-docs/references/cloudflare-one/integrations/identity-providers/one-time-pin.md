@@ -30,9 +30,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-3485)
-* [ API ](#tab-panel-3486)
-* [ Terraform (v5) ](#tab-panel-3487)
+* [ Dashboard ](#tab-panel-3775)
+* [ API ](#tab-panel-3776)
+* [ Terraform (v5) ](#tab-panel-3777)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
@@ -106,6 +106,17 @@ By design, blocked users will not receive an email. The login page will always s
 Note
 
 Access only logs an authentication attempt after the user enters a code. If the user enters their email but never submits a code, the event will not appear in your [audit logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#authentication-logs).
+
+## OTP behavior and limits
+
+Keep the following behavior in mind when troubleshooting OTP logins:
+
+* Each PIN is single-use.
+* Requesting a new PIN invalidates the previous PIN.
+* Cloudflare only sends the email if the user is allowed by an Access policy.
+* Third-party mail security tools may consume the link before the user does, which makes the code appear already used.
+
+If users repeatedly fail to sign in, request a fresh code and verify that your mail filtering or link-scanning product is allowlisting `noreply@notify.cloudflare.com`.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/integrations/identity-providers/","name":"Identity providers"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/integrations/identity-providers/one-time-pin/","name":"One-time PIN login"}}]}

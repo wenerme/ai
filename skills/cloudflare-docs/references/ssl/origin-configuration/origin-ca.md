@@ -34,6 +34,10 @@ Note
 
 Using Cloudflare origin CA certificates does not prevent you from using [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/).
 
+Known limitation
+
+Cloudflare does not currently send expiration notifications for origin CA certificates. If you rely on long-lived origin CA certificates, track their expiration in your own certificate inventory or monitoring system.
+
 ---
 
 ## Deploy an Origin CA certificate

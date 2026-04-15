@@ -470,7 +470,7 @@ Key points:
 
 ### Chat recovery
 
-`AIChatAgent` builds on fibers for LLM streaming recovery. When `unstable_chatRecovery` is enabled, each chat turn is wrapped in a fiber automatically. The framework handles the internal recovery path and exposes `onChatRecovery` for provider-specific strategies. Refer to [Long-running agents: Recovering interrupted LLM streams](https://developers.cloudflare.com/agents/concepts/long-running-agents/#recovering-interrupted-llm-streams) for details.
+`AIChatAgent` builds on fibers for LLM streaming recovery. When `chatRecovery` is enabled, each chat turn is wrapped in a fiber automatically. The framework handles the internal recovery path and exposes `onChatRecovery` for provider-specific strategies. Refer to [Long-running agents: Recovering interrupted LLM streams](https://developers.cloudflare.com/agents/concepts/long-running-agents/#recovering-interrupted-llm-streams) for details.
 
 ## Concurrent fibers
 
@@ -541,7 +541,7 @@ Run an async function while keeping the DO alive. Heartbeat starts before `fn` a
 * [Long-running agents](https://developers.cloudflare.com/agents/concepts/long-running-agents/) — how fibers compose with schedules, plans, and async operations
 * [Schedule tasks](https://developers.cloudflare.com/agents/api-reference/schedule-tasks/) — `keepAlive` details and the alarm system
 * [Workflows](https://developers.cloudflare.com/agents/concepts/workflows/) — durable multi-step execution outside the agent
-* [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/) — `unstable_chatRecovery` and `onChatRecovery`
+* [Chat agents](https://developers.cloudflare.com/agents/api-reference/chat-agents/) — `chatRecovery` and `onChatRecovery`
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/agents/","name":"Agents"}},{"@type":"ListItem","position":3,"item":{"@id":"/agents/api-reference/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/agents/api-reference/durable-execution/","name":"Durable execution"}}]}

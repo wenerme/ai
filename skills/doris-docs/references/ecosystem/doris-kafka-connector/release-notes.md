@@ -7,6 +7,24 @@
 
 # Doris Kafka Connector Release Notes
 
+## 26.0.0
+
+### Features & Improvements
+
+- Enable gzip compression by default for StreamLoad [#95](https://github.com/apache/doris-kafka-connector/pull/95)
+- Fix JDBC connection surge caused by improper connection reuse in schema evolution [#94](https://github.com/apache/doris-kafka-connector/pull/94)
+- Add Confluent build scripts [#86](https://github.com/apache/doris-kafka-connector/pull/86)
+- Update config for ConfigDef [#85](https://github.com/apache/doris-kafka-connector/pull/85)
+
+### Bug Fixes
+
+- Fix the check of 'topic2table' configuration [#83](https://github.com/apache/doris-kafka-connector/pull/83)
+- Fix the link to the website doc in the readme [#84](https://github.com/apache/doris-kafka-connector/pull/84)
+
+### Credits
+
+@JNSimba @rnb-tron
+
 ## 25.0.0
 
 ### Features & Improvements

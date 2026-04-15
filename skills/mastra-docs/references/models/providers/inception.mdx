@@ -1,11 +1,11 @@
 ---
 title: "Inception | Models"
-description: "Use Inception models with Mastra. 4 models available."
+description: "Use Inception models with Mastra. 2 models available."
 ---
 
 # [Inception logo]Inception
 
-Access 4 Inception models through Mastra's model router. Authentication is handled automatically using the `INCEPTION_API_KEY` environment variable.
+Access 2 Inception models through Mastra's model router. Authentication is handled automatically using the `INCEPTION_API_KEY` environment variable.
 
 Learn more in the [Inception documentation](https://platform.inceptionlabs.ai/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "inception/mercury"
+  model: "inception/mercury-2"
 });
 
 // Generate a response
@@ -40,18 +40,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "inception/mercury",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 0.25,
-    "outputCost": 1
-  },
-  {
     "model": "inception/mercury-2",
     "imageInput": false,
     "audioInput": false,
@@ -64,19 +52,7 @@ for await (const chunk of stream) {
     "outputCost": 0.75
   },
   {
-    "model": "inception/mercury-coder",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 0.25,
-    "outputCost": 1
-  },
-  {
-    "model": "inception/mercury-edit",
+    "model": "inception/mercury-edit-2",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -100,7 +76,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.inceptionlabs.ai/v1/",
-    id: "inception/mercury",
+    id: "inception/mercury-2",
     apiKey: process.env.INCEPTION_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -118,8 +94,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "inception/mercury-edit"
-      : "inception/mercury";
+      ? "inception/mercury-edit-2"
+      : "inception/mercury-2";
   }
 });
 ```

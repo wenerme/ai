@@ -18,7 +18,11 @@ Copy page
 
 [Wrangler](https://developers.cloudflare.com/workers/wrangler/) offers a number of commands to manage your Cloudflare Workers.
 
-## Commands
+## Workers commands
+
+The core Wrangler commands for creating, developing, and deploying Workers are on the [Workers commands page](https://developers.cloudflare.com/workers/wrangler/commands/workers/). This includes `wrangler dev`, `wrangler deploy`, `wrangler versions`, and more.
+
+## All commands
 
 * [ Browser ](https://developers.cloudflare.com/workers/wrangler/commands/browser/)
 * [ Certificates ](https://developers.cloudflare.com/workers/wrangler/commands/certificates/)
@@ -35,6 +39,7 @@ Copy page
 * [ Tunnel ](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/)
 * [ Vectorize ](https://developers.cloudflare.com/workers/wrangler/commands/vectorize/)
 * [ VPC ](https://developers.cloudflare.com/workers/wrangler/commands/vpc/)
+* [ Workers ](https://developers.cloudflare.com/workers/wrangler/commands/workers/)
 * [ Workers for Platforms ](https://developers.cloudflare.com/workers/wrangler/commands/workers-for-platforms/)
 * [ Workflows ](https://developers.cloudflare.com/workers/wrangler/commands/workflows/)
 

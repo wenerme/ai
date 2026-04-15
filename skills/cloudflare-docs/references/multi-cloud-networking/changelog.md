@@ -18,7 +18,21 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/multi-cloud-networking.xml) 
 
-There are no scheduled entries at this time.
+## 2024-12-05
+
+  
+**Generate customized terraform files for building cloud network on-ramps**   
+
+You can now generate customized terraform files for building cloud network on-ramps to [Magic WAN](https://developers.cloudflare.com/cloudflare-wan/).
+
+[Magic Cloud](https://developers.cloudflare.com/multi-cloud-networking/) can scan and discover existing network resources and generate the required terraform files to automate cloud resource deployment using their existing infrastructure-as-code workflows for cloud automation.
+
+You might want to do this to:
+
+* Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
+* Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
+
+For more details, refer to [Set up with Terraform](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#set-up-with-terraform).
 
 ## 2024-11-21
 

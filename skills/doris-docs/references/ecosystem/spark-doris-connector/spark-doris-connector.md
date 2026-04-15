@@ -20,6 +20,7 @@ Code repository: https://github.com/apache/doris-spark-connector
 
 | Connector | Spark               | Doris       | Java | Scala      |
 |-----------|---------------------|-------------|------|------------|
+| 26.0.0    | 3.5 - 3.1, 2.4      | 1.0 +       | 8    | 2.12, 2.11 |
 | 25.2.0    | 3.5 - 3.1, 2.4      | 1.0 +       | 8    | 2.12, 2.11 |
 | 25.1.0    | 3.5 - 3.1, 2.4      | 1.0 +       | 8    | 2.12, 2.11 |
 | 25.0.1    | 3.5 - 3.1, 2.4      | 1.0 +       | 8    | 2.12, 2.11 |
@@ -407,8 +408,8 @@ Java version examples are provided under `samples/doris-demo/spark-demo/` for re
 | doris.sink.label.prefix          | spark-doris    | Import label prefix when writing in Stream Load mode.                                                                                                                                                              |
 | doris.thrift.max.message.size    | 2147483647     | Maximum message size when reading data through Thrift.                                                                                                                                                             |
 | doris.fe.auto.fetch              | false          | Whether to automatically fetch FE information. When set to true, all FE node information will be requested based on the nodes configured in `doris.fenodes`, without needing to configure multiple nodes additionally or separately configure `doris.read.arrow-flight-sql.port` and `doris.query.port`. |
-| doris.read.bitmap-to-string      | false          | Whether to convert Bitmap type to a string composed of array indexes when reading. For specific result format, refer to function definition [BITMAP_TO_STRING](../sql-manual/sql-functions/scalar-functions/bitmap-functions/bitmap-to-string.md). |
-| doris.read.bitmap-to-base64      | false          | Whether to convert Bitmap type to Base64 encoded string when reading. For specific result format, refer to function definition [BITMAP_TO_BASE64](../sql-manual/sql-functions/scalar-functions/bitmap-functions/bitmap-to-base64.md). |
+| doris.read.bitmap-to-string      | false          | Whether to convert Bitmap type to a string composed of array indexes when reading. For specific result format, refer to function definition [BITMAP_TO_STRING](../../sql-manual/sql-functions/scalar-functions/bitmap-functions/bitmap-to-string.md). |
+| doris.read.bitmap-to-base64      | false          | Whether to convert Bitmap type to Base64 encoded string when reading. For specific result format, refer to function definition [BITMAP_TO_BASE64](../../sql-manual/sql-functions/scalar-functions/bitmap-functions/bitmap-to-base64.md). |
 | doris.query.port                 | -              | Doris FE query port, used for overwrite write and Catalog metadata retrieval.                                                                                                                                     |
 
 ### SQL and Dataframe Specific Configuration

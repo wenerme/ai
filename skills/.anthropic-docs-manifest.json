@@ -802,10 +802,10 @@
   "anthropic-docs/about-claude/pricing.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/pricing",
     "skill": "anthropic-docs",
-    "etag": "W/\"57c1-19d8e38fe28\"",
-    "lastModified": "Tue, 14 Apr 2026 22:59:53 GMT",
-    "size": 22457,
-    "updatedAt": "2026-04-15T00:20:09.676Z"
+    "etag": "W/\"57e4-19d8eebb428\"",
+    "lastModified": "Wed, 15 Apr 2026 02:15:05 GMT",
+    "size": 22492,
+    "updatedAt": "2026-04-15T10:28:33.947Z"
   },
   "anthropic-api/api/client-sdks.md": {
     "url": "https://platform.claude.com/docs/en/api/client-sdks",

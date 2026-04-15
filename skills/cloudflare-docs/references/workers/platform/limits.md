@@ -81,7 +81,7 @@ Each [isolate](https://developers.cloudflare.com/workers/reference/how-workers-w
 
 #### Error: exceeded CPU time limit
 
-When a Worker exceeds its CPU time limit, Cloudflare returns **Error 1102** to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded CPU Time Limits` under **Metrics** \> **Errors** \> **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededCpu`.
+When a Worker exceeds its CPU time limit, Cloudflare returns [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/#error-1102-worker-exceeded-resource-limits) to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded CPU Time Limits` under **Metrics** \> **Errors** \> **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededCpu`.
 
 To resolve a CPU time limit error:
 
@@ -93,8 +93,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-7588)
-* [  wrangler.toml ](#tab-panel-7589)
+* [  wrangler.jsonc ](#tab-panel-7908)
+* [  wrangler.toml ](#tab-panel-7909)
 
 JSONC
 
@@ -150,7 +150,7 @@ When an isolate exceeds 128 MB, the Workers runtime lets in-flight requests comp
 
 #### Error: exceeded memory limit
 
-When a Worker exceeds its memory limit, Cloudflare returns **Error 1102** to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded Memory` under **Metrics** \> **Errors** \> **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededMemory`.
+When a Worker exceeds its memory limit, Cloudflare returns [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/#error-1102-worker-exceeded-resource-limits) to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded Memory` under **Metrics** \> **Errors** \> **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededMemory`.
 
 You may also see the runtime error `Memory limit would be exceeded before EOF` when attempting to buffer a response body that exceeds the limit.
 
@@ -241,8 +241,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-7590)
-* [  TypeScript ](#tab-panel-7591)
+* [  JavaScript ](#tab-panel-7910)
+* [  TypeScript ](#tab-panel-7911)
 
 src/index.js
 

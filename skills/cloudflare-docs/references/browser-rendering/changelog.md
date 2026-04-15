@@ -20,6 +20,33 @@ This is a detailed changelog of every update to Browser Rendering. For a higher-
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/browser-rendering/changelog/index.xml)
 
+## 2026-04-15
+
+**Higher concurrency limits**
+* Increased the default [concurrent browser limit](https://developers.cloudflare.com/browser-rendering/limits/#workers-paid) for Workers Paid plans from 30 to **120 per account**.
+* Increased new browser instance rate for Workers Paid plans from 30 per minute to **1 per second**.
+* Rate limits across the [limits page](https://developers.cloudflare.com/browser-rendering/limits/) are now expressed in per-second terms, matching how they are enforced.
+
+## 2026-04-15
+
+**Live View**
+* [Live View](https://developers.cloudflare.com/browser-rendering/features/live-view/) lets you see and interact with a remote browser session in real time. Use it to debug automation scripts, monitor what a browser is doing, or manually step in when a task requires human intervention. Access Live View from the Cloudflare dashboard, via the hosted UI at `live.browser.run`, or using native Chrome DevTools.
+
+## 2026-04-15
+
+**Human in the Loop**
+* [Human in the Loop](https://developers.cloudflare.com/browser-rendering/features/human-in-the-loop/) lets a human step into a live browser session to handle what automation cannot, such as login pages, CAPTCHAs, or sensitive data entry, then hand control back to the script. Access any active session through [Live View](https://developers.cloudflare.com/browser-rendering/features/live-view/).
+
+## 2026-04-15
+
+**Session Recordings**
+* [Session Recordings](https://developers.cloudflare.com/browser-rendering/features/session-recordings/) captures DOM changes, mouse and keyboard events, and page navigation as structured data so you can replay any browser session after it ends. Enable recordings by passing `recording: true` when launching a browser. After the session closes, access recordings from the **Runs** tab in the Cloudflare dashboard or retrieve them via API.
+
+## 2026-04-15
+
+**WebMCP support**
+* Browser Run now supports [WebMCP](https://developers.cloudflare.com/browser-rendering/features/webmcp/) (Web Model Context Protocol), which allows websites to declare structured tools that AI agents can discover and execute. WebMCP-enabled browsers are available through the experimental lab browser pool.
+
 ## 2026-04-14
 
 **Wrangler CLI commands for Browser Rendering**

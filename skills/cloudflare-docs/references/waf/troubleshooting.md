@@ -19,6 +19,7 @@ Copy page
 * [ Bing's Site Scan blocked by a managed rule ](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/)
 * [ Issues sharing to Facebook ](https://developers.cloudflare.com/waf/troubleshooting/facebook-sharing/)
 * [ SameSite cookie interaction with Cloudflare ](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/)
+* [ Rule phase interactions ](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/)
 * [ FAQ ](https://developers.cloudflare.com/waf/troubleshooting/faq/)
 
 ```json

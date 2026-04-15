@@ -16,9 +16,9 @@ Copy page
 
 # Limits
 
-Browser Rendering limits are based on your [Cloudflare Workers plan](https://developers.cloudflare.com/workers/platform/pricing/).
+Browser Run limits are based on your [Cloudflare Workers plan](https://developers.cloudflare.com/workers/platform/pricing/).
 
-For pricing information, refer to [Browser Rendering pricing](https://developers.cloudflare.com/browser-rendering/pricing/).
+For pricing information, refer to [Browser Run pricing](https://developers.cloudflare.com/browser-rendering/pricing/).
 
 ## Workers Free
 
@@ -32,9 +32,9 @@ If you are on a Workers Free plan and you want to increase your limits, upgrade 
 | ------------------------------------------------------------------------------- | ---------------------------------- |
 | Browser hours                                                                   | 10 minutes per day                 |
 | Concurrent browsers per account (Browser Sessions only) [1](#user-content-fn-1) | 3 per account                      |
-| New browser instances (Browser Sessions only)                                   | 3 per minute                       |
+| New browser instances (Browser Sessions only)                                   | 1 every 20 seconds                 |
 | Browser timeout                                                                 | 60 seconds [2](#user-content-fn-2) |
-| Total requests (Quick Actions only) [3](#user-content-fn-3)                     | 6 per minute (1 every 10 seconds)  |
+| Total requests (Quick Actions only) [3](#user-content-fn-3)                     | 1 every 10 seconds                 |
 
 ### `/crawl` endpoint limits
 
@@ -51,13 +51,13 @@ Need higher limits?
 
 If you are on a Workers Paid plan and you want to increase your limits beyond those listed here, Cloudflare will grant [requests for higher limits ↗](https://forms.gle/CdueDKvb26mTaepa9) on a case-by-case basis.
 
-| Feature                                                                         | Limit                                                                                        |
-| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Browser hours                                                                   | No limit ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/))       |
-| Concurrent browsers per account (Browser Sessions only) [1](#user-content-fn-1) | 30 per account ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/)) |
-| New browser instances per minute (Browser Sessions only)                        | 30 per minute                                                                                |
-| Browser timeout                                                                 | 60 seconds [2](#user-content-fn-2)                                                           |
-| Total requests per min (Quick Actions only) [3](#user-content-fn-3)             | 600 per minute (10 per second)                                                               |
+| Feature                                                                         | Limit                                                                                         |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Browser hours                                                                   | No limit ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/))        |
+| Concurrent browsers per account (Browser Sessions only) [1](#user-content-fn-1) | 120 per account ([See pricing](https://developers.cloudflare.com/browser-rendering/pricing/)) |
+| New browser instances per second (Browser Sessions only)                        | 1 per second                                                                                  |
+| Browser timeout                                                                 | 60 seconds [2](#user-content-fn-2)                                                            |
+| Total requests per second (Quick Actions only) [3](#user-content-fn-3)          | 10 per second                                                                                 |
 
 ## FAQ
 
@@ -76,9 +76,9 @@ By default, a browser instance will time out after 60 seconds of inactivity. If 
 
 ### Is there a maximum session duration?
 
-There is no fixed maximum lifetime for a browser session as long as it remains active. By default, Browser Rendering closes sessions after one minute of inactivity to prevent unintended usage. You can [increase this inactivity timeout](https://developers.cloudflare.com/browser-rendering/puppeteer/#keep-alive) to up to 10 minutes.
+There is no fixed maximum lifetime for a browser session as long as it remains active. By default, Browser Run closes sessions after one minute of inactivity to prevent unintended usage. You can [increase this inactivity timeout](https://developers.cloudflare.com/browser-rendering/puppeteer/#keep-alive) to up to 10 minutes.
 
-If you need sessions to remain open longer, keep them active by sending a command at least once within your configured inactivity window (for example, every 10 minutes). Sessions also close when Browser Rendering rolls out a new release.
+If you need sessions to remain open longer, keep them active by sending a command at least once within your configured inactivity window (for example, every 10 minutes). Sessions also close when Browser Run rolls out a new release.
 
 ### I upgraded from the Workers Free plan, but I'm still hitting the 10-minute per day limit. What should I do?
 
@@ -94,7 +94,7 @@ To minimize usage:
 * Wrap your browser code in a `try/finally` block to ensure `browser.close()` is called even if an error occurs.
 * Use [puppeteer.history()](https://developers.cloudflare.com/browser-rendering/puppeteer/#list-recent-sessions) or [playwright.history()](https://developers.cloudflare.com/browser-rendering/playwright/#list-recent-sessions) to review recent sessions and identify any that closed due to `BrowserIdle` instead of `NormalClosure`. Sessions that close due to idle timeout indicate the browser was not closed explicitly.
 
-You can monitor your usage and view session close reasons in the Cloudflare dashboard on the **Browser Rendering** page:
+You can monitor your usage and view session close reasons in the Cloudflare dashboard on the **Browser Run** page:
 
 [ Go to **Browser Rendering** ](https://dash.cloudflare.com/?to=/:account/workers/browser-rendering) 
 
@@ -104,12 +104,12 @@ Refer to [Browser close reasons](https://developers.cloudflare.com/browser-rende
 
 ### Error: `429 Too many requests`
 
-When you make too many requests in a short period of time, Browser Rendering will respond with HTTP status code `429 Too many requests`. You can view your account's rate limits in the [Workers Free](#workers-free) and [Workers Paid](#workers-paid) sections above.
+When you make too many requests in a short period of time, Browser Run will respond with HTTP status code `429 Too many requests`. You can view your account's rate limits in the [Workers Free](#workers-free) and [Workers Paid](#workers-paid) sections above.
 
 The example below demonstrates how to handle rate limiting gracefully by reading the `Retry-After` value and retrying the request after that delay.
 
-* [ Quick Actions ](#tab-panel-3264)
-* [ Puppeteer ](#tab-panel-3265)
+* [ Quick Actions ](#tab-panel-3534)
+* [ Puppeteer ](#tab-panel-3535)
 
 JavaScript
 
@@ -204,7 +204,7 @@ Explain Code
 
 ### Error: `429 Browser time limit exceeded for today`
 
-This `Error processing the request: Unable to create new browser: code: 429: message: Browser time limit exceeded for today` error indicates you have hit the daily browser limit on the Workers Free plan. [Workers Free plan accounts are limited](#workers-free) to 10 minutes of Browser Rendering usage per day. If you exceed that limit, you will receive a `429` error until the next UTC day.
+This `Error processing the request: Unable to create new browser: code: 429: message: Browser time limit exceeded for today` error indicates you have hit the daily browser limit on the Workers Free plan. [Workers Free plan accounts are limited](#workers-free) to 10 minutes of Browser Run usage per day. If you exceed that limit, you will receive a `429` error until the next UTC day.
 
 You can [increase your limits](#workers-paid) by upgrading to a Workers Paid plan on the **Workers plans** page of the Cloudflare dashboard:
 
@@ -216,7 +216,7 @@ If you recently upgraded but still encounter the 10-minute per day limit, redepl
 
 1. Browsers close upon task completion or sixty seconds of inactivity (if you do not [extend your browser timeout](#can-i-increase-the-browser-timeout)). Therefore, in practice, many workflows do not require a high number of concurrent browsers. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
 2. By default, a browser will time out after 60 seconds of inactivity. You can extend this to up to 10 minutes using the [keep\_alive option](https://developers.cloudflare.com/browser-rendering/puppeteer/#keep-alive). Call `browser.close()` to release the browser instance immediately. [↩](#user-content-fnref-2) [↩2](#user-content-fnref-2-2)
-3. Enforced with a fixed per-second fill rate, not as a burst allowance. This means you cannot send all your requests at once. The API expects them to be spread evenly over the minute. If you exceed the limit, refer to [troubleshooting the 429 Too many requests error](#error-429-too-many-requests). [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
+3. If you exceed the per-second rate limit, you will receive a `429` response. Refer to [troubleshooting the 429 Too many requests error](#error-429-too-many-requests). [↩](#user-content-fnref-3) [↩2](#user-content-fnref-3-2)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/browser-rendering/","name":"Browser Rendering"}},{"@type":"ListItem","position":3,"item":{"@id":"/browser-rendering/limits/","name":"Limits"}}]}
