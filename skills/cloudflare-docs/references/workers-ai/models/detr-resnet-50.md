@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- f 
+![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
 
 #  detr-resnet-50 Beta 
 
-Object Detection • facebook 
+Object Detection • Meta • Hosted 
 
-@cf/facebook/detr-resnet-50 
+`@cf/facebook/detr-resnet-50` 
 
 DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).
 
@@ -31,8 +31,8 @@ DEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detect
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1681)
-* [  curl ](#tab-panel-1682)
+* [  TypeScript ](#tab-panel-2977)
+* [  curl ](#tab-panel-2978)
 
 ```
 
@@ -96,86 +96,83 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-2981)
+* [ Output ](#tab-panel-2982)
 
-### Input
+Option 1
 
-* `0` ` string `  
+stringformat: binary
+
 The image to use for detection
-* `1` ` object `  
-   * `image` ` array `  
-   An array of integers that represent the image data constrained to 8-bit unsigned integer values  
-         * `items` ` number `  
-         A value between 0 and 255 (unsigned 8bit)
 
-### Output
+▶Option 2{}
 
-* `items` ` object `  
-   * `score` ` number `  
-   Confidence score indicating the likelihood that the detection is correct  
-   * `label` ` string `  
-   The class label or name of the detected object  
-   * `box` ` object `  
-   Coordinates defining the bounding box around the detected object  
-         * `xmin` ` number `  
-         The x-coordinate of the top-left corner of the bounding box  
-         * `ymin` ` number `  
-         The y-coordinate of the top-left corner of the bounding box  
-         * `xmax` ` number `  
-         The x-coordinate of the bottom-right corner of the bounding box  
-         * `ymax` ` number `  
-         The y-coordinate of the bottom-right corner of the bounding box
+object
+
+type
+
+`array`
+
+contentType
+
+`application/json`
+
+description
+
+`An array of detected objects within the input image`
+
+items
+
+`[object Object]`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1683)
-* [ Output ](#tab-panel-1684)
+* [ Input ](#tab-panel-2979)
+* [ Output ](#tab-panel-2980)
 
 ```
 
 {
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "type": "string",
+      "type": "string",
 
-            "format": "binary",
+      "format": "binary",
 
-            "description": "The image to use for detection"
+      "description": "The image to use for detection"
 
-        },
+    },
 
-        {
+    {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "image": {
+        "image": {
 
-                    "type": "array",
+          "type": "array",
 
-                    "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+          "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 
-                    "items": {
+          "items": {
 
-                        "type": "number",
+            "type": "number",
 
-                        "description": "A value between 0 and 255 (unsigned 8bit)"
+            "description": "A value between 0 and 255 (unsigned 8bit)"
 
-                    }
-
-                }
-
-            }
+          }
 
         }
 
-    ]
+      }
+
+    }
+
+  ]
 
 }
 
@@ -188,81 +185,81 @@ Explain Code
 
 {
 
-    "type": "array",
+  "type": "array",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "description": "An array of detected objects within the input image",
+  "description": "An array of detected objects within the input image",
 
-    "items": {
+  "items": {
+
+    "type": "object",
+
+    "properties": {
+
+      "score": {
+
+        "type": "number",
+
+        "description": "Confidence score indicating the likelihood that the detection is correct"
+
+      },
+
+      "label": {
+
+        "type": "string",
+
+        "description": "The class label or name of the detected object"
+
+      },
+
+      "box": {
 
         "type": "object",
 
+        "description": "Coordinates defining the bounding box around the detected object",
+
         "properties": {
 
-            "score": {
+          "xmin": {
 
-                "type": "number",
+            "type": "number",
 
-                "description": "Confidence score indicating the likelihood that the detection is correct"
+            "description": "The x-coordinate of the top-left corner of the bounding box"
 
-            },
+          },
 
-            "label": {
+          "ymin": {
 
-                "type": "string",
+            "type": "number",
 
-                "description": "The class label or name of the detected object"
+            "description": "The y-coordinate of the top-left corner of the bounding box"
 
-            },
+          },
 
-            "box": {
+          "xmax": {
 
-                "type": "object",
+            "type": "number",
 
-                "description": "Coordinates defining the bounding box around the detected object",
+            "description": "The x-coordinate of the bottom-right corner of the bounding box"
 
-                "properties": {
+          },
 
-                    "xmin": {
+          "ymax": {
 
-                        "type": "number",
+            "type": "number",
 
-                        "description": "The x-coordinate of the top-left corner of the bounding box"
+            "description": "The y-coordinate of the bottom-right corner of the bounding box"
 
-                    },
-
-                    "ymin": {
-
-                        "type": "number",
-
-                        "description": "The y-coordinate of the top-left corner of the bounding box"
-
-                    },
-
-                    "xmax": {
-
-                        "type": "number",
-
-                        "description": "The x-coordinate of the bottom-right corner of the bounding box"
-
-                    },
-
-                    "ymax": {
-
-                        "type": "number",
-
-                        "description": "The y-coordinate of the bottom-right corner of the bounding box"
-
-                    }
-
-                }
-
-            }
+          }
 
         }
 
+      }
+
     }
+
+  }
 
 }
 

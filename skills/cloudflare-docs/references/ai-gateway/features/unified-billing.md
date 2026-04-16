@@ -49,9 +49,46 @@ When your balance falls below the set threshold, AI Gateway will automatically a
 
 ## Use Unified Billing
 
-Call any supported provider without passing an API Key. The request will automatically use Cloudflare's key and deduct credits from your account.
+Unified Billing works in two ways: through the AI binding or through the HTTP API. Both deduct credits from your account automatically without requiring provider API keys.
 
-For example, you can use the Unified API:
+Note
+
+Workers AI models (models prefixed with `@cf/`) routed through AI Gateway are not charged via Unified Billing. These models are billed through [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/) instead. Unified Billing only applies to third-party provider models (such as OpenAI, Anthropic, and Google AI Studio).
+
+### AI binding
+
+Call any model listed in the [model catalog ↗](https://developers.cloudflare.com/ai/models/) using `env.AI.run()`. This includes both Workers AI models and third-party models from providers like OpenAI, Anthropic, and Google.
+
+TypeScript
+
+```
+
+const resp = await env.AI.run(
+
+  "openai/gpt-4.1-mini",
+
+  {
+
+    messages: [{ role: "user", content: "What is Cloudflare?" }],
+
+  },
+
+  {
+
+    gateway: { id: "my-gateway" },
+
+  },
+
+);
+
+
+```
+
+Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/) for the full API surface.
+
+### HTTP API
+
+Call a supported provider through the AI Gateway REST API without passing a provider API key. Use the `cf-aig-authorization` header to authenticate with your Cloudflare API token.
 
 Terminal window
 
@@ -88,6 +125,15 @@ Explain Code
 
 The `default` gateway is created automatically on your first request. Replace `default` with a specific gateway ID if you have already created one.
 
+The HTTP API supports the following providers through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) and the [Unified API (chat completions)](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/):
+
+* [OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/)
+* [Anthropic](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/)
+* [Google AI Studio](https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/)
+* [Google Vertex AI](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/)
+* [xAI](https://developers.cloudflare.com/ai-gateway/usage/providers/grok/)
+* [Groq](https://developers.cloudflare.com/ai-gateway/usage/providers/groq/)
+
 ### Spend limits
 
 Set spend limits to prevent unexpected charges on your loaded credits. You can define daily, weekly, or monthly limits. When a limit is reached, the AI Gateway automatically stops processing requests until the period resets or you increase the limit.
@@ -107,8 +153,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-3060)
-* [ API ](#tab-panel-3061)
+* [ Dashboard ](#tab-panel-5062)
+* [ API ](#tab-panel-5063)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 
@@ -163,16 +209,6 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/{gatewa
 ```
 
 Explain Code
-
-### Supported providers
-
-Unified Billing supports the following AI providers:
-
-* [OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/)
-* [Anthropic](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/)
-* [Google AI Studio](https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/)
-* [xAI](https://developers.cloudflare.com/ai-gateway/usage/providers/grok/)
-* [Groq](https://developers.cloudflare.com/ai-gateway/usage/providers/groq/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/features/unified-billing/","name":"Unified Billing"}}]}

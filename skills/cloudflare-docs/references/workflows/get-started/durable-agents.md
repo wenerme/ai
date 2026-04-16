@@ -560,8 +560,8 @@ Explain Code
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-8658)  
-   * [  wrangler.toml ](#tab-panel-8659)  
+   * [  wrangler.jsonc ](#tab-panel-10817)  
+   * [  wrangler.toml ](#tab-panel-10818)  
 JSONC  
 ```  
 {  
@@ -569,7 +569,7 @@ JSONC
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-10",  
+  "compatibility_date": "2026-04-16",  
   "observability": {  
     "enabled": true  
   },  
@@ -603,7 +603,7 @@ TOML
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-10"  
+compatibility_date = "2026-04-16"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  

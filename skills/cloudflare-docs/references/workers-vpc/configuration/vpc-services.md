@@ -22,7 +22,7 @@ You can use bindings to connect to VPC Services from Workers. Every request made
 
 VPC Services enforce that requests are routed to their intended service without exposing the entire network, securing your workloads and preventing server-side request forgery (SSRF).
 
-Members must possess **Connectivity Directory Bind** role to bind to existing VPC Services from Workers. Creating VPC Services requires members to possess the **Connectivity Directory Admin** role.
+Members with the **Connectivity Directory Bind** role can bind to existing VPC Services from Workers. Creating VPC Services requires the **Connectivity Directory Admin** role.
 
 Note
 
@@ -155,8 +155,8 @@ Explain Code
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-7021)
-* [  wrangler.toml ](#tab-panel-7022)
+* [  wrangler.jsonc ](#tab-panel-9164)
+* [  wrangler.toml ](#tab-panel-9165)
 
 JSONC
 
@@ -215,8 +215,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-7023)
-* [  wrangler.toml ](#tab-panel-7024)
+* [  wrangler.jsonc ](#tab-panel-9166)
+* [  wrangler.toml ](#tab-panel-9167)
 
 JSONC
 
@@ -305,8 +305,8 @@ Explain Code
 Workers VPC uses the following account roles:
 
 * `Connectivity Directory Read` to view Workers VPC Services and Tunnels.
-* `Connectivity Directory Bind` to list/read services and bind them in Workers.
-* `Connectivity Directory Admin` to create, update, and delete services.
+* `Connectivity Directory Bind` to list, read, and bind VPC Services in Workers.
+* `Connectivity Directory Admin` to create, update, and delete VPC Services, and bind directly to tunnels through a VPC Network binding.
 
 For role definitions, refer to [Roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles).
 

@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- m 
+![MyShell logo](https://developers.cloudflare.com/_astro/myshell.BpTDMxd2.svg) 
 
 #  melotts 
 
-Text-to-Speech • myshell-ai 
+Text-to-Speech • MyShell • Hosted 
 
-@cf/myshell-ai/melotts 
+`@cf/myshell-ai/melotts` 
 
 MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 
@@ -68,65 +68,67 @@ Explain Code
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3467)
+* [ Output ](#tab-panel-3468)
 
-### Input
+prompt
 
-* `prompt` ` string ` required min 1  
-A text description of the audio you want to generate
-* `lang` ` string ` default en  
-The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified
+`string`requiredminLength: 1A text description of the audio you want to generate
 
-### Output
+lang
 
-* `0` ` object `  
-   * `audio` ` string `  
-   The generated audio in MP3 format, base64-encoded
-* `1` ` string `  
+`string`default: enThe speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified
+
+▶Option 1{}
+
+objectcontentType: application/json
+
+Option 2
+
+stringcontentType: audio/mpegformat: binary
+
 The generated audio in MP3 format
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1923)
-* [ Output ](#tab-panel-1924)
+* [ Input ](#tab-panel-3465)
+* [ Output ](#tab-panel-3466)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "prompt": {
+    "prompt": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "description": "A text description of the audio you want to generate"
-
-        },
-
-        "lang": {
-
-            "type": "string",
-
-            "default": "en",
-
-            "description": "The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified"
-
-        }
+      "description": "A text description of the audio you want to generate"
 
     },
 
-    "required": [
+    "lang": {
 
-        "prompt"
+      "type": "string",
 
-    ]
+      "default": "en",
+
+      "description": "The speech language (e.g., 'en' for English, 'fr' for French). Defaults to 'en' if not specified"
+
+    }
+
+  },
+
+  "required": [
+
+    "prompt"
+
+  ]
 
 }
 
@@ -139,41 +141,41 @@ Explain Code
 
 {
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "type": "object",
+      "type": "object",
 
-            "contentType": "application/json",
+      "contentType": "application/json",
 
-            "properties": {
+      "properties": {
 
-                "audio": {
+        "audio": {
 
-                    "type": "string",
+          "type": "string",
 
-                    "description": "The generated audio in MP3 format, base64-encoded"
-
-                }
-
-            }
-
-        },
-
-        {
-
-            "type": "string",
-
-            "contentType": "audio/mpeg",
-
-            "format": "binary",
-
-            "description": "The generated audio in MP3 format"
+          "description": "The generated audio in MP3 format, base64-encoded"
 
         }
 
-    ]
+      }
+
+    },
+
+    {
+
+      "type": "string",
+
+      "contentType": "audio/mpeg",
+
+      "format": "binary",
+
+      "description": "The generated audio in MP3 format"
+
+    }
+
+  ]
 
 }
 

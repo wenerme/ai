@@ -22,9 +22,9 @@ Manage your Workers [Queues](https://developers.cloudflare.com/queues/) configur
 
 List queues
 
-* [  npm ](#tab-panel-8069)
-* [  pnpm ](#tab-panel-8070)
-* [  yarn ](#tab-panel-8071)
+* [  npm ](#tab-panel-10240)
+* [  pnpm ](#tab-panel-10241)
+* [  yarn ](#tab-panel-10242)
 
 Terminal window
 
@@ -77,9 +77,9 @@ Automatically provision draft bindings with new resources
 
 Create a queue
 
-* [  npm ](#tab-panel-8072)
-* [  pnpm ](#tab-panel-8073)
-* [  yarn ](#tab-panel-8074)
+* [  npm ](#tab-panel-10243)
+* [  pnpm ](#tab-panel-10244)
+* [  yarn ](#tab-panel-10245)
 
 Terminal window
 
@@ -136,9 +136,9 @@ Automatically provision draft bindings with new resources
 
 Update a queue
 
-* [  npm ](#tab-panel-8075)
-* [  pnpm ](#tab-panel-8076)
-* [  yarn ](#tab-panel-8077)
+* [  npm ](#tab-panel-10246)
+* [  pnpm ](#tab-panel-10247)
+* [  yarn ](#tab-panel-10248)
 
 Terminal window
 
@@ -195,9 +195,9 @@ Automatically provision draft bindings with new resources
 
 Delete a queue
 
-* [  npm ](#tab-panel-8078)
-* [  pnpm ](#tab-panel-8079)
-* [  yarn ](#tab-panel-8080)
+* [  npm ](#tab-panel-10249)
+* [  pnpm ](#tab-panel-10250)
+* [  yarn ](#tab-panel-10251)
 
 Terminal window
 
@@ -250,9 +250,9 @@ Automatically provision draft bindings with new resources
 
 Get queue information
 
-* [  npm ](#tab-panel-8081)
-* [  pnpm ](#tab-panel-8082)
-* [  yarn ](#tab-panel-8083)
+* [  npm ](#tab-panel-10252)
+* [  pnpm ](#tab-panel-10253)
+* [  yarn ](#tab-panel-10254)
 
 Terminal window
 
@@ -305,9 +305,9 @@ Automatically provision draft bindings with new resources
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-8084)
-* [  pnpm ](#tab-panel-8085)
-* [  yarn ](#tab-panel-8086)
+* [  npm ](#tab-panel-10255)
+* [  pnpm ](#tab-panel-10256)
+* [  yarn ](#tab-panel-10257)
 
 Terminal window
 
@@ -374,9 +374,9 @@ Automatically provision draft bindings with new resources
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-8087)
-* [  pnpm ](#tab-panel-8088)
-* [  yarn ](#tab-panel-8089)
+* [  npm ](#tab-panel-10258)
+* [  pnpm ](#tab-panel-10259)
+* [  yarn ](#tab-panel-10260)
 
 Terminal window
 
@@ -431,9 +431,9 @@ Automatically provision draft bindings with new resources
 
 Add a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-8090)
-* [  pnpm ](#tab-panel-8091)
-* [  yarn ](#tab-panel-8092)
+* [  npm ](#tab-panel-10261)
+* [  pnpm ](#tab-panel-10262)
+* [  yarn ](#tab-panel-10263)
 
 Terminal window
 
@@ -496,9 +496,9 @@ Automatically provision draft bindings with new resources
 
 Remove a Queue HTTP Pull Consumer
 
-* [  npm ](#tab-panel-8093)
-* [  pnpm ](#tab-panel-8094)
-* [  yarn ](#tab-panel-8095)
+* [  npm ](#tab-panel-10264)
+* [  pnpm ](#tab-panel-10265)
+* [  yarn ](#tab-panel-10266)
 
 Terminal window
 
@@ -551,9 +551,9 @@ Automatically provision draft bindings with new resources
 
 Add a Queue Worker Consumer
 
-* [  npm ](#tab-panel-8096)
-* [  pnpm ](#tab-panel-8097)
-* [  yarn ](#tab-panel-8098)
+* [  npm ](#tab-panel-10267)
+* [  pnpm ](#tab-panel-10268)
+* [  yarn ](#tab-panel-10269)
 
 Terminal window
 
@@ -620,9 +620,9 @@ Automatically provision draft bindings with new resources
 
 Remove a Queue Worker Consumer
 
-* [  npm ](#tab-panel-8099)
-* [  pnpm ](#tab-panel-8100)
-* [  yarn ](#tab-panel-8101)
+* [  npm ](#tab-panel-10270)
+* [  pnpm ](#tab-panel-10271)
+* [  yarn ](#tab-panel-10272)
 
 Terminal window
 
@@ -677,9 +677,9 @@ Automatically provision draft bindings with new resources
 
 Pause message delivery for a queue
 
-* [  npm ](#tab-panel-8102)
-* [  pnpm ](#tab-panel-8103)
-* [  yarn ](#tab-panel-8104)
+* [  npm ](#tab-panel-10273)
+* [  pnpm ](#tab-panel-10274)
+* [  yarn ](#tab-panel-10275)
 
 Terminal window
 
@@ -732,9 +732,9 @@ Automatically provision draft bindings with new resources
 
 Resume message delivery for a queue
 
-* [  npm ](#tab-panel-8105)
-* [  pnpm ](#tab-panel-8106)
-* [  yarn ](#tab-panel-8107)
+* [  npm ](#tab-panel-10276)
+* [  pnpm ](#tab-panel-10277)
+* [  yarn ](#tab-panel-10278)
 
 Terminal window
 
@@ -787,9 +787,9 @@ Automatically provision draft bindings with new resources
 
 Purge messages from a queue
 
-* [  npm ](#tab-panel-8108)
-* [  pnpm ](#tab-panel-8109)
-* [  yarn ](#tab-panel-8110)
+* [  npm ](#tab-panel-10279)
+* [  pnpm ](#tab-panel-10280)
+* [  yarn ](#tab-panel-10281)
 
 Terminal window
 
@@ -844,9 +844,9 @@ Automatically provision draft bindings with new resources
 
 Create a new event subscription for a queue
 
-* [  npm ](#tab-panel-8111)
-* [  pnpm ](#tab-panel-8112)
-* [  yarn ](#tab-panel-8113)
+* [  npm ](#tab-panel-10282)
+* [  pnpm ](#tab-panel-10283)
+* [  yarn ](#tab-panel-10284)
 
 Terminal window
 
@@ -913,9 +913,9 @@ Automatically provision draft bindings with new resources
 
 List event subscriptions for a queue
 
-* [  npm ](#tab-panel-8114)
-* [  pnpm ](#tab-panel-8115)
-* [  yarn ](#tab-panel-8116)
+* [  npm ](#tab-panel-10285)
+* [  pnpm ](#tab-panel-10286)
+* [  yarn ](#tab-panel-10287)
 
 Terminal window
 
@@ -974,9 +974,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific event subscription
 
-* [  npm ](#tab-panel-8117)
-* [  pnpm ](#tab-panel-8118)
-* [  yarn ](#tab-panel-8119)
+* [  npm ](#tab-panel-10288)
+* [  pnpm ](#tab-panel-10289)
+* [  yarn ](#tab-panel-10290)
 
 Terminal window
 
@@ -1033,9 +1033,9 @@ Automatically provision draft bindings with new resources
 
 Delete an event subscription from a queue
 
-* [  npm ](#tab-panel-8120)
-* [  pnpm ](#tab-panel-8121)
-* [  yarn ](#tab-panel-8122)
+* [  npm ](#tab-panel-10291)
+* [  pnpm ](#tab-panel-10292)
+* [  yarn ](#tab-panel-10293)
 
 Terminal window
 
@@ -1092,9 +1092,9 @@ Automatically provision draft bindings with new resources
 
 Update an existing event subscription
 
-* [  npm ](#tab-panel-8123)
-* [  pnpm ](#tab-panel-8124)
-* [  yarn ](#tab-panel-8125)
+* [  npm ](#tab-panel-10294)
+* [  pnpm ](#tab-panel-10295)
+* [  yarn ](#tab-panel-10296)
 
 Terminal window
 

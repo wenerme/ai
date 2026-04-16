@@ -15,13 +15,13 @@ YesNo
 
 Copy page
 
-![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.CTjvkdQs.svg) 
+![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.Ch-T5rST.svg) 
 
 #  lucid-origin 
 
-Text-to-Image • Leonardo 
+Text-to-Image • Leonardo • Hosted 
 
-@cf/leonardo/lucid-origin 
+`@cf/leonardo/lucid-origin` 
 
 Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.
 
@@ -33,8 +33,8 @@ Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive mode
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1914)
-* [  curl ](#tab-panel-1915)
+* [  TypeScript ](#tab-panel-3448)
+* [  curl ](#tab-panel-3449)
 
 ```
 
@@ -102,138 +102,147 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3452)
+* [ Output ](#tab-panel-3453)
 
-### Input
+prompt
 
-* `prompt` ` string ` required min 1  
-A text description of the image you want to generate.
-* `guidance` ` number ` default 4.5 min 0 max 10  
-Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
-* `seed` ` integer ` min 0  
-Random seed for reproducibility of the image generation
-* `height` ` integer ` default 1120 min 0 max 2500  
-The height of the generated image in pixels
-* `width` ` integer ` default 1120 min 0 max 2500  
-The width of the generated image in pixels
-* `num_steps` ` integer ` min 1 max 40  
-The number of diffusion steps; higher values can improve quality but take longer
-* `steps` ` integer ` min 1 max 40  
-The number of diffusion steps; higher values can improve quality but take longer
+`string`requiredminLength: 1A text description of the image you want to generate.
 
-### Output
+guidance
 
-* `image` ` string `  
-The generated image in Base64 format.
+`number`default: 4.5minimum: 0maximum: 10Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
+
+seed
+
+`integer`minimum: 0Random seed for reproducibility of the image generation
+
+height
+
+`integer`default: 1120minimum: 0maximum: 2500The height of the generated image in pixels
+
+width
+
+`integer`default: 1120minimum: 0maximum: 2500The width of the generated image in pixels
+
+num\_steps
+
+`integer`minimum: 1maximum: 40The number of diffusion steps; higher values can improve quality but take longer
+
+steps
+
+`integer`minimum: 1maximum: 40The number of diffusion steps; higher values can improve quality but take longer
+
+image
+
+`string`The generated image in Base64 format.
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1916)
-* [ Output ](#tab-panel-1917)
+* [ Input ](#tab-panel-3450)
+* [ Output ](#tab-panel-3451)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "prompt": {
+    "prompt": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "description": "A text description of the image you want to generate."
-
-        },
-
-        "guidance": {
-
-            "type": "number",
-
-            "default": 4.5,
-
-            "minimum": 0,
-
-            "maximum": 10,
-
-            "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
-
-        },
-
-        "seed": {
-
-            "type": "integer",
-
-            "minimum": 0,
-
-            "description": "Random seed for reproducibility of the image generation"
-
-        },
-
-        "height": {
-
-            "type": "integer",
-
-            "minimum": 0,
-
-            "maximum": 2500,
-
-            "default": 1120,
-
-            "description": "The height of the generated image in pixels"
-
-        },
-
-        "width": {
-
-            "type": "integer",
-
-            "minimum": 0,
-
-            "maximum": 2500,
-
-            "default": 1120,
-
-            "description": "The width of the generated image in pixels"
-
-        },
-
-        "num_steps": {
-
-            "type": "integer",
-
-            "minimum": 1,
-
-            "maximum": 40,
-
-            "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-        },
-
-        "steps": {
-
-            "type": "integer",
-
-            "minimum": 1,
-
-            "maximum": 40,
-
-            "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-        }
+      "description": "A text description of the image you want to generate."
 
     },
 
-    "required": [
+    "guidance": {
 
-        "prompt"
+      "type": "number",
 
-    ]
+      "default": 4.5,
+
+      "minimum": 0,
+
+      "maximum": 10,
+
+      "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
+
+    },
+
+    "seed": {
+
+      "type": "integer",
+
+      "minimum": 0,
+
+      "description": "Random seed for reproducibility of the image generation"
+
+    },
+
+    "height": {
+
+      "type": "integer",
+
+      "minimum": 0,
+
+      "maximum": 2500,
+
+      "default": 1120,
+
+      "description": "The height of the generated image in pixels"
+
+    },
+
+    "width": {
+
+      "type": "integer",
+
+      "minimum": 0,
+
+      "maximum": 2500,
+
+      "default": 1120,
+
+      "description": "The width of the generated image in pixels"
+
+    },
+
+    "num_steps": {
+
+      "type": "integer",
+
+      "minimum": 1,
+
+      "maximum": 40,
+
+      "description": "The number of diffusion steps; higher values can improve quality but take longer"
+
+    },
+
+    "steps": {
+
+      "type": "integer",
+
+      "minimum": 1,
+
+      "maximum": 40,
+
+      "description": "The number of diffusion steps; higher values can improve quality but take longer"
+
+    }
+
+  },
+
+  "required": [
+
+    "prompt"
+
+  ]
 
 }
 
@@ -246,21 +255,21 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "image": {
+    "image": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "The generated image in Base64 format."
-
-        }
+      "description": "The generated image in Base64 format."
 
     }
+
+  }
 
 }
 

@@ -16,7 +16,7 @@ Copy page
 
 # Billing
 
-Cloudflare bills on a 30-day cycle for each domain on your account. Plans and add-on services are billed separately, and some products use [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/). You can pay with Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, Google Pay, Stripe Link, or UnionPay.
+Cloudflare bills on a recurring cycle for each domain on your account — every 30 days for monthly plans or annually for yearly plans. Plans and add-on services are billed separately, and some products use [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/). You can pay with Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, Google Pay, Stripe Link, or UnionPay.
 
 ## Get started
 
@@ -62,13 +62,17 @@ View, download, and manage your Cloudflare invoices.
 
 Learn how Cloudflare billing works.
 
+[How billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) 
+
+Understand the billing lifecycle, charge types, and how to read your Cloudflare invoice.
+
 [Preview services](https://developers.cloudflare.com/billing/understand/preview-services/) 
 
 Try certain products and features for 30 days as a contracted customer.
 
 [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) 
 
-Understand billing cycles, refund policies, and how charges are calculated.
+Understand refund policies, payment methods, and subscription terms.
 
 [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) 
 
@@ -81,6 +85,10 @@ Understand how Cloudflare collects sales tax based on your billing address.
 ## Troubleshoot
 
 Resolve payment failures, invoice issues, and error messages.
+
+[Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) 
+
+Quick lookup table for common billing error messages and how to fix them.
 
 [Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/) 
 

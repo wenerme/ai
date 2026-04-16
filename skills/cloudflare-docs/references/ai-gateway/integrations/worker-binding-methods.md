@@ -1,6 +1,6 @@
 ---
-title: AI Gateway Binding Methods
-description: This guide provides an overview of how to use the latest Cloudflare Workers AI Gateway binding methods. You will learn how to set up an AI Gateway binding, access new methods, and integrate them into your Workers.
+title: Workers Bindings
+description: Reference for the AI binding with AI Gateway. Call Workers AI and third-party models with env.AI.run(), access log IDs, and use gateway methods for feedback, logging, URLs, and universal requests.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 ### Tags
 
-[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
+[ AI ](https://developers.cloudflare.com/search/?tags=AI)[ Bindings ](https://developers.cloudflare.com/search/?tags=Bindings) 
 
 Was this helpful?
 
@@ -18,18 +18,18 @@ YesNo
 
 Copy page
 
-# AI Gateway Binding Methods
+# Workers Bindings
 
-**Last reviewed:**  about 1 year ago 
+The AI binding (`env.AI`) lets you call AI models and access AI Gateway features directly from your Worker.
 
-This guide provides an overview of how to use the latest Cloudflare Workers AI Gateway binding methods. You will learn how to set up an AI Gateway binding, access new methods, and integrate them into your Workers.
+For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](https://developers.cloudflare.com/ai-gateway/integrations/aig-workers-ai-binding/).
 
-## 1\. Add an AI Binding to your Worker
+## Configuration
 
-To connect your Worker to Workers AI, add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
+Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-3066)
-* [  wrangler.toml ](#tab-panel-3067)
+* [  wrangler.jsonc ](#tab-panel-5068)
+* [  wrangler.toml ](#tab-panel-5069)
 
 JSONC
 
@@ -39,9 +39,9 @@ JSONC
 
   "ai": {
 
-    "binding": "AI"
+    "binding": "AI",
 
-  }
+  },
 
 }
 
@@ -59,21 +59,23 @@ binding = "AI"
 
 ```
 
-This configuration sets up the AI binding accessible in your Worker code as `env.AI`.
+The binding is accessible in your Worker code as `env.AI`.
 
 If you're using TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you modify your Wrangler configuration file. This generates types for the `env` object based on your bindings, as well as [runtime types](https://developers.cloudflare.com/workers/languages/typescript/).
 
-## 2\. Basic Usage with Workers AI + Gateway
+## `env.AI.run()`
 
-To perform an inference task using Workers AI and an AI Gateway, you can use the following code:
+Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` prefix) and third-party models (`{author}/{model}` format).
 
-src/index.ts
+**Workers AI model:**
+
+TypeScript
 
 ```
 
 const resp = await env.AI.run(
 
-  "@cf/meta/llama-3.1-8b-instruct",
+  "@cf/moonshotai/kimi-k2.5",
 
   {
 
@@ -98,7 +100,63 @@ const resp = await env.AI.run(
 
 Explain Code
 
-Additionally, you can access the latest request log ID with:
+**Third-party model:**
+
+TypeScript
+
+```
+
+const resp = await env.AI.run(
+
+  "openai/gpt-4.1-mini",
+
+  {
+
+    messages: [{ role: "user", content: "tell me a joke" }],
+
+  },
+
+  {
+
+    gateway: {
+
+      id: "my-gateway",
+
+    },
+
+  },
+
+);
+
+
+```
+
+Explain Code
+
+Third-party models require an AI Gateway and use [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). Cloudflare manages the provider credentials and deducts credits from your account. You do not need to supply your own API keys.
+
+Note
+
+[BYOK (Bring Your Own Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) is not supported for third-party models called through the AI binding. To use your own provider keys, use the [AI Gateway REST API](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the [chat completions endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) instead.
+
+Browse available models in the [model catalog ↗](https://developers.cloudflare.com/ai/models/).
+
+### Gateway options
+
+The third argument to `env.AI.run()` accepts a `gateway` object with the following parameters:
+
+| Parameter  | Type    | Default    | Description                                                                                                                       |
+| ---------- | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| id         | string  | _required_ | Name of your [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker. |
+| skipCache  | boolean | false      | Skip the [cache](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                                |
+| cacheTtl   | number  | —          | [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/) in seconds.                                           |
+| cacheKey   | string  | —          | Custom [cache key](https://developers.cloudflare.com/ai-gateway/features/caching/) for this request.                              |
+| collectLog | boolean | —          | Whether to [collect logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) for this request.                  |
+| metadata   | object  | —          | [Custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) to attach to the log entry.        |
+
+## `env.AI.aiGatewayLogId`
+
+Returns the log ID from the most recent `env.AI.run()` request.
 
 TypeScript
 
@@ -109,9 +167,9 @@ const myLogId = env.AI.aiGatewayLogId;
 
 ```
 
-## 3\. Access the Gateway Binding
+## `env.AI.gateway()`
 
-You can access your AI Gateway binding using the following code:
+Returns a gateway instance for accessing AI Gateway methods directly.
 
 TypeScript
 
@@ -122,17 +180,17 @@ const gateway = env.AI.gateway("my-gateway");
 
 ```
 
-Once you have the gateway instance, you can use the following methods:
+The gateway instance exposes the following methods.
 
-### 3.1\. `patchLog`: Send Feedback
+### `patchLog()`
 
-The `patchLog` method allows you to send feedback, score, and metadata for a specific log ID. All object properties are optional, so you can include any combination of the parameters:
+Sends feedback, score, and metadata for a specific log entry. All properties in the second argument are optional.
 
 TypeScript
 
 ```
 
-gateway.patchLog("my-log-id", {
+await gateway.patchLog("my-log-id", {
 
   feedback: 1,
 
@@ -149,12 +207,11 @@ gateway.patchLog("my-log-id", {
 
 ```
 
-* **Returns**: `Promise<void>` (Make sure to `await` the request.)
-* **Example Use Case**: Update a log entry with user feedback or additional metadata.
+**Returns:** `Promise<void>`
 
-### 3.2\. `getLog`: Read Log Details
+### `getLog()`
 
-The `getLog` method retrieves details of a specific log ID. It returns an object of type `Promise<AiGatewayLog>`. If this type is missing, ensure you have run [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types).
+Retrieves details of a specific log entry. If the `AiGatewayLog` type is missing, run [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types).
 
 TypeScript
 
@@ -165,40 +222,33 @@ const log = await gateway.getLog("my-log-id");
 
 ```
 
-* **Returns**: `Promise<AiGatewayLog>`
-* **Example Use Case**: Retrieve log information for debugging or analytics.
+**Returns:** `Promise<AiGatewayLog>`
 
-### 3.3\. `getUrl`: Get Gateway URLs
+### `getUrl()`
 
-The `getUrl` method allows you to retrieve the base URL for your AI Gateway, optionally specifying a provider to get the provider-specific endpoint.
+Returns the base URL for your AI Gateway. Pass an optional provider name to get the provider-specific endpoint.
 
 TypeScript
 
 ```
 
-// Get the base gateway URL
-
 const baseUrl = await gateway.getUrl();
 
-// Output: https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/
+// https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/
 
-
-// Get a provider-specific URL
 
 const openaiUrl = await gateway.getUrl("openai");
 
-// Output: https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/openai
+// https://gateway.ai.cloudflare.com/v1/my-account-id/my-gateway/openai
 
 
 ```
 
-* **Parameters**: Optional `provider` (string or `AIGatewayProviders` enum)
-* **Returns**: `Promise<string>`
-* **Example Use Case**: Dynamically construct URLs for direct API calls or debugging configurations.
+**Parameters:** Optional `provider` (string or `AIGatewayProviders` enum)
 
-#### SDK Integration Examples
+**Returns:** `Promise<string>`
 
-The `getUrl` method is particularly useful for integrating with popular AI SDKs:
+#### SDK integration examples
 
 **OpenAI SDK:**
 
@@ -256,11 +306,9 @@ const anthropic = createAnthropic({
 
 ```
 
-### 3.4\. `run`: Universal Requests
+### `run()`
 
-The `run` method allows you to execute universal requests. Users can pass either a single universal request object or an array of them. This method supports all AI Gateway providers.
-
-Refer to the [Universal endpoint documentation](https://developers.cloudflare.com/ai-gateway/usage/universal/) for details about the available inputs.
+Executes a [universal request](https://developers.cloudflare.com/ai-gateway/usage/universal/) to any supported provider. Accepts a single request object or an array.
 
 TypeScript
 
@@ -291,20 +339,8 @@ const resp = await gateway.run({
 
 Explain Code
 
-* **Returns**: `Promise<Response>`
-* **Example Use Case**: Perform a [universal request](https://developers.cloudflare.com/ai-gateway/usage/universal/) to any supported provider.
-
-## Conclusion
-
-With these AI Gateway binding methods, you can now:
-
-* Send feedback and update metadata with `patchLog`.
-* Retrieve detailed log information using `getLog`.
-* Get gateway URLs for direct API access with `getUrl`, making it easy to integrate with popular AI SDKs.
-* Execute universal requests to any AI Gateway provider with `run`.
-
-These methods offer greater flexibility and control over your AI integrations, empowering you to build more sophisticated applications on the Cloudflare Workers platform.
+**Returns:** `Promise<Response>`
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/worker-binding-methods/","name":"AI Gateway Binding Methods"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/worker-binding-methods/","name":"Workers Bindings"}}]}
 ```

@@ -1,6 +1,6 @@
 ---
 title: Billing policy
-description: The terms subscription and add-on service are used interchangeably in this support guide.
+description: Cloudflare plans are billed per domain on your account. Monthly plans are billed every 30 days and annual plans are billed yearly. Add-on services (also referred to as subscriptions) are billed monthly only.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,13 +16,7 @@ Copy page
 
 # Billing policy
 
-**The terms subscription and add-on service are used interchangeably in this support guide.**
-
-Cloudflare plans and add-on services are billed every 30 days for each domain in your account.
-
-Cloudflare plans are billed monthly and annually for each domain on the account. Monthly plans are billed every 30 days for each domain in your account, and annual plans are billed yearly for each domain in your account.
-
-Add-on services are only billed monthly and cannot be billed annually.
+Cloudflare plans are billed per domain on your account. Monthly plans are billed every 30 days and annual plans are billed yearly. Add-on services (also referred to as subscriptions) are billed monthly only.
 
 Cloudflare also collects sales tax as governed by local laws. Sales taxes are computed based on the nine (9) digit postal code of either the shipping or billing address on file for your Cloudflare account where applicable.
 

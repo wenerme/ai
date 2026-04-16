@@ -18,9 +18,9 @@ Copy page
 
 #  indictrans2-en-indic-1B 
 
-Translation • ai4bharat 
+Translation • ai4bharat • Hosted 
 
-@cf/ai4bharat/indictrans2-en-indic-1B 
+`@cf/ai4bharat/indictrans2-en-indic-1B` 
 
 IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages
 
@@ -30,9 +30,9 @@ IndicTrans2 is the first open-source transformer-based multilingual NMT model th
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1794)
-* [  Python ](#tab-panel-1795)
-* [  curl ](#tab-panel-1796)
+* [  TypeScript ](#tab-panel-3202)
+* [  Python ](#tab-panel-3203)
+* [  curl ](#tab-panel-3204)
 
 ```
 
@@ -128,159 +128,153 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3207)
+* [ Output ](#tab-panel-3208)
 
-### Input
+▶text
 
-* `text` ` one of ` required  
-   * `0` ` string `  
-   Input text to translate. Can be a single string or a list of strings.  
-   * `1` ` array `  
-   Input text to translate. Can be a single string or a list of strings.  
-         * `items` ` string `
-* `target_language` ` string ` required default hin\_Deva  
-Target langauge to translate to
+`one of`required
 
-### Output
+target\_language
 
-* `translations` ` array ` required  
-Translated texts  
-   * `items` ` string `
+`string`requireddefault: hin\_Devaenum: asm\_Beng, awa\_Deva, ben\_Beng, bho\_Deva, brx\_Deva, doi\_Deva, eng\_Latn, gom\_Deva, gon\_Deva, guj\_Gujr, hin\_Deva, hne\_Deva, kan\_Knda, kas\_Arab, kas\_Deva, kha\_Latn, lus\_Latn, mag\_Deva, mai\_Deva, mal\_Mlym, mar\_Deva, mni\_Beng, mni\_Mtei, npi\_Deva, ory\_Orya, pan\_Guru, san\_Deva, sat\_Olck, snd\_Arab, snd\_Deva, tam\_Taml, tel\_Telu, urd\_Arab, unr\_DevaTarget langauge to translate to
+
+▶translations\[\]
+
+`array`requiredTranslated texts
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1797)
-* [ Output ](#tab-panel-1798)
+* [ Input ](#tab-panel-3205)
+* [ Output ](#tab-panel-3206)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "text": {
+    "text": {
 
-            "oneOf": [
+      "oneOf": [
 
-                {
+        {
 
-                    "type": "string"
-
-                },
-
-                {
-
-                    "type": "array",
-
-                    "items": {
-
-                        "type": "string"
-
-                    }
-
-                }
-
-            ],
-
-            "description": "Input text to translate. Can be a single string or a list of strings."
+          "type": "string"
 
         },
 
-        "target_language": {
+        {
 
-            "type": "string",
+          "type": "array",
 
-            "enum": [
+          "items": {
 
-                "asm_Beng",
+            "type": "string"
 
-                "awa_Deva",
-
-                "ben_Beng",
-
-                "bho_Deva",
-
-                "brx_Deva",
-
-                "doi_Deva",
-
-                "eng_Latn",
-
-                "gom_Deva",
-
-                "gon_Deva",
-
-                "guj_Gujr",
-
-                "hin_Deva",
-
-                "hne_Deva",
-
-                "kan_Knda",
-
-                "kas_Arab",
-
-                "kas_Deva",
-
-                "kha_Latn",
-
-                "lus_Latn",
-
-                "mag_Deva",
-
-                "mai_Deva",
-
-                "mal_Mlym",
-
-                "mar_Deva",
-
-                "mni_Beng",
-
-                "mni_Mtei",
-
-                "npi_Deva",
-
-                "ory_Orya",
-
-                "pan_Guru",
-
-                "san_Deva",
-
-                "sat_Olck",
-
-                "snd_Arab",
-
-                "snd_Deva",
-
-                "tam_Taml",
-
-                "tel_Telu",
-
-                "urd_Arab",
-
-                "unr_Deva"
-
-            ],
-
-            "default": "hin_Deva",
-
-            "description": "Target langauge to translate to"
+          }
 
         }
 
+      ],
+
+      "description": "Input text to translate. Can be a single string or a list of strings."
+
     },
 
-    "required": [
+    "target_language": {
 
-        "text",
+      "type": "string",
 
-        "target_language"
+      "enum": [
 
-    ]
+        "asm_Beng",
+
+        "awa_Deva",
+
+        "ben_Beng",
+
+        "bho_Deva",
+
+        "brx_Deva",
+
+        "doi_Deva",
+
+        "eng_Latn",
+
+        "gom_Deva",
+
+        "gon_Deva",
+
+        "guj_Gujr",
+
+        "hin_Deva",
+
+        "hne_Deva",
+
+        "kan_Knda",
+
+        "kas_Arab",
+
+        "kas_Deva",
+
+        "kha_Latn",
+
+        "lus_Latn",
+
+        "mag_Deva",
+
+        "mai_Deva",
+
+        "mal_Mlym",
+
+        "mar_Deva",
+
+        "mni_Beng",
+
+        "mni_Mtei",
+
+        "npi_Deva",
+
+        "ory_Orya",
+
+        "pan_Guru",
+
+        "san_Deva",
+
+        "sat_Olck",
+
+        "snd_Arab",
+
+        "snd_Deva",
+
+        "tam_Taml",
+
+        "tel_Telu",
+
+        "urd_Arab",
+
+        "unr_Deva"
+
+      ],
+
+      "default": "hin_Deva",
+
+      "description": "Target langauge to translate to"
+
+    }
+
+  },
+
+  "required": [
+
+    "text",
+
+    "target_language"
+
+  ]
 
 }
 
@@ -293,31 +287,31 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "translations": {
+    "translations": {
 
-            "type": "array",
+      "type": "array",
 
-            "items": {
+      "items": {
 
-                "type": "string"
+        "type": "string"
 
-            },
+      },
 
-            "description": "Translated texts"
+      "description": "Translated texts"
 
-        }
+    }
 
-    },
+  },
 
-    "required": [
+  "required": [
 
-        "translations"
+    "translations"
 
-    ]
+  ]
 
 }
 

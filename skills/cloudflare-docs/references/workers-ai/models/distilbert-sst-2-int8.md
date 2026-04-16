@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![HuggingFace logo](https://developers.cloudflare.com/_astro/huggingface.DHiS2HZA.svg) 
+![HuggingFace logo](https://developers.cloudflare.com/_astro/huggingface.ngjt5u2J.svg) 
 
 #  distilbert-sst-2-int8 
 
-Text Classification • HuggingFace 
+Text Classification • HuggingFace • Hosted 
 
-@cf/huggingface/distilbert-sst-2-int8 
+`@cf/huggingface/distilbert-sst-2-int8` 
 
 Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
@@ -31,9 +31,9 @@ Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1691)
-* [  Python ](#tab-panel-1692)
-* [  curl ](#tab-panel-1693)
+* [  TypeScript ](#tab-panel-2997)
+* [  Python ](#tab-panel-2998)
+* [  curl ](#tab-panel-2999)
 
 ```
 
@@ -111,53 +111,59 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3000)
+* [ Output ](#tab-panel-3001)
 
-### Input
+text
 
-* `text` ` string ` required min 1  
-The text that you want to classify
+`string`requiredminLength: 1The text that you want to classify
 
-### Output
+type
 
-* `items` ` object `  
-   * `score` ` number `  
-   Confidence score indicating the likelihood that the text belongs to the specified label  
-   * `label` ` string `  
-   The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')
+`array`
+
+contentType
+
+`application/json`
+
+description
+
+`An array of classification results for the input text`
+
+items
+
+`[object Object]`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1694)
-* [ Output ](#tab-panel-1695)
+* [ Input ](#tab-panel-2995)
+* [ Output ](#tab-panel-2996)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "text": {
+    "text": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "description": "The text that you want to classify"
+      "description": "The text that you want to classify"
 
-        }
+    }
 
-    },
+  },
 
-    "required": [
+  "required": [
 
-        "text"
+    "text"
 
-    ]
+  ]
 
 }
 
@@ -170,37 +176,37 @@ Explain Code
 
 {
 
-    "type": "array",
+  "type": "array",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "description": "An array of classification results for the input text",
+  "description": "An array of classification results for the input text",
 
-    "items": {
+  "items": {
 
-        "type": "object",
+    "type": "object",
 
-        "properties": {
+    "properties": {
 
-            "score": {
+      "score": {
 
-                "type": "number",
+        "type": "number",
 
-                "description": "Confidence score indicating the likelihood that the text belongs to the specified label"
+        "description": "Confidence score indicating the likelihood that the text belongs to the specified label"
 
-            },
+      },
 
-            "label": {
+      "label": {
 
-                "type": "string",
+        "type": "string",
 
-                "description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')"
+        "description": "The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE')"
 
-            }
-
-        }
+      }
 
     }
+
+  }
 
 }
 

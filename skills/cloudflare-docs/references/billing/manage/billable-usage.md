@@ -66,10 +66,6 @@ The dashboard reads from the same data source that generates your monthly invoic
 * Costs reflect the published rate card for your account.
 * The total usage cost shown at the end of a completed billing period matches the usage overage charges on the corresponding invoice.
 
-Note
-
-Previous versions of the billable usage dashboard used GraphQL queries from a different data source. Those figures were approximate and aligned to the calendar month. The current dashboard corrects both of these discrepancies.
-
 ## Set up budget alerts
 
 To get notified when your spend crosses a dollar threshold, you can create budget alerts directly from the dashboard. For detailed instructions, refer to [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/).

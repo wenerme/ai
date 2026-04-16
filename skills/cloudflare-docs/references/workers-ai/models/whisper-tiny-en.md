@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![OpenAI logo](https://developers.cloudflare.com/_astro/openai.ChTKThcR.svg) 
+![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
 #  whisper-tiny-en Beta 
 
-Automatic Speech Recognition • OpenAI 
+Automatic Speech Recognition • OpenAI • Hosted 
 
-@cf/openai/whisper-tiny-en 
+`@cf/openai/whisper-tiny-en` 
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.
 
@@ -30,8 +30,8 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2108)
-* [  curl ](#tab-panel-2109)
+* [  TypeScript ](#tab-panel-3814)
+* [  curl ](#tab-panel-3815)
 
 ```
 
@@ -99,85 +99,85 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3818)
+* [ Output ](#tab-panel-3819)
 
-### Input
+Option 1
 
-* `0` ` string `
-* `1` ` object `  
-   * `audio` ` array ` required  
-   An array of integers that represent the audio data constrained to 8-bit unsigned integer values  
-         * `items` ` number `  
-         A value between 0 and 255
+stringformat: binary
 
-### Output
+▶Option 2{}
 
-* `text` ` string ` required  
-The transcription
-* `word_count` ` number `
-* `words` ` array `  
-   * `items` ` object `  
-         * `word` ` string `  
-         * `start` ` number `  
-         The second this word begins in the recording  
-         * `end` ` number `  
-         The ending second when the word completes
-* `vtt` ` string `
+object
+
+text
+
+`string`requiredThe transcription
+
+word\_count
+
+`number`
+
+▶words\[\]
+
+`array`
+
+vtt
+
+`string`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2110)
-* [ Output ](#tab-panel-2111)
+* [ Input ](#tab-panel-3816)
+* [ Output ](#tab-panel-3817)
 
 ```
 
 {
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "type": "string",
+      "type": "string",
 
-            "format": "binary"
+      "format": "binary"
 
-        },
+    },
 
-        {
+    {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "audio": {
+        "audio": {
 
-                    "type": "array",
+          "type": "array",
 
-                    "description": "An array of integers that represent the audio data constrained to 8-bit unsigned integer values",
+          "description": "An array of integers that represent the audio data constrained to 8-bit unsigned integer values",
 
-                    "items": {
+          "items": {
 
-                        "type": "number",
+            "type": "number",
 
-                        "description": "A value between 0 and 255"
+            "description": "A value between 0 and 255"
 
-                    }
-
-                }
-
-            },
-
-            "required": [
-
-                "audio"
-
-            ]
+          }
 
         }
 
-    ]
+      },
+
+      "required": [
+
+        "audio"
+
+      ]
+
+    }
+
+  ]
 
 }
 
@@ -190,77 +190,77 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "text": {
+    "text": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "The transcription"
-
-        },
-
-        "word_count": {
-
-            "type": "number"
-
-        },
-
-        "words": {
-
-            "type": "array",
-
-            "items": {
-
-                "type": "object",
-
-                "properties": {
-
-                    "word": {
-
-                        "type": "string"
-
-                    },
-
-                    "start": {
-
-                        "type": "number",
-
-                        "description": "The second this word begins in the recording"
-
-                    },
-
-                    "end": {
-
-                        "type": "number",
-
-                        "description": "The ending second when the word completes"
-
-                    }
-
-                }
-
-            }
-
-        },
-
-        "vtt": {
-
-            "type": "string"
-
-        }
+      "description": "The transcription"
 
     },
 
-    "required": [
+    "word_count": {
 
-        "text"
+      "type": "number"
 
-    ]
+    },
+
+    "words": {
+
+      "type": "array",
+
+      "items": {
+
+        "type": "object",
+
+        "properties": {
+
+          "word": {
+
+            "type": "string"
+
+          },
+
+          "start": {
+
+            "type": "number",
+
+            "description": "The second this word begins in the recording"
+
+          },
+
+          "end": {
+
+            "type": "number",
+
+            "description": "The ending second when the word completes"
+
+          }
+
+        }
+
+      }
+
+    },
+
+    "vtt": {
+
+      "type": "string"
+
+    }
+
+  },
+
+  "required": [
+
+    "text"
+
+  ]
 
 }
 

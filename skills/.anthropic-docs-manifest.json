@@ -42,10 +42,10 @@
   "anthropic-docs/build-with-claude/extended-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/extended-thinking",
     "skill": "anthropic-docs",
-    "etag": "W/\"22971-19d8e38fe28\"",
-    "lastModified": "Tue, 14 Apr 2026 22:59:53 GMT",
-    "size": 141651,
-    "updatedAt": "2026-04-15T00:19:38.139Z"
+    "etag": "W/\"22948-19d94147d40\"",
+    "lastModified": "Thu, 16 Apr 2026 02:17:44 GMT",
+    "size": 141610,
+    "updatedAt": "2026-04-16T10:27:38.831Z"
   },
   "anthropic-docs/build-with-claude/adaptive-thinking.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking",

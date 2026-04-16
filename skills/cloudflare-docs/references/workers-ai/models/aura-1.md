@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DVGPhlbc.svg) 
+![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg) 
 
 #  aura-1 
 
-Text-to-Speech • Deepgram 
+Text-to-Speech • Deepgram • Hosted 
 
-@cf/deepgram/aura-1 
+`@cf/deepgram/aura-1` 
 
 Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.
 
@@ -34,8 +34,8 @@ Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1620)
-* [  curl ](#tab-panel-1621)
+* [  TypeScript ](#tab-panel-2858)
+* [  curl ](#tab-panel-2859)
 
 ```
 
@@ -80,155 +80,161 @@ curl --request POST   --url 'https://api.cloudflare.com/client/v4/accounts/{ACCO
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-2862)
+* [ Output ](#tab-panel-2863)
 
-### Input
+speaker
 
-* `speaker` ` string ` default angus  
-Speaker used to produce the audio.
-* `encoding` ` string `  
-Encoding of the output audio.
-* `container` ` string `  
-Container specifies the file format wrapper for the output audio. The available options depend on the encoding type..
-* `text` ` string ` required  
-The text content to be converted to speech
-* `sample_rate` ` number `  
-Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable
-* `bit_rate` ` number `  
-The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.
+`string`default: angusenum: angus, asteria, arcas, orion, orpheus, athena, luna, zeus, perseus, helios, hera, stellaSpeaker used to produce the audio.
 
-### Output
+encoding
 
- The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema). 
+`string`enum: linear16, flac, mulaw, alaw, mp3, opus, aacEncoding of the output audio.
+
+container
+
+`string`enum: none, wav, oggContainer specifies the file format wrapper for the output audio. The available options depend on the encoding type..
+
+text
+
+`string`requiredThe text content to be converted to speech
+
+sample\_rate
+
+`number`Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable
+
+bit\_rate
+
+`number`The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.
+
+The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema).
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1622)
-* [ Output ](#tab-panel-1623)
+* [ Input ](#tab-panel-2860)
+* [ Output ](#tab-panel-2861)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "speaker": {
+    "speaker": {
 
-            "type": "string",
+      "type": "string",
 
-            "enum": [
+      "enum": [
 
-                "angus",
+        "angus",
 
-                "asteria",
+        "asteria",
 
-                "arcas",
+        "arcas",
 
-                "orion",
+        "orion",
 
-                "orpheus",
+        "orpheus",
 
-                "athena",
+        "athena",
 
-                "luna",
+        "luna",
 
-                "zeus",
+        "zeus",
 
-                "perseus",
+        "perseus",
 
-                "helios",
+        "helios",
 
-                "hera",
+        "hera",
 
-                "stella"
+        "stella"
 
-            ],
+      ],
 
-            "default": "angus",
+      "default": "angus",
 
-            "description": "Speaker used to produce the audio."
-
-        },
-
-        "encoding": {
-
-            "type": "string",
-
-            "enum": [
-
-                "linear16",
-
-                "flac",
-
-                "mulaw",
-
-                "alaw",
-
-                "mp3",
-
-                "opus",
-
-                "aac"
-
-            ],
-
-            "description": "Encoding of the output audio."
-
-        },
-
-        "container": {
-
-            "type": "string",
-
-            "enum": [
-
-                "none",
-
-                "wav",
-
-                "ogg"
-
-            ],
-
-            "description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type.."
-
-        },
-
-        "text": {
-
-            "type": "string",
-
-            "description": "The text content to be converted to speech"
-
-        },
-
-        "sample_rate": {
-
-            "type": "number",
-
-            "description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable"
-
-        },
-
-        "bit_rate": {
-
-            "type": "number",
-
-            "description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type."
-
-        }
+      "description": "Speaker used to produce the audio."
 
     },
 
-    "required": [
+    "encoding": {
 
-        "text"
+      "type": "string",
 
-    ]
+      "enum": [
+
+        "linear16",
+
+        "flac",
+
+        "mulaw",
+
+        "alaw",
+
+        "mp3",
+
+        "opus",
+
+        "aac"
+
+      ],
+
+      "description": "Encoding of the output audio."
+
+    },
+
+    "container": {
+
+      "type": "string",
+
+      "enum": [
+
+        "none",
+
+        "wav",
+
+        "ogg"
+
+      ],
+
+      "description": "Container specifies the file format wrapper for the output audio. The available options depend on the encoding type.."
+
+    },
+
+    "text": {
+
+      "type": "string",
+
+      "description": "The text content to be converted to speech"
+
+    },
+
+    "sample_rate": {
+
+      "type": "number",
+
+      "description": "Sample Rate specifies the sample rate for the output audio. Based on the encoding, different sample rates are supported. For some encodings, the sample rate is not configurable"
+
+    },
+
+    "bit_rate": {
+
+      "type": "number",
+
+      "description": "The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type."
+
+    }
+
+  },
+
+  "required": [
+
+    "text"
+
+  ]
 
 }
 
@@ -241,13 +247,13 @@ Explain Code
 
 {
 
-    "type": "string",
+  "type": "string",
 
-    "contentType": "audio/mpeg",
+  "contentType": "audio/mpeg",
 
-    "format": "binary",
+  "format": "binary",
 
-    "description": "The generated audio in MP3 format"
+  "description": "The generated audio in MP3 format"
 
 }
 

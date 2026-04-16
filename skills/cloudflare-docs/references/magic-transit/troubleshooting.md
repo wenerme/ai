@@ -15,7 +15,7 @@ Copy page
 
 # Troubleshooting
 
-* [ Troubleshoot with IPsec logs ](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/)
+* [ Troubleshoot IPsec tunnels ](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/)
 * [ Troubleshoot tunnel health ](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/)
 * [ Troubleshoot connectivity ](https://developers.cloudflare.com/magic-transit/troubleshooting/connectivity/)
 * [ Troubleshoot routing and BGP ](https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/)

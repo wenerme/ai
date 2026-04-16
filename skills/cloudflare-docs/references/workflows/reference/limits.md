@@ -36,9 +36,9 @@ Workflows cannot be deployed to Workers for Platforms namespaces, as Workflows d
 | Maximum step.sleep duration                                                                                                    | 365 days (1 year)                                                                                                                 | 365 days (1 year)                                                                                                                          |
 | Maximum steps per Workflow [4](#user-content-fn-5)                                                                             | 1,024                                                                                                                             | 10,000 (default) / configurable up to 25,000                                                                                               |
 | Maximum Workflow executions                                                                                                    | 100,000 per day [shared with Workers daily limit](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) | Unlimited                                                                                                                                  |
-| Concurrent Workflow instances (executions) per account [5](#user-content-fn-7)                                                 | 100                                                                                                                               | 10,000                                                                                                                                     |
-| Maximum Workflow instance creation rate [6](#user-content-fn-8)                                                                | 100 per second [7](#user-content-fn-6)                                                                                            | 100 per second [7](#user-content-fn-6)                                                                                                     |
-| Maximum number of [queued instances](https://developers.cloudflare.com/workflows/observability/metrics-analytics/#event-types) | 100,000                                                                                                                           | 1,000,000                                                                                                                                  |
+| Concurrent Workflow instances (executions) per account [5](#user-content-fn-7)                                                 | 100                                                                                                                               | 50,000                                                                                                                                     |
+| Maximum Workflow instance creation rate [6](#user-content-fn-8)                                                                | 100 per second [7](#user-content-fn-6)                                                                                            | 300 per second per account [7](#user-content-fn-6), 100 per second per workflow                                                            |
+| Maximum number of [queued instances](https://developers.cloudflare.com/workflows/observability/metrics-analytics/#event-types) | 100,000                                                                                                                           | 2,000,000                                                                                                                                  |
 | Retention limit for completed Workflow instance state                                                                          | 3 days                                                                                                                            | 30 days [8](#user-content-fn-2)                                                                                                            |
 | Maximum length of a Workflow name [9](#user-content-fn-4)                                                                      | 64 characters                                                                                                                     | 64 characters                                                                                                                              |
 | Maximum length of a Workflow instance ID [9](#user-content-fn-4)                                                               | 100 characters                                                                                                                    | 100 characters                                                                                                                             |
@@ -158,8 +158,8 @@ This will appear as `exceededCpu` in [wrangler tail](https://developers.cloudfla
 
 By default, the maximum CPU time per Workflow invocation is set to 30 seconds, but can be increased for all invocations associated with a Workflow definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8666)
-* [  wrangler.toml ](#tab-panel-8667)
+* [  wrangler.jsonc ](#tab-panel-10825)
+* [  wrangler.toml ](#tab-panel-10826)
 
 JSONC
 
@@ -212,8 +212,8 @@ This will appear as `exceededResources` in [Workers metrics](https://developers.
 
 By default, the maximum number of subrequests per Workflow instance is 10,000 on Workers Paid plans, but this can be increased up to 10 million by setting `limits.subrequests` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8668)
-* [  wrangler.toml ](#tab-panel-8669)
+* [  wrangler.jsonc ](#tab-panel-10827)
+* [  wrangler.toml ](#tab-panel-10828)
 
 JSONC
 

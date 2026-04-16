@@ -1,0 +1,577 @@
+---
+title: TTS 1.5 Mini
+description: Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+![Inworld logo](https://developers.cloudflare.com/_astro/inworld.BDwMAXI2.svg) 
+
+#  TTS 1.5 Mini 
+
+Text-to-Speech • Inworld • Proxied 
+
+`inworld/tts-1.5-mini` 
+
+Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
+
+| Model Info        |                                    |
+| ----------------- | ---------------------------------- |
+| Terms and License | [link ↗](https://inworld.ai/terms) |
+| More information  | [link ↗](https://inworld.ai/)      |
+
+## Usage
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'inworld/tts-1.5-mini',
+
+  {
+
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+## Examples
+
+**Fast Speech**  — Speed up speech for quick playback 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'inworld/tts-1.5-mini',
+
+  {
+
+    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',
+
+    speaking_rate: 1.4,
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+**Low Latency**  — Minimize latency by disabling text normalization 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'inworld/tts-1.5-mini',
+
+  {
+
+    text: 'Quick response needed. The server is ready.',
+
+    apply_text_normalization: false,
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+## Parameters
+
+* [ Input ](#tab-panel-130)
+* [ Output ](#tab-panel-131)
+
+text
+
+`string`requiredmaxLength: 2000The text to be synthesized into speech. Maximum input of 2,000 characters.
+
+voice\_id
+
+`string`default: Dennisenum: Loretta, Darlene, Marlene, Hank, Evelyn, Celeste, Pippa, Tessa, Liam, Callum, Hamish, Abby, Graham, Rupert, Mortimer, Snik, Anjali, Saanvi, Arjun, Claire, Oliver, Simon, Elliot, James, Serena, Gareth, Vinny, Lauren, Jessica, Ethan, Tyler, Jason, Chloe, Veronica, Victoria, Miranda, Sebastian, Victor, Malcolm, Nate, Brian, Amina, Kelsey, Derek, Evan, Kayla, Jake, Grant, Tristan, Nadia, Selene, Marcus, Riley, Damon, Cedric, Mia, Naomi, Jonah, Levi, Avery, Brandon, Conrad, Bianca, Lucian, Trevor, Alex, Ashley, Craig, Deborah, Dennis, Edward, Elizabeth, Hades, Julia, Pixie, Mark, Olivia, Priya, Ronald, Sarah, Shaun, Theodore, Timothy, Wendy, Dominus, Hana, Clive, Carter, Blake, Luna, Reed, Duncan, Felix, Eleanor, SophieThe ID of the voice to use for synthesizing speech. Defaults to Dennis.
+
+output\_format
+
+`string`default: mp3enum: mp3, opus, wav, flacThe output format for the audio. Supported formats are mp3, opus, wav, and flac. Defaults to mp3.
+
+bit\_rate
+
+`integer`minimum: 0Bits per second of the audio. Only for compressed audio formats (mp3, opus). The default is 128,000.
+
+sample\_rate
+
+`integer`enum: 8000, 16000, 22050, 24000, 32000, 44100, 48000The synthesis sample rate in hertz. Accepts: 8000, 16000, 22050, 24000, 32000, 44100, 48000\. The default is 48,000.
+
+speaking\_rate
+
+`number`minimum: 0.5maximum: 1.5Speaking rate/speed, in the range \[0.5, 1.5\]. The default is 1.0\. We recommend using values above 0.8 to ensure high quality.
+
+temperature
+
+`number`default: 1minimum: 0.01maximum: 2Determines the degree of randomness when sampling audio tokens. Defaults to 1.0\. Accepts values between 0 (exclusive) and 2 (inclusive). Higher values = more expressive, lower values = more deterministic.
+
+timestamp\_type
+
+`string`default: noneenum: none, word, characterControls timestamp metadata returned with the audio. "word" returns word-level timing, "character" returns character-level timing. Note: adds latency. Defaults to none.
+
+apply\_text\_normalization
+
+`boolean`When enabled, text normalization expands numbers, dates, times, and abbreviations before converting to speech. Turning this off may reduce latency.
+
+audio
+
+`string`requiredURL to the generated audio file
+
+## API Schemas
+
+* [ Input ](#tab-panel-128)
+* [ Output ](#tab-panel-129)
+
+```
+
+{
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "properties": {
+
+    "text": {
+
+      "description": "The text to be synthesized into speech. Maximum input of 2,000 characters.",
+
+      "type": "string",
+
+      "maxLength": 2000
+
+    },
+
+    "voice_id": {
+
+      "description": "The ID of the voice to use for synthesizing speech. Defaults to Dennis.",
+
+      "default": "Dennis",
+
+      "type": "string",
+
+      "enum": [
+
+        "Loretta",
+
+        "Darlene",
+
+        "Marlene",
+
+        "Hank",
+
+        "Evelyn",
+
+        "Celeste",
+
+        "Pippa",
+
+        "Tessa",
+
+        "Liam",
+
+        "Callum",
+
+        "Hamish",
+
+        "Abby",
+
+        "Graham",
+
+        "Rupert",
+
+        "Mortimer",
+
+        "Snik",
+
+        "Anjali",
+
+        "Saanvi",
+
+        "Arjun",
+
+        "Claire",
+
+        "Oliver",
+
+        "Simon",
+
+        "Elliot",
+
+        "James",
+
+        "Serena",
+
+        "Gareth",
+
+        "Vinny",
+
+        "Lauren",
+
+        "Jessica",
+
+        "Ethan",
+
+        "Tyler",
+
+        "Jason",
+
+        "Chloe",
+
+        "Veronica",
+
+        "Victoria",
+
+        "Miranda",
+
+        "Sebastian",
+
+        "Victor",
+
+        "Malcolm",
+
+        "Nate",
+
+        "Brian",
+
+        "Amina",
+
+        "Kelsey",
+
+        "Derek",
+
+        "Evan",
+
+        "Kayla",
+
+        "Jake",
+
+        "Grant",
+
+        "Tristan",
+
+        "Nadia",
+
+        "Selene",
+
+        "Marcus",
+
+        "Riley",
+
+        "Damon",
+
+        "Cedric",
+
+        "Mia",
+
+        "Naomi",
+
+        "Jonah",
+
+        "Levi",
+
+        "Avery",
+
+        "Brandon",
+
+        "Conrad",
+
+        "Bianca",
+
+        "Lucian",
+
+        "Trevor",
+
+        "Alex",
+
+        "Ashley",
+
+        "Craig",
+
+        "Deborah",
+
+        "Dennis",
+
+        "Edward",
+
+        "Elizabeth",
+
+        "Hades",
+
+        "Julia",
+
+        "Pixie",
+
+        "Mark",
+
+        "Olivia",
+
+        "Priya",
+
+        "Ronald",
+
+        "Sarah",
+
+        "Shaun",
+
+        "Theodore",
+
+        "Timothy",
+
+        "Wendy",
+
+        "Dominus",
+
+        "Hana",
+
+        "Clive",
+
+        "Carter",
+
+        "Blake",
+
+        "Luna",
+
+        "Reed",
+
+        "Duncan",
+
+        "Felix",
+
+        "Eleanor",
+
+        "Sophie"
+
+      ]
+
+    },
+
+    "output_format": {
+
+      "description": "The output format for the audio. Supported formats are mp3, opus, wav, and flac. Defaults to mp3.",
+
+      "default": "mp3",
+
+      "type": "string",
+
+      "enum": [
+
+        "mp3",
+
+        "opus",
+
+        "wav",
+
+        "flac"
+
+      ]
+
+    },
+
+    "bit_rate": {
+
+      "description": "Bits per second of the audio. Only for compressed audio formats (mp3, opus). The default is 128,000.",
+
+      "type": "integer",
+
+      "minimum": 0
+
+    },
+
+    "sample_rate": {
+
+      "description": "The synthesis sample rate in hertz. Accepts: 8000, 16000, 22050, 24000, 32000, 44100, 48000. The default is 48,000.",
+
+      "type": "integer",
+
+      "enum": [
+
+        8000,
+
+        16000,
+
+        22050,
+
+        24000,
+
+        32000,
+
+        44100,
+
+        48000
+
+      ]
+
+    },
+
+    "speaking_rate": {
+
+      "description": "Speaking rate/speed, in the range [0.5, 1.5]. The default is 1.0. We recommend using values above 0.8 to ensure high quality.",
+
+      "type": "number",
+
+      "minimum": 0.5,
+
+      "maximum": 1.5
+
+    },
+
+    "temperature": {
+
+      "description": "Determines the degree of randomness when sampling audio tokens. Defaults to 1.0. Accepts values between 0 (exclusive) and 2 (inclusive). Higher values = more expressive, lower values = more deterministic.",
+
+      "default": 1,
+
+      "type": "number",
+
+      "minimum": 0.01,
+
+      "maximum": 2
+
+    },
+
+    "timestamp_type": {
+
+      "description": "Controls timestamp metadata returned with the audio. \"word\" returns word-level timing, \"character\" returns character-level timing. Note: adds latency. Defaults to none.",
+
+      "default": "none",
+
+      "type": "string",
+
+      "enum": [
+
+        "none",
+
+        "word",
+
+        "character"
+
+      ]
+
+    },
+
+    "apply_text_normalization": {
+
+      "description": "When enabled, text normalization expands numbers, dates, times, and abbreviations before converting to speech. Turning this off may reduce latency.",
+
+      "type": "boolean"
+
+    }
+
+  },
+
+  "required": [
+
+    "text"
+
+  ],
+
+  "additionalProperties": false
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "properties": {
+
+    "audio": {
+
+      "description": "URL to the generated audio file",
+
+      "type": "string"
+
+    }
+
+  },
+
+  "required": [
+
+    "audio"
+
+  ],
+
+  "additionalProperties": false
+
+}
+
+
+```
+
+Explain Code
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+```

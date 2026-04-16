@@ -14,21 +14,21 @@ YesNo
 
 Copy page
 
-![Google logo](https://developers.cloudflare.com/_astro/google.C4p59fss.svg) 
+![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg) 
 
 #  embeddinggemma-300m 
 
-Text Embeddings • Google 
+Text Embeddings • Google • Hosted 
 
-@cf/google/embeddinggemma-300m 
+`@cf/google/embeddinggemma-300m` 
 
 EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1700)
-* [  Python ](#tab-panel-1701)
-* [  curl ](#tab-panel-1702)
+* [  TypeScript ](#tab-panel-3010)
+* [  Python ](#tab-panel-3011)
+* [  curl ](#tab-panel-3012)
 
 ```
 
@@ -143,88 +143,79 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3013)
+* [ Output ](#tab-panel-3014)
 
-### Input
+▶text
 
-* `text` ` one of ` required  
-   * `0` ` string ` min 1  
-   The text to embed  
-   * `1` ` array `  
-   Batch of text values to embed  
-         * `items` ` string ` min 1  
-         The text to embed
+`one of`required
 
-### Output
+▶shape\[\]
 
-* `shape` ` array `  
-   * `items` ` number `
-* `data` ` array `  
-Embeddings of the requested text values  
-   * `items` ` array `  
-   Floating point embedding representation shaped by the embedding model  
-         * `items` ` number `
+`array`
+
+▶data\[\]
+
+`array`Embeddings of the requested text values
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1703)
-* [ Output ](#tab-panel-1704)
+* [ Input ](#tab-panel-3008)
+* [ Output ](#tab-panel-3009)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "text": {
+    "text": {
 
-            "oneOf": [
+      "oneOf": [
 
-                {
+        {
 
-                    "type": "string",
+          "type": "string",
 
-                    "description": "The text to embed",
+          "description": "The text to embed",
 
-                    "minLength": 1
+          "minLength": 1
 
-                },
+        },
 
-                {
+        {
 
-                    "type": "array",
+          "type": "array",
 
-                    "description": "Batch of text values to embed",
+          "description": "Batch of text values to embed",
 
-                    "items": {
+          "items": {
 
-                        "type": "string",
+            "type": "string",
 
-                        "description": "The text to embed",
+            "description": "The text to embed",
 
-                        "minLength": 1
+            "minLength": 1
 
-                    },
+          },
 
-                    "maxItems": 100
-
-                }
-
-            ]
+          "maxItems": 100
 
         }
 
-    },
+      ]
 
-    "required": [
+    }
 
-        "text"
+  },
 
-    ]
+  "required": [
+
+    "text"
+
+  ]
 
 }
 
@@ -237,47 +228,47 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "shape": {
+    "shape": {
 
-            "type": "array",
+      "type": "array",
 
-            "items": {
+      "items": {
 
-                "type": "number"
+        "type": "number"
 
-            }
+      }
 
-        },
+    },
 
-        "data": {
+    "data": {
 
-            "type": "array",
+      "type": "array",
 
-            "description": "Embeddings of the requested text values",
+      "description": "Embeddings of the requested text values",
 
-            "items": {
+      "items": {
 
-                "type": "array",
+        "type": "array",
 
-                "description": "Floating point embedding representation shaped by the embedding model",
+        "description": "Floating point embedding representation shaped by the embedding model",
 
-                "items": {
+        "items": {
 
-                    "type": "number"
-
-                }
-
-            }
+          "type": "number"
 
         }
 
+      }
+
     }
+
+  }
 
 }
 

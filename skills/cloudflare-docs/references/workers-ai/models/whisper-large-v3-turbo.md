@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![OpenAI logo](https://developers.cloudflare.com/_astro/openai.ChTKThcR.svg) 
+![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
 
 #  whisper-large-v3-turbo 
 
-Automatic Speech Recognition • OpenAI 
+Automatic Speech Recognition • OpenAI • Hosted 
 
-@cf/openai/whisper-large-v3-turbo 
+`@cf/openai/whisper-large-v3-turbo` 
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. 
 
@@ -31,9 +31,9 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2103)
-* [  Python ](#tab-panel-2104)
-* [  curl ](#tab-panel-2105)
+* [  TypeScript ](#tab-panel-3807)
+* [  Python ](#tab-panel-3808)
+* [  curl ](#tab-panel-3809)
 
 ```
 
@@ -179,243 +179,237 @@ Explain Code
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3812)
+* [ Output ](#tab-panel-3813)
 
-### Input
+▶audio
 
-* `audio` required  
-   * `0` ` string `  
-   Base64 encoded value of the audio data.  
-   * `1` ` object `  
-         * `body` ` object `  
-         * `contentType` ` string `
-* `task` ` string ` default transcribe  
-Supported tasks are 'translate' or 'transcribe'.
-* `language` ` string `  
-The language of the audio being transcribed or translated.
-* `vad_filter` ` boolean `  
-Preprocess the audio with a voice activity detection model.
-* `initial_prompt` ` string `  
-A text prompt to help provide context to the model on the contents of the audio.
-* `prefix` ` string `  
-The prefix appended to the beginning of the output of the transcription and can guide the transcription result.
-* `beam_size` ` integer ` default 5  
-The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed.
-* `condition_on_previous_text` ` boolean ` default true  
-Whether to condition on previous text during transcription. Setting to false may help prevent hallucination loops.
-* `no_speech_threshold` ` number ` default 0.6  
-Threshold for detecting no-speech segments. Segments with no-speech probability above this value are skipped.
-* `compression_ratio_threshold` ` number ` default 2.4  
-Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text.
-* `log_prob_threshold` ` number ` default -1  
-Threshold for filtering out segments with low average log probability, indicating low confidence.
-* `hallucination_silence_threshold` ` number `  
-Optional threshold (in seconds) to skip silent periods that may cause hallucinations.
+`one of`required
 
-### Output
+task
 
-* `transcription_info` ` object `  
-   * `language` ` string `  
-   The language of the audio being transcribed or translated.  
-   * `language_probability` ` number `  
-   The confidence level or probability of the detected language being accurate, represented as a decimal between 0 and 1.  
-   * `duration` ` number `  
-   The total duration of the original audio file, in seconds.  
-   * `duration_after_vad` ` number `  
-   The duration of the audio after applying Voice Activity Detection (VAD) to remove silent or irrelevant sections, in seconds.
-* `text` ` string ` required  
-The complete transcription of the audio.
-* `word_count` ` number `  
-The total number of words in the transcription.
-* `segments` ` array `  
-   * `items` ` object `  
-         * `start` ` number `  
-         The starting time of the segment within the audio, in seconds.  
-         * `end` ` number `  
-         The ending time of the segment within the audio, in seconds.  
-         * `text` ` string `  
-         The transcription of the segment.  
-         * `temperature` ` number `  
-         The temperature used in the decoding process, controlling randomness in predictions. Lower values result in more deterministic outputs.  
-         * `avg_logprob` ` number `  
-         The average log probability of the predictions for the words in this segment, indicating overall confidence.  
-         * `compression_ratio` ` number `  
-         The compression ratio of the input to the output, measuring how much the text was compressed during the transcription process.  
-         * `no_speech_prob` ` number `  
-         The probability that the segment contains no speech, represented as a decimal between 0 and 1.  
-         * `words` ` array `  
-                  * `items` ` object `  
-                              * `word` ` string `  
-                              The individual word transcribed from the audio.  
-                              * `start` ` number `  
-                              The starting time of the word within the audio, in seconds.  
-                              * `end` ` number `  
-                              The ending time of the word within the audio, in seconds.
-* `vtt` ` string `  
-The transcription in WebVTT format, which includes timing and text information for use in subtitles.
+`string`default: transcribeSupported tasks are 'translate' or 'transcribe'.
+
+language
+
+`string`The language of the audio being transcribed or translated.
+
+vad\_filter
+
+`boolean`default: falsePreprocess the audio with a voice activity detection model.
+
+initial\_prompt
+
+`string`A text prompt to help provide context to the model on the contents of the audio.
+
+prefix
+
+`string`The prefix appended to the beginning of the output of the transcription and can guide the transcription result.
+
+beam\_size
+
+`integer`default: 5The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed.
+
+condition\_on\_previous\_text
+
+`boolean`default: trueWhether to condition on previous text during transcription. Setting to false may help prevent hallucination loops.
+
+no\_speech\_threshold
+
+`number`default: 0.6Threshold for detecting no-speech segments. Segments with no-speech probability above this value are skipped.
+
+compression\_ratio\_threshold
+
+`number`default: 2.4Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text.
+
+log\_prob\_threshold
+
+`number`default: \-1Threshold for filtering out segments with low average log probability, indicating low confidence.
+
+hallucination\_silence\_threshold
+
+`number`Optional threshold (in seconds) to skip silent periods that may cause hallucinations.
+
+▶transcription\_info{}
+
+`object`
+
+text
+
+`string`requiredThe complete transcription of the audio.
+
+word\_count
+
+`number`The total number of words in the transcription.
+
+▶segments\[\]
+
+`array`
+
+vtt
+
+`string`The transcription in WebVTT format, which includes timing and text information for use in subtitles.
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2106)
-* [ Output ](#tab-panel-2107)
+* [ Input ](#tab-panel-3810)
+* [ Output ](#tab-panel-3811)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "audio": {
+    "audio": {
 
-            "anyOf": [
+      "anyOf": [
 
-                {
+        {
 
-                    "type": "string",
+          "type": "string",
 
-                    "description": "Base64 encoded value of the audio data."
-
-                },
-
-                {
-
-                    "type": "object",
-
-                    "properties": {
-
-                        "body": {
-
-                            "type": "object"
-
-                        },
-
-                        "contentType": {
-
-                            "type": "string"
-
-                        }
-
-                    }
-
-                }
-
-            ]
+          "description": "Base64 encoded value of the audio data."
 
         },
 
-        "task": {
+        {
 
-            "type": "string",
+          "type": "object",
 
-            "default": "transcribe",
+          "properties": {
 
-            "description": "Supported tasks are 'translate' or 'transcribe'."
+            "body": {
 
-        },
+              "type": "object"
 
-        "language": {
+            },
 
-            "type": "string",
+            "contentType": {
 
-            "description": "The language of the audio being transcribed or translated."
+              "type": "string"
 
-        },
+            }
 
-        "vad_filter": {
-
-            "type": "boolean",
-
-            "default": false,
-
-            "description": "Preprocess the audio with a voice activity detection model."
-
-        },
-
-        "initial_prompt": {
-
-            "type": "string",
-
-            "description": "A text prompt to help provide context to the model on the contents of the audio."
-
-        },
-
-        "prefix": {
-
-            "type": "string",
-
-            "description": "The prefix appended to the beginning of the output of the transcription and can guide the transcription result."
-
-        },
-
-        "beam_size": {
-
-            "type": "integer",
-
-            "default": 5,
-
-            "description": "The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed."
-
-        },
-
-        "condition_on_previous_text": {
-
-            "type": "boolean",
-
-            "default": true,
-
-            "description": "Whether to condition on previous text during transcription. Setting to false may help prevent hallucination loops."
-
-        },
-
-        "no_speech_threshold": {
-
-            "type": "number",
-
-            "default": 0.6,
-
-            "description": "Threshold for detecting no-speech segments. Segments with no-speech probability above this value are skipped."
-
-        },
-
-        "compression_ratio_threshold": {
-
-            "type": "number",
-
-            "default": 2.4,
-
-            "description": "Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text."
-
-        },
-
-        "log_prob_threshold": {
-
-            "type": "number",
-
-            "default": -1,
-
-            "description": "Threshold for filtering out segments with low average log probability, indicating low confidence."
-
-        },
-
-        "hallucination_silence_threshold": {
-
-            "type": "number",
-
-            "description": "Optional threshold (in seconds) to skip silent periods that may cause hallucinations."
+          }
 
         }
 
+      ]
+
     },
 
-    "required": [
+    "task": {
 
-        "audio"
+      "type": "string",
 
-    ]
+      "default": "transcribe",
+
+      "description": "Supported tasks are 'translate' or 'transcribe'."
+
+    },
+
+    "language": {
+
+      "type": "string",
+
+      "description": "The language of the audio being transcribed or translated."
+
+    },
+
+    "vad_filter": {
+
+      "type": "boolean",
+
+      "default": false,
+
+      "description": "Preprocess the audio with a voice activity detection model."
+
+    },
+
+    "initial_prompt": {
+
+      "type": "string",
+
+      "description": "A text prompt to help provide context to the model on the contents of the audio."
+
+    },
+
+    "prefix": {
+
+      "type": "string",
+
+      "description": "The prefix appended to the beginning of the output of the transcription and can guide the transcription result."
+
+    },
+
+    "beam_size": {
+
+      "type": "integer",
+
+      "default": 5,
+
+      "description": "The number of beams to use in beam search decoding. Higher values may improve accuracy at the cost of speed."
+
+    },
+
+    "condition_on_previous_text": {
+
+      "type": "boolean",
+
+      "default": true,
+
+      "description": "Whether to condition on previous text during transcription. Setting to false may help prevent hallucination loops."
+
+    },
+
+    "no_speech_threshold": {
+
+      "type": "number",
+
+      "default": 0.6,
+
+      "description": "Threshold for detecting no-speech segments. Segments with no-speech probability above this value are skipped."
+
+    },
+
+    "compression_ratio_threshold": {
+
+      "type": "number",
+
+      "default": 2.4,
+
+      "description": "Threshold for filtering out segments with high compression ratio, which often indicate repetitive or hallucinated text."
+
+    },
+
+    "log_prob_threshold": {
+
+      "type": "number",
+
+      "default": -1,
+
+      "description": "Threshold for filtering out segments with low average log probability, indicating low confidence."
+
+    },
+
+    "hallucination_silence_threshold": {
+
+      "type": "number",
+
+      "description": "Optional threshold (in seconds) to skip silent periods that may cause hallucinations."
+
+    }
+
+  },
+
+  "required": [
+
+    "audio"
+
+  ]
 
 }
 
@@ -428,197 +422,197 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "transcription_info": {
+    "transcription_info": {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "language": {
+        "language": {
 
-                    "type": "string",
+          "type": "string",
 
-                    "description": "The language of the audio being transcribed or translated."
-
-                },
-
-                "language_probability": {
-
-                    "type": "number",
-
-                    "description": "The confidence level or probability of the detected language being accurate, represented as a decimal between 0 and 1."
-
-                },
-
-                "duration": {
-
-                    "type": "number",
-
-                    "description": "The total duration of the original audio file, in seconds."
-
-                },
-
-                "duration_after_vad": {
-
-                    "type": "number",
-
-                    "description": "The duration of the audio after applying Voice Activity Detection (VAD) to remove silent or irrelevant sections, in seconds."
-
-                }
-
-            }
+          "description": "The language of the audio being transcribed or translated."
 
         },
 
-        "text": {
+        "language_probability": {
 
-            "type": "string",
+          "type": "number",
 
-            "description": "The complete transcription of the audio."
+          "description": "The confidence level or probability of the detected language being accurate, represented as a decimal between 0 and 1."
 
         },
 
-        "word_count": {
+        "duration": {
+
+          "type": "number",
+
+          "description": "The total duration of the original audio file, in seconds."
+
+        },
+
+        "duration_after_vad": {
+
+          "type": "number",
+
+          "description": "The duration of the audio after applying Voice Activity Detection (VAD) to remove silent or irrelevant sections, in seconds."
+
+        }
+
+      }
+
+    },
+
+    "text": {
+
+      "type": "string",
+
+      "description": "The complete transcription of the audio."
+
+    },
+
+    "word_count": {
+
+      "type": "number",
+
+      "description": "The total number of words in the transcription."
+
+    },
+
+    "segments": {
+
+      "type": "array",
+
+      "items": {
+
+        "type": "object",
+
+        "properties": {
+
+          "start": {
 
             "type": "number",
 
-            "description": "The total number of words in the transcription."
+            "description": "The starting time of the segment within the audio, in seconds."
 
-        },
+          },
 
-        "segments": {
+          "end": {
+
+            "type": "number",
+
+            "description": "The ending time of the segment within the audio, in seconds."
+
+          },
+
+          "text": {
+
+            "type": "string",
+
+            "description": "The transcription of the segment."
+
+          },
+
+          "temperature": {
+
+            "type": "number",
+
+            "description": "The temperature used in the decoding process, controlling randomness in predictions. Lower values result in more deterministic outputs."
+
+          },
+
+          "avg_logprob": {
+
+            "type": "number",
+
+            "description": "The average log probability of the predictions for the words in this segment, indicating overall confidence."
+
+          },
+
+          "compression_ratio": {
+
+            "type": "number",
+
+            "description": "The compression ratio of the input to the output, measuring how much the text was compressed during the transcription process."
+
+          },
+
+          "no_speech_prob": {
+
+            "type": "number",
+
+            "description": "The probability that the segment contains no speech, represented as a decimal between 0 and 1."
+
+          },
+
+          "words": {
 
             "type": "array",
 
             "items": {
 
-                "type": "object",
+              "type": "object",
 
-                "properties": {
+              "properties": {
 
-                    "start": {
+                "word": {
 
-                        "type": "number",
+                  "type": "string",
 
-                        "description": "The starting time of the segment within the audio, in seconds."
+                  "description": "The individual word transcribed from the audio."
 
-                    },
+                },
 
-                    "end": {
+                "start": {
 
-                        "type": "number",
+                  "type": "number",
 
-                        "description": "The ending time of the segment within the audio, in seconds."
+                  "description": "The starting time of the word within the audio, in seconds."
 
-                    },
+                },
 
-                    "text": {
+                "end": {
 
-                        "type": "string",
+                  "type": "number",
 
-                        "description": "The transcription of the segment."
-
-                    },
-
-                    "temperature": {
-
-                        "type": "number",
-
-                        "description": "The temperature used in the decoding process, controlling randomness in predictions. Lower values result in more deterministic outputs."
-
-                    },
-
-                    "avg_logprob": {
-
-                        "type": "number",
-
-                        "description": "The average log probability of the predictions for the words in this segment, indicating overall confidence."
-
-                    },
-
-                    "compression_ratio": {
-
-                        "type": "number",
-
-                        "description": "The compression ratio of the input to the output, measuring how much the text was compressed during the transcription process."
-
-                    },
-
-                    "no_speech_prob": {
-
-                        "type": "number",
-
-                        "description": "The probability that the segment contains no speech, represented as a decimal between 0 and 1."
-
-                    },
-
-                    "words": {
-
-                        "type": "array",
-
-                        "items": {
-
-                            "type": "object",
-
-                            "properties": {
-
-                                "word": {
-
-                                    "type": "string",
-
-                                    "description": "The individual word transcribed from the audio."
-
-                                },
-
-                                "start": {
-
-                                    "type": "number",
-
-                                    "description": "The starting time of the word within the audio, in seconds."
-
-                                },
-
-                                "end": {
-
-                                    "type": "number",
-
-                                    "description": "The ending time of the word within the audio, in seconds."
-
-                                }
-
-                            }
-
-                        }
-
-                    }
+                  "description": "The ending time of the word within the audio, in seconds."
 
                 }
 
+              }
+
             }
 
-        },
-
-        "vtt": {
-
-            "type": "string",
-
-            "description": "The transcription in WebVTT format, which includes timing and text information for use in subtitles."
+          }
 
         }
 
+      }
+
     },
 
-    "required": [
+    "vtt": {
 
-        "text"
+      "type": "string",
 
-    ]
+      "description": "The transcription in WebVTT format, which includes timing and text information for use in subtitles."
+
+    }
+
+  },
+
+  "required": [
+
+    "text"
+
+  ]
 
 }
 

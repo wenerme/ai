@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- f 
+![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
 
 #  bart-large-cnn Beta 
 
-Summarization • facebook 
+Summarization • Meta • Hosted 
 
-@cf/facebook/bart-large-cnn 
+`@cf/facebook/bart-large-cnn` 
 
 BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT-like) encoder and an autoregressive (GPT-like) decoder. You can use this model for text summarization.
 
@@ -31,8 +31,8 @@ BART is a transformer encoder-encoder (seq2seq) model with a bidirectional (BERT
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1628)
-* [  curl ](#tab-panel-1629)
+* [  TypeScript ](#tab-panel-2872)
+* [  curl ](#tab-panel-2873)
 
 ```
 
@@ -87,62 +87,61 @@ curl https://api.cloudflare.com/client/v4/accounts/{cf_account_id}/ai/run/@cf/fa
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-2876)
+* [ Output ](#tab-panel-2877)
 
-### Input
+input\_text
 
-* `input_text` ` string ` required min 1  
-The text that you want the model to summarize
-* `max_length` ` integer ` default 1024  
-The maximum length of the generated summary in tokens
+`string`requiredminLength: 1The text that you want the model to summarize
 
-### Output
+max\_length
 
-* `summary` ` string `  
-The summarized version of the input text
+`integer`default: 1024The maximum length of the generated summary in tokens
+
+summary
+
+`string`The summarized version of the input text
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1630)
-* [ Output ](#tab-panel-1631)
+* [ Input ](#tab-panel-2874)
+* [ Output ](#tab-panel-2875)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "input_text": {
+    "input_text": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "description": "The text that you want the model to summarize"
-
-        },
-
-        "max_length": {
-
-            "type": "integer",
-
-            "default": 1024,
-
-            "description": "The maximum length of the generated summary in tokens"
-
-        }
+      "description": "The text that you want the model to summarize"
 
     },
 
-    "required": [
+    "max_length": {
 
-        "input_text"
+      "type": "integer",
 
-    ]
+      "default": 1024,
+
+      "description": "The maximum length of the generated summary in tokens"
+
+    }
+
+  },
+
+  "required": [
+
+    "input_text"
+
+  ]
 
 }
 
@@ -155,21 +154,21 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "summary": {
+    "summary": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "The summarized version of the input text"
-
-        }
+      "description": "The summarized version of the input text"
 
     }
+
+  }
 
 }
 

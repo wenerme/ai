@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![Microsoft logo](https://developers.cloudflare.com/_astro/microsoft.BfW2Sks3.svg) 
+![Microsoft logo](https://developers.cloudflare.com/_astro/microsoft.LujcDJ--.svg) 
 
 #  resnet-50 
 
-Image Classification • Microsoft 
+Image Classification • Microsoft • Hosted 
 
-@cf/microsoft/resnet-50 
+`@cf/microsoft/resnet-50` 
 
 50 layers deep image classification CNN trained on more than 1M images from ImageNet
 
@@ -31,8 +31,8 @@ Image Classification • Microsoft
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2051)
-* [  curl ](#tab-panel-2052)
+* [  TypeScript ](#tab-panel-3717)
+* [  curl ](#tab-panel-3718)
 
 ```
 
@@ -96,82 +96,85 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3719)
+* [ Output ](#tab-panel-3720)
 
-### Input
+Option 1
 
-* `0` ` string `  
+stringformat: binary
+
 The image to classify
-* `1` ` object `  
-   * `image` ` array ` required  
-   An array of integers that represent the image data constrained to 8-bit unsigned integer values  
-         * `items` ` number `  
-         A value between 0 and 255 (unsigned 8bit)
 
-### Output
+▶Option 2{}
 
-* `items` ` object `  
-   * `score` ` number `  
-   A confidence value, between 0 and 1, indicating how certain the model is about the predicted label  
-   * `label` ` string `  
-   The predicted category or class for the input image based on analysis
+object
+
+type
+
+`array`
+
+contentType
+
+`application/json`
+
+items
+
+`[object Object]`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2053)
-* [ Output ](#tab-panel-2054)
+* [ Input ](#tab-panel-3715)
+* [ Output ](#tab-panel-3716)
 
 ```
 
 {
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "type": "string",
+      "type": "string",
 
-            "format": "binary",
+      "format": "binary",
 
-            "description": "The image to classify"
+      "description": "The image to classify"
 
-        },
+    },
 
-        {
+    {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "image": {
+        "image": {
 
-                    "type": "array",
+          "type": "array",
 
-                    "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+          "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 
-                    "items": {
+          "items": {
 
-                        "type": "number",
+            "type": "number",
 
-                        "description": "A value between 0 and 255 (unsigned 8bit)"
+            "description": "A value between 0 and 255 (unsigned 8bit)"
 
-                    }
-
-                }
-
-            },
-
-            "required": [
-
-                "image"
-
-            ]
+          }
 
         }
 
-    ]
+      },
+
+      "required": [
+
+        "image"
+
+      ]
+
+    }
+
+  ]
 
 }
 
@@ -184,35 +187,35 @@ Explain Code
 
 {
 
-    "type": "array",
+  "type": "array",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "items": {
+  "items": {
 
-        "type": "object",
+    "type": "object",
 
-        "properties": {
+    "properties": {
 
-            "score": {
+      "score": {
 
-                "type": "number",
+        "type": "number",
 
-                "description": "A confidence value, between 0 and 1, indicating how certain the model is about the predicted label"
+        "description": "A confidence value, between 0 and 1, indicating how certain the model is about the predicted label"
 
-            },
+      },
 
-            "label": {
+      "label": {
 
-                "type": "string",
+        "type": "string",
 
-                "description": "The predicted category or class for the input image based on analysis"
+        "description": "The predicted category or class for the input image based on analysis"
 
-            }
-
-        }
+      }
 
     }
+
+  }
 
 }
 

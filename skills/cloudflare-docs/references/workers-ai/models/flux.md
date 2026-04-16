@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.DVGPhlbc.svg) 
+![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg) 
 
 #  flux 
 
-Automatic Speech Recognition • Deepgram 
+Automatic Speech Recognition • Deepgram • Hosted 
 
-@cf/deepgram/flux 
+`@cf/deepgram/flux` 
 
 Flux is the first conversational speech recognition model built specifically for voice agents.
 
@@ -164,165 +164,187 @@ Explain Code
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3029)
+* [ Output ](#tab-panel-3030)
 
-### Input
+encoding
 
-* `encoding` ` string ` required  
-Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.
-* `sample_rate` ` string ` required  
-Sample rate of the audio stream in Hz.
-* `eager_eot_threshold` ` string `  
-End-of-turn confidence required to fire an eager end-of-turn event. When set, enables EagerEndOfTurn and TurnResumed events. Valid Values 0.3 - 0.9.
-* `eot_threshold` ` string ` default 0.7  
-End-of-turn confidence required to finish a turn. Valid Values 0.5 - 0.9.
-* `eot_timeout_ms` ` string ` default 5000  
-A turn will be finished when this much time has passed after speech, regardless of EOT confidence.
-* `keyterm` ` string `  
-Keyterm prompting can improve recognition of specialized terminology. Pass multiple keyterm query parameters to boost multiple keyterms.
-* `mip_opt_out` ` string ` default false  
-Opts out requests from the Deepgram Model Improvement Program. Refer to Deepgram Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip
-* `tag` ` string `  
-Label your requests for the purpose of identification during usage reporting
+`string`requiredenum: linear16Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.
 
-### Output
+sample\_rate
 
-* `request_id` ` string `  
-The unique identifier of the request (uuid)
-* `sequence_id` ` integer ` min 0  
-Starts at 0 and increments for each message the server sends to the client.
-* `event` ` string `  
-The type of event being reported.
-* `turn_index` ` integer ` min 0  
-The index of the current turn
-* `audio_window_start` ` number `  
-Start time in seconds of the audio range that was transcribed
-* `audio_window_end` ` number `  
-End time in seconds of the audio range that was transcribed
-* `transcript` ` string `  
-Text that was said over the course of the current turn
-* `words` ` array `  
-The words in the transcript  
-   * `items` ` object `  
-         * `word` ` string ` required  
-         The individual punctuated, properly-cased word from the transcript  
-         * `confidence` ` number ` required  
-         Confidence that this word was transcribed correctly
-* `end_of_turn_confidence` ` number `  
-Confidence that no more speech is coming in this turn
+`string`requiredpattern: ^\[0-9\]+$Sample rate of the audio stream in Hz.
+
+eager\_eot\_threshold
+
+`string`End-of-turn confidence required to fire an eager end-of-turn event. When set, enables EagerEndOfTurn and TurnResumed events. Valid Values 0.3 - 0.9.
+
+eot\_threshold
+
+`string`default: 0.7End-of-turn confidence required to finish a turn. Valid Values 0.5 - 0.9.
+
+eot\_timeout\_ms
+
+`string`default: 5000pattern: ^\[0-9\]+$A turn will be finished when this much time has passed after speech, regardless of EOT confidence.
+
+keyterm
+
+`string`Keyterm prompting can improve recognition of specialized terminology. Pass multiple keyterm query parameters to boost multiple keyterms.
+
+mip\_opt\_out
+
+`string`default: falseenum: true, falseOpts out requests from the Deepgram Model Improvement Program. Refer to Deepgram Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip
+
+tag
+
+`string`Label your requests for the purpose of identification during usage reporting
+
+request\_id
+
+`string`The unique identifier of the request (uuid)
+
+sequence\_id
+
+`integer`minimum: 0Starts at 0 and increments for each message the server sends to the client.
+
+event
+
+`string`enum: Update, StartOfTurn, EagerEndOfTurn, TurnResumed, EndOfTurnThe type of event being reported.
+
+turn\_index
+
+`integer`minimum: 0The index of the current turn
+
+audio\_window\_start
+
+`number`Start time in seconds of the audio range that was transcribed
+
+audio\_window\_end
+
+`number`End time in seconds of the audio range that was transcribed
+
+transcript
+
+`string`Text that was said over the course of the current turn
+
+▶words\[\]
+
+`array`The words in the transcript
+
+end\_of\_turn\_confidence
+
+`number`Confidence that no more speech is coming in this turn
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1711)
-* [ Output ](#tab-panel-1712)
+* [ Input ](#tab-panel-3027)
+* [ Output ](#tab-panel-3028)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "encoding": {
+    "encoding": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.",
+      "description": "Encoding of the audio stream. Currently only supports raw signed little-endian 16-bit PCM.",
 
-            "enum": [
+      "enum": [
 
-                "linear16"
+        "linear16"
 
-            ]
-
-        },
-
-        "sample_rate": {
-
-            "type": "string",
-
-            "description": "Sample rate of the audio stream in Hz.",
-
-            "pattern": "^[0-9]+$"
-
-        },
-
-        "eager_eot_threshold": {
-
-            "type": "string",
-
-            "description": "End-of-turn confidence required to fire an eager end-of-turn event. When set, enables EagerEndOfTurn and TurnResumed events. Valid Values 0.3 - 0.9."
-
-        },
-
-        "eot_threshold": {
-
-            "type": "string",
-
-            "description": "End-of-turn confidence required to finish a turn. Valid Values 0.5 - 0.9.",
-
-            "default": "0.7"
-
-        },
-
-        "eot_timeout_ms": {
-
-            "type": "string",
-
-            "description": "A turn will be finished when this much time has passed after speech, regardless of EOT confidence.",
-
-            "default": "5000",
-
-            "pattern": "^[0-9]+$"
-
-        },
-
-        "keyterm": {
-
-            "type": "string",
-
-            "description": "Keyterm prompting can improve recognition of specialized terminology. Pass multiple keyterm query parameters to boost multiple keyterms."
-
-        },
-
-        "mip_opt_out": {
-
-            "type": "string",
-
-            "description": "Opts out requests from the Deepgram Model Improvement Program. Refer to Deepgram Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip",
-
-            "enum": [
-
-                "true",
-
-                "false"
-
-            ],
-
-            "default": "false"
-
-        },
-
-        "tag": {
-
-            "type": "string",
-
-            "description": "Label your requests for the purpose of identification during usage reporting"
-
-        }
+      ]
 
     },
 
-    "required": [
+    "sample_rate": {
 
-        "sample_rate",
+      "type": "string",
 
-        "encoding"
+      "description": "Sample rate of the audio stream in Hz.",
 
-    ]
+      "pattern": "^[0-9]+$"
+
+    },
+
+    "eager_eot_threshold": {
+
+      "type": "string",
+
+      "description": "End-of-turn confidence required to fire an eager end-of-turn event. When set, enables EagerEndOfTurn and TurnResumed events. Valid Values 0.3 - 0.9."
+
+    },
+
+    "eot_threshold": {
+
+      "type": "string",
+
+      "description": "End-of-turn confidence required to finish a turn. Valid Values 0.5 - 0.9.",
+
+      "default": "0.7"
+
+    },
+
+    "eot_timeout_ms": {
+
+      "type": "string",
+
+      "description": "A turn will be finished when this much time has passed after speech, regardless of EOT confidence.",
+
+      "default": "5000",
+
+      "pattern": "^[0-9]+$"
+
+    },
+
+    "keyterm": {
+
+      "type": "string",
+
+      "description": "Keyterm prompting can improve recognition of specialized terminology. Pass multiple keyterm query parameters to boost multiple keyterms."
+
+    },
+
+    "mip_opt_out": {
+
+      "type": "string",
+
+      "description": "Opts out requests from the Deepgram Model Improvement Program. Refer to Deepgram Docs for pricing impacts before setting this to true. https://dpgr.am/deepgram-mip",
+
+      "enum": [
+
+        "true",
+
+        "false"
+
+      ],
+
+      "default": "false"
+
+    },
+
+    "tag": {
+
+      "type": "string",
+
+      "description": "Label your requests for the purpose of identification during usage reporting"
+
+    }
+
+  },
+
+  "required": [
+
+    "sample_rate",
+
+    "encoding"
+
+  ]
 
 }
 
@@ -335,137 +357,137 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "description": "Output will be returned as websocket messages.",
+  "description": "Output will be returned as websocket messages.",
 
-    "properties": {
+  "properties": {
 
-        "request_id": {
+    "request_id": {
+
+      "type": "string",
+
+      "description": "The unique identifier of the request (uuid)"
+
+    },
+
+    "sequence_id": {
+
+      "type": "integer",
+
+      "description": "Starts at 0 and increments for each message the server sends to the client.",
+
+      "minimum": 0
+
+    },
+
+    "event": {
+
+      "type": "string",
+
+      "description": "The type of event being reported.",
+
+      "enum": [
+
+        "Update",
+
+        "StartOfTurn",
+
+        "EagerEndOfTurn",
+
+        "TurnResumed",
+
+        "EndOfTurn"
+
+      ]
+
+    },
+
+    "turn_index": {
+
+      "type": "integer",
+
+      "description": "The index of the current turn",
+
+      "minimum": 0
+
+    },
+
+    "audio_window_start": {
+
+      "type": "number",
+
+      "description": "Start time in seconds of the audio range that was transcribed"
+
+    },
+
+    "audio_window_end": {
+
+      "type": "number",
+
+      "description": "End time in seconds of the audio range that was transcribed"
+
+    },
+
+    "transcript": {
+
+      "type": "string",
+
+      "description": "Text that was said over the course of the current turn"
+
+    },
+
+    "words": {
+
+      "type": "array",
+
+      "description": "The words in the transcript",
+
+      "items": {
+
+        "type": "object",
+
+        "required": [
+
+          "word",
+
+          "confidence"
+
+        ],
+
+        "properties": {
+
+          "word": {
 
             "type": "string",
 
-            "description": "The unique identifier of the request (uuid)"
+            "description": "The individual punctuated, properly-cased word from the transcript"
 
-        },
+          },
 
-        "sequence_id": {
-
-            "type": "integer",
-
-            "description": "Starts at 0 and increments for each message the server sends to the client.",
-
-            "minimum": 0
-
-        },
-
-        "event": {
-
-            "type": "string",
-
-            "description": "The type of event being reported.",
-
-            "enum": [
-
-                "Update",
-
-                "StartOfTurn",
-
-                "EagerEndOfTurn",
-
-                "TurnResumed",
-
-                "EndOfTurn"
-
-            ]
-
-        },
-
-        "turn_index": {
-
-            "type": "integer",
-
-            "description": "The index of the current turn",
-
-            "minimum": 0
-
-        },
-
-        "audio_window_start": {
+          "confidence": {
 
             "type": "number",
 
-            "description": "Start time in seconds of the audio range that was transcribed"
+            "description": "Confidence that this word was transcribed correctly"
 
-        },
-
-        "audio_window_end": {
-
-            "type": "number",
-
-            "description": "End time in seconds of the audio range that was transcribed"
-
-        },
-
-        "transcript": {
-
-            "type": "string",
-
-            "description": "Text that was said over the course of the current turn"
-
-        },
-
-        "words": {
-
-            "type": "array",
-
-            "description": "The words in the transcript",
-
-            "items": {
-
-                "type": "object",
-
-                "required": [
-
-                    "word",
-
-                    "confidence"
-
-                ],
-
-                "properties": {
-
-                    "word": {
-
-                        "type": "string",
-
-                        "description": "The individual punctuated, properly-cased word from the transcript"
-
-                    },
-
-                    "confidence": {
-
-                        "type": "number",
-
-                        "description": "Confidence that this word was transcribed correctly"
-
-                    }
-
-                }
-
-            }
-
-        },
-
-        "end_of_turn_confidence": {
-
-            "type": "number",
-
-            "description": "Confidence that no more speech is coming in this turn"
+          }
 
         }
 
+      }
+
+    },
+
+    "end_of_turn_confidence": {
+
+      "type": "number",
+
+      "description": "Confidence that no more speech is coming in this turn"
+
     }
+
+  }
 
 }
 

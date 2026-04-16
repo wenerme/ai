@@ -18,9 +18,9 @@ Copy page
 
 #  flux-1-schnell 
 
-Text-to-Image • Black Forest Labs 
+Text-to-Image • Black Forest Labs • Hosted 
 
-@cf/black-forest-labs/flux-1-schnell 
+`@cf/black-forest-labs/flux-1-schnell` 
 
 FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions. 
 
@@ -31,9 +31,9 @@ FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable 
 
 ## Usage
 
-* [  Worker (Data URI) ](#tab-panel-1713)
-* [  Worker (Image) ](#tab-panel-1714)
-* [  curl ](#tab-panel-1715)
+* [  Worker (Data URI) ](#tab-panel-3033)
+* [  Worker (Image) ](#tab-panel-3034)
+* [  curl ](#tab-panel-3035)
 
 TypeScript
 
@@ -140,66 +140,65 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3036)
+* [ Output ](#tab-panel-3037)
 
-### Input
+prompt
 
-* `prompt` ` string ` required min 1 max 2048  
-A text description of the image you want to generate.
-* `steps` ` integer ` default 4 max 8  
-The number of diffusion steps; higher values can improve quality but take longer.
+`string`requiredminLength: 1maxLength: 2048A text description of the image you want to generate.
 
-### Output
+steps
 
-* `image` ` string `  
-The generated image in Base64 format.
+`integer`default: 4maximum: 8The number of diffusion steps; higher values can improve quality but take longer.
+
+image
+
+`string`The generated image in Base64 format.
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1716)
-* [ Output ](#tab-panel-1717)
+* [ Input ](#tab-panel-3031)
+* [ Output ](#tab-panel-3032)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "prompt": {
+    "prompt": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "maxLength": 2048,
+      "maxLength": 2048,
 
-            "description": "A text description of the image you want to generate."
-
-        },
-
-        "steps": {
-
-            "type": "integer",
-
-            "default": 4,
-
-            "maximum": 8,
-
-            "description": "The number of diffusion steps; higher values can improve quality but take longer."
-
-        }
+      "description": "A text description of the image you want to generate."
 
     },
 
-    "required": [
+    "steps": {
 
-        "prompt"
+      "type": "integer",
 
-    ]
+      "default": 4,
+
+      "maximum": 8,
+
+      "description": "The number of diffusion steps; higher values can improve quality but take longer."
+
+    }
+
+  },
+
+  "required": [
+
+    "prompt"
+
+  ]
 
 }
 
@@ -212,21 +211,21 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "image": {
+    "image": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "The generated image in Base64 format."
-
-        }
+      "description": "The generated image in Base64 format."
 
     }
+
+  }
 
 }
 

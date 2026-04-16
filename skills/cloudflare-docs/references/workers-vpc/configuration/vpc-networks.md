@@ -26,10 +26,14 @@ Workers VPC is currently in beta. Features and APIs may change before general av
 
 ## Bind to a tunnel
 
+Note
+
+Binding directly to a tunnel through a VPC Network binding requires the **Connectivity Directory Admin** role.
+
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-7219)
-* [  wrangler.toml ](#tab-panel-7220)
+* [  wrangler.jsonc ](#tab-panel-9160)
+* [  wrangler.toml ](#tab-panel-9161)
 
 JSONC
 
@@ -89,8 +93,8 @@ Your account must have at least one active [Cloudflare Tunnel](https://developer
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-7221)
-* [  wrangler.toml ](#tab-panel-7222)
+* [  wrangler.jsonc ](#tab-panel-9162)
+* [  wrangler.toml ](#tab-panel-9163)
 
 JSONC
 

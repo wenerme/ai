@@ -18,9 +18,9 @@ Copy page
 
 #  dreamshaper-8-lcm 
 
-Text-to-Image • lykon 
+Text-to-Image • lykon • Hosted 
 
-@cf/lykon/dreamshaper-8-lcm 
+`@cf/lykon/dreamshaper-8-lcm` 
 
 Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.
 
@@ -30,8 +30,8 @@ Stable Diffusion model that has been fine-tuned to be better at photorealism wit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1696)
-* [  curl ](#tab-panel-1697)
+* [  TypeScript ](#tab-panel-3002)
+* [  curl ](#tab-panel-3003)
 
 ```
 
@@ -99,185 +99,197 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3006)
+* [ Output ](#tab-panel-3007)
 
-### Input
+prompt
 
-* `prompt` ` string ` required min 1  
-A text description of the image you want to generate
-* `negative_prompt` ` string `  
-Text describing elements to avoid in the generated image
-* `height` ` integer ` min 256 max 2048  
-The height of the generated image in pixels
-* `width` ` integer ` min 256 max 2048  
-The width of the generated image in pixels
-* `image` ` array `  
-For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values  
-   * `items` ` number `  
-   A value between 0 and 255
-* `image_b64` ` string `  
-For use with img2img tasks. A base64-encoded string of the input image
-* `mask` ` array `  
-An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values  
-   * `items` ` number `  
-   A value between 0 and 255
-* `num_steps` ` integer ` default 20 max 20  
-The number of diffusion steps; higher values can improve quality but take longer
-* `strength` ` number ` default 1  
-A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image
-* `guidance` ` number ` default 7.5  
-Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
-* `seed` ` integer `  
-Random seed for reproducibility of the image generation
+`string`requiredminLength: 1A text description of the image you want to generate
 
-### Output
+negative\_prompt
 
- The binding returns a `ReadableStream` with the output (check the model's output schema). 
+`string`Text describing elements to avoid in the generated image
+
+height
+
+`integer`minimum: 256maximum: 2048The height of the generated image in pixels
+
+width
+
+`integer`minimum: 256maximum: 2048The width of the generated image in pixels
+
+▶image\[\]
+
+`array`For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values
+
+image\_b64
+
+`string`For use with img2img tasks. A base64-encoded string of the input image
+
+▶mask\[\]
+
+`array`An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values
+
+num\_steps
+
+`integer`default: 20maximum: 20The number of diffusion steps; higher values can improve quality but take longer
+
+strength
+
+`number`default: 1A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image
+
+guidance
+
+`number`default: 7.5Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
+
+seed
+
+`integer`Random seed for reproducibility of the image generation
+
+The binding returns a `ReadableStream` with the output (check the model's output schema).
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1698)
-* [ Output ](#tab-panel-1699)
+* [ Input ](#tab-panel-3004)
+* [ Output ](#tab-panel-3005)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "prompt": {
+    "prompt": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "description": "A text description of the image you want to generate"
-
-        },
-
-        "negative_prompt": {
-
-            "type": "string",
-
-            "description": "Text describing elements to avoid in the generated image"
-
-        },
-
-        "height": {
-
-            "type": "integer",
-
-            "minimum": 256,
-
-            "maximum": 2048,
-
-            "description": "The height of the generated image in pixels"
-
-        },
-
-        "width": {
-
-            "type": "integer",
-
-            "minimum": 256,
-
-            "maximum": 2048,
-
-            "description": "The width of the generated image in pixels"
-
-        },
-
-        "image": {
-
-            "type": "array",
-
-            "description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-
-            "items": {
-
-                "type": "number",
-
-                "description": "A value between 0 and 255"
-
-            }
-
-        },
-
-        "image_b64": {
-
-            "type": "string",
-
-            "description": "For use with img2img tasks. A base64-encoded string of the input image"
-
-        },
-
-        "mask": {
-
-            "type": "array",
-
-            "description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
-
-            "items": {
-
-                "type": "number",
-
-                "description": "A value between 0 and 255"
-
-            }
-
-        },
-
-        "num_steps": {
-
-            "type": "integer",
-
-            "default": 20,
-
-            "maximum": 20,
-
-            "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-        },
-
-        "strength": {
-
-            "type": "number",
-
-            "default": 1,
-
-            "description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image"
-
-        },
-
-        "guidance": {
-
-            "type": "number",
-
-            "default": 7.5,
-
-            "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
-
-        },
-
-        "seed": {
-
-            "type": "integer",
-
-            "description": "Random seed for reproducibility of the image generation"
-
-        }
+      "description": "A text description of the image you want to generate"
 
     },
 
-    "required": [
+    "negative_prompt": {
 
-        "prompt"
+      "type": "string",
 
-    ]
+      "description": "Text describing elements to avoid in the generated image"
+
+    },
+
+    "height": {
+
+      "type": "integer",
+
+      "minimum": 256,
+
+      "maximum": 2048,
+
+      "description": "The height of the generated image in pixels"
+
+    },
+
+    "width": {
+
+      "type": "integer",
+
+      "minimum": 256,
+
+      "maximum": 2048,
+
+      "description": "The width of the generated image in pixels"
+
+    },
+
+    "image": {
+
+      "type": "array",
+
+      "description": "For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+
+      "items": {
+
+        "type": "number",
+
+        "description": "A value between 0 and 255"
+
+      }
+
+    },
+
+    "image_b64": {
+
+      "type": "string",
+
+      "description": "For use with img2img tasks. A base64-encoded string of the input image"
+
+    },
+
+    "mask": {
+
+      "type": "array",
+
+      "description": "An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values",
+
+      "items": {
+
+        "type": "number",
+
+        "description": "A value between 0 and 255"
+
+      }
+
+    },
+
+    "num_steps": {
+
+      "type": "integer",
+
+      "default": 20,
+
+      "maximum": 20,
+
+      "description": "The number of diffusion steps; higher values can improve quality but take longer"
+
+    },
+
+    "strength": {
+
+      "type": "number",
+
+      "default": 1,
+
+      "description": "A value between 0 and 1 indicating how strongly to apply the transformation during img2img tasks; lower values make the output closer to the input image"
+
+    },
+
+    "guidance": {
+
+      "type": "number",
+
+      "default": 7.5,
+
+      "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
+
+    },
+
+    "seed": {
+
+      "type": "integer",
+
+      "description": "Random seed for reproducibility of the image generation"
+
+    }
+
+  },
+
+  "required": [
+
+    "prompt"
+
+  ]
 
 }
 
@@ -290,13 +302,13 @@ Explain Code
 
 {
 
-    "type": "string",
+  "type": "string",
 
-    "contentType": "image/png",
+  "contentType": "image/png",
 
-    "format": "binary",
+  "format": "binary",
 
-    "description": "The generated image in PNG format"
+  "description": "The generated image in PNG format"
 
 }
 

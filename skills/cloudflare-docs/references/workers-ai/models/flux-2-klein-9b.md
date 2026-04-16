@@ -18,9 +18,9 @@ Copy page
 
 #  flux-2-klein-9b 
 
-Text-to-Image • Black Forest Labs 
+Text-to-Image • Black Forest Labs • Hosted 
 
-@cf/black-forest-labs/flux-2-klein-9b 
+`@cf/black-forest-labs/flux-2-klein-9b` 
 
 FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced quality. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications.
 
@@ -32,8 +32,8 @@ FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced qualit
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1726)
-* [  curl ](#tab-panel-1727)
+* [  TypeScript ](#tab-panel-3052)
+* [  curl ](#tab-panel-3053)
 
 ```
 
@@ -119,63 +119,59 @@ curl --request POST \
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3054)
+* [ Output ](#tab-panel-3055)
 
-### Input
+▶multipart{}
 
-* `multipart` ` object ` required  
-   * `body` ` object `  
-   * `contentType` ` string `
+`object`required
 
-### Output
+image
 
-* `image` ` string `  
-Generated image as Base64 string.
+`string`Generated image as Base64 string.
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1728)
-* [ Output ](#tab-panel-1729)
+* [ Input ](#tab-panel-3050)
+* [ Output ](#tab-panel-3051)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "multipart": {
+    "multipart": {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "body": {
+        "body": {
 
-                    "type": "object"
+          "type": "object"
 
-                },
+        },
 
-                "contentType": {
+        "contentType": {
 
-                    "type": "string"
-
-                }
-
-            }
+          "type": "string"
 
         }
 
-    },
+      }
 
-    "required": [
+    }
 
-        "multipart"
+  },
 
-    ]
+  "required": [
+
+    "multipart"
+
+  ]
 
 }
 
@@ -188,19 +184,19 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "image": {
+    "image": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "Generated image as Base64 string."
-
-        }
+      "description": "Generated image as Base64 string."
 
     }
+
+  }
 
 }
 

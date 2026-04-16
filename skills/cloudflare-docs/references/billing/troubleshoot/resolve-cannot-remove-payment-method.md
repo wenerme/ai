@@ -1,6 +1,6 @@
 ---
 title: Resolve &#34;cannot remove payment method&#34;
-description: This article will help if you are receiving an error that mentions one of the following errors when attempting to remove a payment method:
+description: When attempting to remove a payment method, you may see one of the following error messages:
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Resolve "cannot remove payment method"
 
-This article will help if you are receiving an error that mentions one of the following errors when attempting to remove a payment method:
+When attempting to remove a payment method, you may see one of the following error messages:
 
 * "You can't remove this payment method while it's linked to active subscriptions. Go to Billing to manage subscriptions."
 * "You can't remove a payment method while there are transactions in progress. Make sure all transactions are completed and all subscriptions are cancelled."
@@ -29,11 +29,9 @@ This article will help if you are receiving an error that mentions one of the fo
 
 ## Solutions
 
-You can resolve this by checking your account for each of the potential causes.
-
 ### Check for active paid subscriptions
 
-You can only remove your payment method once all your paid subscriptions and outstanding charges have been completed. To check your paid subscriptions are cancelled follow this:
+You can only remove a payment method after all paid subscriptions are cancelled and outstanding charges are settled.
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account > Billing**.
@@ -41,11 +39,11 @@ You can only remove your payment method once all your paid subscriptions and out
 4. Check **Service status** for any which are marked “Active”
 5. Click the “Cancel” button
 
-You must complete this for all active paid subscriptions before you will be able to remove your card.
+Repeat this for all active paid subscriptions before attempting to remove the payment method.
 
-### Check for Usage Based products
+### Check for usage-based products
 
-If you have cancelled all of your paid products & subscriptions, any usage based products cancelled within the last 30 days may still generate charges. We require that your payment method remains on file until those potential usage charges have been processed. As such, if you recently cancelled any of the following products, you will need to wait 30 days before you can remove your payment method:
+If you have cancelled all paid subscriptions, any usage-based products cancelled within the last 30 days may still generate charges. Your payment method must remain on file until those charges are processed. If you recently cancelled any of the following products, wait 30 days before removing your payment method:
 
 * Images
 * Stream
@@ -61,7 +59,7 @@ If you have cancelled all of your paid products & subscriptions, any usage based
 * Vectorize
 * Analytics
 
-Once your next monthly invoice has been produced you should be able to remove your card.
+After the next monthly invoice is generated, you can remove the payment method.
 
 ### Check for an upcoming Registrar renewal
 
@@ -77,7 +75,7 @@ If you have any domains with auto-renew enabled that are expiring in 31 days or 
 
 ### If none of the above apply
 
-If you have confirmed all of the above do not apply in your case and you still receive an error message when attempting to remove your payment method, please [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+If none of the above apply and you still receive an error, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-cannot-remove-payment-method/","name":"Resolve \"cannot remove payment method\""}}]}

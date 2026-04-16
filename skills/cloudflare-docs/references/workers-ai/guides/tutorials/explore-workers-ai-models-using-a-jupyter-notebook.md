@@ -556,7 +556,7 @@ result
 
 ### Image Classification
 
-Explore all [Image Classification models](https://developers.cloudflare.com/workers-ai/models#image-classification/)
+Explore all [Image Classification models](https://developers.cloudflare.com/ai/models/#image-classification)
 
 Python
 
@@ -592,7 +592,7 @@ Explain Code
 
 ## Summarization
 
-Explore all [Summarization](https://developers.cloudflare.com/workers-ai/models#summarization) based models
+Explore all [Summarization](https://developers.cloudflare.com/ai/models/#summarization) based models
 
 Python
 

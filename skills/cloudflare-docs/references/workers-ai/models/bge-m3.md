@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- b 
+![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg) 
 
 #  bge-m3 
 
-Text Embeddings • baai 
+Text Embeddings • BAAI • Hosted 
 
-@cf/baai/bge-m3 
+`@cf/baai/bge-m3` 
 
 Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
@@ -31,9 +31,9 @@ Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1642)
-* [  Python ](#tab-panel-1643)
-* [  curl ](#tab-panel-1644)
+* [  TypeScript ](#tab-panel-2902)
+* [  Python ](#tab-panel-2903)
+* [  curl ](#tab-panel-2904)
 
 ```
 
@@ -148,390 +148,110 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-\* indicates a required field
+Synchronous — Send a request and receive a complete response 
 
-### Input
+* [ Input ](#tab-panel-2907)
+* [ Output ](#tab-panel-2908)
 
-* `0` ` object `  
-   * `query` ` string ` min 1  
-   A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts  
-   * `contexts` ` array ` required  
-   List of provided contexts. Note that the index in this array is important, as the response will refer to it.  
-         * `items` ` object `  
-                  * `text` ` string ` min 1  
-                  One of the provided context content  
-   * `truncate_inputs` ` boolean `  
-   When provided with too long context should the model error out or truncate the context to fit?
-* `1` ` object `  
-   * `text` ` one of ` required  
-         * `0` ` string ` min 1  
-         The text to embed  
-         * `1` ` array `  
-         Batch of text values to embed  
-                  * `items` ` string ` min 1  
-                  The text to embed  
-   * `truncate_inputs` ` boolean `  
-   When provided with too long context should the model error out or truncate the context to fit?
-* `2` ` object `  
-   * `requests` ` array ` required  
-   Batch of the embeddings requests to run using async-queue  
-         * `items` ` one of `  
-                  * `0` ` object `  
-                              * `query` ` string ` min 1  
-                              A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts  
-                              * `contexts` ` array ` required  
-                              List of provided contexts. Note that the index in this array is important, as the response will refer to it.  
-                                             * `items` ` object `  
-                                                               * `text` ` string ` min 1  
-                                                               One of the provided context content  
-                              * `truncate_inputs` ` boolean `  
-                              When provided with too long context should the model error out or truncate the context to fit?  
-                  * `1` ` object `  
-                              * `text` ` one of ` required  
-                                             * `0` ` string ` min 1  
-                                             The text to embed  
-                                             * `1` ` array `  
-                                             Batch of text values to embed  
-                                                               * `items` ` string ` min 1  
-                                                               The text to embed  
-                              * `truncate_inputs` ` boolean `  
-                              When provided with too long context should the model error out or truncate the context to fit?
+query
 
-### Output
+`string`minLength: 1A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts
 
-* `0` ` object `  
-   * `response` ` array `  
-         * `items` ` object `  
-                  * `id` ` integer `  
-                  Index of the context in the request  
-                  * `score` ` number `  
-                  Score of the context under the index.
-* `1` ` object `  
-   * `response` ` array `  
-         * `items` ` array `  
-                  * `items` ` number `  
-   * `shape` ` array `  
-         * `items` ` number `  
-   * `pooling` ` string `  
-   The pooling method used in the embedding process.
-* `2` ` object `  
-   * `shape` ` array `  
-         * `items` ` number `  
-   * `data` ` array `  
-   Embeddings of the requested text values  
-         * `items` ` array `  
-         Floating point embedding representation shaped by the embedding model  
-                  * `items` ` number `  
-   * `pooling` ` string `  
-   The pooling method used in the embedding process.
-* `3` ` object `  
-   * `request_id` ` string `  
-   The async request id that can be used to obtain the results.
+▶contexts\[\]
 
-## API Schemas
+`array`requiredList of provided contexts. Note that the index in this array is important, as the response will refer to it.
 
-The following schemas are based on JSON Schema
+truncate\_inputs
 
-* [ Input ](#tab-panel-1645)
-* [ Output ](#tab-panel-1646)
+`boolean`default: falseWhen provided with too long context should the model error out or truncate the context to fit?
+
+request\_id
+
+`string`The async request id that can be used to obtain the results.
+
+Batch — Send multiple requests in a single API call 
+
+* [ Input ](#tab-panel-2909)
+* [ Output ](#tab-panel-2910)
+
+▶requests\[\]
+
+`array`requiredBatch of the embeddings requests to run using async-queue
+
+request\_id
+
+`string`The async request id that can be used to obtain the results.
+
+## API Schemas (Raw)
+
+Synchronous — Send a request and receive a complete response 
+
+* [ Input ](#tab-panel-2900)
+* [ Output ](#tab-panel-2901)
 
 ```
 
 {
 
-    "type": "object",
+  "title": "Input Query and Contexts",
 
-    "oneOf": [
+  "properties": {
 
-        {
+    "query": {
 
-            "title": "Input Query and Contexts",
+      "type": "string",
 
-            "properties": {
+      "minLength": 1,
 
-                "query": {
+      "description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts"
 
-                    "type": "string",
+    },
 
-                    "minLength": 1,
+    "contexts": {
 
-                    "description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts"
+      "type": "array",
 
-                },
+      "items": {
 
-                "contexts": {
+        "type": "object",
 
-                    "type": "array",
+        "properties": {
 
-                    "items": {
+          "text": {
 
-                        "type": "object",
+            "type": "string",
 
-                        "properties": {
+            "minLength": 1,
 
-                            "text": {
+            "description": "One of the provided context content"
 
-                                "type": "string",
-
-                                "minLength": 1,
-
-                                "description": "One of the provided context content"
-
-                            }
-
-                        }
-
-                    },
-
-                    "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
-
-                },
-
-                "truncate_inputs": {
-
-                    "type": "boolean",
-
-                    "default": false,
-
-                    "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-                }
-
-            },
-
-            "required": [
-
-                "contexts"
-
-            ]
-
-        },
-
-        {
-
-            "title": "Input Embedding",
-
-            "properties": {
-
-                "text": {
-
-                    "oneOf": [
-
-                        {
-
-                            "type": "string",
-
-                            "description": "The text to embed",
-
-                            "minLength": 1
-
-                        },
-
-                        {
-
-                            "type": "array",
-
-                            "description": "Batch of text values to embed",
-
-                            "items": {
-
-                                "type": "string",
-
-                                "description": "The text to embed",
-
-                                "minLength": 1
-
-                            },
-
-                            "maxItems": 100
-
-                        }
-
-                    ]
-
-                },
-
-                "truncate_inputs": {
-
-                    "type": "boolean",
-
-                    "default": false,
-
-                    "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-                }
-
-            },
-
-            "required": [
-
-                "text"
-
-            ]
-
-        },
-
-        {
-
-            "properties": {
-
-                "requests": {
-
-                    "type": "array",
-
-                    "description": "Batch of the embeddings requests to run using async-queue",
-
-                    "items": {
-
-                        "type": "object",
-
-                        "oneOf": [
-
-                            {
-
-                                "title": "Input Query and Contexts",
-
-                                "properties": {
-
-                                    "query": {
-
-                                        "type": "string",
-
-                                        "minLength": 1,
-
-                                        "description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts"
-
-                                    },
-
-                                    "contexts": {
-
-                                        "type": "array",
-
-                                        "items": {
-
-                                            "type": "object",
-
-                                            "properties": {
-
-                                                "text": {
-
-                                                    "type": "string",
-
-                                                    "minLength": 1,
-
-                                                    "description": "One of the provided context content"
-
-                                                }
-
-                                            }
-
-                                        },
-
-                                        "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
-
-                                    },
-
-                                    "truncate_inputs": {
-
-                                        "type": "boolean",
-
-                                        "default": false,
-
-                                        "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-                                    }
-
-                                },
-
-                                "required": [
-
-                                    "contexts"
-
-                                ]
-
-                            },
-
-                            {
-
-                                "title": "Input Embedding",
-
-                                "properties": {
-
-                                    "text": {
-
-                                        "oneOf": [
-
-                                            {
-
-                                                "type": "string",
-
-                                                "description": "The text to embed",
-
-                                                "minLength": 1
-
-                                            },
-
-                                            {
-
-                                                "type": "array",
-
-                                                "description": "Batch of text values to embed",
-
-                                                "items": {
-
-                                                    "type": "string",
-
-                                                    "description": "The text to embed",
-
-                                                    "minLength": 1
-
-                                                },
-
-                                                "maxItems": 100
-
-                                            }
-
-                                        ]
-
-                                    },
-
-                                    "truncate_inputs": {
-
-                                        "type": "boolean",
-
-                                        "default": false,
-
-                                        "description": "When provided with too long context should the model error out or truncate the context to fit?"
-
-                                    }
-
-                                },
-
-                                "required": [
-
-                                    "text"
-
-                                ]
-
-                            }
-
-                        ]
-
-                    }
-
-                }
-
-            },
-
-            "required": [
-
-                "requests"
-
-            ]
+          }
 
         }
 
-    ]
+      },
+
+      "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
+
+    },
+
+    "truncate_inputs": {
+
+      "type": "boolean",
+
+      "default": false,
+
+      "description": "When provided with too long context should the model error out or truncate the context to fit?"
+
+    }
+
+  },
+
+  "required": [
+
+    "contexts"
+
+  ]
 
 }
 
@@ -544,193 +264,224 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "oneOf": [
+  "title": "Async response",
 
-        {
+  "properties": {
 
-            "title": "Output Query",
+    "request_id": {
+
+      "type": "string",
+
+      "description": "The async request id that can be used to obtain the results."
+
+    }
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+Batch — Send multiple requests in a single API call 
+
+* [ Input ](#tab-panel-2905)
+* [ Output ](#tab-panel-2906)
+
+```
+
+{
+
+  "properties": {
+
+    "requests": {
+
+      "type": "array",
+
+      "description": "Batch of the embeddings requests to run using async-queue",
+
+      "items": {
+
+        "type": "object",
+
+        "oneOf": [
+
+          {
+
+            "title": "Input Query and Contexts",
 
             "properties": {
 
-                "response": {
+              "query": {
 
-                    "type": "array",
+                "type": "string",
 
-                    "items": {
+                "minLength": 1,
 
-                        "type": "object",
+                "description": "A query you wish to perform against the provided contexts. If no query is provided the model with respond with embeddings for contexts"
 
-                        "properties": {
+              },
 
-                            "id": {
+              "contexts": {
 
-                                "type": "integer",
+                "type": "array",
 
-                                "description": "Index of the context in the request"
+                "items": {
 
-                            },
+                  "type": "object",
 
-                            "score": {
+                  "properties": {
 
-                                "type": "number",
+                    "text": {
 
-                                "description": "Score of the context under the index."
+                      "type": "string",
 
-                            }
+                      "minLength": 1,
 
-                        }
+                      "description": "One of the provided context content"
 
                     }
 
-                }
+                  }
 
-            }
+                },
 
-        },
+                "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
 
-        {
+              },
 
-            "title": "Output Embedding for Contexts",
+              "truncate_inputs": {
+
+                "type": "boolean",
+
+                "default": false,
+
+                "description": "When provided with too long context should the model error out or truncate the context to fit?"
+
+              }
+
+            },
+
+            "required": [
+
+              "contexts"
+
+            ]
+
+          },
+
+          {
+
+            "title": "Input Embedding",
 
             "properties": {
 
-                "response": {
+              "text": {
 
-                    "type": "array",
+                "oneOf": [
 
-                    "items": {
-
-                        "type": "array",
-
-                        "items": {
-
-                            "type": "number"
-
-                        }
-
-                    }
-
-                },
-
-                "shape": {
-
-                    "type": "array",
-
-                    "items": {
-
-                        "type": "number"
-
-                    }
-
-                },
-
-                "pooling": {
+                  {
 
                     "type": "string",
 
-                    "enum": [
+                    "description": "The text to embed",
 
-                        "mean",
+                    "minLength": 1
 
-                        "cls"
+                  },
 
-                    ],
-
-                    "description": "The pooling method used in the embedding process."
-
-                }
-
-            }
-
-        },
-
-        {
-
-            "title": "Output Embedding",
-
-            "properties": {
-
-                "shape": {
+                  {
 
                     "type": "array",
 
-                    "items": {
-
-                        "type": "number"
-
-                    }
-
-                },
-
-                "data": {
-
-                    "type": "array",
-
-                    "description": "Embeddings of the requested text values",
+                    "description": "Batch of text values to embed",
 
                     "items": {
 
-                        "type": "array",
+                      "type": "string",
 
-                        "description": "Floating point embedding representation shaped by the embedding model",
+                      "description": "The text to embed",
 
-                        "items": {
+                      "minLength": 1
 
-                            "type": "number"
+                    },
 
-                        }
+                    "maxItems": 100
 
-                    }
+                  }
 
-                },
+                ]
 
-                "pooling": {
+              },
 
-                    "type": "string",
+              "truncate_inputs": {
 
-                    "enum": [
+                "type": "boolean",
 
-                        "mean",
+                "default": false,
 
-                        "cls"
+                "description": "When provided with too long context should the model error out or truncate the context to fit?"
 
-                    ],
+              }
 
-                    "description": "The pooling method used in the embedding process."
+            },
 
-                }
+            "required": [
 
-            }
+              "text"
 
-        },
+            ]
 
-        {
+          }
 
-            "type": "object",
+        ]
 
-            "contentType": "application/json",
+      }
 
-            "title": "Async response",
+    }
 
-            "properties": {
+  },
 
-                "request_id": {
+  "required": [
 
-                    "type": "string",
+    "requests"
 
-                    "description": "The async request id that can be used to obtain the results."
+  ]
 
-                }
+}
 
-            }
 
-        }
+```
 
-    ]
+Explain Code
+
+```
+
+{
+
+  "type": "object",
+
+  "contentType": "application/json",
+
+  "title": "Async response",
+
+  "properties": {
+
+    "request_id": {
+
+      "type": "string",
+
+      "description": "The async request id that can be used to obtain the results."
+
+    }
+
+  }
 
 }
 

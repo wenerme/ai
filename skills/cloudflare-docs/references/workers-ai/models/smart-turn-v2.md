@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- p 
+![Pipecat logo](https://developers.cloudflare.com/_astro/pipecat.B-PNBdef.svg) 
 
 #  smart-turn-v2 
 
-Voice Activity Detection • pipecat-ai 
+Voice Activity Detection • Pipecat • Hosted 
 
-@cf/pipecat-ai/smart-turn-v2 
+`@cf/pipecat-ai/smart-turn-v2` 
 
 An open source, community-driven, native audio turn detection model in 2nd version
 
@@ -32,150 +32,143 @@ An open source, community-driven, native audio turn detection model in 2nd versi
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3723)
+* [ Output ](#tab-panel-3724)
 
-### Input
+▶Option 1{}
 
-* `0` ` object `  
-   * `audio` ` object ` required  
-   readable stream with audio data and content-type specified for that data  
-         * `body` ` object ` required  
-         * `contentType` ` string ` required  
-   * `dtype` ` string `  
-   type of data PCM data that's sent to the inference server as raw array
-* `1` ` object `  
-   * `audio` ` string ` required  
-   base64 encoded audio data  
-   * `dtype` ` string `  
-   type of data PCM data that's sent to the inference server as raw array
+object
 
-### Output
+▶Option 2{}
 
-* `is_complete` ` boolean `  
-if true, end-of-turn was detected
-* `probability` ` number `  
-probability of the end-of-turn detection
+object
+
+is\_complete
+
+`boolean`if true, end-of-turn was detected
+
+probability
+
+`number`probability of the end-of-turn detection
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2055)
-* [ Output ](#tab-panel-2056)
+* [ Input ](#tab-panel-3721)
+* [ Output ](#tab-panel-3722)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "properties": {
+      "properties": {
 
-                "audio": {
+        "audio": {
 
-                    "type": "object",
+          "type": "object",
 
-                    "description": "readable stream with audio data and content-type specified for that data",
+          "description": "readable stream with audio data and content-type specified for that data",
 
-                    "properties": {
+          "properties": {
 
-                        "body": {
+            "body": {
 
-                            "type": "object"
-
-                        },
-
-                        "contentType": {
-
-                            "type": "string"
-
-                        }
-
-                    },
-
-                    "required": [
-
-                        "body",
-
-                        "contentType"
-
-                    ]
-
-                },
-
-                "dtype": {
-
-                    "type": "string",
-
-                    "description": "type of data PCM data that's sent to the inference server as raw array",
-
-                    "enum": [
-
-                        "uint8",
-
-                        "float32",
-
-                        "float64"
-
-                    ]
-
-                }
+              "type": "object"
 
             },
 
-            "required": [
+            "contentType": {
 
-                "audio"
+              "type": "string"
 
-            ]
+            }
+
+          },
+
+          "required": [
+
+            "body",
+
+            "contentType"
+
+          ]
 
         },
 
-        {
+        "dtype": {
 
-            "properties": {
+          "type": "string",
 
-                "audio": {
+          "description": "type of data PCM data that's sent to the inference server as raw array",
 
-                    "type": "string",
+          "enum": [
 
-                    "description": "base64 encoded audio data"
+            "uint8",
 
-                },
+            "float32",
 
-                "dtype": {
+            "float64"
 
-                    "type": "string",
-
-                    "description": "type of data PCM data that's sent to the inference server as raw array",
-
-                    "enum": [
-
-                        "uint8",
-
-                        "float32",
-
-                        "float64"
-
-                    ]
-
-                }
-
-            },
-
-            "required": [
-
-                "audio"
-
-            ]
+          ]
 
         }
 
-    ]
+      },
+
+      "required": [
+
+        "audio"
+
+      ]
+
+    },
+
+    {
+
+      "properties": {
+
+        "audio": {
+
+          "type": "string",
+
+          "description": "base64 encoded audio data"
+
+        },
+
+        "dtype": {
+
+          "type": "string",
+
+          "description": "type of data PCM data that's sent to the inference server as raw array",
+
+          "enum": [
+
+            "uint8",
+
+            "float32",
+
+            "float64"
+
+          ]
+
+        }
+
+      },
+
+      "required": [
+
+        "audio"
+
+      ]
+
+    }
+
+  ]
 
 }
 
@@ -188,29 +181,29 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "is_complete": {
+    "is_complete": {
 
-            "type": "boolean",
+      "type": "boolean",
 
-            "description": "if true, end-of-turn was detected"
+      "description": "if true, end-of-turn was detected"
 
-        },
+    },
 
-        "probability": {
+    "probability": {
 
-            "type": "number",
+      "type": "number",
 
-            "description": "probability of the end-of-turn detection"
-
-        }
+      "description": "probability of the end-of-turn detection"
 
     }
+
+  }
 
 }
 

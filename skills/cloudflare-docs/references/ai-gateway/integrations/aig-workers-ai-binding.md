@@ -1,5 +1,5 @@
 ---
-title: Workers AI
+title: Set up Workers AI with AI Gateway
 description: This guide will walk you through setting up and deploying a Workers AI project. You will use Workers, an AI Gateway binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -14,9 +14,7 @@ YesNo
 
 Copy page
 
-# Workers AI
-
-**Last reviewed:**  over 1 year ago 
+# Set up Workers AI with AI Gateway
 
 This guide will walk you through setting up and deploying a Workers AI project. You will use [Workers](https://developers.cloudflare.com/workers/), an AI Gateway binding, and a large language model (LLM), to deploy your first AI-powered application on the Cloudflare global network.
 
@@ -81,8 +79,8 @@ You must create an AI binding for your Worker to connect to Workers AI. Bindings
 
 To bind Workers AI to your Worker, add the following to the end of your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-3064)
-* [  wrangler.toml ](#tab-panel-3065)
+* [  wrangler.jsonc ](#tab-panel-5066)
+* [  wrangler.toml ](#tab-panel-5067)
 
 JSONC
 
@@ -92,9 +90,9 @@ JSONC
 
   "ai": {
 
-    "binding": "AI"
+    "binding": "AI",
 
-  }
+  },
 
 }
 
@@ -210,17 +208,7 @@ You will be prompted to log in after you run `wrangler dev`. When you run `npx w
 
 {
 
-  "response": "A fascinating question!\n\nThe phrase \"Hello, World!\" originates from a simple computer program written in the early days of programming. It is often attributed to Brian Kernighan, a Canadian computer scientist and a pioneer in the field of computer programming.\n\nIn the early 1970s, Kernighan, along with his colleague Dennis Ritchie, were working on the C programming language. They wanted to create a simple program that would output a message to the screen to demonstrate the basic structure of a program. They chose the phrase \"Hello, World!\" because it was a simple and recognizable message that would illustrate how a program could print text to the screen.\n\nThe exact code was written in the 5th edition of Kernighan and Ritchie's book \"The C Programming Language,\" published in 1988. The code, literally known as \"Hello, World!\" is as follows:\n\n```
-
-main()
-
-{
-
-  printf(\"Hello, World!\");
-
-}
-
-```\n\nThis code is still often used as a starting point for learning programming languages, as it demonstrates how to output a simple message to the console.\n\nThe phrase \"Hello, World!\" has since become a catch-all phrase to indicate the start of a new program or a small test program, and is widely used in computer science and programming education.\n\nSincerely, I'm glad I could help clarify the origin of this iconic phrase for you!"
+  "response": "A fascinating question!\n\nThe phrase \"Hello, World!\" originates from a simple computer program written in the early days of programming. It is often attributed to Brian Kernighan, a Canadian computer scientist and a pioneer in the field of computer programming.\n\nIn the early 1970s, Kernighan, along with his colleague Dennis Ritchie, were working on the C programming language. They wanted to create a simple program that would output a message to the screen to demonstrate the basic structure of a program. They chose the phrase \"Hello, World!\" because it was a simple and recognizable message that would illustrate how a program could print text to the screen.\n\nThe exact code was written in the 5th edition of Kernighan and Ritchie's book \"The C Programming Language,\" published in 1988. The code, literally known as \"Hello, World!\" is as follows:\n\n    main()\n    {\n      printf(\"Hello, World!\");\n    }\n\nThis code is still often used as a starting point for learning programming languages, as it demonstrates how to output a simple message to the console.\n\nThe phrase \"Hello, World!\" has since become a catch-all phrase to indicate the start of a new program or a small test program, and is widely used in computer science and programming education.\n\nSincerely, I'm glad I could help clarify the origin of this iconic phrase for you!"
 
 }
 
@@ -268,6 +256,10 @@ Your Worker will be deployed to your custom [workers.dev](https://developers.clo
 
 By completing this tutorial, you have created a Worker, connected it to Workers AI through an AI Gateway binding, and successfully ran an inference task using the Llama 3.1 model.
 
+## Next steps
+
+* [Workers bindings](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/) — Call third-party models, access gateway methods, and integrate with AI SDKs.
+
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/aig-workers-ai-binding/","name":"Workers AI"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-gateway/","name":"AI Gateway"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-gateway/integrations/","name":"Integrations"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-gateway/integrations/aig-workers-ai-binding/","name":"Set up Workers AI with AI Gateway"}}]}
 ```

@@ -93,8 +93,8 @@ If you cannot view, create, or bind VPC Services and Tunnels in the dashboard or
 Workers VPC uses the following account roles:
 
 * `Connectivity Directory Read` to view Workers VPC Services and Tunnels.
-* `Connectivity Directory Bind` to list/read services and bind them in Workers.
-* `Connectivity Directory Admin` to create, update, and delete services.
+* `Connectivity Directory Bind` to list, read, and bind VPC Services in Workers.
+* `Connectivity Directory Admin` to create, update, and delete VPC Services, and bind directly to tunnels through a VPC Network binding.
 
 For role definitions, refer to [Roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles).
 

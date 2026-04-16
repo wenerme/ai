@@ -30,6 +30,12 @@ Check out the [Get started guide](https://developers.cloudflare.com/ai-gateway/g
 
 ## Features
 
+###  Models 
+
+Explore all AI models available through AI Gateway, including OpenAI, Anthropic, Google, and more.
+
+[ Browse models ](https://developers.cloudflare.com/ai/models/) 
+
 ###  Analytics 
 
 View metrics such as the number of requests, tokens, and the cost it takes to run your application.

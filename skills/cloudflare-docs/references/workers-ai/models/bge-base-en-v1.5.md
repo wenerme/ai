@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- b 
+![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg) 
 
 #  bge-base-en-v1.5 
 
-Text Embeddings • baai 
+Text Embeddings • BAAI • Hosted 
 
-@cf/baai/bge-base-en-v1.5 
+`@cf/baai/bge-base-en-v1.5` 
 
 BAAI general embedding (Base) model that transforms any given text into a 768-dimensional vector
 
@@ -35,9 +35,9 @@ BAAI general embedding (Base) model that transforms any given text into a 768-di
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1632)
-* [  Python ](#tab-panel-1633)
-* [  curl ](#tab-panel-1634)
+* [  TypeScript ](#tab-panel-2878)
+* [  Python ](#tab-panel-2879)
+* [  curl ](#tab-panel-2880)
 
 ```
 
@@ -152,228 +152,128 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-\* indicates a required field
+Synchronous — Send a request and receive a complete response 
 
-### Input
+* [ Input ](#tab-panel-2885)
+* [ Output ](#tab-panel-2886)
 
-* `0` ` object `  
-   * `text` ` one of ` required  
-         * `0` ` string ` min 1  
-         The text to embed  
-         * `1` ` array `  
-         Batch of text values to embed  
-                  * `items` ` string ` min 1  
-                  The text to embed  
-   * `pooling` ` string ` default mean  
-   The pooling method used in the embedding process. \`cls\` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is \`mean\` in order for this to not be a breaking change, but we highly suggest using the new \`cls\` pooling for better accuracy.
-* `1` ` object `  
-   * `requests` ` array ` required  
-   Batch of the embeddings requests to run using async-queue  
-         * `items` ` object `  
-                  * `text` ` one of ` required  
-                              * `0` ` string ` min 1  
-                              The text to embed  
-                              * `1` ` array `  
-                              Batch of text values to embed  
-                                             * `items` ` string ` min 1  
-                                             The text to embed  
-                  * `pooling` ` string ` default mean  
-                  The pooling method used in the embedding process. \`cls\` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is \`mean\` in order for this to not be a breaking change, but we highly suggest using the new \`cls\` pooling for better accuracy.
+▶text
 
-### Output
+`one of`required
 
-* `0` ` object `  
-   * `shape` ` array `  
-         * `items` ` number `  
-   * `data` ` array `  
-   Embeddings of the requested text values  
-         * `items` ` array `  
-         Floating point embedding representation shaped by the embedding model  
-                  * `items` ` number `  
-   * `pooling` ` string `  
-   The pooling method used in the embedding process.
-* `1` ` object `  
-   * `request_id` ` string `  
-   The async request id that can be used to obtain the results.
+pooling
 
-## API Schemas
+`string`default: meanenum: mean, clsThe pooling method used in the embedding process. \`cls\` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is \`mean\` in order for this to not be a breaking change, but we highly suggest using the new \`cls\` pooling for better accuracy.
 
-The following schemas are based on JSON Schema
+▶shape\[\]
 
-* [ Input ](#tab-panel-1635)
-* [ Output ](#tab-panel-1636)
+`array`
+
+▶data\[\]
+
+`array`Embeddings of the requested text values
+
+pooling
+
+`string`enum: mean, clsThe pooling method used in the embedding process.
+
+Batch — Send multiple requests in a single API call 
+
+* [ Input ](#tab-panel-2887)
+* [ Output ](#tab-panel-2888)
+
+▶requests\[\]
+
+`array`requiredBatch of the embeddings requests to run using async-queue
+
+▶shape\[\]
+
+`array`
+
+▶data\[\]
+
+`array`Embeddings of the requested text values
+
+pooling
+
+`string`enum: mean, clsThe pooling method used in the embedding process.
+
+## API Schemas (Raw)
+
+Synchronous — Send a request and receive a complete response 
+
+* [ Input ](#tab-panel-2881)
+* [ Output ](#tab-panel-2882)
 
 ```
 
 {
 
-    "type": "object",
+  "properties": {
 
-    "oneOf": [
+    "text": {
+
+      "oneOf": [
 
         {
 
-            "properties": {
+          "type": "string",
 
-                "text": {
+          "description": "The text to embed",
 
-                    "oneOf": [
-
-                        {
-
-                            "type": "string",
-
-                            "description": "The text to embed",
-
-                            "minLength": 1
-
-                        },
-
-                        {
-
-                            "type": "array",
-
-                            "description": "Batch of text values to embed",
-
-                            "items": {
-
-                                "type": "string",
-
-                                "description": "The text to embed",
-
-                                "minLength": 1
-
-                            },
-
-                            "maxItems": 100
-
-                        }
-
-                    ]
-
-                },
-
-                "pooling": {
-
-                    "type": "string",
-
-                    "enum": [
-
-                        "mean",
-
-                        "cls"
-
-                    ],
-
-                    "default": "mean",
-
-                    "description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
-
-                }
-
-            },
-
-            "required": [
-
-                "text"
-
-            ]
+          "minLength": 1
 
         },
 
         {
 
-            "properties": {
+          "type": "array",
 
-                "requests": {
+          "description": "Batch of text values to embed",
 
-                    "type": "array",
+          "items": {
 
-                    "description": "Batch of the embeddings requests to run using async-queue",
+            "type": "string",
 
-                    "items": {
+            "description": "The text to embed",
 
-                        "properties": {
+            "minLength": 1
 
-                            "text": {
+          },
 
-                                "oneOf": [
-
-                                    {
-
-                                        "type": "string",
-
-                                        "description": "The text to embed",
-
-                                        "minLength": 1
-
-                                    },
-
-                                    {
-
-                                        "type": "array",
-
-                                        "description": "Batch of text values to embed",
-
-                                        "items": {
-
-                                            "type": "string",
-
-                                            "description": "The text to embed",
-
-                                            "minLength": 1
-
-                                        },
-
-                                        "maxItems": 100
-
-                                    }
-
-                                ]
-
-                            },
-
-                            "pooling": {
-
-                                "type": "string",
-
-                                "enum": [
-
-                                    "mean",
-
-                                    "cls"
-
-                                ],
-
-                                "default": "mean",
-
-                                "description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
-
-                            }
-
-                        },
-
-                        "required": [
-
-                            "text"
-
-                        ]
-
-                    }
-
-                }
-
-            },
-
-            "required": [
-
-                "requests"
-
-            ]
+          "maxItems": 100
 
         }
 
-    ]
+      ]
+
+    },
+
+    "pooling": {
+
+      "type": "string",
+
+      "enum": [
+
+        "mean",
+
+        "cls"
+
+      ],
+
+      "default": "mean",
+
+      "description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
+
+    }
+
+  },
+
+  "required": [
+
+    "text"
+
+  ]
 
 }
 
@@ -386,93 +286,236 @@ Explain Code
 
 {
 
-    "oneOf": [
+  "type": "object",
 
-        {
+  "contentType": "application/json",
 
-            "type": "object",
+  "properties": {
 
-            "contentType": "application/json",
+    "shape": {
 
-            "properties": {
+      "type": "array",
 
-                "shape": {
+      "items": {
 
-                    "type": "array",
+        "type": "number"
 
-                    "items": {
+      }
 
-                        "type": "number"
+    },
 
-                    }
+    "data": {
 
-                },
+      "type": "array",
 
-                "data": {
+      "description": "Embeddings of the requested text values",
 
-                    "type": "array",
+      "items": {
 
-                    "description": "Embeddings of the requested text values",
+        "type": "array",
 
-                    "items": {
+        "description": "Floating point embedding representation shaped by the embedding model",
 
-                        "type": "array",
+        "items": {
 
-                        "description": "Floating point embedding representation shaped by the embedding model",
-
-                        "items": {
-
-                            "type": "number"
-
-                        }
-
-                    }
-
-                },
-
-                "pooling": {
-
-                    "type": "string",
-
-                    "enum": [
-
-                        "mean",
-
-                        "cls"
-
-                    ],
-
-                    "description": "The pooling method used in the embedding process."
-
-                }
-
-            }
-
-        },
-
-        {
-
-            "type": "object",
-
-            "contentType": "application/json",
-
-            "title": "Async response",
-
-            "properties": {
-
-                "request_id": {
-
-                    "type": "string",
-
-                    "description": "The async request id that can be used to obtain the results."
-
-                }
-
-            }
+          "type": "number"
 
         }
 
-    ]
+      }
+
+    },
+
+    "pooling": {
+
+      "type": "string",
+
+      "enum": [
+
+        "mean",
+
+        "cls"
+
+      ],
+
+      "description": "The pooling method used in the embedding process."
+
+    }
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+Batch — Send multiple requests in a single API call 
+
+* [ Input ](#tab-panel-2883)
+* [ Output ](#tab-panel-2884)
+
+```
+
+{
+
+  "properties": {
+
+    "requests": {
+
+      "type": "array",
+
+      "description": "Batch of the embeddings requests to run using async-queue",
+
+      "items": {
+
+        "properties": {
+
+          "text": {
+
+            "oneOf": [
+
+              {
+
+                "type": "string",
+
+                "description": "The text to embed",
+
+                "minLength": 1
+
+              },
+
+              {
+
+                "type": "array",
+
+                "description": "Batch of text values to embed",
+
+                "items": {
+
+                  "type": "string",
+
+                  "description": "The text to embed",
+
+                  "minLength": 1
+
+                },
+
+                "maxItems": 100
+
+              }
+
+            ]
+
+          },
+
+          "pooling": {
+
+            "type": "string",
+
+            "enum": [
+
+              "mean",
+
+              "cls"
+
+            ],
+
+            "default": "mean",
+
+            "description": "The pooling method used in the embedding process. `cls` pooling will generate more accurate embeddings on larger inputs - however, embeddings created with cls pooling are not compatible with embeddings generated with mean pooling. The default pooling method is `mean` in order for this to not be a breaking change, but we highly suggest using the new `cls` pooling for better accuracy."
+
+          }
+
+        },
+
+        "required": [
+
+          "text"
+
+        ]
+
+      }
+
+    }
+
+  },
+
+  "required": [
+
+    "requests"
+
+  ]
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+  "type": "object",
+
+  "contentType": "application/json",
+
+  "properties": {
+
+    "shape": {
+
+      "type": "array",
+
+      "items": {
+
+        "type": "number"
+
+      }
+
+    },
+
+    "data": {
+
+      "type": "array",
+
+      "description": "Embeddings of the requested text values",
+
+      "items": {
+
+        "type": "array",
+
+        "description": "Floating point embedding representation shaped by the embedding model",
+
+        "items": {
+
+          "type": "number"
+
+        }
+
+      }
+
+    },
+
+    "pooling": {
+
+      "type": "string",
+
+      "enum": [
+
+        "mean",
+
+        "cls"
+
+      ],
+
+      "description": "The pooling method used in the embedding process."
+
+    }
+
+  }
 
 }
 

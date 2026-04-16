@@ -1,6 +1,6 @@
 ---
 title: Create billing profile
-description: A primary payment method is required to process payment for Cloudflare products and services. We value your confidentiality and privacy - Cloudflare does not have access to your bank, credit card, pin, or PayPal account password details.
+description: A primary payment method is required to purchase Cloudflare products and services. Cloudflare does not store or have access to your full card number, PIN, or PayPal password.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,7 +18,7 @@ Copy page
 
 ## Add a primary payment method
 
-A primary payment method is required to process payment for Cloudflare products and services. We value your confidentiality and privacy - Cloudflare does not have access to your bank, credit card, pin, or PayPal account password details.
+A primary payment method is required to purchase Cloudflare products and services. Cloudflare does not store or have access to your full card number, PIN, or PayPal password.
 
 Note
 

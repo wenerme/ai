@@ -31,9 +31,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"ec588b4d6552e85a10dedb5a23e11e1c687a553dcc5c380455e8cc2e7df17460\"",
-    "size": 230219,
-    "updatedAt": "2026-04-16T00:19:35.353Z"
+    "etag": "W/\"37f496c70f39b612f9b14795f07aa9be8618a34bc7fe950c684d5b3f1fd4b3de\"",
+    "size": 230203,
+    "updatedAt": "2026-04-16T10:27:37.048Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -109,9 +109,9 @@
   },
   "costs.md": {
     "url": "https://code.claude.com/docs/en/costs",
-    "lastModified": "Tue, 14 Apr 2026 21:01:04 GMT",
-    "size": 13702,
-    "updatedAt": "2026-04-15T00:19:10.296Z"
+    "lastModified": "Thu, 16 Apr 2026 08:15:02 GMT",
+    "size": 13914,
+    "updatedAt": "2026-04-16T10:27:15.464Z"
   },
   "data-usage.md": {
     "url": "https://code.claude.com/docs/en/data-usage",
@@ -397,9 +397,9 @@
   },
   "statusline.md": {
     "url": "https://code.claude.com/docs/en/statusline",
-    "lastModified": "Tue, 14 Apr 2026 21:00:43 GMT",
-    "size": 53668,
-    "updatedAt": "2026-04-15T00:19:29.899Z"
+    "lastModified": "Thu, 16 Apr 2026 08:14:11 GMT",
+    "size": 53678,
+    "updatedAt": "2026-04-16T10:27:32.230Z"
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",

@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![Qwen logo](https://developers.cloudflare.com/_astro/qwen.B8ST_F2H.svg) 
+![Qwen logo](https://developers.cloudflare.com/_astro/qwen.CVqFFn5h.svg) 
 
 #  qwen3-embedding-0.6b 
 
-Text Embeddings • Qwen 
+Text Embeddings • Qwen • Hosted 
 
-@cf/qwen/qwen3-embedding-0.6b 
+`@cf/qwen/qwen3-embedding-0.6b` 
 
 The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. 
 
@@ -31,9 +31,9 @@ The Qwen3 Embedding model series is the latest proprietary model of the Qwen fam
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-2040)
-* [  Python ](#tab-panel-2041)
-* [  curl ](#tab-panel-2042)
+* [  TypeScript ](#tab-panel-3696)
+* [  Python ](#tab-panel-3697)
+* [  curl ](#tab-panel-3698)
 
 ```
 
@@ -148,173 +148,165 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3701)
+* [ Output ](#tab-panel-3702)
 
-### Input
+▶queries
 
-* `queries` ` one of `  
-   * `0` ` string ` min 1  
-   A single query string  
-   * `1` ` array `  
-   An array of query strings  
-         * `items` ` string ` min 1
-* `instruction` ` string ` default Given a web search query, retrieve relevant passages that answer the query  
-Optional instruction for the task
-* `documents` ` one of `  
-   * `0` ` string ` min 1  
-   A single document string  
-   * `1` ` array `  
-   An array of document strings  
-         * `items` ` string ` min 1
-* `text` ` one of `  
-   * `0` ` string ` min 1  
-   Alias for documents: a single text string  
-   * `1` ` array `  
-   Alias for documents: an array of text strings  
-         * `items` ` string ` min 1
+`one of`
 
-### Output
+instruction
 
-* `data` ` array `  
-   * `items` ` array `  
-         * `items` ` number `
-* `shape` ` array `  
-   * `items` ` integer `
+`string`default: Given a web search query, retrieve relevant passages that answer the queryOptional instruction for the task
+
+▶documents
+
+`one of`
+
+▶text
+
+`one of`
+
+▶data\[\]
+
+`array`
+
+▶shape\[\]
+
+`array`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2043)
-* [ Output ](#tab-panel-2044)
+* [ Input ](#tab-panel-3699)
+* [ Output ](#tab-panel-3700)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "queries": {
+    "queries": {
 
-            "oneOf": [
+      "oneOf": [
 
-                {
+        {
 
-                    "type": "string",
+          "type": "string",
 
-                    "description": "A single query string",
+          "description": "A single query string",
 
-                    "minLength": 1
-
-                },
-
-                {
-
-                    "type": "array",
-
-                    "description": "An array of query strings",
-
-                    "items": {
-
-                        "type": "string",
-
-                        "minLength": 1
-
-                    },
-
-                    "maxItems": 32
-
-                }
-
-            ]
+          "minLength": 1
 
         },
 
-        "instruction": {
+        {
+
+          "type": "array",
+
+          "description": "An array of query strings",
+
+          "items": {
 
             "type": "string",
 
-            "default": "Given a web search query, retrieve relevant passages that answer the query",
+            "minLength": 1
 
-            "description": "Optional instruction for the task"
+          },
 
-        },
-
-        "documents": {
-
-            "oneOf": [
-
-                {
-
-                    "type": "string",
-
-                    "description": "A single document string",
-
-                    "minLength": 1
-
-                },
-
-                {
-
-                    "type": "array",
-
-                    "description": "An array of document strings",
-
-                    "items": {
-
-                        "type": "string",
-
-                        "minLength": 1
-
-                    },
-
-                    "maxItems": 32
-
-                }
-
-            ]
-
-        },
-
-        "text": {
-
-            "oneOf": [
-
-                {
-
-                    "type": "string",
-
-                    "description": "Alias for documents: a single text string",
-
-                    "minLength": 1
-
-                },
-
-                {
-
-                    "type": "array",
-
-                    "description": "Alias for documents: an array of text strings",
-
-                    "items": {
-
-                        "type": "string",
-
-                        "minLength": 1
-
-                    },
-
-                    "maxItems": 32
-
-                }
-
-            ]
+          "maxItems": 32
 
         }
 
+      ]
+
+    },
+
+    "instruction": {
+
+      "type": "string",
+
+      "default": "Given a web search query, retrieve relevant passages that answer the query",
+
+      "description": "Optional instruction for the task"
+
+    },
+
+    "documents": {
+
+      "oneOf": [
+
+        {
+
+          "type": "string",
+
+          "description": "A single document string",
+
+          "minLength": 1
+
+        },
+
+        {
+
+          "type": "array",
+
+          "description": "An array of document strings",
+
+          "items": {
+
+            "type": "string",
+
+            "minLength": 1
+
+          },
+
+          "maxItems": 32
+
+        }
+
+      ]
+
+    },
+
+    "text": {
+
+      "oneOf": [
+
+        {
+
+          "type": "string",
+
+          "description": "Alias for documents: a single text string",
+
+          "minLength": 1
+
+        },
+
+        {
+
+          "type": "array",
+
+          "description": "Alias for documents: an array of text strings",
+
+          "items": {
+
+            "type": "string",
+
+            "minLength": 1
+
+          },
+
+          "maxItems": 32
+
+        }
+
+      ]
+
     }
+
+  }
 
 }
 
@@ -327,41 +319,41 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "data": {
+    "data": {
 
-            "items": {
+      "items": {
 
-                "items": {
+        "items": {
 
-                    "type": "number"
-
-                },
-
-                "type": "array"
-
-            },
-
-            "type": "array"
+          "type": "number"
 
         },
 
-        "shape": {
+        "type": "array"
 
-            "items": {
+      },
 
-                "type": "integer"
+      "type": "array"
 
-            },
+    },
 
-            "type": "array"
+    "shape": {
 
-        }
+      "items": {
+
+        "type": "integer"
+
+      },
+
+      "type": "array"
 
     }
+
+  }
 
 }
 

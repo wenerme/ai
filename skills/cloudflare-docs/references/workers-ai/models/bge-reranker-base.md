@@ -16,13 +16,13 @@ YesNo
 
 Copy page
 
- b 
+![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg) 
 
 #  bge-reranker-base 
 
-Text Classification • baai 
+Text Classification • BAAI • Hosted 
 
-@cf/baai/bge-reranker-base 
+`@cf/baai/bge-reranker-base` 
 
 Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \[0,1\] by sigmoid function.
 
@@ -32,9 +32,9 @@ Different from embedding model, reranker uses question and document as input and
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1647)
-* [  Python ](#tab-panel-1648)
-* [  curl ](#tab-panel-1649)
+* [  TypeScript ](#tab-panel-2911)
+* [  Python ](#tab-panel-2912)
+* [  curl ](#tab-panel-2913)
 
 ```
 
@@ -142,101 +142,95 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-2916)
+* [ Output ](#tab-panel-2917)
 
-### Input
+query
 
-* `query` ` string ` required min 1  
-A query you wish to perform against the provided contexts.
-* `top_k` ` integer ` min 1  
-Number of returned results starting with the best score.
-* `contexts` ` array ` required  
-List of provided contexts. Note that the index in this array is important, as the response will refer to it.  
-   * `items` ` object `  
-         * `text` ` string ` min 1  
-         One of the provided context content
+`string`requiredminLength: 1A query you wish to perform against the provided contexts.
 
-### Output
+top\_k
 
-* `response` ` array `  
-   * `items` ` object `  
-         * `id` ` integer `  
-         Index of the context in the request  
-         * `score` ` number `  
-         Score of the context under the index.
+`integer`minimum: 1Number of returned results starting with the best score.
+
+▶contexts\[\]
+
+`array`requiredList of provided contexts. Note that the index in this array is important, as the response will refer to it.
+
+▶response\[\]
+
+`array`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1650)
-* [ Output ](#tab-panel-1651)
+* [ Input ](#tab-panel-2914)
+* [ Output ](#tab-panel-2915)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "query": {
+    "query": {
+
+      "type": "string",
+
+      "minLength": 1,
+
+      "description": "A query you wish to perform against the provided contexts."
+
+    },
+
+    "top_k": {
+
+      "type": "integer",
+
+      "minimum": 1,
+
+      "description": "Number of returned results starting with the best score."
+
+    },
+
+    "contexts": {
+
+      "type": "array",
+
+      "items": {
+
+        "type": "object",
+
+        "properties": {
+
+          "text": {
 
             "type": "string",
 
             "minLength": 1,
 
-            "description": "A query you wish to perform against the provided contexts."
+            "description": "One of the provided context content"
 
-        },
-
-        "top_k": {
-
-            "type": "integer",
-
-            "minimum": 1,
-
-            "description": "Number of returned results starting with the best score."
-
-        },
-
-        "contexts": {
-
-            "type": "array",
-
-            "items": {
-
-                "type": "object",
-
-                "properties": {
-
-                    "text": {
-
-                        "type": "string",
-
-                        "minLength": 1,
-
-                        "description": "One of the provided context content"
-
-                    }
-
-                }
-
-            },
-
-            "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
+          }
 
         }
 
-    },
+      },
 
-    "required": [
+      "description": "List of provided contexts. Note that the index in this array is important, as the response will refer to it."
 
-        "query",
+    }
 
-        "contexts"
+  },
 
-    ]
+  "required": [
+
+    "query",
+
+    "contexts"
+
+  ]
 
 }
 
@@ -249,45 +243,45 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "response": {
+    "response": {
 
-            "type": "array",
+      "type": "array",
 
-            "items": {
+      "items": {
 
-                "type": "object",
+        "type": "object",
 
-                "properties": {
+        "properties": {
 
-                    "id": {
+          "id": {
 
-                        "type": "integer",
+            "type": "integer",
 
-                        "description": "Index of the context in the request"
+            "description": "Index of the context in the request"
 
-                    },
+          },
 
-                    "score": {
+          "score": {
 
-                        "type": "number",
+            "type": "number",
 
-                        "description": "Score of the context under the index."
+            "description": "Score of the context under the index."
 
-                    }
-
-                }
-
-            }
+          }
 
         }
 
+      }
+
     }
+
+  }
 
 }
 

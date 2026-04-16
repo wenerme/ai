@@ -22,6 +22,10 @@ Copy page
 
 Use AI Gateway for analytics, caching, and security on requests to [Workers AI](https://developers.cloudflare.com/workers-ai/). Workers AI integrates seamlessly with AI Gateway, allowing you to execute AI inference via API requests or through an environment binding for Workers scripts. The binding simplifies the process by routing requests through your AI Gateway with minimal setup.
 
+Note
+
+You can also access third-party models through AI Gateway using the AI binding. Refer to the [binding reference](https://developers.cloudflare.com/ai-gateway/integrations/worker-binding-methods/#envairun) for details.
+
 ## Prerequisites
 
 When making requests to Workers AI, ensure you have the following:
@@ -137,8 +141,8 @@ Explain Code
 
 You can integrate Workers AI with AI Gateway using an environment binding. To include an AI Gateway within your Worker, add the gateway as an object in your Workers AI request.
 
-* [  JavaScript ](#tab-panel-3092)
-* [  TypeScript ](#tab-panel-3093)
+* [  JavaScript ](#tab-panel-5094)
+* [  TypeScript ](#tab-panel-5095)
 
 JavaScript
 

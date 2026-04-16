@@ -1,6 +1,6 @@
 ---
 title: Resolve &#34;you cannot modify this subscription&#34;
-description: This article will help if you are receiving an error that mentions &#34;You cannot modify this subscription since it is currently scheduled to be cancelled&#34; when attempting to cancel or modify a subscription. For reference, the full message you receive may be one of the following:
+description: When attempting to cancel or modify a subscription, you may see the following error message:
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Resolve "you cannot modify this subscription"
 
-This article will help if you are receiving an error that mentions "You cannot modify this subscription since it is currently scheduled to be cancelled" when attempting to cancel or modify a subscription. For reference, the full message you receive may be one of the following:
+When attempting to cancel or modify a subscription, you may see the following error message:
 
 * "This subscription is scheduled to be cancelled at the end of the billing period. To make changes or purchase more, please click 'Cancel Downgrade' on the Subscriptions page."
 
@@ -27,11 +27,11 @@ This article will help if you are receiving an error that mentions "You cannot m
 
 ## Solutions
 
-If your intent is to cancel a subscription, this request has already been scheduled and your subscription will be cancelled at the end of the current billing period. See “When will my subscription be cancelled” below to understand the exact date this will take effect.
+If you intended to cancel a subscription, the cancellation is already scheduled. Your subscription ends at the close of the current billing period. Refer to the section below to find the exact date.
 
 ### When will my subscription be cancelled?
 
-Once you have requested cancellation, you will see the date your subscription will be cancelled on the subscriptions page underneath the text “Ending On”.
+After requesting cancellation, the subscriptions page shows the end date under "Ending On".
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account > Billing**.

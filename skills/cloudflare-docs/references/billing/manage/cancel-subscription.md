@@ -16,19 +16,19 @@ Copy page
 
 # Cancel Cloudflare subscriptions
 
-Cancellations are not processed until the end of the billing period, so you can continue using the add-on or subscription until the new billing period begins. To avoid unwanted charges, start the cancellation process before the end of your billing period.
+Cancellations take effect at the end of the current billing period. You retain access to paid features until then. To avoid charges for the next billing period, start the cancellation process before your current period ends.
 
-If you are making a subscription downgrade including a change from a yearly plan to a monthly plan or a change from a paid plan to a free plan, be aware that downgrades and cancellations do not take immediate effect and that you will continue to be billed and have access to your service for the remainder of your contracted service period. You should not contact Cloudflare to ask for exceptions to this policy or refunds for early downgrades and cancellations.
+Downgrades follow the same timing — switching from a yearly plan to a monthly plan, or from a paid plan to Free, does not take immediate effect. You continue to have access to the higher-tier service for the remainder of the current billing period. Refunds are not issued for unused time within a billing period.
 
-In addition, you may not always see a cancel button present for each subscription and often it is a switch from a paid plan to a free plan that will act as the cancellation of your paid subscription.
+For some subscriptions, cancellation is done by switching to the Free plan rather than selecting a separate cancel option.
 
 Note
 
-All billing period dates on invoices and the dashboard are in UTC/GMT timezone, not your local timezone. We recommend any downgrades or changes to subscriptions be made at least 24 hours before stated billing date to avoid any timezone confusion.
+All billing dates are in UTC. Make any downgrades or changes at least 24 hours before your billing date to avoid timing issues.
 
-Furthermore, please note that changing the DNS on your domain name does not cancel your account, or your active subscription plans. The system waits for a manual cancellation of the subscriptions plans, since there are times that the owner of a domain name's DNS is required to take action to change it back because they did not intend to remove their account. 
+Warning
 
-You will receive a notification regarding the DNS change; however, that does not indicate the cancellation of your subscription plans.
+Changing the DNS on your domain does not cancel your account or active subscriptions. You must explicitly cancel subscriptions through the Cloudflare dashboard.
 
 ---
 
@@ -48,14 +48,16 @@ To disable a subscription:
 [ Go to **Billing** ](https://dash.cloudflare.com/?to=/:account/billing)
 2. Select **Subscriptions**.
 3. Find the subscription you want to disable and select **Cancel**.
-4. You will be asked to share feedback with us. Choose all that apply.
-5. Select **Confirm** to finish.
+4. Select a reason for cancellation.
+5. Select **Confirm**.
 
 Note
 
-To alter your plan, select **Change** under **Active Subscriptions** and choose a new plan type. If you would like to cancel your paid plan, select **Free**.
+To change your plan instead of cancelling, select **Change** under **Active Subscriptions** and choose a new plan type. To cancel a paid plan entirely, select **Free**.
 
-FEES ARE NONREFUNDABLE. YOU WILL BE BILLED IN FULL FOR THE SUBSCRIPTION TERM IN WHICH YOU CANCEL AND NO REFUNDS WILL BE PROVIDED FOR THE UNUSED PORTION OF SUCH SUBSCRIPTION TERM. Following any cancellation, however, you will continue to have access to the Paid Services through the end of your current Subscription Term (except with respect to Services subject to usage-based billing). We may, in our sole discretion, provide a refund, discount, or credit ("Credits") to you in a specific instance, however the provision of Credits in a specific instance does not entitle you to Credits in the future for similar instances or obligate us to provide additional Credits.
+Warning
+
+Fees are non-refundable. You are billed for the full billing period in which you cancel and no refunds are issued for unused time. After cancellation, you retain access to paid services through the end of the current billing period. For full terms, refer to the [Cloudflare Terms of Use ↗](https://www.cloudflare.com/terms/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/cancel-subscription/","name":"Cancel Cloudflare subscriptions"}}]}

@@ -15,7 +15,7 @@ Copy page
 
 # Troubleshooting
 
-* [ Troubleshoot with IPsec logs ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/)
+* [ Troubleshoot IPsec tunnels ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/)
 * [ Troubleshoot tunnel health ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/)
 * [ Troubleshoot connectivity ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/connectivity/)
 * [ Troubleshoot routing and BGP ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/routing-and-bgp/)

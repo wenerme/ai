@@ -1,0 +1,385 @@
+---
+title: TTS-1
+description: OpenAI's text-to-speech model optimized for real-time use with low latency.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg) 
+
+#  TTS-1 
+
+Text-to-Speech • OpenAI • Proxied 
+
+`openai/tts-1` 
+
+OpenAI's text-to-speech model optimized for real-time use with low latency.
+
+| Model Info        |                                                                  |
+| ----------------- | ---------------------------------------------------------------- |
+| Terms and License | [link ↗](https://openai.com/policies/)                           |
+| More information  | [link ↗](https://platform.openai.com/docs/guides/text-to-speech) |
+
+## Usage
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/tts-1',
+
+  {
+
+    text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+## Examples
+
+**Different Voice**  — Use the Nova voice for a different tone 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/tts-1',
+
+  {
+
+    text: 'The weather today is sunny with a high of 72 degrees. Perfect for a walk in the park.',
+
+    voice: 'nova',
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+**Narration**  — Slower narration style with the Onyx voice 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/tts-1',
+
+  {
+
+    text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',
+
+    voice: 'onyx',
+
+    speed: 0.85,
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+**Echo Voice**  — Use the Echo voice for a deeper tone 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/tts-1',
+
+  {
+
+    text: 'Welcome back to the podcast. Today we are going to talk about the future of artificial intelligence and its impact on creative work.',
+
+    voice: 'echo',
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+**Fast Playback**  — Speed up speech for quick listening 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/tts-1',
+
+  {
+
+    text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent, user growth exceeded expectations, and infrastructure costs remain stable.',
+
+    voice: 'shimmer',
+
+    speed: 1.5,
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 
+
+## Parameters
+
+* [ Input ](#tab-panel-206)
+* [ Output ](#tab-panel-207)
+
+text
+
+`string`requiredmaxLength: 4096The text to generate audio for. Maximum length is 4096 characters.
+
+voice
+
+`string`requireddefault: alloyenum: alloy, echo, fable, onyx, nova, shimmerThe voice to use when generating the audio. Defaults to alloy.
+
+response\_format
+
+`string`requireddefault: mp3enum: mp3, opus, wav, aac, flacThe output format for the audio. Supported formats are mp3, opus, wav, aac and flac.
+
+speed
+
+`number`requireddefault: 1minimum: 0.25maximum: 4The speed of the generated audio. Select a value from 0.25 to 4.0\. 1.0 is the default.
+
+audio
+
+`string`requiredURL to the generated audio file
+
+## API Schemas
+
+* [ Input ](#tab-panel-204)
+* [ Output ](#tab-panel-205)
+
+```
+
+{
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "properties": {
+
+    "text": {
+
+      "description": "The text to generate audio for. Maximum length is 4096 characters.",
+
+      "type": "string",
+
+      "maxLength": 4096
+
+    },
+
+    "voice": {
+
+      "description": "The voice to use when generating the audio. Defaults to alloy.",
+
+      "default": "alloy",
+
+      "type": "string",
+
+      "enum": [
+
+        "alloy",
+
+        "echo",
+
+        "fable",
+
+        "onyx",
+
+        "nova",
+
+        "shimmer"
+
+      ]
+
+    },
+
+    "response_format": {
+
+      "description": "The output format for the audio. Supported formats are mp3, opus, wav, aac and flac.",
+
+      "default": "mp3",
+
+      "type": "string",
+
+      "enum": [
+
+        "mp3",
+
+        "opus",
+
+        "wav",
+
+        "aac",
+
+        "flac"
+
+      ]
+
+    },
+
+    "speed": {
+
+      "description": "The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.",
+
+      "default": 1,
+
+      "type": "number",
+
+      "minimum": 0.25,
+
+      "maximum": 4
+
+    }
+
+  },
+
+  "required": [
+
+    "text",
+
+    "voice",
+
+    "response_format",
+
+    "speed"
+
+  ],
+
+  "additionalProperties": false
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "properties": {
+
+    "audio": {
+
+      "description": "URL to the generated audio file",
+
+      "type": "string"
+
+    }
+
+  },
+
+  "required": [
+
+    "audio"
+
+  ],
+
+  "additionalProperties": false
+
+}
+
+
+```
+
+Explain Code
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai/","name":"AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai/models/","name":"Models"}}]}
+```

@@ -95,8 +95,8 @@ Explain Code
 
 You must add both `python_workflows` and `python_workers` compatibility flags to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-8662)
-* [  wrangler.toml ](#tab-panel-8663)
+* [  wrangler.jsonc ](#tab-panel-10821)
+* [  wrangler.toml ](#tab-panel-10822)
 
 JSONC
 
@@ -120,7 +120,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-16",
 
   "workflows": [
 
@@ -157,7 +157,7 @@ compatibility_flags = [ "python_workers", "python_workflows" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-16"
 
 
 [[workflows]]

@@ -20,9 +20,9 @@ Copy page
 
 #  plamo-embedding-1b 
 
-Text Embeddings • pfnet 
+Text Embeddings • pfnet • Hosted 
 
-@cf/pfnet/plamo-embedding-1b 
+`@cf/pfnet/plamo-embedding-1b` 
 
 PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc. It can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.
 
@@ -32,9 +32,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1999)
-* [  Python ](#tab-panel-2000)
-* [  curl ](#tab-panel-2001)
+* [  TypeScript ](#tab-panel-3615)
+* [  Python ](#tab-panel-3616)
+* [  curl ](#tab-panel-3617)
 
 ```
 
@@ -149,77 +149,69 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3618)
+* [ Output ](#tab-panel-3619)
 
-### Input
+▶text
 
-* `text` ` one of ` required  
-   * `0` ` string `  
-   Input text to embed. Can be a single string or a list of strings.  
-   * `1` ` array `  
-   Input text to embed. Can be a single string or a list of strings.  
-         * `items` ` string `
+`one of`required
 
-### Output
+▶data\[\]
 
-* `data` ` array ` required  
-Embedding vectors, where each vector is a list of floats.  
-   * `items` ` array `  
-         * `items` ` number `
-* `shape` ` array ` required  
-Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].  
-   * `items` ` integer `
+`array`requiredEmbedding vectors, where each vector is a list of floats.
+
+▶shape\[\]
+
+`array`requiredminItems: 2maxItems: 2Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2002)
-* [ Output ](#tab-panel-2003)
+* [ Input ](#tab-panel-3613)
+* [ Output ](#tab-panel-3614)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "text": {
+    "text": {
 
-            "oneOf": [
+      "oneOf": [
 
-                {
+        {
 
-                    "type": "string"
+          "type": "string"
 
-                },
+        },
 
-                {
+        {
 
-                    "type": "array",
+          "type": "array",
 
-                    "items": {
+          "items": {
 
-                        "type": "string"
+            "type": "string"
 
-                    }
-
-                }
-
-            ],
-
-            "description": "Input text to embed. Can be a single string or a list of strings."
+          }
 
         }
 
-    },
+      ],
 
-    "required": [
+      "description": "Input text to embed. Can be a single string or a list of strings."
 
-        "text"
+    }
 
-    ]
+  },
+
+  "required": [
+
+    "text"
+
+  ]
 
 }
 
@@ -232,57 +224,57 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "data": {
+    "data": {
 
-            "type": "array",
+      "type": "array",
 
-            "items": {
+      "items": {
 
-                "type": "array",
+        "type": "array",
 
-                "items": {
+        "items": {
 
-                    "type": "number"
-
-                }
-
-            },
-
-            "description": "Embedding vectors, where each vector is a list of floats."
-
-        },
-
-        "shape": {
-
-            "type": "array",
-
-            "items": {
-
-                "type": "integer"
-
-            },
-
-            "minItems": 2,
-
-            "maxItems": 2,
-
-            "description": "Shape of the embedding data as [number_of_embeddings, embedding_dimension]."
+          "type": "number"
 
         }
 
+      },
+
+      "description": "Embedding vectors, where each vector is a list of floats."
+
     },
 
-    "required": [
+    "shape": {
 
-        "data",
+      "type": "array",
 
-        "shape"
+      "items": {
 
-    ]
+        "type": "integer"
+
+      },
+
+      "minItems": 2,
+
+      "maxItems": 2,
+
+      "description": "Shape of the embedding data as [number_of_embeddings, embedding_dimension]."
+
+    }
+
+  },
+
+  "required": [
+
+    "data",
+
+    "shape"
+
+  ]
 
 }
 

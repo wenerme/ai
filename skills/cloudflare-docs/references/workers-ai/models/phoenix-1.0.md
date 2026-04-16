@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.CTjvkdQs.svg) 
+![Leonardo logo](https://developers.cloudflare.com/_astro/leonardo.Ch-T5rST.svg) 
 
 #  phoenix-1.0 
 
-Text-to-Image • Leonardo 
+Text-to-Image • Leonardo • Hosted 
 
-@cf/leonardo/phoenix-1.0 
+`@cf/leonardo/phoenix-1.0` 
 
 Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.
 
@@ -32,8 +32,8 @@ Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional pro
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1995)
-* [  curl ](#tab-panel-1996)
+* [  TypeScript ](#tab-panel-3607)
+* [  curl ](#tab-panel-3608)
 
 ```
 
@@ -101,137 +101,145 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3611)
+* [ Output ](#tab-panel-3612)
 
-### Input
+prompt
 
-* `prompt` ` string ` required min 1  
-A text description of the image you want to generate.
-* `guidance` ` number ` default 2 min 2 max 10  
-Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
-* `seed` ` integer ` min 0  
-Random seed for reproducibility of the image generation
-* `height` ` integer ` default 1024 min 0 max 2048  
-The height of the generated image in pixels
-* `width` ` integer ` default 1024 min 0 max 2048  
-The width of the generated image in pixels
-* `num_steps` ` integer ` default 25 min 1 max 50  
-The number of diffusion steps; higher values can improve quality but take longer
-* `negative_prompt` ` string ` min 1  
-Specify what to exclude from the generated images
+`string`requiredminLength: 1A text description of the image you want to generate.
 
-### Output
+guidance
 
- The binding returns a `ReadableStream` with the output (check the model's output schema). 
+`number`default: 2minimum: 2maximum: 10Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt
+
+seed
+
+`integer`minimum: 0Random seed for reproducibility of the image generation
+
+height
+
+`integer`default: 1024minimum: 0maximum: 2048The height of the generated image in pixels
+
+width
+
+`integer`default: 1024minimum: 0maximum: 2048The width of the generated image in pixels
+
+num\_steps
+
+`integer`default: 25minimum: 1maximum: 50The number of diffusion steps; higher values can improve quality but take longer
+
+negative\_prompt
+
+`string`minLength: 1Specify what to exclude from the generated images
+
+The binding returns a `ReadableStream` with the output (check the model's output schema).
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1997)
-* [ Output ](#tab-panel-1998)
+* [ Input ](#tab-panel-3609)
+* [ Output ](#tab-panel-3610)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "prompt": {
+    "prompt": {
 
-            "type": "string",
+      "type": "string",
 
-            "minLength": 1,
+      "minLength": 1,
 
-            "description": "A text description of the image you want to generate."
-
-        },
-
-        "guidance": {
-
-            "type": "number",
-
-            "default": 2,
-
-            "minimum": 2,
-
-            "maximum": 10,
-
-            "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
-
-        },
-
-        "seed": {
-
-            "type": "integer",
-
-            "minimum": 0,
-
-            "description": "Random seed for reproducibility of the image generation"
-
-        },
-
-        "height": {
-
-            "type": "integer",
-
-            "minimum": 0,
-
-            "maximum": 2048,
-
-            "default": 1024,
-
-            "description": "The height of the generated image in pixels"
-
-        },
-
-        "width": {
-
-            "type": "integer",
-
-            "minimum": 0,
-
-            "maximum": 2048,
-
-            "default": 1024,
-
-            "description": "The width of the generated image in pixels"
-
-        },
-
-        "num_steps": {
-
-            "type": "integer",
-
-            "default": 25,
-
-            "minimum": 1,
-
-            "maximum": 50,
-
-            "description": "The number of diffusion steps; higher values can improve quality but take longer"
-
-        },
-
-        "negative_prompt": {
-
-            "type": "string",
-
-            "minLength": 1,
-
-            "description": "Specify what to exclude from the generated images"
-
-        }
+      "description": "A text description of the image you want to generate."
 
     },
 
-    "required": [
+    "guidance": {
 
-        "prompt"
+      "type": "number",
 
-    ]
+      "default": 2,
+
+      "minimum": 2,
+
+      "maximum": 10,
+
+      "description": "Controls how closely the generated image should adhere to the prompt; higher values make the image more aligned with the prompt"
+
+    },
+
+    "seed": {
+
+      "type": "integer",
+
+      "minimum": 0,
+
+      "description": "Random seed for reproducibility of the image generation"
+
+    },
+
+    "height": {
+
+      "type": "integer",
+
+      "minimum": 0,
+
+      "maximum": 2048,
+
+      "default": 1024,
+
+      "description": "The height of the generated image in pixels"
+
+    },
+
+    "width": {
+
+      "type": "integer",
+
+      "minimum": 0,
+
+      "maximum": 2048,
+
+      "default": 1024,
+
+      "description": "The width of the generated image in pixels"
+
+    },
+
+    "num_steps": {
+
+      "type": "integer",
+
+      "default": 25,
+
+      "minimum": 1,
+
+      "maximum": 50,
+
+      "description": "The number of diffusion steps; higher values can improve quality but take longer"
+
+    },
+
+    "negative_prompt": {
+
+      "type": "string",
+
+      "minLength": 1,
+
+      "description": "Specify what to exclude from the generated images"
+
+    }
+
+  },
+
+  "required": [
+
+    "prompt"
+
+  ]
 
 }
 
@@ -244,13 +252,13 @@ Explain Code
 
 {
 
-    "type": "string",
+  "type": "string",
 
-    "contentType": "image/jpeg",
+  "contentType": "image/jpeg",
 
-    "format": "binary",
+  "format": "binary",
 
-    "description": "The generated image in JPEG format"
+  "description": "The generated image in JPEG format"
 
 }
 

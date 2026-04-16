@@ -15,6 +15,7 @@ Copy page
 
 # Troubleshoot
 
+* [ Billing error reference ](https://developers.cloudflare.com/billing/troubleshoot/error-reference/)
 * [ Troubleshoot invoices ](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/)
 * [ Resolve a payment failure ](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/)
 * [ Resolve the zone cannot be upgraded error ](https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/)

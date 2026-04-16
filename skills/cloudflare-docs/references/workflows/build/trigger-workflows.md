@@ -43,8 +43,8 @@ New to Workflows? Start with the [Workflows tutorial](https://developers.cloudfl
 
 To bind to a Workflow from your Workers code, you need to define a [binding](https://developers.cloudflare.com/workers/wrangler/configuration/) to a specific Workflow. For example, to bind to the Workflow defined in the [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/), you would configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the below:
 
-* [  wrangler.jsonc ](#tab-panel-8634)
-* [  wrangler.toml ](#tab-panel-8635)
+* [  wrangler.jsonc ](#tab-panel-10793)
+* [  wrangler.toml ](#tab-panel-10794)
 
 JSONC
 
@@ -60,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-16",
 
   "workflows": [
 
@@ -105,7 +105,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-16"
 
 
 [[workflows]]
@@ -319,8 +319,8 @@ Restarting an instance will immediately cancel any in-progress steps, erase any 
 
 You can create a new Workflow instance from within a step of another Workflow. The parent Workflow will not block waiting for the child Workflow to complete — it continues execution immediately after the child instance is successfully created.
 
-* [  JavaScript ](#tab-panel-8636)
-* [  TypeScript ](#tab-panel-8637)
+* [  JavaScript ](#tab-panel-10795)
+* [  TypeScript ](#tab-panel-10796)
 
 JavaScript
 

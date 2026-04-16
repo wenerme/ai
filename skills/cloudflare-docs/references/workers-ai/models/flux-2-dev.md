@@ -18,9 +18,9 @@ Copy page
 
 #  flux-2-dev 
 
-Text-to-Image • Black Forest Labs 
+Text-to-Image • Black Forest Labs • Hosted 
 
-@cf/black-forest-labs/flux-2-dev 
+`@cf/black-forest-labs/flux-2-dev` 
 
 FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.
 
@@ -32,8 +32,8 @@ FLUX.2 \[dev\] is an image model from Black Forest Labs where you can generate h
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1718)
-* [  curl ](#tab-panel-1719)
+* [  TypeScript ](#tab-panel-3040)
+* [  curl ](#tab-panel-3041)
 
 ```
 
@@ -119,71 +119,67 @@ curl --request POST \
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3042)
+* [ Output ](#tab-panel-3043)
 
-### Input
+▶multipart{}
 
-* `multipart` ` object `  
-   * `body` ` object ` required  
-   * `contentType` ` string ` required
+`object`
 
-### Output
+image
 
-* `image` ` string `  
-Generated image as Base64 string.
+`string`Generated image as Base64 string.
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1720)
-* [ Output ](#tab-panel-1721)
+* [ Input ](#tab-panel-3038)
+* [ Output ](#tab-panel-3039)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "multipart": {
+    "multipart": {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "body": {
+        "body": {
 
-                    "type": "object"
-
-                },
-
-                "contentType": {
-
-                    "type": "string"
-
-                }
-
-            },
-
-            "required": [
-
-                "body",
-
-                "contentType"
-
-            ]
+          "type": "object"
 
         },
 
-        "required": [
+        "contentType": {
 
-            "multipart"
+          "type": "string"
 
-        ]
+        }
 
-    }
+      },
+
+      "required": [
+
+        "body",
+
+        "contentType"
+
+      ]
+
+    },
+
+    "required": [
+
+      "multipart"
+
+    ]
+
+  }
 
 }
 
@@ -196,19 +192,19 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "image": {
+    "image": {
 
-            "type": "string",
+      "type": "string",
 
-            "description": "Generated image as Base64 string."
-
-        }
+      "description": "Generated image as Base64 string."
 
     }
+
+  }
 
 }
 

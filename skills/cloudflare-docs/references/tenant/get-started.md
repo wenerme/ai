@@ -22,7 +22,7 @@ Having access to Cloudflare’s provisioning capabilities allows you to more eas
 
 ### Channel and Alliance partner account setup
 
-Before using the Tenant API, you need to [create an account](https://developers.cloudflare.com/fundamentals/account/create-account/), [verify your email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/), and [add your billing information](https://developers.cloudflare.com/billing/create-billing-profile/).
+Before using the Tenant API, you need to [create an account](https://developers.cloudflare.com/fundamentals/account/create-account/), [verify your email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/), and [add your billing information](https://developers.cloudflare.com/billing/get-started/create-billing-profile/).
 
 After you sign your partner agreement with Cloudflare, Cloudflare will add [certain entitlements](https://developers.cloudflare.com/tenant/structure/) to your account that allow you to provision and manage custom accounts. If you have signed your partner agreement and your account has not yet been enabled, MSP partners should contact `partners@cloudflare.com` and Agency Partners should contact `agency@cloudflare.com`.
 
@@ -38,8 +38,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-6720)
-* [ API ](#tab-panel-6721)
+* [ Dashboard ](#tab-panel-8845)
+* [ API ](#tab-panel-8846)
 
 To create an account under your tenant using the dashboard:
 

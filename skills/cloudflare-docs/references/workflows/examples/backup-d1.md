@@ -230,8 +230,8 @@ Here is a minimal package.json:
 
 Here is a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-8650)
-* [  wrangler.toml ](#tab-panel-8651)
+* [  wrangler.jsonc ](#tab-panel-10809)
+* [  wrangler.toml ](#tab-panel-10810)
 
 JSONC
 
@@ -247,7 +247,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-16",
 
   "compatibility_flags": [
 
@@ -310,7 +310,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-16"
 
 compatibility_flags = [ "nodejs_compat" ]
 

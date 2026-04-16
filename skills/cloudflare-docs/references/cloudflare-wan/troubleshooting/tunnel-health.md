@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot tunnel health
-description: This guide helps you diagnose and resolve common tunnel health issues with Cloudflare WAN. Tunnel health checks monitor your GRE and IPsec tunnels and steer traffic to the best available routes.
+description: This guide helps you diagnose and resolve common tunnel health issues with Cloudflare WAN. Tunnel health checks monitor your GRE and IPsec tunnel endpoints (also called connectors in the Cloudflare dashboard) and steer traffic to the best available routes.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,24 +16,51 @@ Copy page
 
 # Troubleshoot tunnel health
 
-This guide helps you diagnose and resolve common tunnel health issues with Cloudflare WAN. Tunnel health checks monitor your GRE and IPsec tunnels and steer traffic to the best available routes.
+This guide helps you diagnose and resolve common tunnel health issues with Cloudflare WAN. Tunnel health checks monitor your GRE and IPsec tunnel endpoints (also called connectors in the Cloudflare dashboard) and steer traffic to the best available routes.
 
 ## Quick diagnostic checklist
 
+Use the following table to match your symptom to the most likely cause and first action:
+
+| Symptom                                           | Most likely cause                                         | First action                                                                                                                                        |
+| ------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tunnel shows Down, never becomes healthy          | Configuration mismatch or firewall blocking IKE           | Check IPsec parameters and firewall rules. Refer to [IPsec tunnel establishment failures](#ipsec-tunnel-establishment-failures).                    |
+| Dashboard shows "100% degraded" for some colos    | Normal — this is a state indicator, not packet loss       | Check if affected colos carry your traffic. Refer to [Understanding degraded status](#understanding-degraded-status-in-the-dashboard).              |
+| Tunnel flaps between healthy and unhealthy        | Anti-replay protection or rekey disruption                | Disable anti-replay protection on your router. Refer to [IPsec tunnel instability](#ipsec-tunnel-instability-or-packet-drops).                      |
+| Health checks fail but traffic flows normally     | Stateful firewall dropping health check probes            | Change health check type from _Reply_ to _Request_. Refer to [Tunnel shows Down but traffic is flowing](#tunnel-shows-down-but-traffic-is-flowing). |
+| Health checks fail on policy-based VPN tunnels    | Reply health checks fall outside tunnel traffic selectors | Use Request-style health checks with a loopback target. Refer to [Policy-based VPN health check failures](#policy-based-vpn-health-check-failures). |
+| All tunnels degraded or down in a specific region | Network path issue between that region and your network   | Check ISP connectivity. Use traceroute or MTR from your tunnel endpoint toward Cloudflare.                                                          |
+| All tunnels degraded or down globally             | Issue at your network edge                                | Check your tunnel endpoint router and upstream connectivity.                                                                                        |
+
+### What you can check
+
+* **Dashboard**: Tunnel health status per data center and traffic volume per tunnel (Go to **Insights** \> **Network health** \> **Network health**)
+* **API**: Tunnel health status via the [Cloudflare WAN tunnel health API](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/)
+* **Network Analytics**: Traffic volume, packet counts, and protocol distribution through [Network Analytics](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/)
+* **From your network**: Traceroute and MTR from your tunnel endpoint toward Cloudflare. Since Cloudflare endpoints use anycast, this tests the path to the nearest data center only. To test specific regions, use the [Cloudflare Traceroute API](https://developers.cloudflare.com/api/resources/diagnostics/subresources/traceroutes/methods/create/) to run traceroutes from specific Cloudflare locations to your network.
+
+### What you cannot check (current limitations)
+
+* Correlation between tunnel health events and Cloudflare network incidents
+* Per-packet forwarding decisions (which data center forwarded which packet through which tunnel)
+* Historical health check probe data beyond the dashboard retention period
+
+### Common fixes checklist
+
 If you are experiencing tunnel health issues, check these items first:
 
-1. **Health check type**: If using a stateful firewall (Palo Alto, Checkpoint, Cisco, Fortinet), change health check type from _Reply_ to _Request_.
+1. **Health check type**: If using a stateful firewall (such as Palo Alto Networks, Check Point, Cisco, or Fortinet), change health check type from _Reply_ to _Request_.
 2. **Anti-replay protection**: Disable anti-replay protection on your router, or set the replay window to `0`.
-3. **MTU settings**: Verify MTU is set correctly (typically `1476` for GRE, `1400-1450` for IPsec).
+3. **MTU settings**: Verify MTU is set correctly (typically `1476` for GRE, `1400`\-`1450` for IPsec).
 4. **IPsec parameters**: Confirm your cryptographic parameters match [Cloudflare's supported configuration](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
 5. **Health check direction**: Cloudflare WAN defaults to _Bidirectional_.
-6. **Cloudflare Network Firewall rules (Less common)**: Ensure ICMP traffic from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/) is allowed.
+6. **Cloudflare Network Firewall rules (less common)**: Ensure ICMP traffic from [Cloudflare IP addresses ↗](https://cloudflare.com/ips/) is allowed.
 
 ---
 
 ## Tunnel health states
 
-The [Connector health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health) page in the Cloudflare dashboard displays three tunnel health states:
+The [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health) page in the Cloudflare dashboard displays three tunnel health states:
 
 | State        | Dashboard display                         | Technical threshold                                                |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------------ |
@@ -41,11 +68,33 @@ The [Connector health ↗](https://dash.cloudflare.com/?to=/:account/networking-
 | **Degraded** | Between 40% and 80% of health checks pass | At least 0.1% failures in last five minutes (minimum two failures) |
 | **Down**     | Less than 40% of health checks pass       | All health checks failed (at least three samples in last second)   |
 
-The dashboard shows tunnel health as measured from each Cloudflare data center where your traffic lands. It is normal to see some locations reporting degraded status due to Internet path issues. Focus on locations that show traffic in the Average ingress traffic column.
+The dashboard shows tunnel health as measured from each Cloudflare data center where your traffic lands. It is normal to see some locations reporting degraded status due to Internet path issues. Focus on locations that show traffic in the **Traffic volume (1h)** column.
 
 Probe retry behavior
 
 When a health check probe fails, Cloudflare sends two additional probes to confirm the failure. A tunnel is only marked as unhealthy if all three probes fail. This retry behavior provides resilience against random packet loss.
+
+### Understanding degraded status in the dashboard
+
+The tunnel health dashboard reports health state per data center per tunnel. Each Cloudflare data center independently tracks the health of each tunnel.
+
+A common source of confusion is seeing "100% degraded" in the dashboard and misinterpreting it as 100% packet loss. Note that these are different.
+
+100% degraded is a state, not a packet loss percentage
+
+Each Cloudflare data center is a single tracking instance for a tunnel. When a tunnel enters the degraded state in a data center, the dashboard reports that data center as "100% degraded" for that tunnel. The actual packet loss that triggered the state change may be very small — even a brief period of intermittent loss that does not noticeably affect applications can trigger the degraded state.
+
+**How degraded state is triggered:**
+
+When a health check probe fails, Cloudflare sends two additional probes. If some probes succeed and some fail, the tunnel enters degraded state for that data center. A few seconds of intermittent packet loss is enough to trigger this transition.
+
+**What to check:**
+
+Focus on data centers that show traffic in the **Traffic volume (1h)** column. A data center showing degraded status with zero or minimal traffic is informational — it indicates a path issue between that specific Cloudflare data center and your network, but it does not affect your traffic if no traffic routes through that data center.
+
+**Recovery timing:**
+
+Tunnels remain in degraded state for at least five minutes, even if health checks start succeeding immediately. Recovery from degraded to healthy requires consistently passing health checks over a sustained period and can take up to 30 minutes. For details on how tunnels transition between states, refer to [Recovery behavior](#recovery-behavior) below.
 
 ### Routing priority penalties
 
@@ -106,7 +155,7 @@ Unidirectional health checks can be unreliable because intermediate network devi
 
 #### Cause
 
-Stateful firewalls (including Palo Alto, Checkpoint, Cisco ASA, and Fortinet) drop the health check packets. By default, Cloudflare sends ICMP _Reply_ packets as health check probes.
+Stateful firewalls (such as Palo Alto Networks, Check Point, Cisco, and Fortinet) drop the health check packets. By default, Cloudflare sends ICMP _Reply_ packets as health check probes.
 
 Stateful firewalls inspect these packets and look for a matching ICMP _Request_ in their session table. When no matching request exists, firewalls drop the reply as "out-of-state".
 
@@ -148,11 +197,11 @@ Add an allow rule for ICMP traffic from Cloudflare IP addresses _before_ any blo
 [ Go to **Firewall policies** ](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall)
 2. Create a new policy with the following parameters:
 
-| Field        | Value                                                     |
-| ------------ | --------------------------------------------------------- |
-| **Action**   | Allow                                                     |
-| **Protocol** | ICMP                                                      |
-| **Source**   | [Cloudflare IP ranges ↗](https://www.cloudflare.com/ips/) |
+| Field        | Value                                                 |
+| ------------ | ----------------------------------------------------- |
+| **Action**   | Allow                                                 |
+| **Protocol** | ICMP                                                  |
+| **Source**   | [Cloudflare IP ranges ↗](https://cloudflare.com/ips/) |
 
 1. Position this rule _before_ any rules that block ICMP traffic.
 
@@ -194,7 +243,7 @@ Set the replay window to `0` to effectively disable the check.
 
 Enable replay protection in the Cloudflare dashboard. This routes all tunnel traffic through a single server, maintaining proper sequence numbers at the cost of losing anycast benefits.
 
-1. Go to the Connectors page.  
+1. Go to the **Connectors** page.  
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. In **IPsec/GRE tunnels**, select **Edit** on your IPsec tunnel.
 3. Enable **Replay protection**.
@@ -234,21 +283,22 @@ For a detailed explanation of why this setting is necessary, refer to [Anti-repl
 
 #### Cause
 
-When your router initiates an IPsec rekey, new Security Associations (SAs) are negotiated with a single Cloudflare server. These new SAs must then propagate across Cloudflare's global network.
+When your tunnel endpoint initiates an IPsec rekey, new Security Associations (SAs) must propagate across Cloudflare's network. Rekey propagation delays have been significantly reduced and are uncommon in most deployments. However, brief tunnel degradation during rekeys can still occur in some configurations.
 
-During this propagation window (typically 90-150 seconds), some Cloudflare servers may not have the new SA. These servers drop traffic encrypted with the new SA until propagation completes.
+Cloudflare never initiates rekey — only responds. All rekey attempts must come from your tunnel endpoint. If your device receives a TEMPORARY\_FAILURE response during rekey, it must re-establish the IKE session to recover.
 
 #### Solution
 
 This behavior is expected and the tunnel will automatically recover. To minimize impact:
 
-1. **Increase rekey intervals**: Configure longer SA lifetimes on your router to reduce rekey frequency. Common values are 8-24 hours for IKE SA and 1-8 hours for IPsec SA.
-2. **Adjust health check sensitivity**: If brief degradation during rekeys triggers alerts, consider lowering the health check rate:  
+1. **Configure Dead Peer Detection (DPD) with restart**: Set your tunnel endpoint's DPD action to "restart" so it automatically re-establishes the IKE session if a rekey fails with TEMPORARY\_FAILURE. Without DPD restart, the device can get stuck in a loop of failed rekeys.
+2. **Increase rekey intervals**: Configure longer SA lifetimes on your tunnel endpoint to reduce rekey frequency. Common values are 8-24 hours for IKE SA and 1-8 hours for IPsec SA.
+3. **Adjust health check sensitivity**: If brief degradation during rekeys triggers alerts, consider lowering the health check rate:  
    1. Go to the **Connectors** page.  
 [ Go to **Connectors** ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)  
    1. In **IPsec/GRE tunnels**, select **Edit** on the tunnel.  
    2. Change **Health check rate** to _Low_.
-3. **Stagger rekey times**: If you have multiple tunnels, configure different SA lifetimes so they do not rekey simultaneously.
+4. **Stagger rekey times**: If you have multiple tunnels, configure different SA lifetimes so they do not rekey simultaneously.
 
 ---
 
@@ -331,11 +381,39 @@ IPsec tunnel establishment can fail due to several configuration mismatches:
    * Update your router with the new PSK
 2. **Check the IKE ID format:** Cloudflare uses FQDN format for the IKE ID. Ensure your router is configured to accept an FQDN peer identity. The FQDN is displayed in the tunnel details in the Cloudflare dashboard.
 3. **Verify firewall rules:** Ensure your edge firewall permits:  
-   * UDP port 500 (IKE)  
-   * UDP port 4500 (IKE NAT-T)  
-   * IP protocol 50 (ESP)
+   * UDP port `500` (IKE)  
+   * UDP port `4500` (IKE NAT-T)  
+   * IP protocol `50` (ESP)
 
 For the complete list of supported parameters, refer to [Supported configuration parameters](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
+
+---
+
+### Policy-based VPN health check failures
+
+#### Symptoms
+
+* Health checks fail consistently on policy-based IPsec tunnels
+* Traffic matching the tunnel's traffic selectors (encryption domain) flows normally
+* Route-based tunnels on the same device work correctly
+
+#### Cause
+
+Policy-based IPsec tunnels use traffic selectors to define which prefixes are permitted in the tunnel. Reply-style health checks are self-addressed to Cloudflare IP addresses. These addresses fall outside the tunnel's traffic selectors (which only permit customer network destinations), so the tunnel endpoint drops the health check packets.
+
+Additionally, some firewalls (such as Check Point) may flag Reply-style health check packets as spoofed due to their self-addressed nature, even on route-based tunnels.
+
+#### Solution
+
+1. Change the health check type from _Reply_ to _Request_.
+2. Configure a loopback address on your tunnel endpoint as the health check target. The target must be:  
+   * Routable from the tunnel endpoint  
+   * Covered by the tunnel's traffic selectors (encryption domain)
+3. For bidirectional health checks, ensure the health check source (the tunnel Interface Address configured in the Cloudflare dashboard) is also covered by a traffic selector.
+
+Note
+
+Policy-based tunnels use a separate Child SA for each set of traffic selectors. There is a limit of approximately 100 Child SAs per tunnel. The health check traffic may use its own Child SA, which can go down independently from the Child SAs carrying your application traffic.
 
 ---
 
@@ -343,13 +421,13 @@ For the complete list of supported parameters, refer to [Supported configuration
 
 ### Common vendor-specific issues
 
-| Vendor              | Common issue                             | Solution                                                   |
-| ------------------- | ---------------------------------------- | ---------------------------------------------------------- |
-| **Palo Alto**       | Health checks fail with default settings | Change health check type to _Request_; disable anti-replay |
-| **Cisco Meraki**    | Cannot disable anti-replay               | Enable replay protection in Cloudflare dashboard           |
-| **AWS VPN Gateway** | Cannot disable anti-replay               | Enable replay protection in Cloudflare dashboard           |
-| **Velocloud**       | Cannot disable anti-replay               | Enable replay protection in Cloudflare dashboard           |
-| **Checkpoint**      | Out-of-state packet drops                | Change health check type to _Request_                      |
+| Vendor                 | Common issue                             | Solution                                                   |
+| ---------------------- | ---------------------------------------- | ---------------------------------------------------------- |
+| **Palo Alto Networks** | Health checks fail with default settings | Change health check type to _Request_; disable anti-replay |
+| **Cisco Meraki**       | Cannot disable anti-replay               | Enable replay protection in Cloudflare dashboard           |
+| **AWS VPN Gateway**    | Cannot disable anti-replay               | Enable replay protection in Cloudflare dashboard           |
+| **VeloCloud**          | Cannot disable anti-replay               | Enable replay protection in Cloudflare dashboard           |
+| **Check Point**        | Out-of-state packet drops                | Change health check type to _Request_                      |
 
 ---
 
@@ -387,31 +465,10 @@ If you have worked through this guide and still experience tunnel health issues,
 
 Collect output from these commands (syntax varies by vendor):
 
-```
-
-# Show IPsec SA status
-
-show crypto ipsec sa
-
-
-# Show IKE SA status
-
-show crypto isakmp sa
-
-
-# Show tunnel interface status
-
-show interface tunnel <number>
-
-
-# Show routing table
-
-show ip route
-
-
-```
-
-Explain Code
+* IPsec SA status: `show crypto ipsec sa`
+* IKE SA status: `show crypto isakmp sa`
+* Tunnel interface status: `show interface tunnel <number>`
+* Routing table: `show ip route`
 
 ---
 

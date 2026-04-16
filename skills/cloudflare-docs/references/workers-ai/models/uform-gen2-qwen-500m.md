@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
- u 
+![Unum logo](https://developers.cloudflare.com/_astro/unum.Cjjoj0_o.svg) 
 
 #  uform-gen2-qwen-500m Beta 
 
-Image-to-Text • unum 
+Image-to-Text • Unum • Hosted 
 
-@cf/unum/uform-gen2-qwen-500m 
+`@cf/unum/uform-gen2-qwen-500m` 
 
 UForm-Gen is a small generative vision-language model primarily designed for Image Captioning and Visual Question Answering. The model was pre-trained on the internal image captioning dataset and fine-tuned on public instructions datasets: SVIT, LVIS, VQAs datasets.
 
@@ -81,193 +81,171 @@ Explain Code
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3787)
+* [ Output ](#tab-panel-3788)
 
-### Input
+Option 1
 
-* `0` ` string `  
+stringformat: binary
+
 Binary string representing the image contents.
-* `1` ` object `  
-   * `prompt` ` string `  
-   The input text prompt for the model to generate a response.  
-   * `raw` ` boolean `  
-   If true, a chat template is not applied and you must adhere to the specific model's expected formatting.  
-   * `top_p` ` number `  
-   Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.  
-   * `top_k` ` number `  
-   Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.  
-   * `seed` ` number `  
-   Random seed for reproducibility of the generation.  
-   * `repetition_penalty` ` number `  
-   Penalty for repeated tokens; higher values discourage repetition.  
-   * `frequency_penalty` ` number `  
-   Decreases the likelihood of the model repeating the same lines verbatim.  
-   * `presence_penalty` ` number `  
-   Increases the likelihood of the model introducing new topics.  
-   * `image` ` one of ` required  
-         * `0` ` array `  
-         An array of integers that represent the image data constrained to 8-bit unsigned integer values  
-                  * `items` ` number `  
-                  A value between 0 and 255  
-         * `1` ` string `  
-         Binary string representing the image contents.  
-   * `max_tokens` ` integer ` default 512  
-   The maximum number of tokens to generate in the response.
 
-### Output
+▶Option 2{}
 
-* `description` ` string `
+object
+
+description
+
+`string`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-2091)
-* [ Output ](#tab-panel-2092)
+* [ Input ](#tab-panel-3785)
+* [ Output ](#tab-panel-3786)
 
 ```
 
 {
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "type": "string",
+      "type": "string",
 
-            "format": "binary",
+      "format": "binary",
 
-            "description": "Binary string representing the image contents."
+      "description": "Binary string representing the image contents."
+
+    },
+
+    {
+
+      "type": "object",
+
+      "properties": {
+
+        "prompt": {
+
+          "type": "string",
+
+          "description": "The input text prompt for the model to generate a response."
 
         },
 
-        {
+        "raw": {
 
-            "type": "object",
+          "type": "boolean",
 
-            "properties": {
+          "default": false,
 
-                "prompt": {
+          "description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
 
-                    "type": "string",
+        },
 
-                    "description": "The input text prompt for the model to generate a response."
+        "top_p": {
 
-                },
+          "type": "number",
 
-                "raw": {
+          "description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
 
-                    "type": "boolean",
+        },
 
-                    "default": false,
+        "top_k": {
 
-                    "description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+          "type": "number",
 
-                },
+          "description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
 
-                "top_p": {
+        },
 
-                    "type": "number",
+        "seed": {
 
-                    "description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+          "type": "number",
 
-                },
+          "description": "Random seed for reproducibility of the generation."
 
-                "top_k": {
+        },
 
-                    "type": "number",
+        "repetition_penalty": {
 
-                    "description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+          "type": "number",
 
-                },
+          "description": "Penalty for repeated tokens; higher values discourage repetition."
 
-                "seed": {
+        },
 
-                    "type": "number",
+        "frequency_penalty": {
 
-                    "description": "Random seed for reproducibility of the generation."
+          "type": "number",
 
-                },
+          "description": "Decreases the likelihood of the model repeating the same lines verbatim."
 
-                "repetition_penalty": {
+        },
 
-                    "type": "number",
+        "presence_penalty": {
 
-                    "description": "Penalty for repeated tokens; higher values discourage repetition."
+          "type": "number",
 
-                },
+          "description": "Increases the likelihood of the model introducing new topics."
 
-                "frequency_penalty": {
+        },
 
-                    "type": "number",
+        "image": {
 
-                    "description": "Decreases the likelihood of the model repeating the same lines verbatim."
+          "oneOf": [
 
-                },
+            {
 
-                "presence_penalty": {
+              "type": "array",
 
-                    "type": "number",
+              "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 
-                    "description": "Increases the likelihood of the model introducing new topics."
+              "items": {
 
-                },
+                "type": "number",
 
-                "image": {
+                "description": "A value between 0 and 255"
 
-                    "oneOf": [
-
-                        {
-
-                            "type": "array",
-
-                            "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
-
-                            "items": {
-
-                                "type": "number",
-
-                                "description": "A value between 0 and 255"
-
-                            }
-
-                        },
-
-                        {
-
-                            "type": "string",
-
-                            "format": "binary",
-
-                            "description": "Binary string representing the image contents."
-
-                        }
-
-                    ]
-
-                },
-
-                "max_tokens": {
-
-                    "type": "integer",
-
-                    "default": 512,
-
-                    "description": "The maximum number of tokens to generate in the response."
-
-                }
+              }
 
             },
 
-            "required": [
+            {
 
-                "image"
+              "type": "string",
 
-            ]
+              "format": "binary",
+
+              "description": "Binary string representing the image contents."
+
+            }
+
+          ]
+
+        },
+
+        "max_tokens": {
+
+          "type": "integer",
+
+          "default": 512,
+
+          "description": "The maximum number of tokens to generate in the response."
 
         }
 
-    ]
+      },
+
+      "required": [
+
+        "image"
+
+      ]
+
+    }
+
+  ]
 
 }
 
@@ -280,19 +258,19 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "description": {
+    "description": {
 
-            "type": "string"
-
-        }
+      "type": "string"
 
     }
+
+  }
 
 }
 

@@ -38,6 +38,17 @@ Successful exploitation of these vulnerabilities could allow unauthenticated att
 | Cloudflare Managed Ruleset | ...ebd81645 | N/A            | XSS, HTML Injection - Link Tag - URI (beta)                          | N/A             | Disabled   | This is a new detection.                                                                                           |
 | Cloudflare Managed Ruleset | ...0af34bba | N/A            | XSS, HTML Injection - Embed Tag - URI (beta)                         | N/A             | Disabled   | This is a new detection.                                                                                           |
 
+## 2026-04-14
+
+  
+**Email obfuscation decode script is now non-render-blocking**   
+
+The decode script injected by [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) now loads with the `defer` attribute. This means the script no longer blocks page rendering. It downloads in parallel with HTML parsing and executes after the document is fully parsed, before the `DOMContentLoaded` event.
+
+This improves page loading performance, contributing to better Core Web Vitals, for all zones with Email Address Obfuscation on. No action is required.
+
+If you have custom JavaScript that depends on email addresses being decoded at a specific point during page load, note that the decode script now executes after HTML parsing completes rather than inline during parsing.
+
 ## 2026-04-07
 
   
@@ -485,27 +496,6 @@ This vulnerability allows unauthenticated attackers to gain privileged access to
 | Cloudflare Managed Ruleset | ...d256f4bc | N/A            | DELMIA Apriso - Auth Bypass - CVE:CVE-2025-6205 | Log             | Block      | This is a new detection.                                |
 | Cloudflare Managed Ruleset | ...1a3e521e | N/A            | PHP Wrapper Injection - Body                    | N/A             | Disabled   | Rule metadata description refined. Detection unchanged. |
 | Cloudflare Managed Ruleset | ...8f76bd74 | N/A            | PHP Wrapper Injection - URI                     | N/A             | Disabled   | Rule metadata description refined. Detection unchanged. |
-
-## 2025-11-10
-
-  
-**WAF Release - 2025-11-10**   
-
-This week’s release introduces new detections for Prototype Pollution across three common vectors: URI, Body, and Header/Form.
-
-**Key Findings**
-
-* These attacks can affect both API and web applications by altering normal behavior or bypassing security controls.
-
-**Impact**
-
-Exploitation may allow attackers to change internal logic or cause unexpected behavior in applications using JavaScript or Node.js frameworks. Developers should sanitize input keys and avoid merging untrusted data structures.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                         | Previous Action | New Action | Comments                |
-| -------------------------- | ----------- | -------------- | --------------------------------------------------- | --------------- | ---------- | ----------------------- |
-| Cloudflare Managed Ruleset | ...606285e6 | N/A            | Generic Rules - Prototype Pollution - URI           | Log             | Disabled   | This is a new detection |
-| Cloudflare Managed Ruleset | ...4f59ff26 | N/A            | Generic Rules - Prototype Pollution - Body          | Log             | Disabled   | This is a new detection |
-| Cloudflare Managed Ruleset | ...7efbeb39 | N/A            | Generic Rules - Prototype Pollution - Header - Form | Log             | Disabled   | This is a new detection |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

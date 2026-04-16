@@ -18,9 +18,9 @@ Copy page
 
 #  llava-1.5-7b-hf Beta 
 
-Image-to-Text • llava-hf 
+Image-to-Text • llava-hf • Hosted 
 
-@cf/llava-hf/llava-1.5-7b-hf 
+`@cf/llava-hf/llava-1.5-7b-hf` 
 
 LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.
 
@@ -80,203 +80,179 @@ Explain Code
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3446)
+* [ Output ](#tab-panel-3447)
 
-### Input
+Option 1
 
-* `0` ` string `  
+stringformat: binary
+
 Binary string representing the image contents.
-* `1` ` object `  
-   * `image` ` one of ` required  
-         * `0` ` array `  
-         An array of integers that represent the image data constrained to 8-bit unsigned integer values  
-                  * `items` ` number `  
-                  A value between 0 and 255  
-         * `1` ` string `  
-         Binary string representing the image contents.  
-   * `temperature` ` number `  
-   Controls the randomness of the output; higher values produce more random results.  
-   * `prompt` ` string `  
-   The input text prompt for the model to generate a response.  
-   * `raw` ` boolean `  
-   If true, a chat template is not applied and you must adhere to the specific model's expected formatting.  
-   * `top_p` ` number `  
-   Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.  
-   * `top_k` ` number `  
-   Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.  
-   * `seed` ` number `  
-   Random seed for reproducibility of the generation.  
-   * `repetition_penalty` ` number `  
-   Penalty for repeated tokens; higher values discourage repetition.  
-   * `frequency_penalty` ` number `  
-   Decreases the likelihood of the model repeating the same lines verbatim.  
-   * `presence_penalty` ` number `  
-   Increases the likelihood of the model introducing new topics.  
-   * `max_tokens` ` integer ` default 512  
-   The maximum number of tokens to generate in the response.
 
-### Output
+▶Option 2{}
 
-* `description` ` string `
+object
+
+description
+
+`string`
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1912)
-* [ Output ](#tab-panel-1913)
+* [ Input ](#tab-panel-3444)
+* [ Output ](#tab-panel-3445)
 
 ```
 
 {
 
-    "oneOf": [
+  "oneOf": [
 
-        {
+    {
 
-            "type": "string",
+      "type": "string",
 
-            "format": "binary",
+      "format": "binary",
 
-            "description": "Binary string representing the image contents."
+      "description": "Binary string representing the image contents."
 
-        },
+    },
 
-        {
+    {
 
-            "type": "object",
+      "type": "object",
 
-            "properties": {
+      "properties": {
 
-                "image": {
+        "image": {
 
-                    "oneOf": [
+          "oneOf": [
 
-                        {
+            {
 
-                            "type": "array",
+              "type": "array",
 
-                            "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
+              "description": "An array of integers that represent the image data constrained to 8-bit unsigned integer values",
 
-                            "items": {
+              "items": {
 
-                                "type": "number",
+                "type": "number",
 
-                                "description": "A value between 0 and 255"
+                "description": "A value between 0 and 255"
 
-                            }
-
-                        },
-
-                        {
-
-                            "type": "string",
-
-                            "format": "binary",
-
-                            "description": "Binary string representing the image contents."
-
-                        }
-
-                    ]
-
-                },
-
-                "temperature": {
-
-                    "type": "number",
-
-                    "description": "Controls the randomness of the output; higher values produce more random results."
-
-                },
-
-                "prompt": {
-
-                    "type": "string",
-
-                    "description": "The input text prompt for the model to generate a response."
-
-                },
-
-                "raw": {
-
-                    "type": "boolean",
-
-                    "default": false,
-
-                    "description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
-
-                },
-
-                "top_p": {
-
-                    "type": "number",
-
-                    "description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
-
-                },
-
-                "top_k": {
-
-                    "type": "number",
-
-                    "description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
-
-                },
-
-                "seed": {
-
-                    "type": "number",
-
-                    "description": "Random seed for reproducibility of the generation."
-
-                },
-
-                "repetition_penalty": {
-
-                    "type": "number",
-
-                    "description": "Penalty for repeated tokens; higher values discourage repetition."
-
-                },
-
-                "frequency_penalty": {
-
-                    "type": "number",
-
-                    "description": "Decreases the likelihood of the model repeating the same lines verbatim."
-
-                },
-
-                "presence_penalty": {
-
-                    "type": "number",
-
-                    "description": "Increases the likelihood of the model introducing new topics."
-
-                },
-
-                "max_tokens": {
-
-                    "type": "integer",
-
-                    "default": 512,
-
-                    "description": "The maximum number of tokens to generate in the response."
-
-                }
+              }
 
             },
 
-            "required": [
+            {
 
-                "image"
+              "type": "string",
 
-            ]
+              "format": "binary",
+
+              "description": "Binary string representing the image contents."
+
+            }
+
+          ]
+
+        },
+
+        "temperature": {
+
+          "type": "number",
+
+          "description": "Controls the randomness of the output; higher values produce more random results."
+
+        },
+
+        "prompt": {
+
+          "type": "string",
+
+          "description": "The input text prompt for the model to generate a response."
+
+        },
+
+        "raw": {
+
+          "type": "boolean",
+
+          "default": false,
+
+          "description": "If true, a chat template is not applied and you must adhere to the specific model's expected formatting."
+
+        },
+
+        "top_p": {
+
+          "type": "number",
+
+          "description": "Controls the creativity of the AI's responses by adjusting how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses."
+
+        },
+
+        "top_k": {
+
+          "type": "number",
+
+          "description": "Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises."
+
+        },
+
+        "seed": {
+
+          "type": "number",
+
+          "description": "Random seed for reproducibility of the generation."
+
+        },
+
+        "repetition_penalty": {
+
+          "type": "number",
+
+          "description": "Penalty for repeated tokens; higher values discourage repetition."
+
+        },
+
+        "frequency_penalty": {
+
+          "type": "number",
+
+          "description": "Decreases the likelihood of the model repeating the same lines verbatim."
+
+        },
+
+        "presence_penalty": {
+
+          "type": "number",
+
+          "description": "Increases the likelihood of the model introducing new topics."
+
+        },
+
+        "max_tokens": {
+
+          "type": "integer",
+
+          "default": 512,
+
+          "description": "The maximum number of tokens to generate in the response."
 
         }
 
-    ]
+      },
+
+      "required": [
+
+        "image"
+
+      ]
+
+    }
+
+  ]
 
 }
 
@@ -289,19 +265,19 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "description": {
+    "description": {
 
-            "type": "string"
-
-        }
+      "type": "string"
 
     }
+
+  }
 
 }
 

@@ -1,0 +1,103 @@
+---
+title: Email Logs
+description: Email Service provides comprehensive logging for both email sending and routing activities. Access detailed logs through the Cloudflare dashboard to monitor email flow, troubleshoot delivery issues, and analyze authentication status.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/email-service/observability/logs.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Email Logs
+
+View and analyze email sending and routing activity logs with detailed authentication and delivery information
+
+Email Service provides comprehensive logging for both email sending and routing activities. Access detailed logs through the Cloudflare dashboard to monitor email flow, troubleshoot delivery issues, and analyze authentication status.
+
+## Activity Log
+
+The Activity Log allows you to sort through all email activities and check actions taken by Email Service.
+
+### Email sending logs
+
+For outbound emails sent through Email Service:
+
+* **Sent**: Email successfully accepted and queued for delivery
+* **Delivered**: Email successfully delivered to recipient's mail server
+* **Delivery failed**: Email bounced (hard or soft bounce). This corresponds to the `deliveryFailed` status in the [GraphQL Analytics API](https://developers.cloudflare.com/email-service/observability/metrics-analytics/).
+* **Rejected**: Email was not sent because the recipient is on your account's [suppression list](https://developers.cloudflare.com/email-service/concepts/suppressions/).
+* **Failed**: Email failed to send due to configuration or authentication issues
+
+### Email routing logs
+
+For inbound emails processed through Email Routing:
+
+* **Forwarded**: Email successfully forwarded to destination address
+* **Dropped**: Email dropped due to filtering rules or configuration
+* **Rejected**: Email rejected due to SPF, DKIM, or DMARC failures
+* **Processed**: Email processed by Worker handler
+
+## Viewing email details
+
+Select any email in the Activity Log to expand its details and view comprehensive information:
+
+### Authentication status
+
+Check the status of email authentication protocols:
+
+* **SPF status**: Shows pass/fail for Sender Policy Framework validation
+* **DKIM status**: Shows pass/fail for DomainKeys Identified Mail signature verification
+* **DMARC status**: Shows pass/fail for Domain-based Message Authentication compliance
+
+### Email headers
+
+View complete email headers including:
+
+* Message-ID and threading information
+* Authentication-Results headers
+* Custom headers added during processing
+* Routing and delivery timestamps
+
+### Delivery information
+
+For sent emails, see delivery details:
+
+* Recipient mail server response
+* Delivery attempts and timestamps
+* Bounce reason codes and categories
+* Final delivery status
+
+## Best practices for log monitoring
+
+### Regular review
+
+* Monitor logs daily during initial setup
+* Check weekly for ongoing operations
+* Review immediately after configuration changes
+
+### Key metrics to watch
+
+* Authentication failure rates
+* Bounce patterns and trends
+* Delivery success rates
+
+### Troubleshooting workflow
+
+1. Identify the issue: Use logs to pinpoint failure types
+2. Check authentication: Verify SPF, DKIM, DMARC configuration
+3. Adjust configuration: Make necessary DNS or routing changes
+4. Monitor improvement: Track metrics after changes
+
+---
+
+Email logs provide the visibility needed to maintain high deliverability and properly route incoming emails. Use this data to optimize your email configuration and quickly resolve any delivery issues.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-service/","name":"Email Service"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-service/observability/","name":"Observability & Logs"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-service/observability/logs/","name":"Email Logs"}}]}
+```

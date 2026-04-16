@@ -14,13 +14,13 @@ YesNo
 
 Copy page
 
-![Meta logo](https://developers.cloudflare.com/_astro/meta.x5nlFKBG.svg) 
+![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg) 
 
 #  llama-guard-3-8b 
 
-Text Generation • Meta 
+Text Generation • Meta • Hosted 
 
-@cf/meta/llama-guard-3-8b 
+`@cf/meta/llama-guard-3-8b` 
 
 Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.
 
@@ -38,9 +38,9 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-1901)
-* [  Python ](#tab-panel-1902)
-* [  curl ](#tab-panel-1903)
+* [  TypeScript ](#tab-panel-3425)
+* [  Python ](#tab-panel-3426)
+* [  curl ](#tab-panel-3427)
 
 ```
 
@@ -147,162 +147,145 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-\* indicates a required field
+* [ Input ](#tab-panel-3430)
+* [ Output ](#tab-panel-3431)
 
-### Input
+▶messages\[\]
 
-* `messages` ` array ` required  
-An array of message objects representing the conversation history.  
-   * `items` ` object `  
-         * `role` required  
-         The role of the message sender must alternate between 'user' and 'assistant'.  
-         * `content` ` string ` required  
-         The content of the message as a string.
-* `max_tokens` ` integer ` default 256  
-The maximum number of tokens to generate in the response.
-* `temperature` ` number ` default 0.6 min 0 max 5  
-Controls the randomness of the output; higher values produce more random results.
-* `response_format` ` object `  
-Dictate the output format of the generated response.  
-   * `type` ` string `  
-   Set to json\_object to process and output generated text as JSON.
+`array`requiredAn array of message objects representing the conversation history.
 
-### Output
+max\_tokens
 
-* `response` ` one of `  
-   * `0` ` string `  
-   The generated text response from the model.  
-   * `1` ` object `  
-   The json response parsed from the generated text response from the model.  
-         * `safe` ` boolean `  
-         Whether the conversation is safe or not.  
-         * `categories` ` array `  
-         A list of what hazard categories predicted for the conversation, if the conversation is deemed unsafe.  
-                  * `items` ` string `  
-                  Hazard category classname, from S1 to S14.
-* `usage` ` object `  
-Usage statistics for the inference request  
-   * `prompt_tokens` ` number ` 0  
-   Total number of tokens in input  
-   * `completion_tokens` ` number ` 0  
-   Total number of tokens in output  
-   * `total_tokens` ` number ` 0  
-   Total number of input and output tokens
+`integer`default: 256The maximum number of tokens to generate in the response.
+
+temperature
+
+`number`default: 0.6minimum: 0maximum: 5Controls the randomness of the output; higher values produce more random results.
+
+▶response\_format{}
+
+`object`Dictate the output format of the generated response.
+
+▶response
+
+`one of`
+
+▶usage{}
+
+`object`Usage statistics for the inference request
 
 ## API Schemas
 
-The following schemas are based on JSON Schema
-
-* [ Input ](#tab-panel-1904)
-* [ Output ](#tab-panel-1905)
+* [ Input ](#tab-panel-3428)
+* [ Output ](#tab-panel-3429)
 
 ```
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "properties": {
+  "properties": {
 
-        "messages": {
+    "messages": {
 
-            "type": "array",
+      "type": "array",
 
-            "description": "An array of message objects representing the conversation history.",
+      "description": "An array of message objects representing the conversation history.",
 
-            "items": {
+      "items": {
 
-                "type": "object",
+        "type": "object",
 
-                "properties": {
+        "properties": {
 
-                    "role": {
+          "role": {
 
-                        "enum": [
+            "enum": [
 
-                            "user",
+              "user",
 
-                            "assistant"
+              "assistant"
 
-                        ],
+            ],
 
-                        "description": "The role of the message sender must alternate between 'user' and 'assistant'."
+            "description": "The role of the message sender must alternate between 'user' and 'assistant'."
 
-                    },
+          },
 
-                    "content": {
+          "content": {
 
-                        "type": "string",
+            "type": "string",
 
-                        "description": "The content of the message as a string."
+            "description": "The content of the message as a string."
 
-                    }
-
-                },
-
-                "required": [
-
-                    "role",
-
-                    "content"
-
-                ]
-
-            }
+          }
 
         },
 
-        "max_tokens": {
+        "required": [
 
-            "type": "integer",
+          "role",
 
-            "default": 256,
+          "content"
 
-            "description": "The maximum number of tokens to generate in the response."
+        ]
 
-        },
-
-        "temperature": {
-
-            "type": "number",
-
-            "default": 0.6,
-
-            "minimum": 0,
-
-            "maximum": 5,
-
-            "description": "Controls the randomness of the output; higher values produce more random results."
-
-        },
-
-        "response_format": {
-
-            "type": "object",
-
-            "description": "Dictate the output format of the generated response.",
-
-            "properties": {
-
-                "type": {
-
-                    "type": "string",
-
-                    "description": "Set to json_object to process and output generated text as JSON."
-
-                }
-
-            }
-
-        }
+      }
 
     },
 
-    "required": [
+    "max_tokens": {
 
-        "messages"
+      "type": "integer",
 
-    ]
+      "default": 256,
+
+      "description": "The maximum number of tokens to generate in the response."
+
+    },
+
+    "temperature": {
+
+      "type": "number",
+
+      "default": 0.6,
+
+      "minimum": 0,
+
+      "maximum": 5,
+
+      "description": "Controls the randomness of the output; higher values produce more random results."
+
+    },
+
+    "response_format": {
+
+      "type": "object",
+
+      "description": "Dictate the output format of the generated response.",
+
+      "properties": {
+
+        "type": {
+
+          "type": "string",
+
+          "description": "Set to json_object to process and output generated text as JSON."
+
+        }
+
+      }
+
+    }
+
+  },
+
+  "required": [
+
+    "messages"
+
+  ]
 
 }
 
@@ -315,107 +298,107 @@ Explain Code
 
 {
 
-    "type": "object",
+  "type": "object",
 
-    "contentType": "application/json",
+  "contentType": "application/json",
 
-    "properties": {
+  "properties": {
 
-        "response": {
+    "response": {
 
-            "oneOf": [
+      "oneOf": [
 
-                {
+        {
 
-                    "type": "string",
+          "type": "string",
 
-                    "description": "The generated text response from the model."
-
-                },
-
-                {
-
-                    "type": "object",
-
-                    "description": "The json response parsed from the generated text response from the model.",
-
-                    "properties": {
-
-                        "safe": {
-
-                            "type": "boolean",
-
-                            "description": "Whether the conversation is safe or not."
-
-                        },
-
-                        "categories": {
-
-                            "type": "array",
-
-                            "description": "A list of what hazard categories predicted for the conversation, if the conversation is deemed unsafe.",
-
-                            "items": {
-
-                                "type": "string",
-
-                                "description": "Hazard category classname, from S1 to S14."
-
-                            }
-
-                        }
-
-                    }
-
-                }
-
-            ]
+          "description": "The generated text response from the model."
 
         },
 
-        "usage": {
+        {
 
-            "type": "object",
+          "type": "object",
 
-            "description": "Usage statistics for the inference request",
+          "description": "The json response parsed from the generated text response from the model.",
 
-            "properties": {
+          "properties": {
 
-                "prompt_tokens": {
+            "safe": {
 
-                    "type": "number",
+              "type": "boolean",
 
-                    "description": "Total number of tokens in input",
+              "description": "Whether the conversation is safe or not."
 
-                    "default": 0
+            },
 
-                },
+            "categories": {
 
-                "completion_tokens": {
+              "type": "array",
 
-                    "type": "number",
+              "description": "A list of what hazard categories predicted for the conversation, if the conversation is deemed unsafe.",
 
-                    "description": "Total number of tokens in output",
+              "items": {
 
-                    "default": 0
+                "type": "string",
 
-                },
+                "description": "Hazard category classname, from S1 to S14."
 
-                "total_tokens": {
-
-                    "type": "number",
-
-                    "description": "Total number of input and output tokens",
-
-                    "default": 0
-
-                }
+              }
 
             }
 
+          }
+
         }
 
+      ]
+
+    },
+
+    "usage": {
+
+      "type": "object",
+
+      "description": "Usage statistics for the inference request",
+
+      "properties": {
+
+        "prompt_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of tokens in input",
+
+          "default": 0
+
+        },
+
+        "completion_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of tokens in output",
+
+          "default": 0
+
+        },
+
+        "total_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of input and output tokens",
+
+          "default": 0
+
+        }
+
+      }
+
     }
+
+  }
 
 }
 
