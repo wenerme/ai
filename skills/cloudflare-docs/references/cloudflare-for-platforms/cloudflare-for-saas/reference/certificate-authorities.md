@@ -1,5 +1,6 @@
 ---
 title: Certificate authorities
+description: Certificate authorities available for custom hostname certificate issuance.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

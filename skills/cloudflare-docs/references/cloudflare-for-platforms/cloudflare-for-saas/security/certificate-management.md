@@ -1,6 +1,6 @@
 ---
 title: Certificate management
-description: Cloudflare for SaaS takes away the burden of certificate issuance and management from you, as the SaaS provider, by proxying traffic through Cloudflare's edge. You can choose between Cloudflare managing all the certificate issuance and renewals on your behalf, or maintain control over your TLS private keys by uploading your customers' own certificates.
+description: Issue, validate, renew, and upload TLS certificates for custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

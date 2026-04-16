@@ -1,6 +1,6 @@
 ---
 title: Available products and features
-description: The following products and features are available on the Cloudflare China Network operated by JD Cloud:
+description: Cloudflare products and features supported on the China Network operated by JD Cloud.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

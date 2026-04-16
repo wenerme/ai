@@ -27,6 +27,7 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 * [ Data security analytics ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/)
 * [ Gateway analytics (DNS, HTTP, network sessions) ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/)
 * [ Shadow IT SaaS analytics ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/)
+* [ Network session analytics ](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/analytics/","name":"Dashboards"}}]}

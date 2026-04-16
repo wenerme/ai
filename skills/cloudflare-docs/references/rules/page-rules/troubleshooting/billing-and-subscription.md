@@ -45,7 +45,7 @@ When you change plans, you will keep your Page Rules add-on subscription.
 
 You will be billed for and have access to your additional Page Rules until the end of your current billing cycle.
 
-Your plan will adjust at the start of your next billing cycle. For more details, refer to our [billing policy](https://developers.cloudflare.com/billing/billing-policy/).
+Your plan will adjust at the start of your next billing cycle. For more details, refer to our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/page-rules/","name":"Page Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/page-rules/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/page-rules/troubleshooting/billing-and-subscription/","name":"Troubleshoot Page Rules - Billing and subscription"}}]}

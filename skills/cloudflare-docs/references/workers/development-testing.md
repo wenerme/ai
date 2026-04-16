@@ -93,8 +93,8 @@ During local development, your Worker code interacts with these bindings using t
 
 ### Example configuration
 
-* [  wrangler.jsonc ](#tab-panel-7219)
-* [  wrangler.toml ](#tab-panel-7220)
+* [  wrangler.jsonc ](#tab-panel-7617)
+* [  wrangler.toml ](#tab-panel-7618)
 
 JSONC
 
@@ -106,7 +106,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-15",
 
 
   "r2_buckets": [
@@ -138,7 +138,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-15"
 
 
 [[r2_buckets]]
@@ -160,8 +160,8 @@ Remote Bindings work well together with [Workers Environments](https://developer
 
 **For example:**
 
-* [  wrangler.jsonc ](#tab-panel-7231)
-* [  wrangler.toml ](#tab-panel-7232)
+* [  wrangler.jsonc ](#tab-panel-7629)
+* [  wrangler.toml ](#tab-panel-7630)
 
 JSONC
 
@@ -173,7 +173,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-15",
 
 
   "env": {
@@ -229,7 +229,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-15"
 
 
 [[env.production.r2_buckets]]
@@ -263,12 +263,12 @@ We recommend configuring specific bindings to connect to their remote counterpar
 
 The following bindings are recommended to have `remote: true` in your Wrangler configuration:
 
-#### [Browser Rendering](https://developers.cloudflare.com/workers/wrangler/configuration/#browser-rendering):
+#### [Browser Run](https://developers.cloudflare.com/workers/wrangler/configuration/#browser-run):
 
-To interact with a real headless browser for rendering. There is no current local simulation for Browser Rendering.
+To interact with a real headless browser for rendering. There is no current local simulation for Browser Run.
 
-* [  wrangler.jsonc ](#tab-panel-7217)
-* [  wrangler.toml ](#tab-panel-7218)
+* [  wrangler.jsonc ](#tab-panel-7615)
+* [  wrangler.toml ](#tab-panel-7616)
 
 JSONC
 
@@ -306,8 +306,8 @@ remote = true
 
 To utilize actual AI models deployed on Cloudflare's network for inference. There is no current local simulation for Workers AI.
 
-* [  wrangler.jsonc ](#tab-panel-7221)
-* [  wrangler.toml ](#tab-panel-7222)
+* [  wrangler.jsonc ](#tab-panel-7619)
+* [  wrangler.toml ](#tab-panel-7620)
 
 JSONC
 
@@ -345,8 +345,8 @@ remote = true
 
 To connect to your production Vectorize indexes for accurate vector search and similarity operations. There is no current local simulation for Vectorize.
 
-* [  wrangler.jsonc ](#tab-panel-7223)
-* [  wrangler.toml ](#tab-panel-7224)
+* [  wrangler.jsonc ](#tab-panel-7621)
+* [  wrangler.toml ](#tab-panel-7622)
 
 JSONC
 
@@ -392,8 +392,8 @@ remote = true
 
 To verify that the certificate exchange and validation process work as expected. There is no current local simulation for mTLS bindings.
 
-* [  wrangler.jsonc ](#tab-panel-7227)
-* [  wrangler.toml ](#tab-panel-7228)
+* [  wrangler.jsonc ](#tab-panel-7625)
+* [  wrangler.toml ](#tab-panel-7626)
 
 JSONC
 
@@ -439,8 +439,8 @@ remote = true
 
 To connect to a high-fidelity version of the Images API, and verify that all transformations work as expected. Local simulation for Cloudflare Images is [limited with only a subset of features](https://developers.cloudflare.com/images/transform-images/bindings/#interact-with-your-images-binding-locally).
 
-* [  wrangler.jsonc ](#tab-panel-7225)
-* [  wrangler.toml ](#tab-panel-7226)
+* [  wrangler.jsonc ](#tab-panel-7623)
+* [  wrangler.toml ](#tab-panel-7624)
 
 JSONC
 
@@ -476,7 +476,7 @@ remote = true
 
 Note
 
-If `remote: true` is not specified for Browser Rendering, Vectorize, mTLS, or Images, Cloudflare **will issue a warning**. This prompts you to consider enabling it for a more production-like testing experience.
+If `remote: true` is not specified for Browser Run, Vectorize, mTLS, or Images, Cloudflare **will issue a warning**. This prompts you to consider enabling it for a more production-like testing experience.
 
 If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce an error**. If the property is omitted, Cloudflare will connect to the remote resource and issue a warning to add the property to configuration.
 
@@ -484,8 +484,8 @@ If a Workers AI binding has `remote` set to `false`, Cloudflare will **produce a
 
 Workers for Platforms users can configure `remote: true` in dispatch namespace binding definitions:
 
-* [  wrangler.jsonc ](#tab-panel-7229)
-* [  wrangler.toml ](#tab-panel-7230)
+* [  wrangler.jsonc ](#tab-panel-7627)
+* [  wrangler.toml ](#tab-panel-7628)
 
 JSONC
 
@@ -620,8 +620,8 @@ The function:
 
 Here's a basic example of using Miniflare with `maybeStartOrUpdateRemoteProxySession` to provide a local dev session with remote bindings. This example uses a single hardcoded KV binding.
 
-* [  JavaScript ](#tab-panel-7233)
-* [  TypeScript ](#tab-panel-7234)
+* [  JavaScript ](#tab-panel-7631)
+* [  TypeScript ](#tab-panel-7632)
 
 JavaScript
 

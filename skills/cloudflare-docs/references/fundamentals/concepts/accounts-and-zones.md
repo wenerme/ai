@@ -48,7 +48,7 @@ To access your profile, select the user icon and then **My Profile** from any pa
 
 ## Accounts
 
-An account refers to an organization account, which contains one or more users and zones. Users can belong to multiple accounts, and each account maintains its own settings, including [billing profiles](https://developers.cloudflare.com/billing/create-billing-profile/), [account members](https://developers.cloudflare.com/fundamentals/manage-members/), [lists](https://developers.cloudflare.com/waf/tools/lists/), and other configurations.
+An account refers to an organization account, which contains one or more users and zones. Users can belong to multiple accounts, and each account maintains its own settings, including [billing profiles](https://developers.cloudflare.com/billing/get-started/create-billing-profile/), [account members](https://developers.cloudflare.com/fundamentals/manage-members/), [lists](https://developers.cloudflare.com/waf/tools/lists/), and other configurations.
 
 Several account-level products - such as [Workers](https://developers.cloudflare.com/workers/), [Pages](https://developers.cloudflare.com/pages/), [Security Center](https://developers.cloudflare.com/security-center/), and [Bulk redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) \- can affect some or all zones contained within that account.
 

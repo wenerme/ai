@@ -1,6 +1,6 @@
 ---
 title: Configuration guides
-description: Learn how to use Cloudflare products with the Data Localization Suite.
+description: Configure Cloudflare products with Regional Services and Customer Metadata Boundary.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Plans
-description: Free, Pro, Business, and Enterprise customers without an API Shield subscription can access Endpoint Management and Schema validation, but no other API Shield features.
+description: Compare API Shield feature availability and endpoint limits across Cloudflare plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

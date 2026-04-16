@@ -1,6 +1,6 @@
 ---
 title: Durable Objects
-description: In the following sections, we will give you some details about how to configure Durable Objects with Regional Services and Customer Metadata Boundary.
+description: Configure Durable Objects with Regional Services and Customer Metadata Boundary.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

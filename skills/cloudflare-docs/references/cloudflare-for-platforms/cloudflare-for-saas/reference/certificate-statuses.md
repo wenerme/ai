@@ -1,5 +1,6 @@
 ---
 title: Certificate statuses
+description: Certificate lifecycle statuses for custom hostname TLS certificates.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

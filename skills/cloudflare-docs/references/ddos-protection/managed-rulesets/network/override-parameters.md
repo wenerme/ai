@@ -1,6 +1,6 @@
 ---
 title: Parameters
-description: Define overrides for the Network-layer DDoS Attack Protection managed ruleset to change the action applied to a given attack or modify the sensitivity level of the detection mechanism. You can define overrides in the Cloudflare dashboard or define overrides via Rulesets API.
+description: Configurable parameters for Network-layer DDoS Attack Protection rule overrides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Signals Intelligence
-description: For every available JA4 fingerprint, Bot Management customers can view how Cloudflare sees it on the Internet and what behavior we view with the fingerprint. This data can help you understand why a request is scored in a particular fashion or allow you to use the aggregate data in your own ML models, run in either Cloudflare Workers or at the origin location.
+description: View aggregate intelligence data for JA4 fingerprints across Cloudflare traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

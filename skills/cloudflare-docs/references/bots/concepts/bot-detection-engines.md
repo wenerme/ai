@@ -1,6 +1,6 @@
 ---
 title: Bot detection engines
-description: The Heuristics engine processes all requests. Cloudflare conducts a number of heuristic checks to identify automated traffic, and requests are matched against a growing database of malicious fingerprints.
+description: Heuristics, machine learning, and behavioral analysis engines used to detect bots.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

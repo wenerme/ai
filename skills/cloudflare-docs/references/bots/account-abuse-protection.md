@@ -1,6 +1,6 @@
 ---
 title: Account Abuse Protection (Early Access)
-description: Fraud detection allows you to detect and mitigate account abuse among your traffic, specifically bulk account creation and account takeover attacks. You can use fraud signals to update or create new rules for suspicious account activity, or pass signals to their origins to integrate into authentication and authorization systems.
+description: Detect and block automated abuse on login and registration endpoints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

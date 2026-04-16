@@ -1,7 +1,6 @@
 ---
 title: General settings
-description: The Advanced DDoS Protection system includes Advanced TCP Protection, Advanced DNS Protection, and Programmable Flow Protection. These systems are configured using the general settings, but also comprise of their own dedicated settings.
-Advanced DDoS Protection systems is available to Magic Transit customers.
+description: Enable and configure Advanced TCP Protection, DNS Protection, and Flow Protection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

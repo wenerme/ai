@@ -1,6 +1,6 @@
 ---
 title: TLS Management
-description: Mutual TLS (mTLS) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
+description: Configure mTLS enforcement and minimum TLS version per custom hostname.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -177,8 +177,8 @@ Refer to [Minimum TLS version - SSL/TLS](https://developers.cloudflare.com/ssl/e
 
 Minimum TLS version for custom hostname
 
-* [ Dashboard ](#tab-panel-3372)
-* [ API ](#tab-panel-3373)
+* [ Dashboard ](#tab-panel-3690)
+* [ API ](#tab-panel-3691)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

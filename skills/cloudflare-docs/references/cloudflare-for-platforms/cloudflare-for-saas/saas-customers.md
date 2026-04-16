@@ -1,6 +1,6 @@
 ---
 title: SaaS customers
-description: Cloudflare partners with many SaaS providers to extend our performance and security benefits to your website.
+description: Resources for customers whose domains are managed by a SaaS provider using Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

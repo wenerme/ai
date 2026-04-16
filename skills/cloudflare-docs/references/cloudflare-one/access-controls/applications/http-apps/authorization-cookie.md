@@ -75,9 +75,9 @@ The following Access cookies are essential to Access functionality. Cookies that
 
 ### CF\_Device
 
-| Details                                                                                                                                                      | Expiration | HttpOnly | SameSite | Required? |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | -------- | -------- | --------- |
-| Cookie used to help prevent abuse of the [Access OTP flow ↗](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) | 30 days    | Yes      | Strict   | Required  |
+| Details                                                                                                                                                                                                                                                                                                                                                                                                                                            | Expiration | HttpOnly | SameSite | Required? |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | --------- |
+| Cookie set on the cloudflareaccess.com [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name), used to prevent abuse of [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) and [multi-factor authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) flows | 30 days    | Yes      | Strict   | Required  |
 
 ## Cookie settings
 

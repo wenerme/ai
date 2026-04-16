@@ -1,6 +1,6 @@
 ---
 title: Terraform
-description: Get started with API Shield using Terraform from the examples below. For more information on how to use Terraform with Cloudflare, refer to the Terraform documentation.
+description: Configure API Shield resources with Terraform, including endpoints and schemas.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

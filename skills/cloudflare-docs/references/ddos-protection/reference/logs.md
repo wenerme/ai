@@ -1,6 +1,6 @@
 ---
 title: Logs
-description: Retrieve HTTP events using Cloudflare Logs to integrate them into your SIEM systems.
+description: Access DDoS attack event details through Logpush and activity logs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

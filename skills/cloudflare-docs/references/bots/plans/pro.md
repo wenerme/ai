@@ -1,6 +1,6 @@
 ---
 title: Pro
-description: To learn more about features and functionality, select a plan.
+description: Bot protection features included in the Cloudflare Pro plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Network-layer DDoS managed ruleset
-description: This section contains past and upcoming changes to the Network-layer DDoS Attack Protection managed ruleset.
+description: Changelog of rule updates for the Network-layer DDoS managed ruleset.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

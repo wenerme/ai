@@ -1,6 +1,6 @@
 ---
 title: Secure with Cloudflare Access
-description: Cloudflare Access provides visibility and control over who has access to your custom hostnames. You can allow or block users based on identity, device posture, and other Access rules.
+description: Control access to custom hostnames using Cloudflare Access identity and device policies.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

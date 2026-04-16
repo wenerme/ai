@@ -22,7 +22,7 @@ Though your product is officially set up, you may want to consider the following
 
 ## Usage-based notifications
 
-Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
+Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
 
 To set up those notifications:
 

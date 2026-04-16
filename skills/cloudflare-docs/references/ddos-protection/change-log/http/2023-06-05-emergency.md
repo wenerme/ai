@@ -1,5 +1,6 @@
 ---
 title: 2023-06-05 - Emergency
+description: HTTP DDoS managed ruleset rule changes for this release.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

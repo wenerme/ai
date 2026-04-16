@@ -1,6 +1,6 @@
 ---
 title: Bot scores
-description: A bot score is a score from 1 to 99 that indicates how likely that request came from a bot.
+description: Scores from 1 to 99 indicating the likelihood a request came from a bot.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

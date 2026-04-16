@@ -129,8 +129,8 @@ To wrap up a test suite, call `await worker.stop()` in an `afterAll` function.
 
 #### Single Worker example
 
-* [  JavaScript ](#tab-panel-7870)
-* [  TypeScript ](#tab-panel-7871)
+* [  JavaScript ](#tab-panel-8270)
+* [  TypeScript ](#tab-panel-8271)
 
 JavaScript
 
@@ -234,8 +234,8 @@ You can test Workers that call other Workers. In the below example, we refer to 
 
 If you shut down the child Worker prematurely, the parent Worker will not know the child Worker exists and your tests will fail.
 
-* [  JavaScript ](#tab-panel-7872)
-* [  TypeScript ](#tab-panel-7873)
+* [  JavaScript ](#tab-panel-8272)
+* [  TypeScript ](#tab-panel-8273)
 
 JavaScript
 
@@ -421,9 +421,8 @@ const platform = await getPlatformProxy(options);
          * `persist` boolean | `{ path: string }`  
          Indicates if and where to persist the bindings data. If `true` or `undefined`, defaults to the same location used by Wrangler, so data can be shared between it and the caller. If `false`, no data is persisted to or read from the filesystem.  
          **Note:** If you use `wrangler`'s `--persist-to` option, note that this option adds a subdirectory called `v3` under the hood while `getPlatformProxy`'s `persist` does not. For example, if you run `wrangler dev --persist-to ./my-directory`, to reuse the same location using `getPlatformProxy`, you will have to specify: `persist: { path: "./my-directory/v3" }`.  
-         * `experimental` `{ remoteBindings: boolean }`  
-         Object used to enable experimental features, no guarantees are made to the stability of this API, use at your own risk.  
-                  * `remoteBindings` Enables `getPlatformProxy` to connect to [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings).
+         * `remoteBindings` boolean optional (default: \`true\`)  
+         Whether or not [remote bindings](https://developers.cloudflare.com/workers/development-testing/#remote-bindings) should be enabled.
 
 ### Return Type
 
@@ -447,8 +446,8 @@ const platform = await getPlatformProxy(options);
 
 The `getPlatformProxy` function uses bindings found in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). For example, if you have an [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-wrangler) configuration set up in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7874)
-* [  wrangler.toml ](#tab-panel-7875)
+* [  wrangler.jsonc ](#tab-panel-8274)
+* [  wrangler.toml ](#tab-panel-8275)
 
 JSONC
 
@@ -526,8 +525,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 * [Durable Object bindings](https://developers.cloudflare.com/durable-objects/api/)  
    * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).  
    For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.  
-         * [  wrangler.jsonc ](#tab-panel-7878)  
-         * [  wrangler.toml ](#tab-panel-7879)  
+         * [  wrangler.jsonc ](#tab-panel-8278)  
+         * [  wrangler.toml ](#tab-panel-8279)  
    JSONC  
    ```  
    {  
@@ -565,8 +564,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
    ```  
    Explain Code  
    That Worker also needs a Wrangler configuration file that looks like this:  
-         * [  wrangler.jsonc ](#tab-panel-7876)  
-         * [  wrangler.toml ](#tab-panel-7877)  
+         * [  wrangler.jsonc ](#tab-panel-8276)  
+         * [  wrangler.toml ](#tab-panel-8277)  
    JSONC  
    ```  
    {  

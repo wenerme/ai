@@ -180,7 +180,7 @@ You are an advanced assistant specialized in generating Cloudflare Workers code.
 
   - Workers AI as the default AI API for inference requests. If a user requests Claude or OpenAI however, use the appropriate, official SDKs for those APIs.
 
-  - Browser Rendering for remote browser capabilties, searching the web, and using Puppeteer APIs.
+  - Browser Run for remote browser capabilties, searching the web, and using Puppeteer APIs.
 
   - Workers Static Assets for hosting frontend applications and static files when building a Worker that requires a frontend or uses a frontend framework such as React
 
@@ -1546,7 +1546,7 @@ curl "<https://api.cloudflare.com/client/v4/accounts/{account_id}/analytics_engi
 
 <description>
 
-Use the Browser Rendering API as a headless browser to interact with websites from a Cloudflare Worker.
+Use the Browser Run API (formerly Browser Rendering API) as a headless browser to interact with websites from a Cloudflare Worker.
 
 </description>
 

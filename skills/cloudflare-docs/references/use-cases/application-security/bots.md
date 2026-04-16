@@ -10,7 +10,7 @@ Was this helpful?
 
 YesNo
 
-[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/application-security/bots/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/use-cases/application-security/bots.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
 
 Copy page
 
@@ -18,7 +18,7 @@ Copy page
 
 Malicious bots perform credential stuffing, content scraping, and inventory hoarding. Cloudflare provides multiple tools to detect and block automated threats while allowing legitimate bots like search engine crawlers.
 
-For a step-by-step workflow that combines these tools into a layered defense, refer to [Stop malicious bots while allowing legitimate traffic](https://developers.cloudflare.com/use-cases/application-security/bots/stop-malicious-bots/).
+For a step-by-step workflow that combines these tools into a layered defense, refer to [Stop malicious bots while allowing legitimate traffic](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/).
 
 ## Solutions
 
@@ -44,7 +44,7 @@ Targeted rules that act on traffic signals including headers, request patterns, 
 
 ## Get started
 
-1. [Stop malicious bots while allowing legitimate traffic](https://developers.cloudflare.com/use-cases/application-security/bots/stop-malicious-bots/) — layered defense guide covering all products above
+1. [Stop malicious bots while allowing legitimate traffic](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/) — layered defense guide covering all products above
 2. [Enable Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) — quickest single step (Free plan)
 3. [Add Turnstile to forms](https://developers.cloudflare.com/turnstile/get-started/) — protect login and signup forms
 

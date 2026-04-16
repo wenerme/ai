@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Cloudflare does not collect data on every single page view. Instead, it uses a sampling approach to gather information efficiently. This means that domains with lower traffic might take longer to generate initial reports, as these domains need more page views to accumulate enough samples. To speed up the reporting process, it is recommended that you actively generate traffic to your application after activating client-side resource monitoring. This will provide Cloudflare with more data to work with, leading to faster report generation.
+description: Resolve common issues with client-side resource monitoring and script detection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

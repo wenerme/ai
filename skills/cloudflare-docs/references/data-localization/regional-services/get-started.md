@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: You can use Regional Services through the dashboard or via API.
+description: Enable and configure Regional Services for your hostnames via dashboard or API.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

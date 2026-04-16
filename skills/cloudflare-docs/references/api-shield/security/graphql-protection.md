@@ -1,6 +1,6 @@
 ---
 title: GraphQL malicious query protection
-description: GraphQL is a query language for APIs. In addition to protecting RESTful APIs, Cloudflare can also protect GraphQL APIs.
+description: Scan GraphQL traffic and block queries that could overload your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configure the Worker
-description: Use a Worker to automatically keep your identity provider’s latest public key in the JWT validation configuration.
+description: Use a Worker to keep your identity provider public keys updated for JWT validation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

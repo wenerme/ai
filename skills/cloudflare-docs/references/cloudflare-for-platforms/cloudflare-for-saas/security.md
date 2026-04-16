@@ -1,6 +1,6 @@
 ---
 title: Security
-description: Cloudflare for SaaS provides increased security per custom hostname through:
+description: Manage certificates, TLS settings, WAF rules, and access controls for custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

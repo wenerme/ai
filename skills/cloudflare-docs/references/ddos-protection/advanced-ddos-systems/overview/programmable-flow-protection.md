@@ -1,6 +1,6 @@
 ---
 title: Programmable Flow Protection (Beta)
-description: Programmable Flow Protection is a DDoS protection system that protects against DDoS attacks over custom or standardized Layer 7 UDP-based protocols, such as gaming protocols, financial services protocols, VoIP, telecom, and streaming. In terms of topology, it supports both asymmetric and symmetric configurations, but it will only inspect ingress traffic.
+description: Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Custom hostnames
+description: HTTP status codes for custom hostname API endpoints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

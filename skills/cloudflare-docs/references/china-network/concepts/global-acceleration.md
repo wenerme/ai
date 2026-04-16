@@ -1,6 +1,6 @@
 ---
 title: Global Acceleration
-description: Global Acceleration is a suite of connectivity offerings designed to simplify your global assets' deployment in China. Global Acceleration is provided by our partners including CMI, CBC Tech, and JD Cloud.
+description: Simplify global asset deployment in China with connectivity from CMI, CBC Tech, and JD Cloud.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

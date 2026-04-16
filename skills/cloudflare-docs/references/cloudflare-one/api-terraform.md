@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Terraform ](https://developers.cloudflare.com/search/?tags=Terraform)[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
+
 Was this helpful?
 
 YesNo

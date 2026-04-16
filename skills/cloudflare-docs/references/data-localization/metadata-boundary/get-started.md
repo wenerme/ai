@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: You can configure the Metadata Boundary to select the region where your logs and analytics are stored via API or dashboard.
+description: Configure Customer Metadata Boundary to select the region for your logs and analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

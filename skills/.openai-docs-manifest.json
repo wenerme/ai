@@ -167,21 +167,13 @@
     "size": 2791,
     "updatedAt": "2026-04-08T00:18:21.457Z"
   },
-  "openai-docs/guides/agents-sdk.md": {
-    "url": "https://developers.openai.com/api/docs/guides/agents-sdk.md",
-    "skill": "openai-docs",
-    "etag": "\"05671f9a4efdcec4d21448a43aa625dd\"",
-    "lastModified": "Wed, 08 Apr 2026 00:17:46 GMT",
-    "size": 657,
-    "updatedAt": "2026-04-08T00:18:21.696Z"
-  },
   "openai-docs/guides/agents.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents.md",
     "skill": "openai-docs",
-    "etag": "W/\"cf7b9b23fc1bb245d1bbbc98c8ea0c70\"",
-    "lastModified": "Tue, 07 Apr 2026 23:01:23 GMT",
-    "size": 6917,
-    "updatedAt": "2026-04-08T00:18:21.938Z"
+    "etag": "W/\"bf1360879d77065471863ad11eaf7ba3\"",
+    "lastModified": "Wed, 15 Apr 2026 21:02:21 GMT",
+    "size": 7709,
+    "updatedAt": "2026-04-16T00:23:54.818Z"
   },
   "openai-docs/guides/agents/define-agents.md": {
     "url": "https://developers.openai.com/api/docs/guides/agents/define-agents.md",
@@ -246,6 +238,14 @@
     "lastModified": "Wed, 08 Apr 2026 00:17:46 GMT",
     "size": 8106,
     "updatedAt": "2026-04-08T00:18:23.982Z"
+  },
+  "openai-docs/guides/agents/sandboxes.md": {
+    "url": "https://developers.openai.com/api/docs/guides/agents/sandboxes.md",
+    "skill": "openai-docs",
+    "etag": "W/\"2f8f94c3ae7e82b90ded5e809822326d\"",
+    "lastModified": "Wed, 15 Apr 2026 21:02:21 GMT",
+    "size": 33759,
+    "updatedAt": "2026-04-16T00:23:57.039Z"
   },
   "openai-docs/guides/audio.md": {
     "url": "https://developers.openai.com/api/docs/guides/audio.md",
@@ -842,10 +842,10 @@
   "openai-docs/guides/text.md": {
     "url": "https://developers.openai.com/api/docs/guides/text.md",
     "skill": "openai-docs",
-    "etag": "\"285e9ac3c1d0dc055eb8dfc703bc1557\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:25 GMT",
-    "size": 13108,
-    "updatedAt": "2026-03-05T06:04:25.810Z"
+    "etag": "W/\"77eda7f0d60383fcd2fab1d22f35c284\"",
+    "lastModified": "Wed, 15 Apr 2026 23:49:48 GMT",
+    "size": 13097,
+    "updatedAt": "2026-04-16T00:24:16.654Z"
   },
   "openai-docs/guides/token-counting.md": {
     "url": "https://developers.openai.com/api/docs/guides/token-counting.md",
@@ -1010,10 +1010,10 @@
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
     "skill": "openai-docs",
-    "etag": "\"3116f6cdd9f817732ff7cbdab009951a\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:37 GMT",
-    "size": 7515,
-    "updatedAt": "2026-03-05T06:04:37.847Z"
+    "etag": "W/\"2fe48bd7b62549126494fa27a3427687\"",
+    "lastModified": "Thu, 16 Apr 2026 00:24:21 GMT",
+    "size": 8013,
+    "updatedAt": "2026-04-16T00:24:21.910Z"
   },
   "openai-docs/mcp.md": {
     "url": "https://developers.openai.com/api/docs/mcp.md",

@@ -1,6 +1,6 @@
 ---
 title: Bot Management skips
-description: There are instances in which Bot Management does not run and certain fields, such as the JA3/JA4 field, are not populated because it has been determined that running Bot Management would not be necessary.
+description: Understand why Bot Management does not score certain requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

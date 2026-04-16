@@ -1,6 +1,6 @@
 ---
 title: Real-time validation
-description: When you use a real-time validation method, Cloudflare verifies your customer's hostname when your customers adds their DNS routing record to their authoritative DNS.
+description: Validate custom hostnames when customers add DNS routing records to their domain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

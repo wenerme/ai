@@ -106,8 +106,8 @@ Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in act
 
 Build a simple counter agent from scratch. Replace `src/server.ts`:
 
-* [  JavaScript ](#tab-panel-2954)
-* [  TypeScript ](#tab-panel-2955)
+* [  JavaScript ](#tab-panel-3192)
+* [  TypeScript ](#tab-panel-3193)
 
 JavaScript
 
@@ -270,8 +270,8 @@ Explain Code
 
 Update `wrangler.jsonc` to register the agent:
 
-* [  wrangler.jsonc ](#tab-panel-2946)
-* [  wrangler.toml ](#tab-panel-2947)
+* [  wrangler.jsonc ](#tab-panel-3184)
+* [  wrangler.toml ](#tab-panel-3185)
 
 JSONC
 
@@ -285,7 +285,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-11",
+  "compatibility_date": "2026-04-15",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -334,7 +334,7 @@ main = "src/server.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-11"
+compatibility_date = "2026-04-15"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -364,6 +364,10 @@ Replace `src/client.tsx`:
 src/client.tsx
 
 ```
+
+import "./styles.css";
+
+import { createRoot } from "react-dom/client";
 
 import { useState } from "react";
 
@@ -413,6 +417,11 @@ export default function App() {
 }
 
 
+const root = createRoot(document.getElementById("root")!);
+
+root.render(<App />);
+
+
 ```
 
 Explain Code
@@ -450,8 +459,8 @@ flowchart LR
 
 If you are not using React:
 
-* [  JavaScript ](#tab-panel-2950)
-* [  TypeScript ](#tab-panel-2951)
+* [  JavaScript ](#tab-panel-3188)
+* [  TypeScript ](#tab-panel-3189)
 
 JavaScript
 
@@ -554,8 +563,8 @@ Check that:
 
 Make sure your methods are decorated with `@callable()`:
 
-* [  JavaScript ](#tab-panel-2948)
-* [  TypeScript ](#tab-panel-2949)
+* [  JavaScript ](#tab-panel-3186)
+* [  TypeScript ](#tab-panel-3187)
 
 JavaScript
 
@@ -605,8 +614,8 @@ export class MyAgent extends Agent {
 
 Add the agent and state type parameters:
 
-* [  JavaScript ](#tab-panel-2952)
-* [  TypeScript ](#tab-panel-2953)
+* [  JavaScript ](#tab-panel-3190)
+* [  TypeScript ](#tab-panel-3191)
 
 JavaScript
 

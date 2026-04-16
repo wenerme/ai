@@ -1,6 +1,6 @@
 ---
 title: Default HTTP Privacy
-description: Cloudflare runs one of the largest global anycast networks in the world, with all current data center locations accessible on the network map.
+description: How Cloudflare encrypts and processes HTTP requests across its global network.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

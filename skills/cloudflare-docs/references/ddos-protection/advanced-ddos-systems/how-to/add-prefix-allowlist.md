@@ -1,6 +1,6 @@
 ---
 title: Add an IP or prefix to the allowlist
-description: To add an IP address or prefix to the Advanced DDoS Protection allowlist:
+description: Allowlist trusted IP addresses or prefixes to exclude them from Advanced DDoS Protection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

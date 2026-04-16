@@ -1,6 +1,6 @@
 ---
 title: Zero Trust
-description: In the following sections, we will give you some details about how different Zero Trust products can be used with the Data Localization Suite.
+description: Use Zero Trust products with the Data Localization Suite, including Gateway and CASB.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Track the latest updates and changes to Data Localization Suite features.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

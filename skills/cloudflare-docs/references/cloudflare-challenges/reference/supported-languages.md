@@ -1,6 +1,6 @@
 ---
 title: Supported languages
-description: Cloudflare Challenges can detect multiple languages and display the localized challenge experience, which is determined by navigator.language value. The Navigator.language read-only property returns a string representing the preferred language of the user, usually the language of the browser user interface.
+description: Languages supported by Cloudflare challenge pages, detected via navigator.language.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -78,16 +78,15 @@ For example, when both **Subpath matching** and **Preserve path suffix** are ena
 
 ## Status code
 
-API field: `status_code` ` Integer ` default: 301
+API field: `status_code` ` Integer ` default: 301  
+API values: `301`, `302`, `307`, or `308`.
 
-The HTTP status code returned to the client when redirecting.
+The HTTP status code returned to the client when redirecting:
 
-The value must be one of the following:
-
-* `301` (Moved permanently)
-* `302` (Found, also known as Moved temporarily)
-* `307` (Temporary redirect)
-* `308` (Permanent redirect)
+* **301 - Permanent Redirect**: The page has permanently moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+* **302 - Temporary Redirect**: The page has temporarily moved to a new address. For `POST` requests, the client or browser might switch the HTTP method to `GET` when following the redirect.
+* **307 - Advanced: Temporary, HTTP method preserved**: The page has temporarily moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
+* **308 - Advanced: Permanent, HTTP method preserved**: The page has permanently moved to a new address. The client or browser must preserve the original HTTP method (for example, `POST`) when following the redirect.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/url-forwarding/","name":"Redirects"}},{"@type":"ListItem","position":4,"item":{"@id":"/rules/url-forwarding/bulk-redirects/","name":"Bulk Redirects"}},{"@type":"ListItem","position":5,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/","name":"Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/rules/url-forwarding/bulk-redirects/reference/parameters/","name":"URL redirect parameters"}}]}

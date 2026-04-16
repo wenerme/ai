@@ -1,6 +1,6 @@
 ---
 title: Signed agents
-description: A signed agent is controlled by an end user and a verified signature-agent from their Web Bot Auth implementation.
+description: End-user-controlled agents verified through Web Bot Auth cryptographic signatures.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

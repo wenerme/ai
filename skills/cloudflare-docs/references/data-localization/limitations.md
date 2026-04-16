@@ -1,6 +1,6 @@
 ---
 title: Limitations
-description: There are some caveats and limitations when deploying Data Localization Suite features.
+description: Caveats and limitations when deploying Data Localization Suite features.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

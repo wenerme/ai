@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: This week's release introduces new detections for a critical Remote Code Execution (RCE) vulnerability in MCP Server (CVE-2026-23744), alongside targeted protection for an authentication bypass vulnerability in SolarWinds products (CVE-2025-40552). Additionally, this release includes a new generic detection rule designed to identify and block Cross-Site Scripting (XSS) injection attempts leveraging &#34;OnEvent&#34; handlers within HTTP cookies.
+description: This week's release introduces a new detection for a critical Remote Code Execution (RCE) vulnerability in Mesop (CVE-2026-33057), alongside protections for high-impact vulnerabilities in Cisco Secure Firewall Management Center (CVE-2026-20079) and FortiClient EMS (CVE-2026-21643). Additionally, this release includes an update to our existing React Server DoS coverage to address recently identified resource exhaustion vectors (CVE-2026-23869).
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -11,6 +11,32 @@ Copy page
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/waf.xml) 
+
+## 2026-04-15
+
+  
+**WAF Release - 2026-04-15**   
+
+This week's release introduces a new detection for a critical Remote Code Execution (RCE) vulnerability in Mesop (CVE-2026-33057), alongside protections for high-impact vulnerabilities in Cisco Secure Firewall Management Center (CVE-2026-20079) and FortiClient EMS (CVE-2026-21643). Additionally, this release includes an update to our existing React Server DoS coverage to address recently identified resource exhaustion vectors (CVE-2026-23869).
+
+**Key Findings**
+
+* Cisco Secure FMC (CVE-2026-20079): A vulnerability in the web-based management interface of Cisco Secure Firewall Management Center (FMC) that allows an unauthenticated, remote attacker to execute arbitrary commands or bypass security filters.
+* FortiClient EMS (CVE-2026-21643): A critical vulnerability in the FortiClient EMS permitting unauthorized access or administrative configuration manipulation via crafted HTTP requests.
+* Mesop (CVE-2026-33057): A vulnerability in the Mesop Python-based UI framework where unauthenticated attackers can execute arbitrary code by sending specially crafted, Base64-encoded payloads in the request body.
+
+**Impact**
+
+Successful exploitation of these vulnerabilities could allow unauthenticated attackers to execute arbitrary code, gain administrative control over network management infrastructure, or trigger server-side resource exhaustion. Administrators are strongly encouraged to apply official vendor updates.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                          | Previous Action | New Action | Comments                                                                                                           |
+| -------------------------- | ----------- | -------------- | -------------------------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| Cloudflare Managed Ruleset | ...aef9415b | N/A            | Cisco Secure FMC - RCE via upgradeReadinessCall - CVE:CVE-2026-20079 | Log             | Block      | This is a new detection.                                                                                           |
+| Cloudflare Managed Ruleset | ...ee7be621 | N/A            | FortiClient EMS - Pre-Auth SQL Injection - CVE:CVE-2026-21643        | Log             | Block      | This is a new detection.                                                                                           |
+| Cloudflare Managed Ruleset | ...c953a72b | N/A            | Mesop - Remote Code Execution - Base64 Payload - CVE:CVE-2026-33057  | Log             | Block      | This is a new detection.                                                                                           |
+| Cloudflare Managed Ruleset | ...50c08f6f | N/A            | React Server - DOS - CVE:CVE-2026-23864 - 1 - Beta                   | Log             | Block      | This rule has been merged into the original rule "React Server - DOS - CVE:CVE-2026-23864 - 1" (ID: ...61680354  ) |
+| Cloudflare Managed Ruleset | ...ebd81645 | N/A            | XSS, HTML Injection - Link Tag - URI (beta)                          | N/A             | Disabled   | This is a new detection.                                                                                           |
+| Cloudflare Managed Ruleset | ...0af34bba | N/A            | XSS, HTML Injection - Embed Tag - URI (beta)                         | N/A             | Disabled   | This is a new detection.                                                                                           |
 
 ## 2026-04-07
 
@@ -480,25 +506,6 @@ Exploitation may allow attackers to change internal logic or cause unexpected be
 | Cloudflare Managed Ruleset | ...606285e6 | N/A            | Generic Rules - Prototype Pollution - URI           | Log             | Disabled   | This is a new detection |
 | Cloudflare Managed Ruleset | ...4f59ff26 | N/A            | Generic Rules - Prototype Pollution - Body          | Log             | Disabled   | This is a new detection |
 | Cloudflare Managed Ruleset | ...7efbeb39 | N/A            | Generic Rules - Prototype Pollution - Header - Form | Log             | Disabled   | This is a new detection |
-
-## 2025-11-05
-
-  
-**WAF Release - 2025-11-05 - Emergency**   
-
-This week’s emergency release introduces a new detection signature that enhances coverage for a critical vulnerability in the React Native Metro Development Server, tracked as CVE-2025-11953.
-
-**Key Findings**
-
-The Metro Development Server exposes an HTTP endpoint that is vulnerable to OS command injection (CWE-78). An unauthenticated network attacker can send a crafted request to this endpoint and execute arbitrary commands on the host running Metro. The vulnerability affects Metro/cli-server-api builds used by React Native Community CLI in pre-patch development releases.
-
-**Impact**
-
-Successful exploitation of CVE-2025-11953 may result in remote command execution on developer workstations or CI/build agents, leading to credential and secret exposure, source tampering, and potential lateral movement into internal networks. Administrators and developers are strongly advised to apply the vendor's patches and restrict Metro’s network exposure to reduce this risk.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                 | Previous Action | New Action | Comments                |
-| -------------------------- | ----------- | -------------- | ----------------------------------------------------------- | --------------- | ---------- | ----------------------- |
-| Cloudflare Managed Ruleset | ...c8e30c5b | N/A            | React Native Metro - Command Injection - CVE:CVE-2025-11953 | N/A             | Block      | This is a New Detection |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/change-log/","name":"WAF changelog overview"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/change-log/changelog/","name":"Changelog"}}]}

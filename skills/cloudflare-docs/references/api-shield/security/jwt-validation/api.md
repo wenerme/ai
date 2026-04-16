@@ -1,6 +1,6 @@
 ---
 title: Configure JWT validation via the API
-description: Use the Cloudflare API to configure JWT validation, which requires token configurations and token validation rules.
+description: Create token configurations and validation rules for JWT validation using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

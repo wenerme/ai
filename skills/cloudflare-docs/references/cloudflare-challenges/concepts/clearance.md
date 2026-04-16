@@ -1,6 +1,6 @@
 ---
 title: Clearance
-description: A cf_clearance cookie proves to Cloudflare that the visitor is a verified human and has passed the challenge presented to them.
+description: How cf_clearance cookies prove a visitor passed a Cloudflare challenge.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

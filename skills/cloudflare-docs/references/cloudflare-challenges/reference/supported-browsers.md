@@ -1,6 +1,6 @@
 ---
 title: Supported browsers
-description: Cloudflare can challenge your visitors in various ways. They can be challenged by Challenge Pages, Turnstile, or by JavaScript Detections (JSD) in Bot Management. This document lays out the supported browsers across all of these challenge methods. When your website or application presents a challenge, your visitors receive either a Non-interactive or an Interactive Challenge.
+description: Browser compatibility for challenge pages, Turnstile, and JavaScript detections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Volumetric Abuse Detection
-description: Cloudflare Volumetric Abuse Detection helps you set up a system of adaptive rate limiting.
+description: Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

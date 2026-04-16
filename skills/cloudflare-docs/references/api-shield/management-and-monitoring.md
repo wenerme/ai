@@ -1,5 +1,6 @@
 ---
 title: Management and Monitoring
+description: Manage and monitor API endpoints, schemas, routing, and session identifiers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cache for SaaS
-description: Cloudflare makes customer websites faster by storing a copy of the website’s content on the servers of our globally distributed data centers. Content can be either static or dynamic: static content is “cacheable” or eligible for caching, and dynamic content is “uncacheable” or ineligible for caching. The cached copies of content are stored physically closer to users, optimized to be fast, and do not require recomputing.
+description: Cache static content on custom hostnames to reduce latency for end users.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

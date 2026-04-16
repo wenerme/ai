@@ -1,6 +1,6 @@
 ---
 title: Resolve a Challenge
-description: If a visitor encounters a Challenge, Cloudflare employees cannot remove that Challenge. Only the website owner can configure their Cloudflare settings to stop the Challenge being presented.
+description: Steps visitors and site owners can take when encountering a Cloudflare challenge page.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

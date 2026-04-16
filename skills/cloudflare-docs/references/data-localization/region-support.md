@@ -1,6 +1,6 @@
 ---
 title: Region support
-description: Support by product and region is summarized in the following table:
+description: Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

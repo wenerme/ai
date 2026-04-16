@@ -1,6 +1,6 @@
 ---
 title: Super Bot Fight Mode
-description: Super Bot Fight Mode is included in your Pro, Business, or Enterprise subscription. When enabled, the product:
+description: Configure Super Bot Fight Mode to challenge or block bots on Pro, Business, and Enterprise plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -54,8 +54,8 @@ New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn 
 
 To start using Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3222)
-* [ Old dashboard ](#tab-panel-3223)
+* [  New dashboard ](#tab-panel-3532)
+* [ Old dashboard ](#tab-panel-3533)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -92,8 +92,8 @@ If you find that **Super Bot Fight Mode** is causing problems with your applicat
 
 To disable Super Bot Fight Mode:
 
-* [  New dashboard ](#tab-panel-3224)
-* [ Old dashboard ](#tab-panel-3225)
+* [  New dashboard ](#tab-panel-3534)
+* [ Old dashboard ](#tab-panel-3535)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

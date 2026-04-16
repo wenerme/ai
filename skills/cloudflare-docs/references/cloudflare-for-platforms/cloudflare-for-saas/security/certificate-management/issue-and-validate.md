@@ -1,6 +1,6 @@
 ---
 title: Issue and validate certificates
-description: Once you have set up your Cloudflare for SaaS application, you can start issuing and validating certificates for your customers.
+description: Issue and validate TLS certificates for Cloudflare for SaaS custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

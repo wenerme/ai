@@ -1,6 +1,6 @@
 ---
 title: DNS Firewall
-description: Cloudflare DNS Firewall proxies all DNS queries to your nameservers through Cloudflare’s global network. This action protects upstream nameservers from DDoS attacks and reduces load by caching DNS responses.
+description: Protect and accelerate authoritative nameservers with DNS-level caching and DDoS mitigation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

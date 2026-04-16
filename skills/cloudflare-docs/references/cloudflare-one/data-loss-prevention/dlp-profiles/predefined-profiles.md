@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance) 
+
 Was this helpful?
 
 YesNo
@@ -34,10 +38,18 @@ For more information on included detection entries, refer to [AI prompt topics](
 
 The following secrets are validated with regex.
 
-* Google Cloud Platform keys
-* AWS keys
+* Amazon Web Services (AWS) keys
 * Azure API keys
+* Google Cloud Platform keys
 * SSH keys
+
+The following Cloudflare API credentials are validated algorithmically using a checksum. Only credentials generated after [Cloudflare's token format update](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/) will be matched by these entries.
+
+| Detection entry                    | Format                                                                        |
+| ---------------------------------- | ----------------------------------------------------------------------------- |
+| Cloudflare User API Key            | cfk\_ followed by 40 alphanumeric characters and an 8-character hex checksum  |
+| Cloudflare User API Token          | cfut\_ followed by 40 alphanumeric characters and an 8-character hex checksum |
+| Cloudflare Account Owned API Token | cfat\_ followed by 40 alphanumeric characters and an 8-character hex checksum |
 
 ## Financial Information
 

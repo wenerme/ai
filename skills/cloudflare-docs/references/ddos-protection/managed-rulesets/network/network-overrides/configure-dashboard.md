@@ -1,6 +1,6 @@
 ---
 title: Configure in the dashboard
-description: Configure the Network-layer DDoS Attack Protection managed ruleset by defining overrides in the Cloudflare dashboard. DDoS overrides allow you to customize the action and sensitivity of one or more rules in the managed ruleset.
+description: Create Network-layer DDoS Attack Protection overrides in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -48,8 +48,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-4232)
-* [ Old dashboard ](#tab-panel-4233)
+* [  New dashboard ](#tab-panel-4632)
+* [ Old dashboard ](#tab-panel-4633)
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.  
 [ Go to **DDoS Managed Rules** ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)

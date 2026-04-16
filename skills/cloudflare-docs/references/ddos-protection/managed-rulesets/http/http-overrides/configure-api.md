@@ -1,6 +1,6 @@
 ---
 title: Configure via API
-description: Configure the HTTP DDoS Attack Protection managed ruleset by defining overrides using the Rulesets API.
+description: Create and manage HTTP DDoS Attack Protection overrides using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

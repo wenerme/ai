@@ -1,6 +1,6 @@
 ---
 title: Reports
-description: To download an ad-hoc DDoS report, generate a PDF report file by selecting Print report in your analytics dashboard.
+description: View and share DDoS attack reports from the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

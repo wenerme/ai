@@ -1,6 +1,6 @@
 ---
 title: Available Challenges
-description: Refer to the following pages for more information on available challenge types:
+description: Challenge types including interstitial pages, Turnstile, and JavaScript detections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

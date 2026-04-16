@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: When Cloudflare's DDoS systems detect and mitigate attacks, they drop, rate-limit, or challenge (as applicable) packets, DNS queries, or HTTP requests, based on the type of attack.
+description: Answers to common questions about DDoS attack events, billing, and mitigation behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Bot tags
-description: Bot tags provide more detail about why Cloudflare assigned a bot score to a request.
+description: Tags that explain why Cloudflare assigned a specific bot score to a request.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

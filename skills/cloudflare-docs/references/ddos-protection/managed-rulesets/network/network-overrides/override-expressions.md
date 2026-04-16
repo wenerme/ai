@@ -1,6 +1,6 @@
 ---
 title: Override expressions
-description: Set an override expression for the Network-layer DDoS Attack Protection managed ruleset to define a specific scope for sensitivity level or action adjustments.
+description: Expression fields and operators for scoping Network-layer DDoS overrides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

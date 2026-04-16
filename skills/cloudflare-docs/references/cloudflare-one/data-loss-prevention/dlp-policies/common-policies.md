@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Compliance ](https://developers.cloudflare.com/search/?tags=Compliance)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 Was this helpful?
 
 YesNo
@@ -35,8 +39,8 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-3453)
-* [ API ](#tab-panel-3454)
+* [ Dashboard ](#tab-panel-3785)
+* [ API ](#tab-panel-3786)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |

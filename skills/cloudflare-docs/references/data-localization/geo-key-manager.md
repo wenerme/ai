@@ -1,6 +1,6 @@
 ---
 title: Geo Key Manager
-description: Geo Key Manager offers enhanced control over the storage location of private SSL/TLS keys, ensuring compliance with regional data regulations and security requirements.
+description: Control the geographic storage location of your private SSL/TLS keys.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

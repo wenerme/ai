@@ -1,6 +1,6 @@
 ---
 title: About
-description: Cloudflare provides unmetered and unlimited distributed denial-of-service (DDoS) protection at layers 3, 4, and 7 to all customers on all plans and services.
+description: How Cloudflare DDoS protection detects and mitigates attacks across network layers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Enable
-description: To enable Cloudflare for SaaS for your account:
+description: Enable Cloudflare for SaaS on your account to start creating custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,7 +22,7 @@ To enable Cloudflare for SaaS for your account:
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Enable**.
 3. The next step depends on the zone's plan:  
-   * **Enterprise**: Can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/preview-services/), which provide full access, free of metered usage fees, limits, and certain other restrictions.  
+   * **Enterprise**: Can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provide full access, free of metered usage fees, limits, and certain other restrictions.  
    * **Non-enterprise**: Will have to enter payment information.
 
 Note

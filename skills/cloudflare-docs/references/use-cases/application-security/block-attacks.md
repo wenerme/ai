@@ -40,7 +40,7 @@ Limit request rates based on flexible matching criteria. [Learn more about rate 
 2. [Create custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/)
 3. [Configure rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/)
 
-For custom rules and rate limiting patterns specific to bot traffic, refer to [Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/application-security/bots/stop-malicious-bots/).
+For custom rules and rate limiting patterns specific to bot traffic, refer to [Stop malicious bots while allowing legitimate traffic (Free, Pro, and Business)](https://developers.cloudflare.com/use-cases/solutions/stop-malicious-bots/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/application-security/","name":"Application security"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/application-security/block-attacks/","name":"Block application attacks"}}]}

@@ -1,5 +1,6 @@
 ---
 title: Concepts
+description: Core concepts for the China Network, including DNS, ICP, and Global Acceleration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

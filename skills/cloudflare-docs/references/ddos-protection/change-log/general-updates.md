@@ -1,6 +1,6 @@
 ---
 title: General updates
-description: Subscribe to RSS
+description: General updates and improvements to Cloudflare DDoS protection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

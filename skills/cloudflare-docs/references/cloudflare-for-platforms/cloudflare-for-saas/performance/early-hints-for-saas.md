@@ -1,6 +1,6 @@
 ---
 title: Early Hints for SaaS
-description: Early Hints allows the browser to begin loading resources while the origin server is compiling the full response. This improves webpage’s loading speed for the end user. As a SaaS provider, you may prioritize speed for some of your custom hostnames. Using custom metadata, you can enable Early Hints per custom hostname.
+description: Enable Early Hints per custom hostname to preload resources and speed up page loads.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

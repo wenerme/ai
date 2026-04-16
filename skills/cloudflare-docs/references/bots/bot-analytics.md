@@ -1,6 +1,6 @@
 ---
 title: Bot Analytics
-description: Business and Enterprise customers without Bot Management can use Bot Analytics to dynamically examine bot traffic. These dashboards offer less functionality than Bot Management for Enterprise but still help you understand bot traffic on your domain.
+description: Use Bot Analytics to examine bot traffic patterns on your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

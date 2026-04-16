@@ -1,6 +1,6 @@
 ---
 title: Custom origin server
-description: A custom origin server lets you send traffic from one or more custom hostnames to somewhere besides your default proxy fallback, such as:
+description: Route custom hostname traffic to a different origin server per hostname.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

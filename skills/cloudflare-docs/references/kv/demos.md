@@ -22,7 +22,7 @@ Learn how you can use KV within your existing application and architecture.
 
 Explore the following demo applications for KV.
 
-* [Queues Web Crawler: ↗](https://github.com/cloudflare/queues-web-crawler) An example use-case for Queues, a web crawler built on Browser Rendering and Puppeteer. The crawler finds the number of links to Cloudflare.com on the site, and archives a screenshot to Workers KV.
+* [Queues Web Crawler: ↗](https://github.com/cloudflare/queues-web-crawler) An example use-case for Queues, a web crawler built on Browser Run and Puppeteer. The crawler finds the number of links to Cloudflare.com on the site, and archives a screenshot to Workers KV.
 
 ## Reference architectures
 

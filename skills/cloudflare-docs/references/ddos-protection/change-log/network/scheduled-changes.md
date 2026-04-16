@@ -1,5 +1,6 @@
 ---
 title: Scheduled changes
+description: Upcoming scheduled rule changes for the Network-layer DDoS managed ruleset.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

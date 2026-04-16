@@ -22,8 +22,8 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Argo Smart Routing is a one-click solution to speed up your global traffic.
 
-* [ Dashboard ](#tab-panel-3188)
-* [ API ](#tab-panel-3189)
+* [ Dashboard ](#tab-panel-3498)
+* [ API ](#tab-panel-3499)
 
 To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic) in the dashboard:
 
@@ -31,22 +31,22 @@ To enable [Argo Smart Routing ↗](https://dash.cloudflare.com/?to=/:account/:zo
 [ Go to **Argo Smart Routing** ](https://dash.cloudflare.com/?to=/:account/:zone/traffic)
 2. For **Argo Smart Routing**, switch the toggle to **On**.
 3. Provide your billing information.  
-   * If you do not have a [billing profile](https://developers.cloudflare.com/billing/create-billing-profile/), enter your billing information.  
+   * If you do not have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/), enter your billing information.  
    * If you have a billing profile, confirm your billing information.
 
 To enable or disable Argo Smart Routing with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/argo/subresources/smart%5Frouting/methods/edit/) request with the `value` parameter set to your desired setting (`"on"` or `"off"`).
 
-You will need to already have a [billing profile](https://developers.cloudflare.com/billing/create-billing-profile/) on your account to enable Argo Smart Routing.
+You will need to already have a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/) on your account to enable Argo Smart Routing.
 
 Note
 
-Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
 
 ## Billing
 
 If Cloudflare mitigates attacks on your site - whether through DDoS protection, the WAF, or other mechanisms - that traffic will not be included in any charges for Argo Smart Routing.
 
-Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
+Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
 
 To set up those notifications:
 

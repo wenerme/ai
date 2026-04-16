@@ -1,6 +1,6 @@
 ---
 title: API Gateway
-description: Cloudflare API Shield empowers you to use Cloudflare as your API Gateway, providing robust security features, streamlined management tools, and integration with the Cloudflare Developer Platform for building new APIs.​
+description: Use Cloudflare as your API gateway for security, management, and routing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

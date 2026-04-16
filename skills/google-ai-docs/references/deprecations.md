@@ -73,6 +73,15 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-2.5-flash-native-audio-preview-12-2025` | December 12, 2025 | No shutdown date announced | `gemini-3.1-flash-live-preview` |
 | `gemini-live-2.5-flash-preview` | June 17, 2025 | December 9, 2025 | `gemini-3.1-flash-live-preview` |
 
+## Audio models
+
+| **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
+|---|---|---|---|
+| Preview models ||||
+| `gemini-3.1-flash-tts-preview` | April 13, 2026 | No shutdown date announced |   |
+| `gemini-2.5-flash-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.1-flash-tts-preview` |
+| `gemini-2.5-pro-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.1-flash-tts-preview` |
+
 ## Embedding models
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |

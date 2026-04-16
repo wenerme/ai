@@ -1,6 +1,6 @@
 ---
 title: Pre-validation
-description: Pre-validation methods help verify domain ownership before your customer's traffic is proxying through Cloudflare.
+description: Verify domain ownership before customer traffic begins proxying through Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

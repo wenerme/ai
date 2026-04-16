@@ -1,6 +1,6 @@
 ---
 title: Network-layer DDoS Attack Protection
-description: The Cloudflare Network-layer DDoS Attack Protection managed ruleset is a set of pre-configured rules used to match known DDoS attack vectors at levels 3 and 4 of the OSI model.
+description: Pre-configured rules that detect and mitigate DDoS attacks at layers 3 and 4.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

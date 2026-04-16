@@ -1,6 +1,6 @@
 ---
 title: Renew
-description: The exact method for certificate renewal depends on whether that hostname is active1 and whether it is a wildcard certificate.
+description: Renew custom hostname certificates before their 90-day expiration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

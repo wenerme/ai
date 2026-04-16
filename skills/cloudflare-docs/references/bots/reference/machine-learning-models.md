@@ -1,6 +1,6 @@
 ---
 title: Machine Learning models
-description: Cloudflare encourages Enterprise customers to enable auto-updates to its Machine Learning models to get the newest bot detection models as they are released.
+description: Manage auto-updates for Bot Management machine learning models.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -22,8 +22,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-3226)
-* [ Old dashboard ](#tab-panel-3227)
+* [  New dashboard ](#tab-panel-3536)
+* [ Old dashboard ](#tab-panel-3537)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

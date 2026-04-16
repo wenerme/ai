@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Refer to the following pages for more information about Cloudflare Challenges:
+description: Reference information for Cloudflare Challenges, including browsers, languages, and tokens.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

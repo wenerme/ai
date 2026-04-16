@@ -1,6 +1,6 @@
 ---
 title: Plans
-description: To learn more about features and functionality, select a plan.
+description: Compare bot protection features available on each Cloudflare plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

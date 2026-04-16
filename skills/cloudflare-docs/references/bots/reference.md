@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Refer to the following pages for more information on Cloudflare's bot solutions:
+description: Reference information for Cloudflare bot solutions, including variables and alerts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

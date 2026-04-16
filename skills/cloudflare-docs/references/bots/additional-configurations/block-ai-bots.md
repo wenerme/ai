@@ -1,6 +1,6 @@
 ---
 title: Block AI Bots
-description: You can choose to block AI bots by activating Block AI bots. Activating this setting will block verified bots that are classified as AI crawlers, as well as a number of unverified bots that behave similarly.
+description: Block AI crawlers and scrapers from accessing your website content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

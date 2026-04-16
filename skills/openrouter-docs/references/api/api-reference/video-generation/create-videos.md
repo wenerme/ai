@@ -206,6 +206,10 @@ components:
           type: object
           additionalProperties:
             description: Any type
+        baidu:
+          type: object
+          additionalProperties:
+            description: Any type
         baseten:
           type: object
           additionalProperties:

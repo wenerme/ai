@@ -34,13 +34,15 @@ glab stack sync [flags]
 glab stack sync
 glab stack sync --no-verify
 glab stack sync --update-base
+glab stack sync --assignee user1,user2
 ```
 
 ## Options
 
 ```plaintext
-      --no-verify     Bypass the pre-push hook. (See githooks(5) for more information.)
-      --update-base   Rebase the stack onto the latest version of the base branch.
+  -a, --assignee usernames   Assign merge request to people by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --no-verify            Bypass the pre-push hook. (See githooks(5) for more information.)
+      --update-base          Rebase the stack onto the latest version of the base branch.
 ```
 
 ## Options inherited from parent commands

@@ -1,5 +1,6 @@
 ---
 title: Design guide
+description: Reference architecture for extending Cloudflare benefits to SaaS end customers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -58,7 +58,22 @@ To specify different addresses for certain zones, [create a new address map](htt
 
 You can use address maps to set up [non-SNI support](https://developers.cloudflare.com/byoip/address-maps/setup/#spectrum-https-applications) for Spectrum HTTPS applications.
 
-However, to control what IP address Cloudflare will use when responding to requests for your Spectrum applications, you should first refer to their respective configuration and set the `edge_ips` field as `static`. For details, refer to the [Spectrum API](https://developers.cloudflare.com/api/resources/spectrum/models/edge%5Fips/).
+However, to control what IP address Cloudflare will use when responding to requests for your Spectrum applications, you should first refer to their respective configuration and set the `edge_ips` field as `static`, e.g.:
+
+```
+
+"edge_ips": {
+
+  "type": "static",
+
+  "ips": ["1.2.3.4"]
+
+}
+
+
+```
+
+For details, refer to the [Spectrum API](https://developers.cloudflare.com/api/resources/spectrum#%28resource%29%20spectrum%20%3E%20%28model%29%20edge%5Fips%20%3E%20%28schema%29%20%3E%20%28variant%29%201).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/byoip/","name":"BYOIP"}},{"@type":"ListItem","position":3,"item":{"@id":"/byoip/address-maps/","name":"About address maps"}}]}

@@ -1,5 +1,6 @@
 ---
 title: Videos
+description: Watch videos about Cloudflare China Network features and configuration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

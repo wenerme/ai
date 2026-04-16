@@ -1,5 +1,6 @@
 ---
 title: API reference
+description: API endpoints for creating and managing custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

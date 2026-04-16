@@ -1,5 +1,6 @@
 ---
 title: Domain control validation backoff schedule
+description: Retry schedule for domain control validation attempts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

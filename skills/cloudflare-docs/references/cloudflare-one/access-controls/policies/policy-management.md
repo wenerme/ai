@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
+
 Was this helpful?
 
 YesNo
@@ -22,7 +26,7 @@ Access policies define the users who can log in to your Access applications. You
 
 To create a reusable Access policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Policies**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
 2. Select **Add a policy**.
 3. Enter a **Policy name**.
 4. Choose an [**Action**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#actions) for the policy.
@@ -30,8 +34,9 @@ To create a reusable Access policy:
 6. Configure as many [**Rules**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) as needed.
 7. (Optional) Configure additional settings for users who match this policy:  
    * [Isolate application](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/).  
-   * [Purpose justificaton](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)  
-   * [Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)
+   * [Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)  
+   * [Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)  
+   * [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)
 8. Select **Save**.
 
 You can now add this policy to an [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
@@ -40,7 +45,7 @@ You can now add this policy to an [Access application](https://developers.cloudf
 
 To make changes to an existing Access policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Policies**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
 2. Locate the policy you want to update and select **Configure**.
 3. Once you have made the necessary changes, select **Save**.
 
@@ -50,7 +55,7 @@ The updated policy is now in effect for all associated Access applications.
 
 To delete a reusable Access policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Policies** and locate the policy you want to delete.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies** and locate the policy you want to delete.
 2. If the policy is used by an application, remove the policy from all associated applications.
 3. Select **Delete**.
 4. A pop-up message will ask you to confirm your decision to delete the policy. Select **Delete**.
@@ -67,7 +72,7 @@ The Access policy builder allows you to test your rules before saving any change
 
 To test an individual Access policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Policies**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
 2. Locate the policy you want to test and select **Configure**.
 3. Go to **Policy tester** and select **Test policies**.
 
@@ -79,7 +84,7 @@ You can test your Access application policies against your user population befor
 
 To test if users have access to an application:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
 2. Locate the application you want to test and select **Configure**.
 3. Go to **Policies** \> **Policy tester**.
 4. To test all active users in your organization, select **Test policies**.  

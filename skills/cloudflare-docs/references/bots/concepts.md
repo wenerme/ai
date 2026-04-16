@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Refer to the following pages for more information on bot concepts:
+description: Core concepts for Cloudflare bot solutions, including scores, tags, and detection engines.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

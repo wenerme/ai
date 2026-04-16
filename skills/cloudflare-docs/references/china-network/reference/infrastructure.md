@@ -1,6 +1,6 @@
 ---
 title: Infrastructure
-description: For up-to-date information, refer to the Cloudflare China Network page.
+description: China data center locations, network IP addresses, and API endpoints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

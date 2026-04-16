@@ -1,6 +1,6 @@
 ---
 title: Web Bot Auth
-description: Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for verified bots and signed agents.
+description: Verify bot identity using cryptographic HTTP message signatures.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

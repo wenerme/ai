@@ -1,6 +1,6 @@
 ---
 title: Configure Schema validation via the API
-description: Schema validation 2.0 allows all corresponding configuration calls to be made via API. This validation centers more around individual endpoints and lets you set mitigation actions for each endpoint individually. Additionally, you can use Cloudflare-provided learned schemas that we learn automatically from your traffic for individual endpoints.
+description: Configure per-endpoint schema validation and mitigation actions using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

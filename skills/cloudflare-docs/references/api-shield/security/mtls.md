@@ -1,6 +1,6 @@
 ---
 title: Mutual TLS (mTLS)
-description: Mutual TLS (mTLS) authentication is a common security practice that uses client certificates to ensure traffic between client and server is bidirectionally secure and trusted. mTLS also allows requests that do not authenticate via an identity provider — such as Internet-of-things (IoT) devices — to demonstrate they can reach a given resource.
+description: Require client certificates to authenticate API requests with mutual TLS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Browse the web
-description: Give your agents full access to the Chrome DevTools Protocol (CDP) with browser tools. Beta
+description: Give your agents full access to the Chrome DevTools Protocol (CDP) with Browser Run tools. Beta
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Browse the web
 
-Give your agents full access to the Chrome DevTools Protocol (CDP) with browser tools. Beta
+Give your agents full access to the [Chrome DevTools Protocol (CDP)](https://developers.cloudflare.com/browser-run/cdp/) with [Browser Run](https://developers.cloudflare.com/browser-run/) tools. Beta
 
 Instead of a fixed set of browser actions (click, screenshot, navigate), the LLM writes JavaScript code that runs CDP commands against a live browser session — accessing all domains, commands, events, and types in the protocol.
 
@@ -56,7 +56,7 @@ npm install agents @cloudflare/codemode ai zod
 
 ### 1\. Configure bindings
 
-Add the Browser Rendering and Worker Loader bindings to your wrangler configuration:
+Add the Browser Run (formerly Browser Rendering) and Worker Loader bindings to your wrangler configuration:
 
 * [  wrangler.jsonc ](#tab-panel-2138)
 * [  wrangler.toml ](#tab-panel-2139)
@@ -71,7 +71,7 @@ JSONC
 
   "browser": {
 
-    "binding": "BROWSER"
+    "binding": "BROWSER",
 
   },
 
@@ -79,11 +79,11 @@ JSONC
 
     {
 
-      "binding": "LOADER"
+      "binding": "LOADER",
 
-    }
+    },
 
-  ]
+  ],
 
 }
 
@@ -152,7 +152,7 @@ const browserTools = createBrowserTools({
 
 ```
 
-To connect to a custom CDP endpoint instead of the Browser Rendering binding, pass `cdpUrl`.
+To connect to a custom CDP endpoint instead of the Browser Run binding, pass `cdpUrl`.
 
 ### 3\. Use with streamText
 
@@ -537,7 +537,7 @@ Returns AI SDK tools (`browser_search` and `browser_execute`).
 
 | Option     | Type                   | Default  | Description                                                    |
 | ---------- | ---------------------- | -------- | -------------------------------------------------------------- |
-| browser    | Fetcher                | —        | Browser Rendering binding                                      |
+| browser    | Fetcher                | —        | Browser Run binding                                            |
 | cdpUrl     | string                 | —        | Optional override for a custom CDP endpoint                    |
 | cdpHeaders | Record<string, string> | —        | Headers for CDP URL discovery (for example, Cloudflare Access) |
 | loader     | WorkerLoader           | required | Worker Loader binding for sandboxed execution                  |
@@ -614,7 +614,7 @@ Explain Code
 
 ## Local development
 
-Recent Wrangler releases support Browser Rendering in local development. `npx wrangler dev` provisions the browser automatically, so the same `browser: env.BROWSER` setup works locally and when deployed.
+Recent Wrangler releases support Browser Run in local development. `npx wrangler dev` provisions the browser automatically, so the same `browser: env.BROWSER` setup works locally and when deployed.
 
 Use `cdpUrl` only when you intentionally want to connect to some other CDP-compatible browser endpoint, such as a tunnel or a manually managed Chrome instance.
 
@@ -637,7 +637,7 @@ Use `cdpUrl` only when you intentionally want to connect to some other CDP-compa
 
 ## Using Puppeteer directly
 
-If you prefer to control the browser programmatically without LLM-generated code, you can use Puppeteer with the [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) API directly.
+If you prefer to control the browser programmatically without LLM-generated code, you can use Puppeteer with the [Browser Run](https://developers.cloudflare.com/browser-run/) API directly.
 
  npm  yarn  pnpm  bun 
 
@@ -818,15 +818,15 @@ JSONC
 
   "ai": {
 
-    "binding": "AI"
+    "binding": "AI",
 
   },
 
   "browser": {
 
-    "binding": "BROWSER"
+    "binding": "BROWSER",
 
-  }
+  },
 
 }
 

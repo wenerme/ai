@@ -1,6 +1,6 @@
 ---
 title: JSON objects
-description: This page contains an example of the TCP protection rule JSON object used in the API.
+description: JSON object structure for Advanced TCP Protection API requests and responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

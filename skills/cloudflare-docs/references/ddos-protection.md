@@ -1,6 +1,6 @@
 ---
 title: Cloudflare DDoS Protection
-description: Cloudflare automatically detects and mitigates distributed denial-of-service (DDoS) attacks via our autonomous DDoS systems.
+description: Detect and mitigate DDoS attacks automatically across all Cloudflare plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

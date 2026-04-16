@@ -1,6 +1,6 @@
 ---
 title: Third-party services and DDoS protection
-description: Some Cloudflare customers choose to use a Content Delivery Network (CDN) in front of Cloudflare to cache and serve their resources.
+description: DDoS rule interactions with third-party services like Google and payment providers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

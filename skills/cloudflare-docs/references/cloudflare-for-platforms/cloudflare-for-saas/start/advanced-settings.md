@@ -1,5 +1,6 @@
 ---
 title: Advanced Settings
+description: Advanced configurations including custom origins, apex proxying, and Workers origins.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

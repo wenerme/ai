@@ -1,6 +1,6 @@
 ---
 title: Configure sequence mitigation via the API
-description: Configuring sequence mitigation via the API consists of building a rule object by choosing the sequence and setting the type of rule and its action.
+description: Build and configure sequence mitigation rules using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

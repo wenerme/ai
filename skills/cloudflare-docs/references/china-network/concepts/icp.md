@@ -1,6 +1,6 @@
 ---
 title: Internet Content Provider (ICP)
-description: Internet Content Provider (ICP) is a licensing regime instated by the Telecommunications Regulations of the People's Republic of China (中华人民共和国电信条例), promulgated in September 2000.
+description: Obtain and display an ICP license number required for websites operating in China.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

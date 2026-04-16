@@ -141,7 +141,7 @@ If you are using your gateway for backend services, you may want to use Cloudfla
 
 ## Step 5 - Set up usage notifications
 
-Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
+Since this is a service with [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/), Cloudflare recommends that you set up usage-based billing notifications to avoid unexpected bills.
 
 To set up those notifications:
 

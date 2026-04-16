@@ -1,6 +1,6 @@
 ---
 title: HTTP
-description: HTTP validation involves adding a DCV token to your customer's origin.
+description: Validate domain ownership by placing a DCV token on your customer origin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configuration settings
-description: When enabled, client-side security's resource monitoring uses a Content Security Policy (CSP) report-only HTTP header to gather information about all the scripts running on your application.
+description: Configure client-side security monitoring, logging, and connection tracking settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -53,8 +53,8 @@ Only available to customers with Client-Side Security Advanced.
 
 To configure the CSP reporting endpoint:
 
-* [  New dashboard ](#tab-panel-3340)
-* [ Old dashboard ](#tab-panel-3341)
+* [  New dashboard ](#tab-panel-3664)
+* [ Old dashboard ](#tab-panel-3665)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -76,8 +76,8 @@ By default, client-side security only checks the domain against malicious threat
 
 ### Configure the connection target details to use
 
-* [  New dashboard ](#tab-panel-3342)
-* [ Old dashboard ](#tab-panel-3343)
+* [  New dashboard ](#tab-panel-3666)
+* [ Old dashboard ](#tab-panel-3667)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -97,8 +97,8 @@ When you turn off client-side security's resource monitoring, you lose visibilit
 
 To turn off client-side resource monitoring:
 
-* [  New dashboard ](#tab-panel-3344)
-* [ Old dashboard ](#tab-panel-3345)
+* [  New dashboard ](#tab-panel-3668)
+* [ Old dashboard ](#tab-panel-3669)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -111,8 +111,8 @@ To turn off client-side resource monitoring:
 
 Turning off client-side security's resource monitoring does not turn off [content security rules](https://developers.cloudflare.com/client-side-security/rules/) (previously known as policies). To turn off content security rules:
 
-* [  New dashboard ](#tab-panel-3338)
-* [ Old dashboard ](#tab-panel-3339)
+* [  New dashboard ](#tab-panel-3662)
+* [ Old dashboard ](#tab-panel-3663)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

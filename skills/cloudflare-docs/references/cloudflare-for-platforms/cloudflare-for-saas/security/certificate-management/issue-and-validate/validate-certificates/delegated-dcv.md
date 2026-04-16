@@ -1,6 +1,6 @@
 ---
 title: Delegated
-description: Delegated DCV allows SaaS providers to delegate the DCV process to Cloudflare.
+description: Delegate domain control validation to Cloudflare for automated certificate issuance.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

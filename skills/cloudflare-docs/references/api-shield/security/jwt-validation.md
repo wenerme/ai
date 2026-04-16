@@ -1,6 +1,6 @@
 ---
 title: JSON Web Tokens validation
-description: JSON web tokens (JWT) are often used as part of an authentication component on many web applications today. Since JWTs are crucial to identifying users and their access, ensuring the token’s integrity is important.
+description: Verify incoming JWTs to prevent replay attacks and token tampering at the edge.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -28,8 +28,8 @@ A JWT validation configuration consists of creating a token validation configura
 
 ### Add a token validation configuration
 
-* [  New dashboard ](#tab-panel-3160)
-* [ Old dashboard ](#tab-panel-3161)
+* [  New dashboard ](#tab-panel-3470)
+* [ Old dashboard ](#tab-panel-3471)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -52,8 +52,8 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 
 ### Add a JWT validation rule
 
-* [  New dashboard ](#tab-panel-3162)
-* [ Old dashboard ](#tab-panel-3163)
+* [  New dashboard ](#tab-panel-3472)
+* [ Old dashboard ](#tab-panel-3473)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

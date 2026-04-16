@@ -1,6 +1,6 @@
 ---
 title: JA3/JA4 fingerprint
-description: JA3 and JA4 fingerprints help you profile specific SSL/TLS clients across different destination IPs, Ports, and X509 certificates.
+description: Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

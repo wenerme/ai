@@ -1,5 +1,6 @@
 ---
 title: Prevent DDoS attacks
+description: Learning path for preventing DDoS attacks with Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

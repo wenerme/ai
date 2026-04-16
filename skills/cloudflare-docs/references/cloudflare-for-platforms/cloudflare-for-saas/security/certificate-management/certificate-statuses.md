@@ -1,5 +1,6 @@
 ---
 title: Certificate statuses
+description: View certificate status definitions for custom hostname certificates.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

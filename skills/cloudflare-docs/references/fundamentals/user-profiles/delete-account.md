@@ -30,13 +30,13 @@ If your account does not use SSO, you can delete your account on your own.
 
 Before Cloudflare can cancel your account and delete your personal information, you will need to follow the process below for each domain associated with your Cloudflare account:
 
-* [Cancel your subscriptions or add-on services](https://developers.cloudflare.com/billing/cancel-subscription/)
+* [Cancel your subscriptions or add-on services](https://developers.cloudflare.com/billing/manage/cancel-subscription/)
 * [Remove your domain from Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/)
 * [Remove Cloudflare nameservers at your domain registrar](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/)
 * [Disable auto-renew for your Registrar domain(s)](https://developers.cloudflare.com/registrar/account-options/renew-domains#set-up-automatic-renewals)
 * If you are using a Cloudflare [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), [update your DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#edit-dns-records) at your DNS provider to point to your website IPs or hostnames instead of Cloudflare.
-* [Delete payment information](https://developers.cloudflare.com/billing/update-billing-info/#delete-a-payment-method)
-* (_Optional_) [Download a copy of your invoices](https://developers.cloudflare.com/billing/invoices/#download-invoice). Once deleted, the invoices will no longer be accessible and cannot be re-sent to you.
+* [Delete payment information](https://developers.cloudflare.com/billing/get-started/update-billing-info/#delete-a-payment-method)
+* (_Optional_) [Download a copy of your invoices](https://developers.cloudflare.com/billing/manage/invoices/#download-invoice). Once deleted, the invoices will no longer be accessible and cannot be re-sent to you.
 
 ## Delete your Cloudflare account
 

@@ -223,6 +223,37 @@ queries to Google Search. You will be charged for each individual search query
 performed. Retrieved context (text or images) provided by Grounding with Google
 Search is not charged as input tokens.
 
+## Gemini 3.1 Flash TTS Preview
+
+*`gemini-3.1-flash-tts-preview`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-tts-preview)
+
+Our 3.1 Flash Text-to-Speech audio model optimized for price-performant,
+low-latency, controllable speech generation.
+
+Preview models may change before becoming stable and have more restrictive rate
+limits.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $1.00 (text) |
+| Output price | Free of charge | $20.00 (audio) |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.50 (text) |
+| Output price | Not available | $10.00 (audio) |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Audio tokens correspond to 25 tokens per second of audio.
+
 ## Gemini 3 Flash Preview
 
 *`gemini-3-flash-preview`*

@@ -1,6 +1,6 @@
 ---
 title: Statistics and details
-description: DMARC Management (beta) allows you to review whether emails sent on your behalf passed or failed DMARC, SPF, and DKIM authentication checks.
+description: Review whether emails sent on your behalf passed DMARC, SPF, and DKIM checks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

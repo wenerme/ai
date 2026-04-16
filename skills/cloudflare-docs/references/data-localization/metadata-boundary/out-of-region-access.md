@@ -1,6 +1,6 @@
 ---
 title: Out of region access
-description: With the default configuration for Customer Metadata Boundary, users outside the configured region will not have access to view analytics on the dashboard or the default API endpoint. When Allow out-of-region access is enabled, Customer Logs will still be stored exclusively within the configured region but will be made available to users outside the region as well.
+description: Allow authorized users to access logs and analytics stored outside their physical region.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

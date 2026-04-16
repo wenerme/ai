@@ -1,6 +1,6 @@
 ---
 title: Client-side security API
-description: You can enable and disable client-side security's resource monitoring, configure settings, and fetch information about detected scripts and connections using the client-side security API (formerly known as Page Shield API).
+description: Manage resource monitoring, settings, and detected scripts using the client-side security API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -40,7 +40,7 @@ To transfer a domain from one Cloudflare account to another, you will need:
 
 Warning
 
-Before transferring an active Cloudflare domain to another Cloudflare account, you must remove any [DNSSEC configurations](https://developers.cloudflare.com/dns/dnssec/) and [add-ons or subscriptions](https://developers.cloudflare.com/billing/cancel-subscription/).
+Before transferring an active Cloudflare domain to another Cloudflare account, you must remove any [DNSSEC configurations](https://developers.cloudflare.com/dns/dnssec/) and [add-ons or subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/).
 
 We also recommend [exporting](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#export-records) the DNS records of your zone while it is in the previous account. Then, you can [import](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#import-records) the correct DNS records into the new account. If you miss this step, Cloudflare will import your proxied DNS records, which might cause your domain to experience a [1000 error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/).
 

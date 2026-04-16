@@ -16,43 +16,91 @@ Copy page
 
 # Billing
 
-Welcome to the Cloudflare Billing and Payment Help Center! Here you will find answers to some of the most common and impactful issues facing our customers today. Most current issues revolve around:
+Cloudflare bills on a 30-day cycle for each domain on your account. Plans and add-on services are billed separately, and some products use [usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/). You can pay with Visa, Mastercard, American Express, Discover, PayPal, Apple Pay, Google Pay, Stripe Link, or UnionPay.
 
-* Payment failures
-* Outstanding balances
-* Subscription renewals
-* Cancellation requests
-* Updating payment methods
-* Understanding billing cycles
+## Get started
 
-An overview of these issues can be found below:
+Set up your billing profile and payment methods.
 
-## Failed Plan Modifications
+[Create billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/) 
 
-You may receive an error when attempting to purchase a product, pay a balance or change a paid plan. Review the following guides for possible solutions:
+Add a payment method to your Cloudflare account and configure your billing profile.
 
-* [Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot-failed-payments/)
-* [Resolve the zone cannot be upgraded error](https://developers.cloudflare.com/billing/resolve-zone-cannot-be-ugpraded/)
-* [Resolve "You cannot modify this subscription"](https://developers.cloudflare.com/billing/resolve-you-cannot-modify-this-subscription/)
+[Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) 
 
-If the problems above do not apply to you, there are intermittent issues with subscription upgrades, downgrades, and cancellations. This may result in billing charges being applied without the subscription level being updated. In these instances, you should [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+Change your payment method, billing address, or billing email address.
 
-## Cannot update or remove payment methods
+## Manage
 
-You should be able to add, update, and remove payment methods in your account. If you are seeing difficulties doing this, refer to the following guides for possible solutions:
+Change plans, view invoices, monitor usage, and manage subscriptions.
 
-* [Update billing information](https://developers.cloudflare.com/billing/update-billing-info/)
-* [Resolve "Cannot remove payment method"](https://developers.cloudflare.com/billing/resolve-cannot-remove-payment-method/)
+[Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) 
 
-If the solutions above do not apply to you, we have observed reports of being unable to update or add payment methods within the dashboard. In these instances, you should [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+Track daily usage-based costs across your account with the billable usage dashboard.
 
-## Cancellations
+[Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) 
 
-Cancellations are not processed until the end of the billing period. To understand more, refer to [Cancel Cloudflare subscriptions](https://developers.cloudflare.com/billing/cancel-subscription/).
+Get notified by email when your usage-based spend crosses a dollar threshold.
 
-## Non-refundable occurrences
+[Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) 
 
-In accordance with the Cloudflare Billing Policy, be aware that some [Non-Refundable occurrences](https://developers.cloudflare.com/billing/billing-policy/#non-refundable-occurrences) cannot be refunded and you should not contact support to request refunds for these.
+Upgrade or downgrade the plan associated with a specific Cloudflare domain.
+
+[Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) 
+
+Cancel Cloudflare plans, add-ons, or subscriptions.
+
+[Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) 
+
+Pay overdue invoices and resolve outstanding balances on your account.
+
+[Invoices](https://developers.cloudflare.com/billing/manage/invoices/) 
+
+View, download, and manage your Cloudflare invoices.
+
+## Understand
+
+Learn how Cloudflare billing works.
+
+[Preview services](https://developers.cloudflare.com/billing/understand/preview-services/) 
+
+Try certain products and features for 30 days as a contracted customer.
+
+[Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) 
+
+Understand billing cycles, refund policies, and how charges are calculated.
+
+[Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) 
+
+Learn how usage-based charges work for products like Workers and other metered services.
+
+[Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/) 
+
+Understand how Cloudflare collects sales tax based on your billing address.
+
+## Troubleshoot
+
+Resolve payment failures, invoice issues, and error messages.
+
+[Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/) 
+
+Fix errors when purchasing products, changing subscriptions, or paying invoices.
+
+[Troubleshoot invoices](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-invoices/) 
+
+Resolve issues with invoice data, billing contacts, or missing invoices.
+
+[Resolve the zone cannot be upgraded error](https://developers.cloudflare.com/billing/troubleshoot/resolve-zone-cannot-be-upgraded/) 
+
+Fix errors when upgrading a domain or purchasing a subscription.
+
+[Resolve "you cannot modify this subscription"](https://developers.cloudflare.com/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/) 
+
+Fix errors when cancelling or modifying a subscription that is already scheduled for cancellation.
+
+[Resolve "cannot remove payment method"](https://developers.cloudflare.com/billing/troubleshoot/resolve-cannot-remove-payment-method/) 
+
+Fix errors when attempting to remove a payment method linked to active subscriptions.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}}]}

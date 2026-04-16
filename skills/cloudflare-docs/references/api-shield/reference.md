@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Refer to the following pages for more information about API Shield:
+description: Reference information for API Shield, including Terraform and classic validation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

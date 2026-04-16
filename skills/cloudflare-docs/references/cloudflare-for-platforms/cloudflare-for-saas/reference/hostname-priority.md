@@ -1,5 +1,6 @@
 ---
 title: Certificate and hostname priority
+description: How Cloudflare determines certificate and hostname priority for custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

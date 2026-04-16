@@ -1,6 +1,6 @@
 ---
 title: Validation status
-description: When you validate a custom hostname, that hostname can be in several different statuses.
+description: Possible statuses for custom hostname validation and their meanings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

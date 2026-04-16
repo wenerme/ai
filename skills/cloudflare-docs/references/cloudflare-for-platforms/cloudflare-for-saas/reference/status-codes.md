@@ -1,6 +1,6 @@
 ---
 title: Status codes
-description: Cloudflare uses many different status codes for Cloudflare for SaaS. They can be related to:
+description: API status codes for custom hostnames and certificate signing requests.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

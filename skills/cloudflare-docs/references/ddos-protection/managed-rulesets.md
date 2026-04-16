@@ -1,6 +1,6 @@
 ---
 title: Managed rulesets
-description: The DDoS Attack Protection managed rulesets provide comprehensive protection against a variety of DDoS attacks across L3/4 (network layer) and L7 (application layer) of the OSI model.
+description: Pre-configured DDoS rulesets that protect against attacks at layers 3, 4, and 7.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Session identifiers
-description: While not strictly required, it is recommended that you configure your session identifiers when getting started with API Shield. When Cloudflare inspects your API traffic for individual sessions, we can offer more tools for visibility, management, and control.
+description: Configure session identifiers to track authenticated API traffic per user.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -30,8 +30,8 @@ You must have specific entitlements to configure session identifiers or cookies 
 
 ## To set up session identifiers
 
-* [  New dashboard ](#tab-panel-3154)
-* [ Old dashboard ](#tab-panel-3155)
+* [  New dashboard ](#tab-panel-3464)
+* [ Old dashboard ](#tab-panel-3465)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

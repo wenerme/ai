@@ -1,6 +1,6 @@
 ---
 title: How DDoS protection works
-description: To detect and mitigate DDoS attacks, Cloudflare's autonomous edge and centralized DDoS systems analyze traffic samples out of path, which allows Cloudflare to asynchronously detect DDoS attacks without causing latency or impacting performance.
+description: How Cloudflare analyzes traffic and applies autonomous mitigation at the network edge.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

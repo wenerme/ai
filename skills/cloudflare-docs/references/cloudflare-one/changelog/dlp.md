@@ -18,6 +18,27 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dlp.xml) 
 
+## 2026-04-14
+
+  
+**DLP account-level settings**   
+
+**Account-level DLP settings are now available** in Cloudflare One. You can now configure advanced DLP settings at the account level, including OCR, AI context analysis, and payload masking. This provides consistent enforcement across all DLP profiles and simplifies configuration management.
+
+Key changes:
+
+* **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
+* **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
+* **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
+
+**Migration details:**
+
+During the migration period, if a setting is enabled on any profile, it will automatically be enabled at the account level. This means profiles that previously had a setting disabled may now have it enabled if another profile in the account had it enabled.
+
+Settings are evaluated using OR logic - a setting is enabled if it is turned on at either the account level or the profile level. However, profile-level settings cannot be enabled when the account-level setting is off.
+
+For more details, refer to the [DLP advanced settings documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/).
+
 ## 2025-10-01
 
   

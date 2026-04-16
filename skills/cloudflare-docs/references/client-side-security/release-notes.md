@@ -1,6 +1,6 @@
 ---
 title: Release notes
-description: Subscribe to RSS
+description: Track the latest updates and changes to client-side security features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

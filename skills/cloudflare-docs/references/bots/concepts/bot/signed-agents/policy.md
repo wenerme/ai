@@ -1,6 +1,6 @@
 ---
 title: Signed agents policy
-description: In order to be listed by Cloudflare as a signed agent, your agent must conform to the below requirements. To provide the best possible protection to our customers, this policy may change in the future as we adapt to new bot behaviors.
+description: Requirements an agent must meet to be listed as a Cloudflare signed agent.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

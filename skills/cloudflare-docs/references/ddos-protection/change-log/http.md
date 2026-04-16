@@ -1,6 +1,6 @@
 ---
 title: HTTP DDoS managed ruleset
-description: This section contains past and upcoming changes to the HTTP DDoS Attack Protection managed ruleset.
+description: Changelog of rule updates for the HTTP DDoS Attack Protection managed ruleset.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

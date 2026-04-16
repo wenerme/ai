@@ -1,6 +1,6 @@
 ---
 title: Workers
-description: In the following sections, we will give you some details about how to configure Workers with Regional Services and Customer Metadata Boundary.
+description: Configure Workers with Regional Services and Customer Metadata Boundary.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

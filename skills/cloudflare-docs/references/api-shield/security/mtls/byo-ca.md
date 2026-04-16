@@ -1,5 +1,6 @@
 ---
 title: Bring your own CA
+description: Use your own certificate authority for mTLS client certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

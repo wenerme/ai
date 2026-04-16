@@ -1,6 +1,6 @@
 ---
 title: Managed rulesets
-description: If you are interested in WAF for SaaS but unsure of where to start, Cloudflare recommends using WAF Managed Rules. The Cloudflare security team creates and manages a variety of rules designed to detect common attack vectors and protect applications from vulnerabilities. These rules are offered in managed rulesets, like Cloudflare Managed and OWASP, which can be deployed with different settings and sensitivity levels.
+description: Deploy WAF managed rulesets per custom hostname using WAF for SaaS.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

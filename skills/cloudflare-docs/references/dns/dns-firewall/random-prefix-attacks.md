@@ -1,6 +1,6 @@
 ---
 title: Random prefix attack mitigation
-description: Random prefix attacks are when someone sends a lot of traffic to subdomains that are highly unlikely to exist (12345.example.com, abcdefg.example.com), but are still associated with your main domain (example.com).
+description: Block random prefix DNS queries that target your upstream authoritative nameservers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

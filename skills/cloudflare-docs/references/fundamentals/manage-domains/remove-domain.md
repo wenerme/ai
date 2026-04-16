@@ -16,13 +16,13 @@ Copy page
 
 # Remove a domain
 
-Consider the following sections on how you can remove domains from Cloudflare. Removing your domain cancels all active subscriptions on that domain, which will not be refunded per our [billing policy](https://developers.cloudflare.com/billing/billing-policy/). If you add this domain back to Cloudflare later, you will need to re-purchase all subscriptions. Removing your domain from Cloudflare does not change your domain registration.
+Consider the following sections on how you can remove domains from Cloudflare. Removing your domain cancels all active subscriptions on that domain, which will not be refunded per our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/). If you add this domain back to Cloudflare later, you will need to re-purchase all subscriptions. Removing your domain from Cloudflare does not change your domain registration.
 
 ## Before removing your domain
 
 If you experience website issues, we recommend [temporarily pausing Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) to evaluate your website's performance.
 
-If you have an Enterprise plan, you need to [change the zone plan](https://developers.cloudflare.com/billing/change-plan/#change-plan-type) to **Free**.
+If you have an Enterprise plan, you need to [change the zone plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**.
 
 If you need to re-add the domain in a different account, make sure the current settings have been saved. For example, you may [Import and export DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/).
 
@@ -38,7 +38,7 @@ If you have just added a domain and have not configured its plan yet, the domain
 
 ### Actions within Cloudflare
 
-* [Cancel active add-on subscriptions](https://developers.cloudflare.com/billing/cancel-subscription/).
+* [Cancel active add-on subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/).
 * [Delete all the Logpush jobs for that domain](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#optional---delete-a-job)
 * If you use Cloudflare Registrar:  
    * [Disable domain auto-renewal](https://developers.cloudflare.com/registrar/account-options/renew-domains/) or [transfer your domain out of Cloudflare](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/).  
@@ -53,7 +53,7 @@ If you have just added a domain and have not configured its plan yet, the domain
 2. On the **Overview** page, find **Advanced Actions** and then select **Remove Site from Cloudflare**.  
 ![Remove site from Cloudflare is an option under Advanced Actions](https://developers.cloudflare.com/_astro/remove-domain.DlSLb0OG_kxVfQ.webp)  
 Note  
-If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove Site from Cloudflare**.  
+If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove Site from Cloudflare**.  
     
 If this does not work, contact your Customer Success Manager.
 3. Select **Confirm**.

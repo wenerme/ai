@@ -1,6 +1,6 @@
 ---
 title: Rule categories
-description: The main categories (or tags) of Network-layer DDoS Attack Protection managed rules are the following:
+description: Categories of rules in the Network-layer DDoS Attack Protection managed ruleset.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare API Shield
-description: APIs have become the backbone of popular web services, helping the Internet become more accessible and useful.
+description: Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -22,7 +22,7 @@ Identify and address your API vulnerabilities.
 
 Note
 
-Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
 
 ## Why care about API security?
 

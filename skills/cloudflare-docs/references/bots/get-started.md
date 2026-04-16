@@ -1,6 +1,6 @@
 ---
 title: Get started with Cloudflare bot solutions
-description: Refer to the following pages to get started with Cloudflare's bot solutions based on your plan type:
+description: Set up Bot Fight Mode, Super Bot Fight Mode, or Bot Management for Enterprise.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

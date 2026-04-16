@@ -1,6 +1,6 @@
 ---
 title: Scraping detections
-description: Scraping behavioral detection IDs allow you to better protect your website from volumetric scraping attacks by identifying anomalous behavior. The detection IDs below are specifically designed to catch suspicious scraping activity at the zone level.
+description: Detection IDs for identifying volumetric scraping attacks by ASN and fingerprint.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -29,8 +29,8 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access scraping detections:
 
-* [  New dashboard ](#tab-panel-3204)
-* [ Old dashboard ](#tab-panel-3205)
+* [  New dashboard ](#tab-panel-3514)
+* [ Old dashboard ](#tab-panel-3515)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

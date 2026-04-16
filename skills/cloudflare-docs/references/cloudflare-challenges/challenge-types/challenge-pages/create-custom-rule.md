@@ -1,6 +1,6 @@
 ---
 title: Implement a Challenge Page via WAF custom rules
-description: You can implement a Challenge Page to your website or application by creating a WAF custom rule.
+description: Create WAF custom rules that issue challenge pages based on bot scores or rate limits.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

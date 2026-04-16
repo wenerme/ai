@@ -1,6 +1,6 @@
 ---
 title: API configuration
-description: Refer to the following pages to configure Advanced TCP Protection and Advanced DNS Protection via the API.
+description: Configure Advanced TCP, DNS, and Flow Protection systems using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

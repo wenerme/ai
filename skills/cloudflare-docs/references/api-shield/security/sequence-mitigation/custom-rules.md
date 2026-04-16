@@ -1,6 +1,6 @@
 ---
 title: Sequence mitigation custom rules
-description: API Shield sequence custom rules use the configured API Shield session identifier to track the order of requests a user has made and the time between requests, and makes them available via Cloudflare Rules. This allows you to write rules that match valid or invalid sequences.
+description: Write custom rules that match valid or invalid API request sequences.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -49,8 +49,8 @@ These sequence fields are available in:
 
 ## Build a sequence custom rule
 
-* [  New dashboard ](#tab-panel-3184)
-* [ Old dashboard ](#tab-panel-3185)
+* [  New dashboard ](#tab-panel-3494)
+* [ Old dashboard ](#tab-panel-3495)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

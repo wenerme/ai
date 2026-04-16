@@ -1,6 +1,6 @@
 ---
 title: How Challenges work
-description: Challenges can be issued in three primary ways depending on which Cloudflare products or features are in use. Each method is designed to balance security with seamless visitor experience.
+description: How Cloudflare issues challenges through WAF rules, Bot Management, and Bot Fight Mode.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

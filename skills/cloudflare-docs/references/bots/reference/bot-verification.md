@@ -1,6 +1,6 @@
 ---
 title: Bot verification methods
-description: Refer to the following pages for more information on Cloudflare's validation methods for Verified and Signed bots.
+description: Validation methods Cloudflare uses to verify bots and signed agents.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

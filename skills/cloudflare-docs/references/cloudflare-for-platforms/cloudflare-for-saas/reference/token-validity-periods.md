@@ -1,6 +1,6 @@
 ---
 title: Token validity periods
-description: When you perform TXT domain control validation, you will need to share these tokens with your customers.
+description: DCV token expiration periods by certificate authority for TXT validation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

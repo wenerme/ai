@@ -1,6 +1,6 @@
 ---
 title: Static resource protection
-description: Pro, Business, and Enterprise customers can use Cloudflare's bot solutions to protect their static resources from bots.
+description: Extend bot protection to static resources like images, CSS, and JavaScript files.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -26,8 +26,8 @@ If you enable static resource protection, you may block good bots — like mail 
 
 To enable this feature as a Pro or Business customer or an Enterprise customer without Bot Management:
 
-* [  New dashboard ](#tab-panel-3210)
-* [ Old dashboard ](#tab-panel-3211)
+* [  New dashboard ](#tab-panel-3520)
+* [ Old dashboard ](#tab-panel-3521)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

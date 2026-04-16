@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: The following pages include additional information about client-side security:
+description: Reference information for client-side security, including API, settings, and compliance.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

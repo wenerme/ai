@@ -1,6 +1,6 @@
 ---
 title: Sequence Analytics
-description: Sequence Analytics tracks the order of API endpoint requests over time, allowing you to discover how users interact with your API. Sequence Analytics groups and highlights important user journeys (sequences) across your API. You can enforce preferred sequences using Sequence mitigation.
+description: Track the order of API requests over time to discover user journeys and sequences.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

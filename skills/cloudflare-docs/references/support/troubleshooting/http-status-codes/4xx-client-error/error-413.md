@@ -35,7 +35,7 @@ The upload limit for the Cloudflare API depends on your plan. If you exceed this
 
 Keep in mind, customers can reduce the **Maximum Upload Size** from the zone's **Network** page which can cause a `413`.
 
-If you require a larger upload, break up requests into smaller chunks, change your DNS record to [DNS-only](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records), or [upgrade your plan](https://developers.cloudflare.com/billing/change-plan/).
+If you require a larger upload, break up requests into smaller chunks, change your DNS record to [DNS-only](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records), or [upgrade your plan](https://developers.cloudflare.com/billing/manage/change-plan/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/4xx-client-error/","name":"4xx Client Error"}},{"@type":"ListItem","position":6,"item":{"@id":"/support/troubleshooting/http-status-codes/4xx-client-error/error-413/","name":"Error 413"}}]}

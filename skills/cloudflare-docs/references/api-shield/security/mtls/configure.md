@@ -1,6 +1,6 @@
 ---
 title: Configure mTLS
-description: When you specify API hosts in mTLS authentication, Cloudflare will block all requests that do not have a client certificate for mTLS authentication.
+description: Set up mTLS authentication rules to require client certificates for API hosts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

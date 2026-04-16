@@ -1,6 +1,6 @@
 ---
 title: Browser
-description: Wrangler commands for interacting with Cloudflare Browser Rendering.
+description: Wrangler commands for interacting with Cloudflare Browser Run.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,15 +16,15 @@ Copy page
 
 # Browser
 
-Interact with the [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) service using Wrangler.
+Interact with the [Browser Run](https://developers.cloudflare.com/browser-run/) service using Wrangler.
 
 ## `browser create`
 
 Create a new browser rendering session
 
-* [  npm ](#tab-panel-8086)
-* [  pnpm ](#tab-panel-8087)
-* [  yarn ](#tab-panel-8088)
+* [  npm ](#tab-panel-8280)
+* [  pnpm ](#tab-panel-8281)
+* [  yarn ](#tab-panel-8282)
 
 Terminal window
 
@@ -83,9 +83,9 @@ Automatically provision draft bindings with new resources
 
 Close a browser rendering session
 
-* [  npm ](#tab-panel-8089)
-* [  pnpm ](#tab-panel-8090)
-* [  yarn ](#tab-panel-8091)
+* [  npm ](#tab-panel-8283)
+* [  pnpm ](#tab-panel-8284)
+* [  yarn ](#tab-panel-8285)
 
 Terminal window
 
@@ -140,9 +140,9 @@ Automatically provision draft bindings with new resources
 
 List active browser rendering sessions
 
-* [  npm ](#tab-panel-8092)
-* [  pnpm ](#tab-panel-8093)
-* [  yarn ](#tab-panel-8094)
+* [  npm ](#tab-panel-8286)
+* [  pnpm ](#tab-panel-8287)
+* [  yarn ](#tab-panel-8288)
 
 Terminal window
 
@@ -195,9 +195,9 @@ Automatically provision draft bindings with new resources
 
 View a live browser session
 
-* [  npm ](#tab-panel-8095)
-* [  pnpm ](#tab-panel-8096)
-* [  yarn ](#tab-panel-8097)
+* [  npm ](#tab-panel-8289)
+* [  pnpm ](#tab-panel-8290)
+* [  yarn ](#tab-panel-8291)
 
 Terminal window
 

@@ -1,6 +1,6 @@
 ---
 title: Endpoint labeling service
-description: API Shield's labeling service will help you organize your endpoints and address vulnerabilities in your API. The labeling service comes with managed and user-defined labels.
+description: Organize API endpoints and address vulnerabilities with managed and custom labels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -183,8 +183,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-3268)
-* [ Old dashboard ](#tab-panel-3269)
+* [  New dashboard ](#tab-panel-3446)
+* [ Old dashboard ](#tab-panel-3447)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -224,8 +224,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-3270)
-* [ Old dashboard ](#tab-panel-3271)
+* [  New dashboard ](#tab-panel-3448)
+* [ Old dashboard ](#tab-panel-3449)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -243,8 +243,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-3266)
-* [ Old dashboard ](#tab-panel-3267)
+* [  New dashboard ](#tab-panel-3444)
+* [ Old dashboard ](#tab-panel-3445)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

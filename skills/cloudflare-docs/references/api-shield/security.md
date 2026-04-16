@@ -1,6 +1,6 @@
 ---
 title: Security
-description: Cloudflare offers the following features to help secure your APIs:
+description: Discover, validate, and protect API endpoints with API Shield security features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

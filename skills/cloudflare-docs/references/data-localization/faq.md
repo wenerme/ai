@@ -1,6 +1,6 @@
 ---
 title: FAQs
-description: No, they are not. DLP stands for Data Loss Prevention, and it is part of Cloudflare’s Zero Trust offering (requiring Gateway). It allows customers to scan web traffic and SaaS apps for sensitive data like secret keys, financial information (credit card numbers), and other keywords.
+description: Answers to common questions about the Data Localization Suite and GDPR compliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

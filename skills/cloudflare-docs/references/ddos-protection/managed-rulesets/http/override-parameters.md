@@ -1,6 +1,6 @@
 ---
 title: Parameters
-description: Configure the HTTP DDoS Attack Protection managed ruleset to change the action applied to a given attack or modify the sensitivity level of the detection mechanism. You can configure the managed ruleset in the Cloudflare dashboard or define overrides via Rulesets API.
+description: Configurable parameters for HTTP DDoS Attack Protection rule overrides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

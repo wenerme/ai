@@ -1,6 +1,6 @@
 For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
 
-OpenRouter supports image generation through models that have `"image"` in their `output_modalities`. These models can create images from text prompts when you specify the appropriate modalities in your request.
+OpenRouter supports image generation via the [Chat Completions](/docs/api/api-reference/chat/send-chat-completion-request) and [Responses](/docs/api/reference/responses/overview) endpoints. You can find the supported models, their capabilities, and pricing by filtering our [model list by image output](https://openrouter.ai/models?output_modalities=image).
 
 ## Model Discovery
 

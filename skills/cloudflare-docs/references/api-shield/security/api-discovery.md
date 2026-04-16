@@ -1,6 +1,6 @@
 ---
 title: API Discovery
-description: Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your attack surface area.
+description: Map out and understand your API attack surface with API Discovery.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -87,8 +87,8 @@ Your API endpoints are discovered with both the Session Identifier-based Discove
 
 To access Machine Learning-based Discovery:
 
-* [  New dashboard ](#tab-panel-3156)
-* [ Old dashboard ](#tab-panel-3157)
+* [  New dashboard ](#tab-panel-3466)
+* [ Old dashboard ](#tab-panel-3467)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

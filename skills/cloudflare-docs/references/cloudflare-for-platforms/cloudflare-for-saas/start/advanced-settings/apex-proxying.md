@@ -1,6 +1,6 @@
 ---
 title: Apex proxying
-description: Apex proxying allows your customers to use their apex domains (example.com) with your SaaS application.
+description: Allow your customers to use apex domains with your SaaS application.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

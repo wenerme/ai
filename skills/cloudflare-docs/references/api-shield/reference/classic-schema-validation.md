@@ -1,6 +1,6 @@
 ---
 title: Classic Schema validation (deprecated)
-description: Use the API Shield interface to configure API Schema validation, which validates requests according to the API schema you provide.
+description: Reference for the deprecated classic Schema validation feature in API Shield.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

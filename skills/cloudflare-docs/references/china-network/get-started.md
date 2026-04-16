@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Contact your sales team for more information on these steps.
+description: Set up the Cloudflare China Network package on your Enterprise plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

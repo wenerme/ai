@@ -1,6 +1,6 @@
 ---
 title: Custom certificates
-description: If your customers need to provide their own key material, you may want to upload a custom certificate. Cloudflare will automatically bundle the certificate with a certificate chain optimized for maximum browser compatibility.
+description: Upload your own TLS certificates for custom hostnames that require custom key material.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

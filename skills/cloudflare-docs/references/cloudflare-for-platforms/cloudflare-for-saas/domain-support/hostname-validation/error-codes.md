@@ -1,6 +1,6 @@
 ---
 title: Error codes
-description: When you validate a custom hostname, you might encounter the following error codes.
+description: Error codes you may encounter when validating custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

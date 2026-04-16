@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Refer to the following pages for more information on how challenges work:
+description: Core concepts for Cloudflare Challenges, including clearance cookies and how challenges work.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

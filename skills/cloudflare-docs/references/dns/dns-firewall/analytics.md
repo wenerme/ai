@@ -1,6 +1,6 @@
 ---
 title: Analytics and logs
-description: Consider the sections below to learn how to access analytics and logs for your DNS Firewall.
+description: Access DNS Firewall query analytics and configure Logpush for DNS logs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

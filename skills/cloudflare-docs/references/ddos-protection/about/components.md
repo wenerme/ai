@@ -1,6 +1,6 @@
 ---
 title: Main components
-description: The Cloudflare Autonomous Edge is powered by the denial-of-service daemon (dosd), which is a home-grown software-defined system. The flow tracking daemon, flowtrackd, is our stateful mitigation platform alongside dosd. A dosd instance runs in every single server in every one of Cloudflare global network's data centers around the world. These dosd instances can detect and mitigate DDoS attacks autonomously without requiring centralized consensus. Cloudflare users can configure this system through DDoS Attack Protection managed rulesets.
+description: Key components of Cloudflare DDoS protection, including managed rulesets and advanced systems.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Advanced DDoS systems
-description: Refer to the following pages for more information on Cloudflare's Advanced DDoS systems:
+description: Advanced TCP, DNS, and flow-based DDoS protection for Magic Transit customers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

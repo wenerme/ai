@@ -1,6 +1,6 @@
 ---
 title: Cloudflare bot solutions
-description: While Cloudflare offers several products that relate to bot traffic, this section reviews our bot-specific products, Bot Fight Mode, Super Bot Fight Mode, and Bot Management for Enterprise.
+description: Identify and mitigate automated traffic to protect your domain from bad bots.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -24,7 +24,7 @@ While Cloudflare offers several products that relate to bot traffic, this sectio
 
 Note
 
-Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
 
 ## Which bot solution do I need?
 

@@ -1,6 +1,6 @@
 ---
 title: Exclude a prefix
-description: To exclude a prefix or a prefix subset from Advanced DDoS Protection:
+description: Exclude a prefix or prefix subset from Advanced DDoS Protection monitoring.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

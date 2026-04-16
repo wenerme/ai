@@ -1,0 +1,27 @@
+---
+title: Manage
+image: https://developers.cloudflare.com/core-services-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/billing/manage/index.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Manage
+
+* [ Pay an outstanding balance ](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/)
+* [ Change domain plan ](https://developers.cloudflare.com/billing/manage/change-plan/)
+* [ Cancel Cloudflare subscriptions ](https://developers.cloudflare.com/billing/manage/cancel-subscription/)
+* [ Invoices ](https://developers.cloudflare.com/billing/manage/invoices/)
+* [ Monitor billable usage ](https://developers.cloudflare.com/billing/manage/billable-usage/)
+* [ Budget alerts ](https://developers.cloudflare.com/billing/manage/budget-alerts/)
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}}]}
+```

@@ -1,6 +1,6 @@
 ---
 title: Proxy status
-description: While your DNS records make your website or application available to visitors and other web services, the proxy status of a DNS record defines how Cloudflare treats incoming DNS queries for that record.
+description: While your DNS records contain information about your domain, the proxy status controls whether HTTP/HTTPS traffic for that record routes through Cloudflare's network or goes directly to your origin server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,11 +16,13 @@ Copy page
 
 # Proxy status
 
-While your [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) make your website or application available to visitors and other web services, the proxy status of a DNS record defines how Cloudflare treats incoming DNS queries for that record.
+While your [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/) contain information about your domain, the proxy status controls whether HTTP/HTTPS traffic for that record routes through Cloudflare's network or goes directly to your origin server.
 
-The records you can proxy through Cloudflare are [records used for IP address resolution](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution) — meaning A, AAAA, or CNAME records.
+When a record is **Proxied**, Cloudflare sits between your visitors and your server — optimizing, caching, and protecting traffic along the way. When a record is **DNS-only**, Cloudflare responds with your server's actual IP address and does not route HTTP/HTTPS traffic through its network.
 
-Cloudflare recommends setting to proxied all A, AAAA, and CNAME records that are used for serving web traffic. For example, CNAME records being used to verify your domain for a third-party service should not be proxied.
+Only [records used for IP address resolution](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution) — A, AAAA, and CNAME records — can be proxied. Other record types (such as MX or TXT) are always DNS-only.
+
+Cloudflare recommends proxying all A, AAAA, and CNAME records that serve web traffic. Records used for other purposes, such as [CNAME records that prove your domain ownership](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/cname-domain-verification/), should not be proxied.
 
 Note
 
@@ -28,11 +30,11 @@ Proxying is on by default when you onboard a domain via the dashboard.
 
 ### Benefits
 
-When you set a DNS record to **Proxied** (also known as orange-clouded), Cloudflare can:
+When you set a DNS record to **Proxied** — shown as an orange cloud icon in the dashboard, also known as "orange-clouded" — Cloudflare can:
 
-* Protect your origin server from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+* Protect your origin server (the server hosting your website or application) from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 * [Optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) all requests to your application.
-* Apply your configurations for a variety of Cloudflare products.
+* Apply your Cloudflare product configurations (such as [WAF](https://developers.cloudflare.com/waf/) rules, [caching](https://developers.cloudflare.com/cache/), and [redirect rules](https://developers.cloudflare.com/rules/url-forwarding/)) to incoming traffic.
 
 Warning
 
@@ -51,8 +53,8 @@ In the example DNS table above, there are two DNS records. The record with the n
 
 This means that:
 
-* A DNS query to the proxied record `blog.example.com` will be answered with a Cloudflare [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) instead of `192.0.2.1`. This ensures that HTTP/HTTPS requests for this name will be sent to Cloudflare's network and can be proxied, which allows the [benefits listed above](#benefits).
-* A DNS query to the DNS-only record `shop.example.com` will be answered with the actual origin IP address, `192.0.2.2`. In addition to exposing your origin IP address and not benefitting from several features, Cloudflare cannot provide HTTP/HTTPS analytics on those requests (only DNS analytics).
+* A DNS query to the proxied record `blog.example.com` will be answered with Cloudflare [anycast IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) — shared IP addresses used to route traffic through a nearby data center — instead of `192.0.2.1`. This ensures that HTTP/HTTPS requests for this name will be sent to Cloudflare's network and can be proxied, which allows the [benefits listed above](#benefits).
+* A DNS query to the DNS-only record `shop.example.com` will be answered with the actual origin IP address, `192.0.2.2`. This exposes your origin IP address to anyone who queries the record, which removes a layer of protection against targeted attacks. Cloudflare also cannot provide HTTP/HTTPS analytics on those requests (only DNS analytics).
 
 For further context, refer to [How Cloudflare works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
 
@@ -66,11 +68,11 @@ The sections below describe specific behaviors and expected outcomes when you ha
 
 By default, all proxied records have a time to live (TTL) of **Auto**, which is set to 300 seconds. This value cannot be edited.
 
-Since only [records used for IP address resolution](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ip-address-resolution) can be proxied, this setting ensures that potential changes to the assigned [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) will take effect quickly, as recursive resolvers will not cache them for longer than 300 seconds (five minutes).
+This short TTL ensures that if Cloudflare changes the [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) assigned to your record, the change takes effect quickly. Recursive resolvers — the DNS servers that look up records on behalf of end users — will not cache the old address for longer than 300 seconds (five minutes).
 
 Note
 
-It may take longer than five minutes for you to actually experience record changes, as your local DNS cache may take longer to update.
+It may take longer than five minutes for you to actually experience record changes, as your local DNS cache may take longer to update. Also, Cloudflare reserves the right to change the TTL value at any time, although it is very rare and only done when necessary.
 
 ### Mix proxied and unproxied
 
@@ -87,7 +89,7 @@ DNS management for **example.com**:
 
 In this example, all traffic intended for `blog.example.com` will be treated as if both records were **Proxied**.
 
-Cloudflare will also proxy a request if a hostname on a CNAME chain is proxied.
+Cloudflare will also proxy a request if a hostname on a CNAME chain — where one CNAME record points to another — is proxied.
 
 Example
 
@@ -113,9 +115,9 @@ CNAME to a different Cloudflare account is prohibited and will result in a [Erro
 
 ### CNAME records
 
-Proxied [CNAME records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) are flattened by default, as they return Cloudflare anycast IPs. With CNAME flattening, Cloudflare finds the IP address that a CNAME points to, helping DNS queries resolve faster. Refer to [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) for details.
+With [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/), Cloudflare follows the CNAME chain to find the final IP address, helping DNS queries resolve faster. Proxied [CNAME records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) are flattened by default, as they return Cloudflare anycast IPs.
 
-In some cases, Cloudflare will show a warning message or [prevent](https://developers.cloudflare.com/dns/proxy-status/limitations/#proxy-eligibility) you from proxying a CNAME record. This happens to avoid misconfigurations and is generally related to other CDN providers or to specific records used for DKIM validation.
+In some cases, Cloudflare will show a warning message or [prevent](https://developers.cloudflare.com/dns/proxy-status/limitations/#proxy-eligibility) you from proxying a CNAME record. This happens to avoid misconfigurations and is generally related to other CDN providers or to specific records used for [DKIM ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) (email authentication) validation.
 
 Note
 
@@ -123,7 +125,7 @@ Specific CNAME record values with traffic proxied through Cloudflare will enable
 
 ### Protocol optimization
 
-For proxied records, if your domain has [HTTP/2 or HTTP/3 enabled](https://developers.cloudflare.com/speed/optimization/protocol/) and is also using [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare automatically generates corresponding [HTTPS Service (HTTPS) records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#svcb-and-https) on the fly. HTTPS records allow you to provide a client with information about how it should connect to a server upfront, without the need of an initial plaintext HTTP connection.
+For proxied records, if your domain has [HTTP/2 or HTTP/3 enabled](https://developers.cloudflare.com/speed/optimization/protocol/) and is also using [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare automatically generates [HTTPS Service (HTTPS) records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#svcb-and-https) on the fly. These DNS records provide clients with information about how to connect to your server upfront, without the need for an initial plaintext HTTP connection to discover supported protocols.
 
 Note
 
@@ -133,9 +135,9 @@ Both HTTP/2 and HTTP/3 configurations also require that you have an SSL/TLS cert
 
 ## DNS-only records
 
-When an A, AAAA, or CNAME record is **DNS-only** — also known as being gray-clouded — DNS queries for these will resolve to the record's origin IP address, as described in the [example](#example).
+When an A, AAAA, or CNAME record is **DNS-only** — shown as a gray cloud icon in the dashboard, also known as "gray-clouded" — DNS queries for these will resolve to the record's actual origin IP address, as described in the [example](#example).
 
-In addition to potentially exposing your origin IP addresses to bad actors and [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/), leaving your records as **DNS-only** means that Cloudflare cannot [optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) requests to your application or provide analytics on those requests.
+**DNS-only** is only recommended for records that do not serve web traffic, such as records used for email routing or third-party domain verification. For records that serve web traffic, **DNS-only** means your origin IP addresses are visible to anyone who queries the record, potentially exposing your server to bad actors and [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/). Cloudflare also cannot [optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) those requests or provide HTTP/HTTPS analytics on them.
 
 Note
 

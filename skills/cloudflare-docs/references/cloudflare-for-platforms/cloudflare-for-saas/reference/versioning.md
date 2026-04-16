@@ -1,6 +1,6 @@
 ---
 title: Deprecation - Version 1
-description: The first version of SSL for SaaS will be deprecated on September 1, 2021.
+description: Deprecation notice and migration guide for SSL for SaaS Version 1.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Challenge solve rate (CSR)
-description: The Challenge solve rate (CSR) is the percentage of issued challenges — Non-Interactive Challenge, Managed Challenge, or Interactive Challenge actions — that were solved.
+description: Measure the percentage of issued challenges that visitors solve successfully.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -36,8 +36,8 @@ CSR indicates the false positive percentage of a rule. A high CSR means a large 
 
 You can find the CSR of a rule by going to its corresponding dashboard page:
 
-* [  New dashboard ](#tab-panel-3356)
-* [ Old dashboard ](#tab-panel-3357)
+* [  New dashboard ](#tab-panel-3680)
+* [ Old dashboard ](#tab-panel-3681)
 
 For [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), go to your zone > **Security** \> **Security rules**.
 

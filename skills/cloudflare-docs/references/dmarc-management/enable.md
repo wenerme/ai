@@ -1,6 +1,6 @@
 ---
 title: Enable DMARC Management
-description: You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains (for example, example.com, not blog.example.com) and not domains in subdomain setups.
+description: Allow Cloudflare to process DMARC reports for your apex domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

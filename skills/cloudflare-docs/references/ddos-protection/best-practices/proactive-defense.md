@@ -1,6 +1,6 @@
 ---
 title: Proactive DDoS defense
-description: Cloudflare's network automatically mitigates large DDoS attacks, but these attacks can still affect your application.
+description: Strengthen your application against DDoS attacks before they happen.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: If your hostname is proxied through Cloudflare, visitors may experience challenges on your webpages.
+description: Resolve common issues with Cloudflare challenges, including loops and proxied hostnames.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

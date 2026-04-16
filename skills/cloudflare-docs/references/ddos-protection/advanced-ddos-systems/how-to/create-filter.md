@@ -1,6 +1,6 @@
 ---
 title: Create a filter
-description: A filter modifies Advanced TCP Protection's execution mode — monitoring, mitigation (enabled), or disabled — for all incoming packets matching an expression.
+description: Create a filter to define traffic characteristics for Advanced TCP Protection rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

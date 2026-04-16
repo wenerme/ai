@@ -1337,6 +1337,7 @@ components:
         - AionLabs
         - Alibaba
         - Ambient
+        - Baidu
         - Amazon Bedrock
         - Amazon Nova
         - Anthropic
@@ -1748,6 +1749,12 @@ components:
         - type: string
         - $ref: '#/components/schemas/MessagesRequestSystem1'
       title: MessagesRequestSystem
+    AnthropicThinkingDisplay:
+      type: string
+      enum:
+        - summarized
+        - omitted
+      title: AnthropicThinkingDisplay
     MessagesRequestThinkingOneOf0Type:
       type: string
       enum:
@@ -1758,6 +1765,8 @@ components:
       properties:
         budget_tokens:
           type: integer
+        display:
+          $ref: '#/components/schemas/AnthropicThinkingDisplay'
         type:
           $ref: '#/components/schemas/MessagesRequestThinkingOneOf0Type'
       required:
@@ -1785,6 +1794,8 @@ components:
     MessagesRequestThinking2:
       type: object
       properties:
+        display:
+          $ref: '#/components/schemas/AnthropicThinkingDisplay'
         type:
           $ref: '#/components/schemas/MessagesRequestThinkingOneOf2Type'
       required:
@@ -3565,6 +3576,25 @@ components:
         - server_tool_use
         - service_tier
       title: BaseMessagesResultUsage
+    MessagesResultContextManagementAppliedEditsItems:
+      type: object
+      properties:
+        type:
+          type: string
+      required:
+        - type
+      title: MessagesResultContextManagementAppliedEditsItems
+    MessagesResultContextManagement:
+      type: object
+      properties:
+        applied_edits:
+          type: array
+          items:
+            $ref: >-
+              #/components/schemas/MessagesResultContextManagementAppliedEditsItems
+      required:
+        - applied_edits
+      title: MessagesResultContextManagement
     MessagesResultUsageCostDetails:
       type: object
       properties:
@@ -3664,6 +3694,10 @@ components:
           $ref: '#/components/schemas/BaseMessagesResultType'
         usage:
           $ref: '#/components/schemas/MessagesResultUsage'
+        context_management:
+          oneOf:
+            - $ref: '#/components/schemas/MessagesResultContextManagement'
+            - type: 'null'
         provider:
           $ref: '#/components/schemas/ProviderName'
       required:

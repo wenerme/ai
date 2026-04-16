@@ -1,6 +1,6 @@
 ---
 title: Additional configurations
-description: Refer to the following pages for more information on additional bot management configurations:
+description: Advanced bot settings including AI bots, fingerprinting, detection IDs, and custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

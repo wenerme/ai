@@ -53,6 +53,16 @@ OpenAI SDKs are configured to automatically read your API key from the system en
 
 
 
+## Install the Agents SDK
+
+Use the official OpenAI libraries above for direct API requests. Use the OpenAI
+Agents SDK when your application needs code-first orchestration for agents,
+tools, handoffs, guardrails, tracing, or sandbox execution.
+
+- [Agents SDK quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart)
+- [OpenAI Agents SDK for TypeScript](https://github.com/openai/openai-agents-js)
+- [OpenAI Agents SDK for Python](https://github.com/openai/openai-agents-python)
+
 ## Azure OpenAI libraries
 
 Microsoft's Azure team maintains libraries that are compatible with both the OpenAI API and Azure OpenAI services. Read the library documentation below to learn how you can use them with the OpenAI API.

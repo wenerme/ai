@@ -18,6 +18,13 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/dex.xml) 
 
+## 2026-04-15
+
+  
+**Last seen timestamp for Cloudflare One Client devices is more consistent**   
+
+The last seen timestamp for [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) devices is now more consistent across the dashboard. IT teams will see more consistent information about the most recent client event between a device and Cloudflare's network.
+
 ## 2026-02-19
 
   

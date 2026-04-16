@@ -1,6 +1,6 @@
 ---
 title: Workers templates
-description: Refer to the templates below to integrate Bot Management with Cloudflare Workers:
+description: Workers code templates for custom bot management actions and responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

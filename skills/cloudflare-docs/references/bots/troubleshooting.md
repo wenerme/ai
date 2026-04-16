@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Refer to the following pages to troubleshoot issues with Cloudflare's bot solutions:
+description: Troubleshoot common issues with Cloudflare bot solutions and false positives.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

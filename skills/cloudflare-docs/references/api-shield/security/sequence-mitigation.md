@@ -1,6 +1,6 @@
 ---
 title: Sequence mitigation
-description: Sequence mitigation allows you to enforce request patterns for authenticated clients communicating with your API.
+description: Enforce expected API request patterns to detect and block malicious sequences.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Connection request details
-description: When forwarding connections to your origin server, Cloudflare will set request parameters according to the following:
+description: How Cloudflare sets Host headers and SNI when forwarding connections to your origin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

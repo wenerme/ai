@@ -1,6 +1,6 @@
 ---
 title: Common API Calls
-description: As a SaaS provider, you may want to configure and manage Cloudflare for SaaS via the API rather than the Cloudflare dashboard. Below are relevant API calls for creating, editing, and deleting custom hostnames, as well as monitoring, updating, and deleting fallback origins. Further details can be found in the Cloudflare API documentation.
+description: API endpoints for managing custom hostnames and fallback origins.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

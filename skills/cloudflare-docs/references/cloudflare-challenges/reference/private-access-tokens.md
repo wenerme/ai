@@ -1,6 +1,6 @@
 ---
 title: Private Access Tokens (PAT)
-description: When a visitor is presented with a Challenge Page, Cloudflare evaluates various signals - including the presence of a Private Access Token (PAT) - to decide which challenges to issue. If a visitor presents a valid token, certain challenges are not issued, which reduces the number of steps required to pass.
+description: How Private Access Tokens reduce challenge steps for visitors with valid tokens.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

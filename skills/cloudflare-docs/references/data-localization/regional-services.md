@@ -1,6 +1,6 @@
 ---
 title: Regional Services
-description: Regional Services gives you the ability to accommodate regional restrictions by choosing which subset of data centers decrypt and service HTTPS traffic.
+description: Choose which data centers decrypt and service HTTPS traffic for your hostnames.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

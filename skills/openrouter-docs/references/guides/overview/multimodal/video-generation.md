@@ -1,10 +1,6 @@
 For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
 
-OpenRouter supports video generation through models that have `"video"` in their `output_modalities`. These models can create videos from text prompts (and optional reference images) via a dedicated asynchronous API.
-
-<Info>
-  Video generation uses the `/api/v1/videos` endpoint. This API may change.
-</Info>
+OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
 
 ## Model Discovery
 
@@ -379,6 +375,12 @@ The `index` query parameter defaults to `0` and can be used if the model generat
 * **Polling Interval**: Use a reasonable polling interval (e.g., 30 seconds) to avoid excessive API calls. Video generation typically takes 30 seconds to several minutes depending on the model and parameters
 * **Error Handling**: Always check the job status for `failed` state and handle the `error` field appropriately
 * **Reference Images**: When using reference images, ensure they are high quality and relevant to the desired video output
+
+## Zero Data Retention
+
+Video generation is **not eligible** for [Zero Data Retention (ZDR)](/docs/guides/features/zdr). Because video generation is asynchronous, the generated video output must be retained by the provider for a short period of time so that it can be retrieved after generation is complete. This temporary retention is inherent to the async polling workflow and cannot be bypassed.
+
+If you have ZDR enforcement enabled (either via [account settings](/settings/privacy) or the per-request `zdr` parameter), video generation requests will not be routed.
 
 ## Troubleshooting
 

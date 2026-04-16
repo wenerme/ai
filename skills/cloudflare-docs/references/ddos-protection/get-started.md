@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: The DDoS Attack Protection managed rulesets provided by Cloudflare are enabled by default on zones onboarded to Cloudflare, IP applications onboarded to Spectrum, and IP Prefixes onboarded to Magic Transit.
+description: Set up and fine-tune DDoS protection for your zones, Spectrum apps, and Magic Transit prefixes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

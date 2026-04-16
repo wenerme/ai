@@ -1,6 +1,6 @@
 ---
 title: Cloudflare for SaaS
-description: Cloudflare for SaaS allows you to extend the security and performance benefits of Cloudflare's network to your customers via their own custom or vanity domains.
+description: Extend Cloudflare security and performance to your customers' custom hostnames.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -23,7 +23,7 @@ As a SaaS provider, you may want to support subdomains under your own zone in ad
 
 Note
 
-Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
+Enterprise customers can preview this product as a [non-contract service](https://developers.cloudflare.com/billing/understand/preview-services/), which provides full access, free of metered usage fees, limits, and certain other restrictions.
 
 ## Benefits
 

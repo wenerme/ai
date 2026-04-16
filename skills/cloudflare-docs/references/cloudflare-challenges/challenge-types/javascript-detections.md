@@ -1,6 +1,6 @@
 ---
 title: JavaScript Detections
-description: JavaScript Detections is a type of challenge separate from Cloudflare’s Challenge Pages or Turnstile. Javascript Detections helps Cloudflare's bot solutions identify automated requests.
+description: Client-side JavaScript challenges that run on every request to identify automated traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -53,8 +53,8 @@ For Bot Fight Mode customers, [JavaScript Detections](https://developers.cloudfl
 
 For Super Bot Fight Mode and Bot Management for Enterprise customers, [JavaScript Detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) is optional.
 
-* [  New dashboard ](#tab-panel-3360)
-* [ Old dashboard ](#tab-panel-3361)
+* [  New dashboard ](#tab-panel-3678)
+* [ Old dashboard ](#tab-panel-3679)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -85,8 +85,8 @@ When adding this field to WAF custom rules, it is used on endpoints expecting br
 
 The `cf.bot_management.js_detection.passed` field should never be used in a WAF custom rule that matches a visitor's first request to a site. It is necessary to have at least one HTML request before Cloudflare can inject JavaScript detection.
 
-* [ WAF rule example ](#tab-panel-3358)
-* [ Workers example ](#tab-panel-3359)
+* [ WAF rule example ](#tab-panel-3676)
+* [ Workers example ](#tab-panel-3677)
 
 ```
 

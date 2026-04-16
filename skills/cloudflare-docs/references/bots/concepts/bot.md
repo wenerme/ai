@@ -1,6 +1,6 @@
 ---
 title: Bots
-description: A bot is a software application programmed to do certain tasks.
+description: Automated software programs that interact with websites and APIs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

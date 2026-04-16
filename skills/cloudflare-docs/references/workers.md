@@ -100,7 +100,7 @@ Vector database for AI-powered semantic search.
 
 Zero-egress object storage for cost-efficient data access.
 
-**[Browser Rendering](https://developers.cloudflare.com/browser-rendering/)** 
+**[Browser Run](https://developers.cloudflare.com/browser-run/)** 
 
 Programmatic serverless browser instances.
 

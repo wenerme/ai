@@ -1,6 +1,6 @@
 ---
 title: Common API calls
-description: The following sections contain example requests for common API calls. For a list of available API endpoints, refer to Endpoints.
+description: Example API requests for managing Advanced DNS Protection rules and settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

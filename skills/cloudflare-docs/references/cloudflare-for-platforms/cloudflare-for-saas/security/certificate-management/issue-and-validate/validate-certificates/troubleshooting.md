@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Occasionally, a domain will be flagged as “high risk” by Cloudflare’s CA partners. Typically this is done only for domains with an Alexa ranking of 1-1,000 and domains that have been flagged for phishing or malware by Google’s Safe Browsing service.
+description: Resolve certificate validation issues including high-risk domains and CA errors.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

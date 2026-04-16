@@ -1,6 +1,6 @@
 ---
 title: Challenge Passage
-description: When a visitor solves a Cloudflare Challenge - as part of a WAF custom rule or IP Access rule - you can set the Challenge Passage to prevent them from having to solve future Challenges for a specified period of time.
+description: Set a time period during which visitors do not have to solve repeat challenges.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Turnstile
-description: Turnstile is Cloudflare's CAPTCHA-alternative solution. You can embed Turnstile as a widget on your website or application, where it runs a client-side challenge directly in the background of the visitor's browser.
+description: Embed a CAPTCHA-alternative widget that verifies visitors without interrupting their experience.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

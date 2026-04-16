@@ -1,6 +1,6 @@
 ---
 title: Alerts
-description: Configure notifications to receive real-time alerts (within ~1 minute) about L3/4 and L7 DDoS attacks on your Internet properties, depending on your plan and services. You can choose from different delivery methods.
+description: Configure DDoS attack notifications via email, webhook, or PagerDuty.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

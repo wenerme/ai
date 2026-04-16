@@ -1,6 +1,6 @@
 ---
 title: Cloudflare China Network
-description: The Cloudflare China Network is a package of selected Cloudflare's performance and security products running on data centers located in Mainland China and operated by Cloudflare's partner JD Cloud.
+description: Deliver secure, fast content in Mainland China through Cloudflare and JD Cloud data centers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

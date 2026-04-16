@@ -1,6 +1,6 @@
 ---
 title: Advanced DNS Protection
-description: Use the Cloudflare API to configure Advanced DNS Protection via API.
+description: Configure Advanced DNS Protection rules and settings using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

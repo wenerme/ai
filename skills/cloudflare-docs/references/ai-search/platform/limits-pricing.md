@@ -20,13 +20,13 @@ Copy page
 
 During the open beta, AI Search is **free to enable**. When you create an AI Search instance, it provisions and runs on top of Cloudflare services in your account. These resources are **billed as part of your Cloudflare usage**, and includes:
 
-| Service & Pricing                                                                     | Description                                                                                                                                                       |
-| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**R2**](https://developers.cloudflare.com/r2/pricing/)                               | Stores your source data                                                                                                                                           |
-| [**Vectorize**](https://developers.cloudflare.com/vectorize/platform/pricing/)        | Stores vector embeddings and powers semantic search                                                                                                               |
-| [**Workers AI**](https://developers.cloudflare.com/workers-ai/platform/pricing/)      | Handles image-to-Markdown conversion, embedding, query rewriting, and response generation                                                                         |
-| [**AI Gateway**](https://developers.cloudflare.com/ai-gateway/reference/pricing/)     | Monitors and controls model usage                                                                                                                                 |
-| [**Browser Rendering**](https://developers.cloudflare.com/browser-rendering/pricing/) | Loads dynamic JavaScript content during [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) crawling with the Render option |
+| Service & Pricing                                                                 | Description                                                                                                                                                       |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**R2**](https://developers.cloudflare.com/r2/pricing/)                           | Stores your source data                                                                                                                                           |
+| [**Vectorize**](https://developers.cloudflare.com/vectorize/platform/pricing/)    | Stores vector embeddings and powers semantic search                                                                                                               |
+| [**Workers AI**](https://developers.cloudflare.com/workers-ai/platform/pricing/)  | Handles image-to-Markdown conversion, embedding, query rewriting, and response generation                                                                         |
+| [**AI Gateway**](https://developers.cloudflare.com/ai-gateway/reference/pricing/) | Monitors and controls model usage                                                                                                                                 |
+| [**Browser Run**](https://developers.cloudflare.com/browser-run/pricing/)         | Loads dynamic JavaScript content during [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) crawling with the Render option |
 
 For more information about how each resource is used within AI Search, reference [How AI Search works](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/).
 

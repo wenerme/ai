@@ -169,6 +169,7 @@ components:
         - AionLabs
         - Alibaba
         - Ambient
+        - Baidu
         - Amazon Bedrock
         - Amazon Nova
         - Anthropic

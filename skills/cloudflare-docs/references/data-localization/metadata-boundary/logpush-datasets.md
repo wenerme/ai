@@ -1,6 +1,6 @@
 ---
 title: Logpush datasets
-description: The table below lists the Logpush datasets that support zones or accounts with Customer Metadata Boundary (CMB) enabled. The column Respects CMB indicates whether enabling CMB impacts the dataset (yes/no). The last two columns inform you if CMB is available with US and EU.
+description: Logpush datasets that support Customer Metadata Boundary by region.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

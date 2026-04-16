@@ -1,6 +1,6 @@
 ---
 title: Business
-description: To learn more about features and functionality, select a plan.
+description: Bot protection features included in the Business and Enterprise plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Advanced DNS Protection
-description: Cloudflare's Advanced DNS Protection, powered by flowtrackd, provides stateful protection against DNS-based DDoS attacks, specifically sophisticated and fully randomized DNS attacks such as random prefix attacks.
+description: Protect against sophisticated DNS-based DDoS attacks with traffic profiling and adaptive mitigation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

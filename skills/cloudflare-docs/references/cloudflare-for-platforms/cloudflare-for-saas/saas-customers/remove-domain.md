@@ -1,6 +1,6 @@
 ---
 title: Remove domain
-description: If your SaaS domain is also a domain using Cloudflare, you can use your Cloudflare DNS to remove your domain from your SaaS provider.
+description: Remove your domain from a SaaS provider O2O configuration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

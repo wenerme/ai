@@ -1,6 +1,6 @@
 ---
 title: CSP HTTP header format
-description: The format of the Content Security Policy (CSP) report-only HTTP header added by Cloudflare is the following:
+description: Format of the Content Security Policy report-only HTTP header added by Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

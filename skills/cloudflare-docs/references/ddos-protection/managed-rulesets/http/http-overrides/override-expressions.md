@@ -1,6 +1,6 @@
 ---
 title: Override expressions
-description: Set an override expression for the HTTP DDoS Attack Protection managed ruleset to define a specific scope for sensitivity level or action adjustments.
+description: Expression fields and operators for scoping HTTP DDoS Attack Protection overrides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

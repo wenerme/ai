@@ -1,6 +1,6 @@
 ---
 title: Manage sequence rules
-description: Cloudflare recommends creating sequence rules using WAF custom rules. Refer to the sequence custom rules documentation for more information.
+description: Create and manage sequence rules in the dashboard or via WAF custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -24,8 +24,8 @@ Sequence mitigation is currently in a closed beta and is only available for Ente
 
 ## Create a sequence rule
 
-* [  New dashboard ](#tab-panel-3186)
-* [ Old dashboard ](#tab-panel-3187)
+* [  New dashboard ](#tab-panel-3496)
+* [ Old dashboard ](#tab-panel-3497)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

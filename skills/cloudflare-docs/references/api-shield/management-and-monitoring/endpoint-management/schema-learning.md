@@ -1,6 +1,6 @@
 ---
 title: Schema learning
-description: Cloudflare learns schema parameters via traffic inspection. For all endpoints saved to Endpoint Management, you can export the learned schema in OpenAPI v3.0.0 format by hostname.
+description: Automatically learn API schema parameters from traffic and export in OpenAPI format.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -22,8 +22,8 @@ To protect your API with a learned schema, refer to [Schema validation](https://
 
 ## Export a schema
 
-* [  New dashboard ](#tab-panel-3152)
-* [ Old dashboard ](#tab-panel-3153)
+* [  New dashboard ](#tab-panel-3462)
+* [ Old dashboard ](#tab-panel-3463)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

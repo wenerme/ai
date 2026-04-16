@@ -1,6 +1,6 @@
 ---
 title: Alert types
-description: You can configure alerts for resources detected in your domain. Refer to Alerts for more information.
+description: Available alert types for client-side resource detection, including new and malicious scripts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Interstitial Challenge Pages
-description: An interstitial Challenge Page (a full-page screen that appears before the visitor reaches the destination URL) acts as a gate between the visitor and your website or application while Cloudflare verifies the authenticity of the visitor.
+description: Full-page challenge screens that verify visitors before they reach your website.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

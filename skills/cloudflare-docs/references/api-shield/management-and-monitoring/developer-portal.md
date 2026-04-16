@@ -1,6 +1,6 @@
 ---
 title: Build developer portals
-description: Once your endpoints are saved, API Shield doubles as an API catalog. API Shield can build an interactive documentation portal with the knowledge it has of your APIs, or you can upload a new OpenAPI schema file to build a documentation portal ad-hoc.
+description: Create interactive API documentation portals from saved endpoints or schemas.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -20,8 +20,8 @@ Once your endpoints are saved, API Shield doubles as an API catalog. API Shield 
 
 To create a developer portal:
 
-* [  New dashboard ](#tab-panel-3132)
-* [ Old dashboard ](#tab-panel-3133)
+* [  New dashboard ](#tab-panel-3442)
+* [ Old dashboard ](#tab-panel-3443)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

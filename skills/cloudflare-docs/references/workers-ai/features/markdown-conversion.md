@@ -26,7 +26,7 @@ For these reasons, document conversion plays an important role when designing an
 
 ## Other Markdown conversion features
 
-* Browser Rendering [/markdown](https://developers.cloudflare.com/browser-rendering/quick-actions/markdown-endpoint/) REST API supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
+* The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
 * [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) allows real-time document conversion for Cloudflare zones using content negotiation headers.
 
 ```json

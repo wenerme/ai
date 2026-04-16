@@ -1,6 +1,6 @@
 ---
 title: IP validation
-description: The IP validation method aims to identify all of the IP addresses that a bot may use to send requests. IP validation is only used as a verification method for verified bots.
+description: Verify bot identity by matching request IP addresses against published bot IP lists.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

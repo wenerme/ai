@@ -1,6 +1,6 @@
 ---
 title: Enterprise Bot Management
-description: To learn more about features and functionality, select a plan.
+description: Advanced bot detection and mitigation features in the Bot Management add-on.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

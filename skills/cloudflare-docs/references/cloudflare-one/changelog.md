@@ -18,6 +18,107 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-15
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Independent MFA for Access applications**   
+
+Cloudflare Access now supports independent multi-factor authentication (MFA), allowing you to enforce MFA requirements without relying on your identity provider (IdP). This feature addresses common gaps in IdP-based MFA, such as inconsistent MFA policies across different identity providers or the need for additional security layers beyond what the IdP provides.
+
+Independent MFA supports the following authenticator types:
+
+* **Authenticator application** — Time-based one-time passwords (TOTP) using apps like Google Authenticator, Microsoft Authenticator, or Authy.
+* **Security key** — Hardware security keys such as YubiKeys.
+* **Biometrics** — Built-in device authenticators including Apple Touch ID, Apple Face ID, and Windows Hello.
+
+Note
+
+Infrastructure applications do not yet support independent MFA.
+
+#### Configuration levels
+
+You can configure MFA requirements at three levels:
+
+| Level            | Description                                                    |
+| ---------------- | -------------------------------------------------------------- |
+| **Organization** | Enforce MFA by default for all applications in your account.   |
+| **Application**  | Require or turn off MFA for a specific application.            |
+| **Policy**       | Require or turn off MFA for users who match a specific policy. |
+
+Settings at lower levels (policy) override settings at higher levels (organization), giving you granular control over MFA enforcement.
+
+#### User enrollment
+
+Users enroll their authenticators through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/). To help with onboarding, administrators can share a direct enrollment link: `<your-team-name>.cloudflareaccess.com/AddMfaDevice`.
+
+To get started with Independent MFA, refer to [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
+
+## 2026-04-15
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
+
+  
+**New, streamlined creation experience for Access Applications and Gateway Policies**   
+
+The Cloudflare One dashboard now features redesigned builders for two core workflows: creating Gateway policies and configuring self-hosted Access applications.
+
+#### Gateway rule builder
+
+The Gateway rule builder now features a redesigned user experience, bringing it in line with the Access policy builder experience. Improvements include:
+
+* **Streamlined UX** with clearer states and improved user interactions
+* **Wirefilter editing** for viewing and editing Gateway rules directly from wirefilter expressions
+* **Preview state** to review the impact of your policy in a simple graphic
+![New Gateway rule builder](https://developers.cloudflare.com/_astro/gateway-rule-builder.BxvzsN8s_Z2q9xKY.webp) 
+
+For more information, refer to [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+
+#### Access application builder for self-hosted apps
+
+The self-hosted Access application builder now offers a simplified creation workflow with fewer steps from setup to save. Improvements include:
+
+* **New application selection experience** that makes choosing the right application type before you begin easier.
+* **Streamlined creation flow** with fewer clicks to build and save an application
+* **Inline policy creation** for building Access policies directly within the application creation flow
+* **Preview state** to understand how your policies enforce user access before saving
+![New Access application builder](https://developers.cloudflare.com/_astro/access-application-builder.B__yqGin_Z2pRlHk.webp) 
+
+For more information, refer to [self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
+
+## 2026-04-15
+
+[ Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/) 
+
+  
+**Last seen timestamp for Cloudflare One Client devices is more consistent**   
+
+The last seen timestamp for [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) devices is now more consistent across the dashboard. IT teams will see more consistent information about the most recent client event between a device and Cloudflare's network.
+
+## 2026-04-14
+
+[ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) 
+
+  
+**DLP account-level settings**   
+
+**Account-level DLP settings are now available** in Cloudflare One. You can now configure advanced DLP settings at the account level, including OCR, AI context analysis, and payload masking. This provides consistent enforcement across all DLP profiles and simplifies configuration management.
+
+Key changes:
+
+* **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
+* **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
+* **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
+
+**Migration details:**
+
+During the migration period, if a setting is enabled on any profile, it will automatically be enabled at the account level. This means profiles that previously had a setting disabled may now have it enabled if another profile in the account had it enabled.
+
+Settings are evaluated using OR logic - a setting is enabled if it is turned on at either the account level or the profile level. However, profile-level settings cannot be enabled when the account-level setting is off.
+
+For more details, refer to the [DLP advanced settings documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/).
+
 ## 2026-04-14
 
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/) 
@@ -3713,8 +3814,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-3595)
-* [ Core Dashboard ](#tab-panel-3596)
+* [ Zero Trust Dashboard ](#tab-panel-3781)
+* [ Core Dashboard ](#tab-panel-3782)
 
 To update your view preference in the Zero Trust dashboard:
 

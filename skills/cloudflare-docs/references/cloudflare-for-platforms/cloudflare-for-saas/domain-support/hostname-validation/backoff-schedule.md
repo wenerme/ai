@@ -1,6 +1,6 @@
 ---
 title: Backoff schedule
-description: After you create a custom hostname, Cloudflare has to validate that hostname.
+description: Retry schedule for custom hostname validation over a seven-day period.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

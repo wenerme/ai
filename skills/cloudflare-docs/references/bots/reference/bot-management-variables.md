@@ -1,6 +1,6 @@
 ---
 title: Bot Management variables
-description: Bot Management provides access to several new variables within the expression builder of Ruleset Engine-based products such as WAF custom rules.
+description: Ruleset Engine fields and Workers variables available for bot detection rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

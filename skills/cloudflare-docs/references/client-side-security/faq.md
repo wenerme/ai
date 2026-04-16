@@ -1,6 +1,6 @@
 ---
 title: Client-side security FAQ
-description: When you create content security rules, Cloudflare will generate content security policy (CSP) directives from those rules based on their configuration:
+description: Answers to common questions about client-side security rules, CSP headers, and monitoring.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare for SaaS
-description: In the following sections, we will give you some details about how to configure Cloudflare for SaaS with Regional Services and Customer Metadata Boundary.
+description: Configure Cloudflare for SaaS with Regional Services and Customer Metadata Boundary.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -22,8 +22,8 @@ In the following sections, we will give you some details about how to configure 
 
 To configure Regional Services for both hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and the fallback origin, follow these steps for the dashboard or API configuration:
 
-* [ Dashboard ](#tab-panel-4214)
-* [ API ](#tab-panel-4215)
+* [ Dashboard ](#tab-panel-4614)
+* [ API ](#tab-panel-4615)
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.  
 [ Go to **Custom Hostnames** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)

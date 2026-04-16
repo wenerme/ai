@@ -1,6 +1,6 @@
 ---
 title: Handle False Positives from Bot Fight Mode or Super Bot Fight Mode
-description: Bot Fight Mode (BFM) and Super Bot Fight Mode (SBFM) are designed to stop active attacks quickly. Due to their aggressive nature, false positives can occur where legitimate human or automated traffic is incorrectly challenged or blocked.
+description: Resolve false positives where legitimate traffic is blocked by bot protection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

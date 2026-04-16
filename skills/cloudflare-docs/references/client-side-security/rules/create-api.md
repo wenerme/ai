@@ -1,5 +1,6 @@
 ---
 title: Create via API
+description: Create a content security rule using the client-side security API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

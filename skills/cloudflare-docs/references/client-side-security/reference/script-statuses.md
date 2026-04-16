@@ -1,6 +1,6 @@
 ---
 title: Script and connection statuses
-description: Cloudflare classifies scripts and connections (also known as resources) according to the following:
+description: Status classifications for scripts and connections detected by client-side security.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

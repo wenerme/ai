@@ -1,6 +1,6 @@
 ---
 title: Free
-description: To learn more about features and functionality, select a plan.
+description: Bot protection features included in the Cloudflare Free plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

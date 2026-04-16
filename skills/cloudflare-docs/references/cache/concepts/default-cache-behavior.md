@@ -97,7 +97,7 @@ Cloudflare’s CDN provides several cache customization options:
 
 Customers can reduce the **Maximum Upload Size** from the zone's **Network** page.
 
-If you require a larger upload, you can group requests into smaller chunks, upload the full resource through an [unproxied (grey-clouded) DNS record](https://developers.cloudflare.com/dns/proxy-status/) or [upgrade your plan](https://developers.cloudflare.com/billing/change-plan/).
+If you require a larger upload, you can group requests into smaller chunks, upload the full resource through an [unproxied (grey-clouded) DNS record](https://developers.cloudflare.com/dns/proxy-status/) or [upgrade your plan](https://developers.cloudflare.com/billing/manage/change-plan/).
 
 ### Cacheable size limits
 

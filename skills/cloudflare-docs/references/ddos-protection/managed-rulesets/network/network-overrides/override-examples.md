@@ -1,6 +1,6 @@
 ---
 title: Override examples
-description: The following scenarios detail how you can make use of override rules as a solution to common Network DDoS Protection issues.
+description: Example override configurations for Network-layer DDoS Attack Protection rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: GraphQL datasets
-description: The table below shows a non-exhaustive list of GraphQL Analytics API fields that respect CMB configuration and are available in both the US and the EU or only in the US.
+description: GraphQL Analytics API fields that respect Customer Metadata Boundary configuration.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

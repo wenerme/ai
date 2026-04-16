@@ -1,6 +1,6 @@
 ---
 title: Overrides
-description: When Cloudflare's DDoS Protection systems detect an attack, an ephemeral mitigation rule is created and installed in-line to mitigate the attack. A mitigation rule is generated based on the logic of the DDoS Protection managed ruleset. Each mitigation rule is generated from a single managed rule.
+description: Customize HTTP DDoS Attack Protection rule actions and sensitivity levels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

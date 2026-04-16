@@ -1,6 +1,6 @@
 ---
 title: Create a rule
-description: To create a SYN flood rule or an out-of-state TCP rule:
+description: Create an Advanced DDoS Protection rule for TCP, DNS, or flow-based mitigation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

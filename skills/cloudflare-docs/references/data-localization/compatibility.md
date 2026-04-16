@@ -1,6 +1,6 @@
 ---
 title: Product compatibility
-description: The table below provides a summary of the Data Localization Suite product's behavior with Cloudflare products. Refer to the table legend for guidance on interpreting the table.
+description: Compatibility of Cloudflare products with Data Localization Suite features.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

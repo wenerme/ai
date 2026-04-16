@@ -1,5 +1,6 @@
 ---
 title: Configure using Terraform
+description: Configure Network-layer DDoS Attack Protection overrides with Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

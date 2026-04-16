@@ -1,6 +1,6 @@
 ---
 title: Challenge solve issues
-description: You may encounter a challenge loop where the challenge keeps reappearing without being solved. This is in very specific cases where we detect strong bot signals. If you are a legitimate human, you can follow the troubleshooting guide below to resolve the issue or submit a feedback report. Challenge loops can happen for several reasons:
+description: Fix challenge loops, unsupported browser errors, and other solve failures.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

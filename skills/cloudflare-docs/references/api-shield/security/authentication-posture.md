@@ -1,6 +1,6 @@
 ---
 title: Authentication Posture
-description: Authentication Posture helps users identify authentication misconfigurations for APIs and alerts of their presence.
+description: Identify authentication misconfigurations for API endpoints with Authentication Posture.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -33,8 +33,8 @@ After configuring [session identifiers](https://developers.cloudflare.com/api-sh
 
 ### Examine an endpoint's authentication details
 
-* [  New dashboard ](#tab-panel-3158)
-* [ Old dashboard ](#tab-panel-3159)
+* [  New dashboard ](#tab-panel-3468)
+* [ Old dashboard ](#tab-panel-3469)
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

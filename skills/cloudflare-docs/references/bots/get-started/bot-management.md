@@ -1,6 +1,6 @@
 ---
 title: Bot Management
-description: Bot Management for Enterprise is a paid add-on that provides sophisticated bot protection for your domain. Customers can identify automated traffic, take appropriate action, and view detailed analytics within the dashboard.
+description: Configure Bot Management for Enterprise to identify and act on automated traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -30,8 +30,8 @@ This Enterprise product provides the most flexibility to customers by:
 
 Bot Management is automatically enabled for Enterprise zones entitled with the add-on.
 
-* [  New dashboard ](#tab-panel-3218)
-* [ Old dashboard ](#tab-panel-3219)
+* [  New dashboard ](#tab-panel-3528)
+* [ Old dashboard ](#tab-panel-3529)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -66,8 +66,8 @@ Cloudflare encourages Enterprise customers to enable auto-updates to its Machine
 
 To enable auto-updates:
 
-* [  New dashboard ](#tab-panel-3220)
-* [ Old dashboard ](#tab-panel-3221)
+* [  New dashboard ](#tab-panel-3530)
+* [ Old dashboard ](#tab-panel-3531)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

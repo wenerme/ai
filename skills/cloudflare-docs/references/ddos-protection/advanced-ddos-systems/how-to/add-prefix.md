@@ -1,6 +1,6 @@
 ---
 title: Add a prefix
-description: To add a prefix to Advanced DDoS Protection:
+description: Add an IP prefix to Advanced DDoS Protection for monitoring and mitigation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

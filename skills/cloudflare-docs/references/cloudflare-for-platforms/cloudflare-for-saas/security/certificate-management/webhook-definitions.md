@@ -1,6 +1,6 @@
 ---
 title: Webhook definitions
-description: When you create a webhook notification for SSL for SaaS Custom Hostnames, you may want to automate responses to specific events (certificate issuance, failed validation, etc.).
+description: Webhook event data for certificate issuance, validation, and custom hostname changes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

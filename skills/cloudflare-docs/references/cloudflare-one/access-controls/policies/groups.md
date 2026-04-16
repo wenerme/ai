@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API) 
+
 Was this helpful?
 
 YesNo
@@ -26,8 +30,8 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-3444)
-* [ API ](#tab-panel-3445)
+* [ Dashboard ](#tab-panel-3776)
+* [ API ](#tab-panel-3777)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.

@@ -1,6 +1,6 @@
 ---
 title: Product compatibility
-description: As a general rule, settings on the customer zone will override settings on the SaaS zone. In addition, O2O does not permit traffic directed to a custom hostname zone into another custom hostname zone.
+description: Cloudflare product compatibility guidelines for O2O custom hostname zones.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

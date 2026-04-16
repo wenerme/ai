@@ -220,7 +220,7 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 ---
 
-### [Browser Rendering](https://developers.cloudflare.com/browser-rendering/)
+### [Browser Run](https://developers.cloudflare.com/browser-run/)
 
 #### `browser_rendering_fetch`
 

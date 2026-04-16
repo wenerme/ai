@@ -1,6 +1,6 @@
 ---
 title: Configure via API
-description: Configure the Cloudflare Network-layer DDoS Attack Protection managed ruleset by defining overrides at the account level using the Rulesets API.
+description: Create and manage Network-layer DDoS Attack Protection overrides using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

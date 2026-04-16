@@ -1,6 +1,6 @@
 ---
 title: Simulating test DDoS attacks
-description: After onboarding to Cloudflare, you may want to simulate DDoS attacks against your Internet properties to test the protection, reporting, and alerting mechanisms. Follow the guidelines in this section to simulate a DDoS attack.
+description: Guidelines for simulating DDoS attacks to test protection, reporting, and alerting.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

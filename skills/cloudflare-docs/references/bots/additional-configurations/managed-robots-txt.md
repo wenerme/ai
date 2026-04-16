@@ -1,6 +1,6 @@
 ---
 title: robots.txt setting
-description: Protect your website or application from AI crawlers by implementing a robots.txt file on your domain to direct AI bot operators on what content they can and cannot scrape for AI model training.
+description: Manage a robots.txt file to direct AI bot operators on content scraping permissions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -181,8 +181,8 @@ If your website does not have a `robots.txt` file, Cloudflare creates a new file
 
 To implement a `robots.txt` file on your domain:
 
-* [  New dashboard ](#tab-panel-3212)
-* [ Old dashboard ](#tab-panel-3213)
+* [  New dashboard ](#tab-panel-3516)
+* [ Old dashboard ](#tab-panel-3517)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's API Shield documentation.
+description: Definitions for terms used across API Shield documentation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

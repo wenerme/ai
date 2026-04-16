@@ -1,6 +1,6 @@
 ---
 title: Programmable Flow Protection (Beta)
-description: Use the Cloudflare API to configure Programmable Flow Protection via API.
+description: Configure Programmable Flow Protection rules and thresholds using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,11 +1,17 @@
 # Agents SDK
 
+Sandbox agents are now available in the Python Agents SDK. Use them when your
+  agent needs a container-based environment with files, commands, packages,
+  ports, snapshots, and memory. [Read the Sandbox agents
+  guide](https://developers.openai.com/api/docs/guides/agents/sandboxes).
+
 Agents are applications that plan, call tools, collaborate across specialists, and keep enough state to complete multi-step work.
 
+- Use the **OpenAI client libraries** when you want direct API clients for model requests.
 - Use the **Agents SDK** pages when your application owns orchestration, tool execution, approvals, and state.
 - Use **Agent Builder** only when you specifically want the hosted workflow editor and ChatKit path.
 
-## Get the SDKs
+## Get the Agents SDK
 
 Use the GitHub repositories for installation, issues, examples, and language-specific reference details.
 
@@ -42,18 +48,19 @@ Use the GitHub repositories for installation, issues, examples, and language-spe
 
 ## Choose your starting point
 
-| If you want to                           | Start here                                                                                                                                             | Why                                                                                     |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
-| Build a code-first agent app             | [Quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart)                                                                                                       | This is the shortest path to a working SDK integration.                                 |
-| Define one specialist cleanly            | [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents)                                                                                             | Start here when you are still shaping the contract for a single agent.                  |
-| Choose models, defaults, and transport   | [Models and providers](https://developers.openai.com/api/docs/guides/agents/models)                                                                                                 | Use this when model choice, provider setup, or transport strategy affects the workflow. |
-| Understand the runtime loop and state    | [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)                                                                                               | This is where the agent loop, streaming, and continuation strategies live.              |
-| Design specialist ownership              | [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)                                                                                    | Use this when you need more than one agent and must decide who owns the reply.          |
-| Add validation or human review           | [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)                                                                            | Use this when the workflow should block or pause before risky work continues.           |
-| Understand what a run returns            | [Results and state](https://developers.openai.com/api/docs/guides/agents/results)                                                                                                   | This page explains final output, resumable state, and next-turn surfaces.               |
-| Add hosted tools, function tools, or MCP | [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk) and [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) | Tool semantics live in the platform tools docs; SDK-specific MCP and tracing live here. |
-| Inspect and improve runs                 | [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) and [evaluate agent workflows](https://developers.openai.com/api/docs/guides/agent-evals)      | Use traces for debugging first, then move into evaluation loops.                        |
-| Build a voice-first workflow             | [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)                                                                                                          | Voice is still an SDK-first path because Agent Builder doesn't support it.              |
+| If you want to                           | Start here                                                                                                                                             | Why                                                                                            |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| Build a code-first agent app             | [Quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart)                                                                                                       | This is the shortest path to a working SDK integration.                                        |
+| Define one specialist cleanly            | [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents)                                                                                             | Start here when you are still shaping the contract for a single agent.                         |
+| Choose models, defaults, and transport   | [Models and providers](https://developers.openai.com/api/docs/guides/agents/models)                                                                                                 | Use this when model choice, provider setup, or transport strategy affects the workflow.        |
+| Understand the runtime loop and state    | [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)                                                                                               | This is where the agent loop, streaming, and continuation strategies live.                     |
+| Run work in a container-based environment | [Sandbox agents](https://developers.openai.com/api/docs/guides/agents/sandboxes)                                                                                                    | Use this when the agent needs files, commands, packages, snapshots, mounts, or provider links. |
+| Design specialist ownership              | [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)                                                                                    | Use this when you need more than one agent and must decide who owns the reply.                 |
+| Add validation or human review           | [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)                                                                            | Use this when the workflow should block or pause before risky work continues.                  |
+| Understand what a run returns            | [Results and state](https://developers.openai.com/api/docs/guides/agents/results)                                                                                                   | This page explains final output, resumable state, and next-turn surfaces.                      |
+| Add hosted tools, function tools, or MCP | [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk) and [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) | Tool semantics live in the platform tools docs; SDK-specific MCP and tracing live here.        |
+| Inspect and improve runs                 | [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability) and [evaluate agent workflows](https://developers.openai.com/api/docs/guides/agent-evals)      | Use traces for debugging first, then move into evaluation loops.                               |
+| Build a voice-first workflow             | [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)                                                                                                          | Voice is still an SDK-first path because Agent Builder doesn't support it.                     |
 
 ## Build with the SDK
 

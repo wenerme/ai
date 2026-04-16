@@ -1,6 +1,6 @@
 ---
 title: Additional detections
-description: Cloudflare bot detection includes additional signals to catch different kinds of automated traffic.
+description: Detection IDs for residential proxy traffic and other automated signals.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -20,7 +20,7 @@ Copy page
 
 # Sessions
 
-The Session API provides persistent conversation storage for agents, with tree-structured messages, context blocks, compaction, full-text search, and AI-controllable tools. It runs entirely on Durable Object SQLite — no external database needed.
+The Session API provides persistent conversation storage for agents, with tree-structured messages (inspired by [Pi ↗](https://pi.dev)), context blocks, compaction, full-text search, and AI-controllable tools. It runs entirely on Durable Object SQLite — no external database needed.
 
 Experimental
 
@@ -28,8 +28,8 @@ The Session API is under `agents/experimental/memory/session`. The API surface i
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-2834)
-* [  TypeScript ](#tab-panel-2835)
+* [  JavaScript ](#tab-panel-2840)
+* [  TypeScript ](#tab-panel-2841)
 
 JavaScript
 
@@ -139,8 +139,8 @@ Explain Code
 
 Use `Session.create(agent)` with a chainable builder. Context providers without an explicit `provider` option are auto-wired to SQLite.
 
-* [  JavaScript ](#tab-panel-2820)
-* [  TypeScript ](#tab-panel-2821)
+* [  JavaScript ](#tab-panel-2826)
+* [  TypeScript ](#tab-panel-2827)
 
 JavaScript
 
@@ -184,8 +184,8 @@ const session = Session.create(this)
 
 For full control over providers:
 
-* [  JavaScript ](#tab-panel-2830)
-* [  TypeScript ](#tab-panel-2831)
+* [  JavaScript ](#tab-panel-2836)
+* [  TypeScript ](#tab-panel-2837)
 
 JavaScript
 
@@ -288,8 +288,8 @@ All builder methods return `this` for chaining. Order does not matter — provid
 
 Messages use the `SessionMessage` type — a minimal shape with `id`, `role`, `parts`, and optional `createdAt`. The Vercel AI SDK's `UIMessage` is structurally compatible and can be passed directly. The session stores messages in a tree structure via `parent_id`, enabling branching conversations.
 
-* [  JavaScript ](#tab-panel-2828)
-* [  TypeScript ](#tab-panel-2829)
+* [  JavaScript ](#tab-panel-2834)
+* [  TypeScript ](#tab-panel-2835)
 
 JavaScript
 
@@ -357,8 +357,8 @@ Note
 
 ### Reading history
 
-* [  JavaScript ](#tab-panel-2836)
-* [  TypeScript ](#tab-panel-2837)
+* [  JavaScript ](#tab-panel-2842)
+* [  TypeScript ](#tab-panel-2843)
 
 JavaScript
 
@@ -430,8 +430,8 @@ Explain Code
 
 Messages form a tree. When you `appendMessage` with a `parentId` that already has children, you create a branch. Use `getBranches()` to get all child messages branching from a given point:
 
-* [  JavaScript ](#tab-panel-2822)
-* [  TypeScript ](#tab-panel-2823)
+* [  JavaScript ](#tab-panel-2828)
+* [  TypeScript ](#tab-panel-2829)
 
 JavaScript
 
@@ -461,8 +461,8 @@ This powers features like response regeneration — pass the user message ID to 
 
 Full-text search over the conversation history using SQLite FTS5:
 
-* [  JavaScript ](#tab-panel-2824)
-* [  TypeScript ](#tab-panel-2825)
+* [  JavaScript ](#tab-panel-2830)
+* [  TypeScript ](#tab-panel-2831)
 
 JavaScript
 
@@ -507,8 +507,8 @@ There are four provider types, detected by duck-typing:
 
 **`AgentContextProvider`** — SQLite-backed writable context. This is the default when using the builder without an explicit provider.
 
-* [  JavaScript ](#tab-panel-2826)
-* [  TypeScript ](#tab-panel-2827)
+* [  JavaScript ](#tab-panel-2832)
+* [  TypeScript ](#tab-panel-2833)
 
 JavaScript
 
@@ -536,8 +536,8 @@ new AgentContextProvider(this, "memory");
 
 **`R2SkillProvider`** — Cloudflare R2 bucket for on-demand document loading. Skills are listed in the system prompt as metadata; the model loads full content on demand via `load_context`.
 
-* [  JavaScript ](#tab-panel-2832)
-* [  TypeScript ](#tab-panel-2833)
+* [  JavaScript ](#tab-panel-2838)
+* [  TypeScript ](#tab-panel-2839)
 
 JavaScript
 
@@ -573,8 +573,8 @@ Session.create(this).withContext("skills", {
 
 **`AgentSearchProvider`** — SQLite FTS5 searchable context. Entries are indexed and searchable by the model via `search_context`.
 
-* [  JavaScript ](#tab-panel-2838)
-* [  TypeScript ](#tab-panel-2839)
+* [  JavaScript ](#tab-panel-2844)
+* [  TypeScript ](#tab-panel-2845)
 
 JavaScript
 
@@ -616,8 +616,8 @@ Session.create(this).withContext("knowledge", {
 
 Blocks can be added and removed dynamically after initialization:
 
-* [  JavaScript ](#tab-panel-2844)
-* [  TypeScript ](#tab-panel-2845)
+* [  JavaScript ](#tab-panel-2850)
+* [  TypeScript ](#tab-panel-2851)
 
 JavaScript
 
@@ -683,8 +683,8 @@ Note
 
 ### Reading and writing context
 
-* [  JavaScript ](#tab-panel-2846)
-* [  TypeScript ](#tab-panel-2847)
+* [  JavaScript ](#tab-panel-2852)
+* [  TypeScript ](#tab-panel-2853)
 
 JavaScript
 
@@ -776,8 +776,8 @@ User prefers dark roast.
 
 Explain Code
 
-* [  JavaScript ](#tab-panel-2842)
-* [  TypeScript ](#tab-panel-2843)
+* [  JavaScript ](#tab-panel-2848)
+* [  TypeScript ](#tab-panel-2849)
 
 JavaScript
 
@@ -817,8 +817,8 @@ The frozen prompt survives Durable Object hibernation and eviction when `withCac
 
 Session automatically generates tools based on the provider types of your context blocks. Pass these to your LLM alongside your own tools.
 
-* [  JavaScript ](#tab-panel-2840)
-* [  TypeScript ](#tab-panel-2841)
+* [  JavaScript ](#tab-panel-2846)
+* [  TypeScript ](#tab-panel-2847)
 
 JavaScript
 
@@ -868,8 +868,8 @@ Compaction summarizes older messages to keep conversations within token limits. 
 
 ### Setup
 
-* [  JavaScript ](#tab-panel-2854)
-* [  TypeScript ](#tab-panel-2855)
+* [  JavaScript ](#tab-panel-2860)
+* [  TypeScript ](#tab-panel-2861)
 
 JavaScript
 
@@ -956,8 +956,8 @@ When `getHistory()` is called, compaction overlays are applied transparently —
 
 ### Manual compaction
 
-* [  JavaScript ](#tab-panel-2848)
-* [  TypeScript ](#tab-panel-2849)
+* [  JavaScript ](#tab-panel-2854)
+* [  TypeScript ](#tab-panel-2855)
 
 JavaScript
 
@@ -1005,8 +1005,8 @@ Token estimation is heuristic (not tiktoken). It uses `max(chars/4, words*1.3)` 
 
 ### Creating a SessionManager
 
-* [  JavaScript ](#tab-panel-2852)
-* [  TypeScript ](#tab-panel-2853)
+* [  JavaScript ](#tab-panel-2858)
+* [  TypeScript ](#tab-panel-2859)
 
 JavaScript
 
@@ -1071,8 +1071,8 @@ Context blocks, prompt caching, and compaction settings are propagated to all se
 
 ### Session lifecycle
 
-* [  JavaScript ](#tab-panel-2862)
-* [  TypeScript ](#tab-panel-2863)
+* [  JavaScript ](#tab-panel-2868)
+* [  TypeScript ](#tab-panel-2869)
 
 JavaScript
 
@@ -1168,8 +1168,8 @@ Explain Code
 
 ### Accessing sessions
 
-* [  JavaScript ](#tab-panel-2850)
-* [  TypeScript ](#tab-panel-2851)
+* [  JavaScript ](#tab-panel-2856)
+* [  TypeScript ](#tab-panel-2857)
 
 JavaScript
 
@@ -1201,8 +1201,8 @@ const session = manager.getSession(sessionId);
 
 These delegate to the underlying Session and update the session's `updated_at` timestamp:
 
-* [  JavaScript ](#tab-panel-2864)
-* [  TypeScript ](#tab-panel-2865)
+* [  JavaScript ](#tab-panel-2870)
+* [  TypeScript ](#tab-panel-2871)
 
 JavaScript
 
@@ -1294,8 +1294,8 @@ Explain Code
 
 Fork a session at a specific message — copies history up to that point into a new session:
 
-* [  JavaScript ](#tab-panel-2856)
-* [  TypeScript ](#tab-panel-2857)
+* [  JavaScript ](#tab-panel-2862)
+* [  TypeScript ](#tab-panel-2863)
 
 JavaScript
 
@@ -1321,8 +1321,8 @@ const forked = await manager.fork(sessionId, atMessageId, "Forked Chat");
 
 ### Usage tracking
 
-* [  JavaScript ](#tab-panel-2858)
-* [  TypeScript ](#tab-panel-2859)
+* [  JavaScript ](#tab-panel-2864)
+* [  TypeScript ](#tab-panel-2865)
 
 JavaScript
 
@@ -1344,8 +1344,8 @@ manager.addUsage(sessionId, inputTokens, outputTokens, cost);
 
 ### Cross-session search
 
-* [  JavaScript ](#tab-panel-2860)
-* [  TypeScript ](#tab-panel-2861)
+* [  JavaScript ](#tab-panel-2866)
+* [  TypeScript ](#tab-panel-2867)
 
 JavaScript
 
@@ -1383,8 +1383,8 @@ const tools = manager.tools();
 
 Implement any of the four provider interfaces to plug in your own storage:
 
-* [  JavaScript ](#tab-panel-2866)
-* [  TypeScript ](#tab-panel-2867)
+* [  JavaScript ](#tab-panel-2872)
+* [  TypeScript ](#tab-panel-2873)
 
 JavaScript
 
@@ -1498,8 +1498,8 @@ Explain Code
 
 You can also implement `SessionProvider` to replace the SQLite storage entirely:
 
-* [  JavaScript ](#tab-panel-2868)
-* [  TypeScript ](#tab-panel-2869)
+* [  JavaScript ](#tab-panel-2874)
+* [  TypeScript ](#tab-panel-2875)
 
 JavaScript
 
@@ -1635,6 +1635,12 @@ All storage is in Durable Object SQLite. Tables are created lazily on first use.
 | assistant\_sessions                                   | Session registry (SessionManager only) with name, parent\_session\_id, model, source, token/cost counters |
 | cf\_agents\_context\_blocks                           | Persistent context block storage (AgentContextProvider)                                                   |
 | cf\_agents\_search\_entries / cf\_agents\_search\_fts | Searchable context entries and FTS5 index (AgentSearchProvider)                                           |
+
+## Acknowledgments
+
+* Session's tree-structured messages are inspired by [Pi ↗](https://pi.dev).
+* Context blocks are inspired by [Letta AI memory blocks ↗](https://www.letta.com/blog/memory-blocks).
+* Formatting of blocks is inspired by [Hermes Agent ↗](https://github.com/nousresearch/hermes-agent).
 
 ## Related
 

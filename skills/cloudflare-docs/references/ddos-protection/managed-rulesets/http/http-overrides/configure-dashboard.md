@@ -1,6 +1,6 @@
 ---
 title: Configure in the dashboard
-description: Configure the HTTP DDoS Attack Protection managed ruleset by defining overrides in the Cloudflare dashboard. DDoS overrides allow you to customize the action and sensitivity of one or more rules in the managed ruleset.
+description: Create HTTP DDoS Attack Protection overrides in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -32,8 +32,8 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 
 ## Access
 
-* [  New dashboard ](#tab-panel-4224)
-* [ Old dashboard ](#tab-panel-4225)
+* [  New dashboard ](#tab-panel-4624)
+* [ Old dashboard ](#tab-panel-4625)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -66,8 +66,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-4226)
-* [ Old dashboard ](#tab-panel-4227)
+* [  New dashboard ](#tab-panel-4626)
+* [ Old dashboard ](#tab-panel-4627)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

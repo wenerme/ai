@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: By default, you may issue up to 15 certificates per minute. Only successful submissions (POSTs that return 200) are counted towards your limit. If you exceed your limit, you will be prevented from issuing new certificates for 30 seconds.
+description: Resolve common issues with custom hostnames, certificates, and rate limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

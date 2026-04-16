@@ -1,6 +1,6 @@
 ---
 title: Client-side security and PCI DSS compliance
-description: You can use Cloudflare's client-side security for PCI DSS v4's client-side security requirements (items 6.4.3 and 11.6.1).
+description: Use client-side security to meet PCI DSS v4 requirements 6.4.3 and 11.6.1.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

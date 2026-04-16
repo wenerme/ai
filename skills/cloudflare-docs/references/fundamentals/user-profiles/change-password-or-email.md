@@ -35,7 +35,7 @@ To change the email address associated with your Cloudflare account:
 
 Billing and notification email addresses must be updated separately
 
-The process above will update your user profile email, but you may have specified separate emails to receive [billing invoices](https://developers.cloudflare.com/billing/invoices/#enable-email-invoices-from-cloudflare) and other types of [notifications](https://developers.cloudflare.com/notifications/get-started/#edit-a-notification). You will also need to update those email addresses if you want to receive those emails at your new address.
+The process above will update your user profile email, but you may have specified separate emails to receive [billing invoices](https://developers.cloudflare.com/billing/manage/invoices/#enable-email-invoices-from-cloudflare) and other types of [notifications](https://developers.cloudflare.com/notifications/get-started/#edit-a-notification). You will also need to update those email addresses if you want to receive those emails at your new address.
 
 ## Change password
 

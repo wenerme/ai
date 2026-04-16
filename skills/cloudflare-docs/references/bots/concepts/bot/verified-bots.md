@@ -1,6 +1,6 @@
 ---
 title: Verified bots
-description: A verified bot is a bot which has been added to Cloudflare's list of verified bots.
+description: Bots confirmed by Cloudflare as legitimate, such as search engine crawlers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

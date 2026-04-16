@@ -43,8 +43,8 @@ curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agent
 
 Or if you’re building an AI Agent using Workers, you can use TypeScript:
 
-* [  JavaScript ](#tab-panel-4674)
-* [  TypeScript ](#tab-panel-4675)
+* [  JavaScript ](#tab-panel-5034)
+* [  TypeScript ](#tab-panel-5035)
 
 JavaScript
 
@@ -158,9 +158,9 @@ By default Markdown for Agents converted responses include the `Content-Signal: 
 
 ## How to enable
 
-* [ Dashboard ](#tab-panel-4671)
-* [ API ](#tab-panel-4672)
-* [ Custom Hostnames ](#tab-panel-4673)
+* [ Dashboard ](#tab-panel-5031)
+* [ API ](#tab-panel-5032)
+* [ Custom Hostnames ](#tab-panel-5033)
 
 To enable Markdown for Agents for your zone in the dashboard:
 
@@ -358,8 +358,8 @@ curl https://blog.cloudflare.com/markdown-for-agents/ \
 
 If you’re building AI systems that require arbitrary document conversion from outside Cloudflare or Markdown for Agents is not available from the content source, we provide other ways to convert documents to Markdown for your applications:
 
-* Workers AI [AI.toMarkdown() ↗](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) supports multiple document types and summarization.
-* Browser Rendering [/markdown ↗](https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint/) REST API supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
+* Workers AI [AI.toMarkdown()](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) supports multiple document types and summarization.
+* The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/fundamentals/","name":"Cloudflare Fundamentals"}},{"@type":"ListItem","position":3,"item":{"@id":"/fundamentals/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/fundamentals/reference/markdown-for-agents/","name":"Markdown for Agents"}}]}

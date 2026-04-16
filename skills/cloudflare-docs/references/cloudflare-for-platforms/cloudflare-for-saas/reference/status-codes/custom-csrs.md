@@ -1,5 +1,6 @@
 ---
 title: Custom CSRs
+description: HTTP status codes for certificate signing request API endpoints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

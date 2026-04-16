@@ -1,6 +1,6 @@
 ---
 title: WAF for SaaS
-description: Web Application Firewall (WAF) allows you to create additional security measures through Cloudflare. As a SaaS provider, you can link custom rules, rate limiting rules, and managed rules to your custom hostnames. This provides more control to keep your domains safe from malicious traffic.
+description: Apply custom rules, rate limiting, and managed rulesets per custom hostname.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

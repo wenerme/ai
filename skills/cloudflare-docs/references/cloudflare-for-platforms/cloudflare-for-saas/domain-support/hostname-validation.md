@@ -1,6 +1,6 @@
 ---
 title: Hostname validation
-description: Before Cloudflare can proxy traffic through a custom hostname, we need to verify your customer's ownership of that hostname.
+description: Verify customer ownership of custom hostnames before proxying traffic.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

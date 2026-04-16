@@ -1,6 +1,6 @@
 ---
 title: Bot Detection Alerts
-description: Bot alerts inform you when Cloudflare detects spikes in your traffic with any of the following characteristics:
+description: Set up notifications for spikes in bot traffic on your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

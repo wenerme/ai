@@ -1,6 +1,6 @@
 ---
 title: Performance
-description: Cloudflare for SaaS allows you to deliver the best performance to your end customers by helping enable you to reduce latency through:
+description: Reduce latency for custom hostnames with Argo, Early Hints, caching, and anycast.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Two new fields are now available in the httpRequestsAdaptive and httpRequestsAdaptiveGroups GraphQL Analytics API datasets:
+description: Track the latest updates and changes to API Shield features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

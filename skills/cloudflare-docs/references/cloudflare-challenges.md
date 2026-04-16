@@ -1,6 +1,6 @@
 ---
 title: Challenges
-description: When a Challenge is issued, Cloudflare asks the browser to perform a series of checks that help confirm the visitor's legitimacy. This process involves evaluating client-side signals (data gathered from the visitor's browser environment) or asking a visitor to take minimal action such as checking a box or selecting a button.
+description: Verify visitors are human using challenge pages, Turnstile, and JavaScript detections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

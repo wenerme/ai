@@ -1,6 +1,6 @@
 ---
 title: Enhance Transform Rules
-description: You can forward information from a JSON Web Token (JWT) to the origin in a header by creating Transform Rules using claims that Cloudflare has verified via the JSON Web Token.
+description: Forward verified JWT claims to your origin using Transform Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
