@@ -1,6 +1,6 @@
 ---
 title: Worker Variables
-description: Zaraz Worker Variables are a powerful type of variable that you can configure and then use in your actions and triggers. Unlike string and masked variables, Worker Variables are dynamic. This means you can use a Cloudflare Worker to determine the value of the variable, allowing you to use them for countless purposes. For example:
+description: Create server-side variables using Workers for use in Zaraz actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

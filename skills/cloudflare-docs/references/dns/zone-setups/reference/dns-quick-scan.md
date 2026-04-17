@@ -1,6 +1,6 @@
 ---
 title: Records quick scan
-description: To help all customers get started when a new zone is created, Cloudflare offers a DNS records quick scan.
+description: How Cloudflare scans and imports DNS records automatically.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

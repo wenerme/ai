@@ -20,12 +20,12 @@ Cloudflare Email Service pricing is based on your Cloudflare plan and email usag
 
 ## Plan pricing
 
-Email Service is available on Free and Paid Cloudflare plans:
+Email Routing is available on both the Workers Free and Workers Paid plans. Email Sending is only available on the Workers Paid plan.
 
-| Free                                | Paid                                     |                        |
-| ----------------------------------- | ---------------------------------------- | ---------------------- |
-| **Outbound emails (Email Sending)** | To account-owned verified addresses only | $0.35 per 1,000 emails |
-| **Inbound emails (Email Routing)**  | Unlimited                                | Unlimited              |
+| Workers Free                        | Workers Paid  |                                                       |
+| ----------------------------------- | ------------- | ----------------------------------------------------- |
+| **Outbound emails (Email Sending)** | Not available | 3,000 included per month, then $0.35 per 1,000 emails |
+| **Inbound emails (Email Routing)**  | Unlimited     | Unlimited                                             |
 
 Email Routing Workers is billed according to [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/).
 

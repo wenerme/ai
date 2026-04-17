@@ -424,6 +424,13 @@ components:
             - string
             - 'null'
           description: User-Agent header from the request
+        web_search_engine:
+          type:
+            - string
+            - 'null'
+          description: >-
+            The resolved web search engine used for this generation (e.g. exa,
+            firecrawl, parallel)
       required:
         - api_type
         - app_id
@@ -461,6 +468,7 @@ components:
         - upstream_inference_cost
         - usage
         - user_agent
+        - web_search_engine
       description: Generation data
       title: GenerationGetResponsesContentApplicationJsonSchemaData
     Generations_getGeneration_Response_200:

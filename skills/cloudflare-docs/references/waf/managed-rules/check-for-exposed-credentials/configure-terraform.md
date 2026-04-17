@@ -1,6 +1,6 @@
 ---
 title: Configure exposed credentials checks using Terraform
-description: The following Terraform configuration example addresses a common use case of exposed credentials checks.
+description: Configure exposed credentials checks using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

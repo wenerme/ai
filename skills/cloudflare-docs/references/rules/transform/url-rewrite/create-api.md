@@ -1,6 +1,6 @@
 ---
 title: Create a URL rewrite rule via API
-description: Use the Rulesets API to create URL Rewrite Rules via API. Refer to the Rules examples gallery for common use cases.
+description: Create URL rewrite rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Before you start this tutorial, make sure you have:
+description: Create and configure a Cloudflare Waiting Room.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

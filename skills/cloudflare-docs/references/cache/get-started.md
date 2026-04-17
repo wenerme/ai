@@ -1,10 +1,14 @@
 ---
 title: Get started
-description: Cloudflare makes customer websites faster by storing a copy of the website's content on the servers of our globally distributed data centers. Content can be either static or dynamic: static content is “cacheable” or eligible for caching, and dynamic content is “uncacheable” or ineligible for caching. The cached copies of content are stored physically closer to users, optimized to be fast, and do not require recomputing.
+description: Set up and configure Cloudflare caching for your website.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ CORS ](https://developers.cloudflare.com/search/?tags=CORS) 
 
 Was this helpful?
 

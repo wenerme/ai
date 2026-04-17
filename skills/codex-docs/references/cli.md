@@ -48,6 +48,13 @@ Use `/model` to switch between GPT-5.4, GPT-5.3-Codex, and other available model
 Attach screenshots or design specs so Codex reads them alongside your prompt.
 
   </BentoContent>
+  <BentoContent href="/codex/cli/features#image-generation">
+
+### Image generation
+
+Generate or edit images directly in the CLI, and attach references when you want Codex to iterate on an existing asset.
+
+  </BentoContent>
 
   <BentoContent href="/codex/cli/features#running-local-code-review">
 

@@ -1,6 +1,6 @@
 ---
 title: High-level metrics
-description: Understanding the key metrics in web analytics is essential for optimizing your website’s performance and user experience. Here are the high-level metrics tracked by Cloudflare Web Analytics:
+description: Page views, visits, and other high-level metrics in Web Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

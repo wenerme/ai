@@ -1,6 +1,6 @@
 ---
 title: IP Access rules actions
-description: An IP Access rule can perform one of the following actions:
+description: Available actions for IP Access rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

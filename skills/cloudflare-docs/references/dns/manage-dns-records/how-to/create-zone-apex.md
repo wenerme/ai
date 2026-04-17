@@ -1,6 +1,6 @@
 ---
 title: Create zone apex record
-description: When you add a domain to Cloudflare, you may also need to create or review the DNS record on your zone apex. Zone apex refers to the domain (example.com) or subdomain (blog.example.com) that you are adding to Cloudflare.
+description: Create a DNS record for your zone apex.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -36,8 +36,8 @@ To create a zone apex record, use `@` for the record **Name**, as in the followi
 | ---- | ---- | ------------ | ------------ |
 | A    | @    | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-4270)
-* [ API ](#tab-panel-4271)
+* [ Dashboard ](#tab-panel-6462)
+* [ API ](#tab-panel-6463)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

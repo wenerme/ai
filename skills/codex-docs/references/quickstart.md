@@ -54,12 +54,12 @@ You can also use Codex with API credits by signing in with an OpenAI API key.
   ]}
 >
   <div slot="app">
-The Codex app is available on macOS (Apple Silicon).
+The Codex app is available on macOS and Windows.
 
 <WorkflowSteps variant="headings">
 1. Download and install the Codex app
 
-    Download the Codex app for Windows or macOS.
+    Download the Codex app for Windows or macOS. Choose the Intel build if you're using an Intel-based Mac.
 
     <CodexAppDownloadCta client:load className="mb-4" />
 

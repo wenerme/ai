@@ -1,5 +1,6 @@
 ---
 title: Waiting Room Analytics
+description: View Turnstile analytics for Waiting Room challenge events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

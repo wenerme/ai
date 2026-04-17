@@ -1,6 +1,6 @@
 ---
 title: Web Analytics for SPAs
-description: Cloudflare Web Analytics can automatically track user interactions on Single Page Applications (SPAs) by overriding the History API's pushState function and listening to the onpopstate event. Note that hash-based routers are not supported.
+description: Configure Web Analytics for single-page applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

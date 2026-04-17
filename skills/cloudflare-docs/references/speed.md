@@ -1,6 +1,6 @@
 ---
 title: Speed
-description: Speed allows you to assess the performance of your website and get recommendations of Cloudflare products to enhance the website performance.
+description: Optimize your website performance with Cloudflare Speed tools and settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -56,7 +56,7 @@ Customize the cache properties of your HTTP requests.
 
 Understand the performance of your webpages as experienced by your site visitors.
 
-**[Cloudflare Image Resizing](https://developers.cloudflare.com/images/transform-images/)** 
+**[Cloudflare Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/)** 
 
 Transform images on Cloudflare's edge platform: resize, adjust quality, and convert images to WebP or AVIF format on demand.
 

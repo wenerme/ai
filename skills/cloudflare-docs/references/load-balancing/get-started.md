@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Get started with load balancing in one of two ways:
+description: Set up Cloudflare Load Balancing for your applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

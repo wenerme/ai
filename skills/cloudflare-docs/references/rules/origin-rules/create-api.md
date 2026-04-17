@@ -1,6 +1,6 @@
 ---
 title: Create an origin rule via API
-description: Use the Rulesets API to create origin rules via API.
+description: Create origin rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

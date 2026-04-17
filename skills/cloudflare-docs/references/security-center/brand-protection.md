@@ -1,6 +1,6 @@
 ---
 title: Brand Protection
-description: Brand Protection allows you to proactively identify and mitigate domain impersonation and phishing attacks. By monitoring newly registered domains and visual assets across the Internet, Cloudflare helps protect your brand's reputation and prevents your customers or employees from submitting sensitive information to fraudulent sites.
+description: Detect phishing domains and impersonation attempts targeting your brand.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

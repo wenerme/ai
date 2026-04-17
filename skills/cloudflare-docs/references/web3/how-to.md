@@ -1,5 +1,6 @@
 ---
 title: How to
+description: How-to guides for configuring and using Web3 gateways.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

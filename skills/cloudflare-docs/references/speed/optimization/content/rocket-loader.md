@@ -1,6 +1,6 @@
 ---
 title: Rocket Loader
-description: Rocket Loader prioritizes your website's content (text, images, fonts, and more) by deferring the loading of all of your JavaScript until after rendering.
+description: Defer JavaScript loading to improve page rendering speed.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

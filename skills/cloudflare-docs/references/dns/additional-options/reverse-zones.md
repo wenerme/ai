@@ -1,6 +1,6 @@
 ---
 title: Reverse zones and PTR records
-description: If you control your own IP prefix(es), you can set up reverse zones with PTR records to allow reverse DNS lookups.
+description: Set up reverse DNS zones and PTR records.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

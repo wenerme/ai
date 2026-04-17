@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: To get started with your PKCS#11 token you will need to initialize it with a private key, PIN, and token label. The instructions to do this will be specific to each hardware device, and you should follow the instructions provided by your vendor. You will also need to find the path to your module, a shared object file (.so). Having initialized your device, you can query it to check your token label with:
+description: Configure the key server to work with hardware security modules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

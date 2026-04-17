@@ -1,6 +1,6 @@
 ---
 title: DNS setups
-description: When using Cloudflare DNS, you have a few options for your DNS zone setup:
+description: Available DNS zone setup types and how to configure them.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

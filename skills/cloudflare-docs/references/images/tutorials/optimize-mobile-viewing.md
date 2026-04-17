@@ -25,7 +25,7 @@ Lazy loading has two main advantages:
 * **Faster page load times** — Images are loaded as the user scrolls down the page, instead of all at once when the page is opened.
 * **Lower costs for image delivery** — When using Cloudflare Images, you only pay to load images that the user actually sees. With lazy loading, images that are not scrolled into view do not count toward your billable Images requests.
 
-Lazy loading is natively supported on all Chromium-based browsers like Chrome, Safari, Firefox, Opera, and Edge.
+Lazy loading is natively supported on all major browsers, including Chrome, Safari, Firefox, Opera, and Edge.
 
 Note
 
@@ -45,7 +45,7 @@ Example of modifying the `loading` attribute of your `<img>` tags to be `"lazy"`
 
 ```
 
-<img src="example.com/cdn-cgi/width=300/image.png" loading="lazy">
+<img src="example.com/cdn-cgi/width=300/image.png" loading="lazy" />
 
 
 ```
@@ -58,7 +58,7 @@ Example of modifying the `loading` attribute of your `<img>` tags to be `"eager"
 
 ```
 
-<img src="example.com/cdn-cgi/width=300/image.png" loading="eager">
+<img src="example.com/cdn-cgi/width=300/image.png" loading="eager" />
 
 
 ```

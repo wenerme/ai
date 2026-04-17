@@ -1,6 +1,6 @@
 ---
 title: Scaling and benchmarking
-description: Cloudflare's Keyless SSL technology was designed to scale to accommodate any sized workload using vertical and horizontal scaling, and pre-computation techniques wherever possible, such as ECDSA. The goals of the architectural design of the key server are to minimize latency while maximizing signing operations per second.
+description: Scale and benchmark Keyless SSL key servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

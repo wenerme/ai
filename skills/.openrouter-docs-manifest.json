@@ -201,8 +201,8 @@
   },
   "app-attribution.md": {
     "url": "https://openrouter.ai/docs/app-attribution.md",
-    "size": 9444,
-    "updatedAt": "2026-04-10T00:25:21.654Z"
+    "size": 10011,
+    "updatedAt": "2026-04-17T00:30:04.253Z"
   },
   "guides/features/guardrails.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails.md",
@@ -326,8 +326,8 @@
   },
   "guides/best-practices/prompt-caching.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching.md",
-    "size": 14995,
-    "updatedAt": "2026-04-10T00:25:32.064Z"
+    "size": 15783,
+    "updatedAt": "2026-04-17T00:30:16.224Z"
   },
   "guides/best-practices/uptime-optimization.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/uptime-optimization.md",
@@ -404,6 +404,11 @@
     "size": 5891,
     "updatedAt": "2026-04-10T00:25:38.844Z"
   },
+  "guides/evaluate-and-optimize/model-migrations/claude-4-7.md": {
+    "url": "https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/claude-4-7.md",
+    "size": 4884,
+    "updatedAt": "2026-04-17T00:30:24.200Z"
+  },
   "guides/evaluate-and-optimize/model-migrations/claude-4-6.md": {
     "url": "https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/claude-4-6.md",
     "size": 4124,
@@ -443,6 +448,11 @@
     "url": "https://openrouter.ai/docs/guides/get-started/sovereign-ai.md",
     "size": 6178,
     "updatedAt": "2026-04-10T00:25:42.529Z"
+  },
+  "guides/get-started/stripe-projects.md": {
+    "url": "https://openrouter.ai/docs/guides/get-started/stripe-projects.md",
+    "size": 9774,
+    "updatedAt": "2026-04-17T00:30:28.632Z"
   },
   "guides/community/frameworks-and-integrations-overview.md": {
     "url": "https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview.md",
@@ -551,8 +561,8 @@
   },
   "api/reference/parameters.md": {
     "url": "https://openrouter.ai/docs/api/reference/parameters.md",
-    "size": 8408,
-    "updatedAt": "2026-04-10T00:25:51.682Z"
+    "size": 8488,
+    "updatedAt": "2026-04-17T00:30:38.403Z"
   },
   "api/reference/errors-and-debugging.md": {
     "url": "https://openrouter.ai/docs/api/reference/errors-and-debugging.md",
@@ -591,8 +601,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 143251,
-    "updatedAt": "2026-04-16T00:30:40.180Z"
+    "size": 144498,
+    "updatedAt": "2026-04-17T00:30:43.184Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -641,8 +651,8 @@
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
-    "size": 21130,
-    "updatedAt": "2026-04-16T00:30:52.672Z"
+    "size": 21381,
+    "updatedAt": "2026-04-17T00:30:55.977Z"
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
@@ -741,8 +751,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 119844,
-    "updatedAt": "2026-04-16T00:31:17.766Z"
+    "size": 120984,
+    "updatedAt": "2026-04-17T00:31:21.204Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",

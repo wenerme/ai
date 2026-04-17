@@ -1,6 +1,6 @@
 ---
 title: Set Browser Cache TTL
-description: Specify a time for a visitor’s Browser Cache TTL to accelerate the page load for repeat visitors to your website. To configure cache duration within Cloudflare’s data centers, refer to Edge Cache TTL.
+description: Set how long browsers cache resources from your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Combine with Cloudflare for SaaS
-description: If your application is using a custom hostname — meaning your SaaS provider is using Cloudflare for SaaS — your application can support a waiting room.
+description: Use Waiting Room with Cloudflare for SaaS custom hostnames.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Early Hints
-description: Early Hints takes advantage of “server think time” to asynchronously send instructions to the browser to begin loading resources while the origin server is compiling the full response. By sending these hints to a browser before the full response is prepared, the browser can figure out how to load the webpage faster for the end user.
+description: Preload assets with 103 Early Hints to speed up page loads.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

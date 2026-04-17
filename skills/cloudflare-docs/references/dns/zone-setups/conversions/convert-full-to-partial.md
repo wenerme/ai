@@ -1,6 +1,6 @@
 ---
 title: Convert full setup to partial setup
-description: If you initially configured a primary setup (full), you can later convert your zone to use a CNAME setup (also known as partial setup).
+description: Convert a full DNS setup to a partial CNAME setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -31,8 +31,8 @@ Make sure you consider the following:
 ## 1\. Prepare DNS records
 
 1. Export a zone file  
-   * [ Dashboard ](#tab-panel-4292)  
-   * [ API ](#tab-panel-4293)  
+   * [ Dashboard ](#tab-panel-6484)  
+   * [ API ](#tab-panel-6485)  
 To export records using the dashboard:  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
@@ -61,8 +61,8 @@ www.example.com CNAME www.example.com.cdn.cloudflare.net
 
 ## 2\. Convert the zone
 
-* [ Dashboard ](#tab-panel-4290)
-* [ API ](#tab-panel-4291)
+* [ Dashboard ](#tab-panel-6482)
+* [ API ](#tab-panel-6483)
 
 1. On the Cloudflare dashboard, go to the zone's **Overview** page.
 2. Select **Convert to CNAME DNS Setup** and then **Convert** to confirm.

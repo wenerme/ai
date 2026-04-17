@@ -1,6 +1,6 @@
 ---
 title: Get JSON response for mobile and other non-browser traffic
-description: If you need to manage traffic in a non-browser environment such as a mobile app or web app, Cloudflare provides a JSON-friendly waiting room that can be consumed via your API endpoints:
+description: Return JSON responses for mobile apps and non-browser clients.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

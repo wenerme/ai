@@ -1,10 +1,14 @@
 ---
 title: Change nameservers
-description: After you confirm your DNS records, change your nameservers.
+description: Update your domain nameservers to Cloudflare for APO to work.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
 
 Was this helpful?
 

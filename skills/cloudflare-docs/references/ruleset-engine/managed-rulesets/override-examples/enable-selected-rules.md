@@ -1,6 +1,6 @@
 ---
 title: Enable only selected rules
-description: Use a ruleset override and a rule override in a phase entry point ruleset to execute only selected rules in a managed ruleset.
+description: Deploy a managed ruleset with only selected rules enabled.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

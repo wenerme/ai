@@ -522,9 +522,9 @@ The legacy KV-backed API allows you to modify embedded storage within a Durable 
 
 ---
 
-### [Images](https://developers.cloudflare.com/images/transform-images/bindings/)
+### [Images](https://developers.cloudflare.com/images/optimization/transformations/bindings/)
 
-### [images\_output](https://developers.cloudflare.com/images/transform-images/bindings/#output)
+### [images\_output](https://developers.cloudflare.com/images/optimization/transformations/bindings/#output)
 
 * `cloudflare.binding.type`
 * `cloudflare.images.options.format`
@@ -534,7 +534,7 @@ The legacy KV-backed API allows you to modify embedded storage within a Durable 
 * `cloudflare.images.options.transforms`
 * `cloudflare.images.error.code`
 
-### [images\_info](https://developers.cloudflare.com/images/transform-images/bindings/#info)
+### [images\_info](https://developers.cloudflare.com/images/optimization/transformations/bindings/#info)
 
 * `cloudflare.binding.type`
 * `cloudflare.images.options.encoding`

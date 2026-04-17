@@ -1,6 +1,6 @@
 ---
 title: Terraform configuration examples
-description: The following Terraform configuration examples address common scenarios for managing, configuring, and using WAF content scanning.
+description: Configure malicious upload detection using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

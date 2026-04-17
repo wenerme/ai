@@ -1,6 +1,6 @@
 ---
 title: Cache Reserve analytics
-description: Cache Reserve Analytics provides insights regarding your Cache Reserve usage. It allows you to check what content is stored in Cache Reserve, how often it is being accessed, how long it has been there and how much egress from your origin it is saving you.
+description: View Cache Reserve storage, read, and write operation metrics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

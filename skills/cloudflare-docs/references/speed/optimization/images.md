@@ -1,5 +1,6 @@
 ---
 title: Image optimization
+description: Optimize images with Polish, Mirage, and Image Resizing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -15,7 +16,7 @@ Copy page
 
 # Image optimization
 
-* [ Image Resizing ](https://developers.cloudflare.com/images/transform-images/)
+* [ Image Resizing ](https://developers.cloudflare.com/images/optimization/transformations/overview/)
 * [ Polish ](https://developers.cloudflare.com/images/polish/)
 * [ Cloudflare Mirage (deprecated) ](https://developers.cloudflare.com/speed/optimization/images/mirage/)
 * [ Troubleshooting ](https://developers.cloudflare.com/speed/optimization/images/troubleshooting/)

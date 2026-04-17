@@ -1,6 +1,6 @@
 ---
 title: Custom rulesets (account level)
-description: Custom rulesets are collections of custom rules that you can deploy at the account or zone level.
+description: Create custom rulesets at the account level and deploy them to multiple zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

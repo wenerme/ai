@@ -1,6 +1,6 @@
 ---
 title: CNAME flattening
-description: CNAME flattening speeds up CNAME resolution and allows you to use a CNAME record at your zone apex (example.com).
+description: Resolve CNAME records at the zone apex to comply with DNS standards.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

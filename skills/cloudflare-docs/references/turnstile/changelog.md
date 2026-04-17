@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Track the latest updates and changes to Cloudflare Turnstile.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

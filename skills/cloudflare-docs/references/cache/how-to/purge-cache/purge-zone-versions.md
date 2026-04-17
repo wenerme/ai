@@ -1,6 +1,6 @@
 ---
 title: Purge zone versions via API
-description: To purge zone versions via the Cloudflare API, follow these steps:
+description: Purge cache for specific zone versions using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

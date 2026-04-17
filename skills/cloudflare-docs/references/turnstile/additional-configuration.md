@@ -1,6 +1,6 @@
 ---
 title: Additional configurations
-description: Refer to the following pages for more information about Turnstile's additional configurations:
+description: Advanced Turnstile settings including hostname management and branding.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Use this tutorial to start using Cloudflare's Web3 Gateways to the IPFS and Ethereum networks.
+description: Set up a Cloudflare Web3 gateway for Ethereum or IPFS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

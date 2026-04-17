@@ -1,6 +1,6 @@
 ---
 title: Legacy gateway migration
-description: As announced in our blog post, Cloudflare is deprecating legacy hostnames that point to our public gateway endpoints at cloudflare-eth.com and cloudflare-ipfs.com.
+description: Migrate from legacy Web3 gateways to the current setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

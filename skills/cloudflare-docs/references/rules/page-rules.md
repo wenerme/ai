@@ -1,5 +1,6 @@
 ---
 title: Page Rules
+description: Trigger actions based on URL patterns with Page Rules (deprecated).
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Remove Cloudflare branding with Offlabel
-description: Offlabel is an Enterprise-only feature that removes Cloudflare branding and logo from Turnstile widgets. When enabled, widgets display without any visual references to Cloudflare.
+description: Remove Cloudflare branding from Turnstile widgets with Offlabel mode.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

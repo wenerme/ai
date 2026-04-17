@@ -1,6 +1,6 @@
 ---
 title: Expressions
-description: The Rules language supports two kinds of expressions: simple and compound.
+description: Write expressions that match request characteristics for rule evaluation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

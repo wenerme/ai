@@ -39,10 +39,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-2983)
-* [  TypeScript ](#tab-panel-2984)
-* [  Python ](#tab-panel-2985)
-* [  curl ](#tab-panel-2986)
+* [  Worker (Streaming) ](#tab-panel-2987)
+* [  TypeScript ](#tab-panel-2988)
+* [  Python ](#tab-panel-2989)
+* [  curl ](#tab-panel-2990)
 
 TypeScript
 
@@ -207,8 +207,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2991)
-* [ Output ](#tab-panel-2992)
+* [ Input ](#tab-panel-2995)
+* [ Output ](#tab-panel-2996)
 
 prompt
 
@@ -264,7 +264,7 @@ presence\_penalty
 
 response
 
-`string`requiredThe generated text response from the model
+`string`The generated text response from the model
 
 ▶usage{}
 
@@ -276,8 +276,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2993)
-* [ Output ](#tab-panel-2994)
+* [ Input ](#tab-panel-2997)
+* [ Output ](#tab-panel-2998)
 
 prompt
 
@@ -343,8 +343,8 @@ format
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-2987)
-* [ Output ](#tab-panel-2988)
+* [ Input ](#tab-panel-2991)
+* [ Output ](#tab-panel-2992)
 
 ```
 
@@ -640,8 +640,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-2989)
-* [ Output ](#tab-panel-2990)
+* [ Input ](#tab-panel-2993)
+* [ Output ](#tab-panel-2994)
 
 ```
 

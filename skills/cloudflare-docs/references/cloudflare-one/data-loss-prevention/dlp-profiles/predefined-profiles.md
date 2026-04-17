@@ -76,6 +76,16 @@ In the table below, entries use one of three validation methods. [Luhn's algorit
 | United States ABA Routing Number | Validated algorithmically with checksum.                                              |
 | IBAN                             | Validated with checksum.                                                              |
 
+## HTTP Archive
+
+The **Unsanitized HAR** predefined profile detects HTTP Archive (HAR) files in traffic that have not been processed by Cloudflare's HAR sanitizer. HAR files frequently contain sensitive data such as session cookies, authorization headers, and other credentials.
+
+| Detection entry      | Notes                                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Unsanitized HAR file | Detects HAR files that do not carry a Cloudflare sanitized marker. Files processed by the Cloudflare HAR sanitizer and unmodified since will not match this entry. |
+
+You can use this profile in a Gateway HTTP policy to block HAR file uploads or redirect users to `https://har-sanitizer.pages.dev/` to sanitize the file before uploading. For more information, refer to [common DLP policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/common-policies/).
+
 ## Health Information
 
 The following diagnosis and medication names are checked for surrounding ASCII characters to prevent false positives.

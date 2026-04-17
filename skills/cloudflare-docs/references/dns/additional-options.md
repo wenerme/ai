@@ -1,6 +1,6 @@
 ---
 title: Additional options
-description: Beyond setting up your zone and updating your DNS records, you may want to customize the following settings in Cloudflare DNS:
+description: Additional DNS features including analytics, zone defaults, and reverse zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

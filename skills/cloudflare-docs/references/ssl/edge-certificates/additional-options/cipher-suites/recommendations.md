@@ -1,6 +1,6 @@
 ---
 title: Security levels
-description: Refer to the sections below for three different security levels and how Cloudflare recommends that you set them up if you need to restrict the cipher suites used between Cloudflare and clients that access your website or application.
+description: Recommended cipher suite security levels for different use cases.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Reference architecture
+description: Reference architecture for Cloudflare Load Balancing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

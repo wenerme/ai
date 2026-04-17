@@ -312,8 +312,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-238)
-* [ Output ](#tab-panel-239)
+* [ Input ](#tab-panel-242)
+* [ Output ](#tab-panel-243)
 
 prompt
 
@@ -341,12 +341,12 @@ seed
 
 video
 
-`string`requiredformat: uriURL to the generated video
+`string`format: uriURL to the generated video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-236)
-* [ Output ](#tab-panel-237)
+* [ Input ](#tab-panel-240)
+* [ Output ](#tab-panel-241)
 
 ```
 

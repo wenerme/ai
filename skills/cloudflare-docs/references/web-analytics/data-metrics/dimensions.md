@@ -1,6 +1,6 @@
 ---
 title: Dimensions
-description: Dimensions are the labels used to describe different types of metrics or data. For example, Referer is the data collected from external links referring visits to a page, while Browser shows which browsers accessed your website.
+description: Dimensions available for filtering and grouping Web Analytics data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

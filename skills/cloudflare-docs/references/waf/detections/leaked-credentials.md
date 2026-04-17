@@ -1,6 +1,6 @@
 ---
 title: Leaked credentials detection
-description: The leaked credentials traffic detection scans incoming requests for credentials (usernames and passwords) previously leaked from data breaches.
+description: Scan incoming requests for usernames and passwords exposed in known data breaches.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot rate limiting rules
-description: Cloudflare may count Workers subrequests on the same zone as separate requests, which will cause a rate limiting rule to trigger sooner than expected. This behavior happens when the rate limiting rule is configured with Also apply rate limiting to cached assets set to false.
+description: Resolve common issues with rate limiting rules, including Workers subrequests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -40,10 +40,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3541)
-* [  TypeScript ](#tab-panel-3542)
-* [  Python ](#tab-panel-3543)
-* [  curl ](#tab-panel-3544)
+* [  Worker (Streaming) ](#tab-panel-3545)
+* [  TypeScript ](#tab-panel-3546)
+* [  Python ](#tab-panel-3547)
+* [  curl ](#tab-panel-3548)
 
 TypeScript
 
@@ -208,8 +208,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3549)
-* [ Output ](#tab-panel-3550)
+* [ Input ](#tab-panel-3553)
+* [ Output ](#tab-panel-3554)
 
 prompt
 
@@ -341,23 +341,23 @@ user
 
 id
 
-`string`requiredA unique identifier for the chat completion.
+`string`A unique identifier for the chat completion.
 
 object
 
-`string`required
+`string`
 
 created
 
-`integer`requiredUnix timestamp (seconds) of when the completion was created.
+`integer`Unix timestamp (seconds) of when the completion was created.
 
 model
 
-`string`requiredThe model used for the chat completion.
+`string`The model used for the chat completion.
 
 ▶choices\[\]
 
-`array`requiredminItems: 1
+`array`minItems: 1
 
 ▶usage{}
 
@@ -373,8 +373,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3551)
-* [ Output ](#tab-panel-3552)
+* [ Input ](#tab-panel-3555)
+* [ Output ](#tab-panel-3556)
 
 prompt
 
@@ -520,8 +520,8 @@ format
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3545)
-* [ Output ](#tab-panel-3546)
+* [ Input ](#tab-panel-3549)
+* [ Output ](#tab-panel-3550)
 
 ```
 
@@ -3193,8 +3193,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3547)
-* [ Output ](#tab-panel-3548)
+* [ Input ](#tab-panel-3551)
+* [ Output ](#tab-panel-3552)
 
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Development Mode
-description: Development Mode temporarily suspends Cloudflare's edge caching and Polish features for three hours unless disabled beforehand. Development Mode allows customers to immediately observe changes to their cacheable content like images, CSS, or JavaScript.
+description: Bypass the cache temporarily with Development Mode.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

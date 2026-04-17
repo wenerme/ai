@@ -1,6 +1,6 @@
 ---
 title: Plans
-description: Cloudflare Turnstile is available on the following plans:
+description: Compare Turnstile feature availability and widget limits across plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

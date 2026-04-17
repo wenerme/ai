@@ -1,6 +1,6 @@
 ---
 title: Rules
-description: Use Rules to configure whether to track Web Analytics for specific websites or paths. By default, Web Analytics automatically creates a single rule for the zone that injects the JavaScript (JS) snippet for all pages.
+description: Create rules to include or exclude traffic from Web Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

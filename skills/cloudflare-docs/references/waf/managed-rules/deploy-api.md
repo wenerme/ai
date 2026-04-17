@@ -1,6 +1,6 @@
 ---
 title: Deploy a WAF managed ruleset via API (zone)
-description: Use the Rulesets API to deploy a managed ruleset at the zone level.
+description: Deploy WAF managed rulesets at the zone level using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

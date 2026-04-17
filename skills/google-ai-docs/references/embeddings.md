@@ -1,5 +1,3 @@
-# Embeddings
-
 <br />
 
 > [!IMPORTANT]
@@ -113,6 +111,9 @@ Use the `embedContent` method to generate text embeddings:
 
 You can also generate embeddings for multiple chunks at once by passing them in
 as a list of strings.
+
+> [!NOTE]
+> **Note:** Gemini Embedding 2 creates an aggregated embedding for multiple inputs. See [Embedding aggregation](https://ai.google.dev/gemini-api/docs/embeddings#embedding-aggregation) for more details.
 
 ### Python
 
@@ -716,8 +717,12 @@ embedding output:
 - **Multiple entries:** Sending multiple entries in the `contents` array returns separate embeddings for each entry.
 - **Post-level representation:** For complex objects like social media posts with multiple media items, we recommend aggregating separate embeddings (for example, by averaging) to create a coherent post-level representation.
 
-The following example shows how to create one aggregated embedding for text and image input.
-Use the `parts` field to combine multiple inputs:
+To generate an aggregated embedding, provide multiple input types within the
+same request. The following example demonstrates how to create a single
+multimodal embedding from text and image data.
+
+> [!NOTE]
+> **Note:** Ensure you are using the latest SDK version to support correct multimodal aggregation.
 
 ### Python
 
@@ -730,21 +735,15 @@ Use the `parts` field to combine multiple inputs:
     result = client.models.embed_content(
         model='gemini-embedding-2-preview',
         contents=[
-            types.Content(
-                parts=[
-                    types.Part(text="An image of a dog"),
-                    types.Part.from_bytes(
-                        data=image_bytes,
-                        mime_type='image/png',
-                    )
-                ]
-            )
+            "An image of a dog",
+            types.Part.from_bytes(
+                data=image_bytes,
+                mime_type='image/png',
+            ),
         ]
     )
 
-    # This produces one embedding
-    for embedding in result.embeddings:
-        print(embedding.values)
+    print(result.embeddings)
 
 ### JavaScript
 
@@ -758,12 +757,15 @@ Use the `parts` field to combine multiple inputs:
 
         const response = await ai.models.embedContent({
             model: 'gemini-embedding-2-preview',
-            contents: {
-                parts: [
-                    { text: 'An image of a dog' },
-                    { inlineData: { mimeType: 'image/png', data: imgBase64 } },
-                ],
-            },
+            contents: [
+                'An image of a dog',
+                {
+                    inlineData: {
+                        mimeType: 'image/png',
+                        data: imgBase64,
+                    },
+                },
+            ],
         });
 
         console.log(response.embeddings);
@@ -791,80 +793,6 @@ Use the `parts` field to combine multiple inputs:
                     }
                 ]
             }
-        }'
-
-On the other hand, this example creates multiple embeddings in one embedding call:
-
-### Python
-
-    from google import genai
-    from google.genai import types
-
-    with open('dog.png', 'rb') as f:
-        image_bytes = f.read()
-
-    result = client.models.embed_content(
-        model='gemini-embedding-2-preview',
-        contents=[
-            "The dog is cute",
-            types.Part.from_bytes(
-                data=image_bytes,
-                mime_type='image/png',
-            ),
-        ]
-    )
-
-    # This produces two embeddings
-    for embedding in result.embeddings:
-        print(embedding.values)
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-    import * as fs from "node:fs";
-
-    async function main() {
-        const ai = new GoogleGenAI({});
-
-        const imgBase64 = fs.readFileSync("dog.png", { encoding: "base64" });
-
-        const response = await ai.models.embedContent({
-            model: 'gemini-embedding-2-preview',
-            contents: [
-                'The dog is cute',
-                {
-                    inlineData: {
-                        mimeType: 'image/png',
-                        data: imgBase64,
-                    },
-                },
-            ],
-        });
-
-        console.log(response.embeddings);
-    }
-
-    main();
-
-### REST
-
-    IMG_PATH="/path/to/your/dog.png"
-    IMG_BASE64=$(base64 -w0 "${IMG_PATH}")
-
-    curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2-preview:batchEmbedContents" \
-        -H "Content-Type: application/json" \
-        -H "x-goog-api-key: ${GEMINI_API_KEY}" \
-        -d '{
-            "requests": [
-                {
-                    "model": "models/gemini-embedding-2-preview",
-                    "content": {"parts": [{"text": "The dog is cute"}]}
-                },
-                {
-                    "model": "models/gemini-embedding-2-preview",
-                    "content": {"parts": [{"inline_data": {"mime_type": "image/png", "data": "'"${IMG_BASE64}"'"}}]}
-                }
-            ]
         }'
 
 ### Embedding audio

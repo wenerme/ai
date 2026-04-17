@@ -1,6 +1,6 @@
 ---
 title: Downloads
-description: Cloudflare Tunnel requires the installation of a lightweight daemon, cloudflared, to connect your infrastructure to Cloudflare. If you are creating a tunnel through the dashboard, you can simply copy-paste the installation command shown in the dashboard.
+description: Download the cloudflared daemon for your operating system.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

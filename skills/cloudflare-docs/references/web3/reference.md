@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for Web3 gateways, including limits and DNS records.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

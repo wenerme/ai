@@ -1,6 +1,6 @@
 ---
 title: Keyless SSL
-description: Keyless SSL allows security-conscious clients to upload their own custom certificates and benefit from Cloudflare, but without exposing their TLS private keys.
+description: Keep private keys on your own infrastructure while using Cloudflare TLS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

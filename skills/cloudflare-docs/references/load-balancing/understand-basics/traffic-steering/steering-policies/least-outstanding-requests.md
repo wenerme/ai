@@ -1,6 +1,6 @@
 ---
 title: Least Outstanding Requests
-description: Least Outstanding Requests steering allows you to route traffic to pools that currently have the lowest number of outstanding requests.
+description: Route traffic to the pool with the fewest pending requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

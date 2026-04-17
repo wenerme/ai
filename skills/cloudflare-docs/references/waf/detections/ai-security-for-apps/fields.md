@@ -1,6 +1,6 @@
 ---
 title: AI Security for Apps fields
-description: When enabled, AI Security for Apps populates the following fields:
+description: Fields available for AI Security for Apps detections in rule expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

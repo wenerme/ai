@@ -1,5 +1,6 @@
 ---
 title: API reference
+description: API endpoints for managing load balancers, pools, and monitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

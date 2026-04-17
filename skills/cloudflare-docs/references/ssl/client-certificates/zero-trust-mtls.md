@@ -1,5 +1,6 @@
 ---
 title: mTLS for Zero Trust
+description: Use mTLS with Zero Trust to verify device identity.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

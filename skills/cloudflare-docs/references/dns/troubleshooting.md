@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The following topics are useful for troubleshooting DNS issues.
+description: Troubleshoot common Cloudflare DNS issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

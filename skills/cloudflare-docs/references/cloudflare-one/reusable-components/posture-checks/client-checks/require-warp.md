@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Posture ](https://developers.cloudflare.com/search/?tags=Posture) 
+
 Was this helpful?
 
 YesNo

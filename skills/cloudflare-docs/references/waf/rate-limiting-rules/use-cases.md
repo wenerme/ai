@@ -1,6 +1,6 @@
 ---
 title: Rate limiting rule examples
-description: The examples below include sample rate limiting rule configurations.
+description: Sample rate limiting rule configurations for login pages, APIs, and geographic restrictions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

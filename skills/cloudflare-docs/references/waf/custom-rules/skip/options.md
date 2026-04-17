@@ -1,6 +1,6 @@
 ---
 title: Available skip options
-description: The following sections cover the available skip options in custom rules.
+description: Available skip options for WAF custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -44,6 +44,12 @@ The phases you can skip are the following:
 
 Refer to [Phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) for more information.
 
+Notes
+
+Currently, you cannot skip [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), only Super Bot Fight Mode.
+
+Skipping a phase does not skip security products that run outside the Ruleset Engine, such as [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/) or [Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/). To skip those products, use the [Skip products](#skip-products) option instead.
+
 ## Skip products
 
 * API action parameter: `products`
@@ -61,8 +67,6 @@ Skips specific security products that are not based on the Ruleset Engine. The p
 | [Managed rules (Previous version)](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/)   | waf           |
 
 The API values in the table are case-sensitive.
-
-Currently, you cannot skip [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/), only Super Bot Fight Mode (refer to [Skip phases](#skip-phases)).
 
 ## Skip the remaining custom rules (current phase)
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The following topics are useful for troubleshooting Speed issues.
+description: Troubleshoot common speed and performance optimization issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

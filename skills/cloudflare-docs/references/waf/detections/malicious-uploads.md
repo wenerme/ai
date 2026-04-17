@@ -1,6 +1,6 @@
 ---
 title: Malicious uploads detection
-description: The malicious uploads detection is a traffic detection that scans files and other content uploaded to your application for malware.
+description: Scan uploaded files for malware and malicious content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

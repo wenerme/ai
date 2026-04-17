@@ -1,6 +1,6 @@
 ---
 title: Actions
-description: Add actions to customize how your load balancer responds to certain HTTP requests.
+description: Actions available in custom load balancing rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

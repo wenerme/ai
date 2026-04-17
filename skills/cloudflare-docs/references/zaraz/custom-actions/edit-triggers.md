@@ -1,6 +1,6 @@
 ---
 title: Edit triggers
-description: You can edit every field related to the trigger, as well as add new trigger rules.
+description: Edit existing Zaraz triggers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

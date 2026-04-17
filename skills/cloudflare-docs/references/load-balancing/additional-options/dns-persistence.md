@@ -1,6 +1,6 @@
 ---
 title: DNS persistence
-description: This guide explains how to achieve DNS persistence when using Cloudflare Load Balancing, similar to functionality provided by traditional DNS-based load balancers.
+description: Maintain consistent DNS responses for load balanced hostnames.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

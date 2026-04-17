@@ -1,6 +1,6 @@
 ---
 title: Best practices
-description: Follow these best practices to avoid potential issues and improve the visitor experience.
+description: Best practices for configuring and testing waiting rooms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

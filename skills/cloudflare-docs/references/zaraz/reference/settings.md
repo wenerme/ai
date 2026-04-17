@@ -1,6 +1,6 @@
 ---
 title: Settings
-description: To configure Zaraz's general settings, go to the Settings page in the Cloudflare dashboard:
+description: Global Zaraz configuration settings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

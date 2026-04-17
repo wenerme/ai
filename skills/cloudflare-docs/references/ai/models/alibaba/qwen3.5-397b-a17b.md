@@ -29,12 +29,6 @@ Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active 
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                   |
 | More information  | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=alibaba/qwen3.5-397b-a17b) 
-
 ## Usage
 
 TypeScript
@@ -343,23 +337,23 @@ response\_format
 
 id
 
-`string`required
+`string`
 
 object
 
-`string`required
+`string`
 
 created
 
-`number`required
+`number`
 
 model
 
-`string`required
+`string`
 
 ▶choices\[\]
 
-`array`required
+`array`
 
 ▶usage{}
 

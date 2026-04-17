@@ -1,5 +1,6 @@
 ---
 title: Secrets Store integrations
+description: Use Secrets Store with Workers, AI Gateway, and other Cloudflare products.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Turnstile Privacy Addendum
+description: Privacy terms for the Cloudflare Turnstile service.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Create a rate limiting ruleset via API
-description: To deploy rate limiting rules at the account level, you must create a rate limiting ruleset with one or more rules. Use the Rulesets API to create and deploy rate limiting rulesets via API.
+description: Create account-level rate limiting rulesets using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

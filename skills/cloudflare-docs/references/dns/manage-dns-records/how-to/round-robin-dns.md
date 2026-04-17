@@ -1,6 +1,6 @@
 ---
 title: Round-robin DNS
-description: To randomly distribute traffic across multiple servers, set up multiple DNS A or AAAA records for the same hostname.
+description: Distribute traffic across multiple origins with round-robin DNS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

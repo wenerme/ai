@@ -1,6 +1,6 @@
 ---
 title: Manage miscategorization reports
-description: This guide will show you how to manage miscategorization of reports. To complete this guide, you will need to generate an API token.
+description: Submit domain miscategorization reports using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: API reference
+description: API endpoints for managing Web3 gateways.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

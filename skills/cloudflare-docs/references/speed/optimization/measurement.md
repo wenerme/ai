@@ -1,6 +1,6 @@
 ---
 title: Measurement
-description: Enable measurement to track your traffic in a privacy-first manner, optimizing your site's speed tools. To access this feature, you need to enable Web Analytics on your website. This analytics tool leverages Real User Measurement (RUM) data, providing insights based on actual user interactions to enhance site performance effectively.
+description: Measure the impact of speed optimizations on your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

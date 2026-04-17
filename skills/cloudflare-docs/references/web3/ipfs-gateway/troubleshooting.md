@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: Resolve common IPFS Gateway issues including 523 and 524 errors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

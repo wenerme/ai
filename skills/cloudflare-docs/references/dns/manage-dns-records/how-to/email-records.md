@@ -1,6 +1,6 @@
 ---
 title: Set up email records
-description: There are three reasons to set up email records for your domain:
+description: Configure MX, SPF, DKIM, and DMARC records for email.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

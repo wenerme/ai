@@ -1,10 +1,14 @@
 ---
 title: Query String Sort
-description: Query String Sort increases cache-hit rates by first sorting query strings into a consistent order before checking the Cloudflare cache.
+description: Improve cache hit rates by sorting query string parameters.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
 
 Was this helpful?
 

@@ -1,6 +1,6 @@
 ---
 title: Configuration settings
-description: You can customize a variety of options for your waiting rooms.
+description: Available configuration settings for waiting rooms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

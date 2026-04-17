@@ -56,6 +56,8 @@ Use managed labels to identify endpoints by use case. Cloudflare may automatical
 
 `cf-web-page`: Add this label to endpoints that serve HTML pages.
 
+`cf-contains-ads`: Add this label to endpoints that serve web pages containing advertisements.
+
 Note
 
 [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) will not block requests to endpoints labeled as `cf-rss-feed`.
@@ -183,8 +185,8 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 
 ## Create a label
 
-* [  New dashboard ](#tab-panel-3446)
-* [ Old dashboard ](#tab-panel-3447)
+* [  New dashboard ](#tab-panel-5182)
+* [ Old dashboard ](#tab-panel-5183)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -224,8 +226,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Apply a label to an individual endpoint
 
-* [  New dashboard ](#tab-panel-3448)
-* [ Old dashboard ](#tab-panel-3449)
+* [  New dashboard ](#tab-panel-5184)
+* [ Old dashboard ](#tab-panel-5185)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -243,8 +245,8 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 
 ## Bulk apply labels to multiple endpoints
 
-* [  New dashboard ](#tab-panel-3444)
-* [ Old dashboard ](#tab-panel-3445)
+* [  New dashboard ](#tab-panel-5180)
+* [ Old dashboard ](#tab-panel-5181)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

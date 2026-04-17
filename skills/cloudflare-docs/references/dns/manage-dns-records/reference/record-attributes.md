@@ -1,6 +1,6 @@
 ---
 title: Record attributes
-description: Use DNS record comments and tags to categorize and clarify the purpose of DNS records within Cloudflare.
+description: Attributes and metadata for DNS records.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add rules to phase entry point rulesets
-description: A phase entry point ruleset contains an ordered list of rules that run in that phase. A rule in an entry point ruleset can execute a different ruleset. You can have entry point rulesets for each phase at the account level and at the zone level.
+description: Add rules to phase entry point rulesets using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

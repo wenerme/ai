@@ -1,6 +1,6 @@
 ---
 title: Override a managed ruleset
-description: To customize the behavior of a managed ruleset via API, override the ruleset at deployment. When you override a ruleset you specify changes to be executed on top of the default configuration. These changes take precedence over the ruleset's default behavior.
+description: Customize the behavior of managed rulesets with overrides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

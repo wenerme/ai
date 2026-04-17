@@ -1,6 +1,6 @@
 ---
 title: Test your exposed credentials checks configuration
-description: After enabling and configuring exposed credentials checks, you may want to test if the checks are working properly.
+description: Test your exposed credentials check configuration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

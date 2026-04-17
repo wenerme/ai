@@ -1,6 +1,6 @@
 ---
 title: Set up advanced nameservers
-description: Advanced nameservers included with Foundation DNS are an opt-in configuration.
+description: Set up advanced nameservers for your Foundation DNS zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -65,8 +65,8 @@ In this example, the TXT record and the A record for `www.example.com` will not 
 To enable advanced nameservers on an existing zone:
 
 1. Opt for advanced nameservers on your zone:  
-   * [ Dashboard ](#tab-panel-4244)  
-   * [ API ](#tab-panel-4245)  
+   * [ Dashboard ](#tab-panel-6436)  
+   * [ API ](#tab-panel-6437)  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
    2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.  

@@ -1,6 +1,6 @@
 ---
 title: Rate limiting best practices
-description: The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.
+description: Typical rate limiting configurations for login protection, API abuse, and more.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

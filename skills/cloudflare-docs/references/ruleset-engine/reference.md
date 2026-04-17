@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: The following pages include additional information about the Ruleset Engine:
+description: Reference information for the Ruleset Engine, including the phases list.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

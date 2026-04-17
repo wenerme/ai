@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: The paranoia level (PL) classifies OWASP rules according to their aggressiveness. Paranoia levels vary from PL1 to PL4, where PL4 is the most strict level:
+description: Concepts for the OWASP ModSecurity Core Ruleset on Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

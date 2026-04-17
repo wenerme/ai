@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Trace limitations
-description: Trace does not display rules that are automatically bypassed for operational reasons.
+description: Known limitations when using the Trace feature.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

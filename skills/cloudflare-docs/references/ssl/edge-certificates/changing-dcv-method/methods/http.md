@@ -1,6 +1,6 @@
 ---
 title: HTTP
-description: When you choose HTTP DCV, Cloudflare automatically adds a verification HTTP token to your domain.
+description: Validate domain control with an HTTP token on your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

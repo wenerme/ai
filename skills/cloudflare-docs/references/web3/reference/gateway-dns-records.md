@@ -1,6 +1,6 @@
 ---
 title: Gateway DNS records
-description: Once you create a gateway, Cloudflare automatically creates and adds records to your Cloudflare DNS so your gateway can receive and route traffic appropriately:
+description: DNS records created for Web3 gateways.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

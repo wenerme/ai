@@ -1,6 +1,6 @@
 ---
 title: AI Security for Apps
-description: Applications that use large language models (LLMs) are exposed to threats specific to how LLMs process input — prompt injection attacks, PII exposure in prompts, and prompts about unsafe topics.
+description: Detect prompt injection, PII, and unsafe topics in AI application traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

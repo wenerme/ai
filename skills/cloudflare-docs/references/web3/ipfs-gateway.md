@@ -1,6 +1,6 @@
 ---
 title: IPFS Gateway
-description: Cloudflare's IPFS gateway provides a read-only, HTTP-accessible interface to the Interplanetary File System (IPFS). This gateway does not require you to download any special software or give up any storage space on your computer.
+description: Serve IPFS content through Cloudflare without running an IPFS node.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

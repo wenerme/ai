@@ -1,6 +1,6 @@
 ---
 title: Single Redirects settings
-description: The following sections describe the settings of redirect rules to configure static and dynamic URL redirects.
+description: Available settings for Single Redirect rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

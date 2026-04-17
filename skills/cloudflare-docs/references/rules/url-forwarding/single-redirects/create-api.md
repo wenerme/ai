@@ -1,6 +1,6 @@
 ---
 title: Create a redirect rule via API
-description: Use the Rulesets API to create a redirect rule via API.
+description: Create Single Redirect rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Replace insecure JS libraries
-description: This feature, when turned on, automatically rewrites URLs to external JavaScript libraries to point to Cloudflare-hosted libraries instead. This change improves security and performance, and reduces the risk of malicious code being injected.
+description: Detect and notify about insecure JavaScript libraries on your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -42,8 +42,8 @@ The feature is available in all Cloudflare plans, and is turned on by default on
 
 ## Configure
 
-* [ Dashboard ](#tab-panel-6895)
-* [ API ](#tab-panel-6896)
+* [ Dashboard ](#tab-panel-9125)
+* [ API ](#tab-panel-9126)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

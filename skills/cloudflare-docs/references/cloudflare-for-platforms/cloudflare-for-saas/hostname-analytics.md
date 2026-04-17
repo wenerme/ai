@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL) 
+
 Was this helpful?
 
 YesNo

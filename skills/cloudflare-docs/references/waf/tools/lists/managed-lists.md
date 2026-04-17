@@ -1,6 +1,6 @@
 ---
 title: Managed Lists
-description: Cloudflare provides Managed Lists you can use in rule expressions. These lists are regularly updated.
+description: Pre-built lists managed by Cloudflare for use in rule expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

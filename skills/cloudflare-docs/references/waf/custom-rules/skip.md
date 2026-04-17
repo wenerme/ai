@@ -1,6 +1,6 @@
 ---
 title: Configure a rule with the Skip action
-description: Use the Skip action in a custom rule to skip one or more security features. A rule configured with the Skip action is also known as a skip rule.
+description: Use the Skip action to bypass security features for matching requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -24,9 +24,9 @@ You can skip [rate limiting rules](https://developers.cloudflare.com/waf/rate-li
 
 For more information on the available options, refer to [Available skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
 
-* [  New dashboard ](#tab-panel-6809)
-* [ Old dashboard ](#tab-panel-6810)
-* [ API ](#tab-panel-6811)
+* [  New dashboard ](#tab-panel-9019)
+* [ Old dashboard ](#tab-panel-9020)
+* [ API ](#tab-panel-9021)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

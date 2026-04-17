@@ -1,6 +1,6 @@
 ---
 title: Waiting Room Analytics
-description: Waiting Room Analytics gives you historical insights into the traffic going through your waiting room compared to your waiting room settings. Data is stored for the past 30 days.
+description: View waiting room queue depth, wait times, and visitor analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

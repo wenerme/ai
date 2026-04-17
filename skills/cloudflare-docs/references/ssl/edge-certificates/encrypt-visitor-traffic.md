@@ -1,6 +1,6 @@
 ---
 title: Enforce HTTPS connections
-description: Even with an active SSL/TLS certificate, visitors can still access resources over unsecured HTTP connections.
+description: Force all visitor traffic to use HTTPS connections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

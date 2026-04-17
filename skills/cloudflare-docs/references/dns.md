@@ -1,6 +1,6 @@
 ---
 title: Cloudflare DNS
-description: Cloudflare DNS is a fast, resilient, and easy-to-manage authoritative DNS service. It delivers excellent performance and reliability to your domain while also protecting your business from DDoS attacks and route leaks and hijacking. To know where to begin, refer to Get started.
+description: Manage DNS records, nameservers, and DNSSEC with Cloudflare DNS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

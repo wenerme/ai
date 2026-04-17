@@ -1,6 +1,6 @@
 ---
 title: How to
-description: For more information on completing Spectrum related tasks, refer to the sections below.
+description: How-to guides for configuring Spectrum features like Proxy protocol.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

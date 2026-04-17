@@ -1,6 +1,6 @@
 ---
 title: Add rules to a custom ruleset
-description: To add rules to an existing custom ruleset, use the Update an account or zone ruleset operation and pass the rules in an array. Each rule has an expression and an action.
+description: Add rules to an existing custom ruleset using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Using ETag Headers with Cloudflare
-description: ETag headers identify whether the version of a resource cached in the browser is the same as the resource at the origin web server. A visitor's browser stores ETags. When a visitor revisits a site, the browser compares each ETag to the one it stored. Matching values cause a 304 Not-Modified HTTP response that indicates the cached resource version is current. Cloudflare supports both strong and weak ETags configured at your origin web server.
+description: How ETag headers work with Cloudflare caching.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

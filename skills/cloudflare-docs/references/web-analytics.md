@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Web Analytics
-description: Cloudflare Web Analytics helps you understand the performance of your web pages as experienced by your site visitors.
+description: Privacy-first analytics for your website without changing DNS or using Cloudflare proxy.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

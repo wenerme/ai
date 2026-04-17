@@ -1,6 +1,6 @@
 ---
 title: Image optimization on optimized images
-description: Cloudflare's image optimization features will likely not help much if you are already optimizing your images in some way (Smush.it, etc.).
+description: How multiple image optimizations interact with each other.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

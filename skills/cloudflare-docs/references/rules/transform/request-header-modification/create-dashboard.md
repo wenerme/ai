@@ -1,6 +1,6 @@
 ---
 title: Create a request header transform rule in the dashboard
-description: Refer to the Rules examples gallery for examples of rule definitions.
+description: Create request header modification rules in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

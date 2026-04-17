@@ -1,6 +1,6 @@
 ---
 title: Cloudflare OWASP Core Ruleset
-description: The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the OWASP ModSecurity Core Rule Set (CRS) version 3.3.0.
+description: Configure the Cloudflare OWASP Core Ruleset for your zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Update cloudflared
-description: Updates will cause cloudflared to restart which will impact traffic currently being served. You can perform zero-downtime upgrades by using Cloudflare's Load Balancer product or by using multiple cloudflared instances.
+description: Update cloudflared to the latest version.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -22,12 +22,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/tunnel/other-tunnel-types/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-6690)
-* [ macOS ](#tab-panel-6691)
-* [ Debian ](#tab-panel-6692)
-* [ Red Hat ](#tab-panel-6693)
-* [ Docker ](#tab-panel-6694)
-* [ Other ](#tab-panel-6695)
+* [ Windows ](#tab-panel-8906)
+* [ macOS ](#tab-panel-8907)
+* [ Debian ](#tab-panel-8908)
+* [ Red Hat ](#tab-panel-8909)
+* [ Docker ](#tab-panel-8910)
+* [ Other ](#tab-panel-8911)
 
 Run the following command:
 

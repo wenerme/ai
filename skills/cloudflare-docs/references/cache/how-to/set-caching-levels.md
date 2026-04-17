@@ -1,6 +1,6 @@
 ---
 title: Caching levels
-description: Caching levels determine how much of your website’s static content Cloudflare should cache. Cloudflare’s CDN caches static content according to the levels below.
+description: Set caching levels to control query string behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

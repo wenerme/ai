@@ -1,6 +1,6 @@
 ---
 title: Vendor-specific DNS records
-description: This article requires prior knowledge of DNS record management via the Cloudflare dashboard. To learn more, refer to Cloudflare's article on managing DNS records.
+description: DNS records for common third-party services.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Custom rulesets (zone level)
-description: Custom rulesets are collections of custom rules that you can deploy at the zone or account level.
+description: Create and manage zone-level custom rulesets for WAF rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

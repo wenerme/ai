@@ -1,6 +1,6 @@
 ---
 title: Supported URL components in Bulk Redirects
-description: The source and target URLs of a URL redirect support different URL components.
+description: URL components used in Bulk Redirect source and target URLs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

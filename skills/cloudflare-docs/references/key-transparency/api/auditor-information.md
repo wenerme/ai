@@ -1,6 +1,6 @@
 ---
 title: Auditor
-description: The Auditor is designed to sign epoch information, which includes the time at which the request is received by the Auditor, the epoch number, and the epoch digest. The Auditor serializes this information in binary using protobuf or bincode and checks whether the requested inclusion is valid, as in it satisfies publication constraints.
+description: Retrieve auditor public keys and verify epoch signatures.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

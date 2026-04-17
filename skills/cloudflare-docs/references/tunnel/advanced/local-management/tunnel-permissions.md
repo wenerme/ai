@@ -1,6 +1,6 @@
 ---
 title: Tunnel permissions
-description: Tunnel permissions determine who can run and manage a Cloudflare Tunnel. Two files control permissions for a locally-managed tunnel:
+description: File and directory permissions required by cloudflared.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

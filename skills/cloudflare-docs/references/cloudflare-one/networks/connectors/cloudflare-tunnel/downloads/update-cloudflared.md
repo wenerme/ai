@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
+
 Was this helpful?
 
 YesNo
@@ -22,12 +26,12 @@ Updates will cause `cloudflared` to restart which will impact traffic currently 
 
 Refer to the following commands to update `cloudflared` for a remotely-managed tunnel or a locally-managed tunnel. Locally-managed tunnels must be set up to [run as a service](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/as-a-service/) for the following commands to execute successfully.
 
-* [ Windows ](#tab-panel-3503)
-* [ macOS ](#tab-panel-3504)
-* [ Debian ](#tab-panel-3505)
-* [ Red Hat ](#tab-panel-3506)
-* [ Docker ](#tab-panel-3507)
-* [ Other ](#tab-panel-3508)
+* [ Windows ](#tab-panel-5649)
+* [ macOS ](#tab-panel-5650)
+* [ Debian ](#tab-panel-5651)
+* [ Red Hat ](#tab-panel-5652)
+* [ Docker ](#tab-panel-5653)
+* [ Other ](#tab-panel-5654)
 
 Run the following command:
 

@@ -1,6 +1,6 @@
 ---
 title: Dynamically update DNS records
-description: Most Internet service providers and some hosting providers dynamically update their customer's IP addresses. If this situation applies to you, you need an automated solution to dynamically update your DNS records in Cloudflare.
+description: Update DNS records automatically for dynamic IP addresses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

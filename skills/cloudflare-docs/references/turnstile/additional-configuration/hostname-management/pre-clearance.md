@@ -1,6 +1,6 @@
 ---
 title: Pre-clearance configuration
-description: Pre-clearance allows Turnstile to issue clearance cookies that can be used across your Cloudflare-protected domains. This feature requires specific hostname configuration for proper functionality.
+description: Configure Pre-clearance to reduce repeated challenges for visitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

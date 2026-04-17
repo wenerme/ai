@@ -1,6 +1,6 @@
 ---
 title: Create a configuration rule via API
-description: Use the Rulesets API to create configuration rules via API.
+description: Create configuration rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

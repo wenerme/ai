@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ XML ](https://developers.cloudflare.com/search/?tags=XML) 
+
 Was this helpful?
 
 YesNo

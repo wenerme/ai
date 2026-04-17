@@ -1,5 +1,6 @@
 ---
 title: Transform Rules examples
+description: Example Transform Rules for URL rewrites and header modifications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Event logs
-description: Spectrum logs the entire lifecycle of every client that connects through it. These event logs are available through Logpush as a separate category (dataset type spectrum_events); they are not part of HTTP log events.
+description: Access Spectrum connection lifecycle logs through Logpush.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

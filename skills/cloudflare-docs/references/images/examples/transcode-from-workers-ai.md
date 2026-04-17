@@ -24,26 +24,18 @@ JavaScript
 
 ```
 
-const stream = await env.AI.run(
+const stream = await env.AI.run("@cf/bytedance/stable-diffusion-xl-lightning", {
 
-  "@cf/bytedance/stable-diffusion-xl-lightning",
+  prompt: YOUR_PROMPT_HERE,
 
-  {
-
-    prompt: YOUR_PROMPT_HERE
-
-  }
-
-);
+});
 
 
 // Convert to AVIF
 
 const image = (
 
-  await env.IMAGES.input(stream)
-
-    .output({format: "image/avif"})
+  await env.IMAGES.input(stream).output({ format: "image/avif" })
 
 ).response();
 

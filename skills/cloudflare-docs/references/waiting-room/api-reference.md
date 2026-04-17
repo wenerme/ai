@@ -1,5 +1,6 @@
 ---
 title: API reference
+description: API endpoints for managing waiting rooms and events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

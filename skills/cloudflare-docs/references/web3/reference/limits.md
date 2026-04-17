@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: The following limits apply to users of the Cloudflare Web3 Gateways.
+description: Rate limits and size limits for Web3 gateways.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

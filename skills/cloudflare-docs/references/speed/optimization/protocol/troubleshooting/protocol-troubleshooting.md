@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot protocol issues
-description: This guide covers common HTTP/2 and HTTP/3 issues, including origin incompatibility, multiplexing errors, and browser errors, with steps to diagnose and resolve them.
+description: Resolve common HTTP/2 and HTTP/3 connection issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

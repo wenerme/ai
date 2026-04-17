@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for the Cloudflare IPFS Gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

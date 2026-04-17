@@ -1,6 +1,6 @@
 ---
 title: Deploy a WAF managed ruleset in the dashboard (account)
-description: To deploy a managed ruleset for a single zone, refer to Deploy a WAF managed ruleset in the dashboard.
+description: Deploy WAF managed rulesets at the account level in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: About
-description: The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets. The engine syntax, inspired by the Wireshark Display Filter language, is defined by the Rules language. Cloudflare uses the Ruleset Engine in different products, allowing you to configure several products using the same basic syntax.
+description: Core concepts for the Ruleset Engine, including rules, rulesets, and phases.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

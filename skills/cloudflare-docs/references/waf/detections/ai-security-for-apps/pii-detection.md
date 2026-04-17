@@ -1,6 +1,6 @@
 ---
 title: PII detection
-description: AI Security for Apps (formerly Firewall for AI) can detect personally identifiable information (PII) in incoming LLM prompts. There are two approaches to PII detection, and you can use them together for layered protection:
+description: Detect personally identifiable information in AI request and response bodies.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

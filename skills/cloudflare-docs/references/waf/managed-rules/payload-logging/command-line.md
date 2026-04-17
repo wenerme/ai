@@ -1,6 +1,6 @@
 ---
 title: Command-line operations
-description: The Cloudflare matched-data-cli command-line tool supports several tasks related to payload logging.
+description: Command-line tools for managing payload logging encryption keys.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

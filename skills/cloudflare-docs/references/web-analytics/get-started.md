@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Web analytics is now set up on your website, but it may take a few minutes for Web Analytics data to appear.
+description: Set up Cloudflare Web Analytics for your website.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

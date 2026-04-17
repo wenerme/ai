@@ -1,6 +1,6 @@
 ---
 title: Edit and delete waiting rooms
-description: You can manage your waiting rooms using the Waiting Room dashboard or the API.
+description: Edit or delete existing waiting rooms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Delegated
-description: Delegated DCV allows zones with partial DNS setups - meaning authoritative DNS is not provided by Cloudflare - to delegate the DCV process to Cloudflare.
+description: Delegate domain control validation to Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Create a rule using Terraform
+description: Create URL rewrite rules using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

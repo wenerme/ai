@@ -167,6 +167,8 @@ Included products
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 * [AI Search](https://developers.cloudflare.com/ai-search/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ai-search.xml)
+* [Artifacts](https://developers.cloudflare.com/artifacts/)  
+[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/artifacts.xml)
 * [Browser Run](https://developers.cloudflare.com/browser-run/)  
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/browser-run.xml)
 * [Containers](https://developers.cloudflare.com/containers/)  

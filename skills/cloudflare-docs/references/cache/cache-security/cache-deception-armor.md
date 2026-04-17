@@ -1,10 +1,14 @@
 ---
 title: Cache Deception Armor
-description: Before learning about Cache Deception Armor, you should first understand how Web Cache Deception attacks work.
+description: Prevent cache deception attacks that expose private content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Security ](https://developers.cloudflare.com/search/?tags=Security) 
 
 Was this helpful?
 

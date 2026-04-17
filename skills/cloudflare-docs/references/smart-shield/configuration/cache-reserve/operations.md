@@ -1,6 +1,6 @@
 ---
 title: Cache Reserve operations
-description: Operations are performed by Cache Reserve on behalf of the user to write data from the origin to Cache Reserve and to pass that data downstream to other parts of Cloudflare’s network. These operations are managed internally by Cloudflare.
+description: How Cache Reserve read, write, and delete operations work with R2 storage.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

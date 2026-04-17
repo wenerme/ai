@@ -1,6 +1,6 @@
 ---
 title: Infrastructure
-description: The Infrastructure tab provides an overview of the IT assets associated with your Cloudflare account, including domains, IP addresses, and related configurations.
+description: View IT assets, domains, and IP addresses associated with your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

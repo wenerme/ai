@@ -1,6 +1,6 @@
 ---
 title: Internal DNS (beta)
-description: Manage DNS records that should only be accessible within your private network. Internal DNS zones and views pair up with Gateway resolver policies so that you can control how a DNS query should be responded to according to query context, such as query source IP.
+description: Resolve private hostnames within your network with Internal DNS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

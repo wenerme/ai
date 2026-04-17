@@ -24,7 +24,7 @@ Copy page
 
 In this tutorial, you will learn how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers and Cloudflare Image Resizing. You may want to generate a custom YouTube thumbnail to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 
-This tutorial will help you understand how to work with [Images](https://developers.cloudflare.com/images/),[Image Resizing](https://developers.cloudflare.com/images/transform-images/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/).
+This tutorial will help you understand how to work with [Images](https://developers.cloudflare.com/images/),[Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
 ## Before you start
 
@@ -57,7 +57,7 @@ To upload an image using the Cloudflare dashboard:
 
 ### Upload with the API
 
-To upload your image with the [Upload via URL](https://developers.cloudflare.com/images/upload-images/upload-url/) API, refer to the example below:
+To upload your image with the [Upload via URL](https://developers.cloudflare.com/images/storage/upload-images/upload-url/) API, refer to the example below:
 
 Terminal window
 
@@ -563,8 +563,8 @@ Adding a query parameter with custom text, you should receive:
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-7830)
-* [  wrangler.toml ](#tab-panel-7831)
+* [  wrangler.jsonc ](#tab-panel-10010)
+* [  wrangler.toml ](#tab-panel-10011)
 
 JSONC
 
@@ -683,7 +683,7 @@ Run your Worker and go to the `/original-image` route to review your image.
 
 ## Add custom text on your image
 
-You will now use [Cloudflare image transformations](https://developers.cloudflare.com/images/transform-images/), with the `fetch` method, to add your dynamic text image as an overlay on top of your background image. Start by displaying the resulting image on a different route. Call the new route `/thumbnail`.
+You will now use [Cloudflare image transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/), with the `fetch` method, to add your dynamic text image as an overlay on top of your background image. Start by displaying the resulting image on a different route. Call the new route `/thumbnail`.
 
 JavaScript
 
@@ -811,7 +811,7 @@ if (url.pathname === "/thumbnail") {
 
 ```
 
-Next, add overlay options in the image object. Resize the image to the preferred width and height for YouTube thumbnails and use the [draw](https://developers.cloudflare.com/images/transform-images/draw-overlays/) option to add overlay text using the deployed URL of your `text-to-image` Worker.
+Next, add overlay options in the image object. Resize the image to the preferred width and height for YouTube thumbnails and use the [draw](https://developers.cloudflare.com/images/optimization/transformations/draw-overlays/) option to add overlay text using the deployed URL of your `text-to-image` Worker.
 
 JavaScript
 
@@ -854,8 +854,8 @@ Image transformations can only be tested when you deploy your Worker.
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
-* [  wrangler.jsonc ](#tab-panel-7832)
-* [  wrangler.toml ](#tab-panel-7833)
+* [  wrangler.jsonc ](#tab-panel-10012)
+* [  wrangler.toml ](#tab-panel-10013)
 
 JSONC
 
@@ -963,7 +963,7 @@ By completing this tutorial, you have successfully made a custom YouTube thumbna
 
 ## Related resources
 
-In this tutorial, you learned how to use Cloudflare Workers and Cloudflare image transformations to generate custom YouTube thumbnails. To learn more about Cloudflare Workers and image transformations, refer to [Resize an image with a Worker](https://developers.cloudflare.com/images/transform-images/transform-via-workers/).
+In this tutorial, you learned how to use Cloudflare Workers and Cloudflare image transformations to generate custom YouTube thumbnails. To learn more about Cloudflare Workers and image transformations, refer to [Resize an image with a Worker](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers/","name":"Workers"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers/tutorials/","name":"Tutorials"}},{"@type":"ListItem","position":4,"item":{"@id":"/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/","name":"Generate YouTube thumbnails with Workers and Cloudflare Image Resizing"}}]}

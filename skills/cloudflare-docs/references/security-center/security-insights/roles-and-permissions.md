@@ -1,6 +1,6 @@
 ---
 title: Roles and permissions
-description: Cloudflare users with the following roles have access to Security Insights in the Cloudflare dashboard:
+description: Cloudflare roles required to access and manage Security Insights.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

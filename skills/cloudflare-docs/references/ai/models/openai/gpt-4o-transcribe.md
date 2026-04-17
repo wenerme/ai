@@ -35,29 +35,13 @@ TypeScript
 
 ```
 
-const resp = await fetch('https://cdn.openai.com/API/docs/audio/alloy.wav')
-
-const buffer = await resp.arrayBuffer();
-
-const bytes = new Uint8Array(buffer);
-
-let binary = '';
-
-for (let i = 0; i < bytes.length; i++) {
-
-  binary += String.fromCharCode(bytes[i]);
-
-}
-
-const encoded = btoa(binary);
-
 const response = await env.AI.run(
 
   'openai/gpt-4o-transcribe',
 
   {
 
-    file: `data:audio/wav;base64,${encoded}`,
+    file: 'https://cdn.openai.com/API/docs/audio/alloy.wav',
 
   },
 
@@ -78,8 +62,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-168)
-* [ Output ](#tab-panel-169)
+* [ Input ](#tab-panel-172)
+* [ Output ](#tab-panel-173)
 
 ```
 
@@ -111,29 +95,13 @@ TypeScript
 
 ```
 
-const resp = await fetch('https://cdn.openai.com/API/docs/audio/shimmer.wav')
-
-const buffer = await resp.arrayBuffer();
-
-const bytes = new Uint8Array(buffer);
-
-let binary = '';
-
-for (let i = 0; i < bytes.length; i++) {
-
-  binary += String.fromCharCode(bytes[i]);
-
-}
-
-const encoded = btoa(binary);
-
 const response = await env.AI.run(
 
   'openai/gpt-4o-transcribe',
 
   {
 
-    file: `data:audio/wav;base64,${encoded}`,
+    file: 'https://cdn.openai.com/API/docs/audio/shimmer.wav',
 
     language: 'en',
 
@@ -156,8 +124,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-170)
-* [ Output ](#tab-panel-171)
+* [ Input ](#tab-panel-174)
+* [ Output ](#tab-panel-175)
 
 ```
 
@@ -189,29 +157,13 @@ TypeScript
 
 ```
 
-const resp = await fetch('https://cdn.openai.com/API/docs/audio/fable.wav')
-
-const buffer = await resp.arrayBuffer();
-
-const bytes = new Uint8Array(buffer);
-
-let binary = '';
-
-for (let i = 0; i < bytes.length; i++) {
-
-  binary += String.fromCharCode(bytes[i]);
-
-}
-
-const encoded = btoa(binary);
-
 const response = await env.AI.run(
 
   'openai/gpt-4o-transcribe',
 
   {
 
-    file: `data:audio/wav;base64,${encoded}`,
+    file: 'https://cdn.openai.com/API/docs/audio/fable.wav',
 
     language: 'en',
 
@@ -238,8 +190,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-172)
-* [ Output ](#tab-panel-173)
+* [ Input ](#tab-panel-176)
+* [ Output ](#tab-panel-177)
 
 ```
 
@@ -273,29 +225,13 @@ TypeScript
 
 ```
 
-const resp = await fetch('https://cdn.openai.com/API/docs/audio/echo.wav')
-
-const buffer = await resp.arrayBuffer();
-
-const bytes = new Uint8Array(buffer);
-
-let binary = '';
-
-for (let i = 0; i < bytes.length; i++) {
-
-  binary += String.fromCharCode(bytes[i]);
-
-}
-
-const encoded = btoa(binary);
-
 const response = await env.AI.run(
 
   'openai/gpt-4o-transcribe',
 
   {
 
-    file: `data:audio/wav;base64,${encoded}`,
+    file: 'https://cdn.openai.com/API/docs/audio/echo.wav',
 
     temperature: 0.5,
 
@@ -318,8 +254,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-174)
-* [ Output ](#tab-panel-175)
+* [ Input ](#tab-panel-178)
+* [ Output ](#tab-panel-179)
 
 ```
 
@@ -347,12 +283,12 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-178)
-* [ Output ](#tab-panel-179)
+* [ Input ](#tab-panel-182)
+* [ Output ](#tab-panel-183)
 
 file
 
-`string`requiredThe audio file as a data URI (data:audio/...;base64,...). Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm.
+`string`requiredThe audio file as a URL or data URI (data:audio/...;base64,...). Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm.
 
 language
 
@@ -368,12 +304,12 @@ temperature
 
 text
 
-`string`requiredThe transcribed text.
+`string`The transcribed text.
 
 ## API Schemas
 
-* [ Input ](#tab-panel-176)
-* [ Output ](#tab-panel-177)
+* [ Input ](#tab-panel-180)
+* [ Output ](#tab-panel-181)
 
 ```
 
@@ -387,7 +323,7 @@ text
 
     "file": {
 
-      "description": "The audio file as a data URI (data:audio/...;base64,...). Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm.",
+      "description": "The audio file as a URL or data URI (data:audio/...;base64,...). Supported formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, webm.",
 
       "type": "string"
 

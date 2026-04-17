@@ -1,6 +1,6 @@
 ---
 title: Issues sharing to Facebook
-description: Cloudflare does not block or challenge requests from Facebook by default. However, a post of a website to Facebook returns an Attention Required error in the following situations:
+description: Fix issues sharing your site content to Facebook.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

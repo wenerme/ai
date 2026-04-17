@@ -93,8 +93,8 @@ To resolve a CPU time limit error:
 
 On the Workers Paid plan, you can increase the maximum CPU time from the default 30 seconds to 5 minutes (300,000 ms).
 
-* [  wrangler.jsonc ](#tab-panel-7908)
-* [  wrangler.toml ](#tab-panel-7909)
+* [  wrangler.jsonc ](#tab-panel-9738)
+* [  wrangler.toml ](#tab-panel-9739)
 
 JSONC
 
@@ -241,8 +241,8 @@ Once response headers arrive for a connection, it no longer counts toward the si
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
 
-* [  JavaScript ](#tab-panel-7910)
-* [  TypeScript ](#tab-panel-7911)
+* [  JavaScript ](#tab-panel-9740)
+* [  TypeScript ](#tab-panel-9741)
 
 src/index.js
 
@@ -421,7 +421,7 @@ Refer to the [Workers Trace Event Logpush documentation](https://developers.clou
 
 ## Image Resizing with Workers
 
-Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/transform-images/) for limits that apply when using Image Resizing with Workers.
+Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/optimization/transformations/overview/) for limits that apply when using Image Resizing with Workers.
 
 ---
 

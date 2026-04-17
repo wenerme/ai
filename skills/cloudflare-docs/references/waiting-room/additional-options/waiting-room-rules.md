@@ -1,6 +1,6 @@
 ---
 title: Waiting Room Rules
-description: In this section, we will list the Waiting Room rules available.
+description: Create rules to customize waiting room behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

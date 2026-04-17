@@ -1,6 +1,6 @@
 ---
 title: Analytics and logs
-description: When you use Cloudflare DNS, you can access data about DNS queries through a variety of sources.
+description: View DNS query analytics and configure Logpush for DNS logs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Create custom error rules
+description: Create custom error rules in the dashboard or via the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Set up Private Network Load Balancing for Public traffic to Tunnel
-description: Consider the following steps to learn how to configure Private Network Load Balancing solution, using Cloudflare Tunnel as the off-ramp to securely connect to your private or internal services.
+description: Load balance public traffic to private origins via Tunnel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -25,8 +25,8 @@ The specific configuration steps can vary depending on your infrastructure and s
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
 
-* [ Dashboard ](#tab-panel-5370)
-* [ cli ](#tab-panel-5371)
+* [ Dashboard ](#tab-panel-7554)
+* [ cli ](#tab-panel-7555)
 
 To create a virtual network:
 

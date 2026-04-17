@@ -1,5 +1,6 @@
 ---
 title: Troubleshoot prefix validation
+description: Resolve prefix validation errors during BYOIP onboarding.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

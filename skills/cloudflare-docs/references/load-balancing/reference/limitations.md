@@ -1,5 +1,6 @@
 ---
 title: Limitations
+description: Load Balancing limitations and quotas.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

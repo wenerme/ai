@@ -220,8 +220,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-246)
-* [ Output ](#tab-panel-247)
+* [ Input ](#tab-panel-250)
+* [ Output ](#tab-panel-251)
 
 prompt
 
@@ -253,12 +253,12 @@ aspect\_ratio
 
 video
 
-`string`requiredformat: uriURL to the generated video
+`string`format: uriURL to the generated video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-244)
-* [ Output ](#tab-panel-245)
+* [ Input ](#tab-panel-248)
+* [ Output ](#tab-panel-249)
 
 ```
 

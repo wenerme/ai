@@ -1,6 +1,6 @@
 ---
 title: Zone Lockdown
-description: Zone Lockdown specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. You can configure multiple destinations, including IPv4/IPv6 addresses, in a single zone lockdown rule.
+description: Restrict access to specific URLs by allowlisted IP addresses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -42,9 +42,9 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 ## Create a zone lockdown rule
 
-* [  New dashboard ](#tab-panel-6964)
-* [ Old dashboard ](#tab-panel-6965)
-* [ API ](#tab-panel-6966)
+* [  New dashboard ](#tab-panel-9136)
+* [ Old dashboard ](#tab-panel-9137)
+* [ API ](#tab-panel-9138)
 
 Note
 

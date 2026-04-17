@@ -1,6 +1,6 @@
 ---
 title: SSL/TLS Recommender
-description: The SSL/TLS Recommender helps you choose which Encryption mode is best for your application.
+description: Get recommendations for the optimal SSL/TLS encryption mode.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -40,8 +40,8 @@ To make sure you do not inadvertently block the **SSL/TLS Recommender**, review 
 
 Then, you can enable the SSL/TLS recommender.
 
-* [ Dashboard ](#tab-panel-6585)
-* [ API ](#tab-panel-6586)
+* [ Dashboard ](#tab-panel-8801)
+* [ API ](#tab-panel-8802)
 
 To enable SSL/TLS recommendations in the dashboard:
 

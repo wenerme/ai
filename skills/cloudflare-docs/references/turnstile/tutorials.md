@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with Turnstile.
+description: Tutorials for integrating Turnstile with WAF, login pages, and testing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -21,7 +21,7 @@ View tutorials to help you get started with Turnstile.
 | Name                                                                                                                                              | Last Updated     | Difficulty   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------ |
 | [Fraud detection with Ephemeral IDs](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/)                   | 3 months ago     | Advanced     |
-| [Protect your forms](https://developers.cloudflare.com/turnstile/tutorials/login-pages/)                                                          | 10 months ago    | Beginner     |
+| [Protect your forms](https://developers.cloudflare.com/turnstile/tutorials/login-pages/)                                                          | 11 months ago    | Beginner     |
 | [Conditionally enforce Turnstile](https://developers.cloudflare.com/turnstile/tutorials/conditionally-enforcing-turnstile/)                       | about 1 year ago | Intermediate |
 | [Exclude Turnstile from E2E tests](https://developers.cloudflare.com/turnstile/tutorials/excluding-turnstile-from-e2e-tests/)                     | about 1 year ago | Intermediate |
 | [Integrate Turnstile, WAF, & Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/) | over 1 year ago  | Beginner     |

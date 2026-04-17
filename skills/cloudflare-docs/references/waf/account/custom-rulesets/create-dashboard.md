@@ -1,6 +1,6 @@
 ---
 title: Work with custom rulesets in the dashboard
-description: To create and deploy a custom ruleset at the account level:
+description: Create and manage account-level custom rulesets in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

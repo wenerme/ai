@@ -1,5 +1,6 @@
 ---
 title: Pages Plugin
+description: Add Turnstile to Cloudflare Pages with the Pages Plugin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

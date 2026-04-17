@@ -1,6 +1,6 @@
 ---
 title: HTTP Strict Transport Security (HSTS)
-description: HSTS protects HTTPS web servers from downgrade attacks. These attacks redirect web browsers from an HTTPS web server to an attacker-controlled server, allowing bad actors to compromise user data and cookies.
+description: Enforce HTTPS connections with HSTS response headers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -56,8 +56,8 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-6539)
-* [ API ](#tab-panel-6540)
+* [ Dashboard ](#tab-panel-8747)
+* [ API ](#tab-panel-8748)
 
 To enable HSTS using the dashboard:
 

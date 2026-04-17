@@ -209,8 +209,8 @@ Response200 ![Editorial Illustration](https://replicate.delivery/xezq/eBRR8WuwPB
 
 ## Parameters
 
-* [ Input ](#tab-panel-226)
-* [ Output ](#tab-panel-227)
+* [ Input ](#tab-panel-230)
+* [ Output ](#tab-panel-231)
 
 prompt
 
@@ -234,12 +234,12 @@ substyle
 
 image
 
-`string`requiredformat: uricontentMediaType: image/svg+xml
+`string`format: uricontentMediaType: image/svg+xml
 
 ## API Schemas
 
-* [ Input ](#tab-panel-224)
-* [ Output ](#tab-panel-225)
+* [ Input ](#tab-panel-228)
+* [ Output ](#tab-panel-229)
 
 ```
 

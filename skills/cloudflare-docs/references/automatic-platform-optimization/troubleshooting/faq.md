@@ -1,10 +1,14 @@
 ---
 title: FAQs
-description: No, you do not need create Edge Cache TTL page rules. When the WordPress plugin is installed, APO automatically caches content for 30 days and invalidates on change within 30 seconds. However, because APO now supports cache-related page rules, make sure existing page rules do not affect the resources served by APO.
+description: Answers to common questions about APO caching, Page Rules, and WordPress integration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Security ](https://developers.cloudflare.com/search/?tags=Security) 
 
 Was this helpful?
 

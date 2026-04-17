@@ -1,5 +1,6 @@
 ---
 title: Multi-signer DNSSEC
+description: Use DNSSEC with multiple DNS providers simultaneously.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

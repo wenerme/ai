@@ -1,6 +1,6 @@
 ---
 title: Supported cipher suites
-description: Cloudflare supports the following cipher suites by default. If needed, you can restrict your website or application to only use specific cipher suites.
+description: Full list of cipher suites supported by Cloudflare edge certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

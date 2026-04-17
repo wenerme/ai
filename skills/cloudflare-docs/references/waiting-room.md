@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Waiting Room
-description: Cloudflare Waiting Room allows you to route excess users of your website to a customized waiting room, helping preserve customer experience and protect origin servers from being overwhelmed with requests.
+description: Queue visitors in a virtual waiting room during traffic surges.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

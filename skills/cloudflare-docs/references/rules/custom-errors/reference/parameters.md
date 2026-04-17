@@ -1,6 +1,6 @@
 ---
 title: Custom Errors parameters
-description: Custom error rules define when a custom error gets triggered and the content that is served to visitors. Rule parameters are the following:
+description: Configurable parameters for custom error rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

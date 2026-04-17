@@ -1,5 +1,6 @@
 ---
 title: Supported browsers
+description: Browsers supported by Cloudflare Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

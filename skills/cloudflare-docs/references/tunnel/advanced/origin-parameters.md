@@ -1,6 +1,6 @@
 ---
 title: Origin parameters
-description: Origin parameters determine how cloudflared sends requests to the origin server of your published application.
+description: Parameters for configuring the connection between cloudflared and your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -22,7 +22,7 @@ Origin parameters determine how `cloudflared` sends requests to the origin serve
 
 This section describes how to update origin parameters for a remotely-managed tunnel. If you are using a locally-managed tunnel, add these parameters to your [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/).
 
-* [ Dashboard ](#tab-panel-6674)
+* [ Dashboard ](#tab-panel-8890)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
 2. Choose a tunnel and select **Edit**.

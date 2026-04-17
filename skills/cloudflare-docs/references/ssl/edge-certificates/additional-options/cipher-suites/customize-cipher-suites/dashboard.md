@@ -1,6 +1,6 @@
 ---
 title: Customize cipher suites via dashboard
-description: Cipher suites are a combination of ciphers used to negotiate security settings during the SSL/TLS handshake (and therefore separate from the SSL/TLS protocol).
+description: Select allowed cipher suites for your zone in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

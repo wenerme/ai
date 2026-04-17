@@ -1,6 +1,6 @@
 ---
 title: Wildcard matching in Page Rules
-description: You can use the asterisk (*) in any URL segment to match certain patterns. For example, example.com/t*st would match:
+description: How wildcard and pattern matching works in Page Rules URLs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

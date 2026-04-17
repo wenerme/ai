@@ -1,6 +1,6 @@
 ---
 title: Enable only Joomla rules
-description: Use the Rulesets API to configure the execution of a managed ruleset and override its behavior. By default, enabled rules perform the actions defined by the managed ruleset issuer. This example uses overrides to ensure that only rules with a specific tag are enabled.
+description: Deploy the Cloudflare Managed Ruleset with only Joomla rules enabled.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

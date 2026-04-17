@@ -1,6 +1,6 @@
 ---
 title: How to
-description: When working with Cloudflare Waiting Room, you will commonly perform the following tasks:
+description: How-to guides for creating and managing waiting rooms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

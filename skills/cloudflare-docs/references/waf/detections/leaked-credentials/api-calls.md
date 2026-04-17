@@ -1,6 +1,6 @@
 ---
 title: Common API calls
-description: The following examples address common scenarios of using the Cloudflare API to manage and configure leaked credentials detection.
+description: Manage leaked credentials detection rules and custom detections using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

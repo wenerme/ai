@@ -1,6 +1,6 @@
 ---
 title: Override HTTP Host headers
-description: When your application needs specialized routing (CNAME setup or custom hosts like Heroku), you can customize the Host header used in health monitors on a per-endpoint or per-monitor level.
+description: Override HTTP Host headers sent to origin servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

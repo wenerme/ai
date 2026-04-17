@@ -1,6 +1,6 @@
 ---
 title: Validation checks
-description: Cloudflare performs a validation check for every request. The Validation component executes prior to all other security features like custom rules or Managed Rules. The validation check blocks malformed requests like Shellshock attacks and requests with certain attack patterns in their HTTP headers before any allowlist logic occurs.
+description: Automatic request validation for malformed packets and attack vectors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

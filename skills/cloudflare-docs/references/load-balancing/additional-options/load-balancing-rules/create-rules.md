@@ -1,6 +1,6 @@
 ---
 title: Create custom rules
-description: Create and manage Load Balancing rules in the Custom Rules page, which is part of the Create/Edit Load Balancer workflow found in Traffic in the dashboard.
+description: Create custom rules for load balancing behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

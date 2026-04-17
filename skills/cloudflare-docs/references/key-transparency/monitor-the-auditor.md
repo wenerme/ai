@@ -1,6 +1,6 @@
 ---
 title: Monitor the Auditor
-description: Cloudflare's Key Transparency Auditor validates Log audit proofs and provides a signature for them. The Log can then distribute these signatures to its end-users, and provides users with confidence that keys have not been tampered with.
+description: Verify Key Transparency audit proofs locally using the Plexi CLI tool.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

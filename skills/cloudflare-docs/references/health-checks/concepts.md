@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Review the following topics to learn more about the basic concepts involved in Cloudflare Health Checks.
+description: Core concepts for Health Checks, including regions and monitoring behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

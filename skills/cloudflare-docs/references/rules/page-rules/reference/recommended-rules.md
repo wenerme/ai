@@ -1,6 +1,6 @@
 ---
 title: Recommended page rules
-description: Use Cloudflare Page Rules to improve the user experience of your domain with hardened security and enhanced site performance, while increasing reliability and minimizing bandwidth usage for your origin server.
+description: Recommended Page Rules configurations for common use cases.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

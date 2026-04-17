@@ -1,6 +1,6 @@
 ---
 title: Configure token authentication
-description: Token authentication allows you to restrict access to documents, files, and media to select users without requiring them to register. This helps protect paid/restricted content from leeching and unauthorized sharing.
+description: Configure token-based authentication with custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -108,10 +108,10 @@ Then the token is valid and the `is_timed_hmac_valid_v0()` function returns `tru
 
 The following examples show how you could generate tokens at your origin server for the path validated using the custom rule described in the previous section:
 
-* [  Python 3.8 ](#tab-panel-6850)
-* [  Python 2.7 ](#tab-panel-6851)
-* [  PHP ](#tab-panel-6852)
-* [ Workers ](#tab-panel-6853)
+* [  Python 3.8 ](#tab-panel-9022)
+* [  Python 2.7 ](#tab-panel-9023)
+* [  PHP ](#tab-panel-9024)
+* [ Workers ](#tab-panel-9025)
 
 Python
 

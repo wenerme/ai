@@ -1,6 +1,6 @@
 ---
 title: Hotlink Protection
-description: Hotlink Protection prevents your images from being used by other sites, which can reduce the bandwidth consumed by your origin server.
+description: Prevent other sites from linking to your hosted images.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -30,9 +30,9 @@ Hotlink protection has no impact on crawling, but it will prevent the images fro
 
 ## Enable Hotlink Protection
 
-* [  New dashboard ](#tab-panel-6900)
-* [ Old dashboard ](#tab-panel-6901)
-* [ API ](#tab-panel-6902)
+* [  New dashboard ](#tab-panel-9130)
+* [ Old dashboard ](#tab-panel-9131)
+* [ API ](#tab-panel-9132)
 
 To enable **Hotlink Protection** in the dashboard:
 

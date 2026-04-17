@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The WordPress plugin may go undetected on your Cloudflare dashboard for a few reasons.
+description: Resolve common APO issues including plugin detection and stale content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

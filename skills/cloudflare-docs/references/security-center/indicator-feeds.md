@@ -1,6 +1,6 @@
 ---
 title: Custom Indicator Feeds
-description: Cloudflare's threat intelligence team crowdsources attack trends and protects users automatically, such as from zero-day vulnerabilities like the HTTP/2 Rapid Reset attack. However, in some cases, Cloudflare will partner with external entities that have their own feeds which can be shared with eligible Cloudflare users.
+description: Receive curated threat intelligence feeds from Cyber Defense Collaboration groups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

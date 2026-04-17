@@ -1,6 +1,6 @@
 ---
 title: Migrate from reCAPTCHA
-description: If you are using reCAPTCHA today, you can switch seamlessly to Cloudflare Turnstile by following the step-by-step guide below to assist with the upgrade process.
+description: Migrate from Google reCAPTCHA to Cloudflare Turnstile.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

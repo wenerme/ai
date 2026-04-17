@@ -16,7 +16,7 @@ Copy page
 
 # Pricing
 
-By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in R2.
+By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in [R2](https://developers.cloudflare.com/r2/).
 
 The Paid plan allows transformations, as well as access to storage in Images.
 
@@ -34,7 +34,7 @@ On the Free plan, you can request up to 5,000 unique transformations each month 
 Once you exceed 5,000 unique transformations:
 
 * Existing transformations in cache will continue to be served as expected.
-* New transformations will return a `9422` error. If your source image is from the same domain where the transformation is served, then you can use the [onerror parameter](https://developers.cloudflare.com/images/transform-images/transform-via-url/#onerror) to redirect to the original image.
+* New transformations will return a `9422` error. If your source image is from the same domain where the transformation is served, then you can use the [onerror parameter](https://developers.cloudflare.com/images/optimization/features/#onerror) to redirect to the original image.
 * You will not be charged for exceeding the limits in the Free plan.
 
 To request more than 5,000 unique transformations each month, you can purchase an Images Paid plan.
@@ -57,7 +57,7 @@ Alternatively, Images Stored and Images Delivered apply only to images that are 
 
 ### Images Transformed
 
-A unique transformation is a request to transform an original image based on a set of [supported parameters](https://developers.cloudflare.com/images/transform-images/transform-via-url/#options). This metric is used only when optimizing images that are stored outside of Images. When using the [Images binding](https://developers.cloudflare.com/images/transform-images/bindings/) in Workers, every call to the binding counts as a transformation, regardless of whether the image or parameters are unique.
+A unique transformation is a request to transform an original image based on a set of [supported parameters](https://developers.cloudflare.com/images/optimization/features/). This metric is used only when optimizing images that are stored outside of Images. When using the [Images binding](https://developers.cloudflare.com/images/optimization/transformations/bindings/) in Workers, every call to the binding counts as a transformation, regardless of whether the image or parameters are unique.
 
 For example, if you transform `thumbnail.jpg` as 100x100, then this counts as one unique transformation. If you transform the same `thumbnail.jpg` as 200x200, then this counts as a separate unique transformation.
 

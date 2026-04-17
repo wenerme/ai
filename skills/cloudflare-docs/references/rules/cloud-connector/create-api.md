@@ -1,6 +1,6 @@
 ---
 title: Configure a Cloud Connector rule via API
-description: You can configure Cloud Connector rules using the Cloudflare API.
+description: Create Cloud Connector rules using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

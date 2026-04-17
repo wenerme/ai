@@ -1,6 +1,6 @@
 ---
 title: Create a trigger
-description: Triggers define the conditions under which a tool will start an action. Since a tool must have actions in order to work, and actions must have triggers, it is important to set up your website's triggers correctly. A trigger can be made out of one or more Rules. Zaraz supports multiple types of Trigger Rules.
+description: Create triggers that fire actions based on page events.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

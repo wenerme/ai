@@ -1,5 +1,6 @@
 ---
 title: Concepts
+description: Core concepts for Smart Shield, including connection reuse and network architecture.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Automatic Platform Optimization
+description: Cache and serve WordPress sites from the Cloudflare edge with APO.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

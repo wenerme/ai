@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: The way you set up Keyless SSL depends on how you route traffic to your keyless server.
+description: Set up a Keyless SSL key server on your infrastructure.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

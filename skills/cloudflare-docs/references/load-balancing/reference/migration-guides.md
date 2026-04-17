@@ -1,5 +1,6 @@
 ---
 title: Migration guides
+description: Migration guides for Load Balancing features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

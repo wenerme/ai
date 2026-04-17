@@ -1,6 +1,6 @@
 ---
 title: Revalidation
-description: When a cached asset expires, Cloudflare uses the stale-while-revalidate directive in Cache-Control to determine whether it can continue serving the stale asset while fetching a fresh copy from the origin. If the directive is present and the asset is within the allowed staleness window, Cloudflare serves the expired content to visitors and revalidates in the background. By using headers like If-Modified-Since and ETag, Cloudflare validates content without fully re-fetching it, reducing origin traffic.
+description: How Cloudflare revalidates stale cached content with your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: You can use Cloudflare DNS with a variety of setups. For an overview of what these setups are and an introduction to specific DNS terminology, refer to Concepts.
+description: Set up Cloudflare DNS for your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

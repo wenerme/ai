@@ -1,6 +1,6 @@
 ---
 title: Example mitigation rules
-description: A customer support chatbot should not engage with prompts about violent crimes or hate speech. This custom rule blocks the request and returns a JSON response that your application can parse and display to the user.
+description: Example mitigation rules for AI Security for Apps detections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

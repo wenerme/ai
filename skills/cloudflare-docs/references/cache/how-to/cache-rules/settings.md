@@ -1,6 +1,6 @@
 ---
 title: Available settings
-description: These are the settings that you can configure when creating a cache rule.
+description: Available settings for Cache Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Purge cache
-description: Cloudflare's Instant Purge ensures that updates to your content are reflected immediately. Multiple options are available for purging content, with single-file cache purging (purge by URL) being the recommended method. However, the following additional options are also available:
+description: Remove cached content from Cloudflare edge servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

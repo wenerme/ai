@@ -1,6 +1,6 @@
 ---
 title: Update a rule in a ruleset
-description: Applies one or more changes to an existing rule in a ruleset at the account or zone level.
+description: Update a specific rule in a ruleset using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

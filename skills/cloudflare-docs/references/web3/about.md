@@ -1,6 +1,6 @@
 ---
 title: About
-description: When you create a gateway, Cloudflare automatically creates and adds specific DNS records to your Cloudflare account.
+description: How Cloudflare Web3 gateways connect HTTP clients to decentralized networks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Use Terraform
+description: Create account-level custom rulesets using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

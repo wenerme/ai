@@ -1,6 +1,6 @@
 ---
 title: URL Rewrite Rules
-description: You can manipulate the URL of a request through different operations, namely rewrites and redirects:
+description: Rewrite request URL paths and query strings with Transform Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -40,7 +40,7 @@ Create URL Rewrite Rules [in the dashboard](https://developers.cloudflare.com/ru
 
 ## Serve images from custom paths
 
-When using Cloudflare Images, you can use URL Rewrite Rules to serve images from a custom path. For more information, refer to [Serve images from custom domains](https://developers.cloudflare.com/images/manage-images/serve-images/serve-from-custom-domains/).
+When using Cloudflare Images, you can use URL Rewrite Rules to serve images from a custom path. For more information, refer to [Serve images from custom domains](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/).
 
 ## Troubleshooting
 

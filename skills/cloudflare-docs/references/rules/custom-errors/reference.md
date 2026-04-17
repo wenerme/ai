@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: This section contains reference information for Custom Errors.
+description: Reference information for custom error rules and error pages.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

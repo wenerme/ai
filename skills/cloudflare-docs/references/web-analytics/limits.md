@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Cloudflare limits the number of sites for which you can track web analytics, as well as the number of rules allowed for each plan type. Refer to the following tables for more information.
+description: Rate limits and data retention for Web Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

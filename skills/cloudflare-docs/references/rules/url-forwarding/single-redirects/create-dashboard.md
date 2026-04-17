@@ -1,5 +1,6 @@
 ---
 title: Create a redirect rule in the dashboard
+description: Create Single Redirect rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

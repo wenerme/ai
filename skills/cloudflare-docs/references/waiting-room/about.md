@@ -1,6 +1,6 @@
 ---
 title: About
-description: Waiting Room queues visitors when your traffic approaches a previously defined threshold that might otherwise bring an application down.
+description: How Cloudflare Waiting Room queues visitors during traffic surges.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

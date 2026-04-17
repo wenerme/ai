@@ -1,6 +1,6 @@
 ---
 title: Automatic HTTPS Rewrites
-description: Automatic HTTPS Rewrites prevents end users from seeing &#34;mixed content&#34; errors by rewriting URLs from http to https for resources or links on your web site that can be served with HTTPS.
+description: Fix mixed content by rewriting HTTP URLs to HTTPS in page responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -36,8 +36,8 @@ For security reasons, this feature will run on URLs pointing to `localhost` if t
 
 ## Enable Automatic HTTPS Rewrites
 
-* [ Dashboard ](#tab-panel-6531)
-* [ API ](#tab-panel-6532)
+* [ Dashboard ](#tab-panel-8739)
+* [ API ](#tab-panel-8740)
 
 To enable **Automatic HTTPS Rewrites** in the dashboard:
 

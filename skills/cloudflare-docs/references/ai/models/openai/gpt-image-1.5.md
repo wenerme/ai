@@ -218,8 +218,8 @@ Response200 ![Natural Style](https://replicate.delivery/xezq/9Qss2QiMKqaxOx1en1j
 
 ## Parameters
 
-* [ Input ](#tab-panel-198)
-* [ Output ](#tab-panel-199)
+* [ Input ](#tab-panel-202)
+* [ Output ](#tab-panel-203)
 
 prompt
 
@@ -243,12 +243,12 @@ style
 
 image
 
-`string`requiredformat: uriURL to the generated image
+`string`format: uriURL to the generated image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-196)
-* [ Output ](#tab-panel-197)
+* [ Input ](#tab-panel-200)
+* [ Output ](#tab-panel-201)
 
 ```
 

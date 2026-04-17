@@ -1,6 +1,6 @@
 ---
 title: Argo for Packets
-description: Argo for Packets provides IP layer network optimizations to supercharge your Cloudflare network services products like Magic Transit, Cloudflare WAN (formerly Magic WAN), and Cloudflare for Offices.
+description: Optimize IP layer routing for Magic Transit, Cloudflare WAN, and Cloudflare for Offices.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

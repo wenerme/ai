@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Page Rules - General
-description: The most common reason that a page rule is not working — such as URL forwarding — is that the page rule you created is on a record that is not proxied by Cloudflare in your DNS settings.
+description: Resolve common issues with Page Rules configuration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

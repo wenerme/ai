@@ -1,6 +1,6 @@
 ---
 title: Configure Cloud Connector rules using Terraform
-description: You can create Cloud Connector rules using the Terraform Cloudflare provider.
+description: Create Cloud Connector rules using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

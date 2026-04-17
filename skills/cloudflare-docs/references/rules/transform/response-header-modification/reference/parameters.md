@@ -1,6 +1,6 @@
 ---
 title: API parameter reference
-description: To set an HTTP response header, overwriting any headers with the same name, use the following parameters in the action_parameters field:
+description: Configurable parameters for response header modification rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

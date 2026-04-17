@@ -50,12 +50,12 @@ The following table lists sample values for various Zero Trust subscriptions.
 
 The following table lists sample values for various Developer platform subscriptions.
 
-| Feature                                                                             | Subscription IDs                                                                       |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [Images](https://developers.cloudflare.com/images/)                                 | IMAGES\_ENT,IMAGES\_BASIC                                                              |
-| [Image transformations](https://developers.cloudflare.com/images/transform-images/) | IMAGE\_RESIZING\_ENT, IMAGE\_RESIZING\_BASIC                                           |
-| [Stream](https://developers.cloudflare.com/stream/)                                 | PARTNERS\_STREAM\_ENT, PARTNERS\_STREAM\_BASIC, STREAM\_BASIC                          |
-| [Workers](https://developers.cloudflare.com/workers)                                | PARTNERS\_WORKERS\_ENT, WORKERS\_PAID, PARTNERS\_WORKERS\_SS, PARTNERS\_WORKERS\_BASIC |
+| Feature                                                                                                  | Subscription IDs                                                                       |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| [Images](https://developers.cloudflare.com/images/)                                                      | IMAGES\_ENT,IMAGES\_BASIC                                                              |
+| [Image transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/) | IMAGE\_RESIZING\_ENT, IMAGE\_RESIZING\_BASIC                                           |
+| [Stream](https://developers.cloudflare.com/stream/)                                                      | PARTNERS\_STREAM\_ENT, PARTNERS\_STREAM\_BASIC, STREAM\_BASIC                          |
+| [Workers](https://developers.cloudflare.com/workers)                                                     | PARTNERS\_WORKERS\_ENT, WORKERS\_PAID, PARTNERS\_WORKERS\_SS, PARTNERS\_WORKERS\_BASIC |
 
 ### Application performance and security
 

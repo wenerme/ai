@@ -1,10 +1,14 @@
 ---
 title: Migration from Page Rules
-description: If you are migrating from Page Rules, there is a behavior change between Page Rules and Cache Rules.
+description: Migrate caching Page Rules to Cache Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
 
 Was this helpful?
 
@@ -26,8 +30,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 1
 
-* [ Dashboard ](#tab-panel-3308)
-* [ visual guide ](#tab-panel-3309)
+* [ Dashboard ](#tab-panel-5418)
+* [ visual guide ](#tab-panel-5419)
 
 1. Enter a rule name, for instance `bypass everything`.
 2. In **When incoming requests match**, select **All incoming requests**.
@@ -37,8 +41,8 @@ Multiple matching cache rules can be combined and applied to the same request. A
 
 ## Rule 2
 
-* [ Dashboard ](#tab-panel-3310)
-* [ visual guide ](#tab-panel-3311)
+* [ Dashboard ](#tab-panel-5420)
+* [ visual guide ](#tab-panel-5421)
 
 1. Enter a rule name, for instance `cache all default cacheable extensions`.
 2. In **When incoming requests match**, select **Custom filter expression**.

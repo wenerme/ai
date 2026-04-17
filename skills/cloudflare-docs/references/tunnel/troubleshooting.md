@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Use this page to diagnose and resolve common issues with Cloudflare Tunnel. Many issues are resolved by upgrading to the latest version of cloudflared — refer to Update cloudflared before investigating further.
+description: Resolve common Cloudflare Tunnel connection and configuration issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

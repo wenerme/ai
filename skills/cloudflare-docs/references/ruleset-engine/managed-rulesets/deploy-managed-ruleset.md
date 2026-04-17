@@ -1,6 +1,6 @@
 ---
 title: Deploy a managed ruleset
-description: You can deploy a managed ruleset at the zone level or at the account level. To deploy a managed ruleset to a phase, use the Rulesets API.
+description: Deploy a managed ruleset to a phase entry point using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Set up address maps
-description: Consider the sections below to learn how to set up address maps.
+description: Create and configure address maps for your IP prefixes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -26,8 +26,8 @@ There is **no expected downtime** when setting up or updating your address maps.
 
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
-* [ Dashboard ](#tab-panel-3296)
-* [ API ](#tab-panel-3297)
+* [ Dashboard ](#tab-panel-5400)
+* [ API ](#tab-panel-5401)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
@@ -97,8 +97,8 @@ A zone membership will take priority over an account membership.
 
 ## Manage address maps
 
-* [ Dashboard ](#tab-panel-3294)
-* [ API ](#tab-panel-3295)
+* [ Dashboard ](#tab-panel-5398)
+* [ API ](#tab-panel-5399)
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.  
 [ Go to **Address maps** ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)

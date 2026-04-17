@@ -1,6 +1,6 @@
 ---
 title: Extensions
-description: Refer to the following pages for more information about Turnstile extensions:
+description: Turnstile extensions for Pages, Firebase, and Waiting Room.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

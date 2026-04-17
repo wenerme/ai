@@ -1,6 +1,6 @@
 ---
 title: Delete a ruleset
-description: You can use the API to delete all the versions of a ruleset or delete a specific version of a ruleset.
+description: Delete a ruleset using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

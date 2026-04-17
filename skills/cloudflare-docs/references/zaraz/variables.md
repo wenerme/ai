@@ -1,5 +1,6 @@
 ---
 title: Variables
+description: Define reusable variables for Zaraz tools and actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

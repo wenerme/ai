@@ -1,6 +1,6 @@
 ---
 title: Security Level
-description: In the old Cloudflare dashboard, security level has the value Always protected and you cannot change this setting. To turn Under Attack mode on or off, use the separate toggle.
+description: Set the Security Level threshold for challenging suspicious visitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

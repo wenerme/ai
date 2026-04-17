@@ -1,10 +1,6 @@
 ---
 title: Kill Switches
-description: When writing contracts, be especially careful to write secure code and include a
-kill switch to ensure that if any bugs do reside in the code, they can be
-squashed. If you do not include a kill switch and there are vulnerabilities in
-the smart contract that can be exploited, this can lead to the theft of
-resources from the smart contract or from other individuals.
+description: Disable Ethereum Gateway features in an emergency.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

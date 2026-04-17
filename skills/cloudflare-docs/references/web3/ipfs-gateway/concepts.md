@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: As you get started with Cloudflare's IPFS Gateway, you may want to read through the following concepts.
+description: Concepts for using the Cloudflare IPFS Gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

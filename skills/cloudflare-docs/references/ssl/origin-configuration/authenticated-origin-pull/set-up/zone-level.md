@@ -1,6 +1,6 @@
 ---
 title: Zone-level
-description: When you enable zone-level Authenticated Origin Pulls (AOP), all proxied traffic to your zone is authenticated at the origin web server using a certificate that you upload. Unlike global AOP, which uses a Cloudflare-provided certificate shared across all accounts, zone-level AOP uses your own certificate for stricter security.
+description: Set up zone-level Authenticated Origin Pulls with a custom certificate.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -87,8 +87,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload your certificate to Cloudflare
 
-* [ Dashboard ](#tab-panel-6589)
-* [ API ](#tab-panel-6590)
+* [ Dashboard ](#tab-panel-8785)
+* [ API ](#tab-panel-8786)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -143,8 +143,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 4\. Enable zone-level Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-6591)
-* [ API ](#tab-panel-6592)
+* [ Dashboard ](#tab-panel-8787)
+* [ API ](#tab-panel-8788)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)

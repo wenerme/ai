@@ -319,6 +319,11 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Enable lifecycle hooks loaded from `hooks.json` (under development; off by default).",
     },
     {
+      key: "features.memories",
+      type: "boolean",
+      description: "Enable [Memories](https://developers.openai.com/codex/memories) (off by default).",
+    },
+    {
       key: "mcp_servers.<id>.command",
       type: "string",
       description: "Launcher command for an MCP stdio server.",
@@ -452,6 +457,64 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       type: "array<string>",
       description:
         "Optional pool of display nicknames for spawned agents in that role.",
+    },
+    {
+      key: "memories.generate_memories",
+      type: "boolean",
+      description:
+        "When `false`, newly created threads are not stored as memory-generation inputs. Defaults to `true`.",
+    },
+    {
+      key: "memories.use_memories",
+      type: "boolean",
+      description:
+        "When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`.",
+    },
+    {
+      key: "memories.no_memories_if_mcp_or_web_search",
+      type: "boolean",
+      description:
+        "When `true`, threads that use MCP tool calls or web search are kept out of memory generation. Defaults to `false`.",
+    },
+    {
+      key: "memories.max_raw_memories_for_consolidation",
+      type: "number",
+      description:
+        "Maximum recent raw memories retained for global consolidation. Defaults to `256` and is capped at `4096`.",
+    },
+    {
+      key: "memories.max_unused_days",
+      type: "number",
+      description:
+        "Maximum days since a memory was last used before it becomes ineligible for consolidation. Defaults to `30` and is clamped to `0`-`365`.",
+    },
+    {
+      key: "memories.max_rollout_age_days",
+      type: "number",
+      description:
+        "Maximum age of threads considered for memory generation. Defaults to `30` and is clamped to `0`-`90`.",
+    },
+    {
+      key: "memories.max_rollouts_per_startup",
+      type: "number",
+      description:
+        "Maximum rollout candidates processed per startup pass. Defaults to `16` and is capped at `128`.",
+    },
+    {
+      key: "memories.min_rollout_idle_hours",
+      type: "number",
+      description:
+        "Minimum idle time before a thread is considered for memory generation. Defaults to `6` and is clamped to `1`-`48`.",
+    },
+    {
+      key: "memories.extract_model",
+      type: "string",
+      description: "Optional model override for per-thread memory extraction.",
+    },
+    {
+      key: "memories.consolidation_model",
+      type: "string",
+      description: "Optional model override for global memory consolidation.",
     },
     {
       key: "features.unified_exec",

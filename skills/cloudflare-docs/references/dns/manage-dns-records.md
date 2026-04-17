@@ -1,6 +1,6 @@
 ---
 title: DNS records
-description: DNS records contain information about your domain and are used to make your website or application available to visitors and other web services.
+description: Manage DNS records for your Cloudflare zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

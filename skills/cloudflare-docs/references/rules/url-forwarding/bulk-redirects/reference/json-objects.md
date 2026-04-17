@@ -1,6 +1,6 @@
 ---
 title: Bulk Redirects API JSON objects
-description: A fully populated Bulk Redirect Rule object has the following JSON structure:
+description: JSON object structure for Bulk Redirect API requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

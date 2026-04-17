@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks)[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 Was this helpful?
 
 YesNo

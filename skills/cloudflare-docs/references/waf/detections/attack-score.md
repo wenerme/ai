@@ -1,6 +1,6 @@
 ---
 title: WAF attack score
-description: The attack score traffic detection classifies each request using a machine learning algorithm, assigning a score from 1 to 99 based on the likelihood that the request is malicious. This detection complements WAF Managed Rules.
+description: Machine learning scores that classify each request for attack likelihood.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

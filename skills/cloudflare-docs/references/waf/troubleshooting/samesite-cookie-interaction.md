@@ -1,6 +1,6 @@
 ---
 title: SameSite cookie interaction with Cloudflare
-description: Google Chrome enforces SameSite cookie behavior to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
+description: How SameSite cookie attributes interact with Cloudflare challenges.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

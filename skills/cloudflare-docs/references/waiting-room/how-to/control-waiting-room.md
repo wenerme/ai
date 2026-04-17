@@ -1,6 +1,6 @@
 ---
 title: Control waiting room traffic
-description: To change whether and how traffic reaches a waiting room, update the values for Enabled, Queue All, and Queueing Method on your waiting room.
+description: Manage active user limits and queueing behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

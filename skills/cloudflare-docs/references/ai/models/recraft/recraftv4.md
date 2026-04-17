@@ -242,8 +242,8 @@ Response200 ![Background Color](https://replicate.delivery/xezq/7F4vZhspELqLERfF
 
 ## Parameters
 
-* [ Input ](#tab-panel-222)
-* [ Output ](#tab-panel-223)
+* [ Input ](#tab-panel-226)
+* [ Output ](#tab-panel-227)
 
 prompt
 
@@ -267,12 +267,12 @@ substyle
 
 image
 
-`string`requiredformat: uricontentMediaType: image/svg+xml
+`string`format: uricontentMediaType: image/svg+xml
 
 ## API Schemas
 
-* [ Input ](#tab-panel-220)
-* [ Output ](#tab-panel-221)
+* [ Input ](#tab-panel-224)
+* [ Output ](#tab-panel-225)
 
 ```
 

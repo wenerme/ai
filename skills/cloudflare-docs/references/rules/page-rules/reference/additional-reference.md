@@ -1,6 +1,6 @@
 ---
 title: Additional reference for Page Rules
-description: This setting is available to Business and Enterprise customers.
+description: Additional reference information for Page Rules settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

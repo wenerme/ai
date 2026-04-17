@@ -171,8 +171,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-126)
-* [ Output ](#tab-panel-127)
+* [ Input ](#tab-panel-130)
+* [ Output ](#tab-panel-131)
 
 text
 
@@ -212,12 +212,12 @@ apply\_text\_normalization
 
 audio
 
-`string`requiredURL to the generated audio file
+`string`URL to the generated audio file
 
 ## API Schemas
 
-* [ Input ](#tab-panel-124)
-* [ Output ](#tab-panel-125)
+* [ Input ](#tab-panel-128)
+* [ Output ](#tab-panel-129)
 
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Alerts
-description: You can configure alerts to receive notifications for changes in your certificates.
+description: Notifications for Universal SSL certificate events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

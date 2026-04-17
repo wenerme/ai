@@ -1075,11 +1075,12 @@ components:
         - low
         - medium
         - high
+        - xhigh
         - max
       description: >-
         How much effort the model should put into its response. Higher effort
         levels may result in more thorough analysis but take longer. Valid
-        values are `low`, `medium`, `high`, or `max`.
+        values are `low`, `medium`, `high`, `xhigh`, or `max`.
       title: MessagesOutputConfigEffort
     MessagesOutputConfigFormatType:
       type: string
@@ -1102,6 +1103,30 @@ components:
         A schema to specify Claude's output format in responses. See [structured
         outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).
       title: MessagesOutputConfigFormat
+    MessagesOutputConfigTaskBudgetType:
+      type: string
+      enum:
+        - tokens
+      title: MessagesOutputConfigTaskBudgetType
+    MessagesOutputConfigTaskBudget:
+      type: object
+      properties:
+        remaining:
+          type:
+            - integer
+            - 'null'
+        total:
+          type: integer
+        type:
+          $ref: '#/components/schemas/MessagesOutputConfigTaskBudgetType'
+      required:
+        - total
+        - type
+      description: >-
+        Task budget for an agentic turn. The model sees a countdown of remaining
+        tokens and uses it to prioritize work and wind down gracefully. Advisory
+        — does not enforce a hard cap.
+      title: MessagesOutputConfigTaskBudget
     MessagesOutputConfig:
       type: object
       properties:
@@ -1112,7 +1137,7 @@ components:
           description: >-
             How much effort the model should put into its response. Higher
             effort levels may result in more thorough analysis but take longer.
-            Valid values are `low`, `medium`, `high`, or `max`.
+            Valid values are `low`, `medium`, `high`, `xhigh`, or `max`.
         format:
           oneOf:
             - $ref: '#/components/schemas/MessagesOutputConfigFormat'
@@ -1121,6 +1146,14 @@ components:
             A schema to specify Claude's output format in responses. See
             [structured
             outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs).
+        task_budget:
+          oneOf:
+            - $ref: '#/components/schemas/MessagesOutputConfigTaskBudget'
+            - type: 'null'
+          description: >-
+            Task budget for an agentic turn. The model sees a countdown of
+            remaining tokens and uses it to prioritize work and wind down
+            gracefully. Advisory — does not enforce a hard cap.
       description: >-
         Configuration for controlling output behavior. Supports the effort
         parameter and structured output format.
@@ -2113,8 +2146,8 @@ components:
         model:
           type: string
           description: >-
-            Which image generation model to use (e.g. "openai/gpt-image-1").
-            Defaults to "openai/gpt-image-1".
+            Which image generation model to use (e.g. "openai/gpt-5-image").
+            Defaults to "openai/gpt-5-image".
       description: >-
         Configuration for the openrouter:image_generation server tool. Accepts
         all image_config params (aspect_ratio, quality, size, background,

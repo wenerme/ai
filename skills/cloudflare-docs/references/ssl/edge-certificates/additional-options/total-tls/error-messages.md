@@ -1,6 +1,6 @@
 ---
 title: Error messages
-description: To help avoid ERR_SSL_VERSION_OR_CIPHER_MISMATCH errors, Cloudflare automatically shows an error message - This hostname is not covered by a certificate - on proxied DNS records not covered by a TLS certificate.
+description: Error messages you may encounter with Total TLS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

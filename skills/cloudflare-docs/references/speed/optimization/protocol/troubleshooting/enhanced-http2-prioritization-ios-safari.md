@@ -1,6 +1,6 @@
 ---
 title: Enhanced HTTP/2 Prioritization negatively affects iOS/Safari devices
-description: Occasionally, Enhanced HTTP/2 Prioritization can negatively affect the experience of visitors using Safari on macOS or any browser on iOS.
+description: Fix Enhanced HTTP/2 Prioritization issues on iOS and Safari.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

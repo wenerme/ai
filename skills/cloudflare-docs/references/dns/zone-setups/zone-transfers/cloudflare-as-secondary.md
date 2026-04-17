@@ -1,6 +1,6 @@
 ---
 title: Cloudflare as Secondary
-description: With incoming zone transfers, you can keep your primary DNS provider and use Cloudflare as a secondary DNS provider.
+description: Use Cloudflare as a secondary DNS provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

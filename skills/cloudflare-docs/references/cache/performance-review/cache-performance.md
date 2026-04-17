@@ -1,6 +1,6 @@
 ---
 title: Cache performance
-description: Depending on the cache status you receive, you can make modifications to improve your cache ratio. To review the list of cache statuses, refer to Cloudflare cache responses.
+description: Measure and improve cache performance for your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

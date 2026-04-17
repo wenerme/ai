@@ -1,6 +1,6 @@
 ---
 title: Limitations
-description: The following limitations apply to different protocols supported by Spectrum.
+description: Protocol-specific limitations for Spectrum applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

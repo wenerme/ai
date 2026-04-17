@@ -1,6 +1,6 @@
 ---
 title: Key Transparency Auditor
-description: Cloudflare's Key Transparency Auditor aims to secure the distribution of public keys for end-to-end encrypted (E2EE) messaging systems like WhatsApp. It achieves this by building a verifiable append-only data structure called a Log, similar to Certificate Transparency.
+description: Secure public key distribution in end-to-end encrypted messaging systems.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

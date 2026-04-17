@@ -1,7 +1,6 @@
 ---
 title: Privacy Pass
-description: Privacy Pass specifies an extensible protocol for creating and redeeming anonymous and transferable tokens. Its specification is maintained by the IETF.
-Cloudflare provides &#34;Silk - Privacy Pass Client&#34;. This is a Chrome and Firefox browser extension used for research, which provides a better visitor experience for Cloudflare-protected websites. Privacy Pass is especially helpful for visitors from shared networks, VPNs, and Tor that tend to have poorer IP reputations.
+description: Allow Privacy Pass token holders to bypass challenges.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

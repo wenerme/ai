@@ -32,9 +32,9 @@ PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Net
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3615)
-* [  Python ](#tab-panel-3616)
-* [  curl ](#tab-panel-3617)
+* [  TypeScript ](#tab-panel-3619)
+* [  Python ](#tab-panel-3620)
+* [  curl ](#tab-panel-3621)
 
 ```
 
@@ -149,8 +149,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-* [ Input ](#tab-panel-3618)
-* [ Output ](#tab-panel-3619)
+* [ Input ](#tab-panel-3622)
+* [ Output ](#tab-panel-3623)
 
 ▶text
 
@@ -158,16 +158,16 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ▶data\[\]
 
-`array`requiredEmbedding vectors, where each vector is a list of floats.
+`array`Embedding vectors, where each vector is a list of floats.
 
 ▶shape\[\]
 
-`array`requiredminItems: 2maxItems: 2Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].
+`array`minItems: 2maxItems: 2Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3613)
-* [ Output ](#tab-panel-3614)
+* [ Input ](#tab-panel-3617)
+* [ Output ](#tab-panel-3618)
 
 ```
 

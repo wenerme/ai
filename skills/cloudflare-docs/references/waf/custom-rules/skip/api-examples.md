@@ -1,6 +1,6 @@
 ---
 title: API examples
-description: Use the Rulesets API to configure custom rules via API.
+description: API examples for configuring custom rules with the Skip action.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

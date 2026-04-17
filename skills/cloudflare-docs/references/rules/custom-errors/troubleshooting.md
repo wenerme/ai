@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Error Pages issues
-description: If Cloudflare cannot load your site or you have blocked the United States (US) via IP Access rules or WAF custom rules, publishing and previewing a custom error page might not work.
+description: Resolve common issues with custom error rules and error pages.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Random
-description: Random steering sends requests to endpoints purely based on endpoint weights. Distributes traffic more accurately, but may cause requests from the same IP to hit different endpoints.
+description: Distribute requests randomly across origins.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

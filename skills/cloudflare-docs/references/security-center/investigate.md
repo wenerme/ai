@@ -1,6 +1,6 @@
 ---
 title: Investigate
-description: Investigate allows you to view a domain’s category, the IP it belongs to, and whether the category has changed before. You can also see which records it points to, including the country of origin and passive DNS records. After searching with Investigate, you will get an API curl to retrieve the same search results.
+description: Look up threat intelligence for IPs, domains, URLs, and AS numbers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

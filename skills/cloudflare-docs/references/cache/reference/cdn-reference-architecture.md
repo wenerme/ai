@@ -1,5 +1,6 @@
 ---
 title: CDN Reference Architecture
+description: CDN reference architecture for Cloudflare caching.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Wildcard DNS records
-description: Normal DNS records map a domain name to one or multiple IP addresses or other associated resources to a specific domain name (a one-to-many mapping). Wildcard DNS records allow you to have a many-to-many mapping, for example if you had hundreds or thousands of subdomains you wanted to point to the same resources.
+description: How wildcard DNS records work on Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

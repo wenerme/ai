@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Zaraz is available to all Cloudflare users, across all tiers. Each month, every Cloudflare account gets 1,000,000 free Zaraz Events. For additional usage, the Zaraz Paid plan costs $5 per month for each additional 1,000,000 Zaraz Events.
+description: Zaraz pricing tiers and included event volumes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

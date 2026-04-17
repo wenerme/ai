@@ -1,6 +1,6 @@
 ---
 title: Letter of Agency
-description: A Letter of Agency (LOA) - sometimes referred to as a Letter of Authorization - is a document that authorizes Cloudflare to announce prefixes on behalf of another entity. The LOA is required by Cloudflare's transit providers so they can accept the routes Cloudflare advertises on behalf of another entity.
+description: Letter of Agency requirements for onboarding IP prefixes to Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

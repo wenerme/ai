@@ -28,7 +28,7 @@ If you need to re-add the domain in a different account, make sure the current s
 
 Note
 
-If you have just added a domain and have not configured its plan yet, the domain is in the `Initializing (Setup)` status and cannot be deleted. At this step you'll need to select a plan for this domain: the status will then change to `Pending` and you can then delete the domain. Please also note that domains in the `Initializing (Setup)` or `Pending` statuses will [automatically be deleted after 28 days](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#initializing-setup) if they do not activate.
+If you have just added a domain and have not configured its plan yet, the domain is in the `Initializing (Finish setup)` status and cannot be deleted. At this step you'll need to select a plan for this domain: the status will then change to `Pending` and you can then delete the domain. Please also note that domains in the `Initializing (Finish setup)` or `Pending` statuses will [automatically be deleted after 28 days](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/#initializing-finish-setup) if they do not activate.
 
 ### Actions outside of Cloudflare
 
@@ -48,12 +48,11 @@ If you have just added a domain and have not configured its plan yet, the domain
 
 ## Remove a domain activated in Cloudflare
 
-1. Log in to the Cloudflare dashboard.  
-[ Go to **Account home** ](https://dash.cloudflare.com/?to=/:account/home)
-2. On the **Overview** page, find **Advanced Actions** and then select **Remove Site from Cloudflare**.  
-![Remove site from Cloudflare is an option under Advanced Actions](https://developers.cloudflare.com/_astro/remove-domain.DlSLb0OG_kxVfQ.webp)  
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your domain.  
+[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/)
+2. On the domain **Overview** page, find **Advanced Actions** and then select **Remove from Cloudflare**.  
 Note  
-If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove Site from Cloudflare**.  
+If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove from Cloudflare**.  
     
 If this does not work, contact your Customer Success Manager.
 3. Select **Confirm**.

@@ -1,5 +1,6 @@
 ---
 title: Set
+description: Set key-value pairs in the Zaraz data layer.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

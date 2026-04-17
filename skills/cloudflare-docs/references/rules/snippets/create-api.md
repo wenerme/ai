@@ -1,6 +1,6 @@
 ---
 title: Configure Snippets via API
-description: You can create Snippets using the Cloudflare API.
+description: Create Snippets using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

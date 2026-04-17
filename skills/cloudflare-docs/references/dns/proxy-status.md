@@ -1,6 +1,6 @@
 ---
 title: Proxy status
-description: While your DNS records contain information about your domain, the proxy status controls whether HTTP/HTTPS traffic for that record routes through Cloudflare's network or goes directly to your origin server.
+description: Control whether Cloudflare proxies traffic for DNS records.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

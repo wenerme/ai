@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: For more guidance related to common issues with load balancers, refer to the following resources:
+description: Troubleshoot Load Balancing issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

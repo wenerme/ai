@@ -59,7 +59,7 @@ https://www.mywebsite.com/cdn-cgi/image/width=80,quality=75/uploads/image.jpg
 
 ## Related Resources
 
-* [Image Resizing Documentation](https://developers.cloudflare.com/images/transform-images/)
+* [Image Resizing Documentation](https://developers.cloudflare.com/images/optimization/transformations/overview/)
 * [Cloudflare R2 Developer Docs](https://developers.cloudflare.com/r2/)
 * [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
 * [Serverless image content management platform](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/)

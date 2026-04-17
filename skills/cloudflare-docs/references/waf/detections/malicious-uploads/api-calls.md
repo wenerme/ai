@@ -1,6 +1,6 @@
 ---
 title: Common API calls
-description: The following examples address common scenarios of using the Cloudflare API to manage and configure WAF content scanning.
+description: Manage malicious upload detection using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

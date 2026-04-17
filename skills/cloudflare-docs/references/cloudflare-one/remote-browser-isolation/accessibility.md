@@ -34,7 +34,7 @@ Alternatively, to use a keyboard shortcut, press `CTRL + ALT + Z`.
 
 ## Languages
 
-The isolated browser supports keyboard inputs in all languages. Users can use their native keyboard to type in languages that use diacritics (for example, `á` or`ç`) or character-based scripts (for example, Chinese, Japanese, or Korean).
+The isolated browser supports keyboard inputs in all languages. Users can use their native keyboard to type in languages that use diacritics (for example, `á` or `ç`) or character-based scripts (for example, Chinese, Japanese, or Korean).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/remote-browser-isolation/","name":"Remote browser isolation"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/remote-browser-isolation/accessibility/","name":"Accessibility"}}]}

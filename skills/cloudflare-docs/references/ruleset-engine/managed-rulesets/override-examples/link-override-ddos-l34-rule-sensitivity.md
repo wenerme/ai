@@ -1,5 +1,6 @@
 ---
 title: Adjust an L3/4 DDoS rule
+description: Adjust the sensitivity of a network-layer DDoS rule.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

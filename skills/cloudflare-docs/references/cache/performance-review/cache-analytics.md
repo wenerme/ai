@@ -1,6 +1,6 @@
 ---
 title: Cache Analytics
-description: Use Cache Analytics to improve site performance or reduce origin web server traffic. Cache Analytics helps determine if resources are missing from cache, expired, or ineligible for caching. Cache Analytics includes filter by hostname, list of top URLs that miss cache, and a query of up to three days of data.
+description: View cache hit rates and bandwidth savings in Cache Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

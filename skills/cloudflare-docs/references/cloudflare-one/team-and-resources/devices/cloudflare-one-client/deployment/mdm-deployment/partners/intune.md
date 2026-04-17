@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Microsoft ](https://developers.cloudflare.com/search/?tags=Microsoft)[ XML ](https://developers.cloudflare.com/search/?tags=XML)[ PowerShell ](https://developers.cloudflare.com/search/?tags=PowerShell) 
+
 Was this helpful?
 
 YesNo

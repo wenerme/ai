@@ -1,6 +1,6 @@
 ---
 title: Monitor Groups
-description: Group multiple health monitors together to create sophisticated health checks for your applications, ensuring more intelligent and resilient traffic steering.
+description: Group monitors for coordinated health checking.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

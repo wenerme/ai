@@ -1,5 +1,6 @@
 ---
 title: Analytics MCP server
+description: Query DNS analytics with the MCP server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

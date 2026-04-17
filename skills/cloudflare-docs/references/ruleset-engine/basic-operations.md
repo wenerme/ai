@@ -1,5 +1,6 @@
 ---
 title: Basic API operations
+description: Common Rulesets API operations for managing rulesets and rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

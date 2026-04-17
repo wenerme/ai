@@ -1,6 +1,6 @@
 ---
 title: Custom CSS
-description: You can add custom CSS to the Zaraz Consent Management Platform, to make the consent modal more in-line with your website's design.
+description: Customize the consent modal appearance with CSS.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

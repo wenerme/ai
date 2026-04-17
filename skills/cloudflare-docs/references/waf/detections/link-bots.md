@@ -1,5 +1,6 @@
 ---
 title: Bot score
+description: Bot score detection for identifying automated traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

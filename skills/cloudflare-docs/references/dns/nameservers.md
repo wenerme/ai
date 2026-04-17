@@ -1,6 +1,6 @@
 ---
 title: Nameservers
-description: As explained in How DNS works, from the moment a user types an address (www.example.com) into their web browser, the resolution of a DNS query takes place. Also, the process behind DNS resolution involves different computers (or servers).
+description: Manage Cloudflare nameservers for your zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

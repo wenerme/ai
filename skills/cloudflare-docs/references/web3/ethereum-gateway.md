@@ -1,6 +1,6 @@
 ---
 title: Ethereum Gateway
-description: Cloudflare's Ethereum Gateway gives you read and write access to the Ethereum network without installing any software on your computer.
+description: Access the Ethereum network through Cloudflare without running a node.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

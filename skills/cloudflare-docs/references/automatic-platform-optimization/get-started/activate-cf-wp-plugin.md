@@ -1,10 +1,14 @@
 ---
 title: Activate the Cloudflare WordPress plugin
-description: The easiest way to begin using APO is directly from Cloudflare’s WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.
+description: The easiest way to begin using APO is directly from Cloudflare's WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
 
 Was this helpful?
 

@@ -1,6 +1,6 @@
 ---
 title: About
-description: Multi-signer DNSSEC consists of two models that allow different authoritative DNS providers to serve the same zone and have DNSSEC enabled at the same time.
+description: How multi-signer DNSSEC works with multiple DNS providers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

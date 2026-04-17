@@ -1,6 +1,6 @@
 ---
 title: Require a specific cookie
-description: To secure a sensitive area such as a development area, you can share a cookie with trusted individuals and then filter requests so that only users with that cookie can access your site.
+description: Require a specific cookie value in incoming requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

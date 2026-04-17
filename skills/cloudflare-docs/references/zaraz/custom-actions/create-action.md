@@ -1,6 +1,6 @@
 ---
 title: Create an action
-description: Once you have your triggers ready, you can use them to configure your actions. An action defines a specific task that your tool will perform.
+description: Create a custom action to send data to third-party tools.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

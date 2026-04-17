@@ -1,6 +1,6 @@
 ---
 title: How it works
-description: Once you enable Security Insights, Cloudflare runs regular security scans on your account. These scans check your Cloudflare account settings, DNS record configurations, and product configurations — such as SSL/TLS, WAF, and Access — across all domains in your account.
+description: How Security Insights scans your account and produces security findings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

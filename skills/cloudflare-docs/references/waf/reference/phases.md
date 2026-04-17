@@ -1,6 +1,6 @@
 ---
 title: WAF phases
-description: The Web Application Firewall provides the following phases where you can create rulesets and rules:
+description: WAF rule execution phases and their order of evaluation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,8 +18,8 @@ The Web Application Firewall provides the following [phases](https://developers.
 
 These phases exist both at the account level and at the zone level. Considering the available phases and the two different levels, rules will be evaluated in the following order:
 
-* [  New dashboard ](#tab-panel-6888)
-* [ Old dashboard ](#tab-panel-6889)
+* [  New dashboard ](#tab-panel-9118)
+* [ Old dashboard ](#tab-panel-9119)
 
 | Security feature                                                                                | Scope   | Phase                            | Ruleset kind                 | Location in the dashboard                                                                                               |
 | ----------------------------------------------------------------------------------------------- | ------- | -------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------- |

@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Cloudflare occasionally updates the beacon.min.js file to improve Web Analytics functionality. The table below includes a log of what changed in the beacon.min.js file and when.
+description: Track the latest updates and changes to Web Analytics features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,10 +1,14 @@
 ---
 title: Cache keys
-description: A Cache Key is an identifier that Cloudflare uses for a file in our cache, and the Cache Key Template defines the identifier for a given HTTP request.
+description: Customize cache keys to control how Cloudflare stores cached resources.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ CORS ](https://developers.cloudflare.com/search/?tags=CORS)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
 
 Was this helpful?
 

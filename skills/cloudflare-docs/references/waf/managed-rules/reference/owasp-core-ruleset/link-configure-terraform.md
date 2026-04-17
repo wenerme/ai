@@ -1,5 +1,6 @@
 ---
 title: Configure in Terraform
+description: Configure the OWASP Core Ruleset using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

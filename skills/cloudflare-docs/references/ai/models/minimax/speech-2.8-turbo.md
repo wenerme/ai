@@ -179,8 +179,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-154)
-* [ Output ](#tab-panel-155)
+* [ Input ](#tab-panel-158)
+* [ Output ](#tab-panel-159)
 
 text
 
@@ -216,12 +216,12 @@ format
 
 audio
 
-`string`requiredURL to the generated audio file
+`string`URL to the generated audio file
 
 ## API Schemas
 
-* [ Input ](#tab-panel-152)
-* [ Output ](#tab-panel-153)
+* [ Input ](#tab-panel-156)
+* [ Output ](#tab-panel-157)
 
 ```
 

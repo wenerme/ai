@@ -1,6 +1,6 @@
 ---
 title: Configuration options
-description: Customize your Web Analytics views by using filters and rules.
+description: Configure Web Analytics rules, filters, and data collection settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

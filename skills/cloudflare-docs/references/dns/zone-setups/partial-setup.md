@@ -1,6 +1,6 @@
 ---
 title: CNAME setup (Partial)
-description: A CNAME setup (also known as partial setup) allows you to use Cloudflare's reverse proxy while maintaining your primary and authoritative DNS provider.
+description: Use Cloudflare with your existing DNS provider via CNAME setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

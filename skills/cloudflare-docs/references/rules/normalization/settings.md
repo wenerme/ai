@@ -1,6 +1,6 @@
 ---
 title: URL normalization settings
-description: The Cloudflare dashboard provides the following settings to manage URL normalization:
+description: Available URL normalization types and configuration settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

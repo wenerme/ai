@@ -1,6 +1,6 @@
 ---
 title: Set WordPress rules to Block
-description: Follow the steps below to create a rule that executes a managed ruleset and defines an override for rules with a specific tag.
+description: Deploy the Cloudflare Managed Ruleset with WordPress rules set to Block.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

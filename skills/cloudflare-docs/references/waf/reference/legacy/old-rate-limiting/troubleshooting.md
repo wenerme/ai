@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Rate Limiting (previous version)
-description: A few common rate limiting configuration issues prevent proper request matches:
+description: Troubleshoot issues with the previous version of Rate Limiting.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Health Checks analytics
-description: Use Health Checks analytics to debug possible origin issues.
+description: Use Health Checks analytics to debug origin availability issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

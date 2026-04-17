@@ -1,6 +1,6 @@
 ---
 title: Page Rule integration with APO
-description: The following Page Rules can control APO. Any changes to caching via Page Rules require purging the cache for the changes to take effect.
+description: Page Rules that control APO caching behavior for specific URL patterns.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

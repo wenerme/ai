@@ -1,6 +1,6 @@
 ---
 title: Consent management
-description: Zaraz provides a Consent Management platform (CMP) to help you address and manage required consents under the European General Data Protection Regulation (GDPR) and the Directive on privacy and electronic communications. This consent platform lets you easily create a consent modal for your website based on the tools you have configured. With Zaraz CMP, you can make sure Zaraz only loads tools under the umbrella of the specific purposes your users have agreed to.
+description: Manage visitor consent for third-party tools with Zaraz.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Rollback
-description: Refer to the following process to understand how you can rollback a subdomain setup and recreate the corresponding subdomain DNS records in an existing parent zone within Cloudflare.
+description: Roll back a subdomain zone setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

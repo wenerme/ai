@@ -30,12 +30,6 @@ Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)            |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=anthropic/claude-opus-4.6) 
-
 ## Usage
 
 TypeScript
@@ -322,31 +316,31 @@ stream
 
 id
 
-`string`required
+`string`
 
 type
 
-`string`requiredconst: message
+`string`const: message
 
 role
 
-`string`requiredconst: assistant
+`string`const: assistant
 
 ▶content\[\]
 
-`array`required
+`array`
 
 model
 
-`string`required
+`string`
 
 stop\_reason
 
-`string | null`required
+`string | null`
 
 ▶usage{}
 
-`object`required
+`object`
 
 ## API Schemas
 

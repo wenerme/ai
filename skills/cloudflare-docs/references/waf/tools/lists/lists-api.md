@@ -1,6 +1,6 @@
 ---
 title: Lists API
-description: The Lists API provides an interface for programmatically managing the following types of lists:
+description: Manage lists programmatically with the Lists API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

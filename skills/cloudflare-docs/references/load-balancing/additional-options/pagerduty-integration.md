@@ -1,6 +1,6 @@
 ---
 title: Integrate with PagerDuty
-description: To integrate Cloudflare health monitor notifications with PagerDuty, follow the steps outlined in PagerDuty’s Email Integration Guide. If you do not have a PagerDuty account, you will first need to set that up.
+description: Send load balancing alerts to PagerDuty.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

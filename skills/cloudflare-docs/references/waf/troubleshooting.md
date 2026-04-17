@@ -17,6 +17,7 @@ Copy page
 # Troubleshooting
 
 * [ Bing's Site Scan blocked by a managed rule ](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/)
+* [ Fake bot detection blocking legitimate requests ](https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/)
 * [ Issues sharing to Facebook ](https://developers.cloudflare.com/waf/troubleshooting/facebook-sharing/)
 * [ SameSite cookie interaction with Cloudflare ](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/)
 * [ Rule phase interactions ](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/)

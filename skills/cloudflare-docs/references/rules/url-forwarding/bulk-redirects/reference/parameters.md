@@ -1,6 +1,6 @@
 ---
 title: URL redirect parameters
-description: A URL redirect has a source URL, a target URL, a status code, and some additional parameters that affect its URL matching behavior and runtime behavior.
+description: Configurable parameters for Bulk Redirect rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

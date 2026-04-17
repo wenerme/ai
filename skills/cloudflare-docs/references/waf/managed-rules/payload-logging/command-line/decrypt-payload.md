@@ -1,6 +1,6 @@
 ---
 title: Decrypt the payload content
-description: Use the matched-data-cli tool to decrypt a payload in the command line.
+description: Decrypt matched rule payloads using the command-line tool.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

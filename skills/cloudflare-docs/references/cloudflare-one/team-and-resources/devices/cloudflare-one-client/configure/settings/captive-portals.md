@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 Was this helpful?
 
 YesNo
@@ -75,8 +79,8 @@ Captive portal logs are used by Cloudflare Support to troubleshoot Cloudflare On
 
 To get captive portal logs:
 
-* [ Version 2026.2+ ](#tab-panel-3699)
-* [ Version 2026.1 and earlier ](#tab-panel-3700)
+* [ Version 2026.2+ ](#tab-panel-5837)
+* [ Version 2026.1 and earlier ](#tab-panel-5838)
 
 1. Open a terminal window.
 2. Run the following command:  

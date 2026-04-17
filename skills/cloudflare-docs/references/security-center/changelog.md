@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: You can now automate your threat monitoring by setting up custom alerts in your saved views. Instead of manually checking the dashboard for updates, you can subscribe to notifications that trigger whenever new data matches your specific filter sets, like new activity associated to a particular threat actor or spikes in activity within your industry.
+description: Track the latest updates and changes to Security Center features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

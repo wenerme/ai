@@ -1,6 +1,6 @@
 ---
 title: Versions &#38; History
-description: Zaraz can work in real-time. In this mode, every change you make is instantly published. You can also enable Preview &#38; Publish mode, which allows you to test your changes before you commit to them.
+description: Manage Zaraz configuration versions and history.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

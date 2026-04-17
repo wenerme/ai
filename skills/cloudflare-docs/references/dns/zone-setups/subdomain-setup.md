@@ -1,6 +1,6 @@
 ---
 title: Subdomain setup
-description: When you use a subdomain setup, you can manage the Cloudflare configurations for one or more subdomains separately from those associated with your apex domain. This means that, on your account homepage, you would find websites like example.com or blog.example.com listed as separate zones.
+description: Add a subdomain as a standalone zone in Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

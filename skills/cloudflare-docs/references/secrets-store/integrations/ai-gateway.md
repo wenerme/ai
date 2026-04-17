@@ -1,5 +1,6 @@
 ---
 title: AI Gateway integration
+description: Use Secrets Store to manage API keys for AI Gateway providers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

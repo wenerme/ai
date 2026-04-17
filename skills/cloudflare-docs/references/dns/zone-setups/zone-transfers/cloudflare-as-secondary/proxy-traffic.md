@@ -1,6 +1,6 @@
 ---
 title: Proxy traffic
-description: When you set up incoming zone transfers on a secondary zone, you cannot enable the proxy on any transferred DNS records by default.
+description: Proxy traffic through Cloudflare on secondary zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -36,8 +36,8 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 
 ## Set up Secondary DNS override
 
-* [ Dashboard ](#tab-panel-4328)
-* [ API ](#tab-panel-4329)
+* [ Dashboard ](#tab-panel-6520)
+* [ API ](#tab-panel-6521)
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)

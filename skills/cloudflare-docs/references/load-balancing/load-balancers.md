@@ -1,6 +1,6 @@
 ---
 title: Load balancers
-description: A load balancer distributes traffic among pools according to pool health and traffic steering policies. Each load balancer is identified by its DNS hostname (lb.example.com, dev.example.com, etc.) or IP address.
+description: Configure load balancers to distribute traffic across pools.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

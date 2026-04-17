@@ -1,6 +1,6 @@
 ---
 title: Nameserver options
-description: Refer to the sections below to learn about different Cloudflare nameserver options. Note that the availability of these options depends on your plan. Also, if you acquired your domain from Cloudflare Registrar, your domain already uses and must remain on Cloudflare nameservers.
+description: Available nameserver configuration options.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

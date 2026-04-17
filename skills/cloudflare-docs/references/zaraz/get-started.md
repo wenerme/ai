@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Before being able to use Zaraz, it is recommended that you proxy your website through Cloudflare. Refer to Set up Cloudflare for more information. If you do not want to proxy your website through Cloudflare, refer to Use Zaraz on domains not proxied by Cloudflare.
+description: Set up Cloudflare Zaraz to manage third-party tools from the dashboard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

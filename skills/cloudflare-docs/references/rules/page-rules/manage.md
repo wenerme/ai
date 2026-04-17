@@ -1,6 +1,6 @@
 ---
 title: Manage Page Rules
-description: You can manage Page Rules in the Cloudflare dashboard or via API.
+description: Create, edit, and manage Page Rules in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -26,8 +26,8 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Create a page rule
 
-* [ Dashboard ](#tab-panel-6013)
-* [ API ](#tab-panel-6014)
+* [ Dashboard ](#tab-panel-8197)
+* [ API ](#tab-panel-8198)
 
 To create a page rule in the dashboard:
 
@@ -53,8 +53,8 @@ Notes
 
 ## Edit a page rule
 
-* [ Dashboard ](#tab-panel-6009)
-* [ API ](#tab-panel-6010)
+* [ Dashboard ](#tab-panel-8193)
+* [ API ](#tab-panel-8194)
 
 To edit a page rule in the dashboard:
 
@@ -70,8 +70,8 @@ To entirely replace the configuration of a page rule, send a [PUT request](https
 
 ## Delete a page rule
 
-* [ Dashboard ](#tab-panel-6011)
-* [ API ](#tab-panel-6012)
+* [ Dashboard ](#tab-panel-8195)
+* [ API ](#tab-panel-8196)
 
 To delete a page rule in the dashboard:
 

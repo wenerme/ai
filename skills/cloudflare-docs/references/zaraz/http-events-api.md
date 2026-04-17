@@ -1,6 +1,6 @@
 ---
 title: HTTP Events API
-description: The Zaraz HTTP Events API allows you to send information to Zaraz from places that cannot run the Web API, such as your server or your mobile app. It is useful for tracking events that are happening outside the browser, like successful transactions, sign-ups and more. The API also allows sending multiple events in batches.
+description: Send server-side events to Zaraz with the HTTP Events API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

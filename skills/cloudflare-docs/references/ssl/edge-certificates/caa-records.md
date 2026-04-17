@@ -1,6 +1,6 @@
 ---
 title: Add CAA records
-description: A Certificate Authority Authorization (CAA) DNS record specifies which certificate authorities (CAs) are allowed to issue certificates for a domain. This record reduces the chance of unauthorized certificate issuance and promotes standardization across your organization.
+description: Add CAA DNS records to control which CAs can issue certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -96,8 +96,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-6603)
-* [ API ](#tab-panel-6604)
+* [ Dashboard ](#tab-panel-8761)
+* [ API ](#tab-panel-8762)
 
 To add a CAA record in the dashboard,
 

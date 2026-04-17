@@ -1,6 +1,6 @@
 ---
 title: Consent API
-description: The Consent API allows you to programmatically control all aspects of the Consent Management program. This includes managing the modal, the consent status, and obtaining information about your configured purposes.
+description: Control consent programmatically with the Zaraz Consent API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

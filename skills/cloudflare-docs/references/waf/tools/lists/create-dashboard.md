@@ -1,6 +1,6 @@
 ---
 title: Create a list in the dashboard
-description: To create a list, follow these steps:
+description: Create and manage lists in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

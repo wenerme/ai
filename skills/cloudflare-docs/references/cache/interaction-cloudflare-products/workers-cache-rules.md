@@ -1,6 +1,6 @@
 ---
 title: How Workers interact with Cache Rules
-description: Your Workers script can override Cache Rules behavior, whether it is applied to a zone using Cloudflare or a zone that is not proxied through Cloudflare.
+description: How Workers interact with Cache Rules execution.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

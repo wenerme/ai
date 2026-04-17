@@ -158,8 +158,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-138)
-* [ Output ](#tab-panel-139)
+* [ Input ](#tab-panel-142)
+* [ Output ](#tab-panel-143)
 
 first\_frame\_image
 
@@ -195,7 +195,7 @@ video
 
 task\_id
 
-`string`required
+`string`
 
 status
 
@@ -203,8 +203,8 @@ status
 
 ## API Schemas
 
-* [ Input ](#tab-panel-136)
-* [ Output ](#tab-panel-137)
+* [ Input ](#tab-panel-140)
+* [ Output ](#tab-panel-141)
 
 ```
 

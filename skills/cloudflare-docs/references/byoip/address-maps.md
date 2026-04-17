@@ -1,6 +1,6 @@
 ---
 title: About address maps
-description: Address map is a data structure enabling customers with BYOIP prefixes or account-level static IPs to specify which IP addresses should be mapped to DNS records when they are proxied through Cloudflare.
+description: Map IP prefixes to zones and accounts with address maps.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

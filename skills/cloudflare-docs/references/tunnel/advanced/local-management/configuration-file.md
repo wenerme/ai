@@ -1,6 +1,6 @@
 ---
 title: Configuration file
-description: Locally-managed tunnels run as an instance of cloudflared on your machine. You can configure cloudflared properties by modifying command line parameters or by editing the tunnel configuration file.
+description: Configure locally-managed tunnels with a YAML configuration file.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

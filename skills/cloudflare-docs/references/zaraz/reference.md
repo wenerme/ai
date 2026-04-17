@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for Zaraz settings, triggers, and properties.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

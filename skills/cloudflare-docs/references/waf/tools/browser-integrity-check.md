@@ -1,6 +1,6 @@
 ---
 title: Browser Integrity Check
-description: Cloudflare's Browser Integrity Check (BIC) looks for common HTTP headers abused most commonly by spammers and denies access to your page.
+description: Block requests with suspicious HTTP headers using Browser Integrity Check.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -28,8 +28,8 @@ Browser Integrity Check is enabled by default.
 
 To disable BIC globally for your zone:
 
-* [  New dashboard ](#tab-panel-6890)
-* [ Old dashboard ](#tab-panel-6891)
+* [  New dashboard ](#tab-panel-9120)
+* [ Old dashboard ](#tab-panel-9121)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

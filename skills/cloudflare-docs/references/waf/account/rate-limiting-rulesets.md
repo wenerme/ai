@@ -1,6 +1,6 @@
 ---
 title: Rate limiting rulesets
-description: Rate limiting rules allow you to define a rate limit for requests matching an expression, and the action to perform when that rate limit is reached. You can configure rate limiting rules for a single zone or at the account level.
+description: Create rate limiting rulesets at the account level for multiple Enterprise zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: JSON objects
-description: This page describes the JSON objects used in API requests creating or updating rulesets and their rules via Rulesets API, as well as the objects returned by the API.
+description: JSON object structure for rulesets and rules in API requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

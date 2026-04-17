@@ -1,6 +1,6 @@
 ---
 title: Migrate to new account
-description: When using a subdomain setup, you can have your subdomain as a separate zone within the same account as the parent domain or within a different account.
+description: Move a subdomain zone to a different Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

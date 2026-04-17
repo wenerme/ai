@@ -1,6 +1,6 @@
 ---
 title: Performance review
-description: Review the following content to learn more about cache performance.
+description: Review cache performance metrics and analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

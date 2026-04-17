@@ -1,6 +1,6 @@
 ---
 title: ​Purge everything
-description: To maintain optimal site performance, Cloudflare strongly recommends using single-file (by URL) purging instead of a complete cache purge.
+description: Purge all cached content for your entire zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

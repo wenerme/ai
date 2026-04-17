@@ -1,6 +1,6 @@
 ---
 title: Create a ruleset
-description: Creates a ruleset of a given kind in the specified phase. Allows you to create phase entry point rulesets.
+description: Create a new ruleset using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

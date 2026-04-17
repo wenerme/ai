@@ -1,6 +1,6 @@
 ---
 title: Data layer compatibility mode
-description: Cloudflare Zaraz offers backwards compatibility with the dataLayer function found in tag management software, used to track events and other parameters. This way you can keep your current implementation and Cloudflare Zaraz will automatically collect your events.
+description: Use existing data layer calls with Zaraz compatibility mode.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

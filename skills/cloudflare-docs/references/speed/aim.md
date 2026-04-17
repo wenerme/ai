@@ -1,6 +1,6 @@
 ---
 title: Aggregated Internet Measurement
-description: Aggregated Internet Measurement (AIM) helps you understand your Internet quality to identify scenarios that your Internet connection is good or bad for. Typically, an Internet speed test provides you with upload and download speeds, which may not always provide a holistic view of your Internet quality.
+description: Measure real-world internet quality metrics for your visitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

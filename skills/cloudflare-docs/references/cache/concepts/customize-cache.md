@@ -1,6 +1,6 @@
 ---
 title: Customize cache
-description: Some possible combinations of origin web server settings and Cloudflare Cache Rules include:
+description: Methods for customizing cache behavior with rules, Workers, and headers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

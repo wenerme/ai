@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: This happens when a request goes through a Cloudflare Worker.
+description: Answers to common questions about WAF configuration and behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

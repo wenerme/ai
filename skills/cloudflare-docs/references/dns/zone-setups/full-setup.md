@@ -1,6 +1,6 @@
 ---
 title: Primary setup (Full)
-description: Cloudflare DNS offers a few different setup options. A primary setup (also known as full) is the most common and the only one available for Free or Pro plans.
+description: Use Cloudflare as your primary DNS provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

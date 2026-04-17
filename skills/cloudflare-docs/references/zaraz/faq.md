@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the community page or Discord channel to explore additional resources.
+description: Answers to common questions about Cloudflare Zaraz.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

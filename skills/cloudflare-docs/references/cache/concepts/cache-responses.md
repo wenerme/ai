@@ -1,6 +1,6 @@
 ---
 title: Cloudflare cache responses
-description: The CF-Cache-Status header output indicates whether a resource is cached or not. To investigate cache responses returned by this header, use services like Redbot, webpagetest.org, or a visual tool like Cloudflare Optics plugin.
+description: Cache status headers returned by Cloudflare in HTTP responses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

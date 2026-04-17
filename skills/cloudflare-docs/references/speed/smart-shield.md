@@ -1,5 +1,6 @@
 ---
 title: Smart Shield
+description: Protect your origin and improve performance with Smart Shield.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

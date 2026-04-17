@@ -5,21 +5,18 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Rotate user, group, or project access tokens
+Rotate user, group, or project access tokens.
 
 ## Synopsis
 
-Rotate user, group, or project access token, then print the new token on stdout. If multiple tokens with
-the same name exist, you can specify the ID of the token.
+If multiple tokens share the same name, specify the token ID to select the correct one.
 
-The expiration date of the token will be calculated by adding the duration (default 30 days) to the
-current date, with expiration occurring at midnight UTC on the calculated date. Alternatively you can
-specify a different duration using days (d), weeks (w), or hours (h), or provide an explicit end date.
+The token expires at 00:00 UTC on a date calculated by adding the duration to today's date.
+The default duration is 30 days. You can specify a different duration in days (`d`),
+weeks (`w`), or hours (`h`).
+The `--duration` and `--expires-at` flags are mutually exclusive.
 
-The output format can be either "JSON" or "text". The JSON output will show the meta information of the
-rotated token.
-
-Administrators can rotate personal access tokens belonging to other users.
+Administrators can rotate personal access tokens that belong to other users.
 
 ```plaintext
 glab token rotate <token-name|token-id> [flags]
@@ -28,7 +25,6 @@ glab token rotate <token-name|token-id> [flags]
 ## Aliases
 
 ```plaintext
-rotate
 rot
 ```
 
@@ -54,7 +50,7 @@ glab token rotate --user johndoe johns-personal-token --duration 90d
 ## Options
 
 ```plaintext
-  -D, --duration duration   Sets the token lifetime in days. Accepts: days (30d), weeks (4w), or hours in multiples of 24 (24h, 168h, 720h). Maximum: 365d. The token expires at midnight UTC on the calculated date. (default 30d)
+  -D, --duration duration   Sets the token lifetime in days. Accepts: days (30d), weeks (4w), or hours in multiples of 24 (24h, 168h, 720h). Maximum: 365d. The token expires at 00:00 UTC on the calculated date. (default 30d)
   -E, --expires-at DATE     Sets the token's expiration date and time, in YYYY-MM-DD format. If not specified, --duration is used. (default 0001-01-01)
   -g, --group string        Rotate group access token. Ignored if a user or repository argument is set.
   -F, --output string       Format output as: text, json. 'text' provides the new token value; 'json' outputs the token with metadata. (default "text")

@@ -13,16 +13,16 @@ When you properly attribute your app usage, you gain access to:
 
 ## Attribution Headers
 
-OpenRouter tracks app attribution through these optional HTTP headers:
+OpenRouter tracks app attribution through the following HTTP headers:
 
-### HTTP-Referer
+### HTTP-Referer (required)
 
-The `HTTP-Referer` header identifies your app's URL and is used as the primary identifier for rankings.
+The `HTTP-Referer` header identifies your app's URL and is used as the primary identifier for rankings. **This header is required for app attribution** — without it, no app page will be created and your usage will not appear in rankings. Your app's URL becomes its unique identifier in the system.
 
 ### X-OpenRouter-Title
 
 The `X-OpenRouter-Title` header sets or modifies your app's display name
-in rankings and analytics. `X-Title` is still supported for backwards compatibility.
+in rankings and analytics. `X-Title` is still supported for backwards compatibility. This header alone does not create an app page — it must be paired with `HTTP-Referer`.
 
 ### X-OpenRouter-Categories
 
@@ -64,11 +64,9 @@ Unrecognized values are silently dropped. If you have a use case
 that doesn't fit the existing categories, reach out to us and
 we may add new categories in the future.
 
-<Tip>
-  All three headers are optional, but including them
-  enables all attribution features. Apps using localhost
-  URLs must include a title to be tracked.
-</Tip>
+<Warning>
+  `HTTP-Referer` is **required** to create an app page and appear in rankings. Setting only `X-OpenRouter-Title` without a URL will not create an app entry. Apps using `localhost` URLs must also include `X-OpenRouter-Title` to be tracked.
+</Warning>
 
 ## Implementation Examples
 
@@ -253,9 +251,11 @@ Once your app is tracked, you can access detailed analytics at `openrouter.ai/ap
 
 ### URL Requirements
 
+* **Always include `HTTP-Referer`** — this is the minimum requirement for app attribution
 * Use your app's primary domain (e.g., `https://myapp.com`)
 * Avoid using subdomains unless they represent distinct apps
-* For localhost development, always include a title header
+* For localhost development, always include `X-OpenRouter-Title` as well
+* You can view your app's page at `openrouter.ai/apps?url=<your-referer-url>`
 
 ### Title Guidelines
 

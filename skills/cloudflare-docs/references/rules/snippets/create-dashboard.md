@@ -1,5 +1,6 @@
 ---
 title: Create a snippet in the dashboard
+description: Create Snippets in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Widget management
-description: Refer to the following pages for more information about managing Turnstile widgets:
+description: Create, configure, and manage Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

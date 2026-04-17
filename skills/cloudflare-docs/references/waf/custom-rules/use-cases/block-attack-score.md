@@ -1,6 +1,6 @@
 ---
 title: Block requests by attack score
-description: The attack score helps identify variations of known attacks and their malicious payloads.
+description: Block requests with high WAF attack scores.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

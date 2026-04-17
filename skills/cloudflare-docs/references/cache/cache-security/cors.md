@@ -1,10 +1,14 @@
 ---
 title: Cross-Origin Resource Sharing (CORS)
-description: A cross-origin request is a request for website resources external to the origin. For example, a.example.com attempts to serve resources from b.secondexample.com. CORS instructs the browser to determine if a cross-origin request, such as an image or JavaScript from b.secondexample.com, is allowed by a.example.com. The browser does not load resources that are disallowed by CORS.
+description: How Cloudflare handles CORS headers and cross-origin resource caching.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ CORS ](https://developers.cloudflare.com/search/?tags=CORS) 
 
 Was this helpful?
 

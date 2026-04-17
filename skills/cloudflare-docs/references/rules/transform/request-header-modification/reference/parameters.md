@@ -1,6 +1,6 @@
 ---
 title: API parameter reference
-description: To set an HTTP request header via API, set the following parameters in the action_parameters field:
+description: Configurable parameters for request header modification rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

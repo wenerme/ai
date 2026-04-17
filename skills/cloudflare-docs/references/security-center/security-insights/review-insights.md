@@ -1,6 +1,6 @@
 ---
 title: Review Security Insights
-description: After enabling Security Insights and letting the first scan run, check the Security Insights tab for a list of detected insights that you should address.
+description: Review, filter, and resolve security insights detected across your domains.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

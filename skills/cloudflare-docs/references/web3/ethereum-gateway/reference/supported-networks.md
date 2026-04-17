@@ -1,6 +1,6 @@
 ---
 title: Supported networks
-description: Currently, Cloudflare Ethereum gateways support interacting with the following networks.
+description: Ethereum networks supported by the Cloudflare Ethereum Gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

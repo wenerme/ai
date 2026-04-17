@@ -59,19 +59,21 @@ Teams can now get started with Codex with no fixed monthly costs. For a
       </PricingCard>
       <PricingCard
         name="Pro"
-        subtitle="Choose 10x or 20x higher rate limits than Plus."
+        subtitle="Choose 5x or 20x higher rate limits than Plus."
         priceEyebrow="From"
         price="$100"
         interval="/month"
         ctaLabel="Get Pro"
         ctaHref="https://chatgpt.com/explore/pro?utm_internal_source=openai_developers_codex"
         highlight="Everything in Plus and:"
-        footnoteLabel="*Current usage includes an additional boost ending May 31, 2026. Pro $100 is currently 10x Plus. Pro $200 is currently 20x Plus (equivalent to the 2x promo available since February 2026)."
+        footnoteLabel="*Learn more about limits and promos on both tiers."
+        footnoteHref="https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans"
       >
-        - Priority request processing
+        **Double your normal Codex usage $100/month tier until May 31, 2026.**
+
         - Access to GPT-5.3-Codex-Spark (research preview), a fast Codex model
           for day-to-day coding tasks
-        - 10x or 20x higher rate limits than Plus*
+        - 10x or 20x more Codex usage than Plus*
         - Other [ChatGPT features](https://chatgpt.com/pricing) as part of the
           Pro plan
       </PricingCard>
@@ -282,21 +284,21 @@ require Codex to hold more context will use significantly more per message.
         <tbody>
           <tr>
             <td>GPT-5.4</td>
-            <td style="text-align:center">200-1000</td>
+            <td style="text-align:center">100-500</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.4-mini</td>
-            <td style="text-align:center">600-3500</td>
+            <td style="text-align:center">300-1750</td>
             <td style="text-align:center">Not available</td>
             <td style="text-align:center">Not available</td>
           </tr>
           <tr>
             <td>GPT-5.3-Codex</td>
-            <td style="text-align:center">300-1500</td>
-            <td style="text-align:center">100-600</td>
-            <td style="text-align:center">200-500</td>
+            <td style="text-align:center">150-750</td>
+            <td style="text-align:center">50-300</td>
+            <td style="text-align:center">100-250</td>
           </tr>
         </tbody>
         <tfoot>
@@ -310,7 +312,7 @@ require Codex to hold more context will use significantly more per message.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              Pro $100 currently runs at 10x Plus limits through May 31, 2026.
+              Pro $100 gets 2x the usage shown above until May 31, 2026.
             </td>
           </tr>
           <tr>
@@ -377,8 +379,9 @@ require Codex to hold more context will use significantly more per message.
           </tr>
           <tr>
             <td colspan="4" style="text-align:center">
-              Pro $200 remains at 20x Plus limits. This is equivalent to the 2x
-              promo available since February 2026.
+              Pro $200 gets a boost on the usage shown above until May 31,
+              2026. [Learn
+              more](https://help.openai.com/en/articles/9793128-about-chatgpt-pro-plans).
             </td>
           </tr>
           <tr>
@@ -531,8 +534,7 @@ require Codex to hold more context will use significantly more per message.
 </div>
 
 Speed configurations increase credit consumption for all applicable models, so
-they also use included limits faster. Details can be found [here](https://developers.openai.com/codex/speed).
-GPT-5.3-Codex-Spark is in research preview for ChatGPT Pro users only, and isn't
+they also use included limits faster. Details can be found [here](https://developers.openai.com/codex/speed). Image generations also use included limits ~3-5x faster on average, depending on image quality and size. GPT-5.3-Codex-Spark is in research preview for ChatGPT Pro users only, and isn't
 available in the API at launch. Because it runs on specialized low-latency
 hardware, usage is governed by a separate usage limit that may adjust based on
 demand.
@@ -551,6 +553,28 @@ model to make your usage limits last longer.
 
 All users may also run extra local tasks using an API key, with usage charged at
 [standard API rates](https://platform.openai.com/docs/pricing).
+
+<a id="image-generation-usage-limits"></a>
+
+### How does image generation count toward usage limits?
+
+Image generation counts toward the same general Codex usage limits as local
+messages and cloud tasks. Image generations use included limits 3-5x faster on
+average than similar turns without image generation, depending on
+image quality and size. After you reach your included limits, image generation
+also draws from [credits](#credits-overview).
+
+Image generation isn't available on the Free plan. When you use Codex with an
+API key, API pricing applies to image generation instead of included ChatGPT
+usage limits.
+
+### What is the current Codex usage promo on Pro?
+
+We’re currently offering extra Codex usage on both Pro tiers.
+
+For **Pro $100**, to celebrate the launch, you’ll get **2x Codex usage through May 31, 2026**. That means 10x usage instead of the standard 5x.
+
+**For Pro $200**, as a thank you to our most loyal customers, we’re carrying forward the benefits of our earlier 2x promo, which means Pro $200 now includes 20x Plus on an ongoing basis. In addition, we’re continuing to honor the higher 5-hour Codex limits for a limited time, so those remain at 25x Plus through May 31, 2026 instead of the standard 20x Plus.
 
 ### Where can I see my current usage limits?
 
@@ -571,7 +595,7 @@ input tokens and output tokens your workspace consumes. Read about tokens
 [here](https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them).
 
 This format replaces average per-message estimates for your plan with a direct
-mapping between token usage and credits. This is most useful when you want a
+mapping between token usage and credits. It's most useful when you want a
 clearer view of how input, cached input, and output affect credit consumption.
 
 Under this model, actual credit usage depends on the mix of input, cached input,
@@ -649,6 +673,18 @@ Select your appropriate plan type in the table below to see rates.
               research preview
             </td>
           </tr>
+          <tr>
+            <td>GPT-Image-1.5 (image)</td>
+            <td style="text-align:center">200 credits</td>
+            <td style="text-align:center">50 credits</td>
+            <td style="text-align:center">800 credits</td>
+          </tr>
+          <tr>
+            <td>GPT-Image-1.5 (text)</td>
+            <td style="text-align:center">125 credits</td>
+            <td style="text-align:center">31.25 credits</td>
+            <td style="text-align:center">250 credits</td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -709,6 +745,20 @@ Select your appropriate plan type in the table below to see rates.
             <td style="text-align:center">\~34 credits</td>
             <td style="text-align:center">\~25 credits</td>
             <td style="text-align:center">Not available</td>
+          </tr>
+          <tr>
+            <td>Image generation</td>
+            <td style="text-align:center">1 image (1024px &times; 1024px)</td>
+            <td colspan="3" style="text-align:center">
+              \~5-6 credits
+            </td>
+          </tr>
+          <tr>
+            <td>Image generation</td>
+            <td style="text-align:center">1 image (1024px &times; 1536px)</td>
+            <td colspan="3" style="text-align:center">
+              \~7-8 credits
+            </td>
           </tr>
         </tbody>
         <tfoot>

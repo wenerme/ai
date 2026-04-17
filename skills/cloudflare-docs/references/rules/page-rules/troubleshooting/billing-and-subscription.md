@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Page Rules - Billing and subscription
-description: No, you cannot buy additional Page Rules. You will need to migrate to modern Rules features to benefit from increased quotas.
+description: Resolve billing and subscription issues with Page Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

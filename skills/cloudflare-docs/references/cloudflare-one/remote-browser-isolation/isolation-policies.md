@@ -24,7 +24,7 @@ With Browser Isolation, you can define policies to dynamically isolate websites 
 
 ## Isolate
 
-When an HTTP policy applies the Isolate action, the user's web browser is transparently served an HTML compatible remote browser client. Isolation policies can be applied to requests that include `Accept: text/html*`. This allows Browser Isolation policies to co-exist with API traffic.
+When an HTTP policy applies the Isolate action, the user's web browser is transparently served an HTML compatible remote browser client. Isolation policies can be applied to requests that include `Accept: text/html*` (requests for web pages). This allows Browser Isolation policies to co-exist with API traffic.
 
 The following example enables isolation for all web traffic:
 
@@ -54,7 +54,7 @@ You can choose to disable isolation for certain destinations or categories. The 
 
 ## Policy settings
 
-The following optional settings appear in the Gateway HTTP policy builder when you select the _Isolate_ action. Configure these settings to [prevent data loss ↗](https://blog.cloudflare.com/data-protection-browser/) when users interact with untrusted websites in the remote browser.
+When you isolate a website, you can also restrict what users do on that site. The following optional settings appear in the Gateway HTTP policy builder when you select the _Isolate_ action. Configure these settings to [prevent data loss ↗](https://blog.cloudflare.com/data-protection-browser/) when users interact with untrusted websites in the remote browser — for example, to stop a user from copying confidential data out of an isolated internal application.
 
 ### Copy (from remote to client)
 
@@ -146,8 +146,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-3637)
-* [ API ](#tab-panel-3638)
+* [ Dashboard ](#tab-panel-5769)
+* [ API ](#tab-panel-5770)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -196,8 +196,8 @@ Explain Code
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-3639)
-* [ API ](#tab-panel-3640)
+* [ Dashboard ](#tab-panel-5771)
+* [ API ](#tab-panel-5772)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -246,8 +246,8 @@ Explain Code
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-3641)
-* [ API ](#tab-panel-3642)
+* [ Dashboard ](#tab-panel-5773)
+* [ API ](#tab-panel-5774)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -296,8 +296,8 @@ Explain Code
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-3643)
-* [ API ](#tab-panel-3644)
+* [ Dashboard ](#tab-panel-5775)
+* [ API ](#tab-panel-5776)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -346,8 +346,8 @@ Explain Code
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-3645)
-* [ API ](#tab-panel-3646)
+* [ Dashboard ](#tab-panel-5777)
+* [ API ](#tab-panel-5778)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |

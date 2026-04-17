@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Turnstile protects your website forms from bots. It works in two steps: a JavaScript widget runs challenges in the visitor's browser and produces a token, then your server sends that token to Cloudflare to confirm it is valid. This guide covers how to set up both steps.
+description: Set up Turnstile to verify visitors without a traditional CAPTCHA.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

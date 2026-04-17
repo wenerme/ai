@@ -1,6 +1,6 @@
 ---
 title: Using IPFS with your website
-description: Though it is not required, it is strongly recommended that websites hosted on IPFS use only relative links, unless linking to a different domain. This is because data can be accessed in many different (but ultimately equivalent) ways:
+description: Host your website on IPFS and serve it through Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

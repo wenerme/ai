@@ -1,6 +1,6 @@
 ---
 title: ​Purge by single-file
-description: With purge by single-file, cached resources are instantly removed from the stored assets in your Content Delivery Network (CDN) across all data centers. New requests for the purged asset receive the latest version from your origin web server and add it back to your CDN cache within the specific Cloudflare data center that served the request.
+description: Purge a single cached file by URL.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

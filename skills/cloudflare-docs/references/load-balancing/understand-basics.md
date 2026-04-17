@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Review the following topics to learn more about the basic concepts and components involved in Cloudflare Load Balancing.
+description: Core concepts for Cloudflare Load Balancing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

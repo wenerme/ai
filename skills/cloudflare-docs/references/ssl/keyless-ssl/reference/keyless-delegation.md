@@ -1,6 +1,6 @@
 ---
 title: Keyless delegation
-description: Keyless Delegation is Cloudflare's implementation of the emerging delegated credentials standard (RFC 9345). When you upload a certificate for use with Keyless that has the special extension permitting the use of delegated credentials, Cloudflare will automatically produce a delegated credential and use it at the edge with clients that support this feature. The handshakes will complete without the extra latency induced by reaching back to the Keyless Server, and there are additional advantages to flexibility in algorithm choice.
+description: Delegate certificate signing to downstream key servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

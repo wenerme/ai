@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Internal DNS is now in open beta.
+description: Track the latest updates and changes to Cloudflare DNS features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

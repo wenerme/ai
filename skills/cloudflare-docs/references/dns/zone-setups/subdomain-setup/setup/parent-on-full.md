@@ -1,6 +1,6 @@
 ---
 title: Parent zone on full setup
-description: When the parent zone is using a primary setup (full)1, the steps to set up your child zone depend on whether the subdomain already exists in the parent domain.
+description: Set up subdomain zone when parent uses full setup.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

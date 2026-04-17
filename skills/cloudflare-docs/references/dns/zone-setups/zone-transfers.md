@@ -1,6 +1,6 @@
 ---
 title: DNS Zone transfers
-description: To increase availability and fault tolerance, you can use one or more DNS provider(s) alongside Cloudflare in case one provider becomes unavailable (known as a peer DNS server). Your providers will then transfer DNS records between themselves using authoritative (AXFR) or incremental (IXFR) zone transfers.
+description: Transfer DNS zones between Cloudflare and other providers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

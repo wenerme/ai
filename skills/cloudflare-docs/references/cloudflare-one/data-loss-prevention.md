@@ -69,9 +69,9 @@ DLP supports reporting and scanning the following file types:
 
 DLP will scan the text contained in text, Microsoft Office, and PDF files.
 
-### Size
+Note
 
-DLP can scan files less than or equal to 100 MB in size. ZIP files can be recursively compressed a maximum of 10 times, and each content file within the ZIP file must be less than or equal to 200 MB in uncompressed size.
+ZIP files can be recursively compressed a maximum of 10 times.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/data-loss-prevention/","name":"Data loss prevention"}}]}

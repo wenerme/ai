@@ -1,6 +1,6 @@
 ---
 title: DNSSEC
-description: DNS Security Extensions (DNSSEC) adds an extra layer of authentication to DNS, ensuring requests are not routed to a spoofed domain.
+description: Protect your domain from DNS spoofing with DNSSEC.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

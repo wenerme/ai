@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: Troubleshoot common DNS record issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

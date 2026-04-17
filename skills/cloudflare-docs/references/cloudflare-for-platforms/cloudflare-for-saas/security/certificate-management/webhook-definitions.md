@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JSON ](https://developers.cloudflare.com/search/?tags=JSON) 
+
 Was this helpful?
 
 YesNo

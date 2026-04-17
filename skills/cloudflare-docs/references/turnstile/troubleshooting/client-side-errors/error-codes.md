@@ -1,6 +1,6 @@
 ---
 title: Error codes
-description: You can troubleshoot these error codes using the following recommendations:
+description: Error codes returned by Turnstile widgets and their meanings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

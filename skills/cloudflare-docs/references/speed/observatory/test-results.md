@@ -1,6 +1,6 @@
 ---
 title: Understand test results
-description: The test result page shows you how your website performed regarding several key industry metrics. Some of these metrics are presented for synthetic tests and the real user monitoring, and others only apply to synthetic tests or only to real user monitoring.
+description: Interpret Lighthouse scores and Core Web Vitals from Observatory tests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

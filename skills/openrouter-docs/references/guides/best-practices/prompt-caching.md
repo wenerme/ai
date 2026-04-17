@@ -326,9 +326,20 @@ Gemini caching in OpenRouter requires you to insert `cache_control` breakpoints 
 <Tip>
   There is not a limit on the number of `cache_control` breakpoints you can
   include in your request. OpenRouter will use only the last breakpoint for
-  Gemini caching. Including multiple breakpoints is safe and can help maintain
-  compatibility with Anthropic, but only the final one will be used for Gemini.
+  Gemini caching across normal message content. Including multiple breakpoints
+  is safe and can help maintain compatibility with Anthropic, but only the
+  final one will be used for Gemini.
 </Tip>
+
+<Note>
+  Gemini has a single `systemInstruction` field, and cached Gemini content
+  treats that `systemInstruction` as immutable. On OpenRouter, this means
+  `cache_control` inside the first `system` or `developer` message can cache
+  the normalized system prompt, but it cannot preserve an uncached dynamic tail
+  inside that same message. If you need part of your prompt to stay dynamic,
+  move that dynamic content into a later `user` message instead of appending it
+  after a cached block in the first `system` message.
+</Note>
 
 ### Examples:
 
@@ -365,6 +376,10 @@ Gemini caching in OpenRouter requires you to insert `cache_control` breakpoints 
   ]
 }
 ```
+
+This pattern works when the cached system content is stable across requests. If
+you need a dynamic prompt segment, place it in a later `user` message rather
+than as uncached trailing content in the first `system` message.
 
 #### User Message Caching Example
 

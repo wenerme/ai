@@ -1,6 +1,6 @@
 ---
 title: Dynamic advertisement
-description: You can use the Cloudflare API or the IP Prefixes page in the Cloudflare dashboard to configure the Border Gateway Protocol advertisement at the Cloudflare edge.
+description: Advertise and withdraw IP prefixes on demand through the API or dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

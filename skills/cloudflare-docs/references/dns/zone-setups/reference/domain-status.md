@@ -1,6 +1,6 @@
 ---
 title: Zone status
-description: Review information on the different statuses that your zone can have after you add your website or application to Cloudflare.
+description: Zone status values and what they mean.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -48,21 +48,21 @@ Note
 
 If you use the API to add your website or application to Cloudflare, your zone will be created directly in a **Pending** status. **Initializing** only applies to domains added via the dashboard.
 
-## Initializing (Setup)
+## Initializing (Finish setup)
 
-You have initiated the setup via dashboard, but did not select a plan for your zone. Your zone status is presented as **Setup** on the Cloudflare dashboard.
+You have initiated the setup via dashboard, but did not select a plan for your zone. Your zone status is presented as **Finish setup** on the Cloudflare dashboard.
 
 In this state, Cloudflare does not respond to any DNS queries for your domain.
 
-If your zone is in **Setup** for over 28 days, it will be automatically [deleted](#deleted).
+If your zone is in **Finish setup** for over 28 days, it will be automatically [deleted](#deleted).
+
+Note
+
+If you have mistakenly added a zone to your account via dashboard, you can safely [remove it](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/) after selecting the Free plan.
 
 ## Pending
 
 Your zone status is presented as **Pending Nameserver Update** on the Cloudflare dashboard.
-
-Note
-
-If you have mistakenly added a zone to your account it will appear as pending. It can be safely [removed](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/).
 
 Cloudflare responds to DNS queries for pending zones on the assigned Cloudflare nameserver IPs, but your zone is still not active and cannot be used to [proxy traffic to Cloudflare](https://developers.cloudflare.com/dns/proxy-status/limitations/#pending-domains).
 

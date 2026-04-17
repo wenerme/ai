@@ -1,6 +1,6 @@
 ---
 title: Compression Rules settings
-description: Compression Rules support the configuration settings covered in the following sections.
+description: Available compression algorithms and content type settings for Compression Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

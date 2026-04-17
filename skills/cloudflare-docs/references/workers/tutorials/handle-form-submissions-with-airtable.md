@@ -393,8 +393,8 @@ To make an authenticated request to Airtable, you need to provide four constants
 
 Add a `vars` table at the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7836)
-* [  wrangler.toml ](#tab-panel-7837)
+* [  wrangler.jsonc ](#tab-panel-10016)
+* [  wrangler.toml ](#tab-panel-10017)
 
 JSONC
 
@@ -410,7 +410,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-16",
 
   "vars": {
 
@@ -439,7 +439,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-16"
 
 
 [vars]

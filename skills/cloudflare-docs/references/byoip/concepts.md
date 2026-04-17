@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Review the topics below for more information about concepts related to BYOIP.
+description: Core concepts for BYOIP, including prefix delegation, IRR, and RPKI.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

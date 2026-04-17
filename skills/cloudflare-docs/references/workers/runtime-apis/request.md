@@ -134,7 +134,7 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 * `cacheTtlByStatus` `{ [key: string]: number }` optional  
    * This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time and override cache instructives sent by the origin. For example: `{ "200-299": 86400, "404": 1, "500-599": 0 }`. The value can be any integer, including zero and negative integers. A value of `0` indicates that the cache asset expires immediately. Any negative value instructs Cloudflare not to cache at all. This option applies to `GET` and `HEAD` request methods only.
 * `image` Object | null optional  
-   * Enables [Image Resizing](https://developers.cloudflare.com/images/transform-images/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/transform-images/transform-via-workers/) documentation.
+   * Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
 * `polish` ` string ` optional  
    * Sets [Polish ↗](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
 * `resolveOverride` ` string ` optional  
@@ -168,8 +168,8 @@ If the response is a redirect and the redirect mode is set to `follow` (see belo
    * The redirect mode to use: `follow`, `error`, or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 * `signal` AbortSignal read-only  
    * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:  
-         * [  JavaScript ](#tab-panel-7666)  
-         * [  TypeScript ](#tab-panel-7667)  
+         * [  JavaScript ](#tab-panel-9846)  
+         * [  TypeScript ](#tab-panel-9847)  
    index.js  
    ```  
    export default {  

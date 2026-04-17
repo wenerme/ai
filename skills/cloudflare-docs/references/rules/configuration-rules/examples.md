@@ -1,5 +1,6 @@
 ---
 title: Configuration Rules examples
+description: Example Configuration Rules for adjusting zone settings per request.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

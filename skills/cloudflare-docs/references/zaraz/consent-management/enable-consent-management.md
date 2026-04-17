@@ -1,6 +1,6 @@
 ---
 title: Enable Consent Management
-description: Your Consent Management platform is ready. Your website should now display a modal asking for consent for the tools you have configured.
+description: Enable and configure Zaraz Consent Management.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

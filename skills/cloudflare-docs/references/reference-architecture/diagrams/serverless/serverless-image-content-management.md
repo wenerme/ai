@@ -50,7 +50,7 @@ The ultimate goal is to create a scalable and accessible platform for storing an
 
 ### 1\. Image servicing
 
-Clients request images with [HMAC signatures](https://developers.cloudflare.com/workers/examples/signing-requests/) and any necessary transformations. Transformation parameters can be included in the [src-set](https://developers.cloudflare.com/images/transform-images/make-responsive-images/#srcset-for-high-dpi-displays) for HTML content or directly sent alongside [HTTP requests](https://developers.cloudflare.com/images/transform-images/transform-via-url/).
+Clients request images with [HMAC signatures](https://developers.cloudflare.com/workers/examples/signing-requests/) and any necessary transformations. Transformation parameters can be included in the [src-set](https://developers.cloudflare.com/images/optimization/make-responsive-images/#srcset-for-high-dpi-displays) for HTML content or directly sent alongside [HTTP requests](https://developers.cloudflare.com/images/optimization/features/).
 
 ### 2\. Volumetric protection
 

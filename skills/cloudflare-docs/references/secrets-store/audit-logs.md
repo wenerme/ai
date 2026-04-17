@@ -1,6 +1,6 @@
 ---
 title: Audit logs
-description: Audit logs provide a comprehensive summary of changes made within your Cloudflare account. This page lists the actions that are logged for Secrets Store.
+description: Actions logged for Secrets Store operations, including create, update, and delete.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

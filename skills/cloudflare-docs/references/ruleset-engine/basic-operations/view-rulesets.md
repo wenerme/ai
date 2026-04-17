@@ -1,6 +1,6 @@
 ---
 title: View rulesets
-description: This page includes examples of the following API operations:
+description: View existing rulesets and their rules using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

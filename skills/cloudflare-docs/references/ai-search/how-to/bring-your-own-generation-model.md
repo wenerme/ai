@@ -1,6 +1,6 @@
 ---
 title: Bring your own generation model
-description: When using AI Search, AI Search leverages a Workers AI model to generate the response. If you want to use a model outside of Workers AI, you can use AI Search for search while leveraging a model outside of Workers AI to generate responses.
+description: When using AI Search, AI Search uses a Workers AI model to generate the response. If you want to use a model outside of Workers AI, you can use AI Search for search while using a different model to generate responses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -20,16 +20,16 @@ Copy page
 
 # Bring your own generation model
 
-When using `AI Search`, AI Search leverages a Workers AI model to generate the response. If you want to use a model outside of Workers AI, you can use AI Search for `search` while leveraging a model outside of Workers AI to generate responses.
+When using AI Search, AI Search uses a Workers AI model to generate the response. If you want to use a model outside of Workers AI, you can use AI Search for `search` while using a different model to generate responses.
 
-Here is an example of how you can use an OpenAI model to generate your responses. This example uses [Workers Binding](https://developers.cloudflare.com/ai-search/usage/workers-binding/).
+This example uses an OpenAI model to generate responses from AI Search results. It uses the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/).
 
 Note
 
-AI Search now supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended way is to configure your external model through AI Gateway.
+AI Search supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended approach is to configure your external model through AI Gateway.
 
-* [  JavaScript ](#tab-panel-3101)
-* [  TypeScript ](#tab-panel-3102)
+* [  JavaScript ](#tab-panel-5137)
+* [  TypeScript ](#tab-panel-5138)
 
 JavaScript
 
@@ -44,32 +44,22 @@ export default {
 
   async fetch(request, env) {
 
-    // Parse incoming url
-
     const url = new URL(request.url);
 
 
-    // Get the user query or default to a predefined one
-
-    const userQuery =
-
-      url.searchParams.get("query") ??
-
-      "How do I train a llama to deliver coffee?";
+    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
 
 
     // Search for documents in AI Search
 
-    const searchResult = await env.AI.autorag("my-rag").search({
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({
 
-      query: userQuery,
+      messages: [{ role: "user", content: userQuery }],
 
     });
 
 
-    if (searchResult.data.length === 0) {
-
-      // No matching documents
+    if (searchResult.chunks.length === 0) {
 
       return Response.json({ text: `No data found for query "${userQuery}"` });
 
@@ -78,29 +68,18 @@ export default {
 
     // Join all document chunks into a single string
 
-    const chunks = searchResult.data
+    const chunks = searchResult.chunks
 
-      .map((item) => {
+      .map((chunk) => {
 
-        const data = item.content
-
-          .map((content) => {
-
-            return content.text;
-
-          })
-
-          .join("\n\n");
-
-
-        return `<file name="${item.filename}">${data}</file>`;
+        return `<file name="${chunk.item.key}">${chunk.text}</file>`;
 
       })
 
       .join("\n\n");
 
 
-    // Send the user query + matched documents to openai for answer
+    // Send the user query + matched documents to OpenAI for answer
 
     const generateResult = await generateText({
 
@@ -126,8 +105,6 @@ export default {
 
     });
 
-
-    // Return the generated answer
 
     return Response.json({ text: generateResult.text });
 
@@ -151,7 +128,7 @@ import { generateText } from "ai";
 
 export interface Env {
 
-  AI: Ai;
+  AI_SEARCH: AiSearchNamespace;
 
   OPENAI_API_KEY: string;
 
@@ -162,32 +139,22 @@ export default {
 
   async fetch(request, env): Promise<Response> {
 
-    // Parse incoming url
-
     const url = new URL(request.url);
 
 
-    // Get the user query or default to a predefined one
-
-    const userQuery =
-
-      url.searchParams.get("query") ??
-
-      "How do I train a llama to deliver coffee?";
+    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
 
 
     // Search for documents in AI Search
 
-    const searchResult = await env.AI.autorag("my-rag").search({
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({
 
-      query: userQuery,
+      messages: [{ role: "user", content: userQuery }],
 
     });
 
 
-    if (searchResult.data.length === 0) {
-
-      // No matching documents
+    if (searchResult.chunks.length === 0) {
 
       return Response.json({ text: `No data found for query "${userQuery}"` });
 
@@ -196,29 +163,18 @@ export default {
 
     // Join all document chunks into a single string
 
-    const chunks = searchResult.data
+    const chunks = searchResult.chunks
 
-      .map((item) => {
+      .map((chunk) => {
 
-        const data = item.content
-
-          .map((content) => {
-
-            return content.text;
-
-          })
-
-          .join("\n\n");
-
-
-        return `<file name="${item.filename}">${data}</file>`;
+        return `<file name="${chunk.item.key}">${chunk.text}</file>`;
 
       })
 
       .join("\n\n");
 
 
-    // Send the user query + matched documents to openai for answer
+    // Send the user query + matched documents to OpenAI for answer
 
     const generateResult = await generateText({
 
@@ -244,8 +200,6 @@ export default {
 
     });
 
-
-    // Return the generated answer
 
     return Response.json({ text: generateResult.text });
 

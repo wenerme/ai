@@ -1,6 +1,6 @@
 ---
 title: Spectrum
-description: You can configure Spectrum with Load Balancing to bring resiliency to your TCP or UDP based applications.
+description: Use Load Balancing with Spectrum for TCP and UDP traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

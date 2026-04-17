@@ -24,7 +24,12 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 ## Builds
 
-Each time you push new code to your Git repository, Pages will build and deploy your site. You can build up to 500 times per month on the Free plan. Refer to the Pro and Business plans in [Pricing â†—](https://pages.cloudflare.com/#pricing) if you need more builds.
+Each time you push new code to your Git repository, Pages will build and deploy your site. Build limits depend on your plan:
+
+| Free             | Pro               | Business            |                      |
+| ---------------- | ----------------- | ------------------- | -------------------- |
+| Builds           | 1 build at a time | 5 concurrent builds | 20 concurrent builds |
+| Builds per month | 500               | 5,000               | 20,000               |
 
 Builds will timeout after 20 minutes. Concurrent builds are counted per account.
 

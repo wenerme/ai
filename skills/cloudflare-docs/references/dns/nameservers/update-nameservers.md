@@ -1,6 +1,6 @@
 ---
 title: Update nameservers
-description: To use Cloudflare DNS as an authoritative DNS provider - be it in a primary (full) or secondary setup -, your domain nameservers must point to nameservers that you get from your Cloudflare account. Updating your nameservers is required to activate your domain on Cloudflare and use most of our application services.
+description: Update your domain registrar to use Cloudflare nameservers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

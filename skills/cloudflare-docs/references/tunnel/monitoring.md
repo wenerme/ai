@@ -1,6 +1,6 @@
 ---
 title: Monitoring
-description: Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monitor tunnel health and resolve issues.
+description: Monitor tunnel health, connectors, and connection status.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -104,8 +104,8 @@ cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
 
 You can stream real-time logs from a running tunnel without SSH access to the server.
 
-* [ CLI ](#tab-panel-6754)
-* [ Dashboard ](#tab-panel-6755)
+* [ CLI ](#tab-panel-8912)
+* [ Dashboard ](#tab-panel-8913)
 
 The `cloudflared` daemon can stream logs from any tunnel in your account to the local command line. `cloudflared` must be installed on both your local machine and the origin server.
 

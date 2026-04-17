@@ -1,6 +1,6 @@
 ---
 title: Embed in an iFrame
-description: Because of how a waiting room tracks visitor progress, you need to specify certain cookie attributes to properly embed a waiting room in an iFrame.
+description: Embed a waiting room page inside an iFrame.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

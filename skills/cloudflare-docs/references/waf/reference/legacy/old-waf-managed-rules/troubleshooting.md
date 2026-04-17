@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot WAF managed rules (previous version)
-description: By default, WAF managed rules are fully managed via the Cloudflare dashboard and are compatible with most websites and web applications. However, false positives and false negatives may occur:
+description: Troubleshoot issues with the previous version of WAF managed rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

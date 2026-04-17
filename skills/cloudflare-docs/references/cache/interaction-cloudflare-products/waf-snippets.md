@@ -1,10 +1,14 @@
 ---
 title: Control cache access with WAF and Snippets
-description: To limit access to the public bucket created for caching content, you can use Cloudflare's WAF. The WAF provides an additional security layer to filter requests and ensure that only authorized traffic reaches your bucket.
+description: Control cache access using WAF custom rules and Snippets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ S3 ](https://developers.cloudflare.com/search/?tags=S3) 
 
 Was this helpful?
 

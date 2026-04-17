@@ -1,6 +1,6 @@
 ---
 title: Phases list
-description: The following tables list the phases of Cloudflare products powered by the Ruleset Engine, in the order those phases are executed. Some products such as the Cloudflare Web Application Firewall have more than one associated phase.
+description: Complete list of phases available in the Ruleset Engine.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

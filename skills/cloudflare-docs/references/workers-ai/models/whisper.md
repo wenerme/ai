@@ -31,8 +31,8 @@ Whisper is a general-purpose speech recognition model. It is trained on a large 
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3801)
-* [  curl ](#tab-panel-3802)
+* [  TypeScript ](#tab-panel-3805)
+* [  curl ](#tab-panel-3806)
 
 ```
 
@@ -100,8 +100,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3805)
-* [ Output ](#tab-panel-3806)
+* [ Input ](#tab-panel-3809)
+* [ Output ](#tab-panel-3810)
 
 Option 1
 
@@ -113,7 +113,7 @@ object
 
 text
 
-`string`requiredThe transcription
+`string`The transcription
 
 word\_count
 
@@ -129,8 +129,8 @@ vtt
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3803)
-* [ Output ](#tab-panel-3804)
+* [ Input ](#tab-panel-3807)
+* [ Output ](#tab-panel-3808)
 
 ```
 

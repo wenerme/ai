@@ -1,6 +1,6 @@
 ---
 title: Plans
-description: The features available for a waiting room depend on your plan type. You can only have one plan per zone.
+description: Compare Waiting Room features available on each Cloudflare plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

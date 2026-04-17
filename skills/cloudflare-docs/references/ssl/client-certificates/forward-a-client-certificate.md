@@ -1,6 +1,6 @@
 ---
 title: Forward certificate to server
-description: RFC 9440 defines the Client-Cert and Client-Cert-Chain HTTP header fields for passing client certificate information to origin servers. You can construct these headers using request header modification rules with the following Ruleset Engine fields:
+description: Forward client certificate details to your origin server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

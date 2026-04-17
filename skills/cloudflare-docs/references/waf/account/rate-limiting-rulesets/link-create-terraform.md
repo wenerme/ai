@@ -1,5 +1,6 @@
 ---
 title: Create using Terraform
+description: Create account-level rate limiting rulesets using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

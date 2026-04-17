@@ -113,6 +113,14 @@ Choose `low`, `medium`, or `high` to trade off speed and depth based on the task
 
   </BentoContent>
 
+  <BentoContent href="/codex/ide/features#image-generation">
+
+### Image generation
+
+Generate or edit images without leaving your editor, and use reference assets when you need iteration.
+
+  </BentoContent>
+
   <BentoContent href="/codex/ide/features#choose-an-approval-mode">
 
 ### Choose an approval mode

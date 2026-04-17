@@ -1,5 +1,6 @@
 ---
 title: Content optimizations
+description: Optimize content delivery with compression, fonts, and prefetching.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

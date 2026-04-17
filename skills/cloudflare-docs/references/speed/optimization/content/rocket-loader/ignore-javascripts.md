@@ -1,6 +1,6 @@
 ---
 title: Ignore JavaScripts
-description: You can have Rocket Loader ignore individual scripts by adding the data-cfasync=&#34;false&#34; attribute to the relevant script tag:
+description: Exclude specific scripts from Rocket Loader optimization.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Load Balancing with the China Network
-description: To enable load balancers to be deployed to the China Network, your zone will need to meet the following two criteria:
+description: Use Load Balancing with the China Network.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

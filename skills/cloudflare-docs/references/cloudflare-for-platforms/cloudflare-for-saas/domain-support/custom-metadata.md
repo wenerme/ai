@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/dev-products-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JSON ](https://developers.cloudflare.com/search/?tags=JSON)[ TypeScript ](https://developers.cloudflare.com/search/?tags=TypeScript) 
+
 Was this helpful?
 
 YesNo
@@ -93,8 +97,8 @@ The metadata object will be accessible on each request using the `request.cf.hos
 
 In the example below we will use the user\_id in the Worker that was submitted using the API call above `"custom_metadata":{"customer_id":"12345","redirect_to_https": true,"security_tag":"low"}`, and set a request header to send the `customer_id` to the origin:
 
-* [  JavaScript ](#tab-panel-3366)
-* [  TypeScript ](#tab-panel-3367)
+* [  JavaScript ](#tab-panel-5470)
+* [  TypeScript ](#tab-panel-5471)
 
 JavaScript
 

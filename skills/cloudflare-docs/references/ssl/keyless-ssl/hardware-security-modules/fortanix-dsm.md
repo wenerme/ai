@@ -1,6 +1,6 @@
 ---
 title: Fortanix Data Security Manager
-description: You can use Cloudflare Keyless SSL with Fortanix Data Security Manager (DSM), a FIPS 140-2 Level 3 certified implementation.
+description: Configure Keyless SSL with Fortanix Data Security Manager.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

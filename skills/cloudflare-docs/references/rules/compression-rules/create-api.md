@@ -1,6 +1,6 @@
 ---
 title: Create a compression rule via API
-description: Use the Rulesets API to create a compression rule via API.
+description: Create compression rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

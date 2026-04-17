@@ -1,6 +1,6 @@
 ---
 title: Gateway status
-description: Once you create a gateway, it can have one of several statuses.
+description: Web3 gateway status values and their meanings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

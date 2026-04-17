@@ -1,6 +1,6 @@
 ---
 title: DNSLink gateways
-description: When you set up a gateway with a DNSLink record, that gateway is restricted to a particular piece of content (either a specific Content Identifier (CID) or an Interplanetary Name Service (IPNS) hostname).
+description: Use DNSLink to map domain names to IPFS content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

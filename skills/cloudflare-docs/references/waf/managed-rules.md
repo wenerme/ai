@@ -1,6 +1,6 @@
 ---
 title: Managed Rules
-description: Cloudflare provides pre-configured managed rulesets that protect against web application exploits such as the following:
+description: Deploy pre-configured managed rulesets to protect against common attacks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

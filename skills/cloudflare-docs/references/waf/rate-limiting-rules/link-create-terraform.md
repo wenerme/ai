@@ -1,5 +1,6 @@
 ---
 title: Create using Terraform
+description: Create rate limiting rules using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

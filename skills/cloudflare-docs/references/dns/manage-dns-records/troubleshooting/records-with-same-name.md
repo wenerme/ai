@@ -1,6 +1,6 @@
 ---
 title: Records with the same name
-description: Occasionally, Cloudflare will not allow you to create new DNS records with the same value in the Name field.
+description: Handle multiple DNS records with the same name.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

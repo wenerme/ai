@@ -1,5 +1,6 @@
 ---
 title: Create an IP access rule
+description: Create IP Access rules to allow, block, or challenge by IP.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -19,9 +20,9 @@ Recommendation: Use custom rules instead
 
 Cloudflare recommends that you create [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of IP Access rules to perform IP-based or geography-based blocking (geoblocking).
 
-* [  New dashboard ](#tab-panel-6892)
-* [ Old dashboard ](#tab-panel-6893)
-* [ API ](#tab-panel-6894)
+* [  New dashboard ](#tab-panel-9122)
+* [ Old dashboard ](#tab-panel-9123)
+* [ API ](#tab-panel-9124)
 
 Note
 

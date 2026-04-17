@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Load Balancing
-description: Cloudflare Load Balancing distributes traffic across your endpoints, which reduces endpoint strain and latency and improves the experience for end users.
+description: Distribute traffic across origin servers for availability and performance.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

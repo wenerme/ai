@@ -1,6 +1,6 @@
 ---
 title: Blocking Triggers
-description: Blocking Triggers are triggers that instead of being used to define when to start an action, are used to define when to not start an action. You may need to block one or more actions in a tool from firing when a specific condition arises. For these cases, you can set Blocking Triggers.
+description: Prevent triggers from firing under specific conditions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

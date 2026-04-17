@@ -1,6 +1,6 @@
 ---
 title: Observatory (beta)
-description: Observatory uses synthetic tests and real user data from browsers to assess the performance of your website. These data sources produce metrics that provide different types of insights into your website’s performance. Cloudflare then uses the analysis run by Observatory to recommend optimizations with the tools that best suit your performance issues.
+description: Test and monitor your website performance with Cloudflare Observatory.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

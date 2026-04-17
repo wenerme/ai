@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Tunnel
-description: Through an integration with Cloudflare Tunnel, you can send traffic to a key server through a secure channel and avoid exposing your key server to the public Internet.
+description: Deploy Keyless SSL with Cloudflare Tunnel for private connectivity.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -47,17 +47,15 @@ First, install `cloudflared` on your key server.
 
 This process differs depending on whether you are using the [command line](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/) or the [Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
 
-  
-## 2\. Create a Tunnel
+## 2\. Create a tunnel and add a route
 
 Then, create a Cloudflare Tunnel.
 
 This process differs depending on whether you are using the [command line](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/) or the [Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
 
-  
-In these steps, you should choose the option to **Connect a network** and use the private IP address of your key server.
+During tunnel creation, go to the **CIDR** tab and enter the private IP address of your key server. You can also [add a CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#add-a-cidr-route) after creating the tunnel.
 
-After you create the Tunnel, use the Cloudflare API to [List tunnel routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/), saving the following values for a future step:
+After you create the tunnel, use the Cloudflare API to [List tunnel routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/), saving the following values for a future step:
 
 * `"virtual_network_id"`
 * `"network"`

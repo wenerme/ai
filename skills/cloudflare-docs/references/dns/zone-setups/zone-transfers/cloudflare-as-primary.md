@@ -1,6 +1,6 @@
 ---
 title: Cloudflare as Primary
-description: With outgoing zone transfers, you can use Cloudflare as your primary DNS provider and configure one or more peer DNS servers as secondary DNS providers.
+description: Use Cloudflare as the primary DNS with zone transfers to secondaries.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -41,6 +41,12 @@ Select **View DNS records** for a list of the required `MX` and sender policy fr
 
 If you are having trouble with your account's DNS records, refer to the [Troubleshooting](https://developers.cloudflare.com/email-routing/troubleshooting/) section.
 
+## \_dc-mx DNS responses
+
+If you see a DNS response with a `_dc-mx` prefix (for example, `_dc-mx.a1b2c3d4e5f6.example.com`), Cloudflare inserted it automatically. This response appears when your `MX` record points to a hostname that is [proxied](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare. The `_dc-mx` target itself resolves directly to your origin IP address so that mail traffic bypasses the proxy and reaches your mail server.
+
+For more information, refer to [\_dc-mx and dc-##### subdomains](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/#dc--and-%5Fdc-mx-subdomains).
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/email-routing/","name":"Email Routing"}},{"@type":"ListItem","position":3,"item":{"@id":"/email-routing/setup/","name":"Setup"}},{"@type":"ListItem","position":4,"item":{"@id":"/email-routing/setup/email-routing-dns-records/","name":"DNS records"}}]}
 ```

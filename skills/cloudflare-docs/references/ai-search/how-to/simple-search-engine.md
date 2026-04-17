@@ -1,6 +1,6 @@
 ---
 title: Create a simple search engine
-description: By using the search method, you can implement a simple but fast search engine. This example uses Workers Binding, but can be easily adapted to use the REST API instead.
+description: Use the search() method to implement a simple search engine. This example uses the Workers binding, but can be adapted to use the REST API instead.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,15 +16,15 @@ Copy page
 
 # Create a simple search engine
 
-By using the `search` method, you can implement a simple but fast search engine. This example uses [Workers Binding](https://developers.cloudflare.com/ai-search/usage/workers-binding/), but can be easily adapted to use the [REST API](https://developers.cloudflare.com/ai-search/usage/rest-api/) instead.
+Use the `search()` method to implement a simple search engine. This example uses the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/), but can be adapted to use the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) instead.
 
-To replicate this example remember to:
+To replicate this example:
 
-* Disable `rewrite_query`, as you want to match the original user query
-* Configure your AI Search to have small chunk sizes, usually 256 tokens is enough
+* Disable query rewriting so that the original user query is matched directly
+* Configure your AI Search instance to have small chunk sizes (256 tokens is usually enough)
 
-* [  JavaScript ](#tab-panel-3103)
-* [  TypeScript ](#tab-panel-3104)
+* [  JavaScript ](#tab-panel-5145)
+* [  TypeScript ](#tab-panel-5146)
 
 JavaScript
 
@@ -36,24 +36,19 @@ export default {
 
     const url = new URL(request.url);
 
-    const userQuery =
+    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
 
-      url.searchParams.get("query") ??
 
-      "How do I train a llama to deliver coffee?";
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({
 
-    const searchResult = await env.AI.autorag("my-rag").search({
-
-      query: userQuery,
-
-      rewrite_query: false,
+      messages: [{ role: "user", content: userQuery }],
 
     });
 
 
     return Response.json({
 
-      files: searchResult.data.map((obj) => obj.filename),
+      files: searchResult.chunks.map((chunk) => chunk.item.key),
 
     });
 
@@ -72,7 +67,7 @@ TypeScript
 
 export interface Env {
 
-  AI: Ai;
+  AI_SEARCH: AiSearchNamespace;
 
 }
 
@@ -83,24 +78,19 @@ export default {
 
     const url = new URL(request.url);
 
-    const userQuery =
+    const userQuery = url.searchParams.get("query") ?? "What is Cloudflare?";
 
-      url.searchParams.get("query") ??
 
-      "How do I train a llama to deliver coffee?";
+    const searchResult = await env.AI_SEARCH.get("my-instance").search({
 
-    const searchResult = await env.AI.autorag("my-rag").search({
-
-      query: userQuery,
-
-      rewrite_query: false,
+      messages: [{ role: "user", content: userQuery }],
 
     });
 
 
     return Response.json({
 
-      files: searchResult.data.map((obj) => obj.filename),
+      files: searchResult.chunks.map((chunk) => chunk.item.key),
 
     });
 

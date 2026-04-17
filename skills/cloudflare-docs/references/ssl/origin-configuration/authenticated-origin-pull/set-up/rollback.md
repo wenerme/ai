@@ -1,6 +1,6 @@
 ---
 title: Roll back per-hostname AOP
-description: If you need to disable or remove your per-hostname Authenticated Origin Pulls configuration, follow these steps.
+description: Roll back per-hostname Authenticated Origin Pulls to zone-level settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

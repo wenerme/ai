@@ -1,6 +1,6 @@
 ---
 title: Cloudforce One
-description: Cloudforce One is Cloudflare's Threat Intelligence Platform (TIP). It collects and correlates threat data from Cloudflare telemetry, then surfaces that data as visualizations, automated rules, and analyst-reviewed intelligence.
+description: Access Cloudflare threat intelligence, reports, and automated security rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

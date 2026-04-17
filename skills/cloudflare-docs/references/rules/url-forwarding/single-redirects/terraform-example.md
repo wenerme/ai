@@ -1,6 +1,6 @@
 ---
 title: Create a redirect rule using Terraform
-description: The following example defines a single redirect rule for a zone using Terraform. The rule creates a static URL redirect for visitors requesting the contacts page using an old URL.
+description: Create Single Redirect rules using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

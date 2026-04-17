@@ -1,6 +1,6 @@
 ---
 title: Managed Transforms
-description: Managed Transforms allow you to perform common adjustments to HTTP request and response headers with pre-built, one-step configurations. The available adjustments include:
+description: Pre-built Transform Rules managed by Cloudflare for common use cases.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

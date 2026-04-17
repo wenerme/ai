@@ -1,6 +1,6 @@
 ---
 title: Phases
-description: A phase defines a stage in the life of a request where you can execute rulesets. Phases are defined by Cloudflare and cannot be modified.
+description: How phases organize rule execution in the Ruleset Engine request lifecycle.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

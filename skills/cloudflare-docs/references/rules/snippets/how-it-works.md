@@ -1,6 +1,6 @@
 ---
 title: How Snippets work
-description: Cloudflare Snippets are executed based on rules defined within your zone. Here is how the process works:
+description: How Snippets execute JavaScript at the edge for matching requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

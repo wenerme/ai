@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: You can install cloudflared as a system service on macOS.
+description: Install and run cloudflared as a launch agent on macOS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

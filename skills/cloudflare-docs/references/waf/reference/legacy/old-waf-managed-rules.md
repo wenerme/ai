@@ -1,6 +1,6 @@
 ---
 title: WAF managed rules (previous version)
-description: Managed rules, a feature of Cloudflare WAF (Web Application Firewall), identifies and removes suspicious activity for HTTP GET and POST requests.
+description: Documentation for the previous version of WAF managed rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

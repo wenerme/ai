@@ -1,6 +1,6 @@
 ---
 title: Create a response header transform rule via API
-description: Use the Rulesets API to create Response Header Transform Rules via API. Refer to the Rules examples gallery for common use cases.
+description: Create response header modification rules using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

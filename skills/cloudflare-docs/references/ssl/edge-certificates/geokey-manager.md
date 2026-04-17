@@ -1,6 +1,6 @@
 ---
 title: Geo Key Manager
-description: Geo Key Manager allows customers to store and manage the encryption keys for their domains in different geographic locations so they can meet compliance regulations and keep data secure.
+description: Control the geographic storage location of your private SSL/TLS keys.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

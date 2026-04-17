@@ -1,6 +1,6 @@
 ---
 title: Scrape Shield
-description: Scrape Shield is a collection of settings meant to protect your site's content.
+description: Protect your site content from scraping and unauthorized use.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

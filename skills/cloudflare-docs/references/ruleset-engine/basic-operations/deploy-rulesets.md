@@ -1,6 +1,6 @@
 ---
 title: Deploy rulesets
-description: Use the Rulesets API to deploy a ruleset. To deploy a ruleset, add a rule with &#34;action&#34;: &#34;execute&#34; to a phase entry point ruleset, specifying the ruleset ID to execute as an action parameter. Use a separate rule for each ruleset you want to deploy.
+description: Deploy rulesets to a phase entry point using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

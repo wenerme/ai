@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot missing images
-description: If images are missing from your website, other Cloudflare features may be interfering with those images.
+description: Fix missing or broken images after enabling image optimization.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

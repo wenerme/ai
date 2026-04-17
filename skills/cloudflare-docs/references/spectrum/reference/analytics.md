@@ -1,6 +1,6 @@
 ---
 title: Analytics
-description: Cloudflare measures the following metrics for every connection.
+description: Metrics tracked for every Spectrum connection, including bytes and connection duration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

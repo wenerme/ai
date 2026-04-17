@@ -1,6 +1,6 @@
 ---
 title: Rate limiting parameters
-description: The available rate limiting rule parameters are described in the following sections.
+description: Configurable parameters for rate limiting rules, including expressions and characteristics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

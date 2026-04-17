@@ -1,6 +1,6 @@
 ---
 title: Add an exception via API
-description: To add a managed rules exception using the API, create a rule with skip action in a phase entry point ruleset of the http_request_firewall_managed phase. You can define exceptions at the account level and at the zone level. Exceptions are also called skip rules.
+description: Create WAF exceptions using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

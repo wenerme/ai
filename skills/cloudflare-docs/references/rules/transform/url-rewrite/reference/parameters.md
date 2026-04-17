@@ -1,6 +1,6 @@
 ---
 title: URL rewrite parameters
-description: Static and dynamic URL rewrites have different parameters:
+description: Configurable parameters for URL rewrite rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

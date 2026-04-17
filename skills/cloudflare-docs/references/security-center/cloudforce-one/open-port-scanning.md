@@ -1,6 +1,6 @@
 ---
 title: Open Port Scanning
-description: Open Port Scanning allows Magic Transit and Bring your Own IPs users to efficiently monitor IP ranges for security vulnerabilities. This API enables users to scan their designated IP ranges, detect any open ports, and receive daily notifications regarding newly opened ports.
+description: Scan your IP ranges for open ports and receive daily notifications about changes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

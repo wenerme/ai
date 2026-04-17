@@ -1,6 +1,6 @@
 ---
 title: Origin Rules FAQ
-description: Below you will find answers to the most commonly asked questions regarding Origin Rules.
+description: Answers to common questions about origin rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

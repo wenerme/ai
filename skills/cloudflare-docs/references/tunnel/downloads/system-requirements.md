@@ -1,6 +1,6 @@
 ---
 title: System requirements
-description: cloudflared is lightweight enough to run on a Raspberry Pi or a data center server. Tunnel throughput is primarily limited by the number of ports configured in system software, not hardware.
+description: System requirements for running cloudflared.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -24,8 +24,8 @@ Run a `cloudflared` [replica](https://developers.cloudflare.com/tunnel/configura
 
 ## Port configuration
 
-* [ Linux ](#tab-panel-6688)
-* [ Windows ](#tab-panel-6689)
+* [ Linux ](#tab-panel-8904)
+* [ Windows ](#tab-panel-8905)
 
 To increase the number of ports available to `cloudflared` on Linux:
 

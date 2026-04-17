@@ -29,12 +29,6 @@ Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, an
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                   |
 | More information  | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=alibaba/qwen3-max) 
-
 ## Usage
 
 TypeScript
@@ -343,23 +337,23 @@ response\_format
 
 id
 
-`string`required
+`string`
 
 object
 
-`string`required
+`string`
 
 created
 
-`number`required
+`number`
 
 model
 
-`string`required
+`string`
 
 ▶choices\[\]
 
-`array`required
+`array`
 
 ▶usage{}
 

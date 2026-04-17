@@ -1,6 +1,6 @@
 ---
 title: Retention vs Freshness (TTL)
-description: In the context of Cloudflare CDN (Content Delivery Network), retention and freshness refer to two separate but related concepts. For an object in cache, freshness is how long it should be considered valid without consulting its source, while retention refers to how long it stays in cache before being removed.
+description: How cache retention and TTL freshness differ in Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

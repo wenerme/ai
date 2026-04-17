@@ -30,12 +30,6 @@ Fast, affordable version of GPT-4.1 with a million-token context window.
 | Terms and License                                                          | [link ↗](https://openai.com/policies/)      |
 | More information                                                           | [link ↗](https://openai.com/index/gpt-4-1/) |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=openai/gpt-4.1-mini) 
-
 ## Usage
 
 TypeScript
@@ -291,8 +285,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-166)
-* [ Output ](#tab-panel-167)
+* [ Input ](#tab-panel-170)
+* [ Output ](#tab-panel-171)
 
 ▶messages\[\]
 
@@ -344,23 +338,23 @@ response\_format
 
 id
 
-`string`required
+`string`
 
 object
 
-`string`required
+`string`
 
 created
 
-`number`required
+`number`
 
 model
 
-`string`required
+`string`
 
 ▶choices\[\]
 
-`array`required
+`array`
 
 ▶usage{}
 
@@ -368,8 +362,8 @@ model
 
 ## API Schemas
 
-* [ Input ](#tab-panel-164)
-* [ Output ](#tab-panel-165)
+* [ Input ](#tab-panel-168)
+* [ Output ](#tab-panel-169)
 
 ```
 

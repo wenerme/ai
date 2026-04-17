@@ -1,5 +1,6 @@
 ---
 title: Track
+description: Send custom tracking events with the Zaraz Web API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

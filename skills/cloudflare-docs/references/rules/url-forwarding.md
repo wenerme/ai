@@ -1,6 +1,6 @@
 ---
 title: Redirects
-description: URL forwarding, also known as URL redirection, navigates the user from a source URL to a target URL with a specific HTTP status code.
+description: Redirect visitors to different URLs with Single Redirects and Bulk Redirects.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

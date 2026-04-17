@@ -1,6 +1,6 @@
 ---
 title: How endpoints and pools become unhealthy
-description: When we talk about dynamic load balancing, that means your load balancer only directs requests to endpoints that can handle the traffic.
+description: How endpoints and pools become unhealthy.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

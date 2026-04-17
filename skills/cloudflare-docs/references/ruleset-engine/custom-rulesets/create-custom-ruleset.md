@@ -1,6 +1,6 @@
 ---
 title: Create a custom ruleset
-description: Use the Create an account or zone ruleset operation to create a custom ruleset, making sure that you:
+description: Create a custom ruleset with the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

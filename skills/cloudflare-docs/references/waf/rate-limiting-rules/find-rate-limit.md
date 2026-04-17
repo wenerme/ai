@@ -1,6 +1,6 @@
 ---
 title: Find appropriate rate limit
-description: The Request rate analysis tab in Security Analytics displays data on the request rate for traffic matching the selected filters and time period. Use this tab to determine the most appropriate rate limit for incoming traffic matching the applied filters.
+description: Use Security Analytics request rate data to determine an appropriate rate limit.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

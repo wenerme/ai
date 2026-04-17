@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Use the following resources to help you troubleshoot issues with Page Rules.
+description: Troubleshoot common Page Rules issues and errors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

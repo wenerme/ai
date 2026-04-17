@@ -1,6 +1,6 @@
 ---
 title: Available fields and functions
-description: The available fields when setting an HTTP response header value using an expression are the following:
+description: Available fields and functions for response header modification rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Create a rate limiting rule via API
-description: Use the Rulesets API to create a rate limiting rule via API at the zone level.
+description: Create zone-level rate limiting rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

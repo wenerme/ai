@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: You can now control how Cloudflare handles origin responses without changing your origin. Cache Response Rules let you modify Cache-Control directives, manage cache tags, and strip headers like Set-Cookie from origin responses before they reach Cloudflare's cache. Whether traffic is cached or passed through dynamically, these rules give you control over origin response behavior that was previously out of reach.
+description: Track the latest updates and changes to Cloudflare Cache features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

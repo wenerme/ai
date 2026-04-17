@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Security Center scans your Cloudflare account configuration and identifies potential security risks, misconfigurations, and vulnerabilities across your domains. This guide covers the initial setup.
+description: Enable Security Insights to scan your account for misconfigurations and vulnerabilities.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

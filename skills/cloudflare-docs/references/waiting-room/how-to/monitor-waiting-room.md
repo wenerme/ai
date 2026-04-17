@@ -1,6 +1,6 @@
 ---
 title: Monitor waiting room status
-description: You can monitor the status of your waiting rooms using the dashboard or the API.
+description: Monitor active users and queue status in real time.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

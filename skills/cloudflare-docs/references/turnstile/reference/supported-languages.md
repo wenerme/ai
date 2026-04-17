@@ -1,6 +1,6 @@
 ---
 title: Supported languages
-description: Turnstile supports auto (default), which uses the visitor's browser language if it is supported. You can also explicitly set the widget's language using the client-side configuration attribute to one listed on the table below:
+description: Languages supported by Cloudflare Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

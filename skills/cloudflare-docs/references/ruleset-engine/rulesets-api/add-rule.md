@@ -1,6 +1,6 @@
 ---
 title: Add a rule to a ruleset
-description: Adds a single rule to an existing ruleset. Use this endpoint to add a rule without having to include all the existing ruleset rules in the request.
+description: Add a single rule to an existing ruleset using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

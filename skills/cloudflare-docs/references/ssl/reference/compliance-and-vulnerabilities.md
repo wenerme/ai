@@ -1,6 +1,6 @@
 ---
 title: PCI compliance and vulnerabilities mitigation
-description: Both TLS 1.0 and TLS 1.1 are insufficient for protecting information due to known vulnerabilities. Specifically for Cloudflare customers, the primary impact of PCI is that TLS 1.0 and TLS 1.1 are insufficient to secure payment card related traffic.
+description: PCI compliance status and TLS vulnerability mitigations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

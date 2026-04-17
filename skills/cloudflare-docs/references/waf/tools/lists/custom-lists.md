@@ -1,6 +1,6 @@
 ---
 title: Custom lists
-description: A custom list contains one or more items of the same type (for example, IP addresses, hostnames, or ASNs) that you can reference collectively, by name, in rule expressions.
+description: Create custom lists of IPs, hostnames, or ASNs for use in rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

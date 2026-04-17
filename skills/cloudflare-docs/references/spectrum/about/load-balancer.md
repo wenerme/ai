@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Load Balancing
-description: You can configure Spectrum with Cloudflare Load Balancing to provide TCP healthchecks, failover, and traffic steering, bringing resiliency to your Spectrum applications.
+description: Add TCP health checks, failover, and traffic steering to Spectrum applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

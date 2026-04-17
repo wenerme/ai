@@ -1,6 +1,6 @@
 ---
 title: Google tag gateway for advertisers
-description: Google tag gateway for advertisers allows website owners using Cloudflare as a CDN to get the most out of ad measurement tools with just a few clicks. It allows you to deploy Google scripts using your own domain, enhancing data privacy and improving signal measurement recovery. Unlike standard setups where tags are requested from a Google domain, Google tag gateway for advertisers loads the tag from your domain and sends measurement events to your domain, where they are forwarded to Google.
+description: Deploy Google measurement tags from your domain for improved ad signal recovery.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -48,6 +48,16 @@ Your Cloudflare dashboard user must have one of the following [Account Roles](ht
 1. Once you click **Save**, Google tag gateway for advertisers will be enabled on your zone. If you already have a GTM script on your website, this First Party Tag will override the existing script.
 
 Now that you have authenticated into your Cloudflare account and configured GTM in first-party mode, your Google Tags will be loaded using `https://your-domain/measurement-path/...`and subsequent measurement requests will be served by Cloudflare.
+
+## Zone-level configuration
+
+Google tag gateway for advertisers is configured at the zone level. When you enable it for a zone (for example, `example.com`), it applies to all hostnames and subdomains within that zone, including custom hostnames. Currently, it is not possible to enable or disable the feature for individual subdomains independently. [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/) cannot be used to control or disable the tag injection on specific subdomains.
+
+### Handle subdomain-specific logic with triggers
+
+If you need different tag behavior for specific subdomains (for example, only firing certain tags on `shop.example.com`), you can use [Google Tag Manager triggers ↗](https://support.google.com/tagmanager/answer/7679316) to control when tags fire. For example, you can create a trigger condition like **Page Hostname** equals `shop.example.com` to restrict a tag to a specific subdomain.
+
+This approach lets you maintain a single zone-wide Google tag gateway configuration while still customizing tag behavior per subdomain.
 
 ## Related resources
 

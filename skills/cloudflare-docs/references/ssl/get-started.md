@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Follow the steps below to enable SSL/TLS protection for your application.
+description: Set up SSL/TLS encryption between visitors, Cloudflare, and your origin server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

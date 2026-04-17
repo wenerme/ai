@@ -1,6 +1,6 @@
 ---
 title: Regions API
-description: Cloudflare’s Load Balancing Regions API has several uses:
+description: Map geographic regions to pools using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -63,8 +63,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-52)
-* [ Output ](#tab-panel-53)
+* [ Input ](#tab-panel-56)
+* [ Output ](#tab-panel-57)
 
 ```
 
@@ -133,8 +133,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-54)
-* [ Output ](#tab-panel-55)
+* [ Input ](#tab-panel-58)
+* [ Output ](#tab-panel-59)
 
 ```
 
@@ -209,8 +209,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-56)
-* [ Output ](#tab-panel-57)
+* [ Input ](#tab-panel-60)
+* [ Output ](#tab-panel-61)
 
 ```
 
@@ -287,8 +287,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-58)
-* [ Output ](#tab-panel-59)
+* [ Input ](#tab-panel-62)
+* [ Output ](#tab-panel-63)
 
 ```
 
@@ -367,8 +367,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-60)
-* [ Output ](#tab-panel-61)
+* [ Input ](#tab-panel-64)
+* [ Output ](#tab-panel-65)
 
 ```
 
@@ -408,8 +408,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-64)
-* [ Output ](#tab-panel-65)
+* [ Input ](#tab-panel-68)
+* [ Output ](#tab-panel-69)
 
 prompt
 
@@ -441,12 +441,12 @@ disable\_safety\_checker
 
 ▶images\[\]
 
-`array`requiredminItems: 1format: uri
+`array`minItems: 1format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-62)
-* [ Output ](#tab-panel-63)
+* [ Input ](#tab-panel-66)
+* [ Output ](#tab-panel-67)
 
 ```
 

@@ -1,5 +1,6 @@
 ---
 title: API
+description: API endpoints for namespaces, epochs, and auditor information.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Create a rule via API
-description: Use the Rulesets API to create a Cache Response Rule via API. To configure the Cloudflare API, refer to the API documentation.
+description: Create cache response rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

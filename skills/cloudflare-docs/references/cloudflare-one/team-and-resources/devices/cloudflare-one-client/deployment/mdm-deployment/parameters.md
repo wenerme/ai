@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ XML ](https://developers.cloudflare.com/search/?tags=XML)[ Post-quantum ](https://developers.cloudflare.com/search/?tags=Post-quantum) 
+
 Was this helpful?
 
 YesNo

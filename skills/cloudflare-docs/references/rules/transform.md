@@ -1,6 +1,6 @@
 ---
 title: Transform Rules
-description: Transform Rules allow you to adjust the URI path, query string, and HTTP headers of requests and responses on the Cloudflare global network.
+description: Modify request URLs, headers, and response headers with Transform Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

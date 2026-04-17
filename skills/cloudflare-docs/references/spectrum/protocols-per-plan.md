@@ -1,6 +1,6 @@
 ---
 title: Protocols per plan
-description: On this table, you have information about which protocols are available per plan.
+description: Supported protocols for Spectrum applications by Cloudflare plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

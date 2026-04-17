@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Review the reference content to learn more about specific caching functionality.
+description: Reference information for Cloudflare Cache.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

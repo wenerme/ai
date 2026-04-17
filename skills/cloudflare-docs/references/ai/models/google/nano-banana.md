@@ -222,8 +222,8 @@ Response200 ![High Resolution Landscape](https://replicate.delivery/xezq/Rh5vNXY
 
 ## Parameters
 
-* [ Input ](#tab-panel-98)
-* [ Output ](#tab-panel-99)
+* [ Input ](#tab-panel-102)
+* [ Output ](#tab-panel-103)
 
 prompt
 
@@ -247,12 +247,12 @@ image\_size
 
 image
 
-`string`requiredformat: uri
+`string`format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-96)
-* [ Output ](#tab-panel-97)
+* [ Input ](#tab-panel-100)
+* [ Output ](#tab-panel-101)
 
 ```
 

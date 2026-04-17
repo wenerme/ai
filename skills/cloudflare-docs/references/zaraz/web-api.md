@@ -1,5 +1,6 @@
 ---
 title: Web API
+description: Interact with Zaraz from client-side JavaScript.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

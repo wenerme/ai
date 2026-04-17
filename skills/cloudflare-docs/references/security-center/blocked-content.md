@@ -1,6 +1,6 @@
 ---
 title: Blocked Content
-description: If your domain has content that has been blocked, Blocked Content on the dashboard gives you the ability to request the Trust and Safety team to remove a block.
+description: Request removal of Trust and Safety content blocks on your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

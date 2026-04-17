@@ -1,6 +1,6 @@
 ---
 title: Universal Path gateway
-description: When you set up a Universal Path gateway — a gateway without a DNSLink record — you are creating an unrestricted gateway that allows users to access any content hosted on the IPFS network.
+description: Access any IPFS content through the Universal Path gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

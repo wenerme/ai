@@ -1,6 +1,6 @@
 ---
 title: Page load time
-description: Page load time summary gives you an overview of how long your web page takes to load, broken down by area. To access Page load time:
+description: Page load time metrics collected by Web Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

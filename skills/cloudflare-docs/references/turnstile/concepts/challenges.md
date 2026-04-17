@@ -1,5 +1,6 @@
 ---
 title: Cloudflare Challenges
+description: How Cloudflare Challenges verify visitors in Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

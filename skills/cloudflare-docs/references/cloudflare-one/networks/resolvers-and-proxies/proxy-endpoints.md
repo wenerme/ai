@@ -90,8 +90,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-3635)
-* [ API ](#tab-panel-3636)
+* [ Dashboard ](#tab-panel-5761)
+* [ API ](#tab-panel-5762)
 
 Authorization endpoint
 
@@ -302,23 +302,21 @@ To use Gateway HTTP policies with proxy endpoints, you must [install a Cloudflar
 
 ### 3b. Configure browser to use PAC file
 
-All major browsers support PAC files. You can configure individual browsers, or you can configure system settings that apply to all browsers on the device. Multiple devices can call the same PAC file as long as their source IP addresses were included in the proxy endpoint configuration.
+All major browsers support PAC files. You can configure individual browsers, or you can configure system-level proxy settings that apply to all browsers on the device. Multiple devices can call the same PAC file as long as their source IP addresses were included in the proxy endpoint configuration.
+
+For detailed, OS-specific instructions (including Windows, macOS, Linux, iOS, Android, ChromeOS, and enterprise deployment), refer to [Configure a PAC file on your device](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/).
 
 Chromium-based browsers
 
-Chromium-based browsers (such as Google Chrome, Microsoft Edge, and Brave) rely on your operating system's proxy server settings. To configure your browser to use Gateway with PAC files, refer to the [macOS ↗](https://support.apple.com/guide/mac-help/mchlp2591/mac) or [Windows ↗](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1) documentation.
+Chromium-based browsers (such as Google Chrome, Microsoft Edge, and Brave) rely on your operating system's proxy server settings. Configure the PAC file URL in your [operating system proxy settings](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#configure-system-proxy-settings).
 
 Mozilla Firefox
 
-1. In Firefox, go to **Settings** and scroll down to **Network Settings**.
-2. Select **Settings**.
-3. Select **Automatic proxy configuration URL**.
-4. Enter the URL where your PAC file is hosted, for example `https://proxy-pac.cflr.workers.dev/3ele0ss56t.pac`.
-5. Select **OK**. HTTP traffic from Firefox is now being filtered by Gateway.
+Firefox uses its own proxy settings and does not inherit the operating system proxy configuration by default. You must configure Firefox separately. For step-by-step instructions, refer to [Configure Firefox separately](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#configure-firefox-separately).
 
 Safari
 
-Safari relies on your operating system's proxy server settings. To configure your browser to use Gateway with PAC files, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/mchlp2591/mac).
+Safari relies on your operating system's proxy server settings. Configure the PAC file URL in your [macOS proxy settings](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#configure-system-proxy-settings).
 
 ## 4\. Test your HTTP policy
 
@@ -332,8 +330,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-3633)
-* [ API ](#tab-panel-3634)
+* [ Dashboard ](#tab-panel-5759)
+* [ API ](#tab-panel-5760)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -365,8 +363,8 @@ Explain Code
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-3631)
-* [ Windows ](#tab-panel-3632)
+* [ macOS and Linux ](#tab-panel-5757)
+* [ Windows ](#tab-panel-5758)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  

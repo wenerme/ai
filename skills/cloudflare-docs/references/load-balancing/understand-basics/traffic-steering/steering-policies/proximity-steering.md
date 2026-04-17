@@ -1,6 +1,6 @@
 ---
 title: Proximity
-description: Proximity steering routes visitors or internal services to the closest physical data center.
+description: Route traffic to the nearest pool by geographic proximity.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Token validation
-description: After a visitor successfully completes a Turnstile challenge, a token is generated and validated via the Siteverify API. Token validation data shows how many tokens your server validated successfully versus how many failed. A high rate of invalid tokens may indicate bot activity, expired tokens, or implementation issues.
+description: View token validation metrics for your Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -30,12 +30,6 @@ Google's most intelligent Gemini model with improved reasoning, a medium thinkin
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)       |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/) |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=google/gemini-3.1-pro) 
-
 ## Usage
 
 TypeScript
@@ -302,8 +296,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-90)
-* [ Output ](#tab-panel-91)
+* [ Input ](#tab-panel-94)
+* [ Output ](#tab-panel-95)
 
 ▶contents\[\]
 
@@ -343,8 +337,8 @@ modelVersion
 
 ## API Schemas
 
-* [ Input ](#tab-panel-88)
-* [ Output ](#tab-panel-89)
+* [ Input ](#tab-panel-92)
+* [ Output ](#tab-panel-93)
 
 ```
 

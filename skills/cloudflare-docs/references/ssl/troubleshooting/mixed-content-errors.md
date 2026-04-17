@@ -1,6 +1,6 @@
 ---
 title: Mixed content errors
-description: Domains added to Cloudflare receive SSL certificates and can serve traffic over HTTPS. However, after starting to use Cloudflare, some customers notice missing content or page rendering issues when they first serve HTTPS traffic.
+description: Fix mixed content errors caused by HTTP resources on HTTPS pages.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

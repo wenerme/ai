@@ -1,6 +1,6 @@
 ---
 title: Enhanced HTTP/2 Prioritization
-description: With Enhanced HTTP/2 Prioritization, Cloudflare delivers resources in the optimal order for the fastest experience across all browsers. It also supports control of content delivery when used in conjunction with Workers.
+description: Improve page load order with Enhanced HTTP/2 Prioritization.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -34,8 +34,8 @@ For more details, refer to [the introductory blog post ↗](https://blog.cloudfl
 
 ## Enable Enhanced HTTP/2 Prioritization
 
-* [ Dashboard ](#tab-panel-6521)
-* [ API ](#tab-panel-6522)
+* [ Dashboard ](#tab-panel-8723)
+* [ API ](#tab-panel-8724)
 
 To enable **Enhanced HTTP/2 Prioritization** in the Cloudflare dashboard:
 

@@ -1,6 +1,6 @@
 ---
 title: Create a URL rewrite rule in the dashboard
-description: Refer to the Rules examples gallery for examples of rule definitions.
+description: Create URL rewrite rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

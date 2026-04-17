@@ -1,6 +1,6 @@
 ---
 title: Connection reuse
-description: Smart Shield leverages Cloudflare's optimized infrastructure to package multiple requests from an upper-tier into a single connection to your origin. This means overall connections to your origin are lowered by 30% on average. Refer to the blog post for details.
+description: How Smart Shield reduces origin connections by packaging multiple requests into one.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

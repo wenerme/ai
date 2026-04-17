@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: Troubleshoot DNS zone setup issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Internet Routing Registry (IRR)
-description: The Internet Routing Registry (IRR) is a globally distributed database of routing information which contains announced routes and routing policies in a common format. Network operators use this information, as well as RPKI, to configure backbone routers.
+description: How Internet Routing Registry entries validate prefix ownership.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

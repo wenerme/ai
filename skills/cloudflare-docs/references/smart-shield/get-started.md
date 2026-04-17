@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Smart Shield is available to all customers as an opt-in configuration.
+description: Enable Smart Shield and configure origin protection features for your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

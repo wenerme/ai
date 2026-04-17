@@ -1,6 +1,6 @@
 ---
 title: Delegate subdomains
-description: Subdomain delegation allows different individuals, teams, or organizations to manage different subdomains of a site.
+description: Delegate subdomains to external DNS providers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

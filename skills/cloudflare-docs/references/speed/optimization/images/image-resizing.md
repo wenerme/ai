@@ -1,5 +1,6 @@
 ---
 title: Image Resizing
+description: Resize, crop, and convert images on the fly at the edge.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

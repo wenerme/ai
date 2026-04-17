@@ -31,9 +31,9 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3807)
-* [  Python ](#tab-panel-3808)
-* [  curl ](#tab-panel-3809)
+* [  TypeScript ](#tab-panel-3811)
+* [  Python ](#tab-panel-3812)
+* [  curl ](#tab-panel-3813)
 
 ```
 
@@ -179,8 +179,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-3812)
-* [ Output ](#tab-panel-3813)
+* [ Input ](#tab-panel-3816)
+* [ Output ](#tab-panel-3817)
 
 ▶audio
 
@@ -236,7 +236,7 @@ hallucination\_silence\_threshold
 
 text
 
-`string`requiredThe complete transcription of the audio.
+`string`The complete transcription of the audio.
 
 word\_count
 
@@ -252,8 +252,8 @@ vtt
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3810)
-* [ Output ](#tab-panel-3811)
+* [ Input ](#tab-panel-3814)
+* [ Output ](#tab-panel-3815)
 
 ```
 

@@ -130,7 +130,7 @@ The table below provides a summary of the Data Localization Suite product's beha
 
 1. You cannot yet specify region location for object storage itself. [↩](#user-content-fnref-29)
 2. [Outgoing zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/) will carry Earth region proxy IPs, thus making regional service dysfunctional when non-Cloudflare nameservers respond to the DNS queries. [↩](#user-content-fnref-33)
-3. Only when using a Custom Domain set to a region, either through Workers or [Transform Rules](https://developers.cloudflare.com/images/transform-images/serve-images-custom-paths/) within the same zone. [↩](#user-content-fnref-6)
+3. Only when using a Custom Domain set to a region, either through Workers or [Transform Rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/) within the same zone. [↩](#user-content-fnref-6)
 4. Logs / Analytics not available outside US region when using Customer Metadata Boundary. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3) [↩4](#user-content-fnref-1-4) [↩5](#user-content-fnref-1-5) [↩6](#user-content-fnref-1-6) [↩7](#user-content-fnref-1-7) [↩8](#user-content-fnref-1-8) [↩9](#user-content-fnref-1-9)
 5. Regular and Custom Tiered Cache works; Smart Tiered Caching not available with Regional Services. [↩](#user-content-fnref-2)
 6. Regular/Generic and Custom Tiered Cache works; Smart Tiered Caching does not work with Customer Metadata Boundary (CMB).  
@@ -140,8 +140,8 @@ The table below provides a summary of the Data Localization Suite product's beha
 9. API Discovery, Volumetric Abuse Detection and [Sequence Analytics and Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) will not work with CMB = EU. All other features are available to all CMB regions. [↩](#user-content-fnref-4)
 10. Legacy Zone Analytics & Logs section not available outside US region when using CMB. Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead. [↩](#user-content-fnref-37)
 11. [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/) are available. However, there are no regionalization guarantees for the Siteverify API yet. [↩](#user-content-fnref-38)
-12. Only when using a [Custom Domain](https://developers.cloudflare.com/images/manage-images/serve-images/serve-from-custom-domains/) set to a region. [↩](#user-content-fnref-36)
-13. Logs / Analytics not supported for CMB = EU. Jurisdictional Restrictions ([storage](https://developers.cloudflare.com/images/upload-images/)) options are not supported today. All other features are available to all CMB regions. Note that beta or future features may not be in scope and could be subject to change. [↩](#user-content-fnref-35)
+12. Only when using a [Custom Domain](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/) set to a region. [↩](#user-content-fnref-36)
+13. Logs / Analytics not supported for CMB = EU. Jurisdictional Restrictions ([storage](https://developers.cloudflare.com/images/storage/upload-images/methods/)) options are not supported today. All other features are available to all CMB regions. Note that beta or future features may not be in scope and could be subject to change. [↩](#user-content-fnref-35)
 14. Jurisdictional Restrictions (storage) options for [Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) are not supported today. All other features are available to all CMB regions. [↩](#user-content-fnref-39)
 15. Only R2 Custom Domains and Custom Certificate are supported. [↩](#user-content-fnref-46)
 16. Only R2 Custom Domains are supported. [↩](#user-content-fnref-47)

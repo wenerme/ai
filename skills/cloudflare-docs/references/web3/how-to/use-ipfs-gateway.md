@@ -1,6 +1,6 @@
 ---
 title: Use IPFS gateway
-description: Once you have an IPFS gateway — meaning that you create a new gateway with a target of IPFS — you can get data from the IPFS network by using a URL.
+description: Serve IPFS content through the Cloudflare IPFS Gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

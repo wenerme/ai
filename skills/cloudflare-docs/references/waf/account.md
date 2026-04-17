@@ -1,6 +1,6 @@
 ---
 title: Account-level WAF configuration
-description: The account-level Web Application Firewall (WAF) configuration allows you to define a configuration once and apply it to multiple Enterprise zones in your account. Instead of configuring each zone individually, you create rulesets at the account level and use expressions to control which zones and traffic they apply to.
+description: Configure WAF settings at the account level for multiple zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -222,8 +222,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-146)
-* [ Output ](#tab-panel-147)
+* [ Input ](#tab-panel-150)
+* [ Output ](#tab-panel-151)
 
 prompt
 
@@ -255,12 +255,12 @@ is\_instrumental
 
 audio
 
-`string`requiredformat: uriURL to the generated audio file
+`string`format: uriURL to the generated audio file
 
 ## API Schemas
 
-* [ Input ](#tab-panel-144)
-* [ Output ](#tab-panel-145)
+* [ Input ](#tab-panel-148)
+* [ Output ](#tab-panel-149)
 
 ```
 

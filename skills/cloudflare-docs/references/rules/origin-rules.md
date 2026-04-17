@@ -1,6 +1,6 @@
 ---
 title: Origin Rules
-description: Origin Rules allow you to change the origin server that Cloudflare sends a request to, or modify how the request reaches that server. This is useful when you need to route specific requests to a different backend, such as a third-party service or a server on a non-standard port. You can perform the following overrides:
+description: Override the origin server, host header, SNI, and DNS resolution for matching requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

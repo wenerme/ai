@@ -1,11 +1,6 @@
 ---
 title: Ethereum network
-description: The Ethereum network is a distributed consensus platform that allows users to
-write and compute smart contracts in a distributed manner. Smart contracts are
-essentially Turing complete programs that are available at a unique address of
-the network. When the smart contract is run as part of a transaction, the result
-and the current state of the contract are stored in a verifiable consensus that
-is agreed upon by the entire network of nodes.
+description: How the Ethereum blockchain and smart contracts work.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configure Snippets using Terraform
-description: You can create Snippets using the Terraform Cloudflare provider.
+description: Create Snippets using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

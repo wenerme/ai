@@ -1,6 +1,6 @@
 ---
 title: Require specific HTTP ports
-description: By default, Cloudflare allows requests on a number of different HTTP ports.
+description: Restrict traffic to specific HTTP ports.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

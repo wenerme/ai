@@ -1,6 +1,6 @@
 ---
 title: ​Purge cache by prefix (URL)
-description: You can instantly purge their cache by URL prefix or path separators in their URL. For an example URL like https://www.example.com/foo/bar/baz/qux.jpg, valid purge requests include:
+description: Purge cached resources by URL prefix.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

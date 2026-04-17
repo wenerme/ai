@@ -1,6 +1,6 @@
 ---
 title: Configure exposed credentials checks via API
-description: Configure exposed credentials checks using the Rulesets API. You can do the following:
+description: Configure exposed credentials checks using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

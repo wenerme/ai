@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Zaraz
-description: Cloudflare Zaraz gives you complete control over third-party tools and services for your website, and allows you to offload them to Cloudflare's edge, improving the speed and security of your website. With Cloudflare Zaraz you can load tools such as analytics tools, advertising pixels and scripts, chatbots, marketing automation tools, and more, in the most optimized way.
+description: Load third-party tools in the cloud for speed, privacy, and security.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

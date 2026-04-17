@@ -1,6 +1,6 @@
 ---
 title: Data and metrics
-description: In this section, you can find information about the data and metrics available in Web Analytics.
+description: Metrics and dimensions available in Cloudflare Web Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

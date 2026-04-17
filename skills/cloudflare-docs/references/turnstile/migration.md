@@ -1,6 +1,6 @@
 ---
 title: Migration
-description: If you are using alternative CAPTCHA services, you can switch to Cloudflare Turnstile using the guides below to assist with the upgrade process.
+description: Migrate to Turnstile from reCAPTCHA or hCaptcha.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

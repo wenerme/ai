@@ -1,6 +1,6 @@
 ---
 title: Create ACL
-description: You need to create an Access Control List (ACL) if Cloudflare is your secondary DNS provider. The ACL will specify additional NOTIFY IPs that Cloudflare should listen to.
+description: Create an ACL for DNS zone transfers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -20,8 +20,8 @@ You need to create an Access Control List (ACL) if Cloudflare is your [secondary
 
 An ACL is configured at the account level, which means that it will apply to every primary and secondary zone in your account.
 
-* [ Dashboard ](#tab-panel-4312)
-* [ API ](#tab-panel-4313)
+* [ Dashboard ](#tab-panel-6504)
+* [ API ](#tab-panel-6505)
 
 To create a new ACL using the dashboard:
 

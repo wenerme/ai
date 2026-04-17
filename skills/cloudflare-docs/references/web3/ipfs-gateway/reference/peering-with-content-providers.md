@@ -1,6 +1,6 @@
 ---
 title: Peering
-description: If you are running an IPFS node that serves many requests - like a public HTTP gateway - you may be able to speed up queries by maintaining long-lived connections to nodes that provide a large volume of data.
+description: Peer with IPFS content providers for faster content delivery.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

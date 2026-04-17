@@ -1,6 +1,6 @@
 ---
 title: Origin server
-description: Learn more about SSL/TLS protection options for your origin servers:
+description: Configure SSL/TLS encryption between Cloudflare and your origin server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

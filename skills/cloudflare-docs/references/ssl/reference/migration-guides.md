@@ -1,6 +1,6 @@
 ---
 title: Migration guides
-description: These guides walk you through the migration processes associated with various changes in Cloudflare's SSL/TLS infrastructure.
+description: Guides for migrating away from distrusted certificate authorities.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

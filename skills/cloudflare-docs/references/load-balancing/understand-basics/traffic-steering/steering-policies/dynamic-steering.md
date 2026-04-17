@@ -1,6 +1,6 @@
 ---
 title: Dynamic
-description: Dynamic steering uses health monitor data to identify the fastest pool for a given Cloudflare Region or data center.
+description: Route traffic to the fastest pool based on health check latency.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

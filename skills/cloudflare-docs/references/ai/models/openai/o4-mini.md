@@ -30,12 +30,6 @@ OpenAI's fast, lightweight reasoning model optimized for multi-step problem solv
 | Terms and License                                                          | [link ↗](https://openai.com/policies/) |
 | More information                                                           | [link ↗](https://openai.com/)          |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=openai/o4-mini) 
-
 ## Usage
 
 TypeScript
@@ -291,8 +285,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-202)
-* [ Output ](#tab-panel-203)
+* [ Input ](#tab-panel-206)
+* [ Output ](#tab-panel-207)
 
 ▶messages\[\]
 
@@ -344,23 +338,23 @@ response\_format
 
 id
 
-`string`required
+`string`
 
 object
 
-`string`required
+`string`
 
 created
 
-`number`required
+`number`
 
 model
 
-`string`required
+`string`
 
 ▶choices\[\]
 
-`array`required
+`array`
 
 ▶usage{}
 
@@ -368,8 +362,8 @@ model
 
 ## API Schemas
 
-* [ Input ](#tab-panel-200)
-* [ Output ](#tab-panel-201)
+* [ Input ](#tab-panel-204)
+* [ Output ](#tab-panel-205)
 
 ```
 

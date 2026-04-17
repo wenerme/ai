@@ -1,6 +1,6 @@
 ---
 title: Supported fields and operators
-description: The fields that are supported by load balancing rules depend on whether Cloudflare proxies the traffic going through your load balancer or not.
+description: Fields and operators for load balancing rule expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

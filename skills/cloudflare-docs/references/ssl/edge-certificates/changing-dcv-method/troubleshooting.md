@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Taking into account the steps involved in DCV, some situations may interfere with certificate issuance and renewal.
+description: Resolve domain control validation failures.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -62,8 +62,8 @@ Consider the following when troubleshooting:
 
 You can check the CAA records by running the following command:
 
-* [ macOS and Linux ](#tab-panel-6557)
-* [ Windows ](#tab-panel-6558)
+* [ macOS and Linux ](#tab-panel-8765)
+* [ Windows ](#tab-panel-8766)
 
 Terminal window
 

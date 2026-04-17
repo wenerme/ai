@@ -1,6 +1,6 @@
 ---
 title: IAB TCF Compliance
-description: The Zaraz Consent Management Platform is compliant with the IAB Transparency &#38; Consent Framework. Enabling this feature could be required in order to serve Google Ads in the EEA and the UK.
+description: Configure IAB TCF compliance for Zaraz consent.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

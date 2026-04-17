@@ -1,10 +1,14 @@
 ---
 title: Confirm DNS records
-description: Before you change your nameservers, confirm your DNS records are displaying correctly.
+description: Verify your DNS records are correct before enabling APO.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
 
 Was this helpful?
 

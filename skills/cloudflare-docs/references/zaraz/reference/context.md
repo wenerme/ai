@@ -1,6 +1,6 @@
 ---
 title: Zaraz Context
-description: The Zaraz Context is a versatile object that provides a set of configurable properties for Zaraz, a web analytics tool for tracking user behavior on websites. These properties can be accessed and utilized across various components, including Worker Variables and JSONata expressions.
+description: Data available in the Zaraz context object for triggers and actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Label client certificates
-description: After creating client certificates at Cloudflare, it may be hard to differentiate the generated certificates.
+description: Organize client certificates with labels for easier management.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

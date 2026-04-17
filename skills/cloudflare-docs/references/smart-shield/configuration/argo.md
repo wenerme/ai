@@ -1,6 +1,6 @@
 ---
 title: Argo Smart Routing
-description: Argo Smart Routing detects real-time network issues and routes your web traffic across the most efficient network path, avoiding congestion.
+description: Route traffic through the fastest network paths to reduce latency to your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

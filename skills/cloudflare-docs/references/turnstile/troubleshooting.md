@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Refer to the following pages for more information about troubleshooting Turnstile:
+description: Troubleshoot common Turnstile widget and validation issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

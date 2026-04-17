@@ -1,6 +1,6 @@
 ---
 title: Create and manage widgets using the Cloudflare dashboard
-description: The Cloudflare dashboard provides a user-friendly interface for creating and managing widgets.
+description: Create and manage Turnstile widgets in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

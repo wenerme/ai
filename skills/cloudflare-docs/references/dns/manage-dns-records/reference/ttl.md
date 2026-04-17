@@ -1,6 +1,6 @@
 ---
 title: Time to Live (TTL)
-description: Time to Live (TTL) is a field on DNS records that controls how long each record is cached and — as a result — how long it takes for record updates to reach your end users.
+description: How DNS Time to Live values affect record caching.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

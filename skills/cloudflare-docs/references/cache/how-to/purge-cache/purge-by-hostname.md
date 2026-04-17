@@ -1,6 +1,6 @@
 ---
 title: ​Purge cache by hostname
-description: Purging by hostname means that all assets at URLs with a host that matches one of the provided values will be instantly purged from the cache.
+description: Purge all cached resources for a specific hostname.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

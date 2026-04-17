@@ -1,6 +1,6 @@
 ---
 title: Access Waiting Room
-description: Use Cloudflare Waiting Room to create a holding area where users can queue to access a high-traffic area of your enterprise website. For an introduction, refer to the Overview page.
+description: Access and manage waiting rooms in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

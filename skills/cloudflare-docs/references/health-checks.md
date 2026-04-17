@@ -1,6 +1,6 @@
 ---
 title: Health Checks
-description: Standalone Health Checks monitors an IP address or hostname for origin servers or applications and notifies you in near real-time if there happens to be a problem.
+description: Monitor origin server availability and get notified of status changes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

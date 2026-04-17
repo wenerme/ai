@@ -1,6 +1,6 @@
 ---
 title: Interplanetary File System (IPFS)
-description: The Interplanetary File System (IPFS) is a distributed file storage protocol that allows computers all over the globe to store and serve files as part of a giant peer-to-peer network.
+description: How the InterPlanetary File System stores and retrieves content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

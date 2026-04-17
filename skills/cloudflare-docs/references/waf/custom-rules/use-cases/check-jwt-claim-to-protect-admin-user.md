@@ -1,6 +1,6 @@
 ---
 title: Issue challenge for admin user in JWT claim based on attack score
-description: This example configures additional protection for requests with a JSON Web Token (JWT) with a user claim of admin, based on the request's attack score.
+description: Use JWT claims and attack scores to protect admin users.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

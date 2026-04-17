@@ -77,8 +77,8 @@ To deploy your application to a custom domain using Wrangler, open your project'
 
 To configure a route in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-7820)
-* [  wrangler.toml ](#tab-panel-7821)
+* [  wrangler.jsonc ](#tab-panel-10000)
+* [  wrangler.toml ](#tab-panel-10001)
 
 JSONC
 
@@ -120,8 +120,8 @@ If you have specified your zone ID in the environment of your Wrangler configura
 
 To configure a subdomain in your Wrangler configuration file, add the following to your environment:
 
-* [  wrangler.jsonc ](#tab-panel-7822)
-* [  wrangler.toml ](#tab-panel-7823)
+* [  wrangler.jsonc ](#tab-panel-10002)
+* [  wrangler.toml ](#tab-panel-10003)
 
 JSONC
 
@@ -172,8 +172,8 @@ To test your live application:
 
 To uninstall your chat application, modify your Wrangler file to remove the `durable_objects` bindings and add a `deleted_classes` migration:
 
-* [  wrangler.jsonc ](#tab-panel-7824)
-* [  wrangler.toml ](#tab-panel-7825)
+* [  wrangler.jsonc ](#tab-panel-10004)
+* [  wrangler.toml ](#tab-panel-10005)
 
 JSONC
 

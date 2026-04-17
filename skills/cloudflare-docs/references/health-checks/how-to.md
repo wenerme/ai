@@ -1,6 +1,6 @@
 ---
 title: How to
-description: See the following pages for more information about standalone Health Checks:
+description: How-to guides for Health Checks notifications and access control.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,0 +1,53 @@
+---
+title: Overview
+description: When you ship applications on Cloudflare, you can use Images to automatically optimize and cache your images from any origin.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/images/optimization/transformations/overview.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Overview
+
+Transformations are requests to optimize and manipulate remote images that are stored outside of Images.
+
+When you ship applications on Cloudflare, you can use Images to automatically optimize and cache your images from any origin.
+
+Our image optimization pipeline provides a rich set of [features](https://developers.cloudflare.com/images/optimization/features) that can be applied across entire media libraries to compress images at scale, transcode files into efficient formats for delivery, and resize and crop images for different use cases and devices.
+
+## How it works
+
+You can request transformations by using a specially-formatted URL to serve images on your Cloudflare zone or through Workers.
+
+To serve transformations on your zone, you must first enable the feature:
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/images/transformations), go to **Images** \> **Transformations**.
+2. Select the zone where you want to serve transformations.
+3. Enable **transformations** on your zone.
+
+When the browser requests a transformed image, Cloudflare checks the edge cache for a previously optimized version with the same parameters:
+
+**On a cache hit** — Cloudflare serves the optimized image directly from the edge without contacting the origin or re-applying the optimization parameters.
+
+**On a cache miss** — Cloudflare fetches the original image from the source origin, applies the requested parameters (e.g. `format`, `width`, `quality`), caches the transformed result, and serves it to the browser. The original image is also cached to speed up future transformations of the same source.
+
+Each unique combination of source image and parameters is cached and billed separately. The first request for each unique version within a calendar month is billed as one [unique transformation](https://developers.cloudflare.com/images/optimization/features), regardless of cache status. Subsequent requests for this transformation do not incur billable usage within the same calendar month.
+
+## Configure your zone
+
+After enabling transformations on your zone, you can configure how Cloudflare handles transformation requests:
+
+* **[Define source origins](https://developers.cloudflare.com/images/optimization/transformations/sources)** — Specify which origins Cloudflare can pull source images from. By default, Cloudflare only accepts source images from the same zone where transformations are served.
+* **[Control origin access](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access)** — Use Workers to add custom logic for validating and controlling access to source images.
+* **[Set up rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules)** — Use Transform Rules to rewrite image URLs and serve transformations from custom paths.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/images/","name":"Cloudflare Images"}},{"@type":"ListItem","position":3,"item":{"@id":"/images/optimization/","name":"Optimization"}},{"@type":"ListItem","position":4,"item":{"@id":"/images/optimization/transformations/","name":"Remote images (transformations)"}},{"@type":"ListItem","position":5,"item":{"@id":"/images/optimization/transformations/overview/","name":"Overview"}}]}
+```

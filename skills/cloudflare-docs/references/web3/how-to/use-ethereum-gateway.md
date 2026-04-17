@@ -1,6 +1,6 @@
 ---
 title: Use Ethereum gateway
-description: Once you have an Ethereum gateway — meaning that you create a new gateway with a target of Ethereum — you can interact with different Ethereum networks by specifying the correct JSON blob for your query.
+description: Send JSON-RPC requests through the Cloudflare Ethereum Gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

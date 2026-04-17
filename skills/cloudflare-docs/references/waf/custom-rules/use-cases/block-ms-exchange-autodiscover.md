@@ -1,6 +1,6 @@
 ---
 title: Block Microsoft Exchange Autodiscover requests
-description: In some cases, Microsoft Exchange Autodiscover service requests can be &#34;noisy&#34;, triggering large numbers of HTTP 404 (Not found) errors.
+description: Block Microsoft Exchange Autodiscover requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for Page Rules settings and behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

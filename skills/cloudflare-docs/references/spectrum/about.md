@@ -1,6 +1,6 @@
 ---
 title: About
-description: For more information about concepts related to Spectrum, refer to the sections below.
+description: Core concepts for Spectrum, including BYOIP, DDoS, load balancing, and static IPs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Common API calls for Custom Errors
-description: The following sections provide examples of common API calls for managing custom error assets and Error Pages at the zone level.
+description: Manage custom error rules and error pages using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

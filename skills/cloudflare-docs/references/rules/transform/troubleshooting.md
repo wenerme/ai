@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Transform Rules
-description: When troubleshooting a rule configuration, review the Transform Rules evaluation section to understand how and when your Transform Rule is evaluated for each request.
+description: Resolve common issues with Transform Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

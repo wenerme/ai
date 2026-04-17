@@ -1,6 +1,6 @@
 ---
 title: Manage Health Checks
-description: Refer to the section below to learn how to manage your Smart Shield health checks.
+description: Create, configure, and manage health checks for your origin servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Adaptive routing
-description: Adaptive routing controls features that modify the routing of requests to pools and endpoints in response to dynamic conditions, such as during the interval between active health monitoring requests.
+description: Route traffic based on origin health and latency.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

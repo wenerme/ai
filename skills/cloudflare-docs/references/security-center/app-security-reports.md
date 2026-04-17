@@ -1,6 +1,6 @@
 ---
 title: Security reports
-description: Application Security reports provide cyber attack insights and trends for all of the Enterprise zones in your Cloudflare account.
+description: View account-wide application security reports covering WAF, bots, DDoS, and API Shield.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Records transfer
-description: Consider the sections below to understand the expected behaviors, depending on DNS record type and proxied status.
+description: Which records transfer when Cloudflare is primary.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

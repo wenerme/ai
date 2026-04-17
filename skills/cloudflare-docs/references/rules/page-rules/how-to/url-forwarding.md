@@ -1,6 +1,6 @@
 ---
 title: URL forwarding with Page Rules
-description: Page Rules allow you to forward or redirect traffic to a different URL, though they are just one of the options provided by Cloudflare.
+description: Create URL forwarding rules with Page Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

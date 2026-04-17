@@ -1,5 +1,6 @@
 ---
 title: Advanced nameservers
+description: Advanced nameserver options for Enterprise zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

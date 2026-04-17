@@ -1,6 +1,6 @@
 ---
 title: Deploy a managed ruleset with ruleset, tag, and rule overrides
-description: Customize the execution of managed rulesets with a combination of ruleset overrides, tag overrides, and rule overrides in your phase entry point ruleset.
+description: Deploy a managed ruleset with ruleset, tag, and rule overrides.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

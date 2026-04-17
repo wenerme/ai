@@ -1,6 +1,6 @@
 ---
 title: How Bulk Redirects work
-description: When a request reaches Cloudflare, Bulk Redirects are evaluated before the request is sent to your origin server. Cloudflare checks all URL redirects of each Bulk Redirect List that is enabled by a Bulk Redirect Rule.
+description: How Bulk Redirects evaluate and match incoming requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

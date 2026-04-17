@@ -1,6 +1,6 @@
 ---
 title: Create scheduled events
-description: When you want to customize the behavior of a waiting room for a specific period of time — such as changing the queueing method or increasing the total active users — set up a scheduled event. You can do this from the dashboard or via the API.
+description: Create scheduled events with custom waiting room settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

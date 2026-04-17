@@ -1,6 +1,6 @@
 ---
 title: DNSSEC states
-description: This page describes different DNSSEC states and how they relate to the responses you get from the DNSSEC details API endpoint.
+description: Possible DNSSEC states and their meanings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

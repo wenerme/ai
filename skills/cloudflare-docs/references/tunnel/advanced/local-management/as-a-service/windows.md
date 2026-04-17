@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: You can install cloudflared as a system service on Windows.
+description: Install and run cloudflared as a Windows service.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

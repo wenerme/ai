@@ -24,12 +24,12 @@ ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more
 
 ## Getting started
 
-The Codex app is available on macOS (Apple Silicon).
+The Codex app is available on macOS and Windows.
 
 <WorkflowSteps variant="headings">
 1. Download and install the Codex app
 
-    Download the Codex app for Windows or macOS.
+    Download the Codex app for Windows or macOS. Choose the Intel build if you're using an Intel-based Mac.
 
     <CodexAppDownloadCta client:load className="mb-4" />
 
@@ -127,63 +127,84 @@ If you used the Codex app, CLI, or IDE Extension before you'll see past projects
 
 ### Multitask across projects
 
-Run multiple tasks in parallel and switch quickly between them.
-
-  </BentoContent>
-  <BentoContent href="/codex/app/features#built-in-git-tools">
-
-### Built-in Git tools
-
-Review diffs, comment inline, stage or revert chunks, and commit without leaving the app.
+Run project threads side by side and switch between them quickly.
 
   </BentoContent>
   <BentoContent href="/codex/app/worktrees">
 
-### Worktrees for parallel tasks
+### Worktrees
 
-Isolate changes of multiple Codex threads using built-in Git worktree support.
+Keep parallel code changes isolated with built-in Git worktree support.
 
   </BentoContent>
-  <BentoContent href="/codex/app/features#skills-support">
+  <BentoContent href="/codex/app/computer-use">
 
-### Skills support
+### Computer use
 
-Give your Codex agent additional capabilities and reuse skills across App, CLI, and IDE Extension.
+Let Codex use macOS apps for GUI tasks, browser flows, and native app testing.
+
+  </BentoContent>
+  <BentoContent href="/codex/app/review">
+
+### Review and ship changes
+
+Inspect diffs, address PR feedback, stage files, commit, and push.
+
+  </BentoContent>
+  <BentoContent href="/codex/app/features#integrated-terminal">
+
+### Terminal and actions
+
+Run commands in each thread and launch repeatable project actions.
+
+  </BentoContent>
+  <BentoContent href="/codex/app/browser">
+
+### In-app browser
+
+Open unauthenticated local or public pages and comment on rendered output.
+
+  </BentoContent>
+  <BentoContent href="/codex/app/features#image-generation">
+
+### Image generation
+
+Generate or edit images in a thread while you work on the surrounding code and assets.
 
   </BentoContent>
   <BentoContent href="/codex/app/automations">
 
 ### Automations
 
-Pair skills with automations to automate recurring tasks in the background. Codex adds findings to the inbox, or automatically archives runs if there's nothing to report.
+Schedule recurring tasks, or wake up the same thread for ongoing checks.
 
   </BentoContent>
-  <BentoContent href="/codex/app/features#integrated-terminal">
+  <BentoContent href="/codex/app/features#skills-support">
 
-### Built-in terminal
+### Skills
 
-Open a terminal per thread to test your changes, run dev servers, scripts, and custom commands.
+Reuse instructions and workflows across the app, CLI, and IDE Extension.
 
   </BentoContent>
-  <BentoContent href="/codex/app/local-environments">
+  <BentoContent href="/codex/app/features#richer-outputs-and-artifacts">
 
-### Local environments
+### Sidebar and artifacts
 
-Define worktree setup scripts and common project actions for easy access.
+Follow plans, sources, task summaries, and generated file previews.
+
+  </BentoContent>
+  <BentoContent href="/codex/plugins">
+
+### Plugins
+
+Connect apps, skills, and MCP servers to extend what Codex can do.
 
   </BentoContent>
   <BentoContent href="/codex/app/features#sync-with-the-ide-extension">
 
-### Sync with the IDE extension
+### IDE Extension sync
 
 Share Auto Context and active threads across app and IDE sessions.
-
-  </BentoContent>
-  <BentoContent href="/codex/app/features#mcp-support">
-
-### MCP support
-
-Connect your Codex agent to additional services using MCP.
 
   </BentoContent>
 </BentoContainer>

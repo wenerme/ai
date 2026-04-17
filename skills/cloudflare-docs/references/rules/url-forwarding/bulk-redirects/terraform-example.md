@@ -1,6 +1,6 @@
 ---
 title: Configure Bulk Redirects using Terraform
-description: This Terraform example configures account-level Bulk Redirects. It creates a Bulk Redirect List populated with URL redirects and a corresponding Bulk Redirect Rule to activate them.
+description: Create Bulk Redirects using the Terraform Cloudflare provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -208,8 +208,8 @@ Explain Code
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* [ Dashboard ](#tab-panel-6127)
-* [ API ](#tab-panel-6128)
+* [ Dashboard ](#tab-panel-8267)
+* [ API ](#tab-panel-8268)
 
 * Account Filter Lists > Edit
 * Bulk URL Redirects > Edit

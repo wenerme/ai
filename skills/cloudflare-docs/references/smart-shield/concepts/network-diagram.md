@@ -1,6 +1,6 @@
 ---
 title: Network diagram
-description: The diagram below illustrates the different configurations available for Smart Shield and the role each of them plays in protecting your origin while also improving your website or application performance.
+description: Visual overview of Smart Shield features and their role in origin protection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

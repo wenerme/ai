@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TCP ](https://developers.cloudflare.com/search/?tags=TCP)[ UDP ](https://developers.cloudflare.com/search/?tags=UDP)[ ICMP ](https://developers.cloudflare.com/search/?tags=ICMP) 
+
 Was this helpful?
 
 YesNo
@@ -77,8 +81,8 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-3927)
-* [  Docker ](#tab-panel-3928)
+* [  Linux ](#tab-panel-6059)
+* [  Docker ](#tab-panel-6060)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:  
 a. Find the user that owns the `cloudflared` process:  

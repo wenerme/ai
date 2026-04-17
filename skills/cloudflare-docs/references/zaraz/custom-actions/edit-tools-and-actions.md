@@ -1,6 +1,6 @@
 ---
 title: Edit tools and actions
-description: On this page you will be able to edit settings related to the tool, add actions, and edit existing ones. To edit an existing action, select its name.
+description: Edit existing Zaraz tools and actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

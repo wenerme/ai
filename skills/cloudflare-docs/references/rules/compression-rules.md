@@ -1,6 +1,6 @@
 ---
 title: Compression Rules
-description: Use Compression Rules to customize the compression applied to responses from Cloudflare's global network to your website visitors, based on the file extension and content type. Compression Rules are powered by the Ruleset Engine.
+description: Customize response compression algorithms for specific content types and file extensions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Fields
-description: The Cloudflare Rules language supports different types of fields such as:
+description: Fields available for use in Ruleset Engine rule expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configure DNS zone defaults
-description: While there are default values for DNS settings that Cloudflare applies to all new zones, Enterprise accounts have the option to configure their own DNS zone defaults according to their preference.
+description: Set default DNS settings applied to new zones in your account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

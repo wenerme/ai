@@ -1,6 +1,6 @@
 ---
 title: Setup
-description: Subdomain setup relies on a process known as delegation. When, in a parent domain such as example.com, an NS record is created for a subdomain blog.example.com, this means that DNS management for the subdomain can be done separately, in its own DNS zone.
+description: Set up a subdomain zone in Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

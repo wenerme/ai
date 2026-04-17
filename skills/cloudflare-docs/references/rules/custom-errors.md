@@ -1,6 +1,6 @@
 ---
 title: Custom Errors
-description: Use Custom Errors to replace default Cloudflare error pages with your own custom content. Custom error content is shown to visitors when an HTTP error occurs, whether the error comes from your origin server, a Cloudflare product (including Cloudflare Workers), or a security challenge.
+description: Serve custom error pages for Cloudflare or origin server errors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

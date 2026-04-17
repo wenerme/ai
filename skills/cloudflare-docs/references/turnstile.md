@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Turnstile
-description: Turnstile can be embedded into any website without sending traffic through Cloudflare and works without showing visitors a CAPTCHA.
+description: Verify visitors are human with a CAPTCHA-free, privacy-preserving alternative.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

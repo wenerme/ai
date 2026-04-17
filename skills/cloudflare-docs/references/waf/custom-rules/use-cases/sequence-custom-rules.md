@@ -1,6 +1,6 @@
 ---
 title: Build a sequence rule within custom rules
-description: You can build an API sequence rule via the Cloudflare dashboard.
+description: Build sequence-based rules within WAF custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,8 +18,8 @@ Copy page
 
 You can build an [API sequence rule](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/) via the Cloudflare dashboard.
 
-* [  New dashboard ](#tab-panel-6796)
-* [ Old dashboard ](#tab-panel-6797)
+* [  New dashboard ](#tab-panel-9026)
+* [ Old dashboard ](#tab-panel-9027)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

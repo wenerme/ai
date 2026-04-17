@@ -225,7 +225,7 @@ n
 
 image
 
-`string`requiredformat: uri
+`string`format: uri
 
 ## API Schemas
 

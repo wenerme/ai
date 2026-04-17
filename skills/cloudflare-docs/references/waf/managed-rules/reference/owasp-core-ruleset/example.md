@@ -1,6 +1,6 @@
 ---
 title: OWASP evaluation example
-description: The following example calculates the OWASP request threat score for an incoming request. The OWASP managed ruleset configuration is the following:
+description: Example of how OWASP paranoia level and score threshold interact.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

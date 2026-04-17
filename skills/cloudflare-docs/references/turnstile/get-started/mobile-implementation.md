@@ -1,6 +1,6 @@
 ---
 title: Mobile implementation
-description: Turnstile requires a browser environment because it runs JavaScript challenges in the visitor's browser. On mobile devices, Turnstile works in mobile browsers without additional configuration.
+description: Implement Turnstile in native mobile applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

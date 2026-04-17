@@ -1,6 +1,6 @@
 ---
 title: Setup
-description: You can use the Edit Zone Settings API endpoint to set up Dedicated CDN Egress IPs (formerly known as Aegis). If you are not familiar with how Cloudflare API works, refer to Fundamentals.
+description: Configure Dedicated CDN Egress IPs using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

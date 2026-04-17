@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: For more information related to Spectrum, refer to the sections below.
+description: Reference information for Spectrum, including analytics, logs, and limitations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

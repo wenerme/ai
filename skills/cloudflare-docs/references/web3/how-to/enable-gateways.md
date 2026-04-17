@@ -1,6 +1,6 @@
 ---
 title: Subscribe to gateways
-description: Before you can create a new gateway, you need to subscribe to one or more gateways.
+description: Subscribe to Ethereum or IPFS gateways on your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

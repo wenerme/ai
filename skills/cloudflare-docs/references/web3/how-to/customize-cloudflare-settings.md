@@ -1,6 +1,6 @@
 ---
 title: Customize Cloudflare settings
-description: Once your gateway becomes active, you can customize the Cloudflare settings associated with your hostname.
+description: Apply Cloudflare security and performance settings to your Web3 gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

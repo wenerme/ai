@@ -1,10 +1,14 @@
 ---
 title: Analytics
-description: Cloudflare provides analytics to show the performance benefits of Argo Smart Routing.
+description: View latency improvements and response time data for Argo Smart Routing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics) 
 
 Was this helpful?
 

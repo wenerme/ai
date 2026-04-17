@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 Was this helpful?
 
 YesNo
@@ -112,8 +116,8 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-3927)
-* [ Workaround ](#tab-panel-3928)
+* [ Recommended ](#tab-panel-6065)
+* [ Workaround ](#tab-panel-6066)
 
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 

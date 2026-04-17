@@ -1,6 +1,6 @@
 ---
 title: Scheduled changes
-description: For other WAF updates, refer to the changelog.
+description: Upcoming scheduled changes to WAF managed rulesets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

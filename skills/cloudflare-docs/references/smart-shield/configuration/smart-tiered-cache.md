@@ -1,6 +1,6 @@
 ---
 title: Smart Tiered Cache
-description: With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare data centers must contact the origin server to receive the cacheable content. Tiered cache works by dividing Cloudflare's data centers into a hierarchy of lower-tiers and upper-tiers, where only upper-tiers can ask your origin for content.
+description: Reduce origin requests by serving cached content from upper-tier data centers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

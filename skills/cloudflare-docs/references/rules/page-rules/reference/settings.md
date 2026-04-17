@@ -1,6 +1,6 @@
 ---
 title: Page Rules settings
-description: Settings control the action Cloudflare takes once a request matches the URL pattern defined in a page rule. You can use settings to enable and disable multiple Cloudflare features across the dashboard.
+description: Available Page Rules settings and their descriptions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

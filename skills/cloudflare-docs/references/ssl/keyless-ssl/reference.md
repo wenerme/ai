@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: For more information on Keyless SSL, refer to the following resources:
+description: Reference information for Keyless SSL deployment and operations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

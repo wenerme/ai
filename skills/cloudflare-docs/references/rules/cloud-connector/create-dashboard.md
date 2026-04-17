@@ -1,6 +1,6 @@
 ---
 title: Configure a Cloud Connector rule in the dashboard
-description: To configure a Cloud Connector rule in the dashboard:
+description: Create Cloud Connector rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

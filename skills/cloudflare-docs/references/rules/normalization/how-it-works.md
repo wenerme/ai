@@ -1,6 +1,6 @@
 ---
 title: How URL normalization works
-description: URL normalization modifies separators, encoded elements, and literal bytes in incoming URLs so that they conform to a consistent formatting standard.
+description: How URL normalization modifies incoming request URIs before rule evaluation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Using JSONata
-description: For advanced use cases, it is sometimes useful to be able to retrieve a value in a particular way. For instance, you might be using zaraz.track to send a list of products to Zaraz, but the third-party tool you want to send this data to requires the total cost of the products. Alternatively, you may want to manipulate a value, such as converting it to lowercase.
+description: Transform and filter event data with JSONata expressions in Zaraz.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

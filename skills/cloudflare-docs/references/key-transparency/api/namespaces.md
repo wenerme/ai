@@ -1,6 +1,6 @@
 ---
 title: Namespaces
-description: The Cloudflare Key Transparency API is organized in namespaces, each one representing a Log monitored by Cloudflare Auditor. If you want to register a namespace, contact us.
+description: Create and manage namespaces representing logs monitored by the Cloudflare Auditor.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

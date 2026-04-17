@@ -1,5 +1,6 @@
 ---
 title: Store decrypted matched payloads in logs
+description: Store decrypted matched payloads in Logpush logs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Rules examples
-description: Explore the following examples for Rules.
+description: Example configurations for Transform Rules, redirects, origin rules, and more.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

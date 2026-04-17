@@ -1,5 +1,6 @@
 ---
 title: Create a compression rule in the dashboard
+description: Create compression rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

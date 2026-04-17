@@ -1,6 +1,6 @@
 ---
 title: How exposed credentials checks work
-description: WAF rules can include a check for exposed credentials. When enabled in a given rule, exposed credentials checking happens when there is a match for the rule expression (that is, the rule expression evaluates to true).
+description: How exposed credentials checks detect compromised login attempts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

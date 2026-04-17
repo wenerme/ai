@@ -1982,6 +1982,15 @@ components:
         - low
         - medium
       title: TextConfigVerbosity
+    TextExtendedConfigVerbosity:
+      type: string
+      enum:
+        - low
+        - medium
+        - high
+        - xhigh
+        - max
+      title: TextExtendedConfigVerbosity
     TextExtendedConfig:
       type: object
       properties:
@@ -1989,7 +1998,7 @@ components:
           $ref: '#/components/schemas/Formats'
         verbosity:
           oneOf:
-            - $ref: '#/components/schemas/TextConfigVerbosity'
+            - $ref: '#/components/schemas/TextExtendedConfigVerbosity'
             - type: 'null'
       description: Text output configuration including format and verbosity
       title: TextExtendedConfig
@@ -2863,8 +2872,8 @@ components:
         model:
           type: string
           description: >-
-            Which image generation model to use (e.g. "openai/gpt-image-1").
-            Defaults to "openai/gpt-image-1".
+            Which image generation model to use (e.g. "openai/gpt-5-image").
+            Defaults to "openai/gpt-5-image".
       description: >-
         Configuration for the openrouter:image_generation server tool. Accepts
         all image_config params (aspect_ratio, quality, size, background,
@@ -3729,6 +3738,11 @@ components:
       enum:
         - openrouter:code_interpreter
       title: OutputCodeInterpreterServerToolItemType
+    OutputSearchModelsServerToolItemType:
+      type: string
+      enum:
+        - openrouter:experimental__search_models
+      title: OutputSearchModelsServerToolItemType
     OutputFileSearchServerToolItemType:
       type: string
       enum:
@@ -4015,6 +4029,25 @@ components:
         - type: object
           properties:
             type:
+              $ref: '#/components/schemas/OutputSearchModelsServerToolItemType'
+            arguments:
+              type: string
+              description: >-
+                The JSON arguments submitted to the search tool (e.g.
+                {"query":"Claude"})
+            id:
+              type: string
+            query:
+              type: string
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          required:
+            - type
+            - status
+          description: openrouter:experimental__search_models variant
+        - type: object
+          properties:
+            type:
               $ref: '#/components/schemas/OutputFileSearchServerToolItemType'
             id:
               type: string
@@ -4038,6 +4071,13 @@ components:
               type: string
             imageUrl:
               type: string
+            result:
+              type:
+                - string
+                - 'null'
+              description: >-
+                The generated image as a base64-encoded string or URL, matching
+                OpenAI image_generation_call format
             revisedPrompt:
               type: string
             status:
@@ -4329,7 +4369,7 @@ components:
             - 'null'
           format: double
         text:
-          $ref: '#/components/schemas/TextConfig'
+          $ref: '#/components/schemas/TextExtendedConfig'
         tool_choice:
           $ref: '#/components/schemas/OpenAIResponsesToolChoice'
         tools:

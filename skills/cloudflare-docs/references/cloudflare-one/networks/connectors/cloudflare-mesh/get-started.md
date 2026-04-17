@@ -51,13 +51,14 @@ The setup wizard [configures your account for Mesh networking](#what-the-wizard-
 4. Select **Create node**.
 5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.  
 Installation commands  
-   * [ Debian / Ubuntu ](#tab-panel-3636)  
-   * [ RedHat / CentOS ](#tab-panel-3637)  
+   * [ Debian / Ubuntu ](#tab-panel-5608)  
+   * [ RedHat / CentOS ](#tab-panel-5609)  
 Terminal window  
 ```  
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg  
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list  
-sudo apt-get update && sudo apt-get install -y cloudflare-warp  
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&  
+sudo apt-get update && sudo apt-get install -y cloudflare-warp &&  
+sudo sysctl -w net.ipv4.ip_forward=1  
 ```  
 Terminal window  
 ```  
@@ -65,8 +66,9 @@ sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 ```  
 Terminal window  
 ```  
-sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm  
-sudo yum install -y cloudflare-warp  
+sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&  
+sudo yum install -y cloudflare-warp &&  
+sudo sysctl -w net.ipv4.ip_forward=1  
 ```  
 Terminal window  
 ```  
@@ -84,8 +86,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-3638)
-* [ Version 2026.1 and earlier ](#tab-panel-3639)
+* [ Version 2026.2+ ](#tab-panel-5610)
+* [ Version 2026.1 and earlier ](#tab-panel-5611)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

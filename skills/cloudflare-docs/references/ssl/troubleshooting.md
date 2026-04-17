@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: For FAQs and other troubleshooting information, refer to the following resources:
+description: Troubleshoot common SSL/TLS errors and configuration issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

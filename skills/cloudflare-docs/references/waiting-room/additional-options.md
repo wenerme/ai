@@ -1,6 +1,6 @@
 ---
 title: Additional options
-description: Beyond creating a waiting room, you may want to further customize how your waiting room functions.
+description: Additional Waiting Room features including events, rules, and testing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

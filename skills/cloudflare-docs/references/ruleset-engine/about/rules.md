@@ -1,6 +1,6 @@
 ---
 title: Rules
-description: A rule defines a filter and an action to perform on the incoming requests that match the filter.
+description: Structure and properties of rules in the Ruleset Engine.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

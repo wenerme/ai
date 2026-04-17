@@ -1,6 +1,6 @@
 ---
 title: Proxying limitations
-description: This page describes expected limitations when proxying DNS records. For further information about proxying, refer to How Cloudflare works.
+description: Limitations when proxying DNS records through Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

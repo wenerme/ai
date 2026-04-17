@@ -218,8 +218,8 @@ Response200 ![Reproducible Generation](https://replicate.delivery/xezq/BjLs0q1eK
 
 ## Parameters
 
-* [ Input ](#tab-panel-46)
-* [ Output ](#tab-panel-47)
+* [ Input ](#tab-panel-50)
+* [ Output ](#tab-panel-51)
 
 prompt
 
@@ -247,12 +247,12 @@ seed
 
 image
 
-`string`requiredformat: uri
+`string`format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-44)
-* [ Output ](#tab-panel-45)
+* [ Input ](#tab-panel-48)
+* [ Output ](#tab-panel-49)
 
 ```
 

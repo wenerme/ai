@@ -1,5 +1,6 @@
 ---
 title: Create a rule in the dashboard
+description: Create cache rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

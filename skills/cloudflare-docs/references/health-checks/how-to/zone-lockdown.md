@@ -1,6 +1,6 @@
 ---
 title: Zone Lockdown
-description: Currently, any Cloudflare customer on a paid plan can configure Health Checks against any host or IP. Zone Lockdown specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. It allows multiple destinations in a single rule as well as IPv4 and IPv6 addresses. IP addresses not specified in the Zone Lockdown rule are denied access to the specified resources.
+description: Restrict Health Checks access to specific Cloudflare IP addresses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

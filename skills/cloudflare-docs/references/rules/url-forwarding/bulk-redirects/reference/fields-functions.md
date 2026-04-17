@@ -1,6 +1,6 @@
 ---
 title: Available fields and functions
-description: The available fields when defining a Bulk Redirect Rule filter expression are the following:
+description: Available fields and functions for Bulk Redirect rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

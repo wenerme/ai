@@ -1,6 +1,6 @@
 ---
 title: Set up Private Network Load Balancing with Client-to-Tunnel
-description: You can use Private Network Load Balancing to distribute Cloudflare One Client traffic to private hostnames and IPs connected via Cloudflare Tunnel.
+description: Load balance WARP client traffic to private origins via Tunnel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -67,8 +67,8 @@ Load balancer pools are logical groupings of endpoints, typically organized by p
 
 Pools can be created using either the Cloudflare dashboard or the API.
 
-* [ Dashboard ](#tab-panel-5416)
-* [ API ](#tab-panel-5417)
+* [ Dashboard ](#tab-panel-7556)
+* [ API ](#tab-panel-7557)
 
 To create a pool using the dashboard, refer to the [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) documentation.
 

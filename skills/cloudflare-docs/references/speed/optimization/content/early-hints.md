@@ -1,5 +1,6 @@
 ---
 title: Early Hints
+description: Preload resources with 103 Early Hints to speed up page rendering.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

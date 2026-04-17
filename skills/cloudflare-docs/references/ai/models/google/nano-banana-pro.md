@@ -189,8 +189,8 @@ Response200 ![Character Design](https://replicate.delivery/xezq/RvsT0pTkqOqcENng
 
 ## Parameters
 
-* [ Input ](#tab-panel-106)
-* [ Output ](#tab-panel-107)
+* [ Input ](#tab-panel-110)
+* [ Output ](#tab-panel-111)
 
 prompt
 
@@ -214,12 +214,12 @@ image\_size
 
 image
 
-`string`requiredformat: uri
+`string`format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-104)
-* [ Output ](#tab-panel-105)
+* [ Input ](#tab-panel-108)
+* [ Output ](#tab-panel-109)
 
 ```
 

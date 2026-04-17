@@ -1,6 +1,6 @@
 ---
 title: Custom certificates
-description: Custom certificates are meant for Business and Enterprise customers who want to use their own SSL certificates.
+description: Upload and manage your own TLS certificates on Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

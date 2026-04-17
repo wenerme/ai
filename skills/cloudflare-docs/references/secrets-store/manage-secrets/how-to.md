@@ -1,6 +1,6 @@
 ---
 title: How to
-description: Refer to the sections below to learn about common actions you might want to take when managing your data in Secrets Store.
+description: Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -26,8 +26,8 @@ You must have a [Super Administrator or Secrets Store Admin role](https://develo
 
 ## Create a secret
 
-* [ Dashboard ](#tab-panel-6552)
-* [ API ](#tab-panel-6553)
+* [ Dashboard ](#tab-panel-8710)
+* [ API ](#tab-panel-8711)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -102,8 +102,8 @@ Explain Code
 
 Duplicate a secret to keep the same secret value but change name, scope, or comments.
 
-* [ Dashboard ](#tab-panel-6546)
-* [ API ](#tab-panel-6547)
+* [ Dashboard ](#tab-panel-8704)
+* [ API ](#tab-panel-8705)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -149,8 +149,8 @@ This action will cause the replacement in all services using the secret.
 
 You can also edit the secret **Permission scope** and **Comment**.
 
-* [ Dashboard ](#tab-panel-6548)
-* [ API ](#tab-panel-6549)
+* [ Dashboard ](#tab-panel-8706)
+* [ API ](#tab-panel-8707)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)
@@ -191,8 +191,8 @@ Warning
 
 Before deleting a secret, make sure it is not deployed in your [Workers applications ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
 
-* [ Dashboard ](#tab-panel-6550)
-* [ API ](#tab-panel-6551)
+* [ Dashboard ](#tab-panel-8708)
+* [ API ](#tab-panel-8709)
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.  
 [ Go to **Secrets Store** ](https://dash.cloudflare.com/?to=/:account/secrets-store)

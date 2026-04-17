@@ -1,6 +1,6 @@
 ---
 title: Enable Universal SSL certificates
-description: By default, Cloudflare issues — and renews — free, unshared, publicly trusted SSL certificates to all domains added to and activated on Cloudflare.
+description: Turn on Universal SSL certificates for your domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

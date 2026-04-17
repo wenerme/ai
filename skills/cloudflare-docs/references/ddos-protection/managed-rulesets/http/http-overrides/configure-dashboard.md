@@ -32,8 +32,8 @@ Rules in the phase entry point ruleset, where you create overrides, are evaluate
 
 ## Access
 
-* [  New dashboard ](#tab-panel-4624)
-* [ Old dashboard ](#tab-panel-4625)
+* [  New dashboard ](#tab-panel-6416)
+* [ Old dashboard ](#tab-panel-6417)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -57,7 +57,8 @@ Configure all the rules in the ruleset (ruleset override)
 Configure one or more rules  
    1. Under **Rule configuration**, select **Browse rules**.  
    2. Search for the rules you wish to configure using the available filters. You can search by [tag](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/rule-categories/) (also known as category).  
-   3. To configure a single rule, select the desired value for a field in the displayed dropdowns next to the rule. To configure more than one rule, select the rules using the row checkboxes and update the fields for the selected rules using the dropdowns displayed before the table. You can also configure all the rules with a given tag. For more information, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).  
+   3. To configure a single rule, select the desired value for a field in the displayed dropdowns next to the rule.  
+   To configure more than one rule, select the rules using the row checkboxes and update the fields for the selected rules using the dropdowns displayed before the table. You can also configure all the rules with a given tag. For more information, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).  
    4. Select **Next**.  
 Notes  
    * Tag and rule overrides have priority over ruleset overrides.  
@@ -66,8 +67,8 @@ Notes
 
 ### Delete a DDoS override
 
-* [  New dashboard ](#tab-panel-4626)
-* [ Old dashboard ](#tab-panel-4627)
+* [  New dashboard ](#tab-panel-6418)
+* [ Old dashboard ](#tab-panel-6419)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

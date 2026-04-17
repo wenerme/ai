@@ -1,6 +1,6 @@
 ---
 title: Analytics and logs
-description: Internal DNS leverages Gateway analytics. Below you can find information about specific fields and different methods you can use to access this data.
+description: View analytics and logs for Internal DNS queries.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

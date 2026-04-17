@@ -1,6 +1,6 @@
 ---
 title: Common error codes
-description: The Cloudflare Load Balancing API adds global health to each pool and endpoint. It also gives you a view into what our network sees at a wider level. Cloudflare uses a quorum system to determine pool and endpoint health status. The quorum is taken from PoPs responsible for running health monitor requests in a region, and the majority result is used.
+description: Common Load Balancing error codes and resolutions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

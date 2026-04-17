@@ -1,6 +1,6 @@
 ---
 title: Create and manage widgets using Cloudflare API
-description: Use the Cloudflare API for programmatic widget management and automation.
+description: Create and manage Turnstile widgets using the Cloudflare API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

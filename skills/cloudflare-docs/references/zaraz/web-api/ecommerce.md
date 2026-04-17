@@ -1,5 +1,6 @@
 ---
 title: E-commerce
+description: Send e-commerce events like purchases and cart updates through Zaraz.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

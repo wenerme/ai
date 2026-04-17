@@ -1,6 +1,6 @@
 ---
 title: Public DNS
-description: If you cannot use a Cloudflare Tunnel setup, you can also create a public DNS record for your key server.
+description: Deploy Keyless SSL with public DNS resolution.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -63,8 +63,8 @@ Upload certificates to Cloudflare with only SANs that you wish to use with Cloud
 
 You will have to upload each certificate used with Keyless SSL.
 
-* [ Dashboard ](#tab-panel-6569)
-* [ API ](#tab-panel-6570)
+* [ Dashboard ](#tab-panel-8777)
+* [ API ](#tab-panel-8778)
 
 To create a Keyless certificate in the dashboard:
 

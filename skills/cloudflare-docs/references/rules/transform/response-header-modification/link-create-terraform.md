@@ -1,5 +1,6 @@
 ---
 title: Create a rule using Terraform
+description: Create response header modification rules using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

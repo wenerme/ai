@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Go | Models"
-description: "Use OpenCode Go models with Mastra. 7 models available."
+description: "Use OpenCode Go models with Mastra. 9 models available."
 ---
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 7 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 9 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/docs/zen).
 
@@ -122,6 +122,30 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "opencode-go/qwen3.5-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.2,
+    "outputCost": 1.2
+  },
+  {
+    "model": "opencode-go/qwen3.6-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.5,
+    "outputCost": 3
   }
 ]}
 />
@@ -154,7 +178,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "opencode-go/minimax-m2.7"
+      ? "opencode-go/qwen3.6-plus"
       : "opencode-go/glm-5";
   }
 });

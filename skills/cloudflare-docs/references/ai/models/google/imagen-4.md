@@ -214,8 +214,8 @@ Response200 ![Product Photo](https://replicate.delivery/xezq/UJ4LsyIMfrXPJqElHCx
 
 ## Parameters
 
-* [ Input ](#tab-panel-94)
-* [ Output ](#tab-panel-95)
+* [ Input ](#tab-panel-98)
+* [ Output ](#tab-panel-99)
 
 prompt
 
@@ -231,12 +231,12 @@ person\_generation
 
 image
 
-`string`requiredformat: uriURL to the generated image
+`string`format: uriURL to the generated image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-92)
-* [ Output ](#tab-panel-93)
+* [ Input ](#tab-panel-96)
+* [ Output ](#tab-panel-97)
 
 ```
 

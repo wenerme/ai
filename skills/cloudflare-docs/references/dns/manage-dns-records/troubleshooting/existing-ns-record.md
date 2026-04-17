@@ -1,6 +1,6 @@
 ---
 title: NS records already exist
-description: As you try to create a new DNS record, Cloudflare displays the following error:
+description: Resolve conflicts with existing NS records.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Versions
-description: Version History enables you to keep track of all the Zaraz configuration changes made in your website. With Version History you can also revert changes to previous settings should there be a problem.
+description: View and restore previous Zaraz configuration versions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

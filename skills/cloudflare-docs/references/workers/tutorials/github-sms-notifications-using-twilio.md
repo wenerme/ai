@@ -237,8 +237,8 @@ npx wrangler secret put GITHUB_SECRET_TOKEN
 
 Add the nodejs\_compat flag to your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7834)
-* [  wrangler.toml ](#tab-panel-7835)
+* [  wrangler.jsonc ](#tab-panel-10014)
+* [  wrangler.toml ](#tab-panel-10015)
 
 JSONC
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Cache
-description: Cache stores copies of frequently accessed content (such as images, videos, or webpages) in geographically distributed data centers that are located closer to end users than origin servers, reducing server load and improving website performance.
+description: Cache and serve static and dynamic content from Cloudflare edge servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

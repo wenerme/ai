@@ -1,6 +1,6 @@
 ---
 title: Configuration options
-description: Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
+description: Configurable options for Spectrum applications, including edge and origin ports and protocols.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Deploy a WAF managed ruleset via API (account)
-description: Use the Rulesets API to deploy a WAF managed ruleset to the http_request_firewall_managed phase at the account level.
+description: Deploy WAF managed rulesets at the account level using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

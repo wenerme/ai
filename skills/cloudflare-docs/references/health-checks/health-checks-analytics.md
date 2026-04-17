@@ -1,6 +1,6 @@
 ---
 title: Health Checks Analytics
-description: Once you have set up a standalone Health Check including notification emails, use Health Check Analytics to debug possible origin issues.
+description: View Health Checks status history and response time analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

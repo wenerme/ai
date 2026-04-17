@@ -1,6 +1,6 @@
 ---
 title: Least Outstanding Requests
-description: Least Outstanding Requests steering allows you to route traffic to endpoints that currently have the lowest number of outstanding requests.
+description: Route to the origin with the fewest active requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

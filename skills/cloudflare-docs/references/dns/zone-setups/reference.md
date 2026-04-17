@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for DNS zone setups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

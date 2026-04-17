@@ -1,6 +1,6 @@
 ---
 title: Bulk Redirects
-description: Bulk Redirects allow you to define a large number of URL redirects at the account level, which can apply across domains in your account. These redirects navigate the user from a source URL to a target URL using a given HTTP status code. URL redirection is also known as URL forwarding.
+description: Redirect large numbers of URLs with Bulk Redirects at the account level.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

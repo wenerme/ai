@@ -1,7 +1,6 @@
 ---
 title: Changelog
-description: You can now manage mutual TLS (mTLS) and Bring Your Own Certificate Authority
-(BYO CA) configurations directly from the Cloudflare dashboard — no API required.
+description: Track the latest updates and changes to Cloudflare SSL/TLS features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

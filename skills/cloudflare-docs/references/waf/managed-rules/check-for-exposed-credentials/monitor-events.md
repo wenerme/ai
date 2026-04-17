@@ -1,6 +1,6 @@
 ---
 title: Monitor exposed credentials events
-description: Sampled logs in Security Events shows entries for requests with exposed credentials identified by rules with the Log action.
+description: Monitor exposed credentials events in Security Events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

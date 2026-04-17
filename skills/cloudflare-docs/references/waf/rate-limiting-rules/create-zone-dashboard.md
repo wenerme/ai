@@ -1,6 +1,6 @@
 ---
 title: Create a rate limiting rule in the dashboard
-description: When you select the Block action in a rule you can optionally define a custom response.
+description: Create a rate limiting rule for your zone in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,8 +16,8 @@ Copy page
 
 # Create a rate limiting rule in the dashboard
 
-* [  New dashboard ](#tab-panel-6886)
-* [ Old dashboard ](#tab-panel-6887)
+* [  New dashboard ](#tab-panel-9116)
+* [ Old dashboard ](#tab-panel-9117)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

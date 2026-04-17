@@ -1,6 +1,6 @@
 ---
 title: Configuration Import &#38; Export
-description: Exporting your Zaraz configuration can be useful if you want to create a local backup or if you need to import it to another website. Zaraz provides an easy way to export and import your configuration.
+description: Import and export Zaraz configurations between zones.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

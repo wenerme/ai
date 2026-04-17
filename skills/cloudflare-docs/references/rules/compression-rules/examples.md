@@ -1,5 +1,6 @@
 ---
 title: Compression Rules examples
+description: Example Compression Rules for Brotli, Gzip, and Zstandard configurations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

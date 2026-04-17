@@ -1,6 +1,6 @@
 ---
 title: Change categorization
-description: Cloudflare sorts domains into categories based on their content and security type. You can request categorization changes via the dashboard, Cloudflare Radar, or the API.
+description: Request domain categorization changes via the dashboard, Radar, or the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

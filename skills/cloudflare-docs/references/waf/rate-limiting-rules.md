@@ -1,6 +1,6 @@
 ---
 title: Rate limiting rules
-description: Rate limiting rules allow you to define rate limits for requests matching an expression, and the action to perform when those rate limits are reached. Use rate limiting rules to prevent abuse of your websites and APIs — for example, to protect a login endpoint from brute-force attacks or to cap how many API calls a single client can make in a given time window.
+description: Define rate limits for requests matching an expression and the action when limits are reached.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

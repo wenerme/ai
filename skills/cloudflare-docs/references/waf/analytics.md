@@ -1,6 +1,6 @@
 ---
 title: Analytics
-description: Refer to the following pages for more information on the available analytics dashboards for Cloudflare security products:
+description: View WAF analytics including Security Analytics and Security Events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -189,8 +189,8 @@ Response200 ![High Resolution Portrait](https://replicate.delivery/xezq/blTBOLzo
 
 ## Parameters
 
-* [ Input ](#tab-panel-102)
-* [ Output ](#tab-panel-103)
+* [ Input ](#tab-panel-106)
+* [ Output ](#tab-panel-107)
 
 prompt
 
@@ -222,12 +222,12 @@ image\_search
 
 image
 
-`string`requiredformat: uri
+`string`format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-100)
-* [ Output ](#tab-panel-101)
+* [ Input ](#tab-panel-104)
+* [ Output ](#tab-panel-105)
 
 ```
 

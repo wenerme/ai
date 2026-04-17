@@ -1,6 +1,6 @@
 ---
 title: Validation and keys
-description: Refer to the sections below for an overview of some technical concepts and how they apply to Cloudflare DNSSEC. For broader content on DNSSEC, refer to How DNSSEC works.
+description: DNSSEC key types, rotation, and validation behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

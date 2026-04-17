@@ -1,8 +1,6 @@
 ---
 title: Supported API methods
-description: The full list of API methods that are supported by an Ethereum Gateway
-is given below. The gateway returns a 403 if a method is specified that is not
-supported.
+description: Ethereum JSON-RPC methods supported by the Cloudflare gateway.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

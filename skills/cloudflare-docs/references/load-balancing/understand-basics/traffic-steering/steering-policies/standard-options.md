@@ -1,6 +1,6 @@
 ---
 title: Standard
-description: Standard steering policies include Off - Failover and Random.
+description: Standard traffic steering options including failover and random.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

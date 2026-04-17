@@ -1,6 +1,6 @@
 ---
 title: Configure via API
-description: To enable the Cloudflare OWASP Core Ruleset for a given zone using the API, create a rule with execute action in the entry point ruleset for the http_request_firewall_managed phase. For more information on deploying a managed ruleset, refer to Deploy a managed ruleset.
+description: Configure the OWASP Core Ruleset using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

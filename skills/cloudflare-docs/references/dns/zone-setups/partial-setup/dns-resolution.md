@@ -1,6 +1,6 @@
 ---
 title: DNS resolution
-description: When you have a partial zone (CNAME setup), Cloudflare handles DNS records a bit differently from primary zones (full setup) in order to internally resolve the origin server where proxied HTTP requests are sent to.
+description: How DNS resolution works for partial CNAME setups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cache Rules
-description: Use Cache Rules to customize cache settings on Cloudflare. Cache Rules allows you to make adjustments to what is eligible to cache, how long it should be cached and where, as well as trigger specific interactions with Cloudflare's cache and other Rules products for matching requests.
+description: Control what and how Cloudflare caches with Cache Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

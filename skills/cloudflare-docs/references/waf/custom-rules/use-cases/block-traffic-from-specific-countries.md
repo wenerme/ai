@@ -1,6 +1,6 @@
 ---
 title: Block traffic from specific countries
-description: This example custom rule blocks requests based on country code using the ip.src.country field.
+description: Block traffic from specific countries with a custom rule.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Migrate from hCaptcha
-description: If you are using hCaptcha today, you can switch seamlessly to Cloudflare Turnstile by following the step-by-step guide below to assist with the upgrade process.
+description: Migrate from hCaptcha to Cloudflare Turnstile.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

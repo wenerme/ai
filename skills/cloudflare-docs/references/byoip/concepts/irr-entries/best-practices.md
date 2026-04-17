@@ -1,6 +1,6 @@
 ---
 title: Manage IRR entries
-description: You must keep your Internet Routing Registry (IRR) entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
+description: Create and maintain IRR entries for your IP prefixes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

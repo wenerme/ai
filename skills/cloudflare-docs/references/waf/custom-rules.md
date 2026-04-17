@@ -1,6 +1,6 @@
 ---
 title: Custom rules
-description: Custom rules allow you to control incoming traffic by filtering requests to a zone. They work as customized web application firewall (WAF) rules that you can use to perform actions like Block or Managed Challenge on incoming requests. You can also use the Skip action in a custom rule to skip one or more Cloudflare security features.
+description: Block, challenge, or allow requests matching custom expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

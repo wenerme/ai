@@ -1,6 +1,6 @@
 ---
 title: Create a custom ruleset using the API
-description: To deploy custom rules at the account level:
+description: Create account-level custom rulesets using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

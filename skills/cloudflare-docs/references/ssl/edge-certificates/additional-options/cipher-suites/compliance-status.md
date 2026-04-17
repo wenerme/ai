@@ -1,6 +1,6 @@
 ---
 title: Compliance standards
-description: Consider the following recommendations on custom cipher suites for when your organization needs to comply with regulatory standards.
+description: Cipher suite compliance with FIPS 140-2, PCI DSS, and other standards.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Test your Turnstile implementation
-description: Use dummy sitekeys and secret keys to test your Turnstile implementation without triggering real challenges that would interfere with automated testing suites.
+description: Test your Turnstile implementation with test site keys.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

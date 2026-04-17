@@ -1,6 +1,6 @@
 ---
 title: TLS 1.3
-description: TLS 1.3 enables the latest version of the TLS protocol (when supported) for improved security and performance.
+description: Enable TLS 1.3 for improved performance and security.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -34,8 +34,8 @@ By turning on the TLS 1.3 feature, traffic to and from your website will be serv
 
 TLS 1.3 can be activated in the Cloudflare dashboard or through the API:
 
-* [ Dashboard ](#tab-panel-6545)
-* [ API ](#tab-panel-6546)
+* [ Dashboard ](#tab-panel-8753)
+* [ API ](#tab-panel-8754)
 
 To enable TLS 1.3 in the dashboard:
 

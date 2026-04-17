@@ -1,6 +1,6 @@
 ---
 title: Additional DNS records
-description: In addition to load balancing between DNS records used for IP resolution — A, AAAA, and CNAME records — Enterprise customers can also load balance between MX and SRV records.
+description: Use additional DNS records with load balancers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

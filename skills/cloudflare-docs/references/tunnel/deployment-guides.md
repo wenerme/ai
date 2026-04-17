@@ -1,6 +1,6 @@
 ---
 title: Deployment guides
-description: Deploy Cloudflare Tunnel in your environment — from cloud VMs to Kubernetes clusters, with Infrastructure as Code support.
+description: Step-by-step guides for deploying Cloudflare Tunnel on cloud platforms.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

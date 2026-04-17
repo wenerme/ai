@@ -1,6 +1,6 @@
 ---
 title: Additional configuration
-description: Beyond creating a simple load balancer, you may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products.
+description: Additional load balancing features and integrations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

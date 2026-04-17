@@ -1,6 +1,6 @@
 ---
 title: Connection forwarding
-description: Since IPv6 address ranges are deployed globally, no forwarding is needed.
+description: How IPv4 egress traffic is forwarded between Cloudflare data centers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

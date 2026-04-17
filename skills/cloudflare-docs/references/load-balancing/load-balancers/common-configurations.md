@@ -1,6 +1,6 @@
 ---
 title: Common configurations
-description: Consider the following sections to understand how to achieve some commonly used load balancer configurations.
+description: Common load balancer configurations for active-active and failover.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

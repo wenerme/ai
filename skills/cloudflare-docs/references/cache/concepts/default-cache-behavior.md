@@ -1,6 +1,6 @@
 ---
 title: Default cache behavior
-description: Cloudflare respects the origin web server’s cache headers in the following order unless an Edge Cache TTL cache rule overrides the headers. Refer to the Edge TTL section for details on default TTL behavior.
+description: Default file extensions and content types that Cloudflare caches.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

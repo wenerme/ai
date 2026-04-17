@@ -1,5 +1,6 @@
 ---
 title: Create exceptions
+description: Create exceptions for account-level WAF managed rulesets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

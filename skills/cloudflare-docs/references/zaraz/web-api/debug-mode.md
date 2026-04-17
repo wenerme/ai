@@ -1,7 +1,6 @@
 ---
 title: Debug mode
-description: Zaraz offers a debug mode to troubleshoot the events and triggers systems. To activate debug mode you need to create a special debug cookie (zarazDebug) containing your debug key.
-You can set this cookie manually or via the zaraz.debug helper function available in your console.
+description: Enable Zaraz debug mode to inspect events in the browser console.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

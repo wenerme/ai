@@ -1,6 +1,6 @@
 ---
 title: Monitors
-description: A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a pool.
+description: Health monitors that check origin server availability.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

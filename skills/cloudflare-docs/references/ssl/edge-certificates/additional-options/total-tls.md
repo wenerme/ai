@@ -1,6 +1,6 @@
 ---
 title: Total TLS
-description: Total TLS allows Cloudflare to issue individual certificates for your proxied hostnames. These certificates will protect proxied hostnames not covered by Universal certificates.
+description: Issue individual certificates for every proxied subdomain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

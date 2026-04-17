@@ -1,6 +1,6 @@
 ---
 title: Send Zaraz logs to Logpush
-description: Send Zaraz logs to an external storage provider like R2 or S3.
+description: Send Zaraz event logs to Logpush destinations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

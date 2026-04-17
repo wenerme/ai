@@ -1,6 +1,6 @@
 ---
 title: Response Header Transform Rules
-description: Use Response Header Transform Rules to manipulate the headers of HTTP responses sent to website visitors.
+description: Add, set, or remove HTTP response headers with Transform Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

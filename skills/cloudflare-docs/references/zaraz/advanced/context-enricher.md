@@ -1,6 +1,6 @@
 ---
 title: Context Enricher
-description: The Zaraz Context Enricher is a tool to modify or enrich the context that is being used across Zaraz using a Cloudflare Worker. The Context Enricher allows you access to the client and system variables.
+description: Enrich event context with server-side data using Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

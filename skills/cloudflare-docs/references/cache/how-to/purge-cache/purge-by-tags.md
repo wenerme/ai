@@ -1,6 +1,6 @@
 ---
 title: Purge cache by cache-tags
-description: Cache-tag purging makes multi-file purging easier because you can instantly bulk purge by adding cache-tags to your assets, such as webpages, image files, and more.
+description: Purge cached resources by cache tag headers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

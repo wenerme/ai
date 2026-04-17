@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Security Center
-description: Cloudflare Security Center brings together your Cloudflare security products, threat intelligence from Cloudflare's global network, and configuration analysis into a unified security intelligence solution. Security Center enables you to strengthen your security posture by:
+description: Review security insights, investigate threats, and protect your brand from impersonation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

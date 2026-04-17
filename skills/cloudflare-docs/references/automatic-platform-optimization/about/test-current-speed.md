@@ -1,6 +1,6 @@
 ---
 title: Test current speed
-description: Before you begin using APO, we recommend testing your current site speed. Your site speed results give your website a letter grade and performance rating.
+description: Benchmark your site speed before enabling APO with GTmetrix.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

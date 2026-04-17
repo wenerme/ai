@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for APO, including caching, Page Rules, and query parameters.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

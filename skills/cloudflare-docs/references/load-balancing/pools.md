@@ -1,6 +1,6 @@
 ---
 title: Pools
-description: Within Cloudflare, pools represent your endpoints and how they are organized. As such, a pool can be a group of several endpoints, or you could also have only one endpoint (an origin server, for example) per pool.
+description: Pools of origin servers for load balancing traffic distribution.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

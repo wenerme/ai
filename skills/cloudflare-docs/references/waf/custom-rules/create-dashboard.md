@@ -1,6 +1,6 @@
 ---
 title: Create a custom rule in the dashboard
-description: When you select the Block action in a rule you can optionally define a custom response.
+description: Create WAF custom rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,8 +16,8 @@ Copy page
 
 # Create a custom rule in the dashboard
 
-* [  New dashboard ](#tab-panel-6787)
-* [ Old dashboard ](#tab-panel-6788)
+* [  New dashboard ](#tab-panel-9017)
+* [ Old dashboard ](#tab-panel-9018)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

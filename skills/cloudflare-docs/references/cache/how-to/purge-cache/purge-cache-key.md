@@ -1,10 +1,14 @@
 ---
 title: Purge cache key resources
-description: Instantly purge resources that use Cache Keys via the Cloudflare API. If you use Cloudflare's Purge by URL, include the headers and query strings that are in your custom Cache Key.
+description: Purge cached resources by custom cache key.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
 
 Was this helpful?
 

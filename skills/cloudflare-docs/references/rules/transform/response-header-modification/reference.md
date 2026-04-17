@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: This section contains reference information for Response Header Transform Rules.
+description: Reference for response header modification rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

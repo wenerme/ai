@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Cloudflare Load Balancing now supports Monitor Groups, a powerful new way to combine multiple health monitors into a single, logical group. This allows you to create sophisticated health checks that more accurately reflect the true availability of your applications by assessing multiple services at once.
+description: Track the latest updates and changes to Load Balancing features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

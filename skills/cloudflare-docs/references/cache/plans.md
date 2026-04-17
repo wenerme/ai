@@ -1,6 +1,6 @@
 ---
 title: Plans
-description: Cloudflare provides the following features for different plans.
+description: Compare cache features available on each Cloudflare plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

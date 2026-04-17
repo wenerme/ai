@@ -1,6 +1,6 @@
 ---
 title: Batch record changes
-description: Cloudflare allows you to apply several changes to your zone records in just one action. You can use the dashboard to delete DNS records or update their proxy status in bulk, or use the API to perform further batched operations.
+description: Create, update, and delete multiple DNS records at once.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

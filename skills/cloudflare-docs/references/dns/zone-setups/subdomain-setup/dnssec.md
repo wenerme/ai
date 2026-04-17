@@ -1,6 +1,6 @@
 ---
 title: Enable DNSSEC
-description: As opposed to the normal process for enabling DNSSEC, DNSSEC with a subdomain setup requires a few additional steps.
+description: Enable DNSSEC for a subdomain zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

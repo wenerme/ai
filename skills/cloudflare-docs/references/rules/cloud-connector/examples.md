@@ -1,5 +1,6 @@
 ---
 title: Cloud Connector examples
+description: Example Cloud Connector rules for routing traffic to cloud storage providers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

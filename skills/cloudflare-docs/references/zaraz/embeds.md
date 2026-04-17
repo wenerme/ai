@@ -1,6 +1,6 @@
 ---
 title: Embeds
-description: Embeds are tools for incorporating external content, like social media posts, directly onto webpages, enhancing user engagement without compromising site performance and security.
+description: Embed third-party widgets like chat and support tools with Zaraz.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

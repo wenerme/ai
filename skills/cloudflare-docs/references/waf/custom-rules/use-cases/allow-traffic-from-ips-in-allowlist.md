@@ -1,6 +1,6 @@
 ---
 title: Allow traffic from IP addresses in allowlist only
-description: This example blocks incoming requests from IP addresses that are not present in an allowlist (defined using an IP list).
+description: Allow traffic only from IP addresses in an allowlist.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

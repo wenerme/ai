@@ -1,6 +1,6 @@
 ---
 title: Customize cipher suites
-description: With an Advanced Certificate Manager subscription, you can restrict connections between Cloudflare and clients — such as your visitor's browser — to specific cipher suites.
+description: Restrict which cipher suites Cloudflare uses for edge connections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

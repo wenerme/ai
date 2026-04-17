@@ -1,6 +1,6 @@
 ---
 title: Configuration Rules settings
-description: You can change the configuration settings described below in a configuration rule.
+description: Available settings you can customize with Configuration Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

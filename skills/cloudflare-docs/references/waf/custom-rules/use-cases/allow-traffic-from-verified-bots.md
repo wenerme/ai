@@ -1,6 +1,6 @@
 ---
 title: Allow traffic from search engine bots
-description: This example custom rule challenges requests from a list of countries, but allows traffic from search engine bots — such as Googlebot and Bingbot — and from other verified bots.
+description: Allow traffic from search engine and verified bots.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

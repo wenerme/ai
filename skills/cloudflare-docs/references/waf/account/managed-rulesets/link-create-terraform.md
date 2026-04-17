@@ -1,5 +1,6 @@
 ---
 title: Deploy using Terraform
+description: Deploy account-level WAF managed rulesets using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

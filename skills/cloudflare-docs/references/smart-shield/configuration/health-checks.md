@@ -1,6 +1,6 @@
 ---
 title: Health Checks
-description: A health check is a service that runs on Cloudflare's edge network to monitor whether an origin server is online. This allows you to view the health of your origin servers even if there is only one origin or you do not yet need to balance traffic across your infrastructure.
+description: Monitor origin server availability and receive notifications when status changes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

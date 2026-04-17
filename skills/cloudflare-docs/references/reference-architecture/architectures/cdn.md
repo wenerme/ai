@@ -247,7 +247,7 @@ When combined with Tiered Caching and Argo Smart Routing, Cache Reserve can be a
 
 Note
 
-Using [Image Resizing](https://developers.cloudflare.com/images/transform-images/) with Cache Reserve will not result in resized images being stored in Cache Reserve since Image Resizing takes place after reading from Cache Reserve. Resized images will be cached in other available tiers when they are served after resizing.
+Using [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) with Cache Reserve will not result in resized images being stored in Cache Reserve since Image Resizing takes place after reading from Cache Reserve. Resized images will be cached in other available tiers when they are served after resizing.
 
 ### Traffic flow: Cache Reserve topology
 

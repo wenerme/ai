@@ -1,6 +1,6 @@
 ---
 title: Cache security
-description: Review the following content to learn more about cache security.
+description: Security features to protect your cached content from attacks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

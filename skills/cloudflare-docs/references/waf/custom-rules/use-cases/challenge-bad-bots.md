@@ -1,6 +1,6 @@
 ---
 title: Challenge bad bots
-description: Cloudflare's Bot Management feature scores the likelihood that a request originates from a bot.
+description: Challenge requests from bad bots with a managed challenge.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

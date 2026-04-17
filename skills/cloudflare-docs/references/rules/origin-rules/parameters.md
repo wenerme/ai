@@ -1,6 +1,6 @@
 ---
 title: Origin Rules API parameter reference
-description: Create different overrides by including different action parameters in the action_parameters field:
+description: Configurable parameters for origin rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

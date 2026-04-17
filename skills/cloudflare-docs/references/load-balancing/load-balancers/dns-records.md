@@ -1,6 +1,6 @@
 ---
 title: DNS records
-description: When you create a load balancer, Cloudflare automatically creates an LB DNS record for the specified Hostname. This functionality allows you to use a hostname with or without an existing DNS record. Private load balancers do not receive an automatic DNS record. Instead, you can configure a hostname using your internal DNS system or by applying a Gateway Firewall override to a hostname.
+description: DNS records created for load balanced hostnames.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

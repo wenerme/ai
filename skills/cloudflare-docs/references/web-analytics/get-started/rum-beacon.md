@@ -1,5 +1,6 @@
 ---
 title: RUM beacon for Web Analytics
+description: Add the Web Analytics JavaScript beacon to your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

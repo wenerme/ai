@@ -1,6 +1,6 @@
 ---
 title: How it works
-description: Refer to the pages below to understand how Dedicated CDN Egress IPs work.
+description: How Dedicated CDN Egress IPs are allocated and route traffic to your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

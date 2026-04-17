@@ -1,6 +1,6 @@
 ---
 title: Linux
-description: You can install cloudflared as a system service on Linux.
+description: Install and run cloudflared as a systemd service on Linux.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Any Hostname (Enterprise only)
-description: The Any Hostname feature removes the requirement to specify hostnames during widget creation, allowing widgets to function on any domain.
+description: Allow Turnstile widgets on any hostname with Enterprise plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

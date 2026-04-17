@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: This section contains reference information for URL Rewrite Rules.
+description: Reference for URL rewrite Transform Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

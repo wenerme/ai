@@ -1,6 +1,6 @@
 ---
 title: Advanced certificates
-description: Use advanced certificates when you want something more customizable than Universal SSL but still want the convenience of SSL certificate issuance and renewal.
+description: Order advanced certificates with custom SANs, validity periods, and CAs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

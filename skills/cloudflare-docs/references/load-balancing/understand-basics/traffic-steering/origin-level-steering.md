@@ -1,6 +1,6 @@
 ---
 title: Local traffic steering
-description: Endpoint steering customizes how each pool distributes requests to its associated endpoints.
+description: Steer traffic between origins within a pool.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

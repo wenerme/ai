@@ -80,7 +80,7 @@ Domain-scoped Roles
 
 Image Transformations
 
-* Changes made to [Image Transformations](https://developers.cloudflare.com/images/transform-images/) are not cloned when a new zone version is created.
+* Changes made to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/) are not cloned when a new zone version is created.
 
 Network Error Logging
 

@@ -1,6 +1,6 @@
 ---
 title: Useful commands
-description: This page lists the most commonly used commands for managing local tunnels.
+description: Common cloudflared commands for managing tunnels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

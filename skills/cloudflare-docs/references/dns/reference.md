@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for Cloudflare DNS features and plans.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

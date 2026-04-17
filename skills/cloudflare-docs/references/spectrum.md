@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Spectrum
-description: Spectrum allows you to route MQTT, email, file transfer, version control, games, and more over TCP or UDP through Cloudflare to mask the origin and protect it from DDoS attacks.
+description: Proxy and protect TCP and UDP applications with Cloudflare Spectrum.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

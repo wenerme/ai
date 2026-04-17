@@ -1,6 +1,6 @@
 ---
 title: Locally-managed tunnels
-description: Cloudflare recommends creating a remotely-managed tunnel for most use cases. Remotely-managed tunnels store their configuration on Cloudflare, which allows you to manage the tunnel from any machine using the dashboard, API, or Terraform.
+description: Manage tunnels from the command line without the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

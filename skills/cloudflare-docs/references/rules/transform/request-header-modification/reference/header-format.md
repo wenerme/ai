@@ -1,6 +1,6 @@
 ---
 title: Format of HTTP request header names and values
-description: The name of the HTTP request header you want to set or remove can only contain:
+description: Supported header name and value formats for request header modifications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

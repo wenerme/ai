@@ -1,6 +1,6 @@
 ---
 title: Require known IP addresses in site admin area
-description: If an attack compromises the administrative area of your website, the consequences can be severe. With custom rules, you can protect your site's admin area by blocking requests for access to admin paths that do not come from a known IP address.
+description: Restrict admin area access to known IP addresses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Static IPs
-description: Lease static IPs so that you can use a set of specifically assigned Cloudflare IPs. If you need to allowlist your IPs or to communicate your IPs to third parties, allocating static IPs to your account allows you to know them ahead of time.
+description: Assign static IPs from your prefix to specific Cloudflare services.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

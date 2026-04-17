@@ -1,6 +1,6 @@
 ---
 title: Preview mode
-description: Zaraz allows you to test your configurations before publishing them. This is helpful to avoid unintended consequences when deploying a new tool or trigger.
+description: Preview Zaraz configuration changes before publishing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

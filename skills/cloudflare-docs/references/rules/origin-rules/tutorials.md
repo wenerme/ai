@@ -1,5 +1,6 @@
 ---
 title: Origin Rules tutorials
+description: Step-by-step tutorials for common origin rule configurations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -17,8 +18,8 @@ Copy page
 
 | Name                                                                                                                                             | Last Updated     | Difficulty |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ---------- |
-| [Point to Pages with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/)         | 12 months ago    | Beginner   |
-| [Point to R2 bucket with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/) | 12 months ago    | Beginner   |
+| [Point to Pages with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/)         | about 1 year ago | Beginner   |
+| [Point to R2 bucket with a custom domain](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/) | about 1 year ago | Beginner   |
 | [Change URI path and Host header](https://developers.cloudflare.com/rules/origin-rules/tutorials/change-uri-path-and-host-header/)               | about 1 year ago | Beginner   |
 
 ```json

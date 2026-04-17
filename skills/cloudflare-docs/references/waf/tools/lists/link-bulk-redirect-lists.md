@@ -1,5 +1,6 @@
 ---
 title: Bulk Redirect Lists
+description: Manage Bulk Redirect Lists for URL forwarding.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Refer to the following pages for more information about Turnstile's concepts:
+description: Core concepts for Turnstile, including widgets and challenge types.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

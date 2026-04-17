@@ -1,5 +1,6 @@
 ---
 title: Rulesets reference
+description: Reference for WAF managed rulesets including OWASP and Cloudflare rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

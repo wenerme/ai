@@ -1,6 +1,6 @@
 ---
 title: Security Analytics
-description: Security Analytics displays information about all incoming HTTP requests for your domain, including requests not handled by Cloudflare security products. This gives you visibility into your full traffic profile, not only the requests that triggered a security rule.
+description: Analyze traffic patterns and identify security threats with Security Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

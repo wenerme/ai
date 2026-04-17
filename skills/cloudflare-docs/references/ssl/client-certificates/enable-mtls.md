@@ -1,6 +1,6 @@
 ---
 title: Enable mTLS
-description: You can enable mutual Transport Layer Security (mTLS) for any hostname. For more information, refer to the Client certificates overview.
+description: Enable mutual TLS to require client certificates for your host.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

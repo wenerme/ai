@@ -1,6 +1,6 @@
 ---
 title: Manage DNS records
-description: Consider the sections below for step-by-step instructions on managing DNS records at Cloudflare.
+description: Create, edit, and delete DNS records for your zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -30,8 +30,8 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 
 ### Create DNS records
 
-* [ Dashboard ](#tab-panel-4266)
-* [ API ](#tab-panel-4267)
+* [ Dashboard ](#tab-panel-6458)
+* [ API ](#tab-panel-6459)
 
 To create a DNS record in the dashboard:
 
@@ -51,8 +51,8 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 
 ### Edit DNS records
 
-* [ Dashboard ](#tab-panel-4262)
-* [ API ](#tab-panel-4263)
+* [ Dashboard ](#tab-panel-6454)
+* [ API ](#tab-panel-6455)
 
 To edit DNS records in the dashboard:
 
@@ -66,8 +66,8 @@ To update part of a record with the API, use a [PATCH request](https://developer
 
 ### Delete DNS records
 
-* [ Dashboard ](#tab-panel-4264)
-* [ API ](#tab-panel-4265)
+* [ Dashboard ](#tab-panel-6456)
+* [ API ](#tab-panel-6457)
 
 To delete DNS records in the dashboard:
 

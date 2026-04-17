@@ -1,5 +1,6 @@
 ---
 title: Polish
+description: Compress and optimize images served through Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

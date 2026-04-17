@@ -1,6 +1,6 @@
 ---
 title: Health Checks regions
-description: Cloudflare has data centers in hundreds of cities worldwide. Health checks do not run from every single of these data centers as this would result in numerous requests to your servers. Instead, you are able to choose between one and thirteen regions from which to run health checks. Cloudflare will run Health Checks from three data centers in each region that you select.
+description: Cloudflare data center regions used for Health Checks monitoring.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

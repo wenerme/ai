@@ -1,6 +1,6 @@
 ---
 title: Backup certificates
-description: If Cloudflare is providing authoritative DNS for your domain, Cloudflare will issue a backup Universal SSL certificate for every standard Universal certificate issued.
+description: How Cloudflare issues backup certificates for redundancy.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

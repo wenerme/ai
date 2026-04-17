@@ -1,10 +1,14 @@
 ---
 title: Avoid web cache poisoning
-description: A cache poisoning attack uses an HTTP request to trick an origin web server into responding with a harmful resource that has the same cache key as a clean request. As a result, the poisoned resource gets cached and served to other users.
+description: Protect your site from web cache poisoning attacks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Security ](https://developers.cloudflare.com/search/?tags=Security) 
 
 Was this helpful?
 

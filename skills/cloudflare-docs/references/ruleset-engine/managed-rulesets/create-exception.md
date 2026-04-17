@@ -1,6 +1,6 @@
 ---
 title: Create an exception
-description: Use exceptions to skip the execution of a managed ruleset of some of its rules.
+description: Create an exception to skip specific rules or rulesets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

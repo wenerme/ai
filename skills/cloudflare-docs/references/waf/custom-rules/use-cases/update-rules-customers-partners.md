@@ -1,6 +1,6 @@
 ---
 title: Update custom rules for customers or partners
-description: You may want to adjust your custom rules to increase access by customers or partners.
+description: Manage custom rules for customer and partner traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

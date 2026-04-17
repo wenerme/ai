@@ -39,6 +39,104 @@ Settings are evaluated using OR logic - a setting is enabled if it is turned on 
 
 For more details, refer to the [DLP advanced settings documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/).
 
+## 2026-04-14
+
+  
+**Detect Cloudflare API tokens with DLP**   
+
+The **Credentials and Secrets** DLP profile now includes three new predefined entries for detecting Cloudflare API credentials:
+
+| Entry name                         | Token prefix | Detects                   |
+| ---------------------------------- | ------------ | ------------------------- |
+| Cloudflare User API Key            | cfk\_        | User-scoped API keys      |
+| Cloudflare User API Token          | cfut\_       | User-scoped API tokens    |
+| Cloudflare Account Owned API Token | cfat\_       | Account-scoped API tokens |
+
+These detections target the new [Cloudflare API credential format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which uses a structured prefix and a CRC32 checksum suffix. The identifiable prefix makes it possible to detect leaked credentials with high confidence and low false positive rates — no surrounding context such as `Authorization: Bearer` headers is required.
+
+Credentials generated before this format change will not be matched by these entries.
+
+#### How to enable Cloudflare API token detections
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **DLP** \> **DLP Profiles**.
+2. Select the **Credentials and Secrets** profile.
+3. Turn on one or more of the new Cloudflare API token entries.
+4. Use the profile in a Gateway HTTP policy to log or block traffic containing these credentials.
+
+Example policy:
+
+| Selector    | Operator | Value                     | Action |
+| ----------- | -------- | ------------------------- | ------ |
+| DLP Profile | in       | _Credentials and Secrets_ | Block  |
+
+You can also enable individual entries to scope detection to specific credential types — for example, enabling **Account Owned API Token** detection without enabling **User API Key** detection.
+
+For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
+## 2026-04-14
+
+  
+**Configure how sensitive data appears in DLP payload logs**   
+
+You can now configure how sensitive data matches are displayed in your DLP payload match logs — giving your incident response team the context they need to validate alerts without compromising your security posture.
+
+To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust** \> **Data loss prevention** \> **DLP settings** and find the **Payload log masking** card.
+
+Previously, all DLP payload logs used a single masking mode that obscured matched data entirely and hid the original character count, making it difficult to distinguish true positives from false positives. This update introduces three options:
+
+* **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
+* **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
+* **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
+
+**Important:** The masking level you select is applied at detection time, before the payload is encrypted. This means the chosen format is what your team will see after decrypting the log with your private key — the existing encryption workflow is unchanged.
+
+**Applies to all enabled detections:** When a masking level other than Full Mask is selected, it applies to all sensitive data matches found within a payload window — not just the match that triggered the policy. Any data matched by your enabled DLP detection entries will be masked at the selected level.
+
+For more information, refer to [DLP logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
+
+## 2026-03-26
+
+  
+**Streaming ZIP file scanning removes per-file size limits**   
+
+DLP now processes ZIP files using a streaming handler that scans archive contents element-by-element as data arrives. This removes previous file size limitations and improves memory efficiency when scanning large archives.
+
+Microsoft Office documents (DOCX, XLSX, PPTX) also benefit from this improvement, as they use ZIP as a container format.
+
+This improvement is automatic — no configuration changes are required.
+
+## 2026-03-25
+
+  
+**Detect and sanitize HAR files**   
+
+HTTP Archive (HAR) files are used by engineering and support teams to capture and share web traffic logs for troubleshooting. However, these files routinely contain highly sensitive data — including session cookies, authorization headers, and other credentials — that can pose a significant risk if uploaded to third-party services without being reviewed or cleaned first.
+
+Gateway now includes a predefined DLP profile called **Unsanitized HAR** that detects HAR files in HTTP traffic. You can use this profile in a Gateway HTTP policy to either block HAR file uploads entirely or redirect users to a sanitization tool before allowing the upload to proceed.
+
+#### How to configure a HAR file policy
+
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall Policies** \> **HTTP** and create a new HTTP policy using the **DLP Profile** selector:
+
+| Selector    | Operator | Value             | Action |
+| ----------- | -------- | ----------------- | ------ |
+| DLP Profile | in       | _Unsanitized HAR_ |        |
+
+Then choose one of the following actions:
+
+* **Block**: Prevents the upload of any HAR file that has not been sanitized by Cloudflare's sanitizer. Use this for strict environments where HAR file sharing must be disallowed entirely.
+* **Block** with **Gateway Redirect**: Intercepts the upload and redirects the user to `https://har-sanitizer.pages.dev/`, where they can sanitize the file. Once sanitized, the user can re-upload the clean file and proceed with their workflow.
+
+#### Sanitized HAR recognition
+
+HAR files processed by the Cloudflare HAR sanitizer receive a tamper-evident sanitized marker. DLP recognizes this marker and will not re-trigger the policy on a file that has already been sanitized and has not been modified since. If a previously sanitized file is edited, it will be treated as unsanitized and flagged again.
+
+#### Visibility in Gateway logs
+
+Gateway logs will reflect whether a detected HAR file was classified as **Unsanitized** or **Sanitized**, giving your security team full visibility into HAR file activity across your organization.
+
+For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
 ## 2025-10-01
 
   

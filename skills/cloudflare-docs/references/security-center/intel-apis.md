@@ -1,6 +1,6 @@
 ---
 title: Threat Intelligence APIs
-description: Cloudflare provides a series of endpoints covering various areas of internet security and insights. Based on your Cloudflare plan type, the limit of API calls will vary per month.
+description: Query Cloudflare threat intelligence data for IPs, domains, ASNs, and more.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

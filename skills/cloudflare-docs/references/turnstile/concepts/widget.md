@@ -1,6 +1,6 @@
 ---
 title: Turnstile widgets
-description: A Turnstile widget defines how Turnstile behaves on your webpage. Each widget has a mode, a label, a sitekey, and a secret key. You can create multiple widgets with different configurations.
+description: Turnstile widget modes, sizes, and rendering behavior.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Below you will find answers to our most commonly asked questions about the Waiting Room.
+description: Answers to common Waiting Room questions and issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

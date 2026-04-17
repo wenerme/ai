@@ -1,6 +1,6 @@
 ---
 title: Observatory dashboard
-description: The Observatory overview dashboard provides a single view of your zone's performance over the past seven days. It combines synthetic monitoring, real user data, and Cloudflare's analysis to help you quickly identify performance bottlenecks and receive actionable recommendations.
+description: View speed test history and performance trends in the Observatory dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

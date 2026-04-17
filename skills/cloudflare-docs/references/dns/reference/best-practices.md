@@ -1,5 +1,6 @@
 ---
 title: Migrate DNS from BIND
+description: Best practices for migrating DNS from BIND to Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

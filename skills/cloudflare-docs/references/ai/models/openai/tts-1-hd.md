@@ -173,8 +173,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-210)
-* [ Output ](#tab-panel-211)
+* [ Input ](#tab-panel-214)
+* [ Output ](#tab-panel-215)
 
 text
 
@@ -194,12 +194,12 @@ speed
 
 audio
 
-`string`requiredURL to the generated audio file
+`string`URL to the generated audio file
 
 ## API Schemas
 
-* [ Input ](#tab-panel-208)
-* [ Output ](#tab-panel-209)
+* [ Input ](#tab-panel-212)
+* [ Output ](#tab-panel-213)
 
 ```
 

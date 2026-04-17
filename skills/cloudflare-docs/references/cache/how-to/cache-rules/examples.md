@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: In the following sections, you can find common cache rules examples.
+description: Example cache rule configurations for common use cases.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

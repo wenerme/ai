@@ -1,6 +1,6 @@
 ---
 title: CSV file format for Bulk Redirects
-description: You can use a CSV file to import URL redirects into a Bulk Redirect List using the Cloudflare dashboard. Each line in the CSV file must follow this format:
+description: CSV file format for importing Bulk Redirect lists.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

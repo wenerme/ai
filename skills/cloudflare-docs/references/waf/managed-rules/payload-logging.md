@@ -1,6 +1,6 @@
 ---
 title: Log the payload of matched rules
-description: The WAF allows you to log the request information that triggered a specific rule of a managed ruleset. This information is known as the payload. Payload information includes the specific string that triggered the rule, along with the text that appears immediately before and after the match.
+description: Log the request content that triggered a managed ruleset match.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

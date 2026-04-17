@@ -1,6 +1,6 @@
 ---
 title: Settings by plan
-description: Certain fields in Spectrum request and response bodies require an Enterprise plan. To upgrade your plan, contact your account team.
+description: Spectrum API fields and settings available by Cloudflare plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Available settings
-description: These are the settings that you can configure when creating a Cache Response Rule. Because Cache Response Rules execute after Cloudflare receives the origin response, both request and response fields are available for rule matching.
+description: Available settings for cache response rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

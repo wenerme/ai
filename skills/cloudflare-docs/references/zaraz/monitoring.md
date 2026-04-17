@@ -1,6 +1,6 @@
 ---
 title: Monitoring
-description: Zaraz Monitoring shows you different metrics regarding Zaraz. This helps you to detect issues when they occur. For example, if a third-party analytics provider stops collecting data, you can use the information presented by Zaraz Monitoring to find where in the workflow the problem occurred.
+description: Monitor Zaraz tool loading and event delivery.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

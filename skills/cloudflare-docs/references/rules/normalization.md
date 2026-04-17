@@ -1,6 +1,6 @@
 ---
 title: URL normalization
-description: Cloudflare provides a URL normalization feature to modify the URLs of incoming requests so that they conform to a consistent formatting standard. This is important because the same resource can be requested using different URL formats (for example, /hello and /%68ello refer to the same path), and without normalization, security rules and other features might not match all variations of a URL.
+description: Normalize incoming request URLs before they reach other Cloudflare Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

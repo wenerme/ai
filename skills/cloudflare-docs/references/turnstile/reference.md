@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Refer to the following pages for more information about Turnstile:
+description: Reference information for Turnstile, including browsers, languages, and CSP.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

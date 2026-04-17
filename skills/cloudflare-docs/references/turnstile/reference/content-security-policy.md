@@ -1,6 +1,6 @@
 ---
 title: Content Security Policy
-description: If your website uses a Content Security Policy (CSP) header, you must configure it to allow Turnstile's scripts and iframes. Without the correct CSP directives, Turnstile may fail to load.
+description: Content Security Policy directives required for Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

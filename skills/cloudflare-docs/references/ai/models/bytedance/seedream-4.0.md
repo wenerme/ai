@@ -221,8 +221,8 @@ Response200 ![Custom Dimensions](https://replicate.delivery/xezq/1SbAc0aXYXbVD9d
 
 ## Parameters
 
-* [ Input ](#tab-panel-50)
-* [ Output ](#tab-panel-51)
+* [ Input ](#tab-panel-54)
+* [ Output ](#tab-panel-55)
 
 prompt
 
@@ -250,12 +250,12 @@ enhance\_prompt
 
 image
 
-`string`requiredformat: uri
+`string`format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-48)
-* [ Output ](#tab-panel-49)
+* [ Input ](#tab-panel-52)
+* [ Output ](#tab-panel-53)
 
 ```
 

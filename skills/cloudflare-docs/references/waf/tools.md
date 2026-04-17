@@ -1,6 +1,6 @@
 ---
 title: Additional tools
-description: The Cloudflare WAF offers the following additional tools:
+description: Additional WAF security tools including IP rules, lists, and Scrape Shield.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

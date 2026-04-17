@@ -1,6 +1,6 @@
 ---
 title: Cache Reserve
-description: Cache Reserve is a large, persistent data store implemented on top of R2. By pushing a single button in the dashboard, your website's cacheable content will be written to Cache Reserve.
+description: Persist cached content in R2 storage to eliminate cache evictions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -38,8 +38,8 @@ Cache Reserve is a usage-based product and [pricing](#pricing) is detailed below
 
 A paid Cache Reserve Plan is required for the enablement.
 
-* [ Dashboard ](#tab-panel-3310)
-* [ API ](#tab-panel-3311)
+* [ Dashboard ](#tab-panel-5414)
+* [ API ](#tab-panel-5415)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)
@@ -60,7 +60,7 @@ Not all assets are eligible for Cache Reserve. To be admitted into Cache Reserve
 * Be cacheable, according to Cloudflare's standard [cacheability factors](https://developers.cloudflare.com/cache/).
 * Have a freshness time-to-live (TTL) of at least 10 hours (set by any means such as Cache-Control / [CDN-Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) origin response headers, [Edge Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/#edge-cache-ttl), [Cache TTL By Status](https://developers.cloudflare.com/cache/how-to/configure-cache-status-code/), or [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)),
 * Have a Content-Length response header.
-* When using [Image transformations](https://developers.cloudflare.com/images/manage-images/create-variants/), original files are eligible for Cache Reserve, but resized file variants are not eligible because transformations happen after Cache Reserve in the response flow.
+* When using [Image transformations](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/), original files are eligible for Cache Reserve, but resized file variants are not eligible because transformations happen after Cache Reserve in the response flow.
 
 ## Limits
 
@@ -195,8 +195,8 @@ You can remove all data stored in Cache Reserve through the dashboard or via API
 
 Be aware that the deletion may take up to 24 hours to complete.
 
-* [ Dashboard ](#tab-panel-3312)
-* [ API ](#tab-panel-3313)
+* [ Dashboard ](#tab-panel-5416)
+* [ API ](#tab-panel-5417)
 
 1. In the Cloudflare dashboard, go to the **Cache Reserve** page.  
 [ Go to **Cache Reserve** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-reserve)

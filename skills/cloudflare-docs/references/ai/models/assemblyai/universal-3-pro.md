@@ -62,8 +62,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-32)
-* [ Output ](#tab-panel-33)
+* [ Input ](#tab-panel-36)
+* [ Output ](#tab-panel-37)
 
 ```
 
@@ -124,8 +124,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-34)
-* [ Output ](#tab-panel-35)
+* [ Input ](#tab-panel-38)
+* [ Output ](#tab-panel-39)
 
 ```
 
@@ -196,8 +196,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-38)
-* [ Output ](#tab-panel-39)
+* [ Input ](#tab-panel-42)
+* [ Output ](#tab-panel-43)
 
 ```
 
@@ -268,8 +268,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-36)
-* [ Output ](#tab-panel-37)
+* [ Input ](#tab-panel-40)
+* [ Output ](#tab-panel-41)
 
 ```
 
@@ -297,8 +297,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-42)
-* [ Output ](#tab-panel-43)
+* [ Input ](#tab-panel-46)
+* [ Output ](#tab-panel-47)
 
 audio\_url
 
@@ -418,12 +418,12 @@ speech\_threshold
 
 text
 
-`string`requiredThe transcribed text.
+`string`The transcribed text.
 
 ## API Schemas
 
-* [ Input ](#tab-panel-40)
-* [ Output ](#tab-panel-41)
+* [ Input ](#tab-panel-44)
+* [ Output ](#tab-panel-45)
 
 ```
 

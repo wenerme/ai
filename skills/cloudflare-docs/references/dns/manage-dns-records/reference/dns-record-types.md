@@ -1,6 +1,6 @@
 ---
 title: DNS record types
-description: This page provides information about some of the different types of DNS records that you can manage on Cloudflare. For guidance on how to add, edit, or delete DNS records, refer to Manage DNS records.
+description: DNS record types supported by Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

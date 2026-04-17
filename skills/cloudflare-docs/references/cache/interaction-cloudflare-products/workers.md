@@ -1,6 +1,6 @@
 ---
 title: Customize cache behavior with Workers
-description: You can use Workers to customize cache behavior on Cloudflare's CDN. Cloudflare Workers provide flexibility in handling assets and responses by running both before and after the cache. A Worker can be configured to run before a request reaches the cache, allowing for modifications to the request, and it can also be used to modify assets once they are returned from the cache.
+description: Customize cache behavior with the Workers Cache API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

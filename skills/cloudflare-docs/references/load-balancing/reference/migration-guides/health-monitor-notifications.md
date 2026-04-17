@@ -1,6 +1,6 @@
 ---
 title: Health monitor notifications
-description: Cloudflare is migrating the notifications used by load balancing health monitors to use Cloudflare's centralized Notifications Service.
+description: Migrate health monitor notifications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

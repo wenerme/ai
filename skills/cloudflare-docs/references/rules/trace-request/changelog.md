@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Trace changelog
-description: Subscribe to RSS
+description: Track the latest updates and changes to Trace requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

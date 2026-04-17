@@ -1,6 +1,6 @@
 ---
 title: Manage certificates
-description: Refer to the following sections to learn how to manage certificates used with zone-level and per-hostname Authenticated Origin Pulls. Global AOP uses a Cloudflare-provided certificate and does not require certificate management.
+description: Upload and manage certificates for Authenticated Origin Pulls.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

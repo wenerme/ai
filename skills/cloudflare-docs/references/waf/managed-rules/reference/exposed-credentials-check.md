@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Exposed Credentials Check Managed Ruleset
-description: The Cloudflare Exposed Credentials Check Managed Ruleset is a set of pre-configured rules for well-known CMS applications that perform a lookup against a public database of stolen credentials.
+description: Rules in the Cloudflare Exposed Credentials Check managed ruleset.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

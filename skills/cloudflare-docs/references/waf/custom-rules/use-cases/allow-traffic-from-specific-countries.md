@@ -1,6 +1,6 @@
 ---
 title: Allow traffic from specific countries only
-description: This example custom rule blocks requests based on country code using the ip.src.country field, only allowing requests from two countries: United States and Mexico.
+description: Allow traffic only from specific countries.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

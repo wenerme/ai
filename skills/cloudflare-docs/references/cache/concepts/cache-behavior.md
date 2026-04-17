@@ -1,10 +1,14 @@
 ---
 title: Head Requests and Set-Cookie Headers
-description: In this page, we document how Cloudflare's cache system behaves in interaction with:
+description: How Cloudflare handles HEAD requests and Set-Cookie headers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
 
 Was this helpful?
 

@@ -1,6 +1,6 @@
 ---
 title: Set up your security.txt file
-description: You can manage your security.txt file via the dashboard or the API.
+description: Manage your security.txt file via the dashboard or the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -24,8 +24,8 @@ When using the API, the preferred languages field name is `preferred_languages` 
 
 To manage your security.txt file via the Cloudflare dashboard:
 
-* [  New dashboard ](#tab-panel-6510)
-* [ Old dashboard ](#tab-panel-6511)
+* [  New dashboard ](#tab-panel-8712)
+* [ Old dashboard ](#tab-panel-8713)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain.
 2. Go to **Security** \> **Settings** and filter by **Web application exploits**.

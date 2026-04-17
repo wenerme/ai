@@ -1,6 +1,6 @@
 ---
 title: TXT
-description: TXT record validation requires the creation of a TXT record in the hostname's authoritative DNS.
+description: Validate domain control with a TXT DNS record.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -41,8 +41,8 @@ Once you [create a new certificate](https://developers.cloudflare.com/ssl/edge-c
 
 These tokens can be fetched through the API or the dashboard when the certificates are in a [pending validation](https://developers.cloudflare.com/ssl/reference/certificate-statuses/#new-certificates) state during custom hostname creation or during certificate renewals.
 
-* [ API ](#tab-panel-6605)
-* [ Dashboard ](#tab-panel-6606)
+* [ API ](#tab-panel-8763)
+* [ Dashboard ](#tab-panel-8764)
 
 You can access these tokens using the API with the [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/get/) and including `status=pending_validation` as a request parameter.
 

@@ -1,5 +1,6 @@
 ---
 title: Error page types
+description: Types of error pages you can customize with custom error rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Additional fields
-description: Some tools supported by Zaraz let you add fields in addition to the required field. Fields can usually be added either to a specific action, or to all the action within a tool, by adding the field as a Default Field.
+description: Additional fields available in Zaraz custom actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Fonts
-description: Cloudflare Fonts is a feature designed for websites that use Google Fonts. It rewrites Google Fonts to be delivered from a website’s own origin, eliminating the need to rely on third-party font providers. Cloudflare Fonts is tailored to improve website performance and user privacy without the need for any code changes or self-hosting of fonts.
+description: Serve Google Fonts from your domain to improve privacy and performance.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Require specific HTTP headers
-description: Many organizations qualify traffic based on the presence of specific HTTP request headers. Use the Rules language HTTP request header fields to target requests with specific headers.
+description: Require specific HTTP headers in incoming requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Queueing method
-description: The queueing method determines the order that visitors exit an active waiting room and reach your application.
+description: Queueing methods including FIFO, random, and passthrough.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

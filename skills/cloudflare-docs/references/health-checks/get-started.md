@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: This guide will get you started with creating and managing configured Health Checks.
+description: Create and configure Health Checks to monitor your origin servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

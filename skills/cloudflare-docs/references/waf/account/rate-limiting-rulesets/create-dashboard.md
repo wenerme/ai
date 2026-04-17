@@ -1,6 +1,6 @@
 ---
 title: Create a rate limiting ruleset in the dashboard
-description: At the account level, rate limiting rules are grouped into rate limiting rulesets. You must first create a custom ruleset with one or more rate limiting rules, and then deploy it to one or more zones on an Enterprise plan.
+description: Create account-level rate limiting rulesets in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

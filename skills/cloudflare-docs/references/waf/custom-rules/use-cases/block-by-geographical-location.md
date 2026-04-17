@@ -1,6 +1,6 @@
 ---
 title: Block traffic by geographical location
-description: This example custom rule blocks requests by autonomous system number (ASN), continent, or country of origin.
+description: Block traffic based on geographic location.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

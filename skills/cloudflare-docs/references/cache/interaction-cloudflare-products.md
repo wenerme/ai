@@ -1,6 +1,6 @@
 ---
 title: Interaction with Cloudflare products
-description: Review the following topics to learn more about how Cache interacts with other Cloudflare products.
+description: How caching interacts with Workers, R2, WAF, and other products.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

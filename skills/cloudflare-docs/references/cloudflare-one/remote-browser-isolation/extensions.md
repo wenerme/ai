@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
+
 Was this helpful?
 
 YesNo
@@ -18,7 +22,7 @@ Copy page
 
 Browser Isolation supports running native Chromium Web Extensions in the remote browser.
 
-This capability allows extending tools that require DOM access (such as password managers and ad blockers) to isolated pages.
+When a page is isolated, it runs in a remote browser — not in the user's local browser. Extensions installed locally cannot interact with isolated pages because the page content exists only on the remote side. This capability allows extending tools that require DOM access (the ability to read and modify page content and structure), such as password managers and ad blockers, to isolated pages.
 
 ## Install an extension inside the remote browser
 

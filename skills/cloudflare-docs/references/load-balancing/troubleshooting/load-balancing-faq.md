@@ -1,6 +1,6 @@
 ---
 title: FAQs
-description: For more detailed information about Load Balancing — including how-to guides, tutorials, and other reference information — check out our product documentation.
+description: Answers to common Load Balancing questions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

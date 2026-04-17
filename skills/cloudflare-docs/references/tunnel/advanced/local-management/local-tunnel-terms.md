@@ -1,6 +1,6 @@
 ---
 title: Useful terms
-description: This page contains terminology specific to locally-managed Cloudflare Tunnels. For general Tunnel terminology, refer to the Get started section.
+description: Key terms for working with locally-managed Cloudflare Tunnels.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

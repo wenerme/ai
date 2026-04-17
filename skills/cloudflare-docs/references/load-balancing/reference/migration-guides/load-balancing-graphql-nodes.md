@@ -1,6 +1,6 @@
 ---
 title: Migrate to new GraphQL nodes
-description: After 30 September 2021, Cloudflare will make the following changes to the Load Balancing GraphQL schema:
+description: Migrate to new GraphQL analytics nodes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Enable security.txt
+description: Configure your security.txt file for vulnerability disclosure.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

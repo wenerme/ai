@@ -1,6 +1,6 @@
 ---
 title: Exempt partners from Hotlink Protection
-description: When enabled, Cloudflare Hotlink Protection blocks all HTTP referrers that are not part of your domain or zone. That presents a problem if you allow partners to use inline links to your assets.
+description: Exempt partners from Hotlink Protection using custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

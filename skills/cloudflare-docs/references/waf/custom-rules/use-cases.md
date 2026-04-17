@@ -1,6 +1,6 @@
 ---
 title: Common use cases
-description: The following common use cases illustrate how to secure web traffic to your sites and applications with custom rules:
+description: Common WAF custom rule use cases and example configurations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

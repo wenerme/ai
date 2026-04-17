@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: See the following pages for more information about Cloudflare Load Balancing:
+description: Reference information for Load Balancing.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

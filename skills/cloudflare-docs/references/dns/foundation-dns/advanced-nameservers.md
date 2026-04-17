@@ -1,6 +1,6 @@
 ---
 title: Advanced nameservers
-description: Advanced nameservers included with Foundation DNS offer improved resiliency and more consistent nameserver assignment.
+description: Advanced nameserver features for Foundation DNS.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

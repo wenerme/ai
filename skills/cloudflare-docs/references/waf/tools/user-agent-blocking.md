@@ -1,6 +1,6 @@
 ---
 title: User Agent Blocking
-description: User Agent Blocking allows you to block specific browser or web application User-Agent request headers. User agent rules apply to the entire domain instead of individual subdomains.
+description: Block or challenge requests based on User-Agent header values.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -42,9 +42,9 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 ## Create a User Agent Blocking rule
 
-* [  New dashboard ](#tab-panel-6961)
-* [ Old dashboard ](#tab-panel-6962)
-* [ API ](#tab-panel-6963)
+* [  New dashboard ](#tab-panel-9133)
+* [ Old dashboard ](#tab-panel-9134)
+* [ API ](#tab-panel-9135)
 
 Note
 

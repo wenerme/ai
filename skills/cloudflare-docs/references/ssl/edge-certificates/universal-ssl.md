@@ -1,6 +1,6 @@
 ---
 title: Universal SSL
-description: By default, Cloudflare issues — and renews — free, unshared, publicly trusted SSL certificates to all domains added to and activated on Cloudflare.
+description: Free TLS certificates automatically issued for all proxied hostnames.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

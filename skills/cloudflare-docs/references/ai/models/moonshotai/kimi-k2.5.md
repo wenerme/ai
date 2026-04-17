@@ -30,12 +30,6 @@ Kimi K2.5 is Moonshot AI's language model with strong coding, reasoning, and mul
 | Terms and License                                                          | [link ↗](https://kimi.moonshot.cn/terms) |
 | More information                                                           | [link ↗](https://kimi.moonshot.cn/)      |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=moonshotai/kimi-k2.5) 
-
 ## Usage
 
 TypeScript
@@ -242,8 +236,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-158)
-* [ Output ](#tab-panel-159)
+* [ Input ](#tab-panel-162)
+* [ Output ](#tab-panel-163)
 
 ▶messages\[\]
 
@@ -295,23 +289,23 @@ response\_format
 
 id
 
-`string`required
+`string`
 
 object
 
-`string`required
+`string`
 
 created
 
-`number`required
+`number`
 
 model
 
-`string`required
+`string`
 
 ▶choices\[\]
 
-`array`required
+`array`
 
 ▶usage{}
 
@@ -319,8 +313,8 @@ model
 
 ## API Schemas
 
-* [ Input ](#tab-panel-156)
-* [ Output ](#tab-panel-157)
+* [ Input ](#tab-panel-160)
+* [ Output ](#tab-panel-161)
 
 ```
 

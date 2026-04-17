@@ -1,6 +1,6 @@
 ---
 title: DNSSEC keys
-description: With Foundation DNS, you can request that the ZSK/KSK pair that is used for DNSSEC is unique to your Cloudflare account. To opt in to this feature, contact your account team.
+description: DNSSEC key management for Foundation DNS zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

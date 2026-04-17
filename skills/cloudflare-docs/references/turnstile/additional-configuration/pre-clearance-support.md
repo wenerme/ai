@@ -1,5 +1,6 @@
 ---
 title: Pre-clearance support
+description: Issue clearance cookies to reduce repeated challenges for valid visitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

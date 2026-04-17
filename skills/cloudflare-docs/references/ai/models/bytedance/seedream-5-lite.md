@@ -61,8 +61,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-66)
-* [ Output ](#tab-panel-67)
+* [ Input ](#tab-panel-70)
+* [ Output ](#tab-panel-71)
 
 ```
 
@@ -133,8 +133,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-68)
-* [ Output ](#tab-panel-69)
+* [ Input ](#tab-panel-72)
+* [ Output ](#tab-panel-73)
 
 ```
 
@@ -209,8 +209,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-70)
-* [ Output ](#tab-panel-71)
+* [ Input ](#tab-panel-74)
+* [ Output ](#tab-panel-75)
 
 ```
 
@@ -285,8 +285,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-72)
-* [ Output ](#tab-panel-73)
+* [ Input ](#tab-panel-76)
+* [ Output ](#tab-panel-77)
 
 ```
 
@@ -363,8 +363,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-74)
-* [ Output ](#tab-panel-75)
+* [ Input ](#tab-panel-78)
+* [ Output ](#tab-panel-79)
 
 ```
 
@@ -404,8 +404,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-78)
-* [ Output ](#tab-panel-79)
+* [ Input ](#tab-panel-82)
+* [ Output ](#tab-panel-83)
 
 prompt
 
@@ -437,12 +437,12 @@ output\_format
 
 ▶images\[\]
 
-`array`requiredminItems: 1format: uri
+`array`minItems: 1format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-76)
-* [ Output ](#tab-panel-77)
+* [ Input ](#tab-panel-80)
+* [ Output ](#tab-panel-81)
 
 ```
 

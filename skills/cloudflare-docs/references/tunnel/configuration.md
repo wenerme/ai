@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: This page covers the most common configuration options for cloudflared tunnels, including high availability, firewall rules, and runtime parameters.
+description: Configure tunnel ingress rules, origins, and protocol settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -44,8 +44,8 @@ graph LR
 
 ### Deploy a replica
 
-* [ Dashboard ](#tab-panel-6680)
-* [ CLI ](#tab-panel-6681)
+* [ Dashboard ](#tab-panel-8896)
+* [ CLI ](#tab-panel-8897)
 
 To deploy a replica for a remotely-managed tunnel:
 

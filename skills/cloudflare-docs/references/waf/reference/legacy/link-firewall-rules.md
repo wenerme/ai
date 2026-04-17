@@ -1,5 +1,6 @@
 ---
 title: Firewall rules
+description: Documentation for deprecated Cloudflare Firewall Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

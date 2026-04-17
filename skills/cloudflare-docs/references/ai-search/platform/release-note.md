@@ -18,6 +18,36 @@ Copy page
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-04-16
+
+**Hybrid search**
+
+AI Search now supports [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/), combining vector and BM25 keyword search in a single query. Configure the tokenizer, keyword match mode, and fusion method per instance. Refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/) for an overview.
+
+## 2026-04-16
+
+**Relevance boosting**
+
+Boost search results by metadata fields like timestamp or priority using [relevance boosting](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/). Configure up to 3 boost fields per instance or per request.
+
+## 2026-04-16
+
+**Cross-instance search**
+
+Search across multiple AI Search instances in a single call using [namespace-level search](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#namespace-level). Results are merged and ranked, with each chunk identifying which instance it came from.
+
+## 2026-04-16
+
+**Built-in storage and vector index**
+
+New AI Search instances come with [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) and a [built-in vector index](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/#built-in-vector-index). Upload files directly to an instance using the Items API or the dashboard without setting up external infrastructure.
+
+## 2026-04-16
+
+**New AI Search Workers bindings**
+
+Two new [Workers bindings](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) for AI Search. The `ai_search_namespaces` binding gives access to all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) and supports dynamic instance management at runtime. The `ai_search` binding binds directly to a single instance for simpler use cases.
+
 ## 2026-04-01
 
 **Wrangler CLI support for AI Search**
@@ -34,13 +64,13 @@ Define up to 5 custom metadata fields per AI Search instance and filter search r
 
 **Public endpoint, UI snippets, and MCP support**
 
-AI Search now supports [public endpoints](https://developers.cloudflare.com/ai-search/configuration/public-endpoint/), [UI snippets](https://developers.cloudflare.com/ai-search/configuration/embed-search-snippets/), and [MCP](https://developers.cloudflare.com/ai-search/usage/mcp/), making it easy to add search to your website or connect AI agents.
+AI Search now supports [public endpoints](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/), [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/), and [MCP](https://developers.cloudflare.com/ai-search/api/search/mcp/), making it easy to add search to your website or connect AI agents.
 
 ## 2026-03-23
 
 **New REST API endpoints**
 
-AI Search introduces new [REST API](https://developers.cloudflare.com/ai-search/usage/rest-api/) endpoints for search that use an OpenAI-compatible format. You can use the familiar `messages` array structure that works with existing OpenAI SDKs and tools. The previous AutoRAG API endpoints will continue working as expected for the time being. New features will only be added to the new API. We will provide at least 90 days notice before any end of life. See the [migration guide](https://developers.cloudflare.com/ai-search/how-to/migrate-from-autorag-api/) for instructions.
+AI Search introduces new [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) endpoints for search that use an OpenAI-compatible format. You can use the familiar `messages` array structure that works with existing OpenAI SDKs and tools. The previous AutoRAG API endpoints will continue working as expected. New features will only be added to the new API. See the [migration guide](https://developers.cloudflare.com/ai-search/api/migration/rest-api/) for instructions.
 
 ## 2026-02-09
 
@@ -220,7 +250,7 @@ Filter search results by `folder` and `timestamp` to enable multitenancy and con
 
 **Response streaming in AI Search binding added**
 
-AI Search now supports response streaming in the `AI Search` method of the [Workers binding](https://developers.cloudflare.com/ai-search/usage/workers-binding/), allowing you to stream results as they're retrieved by setting `stream: true`.
+AI Search now supports response streaming in the `AI Search` method of the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/), allowing you to stream results as they're retrieved by setting `stream: true`.
 
 ## 2025-04-07
 

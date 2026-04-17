@@ -1,6 +1,6 @@
 ---
 title: Validate the token
-description: Learn how to securely validate Turnstile tokens on your server using the Siteverify API.
+description: Validate Turnstile tokens on your server with the siteverify API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -75,11 +75,11 @@ To ensure a successful validation, the visitor must initiate the request and sub
 
 ## Basic validation examples
 
-* [  JavaScript ](#tab-panel-6782)
-* [  PHP ](#tab-panel-6783)
-* [  Python ](#tab-panel-6784)
-* [  Java ](#tab-panel-6785)
-* [  C# ](#tab-panel-6786)
+* [  JavaScript ](#tab-panel-8940)
+* [  PHP ](#tab-panel-8941)
+* [  Python ](#tab-panel-8942)
+* [  Java ](#tab-panel-8943)
+* [  C# ](#tab-panel-8944)
 
 #### JSON
 
@@ -922,8 +922,8 @@ Explain Code
 
 ## API response format
 
-* [ Successful response ](#tab-panel-6787)
-* [ Failed response ](#tab-panel-6788)
+* [ Successful response ](#tab-panel-8945)
+* [ Failed response ](#tab-panel-8946)
 
 Example
 

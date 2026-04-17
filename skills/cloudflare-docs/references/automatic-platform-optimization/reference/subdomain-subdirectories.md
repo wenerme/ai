@@ -1,10 +1,14 @@
 ---
 title: Subdomains and subdirectories
-description: After you enable APO, you configure it to run on the subdomain that uses WordPress. For example, if you have a website called www.mysite.com which includes a subdomain running WordPress called shop.mysite.com, you would configure APO to run on the shop.mysite.com subdomain.
+description: Run APO on WordPress subdomains and subdirectory installations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress)[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
 
 Was this helpful?
 

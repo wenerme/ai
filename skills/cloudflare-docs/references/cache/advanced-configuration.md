@@ -1,6 +1,6 @@
 ---
 title: Advanced configuration
-description: Learn how to complete different configuration options to customize your cache behavior.
+description: Advanced caching features including Cache Reserve, Early Hints, and Vary.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

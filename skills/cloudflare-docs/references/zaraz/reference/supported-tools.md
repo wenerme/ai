@@ -1,6 +1,6 @@
 ---
 title: Third-party tools
-description: Cloudflare Zaraz supports the following third-party tools:
+description: Third-party tools with native Zaraz integrations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

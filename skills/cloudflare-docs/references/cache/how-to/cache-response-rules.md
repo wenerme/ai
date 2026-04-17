@@ -1,6 +1,6 @@
 ---
 title: Cache Response Rules
-description: Cache Response Rules allow you to configure cache settings based on request and response attributes. These rules execute prior to caching in the http_response_cache_settings phase, which runs after Cloudflare receives the origin response.
+description: Control response headers and settings for cached content.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

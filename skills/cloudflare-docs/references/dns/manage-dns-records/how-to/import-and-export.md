@@ -1,6 +1,6 @@
 ---
 title: Import and export records
-description: Use import and export to have more control over your DNS records and make processes like migrating a domain or bulk editing record comments easier.
+description: Import and export DNS records using zone files.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -33,8 +33,8 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 ### Import zone file to Cloudflare
 
-* [ Dashboard ](#tab-panel-4316)
-* [ API ](#tab-panel-4317)
+* [ Dashboard ](#tab-panel-6464)
+* [ API ](#tab-panel-6465)
 
 To import a zone file using the dashboard:
 
@@ -72,8 +72,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
 
 You can also bulk export records from Cloudflare.
 
-* [ Dashboard ](#tab-panel-4318)
-* [ API ](#tab-panel-4319)
+* [ Dashboard ](#tab-panel-6466)
+* [ API ](#tab-panel-6467)
 
 To export records using the dashboard:
 

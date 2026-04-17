@@ -1,6 +1,6 @@
 ---
 title: Adjust the sensitivity of an HTTP DDoS rule to Low
-description: Follow the steps below to override the sensitivity of a specific rule of the Cloudflare HTTP DDoS Attack Protection managed ruleset.
+description: Adjust the sensitivity of an HTTP DDoS rule to Low.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

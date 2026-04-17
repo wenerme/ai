@@ -1,6 +1,6 @@
 ---
 title: Request rate calculation
-description: Cloudflare tracks request rates by maintaining separate counters for each unique combination of values in a rule's characteristics.
+description: How Cloudflare tracks and calculates request rates using rule characteristics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

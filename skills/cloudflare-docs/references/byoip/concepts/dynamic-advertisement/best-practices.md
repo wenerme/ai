@@ -1,6 +1,6 @@
 ---
 title: Best practices
-description: To prevent issues and simplify the advertisement process during an attack scenario, complete the following tasks.
+description: Best practices for managing dynamic IP prefix advertisement.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -67,8 +67,8 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 
 ## Obtain prefix IDs
 
-* [ Dashboard ](#tab-panel-3292)
-* [ API ](#tab-panel-3293)
+* [ Dashboard ](#tab-panel-5402)
+* [ API ](#tab-panel-5403)
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** \> **BYOIP Prefixes**.

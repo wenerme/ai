@@ -38,7 +38,7 @@ Automatic image compression without quality loss. [Learn more about Polish](http
 
 1. [Images get started](https://developers.cloudflare.com/images/get-started/)
 2. [Enable Polish](https://developers.cloudflare.com/images/polish/)
-3. [Transform images via URL](https://developers.cloudflare.com/images/transform-images/)
+3. [Transform images via URL](https://developers.cloudflare.com/images/optimization/transformations/overview/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/use-cases/","name":"Use cases"}},{"@type":"ListItem","position":3,"item":{"@id":"/use-cases/media-streaming/","name":"Media and streaming"}},{"@type":"ListItem","position":4,"item":{"@id":"/use-cases/media-streaming/image-optimization/","name":"Optimize and transform images for the web"}}]}

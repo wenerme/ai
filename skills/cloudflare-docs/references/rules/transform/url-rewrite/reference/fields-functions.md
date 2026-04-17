@@ -1,6 +1,6 @@
 ---
 title: Available fields and functions
-description: A URL rewrite rule filter expression (that is, the expression that defines which incoming requests match the rule) can include the following fields:
+description: Available fields and functions for URL rewrite rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

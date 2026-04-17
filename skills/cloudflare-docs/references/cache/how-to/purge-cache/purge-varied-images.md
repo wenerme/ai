@@ -1,6 +1,6 @@
 ---
 title: P​urge varied images
-description: Purging varied images instantly purges all content variants for that URL. This behavior occurs so that if an image changes, you can easily update the cache with a single purge request instead of trying to determine the potential number of out-of-date variants. The behavior is true regardless of purge type used, such as single file, tag, or hostname.
+description: Purge cached image variants created by Vary for Images.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

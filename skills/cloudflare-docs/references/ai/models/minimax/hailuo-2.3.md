@@ -195,8 +195,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-134)
-* [ Output ](#tab-panel-135)
+* [ Input ](#tab-panel-138)
+* [ Output ](#tab-panel-139)
 
 prompt
 
@@ -232,7 +232,7 @@ video
 
 task\_id
 
-`string`required
+`string`
 
 status
 
@@ -240,8 +240,8 @@ status
 
 ## API Schemas
 
-* [ Input ](#tab-panel-132)
-* [ Output ](#tab-panel-133)
+* [ Input ](#tab-panel-136)
+* [ Output ](#tab-panel-137)
 
 ```
 

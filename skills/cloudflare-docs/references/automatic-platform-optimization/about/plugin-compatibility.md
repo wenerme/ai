@@ -1,10 +1,14 @@
 ---
 title: Plugin compatibility
-description: Currently, WordPress offers over 50,000 plugins for download. As a result, testing the compatibility between APO and every available plugin is impossible. However, Cloudflare has a list of officially supported plugins and a list of plugins known to cause issues when APO is enabled.
+description: WordPress plugins supported and known to conflict with APO.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ WordPress ](https://developers.cloudflare.com/search/?tags=WordPress) 
 
 Was this helpful?
 

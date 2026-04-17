@@ -1,6 +1,6 @@
 ---
 title: Place a waiting room
-description: When configuring a waiting room, you need to indicate which pages the waiting room will cover.
+description: Place a waiting room on a specific path or hostname.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

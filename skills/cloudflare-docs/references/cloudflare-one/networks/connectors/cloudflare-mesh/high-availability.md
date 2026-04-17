@@ -50,8 +50,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-3784)
-* [ API ](#tab-panel-3785)
+* [ Dashboard ](#tab-panel-5612)
+* [ API ](#tab-panel-5613)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -90,8 +90,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-3790)
-* [ API ](#tab-panel-3791)
+* [ Dashboard ](#tab-panel-5618)
+* [ API ](#tab-panel-5619)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -102,18 +102,20 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-3786)
-* [ RedHat / CentOS ](#tab-panel-3787)
+* [ Debian / Ubuntu ](#tab-panel-5614)
+* [ RedHat / CentOS ](#tab-panel-5615)
 
 Terminal window
 
 ```
 
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
 
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
 
-sudo apt-get update && sudo apt-get install -y cloudflare-warp
+sudo apt-get update && sudo apt-get install -y cloudflare-warp &&
+
+sudo sysctl -w net.ipv4.ip_forward=1
 
 
 ```
@@ -131,9 +133,11 @@ Terminal window
 
 ```
 
-sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm
+sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&
 
-sudo yum install -y cloudflare-warp
+sudo yum install -y cloudflare-warp &&
+
+sudo sysctl -w net.ipv4.ip_forward=1
 
 
 ```
@@ -155,13 +159,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-3788)  
-   * [ RedHat / CentOS ](#tab-panel-3789)  
+   * [ Debian / Ubuntu ](#tab-panel-5616)  
+   * [ RedHat / CentOS ](#tab-panel-5617)  
 Terminal window  
 ```  
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg  
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list  
-sudo apt-get update && sudo apt-get install -y cloudflare-warp  
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&  
+sudo apt-get update && sudo apt-get install -y cloudflare-warp &&  
+sudo sysctl -w net.ipv4.ip_forward=1  
 ```  
 Terminal window  
 ```  
@@ -169,8 +174,9 @@ sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
 ```  
 Terminal window  
 ```  
-sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm  
-sudo yum install -y cloudflare-warp  
+sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&  
+sudo yum install -y cloudflare-warp &&  
+sudo sysctl -w net.ipv4.ip_forward=1  
 ```  
 Terminal window  
 ```  

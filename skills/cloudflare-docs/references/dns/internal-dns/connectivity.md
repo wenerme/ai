@@ -1,6 +1,6 @@
 ---
 title: Connect to Gateway resolver
-description: To connect to Cloudflare Gateway resolver - which is required to reach private resources in Internal DNS - you can use the following options:
+description: Connect to the Internal DNS Gateway resolver.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

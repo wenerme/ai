@@ -1,6 +1,6 @@
 ---
 title: Per-hostname
-description: When you enable per-hostname Authenticated Origin Pulls (AOP), all proxied traffic to the specified hostname is authenticated at the origin web server using a certificate that you upload. You can use client certificates from your Private PKI to authenticate connections from Cloudflare.
+description: Set up per-hostname Authenticated Origin Pulls with custom certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -85,8 +85,8 @@ basicConstraints=CA:FALSE
 
 ## 1\. Upload custom certificate
 
-* [ Dashboard ](#tab-panel-6625)
-* [ API ](#tab-panel-6626)
+* [ Dashboard ](#tab-panel-8783)
+* [ API ](#tab-panel-8784)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
@@ -187,8 +187,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable Authenticated Origin Pulls for the hostname
 
-* [ Dashboard ](#tab-panel-6623)
-* [ API ](#tab-panel-6624)
+* [ Dashboard ](#tab-panel-8781)
+* [ API ](#tab-panel-8782)
 
 Note
 

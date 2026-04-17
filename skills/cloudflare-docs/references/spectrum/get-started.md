@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Spectrum is available on all paid plans. Pro and Business support selected protocols only, whereas Enterprise supports all TCP and UDP based traffic. Refer to Configuration options for more configuration details.
+description: Create a Spectrum application to proxy TCP or UDP traffic through Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

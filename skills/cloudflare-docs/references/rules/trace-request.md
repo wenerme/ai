@@ -1,6 +1,6 @@
 ---
 title: Trace a request
-description: Cloudflare Trace (Beta) simulates an HTTP/S request through Cloudflare's network to your origin server. Use this tool to understand how your Cloudflare configurations (such as rules, caching, and security settings) would affect a specific request. If the hostname you are testing is not proxied by Cloudflare, Cloudflare Trace will still return all the configurations that Cloudflare would have applied to the request.
+description: Trace a request through Cloudflare to see which rules match and apply.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

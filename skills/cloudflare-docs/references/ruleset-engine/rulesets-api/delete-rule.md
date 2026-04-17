@@ -1,6 +1,6 @@
 ---
 title: Delete a rule in a ruleset
-description: Deletes a single rule in a ruleset at the account or zone level.
+description: Delete a specific rule from a ruleset using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

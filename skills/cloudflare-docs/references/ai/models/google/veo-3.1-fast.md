@@ -203,8 +203,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-122)
-* [ Output ](#tab-panel-123)
+* [ Input ](#tab-panel-126)
+* [ Output ](#tab-panel-127)
 
 prompt
 
@@ -232,12 +232,12 @@ generate\_audio
 
 video
 
-`string`requiredformat: uriURL to the generated video
+`string`format: uriURL to the generated video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-120)
-* [ Output ](#tab-panel-121)
+* [ Input ](#tab-panel-124)
+* [ Output ](#tab-panel-125)
 
 ```
 

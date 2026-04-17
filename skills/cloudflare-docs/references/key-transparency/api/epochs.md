@@ -1,6 +1,6 @@
 ---
 title: Epochs
-description: Refer to the example below to publish a new epoch by requesting its signature.
+description: Query epoch digests, audit proofs, and publication constraints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

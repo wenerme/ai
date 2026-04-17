@@ -1,6 +1,6 @@
 ---
 title: Supported cloud providers in Cloud Connector
-description: Cloud Connector currently supports the following cloud providers and services:
+description: Cloud providers and storage services supported by Cloud Connector.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

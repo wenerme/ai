@@ -80,8 +80,8 @@ AWS users can configure a [compute account](https://developers.cloudflare.com/cl
 
 File findings for some integrations (such as [Microsoft 365](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/#file-sharing) and [Box](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/box/#file-sharing)) may link to an inaccessible file. To access the actual shared file:
 
-* [ Posture finding ](#tab-panel-3783)
-* [ Content finding ](#tab-panel-3784)
+* [ Posture finding ](#tab-panel-5569)
+* [ Content finding ](#tab-panel-5570)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Posture Findings**.
 2. Choose **SaaS** or **Cloud**.
@@ -170,7 +170,6 @@ Remediated findings will appear in **Cloud & SaaS findings** \> **Posture Findin
 | Status     | Description                                                                                                     |
 | ---------- | --------------------------------------------------------------------------------------------------------------- |
 | Pending    | CASB has set the finding to be remediated.                                                                      |
-| Queued     | CASB has queued the finding for remediation.                                                                    |
 | Processing | CASB is currently remediating the finding.                                                                      |
 | Validating | CASB successfully completed the remediation and is waiting for confirmation that the finding has been resolved. |
 | Completed  | CASB successfully remediated the finding and validated that the finding has been resolved.                      |

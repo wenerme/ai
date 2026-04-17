@@ -1,6 +1,6 @@
 ---
 title: Proxy status
-description: You can load balance your traffic at different levels of the networking stack, such as:
+description: Proxy status options for load balanced traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

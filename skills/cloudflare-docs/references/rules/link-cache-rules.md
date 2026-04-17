@@ -1,5 +1,6 @@
 ---
 title: Cache Rules
+description: Configure caching behavior for matching requests using Cache Rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

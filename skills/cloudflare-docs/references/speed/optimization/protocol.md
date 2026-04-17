@@ -1,5 +1,6 @@
 ---
 title: Protocol optimization
+description: Optimize connection protocols including HTTP/2, HTTP/3, and 0-RTT.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

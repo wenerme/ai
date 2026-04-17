@@ -1,6 +1,6 @@
 ---
 title: Traffic steering
-description: When requests come to your load balancer, it distributes them across your pools and endpoints according to three factors:
+description: Control how traffic is distributed across pools and origins.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

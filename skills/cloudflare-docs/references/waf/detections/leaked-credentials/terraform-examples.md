@@ -1,6 +1,6 @@
 ---
 title: Terraform configuration examples
-description: The following Terraform configuration examples address common scenarios for managing, configuring, and using leaked credentials detection.
+description: Terraform examples for managing and configuring leaked credentials detection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

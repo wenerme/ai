@@ -1,6 +1,6 @@
 ---
 title: Alerts
-description: You can configure alerts to receive notifications for changes in your secondary DNS.
+description: Set up alerts for secondary DNS zone transfer events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

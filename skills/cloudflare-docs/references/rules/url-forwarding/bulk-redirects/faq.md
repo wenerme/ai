@@ -1,6 +1,6 @@
 ---
 title: Bulk Redirects FAQ
-description: Below you will find answers to the most commonly asked questions regarding Bulk Redirects.
+description: Answers to common questions about Bulk Redirects.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

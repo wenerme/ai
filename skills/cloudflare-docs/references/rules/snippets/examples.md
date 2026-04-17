@@ -1,6 +1,6 @@
 ---
 title: Snippets examples
-description: Refer to the following examples to get started creating your snippet code.
+description: Example Snippets for headers, redirects, caching, and more.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Create a rule in the dashboard
-description: If you are matching a hostname in your rule expression, you may be prompted to create a proxied DNS record for that hostname. Refer to Troubleshooting for more information.
+description: Create cache response rules in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

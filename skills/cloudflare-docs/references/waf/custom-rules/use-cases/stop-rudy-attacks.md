@@ -1,6 +1,6 @@
 ---
 title: Stop R-U-Dead-Yet? (R.U.D.Y.) attacks
-description: R-U-Dead-Yet (R.U.D.Y.) attacks accomplish denial of service (DoS) by submitting long form fields. Use custom rules to stop these attacks by blocking requests that do not have a legitimate session cookie.
+description: Block R-U-Dead-Yet slow POST attacks with custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

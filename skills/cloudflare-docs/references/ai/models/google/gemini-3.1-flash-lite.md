@@ -30,12 +30,6 @@ Google's lightest and most cost-efficient Gemini model for high-throughput tasks
 | Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)       |
 | More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/) |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=google/gemini-3.1-flash-lite) 
-
 ## Usage
 
 TypeScript
@@ -296,8 +290,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-86)
-* [ Output ](#tab-panel-87)
+* [ Input ](#tab-panel-90)
+* [ Output ](#tab-panel-91)
 
 ▶contents\[\]
 
@@ -337,8 +331,8 @@ modelVersion
 
 ## API Schemas
 
-* [ Input ](#tab-panel-84)
-* [ Output ](#tab-panel-85)
+* [ Input ](#tab-panel-88)
+* [ Output ](#tab-panel-89)
 
 ```
 

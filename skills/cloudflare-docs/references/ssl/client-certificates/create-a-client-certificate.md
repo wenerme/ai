@@ -1,6 +1,6 @@
 ---
 title: Create a client certificate
-description: Use Cloudflare's public key infrastructure (PKI) to create client certificates issued from a Cloudflare-managed CA. You can then complete your mTLS configuration, as explained in How mTLS works.
+description: Generate a client certificate using the dashboard or API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

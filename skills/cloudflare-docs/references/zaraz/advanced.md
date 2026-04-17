@@ -1,5 +1,6 @@
 ---
 title: Advanced options
+description: Advanced Zaraz options for custom loading, blocking, and enrichment.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

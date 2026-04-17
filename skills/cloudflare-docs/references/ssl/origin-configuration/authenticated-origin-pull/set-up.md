@@ -1,5 +1,6 @@
 ---
 title: Setup
+description: Configure Authenticated Origin Pulls at the zone or hostname level.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

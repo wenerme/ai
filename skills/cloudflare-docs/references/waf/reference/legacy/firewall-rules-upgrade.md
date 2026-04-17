@@ -1,6 +1,6 @@
 ---
 title: Firewall rules upgrade
-description: Cloudflare upgraded existing firewall rules into custom rules. With custom rules, you get the same level of protection and a few additional features. Custom rules are available in the Cloudflare dashboard in the following location:
+description: Upgrade deprecated Firewall Rules to WAF custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

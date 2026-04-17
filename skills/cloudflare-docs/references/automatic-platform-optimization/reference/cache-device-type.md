@@ -1,10 +1,14 @@
 ---
 title: Cache by device type
-description: APO cache by device type provides all of the same benefits of Cloudflare's cache while targeting visitors with content appropriate to their device. Cloudflare evaluates the User-Agent header in the HTTP request to identify the device type. Cloudflare then identifies each device type with a case insensitive match to the regex below:
+description: Serve different cached content to mobile, tablet, and desktop visitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
 
 Was this helpful?
 

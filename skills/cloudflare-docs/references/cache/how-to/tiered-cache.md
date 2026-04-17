@@ -1,10 +1,14 @@
 ---
 title: Tiered Cache
-description: Tiered Cache uses the size of Cloudflare’s network to reduce requests to customer origins by dramatically increasing cache hit ratios. With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare edge data centers must contact the origin server to receive the cacheable content.
+description: Reduce origin requests with tiered cache topology.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ REST API ](https://developers.cloudflare.com/search/?tags=REST%20API)[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
 
 Was this helpful?
 

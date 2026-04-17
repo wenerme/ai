@@ -1,6 +1,6 @@
 ---
 title: Endpoints
-description: For some operations, you can use specific endpoints provided by the Rulesets API for managing phase entry point rulesets. These endpoints include the phase name in the endpoint instead of the ruleset ID.
+description: Available Rulesets API endpoints for zones and accounts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

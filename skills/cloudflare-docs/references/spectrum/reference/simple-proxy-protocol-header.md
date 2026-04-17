@@ -1,6 +1,6 @@
 ---
 title: Simple Proxy Protocol Header
-description: The client source IP and port is encoded in a fixed-length, 38-octet long header and prepended to the payload of each proxied UDP datagram in the format described below.
+description: Format of the Simple Proxy Protocol header prepended to UDP datagrams.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

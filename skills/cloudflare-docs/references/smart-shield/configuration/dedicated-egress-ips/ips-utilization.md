@@ -1,6 +1,6 @@
 ---
 title: IPs utilization
-description: Use the GraphQL API to get aggregate data and monitor your dedicated IPs capacity (formerly known as Aegis).
+description: Monitor dedicated egress IP capacity and concurrent connections with GraphQL.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Use the following reference information when setting up and deploying your waiting rooms:
+description: Reference information for Waiting Room.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

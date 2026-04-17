@@ -1,6 +1,6 @@
 ---
 title: Traffic detections
-description: Traffic detections check incoming requests for malicious or potentially malicious activity. Each enabled detection scores or classifies requests by populating one or more fields. These fields appear as filters in the Security Analytics dashboard, and you can use them in rule expressions.
+description: Traffic detection signals including attack scores, bot scores, and leaked credentials.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -46,8 +46,8 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 
 To turn on a traffic detection:
 
-* [  New dashboard ](#tab-panel-6798)
-* [ Old dashboard ](#tab-panel-6799)
+* [  New dashboard ](#tab-panel-9028)
+* [ Old dashboard ](#tab-panel-9029)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

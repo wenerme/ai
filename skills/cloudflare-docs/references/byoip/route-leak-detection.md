@@ -1,6 +1,6 @@
 ---
 title: Route Leak Detection
-description: Route Leak Detection protects your routes on the Internet by notifying you when your traffic is routed somewhere it should not go, which could indicate a possible attack. Route Leak Detection also reduces the amount of time needed to mitigate leaks by providing you with timely notifications.
+description: Detect unauthorized advertisement of your IP prefixes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

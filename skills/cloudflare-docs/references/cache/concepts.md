@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Review the following topics to learn more about the basic concepts and components of Cloudflare Cache.
+description: Core caching concepts including TTL, revalidation, and cache control.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Origin Rules settings
-description: The following sections describe the available settings in Origin Rules.
+description: Supported origin rule features and their availability by plan.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

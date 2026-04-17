@@ -203,10 +203,10 @@ Whether to enable parallel function calling during tool use. If true, the model 
 
 * Key: `verbosity`
 
-* Optional, **enum** (low, medium, high, max)
+* Optional, **enum** (low, medium, high, xhigh, max)
 
 * Default: **medium**
 
 Constrains the verbosity of the model's response. Lower values produce more concise responses, while higher values produce more detailed and comprehensive responses. Introduced by OpenAI for the Responses API.
 
-For Anthropic models, this parameter maps to `output_config.effort`. The 'max' level is only supported by Anthropic Claude 4.6 Opus and later models.
+For Anthropic models, this parameter maps to `output_config.effort`. The 'xhigh' level is supported by Anthropic Claude 4.7 Opus and later models. The 'max' level is supported by Anthropic Claude 4.6 Opus and later models.

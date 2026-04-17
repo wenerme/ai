@@ -149,6 +149,65 @@ For more details, refer to the [DLP advanced settings documentation](https://dev
 
 Refer to the [Cloudflare Mesh documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) to set up your first Mesh network.
 
+## 2026-04-14
+
+[ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) 
+
+  
+**Detect Cloudflare API tokens with DLP**   
+
+The **Credentials and Secrets** DLP profile now includes three new predefined entries for detecting Cloudflare API credentials:
+
+| Entry name                         | Token prefix | Detects                   |
+| ---------------------------------- | ------------ | ------------------------- |
+| Cloudflare User API Key            | cfk\_        | User-scoped API keys      |
+| Cloudflare User API Token          | cfut\_       | User-scoped API tokens    |
+| Cloudflare Account Owned API Token | cfat\_       | Account-scoped API tokens |
+
+These detections target the new [Cloudflare API credential format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which uses a structured prefix and a CRC32 checksum suffix. The identifiable prefix makes it possible to detect leaked credentials with high confidence and low false positive rates — no surrounding context such as `Authorization: Bearer` headers is required.
+
+Credentials generated before this format change will not be matched by these entries.
+
+#### How to enable Cloudflare API token detections
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **DLP** \> **DLP Profiles**.
+2. Select the **Credentials and Secrets** profile.
+3. Turn on one or more of the new Cloudflare API token entries.
+4. Use the profile in a Gateway HTTP policy to log or block traffic containing these credentials.
+
+Example policy:
+
+| Selector    | Operator | Value                     | Action |
+| ----------- | -------- | ------------------------- | ------ |
+| DLP Profile | in       | _Credentials and Secrets_ | Block  |
+
+You can also enable individual entries to scope detection to specific credential types — for example, enabling **Account Owned API Token** detection without enabling **User API Key** detection.
+
+For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
+## 2026-04-14
+
+[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) 
+
+  
+**Configure how sensitive data appears in DLP payload logs**   
+
+You can now configure how sensitive data matches are displayed in your DLP payload match logs — giving your incident response team the context they need to validate alerts without compromising your security posture.
+
+To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust** \> **Data loss prevention** \> **DLP settings** and find the **Payload log masking** card.
+
+Previously, all DLP payload logs used a single masking mode that obscured matched data entirely and hid the original character count, making it difficult to distinguish true positives from false positives. This update introduces three options:
+
+* **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
+* **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
+* **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
+
+**Important:** The masking level you select is applied at detection time, before the payload is encrypted. This means the chosen format is what your team will see after decrypting the log with your private key — the existing encryption workflow is unchanged.
+
+**Applies to all enabled detections:** When a masking level other than Full Mask is selected, it applies to all sensitive data matches found within a payload window — not just the match that triggered the policy. Any data matched by your enabled DLP detection entries will be masked at the selected level.
+
+For more information, refer to [DLP logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
+
 ## 2026-04-09
 
 [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) 
@@ -375,6 +434,35 @@ The next stable release for Linux will introduce the new Cloudflare One Client U
 * Switched tunnel congestion control algorithm for local proxy mode to Cubic for improved reliability across platforms.
 * Fixed initiating managed network detections checks when no network is available, which caused device profile flapping.
 
+## 2026-04-02
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Session management for MCP server portals**   
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support in-session management of upstream MCP server connections. Users can return to the server selection page at any time to enable or disable servers, reauthenticate, or change which data a server has access to — all without leaving their MCP client.
+
+To return to the server selection page, ask your AI agent with a prompt like "take me back to the server selection page." The portal responds with an authorization URL via [MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) that you open in your browser:
+
+```
+
+https://<subdomain>.<domain>/authorize?elicitationId=<ELICITATION_ID>
+
+
+```
+
+From the server selection page you can:
+
+* **Enable or disable servers** — Toggle individual upstream MCP servers on or off. Disabling a server removes its tools from the active session, which reduces context window usage.
+* **Log out and reauthenticate** — Log out of a server and log back in to change which data the server has access to, or to reauthenticate with different permissions.
+
+Users can also enable or disable a server inline by asking their AI agent directly, for example "enable the wiki server" or "disable my Jira server."
+
+The portal also automatically prompts connected users to authorize new servers when an admin adds them to the portal. This requires the use of [managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#enable-managed-oauth-on-an-mcp-server-portal).
+
+For more information, refer to [Manage portal sessions](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#manage-portal-sessions).
+
 ## 2026-04-01
 
 [ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
@@ -418,6 +506,86 @@ https://<subdomain>.<domain>/mcp?codemode=search_and_execute
 ```
 
 For more information, refer to [code mode](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode).
+
+## 2026-03-26
+
+[ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
+
+  
+**Context optimization for MCP server portals**   
+
+[MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) support two context optimization options that reduce how many tokens tool definitions consume in the model's context window. Both options are activated by appending the `optimize_context` query parameter to the portal URL.
+
+#### `minimize_tools`
+
+Strips tool descriptions and input schemas from all upstream tools, leaving only their names. The portal exposes a special `query` tool that agents use to retrieve full definitions on demand. This provides up to 5x savings in token usage.
+
+```
+
+https://<subdomain>.<domain>/mcp?optimize_context=minimize_tools
+
+
+```
+
+#### `search_and_execute`
+
+Hides all upstream tools and exposes only two tools: `query` and `execute`. The `query` tool searches and retrieves tool definitions. The `execute` tool runs the upstream tools in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This reduces the initial token cost to a small constant, regardless of how many tools are available through the portal.
+
+```
+
+https://<subdomain>.<domain>/mcp?optimize_context=search_and_execute
+
+
+```
+
+For more information, refer to [Optimize context](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#optimize-context).
+
+## 2026-03-26
+
+[ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) 
+
+  
+**Streaming ZIP file scanning removes per-file size limits**   
+
+DLP now processes ZIP files using a streaming handler that scans archive contents element-by-element as data arrives. This removes previous file size limitations and improves memory efficiency when scanning large archives.
+
+Microsoft Office documents (DOCX, XLSX, PPTX) also benefit from this improvement, as they use ZIP as a container format.
+
+This improvement is automatic — no configuration changes are required.
+
+## 2026-03-25
+
+[ Data Loss Prevention ](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) 
+
+  
+**Detect and sanitize HAR files**   
+
+HTTP Archive (HAR) files are used by engineering and support teams to capture and share web traffic logs for troubleshooting. However, these files routinely contain highly sensitive data — including session cookies, authorization headers, and other credentials — that can pose a significant risk if uploaded to third-party services without being reviewed or cleaned first.
+
+Gateway now includes a predefined DLP profile called **Unsanitized HAR** that detects HAR files in HTTP traffic. You can use this profile in a Gateway HTTP policy to either block HAR file uploads entirely or redirect users to a sanitization tool before allowing the upload to proceed.
+
+#### How to configure a HAR file policy
+
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall Policies** \> **HTTP** and create a new HTTP policy using the **DLP Profile** selector:
+
+| Selector    | Operator | Value             | Action |
+| ----------- | -------- | ----------------- | ------ |
+| DLP Profile | in       | _Unsanitized HAR_ |        |
+
+Then choose one of the following actions:
+
+* **Block**: Prevents the upload of any HAR file that has not been sanitized by Cloudflare's sanitizer. Use this for strict environments where HAR file sharing must be disallowed entirely.
+* **Block** with **Gateway Redirect**: Intercepts the upload and redirects the user to `https://har-sanitizer.pages.dev/`, where they can sanitize the file. Once sanitized, the user can re-upload the clean file and proceed with their workflow.
+
+#### Sanitized HAR recognition
+
+HAR files processed by the Cloudflare HAR sanitizer receive a tamper-evident sanitized marker. DLP recognizes this marker and will not re-trigger the policy on a file that has already been sanitized and has not been modified since. If a previously sanitized file is edited, it will be treated as unsanitized and flagged again.
+
+#### Visibility in Gateway logs
+
+Gateway logs will reflect whether a detected HAR file was classified as **Unsanitized** or **Sanitized**, giving your security team full visibility into HAR file activity across your organization.
+
+For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
 
 ## 2026-03-24
 
@@ -3814,8 +3982,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-3781)
-* [ Core Dashboard ](#tab-panel-3782)
+* [ Zero Trust Dashboard ](#tab-panel-5567)
+* [ Core Dashboard ](#tab-panel-5568)
 
 To update your view preference in the Zero Trust dashboard:
 

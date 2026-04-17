@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Track the latest updates and changes to Cloudflare Zaraz.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

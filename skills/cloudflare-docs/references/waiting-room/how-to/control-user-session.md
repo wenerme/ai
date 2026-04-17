@@ -1,6 +1,6 @@
 ---
 title: Control user session settings
-description: Adjust these settings to control how long a user can hold their place on your site after leaving the waiting room.
+description: Configure session duration and renewal settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

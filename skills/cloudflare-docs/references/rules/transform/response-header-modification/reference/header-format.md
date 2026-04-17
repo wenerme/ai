@@ -1,6 +1,6 @@
 ---
 title: Format of HTTP response header names and values
-description: The name of the HTTP response header you want to set or remove can only contain:
+description: Supported header name and value formats for response header modifications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: API commands
-description: Use the following API commands to manage advanced certificates. If you are using our API for the first time, review our API documentation.
+description: API commands for managing advanced certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

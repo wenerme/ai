@@ -1,6 +1,6 @@
 ---
 title: Enable Proxy protocol
-description: Because Cloudflare intercepts packets before forwarding them to your server, if you were to look up the client IP, you would see Cloudflare's IP rather than the true client IP.
+description: Pass client IP information to your origin using Proxy protocol v1 or Simple Proxy Protocol.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

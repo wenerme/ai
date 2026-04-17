@@ -30,8 +30,8 @@ Whisper is a pre-trained model for automatic speech recognition (ASR) and speech
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3814)
-* [  curl ](#tab-panel-3815)
+* [  TypeScript ](#tab-panel-3818)
+* [  curl ](#tab-panel-3819)
 
 ```
 
@@ -99,8 +99,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-* [ Input ](#tab-panel-3818)
-* [ Output ](#tab-panel-3819)
+* [ Input ](#tab-panel-3822)
+* [ Output ](#tab-panel-3823)
 
 Option 1
 
@@ -112,7 +112,7 @@ object
 
 text
 
-`string`requiredThe transcription
+`string`The transcription
 
 word\_count
 
@@ -128,8 +128,8 @@ vtt
 
 ## API Schemas
 
-* [ Input ](#tab-panel-3816)
-* [ Output ](#tab-panel-3817)
+* [ Input ](#tab-panel-3820)
+* [ Output ](#tab-panel-3821)
 
 ```
 

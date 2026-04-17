@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Tunnel (published applications)
-description: Cloudflare Tunnel (formerly Argo Tunnel) establishes a secure outbound connection which runs in your infrastructure to connect the applications and machines to Cloudflare.
+description: Load balance traffic to Cloudflare Tunnel applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Generate a key pair
-description: Generate a public/private key pair using the Cloudflare matched-data-cli command-line tool. After generating a key pair, enter the generated public key in the payload logging configuration.
+description: Generate a public/private key pair for payload logging encryption.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Client certificate variables
-description: When a request includes a client certificate for mTLS authentication, Cloudflare exposes certificate details as variables in the Ruleset Engine and as properties on the Workers request.cf object.
+description: Variables available in WAF rules when using client certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

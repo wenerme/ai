@@ -1,0 +1,92 @@
+---
+title: Import repositories
+description: Import existing Git repos into Artifacts.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/artifacts/guides/import-repositories.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Import repositories
+
+Import an existing repository when you already have a baseline outside Artifacts and want to start using it as an Artifacts repo.
+
+This works well for:
+
+* a baseline repo that agents fork from
+* a template repo for new sessions or users
+* a shared prompts or configuration repo used across workflows
+
+Artifacts imports public HTTPS remotes through the REST API. After import, the repo has a normal Artifacts remote URL and can be cloned, forked, or issued repo-scoped tokens like any other repo.
+
+## Import a repo from GitHub
+
+This example imports a public GitHub repo into the `default` namespace.
+
+Use a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Edit**.
+
+Terminal window
+
+```
+
+export ARTIFACTS_NAMESPACE="default"
+
+export ARTIFACTS_REPO="workers-sdk-baseline"
+
+export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
+
+export ARTIFACTS_BASE_URL="https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE"
+
+
+```
+
+Terminal window
+
+```
+
+IMPORT_RESPONSE=$(curl --silent --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/import" \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --header "Content-Type: application/json" \
+
+  --data '{
+
+    "url": "https://github.com/cloudflare/workers-sdk",
+
+    "branch": "main",
+
+    "depth": 100
+
+  }')
+
+
+printf '%s\n' "$IMPORT_RESPONSE"
+
+
+```
+
+Explain Code
+
+The response includes the new Artifacts repo metadata, including `result.remote` and an initial repo token.
+
+## Use the imported repo
+
+After import, use the repo like any other Artifacts repo.
+
+* Keep it as a stable baseline and fork from it for agent work
+* clone it with a repo-scoped token for direct Git access
+* mark it read-only if you want a fixed template repo
+
+For the endpoint details, refer to [REST API](https://developers.cloudflare.com/artifacts/api/rest-api/#import-a-public-https-remote). For auth details, refer to [Authentication](https://developers.cloudflare.com/artifacts/guides/authentication/).
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/artifacts/","name":"Artifacts"}},{"@type":"ListItem","position":3,"item":{"@id":"/artifacts/guides/","name":"Guides"}},{"@type":"ListItem","position":4,"item":{"@id":"/artifacts/guides/import-repositories/","name":"Import repositories"}}]}
+```

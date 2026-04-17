@@ -1,6 +1,6 @@
 ---
 title: Challenge outcome
-description: When a visitor encounters Turnstile, it assesses whether they are human or bot-like based on various signals. These outcomes help you evaluate how effectively Turnstile is protecting your application.
+description: View challenge outcome metrics for your Turnstile widgets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

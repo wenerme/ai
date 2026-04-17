@@ -1,6 +1,6 @@
 ---
 title: Rulesets API
-description: The Rulesets API provides an interface for managing and configuring the execution of rulesets, supporting different Cloudflare products powered by the Ruleset Engine.
+description: Manage rulesets and rules programmatically with the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

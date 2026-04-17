@@ -1,6 +1,6 @@
 ---
 title: Rotate secret key
-description: You can rotate the secret key using the following steps:
+description: Rotate your Turnstile secret key for security or key compromise.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

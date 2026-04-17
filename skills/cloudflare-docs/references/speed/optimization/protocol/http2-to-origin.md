@@ -1,6 +1,6 @@
 ---
 title: HTTP/2 to Origin
-description: A protocol is a set of rules governing the exchange or transmission of data between devices. One of the most important protocols that run on the human-computer interaction layer, where applications can access the network services, is HTTP (Hypertext Transfer Protocol).
+description: Use HTTP/2 for connections between Cloudflare and your origin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

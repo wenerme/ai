@@ -1,6 +1,6 @@
 ---
 title: Automated deployments
-description: Static sites are easy to deploy automatically. The code of the site is usually kept in a Git repository and deployed by pushing the latest commit to a repository that's connected to a Continuous Integration service like Travis CI, or by pushing to a repository directly on the server and activating a post-receive hook. Either way, the production version of the site is built and then copied into the serving path of an Apache or NGINX instance.
+description: Automate IPFS content deployment with CI/CD pipelines.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: DNS setup conversions
-description: You can perform the following DNS setup conversions:
+description: Convert between full, partial, and secondary DNS setups.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

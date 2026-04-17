@@ -1,6 +1,6 @@
 ---
 title: Create a custom rule via API
-description: Use the Rulesets API to create a custom rule via API at the zone level.
+description: Create WAF custom rules using the Rulesets API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

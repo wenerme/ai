@@ -1,6 +1,6 @@
 ---
 title: Alerts for security events
-description: Cloudflare provides two types of security alerts that inform you of any spikes in security events:
+description: Set up alerts for WAF security events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

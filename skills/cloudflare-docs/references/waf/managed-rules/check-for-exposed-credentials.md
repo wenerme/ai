@@ -1,6 +1,6 @@
 ---
 title: Check for exposed credentials
-description: Many web applications have suffered credential stuffing attacks in the recent past. In these attacks there is a massive number of login attempts using username/password pairs from databases of exposed credentials.
+description: Detect login requests using credentials from known data breaches.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

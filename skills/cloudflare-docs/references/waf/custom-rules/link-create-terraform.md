@@ -1,5 +1,6 @@
 ---
 title: Create using Terraform
+description: Create WAF custom rules using the Terraform provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

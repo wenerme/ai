@@ -1,6 +1,6 @@
 ---
 title: Vary for images
-description: Vary is an HTTP response header that allows origins to serve variants of the same content that can be used depending on the browser sending the request.
+description: Serve images in the best format for each visitor browser.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

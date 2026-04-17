@@ -1,6 +1,6 @@
 ---
 title: Dedicated CDN Egress IPs
-description: Enterprise customers can leverage dedicated egress1 IPs for layer 7 WAF and CDN services, as well as Spectrum. The egress IPs are reserved exclusively for your account so that you can increase your origin security by only allowing traffic from a small list of IP addresses.
+description: Use reserved egress IP addresses for origin allowlisting and increased security.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

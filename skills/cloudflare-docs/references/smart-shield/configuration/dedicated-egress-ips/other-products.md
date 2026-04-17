@@ -1,6 +1,6 @@
 ---
 title: Use with other Cloudflare products
-description: Use Dedicated CDN Egress IPs in combination with different Cloudflare products.
+description: Combine Dedicated CDN Egress IPs with Access, CNI, Spectrum, and Workers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot managed rules
-description: By default, WAF's managed rulesets are compatible with most websites and web applications. However, false positives and false negatives may occur:
+description: Troubleshoot WAF managed rules false positives and configuration issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -64,6 +64,13 @@ If necessary, adjust the custom rule expression so that it does not apply to the
 Review your IP Access rules and make sure that any allow rules do not match the attack traffic.
 * Is the malicious traffic reaching your origin IP addresses directly, therefore bypassing Cloudflare protection?  
 Block all traffic except from [Cloudflare's IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) at your origin server.
+
+### Additional recommendations
+
+If WAF's managed rulesets do not detect a specific attack pattern after verifying the above, consider the following:
+
+* Use [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) to complement signature-based managed rules with machine-learning detection. Attack score classifies each request with a score indicating the likelihood it is malicious, even when no managed rule matches.
+* Create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) to block the specific attack pattern. Use fields such as URI path, query string, or HTTP request headers to match the malicious requests.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/managed-rules/troubleshooting/","name":"Troubleshoot managed rules"}}]}

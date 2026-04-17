@@ -1,6 +1,6 @@
 ---
 title: Cache configuration
-description: Learn how to complete different configuration options to customize your cache behavior.
+description: Configure caching with rules, purge, TTL, and tiered cache.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

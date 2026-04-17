@@ -1,5 +1,6 @@
 ---
 title: Edit variables
+description: Edit existing Zaraz variables.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

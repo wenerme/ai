@@ -1,6 +1,6 @@
 ---
 title: Create and manage widgets using Terraform
-description: Manage Turnstile widgets as code using Terraform for version control and automated deployments.
+description: Create and manage Turnstile widgets using the Terraform provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

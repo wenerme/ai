@@ -1,6 +1,6 @@
 ---
 title: Email Address Obfuscation
-description: By enabling Cloudflare Email Address Obfuscation, email addresses on your web page will be hidden from bots, while keeping them visible to humans. In fact, there are no visible changes to your website for visitors.
+description: Hide email addresses from bots while keeping them visible to visitors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -34,9 +34,9 @@ Cloudflare injects a small decode script (`email-decode.min.js`) into the page u
 
 Cloudflare enables email address obfuscation automatically when you sign up.
 
-* [  New dashboard ](#tab-panel-9094)
-* [ Old dashboard ](#tab-panel-9095)
-* [ API ](#tab-panel-9096)
+* [  New dashboard ](#tab-panel-9127)
+* [ Old dashboard ](#tab-panel-9128)
+* [ API ](#tab-panel-9129)
 
 To disable **Email Address Obfuscation** in the dashboard:
 

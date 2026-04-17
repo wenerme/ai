@@ -1,6 +1,6 @@
 ---
 title: Health Checks notifications
-description: You can configure notification emails to be alerted when the Health Check detects that there is a change in the status of your origin server. Cloudflare will send you an email within seconds so you can take the necessary action before customers are impacted.
+description: Set up notifications for Health Checks status changes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

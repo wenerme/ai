@@ -1,6 +1,6 @@
 ---
 title: ECH Protocol
-description: ECH stands for Encrypted Client Hello. It is a protocol extension in the context of Transport Layer Security (TLS). ECH encrypts part of the handshake and masks the Server Name Indication (SNI) that is used to negotiate a TLS session. This means that whenever a user visits a website on Cloudflare that has ECH enabled, intermediaries will be able to see that you are visiting a website on Cloudflare, but they will not be able to determine which one.
+description: Encrypt the SNI field with Encrypted Client Hello for improved privacy.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

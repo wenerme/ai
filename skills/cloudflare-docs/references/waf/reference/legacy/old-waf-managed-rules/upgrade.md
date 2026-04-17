@@ -1,6 +1,6 @@
 ---
 title: WAF managed rules upgrade
-description: On 2022-05-04, Cloudflare started the upgrade from the previous version of WAF managed rules to the new WAF Managed Rules, allowing a first set of eligible zones to migrate. Currently, all zones can upgrade to WAF Managed Rules, including partner accounts.
+description: Upgrade from the previous version of WAF managed rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,0 +1,88 @@
+---
+name: Refactor your codebase
+tagline: Remove dead code and modernize legacy patterns without changing behavior.
+summary: Use Codex to remove dead code, untangle large files, collapse
+  duplicated logic, and modernize stale patterns in small reviewable passes.
+skills:
+  - token: $security-best-practices
+    url: https://github.com/openai/skills/tree/main/skills/.curated/security-best-practices
+    description: Review security-sensitive cleanup, dependency changes, auth flows,
+      and exposed surfaces before merging a modernization pass.
+  - token: $skill-creator
+    url: https://github.com/openai/skills/tree/main/skills/.system/skill-creator
+    description: Turn a proven modernization pattern, review checklist, or parity
+      workflow into a reusable repo or team skill.
+bestFor:
+  - Codebases with dead code, oversized modules, duplicated logic, or stale
+    abstractions that make routine edits expensive.
+  - Teams that need to modernize code in place without turning the work into a
+    framework or stack migration.
+starterPrompt:
+  title: Modernize in Small Passes
+  body: >-
+    Modernize and refactor this codebase.
+
+
+    Requirements:
+
+    - Preserve behavior unless I explicitly ask for a functional change.
+
+    - Start by identifying dead code, duplicated paths, oversized modules, stale
+    abstractions, and legacy patterns that are slowing changes down.
+
+    - For each proposed pass, name the current behavior, the structural
+    improvement, and the validation check that should prove behavior stayed
+    stable.
+
+    - Break the work into small reviewable refactor passes such as deleting dead
+    code, simplifying control flow, extracting helpers, or replacing outdated
+    patterns with the repo's current conventions.
+
+    - Keep public APIs stable unless a change is required by the refactor.
+
+    - Call out any framework migration, dependency upgrade, API change, or
+    architecture move that should be split into a separate migration task.
+
+    - If the work is broad, propose the docs, specs, and parity checks we should
+    create before implementation.
+
+
+    Propose a plan to do this.
+relatedLinks:
+  - label: Modernizing your Codebase with Codex
+    url: /cookbook/examples/codex/code_modernization
+---
+
+## Introduction
+
+When your codebase has accumulated unused code, duplicated logic, stale abstractions, large files, or legacy patterns that make every change more expensive than it should be, you should consider reducing the engineering debt with a refactor. Refactoring is about improving the shape of the existing system without turning it into a stack migration.
+
+Codex is useful here because it can first map the messy area, then land the cleanup in small reviewable passes: deleting unused paths, untangling large modules, collapsing duplicate paths, modernizing old framework patterns, and tightening validation around each pass.
+
+The goal is to improve the current codebase in place:
+
+1. Remove unused code, stale helpers, old flags, and compatibility shims that are no longer needed.
+2. Shrink noisy modules by extracting helpers, splitting components, or moving side effects to clearer boundaries.
+3. Replace legacy patterns with the repo's current conventions: newer framework primitives, clearer types, simpler state flow, or standard library utilities.
+4. Keep public behavior stable while making the next change cheaper.
+
+## How to use
+
+1. Ask Codex to map the area before editing: noisy modules, duplicated logic, unused code, tests, public contracts, and any old patterns that the repo has outgrown.
+2. Pick one cleanup theme at a time: remove unused code, simplify control flow, modernize an outdated pattern, or split a large file into smaller owned pieces.
+3. Before Codex patches files, have it state the current behavior, the structural improvement it wants to make, and the smallest check that should prove behavior stayed stable.
+4. Review and run the smallest useful check after each pass instead of batching the whole cleanup into one diff.
+5. Keep stack changes, dependency migrations, and architecture moves as separate tasks unless they're required to finish the cleanup.
+
+You can use Plan mode to create a plan for the refactor before starting the
+  work.
+
+## Leverage ExecPlans
+
+The [code modernization cookbook](https://developers.openai.com/cookbook/examples/codex/code_modernization) introduces ExecPlans: documents that let Codex keep an overview of the cleanup, spell out the intended end state, and log validation after each pass.
+They're useful when the refactor spans more than one module or takes more than one session. Use them to record deletions, pattern updates, contracts that had to stay stable, and what's still deferred.
+
+## Use skills for repeatable patterns
+
+[Skills](https://developers.openai.com/codex/guides/skills) are useful when the same cleanup rules repeat across repos, services, or teams. Use framework-specific skills when available, add security and CI skills around risky cleanups, and create a team skill when you have a proven checklist for unused-code removal, module extraction, or legacy-pattern modernization.
+If you end up doing the same modernization pass across more than one codebase, Codex can help turn the first successful pass into a reusable skill.

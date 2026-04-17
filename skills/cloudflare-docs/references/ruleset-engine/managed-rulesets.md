@@ -1,6 +1,6 @@
 ---
 title: Work with managed rulesets
-description: Managed rulesets are preconfigured rulesets provided by Cloudflare that you can deploy. Only Cloudflare can modify these rulesets.
+description: Deploy and customize managed rulesets provided by Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

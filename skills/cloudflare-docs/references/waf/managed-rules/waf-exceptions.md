@@ -1,6 +1,6 @@
 ---
 title: Create exceptions
-description: Create an exception to skip the execution of WAF managed rulesets or some of their rules. The exception configuration includes an expression that defines the skip conditions, and the rules or rulesets to skip under those conditions.
+description: Skip WAF managed rules for specific requests with exceptions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -27,6 +27,21 @@ An exception can have one of the following behaviors (from highest to lowest pri
 * Skip one or more rules of WAF managed rulesets
 
 For more information on exceptions, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/) in the Ruleset Engine documentation.
+
+## Scope and execution order
+
+You can define exceptions at the account level and at the zone level. The scope of an exception determines which rules it affects:
+
+* An account-level exception only skips rules configured at the account level. It does not affect zone-level rules.
+* A zone-level exception only skips rules configured at the zone level. It does not affect account-level rules.
+
+Within each phase, account-level rulesets run before zone-level rulesets. This means that if you deploy managed rules at both the account level and the zone level, a request is evaluated against account-level rules first. An exception defined at the zone level will not prevent a match at the account level.
+
+For more information on how WAF features run in sequence, refer to [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/).
+
+Note
+
+Exceptions apply to WAF managed rulesets only. To skip other security features such as [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/) or [Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/), create a custom rule with the [skip action](https://developers.cloudflare.com/waf/custom-rules/skip/) and select the specific products you want to skip.
 
 ## Next steps
 

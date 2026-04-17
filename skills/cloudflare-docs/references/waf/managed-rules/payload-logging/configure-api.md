@@ -1,6 +1,6 @@
 ---
 title: Configure payload logging via API
-description: Use the Rulesets API to configure payload logging for a managed ruleset via API.
+description: Configure payload logging for managed rulesets using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

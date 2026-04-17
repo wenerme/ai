@@ -1,6 +1,6 @@
 ---
 title: About
-description: Cloudflare Web Analytics provides free, privacy-first analytics for your website without changing your DNS or using Cloudflare’s proxy. Cloudflare Web Analytics helps you understand the performance of your web pages as experienced by your site visitors.
+description: How Cloudflare Web Analytics collects and processes visitor data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

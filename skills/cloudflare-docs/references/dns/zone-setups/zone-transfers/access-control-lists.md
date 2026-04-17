@@ -1,6 +1,6 @@
 ---
 title: Access Control Lists (ACLs)
-description: Access Control Lists (ACLs) define allowed source IP addresses from where servers accept incoming data or control messages.
+description: Manage access control lists for DNS zone transfers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

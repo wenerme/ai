@@ -1,6 +1,6 @@
 ---
 title: Zone removal
-description: If domains on Free zones remain in the Pending or Moved status for too long, Cloudflare automatically removes them from your account and the Cloudflare network. Refer to zone statuses for more details.
+description: Remove a zone from your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

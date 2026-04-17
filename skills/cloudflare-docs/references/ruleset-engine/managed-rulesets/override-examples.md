@@ -1,6 +1,6 @@
 ---
 title: Override examples
-description: The examples in the topics below use overrides to customize the behavior of managed rulesets:
+description: Example API calls for overriding managed rulesets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

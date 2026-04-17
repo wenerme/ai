@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Snippets
-description: This error occurs when a Snippet attempts to call fetch(request) more than once.
+description: Common Snippet errors and how to resolve them.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The following topics are useful for troubleshooting Cache issues.
+description: Troubleshoot common Cloudflare caching issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

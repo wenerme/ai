@@ -1,6 +1,6 @@
 ---
 title: Settings
-description: The Optimization section will show you a list of Cloudflare products that are recommended for enhancing your website's performance.
+description: Configure content, image, and protocol optimization settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

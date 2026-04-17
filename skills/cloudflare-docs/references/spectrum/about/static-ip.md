@@ -1,6 +1,6 @@
 ---
 title: Static IP
-description: When you create a Spectrum application, you are assigned an IP. These IPs are normally dynamic, meaning that they will change over time. But, for instance, if you want to set up WAF custom rules for specific IPs, you may want to use static IPs.
+description: Assign persistent IP addresses to your Spectrum applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

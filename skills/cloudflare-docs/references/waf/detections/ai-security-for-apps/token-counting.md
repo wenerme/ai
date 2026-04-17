@@ -1,6 +1,6 @@
 ---
 title: Token counting
-description: AI Security for Apps (formerly Firewall for AI) provides an estimated token count for each incoming LLM prompt. This lets you monitor prompt sizes, set limits on overly long prompts, and track token usage across your AI endpoints.
+description: Count tokens in AI requests and responses for rate limiting.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

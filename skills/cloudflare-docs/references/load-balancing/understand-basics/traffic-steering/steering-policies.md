@@ -1,6 +1,6 @@
 ---
 title: Global traffic steering
-description: Global traffic steering policies decide how a load balancer routes traffic to attached and healthy pools.
+description: Policies that control how traffic is distributed across pools.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

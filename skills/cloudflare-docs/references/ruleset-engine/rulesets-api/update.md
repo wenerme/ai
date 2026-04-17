@@ -1,6 +1,6 @@
 ---
 title: Update or deploy a ruleset
-description: Use one of the following API endpoints to update a ruleset:
+description: Update an existing ruleset or deploy it to a phase using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -32,11 +32,15 @@ When updating a ruleset, you can update:
 * The basic properties of a ruleset (currently only the description)
 * The list of rules in a ruleset
 
+You cannot update the name of the ruleset or its type. Do not include these fields in the `data` field of your `PUT` request.
+
 To deploy a ruleset, add a rule with `"action": "execute"` to the list of rules of an [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset). Refer to [Deploy a ruleset](#example---deploy-a-ruleset) for an example.
 
-Note
+Risk of replacing all rules
 
-You cannot update the name of the ruleset or its type. Do not include these fields in the `data` field of your `PUT` request.
+The update operations described in this page (`PUT` requests) replace the entire list of rules in the ruleset. If you omit existing rules from the request body, those rules will be removed. Always include every rule you want to keep in the `rules` array.
+
+To add a single rule without replacing the entire list of rules in the ruleset, use one of the `POST` requests described in [Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/) instead.
 
 ## Example - Set the rules of a ruleset
 

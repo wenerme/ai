@@ -1,5 +1,6 @@
 ---
 title: Smart Hints
+description: Automatically preload resources based on traffic patterns.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

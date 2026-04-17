@@ -1,6 +1,6 @@
 ---
 title: Staging environment
-description: Use your certificate staging environment to test new custom (modern) certificates before pushing them to your production environment. This process helps you solve potential certificate problems before there's an incident, such as when:
+description: Test certificate changes in a staging environment before production.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

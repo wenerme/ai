@@ -1,6 +1,6 @@
 ---
 title: Create a variable
-description: Variables are reusable blocks of information. They allow you to have one source of data you can reuse across tools and triggers in the dashboard. You can then update this data in a single place.
+description: Create custom variables for use in Zaraz actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

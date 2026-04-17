@@ -1,5 +1,6 @@
 ---
 title: Configure payload logging in the dashboard
+description: Configure payload logging for managed rulesets in the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -19,8 +20,8 @@ Note
 
 Only users with the [Super Administrator role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) can configure payload logging and decrypt payloads in the Cloudflare dashboard. Other users can decrypt payloads if they have access to the logs and to the private key.
 
-* [  New dashboard ](#tab-panel-6854)
-* [ Old dashboard ](#tab-panel-6855)
+* [  New dashboard ](#tab-panel-9084)
+* [ Old dashboard ](#tab-panel-9085)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

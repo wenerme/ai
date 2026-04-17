@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure Smart Shield features including tiered cache, egress IPs, and health checks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

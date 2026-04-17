@@ -1,6 +1,6 @@
 ---
 title: IP Access rules
-description: Use IP Access rules to allowlist, block, and challenge traffic based on the visitor's IP address, Autonomous System Number (ASN), or country.
+description: Control access based on IP address, range, country, or ASN.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

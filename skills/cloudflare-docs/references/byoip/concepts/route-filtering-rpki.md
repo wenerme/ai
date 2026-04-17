@@ -1,6 +1,6 @@
 ---
 title: Route filtering and RPKI
-description: As referred in the IRR concept page, network operators use IRR records to configure backbone routers. In summary, it is the IRR records that provide information about IP prefixes and the autonomous systems (ASN) authorized to announce them. Then, network operators will apply filtering policies to avoid invalid announcements.
+description: How route filtering and RPKI protect against route hijacking.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

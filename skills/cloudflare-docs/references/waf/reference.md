@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for WAF phases, legacy features, and alerts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

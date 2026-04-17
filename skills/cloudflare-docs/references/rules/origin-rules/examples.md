@@ -1,5 +1,6 @@
 ---
 title: Origin Rules examples
+description: Example origin rules for routing and header modifications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

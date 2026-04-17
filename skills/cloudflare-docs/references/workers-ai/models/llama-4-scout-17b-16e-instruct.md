@@ -41,10 +41,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3409)
-* [  TypeScript ](#tab-panel-3410)
-* [  Python ](#tab-panel-3411)
-* [  curl ](#tab-panel-3412)
+* [  Worker (Streaming) ](#tab-panel-3413)
+* [  TypeScript ](#tab-panel-3414)
+* [  Python ](#tab-panel-3415)
+* [  curl ](#tab-panel-3416)
 
 TypeScript
 
@@ -209,8 +209,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3419)
-* [ Output ](#tab-panel-3420)
+* [ Input ](#tab-panel-3423)
+* [ Output ](#tab-panel-3424)
 
 prompt
 
@@ -266,7 +266,7 @@ presence\_penalty
 
 response
 
-`string`requiredThe generated text response from the model
+`string`The generated text response from the model
 
 ▶usage{}
 
@@ -278,8 +278,8 @@ response
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3421)
-* [ Output ](#tab-panel-3422)
+* [ Input ](#tab-panel-3425)
+* [ Output ](#tab-panel-3426)
 
 prompt
 
@@ -347,8 +347,8 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3423)
-* [ Output ](#tab-panel-3424)
+* [ Input ](#tab-panel-3427)
+* [ Output ](#tab-panel-3428)
 
 ▶requests\[\]
 
@@ -356,7 +356,7 @@ Batch — Send multiple requests in a single API call
 
 response
 
-`string`requiredThe generated text response from the model
+`string`The generated text response from the model
 
 ▶usage{}
 
@@ -370,8 +370,8 @@ response
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3413)
-* [ Output ](#tab-panel-3414)
+* [ Input ](#tab-panel-3417)
+* [ Output ](#tab-panel-3418)
 
 ```
 
@@ -697,8 +697,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3415)
-* [ Output ](#tab-panel-3416)
+* [ Input ](#tab-panel-3419)
+* [ Output ](#tab-panel-3420)
 
 ```
 
@@ -902,8 +902,8 @@ Explain Code
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3417)
-* [ Output ](#tab-panel-3418)
+* [ Input ](#tab-panel-3421)
+* [ Output ](#tab-panel-3422)
 
 ```
 

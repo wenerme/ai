@@ -1,6 +1,6 @@
 ---
 title: Functions
-description: The Cloudflare Rules language provides functions for manipulating and validating values in an expression:
+description: Functions available for transforming values in rule expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

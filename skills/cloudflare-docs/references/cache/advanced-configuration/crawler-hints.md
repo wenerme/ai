@@ -1,6 +1,6 @@
 ---
 title: Crawler Hints
-description: Crawler Hints aims to increase the proportion of relevant crawls and limit crawls that do not find fresh content to reduce the need for repeated crawls.
+description: Signal search engine crawlers when content changes with IndexNow.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: HTTP/2
-description: HTTP/2 uses the TCP transport protocol and TLS to secure communications and improves page load times.
+description: Serve content over HTTP/2 for multiplexed, lower-latency connections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -37,8 +37,8 @@ HTTP/2 is enabled by default for all plans (though it does require an [SSL certi
 
 Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
 
-* [ Dashboard ](#tab-panel-6523)
-* [ API ](#tab-panel-6524)
+* [ Dashboard ](#tab-panel-8725)
+* [ API ](#tab-panel-8726)
 
 To disable **HTTP/2** in the dashboard:
 

@@ -30,12 +30,6 @@ Claude Sonnet 4.5 is the best coding model to date, with significant improvement
 | Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)          |
 
-## Playground
-
-Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and an instant way to preview and test a model directly in the browser.
-
-[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=anthropic/claude-sonnet-4.5) 
-
 ## Usage
 
 TypeScript
@@ -285,8 +279,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-26)
-* [ Output ](#tab-panel-27)
+* [ Input ](#tab-panel-30)
+* [ Output ](#tab-panel-31)
 
 ▶messages\[\]
 
@@ -322,36 +316,36 @@ stream
 
 id
 
-`string`required
+`string`
 
 type
 
-`string`requiredconst: message
+`string`const: message
 
 role
 
-`string`requiredconst: assistant
+`string`const: assistant
 
 ▶content\[\]
 
-`array`required
+`array`
 
 model
 
-`string`required
+`string`
 
 stop\_reason
 
-`string | null`required
+`string | null`
 
 ▶usage{}
 
-`object`required
+`object`
 
 ## API Schemas
 
-* [ Input ](#tab-panel-24)
-* [ Output ](#tab-panel-25)
+* [ Input ](#tab-panel-28)
+* [ Output ](#tab-panel-29)
 
 ```
 

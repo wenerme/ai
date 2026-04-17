@@ -1,6 +1,6 @@
 ---
 title: Rulesets
-description: A ruleset is an ordered set of rules that you can apply to traffic on the Cloudflare global network. Rulesets belong to a phase and can only execute in the same phase. To deploy a ruleset to a phase, add a rule that executes the ruleset to the phase entry point ruleset.
+description: How rulesets group and organize rules in the Ruleset Engine.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

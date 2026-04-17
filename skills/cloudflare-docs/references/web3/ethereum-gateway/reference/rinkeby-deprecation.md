@@ -1,6 +1,6 @@
 ---
 title: Rinkeby deprecation
-description: Though Cloudflare's Ethereum Gateway launched with support for the Rinkeby testnet, Rinkeby did not run through The Merge and - as a result - will no longer be a reliable staging environment for mainnet.
+description: Deprecation notice for the Rinkeby test network.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

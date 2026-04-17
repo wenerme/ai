@@ -1,6 +1,6 @@
 ---
 title: Error tokens
-description: Each custom error token provides diagnostic information or specific functionality that appears on the error page. Certain error pages require a page-specific custom error token.
+description: Dynamic tokens available for use in custom error page HTML.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Lists
-description: Lists allow you to group items such as IP addresses, hostnames, or autonomous system numbers (ASNs), and reference them by name in Cloudflare rule expressions. Instead of adding each item individually to every rule that needs it, you define the group once and reuse it across rules and zones.
+description: Use lists to reference groups of items in rule expressions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

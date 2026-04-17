@@ -1,6 +1,6 @@
 ---
 title: Data origin and collection
-description: Web Analytics relies on the performance.getEntriesByType('navigation') object to collect metrics about page load performance. If Navigation Timing Level 2 is not supported, then performance.timing (Level 1) is used.
+description: How Web Analytics collects data from visitor browsers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

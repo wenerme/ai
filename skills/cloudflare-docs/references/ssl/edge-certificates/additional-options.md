@@ -1,6 +1,6 @@
 ---
 title: Additional options
-description: Once you set up SSL/TLS on your application, you can adjust the following settings on the Edge Certificates page:
+description: Additional edge certificate options including HTTPS, HSTS, and TLS settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

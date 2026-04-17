@@ -1,6 +1,6 @@
 ---
 title: Ephemeral IDs
-description: Ephemeral IDs are short-lived device identifiers that Turnstile generates for each visitor interaction. Unlike IP-based detection, Ephemeral IDs link visitor behavior to a specific client device without relying on cookies or client-side storage. This makes them effective against attackers who change IP addresses between requests.
+description: Generate single-use Ephemeral IDs for fraud detection and analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

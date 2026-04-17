@@ -1,5 +1,6 @@
 ---
 title: Redirect examples
+description: Example URL forwarding rules for common redirect scenarios.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

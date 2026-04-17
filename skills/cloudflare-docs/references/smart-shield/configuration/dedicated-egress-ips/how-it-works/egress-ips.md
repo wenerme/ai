@@ -1,6 +1,6 @@
 ---
 title: Egress IPs
-description: When you use Cloudflare as a reverse proxy, Cloudflare's global network sits between client requests and your origin servers.
+description: How egress IPs are allocated across IPv4 and IPv6 for your account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

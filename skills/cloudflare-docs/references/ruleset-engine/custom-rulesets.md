@@ -1,6 +1,6 @@
 ---
 title: Work with custom rulesets
-description: Use the following workflow to deploy a custom ruleset:
+description: Create, deploy, and manage custom rulesets using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

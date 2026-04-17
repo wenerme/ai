@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: If you encounter issues with edge certificate cipher suites, refer to the following scenarios.
+description: Resolve common cipher suite configuration issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Before you configure APO for your WordPress site, complete the following tasks.
+description: Set up APO for your WordPress site with Cloudflare DNS and the WordPress plugin.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

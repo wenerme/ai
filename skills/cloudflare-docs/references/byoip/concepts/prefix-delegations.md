@@ -1,6 +1,6 @@
 ---
 title: Prefix delegations
-description: BYOIP supports prefix delegations, which occur when a prefix owner’s account (Account A) allows another account (Account B) to use all or part of their prefix. The original prefix is still managed by the original account, but a delegation allows another account to use the delegated IP(s) on various services within that account.
+description: Delegate IP prefixes to other Cloudflare accounts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

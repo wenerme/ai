@@ -1,6 +1,6 @@
 ---
 title: Rules changelog
-description: Two new fields are now available in rule expressions that surface Layer 4 transport telemetry from the client connection. Together with the existing cf.timings.client_tcp_rtt_msec field, these fields give you a complete picture of connection quality for both TCP and QUIC traffic — enabling transport-aware rules without requiring any client-side changes.
+description: Track the latest updates and changes to Cloudflare Rules features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

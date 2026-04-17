@@ -1,5 +1,6 @@
 ---
 title: Polish statuses
+description: Understand Polish response header statuses.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

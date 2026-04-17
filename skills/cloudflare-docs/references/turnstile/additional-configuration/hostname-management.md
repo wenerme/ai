@@ -1,6 +1,6 @@
 ---
 title: Hostname management
-description: Hostname management controls where your Turnstile widgets can be used by specifying which domains are authorized to load and execute your widgets. This security measure prevents unauthorized use of your widgets on domains that you do not control.
+description: Control which hostnames can serve your Turnstile widget.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -60,8 +60,8 @@ However, it will not work on:
 
 ## Add hostnames
 
-* [ Dashboard ](#tab-panel-6708)
-* [ API ](#tab-panel-6709)
+* [ Dashboard ](#tab-panel-8924)
+* [ API ](#tab-panel-8925)
 
 Existing widget
 

@@ -1,6 +1,6 @@
 ---
 title: Feedback reports
-description: When Cloudflare detects that a challenge has failed or the user cannot be verified on a page with Turnstile, the user will encounter an error on the widget and may be asked to send feedback on the issue that they have encountered by choosing one of the options listed.
+description: Submit Turnstile feedback reports for false positive challenges.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

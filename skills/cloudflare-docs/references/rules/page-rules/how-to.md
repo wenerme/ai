@@ -1,6 +1,6 @@
 ---
 title: How to
-description: Use the following resources to accomplish specific goals in Page Rules.
+description: How-to guides for common Page Rules configurations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Restrict gateway access
-description: If you are using a Web3 gateway for internal application calls, you may want to restrict gateway access to specific backend services.
+description: Restrict access to your Web3 gateway with WAF custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

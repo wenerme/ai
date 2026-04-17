@@ -1,6 +1,6 @@
 ---
 title: IP Access rules parameters
-description: An IP Access rule will apply a certain action to incoming traffic based on the visitor's IP address, IP range, Autonomous System Number (ASN), or country.
+description: Configurable parameters for IP Access rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

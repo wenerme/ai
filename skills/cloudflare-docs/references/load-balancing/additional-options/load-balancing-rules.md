@@ -1,6 +1,6 @@
 ---
 title: Custom load balancing rules
-description: Custom load balancing rules let you customize the behavior of your load balancer based on the characteristics of a request.
+description: Customize load balancing behavior with custom rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

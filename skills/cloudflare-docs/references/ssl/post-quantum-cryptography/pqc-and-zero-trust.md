@@ -1,6 +1,6 @@
 ---
 title: Post-quantum cryptography in Cloudflare One
-description: Cloudflare One replaces legacy corporate security perimeters with Cloudflare's global network, making access to the Internet and to corporate resources faster and safer for teams around the world.
+description: Use post-quantum cryptography with WARP and Cloudflare Tunnel.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Bundle methodologies
-description: When an SSL certificate is deployed to Cloudflare's global network, it may be augmented with intermediate and root certificates to assist the user agent in finding a chain to a publicly trusted root.
+description: Certificate chain bundling options for custom certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

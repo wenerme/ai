@@ -1,6 +1,6 @@
 ---
 title: Foundation DNS
-description: Foundation DNS is the Cloudflare DNS offering for enterprise customers.
+description: Enterprise DNS with advanced nameservers and DNSSEC controls.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

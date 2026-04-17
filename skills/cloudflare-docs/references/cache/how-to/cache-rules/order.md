@@ -1,6 +1,6 @@
 ---
 title: Order and priority
-description: Cache rules affect requests differently from Page Rules. This is how they are applied:
+description: How Cache Rules are ordered and which rule takes priority.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

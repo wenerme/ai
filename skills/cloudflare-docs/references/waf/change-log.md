@@ -1,6 +1,6 @@
 ---
 title: WAF changelog overview
-description: The WAF changelog provides information about changes to managed rulesets and general updates to WAF protection.
+description: Overview of WAF changelog, scheduled changes, and historical updates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

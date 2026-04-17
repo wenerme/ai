@@ -1,6 +1,6 @@
 ---
 title: Configuration Rules
-description: Configuration Rules allow you to customize certain Cloudflare configuration settings for matching incoming requests. For example, you can turn off specific features for certain URL paths or change settings based on the visitor's country.
+description: Customize Cloudflare settings for matching incoming requests, such as security level and caching.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

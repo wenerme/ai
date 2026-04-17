@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/zt-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ CLI ](https://developers.cloudflare.com/search/?tags=CLI) 
+
 Was this helpful?
 
 YesNo
@@ -31,10 +35,10 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-3499)
-* [ macOS ](#tab-panel-3500)
-* [ Linux ](#tab-panel-3501)
-* [ Build from source ](#tab-panel-3502)
+* [ Windows ](#tab-panel-5645)
+* [ macOS ](#tab-panel-5646)
+* [ Linux ](#tab-panel-5647)
+* [ Build from source ](#tab-panel-5648)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`

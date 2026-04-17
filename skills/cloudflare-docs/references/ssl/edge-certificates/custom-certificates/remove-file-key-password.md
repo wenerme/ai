@@ -1,6 +1,6 @@
 ---
 title: Remove key file password
-description: You cannot upload a custom certificate with a password-protected key file.
+description: Remove the password from a private key file before uploading.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Load Balancing components
-description: This page provides a simplified overview of the three main components of the Cloudflare Load Balancing solution and how they relate to one another.
+description: Load balancers, pools, monitors, and how they work together.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

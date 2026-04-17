@@ -1,6 +1,6 @@
 ---
 title: Rules language
-description: The Cloudflare Rules language is a flexible and intuitive specification for building rule expressions. Based on the widely known Wireshark display filters, the Rules language allows you to precisely target HTTP requests with a syntax and semantics familiar to security engineers.
+description: Write rule expressions using the Cloudflare Rules language.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

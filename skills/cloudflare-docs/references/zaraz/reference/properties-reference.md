@@ -1,6 +1,6 @@
 ---
 title: Properties reference
-description: Cloudflare Zaraz offers properties that you can use when configuring the product. They are helpful to send data to a third-party tool or to create triggers as they have context about a specific user's browser session and the actions they take on the website. Below is a list of the properties you can access from the Cloudflare dashboard and their values.
+description: Built-in properties available in Zaraz events.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

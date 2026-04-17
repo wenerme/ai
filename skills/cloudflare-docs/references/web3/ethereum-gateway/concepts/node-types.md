@@ -1,6 +1,6 @@
 ---
 title: Node types
-description: There are three widely known Ethereum nodes that are used: Full nodes, Archive nodes, and Light nodes.
+description: Full nodes, archive nodes, and their role in Ethereum queries.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

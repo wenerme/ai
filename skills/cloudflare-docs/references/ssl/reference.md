@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: For more on Cloudflare SSL/TLS, refer to these articles:
+description: Reference information for SSL/TLS certificates, protocols, and features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

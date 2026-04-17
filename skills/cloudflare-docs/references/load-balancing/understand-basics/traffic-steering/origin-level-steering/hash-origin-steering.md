@@ -1,6 +1,6 @@
 ---
 title: Hash
-description: Hash steering guides Cloudflare to send requests to endpoints based on a combination of endpoint weights and previous requests from that IP address. Ensures requests from the same IP address will hit the same endpoint, but actual traffic distribution may differ from endpoint weights.
+description: Distribute requests using hash-based origin steering.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

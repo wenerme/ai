@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Refer to the following pages for more information about Bulk Redirects:
+description: Reference information for Bulk Redirects.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

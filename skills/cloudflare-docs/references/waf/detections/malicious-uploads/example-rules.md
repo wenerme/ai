@@ -1,6 +1,6 @@
 ---
 title: Example rules
-description: This custom rule example logs all requests with at least one uploaded content object:
+description: Example rules for handling detected malicious file uploads.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Advanced
+description: Advanced tunnel configuration, including local management and run parameters.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

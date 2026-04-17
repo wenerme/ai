@@ -1,6 +1,6 @@
 ---
 title: Enable
-description: To enable or disable Rocket Loader, use the following instructions.
+description: Turn on Rocket Loader for your zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -18,8 +18,8 @@ Copy page
 
 To enable or disable Rocket Loader, use the following instructions.
 
-* [ Dashboard ](#tab-panel-6514)
-* [ API ](#tab-panel-6515)
+* [ Dashboard ](#tab-panel-8716)
+* [ API ](#tab-panel-8717)
 
 To enable or disable **Rocket Loader** in the dashboard:
 

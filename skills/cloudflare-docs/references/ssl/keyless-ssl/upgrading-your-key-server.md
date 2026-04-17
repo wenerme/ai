@@ -1,6 +1,6 @@
 ---
 title: Upgrade your key server
-description: Periodically, you may need to update your key server when using Cloudflare's Keyless SSL.
+description: Upgrade your Keyless SSL key server to the latest version.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

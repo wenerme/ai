@@ -1,6 +1,6 @@
 ---
 title: About
-description: When visitors request content from your domain, Cloudflare first attempts to serve content from the cache. If this attempt fails, Cloudflare sends a request — or an origin pull — back to your origin web server to get the content.
+description: How Authenticated Origin Pulls use mTLS to verify Cloudflare connections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

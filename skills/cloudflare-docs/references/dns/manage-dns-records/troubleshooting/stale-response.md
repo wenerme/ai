@@ -1,6 +1,6 @@
 ---
 title: Stale response for upstream DNS resolution
-description: In one of the scenarios below, you notice that stale DNS responses are used. Depending on the scenario and other aspects of your configuration, this can cause wrong content or no content to be returned.
+description: Fix stale DNS responses from upstream resolvers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

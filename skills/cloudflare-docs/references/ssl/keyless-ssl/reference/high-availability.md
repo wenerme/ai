@@ -1,6 +1,6 @@
 ---
 title: High availability
-description: The Cloudflare Keyless SSL server runs as a single binary with minimal dependencies and is designed to be robust and reliable. However, the network between your key server and Cloudflare may not be, which could prevent new TLS connections.
+description: Deploy Keyless SSL key servers with high availability.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Triggers and rules
-description: Triggers define the conditions under which a tool will start an action. In most cases, your objective will be to create triggers that match specific website events that are relevant to your business. A trigger can be based on an event that happened on your website, like after selecting a button or loading a specific page.
+description: Trigger types and matching rules for Zaraz actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

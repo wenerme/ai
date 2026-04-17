@@ -1,6 +1,6 @@
 ---
 title: Community resources
-description: Community resources for our customers to help them integrate Turnstile.
+description: Community-built libraries and integrations for Cloudflare Turnstile.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
