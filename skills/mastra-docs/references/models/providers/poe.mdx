@@ -1,11 +1,11 @@
 ---
 title: "Poe | Models"
-description: "Use Poe models with Mastra. 117 models available."
+description: "Use Poe models with Mastra. 118 models available."
 ---
 
 # [Poe logo]Poe
 
-Access 117 Poe models through Mastra's model router. Authentication is handled automatically using the `POE_API_KEY` environment variable.
+Access 118 Poe models through Mastra's model router. Authentication is handled automatically using the `POE_API_KEY` environment variable.
 
 Learn more in the [Poe documentation](https://creator.poe.com/docs/external-applications/openai-compatible-api).
 
@@ -119,6 +119,18 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 983040,
+    "maxOutput": 128000,
+    "inputCost": 4.3,
+    "outputCost": 21
+  },
+  {
+    "model": "poe/anthropic/claude-opus-4.7",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
     "maxOutput": 128000,
     "inputCost": 4.3,
     "outputCost": 21

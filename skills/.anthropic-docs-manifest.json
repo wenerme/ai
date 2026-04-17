@@ -530,10 +530,10 @@
   "anthropic-docs/managed-agents/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
     "skill": "anthropic-docs",
-    "etag": "W/\"5d9f-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 23967,
-    "updatedAt": "2026-04-17T00:18:28.541Z"
+    "etag": "W/\"5e83-19d9a5f0a08\"",
+    "lastModified": "Fri, 17 Apr 2026 07:36:53 GMT",
+    "size": 24195,
+    "updatedAt": "2026-04-17T10:26:26.134Z"
   },
   "anthropic-docs/managed-agents/onboarding.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/onboarding",

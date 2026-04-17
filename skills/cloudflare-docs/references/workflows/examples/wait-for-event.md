@@ -20,7 +20,7 @@ Copy page
 
 # Human-in-the-Loop Image Tagging with waitForEvent
 
-**Last reviewed:**  12 months ago 
+**Last reviewed:**  about 1 year ago 
 
 Implement a Cloudflare Workflow that processes user-uploaded images, awaits human approval, and performs AI-based image tagging upon approval.
 
@@ -53,8 +53,8 @@ The `index.ts` file defines the core logic of the Cloudflare Workflow responsibl
 
 For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
-* [  JavaScript ](#tab-panel-10815)
-* [  TypeScript ](#tab-panel-10816)
+* [  JavaScript ](#tab-panel-10855)
+* [  TypeScript ](#tab-panel-10856)
 
 JavaScript
 
@@ -232,8 +232,8 @@ Explain Code
 
 The Workflow configuration is defined in the `wrangler.jsonc` file. This file includes bindings for the R2 bucket, D1 database, Workers AI, and the Workflow itself. Ensure that all necessary bindings and environment variables are correctly set up to match your Cloudflare account and services.
 
-* [  wrangler.jsonc ](#tab-panel-10813)
-* [  wrangler.toml ](#tab-panel-10814)
+* [  wrangler.jsonc ](#tab-panel-10853)
+* [  wrangler.toml ](#tab-panel-10854)
 
 JSONC
 
@@ -249,7 +249,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-17",
 
   "observability": {
 
@@ -324,7 +324,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-17"
 
 
 [observability]

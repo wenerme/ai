@@ -1,5 +1,3 @@
-# Caching
-
 Context caching allows you to save and reuse precomputed input tokens that you wish to use repeatedly, for example when asking different questions about the same media file. This can lead to cost and speed savings, depending on the usage. For a detailed introduction, see the [Context caching](https://ai.google.dev/gemini-api/docs/caching) guide.
 
 ## Method: cachedContents.create
@@ -7,6 +5,7 @@ Context caching allows you to save and reuse precomputed input tokens that you w
 - [Endpoint](https://ai.google.dev/api/caching#body.HTTP_TEMPLATE)
 - [Request body](https://ai.google.dev/api/caching#body.request_body)
 - [Response body](https://ai.google.dev/api/caching#body.response_body)
+- [Authorization scopes](https://ai.google.dev/api/caching#body.aspect)
 - [Example request](https://ai.google.dev/api/caching#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/caching#body.codeSnippets.group)
   - [From name](https://ai.google.dev/api/caching#body.codeSnippets.group_1)
@@ -521,6 +520,7 @@ If successful, the response body contains a newly created instance of `https://a
 - [Request body](https://ai.google.dev/api/caching#body.request_body)
 - [Response body](https://ai.google.dev/api/caching#body.response_body)
   - [JSON representation](https://ai.google.dev/api/caching#body.ListCachedContentsResponse.SCHEMA_REPRESENTATION)
+- [Authorization scopes](https://ai.google.dev/api/caching#body.aspect)
 
 Lists CachedContents.
 
@@ -557,6 +557,7 @@ Fields `cachedContents[]` ``object (`https://ai.google.dev/api/caching#CachedCon
 - [Path parameters](https://ai.google.dev/api/caching#body.PATH_PARAMETERS)
 - [Request body](https://ai.google.dev/api/caching#body.request_body)
 - [Response body](https://ai.google.dev/api/caching#body.response_body)
+- [Authorization scopes](https://ai.google.dev/api/caching#body.aspect)
 - [Example request](https://ai.google.dev/api/caching#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/caching#body.codeSnippets.group)
 
@@ -681,6 +682,7 @@ If successful, the response body contains an instance of `https://ai.google.dev/
 - [Query parameters](https://ai.google.dev/api/caching#body.QUERY_PARAMETERS)
 - [Request body](https://ai.google.dev/api/caching#body.request_body)
 - [Response body](https://ai.google.dev/api/caching#body.response_body)
+- [Authorization scopes](https://ai.google.dev/api/caching#body.aspect)
 - [Example request](https://ai.google.dev/api/caching#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/caching#body.codeSnippets.group)
 
@@ -857,6 +859,7 @@ If successful, the response body contains an instance of `https://ai.google.dev/
 - [Path parameters](https://ai.google.dev/api/caching#body.PATH_PARAMETERS)
 - [Request body](https://ai.google.dev/api/caching#body.request_body)
 - [Response body](https://ai.google.dev/api/caching#body.response_body)
+- [Authorization scopes](https://ai.google.dev/api/caching#body.aspect)
 - [Example request](https://ai.google.dev/api/caching#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/caching#body.codeSnippets.group)
 
@@ -1342,7 +1345,7 @@ Tool details that the model may use to generate response.
 
 A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
 
-Next ID: 15
+Next ID: 16
 Fields `functionDeclarations[]` ``object (`https://ai.google.dev/api/caching#FunctionDeclaration`)`` Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling.
 
 The model or system does not execute the function. Instead the defined function may be returned as a `https://ai.google.dev/api/caching#Part.FIELDS.function_call` with arguments to the client side for execution. The model may decide to call a subset of these functions by populating `https://ai.google.dev/api/caching#Part.FIELDS.function_call` in the response. The next conversation turn may contain a `https://ai.google.dev/api/caching#Part.FIELDS.function_response` with the `https://ai.google.dev/api/caching#Content.FIELDS.role` "function" generation context for the next model turn.

@@ -1,6 +1,6 @@
 ---
-title: Track robots.txt
-description: The Robots.txt tab in AI Crawl Control provide insights into how AI crawlers interact with your robots.txt files across your hostnames. You can monitor request patterns, verify file availability, and identify crawlers that violate your directives.
+title: Directives
+description: The Directives tab in AI Crawl Control provides insights into how AI crawlers interact with your robots.txt files across your hostnames. You can monitor request patterns, verify file availability, identify crawlers that violate your directives, and assess your site's readiness for AI agents.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -14,16 +14,16 @@ YesNo
 
 Copy page
 
-# Track robots.txt
+# Directives
 
-The **Robots.txt** tab in AI Crawl Control provide insights into how AI crawlers interact with your `robots.txt` files across your hostnames. You can monitor request patterns, verify file availability, and identify crawlers that violate your directives.
+The **Directives** tab in AI Crawl Control provides insights into how AI crawlers interact with your `robots.txt` files across your hostnames. You can monitor request patterns, verify file availability, identify crawlers that violate your directives, and assess your site's readiness for AI agents.
 
-To access robots.txt insights:
+To access directives insights:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**.  
 [ Go to **AI Crawl Control** ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
-3. Go to the **Robots.txt** tab.
+3. Go to the **Directives** tab.
 
 ## Check managed robots.txt status
 
@@ -44,7 +44,7 @@ The values in all tables and metrics will update according to your filters.
 
 ## Monitor robots.txt availability
 
-The **Availability** table shows the historical request frequency and health status of `robots.txt` files across your hostnames over the selected time frame.
+The **Robots.txt availability** table shows the historical request frequency and health status of `robots.txt` files across your hostnames over the selected time frame.
 
 | Column          | Description                                                                                                                                                                                                               |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,7 +62,7 @@ From this table, you can take the following actions:
 
 ## Track robots.txt violations
 
-The **Violations** table identifies AI crawlers that have requested paths explicitly disallowed by your `robots.txt` file. This helps you identify non-compliant crawlers and take appropriate action.
+The **Robots.txt violations** table identifies AI crawlers that have requested paths explicitly disallowed by your `robots.txt` file. This helps you identify non-compliant crawlers and take appropriate action.
 
 How violations are calculated
 
@@ -83,6 +83,16 @@ When you identify crawlers violating your `robots.txt` directives, you have seve
 * Use [Cloudflare WAF](https://developers.cloudflare.com/waf/) to create a path-specific security rules for the violating crawler.
 * Use [Redirect Rules](https://developers.cloudflare.com/rules/url-forwarding/) to guide violating crawlers to an appropriate area of your site.
 
+## Check Agent Readiness
+
+The **Agent Readiness** card helps you assess how well your site is configured for AI agents. Select **Check readiness score** to scan your site against emerging standards for AI agent interaction, including:
+
+* **Robots.txt configuration**: Whether your site has a valid `robots.txt` file with appropriate directives
+* **Markdown for Agents**: Whether your site supports content negotiation for AI-optimized content delivery
+* **Content Signals Policy**: Whether your site signals content usage preferences to AI crawlers
+
+The scan is powered by [isitagentready.org ↗](https://isitagentready.org). Results include recommendations for improving your site's compatibility with AI agents and crawlers.
+
 ## Related resources
 
 * [Manage AI crawlers](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/)
@@ -90,5 +100,5 @@ When you identify crawlers violating your `robots.txt` directives, you have seve
 * [Cloudflare WAF](https://developers.cloudflare.com/waf/)
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/track-robots-txt/","name":"Track robots.txt"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ai-crawl-control/","name":"AI Crawl Control"}},{"@type":"ListItem","position":3,"item":{"@id":"/ai-crawl-control/features/","name":"Features"}},{"@type":"ListItem","position":4,"item":{"@id":"/ai-crawl-control/features/track-robots-txt/","name":"Directives"}}]}
 ```

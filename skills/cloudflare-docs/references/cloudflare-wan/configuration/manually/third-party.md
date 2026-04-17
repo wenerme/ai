@@ -24,7 +24,7 @@ Copy page
 * [ Fortinet ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/fortinet/)
 * [ Furukawa Electric FITELnet ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/fitelnet/)
 * [ Google Cloud VPN ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/google/)
-* [ Juniper Networks SRX Series Firewalls ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/juniper/)
+* [ HPE Juniper Networking SRX Series Firewalls ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/juniper/)
 * [ Microsoft Azure ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/azure/)
 * [ Oracle Cloud ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/oracle/)
 * [ Palo Alto Networks NGFW ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/palo-alto/)

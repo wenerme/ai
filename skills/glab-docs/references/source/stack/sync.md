@@ -35,12 +35,14 @@ glab stack sync
 glab stack sync --no-verify
 glab stack sync --update-base
 glab stack sync --assignee user1,user2
+glab stack sync --label bug,priority::high
 ```
 
 ## Options
 
 ```plaintext
   -a, --assignee usernames   Assign merge request to people by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+  -l, --label name           Add label by name. Multiple labels can be comma-separated or specified by repeating the flag.
       --no-verify            Bypass the pre-push hook. (See githooks(5) for more information.)
       --update-base          Rebase the stack onto the latest version of the base branch.
 ```

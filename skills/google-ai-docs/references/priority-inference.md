@@ -1,5 +1,3 @@
-# Priority inference
-
 > [!WARNING]
 > **Preview:** The Gemini Priority API is in [Preview](https://cloud.google.com/products#product-launch-stages).
 
@@ -26,7 +24,7 @@ To use the Priority tier, set the `service_tier` field in the request body to
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
             contents="Triage this critical customer support ticket immediately.",
-            config={'service_tier': 'priority'},
+            config={"service_tier": "priority"},
         )
 
         # Validate for graceful downgrade
@@ -108,15 +106,13 @@ To use the Priority tier, set the `service_tier` field in the request body to
 
 ### REST
 
-    curl \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=$GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
     -d '{
       "contents": [{
         "parts":[{"text": "Analyze user sentiment in real time"}]
       }],
-      "serviceTier": "PRIORITY"
+      "service_tier": "priority"
     }'
 
 ## How Priority inference works
@@ -165,7 +161,7 @@ rate, not the Priority premium rate.
 
 ### Client responsibility
 
-- **Response monitoring** : Developers should monitor the `service_tier` value in the API response body to detect if requests are being frequently downgraded to `standard`.
+- **Response monitoring** : Developers should monitor the `x-gemini-service-tier` header in the API response to detect if requests are being frequently downgraded to `standard`.
 - **Retries** : Clients must implement retry logic/exponential backoff for standard errors, such as `DEADLINE_EXCEEDED`.
 
 ## Pricing

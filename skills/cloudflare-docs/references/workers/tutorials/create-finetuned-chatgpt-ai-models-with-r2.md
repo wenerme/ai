@@ -118,8 +118,8 @@ A binding is how your Worker interacts with external resources such as the R2 bu
 
 To bind the R2 bucket to your Worker, add the following to your Wrangler file. Update the binding property to a valid JavaScript variable identifier. Replace `<YOUR_BUCKET_NAME>` with the name of the bucket you created in [step 2](#2-upload-a-fine-tune-document-to-r2):
 
-* [  wrangler.jsonc ](#tab-panel-7818)
-* [  wrangler.toml ](#tab-panel-7819)
+* [  wrangler.jsonc ](#tab-panel-10001)
+* [  wrangler.toml ](#tab-panel-10002)
 
 JSONC
 

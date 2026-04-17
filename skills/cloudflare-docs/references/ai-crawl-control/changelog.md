@@ -1,6 +1,5 @@
 ---
 title: Changelog
-description: AI Crawl Control now supports extending the underlying WAF rule with custom modifications. Any changes you make directly in the WAF custom rules editor — such as adding path-based exceptions, extra user agents, or additional expression clauses — are preserved when you update crawler actions in AI Crawl Control.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -17,6 +16,34 @@ Copy page
 # Changelog
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ai-crawl-control.xml) 
+
+## 2026-04-17
+
+  
+**Introducing Redirects for AI Training**   
+
+Cloudflare's network now supports redirecting verified AI training crawlers to canonical URLs when they request deprecated or duplicate pages. When enabled via **AI Crawl Control** \> **Quick Actions**, AI training crawlers that request a page with a canonical tag pointing elsewhere receive a 301 redirect to the canonical version. Humans, search engine crawlers, and AI Search agents continue to see the original page normally.
+
+This feature leverages your existing `<link rel="canonical">` tags. No additional configuration required beyond enabling the toggle. Available on Pro, Business, and Enterprise plans at no additional cost.
+
+Refer to the [Redirects for AI Training documentation](https://developers.cloudflare.com/ai-crawl-control/reference/redirects-for-ai-training/) for details.
+
+## 2026-04-17
+
+  
+**Tools to prepare your site for the agentic Internet**   
+
+AI Crawl Control now includes new tools to help you prepare your site for the agentic Internet—a web where AI agents are first-class citizens that discover and interact with content differently than human visitors.
+
+#### Content Format insights
+
+The **Metrics** tab now includes a **Content Format** chart showing what content types AI systems request versus what your origin serves. Understanding these patterns helps you optimize content delivery for both human and agent consumption.
+
+#### Directives tab (formerly Robots.txt)
+
+The **Robots.txt** tab has been renamed to **Directives** and now includes a link to check your site's [Agent Readiness ↗](https://isitagentready.org) score.
+
+Refer to our [blog post on preparing for the agentic Internet ↗](https://blog.cloudflare.com/welcome-to-agents-week/) for more on why these capabilities matter.
 
 ## 2026-03-24
 

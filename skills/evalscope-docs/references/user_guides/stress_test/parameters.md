@@ -103,6 +103,9 @@ For details on using the SLA auto-tuning feature, see the [Auto-tuning Guide](./
 | `rerank` | Load Query-Document pairs from file to evaluate Rerank modelSupports JSONL format (with `query` and `documents` fields) | ✓ (Required) |
 | `random_rerank` | Randomly generate query data based on `max-prompt-length` and `min-prompt-length` to evaluate Rerank model**Must specify `tokenizer-path`**Supports `--extra-args '{"num_documents": 10, "document_length_ratio": 5}'` to set number of documents and length ratio relative to query | ✗ |
 | `custom` | Custom dataset parserSee [Custom Dataset Guide](custom.md#custom-dataset) | ✓ |
+| `random_multi_turn` | Synthetic multi-turn conversations; each turn randomly generates a token sequenceMust be used with `--multi-turn`**Requires `--tokenizer-path` and `--max-turns`**[Usage example](./multi_turn.md#1-using-random_multi_turn-synthetic-multi-turn-conversations) | ✗ |
+| `share_gpt_zh_multi_turn` | Automatically downloads the Chinese [ShareGPT](https://www.modelscope.cn/datasets/swift/sharegpt) dataset (~70k conversations) from ModelScope, preserving full multi-turn conversationsMust be used with `--multi-turn`[Usage example](./multi_turn.md#2-using-share_gpt_zh_multi_turn-real-chinese-conversations) | ✓ |
+| `share_gpt_en_multi_turn` | Automatically downloads the English [ShareGPT](https://www.modelscope.cn/datasets/swift/sharegpt) dataset (~70k conversations) from ModelScope, preserving full multi-turn conversationsMust be used with `--multi-turn` | ✓ |
 
 ## Model Settings
 
@@ -132,6 +135,19 @@ For details on using the SLA auto-tuning feature, see the [Auto-tuning Guide](./
 | `--wandb-api-key` | `str` | wandb API key for logging metrics to wandb**Deprecated**, please use `--visualizer wandb` instead | - |
 | `--swanlab-api-key` | `str` | swanlab API key for logging metrics to swanlab**Deprecated**, please use `--visualizer swanlab` instead | - |
 | `--outputs-dir` | `str` | Output file path | `./outputs` |
+| `--no-timestamp` | `bool` | Exclude timestamp from output directory name | `False` |
+
+## Multi-turn Settings
+
+| Parameter | Type | Description | Default |
+|-----------|------|-------------|---------|
+| `--multi-turn` | `bool` | Enable multi-turn conversation benchmark mode; `--number` is the total number of turns to send and `--parallel` is the number of concurrent turn-level requests | `False` |
+| `--min-turns` | `int` | Minimum number of user turns per conversation; used by `random_multi_turn` only | `1` |
+| `--max-turns` | `int` | Maximum number of user turns per conversation; required for `random_multi_turn`; optional for ShareGPT datasets to truncate long conversations | `None` |
+
+```{seealso}
+For details on using the multi-turn benchmark feature, see the [Multi-turn Benchmark Guide](./multi_turn.md).
+```
 
 ## Other Parameters
 

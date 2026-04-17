@@ -17,7 +17,7 @@ Copy page
 
 * [ Analyze AI traffic ](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/)
 * [ Manage AI crawlers ](https://developers.cloudflare.com/ai-crawl-control/features/manage-ai-crawlers/)
-* [ Track robots.txt ](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/)
+* [ Directives ](https://developers.cloudflare.com/ai-crawl-control/features/track-robots-txt/)
 * [ Pay Per Crawl ](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/)
 
 ```json

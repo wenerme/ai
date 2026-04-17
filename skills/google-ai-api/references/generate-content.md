@@ -1,5 +1,3 @@
-# Generating content
-
 The Gemini API supports content generation with images, audio, code, tools, and more. For details on each of these features, read on and check out the task-focused sample code, or read the comprehensive guides.
 
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation)
@@ -64,6 +62,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 `systemInstruction` ``object (`https://ai.google.dev/api/caching#Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#v1beta.GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Optional. The service tier of the request.
 `store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 ### Example request
@@ -2032,6 +2031,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 `systemInstruction` ``object (`https://ai.google.dev/api/caching#Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#v1beta.GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Optional. The service tier of the request.
 `store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 ### Example request
@@ -3579,3 +3579,14 @@ Block at and beyond a specified harm probability.
 | `BLOCK_ONLY_HIGH` | Content with NEGLIGIBLE, LOW, and MEDIUM will be allowed. |
 | `BLOCK_NONE` | All content will be allowed. |
 | `OFF` | Turn off the safety filter. |
+
+## ServiceTier
+
+Service tier of the request.
+
+| Enums ||
+|---|---|
+| `unspecified` | Default service tier, which is standard. |
+| `standard` | Standard service tier. |
+| `flex` | Flex service tier. |
+| `priority` | Priority service tier. |

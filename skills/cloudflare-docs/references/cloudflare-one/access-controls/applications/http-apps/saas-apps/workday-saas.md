@@ -20,7 +20,7 @@ Copy page
 
 # Workday
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Workday ↗](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/saml/dan1370796470811.html?toc=1.5.1) as a SAML application in Cloudflare One.
 

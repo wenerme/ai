@@ -1,5 +1,3 @@
-# Using files
-
 The Gemini API supports uploading media files separately from the prompt input, allowing your media to be reused across multiple requests and multiple prompts. For more details, check out the [Prompting with media](https://ai.google.dev/gemini-api/docs/prompting_with_media) guide.
 
 ## Method: media.upload
@@ -9,6 +7,7 @@ The Gemini API supports uploading media files separately from the prompt input, 
   - [JSON representation](https://ai.google.dev/api/files#body.request_body.SCHEMA_REPRESENTATION)
 - [Response body](https://ai.google.dev/api/files#body.response_body)
   - [JSON representation](https://ai.google.dev/api/files#body.CreateFileResponse.SCHEMA_REPRESENTATION)
+- [Authorization scopes](https://ai.google.dev/api/files#body.aspect)
 - [Example request](https://ai.google.dev/api/files#body.codeSnippets)
   - [Image](https://ai.google.dev/api/files#body.codeSnippets.group)
   - [Audio](https://ai.google.dev/api/files#body.codeSnippets.group_1)
@@ -653,6 +652,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Metadata for t
 - [Path parameters](https://ai.google.dev/api/files#body.PATH_PARAMETERS)
 - [Request body](https://ai.google.dev/api/files#body.request_body)
 - [Response body](https://ai.google.dev/api/files#body.response_body)
+- [Authorization scopes](https://ai.google.dev/api/files#body.aspect)
 - [Example request](https://ai.google.dev/api/files#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/files#body.codeSnippets.group)
 
@@ -748,6 +748,7 @@ If successful, the response body contains an instance of `https://ai.google.dev/
 - [Request body](https://ai.google.dev/api/files#body.request_body)
 - [Response body](https://ai.google.dev/api/files#body.response_body)
   - [JSON representation](https://ai.google.dev/api/files#body.ListFilesResponse.SCHEMA_REPRESENTATION)
+- [Authorization scopes](https://ai.google.dev/api/files#body.aspect)
 - [Example request](https://ai.google.dev/api/files#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/files#body.codeSnippets.group)
 
@@ -839,6 +840,7 @@ Fields `files[]` ``object (`https://ai.google.dev/api/files#File`)`` The list of
 - [Path parameters](https://ai.google.dev/api/files#body.PATH_PARAMETERS)
 - [Request body](https://ai.google.dev/api/files#body.request_body)
 - [Response body](https://ai.google.dev/api/files#body.response_body)
+- [Authorization scopes](https://ai.google.dev/api/files#body.aspect)
 - [Example request](https://ai.google.dev/api/files#body.codeSnippets)
   - [Basic](https://ai.google.dev/api/files#body.codeSnippets.group)
 

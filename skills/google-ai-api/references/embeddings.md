@@ -1,4 +1,4 @@
-# Embeddings are a numerical representation of text input that open up a number of unique use cases, such as clustering, similarity measurement and information retrieval. For an introduction, check out the [Embeddings guide](https://ai.google.dev/gemini-api/docs/embeddings).
+Embeddings are a numerical representation of text input that open up a number of unique use cases, such as clustering, similarity measurement and information retrieval. For an introduction, check out the [Embeddings guide](https://ai.google.dev/gemini-api/docs/embeddings).
 
 Unlike generative AI models that create new content, the Gemini Embedding model is only intended to transform the format of your input data into a numerical representation. While Google is responsible for providing an embedding model that transforms the format of your input data to the numerical-format requested, users retain full responsibility for the data they input and the resulting embeddings. By using the Gemini Embedding model you confirm that you have the necessary rights to any content that you upload. Do not generate content that infringes on others' intellectual property or privacy rights. Your use of this service is subject to our [Prohibited Use Policy](https://policies.google.com/terms/generative-ai/use-policy) and [Google's Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -237,10 +237,11 @@ The response to a `BatchEmbedContentsRequest`.
 
 If successful, the response body contains data with the following structure:
 Fields `embeddings[]` ``object (`https://ai.google.dev/api/embeddings#v1beta.ContentEmbedding`)`` Output only. The embeddings for each request, in the same order as provided in the batch request.
+`usageMetadata` ``object (`EmbeddingUsageMetadata`)`` Output only. The usage metadata for the request.
 
 | JSON representation |
 |---|
-| ``` { "embeddings": [ { object (`https://ai.google.dev/api/embeddings#v1beta.ContentEmbedding`) } ] } ``` |
+| ``` { "embeddings": [ { object (`https://ai.google.dev/api/embeddings#v1beta.ContentEmbedding`) } ], "usageMetadata": { object (`EmbeddingUsageMetadata`) } } ``` |
 
 ## Method: models.asyncBatchEmbedContent
 
@@ -298,17 +299,18 @@ If successful, the response body contains an instance of `https://ai.google.dev/
 
 The response to an `EmbedContentRequest`.
 Fields `embedding` ``object (`https://ai.google.dev/api/embeddings#v1beta.ContentEmbedding`)`` Output only. The embedding generated from the input content.
+`usageMetadata` ``object (`EmbeddingUsageMetadata`)`` Output only. The usage metadata for the request.
 
 | JSON representation |
 |---|
-| ``` { "embedding": { object (`https://ai.google.dev/api/embeddings#v1beta.ContentEmbedding`) } } ``` |
+| ``` { "embedding": { object (`https://ai.google.dev/api/embeddings#v1beta.ContentEmbedding`) }, "usageMetadata": { object (`EmbeddingUsageMetadata`) } } ``` |
 
 ## ContentEmbedding
 
 - [JSON representation](https://ai.google.dev/api/embeddings#SCHEMA_REPRESENTATION)
 
 A list of floats representing an embedding.
-Fields `values[]` `number` The embedding values.
+Fields `values[]` `number` The embedding values. This is for 3P users only and will not be populated for 1P calls.
 `shape[]` `integer` This field stores the soft tokens tensor frame shape (e.g. \[1, 1, 256, 2048\]).
 
 | JSON representation |
