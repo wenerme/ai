@@ -192,6 +192,7 @@ immich.json
     "defaultStorageQuota": null,
     "enabled": false,
     "issuerUrl": "",
+    "endSessionEndpoint": "",
     "mobileOverrideEnabled": false,
     "mobileRedirectUri": "",
     "profileSigningAlgorithm": "none",

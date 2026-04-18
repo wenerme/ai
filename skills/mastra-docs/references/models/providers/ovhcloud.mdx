@@ -1,11 +1,11 @@
 ---
 title: "OVHcloud AI Endpoints | Models"
-description: "Use OVHcloud AI Endpoints models with Mastra. 13 models available."
+description: "Use OVHcloud AI Endpoints models with Mastra. 10 models available."
 ---
 
 # [OVHcloud AI Endpoints logo]OVHcloud AI Endpoints
 
-Access 13 OVHcloud AI Endpoints models through Mastra's model router. Authentication is handled automatically using the `OVHCLOUD_API_KEY` environment variable.
+Access 10 OVHcloud AI Endpoints models through Mastra's model router. Authentication is handled automatically using the `OVHCLOUD_API_KEY` environment variable.
 
 Learn more in the [OVHcloud AI Endpoints documentation](https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog//).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "ovhcloud/deepseek-r1-distill-llama-70b"
+  model: "ovhcloud/gpt-oss-120b"
 });
 
 // Generate a response
@@ -39,18 +39,6 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
-  {
-    "model": "ovhcloud/deepseek-r1-distill-llama-70b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
-    "inputCost": 0.74,
-    "outputCost": 0.74
-  },
   {
     "model": "ovhcloud/gpt-oss-120b",
     "imageInput": false,
@@ -136,30 +124,6 @@ for await (const chunk of stream) {
     "outputCost": 0.31
   },
   {
-    "model": "ovhcloud/mixtral-8x7b-instruct-v0.1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 32768,
-    "inputCost": 0.7,
-    "outputCost": 0.7
-  },
-  {
-    "model": "ovhcloud/qwen2.5-coder-32b-instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 32768,
-    "inputCost": 0.96,
-    "outputCost": 0.96
-  },
-  {
     "model": "ovhcloud/qwen2.5-vl-72b-instruct",
     "imageInput": true,
     "audioInput": false,
@@ -208,7 +172,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
-    id: "ovhcloud/deepseek-r1-distill-llama-70b",
+    id: "ovhcloud/gpt-oss-120b",
     apiKey: process.env.OVHCLOUD_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -227,7 +191,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "ovhcloud/qwen3-coder-30b-a3b-instruct"
-      : "ovhcloud/deepseek-r1-distill-llama-70b";
+      : "ovhcloud/gpt-oss-120b";
   }
 });
 ```

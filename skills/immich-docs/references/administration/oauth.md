@@ -66,6 +66,7 @@ Once you have a new OAuth client application configured, Immich can be configure
 | `id_token_signed_response_alg`                       | string  | RS256                | The algorithm used to sign the id token (examples: RS256, HS256)                    |
 | `userinfo_signed_response_alg`                       | string  | none                 | The algorithm used to sign the userinfo response (examples: RS256, HS256)           |
 | `prompt`                                             | string  | (empty)              | Prompt parameter for authorization url (examples: select_account, login, consent)   |
+| `end_session_endpoint`                               | URL     | (empty)              | Http(s) alternative end session endpoint (logout URI)                               |
 | Request timeout                                      | string  | 30,000 (30 seconds)  | Number of milliseconds to wait for http requests to complete before giving up       |
 | Storage Label Claim                                  | string  | preferred_username   | Claim mapping for the user's storage label**¹**                                     |
 | Role Claim                                           | string  | immich_role          | Claim mapping for the user's role. (should return "user" or "admin")**¹**           |
@@ -177,6 +178,7 @@ Configuration of OAuth in Immich System Settings
 | Scope                              | openid email profile immich_scope                                   |
 | ID Token Signed Response Algorithm | RS256                                                               |
 | Userinfo Signed Response Algorithm | RS256                                                               |
+| End Session Endpoint               | https://auth.example.com/logout?rd=https://immich.example.com/      |
 | Storage Label Claim                | uid                                                                 |
 | Storage Quota Claim                | immich_quota                                                        |
 | Default Storage Quota (GiB)        | 0 (empty for unlimited quota)                                       |

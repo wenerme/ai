@@ -1,11 +1,11 @@
 ---
 title: "OpenAI | Models"
-description: "Use OpenAI models with Mastra. 51 models available."
+description: "Use OpenAI models with Mastra. 50 models available."
 ---
 
 # [OpenAI logo]OpenAI
 
-Access 51 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
+Access 50 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
 
 Learn more in the [OpenAI documentation](https://platform.openai.com/docs/models).
 
@@ -48,18 +48,6 @@ for await (const chunk of stream) {
     "maxOutput": null,
     "inputCost": null,
     "outputCost": null
-  },
-  {
-    "model": "openai/codex-mini-latest",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 100000,
-    "inputCost": 1.5,
-    "outputCost": 6
   },
   {
     "model": "openai/gpt-3.5-turbo",
