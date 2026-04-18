@@ -46,7 +46,9 @@ export ARTIFACTS_REPO="starter-repo"
 
 export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
-export ARTIFACTS_BASE_URL="https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE"
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
 
 ```
@@ -66,8 +68,8 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 Choose one of the following ways to create a repo inside that namespace:
 
-* [ Manual ](#tab-panel-5276)
-* [ jq ](#tab-panel-5277)
+* [ Manual ](#tab-panel-5285)
+* [ jq ](#tab-panel-5286)
 
 Terminal window
 
@@ -102,9 +104,7 @@ The response resembles the following:
 
     "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
 
-    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000",
-
-    "expires_at": "<ISO_TIMESTAMP>"
+    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
 
   },
 

@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Refer to this page for details about how Cloudflare orchestrates VPN connectivity to your cloud networks.
+description: Reference information for Multi-Cloud Networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

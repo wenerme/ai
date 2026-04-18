@@ -1,6 +1,6 @@
 ---
 title: First-time setup
-description: This guide walks you through setting up the Cloudflare One Client (formerly WARP) for your organization for the first time. After completing these steps, your devices will route traffic through Cloudflare's network, where you can apply security policies.
+description: First-time setup in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

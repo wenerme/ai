@@ -1,6 +1,6 @@
 ---
 title: Cloud and SaaS integrations
-description: You can integrate cloud environments and SaaS applications with Cloudflare CASB. Once you have added an integration, you can view and manage findings.
+description: Cloud and SaaS integrations resources and guides for Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: PCAPs bucket setup
-description: Before you can begin a full packet capture, you must first configure a bucket that Cloudflare can use to upload your files. Setting up a bucket is not required for sample packet captures.
+description: Configure a storage bucket for packet captures.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -24,8 +24,8 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-* [ Dashboard ](#tab-panel-3414)
-* [ API ](#tab-panel-3415)
+* [ Dashboard ](#tab-panel-5527)
+* [ API ](#tab-panel-5528)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select the **Diagnostics** tab > **Buckets**.
@@ -46,8 +46,8 @@ Next, validate the bucket and confirm ownership.
 
 After the initial bucket set up, you need to confirm you own the bucket via an ownership challenge. After you validate your bucket, you can begin using it to collect full packet captures.
 
-* [ Dashboard ](#tab-panel-3416)
-* [ API ](#tab-panel-3417)
+* [ Dashboard ](#tab-panel-5529)
+* [ API ](#tab-panel-5530)
 
 1. From the **Prove ownership** step of the **Bucket configuration**, locate the **Ownership token** field.
 2. In the **Ownership token** field, enter the ownership token for your service provider.
@@ -187,8 +187,8 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-* [ Dashboard ](#tab-panel-3418)
-* [ API ](#tab-panel-3419)
+* [ Dashboard ](#tab-panel-5531)
+* [ API ](#tab-panel-5532)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. In **Diagnostics**, select **Buckets**.

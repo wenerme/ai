@@ -1,6 +1,6 @@
 ---
 title: Service providers
-description: Service-to-service integrations allow the Cloudflare One Client to get device posture data from a third-party API. To use this feature, you must deploy the Cloudflare One Client to your devices and enable the desired posture checks.
+description: Service providers resources and guides for Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

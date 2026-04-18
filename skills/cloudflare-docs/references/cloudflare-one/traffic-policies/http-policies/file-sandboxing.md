@@ -1,6 +1,6 @@
 ---
 title: File sandboxing
-description: In addition to anti-virus (AV) scanning, Gateway can quarantine previously unseen files downloaded by your users into a sandbox and scan them for malware.
+description: How File sandboxing works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

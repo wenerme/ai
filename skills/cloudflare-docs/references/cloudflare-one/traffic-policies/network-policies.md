@@ -1,6 +1,6 @@
 ---
 title: Network policies
-description: Network policies control TCP and UDP traffic between your users and network destinations. Use them to allow or block non-HTTP traffic such as SSH, RDP, and database connections based on IP addresses, ports, and protocols.
+description: Configure Network policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

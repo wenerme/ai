@@ -1,6 +1,6 @@
 ---
 title: Android
-description: By default, 1.1.1.1:Faster Internet is configured to WARP mode. You can also configure it to only encrypt your DNS queries and leave the remaining traffic unencrypted.
+description: Install and configure WARP on Android devices.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

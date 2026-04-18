@@ -1,6 +1,6 @@
 ---
 title: Linux
-description: You have two ways of installing WARP on Linux, depending on the distro you are using:
+description: Install and configure WARP on Linux.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Facebook
-description: Use these steps to set up Facebook as your identity provider.
+description: Facebook in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

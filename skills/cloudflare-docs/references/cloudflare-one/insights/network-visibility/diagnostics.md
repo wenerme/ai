@@ -1,6 +1,6 @@
 ---
 title: Diagnostics
-description: Cloudflare supports two types of packet captures: full and sample. Full packet captures is the default behavior.
+description: Diagnostics resources and guides for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

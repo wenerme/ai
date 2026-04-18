@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Below you will find answers to our most commonly asked questions regarding the WARP client. If you cannot find the answer you are looking for, refer to the community page to explore more resources.
+description: Known issues and answers to common WARP client questions.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

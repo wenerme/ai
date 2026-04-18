@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ TLS ](https://developers.cloudflare.com/search/?tags=TLS) 
+
 Was this helpful?
 
 YesNo
@@ -47,10 +51,10 @@ Below you will find samples covering the recommended ciphers [by security level]
 3. Get the Zone ID from the [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/) of the domain you want to specify cipher suites for.
 4. Make an API call to either the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint or the [Edit TLS setting for hostname](https://developers.cloudflare.com/api/resources/hostnames/subresources/settings/subresources/tls/methods/update/) endpoint, specifying `ciphers` in the URL. List your array of chosen cipher suites in the `value` field.
 
-* [ modern ](#tab-panel-8743)
-* [ compatible ](#tab-panel-8744)
-* [ pci dss ](#tab-panel-8745)
-* [ fips-140-2 ](#tab-panel-8746)
+* [ modern ](#tab-panel-8788)
+* [ compatible ](#tab-panel-8789)
+* [ pci dss ](#tab-panel-8790)
+* [ fips-140-2 ](#tab-panel-8791)
 
 Required API token permissions
 
@@ -300,8 +304,8 @@ curl --request PUT \
 
 ### Reset to default values
 
-* [ zone ](#tab-panel-8741)
-* [ per-hostname ](#tab-panel-8742)
+* [ zone ](#tab-panel-8786)
+* [ per-hostname ](#tab-panel-8787)
 
 To reset to the default cipher suites at zone level, use the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint, specifying `ciphers` as the setting name in the URL, and send an empty array in the `value` field.
 

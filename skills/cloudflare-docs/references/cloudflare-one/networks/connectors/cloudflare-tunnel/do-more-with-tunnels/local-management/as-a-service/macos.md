@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: You can install cloudflared as a system service on macOS.
+description: macOS in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

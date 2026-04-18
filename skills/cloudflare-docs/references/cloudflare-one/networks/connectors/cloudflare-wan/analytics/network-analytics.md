@@ -1,6 +1,6 @@
 ---
 title: Network analytics
-description: You can access real-time and historical network data in Network Analytics. Explore Cloudflare WAN traffic (in packets or bytes) over time in a time series, and filter the data by different packet characteristics.
+description: Network analytics in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

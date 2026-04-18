@@ -1,6 +1,6 @@
 ---
 title: SCIM provisioning
-description: System for Cross-domain Identity Management (SCIM) is an open standard protocol that allows identity providers to synchronize user identity information with cloud applications and services. After configuring SCIM, user identities that you create, edit, or delete in the identity provider are automatically updated across all supported applications. This makes it easier for IT admins to onboard new users, update their groups and permissions, and revoke access in the event of an employee termination or security breach.
+description: How SCIM provisioning works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

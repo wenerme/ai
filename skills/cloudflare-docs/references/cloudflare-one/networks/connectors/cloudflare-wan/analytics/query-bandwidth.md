@@ -1,6 +1,6 @@
 ---
 title: Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL
-description: This example uses the GraphQL Analytics API to query Cloudflare WAN ingress tunnel traffic over a specified time period.
+description: Configure Querying Cloudflare WAN IPsec/GRE tunnel bandwidth analytics with GraphQL in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

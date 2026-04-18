@@ -1,6 +1,6 @@
 ---
 title: Domain categories
-description: Cloudflare Gateway allows you to block known and potential security risks on the public Internet, as well as specific categories of content. Domains are categorized by Cloudforce One, Cloudflare's threat intelligence solution. To review the categories for a specific domain, use Cloudflare Radar.
+description: Reference information for Domain categories in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

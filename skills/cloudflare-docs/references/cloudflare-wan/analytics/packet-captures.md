@@ -1,5 +1,6 @@
 ---
 title: Packet captures
+description: Capture and inspect WAN network packets.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

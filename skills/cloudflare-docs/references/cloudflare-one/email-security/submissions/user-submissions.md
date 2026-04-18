@@ -1,6 +1,6 @@
 ---
 title: User submissions
-description: User submissions are the emails your users submitted for submission. User submissions help enhance our detection model, but can be escalated for human review.
+description: User submissions in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

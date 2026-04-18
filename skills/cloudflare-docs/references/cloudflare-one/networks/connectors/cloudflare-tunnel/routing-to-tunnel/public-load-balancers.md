@@ -1,6 +1,6 @@
 ---
 title: Public load balancers
-description: A public load balancer allows you to distribute traffic across the servers that are running your published applications.
+description: How Public load balancers works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

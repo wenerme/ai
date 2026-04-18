@@ -1,6 +1,6 @@
 ---
 title: Best practices
-description: By default, Cloudflare Network Firewall (formerly Magic Firewall) permits all ingress traffic that has passed through Cloudflare's core DDoS mitigations. To proactively mitigate attacks and minimize your attack surface and leakage of attack traffic into your environment, we recommend implementing your Cloudflare Network Firewall rules using the following guidelines.
+description: Best practices for configuring the Network Firewall.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

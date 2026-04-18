@@ -1,6 +1,6 @@
 ---
 title: DHCP static address reservation
-description: If you configure your Cloudflare One Appliance (formerly Magic WAN Connector) to be a DHCP server, you can also assign IP addresses to specific devices on your network. To reserve IP addresses:
+description: Reserve static DHCP addresses on the Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -18,8 +18,8 @@ Copy page
 
 If you configure your Cloudflare One Appliance (formerly Magic WAN Connector) to be a DHCP server, you can also assign IP addresses to specific devices on your network. To reserve IP addresses:
 
-* [ Dashboard ](#tab-panel-3989)
-* [ API ](#tab-panel-3990)
+* [ Dashboard ](#tab-panel-6142)
+* [ API ](#tab-panel-6143)
 
 1. Configure your Cloudflare One Appliance to be a [DHCP server](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
 2. Select **Add DHCP Reservation**.

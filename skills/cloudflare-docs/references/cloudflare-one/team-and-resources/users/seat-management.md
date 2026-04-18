@@ -1,6 +1,6 @@
 ---
 title: Seat management
-description: Cloudflare One subscriptions consist of seats that active users in your account consume. Active users are added to Cloudflare One through any authentication event.
+description: Seat management in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

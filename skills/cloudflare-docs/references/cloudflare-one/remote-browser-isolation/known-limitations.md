@@ -1,6 +1,6 @@
 ---
 title: Known limitations
-description: Below, you will find information regarding the current limitations for Browser Isolation.
+description: Reference information for Known limitations in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Digital experience
-description: Digital Experience Monitoring (DEX) provides visibility into device, network, and application performance across your Zero Trust organization.
+description: Digital experience resources and guides for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -20,7 +20,7 @@ Digital Experience Monitoring (DEX) provides visibility into device, network, an
 
 With DEX, you can monitor the state of your [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) deployment and resolve issues impacting end-user productivity. DEX is designed for IT and security teams who need to proactively monitor and troubleshoot device and network health across distributed environments. DEX is available on all Cloudflare Zero Trust and SASE plans.
 
-DEX is compatible with Cloudflare's [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) for the 'EU' (European Union) which ensures that customer log will not leave the 'EU' region.
+DEX is compatible with Cloudflare's [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) (CMB) for the EU (European Union). When CMB is configured for the EU, customer logs are stored exclusively in the EU region.
 
 Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/insights/) to learn how to use Analytics dashboards together with [Analytics Overview](https://developers.cloudflare.com/cloudflare-one/insights/analytics-overview/) and [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) for complete visibility and troubleshooting.
 
@@ -29,7 +29,7 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 If a user notifies that “the connection is not working” or “performance is slow,” DEX allows you to:
 
 * Use [device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/) to check device health and endpoint connectivity.
-* Test network health and application responsiveness with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/).
+* Test network health and application responsiveness with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) — automated connectivity checks that run periodically from user devices.
 * Identify whether problems originate from the device (such as [issues with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)), the network, or Cloudflare.
 
 ## Troubleshooting other Cloudflare One features

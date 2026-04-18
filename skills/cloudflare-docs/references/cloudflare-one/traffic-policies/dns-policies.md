@@ -1,6 +1,6 @@
 ---
 title: DNS policies
-description: DNS policies let you control which websites and services your users can reach by inspecting their DNS queries — the lookups that translate domain names into IP addresses. Because DNS policies act at the lookup stage, they work across all protocols and applications, not just web browsers.
+description: Configure DNS policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

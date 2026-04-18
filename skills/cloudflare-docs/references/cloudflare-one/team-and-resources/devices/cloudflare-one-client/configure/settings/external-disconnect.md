@@ -1,6 +1,6 @@
 ---
 title: External Emergency Disconnect
-description: The External Emergency Disconnect feature allows organizations to remotely disconnect and reconnect their fleet of Cloudflare One Clients (formerly WARP) using their own infrastructure, independent of Cloudflare's infrastructure. For example, in the event of a Cloudflare network outage you ensure that you can still manage your devices even if Cloudflare’s systems are down or unreachable.
+description: External Emergency Disconnect in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -148,8 +148,8 @@ curl --insecure https://<server-ip>:3333/status/disconnect
 
 ### 2\. Extract the SHA-256 fingerprint
 
-* [ Local certificate ](#tab-panel-3713)
-* [ Remote server ](#tab-panel-3714)
+* [ Local certificate ](#tab-panel-5854)
+* [ Remote server ](#tab-panel-5855)
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -193,9 +193,9 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ### 3\. Turn on External Emergency Disconnect
 
-* [ Dashboard ](#tab-panel-3707)
-* [ API ](#tab-panel-3708)
-* [ MDM ](#tab-panel-3709)
+* [ Dashboard ](#tab-panel-5848)
+* [ API ](#tab-panel-5849)
+* [ MDM ](#tab-panel-5850)
 
 To configure External Emergency Disconnect using the dashboard:
 
@@ -312,9 +312,9 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-* [ Dashboard ](#tab-panel-3710)
-* [ API ](#tab-panel-3711)
-* [ MDM ](#tab-panel-3712)
+* [ Dashboard ](#tab-panel-5851)
+* [ API ](#tab-panel-5852)
+* [ MDM ](#tab-panel-5853)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Team & Resources** \> **Devices** \> **Management**.
 2. Select **Global disconnection settings**.

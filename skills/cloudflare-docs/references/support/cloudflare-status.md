@@ -28,7 +28,7 @@ You can configure this notification to send via [email](https://developers.cloud
 
 Cloudflare also provides status information through the [Cloudflare Status API ↗](https://www.cloudflarestatus.com/api).
 
-Endpoints are displayed with examples using cURL and our embeded JavaScript widget (if available).
+Endpoints are displayed with examples using cURL and our embedded JavaScript widget (if available).
 
 ## Related resources
 

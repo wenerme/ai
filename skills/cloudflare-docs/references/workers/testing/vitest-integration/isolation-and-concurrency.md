@@ -51,8 +51,8 @@ However, if you use Node.js globals that are not supported by the runtime, your 
 
 The Wrangler configuration file does not specify either `nodejs_compat` or `nodejs_compat_v2`:
 
-* [  wrangler.jsonc ](#tab-panel-7746)
-* [  wrangler.toml ](#tab-panel-7747)
+* [  wrangler.jsonc ](#tab-panel-10033)
+* [  wrangler.toml ](#tab-panel-10034)
 
 JSONC
 
@@ -64,7 +64,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03"
+  "compatibility_date": "2026-04-17"
 
   # no nodejs_compat flags here
 
@@ -83,7 +83,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-17"
 
 
 ```

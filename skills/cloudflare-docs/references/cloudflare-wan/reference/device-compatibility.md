@@ -1,6 +1,6 @@
 ---
 title: Device compatibility
-description: Cloudflare WAN (formerly Magic WAN) is compatible with any device that supports IPsec with the supported configuration parameters or supports GRE.
+description: Devices compatible with Cloudflare WAN tunnels.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Invalid submissions
-description: A submission is invalid when:
+description: Invalid submissions in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

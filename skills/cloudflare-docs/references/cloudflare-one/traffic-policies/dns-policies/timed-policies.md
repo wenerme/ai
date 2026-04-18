@@ -1,6 +1,6 @@
 ---
 title: Timed DNS policies
-description: By default, Cloudflare Gateway policies apply at all times when turned on. With timed DNS policies, you can control when DNS policies are active — for example, to block social media only during work hours or to temporarily allow access to a restricted site for a maintenance window. You can configure a policy to be active during specific time periods or set the policy to expire after a certain duration.
+description: Reference information for Timed DNS policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -65,8 +65,8 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-3837)
-* [ API ](#tab-panel-3838)
+* [ Dashboard ](#tab-panel-5978)
+* [ API ](#tab-panel-5979)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.

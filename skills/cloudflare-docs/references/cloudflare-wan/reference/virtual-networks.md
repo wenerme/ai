@@ -1,6 +1,6 @@
 ---
 title: Virtual networks
-description: A virtual network is a private routing domain within your Cloudflare account. It defines which private resources are reachable from the Cloudflare network and keeps traffic separated between different environments, partners, or applications.
+description: Create virtual networks to segment WAN traffic.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -97,7 +97,7 @@ Virtual network support varies by product:
 | --------------------- | ------------------------- | -------------------------------------------------------------------- |
 | Cloudflare Tunnel     | Multiple virtual networks | Assign CIDR routes to a virtual network when configuring your tunnel |
 | Cloudflare One Client | Multiple virtual networks | Users land in a virtual network based on policy or client selection  |
-| WARP Connector        | Not currently supported   | —                                                                    |
+| Cloudflare Mesh       | Not currently supported   | —                                                                    |
 | Cloudflare WAN        | Default only              | All IPsec, GRE, and CNI connections use the default virtual network  |
 
 ## The default virtual network

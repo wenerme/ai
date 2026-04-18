@@ -1,6 +1,6 @@
 ---
 title: Network visibility
-description: After adding your sites, the Network visibility section of the dashboard provides a summary of the connectivity status and traffic analytics for all your sites. This is a great place to start if you receive a Cloudflare WAN alert, need to begin the troubleshooting process, or are performing routine monitoring. Refer to Set up a site for more information on how to set up a site.
+description: Network visibility in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

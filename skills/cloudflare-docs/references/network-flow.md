@@ -1,6 +1,6 @@
 ---
 title: Network Flow
-description: Understanding what is happening on your network is essential for troubleshooting performance issues, detecting threats, and planning capacity. Network Flow (formerly Magic Network Monitoring) gives you this visibility by analyzing network flow data that your routers or cloud environment send. The service supports NetFlow v5, NetFlow v9, IPFIX, and sFlow. In cloud environments, it supports AWS VPC flow logs through AWS Firehose.
+description: Analyze network traffic with NetFlow, sFlow, and IPFIX data.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

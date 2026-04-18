@@ -1,5 +1,6 @@
 ---
 title: Maintenance
+description: Maintain and manage Cloudflare One Appliances.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

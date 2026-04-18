@@ -80,8 +80,8 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-* [ Dashboard ](#tab-panel-9040)
-* [ API ](#tab-panel-9041)
+* [ Dashboard ](#tab-panel-9087)
+* [ API ](#tab-panel-9088)
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)  
@@ -212,13 +212,14 @@ Compare how the same two topic descriptions perform against two prompts that bot
 
 ### Example custom topics
 
-| Label            | Topic description                     |
-| ---------------- | ------------------------------------- |
-| competitors      | seeking info on competitors           |
-| financial-advice | seeking financial advice              |
-| legal-advice     | asking for legal or regulatory advice |
-| sensitive-data   | requesting passwords or API keys      |
-| job-seeking      | asking about job openings or careers  |
+| Label            | Topic description                               |
+| ---------------- | ----------------------------------------------- |
+| competitors      | seeking info on competitors                     |
+| financial-advice | seeking financial advice                        |
+| legal-advice     | asking for legal or regulatory advice           |
+| sensitive-data   | requesting passwords or API keys                |
+| job-seeking      | asking about job openings or careers            |
+| bias             | comparing demographic groups as better or worse |
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/detections/","name":"Traffic detections"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/detections/ai-security-for-apps/","name":"AI Security for Apps"}},{"@type":"ListItem","position":5,"item":{"@id":"/waf/detections/ai-security-for-apps/unsafe-topics/","name":"Unsafe and custom topic detection"}}]}

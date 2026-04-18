@@ -1,6 +1,6 @@
 ---
 title: AV scanning
-description: Cloudflare Gateway can scan files for malware as users upload or download them. Anti-virus (AV) scanning runs inline — Gateway inspects files as they pass through the proxy and blocks any file that contains a known malicious payload.
+description: How AV scanning works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

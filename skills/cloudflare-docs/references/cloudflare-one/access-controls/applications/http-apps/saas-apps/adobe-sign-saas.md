@@ -1,6 +1,6 @@
 ---
 title: Adobe Acrobat Sign
-description: This guide covers how to configure Adobe Acrobat Sign as a SAML application in Cloudflare One.
+description: Integrate Adobe Acrobat Sign with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

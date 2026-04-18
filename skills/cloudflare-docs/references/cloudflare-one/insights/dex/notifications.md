@@ -1,6 +1,6 @@
 ---
 title: Notifications
-description: Administrators can receive alerts when Cloudflare detects connectivity issues with the Cloudflare One Client or degraded application performance. Notifications can be delivered via email, webhook, and third-party services.
+description: Reference information for Notifications in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -109,13 +109,13 @@ To learn more about the alert logic, refer to [SLO](https://developers.cloudflar
 
 ### Z-score
 
-Cloudflare uses a z-score to detect traffic spikes or drops. A [z-score ↗](https://en.wikipedia.org/wiki/Standard%5Fscore) is the number of standard deviations the current value is to the mean. We calculate the mean and standard deviation by comparing the current five minutes to the past four hours. This is measured every five minutes.
+Cloudflare uses a z-score to detect unusual traffic spikes or drops. A [z-score ↗](https://en.wikipedia.org/wiki/Standard%5Fscore) is the number of standard deviations the current value is from the mean. Cloudflare calculates the mean and standard deviation by comparing the current five minutes to the past four hours. This is measured every five minutes.
 
-To trigger an alert, the z-score value must be above 3.5 or less than -3.5.
+To trigger an alert, the z-score value must be above 3.5 or below -3.5, which indicates the current value is significantly different from the recent baseline.
 
 ### SLO
 
-A service-level objective (SLO) is defined as (x / y) \* 100 where x = the number of good events and y = the number of valid events for a given time period. DEX notifications look at both a short window (five minutes) and a long time window (one hour) and triggers an alert if the availability falls below the SLO threshold in either window.
+A service-level objective (SLO) measures the percentage of valid events that succeeded. It is defined as (good events / valid events) \* 100, where valid events are those that could be measured in a given time period. DEX notifications evaluate both a short window (five minutes) and a long window (one hour) and trigger an alert if availability falls below the SLO threshold in either window.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/notifications/","name":"Notifications"}}]}

@@ -1,6 +1,6 @@
 ---
 title: Isolation policies
-description: With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
+description: Reference information for Isolation policies in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -146,8 +146,8 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-* [ Dashboard ](#tab-panel-5769)
-* [ API ](#tab-panel-5770)
+* [ Dashboard ](#tab-panel-5778)
+* [ API ](#tab-panel-5779)
 
 | Selector            | Operator | Value                | Action  |
 | ------------------- | -------- | -------------------- | ------- |
@@ -196,8 +196,8 @@ Explain Code
 
 Isolate high risk content categories such as newly registered domains.
 
-* [ Dashboard ](#tab-panel-5771)
-* [ API ](#tab-panel-5772)
+* [ Dashboard ](#tab-panel-5780)
+* [ API ](#tab-panel-5781)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -246,8 +246,8 @@ Explain Code
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-* [ Dashboard ](#tab-panel-5773)
-* [ API ](#tab-panel-5774)
+* [ Dashboard ](#tab-panel-5782)
+* [ API ](#tab-panel-5783)
 
 | Selector           | Operator | Value            | Action  |
 | ------------------ | -------- | ---------------- | ------- |
@@ -296,8 +296,8 @@ Explain Code
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-* [ Dashboard ](#tab-panel-5775)
-* [ API ](#tab-panel-5776)
+* [ Dashboard ](#tab-panel-5784)
+* [ API ](#tab-panel-5785)
 
 | Selector           | Operator | Value                    | Action  |
 | ------------------ | -------- | ------------------------ | ------- |
@@ -346,8 +346,8 @@ Explain Code
 
 Isolate the use of ChatGPT.
 
-* [ Dashboard ](#tab-panel-5777)
-* [ API ](#tab-panel-5778)
+* [ Dashboard ](#tab-panel-5786)
+* [ API ](#tab-panel-5787)
 
 | Selector    | Operator | Value     | Action  |
 | ----------- | -------- | --------- | ------- |

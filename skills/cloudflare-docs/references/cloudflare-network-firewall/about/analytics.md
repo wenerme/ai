@@ -1,6 +1,6 @@
 ---
 title: Analytics
-description: Use the GraphQL Analytics API to view data for requests passing through Cloudflare's network. For more information about using the GraphQL Analytics API and getting started, refer to GraphQL Analytics API.
+description: View Network Firewall analytics and event logs.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

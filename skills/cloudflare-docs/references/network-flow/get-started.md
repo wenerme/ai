@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Network Flow (formerly Magic Network Monitoring) includes an onboarding workflow that guides you step-by-step through the product configuration process. If you are unable to complete the configuration in one session, you can exit the workflow and resume it at any time.
+description: Set up Network Flow to monitor network traffic patterns.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Route traffic
-description: When the Cloudflare One Client (formerly WARP) is deployed on a device, Cloudflare will process all DNS queries and network traffic by default. However, under certain circumstances, you may need to exclude specific DNS queries or network traffic from the Cloudflare One Client. For example, you may need to resolve an internal hostname with a private DNS resolver instead of Cloudflare's public DNS resolver.
+description: How Route traffic works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

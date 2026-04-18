@@ -1,6 +1,6 @@
 ---
 title: Configure DoH on your browser
-description: Several browsers support DNS over HTTPS (DoH), a protocol that encrypts your connection to 1.1.1.1 to protect your DNS queries from privacy intrusions and tampering.
+description: Configure DNS over HTTPS in your browser.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

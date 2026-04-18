@@ -1,6 +1,6 @@
 ---
 title: Zendesk
-description: This guide covers how to configure Zendesk as a SAML application in Cloudflare One.
+description: Integrate Zendesk with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Non-identity on-ramps
-description: On-ramps are the methods used to route traffic from your network to Cloudflare for inspection. With Cloudflare One, you can isolate HTTP traffic from on-ramps such as proxy endpoints (which your browser connects to via PAC files to send traffic through Gateway) or Cloudflare WAN (formerly Magic WAN, which connects your network to Cloudflare through GRE or IPsec tunnels). Since these on-ramps do not require users to log in to the Cloudflare One Client, identity-based policies are not supported.
+description: Non-identity on-ramps in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Traceroute test
-description: A traceroute test measures the network path of an IP packet from an end-user device to a server. You can use the test results to troubleshoot network issues. For example, increased latency may indicate a problem with connectivity along the network path.
+description: Reference information for Traceroute test in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

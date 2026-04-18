@@ -1,6 +1,6 @@
 ---
 title: Devices
-description: Configure devices to send DNS queries to Cloudflare, or proxy all traffic leaving the device through Cloudflare's network.
+description: Devices resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

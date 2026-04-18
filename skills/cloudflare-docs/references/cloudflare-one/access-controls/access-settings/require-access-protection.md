@@ -1,6 +1,6 @@
 ---
 title: Require Access protection
-description: Cloudflare Access allows you to require Access protection for all hostnames in your account. When this setting is turned on, traffic to any hostname without a matching Access application is automatically blocked.
+description: Require Access protection in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

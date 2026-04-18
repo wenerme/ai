@@ -1,6 +1,6 @@
 ---
 title: DocuSign
-description: This guide covers how to configure Docusign as a SAML application in Cloudflare One.
+description: Integrate DocuSign with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

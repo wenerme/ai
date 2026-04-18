@@ -16,7 +16,7 @@ Copy page
 
 # Migrate from Vercel to Workers
 
-**Last reviewed:**  11 months ago 
+**Last reviewed:**  12 months ago 
 
 In this tutorial, you will learn how to migrate your Vercel application to Cloudflare Workers.
 
@@ -42,8 +42,8 @@ For each case, be sure to update the `<your-project-name>` value with the name o
 
 For a **static site**, you will need to add the following to your wrangler file.
 
-* [  wrangler.jsonc ](#tab-panel-7712)
-* [  wrangler.toml ](#tab-panel-7713)
+* [  wrangler.jsonc ](#tab-panel-9999)
+* [  wrangler.toml ](#tab-panel-10000)
 
 JSONC
 
@@ -55,7 +55,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-17",
 
   "assets": {
 
@@ -76,7 +76,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-17"
 
 
 [assets]
@@ -88,8 +88,8 @@ directory = "<your-build-directory>"
 
 For a **single page application**, you will need to add the following to your wrangler file, which includes the `not_found_handling` field.
 
-* [  wrangler.jsonc ](#tab-panel-7714)
-* [  wrangler.toml ](#tab-panel-7715)
+* [  wrangler.jsonc ](#tab-panel-10001)
+* [  wrangler.toml ](#tab-panel-10002)
 
 JSONC
 
@@ -101,7 +101,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-03",
+  "compatibility_date": "2026-04-17",
 
   "assets": {
 
@@ -124,7 +124,7 @@ name = "<your-project-name>"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-03"
+compatibility_date = "2026-04-17"
 
 
 [assets]

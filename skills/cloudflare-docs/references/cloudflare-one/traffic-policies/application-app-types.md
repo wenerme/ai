@@ -1,6 +1,6 @@
 ---
 title: Applications and app types
-description: Gateway allows you to create DNS, Network, and HTTP policies based on applications and application types. Because a single application often spans multiple hostnames, selecting an application by name is easier than writing separate rules for each hostname. You can select individual applications or application types to filter specific traffic on your network.
+description: Reference information for Applications and app types in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

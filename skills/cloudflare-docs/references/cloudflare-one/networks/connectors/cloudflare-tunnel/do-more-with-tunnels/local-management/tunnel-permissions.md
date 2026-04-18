@@ -1,6 +1,6 @@
 ---
 title: Tunnel permissions
-description: Tunnel permissions determine who can run and manage a Cloudflare Tunnel. Two files control permissions for a locally-managed tunnel:
+description: Reference information for Tunnel permissions in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

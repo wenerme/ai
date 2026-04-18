@@ -1,6 +1,6 @@
 ---
 title: OpenAI
-description: The OpenAI integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated OpenAI account that could leave you and your organization vulnerable.
+description: Reference information for OpenAI in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

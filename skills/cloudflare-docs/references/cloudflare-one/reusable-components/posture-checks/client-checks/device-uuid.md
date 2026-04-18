@@ -1,6 +1,6 @@
 ---
 title: Device UUID
-description: Cloudflare One allows you to build Zero Trust rules based on device UUIDs supplied in an MDM file. You can create these rules so that access to applications is granted only to users connecting from company devices.
+description: Device UUID in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -124,6 +124,7 @@ By default, the cache expires after 5 minutes, but you can extend this to 1 hour
 
 The following Claude models support prompt caching (both automatic and explicit):
 
+* Claude Opus 4.7
 * Claude Opus 4.6
 * Claude Opus 4.5
 * Claude Opus 4.1
@@ -139,7 +140,7 @@ The following Claude models support prompt caching (both automatic and explicit)
 
 Each model has a minimum cacheable prompt length:
 
-* **4096 tokens**: Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5
+* **4096 tokens**: Claude Opus 4.7, Claude Opus 4.6, Claude Opus 4.5, Claude Haiku 4.5
 * **2048 tokens**: Claude Sonnet 4.6, Claude Haiku 3.5
 * **1024 tokens**: Claude Sonnet 4.5, Claude Opus 4.1, Claude Opus 4, Claude Sonnet 4, Claude Sonnet 3.7
 

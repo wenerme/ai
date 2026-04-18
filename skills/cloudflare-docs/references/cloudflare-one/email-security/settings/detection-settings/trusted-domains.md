@@ -1,6 +1,6 @@
 ---
 title: Trusted domains
-description: Email security allows you to exempt known partner and internal domains from typical detection scanning. Adding trusted domains helps to reduce false positives on malicious, suspicious, and spoof dispositions. Email security only checks the date when the domain is created.
+description: Trusted domains in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

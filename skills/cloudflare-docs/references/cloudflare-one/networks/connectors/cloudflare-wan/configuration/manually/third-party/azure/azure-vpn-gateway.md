@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure VPN Gateway
-description: This tutorial provides information on how to connect Cloudflare WAN (formerly Magic WAN) to your Azure Virtual Network, using the Azure Virtual Network Gateway.
+description: Integrate Microsoft Azure VPN Gateway with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Transition legacy Vectorize indexes
-description: Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024. Your Vectorize index may be a legacy index if it fulfills any of the follwing crieria:
+description: Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Transition legacy Vectorize indexes
 
-Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024\. Your Vectorize index may be a legacy index if it fulfills any of the follwing crieria:
+Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024\. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
 
 1. Was created with a Wrangler version lower than `v3.71.0`.
 2. Was created using the "--deprecated-v1" flag enabled.

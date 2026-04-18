@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot IPsec tunnels
-description: This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.
+description: Troubleshoot IPsec tunnel issues.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

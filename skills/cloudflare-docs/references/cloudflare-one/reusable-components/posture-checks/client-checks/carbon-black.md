@@ -1,6 +1,6 @@
 ---
 title: Carbon Black
-description: Cloudflare One can check if Carbon Black is running on a device to determine if a request should be allowed to reach a protected resource.
+description: Carbon Black in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

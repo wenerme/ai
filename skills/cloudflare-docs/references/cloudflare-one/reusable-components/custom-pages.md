@@ -1,5 +1,6 @@
 ---
 title: Custom pages
+description: Custom pages resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

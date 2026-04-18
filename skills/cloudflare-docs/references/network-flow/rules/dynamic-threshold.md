@@ -1,6 +1,6 @@
 ---
 title: Dynamic threshold rule
-description: A dynamic threshold rule (beta) monitors your network traffic patterns and automatically adjusts the Distributed Denial of Service (DDoS) threshold based on traffic history. Network Flow (formerly Magic Network Monitoring) compares total traffic across all IP prefixes and addresses in the rule against the dynamic threshold, measured in bits or packets per second. If traffic exceeds the threshold, Network Flow sends an alert.
+description: Create dynamic threshold rules for anomaly detection.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

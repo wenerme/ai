@@ -1,6 +1,6 @@
 ---
 title: Remote browser isolation
-description: Cloudflare Browser Isolation complements the Secure Web Gateway (which inspects and filters HTTP/HTTPS traffic) and Zero Trust Network Access (which controls access to private applications) by executing active webpage content — executable code such as JavaScript and plugins — in a secure isolated browser. Because active content executes remotely instead of on the user's device, Browser Isolation protects users from zero-day attacks (attacks that exploit vulnerabilities with no available patch) and malware.
+description: How Remote browser isolation works in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

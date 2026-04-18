@@ -1,5 +1,6 @@
 ---
 title: Azure
+description: Configure 1.1.1.1 on Microsoft Azure virtual networks.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 1 - Junk email and Email security Admin Quarantine
-description: In this tutorial, you will learn how to deliver emails to the Microsoft 365 junk email folder and the Admin Quarantine in Email security.
+description: Integrate 1 - Junk email and Email security Admin Quarantine with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

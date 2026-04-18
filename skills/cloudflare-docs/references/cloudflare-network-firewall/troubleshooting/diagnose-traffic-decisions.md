@@ -1,6 +1,6 @@
 ---
 title: Diagnose traffic decisions
-description: When traffic is unexpectedly blocked, multiple Cloudflare systems could be responsible. This guide walks you through identifying what is blocking your traffic and how to resolve it.
+description: Diagnose why the Network Firewall allowed or blocked traffic.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

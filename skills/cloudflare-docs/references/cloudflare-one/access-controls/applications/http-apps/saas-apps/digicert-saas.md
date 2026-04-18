@@ -1,6 +1,6 @@
 ---
 title: Digicert
-description: This guide covers how to configure Digicert as a SAML application in Cloudflare One.
+description: Integrate Digicert with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

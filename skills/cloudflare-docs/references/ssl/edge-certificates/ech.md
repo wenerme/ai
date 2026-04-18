@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+
 Was this helpful?
 
 YesNo

@@ -1,6 +1,6 @@
 ---
 title: Email Security
-description: Review common troubleshooting scenarios for Cloudflare Email Security.
+description: Email Security for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

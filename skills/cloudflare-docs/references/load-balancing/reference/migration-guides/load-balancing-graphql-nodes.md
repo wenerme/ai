@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ GraphQL ](https://developers.cloudflare.com/search/?tags=GraphQL)[ Migration ](https://developers.cloudflare.com/search/?tags=Migration) 
+
 Was this helpful?
 
 YesNo

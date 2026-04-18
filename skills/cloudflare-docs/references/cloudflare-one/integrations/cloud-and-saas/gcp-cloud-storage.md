@@ -1,6 +1,6 @@
 ---
 title: Google Cloud Platform (GCP) Cloud Storage
-description: The Google Cloud Platform (GCP) Cloud Storage integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated GCP account that could leave you and your organization vulnerable.
+description: Reference information for Google Cloud Platform (GCP) Cloud Storage in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

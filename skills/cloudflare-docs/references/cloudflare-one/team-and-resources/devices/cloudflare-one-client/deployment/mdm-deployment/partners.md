@@ -1,6 +1,6 @@
 ---
 title: Partners
-description: Cloudflare Zero Trust integrates with Cloudflare Technology Partner tools to help you deploy the Cloudflare One Client (formerly WARP) to bigger fleets of devices. Thanks to these collaborations, you can distribute the Cloudflare One Client application to end-user devices and remotely set up advanced configurations in real time.
+description: Partners resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Non-HTTP applications
-description: Cloudflare offers both client-based and clientless ways to grant secure access to non-HTTP applications.
+description: How Non-HTTP applications works in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: We are updating naming related to some of our Networking products to better clarify their place in the Zero Trust and Secure Access Service Edge (SASE) journey.
+description: Track updates and changes to Network Firewall features.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

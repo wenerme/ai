@@ -1,6 +1,6 @@
 ---
 title: Add policies
-description: A root ruleset is the top-level container that holds all your firewall policies. You can check for an existing root ruleset from the dashboard or via the Account rulesets API. If you are a new Magic Transit customer, you may not have a root ruleset created for your account. To view examples for root rulesets, review the Cloudflare Network Firewall Terraform documentation.
+description: Add policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

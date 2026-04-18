@@ -34,8 +34,8 @@ The Workers binding uses your Wrangler authentication. Your Worker code does not
 
 Add the binding in your Wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-5284)
-* [  wrangler.toml ](#tab-panel-5285)
+* [  wrangler.jsonc ](#tab-panel-5293)
+* [  wrangler.toml ](#tab-panel-5294)
 
 JSONC
 
@@ -51,7 +51,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-17",
 
   "artifacts": [
 
@@ -82,7 +82,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-17"
 
 
 [[artifacts]]
@@ -118,11 +118,13 @@ Terminal window
 
 ```
 
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+
 export ARTIFACTS_NAMESPACE="default"
 
 export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
-export ARTIFACTS_BASE_URL="https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
 
 ```

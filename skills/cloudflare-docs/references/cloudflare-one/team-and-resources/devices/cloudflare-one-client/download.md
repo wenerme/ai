@@ -1,6 +1,6 @@
 ---
 title: Download Cloudflare One Client stable releases
-description: This page contains the stable Cloudflare One Client (formerly WARP) releases from the past year. We recommend using stable releases for production environments. You can download stable releases from the links below after checking requirements.
+description: Reference information for Download Cloudflare One Client stable releases in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

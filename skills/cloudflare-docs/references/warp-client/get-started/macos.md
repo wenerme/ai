@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: WARP is now running and protecting your Internet connection.
+description: Install and configure WARP on macOS.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

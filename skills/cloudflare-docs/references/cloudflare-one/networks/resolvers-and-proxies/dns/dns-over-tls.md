@@ -1,6 +1,6 @@
 ---
 title: DNS over TLS (DoT)
-description: By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is a standard for encrypting DNS queries to keep them secure and private. DoT uses the same security protocol, TLS, that HTTPS websites use to encrypt and authenticate communications.
+description: DNS over TLS (DoT) in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

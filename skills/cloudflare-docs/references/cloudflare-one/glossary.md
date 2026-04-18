@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review definitions for Cloudflare One terms.
+description: Reference information for Glossary in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Enable Managed Rulesets
-description: With managed rulesets, you can quickly deploy rules maintained by Cloudflare, and you can use Cloudflare Network Firewall (formerly Magic Firewall) to control which rules are enabled.
+description: Enable managed rulesets for the Network Firewall.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

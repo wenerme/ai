@@ -1,6 +1,6 @@
 ---
 title: Impersonation registry
-description: The impersonation registry contains combinations of emails of users who are likely to be impersonated. If there is an email that is on the impersonation registry not listed as an alternative email address, that email will be reported as potential business email compromise (BEC).
+description: Impersonation registry in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

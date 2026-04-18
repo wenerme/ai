@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with Cloudflare Network Firewall (formerly Magic Firewall).
+description: Tutorials for Network Firewall analytics and configuration.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

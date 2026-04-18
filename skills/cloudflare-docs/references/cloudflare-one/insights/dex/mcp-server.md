@@ -1,5 +1,6 @@
 ---
 title: MCP server
+description: MCP server for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

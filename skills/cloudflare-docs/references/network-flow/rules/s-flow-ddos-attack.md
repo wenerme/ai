@@ -1,6 +1,6 @@
 ---
 title: sFlow DDoS attack rule
-description: An sFlow DDoS attack rule (beta) alerts you when a DDoS attack is detected in your network traffic. Network Flow (formerly Magic Network Monitoring) uses the same DDoS detection rules that protect Cloudflare's global network to identify these attacks.
+description: Create sFlow DDoS attack detection rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

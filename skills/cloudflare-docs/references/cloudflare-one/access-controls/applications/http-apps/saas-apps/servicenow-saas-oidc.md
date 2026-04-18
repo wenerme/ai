@@ -1,6 +1,6 @@
 ---
 title: ServiceNow (OIDC)
-description: This guide covers how to configure ServiceNow as an OIDC application in Cloudflare One.
+description: Integrate ServiceNow (OIDC) with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

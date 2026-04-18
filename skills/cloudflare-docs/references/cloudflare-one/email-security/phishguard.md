@@ -1,6 +1,6 @@
 ---
 title: PhishGuard
-description: PhishGuard is a team of analysts that routinely inspects your email environment and responds to threats that come through your email inbox.
+description: PhishGuard in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -31,7 +31,7 @@ PhishGuard coordinates with the email detections team, allowing you to directly 
 Additionally, PhishGuard analysts:
 
 * Use real-time threat data to identify malicious activity. Email-based threats are responded to rapidly, and immediately reported and documented.
-* Review every [user](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#user-submissions) and [team](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#team-submissions) submission so your security team can focus on more critical activites.
+* Review every [user](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#user-submissions) and [team](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#team-submissions) submission so your security team can focus on more critical activities.
 * Help you detect and mitigate threats faster, reducing the time attacks have access to your network. This also helps reducing business impact, because it prevents data breaches, financial loss, and reputational damage.
 
 To use PhishGuard:

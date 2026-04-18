@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ JavaScript ](https://developers.cloudflare.com/search/?tags=JavaScript) 
+
 Was this helpful?
 
 YesNo

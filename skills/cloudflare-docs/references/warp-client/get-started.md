@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Before installing and setting up the WARP client, ensure that your device meets the following system requirements:
+description: Install the Cloudflare WARP client on your devices.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
@@ -56,7 +56,7 @@ Before installing and setting up the WARP client, ensure that your device meets 
 
 | **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
 | -------------------------- | ------------------------------------------------------------------ |
-| **Processor**              | M series                                                           |
+| **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |
 | **Network interface type** | Wi-Fi or LAN                                                       |

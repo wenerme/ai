@@ -1,6 +1,6 @@
 ---
 title: Microsoft 365 Copilot
-description: The Microsoft 365 Copilot integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
+description: Reference information for Microsoft 365 Copilot in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

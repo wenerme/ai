@@ -1,6 +1,6 @@
 ---
 title: Enable Posture only mode
-description: Posture only mode allows you to enforce device posture rules when a user connects to your self-hosted Access application. This mode relies on a client certificate generated from your account to establish trust between the Access application and the device.
+description: Enable Posture only mode in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -73,12 +73,12 @@ When enrolled in Posture only mode, the Cloudflare One Client (formerly WARP) wi
 ## 3\. (Optional) Verify the client certificate
 
 1. To view the client certificates installed on the device:  
-   * [ Windows ](#tab-panel-3677)  
-   * [ macOS ](#tab-panel-3678)  
-   * [ Linux ](#tab-panel-3679)  
-   * [ iOS ](#tab-panel-3680)  
-   * [ Android ](#tab-panel-3681)  
-   * [ ChromeOS ](#tab-panel-3682)  
+   * [ Windows ](#tab-panel-5818)  
+   * [ macOS ](#tab-panel-5819)  
+   * [ Linux ](#tab-panel-5820)  
+   * [ iOS ](#tab-panel-5821)  
+   * [ Android ](#tab-panel-5822)  
+   * [ ChromeOS ](#tab-panel-5823)  
    1. Open the **Start** menu and select **Run**.  
    2. Enter `certlm.msc`.  
    3. Go to **Personal** \> **Certificates**.  

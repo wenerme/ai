@@ -1,6 +1,6 @@
 ---
 title: Google Cloud
-description: This guide covers how to configure Google Cloud as a SAML application in Cloudflare One.
+description: Integrate Google Cloud with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

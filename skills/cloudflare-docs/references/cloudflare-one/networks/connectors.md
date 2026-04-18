@@ -1,5 +1,6 @@
 ---
 title: Connectors
+description: Connectors resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -50,7 +50,7 @@ func main() {
 		Messages: []anthropic.MessageParam{
 			anthropic.NewUserMessage(anthropic.NewTextBlock("What is a quaternion?")),
 		},
-		Model: anthropic.ModelClaudeOpus4_6,
+		Model: anthropic.ModelClaudeOpus4_7,
 	})
 	if err != nil {
 		panic(err.Error())
@@ -67,7 +67,7 @@ messages := []anthropic.MessageParam{
 }
 
 message, err := client.Messages.New(context.TODO(), anthropic.MessageNewParams{
-	Model:     anthropic.ModelClaudeOpus4_6,
+	Model:     anthropic.ModelClaudeOpus4_7,
 	Messages:  messages,
 	MaxTokens: 1024,
 })
@@ -83,7 +83,7 @@ messages = append(messages, anthropic.NewUserMessage(
 ))
 
 message, err = client.Messages.New(context.TODO(), anthropic.MessageNewParams{
-	Model:     anthropic.ModelClaudeOpus4_6,
+	Model:     anthropic.ModelClaudeOpus4_7,
 	Messages:  messages,
 	MaxTokens: 1024,
 })
@@ -97,7 +97,7 @@ fmt.Printf("%+v\n", message.Content)
 ```go hidelines={1,10..11}
 messages := []anthropic.MessageParam{anthropic.NewUserMessage(anthropic.NewTextBlock("Hello"))}
 message, err := client.Messages.New(context.TODO(), anthropic.MessageNewParams{
-	Model:     anthropic.ModelClaudeOpus4_6,
+	Model:     anthropic.ModelClaudeOpus4_7,
 	MaxTokens: 1024,
 	System: []anthropic.TextBlockParam{
 		{Text: "Be very serious at all times."},
@@ -115,7 +115,7 @@ _ = err
 content := "What is a quaternion?"
 
 stream := client.Messages.NewStreaming(context.TODO(), anthropic.MessageNewParams{
-	Model:     anthropic.ModelClaudeOpus4_6,
+	Model:     anthropic.ModelClaudeOpus4_7,
 	MaxTokens: 1024,
 	Messages: []anthropic.MessageParam{
 		anthropic.NewUserMessage(anthropic.NewTextBlock(content)),
@@ -185,7 +185,7 @@ func main() {
 
 	for {
 		message, err := client.Messages.New(context.TODO(), anthropic.MessageNewParams{
-			Model:     anthropic.ModelClaudeOpus4_6,
+			Model:     anthropic.ModelClaudeOpus4_7,
 			MaxTokens: 1024,
 			Messages:  messages,
 			Tools:     tools,
@@ -403,7 +403,7 @@ import (
 
 func main() {
 	original := anthropic.MessageNewParams{
-		Model:     anthropic.ModelClaudeOpus4_6,
+		Model:     anthropic.ModelClaudeOpus4_7,
 		MaxTokens: 1024,
 		Messages: []anthropic.MessageParam{
 			anthropic.NewUserMessage(anthropic.NewTextBlock("hello")),
@@ -462,7 +462,7 @@ type Animal struct {
 To handle optional data, use the `.Valid()` method on the JSON field.
 `.Valid()` returns true if a field is not `null`, not present, or couldn't be marshaled.
 
-If `.Valid()` is false, the corresponding field will simply be its zero value.
+If `.Valid()` is false, the corresponding field will be its zero value.
 
 ```go nocheck
 raw := `{"owners": 1, "name": null}`
@@ -571,7 +571,7 @@ func main() {
 			}},
 			Role: anthropic.MessageParamRoleUser,
 		}},
-		Model: anthropic.ModelClaudeOpus4_6,
+		Model: anthropic.ModelClaudeOpus4_7,
 	})
 	if err != nil {
 		var apierr *anthropic.Error
@@ -626,7 +626,7 @@ func main() {
 					}},
 					Role: anthropic.MessageParamRoleUser,
 				}},
-				Model: anthropic.ModelClaudeOpus4_6,
+				Model: anthropic.ModelClaudeOpus4_7,
 			},
 			option.WithMaxRetries(5),
 		)
@@ -669,7 +669,7 @@ func main() {
 					}},
 					Role: anthropic.MessageParamRoleUser,
 				}},
-				Model: anthropic.ModelClaudeOpus4_6,
+				Model: anthropic.ModelClaudeOpus4_7,
 			},
 			// This sets the per-retry timeout
 			option.WithRequestTimeout(20*time.Second),
@@ -694,7 +694,7 @@ Calling `.Messages.NewStreaming()` or [setting a custom timeout](#timeouts) disa
 Request parameters that correspond to file uploads in multipart requests are typed as
 `io.Reader`. The contents of the `io.Reader` will by default be sent as a multipart form
 part with the file name of "anonymous_file" and content-type of "application/octet-stream", so the recommended approach is to specify a custom content-type with the `anthropic.File(reader io.Reader, filename string, contentType string)`
-helper, which easily wraps any `io.Reader` with the appropriate file name and content type.
+helper, which wraps any `io.Reader` with the appropriate file name and content type.
 
 ```go nocheck
 // A file from the file system
@@ -796,7 +796,7 @@ import (
 	"github.com/anthropics/anthropic-sdk-go/option"
 )
 
-var _ = anthropic.ModelClaudeOpus4_6
+var _ = anthropic.ModelClaudeOpus4_7
 
 func LogReq(req *http.Request)                              {}
 func LogRes(res *http.Response, err error, d time.Duration) {}
@@ -836,14 +836,17 @@ middleware has been applied.
 
 <Note>
 For detailed platform setup guides with code examples, see:
-- [Amazon Bedrock](/docs/en/build-with-claude/claude-on-amazon-bedrock)
+- [Amazon Bedrock](/docs/en/build-with-claude/claude-in-amazon-bedrock)
+- [Amazon Bedrock (legacy)](/docs/en/build-with-claude/claude-on-amazon-bedrock)
 - [Google Vertex AI](/docs/en/build-with-claude/claude-on-vertex-ai)
 </Note>
 
 The Go SDK supports Amazon Bedrock and Google Vertex AI through subpackages:
 
-- **Bedrock:** `import "github.com/anthropics/anthropic-sdk-go/bedrock"`. Use `bedrock.WithLoadDefaultConfig(ctx)` or `bedrock.WithConfig(cfg)`. Importing this package globally registers a decoder for `application/vnd.amazon.eventstream` for streaming.
+- **Bedrock:** `import "github.com/anthropics/anthropic-sdk-go/bedrock"`. Use `bedrock.NewMantleClient` for the Messages-API Bedrock endpoint (streams over SSE), or `bedrock.WithLoadDefaultConfig(ctx)` / `bedrock.WithConfig(cfg)` (`bedrock-runtime` path). Importing the `bedrock` package globally registers a decoder for `application/vnd.amazon.eventstream` with the SDK's streaming layer (through package `init()`). This applies whether you use the `bedrock-runtime` `WithConfig`/`WithLoadDefaultConfig` path or `NewMantleClient`.
 - **Vertex AI:** `import "github.com/anthropics/anthropic-sdk-go/vertex"`. Use `vertex.WithGoogleAuth(ctx, region, projectID)` or `vertex.WithCredentials(ctx, region, projectID, creds)`.
+
+Use `bedrock.NewMantleClient` for new projects; `bedrock.WithLoadDefaultConfig`/`WithConfig` remain for existing applications using the Bedrock `InvokeModel` API.
 
 ## Advanced usage
 
@@ -880,7 +883,7 @@ func main() {
 				}},
 				Role: anthropic.MessageParamRoleUser,
 			}},
-			Model: anthropic.ModelClaudeOpus4_6,
+			Model: anthropic.ModelClaudeOpus4_7,
 		},
 		option.WithResponseInto(&response),
 	)

@@ -1,6 +1,6 @@
 ---
 title: Connect a private hostname
-description: Instead of managing static IP lists and routes, you can connect users to private HTTP and non-HTTP applications using their hostnames (for example, wiki.internal.local). Private hostname routes are especially useful when the application has an unknown or ephemeral IP, which often occurs when infrastructure is provisioned by a third-party cloud provider.
+description: Connect a private hostname in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -82,8 +82,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-3691)
-* [ Terraform (v5) ](#tab-panel-3692)
+* [ Dashboard ](#tab-panel-5672)
+* [ Terraform (v5) ](#tab-panel-5673)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.

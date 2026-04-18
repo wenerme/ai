@@ -1,6 +1,6 @@
 ---
 title: Ubiquiti
-description: Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (formerly Magic WAN). These steps use the Cloud Gateway Max (UCG-Max) but work with other UniFi gateways supporting route-based IPsec (Internet Protocol Security) VPNs (Virtual Private Networks), like the Dream Machine series.
+description: Connect Ubiquiti to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

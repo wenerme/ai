@@ -1,6 +1,6 @@
 ---
 title: Ironclad
-description: This guide covers how to configure Ironclad as a SAML application in Cloudflare One.
+description: Integrate Ironclad with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

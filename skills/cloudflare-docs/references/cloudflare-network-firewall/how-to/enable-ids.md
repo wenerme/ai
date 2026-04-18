@@ -1,6 +1,6 @@
 ---
 title: Enable IDS
-description: Cloudflare's IDS takes advantage of the threat intelligence powered by our global network and extends the capabilities of the Cloudflare Firewall to monitor and protect your network from malicious actors.
+description: Enable the Intrusion Detection System for your account.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -24,8 +24,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-3404)
-* [ API ](#tab-panel-3405)
+* [ Dashboard ](#tab-panel-5517)
+* [ API ](#tab-panel-5518)
 
 1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
 2. Select **IDS** and turn on **IDS**.

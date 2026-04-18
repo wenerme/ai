@@ -1,6 +1,6 @@
 ---
 title: Set up Browser Isolation
-description: Browser Isolation is enabled through Secure Web Gateway HTTP policies. By default, no traffic is isolated until you have added an Isolate policy to your HTTP policies.
+description: Set up Browser Isolation in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

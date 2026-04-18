@@ -1,6 +1,6 @@
 ---
 title: Cloudflare One Client checks
-description: These device posture checks are performed by the Cloudflare One Client. To use this feature, you must deploy the Cloudflare One Client to your devices and enable the desired posture checks.
+description: Cloudflare One Client checks resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

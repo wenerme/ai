@@ -1,6 +1,6 @@
 ---
 title: GitHub Enterprise Cloud
-description: This guide covers how to configure GitHub Enterprise Cloud as a SAML application in Cloudflare One.
+description: Integrate GitHub Enterprise Cloud with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

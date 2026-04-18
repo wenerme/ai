@@ -1,6 +1,6 @@
 ---
 title: Protocols for published applications
-description: When you add a published application route to a Cloudflare Tunnel, you are instructing Cloudflare to proxy requests for your public hostname to a service running privately behind cloudflared.
+description: Reference information for Protocols for published applications in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

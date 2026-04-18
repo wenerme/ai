@@ -1,6 +1,6 @@
 ---
 title: Cloudflare One Client
-description: The Cloudflare One Client (formerly WARP) securely and privately sends traffic from your devices to Cloudflare's global network, where Cloudflare Gateway can apply advanced web filtering. The client also reports device health information — such as OS version, disk encryption status, and the presence of specific applications — so that you can enforce device posture checks in your Access and Gateway policies.
+description: How Cloudflare One Client works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

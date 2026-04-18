@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: The Cloudflare One Appliance (formerly Magic WAN Connector) software is certified for use on the Dell Networking Virtual Edge Platform. It can be purchased with software pre-installed through our partner network for plug-and-play connectivity to Cloudflare One.
+description: Reference information for Reference in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

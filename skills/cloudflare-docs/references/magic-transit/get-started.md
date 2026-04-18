@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Before you can begin using Magic Transit, complete the following onboarding steps. Cloudflare can significantly accelerate this timeline during active-attack scenarios.
+description: Set up Magic Transit to protect your network infrastructure.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

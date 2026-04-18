@@ -1,6 +1,6 @@
 ---
 title: Detection settings best practices
-description: This guide describes how to configure detection settings to mitigate impersonation risks while ensuring legitimate delivery.
+description: Detection settings best practices in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

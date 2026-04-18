@@ -1,6 +1,6 @@
 ---
 title: Configuration file
-description: Locally-managed tunnels run as an instance of cloudflared on your machine. You can configure cloudflared properties by modifying command line parameters or by editing the tunnel configuration file.
+description: Reference information for Configuration file in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

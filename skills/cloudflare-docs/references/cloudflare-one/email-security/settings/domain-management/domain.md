@@ -1,6 +1,6 @@
 ---
 title: Information about your domain
-description: When you configure your domain, the Cloudflare dashboard will display you the following fields:
+description: How Information about your domain works in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

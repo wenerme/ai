@@ -1,6 +1,6 @@
 ---
 title: Salesforce (FedRAMP)
-description: The Salesforce (FedRAMP) integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated FedRAMP-compliant Salesforce environment that could leave you and your organization vulnerable.
+description: Reference information for Salesforce (FedRAMP) in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

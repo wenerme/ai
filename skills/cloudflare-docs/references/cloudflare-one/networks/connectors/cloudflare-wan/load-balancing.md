@@ -1,6 +1,6 @@
 ---
 title: Load Balancing
-description: If your network has multiple paths to the same destination — for example, redundant tunnels to a data center — you can use Cloudflare Load Balancing to distribute traffic across those paths. This prevents any single path from becoming a bottleneck and allows traffic to fail over automatically if a path goes down.
+description: How Load Balancing works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

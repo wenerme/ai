@@ -1,6 +1,6 @@
 ---
 title: Uninstall the Cloudflare One Client
-description: The following procedures will uninstall the Cloudflare One Client (formerly WARP) from your device. If you used the Cloudflare One Client to deploy a root certificate, the certificate will also be removed.
+description: Uninstall the Cloudflare One Client in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

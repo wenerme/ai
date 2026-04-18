@@ -1,6 +1,6 @@
 ---
 title: Use IP lists
-description: IP lists are a part of Cloudflare's custom lists. Custom lists contain one or more items of the same type — IP addresses, hostnames or ASNs — that you can reference in rule expressions.
+description: Use IP lists in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

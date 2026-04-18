@@ -1,6 +1,6 @@
 ---
 title: SonicWall
-description: This tutorial shows you how to use Cloudflare WAN (formerly Magic WAN) with the following versions of the SonicWall appliances:
+description: Connect SonicWall to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

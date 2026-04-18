@@ -1,6 +1,6 @@
 ---
 title: Security filters
-description: Once your traffic flows through Cloudflare's network, you can apply security policies to it without deploying additional hardware. Cloudflare WAN (formerly Magic WAN) integrates with two primary security services, each operating at different layers of the network stack.
+description: Apply security filters to WAN traffic.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Download Cloudflare One Client beta releases
-description: Cloudflare tests new Cloudflare One Client features and improvements in an unstable beta release before adding them to the stable release. Beta releases are not recommended for production environments. To get early access to new features, download the latest beta client from the links below.
+description: Reference information for Download Cloudflare One Client beta releases in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -308,7 +308,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 | **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
 | -------------------------- | ------------------------------------------------------------------ |
-| **Processor**              | M series                                                           |
+| **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |
 | **Network interface type** | Wi-Fi or LAN                                                       |

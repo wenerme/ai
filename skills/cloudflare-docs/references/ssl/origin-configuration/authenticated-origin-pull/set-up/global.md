@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ mTLS ](https://developers.cloudflare.com/search/?tags=mTLS) 
+
 Was this helpful?
 
 YesNo
@@ -69,8 +73,8 @@ At this point, you may also want to enable logging on your origin so that you ca
 
 ## 3\. Enable global Authenticated Origin Pulls
 
-* [ Dashboard ](#tab-panel-8779)
-* [ API ](#tab-panel-8780)
+* [ Dashboard ](#tab-panel-8824)
+* [ API ](#tab-panel-8825)
 
 1. Go to the **Origin Server** page.  
 [ Go to **Origin Server** ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Magic Transit
-description: Magic Transit is a network security and performance solution that offers Distributed Denial of Service (DDoS) protection, traffic acceleration, and more for on-premises, cloud-hosted, and hybrid networks.
+description: Protect your network infrastructure from DDoS attacks with Magic Transit.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

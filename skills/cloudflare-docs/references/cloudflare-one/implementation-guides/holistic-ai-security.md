@@ -1,5 +1,6 @@
 ---
 title: Holistic AI security with Cloudflare One
+description: Holistic AI security with Cloudflare One for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

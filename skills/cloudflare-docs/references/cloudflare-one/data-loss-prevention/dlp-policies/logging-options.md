@@ -1,6 +1,6 @@
 ---
 title: Logging options
-description: Data Loss Prevention allows you to capture, store, and view the data that triggered a specific DLP policy for use as forensic evidence. DLP offers three logging approaches, each suited to different needs:
+description: Logging options in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

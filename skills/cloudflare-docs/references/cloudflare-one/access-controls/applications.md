@@ -1,5 +1,6 @@
 ---
 title: Applications
+description: Applications resources and guides for Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

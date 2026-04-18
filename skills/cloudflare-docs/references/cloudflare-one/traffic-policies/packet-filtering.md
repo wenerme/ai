@@ -1,6 +1,6 @@
 ---
 title: Packet filtering
-description: Packet filtering lets you inspect individual pieces of network traffic (packets) and apply rules to allow or block them before they reach your network. Use the pages in this section to create and manage filtering policies.
+description: Configure Packet filtering in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

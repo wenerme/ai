@@ -271,7 +271,7 @@ resource "cloudflare_api_shield" "session_identifiers" {
 
   auth_id_characteristics = [{
 
-    # select the JWT's `sub` claim as an extremly stable session identifier
+    # select the JWT's `sub` claim as an extremely stable session identifier
 
     # this is "<token_config_id:json_path>" format
 

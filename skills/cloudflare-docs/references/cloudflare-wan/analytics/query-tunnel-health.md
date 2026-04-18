@@ -1,6 +1,6 @@
 ---
 title: Querying Cloudflare WAN IPsec/GRE tunnel health check results with GraphQL
-description: This example uses the GraphQL Analytics API to query Cloudflare WAN tunnel health check results. These results are aggregated from individual health checks that Cloudflare servers perform against the tunnels you configured in your account. You can query up to one week of data for dates up to three months in the past.
+description: Query tunnel health check results with the GraphQL API.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

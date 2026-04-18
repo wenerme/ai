@@ -1,6 +1,6 @@
 ---
 title: Set up with Microsoft 365
-description: This guide will instruct you through setting up Microsoft 365 with Email security via the Cloudflare dashboard.
+description: Set up with Microsoft 365 in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

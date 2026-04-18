@@ -1,6 +1,6 @@
 ---
 title: Rules
-description: DEX rules allow you to create and manage testing policies for targeted user groups within your fleet. After creating a rule, you can use it to define the scope of a test to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
+description: Reference information for Rules in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -20,9 +20,9 @@ Copy page
 
 # Rules
 
-DEX rules allow you to create and manage testing policies for targeted user groups within your [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/). After creating a rule, you can use it to define the scope of a [test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
+DEX rules allow you to create and manage testing policies for targeted user groups within your [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization). After creating a rule, you can use it to define the scope of a [test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
 
-DEX rules are ideal for admins who want to define the scope of a test to a specific group within their fleet to allow for more precise problem detection and resolution.
+Use DEX rules to scope a test to a specific group within your fleet for more precise problem detection and resolution.
 
 ## Create a rule
 
@@ -50,7 +50,7 @@ Review the available selectors and their scope in the following list.
 | **Operating system version** | For specifying an operating system version (use Operator in) or versions (use Operator is).                                                                        |
 | **Managed network**          | For specifying users accessing the network from the office (managed network) compared to those accessing remotely.                                                 |
 | **SAML attributes**          | For specifying a value from the [SAML Attribute Assertion](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#saml-attributes). |
-| **Colos**                    | For specifying a Cloudflare data center location users are connected to.                                                                                           |
+| **Colos**                    | For specifying a Cloudflare data center (colocation) that users are connected to.                                                                                  |
 
 ## Add a rule to a test
 

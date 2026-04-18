@@ -1,6 +1,6 @@
 ---
 title: HTTP/3 inspection
-description: HTTP/3 uses the QUIC protocol over UDP instead of TCP. Because Gateway's default proxy only handles TCP traffic, HTTP/3 inspection requires turning on the UDP proxy. Without it, HTTP/3 traffic bypasses HTTP inspection. Network policies still apply to the underlying UDP traffic.
+description: How HTTP/3 inspection works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

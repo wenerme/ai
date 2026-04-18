@@ -1,6 +1,6 @@
 ---
 title: Pingboard
-description: This guide covers how to configure Pingboard as a SAML application in Cloudflare One.
+description: Integrate Pingboard with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

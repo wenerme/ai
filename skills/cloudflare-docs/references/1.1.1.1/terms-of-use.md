@@ -1,6 +1,6 @@
 ---
 title: Terms of use
-description: By using 1.1.1.1 Public DNS Resolver or 1.1.1.1 for Families, you consent to be bound by the Cloudflare Website and Online Services Terms of Use.
+description: Terms of use for the 1.1.1.1 DNS resolver.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

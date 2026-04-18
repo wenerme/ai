@@ -15,7 +15,7 @@ Copy page
 
 # RTKConnectedMeetings
 
-This consists of the methods to faciliate connected meetings
+This consists of the methods to facilitate connected meetings
 
 * [RTKConnectedMeetings](#module%5FRTKConnectedMeetings)  
    * [module.exports](#exp%5Fmodule%5FRTKConnectedMeetings--module.exports) ⏏  

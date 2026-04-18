@@ -1,6 +1,6 @@
 ---
 title: Independent MFA
-description: Independent multi-factor authentication (MFA) allows you to enforce MFA requirements directly in Access without relying on your identity provider (IdP). Users authenticate with their IdP as usual, and Access prompts for an additional authentication method before granting access to the application.
+description: Independent MFA in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -34,8 +34,8 @@ Independent multi-factor authentication (MFA) allows you to enforce MFA requirem
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-3742)
-* [ API ](#tab-panel-3743)
+* [ Dashboard ](#tab-panel-5537)
+* [ API ](#tab-panel-5538)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
@@ -97,8 +97,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-3740)
-* [ API ](#tab-panel-3741)
+* [ Dashboard ](#tab-panel-5535)
+* [ API ](#tab-panel-5536)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -193,8 +193,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-3738)
-* [ API ](#tab-panel-3739)
+* [ Dashboard ](#tab-panel-5533)
+* [ API ](#tab-panel-5534)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.

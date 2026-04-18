@@ -1,6 +1,6 @@
 ---
 title: Egress through Cloudflare Tunnel
-description: Some third-party services only accept connections from specific source IPs listed in an Access Control List (ACL). If a non-Cloudflare IP (for example, an IP from your ISP or a cloud provider like AWS) is already on their allowlist, you can route traffic through a Cloudflare Tunnel so that it exits using that same IP. This is called source IP anchoring — it allows you to keep your existing egress IPs without purchasing Cloudflare dedicated egress IPs.
+description: Egress through Cloudflare Tunnel in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

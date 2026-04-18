@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Explore guides to resolve issues with Cloudflare Zero Trust integrations, including CASB, webhooks, and third-party SaaS applications.
+description: Troubleshoot Troubleshooting issues in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

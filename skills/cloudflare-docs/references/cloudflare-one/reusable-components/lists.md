@@ -1,6 +1,6 @@
 ---
 title: Lists
-description: With Cloudflare One, you can create lists of URLs, hostnames, or other entries to reference when creating Gateway policies or Access policies. This allows you to quickly create rules that match and take actions against several items at once.
+description: Lists in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -63,8 +63,8 @@ When you format a CSV file for upload:
 
 To upload the list to Cloudflare One:
 
-* [ Dashboard ](#tab-panel-3651)
-* [ Terraform (v5) ](#tab-panel-3652)
+* [ Dashboard ](#tab-panel-5792)
+* [ Terraform (v5) ](#tab-panel-5793)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
@@ -95,9 +95,9 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-3653)
-* [ API ](#tab-panel-3654)
-* [ Terraform (v5) ](#tab-panel-3655)
+* [ Dashboard ](#tab-panel-5794)
+* [ API ](#tab-panel-5795)
+* [ Terraform (v5) ](#tab-panel-5796)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
 2. Select **Create manual list**.

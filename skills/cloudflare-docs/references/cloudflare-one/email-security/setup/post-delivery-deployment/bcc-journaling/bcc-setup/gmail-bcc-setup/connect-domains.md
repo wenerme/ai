@@ -1,6 +1,6 @@
 ---
 title: Connect your domains
-description: To connect your domains, you will need to enable your Gmail BCC integration. Once you have enabled your Gmail BCC integration, the Cloudflare dashboard will redirect you to the Set up Email security page.
+description: Connect your domains in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

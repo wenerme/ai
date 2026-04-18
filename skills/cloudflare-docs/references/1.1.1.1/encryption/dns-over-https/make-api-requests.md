@@ -1,6 +1,6 @@
 ---
 title: Make API requests to 1.1.1.1
-description: Cloudflare offers a DNS over HTTPS resolver at:
+description: Make programmatic DNS queries to 1.1.1.1 over HTTPS.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

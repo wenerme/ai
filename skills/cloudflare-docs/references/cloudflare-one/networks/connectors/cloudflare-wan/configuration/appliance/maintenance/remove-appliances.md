@@ -1,6 +1,6 @@
 ---
 title: Remove connectors
-description: When adding or removing Cloudflare One Appliances (formerly Magic WAN Connectors), you need to be aware of the difference between the physical device and its profile.
+description: Remove connectors in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

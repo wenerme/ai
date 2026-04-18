@@ -1,6 +1,6 @@
 ---
 title: Minimal ruleset
-description: The suggested minimal ruleset blocks some known common vectors for DDoS attacks and permits all other ESP, TCP, UDP, GRE and ICMP traffic.
+description: Minimal ruleset configuration for basic protection.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Salesforce
-description: The Salesforce integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Salesforce environment that could leave you and your organization vulnerable.
+description: Reference information for Salesforce in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

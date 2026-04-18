@@ -1,5 +1,6 @@
 ---
 title: Reusable components
+description: Reusable components resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

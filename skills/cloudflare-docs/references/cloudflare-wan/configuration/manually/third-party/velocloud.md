@@ -1,6 +1,6 @@
 ---
 title: Velocloud
-description: This document is intended to provide Arista VeloCloud customers with the steps to provision non SD-WAN destinations through Edge for connectivity with Cloudflare WAN (formerly Magic WAN).
+description: Connect Velocloud to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Secure MCP servers with Access for SaaS
-description: You can secure Model Context Protocol (MCP) servers by using Cloudflare Access as an OAuth Single Sign-On (SSO) provider.
+description: Secure MCP servers with Access for SaaS in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -33,8 +33,8 @@ This guide walks through how to deploy a remote MCP server on [Cloudflare Worker
 
 To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
 
-* [ Dashboard ](#tab-panel-3422)
-* [ CLI ](#tab-panel-3423)
+* [ Dashboard ](#tab-panel-5543)
+* [ CLI ](#tab-panel-5544)
 
 1. Select the following button to launch the quickstart flow:  
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access)
@@ -107,8 +107,8 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 
 ## 2\. Create an Access for SaaS app
 
-* [ Dashboard ](#tab-panel-3426)
-* [ API ](#tab-panel-3427)
+* [ Dashboard ](#tab-panel-5547)
+* [ API ](#tab-panel-5548)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.
@@ -177,8 +177,8 @@ Your MCP server needs to perform an OAuth 2.0 authorization flow to get an `acce
 
 To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-example-mcp-server):
 
-* [ Dashboard ](#tab-panel-3424)
-* [ CLI ](#tab-panel-3425)
+* [ Dashboard ](#tab-panel-5545)
+* [ CLI ](#tab-panel-5546)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.  
 [ Go to **Workers & Pages** ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)

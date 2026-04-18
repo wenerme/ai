@@ -1,6 +1,6 @@
 ---
 title: Connect to RDP using the Cloudflare One Client
-description: The Cloudflare One Client allows users to connect to RDP servers using their preferred RDP client. Cloudflare Tunnel creates a secure, outbound-only connection from your RDP server to Cloudflare's global network; this requires running the cloudflared daemon on the server (or any other host machine within the private network). Users install the Cloudflare One Client on their device and enroll in your Zero Trust organization. Remote devices will be able to connect as if they were on your private network. By default, all devices enrolled in your organization can connect to the RDP server unless you build policies to allow or block specific users.
+description: Connect to RDP using the Cloudflare One Client in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -79,8 +79,8 @@ By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatra
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:  
-   * [ Exclude IPs and domains ](#tab-panel-3555)  
-   * [ Include IPs and domains ](#tab-panel-3556)  
+   * [ Exclude IPs and domains ](#tab-panel-5696)  
+   * [ Include IPs and domains ](#tab-panel-5697)  
 If you are using **Exclude** mode:  
 a. [Delete the route](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#remove-a-route) containing your private network's IP/CIDR range. For example, if your network uses the default AWS range of `172.31.0.0/16`, delete `172.16.0.0/12`.  
 b. [Re-add IP/CIDR ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) that are not explicitly used by your private network. For the AWS example above, you would add new entries for `172.16.0.0/13`, `172.24.0.0/14`, `172.28.0.0/15`, and `172.30.0.0/16`. This ensures that only traffic to `172.31.0.0/16` routes through the Cloudflare One Client.  

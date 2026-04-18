@@ -1,5 +1,6 @@
 ---
 title: Infrastructure
+description: Infrastructure details for the 1.1.1.1 resolver network.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

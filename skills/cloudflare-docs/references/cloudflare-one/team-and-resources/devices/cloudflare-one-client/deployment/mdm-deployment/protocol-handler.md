@@ -1,6 +1,6 @@
 ---
 title: Register the Cloudflare One Client with minimal user interaction
-description: Administrators can automate Cloudflare One Client (formerly WARP) registration on managed devices and minimize the number of clicks required from an end user.
+description: Register the Cloudflare One Client with minimal user interaction in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -74,8 +74,8 @@ _Note: Labels in this image may reflect a previous product name._
 
 Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
-* [ Windows ](#tab-panel-3723)
-* [ macOS ](#tab-panel-3724)
+* [ Windows ](#tab-panel-5864)
+* [ macOS ](#tab-panel-5865)
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 

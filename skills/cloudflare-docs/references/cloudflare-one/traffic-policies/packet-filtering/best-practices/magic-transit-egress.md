@@ -1,6 +1,6 @@
 ---
 title: Magic Transit egress
-description: The suggestions in the Minimal ruleset and Extended ruleset are recommendations for ingress (incoming) traffic. This page covers the additional consideration needed for egress (outgoing) traffic.
+description: How Magic Transit egress works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

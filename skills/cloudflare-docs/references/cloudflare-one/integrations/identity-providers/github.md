@@ -1,6 +1,6 @@
 ---
 title: GitHub
-description: Cloudflare One allows your team to connect to your applications using their GitHub login. You do not need to have a GitHub organization to use the integration.
+description: GitHub in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

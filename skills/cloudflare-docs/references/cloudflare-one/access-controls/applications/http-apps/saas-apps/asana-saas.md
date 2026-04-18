@@ -1,6 +1,6 @@
 ---
 title: Asana
-description: This guide covers how to configure Asana as a SAML application in Cloudflare One.
+description: Asana in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

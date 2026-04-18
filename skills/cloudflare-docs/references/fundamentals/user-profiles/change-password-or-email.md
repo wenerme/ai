@@ -57,7 +57,7 @@ For added account security, consider changing your [API tokens](https://develope
 
 Note
 
-If you are an Enteprise customer and forgot the email address associated with your account, contact your Customer Success Manager.
+If you are an Enterprise customer and forgot the email address associated with your account, contact your Customer Success Manager.
 
 If you forget the email address associated with your application:
 

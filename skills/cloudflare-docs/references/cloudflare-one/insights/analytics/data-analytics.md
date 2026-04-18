@@ -1,6 +1,6 @@
 ---
 title: Data security analytics
-description: The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It visualizes event data collected from your DLP and CASB policies. If neither DLP nor CASB is enabled in your account, the dashboard appears empty.
+description: Reference information for Data security analytics in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

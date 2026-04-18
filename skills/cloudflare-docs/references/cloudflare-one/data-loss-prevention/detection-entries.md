@@ -1,6 +1,6 @@
 ---
 title: Detection entries
-description: Detection entries are the data patterns that Cloudflare DLP looks for when scanning your web traffic and SaaS applications. You add detection entries to DLP profiles, which define what DLP should detect. Detection entries include:
+description: How Detection entries works in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

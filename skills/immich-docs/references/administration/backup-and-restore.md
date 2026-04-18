@@ -173,7 +173,7 @@ docker compose up -d                              # Start remainder of Immich ap
 
 ## Filesystem
 
-Immich stores two types of content in the filesystem: (a) original, unmodified assets (photos and videos), and (b) generated content. We recommend backing up the entire contents of `UPLOAD_LOCATION`, but only the original content is critical, which is stored in the following folders:
+Immich does not handle filesystem backups for you. You have to arrange these yourself! Immich stores two types of content in the filesystem: (a) original, unmodified assets (photos and videos), and (b) generated content. We recommend backing up the entire contents of `UPLOAD_LOCATION`, but only the original content is critical, which is stored in the following folders:
 
 1. `UPLOAD_LOCATION/library`
 2. `UPLOAD_LOCATION/upload`

@@ -1,6 +1,6 @@
 ---
 title: SLA and technical support
-description: As you use 1.1.1.1 in your infrastructure or service, note that dedicated technical support is limited.
+description: SLA and support details for the 1.1.1.1 resolver.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

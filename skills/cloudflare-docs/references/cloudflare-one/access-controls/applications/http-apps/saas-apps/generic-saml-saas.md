@@ -1,6 +1,6 @@
 ---
 title: Generic SAML application
-description: This page provides generic instructions for setting up a SaaS application in Cloudflare Access using the SAML authentication protocol.
+description: Generic SAML application in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

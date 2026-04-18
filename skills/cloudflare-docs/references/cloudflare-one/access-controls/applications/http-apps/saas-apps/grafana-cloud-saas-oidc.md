@@ -1,6 +1,6 @@
 ---
 title: Grafana Cloud
-description: This guide covers how to configure Grafana Cloud as an OIDC application in Cloudflare One.
+description: Integrate Grafana Cloud with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

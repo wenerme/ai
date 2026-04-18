@@ -1,6 +1,6 @@
 ---
 title: Order of enforcement
-description: With Cloudflare Gateway, you can enable and configure any combination of DNS, network, and HTTP policies.
+description: How Order of enforcement works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Tunnel
-description: Explore common issues and solutions for Cloudflare Tunnel.
+description: Tunnel for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Salesforce (OIDC)
-description: This guide covers how to configure Salesforce as an OpenID Connect (OIDC) application in Cloudflare One.
+description: Integrate Salesforce (OIDC) with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

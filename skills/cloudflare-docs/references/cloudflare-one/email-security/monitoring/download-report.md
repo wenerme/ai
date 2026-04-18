@@ -1,6 +1,6 @@
 ---
 title: Download a report
-description: Email security allows you to download three types of reports:
+description: Download a report in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

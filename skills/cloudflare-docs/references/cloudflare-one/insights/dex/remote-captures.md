@@ -1,6 +1,6 @@
 ---
 title: Remote captures
-description: Remote captures allow administrators to collect packet captures (PCAPs) and Cloudflare One Client diagnostic logs directly from end user devices. This data can be used to troubleshoot network problems, investigate security incidents, and identify performance bottlenecks.
+description: Reference information for Remote captures in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -35,7 +35,7 @@ Feature availability
 | Android  | ❌            |                        |
 | ChromeOS | ❌            |                        |
 
-Remote captures allow administrators to collect packet captures (PCAPs) and Cloudflare One Client diagnostic logs directly from end user devices. This data can be used to troubleshoot network problems, investigate security incidents, and identify performance bottlenecks.
+Remote captures allow administrators to collect packet captures (PCAPs) and Cloudflare One Client diagnostic logs directly from end user devices. A packet capture is a recording of network traffic at the packet level. This data can be used to troubleshoot network problems, investigate security incidents, and identify performance bottlenecks.
 
 ## Start a remote capture
 
@@ -99,7 +99,7 @@ Explanation of the fields
 | Field                         | Description                                                                                                                                                                                                                                                                                               |  
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
 | Detection type                | A common Cloudflare One Client issue that can appear in the diagnostic logs.                                                                                                                                                                                                                              |  
-| Occurences                    | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |  
+| Occurrences                   | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |  
 | Severity level                | Indicates the impact of the issue on Cloudflare One Client functionality. The severity levels are: **Critical**: Issue causes complete loss of functionality. **Warning**: Issue causes degraded functionality but core features should still work. **No detection**: Issue was not detected in the logs. |  
 | Operating system              | OS and OS version of the device.                                                                                                                                                                                                                                                                          |  
 | Cloudflare One Client version | [Cloudflare One Client release version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)                                                                                                                                                      |  

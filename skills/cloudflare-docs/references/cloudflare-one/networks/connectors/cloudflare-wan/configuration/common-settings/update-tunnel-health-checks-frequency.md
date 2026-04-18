@@ -1,6 +1,6 @@
 ---
 title: Update tunnel health checks frequency
-description: By default, Cloudflare servers send health checks to each GRE, Cloudflare Network Interconnect (CNI), or IPsec tunnel endpoint you configure to receive traffic from Cloudflare WAN.
+description: Update tunnel health checks frequency in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -28,8 +28,8 @@ To configure health checks frequency in Cloudflare One Appliance, refer to [Conf
 
 ## Manual configuration
 
-* [ Dashboard ](#tab-panel-3611)
-* [ API ](#tab-panel-3612)
+* [ Dashboard ](#tab-panel-5752)
+* [ API ](#tab-panel-5753)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.

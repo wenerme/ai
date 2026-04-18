@@ -1,6 +1,6 @@
 ---
 title: Device IPs
-description: A device IP identifies and routes traffic to a specific device in your Zero Trust organization. When a user registers the Cloudflare One Client (formerly WARP), Cloudflare assigns a virtual IPv4 and IPv6 address to the device registration. The Cloudflare One Client uses these IP addresses to create a virtual network interface on the device, which allows your private network to reach the device via Cloudflare Mesh or Cloudflare WAN on-ramps.
+description: Device IPs in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -205,9 +205,9 @@ The Cloudflare One dashboard defaults to showing devices that were last seen wit
 
 To check the device IP used by the device client's virtual network interface:
 
-* [ Windows ](#tab-panel-3819)
-* [ macOS ](#tab-panel-3820)
-* [ Linux ](#tab-panel-3821)
+* [ Windows ](#tab-panel-5806)
+* [ macOS ](#tab-panel-5807)
+* [ Linux ](#tab-panel-5808)
 
 On Windows, run `ipconfig`. When the Cloudflare One Client is turned on, you will see an adapter called `CloudflareWARP` with your device IP.
 

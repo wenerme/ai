@@ -1,6 +1,6 @@
 ---
 title: Connect to RDP in a browser
-description: Users can connect to an RDP server without installing an RDP client or the Cloudflare One Client on their device. Browser-based RDP leverages Cloudflare Tunnel, which creates a secure, outbound-only connection from your RDP server to Cloudflare's global network. Setup involves running the cloudflared daemon on the RDP server (or any other host machine within the private network) and routing RDP traffic over a public hostname.
+description: Connect to RDP in a browser in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -47,9 +47,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
  Create a target for each Windows machine that requires RDP access. To create a new target:
 
-* [ Dashboard ](#tab-panel-3558)
-* [ API ](#tab-panel-3559)
-* [ Terraform ](#tab-panel-3560)
+* [ Dashboard ](#tab-panel-5693)
+* [ API ](#tab-panel-5694)
+* [ Terraform ](#tab-panel-5695)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -282,9 +282,9 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure clipboard controls
 
-* [ Dashboard ](#tab-panel-3555)
-* [ API ](#tab-panel-3556)
-* [ Terraform ](#tab-panel-3557)
+* [ Dashboard ](#tab-panel-5690)
+* [ API ](#tab-panel-5691)
+* [ Terraform ](#tab-panel-5692)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.

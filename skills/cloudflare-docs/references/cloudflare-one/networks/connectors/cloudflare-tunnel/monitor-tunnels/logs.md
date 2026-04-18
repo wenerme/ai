@@ -1,6 +1,6 @@
 ---
 title: Log streams
-description: Tunnel logs record all activity between a cloudflared instance and Cloudflare's global network, as well as all activity between cloudflared and your origin server. These logs allow you to investigate connectivity or performance issues with a Cloudflare Tunnel. You can configure your server to store persistent logs, or you can stream real-time logs from any client machine.
+description: Reference information for Log streams in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

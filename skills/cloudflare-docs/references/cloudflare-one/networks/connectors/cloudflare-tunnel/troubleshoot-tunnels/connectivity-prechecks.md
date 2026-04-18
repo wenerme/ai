@@ -1,6 +1,6 @@
 ---
 title: Connectivity pre-checks
-description: This guide helps you validate connectivity between your environment and Cloudflare Tunnel endpoints before deploying Cloudflare Tunnel. You will run DNS and network checks from the same host machine that will run cloudflared to help you identify issues that may prevent cloudflared from connecting to Cloudflare Tunnel endpoints.
+description: Connectivity pre-checks in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -65,9 +65,9 @@ First, you need to verify that your DNS resolver returns the expected IP address
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
-* [ Global region ](#tab-panel-3548)
-* [ US region ](#tab-panel-3549)
-* [ FedRAMP High region ](#tab-panel-3550)
+* [ Global region ](#tab-panel-5683)
+* [ US region ](#tab-panel-5684)
+* [ FedRAMP High region ](#tab-panel-5685)
 
 Terminal window
 

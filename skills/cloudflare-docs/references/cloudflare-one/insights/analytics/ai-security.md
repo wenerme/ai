@@ -1,6 +1,6 @@
 ---
 title: AI security
-description: The AI security report dashboard summarizes your organization's AI usage and potential security risks.
+description: Reference information for AI security in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

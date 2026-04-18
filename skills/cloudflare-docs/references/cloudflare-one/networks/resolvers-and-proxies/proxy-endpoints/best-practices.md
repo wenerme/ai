@@ -1,6 +1,6 @@
 ---
 title: PAC file best practices
-description: A PAC file is a text file that specifies which traffic should redirect to the proxy server. When a browser makes a web request, it consults the PAC file's FindProxyForURL() function, which evaluates the request and returns routing instructions, such as a direct connection, proxy server, or failover sequence.
+description: PAC file best practices in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

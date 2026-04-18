@@ -30,13 +30,15 @@ Terminal window
 
 ```
 
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+
 export ARTIFACTS_NAMESPACE="default"
 
 export ARTIFACTS_REPO="starter-repo"
 
 export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
-export ARTIFACTS_BASE_URL="https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
 
 REPO_JSON=$(curl --silent "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO" \

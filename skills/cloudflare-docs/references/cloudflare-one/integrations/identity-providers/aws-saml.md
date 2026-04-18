@@ -1,6 +1,6 @@
 ---
 title: AWS IAM (SAML)
-description: AWS IAM Identity Center provides SSO identity management for users who interact with AWS resources (such as EC2 instances or S3 buckets). You can integrate AWS IAM with Cloudflare Zero Trust as a SAML identity provider, which allows users to authenticate to Zero Trust using their AWS credentials.
+description: AWS IAM (SAML) in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -59,7 +59,8 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 | -------------- | ------------------ |
 | name           | ${user:name}       |
 | surName        | ${user:familyName} |
-| givenName      | ${user:givenName}  |
+
+| `givenName` | `${user:givenName}` |
 
 ![Configuring attribute statements in IAM Identity Center](https://developers.cloudflare.com/_astro/aws-saml-attributes.DuPGeU5b_1ShHlb.webp) 
 1. Select **Save changes**.

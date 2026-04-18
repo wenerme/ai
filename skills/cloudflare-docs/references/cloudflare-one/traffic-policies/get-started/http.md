@@ -1,6 +1,6 @@
 ---
 title: HTTP filtering
-description: Secure Web Gateway allows you to inspect HTTP traffic and control which websites users can visit. DNS filtering can only block or allow entire domains (for example, all of dropbox.com). HTTP filtering goes deeper — it inspects full URLs and request content, so you can block a specific page like dropbox.com/shared-folder, scan file uploads for sensitive data, or enforce acceptable use policies based on what users are actually doing on a site.
+description: HTTP filtering in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -57,8 +57,8 @@ An HTTP policy defines which requests to match (for example, uploads to file-sha
 
 To create a new HTTP policy:
 
-* [ Dashboard ](#tab-panel-3845)
-* [ API ](#tab-panel-3846)
+* [ Dashboard ](#tab-panel-5986)
+* [ API ](#tab-panel-5987)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.

@@ -1,6 +1,6 @@
 ---
 title: Slack
-description: The Slack integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Slack Workspace that could leave you and your organization vulnerable.
+description: Reference information for Slack in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Connect to SSH in the browser
-description: Cloudflare's browser-based terminal allows end users to connect to an SSH server without managing SSH keys or installing the Cloudflare One Client.
+description: Connect to SSH in the browser in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

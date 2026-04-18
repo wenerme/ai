@@ -1,6 +1,6 @@
 ---
 title: Verify connection
-description: After setting up 1.1.1.1, you can check if you are correctly connected to Cloudflare's resolver.
+description: Verify your device is connected to 1.1.1.1.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

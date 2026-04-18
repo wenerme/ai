@@ -1,6 +1,6 @@
 ---
 title: Dropbox
-description: The Dropbox integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Dropbox account that could leave you and your organization vulnerable.
+description: Reference information for Dropbox in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

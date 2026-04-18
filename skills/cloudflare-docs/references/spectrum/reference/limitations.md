@@ -57,6 +57,12 @@ When a TCP handshake is initiated to any port for a Spectrum IP, the handshake w
 
 Spectrum will only ever proxy traffic to an origin if there is a Spectrum application configured for that port.
 
+## IP access control
+
+Currently, [custom rules](https://developers.cloudflare.com/waf/custom-rules/) do not work with Spectrum applications. Use [IP Access rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) to allowlist, block, and challenge traffic for Spectrum applications based on the request's IP address, Autonomous System Number (ASN), or country.
+
+Refer to [Configuration options](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules) for more information.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/spectrum/","name":"Spectrum"}},{"@type":"ListItem","position":3,"item":{"@id":"/spectrum/reference/","name":"Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/spectrum/reference/limitations/","name":"Limitations"}}]}
 ```

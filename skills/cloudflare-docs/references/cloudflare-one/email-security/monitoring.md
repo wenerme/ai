@@ -1,6 +1,6 @@
 ---
 title: Monitoring
-description: Once you have chosen a domain to scan, Email security allows you to monitor the traffic scanned from your email inboxes.
+description: Monitoring in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

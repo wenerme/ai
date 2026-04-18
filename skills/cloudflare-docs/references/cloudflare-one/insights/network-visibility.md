@@ -1,5 +1,6 @@
 ---
 title: Network visibility
+description: Network visibility in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

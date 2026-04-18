@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot tunnels
-description: Explore resources to help you resolve issues with Cloudflare Tunnel connectivity and configuration.
+description: Troubleshoot tunnels resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

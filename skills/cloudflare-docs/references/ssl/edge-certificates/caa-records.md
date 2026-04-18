@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ DNS ](https://developers.cloudflare.com/search/?tags=DNS) 
+
 Was this helpful?
 
 YesNo
@@ -96,8 +100,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-8761)
-* [ API ](#tab-panel-8762)
+* [ Dashboard ](#tab-panel-8806)
+* [ API ](#tab-panel-8807)
 
 To add a CAA record in the dashboard,
 

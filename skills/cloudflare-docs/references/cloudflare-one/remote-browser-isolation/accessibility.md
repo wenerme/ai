@@ -1,6 +1,6 @@
 ---
 title: Accessibility
-description: Browser Isolation offers features to support users who have visual impairments or non-English language requirements.
+description: Accessibility in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

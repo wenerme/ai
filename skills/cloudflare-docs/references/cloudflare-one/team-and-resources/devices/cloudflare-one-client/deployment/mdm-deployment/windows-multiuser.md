@@ -1,6 +1,6 @@
 ---
 title: Multiple users on a Windows device
-description: The Cloudflare One Client (formerly WARP) supports multiple users on a single Windows device. In multi-user mode, each user has their own device registration, and the Cloudflare One Client will automatically switch device registrations when a user logs in to their Windows account. All traffic to Cloudflare will be attributed to the currently active Windows user. This allows administrators to apply identity-based policies and device settings, audit user activity, and remove individual users from a shared workstation.
+description: How Multiple users on a Windows device works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

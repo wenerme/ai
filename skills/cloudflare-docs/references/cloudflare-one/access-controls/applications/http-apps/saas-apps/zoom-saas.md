@@ -1,6 +1,6 @@
 ---
 title: Zoom
-description: This guide covers how to configure Zoom as a SAML application in Cloudflare One.
+description: Integrate Zoom with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

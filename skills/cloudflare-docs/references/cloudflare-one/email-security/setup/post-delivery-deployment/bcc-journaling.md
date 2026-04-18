@@ -1,6 +1,6 @@
 ---
 title: BCC/Journaling
-description: BCC/Journaling deployment is a post-delivery type of deployment. Cloudflare analyzes emails after they reach the user's inbox. Every time you receive an email, your email provider will send a blind copy to Cloudflare for an analysis.
+description: How BCC/Journaling works in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

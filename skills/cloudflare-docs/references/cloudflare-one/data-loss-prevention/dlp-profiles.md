@@ -1,6 +1,6 @@
 ---
 title: DLP profiles
-description: A DLP profile defines what sensitive data looks like so that DLP can detect it in your traffic. Each profile contains one or more detection entries — patterns such as uploaded datasets, document fingerprints, and AI prompt topic classifiers that match specific types of data.
+description: DLP profiles in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

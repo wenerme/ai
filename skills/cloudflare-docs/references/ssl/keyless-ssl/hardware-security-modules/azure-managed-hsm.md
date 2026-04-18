@@ -1,10 +1,14 @@
 ---
 title: Azure Managed HSM
-description: This tutorial uses Microsoft Azure’s Managed HSM to deploy a VM with the Keyless SSL daemon. Follow these instructions to deploy your keyless server.
+description: This tutorial uses Microsoft Azure's Managed HSM to deploy a VM with the Keyless SSL daemon. Follow these instructions to deploy your keyless server.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Tags
+
+[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
 
 Was this helpful?
 

@@ -57,7 +57,7 @@ NOTE(ishita1805): Discussed with Ravindra, added a duplicate for consistency whe
 
 ### meeting.self.roomState
 
-Returns the current state of room init - Inital State joined - User is in the meeting waitlisted - User is in the waitlist state rejected - User's was in the waiting room, but the entry was rejected kicked - A priveleged user removed the user from the meeting left - User left the meeting ended - The meeting was ended
+Returns the current state of room init - Initial State joined - User is in the meeting waitlisted - User is in the waitlist state rejected - User's was in the waiting room, but the entry was rejected kicked - A privileged user removed the user from the meeting left - User left the meeting ended - The meeting was ended
 
 **Kind**: instance property of [RTKSelf](#module%5FRTKSelf)  
 

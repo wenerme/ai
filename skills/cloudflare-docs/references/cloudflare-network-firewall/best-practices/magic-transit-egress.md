@@ -1,6 +1,6 @@
 ---
 title: Magic Transit egress
-description: The suggestions in the Minimal ruleset and Extended ruleset are recommendations for ingress traffic.
+description: Configure Network Firewall for Magic Transit egress traffic.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

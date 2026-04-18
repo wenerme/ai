@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: To create and manage tunnels, you will need to install and authenticate cloudflared on your origin server. cloudflared is what connects your server to Cloudflare's global network.
+description: Get started resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

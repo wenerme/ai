@@ -1,6 +1,6 @@
 ---
 title: Dispositions and attributes
-description: Email security uses a variety of factors to determine whether a given email message, domain, URL, or packet is part of a phishing campaign. These small pattern assessments are dynamic in nature and — in many cases — no single pattern will determine the final verdict.
+description: Reference information for Dispositions and attributes in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Debugging ](https://developers.cloudflare.com/search/?tags=Debugging) 
+
 Was this helpful?
 
 YesNo

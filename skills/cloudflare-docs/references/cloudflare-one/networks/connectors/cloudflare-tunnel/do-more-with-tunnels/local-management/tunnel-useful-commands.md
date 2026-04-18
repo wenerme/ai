@@ -1,6 +1,6 @@
 ---
 title: Useful commands
-description: This page lists the most commonly used commands for managing local tunnels.
+description: Reference information for Useful commands in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

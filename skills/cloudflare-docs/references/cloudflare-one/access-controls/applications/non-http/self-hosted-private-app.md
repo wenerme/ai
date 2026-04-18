@@ -1,6 +1,6 @@
 ---
 title: Secure a private IP or hostname
-description: You can configure a self-hosted Access application to manage access to specific IPs or hostnames on your private network.
+description: Secure a private IP or hostname in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

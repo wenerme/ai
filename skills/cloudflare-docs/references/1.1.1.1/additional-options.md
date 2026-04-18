@@ -1,6 +1,6 @@
 ---
 title: Other ways to use 1.1.1.1
-description: There are many other ways to use 1.1.1.1 beyond the traditional set up in operating systems and routers.
+description: Other ways to use 1.1.1.1 including Discord, Tor, and Google Sheets.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Tips and best practices
-description: Operational guidance for managing Cloudflare Mesh deployments — updating the client, configuring cloud providers, running alongside Cloudflare Tunnel, and common troubleshooting.
+description: Reference information for Tips and best practices in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -26,8 +26,8 @@ Operational guidance for managing Cloudflare Mesh deployments — updating the c
 
 Updating a Mesh node means updating the `cloudflare-warp` package on the Linux host. The node briefly disconnects during the update, which interrupts traffic routed through it. If you have [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) enabled, traffic fails over to a standby replica automatically.
 
-* [ Debian / Ubuntu ](#tab-panel-3654)
-* [ RedHat / CentOS ](#tab-panel-3655)
+* [ Debian / Ubuntu ](#tab-panel-5635)
+* [ RedHat / CentOS ](#tab-panel-5636)
 
 1. Check the current version:  
 Terminal window  

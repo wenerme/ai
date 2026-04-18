@@ -1,6 +1,6 @@
 ---
 title: How Email security detects phish
-description: Email security uses a variety of factors to determine whether a given email message, a web domain or URL, or specific network traffic is part of a phishing campaign (marked with a Malicious disposition) or other common campaigns (for example, Spam).
+description: Reference information for How Email security detects phish in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

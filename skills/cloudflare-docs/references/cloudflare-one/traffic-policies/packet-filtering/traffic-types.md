@@ -1,6 +1,6 @@
 ---
 title: Traffic types
-description: Cloudflare Network Firewall enables you to allow or block traffic on a variety of packet characteristics, including:
+description: How Traffic types works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

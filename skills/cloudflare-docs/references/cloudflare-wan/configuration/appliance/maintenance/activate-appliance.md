@@ -1,6 +1,6 @@
 ---
 title: Activate Cloudflare One Appliance
-description: Before you can activate your Cloudflare One Appliance (formerly Magic WAN Connector), you need to follow Cloudflare's instructions regarding DHCP. For instructions, refer to:
+description: Activate a Cloudflare One Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

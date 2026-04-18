@@ -1,6 +1,6 @@
 ---
 title: HPE Juniper Networking SRX Series Firewalls
-description: This guide provides step-by-step instructions for configuring HPE Juniper Networking SRX Series Firewalls to establish IPsec VPN tunnels to Cloudflare WAN. It is intended for network engineers who are familiar with HPE Juniper Networking SRX Series Firewalls administration and have an active Cloudflare WAN subscription.
+description: Connect HPE Juniper SRX to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

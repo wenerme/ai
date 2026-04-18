@@ -1,6 +1,6 @@
 ---
 title: Identity-based policies
-description: With Cloudflare One, you can create Secure Web Gateway policies that filter outbound traffic down to the user identity level. To do that, you can build DNS, HTTP or Network policies using a set of identity-based selectors. These selectors require you to deploy the Cloudflare One Client in Traffic and DNS mode.
+description: Reference information for Identity-based policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

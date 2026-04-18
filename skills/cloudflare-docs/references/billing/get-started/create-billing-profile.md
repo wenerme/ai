@@ -101,6 +101,12 @@ Note
 
 US banks do not participate in International Bank Account Numbers (IBAN).
 
+## Related resources
+
+* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change payment methods, billing address, or email
+* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
+* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/get-started/create-billing-profile/","name":"Create billing profile"}}]}
 ```

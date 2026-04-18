@@ -1,6 +1,6 @@
 ---
 title: Private network applications (legacy)
-description: You can configure a Private Network application to manage access to specific applications on your private network.
+description: Private network applications (legacy) in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

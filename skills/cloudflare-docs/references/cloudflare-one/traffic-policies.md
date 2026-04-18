@@ -1,6 +1,6 @@
 ---
 title: Traffic policies
-description: Every organization needs a way to control what users can reach on the Internet — blocking malware sites, restricting risky applications, and deciding how traffic exits the corporate network. Think of traffic policies as a set of security checkpoints, each inspecting a different layer of your traffic before it is allowed through.
+description: How Traffic policies works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

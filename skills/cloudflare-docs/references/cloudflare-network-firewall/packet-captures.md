@@ -1,7 +1,6 @@
 ---
 title: Packet captures
-description: Cloudflare supports two types of packet captures (PCAPs): full and sample.
-A packet capture records raw network traffic data so you can inspect it offline in tools like Wireshark. Full packet captures are the default.
+description: Capture and analyze network packets.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

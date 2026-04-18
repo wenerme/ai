@@ -63,6 +63,12 @@ If the cancellation hasn’t taken effect yet, you can click **Cancel Downgrade*
 4. Locate the **Product** you have cancelled
 5. Under the **Action** column, click **Cancel Downgrade**
 
+## Related resources
+
+* [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — How cancellations work
+* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and billing terms
+* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-you-cannot-modify-this-subscription/","name":"Resolve \"you cannot modify this subscription\""}}]}
 ```

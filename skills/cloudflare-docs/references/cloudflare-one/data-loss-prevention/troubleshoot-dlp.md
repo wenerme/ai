@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot DLP
-description: Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
+description: Troubleshoot Troubleshoot DLP issues in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -28,8 +28,8 @@ DLP not inspecting or blocking content is the most common issue reported. If you
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-3455)
-* [ Terraform (v5) ](#tab-panel-3456)
+* [ Dashboard ](#tab-panel-5582)
+* [ Terraform (v5) ](#tab-panel-5583)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

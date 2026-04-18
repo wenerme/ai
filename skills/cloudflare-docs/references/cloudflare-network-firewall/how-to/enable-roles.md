@@ -1,6 +1,6 @@
 ---
 title: Enable user roles
-description: You can determine which users have, or do not have, configuration edit access for Magic products, including Magic Transit, Cloudflare WAN (formerly Magic WAN), and Cloudflare Network Firewall.
+description: Enable user roles for Network Firewall management.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: About
-description: Review the content below to learn more about concepts related to Cloudflare Network Firewall (formerly Magic Firewall).
+description: How Cloudflare Network Firewall protects your network traffic.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

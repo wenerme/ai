@@ -28,8 +28,8 @@ For a step-by-step setup guide, refer to [Set up Workers AI with AI Gateway](htt
 
 Add an AI binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-* [  wrangler.jsonc ](#tab-panel-5068)
-* [  wrangler.toml ](#tab-panel-5069)
+* [  wrangler.jsonc ](#tab-panel-5085)
+* [  wrangler.toml ](#tab-panel-5086)
 
 JSONC
 
@@ -69,6 +69,40 @@ Runs an inference request through AI Gateway. Accepts Workers AI models (`@cf/` 
 
 **Workers AI model:**
 
+* [  JavaScript ](#tab-panel-5087)
+* [  TypeScript ](#tab-panel-5088)
+
+JavaScript
+
+```
+
+const resp = await env.AI.run(
+
+  "@cf/moonshotai/kimi-k2.5",
+
+  {
+
+    prompt: "tell me a joke",
+
+  },
+
+  {
+
+    gateway: {
+
+      id: "my-gateway",
+
+    },
+
+  },
+
+);
+
+
+```
+
+Explain Code
+
 TypeScript
 
 ```
@@ -101,6 +135,40 @@ const resp = await env.AI.run(
 Explain Code
 
 **Third-party model:**
+
+* [  JavaScript ](#tab-panel-5089)
+* [  TypeScript ](#tab-panel-5090)
+
+JavaScript
+
+```
+
+const resp = await env.AI.run(
+
+  "openai/gpt-4.1-mini",
+
+  {
+
+    messages: [{ role: "user", content: "tell me a joke" }],
+
+  },
+
+  {
+
+    gateway: {
+
+      id: "my-gateway",
+
+    },
+
+  },
+
+);
+
+
+```
+
+Explain Code
 
 TypeScript
 
@@ -139,7 +207,7 @@ Note
 
 [BYOK (Bring Your Own Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) is not supported for third-party models called through the AI binding. To use your own provider keys, use the [AI Gateway REST API](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the [chat completions endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) instead.
 
-Browse available models in the [model catalog ↗](https://developers.cloudflare.com/ai/models/).
+Browse available models in the [model catalog](https://developers.cloudflare.com/ai/models/).
 
 ### Gateway options
 

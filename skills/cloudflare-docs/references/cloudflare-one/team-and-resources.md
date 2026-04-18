@@ -1,5 +1,6 @@
 ---
 title: Team and resources
+description: Team and resources resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

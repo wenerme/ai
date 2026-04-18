@@ -40,6 +40,12 @@ As a reference, the full error messages you may see are:
 * "Due to a Billing related issue, the zone cannot be upgraded at this time. Please visit the Billing section to ensure there is no outstanding balance."
 * "Refer to [https://cfl.re/3VUQyyL ↗](https://cfl.re/3VUQyyL) for assistance. For security reasons, there is a problem with your billing profile."
 
+## Related resources
+
+* [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid balances
+* [Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) — Upgrade or downgrade your plan
+* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-zone-cannot-be-upgraded/","name":"Resolve the zone cannot be upgraded error"}}]}
 ```

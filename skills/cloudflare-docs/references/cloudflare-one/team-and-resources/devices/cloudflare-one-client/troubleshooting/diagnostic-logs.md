@@ -1,6 +1,6 @@
 ---
 title: Diagnostic logs
-description: The Cloudflare One Client (formerly WARP) provides diagnostic logs that you can use to troubleshoot connectivity issues on a device.
+description: Reference information for Diagnostic logs in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -47,9 +47,9 @@ Chapters
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-3738)
-* [ Windows ](#tab-panel-3739)
-* [ Linux ](#tab-panel-3740)
+* [ macOS ](#tab-panel-5879)
+* [ Windows ](#tab-panel-5880)
+* [ Linux ](#tab-panel-5881)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -134,7 +134,7 @@ Explanation of the fields
 | Field                         | Description                                                                                                                                                                                                                                                                                               |  
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
 | Detection type                | A common Cloudflare One Client issue that can appear in the diagnostic logs.                                                                                                                                                                                                                              |  
-| Occurences                    | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |  
+| Occurrences                   | Number of times an issue was detected in the logs.                                                                                                                                                                                                                                                        |  
 | Severity level                | Indicates the impact of the issue on Cloudflare One Client functionality. The severity levels are: **Critical**: Issue causes complete loss of functionality. **Warning**: Issue causes degraded functionality but core features should still work. **No detection**: Issue was not detected in the logs. |  
 | Operating system              | OS and OS version of the device.                                                                                                                                                                                                                                                                          |  
 | Cloudflare One Client version | [Cloudflare One Client release version](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)                                                                                                                                                      |  
@@ -261,8 +261,8 @@ The Cloudflare One Client does not provide an official method to configure loggi
 
 To view client logs on mobile devices:
 
-* [ iOS ](#tab-panel-3736)
-* [ Android/ChromeOS ](#tab-panel-3737)
+* [ iOS ](#tab-panel-5877)
+* [ Android/ChromeOS ](#tab-panel-5878)
 
 1. Open the Cloudflare One Agent app.
 2. Go to **Settings** \> **Advanced** \> **Diagnostics**.

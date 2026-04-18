@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ AWS ](https://developers.cloudflare.com/search/?tags=AWS) 
+
 Was this helpful?
 
 YesNo

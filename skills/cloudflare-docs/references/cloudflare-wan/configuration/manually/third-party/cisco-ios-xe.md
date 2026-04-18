@@ -1,6 +1,6 @@
 ---
 title: Cisco IOS XE
-description: This tutorial contains a configuration example for setting up an Internet Protocol Security (IPsec) tunnel between Cisco IOS XE and Cloudflare. For this tutorial, the tested Cisco IOS XE software was version 17.03.07.
+description: Connect Cisco IOS XE to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

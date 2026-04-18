@@ -1,6 +1,6 @@
 ---
 title: Logs
-description: Review detailed logs for your Zero Trust organization.
+description: Logs resources and guides for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

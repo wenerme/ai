@@ -1,6 +1,6 @@
 ---
 title: Centrify
-description: Centrify secures access to infrastructure, DevOps, cloud, and other modern enterprise so you can prevent the number one cause of breaches: privileged access abuse.
+description: Centrify in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

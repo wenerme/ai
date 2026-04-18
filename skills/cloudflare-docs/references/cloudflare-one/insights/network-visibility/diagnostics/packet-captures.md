@@ -1,6 +1,6 @@
 ---
 title: Packet captures
-description: After a packet capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a full type packet capture, you must first follow instructions for configuring a bucket.
+description: Packet captures in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -45,8 +45,8 @@ For help determining which data center to select for a packet capture, go to [ht
 
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-3801)
-* [ API ](#tab-panel-3802)
+* [ Dashboard ](#tab-panel-5596)
+* [ API ](#tab-panel-5597)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
@@ -257,8 +257,8 @@ Explain Code
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-3797)
-* [ API ](#tab-panel-3798)
+* [ Dashboard ](#tab-panel-5592)
+* [ API ](#tab-panel-5593)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Go to the **Diagnostics** tab.
@@ -342,8 +342,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-3799)
-* [ API ](#tab-panel-3800)
+* [ Dashboard ](#tab-panel-5594)
+* [ API ](#tab-panel-5595)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** \> **Diagnostics**.
 2. In **Packet captures**, select **Start a capture**.
@@ -378,8 +378,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-3803)
-* [ API ](#tab-panel-3804)
+* [ Dashboard ](#tab-panel-5598)
+* [ API ](#tab-panel-5599)
 
 1. In the Cloudflare dashboard, go to the **Network health** page.  
 [ Go to **Network health** ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)

@@ -1,6 +1,6 @@
 ---
 title: Configure with Connector
-description: Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect, steer, and shape any IP traffic through secure IPsec tunnels. Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
+description: Reference information for Configure with Connector in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

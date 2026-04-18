@@ -36,8 +36,8 @@ To create a zone apex record, use `@` for the record **Name**, as in the followi
 | ---- | ---- | ------------ | ------------ |
 | A    | @    | 192.0.2.1    | Proxied      |
 
-* [ Dashboard ](#tab-panel-6462)
-* [ API ](#tab-panel-6463)
+* [ Dashboard ](#tab-panel-6471)
+* [ API ](#tab-panel-6472)
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
@@ -69,7 +69,7 @@ While DNS is what communicates where your website or application can be reached,
 
 If your domain is not correctly covered by an SSL/TLS certificate, your visitors will find a warning on their browser stating that your website or application is not secure.
 
-Cloudflare offers free, unshared, publicy trusted [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) to all Cloudflare domains.
+Cloudflare offers free, unshared, publicly trusted [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) to all Cloudflare domains.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/manage-dns-records/","name":"DNS records"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/manage-dns-records/how-to/","name":"How to"}},{"@type":"ListItem","position":5,"item":{"@id":"/dns/manage-dns-records/how-to/create-zone-apex/","name":"Create zone apex record"}}]}

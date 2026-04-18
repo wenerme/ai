@@ -1,6 +1,6 @@
 ---
 title: Client certificate
-description: The Client Certificate device posture attribute checks if the device has a valid client certificate signed by a trusted certificate. The trusted certificate is uploaded to Cloudflare and specified as part of the posture check rule. The client certificate posture check can be used in Gateway and Access policies to ensure that the user is connecting from a managed device.
+description: Client certificate in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -113,9 +113,9 @@ Next, go to **Insights** \> **Logs** \> **Posture logs** and verify that the cli
 
 You can use the following commands to check if a client certificate is properly installed and trusted on the device.
 
-* [ Windows ](#tab-panel-3656)
-* [ macOS ](#tab-panel-3657)
-* [ Linux ](#tab-panel-3658)
+* [ Windows ](#tab-panel-5797)
+* [ macOS ](#tab-panel-5798)
+* [ Linux ](#tab-panel-5799)
 
 1. Open a PowerShell window.
 2. To search the local machine trust store for a certificate with a specific common name, run the following command:

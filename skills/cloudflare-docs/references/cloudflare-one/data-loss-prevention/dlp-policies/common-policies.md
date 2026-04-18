@@ -1,6 +1,6 @@
 ---
 title: Common policies
-description: The following DLP policies are commonly used to secure sensitive data in uploaded and downloaded files. They are built as Gateway HTTP policies using the DLP Profile selector.
+description: Reference information for Common policies in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -39,8 +39,8 @@ The following example logs any upload or download that matches your enabled [Fin
 
 Block the upload or download of files based on their type.
 
-* [ Dashboard ](#tab-panel-3785)
-* [ API ](#tab-panel-3786)
+* [ Dashboard ](#tab-panel-5580)
+* [ API ](#tab-panel-5581)
 
 | Selector            | Operator | Value                                   | Logic | Action |
 | ------------------- | -------- | --------------------------------------- | ----- | ------ |

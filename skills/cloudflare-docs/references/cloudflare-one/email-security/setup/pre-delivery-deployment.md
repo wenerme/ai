@@ -1,5 +1,6 @@
 ---
 title: Pre-delivery deployment
+description: Pre-delivery deployment resources and guides for Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

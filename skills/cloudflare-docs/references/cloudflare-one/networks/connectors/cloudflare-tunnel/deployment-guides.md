@@ -1,6 +1,6 @@
 ---
 title: Environments
-description: Deploy Cloudflare Tunnel in your environment — from cloud VMs to Kubernetes clusters, with Infrastructure as Code support.
+description: Environments resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

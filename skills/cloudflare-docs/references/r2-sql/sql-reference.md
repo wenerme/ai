@@ -472,6 +472,17 @@ GROUP BY department;
 
 ```
 
+### EXPLAIN FORMAT JSON
+
+Returns the execution plan as structured JSON for programmatic analysis.
+
+```
+
+EXPLAIN FORMAT JSON SELECT * FROM my_namespace.sales_data LIMIT 10;
+
+
+```
+
 ---
 
 ## Expressions

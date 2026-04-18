@@ -1,6 +1,6 @@
 ---
 title: RSS Feeds
-description: Cloudflare offers several RSS feeds to help you consume content programatically.
+description: Cloudflare offers several RSS feeds to help you consume content programmatically.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # RSS Feeds
 
-Cloudflare offers several RSS feeds to help you consume content programatically.
+Cloudflare offers several RSS feeds to help you consume content programmatically.
 
 * [ Available RSS Feeds ](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/)
 * [ Consuming RSS Feeds ](https://developers.cloudflare.com/fundamentals/new-features/consuming-rss-feeds/)

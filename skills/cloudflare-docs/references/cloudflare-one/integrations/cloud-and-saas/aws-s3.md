@@ -1,6 +1,6 @@
 ---
 title: Amazon Web Services (AWS) S3
-description: The Amazon Web Services (AWS) S3 integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated AWS account that could leave you and your organization vulnerable.
+description: Reference information for Amazon Web Services (AWS) S3 in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

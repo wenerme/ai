@@ -1,5 +1,6 @@
 ---
 title: Reference architecture
+description: Magic Transit reference architecture.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

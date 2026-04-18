@@ -1,6 +1,6 @@
 ---
 title: Policies
-description: Cloudflare Access determines who can reach your application by applying the Access policies you configure.
+description: Configure Policies in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

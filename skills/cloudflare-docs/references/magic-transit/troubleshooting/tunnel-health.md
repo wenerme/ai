@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot tunnel health
-description: This guide helps you diagnose and resolve common tunnel health issues with Magic Transit. Tunnel health checks monitor your GRE and IPsec tunnel endpoints (also called connectors in the Cloudflare dashboard) and steer traffic to the best available routes.
+description: Troubleshoot Magic Transit tunnel health issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

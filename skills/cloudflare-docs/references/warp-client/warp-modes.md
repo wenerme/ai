@@ -1,6 +1,6 @@
 ---
 title: WARP modes
-description: The WARP client has several modes to better suit different connection needs.
+description: Available WARP connection modes and their behavior.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

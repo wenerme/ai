@@ -1,6 +1,6 @@
 ---
 title: Register a hardware Cloudflare One Appliance
-description: To set up and use the hardware version of Cloudflare One Appliance (formerly Magic WAN Connector), you first need to register it with your account. This is not applicable to Virtual Cloudflare One Appliance.
+description: Register a hardware Cloudflare One Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

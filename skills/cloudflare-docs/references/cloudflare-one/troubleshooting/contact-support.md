@@ -1,6 +1,6 @@
 ---
 title: Contact Cloudflare Support
-description: If you cannot resolve an issue using our troubleshooting guides, you can open a support case.
+description: Contact Cloudflare Support in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

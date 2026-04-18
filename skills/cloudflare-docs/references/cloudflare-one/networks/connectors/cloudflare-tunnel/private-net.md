@@ -1,6 +1,6 @@
 ---
 title: Private networks
-description: With Cloudflare Zero Trust, you can connect private networks and the services running in those networks to Cloudflare's global network. This involves installing a connector on the private network, and then setting up routes which define the IP addresses available in that environment. Unlike published applications, private network routes can expose both HTTP and non-HTTP resources.
+description: How Private networks works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

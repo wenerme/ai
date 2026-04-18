@@ -1,6 +1,6 @@
 ---
 title: Remove appliances
-description: When adding or removing Cloudflare One Appliances (formerly Magic WAN Connectors), you need to be aware of the difference between the physical device and its profile.
+description: Remove Appliances from your account.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

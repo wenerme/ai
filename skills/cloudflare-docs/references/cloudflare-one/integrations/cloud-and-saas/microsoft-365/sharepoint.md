@@ -1,6 +1,6 @@
 ---
 title: SharePoint
-description: The SharePoint integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
+description: Reference information for SharePoint in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

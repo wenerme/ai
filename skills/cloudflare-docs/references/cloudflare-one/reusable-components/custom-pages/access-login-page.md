@@ -1,6 +1,6 @@
 ---
 title: Access login page
-description: You can customize the login page that is displayed to end users when they go to an Access application.
+description: Access login page in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

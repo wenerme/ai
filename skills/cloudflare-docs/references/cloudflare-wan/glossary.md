@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare WAN (formerly Magic WAN) documentation.
+description: Definitions for terms used across Cloudflare WAN documentation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare WAN
-description: Cloudflare WAN (formerly Magic WAN) connects your data centers, offices, and cloud resources through Cloudflare's global network. Instead of backhauling traffic through a central data center or maintaining dedicated MPLS circuits at every site, your traffic routes through the nearest Cloudflare data center where security policies apply inline.
+description: Connect and secure your network locations with Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

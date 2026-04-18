@@ -1,6 +1,6 @@
 ---
 title: Microsoft Exchange BCC setup
-description: For customers using Microsoft Exchange, setting up Email security via BCC is quick and easy. You need to configure an inbound rule to send emails to Email security via BCC for processing and detection of potential phishing attacks. The following email flow shows how this works:
+description: Integrate Microsoft Exchange BCC setup with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

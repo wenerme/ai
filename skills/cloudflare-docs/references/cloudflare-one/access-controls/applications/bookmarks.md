@@ -1,6 +1,6 @@
 ---
 title: Add bookmarks
-description: With Cloudflare One, you can show applications on the App Launcher even if those applications are not secured behind Access. This way, users can access all the applications they need to work, all in one place — regardless of whether those applications are protected by Access.
+description: Add bookmarks in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

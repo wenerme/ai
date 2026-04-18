@@ -1,6 +1,6 @@
 ---
 title: Risk score
-description: Cloudflare One risk scoring detects user activity and behaviors that could introduce risk to your organization's systems and data. Risk scores add user and entity behavior analytics (UEBA) to the Cloudflare One platform.
+description: How Risk score works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

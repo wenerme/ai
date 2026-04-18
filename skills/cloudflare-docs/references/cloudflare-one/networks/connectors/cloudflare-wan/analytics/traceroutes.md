@@ -1,6 +1,6 @@
 ---
 title: Traceroutes
-description: You can run traceroutes to analyze the hop-by-hop Internet path and latency between Cloudflare's network and your network.
+description: Traceroutes in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

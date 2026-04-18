@@ -1,6 +1,6 @@
 ---
 title: Domain joined
-description: The Domain Joined device posture attribute ensures that a user is a member of a specific Windows Active Directory domain.
+description: Domain joined in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

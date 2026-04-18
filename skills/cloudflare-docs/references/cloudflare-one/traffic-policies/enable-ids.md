@@ -1,6 +1,6 @@
 ---
 title: Enable IDS
-description: Cloudflare's Intrusion Detection System (IDS) is a Cloudflare Advanced Network Firewall feature you can use to actively monitor for a wide range of known threat signatures in your traffic. An IDS expands the security coverage of a firewall to analyze traffic against a broader threat database, detecting a variety of sophisticated attacks such as ransomware, data exfiltration, and network scanning based on signatures or “fingerprints” in network traffic.
+description: Enable IDS in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -40,8 +40,8 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-3841)
-* [ API ](#tab-panel-3842)
+* [ Dashboard ](#tab-panel-5982)
+* [ API ](#tab-panel-5983)
 
 1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Traffic policies**.
 2. Select **Policy settings** and turn on **IDS**.

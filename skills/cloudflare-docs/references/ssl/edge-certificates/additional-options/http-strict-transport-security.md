@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
+
 Was this helpful?
 
 YesNo
@@ -56,8 +60,8 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 ## Enable HSTS
 
-* [ Dashboard ](#tab-panel-8747)
-* [ API ](#tab-panel-8748)
+* [ Dashboard ](#tab-panel-8792)
+* [ API ](#tab-panel-8793)
 
 To enable HSTS using the dashboard:
 

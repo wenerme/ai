@@ -1,6 +1,6 @@
 ---
 title: Use Logpush with IDS
-description: You can use Logpush with Cloudflare Network Firewall (formerly Magic Firewall) IDS to log detected risks:
+description: Send IDS events to Logpush destinations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

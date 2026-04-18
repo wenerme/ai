@@ -1,6 +1,6 @@
 ---
 title: Microsoft 365 as MX Record
-description: In this tutorial, you will learn how to configure Microsoft 365 with Email security as its MX record.
+description: Integrate Microsoft 365 as MX Record with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

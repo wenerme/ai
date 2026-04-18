@@ -1,6 +1,6 @@
 ---
 title: Submission addresses
-description: To view the destination addresses of user and team submissions:
+description: Submission addresses in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

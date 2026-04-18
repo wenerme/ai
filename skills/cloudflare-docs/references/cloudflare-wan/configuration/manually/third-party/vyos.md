@@ -1,6 +1,6 @@
 ---
 title: VyOS
-description: This tutorial provides configuration information and a sample template for using a VyOS device with an IPsec configuration.
+description: Connect VyOS to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

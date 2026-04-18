@@ -1,6 +1,6 @@
 ---
 title: Test DNS filtering
-description: This section covers how to validate your Gateway DNS configuration. Testing your policies after setup helps confirm that queries are being filtered as expected before you rely on them in production.
+description: Test DNS filtering in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

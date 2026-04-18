@@ -86,7 +86,7 @@ You will need to go back into your marketplace account to reconfigure it based o
 
 ## Set up marketplace billing from your cloud provider {#set-up-marketplace-billing-from-cp}
 
-You can also set up or update your organization's marketplace subscription directly from the cloud marketplace, rather than through the ClickHouse Cloud console.
+You can also set up or update your organization's marketplace subscription directly from the cloud marketplace, rather than through the ClickHouse Cloud console. This can be helpful if you want to switch your ClickHouse organization to bill through a new subscription on a different marketplace billing account.
 
 Follow the instructions below based on the marketplace and subscription type:
 

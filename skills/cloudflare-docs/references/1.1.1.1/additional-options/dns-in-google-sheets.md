@@ -26,31 +26,30 @@ JavaScript
 
 function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {
 
+  if (typeof type == "undefined") {
 
-  if (typeof type == 'undefined') {
-
-    throw new Error('Missing parameter 1 dns type');
+    throw new Error("Missing parameter 1 dns type");
 
   }
 
 
-  if (typeof domain == 'undefined') {
+  if (typeof domain == "undefined") {
 
-    throw new Error('Missing parameter 2 domain name');
+    throw new Error("Missing parameter 2 domain name");
 
   }
 
 
   if (typeof useCache != "boolean") {
 
-    throw new Error('Only boolean values allowed in 3 use cache');
+    throw new Error("Only boolean values allowed in 3 use cache");
 
   }
 
 
   if (typeof minCacheTTL != "number") {
 
-    throw new Error('Only numeric values allowed in 4 min cache ttl');
+    throw new Error("Only numeric values allowed in 4 min cache ttl");
 
   }
 
@@ -86,7 +85,15 @@ function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {
   }
 
 
-  const url = 'https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(domain) + '&type=' + encodeURIComponent(type);
+  const url =
+
+    "https://cloudflare-dns.com/dns-query?name=" +
+
+    encodeURIComponent(domain) +
+
+    "&type=" +
+
+    encodeURIComponent(type);
 
   const options = {
 
@@ -94,9 +101,9 @@ function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {
 
     headers: {
 
-      accept: "application/dns-json"
+      accept: "application/dns-json",
 
-    }
+    },
 
   };
 
@@ -117,25 +124,25 @@ function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {
 
   const errors = [
 
-    { name: "NoError", description: "No Error"}, // 0
+    { name: "NoError", description: "No Error" }, // 0
 
-    { name: "FormErr", description: "Format Error"}, // 1
+    { name: "FormErr", description: "Format Error" }, // 1
 
-    { name: "ServFail", description: "Server Failure"}, // 2
+    { name: "ServFail", description: "Server Failure" }, // 2
 
-    { name: "NXDomain", description: "Non-Existent Domain"}, // 3
+    { name: "NXDomain", description: "Non-Existent Domain" }, // 3
 
-    { name: "NotImp", description: "Not Implemented"}, // 4
+    { name: "NotImp", description: "Not Implemented" }, // 4
 
-    { name: "Refused", description: "Query Refused"}, // 5
+    { name: "Refused", description: "Query Refused" }, // 5
 
-    { name: "YXDomain", description: "Name Exists when it should not"}, // 6
+    { name: "YXDomain", description: "Name Exists when it should not" }, // 6
 
-    { name: "YXRRSet", description: "RR Set Exists when it should not"}, // 7
+    { name: "YXRRSet", description: "RR Set Exists when it should not" }, // 7
 
-    { name: "NXRRSet", description: "RR Set that should exist does not"}, // 8
+    { name: "NXRRSet", description: "RR Set that should exist does not" }, // 8
 
-    { name: "NotAuth", description: "Not Authorized"} // 9
+    { name: "NotAuth", description: "Not Authorized" }, // 9
 
   ];
 
@@ -166,7 +173,7 @@ function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {
   }
 
 
-  const outputString = outputData.join(',');
+  const outputString = outputData.join(",");
 
 
   if (useCache) {

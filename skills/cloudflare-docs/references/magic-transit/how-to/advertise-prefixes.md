@@ -1,6 +1,6 @@
 ---
 title: Advertise prefixes
-description: You can bring your own public IP addresses to Cloudflare to use with Magic Transit. This is also known as bring your own IP (BYOIP). This process involves two distinct types of prefixes:
+description: Advertise and withdraw IP prefixes with Magic Transit.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -95,8 +95,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 
 ### Advertise or withdraw a BGP prefix
 
-* [ Dashboard ](#tab-panel-5439)
-* [ API ](#tab-panel-5440)
+* [ Dashboard ](#tab-panel-7624)
+* [ API ](#tab-panel-7625)
 
 Note
 

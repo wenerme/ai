@@ -1,6 +1,6 @@
 ---
 title: Resolver policies
-description: By default, Gateway sends DNS requests to 1.1.1.1, Cloudflare's public DNS resolver, for resolution. Enterprise users can instead create Gateway policies to route DNS queries to custom resolvers.
+description: Configure Resolver policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -101,8 +101,8 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-3929)
-* [ Terraform (v5) ](#tab-panel-3930)
+* [ Dashboard ](#tab-panel-6070)
+* [ Terraform (v5) ](#tab-panel-6071)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.

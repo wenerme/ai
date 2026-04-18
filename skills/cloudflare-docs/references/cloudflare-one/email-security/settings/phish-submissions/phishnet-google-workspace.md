@@ -1,6 +1,6 @@
 ---
 title: PhishNet for Google Workspace
-description: To set up PhishNet with Google Workspace you need admin access to your Google Workspace account.
+description: PhishNet for Google Workspace in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

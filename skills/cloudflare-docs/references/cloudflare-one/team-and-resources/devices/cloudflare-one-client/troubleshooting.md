@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot the Cloudflare One Client
-description: Explore guides to resolve common connectivity and configuration issues with the Cloudflare One Client (formerly WARP).
+description: Troubleshoot the Cloudflare One Client resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

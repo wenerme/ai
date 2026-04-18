@@ -69,8 +69,8 @@ To start sending data to your destination, you'll need to create a destination i
 
 After setting up destinations in the dashboard, configure your Worker to export telemetry data by updating your Wrangler configuration. Your destination name configured in your configuration file should be the same as the destination configured in the dashboard.
 
-* [  wrangler.jsonc ](#tab-panel-7510)
-* [  wrangler.toml ](#tab-panel-7511)
+* [  wrangler.jsonc ](#tab-panel-9735)
+* [  wrangler.toml ](#tab-panel-9736)
 
 JSONC
 
@@ -170,11 +170,11 @@ After creating a destination, you can monitor its health and delivery status in 
 
 ### Status indicators
 
-| Status                  | Description                                                             | Troubleshooting                                                                                   |
-| ----------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| **Last: n minutes ago** | Data was recently delivered successfully.                               |                                                                                                   |
-| **Never run**           | No data has been delivered to this destination.                         | •Check if your Worker is receving traffic  • Review sampling rates (low rates generate less data) |
-| **Error**               | An error occurred while attempting to deliver data to this destination. | • Verify OTLP endpoint URL is correct• Check authentication headers are valid                     |
+| Status                  | Description                                                             | Troubleshooting                                                                                    |
+| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Last: n minutes ago** | Data was recently delivered successfully.                               |                                                                                                    |
+| **Never run**           | No data has been delivered to this destination.                         | •Check if your Worker is receiving traffic  • Review sampling rates (low rates generate less data) |
+| **Error**               | An error occurred while attempting to deliver data to this destination. | • Verify OTLP endpoint URL is correct• Check authentication headers are valid                      |
 
 ## Limits and pricing
 

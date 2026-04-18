@@ -1,5 +1,6 @@
 ---
 title: Packet captures
+description: Packet captures for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add BCC rules
-description: This page will show you how to add BCC rules in the Google Admin Console.
+description: Add BCC rules in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

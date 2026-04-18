@@ -1,6 +1,6 @@
 ---
 title: Create a tunnel (API)
-description: Follow this guide to set up a Cloudflare Tunnel using the API.
+description: Create a tunnel (API) in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -228,10 +228,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 Install `cloudflared` on your server and run the tunnel using the `token` value obtained in [2\. Create a tunnel](#2-create-a-tunnel). You can also get the tunnel token using the [Cloudflare Tunnel token](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/subresources/token/methods/get/) endpoint.
 
-* [ Linux ](#tab-panel-3515)
-* [ Windows ](#tab-panel-3516)
-* [ macOS ](#tab-panel-3517)
-* [ Docker ](#tab-panel-3518)
+* [ Linux ](#tab-panel-5664)
+* [ Windows ](#tab-panel-5665)
+* [ macOS ](#tab-panel-5666)
+* [ Docker ](#tab-panel-5667)
 
 1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
 2. Run the following command:  

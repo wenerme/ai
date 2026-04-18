@@ -1,6 +1,6 @@
 ---
 title: Create a tunnel (dashboard)
-description: Follow this step-by-step guide to create your first remotely-managed tunnel using Cloudflare One.
+description: Create a tunnel (dashboard) in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

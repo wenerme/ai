@@ -1,6 +1,6 @@
 ---
 title: Device serial numbers
-description: Cloudflare One allows you to build Zero Trust rules based on device serial numbers. You can create these rules so that access to applications is granted only to users connecting from company devices.
+description: Device serial numbers in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

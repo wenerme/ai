@@ -68,7 +68,7 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<account_id>/d1/data
 
      -H "Content-Type: application/json" \
 
-     --data '{"name": "db-wth-jurisdiction", "jurisdiction": "eu" }'
+     --data '{"name": "db-with-jurisdiction", "jurisdiction": "eu" }'
 
 
 ```

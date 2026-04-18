@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Azure ](https://developers.cloudflare.com/search/?tags=Azure) 
+
 Was this helpful?
 
 YesNo

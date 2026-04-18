@@ -1,6 +1,6 @@
 ---
 title: Generic OIDC
-description: Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you integrate IdPs not already set in Access.
+description: Generic OIDC in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -40,9 +40,9 @@ You can find these values on your identity provider's **OIDC discovery endpoint*
 
 ## 2\. Add an OIDC provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3626)
-* [ API ](#tab-panel-3627)
-* [ Terraform (v5) ](#tab-panel-3628)
+* [ Dashboard ](#tab-panel-5607)
+* [ API ](#tab-panel-5608)
+* [ Terraform (v5) ](#tab-panel-5609)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

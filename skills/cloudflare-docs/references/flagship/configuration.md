@@ -1,0 +1,202 @@
+---
+title: Configuration
+description: To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler configuration file. The binding gives your Worker access to env.FLAGS, which provides methods to evaluate feature flags.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/flagship/configuration.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Configuration
+
+To use Flagship in a Cloudflare Worker, add a Flagship binding to your Wrangler configuration file. The binding gives your Worker access to `env.FLAGS`, which provides methods to evaluate feature flags.
+
+## Add the binding
+
+Add the `flagship` block to your Wrangler configuration file with a binding name and your app ID.
+
+* [  wrangler.jsonc ](#tab-panel-6849)
+* [  wrangler.toml ](#tab-panel-6850)
+
+JSONC
+
+```
+
+{
+
+  "flagship": {
+
+    "binding": "FLAGS",
+
+    "app_id": "<APP_ID>",
+
+  },
+
+}
+
+
+```
+
+TOML
+
+```
+
+[flagship]
+
+binding = "FLAGS"
+
+app_id = "<APP_ID>"
+
+
+```
+
+Replace `<APP_ID>` with the app ID from your Flagship app. If you have not created an app yet, refer to the [Get started guide](https://developers.cloudflare.com/flagship/get-started/#create-an-app-and-a-flag). The `binding` field sets the name you use to access Flagship in your Worker code (for example, `env.FLAGS`).
+
+## Bind to multiple apps
+
+A single Worker can bind to multiple Flagship apps. Use the array form to define more than one binding:
+
+* [  wrangler.jsonc ](#tab-panel-6851)
+* [  wrangler.toml ](#tab-panel-6852)
+
+JSONC
+
+```
+
+{
+
+  "flagship": [
+
+    {
+
+      "binding": "FLAGS",
+
+      "app_id": "<APP_ID_1>",
+
+    },
+
+    {
+
+      "binding": "EXPERIMENT_FLAGS",
+
+      "app_id": "<APP_ID_2>",
+
+    },
+
+  ],
+
+}
+
+
+```
+
+Explain Code
+
+TOML
+
+```
+
+[[flagship]]
+
+binding = "FLAGS"
+
+app_id = "<APP_ID_1>"
+
+
+[[flagship]]
+
+binding = "EXPERIMENT_FLAGS"
+
+app_id = "<APP_ID_2>"
+
+
+```
+
+Each binding is available as a separate property on the `env` object (for example, `env.FLAGS` and `env.EXPERIMENT_FLAGS`).
+
+## Generate types
+
+After adding the binding, run `npx wrangler types` to generate TypeScript types. This creates the `Env` interface with each binding typed as `Flagship`.
+
+TypeScript
+
+```
+
+interface Env {
+
+  FLAGS: Flagship;
+
+  EXPERIMENT_FLAGS: Flagship;
+
+}
+
+
+```
+
+## Use the binding
+
+Call evaluation methods on `env.FLAGS` to resolve flag values at runtime. Each method accepts a flag key, a default value, and an optional evaluation context.
+
+* [  JavaScript ](#tab-panel-6853)
+* [  TypeScript ](#tab-panel-6854)
+
+JavaScript
+
+```
+
+export default {
+
+  async fetch(request, env) {
+
+    const isEnabled = await env.FLAGS.getBooleanValue("my-feature", false, {
+
+      userId: "user-42",
+
+    });
+
+
+    return new Response(isEnabled ? "Feature is on" : "Feature is off");
+
+  },
+
+};
+
+
+```
+
+TypeScript
+
+```
+
+export default {
+
+  async fetch(request: Request, env: Env): Promise<Response> {
+
+    const isEnabled = await env.FLAGS.getBooleanValue("my-feature", false, {
+
+      userId: "user-42",
+
+    });
+
+
+    return new Response(isEnabled ? "Feature is on" : "Feature is off");
+
+  },
+
+};
+
+
+```
+
+Refer to the [binding API reference](https://developers.cloudflare.com/flagship/binding/) for the full list of methods.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/configuration/","name":"Configuration"}}]}
+```

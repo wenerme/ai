@@ -1,6 +1,6 @@
 ---
 title: Block page
-description: When Gateway blocks traffic with a DNS or HTTP Block policy, you can configure a block page to display in your users' browsers. You can provide a descriptive reason for blocking traffic and contact information, or you can redirect your users' browsers to another page. You can apply these customizations globally for every Block policy, or override the settings on a per-policy basis.
+description: Block page in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -93,8 +93,8 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-3647)
-* [ Terraform (v5) ](#tab-panel-3648)
+* [ Dashboard ](#tab-panel-5788)
+* [ Terraform (v5) ](#tab-panel-5789)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
@@ -157,8 +157,8 @@ For DNS Block policies, you will need to turn on the block page for each policy 
 
 To turn on the block page or override your global block page setting for an individual policy:
 
-* [ DNS policy ](#tab-panel-3649)
-* [ HTTP policy ](#tab-panel-3650)
+* [ DNS policy ](#tab-panel-5790)
+* [ HTTP policy ](#tab-panel-5791)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.

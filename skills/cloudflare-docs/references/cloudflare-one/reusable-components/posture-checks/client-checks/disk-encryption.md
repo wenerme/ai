@@ -1,6 +1,6 @@
 ---
 title: Disk encryption
-description: The Disk Encryption device posture attribute ensures that disks are encrypted on a device.
+description: Disk encryption in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

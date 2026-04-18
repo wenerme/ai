@@ -59,6 +59,12 @@ If an automatic subscription renewal payment fails, Cloudflare automatically ret
 
 You will be redirected to our payment system to proceed.
 
+## Related resources
+
+* [Resolve a payment failure](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/) — Fix errors when paying
+* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — View and download invoices
+* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up billing error messages
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/pay-invoices-overdue-balances/","name":"Pay an outstanding balance"}}]}
 ```

@@ -1,6 +1,6 @@
 ---
 title: Palo Alto Networks NGFW
-description: This guide provides step-by-step instructions for configuring Palo Alto Networks Next-Generation Firewall (NGFW) to establish IPsec VPN tunnels to Cloudflare WAN. The configuration has been validated by Cloudflare with the documented firmware release and is intended for network engineers who are familiar with Palo Alto Networks NGFW Firewalls administration and have an active Cloudflare WAN subscription.
+description: Connect Palo Alto Networks NGFW to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

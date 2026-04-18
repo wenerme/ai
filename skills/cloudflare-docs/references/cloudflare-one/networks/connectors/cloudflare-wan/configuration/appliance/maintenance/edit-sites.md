@@ -1,5 +1,6 @@
 ---
 title: Edit sites
+description: Edit sites in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

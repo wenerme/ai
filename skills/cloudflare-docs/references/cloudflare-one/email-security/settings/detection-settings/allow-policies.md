@@ -1,6 +1,6 @@
 ---
 title: Allow policies
-description: Email security allows you to configure allow policies. An allow policy exempts messages that match certain patterns from normal detection scanning.
+description: Allow policies in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cisco - Email security as MX Record
-description: In this tutorial, you will learn how to configure Cisco IronPort with Email security as MX record.
+description: Integrate Cisco - Email security as MX Record with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

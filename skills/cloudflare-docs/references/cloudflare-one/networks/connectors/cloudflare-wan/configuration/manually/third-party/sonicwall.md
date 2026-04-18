@@ -1,6 +1,6 @@
 ---
 title: SonicWall
-description: This tutorial shows you how to use Cloudflare WAN (formerly Magic WAN) with the following versions of the SonicWall appliances:
+description: Integrate SonicWall with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

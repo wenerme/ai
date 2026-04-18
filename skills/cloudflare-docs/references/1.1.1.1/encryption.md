@@ -1,6 +1,6 @@
 ---
 title: Encryption
-description: Traditionally, DNS queries and replies are performed over plaintext. They are sent over the Internet without any kind of encryption or protection, even when you are accessing a secured website. This has a great impact on security and privacy, as these queries might be subject to surveillance, spoofing and tracking by malicious actors, advertisers, ISPs, and others.
+description: Encryption options for DNS queries to 1.1.1.1.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

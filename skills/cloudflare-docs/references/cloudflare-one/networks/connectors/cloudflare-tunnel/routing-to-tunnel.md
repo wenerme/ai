@@ -1,6 +1,6 @@
 ---
 title: Published applications
-description: Cloudflare Tunnel allows you to publish local applications to the Internet via a public hostname. For example, you can add a published application route that points docs.example.com to https://localhost:8080. Anyone can now view your application by going to docs.example.com in their web browser.
+description: How Published applications works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Enable auto-moves
-description: If you do not have an integration:
+description: Enable auto-moves in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

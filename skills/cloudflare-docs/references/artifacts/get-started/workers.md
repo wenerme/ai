@@ -66,8 +66,8 @@ cd artifacts-worker
 
 Open your Wrangler config file and add the Artifacts binding:
 
-* [  wrangler.jsonc ](#tab-panel-5280)
-* [  wrangler.toml ](#tab-panel-5281)
+* [  wrangler.jsonc ](#tab-panel-5289)
+* [  wrangler.toml ](#tab-panel-5290)
 
 JSONC
 
@@ -83,7 +83,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-17",
 
   "artifacts": [
 
@@ -114,7 +114,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-17"
 
 
 [[artifacts]]
@@ -152,8 +152,8 @@ Wrangler adds an `Artifacts` type to your generated `worker-configuration.d.ts` 
 
 Replace `src/index.ts` with the following code:
 
-* [  JavaScript ](#tab-panel-5282)
-* [  TypeScript ](#tab-panel-5283)
+* [  JavaScript ](#tab-panel-5291)
+* [  TypeScript ](#tab-panel-5292)
 
 src/index.js
 
@@ -188,8 +188,6 @@ export default {
         remote: created.remote,
 
         token: created.token,
-
-        expiresAt: created.expiresAt,
 
       });
 
@@ -257,8 +255,6 @@ export default {
 
         token: created.token,
 
-        expiresAt: created.expiresAt,
-
       });
 
     }
@@ -311,8 +307,8 @@ In a second terminal, choose one of the following ways to create a repo through 
 
 If you rerun this guide, use a different repo name in the request body.
 
-* [ Manual ](#tab-panel-5278)
-* [ jq ](#tab-panel-5279)
+* [ Manual ](#tab-panel-5287)
+* [ jq ](#tab-panel-5288)
 
 Terminal window
 
@@ -341,9 +337,7 @@ The response resembles the following:
 
   "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
 
-  "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000",
-
-  "expiresAt": "<ISO_TIMESTAMP>"
+  "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
 
 }
 

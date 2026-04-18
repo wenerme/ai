@@ -1,6 +1,6 @@
 ---
 title: ServiceNow
-description: The ServiceNow integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated ServiceNow instance that could leave you and your organization vulnerable.
+description: Reference information for ServiceNow in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

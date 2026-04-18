@@ -1,6 +1,6 @@
 ---
 title: Third party licenses
-description: Following is the third party license information for our desktop applications. License information for our iOS and Android clients can be found in-app.
+description: Third-party licenses used in the WARP client.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

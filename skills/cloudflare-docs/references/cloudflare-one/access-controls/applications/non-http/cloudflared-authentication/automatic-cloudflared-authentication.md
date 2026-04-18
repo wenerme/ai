@@ -1,6 +1,6 @@
 ---
 title: Enable automatic cloudflared authentication
-description: When users connect to an Access application through cloudflared, the browser prompts them to allow access by displaying this page:
+description: Enable automatic cloudflared authentication in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add web applications
-description: Cloudflare Access allows you to secure your web applications by acting as an identity-aware proxy. Access sits in front of your application and checks each request against your Access policies before allowing it through. You can use signals from your existing identity providers (IdPs), device posture providers, and other selectors to control who can reach the application.
+description: How Add web applications works in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

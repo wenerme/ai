@@ -1,6 +1,6 @@
 ---
 title: Check tunnel health in the dashboard
-description: The Cloudflare dashboard monitors the health of all anycast tunnels on your account that route traffic from Cloudflare to your origin network.
+description: Check tunnel health in the Magic Transit dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

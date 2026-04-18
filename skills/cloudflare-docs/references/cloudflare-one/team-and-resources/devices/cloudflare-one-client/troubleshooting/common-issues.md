@@ -1,6 +1,6 @@
 ---
 title: Common issues
-description: This section covers the most common issues you might encounter as you deploy the Cloudflare One Client (formerly WARP) in your organization, or turn on new features that interact with the client.
+description: Reference information for Common issues in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: High availability
-description: For production deployments, you can run multiple replicas of a Mesh node in active-passive mode. All replicas share the same node identity and advertise the same routes. If the active replica goes down, Cloudflare automatically promotes a standby replica.
+description: High availability in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -50,8 +50,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-5612)
-* [ API ](#tab-panel-5613)
+* [ Dashboard ](#tab-panel-5621)
+* [ API ](#tab-panel-5622)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -90,8 +90,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-5618)
-* [ API ](#tab-panel-5619)
+* [ Dashboard ](#tab-panel-5627)
+* [ API ](#tab-panel-5628)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -102,8 +102,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-5614)
-* [ RedHat / CentOS ](#tab-panel-5615)
+* [ Debian / Ubuntu ](#tab-panel-5623)
+* [ RedHat / CentOS ](#tab-panel-5624)
 
 Terminal window
 
@@ -159,8 +159,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-5616)  
-   * [ RedHat / CentOS ](#tab-panel-5617)  
+   * [ Debian / Ubuntu ](#tab-panel-5625)  
+   * [ RedHat / CentOS ](#tab-panel-5626)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  

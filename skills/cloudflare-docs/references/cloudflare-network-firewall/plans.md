@@ -1,6 +1,6 @@
 ---
 title: Plans
-description: If you are a Magic Transit or Cloudflare WAN user, you are automatically provided with a standard list of Cloudflare Network Firewall (formerly Magic Firewall) features. For additional features available for purchase, refer to the list of advanced features below.
+description: Compare Network Firewall features by plan.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Linux
-description: You can install cloudflared as a system service on Linux.
+description: Linux in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

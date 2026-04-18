@@ -1,6 +1,6 @@
 ---
 title: How Cloudflare calculates tunnel health alerts
-description: Tunnel health alerts notify you when the reliability of your tunnel connections drops below an acceptable threshold. Understanding how Cloudflare calculates these alerts helps you interpret notifications and distinguish between brief, recoverable issues and sustained problems that require attention.
+description: How How Cloudflare calculates tunnel health alerts works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

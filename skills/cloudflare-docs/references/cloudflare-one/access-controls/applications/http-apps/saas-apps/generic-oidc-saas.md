@@ -1,6 +1,6 @@
 ---
 title: Generic OIDC application
-description: This page provides generic instructions for setting up a SaaS application in Cloudflare Access using the OpenID Connect (OIDC) authentication protocol.
+description: Generic OIDC application in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Admin Center
-description: The Admin Center integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
+description: Reference information for Admin Center in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

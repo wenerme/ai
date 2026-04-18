@@ -1,6 +1,6 @@
 ---
 title: Add custom policies
-description: By default, you can create a maximum of 200 policies. We recommend you create lists of IP addresses to reference within policies to streamline policy management.
+description: Add custom policies to the Network Firewall.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Atlassian Cloud
-description: This guide covers how to configure Atlassian Cloud as a SAML application in Cloudflare One.
+description: Integrate Atlassian Cloud with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

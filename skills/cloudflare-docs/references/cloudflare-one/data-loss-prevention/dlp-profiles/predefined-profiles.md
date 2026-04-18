@@ -1,6 +1,6 @@
 ---
 title: Predefined profiles
-description: Cloudflare Zero Trust provides predefined DLP profiles for common types of sensitive data. Some profiles include built-in validation checks that increase detection accuracy. You can also configure advanced settings for predefined profiles.
+description: Reference information for Predefined profiles in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

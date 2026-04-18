@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ### Tags
 
-[ Headers ](https://developers.cloudflare.com/search/?tags=Headers) 
+[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies) 
 
 Was this helpful?
 

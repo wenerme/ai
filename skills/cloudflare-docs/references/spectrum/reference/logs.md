@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Logging ](https://developers.cloudflare.com/search/?tags=Logging) 
+
 Was this helpful?
 
 YesNo

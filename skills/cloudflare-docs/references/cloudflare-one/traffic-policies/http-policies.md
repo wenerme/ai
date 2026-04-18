@@ -1,6 +1,6 @@
 ---
 title: HTTP policies
-description: HTTP policies allow you to filter all HTTP and HTTPS requests based on URLs, hostnames, HTTP methods, file types, and other request attributes. Unlike network policies which operate at Layer 4 (TCP/UDP), HTTP policies operate at Layer 7 and can inspect the full content of web traffic.
+description: Configure HTTP policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

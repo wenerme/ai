@@ -1,6 +1,6 @@
 ---
 title: DNS over HTTPS
-description: With DNS over HTTPS (DoH), DNS queries and responses are encrypted and sent via the HTTP, HTTP/2 and HTTP/3 protocols. DoH ensures that attackers cannot forge or alter DNS traffic. DoH uses port 443, which is the standard HTTPS traffic port, to wrap the DNS query in an HTTPS request. DNS queries and responses are camouflaged within other HTTPS traffic, since it all comes and goes from the same port.
+description: Encrypt DNS queries using HTTPS with 1.1.1.1.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Insights
-description: Cloudflare One offers observability tools to monitor and troubleshoot your environment:
+description: Insights resources and guides for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

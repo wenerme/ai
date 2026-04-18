@@ -1,5 +1,6 @@
 ---
 title: How Cloudflare calculates tunnel health alerts
+description: How tunnel health alert thresholds are calculated.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

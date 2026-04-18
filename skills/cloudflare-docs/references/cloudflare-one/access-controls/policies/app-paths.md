@@ -1,6 +1,6 @@
 ---
 title: Application paths
-description: Application paths define the URLs protected by an Access policy. When adding a self-hosted application to Access, you can choose to protect the entire website by entering its apex domain, or alternatively, protect specific subdomains and paths.
+description: How Application paths works in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Network health
-description: Magic Transit uses health check probes to determine the status of tunnels. Cloudflare uses this information to steer traffic through the best available route and warn you about potential issues with a tunnel. Service-level indicators (SLIs) and service-level objectives (SLOs) combine to determine when Cloudflare sends you tunnel health alerts. Refer to How Cloudflare calculates tunnel health alerts for more information about SLIs and SLOs.
+description: Monitor Magic Transit tunnel and endpoint health.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Common errors
-description: This section covers the most common errors you might encounter when connecting resources with Cloudflare Tunnel. If you do not see your issue listed below, refer to Troubleshooting Cloudflare One, view your Tunnel logs, or contact Cloudflare Support.
+description: Reference information for Common errors in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

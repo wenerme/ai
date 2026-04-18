@@ -1,5 +1,6 @@
 ---
 title: Journaling setup
+description: Journaling setup resources and guides for Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

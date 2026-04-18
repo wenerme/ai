@@ -107,7 +107,7 @@ class pLoader extends Hls.DefaultConfig.loader {
 
           onSuccess(response, stats, context);
 
-          // And fire the exisint success handler.
+          // And fire the existing success handler.
 
         };
 

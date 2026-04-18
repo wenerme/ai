@@ -1,6 +1,6 @@
 ---
 title: DNSKEY
-description: DNSSEC is a protocol that adds a layer of security to the domain name system (DNS). DNSSEC does this by providing authentication through public signing keys using two DNS records: DNSKEY and DS. They can be used to verify DNSSEC signatures in RRSIG records.
+description: DNSKEY records used by the 1.1.1.1 resolver.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configure hardware Appliance
-description: In this page you will find instructions on how to configure Cloudflare One Appliance. This guide provides a step-by-step guide for Cloudflare One Appliance initial setup. You can either return here after setting up your Cloudflare One Appliance, or refer to the Maintenance section where you will find instructions on how to update your settings.
+description: Configure the hardware Cloudflare One Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -108,8 +108,8 @@ To create a profile:
 
 ### Create a WAN
 
-* [ Dashboard ](#tab-panel-3967)
-* [ API ](#tab-panel-3968)
+* [ Dashboard ](#tab-panel-6120)
+* [ API ](#tab-panel-6121)
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
@@ -168,8 +168,8 @@ Explain Code
 
 ### Create a LAN
 
-* [ Dashboard ](#tab-panel-3969)
-* [ API ](#tab-panel-3970)
+* [ Dashboard ](#tab-panel-6122)
+* [ API ](#tab-panel-6123)
 
 1. In **LAN configuration**, select **Create**.
 2. Enter a descriptive name for your LAN in **Interface name**.

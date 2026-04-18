@@ -1,6 +1,6 @@
 ---
 title: Manage integrated directories
-description: To manage an integrated directory:
+description: Manage integrated directories in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

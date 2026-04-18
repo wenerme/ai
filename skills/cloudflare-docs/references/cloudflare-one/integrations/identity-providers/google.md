@@ -1,6 +1,6 @@
 ---
 title: Google
-description: You can integrate Google authentication with Cloudflare Access without a Google Workspace account. The integration allows any user with a Google account to log in (if the Access policy allows them to reach the resource). Unlike the instructions for Google Workspace, the steps below will not allow you to pull group membership information from a Google Workspace account.
+description: Google in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

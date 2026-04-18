@@ -67,7 +67,7 @@ The `stageEnabled` property returns a boolean value. If `true`, stage management
 
 ### meeting.self.permissions.stageAccess
 
-The `stageAccess` property dictactes how a user interacts with the stage. There possible values are `ALLOWED`, `NOT_ALLOWED`, `CAN_REQUEST`;
+The `stageAccess` property dictates how a user interacts with the stage. There possible values are `ALLOWED`, `NOT_ALLOWED`, `CAN_REQUEST`;
 
 **Kind**: instance property of [PermissionPreset](#module%5FPermissionPreset)  
 

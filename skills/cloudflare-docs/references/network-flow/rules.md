@@ -1,6 +1,6 @@
 ---
 title: Rules
-description: Network Flow (formerly Magic Network Monitoring) rules monitor your network traffic for Distributed Denial of Service (DDoS) attacks targeting specific IP addresses or prefixes. When traffic exceeds a rule's threshold or matches a known DDoS attack fingerprint, you receive an alert.
+description: Create rules to alert on network flow anomalies.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Extended ruleset
-description: The extended ruleset builds on the Minimal ruleset by creating targeted rules for different types of systems on your network. Before creating these rules, you must create IP lists for each category.
+description: Configure Extended ruleset in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

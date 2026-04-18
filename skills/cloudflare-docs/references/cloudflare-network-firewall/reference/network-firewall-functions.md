@@ -1,5 +1,6 @@
 ---
 title: Cloudflare Network Firewall functions
+description: Functions available in Network Firewall rule expressions.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

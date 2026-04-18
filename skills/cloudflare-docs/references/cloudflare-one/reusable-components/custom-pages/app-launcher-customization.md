@@ -1,6 +1,6 @@
 ---
 title: App Launcher customization
-description: You can display your own branding, messages, and links to users when they open the Access App Launcher.
+description: App Launcher customization in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

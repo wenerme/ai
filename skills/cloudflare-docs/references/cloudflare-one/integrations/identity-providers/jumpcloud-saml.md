@@ -1,6 +1,6 @@
 ---
 title: JumpCloud (SAML)
-description: JumpCloud provides SSO identity management. Cloudflare Access integrates with JumpCloud as a SAML identity provider.
+description: JumpCloud (SAML) in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

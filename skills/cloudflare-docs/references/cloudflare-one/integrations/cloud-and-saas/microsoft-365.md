@@ -1,6 +1,6 @@
 ---
 title: Microsoft 365
-description: The Microsoft 365 (M365) integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
+description: Reference information for Microsoft 365 in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

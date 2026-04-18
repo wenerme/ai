@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: Troubleshoot Network Firewall configuration issues.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

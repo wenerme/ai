@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: This section covers best practices for setting up the following Gateway policy types:
+description: Set up Get started for Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

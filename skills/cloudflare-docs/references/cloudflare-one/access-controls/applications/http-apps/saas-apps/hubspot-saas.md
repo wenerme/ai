@@ -1,6 +1,6 @@
 ---
 title: Hubspot
-description: This guide covers how to configure Hubspot as a SAML application in Cloudflare One.
+description: Integrate Hubspot with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

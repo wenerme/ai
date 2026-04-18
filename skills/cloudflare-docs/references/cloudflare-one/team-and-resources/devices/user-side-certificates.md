@@ -1,6 +1,6 @@
 ---
 title: User-side certificates
-description: Advanced security features such as HTTPS traffic inspection, Data Loss Prevention, anti-virus scanning, Access for Infrastructure, and Browser Isolation require users to install and trust a root certificate on their device. You can either install the certificate provided by Cloudflare (default option), or generate your own custom certificate and upload it to Cloudflare.
+description: Set up User-side certificates for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -45,8 +45,8 @@ Zero Trust will indicate if a certificate is ready for use in inspection based o
 
 To generate a new Cloudflare root certificate for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-3754)
-* [ API ](#tab-panel-3755)
+* [ Dashboard ](#tab-panel-5895)
+* [ API ](#tab-panel-5896)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -85,8 +85,8 @@ Once a certificate is generated in or uploaded to Zero Trust, you need to activa
 
 To activate your root certificate:
 
-* [ Dashboard ](#tab-panel-3756)
-* [ API ](#tab-panel-3757)
+* [ Dashboard ](#tab-panel-5897)
+* [ API ](#tab-panel-5898)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.
@@ -112,8 +112,8 @@ The status of the certificate will change to **Pending** while it deploys. Once 
 
 Once you deploy and install your certificate, you can turn it on for use in inspection:
 
-* [ Dashboard ](#tab-panel-3758)
-* [ API ](#tab-panel-3759)
+* [ Dashboard ](#tab-panel-5899)
+* [ API ](#tab-panel-5900)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. Select **Certificates**.

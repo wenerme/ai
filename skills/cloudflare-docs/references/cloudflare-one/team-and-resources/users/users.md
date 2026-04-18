@@ -1,6 +1,6 @@
 ---
 title: User logs
-description: User logs show a list of all users who have authenticated to Cloudflare One. For each user who has logged in, you can view their enrolled devices, login history, seat usage, and identity used for policy enforcement.
+description: How User logs works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

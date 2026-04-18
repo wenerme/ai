@@ -1,6 +1,6 @@
 ---
 title: Regional processing
-description: Email security uses Cloudflare's Data Localization Suite (DLS) to allow you to control where your emails are processed. You do not need Data Localization Suite with Email security to choose the different locations.
+description: Reference information for Regional processing in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

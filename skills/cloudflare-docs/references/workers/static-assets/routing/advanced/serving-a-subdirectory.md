@@ -33,8 +33,8 @@ For example, to serve assets from `example.com/blog/*`, create a `blog` director
 
 With a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) like so:
 
-* [  wrangler.jsonc ](#tab-panel-7724)
-* [  wrangler.toml ](#tab-panel-7725)
+* [  wrangler.jsonc ](#tab-panel-10011)
+* [  wrangler.toml ](#tab-panel-10012)
 
 JSONC
 

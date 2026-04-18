@@ -1,6 +1,6 @@
 ---
 title: Gaming consoles
-description: The following instructions work on New Nintendo 3DS, New Nintendo 3DS XL, New Nintendo 2DS XL, Nintendo 3DS, Nintendo 3DS XL, and Nintendo 2DS.
+description: Configure 1.1.1.1 on PlayStation and Xbox.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

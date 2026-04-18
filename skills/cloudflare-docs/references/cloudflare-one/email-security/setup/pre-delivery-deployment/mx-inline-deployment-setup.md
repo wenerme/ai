@@ -1,6 +1,6 @@
 ---
 title: Set up MX/Inline deployment
-description: To use Email security, you will need to have:
+description: How Set up MX/Inline deployment works in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

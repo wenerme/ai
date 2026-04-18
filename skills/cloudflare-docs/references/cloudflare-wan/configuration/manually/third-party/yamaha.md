@@ -1,6 +1,6 @@
 ---
 title: Yamaha RTX Router
-description: This tutorial describes how to configure the Yamaha RTX840 and RTX1300 series router to connect to Cloudflare WAN (formerly Magic WAN) via IPsec tunnels.
+description: Connect Yamaha RTX Router to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

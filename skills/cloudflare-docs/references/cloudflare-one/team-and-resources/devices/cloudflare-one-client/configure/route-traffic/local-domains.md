@@ -1,6 +1,6 @@
 ---
 title: Local Domain Fallback
-description: By default, Cloudflare Zero Trust excludes common top-level domains, used for local resolution, from being sent to Gateway for processing. These top-level domains are resolved by the local DNS resolver configured for the device on its primary interface.
+description: Local Domain Fallback in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -68,8 +68,8 @@ To view the fallback domains applied to a device, you can:
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-3692)
-* [ Terraform (v5) ](#tab-panel-3693)
+* [ Dashboard ](#tab-panel-5833)
+* [ Terraform (v5) ](#tab-panel-5834)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.

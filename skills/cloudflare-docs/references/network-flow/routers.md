@@ -1,5 +1,6 @@
 ---
 title: Routers
+description: Configure routers to send flow data to Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

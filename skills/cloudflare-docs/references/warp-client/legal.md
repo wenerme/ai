@@ -1,5 +1,6 @@
 ---
 title: Legal
+description: Legal information for the Cloudflare WARP client.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

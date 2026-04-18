@@ -1,5 +1,6 @@
 ---
 title: Partners
+description: Magic Transit partner integrations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

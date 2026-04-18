@@ -1,6 +1,6 @@
 ---
 title: DNS over HTTPS (DoH)
-description: With Cloudflare Gateway, you can filter DNS over HTTPS (DoH) requests by DNS location or by user without needing to install the Cloudflare One Client on your devices.
+description: DNS over HTTPS (DoH) in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

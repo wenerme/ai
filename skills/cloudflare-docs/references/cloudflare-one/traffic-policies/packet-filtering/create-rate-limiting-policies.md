@@ -1,6 +1,6 @@
 ---
 title: Create Rate Limiting policies (beta)
-description: Rate limiting policies (beta) allow you to set maximum traffic thresholds - measured in packets or bits per second — for incoming traffic destined for your network as it arrives at specific Cloudflare data centers. When traffic to a location exceeds your defined limit, the policy takes action.
+description: Create Rate Limiting policies (beta) in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

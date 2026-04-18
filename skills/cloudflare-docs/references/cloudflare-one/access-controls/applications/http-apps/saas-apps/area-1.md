@@ -1,6 +1,6 @@
 ---
 title: Area 1
-description: Cloudflare Area 1 is an email security platform that protects your organization's inbox from phishing, spam, and other malicious messages. This guide covers how to configure Area 1 as a SAML application in Cloudflare One.
+description: Integrate Area 1 with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Jamf Pro
-description: This guide covers how to configure Jamf Pro as a SAML application in Cloudflare One.
+description: Integrate Jamf Pro with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

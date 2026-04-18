@@ -1,6 +1,6 @@
 ---
 title: Partner domain TLS
-description: To add additional TLS (Transport Layer Security) requirements for emails coming from certain domains, you can enforce higher levels of SSL/TLS inspection. If TLS is required, mail without TLS from the specified domain will be dropped.
+description: Partner domain TLS in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

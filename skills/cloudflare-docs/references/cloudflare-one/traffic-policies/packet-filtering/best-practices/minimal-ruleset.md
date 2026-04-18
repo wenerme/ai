@@ -1,6 +1,6 @@
 ---
 title: Minimal ruleset
-description: The suggested minimal ruleset blocks some known common vectors for DDoS attacks and permits all other ESP (Encapsulating Security Payload, used in IPsec VPNs), TCP, UDP, GRE (Generic Routing Encapsulation, used for tunnels), and ICMP traffic.
+description: Configure Minimal ruleset in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

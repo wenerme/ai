@@ -1,6 +1,6 @@
 ---
 title: PingOne
-description: The PingOne cloud platform from PingIdentity provides SSO identity management. Cloudflare Access supports PingOne as an OIDC identity provider.
+description: PingOne in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

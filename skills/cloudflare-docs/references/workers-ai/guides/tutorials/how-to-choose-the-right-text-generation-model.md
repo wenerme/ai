@@ -730,7 +730,7 @@ questions = [
 
     "I want to create a new tech product that helps keep cables arranged. Can you help me come up with a title and a tagline? Only your best suggestion please.",
 
-    "Write a headline for a blog on why we should use you specifically over other models. Keep it succint, but make your point."
+    "Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point."
 
 ]
 
@@ -768,7 +768,7 @@ I hope these suggestions help! Let me know if you have any other questions or if
 
 _Generated in 5.11 seconds_
 
-> Write a headline for a blog on why we should use you specifically over other models. Keep it succint, but make your point.
+> Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point.
 
 "Why Choose Mistral-7b-Instruct-V0.1-Awq: The Honest and Direct Language Model for All Your Needs"
 
@@ -800,7 +800,7 @@ Tagline: "Say goodbye to cable chaos and hello to a clutter-free workspace with 
 
 _Generated in 1.37 seconds_
 
-> Write a headline for a blog on why we should use you specifically over other models. Keep it succint, but make your point.
+> Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point.
 
 "Boost Your Writing Game: Choose Zephyr-7b-beta-awq for Unmatched Accuracy, Clarity, and Efficiency"
 
@@ -841,7 +841,7 @@ Why, you ask? Well, my tech-savvy friend, let me tell you why! 🤔
 
 _Generated in 11.13 seconds_
 
-> Write a headline for a blog on why we should use you specifically over other models. Keep it succint, but make your point.
+> Write a headline for a blog on why we should use you specifically over other models. Keep it succinct, but make your point.
 
 Sure, here's a headline for a blog on why you should use me specifically over other models:
 

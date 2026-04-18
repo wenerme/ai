@@ -1,6 +1,6 @@
 ---
 title: Query Magic Transit tunnel bandwidth analytics with GraphQL
-description: This example uses the GraphQL Analytics API to query Magic Transit ingress tunnel traffic over a specified time period.
+description: Query tunnel bandwidth analytics with the GraphQL API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

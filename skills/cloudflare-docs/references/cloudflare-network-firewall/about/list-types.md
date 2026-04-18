@@ -1,6 +1,6 @@
 ---
 title: List types
-description: Cloudflare handles millions of HTTP requests each second and blocks billions of cyber threats each day. Cloudflare uses that data to detect malicious actors on the Internet and turns that information into a list of known malicious IP addresses. Cloudflare also integrates with a number of third-party vendors to augment the coverage.
+description: IP list types available for Network Firewall policies.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

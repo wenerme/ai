@@ -1,6 +1,6 @@
 ---
 title: SentinelOne
-description: Cloudflare One can check if SentinelOne is running on a device to determine if a request should be allowed to reach a protected resource.
+description: SentinelOne in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

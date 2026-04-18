@@ -1,5 +1,6 @@
 ---
 title: Use cases
+description: Use cases in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

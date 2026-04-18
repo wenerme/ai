@@ -1,6 +1,6 @@
 ---
 title: One-time PIN login
-description: Cloudflare Access can send a one-time PIN (OTP) to approved email addresses as an alternative to integrating an identity provider. You can simultaneously configure OTP login and the identity provider of your choice to allow users to select their own authentication method.
+description: One-time PIN login in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -30,9 +30,9 @@ Access and the Cloudflare One Client will evaluate identity based on a user's la
 
 ## Set up OTP
 
-* [ Dashboard ](#tab-panel-3775)
-* [ API ](#tab-panel-3776)
-* [ Terraform (v5) ](#tab-panel-3777)
+* [ Dashboard ](#tab-panel-5612)
+* [ API ](#tab-panel-5613)
+* [ Terraform (v5) ](#tab-panel-5614)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.

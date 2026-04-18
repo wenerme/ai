@@ -1,6 +1,6 @@
 ---
 title: Deploy cloudflared replicas
-description: To deploy multiple instances of cloudflared, you can create and configure one tunnel and run it on multiple hosts. If your tunnel runs as a service, only one cloudflared instance is allowed per host.
+description: Deploy cloudflared replicas in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

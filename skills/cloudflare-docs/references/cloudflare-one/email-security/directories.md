@@ -1,6 +1,6 @@
 ---
 title: Directories
-description: Directories are folders to store user data. Email security allows you to manage directories from the Cloudflare dashboard.
+description: Directories in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

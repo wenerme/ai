@@ -1,6 +1,6 @@
 ---
 title: Traffic types
-description: Cloudflare Network Firewall (formerly Magic Firewall) enables you to allow or block traffic on a variety of packet characteristics, such as source and destination IP, source and destination port, protocol, packet length, and bit field match.
+description: Traffic types inspected by the Network Firewall.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

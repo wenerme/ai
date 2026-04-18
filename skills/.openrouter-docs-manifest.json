@@ -326,8 +326,8 @@
   },
   "guides/best-practices/prompt-caching.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching.md",
-    "size": 15783,
-    "updatedAt": "2026-04-17T00:30:16.224Z"
+    "size": 15818,
+    "updatedAt": "2026-04-18T00:29:45.117Z"
   },
   "guides/best-practices/uptime-optimization.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/uptime-optimization.md",
@@ -631,8 +631,8 @@
   },
   "api/api-reference/embeddings/create-embeddings.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/create-embeddings.md",
-    "size": 35855,
-    "updatedAt": "2026-04-16T00:30:47.608Z"
+    "size": 37182,
+    "updatedAt": "2026-04-18T00:30:25.125Z"
   },
   "api/api-reference/embeddings/list-embeddings-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models.md",

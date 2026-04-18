@@ -1,6 +1,6 @@
 ---
 title: Form expressions
-description: Rules are written using the Cloudflare Rules language - a domain-specific language (DSL) intended to mimic Wireshark semantics. For more information, refer to the Rules language documentation.
+description: How Form expressions works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

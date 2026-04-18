@@ -1,6 +1,6 @@
 ---
 title: Manage Access policies
-description: Access policies define the users who can log in to your Access applications. You can create, edit, or delete policies at any time and reuse policies across multiple applications.
+description: Manage Access policies in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

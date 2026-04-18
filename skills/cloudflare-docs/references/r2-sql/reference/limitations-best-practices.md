@@ -33,8 +33,8 @@ This page summarizes supported features, limitations, and best practices.
 | SELECT, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT        | Yes       |                                                                            |
 | Column aliases (AS)                                     | Yes       |                                                                            |
 | Expressions (CASE, CAST, LIKE, BETWEEN, IN, arithmetic) | Yes       | Full expression support                                                    |
-| EXPLAIN                                                 | Yes       | Returns execution plan                                                     |
-| 163 scalar functions                                    | Yes       | Math, string, datetime, regex, crypto, array, map, struct                  |
+| EXPLAIN                                                 | Yes       | Returns execution plan as text or JSON                                     |
+| 173 scalar functions                                    | Yes       | Math, string, datetime, regex, crypto, array, map, struct, JSON            |
 | 33 aggregate functions                                  | Yes       | Basic, approximate, statistical, bitwise, boolean, positional              |
 | Approximate aggregates                                  | Yes       | approx\_distinct, approx\_median, approx\_percentile\_cont, approx\_top\_k |
 | Struct / Array / Map column types                       | Yes       | Bracket notation, get\_field(), array functions, map functions             |
@@ -88,13 +88,13 @@ For the full SQL syntax, refer to the [SQL reference](https://developers.cloudfl
 
 ## Runtime constraints
 
-| Constraint                        | Details                                                                                               |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Single table per query            | Queries must reference exactly one table. No JOINs, no subqueries. CTEs may reference a single table. |
-| Partitioned Iceberg tables only   | Unpartitioned tables are not supported.                                                               |
-| Parquet format only               | No CSV, JSON, or other formats.                                                                       |
-| Read-only                         | R2 SQL is a query engine, not a database. No writes.                                                  |
-| now() / current\_time() precision | Quantized to 10ms boundaries and forced to UTC.                                                       |
+| Constraint                           | Details                                                                                               |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Single table per query               | Queries must reference exactly one table. No JOINs, no subqueries. CTEs may reference a single table. |
+| Partitioned and unpartitioned tables | Both partitioned and unpartitioned Iceberg tables are supported.                                      |
+| Parquet format only                  | No CSV, JSON, or other formats.                                                                       |
+| Read-only                            | R2 SQL is a query engine, not a database. No writes.                                                  |
+| now() / current\_time() precision    | Quantized to 10ms boundaries and forced to UTC.                                                       |
 
 ---
 
@@ -110,7 +110,7 @@ For the full SQL syntax, refer to the [SQL reference](https://developers.cloudfl
 
 ## Best practices
 
-1. Always include time-range filters in `WHERE` to limit data scanned.
+1. Include time-range filters in `WHERE` to limit data scanned.
 2. Use specific column names instead of `SELECT *` for better performance.
 3. Use `LIMIT` to control result set size.
 4. Use approximate aggregation functions (`approx_distinct`, `approx_median`, `approx_percentile_cont`) instead of exact alternatives on large datasets.

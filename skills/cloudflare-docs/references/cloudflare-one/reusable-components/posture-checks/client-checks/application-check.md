@@ -1,6 +1,6 @@
 ---
 title: Application check
-description: The Application Check device posture attribute checks that a specific application process is running on a device. You can create multiple application checks for each operating system you need to run it on, or if you need to check for multiple applications.
+description: Application check in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

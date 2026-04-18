@@ -1,5 +1,6 @@
 ---
 title: Deactivate Cloudflare One Appliance
+description: Deactivate a Cloudflare One Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Network Analytics
-description: Network Analytics provides real-time insights into Magic Transit traffic that enters and leaves Cloudflare's network through GRE or IPsec tunnels.
+description: Analyze Magic Transit traffic with Network Analytics.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

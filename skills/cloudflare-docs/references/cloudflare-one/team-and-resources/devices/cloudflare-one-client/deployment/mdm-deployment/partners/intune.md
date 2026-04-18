@@ -1,6 +1,6 @@
 ---
 title: Intune
-description: This guide covers how to deploy the Cloudflare One Client (formerly WARP) using Microsoft Intune.
+description: Intune in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -364,7 +364,7 @@ By completing this step, you deliver the Cloudflare One Client to targeted iOS d
 </dict>  
 ```  
 Replace `YOUR_TEAM_NAME_HERE` with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name). Review the definitions of the above parameters in the [Parameters documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).  
-Successfuly complete your registration  
+Successfully complete your registration  
 You should set the [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) parameter to `1` to ensure the Cloudflare One Client auto-connects to Cloudflare. If you set this parameter to `0` or exclude it, the client will not auto-connect, and registration will not complete successfully.  
 If you do not include this parameter, registration will not be complete without manual intervention by the user. Manual intervention requires opening the Cloudflare One Client application and attempting to connect.
 5. In **Assignments**, select an option (for example, **Add all devices** or **Add all users**) that is valid for your scope. Select **Next**.

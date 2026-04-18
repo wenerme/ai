@@ -1,5 +1,6 @@
 ---
 title: Secure your email with Email security
+description: Secure your email with Email security for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

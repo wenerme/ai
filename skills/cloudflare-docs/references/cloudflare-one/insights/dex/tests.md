@@ -1,6 +1,6 @@
 ---
 title: Synthetic tests
-description: With Digital Experience Monitoring (DEX), you can test if your devices can connect to a private or public endpoint through the Cloudflare One Client. Tests allow you to monitor availability for a given application and investigate performance issues reported by your end users.
+description: Synthetic tests resources and guides for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: DNS over TLS
-description: By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is one way to send DNS queries over an encrypted connection. Cloudflare supports DNS over TLS on standard port 853 and is compliant with RFC 7858. With DoT, the encryption happens at the transport layer, where it adds TLS encryption on top of a TCP connection.
+description: Encrypt DNS queries using TLS with 1.1.1.1.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

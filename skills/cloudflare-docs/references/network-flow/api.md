@@ -1,6 +1,6 @@
 ---
 title: API
-description: Use Network Flow's (formerly Magic Network Monitoring) API to configure your account and rules.
+description: API endpoints for managing Network Flow configurations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

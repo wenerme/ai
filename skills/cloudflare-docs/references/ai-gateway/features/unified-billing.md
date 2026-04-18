@@ -57,7 +57,7 @@ Workers AI models (models prefixed with `@cf/`) routed through AI Gateway are no
 
 ### AI binding
 
-Call any model listed in the [model catalog ↗](https://developers.cloudflare.com/ai/models/) using `env.AI.run()`. This includes both Workers AI models and third-party models from providers like OpenAI, Anthropic, and Google.
+Call any model listed in the [model catalog](https://developers.cloudflare.com/ai/models/) using `env.AI.run()`. This includes both Workers AI models and third-party models from providers like OpenAI, Anthropic, and Google.
 
 TypeScript
 
@@ -153,8 +153,8 @@ If ZDR is enabled for a provider that does not support it, AI Gateway falls back
 
 #### Default configuration
 
-* [ Dashboard ](#tab-panel-5062)
-* [ API ](#tab-panel-5063)
+* [ Dashboard ](#tab-panel-5077)
+* [ API ](#tab-panel-5078)
 
 To set ZDR as the default for Unified Billing in the dashboard:
 

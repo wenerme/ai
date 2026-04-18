@@ -1,6 +1,6 @@
 ---
 title: Service tokens
-description: You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
+description: Service tokens in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -26,9 +26,9 @@ This section covers how to create, renew, and revoke a service token.
 
 ## Create a service token
 
-* [ Dashboard ](#tab-panel-3446)
-* [ API ](#tab-panel-3447)
-* [ Terraform (v5) ](#tab-panel-3448)
+* [ Dashboard ](#tab-panel-5573)
+* [ API ](#tab-panel-5574)
+* [ Terraform (v5) ](#tab-panel-5575)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

@@ -588,7 +588,7 @@ interface AudioQualityConstraints {
 
   echoCancellation?: boolean;
 
-  noiseSupression?: boolean;
+  noiseSuppression?: boolean;
 
   autoGainControl?: boolean;
 

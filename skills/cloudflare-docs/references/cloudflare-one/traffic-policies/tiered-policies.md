@@ -1,6 +1,6 @@
 ---
 title: Tiered policies
-description: Gateway tiered policies allow you to share and enforce Gateway policies across multiple Zero Trust accounts. This enables centralized policy management for organizations that manage multiple accounts.
+description: Overview of Tiered policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Connectivity options
-description: Cloudflare One provides multiple connectivity options for your users, devices, and network infrastructure. Each option serves different use cases, from protecting individual devices to connecting entire data centers.
+description: Connectivity options in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -344,7 +344,7 @@ Most enterprise Cloudflare One deployments use multiple connectivity options tog
 
 Not all Cloudflare One connectivity options work together in the same account. Review the following compatibility information before designing your deployment.
 
-**Table 7\. Cloudflare One connectivity compatability**
+**Table 7\. Cloudflare One connectivity compatibility**
 
 | Combination                                                 | Compatible  | Notes                                                                                                                                                                                                                                             |
 | ----------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

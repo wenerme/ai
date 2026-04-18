@@ -1,6 +1,6 @@
 ---
 title: Protocol validation rules
-description: Cloudflare Network Firewall can validate Session Initiation Protocol (SIP) traffic — the protocol used to set up voice and video calls over IP networks (VoIP). This lets you inspect whether SIP packets are properly formatted and enforce a positive security model (only allow well-formed SIP traffic, block everything else).
+description: How Protocol validation rules works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

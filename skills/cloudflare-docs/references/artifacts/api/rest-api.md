@@ -24,7 +24,7 @@ Artifacts REST routes use this base path:
 
 ```
 
-https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE
+https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE
 
 
 ```
@@ -38,7 +38,7 @@ Authorization: Bearer <CLOUDFLARE_API_TOKEN>
 
 ```
 
-All routes below are relative to the base URL your deployment exposes. The examples use `https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE`.
+All routes below are relative to this base URL.
 
 Cloudflare API tokens authenticate REST control-plane routes. Repo tokens authenticate Git operations against the returned `remote` URL.
 
@@ -48,13 +48,15 @@ Terminal window
 
 ```
 
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+
 export ARTIFACTS_NAMESPACE="default"
 
 export ARTIFACTS_REPO="starter-repo"
 
 export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
-export ARTIFACTS_BASE_URL="https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
 
 ```
@@ -252,8 +254,6 @@ export interface CreateRepoResult {
 
   token: ArtifactToken;
 
-  expires_at: string;
-
 }
 
 
@@ -305,9 +305,7 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos" \
 
     "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/starter-repo.git",
 
-    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000",
-
-    "expires_at": "<ISO_TIMESTAMP>"
+    "token": "art_v1_0123456789abcdef0123456789abcdef01234567?expires=1760000000"
 
   },
 
@@ -636,8 +634,6 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/$ARTIFACTS_REPO/fork" \
 
     "token": "art_v1_89abcdef0123456789abcdef0123456789abcdef?expires=1760003600",
 
-    "expires_at": "<ISO_TIMESTAMP>",
-
     "objects": 128
 
   },
@@ -731,9 +727,7 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos/react-mirror/import" \
 
     "remote": "https://<ACCOUNT_ID>.artifacts.cloudflare.net/git/default/react-mirror.git",
 
-    "token": "art_v1_fedcba9876543210fedcba9876543210fedcba98?expires=1760007200",
-
-    "expires_at": "<ISO_TIMESTAMP>"
+    "token": "art_v1_fedcba9876543210fedcba9876543210fedcba98?expires=1760007200"
 
   },
 

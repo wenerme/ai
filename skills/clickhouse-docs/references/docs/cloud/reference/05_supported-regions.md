@@ -29,6 +29,7 @@ doc_type: 'reference'
 - sa-east-1 (South America)
 - ap-southeast-3 (Jakarta)
 - ap-east-1 (Hong Kong)
+- mx-central-1 (Mexico)
  
 ## Google Cloud regions {#google-cloud-regions}
 
@@ -37,14 +38,15 @@ doc_type: 'reference'
 - europe-west4 (Netherlands)
 - us-central1 (Iowa)
 - us-east1 (South Carolina)
+- europe-west2 (London)
 
 **Private Region:**
 
-- us-west1 (Oregon)
 - australia-southeast1(Sydney)
 - europe-west3 (Frankfurt)
 - europe-west6 (Zurich)
 - northamerica-northeast1 (Montréal)
+- us-west1 (Oregon)
 
 ## Azure regions {#azure-regions}
 
@@ -56,6 +58,7 @@ doc_type: 'reference'
 
 - Japan East (Tokyo, Saitama)
 - UAE North (Dubai)
+- Australia East (New South Wales)
 
 > **note**: Need to deploy to a region not currently listed? [Submit a request](https://clickhouse.com/pricing?modal=open). 
 
@@ -84,6 +87,7 @@ Customers must sign a Business Associate Agreement (BAA) and request onboarding 
 - AWS eu-west-1 (Ireland)
 - AWS eu-west-2 (London)
 - AWS sa-east-1 (South America) **Private Region**
+- AWS mx-central-1 (Mexico) **Private Region**
 - AWS us-east-1 (N. Virginia)
 - AWS us-east-2 (Ohio)
 - AWS us-west-2 (Oregon)
@@ -102,6 +106,7 @@ Customers must request onboarding through Sales or Support to set up services in
 - AWS eu-north-1 (Stockholm) **Private Region**
 - AWS eu-west-1 (Ireland)
 - AWS eu-west-2 (London)
+- AWS mx-central-1 (Mexico) **Private Region**
 - AWS sa-east-1 (South America) **Private Region**
 - AWS us-east-1 (N. Virginia)
 - AWS us-east-2 (Ohio)

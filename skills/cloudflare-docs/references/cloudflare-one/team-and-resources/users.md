@@ -1,6 +1,6 @@
 ---
 title: Users
-description: Manage users in your Zero Trust organization.
+description: Users resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

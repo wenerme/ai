@@ -1,6 +1,6 @@
 ---
 title: Protocol detection
-description: Gateway supports the detection, logging, and filtering of network protocols using packet attributes.
+description: Protocol detection in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

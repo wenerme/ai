@@ -1,6 +1,6 @@
 ---
 title: Dropbox
-description: This guide covers how to configure Dropbox as a SAML application in Cloudflare One.
+description: Dropbox in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

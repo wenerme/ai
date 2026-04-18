@@ -1,6 +1,6 @@
 ---
 title: DEX
-description: Review common troubleshooting scenarios for Digital Experience Monitoring (DEX).
+description: DEX for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

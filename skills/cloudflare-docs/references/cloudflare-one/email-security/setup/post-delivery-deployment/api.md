@@ -1,6 +1,6 @@
 ---
 title: API deployment
-description: When you choose an API deployment, email messages only reach Email security after they have already reached a user's inbox.
+description: How API deployment works in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

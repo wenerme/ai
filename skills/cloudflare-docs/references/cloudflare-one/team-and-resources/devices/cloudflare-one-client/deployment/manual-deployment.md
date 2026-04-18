@@ -1,6 +1,6 @@
 ---
 title: Manual deployment
-description: If you plan to direct your users to manually download and configure the Cloudflare One Client (formerly WARP), users will need to connect the client to your organization's Cloudflare Zero Trust instance.
+description: Manual deployment in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -32,8 +32,8 @@ If you plan to direct your users to manually download and configure the Cloudfla
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-3721)
-* [ Version 2026.1 and earlier ](#tab-panel-3722)
+* [ Version 2026.2+ ](#tab-panel-5862)
+* [ Version 2026.1 and earlier ](#tab-panel-5863)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

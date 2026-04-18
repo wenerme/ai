@@ -1,6 +1,6 @@
 ---
 title: Magic Transit integration
-description: Magic Transit On Demand allows you to keep Magic Transit disabled during normal operations and activate it only when you need DDoS protection. Network Flow monitors your traffic while Magic Transit is off and detects attacks. When an attack is detected, you can enable Magic Transit automatically or manually.
+description: Integrate Network Flow with Magic Transit.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

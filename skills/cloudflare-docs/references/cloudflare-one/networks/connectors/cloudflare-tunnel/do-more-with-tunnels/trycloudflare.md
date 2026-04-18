@@ -1,6 +1,6 @@
 ---
 title: Quick Tunnels
-description: Developers can use the TryCloudflare tool to experiment with Cloudflare Tunnel without adding a site to Cloudflare's DNS. TryCloudflare will launch a process that generates a random subdomain on trycloudflare.com. Requests to that subdomain will be proxied through the Cloudflare network to your web server running on localhost.
+description: How Quick Tunnels works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

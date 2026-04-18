@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Unwanted network traffic — from DDoS floods to unauthorized scans — can overwhelm your infrastructure. Cloudflare Network Firewall is a firewall-as-a-service (FWaaS) delivered from the Cloudflare global network, meaning Cloudflare runs the firewall for you in the cloud instead of on your own hardware. You can apply filter rules on a variety of criteria, such as protocol (for example, TCP or UDP) and packet length, to filter unwanted traffic before it reaches your network.
+description: Overview in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare One Multi-Cloud Networking (beta)
-description: Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) simplifies the process of connecting to your public cloud infrastructure, like Amazon Web Services, Google Cloud Platform, or Azure. With Multi-Cloud Networking you can automatically discover your cloud resources through Cloudflare's dashboard, and effortlessly combine your cloud networks with your office and data center networks.
+description: Connect multiple cloud providers through the Cloudflare network.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

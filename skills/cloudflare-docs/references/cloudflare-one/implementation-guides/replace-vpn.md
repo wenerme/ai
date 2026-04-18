@@ -1,5 +1,6 @@
 ---
 title: Replace your VPN
+description: Replace your VPN for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

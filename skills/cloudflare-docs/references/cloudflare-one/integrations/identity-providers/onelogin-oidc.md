@@ -1,6 +1,6 @@
 ---
 title: OneLogin
-description: OneLogin provides SSO identity management. Cloudflare Access supports OneLogin as an OIDC identity provider.
+description: OneLogin in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

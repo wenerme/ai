@@ -1,6 +1,6 @@
 ---
 title: NetFlow statistics
-description: You can configure your Cloudflare One Appliance (formerly Magic WAN Connector) to export Netflow statistics for local breakout traffic to Network Flow (formerly Magic Network Monitoring). This provides insights into traffic that leaves your site directly, bypassing the Cloudflare network.
+description: NetFlow statistics in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

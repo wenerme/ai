@@ -50,6 +50,11 @@ Since these services are not yet part of your contract, we recommend that you us
 
 To view which products you have previously enabled, go to your [Account Subscriptions ↗](https://dash.cloudflare.com/?to=/:account/billing/subscriptions) page and look for items that with **Terms** of **NOT IN CONTRACT**.
 
+## Related resources
+
+* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
+* [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/understand/preview-services/","name":"Preview services"}}]}
 ```

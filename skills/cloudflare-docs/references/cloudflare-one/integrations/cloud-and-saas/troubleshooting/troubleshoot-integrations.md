@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot integrations
-description: Cloudflare CASB detects when integrations are unhealthy or outdated.
+description: Troubleshoot Troubleshoot integrations issues in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

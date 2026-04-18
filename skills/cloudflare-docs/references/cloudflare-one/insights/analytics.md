@@ -1,6 +1,6 @@
 ---
 title: Dashboards
-description: Cloudflare One provides a catalog of saved analytics views for reporting and investigation. Analytics Dashboards provide visualizations of your log data.
+description: Dashboards resources and guides for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

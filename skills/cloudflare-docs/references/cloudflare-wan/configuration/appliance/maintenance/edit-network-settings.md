@@ -1,5 +1,6 @@
 ---
 title: Edit network settings
+description: Edit Appliance network settings.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

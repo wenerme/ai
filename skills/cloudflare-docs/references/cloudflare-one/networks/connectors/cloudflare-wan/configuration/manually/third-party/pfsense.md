@@ -1,6 +1,6 @@
 ---
 title: pfSense
-description: This tutorial includes the steps required to configure IPsec tunnels to connect a pfSense firewall to Cloudflare WAN (formerly Magic WAN).
+description: Integrate pfSense with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

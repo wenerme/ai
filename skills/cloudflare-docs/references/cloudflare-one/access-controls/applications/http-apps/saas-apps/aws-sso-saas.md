@@ -1,6 +1,6 @@
 ---
 title: AWS
-description: This guide covers how to configure AWS as a SAML application in Cloudflare One.
+description: Integrate AWS with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

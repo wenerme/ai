@@ -1,6 +1,6 @@
 ---
 title: Free version
-description: The free version of Network Flow (formerly Magic Network Monitoring) is available to all Cloudflare accounts.
+description: Network Flow features available on the free tier.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

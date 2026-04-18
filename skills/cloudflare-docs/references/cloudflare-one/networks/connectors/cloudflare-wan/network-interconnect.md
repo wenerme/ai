@@ -1,6 +1,6 @@
 ---
 title: Network Interconnect (CNI)
-description: Cloudflare Network Interconnect (CNI) provides a private, dedicated connection between your network and Cloudflare — bypassing the public Internet entirely. This is useful when you need consistent latency, higher throughput, or an additional layer of security that public Internet paths cannot guarantee.
+description: How Network Interconnect (CNI) works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Manage users in your directory
-description: Email security allows you to view and manage the impersonation registry status of your users directory.
+description: Manage users in your directory in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

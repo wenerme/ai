@@ -1,6 +1,6 @@
 ---
 title: Integration profiles
-description: Integration profiles let you use data classifications from a third-party platform (such as Microsoft Purview sensitivity labels) directly in Cloudflare DLP. Instead of recreating classification rules in Cloudflare, DLP retrieves them from the third-party platform and populates them as detection entries in a DLP profile. You can then enable the entries you want and create a DLP policy to allow or block matching data.
+description: How Integration profiles works in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Organizations
-description: Gateway supports using Cloudflare Organizations to share configurations between and apply specific policies to accounts within an Organization. Tiered Gateway policies with Organizations support DNS, network, HTTP, and resolver policies.
+description: Cloudflare Organizations in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

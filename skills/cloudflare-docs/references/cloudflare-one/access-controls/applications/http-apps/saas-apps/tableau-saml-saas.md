@@ -1,6 +1,6 @@
 ---
 title: Tableau Cloud
-description: This guide covers how to configure Tableau Cloud as a SAML application in Cloudflare One.
+description: Integrate Tableau Cloud with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

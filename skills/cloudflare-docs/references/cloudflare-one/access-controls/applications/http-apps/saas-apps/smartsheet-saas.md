@@ -1,6 +1,6 @@
 ---
 title: Smartsheet
-description: This guide covers how to configure Smartsheet as a SAML application in Cloudflare One.
+description: Integrate Smartsheet with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

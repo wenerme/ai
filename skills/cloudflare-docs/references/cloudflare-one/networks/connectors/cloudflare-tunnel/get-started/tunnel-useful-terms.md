@@ -1,6 +1,6 @@
 ---
 title: Useful terms
-description: Review terminology for Cloudflare Tunnels.
+description: Reference information for Useful terms in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

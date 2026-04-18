@@ -1,6 +1,6 @@
 ---
 title: SparkPost
-description: This guide covers how to configure SparkPost or SparkPost EU as a SAML application in Cloudflare Zero Trust.
+description: SparkPost in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

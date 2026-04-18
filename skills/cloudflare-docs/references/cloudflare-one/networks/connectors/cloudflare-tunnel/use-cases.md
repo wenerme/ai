@@ -1,6 +1,6 @@
 ---
 title: Use cases
-description: Cloudflare Tunnel creates a secure, outbound-only connection between your services and Cloudflare by deploying a lightweight connector in your environment. Here is how to use tunnels with some specific services:
+description: Use cases resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

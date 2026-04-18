@@ -1,6 +1,6 @@
 ---
 title: View test results
-description: Use the results of a DEX test to monitor availability and performance for a specific application. DEX will store test results according to our log retention policy.
+description: View test results in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

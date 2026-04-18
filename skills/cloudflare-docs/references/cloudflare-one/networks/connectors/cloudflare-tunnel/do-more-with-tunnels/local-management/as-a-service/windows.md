@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: You can install cloudflared as a system service on Windows.
+description: Windows in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

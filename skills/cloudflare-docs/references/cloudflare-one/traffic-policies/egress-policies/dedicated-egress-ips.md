@@ -1,6 +1,6 @@
 ---
 title: Dedicated egress IPs
-description: Many third-party services require you to allowlist specific source IP addresses before they accept connections. Dedicated egress IPs are static IP addresses assigned exclusively to your account — no other Cloudflare customer shares them.
+description: How Dedicated egress IPs works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

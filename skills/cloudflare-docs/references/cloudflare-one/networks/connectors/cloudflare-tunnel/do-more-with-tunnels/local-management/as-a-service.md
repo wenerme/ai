@@ -1,6 +1,6 @@
 ---
 title: Run as a service
-description: You can install cloudflared as a system service on Linux and Windows, and as a launch agent on macOS. In most cases, we recommend running cloudflared as a service. Running as a service helps ensure the availability of cloudflared to your origin by allowing the program to start at boot and continue running while your origin is online.
+description: Run as a service resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

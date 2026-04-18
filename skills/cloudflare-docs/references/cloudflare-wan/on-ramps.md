@@ -1,6 +1,6 @@
 ---
 title: On-ramps
-description: To on-ramp your network traffic to Cloudflare WAN (formerly Magic WAN), you can use Cloudflare One Appliance, a lightweight software package you can install in corporate network locations to automatically connect, steer, and shape any IP traffic.
+description: Connect to Cloudflare WAN using tunnels, Appliances, or CNI.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,0 +1,387 @@
+---
+title: Server provider
+description: The FlagshipServerProvider implements the OpenFeature server provider interface. The provider works in Cloudflare Workers, Node.js, and any server-side JavaScript runtime that supports the Fetch API.
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/flagship/sdk/server-provider.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# Server provider
+
+The `FlagshipServerProvider` implements the OpenFeature server provider interface. The provider works in [Cloudflare Workers](https://developers.cloudflare.com/workers/), Node.js, and any server-side JavaScript runtime that supports the Fetch API.
+
+Inside a Cloudflare Worker, you can pass the Flagship [binding](https://developers.cloudflare.com/flagship/binding/) directly to the provider. This avoids HTTP overhead and is the recommended approach. Outside of Workers, initialize the provider with an app ID and account ID — each evaluation call makes an HTTP request to the Flagship evaluation endpoint.
+
+## Setup
+
+* [ With binding ](#tab-panel-6879)
+* [ With app ID ](#tab-panel-6880)
+
+Pass the Flagship binding directly to the provider. This is the recommended approach inside a Worker.
+
+* [  JavaScript ](#tab-panel-6877)
+* [  TypeScript ](#tab-panel-6878)
+
+JavaScript
+
+```
+
+import { OpenFeature } from "@openfeature/server-sdk";
+
+import { FlagshipServerProvider } from "@cloudflare/flagship";
+
+
+export default {
+
+  async fetch(request, env) {
+
+    await OpenFeature.setProviderAndWait(
+
+      new FlagshipServerProvider({ binding: env.FLAGS }),
+
+    );
+
+
+    const client = OpenFeature.getClient();
+
+
+    const showNewCheckout = await client.getBooleanValue(
+
+      "new-checkout",
+
+      false,
+
+      { targetingKey: "user-42", plan: "enterprise" },
+
+    );
+
+
+    if (showNewCheckout) {
+
+      return new Response("New checkout enabled!");
+
+    }
+
+
+    return new Response("Standard checkout.");
+
+  },
+
+};
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+import { OpenFeature } from "@openfeature/server-sdk";
+
+import { FlagshipServerProvider } from "@cloudflare/flagship";
+
+
+export default {
+
+  async fetch(request: Request, env: Env): Promise<Response> {
+
+    await OpenFeature.setProviderAndWait(
+
+      new FlagshipServerProvider({ binding: env.FLAGS }),
+
+    );
+
+
+    const client = OpenFeature.getClient();
+
+
+    const showNewCheckout = await client.getBooleanValue(
+
+      "new-checkout",
+
+      false,
+
+      { targetingKey: "user-42", plan: "enterprise" },
+
+    );
+
+
+    if (showNewCheckout) {
+
+      return new Response("New checkout enabled!");
+
+    }
+
+
+    return new Response("Standard checkout.");
+
+  },
+
+};
+
+
+```
+
+Explain Code
+
+Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). The provider makes HTTP requests to the Flagship evaluation endpoint. Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship read permissions.
+
+* [  JavaScript ](#tab-panel-6873)
+* [  TypeScript ](#tab-panel-6874)
+
+JavaScript
+
+```
+
+import { OpenFeature } from "@openfeature/server-sdk";
+
+import { FlagshipServerProvider } from "@cloudflare/flagship";
+
+
+await OpenFeature.setProviderAndWait(
+
+  new FlagshipServerProvider({
+
+    appId: "<APP_ID>",
+
+    accountId: "<ACCOUNT_ID>",
+
+    authToken: "<API_TOKEN>",
+
+  }),
+
+);
+
+
+const client = OpenFeature.getClient();
+
+
+const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
+
+  targetingKey: "user-42",
+
+  plan: "enterprise",
+
+});
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+import { OpenFeature } from "@openfeature/server-sdk";
+
+import { FlagshipServerProvider } from "@cloudflare/flagship";
+
+
+await OpenFeature.setProviderAndWait(
+
+  new FlagshipServerProvider({
+
+    appId: "<APP_ID>",
+
+    accountId: "<ACCOUNT_ID>",
+
+    authToken: "<API_TOKEN>",
+
+  }),
+
+);
+
+
+const client = OpenFeature.getClient();
+
+
+const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
+
+  targetingKey: "user-42",
+
+  plan: "enterprise",
+
+});
+
+
+```
+
+Explain Code
+
+## Configuration options
+
+| Option    | Type     | Required | Description                                                                                                                                                               |
+| --------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| binding   | Flagship | No       | The Flagship binding from env.FLAGS. Use this inside a Worker for best performance. Authentication is handled automatically through the binding.                          |
+| appId     | string   | No       | The Flagship app ID from the Cloudflare dashboard. Required when not using a binding.                                                                                     |
+| accountId | string   | No       | Your Cloudflare account ID. Required when not using a binding.                                                                                                            |
+| authToken | string   | No       | A Cloudflare [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with Flagship read permissions. Required when not using a binding. |
+
+Provide either `binding` or `appId`, `accountId`, and `authToken`.
+
+## Evaluation context
+
+OpenFeature uses an evaluation context to pass user attributes to the flag provider. The `targetingKey` field is the primary user identifier.
+
+Pass additional attributes alongside `targetingKey` to match [targeting rules](https://developers.cloudflare.com/flagship/targeting/). For example, you can include `plan`, `country`, or any custom attribute your rules reference.
+
+* [  JavaScript ](#tab-panel-6869)
+* [  TypeScript ](#tab-panel-6870)
+
+JavaScript
+
+```
+
+const value = await client.getBooleanValue("new-checkout", false, {
+
+  targetingKey: "user-42",
+
+  plan: "enterprise",
+
+  country: "US",
+
+});
+
+
+```
+
+TypeScript
+
+```
+
+const value = await client.getBooleanValue("new-checkout", false, {
+
+  targetingKey: "user-42",
+
+  plan: "enterprise",
+
+  country: "US",
+
+});
+
+
+```
+
+## Available hooks
+
+The SDK ships with two hooks that you can attach to the OpenFeature client.
+
+* **LoggingHook** — Logs structured information for every evaluation.
+* **TelemetryHook** — Captures timing and event data for observability.
+
+* [  JavaScript ](#tab-panel-6871)
+* [  TypeScript ](#tab-panel-6872)
+
+JavaScript
+
+```
+
+import { LoggingHook, TelemetryHook } from "@cloudflare/flagship";
+
+
+OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
+
+
+```
+
+TypeScript
+
+```
+
+import { LoggingHook, TelemetryHook } from "@cloudflare/flagship";
+
+
+OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
+
+
+```
+
+## Migrate from another provider
+
+If you use another OpenFeature-compatible provider (for example, LaunchDarkly or Flagsmith), switch to Flagship by replacing the provider initialization. No changes are needed at evaluation call sites.
+
+* [  JavaScript ](#tab-panel-6875)
+* [  TypeScript ](#tab-panel-6876)
+
+JavaScript
+
+```
+
+// Before
+
+await OpenFeature.setProviderAndWait(
+
+  new LaunchDarklyProvider({ sdkKey: "..." }),
+
+);
+
+
+// After
+
+await OpenFeature.setProviderAndWait(
+
+  new FlagshipServerProvider({
+
+    appId: "<APP_ID>",
+
+    accountId: "<ACCOUNT_ID>",
+
+    authToken: "<API_TOKEN>",
+
+  }),
+
+);
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+// Before
+
+await OpenFeature.setProviderAndWait(
+
+  new LaunchDarklyProvider({ sdkKey: "..." }),
+
+);
+
+
+// After
+
+await OpenFeature.setProviderAndWait(
+
+  new FlagshipServerProvider({
+
+    appId: "<APP_ID>",
+
+    accountId: "<ACCOUNT_ID>",
+
+    authToken: "<API_TOKEN>",
+
+  }),
+
+);
+
+
+```
+
+Explain Code
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/flagship/","name":"Flagship"}},{"@type":"ListItem","position":3,"item":{"@id":"/flagship/sdk/","name":"OpenFeature SDK"}},{"@type":"ListItem","position":4,"item":{"@id":"/flagship/sdk/server-provider/","name":"Server provider"}}]}
+```

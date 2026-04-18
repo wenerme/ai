@@ -1,6 +1,6 @@
 ---
 title: Amazon AWS Transit Gateway
-description: This tutorial provides information and examples of how to configure IPsec VPN between Cloudflare WAN (formerly Magic WAN) with an AWS Transit Gateway.
+description: Connect Amazon AWS Transit Gateway to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

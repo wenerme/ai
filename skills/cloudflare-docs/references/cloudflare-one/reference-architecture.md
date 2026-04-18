@@ -1,5 +1,6 @@
 ---
 title: Reference architecture
+description: Reference architecture for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

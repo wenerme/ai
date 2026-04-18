@@ -1,6 +1,6 @@
 ---
 title: PagerDuty
-description: This guide covers how to configure PagerDuty as a SAML application in Cloudflare One.
+description: Integrate PagerDuty with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

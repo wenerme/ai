@@ -16,6 +16,7 @@ Copy page
 # Understand
 
 * [ How Cloudflare billing works ](https://developers.cloudflare.com/billing/understand/how-billing-works/)
+* [ How charges accrue ](https://developers.cloudflare.com/billing/understand/how-charges-accrue/)
 * [ Preview services ](https://developers.cloudflare.com/billing/understand/preview-services/)
 * [ Billing policy ](https://developers.cloudflare.com/billing/understand/billing-policy/)
 * [ Usage-based billing ](https://developers.cloudflare.com/billing/understand/usage-based-billing/)

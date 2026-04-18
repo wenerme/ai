@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ### Tags
 
-[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
+[ Analytics ](https://developers.cloudflare.com/search/?tags=Analytics)[ Privacy ](https://developers.cloudflare.com/search/?tags=Privacy) 
 
 Was this helpful?
 

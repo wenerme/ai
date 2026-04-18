@@ -1,6 +1,6 @@
 ---
 title: Edit traffic steering settings
-description: You can only add or remove applications to Breakout traffic and Prioritized traffic. To add or remove applications:
+description: Edit Appliance traffic steering settings.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

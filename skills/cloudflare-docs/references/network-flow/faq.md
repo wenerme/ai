@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: If you cannot find your answer here, refer to the community page for more resources.
+description: Answers to common questions about Network Flow.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

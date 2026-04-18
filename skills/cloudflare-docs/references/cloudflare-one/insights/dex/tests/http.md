@@ -1,6 +1,6 @@
 ---
 title: HTTP test
-description: An HTTP test sends a GET request from an end-user device to a specific web application. You can use the response metrics to troubleshoot connectivity issues. For example, you can check whether the application is inaccessible for all users in your organization, or only certain ones.
+description: Reference information for HTTP test in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

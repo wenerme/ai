@@ -1,6 +1,6 @@
 ---
 title: Access
-description: Review common troubleshooting scenarios for Cloudflare Access.
+description: Access for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

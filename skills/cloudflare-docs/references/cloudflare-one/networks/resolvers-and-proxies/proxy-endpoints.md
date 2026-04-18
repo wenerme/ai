@@ -1,6 +1,6 @@
 ---
 title: Proxy endpoints
-description: Proxy endpoints allow you to apply Gateway policies without installing a client on your devices. By configuring a Proxy Auto-Configuration (PAC) file at the browser level, you can route traffic through Gateway for filtering and policy enforcement. Cloudflare supports configuring two types of proxy endpoints: identity-based authorization endpoints and source IP proxy endpoints.
+description: Proxy endpoints in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -90,8 +90,8 @@ Warning
 
 All devices you add to the proxy endpoint can access your Cloudflare Tunnel applications and services. If you only want to proxy web traffic, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/common-policies/#restrict-private-network-access-to-proxy-endpoint-users) that restricts proxy endpoint traffic from connecting to your internal resources.
 
-* [ Dashboard ](#tab-panel-5761)
-* [ API ](#tab-panel-5762)
+* [ Dashboard ](#tab-panel-5770)
+* [ API ](#tab-panel-5771)
 
 Authorization endpoint
 
@@ -330,8 +330,8 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-* [ Dashboard ](#tab-panel-5759)
-* [ API ](#tab-panel-5760)
+* [ Dashboard ](#tab-panel-5768)
+* [ API ](#tab-panel-5769)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** \> **Resolvers & Proxies** \> **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
@@ -363,8 +363,8 @@ Explain Code
 
 Using your proxy endpoint's domain, you can get the IP addresses assigned to the proxy endpoint:
 
-* [ macOS and Linux ](#tab-panel-5757)
-* [ Windows ](#tab-panel-5758)
+* [ macOS and Linux ](#tab-panel-5766)
+* [ Windows ](#tab-panel-5767)
 
 1. Open a terminal.
 2. Run `dig` on your proxy endpoint's A records to get its IPv4 addresses. For example:  

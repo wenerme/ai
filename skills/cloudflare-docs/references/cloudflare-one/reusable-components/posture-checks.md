@@ -1,6 +1,6 @@
 ---
 title: Posture checks
-description: With Cloudflare Zero Trust, you can configure Zero Trust policies that rely on additional signals from the Cloudflare One Client or from third-party endpoint security providers. When device posture checks are configured, users can only connect to a protected application or network resource if they have a managed or healthy device.
+description: Posture checks in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

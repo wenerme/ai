@@ -78,6 +78,10 @@ Understand refund policies, payment methods, and subscription terms.
 
 Learn how usage-based charges work for products like Workers and other metered services.
 
+[How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) 
+
+Follow a request through Cloudflare and see which products generate charges at each stage.
+
 [Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/) 
 
 Understand how Cloudflare collects sales tax based on your billing address.

@@ -20,14 +20,14 @@ A component which renders list of messages.
 
 ## Properties
 
-| Property          | Type                              | Required | Default         | Description                                                                    |
-| ----------------- | --------------------------------- | -------- | --------------- | ------------------------------------------------------------------------------ |
-| estimateItemSize  | number                            | ✅        | \-              | Estimated height of an item                                                    |
-| iconPack          | IconPack1                         | ❌        | defaultIconPack | Icon pack                                                                      |
-| loadMore          | (lastMessage: Message)            | ✅        | \-              | Function to load more messages. Messages returned from this will be preprended |
-| messages          | Message\[\]                       | ✅        | \-              | Messages to render                                                             |
-| renderer          | (message: Message, index: number) | ✅        | \-              | Render function of the message                                                 |
-| visibleItemsCount | number                            | ✅        | \-              | Maximum visible messages                                                       |
+| Property          | Type                              | Required | Default         | Description                                                                   |
+| ----------------- | --------------------------------- | -------- | --------------- | ----------------------------------------------------------------------------- |
+| estimateItemSize  | number                            | ✅        | \-              | Estimated height of an item                                                   |
+| iconPack          | IconPack1                         | ❌        | defaultIconPack | Icon pack                                                                     |
+| loadMore          | (lastMessage: Message)            | ✅        | \-              | Function to load more messages. Messages returned from this will be prepended |
+| messages          | Message\[\]                       | ✅        | \-              | Messages to render                                                            |
+| renderer          | (message: Message, index: number) | ✅        | \-              | Render function of the message                                                |
+| visibleItemsCount | number                            | ✅        | \-              | Maximum visible messages                                                      |
 
 ## Usage Examples
 

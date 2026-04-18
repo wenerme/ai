@@ -1,6 +1,6 @@
 ---
 title: Path MTU Discovery (PMTUD)
-description: The Maximum Transmission Unit (MTU) is the largest data packet size that a device can send over a network without fragmentation. When you connect to services through the Cloudflare One Client (formerly WARP), your data is encapsulated, which adds extra headers and increases the overall packet size. On some networks, especially cellular or guest Wi-Fi networks, the network's MTU may be smaller than the Cloudflare One Client's default packet size. This mismatch forces packets to be fragmented or dropped entirely, leading to connection instability or complete connection failures.
+description: How Path MTU Discovery (PMTUD) works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

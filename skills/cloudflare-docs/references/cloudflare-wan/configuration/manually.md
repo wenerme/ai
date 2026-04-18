@@ -1,5 +1,6 @@
 ---
 title: Manual configuration
+description: Configure Cloudflare WAN tunnels manually.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

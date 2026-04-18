@@ -1,6 +1,6 @@
 ---
 title: DNS Wireformat
-description: Cloudflare respects DNS wireformat as defined in RFC 1035.
+description: Query 1.1.1.1 DNS over HTTPS using wireformat.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

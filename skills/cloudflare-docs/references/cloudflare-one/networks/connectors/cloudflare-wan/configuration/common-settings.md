@@ -1,6 +1,6 @@
 ---
 title: Common settings
-description: Review this section to learn about the common settings that apply to both the Cloudflare One Appliance (formerly Magic WAN Connector) setup process and the manual setup process for Cloudflare WAN.
+description: Common settings resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: DHCP options
+description: DHCP options for the Cloudflare One Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

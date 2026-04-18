@@ -1,6 +1,6 @@
 ---
 title: DNS filtering
-description: Secure Web Gateway allows you to inspect DNS traffic — the queries your devices make to translate domain names like example.com into IP addresses — and control which websites users can visit. Because every connection starts with a DNS lookup, DNS filtering blocks threats at the earliest stage of a connection, before the device ever reaches the destination. Use DNS policies to block malware domains, phishing sites, or entire content categories across your organization.
+description: DNS filtering in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -66,8 +66,8 @@ To confirm that your device's DNS queries are flowing through Gateway:
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-3843)
-* [ API ](#tab-panel-3844)
+* [ Dashboard ](#tab-panel-5984)
+* [ API ](#tab-panel-5985)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.

@@ -1,6 +1,6 @@
 ---
 title: Tenant API
-description: Gateway supports the Cloudflare Tenant API, which allows Cloudflare-partnered managed service providers (MSPs) to set up and manage Cloudflare accounts and services for their customers. With the Tenant API, MSPs can create Zero Trust deployments with global Gateway policy control. Policies can be customized or overridden at a group or individual account level.
+description: Tenant API in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

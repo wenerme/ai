@@ -1,6 +1,6 @@
 ---
 title: Grafana
-description: This guide covers how to configure Grafana as an OIDC application in Cloudflare One.
+description: Integrate Grafana with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

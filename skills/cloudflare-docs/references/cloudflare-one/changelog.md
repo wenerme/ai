@@ -208,6 +208,44 @@ Previously, all DLP payload logs used a single masking mode that obscured matche
 
 For more information, refer to [DLP logging options](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
 
+## 2026-04-10
+
+[ Browser Isolation ](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) 
+
+  
+**Canvas Remoting optimizes performance for productivity applications**   
+
+Remote Browser Isolation now supports **Canvas Remoting**, improving performance for HTML5 Canvas applications by sending vector draw commands instead of rasterized bitmaps.
+
+#### Key improvements
+
+* **10x bandwidth reduction:** Microsoft Word and other Office apps use 90% less bandwidth
+* **Smooth performance:** Google Sheets maintains consistent 30fps rendering
+* **Responsive terminals:** Web-based development environments and AI notebooks work in real-time
+* **Zero configuration:** Enabled by default for all Browser Isolation customers
+
+#### How it works
+
+Instead of sending rasterized bitmaps for every Canvas update, Browser Isolation now:
+
+1. Captures Canvas draw commands at the source
+2. Converts them to lightweight vector instructions
+3. Renders Canvas content on the client
+
+This reduces bandwidth from hundreds of kilobytes per second to tens of kilobytes per second.
+
+#### Managing Canvas Remoting
+
+To temporarily disable for troubleshooting:
+
+* Right-click the isolated webpage background
+* Select **Disable Canvas Remoting**
+* Re-enable the same way by selecting **Enable Canvas Remoting**
+
+#### Limitations
+
+Currently supports 2D Canvas contexts only. WebGL and 3D graphics applications continue using bitmap rendering. For more information, refer to [Canvas Remoting](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/canvas-remoting/).
+
 ## 2026-04-09
 
 [ CASB ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) 
@@ -2744,7 +2782,7 @@ An [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-c
 
 * **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers as well as MCP servers secured using any third-party or custom OAuth provider. Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
 * **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
-* **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the indiviudal requests made using the tools in the portal.
+* **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal.
 
 This is available in an open beta for all customers across all plans! For more information check out our [blog ↗](https://blog.cloudflare.com/zero-trust-mcp-server-portals/) for this release.
 
@@ -3982,8 +4020,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5567)
-* [ Core Dashboard ](#tab-panel-5568)
+* [ Zero Trust Dashboard ](#tab-panel-5576)
+* [ Core Dashboard ](#tab-panel-5577)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -4392,7 +4430,7 @@ This feature is available across these Email security packages:
 [ Cloudflare WAN ](https://developers.cloudflare.com/cloudflare-wan/) 
 
   
-**Configure your Magic WAN Connector to connect via static IP assigment**   
+**Configure your Magic WAN Connector to connect via static IP assignment**   
 
 You can now locally configure your [Magic WAN Connector](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) to work in a static IP configuration.
 

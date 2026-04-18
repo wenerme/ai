@@ -1,6 +1,6 @@
 ---
 title: Locations
-description: DNS locations are a collection of DNS endpoints which can be mapped to physical entities such as offices, homes, or data centers.
+description: Locations in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

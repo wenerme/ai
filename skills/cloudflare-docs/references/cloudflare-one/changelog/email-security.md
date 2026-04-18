@@ -1,6 +1,6 @@
 ---
 title: Email security
-description: Cloudflare Email security now supports Triage Status Tracking for User Submissions. This enhancement gives SOC teams a streamlined way to track, manage, and prioritize user-submitted emails directly within the Cloudflare One dashboard.
+description: Track updates and changes to Cloudflare One features.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

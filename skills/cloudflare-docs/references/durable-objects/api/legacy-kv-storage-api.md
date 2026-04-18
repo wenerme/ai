@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-4403)
-* [  TypeScript ](#tab-panel-4404)
-* [  Python ](#tab-panel-4405)
+* [  JavaScript ](#tab-panel-6560)
+* [  TypeScript ](#tab-panel-6561)
+* [  Python ](#tab-panel-6562)
 
 JavaScript
 
@@ -283,7 +283,7 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
    * Only available when using SQLite-backed Durable Objects.  
    * Invokes `callback()` wrapped in a transaction, and returns its result.  
    * If `callback()` throws an exception, the transaction will be rolled back.  
-   * The callback must complete synchronously, that is, it should not be declared `async` nor otherwise return a Promise. Only synchronous storage operations can be part of the transaction. This is intended for use with SQL queries using [ctx.storage.sql.exec()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), which complete sychronously.
+   * The callback must complete synchronously, that is, it should not be declared `async` nor otherwise return a Promise. Only synchronous storage operations can be part of the transaction. This is intended for use with SQL queries using [ctx.storage.sql.exec()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), which complete synchronously.
 
 ### `transaction`
 

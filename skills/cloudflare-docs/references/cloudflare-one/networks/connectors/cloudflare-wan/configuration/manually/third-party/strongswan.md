@@ -1,6 +1,6 @@
 ---
 title: strongSwan
-description: This tutorial explains how to set up strongSwan along with Cloudflare WAN (formerly Magic WAN). You will learn how to configure strongSwan, configure an IPsec tunnel, and create Policy-Based Routing (PBR).
+description: Integrate strongSwan with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

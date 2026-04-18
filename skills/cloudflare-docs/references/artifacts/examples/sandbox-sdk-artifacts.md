@@ -53,15 +53,12 @@ cd repo-per-sandbox
 
 The template keeps one Artifacts repo per sandbox ID:
 
-* [  JavaScript ](#tab-panel-5274)
-* [  TypeScript ](#tab-panel-5275)
+* [  JavaScript ](#tab-panel-5283)
+* [  TypeScript ](#tab-panel-5284)
 
 src/index.js
 
 ```
-
-const repo = await env.ARTIFACTS.get(sandboxId);
-
 
 let defaultBranch;
 
@@ -70,24 +67,20 @@ let remote;
 let token;
 
 
-if (repo) {
+try {
 
-  const info = await repo.info();
-
-  if (!info) {
-
-    throw new Error("Repo metadata not found");
-
-  }
+  const repo = await env.ARTIFACTS.get(sandboxId);
 
 
-  defaultBranch = info.defaultBranch;
+  defaultBranch = repo.defaultBranch;
 
-  remote = info.remote;
+  remote = repo.remote;
 
   token = (await repo.createToken("write", 3600)).plaintext;
 
-} else {
+} catch {
+
+  // Repo doesn't exist yet — create it.
 
   const created = await env.ARTIFACTS.create(sandboxId);
 
@@ -109,9 +102,6 @@ src/index.ts
 
 ```
 
-const repo = await env.ARTIFACTS.get(sandboxId);
-
-
 let defaultBranch: string;
 
 let remote: string;
@@ -119,24 +109,20 @@ let remote: string;
 let token: string;
 
 
-if (repo) {
+try {
 
-  const info = await repo.info();
-
-  if (!info) {
-
-    throw new Error("Repo metadata not found");
-
-  }
+  const repo = await env.ARTIFACTS.get(sandboxId);
 
 
-  defaultBranch = info.defaultBranch;
+  defaultBranch = repo.defaultBranch;
 
-  remote = info.remote;
+  remote = repo.remote;
 
   token = (await repo.createToken("write", 3600)).plaintext;
 
-} else {
+} catch {
+
+  // Repo doesn't exist yet — create it.
 
   const created = await env.ARTIFACTS.create(sandboxId);
 
@@ -158,8 +144,8 @@ Explain Code
 
 Use the same ID for the sandbox:
 
-* [  JavaScript ](#tab-panel-5270)
-* [  TypeScript ](#tab-panel-5271)
+* [  JavaScript ](#tab-panel-5279)
+* [  TypeScript ](#tab-panel-5280)
 
 src/index.js
 
@@ -191,8 +177,8 @@ Convert the write token into an authenticated Git remote, then store it as an en
 
 Use a short-lived token and pass it into the sandbox only after the sandbox session is authorized to push changes.
 
-* [  JavaScript ](#tab-panel-5272)
-* [  TypeScript ](#tab-panel-5273)
+* [  JavaScript ](#tab-panel-5281)
+* [  TypeScript ](#tab-panel-5282)
 
 src/index.js
 

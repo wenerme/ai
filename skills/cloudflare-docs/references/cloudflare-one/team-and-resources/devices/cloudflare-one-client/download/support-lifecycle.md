@@ -1,6 +1,6 @@
 ---
 title: Cloudflare One Client lifecycle and support policy
-description: This page details the technical support policies for the Cloudflare One Client (formerly WARP), which operating systems and their versions are supported and for how long, and the process by which Cloudflare One Client features will be deprecated.
+description: Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -122,7 +122,7 @@ As of December 2025, the following versions of Ubuntu are supported:
 
 Cloudflare One Client support for RHEL is pending. Once testing is complete, our policy will be to support all major versions of RHEL within their [Full Support window ↗](https://access.redhat.com/product-life-cycles). Devices must be updated to the latest minor release (for example, `9.4`) to receive support.
 
-As of December 2025, only RHEL 8 has completed full compatibility testing, which is now out of the Red Hat Full Support window. This section will be updated as we add RHEL support to match Red Hat's support lifecyle.
+As of December 2025, only RHEL 8 has completed full compatibility testing, which is now out of the Red Hat Full Support window. This section will be updated as we add RHEL support to match Red Hat's support lifecycle.
 
 | RHEL version | Supported until                                                        |
 | ------------ | ---------------------------------------------------------------------- |

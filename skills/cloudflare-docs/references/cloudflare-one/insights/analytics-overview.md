@@ -1,6 +1,6 @@
 ---
 title: Analytics overview
-description: The Cloudflare One Analytics overview provides a dashboard that reports on how Cloudflare One is protecting your organization and networks. Use this page to monitor usage and potential security concerns within your organization.
+description: Reference information for Analytics overview in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

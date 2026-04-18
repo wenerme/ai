@@ -1,6 +1,6 @@
 ---
 title: Access integrations
-description: The following device posture checks do not require the Cloudflare One Client and can only be used in Cloudflare Access policies. They cannot be used in Gateway network policies.
+description: Access integrations for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

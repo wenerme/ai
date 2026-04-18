@@ -1,6 +1,6 @@
 ---
 title: Form expressions
-description: Rules are written as using the Cloudflare Rules language - a domain-specific language (DSL) intended to mimic Wireshark semantics. For more information, refer to the Rules language documentation.
+description: Write expressions for Network Firewall rules.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

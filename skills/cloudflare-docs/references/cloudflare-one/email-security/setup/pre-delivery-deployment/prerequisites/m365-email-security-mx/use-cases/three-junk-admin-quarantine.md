@@ -1,6 +1,6 @@
 ---
 title: 3 - Junk email and administrative quarantine
-description: In this tutorial, you will learn how to deliver BULK messages to the users's junk email folder, and MALICIOUS, SPAM, and SPOOF messages to the administrative quarantine (this requires an administrator to release the emails).
+description: Integrate 3 - Junk email and administrative quarantine with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

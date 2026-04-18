@@ -1,6 +1,6 @@
 ---
 title: Extended DNS error codes
-description: Extended DNS Error Codes is a method to return additional information about the cause of DNS errors. As there are many reasons why a DNS query might fail, it became necessary to provide additional information on the exact cause of an error.
+description: Extended DNS error codes returned by 1.1.1.1.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

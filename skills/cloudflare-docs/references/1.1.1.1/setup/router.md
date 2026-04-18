@@ -1,6 +1,6 @@
 ---
 title: Router
-description: It is possible to encrypt DNS traffic out from your router using DNS-over-TLS if it is running OpenWrt. For more details, see our blog post on the topic: Adding DNS-Over-TLS support to OpenWrt (LEDE) with Unbound.
+description: Configure 1.1.1.1 on your router.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

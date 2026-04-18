@@ -1,5 +1,6 @@
 ---
 title: Privacy
+description: Privacy commitments and audits for the 1.1.1.1 resolver.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

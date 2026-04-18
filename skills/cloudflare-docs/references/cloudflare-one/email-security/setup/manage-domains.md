@@ -1,6 +1,6 @@
 ---
 title: Manage domains
-description: Once you have deployed your domain, Email security allows you to add, filter and edit domains. You can also choose to stop a domain from being scanned.
+description: Add, edit, and manage domains protected by Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

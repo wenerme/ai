@@ -1,6 +1,6 @@
 ---
 title: Edit basic information
-description: In Basic information, you can change the name and description of your Cloudflare One Appliance (formerly Magic WAN Connector).
+description: Edit basic information in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

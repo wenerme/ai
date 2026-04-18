@@ -167,7 +167,7 @@ Terminal window
 
 ```
 
-esc env set ${ESC_ENV} environementVariables.TOP_SECRET "aliens are real" --secret
+esc env set ${ESC_ENV} environmentVariables.TOP_SECRET "aliens are real" --secret
 
 
 ```

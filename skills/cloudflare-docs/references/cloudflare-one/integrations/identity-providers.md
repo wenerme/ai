@@ -1,6 +1,6 @@
 ---
 title: Identity providers
-description: Cloudflare One integrates with your organization's identity provider to apply Cloudflare One and Secure Web Gateway policies. If you work with partners, contractors, or other organizations, you can integrate multiple identity providers simultaneously.
+description: Identity providers in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -32,8 +32,8 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-* [ Dashboard ](#tab-panel-3475)
-* [ Terraform (v5) ](#tab-panel-3476)
+* [ Dashboard ](#tab-panel-5602)
+* [ Terraform (v5) ](#tab-panel-5603)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.

@@ -1,6 +1,6 @@
 ---
 title: Update the Cloudflare One Client
-description: This guide covers best practices for updating the Cloudflare One Client (formerly WARP).
+description: How Update the Cloudflare One Client works in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

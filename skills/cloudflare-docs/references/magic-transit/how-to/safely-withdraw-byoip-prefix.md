@@ -1,6 +1,6 @@
 ---
 title: Safely withdraw a BYOIP prefix
-description: When you prepare to remove traffic for a Bring Your Own IP (BYOIP) prefix from the Cloudflare edge, a direct BGP withdrawal action carries the risk of a stuck BGP route. This state occurs when a route becomes stuck in the Internet's Default-Free Zone (DFZ). Core routers that missed the withdrawal announcement continue forwarding traffic to a now-inactive next-hop (what is known as a blackhole). You can read more about this in our blog post BGP zombies and excessive path hunting.
+description: Safely withdraw a BYOIP prefix from Magic Transit.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

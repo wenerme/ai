@@ -1,5 +1,6 @@
 ---
 title: Access settings
+description: Access settings resources and guides for Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Google Workspace
-description: This guide covers how to configure Google Workspace as a SAML application in Cloudflare One.
+description: Integrate Google Workspace with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

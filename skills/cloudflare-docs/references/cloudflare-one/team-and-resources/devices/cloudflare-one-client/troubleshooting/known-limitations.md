@@ -1,6 +1,6 @@
 ---
 title: Known limitations
-description: Below, you will find information on devices, software, and configurations that are incompatible with the Cloudflare One Client (formerly WARP).
+description: Reference information for Known limitations in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

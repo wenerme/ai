@@ -1,6 +1,6 @@
 ---
 title: Application-aware policies
-description: Standard traffic policies match on network-layer attributes like IP addresses and port ranges. Application-aware policies go further — they identify traffic by the application generating it, so you can make routing and security decisions based on what the traffic is, not just where it is going.
+description: How Application-aware policies works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

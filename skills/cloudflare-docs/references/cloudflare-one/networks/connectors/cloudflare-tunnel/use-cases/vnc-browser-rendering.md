@@ -1,6 +1,6 @@
 ---
 title: Render a VNC client in the browser
-description: A Virtual Network Computer (VNC) server provides users with remote access to a computer's desktop environment. Cloudflare can render a VNC terminal in the browser without any client-side software or configuration.
+description: Render a VNC client in the browser in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1185,7 +1185,7 @@ Here is the complete default language pack offered by RealtimeKit:
 
   "ai.chat.tooltip": "This conversation will just be visible to you and not to others in the call.",
 
-  "ai.chat.summerise": "Hey AI, summarise this call",
+  "ai.chat.summarise": "Hey AI, summarise this call",
 
   "ai.chat.agenda": "Hey AI, what is today's agenda?",
 
@@ -1279,7 +1279,7 @@ Here is the complete default language pack offered by RealtimeKit:
 
   "remote_access.allow": "Please select whom you want to give access to.",
 
-  "remote_access.grant": "Grant acess",
+  "remote_access.grant": "Grant access",
 
   "remote_access.indicator": "Any plugin or screenshare you switch to will sync the change across the meeting",
 
@@ -1353,7 +1353,7 @@ Here is the complete default language pack offered by RealtimeKit:
 
   "date.today": "Today",
 
-  "date.yesteday": "Yesterday",
+  "date.yesterday": "Yesterday",
 
   "date.sunday": "Sunday",
 

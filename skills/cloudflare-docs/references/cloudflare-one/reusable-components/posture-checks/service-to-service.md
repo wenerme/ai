@@ -1,5 +1,6 @@
 ---
 title: Service-to-service checks
+description: Service-to-service checks for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -59,6 +59,12 @@ Warning
 
 Fees are non-refundable. You are billed for the full billing period in which you cancel and no refunds are issued for unused time. After cancellation, you retain access to paid services through the end of the current billing period. For full terms, refer to the [Cloudflare Terms of Use ↗](https://www.cloudflare.com/terms/).
 
+## Related resources
+
+* [Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) — Upgrade or downgrade instead of cancelling
+* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
+* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When downgrades and cancellations take effect
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/cancel-subscription/","name":"Cancel Cloudflare subscriptions"}}]}
 ```

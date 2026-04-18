@@ -1,6 +1,6 @@
 ---
 title: Traceroutes
-description: You can run traceroutes to analyze the hop-by-hop Internet path and latency between Cloudflare's network and your network.
+description: Run traceroutes across your Magic Transit network.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

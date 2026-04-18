@@ -1,6 +1,6 @@
 ---
 title: Anthropic
-description: The Anthropic integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Anthropic account that could leave you and your organization vulnerable.
+description: Reference information for Anthropic in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

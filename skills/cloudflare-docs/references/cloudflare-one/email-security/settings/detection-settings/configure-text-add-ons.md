@@ -1,6 +1,6 @@
 ---
 title: Configure text add-ons
-description: You can create custom labels to be used as the subject or body prefix for emails with specific dispositions.
+description: Configure text add-ons in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Device registration
-description: A device registration represents an individual session of the Cloudflare One Client on a physical device, linking a user (or service token) and the device to your Zero Trust organization. It is created the first time the Cloudflare One Client authenticates on that device.
+description: Reference information for Device registration in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -38,8 +38,8 @@ A single physical device can have [multiple device registrations](https://develo
 
 ## Review device registration status
 
-* [ Dashboard ](#tab-panel-3750)
-* [ API ](#tab-panel-3751)
+* [ Dashboard ](#tab-panel-5891)
+* [ API ](#tab-panel-5892)
 
 To review how many device registrations are associated with a device:
 
@@ -149,8 +149,8 @@ The following table summarizes the actions available for managing device registr
 
 Devices can have multiple device registrations. Deleting one registration does not affect other registrations on the same device.
 
-* [ Dashboard ](#tab-panel-3752)
-* [ API ](#tab-panel-3753)
+* [ Dashboard ](#tab-panel-5893)
+* [ API ](#tab-panel-5894)
 
 To delete a device registration:
 

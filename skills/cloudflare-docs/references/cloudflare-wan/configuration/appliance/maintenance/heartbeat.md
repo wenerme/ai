@@ -1,6 +1,6 @@
 ---
 title: Heartbeat
-description: Cloudflare One Appliance (formerly Magic WAN Connector) communicates periodically with Cloudflare via HTTPS. This is also known as a heartbeat, and lets Cloudflare know that the Cloudflare One Appliance in question is connected to the Internet and reachable.
+description: Monitor Appliance heartbeat status.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

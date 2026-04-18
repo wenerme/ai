@@ -1,6 +1,6 @@
 ---
 title: Atlassian Jira
-description: The Atlassian Jira integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Atlassian Jira Cloud account that could leave you and your organization vulnerable.
+description: Reference information for Atlassian Jira in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

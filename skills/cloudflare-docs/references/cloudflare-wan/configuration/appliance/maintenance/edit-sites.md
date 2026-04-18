@@ -1,5 +1,6 @@
 ---
 title: Edit sites
+description: Edit Appliance site assignments.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

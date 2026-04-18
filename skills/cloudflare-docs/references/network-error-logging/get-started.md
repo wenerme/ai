@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Network Error Logging is available to users on all plan types.
+description: Enable Network Error Logging for your zone.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

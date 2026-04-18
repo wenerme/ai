@@ -1,6 +1,6 @@
 ---
 title: Miro
-description: This guide covers how to configure Miro as a SAML application in Cloudflare One.
+description: Integrate Miro with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -47,8 +47,8 @@ This guide covers how to configure [Miro ↗](https://help.miro.com/hc/articles/
 
 ## 2\. Add a SAML SSO provider to Miro
 
-* [ business plan ](#tab-panel-3424)
-* [ enterprise plan ](#tab-panel-3425)
+* [ business plan ](#tab-panel-5557)
+* [ enterprise plan ](#tab-panel-5558)
 
 1. In Miro, select your profile picture > **Settings** \> **\*\*Security\*\***.
 2. Turn on **SSO/SAML**.

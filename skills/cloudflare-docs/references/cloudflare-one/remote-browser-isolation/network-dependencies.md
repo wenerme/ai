@@ -1,6 +1,6 @@
 ---
 title: Browser Isolation with firewall
-description: If your organization uses a firewall or other policies to restrict Internet traffic, you may need to make a few changes to allow Browser Isolation to connect.
+description: Reference information for Browser Isolation with firewall in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

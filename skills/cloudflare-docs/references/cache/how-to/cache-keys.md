@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 ### Tags
 
-[ CORS ](https://developers.cloudflare.com/search/?tags=CORS)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation) 
+[ CORS ](https://developers.cloudflare.com/search/?tags=CORS)[ Geolocation ](https://developers.cloudflare.com/search/?tags=Geolocation)[ Headers ](https://developers.cloudflare.com/search/?tags=Headers)[ Cookies ](https://developers.cloudflare.com/search/?tags=Cookies) 
 
 Was this helpful?
 
@@ -173,7 +173,7 @@ Cache keys options availability varies according to your plan.
 
 ## Troubleshooting
 
-You can use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to find which Cache Key settings were applied to your request. When you send a request through the Trace tool, if the request was served from cache, it will show a cache hit in the **Cache Paremeters** section. Then select **View paremeter detail** to see exactly which Cache Key properties were used.
+You can use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to find which Cache Key settings were applied to your request. When you send a request through the Trace tool, if the request was served from cache, it will show a cache hit in the **Cache Parameters** section. Then select **View parameter detail** to see exactly which Cache Key properties were used.
 
 ## Limitations
 

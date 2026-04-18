@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot routing and BGP
-description: This guide helps you diagnose and resolve common routing and BGP issues with Magic Transit. These issues can affect traffic delivery, cause unexpected latency, or result in connectivity loss.
+description: Troubleshoot Magic Transit routing and BGP issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

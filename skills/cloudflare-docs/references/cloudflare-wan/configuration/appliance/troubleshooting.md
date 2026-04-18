@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance (formerly Magic WAN Connector) in the Cloudflare dashboard. These metrics help you troubleshoot potential issues with your device. The information spans categories such as:
+description: Troubleshoot Appliance connectivity and configuration issues.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

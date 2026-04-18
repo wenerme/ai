@@ -35,7 +35,7 @@ Terminal window
 
 ```
 
-git checkout -b step3-zone-setings
+git checkout -b step3-zone-settings
 
 
 ```

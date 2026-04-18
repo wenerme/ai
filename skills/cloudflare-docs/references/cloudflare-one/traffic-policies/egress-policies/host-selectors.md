@@ -1,6 +1,6 @@
 ---
 title: Host selectors
-description: Egress policies are evaluated at Layer 4 (https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) of the OSI model, where only IP addresses are available — not hostnames. The Application, Content Categories, Domain, and Host selectors need to match traffic by hostname, so Gateway uses a two-step process:
+description: Configure Host selectors in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -47,8 +47,8 @@ These selectors require additional configuration before they work.
 
 To turn on the selectors for your account:
 
-* [ Dashboard ](#tab-panel-3993)
-* [ API ](#tab-panel-3994)
+* [ Dashboard ](#tab-panel-5980)
+* [ API ](#tab-panel-5981)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Policy settings**, turn on **Allow egress policy host selectors**.
@@ -115,7 +115,7 @@ If you need to support devices running prior versions of WARP, add and deploy th
   </dict>  
 </array>  
 ```
-1. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):  
+2. In your WARP [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/), configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) such that the initial resolved IPs route through the WARP tunnel. Configuration depends on your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode):  
    * **Exclude mode**: Delete `100.64.0.0/10` from your Split Tunnels list. We recommend [adding back the IP ranges](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use the CGNAT address space.  
    * **Include mode**: Add Split Tunnel entries for the following IP addresses:  
          * **IPv4**: `100.80.0.0/16`  

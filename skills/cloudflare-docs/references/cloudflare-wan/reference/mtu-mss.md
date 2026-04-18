@@ -1,6 +1,6 @@
 ---
 title: Maximum transmission unit and maximum segment size
-description: Because Cloudflare WAN wraps your traffic in additional headers (encapsulation), the effective space available for your original data in each packet is reduced. If you do not account for this overhead, packets may be too large for the network path and will be dropped or fragmented — leading to performance loss or failed connections. This page explains the two key values you need to configure: maximum transmission unit (MTU) and maximum segment size (MSS).
+description: MTU and MSS values for WAN tunnels.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

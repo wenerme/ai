@@ -1,6 +1,6 @@
 ---
 title: Manually add domains
-description: This page will teach you how to manually add domains via BCC/Journaling on the Cloudflare dashboard.
+description: Manually add domains for BCC or journaling email scanning.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

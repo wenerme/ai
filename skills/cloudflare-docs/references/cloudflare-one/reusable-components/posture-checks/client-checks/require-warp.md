@@ -1,6 +1,6 @@
 ---
 title: Require WARP
-description: Cloudflare One enables you to restrict access to your applications to devices running the Cloudflare One Client. This allows you to flexibly ensure that a user's traffic is secure and encrypted before allowing access to a resource protected behind Cloudflare One.
+description: Require WARP in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

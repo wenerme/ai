@@ -1,6 +1,6 @@
 ---
 title: Packet filtering (Cloudflare Network Firewall) fields
-description: cf.colo.name  String
+description: Reference information for Packet filtering (Cloudflare Network Firewall) fields in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

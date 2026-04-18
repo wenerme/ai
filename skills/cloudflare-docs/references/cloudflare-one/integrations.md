@@ -1,6 +1,6 @@
 ---
 title: Integrations
-description: Integrate third-party applications and services with Cloudflare One.
+description: Integrations resources and guides for Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Team submissions
-description: Team submissions are the emails your security team submitted for submission. All team submissions receive a human review by Cloudflare.
+description: Team submissions in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

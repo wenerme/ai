@@ -81,7 +81,7 @@ DVR Mode on a Live Input ID URL:
 ## Known Limitations
 
 * When using DVR Mode and a player/manifest created using a Live Input ID, the player may stall when trying to switch quality levels if a viewer is still watching after a broadcast has concluded.
-* Performance may be degraded for DVR-enabled broadcasts longer than three hours. Manifests are limited to a maxiumum of 7,200 segments. Segment length is determined by the keyframe interval, also called GOP size.
+* Performance may be degraded for DVR-enabled broadcasts longer than three hours. Manifests are limited to a maximum of 7,200 segments. Segment length is determined by the keyframe interval, also called GOP size.
 * DVR Mode relies on Version 8 of the HLS manifest specification. Stream uses HLS Version 6 in all other contexts. HLS v8 offers extremely broad compatibility but may not work with certain old player libraries or older devices.
 * DVR Mode is not available for DASH manifests.
 

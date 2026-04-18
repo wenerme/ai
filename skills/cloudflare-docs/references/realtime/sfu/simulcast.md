@@ -43,7 +43,7 @@ The `simulcast` configuration object in the API call when you start pulling a re
 * `ridNotAvailable`: Controls what happens when the preferred RID is no longer available, for example when the publisher stops sending it.  
    * `none`: Do nothing.  
    * `asciibetical`: Switch to the next available RID based on the priority ordering, where 'a' is most desirable and 'z' is least desirable.  
-You will likely want to order the asciibetical RIDs based on your desired metric, such as higest resoltion to lowest or highest bandwidth to lowest.
+You will likely want to order the asciibetical RIDs based on your desired metric, such as highest resolution to lowest or highest bandwidth to lowest.
 
 ### Bandwidth Management across media tracks
 

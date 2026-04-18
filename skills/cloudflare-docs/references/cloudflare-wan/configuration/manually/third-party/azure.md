@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure
-description: Microsoft Azure integration guides currently available:
+description: Connect Microsoft Azure to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

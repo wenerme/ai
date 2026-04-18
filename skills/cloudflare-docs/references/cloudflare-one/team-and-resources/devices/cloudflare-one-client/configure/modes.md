@@ -1,6 +1,6 @@
 ---
 title: Client modes
-description: You can deploy the Cloudflare One Client (formerly WARP) in different modes to control the types of traffic sent to Cloudflare Gateway. The client mode determines which Zero Trust features are available on the device.
+description: Reference information for Client modes in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

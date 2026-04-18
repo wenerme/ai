@@ -1,6 +1,6 @@
 ---
 title: Private DNS
-description: By default, all DNS requests on the user device are resolved by Cloudflare's public DNS resolver except for common top level domains used for local resolution (such as localhost). You can connect an internal DNS resolver to Cloudflare and use it to resolve non-publicly routed domains.
+description: Private DNS in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configure the Cloudflare One Client
-description: You can configure Cloudflare One Client (formerly WARP) settings to work alongside existing infrastructure and provide users with differential access to resources.
+description: Configure the Cloudflare One Client resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Email security API
+description: Email security API for Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

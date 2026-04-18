@@ -1,6 +1,6 @@
 ---
 title: Enforce MFA
-description: Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
+description: Enforce MFA in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

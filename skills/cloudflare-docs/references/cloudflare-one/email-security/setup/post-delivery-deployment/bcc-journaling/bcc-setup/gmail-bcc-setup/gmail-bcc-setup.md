@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: For customers using Gmail as their email provider, setting up Email security is quick and easy.
+description: Overview in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

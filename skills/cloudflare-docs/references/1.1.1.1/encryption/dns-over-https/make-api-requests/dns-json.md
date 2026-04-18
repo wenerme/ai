@@ -1,6 +1,6 @@
 ---
 title: Using JSON
-description: Cloudflare's DNS over HTTPS endpoint also supports JSON format for querying DNS data. For lack of an agreed upon JSON schema for DNS over HTTPS in the Internet Engineering Task Force (IETF), Cloudflare has chosen to follow the same schema as Google's DNS over HTTPS resolver.
+description: Query 1.1.1.1 DNS over HTTPS using JSON format.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

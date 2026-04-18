@@ -1,6 +1,6 @@
 ---
 title: Aruba EdgeConnect Enterprise
-description: Cloudflare partners with Aruba's EdgeConnect SD-WAN solution to provide users with an integrated solution. The EdgeConnect appliances manage subnets associated with branch offices or retail locations. Anycast tunnels are set up between the EdgeConnect appliances and Cloudflare to securely route traffic.
+description: Integrate Aruba EdgeConnect Enterprise with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

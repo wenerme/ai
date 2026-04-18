@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Network Firewall fields
-description: cf.colo.name  String
+description: Fields available in Network Firewall rule expressions.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

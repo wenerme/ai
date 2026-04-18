@@ -38,6 +38,12 @@ Note
 
 You may have to wait up to one billing period for updates to appear in your Cloudflare invoice.
 
+## Related resources
+
+* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — Download and manage invoices
+* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — How to read your invoice
+* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing email
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/troubleshoot-invoices/","name":"Troubleshoot invoices"}}]}
 ```

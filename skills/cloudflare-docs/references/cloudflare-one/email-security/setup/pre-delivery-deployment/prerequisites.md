@@ -1,5 +1,6 @@
 ---
 title: Prerequisites
+description: Prerequisites resources and guides for Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

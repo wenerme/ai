@@ -1,6 +1,6 @@
 ---
 title: Downloads
-description: Cloudflare Tunnel requires the installation of a lightweight server-side daemon, cloudflared, to connect your infrastructure to Cloudflare. If you are creating a tunnel through the dashboard, you can simply copy-paste the installation command shown in the dashboard.
+description: Reference information for Downloads in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

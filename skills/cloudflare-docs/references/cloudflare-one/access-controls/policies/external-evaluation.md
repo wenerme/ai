@@ -1,6 +1,6 @@
 ---
 title: External Evaluation rules
-description: With Cloudflare Access, you can create Allow or Block policies which evaluate the user based on custom criteria. This is done by adding an External Evaluation rule to your policy. The External Evaluation selector requires two values:
+description: External Evaluation rules in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -65,8 +65,8 @@ The command will output the binding name and KV namespace ID, for example
    * `[[kv_namespaces]]`: Add the output generated in the previous step.  
    * `<TEAM_NAME>`: your Cloudflare One team name.
 
-* [  wrangler.jsonc ](#tab-panel-3442)
-* [  wrangler.toml ](#tab-panel-3443)
+* [  wrangler.jsonc ](#tab-panel-5569)
+* [  wrangler.toml ](#tab-panel-5570)
 
 JSONC
 
@@ -82,7 +82,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-17",
 
   "main": "index.js",
 
@@ -125,7 +125,7 @@ workers_dev = true
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-17"
 
 main = "index.js"
 

@@ -1,6 +1,6 @@
 ---
 title: Google Cloud VPN
-description: This tutorial explains how to configure IPsec VPN between Cloudflare WAN (formerly Magic WAN) and a Google Cloud Platform (GCP) Cloud VPN.
+description: Integrate Google Cloud VPN with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

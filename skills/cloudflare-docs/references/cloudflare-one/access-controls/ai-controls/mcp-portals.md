@@ -1,6 +1,6 @@
 ---
 title: MCP server portals
-description: An MCP server portal centralizes multiple Model Context Protocol (MCP) servers onto a single HTTP endpoint.
+description: MCP server portals in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -193,8 +193,8 @@ For more information on building with code mode, refer to the [code mode SDK ref
 
 To turn off code mode for a portal:
 
-* [ Dashboard ](#tab-panel-5532)
-* [ API ](#tab-panel-5533)
+* [ Dashboard ](#tab-panel-5541)
+* [ API ](#tab-panel-5542)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.

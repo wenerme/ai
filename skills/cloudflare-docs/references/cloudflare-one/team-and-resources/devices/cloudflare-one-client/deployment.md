@@ -1,6 +1,6 @@
 ---
 title: Deploy the Cloudflare One Client
-description: Depending on how your organization is structured, you can deploy the Cloudflare One Client (formerly WARP) in one of two ways:
+description: Deploy the Cloudflare One Client resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

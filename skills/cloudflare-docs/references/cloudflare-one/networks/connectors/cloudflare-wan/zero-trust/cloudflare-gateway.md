@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Gateway
-description: Cloudflare Gateway, our comprehensive Secure Web Gateway, allows you to set up policies to inspect DNS, network, HTTP, and egress traffic.
+description: Reference information for Cloudflare Gateway in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Antivirus
-description: The Antivirus device posture attribute checks if any antivirus software is installed and active on a device. The Cloudflare One Client queries the Windows Security Center API to determine the state of registered security products. For the posture check to pass, Windows Security Center must report that a security product is turned on and up to date.
+description: Antivirus in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Fleet
-description: This guide covers how to deploy the Cloudflare One Client (formerly WARP) using Fleet device management software.
+description: Fleet in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

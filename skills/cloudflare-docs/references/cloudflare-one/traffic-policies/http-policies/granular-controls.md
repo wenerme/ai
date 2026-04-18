@@ -1,6 +1,6 @@
 ---
 title: Application Granular Controls
-description: With Application Granular Controls, you can create Gateway HTTP policies to control specific user actions within supported SaaS applications. This allows you to give users access to an application while restricting the actions that they can take within the application.
+description: How Application Granular Controls works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -36,8 +36,8 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-3887)
-* [ API ](#tab-panel-3888)
+* [ Dashboard ](#tab-panel-6028)
+* [ API ](#tab-panel-6029)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.

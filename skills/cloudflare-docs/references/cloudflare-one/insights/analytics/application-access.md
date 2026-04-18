@@ -1,6 +1,6 @@
 ---
 title: Application Access Report
-description: The Application Access Report provides a high-level summary of Access usage across your organization. This dashboard helps administrators monitor authentication patterns, identity provider usage, and Access configuration metrics. If Access is not configured in your account, the dashboard appears empty.
+description: Reference information for Application Access Report in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

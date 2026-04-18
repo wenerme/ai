@@ -75,7 +75,7 @@ _**Deprecated**_
 #### module.exports.pinned
 
 **Kind**: instance property of [module.exports](#exp%5Fmodule%5FRTKChat--module.exports)  
-**Deprecated.**: This property is deprectated. Please use `fetchPinnedMessages()` instead. Returns an array of pinned messages.  
+**Deprecated.**: This property is deprecated. Please use `fetchPinnedMessages()` instead. Returns an array of pinned messages.  
 
 #### module.exports.setMaxTextLimit(limit)
 

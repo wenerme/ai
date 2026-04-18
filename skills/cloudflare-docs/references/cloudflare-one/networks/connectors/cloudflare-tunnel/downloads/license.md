@@ -1,8 +1,6 @@
 ---
 title: License
-description: Apache License
-Version 2.0, January 2004
-http://www.apache.org/licenses/
+description: Reference information for License in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

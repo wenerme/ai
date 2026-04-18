@@ -1,6 +1,6 @@
 ---
 title: Create a locally-managed tunnel
-description: Follow this step-by-step guide to get your first tunnel up and running using the CLI.
+description: Create a locally-managed tunnel in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -35,10 +35,10 @@ Before you start, make sure you:
 
 ## 1\. Download and install `cloudflared`
 
-* [ Windows ](#tab-panel-5645)
-* [ macOS ](#tab-panel-5646)
-* [ Linux ](#tab-panel-5647)
-* [ Build from source ](#tab-panel-5648)
+* [ Windows ](#tab-panel-5654)
+* [ macOS ](#tab-panel-5655)
+* [ Linux ](#tab-panel-5656)
+* [ Build from source ](#tab-panel-5657)
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`

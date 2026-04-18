@@ -1,6 +1,6 @@
 ---
 title: Device monitoring
-description: Monitor performance and network status for your organization's fleet or individual user devices.
+description: Device monitoring in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Device monitoring
 
-Monitor performance and network status for your organization's [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status) or individual [user devices](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#device-monitoring).
+Monitor performance and network status for your organization's [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#fleet-status) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization) or individual [user devices](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/#device-monitoring).
 
 Network and device performance data helps IT administrators troubleshoot performance issues, investigate network connectivity problems, and monitor device health.
 
@@ -41,10 +41,10 @@ To view analytics on a per-device level, go to [Device monitoring](https://devel
 * **Connectivity status**: Percentage of devices in a given Cloudflare One Client state.  
 | Status       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |  
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |  
-| Connected    | the Cloudflare One Client has successfully established a connection to the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                                                 |  
-| Disconnected | the Cloudflare One Client has been intentionally or unintentionally disconnected from the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                                  |  
+| Connected    | The Cloudflare One Client has successfully established a connection to the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                                                 |  
+| Disconnected | The Cloudflare One Client has been intentionally or unintentionally disconnected from the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                                  |  
 | Paused       | A user or administrator has taken an explicit action to temporarily turn off WARP, for example by entering an [admin override code](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-admin-override-codes). Paused clients will [auto-connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) after a timeout period. |  
-| Connecting   | the Cloudflare One Client is pending connection, but is actively trying to establish a connection to the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                   |
+| Connecting   | The Cloudflare One Client is pending connection, but is actively trying to establish a connection to the Cloudflare global network.                                                                                                                                                                                                                                                                                                                                                   |
 * **Mode**: [Client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
 * **Colo**: Percentage of devices connected to a given Cloudflare data center.
 * **Platform**: Operating system of the device.
@@ -69,7 +69,7 @@ To view a device's network and device performance metrics:
 
 #### Network performance metrics
 
-* **Unique networks over time**: How many unique SSIDs the device was connected to.
+* **Unique networks over time**: How many unique SSIDs (Wi-Fi network names) the device was connected to.
 * **Network I/O**: How much data the device transferred (uploads and downloads) over the primary network interface.
 
 #### Device performance metrics

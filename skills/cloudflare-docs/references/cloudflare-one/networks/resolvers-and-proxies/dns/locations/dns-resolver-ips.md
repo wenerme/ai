@@ -1,6 +1,6 @@
 ---
 title: DNS resolver IPs and hostnames
-description: When you create a DNS location, Gateway assigns IPv4/IPv6 addresses and DoT/DoH hostnames to that location. These are the IP addresses and hostnames you send your DNS queries to for Gateway to resolve.
+description: How DNS resolver IPs and hostnames works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

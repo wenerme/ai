@@ -1,6 +1,6 @@
 ---
 title: Virtual networks
-description: A virtual network is a private routing domain within your Cloudflare account. It defines which private resources are reachable from the Cloudflare network and keeps traffic separated between different environments, partners, or applications.
+description: How Virtual networks works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

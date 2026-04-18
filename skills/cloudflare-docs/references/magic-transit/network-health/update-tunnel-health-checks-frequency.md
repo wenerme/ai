@@ -1,6 +1,6 @@
 ---
 title: Update tunnel health checks frequency
-description: By default, Cloudflare servers send health checks to each GRE, Cloudflare Network Interconnect (CNI), or IPsec tunnel endpoint you configure to receive traffic from Magic Transit.
+description: Update tunnel health check frequency.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -22,8 +22,8 @@ You can configure the health check frequency through the dashboard or [the API](
 
 Available options are `low`, `mid`, and `high`.
 
-* [ Dashboard ](#tab-panel-5407)
-* [ API ](#tab-panel-5408)
+* [ Dashboard ](#tab-panel-7636)
+* [ API ](#tab-panel-7637)
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.

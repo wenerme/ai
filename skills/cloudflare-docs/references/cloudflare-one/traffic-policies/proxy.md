@@ -1,6 +1,6 @@
 ---
 title: Proxy
-description: You can forward HTTP and network traffic to Gateway for logging and filtering. Gateway can proxy both outbound traffic and traffic directed to resources connected via a Cloudflare Tunnel, Generic Routing Encapsulation (GRE) tunnel, or IPsec tunnel. When a user connects to the Gateway proxy, Gateway will accept the connection and establish a new, separate connection to the origin server.
+description: How Proxy works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -81,8 +81,8 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-6059)
-* [  Docker ](#tab-panel-6060)
+* [  Linux ](#tab-panel-6068)
+* [  Docker ](#tab-panel-6069)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:  
 a. Find the user that owns the `cloudflared` process:  

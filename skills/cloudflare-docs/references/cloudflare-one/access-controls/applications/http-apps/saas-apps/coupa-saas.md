@@ -1,6 +1,6 @@
 ---
 title: Coupa
-description: This guide covers how to configure Coupa as a SAML application in Cloudflare One.
+description: Coupa in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

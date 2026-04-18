@@ -52,7 +52,7 @@ For complete details, refer to the [Cloudflare Logpush to Azure documentation](h
 4. Select **Install** in the right pane.
 5. In your **Sentinel workspace**, go to **Data connectors**.
 6. Search for the **Cloudflare connector** (may appear as **Cloudflare (using Azure Blob Storage)**).
-7. Selecte the connector to configure it.
+7. Select the connector to configure it.
 ![Azure portal](https://developers.cloudflare.com/_astro/azure-portal.DumVF0xP_1Jxd4n.webp) 
 
 ## Step 4: Fill out required fields

@@ -1,6 +1,6 @@
 ---
 title: Community Plugins
-description: The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabeticallly-ordered list using the link in the footer.
+description: The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabetically-ordered list using the link in the footer.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Community Plugins
 
-The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabeticallly-ordered list using the link in the footer.
+The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabetically-ordered list using the link in the footer.
 
 * [pages-plugin-asset-negotiation ↗](https://github.com/Cherry/pages-plugin-asset-negotiation)  
 Given a folder of assets in multiple formats, this Plugin will automatically negotiate with a client to serve an optimized version of a requested asset.

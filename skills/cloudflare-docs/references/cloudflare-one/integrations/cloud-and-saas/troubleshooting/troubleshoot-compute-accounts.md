@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot compute accounts
-description: Cloudflare CASB detects when compute accounts are unhealthy or outdated. Common compute account issues include security or functionality updates and API token misconfigurations.
+description: Troubleshoot Troubleshoot compute accounts issues in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

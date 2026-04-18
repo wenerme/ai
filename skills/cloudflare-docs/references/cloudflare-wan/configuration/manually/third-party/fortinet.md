@@ -1,6 +1,6 @@
 ---
 title: Fortinet
-description: This guide provides information and examples of how to configure Cloudflare WAN (formerly Magic WAN) with Internet Protocol Security (IPsec) tunnels in conjunction with Fortinet FortiGate firewalls.
+description: Connect Fortinet to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

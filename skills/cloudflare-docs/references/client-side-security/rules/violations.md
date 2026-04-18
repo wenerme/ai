@@ -30,8 +30,8 @@ Information about rule violations is also available via [GraphQL API](#get-rule-
 
 To view rule violation information:
 
-* [  New dashboard ](#tab-panel-5461)
-* [ Old dashboard ](#tab-panel-5462)
+* [  New dashboard ](#tab-panel-5467)
+* [ Old dashboard ](#tab-panel-5468)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -135,7 +135,7 @@ query PageShieldReports(
 
 ```
 
-[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkEAWMQEYA7HGGp+-VMIwVqdBixh4oVPkNETp8xQA5lq9SAC+QA)
+[Run in GraphQL API Explorer](https://graphql.cloudflare.com/explorer?query=I4VwpgTgngBACgQwOZgMoAsCWYA2ATAJTAAcB7CAFwGcAKAKBhgBIAvUgOzABVkAuGKhQiZ2SBszwIKYCpgC2aCgkr8u8sOKaTpshQFF2eVeroBKGAG9xAN2wB3SJfGM2nWgDNMOaRH4WYrtx8zIE8SDAAvuZWjLEwxMhoWLiEJOTUAIKSxLLWYADiEKQgxLTOcTA48pgU-ACMAAwN5XHkeJAAQlD8ANraMuoA+hmoAMIAui2xnt6QfjD9umCDKMD8WlIDCqhKlAA0C5tLgzhgaxJH6gZ4kVPRU4wI1uExFXFUCHLEpwCS7D7WBA4B63N6MADGxX+ILw6nYVEwHCoTjBsTIVXBUB+ABEQYxFiZUfjLgoALIiEDSPGHHTqABimDy5PYlLAVGpBIUDPc0jA7GZrPZRJpWzAAAkge4APLuMXFCAckni+XUkAQYHCtU4OWCanoUi64UQNny8HcKDEDTChIoACqBAAMtSEODZBwQREpp64t7bhEgA&variables=N4IgXg9gdgpgKgQwOYgFwgFoHkByBRAfQEkAREAGhABMEAXGWgSwFsYBlWhAJ1rRACYADPwBsAWkEAWMQEYA7HBkjU-OakkAODBWp0GLGHihU+Q0ROny4-firWbtAXyA)
 
 Example curl request
 

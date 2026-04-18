@@ -1,6 +1,6 @@
 ---
 title: Routing and BGP
-description: This guide helps you diagnose and resolve common routing and BGP issues with Cloudflare WAN. These issues can affect traffic delivery, cause unexpected latency, or result in connectivity loss.
+description: Routing and BGP for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

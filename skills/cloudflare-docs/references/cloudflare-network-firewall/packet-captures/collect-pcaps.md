@@ -1,6 +1,6 @@
 ---
 title: Collect PCAPs
-description: After a packet capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a full type packet capture, you must first follow instructions for configuring a bucket.
+description: Collect packet captures for traffic analysis.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -45,8 +45,8 @@ For help determining which data center to select for a packet capture, visit [ht
 * `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-* [ Dashboard ](#tab-panel-3412)
-* [ API ](#tab-panel-3413)
+* [ Dashboard ](#tab-panel-5525)
+* [ API ](#tab-panel-5526)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
@@ -255,8 +255,8 @@ Explain Code
 
 ## Check packet capture status
 
-* [ Dashboard ](#tab-panel-3406)
-* [ API ](#tab-panel-3407)
+* [ Dashboard ](#tab-panel-5519)
+* [ API ](#tab-panel-5520)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -340,8 +340,8 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-* [ Dashboard ](#tab-panel-3408)
-* [ API ](#tab-panel-3409)
+* [ Dashboard ](#tab-panel-5521)
+* [ API ](#tab-panel-5522)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
@@ -376,8 +376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-* [ Dashboard ](#tab-panel-3410)
-* [ API ](#tab-panel-3411)
+* [ Dashboard ](#tab-panel-5523)
+* [ API ](#tab-panel-5524)
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics** \> **Network packet captures**.

@@ -43,7 +43,7 @@ flowchart TB
 
   subgraph participants ["<b>Participants</b>"]
       direction LR
-      subgraph participats-row2 [ ]
+      subgraph participants-row2 [ ]
           direction TB
           P3["<br>Participant 3
           <br>
@@ -52,7 +52,7 @@ flowchart TB
           <br>
           "]
       end
-      subgraph participats-row1 [ ]
+      subgraph participants-row1 [ ]
           direction TB
           P1["<br>Participant 1
           <br>
@@ -63,8 +63,8 @@ flowchart TB
       end
   end
 
-  style participats-row1 fill:none,stroke:none
-  style participats-row2 fill:none,stroke:none
+  style participants-row1 fill:none,stroke:none
+  style participants-row2 fill:none,stroke:none
   style details fill:none,stroke:none
 
 ### Session

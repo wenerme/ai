@@ -50,7 +50,7 @@ MessageCreateParams parameters = new()
             Content = "Hello, Claude",
         },
     ],
-    Model = "claude-opus-4-6",
+    Model = "claude-opus-4-7",
 };
 
 var message = await client.Messages.Create(parameters);
@@ -134,7 +134,7 @@ MessageCreateParams parameters = new()
             Content = "Hello, Claude",
         },
     ],
-    Model = "claude-opus-4-6",
+    Model = "claude-opus-4-7",
 };
 
 await foreach (var message in client.Messages.CreateStreaming(parameters))
@@ -319,7 +319,7 @@ using Microsoft.Extensions.AI;
 using ModelContextProtocol.Client;
 
 // Configured using the ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN and ANTHROPIC_BASE_URL environment variables
-IChatClient chatClient = client.AsIChatClient("claude-opus-4-6")
+IChatClient chatClient = client.AsIChatClient("claude-opus-4-7")
     .AsBuilder()
     .UseFunctionInvocation()
     .Build();
@@ -424,14 +424,17 @@ The SDK is typed for convenient usage of the documented API. However, it also su
 
 <Note>
 For detailed platform setup guides with code examples, see:
-- [Amazon Bedrock](/docs/en/build-with-claude/claude-on-amazon-bedrock)
+- [Amazon Bedrock](/docs/en/build-with-claude/claude-in-amazon-bedrock)
+- [Amazon Bedrock (legacy)](/docs/en/build-with-claude/claude-on-amazon-bedrock)
 - [Microsoft Foundry](/docs/en/build-with-claude/claude-in-microsoft-foundry)
 </Note>
 
 The C# SDK supports Bedrock and Foundry through separate NuGet packages:
 
-- **Bedrock:** `Anthropic.Bedrock`. Uses `AnthropicBedrockClient` with `AnthropicBedrockCredentialsHelper.FromEnv()` or explicit credentials.
-- **Foundry:** `Anthropic.Foundry`. Uses `AnthropicFoundryClient` with `DefaultAnthropicFoundryCredentials.FromEnv()` or explicit credentials.
+- **Bedrock:** `Anthropic.Bedrock`. Use `AnthropicBedrockMantleClient` for the Messages-API Bedrock endpoint, or `AnthropicBedrockClient` (`bedrock-runtime` path). `AnthropicBedrockMantleClient` takes an optional `MantleAwsClientOptions` config object; `AnthropicBedrockClient` accepts `AnthropicBedrockCredentialsHelper.FromEnv()` or explicit credentials.
+- **Foundry:** `Anthropic.Foundry`. Use `AnthropicFoundryClient` with `DefaultAnthropicFoundryCredentials.FromEnv()` or explicit credentials.
+
+Use `AnthropicBedrockMantleClient` for new projects; `AnthropicBedrockClient` remains for existing applications using the Bedrock `InvokeModel` API.
 
 ## Semantic versioning
 

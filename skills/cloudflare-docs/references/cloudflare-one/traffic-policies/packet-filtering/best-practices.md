@@ -1,6 +1,6 @@
 ---
 title: Best practices
-description: By default, Cloudflare Network Firewall allows all incoming (ingress) traffic that has passed through Cloudflare's core DDoS mitigations. To reduce your exposure to attacks and prevent unwanted traffic from reaching your network, configure rules using the following guidelines.
+description: How Best practices works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

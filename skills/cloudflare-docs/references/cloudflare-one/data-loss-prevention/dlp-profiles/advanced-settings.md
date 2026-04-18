@@ -1,6 +1,6 @@
 ---
 title: Profile settings
-description: This page lists the profile settings available when configuring a predefined or custom DLP profile. You can configure profile settings when you create a custom profile or edit profile settings for an existing predefined or custom profile.
+description: Reference information for Profile settings in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

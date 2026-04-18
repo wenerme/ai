@@ -1,6 +1,6 @@
 ---
 title: Auto-move events
-description: Auto-moves allow you to automatically move emails out of your inbox based on a disposition that Email security assigns to each message (for example, malicious, spam, or spoof).
+description: Auto-move events in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

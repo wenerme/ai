@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Cloudflare WAN (formerly Magic WAN) allows you to achieve any-to-any connectivity across branch and retail sites and data centers, with the Cloudflare connectivity cloud.
+description: Get started for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

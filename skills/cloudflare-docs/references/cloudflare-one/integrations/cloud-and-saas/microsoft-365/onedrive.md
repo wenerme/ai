@@ -1,6 +1,6 @@
 ---
 title: OneDrive
-description: The OneDrive integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
+description: Reference information for OneDrive in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

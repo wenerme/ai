@@ -79,6 +79,12 @@ After checking the items above, retry your transaction in the Cloudflare dashboa
 
 If you cannot resolve this using your current payment method, you may wish to try an alternative payment method. Cloudflare accepts credit and debit cards (Visa, Mastercard, American Express, Discover), PayPal, Apple Pay, Google Pay, and Stripe Link. To try this, refer to [update your payment methods](https://developers.cloudflare.com/billing/get-started/update-billing-info/#update-payment-methods).
 
+## Related resources
+
+* [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid invoices
+* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your payment method
+* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/troubleshoot-failed-payments/","name":"Resolve a payment failure"}}]}
 ```

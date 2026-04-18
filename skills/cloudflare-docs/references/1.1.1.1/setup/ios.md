@@ -1,6 +1,6 @@
 ---
 title: iOS
-description: 1.1.1.1: Faster Internet is the preferred method of setting up 1.1.1.1 DNS resolver and 1.1.1.1 for Families in iOS devices. It allows you to automatically configure your phone to use 1.1.1.1 on any network you connect to, and solves iOS inability of using an alternative DNS resolver in cellular connections.
+description: Configure 1.1.1.1 on iOS devices.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

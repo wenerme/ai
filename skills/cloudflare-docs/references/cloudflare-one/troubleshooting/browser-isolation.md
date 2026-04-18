@@ -1,6 +1,6 @@
 ---
 title: Browser Isolation
-description: Review common troubleshooting scenarios for Cloudflare Browser Isolation.
+description: Browser Isolation for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

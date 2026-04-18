@@ -1,6 +1,6 @@
 ---
 title: Manage Email security directories
-description: You can manage your Email security directory by editing and deleting added users.
+description: Manage Email security directories in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

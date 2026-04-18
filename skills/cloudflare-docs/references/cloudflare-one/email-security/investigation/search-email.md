@@ -1,6 +1,6 @@
 ---
 title: Search email
-description: With Email security, you can use different screen criteria to search through your email, reclassify and move a certain volume of messages, find similar emails, and export messages.
+description: Search email in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

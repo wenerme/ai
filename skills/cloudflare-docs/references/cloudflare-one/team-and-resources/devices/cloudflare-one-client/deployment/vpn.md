@@ -1,6 +1,6 @@
 ---
 title: Cloudflare One Client with legacy VPNs
-description: The Cloudflare One Client (formerly WARP) can run alongside most legacy third-party VPNs. However, both the Cloudflare One Client and your VPN try to control the same things on the device: which traffic goes where (routing), which DNS server answers queries, and which firewall rules apply. To prevent conflicts, you must split these responsibilities between the two products:
+description: Reference information for Cloudflare One Client with legacy VPNs in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

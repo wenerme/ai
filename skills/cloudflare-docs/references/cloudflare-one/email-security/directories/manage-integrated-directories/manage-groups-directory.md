@@ -1,6 +1,6 @@
 ---
 title: Manage groups in your directory
-description: Email security allows you to view and manage your groups directory and their impersonation registry. When a group is added to the registry, all members are registered by default.
+description: Manage groups in your directory in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Egress traffic
-description: If you have implemented Magic Transit with egress traffic, consider the following technical aspects to create a successful connection to Cloudflare.
+description: How Magic Transit handles egress traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

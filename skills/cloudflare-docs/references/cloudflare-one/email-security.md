@@ -1,6 +1,6 @@
 ---
 title: Email security
-description: Cloudflare Email Security uses AI, threat intelligence, and security rules to analyze every incoming email, protecting your organization from phishing, malware, Business Email Compromise (where attackers impersonate executives or authority figures to commit fraud), vendor email fraud, and spam.
+description: Overview of Email security in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

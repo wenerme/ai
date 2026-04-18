@@ -1,6 +1,6 @@
 ---
 title: macOS
-description: Take note of any DNS addresses you might have set up, and save them in a safe place in case you need to use them later.
+description: Configure 1.1.1.1 on macOS.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

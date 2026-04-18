@@ -1,6 +1,6 @@
 ---
 title: Connect with cloudflared
-description: cloudflared is a daemon that runs on a host machine in your private network and proxies traffic from Cloudflare to local services. The tunnel created by cloudflared is outbound-only, meaning it only handles requests initiated from a user to your private network. Server-initiated requests (from applications behind the tunnel) use the server's default routing table and do not pass through the tunnel.
+description: How Connect with cloudflared works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

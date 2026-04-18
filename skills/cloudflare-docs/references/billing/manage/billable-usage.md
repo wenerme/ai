@@ -70,6 +70,12 @@ The dashboard reads from the same data source that generates your monthly invoic
 
 To get notified when your spend crosses a dollar threshold, you can create budget alerts directly from the dashboard. For detailed instructions, refer to [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/).
 
+## Related resources
+
+* [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/) — Get notified when spend crosses a threshold
+* [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
+* [How charges accrue](https://developers.cloudflare.com/billing/understand/how-charges-accrue/) — How a request generates charges across products
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/billable-usage/","name":"Monitor billable usage"}}]}
 ```

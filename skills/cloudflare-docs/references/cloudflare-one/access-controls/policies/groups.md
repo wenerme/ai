@@ -1,6 +1,6 @@
 ---
 title: Rule groups
-description: A rule group is a collection of Access rules that can be configured once and then quickly applied across many Access policies. Rule groups use the same rule types and selectors shown in the Access policy builder.
+description: How Rule groups works in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -30,8 +30,8 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-* [ Dashboard ](#tab-panel-3776)
-* [ API ](#tab-panel-3777)
+* [ Dashboard ](#tab-panel-5571)
+* [ API ](#tab-panel-5572)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.

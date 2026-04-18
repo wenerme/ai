@@ -24,7 +24,7 @@ This works well for:
 * a template repo for new sessions or users
 * a shared prompts or configuration repo used across workflows
 
-Artifacts imports public HTTPS remotes through the REST API. After import, the repo has a normal Artifacts remote URL and can be cloned, forked, or issued repo-scoped tokens like any other repo.
+Artifacts imports public HTTPS remotes through the [REST API](https://developers.cloudflare.com/artifacts/api/rest-api/#import-a-public-https-remote) or the [Workers binding](https://developers.cloudflare.com/artifacts/api/workers-binding/#importparams). After import, the repo has a normal Artifacts remote URL and can be cloned, forked, or issued repo-scoped tokens like any other repo.
 
 ## Import a repo from GitHub
 
@@ -36,13 +36,15 @@ Terminal window
 
 ```
 
+export ACCOUNT_ID="<YOUR_ACCOUNT_ID>"
+
 export ARTIFACTS_NAMESPACE="default"
 
 export ARTIFACTS_REPO="workers-sdk-baseline"
 
 export CLOUDFLARE_API_TOKEN="<YOUR_API_TOKEN>"
 
-export ARTIFACTS_BASE_URL="https://artifacts.cloudflare.net/v1/api/namespaces/$ARTIFACTS_NAMESPACE"
+export ARTIFACTS_BASE_URL="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/artifacts/namespaces/$ARTIFACTS_NAMESPACE"
 
 
 ```

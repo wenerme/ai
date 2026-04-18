@@ -1,6 +1,6 @@
 ---
 title: CASB
-description: Use this guide to troubleshoot common issues with Cloud Access Security Broker (CASB).
+description: Troubleshoot CASB issues in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

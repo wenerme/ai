@@ -60,9 +60,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-4417)
-* [  TypeScript ](#tab-panel-4418)
-* [  Python ](#tab-panel-4419)
+* [  JavaScript ](#tab-panel-6574)
+* [  TypeScript ](#tab-panel-6575)
+* [  Python ](#tab-panel-6576)
 
 JavaScript
 
@@ -166,8 +166,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-4409)
-* [  Python ](#tab-panel-4410)
+* [  TypeScript ](#tab-panel-6566)
+* [  Python ](#tab-panel-6567)
 
 TypeScript
 
@@ -297,8 +297,8 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-4411)
-* [  Python ](#tab-panel-4412)
+* [  TypeScript ](#tab-panel-6568)
+* [  Python ](#tab-panel-6569)
 
 TypeScript
 
@@ -592,8 +592,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-4413)
-* [  Python ](#tab-panel-4414)
+* [  TypeScript ](#tab-panel-6570)
+* [  Python ](#tab-panel-6571)
 
 TypeScript
 
@@ -639,8 +639,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-4415)
-* [  Python ](#tab-panel-4416)
+* [  TypeScript ](#tab-panel-6572)
+* [  Python ](#tab-panel-6573)
 
 TypeScript
 
@@ -842,7 +842,7 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
    * Only available when using SQLite-backed Durable Objects.  
    * Invokes `callback()` wrapped in a transaction, and returns its result.  
    * If `callback()` throws an exception, the transaction will be rolled back.  
-   * The callback must complete synchronously, that is, it should not be declared `async` nor otherwise return a Promise. Only synchronous storage operations can be part of the transaction. This is intended for use with SQL queries using [ctx.storage.sql.exec()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), which complete sychronously.
+   * The callback must complete synchronously, that is, it should not be declared `async` nor otherwise return a Promise. Only synchronous storage operations can be part of the transaction. This is intended for use with SQL queries using [ctx.storage.sql.exec()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), which complete synchronously.
 
 ### `transaction`
 

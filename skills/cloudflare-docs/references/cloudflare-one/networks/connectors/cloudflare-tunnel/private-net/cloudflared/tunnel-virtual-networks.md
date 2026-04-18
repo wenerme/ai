@@ -1,6 +1,6 @@
 ---
 title: Virtual networks
-description: Virtual networks provide routing isolation within your Cloudflare account. Each virtual network maintains its own routing table, allowing you to separate traffic between different environments, partners, or applications.
+description: Virtual networks in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -60,9 +60,9 @@ Here are a few scenarios where virtual networks may prove useful:
 
 In this example, "private network" refers to a distinct environment (such as staging or production) that has its own overlapping IP address space (`10.128.0.1/32` staging and `10.128.0.1/32` production). If your environments use non-overlapping IPs, you do not need a separate tunnel for each. Instead, you can add multiple routes to a single tunnel.
 
-* [ Dashboard ](#tab-panel-3529)
-* [ Terraform (v5) ](#tab-panel-3530)
-* [ Locally-managed tunnels ](#tab-panel-3531)
+* [ Dashboard ](#tab-panel-5678)
+* [ Terraform (v5) ](#tab-panel-5679)
+* [ Locally-managed tunnels ](#tab-panel-5680)
 
 To route overlapping IPs over virtual networks:
 
@@ -211,8 +211,8 @@ You can use now the Cloudflare One Client to [switch between virtual networks](#
 
 ## Delete a virtual network
 
-* [ Dashboard ](#tab-panel-3525)
-* [ Locally-managed tunnels ](#tab-panel-3526)
+* [ Dashboard ](#tab-panel-5674)
+* [ Locally-managed tunnels ](#tab-panel-5675)
 
 To delete a virtual network:
 
@@ -247,8 +247,8 @@ You can verify that the virtual network was successfully deleted by typing `clou
 
 ### Windows, macOS, and Linux
 
-* [ Version 2026.2+ ](#tab-panel-3527)
-* [ Version 2026.1 and earlier ](#tab-panel-3528)
+* [ Version 2026.2+ ](#tab-panel-5676)
+* [ Version 2026.1 and earlier ](#tab-panel-5677)
 
 1. Open the Cloudflare One Client.
 2. Go to **Home**.

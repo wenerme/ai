@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
+
 Was this helpful?
 
 YesNo
@@ -34,8 +38,8 @@ When setting up internal zones, observe the following conditions:
 
 ## Create an internal zone
 
-* [ Dashboard ](#tab-panel-4304)
-* [ API ](#tab-panel-4305)
+* [ Dashboard ](#tab-panel-6461)
+* [ API ](#tab-panel-6462)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

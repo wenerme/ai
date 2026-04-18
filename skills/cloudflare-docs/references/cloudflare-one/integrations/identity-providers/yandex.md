@@ -1,6 +1,6 @@
 ---
 title: Yandex
-description: Yandex is a web search engine that also offers identity provider (IdP) services.
+description: Yandex in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

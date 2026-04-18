@@ -1,6 +1,6 @@
 ---
 title: DHCP server
-description: When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
+description: DHCP server in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -18,8 +18,8 @@ Copy page
 
 When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
 
-* [ Dashboard ](#tab-panel-3605)
-* [ API ](#tab-panel-3606)
+* [ Dashboard ](#tab-panel-5740)
+* [ API ](#tab-panel-5741)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

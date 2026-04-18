@@ -1,6 +1,6 @@
 ---
 title: Access controls
-description: Learn how to secure your self-hosted and SaaS applications with Zero Trust policies.
+description: Access controls resources and guides for Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

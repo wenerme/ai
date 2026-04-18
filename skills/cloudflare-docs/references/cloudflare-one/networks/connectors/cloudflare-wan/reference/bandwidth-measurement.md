@@ -1,6 +1,6 @@
 ---
 title: Bandwidth measurement
-description: Cloudflare measures Cloudflare WAN (formerly Magic WAN) usage based on the 95th percentile of bandwidth utilized by your configured network. This measurement reflects your overall network capacity consumption.
+description: How Bandwidth measurement works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

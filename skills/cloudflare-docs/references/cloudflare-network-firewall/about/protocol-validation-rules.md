@@ -1,6 +1,6 @@
 ---
 title: Protocol validation rules
-description: Cloudflare Network Firewall (formerly Magic Firewall) supports Session Initiation Protocol (SIP) to inspect traffic validity and enforce a positive security model.
+description: Protocol validation rules for network traffic.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

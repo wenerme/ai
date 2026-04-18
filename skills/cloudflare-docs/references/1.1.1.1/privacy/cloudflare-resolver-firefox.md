@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Resolver for Firefox
-description: Every time you type a web address, such as www.mozilla.org or www.firefox.com, into a web browser, the web browser sends a query to a DNS resolver. If DNS is like the card catalog of the Internet, then a DNS resolver is like a helpful librarian that knows how to use the information from that catalog to track down the exact location of a website. Whenever a resolver receives your query it looks up the IP address associated with the web address that you entered and relays that information to your web browser. “DNS resolution” as this process is referred to, is a crucial component of your Internet experience because without it your web browser would be unable to communicate with the servers that host your favorite websites, since communication requires knowing the IP addresses of those websites.
+description: How 1.1.1.1 works as the trusted resolver for Firefox.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

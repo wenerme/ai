@@ -1,6 +1,6 @@
 ---
 title: Network operators
-description: Network operators, including Internet Service Providers (ISPs), device manufacturers, public Wi-Fi networks, municipal broadband providers, and security scanning services can use 1.1.1.1 in place of operating their own recursive DNS infrastructure.
+description: Information for network operators peering with 1.1.1.1.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add routes
-description: A route maps an IP address or hostname to a Cloudflare One connector installed on your private network. When a user connects to that IP or hostname through Cloudflare's network, Cloudflare will route their traffic down a secure tunnel to the corresponding resource in your private network.
+description: Add routes in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

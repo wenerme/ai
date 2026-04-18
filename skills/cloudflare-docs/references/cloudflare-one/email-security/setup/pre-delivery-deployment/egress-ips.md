@@ -1,6 +1,6 @@
 ---
 title: Egress IPs
-description: When Email Security processes inbound messages through an MX/Inline deployment, it re-delivers the messages to your mailbox from its own IP addresses, known as egress IPs (the source addresses Cloudflare sends outbound mail from). Your existing email provider (such as Microsoft 365 or Google Workspace) needs to be configured to accept connections from these addresses, otherwise it will reject the messages as coming from an unauthorized sender.
+description: Reference information for Egress IPs in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

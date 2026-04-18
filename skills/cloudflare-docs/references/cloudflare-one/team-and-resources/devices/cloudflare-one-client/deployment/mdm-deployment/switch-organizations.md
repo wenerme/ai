@@ -1,6 +1,6 @@
 ---
 title: Switch between Zero Trust organizations
-description: In the Cloudflare One Client (formerly WARP), users can switch between multiple Zero Trust organizations (or other MDM parameters) that administrators specify in an MDM file. Common use cases include:
+description: Switch between Zero Trust organizations in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -128,8 +128,8 @@ Explain Code
 
 To switch to a different organization as a user:
 
-* [ Windows, macOS, and Linux ](#tab-panel-5857)
-* [ iOS and Android ](#tab-panel-5858)
+* [ Windows, macOS, and Linux ](#tab-panel-5866)
+* [ iOS and Android ](#tab-panel-5867)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.

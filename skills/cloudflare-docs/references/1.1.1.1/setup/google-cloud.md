@@ -1,6 +1,6 @@
 ---
 title: Google Cloud
-description: Google Cloud supports configuring outbound server policy within Cloud DNS. Policies are applied per Virtual Private Cloud (VPC) network, and will affect all resources within that VPC network, including any existing virtual machines.
+description: Configure 1.1.1.1 on Google Cloud instances.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

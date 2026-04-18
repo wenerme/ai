@@ -1,6 +1,6 @@
 ---
 title: Cloudflare WAN
-description: Explore resources to help you resolve issues with Cloudflare WAN (formerly Magic WAN) connectivity, routing, and tunnel health.
+description: Cloudflare WAN resources and guides for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

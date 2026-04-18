@@ -1,6 +1,6 @@
 ---
 title: MX/Inline deployment
-description: With pre-delivery deployment, also known as Inline deployment, Email security evaluates email messages before they reach a user's inbox.
+description: How MX/Inline deployment works in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

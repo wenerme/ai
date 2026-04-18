@@ -1,6 +1,6 @@
 ---
 title: Notifications
-description: Administrators can receive an alert when Cloudflare Tunnels in an account change their health or deployment status. Notifications can be delivered via email, webhook, and third-party services.
+description: How Notifications works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

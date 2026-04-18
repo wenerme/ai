@@ -1,6 +1,6 @@
 ---
 title: Magic Transit on-demand
-description: If you have access to the Magic Transit on-demand option, you can configure prefix advertisement from the IP Prefixes page in your Cloudflare account home or through the Cloudflare API.
+description: Activate Magic Transit protection on demand during attacks.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

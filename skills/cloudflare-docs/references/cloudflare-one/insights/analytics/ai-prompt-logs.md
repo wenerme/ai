@@ -1,5 +1,6 @@
 ---
 title: AI prompt logs
+description: AI prompt logs for Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

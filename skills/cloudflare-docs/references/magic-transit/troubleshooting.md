@@ -1,5 +1,6 @@
 ---
 title: Troubleshooting
+description: Troubleshoot Magic Transit issues.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Service credentials
+description: Service credentials resources and guides for Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

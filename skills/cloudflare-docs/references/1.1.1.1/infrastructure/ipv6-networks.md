@@ -1,6 +1,6 @@
 ---
 title: Support for IPv6-only networks
-description: While network infrastructure is shifting towards IPv6-only networks, providers still need to support IPv4 addresses. Dual-stack networks are networks in which all nodes have both IPv4 and IPv6 connectivity capabilities, and can therefore understand both IPv4 and IPv6 packets.
+description: Use 1.1.1.1 on IPv6-only networks.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

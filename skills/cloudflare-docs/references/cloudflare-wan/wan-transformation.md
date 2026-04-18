@@ -1,6 +1,6 @@
 ---
 title: WAN transformation
-description: Traditional wide area networks (WANs) were designed for a world where applications ran in corporate data centers and employees worked from offices. These architectures rely on private circuits like Multiprotocol Label Switching (MPLS), hub-and-spoke routing through central data centers, and dedicated hardware at every branch.
+description: Transform WAN traffic with header and protocol modifications.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

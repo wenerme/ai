@@ -1,5 +1,6 @@
 ---
 title: Network options
+description: Network configuration options for the Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -53,7 +53,7 @@ AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 MessageCreateParams params = MessageCreateParams.builder()
   .maxTokens(1024L)
   .addUserMessage("Hello, Claude")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .build();
 
 Message message = client.messages().create(params);
@@ -143,7 +143,7 @@ AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 MessageCreateParams params = MessageCreateParams.builder()
   .maxTokens(1024L)
   .addUserMessage("Hello, Claude")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .build();
 
 CompletableFuture<Message> message = client.async().messages().create(params);
@@ -163,7 +163,7 @@ AnthropicClientAsync client = AnthropicOkHttpClientAsync.fromEnv();
 MessageCreateParams params = MessageCreateParams.builder()
   .maxTokens(1024L)
   .addUserMessage("Hello, Claude")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .build();
 
 CompletableFuture<Message> message = client.messages().create(params);
@@ -406,7 +406,7 @@ import com.anthropic.models.messages.Model;
 AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 
 MessageCreateParams.Builder createParamsBuilder = MessageCreateParams.builder()
-        .model(Model.CLAUDE_OPUS_4_6)
+        .model(Model.CLAUDE_OPUS_4_7)
         .maxTokens(2048)
         .addTool(GetWeather.class)
         .addUserMessage("What's the temperature in New York?");
@@ -452,7 +452,7 @@ Like for structured outputs, you can perform local validation to check that the 
 
 ```java nocheck
 MessageCreateParams.Builder createParamsBuilder = MessageCreateParams.builder()
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .maxTokens(2048)
   .addTool(GetWeather.class, JsonSchemaLocalValidation.NO)
   .addUserMessage("What's the temperature in New York?");
@@ -817,7 +817,7 @@ Each class in the SDK has an associated builder for constructing it. Each class 
 MessageCreateParams params = MessageCreateParams.builder()
   .maxTokens(1024L)
   .addUserMessage("Hello, Claude")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .build();
 
 // Create a modified copy using toBuilder()
@@ -879,7 +879,7 @@ import com.anthropic.models.messages.Model;
 MessageCreateParams params = MessageCreateParams.builder()
   .maxTokens(JsonValue.from(3.14))
   .addUserMessage("Hello, Claude")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .build();
 ```
 
@@ -921,7 +921,7 @@ import com.anthropic.models.messages.Model;
 
 MessageCreateParams params = MessageCreateParams.builder()
   .addUserMessage("Hello, world")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .maxTokens(JsonMissing.of())
   .build();
 ```
@@ -1085,16 +1085,19 @@ To use a completely custom HTTP client:
 
 <Note>
 For detailed platform setup guides with code examples, see:
-- [Amazon Bedrock](/docs/en/build-with-claude/claude-on-amazon-bedrock)
+- [Amazon Bedrock](/docs/en/build-with-claude/claude-in-amazon-bedrock)
+- [Amazon Bedrock (legacy)](/docs/en/build-with-claude/claude-on-amazon-bedrock)
 - [Google Vertex AI](/docs/en/build-with-claude/claude-on-vertex-ai)
 - [Microsoft Foundry](/docs/en/build-with-claude/claude-in-microsoft-foundry)
 </Note>
 
 The Java SDK supports Bedrock, Vertex AI, and Foundry through separate dependencies that provide platform-specific `Backend` implementations:
 
-- **Bedrock:** `com.anthropic:anthropic-java-bedrock`: Uses `BedrockBackend.fromEnv()` or `BedrockBackend.builder()`
-- **Vertex AI:** `com.anthropic:anthropic-java-vertex`: Uses `VertexBackend.fromEnv()` or `VertexBackend.builder()`
-- **Foundry:** `com.anthropic:anthropic-java-foundry`: Uses `FoundryBackend.fromEnv()` or `FoundryBackend.builder()`
+- **Bedrock:** `com.anthropic:anthropic-java-bedrock`: Use `BedrockMantleBackend.fromEnv()` for the Messages-API Bedrock endpoint, or `BedrockBackend.fromEnv()` / `BedrockBackend.builder()` (`bedrock-runtime` path).
+- **Vertex AI:** `com.anthropic:anthropic-java-vertex`: Use `VertexBackend.fromEnv()` or `VertexBackend.builder()`.
+- **Foundry:** `com.anthropic:anthropic-java-foundry`: Use `FoundryBackend.fromEnv()` or `FoundryBackend.builder()`.
+
+Use `BedrockMantleBackend` for new projects; `BedrockBackend` remains for existing applications using the Bedrock `InvokeModel` API.
 
 Each backend is passed to the client via `.backend()` on `AnthropicOkHttpClient.builder()`. AWS, Google Cloud, and Azure classes are included as transitive dependencies of the respective library.
 
@@ -1114,7 +1117,7 @@ import com.anthropic.models.messages.Model;
 MessageCreateParams params = MessageCreateParams.builder()
   .maxTokens(1024L)
   .addUserMessage("Hello, Claude")
-  .model(Model.CLAUDE_OPUS_4_6)
+  .model(Model.CLAUDE_OPUS_4_7)
   .build();
 
 HttpResponseFor<Message> message = client.messages().withRawResponse().create(params);
@@ -1208,7 +1211,7 @@ void main() {
 
     BetaMessage message = client.beta().messages().create(
         MessageCreateParams.builder()
-            .model(Model.CLAUDE_OPUS_4_6)
+            .model(Model.CLAUDE_OPUS_4_7)
             .maxTokens(1024L)
             .addBeta(AnthropicBeta.FILES_API_2025_04_14)
             .addUserMessageOfBetaContentBlockParams(List.of(

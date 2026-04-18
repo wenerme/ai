@@ -1,6 +1,6 @@
 ---
 title: Tenant control
-description: Tenant control allows your users to access corporate SaaS applications while blocking access to personal accounts on the same service. For example, you can allow access to your company's Google Workspace while blocking personal Gmail logins.
+description: Tenant control in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

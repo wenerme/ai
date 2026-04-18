@@ -1,6 +1,6 @@
 ---
 title: Alibaba Cloud VPN Gateway
-description: This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflare WAN (formerly Magic WAN) through IPsec tunnels. For more information regarding Alibaba Cloud technology, refer to Alibaba's documentation.
+description: Integrate Alibaba Cloud VPN Gateway with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

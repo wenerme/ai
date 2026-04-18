@@ -1,6 +1,6 @@
 ---
 title: Cloudflare One Client with firewall
-description: If your organization uses a firewall or other policies to restrict or intercept Internet traffic, you may need to exempt the following IP addresses and domains to allow the Cloudflare One Client (formerly WARP) to connect.
+description: Reference information for Cloudflare One Client with firewall in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

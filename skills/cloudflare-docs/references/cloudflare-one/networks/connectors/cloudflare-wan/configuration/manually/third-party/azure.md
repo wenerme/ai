@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure
-description: Microsoft Azure integration guides currently available:
+description: Integrate Microsoft Azure with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Extensions
-description: Browser Isolation supports running native Chromium Web Extensions in the remote browser.
+description: Reference information for Extensions in Browser Isolation.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

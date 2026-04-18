@@ -1,6 +1,6 @@
 ---
 title: Submissions
-description: Submitting messages allows you to choose the disposition of your messages if the disposition is incorrect. This helps improve Email security's detection accuracy and ensures proper handling of email threats.
+description: Submissions in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

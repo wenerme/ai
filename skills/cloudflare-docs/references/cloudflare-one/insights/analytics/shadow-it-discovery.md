@@ -1,6 +1,6 @@
 ---
 title: Shadow IT SaaS analytics
-description: Shadow IT SaaS analytics provides visibility into the SaaS applications your users are visiting. This information allows you to create identity and device-driven Cloudflare One policies to secure your users and data.
+description: Reference information for Shadow IT SaaS analytics in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

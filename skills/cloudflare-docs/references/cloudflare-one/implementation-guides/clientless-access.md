@@ -1,5 +1,6 @@
 ---
 title: Deploy clientless access
+description: Deploy clientless access for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

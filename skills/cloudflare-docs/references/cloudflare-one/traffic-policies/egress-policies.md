@@ -1,6 +1,6 @@
 ---
 title: Egress policies
-description: Many third-party services (for example, a bank or partner API) only allow connections from a known list of IP addresses. By default, traffic that exits through Cloudflare Gateway shares a source IP address with all other Cloudflare One Client users, so upstream services cannot identify your organization by IP alone.
+description: Configure Egress policies in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

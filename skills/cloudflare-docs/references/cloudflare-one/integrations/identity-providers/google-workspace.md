@@ -1,6 +1,6 @@
 ---
 title: Google Workspace
-description: You can integrate a Google Workspace (formerly G Suite) account with Cloudflare Access. Unlike the instructions for generic Google authentication, the steps below will allow you to pull group membership information from your Google Workspace account.
+description: Google Workspace in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

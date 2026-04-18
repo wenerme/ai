@@ -1,6 +1,6 @@
 ---
 title: Enable Managed Rulesets
-description: With managed rulesets, you can quickly deploy pre-built firewall rules maintained by Cloudflare. You use Cloudflare Network Firewall to control which managed rules are enabled.
+description: Enable Managed Rulesets in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

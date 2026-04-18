@@ -1,6 +1,6 @@
 ---
 title: Add an infrastructure application
-description: Access for Infrastructure allows you to have granular control over how users access individual servers, clusters, or databases. By adding an infrastructure application to Cloudflare Access, you can configure how users authenticate to the resource as well as control and authorize the ports, protocols, and usernames that they can connect with. Access and command logs ensure regulatory compliance and allow for auditing of user activity in case of a security breach.
+description: Add an infrastructure application in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -52,9 +52,9 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target: 
 
-* [ Dashboard ](#tab-panel-3580)
-* [ API ](#tab-panel-3581)
-* [ Terraform ](#tab-panel-3582)
+* [ Dashboard ](#tab-panel-5561)
+* [ API ](#tab-panel-5562)
+* [ Terraform ](#tab-panel-5563)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Targets**.
 2. Select **Add a target**.
@@ -145,9 +145,9 @@ Next, create an Access application to secure the target.
 
 ## 2\. Add an infrastructure application
 
-* [ Dashboard ](#tab-panel-3583)
-* [ API ](#tab-panel-3584)
-* [ Terraform (v4) ](#tab-panel-3585)
+* [ Dashboard ](#tab-panel-5564)
+* [ API ](#tab-panel-5565)
+* [ Terraform (v4) ](#tab-panel-5566)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Access controls** \> **Applications**.
 2. Select **Add an application**.

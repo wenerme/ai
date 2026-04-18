@@ -1,6 +1,6 @@
 ---
 title: Phish submissions
-description: As part of your continuous email security posture, administrators and security analysts need to submit missed phishing samples to Email security, so Cloudflare can process them and take necessary action.
+description: Phish submissions in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

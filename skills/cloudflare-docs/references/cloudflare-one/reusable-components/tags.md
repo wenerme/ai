@@ -1,6 +1,6 @@
 ---
 title: Tags
-description: You can label an Access application with up to 25 custom tags. End users can then filter the applications in their App Launcher by their tags.
+description: Tags in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

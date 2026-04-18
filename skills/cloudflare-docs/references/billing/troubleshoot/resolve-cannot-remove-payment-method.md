@@ -77,6 +77,12 @@ If you have any domains with auto-renew enabled that are expiring in 31 days or 
 
 If none of the above apply and you still receive an error, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
+## Related resources
+
+* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Add a replacement payment method
+* [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — Cancel subscriptions before removing a payment method
+* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/troubleshoot/","name":"Troubleshoot"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/troubleshoot/resolve-cannot-remove-payment-method/","name":"Resolve \"cannot remove payment method\""}}]}
 ```

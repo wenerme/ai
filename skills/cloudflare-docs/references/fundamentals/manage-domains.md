@@ -38,7 +38,7 @@ You will need to [update your domain's nameservers](https://developers.cloudflar
 
 ## Get free SSL certificates
 
-Cloudflare offers free, unshared, publicy trusted [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) to all Cloudflare domains.
+Cloudflare offers free, unshared, publicly trusted [Universal SSL certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) to all Cloudflare domains.
 
 ## Manage subdomains
 

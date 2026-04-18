@@ -1,6 +1,6 @@
 ---
 title: ServiceNow (SAML)
-description: This guide covers how to configure ServiceNow as a SAML application in Cloudflare One.
+description: Integrate ServiceNow (SAML) with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

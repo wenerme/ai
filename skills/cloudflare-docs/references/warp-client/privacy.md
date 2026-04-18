@@ -1,6 +1,6 @@
 ---
 title: Privacy
-description: The WARP Client application uses a VPN profile and/or service that enables us to intercept and secure your DNS queries and to transmit data from your device through the Cloudflare network, depending on the services you have enabled. We only collect limited DNS query and traffic data (excluding payload) that is sent to our network when you have the app enabled on your device. All information is handled in accordance with our Privacy Policy.
+description: Privacy commitments for the Cloudflare WARP client.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

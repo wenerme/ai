@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Review the content below for more information about Cloudflare Network Firewall (formerly Magic Firewall).
+description: Reference for Network Firewall fields and functions.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

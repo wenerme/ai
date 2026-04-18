@@ -16,16 +16,14 @@ Copy page
 
 # Workers binding
 
-Use the Artifacts Workers binding to create, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns repo handles that allow repo-scoped operations such as token management and forking.
-
-Use the [REST API](https://developers.cloudflare.com/artifacts/api/rest-api/) when you need to import a repo from another remote.
+Use the Artifacts Workers binding to create, import, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns repo handles that allow repo-scoped operations such as token management and forking.
 
 ## Configure the binding
 
 Add the Artifacts binding to your Wrangler config file:
 
-* [  wrangler.jsonc ](#tab-panel-5236)
-* [  wrangler.toml ](#tab-panel-5237)
+* [  wrangler.jsonc ](#tab-panel-5245)
+* [  wrangler.toml ](#tab-panel-5246)
 
 JSONC
 
@@ -60,7 +58,7 @@ TOML
 
 binding = "ARTIFACTS"
 
-namespace = "default"
+namespace = "default" # any name works — use namespaces to organise repos
 
 
 ```
@@ -86,7 +84,7 @@ If you authenticate with `wrangler login`, Wrangler requests `artifacts:write` b
 
 ## Namespace methods
 
-Use namespace methods on `env.ARTIFACTS` to create, list, inspect, or delete repos.
+Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or delete repos.
 
 ### `create(name, opts?)`
 
@@ -94,10 +92,10 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, or delete rep
 * `opts.readOnly` ` boolean ` optional
 * `opts.description` ` string ` optional
 * `opts.setDefaultBranch` ` string ` optional
-* Returns ` Promise<ArtifactsCreateRepoResult & { repo: ArtifactsRepo } > `
+* Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5244)
-* [  TypeScript ](#tab-panel-5245)
+* [  JavaScript ](#tab-panel-5253)
+* [  TypeScript ](#tab-panel-5254)
 
 JavaScript
 
@@ -174,10 +172,11 @@ Explain Code
 ### `get(name)`
 
 * `name` ` RepoName ` required
-* Returns ` Promise<ArtifactsRepo | null> `
+* Returns ` Promise<ArtifactsRepo> `
+* Throws if the repo does not exist.
 
-* [  JavaScript ](#tab-panel-5240)
-* [  TypeScript ](#tab-panel-5241)
+* [  JavaScript ](#tab-panel-5247)
+* [  TypeScript ](#tab-panel-5248)
 
 JavaScript
 
@@ -186,14 +185,6 @@ JavaScript
 async function getRepoHandle(artifacts) {
 
   const repo = await artifacts.get("starter-repo");
-
-
-  if (!repo) {
-
-    return null;
-
-  }
-
 
   return repo;
 
@@ -210,14 +201,6 @@ async function getRepoHandle(artifacts: Artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-
-  if (!repo) {
-
-    return null;
-
-  }
-
-
   return repo;
 
 }
@@ -231,8 +214,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 * `opts.cursor` ` Cursor ` optional
 * Returns ` Promise<ArtifactsRepoListResult> `
 
-* [  JavaScript ](#tab-panel-5242)
-* [  TypeScript ](#tab-panel-5243)
+* [  JavaScript ](#tab-panel-5251)
+* [  TypeScript ](#tab-panel-5252)
 
 JavaScript
 
@@ -278,13 +261,112 @@ async function listRepos(artifacts: Artifacts) {
 
 ```
 
+### `import(params)`
+
+Import a repository from an external git remote.
+
+* `params.source.url` ` string ` required — HTTPS URL of the source repository.
+* `params.source.branch` ` string ` optional — Branch to import (defaults to the remote's default branch).
+* `params.source.depth` ` number ` optional — Shallow clone depth.
+* `params.target.name` ` RepoName ` required — Name for the imported repo.
+* `params.target.opts.description` ` string ` optional
+* `params.target.opts.readOnly` ` boolean ` optional
+* Returns ` Promise<ArtifactsCreateRepoResult> `
+
+* [  JavaScript ](#tab-panel-5263)
+* [  TypeScript ](#tab-panel-5264)
+
+JavaScript
+
+```
+
+async function importFromGitHub(artifacts) {
+
+  const imported = await artifacts.import({
+
+    source: {
+
+      url: "https://github.com/cloudflare/workers-sdk",
+
+      branch: "main",
+
+    },
+
+    target: {
+
+      name: "workers-sdk",
+
+    },
+
+  });
+
+
+  return {
+
+    name: imported.name,
+
+    remote: imported.remote,
+
+    token: imported.token,
+
+  };
+
+}
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+async function importFromGitHub(artifacts: Artifacts) {
+
+  const imported = await artifacts.import({
+
+    source: {
+
+      url: "https://github.com/cloudflare/workers-sdk",
+
+      branch: "main",
+
+    },
+
+    target: {
+
+      name: "workers-sdk",
+
+    },
+
+  });
+
+
+  return {
+
+    name: imported.name,
+
+    remote: imported.remote,
+
+    token: imported.token,
+
+  };
+
+}
+
+
+```
+
+Explain Code
+
 ### `delete(name)`
 
 * `name` ` RepoName ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-5238)
-* [  TypeScript ](#tab-panel-5239)
+* [  JavaScript ](#tab-panel-5249)
+* [  TypeScript ](#tab-panel-5250)
 
 JavaScript
 
@@ -314,18 +396,10 @@ async function deleteRepo(artifacts: Artifacts) {
 
 ## Repo handle methods
 
-Use the `repo` returned by `create()`, or first check that `await artifacts.get(name)` returned a repo handle.
+Call `await artifacts.get(name)` to get a repo handle. The handle extends `ArtifactsRepoInfo`, so repo metadata (`id`, `name`, `remote`, `defaultBranch`, etc.) is available directly as properties.
 
-These examples match the current runtime binding surface. If your generated types show `import()` or a discriminated union for `get()`, those types are ahead of the current runtime.
-
-### `info()`
-
-* Returns ` Promise<ArtifactsRepoInfo | null> `
-
-Use `info()` when you need repo metadata, including the remote URL.
-
-* [  JavaScript ](#tab-panel-5246)
-* [  TypeScript ](#tab-panel-5247)
+* [  JavaScript ](#tab-panel-5255)
+* [  TypeScript ](#tab-panel-5256)
 
 JavaScript
 
@@ -335,16 +409,7 @@ async function getRemoteUrl(artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    return null;
-
-  }
-
-
-  const info = await repo.info();
-
-  return info?.remote ?? null;
+  return repo.remote;
 
 }
 
@@ -359,16 +424,7 @@ async function getRemoteUrl(artifacts: Artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    return null;
-
-  }
-
-
-  const info = await repo.info();
-
-  return info?.remote ?? null;
+  return repo.remote;
 
 }
 
@@ -381,8 +437,8 @@ async function getRemoteUrl(artifacts: Artifacts) {
 * `ttl` ` number ` optional (seconds)
 * Returns ` Promise<ArtifactsCreateTokenResult> `
 
-* [  JavaScript ](#tab-panel-5248)
-* [  TypeScript ](#tab-panel-5249)
+* [  JavaScript ](#tab-panel-5257)
+* [  TypeScript ](#tab-panel-5258)
 
 JavaScript
 
@@ -391,13 +447,6 @@ JavaScript
 async function mintReadToken(artifacts) {
 
   const repo = await artifacts.get("starter-repo");
-
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
 
   return repo.createToken("read", 3600);
 
@@ -414,66 +463,7 @@ async function mintReadToken(artifacts: Artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
   return repo.createToken("read", 3600);
-
-}
-
-
-```
-
-### `validateToken(token)`
-
-* `token` ` ArtifactToken ` required
-* Returns ` Promise<ArtifactsTokenValidation> `
-
-* [  JavaScript ](#tab-panel-5250)
-* [  TypeScript ](#tab-panel-5251)
-
-JavaScript
-
-```
-
-async function validateToken(artifacts, token) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
-  return repo.validateToken(token);
-
-}
-
-
-```
-
-TypeScript
-
-```
-
-async function validateToken(artifacts: Artifacts, token: string) {
-
-  const repo = await artifacts.get("starter-repo");
-
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
-  return repo.validateToken(token);
 
 }
 
@@ -484,8 +474,8 @@ async function validateToken(artifacts: Artifacts, token: string) {
 
 * Returns ` Promise<ArtifactsTokenListResult> `
 
-* [  JavaScript ](#tab-panel-5254)
-* [  TypeScript ](#tab-panel-5255)
+* [  JavaScript ](#tab-panel-5261)
+* [  TypeScript ](#tab-panel-5262)
 
 JavaScript
 
@@ -495,13 +485,6 @@ async function listRepoTokens(artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
   const result = await repo.listTokens();
 
   return {
@@ -516,8 +499,6 @@ async function listRepoTokens(artifacts) {
 
 
 ```
-
-Explain Code
 
 TypeScript
 
@@ -527,13 +508,6 @@ async function listRepoTokens(artifacts: Artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
   const result = await repo.listTokens();
 
   return {
@@ -549,15 +523,13 @@ async function listRepoTokens(artifacts: Artifacts) {
 
 ```
 
-Explain Code
-
 ### `revokeToken(tokenOrId)`
 
 * `tokenOrId` ` string ` required
 * Returns ` Promise<boolean> `
 
-* [  JavaScript ](#tab-panel-5252)
-* [  TypeScript ](#tab-panel-5253)
+* [  JavaScript ](#tab-panel-5259)
+* [  TypeScript ](#tab-panel-5260)
 
 JavaScript
 
@@ -566,13 +538,6 @@ JavaScript
 async function revokeToken(artifacts, tokenOrId) {
 
   const repo = await artifacts.get("starter-repo");
-
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
 
   return repo.revokeToken(tokenOrId);
 
@@ -589,13 +554,6 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
   return repo.revokeToken(tokenOrId);
 
 }
@@ -611,8 +569,8 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 * `opts.defaultBranchOnly` ` boolean ` optional
 * Returns ` Promise<ArtifactsCreateRepoResult> `
 
-* [  JavaScript ](#tab-panel-5256)
-* [  TypeScript ](#tab-panel-5257)
+* [  JavaScript ](#tab-panel-5265)
+* [  TypeScript ](#tab-panel-5266)
 
 JavaScript
 
@@ -621,13 +579,6 @@ JavaScript
 async function forkRepo(artifacts) {
 
   const repo = await artifacts.get("starter-repo");
-
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
 
   const forked = await repo.fork("starter-repo-copy", {
 
@@ -657,13 +608,6 @@ async function forkRepo(artifacts: Artifacts) {
 
   const repo = await artifacts.get("starter-repo");
 
-  if (!repo) {
-
-    throw new Error("Repo not found");
-
-  }
-
-
   const forked = await repo.fork("starter-repo-copy", {
 
     description: "Fork for testing",
@@ -688,8 +632,8 @@ Explain Code
 
 This example combines the binding methods in one Worker route.
 
-* [  JavaScript ](#tab-panel-5258)
-* [  TypeScript ](#tab-panel-5259)
+* [  JavaScript ](#tab-panel-5267)
+* [  TypeScript ](#tab-panel-5268)
 
 src/index.js
 
@@ -721,15 +665,17 @@ export default {
 
       const repo = await env.ARTIFACTS.get("starter-repo");
 
-      if (!repo) {
+      return Response.json({
 
-        return Response.json({ error: "Repo not found" }, { status: 404 });
+        id: repo.id,
 
-      }
+        name: repo.name,
 
-      const info = await repo.info();
+        remote: repo.remote,
 
-      return Response.json(info);
+        defaultBranch: repo.defaultBranch,
+
+      });
 
     }
 
@@ -737,13 +683,6 @@ export default {
     if (request.method === "POST" && url.pathname === "/tokens") {
 
       const repo = await env.ARTIFACTS.get("starter-repo");
-
-      if (!repo) {
-
-        return Response.json({ error: "Repo not found" }, { status: 404 });
-
-      }
-
 
       const token = await repo.createToken("read", 3600);
 
@@ -806,15 +745,17 @@ export default {
 
       const repo = await env.ARTIFACTS.get("starter-repo");
 
-      if (!repo) {
+      return Response.json({
 
-        return Response.json({ error: "Repo not found" }, { status: 404 });
+        id: repo.id,
 
-      }
+        name: repo.name,
 
-      const info = await repo.info();
+        remote: repo.remote,
 
-      return Response.json(info);
+        defaultBranch: repo.defaultBranch,
+
+      });
 
     }
 
@@ -822,13 +763,6 @@ export default {
     if (request.method === "POST" && url.pathname === "/tokens") {
 
       const repo = await env.ARTIFACTS.get("starter-repo");
-
-      if (!repo) {
-
-        return Response.json({ error: "Repo not found" }, { status: 404 });
-
-      }
-
 
       const token = await repo.createToken("read", 3600);
 

@@ -9442,10 +9442,10 @@
   "codex-docs/pricing.md": {
     "url": "https://developers.openai.com/codex/pricing.md",
     "skill": "codex-docs",
-    "etag": "W/\"309532db6f6fb25de65ec3e9d2913bdf\"",
-    "lastModified": "Thu, 16 Apr 2026 19:15:34 GMT",
-    "size": 30401,
-    "updatedAt": "2026-04-17T00:29:25.332Z"
+    "etag": "W/\"1045d3826412baa0993304e2d2bd157f\"",
+    "lastModified": "Sat, 18 Apr 2026 00:17:49 GMT",
+    "size": 30408,
+    "updatedAt": "2026-04-18T00:28:49.215Z"
   },
   "codex-docs/prompting.md": {
     "url": "https://developers.openai.com/codex/prompting.md",

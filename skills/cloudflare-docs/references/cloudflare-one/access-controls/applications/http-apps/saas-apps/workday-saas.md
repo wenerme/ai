@@ -1,6 +1,6 @@
 ---
 title: Workday
-description: This guide covers how to configure Workday as a SAML application in Cloudflare One.
+description: Integrate Workday with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

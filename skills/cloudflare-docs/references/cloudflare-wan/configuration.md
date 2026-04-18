@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure Cloudflare WAN tunnels, sites, and network settings.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

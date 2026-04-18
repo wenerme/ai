@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
+
 Was this helpful?
 
 YesNo
@@ -31,8 +35,8 @@ A wildcard record (`*.example.local`) in the matching internal zone will take pr
 
 ## Set up
 
-* [ Dashboard ](#tab-panel-4258)
-* [ API ](#tab-panel-4259)
+* [ Dashboard ](#tab-panel-6459)
+* [ API ](#tab-panel-6460)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)

@@ -105,7 +105,7 @@ This method is used for cleaning up event listeners attached to an iframe. It mu
 
 #### module.exports.addRTKPluginView(iframe, viewId)
 
-This method adds the communcation layer between the plugin inside the iframe and the core application (meeting object) in the main window.
+This method adds the communication layer between the plugin inside the iframe and the core application (meeting object) in the main window.
 
 **Kind**: instance method of [module.exports](#exp%5Fmodule%5FRTKPlugin--module.exports)
 

@@ -1,6 +1,6 @@
 ---
 title: SharePoint (FedRAMP)
-description: The SharePoint (FedRAMP) integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
+description: Reference information for SharePoint (FedRAMP) in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

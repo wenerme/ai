@@ -1,5 +1,6 @@
 ---
 title: Packet captures
+description: Capture and inspect Magic Transit packets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Blocked senders
-description: Email security marks all messages from these senders with a malicious disposition.
+description: Blocked senders in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

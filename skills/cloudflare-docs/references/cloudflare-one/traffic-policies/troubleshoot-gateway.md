@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Gateway
-description: This guide helps you troubleshoot common issues with Cloudflare Gateway policies. The issues are ordered by the most frequent problems.
+description: Troubleshoot Troubleshoot Gateway issues in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -85,8 +85,8 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-3931)
-* [ Workaround ](#tab-panel-3932)
+* [ Recommended ](#tab-panel-6072)
+* [ Workaround ](#tab-panel-6073)
 
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 

@@ -1,6 +1,6 @@
 ---
 title: Before you begin
-description: Before you start the onboarding process, you will have to:
+description: Before you begin resources and guides for Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

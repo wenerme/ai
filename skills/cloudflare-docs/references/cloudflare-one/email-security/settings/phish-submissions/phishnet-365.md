@@ -1,6 +1,6 @@
 ---
 title: PhishNet Microsoft 365
-description: PhishNet is an add-in button that helps users to submit directly to Email security phish samples missed by Email security's detection.
+description: PhishNet Microsoft 365 in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

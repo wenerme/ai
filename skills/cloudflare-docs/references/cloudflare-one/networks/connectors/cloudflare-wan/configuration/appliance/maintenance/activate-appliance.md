@@ -1,6 +1,6 @@
 ---
 title: Activate Connector
-description: Before you can activate your Cloudflare One Appliance (formerly Magic WAN Connector), you need to follow Cloudflare's instructions regarding DHCP. For instructions, refer to:
+description: Activate Connector in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

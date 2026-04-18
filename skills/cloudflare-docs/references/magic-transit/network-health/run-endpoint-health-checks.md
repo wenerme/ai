@@ -1,6 +1,6 @@
 ---
 title: Run endpoint health checks (beta)
-description: Magic Transit uses endpoint health checks to determine the overall health of your inter-network connections. Probes originate from Cloudflare infrastructure, outside customer network namespaces, and target IP addresses deep within your network, beyond the tunnel-terminating border router. These &#34;long distance&#34; probes are purely diagnostic.
+description: Run endpoint health checks for Magic Transit origins.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

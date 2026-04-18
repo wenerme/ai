@@ -65,8 +65,8 @@ In this example, the TXT record and the A record for `www.example.com` will not 
 To enable advanced nameservers on an existing zone:
 
 1. Opt for advanced nameservers on your zone:  
-   * [ Dashboard ](#tab-panel-6436)  
-   * [ API ](#tab-panel-6437)  
+   * [ Dashboard ](#tab-panel-6445)  
+   * [ API ](#tab-panel-6446)  
    1. In the Cloudflare dashboard, go to the **DNS Records** page.  
    [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)  
    2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.  
@@ -85,7 +85,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
     "foundation_dns": true  
   }'  
 ```  
-The response body will contain your assigned namservers in the `nameservers` object. You will use these nameservers in the next step.
+The response body will contain your assigned nameservers in the `nameservers` object. You will use these nameservers in the next step.
 2. Update the authoritative nameservers at your registrar. This step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/):  
    * If you are using Cloudflare Registrar, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to have your nameservers updated.  
    * If you are using a different registrar or if your zone is delegated, [manually update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes).  

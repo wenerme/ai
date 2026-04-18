@@ -1,6 +1,6 @@
 ---
 title: Roles and permissions
-description: When creating a Cloudflare Zero Trust account, you will be given the Super Administrator role. As a Super Administrator, you can invite members to join your Zero Trust account and assign them different roles. There is no limit to the number of members which can be added to a given account. Any members with the proper permissions will be able to make configuration changes while actively logged into Zero Trust (unless read-only mode is enabled).
+description: Reference information for Roles and permissions in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

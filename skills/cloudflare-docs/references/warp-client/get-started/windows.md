@@ -1,6 +1,6 @@
 ---
 title: Windows
-description: WARP is now running and protecting your Internet connection.
+description: Install and configure WARP on Windows.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloud on-ramps
-description: Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) allows you to create on-ramps from your cloud networks to Cloudflare WAN (formerly Magic WAN). Cloudflare will create virtual private network (VPN) tunnels between Cloudflare WAN and your cloud provider, configuring both sides of the connection on your behalf. Cloudflare orchestrates the cloud provider's native VPN functionality, without requiring deployment of any additional compute virtual machines (VMs).
+description: Connect cloud providers to Cloudflare with cloud on-ramps.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Require purpose justification
-description: Cloudflare Access allows security and IT teams to present users with a purpose justification screen directly after they log in to an Access application. This allows organizations to audit not only for who is accessing their resources, but also for why they are requesting access.
+description: Require purpose justification in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloud and SaaS findings
-description: Cloudflare's Cloud Access Security Broker (CASB) connects to SaaS application and cloud environment APIs to scan for security issues that can occur after a user has successfully logged in. These include misconfigurations (such as overly permissive sharing settings), unauthorized user activity, shadow IT, and other data security issues.
+description: Cloud and SaaS findings in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

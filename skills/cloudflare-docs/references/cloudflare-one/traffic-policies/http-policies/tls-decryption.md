@@ -1,6 +1,6 @@
 ---
 title: TLS decryption
-description: Cloudflare Gateway can perform SSL/TLS decryption to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, will not be visible to Gateway.
+description: How TLS decryption works in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -36,8 +36,8 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-* [ Dashboard ](#tab-panel-3892)
-* [ Terraform (v5) ](#tab-panel-3893)
+* [ Dashboard ](#tab-panel-6033)
+* [ Terraform (v5) ](#tab-panel-6034)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
@@ -90,9 +90,9 @@ Google Chrome can automatically upgrade HTTP requests to HTTPS requests, even wh
 
 You can turn off automatic HTTPS upgrades via a Gateway pass through policy, a Chrome browser flag, or a Chrome Enterprise policy.
 
-* [ Pass through policy ](#tab-panel-3889)
-* [ Chrome browser flag ](#tab-panel-3890)
-* [ Chrome enterprise policy ](#tab-panel-3891)
+* [ Pass through policy ](#tab-panel-6030)
+* [ Chrome browser flag ](#tab-panel-6031)
+* [ Chrome enterprise policy ](#tab-panel-6032)
 
 To disable automatic HTTPS upgrades for a URL across your Zero Trust organization, create a Gateway pass through policy.
 
@@ -132,8 +132,8 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3\. However, some 
 
 ### Enable FIPS compliance
 
-* [ Dashboard ](#tab-panel-3894)
-* [ Terraform (v5) ](#tab-panel-3895)
+* [ Dashboard ](#tab-panel-6035)
+* [ Terraform (v5) ](#tab-panel-6036)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.

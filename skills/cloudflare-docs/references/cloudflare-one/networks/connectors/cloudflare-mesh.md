@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Mesh
-description: Cloudflare Mesh connects your services and devices with post-quantum encrypted networking. Route traffic privately between servers, laptops, and phones without VPNs or bastion hosts.
+description: How Cloudflare Mesh works in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

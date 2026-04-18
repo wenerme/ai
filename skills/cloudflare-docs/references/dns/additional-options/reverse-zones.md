@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ IPv4 ](https://developers.cloudflare.com/search/?tags=IPv4)[ IPv6 ](https://developers.cloudflare.com/search/?tags=IPv6) 
+
 Was this helpful?
 
 YesNo

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Virtual WAN
-description: This tutorial provides information on how to connect Cloudflare WAN (formerly Magic WAN) to a Microsoft Azure Virtual WAN hub.
+description: Connect Microsoft Azure Virtual WAN to Cloudflare WAN.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

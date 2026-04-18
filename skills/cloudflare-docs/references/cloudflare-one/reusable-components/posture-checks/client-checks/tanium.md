@@ -1,6 +1,6 @@
 ---
 title: Tanium (legacy)
-description: Cloudflare Access can use endpoint data from Tanium™ to determine if a request should be allowed to reach a protected resource. When users attempt to connect to a resource protected by Access with a Tanium rule, Cloudflare Access will validate the user's identity, and the browser will connect to the Tanium agent before making a decision to grant access.
+description: Tanium (legacy) in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

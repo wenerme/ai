@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Tunnel
-description: Cloudflare WAN (formerly Magic WAN) can work together with Cloudflare Tunnel to provide easy access between your networks and applications.
+description: Connect WAN sites with Cloudflare Tunnel.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Oracle Cloud
-description: This tutorial shows how to configure IPsec (Internet Protocol Security) between Cloudflare WAN (formerly Magic WAN) and an Oracle Cloud Site-to-site VPN.
+description: Integrate Oracle Cloud with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Connect the Cloudflare One Client before Windows login
-description: With Cloudflare Zero Trust, you can use an on-premise Active Directory (or similar) server to validate a remote user's Windows login credentials. Before the user enters their Windows login information for the first time, the Cloudflare One Client (formerly WARP) establishes a connection using a service token. This initial connection is not associated with a user identity. Once the user completes the Windows login, the Cloudflare One Client switches to an identity-based session and applies the user registration to all future logins.
+description: Connect the Cloudflare One Client before Windows login in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -43,9 +43,9 @@ With Cloudflare Zero Trust, you can use an on-premise Active Directory (or simil
 
 ## 1\. Create a service token
 
-* [ Dashboard ](#tab-panel-3727)
-* [ API ](#tab-panel-3728)
-* [ Terraform (v5) ](#tab-panel-3729)
+* [ Dashboard ](#tab-panel-5868)
+* [ API ](#tab-panel-5869)
+* [ Terraform (v5) ](#tab-panel-5870)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **Service Tokens**.
 2. Select **Create Service Token**.

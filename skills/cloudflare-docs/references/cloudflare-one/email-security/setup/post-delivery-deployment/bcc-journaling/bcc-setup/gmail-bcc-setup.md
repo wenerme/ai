@@ -1,5 +1,6 @@
 ---
 title: Gmail BCC setup
+description: Gmail BCC setup resources and guides for Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

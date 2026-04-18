@@ -53,7 +53,7 @@ If a brand phrase or search term has less than five characters, you can only cho
 4. You can select **Save query** to monitor it in the future and perform other actions, such as delete, clone and set up alerts, according to your Paid plan limits.
 5. To export all matches from a saved query, select your **Query name** \> select the three dots > **Export matches**.
 
-In the section **Monitor Strings**, you can check all the string queries that you selected to monitor. You can delete, clone, or create notifications for a string query. Refer to [Brand Protection Alerts](#brand-protection-alerts) to set up notifications. You can also dismiss any domain matched in the query if you have investigated and deemed it benign or a fale positive. Users can still access their previously dismissed matches by turning on the **Show dismissed matches** toggle in the Cloudflare dashboard.
+In the section **Monitor Strings**, you can check all the string queries that you selected to monitor. You can delete, clone, or create notifications for a string query. Refer to [Brand Protection Alerts](#brand-protection-alerts) to set up notifications. You can also dismiss any domain matched in the query if you have investigated and deemed it benign or a false positive. Users can still access their previously dismissed matches by turning on the **Show dismissed matches** toggle in the Cloudflare dashboard.
 
 ### Logo search (AI-powered)
 

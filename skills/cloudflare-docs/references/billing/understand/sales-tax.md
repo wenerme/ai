@@ -99,6 +99,12 @@ You may update your VAT registration number in your account profile.
 
 Reach out to Cloudflare via email [indirect\_tax@cloudflare.com](mailto:indirect%5Ftax@cloudflare.com) if you have any tax related concerns or questions.
 
+## Related resources
+
+* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your billing address or VAT number
+* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — View tax details on your invoices
+* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — General billing terms
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/understand/","name":"Understand"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/understand/sales-tax/","name":"Sales tax"}}]}
 ```

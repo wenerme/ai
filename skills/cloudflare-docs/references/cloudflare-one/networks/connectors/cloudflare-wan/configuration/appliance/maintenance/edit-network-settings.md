@@ -1,5 +1,6 @@
 ---
 title: Edit network settings
+description: Edit network settings in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

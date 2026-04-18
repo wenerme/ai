@@ -1,5 +1,6 @@
 ---
 title: How to
+description: Manual WAN configuration guides.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

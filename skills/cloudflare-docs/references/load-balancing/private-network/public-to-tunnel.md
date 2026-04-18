@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
+
 Was this helpful?
 
 YesNo
@@ -25,8 +29,8 @@ The specific configuration steps can vary depending on your infrastructure and s
 1. [Create a tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#1-create-a-tunnel) to connect your data center to Cloudflare.
 2. Create a [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) and assign it to the tunnel you configured in the previous step.
 
-* [ Dashboard ](#tab-panel-7554)
-* [ cli ](#tab-panel-7555)
+* [ Dashboard ](#tab-panel-7599)
+* [ cli ](#tab-panel-7600)
 
 To create a virtual network:
 

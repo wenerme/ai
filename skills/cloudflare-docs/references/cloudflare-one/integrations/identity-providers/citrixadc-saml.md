@@ -1,6 +1,6 @@
 ---
 title: Citrix ADC (SAML)
-description: Cloudflare One can integrate with Citrix ADC (formerly Citrix NetScaler ADC) as a SAML IdP. Documentation from Citrix shows you how to configure Citrix ADC as a SAML IdP. These steps are specific to Cloudflare One.
+description: Citrix ADC (SAML) in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

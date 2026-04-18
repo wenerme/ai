@@ -1,6 +1,6 @@
 ---
 title: Routes
-description: By default, a Mesh node is reachable only by its own Mesh IP. To make other devices on the subnet behind the node reachable — servers, databases, printers, IoT devices that cannot run the Cloudflare One Client — add CIDR routes.
+description: Routes in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -45,8 +45,8 @@ Use CIDR routes to forward traffic from your mesh node to devices on your local 
 
 ### Add a route
 
-* [ Dashboard ](#tab-panel-3650)
-* [ API ](#tab-panel-3651)
+* [ Dashboard ](#tab-panel-5631)
+* [ API ](#tab-panel-5632)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -88,8 +88,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes" 
 
 ### Edit a route
 
-* [ Dashboard ](#tab-panel-3652)
-* [ API ](#tab-panel-3653)
+* [ Dashboard ](#tab-panel-5633)
+* [ API ](#tab-panel-5634)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the edit icon next to the route you want to modify.
@@ -125,8 +125,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/teamnet/routes/$
 
 ### Delete a route
 
-* [ Dashboard ](#tab-panel-3648)
-* [ API ](#tab-panel-3649)
+* [ Dashboard ](#tab-panel-5629)
+* [ API ](#tab-panel-5630)
 
 1. Go to **Networking** \> **Mesh** \> select your node > **Routes** tab.
 2. Select the delete icon next to the route.

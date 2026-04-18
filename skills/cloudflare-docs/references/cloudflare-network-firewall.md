@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Network Firewall
-description: Cloudflare Network Firewall (formerly Magic Firewall) is a firewall-as-a-service (FWaaS) delivered from the Cloudflare global network to protect office networks and cloud infrastructure with advanced, scalable protection. With Cloudflare Network Firewall, you can apply filter rules on a variety of criteria, such as protocol and packet length, to filter unwanted traffic before it reaches your network.
+description: Filter and inspect network traffic with Cloudflare Network Firewall.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

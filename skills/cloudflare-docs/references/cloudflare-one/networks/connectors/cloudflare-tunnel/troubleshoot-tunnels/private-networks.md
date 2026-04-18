@@ -1,6 +1,6 @@
 ---
 title: Private network connectivity
-description: Follow this troubleshooting procedure when end users running the Cloudflare One Client have issues connecting to a private network behind Cloudflare Tunnel.
+description: Private network connectivity in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -83,8 +83,8 @@ Under **Traffic policies** \> **Traffic settings**, ensure that **Allow Secure W
 
 Verify that you can connect to the application directly from the `cloudflared` host machine:
 
-* [ macOS and Linux ](#tab-panel-5677)
-* [ Windows ](#tab-panel-5678)
+* [ macOS and Linux ](#tab-panel-5686)
+* [ Windows ](#tab-panel-5687)
 
 Open Terminal and run the following command:
 

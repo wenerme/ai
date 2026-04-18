@@ -1,6 +1,6 @@
 ---
 title: Authenticate MCP server to self-hosted apps
-description: Cloudflare Access can delegate access from any self-hosted application to an Access for SaaS MCP server via OAuth. The OAuth access token authorizes the MCP server to make requests to your self-hosted applications on behalf of the user, using the user's specific permissions and scopes.
+description: Authenticate MCP server to self-hosted apps in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -56,8 +56,8 @@ The first step is to add the MCP server to Cloudflare Access as an OIDC-based Sa
 
 ## 2\. Create an Access policy with a Linked App Token
 
-* [ Dashboard ](#tab-panel-3420)
-* [ API ](#tab-panel-3421)
+* [ Dashboard ](#tab-panel-5539)
+* [ API ](#tab-panel-5540)
 
 1. [Create a new Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy).
 2. Set the policy **Action** to _Service Auth_.

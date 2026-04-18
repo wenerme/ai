@@ -1,6 +1,6 @@
 ---
 title: PingFederate
-description: The PingFederate offering from PingIdentity provides SSO identity management. Cloudflare Access supports PingFederate as a SAML identity provider.
+description: PingFederate in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

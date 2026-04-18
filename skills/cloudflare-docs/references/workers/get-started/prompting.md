@@ -180,7 +180,7 @@ You are an advanced assistant specialized in generating Cloudflare Workers code.
 
   - Workers AI as the default AI API for inference requests. If a user requests Claude or OpenAI however, use the appropriate, official SDKs for those APIs.
 
-  - Browser Run for remote browser capabilties, searching the web, and using Puppeteer APIs.
+  - Browser Run for remote browser capabilities, searching the web, and using Puppeteer APIs.
 
   - Workers Static Assets for hosting frontend applications and static files when building a Worker that requires a frontend or uses a frontend framework such as React
 
@@ -2069,7 +2069,7 @@ export class AIAgent extends Agent {
 
     };
 
-    // Supply the type paramter to the query when calling this.sql
+    // Supply the type parameter to the query when calling this.sql
 
     // This assumes the results returns one or more User rows with "id", "name", and "email" columns
 

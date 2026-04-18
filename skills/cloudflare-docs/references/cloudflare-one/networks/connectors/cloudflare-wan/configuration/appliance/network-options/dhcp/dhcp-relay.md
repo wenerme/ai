@@ -1,6 +1,6 @@
 ---
 title: DHCP relay
-description: DHCP Relay provides a way for DHCP clients to communicate with DHCP servers that are not available on the same local subnet/broadcast domain. When you enable DHCP Relay, Cloudflare One Appliance (formerly Magic WAN Connector) forwards DHCP discover messages to a predefined DHCP server, and routes the responses back to the original device that sent the discover message.
+description: DHCP relay in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -43,8 +43,8 @@ DHCP relay will not work if your DHCP server is behind a [Cloudflare Tunnel](htt
 
 To configure DHCP relay:
 
-* [ Dashboard ](#tab-panel-3603)
-* [ API ](#tab-panel-3604)
+* [ Dashboard ](#tab-panel-5738)
+* [ API ](#tab-panel-5739)
 
 1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.

@@ -1,6 +1,6 @@
 ---
 title: LinkedIn
-description: Cloudflare Access allows your users to use LinkedIn as their identity provider (IdP).
+description: LinkedIn in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

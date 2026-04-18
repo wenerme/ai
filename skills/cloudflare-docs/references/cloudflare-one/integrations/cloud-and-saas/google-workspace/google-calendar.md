@@ -1,6 +1,6 @@
 ---
 title: Google Calendar
-description: The Google Calendar integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Google Workspace account that could leave you and your organization vulnerable.
+description: Reference information for Google Calendar in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

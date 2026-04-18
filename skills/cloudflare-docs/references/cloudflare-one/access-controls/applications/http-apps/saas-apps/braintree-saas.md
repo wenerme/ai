@@ -1,6 +1,6 @@
 ---
 title: Braintree
-description: This guide covers how to configure Braintree as a SAML application in Cloudflare One.
+description: Integrate Braintree with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

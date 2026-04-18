@@ -1,6 +1,6 @@
 ---
 title: Account limits
-description: This page lists the default account limits for rules, applications, fields, and other features. These limits may be increased on Enterprise accounts. To request a limit increase, contact your account team.
+description: Reference information for Account limits in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

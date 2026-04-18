@@ -1,6 +1,6 @@
 ---
 title: Useful terms
-description: This page contains terminology specific to locally-managed Cloudflare Tunnels. For general Tunnel terminology, refer to the Get started section.
+description: Reference information for Useful terms in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

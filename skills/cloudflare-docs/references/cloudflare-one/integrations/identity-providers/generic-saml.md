@@ -1,6 +1,6 @@
 ---
 title: Generic SAML 2.0
-description: Cloudflare One integrates with any identity provider that supports SAML 2.0. If your identity provider is not listed in the integration list of login methods in Cloudflare One, it can be configured using SAML 2.0 (or OpenID if OIDC based). Generic SAML can also be used if you would like to pass additional SAML headers or claims for an IdP in the integration list.
+description: Generic SAML 2.0 in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -56,8 +56,8 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2\. Add a SAML identity provider to Cloudflare One
 
-* [ Dashboard ](#tab-panel-3629)
-* [ Terraform (v5) ](#tab-panel-3630)
+* [ Dashboard ](#tab-panel-5610)
+* [ Terraform (v5) ](#tab-panel-5611)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** \> **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.

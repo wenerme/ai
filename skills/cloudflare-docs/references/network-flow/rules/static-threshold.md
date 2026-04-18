@@ -1,6 +1,6 @@
 ---
 title: Static threshold rule
-description: A static threshold rule monitors your network traffic against a fixed threshold you define, measured in bits or packets per second. Network Flow (formerly Magic Network Monitoring) compares total traffic across all IP prefixes and addresses in the rule against this threshold. If traffic exceeds the threshold for the configured duration, Network Flow sends an alert.
+description: Create static threshold rules for traffic limits.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

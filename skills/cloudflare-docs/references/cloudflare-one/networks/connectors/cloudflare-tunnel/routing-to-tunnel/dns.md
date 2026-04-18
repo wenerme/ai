@@ -1,5 +1,6 @@
 ---
 title: DNS records
+description: DNS records in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -27,8 +28,8 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-* [ Dashboard ](#tab-panel-3540)
-* [ CLI ](#tab-panel-3541)
+* [ Dashboard ](#tab-panel-5681)
+* [ CLI ](#tab-panel-5682)
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain.  
 [ Go to **Records** ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)

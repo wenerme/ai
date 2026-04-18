@@ -248,7 +248,7 @@ For more information, refer to [Diagnostic logs](https://developers.cloudflare.c
 
 ## 2024-10-17
 
-**Simplifed WARP Connector deployment**
+**Simplified WARP Connector deployment**
 
 You can now deploy WARP Connector using a simplified, guided workflow similar to `cloudflared` connectors. For detailed instructions, refer to the [WARP Connector documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/).
 

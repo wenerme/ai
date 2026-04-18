@@ -1,6 +1,6 @@
 ---
 title: Additional detections
-description: Email security allows you to configure the following additional detections:
+description: Additional detections in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

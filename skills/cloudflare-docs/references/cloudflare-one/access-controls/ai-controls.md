@@ -1,5 +1,6 @@
 ---
 title: AI controls
+description: AI controls resources and guides for Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

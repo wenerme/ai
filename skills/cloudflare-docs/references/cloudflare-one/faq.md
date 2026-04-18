@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Review answers to the most commonly asked questions on Cloudflare Zero Trust, as well as a troubleshooting section to help you solve common issues and errors you may come across.
+description: FAQ resources and guides for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

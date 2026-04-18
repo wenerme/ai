@@ -1,6 +1,6 @@
 ---
 title: Network session analytics
-description: The Network session analytics dashboard provides visibility into your Cloudflare One traffic patterns. This dashboard helps you understand how traffic flows through your network, including on-ramps (entry points like WARP or Magic Tunnel) and off-ramps (destinations like Internet or Cloudflare Tunnel).
+description: Reference information for Network session analytics in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -17,6 +17,8 @@ Copy page
 # Network session analytics
 
 The Network session analytics dashboard provides visibility into your Cloudflare One traffic patterns. This dashboard helps you understand how traffic flows through your network, including on-ramps (entry points like WARP or Magic Tunnel) and off-ramps (destinations like Internet or Cloudflare Tunnel).
+
+The dashboard is based on the [Zero Trust network sessions Logpush dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/). For definitions on any field, refer to the dataset schema documentation.
 
 To review Network session analytics:
 
@@ -44,8 +46,9 @@ The Network session analytics dashboard helps you:
 
 ### Traffic by location
 
-* **World map**: Geographic visualization of network traffic by location
-* **Location list**: Top locations by session count with accompanying graph
+* **World map**: Geographic visualization of network traffic by the Cloudflare data center (or colocation) of the ingress and egress
+* **Location list**: Top Cloudflare data center (or colocation) locations of the ingress and egress by session count with accompanying graph
+* **Change**: Shows the total change across ingress and egress for each location
 
 ### Top analytics
 
@@ -64,7 +67,7 @@ The Network session analytics dashboard helps you:
 
 ## Related resources
 
-* [Network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/): View detailed logs for individual network sessions.
+* [Zero Trust network sessions Logpush dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/): View detailed logs for individual network sessions.
 * [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/): Configure policies that apply to network traffic.
 
 ```json

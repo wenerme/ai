@@ -6,6 +6,10 @@ image: https://developers.cloudflare.com/core-services-preview.png
 
 [Skip to content](#%5Ftop) 
 
+### Tags
+
+[ Private networks ](https://developers.cloudflare.com/search/?tags=Private%20networks) 
+
 Was this helpful?
 
 YesNo
@@ -50,8 +54,8 @@ API token configuration
 
 ## 1\. Set up your internal DNS zone
 
-* [ Dashboard ](#tab-panel-6446)
-* [ API ](#tab-panel-6447)
+* [ Dashboard ](#tab-panel-6455)
+* [ API ](#tab-panel-6456)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -141,8 +145,8 @@ During an [internal DNS query resolution](https://developers.cloudflare.com/dns/
 
 For details, refer to [reference zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/reference-zones/).
 
-* [ Dashboard ](#tab-panel-6448)
-* [ API ](#tab-panel-6449)
+* [ Dashboard ](#tab-panel-6457)
+* [ API ](#tab-panel-6458)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -188,8 +192,8 @@ curl "https://api.cloudflare.com/client/v4/zones/8a904aeb565c42cfa207d98f6edea2f
 
 Since the resolver policy will require a [DNS view](https://developers.cloudflare.com/dns/internal-dns/dns-views/), you must have at least one view to be able to route requests to internal zones.
 
-* [ Dashboard ](#tab-panel-6444)
-* [ API ](#tab-panel-6445)
+* [ Dashboard ](#tab-panel-6453)
+* [ API ](#tab-panel-6454)
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.  
 [ Go to **Internal DNS** ](https://dash.cloudflare.com/?to=/:account/internal-dns)
@@ -232,8 +236,8 @@ The Gateway configuration must exist within the same Cloudflare account where th
 
 Besides selecting an internal DNS view when setting up your resolver policies, you can also enable the **fallback through public DNS** option.
 
-* [ Dashboard ](#tab-panel-6442)
-* [ API ](#tab-panel-6443)
+* [ Dashboard ](#tab-panel-6451)
+* [ API ](#tab-panel-6452)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.

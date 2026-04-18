@@ -34,8 +34,8 @@ For additional help, refer to [this Community thread ↗](https://community.clou
 
 ## Change plan type
 
-* [ Dashboard ](#tab-panel-3500)
-* [ API ](#tab-panel-3501)
+* [ Dashboard ](#tab-panel-5295)
+* [ API ](#tab-panel-5296)
 
 To change the Cloudflare plan for a domain in the dashboard:
 
@@ -56,8 +56,8 @@ If you are an Enterprise customer and cannot change your plan type, contact your
 
 ## Change plan duration
 
-* [ Dashboard ](#tab-panel-3502)
-* [ API ](#tab-panel-3503)
+* [ Dashboard ](#tab-panel-5297)
+* [ API ](#tab-panel-5298)
 
 To change the duration of your Cloudflare plan in the dashboard:
 
@@ -71,6 +71,12 @@ To change the duration of your Cloudflare plan in the dashboard:
 6. Select **Confirm**.
 
 To change the duration of a Cloudflare plan for a domain using the API, send a [PUT](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/update/) request with an updated value for the `frequency` parameter.
+
+## Related resources
+
+* [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — Cancel plans and add-ons
+* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
+* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When upgrades and downgrades take effect
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/manage/","name":"Manage"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/manage/change-plan/","name":"Change domain plan"}}]}

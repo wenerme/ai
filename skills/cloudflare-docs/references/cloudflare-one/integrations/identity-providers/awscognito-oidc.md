@@ -1,6 +1,6 @@
 ---
 title: Amazon Cognito
-description: Amazon Cognito provides SSO identity management for end users of web and mobile apps. You can integrate Amazon Cognito as an OIDC identity provider for Cloudflare One.
+description: Amazon Cognito in Zero Trust integrations.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

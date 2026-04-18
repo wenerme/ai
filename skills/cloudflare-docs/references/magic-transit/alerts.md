@@ -1,6 +1,6 @@
 ---
 title: Alerts
-description: You can configure alerts to receive notifications for changes in your network.
+description: Configure alerts for Magic Transit events.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

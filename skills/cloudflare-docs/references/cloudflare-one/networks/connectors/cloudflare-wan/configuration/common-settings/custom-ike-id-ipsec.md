@@ -1,6 +1,6 @@
 ---
 title: Custom IKE ID for IPsec
-description: Cloudflare WAN (formerly Magic WAN) customers can configure a custom IKE ID for their IPsec tunnels. Customers that are using Cloudflare WAN and a VeloCloud SD-WAN device together should utilize this option to create a high availability configuration.
+description: Custom IKE ID for IPsec in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

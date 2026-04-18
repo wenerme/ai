@@ -1,6 +1,6 @@
 ---
 title: DDoS protection
-description: Cloudflare DDoS protection automatically detects and mitigates Distributed Denial of Service (DDoS) attacks using its Autonomous Edge. With Magic Transit, you have access to additional Advanced DDoS mitigation systems, such as:
+description: DDoS protection for Magic Transit prefixes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

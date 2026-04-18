@@ -1,6 +1,6 @@
 ---
 title: Enable Gmail BCC integration
-description: This guide describes the process for enabling Email security with Google Workspace. It requires setting up a service account and a JSON key in Google Cloud Platform (GCP), followed by configuring domain-wide delegation in the Google Workspace Admin Console to authorize the integration.
+description: Enable Gmail BCC integration in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

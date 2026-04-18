@@ -1,6 +1,6 @@
 ---
 title: Configure link actions
-description: You can configure how Email security handles links in emails.
+description: Configure link actions in Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

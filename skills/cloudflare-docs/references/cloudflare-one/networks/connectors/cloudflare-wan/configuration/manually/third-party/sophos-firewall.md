@@ -1,6 +1,6 @@
 ---
 title: Sophos Firewall
-description: This tutorial shows you how to use Cloudflare WAN (formerly Magic WAN) with the following versions of the Sophos Firewall:
+description: Integrate Sophos Firewall with Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

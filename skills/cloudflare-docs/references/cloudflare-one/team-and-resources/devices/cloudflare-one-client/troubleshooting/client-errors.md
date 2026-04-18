@@ -1,6 +1,6 @@
 ---
 title: Client errors
-description: This page lists the error codes that can appear in the Cloudflare One Client (formerly WARP) GUI. If you do not see your error below, refer to common issues or contact Cloudflare Support.
+description: Reference information for Client errors in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -280,8 +280,8 @@ The device is not authenticated to an [organization](https://developers.cloudfla
 
 ### Resolution
 
-* [ Version 2026.2+ ](#tab-panel-3734)
-* [ Version 2026.1 and earlier ](#tab-panel-3735)
+* [ Version 2026.2+ ](#tab-panel-5875)
+* [ Version 2026.1 and earlier ](#tab-panel-5876)
 
 1. Launch the Cloudflare One Client.
 2. Go to **Profile** \> **Account information**.

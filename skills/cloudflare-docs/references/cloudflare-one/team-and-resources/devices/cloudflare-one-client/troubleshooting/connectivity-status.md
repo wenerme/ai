@@ -1,6 +1,6 @@
 ---
 title: Connectivity status
-description: The Cloudflare One Client (formerly WARP) GUI displays the following status messages when transitioning from a Disconnected to Connected state. These messages indicate the connectivity stage of the Cloudflare One Client daemon as it establishes a connection from the device to Cloudflare. The client mode determines which messages are displayed during the connection process. If the Cloudflare One Client encounters an error while connecting, the status message will change to an error code.
+description: Reference information for Connectivity status in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

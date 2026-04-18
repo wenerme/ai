@@ -1,6 +1,6 @@
 ---
 title: SFP+ port information
-description: The hardware version of Cloudflare One Appliance (formerly Magic WAN Connector) includes two SFP+ ports that support 10G throughput. These ports can be configured as either a WAN or a LAN port, like all of the 1G RJ45 ports in the machine. Because a 10G WAN uplink will often be bottlenecked by IPsec tunnel speeds, the SFP+ ports are most useful for configuring high speed LANs, and for using fiber connections.
+description: SFP+ port specifications for the hardware Appliance.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

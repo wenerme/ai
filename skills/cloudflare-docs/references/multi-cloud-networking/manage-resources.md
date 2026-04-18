@@ -1,6 +1,6 @@
 ---
 title: Manage resources
-description: Your cloud environment is built from individual cloud resources, like virtual private clouds (VPCs), subnets, virtual machines (VMs), route tables, and routes. Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) discovers all of your cloud resources and stores their configuration and status in the Cloud resource catalog, a read-only snapshot of your cloud environment. Discovery runs regularly in the background, keeping your catalog up to date as your environment changes.
+description: Manage cloud on-ramp resources and connections.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

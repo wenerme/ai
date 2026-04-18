@@ -1,6 +1,6 @@
 ---
 title: SSH proxy and command logs (legacy)
-description: Cloudflare One supports SSH proxying and command logging using Secure Web Gateway and the Cloudflare One Client.
+description: SSH proxy and command logs (legacy) in Gateway.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -154,8 +154,8 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-3919)
-* [ API ](#tab-panel-3920)
+* [ Dashboard ](#tab-panel-6066)
+* [ API ](#tab-panel-6067)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
@@ -270,8 +270,8 @@ cat /etc/ssh/sshd_config
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-3917)
-* [ CentOS/RHEL ](#tab-panel-3918)
+* [ Debian/Ubuntu ](#tab-panel-6064)
+* [ CentOS/RHEL ](#tab-panel-6065)
 
 For Debian/Ubuntu:
 

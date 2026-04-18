@@ -31,9 +31,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"72b2bd5801305e2d46e227fc1a236556ccb91346980e26edaab1e913de467a10\"",
-    "size": 234898,
-    "updatedAt": "2026-04-17T00:18:06.237Z"
+    "etag": "W/\"b69bf09d7395e9a3a813235237d04545ff08a45f1b6069735118e6ccce235c2b\"",
+    "size": 238901,
+    "updatedAt": "2026-04-18T00:16:12.322Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -277,9 +277,9 @@
   },
   "model-config.md": {
     "url": "https://code.claude.com/docs/en/model-config",
-    "lastModified": "Thu, 16 Apr 2026 21:19:53 GMT",
-    "size": 27698,
-    "updatedAt": "2026-04-17T00:17:53.310Z"
+    "lastModified": "Fri, 17 Apr 2026 21:50:39 GMT",
+    "size": 27915,
+    "updatedAt": "2026-04-18T00:15:58.761Z"
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
@@ -361,9 +361,9 @@
   },
   "routines.md": {
     "url": "https://code.claude.com/docs/en/routines",
-    "lastModified": "Thu, 16 Apr 2026 21:20:11 GMT",
-    "size": 22474,
-    "updatedAt": "2026-04-17T00:17:58.047Z"
+    "lastModified": "Fri, 17 Apr 2026 21:52:01 GMT",
+    "size": 22269,
+    "updatedAt": "2026-04-18T00:16:03.730Z"
   },
   "sandboxing.md": {
     "url": "https://code.claude.com/docs/en/sandboxing",
@@ -397,9 +397,9 @@
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
-    "lastModified": "Thu, 16 Apr 2026 21:21:16 GMT",
-    "size": 19482,
-    "updatedAt": "2026-04-17T00:18:00.047Z"
+    "lastModified": "Fri, 17 Apr 2026 21:51:47 GMT",
+    "size": 19626,
+    "updatedAt": "2026-04-18T00:16:05.828Z"
   },
   "slack.md": {
     "url": "https://code.claude.com/docs/en/slack",
@@ -439,9 +439,9 @@
   },
   "troubleshooting.md": {
     "url": "https://code.claude.com/docs/en/troubleshooting",
-    "lastModified": "Thu, 16 Apr 2026 21:20:02 GMT",
-    "size": 43563,
-    "updatedAt": "2026-04-17T00:18:02.773Z"
+    "lastModified": "Fri, 17 Apr 2026 21:50:51 GMT",
+    "size": 45079,
+    "updatedAt": "2026-04-18T00:16:08.696Z"
   },
   "ultraplan.md": {
     "url": "https://code.claude.com/docs/en/ultraplan",

@@ -1,6 +1,6 @@
 ---
 title: Tunnel diagnostic logs
-description: Cloudflare Tunnel generates a set of diagnostic logs that can be used to troubleshoot issues with cloudflared. A diagnostic report collects data from a single instance of cloudflared running on the local machine.
+description: Tunnel diagnostic logs in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

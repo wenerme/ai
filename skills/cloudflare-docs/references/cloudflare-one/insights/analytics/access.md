@@ -1,6 +1,6 @@
 ---
 title: Access event analytics
-description: Access event analytics allows you to review login attempts to the applications you protect behind Access. Access event analytics are powered by Access authentication logs.
+description: Reference information for Access event analytics in Zero Trust analytics.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

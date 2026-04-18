@@ -1,6 +1,6 @@
 ---
 title: Session management
-description: A user session determines how long a user can access an Access application without re-authenticating.
+description: Session management in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

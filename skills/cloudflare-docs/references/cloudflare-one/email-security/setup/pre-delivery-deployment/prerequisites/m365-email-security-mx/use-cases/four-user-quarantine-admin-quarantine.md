@@ -1,6 +1,6 @@
 ---
 title: 4 - User managed quarantine and administrative quarantine
-description: In this tutorial, you will learn to deliver SPAM and SPOOF messages to the user managed quarantine, and MALICIOUS messages to the administrative quarantine (this requires an administrator to release the emails).
+description: Integrate 4 - User managed quarantine and administrative quarantine with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Device client settings
-description: Device client settings (formerly WARP) allow you to customize the Cloudflare One Client modes and permissions available to end users.
+description: Reference information for Device client settings in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -76,8 +76,8 @@ The user will have an unlimited amount of time to activate their code.
 
 To activate the override code on a user device:
 
-* [ Version 2026.2+ ](#tab-panel-3854)
-* [ Version 2026.1 and earlier ](#tab-panel-3855)
+* [ Version 2026.2+ ](#tab-panel-5841)
+* [ Version 2026.1 and earlier ](#tab-panel-5842)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
@@ -389,9 +389,9 @@ Enabling this setting comes with two major consequences:
 
 To turn on local network access in the Cloudflare One Client:
 
-* [ Windows and macOS ](#tab-panel-3856)
-* [ Linux ](#tab-panel-3857)
-* [ Android and ChromeOS ](#tab-panel-3858)
+* [ Windows and macOS ](#tab-panel-5843)
+* [ Linux ](#tab-panel-5844)
+* [ Android and ChromeOS ](#tab-panel-5845)
 
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.

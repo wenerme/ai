@@ -1,6 +1,6 @@
 ---
 title: API and Terraform
-description: You can manage your Cloudflare Zero Trust configuration using the API or Terraform. For more information, refer to the following links:
+description: How API and Terraform works in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cisco - Cisco as MX Record
-description: In this tutorial, you will learn how to configure Email security with Cisco as MX record.
+description: Integrate Cisco - Cisco as MX Record with Email Security.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -910,6 +910,51 @@ Explain Code
 
 If you are already using the [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider) package, you can route requests through AI Gateway to call third-party models without needing separate provider SDKs. Pass a `gateway` option with your gateway ID to `createWorkersAI`:
 
+* [  JavaScript ](#tab-panel-5083)
+* [  TypeScript ](#tab-panel-5084)
+
+JavaScript
+
+```
+
+import { createWorkersAI } from "workers-ai-provider";
+
+import { streamText } from "ai";
+
+
+export default {
+
+  async fetch(request, env) {
+
+    const workersai = createWorkersAI({
+
+      binding: env.AI,
+
+      gateway: { id: "my-gateway" },
+
+    });
+
+
+    const result = streamText({
+
+      model: workersai("openai/gpt-4o"),
+
+      messages: [{ role: "user", content: "Write a short story" }],
+
+    });
+
+
+    return result.toTextStreamResponse();
+
+  },
+
+};
+
+
+```
+
+Explain Code
+
 TypeScript
 
 ```
@@ -952,7 +997,7 @@ export default {
 
 Explain Code
 
-This works with any [supported provider and model](https://developers.cloudflare.com/ai-gateway/usage/providers/) available through AI Gateway.
+This works with any [supported provider and model](https://developers.cloudflare.com/ai/models/) available through AI Gateway.
 
 ### Fallback Providers
 

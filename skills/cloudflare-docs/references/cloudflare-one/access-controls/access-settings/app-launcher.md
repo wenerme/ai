@@ -1,6 +1,6 @@
 ---
 title: App Launcher
-description: With the Access App Launcher, users can open all applications that they have access to from a single dashboard.
+description: App Launcher in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

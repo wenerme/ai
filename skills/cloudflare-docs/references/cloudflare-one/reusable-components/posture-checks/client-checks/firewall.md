@@ -1,6 +1,6 @@
 ---
 title: Firewall
-description: The Firewall device posture attribute ensures that a firewall is running on a device.
+description: Firewall in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

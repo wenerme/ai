@@ -1,6 +1,6 @@
 ---
 title: Scan for sensitive data
-description: You can use Cloudflare Data Loss Prevention (DLP) to discover if files stored in a SaaS application contain sensitive data. To perform DLP scans in a SaaS app, first configure a DLP profile with the data patterns you want to detect, then add the profile to a CASB integration.
+description: How Scan for sensitive data works in Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

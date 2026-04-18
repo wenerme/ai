@@ -1,6 +1,6 @@
 ---
 title: IPsec
-description: This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.
+description: IPsec for Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

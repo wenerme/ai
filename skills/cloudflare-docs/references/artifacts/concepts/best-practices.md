@@ -44,8 +44,8 @@ Include stable identifiers in the repo name, such as the agent name, session ID,
 
 This example creates a unique repo name before creating the repo.
 
-* [  JavaScript ](#tab-panel-5260)
-* [  TypeScript ](#tab-panel-5261)
+* [  JavaScript ](#tab-panel-5269)
+* [  TypeScript ](#tab-panel-5270)
 
 src/index.js
 
@@ -106,8 +106,8 @@ This keeps your starting point consistent and makes downstream diffs easier to r
 
 This example forks a reviewed baseline repo into a session-specific repo.
 
-* [  JavaScript ](#tab-panel-5262)
-* [  TypeScript ](#tab-panel-5263)
+* [  JavaScript ](#tab-panel-5271)
+* [  TypeScript ](#tab-panel-5272)
 
 src/index.js
 
@@ -116,13 +116,6 @@ src/index.js
 async function forkFromBaseline(env, sessionId) {
 
   const baseline = await env.ARTIFACTS.get("starter-repo");
-
-  if (!baseline) {
-
-    throw new Error("Baseline repo not found");
-
-  }
-
 
   const forked = await baseline.fork(`starter-repo-${sessionId}`, {
 
@@ -165,13 +158,6 @@ async function forkFromBaseline(env: Env, sessionId: string) {
 
   const baseline = await env.ARTIFACTS.get("starter-repo");
 
-  if (!baseline) {
-
-    throw new Error("Baseline repo not found");
-
-  }
-
-
   const forked = await baseline.fork(`starter-repo-${sessionId}`, {
 
     description: `Fork for session ${sessionId}`,
@@ -210,8 +196,8 @@ This example uses the [Workers binding](https://developers.cloudflare.com/artifa
 
 Assume the caller is already authenticated and authorized before this route returns a token.
 
-* [  JavaScript ](#tab-panel-5264)
-* [  TypeScript ](#tab-panel-5265)
+* [  JavaScript ](#tab-panel-5273)
+* [  TypeScript ](#tab-panel-5274)
 
 src/index.js
 
@@ -227,13 +213,6 @@ export default {
 
 
     const repo = await env.ARTIFACTS.get(repoName);
-
-    if (!repo) {
-
-      return Response.json({ error: "Repo not found" }, { status: 404 });
-
-    }
-
 
     const token = await repo.createToken("read", 900);
 
@@ -280,13 +259,6 @@ export default {
 
 
     const repo = await env.ARTIFACTS.get(repoName);
-
-    if (!repo) {
-
-      return Response.json({ error: "Repo not found" }, { status: 404 });
-
-    }
-
 
     const token = await repo.createToken("read", 900);
 

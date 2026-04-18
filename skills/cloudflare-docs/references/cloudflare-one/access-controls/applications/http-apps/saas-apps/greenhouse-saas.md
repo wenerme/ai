@@ -1,6 +1,6 @@
 ---
 title: Greenhouse Recruiting
-description: This guide covers how to configure Greenhouse Recruiting as a SAML application in Cloudflare One.
+description: Integrate Greenhouse Recruiting with Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

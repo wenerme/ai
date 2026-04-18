@@ -20,13 +20,13 @@ Recommendation: Use custom rules instead
 
 Cloudflare recommends that you create [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of IP Access rules to perform IP-based or geography-based blocking (geoblocking).
 
-* [  New dashboard ](#tab-panel-9122)
-* [ Old dashboard ](#tab-panel-9123)
-* [ API ](#tab-panel-9124)
+* [  New dashboard ](#tab-panel-9169)
+* [ Old dashboard ](#tab-panel-9170)
+* [ API ](#tab-panel-9171)
 
 Note
 
-IP Access Rules are only available in the new security dashboard if you have configured at least one IP access rule. Cloudflare recommends that you use [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of IP Access Rules.
+IP Access Rules are only available in the new security dashboard if you have configured at least one IP access rule.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.  
 [ Go to **Security rules** ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)

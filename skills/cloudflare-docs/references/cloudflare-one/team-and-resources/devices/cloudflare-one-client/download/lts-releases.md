@@ -1,6 +1,6 @@
 ---
 title: Download Cloudflare One Client LTS releases
-description: Long-Term Support (LTS) releases are stable releases that are guaranteed to continue receiving security bug fixes for at least 12 months or 90 days after the next LTS release, whichever is greater.
+description: Reference information for Download Cloudflare One Client LTS releases in Zero Trust.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -43,7 +43,7 @@ No LTS releases are currently available, as Cloudflare is still rolling out our 
 
 | **OS version**             | Sonoma 14.0+, Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+ |
 | -------------------------- | ------------------------------------------------------------------ |
-| **Processor**              | M series                                                           |
+| **Processor**              | Intel or M series                                                  |
 | **HD space**               | 75 MB                                                              |
 | **Memory**                 | 35 MB                                                              |
 | **Network interface type** | Wi-Fi or LAN                                                       |

@@ -103,6 +103,12 @@ You cannot remove a VAT or GST number from past invoices. Removing a VAT or GST 
 4. In the **VAT/GST** field, delete the VAT or GST number.
 5. Select **Confirm**.
 
+## Related resources
+
+* [Create billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/) — Set up your initial payment method
+* [Invoices](https://developers.cloudflare.com/billing/manage/invoices/) — View and download invoices
+* [Sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/) — How tax is calculated based on your billing address
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/billing/","name":"Billing"}},{"@type":"ListItem","position":3,"item":{"@id":"/billing/get-started/","name":"Get started"}},{"@type":"ListItem","position":4,"item":{"@id":"/billing/get-started/update-billing-info/","name":"Update billing information"}}]}
 ```

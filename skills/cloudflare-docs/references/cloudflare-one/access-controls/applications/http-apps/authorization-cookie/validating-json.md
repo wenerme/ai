@@ -1,6 +1,6 @@
 ---
 title: Validate JWTs
-description: When Cloudflare sends a request to your origin, the request will include an application token as a Cf-Access-Jwt-Assertion request header. Requests made through a browser will also pass the token as a CF_Authorization cookie.
+description: Validate JWTs in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -153,8 +153,8 @@ When Cloudflare Access is in front of your [Worker](https://developers.cloudflar
 
 The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
 
-* [  JavaScript ](#tab-panel-3428)
-* [  TypeScript ](#tab-panel-3429)
+* [  JavaScript ](#tab-panel-5549)
+* [  TypeScript ](#tab-panel-5550)
 
 JavaScript
 

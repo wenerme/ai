@@ -1,6 +1,6 @@
 ---
 title: Bandwidth measurement
-description: Cloudflare measures Magic Transit usage based on the 95th percentile of clean bandwidth for your network. &#34;Clean bandwidth&#34; refers to the egress traffic Cloudflare routes to your network after applying all Distributed Denial of Service (DDoS) mitigation and firewall functions. The usage measurement explicitly excludes attack traffic we block at our global network.
+description: How Cloudflare measures Magic Transit tunnel bandwidth.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

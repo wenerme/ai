@@ -1,6 +1,6 @@
 ---
 title: Client-side cloudflared
-description: With Cloudflare Zero Trust, users can connect to non-HTTP applications via a public hostname without installing the Cloudflare One Client. This method requires you to onboard a domain to Cloudflare and install cloudflared on both the server and the user's device.
+description: Client-side cloudflared in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Videos
+description: Videos for Cloudflare One.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

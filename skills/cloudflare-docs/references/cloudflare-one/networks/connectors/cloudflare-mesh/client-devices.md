@@ -1,6 +1,6 @@
 ---
 title: Connect client devices
-description: Client devices — laptops, phones, and desktops — join your Mesh network by installing the Cloudflare One Client and enrolling. Each device receives a Mesh IP and can immediately communicate with every other enrolled device and Mesh node.
+description: Connect client devices in Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 
@@ -34,8 +34,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-3634)
-* [ Version 2026.1 and earlier ](#tab-panel-3635)
+* [ Version 2026.2+ ](#tab-panel-5615)
+* [ Version 2026.1 and earlier ](#tab-panel-5616)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.

@@ -1,6 +1,6 @@
 ---
 title: Isolate self-hosted application
-description: With Access policies, you can require users to open self-hosted applications in a secure remote browser. Because the remote browser is directly integrated into our Secure Web Gateway platform, HTTP policies can be applied to isolated applications without needing to install the Cloudflare One Client. This allows you to distribute internal applications to unmanaged users while retaining control over sensitive data.
+description: Isolate self-hosted application in Access.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

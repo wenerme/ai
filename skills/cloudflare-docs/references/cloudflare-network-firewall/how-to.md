@@ -1,6 +1,6 @@
 ---
 title: How to
-description: Review the content below to learn how to complete tasks using Cloudflare Network Firewall (formerly Magic Firewall).
+description: How-to guides for configuring the Network Firewall.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

@@ -34,8 +34,8 @@ If you are using [Smart Placement](https://developers.cloudflare.com/workers/con
 
 If you need to always run your Worker script before serving static assets (for example, you wish to log requests, perform some authentication checks, use [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/), or otherwise transform assets before serving), set `run_worker_first` to `true`:
 
-* [  wrangler.jsonc ](#tab-panel-7798)
-* [  wrangler.toml ](#tab-panel-7799)
+* [  wrangler.jsonc ](#tab-panel-10025)
+* [  wrangler.toml ](#tab-panel-10026)
 
 JSONC
 
@@ -47,7 +47,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-17",
 
   "main": "./worker/index.ts",
 
@@ -76,7 +76,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-17"
 
 main = "./worker/index.ts"
 
@@ -92,8 +92,8 @@ run_worker_first = true
 
 ```
 
-* [  JavaScript ](#tab-panel-7802)
-* [  TypeScript ](#tab-panel-7803)
+* [  JavaScript ](#tab-panel-10029)
+* [  TypeScript ](#tab-panel-10030)
 
 ./worker/index.js
 
@@ -205,8 +205,8 @@ Explain Code
 
 You can also configure selective Worker-first routing using an array of route patterns, often paired with the [single-page-application setting](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/#advanced-routing-control). This allows you to run the Worker first only for specific routes while letting other requests follow the default asset-first behavior:
 
-* [  wrangler.jsonc ](#tab-panel-7800)
-* [  wrangler.toml ](#tab-panel-7801)
+* [  wrangler.jsonc ](#tab-panel-10027)
+* [  wrangler.toml ](#tab-panel-10028)
 
 JSONC
 
@@ -218,7 +218,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-17",
 
   "main": "./worker/index.ts",
 
@@ -249,7 +249,7 @@ name = "my-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-17"
 
 main = "./worker/index.ts"
 
@@ -269,8 +269,8 @@ run_worker_first = [ "/oauth/callback" ]
 
 Explain Code
 
-* [  JavaScript ](#tab-panel-7804)
-* [  TypeScript ](#tab-panel-7805)
+* [  JavaScript ](#tab-panel-10031)
+* [  TypeScript ](#tab-panel-10032)
 
 ./worker/index.js
 

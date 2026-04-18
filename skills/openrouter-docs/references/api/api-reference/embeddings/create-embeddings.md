@@ -671,6 +671,27 @@ components:
       enum:
         - list
       title: EmbeddingsPostResponsesContentApplicationJsonSchemaObject
+    EmbeddingsPostResponsesContentApplicationJsonSchemaUsagePromptTokensDetails:
+      type: object
+      properties:
+        audio_tokens:
+          type: integer
+          description: Number of audio tokens in the input
+        image_tokens:
+          type: integer
+          description: Number of image tokens in the input
+        text_tokens:
+          type: integer
+          description: Number of text tokens in the input
+        video_tokens:
+          type: integer
+          description: Number of video tokens in the input
+      description: >-
+        Per-modality token breakdown. Only present when the input contains 2+
+        modalities (e.g. text + image) and the upstream provider returns
+        modality-level usage data. Only non-zero modality counts are included.
+      title: >-
+        EmbeddingsPostResponsesContentApplicationJsonSchemaUsagePromptTokensDetails
     EmbeddingsPostResponsesContentApplicationJsonSchemaUsage:
       type: object
       properties:
@@ -681,6 +702,14 @@ components:
         prompt_tokens:
           type: integer
           description: Number of tokens in the input
+        prompt_tokens_details:
+          $ref: >-
+            #/components/schemas/EmbeddingsPostResponsesContentApplicationJsonSchemaUsagePromptTokensDetails
+          description: >-
+            Per-modality token breakdown. Only present when the input contains
+            2+ modalities (e.g. text + image) and the upstream provider returns
+            modality-level usage data. Only non-zero modality counts are
+            included.
         total_tokens:
           type: integer
           description: Total number of tokens used

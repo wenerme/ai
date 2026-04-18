@@ -1,6 +1,6 @@
 ---
 title: Cloudflare WARP client
-description: The Cloudflare WARP client allows individuals to have a faster, more secure, and more private experience online. The WARP client sits between your device and the Internet, and has several connection modes to better suit different needs.
+description: Encrypt device traffic and connect to Cloudflare with the WARP client.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

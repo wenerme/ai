@@ -1,6 +1,6 @@
 ---
 title: Networks
-description: Learn how to connect your private networks to Cloudflare.
+description: Networks resources and guides for Zero Trust networking.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

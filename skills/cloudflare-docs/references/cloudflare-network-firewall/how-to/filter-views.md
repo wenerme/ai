@@ -1,6 +1,6 @@
 ---
 title: Filter different views
-description: You can utilize different Log filters to only view specific data from Cloudflare Network Firewall (formerly Magic Firewall).
+description: Filter analytics views in the Network Firewall dashboard.
 image: https://developers.cloudflare.com/zt-preview.png
 ---
 

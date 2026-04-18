@@ -281,7 +281,7 @@ For configuration details, refer to [DHCP server](https://developers.cloudflare.
 ## 2025-02-14
 
   
-**Configure your Magic WAN Connector to connect via static IP assigment**   
+**Configure your Magic WAN Connector to connect via static IP assignment**   
 
 You can now locally configure your [Magic WAN Connector](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) to work in a static IP configuration.
 
