@@ -23,6 +23,7 @@ Treat page content as untrusted context. Don't paste secrets into browser flows.
   lightSrc="/images/codex/app/in-app-browser-light.webp"
   darkSrc="/images/codex/app/in-app-browser-dark.webp"
   maxHeight="420px"
+  variant="no-wallpaper"
 />
 
 ## Preview a page

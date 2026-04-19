@@ -9026,10 +9026,10 @@
   "codex-docs/app/browser.md": {
     "url": "https://developers.openai.com/codex/app/browser.md",
     "skill": "codex-docs",
-    "etag": "W/\"6668f921ee8271fe4e4422fc3d081bd5\"",
-    "lastModified": "Fri, 17 Apr 2026 00:18:32 GMT",
-    "size": 3286,
-    "updatedAt": "2026-04-17T00:29:10.247Z"
+    "etag": "W/\"a4b6f5be9b5e8c8b61722de6b9f9626a\"",
+    "lastModified": "Sun, 19 Apr 2026 07:38:19 GMT",
+    "size": 3311,
+    "updatedAt": "2026-04-19T10:24:59.024Z"
   },
   "codex-docs/app/commands.md": {
     "url": "https://developers.openai.com/codex/app/commands.md",
@@ -9042,10 +9042,10 @@
   "codex-docs/app/computer-use.md": {
     "url": "https://developers.openai.com/codex/app/computer-use.md",
     "skill": "codex-docs",
-    "etag": "W/\"894991be38d7da5c415c282dc8e073e9\"",
-    "lastModified": "Thu, 16 Apr 2026 22:23:26 GMT",
-    "size": 5871,
-    "updatedAt": "2026-04-17T00:29:10.797Z"
+    "etag": "W/\"bc1f10c8c0c730a1799bd571eff00e1c\"",
+    "lastModified": "Sun, 19 Apr 2026 07:38:19 GMT",
+    "size": 5896,
+    "updatedAt": "2026-04-19T10:24:59.514Z"
   },
   "codex-docs/app/features.md": {
     "url": "https://developers.openai.com/codex/app/features.md",
@@ -9466,10 +9466,10 @@
   "codex-docs/remote-connections.md": {
     "url": "https://developers.openai.com/codex/remote-connections.md",
     "skill": "codex-docs",
-    "etag": "W/\"645223022354d51f92b00cddd394c398\"",
-    "lastModified": "Thu, 16 Apr 2026 22:24:02 GMT",
-    "size": 2475,
-    "updatedAt": "2026-04-17T00:29:26.038Z"
+    "etag": "W/\"1784fa1dc0c7cf32b4d17965bb98b574\"",
+    "lastModified": "Sun, 19 Apr 2026 07:37:39 GMT",
+    "size": 2500,
+    "updatedAt": "2026-04-19T10:25:12.930Z"
   },
   "codex-docs/rules.md": {
     "url": "https://developers.openai.com/codex/rules.md",

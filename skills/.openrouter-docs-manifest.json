@@ -656,18 +656,18 @@
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
-    "size": 9176,
-    "updatedAt": "2026-04-15T00:32:03.581Z"
+    "size": 9601,
+    "updatedAt": "2026-04-19T10:26:48.467Z"
   },
   "api/api-reference/guardrails/create-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/create-guardrail.md",
-    "size": 14177,
-    "updatedAt": "2026-04-15T00:32:05.140Z"
+    "size": 15557,
+    "updatedAt": "2026-04-19T10:26:50.532Z"
   },
   "api/api-reference/guardrails/get-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/get-guardrail.md",
-    "size": 10092,
-    "updatedAt": "2026-04-15T00:32:06.812Z"
+    "size": 10227,
+    "updatedAt": "2026-04-19T10:26:51.772Z"
   },
   "api/api-reference/guardrails/delete-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/delete-guardrail.md",
@@ -676,8 +676,8 @@
   },
   "api/api-reference/guardrails/update-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/update-guardrail.md",
-    "size": 14711,
-    "updatedAt": "2026-04-15T00:32:10.068Z"
+    "size": 14846,
+    "updatedAt": "2026-04-19T10:26:54.409Z"
   },
   "api/api-reference/guardrails/list-guardrail-key-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrail-key-assignments.md",
@@ -926,8 +926,8 @@
   },
   "sdks/typescript/api-reference/guardrails.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/guardrails.md",
-    "size": 58908,
-    "updatedAt": "2026-04-13T10:46:11.222Z"
+    "size": 58980,
+    "updatedAt": "2026-04-19T10:27:42.725Z"
   },
   "sdks/typescript/api-reference/models/models.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/models/models.md",
@@ -1011,8 +1011,8 @@
   },
   "sdks/python/api-reference/guardrails.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/guardrails.md",
-    "size": 59360,
-    "updatedAt": "2026-04-13T10:46:19.210Z"
+    "size": 60404,
+    "updatedAt": "2026-04-19T10:27:52.133Z"
   },
   "sdks/python/api-reference/models/models.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/models/models.md",
@@ -1096,8 +1096,8 @@
   },
   "sdks/go/api-reference/guardrails.md": {
     "url": "https://openrouter.ai/docs/sdks/go/api-reference/guardrails.md",
-    "size": 39467,
-    "updatedAt": "2026-04-15T00:33:18.693Z"
+    "size": 40302,
+    "updatedAt": "2026-04-19T10:28:00.716Z"
   },
   "sdks/go/api-reference/models/models.md": {
     "url": "https://openrouter.ai/docs/sdks/go/api-reference/models/models.md",

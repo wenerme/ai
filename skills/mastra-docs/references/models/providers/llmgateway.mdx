@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 199 models available."
+description: "Use LLM Gateway models with Mastra. 181 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 199 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 181 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -52,14 +52,14 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "llmgateway/claude-3-5-sonnet",
-    "imageInput": false,
+    "model": "llmgateway/claude-3-5-sonnet-20241022",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 3,
     "outputCost": 15
   },
@@ -77,39 +77,15 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-3-7-sonnet-20250219",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 8192,
+    "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
-  },
-  {
-    "model": "llmgateway/claude-3-haiku",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 200000,
-    "maxOutput": 4096,
-    "inputCost": 0.25,
-    "outputCost": 1.25
-  },
-  {
-    "model": "llmgateway/claude-3-haiku-20240307",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 200000,
-    "maxOutput": 4096,
-    "inputCost": 0.25,
-    "outputCost": 1.25
   },
   {
     "model": "llmgateway/claude-3-opus",
@@ -125,11 +101,11 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-haiku-4-5",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 64000,
     "inputCost": 1,
@@ -137,11 +113,11 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-haiku-4-5-20251001",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 200000,
     "maxOutput": 64000,
     "inputCost": 1,
@@ -161,13 +137,13 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-opus-4-20250514",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 32000,
     "inputCost": 15,
     "outputCost": 75
   },
@@ -179,7 +155,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 32000,
+    "maxOutput": 64000,
     "inputCost": 5,
     "outputCost": 25
   },
@@ -196,20 +172,32 @@ for await (const chunk of stream) {
     "outputCost": 25
   },
   {
+    "model": "llmgateway/claude-opus-4-7",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
     "model": "llmgateway/claude-sonnet-4-20250514",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
   },
   {
     "model": "llmgateway/claude-sonnet-4-5",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -221,7 +209,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-sonnet-4-5-20250929",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -233,12 +221,12 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-sonnet-4-6",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
+    "contextWindow": 1000000,
     "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
@@ -254,18 +242,6 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.3,
     "outputCost": 0.9
-  },
-  {
-    "model": "llmgateway/cogview-4",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "llmgateway/custom",
@@ -320,10 +296,10 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 16384,
+    "maxOutput": 262144,
     "inputCost": 0.4,
     "outputCost": 2
   },
@@ -332,78 +308,78 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 16384,
+    "contextWindow": 128000,
+    "maxOutput": 128000,
     "inputCost": 0.1,
+    "outputCost": 0.3
+  },
+  {
+    "model": "llmgateway/gemini-2.0-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1048576,
+    "maxOutput": 8192,
+    "inputCost": 0.1,
+    "outputCost": 0.4
+  },
+  {
+    "model": "llmgateway/gemini-2.0-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1048576,
+    "maxOutput": 8192,
+    "inputCost": 0.075,
     "outputCost": 0.3
   },
   {
     "model": "llmgateway/gemini-2.5-flash",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 65535,
-    "inputCost": 0.3,
-    "outputCost": 2.5
-  },
-  {
-    "model": "llmgateway/gemini-2.5-flash-image",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 32768,
-    "inputCost": 0.3,
-    "outputCost": 30
-  },
-  {
-    "model": "llmgateway/gemini-2.5-flash-image-preview",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 32768,
+    "maxOutput": 65536,
     "inputCost": 0.3,
     "outputCost": 2.5
   },
   {
     "model": "llmgateway/gemini-2.5-flash-lite",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 65535,
+    "maxOutput": 65536,
     "inputCost": 0.1,
     "outputCost": 0.4
   },
   {
     "model": "llmgateway/gemini-2.5-flash-lite-preview-09-2025",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 65535,
+    "maxOutput": 65536,
     "inputCost": 0.1,
     "outputCost": 0.4
   },
   {
     "model": "llmgateway/gemini-2.5-pro",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
@@ -414,46 +390,22 @@ for await (const chunk of stream) {
   {
     "model": "llmgateway/gemini-3-flash-preview",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 65535,
+    "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
   },
   {
-    "model": "llmgateway/gemini-3-pro-image-preview",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 65536,
-    "maxOutput": 32768,
-    "inputCost": 2,
-    "outputCost": 12
-  },
-  {
-    "model": "llmgateway/gemini-3.1-flash-image-preview",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 65536,
-    "maxOutput": 65536,
-    "inputCost": 0.25,
-    "outputCost": 1.5
-  },
-  {
     "model": "llmgateway/gemini-3.1-flash-lite-preview",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
     "inputCost": 0.25,
@@ -462,8 +414,8 @@ for await (const chunk of stream) {
   {
     "model": "llmgateway/gemini-3.1-pro-preview",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
+    "audioInput": true,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
@@ -497,15 +449,15 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/gemma-3-12b-it",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
-    "inputCost": 0.08,
-    "outputCost": 0.3
+    "contextWindow": 32768,
+    "maxOutput": 8192,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "llmgateway/gemma-3-1b-it",
@@ -533,15 +485,15 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/gemma-3-4b-it",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
-    "inputCost": 0.08,
-    "outputCost": 0.3
+    "contextWindow": 32768,
+    "maxOutput": 8192,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "llmgateway/gemma-3n-e2b-it",
@@ -550,10 +502,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
-    "inputCost": 0.08,
-    "outputCost": 0.3
+    "contextWindow": 8192,
+    "maxOutput": 2000,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "llmgateway/gemma-3n-e4b-it",
@@ -562,10 +514,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
-    "inputCost": 0.08,
-    "outputCost": 0.3
+    "contextWindow": 8192,
+    "maxOutput": 2000,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "llmgateway/glm-4-32b-0414-128k",
@@ -586,8 +538,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
+    "contextWindow": 131072,
+    "maxOutput": 98304,
     "inputCost": 0.6,
     "outputCost": 2.2
   },
@@ -597,9 +549,9 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 98304,
     "inputCost": 0.2,
     "outputCost": 1.1
   },
@@ -621,9 +573,9 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 98304,
     "inputCost": null,
     "outputCost": null
   },
@@ -643,11 +595,11 @@ for await (const chunk of stream) {
     "model": "llmgateway/glm-4.5v",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 16000,
+    "contextWindow": 64000,
+    "maxOutput": 16384,
     "inputCost": 0.6,
     "outputCost": 1.8
   },
@@ -658,8 +610,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 16384,
+    "contextWindow": 204800,
+    "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 2.2
   },
@@ -667,11 +619,11 @@ for await (const chunk of stream) {
     "model": "llmgateway/glm-4.6v",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 16000,
+    "maxOutput": 32768,
     "inputCost": 0.3,
     "outputCost": 0.9
   },
@@ -706,8 +658,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 128000,
+    "contextWindow": 204800,
+    "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 2.2
   },
@@ -719,7 +671,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 128000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },
@@ -731,7 +683,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 128000,
+    "maxOutput": 131072,
     "inputCost": 0.07,
     "outputCost": 0.4
   },
@@ -742,32 +694,32 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 202800,
-    "maxOutput": 131100,
+    "contextWindow": 204800,
+    "maxOutput": 131072,
     "inputCost": 1,
     "outputCost": 3.2
   },
   {
-    "model": "llmgateway/glm-image",
+    "model": "llmgateway/glm-5.1",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 131072,
+    "inputCost": 6,
+    "outputCost": 24
   },
   {
     "model": "llmgateway/gpt-3.5-turbo",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": true,
+    "toolUsage": false,
     "reasoning": false,
     "contextWindow": 16385,
-    "maxOutput": 16384,
+    "maxOutput": 4096,
     "inputCost": 0.5,
     "outputCost": 1.5
   },
@@ -791,7 +743,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 16384,
+    "maxOutput": 4096,
     "inputCost": 10,
     "outputCost": 30
   },
@@ -802,8 +754,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
+    "contextWindow": 1047576,
+    "maxOutput": 32768,
     "inputCost": 2,
     "outputCost": 8
   },
@@ -814,8 +766,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
+    "contextWindow": 1047576,
+    "maxOutput": 32768,
     "inputCost": 0.4,
     "outputCost": 1.6
   },
@@ -826,8 +778,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 16384,
+    "contextWindow": 1047576,
+    "maxOutput": 32768,
     "inputCost": 0.1,
     "outputCost": 0.4
   },
@@ -845,7 +797,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/gpt-4o-mini",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -897,7 +849,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 400000,
     "maxOutput": 128000,
     "inputCost": 1.25,
@@ -917,7 +869,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/gpt-5-nano",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -959,7 +911,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 400000,
-    "maxOutput": 272000,
+    "maxOutput": 128000,
     "inputCost": 1.25,
     "outputCost": 10
   },
@@ -995,7 +947,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 16400,
+    "maxOutput": 16384,
     "inputCost": 1.75,
     "outputCost": 14
   },
@@ -1019,7 +971,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 400000,
-    "maxOutput": 272000,
+    "maxOutput": 128000,
     "inputCost": 21,
     "outputCost": 168
   },
@@ -1029,7 +981,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 16384,
     "inputCost": 1.75,
@@ -1127,19 +1079,19 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 3,
     "outputCost": 15
   },
   {
     "model": "llmgateway/grok-4",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 256000,
+    "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
   },
@@ -1216,18 +1168,6 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
-    "model": "llmgateway/grok-4-20-multi-agent-beta-0309",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 2000000,
-    "maxOutput": 30000,
-    "inputCost": 2,
-    "outputCost": 6
-  },
-  {
     "model": "llmgateway/grok-4-fast",
     "imageInput": true,
     "audioInput": false,
@@ -1269,35 +1209,11 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 10000,
     "inputCost": 0.2,
     "outputCost": 1.5
-  },
-  {
-    "model": "llmgateway/grok-imagine-image",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/grok-imagine-image-pro",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "llmgateway/hermes-2-pro-llama-3-8b",
@@ -1351,11 +1267,11 @@ for await (const chunk of stream) {
     "model": "llmgateway/kimi-k2.5",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 32768,
+    "maxOutput": 262144,
     "inputCost": 0.6,
     "outputCost": 3
   },
@@ -1415,7 +1331,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.6,
     "outputCost": 1.8
   },
@@ -1427,7 +1343,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.07,
     "outputCost": 0.33
   },
@@ -1451,9 +1367,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 0.13,
-    "outputCost": 0.4
+    "maxOutput": 4096,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "llmgateway/llama-4-maverick-17b-instruct",
@@ -1492,16 +1408,16 @@ for await (const chunk of stream) {
     "outputCost": 0.66
   },
   {
-    "model": "llmgateway/llama-guard-4-12b",
+    "model": "llmgateway/mimo-v2-flash",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 16384,
-    "inputCost": 0.2,
-    "outputCost": 0.2
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 64000,
+    "inputCost": 0.1,
+    "outputCost": 0.3
   },
   {
     "model": "llmgateway/minimax-m2",
@@ -1511,9 +1427,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 196608,
-    "maxOutput": 131072,
-    "inputCost": 0.2,
-    "outputCost": 1
+    "maxOutput": 128000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "llmgateway/minimax-m2.1",
@@ -1522,10 +1438,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 196608,
+    "contextWindow": 204800,
     "maxOutput": 131072,
-    "inputCost": 0.27,
-    "outputCost": 1.1
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "llmgateway/minimax-m2.1-lightning",
@@ -1547,7 +1463,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
-    "maxOutput": 131100,
+    "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -1556,10 +1472,10 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
-    "maxOutput": 131100,
+    "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 2.4
   },
@@ -1571,7 +1487,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
-    "maxOutput": 131100,
+    "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -1580,10 +1496,10 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
-    "maxOutput": 131100,
+    "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 2.4
   },
@@ -1593,7 +1509,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
     "inputCost": 0.2,
@@ -1607,7 +1523,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.2,
     "outputCost": 0.2
   },
@@ -1619,7 +1535,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.1,
     "outputCost": 0.1
   },
@@ -1631,7 +1547,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.15,
     "outputCost": 0.15
   },
@@ -1640,31 +1556,31 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 16384,
+    "maxOutput": 262144,
     "inputCost": 0.5,
     "outputCost": 1.5
   },
   {
     "model": "llmgateway/mistral-large-latest",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 4,
-    "outputCost": 12
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.5,
+    "outputCost": 1.5
   },
   {
     "model": "llmgateway/mistral-small-2506",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 16384,
@@ -1672,26 +1588,14 @@ for await (const chunk of stream) {
     "outputCost": 0.3
   },
   {
-    "model": "llmgateway/mixtral-8x7b-instruct-together",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 16384,
-    "inputCost": 0.06,
-    "outputCost": 0.06
-  },
-  {
     "model": "llmgateway/o1",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 100000,
     "inputCost": 15,
     "outputCost": 60
   },
@@ -1700,10 +1604,10 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 100000,
     "inputCost": 2,
     "outputCost": 8
   },
@@ -1712,10 +1616,10 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 100000,
     "inputCost": 1.1,
     "outputCost": 4.4
   },
@@ -1727,7 +1631,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 100000,
     "inputCost": 1.1,
     "outputCost": 4.4
   },
@@ -1736,12 +1640,12 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 4,
-    "outputCost": 12
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "llmgateway/qwen-coder-plus",
@@ -1752,8 +1656,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 131072,
     "maxOutput": 8192,
-    "inputCost": 1,
-    "outputCost": 5
+    "inputCost": 0.5,
+    "outputCost": 1
   },
   {
     "model": "llmgateway/qwen-flash",
@@ -1761,93 +1665,21 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 32000,
+    "maxOutput": 32768,
     "inputCost": 0.05,
     "outputCost": 0.4
   },
   {
-    "model": "llmgateway/qwen-image",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/qwen-image-edit-max",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/qwen-image-edit-plus",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/qwen-image-max",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/qwen-image-max-2025-12-30",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/qwen-image-plus",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "llmgateway/qwen-max",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 32000,
+    "contextWindow": 32768,
+    "maxOutput": 8192,
     "inputCost": 1.6,
     "outputCost": 6.4
   },
@@ -1858,22 +1690,22 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 32000,
+    "contextWindow": 32768,
+    "maxOutput": 8192,
     "inputCost": 1.6,
     "outputCost": 6.4
   },
   {
     "model": "llmgateway/qwen-omni-turbo",
     "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 32768,
-    "maxOutput": 8192,
-    "inputCost": 0.2,
-    "outputCost": 0.8
+    "maxOutput": 2048,
+    "inputCost": 0.07,
+    "outputCost": 0.27
   },
   {
     "model": "llmgateway/qwen-plus",
@@ -1881,33 +1713,33 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 32000,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 32768,
     "inputCost": 0.4,
     "outputCost": 1.2
   },
   {
     "model": "llmgateway/qwen-plus-latest",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 32000,
-    "inputCost": 0.4,
-    "outputCost": 1.2
+    "contextWindow": 131072,
+    "maxOutput": 8192,
+    "inputCost": 0.3,
+    "outputCost": 0.9
   },
   {
     "model": "llmgateway/qwen-turbo",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
+    "toolUsage": true,
+    "reasoning": true,
     "contextWindow": 1000000,
-    "maxOutput": 8192,
+    "maxOutput": 16384,
     "inputCost": 0.05,
     "outputCost": 0.2
   },
@@ -1916,10 +1748,10 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 32000,
+    "maxOutput": 8192,
     "inputCost": 0.8,
     "outputCost": 3.2
   },
@@ -1928,36 +1760,36 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 32000,
+    "maxOutput": 8192,
     "inputCost": 0.21,
-    "outputCost": 0.64
+    "outputCost": 0.63
   },
   {
     "model": "llmgateway/qwen2-5-vl-32b-instruct",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 1.4,
-    "outputCost": 4.2
+    "maxOutput": 8192,
+    "inputCost": 0.3,
+    "outputCost": 0.3
   },
   {
     "model": "llmgateway/qwen2-5-vl-72b-instruct",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 32768,
+    "contextWindow": 131072,
     "maxOutput": 8192,
-    "inputCost": 0.13,
-    "outputCost": 0.4
+    "inputCost": 2.8,
+    "outputCost": 8.4
   },
   {
     "model": "llmgateway/qwen25-coder-7b",
@@ -1966,22 +1798,22 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 32768,
+    "contextWindow": 131072,
     "maxOutput": 8192,
-    "inputCost": 0.01,
-    "outputCost": 0.03
+    "inputCost": 0.05,
+    "outputCost": 0.05
   },
   {
     "model": "llmgateway/qwen3-235b-a22b-fp8",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 40960,
-    "maxOutput": 20000,
-    "inputCost": 0.2,
-    "outputCost": 0.8
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 8192,
+    "inputCost": 0.5,
+    "outputCost": 2.5
   },
   {
     "model": "llmgateway/qwen3-235b-a22b-instruct-2507",
@@ -1990,10 +1822,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262000,
+    "contextWindow": 131072,
     "maxOutput": 8192,
-    "inputCost": 0.2,
-    "outputCost": 0.6
+    "inputCost": 0.8,
+    "outputCost": 2.4
   },
   {
     "model": "llmgateway/qwen3-235b-a22b-thinking-2507",
@@ -2002,22 +1834,22 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262000,
+    "contextWindow": 131072,
     "maxOutput": 8192,
-    "inputCost": 0.2,
-    "outputCost": 0.6
+    "inputCost": 0.8,
+    "outputCost": 2.4
   },
   {
     "model": "llmgateway/qwen3-30b-a3b-fp8",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 40960,
-    "maxOutput": 20000,
-    "inputCost": 0.09,
-    "outputCost": 0.45
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 8192,
+    "inputCost": 0.1,
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-30b-a3b-instruct-2507",
@@ -2026,10 +1858,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262000,
+    "contextWindow": 131072,
     "maxOutput": 8192,
     "inputCost": 0.1,
-    "outputCost": 0.3
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-30b-a3b-thinking-2507",
@@ -2038,10 +1870,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262000,
+    "contextWindow": 131072,
     "maxOutput": 8192,
     "inputCost": 0.1,
-    "outputCost": 0.3
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-32b",
@@ -2049,35 +1881,35 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 8192,
-    "inputCost": 0.1,
-    "outputCost": 0.3
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 16384,
+    "inputCost": 0.7,
+    "outputCost": 2.8
   },
   {
     "model": "llmgateway/qwen3-32b-fp8",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 40960,
-    "maxOutput": 20000,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 8192,
     "inputCost": 0.1,
-    "outputCost": 0.45
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-4b-fp8",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 20000,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 8192,
     "inputCost": 0.03,
-    "outputCost": 0.03
+    "outputCost": 0.05
   },
   {
     "model": "llmgateway/qwen3-coder-30b-a3b-instruct",
@@ -2086,10 +1918,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262000,
-    "maxOutput": 8192,
-    "inputCost": 0.1,
-    "outputCost": 0.3
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.45,
+    "outputCost": 2.25
   },
   {
     "model": "llmgateway/qwen3-coder-480b-a35b-instruct",
@@ -2098,10 +1930,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262000,
-    "maxOutput": 8192,
-    "inputCost": 0.4,
-    "outputCost": 1.8
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 7.5
   },
   {
     "model": "llmgateway/qwen3-coder-flash",
@@ -2121,11 +1953,11 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.11,
-    "outputCost": 0.68
+    "maxOutput": 65536,
+    "inputCost": 0.8,
+    "outputCost": 4
   },
   {
     "model": "llmgateway/qwen3-coder-plus",
@@ -2134,13 +1966,25 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
-    "maxOutput": 66000,
-    "inputCost": 6,
-    "outputCost": 60
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1,
+    "outputCost": 5
   },
   {
     "model": "llmgateway/qwen3-max",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 1.2,
+    "outputCost": 6
+  },
+  {
+    "model": "llmgateway/qwen3-max-2026-01-23",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -2152,25 +1996,13 @@ for await (const chunk of stream) {
     "outputCost": 15
   },
   {
-    "model": "llmgateway/qwen3-max-2026-01-23",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 65536,
-    "inputCost": 1.2,
-    "outputCost": 6
-  },
-  {
     "model": "llmgateway/qwen3-next-80b-a3b-instruct",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 129024,
+    "contextWindow": 131072,
     "maxOutput": 32768,
     "inputCost": 0.5,
     "outputCost": 2
@@ -2195,21 +2027,21 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.5,
-    "outputCost": 2
+    "maxOutput": 8192,
+    "inputCost": 0.8,
+    "outputCost": 2.4
   },
   {
     "model": "llmgateway/qwen3-vl-235b-a22b-thinking",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.5,
-    "outputCost": 2
+    "maxOutput": 8192,
+    "inputCost": 0.8,
+    "outputCost": 2.4
   },
   {
     "model": "llmgateway/qwen3-vl-30b-a3b-instruct",
@@ -2219,9 +2051,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.2,
-    "outputCost": 0.7
+    "maxOutput": 8192,
+    "inputCost": 0.1,
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-vl-30b-a3b-thinking",
@@ -2231,9 +2063,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.2,
-    "outputCost": 1
+    "maxOutput": 8192,
+    "inputCost": 0.1,
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-vl-8b-instruct",
@@ -2244,8 +2076,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 131072,
     "maxOutput": 8192,
-    "inputCost": 0.08,
-    "outputCost": 0.5
+    "inputCost": 0.1,
+    "outputCost": 0.1
   },
   {
     "model": "llmgateway/qwen3-vl-flash",
@@ -2254,8 +2086,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 32768,
+    "contextWindow": 1000000,
+    "maxOutput": 32000,
     "inputCost": 0.05,
     "outputCost": 0.4
   },
@@ -2264,8 +2096,8 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
+    "toolUsage": true,
+    "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
     "inputCost": 0.2,
@@ -2275,7 +2107,7 @@ for await (const chunk of stream) {
     "model": "llmgateway/qwen35-397b-a17b",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
@@ -2288,7 +2120,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 8192,
@@ -2303,7 +2135,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.25,
     "outputCost": 2
   },
@@ -2315,7 +2147,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.25,
     "outputCost": 2
   },
@@ -2327,7 +2159,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.07,
     "outputCost": 0.3
   },
@@ -2339,33 +2171,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 0.25,
     "outputCost": 2
-  },
-  {
-    "model": "llmgateway/seedream-4-0",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/seedream-4-5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 2000,
-    "maxOutput": 4096,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "llmgateway/sonar",
@@ -2374,58 +2182,34 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 130000,
-    "maxOutput": 16384,
+    "contextWindow": 128000,
+    "maxOutput": 4096,
     "inputCost": 1,
     "outputCost": 1
   },
   {
     "model": "llmgateway/sonar-pro",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 200000,
-    "maxOutput": 16384,
+    "maxOutput": 8192,
     "inputCost": 3,
     "outputCost": 15
   },
   {
     "model": "llmgateway/sonar-reasoning-pro",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": false,
     "reasoning": true,
     "contextWindow": 128000,
-    "maxOutput": 16384,
+    "maxOutput": 4096,
     "inputCost": 2,
     "outputCost": 8
-  },
-  {
-    "model": "llmgateway/veo-3.1-fast-generate-preview",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 1,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "llmgateway/veo-3.1-generate-preview",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 1,
-    "inputCost": null,
-    "outputCost": null
   }
 ]}
 />
@@ -2458,7 +2242,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "llmgateway/veo-3.1-generate-preview"
+      ? "llmgateway/sonar-reasoning-pro"
       : "llmgateway/auto";
   }
 });

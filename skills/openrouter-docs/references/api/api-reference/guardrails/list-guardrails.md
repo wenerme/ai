@@ -38,6 +38,15 @@ paths:
           required: false
           schema:
             type: integer
+        - name: workspace_id
+          in: query
+          description: >-
+            Filter guardrails by workspace ID. By default, guardrails in the
+            default workspace are returned.
+          required: false
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -139,10 +148,14 @@ components:
             - string
             - 'null'
           description: ISO 8601 timestamp of when the guardrail was last updated
+        workspace_id:
+          type: string
+          description: The workspace ID this guardrail belongs to.
       required:
         - created_at
         - id
         - name
+        - workspace_id
       title: Guardrail
     ListGuardrailsResponse:
       type: object

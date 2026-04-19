@@ -140,10 +140,14 @@ components:
             - string
             - 'null'
           description: ISO 8601 timestamp of when the guardrail was last updated
+        workspace_id:
+          type: string
+          description: The workspace ID this guardrail belongs to.
       required:
         - created_at
         - id
         - name
+        - workspace_id
       title: GetGuardrailResponseData
     GetGuardrailResponse:
       type: object

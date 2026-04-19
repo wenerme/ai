@@ -52,6 +52,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '403':
+          description: Forbidden - Authentication successful but insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '500':
           description: Internal Server Error - Unexpected server error
           content:
@@ -129,6 +135,12 @@ components:
           description: Name for the new guardrail
         reset_interval:
           $ref: '#/components/schemas/GuardrailInterval'
+        workspace_id:
+          type: string
+          format: uuid
+          description: >-
+            The workspace to create the guardrail in. Defaults to the default
+            workspace if not provided.
       required:
         - name
       title: CreateGuardrailRequest
@@ -196,10 +208,14 @@ components:
             - string
             - 'null'
           description: ISO 8601 timestamp of when the guardrail was last updated
+        workspace_id:
+          type: string
+          description: The workspace ID this guardrail belongs to.
       required:
         - created_at
         - id
         - name
+        - workspace_id
       title: CreateGuardrailResponseData
     CreateGuardrailResponse:
       type: object
@@ -271,6 +287,37 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
     InternalServerResponseErrorData:
       type: object
       properties:

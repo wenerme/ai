@@ -84,6 +84,7 @@ without asking again. You can remove apps from the **Always allow** list in the
   lightSrc="/images/codex/app/computer-use-approval-light.webp"
   darkSrc="/images/codex/app/computer-use-approval-dark.webp"
   maxHeight="420px"
+  variant="no-wallpaper"
 />
 
 Codex may also ask for permission before taking sensitive or disruptive actions.

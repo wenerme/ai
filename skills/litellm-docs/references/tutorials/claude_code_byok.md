@@ -33,6 +33,15 @@ litellm_settings:
 
 By default, LiteLLM strips `x-api-key` from client requests for security. Setting this to `true` allows client-provided provider keys (like your Anthropic key from `/login`) to be forwarded to Anthropic, overriding any proxy-configured keys.
 
+> **tip**: Configure via UI instead of config.yaml
+
+You can also complete this setup from the LiteLLM admin UI:
+
+- Add the model via **Models → Add Model**, leaving the **API Key** field blank.
+- Enable the toggle at **Settings → UI Settings → "Forward LLM provider auth headers"**.
+
+Both UI actions write to the database and override `config.yaml` at runtime.
+
 ## Step 2: Create a LiteLLM Virtual Key
 
 Create a virtual key in the LiteLLM UI or via API. 

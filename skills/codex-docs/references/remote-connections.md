@@ -57,6 +57,7 @@ remote host.
   lightSrc="/images/codex/app/remote-connections-light.webp"
   darkSrc="/images/codex/app/remote-connections-dark.webp"
   maxHeight="420px"
+  variant="no-wallpaper"
 />
 
 ## Authentication and network exposure
