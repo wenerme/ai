@@ -98,6 +98,7 @@ components:
         - audio
         - video
         - rerank
+        - tts
       title: OutputModality
     ModelGroup:
       type: string

@@ -86,6 +86,7 @@ components:
         - completions
         - embeddings
         - rerank
+        - tts
         - video
       description: Type of API used for the generation
       title: GenerationGetResponsesContentApplicationJsonSchemaDataApiType

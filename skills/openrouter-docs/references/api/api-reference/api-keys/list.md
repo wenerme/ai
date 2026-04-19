@@ -38,6 +38,15 @@ paths:
           required: false
           schema:
             type: integer
+        - name: workspace_id
+          in: query
+          description: >-
+            Filter API keys by workspace ID. By default, keys in the default
+            workspace are returned.
+          required: false
+          schema:
+            type: string
+            format: uuid
         - name: Authorization
           in: header
           description: API key as bearer token in Authorization header
@@ -168,6 +177,9 @@ components:
           description: >-
             OpenRouter credit usage (in USD) for the current UTC week
             (Monday-Sunday)
+        workspace_id:
+          type: string
+          description: The workspace ID this API key belongs to.
       required:
         - byok_usage
         - byok_usage_daily
@@ -188,6 +200,7 @@ components:
         - usage_daily
         - usage_monthly
         - usage_weekly
+        - workspace_id
       title: KeysGetResponsesContentApplicationJsonSchemaDataItems
     API Keys_list_Response_200:
       type: object

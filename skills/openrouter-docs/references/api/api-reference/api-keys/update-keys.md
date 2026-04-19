@@ -216,6 +216,9 @@ components:
           description: >-
             OpenRouter credit usage (in USD) for the current UTC week
             (Monday-Sunday)
+        workspace_id:
+          type: string
+          description: The workspace ID this API key belongs to.
       required:
         - byok_usage
         - byok_usage_daily
@@ -236,6 +239,7 @@ components:
         - usage_daily
         - usage_monthly
         - usage_weekly
+        - workspace_id
       description: The updated API key information
       title: KeysHashPatchResponsesContentApplicationJsonSchemaData
     API Keys_updateKeys_Response_200:

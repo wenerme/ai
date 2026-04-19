@@ -576,10 +576,10 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Compress streaming request bodies with zstd when supported (stable; on by default).",
     },
     {
-      key: "features.smart_approvals",
+      key: "features.guardian_approval",
       type: "boolean",
       description:
-        "Route eligible approval requests through the guardian reviewer subagent (experimental; off by default).",
+        'Route eligible approval requests through the guardian reviewer subagent (experimental; off by default). Use with `approvals_reviewer = "guardian_subagent"`.',
     },
     {
       key: "features.skill_mcp_dependency_install",

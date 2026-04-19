@@ -9218,26 +9218,26 @@
   "codex-docs/config-basic.md": {
     "url": "https://developers.openai.com/codex/config-basic.md",
     "skill": "codex-docs",
-    "etag": "W/\"fcec8585452e2e8f64cf653a421da91f\"",
-    "lastModified": "Thu, 16 Apr 2026 21:42:54 GMT",
-    "size": 9048,
-    "updatedAt": "2026-04-17T00:29:17.255Z"
+    "etag": "W/\"16ce65ee42ad0b9e4a09f8bfd6e14eb3\"",
+    "lastModified": "Sat, 18 Apr 2026 20:53:29 GMT",
+    "size": 9848,
+    "updatedAt": "2026-04-19T00:25:18.618Z"
   },
   "codex-docs/config-reference.md": {
     "url": "https://developers.openai.com/codex/config-reference.md",
     "skill": "codex-docs",
-    "etag": "W/\"4cdba92b9f83947d08899d90286ca42f\"",
-    "lastModified": "Thu, 16 Apr 2026 19:14:15 GMT",
-    "size": 47482,
-    "updatedAt": "2026-04-17T00:29:17.519Z"
+    "etag": "W/\"2b72c1c080a16273d3f17105f875aca8\"",
+    "lastModified": "Sat, 18 Apr 2026 19:58:06 GMT",
+    "size": 47537,
+    "updatedAt": "2026-04-19T00:25:18.851Z"
   },
   "codex-docs/config-sample.md": {
     "url": "https://developers.openai.com/codex/config-sample.md",
     "skill": "codex-docs",
-    "etag": "W/\"9e7306e47b2b6ef5f300488fd4f25398\"",
-    "lastModified": "Mon, 13 Apr 2026 22:42:58 GMT",
-    "size": 24178,
-    "updatedAt": "2026-04-14T00:29:16.712Z"
+    "etag": "W/\"0ae958d8dfb8565bab2a48c5ddd2c487\"",
+    "lastModified": "Sat, 18 Apr 2026 20:53:47 GMT",
+    "size": 24180,
+    "updatedAt": "2026-04-19T00:25:19.076Z"
   },
   "codex-docs/custom-prompts.md": {
     "url": "https://developers.openai.com/codex/custom-prompts.md",

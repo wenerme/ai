@@ -52,6 +52,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
+        '403':
+          description: Forbidden - Authentication successful but insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
         '429':
           description: Too Many Requests - Rate limit exceeded
           content:
@@ -107,6 +113,12 @@ paths:
                 name:
                   type: string
                   description: Name for the new API key
+                workspace_id:
+                  type: string
+                  format: uuid
+                  description: >-
+                    The workspace to create the API key in. Defaults to the
+                    default workspace if not provided.
               required:
                 - name
 servers:
@@ -219,6 +231,9 @@ components:
           description: >-
             OpenRouter credit usage (in USD) for the current UTC week
             (Monday-Sunday)
+        workspace_id:
+          type: string
+          description: The workspace ID this API key belongs to.
       required:
         - byok_usage
         - byok_usage_daily
@@ -239,6 +254,7 @@ components:
         - usage_daily
         - usage_monthly
         - usage_weekly
+        - workspace_id
       description: The created API key information
       title: KeysPostResponsesContentApplicationJsonSchemaData
     API Keys_createKeys_Response_201:
@@ -317,6 +333,37 @@ components:
         - error
       description: Unauthorized - Authentication required or invalid credentials
       title: UnauthorizedResponse
+    ForbiddenResponseErrorData:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            description: Any type
+      required:
+        - code
+        - message
+      description: Error data for ForbiddenResponse
+      title: ForbiddenResponseErrorData
+    ForbiddenResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      description: Forbidden - Authentication successful but insufficient permissions
+      title: ForbiddenResponse
     TooManyRequestsResponseErrorData:
       type: object
       properties:
