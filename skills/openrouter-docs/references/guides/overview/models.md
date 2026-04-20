@@ -151,4 +151,4 @@ If there are models or providers you are interested in that OpenRouter doesn't h
 
 ## For Providers
 
-If you're interested in working with OpenRouter, you can learn more on our [providers page](/docs/use-cases/for-providers).
+If you're interested in working with OpenRouter, you can learn more on our [providers page](/docs/guides/get-started/for-providers).

@@ -13,6 +13,7 @@ proxies:
   password: yourpassword
   up: "30 Mbps"
   down: "200 Mbps"
+  # bbr-profile: "" # Available: "standard", "conservative", "aggressive". Default: "standard"
   obfs: salamander # Default is empty; if filled, obfs is enabled. Currently, only salamander is supported.
   obfs-password: yourpassword
 
@@ -38,6 +39,8 @@ Authentication password.
 ## hop-interval
 
 Port hop interval, in seconds, default is 30.
+
+Entering "15-30" will randomly select one of the values ​​as the switching interval each time. Only a range is supported (commas are not allowed).
 
 ## up/down
 

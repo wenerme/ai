@@ -16,7 +16,7 @@ Copy page
 
 # Protect ISP and telecommunications networks from DDoS attacks
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 ## Introduction
 

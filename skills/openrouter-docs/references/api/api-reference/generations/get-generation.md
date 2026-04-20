@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Generations_getGeneration_Response_200'
+                $ref: '#/components/schemas/GenerationResponse'
         '401':
           description: Unauthorized - Authentication required or invalid credentials
           content:
@@ -80,7 +80,7 @@ servers:
   - url: https://openrouter.ai/api/v1
 components:
   schemas:
-    GenerationGetResponsesContentApplicationJsonSchemaDataApiType:
+    GenerationResponseDataApiType:
       type: string
       enum:
         - completions
@@ -89,7 +89,7 @@ components:
         - tts
         - video
       description: Type of API used for the generation
-      title: GenerationGetResponsesContentApplicationJsonSchemaDataApiType
+      title: GenerationResponseDataApiType
     ProviderResponseProviderName:
       type: string
       enum:
@@ -234,13 +234,12 @@ components:
         - status
       description: Details of a provider response for a generation attempt
       title: ProviderResponse
-    GenerationGetResponsesContentApplicationJsonSchemaData:
+    GenerationResponseData:
       type: object
       properties:
         api_type:
           oneOf:
-            - $ref: >-
-                #/components/schemas/GenerationGetResponsesContentApplicationJsonSchemaDataApiType
+            - $ref: '#/components/schemas/GenerationResponseDataApiType'
             - type: 'null'
           description: Type of API used for the generation
         app_id:
@@ -471,18 +470,17 @@ components:
         - user_agent
         - web_search_engine
       description: Generation data
-      title: GenerationGetResponsesContentApplicationJsonSchemaData
-    Generations_getGeneration_Response_200:
+      title: GenerationResponseData
+    GenerationResponse:
       type: object
       properties:
         data:
-          $ref: >-
-            #/components/schemas/GenerationGetResponsesContentApplicationJsonSchemaData
+          $ref: '#/components/schemas/GenerationResponseData'
           description: Generation data
       required:
         - data
       description: Generation response
-      title: Generations_getGeneration_Response_200
+      title: GenerationResponse
     UnauthorizedResponseErrorData:
       type: object
       properties:

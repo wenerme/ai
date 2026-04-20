@@ -16,7 +16,7 @@ Copy page
 
 # List and acknowledge messages from the dashboard
 
-**Last reviewed:**  over 2 years ago 
+**Last reviewed:**  almost 3 years ago 
 
 Use the dashboard to fetch and acknowledge the messages currently in a queue.
 

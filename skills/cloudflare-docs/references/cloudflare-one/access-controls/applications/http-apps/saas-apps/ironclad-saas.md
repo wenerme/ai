@@ -20,7 +20,7 @@ Copy page
 
 # Ironclad
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Ironclad ↗](https://support.ironcladapp.com/hc/articles/12286012625559-Set-Up-Generic-SSO-SAML-Integration) as a SAML application in Cloudflare One.
 

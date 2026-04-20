@@ -9466,10 +9466,10 @@
   "codex-docs/remote-connections.md": {
     "url": "https://developers.openai.com/codex/remote-connections.md",
     "skill": "codex-docs",
-    "etag": "W/\"1784fa1dc0c7cf32b4d17965bb98b574\"",
-    "lastModified": "Sun, 19 Apr 2026 07:37:39 GMT",
-    "size": 2500,
-    "updatedAt": "2026-04-19T10:25:12.930Z"
+    "etag": "W/\"8bafc976d3f9a0dd4f39da2be7d4c4fc\"",
+    "lastModified": "Mon, 20 Apr 2026 06:02:33 GMT",
+    "size": 2720,
+    "updatedAt": "2026-04-20T10:43:46.267Z"
   },
   "codex-docs/rules.md": {
     "url": "https://developers.openai.com/codex/rules.md",

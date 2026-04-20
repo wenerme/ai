@@ -12,4 +12,4 @@ Append `:nitro` to any model ID:
 }
 ```
 
-This is exactly equivalent to setting `provider.sort` to `"throughput"` in your request. For more details on provider sorting, see the [Provider Routing documentation](/docs/features/provider-routing#provider-sorting).
+This is exactly equivalent to setting `provider.sort` to `"throughput"` in your request. For more details on provider sorting, see the [Provider Routing documentation](/docs/guides/routing/provider-selection#provider-sorting).

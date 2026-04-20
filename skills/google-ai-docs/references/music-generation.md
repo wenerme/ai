@@ -1,3 +1,5 @@
+# Generate music with Lyria 3
+
 Lyria 3 is Google's family of music generation models, available
 through the Gemini API. With Lyria 3, you can generate high-quality, 44.1 kHz
 stereo audio from text prompts or from images. These models deliver structural

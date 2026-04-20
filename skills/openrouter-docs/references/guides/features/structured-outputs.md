@@ -74,7 +74,7 @@ You can find a list of models that support structured outputs on the [models pag
 To ensure your chosen model supports structured outputs:
 
 1. Check the model's supported parameters on the [models page](https://openrouter.ai/models)
-2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/docs/features/provider-routing))
+2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/docs/guides/routing/provider-selection))
 3. Include `response_format` and set `type: json_schema` in the required parameters
 
 ## Best Practices
@@ -90,7 +90,7 @@ Here's a complete example using the Fetch API:
 <Template
   data={{
   API_KEY_REF,
-  MODEL: 'openai/gpt-4'
+  MODEL: 'openai/gpt-4o'
 }}
 >
   <CodeGroup>

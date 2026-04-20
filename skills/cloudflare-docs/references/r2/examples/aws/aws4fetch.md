@@ -16,7 +16,7 @@ Copy page
 
 # aws4fetch
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 

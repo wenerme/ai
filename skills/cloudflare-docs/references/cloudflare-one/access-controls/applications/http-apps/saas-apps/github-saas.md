@@ -20,7 +20,7 @@ Copy page
 
 # GitHub Enterprise Cloud
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [GitHub Enterprise Cloud ↗](https://docs.github.com/en/enterprise-cloud@latest/admin/managing-iam/using-saml-for-enterprise-iam/configuring-saml-single-sign-on-for-your-enterprise) as a SAML application in Cloudflare One.
 

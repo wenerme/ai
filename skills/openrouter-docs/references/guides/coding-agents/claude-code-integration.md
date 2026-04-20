@@ -1,7 +1,7 @@
 For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
 
 <Warning>
-  Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/features/provider-routing) when using Claude Code.
+  Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Code.
 </Warning>
 
 ## Why Use OpenRouter with Claude Code?
@@ -146,10 +146,10 @@ OpenRouter exposes an input that is compatible with the Anthropic Messages API.
 Claude Code uses several environment variables to determine which models to use for different tasks. You can override these to route each role through a specific model:
 
 ```bash
-export ANTHROPIC_DEFAULT_OPUS_MODEL="anthropic/claude-opus-4.6"
+export ANTHROPIC_DEFAULT_OPUS_MODEL="anthropic/claude-opus-4.7"
 export ANTHROPIC_DEFAULT_SONNET_MODEL="anthropic/claude-sonnet-4.6"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="anthropic/claude-haiku-4.5"
-export CLAUDE_CODE_SUBAGENT_MODEL="anthropic/claude-opus-4.6"
+export CLAUDE_CODE_SUBAGENT_MODEL="anthropic/claude-opus-4.7"
 ```
 
 | Variable                         | Description                                                   |
@@ -165,7 +165,7 @@ Claude Code is optimized for Anthropic models and may not work correctly with ot
 
 ## Fast Mode
 
-Anthropic's fast mode provides up to 2.5x faster output for Claude Opus 4.6 at premium pricing. When enabled, OpenRouter automatically routes your request to the Anthropic first-party provider and injects the required beta header.
+Anthropic's fast mode provides up to 2.5x faster output for Claude Opus 4.7 at premium pricing. When enabled, OpenRouter automatically routes your request to the Anthropic first-party provider and injects the required beta header.
 
 ### Using `/fast` in Claude Code
 

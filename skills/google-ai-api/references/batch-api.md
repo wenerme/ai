@@ -1,3 +1,5 @@
+# Batch API
+
 The Gemini API supports batch APIs, which let you process multiple requests in a single call. For more details, see the [Batch API guide](https://ai.google.dev/gemini-api/docs/batch-api).
 
 ## Method: models.batchGenerateContent

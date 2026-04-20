@@ -20,7 +20,7 @@ Copy page
 
 # Connect through Cloudflare Access using kubectl
 
-**Last reviewed:**  over 3 years ago 
+**Last reviewed:**  almost 4 years ago 
 
 You can connect to machines over `kubectl` using Cloudflare's Zero Trust platform.
 

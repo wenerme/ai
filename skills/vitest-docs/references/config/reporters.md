@@ -40,7 +40,7 @@ You can configure a reporter by providing a tuple: `[string, object]`, where the
 - [`tap-flat`](/guide/reporters#tap-flat-reporter)
 - [`hanging-process`](/guide/reporters#hanging-process-reporter)
 - [`github-actions`](/guide/reporters#github-actions-reporter)
-- [`agent`](/guide/reporters#agent-reporter)
+- [`minimal`](/guide/reporters#minimal-reporter) (aliased as `agent`)
 - [`blob`](/guide/reporters#blob-reporter)
 
 ## Example

@@ -4,7 +4,7 @@ OpenRouter helps developers source and optimize AI usage. We believe the future 
 
 ## Why OpenRouter?
 
-**Price and Performance**. OpenRouter scouts for the best prices, the lowest latencies, and the highest throughput across dozens of providers, and lets you choose how to [prioritize](/docs/features/provider-routing) them.
+**Price and Performance**. OpenRouter scouts for the best prices, the lowest latencies, and the highest throughput across dozens of providers, and lets you choose how to [prioritize](/docs/guides/routing/provider-selection) them.
 
 **Standardized API**. No need to change code when switching between models or providers. You can even let your users [choose and pay for their own](/docs/guides/overview/auth/oauth).
 

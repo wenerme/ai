@@ -603,7 +603,7 @@ Example with provider preferences:
 }
 ```
 
-For more information, see [Provider Routing](/docs/features/provider-routing).
+For more information, see [Provider Routing](/docs/guides/routing/provider-selection).
 
 ## Error Handling
 
@@ -631,6 +631,6 @@ Common errors you may encounter:
 ## Related Resources
 
 * [Models Page](https://openrouter.ai/models?fmt=cards\&output_modalities=embeddings) - Browse all available embedding models
-* [Provider Routing](/docs/features/provider-routing) - Control which providers serve your requests
+* [Provider Routing](/docs/guides/routing/provider-selection) - Control which providers serve your requests
 * [Authentication](/docs/api/authentication) - Learn about API key authentication
 * [Errors](/docs/api/reference/errors-and-debugging) - Detailed error codes and handling

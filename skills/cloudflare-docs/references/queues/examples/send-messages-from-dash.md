@@ -16,7 +16,7 @@ Copy page
 
 # Send messages from the dashboard
 
-**Last reviewed:**  over 2 years ago 
+**Last reviewed:**  almost 3 years ago 
 
 Use the dashboard to send messages to a queue.
 

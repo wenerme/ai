@@ -20,7 +20,7 @@ Copy page
 
 # Grafana
 
-**Last reviewed:**  over 1 year ago 
+**Last reviewed:**  almost 2 years ago 
 
 This guide covers how to configure [Grafana ↗](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/) as an OIDC application in Cloudflare One.
 

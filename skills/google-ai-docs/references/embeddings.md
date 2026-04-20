@@ -1,3 +1,5 @@
+# Embeddings
+
 <br />
 
 > [!IMPORTANT]

@@ -101,7 +101,7 @@ And that's it for the PKCE flow!
 
 ### Step 3: Use the API key
 
-Store the API key securely within the user's browser or in your own database, and use it to [make OpenRouter requests](/api-reference/completion).
+Store the API key securely within the user's browser or in your own database, and use it to [make OpenRouter requests](/docs/api/reference/overview).
 
 <CodeGroup>
   ```typescript title="TypeScript SDK"

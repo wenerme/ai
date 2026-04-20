@@ -23,7 +23,7 @@ You can configure individual keys with "Always use this key" to prevent any fall
 
 ### BYOK with Provider Ordering
 
-When you combine BYOK keys with [provider ordering](/docs/features/provider-routing#ordering-specific-providers), OpenRouter **always prioritizes BYOK endpoints first**, regardless of where that provider appears in your specified order. After all BYOK endpoints are exhausted, OpenRouter falls back to shared capacity in the order you specified.
+When you combine BYOK keys with [provider ordering](/docs/guides/routing/provider-selection#ordering-specific-providers), OpenRouter **always prioritizes BYOK endpoints first**, regardless of where that provider appears in your specified order. After all BYOK endpoints are exhausted, OpenRouter falls back to shared capacity in the order you specified.
 
 This means BYOK keys effectively override your provider ordering for the initial routing attempts. There is currently no way to change this behavior.
 

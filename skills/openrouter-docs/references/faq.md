@@ -101,14 +101,14 @@ For clean Markdown of any page, append .md to the page URL. For a complete docum
     Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
 
     1. `:online` (deprecated) - All requests will run a query to extract web results that are attached to the prompt. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. [Learn more](/docs/guides/routing/model-variants/online).
-    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/features/provider-routing#nitro-shortcut).
-    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/features/provider-routing#floor-price-shortcut).
+    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times. [Learn more](/docs/guides/routing/provider-selection#nitro-shortcut).
+    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options. [Learn more](/docs/guides/routing/provider-selection#floor-price-shortcut).
     4. `:exacto` - Providers will be sorted using quality-first signals tuned for tool-calling reliability. [Learn more](/docs/guides/routing/model-variants/exacto).
   </Accordion>
 
   <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">
     You can read our requirements at the [Providers
-    page](/docs/use-cases/for-providers). If you would like to contact us, the best
+    page](/docs/guides/get-started/for-providers). If you would like to contact us, the best
     place to reach us is over email.
   </Accordion>
 
@@ -123,7 +123,7 @@ For clean Markdown of any page, append .md to the page URL. For a complete docum
     If a provider returns an error OpenRouter will automatically fall back to the
     next provider. This happens transparently to the user and allows production
     apps to be much more resilient. OpenRouter has a lot of options to configure
-    the provider routing behavior. The full documentation can be found [here](/docs/features/provider-routing).
+    the provider routing behavior. The full documentation can be found [here](/docs/guides/routing/provider-selection).
   </Accordion>
 </AccordionGroup>
 
@@ -207,7 +207,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     Providers that do log, or where we have been unable to confirm their policy, will not be routed to unless the model training
     toggle is switched on in the [privacy settings](https://openrouter.ai/settings/privacy) tab.
 
-    If you specify [provider routing](/docs/features/provider-routing) in your request, but none of the providers
+    If you specify [provider routing](/docs/guides/routing/provider-selection) in your request, but none of the providers
     match the level of privacy specified in your account settings, you will get an error and your request will not complete.
 
     [Learn more about provider logging policies](/docs/guides/privacy/provider-logging).
@@ -251,7 +251,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
     The [Activity](https://openrouter.ai/activity) page allows users to view
     their historic usage and filter the usage by model, provider and api key.
 
-    We also provide a [credits api](/docs/api-reference/get-credits) that has
+    We also provide a [credits api](/docs/api/api-reference/credits/get-credits) that has
     live information about the balance and remaining credits for the account.
   </Accordion>
 
@@ -294,7 +294,7 @@ Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Poli
   </Accordion>
 
   <Accordion title="How does team access work?">
-    Organization management information can be found in our [organization management documentation](/docs/use-cases/organization-management).
+    Organization management information can be found in our [organization management documentation](/docs/guides/administration/organization-management).
   </Accordion>
 
   <Accordion title="What analytics are available?">

@@ -13,6 +13,7 @@ proxies:
   password: yourpassword
   up: "30 Mbps"
   down: "200 Mbps"
+  # bbr-profile: "" # Available: "standard", "conservative", "aggressive". Default: "standard"
   obfs: salamander # 默认为空，如果填写则开启obfs，目前仅支持salamander
   obfs-password: yourpassword
 
@@ -39,6 +40,8 @@ proxies:
 ## hop-interval
 
 端口跳跃的间隔，单位为秒，默认为 30
+
+支持填写"15-30"会每次随机选取其中一个值作为切换间隔，仅支持写一个范围（即不允许出现逗号）
 
 ## password
 
