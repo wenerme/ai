@@ -1,6 +1,6 @@
 ---
 title: Add abuse contact
-description: Enter an abuse contact email address to ensure you are receiving communications regarding potential abuse on your websites.
+description: Set an abuse contact email address on your Cloudflare account to receive communications about potential abuse on your websites.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

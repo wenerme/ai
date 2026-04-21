@@ -22,8 +22,8 @@ Copy page
 
 ## 1\. Turn on AI Security for Apps
 
-* [  New dashboard ](#tab-panel-9034)
-* [ API ](#tab-panel-9035)
+* [  New dashboard ](#tab-panel-9125)
+* [ API ](#tab-panel-9126)
 
 Note
 
@@ -40,13 +40,13 @@ Terminal window
 
 ```
 
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/firewall-for-ai/settings" \
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/settings" \
 
 --request PUT \
 
 --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 
---json '{ "pii_detection_enabled": true }'
+--json '{ "enabled": true }'
 
 
 ```
@@ -57,8 +57,8 @@ Once you have [onboarded your domain](https://developers.cloudflare.com/fundamen
 
 Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/) once it has been discovered, or add the endpoint manually.
 
-* [  New dashboard ](#tab-panel-9032)
-* [ Old dashboard ](#tab-panel-9033)
+* [  New dashboard ](#tab-panel-9123)
+* [ Old dashboard ](#tab-panel-9124)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
@@ -72,8 +72,8 @@ Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management
 
 If you did not find the endpoint in the **Discovery** tab, you can add it manually:
 
-* [  New dashboard ](#tab-panel-9030)
-* [ Old dashboard ](#tab-panel-9031)
+* [  New dashboard ](#tab-panel-9121)
+* [ Old dashboard ](#tab-panel-9122)
 
 1. Go to the **Endpoints** tab.
 2. Select **Add endpoints** \> **Manually add**.
@@ -97,8 +97,8 @@ You must [label endpoints](https://developers.cloudflare.com/api-shield/manageme
 
 Add the `cf-llm` label to the endpoint you added:
 
-* [  New dashboard ](#tab-panel-9036)
-* [ Old dashboard ](#tab-panel-9037)
+* [  New dashboard ](#tab-panel-9127)
+* [ Old dashboard ](#tab-panel-9128)
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.  
 [ Go to **Web assets** ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)

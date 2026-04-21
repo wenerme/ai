@@ -66,7 +66,7 @@ Recommended Operating Environment:
 
 |        | Range | Recommended | Notes |
 |--------------|--------------|-------------|--------------------|
-| python       | >=3.9        | 3.12    |                    |
+| python       | >=3.10        | 3.12    |                    |
 | cuda         |              | cuda12.8/12.9   |                    |
 | torch        | >=2.0        | 2.8.0/2.10.0    |                    |
 | transformer-engine    | >=2.3       |  2.13.0  |                  |
@@ -235,7 +235,7 @@ swift infer \
 - Regarding log printing: Megatron-SWIFT logs are printed on the last rank, because in PP parallelism, only the last pp_rank has complete information.
 
 ## Benchmark
-The training speed comparison for full-parameter dense models with 8K context length, using `megatron sft` and `swift sft`, under a single-node, eight-GPU A800 environment is as follows:
+The training speed comparison for full-parameter dense models with 8K context length, using `megatron sft` and `swift sft`, under a single-node, eight-GPU A800 environment is as follows: ([shell](https://github.com/modelscope/ms-swift/blob/main/examples/megatron/benchmark/deepspeed.sh))
 
 **Dense** Qwen2.5-14B:
 

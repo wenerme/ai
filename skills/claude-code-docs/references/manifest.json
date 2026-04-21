@@ -25,9 +25,9 @@
   },
   "best-practices.md": {
     "url": "https://code.claude.com/docs/en/best-practices",
-    "lastModified": "Tue, 14 Apr 2026 21:00:57 GMT",
-    "size": 35268,
-    "updatedAt": "2026-04-15T00:19:04.787Z"
+    "lastModified": "Tue, 21 Apr 2026 09:29:15 GMT",
+    "size": 35271,
+    "updatedAt": "2026-04-21T10:29:15.010Z"
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
@@ -67,9 +67,9 @@
   },
   "claude-directory.md": {
     "url": "https://code.claude.com/docs/en/claude-directory",
-    "lastModified": "Tue, 14 Apr 2026 21:01:02 GMT",
-    "size": 75607,
-    "updatedAt": "2026-04-15T00:19:07.551Z"
+    "lastModified": "Tue, 21 Apr 2026 09:20:41 GMT",
+    "size": 83491,
+    "updatedAt": "2026-04-21T10:29:17.477Z"
   },
   "cli-reference.md": {
     "url": "https://code.claude.com/docs/en/cli-reference",
@@ -91,9 +91,9 @@
   },
   "common-workflows.md": {
     "url": "https://code.claude.com/docs/en/common-workflows",
-    "lastModified": "Thu, 16 Apr 2026 21:20:10 GMT",
-    "size": 42575,
-    "updatedAt": "2026-04-17T00:17:42.816Z"
+    "lastModified": "Tue, 21 Apr 2026 09:07:55 GMT",
+    "size": 43047,
+    "updatedAt": "2026-04-21T10:29:18.864Z"
   },
   "computer-use.md": {
     "url": "https://code.claude.com/docs/en/computer-use",
@@ -121,9 +121,9 @@
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
-    "lastModified": "Thu, 16 Apr 2026 21:19:42 GMT",
-    "size": 63359,
-    "updatedAt": "2026-04-17T00:17:44.536Z"
+    "lastModified": "Tue, 21 Apr 2026 09:30:07 GMT",
+    "size": 64614,
+    "updatedAt": "2026-04-21T10:29:20.595Z"
   },
   "desktop-quickstart.md": {
     "url": "https://code.claude.com/docs/en/desktop-quickstart",
@@ -391,9 +391,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Sat, 18 Apr 2026 15:33:23 GMT",
-    "size": 99462,
-    "updatedAt": "2026-04-19T00:15:15.672Z"
+    "lastModified": "Tue, 21 Apr 2026 08:47:55 GMT",
+    "size": 100168,
+    "updatedAt": "2026-04-21T10:29:36.247Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
@@ -409,15 +409,15 @@
   },
   "statusline.md": {
     "url": "https://code.claude.com/docs/en/statusline",
-    "lastModified": "Thu, 16 Apr 2026 08:14:11 GMT",
-    "size": 53678,
-    "updatedAt": "2026-04-16T10:27:32.230Z"
+    "lastModified": "Tue, 21 Apr 2026 08:56:09 GMT",
+    "size": 53684,
+    "updatedAt": "2026-04-21T10:29:37.629Z"
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Thu, 16 Apr 2026 21:19:41 GMT",
-    "size": 52315,
-    "updatedAt": "2026-04-17T00:18:01.411Z"
+    "lastModified": "Tue, 21 Apr 2026 08:55:33 GMT",
+    "size": 52318,
+    "updatedAt": "2026-04-21T10:29:37.983Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
@@ -451,9 +451,9 @@
   },
   "ultrareview.md": {
     "url": "https://code.claude.com/docs/en/ultrareview",
-    "lastModified": "Sat, 18 Apr 2026 15:35:38 GMT",
-    "size": 6447,
-    "updatedAt": "2026-04-19T00:15:19.479Z"
+    "lastModified": "Tue, 21 Apr 2026 09:30:38 GMT",
+    "size": 6561,
+    "updatedAt": "2026-04-21T10:29:40.076Z"
   },
   "voice-dictation.md": {
     "url": "https://code.claude.com/docs/en/voice-dictation",
@@ -463,9 +463,9 @@
   },
   "vs-code.md": {
     "url": "https://code.claude.com/docs/en/vs-code",
-    "lastModified": "Thu, 16 Apr 2026 21:19:39 GMT",
-    "size": 38882,
-    "updatedAt": "2026-04-17T00:18:04.123Z"
+    "lastModified": "Tue, 21 Apr 2026 09:29:25 GMT",
+    "size": 39053,
+    "updatedAt": "2026-04-21T10:29:40.771Z"
   },
   "web-quickstart.md": {
     "url": "https://code.claude.com/docs/en/web-quickstart",
@@ -481,8 +481,8 @@
   },
   "zero-data-retention.md": {
     "url": "https://code.claude.com/docs/en/zero-data-retention",
-    "lastModified": "Tue, 14 Apr 2026 06:26:45 GMT",
-    "size": 6219,
-    "updatedAt": "2026-04-14T10:28:51.427Z"
+    "lastModified": "Tue, 21 Apr 2026 09:29:25 GMT",
+    "size": 6352,
+    "updatedAt": "2026-04-21T10:29:42.833Z"
   }
 }

@@ -340,9 +340,9 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
     },
     {
       key: "mcp_servers.<id>.env_vars",
-      type: "array<string>",
+      type: 'array<string | { name = string, source = "local" | "remote" }>',
       description:
-        "Additional environment variables to whitelist for an MCP stdio server.",
+        'Additional environment variables to whitelist for an MCP stdio server. String entries default to `source = "local"`; use `source = "remote"` only with executor-backed remote stdio.',
     },
     {
       key: "mcp_servers.<id>.cwd",
@@ -423,6 +423,12 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Optional RFC 8707 OAuth resource parameter to include during MCP login.",
     },
     {
+      key: "mcp_servers.<id>.experimental_environment",
+      type: "local | remote",
+      description:
+        "Experimental placement for an MCP server. `remote` starts stdio servers through a remote executor environment; streamable HTTP remote placement is not implemented.",
+    },
+    {
       key: "agents.max_threads",
       type: "number",
       description:
@@ -471,10 +477,10 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "When `false`, Codex skips injecting existing memories into future sessions. Defaults to `true`.",
     },
     {
-      key: "memories.no_memories_if_mcp_or_web_search",
+      key: "memories.disable_on_external_context",
       type: "boolean",
       description:
-        "When `true`, threads that use MCP tool calls or web search are kept out of memory generation. Defaults to `false`.",
+        "When `true`, threads that use external context such as MCP tool calls, web search, or tool search are kept out of memory generation. Defaults to `false`. Legacy alias: `memories.no_memories_if_mcp_or_web_search`.",
     },
     {
       key: "memories.max_raw_memories_for_consolidation",
@@ -1011,7 +1017,13 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
       key: "tui.notification_method",
       type: "auto | osc9 | bel",
       description:
-        "Notification method for unfocused terminal notifications (default: auto).",
+        "Notification method for terminal notifications (default: auto).",
+    },
+    {
+      key: "tui.notification_condition",
+      type: "unfocused | always",
+      description:
+        "Control whether TUI notifications fire only when the terminal is unfocused or regardless of focus. Defaults to `unfocused`.",
     },
     {
       key: "tui.animations",
@@ -1140,16 +1152,22 @@ For sandbox and approval keys (`approval_policy`, `sandbox_mode`, and `sandbox_w
         "Named filesystem permission profile. Each key is an absolute path or special token such as `:minimal` or `:project_roots`.",
     },
     {
-      key: "permissions.<name>.filesystem.<path>",
-      type: '"read" | "write" | "none" | table',
+      key: "permissions.<name>.filesystem.glob_scan_max_depth",
+      type: "number",
       description:
-        "Grant direct access for a path or special token, or scope nested entries under that root.",
+        "Maximum depth for expanding deny-read glob patterns on platforms that snapshot matches before sandbox startup. Must be at least `1` when set.",
     },
     {
-      key: 'permissions.<name>.filesystem.":project_roots".<subpath>',
+      key: "permissions.<name>.filesystem.<path-or-glob>",
+      type: '"read" | "write" | "none" | table',
+      description:
+        'Grant direct access for a path, glob pattern, or special token, or scope nested entries under that root. Use `"none"` to deny reads for matching paths.',
+    },
+    {
+      key: 'permissions.<name>.filesystem.":project_roots".<subpath-or-glob>',
       type: '"read" | "write" | "none"',
       description:
-        'Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself.',
+        'Scoped filesystem access relative to the detected project roots. Use `"."` for the root itself; glob subpaths such as `"**/*.env"` can deny reads with `"none"`.',
     },
     {
       key: "permissions.<name>.network.enabled",
@@ -1327,6 +1345,12 @@ canonical keys that `config.toml` uses. Omitted keys remain unconstrained.
       type: "boolean",
       description:
         "Require a specific canonical feature key to stay enabled or disabled.",
+    },
+    {
+      key: "permissions.filesystem.deny_read",
+      type: "array<string>",
+      description:
+        "Admin-enforced filesystem read denials. Entries can be paths or glob patterns, and users cannot weaken them with local config.",
     },
     {
       key: "mcp_servers",

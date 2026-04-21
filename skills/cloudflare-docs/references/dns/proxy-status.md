@@ -135,6 +135,14 @@ Note
 
 Both HTTP/2 and HTTP/3 configurations also require that you have an SSL/TLS certificate served by Cloudflare. This means that disabling [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), for example, could impact this behavior.
 
+### Request and response size limits
+
+Cloudflare enforces size limits on proxied requests. These limits vary by plan and cannot be bypassed while traffic is proxied. For the full list of connection and request limits, refer to [Connection limits](https://developers.cloudflare.com/fundamentals/reference/connection-limits/).
+
+### Connection timeouts
+
+Cloudflare enforces a default [Proxy Read Timeout](https://developers.cloudflare.com/fundamentals/reference/connection-limits/) between Cloudflare and your origin server. If your origin does not send an HTTP response within the defined time limit, Cloudflare returns a [524 error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/). Enterprise customers can [increase the timeout value](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#proxy-read-timeout-enterprise-only).
+
 ---
 
 ## DNS-only records
@@ -146,6 +154,12 @@ When an A, AAAA, or CNAME record is **DNS-only** — shown as a gray cloud icon 
 Note
 
 If you have multiple `A/AAAA` records on the same name and at least one of them is proxied, Cloudflare will treat all `A/AAAA` records on this name as being proxied.
+
+### When to use DNS-only
+
+Certain DNS records should be DNS-only because the services they support are not compatible with Cloudflare's HTTP proxy. Common examples include email records, domain verification records, SaaS-hosted websites, and non-HTTP services.
+
+For a detailed list of scenarios, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/). For hard constraints on proxying, refer to [Proxying limitations](https://developers.cloudflare.com/dns/proxy-status/limitations/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/proxy-status/","name":"Proxy status"}}]}

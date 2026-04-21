@@ -5,6 +5,9 @@ doc_type: 'guide'
 keywords: ['ClickStack', 'OpenTelemetry collector', 'ClickHouse observability', 'OTel collector configuration', 'OpenTelemetry ClickHouse']
 ---
 
+> **tip**: Try OTel FYI - OTel collector documentation made simple
+[OTel FYI](https://otel.fyi) offers clear, concise OpenTelemetry collector documentation covering receivers, processors, exporters, and pipelines. A great companion resource for configuring your ClickStack OTel collector.
+
 This page includes details on configuring the official ClickStack OpenTelemetry (OTel) collector.
 
 ## Collector roles {#collector-roles}

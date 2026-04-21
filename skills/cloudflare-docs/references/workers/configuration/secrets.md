@@ -64,8 +64,8 @@ Explain Code
 
 You can also import `env` from `cloudflare:workers` to access secrets from anywhere in your code, including outside of request handlers:
 
-* [  JavaScript ](#tab-panel-7165)
-* [  TypeScript ](#tab-panel-7166)
+* [  JavaScript ](#tab-panel-9434)
+* [  TypeScript ](#tab-panel-9435)
 
 JavaScript
 
@@ -243,6 +243,30 @@ To add a secret via the dashboard:
 4. Select the type **Secret**, input a **Variable name**, and input its **Value**. This secret will be made available to your Worker but the value will be hidden in Wrangler and the dashboard.
 5. (Optional) To add more secrets, select **Add variable**.
 6. Select **Deploy** to implement your changes.
+
+#### Upload secrets alongside code
+
+You can upload secrets at the same time as your Worker code using the `--secrets-file` flag on [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) or [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions-upload). This accepts a path to a JSON or `.env` file — the same formats accepted by [wrangler secret bulk](https://developers.cloudflare.com/workers/wrangler/commands/workers/#secret-bulk).
+
+Terminal window
+
+```
+
+npx wrangler deploy --secrets-file .env.production
+
+
+```
+
+Terminal window
+
+```
+
+npx wrangler versions upload --secrets-file secrets.json
+
+
+```
+
+Secrets not included in the file are preserved from the previous version. This is useful in CI/CD pipelines where you want to deploy code and update secrets in a single operation.
 
 ### Delete secrets from your project
 

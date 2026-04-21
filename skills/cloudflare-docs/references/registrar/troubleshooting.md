@@ -117,7 +117,7 @@ Your domain may not appear on the [Transfer Domains ↗](https://dash.cloudflare
 
 ## Cannot update nameservers at your current registrar
 
-Some website builder platforms (such as Block, Shopify, and Wix) do not allow you to change nameservers while the domain is registered with them. Because Cloudflare requires your nameservers to point to Cloudflare before a transfer can begin, a direct transfer from these platforms is not possible. For the recommended workaround, refer to [Transfer from website builders](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#transfer-from-website-builders).
+Some commerce and site-building platforms (such as Shopify, Block, and Wix) do not allow you to change nameservers while the domain is registered with them. Because Cloudflare requires your nameservers to point to Cloudflare before a transfer can begin, a direct transfer from these platforms is not possible. For the recommended workaround, refer to [Transfer from Shopify, Block, or Wix](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#transfer-from-shopify-block-or-wix).
 
 ## Email verification required
 

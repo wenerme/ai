@@ -1,0 +1,101 @@
+---
+title: RtkVideoView
+description: API reference for RtkVideoView component (iOS Library)
+image: https://developers.cloudflare.com/dev-products-preview.png
+---
+
+[Skip to content](#%5Ftop) 
+
+Was this helpful?
+
+YesNo
+
+[ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/realtime/realtimekit/ui-kit/api-reference/ios/rtk-video-view.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
+
+Copy page
+
+# RtkVideoView
+
+Renders a participant's video stream. Supports self-preview, remote participant video, and screen share rendering.
+
+## Initializer parameters
+
+| Parameter       | Type                  | Required | Default | Description                                               |
+| --------------- | --------------------- | -------- | ------- | --------------------------------------------------------- |
+| participant     | RtkMeetingParticipant | ✅        | \-      | The participant whose video to render                     |
+| showSelfPreview | Bool                  | ❌        | false   | Whether to show the local camera preview                  |
+| showScreenShare | Bool                  | ❌        | false   | Whether to show the screen share stream instead of camera |
+
+## Methods
+
+| Method             | Return Type | Description                                               |
+| ------------------ | ----------- | --------------------------------------------------------- |
+| reattachRenderer() | Void        | Reattaches the video renderer to the participant stream   |
+| prepareForReuse()  | Void        | Prepares the view for reuse in a collection or table view |
+| clean()            | Void        | Releases the video renderer and cleans up resources       |
+
+## Usage Examples
+
+### Basic Usage
+
+Swift
+
+```
+
+import RealtimeKitUI
+
+
+let videoView = RtkVideoView(participant: participant)
+
+view.addSubview(videoView)
+
+
+```
+
+### Self-preview
+
+Swift
+
+```
+
+import RealtimeKitUI
+
+
+let previewView = RtkVideoView(
+
+    participant: localParticipant,
+
+    showSelfPreview: true
+
+)
+
+view.addSubview(previewView)
+
+
+```
+
+### Screen share
+
+Swift
+
+```
+
+import RealtimeKitUI
+
+
+let screenShareView = RtkVideoView(
+
+    participant: participant,
+
+    showScreenShare: true
+
+)
+
+view.addSubview(screenShareView)
+
+
+```
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/api-reference/","name":"Component Reference"}},{"@type":"ListItem","position":6,"item":{"@id":"/realtime/realtimekit/ui-kit/api-reference/ios/","name":"iOS"}},{"@type":"ListItem","position":7,"item":{"@id":"/realtime/realtimekit/ui-kit/api-reference/ios/rtk-video-view/","name":"RtkVideoView"}}]}
+```

@@ -20,11 +20,13 @@ Copy page
 
 # Proxying limitations
 
-This page describes expected limitations when proxying DNS records. For further information about proxying, refer to [How Cloudflare works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
+This page describes expected limitations when proxying DNS records. For further information about proxying, refer to [How Cloudflare DNS works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
+
+For guidance on when to proxy records and when to use DNS only, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/).
 
 ## Proxy eligibility
 
-Only A, AAAA, and CNAME DNS records that serve HTTP or HTTPS traffic can be proxied. Other record types cannot be proxied.
+Only A, AAAA, and CNAME records that serve HTTP or HTTPS traffic can be proxied. Other DNS record types cannot be proxied.
 
 If you encounter a [CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) that you cannot proxy — usually associated with another CDN provider — a proxied version of that record will cause connectivity errors. Cloudflare is purposely preventing that record from being proxied to protect you from a misconfiguration.
 
@@ -62,7 +64,7 @@ For enhanced security, we recommend rolling your origin IP addresses at your hos
 
 ## Windows authentication
 
-Because Microsoft Integrated Windows Authentication, NTLM, and Kerberos violate HTTP/1.1 specifications, they are not compatible with proxied DNS records.
+Because Microsoft Integrated Windows Authentication, NTLM, and Kerberos violate HTTP/1.1 specifications, they are not compatible with proxied DNS records. NTLM authenticates at the TCP connection level (Layer 4), and Cloudflare does not guarantee that consecutive requests from the same client reuse the same TCP connection to the origin. This can cause repeated authentication prompts or authentication loops.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/dns/","name":"DNS"}},{"@type":"ListItem","position":3,"item":{"@id":"/dns/proxy-status/","name":"Proxy status"}},{"@type":"ListItem","position":4,"item":{"@id":"/dns/proxy-status/limitations/","name":"Proxying limitations"}}]}

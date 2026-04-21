@@ -24,7 +24,7 @@ Transferring a domain moves your registration from your current registrar to Clo
 
 Note
 
-Before you can transfer, you must first [add your domain to Cloudflare](#1-add-your-domain-to-cloudflare). You cannot [enter an authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code) until your domain is active on Cloudflare. If your domain is registered with a website builder platform (such as Block, Shopify, or Wix), you may not be able to change nameservers while the domain is registered there. Refer to [Transfer from website builders](#transfer-from-website-builders) for the recommended workaround, or [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/) if you are running into issues.
+Before you can transfer, you must first [add your domain to Cloudflare](#1-add-your-domain-to-cloudflare). You cannot [enter an authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code) until your domain is active on Cloudflare. If your domain is registered with Shopify, Wix, or a similar platform, you may not be able to change nameservers while the domain is registered there. Refer to [Transfer from Shopify, Block, or Wix](#transfer-from-shopify-block-or-wix) for the recommended workaround, or [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/) if you are running into issues.
 
 Note
 
@@ -188,13 +188,13 @@ Registrants transferring a `.us` domain will always receive a FOA email.
 
 ---
 
-## Transfer from website builders
+## Transfer from Shopify, Block, or Wix
 
-Some website builder platforms (such as Block, Shopify, and Wix) act as both your hosting provider and domain registrar. These platforms typically do not allow you to change nameservers while the domain is registered with them. Because Cloudflare requires your nameservers to point to Cloudflare before a transfer can begin, a direct transfer is not possible.
+Some commerce and site-building platforms (such as Shopify, Block, and Wix) act as both your hosting provider and domain registrar. These platforms typically do not allow you to change nameservers while the domain is registered with them. Because Cloudflare requires your nameservers to point to Cloudflare before a transfer can begin, a direct transfer is not possible.
 
 The workaround is to transfer your domain to another registrar first, wait 60 days, then transfer to Cloudflare:
 
-1. **Get your authorization code from the website builder.** Each platform has a different process. Refer to your platform documentation for instructions on transferring your domain away.
+1. **Get your authorization code from your current platform.** Each platform has a different process. Refer to your platform documentation for instructions on transferring your domain away.
 2. **Transfer to another registrar** that allows nameserver changes. Enter the authorization code there and complete the transfer. This usually takes 3-5 days.
 3. **Update nameservers to Cloudflare.** Once the domain is at the new registrar, update the nameservers to Cloudflare. You can use all Cloudflare features (CDN, DNS, security) immediately after this step.
 4. **Transfer to Cloudflare Registrar after 60 days.** ICANN requires a 60-day wait between transfers. After that period, initiate the transfer to Cloudflare from the [Transfer Domains](#enter-your-authorization-code-and-confirm-payment) page.
@@ -223,7 +223,18 @@ The process for transferring domains in bulk is the same as transferring a singl
 
 ---
 
-If your transfer is stuck or failing, refer to [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/).
+## Common transfer issues
+
+Here are suggestions for how to handle common transfer issues:
+
+* [Domain is still locked](https://developers.cloudflare.com/registrar/troubleshooting/#domain-is-still-locked)
+* [Authorization code is invalid or expired](https://developers.cloudflare.com/registrar/troubleshooting/#authorization-code-is-invalid-or-expired)
+* [Cannot find where to enter your authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code)
+* [Transfer rejected](https://developers.cloudflare.com/registrar/troubleshooting/#transfer-rejected)
+* [Transfer is taking too long](https://developers.cloudflare.com/registrar/troubleshooting/#transfer-is-taking-too-long)
+* [Payment failed during transfer](https://developers.cloudflare.com/registrar/troubleshooting/#payment-failed-during-transfer)
+
+For a full list of issues, refer to [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/).
 
 ## Next steps
 

@@ -51,6 +51,10 @@ codex
   darkSrc="/images/codex/plugins/codex-plugin-cli.png"
 />
 
+The CLI plugin browser groups plugins by marketplace. Use the marketplace tabs
+to switch sources, open a plugin to inspect details, and press <kbd>Space</kbd>
+on an installed plugin to toggle its enabled state.
+
 ### Install and use a plugin
 
 Once you open the plugin directory:

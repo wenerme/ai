@@ -136,7 +136,7 @@ export const commandOverview = [
     href: "/codex/cli/reference#codex-app",
     type: "stable",
     description:
-      "Launch the Codex desktop app on macOS, optionally opening a specific workspace path.",
+      "Launch the Codex desktop app on macOS or Windows. On macOS, Codex can open a workspace path; on Windows, Codex prints the path to open.",
   },
   {
     key: "codex debug app-server send-message-v2",
@@ -206,6 +206,13 @@ export const commandOverview = [
     type: "experimental",
     description:
       "Manage Model Context Protocol servers (list, add, remove, authenticate).",
+  },
+  {
+    key: "codex plugin marketplace",
+    href: "/codex/cli/reference#codex-plugin-marketplace",
+    type: "experimental",
+    description:
+      "Add, upgrade, or remove plugin marketplaces from Git or local sources.",
   },
   {
     key: "codex mcp-server",
@@ -397,13 +404,13 @@ export const appOptions = [
     type: "path",
     defaultValue: ".",
     description:
-      "Workspace path to open in Codex Desktop (`codex app` is available on macOS only).",
+      "Workspace path for Codex Desktop. On macOS, Codex opens this path; on Windows, Codex prints the path.",
   },
   {
     key: "--download-url",
     type: "url",
     description:
-      "Advanced override for the Codex desktop DMG download URL used during install.",
+      "Advanced override for the Codex desktop installer URL used during install.",
   },
 ];
 
@@ -731,6 +738,24 @@ export const mcpAddOptions = [
   },
 ];
 
+export const marketplaceCommands = [
+  {
+    key: "add <source>",
+    type: "[--ref REF] [--sparse PATH]",
+    description:
+      "Install a plugin marketplace from GitHub shorthand, a Git URL, an SSH URL, or a local marketplace root directory. `--sparse` is supported only for Git sources and can be repeated.",
+  },
+  {
+    key: "upgrade [marketplace-name]",
+    description:
+      "Refresh one configured Git marketplace, or all configured Git marketplaces when no name is provided.",
+  },
+  {
+    key: "remove <marketplace-name>",
+    description: "Remove a configured plugin marketplace.",
+  },
+];
+
 ## How to read this reference
 
 This page catalogs every documented Codex CLI command and flag. Use the interactive tables to search by key or description. Each section indicates whether the option is stable or experimental and calls out risky combinations.
@@ -778,11 +803,13 @@ Launch the Codex app server locally. This is primarily for development and debug
 
 ### `codex app`
 
-Launch Codex Desktop from the terminal on macOS and optionally open a specific workspace path.
+Launch Codex Desktop from the terminal on macOS or Windows. On macOS, Codex can open a specific workspace path; on Windows, Codex prints the path to open.
 
 <ConfigTable client:load options={appOptions} />
 
-`codex app` installs/opens the desktop app on macOS, then opens the provided workspace path. This subcommand is macOS-only.
+`codex app` opens an installed Codex Desktop app, or starts the installer when
+the app is missing. On macOS, Codex opens the provided workspace path; on
+Windows, it prints the path to open after installation.
 
 ### `codex debug app-server send-message-v2`
 
@@ -867,6 +894,17 @@ The `add` subcommand supports both stdio and streamable HTTP transports:
 <ConfigTable client:load options={mcpAddOptions} />
 
 OAuth actions (`login`, `logout`) only work with streamable HTTP servers (and only when the server supports OAuth).
+
+### `codex plugin marketplace`
+
+Manage plugin marketplace sources that Codex can browse and install from.
+
+<ConfigTable client:load options={marketplaceCommands} />
+
+`codex plugin marketplace add` accepts GitHub shorthand such as `owner/repo` or
+`owner/repo@ref`, HTTP or HTTPS Git URLs, SSH Git URLs, and local marketplace
+root directories. Use `--ref` to pin a Git ref, and repeat `--sparse PATH` to
+use a sparse checkout for Git-backed marketplace repositories.
 
 ### `codex mcp-server`
 
