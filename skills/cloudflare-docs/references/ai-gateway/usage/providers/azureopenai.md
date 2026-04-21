@@ -1,6 +1,6 @@
 ---
 title: Azure OpenAI
-description: Azure OpenAI allows you apply natural language algorithms on your data.
+description: Route Azure OpenAI requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

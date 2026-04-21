@@ -1,6 +1,6 @@
 ---
 title: Network layer attacks
-description: Network layer attacks show DDoS attack trends at the network layer. These attacks can be split by the network protocol they use: ICMP, TCP, UDP and others.
+description: Examine network layer DDoS attack trends in Cloudflare Radar, broken down by protocol (TCP, UDP, ICMP) and source location.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

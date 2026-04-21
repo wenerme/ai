@@ -1,6 +1,6 @@
 ---
 title: Autonomous responses
-description: Send messages and trigger LLM responses from the server without a human action. Use this for scheduled follow-ups, queue processing, email-triggered responses, and autonomous agent workflows.
+description: Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -55,8 +55,8 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
-* [  JavaScript ](#tab-panel-2956)
-* [  TypeScript ](#tab-panel-2957)
+* [  JavaScript ](#tab-panel-4936)
+* [  TypeScript ](#tab-panel-4937)
 
 JavaScript
 
@@ -112,8 +112,8 @@ Without this guard, you risk reading stale messages or overlapping with an in-fl
 
 A daily digest agent that summarizes activity every morning. Cron schedules are idempotent by default, so calling `schedule()` in `onStart` is safe — it does not create duplicates across Durable Object restarts.
 
-* [  JavaScript ](#tab-panel-2960)
-* [  TypeScript ](#tab-panel-2961)
+* [  JavaScript ](#tab-panel-4940)
+* [  TypeScript ](#tab-panel-4941)
 
 JavaScript
 
@@ -506,8 +506,8 @@ Explain Code
 
 ### Broadcasting state
 
-* [  JavaScript ](#tab-panel-2958)
-* [  TypeScript ](#tab-panel-2959)
+* [  JavaScript ](#tab-panel-4938)
+* [  TypeScript ](#tab-panel-4939)
 
 JavaScript
 

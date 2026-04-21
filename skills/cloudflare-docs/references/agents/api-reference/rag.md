@@ -1,6 +1,6 @@
 ---
 title: Retrieval Augmented Generation
-description: Agents can use Retrieval Augmented Generation (RAG) to retrieve relevant information and use it augment calls to AI models. Store a user's chat history to use as context for future conversations, summarize documents to bootstrap an Agent's knowledge base, and/or use data from your Agent's web browsing tasks to enhance your Agent's capabilities.
+description: Add RAG to Cloudflare Agents using Vectorize for vector search and the embedded SQL database for context retrieval.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -30,8 +30,8 @@ You can query a vector index (or indexes) from any method on your Agent: any Vec
 
 Here's an example of how to give an Agent retrieval capabilities:
 
-* [  JavaScript ](#tab-panel-2548)
-* [  TypeScript ](#tab-panel-2549)
+* [  JavaScript ](#tab-panel-4344)
+* [  TypeScript ](#tab-panel-4345)
 
 JavaScript
 
@@ -184,8 +184,8 @@ Explain Code
 
 You'll also need to connect your Agent to your vector indexes:
 
-* [  wrangler.jsonc ](#tab-panel-2546)
-* [  wrangler.toml ](#tab-panel-2547)
+* [  wrangler.jsonc ](#tab-panel-4342)
+* [  wrangler.toml ](#tab-panel-4343)
 
 JSONC
 

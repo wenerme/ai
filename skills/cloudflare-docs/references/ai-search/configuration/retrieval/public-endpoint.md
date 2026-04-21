@@ -1,6 +1,6 @@
 ---
 title: Public endpoint settings
-description: Configure public endpoints to expose your AI Search instance directly to users without requiring authentication. This enables you to share your AI Search functionality with external users, or to integrate it into public-facing applications.
+description: Expose AI Search instances through public MCP, chat, and search endpoints without authentication.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: User Groups
-description: User Groups are a collection of account members that are treated equally from an access control perspective. User Groups can be assigned permission policies, with individual members in the group receiving all permissions of the roles assigned to the User Group. If users also have individually assigned permissions, then their effective permissions are the union of all of their individual permissions, plus the permissions for all of the User Groups they are a member of.
+description: Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -41,8 +41,8 @@ Cloudflare is actively working on improving this experience to make inherited an
 
 With your Group created, you can now add a [Permission Policy](https://developers.cloudflare.com/fundamentals/manage-members/policies/) to your Group.
 
-* [ Dashboard ](#tab-panel-4667)
-* [ API ](#tab-panel-4668)
+* [ Dashboard ](#tab-panel-6957)
+* [ API ](#tab-panel-6958)
 
 1. In the **Groups** tab under **Permission policies**, select **Add a Policy**.
 2. Specify the scope and permissions you want applied to the members of the group.
@@ -132,8 +132,8 @@ To set up a user group with SCIM, refer to the [Provisioning with SCIM guide](ht
 
 After a user group is created either manually in Cloudflare dashboard or through SCIM integration the final step is to attach permissions to it.
 
-* [ Dashboard ](#tab-panel-4669)
-* [ API ](#tab-panel-4670)
+* [ Dashboard ](#tab-panel-6959)
+* [ API ](#tab-panel-6960)
 
 1. Go to **Manage members** \> **Members** \> **User groups**.
 2. Select the user group you want to attach permissions to.

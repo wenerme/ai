@@ -1,6 +1,6 @@
 ---
 title: Zone holds
-description: Zone holds prevent other teams in your organization from adding zones that are already active in another account.
+description: Prevent other teams from adding your active Cloudflare zones to a different account by enabling zone holds.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

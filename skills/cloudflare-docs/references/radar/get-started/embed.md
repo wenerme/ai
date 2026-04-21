@@ -1,6 +1,6 @@
 ---
 title: Share a Radar chart
-description: Radar allows you to download an image of a chart, as well as embed interactive cards of most charts into your own web pages.
+description: Download Cloudflare Radar charts as PNG images or embed interactive charts in your website.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

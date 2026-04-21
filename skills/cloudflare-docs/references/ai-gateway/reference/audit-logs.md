@@ -1,6 +1,6 @@
 ---
 title: Audit logs
-description: Audit logs provide a comprehensive summary of changes made within your Cloudflare account, including those made to gateways in AI Gateway. This functionality is available on all plan types, free of charge, and is enabled by default.
+description: View audit log entries for AI Gateway configuration changes such as gateway creation, deletion, and updates.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

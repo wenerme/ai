@@ -1,6 +1,6 @@
 ---
 title: Rate limiting
-description: Rate limiting controls the traffic that reaches your application, which prevents expensive bills and suspicious activity.
+description: Control traffic to your AI Gateway with fixed or sliding rate limits to prevent excessive costs and suspicious activity.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -32,8 +32,8 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 ## Default configuration
 
-* [ Dashboard ](#tab-panel-3052)
-* [ API ](#tab-panel-3053)
+* [ Dashboard ](#tab-panel-5107)
+* [ API ](#tab-panel-5108)
 
 To set the default rate limiting configuration in the dashboard:
 

@@ -1,6 +1,6 @@
 ---
 title: Architectures
-description: Learn how you can use AI Gateway within your existing architecture.
+description: Explore reference architectures and design guides that incorporate AI Gateway into your infrastructure.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

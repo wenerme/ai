@@ -1,6 +1,6 @@
 ---
 title: ElevenLabs
-description: ElevenLabs offers advanced text-to-speech services, enabling high-quality voice synthesis in multiple languages.
+description: Route ElevenLabs text-to-speech requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

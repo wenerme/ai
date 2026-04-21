@@ -1,6 +1,6 @@
 ---
 title: Costs
-description: Cost metrics are only available for endpoints where the models return token data and the model name in their responses.
+description: Track and estimate token-based costs across AI providers using AI Gateway cost metrics.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: DNS
-description: Access aggregated and anonymized DNS queries to Cloudflare's 1.1.1.1 public resolver service.
+description: Access aggregated DNS query data from Cloudflare 1.1.1.1 resolver through Radar to explore top locations by hostname.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

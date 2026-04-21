@@ -1,6 +1,6 @@
 ---
 title: OpenAI
-description: OpenAI helps you build with GPT models.
+description: Route OpenAI API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -45,8 +45,8 @@ When making requests to OpenAI, replace `https://api.openai.com/v1` in the URL y
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3086)
-* [ Unauthenticated Gateway ](#tab-panel-3087)
+* [ With Authenticated Gateway ](#tab-panel-5141)
+* [ Unauthenticated Gateway ](#tab-panel-5142)
 
 ```
 
@@ -151,8 +151,8 @@ Explain Code
 
 Responses API with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3088)
-* [ Unauthenticated Gateway ](#tab-panel-3089)
+* [ With Authenticated Gateway ](#tab-panel-5143)
+* [ Unauthenticated Gateway ](#tab-panel-5144)
 
 Terminal window
 
@@ -224,8 +224,8 @@ Explain Code
 
 Chat Completions with API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3090)
-* [ Unauthenticated Gateway ](#tab-panel-3091)
+* [ With Authenticated Gateway ](#tab-panel-5145)
+* [ Unauthenticated Gateway ](#tab-panel-5146)
 
 Terminal window
 

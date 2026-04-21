@@ -1,6 +1,6 @@
 ---
 title: Search
-description: Query your AI Search instances with natural language and get relevant results or AI-generated responses.
+description: Query AI Search instances with natural language and get relevant results or AI-generated responses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

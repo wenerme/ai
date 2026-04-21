@@ -1,6 +1,6 @@
 ---
 title: Aggregation intervals
-description: Aggregation intervals allow you to return data in a specified interval (or frequency). If no interval is defined, data will be returned in the default aggregation interval (or frequency). As a general principle, the longer the date range, the bigger the aggregation interval.
+description: Configure Cloudflare Radar aggregation intervals to control the frequency of returned data, from 15 minutes to one week.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

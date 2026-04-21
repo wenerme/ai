@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: This page covers common issues when using AI Gateway. For provider-specific troubleshooting, refer to the relevant provider documentation.
+description: Resolve common AI Gateway issues including authentication errors, missing logs, and provider connectivity problems.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Manage
-description: Granting access to others on your account is done with several sets of data principles:
+description: Add, edit, and remove Cloudflare account members and their permission policies.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -34,8 +34,8 @@ To manage account members, you must have a role of **Super Administrator** and h
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-4659)
-* [ API ](#tab-panel-4660)
+* [ Dashboard ](#tab-panel-6949)
+* [ API ](#tab-panel-6950)
 
 To view members using the dashboard:
 
@@ -49,8 +49,8 @@ To view members using the API, send a [GET request](https://developers.cloudflar
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-4661)
-* [ API ](#tab-panel-4662)
+* [ Dashboard ](#tab-panel-6951)
+* [ API ](#tab-panel-6952)
 
 To add a member to your account:
 
@@ -74,8 +74,8 @@ To add a member using the API, send a [POST request](https://developers.cloudfla
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-4663)
-* [ API ](#tab-panel-4664)
+* [ Dashboard ](#tab-panel-6953)
+* [ API ](#tab-panel-6954)
 
 To edit member permissions using the dashboard:
 
@@ -145,8 +145,8 @@ If you invited a member to your account but they cannot find the invitation or t
 
 To manage account members, you must have a role of **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 
-* [ Dashboard ](#tab-panel-4665)
-* [ API ](#tab-panel-4666)
+* [ Dashboard ](#tab-panel-6955)
+* [ API ](#tab-panel-6956)
 
 To revoke a member's access to your account:
 

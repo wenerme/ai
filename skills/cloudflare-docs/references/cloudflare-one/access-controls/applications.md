@@ -18,6 +18,7 @@ Copy page
 
 * [ Add web applications ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)
 * [ Non-HTTP applications ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/)
+* [ Linked App Token ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/)
 * [ Add bookmarks ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/)
 
 ```json

@@ -1,6 +1,6 @@
 ---
 title: Control API Access
-description: Super administrators of an Enterprise account are capable of selectively scoping the API access. API access can be restricted for the entire account or only for specified account members.
+description: Restrict Cloudflare API access at the account or member level using Enterprise account controls.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

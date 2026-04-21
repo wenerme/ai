@@ -62,8 +62,8 @@
   "google-ai-docs/quickstart.md": {
     "url": "https://ai.google.dev/gemini-api/docs/quickstart",
     "skill": "google-ai-docs",
-    "size": 8143,
-    "updatedAt": "2026-04-10T00:27:22.233Z"
+    "size": 8118,
+    "updatedAt": "2026-04-21T00:32:18.410Z"
   },
   "google-ai-docs/api-versions.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-versions",
@@ -194,8 +194,8 @@
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 12469,
-    "updatedAt": "2026-04-20T10:47:02.585Z"
+    "size": 12239,
+    "updatedAt": "2026-04-21T00:32:30.878Z"
   },
   "google-ai-docs/music-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/music-generation",

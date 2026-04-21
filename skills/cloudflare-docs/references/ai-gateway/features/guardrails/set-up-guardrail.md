@@ -1,6 +1,6 @@
 ---
 title: Set up Guardrails
-description: Add Guardrails to any gateway to start evaluating and potentially modifying responses.
+description: Enable and configure AI Gateway Guardrails to flag or block harmful content in prompts and responses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

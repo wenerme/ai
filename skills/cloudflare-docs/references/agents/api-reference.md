@@ -1,6 +1,6 @@
 ---
 title: API Reference
-description: Learn more about what Agents can do, the Agent class, and the APIs that Agents expose:
+description: Explore the Agents SDK classes, methods, and client libraries for building AI agents on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

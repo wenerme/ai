@@ -1,6 +1,6 @@
 ---
 title: Non-realtime WebSockets API
-description: The Non-realtime WebSockets API allows you to establish persistent connections for AI requests without requiring repeated handshakes. This approach is ideal for applications that do not require real-time interactions but still benefit from reduced latency and continuous communication.
+description: Establish persistent WebSocket connections for AI requests through AI Gateway without real-time streaming.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

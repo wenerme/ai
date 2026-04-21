@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Limits that apply to authoring, deploying, and running Agents are detailed below.
+description: Understand the concurrency, storage, and compute time limits that apply to Cloudflare Agents.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Radar API error codes
+description: Reference table of Cloudflare Radar API error codes and their corresponding HTTP status codes.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

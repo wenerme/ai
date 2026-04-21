@@ -1,6 +1,6 @@
 ---
 title: Add human feedback using Worker Bindings
-description: This guide explains how to provide human feedback for AI Gateway evaluations using Worker bindings.
+description: Provide human feedback on AI Gateway evaluations programmatically using Worker bindings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

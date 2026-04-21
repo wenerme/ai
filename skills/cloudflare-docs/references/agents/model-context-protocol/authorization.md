@@ -1,6 +1,6 @@
 ---
 title: Authorization
-description: When building a Model Context Protocol (MCP) server, you need both a way to allow users to login (authentication) and allow them to grant the MCP client access to resources on their account (authorization).
+description: Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -41,7 +41,7 @@ The following sections describe each of these options and link to runnable code 
 
 Cloudflare Access allows you to add Single Sign-On (SSO) functionality to your MCP server. Users authenticate to your MCP server using a [configured identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) or a [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/), and they are only granted access if their identity matches your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
-To deploy an [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) with Cloudflare Access as the OAuth provider, refer to [Secure MCP servers with Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/saas-mcp/).
+To deploy an [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) with Cloudflare Access as the OAuth provider, refer to [Secure MCP servers with Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/).
 
 ### (2) Third-party OAuth Provider
 

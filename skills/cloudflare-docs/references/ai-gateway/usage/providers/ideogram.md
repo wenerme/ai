@@ -1,6 +1,6 @@
 ---
 title: Ideogram
-description: Ideogram provides advanced text-to-image generation models with exceptional text rendering capabilities and visual quality.
+description: Route Ideogram image generation requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

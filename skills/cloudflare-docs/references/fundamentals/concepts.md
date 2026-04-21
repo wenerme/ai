@@ -1,5 +1,6 @@
 ---
 title: Concepts
+description: Explore foundational Cloudflare concepts including DNS, accounts, zones, IP addresses, and how traffic flows through the network.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

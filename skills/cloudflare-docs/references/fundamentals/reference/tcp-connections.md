@@ -1,6 +1,6 @@
 ---
 title: TCP connections
-description: The following section explains how Cloudflare directs traffic efficiently with anycast routing and serves as an intermediary between users and origin servers. The second part covers TCP connections and keep-alives for performance optimization, and lastly, TCP Fast Open (TFO), a protocol extension that enhances the speed of TCP connections.
+description: Understand how Cloudflare handles TCP connections, keep-alives, and TCP Fast Open between visitors and origin servers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

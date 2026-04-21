@@ -1,6 +1,6 @@
 ---
 title: Query rewriting
-description: Query rewriting is an optional step in the AI Search pipeline that improves retrieval quality for follow-up queries. It applies to both Search and Chat Completions requests.
+description: Improve AI Search retrieval quality by enabling query rewriting to rephrase user queries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

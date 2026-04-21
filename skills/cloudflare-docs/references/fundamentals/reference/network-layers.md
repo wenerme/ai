@@ -1,6 +1,6 @@
 ---
 title: Network Layers
-description: Below is a list of the different layers that makes up the open systems interconnection (OSI) model and the associated Cloudflare products.
+description: Map Cloudflare products to OSI model layers, from Layer 7 application services to Layer 1 physical connections.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Make comparisons
-description: When comparing time series, across locations/time ranges/etc., in endpoints that normalize values using min-max, you must do so in the same request. This is done by asking for multiple series. All values will then be normalized using the same minimum and maximum value and can safely be compared against each other.
+description: Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

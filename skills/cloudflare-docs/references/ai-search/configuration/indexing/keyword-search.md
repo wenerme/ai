@@ -1,6 +1,6 @@
 ---
 title: Keyword search
-description: Enable keyword search to match chunks that contain your query terms exactly. For an overview of search modes, refer to Search modes.
+description: Enable BM25 keyword search in AI Search to match documents containing exact query terms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

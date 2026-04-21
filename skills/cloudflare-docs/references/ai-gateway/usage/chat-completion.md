@@ -1,6 +1,6 @@
 ---
 title: Unified API (OpenAI compat)
-description: Cloudflare's AI Gateway offers an OpenAI-compatible /chat/completions endpoint, enabling integration with multiple AI providers using a single URL. This feature simplifies the integration process, allowing for seamless switching between different models without significant code modifications.
+description: Send requests to multiple AI providers through a single OpenAI-compatible endpoint on AI Gateway.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

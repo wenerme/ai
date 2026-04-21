@@ -1,6 +1,6 @@
 ---
 title: Search modes
-description: AI Search supports three search modes: vector, keyword, and hybrid. By default, new instances use vector search only. You can enable keyword or hybrid search when creating or updating an instance.
+description: Compare AI Search vector, keyword, and hybrid search modes to choose the right retrieval strategy.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

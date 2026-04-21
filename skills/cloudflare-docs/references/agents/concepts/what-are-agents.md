@@ -1,6 +1,6 @@
 ---
 title: What are agents?
-description: An agent is an AI system that can autonomously execute tasks by making decisions about tool usage and process flow. Unlike traditional automation that follows predefined paths, agents can dynamically adapt their approach based on context and intermediate results. Agents are also distinct from co-pilots (such as traditional chat applications) in that they can fully automate a task, as opposed to simply augmenting and extending human input.
+description: Understand what Agents are, how they differ from workflows and co-pilots, and when to use them.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

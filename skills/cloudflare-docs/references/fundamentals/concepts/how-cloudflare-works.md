@@ -1,6 +1,6 @@
 ---
 title: How Cloudflare DNS works
-description: To optimize your website or web application, Cloudflare provides DNS and CDN services, so we can reverse proxy the web traffic to and from your domain.
+description: Understand how Cloudflare acts as your authoritative DNS provider and reverse proxy to optimize, cache, and protect your web traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

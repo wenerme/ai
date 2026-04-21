@@ -1,6 +1,6 @@
 ---
 title: Cloudflare crawlers
-description: Cloudflare may crawl or make HTTP requests to your site to make sure its protected and performing properly.
+description: Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

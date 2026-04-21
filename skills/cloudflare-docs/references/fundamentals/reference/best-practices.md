@@ -1,6 +1,6 @@
 ---
 title: Account and domain management best practices
-description: More and more of our lives revolve around our online presence and maintaining access to our various online accounts, such as social media, banking, personal, and business accounts. These accounts are critical to remaining connected with our loved ones and business. As such, ensuring a level of continuity with these services is critical. Below is a list of important items to help ensure you are able to maintain access or delegate access to your Cloudflare account in the event that you are unable to manage your account.
+description: Protect your Cloudflare account and domains by decentralizing access, managing billing, and planning for continuity.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -97,6 +97,48 @@ This approach is useful for supporting lazy loading of large or dynamically impo
 * Previously, variable based dynamic imports (for example, `` await import(`./lang/${language}.mjs`) ``) would always fail at runtime because Wrangler had no way of knowing which modules to include in the upload. Providing a rule that matches all these files, such as `{ "type": "EsModule", "globs": ["./lang/**/*.mjs"], "fallthrough": true }`, will ensure this module is available at runtime.
 * "Partial bundling" is supported when `find_additional_modules` is `true`, and a source file matches one of the configured `rules`, since Wrangler will then treat it as "external" and not try to bundle it into the entry-point file.
 
+## `NODE_ENV`
+
+`process.env.NODE_ENV` is statically replaced at build time with one of the following values:
+
+| Context                           | Value         |
+| --------------------------------- | ------------- |
+| wrangler dev                      | "development" |
+| wrangler deploy or wrangler build | "production"  |
+
+You can use `process.env.NODE_ENV` to conditionally run code based on the build context:
+
+TypeScript
+
+```
+
+if (process.env.NODE_ENV === "development") {
+
+  console.log("Running in development mode");
+
+}
+
+
+```
+
+Because `process.env.NODE_ENV` is replaced at build time, development only code can be removed from the production bundle.
+
+You can override the default value by setting the `NODE_ENV` environment variable when running the command:
+
+ npm  yarn  pnpm 
+
+```
+NODE_ENV=staging npx wrangler dev
+```
+
+```
+NODE_ENV=staging yarn wrangler dev
+```
+
+```
+NODE_ENV=staging pnpm wrangler dev
+```
+
 ## Conditional exports
 
 Wrangler respects the [conditional exports field ↗](https://nodejs.org/api/packages.html#conditional-exports) in `package.json`. This allows developers to implement isomorphic libraries that have different implementations depending on the JavaScript runtime they are running in. When bundling, Wrangler will try to load the [workerd key ↗](https://runtime-keys.proposal.wintercg.org/#workerd). Refer to the Wrangler repository for [an example isomorphic package ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/isomorphic-random-example).

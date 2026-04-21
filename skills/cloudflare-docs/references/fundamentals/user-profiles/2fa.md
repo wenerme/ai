@@ -1,6 +1,6 @@
 ---
 title: Two-factor authentication
-description: We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure.
+description: Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

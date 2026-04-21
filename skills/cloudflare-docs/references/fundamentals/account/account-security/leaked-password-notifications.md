@@ -1,6 +1,6 @@
 ---
 title: Leaked Password Notifications
-description: Cloudflare automatically checks if your password has been compromised when you log in to the Cloudflare dashboard. Every time you log in to your account, we will securely verify through threat intelligence sources to confirm if your password has been leaked in a past data breach.
+description: Cloudflare checks your password against known data breaches at login and prompts you to reset it if a match is found.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

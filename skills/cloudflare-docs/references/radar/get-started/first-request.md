@@ -1,5 +1,6 @@
 ---
 title: Make your first API request
+description: Create an API token and query the Cloudflare Radar API for Internet traffic data using cURL or Python.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

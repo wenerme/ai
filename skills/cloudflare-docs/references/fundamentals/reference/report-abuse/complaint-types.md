@@ -1,6 +1,6 @@
 ---
 title: Complaint types
-description: Use Cloudflare's online abuse form to report different types of abuse.
+description: Review the types of abuse complaints you can submit to Cloudflare, including DMCA, phishing, trademark, malware, and child exploitation reports.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

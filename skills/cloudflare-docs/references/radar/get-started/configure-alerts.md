@@ -1,6 +1,6 @@
 ---
 title: Configure alerts
-description: You can configure alerts to receive notifications when Radar detects changes impacting countries, regions, or autonomous systems.
+description: Set up Cloudflare Radar notifications to receive alerts when changes affect countries, regions, or autonomous systems.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

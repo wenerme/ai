@@ -1,6 +1,6 @@
 ---
 title: Workers binding migration
-description: The env.AI.autorag() binding is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
+description: Upgrade from the legacy env.AI.autorag() binding to the new AI Search Workers bindings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -104,8 +104,8 @@ Existing instances are in the default namespace. For a simple upgrade path, use 
 
 **Before:**
 
-* [  wrangler.jsonc ](#tab-panel-5118)
-* [  wrangler.toml ](#tab-panel-5119)
+* [  wrangler.jsonc ](#tab-panel-5159)
+* [  wrangler.toml ](#tab-panel-5160)
 
 JSONC
 
@@ -139,8 +139,8 @@ binding = "AI"
 
 **After:**
 
-* [  wrangler.jsonc ](#tab-panel-5120)
-* [  wrangler.toml ](#tab-panel-5121)
+* [  wrangler.jsonc ](#tab-panel-5161)
+* [  wrangler.toml ](#tab-panel-5162)
 
 JSONC
 

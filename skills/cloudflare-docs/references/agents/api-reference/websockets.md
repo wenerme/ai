@@ -1,6 +1,6 @@
 ---
 title: WebSockets
-description: Agents support WebSocket connections for real-time, bi-directional communication. This page covers server-side WebSocket handling. For client-side connection, refer to the Client SDK.
+description: Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -37,8 +37,8 @@ Agents have several lifecycle hooks that fire at different points:
 
 `onStart()` is called once when the agent first starts, before any connections are established:
 
-* [  JavaScript ](#tab-panel-2850)
-* [  TypeScript ](#tab-panel-2851)
+* [  JavaScript ](#tab-panel-4800)
+* [  TypeScript ](#tab-panel-4801)
 
 JavaScript
 
@@ -122,8 +122,8 @@ Explain Code
 
 Define `onConnect` and `onMessage` methods on your Agent to accept WebSocket connections:
 
-* [  JavaScript ](#tab-panel-2856)
-* [  TypeScript ](#tab-panel-2857)
+* [  JavaScript ](#tab-panel-4806)
+* [  TypeScript ](#tab-panel-4807)
 
 JavaScript
 
@@ -258,8 +258,8 @@ Each connected client has a unique `Connection` object:
 
 Store data specific to each connection (user info, preferences, etc.):
 
-* [  JavaScript ](#tab-panel-2860)
-* [  TypeScript ](#tab-panel-2861)
+* [  JavaScript ](#tab-panel-4810)
+* [  TypeScript ](#tab-panel-4811)
 
 JavaScript
 
@@ -360,8 +360,8 @@ Explain Code
 
 Use `this.broadcast()` to send a message to all connected clients:
 
-* [  JavaScript ](#tab-panel-2854)
-* [  TypeScript ](#tab-panel-2855)
+* [  JavaScript ](#tab-panel-4804)
+* [  TypeScript ](#tab-panel-4805)
 
 JavaScript
 
@@ -451,8 +451,8 @@ Explain Code
 
 Pass an array of connection IDs to exclude from the broadcast:
 
-* [  JavaScript ](#tab-panel-2848)
-* [  TypeScript ](#tab-panel-2849)
+* [  JavaScript ](#tab-panel-4798)
+* [  TypeScript ](#tab-panel-4799)
 
 JavaScript
 
@@ -492,8 +492,8 @@ this.broadcast(
 
 Tag connections for easy filtering. Override `getConnectionTags()` to assign tags when a connection is established:
 
-* [  JavaScript ](#tab-panel-2862)
-* [  TypeScript ](#tab-panel-2863)
+* [  JavaScript ](#tab-panel-4812)
+* [  TypeScript ](#tab-panel-4813)
 
 JavaScript
 
@@ -598,8 +598,8 @@ Explain Code
 
 Messages can be strings or binary (`ArrayBuffer` / `ArrayBufferView`):
 
-* [  JavaScript ](#tab-panel-2858)
-* [  TypeScript ](#tab-panel-2859)
+* [  JavaScript ](#tab-panel-4808)
+* [  TypeScript ](#tab-panel-4809)
 
 JavaScript
 
@@ -691,8 +691,8 @@ Agents automatically send JSON text frames (identity, state, MCP servers) to eve
 
 Handle connection errors and disconnections. The `onError` method has two overloads — one for WebSocket connection errors and one for server-level errors:
 
-* [  JavaScript ](#tab-panel-2868)
-* [  TypeScript ](#tab-panel-2869)
+* [  JavaScript ](#tab-panel-4818)
+* [  TypeScript ](#tab-panel-4819)
 
 JavaScript
 
@@ -836,8 +836,8 @@ Agents support hibernation — they can sleep when inactive and wake when needed
 
 Hibernation is enabled by default. To disable:
 
-* [  JavaScript ](#tab-panel-2852)
-* [  TypeScript ](#tab-panel-2853)
+* [  JavaScript ](#tab-panel-4802)
+* [  TypeScript ](#tab-panel-4803)
 
 JavaScript
 
@@ -884,8 +884,8 @@ export class AlwaysOnAgent extends Agent {
 
 Store important data in `this.state` or SQLite, not in class properties:
 
-* [  JavaScript ](#tab-panel-2864)
-* [  TypeScript ](#tab-panel-2865)
+* [  JavaScript ](#tab-panel-4814)
+* [  TypeScript ](#tab-panel-4815)
 
 JavaScript
 
@@ -961,8 +961,8 @@ Explain Code
 
 Track who is online using per-connection state. Connection state is automatically cleaned up when users disconnect:
 
-* [  JavaScript ](#tab-panel-2872)
-* [  TypeScript ](#tab-panel-2873)
+* [  JavaScript ](#tab-panel-4822)
+* [  TypeScript ](#tab-panel-4823)
 
 JavaScript
 
@@ -1221,8 +1221,8 @@ Explain Code
 
 ### Chat room with broadcast
 
-* [  JavaScript ](#tab-panel-2870)
-* [  TypeScript ](#tab-panel-2871)
+* [  JavaScript ](#tab-panel-4820)
+* [  TypeScript ](#tab-panel-4821)
 
 JavaScript
 
@@ -1431,8 +1431,8 @@ Explain Code
 
 By default, agents send JSON text frames (identity, state sync, MCP server lists) to every connection. Override `shouldSendProtocolMessages` to suppress them for specific connections — for example, binary-only clients that cannot handle JSON text frames:
 
-* [  JavaScript ](#tab-panel-2866)
-* [  TypeScript ](#tab-panel-2867)
+* [  JavaScript ](#tab-panel-4816)
+* [  TypeScript ](#tab-panel-4817)
 
 JavaScript
 

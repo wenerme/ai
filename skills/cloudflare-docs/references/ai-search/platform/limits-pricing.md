@@ -1,5 +1,6 @@
 ---
 title: Limits &#38; pricing
+description: View AI Search usage limits and pricing details for Free and Paid Workers plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

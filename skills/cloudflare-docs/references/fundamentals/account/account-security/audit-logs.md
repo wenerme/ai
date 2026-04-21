@@ -1,6 +1,6 @@
 ---
 title: Audit Logs - version 2
-description: Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
+description: Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

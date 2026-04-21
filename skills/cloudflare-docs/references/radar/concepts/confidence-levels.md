@@ -1,6 +1,6 @@
 ---
 title: Confidence levels
-description: The result.meta.confidenceInfo.level in the response provides an indication of how much confidence Cloudflare has in the data. Confidence levels can be affected either by internal issues affecting data quality or by not having a lot of data for a given location (like Antarctica) or Autonomous System (AS).
+description: Interpret Cloudflare Radar confidence levels to assess data quality and reliability for a given location or time range.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

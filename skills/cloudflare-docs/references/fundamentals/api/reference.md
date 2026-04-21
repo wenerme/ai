@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference documentation for the Cloudflare API including rate limits, permissions, SDKs, and token templates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

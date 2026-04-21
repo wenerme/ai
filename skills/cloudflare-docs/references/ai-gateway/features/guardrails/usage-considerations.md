@@ -1,6 +1,6 @@
 ---
 title: Usage considerations
-description: Guardrails currently uses Llama Guard 3 8B on Workers AI to perform content evaluations. The underlying model may be updated in the future, and we will reflect those changes within Guardrails.
+description: Understand latency, availability, language support, and Workers AI usage when enabling AI Gateway Guardrails.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

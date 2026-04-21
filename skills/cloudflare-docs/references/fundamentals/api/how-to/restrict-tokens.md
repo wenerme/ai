@@ -1,6 +1,6 @@
 ---
 title: Restrict tokens
-description: API tokens can be restricted at runtime in two ways:
+description: Limit Cloudflare API token usage by client IP address filtering and time-to-live (TTL) constraints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

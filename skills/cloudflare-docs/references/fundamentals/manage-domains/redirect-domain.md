@@ -1,6 +1,6 @@
 ---
 title: Redirect one domain to another
-description: If you have an alias domain that only forwards traffic to another domain (that is, the domain does not have an associated origin server of its own), you can set up redirects directly within Cloudflare.
+description: Set up domain redirects in Cloudflare to forward traffic from an alias domain to your primary domain using DNS records and redirect rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

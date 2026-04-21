@@ -1,5 +1,6 @@
 ---
 title: Performance
+description: Explore Cloudflare fundamentals for improving website speed, SEO, and uptime.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

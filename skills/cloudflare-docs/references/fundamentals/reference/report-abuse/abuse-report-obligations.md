@@ -1,6 +1,6 @@
 ---
 title: Customer abuse report obligations
-description: Cloudflare permits any interested party to submit abuse reports directly to Cloudflare via abuse.cloudflare.com.
+description: Understand your obligations when Cloudflare forwards an abuse report for a domain associated with your account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Normalization methods
-description: Cloudflare Radar does not normally return raw values. Instead, values are returned as percentages or normalized using min-max.
+description: Understand how Cloudflare Radar normalizes data using percentages, min-max scaling, and other methods applied to API responses.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Observability
-description: Observability is the practice of instrumenting systems to collect metrics, and logs enabling better monitoring, troubleshooting, and optimization of applications.
+description: Monitor AI Gateway traffic with analytics, logging, cost tracking, and OpenTelemetry integration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

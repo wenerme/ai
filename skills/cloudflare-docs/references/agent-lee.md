@@ -1,6 +1,6 @@
 ---
 title: Agent Lee
-description: With Agent Lee, you can:
+description: Ask questions, run diagnostics, and take actions across your Cloudflare account using an AI-powered dashboard assistant.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add Human Feedback using Dashboard
-description: Human feedback is a valuable metric to assess the performance of your AI models. By incorporating human feedback, you can gain deeper insights into how the model's responses are perceived and how well it performs from a user-centric perspective. This feedback can then be used in evaluations to calculate performance metrics, driving optimization and ultimately enhancing the reliability, accuracy, and efficiency of your AI application.
+description: Annotate AI Gateway logs with thumbs-up or thumbs-down feedback in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

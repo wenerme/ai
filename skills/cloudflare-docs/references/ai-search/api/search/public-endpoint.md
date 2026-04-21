@@ -1,6 +1,6 @@
 ---
 title: Public endpoint
-description: AI Search public endpoints allow you to expose AI Search capabilities without requiring authentication. This enables you to integrate AI Search into public-facing applications or share it with external users.
+description: Integrate AI Search into public-facing applications using unauthenticated public endpoints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

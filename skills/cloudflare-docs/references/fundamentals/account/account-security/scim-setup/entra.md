@@ -1,6 +1,6 @@
 ---
 title: Provision with Microsoft Entra
-description: Once you have gathered the required data, the following steps will be required to finish the provisioning with Entra.
+description: Configure Microsoft Entra as a SCIM identity provider to provision users and groups into your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

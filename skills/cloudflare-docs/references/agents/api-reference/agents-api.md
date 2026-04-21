@@ -1,6 +1,6 @@
 ---
 title: Agents API
-description: This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
+description: Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

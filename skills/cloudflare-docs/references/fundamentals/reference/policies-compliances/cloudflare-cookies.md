@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Cookies
-description: Cloudflare uses various cookies to maximize network resources, manage traffic, and protect our customers’ sites from malicious traffic.
+description: Review the cookies Cloudflare sets for load balancing, bot management, challenges, and other product features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

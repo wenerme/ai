@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: Use the AI Search REST API to upload, list, and manage individual documents within an instance.
+description: Upload, list, and manage documents in AI Search instances using the Items REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

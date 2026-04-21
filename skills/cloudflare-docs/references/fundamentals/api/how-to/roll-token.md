@@ -1,6 +1,6 @@
 ---
 title: Roll tokens
-description: If your token is lost or compromised, you can either create a new token or roll your token to generate a new secret. Rolling your API token into a new one will invalidate the previous token, but the access and permissions will be the same as the previous API token. The new token uses the scannable format, which allows credential scanning tools to detect leaked tokens.
+description: Regenerate Cloudflare API token secrets to rotate credentials and maintain account security.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

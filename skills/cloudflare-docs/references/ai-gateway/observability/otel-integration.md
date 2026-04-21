@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry
-description: AI Gateway supports exporting traces to OpenTelemetry-compatible backends, enabling you to monitor and analyze AI request performance alongside your existing observability infrastructure.
+description: Export AI Gateway trace spans to OpenTelemetry-compatible backends for distributed tracing and performance monitoring.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

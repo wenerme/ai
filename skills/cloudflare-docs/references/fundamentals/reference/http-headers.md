@@ -1,6 +1,6 @@
 ---
 title: Cloudflare HTTP headers
-description: Cloudflare passes all HTTP request headers to your origin web server and adds additional headers as specified below.
+description: Review the HTTP request and response headers that Cloudflare adds or modifies for proxied traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: In this guide, you will learn how to set up and use your first AI Gateway.
+description: Set up AI Gateway and send your first request to observe and control AI API traffic.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -72,8 +72,8 @@ Create a gateway manually
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-* [ Dashboard ](#tab-panel-3062)
-* [ API ](#tab-panel-3063)
+* [ Dashboard ](#tab-panel-5111)
+* [ API ](#tab-panel-5112)
 
 [ Go to **AI Gateway** ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.

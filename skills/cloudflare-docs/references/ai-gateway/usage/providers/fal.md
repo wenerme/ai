@@ -1,6 +1,6 @@
 ---
 title: Fal AI
-description: Fal AI provides access to 600+ production-ready generative media models through a single, unified API. The service offers the world's largest collection of open image, video, voice, and audio generation models, all accessible with one line of code.
+description: Route Fal AI generative media requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Manage active sessions
-description: In the Cloudflare dashboard, you can view a list of active sessions associated with your email address.
+description: View and revoke active login sessions associated with your Cloudflare account to maintain account security.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

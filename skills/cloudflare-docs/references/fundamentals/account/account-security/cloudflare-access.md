@@ -1,6 +1,6 @@
 ---
 title: Allow Cloudflare access
-description: Occasionally, you may want to allow edit access to your Account Team. A typical use case might be migrating a complex or sensitive domain over to Cloudflare.
+description: Grant your Cloudflare Account Team temporary editing access to your account for migrations or sensitive configuration changes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Role scopes
-description: Scopes are one of three constituent parts of a policy that allows granting of access to users.
+description: Choose account, domain, or resource-level scopes to control where Cloudflare member permissions apply.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with AI Gateway.
+description: Step-by-step AI Gateway tutorials for deploying Workers, connecting providers, and building AI applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

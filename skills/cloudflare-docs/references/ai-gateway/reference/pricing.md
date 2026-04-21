@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: AI Gateway is available to use on all plans.
+description: Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

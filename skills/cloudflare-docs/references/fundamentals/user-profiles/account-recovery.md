@@ -1,6 +1,6 @@
 ---
 title: Account recovery
-description: If you do not have access to your 2FA account or backup codes and cannot currently generate a 2FA code, use a verified device that you have logged in from before to request a temporary access code.
+description: Regain access to your Cloudflare account when you have lost your 2FA device and backup codes.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

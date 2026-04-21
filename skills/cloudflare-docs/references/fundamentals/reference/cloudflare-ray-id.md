@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Ray ID
-description: A Cloudflare Ray ID is an identifier given to every request that goes through Cloudflare.
+description: Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

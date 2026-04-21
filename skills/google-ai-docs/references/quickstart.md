@@ -1,5 +1,3 @@
-# Gemini API quickstart
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -181,7 +179,7 @@ environment variable `GEMINI_API_KEY`.
 
     public class GenerateContentSimpleText {
       public static async Task main() {
-        // The client gets the API key from the environment variable `GEMINI_API_KEY`.
+        // The client gets the API key from the environment variable `GOOGLE_API_KEY`.
         var client = new Client();
         var response = await client.Models.GenerateContentAsync(
           model: "gemini-3-flash-preview", contents: "Explain how AI works in a few words"

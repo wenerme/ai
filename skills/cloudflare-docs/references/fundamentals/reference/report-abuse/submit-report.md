@@ -1,6 +1,6 @@
 ---
 title: View and submit reports
-description: Cloudflare helps you prevent online abuse and make your website more secure. If abuse is identified on your website, Cloudflare gives you a mechanism to present your grievances to the party best positioned to address them.
+description: Submit abuse reports to Cloudflare via the dashboard, public form, or API, and view reports filed against your account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

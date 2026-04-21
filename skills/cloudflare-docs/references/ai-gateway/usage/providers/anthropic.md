@@ -1,6 +1,6 @@
 ---
 title: Anthropic
-description: Anthropic helps build reliable, interpretable, and steerable AI systems.
+description: Route Anthropic API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -35,8 +35,8 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3078)
-* [ Unauthenticated Gateway ](#tab-panel-3079)
+* [ With Authenticated Gateway ](#tab-panel-5133)
+* [ Unauthenticated Gateway ](#tab-panel-5134)
 
 Terminal window
 
@@ -139,8 +139,8 @@ Explain Code
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3080)
-* [ Unauthenticated Gateway ](#tab-panel-3081)
+* [ With Authenticated Gateway ](#tab-panel-5135)
+* [ Unauthenticated Gateway ](#tab-panel-5136)
 
 ```
 

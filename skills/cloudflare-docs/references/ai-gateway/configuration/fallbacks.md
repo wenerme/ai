@@ -1,6 +1,6 @@
 ---
 title: Fallbacks
-description: Specify model or provider fallbacks with your Universal endpoint to handle request failures and ensure reliability.
+description: Specify model or provider fallbacks in AI Gateway to handle request failures and ensure reliability.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

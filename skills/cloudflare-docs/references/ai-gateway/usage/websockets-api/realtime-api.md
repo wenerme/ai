@@ -1,6 +1,6 @@
 ---
 title: Realtime WebSockets API
-description: Some AI providers support real-time, low-latency interactions over WebSockets. AI Gateway allows seamless integration with these APIs, supporting multimodal interactions such as text, audio, and video.
+description: Connect to AI providers that support real-time WebSocket interactions through AI Gateway.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

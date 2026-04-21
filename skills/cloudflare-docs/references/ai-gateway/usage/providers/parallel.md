@@ -1,6 +1,6 @@
 ---
 title: Parallel
-description: Parallel is a web API purpose-built for AIs, providing production-ready outputs with minimal hallucination and evidence-based results.
+description: Route Parallel API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

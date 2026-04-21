@@ -1,6 +1,6 @@
 ---
 title: Test speed
-description: Cloudflare offers several tools to test the speed of your website, as well as the speed of your Internet connection.
+description: Test your website speed and Internet connection using Cloudflare dashboard tools and third-party services.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

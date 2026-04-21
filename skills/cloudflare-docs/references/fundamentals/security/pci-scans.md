@@ -1,6 +1,6 @@
 ---
 title: Scan for PCI compliance
-description: PCI scanners are tools used to identify security weaknesses. When a business undergoes a compliance audit, PCI scan results are used for compliance verification.
+description: Run PCI compliance scans against your origin server or Cloudflare proxy and interpret the results.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

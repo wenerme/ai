@@ -1,6 +1,6 @@
 ---
 title: Set up
-description: This guide covers how to create an organization, assign accounts, and invite members.
+description: Create a Cloudflare Organization, assign accounts, and invite members to manage resources centrally.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

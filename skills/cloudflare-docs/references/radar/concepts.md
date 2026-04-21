@@ -1,5 +1,6 @@
 ---
 title: Concepts
+description: Understand key Cloudflare Radar concepts such as aggregation intervals, bot classes, confidence levels, and normalization methods.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

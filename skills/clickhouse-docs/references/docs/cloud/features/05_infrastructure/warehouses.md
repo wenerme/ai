@@ -145,6 +145,8 @@ Note that read-only services don't execute background merges, thus they don't sp
 
 ### Helpful Callouts {#callouts}
 
+- **ClickHouse Versions**: The [upgrade schedule](/manage/updates) is dictated by the primary service's settings. Secondary services cannot have a release schedule independent of the primary service.
+
 - **`CREATE`/`RENAME`/`DROP DATABASE` queries could be blocked by idled/stopped services by default.** If these queries are executed when the service is idled or stopped, these queries can hang. To bypass this, you  can run database management queries with [`settings distributed_ddl_task_timeout=0`](/operations/settings/settings#distributed_ddl_task_timeout) at the session or per query level.
 
 For example:

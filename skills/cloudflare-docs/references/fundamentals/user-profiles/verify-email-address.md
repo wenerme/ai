@@ -1,6 +1,6 @@
 ---
 title: Verify email address
-description: For security reasons, Cloudflare attempts to verify the email address associated with your account. You cannot perform certain tasks within the Cloudflare dashboard -- for example, adding a new member, changing your email address or updating your communication preferences -- without verifying your email.
+description: Confirm the email address on your Cloudflare account to unlock dashboard features like adding members and updating preferences.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

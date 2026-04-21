@@ -1,6 +1,6 @@
 ---
 title: Domains
-description: A domain or domain name (also known as a zone) is the location of a website or application, or what an end user types into their browser to get to your website (example.com).
+description: Add, configure, and manage your domains (zones) on Cloudflare, including DNS setup, subdomains, and SSL certificates.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

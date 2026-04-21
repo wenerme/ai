@@ -1,6 +1,6 @@
 ---
 title: Log in to Cloudflare
-description: Go to the Cloudflare dashboard and choose your sign-in option.
+description: Sign in to the Cloudflare dashboard using email and password, SSO, or social login with Apple, Google, or GitHub.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

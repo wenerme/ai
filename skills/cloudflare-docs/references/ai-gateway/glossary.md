@@ -1,6 +1,6 @@
 ---
 title: Header Glossary
-description: AI Gateway supports a variety of headers to help you configure, customize, and manage your API requests. This page provides a complete list of all supported headers, along with a short description
+description: Reference all supported AI Gateway headers for configuring, customizing, and managing API requests.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

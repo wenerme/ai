@@ -122,6 +122,17 @@ npx wrangler pages project list
 
 ```
 
+To get the output as JSON for programmatic use or scripting, use the `--json` flag:
+
+Terminal window
+
+```
+
+npx wrangler pages project list --json
+
+
+```
+
 If you would like to use Wrangler to obtain a list of all unique preview URLs for a particular project, use [pages deployment list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list):
 
 Terminal window

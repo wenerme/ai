@@ -1,6 +1,6 @@
 ---
 title: Perplexity
-description: Perplexity is an AI powered answer engine.
+description: Route Perplexity API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

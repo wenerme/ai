@@ -1,6 +1,6 @@
 ---
 title: Investigate
-description: Explore the different types of data available in Cloudflare Radar, from NetFlows (what feeds the Internet Traffic Change chart in Radar) to HTTP requests and DNS queries.
+description: Explore Cloudflare Radar data sources including NetFlows, HTTP requests, DNS queries, and attack trends.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

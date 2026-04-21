@@ -31,9 +31,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"e73d58bf8f45bbf224137ef599488ba23dd7a5545c49513e11bb3155572357ff\"",
-    "size": 239010,
-    "updatedAt": "2026-04-18T10:14:05.366Z"
+    "etag": "W/\"df7e6f53f27745340fc15bb2699de569ba842509f5a37bebe134eba5b61ec760\"",
+    "size": 241939,
+    "updatedAt": "2026-04-21T00:18:38.095Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -211,15 +211,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Thu, 16 Apr 2026 21:19:59 GMT",
-    "size": 143827,
-    "updatedAt": "2026-04-17T00:17:49.609Z"
+    "lastModified": "Mon, 20 Apr 2026 22:28:52 GMT",
+    "size": 144789,
+    "updatedAt": "2026-04-21T00:18:20.324Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Thu, 16 Apr 2026 21:20:42 GMT",
-    "size": 48070,
-    "updatedAt": "2026-04-17T00:17:49.943Z"
+    "lastModified": "Mon, 20 Apr 2026 22:28:51 GMT",
+    "size": 49002,
+    "updatedAt": "2026-04-21T00:18:20.676Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -229,9 +229,9 @@
   },
   "interactive-mode.md": {
     "url": "https://code.claude.com/docs/en/interactive-mode",
-    "lastModified": "Sat, 18 Apr 2026 15:35:35 GMT",
-    "size": 28305,
-    "updatedAt": "2026-04-19T00:15:06.057Z"
+    "lastModified": "Mon, 20 Apr 2026 22:29:05 GMT",
+    "size": 28683,
+    "updatedAt": "2026-04-21T00:18:21.425Z"
   },
   "jetbrains.md": {
     "url": "https://code.claude.com/docs/en/jetbrains",
@@ -397,9 +397,9 @@
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
-    "lastModified": "Fri, 17 Apr 2026 21:51:47 GMT",
-    "size": 19626,
-    "updatedAt": "2026-04-18T00:16:05.828Z"
+    "lastModified": "Mon, 20 Apr 2026 22:28:38 GMT",
+    "size": 19431,
+    "updatedAt": "2026-04-21T00:18:31.499Z"
   },
   "slack.md": {
     "url": "https://code.claude.com/docs/en/slack",
@@ -421,9 +421,9 @@
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
-    "lastModified": "Thu, 16 Apr 2026 21:20:26 GMT",
-    "size": 5837,
-    "updatedAt": "2026-04-17T00:18:01.748Z"
+    "lastModified": "Mon, 20 Apr 2026 22:31:08 GMT",
+    "size": 10558,
+    "updatedAt": "2026-04-21T00:18:33.280Z"
   },
   "third-party-integrations.md": {
     "url": "https://code.claude.com/docs/en/third-party-integrations",

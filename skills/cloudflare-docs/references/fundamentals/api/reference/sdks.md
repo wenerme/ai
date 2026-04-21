@@ -1,6 +1,6 @@
 ---
 title: SDKs
-description: Cloudflare offers language software development kits (SDKs) as well as curl examples to demonstrate how to use the Cloudflare API. The SDK libraries allow you to interact with the Cloudflare API in language-specific syntax and more easily integrate with your existing applications.
+description: Use Cloudflare API SDKs for Go, TypeScript, and Python to integrate Cloudflare services into your applications.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Guardrails
-description: Guardrails help you deploy AI applications safely by intercepting and evaluating both user prompts and model responses for harmful content. Acting as a proxy between your application and model providers (such as OpenAI, Anthropic, DeepSeek, and others), AI Gateway's Guardrails ensure a consistent and secure experience across your entire AI ecosystem.
+description: Evaluate AI Gateway prompts and responses for harmful content and enforce safety policies across providers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

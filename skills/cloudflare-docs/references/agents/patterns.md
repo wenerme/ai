@@ -1,6 +1,6 @@
 ---
 title: Patterns
-description: This page lists and defines common patterns for implementing AI agents, based on Anthropic's patterns for building effective agents.
+description: Implement common AI agent patterns like prompt chaining, routing, parallelization, and orchestrator-workers on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

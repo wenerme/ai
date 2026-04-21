@@ -1,6 +1,6 @@
 ---
 title: Workers binding
-description: Workers provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a Workers binding to search and chat with your AI Search instances from a Cloudflare Worker.
+description: Search and chat with AI Search instances from a Cloudflare Worker using the Workers binding.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -33,8 +33,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5122)
-* [  wrangler.toml ](#tab-panel-5123)
+* [  wrangler.jsonc ](#tab-panel-5163)
+* [  wrangler.toml ](#tab-panel-5164)
 
 JSONC
 
@@ -91,8 +91,8 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-5124)
-* [  wrangler.toml ](#tab-panel-5125)
+* [  wrangler.jsonc ](#tab-panel-5165)
+* [  wrangler.toml ](#tab-panel-5166)
 
 JSONC
 

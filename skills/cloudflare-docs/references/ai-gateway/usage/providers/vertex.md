@@ -1,6 +1,6 @@
 ---
 title: Google Vertex AI
-description: Google Vertex AI enables developers to easily build and deploy enterprise ready generative AI experiences.
+description: Route Google Vertex AI requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

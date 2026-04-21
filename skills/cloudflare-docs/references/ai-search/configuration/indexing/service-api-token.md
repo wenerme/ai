@@ -1,6 +1,6 @@
 ---
 title: Service API token
-description: A service API token grants AI Search permission to access R2 buckets in your account. This token is only required if you connect an R2 bucket as a data source. If you use a website or upload files directly through the Items API, you do not need a service API token.
+description: Create a service API token to grant AI Search read access to R2 buckets for indexing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Accounts
-description: If you need help setting up a new Cloudflare account, refer to the following resources:
+description: Create and manage your Cloudflare account, including security settings, member roles, and account identifiers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

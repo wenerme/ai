@@ -1,6 +1,6 @@
 ---
 title: Logging
-description: Logging is a fundamental building block for application development. Logs provide insights during the early stages of development and are often critical to understanding issues occurring in production.
+description: Store and inspect AI Gateway request logs including prompts, responses, tokens, costs, and DLP actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

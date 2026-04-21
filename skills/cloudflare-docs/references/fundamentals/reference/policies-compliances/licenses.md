@@ -1,6 +1,6 @@
 ---
 title: Licenses
-description: All documentation in the Cloudflare Workers documentation website, including reference documentation and tutorials, are licensed under the CC-BY-SA 4.0 license. Any contributions to the GitHub repository for this project will be licensed under CC-BY-SA 4.0: thanks for your contributions!
+description: Review the open-source licenses that apply to Cloudflare documentation content and code contributions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

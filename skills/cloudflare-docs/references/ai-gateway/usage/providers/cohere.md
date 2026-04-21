@@ -1,6 +1,6 @@
 ---
 title: Cohere
-description: Cohere build AI models designed to solve real-world business challenges.
+description: Route Cohere API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

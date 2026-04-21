@@ -1,6 +1,6 @@
 ---
 title: Path filtering
-description: Path filtering allows you to control which files or URLs are indexed by defining include and exclude patterns. Use this to limit indexing to specific content or to skip files you do not want searchable.
+description: Control which files or URLs AI Search indexes by defining include and exclude path patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

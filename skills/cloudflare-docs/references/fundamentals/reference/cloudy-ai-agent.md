@@ -1,6 +1,6 @@
 ---
 title: Cloudy AI agent (beta)
-description: Cloudy is Cloudflare's first version of an AI agent, with assistant-like functionality designed to help users understand and improve their Cloudflare configurations in multiple areas of the product suite.
+description: Cloudy is Cloudflare's AI agent that helps you understand and optimize your Cloudflare configurations across multiple products.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

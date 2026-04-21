@@ -1,6 +1,6 @@
 ---
 title: Syncing
-description: AI Search automatically indexes your content for search. How indexing works depends on your data source.
+description: Understand how AI Search automatically syncs and indexes content from connected data sources.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Domains ranking
-description: Cloudflare regularly generates a domain ranking based on DNS queries to 1.1.1.1,  Cloudflare's public DNS resolver.  Refer to the blog post for a deep dive. In short, Cloudflare generates two types of listings:
+description: Retrieve Cloudflare Radar domain rankings based on 1.1.1.1 DNS queries, including ordered top 100 lists and bucket datasets up to one million domains.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

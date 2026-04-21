@@ -1,6 +1,6 @@
 ---
 title: Metadata filter (legacy)
-description: This page documents the filter format used by the legacy AutoRAG REST API. For the new AI Search REST API filter syntax, refer to Metadata filtering.
+description: Reference for the legacy AutoRAG metadata filter format used with the previous REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

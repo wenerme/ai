@@ -1,6 +1,6 @@
 ---
 title: Manage members
-description: When you create an organization, you become an Organization Super Administrator. This role provides implicit access to all accounts in your organization and allows you to manage memberships at the organization level.
+description: Invite and manage members within a Cloudflare Organization, including assigning Super Administrator access.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

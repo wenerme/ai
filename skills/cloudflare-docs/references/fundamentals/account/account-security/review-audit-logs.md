@@ -1,6 +1,6 @@
 ---
 title: Review audit logs - v1
-description: Audit logs summarize the history of changes made within your Cloudflare account. Audit logs include account level actions like login, as well as zone configuration changes.
+description: Review Cloudflare Audit Logs v1 to track account activity through the dashboard or API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

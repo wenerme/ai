@@ -1,6 +1,6 @@
 ---
 title: Delivering Videos with Cloudflare
-description: Cloudflare launched in 2010 believing everyone deserves a secure, fast, reliable web presence. We did not think you should have to pay more when you came under cyber attack, so we offered free and fixed-rate pricing for websites. That worked because most websites do not consume much bandwidth, and so we could provide our services in an affordable way to everyone. From the beginning, we prohibited streaming video content using our bandwidth. While you could embed a video from another provider, we limited your ability to use our services to deliver video bits from our network to your visitors. This restriction exists because every second of a typical video requires as much bandwidth as loading a full web page.
+description: Understand Cloudflare's video delivery policies, resolve Terms of Service redirects, and choose the right paid product for streaming video.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

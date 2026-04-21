@@ -1,6 +1,6 @@
 ---
 title: User profiles
-description: Each user has a profile that contains several settings, such as Communication preferences and Language preferences.
+description: Manage your Cloudflare user profile, including login, 2FA, email, password, and account settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

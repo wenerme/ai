@@ -1,6 +1,6 @@
 ---
 title: Testing your Agents
-description: Because Agents run on Cloudflare Workers and Durable Objects, they can be tested using the same tools and techniques as Workers and Durable Objects.
+description: Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

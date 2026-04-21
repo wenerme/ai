@@ -18,6 +18,12 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/workers-ai/changelog/index.xml)
 
+## 2026-04-20
+
+**Moonshot AI Kimi K2.6 now available on Workers AI**
+* [@cf/moonshotai/kimi-k2.6](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/) now available on Workers AI. The latest frontier-scale model from Moonshot AI with improved reasoning, coding, and agentic capabilities. Read [changelog](https://developers.cloudflare.com/changelog/post/2026-04-20-kimi-k2-6-workers-ai/) to get started.
+* K2.6 uses the `chat_template_kwargs.thinking` parameter to control reasoning (instead of `chat_template_kwargs.enable_thinking`) and returns reasoning content in the `reasoning` field (instead of `reasoning_content`).
+
 ## 2026-04-04
 
 **Google Gemma 4 26B A4B now available on Workers AI**

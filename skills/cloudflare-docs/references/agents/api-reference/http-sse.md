@@ -1,6 +1,6 @@
 ---
 title: HTTP and Server-Sent Events
-description: Agents can handle HTTP requests and stream responses using Server-Sent Events (SSE). This page covers the onRequest method and SSE patterns.
+description: Handle HTTP requests and stream responses with Server-Sent Events (SSE) from Cloudflare Agents.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,8 +22,8 @@ Agents can handle HTTP requests and stream responses using Server-Sent Events (S
 
 Define the `onRequest` method to handle HTTP requests to your agent:
 
-* [  JavaScript ](#tab-panel-2416)
-* [  TypeScript ](#tab-panel-2417)
+* [  JavaScript ](#tab-panel-4210)
+* [  TypeScript ](#tab-panel-4211)
 
 JavaScript
 
@@ -149,8 +149,8 @@ SSE allows you to stream data to clients over a long-running HTTP connection. Th
 
 Create an SSE stream manually using `ReadableStream`:
 
-* [  JavaScript ](#tab-panel-2420)
-* [  TypeScript ](#tab-panel-2421)
+* [  JavaScript ](#tab-panel-4214)
+* [  TypeScript ](#tab-panel-4215)
 
 JavaScript
 
@@ -302,8 +302,8 @@ data: {"count": 42}\n\n
 
 The [AI SDK ↗](https://sdk.vercel.ai/) provides built-in SSE streaming:
 
-* [  JavaScript ](#tab-panel-2414)
-* [  TypeScript ](#tab-panel-2415)
+* [  JavaScript ](#tab-panel-4208)
+* [  TypeScript ](#tab-panel-4209)
 
 JavaScript
 
@@ -402,8 +402,8 @@ SSE connections can be long-lived. Handle client disconnects gracefully:
 * **Use agent routing** — Clients can [reconnect to the same agent instance](https://developers.cloudflare.com/agents/api-reference/routing/) without session stores
 * **No timeout limits** — Cloudflare Workers have no effective limit on SSE response duration
 
-* [  JavaScript ](#tab-panel-2418)
-* [  TypeScript ](#tab-panel-2419)
+* [  JavaScript ](#tab-panel-4212)
+* [  TypeScript ](#tab-panel-4213)
 
 JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: Protocol messages
-description: When a WebSocket client connects to an Agent, the framework automatically sends several JSON text frames — identity, state, and MCP server lists. You can suppress these per-connection protocol messages for clients that cannot handle them.
+description: Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -42,8 +42,8 @@ For these connections, you can suppress protocol messages while keeping everythi
 
 Override `shouldSendProtocolMessages` to control which connections receive protocol messages. Return `false` to suppress them.
 
-* [  JavaScript ](#tab-panel-2518)
-* [  TypeScript ](#tab-panel-2519)
+* [  JavaScript ](#tab-panel-4314)
+* [  TypeScript ](#tab-panel-4315)
 
 JavaScript
 
@@ -107,8 +107,8 @@ This hook runs during `onConnect`, before any messages are sent. When it returns
 
 You can also check the WebSocket subprotocol header, which is the standard way to negotiate protocols over WebSocket:
 
-* [  JavaScript ](#tab-panel-2520)
-* [  TypeScript ](#tab-panel-2521)
+* [  JavaScript ](#tab-panel-4316)
+* [  TypeScript ](#tab-panel-4317)
 
 JavaScript
 
@@ -164,8 +164,8 @@ Explain Code
 
 Use `isConnectionProtocolEnabled` to check whether a connection has protocol messages enabled:
 
-* [  JavaScript ](#tab-panel-2522)
-* [  TypeScript ](#tab-panel-2523)
+* [  JavaScript ](#tab-panel-4318)
+* [  TypeScript ](#tab-panel-4319)
 
 JavaScript
 
@@ -250,8 +250,8 @@ The following table shows what still works when protocol messages are suppressed
 
 A connection can be both readonly and protocol-suppressed. This is useful for binary devices that should observe but not modify state:
 
-* [  JavaScript ](#tab-panel-2524)
-* [  TypeScript ](#tab-panel-2525)
+* [  JavaScript ](#tab-panel-4320)
+* [  TypeScript ](#tab-panel-4321)
 
 JavaScript
 

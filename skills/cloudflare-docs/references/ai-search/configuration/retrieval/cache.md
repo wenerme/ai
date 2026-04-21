@@ -1,6 +1,6 @@
 ---
 title: Similarity cache
-description: Similarity-based caching in AI Search lets you serve responses from Cloudflare's cache for queries that are similar to previous requests, rather than creating new, unique responses for every request. This speeds up response times and cuts costs by reusing answers for questions that are close in meaning.
+description: Speed up AI Search responses by caching and reusing answers for semantically similar queries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

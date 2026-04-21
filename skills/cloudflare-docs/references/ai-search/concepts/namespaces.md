@@ -1,6 +1,6 @@
 ---
 title: Namespaces
-description: Every AI Search instance belongs to a namespace. A namespace is a logical grouping of instances within your account.
+description: Group AI Search instances into namespaces and manage them dynamically from a Workers binding.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -31,8 +31,8 @@ The namespace binding requires the following minimum package versions for TypeSc
 
 When you add an `ai_search_namespaces` binding to your Wrangler configuration, you specify which namespace the binding has access to. The binding grants full access to all instances within that namespace. You can get, list, create, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5126)
-* [  wrangler.toml ](#tab-panel-5127)
+* [  wrangler.jsonc ](#tab-panel-5167)
+* [  wrangler.toml ](#tab-panel-5168)
 
 JSONC
 
@@ -97,8 +97,8 @@ A `default` namespace is automatically created for every account. If you do not 
 
 You can also bind directly to specific instances in the default namespace using the `ai_search` binding. This binds each entry to a single pre-existing instance without needing to call `get()`.
 
-* [  wrangler.jsonc ](#tab-panel-5128)
-* [  wrangler.toml ](#tab-panel-5129)
+* [  wrangler.jsonc ](#tab-panel-5169)
+* [  wrangler.toml ](#tab-panel-5170)
 
 JSONC
 
@@ -161,8 +161,8 @@ The `ai_search` binding provides the same instance methods (`search()`, `chatCom
 
 You can declare multiple namespace bindings in the same Worker. Each binding maps to a different namespace and provides isolated access to its instances.
 
-* [  wrangler.jsonc ](#tab-panel-5130)
-* [  wrangler.toml ](#tab-panel-5131)
+* [  wrangler.jsonc ](#tab-panel-5171)
+* [  wrangler.toml ](#tab-panel-5172)
 
 JSONC
 

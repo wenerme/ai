@@ -1,6 +1,6 @@
 ---
 title: Agent class internals
-description: The core of the agents library is the Agent class. You extend it, override a few methods, and get state management, WebSockets, scheduling, RPC, and more for free. This page explains how Agent is built, layer by layer, so you understand what is happening under the hood.
+description: Explore how the Agent class extends Durable Objects to provide state, WebSockets, scheduling, and RPC.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

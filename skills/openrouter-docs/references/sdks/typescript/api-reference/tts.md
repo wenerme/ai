@@ -23,7 +23,7 @@ Synthesizes audio from the input text
 
 ### Example Usage
 
-{/* UsageSnippet language="typescript" operationID="createTts" method="post" path="/tts" */}
+{/* UsageSnippet language="typescript" operationID="createAudioSpeech" method="post" path="/audio/speech" */}
 
 ```typescript
 import { OpenRouter } from "@openrouter/sdk";
@@ -37,9 +37,10 @@ const openRouter = new OpenRouter({
 
 async function run() {
   const result = await openRouter.tts.createSpeech({
-    requestBody: {
+    speechRequest: {
       input: "Hello world",
       model: "elevenlabs/eleven-turbo-v2",
+      speed: 1,
       voice: "alloy",
     },
   });
@@ -69,9 +70,10 @@ const openRouter = new OpenRouterCore({
 
 async function run() {
   const res = await ttsCreateSpeech(openRouter, {
-    requestBody: {
+    speechRequest: {
       input: "Hello world",
       model: "elevenlabs/eleven-turbo-v2",
+      speed: 1,
       voice: "alloy",
     },
   });
@@ -88,12 +90,12 @@ run();
 
 ### Parameters
 
-| Parameter              | Type                                                                                           | Required             | Description                                                                                                                                                                    |
-| ---------------------- | ---------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`              | [operations.CreateTtsRequest](/docs/sdks/typescript/api-reference/operations/createttsrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
-| `options`              | RequestOptions                                                                                 | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)        | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`      | [RetryConfig](/docs/sdks/typescript/api-reference/lib/retryconfig)                             | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+| Parameter              | Type                                                                                                           | Required             | Description                                                                                                                                                                    |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`              | [operations.CreateAudioSpeechRequest](/docs/sdks/typescript/api-reference/operations/createaudiospeechrequest) | :heavy\_check\_mark: | The request object to use for the request.                                                                                                                                     |
+| `options`              | RequestOptions                                                                                                 | :heavy\_minus\_sign: | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions` | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                        | :heavy\_minus\_sign: | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`      | [RetryConfig](/docs/sdks/typescript/api-reference/lib/retryconfig)                                             | :heavy\_minus\_sign: | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 

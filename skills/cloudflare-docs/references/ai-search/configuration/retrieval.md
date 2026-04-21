@@ -1,5 +1,6 @@
 ---
 title: Retrieval
+description: Configure AI Search retrieval settings, including reranking, caching, and result filtering.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

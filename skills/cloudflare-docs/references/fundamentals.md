@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Fundamentals
-description: Cloudflare is one of the world's largest connectivity cloud networks. Today, anyone with an Internet presence can have faster and more secure websites and applications thanks to Cloudflare. This includes bloggers, businesses, and even non-profits.
+description: Understand core Cloudflare concepts, set up your account, manage domains, and configure essential platform settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

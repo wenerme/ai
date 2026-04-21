@@ -1,6 +1,6 @@
 ---
 title: Get Origin CA keys
-description: Origin CA keys are often used as the value of header X-AUTH-USER-SERVICE-KEY when interacting with Origin CA certificates API. It is also used by Keyless SSL key server.
+description: Retrieve or change your Cloudflare Origin CA key used to authenticate Origin CA certificate API requests.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

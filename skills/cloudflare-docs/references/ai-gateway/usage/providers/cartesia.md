@@ -1,6 +1,6 @@
 ---
 title: Cartesia
-description: Cartesia provides advanced text-to-speech services with customizable voice models.
+description: Route Cartesia text-to-speech requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

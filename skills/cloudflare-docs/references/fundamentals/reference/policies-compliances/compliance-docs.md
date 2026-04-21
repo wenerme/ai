@@ -1,6 +1,6 @@
 ---
 title: Compliance documentation
-description: Super Administrators can access common compliance documentation, such as PCI, SOC 2, ISO, and more, through the Cloudflare dashboard.
+description: Access and download Cloudflare compliance documents such as PCI, SOC 2, and ISO certifications from the dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

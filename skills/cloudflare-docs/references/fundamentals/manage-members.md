@@ -1,6 +1,6 @@
 ---
 title: Members and permissions
-description: On any Cloudflare account, you can collaborate by adding members to your account and assigning them access via one or several policies.
+description: Add members to your Cloudflare account and assign roles, scopes, and policies to control their access.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

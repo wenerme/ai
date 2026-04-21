@@ -1,6 +1,6 @@
 ---
 title: Metadata
-description: Use metadata to filter documents before retrieval and provide context to guide AI responses. This page covers built-in metadata attributes, custom metadata schemas, and filter syntax.
+description: Use metadata attributes and custom schemas in AI Search to filter and contextualize search results.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

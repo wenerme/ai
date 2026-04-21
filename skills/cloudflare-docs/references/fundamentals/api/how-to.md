@@ -1,6 +1,6 @@
 ---
 title: How to
-description: Using the Cloudflare API requires authentication so that Cloudflare knows who is making requests and what permissions you have. Create an API token to grant access to the API to perform actions.
+description: Manage Cloudflare API tokens, make API calls, and control API access for your account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

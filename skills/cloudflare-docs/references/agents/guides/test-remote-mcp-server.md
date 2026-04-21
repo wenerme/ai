@@ -1,6 +1,6 @@
 ---
 title: Test a Remote MCP Server
-description: Remote, authorized connections are an evolving part of the Model Context Protocol (MCP) specification. Not all MCP clients support remote connections yet.
+description: Test your remote MCP server using the MCP Inspector and compatible MCP clients.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

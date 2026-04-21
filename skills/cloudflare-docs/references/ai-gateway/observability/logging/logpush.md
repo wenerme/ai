@@ -1,7 +1,6 @@
 ---
 title: Workers Logpush
-description: AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them.
-You can toggle Workers Logpush on and off in the Cloudflare dashboard settings. This product is available on the Workers Paid plan. For pricing information, refer to Pricing.
+description: Export encrypted AI Gateway logs to external storage using Workers Logpush.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -49,8 +48,8 @@ To configure Workers Logpush for AI Gateway, follow these steps:
 
 You need to generate a key pair to encrypt and decrypt the logs. This script will output your RSA privateKey and publicKey. Keep the private key secure, as it will be used to decrypt the logs. Below is a sample script to generate the keys using Node.js and OpenSSL.
 
-* [ JavaScript ](#tab-panel-3070)
-* [ OpenSSL ](#tab-panel-3071)
+* [ JavaScript ](#tab-panel-5125)
+* [ OpenSSL ](#tab-panel-5126)
 
 JavaScript
 
@@ -129,8 +128,8 @@ After configuring Workers Logpush, logs will be sent encrypted using the public 
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, you can use the following Node.js script or OpenSSL:
 
-* [ JavaScript ](#tab-panel-3072)
-* [ OpenSSL ](#tab-panel-3073)
+* [ JavaScript ](#tab-panel-5127)
+* [ OpenSSL ](#tab-panel-5128)
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, download the logs to a folder, in this case its named `my_log.log.gz`.
 

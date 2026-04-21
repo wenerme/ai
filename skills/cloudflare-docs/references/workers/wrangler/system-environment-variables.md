@@ -61,6 +61,8 @@ Wrangler supports the following environment variables:
    * The Client Secret of a [Cloudflare Access Service Token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/), used together with `CLOUDFLARE_ACCESS_CLIENT_ID` to authenticate with Access-protected domains in non-interactive environments.
 * `CLOUDFLARE_ENV` ` string ` optional  
    * The [environment](https://developers.cloudflare.com/workers/wrangler/environments/) to use for Wrangler commands. This allows you to select an environment without using the `--env` flag. For example, `CLOUDFLARE_ENV=production wrangler deploy` will deploy to the `production` environment. The `--env` command line argument takes precedence over this environment variable.
+* `NODE_ENV` ` string ` optional  
+   * Sets the value of `process.env.NODE_ENV` in your Worker code. Defaults to `"development"` for `wrangler dev` and `"production"` for `wrangler deploy` and `wrangler versions upload`. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node%5Fenv) for more information.
 * `WRANGLER_SEND_METRICS` ` string ` optional  
    * Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler can send anonymous usage data to Cloudflare for this project. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 * `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` ` string ` optional  
@@ -85,6 +87,10 @@ Wrangler supports the following environment variables:
    * Specifies a file path where Wrangler will write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) (newline-delimited JSON) format. Each line in the file is a separate JSON object containing information about Wrangler operations such as deployments, version uploads, and errors. This is useful for CI/CD pipelines and automation tools that need to programmatically access deployment information. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
 * `WRANGLER_OUTPUT_FILE_DIRECTORY` ` string ` optional  
    * Specifies a directory where Wrangler will create a randomly-named file (format: `wrangler-output-<timestamp>-<random>.json`) to write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) format. This is useful when you want to keep output files organized in a specific directory but do not need to control the exact filename. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
+* `WRANGLER_CACHE_DIR` ` string ` optional  
+   * Custom directory for Wrangler's cache files. When set, this overrides the default cache location (`node_modules/.cache/wrangler`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
+* `MINIFLARE_CACHE_DIR` ` string ` optional  
+   * Custom directory for Miniflare's `cf.json` cache file, used during local development with `wrangler dev`. When set, this overrides the default cache location (`node_modules/.mf`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
 
 ### Example output file
 

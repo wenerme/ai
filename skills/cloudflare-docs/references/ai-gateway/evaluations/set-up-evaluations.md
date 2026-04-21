@@ -1,6 +1,6 @@
 ---
 title: Set up Evaluations
-description: This guide walks you through the process of setting up an evaluation in AI Gateway. These steps are done in the Cloudflare dashboard.
+description: Create datasets, select evaluators, and run evaluations for your AI Gateway logs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

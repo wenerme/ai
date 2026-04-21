@@ -1,7 +1,6 @@
 ---
 title: Vercel AI SDK
-description: The Vercel AI SDK is a TypeScript library for building AI applications. The SDK supports many different AI providers, tools for streaming completions, and more.
-To use Cloudflare AI Gateway with Vercel AI SDK, you will need to use the ai-gateway-provider package.
+description: Route Vercel AI SDK requests through AI Gateway using the ai-gateway-provider package.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -910,8 +909,8 @@ Explain Code
 
 If you are already using the [workers-ai-provider ↗](https://www.npmjs.com/package/workers-ai-provider) package, you can route requests through AI Gateway to call third-party models without needing separate provider SDKs. Pass a `gateway` option with your gateway ID to `createWorkersAI`:
 
-* [  JavaScript ](#tab-panel-5083)
-* [  TypeScript ](#tab-panel-5084)
+* [  JavaScript ](#tab-panel-5115)
+* [  TypeScript ](#tab-panel-5116)
 
 JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: Google AI Studio
-description: Google AI Studio helps you build quickly with Google Gemini models.
+description: Route Google AI Studio and Gemini requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -39,8 +39,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 
 With API Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3082)
-* [ Unauthenticated Gateway ](#tab-panel-3083)
+* [ With Authenticated Gateway ](#tab-panel-5137)
+* [ Unauthenticated Gateway ](#tab-panel-5138)
 
 Terminal window
 
@@ -157,8 +157,8 @@ If you are using the `@google/genai` package, you can set your endpoint like thi
 
 With Key in Request
 
-* [ With Authenticated Gateway ](#tab-panel-3084)
-* [ Unauthenticated Gateway ](#tab-panel-3085)
+* [ With Authenticated Gateway ](#tab-panel-5139)
+* [ Unauthenticated Gateway ](#tab-panel-5140)
 
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Dynamic routing
-description: Dynamic routing enables you to create request routing flows through a visual interface or a JSON-based configuration. Instead of hard-coding a single model, with Dynamic Routing you compose a small flow that evaluates conditions, enforces quotas, and chooses models with fallbacks. You can iterate without touching application code—publish a new route version and you’re done. With dynamic routing, you can easily implement advanced use cases such as:
+description: Route AI Gateway requests based on conditions, quotas, and fallbacks using a visual interface or JSON configuration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

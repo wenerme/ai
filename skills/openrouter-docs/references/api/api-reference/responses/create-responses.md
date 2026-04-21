@@ -1423,6 +1423,33 @@ components:
       required:
         - id
       title: ContextCompressionPlugin
+    ParetoRouterPluginId:
+      type: string
+      enum:
+        - pareto-router
+      title: ParetoRouterPluginId
+    ParetoRouterPlugin:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: >-
+            Set to false to disable the pareto-router plugin for this request.
+            Defaults to true.
+        id:
+          $ref: '#/components/schemas/ParetoRouterPluginId'
+        min_coding_score:
+          type: number
+          format: double
+          description: >-
+            Minimum desired coding score between 0 and 1, where 1 is best.
+            Higher values select from stronger coding models (sourced from
+            Artificial Analysis coding percentiles). Maps internally to one of
+            three tiers (low, medium, high). Omit to use the router default
+            tier.
+      required:
+        - id
+      title: ParetoRouterPlugin
     ResponsesRequestPluginsItems:
       oneOf:
         - $ref: '#/components/schemas/AutoRouterPlugin'
@@ -1431,6 +1458,7 @@ components:
         - $ref: '#/components/schemas/FileParserPlugin'
         - $ref: '#/components/schemas/ResponseHealingPlugin'
         - $ref: '#/components/schemas/ContextCompressionPlugin'
+        - $ref: '#/components/schemas/ParetoRouterPlugin'
       title: ResponsesRequestPluginsItems
     StoredPromptTemplateVariables:
       oneOf:

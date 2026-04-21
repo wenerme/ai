@@ -1,6 +1,6 @@
 ---
 title: Content Security Policies (CSPs)
-description: A Content Security Policy (CSP) is an added layer of security that helps detect and mitigate certain types of attacks, including:
+description: Understand how Cloudflare interacts with Content Security Policies (CSPs) and which headers to update for specific Cloudflare features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

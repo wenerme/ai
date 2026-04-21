@@ -22,6 +22,11 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-04-17
+
+* Updated v8 to version 14.7.
+* Allow passing custom limits for dynamic workers.
+
 ## 2026-03-20
 
 * Updated v8 to version 14.6.

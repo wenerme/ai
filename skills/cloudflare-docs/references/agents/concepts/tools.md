@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: Tools enable AI systems to interact with external services and perform actions. They provide a structured way for agents and workflows to invoke APIs, manipulate data, and integrate with external systems. Tools form the bridge between AI decision-making capabilities and real-world actions.
+description: Define and use tools in Cloudflare Agents to interact with external APIs, process data, and perform actions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

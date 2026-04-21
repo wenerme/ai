@@ -1,6 +1,6 @@
 ---
 title: HTTP requests
-description: While in NetFlows we can inspect bytes and packets reaching Cloudflare's edge routers, in HTTP requests we are a layer above in the OSI model. HTTP requests examines complete HTTP requests from end users that reach websites served by Cloudflare's CDN.
+description: Analyze HTTP request data in Cloudflare Radar by device type, IP version, bot class, and top locations using timeseries, summary, and top endpoints.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

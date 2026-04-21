@@ -1,5 +1,6 @@
 ---
 title: API
+description: Interact with AI Search programmatically using Workers bindings, the REST API, or MCP.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

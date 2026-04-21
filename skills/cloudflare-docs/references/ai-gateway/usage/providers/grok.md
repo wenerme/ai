@@ -1,6 +1,6 @@
 ---
 title: xAI
-description: When making requests to Grok, replace https://api.x.ai/v1 in the URL you are currently using with https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok.
+description: Route xAI (Grok) API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

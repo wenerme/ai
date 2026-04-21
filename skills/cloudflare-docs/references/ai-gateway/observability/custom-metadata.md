@@ -1,6 +1,6 @@
 ---
 title: Custom metadata
-description: Custom metadata in AI Gateway allows you to tag requests with user IDs or other identifiers, enabling better tracking and analysis of your requests. Metadata values can be strings, numbers, or booleans, and will appear in your logs, making it easy to search and filter through your data.
+description: Tag AI Gateway requests with custom metadata such as user IDs to improve log filtering and analysis.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

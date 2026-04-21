@@ -1,6 +1,6 @@
 ---
 title: Improve SEO
-description: The goal of Search Engine Optimization (SEO) is to get your website to rank higher on various search engine providers (Google, Bing, etc.).
+description: Use Cloudflare features like caching, HTTPS, and Crawler Hints to improve your website's search engine rankings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

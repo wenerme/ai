@@ -1,6 +1,6 @@
 ---
 title: Using AI Models
-description: Agents can call AI models from any provider. Workers AI is built in and requires no API keys. You can also use OpenAI, Anthropic, Google Gemini, or any service that exposes an OpenAI-compatible API.
+description: Call AI models from Workers AI, OpenAI, Anthropic, Google Gemini, or any provider within Cloudflare Agents.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -34,8 +34,8 @@ Agents can call AI models on their own — autonomously — and can handle long-
 
 Modern reasoning models can take some time to both generate a response _and_ stream the response back to the client. Instead of buffering the entire response, you can stream it back over [WebSockets](https://developers.cloudflare.com/agents/api-reference/websockets/).
 
-* [  JavaScript ](#tab-panel-2820)
-* [  TypeScript ](#tab-panel-2821)
+* [  JavaScript ](#tab-panel-4762)
+* [  TypeScript ](#tab-panel-4763)
 
 src/index.js
 
@@ -196,8 +196,8 @@ You can use [any of the models available in Workers AI](https://developers.cloud
 
 Workers AI supports streaming responses by setting `stream: true`. Use streaming to avoid buffering and delaying responses, especially for larger models or reasoning models.
 
-* [  JavaScript ](#tab-panel-2814)
-* [  TypeScript ](#tab-panel-2815)
+* [  JavaScript ](#tab-panel-4756)
+* [  TypeScript ](#tab-panel-4757)
 
 src/index.js
 
@@ -290,8 +290,8 @@ Explain Code
 
 Your Wrangler configuration needs an `ai` binding:
 
-* [  wrangler.jsonc ](#tab-panel-2808)
-* [  wrangler.toml ](#tab-panel-2809)
+* [  wrangler.jsonc ](#tab-panel-4750)
+* [  wrangler.toml ](#tab-panel-4751)
 
 JSONC
 
@@ -325,8 +325,8 @@ binding = "AI"
 
 You can use [AI Gateway](https://developers.cloudflare.com/ai-gateway/) directly from an Agent by specifying a [gateway configuration](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) when calling the AI binding. Model routing lets you route requests across providers based on availability, rate limits, or cost budgets.
 
-* [  JavaScript ](#tab-panel-2818)
-* [  TypeScript ](#tab-panel-2819)
+* [  JavaScript ](#tab-panel-4760)
+* [  TypeScript ](#tab-panel-4761)
 
 src/index.js
 
@@ -435,8 +435,8 @@ Explain Code
 
 The `ai` binding in your Wrangler configuration is shared across both Workers AI and AI Gateway.
 
-* [  wrangler.jsonc ](#tab-panel-2810)
-* [  wrangler.toml ](#tab-panel-2811)
+* [  wrangler.jsonc ](#tab-panel-4752)
+* [  wrangler.toml ](#tab-panel-4753)
 
 JSONC
 
@@ -490,8 +490,8 @@ pnpm add ai workers-ai-provider
 bun add ai workers-ai-provider
 ```
 
-* [  JavaScript ](#tab-panel-2816)
-* [  TypeScript ](#tab-panel-2817)
+* [  JavaScript ](#tab-panel-4758)
+* [  TypeScript ](#tab-panel-4759)
 
 src/index.js
 
@@ -594,8 +594,8 @@ pnpm add ai @ai-sdk/openai
 bun add ai @ai-sdk/openai
 ```
 
-* [  JavaScript ](#tab-panel-2812)
-* [  TypeScript ](#tab-panel-2813)
+* [  JavaScript ](#tab-panel-4754)
+* [  TypeScript ](#tab-panel-4755)
 
 src/index.js
 
@@ -673,8 +673,8 @@ Agents can call models across any service that supports the OpenAI API. For exam
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/api-reference/websockets/) to stream responses back to a client.
 
-* [  JavaScript ](#tab-panel-2822)
-* [  TypeScript ](#tab-panel-2823)
+* [  JavaScript ](#tab-panel-4764)
+* [  TypeScript ](#tab-panel-4765)
 
 src/index.js
 

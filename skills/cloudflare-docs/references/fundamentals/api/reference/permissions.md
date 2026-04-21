@@ -1,6 +1,6 @@
 ---
 title: API token permissions
-description: Permissions are segmented into three categories based on resource:
+description: Review available Cloudflare API token permissions for user, account, and zone resources.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -30,8 +30,8 @@ To obtain an updated list of token permissions, including the permission ID and 
 
 The applicable scope of user permissions is `com.cloudflare.api.user`.
 
-* [ Dashboard ](#tab-panel-4599)
-* [ API ](#tab-panel-4600)
+* [ Dashboard ](#tab-panel-6933)
+* [ API ](#tab-panel-6934)
 
 | Name              | Description                                                                                                                   |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -55,8 +55,8 @@ The applicable scope of user permissions is `com.cloudflare.api.user`.
 
 The applicable scope of account permissions is `com.cloudflare.api.account`.
 
-* [ Dashboard ](#tab-panel-4601)
-* [ API ](#tab-panel-4602)
+* [ Dashboard ](#tab-panel-6935)
+* [ API ](#tab-panel-6936)
 
 | Name                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -144,8 +144,8 @@ The applicable scope of account permissions is `com.cloudflare.api.account`.
 | Cloudflare Images Edit                                       | Grants write access to [Cloudflare Images](https://developers.cloudflare.com/images/).                                                                                                                                                                                                                                                                                                                            |
 | Cloudflare One Connector: cloudflared Read                   | Grants read access to [cloudflared connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)                                                                                                                                                                                                                                                                           |
 | Cloudflare One Connector: cloudflared Edit                   | Grants write access to [cloudflared connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)                                                                                                                                                                                                                                                                          |
-| Cloudflare One Connector: WARP Read                          | Grants read access to [WARP Connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/)                                                                                                                                                                                                                                                       |
-| Cloudflare One Connector: WARP Edit                          | Grants write access to [WARP Connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/)                                                                                                                                                                                                                                                      |
+| Cloudflare One Connector: WARP Read                          | Grants read access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                                                                                                                                                                                                                                                                              |
+| Cloudflare One Connector: WARP Edit                          | Grants write access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                                                                                                                                                                                                                                                                             |
 | Cloudflare One Connectors Read                               | Grants read access to Cloudflare One connectors                                                                                                                                                                                                                                                                                                                                                                   |
 | Cloudflare One Connectors Edit                               | Grants write access to Cloudflare One connectors                                                                                                                                                                                                                                                                                                                                                                  |
 | Cloudflare One Networks Read                                 | Grants read access to Cloudflare One routes and virtual networks                                                                                                                                                                                                                                                                                                                                                  |
@@ -320,8 +320,8 @@ The applicable scope of account permissions is `com.cloudflare.api.account`.
 | Images Write                                                 | Grants write access to [Cloudflare Images](https://developers.cloudflare.com/images/).                                                                                                                                                                                                                                                                                                                            |
 | Cloudflare One Connector: cloudflared Read                   | Grants read access to [cloudflared connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)                                                                                                                                                                                                                                                                           |
 | Cloudflare One Connector: cloudflared Write                  | Grants write access to [cloudflared connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)                                                                                                                                                                                                                                                                          |
-| Cloudflare One Connector: WARP Read                          | Grants read access to [WARP Connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/)                                                                                                                                                                                                                                                       |
-| Cloudflare One Connector: WARP Write                         | Grants write access to [WARP Connectors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/warp-connector/)                                                                                                                                                                                                                                                      |
+| Cloudflare One Connector: WARP Read                          | Grants read access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                                                                                                                                                                                                                                                                              |
+| Cloudflare One Connector: WARP Write                         | Grants write access to [Cloudflare Mesh nodes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                                                                                                                                                                                                                                                                             |
 | Cloudflare One Connectors Read                               | Grants read access to Cloudflare One connectors                                                                                                                                                                                                                                                                                                                                                                   |
 | Cloudflare One Connectors Write                              | Grants write access to Cloudflare One connectors                                                                                                                                                                                                                                                                                                                                                                  |
 | Cloudflare One Networks Read                                 | Grants read access to Cloudflare One routes and virtual networks                                                                                                                                                                                                                                                                                                                                                  |
@@ -414,8 +414,8 @@ The applicable scope of account permissions is `com.cloudflare.api.account`.
 
 The applicable scope of zone permissions is `com.cloudflare.api.account.zone`.
 
-* [ Dashboard ](#tab-panel-4603)
-* [ API ](#tab-panel-4604)
+* [ Dashboard ](#tab-panel-6937)
+* [ API ](#tab-panel-6938)
 
 | Name                               | Description                                                                                                                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |

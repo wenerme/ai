@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: You can customize how your AI Search instance indexes your data, retrieves results, and generates responses. Some settings can be updated after the instance is created, while others are fixed at creation time.
+description: Customize how your AI Search instance indexes data, retrieves results, and generates responses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

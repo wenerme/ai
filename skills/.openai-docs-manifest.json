@@ -9402,10 +9402,18 @@
   "codex-docs/memories.md": {
     "url": "https://developers.openai.com/codex/memories.md",
     "skill": "codex-docs",
-    "etag": "W/\"cd4483826e9d4b549184dac173f77bb4\"",
-    "lastModified": "Fri, 17 Apr 2026 00:29:23 GMT",
-    "size": 3432,
-    "updatedAt": "2026-04-17T00:29:23.836Z"
+    "etag": "W/\"b6f08d27b01946a5131a90794e850caa\"",
+    "lastModified": "Mon, 20 Apr 2026 19:20:23 GMT",
+    "size": 3581,
+    "updatedAt": "2026-04-21T00:29:11.216Z"
+  },
+  "codex-docs/memories/chronicle.md": {
+    "url": "https://developers.openai.com/codex/memories/chronicle.md",
+    "skill": "codex-docs",
+    "etag": "W/\"8036d3519ce89a85e60c9f07df40770f\"",
+    "lastModified": "Mon, 20 Apr 2026 19:20:14 GMT",
+    "size": 7644,
+    "updatedAt": "2026-04-21T00:29:11.443Z"
   },
   "codex-docs/models.md": {
     "url": "https://developers.openai.com/codex/models.md",

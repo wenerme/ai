@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: Use the AI Search REST API to manage instances and sync jobs over HTTP.
+description: Manage AI Search instances and sync jobs over HTTP using the Instances REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

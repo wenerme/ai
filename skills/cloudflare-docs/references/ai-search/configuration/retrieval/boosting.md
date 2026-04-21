@@ -1,6 +1,6 @@
 ---
 title: Relevance boosting
-description: Boosting lets you bias search results toward documents with specific metadata characteristics. For example, you can promote recent documents, surface higher-priority pages, or deprioritize drafts. Boosting re-ranks results without replacing semantic relevance.
+description: Bias AI Search results toward documents with specific metadata using relevance boosting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

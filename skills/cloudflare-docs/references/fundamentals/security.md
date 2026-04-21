@@ -1,5 +1,6 @@
 ---
 title: Security
+description: Protect your website from DDoS attacks, origin server threats, and other security risks with Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare AI Gateway
-description: Cloudflare's AI Gateway allows you to gain visibility and control over your AI apps. By connecting your apps to AI Gateway, you can gather insights on how people are using your application with analytics and logging and then control how your application scales with features such as caching, rate limiting, as well as request retries, model fallback, and more. Better yet - it only takes one line of code to get started.
+description: Observe and control your AI applications with analytics, caching, rate limiting, and model fallback through AI Gateway.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

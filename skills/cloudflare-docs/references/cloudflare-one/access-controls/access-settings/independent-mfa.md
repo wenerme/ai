@@ -22,6 +22,8 @@ Copy page
 
 Independent multi-factor authentication (MFA) allows you to enforce MFA requirements directly in Access without relying on your identity provider (IdP). Users authenticate with their IdP as usual, and Access prompts for an additional authentication method before granting access to the application.
 
+Because you can [configure MFA at the application and policy level](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you can enforce stricter authentication methods like hardware security keys on sensitive applications without requiring them across your entire organization. This allows you to add additional security where it matters most while avoiding MFA fatigue for your broader user population.
+
 ## Supported MFA methods
 
 | MFA method                | Description                                                                                                                                                                                |
@@ -34,8 +36,8 @@ Independent multi-factor authentication (MFA) allows you to enforce MFA requirem
 
 Before you can [enforce independent MFA on applications and policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), you must turn on independent MFA at the organization level.
 
-* [ Dashboard ](#tab-panel-5537)
-* [ API ](#tab-panel-5538)
+* [ Dashboard ](#tab-panel-5569)
+* [ API ](#tab-panel-5570)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, select the [MFA methods](#supported-mfa-methods) you want to allow in your organization.
@@ -84,7 +86,7 @@ Explain Code
 Set `allowed_authenticators` to an array containing one or more of:  
    * `totp` — Authenticator application (time-based one-time passwords).  
    * `biometrics` — Biometrics (Touch ID, Face ID, Windows Hello).  
-   * `security_key` — Security keys (YubiKeys)  
+   * `security_key` — Security keys (YubiKeys).  
 Set `session_duration` to a duration string (for example, `30m`, `1h`, `24h`). To require MFA on every access, use `0m`.
 
 After you turn on independent MFA, users can [enroll authenticators](#enroll-authenticators) through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
@@ -97,8 +99,8 @@ Turning off independent MFA removes MFA protection on all Access applications. B
 
 To turn off independent MFA for the organization:
 
-* [ Dashboard ](#tab-panel-5535)
-* [ API ](#tab-panel-5536)
+* [ Dashboard ](#tab-panel-5567)
+* [ API ](#tab-panel-5568)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Access settings**.
 2. Under **Allow multi-factor authentication (MFA)**, turn off **Apply global MFA settings by default**.
@@ -141,6 +143,8 @@ Explain Code
 
 Users enroll authenticators through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
 
+If a user already has at least one authenticator enrolled, Access requires them to [verify with an existing MFA method](#mfa-verification-for-authenticator-changes) before they can add a new authenticator.
+
 To enroll an authenticator:
 
 1. Go to your organization's App Launcher at `<your-team-name>.cloudflareaccess.com`.
@@ -148,7 +152,8 @@ To enroll an authenticator:
 3. Go to **Account** \> **MFA devices** \> **Add an MFA device**.  
 Note  
 Administrators can also share a direct enrollment link to help onboard users: `<your-team-name>.cloudflareaccess.com/AddMfaDevice`
-4. Select the authenticator type you want to enroll and follow the on-screen instructions.  
+4. If you already have an MFA device enrolled, complete the MFA verification prompt.
+5. Select the authenticator type you want to enroll and follow the on-screen instructions.  
 Authenticator application  
    1. Select **Authenticator application**.  
    2. Scan the QR code with your authenticator app (for example, Google Authenticator, Microsoft Authenticator, or Authy). Alternatively, you can manually enter the setup key into your authenticator app. Use SHA1 as the hash function and set the time-step size to 30 seconds.  
@@ -169,13 +174,26 @@ You can now use these authenticators to log in to your organization's applicatio
 
 ### Delete an authenticator
 
-Users can delete their own authenticators from the App Launcher:
+Users can delete their own authenticators from the App Launcher. If the user has at least one authenticator enrolled, Access requires them to [verify with an existing MFA method](#mfa-verification-for-authenticator-changes) before they can remove a device.
 
 1. Go to your organization's App Launcher at `<your-team-name>.cloudflareaccess.com`.
 2. Go to **Account** \> **MFA devices**.
 3. Select the 3-dot menu next to the MFA device, then select **Remove MFA device**.
+4. If you have other MFA devices enrolled, complete the MFA verification prompt.
 
 Administrators can also [delete authenticators on behalf of users](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#delete-a-user-authenticator).
+
+### MFA verification for authenticator changes
+
+When a user has at least one authenticator enrolled, Access requires MFA verification before the user can add or remove an authenticator from the App Launcher. This verification step is separate from the IdP login and uses the user's existing independent MFA device.
+
+After the user completes MFA verification, they have 10 minutes to add or remove authenticators without additional prompts. This window is tied to the current device. After 10 minutes, or if the user switches to a different device, Access requires MFA verification again.
+
+This prevents an attacker with compromised IdP credentials from modifying a user's enrolled authenticators. Even if an attacker gains access to the user's IdP session, they cannot bypass the independent MFA verification step without also possessing the user's enrolled authenticator. If a user loses their only authenticator and cannot verify, an administrator can delete it to allow re-enrollment. Refer to [Manage user authenticators](#manage-user-authenticators).
+
+Note
+
+MFA verification is not required when a user enrolls their first authenticator, since they do not yet have an MFA device to verify with.
 
 ## Manage user authenticators
 
@@ -193,8 +211,8 @@ To view a user's enrolled authenticators:
 
 If a user is locked out or you need to revoke an authenticator for security reasons, you can delete it from the dashboard or API.
 
-* [ Dashboard ](#tab-panel-5533)
-* [ API ](#tab-panel-5534)
+* [ Dashboard ](#tab-panel-5565)
+* [ API ](#tab-panel-5566)
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
 2. Select the user whose authenticator you want to delete.

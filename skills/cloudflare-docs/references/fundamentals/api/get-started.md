@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Using the Cloudflare API requires authentication so that Cloudflare knows who is making requests and what permissions you have. Create an API token to grant access to the API to perform actions.
+description: Set up authentication for the Cloudflare API by creating API tokens, retrieving API keys, or configuring Origin CA keys.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Supported models
-description: The following models are supported for unified billing when using the AI Gateway REST API, including the OpenAI-compatible endpoint and provider-native endpoints.
+description: Review the full list of AI models supported for unified billing through AI Gateway.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

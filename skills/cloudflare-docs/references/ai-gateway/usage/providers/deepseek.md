@@ -1,6 +1,6 @@
 ---
 title: DeepSeek
-description: DeepSeek helps you build quickly with DeepSeek's advanced AI models.
+description: Route DeepSeek API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

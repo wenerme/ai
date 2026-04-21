@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Ensure the token has been verified by running the following curl command and confirming that the response returns &#34;status&#34;: &#34;active&#34;.
+description: Resolve common Cloudflare API token issues including verification failures, incorrect permissions, and syntax errors.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

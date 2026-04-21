@@ -601,8 +601,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 144498,
-    "updatedAt": "2026-04-17T00:30:43.184Z"
+    "size": 145464,
+    "updatedAt": "2026-04-21T00:30:32.946Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -619,10 +619,15 @@
     "size": 11980,
     "updatedAt": "2026-04-10T00:26:00.244Z"
   },
+  "api/api-reference/tts/create-audio-speech.md": {
+    "url": "https://openrouter.ai/docs/api/api-reference/tts/create-audio-speech.md",
+    "size": 27640,
+    "updatedAt": "2026-04-21T00:30:38.883Z"
+  },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 83999,
-    "updatedAt": "2026-04-16T00:30:45.122Z"
+    "size": 84965,
+    "updatedAt": "2026-04-21T00:30:40.181Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -756,8 +761,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 120984,
-    "updatedAt": "2026-04-17T00:31:21.204Z"
+    "size": 121950,
+    "updatedAt": "2026-04-21T00:31:16.448Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",
@@ -788,11 +793,6 @@
     "url": "https://openrouter.ai/docs/api/api-reference/rerank/create-rerank.md",
     "size": 31405,
     "updatedAt": "2026-04-16T00:31:25.466Z"
-  },
-  "api/api-reference/tts/create-tts.md": {
-    "url": "https://openrouter.ai/docs/api/api-reference/tts/create-tts.md",
-    "size": 27928,
-    "updatedAt": "2026-04-19T00:27:25.064Z"
   },
   "api/api-reference/video-generation/create-videos.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/create-videos.md",
@@ -1001,8 +1001,8 @@
   },
   "sdks/typescript/api-reference/tts.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/tts.md",
-    "size": 5177,
-    "updatedAt": "2026-04-19T00:27:44.452Z"
+    "size": 5326,
+    "updatedAt": "2026-04-21T00:31:53.120Z"
   },
   "sdks/typescript/api-reference/videogeneration.md": {
     "url": "https://openrouter.ai/docs/sdks/typescript/api-reference/videogeneration.md",
@@ -1091,13 +1091,13 @@
   },
   "sdks/python/api-reference/tts.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/tts.md",
-    "size": 6089,
-    "updatedAt": "2026-04-19T00:27:52.350Z"
+    "size": 6283,
+    "updatedAt": "2026-04-21T00:32:02.303Z"
   },
   "sdks/python/api-reference/videogeneration.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/videogeneration.md",
-    "size": 18169,
-    "updatedAt": "2026-04-12T00:26:39.257Z"
+    "size": 18339,
+    "updatedAt": "2026-04-21T00:32:02.768Z"
   },
   "sdks/python/api-reference/workspaces.md": {
     "url": "https://openrouter.ai/docs/sdks/python/api-reference/workspaces.md",
@@ -1181,8 +1181,8 @@
   },
   "sdks/go/api-reference/tts.md": {
     "url": "https://openrouter.ai/docs/sdks/go/api-reference/tts.md",
-    "size": 3289,
-    "updatedAt": "2026-04-19T00:28:00.028Z"
+    "size": 3302,
+    "updatedAt": "2026-04-21T00:32:11.523Z"
   },
   "sdks/go/api-reference/videogeneration.md": {
     "url": "https://openrouter.ai/docs/sdks/go/api-reference/videogeneration.md",

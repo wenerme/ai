@@ -1,5 +1,6 @@
 ---
 title: Migration guides
+description: Find guides for migrating between versions of Cloudflare features and integrations.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

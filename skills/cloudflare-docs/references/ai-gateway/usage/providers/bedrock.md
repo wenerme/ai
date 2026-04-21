@@ -1,6 +1,6 @@
 ---
 title: Amazon Bedrock
-description: Amazon Bedrock allows you to build and scale generative AI applications with foundation models.
+description: Route Amazon Bedrock requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

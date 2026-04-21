@@ -1,6 +1,6 @@
 ---
 title: Accounts, zones, and profiles
-description: Within the Cloudflare ecosystem, there are three organizing concepts that control where specific settings live: user profiles, accounts, and zones.
+description: Understand how Cloudflare organizes resources into user profiles, accounts, and zones, and where settings and products apply.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

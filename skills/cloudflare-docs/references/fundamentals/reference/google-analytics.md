@@ -1,6 +1,6 @@
 ---
 title: Cloudflare and Google Analytics
-description: Using Cloudflare does not affect Google Analytics (GA) tracking if it is added to the website in one of ways recommended by Google.
+description: Understand how Cloudflare's proxy interacts with Google Analytics tracking and how to use GA with Zaraz.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Remove a domain
-description: Consider the following sections on how you can remove domains from Cloudflare. Removing your domain cancels all active subscriptions on that domain, which will not be refunded per our billing policy. If you add this domain back to Cloudflare later, you will need to re-purchase all subscriptions. Removing your domain from Cloudflare does not change your domain registration.
+description: Remove a domain from your Cloudflare account, including required steps for DNS, subscriptions, and registrar settings.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

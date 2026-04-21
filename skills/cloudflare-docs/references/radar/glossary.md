@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: This page provides a list of terms and concepts to help you understand Radar and the information shown.
+description: Definitions of key terms and concepts used across Cloudflare Radar, including traffic types, attack categories, and ranking methodologies.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

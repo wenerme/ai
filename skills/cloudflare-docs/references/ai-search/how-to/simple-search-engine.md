@@ -1,6 +1,6 @@
 ---
 title: Create a simple search engine
-description: Use the search() method to implement a simple search engine. This example uses the Workers binding, but can be adapted to use the REST API instead.
+description: Build a simple search engine using the AI Search Workers binding and the search method.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -23,8 +23,8 @@ To replicate this example:
 * Disable query rewriting so that the original user query is matched directly
 * Configure your AI Search instance to have small chunk sizes (256 tokens is usually enough)
 
-* [  JavaScript ](#tab-panel-5145)
-* [  TypeScript ](#tab-panel-5146)
+* [  JavaScript ](#tab-panel-5186)
+* [  TypeScript ](#tab-panel-5187)
 
 JavaScript
 

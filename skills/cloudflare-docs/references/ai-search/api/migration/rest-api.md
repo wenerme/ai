@@ -1,6 +1,6 @@
 ---
 title: REST API migration
-description: The AutoRAG API endpoints are the legacy REST API for AI Search. They will continue to work, but all new features and improvements are only available through the new AI Search API endpoints.
+description: Migrate from the legacy AutoRAG REST API endpoints to the new AI Search API endpoints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

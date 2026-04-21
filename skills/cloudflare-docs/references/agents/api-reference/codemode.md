@@ -1,6 +1,6 @@
 ---
 title: Codemode
-description: Codemode lets LLMs write and execute code that orchestrates your tools, instead of calling them one at a time. Inspired by CodeAct, it works because LLMs are better at writing code than making individual tool calls — they have seen millions of lines of real-world code but only contrived tool-calling examples.
+description: Let LLMs write and execute JavaScript to orchestrate multiple tool calls in a secure sandbox using Codemode.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -69,8 +69,8 @@ npm install ai zod
 
 Use the standard AI SDK `tool()` function:
 
-* [  JavaScript ](#tab-panel-2304)
-* [  TypeScript ](#tab-panel-2305)
+* [  JavaScript ](#tab-panel-4088)
+* [  TypeScript ](#tab-panel-4089)
 
 JavaScript
 
@@ -168,8 +168,8 @@ Explain Code
 
 `createCodeTool` takes your tools and an executor, and returns a single AI SDK tool:
 
-* [  JavaScript ](#tab-panel-2294)
-* [  TypeScript ](#tab-panel-2295)
+* [  JavaScript ](#tab-panel-4078)
+* [  TypeScript ](#tab-panel-4079)
 
 JavaScript
 
@@ -217,8 +217,8 @@ const codemode = createCodeTool({ tools, executor });
 
 Pass the codemode tool to `streamText` or `generateText` like any other tool. You choose the model:
 
-* [  JavaScript ](#tab-panel-2298)
-* [  TypeScript ](#tab-panel-2299)
+* [  JavaScript ](#tab-panel-4082)
+* [  TypeScript ](#tab-panel-4083)
 
 JavaScript
 
@@ -305,8 +305,8 @@ The code runs in an isolated Worker sandbox, tool calls are dispatched back to t
 
 Add a `worker_loaders` binding to your `wrangler.jsonc`. This is the only binding required:
 
-* [  wrangler.jsonc ](#tab-panel-2292)
-* [  wrangler.toml ](#tab-panel-2293)
+* [  wrangler.jsonc ](#tab-panel-4076)
+* [  wrangler.toml ](#tab-panel-4077)
 
 JSONC
 
@@ -365,8 +365,8 @@ External `fetch()` and `connect()` are blocked by default — enforced at the Wo
 
 To allow controlled outbound access, pass a `Fetcher`:
 
-* [  JavaScript ](#tab-panel-2296)
-* [  TypeScript ](#tab-panel-2297)
+* [  JavaScript ](#tab-panel-4080)
+* [  TypeScript ](#tab-panel-4081)
 
 JavaScript
 
@@ -406,8 +406,8 @@ const executor = new DynamicWorkerExecutor({
 
 The typical pattern is to create the executor and codemode tool inside an Agent's message handler:
 
-* [  JavaScript ](#tab-panel-2314)
-* [  TypeScript ](#tab-panel-2315)
+* [  JavaScript ](#tab-panel-4098)
+* [  TypeScript ](#tab-panel-4099)
 
 JavaScript
 
@@ -531,8 +531,8 @@ Explain Code
 
 MCP tools work the same way — merge them into the tool set:
 
-* [  JavaScript ](#tab-panel-2300)
-* [  TypeScript ](#tab-panel-2301)
+* [  JavaScript ](#tab-panel-4084)
+* [  TypeScript ](#tab-panel-4085)
 
 JavaScript
 
@@ -586,8 +586,8 @@ The `@cloudflare/codemode/mcp` export provides two functions that wrap MCP serve
 
 Wraps an existing MCP server with a single `code` tool. Each upstream tool becomes a typed `codemode.*` method inside the sandbox:
 
-* [  JavaScript ](#tab-panel-2302)
-* [  TypeScript ](#tab-panel-2303)
+* [  JavaScript ](#tab-panel-4086)
+* [  TypeScript ](#tab-panel-4087)
 
 JavaScript
 
@@ -625,8 +625,8 @@ const server = await codeMcpServer({ server: upstreamMcp, executor });
 
 Creates an MCP server with `search` and `execute` tools from an OpenAPI spec. All `$ref` pointers are resolved before being passed to the sandbox, and the host-side `request` handler keeps authentication out of the sandbox:
 
-* [  JavaScript ](#tab-panel-2312)
-* [  TypeScript ](#tab-panel-2313)
+* [  JavaScript ](#tab-panel-4096)
+* [  TypeScript ](#tab-panel-4097)
 
 JavaScript
 
@@ -779,8 +779,8 @@ Code and tool names are normalized and sanitized internally — you do not need 
 
 Generates TypeScript type definitions from your tools. Used internally by `createCodeTool` but exported for custom use (for example, displaying types in a frontend).
 
-* [  JavaScript ](#tab-panel-2308)
-* [  TypeScript ](#tab-panel-2309)
+* [  JavaScript ](#tab-panel-4092)
+* [  TypeScript ](#tab-panel-4093)
 
 JavaScript
 
@@ -828,8 +828,8 @@ const types = generateTypes(myTools);
 
 For JSON Schema inputs that do not depend on the AI SDK, use the main entry point:
 
-* [  JavaScript ](#tab-panel-2306)
-* [  TypeScript ](#tab-panel-2307)
+* [  JavaScript ](#tab-panel-4090)
+* [  TypeScript ](#tab-panel-4091)
 
 JavaScript
 
@@ -859,8 +859,8 @@ const types = generateTypesFromJsonSchema(jsonSchemaToolDescriptors);
 
 Converts tool names into valid JavaScript identifiers.
 
-* [  JavaScript ](#tab-panel-2310)
-* [  TypeScript ](#tab-panel-2311)
+* [  JavaScript ](#tab-panel-4094)
+* [  TypeScript ](#tab-panel-4095)
 
 JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: Delete your Cloudflare account
-description: If your account uses Single-Sign On (SSO), your super administrator may need to delete your account on your behalf.
+description: Permanently delete your Cloudflare user profile and remove all associated domains and billing information.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: /cdn-cgi/ endpoint
-description: When you add a domain to Cloudflare, Cloudflare adds a /cdn-cgi/ endpoint (www.example.com/cdn-cgi/) to that domain.
+description: Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cross-domain authentication
-description: When your Agents are deployed, to keep things secure, send a token from the client, then verify it on the server. This guide covers authentication patterns for WebSocket connections to agents.
+description: Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -48,8 +48,8 @@ Cookies do not help across origins. Pass credentials in the URL query, then veri
 
 ### Static authentication
 
-* [  JavaScript ](#tab-panel-2922)
-* [  TypeScript ](#tab-panel-2923)
+* [  JavaScript ](#tab-panel-4958)
+* [  TypeScript ](#tab-panel-4959)
 
 JavaScript
 
@@ -121,8 +121,8 @@ Explain Code
 
 Build query values right before connect. Use Suspense for async setup.
 
-* [  JavaScript ](#tab-panel-2928)
-* [  TypeScript ](#tab-panel-2929)
+* [  JavaScript ](#tab-panel-4964)
+* [  TypeScript ](#tab-panel-4965)
 
 JavaScript
 
@@ -250,8 +250,8 @@ Explain Code
 
 Refresh the token when the connection fails due to authentication error.
 
-* [  JavaScript ](#tab-panel-2930)
-* [  TypeScript ](#tab-panel-2931)
+* [  JavaScript ](#tab-panel-4966)
+* [  TypeScript ](#tab-panel-4967)
 
 JavaScript
 
@@ -441,8 +441,8 @@ Pass credentials in the URL when connecting to another host, then verify on the 
 
 ### Static cross-domain auth
 
-* [  JavaScript ](#tab-panel-2924)
-* [  TypeScript ](#tab-panel-2925)
+* [  JavaScript ](#tab-panel-4960)
+* [  TypeScript ](#tab-panel-4961)
 
 JavaScript
 
@@ -516,8 +516,8 @@ Explain Code
 
 ### Async cross-domain auth
 
-* [  JavaScript ](#tab-panel-2926)
-* [  TypeScript ](#tab-panel-2927)
+* [  JavaScript ](#tab-panel-4962)
+* [  TypeScript ](#tab-panel-4963)
 
 JavaScript
 
@@ -619,8 +619,8 @@ Explain Code
 
 On the server side, verify the token in the `onConnect` handler:
 
-* [  JavaScript ](#tab-panel-2932)
-* [  TypeScript ](#tab-panel-2933)
+* [  JavaScript ](#tab-panel-4968)
+* [  TypeScript ](#tab-panel-4969)
 
 JavaScript
 

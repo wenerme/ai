@@ -1,6 +1,6 @@
 ---
 title: Connection limits
-description: When HTTP/HTTPS traffic is proxied through Cloudflare, there are often two established TCP connections: the first is between the requesting client to Cloudflare and the second is between Cloudflare and the origin server. Each connection has their own set of TCP and HTTP limits, which are documented below.
+description: Review TCP and HTTP connection timeouts between clients, Cloudflare, and origin servers, including keep-alive and request limits.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

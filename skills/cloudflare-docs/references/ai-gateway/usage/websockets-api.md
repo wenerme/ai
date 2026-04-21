@@ -1,6 +1,6 @@
 ---
 title: WebSockets API
-description: The AI Gateway WebSockets API provides a persistent connection for AI interactions, eliminating repeated handshakes and reducing latency. This API is divided into two categories:
+description: Use persistent WebSocket connections through AI Gateway for real-time and non-realtime AI interactions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

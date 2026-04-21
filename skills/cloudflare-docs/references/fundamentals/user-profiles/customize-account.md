@@ -1,6 +1,6 @@
 ---
 title: Profile settings
-description: From your Profile, you can modify settings that affect the Cloudflare dashboard.
+description: Customize your Cloudflare dashboard language, appearance, timezone, and notification preferences.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

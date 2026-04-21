@@ -1,6 +1,6 @@
 ---
 title: Maintenance mode
-description: If you need to make large changes to your website, you may want to make your site temporarily unavailable.
+description: Make your website temporarily unavailable during large changes using Cloudflare Workers, Waiting Room, or Access.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

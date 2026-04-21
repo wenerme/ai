@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: When you set up Cloudflare, you may experience the following issues or error messages.
+description: Resolve common error messages and unexpected behavior when setting up your Cloudflare account and domain.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

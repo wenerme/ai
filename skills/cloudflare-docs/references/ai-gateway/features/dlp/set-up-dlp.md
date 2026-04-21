@@ -1,6 +1,6 @@
 ---
 title: Set up Data Loss Prevention (DLP)
-description: Add Data Loss Prevention (DLP) to any AI Gateway to start scanning AI prompts and responses for sensitive data.
+description: Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Project Cybersafe Schools
-description: Project Cybersafe Schools grants eligible schools with free access to Cloudflare's Email security and Gateway products.
+description: Project Cybersafe Schools provides eligible schools with free Cloudflare Email Security and Gateway products to meet CIPA requirements.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

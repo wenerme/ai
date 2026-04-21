@@ -1,6 +1,6 @@
 ---
 title: NetFlows
-description: NetFlows shows network traffic data from end users collected from Cloudflare's edge routers. NetFlows' data also feeds the Internet traffic change chart.
+description: Query Cloudflare Radar NetFlows data to analyze network traffic from edge routers, including filtering by product and autonomous system.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

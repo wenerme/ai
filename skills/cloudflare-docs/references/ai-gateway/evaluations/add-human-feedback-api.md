@@ -1,6 +1,6 @@
 ---
 title: Add Human Feedback using API
-description: This guide will walk you through the steps of adding human feedback to an AI Gateway request using the Cloudflare API. You will learn how to retrieve the relevant request logs, and submit feedback using the API.
+description: Submit human feedback on AI Gateway request logs using the Cloudflare API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

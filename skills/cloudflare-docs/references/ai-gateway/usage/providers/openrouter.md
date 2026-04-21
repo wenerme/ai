@@ -1,6 +1,6 @@
 ---
 title: OpenRouter
-description: OpenRouter is a platform that provides a unified interface for accessing and using large language models (LLMs).
+description: Route OpenRouter API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

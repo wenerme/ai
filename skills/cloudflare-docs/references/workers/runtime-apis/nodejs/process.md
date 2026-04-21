@@ -32,6 +32,10 @@ Workers-specific implementation details apply when adapting Node.js process supp
 
 In the Node.js implementation of `process.env`, the `env` object is a copy of the environment variables at the time the process was started. In the Workers implementation, there is no process-level environment, so by default `env` is an empty object. You can still set and get values from `env`, and those will be globally persistent for all Workers running in the same isolate and context (for example, the same Workers entry point).
 
+Note
+
+If you use [Wrangler](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `process.env.NODE_ENV` is statically replaced at build time and is not a runtime value. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node%5Fenv) for more information.
+
 When [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled and the [nodejs\_compat\_populate\_process\_env](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-auto-populating-processenv) compatibility flag is set (enabled by default for compatibility dates on or after 2025-04-01), `process.env` will contain any [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/),[secrets](https://developers.cloudflare.com/workers/configuration/secrets/), or [version metadata](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) metadata that has been configured on your Worker.
 
 Setting any value on `process.env` will coerce that value into a string.

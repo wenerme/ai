@@ -1,6 +1,6 @@
 ---
 title: Deepgram
-description: Deepgram provides Voice AI APIs for speech-to-text, text-to-speech, and voice agents.
+description: Route Deepgram speech-to-text and text-to-speech requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

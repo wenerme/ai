@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: Step-by-step guides for building and extending Cloudflare Agents with real-world patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

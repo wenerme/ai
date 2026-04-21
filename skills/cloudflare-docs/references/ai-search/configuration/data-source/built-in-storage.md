@@ -1,6 +1,6 @@
 ---
 title: Built-in storage
-description: Every new AI Search instance comes with built-in storage and a built-in vector index, powered by R2 and Vectorize. You can upload files directly to an instance without setting up either service yourself.
+description: Upload files directly to an AI Search instance using built-in storage powered by R2 and Vectorize.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Radar
-description: Cloudflare Radar is a hub that showcases global Internet traffic, attacks, and technology trends and insights. It is powered by data from Cloudflare’s global network, as well as aggregated and anonymized data from Cloudflare’s 1.1.1.1 public DNS resolver.
+description: Access Cloudflare's data on global Internet traffic, attacks, and technology trends through the Radar dashboard and API.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

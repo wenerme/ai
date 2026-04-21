@@ -1,6 +1,6 @@
 ---
 title: Scans and penetration testing policy
-description: Customers may conduct scans and penetration tests (with certain restrictions) on application and network-layer aspects of their own assets, such as their zones within their Cloudflare accounts, provided they adhere to Cloudflare's policy.
+description: Understand Cloudflare's policy for conducting vulnerability scans and penetration tests on your own zones and assets.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

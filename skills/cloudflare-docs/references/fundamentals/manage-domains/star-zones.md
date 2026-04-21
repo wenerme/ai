@@ -1,6 +1,6 @@
 ---
 title: Star domains
-description: For quick access to commonly configured domains (also known as &#34;zones&#34;), star up to ten domains per account in the Cloudflare dashboard.
+description: Star up to ten frequently used domains per account in the Cloudflare dashboard for quick access.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Policies
-description: Policies define what access a given user has to your account or domains, and are constructed out of three parts:
+description: Understand how Cloudflare account member policies combine actors, roles, and scopes to define access permissions.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

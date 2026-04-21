@@ -1,6 +1,6 @@
 ---
 title: Data source
-description: You can upload files directly to an instance or connect an external data source.
+description: Connect a website, R2 bucket, or upload files directly to your AI Search instance for indexing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

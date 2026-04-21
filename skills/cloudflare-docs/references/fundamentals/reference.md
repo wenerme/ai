@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Find Cloudflare reference material including network details, HTTP headers, policies, and troubleshooting resources.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

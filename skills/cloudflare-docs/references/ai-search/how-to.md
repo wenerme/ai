@@ -1,5 +1,6 @@
 ---
 title: How to
+description: Step-by-step guides for building search engines, per-tenant search, and other AI Search use cases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

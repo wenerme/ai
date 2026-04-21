@@ -1,6 +1,6 @@
 ---
 title: Replicate
-description: Replicate runs and fine tunes open-source models.
+description: Route Replicate API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

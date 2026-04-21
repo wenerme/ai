@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: The following limits apply to gateway configurations, logs, and related features in Cloudflare's platform.
+description: Review AI Gateway limits for gateways, log storage, cache size, metadata entries, and Logpush jobs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

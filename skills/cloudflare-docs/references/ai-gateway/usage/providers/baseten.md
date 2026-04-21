@@ -1,6 +1,6 @@
 ---
 title: Baseten
-description: Baseten provides infrastructure for building and deploying machine learning models at scale. Baseten offers access to various language models through a unified chat completions API.
+description: Route Baseten model inference requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

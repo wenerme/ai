@@ -1,6 +1,6 @@
 ---
 title: Change Super Administrator
-description: If you or someone in your organization leaves or loses access to email, you can add another Super Administrator using any other Super Administrator on your Account with a verified email address.
+description: Add or replace a Super Administrator on your Cloudflare account when someone leaves or loses access.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

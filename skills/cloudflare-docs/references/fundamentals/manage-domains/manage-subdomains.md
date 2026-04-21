@@ -1,6 +1,6 @@
 ---
 title: Manage subdomains
-description: Once you have added your domain to Cloudflare and updated your nameservers, you also might want to set up a subdomain.
+description: Create subdomains, set up redirects between subdomains and apex domains, and configure SSL/TLS for subdomains on Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

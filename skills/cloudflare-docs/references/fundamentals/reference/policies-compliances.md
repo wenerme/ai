@@ -1,5 +1,6 @@
 ---
 title: Policies
+description: Review Cloudflare policies covering content security, video delivery, licensing, and compliance programs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

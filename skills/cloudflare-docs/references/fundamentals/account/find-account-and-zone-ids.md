@@ -1,6 +1,6 @@
 ---
 title: Find account and zone IDs
-description: Once you set up a new account and add your domain to Cloudflare, you may need access to your zone and account IDs for API operations.
+description: Locate your Cloudflare account ID and zone ID in the dashboard for use with the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Recovering from a hacked site
-description: If your website has been hacked recently, review the recommended steps below to recover a hacked website and prevent future hacks.
+description: Steps to recover your website after a hack and prevent future compromises using Cloudflare security features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

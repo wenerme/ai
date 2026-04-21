@@ -1,6 +1,6 @@
 ---
 title: Vector search
-description: Vector search converts your query into a vector embedding and finds chunks with similar meaning. It is enabled by default on all AI Search instances. For an overview of search modes, refer to Search modes.
+description: Configure vector search in AI Search to find semantically similar content using embeddings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

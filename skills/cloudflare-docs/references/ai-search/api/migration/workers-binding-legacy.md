@@ -1,6 +1,6 @@
 ---
 title: Workers binding (legacy)
-description: The env.AI.autorag() binding is the legacy API for AI Search. It will continue to work, but new projects should use the new AI Search bindings instead. For a step-by-step upgrade guide, refer to Workers binding migration.
+description: Reference for the legacy env.AI.autorag() Workers binding used by earlier AI Search instances.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

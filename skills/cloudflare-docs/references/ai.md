@@ -1,6 +1,6 @@
 ---
 title: AI
-description: Cloudflare AI provides a unified platform for running AI models, whether hosted on Cloudflare infrastructure (Workers AI) or proxied through AI Gateway to external providers.
+description: Run AI models on Cloudflare's global network using Workers AI, AI Gateway, and other integrated AI products.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

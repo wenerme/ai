@@ -1,9 +1,6 @@
 ---
 title: Analytics
-description: Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, and cost. You can filter these metrics by time.
-These analytics help you understand traffic patterns, token consumption, and
-potential issues across AI providers. You can
-view the following analytics:
+description: View AI Gateway metrics for requests, tokens, caching, errors, and costs in the dashboard or via GraphQL.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -29,8 +26,8 @@ Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, an
 
 ## View analytics
 
-* [ Dashboard ](#tab-panel-3068)
-* [ graphql ](#tab-panel-3069)
+* [ Dashboard ](#tab-panel-5123)
+* [ graphql ](#tab-panel-5124)
 
 To view analytics in the dashboard:
 

@@ -1,6 +1,6 @@
 ---
 title: SCIM troubleshooting
-description: If you have removed all Super Administrators mistakenly, you can restore the role to account member(s) using the Account API Token you created for SCIM provisioning.
+description: Restore Super Administrator access and resolve common SCIM provisioning issues on your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

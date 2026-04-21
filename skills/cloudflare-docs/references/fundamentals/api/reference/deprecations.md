@@ -1,6 +1,6 @@
 ---
 title: API deprecations
-description: Cloudflare occasionally makes updates to our APIs that result in behavior changes or deprecations. When this happens, we will communicate when the API will no longer be available and whether there will be a replacement.
+description: Track Cloudflare API deprecations, removal timelines, and replacement endpoints.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

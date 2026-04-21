@@ -1,6 +1,6 @@
 ---
 title: Result filtering
-description: Result filtering controls how many results are returned and the minimum score required. To filter results by metadata attributes like folder or category, refer to Metadata.
+description: Control AI Search result count and minimum score thresholds for returned results.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

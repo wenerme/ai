@@ -18,6 +18,39 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml) 
 
+## 2026-04-20
+
+[ Cloudflare One ](https://developers.cloudflare.com/cloudflare-one/)[ Gateway ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) 
+
+  
+**Network session analytics dashboard**   
+
+The new [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/) dashboard is now available in Cloudflare One. This dashboard provides visibility into your network traffic patterns, helping you understand how traffic flows through your Cloudflare One infrastructure.
+
+![Cloudflare One Network Session Analytics](https://developers.cloudflare.com/_astro/cf1-network-session-analytics.Gl90hEcp_MuWRb.webp) 
+
+#### What you can do with Network session analytics
+
+* **Analyze geographic distribution**: View a world map showing where your network traffic originates, with a list of top locations by session count.
+* **Monitor key metrics**: Track session count, total bytes transferred, and unique users.
+* **Identify connection issues**: Analyze connection close reasons to troubleshoot network problems.
+* **Review protocol usage**: See which network protocols (TCP, UDP, ICMP) are most used.
+
+#### Dashboard features
+
+* **Summary metrics**: Session count, bytes total, and unique users
+* **Traffic by location**: World map visualization and location list with top traffic sources
+* **Top protocols**: Breakdown of TCP, UDP, ICMP, and ICMPv6 traffic
+* **Connection close reasons**: Insights into why sessions terminated (client closed, origin closed, timeouts, errors)
+
+#### How to access
+
+1. Log in to [Cloudflare One ↗](https://dash.cloudflare.com).
+2. Go to **Zero Trust** \> **Insights** \> **Dashboards**.
+3. Select **Network session analytics**.
+
+For more information, refer to the [Network session analytics documentation](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/).
+
 ## 2026-04-15
 
 [ Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) 
@@ -25,7 +58,9 @@ Copy page
   
 **Independent MFA for Access applications**   
 
-Cloudflare Access now supports independent multi-factor authentication (MFA), allowing you to enforce MFA requirements without relying on your identity provider (IdP). This feature addresses common gaps in IdP-based MFA, such as inconsistent MFA policies across different identity providers or the need for additional security layers beyond what the IdP provides.
+Cloudflare Access now supports independent multi-factor authentication (MFA), allowing you to enforce MFA requirements without relying on your identity provider (IdP). With per-application and per-policy configuration, you can enforce stricter authentication methods like hardware security keys on sensitive applications without requiring them across your entire organization. This reduces the risk of MFA fatigue for your broader user population while adding additional security where it matters most.
+
+This feature also addresses common gaps in IdP-based MFA, such as inconsistent MFA policies across different identity providers or the need for additional security layers beyond what the IdP provides.
 
 Independent MFA supports the following authenticator types:
 
@@ -4020,8 +4055,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5576)
-* [ Core Dashboard ](#tab-panel-5577)
+* [ Zero Trust Dashboard ](#tab-panel-5620)
+* [ Core Dashboard ](#tab-panel-5621)
 
 To update your view preference in the Zero Trust dashboard:
 

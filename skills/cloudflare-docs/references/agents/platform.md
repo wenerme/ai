@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Review platform details for Cloudflare Agents, including limits and configuration options.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

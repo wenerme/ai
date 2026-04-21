@@ -1,6 +1,6 @@
 ---
 title: Universal Endpoint
-description: You can use the Universal Endpoint to contact every provider.
+description: Route requests to any AI provider through a single AI Gateway endpoint with support for fallbacks and retries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -212,8 +212,8 @@ Explain Code
 
 ## Workers Binding example
 
-* [  wrangler.jsonc ](#tab-panel-3094)
-* [  wrangler.toml ](#tab-panel-3095)
+* [  wrangler.jsonc ](#tab-panel-5149)
+* [  wrangler.toml ](#tab-panel-5150)
 
 JSONC
 

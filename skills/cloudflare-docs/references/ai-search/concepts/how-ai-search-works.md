@@ -1,6 +1,6 @@
 ---
 title: How AI Search works
-description: AI Search is a managed search service. Connect a website, an R2 bucket, or upload your own documents, and AI Search indexes your content for natural language queries.
+description: Understand how AI Search indexes your content and retrieves results using vector and keyword search.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

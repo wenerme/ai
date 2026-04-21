@@ -1,6 +1,6 @@
 ---
 title: Cloudflare's API
-description: Use the following resources to learn more about Cloudflare's REST API:
+description: Interact with Cloudflare services programmatically using the REST and GraphQL APIs.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

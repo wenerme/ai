@@ -1,6 +1,6 @@
 ---
 title: Data Loss Prevention (DLP)
-description: Data Loss Prevention (DLP) for AI Gateway helps protect your organization from inadvertent exposure of sensitive data through AI interactions. By integrating with Cloudflare's proven DLP technology, AI Gateway can scan both incoming prompts and outgoing AI responses for sensitive information, ensuring your AI applications maintain security and compliance standards.
+description: Protect sensitive data in AI Gateway prompts and responses using Cloudflare DLP detection engines.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

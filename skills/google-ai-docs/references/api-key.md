@@ -1,5 +1,3 @@
-# Using Gemini API keys
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -318,7 +316,6 @@ project to generate a new key:
 - **`resourcemanager.projects.get`**: Allows AI Studio to verify the project's existence.
 - **`apikeys.keys.create`**: Allows for the generation of the API key itself.
 - **`serviceusage.services.enable`**: Required to ensure the Gemini API is active on the project.
-- **`iam.serviceAccounts.create`** : Every new API key now requires a linked [service account](https://docs.cloud.google.com/docs/authentication/api-keys#api-keys-bound-sa), generated at API key creation.
 
 To fix your permissions, ask your project admin, or your organization's
 admin if the project belongs to an [organization](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access),

@@ -1,6 +1,6 @@
 ---
 title: Cryptographic Attestation of Personhood
-description: Cloudflare developed an alternative to CAPTCHA authentication, the Cryptographic Attestation of Personhood (CAP).
+description: Cloudflare's Cryptographic Attestation of Personhood (CAP) lets visitors prove they are human using a hardware key instead of a CAPTCHA.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

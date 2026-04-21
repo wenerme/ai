@@ -1,6 +1,6 @@
 ---
 title: Model Context Protocol (MCP)
-description: You can build and deploy Model Context Protocol (MCP) servers on Cloudflare.
+description: Build and deploy remote MCP servers on Cloudflare to connect AI agents with external tools and services.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Quarterly DDoS threat reports
-description: Quarterly DDoS threat reports provide a comprehensive overview of DDoS attack insights and trends over a three-month period.
+description: Understand the methodologies behind Cloudflare Radar quarterly DDoS threat reports, including attack counting, ranking, and geographical insights.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

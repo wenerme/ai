@@ -1,6 +1,6 @@
 ---
 title: Get Global API key (legacy)
-description: Global API key is the previous authorization scheme for interacting with the Cloudflare API. When possible, use API tokens instead of Global API key.
+description: Retrieve or change your Cloudflare Global API key, a legacy authentication method with full account access.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

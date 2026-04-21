@@ -1,6 +1,6 @@
 ---
 title: Hybrid search
-description: Hybrid search runs vector and keyword search in parallel and merges the results. It requires keyword search to be enabled. For an overview of search modes, refer to Search modes.
+description: Combine vector and keyword search in AI Search for broader, more accurate retrieval results.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

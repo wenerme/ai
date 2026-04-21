@@ -1,6 +1,6 @@
 ---
 title: NLWeb
-description: Enable conversational search on your website with NLWeb and Cloudflare AI Search. This template crawls your site, indexes the content, and deploys NLWeb-standard endpoints to serve both people and AI agents.
+description: Deploy NLWeb with AI Search to enable conversational natural language queries on your website.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

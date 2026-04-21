@@ -1,6 +1,6 @@
 ---
 title: Reranking
-description: Reranking can help improve the quality of AI Search results by reordering retrieved documents based on semantic relevance to the user's query. It applies a secondary model after retrieval to rerank the top results before they are returned.
+description: Enable reranking in AI Search to reorder retrieved results by semantic relevance.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

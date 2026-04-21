@@ -1,6 +1,6 @@
 ---
 title: Redirects
-description: Cloudflare offers a variety of ways to perform URL redirects, which tell a visitor's browser that the location of a page has been changed.
+description: Compare Cloudflare redirect options including Single Redirects, Bulk Redirects, Pages Redirects, and Workers.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

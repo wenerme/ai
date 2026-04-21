@@ -1,6 +1,6 @@
 ---
 title: Browse the web
-description: Give your agents full access to the Chrome DevTools Protocol (CDP) with Browser Run tools. Beta
+description: Give Agents full Chrome DevTools Protocol access to inspect pages, scrape data, and capture screenshots with Browser Run.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -58,8 +58,8 @@ npm install agents @cloudflare/codemode ai zod
 
 Add the Browser Run (formerly Browser Rendering) and Worker Loader bindings to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-2138)
-* [  wrangler.toml ](#tab-panel-2139)
+* [  wrangler.jsonc ](#tab-panel-3872)
+* [  wrangler.toml ](#tab-panel-3873)
 
 JSONC
 
@@ -113,8 +113,8 @@ binding = "LOADER"
 
 ### 2\. Create browser tools
 
-* [  JavaScript ](#tab-panel-2142)
-* [  TypeScript ](#tab-panel-2143)
+* [  JavaScript ](#tab-panel-3876)
+* [  TypeScript ](#tab-panel-3877)
 
 JavaScript
 
@@ -158,8 +158,8 @@ To connect to a custom CDP endpoint instead of the Browser Run binding, pass `cd
 
 Pass browser tools alongside your other tools. The `model` can be any AI SDK provider — here using Workers AI:
 
-* [  JavaScript ](#tab-panel-2144)
-* [  TypeScript ](#tab-panel-2145)
+* [  JavaScript ](#tab-panel-3878)
+* [  TypeScript ](#tab-panel-3879)
 
 JavaScript
 
@@ -297,8 +297,8 @@ Explain Code
 
 The typical pattern is to create browser tools inside an [AIChatAgent](https://developers.cloudflare.com/agents/api-reference/chat-agents/) message handler, which gives you message persistence and streaming:
 
-* [  JavaScript ](#tab-panel-2150)
-* [  TypeScript ](#tab-panel-2151)
+* [  JavaScript ](#tab-panel-3884)
+* [  TypeScript ](#tab-panel-3885)
 
 JavaScript
 
@@ -420,8 +420,8 @@ Explain Code
 
 For TanStack AI, use the `/tanstack-ai` export:
 
-* [  JavaScript ](#tab-panel-2146)
-* [  TypeScript ](#tab-panel-2147)
+* [  JavaScript ](#tab-panel-3880)
+* [  TypeScript ](#tab-panel-3881)
 
 JavaScript
 
@@ -549,8 +549,8 @@ Either `browser` or `cdpUrl` must be provided. When both are set, `cdpUrl` takes
 
 For custom integrations, import the building blocks directly:
 
-* [  JavaScript ](#tab-panel-2148)
-* [  TypeScript ](#tab-panel-2149)
+* [  JavaScript ](#tab-panel-3882)
+* [  TypeScript ](#tab-panel-3883)
 
 JavaScript
 
@@ -657,8 +657,8 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-2154)
-* [  TypeScript ](#tab-panel-2155)
+* [  JavaScript ](#tab-panel-3888)
+* [  TypeScript ](#tab-panel-3889)
 
 JavaScript
 
@@ -807,8 +807,8 @@ Explain Code
 
 Add the browser binding to your wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-2140)
-* [  wrangler.toml ](#tab-panel-2141)
+* [  wrangler.jsonc ](#tab-panel-3874)
+* [  wrangler.toml ](#tab-panel-3875)
 
 JSONC
 
@@ -886,8 +886,8 @@ pnpm add @cloudflare/puppeteer
 bun add @cloudflare/puppeteer
 ```
 
-* [  JavaScript ](#tab-panel-2152)
-* [  TypeScript ](#tab-panel-2153)
+* [  JavaScript ](#tab-panel-3886)
+* [  TypeScript ](#tab-panel-3887)
 
 JavaScript
 

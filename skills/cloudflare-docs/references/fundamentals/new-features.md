@@ -1,6 +1,6 @@
 ---
 title: RSS Feeds
-description: Cloudflare offers several RSS feeds to help you consume content programmatically.
+description: Subscribe to Cloudflare RSS feeds to stay informed about product updates and new features.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

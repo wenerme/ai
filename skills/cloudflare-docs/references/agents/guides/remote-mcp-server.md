@@ -1,6 +1,6 @@
 ---
 title: Build a Remote MCP server
-description: This guide will show you how to deploy your own remote MCP server on Cloudflare using Streamable HTTP transport, the current MCP specification standard. You have two options:
+description: Deploy a remote MCP server on Cloudflare with optional authentication using Streamable HTTP transport.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -149,7 +149,7 @@ The public MCP server example you deployed earlier allows any client to connect 
 
 You can configure your MCP server to require user authentication through Cloudflare Access. Cloudflare Access acts as an identity aggregator and verifies user emails, signals from your existing [identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) (such as GitHub or Google), and other attributes such as IP address or device certificates. When users connect to the MCP server, they will be prompted to log in to the configured identity provider and are only granted access if they pass your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors).
 
-For a step-by-step deployment guide, refer to [Secure MCP servers with Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/saas-mcp/).
+For a step-by-step deployment guide, refer to [Secure MCP servers with Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/).
 
 ### Third-party OAuth
 

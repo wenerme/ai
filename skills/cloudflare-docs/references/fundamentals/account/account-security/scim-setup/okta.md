@@ -1,6 +1,6 @@
 ---
 title: Provision with Okta
-description: Once you have gathered the required data, the following steps will be required to finish the provisioning with Okta.
+description: Configure Okta as a SCIM identity provider to provision users and groups into your Cloudflare account.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

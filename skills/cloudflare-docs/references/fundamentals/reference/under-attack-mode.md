@@ -1,6 +1,6 @@
 ---
 title: Under Attack mode
-description: Cloudflare's Under Attack mode performs additional security checks to help mitigate layer 7 DDoS attacks. Validated users access your website and suspicious traffic is blocked. It is designed to be used as one of the last resorts when a zone is under attack (and will temporarily pause access to your site and impact your site analytics).
+description: Turn on Cloudflare Under Attack mode to mitigate layer 7 DDoS attacks by challenging suspicious visitors with an interstitial page.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

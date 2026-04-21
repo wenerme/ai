@@ -1,6 +1,6 @@
 ---
 title: Network ports
-description: Learn which network ports Cloudflare proxies by default and how to enable Cloudflare's proxy for additional ports.
+description: Review the HTTP and HTTPS ports Cloudflare proxies by default and how to enable proxy support for additional ports.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

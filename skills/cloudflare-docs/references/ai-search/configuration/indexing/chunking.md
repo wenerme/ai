@@ -1,6 +1,6 @@
 ---
 title: Chunking
-description: Chunking is the process of splitting large data into smaller segments before embedding them for search. AI Search uses recursive chunking, which breaks your content at natural boundaries (like paragraphs or sentences), and then further splits it if the chunks are too large.
+description: Configure how AI Search splits content into chunks for embedding and retrieval.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Partners
-description: Cloudflare Technology Partners offer purpose-built integrations with our products, providing expanded functionality for our users. Learn how to configure these integrations with our tutorials and how-to guides.
+description: Explore Cloudflare Technology Partner integrations for analytics, networking, Zero Trust, and logging.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

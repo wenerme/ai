@@ -1,6 +1,6 @@
 ---
 title: Application layer attacks
-description: While in HTTP requests you can examine all kinds of web requests, in application layer attacks you have access only to mitigated HTTP requests. These requests can be mitigated by one of several Cloudflare products, like WAF, Cloudflare DDoS Protection, Cloudflare bot solutions and others.
+description: Investigate mitigated HTTP request data in Cloudflare Radar, including attack sources, targets, and mitigation products.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

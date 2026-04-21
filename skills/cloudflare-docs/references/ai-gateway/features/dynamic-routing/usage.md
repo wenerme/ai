@@ -1,6 +1,6 @@
 ---
 title: Using a dynamic route
-description: The response from a dynamic route is the same as the response from a model. There is additional metadata used to notify the model and provider used, you can check the following headers
+description: Send requests through an AI Gateway dynamic route using the OpenAI SDK or REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

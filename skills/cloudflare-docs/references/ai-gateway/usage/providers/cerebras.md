@@ -1,6 +1,6 @@
 ---
 title: Cerebras
-description: Cerebras offers developers a low-latency solution for AI model inference.
+description: Route Cerebras inference requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

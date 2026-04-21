@@ -1,5 +1,6 @@
 ---
 title: Get started
+description: Set up the Cloudflare Radar API, make your first request, compare data, and configure alerts.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

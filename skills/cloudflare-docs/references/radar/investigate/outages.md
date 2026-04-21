@@ -1,6 +1,6 @@
 ---
 title: Outages
-description: Cloudflare Radar Outage Center (CROC) provides data on outages occurring around the world.
+description: Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

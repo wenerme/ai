@@ -1,6 +1,6 @@
 ---
 title: Request handling
-description: Your AI gateway supports different strategies for handling requests to providers, which allows you to manage AI interactions effectively and ensure your applications remain responsive and reliable.
+description: Configure AI Gateway request timeouts, retries, and fallback strategies for reliable AI provider interactions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Push notifications
-description: Send browser push notifications from your agent — even when the user has closed the tab. By combining the agent's persistent state (for storing push subscriptions), scheduling (for timed delivery), and the Web Push API, you can reach users who are completely offline.
+description: Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -102,8 +102,8 @@ wrangler secret put VAPID_SUBJECT
 
 The agent has three responsibilities: store push subscriptions, schedule reminders, and send notifications when alarms fire.
 
-* [  JavaScript ](#tab-panel-3020)
-* [  TypeScript ](#tab-panel-3021)
+* [  JavaScript ](#tab-panel-5008)
+* [  TypeScript ](#tab-panel-5009)
 
 JavaScript
 
@@ -695,8 +695,8 @@ The client needs to: register the service worker, request notification permissio
 
 ### Register the service worker
 
-* [  JavaScript ](#tab-panel-3014)
-* [  TypeScript ](#tab-panel-3015)
+* [  JavaScript ](#tab-panel-5002)
+* [  TypeScript ](#tab-panel-5003)
 
 JavaScript
 
@@ -740,8 +740,8 @@ useEffect(() => {
 
 Fetch the VAPID public key from the agent, then subscribe through the Push API:
 
-* [  JavaScript ](#tab-panel-3018)
-* [  TypeScript ](#tab-panel-3019)
+* [  JavaScript ](#tab-panel-5006)
+* [  TypeScript ](#tab-panel-5007)
 
 JavaScript
 
@@ -875,8 +875,8 @@ Explain Code
 
 With the subscription stored, creating a reminder is a single RPC call. The agent handles scheduling and delivery:
 
-* [  JavaScript ](#tab-panel-3012)
-* [  TypeScript ](#tab-panel-3013)
+* [  JavaScript ](#tab-panel-5000)
+* [  TypeScript ](#tab-panel-5001)
 
 JavaScript
 
@@ -976,8 +976,8 @@ A single user may subscribe from multiple browsers or devices. The agent stores 
 
 If the push service returns a 5xx error (temporary failure), you can retry using `this.schedule()` with a short delay:
 
-* [  JavaScript ](#tab-panel-3016)
-* [  TypeScript ](#tab-panel-3017)
+* [  JavaScript ](#tab-panel-5004)
+* [  TypeScript ](#tab-panel-5005)
 
 JavaScript
 

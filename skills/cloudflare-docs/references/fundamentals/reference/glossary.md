@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's documentation.
+description: Review definitions for terms used across Cloudflare products and documentation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

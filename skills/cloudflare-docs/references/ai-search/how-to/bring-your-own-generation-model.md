@@ -1,6 +1,6 @@
 ---
 title: Bring your own generation model
-description: When using AI Search, AI Search uses a Workers AI model to generate the response. If you want to use a model outside of Workers AI, you can use AI Search for search while using a different model to generate responses.
+description: Use AI Search for retrieval while generating responses with an external model like OpenAI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -28,8 +28,8 @@ Note
 
 AI Search supports [bringing your own models natively](https://developers.cloudflare.com/ai-search/configuration/models/). You can attach provider keys through AI Gateway and select third-party models directly in your AI Search settings. The example below still works, but the recommended approach is to configure your external model through AI Gateway.
 
-* [  JavaScript ](#tab-panel-5137)
-* [  TypeScript ](#tab-panel-5138)
+* [  JavaScript ](#tab-panel-5178)
+* [  TypeScript ](#tab-panel-5179)
 
 JavaScript
 

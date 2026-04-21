@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Start building agents that can remember context and make decisions. This guide walks you through creating your first agent and understanding how they work.
+description: Start building Agents on Cloudflare that maintain state, make decisions, and execute workflows.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

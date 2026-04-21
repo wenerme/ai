@@ -1,6 +1,6 @@
 ---
 title: Supported models
-description: This page lists all models supported by AI Search and their lifecycle status.
+description: View all AI models supported by AI Search, including text generation, embedding, and reranking models.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

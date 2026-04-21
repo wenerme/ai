@@ -1,6 +1,6 @@
 ---
 title: Manage organizations
-description: You can manage Organizations using the Cloudflare Terraform provider.
+description: Rename your Cloudflare Organization, edit customer identification data, and manage settings with Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

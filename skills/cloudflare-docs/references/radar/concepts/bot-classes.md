@@ -1,6 +1,6 @@
 ---
 title: Bot classes
-description: A bot class in Radar is a grouping of bot scores.
+description: Cloudflare Radar classifies traffic as likely automated or likely human based on bot score ranges.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

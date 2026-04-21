@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Review reference information related to Cloudflare Radar:
+description: Review reference information for Cloudflare Radar, including methodologies and report details.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 

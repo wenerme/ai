@@ -1,6 +1,6 @@
 ---
 title: Models
-description: AI Search uses models at multiple stages. You can configure which models are used, or let AI Search automatically select a smart default for you.
+description: Configure which AI models AI Search uses for embedding, generation, reranking, and query rewriting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Features
-description: AI Gateway provides a comprehensive set of features to help you build, deploy, and manage AI applications with confidence. From performance optimization to security and observability, these features work together to create a robust AI infrastructure.
+description: Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

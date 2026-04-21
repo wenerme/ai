@@ -1,6 +1,6 @@
 ---
 title: Traffic flow through Cloudflare
-description: Internet traffic is made up of people, services, and agents requesting online resources from wherever they are hosted. Your resources may be publicly available, like a website or application that anyone on the Internet can access. Or your resources may be privately available, like an internal app or network that only your employees and partners should be able to access.
+description: Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

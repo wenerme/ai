@@ -1,6 +1,6 @@
 ---
 title: Build a voice agent
-description: Build a voice agent that listens to users, thinks with an LLM, and speaks back — all in real-time over WebSocket. Beta
+description: Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -53,8 +53,8 @@ The starter gives you a working Vite + React + Cloudflare Workers setup. You wil
 
 Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for your voice agent:
 
-* [  wrangler.jsonc ](#tab-panel-3022)
-* [  wrangler.toml ](#tab-panel-3023)
+* [  wrangler.jsonc ](#tab-panel-4942)
+* [  wrangler.toml ](#tab-panel-4943)
 
 JSONC
 
@@ -66,7 +66,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-14",
+  "compatibility_date": "2026-04-20",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -121,7 +121,7 @@ name = "voice-agent"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-14"
+compatibility_date = "2026-04-20"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -155,8 +155,8 @@ Explain Code
 
 Replace `src/server.ts` with the following. The `withVoice` mixin adds the full voice pipeline — STT, sentence chunking, TTS, and conversation persistence — to a standard `Agent` class.
 
-* [  JavaScript ](#tab-panel-3028)
-* [  TypeScript ](#tab-panel-3029)
+* [  JavaScript ](#tab-panel-4948)
+* [  TypeScript ](#tab-panel-4949)
 
 JavaScript
 
@@ -541,8 +541,8 @@ Open the app in your browser, select **Start Call**, and speak. You will see the
 
 You can intercept and transform data at each stage of the pipeline. For example, filter out short transcripts (noise) and adjust pronunciation before TTS:
 
-* [  JavaScript ](#tab-panel-3024)
-* [  TypeScript ](#tab-panel-3025)
+* [  JavaScript ](#tab-panel-4944)
+* [  TypeScript ](#tab-panel-4945)
 
 JavaScript
 
@@ -630,8 +630,8 @@ Returning `null` from `afterTranscribe` drops the utterance entirely — useful 
 
 Swap in third-party STT or TTS providers without changing your agent logic:
 
-* [  JavaScript ](#tab-panel-3026)
-* [  TypeScript ](#tab-panel-3027)
+* [  JavaScript ](#tab-panel-4946)
+* [  TypeScript ](#tab-panel-4947)
 
 JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare IP addresses
-description: When you add a domain to Cloudflare and proxy its DNS records, visitors who look up your domain receive a Cloudflare IP address instead of your origin server's real IP address. This hides your origin server's IP address and allows Cloudflare to optimize, cache, and protect all requests before forwarding them to you.
+description: Allow Cloudflare IP addresses at your origin server and configure your firewall to prevent accidental blocking of proxied traffic.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

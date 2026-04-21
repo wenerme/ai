@@ -1,6 +1,6 @@
 ---
 title: Evaluations
-description: Understanding your application's performance is essential for optimization. Developers often have different priorities, and finding the optimal solution involves balancing key factors such as cost, latency, and accuracy. Some prioritize low-latency responses, while others focus on accuracy or cost-efficiency.
+description: Assess AI Gateway application performance with datasets, human feedback, and evaluation metrics.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

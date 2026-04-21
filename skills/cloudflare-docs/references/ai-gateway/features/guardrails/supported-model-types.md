@@ -1,6 +1,6 @@
 ---
 title: Supported model types
-description: AI Gateway's Guardrails detects the type of AI model being used and applies safety checks accordingly:
+description: Review which AI model types AI Gateway Guardrails evaluates for text generation, embeddings, and unknown models.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

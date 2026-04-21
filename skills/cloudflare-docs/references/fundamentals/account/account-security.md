@@ -1,5 +1,6 @@
 ---
 title: Account security
+description: Protect your Cloudflare account with audit logs, SSO, two-factor authentication, session management, and zone holds.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

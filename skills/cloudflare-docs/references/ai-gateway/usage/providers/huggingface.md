@@ -1,6 +1,6 @@
 ---
 title: HuggingFace
-description: HuggingFace helps users build, deploy and train machine learning models.
+description: Route HuggingFace Inference API requests through AI Gateway for observability and control.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

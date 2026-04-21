@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Configure your AI Gateway with multiple options and customizations.
+description: Configure AI Gateway settings including authentication, fallbacks, custom providers, and request handling.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

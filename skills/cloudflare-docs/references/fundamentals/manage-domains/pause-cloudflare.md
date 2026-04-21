@@ -1,6 +1,6 @@
 ---
 title: Pause Cloudflare
-description: To troubleshoot your site, you can pause Cloudflare globally. This will send traffic directly to your origin web server instead of Cloudflare's reverse proxy. Paused domains also cannot use Cloudflare services like Rules, WAF, and SSL/TLS certificates. Consider turning on Development Mode to bypass caching while preserving protection.
+description: Temporarily pause Cloudflare on your domain to send traffic directly to your origin server for troubleshooting.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

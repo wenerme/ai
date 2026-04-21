@@ -1,6 +1,6 @@
 ---
 title: Workers binding
-description: Workers provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a Workers binding to upload, list, and manage documents in your AI Search instances from a Cloudflare Worker. Access the Items API through the items property on an instance handle.
+description: Upload, list, and manage documents in AI Search instances using the Items Workers binding.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -33,8 +33,8 @@ To use AI Search with Workers, you must create an AI Search binding. You create 
 
 Access all instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/). You can get, create, list, and delete instances at runtime.
 
-* [  wrangler.jsonc ](#tab-panel-5114)
-* [  wrangler.toml ](#tab-panel-5115)
+* [  wrangler.jsonc ](#tab-panel-5155)
+* [  wrangler.toml ](#tab-panel-5156)
 
 JSONC
 
@@ -91,8 +91,8 @@ namespace = "my-namespace"
 
 Bind directly to a single instance in the `default` namespace. Use this when you know which instance you need at deploy time.
 
-* [  wrangler.jsonc ](#tab-panel-5116)
-* [  wrangler.toml ](#tab-panel-5117)
+* [  wrangler.jsonc ](#tab-panel-5157)
+* [  wrangler.toml ](#tab-panel-5158)
 
 JSONC
 

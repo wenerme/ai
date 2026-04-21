@@ -33,7 +33,7 @@ Create your token at [dash.cloudflare.com/profile/api-tokens ↗](https://dash.c
 
 Note 
 
-This API token is different from a **build token**. Build tokens are used by the build system to deploy your Worker. By default, Cloudflare automatically generates a build token for your account, but you can also [create your own](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#api-token-optional). The API token described above is what you use to call the Builds API itself.
+This API token is different from a **build token**. Build tokens are used by the build system to deploy your Worker — you will need a build token UUID when [creating triggers](#step-4-get-your-build-token-uuid). The API token described above is what you use to call the Builds API itself.
 
 ### 2\. Worker tags (documented as external\_script\_id)
 
@@ -52,18 +52,19 @@ A **trigger** is a configuration that defines how your Worker gets built and dep
 
 **Trigger fields:**
 
-| Field                   | Type    | Description                                                               |
-| ----------------------- | ------- | ------------------------------------------------------------------------- |
-| trigger\_name           | string  | Display name for the trigger                                              |
-| build\_command          | string  | Command to build your project (for example, npm run build)                |
-| deploy\_command         | string  | Command to deploy your Worker (for example, npx wrangler deploy)          |
-| root\_directory         | string  | Path to your project root                                                 |
-| branch\_includes        | array   | Branch patterns that trigger builds (for example, \["main"\] or \["\*"\]) |
-| branch\_excludes        | array   | Branch patterns to exclude                                                |
-| path\_includes          | array   | File path patterns that trigger builds                                    |
-| path\_excludes          | array   | File path patterns to ignore                                              |
-| build\_caching\_enabled | boolean | Enable or disable build caching                                           |
-| environment\_variables  | object  | Build-time variables specific to this trigger                             |
+| Field                   | Type    | Description                                                                                                                                                                                                                                                                               |
+| ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| trigger\_name           | string  | Display name for the trigger                                                                                                                                                                                                                                                              |
+| build\_token\_uuid      | string  | UUID of the build token used to deploy your Worker. Find this in your Worker's **Settings** \> **Builds** \> **API token** section, or via the [GET /builds/tokens](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/build%5Ftokens/methods/list/) endpoint. |
+| build\_command          | string  | Command to build your project (for example, npm run build)                                                                                                                                                                                                                                |
+| deploy\_command         | string  | Command to deploy your Worker (for example, npx wrangler deploy)                                                                                                                                                                                                                          |
+| root\_directory         | string  | Path to your project root                                                                                                                                                                                                                                                                 |
+| branch\_includes        | array   | Branch patterns that trigger builds (for example, \["main"\] or \["\*"\])                                                                                                                                                                                                                 |
+| branch\_excludes        | array   | Branch patterns to exclude                                                                                                                                                                                                                                                                |
+| path\_includes          | array   | File path patterns that trigger builds                                                                                                                                                                                                                                                    |
+| path\_excludes          | array   | File path patterns to ignore                                                                                                                                                                                                                                                              |
+| build\_caching\_enabled | boolean | Enable or disable build caching                                                                                                                                                                                                                                                           |
+| environment\_variables  | object  | Build-time variables specific to this trigger                                                                                                                                                                                                                                             |
 
 ## Workflow overview
 
@@ -434,10 +435,11 @@ This example walks through the complete process of connecting a GitHub repositor
 | 1    | Get GitHub account/repo IDs | GET api.github.com/users/... and GET api.github.com/repos/... |
 | 2    | Create repo connection      | PUT /builds/repos/connections                                 |
 | 3    | Get Worker tag              | GET /workers/scripts                                          |
-| 4a   | Create production trigger   | POST /builds/triggers                                         |
-| 4b   | Create preview trigger      | POST /builds/triggers                                         |
-| 5    | Set environment variables   | PATCH /builds/triggers/:trigger\_uuid/environment\_variables  |
-| 6    | Trigger first build         | POST /builds/triggers/:trigger\_uuid/builds                   |
+| 4    | Get build token UUID        | GET /builds/tokens                                            |
+| 5a   | Create production trigger   | POST /builds/triggers                                         |
+| 5b   | Create preview trigger      | POST /builds/triggers                                         |
+| 6    | Set environment variables   | PATCH /builds/triggers/:trigger\_uuid/environment\_variables  |
+| 7    | Trigger first build         | POST /builds/triggers/:trigger\_uuid/builds                   |
 
 #### Prerequisites
 
@@ -523,7 +525,32 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scri
 
 ```
 
-#### Step 4: Create a production trigger
+#### Step 4: Get your build token UUID
+
+A build token authorizes the build system to deploy your Worker. To get your build token UUID:
+
+1. Go to your Worker in the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+2. Navigate to **Settings** \> **Builds** \> **API token**.
+3. Select an existing build token or create a new one.
+
+You can also list your build tokens via the API:
+
+Terminal window
+
+```
+
+curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/tokens" \
+
+  --header "Authorization: Bearer <API_TOKEN>" \
+
+  | jq '.result[] | {build_token_uuid, build_token_name}'
+
+
+```
+
+Save the `build_token_uuid` for the next step.
+
+#### Step 5: Create a production trigger
 
 Create a trigger that deploys when you push to `main`:
 
@@ -544,6 +571,8 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
     "external_script_id": "<WORKER_TAG>",
 
     "repo_connection_uuid": "<REPO_CONNECTION_UUID>",
+
+    "build_token_uuid": "<BUILD_TOKEN_UUID>",
 
     "trigger_name": "Deploy production",
 
@@ -568,7 +597,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 Explain Code
 
-#### Step 5: Create a preview trigger (optional)
+#### Step 6: Create a preview trigger (optional)
 
 Create a second trigger for preview deployments on all other branches:
 
@@ -589,6 +618,8 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
     "external_script_id": "<WORKER_TAG>",
 
     "repo_connection_uuid": "<REPO_CONNECTION_UUID>",
+
+    "build_token_uuid": "<BUILD_TOKEN_UUID>",
 
     "trigger_name": "Deploy preview branches",
 
@@ -615,7 +646,7 @@ Explain Code
 
 Note the different `deploy_command`: production uses `wrangler deploy` while preview uses `wrangler versions upload` to create preview URLs without affecting the live deployment.
 
-#### Step 6: Set environment variables for each trigger
+#### Step 7: Set environment variables for each trigger
 
 Set production environment variables:
 
@@ -671,7 +702,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/trigg
 
 ```
 
-#### Step 7: Trigger your first build
+#### Step 8: Trigger your first build
 
 Terminal window
 

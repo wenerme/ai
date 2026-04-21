@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: Use the AI Search REST API to query your AI Search instances over HTTP.
+description: Query AI Search instances over HTTP using the REST API for search and chat completions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Webhooks
-description: Receive webhook events from external services and route them to dedicated agent instances. Each webhook source (repository, customer, device) can have its own agent with isolated state, persistent storage, and real-time client connections.
+description: Receive and route webhook events from external services to dedicated Cloudflare Agent instances.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -20,8 +20,8 @@ Receive webhook events from external services and route them to dedicated agent 
 
 ## Quick start
 
-* [  JavaScript ](#tab-panel-3006)
-* [  TypeScript ](#tab-panel-3007)
+* [  JavaScript ](#tab-panel-5052)
+* [  TypeScript ](#tab-panel-5053)
 
 JavaScript
 
@@ -371,8 +371,8 @@ The key pattern is extracting an entity identifier from the webhook and using `g
 
 Most webhooks include an identifier in the payload:
 
-* [  JavaScript ](#tab-panel-2982)
-* [  TypeScript ](#tab-panel-2983)
+* [  JavaScript ](#tab-panel-5028)
+* [  TypeScript ](#tab-panel-5029)
 
 JavaScript
 
@@ -470,8 +470,8 @@ Explain Code
 
 Alternatively, include the entity ID in the webhook URL:
 
-* [  JavaScript ](#tab-panel-2978)
-* [  TypeScript ](#tab-panel-2979)
+* [  JavaScript ](#tab-panel-5024)
+* [  TypeScript ](#tab-panel-5025)
 
 JavaScript
 
@@ -515,8 +515,8 @@ if (url.pathname.startsWith("/webhooks/stripe/")) {
 
 Some services include identifiers in headers:
 
-* [  JavaScript ](#tab-panel-2980)
-* [  TypeScript ](#tab-panel-2981)
+* [  JavaScript ](#tab-panel-5026)
+* [  TypeScript ](#tab-panel-5027)
 
 JavaScript
 
@@ -562,8 +562,8 @@ Always verify webhook signatures to ensure requests are authentic. Most provider
 
 ### HMAC-SHA256 pattern
 
-* [  JavaScript ](#tab-panel-2992)
-* [  TypeScript ](#tab-panel-2993)
+* [  JavaScript ](#tab-panel-5038)
+* [  TypeScript ](#tab-panel-5039)
 
 JavaScript
 
@@ -699,8 +699,8 @@ Explain Code
 
 Use `onRequest()` to handle incoming webhooks in your agent:
 
-* [  JavaScript ](#tab-panel-3000)
-* [  TypeScript ](#tab-panel-3001)
+* [  JavaScript ](#tab-panel-5046)
+* [  TypeScript ](#tab-panel-5047)
 
 JavaScript
 
@@ -868,8 +868,8 @@ Use SQLite to persist webhook events for history and replay.
 
 ### Event table schema
 
-* [  JavaScript ](#tab-panel-2990)
-* [  TypeScript ](#tab-panel-2991)
+* [  JavaScript ](#tab-panel-5036)
+* [  TypeScript ](#tab-panel-5037)
 
 JavaScript
 
@@ -979,8 +979,8 @@ Explain Code
 
 Prevent unbounded growth by keeping only recent events:
 
-* [  JavaScript ](#tab-panel-2984)
-* [  TypeScript ](#tab-panel-2985)
+* [  JavaScript ](#tab-panel-5030)
+* [  TypeScript ](#tab-panel-5031)
 
 JavaScript
 
@@ -1048,8 +1048,8 @@ Explain Code
 
 ### Query events
 
-* [  JavaScript ](#tab-panel-2996)
-* [  TypeScript ](#tab-panel-2997)
+* [  JavaScript ](#tab-panel-5042)
+* [  TypeScript ](#tab-panel-5043)
 
 JavaScript
 
@@ -1173,8 +1173,8 @@ Explain Code
 
 When a webhook arrives, update agent state to automatically broadcast to connected WebSocket clients.
 
-* [  JavaScript ](#tab-panel-2986)
-* [  TypeScript ](#tab-panel-2987)
+* [  JavaScript ](#tab-panel-5032)
+* [  TypeScript ](#tab-panel-5033)
 
 JavaScript
 
@@ -1288,8 +1288,8 @@ Explain Code
 
 Prevent processing duplicate events using event IDs:
 
-* [  JavaScript ](#tab-panel-2994)
-* [  TypeScript ](#tab-panel-2995)
+* [  JavaScript ](#tab-panel-5040)
+* [  TypeScript ](#tab-panel-5041)
 
 JavaScript
 
@@ -1385,8 +1385,8 @@ Explain Code
 
 Webhook providers expect fast responses. Use the queue for heavy processing:
 
-* [  JavaScript ](#tab-panel-2998)
-* [  TypeScript ](#tab-panel-2999)
+* [  JavaScript ](#tab-panel-5044)
+* [  TypeScript ](#tab-panel-5045)
 
 JavaScript
 
@@ -1494,8 +1494,8 @@ Explain Code
 
 Handle webhooks from multiple services in one Worker:
 
-* [  JavaScript ](#tab-panel-3004)
-* [  TypeScript ](#tab-panel-3005)
+* [  JavaScript ](#tab-panel-5050)
+* [  TypeScript ](#tab-panel-5051)
 
 JavaScript
 
@@ -1651,8 +1651,8 @@ Explain Code
 
 Agents can also send webhooks to external services:
 
-* [  JavaScript ](#tab-panel-3002)
-* [  TypeScript ](#tab-panel-3003)
+* [  JavaScript ](#tab-panel-5048)
+* [  TypeScript ](#tab-panel-5049)
 
 JavaScript
 
@@ -1783,8 +1783,8 @@ Explain Code
 5. **Log rejections** \- Track invalid signatures for security monitoring.
 6. **Use HTTPS** \- Webhook URLs should always use TLS.
 
-* [  JavaScript ](#tab-panel-2988)
-* [  TypeScript ](#tab-panel-2989)
+* [  JavaScript ](#tab-panel-5034)
+* [  TypeScript ](#tab-panel-5035)
 
 JavaScript
 

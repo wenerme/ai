@@ -1,6 +1,6 @@
 ---
 title: JSON Configuration
-description: Instead of using the dashboard editor UI to define the route graph, you can do it using the REST API. Routes are internally represented using a simple JSON structure:
+description: Define AI Gateway dynamic routing flows using the REST API and JSON element structure.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

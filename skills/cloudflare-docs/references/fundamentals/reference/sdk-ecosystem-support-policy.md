@@ -1,6 +1,6 @@
 ---
 title: SDK ecosystem support policy
-description: Unless otherwise stated in the code repository, Cloudflare only provides active support for the latest major version of a library or tool. The exception to this policy is for critical security fixes, which will be reviewed on a case-by-case basis and take the vulnerability, impact, and mitigation required into consideration.
+description: Understand Cloudflare's SDK lifecycle stages, supported language runtimes, and ecosystem support commitments.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

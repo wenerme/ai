@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Before you can begin using Cloudflare products, first create an account. If multiple people manage your Cloudflare account, set up member permissions to control which resources each person can access.
+description: Create a Cloudflare account, set up member permissions, and explore the Build, Protect &#38; Connect, and Network services available to you.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -23,7 +23,7 @@ Synthesizes audio from the input text
 
 ### Example Usage
 
-{/* UsageSnippet language="go" operationID="createTts" method="post" path="/tts" */}
+{/* UsageSnippet language="go" operationID="createAudioSpeech" method="post" path="/audio/speech" */}
 
 ```go
 package main
@@ -32,7 +32,7 @@ import(
 	"context"
 	"os"
 	openrouter "github.com/OpenRouterTeam/go-sdk"
-	"github.com/OpenRouterTeam/go-sdk/models/operations"
+	"github.com/OpenRouterTeam/go-sdk/models/components"
 	"log"
 )
 
@@ -43,9 +43,10 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Tts.CreateSpeech(ctx, operations.CreateTtsRequest{
+    res, err := s.Tts.CreateSpeech(ctx, components.SpeechRequest{
         Input: "Hello world",
         Model: "elevenlabs/eleven-turbo-v2",
+        Speed: openrouter.Pointer[float64](1.0),
         Voice: "alloy",
     })
     if err != nil {
@@ -59,11 +60,11 @@ func main() {
 
 ### Parameters
 
-| Parameter | Type                                                                                   | Required             | Description                                |
-| --------- | -------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------ |
-| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy\_check\_mark: | The context to use for the request.        |
-| `request` | [operations.CreateTtsRequest](/docs/sdks/go/api-reference/operations/createttsrequest) | :heavy\_check\_mark: | The request object to use for the request. |
-| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)                  | :heavy\_minus\_sign: | The options for this request.              |
+| Parameter | Type                                                                         | Required             | Description                                |
+| --------- | ---------------------------------------------------------------------------- | -------------------- | ------------------------------------------ |
+| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy\_check\_mark: | The context to use for the request.        |
+| `request` | [components.SpeechRequest](/docs/sdks/go/api-reference/models/speechrequest) | :heavy\_check\_mark: | The request object to use for the request. |
+| `opts`    | \[][operations.Option](/docs/sdks/go/api-reference/operations/option)        | :heavy\_minus\_sign: | The options for this request.              |
 
 ### Response
 

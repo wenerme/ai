@@ -1,6 +1,6 @@
 ---
 title: MCP
-description: The Model Context Protocol (MCP) endpoint allows AI agents to discover and interact with your AI Search content. This endpoint follows the MCP specification and provides tools for querying your indexed content.
+description: Expose AI Search content to AI agents through the Model Context Protocol (MCP) endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

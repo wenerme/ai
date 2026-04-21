@@ -35,8 +35,8 @@ Custom builds are configured by adding a `[build]` section in your [Wrangler con
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-10685)
-* [  wrangler.toml ](#tab-panel-10686)
+* [  wrangler.jsonc ](#tab-panel-10813)
+* [  wrangler.toml ](#tab-panel-10814)
 
 JSONC
 
@@ -70,6 +70,42 @@ command = "npm run build"
 cwd = "build_cwd"
 
 watch_dir = "build_watch_dir"
+
+
+```
+
+## `WRANGLER_COMMAND` environment variable
+
+When Wrangler runs your custom build command, it sets the `WRANGLER_COMMAND` environment variable so your build script can detect which Wrangler command triggered the build. This allows you to customize the build process based on the deployment context.
+
+The possible values are:
+
+| Value           | Wrangler command triggered |
+| --------------- | -------------------------- |
+| dev             | wrangler dev               |
+| deploy          | wrangler deploy            |
+| versions upload | wrangler versions upload   |
+| types           | wrangler types             |
+
+For example, you can use this to apply different build settings for development and production:
+
+```
+
+#!/bin/bash
+
+if [ "$WRANGLER_COMMAND" = "dev" ]; then
+
+  echo "Building for development..."
+
+  # run a development build
+
+else
+
+  echo "Building for production..."
+
+  # run a production build
+
+fi
 
 
 ```

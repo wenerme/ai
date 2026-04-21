@@ -1,6 +1,6 @@
 ---
 title: Protect your origin server
-description: Your origin server is a physical or virtual machine that is not owned by Cloudflare and hosts your application content (data, webpages, etc.).
+description: Secure your origin server with Cloudflare by hiding its IP address, limiting connections, and monitoring health.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

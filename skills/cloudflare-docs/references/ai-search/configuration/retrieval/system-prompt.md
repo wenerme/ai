@@ -1,6 +1,6 @@
 ---
 title: System prompt
-description: System prompts allow you to guide the behavior of the text-generation models used by AI Search at query time. AI Search supports system prompt configuration in two steps:
+description: Guide AI Search query rewriting and response generation behavior with custom system prompts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
