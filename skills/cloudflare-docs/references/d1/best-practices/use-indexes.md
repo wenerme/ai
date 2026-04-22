@@ -1,6 +1,6 @@
 ---
 title: Use indexes
-description: Indexes enable D1 to improve query performance over the indexed columns for common (popular) queries by reducing the amount of data (number of rows) the database has to scan when running a query.
+description: Improve D1 query performance by creating indexes on frequently queried columns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

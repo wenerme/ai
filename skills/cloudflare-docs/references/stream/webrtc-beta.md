@@ -1,6 +1,6 @@
 ---
 title: WebRTC
-description: Sub-second latency live streaming (using WHIP) and playback (using WHEP) to unlimited concurrent viewers.
+description: Sub-second latency live streaming and playback using WHIP and WHEP protocols in Cloudflare Stream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

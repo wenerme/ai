@@ -1,6 +1,6 @@
 ---
 title: Basic video uploads
-description: For files smaller than 200 MB, you can use simple form-based uploads.
+description: Upload video files under 200 MB to Cloudflare Stream using the dashboard or API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

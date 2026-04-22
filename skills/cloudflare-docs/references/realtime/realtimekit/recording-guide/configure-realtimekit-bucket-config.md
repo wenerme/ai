@@ -1,6 +1,6 @@
 ---
 title: Disable Upload to RealtimeKit Bucket
-description: Once the recording is complete, by default, RealtimeKit uploads all recordings to RealtimeKit's Cloudflare R2 bucket. Additionally, a presigned URL is generated with a 7-day expiry. The recording can be accessed using the downloadUrl associated with each recording.
+description: Disable automatic recording uploads to the RealtimeKit R2 bucket using the realtimekit_bucket_config parameter.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

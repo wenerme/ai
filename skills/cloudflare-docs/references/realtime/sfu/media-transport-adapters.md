@@ -1,6 +1,6 @@
 ---
 title: Media Transport Adapters
-description: Media Transport Adapters bridge WebRTC and other transport protocols. Adapters handle protocol conversion, codec transcoding, and bidirectional media flow between WebRTC sessions and external endpoints.
+description: Bridge WebRTC and other transport protocols using Realtime SFU media adapters.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

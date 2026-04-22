@@ -1,6 +1,6 @@
 ---
 title: Use WebSockets
-description: Durable Objects can act as WebSocket servers that connect thousands of clients per instance. You can also use WebSockets as a client to connect to other servers or Durable Objects.
+description: Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -69,9 +69,9 @@ To use WebSockets with Durable Objects:
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
 
-* [  JavaScript ](#tab-panel-4573)
-* [  TypeScript ](#tab-panel-4574)
-* [  Python ](#tab-panel-4575)
+* [  JavaScript ](#tab-panel-6702)
+* [  TypeScript ](#tab-panel-6703)
+* [  Python ](#tab-panel-6704)
 
 JavaScript
 
@@ -310,8 +310,8 @@ Explain Code
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4582)
-* [  wrangler.toml ](#tab-panel-4583)
+* [  wrangler.jsonc ](#tab-panel-6711)
+* [  wrangler.toml ](#tab-panel-6712)
 
 JSONC
 
@@ -411,8 +411,8 @@ To maximize throughput:
 * **Use a simple envelope format** to pack and unpack batched messages
 * **Target fewer, larger messages** rather than many small ones
 
-* [  JavaScript ](#tab-panel-4586)
-* [  TypeScript ](#tab-panel-4587)
+* [  JavaScript ](#tab-panel-6715)
+* [  TypeScript ](#tab-panel-6716)
 
 JavaScript
 
@@ -601,8 +601,8 @@ Retrieves the most recent value passed to `serializeAttachment()`, or `null` if 
 
 Use `serializeAttachment` and `deserializeAttachment` to persist per-connection state across hibernation:
 
-* [  JavaScript ](#tab-panel-4588)
-* [  TypeScript ](#tab-panel-4589)
+* [  JavaScript ](#tab-panel-6717)
+* [  TypeScript ](#tab-panel-6718)
 
 JavaScript
 
@@ -777,9 +777,9 @@ Validate requests in a Worker
 
 Both Workers and Durable Objects are billed based on the number of requests. Validate requests in your Worker to avoid billing for invalid requests against a Durable Object.
 
-* [  JavaScript ](#tab-panel-4576)
-* [  TypeScript ](#tab-panel-4577)
-* [  Python ](#tab-panel-4578)
+* [  JavaScript ](#tab-panel-6705)
+* [  TypeScript ](#tab-panel-6706)
+* [  Python ](#tab-panel-6707)
 
 JavaScript
 
@@ -1007,9 +1007,9 @@ Explain Code
 
 The following Durable Object creates a WebSocket connection and responds to messages with the total number of connections:
 
-* [  JavaScript ](#tab-panel-4579)
-* [  TypeScript ](#tab-panel-4580)
-* [  Python ](#tab-panel-4581)
+* [  JavaScript ](#tab-panel-6708)
+* [  TypeScript ](#tab-panel-6709)
+* [  Python ](#tab-panel-6710)
 
 JavaScript
 
@@ -1266,8 +1266,8 @@ Explain Code
 
 Configure your Wrangler file with a Durable Object [binding](https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings) and [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/):
 
-* [  wrangler.jsonc ](#tab-panel-4584)
-* [  wrangler.toml ](#tab-panel-4585)
+* [  wrangler.jsonc ](#tab-panel-6713)
+* [  wrangler.toml ](#tab-panel-6714)
 
 JSONC
 

@@ -1,6 +1,6 @@
 ---
 title: Email authentication
-description: Email authentication verifies sender identity and improves deliverability. Cloudflare Email Service handles authentication automatically, but understanding these concepts helps troubleshoot issues.
+description: SPF, DKIM, and DMARC authentication for secure and deliverable email sending with Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

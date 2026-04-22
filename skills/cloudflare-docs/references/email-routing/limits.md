@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: When you process emails with Email Workers on the Workers Free plan, your Worker may exceed its CPU or memory allocation and fail with an error. This is more likely with large emails or complex processing logic. Refer to Worker limits for more information.
+description: Email Routing limits for message size, rules, addresses, and Email Workers CPU and memory usage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

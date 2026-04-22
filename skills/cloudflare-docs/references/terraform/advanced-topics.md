@@ -1,5 +1,6 @@
 ---
 title: Advanced topics
+description: Advanced Cloudflare Terraform topics including best practices, provider customization, and remote backends.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Define source origin
-description: When optimizing remote videos, you can specify which origins can be used as the source for transformed videos. By default, Cloudflare accepts only source videos from the zone where your transformations are served.
+description: Specify which origins can serve source videos for Cloudflare Media Transformations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

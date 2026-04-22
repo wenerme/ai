@@ -1,6 +1,6 @@
 ---
 title: Blazor
-description: Blazor is an SPA framework that can use C# code, rather than JavaScript in the browser. In this guide, you will build a site using Blazor, and deploy it using Cloudflare Pages.
+description: Deploy a Blazor WebAssembly application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

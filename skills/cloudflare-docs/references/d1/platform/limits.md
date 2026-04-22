@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Cloudflare also offers other storage solutions such as Workers KV, Durable Objects, and R2. Each product has different advantages and limits. Refer to Choose a data or storage product to review which storage option is right for your use case.
+description: D1 account and database limits for storage, queries, row sizes, and SQL statements.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

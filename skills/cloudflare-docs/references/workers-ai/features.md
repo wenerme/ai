@@ -1,5 +1,6 @@
 ---
 title: Features
+description: Explore Workers AI features including function calling, batch processing, and fine-tuning.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

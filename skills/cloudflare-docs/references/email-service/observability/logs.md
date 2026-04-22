@@ -1,6 +1,6 @@
 ---
 title: Email Logs
-description: Email Service provides comprehensive logging for both email sending and routing activities. Access detailed logs through the Cloudflare dashboard to monitor email flow, troubleshoot delivery issues, and analyze authentication status.
+description: View and analyze Email Service sending and routing activity logs with authentication and delivery details.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

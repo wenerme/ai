@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference documentation for Cloudflare Images, including security and troubleshooting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

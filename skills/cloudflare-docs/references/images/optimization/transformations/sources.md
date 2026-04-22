@@ -1,6 +1,6 @@
 ---
 title: Define source origins
-description: When optimizing remote images, you can specify which origins can be used as the source for transformed images. By default, Cloudflare accepts only source images from the zone where your transformations are served.
+description: Manage which origins Cloudflare Images can use as the source for image transformations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

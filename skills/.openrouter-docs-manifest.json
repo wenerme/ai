@@ -164,6 +164,11 @@
     "size": 7240,
     "updatedAt": "2026-04-15T00:31:00.398Z"
   },
+  "guides/features/server-tools/web-fetch.md": {
+    "url": "https://openrouter.ai/docs/guides/features/server-tools/web-fetch.md",
+    "size": 9781,
+    "updatedAt": "2026-04-22T00:29:00.580Z"
+  },
   "guides/features/plugins/overview.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/overview.md",
     "size": 7450,
@@ -601,8 +606,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 145464,
-    "updatedAt": "2026-04-21T00:30:32.946Z"
+    "size": 147469,
+    "updatedAt": "2026-04-22T00:29:46.167Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",
@@ -626,8 +631,8 @@
   },
   "api/api-reference/chat/send-chat-completion-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request.md",
-    "size": 84965,
-    "updatedAt": "2026-04-21T00:30:40.181Z"
+    "size": 86970,
+    "updatedAt": "2026-04-22T00:29:55.292Z"
   },
   "api/api-reference/credits/get-credits.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/credits/get-credits.md",
@@ -656,8 +661,8 @@
   },
   "api/api-reference/generations/get-generation.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/get-generation.md",
-    "size": 21113,
-    "updatedAt": "2026-04-20T10:45:18.803Z"
+    "size": 21270,
+    "updatedAt": "2026-04-22T00:30:06.388Z"
   },
   "api/api-reference/generations/list-generation-content.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/generations/list-generation-content.md",
@@ -761,8 +766,8 @@
   },
   "api/api-reference/anthropic-messages/create-messages.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-messages.md",
-    "size": 121950,
-    "updatedAt": "2026-04-21T00:31:16.448Z"
+    "size": 123955,
+    "updatedAt": "2026-04-22T00:30:48.224Z"
   },
   "api/api-reference/models/get-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/models/get-models.md",

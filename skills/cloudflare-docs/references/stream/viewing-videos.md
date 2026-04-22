@@ -1,5 +1,6 @@
 ---
 title: Play video
+description: Play, embed, and customize Cloudflare Stream video playback on web and mobile platforms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

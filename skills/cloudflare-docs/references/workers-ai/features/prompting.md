@@ -1,6 +1,6 @@
 ---
 title: Prompting
-description: Part of getting good results from text generation models is asking questions correctly. LLMs are usually trained with specific predefined templates, which should then be used with the model's tokenizer for better results when doing inference tasks.
+description: Structure prompts for Workers AI text generation models using system, user, and assistant message roles.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

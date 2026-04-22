@@ -1,6 +1,6 @@
 ---
 title: Get tenant details
-description: A Tenant Admin's unit and membership details will be used for access of resources and all Tenant operations on the API. The unit ID (unit_tag), for example, can be used to create an account on a specific unit.
+description: Retrieve tenant configuration and entitlement details using the Cloudflare Tenant API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

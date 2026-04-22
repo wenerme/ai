@@ -1,6 +1,6 @@
 ---
 title: Connect to MySQL
-description: Hyperdrive supports MySQL and MySQL-compatible databases, popular drivers, and Object Relational Mapper (ORM) libraries that use those drivers.
+description: Use Hyperdrive to connect to MySQL and MySQL-compatible databases from Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -43,8 +43,8 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="mysql://
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-4717)
-* [  wrangler.toml ](#tab-panel-4718)
+* [  wrangler.jsonc ](#tab-panel-7009)
+* [  wrangler.toml ](#tab-panel-7010)
 
 JSONC
 
@@ -62,7 +62,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -91,7 +91,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]
@@ -128,8 +128,8 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-4719)
-* [  wrangler.toml ](#tab-panel-4720)
+* [  wrangler.jsonc ](#tab-panel-7011)
+* [  wrangler.toml ](#tab-panel-7012)
 
 JSONC
 
@@ -145,7 +145,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10"
+  "compatibility_date": "2026-04-21"
 
 }
 
@@ -160,7 +160,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 ```
@@ -217,8 +217,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4721)
-* [  wrangler.toml ](#tab-panel-4722)
+* [  wrangler.jsonc ](#tab-panel-7013)
+* [  wrangler.toml ](#tab-panel-7014)
 
 JSONC
 
@@ -236,7 +236,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -265,7 +265,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]
@@ -380,8 +380,8 @@ bun add mysql
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4723)
-* [  wrangler.toml ](#tab-panel-4724)
+* [  wrangler.jsonc ](#tab-panel-7015)
+* [  wrangler.toml ](#tab-panel-7016)
 
 JSONC
 
@@ -399,7 +399,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -428,7 +428,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]

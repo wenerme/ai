@@ -1,6 +1,6 @@
 ---
 title: Stream Player API
-description: For further control and customization, we provide an additional JavaScript SDK that you can use to control video playback and listen for media events.
+description: Control Cloudflare Stream video playback and listen for media events using the JavaScript SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

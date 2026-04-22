@@ -1,6 +1,6 @@
 ---
 title: Add captions
-description: Adding captions and subtitles to your video library.
+description: Add captions and subtitles to Cloudflare Stream videos using AI generation or file upload.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

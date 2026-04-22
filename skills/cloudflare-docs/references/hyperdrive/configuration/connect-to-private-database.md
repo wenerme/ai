@@ -1,6 +1,6 @@
 ---
 title: Connect to a private database using Tunnel
-description: Hyperdrive can securely connect to your private databases using Cloudflare Tunnel and Cloudflare Access.
+description: Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -133,8 +133,8 @@ This is the only time Cloudflare Access will display the Client Secret. If you l
 
 To create a Hyperdrive configuration for your private database, you'll need to specify the Access application and Cloudflare Tunnel information upon creation.
 
-* [ Wrangler ](#tab-panel-4692)
-* [ Terraform ](#tab-panel-4693)
+* [ Wrangler ](#tab-panel-6984)
+* [ Terraform ](#tab-panel-6985)
 
 Terminal window
 
@@ -204,8 +204,8 @@ You must create a binding in your [Wrangler configuration file](https://develope
 
 To bind your Hyperdrive configuration to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4694)
-* [  wrangler.toml ](#tab-panel-4695)
+* [  wrangler.jsonc ](#tab-panel-6986)
+* [  wrangler.toml ](#tab-panel-6987)
 
 JSONC
 
@@ -251,8 +251,8 @@ Specifically:
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
-* [  wrangler.jsonc ](#tab-panel-4696)
-* [  wrangler.toml ](#tab-panel-4697)
+* [  wrangler.jsonc ](#tab-panel-6988)
+* [  wrangler.toml ](#tab-panel-6989)
 
 JSONC
 
@@ -302,8 +302,8 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-* [ PostgreSQL ](#tab-panel-4702)
-* [ MySQL ](#tab-panel-4703)
+* [ PostgreSQL ](#tab-panel-6994)
+* [ MySQL ](#tab-panel-6995)
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
@@ -353,8 +353,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4698)
-* [  wrangler.toml ](#tab-panel-4699)
+* [  wrangler.jsonc ](#tab-panel-6990)
+* [  wrangler.toml ](#tab-panel-6991)
 
 JSONC
 
@@ -372,7 +372,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -401,7 +401,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]
@@ -526,8 +526,8 @@ Note
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4700)
-* [  wrangler.toml ](#tab-panel-4701)
+* [  wrangler.jsonc ](#tab-panel-6992)
+* [  wrangler.toml ](#tab-panel-6993)
 
 JSONC
 
@@ -545,7 +545,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -574,7 +574,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]

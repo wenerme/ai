@@ -1,6 +1,6 @@
 ---
 title: Build image
-description: Cloudflare Pages' build environment has broad support for a variety of languages, such as Ruby, Node.js, Python, PHP, and Go.
+description: Review supported languages, tools, and environment variables in the Cloudflare Pages build image.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,9 +26,9 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-* [ v3 ](#tab-panel-5419)
-* [ v2 ](#tab-panel-5420)
-* [ v1 ](#tab-panel-5421)
+* [ v3 ](#tab-panel-7694)
+* [ v2 ](#tab-panel-7695)
+* [ v1 ](#tab-panel-7696)
 
 | Tool        | Default version | Supported versions | Environment variable | File                         |
 | ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |
@@ -66,9 +66,9 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-* [ v3 ](#tab-panel-5422)
-* [ v2 ](#tab-panel-5423)
-* [ v1 ](#tab-panel-5424)
+* [ v3 ](#tab-panel-7697)
+* [ v2 ](#tab-panel-7698)
+* [ v1 ](#tab-panel-7699)
 
 | Tool                   | Default version | Supported versions               | Environment variable          |
 | ---------------------- | --------------- | -------------------------------- | ----------------------------- |
@@ -196,9 +196,9 @@ The following features are not currently supported when using the v3 build syste
 
 Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
 
-* [ v3 ](#tab-panel-5425)
-* [ v2 ](#tab-panel-5426)
-* [ v1 ](#tab-panel-5427)
+* [ v3 ](#tab-panel-7700)
+* [ v2 ](#tab-panel-7701)
+* [ v1 ](#tab-panel-7702)
 
 | **Build environment** | Ubuntu 22.04.2 |
 | --------------------- | -------------- |

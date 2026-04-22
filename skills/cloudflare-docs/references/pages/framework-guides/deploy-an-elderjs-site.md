@@ -1,6 +1,6 @@
 ---
 title: Elder.js
-description: Elder.js is an SEO-focused framework for building static sites with SvelteKit.
+description: Deploy an Elder.js static site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

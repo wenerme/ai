@@ -1,6 +1,6 @@
 ---
 title: Tags
-description: Use tags to organize, search, and filter user Workers at scale. Tag Workers based on customer ID, plan type, project ID, or environment. After you tag user Workers, you can perform bulk operations like deleting all Workers for a specific customer.
+description: Organize, search, and filter user Workers by custom tags like customer ID or plan type in Workers for Platforms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

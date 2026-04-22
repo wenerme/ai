@@ -1,6 +1,6 @@
 ---
 title: Transition legacy Vectorize indexes
-description: Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
+description: Migrate from legacy Vectorize V1 indexes to the current V2 format.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

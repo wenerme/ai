@@ -1,6 +1,6 @@
 ---
 title: Events &#38; schemas
-description: This page provides a comprehensive reference of available event sources and their corresponding events with schemas for event subscriptions. All events include common metadata fields and follow a consistent structure.
+description: Reference of available event sources and their schemas for Queues event subscriptions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

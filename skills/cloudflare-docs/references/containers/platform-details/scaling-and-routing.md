@@ -1,7 +1,6 @@
 ---
 title: Scaling and Routing
-description: Today, Containers are scaled manually by getting containers with a unique ID, then
-starting the container. Note that getting a container does not automatically start it.
+description: Scale Container instances using explicit IDs or the getRandom helper for stateless load balancing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

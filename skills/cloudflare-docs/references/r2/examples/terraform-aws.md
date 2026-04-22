@@ -1,6 +1,6 @@
 ---
 title: Terraform (AWS)
-description: You must generate an Access Key before getting started. All examples will utilize access_key_id and access_key_secret variables which represent the Access Key ID and Secret Access Key values you generated.
+description: Configure R2 buckets and objects with Terraform using the AWS provider.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

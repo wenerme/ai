@@ -1,6 +1,6 @@
 ---
 title: Spark (Scala)
-description: Below is an example of how you can build an Apache Spark application (with Scala) which connects to R2 Data Catalog. This application is built to run locally, but it can be adapted to run on a cluster.
+description: Build a Scala Spark application that connects to R2 Data Catalog for Iceberg table operations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -38,7 +38,7 @@ With this functionality, customers can:
 
 For configuration details, refer to:
 
-* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes)
+* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
 * [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
 
 ## 2026-01-15
@@ -111,7 +111,7 @@ With this functionality, customers can:
 * Secure the session by MD5 authentication to prevent misconfigurations.
 * Exchange routes dynamically between their devices and their Magic routing table.
 
-Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
+Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 
 ## 2024-10-01
 

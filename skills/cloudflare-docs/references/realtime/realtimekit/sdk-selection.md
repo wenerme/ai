@@ -1,6 +1,6 @@
 ---
 title: Select SDK(s)
-description: RealtimeKit provides two ways to build real-time media applications:
+description: Choose between RealtimeKit UI Kit and Core SDK for your platform and framework.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

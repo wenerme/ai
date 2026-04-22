@@ -1,6 +1,6 @@
 ---
 title: FAQs
-description: A Durable Object incurs duration charges when it is actively executing JavaScript — either handling a request or running event handlers — or when it is idle but does not meet the conditions for hibernation. An idle Durable Object that qualifies for hibernation does not incur duration charges, even during the brief window before the runtime hibernates it.
+description: Frequently asked questions about Durable Objects pricing, limits, and metrics.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -65,8 +65,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4615)
-* [  wrangler.toml ](#tab-panel-4616)
+* [  wrangler.jsonc ](#tab-panel-6818)
+* [  wrangler.toml ](#tab-panel-6819)
 
 JSONC
 

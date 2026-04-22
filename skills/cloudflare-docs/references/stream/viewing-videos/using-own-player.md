@@ -1,6 +1,6 @@
 ---
 title: Use your own player
-description: Cloudflare Stream is compatible with all video players that support HLS and DASH, which are standard formats for streaming media with broad support across all web browsers, mobile operating systems and media streaming devices.
+description: Play Cloudflare Stream videos with any HLS/DASH-compatible player on web, iOS, or Android.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

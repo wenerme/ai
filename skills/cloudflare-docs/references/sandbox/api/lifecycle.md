@@ -1,6 +1,6 @@
 ---
 title: Lifecycle
-description: Create and manage sandbox containers. Get sandbox instances, configure options, and clean up resources.
+description: Create, configure, and manage Sandbox SDK container instances and their resources.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -57,8 +57,8 @@ Note
 
 The container starts lazily on first operation. Calling `getSandbox()` returns immediately—the container only spins up when you execute a command, write a file, or perform other operations. See [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) for details.
 
-* [  JavaScript ](#tab-panel-6215)
-* [  TypeScript ](#tab-panel-6216)
+* [  JavaScript ](#tab-panel-8446)
+* [  TypeScript ](#tab-panel-8447)
 
 JavaScript
 
@@ -133,8 +133,8 @@ await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
 
 When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
 
-* [  JavaScript ](#tab-panel-6217)
-* [  TypeScript ](#tab-panel-6218)
+* [  JavaScript ](#tab-panel-8448)
+* [  TypeScript ](#tab-panel-8449)
 
 JavaScript
 
@@ -208,8 +208,8 @@ Immediately terminates the container and permanently deletes all state:
 * All sessions (including the default session)
 * Network connections and exposed ports
 
-* [  JavaScript ](#tab-panel-6219)
-* [  TypeScript ](#tab-panel-6220)
+* [  JavaScript ](#tab-panel-8450)
+* [  TypeScript ](#tab-panel-8451)
 
 JavaScript
 
@@ -284,5 +284,5 @@ Containers automatically sleep after 10 minutes of inactivity but still count to
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create isolated execution contexts within a sandbox
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/lifecycle/","name":"Lifecycle"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/lifecycle/","name":"Lifecycle"}}]}
 ```

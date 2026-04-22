@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Pages Functions can be configured two ways, either via the Cloudflare dashboard or the Wrangler configuration file, a file used to customize the development and deployment setup for Workers and Pages Functions.
+description: Configure Pages Functions settings using a Wrangler configuration file or the Cloudflare dashboard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -39,8 +39,8 @@ Using the Wrangler configuration file to configure your Pages project allows you
 
 ## Example Wrangler file
 
-* [  wrangler.jsonc ](#tab-panel-5512)
-* [  wrangler.toml ](#tab-panel-5513)
+* [  wrangler.jsonc ](#tab-panel-7743)
+* [  wrangler.toml ](#tab-panel-7744)
 
 JSONC
 
@@ -149,8 +149,8 @@ Before you could use the Wrangler configuration file to define your preview and 
 
 If you have been using a Wrangler configuration file for local development, you may already have a file in your Pages project that looks like this:
 
-* [  wrangler.jsonc ](#tab-panel-5508)
-* [  wrangler.toml ](#tab-panel-5509)
+* [  wrangler.jsonc ](#tab-panel-7739)
+* [  wrangler.toml ](#tab-panel-7740)
 
 JSONC
 
@@ -205,9 +205,9 @@ You can continue to use your Wrangler file for local development without migrati
 
 If you have an existing Pages project with configuration set up via the Cloudflare dashboard and do not have an existing Wrangler file in your Project, run the `wrangler pages download config` command in your Pages project directory. The `wrangler pages download config` command will download your existing Cloudflare dashboard configuration and generate a valid Wrangler file in your Pages project directory.
 
-* [ npm ](#tab-panel-5505)
-* [ yarn ](#tab-panel-5506)
-* [ pnpm ](#tab-panel-5507)
+* [ npm ](#tab-panel-7736)
+* [ yarn ](#tab-panel-7737)
+* [ pnpm ](#tab-panel-7738)
 
 Terminal window
 
@@ -263,8 +263,8 @@ With a Wrangler configuration file, you can quickly set configuration across you
 
 The Wrangler configuration file applies locally when using `wrangler pages dev`. This means that you can test out configuration changes quickly without a need to login to the Cloudflare dashboard. Refer to the following config file for an example:
 
-* [  wrangler.jsonc ](#tab-panel-5510)
-* [  wrangler.toml ](#tab-panel-5511)
+* [  wrangler.jsonc ](#tab-panel-7741)
+* [  wrangler.toml ](#tab-panel-7742)
 
 JSONC
 
@@ -280,7 +280,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "compatibility_flags": [
 
@@ -319,7 +319,7 @@ pages_build_output_dir = "./dist"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -387,8 +387,8 @@ Unlike [Workers Environments](https://developers.cloudflare.com/workers/wrangler
 
 Refer to the following Wrangler configuration file for an example of how to override preview deployment configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5514)
-* [  wrangler.toml ](#tab-panel-5515)
+* [  wrangler.jsonc ](#tab-panel-7745)
+* [  wrangler.toml ](#tab-panel-7746)
 
 JSONC
 
@@ -496,8 +496,8 @@ If you deployed this file via `wrangler pages deploy`, `name`, `pages_build_outp
 
 If you wanted to have configuration values apply to local and preview, but override production, your file would look like this:
 
-* [  wrangler.jsonc ](#tab-panel-5518)
-* [  wrangler.toml ](#tab-panel-5519)
+* [  wrangler.jsonc ](#tab-panel-7749)
+* [  wrangler.toml ](#tab-panel-7750)
 
 JSONC
 
@@ -603,8 +603,8 @@ Explain Code
 
 You can always be explicit and override both preview and production:
 
-* [  wrangler.jsonc ](#tab-panel-5520)
-* [  wrangler.toml ](#tab-panel-5521)
+* [  wrangler.jsonc ](#tab-panel-7751)
+* [  wrangler.toml ](#tab-panel-7752)
 
 JSONC
 
@@ -769,8 +769,8 @@ Non-inheritable keys are configurable at the top-level, but, if any one non-inhe
 
 For example, this configuration will not work:
 
-* [  wrangler.jsonc ](#tab-panel-5516)
-* [  wrangler.toml ](#tab-panel-5517)
+* [  wrangler.jsonc ](#tab-panel-7747)
+* [  wrangler.toml ](#tab-panel-7748)
 
 JSONC
 

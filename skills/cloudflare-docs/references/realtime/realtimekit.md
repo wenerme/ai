@@ -1,6 +1,6 @@
 ---
 title: RealtimeKit
-description: With RealtimeKit, you can expect:
+description: Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

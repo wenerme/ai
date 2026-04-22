@@ -1,5 +1,3 @@
-# Models
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -148,9 +146,13 @@ High-fidelity music generation model providing granular creative control and rea
 
 A specialized model that can "see" a digital screen and perform UI actions like clicking, typing, and navigating to automate complex browser tasks.
 
-### [Gemini Deep Research Preview](https://ai.google.dev/gemini-api/docs/models/deep-research-pro-preview-12-2025)
+### [Gemini Deep Research Preview](https://ai.google.dev/gemini-api/docs/models/deep-research-preview-04-2026)
 
 An agentic model that autonomously plans and executes multi-step research across hundreds of sources to produce cited, interactive reports.
+
+### [Gemini Deep Research Max Preview](https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026)
+
+Maximum comprehensiveness for automated context gathering and synthesis across hundreds of sources.
 
 *** ** * ** ***
 

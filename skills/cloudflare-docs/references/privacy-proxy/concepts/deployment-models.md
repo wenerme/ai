@@ -1,6 +1,6 @@
 ---
 title: Deployment models
-description: Privacy Proxy supports two deployment architectures: single-hop and double-hop. The right choice depends on your privacy requirements and operational preferences.
+description: Compare Privacy Proxy single-hop and double-hop deployment architectures for different privacy and operational requirements.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

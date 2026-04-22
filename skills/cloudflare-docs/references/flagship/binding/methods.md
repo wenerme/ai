@@ -1,6 +1,6 @@
 ---
 title: Methods
-description: The Flagship binding provides the following methods for evaluating feature flags. All methods are asynchronous and return a Promise. Evaluation methods never throw — they always return a value, falling back to the defaultValue you provide on errors.
+description: Reference for all Flagship binding evaluation methods, including typed value and details methods for booleans, strings, numbers, and objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Durable Object Namespace
-description: A Durable Object namespace is a set of Durable Objects that are backed by the same Durable Object class. There is only one Durable Object namespace per class. A Durable Object namespace can contain any number of Durable Objects.
+description: API reference for DurableObjectNamespace, which creates IDs and obtains stubs to interact with Durable Objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -24,9 +24,9 @@ The `DurableObjectNamespace` interface is used to obtain a reference to new or e
 
 This interface defines several [methods](https://developers.cloudflare.com/durable-objects/api/namespace/#methods) that can be used to create an ID for a Durable Object. Note that creating an ID for a Durable Object does not create the Durable Object. The Durable Object is created lazily after calling [DurableObjectNamespace::get](https://developers.cloudflare.com/durable-objects/api/namespace/#get) to create a [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) from a `DurableObjectId`. This ensures that objects are not constructed until they are actually accessed.
 
-* [  JavaScript ](#tab-panel-4406)
-* [  TypeScript ](#tab-panel-4407)
-* [  Python ](#tab-panel-4408)
+* [  JavaScript ](#tab-panel-6609)
+* [  TypeScript ](#tab-panel-6610)
+* [  Python ](#tab-panel-6611)
 
 JavaScript
 

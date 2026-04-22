@@ -1,6 +1,6 @@
 ---
 title: How Queues Works
-description: Cloudflare Queues is a flexible messaging queue that allows you to queue messages for asynchronous processing. Message queues are great at decoupling components of applications, like the checkout and order fulfillment services for an e-commerce site. Decoupled services are easier to reason about, deploy, and implement, allowing you to ship features that delight your customers without worrying about synchronizing complex deployments. Queues also allow you to batch and buffer calls to downstream services and APIs.
+description: Learn about Queues architecture including producers, consumers, and message lifecycle.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -249,8 +249,8 @@ Explain Code
 
 You then connect that consumer to a queue with `wrangler queues consumer <queue-name> <worker-script-name>` or by defining a `[[queues.consumers]]` configuration in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) manually:
 
-* [  wrangler.jsonc ](#tab-panel-5704)
-* [  wrangler.toml ](#tab-panel-5705)
+* [  wrangler.jsonc ](#tab-panel-7935)
+* [  wrangler.toml ](#tab-panel-7936)
 
 JSONC
 

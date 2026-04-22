@@ -4,8 +4,8 @@ title: resolveSnapshotPath | Config
 
 # resolveSnapshotPath <CRoot />
 
-- **Type**: `(testPath: string, snapExtension: string, context: { config: SerializedConfig }) => string`
-- **Default**: stores snapshot files in `__snapshots__` directory
+- **Type:** `(testPath: string, snapExtension: string, context: { config: SerializedConfig }) => string`
+- **Default:** stores snapshot files in `__snapshots__` directory
 
 Overrides default snapshot path. For example, to store snapshots next to test files:
 

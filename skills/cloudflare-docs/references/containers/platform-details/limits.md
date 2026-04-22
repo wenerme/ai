@@ -1,6 +1,6 @@
 ---
 title: Limits and Instance Types
-description: The memory, vCPU, and disk space for Containers are set through instance types. You can use one of six predefined instance types or configure a custom instance type.
+description: Available Container instance types and account-level limits for memory, vCPU, disk, and image storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

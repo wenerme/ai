@@ -1,6 +1,6 @@
 ---
 title: How Workers for Platforms works
-description: If you are familiar with Workers, Workers for Platforms introduces four key components: dispatch namespaces, dynamic dispatch Workers, user Workers, and optionally outbound Workers.
+description: Understand the architecture of Workers for Platforms, including dispatch namespaces, dynamic dispatch Workers, user Workers, and outbound Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

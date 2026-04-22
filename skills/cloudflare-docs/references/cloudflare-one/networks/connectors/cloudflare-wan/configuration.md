@@ -17,7 +17,8 @@ Copy page
 # Configuration
 
 * [ Configure with Connector ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/)
-* [ Manual configuration ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/)
+* [ How to ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/)
+* [ Third-party integration ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/)
 * [ Common settings ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/)
 
 ```json

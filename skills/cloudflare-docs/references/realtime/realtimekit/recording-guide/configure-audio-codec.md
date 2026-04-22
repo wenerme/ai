@@ -1,8 +1,6 @@
 ---
 title: Set Audio Configurations
-description: Recording audio requires configuring the codec and channel parameters to guarantee optimal quality and compatibility with your application's demands.
-The codec determines the encoding format for the audio, and the channel specifies the number of audio channels for the recording.
-You can modify the following audio_config used for recording the audio:
+description: Configure audio codec format and channel settings for RealtimeKit recordings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

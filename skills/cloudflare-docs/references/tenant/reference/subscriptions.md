@@ -1,6 +1,6 @@
 ---
 title: Available subscriptions
-description: When provisioning services for an account, you need to include certain values with each API call to specify a particular service.
+description: Zone plan and account subscription values available to Cloudflare Tenant partners.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

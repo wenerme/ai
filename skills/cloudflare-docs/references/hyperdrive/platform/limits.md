@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: The following limits apply to Hyperdrive configurations, connections, and queries made to your configured origin databases.
+description: Configuration, connection, and query limits that apply to Hyperdrive.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

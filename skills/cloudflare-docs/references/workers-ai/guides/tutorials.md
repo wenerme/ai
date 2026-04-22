@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with Workers AI.
+description: Step-by-step Workers AI tutorials for building AI-powered applications on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,7 +26,8 @@ View tutorials to help you get started with Workers AI.
 
 | Name                                                                                                                                                                                   | Last Updated      | Difficulty   |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------ |
-| [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)                           | 12 months ago     | Beginner     |
+| [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/)                                                                   | 3 months ago      |              |
+| [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)                           | about 1 year ago  | Beginner     |
 | [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/)                                   | about 1 year ago  | Beginner     |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | about 1 year ago  | Beginner     |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/)                            | over 1 year ago   | Beginner     |

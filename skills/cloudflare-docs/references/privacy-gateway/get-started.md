@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Privacy Gateway implementation consists of three main parts:
+description: Set up Privacy Gateway by configuring your server, client, and relay connection using the OHTTP standard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

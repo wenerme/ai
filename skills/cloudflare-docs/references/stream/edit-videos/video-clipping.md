@@ -1,6 +1,6 @@
 ---
 title: Clip videos
-description: With video clipping, also referred to as &#34;trimming&#34; or changing the length of the video, you can change the start and end points of a video so viewers only see a specific &#34;clip&#34; of the video. For example, if you have a 20 minute video but only want to share a five minute clip from the middle of the video, you can clip the video to remove the content before and after the five minute clip.
+description: Trim Cloudflare Stream videos by setting start and end times to create new clips via the API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -61,7 +61,7 @@ Example: Clip a video
 
 ```
 
-curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUND_ID_HERE>/stream/clip' \
+curl --location --request POST 'https://api.cloudflare.com/client/v4/accounts/<YOUR_ACCOUNT_ID_HERE>/stream/clip' \
 
 --header 'Authorization: Bearer <YOUR_TOKEN_HERE>' \
 

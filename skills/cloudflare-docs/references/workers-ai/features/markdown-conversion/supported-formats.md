@@ -1,6 +1,6 @@
 ---
 title: Supported Formats
-description: This list shows all rich-content formats that are currently supported for Markdown conversion and is updated frequently:
+description: View the list of file formats supported by Workers AI Markdown Conversion.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -32,7 +32,7 @@ Cloudflare WAN uses two types of health checks:
 
 ### Tunnel health checks
 
-Tunnel health checks monitor the status of the tunnels that route traffic from Cloudflare to your origin network. Cloudflare WAN relies on these checks to steer traffic to the best available routes. During onboarding, you [specify the tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/) or tunnel health check targets the tunnel probes originating from Cloudflare's global network will target.
+Tunnel health checks monitor the status of the tunnels that route traffic from Cloudflare to your origin network. Cloudflare WAN relies on these checks to steer traffic to the best available routes. During onboarding, you [specify the tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) or tunnel health check targets the tunnel probes originating from Cloudflare's global network will target.
 
 You can access tunnel health check results [through the API](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-magic-transit-tunnel-healthcheck-results/). Cloudflare aggregates these results from individual health check results from Cloudflare servers.
 
@@ -79,7 +79,7 @@ You can also configure a bidirectional health check with a custom public target,
 
 These packets flow to and from Cloudflare over the tunnels you have configured to provide full visibility into the traffic path between Cloudflare's network and your sites. You need to configure traffic selectors to accept the health check packets for IPsec tunnels.
 
-Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to configure bidirectional or unidirectional health checks.
+Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to configure bidirectional or unidirectional health checks.
 
 #### Legacy bidirectional health checks
 
@@ -90,7 +90,7 @@ For customers using the legacy health check system with a public IP range, Cloud
 
 ### Type
 
-A tunnel health check probe can have two possible types: request and reply. For each type, the source and destination address depends on the direction. Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to change this setting.
+A tunnel health check probe can have two possible types: request and reply. For each type, the source and destination address depends on the direction. Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to change this setting.
 
 #### Request style
 
@@ -227,7 +227,7 @@ There are three tunnel health states: healthy, degraded, and down.
 
 Healthy tunnels are preferred to degraded tunnels, and degraded tunnels are preferred to those that are down.
 
-Cloudflare WAN steers traffic to tunnels based on priorities you set when you [assign tunnel route priorities during onboarding](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/). Tunnel routes with lower values have priority over those with higher values.
+Cloudflare WAN steers traffic to tunnels based on priorities you set when you [assign tunnel route priorities during onboarding](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/). Tunnel routes with lower values have priority over those with higher values.
 
 Note
 
@@ -251,7 +251,7 @@ When Cloudflare WAN identifies a route that is not healthy, it applies these pen
 * **Degraded**: Add `500,000` to priority.
 * **Down**: Add `1,000,000` to priority.
 
-The values for failure penalties are intentionally extreme so that they always exceed the priority values assigned during [routing configuration](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/).
+The values for failure penalties are intentionally extreme so that they always exceed the priority values assigned during [routing configuration](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/).
 
 Applying a penalty instead of removing the route altogether preserves redundancy and maintains options for customers with only one tunnel. Penalties also support the case when multiple tunnels are unhealthy.
 

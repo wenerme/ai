@@ -1,6 +1,6 @@
 ---
 title: DNS records
-description: You can check the status of your DNS records in the Settings section of Email Routing. This section also allows you to troubleshoot any potential problems you might have with DNS records.
+description: Check and manage the MX and SPF DNS records required for Email Routing to function correctly.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Message Broadcast APIs
-description: The broadcast APIs allow a user to send custom messages to all other users in a meeting.
+description: Send custom broadcast messages to all participants in a RealtimeKit meeting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

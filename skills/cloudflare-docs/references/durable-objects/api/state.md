@@ -1,6 +1,6 @@
 ---
 title: Durable Object State
-description: The DurableObjectState interface is accessible as an instance property on the Durable Object class. This interface encapsulates methods that modify the state of a Durable Object, for example which WebSockets are attached to a Durable Object or how the runtime should handle concurrent Durable Object requests.
+description: API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,9 +22,9 @@ The `DurableObjectState` interface is accessible as an instance property on the 
 
 The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
-* [  JavaScript ](#tab-panel-4420)
-* [  TypeScript ](#tab-panel-4421)
-* [  Python ](#tab-panel-4422)
+* [  JavaScript ](#tab-panel-6623)
+* [  TypeScript ](#tab-panel-6624)
+* [  Python ](#tab-panel-6625)
 
 JavaScript
 
@@ -154,8 +154,8 @@ For regular request handling, you rarely need `blockConcurrencyWhile`. SQLite st
 
 Reserve `blockConcurrencyWhile` outside the constructor for cases where you make external async calls (such as `fetch()`) and cannot tolerate state changes while the event loop yields.
 
-* [  JavaScript ](#tab-panel-4423)
-* [  Python ](#tab-panel-4424)
+* [  JavaScript ](#tab-panel-6626)
+* [  Python ](#tab-panel-6627)
 
 JavaScript
 
@@ -363,8 +363,8 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 `abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
 
-* [  TypeScript ](#tab-panel-4425)
-* [  Python ](#tab-panel-4426)
+* [  TypeScript ](#tab-panel-6628)
+* [  Python ](#tab-panel-6629)
 
 JavaScript
 

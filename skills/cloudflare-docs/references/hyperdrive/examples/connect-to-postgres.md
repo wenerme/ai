@@ -1,6 +1,6 @@
 ---
 title: Connect to PostgreSQL
-description: Hyperdrive supports PostgreSQL and PostgreSQL-compatible databases, popular drivers and Object Relational Mapper (ORM) libraries that use those drivers.
+description: Use Hyperdrive to connect to PostgreSQL and PostgreSQL-compatible databases from Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -41,8 +41,8 @@ npx wrangler hyperdrive create my-first-hyperdrive --connection-string="postgres
 
 The command above will output the ID of your Hyperdrive, which you will need to set in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-4749)
-* [  wrangler.toml ](#tab-panel-4750)
+* [  wrangler.jsonc ](#tab-panel-7041)
+* [  wrangler.toml ](#tab-panel-7042)
 
 JSONC
 
@@ -60,7 +60,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -89,7 +89,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]
@@ -131,8 +131,8 @@ Recommended driver
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-4747)
-* [  wrangler.toml ](#tab-panel-4748)
+* [  wrangler.jsonc ](#tab-panel-7039)
+* [  wrangler.toml ](#tab-panel-7040)
 
 JSONC
 
@@ -148,7 +148,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10"
+  "compatibility_date": "2026-04-21"
 
 }
 
@@ -163,7 +163,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 ```
@@ -224,8 +224,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4751)
-* [  wrangler.toml ](#tab-panel-4752)
+* [  wrangler.jsonc ](#tab-panel-7043)
+* [  wrangler.toml ](#tab-panel-7044)
 
 JSONC
 
@@ -243,7 +243,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -272,7 +272,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]
@@ -384,8 +384,8 @@ The minimum version of `postgres-js` required for Hyperdrive is `3.4.5`.
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4753)
-* [  wrangler.toml ](#tab-panel-4754)
+* [  wrangler.jsonc ](#tab-panel-7045)
+* [  wrangler.toml ](#tab-panel-7046)
 
 JSONC
 
@@ -403,7 +403,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -432,7 +432,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]

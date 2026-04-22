@@ -63,7 +63,7 @@ Previously, customers received their Anycast IPs during onboarding or had to ret
 
 No action is required. All Cloudflare WAN customers can see their Anycast IPs in the tunnel configuration form automatically.
 
-For more information, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/).
+For more information, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
 
 ## 2026-02-11
 
@@ -98,7 +98,7 @@ With this functionality, customers can:
 
 For configuration details, refer to:
 
-* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes)
+* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
 * [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
 
 ## 2026-01-27
@@ -122,7 +122,7 @@ Key details:
 
 Configuring Cloudflare source IPs requires Unified Routing (beta) and the `Cloudflare One Networks Write` permission.
 
-For configuration details, refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/).
+For configuration details, refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
 
 ## 2026-01-15
 
@@ -181,7 +181,7 @@ Key benefits:
 
 This feature is currently in beta and requires the new Unified Routing mode (beta).
 
-For configuration details, refer to [Configure Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-automatic-return-routing-beta).
+For configuration details, refer to [Configure Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-automatic-return-routing-beta).
 
 ## 2025-11-06
 
@@ -307,7 +307,7 @@ With this functionality, customers can:
 * Secure the session by MD5 authentication to prevent misconfigurations.
 * Exchange routes dynamically between their devices and their Magic routing table.
 
-Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
+Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 
 ## 2025-02-14
 

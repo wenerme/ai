@@ -1,6 +1,6 @@
 ---
 title: Media Acquisition Approaches
-description: RealtimeKit provides flexible approaches for acquiring and managing participant media (audio and video tracks). By default, the SDK handles media acquisition automatically when you initialize it. However, certain use cases require accessing media tracks before or independently of SDK initialization.
+description: Acquire and manage participant audio and video tracks in RealtimeKit using different approaches.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

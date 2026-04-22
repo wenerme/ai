@@ -1,6 +1,6 @@
 ---
 title: TypeScript
-description: Pages Functions supports TypeScript. Author any files in your /functions directory with a .ts extension instead of a .js extension to start using TypeScript.
+description: Author Pages Functions in TypeScript and configure type generation with Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

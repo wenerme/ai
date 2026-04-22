@@ -1,6 +1,6 @@
 ---
 title: Observability
-description: Workers for Platforms provides you with logs and analytics that can be used to share data with end users.
+description: Collect logs, traces, and analytics across all user Workers in a Workers for Platforms dispatch namespace.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

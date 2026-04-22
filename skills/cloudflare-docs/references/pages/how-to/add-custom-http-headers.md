@@ -1,6 +1,6 @@
 ---
 title: Add custom HTTP headers
-description: More advanced customization of HTTP headers is available through Cloudflare Workers serverless functions.
+description: Customize HTTP headers on Cloudflare Pages using a Workers function.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -109,8 +109,8 @@ npm install
 
 To operate your Workers function alongside your Pages application, deploy it to the same custom domain as your Pages application. To do this, update the Wrangler file in your project with your account and zone details:
 
-* [  wrangler.jsonc ](#tab-panel-5522)
-* [  wrangler.toml ](#tab-panel-5523)
+* [  wrangler.jsonc ](#tab-panel-7753)
+* [  wrangler.toml ](#tab-panel-7754)
 
 JSONC
 

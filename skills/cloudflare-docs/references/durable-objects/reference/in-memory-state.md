@@ -1,6 +1,6 @@
 ---
 title: In-memory state in a Durable Object
-description: In-memory state means that each Durable Object has one active instance at any particular time. All requests sent to that Durable Object are handled by that same instance. You can store some state in memory.
+description: Store and access transient in-memory state within a Durable Object instance between requests.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

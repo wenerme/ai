@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: Technical reference documentation for Privacy Proxy configuration and monitoring.
+description: Technical reference for Privacy Proxy HTTP headers, client libraries, proxy status codes, and observability.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Audit logs
-description: Audit logs for Email Routing are available in the Cloudflare dashboard. The following changes to Email Routing will be displayed:
+description: Track Email Routing configuration changes such as rule edits and address additions in Cloudflare audit logs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

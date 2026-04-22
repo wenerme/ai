@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: The following limits apply to accounts, indexes, and vectors:
+description: Account, index, and vector limits for Vectorize on Free and Paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Meeting Metadata
-description: All metadata pertaining to a meeting is stored in meeting.meta. This includes important information about the meeting state, type, and connections.
+description: Access meeting state, type, and connection metadata in the RealtimeKit Core SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

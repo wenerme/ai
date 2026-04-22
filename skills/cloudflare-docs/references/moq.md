@@ -1,6 +1,6 @@
 ---
 title: Media over QUIC at Cloudflare
-description: MoQ (Media over QUIC) is a protocol for delivering live media content using QUIC transport. It provides efficient, low-latency media streaming by leveraging QUIC's multiplexing and connection management capabilities.
+description: Deliver low-latency live media content using the MoQ protocol over QUIC transport on Cloudflare's network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Enable flexible variants
-description: Flexible variants allow you to create variants with dynamic resizing which can provide more options than regular variants allow. This option is not enabled by default.
+description: Turn on flexible variants in Cloudflare Images to allow dynamic resizing beyond predefined variant options.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

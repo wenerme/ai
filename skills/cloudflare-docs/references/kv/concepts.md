@@ -1,5 +1,6 @@
 ---
 title: Key concepts
+description: Core concepts behind Workers KV, including namespaces, bindings, and how data is stored and cached.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

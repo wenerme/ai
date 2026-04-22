@@ -1,6 +1,6 @@
 ---
 title: Upload with a link
-description: If you have videos stored in a cloud storage bucket, you can pass a HTTP link for the file, and Stream will fetch the file on your behalf.
+description: Upload videos to Cloudflare Stream by providing an HTTP link to a file in cloud storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Build configuration
-description: You may tell Cloudflare Pages how your site needs to be built as well as where its output files will be located.
+description: Set build commands, output directories, and framework presets for Cloudflare Pages projects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

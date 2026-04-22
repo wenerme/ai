@@ -1,6 +1,6 @@
 ---
 title: React
-description: React is a popular framework for building reactive and powerful front-end applications, built by the open-source team at Facebook.
+description: Deploy a React application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Pipelines
-description: Pipelines connect streams and sinks via SQL transformations, which can modify events before writing them to storage. This enables you to shift left, pushing validation, schematization, and processing to your ingestion layer to make your queries easy, fast, and correct.
+description: Connect streams to sinks with SQL transformations to filter, enrich, and restructure events.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

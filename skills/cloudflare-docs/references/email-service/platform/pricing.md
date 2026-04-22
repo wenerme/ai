@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Cloudflare Email Service pricing is based on your Cloudflare plan and email usage.
+description: Email Service pricing for outbound sending and inbound routing across Workers Free and Paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

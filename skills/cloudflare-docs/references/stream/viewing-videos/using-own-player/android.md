@@ -1,6 +1,6 @@
 ---
 title: Android
-description: You can stream both on-demand and live video to native Android apps using ExoPlayer.
+description: Stream on-demand and live Cloudflare Stream video in native Android apps using ExoPlayer.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -749,6 +749,29 @@ Previously, you could only stream logs from one replica at a time. With this upd
 
 For more information, refer to [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/) and [Deploy replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/deploy-replicas/).
 
+## 2026-03-15
+
+[ Email security ](https://developers.cloudflare.com/cloudflare-one/email-security/) 
+
+  
+**Unlimited result paging in Investigations**   
+
+Investigations now support unlimited result paging in both the dashboard and the API, removing the previous 1,000-record cap. Security teams can page through complete result sets when searching across large mail volumes, giving SOC analysts and automated workflows deeper visibility for forensics and threat hunting.
+
+In the dashboard, infinite paging is now supported in the Investigations view. The 1,000-record ceiling has been removed, so you can navigate through the full result set directly in the UI. The [Investigations API](https://developers.cloudflare.com/api/resources/email%5Fsecurity/subresources/investigate/methods/list) now returns up to 10,000 records per page (up from 1,000), with no cap on total result volume across pages.
+
+For high-volume use cases, we recommend:
+
+* **[Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) to a SIEM** for full-fidelity datasets and long-term retention.
+* **SOAR playbooks** against the async bulk action API for large-scale remediation. Bulk actions initiated from the dashboard remain capped at 1,000 messages per action.
+* **The Investigations API** for report exports larger than 1,000 results, which is the dashboard download cap.
+
+This applies to all Email Security packages:
+
+* **Advantage**
+* **Enterprise**
+* **Enterprise + PhishGuard**
+
 ## 2026-03-10
 
 [ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
@@ -1216,7 +1239,7 @@ Previously, customers received their Anycast IPs during onboarding or had to ret
 
 No action is required. All Cloudflare WAN customers can see their Anycast IPs in the tunnel configuration form automatically.
 
-For more information, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/).
+For more information, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
 
 ## 2026-02-11
 
@@ -1277,7 +1300,7 @@ With this functionality, customers can:
 
 For configuration details, refer to:
 
-* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes)
+* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
 * [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
 
 ## 2026-01-27
@@ -1348,7 +1371,7 @@ Key details:
 
 Configuring Cloudflare source IPs requires Unified Routing (beta) and the `Cloudflare One Networks Write` permission.
 
-For configuration details, refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/).
+For configuration details, refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
 
 ## 2026-01-22
 
@@ -1885,7 +1908,7 @@ Key benefits:
 
 This feature is currently in beta and requires the new Unified Routing mode (beta).
 
-For configuration details, refer to [Configure Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-automatic-return-routing-beta).
+For configuration details, refer to [Configure Automatic Return Routing](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-automatic-return-routing-beta).
 
 ## 2025-11-06
 
@@ -4624,7 +4647,7 @@ With this functionality, customers can:
 * Secure the session by MD5 authentication to prevent misconfigurations.
 * Exchange routes dynamically between their devices and their Magic routing table.
 
-Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
+Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 
 ## 2024-12-05
 

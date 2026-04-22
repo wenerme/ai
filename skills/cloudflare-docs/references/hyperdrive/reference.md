@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Hyperdrive reference documentation including supported databases, Wrangler commands, and FAQ.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

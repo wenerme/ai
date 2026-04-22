@@ -1,9 +1,6 @@
 ---
 title: DVR for Live
-description: Stream Live supports &#34;DVR mode&#34; on an opt-in basis to allow viewers to rewind,
-resume, and fast-forward a live broadcast. To enable DVR mode, add the
-dvrEnabled=true query parameter to the Stream Player embed source or the HLS
-manifest URL.
+description: Enable DVR mode in Cloudflare Stream to let viewers rewind, resume, and fast-forward live broadcasts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

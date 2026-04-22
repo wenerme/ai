@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Platform information for Cloudflare Images, including changelogs and limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Limits
+description: Workers KV account and namespace limits for reads, writes, key size, value size, and storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

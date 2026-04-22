@@ -1,6 +1,6 @@
 ---
 title: Functions
-description: Pages Functions allows you to build full-stack applications by executing code on the Cloudflare network with Cloudflare Workers. With Functions, you can introduce application aspects such as authenticating, handling form submissions, or working with middleware. Workers runtime features are configurable on Pages Functions, including compatibility with a subset of Node.js APIs and the ability to set a compatibility date or compatibility flag. Use Functions to deploy server-side code to enable dynamic functionality without running a dedicated server.
+description: Build full-stack applications on Cloudflare Pages using Pages Functions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

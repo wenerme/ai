@@ -1,6 +1,6 @@
 ---
 title: Release notes
-description: Subscribe to RSS
+description: Latest changes, improvements, and fixes for Workers KV.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

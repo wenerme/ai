@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: While in open beta, the following limits are currently in effect:
+description: Account-level limits for Cloudflare Pipelines streams, sinks, and pipelines during open beta.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

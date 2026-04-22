@@ -1,6 +1,6 @@
 ---
 title: Configure rules and addresses
-description: An email rule is a pair of a custom email address and a destination address, or a custom email address with an Email Worker. This allows you to route emails to your preferred inbox, or apply logic through Email Workers before deciding what should happen to your emails. You can have multiple custom addresses, to route email from specific providers to specific mail inboxes.
+description: Create, edit, and manage Email Routing custom addresses, destination addresses, and catch-all rules.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

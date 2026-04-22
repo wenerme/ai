@@ -1,6 +1,6 @@
 ---
 title: Best practices
-description: Though all Terraform deployments are unique, follow these best practices to set yourself up for success.
+description: Recommended directory structure, state management, and workflow practices for Cloudflare Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

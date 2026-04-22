@@ -1,6 +1,6 @@
 ---
 title: Email routing
-description: Advanced patterns and examples for routing incoming emails with Cloudflare Email Service.
+description: Advanced patterns and examples for routing incoming emails with Email Service Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

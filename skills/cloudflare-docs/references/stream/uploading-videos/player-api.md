@@ -1,5 +1,6 @@
 ---
 title: Player API
+description: Supported attributes and properties for the Cloudflare Stream player element.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

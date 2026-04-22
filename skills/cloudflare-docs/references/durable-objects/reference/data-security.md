@@ -1,6 +1,6 @@
 ---
 title: Data security
-description: This page details the data security properties of Durable Objects, including:
+description: Durable Objects data security properties including encryption at rest, encryption in transit, and compliance certifications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

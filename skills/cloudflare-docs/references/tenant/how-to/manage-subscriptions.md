@@ -1,6 +1,6 @@
 ---
 title: Manage subscriptions
-description: Once your customer has a zone provisioned, you can add zone and account-level subscriptions.
+description: Add and manage zone and account-level subscriptions for tenant-managed Cloudflare accounts.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

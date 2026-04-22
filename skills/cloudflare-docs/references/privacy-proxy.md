@@ -1,6 +1,6 @@
 ---
 title: Privacy Proxy
-description: Privacy Proxy is a managed proxy service that runs on Cloudflare's global network. It uses the MASQUE protocol suite to proxy TCP and UDP traffic via HTTP CONNECT and CONNECT-UDP methods over HTTP/2 and HTTP/3.
+description: Privacy Proxy is a MASQUE-based forward proxy that hides client IP addresses while preserving geolocation accuracy.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Credentials
-description: To migrate images from Amazon S3, Sourcing Kit requires access permissions to your bucket. While you can use any AWS Identity and Access Management (IAM) user credentials with the correct permissions to create a Sourcing Kit source, Cloudflare recommends that you create a user with a narrow set of permissions.
+description: Configure AWS IAM credentials to grant Cloudflare Images Sourcing Kit read access to your Amazon S3 bucket.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

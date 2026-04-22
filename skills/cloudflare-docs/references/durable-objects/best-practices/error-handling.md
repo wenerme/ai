@@ -1,6 +1,6 @@
 ---
 title: Error handling
-description: Any uncaught exceptions thrown by a Durable Object or thrown by Durable Objects' infrastructure (such as overloads or network errors) will be propagated to the callsite of the client. Catching these exceptions allows you to retry creating the DurableObjectStub and sending requests.
+description: Handle exceptions from Durable Objects, including retryable and overloaded errors, with recommended patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

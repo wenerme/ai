@@ -45,8 +45,8 @@ In order for a Worker to be able to create Dynamic Workers, it needs a Worker Lo
 
 Configure it like so, in your Worker's `wrangler.jsonc`:
 
-* [  wrangler.jsonc ](#tab-panel-4621)
-* [  wrangler.toml ](#tab-panel-4622)
+* [  wrangler.jsonc ](#tab-panel-6824)
+* [  wrangler.toml ](#tab-panel-6825)
 
 JSONC
 
@@ -86,8 +86,8 @@ Your Worker will then have access to the Worker Loader API via `env.LOADER`.
 
 Use `env.LOADER.load()` to create a Dynamic Worker and run it:
 
-* [  JavaScript ](#tab-panel-4625)
-* [  TypeScript ](#tab-panel-4626)
+* [  JavaScript ](#tab-panel-6828)
+* [  TypeScript ](#tab-panel-6829)
 
 JavaScript
 
@@ -101,7 +101,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "$today",
+      compatibilityDate: "2026-04-21",
 
 
       mainModule: "src/index.js",
@@ -164,7 +164,7 @@ export default {
 
     const worker = env.LOADER.load({
 
-      compatibilityDate: "$today",
+      compatibilityDate: "2026-04-21",
 
 
       mainModule: "src/index.js",
@@ -225,8 +225,8 @@ If you expect to load the exact same Worker more than once, use [get(id, callbac
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
-* [  JavaScript ](#tab-panel-4623)
-* [  TypeScript ](#tab-panel-4624)
+* [  JavaScript ](#tab-panel-6826)
+* [  TypeScript ](#tab-panel-6827)
 
 JavaScript
 
@@ -248,7 +248,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "$today",
+    compatibilityDate: "2026-04-21",
 
     mainModule: "index.js",
 
@@ -285,7 +285,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
   return {
 
-    compatibilityDate: "$today",
+    compatibilityDate: "2026-04-21",
 
     mainModule: "index.js",
 

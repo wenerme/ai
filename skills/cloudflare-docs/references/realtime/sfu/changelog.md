@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Changelog and release notes for the Cloudflare Realtime SFU platform.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

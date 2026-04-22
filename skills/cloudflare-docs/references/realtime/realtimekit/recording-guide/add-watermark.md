@@ -1,6 +1,6 @@
 ---
 title: Add Watermark
-description: RealtimeKit's watermark feature enables you to include an image as a watermark in your recording. To add watermark, configure the following parameters to video_config in the Start Recording API.
+description: Add a custom image watermark to RealtimeKit recordings with configurable position and size.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

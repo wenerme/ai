@@ -1,6 +1,6 @@
 ---
 title: How it works
-description: When parsing files before converting them to Markdown, there are some cleanup tasks we do depending on the type of file you are trying to convert.
+description: Learn how Workers AI pre-processes and converts HTML, images, and other files to Markdown.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

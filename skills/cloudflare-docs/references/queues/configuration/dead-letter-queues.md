@@ -1,6 +1,6 @@
 ---
 title: Dead Letter Queues
-description: A Dead Letter Queue (DLQ) is a common concept in a messaging system, and represents where messages are sent when a delivery failure occurs with a consumer after max_retries is reached. A Dead Letter Queue is like any other queue, and can be produced to and consumed from independently.
+description: Route failed messages to a Dead Letter Queue after exceeding the retry limit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,8 +22,8 @@ With Cloudflare Queues, a Dead Letter Queue is defined within your [consumer con
 
 For example, the following consumer configuration would send messages to our DLQ named `"my-other-queue"` after retrying delivery (by default, 3 times):
 
-* [  wrangler.jsonc ](#tab-panel-5675)
-* [  wrangler.toml ](#tab-panel-5676)
+* [  wrangler.jsonc ](#tab-panel-7906)
+* [  wrangler.toml ](#tab-panel-7907)
 
 JSONC
 

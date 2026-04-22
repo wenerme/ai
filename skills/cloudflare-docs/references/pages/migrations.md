@@ -1,5 +1,6 @@
 ---
 title: Migration guides
+description: Migrate your existing site from another platform to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

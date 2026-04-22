@@ -1,6 +1,6 @@
 ---
 title: Snowflake
-description: This page details which R2 location or jurisdiction is recommended based on your Snowflake region.
+description: Recommended R2 data locations and jurisdictions for each Snowflake region.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

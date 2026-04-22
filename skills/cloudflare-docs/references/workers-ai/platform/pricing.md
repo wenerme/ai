@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Workers AI is included in both the Free and Paid Workers plans and is priced at $0.011 per 1,000 Neurons.
+description: Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

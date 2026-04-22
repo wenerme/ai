@@ -1,6 +1,6 @@
 ---
 title: Workers Binding
-description: You can use Workers Bindings to interact with the Batch API.
+description: Send and retrieve batch inference requests using a Workers AI binding.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

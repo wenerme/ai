@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples for D1.
+description: Browse code examples that demonstrate common D1 database operations and patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

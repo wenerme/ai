@@ -1,5 +1,6 @@
 ---
 title: Database Providers
+description: MySQL database providers compatible with Hyperdrive.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

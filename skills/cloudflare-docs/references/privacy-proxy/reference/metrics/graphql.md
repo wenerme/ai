@@ -1,6 +1,6 @@
 ---
 title: GraphQL Analytics API
-description: Privacy Proxy exposes metrics through Cloudflare's GraphQL Analytics API. All metrics are queryable through a single endpoint:
+description: Query Privacy Proxy request, connection, and authentication metrics using the Cloudflare GraphQL Analytics API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

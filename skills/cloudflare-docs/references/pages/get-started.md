@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Choose a setup method for your Pages project:
+description: Choose a setup method to create and deploy your Cloudflare Pages project.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

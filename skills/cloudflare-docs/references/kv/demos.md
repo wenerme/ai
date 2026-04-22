@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Learn how you can use KV within your existing application and architecture.
+description: Explore demo applications and reference architectures that use Workers KV.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

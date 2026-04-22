@@ -1,6 +1,6 @@
 ---
 title: Transform videos
-description: You can optimize and manipulate videos stored outside of Cloudflare Stream with Media Transformations. Transformed videos and images are served from one of your zones on Cloudflare.
+description: Optimize and manipulate videos stored outside Cloudflare Stream with Media Transformations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

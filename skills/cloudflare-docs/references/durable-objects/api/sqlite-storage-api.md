@@ -1,6 +1,6 @@
 ---
 title: SQLite-backed Durable Object Storage
-description: The Durable Object Storage API allows Durable Objects to access transactional and strongly consistent storage. A Durable Object's attached storage is private to its unique instance and cannot be accessed by other objects.
+description: API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -60,9 +60,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6574)
-* [  TypeScript ](#tab-panel-6575)
-* [  Python ](#tab-panel-6576)
+* [  JavaScript ](#tab-panel-6620)
+* [  TypeScript ](#tab-panel-6621)
+* [  Python ](#tab-panel-6622)
 
 JavaScript
 
@@ -166,8 +166,8 @@ The `SqlStorage` interface encapsulates methods that modify the SQLite database 
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
-* [  TypeScript ](#tab-panel-6566)
-* [  Python ](#tab-panel-6567)
+* [  TypeScript ](#tab-panel-6612)
+* [  Python ](#tab-panel-6613)
 
 TypeScript
 
@@ -297,8 +297,8 @@ A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `Sql
    * Returned Iterator supports `next()` and `toArray()` methods above.  
    * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
-* [  TypeScript ](#tab-panel-6568)
-* [  Python ](#tab-panel-6569)
+* [  TypeScript ](#tab-panel-6614)
+* [  Python ](#tab-panel-6615)
 
 TypeScript
 
@@ -592,8 +592,8 @@ TypeScript
 
 The current SQLite database size in bytes.
 
-* [  TypeScript ](#tab-panel-6570)
-* [  Python ](#tab-panel-6571)
+* [  TypeScript ](#tab-panel-6616)
+* [  Python ](#tab-panel-6617)
 
 TypeScript
 
@@ -639,8 +639,8 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
-* [  TypeScript ](#tab-panel-6572)
-* [  Python ](#tab-panel-6573)
+* [  TypeScript ](#tab-panel-6618)
+* [  Python ](#tab-panel-6619)
 
 TypeScript
 

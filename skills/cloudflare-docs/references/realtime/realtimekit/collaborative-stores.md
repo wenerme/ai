@@ -1,6 +1,6 @@
 ---
 title: Storage and Broadcast
-description: The RealtimeKit Stores API allows you to create multiple key-value pair realtime stores. Users can subscribe to changes in a store and receive real-time updates. Data is stored until a session is active.
+description: Create real-time key-value stores and broadcast messages to participants in RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -93,12 +93,12 @@ This method must be executed for every user.
 
 ### Update a Store
 
-You can add, update or delete entires in a store:
+You can add, update or delete entries in a store:
 
 | Param | Type       | Description                                                 | Required |
 | ----- | ---------- | ----------------------------------------------------------- | -------- |
 | key   | string     | Unique identifier used to store/update a value in the store | Yes      |
-| value | StoreValue | Value that can be stored agains a key                       | Yes      |
+| value | StoreValue | Value that can be stored against a key                      | Yes      |
 
 TypeScript
 

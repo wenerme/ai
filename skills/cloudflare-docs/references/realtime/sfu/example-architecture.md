@@ -1,5 +1,6 @@
 ---
 title: Example architecture
+description: Reference architecture for building a video calling application with Realtime SFU.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

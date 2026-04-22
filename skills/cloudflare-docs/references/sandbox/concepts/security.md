@@ -1,6 +1,6 @@
 ---
 title: Security model
-description: The Sandbox SDK is built on Containers, which run each sandbox in its own VM for strong isolation.
+description: Sandbox SDK uses VM-level isolation, input validation, and network controls to run untrusted code safely.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Workers KV reference information including Wrangler commands, environments, FAQ, and data security.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

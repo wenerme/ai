@@ -1,6 +1,6 @@
 ---
 title: Stytch
-description: The Stytch Pages Plugin is a middleware which validates all requests and their session_token.
+description: Validate Stytch session tokens in Pages Functions using the Stytch Pages Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

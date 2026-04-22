@@ -1,7 +1,6 @@
 ---
 title: Session Lifecycle
-description: The Session Guide explains what a session is and how to initialize one.
-In this guide we will talk about what happens to a peer as they move through a session, when do they go to the setup screen, waitlist screen, ended screen or any other screen, and how you can hook into these events to perform custom actions.
+description: Understand the lifecycle of a peer in a RealtimeKit session from setup to disconnect.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

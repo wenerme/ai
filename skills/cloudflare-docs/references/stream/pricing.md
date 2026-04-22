@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Cloudflare Stream lets you broadcast, store, and deliver video using a simple, unified API and simple pricing. Stream bills on two dimensions only:
+description: Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

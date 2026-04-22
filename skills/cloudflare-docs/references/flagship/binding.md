@@ -1,6 +1,6 @@
 ---
 title: Binding API
-description: Workers access Flagship through a binding that you add to your Wrangler configuration file. The binding field sets the variable name you use in your Worker code.
+description: Evaluate Flagship feature flags directly in Cloudflare Workers using the native binding with type-safe methods and automatic fallback.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -18,8 +18,8 @@ Copy page
 
 Workers access Flagship through a binding that you add to your Wrangler configuration file. The `binding` field sets the variable name you use in your Worker code.
 
-* [  wrangler.jsonc ](#tab-panel-6845)
-* [  wrangler.toml ](#tab-panel-6846)
+* [  wrangler.jsonc ](#tab-panel-6891)
+* [  wrangler.toml ](#tab-panel-6892)
 
 JSONC
 
@@ -57,8 +57,8 @@ Replace `<APP_ID>` with the app ID from your Flagship app. If you have not creat
 
 The binding provides type-safe methods for evaluating feature flags. If an evaluation fails or a flag is not found, the method returns the default value you provide.
 
-* [  JavaScript ](#tab-panel-6847)
-* [  TypeScript ](#tab-panel-6848)
+* [  JavaScript ](#tab-panel-6893)
+* [  TypeScript ](#tab-panel-6894)
 
 JavaScript
 

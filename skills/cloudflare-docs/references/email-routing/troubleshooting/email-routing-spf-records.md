@@ -1,6 +1,6 @@
 ---
 title: SPF records
-description: Having multiple sender policy framework (SPF) records on your account is not allowed, and will prevent Email Routing from working properly. If your account has multiple SPF records, follow these steps to solve the issue:
+description: Resolve duplicate SPF record conflicts that prevent Email Routing from forwarding emails correctly.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -4,7 +4,7 @@ title: onStackTrace | Config
 
 # onStackTrace <CRoot />
 
-- **Type**: `(error: Error, frame: ParsedStack) => boolean | void`
+- **Type:** `(error: Error, frame: ParsedStack) => boolean | void`
 
 Apply a filtering function to each frame of each stack trace when handling errors. This does not apply to stack traces printed by [`printConsoleTrace`](/config/printconsoletrace#printconsoletrace). The first argument, `error`, is a `TestError`.
 

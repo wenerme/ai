@@ -1,6 +1,6 @@
 ---
 title: Configure webhooks
-description: You can set up webhooks to receive notifications about your upload workflow. This will send an HTTP POST request to a specified endpoint when an image either successfully uploads or fails to upload.
+description: Set up webhooks to receive notifications when Cloudflare Images direct creator uploads succeed or fail.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

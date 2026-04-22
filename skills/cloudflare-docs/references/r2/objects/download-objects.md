@@ -1,6 +1,6 @@
 ---
 title: Download objects
-description: You can download objects from R2 using the dashboard, Workers API, S3 API, or command-line tools.
+description: Download objects from R2 using the dashboard, Workers API, S3 API, or CLI tools.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -55,8 +55,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to download objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-5848)
-* [ Python ](#tab-panel-5849)
+* [ JavaScript ](#tab-panel-8079)
+* [ Python ](#tab-panel-8080)
 
 TypeScript
 

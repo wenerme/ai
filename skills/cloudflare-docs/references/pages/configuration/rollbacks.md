@@ -1,6 +1,6 @@
 ---
 title: Rollbacks
-description: Rollbacks allow you to instantly revert your project to a previous production deployment.
+description: Instantly revert your Cloudflare Pages project to a previous production deployment.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

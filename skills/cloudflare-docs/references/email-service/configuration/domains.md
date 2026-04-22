@@ -1,6 +1,6 @@
 ---
 title: Domain configuration
-description: Configure your domains to work with Cloudflare Email Service. This includes DNS record management, domain verification, and advanced domain settings.
+description: Configure and verify DNS records for Email Service sending and routing on your domain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -42,10 +42,10 @@ Cloudflare automatically configures required DNS records for both email sending 
 
 These records authenticate your outbound emails. Email Sending creates DNS records on a `cf-bounce.` subdomain of your domain to handle bounce processing. These are separate from the records used by Email Routing.
 
-* [ MX Records ](#tab-panel-6717)
-* [ SPF Record ](#tab-panel-6718)
-* [ DKIM Record ](#tab-panel-6719)
-* [ DMARC Record ](#tab-panel-6720)
+* [ MX Records ](#tab-panel-6866)
+* [ SPF Record ](#tab-panel-6867)
+* [ DKIM Record ](#tab-panel-6868)
+* [ DMARC Record ](#tab-panel-6869)
 
 **Purpose**: Route bounce emails back to Cloudflare for processing.
 
@@ -125,9 +125,9 @@ TXT _dmarc.yourdomain.com "v=DMARC1; p=reject;"
 
 These records route incoming emails to Cloudflare and authenticate forwarded emails. Email Routing DNS records are configured on the root domain.
 
-* [ MX Records ](#tab-panel-6721)
-* [ SPF Record ](#tab-panel-6722)
-* [ DKIM Record ](#tab-panel-6723)
+* [ MX Records ](#tab-panel-6870)
+* [ SPF Record ](#tab-panel-6871)
+* [ DKIM Record ](#tab-panel-6872)
 
 **Purpose**: Route incoming emails to Cloudflare's mail servers.
 
@@ -217,8 +217,8 @@ Email Sending and Email Routing have separate DNS records and separate settings 
 
 ### Verification troubleshooting
 
-* [ DNS Propagation ](#tab-panel-6724)
-* [ Record Conflicts ](#tab-panel-6725)
+* [ DNS Propagation ](#tab-panel-6873)
+* [ Record Conflicts ](#tab-panel-6874)
 
 **Issue**: Records show as "Not Found" immediately after adding.
 

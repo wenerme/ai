@@ -1,6 +1,6 @@
 ---
 title: Limitations
-description: End users should be aware that Cloudflare cannot ensure that websites and services will not send identifying user data from requests forwarded through the Privacy Gateway. This includes information such as names, email addresses, and phone numbers.
+description: Known limitations of Privacy Gateway, including the inability to prevent websites from sending identifying user data.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

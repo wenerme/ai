@@ -36,12 +36,12 @@ To route the same prefix to different destinations, use separate [virtual networ
 
 Cloudflare reserves the following IP ranges for Zero Trust services:
 
-| IP range       | Purpose                                                                                                                                  |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| 100.64.0.0/12  | [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/) |
-| 100.96.0.0/12  | [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/)    |
-| 100.80.0.0/16  | [Initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/)                |
-| 100.112.0.0/16 | [Private Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/)                                              |
+| IP range       | Purpose                                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 100.64.0.0/12  | [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/)       |
+| 100.96.0.0/12  | [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) |
+| 100.80.0.0/16  | [Initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/)             |
+| 100.112.0.0/16 | [Private Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/)                                           |
 
 Do not configure routes that overlap with these reserved ranges.
 
@@ -90,9 +90,9 @@ To verify that a `cloudflared` tunnel works correctly with your Cloudflare WAN c
 
 Run `traceroute`
 
-If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
+If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
 
-Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/traceroute/) for more information.
+Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/) for more information.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-wan/","name":"Cloudflare WAN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-wan/zero-trust/","name":"Cloudflare One integration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-wan/zero-trust/cloudflare-tunnel/","name":"Cloudflare Tunnel"}}]}

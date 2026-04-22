@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Billing depends on how you use Browser Run:
+description: Understand Browser Run pricing for Quick Actions and Browser Sessions, including browser hours and concurrent browser costs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

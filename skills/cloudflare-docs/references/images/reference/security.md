@@ -1,6 +1,6 @@
 ---
 title: Security
-description: To further ensure the security and efficiency of image optimization services, you can adopt Cloudflare products that safeguard against malicious activities.
+description: Protect Cloudflare Images optimization requests from abuse using WAF, Bot Management, and Rate Limiting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

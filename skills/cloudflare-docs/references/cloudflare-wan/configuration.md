@@ -17,7 +17,8 @@ Copy page
 # Configuration
 
 * [ Configure with Appliance ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
-* [ Manual configuration ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/)
+* [ How to ](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/)
+* [ Third-party integration ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/)
 * [ Configure cloud on-ramps ](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/)
 * [ Common settings ](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/)
 

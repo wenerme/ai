@@ -1699,6 +1699,65 @@ components:
         OpenRouter built-in server tool: searches and filters AI models
         available on OpenRouter
       title: ChatSearchModelsServerTool
+    WebFetchEngineEnum:
+      type: string
+      enum:
+        - auto
+        - native
+        - openrouter
+        - firecrawl
+        - exa
+      description: >-
+        Which fetch engine to use. "auto" (default) uses native if the provider
+        supports it, otherwise Exa. "native" forces the provider's built-in
+        fetch. "exa" uses Exa Contents API (supports BYOK). "openrouter" uses
+        direct HTTP fetch. "firecrawl" uses Firecrawl scrape (requires BYOK).
+      title: WebFetchEngineEnum
+    WebFetchServerToolConfig:
+      type: object
+      properties:
+        allowed_domains:
+          type: array
+          items:
+            type: string
+          description: Only fetch from these domains.
+        blocked_domains:
+          type: array
+          items:
+            type: string
+          description: Never fetch from these domains.
+        engine:
+          $ref: '#/components/schemas/WebFetchEngineEnum'
+        max_content_tokens:
+          type: integer
+          description: >-
+            Maximum content length in approximate tokens. Content exceeding this
+            limit is truncated.
+        max_uses:
+          type: integer
+          description: >-
+            Maximum number of web fetches per request. Once exceeded, the tool
+            returns an error.
+      description: Configuration for the openrouter:web_fetch server tool
+      title: WebFetchServerToolConfig
+    WebFetchServerToolType:
+      type: string
+      enum:
+        - openrouter:web_fetch
+      title: WebFetchServerToolType
+    WebFetchServerTool:
+      type: object
+      properties:
+        parameters:
+          $ref: '#/components/schemas/WebFetchServerToolConfig'
+        type:
+          $ref: '#/components/schemas/WebFetchServerToolType'
+      required:
+        - type
+      description: >-
+        OpenRouter built-in server tool: fetches full content from a URL (web
+        page or PDF)
+      title: WebFetchServerTool
     WebSearchEngineEnum:
       type: string
       enum:
@@ -1863,6 +1922,7 @@ components:
         - $ref: '#/components/schemas/DatetimeServerTool'
         - $ref: '#/components/schemas/ImageGenerationServerTool_OpenRouter'
         - $ref: '#/components/schemas/ChatSearchModelsServerTool'
+        - $ref: '#/components/schemas/WebFetchServerTool'
         - $ref: '#/components/schemas/OpenRouterWebSearchServerTool'
         - $ref: '#/components/schemas/ChatWebSearchShorthand'
       description: >-

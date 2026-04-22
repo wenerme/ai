@@ -1,6 +1,6 @@
 ---
 title: WebGPU
-description: The WebGPU API allows you to use the GPU directly from JavaScript.
+description: Use the WebGPU API for GPU access from within Durable Objects in local development.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

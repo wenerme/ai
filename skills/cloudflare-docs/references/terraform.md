@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Terraform provider
-description: Configure Cloudflare using HashiCorp's “Infrastructure as Code” tool, Terraform. With Cloudflare’s Terraform provider, you can manage the Cloudflare global network using the same familiar tools you use to automate the rest of your infrastructure. Define and store configuration in source code repositories like GitHub, track and version changes over time, and roll back when needed — all without needing to use the Cloudflare APIs.
+description: Manage your Cloudflare configuration as infrastructure as code using the Terraform provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

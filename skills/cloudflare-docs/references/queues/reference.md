@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Cloudflare Queues reference documentation for architecture, delivery guarantees, and error codes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

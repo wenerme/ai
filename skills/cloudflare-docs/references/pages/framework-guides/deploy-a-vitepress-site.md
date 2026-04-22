@@ -1,6 +1,6 @@
 ---
 title: VitePress
-description: VitePress is a static site generator (SSG) designed for building fast, content-centric websites. VitePress takes your source content written in Markdown, applies a theme to it, and generates static HTML pages that can be easily deployed anywhere.
+description: Deploy a VitePress static site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

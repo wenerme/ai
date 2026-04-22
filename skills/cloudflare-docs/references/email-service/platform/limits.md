@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Cloudflare Email Service has the following limits to ensure optimal performance and prevent abuse. These limits apply to emails sent via both the REST API and the Workers binding unless noted otherwise.
+description: Email Service sending quotas, rate limits, message size limits, and compliance requirements.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

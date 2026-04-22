@@ -16,9 +16,12 @@ Copy page
 
 # Applications
 
+Cloudflare Access protects applications through several application types. Not sure which to use? Refer to [Choose an application type](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/).
+
+* [ Choose an application type ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/)
 * [ Add web applications ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)
-* [ Non-HTTP applications ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/)
 * [ Linked App Token ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/linked-app-token/)
+* [ Non-HTTP applications ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/)
 * [ Add bookmarks ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/bookmarks/)
 
 ```json

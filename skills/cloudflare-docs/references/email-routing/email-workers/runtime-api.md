@@ -1,6 +1,6 @@
 ---
 title: Runtime API
-description: An EmailEvent is the event type to programmatically process your emails with a Worker. You can reject, forward, or drop emails according to the logic you construct in your Worker.
+description: Email Workers Runtime API reference for handling, forwarding, rejecting, and replying to incoming emails.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

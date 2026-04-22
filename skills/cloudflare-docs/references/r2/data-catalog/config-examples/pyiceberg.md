@@ -1,6 +1,6 @@
 ---
 title: PyIceberg
-description: Below is an example of using PyIceberg to connect to R2 Data Catalog.
+description: Connect PyIceberg to R2 Data Catalog to create and query Iceberg tables in Python.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

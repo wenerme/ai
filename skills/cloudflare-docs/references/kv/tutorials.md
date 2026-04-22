@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with KV.
+description: Step-by-step tutorials to help you build applications with Workers KV.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

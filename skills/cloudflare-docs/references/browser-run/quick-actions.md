@@ -1,6 +1,6 @@
 ---
 title: Quick Actions
-description: Quick Actions provide simple HTTP endpoints for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more.
+description: Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

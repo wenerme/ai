@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Tenant
-description: The Cloudflare Tenant API is a provisioning mechanism to help Channel and Alliance partners set up and manage Cloudflare accounts and services for their customers.
+description: Provision and manage Cloudflare accounts and services for customers using the Tenant API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

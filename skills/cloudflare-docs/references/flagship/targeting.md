@@ -1,6 +1,6 @@
 ---
 title: Targeting rules
-description: Targeting rules let you serve different flag values to different users based on their attributes. Each flag can have zero or more rules.
+description: Serve different Flagship flag values to different users based on attributes, conditions, and logical grouping.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

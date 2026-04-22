@@ -91,6 +91,20 @@ If included in your plan, you can use [request body fields](https://developers.c
 
 At the zone level, you can deploy each managed ruleset once. At the [account level](https://developers.cloudflare.com/waf/account/managed-rulesets/), you can deploy each managed ruleset multiple times, which allows you to apply different configurations of the same ruleset to different subsets of incoming traffic.
 
+## Execution order
+
+WAF Managed Rules run in the `http_request_firewall_managed` phase, which executes **after**:
+
+* HTTP DDoS Attack Protection (`ddos_l7` phase)
+* Custom Rules (`http_request_firewall_custom` phase)
+* Rate Limiting Rules (`http_ratelimit` phase)
+
+This means a rule with a terminal action (such as Block or Managed Challenge) in any of these earlier phases prevents Managed Rules from evaluating that request. For the complete security feature execution order, refer to [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/).
+
+### WAF exceptions
+
+WAF exceptions (skip rules) are rules with a `skip` action deployed to the `http_request_firewall_managed` phase entry-point ruleset. They are evaluated in list order within the entry-point ruleset — a skip rule only bypasses `execute` rules listed after it. Place exceptions before the managed ruleset execute rules they are intended to skip. For more information, refer to [WAF exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/).
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/managed-rules/","name":"Managed Rules"}}]}
 ```

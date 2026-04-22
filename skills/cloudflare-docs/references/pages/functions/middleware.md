@@ -1,6 +1,6 @@
 ---
 title: Middleware
-description: Middleware is reusable logic that can be run before your onRequest function. Middlewares are typically utility functions. Error handling, user authentication, and logging are typical candidates for middleware within an application.
+description: Add reusable logic like error handling and authentication to Pages Functions with middleware.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

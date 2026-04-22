@@ -1,6 +1,6 @@
 ---
 title: Sentry
-description: The Sentry Pages Plugin captures and logs all exceptions which occur below it in the execution chain of your Pages Functions. It is therefore recommended that you install this Plugin at the root of your application in functions/_middleware.ts as the very first Plugin.
+description: Capture and log exceptions in Pages Functions using the Sentry Pages Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

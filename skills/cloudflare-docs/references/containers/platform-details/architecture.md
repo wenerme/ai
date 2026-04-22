@@ -1,9 +1,6 @@
 ---
 title: Lifecycle of a Container
-description: After you deploy an application with a Container, your image is uploaded to
-Cloudflare's Registry and distributed globally to Cloudflare's Network.
-Cloudflare will pre-schedule instances and pre-fetch images across the globe to ensure quick start
-times when scaling up the number of concurrent container instances.
+description: Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

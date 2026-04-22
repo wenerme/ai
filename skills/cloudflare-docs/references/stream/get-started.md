@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: You can upload videos using the API or directly on the Stream page of the Cloudflare dashboard.
+description: Upload your first video or start your first live stream with Cloudflare Stream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

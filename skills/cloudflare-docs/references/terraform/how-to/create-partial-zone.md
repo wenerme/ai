@@ -1,6 +1,6 @@
 ---
 title: Create a partial zone using Terraform
-description: A partial zone lets you use Cloudflare for a subdomain while keeping your existing authoritative DNS provider for the parent domain. This guide shows how to automate the setup using the Cloudflare Terraform provider.
+description: Automate the setup of a Cloudflare partial (CNAME) zone using the Terraform provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

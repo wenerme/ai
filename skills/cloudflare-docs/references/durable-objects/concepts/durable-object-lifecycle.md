@@ -1,6 +1,6 @@
 ---
 title: Lifecycle of a Durable Object
-description: This section describes the lifecycle of a Durable Object.
+description: Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

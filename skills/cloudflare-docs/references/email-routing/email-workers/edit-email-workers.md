@@ -1,6 +1,6 @@
 ---
 title: Edit Email Workers
-description: Adding or editing Email Workers is straightforward. You can rename, delete or edit Email Workers, as well as change the routes bound to a specific Email Worker.
+description: Add, rename, delete, or modify Email Workers and manage their associated email routes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

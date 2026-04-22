@@ -26,10 +26,13 @@ ChatGPT Plus, Pro, Business, Edu, and Enterprise plans include Codex. Learn more
 
 The Codex app is available on macOS and Windows.
 
+Most Codex app features are available on both platforms. Platform-specific
+exceptions are noted in the relevant docs.
+
 <WorkflowSteps variant="headings">
 1. Download and install the Codex app
 
-    Download the Codex app for Windows or macOS. Choose the Intel build if you're using an Intel-based Mac.
+    Download the Codex app for macOS or Windows. Choose the Intel build if you're using an Intel-based Mac.
 
     <CodexAppDownloadCta client:load className="mb-4" />
 

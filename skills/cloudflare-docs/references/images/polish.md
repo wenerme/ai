@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Polish
-description: Cloudflare Polish is a one-click image optimization product that automatically optimizes images in your site. Polish strips metadata from images and reduces image size through lossy or lossless compression to accelerate the speed of image downloads.
+description: Cloudflare Polish automatically optimizes images by stripping metadata and applying lossy or lossless compression.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Presigned URLs
-description: Presigned URLs are an S3 concept for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like GetObject or PutObject) on a specific object until the URL expires.
+description: Generate presigned URLs to grant temporary access to R2 objects without exposing credentials.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -38,9 +38,9 @@ Presigned URLs are generated client-side with no communication with R2, requirin
 
 ### SDK examples
 
-* [ JavaScript ](#tab-panel-5792)
-* [ Python ](#tab-panel-5793)
-* [ CLI ](#tab-panel-5794)
+* [ JavaScript ](#tab-panel-8023)
+* [ Python ](#tab-panel-8024)
+* [ CLI ](#tab-panel-8025)
 
 TypeScript
 

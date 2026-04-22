@@ -1,7 +1,6 @@
 ---
 title: Durable Object Container
-description: When using a Container-enabled Durable Object, you can access the Durable Object's associated container via
-the container object which is on the ctx property. This allows you to start, stop, and interact with the container.
+description: Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -25,8 +24,8 @@ Note
 
 It is likely preferable to use the official `Container` class, which provides helper methods and a more idiomatic API for working with containers on top of Durable Objects.
 
-* [  JavaScript ](#tab-panel-4401)
-* [  TypeScript ](#tab-panel-4402)
+* [  JavaScript ](#tab-panel-6600)
+* [  TypeScript ](#tab-panel-6601)
 
 index.js
 

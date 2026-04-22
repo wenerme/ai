@@ -1,6 +1,6 @@
 ---
 title: Error Codes
-description: This page describes RealtimeKit error codes to help you identify and troubleshoot issues.
+description: RealtimeKit error codes for identifying and troubleshooting SDK and API issues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

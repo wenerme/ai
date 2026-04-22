@@ -1,6 +1,6 @@
 ---
 title: /links - Retrieve links from a webpage
-description: The /links endpoint retrieves all links from a webpage. It can be used to extract all links from a page, including those that are hidden.
+description: Extract all links from a webpage, including hidden ones, using the Browser Run /links endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -46,8 +46,8 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-* [ curl ](#tab-panel-3584)
-* [ TypeScript SDK ](#tab-panel-3585)
+* [ curl ](#tab-panel-5411)
+* [ TypeScript SDK ](#tab-panel-5412)
 
 This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 

@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Learn how you can use D1 within your existing application and architecture.
+description: Explore demo applications and reference architectures that use D1 databases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

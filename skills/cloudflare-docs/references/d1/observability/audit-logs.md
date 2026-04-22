@@ -1,6 +1,6 @@
 ---
 title: Audit Logs
-description: Audit logs provide a comprehensive summary of changes made within your Cloudflare account, including those made to D1 databases. This functionality is available on all plan types, free of charge, and is always enabled.
+description: Review audit log entries for configuration changes made to your D1 databases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

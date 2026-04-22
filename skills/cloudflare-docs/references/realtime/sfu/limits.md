@@ -1,6 +1,6 @@
 ---
 title: Limits, timeouts and quotas
-description: Understanding the limits and timeouts of Cloudflare Realtime is crucial for optimizing the performance and reliability of your applications. This section outlines the key constraints and behaviors you should be aware of when integrating Cloudflare Realtime into your app.
+description: Realtime SFU rate limits, track timeouts, session constraints, and free tier quotas.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

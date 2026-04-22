@@ -1,6 +1,6 @@
 ---
 title: /screenshot - Capture screenshot
-description: The /screenshot endpoint renders the webpage by processing its HTML and JavaScript, then captures a screenshot of the fully rendered page.
+description: Capture a screenshot of a fully rendered webpage using the Browser Run /screenshot endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -45,8 +45,8 @@ You must provide either `url` or `html`:
 
 ### Take a screenshot from custom HTML
 
-* [ curl ](#tab-panel-3592)
-* [ TypeScript SDK ](#tab-panel-3593)
+* [ curl ](#tab-panel-5419)
+* [ TypeScript SDK ](#tab-panel-5420)
 
 Sets the HTML content of the page to `Hello World!` and then takes a screenshot. The option `omitBackground` hides the default white background and allows capturing screenshots with transparency.
 

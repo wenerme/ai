@@ -1,5 +1,6 @@
 ---
 title: Manage videos
+description: Organize, search, and manage your Cloudflare Stream video library.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

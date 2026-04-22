@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Hyperdrive platform details including limits, pricing, and release notes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure Workers AI bindings, API endpoints, and third-party integrations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

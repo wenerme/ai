@@ -1,6 +1,6 @@
 ---
 title: Sessions and Tracks
-description: Cloudflare Realtime offers a simple yet powerful framework for building real-time experiences. At the core of this system are three key concepts: Applications,  Sessions and Tracks. Familiarizing yourself with these concepts is crucial for using Realtime.
+description: Understand Realtime SFU core concepts including applications, sessions, and tracks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

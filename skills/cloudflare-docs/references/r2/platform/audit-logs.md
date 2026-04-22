@@ -1,6 +1,6 @@
 ---
 title: Audit Logs
-description: Audit logs provide a comprehensive summary of changes made within your Cloudflare account, including those made to R2 buckets. This functionality is available on all plan types, free of charge, and is always enabled.
+description: Review audit logs for configuration changes made to your R2 buckets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

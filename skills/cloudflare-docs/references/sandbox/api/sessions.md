@@ -1,6 +1,6 @@
 ---
 title: Sessions
-description: Create isolated execution contexts within a sandbox. Each session maintains its own shell state, environment variables, and working directory. See Session management concept for details.
+description: Create isolated execution contexts with independent shell state within a Sandbox SDK container.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -47,8 +47,8 @@ const session = await sandbox.createSession(options?: SessionOptions): Promise<E
 
 **Returns**: `Promise<ExecutionSession>` with all sandbox methods bound to this session
 
-* [  JavaScript ](#tab-panel-6241)
-* [  TypeScript ](#tab-panel-6242)
+* [  JavaScript ](#tab-panel-8472)
+* [  TypeScript ](#tab-panel-8473)
 
 JavaScript
 
@@ -205,8 +205,8 @@ const session = await sandbox.getSession(sessionId: string): Promise<ExecutionSe
 
 **Returns**: `Promise<ExecutionSession>` bound to the specified session
 
-* [  JavaScript ](#tab-panel-6235)
-* [  TypeScript ](#tab-panel-6236)
+* [  JavaScript ](#tab-panel-8466)
+* [  TypeScript ](#tab-panel-8467)
 
 JavaScript
 
@@ -277,8 +277,8 @@ const result = await sandbox.deleteSession(sessionId: string): Promise<SessionDe
 * `sessionId` \- ID of the deleted session
 * `timestamp` \- Deletion timestamp
 
-* [  JavaScript ](#tab-panel-6237)
-* [  TypeScript ](#tab-panel-6238)
+* [  JavaScript ](#tab-panel-8468)
+* [  TypeScript ](#tab-panel-8469)
 
 JavaScript
 
@@ -357,8 +357,8 @@ Warning
 
 Call `setEnvVars()` **before** any other sandbox operations to ensure environment variables are available from the start.
 
-* [  JavaScript ](#tab-panel-6239)
-* [  TypeScript ](#tab-panel-6240)
+* [  JavaScript ](#tab-panel-8470)
+* [  TypeScript ](#tab-panel-8471)
 
 JavaScript
 
@@ -443,5 +443,5 @@ The `ExecutionSession` object has all sandbox methods bound to the specific sess
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/sessions/","name":"Sessions"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/sessions/","name":"Sessions"}}]}
 ```

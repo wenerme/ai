@@ -1,6 +1,6 @@
 ---
 title: Local Participant
-description: Manage local user media devices, control audio, video, and screenshare, and handle events in RealtimeKit meetings.
+description: Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

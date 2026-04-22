@@ -39,7 +39,7 @@ If you plan on using Cloudflare One Appliance, you can skip the prerequisites be
 Setting up Cloudflare WAN manually is done through a combination of third-party devices in your premises and the Cloudflare dashboard. To be successful, you need to:
 
 1. Read the [Prerequisites](#prerequisites) below.
-2. Follow the steps in [Manual configuration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/).
+2. Follow the steps in [Manual configuration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Common questions about Cloudflare Email Service.
+description: Common questions about Email Service limits, sender reputation, marketing email support, and abuse reporting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

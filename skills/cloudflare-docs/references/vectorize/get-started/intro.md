@@ -1,6 +1,6 @@
 ---
 title: Introduction to Vectorize
-description: Vectorize is Cloudflare's vector database. Vector databases allow you to use machine learning (ML) models to perform semantic search, recommendation, classification and anomaly detection tasks, as well as provide context to LLMs (Large Language Models).
+description: Create your first Vectorize index, connect a Worker, and run a similarity search.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -155,8 +155,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6795)
-* [  wrangler.toml ](#tab-panel-6796)
+* [  wrangler.jsonc ](#tab-panel-9060)
+* [  wrangler.toml ](#tab-panel-9061)
 
 JSONC
 

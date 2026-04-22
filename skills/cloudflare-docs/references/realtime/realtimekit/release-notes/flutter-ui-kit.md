@@ -1,6 +1,6 @@
 ---
 title: Flutter UI Kit
-description: Subscribe to RSS
+description: Release notes and changelog for the RealtimeKit Flutter UI Kit SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

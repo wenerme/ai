@@ -1,6 +1,6 @@
 ---
 title: Email Workers
-description: With Email Workers you can leverage the power of Cloudflare Workers to implement any logic you need to process your emails and create complex rules. These rules determine what happens when you receive an email.
+description: Process incoming emails programmatically with Cloudflare Workers to build custom filtering, forwarding, and notification logic.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Analytics
-description: Stream provides server-side analytics that can be used to:
+description: Access server-side video analytics for Cloudflare Stream via the dashboard or GraphQL API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

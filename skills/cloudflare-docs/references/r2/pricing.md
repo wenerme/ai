@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: R2 charges based on the total volume of data stored, along with two classes of operations on that data:
+description: R2 pricing for storage, Class A and Class B operations, and free tier details.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

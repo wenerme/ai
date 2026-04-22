@@ -1,6 +1,6 @@
 ---
 title: Workers API reference
-description: The in-Worker R2 API is accessed by binding an R2 bucket to a Worker. The Worker you write can expose external access to buckets via a route or manipulate R2 objects internally.
+description: Complete reference for the R2 in-Worker API, including bucket and object operations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -34,8 +34,8 @@ A binding is defined in the Wrangler file of your Worker project's directory.
 
 To bind your R2 bucket to your Worker, add the following to your Wrangler file. Update the `binding` property to a valid JavaScript variable identifier and `bucket_name` to the name of your R2 bucket:
 
-* [  wrangler.jsonc ](#tab-panel-5797)
-* [  wrangler.toml ](#tab-panel-5798)
+* [  wrangler.jsonc ](#tab-panel-8028)
+* [  wrangler.toml ](#tab-panel-8029)
 
 JSONC
 
@@ -81,8 +81,8 @@ The following methods are available on the bucket binding object injected into y
 
 For example, to issue a `PUT` object request using the binding above:
 
-* [  JavaScript ](#tab-panel-5795)
-* [  Python ](#tab-panel-5796)
+* [  JavaScript ](#tab-panel-8026)
+* [  Python ](#tab-panel-8027)
 
 JavaScript
 

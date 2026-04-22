@@ -1,6 +1,6 @@
 ---
 title: Cloudflare for Platforms
-description: Cloudflare for Platforms is used by leading platforms big and small to:
+description: Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

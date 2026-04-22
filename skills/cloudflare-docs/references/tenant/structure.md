@@ -1,6 +1,6 @@
 ---
 title: Tenant structure
-description: Cloudflare helps Channel and Alliance partners manage their and their customers' accounts through a Tenant structure.
+description: Understand how tenants, accounts, users, and zones relate in the Cloudflare Tenant model.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

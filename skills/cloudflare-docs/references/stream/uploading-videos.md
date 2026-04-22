@@ -1,6 +1,6 @@
 ---
 title: Upload videos
-description: Before you upload your video, review the options for uploading a video, supported formats, and recommendations.
+description: Review upload methods, supported formats, and recommendations for Cloudflare Stream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

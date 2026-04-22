@@ -1,6 +1,6 @@
 ---
 title: Remix
-description: Remix is a framework that focused on web standard. The framework is no longer recommended for new projects by the authors and its successor React Router should be used instead.
+description: Deploy a Remix application to Cloudflare Pages, or migrate to React Router.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

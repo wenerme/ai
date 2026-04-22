@@ -1,6 +1,6 @@
 ---
 title: Return objects
-description: Some D1 Worker Binding APIs return a typed object.
+description: Understand the D1Result and D1ExecResult objects returned by D1 Worker Binding API query methods.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -82,8 +82,8 @@ Explain Code
 
 ### Example
 
-* [  JavaScript ](#tab-panel-4216)
-* [  Python ](#tab-panel-4217)
+* [  JavaScript ](#tab-panel-6419)
+* [  Python ](#tab-panel-6420)
 
 JavaScript
 
@@ -209,8 +209,8 @@ JavaScript
 
 ### Example
 
-* [  JavaScript ](#tab-panel-4218)
-* [  Python ](#tab-panel-4219)
+* [  JavaScript ](#tab-panel-6421)
+* [  Python ](#tab-panel-6422)
 
 JavaScript
 

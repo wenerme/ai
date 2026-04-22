@@ -100,8 +100,8 @@ This list is not exhaustive, and other CAs might be added or removed for operati
 
 Create a CAA record for each Certificate Authority (CA) that you plan to use for your domain.
 
-* [ Dashboard ](#tab-panel-8806)
-* [ API ](#tab-panel-8807)
+* [ Dashboard ](#tab-panel-8852)
+* [ API ](#tab-panel-8853)
 
 To add a CAA record in the dashboard,
 
@@ -118,6 +118,27 @@ To add a CAA record in the dashboard,
 To create a CAA record via the API, use this [POST endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/).
 
 Once you have finished creating all the records, you can review them in the list of records appearing under the DNS Records panel.
+
+## Certificate authorities and required CAA values
+
+If you have CAA records on your domain, they must permit the certificate authority (CA) that Cloudflare uses. For the required CAA values for each CA Cloudflare may use, refer to [Certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#caa-records).
+
+### CNAME chain CAA records
+
+CAA records on a CNAME target also apply. If your hostname CNAMEs to a domain whose zone has restrictive CAA records, those records take precedence — even if your own domain has no CAA records.
+
+Check CAA at all levels of your CNAME chain:
+
+Terminal window
+
+```
+
+dig yourdomain.com CAA +short
+
+dig cname-target.com CAA +short
+
+
+```
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/ssl/","name":"SSL/TLS"}},{"@type":"ListItem","position":3,"item":{"@id":"/ssl/edge-certificates/","name":"Edge certificates"}},{"@type":"ListItem","position":4,"item":{"@id":"/ssl/edge-certificates/caa-records/","name":"Add CAA records"}}]}

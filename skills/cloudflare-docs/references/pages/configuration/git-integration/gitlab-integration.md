@@ -1,6 +1,6 @@
 ---
 title: GitLab integration
-description: You can connect each Cloudflare Pages project to a GitLab repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
+description: Connect a GitLab repository to Cloudflare Pages for automatic deployments and commit status checks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

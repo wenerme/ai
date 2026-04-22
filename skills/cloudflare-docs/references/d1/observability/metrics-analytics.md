@@ -1,6 +1,6 @@
 ---
 title: Metrics and analytics
-description: D1 exposes database analytics that allow you to inspect query volume, query latency, and storage size across all and/or each database in your account.
+description: Inspect D1 query volume, latency, and storage size via the dashboard or GraphQL Analytics API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

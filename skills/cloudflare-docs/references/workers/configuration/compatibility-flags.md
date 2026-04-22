@@ -30,8 +30,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-7110)
-* [  wrangler.toml ](#tab-panel-7111)
+* [  wrangler.jsonc ](#tab-panel-9381)
+* [  wrangler.toml ](#tab-panel-9382)
 
 JSONC
 
@@ -87,8 +87,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-7114)
-* [  wrangler.toml ](#tab-panel-7115)
+* [  wrangler.jsonc ](#tab-panel-9385)
+* [  wrangler.toml ](#tab-panel-9386)
 
 JSONC
 
@@ -104,7 +104,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10"
+  "compatibility_date": "2026-04-21"
 
 }
 
@@ -119,13 +119,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-7108)
-* [  wrangler.toml ](#tab-panel-7109)
+* [  wrangler.jsonc ](#tab-panel-9379)
+* [  wrangler.toml ](#tab-panel-9380)
 
 JSONC
 
@@ -157,8 +157,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-7112)
-* [  wrangler.toml ](#tab-panel-7113)
+* [  wrangler.jsonc ](#tab-panel-9383)
+* [  wrangler.toml ](#tab-panel-9384)
 
 JSONC
 
@@ -200,6 +200,52 @@ Newest flags are listed first.
 When `containers_pid_namespace` is set, containers will use an isolated PID namespace. The `ENTRYPOINT` of your container will have PID 1.
 
 When unset, the container shares the PID namespace with the virtual machine (VM) containing the container. The `ENTRYPOINT` of your container will _not_ have PID 1 and other processes running on the VM (that are not part of your container) will be visible.
+
+### WebSocket standard binary type
+
+| **Default as of**   | 2026-03-17                            |
+| ------------------- | ------------------------------------- |
+| **Flag to enable**  | websocket\_standard\_binary\_type     |
+| **Flag to disable** | no\_websocket\_standard\_binary\_type |
+
+This flag controls the default value of the [binaryType](https://developers.cloudflare.com/workers/runtime-apis/websockets/#binarytype) property on `WebSocket`, which in turn controls how binary frames are delivered to the `message` event. With the flag active, `binaryType` defaults to `"blob"` and binary frames arrive as [Blob ↗](https://developer.mozilla.org/en-US/docs/Web/API/Blob) objects, matching the [WebSocket specification ↗](https://websockets.spec.whatwg.org/) and standard browser behavior. Without the flag, `binaryType` defaults to `"arraybuffer"` and binary frames arrive as [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer), matching the runtime's historical behavior.
+
+The `binaryType` property itself is available on every `WebSocket` regardless of the flag. Assigning a value overrides the default for that specific WebSocket:
+
+JavaScript
+
+```
+
+const resp = await fetch("https://example.com", {
+
+  headers: { Upgrade: "websocket" },
+
+});
+
+const ws = resp.webSocket;
+
+
+// Opt back into ArrayBuffer delivery before calling accept().
+
+ws.binaryType = "arraybuffer";
+
+ws.accept();
+
+
+ws.addEventListener("message", (event) => {
+
+  // event.data is an ArrayBuffer for binary frames.
+
+});
+
+
+```
+
+Explain Code
+
+If you are not ready to migrate and want to keep `ArrayBuffer` as the default for every WebSocket in your Worker, add the `no_websocket_standard_binary_type` flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
+
+This flag has no effect on the Durable Object hibernatable WebSocket [webSocketMessage](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) handler, which always receives binary data as `ArrayBuffer`.
 
 ### WebSocket auto-reply to close
 

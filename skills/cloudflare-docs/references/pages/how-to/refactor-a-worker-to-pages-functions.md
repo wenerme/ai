@@ -1,6 +1,6 @@
 ---
 title: Refactor a Worker to a Pages Function
-description: In this guide, you will learn how to refactor a Worker made to intake form submissions to a Pages Function that can be hosted on your Cloudflare Pages application. Pages Functions is a serverless function that lives within the same project directory as your application and is deployed with Cloudflare Pages. It enables you to run server-side code that adds dynamic functionality without running a dedicated server. You may want to refactor a Worker to a Pages Function for one of these reasons:
+description: Migrate an existing Cloudflare Worker into a Pages Function for your Pages project.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

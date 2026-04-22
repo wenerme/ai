@@ -1,6 +1,6 @@
 ---
 title: Pull consumers
-description: A pull-based consumer allows you to pull from a queue over HTTP from any environment and/or programming language outside of Cloudflare Workers. A pull-based consumer can be useful when your message consumption rate is limited by upstream infrastructure or long-running tasks.
+description: Pull messages from a Cloudflare Queue over HTTP from any environment or language.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -120,9 +120,9 @@ You will need to note the token down: it will only be displayed once.
 
 To pull a message, make a HTTP POST request to the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/pull/) with a JSON-encoded body that optionally specifies a `visibility_timeout` and a `batch_size`, or an empty JSON object (`{}`):
 
-* [  JavaScript ](#tab-panel-5686)
-* [  TypeScript ](#tab-panel-5687)
-* [  Python ](#tab-panel-5688)
+* [  JavaScript ](#tab-panel-7917)
+* [  TypeScript ](#tab-panel-7918)
+* [  Python ](#tab-panel-7919)
 
 index.js
 
@@ -339,9 +339,9 @@ Messages pulled by a consumer need to be either acknowledged or marked for retry
 
 To acknowledge and/or mark messages to be retried, make a HTTP `POST` request to `/ack` endpoint of your queue per the [Queues REST API](https://developers.cloudflare.com/api/resources/queues/subresources/messages/methods/ack/) by providing an array of `lease_id` objects to acknowledge and/or retry:
 
-* [  JavaScript ](#tab-panel-5689)
-* [  TypeScript ](#tab-panel-5690)
-* [  Python ](#tab-panel-5691)
+* [  JavaScript ](#tab-panel-7920)
+* [  TypeScript ](#tab-panel-7921)
+* [  Python ](#tab-panel-7922)
 
 index.js
 

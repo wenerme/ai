@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Cloudflare Realtime billing is based on data sent from Cloudflare edge to your application.
+description: Cloudflare Realtime SFU and TURN pricing, free tier details, and billing information.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Export images
-description: Cloudflare Images supports image exports via the Cloudflare dashboard and API which allows you to get the original version of your image.
+description: Download the original version of images stored in Cloudflare Images via the dashboard or API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

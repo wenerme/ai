@@ -1,5 +1,6 @@
 ---
 title: How to
+description: Guides for managing accounts, subscriptions, and tenant details with the Cloudflare Tenant API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

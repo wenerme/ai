@@ -1,6 +1,6 @@
 ---
 title: Create predefined variants
-description: Variants let you specify how images should be resized for different use cases. By default, images are served with a public variant, but you can create up to 100 variants to fit your needs. Follow these steps to create a variant.
+description: Define named variants in Cloudflare Images to control how hosted images are resized and served.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: Before you begin, install Terraform. Each tutorial builds on the previous, so you should complete the tutorials in the order shown below.
+description: Step-by-step Cloudflare Terraform tutorials from initialization to advanced configuration.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

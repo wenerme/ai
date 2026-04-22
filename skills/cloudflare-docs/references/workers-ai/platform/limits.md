@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Workers AI is now Generally Available. We've updated our rate limits to reflect this.
+description: Rate limits for Workers AI inference requests, organized by task type and model.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

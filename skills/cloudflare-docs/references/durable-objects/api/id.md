@@ -1,6 +1,6 @@
 ---
 title: Durable Object ID
-description: A Durable Object ID is a 64-digit hexadecimal number used to identify a Durable Object. Not all 64-digit hex numbers are valid IDs. Durable Object IDs are constructed indirectly via the DurableObjectNamespace interface.
+description: API reference for DurableObjectId, the 64-digit hex identifier used to address a Durable Object.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -66,8 +66,8 @@ const id = env.MY_DURABLE_OBJECT.idFromString(session_id);
 
 `equals` is used to compare equality between two instances of `DurableObjectId`.
 
-* [  JavaScript ](#tab-panel-4361)
-* [  Python ](#tab-panel-4362)
+* [  JavaScript ](#tab-panel-6602)
+* [  Python ](#tab-panel-6603)
 
 JavaScript
 
@@ -115,8 +115,8 @@ Note
 
 Alarms created before 2026-03-15 do not have `name` stored. When such an alarm fires, `ctx.id.name` will be `undefined`, and any new alarm scheduled from that handler will also lack a `name`. To fix this, reschedule the alarm from a `fetch()` or RPC handler where `name` is available.
 
-* [  JavaScript ](#tab-panel-4363)
-* [  Python ](#tab-panel-4364)
+* [  JavaScript ](#tab-panel-6604)
+* [  Python ](#tab-panel-6605)
 
 JavaScript
 

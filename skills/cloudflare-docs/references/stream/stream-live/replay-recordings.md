@@ -1,5 +1,6 @@
 ---
 title: Record and replay live streams
+description: Automatically record Cloudflare Stream live broadcasts and retrieve recordings via the API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

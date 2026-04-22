@@ -1,6 +1,6 @@
 ---
 title: Headers
-description: The default response headers served on static asset responses can be overridden, removed, or added to, by creating a plain text file called _headers without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Cloudflare Pages and its rules will be applied to static asset responses.
+description: Set custom HTTP response headers for your Cloudflare Pages site using a _headers file.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

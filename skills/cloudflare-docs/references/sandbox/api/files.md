@@ -1,6 +1,6 @@
 ---
 title: Files
-description: Read, write, and manage files in the sandbox filesystem. All paths are absolute (e.g., /workspace/app.js).
+description: Read, write, and manage files in the Sandbox SDK filesystem.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -40,8 +40,8 @@ await sandbox.writeFile(path: string, content: string, options?: WriteFileOption
 * `options` (optional):  
    * `encoding` \- File encoding (`"utf-8"` or `"base64"`, default: `"utf-8"`)
 
-* [  JavaScript ](#tab-panel-6179)
-* [  TypeScript ](#tab-panel-6180)
+* [  JavaScript ](#tab-panel-8410)
+* [  TypeScript ](#tab-panel-8411)
 
 JavaScript
 
@@ -96,8 +96,8 @@ const file = await sandbox.readFile(path: string, options?: ReadFileOptions): Pr
 
 **Returns**: `Promise<FileInfo>` with `content` and `encoding`
 
-* [  JavaScript ](#tab-panel-6187)
-* [  TypeScript ](#tab-panel-6188)
+* [  JavaScript ](#tab-panel-8418)
+* [  TypeScript ](#tab-panel-8419)
 
 JavaScript
 
@@ -170,8 +170,8 @@ const result = await sandbox.exists(path: string): Promise<FileExistsResult>
 
 **Returns**: `Promise<FileExistsResult>` with `exists` boolean
 
-* [  JavaScript ](#tab-panel-6191)
-* [  TypeScript ](#tab-panel-6192)
+* [  JavaScript ](#tab-panel-8422)
+* [  TypeScript ](#tab-panel-8423)
 
 JavaScript
 
@@ -256,8 +256,8 @@ await sandbox.mkdir(path: string, options?: MkdirOptions): Promise<void>
 * `options` (optional):  
    * `recursive` \- Create parent directories if needed (default: `false`)
 
-* [  JavaScript ](#tab-panel-6183)
-* [  TypeScript ](#tab-panel-6184)
+* [  JavaScript ](#tab-panel-8414)
+* [  TypeScript ](#tab-panel-8415)
 
 JavaScript
 
@@ -304,8 +304,8 @@ await sandbox.deleteFile(path: string): Promise<void>
 
 * `path` \- Absolute path to the file
 
-* [  JavaScript ](#tab-panel-6181)
-* [  TypeScript ](#tab-panel-6182)
+* [  JavaScript ](#tab-panel-8412)
+* [  TypeScript ](#tab-panel-8413)
 
 JavaScript
 
@@ -343,8 +343,8 @@ await sandbox.renameFile(oldPath: string, newPath: string): Promise<void>
 * `oldPath` \- Current file path
 * `newPath` \- New file path
 
-* [  JavaScript ](#tab-panel-6185)
-* [  TypeScript ](#tab-panel-6186)
+* [  JavaScript ](#tab-panel-8416)
+* [  TypeScript ](#tab-panel-8417)
 
 JavaScript
 
@@ -382,8 +382,8 @@ await sandbox.moveFile(sourcePath: string, destinationPath: string): Promise<voi
 * `sourcePath` \- Current file path
 * `destinationPath` \- Destination path
 
-* [  JavaScript ](#tab-panel-6189)
-* [  TypeScript ](#tab-panel-6190)
+* [  JavaScript ](#tab-panel-8420)
+* [  TypeScript ](#tab-panel-8421)
 
 JavaScript
 
@@ -424,8 +424,8 @@ await sandbox.gitCheckout(repoUrl: string, options?: GitCheckoutOptions): Promis
    * `targetDir` \- Directory to clone into (default: `/workspace/{repoName}`)  
    * `depth` \- Clone depth for shallow clones (e.g., `1` for latest commit only)
 
-* [  JavaScript ](#tab-panel-6193)
-* [  TypeScript ](#tab-panel-6194)
+* [  JavaScript ](#tab-panel-8424)
+* [  TypeScript ](#tab-panel-8425)
 
 JavaScript
 
@@ -495,5 +495,5 @@ Explain Code
 * [Commands API](https://developers.cloudflare.com/sandbox/api/commands/) \- Execute commands
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/files/","name":"Files"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/files/","name":"Files"}}]}
 ```

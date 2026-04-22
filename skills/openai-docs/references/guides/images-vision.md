@@ -10,7 +10,7 @@ If you know what you want to build, find your use case below to get started. If 
 
 ### A tour of image-related use cases
 
-Recent language models can process image inputs and analyze them — a capability known as **vision**. With `gpt-image-1`, they can both analyze visual inputs and create images.
+Recent language models can process image inputs and analyze them—a capability known as **vision**. GPT Image models can use text and image inputs to create new images or edit existing ones.
 
 The OpenAI API offers several endpoints to process images as input or generate them as output, enabling you to build powerful multimodal applications.
 
@@ -26,10 +26,7 @@ To learn more about the input and output modalities supported by our models, ref
 
 You can generate or edit images using the Image API or the Responses API.
 
-Our latest image generation model, `gpt-image-1`, is a natively multimodal large language model.
-It can understand text and images and leverage its broad world knowledge to generate images with better instruction following and contextual awareness.
-
-In contrast, we also offer specialized image generation models - DALL·E 2 and 3 - which don't have the same inherent understanding of the world as GPT Image.
+The state-of-the-art image generation model, `gpt-image-2`, can understand text and images and use broad world knowledge to generate images with strong instruction following and contextual awareness.
 
 
 
@@ -89,7 +86,7 @@ You can learn more about image generation in our [Image
 
 ### Using world knowledge for image generation
 
-The difference between DALL·E models and GPT Image is that a natively multimodal language model can use its visual understanding of the world to generate lifelike images including real-life details without a reference.
+GPT Image models can use visual understanding of the world to generate lifelike images including real-life details without a reference.
 
 For example, if you prompt GPT Image to generate an image of a glass cabinet with the most popular semi-precious stones, the model knows enough to select gemstones like amethyst, rose quartz, jade, etc, and depict them in a realistic way.
 

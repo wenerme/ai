@@ -1,6 +1,6 @@
 ---
 title: Set build commands per branch
-description: This guide will instruct you how to set build commands on specific branches. You will use the CF_PAGES_BRANCH environment variable to run a script on a specified branch as opposed to your Production branch. This guide assumes that you have a Cloudflare account and a Pages project.
+description: Run different build commands on specific branches in your Cloudflare Pages project.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

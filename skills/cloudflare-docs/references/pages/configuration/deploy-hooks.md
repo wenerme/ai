@@ -1,6 +1,6 @@
 ---
 title: Deploy Hooks
-description: With Deploy Hooks, you can trigger deployments using event sources beyond commits in your source repository. Each event source may obtain its own unique URL, which will receive HTTP POST requests in order to initiate new deployments. This feature allows you to integrate Pages with new or existing workflows. For example, you may:
+description: Trigger Cloudflare Pages deployments from external event sources using unique webhook URLs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

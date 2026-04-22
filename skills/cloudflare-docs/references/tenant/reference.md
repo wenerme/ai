@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for available subscriptions and API details in Cloudflare Tenant.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 403 Authentication error when creating DNS records
-description: When creating DNS records using Terraform, the API returns the following error:
+description: Fix the 403 authentication error caused by incorrect zone data source indexing in Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

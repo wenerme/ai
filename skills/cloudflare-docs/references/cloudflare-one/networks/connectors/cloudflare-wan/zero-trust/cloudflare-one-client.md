@@ -28,7 +28,7 @@ When a device is behind Cloudflare WAN, avoid enabling the Cloudflare One Client
 
 If you do want to use the Cloudflare One Client on a device behind Cloudflare WAN and connect to its virtual IP (within the `100.96.0.0/12` range), you will need to adjust your Cloudflare One Client profiles. Specifically, exclude the `100.96.0.0/12` subnet from the on-premises Cloudflare One Client profiles, and include it in the off-premises profile.
 
-Use [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) as an on-ramp to Cloudflare WAN (formerly Magic WAN) and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or IP-layer tunnels (anycast [GRE, IPsec](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels), or [CNI](https://developers.cloudflare.com/network-interconnect/)). Take advantage of the integration between Cloudflare WAN and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and enforce policies at Cloudflare's global network.
+Use [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) as an on-ramp to Cloudflare WAN (formerly Magic WAN) and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or IP-layer tunnels (anycast [GRE, IPsec](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), or [CNI](https://developers.cloudflare.com/network-interconnect/)). Take advantage of the integration between Cloudflare WAN and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and enforce policies at Cloudflare's global network.
 
 ## Prerequisites
 
@@ -79,9 +79,9 @@ You must log out and log back in with at least one device to ensure the configur
 
 Run `traceroute`
 
-If you connect through [GRE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels), [IPsec](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
+If you connect through [GRE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), [IPsec](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
 
-Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/traceroute/) for more information.
+Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/traceroute/) for more information.
 
 ## Double encapsulation
 

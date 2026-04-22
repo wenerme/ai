@@ -1,6 +1,6 @@
 ---
 title: Event notifications
-description: Event notifications send messages to your queue when data in your R2 bucket changes. You can consume these messages with a consumer Worker or pull over HTTP from outside of Cloudflare Workers.
+description: Send messages to Cloudflare Queues when objects in your R2 bucket change.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

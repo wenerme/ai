@@ -1,6 +1,6 @@
 ---
 title: Preview URLs
-description: Preview URLs provide public HTTPS access to services running inside sandboxes. When you expose a port, you get a unique URL that proxies requests to your service.
+description: Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Test Email Routing
-description: To test that your configuration is working properly, send an email to the custom address you set up in the dashboard. You should send your test email from a different address than the one you specified as the destination address.
+description: Verify that your Email Routing configuration is working by sending a test email to your custom address.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

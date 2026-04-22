@@ -1,6 +1,6 @@
 ---
 title: Embedded
-description: Cloudflare has a unique embedded function calling feature that allows you to execute function code alongside your tool call inference. Our npm package @cloudflare/ai-utils is the developer toolkit to get started.
+description: Execute function code alongside inference calls using Workers AI embedded function calling.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

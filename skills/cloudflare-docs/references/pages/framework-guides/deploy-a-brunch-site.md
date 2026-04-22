@@ -1,6 +1,6 @@
 ---
 title: Brunch
-description: Brunch is a fast front-end web application build tool with simple declarative configuration and seamless incremental compilation for rapid development.
+description: Deploy a Brunch site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

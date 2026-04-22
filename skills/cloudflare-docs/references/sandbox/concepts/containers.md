@@ -1,6 +1,6 @@
 ---
 title: Container runtime
-description: Each sandbox runs in an isolated Linux container with Python, Node.js, and common development tools pre-installed. For a complete list of pre-installed software and how to customize the container image, see Dockerfile reference.
+description: Sandbox SDK containers run isolated Linux environments with Python, Node.js, and common dev tools.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

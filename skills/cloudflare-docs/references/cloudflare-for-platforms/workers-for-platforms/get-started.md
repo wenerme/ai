@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Get started with Workers for Platforms by deploying a starter kit to your account.
+description: Deploy a Workers for Platforms starter kit and create your first multi-tenant platform on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Recent changes and updates to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

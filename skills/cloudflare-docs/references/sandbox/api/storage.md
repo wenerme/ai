@@ -1,6 +1,6 @@
 ---
 title: Storage
-description: Mount S3-compatible storage buckets (R2, S3, GCS) into the sandbox filesystem for persistent data access.
+description: Mount S3-compatible storage buckets into the Sandbox SDK filesystem for persistent data access.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -47,8 +47,8 @@ await sandbox.mountBucket(
 * `mountPath` \- Local filesystem path to mount at (e.g., `"/data"`)
 * `options` \- Mount configuration (see [MountBucketOptions](#mountbucketoptions))
 
-* [  JavaScript ](#tab-panel-6245)
-* [  TypeScript ](#tab-panel-6246)
+* [  JavaScript ](#tab-panel-8476)
+* [  TypeScript ](#tab-panel-8477)
 
 JavaScript
 
@@ -212,8 +212,8 @@ await sandbox.unmountBucket(mountPath: string): Promise<void>
 
 * `mountPath` \- Path where the bucket is mounted (e.g., `"/data"`)
 
-* [  JavaScript ](#tab-panel-6243)
-* [  TypeScript ](#tab-panel-6244)
+* [  JavaScript ](#tab-panel-8474)
+* [  TypeScript ](#tab-panel-8475)
 
 JavaScript
 
@@ -333,5 +333,5 @@ type BucketProvider = "r2" | "s3" | "gcs";
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- Read and write files
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/storage/","name":"Storage"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/storage/","name":"Storage"}}]}
 ```

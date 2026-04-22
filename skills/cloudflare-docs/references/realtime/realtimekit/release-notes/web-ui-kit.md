@@ -1,6 +1,6 @@
 ---
 title: Web UI Kit
-description: Subscribe to RSS
+description: Release notes and changelog for the RealtimeKit Web UI Kit SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

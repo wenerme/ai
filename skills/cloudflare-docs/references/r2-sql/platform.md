@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: R2 SQL platform details including pricing and configuration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

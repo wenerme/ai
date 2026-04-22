@@ -1,6 +1,6 @@
 ---
 title: Workers API
-description: Process incoming emails using the email() handler in your Cloudflare Workers. This allows you to programmatically handle email routing with custom logic.
+description: Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -100,9 +100,9 @@ Explain Code
 
 ### Properties
 
-* [ Basic properties ](#tab-panel-6696)
-* [ Reading content ](#tab-panel-6697)
-* [ Parse email content ](#tab-panel-6698)
+* [ Basic properties ](#tab-panel-6845)
+* [ Reading content ](#tab-panel-6846)
+* [ Parse email content ](#tab-panel-6847)
 
 TypeScript
 
@@ -304,9 +304,9 @@ Explain Code
 
 Forward incoming emails to verified destination addresses:
 
-* [ Simple forwarding ](#tab-panel-6699)
-* [ Conditional forwarding ](#tab-panel-6700)
-* [ Multiple forwarding ](#tab-panel-6701)
+* [ Simple forwarding ](#tab-panel-6848)
+* [ Conditional forwarding ](#tab-panel-6849)
+* [ Multiple forwarding ](#tab-panel-6850)
 
 TypeScript
 
@@ -453,8 +453,8 @@ Explain Code
 
 Send automatic replies using the Email Service binding:
 
-* [ Simple auto-reply ](#tab-panel-6702)
-* [ Smart auto-reply ](#tab-panel-6703)
+* [ Simple auto-reply ](#tab-panel-6851)
+* [ Smart auto-reply ](#tab-panel-6852)
 
 TypeScript
 
@@ -622,8 +622,8 @@ Explain Code
 
 Reject emails with a permanent SMTP error:
 
-* [ Simple rejection ](#tab-panel-6704)
-* [ Content-based rejection ](#tab-panel-6705)
+* [ Simple rejection ](#tab-panel-6853)
+* [ Content-based rejection ](#tab-panel-6854)
 
 TypeScript
 

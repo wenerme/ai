@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure Hyperdrive connections, credentials, caching, and networking for your databases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

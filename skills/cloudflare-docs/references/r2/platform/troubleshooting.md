@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: If you are encountering a CORS error despite setting up everything correctly, you may follow this troubleshooting guide to help you.
+description: Troubleshoot common R2 issues including CORS errors, 403 responses, and cache behavior.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

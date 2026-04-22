@@ -1,6 +1,6 @@
 ---
 title: What is TURN?
-description: TURN (Traversal Using Relays around NAT) is a protocol that assists in traversing Network Address Translators (NATs) or firewalls in order to facilitate peer-to-peer communications. It is an extension of the STUN (Session Traversal Utilities for NAT) protocol and is defined in RFC 8656.
+description: TURN relays traffic through NATs and firewalls to enable peer-to-peer WebRTC communication.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

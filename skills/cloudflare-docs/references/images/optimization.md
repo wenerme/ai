@@ -1,5 +1,6 @@
 ---
 title: Optimization
+description: Resize, transform, and optimize images with Cloudflare Images for faster delivery.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

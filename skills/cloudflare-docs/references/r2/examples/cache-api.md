@@ -1,6 +1,6 @@
 ---
 title: Use the Cache API
-description: Use the Cache API to store R2 objects in Cloudflare's cache.
+description: Store R2 objects in Cloudflare's cache using the Workers Cache API for faster retrieval.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

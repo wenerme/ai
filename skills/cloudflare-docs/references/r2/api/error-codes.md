@@ -1,6 +1,6 @@
 ---
 title: Error codes
-description: This page documents error codes returned by R2 when using the Workers API or the S3-compatible API, along with recommended fixes to help with troubleshooting.
+description: Reference of R2 error codes returned by the Workers API and S3-compatible API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

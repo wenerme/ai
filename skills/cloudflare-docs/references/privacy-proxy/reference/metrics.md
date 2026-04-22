@@ -1,6 +1,6 @@
 ---
 title: Observability
-description: Privacy Proxy provides two methods for accessing metrics and monitoring your proxy deployment. We recommend getting started with GraphQL as the default method for observability.
+description: Monitor Privacy Proxy deployments using the GraphQL Analytics API or OpenTelemetry telemetry export.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Key concepts
-description: Here is a summary of the key terms that we use throughout our guides.
+description: Definitions of core Cloudflare Images terms including transformations, variants, hosted images, and origins.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

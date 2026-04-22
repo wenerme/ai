@@ -1,6 +1,6 @@
 ---
 title: Realtime SFU
-description: Cloudflare Realtime SFU is infrastructure for real-time audio/video/data applications. It allows you to build real-time apps without worrying about scaling or regions. It can act as a selective forwarding unit (WebRTC SFU), as a fanout delivery system for broadcasting (WebRTC CDN) or anything in between.
+description: Build real-time serverless video, audio, and data applications with Cloudflare Realtime SFU.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

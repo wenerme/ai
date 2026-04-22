@@ -1,6 +1,6 @@
 ---
 title: Activate Polish
-description: Images in the cache must be purged or expired before seeing any changes in Polish settings.
+description: Turn on Cloudflare Polish in the dashboard to automatically optimize images with lossy or lossless compression.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

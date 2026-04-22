@@ -1,6 +1,6 @@
 ---
 title: Debug D1
-description: D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when debugging Workers.
+description: Capture exceptions and log error messages returned from D1 database queries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

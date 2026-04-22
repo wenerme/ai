@@ -4,8 +4,8 @@ title: dangerouslyIgnoreUnhandledErrors | Config
 
 # dangerouslyIgnoreUnhandledErrors <CRoot />
 
-- **Type**: `boolean`
-- **Default**: `false`
+- **Type:** `boolean`
+- **Default:** `false`
 - **CLI:**
   - `--dangerouslyIgnoreUnhandledErrors`
   - `--dangerouslyIgnoreUnhandledErrors=false`

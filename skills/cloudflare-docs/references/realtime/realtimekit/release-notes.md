@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-description: Subscribe to RSS
+description: Release notes and changelog for the RealtimeKit Web Core SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -17,6 +17,25 @@ Copy page
 # Release Notes
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/index.xml)
+
+## 2026-04-20
+
+**RealtimeKit Web Core 1.4.0**
+
+**Compatibility:** Works best with RealtimeKit Android Core 2.0.0+ and RealtimeKit iOS Core 2.0.0+.
+
+**Features**
+
+* Added `meeting.__internals__.authToken` to expose authentication token, enabling better integration between Web Core and UI Kit for future features and enhancements.
+
+**Fixes**
+
+* Proactively fixed an issue where participants with simulcast turned on would not be able to turn on their camera or microphone due to SDP failures in Chrome version 148+.
+
+**Enhancements**
+
+* SDK now uses `*.realtime.cloudflare.com` base URI internally instead of the legacy `dyte.io` base URI.
+* Refactored error handling to properly catch and display error codes for SDK initialization failures, room join failures, and other errors.
 
 ## 2026-03-31
 

@@ -1,6 +1,6 @@
 ---
 title: Android UI Kit SDK
-description: Subscribe to RSS
+description: Release notes and changelog for the RealtimeKit Android UI Kit SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -17,6 +17,14 @@ Copy page
 # Android UI Kit SDK
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-ui-kit/index.xml)
+
+## 2026-04-20
+
+**RealtimeKit Android UI Kit 1.0.0**
+
+**Breaking changes**
+
+* Upgraded to [RealtimeKit Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/#2026-04-20) which removes support for Dyte APIs and SFU.
 
 ## 2026-02-06
 

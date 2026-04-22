@@ -1,6 +1,6 @@
 ---
 title: Local uploads
-description: You can enable Local Uploads on your bucket to improve the performance of upload requests when clients upload data from a different region than your bucket. Local Uploads writes object data to a nearby location, then asynchronously copies it to your bucket. Data is available immediately and remains strongly consistent.
+description: Improve R2 upload performance by writing object data to a nearby location before async copy.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -90,8 +90,8 @@ Local uploads are not supported for buckets with [jurisdictional restrictions](h
 
 When you enable Local Uploads, existing uploads will complete as expected with no interruption to traffic.
 
-* [ Dashboard ](#tab-panel-5762)
-* [ Wrangler ](#tab-panel-5763)
+* [ Dashboard ](#tab-panel-8037)
+* [ Wrangler ](#tab-panel-8038)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)
@@ -114,8 +114,8 @@ npx wrangler r2 bucket local-uploads enable <BUCKET_NAME>
 
 You can disable local uploads at any time. Existing requests made with local uploads will complete replication with no interruption to your traffic.
 
-* [ Dashboard ](#tab-panel-5764)
-* [ Wrangler ](#tab-panel-5765)
+* [ Dashboard ](#tab-panel-8039)
+* [ Wrangler ](#tab-panel-8040)
 
 1. Log in to the Cloudflare dashboard, and go to R2 Overview.  
 [ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/r2/overview)

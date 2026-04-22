@@ -1,6 +1,6 @@
 ---
 title: Pulumi
-description: Provision and manage Cloudflare using infrastructure as code through Pulumi. With the Pulumi Cloudflare package, you can build, deploy, and manage Cloudflare resources using standard programming languages (TypeScript, JavaScript, Python, .NET, Java, Go, and YAML). You can define the desired state for your infrastructure in code and leverage language features like loops, functions, classes, and package management.
+description: Provision and manage Cloudflare resources using Pulumi infrastructure as code in TypeScript, Python, Go, and other languages.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

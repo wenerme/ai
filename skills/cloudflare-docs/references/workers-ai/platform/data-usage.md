@@ -1,6 +1,6 @@
 ---
 title: Data usage
-description: Cloudflare processes certain customer data in order to provide the Workers AI service, subject to our Privacy Policy and Self-Serve Subscription Agreement or Enterprise Subscription Agreement (as applicable).
+description: How Cloudflare handles your data, inputs, and outputs when using Workers AI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

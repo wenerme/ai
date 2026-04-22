@@ -1,5 +1,6 @@
 ---
 title: API Reference
+description: API reference for the RealtimeKit Core SDK methods, events, and properties.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

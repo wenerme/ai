@@ -1,6 +1,6 @@
 ---
 title: Apache Trino
-description: Below is an example of using Apache Trino to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with Trino, refer to Trino documentation.
+description: Connect Apache Trino to R2 Data Catalog using the Iceberg REST catalog connector.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Apache Trino
 
-**Last reviewed:**  7 months ago 
+**Last reviewed:**  8 months ago 
 
 Below is an example of using [Apache Trino ↗](https://trino.io/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with Trino, refer to [Trino documentation ↗](https://trino.io/docs/current/connector/iceberg.html).
 

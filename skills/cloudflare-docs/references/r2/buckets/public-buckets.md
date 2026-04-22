@@ -1,6 +1,6 @@
 ---
 title: Public buckets
-description: Public Bucket is a feature that allows users to expose the contents of their R2 buckets directly to the Internet. By default, buckets are never publicly accessible and will always require explicit user permission to enable.
+description: Expose R2 bucket contents to the Internet via a custom domain or r2.dev subdomain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

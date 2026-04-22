@@ -1,6 +1,6 @@
 ---
-title: API Reference
-description: The Sandbox SDK provides a comprehensive API for executing code, managing files, running processes, and exposing services in isolated sandboxes.
+title: API reference
+description: Sandbox SDK API for executing code, managing files, running processes, and exposing services.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-# API Reference
+# API reference
 
 The Sandbox SDK provides a comprehensive API for executing code, managing files, running processes, and exposing services in isolated sandboxes.
 
@@ -30,11 +30,11 @@ Execute commands and stream output. Run scripts, manage background processes, an
 
 Read, write, and manage files in the sandbox filesystem. Includes directory operations and file metadata.
 
-[File Watching](https://developers.cloudflare.com/sandbox/api/file-watching/) 
+[File watching](https://developers.cloudflare.com/sandbox/api/file-watching/) 
 
 Monitor real-time filesystem changes using native inotify. Build development tools, hot-reload systems, and responsive file processing.
 
-[Code Interpreter](https://developers.cloudflare.com/sandbox/api/interpreter/) 
+[Code interpreter](https://developers.cloudflare.com/sandbox/api/interpreter/) 
 
 Execute Python and JavaScript code with rich outputs including charts, tables, and formatted data.
 
@@ -59,5 +59,5 @@ Create isolated execution contexts within a sandbox. Each session maintains its 
 Connect browser-based terminal UIs to sandbox shells via WebSocket, with the xterm.js SandboxAddon for automatic reconnection and resize handling.
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}}]}
 ```

@@ -50,6 +50,24 @@ As a temporary workaround, you can set the affected DNS record to [DNS-only](htt
          * One with Cloudflare enabled on your website.  
          * Another with [Cloudflare temporarily disabled](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/).
 
+## Diagnosing origin connectivity using OriginResponseStatus in logs
+
+When reviewing Cloudflare Logs (via [Logpush](https://developers.cloudflare.com/logs/logpush/) `http_requests` dataset), the `OriginResponseStatus` field shows the HTTP status code returned by your origin.
+
+An `OriginResponseStatus` value of **`0`** has two distinct meanings depending on context:
+
+* **No origin contact (cache hit or revalidated response):** The request was served from cache and Cloudflare did not contact the origin. Filter these out when calculating origin error rates — they do not indicate an origin problem.
+* **Failed origin connection:** Cloudflare attempted to contact the origin but received no HTTP response. The origin either dropped the TCP connection before sending response headers, timed out before sending headers, or sent a malformed response that Cloudflare could not parse. Cloudflare generates the error page itself (typically a 520 or 500).
+
+To distinguish between the two, check the `CacheStatus` field in the same log record:
+
+* `CacheStatus` is `hit` or `revalidated` → no origin contact; `OriginResponseStatus = 0` is expected
+* `CacheStatus` is `miss` or `expired` → Cloudflare contacted the origin; `OriginResponseStatus = 0` indicates a failed connection
+
+Warning
+
+Do not conclude your origin returned a 5xx error solely because `OriginResponseStatus = 0`. Always check `CacheStatus` first to determine whether Cloudflare contacted the origin at all.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/support/","name":"Support"}},{"@type":"ListItem","position":3,"item":{"@id":"/support/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/support/troubleshooting/http-status-codes/","name":"HTTP Status Codes"}},{"@type":"ListItem","position":5,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/","name":"Cloudflare 5xx errors"}},{"@type":"ListItem","position":6,"item":{"@id":"/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/","name":"Error 520"}}]}
 ```

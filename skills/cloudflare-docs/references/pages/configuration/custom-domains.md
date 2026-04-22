@@ -1,6 +1,6 @@
 ---
 title: Custom domains
-description: When deploying your Pages project, you may wish to point custom domains (or subdomains) to your site.
+description: Add custom domains and subdomains to your Cloudflare Pages project.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

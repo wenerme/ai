@@ -1,6 +1,6 @@
 ---
 title: Dashboard
-description: Follow this guide to create a Workers AI application using the Cloudflare dashboard.
+description: Create and deploy a Workers AI application using the Cloudflare dashboard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

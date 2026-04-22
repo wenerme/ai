@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Realtime
-description: RealtimeKit is a set of SDKs and APIs that lets you add customizable live video and voice to web or mobile applications. It is fully customisable and lets you set up in just a few lines of code.
+description: Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Code examples for Workers AI embedded function calling.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Live Instant Clipping
-description: Stream supports generating clips of live streams and recordings so creators and viewers alike can highlight short, engaging pieces of a longer broadcast or recording. Live instant clips can be created by end users and do not result in additional storage fees or new entries in the video library.
+description: Generate shareable clips from Cloudflare Stream live broadcasts and recordings without additional storage fees.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

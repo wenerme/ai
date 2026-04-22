@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Durable Objects reference documentation covering migrations, data location, security, environments, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Subdomains
-description: Email Routing is a zone-level feature. A zone has a top-level domain (the same as the zone name) and it can have subdomains (managed under the DNS feature.) As an example, you can have the example.com zone, and then the mail.example.com and corp.example.com sub-domains under it.
+description: Add Email Routing to subdomains within your zone and create custom addresses for each subdomain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

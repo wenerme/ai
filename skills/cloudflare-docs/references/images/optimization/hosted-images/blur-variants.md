@@ -1,6 +1,6 @@
 ---
 title: Apply blur
-description: You can apply blur to image variants by creating a specific variant for this effect first or by editing a previously created variant. Note that you cannot blur an SVG file.
+description: Add a blur effect to Cloudflare Images variants using the dashboard or flexible variants API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

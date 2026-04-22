@@ -1,6 +1,6 @@
 ---
 title: Spam filtering
-description: Build spam filtering systems with keyword matching, domain validation, and intelligent detection methods for effective email security.
+description: Build spam detection for Email Service with keyword analysis, domain reputation checks, and AI-based filtering.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

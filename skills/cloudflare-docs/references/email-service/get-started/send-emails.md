@@ -1,6 +1,6 @@
 ---
 title: Send emails
-description: Send emails from your applications using Cloudflare Email Service. You can use the REST API from any platform or the Workers binding for applications built on Cloudflare Workers.
+description: Send your first email using the Cloudflare Email Service REST API or Workers binding.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -135,8 +135,8 @@ pnpm create cloudflare@latest email-service-tutorial
 ```  
 When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:  
-   * [  wrangler.jsonc ](#tab-panel-6732)  
-   * [  wrangler.toml ](#tab-panel-6733)  
+   * [  wrangler.jsonc ](#tab-panel-6881)  
+   * [  wrangler.toml ](#tab-panel-6882)  
 JSONC  
 ```  
 {  

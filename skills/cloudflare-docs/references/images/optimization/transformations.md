@@ -1,5 +1,6 @@
 ---
 title: Remote images (transformations)
+description: Optimize and transform remote images stored outside of Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

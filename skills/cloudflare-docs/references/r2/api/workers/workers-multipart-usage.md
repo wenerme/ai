@@ -1,8 +1,6 @@
 ---
 title: Use the R2 multipart API from Workers
-description: By following this guide, you will create a Worker through which your applications can perform multipart uploads.
-This example worker could serve as a basis for your own use case where you can add authentication to the worker, or even add extra validation logic when uploading each part.
-This guide also contains an example Python application that uploads files to this worker.
+description: Upload large objects to R2 using the multipart API through a Cloudflare Worker.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

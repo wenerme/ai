@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Vectorize reference documentation for APIs, metadata filtering, and Wrangler commands.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

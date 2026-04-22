@@ -1,6 +1,6 @@
 ---
 title: Remote Participants
-description: This guide explains how to access participant data, display videos, handle events, and manage participant permissions in your RealtimeKit meetings.
+description: Access participant data, display videos, and handle events for remote participants in RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

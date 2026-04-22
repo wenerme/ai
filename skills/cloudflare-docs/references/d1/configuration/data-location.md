@@ -1,6 +1,6 @@
 ---
 title: Data location
-description: Learn how the location of data stored in D1 is determined, including where the database runs and how you optimize that location based on your needs.
+description: Control where D1 stores your data by setting location hints or jurisdiction constraints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

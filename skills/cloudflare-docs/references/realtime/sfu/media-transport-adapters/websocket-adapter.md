@@ -1,6 +1,6 @@
 ---
 title: WebSocket adapter
-description: Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports ingesting audio from WebSocket sources and sending WebRTC audio and video to WebSocket consumers. Video egress is supported as JPEG at approximately 1 FPS.
+description: Stream audio and video between WebRTC tracks and WebSocket endpoints using Realtime SFU.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -33,8 +33,8 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## How it works
 
-* [ Ingest (WebSocket → WebRTC) ](#tab-panel-6021)
-* [ Stream (WebRTC → WebSocket) ](#tab-panel-6022)
+* [ Ingest (WebSocket → WebRTC) ](#tab-panel-8252)
+* [ Stream (WebRTC → WebSocket) ](#tab-panel-8253)
 
 ### Create WebRTC tracks from external audio
 
@@ -92,8 +92,8 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 ```
 
-* [ Ingest ](#tab-panel-6023)
-* [ Stream ](#tab-panel-6024)
+* [ Ingest ](#tab-panel-8254)
+* [ Stream ](#tab-panel-8255)
 
 #### Request body
 

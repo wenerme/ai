@@ -1,5 +1,6 @@
 ---
 title: Upload images
+description: Upload images to Cloudflare Images using the dashboard, API, or direct creator uploads.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

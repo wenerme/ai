@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples of Container functionality:
+description: Code examples showing how to use Containers with Workers for stateless routing, cron jobs, WebSockets, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

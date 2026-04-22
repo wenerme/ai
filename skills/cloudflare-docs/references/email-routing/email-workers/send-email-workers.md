@@ -1,6 +1,6 @@
 ---
 title: Send emails from Workers
-description: You can send an email about your Worker's activity from your Worker to an email address verified on Email Routing. This is useful for when you want to know about certain types of events being triggered, for example.
+description: Use the send_email binding to send outbound emails from Cloudflare Workers through Email Routing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -20,8 +20,8 @@ You can send an email about your Worker's activity from your Worker to an email 
 
 Before you can bind an email address to your Worker, you need to [enable Email Routing](https://developers.cloudflare.com/email-routing/get-started/) and have at least one [verified email address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses). Then, create a new binding in the Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-4631)
-* [  wrangler.toml ](#tab-panel-4632)
+* [  wrangler.jsonc ](#tab-panel-6838)
+* [  wrangler.toml ](#tab-panel-6839)
 
 JSONC
 
@@ -71,8 +71,8 @@ There are several types of restrictions you can configure in the bindings:
 
 You can add one or more types of bindings to your Wrangler file. However, each attribute must be on its own line:
 
-* [  wrangler.jsonc ](#tab-panel-4633)
-* [  wrangler.toml ](#tab-panel-4634)
+* [  wrangler.jsonc ](#tab-panel-6840)
+* [  wrangler.toml ](#tab-panel-6841)
 
 JSONC
 

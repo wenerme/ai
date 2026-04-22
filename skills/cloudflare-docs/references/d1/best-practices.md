@@ -1,5 +1,6 @@
 ---
 title: Best practices
+description: Recommended patterns and techniques for building with D1 databases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Email routing
-description: Test email routing behavior locally using wrangler dev to simulate incoming emails and verify your routing logic before deploying.
+description: Test Email Service routing Workers locally using wrangler dev with simulated incoming emails.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -33,8 +33,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-6734)
-* [  wrangler.toml ](#tab-panel-6735)
+* [  wrangler.jsonc ](#tab-panel-6883)
+* [  wrangler.toml ](#tab-panel-6884)
 
 JSONC
 
@@ -48,7 +48,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-21",
 
   "send_email": [
 
@@ -75,7 +75,7 @@ name = "email-routing-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-21"
 
 
 [[send_email]]

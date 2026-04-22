@@ -1,6 +1,6 @@
 ---
 title: Quick Actions timeouts
-description: Browser Run uses several independent timers to manage how long different parts of a request can take. If any of these timers exceed their limit, the request returns a timeout error.
+description: Configure Browser Run Quick Actions timeout settings for page load, selector wait, and action execution.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

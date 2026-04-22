@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Cloudflare TURN pricing is based on the data sent from the Cloudflare edge to the TURN client, as described in RFC 8656 Figure 1. This means data sent from the TURN server to the TURN client and captures all data, including TURN overhead, following successful authentication.
+description: Frequently asked questions about Cloudflare Realtime TURN pricing, credentials, and usage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

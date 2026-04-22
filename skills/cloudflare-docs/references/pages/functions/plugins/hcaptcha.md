@@ -1,6 +1,6 @@
 ---
 title: hCaptcha
-description: The hCaptcha Pages Plugin validates hCaptcha tokens.
+description: Validate hCaptcha tokens in Pages Functions using the hCaptcha Pages Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

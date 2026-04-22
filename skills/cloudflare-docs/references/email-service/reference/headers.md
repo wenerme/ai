@@ -1,6 +1,6 @@
 ---
 title: Email headers
-description: When sending emails with Cloudflare Email Service, you can set custom headers using the headers field in the Workers API or REST API. The Email Service uses a whitelist-based approach — only explicitly approved headers are accepted. Any header not on the whitelist (and not an X- prefixed custom header) is rejected at API time with a clear error.
+description: Allowed, platform-controlled, and custom email headers for Email Service with validation rules.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -108,8 +108,8 @@ Any header starting with `X-` is allowed. This covers common headers like `X-Mai
 
 ## Usage examples
 
-* [ REST API (curl) ](#tab-panel-6740)
-* [ Workers binding ](#tab-panel-6741)
+* [ REST API (curl) ](#tab-panel-6889)
+* [ Workers binding ](#tab-panel-6890)
 
 Terminal window
 

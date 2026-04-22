@@ -1,6 +1,6 @@
 ---
 title: Super Slurper
-description: Super Slurper allows you to quickly and easily copy objects from other cloud providers to an R2 bucket of your choice.
+description: Copy objects from other cloud providers to R2 in a one-off bulk migration job.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

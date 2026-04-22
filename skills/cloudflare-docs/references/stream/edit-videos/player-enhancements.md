@@ -1,6 +1,6 @@
 ---
 title: Add player enhancements
-description: With player enhancements, you can modify your video player to incorporate elements of your branding such as your logo, and customize additional options to present to your viewers.
+description: Customize the Cloudflare Stream player with branding, logos, and share links.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

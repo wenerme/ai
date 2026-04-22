@@ -1,6 +1,6 @@
 ---
 title: Demos
-description: Learn how you can use Email Workers within your existing architecture.
+description: Explore demo applications that show how to use Email Workers within your architecture.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

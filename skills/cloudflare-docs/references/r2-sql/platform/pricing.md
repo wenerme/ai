@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: R2 SQL is in open beta and available to any developer with an R2 subscription.
+description: R2 SQL pricing details and billing information during open beta.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

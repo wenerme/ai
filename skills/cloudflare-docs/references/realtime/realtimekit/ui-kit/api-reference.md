@@ -1,5 +1,6 @@
 ---
 title: Component Reference
+description: API reference for RealtimeKit UI Kit components, props, and configuration options.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

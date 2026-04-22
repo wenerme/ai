@@ -1,6 +1,6 @@
 ---
 title: Insert vectors
-description: Vectorize indexes allow you to insert vectors at any point: Vectorize will optimize the index behind the scenes to ensure that vector search remains efficient, even as new vectors are added or existing vectors updated.
+description: Insert and upsert vectors into a Vectorize index, including supported formats and namespaces.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

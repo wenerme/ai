@@ -2,17 +2,16 @@
 
 ## Overview
 
-The OpenAI API lets you generate and edit images from text prompts, using GPT Image or DALL·E models. You can access image generation capabilities through two APIs:
+The OpenAI API lets you generate and edit images from text prompts using GPT Image models, including our latest, `gpt-image-2`. You can access image generation capabilities through two APIs:
 
 ### Image API
 
-The [Image API](https://developers.openai.com/api/docs/api-reference/images) provides three endpoints, each with distinct capabilities:
+Starting with `gpt-image-1` and later models, the [Image API](https://developers.openai.com/api/docs/api-reference/images) provides two endpoints, each with distinct capabilities:
 
 - **Generations**: [Generate images](#generate-images) from scratch based on a text prompt
 - **Edits**: [Modify existing images](#edit-images) using a new prompt, either partially or entirely
-- **Variations**: [Generate variations](#image-variations) of an existing image (available with DALL·E 2 only)
 
-This API supports GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`) as well as `dall-e-2` and `dall-e-3`.
+The Image API also includes a variations endpoint for models that support it, such as DALL·E 2.
 
 ### Responses API
 
@@ -23,53 +22,24 @@ Compared to the Image API, it adds:
 - **Multi-turn editing**: Iteratively make high fidelity edits to images with prompting
 - **Flexible inputs**: Accept image [File](https://developers.openai.com/api/docs/api-reference/files) IDs as input images, not just bytes
 
-The image generation tool in responses uses GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`).
-When using `gpt-image-1.5` and `chatgpt-image-latest` with the Responses API, you can optionally set the `action` parameter, detailed below.
-For a list of mainline models that support calling this tool, refer to the [supported models](#supported-models) below.
+The Responses API image generation tool uses its own GPT Image model selection. For details on mainline models that support calling this tool, refer to the [supported models](#supported-models) below.
 
 ### Choosing the right API
 
 - If you only need to generate or edit a single image from one prompt, the Image API is your best choice.
 - If you want to build conversational, editable image experiences with GPT Image, go with the Responses API.
 
-Both APIs let you [customize output](#customize-image-output) — adjust quality, size, format, compression, and enable transparent backgrounds.
+Both APIs let you [customize output](#customize-image-output) by adjusting quality, size, format, and compression. Transparent backgrounds depend on model support.
 
+This guide focuses on GPT Image.
 
-
-
-
-### Model comparison
-
-Our latest and most advanced model for image generation is `gpt-image-1.5`, a natively multimodal language model, part of the GPT Image family.
-
-GPT Image models include `gpt-image-1.5` (state of the art), `gpt-image-1`, and `gpt-image-1-mini`. They share the same API surface, with `gpt-image-1.5` offering the best overall quality.
-
-We recommend using `gpt-image-1.5` for the best experience, but if you are looking for a more cost-effective option and image quality isn't a priority, you can use `gpt-image-1-mini`.
-
-You can also use specialized image generation models—DALL·E 2 and DALL·E 3—with the Image API, but please note these models are now deprecated and we will stop supporting them on 05/12, 2026.
-
-| Model     | Endpoints                                                                            | Use case                                                                               |
-| --------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| DALL·E 2  | Image API: Generations, Edits, Variations                                            | Lower cost, concurrent requests, inpainting (image editing with a mask)                |
-| DALL·E 3  | Image API: Generations only                                                          | Higher image quality than DALL·E 2, support for larger resolutions                     |
-| GPT Image | Image API: Generations, Edits – Responses API (as part of the image generation tool) | Superior instruction following, text rendering, detailed editing, real-world knowledge |
-
-
-This guide focuses on GPT Image. To view the DALL·E model-specific content in this same guide, switch to the [DALL·E 2 view](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=dall-e-2) or [DALL·E 3 view](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=dall-e-3).
-
-To ensure this model is used responsibly, you may need to complete the [API
+To ensure these models are used responsibly, you may need to complete the [API
   Organization
   Verification](https://help.openai.com/en/articles/10910291-api-organization-verification)
   from your [developer
   console](https://platform.openai.com/settings/organization/general) before
-  using GPT Image models, including `gpt-image-1.5`, `gpt-image-1`, and
-  `gpt-image-1-mini`.
-
-
-
-
-
-
+  using GPT Image models, including `gpt-image-2`, `gpt-image-1.5`,
+  `gpt-image-1`, and `gpt-image-1-mini`.
 
 <div
   className="not-prose"
@@ -83,10 +53,9 @@ To ensure this model is used responsibly, you may need to complete the [API
 
 ## Generate Images
 
-
 You can use the [image generation endpoint](https://developers.openai.com/api/docs/api-reference/images/create) to create images based on text prompts, or the [image generation tool](https://developers.openai.com/api/docs/guides/tools?api-mode=responses) in the Responses API to generate images as part of a conversation.
 
-To learn more about customizing the output (size, quality, format, transparency), refer to the [customize image output](#customize-image-output) section below.
+To learn more about customizing the output (size, quality, format, compression), refer to the [customize image output](#customize-image-output) section below.
 
 You can set the `n` parameter to generate multiple images at once in a single request (by default, the API returns a single image).
 
@@ -101,7 +70,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.4",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation"}],
 });
@@ -125,7 +94,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -159,7 +128,7 @@ listen to the heartbeat of a baby otter.
 \`;
 
 const result = await openai.images.generate({
-    model: "gpt-image-1.5",
+    model: "gpt-image-2",
     prompt,
 });
 
@@ -180,7 +149,7 @@ listen to the heartbeat of a baby otter.
 """
 
 result = client.images.generate(
-    model="gpt-image-1.5",
+    model="gpt-image-2",
     prompt=prompt
 )
 
@@ -197,7 +166,7 @@ curl -X POST "https://api.openai.com/v1/images/generations" \\
     -H "Authorization: Bearer $OPENAI_API_KEY" \\
     -H "Content-type: application/json" \\
     -d '{
-        "model": "gpt-image-1.5",
+        "model": "gpt-image-2",
         "prompt": "A childrens book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter."
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
@@ -209,12 +178,9 @@ curl -X POST "https://api.openai.com/v1/images/generations" \\
 ### Multi-turn image generation
 
 With the Responses API, you can build multi-turn conversations involving image generation either by providing image generation calls outputs within context (you can also just use the image ID), or by using the [`previous_response_id` parameter](https://developers.openai.com/api/docs/guides/conversation-state?api-mode=responses#openai-apis-for-conversation-state).
-This makes it easy to iterate on images across multiple turns—refining prompts, applying new instructions, and evolving the visual output as the conversation progresses.
+This lets you iterate on images across multiple turns—refining prompts, applying new instructions, and evolving the visual output as the conversation progresses.
 
-### Generate vs Edit
-
-With the Responses API you can choose whether to generate a new image or edit one already in the conversation.
-The optional `action` parameter (supported on `gpt-image-1.5` and `chatgpt-image-latest`) controls this behavior: keep `action: "auto"` to let the model decide (recommended), set `action: "generate"` to always create a new image, or set `action: "edit"` to force editing (requires an image in context).
+With the Responses API image generation tool, supported tool models can choose whether to generate a new image or edit one already in the conversation. The optional `action` parameter controls this behavior: keep `action: "auto"` to let the model decide, set `action: "generate"` to always create a new image, or set `action: "edit"` to force editing when an image is in context.
 
 Force image creation with action
 
@@ -223,7 +189,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.4",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation", action: "generate"}],
 });
@@ -247,7 +213,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation", "action": "generate"}],
 )
@@ -266,26 +232,7 @@ if image_data:
 ```
 
 
-If you force `edit` without providing an image in context, the call will
-  return an error. Leave `action` at `auto` to have the model decide when to
-  generate or edit.
-
-When `action` is set to `auto`, the `image_generation_call` result includes an `action` field so you can see whether the model generated a new image or edited one already in context:
-
-```json
-{
-  "id": "ig_123...",
-  "type": "image_generation_call",
-  "status": "completed",
-  "background": "opaque",
-  "output_format": "jpeg",
-  "quality": "medium",
-  "result": "/9j/4...",
-  "revised_prompt": "...",
-  "size": "1024x1024",
-  "action": "generate"
-}
-```
+If you force `edit` without providing an image in context, the call will return an error. Leave `action` at `auto` to have the model decide when to generate or edit.
 
 
 
@@ -298,7 +245,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -317,7 +264,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   previous_response_id: response.id,
   input: "Now make it look realistic",
   tools: [{ type: "image_generation" }],
@@ -344,7 +291,7 @@ import base64
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -365,7 +312,7 @@ if image_data:
 # Follow up
 
 response_fwup = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     previous_response_id=response.id,
     input="Now make it look realistic",
     tools=[{"type": "image_generation"}],
@@ -393,7 +340,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -414,7 +361,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input: [
     {
       role: "user",
@@ -447,7 +394,7 @@ import openai
 import base64
 
 response = openai.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -470,7 +417,7 @@ if image_data:
 # Follow up
 
 response_fwup = openai.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input=[
         {
             "role": "user",
@@ -540,7 +487,7 @@ if image_data_fwup:
 
 ### Streaming
 
-The Responses API and Image API support streaming image generation. This allows you to stream partial images as they are generated, providing a more interactive experience.
+The Responses API and Image API support streaming image generation. You can stream partial images as the APIs generate them, providing a more interactive experience.
 
 You can adjust the `partial_images` parameter to receive 0-3 partial images.
 
@@ -559,7 +506,7 @@ import fs from "fs";
 const openai = new OpenAI();
 
 const stream = await openai.responses.create({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   input:
     "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
   stream: true,
@@ -583,7 +530,7 @@ import base64
 client = OpenAI()
 
 stream = client.responses.create(
-    model="gpt-4.1",
+    model="gpt-5.4",
     input="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
     stream=True,
     tools=[{"type": "image_generation", "partial_images": 2}],
@@ -613,7 +560,7 @@ const prompt =
   "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape";
 const stream = await openai.images.generate({
   prompt: prompt,
-  model: "gpt-image-1.5",
+  model: "gpt-image-2",
   stream: true,
   partial_images: 2,
 });
@@ -636,7 +583,7 @@ client = OpenAI()
 
 stream = client.images.generate(
     prompt="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
-    model="gpt-image-1.5",
+    model="gpt-image-2",
     stream=True,
     partial_images=2,
 )
@@ -671,9 +618,11 @@ for event in stream:
 
 ### Revised prompt
 
-When using the image generation tool in the Responses API, the mainline model (e.g. `gpt-4.1`) will automatically revise your prompt for improved performance.
+When using the image generation tool in the Responses API, the mainline model (for example, `gpt-5.4`) will automatically revise your prompt for improved performance.
 
 You can access the revised prompt in the `revised_prompt` field of the image generation call:
+
+Revised prompt response
 
 ```json
 {
@@ -686,22 +635,13 @@ You can access the revised prompt in the `revised_prompt` field of the image gen
 ```
 
 
-
-
-
-
-
-
-
 ## Edit Images
-
-
 
 The [image edits](https://developers.openai.com/api/docs/api-reference/images/createEdit) endpoint lets you:
 
 - Edit existing images
 - Generate new images using other images as a reference
-- Edit parts of an image by uploading an image and mask indicating which areas should be replaced (a process known as **inpainting**)
+- Edit parts of an image by uploading an image and mask that identifies the areas to replace
 
 ### Create a new image using image references
 
@@ -728,7 +668,7 @@ containing all the items in the reference pictures.
 """
 
 result = client.images.edit(
-    model="gpt-image-1.5",
+    model="gpt-image-2",
     image=[
         open("body-lotion.png", "rb"),
         open("bath-bomb.png", "rb"),
@@ -774,7 +714,7 @@ const images = await Promise.all(
 );
 
 const response = await client.images.edit({
-    model: "gpt-image-1.5",
+    model: "gpt-image-2",
     image: images,
     prompt,
 });
@@ -790,7 +730,7 @@ curl -s -D >(grep -i x-request-id >&2) \\
   -o >(jq -r '.data[0].b64_json' | base64 --decode > gift-basket.png) \\
   -X POST "https://api.openai.com/v1/images/edits" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F "model=gpt-image-1.5" \\
+  -F "model=gpt-image-2" \\
   -F "image[]=@body-lotion.png" \\
   -F "image[]=@bath-bomb.png" \\
   -F "image[]=@incense-kit.png" \\
@@ -802,15 +742,14 @@ curl -s -D >(grep -i x-request-id >&2) \\
 
 
 
-### Edit an image using a mask (inpainting)
+### Edit an image using a mask
 
 You can provide a mask to indicate which part of the image should be edited.
 
 When using a mask with GPT Image, additional instructions are sent to the model to help guide the editing process accordingly.
 
-Unlike with DALL·E 2, masking with GPT Image is entirely prompt-based. This
-  means the model uses the mask as guidance, but may not follow its exact shape
-  with complete precision.
+Masking with GPT Image is entirely prompt-based. The model uses the mask as
+  guidance, but may not follow its exact shape with complete precision.
 
 If you provide multiple input images, the mask will be applied to the first image.
 
@@ -828,7 +767,7 @@ fileId = create_file("sunlit_lounge.png")
 maskId = create_file("mask.png")
 
 response = client.responses.create(
-    model="gpt-4o",
+    model="gpt-5.4",
     input=[
         {
             "role": "user",
@@ -875,7 +814,7 @@ const fileId = await createFile("sunlit_lounge.png");
 const maskId = await createFile("mask.png");
 
 const response = await openai.responses.create({
-  model: "gpt-4o",
+  model: "gpt-5.4",
   input: [
     {
       role: "user",
@@ -923,7 +862,7 @@ from openai import OpenAI
 client = OpenAI()
 
 result = client.images.edit(
-    model="gpt-image-1.5",
+    model="gpt-image-2",
     image=open("sunlit_lounge.png", "rb"),
     mask=open("mask.png", "rb"),
     prompt="A sunlit indoor lounge area with a pool containing a flamingo"
@@ -944,7 +883,7 @@ import OpenAI, { toFile } from "openai";
 const client = new OpenAI();
 
 const rsp = await client.images.edit({
-    model: "gpt-image-1.5",
+    model: "gpt-image-2",
     image: await toFile(fs.createReadStream("sunlit_lounge.png"), null, {
         type: "image/png",
     }),
@@ -965,8 +904,8 @@ curl -s -D >(grep -i x-request-id >&2) \\
   -o >(jq -r '.data[0].b64_json' | base64 --decode > lounge.png) \\
   -X POST "https://api.openai.com/v1/images/edits" \\
   -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -F "model=gpt-image-1.5" \\
-  -F "mask=@mask.png" \\   
+  -F "model=gpt-image-2" \\
+  -F "mask=@mask.png" \\
   -F "image[]=@sunlit_lounge.png" \\
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
 ```
@@ -992,8 +931,6 @@ curl -s -D >(grep -i x-request-id >&2) \\
 The image to edit and mask must be of the same format and size (less than 50MB in size).
 
 The mask image must also contain an alpha channel. If you're using an image editing tool to create the mask, make sure to save the mask with an alpha channel.
-
-Add an alpha channel to a black and white mask
 
 You can modify a black and white image programmatically to add an alpha channel.
 
@@ -1024,233 +961,119 @@ with open(img_path_mask_alpha, "wb") as f:
 ```
 
 
+### Image input fidelity
 
+The `input_fidelity` parameter controls how strongly a model preserves details from input images during edits and reference-image workflows. For `gpt-image-2`, omit this parameter; the API doesn't allow changing it because the model processes every image input at high fidelity automatically.
 
-
-
-
-
-
-
-
-
-### Input fidelity
-
-GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`) support high input fidelity, which allows you to better preserve details from the input images in the output.
-This is especially useful when using images that contain elements like faces or logos that require accurate preservation in the generated image.
-
-You can provide multiple input images that will all be preserved with high fidelity, but keep in mind that if using `gpt-image-1` or `gpt-image-1-mini`, the first image will be preserved with richer textures and finer details, so if you include elements such as faces, consider placing them in the first image.
-
-If you are using `gpt-image-1.5`, the first **5** input images will be preserved with higher fidelity.
-
-To enable high input fidelity, set the `input_fidelity` parameter to `high`. The default value is `low`.
-
-
-
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
-    Generate an image with high input fidelity
-
-```javascript
-import fs from "fs";
-import OpenAI from "openai";
-
-const openai = new OpenAI();
-const response = await openai.responses.create({
-  model: "gpt-4.1",
-  input: [
-      {
-        role: "user",
-        content: [
-          { type: "input_text", text: "Add the logo to the woman's top, as if stamped into the fabric." },
-          {
-            type: "input_image",
-            image_url: "https://cdn.openai.com/API/docs/images/woman_futuristic.jpg",
-          },
-          {
-            type: "input_image",
-            image_url: "https://cdn.openai.com/API/docs/images/brain_logo.png",
-          },
-        ],
-      },
-    ],
-  tools: [{type: "image_generation", input_fidelity: "high", action: "edit"}],
-});
-
-// Extract the edited image
-const imageBase64 = response.output.find(
-  (o) => o.type === "image_generation_call"
-)?.result;
-
-if (imageBase64) {
-  const imageBuffer = Buffer.from(imageBase64, "base64");
-  fs.writeFileSync("woman_with_logo.png", imageBuffer);
-}
-```
-
-```python
-from openai import OpenAI
-import base64
-
-client = OpenAI()
-
-response = client.responses.create(
-    model="gpt-4.1",
-    input=[
-        {
-            "role": "user",
-            "content": [
-                {"type": "input_text", "text": "Add the logo to the woman's top, as if stamped into the fabric."},
-                {
-                    "type": "input_image",
-                    "image_url": "https://cdn.openai.com/API/docs/images/woman_futuristic.jpg",
-                },
-                {
-                    "type": "input_image",
-                    "image_url": "https://cdn.openai.com/API/docs/images/brain_logo.png",
-                },
-            ],
-        }
-    ],
-    tools=[{"type": "image_generation", "input_fidelity": "high", "action": "edit"}],
-)
-
-# Extract the edited image
-image_data = [
-    output.result
-    for output in response.output
-    if output.type == "image_generation_call"
-]
-
-if image_data:
-    image_base64 = image_data[0]
-    with open("woman_with_logo.png", "wb") as f:
-        f.write(base64.b64decode(image_base64))
-```
-
-  </div>
-  <div data-content-switcher-pane data-value="image" hidden>
-    <div class="hidden">Image API</div>
-    Generate an image with high input fidelity
-
-```javascript
-import fs from "fs";
-import OpenAI from "openai";
-
-const openai = new OpenAI();
-const prompt = "Add the logo to the woman's top, as if stamped into the fabric.";
-const result = await openai.images.edit({
-  model: "gpt-image-1.5",
-  image: [
-    fs.createReadStream("woman.jpg"),
-    fs.createReadStream("logo.png")
-  ],
-  prompt,
-  input_fidelity: "high"
-});
-
-// Save the image to a file
-const image_base64 = result.data[0].b64_json;
-const image_bytes = Buffer.from(image_base64, "base64");
-fs.writeFileSync("woman_with_logo.png", image_bytes);
-```
-
-```python
-from openai import OpenAI
-import base64
-
-client = OpenAI()
-
-result = client.images.edit(
-    model="gpt-image-1.5",
-    image=[open("woman.jpg", "rb"), open("logo.png", "rb")],
-    prompt="Add the logo to the woman's top, as if stamped into the fabric.",
-    input_fidelity="high"
-)
-
-image_base64 = result.data[0].b64_json
-image_bytes = base64.b64decode(image_base64)
-
-# Save the image to a file
-with open("woman_with_logo.png", "wb") as f:
-    f.write(image_bytes)
-```
-
-  </div>
-
-
-
-<div className="images-examples">
-
-| Input 1                                                                                                                  | Input 2                                                                                                                 | Output                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/woman_futuristic.jpg" alt="A woman" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/brain_logo.png" alt="A brain logo" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/woman_with_logo.jpg" alt="The woman with a brain logo on her top" /> |
-
-</div>
-
-<div className="images-edit-prompt body-small">
-  Prompt: Add the logo to the woman's top, as if stamped into the fabric.
-</div>
-
-Keep in mind that when using high input fidelity, more image input tokens will
-  be used per request. To understand the costs implications, refer to our
-  [vision
+Because `gpt-image-2` always processes image inputs at high fidelity, image
+  input tokens can be higher for edit requests that include reference images. To
+  understand the cost implications, refer to the [vision
   costs](https://developers.openai.com/api/docs/guides/images-vision?api-mode=responses#calculating-costs)
   section.
-
-
 
 ## Customize Image Output
 
 You can configure the following output options:
 
-
-
-- **Size**: Image dimensions (e.g., `1024x1024`, `1024x1536`)
-- **Quality**: Rendering quality (e.g. `low`, `medium`, `high`)
+- **Size**: Image dimensions (for example, `1024x1024`, `1024x1536`)
+- **Quality**: Rendering quality (for example, `low`, `medium`, `high`)
 - **Format**: File output format
 - **Compression**: Compression level (0-100%) for JPEG and WebP formats
-- **Background**: Transparent or opaque
+- **Background**: Opaque or automatic
 
 `size`, `quality`, and `background` support the `auto` option, where the model will automatically select the best option based on the prompt.
 
-
-
-
-
-
+`gpt-image-2` doesn't currently support transparent backgrounds. Requests with
+  `background: "transparent"` aren't supported for this model.
 
 ### Size and quality options
 
-Square images with standard quality are the fastest to generate. The default size is 1024x1024 pixels.
-
-
+`gpt-image-2` accepts any resolution in the `size` parameter when it satisfies the constraints below. Square images are typically fastest to generate.
 
 <table>
   <tbody>
     <tr>
-      <td>Available sizes</td>
+      <td>Popular sizes</td>
       <td>
-        - `1024x1024` (square) - `1536x1024` (landscape) - `1024x1536`
-        (portrait) - `auto` (default)
+        <ul>
+          <li>
+            <code>1024x1024</code> (square)
+          </li>
+          <li>
+            <code>1536x1024</code> (landscape)
+          </li>
+          <li>
+            <code>1024x1536</code> (portrait)
+          </li>
+          <li>
+            <code>2048x2048</code> (2K square)
+          </li>
+          <li>
+            <code>2048x1152</code> (2K landscape)
+          </li>
+          <li>
+            <code>3840x2160</code> (4K landscape)
+          </li>
+          <li>
+            <code>2160x3840</code> (4K portrait)
+          </li>
+          <li>
+            <code>auto</code> (default)
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Size constraints</td>
+      <td>
+        <ul>
+          <li>
+            Maximum edge length must be less than or equal to{" "}
+            <code>3840px</code>
+          </li>
+          <li>
+            Both edges must be multiples of <code>16px</code>
+          </li>
+          <li>
+            Long edge to short edge ratio must not exceed <code>3:1</code>
+          </li>
+          <li>
+            Total pixels must be at least <code>655,360</code> and no more than{" "}
+            <code>8,294,400</code>
+          </li>
+        </ul>
       </td>
     </tr>
     <tr>
       <td>Quality options</td>
-      <td>- `low` - `medium` - `high` - `auto` (default)</td>
+      <td>
+        <ul>
+          <li>
+            <code>low</code>
+          </li>
+          <li>
+            <code>medium</code>
+          </li>
+          <li>
+            <code>high</code>
+          </li>
+          <li>
+            <code>auto</code> (default)
+          </li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
 
+Use `quality: "low"` for fast drafts, thumbnails, and quick iterations. It is
+  the fastest option and works well for many common use cases before you move to
+  `medium` or `high` for final assets.
 
-
-
-
-
+Outputs that contain more than `2560x1440` (`3,686,400`) total pixels,
+  typically referred to as 2K, are considered experimental.
 
 ### Output format
-
-
 
 The Image API returns base64-encoded image data.
 The default format is `png`, but you can also request `jpeg` or `webp`.
@@ -1260,157 +1083,12 @@ If using `jpeg` or `webp`, you can also specify the `output_compression` paramet
 Using `jpeg` is faster than `png`, so you should prioritize this format if
   latency is a concern.
 
-
-
-
-
-
-
-
-### Transparency
-
-GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`) support transparent backgrounds.
-To enable transparency, set the `background` parameter to `transparent`.
-
-It is only supported with the `png` and `webp` output formats.
-
-Transparency works best when setting the quality to `medium` or `high`.
-
-
-
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
-    Generate an image with a transparent background
-
-```python
-import openai
-import base64
-
-response = openai.responses.create(
-    model="gpt-5",
-    input="Draw a 2D pixel art style sprite sheet of a tabby gray cat",
-    tools=[
-        {
-            "type": "image_generation",
-            "background": "transparent",
-            "quality": "high",
-        }
-    ],
-)
-
-image_data = [
-    output.result
-    for output in response.output
-    if output.type == "image_generation_call"
-]
-
-if image_data:
-    image_base64 = image_data[0]
-
-    with open("sprite.png", "wb") as f:
-        f.write(base64.b64decode(image_base64))
-```
-
-```javascript
-import fs from "fs";
-import OpenAI from "openai";
-
-const client = new OpenAI();
-
-const response = await client.responses.create({
-  model: "gpt-5",
-  input: "Draw a 2D pixel art style sprite sheet of a tabby gray cat",
-  tools: [
-    {
-      type: "image_generation",
-      background: "transparent",
-      quality: "high",
-    },
-  ],
-});
-
-const imageData = response.output
-  .filter((output) => output.type === "image_generation_call")
-  .map((output) => output.result);
-
-if (imageData.length > 0) {
-  const imageBase64 = imageData[0];
-  const imageBuffer = Buffer.from(imageBase64, "base64");
-  fs.writeFileSync("sprite.png", imageBuffer);
-}
-```
-
-  </div>
-  <div data-content-switcher-pane data-value="image" hidden>
-    <div class="hidden">Image API</div>
-    Generate an image with a transparent background
-
-```javascript
-import OpenAI from "openai";
-import fs from "fs";
-const openai = new OpenAI();
-
-const result = await openai.images.generate({
-    model: "gpt-image-1.5",
-    prompt: "Draw a 2D pixel art style sprite sheet of a tabby gray cat",
-    size: "1024x1024",
-    background: "transparent",
-    quality: "high",
-});
-
-// Save the image to a file
-const image_base64 = result.data[0].b64_json;
-const image_bytes = Buffer.from(image_base64, "base64");
-fs.writeFileSync("sprite.png", image_bytes);
-```
-
-```python
-from openai import OpenAI
-import base64
-client = OpenAI()
-
-result = client.images.generate(
-    model="gpt-image-1.5",
-    prompt="Draw a 2D pixel art style sprite sheet of a tabby gray cat",
-    size="1024x1024",
-    background="transparent",
-    quality="high",
-)
-
-image_base64 = result.json()["data"][0]["b64_json"]
-image_bytes = base64.b64decode(image_base64)
-
-# Save the image to a file
-with open("sprite.png", "wb") as f:
-    f.write(image_bytes)
-```
-
-```bash
-curl -X POST "https://api.openai.com/v1/images" \\
-    -H "Authorization: Bearer $OPENAI_API_KEY" \\
-    -H "Content-type: application/json" \\
-    -d '{
-        "prompt": "Draw a 2D pixel art style sprite sheet of a tabby gray cat",
-        "quality": "high",
-        "size": "1024x1024",
-        "background": "transparent"
-    }' | jq -r 'data[0].b64_json' | base64 --decode > sprite.png
-```
-
-  </div>
-
-
-
-
-
 ## Limitations
 
-
-
-GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`) are powerful and versatile image generation models, but they still have some limitations to be aware of:
+GPT Image models (`gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`) are powerful and versatile image generation models, but they still have some limitations to be aware of:
 
 - **Latency:** Complex prompts may take up to 2 minutes to process.
-- **Text Rendering:** Although significantly improved over the DALL·E series, the model can still struggle with precise text placement and clarity.
+- **Text Rendering:** Although significantly improved, the model can still struggle with precise text placement and clarity.
 - **Consistency:** While capable of producing consistent imagery, the model may occasionally struggle to maintain visual consistency for recurring characters or brand elements across multiple generations.
 - **Composition Control:** Despite improved instruction following, the model may have difficulty placing elements precisely in structured or layout-sensitive compositions.
 
@@ -1418,26 +1096,24 @@ GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`) are po
 
 All prompts and generated images are filtered in accordance with our [content policy](https://openai.com/policies/usage-policies/).
 
-For image generation using GPT Image models (`gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`), you can control moderation strictness with the `moderation` parameter. This parameter supports two values:
+For image generation using GPT Image models (`gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`), you can control moderation strictness with the `moderation` parameter. This parameter supports two values:
 
 - `auto` (default): Standard filtering that seeks to limit creating certain categories of potentially age-inappropriate content.
 - `low`: Less restrictive filtering.
 
 ### Supported models
 
-When using image generation in the Responses API, most modern models starting with `gpt-4o` and newer should support the image generation tool. [Check the model detail page for your model](https://developers.openai.com/api/docs/models) to confirm if your desired model can use the image generation tool.
-
-
-
-
-
-
+When using image generation in the Responses API, `gpt-5` and newer models should support the image generation tool. [Check the model detail page for your model](https://developers.openai.com/api/docs/models) to confirm if your desired model can use the image generation tool.
 
 ## Cost and latency
 
+### `gpt-image-2` output tokens
 
+For `gpt-image-2`, use the calculator to estimate output tokens from the requested `quality` and `size`:
 
-This model generates images by first producing specialized image tokens. Both latency and eventual cost are proportional to the number of tokens required to render an image—larger image sizes and higher quality settings result in more tokens.
+### Models prior to `gpt-image-2`
+
+GPT Image models prior to `gpt-image-2` generate images by first producing specialized image tokens. Both latency and eventual cost are proportional to the number of tokens required to render an image—larger image sizes and higher quality settings result in more tokens.
 
 The number of tokens generated depends on image dimensions and quality:
 
@@ -1448,12 +1124,13 @@ The number of tokens generated depends on image dimensions and quality:
 | High    | 4160 tokens        | 6240 tokens          | 6208 tokens           |
 
 Note that you will also need to account for [input tokens](https://developers.openai.com/api/docs/guides/images-vision?api-mode=responses#calculating-costs): text tokens for the prompt and image tokens for the input images if editing images.
-If you are using high input fidelity, the number of input tokens will be higher.
+Because `gpt-image-2` always processes image inputs at high fidelity, edit requests that include reference images can use more input tokens.
 
-Refer to the [Calculating costs](#calculating-costs) section below for more
-information about price per text and image tokens.
+Refer to the [pricing page](https://developers.openai.com/api/docs/pricing#image-generation) for current
+text and image token prices, and use the [Calculating costs](#calculating-costs)
+section below to estimate request costs.
 
-So the final cost is the sum of:
+The final cost is the sum of:
 
 - input text tokens
 - input image tokens if using the edits endpoint
@@ -1461,9 +1138,15 @@ So the final cost is the sum of:
 
 ### Calculating costs
 
-Per-image output pricing is listed below. These tables cover output image
-generation only. You should still account for text and image input tokens when
+Use the pricing calculator below to estimate request costs for GPT Image models.
+`gpt-image-2` supports thousands of valid resolutions; the table below lists the
+same sizes used for previous GPT Image models for comparison. For GPT Image 1.5,
+GPT Image 1, and GPT Image 1 Mini, the legacy per-image output pricing table is
+also listed below. You should still account for text and image input tokens when
 estimating the total cost of a request.
+
+A larger non-square resolution can sometimes produce fewer output tokens than
+  a smaller or square resolution at the same quality setting.
 
 <table
   style={{ borderCollapse: "collapse", tableLayout: "fixed", width: "100%" }}
@@ -1482,29 +1165,31 @@ estimating the total cost of a request.
   <tbody>
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT Image 1.5
+        GPT Image 2
+        <br />
+        <span style={{ fontSize: "0.875em" }}>Additional sizes available</span>
       </td>
       <td style={{ padding: "8px" }}>Low</td>
-      <td style={{ padding: "8px" }}>$0.009</td>
-      <td style={{ padding: "8px" }}>$0.013</td>
-      <td style={{ padding: "8px" }}>$0.013</td>
+      <td style={{ padding: "8px" }}>$0.006</td>
+      <td style={{ padding: "8px" }}>$0.005</td>
+      <td style={{ padding: "8px" }}>$0.005</td>
     </tr>
     <tr>
       <td style={{ padding: "8px" }}>Medium</td>
-      <td style={{ padding: "8px" }}>$0.034</td>
-      <td style={{ padding: "8px" }}>$0.05</td>
-      <td style={{ padding: "8px" }}>$0.05</td>
+      <td style={{ padding: "8px" }}>$0.053</td>
+      <td style={{ padding: "8px" }}>$0.041</td>
+      <td style={{ padding: "8px" }}>$0.041</td>
     </tr>
     <tr>
       <td style={{ padding: "8px" }}>High</td>
-      <td style={{ padding: "8px" }}>$0.133</td>
-      <td style={{ padding: "8px" }}>$0.2</td>
-      <td style={{ padding: "8px" }}>$0.2</td>
+      <td style={{ padding: "8px" }}>$0.211</td>
+      <td style={{ padding: "8px" }}>$0.165</td>
+      <td style={{ padding: "8px" }}>$0.165</td>
     </tr>
 
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
-        GPT Image Latest
+        GPT Image 1.5
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.009</td>
@@ -1568,228 +1253,6 @@ estimating the total cost of a request.
       <td style={{ padding: "8px" }}>$0.052</td>
     </tr>
 
-  </tbody>
-</table>
-
-<table
-  style={{ borderCollapse: "collapse", tableLayout: "fixed", width: "100%" }}
->
-  <thead>
-    <tr>
-      <th style={{ width: "28%" }}>Model</th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "14%",
-        }}
-      >
-        Quality
-      </th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "19.33%",
-        }}
-      >
-        1024 x 1024
-      </th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "19.33%",
-        }}
-      >
-        1024 x 1792
-      </th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "19.34%",
-        }}
-      >
-        1792 x 1024
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowSpan="2" style={{ width: "28%" }}>
-        DALL·E 3
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        Standard
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.04
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.08
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.08
-      </td>
-    </tr>
-    <tr>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        HD
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.08
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.12
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.12
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table
-  style={{ borderCollapse: "collapse", tableLayout: "fixed", width: "100%" }}
->
-  <thead>
-    <tr>
-      <th style={{ width: "28%" }}>Model</th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "14%",
-        }}
-      >
-        Quality
-      </th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "19.33%",
-        }}
-      >
-        256 x 256
-      </th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "19.33%",
-        }}
-      >
-        512 x 512
-      </th>
-      <th
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          width: "19.34%",
-        }}
-      >
-        1024 x 1024
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style={{ width: "28%" }}>DALL·E 2</td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        Standard
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.016
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.018
-      </td>
-      <td
-        style={{
-          textAlign: "left",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-        }}
-      >
-        $0.02
-      </td>
-    </tr>
   </tbody>
 </table>
 

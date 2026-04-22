@@ -1,6 +1,6 @@
 ---
 title: DataChannels
-description: DataChannels are a way to send arbitrary data, not just audio or video data, between client in low latency. DataChannels are useful for scenarios like chat, game state, or any other data that doesn't need to be encoded as audio or video but still needs to be sent between clients in real time.
+description: Send arbitrary real-time data between clients using Realtime SFU DataChannels.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

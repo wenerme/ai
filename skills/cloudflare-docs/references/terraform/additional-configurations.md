@@ -1,5 +1,6 @@
 ---
 title: Additional configurations
+description: Terraform configuration examples for Cloudflare rulesets, redirects, caching, and more.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

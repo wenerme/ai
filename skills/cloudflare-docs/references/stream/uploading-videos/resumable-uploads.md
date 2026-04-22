@@ -1,6 +1,6 @@
 ---
 title: Resumable and large files (tus)
-description: If you need to upload a video that is over 200 MB, you must use the tus protocol. Even if the video is under 200 MB, if your connection is potentially unreliable, Cloudflare recommends using the tus protocol because it is resumable. A resumable upload ensures that the upload can be interrupted and resumed without uploading the previous data again.
+description: Upload large or resumable video files to Cloudflare Stream using the tus protocol.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

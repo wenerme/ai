@@ -1,6 +1,6 @@
 ---
 title: /markdown - Extract Markdown from a webpage
-description: The /markdown endpoint retrieves a webpage's content and converts it into Markdown format. You can specify a URL and optional parameters to refine the extraction process.
+description: Convert webpage content to Markdown format using the Browser Run /markdown endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -46,8 +46,8 @@ You must provide either `url` or `html`:
 
 ### Convert a URL to Markdown
 
-* [ curl ](#tab-panel-3586)
-* [ TypeScript SDK ](#tab-panel-3587)
+* [ curl ](#tab-panel-5413)
+* [ TypeScript SDK ](#tab-panel-5414)
 
 This example fetches the Markdown representation of a webpage.
 

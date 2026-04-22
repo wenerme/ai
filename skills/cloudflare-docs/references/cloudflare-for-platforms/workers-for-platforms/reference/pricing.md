@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: The Workers for Platforms Paid plan is $25 monthly. Workers for Platforms can be purchased through the Cloudflare dashboard.
+description: Review Workers for Platforms pricing for requests, CPU time, and scripts, including usage allotments and overage costs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

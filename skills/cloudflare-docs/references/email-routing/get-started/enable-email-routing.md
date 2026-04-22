@@ -1,6 +1,6 @@
 ---
 title: Enable Email Routing
-description: Email Routing is now enabled. You can add other custom addresses to your account.
+description: Add the required DNS records and create your first email routing rule to start forwarding emails.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

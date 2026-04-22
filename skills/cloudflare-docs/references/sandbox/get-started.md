@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: Build your first application with Sandbox SDK - a secure code execution environment. In this guide, you'll create a Worker that can execute Python code and work with files in isolated containers.
+description: Create your first Sandbox SDK Worker to execute Python code in isolated containers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -258,8 +258,8 @@ If you plan to expose ports from sandboxes (using `exposePort()` for preview URL
 
 Your `wrangler.jsonc` connects three pieces together:
 
-* [  wrangler.jsonc ](#tab-panel-6283)
-* [  wrangler.toml ](#tab-panel-6284)
+* [  wrangler.jsonc ](#tab-panel-8522)
+* [  wrangler.toml ](#tab-panel-8523)
 
 JSONC
 

@@ -1,6 +1,6 @@
 ---
 title: Dockerfile reference
-description: Customize the sandbox container image with your own packages, tools, and configurations by extending the base runtime image.
+description: Customize the Sandbox SDK container image with packages, tools, and configurations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

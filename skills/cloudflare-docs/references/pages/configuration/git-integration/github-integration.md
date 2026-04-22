@@ -1,6 +1,6 @@
 ---
 title: GitHub integration
-description: You can connect each Cloudflare Pages project to a GitHub repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
+description: Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

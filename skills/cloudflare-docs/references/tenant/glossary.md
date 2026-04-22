@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: The following terms are used throughout the Tenant API docs. For more details on how these concepts interact with each other, refer to Tenant structure.
+description: Key terms and definitions used throughout the Cloudflare Tenant API documentation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

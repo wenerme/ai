@@ -1,6 +1,6 @@
 ---
 title: Background
-description: Over the years, efficient delivery of live media content has attracted significant interest from the networking and media streaming community. Many applications, including live streaming platforms, real-time communication systems, gaming, and interactive media experiences, require low-latency media delivery. However, it remained a major challenge to deliver media content in a scalable, efficient, and robust way over the internet. Currently, most solutions rely on proprietary protocols or repurpose existing protocols like HTTP/2 or WebRTC that weren't specifically designed for media streaming use cases.
+description: How the IETF MoQ working group developed a standardized protocol for efficient, low-latency media delivery over QUIC.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

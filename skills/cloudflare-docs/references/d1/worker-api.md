@@ -1,6 +1,6 @@
 ---
 title: Workers Binding API
-description: You can execute SQL queries on your D1 database from a Worker using the Worker Binding API. To do this, you can perform the following steps:
+description: Query D1 databases from a Cloudflare Worker using the D1 Binding API for prepared statements, batching, and type-safe results.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

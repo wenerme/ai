@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Pipelines
-description: Cloudflare Pipelines ingests events, transforms them with SQL, and delivers them to R2 as Iceberg tables or as Parquet and JSON files.
+description: Ingest, transform, and deliver streaming data to R2 as Apache Iceberg tables or Parquet and JSON files.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

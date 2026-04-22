@@ -1,6 +1,6 @@
 ---
 title: Email sending
-description: Test email sending functionality locally using wrangler dev to simulate email delivery and verify your sending logic before deploying.
+description: Test Email Service sending Workers locally using wrangler dev with simulated email delivery.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -37,8 +37,8 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 
 Configure your Wrangler file with the email binding:
 
-* [  wrangler.jsonc ](#tab-panel-6830)
-* [  wrangler.toml ](#tab-panel-6831)
+* [  wrangler.jsonc ](#tab-panel-6885)
+* [  wrangler.toml ](#tab-panel-6886)
 
 JSONC
 
@@ -91,8 +91,8 @@ Using [remote bindings](https://developers.cloudflare.com/workers/development-te
 
 Set `remote: true` on the email binding in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6832)
-* [  wrangler.toml ](#tab-panel-6833)
+* [  wrangler.jsonc ](#tab-panel-6887)
+* [  wrangler.toml ](#tab-panel-6888)
 
 JSONC
 
@@ -106,7 +106,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-21",
 
   "send_email": [
 
@@ -135,7 +135,7 @@ name = "email-sending-worker"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-21"
 
 
 [[send_email]]

@@ -1,6 +1,6 @@
 ---
 title: Serve private images
-description: You can serve private images by using signed URL tokens. When an image requires a signed URL, the image cannot be accessed without a token unless it is being requested for a variant set to always allow public access.
+description: Restrict access to Cloudflare Images by generating signed URL tokens with expiration times.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -37,8 +37,8 @@ Note
 
 Never hardcode your signing key in source code. Store it as a secret using [npx wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) and access it via the `env` parameter. For more information, refer to [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
-* [  JavaScript ](#tab-panel-7136)
-* [  TypeScript ](#tab-panel-7137)
+* [  JavaScript ](#tab-panel-7227)
+* [  TypeScript ](#tab-panel-7228)
 
 JavaScript
 

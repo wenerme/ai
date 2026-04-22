@@ -1,6 +1,6 @@
 ---
 title: Create new buckets
-description: You can create a bucket from the Cloudflare dashboard or using Wrangler.
+description: Create R2 buckets using the Cloudflare dashboard or Wrangler CLI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: GraphQL Analytics API
-description: Stream provides analytics about both live video and video uploaded to Stream, via the GraphQL API described below, as well as on the Stream Analytics page of the Cloudflare dashboard.
+description: Query Cloudflare Stream video metrics and viewer data using the GraphQL Analytics API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

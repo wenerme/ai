@@ -1,6 +1,6 @@
 ---
 title: Data security
-description: This page details the data security properties of D1, including:
+description: D1 encrypts data at rest and in transit, and is covered by Cloudflare's SOC 2 and ISO 27001 compliance certifications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Product compatibility
-description: When using Privacy Gateway, the majority of Cloudflare products will be compatible with your application.
+description: Cloudflare products that are and are not compatible with Privacy Gateway, including API Shield, Cache, and WAF.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

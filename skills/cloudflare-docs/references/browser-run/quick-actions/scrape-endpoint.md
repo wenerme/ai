@@ -1,6 +1,6 @@
 ---
 title: /scrape - Scrape HTML elements
-description: The /scrape endpoint extracts structured data from specific elements on a webpage, returning details such as element dimensions and inner HTML.
+description: Extract structured data from specific webpage elements using the Browser Run /scrape endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -45,8 +45,8 @@ You must provide either `url` or `elements`:
 
 ### Extract headings and links from a URL
 
-* [ curl ](#tab-panel-3590)
-* [ TypeScript SDK ](#tab-panel-3591)
+* [ curl ](#tab-panel-5417)
+* [ TypeScript SDK ](#tab-panel-5418)
 
 Go to `https://example.com` and extract metadata from all `h1` and `a` elements in the DOM.
 

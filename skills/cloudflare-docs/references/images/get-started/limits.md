@@ -1,6 +1,6 @@
 ---
 title: Limits and formats
-description: This section covers limits and supported formats for Images.
+description: Supported file formats, size limits, and dimension constraints for Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

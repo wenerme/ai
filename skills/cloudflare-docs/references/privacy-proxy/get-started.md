@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: This guide walks you through connecting to Privacy Proxy and verifying that traffic is proxied correctly.
+description: Connect to Privacy Proxy, configure your client, and verify that traffic is proxied correctly.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

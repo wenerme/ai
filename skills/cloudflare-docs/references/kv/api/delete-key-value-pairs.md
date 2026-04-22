@@ -1,6 +1,6 @@
 ---
 title: Delete key-value pairs
-description: To delete a key-value pair, call the delete() method of the KV binding on any KV namespace you have bound to your Worker code:
+description: Remove keys and their associated values from a Workers KV namespace using the delete() method.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

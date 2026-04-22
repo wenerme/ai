@@ -1,6 +1,6 @@
 ---
 title: Vue
-description: Vue is a progressive JavaScript framework for building user interfaces. A core principle of Vue is incremental adoption: this makes it easy to build Vue applications that live side-by-side with your existing code.
+description: Deploy a Vue application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: List keys
-description: To list all the keys in your KV namespace, call the list() method of the KV binding on any KV namespace you have bound to your Worker code:
+description: Enumerate all keys in a Workers KV namespace using the list() method, with support for pagination and filtering by prefix.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -95,7 +95,7 @@ env.NAMESPACE.list(options?)
 * `options`: `{ prefix?: string, limit?: string, cursor?: string }`  
    * An object with attributes `prefix` (optional), `limit` (optional), or `cursor` (optional).  
          * `prefix` is a `string` that represents a prefix you can use to filter all keys.  
-         * `limit` is the maximum number of keys returned. The default is 1,000, which is the maximum. It is unlikely that you will want to change this default but it is included for completeness.  
+         * `limit` is the maximum number of keys returned. The default is 1,000 keys, which is the maximum. It is unlikely that you will want to change this default but it is included for completeness.  
          * `cursor` is a `string` used for paginating responses.
 
 #### Response

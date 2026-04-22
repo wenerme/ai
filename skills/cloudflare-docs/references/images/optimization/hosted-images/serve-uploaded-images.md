@@ -1,6 +1,6 @@
 ---
 title: Serve uploaded images
-description: To serve images uploaded to Cloudflare Images, you must have:
+description: Construct delivery URLs to serve images uploaded to Cloudflare Images using your account hash, image ID, and variant name.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

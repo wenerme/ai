@@ -1,6 +1,6 @@
 ---
 title: Data security
-description: This page details the data security properties of KV, including:
+description: Workers KV encryption at rest, encryption in transit, and Cloudflare compliance certifications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Workers AI
-description: Workers AI allows you to run AI models in a serverless way, without having to worry about scaling, maintaining, or paying for unused infrastructure. You can invoke models running on GPUs on Cloudflare's network from your own code — from Workers, Pages, or anywhere via the Cloudflare API.
+description: Run machine learning models, powered by serverless GPUs, on Cloudflare's global network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

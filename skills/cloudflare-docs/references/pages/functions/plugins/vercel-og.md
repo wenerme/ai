@@ -1,6 +1,6 @@
 ---
 title: vercel/og
-description: The @vercel/og Pages Plugin is a middleware which renders social images for webpages. It also includes an API to create arbitrary images.
+description: Generate social images in Pages Functions using the @vercel/og Pages Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

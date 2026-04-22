@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: This page outlines the core concepts and key terminology used throughout RealtimeKit.
+description: Core concepts and terminology for RealtimeKit including apps, meetings, participants, and presets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Learn how you can use Pages within your existing application and architecture.
+description: Explore demo applications and reference architectures for Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

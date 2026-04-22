@@ -1,6 +1,6 @@
 ---
 title: Bucket locks
-description: Bucket locks prevent the deletion and overwriting of objects in an R2 bucket for a specified period — or indefinitely. When enabled, bucket locks enforce retention policies on your objects, helping protect them from accidental or premature deletions.
+description: Prevent deletion and overwriting of R2 objects by enabling bucket lock retention policies.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

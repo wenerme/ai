@@ -1,5 +1,6 @@
 ---
 title: Best practices
+description: Recommended patterns for building reliable and performant Durable Objects applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

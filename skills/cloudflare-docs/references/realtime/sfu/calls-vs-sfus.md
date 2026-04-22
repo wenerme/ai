@@ -1,6 +1,6 @@
 ---
 title: Realtime vs Regular SFUs
-description: Cloudflare Realtime represents a paradigm shift in building real-time applications by leveraging a distributed real-time data plane. It creates a seamless experience in real-time communication, transcending traditional geographical limitations and scalability concerns. Realtime is designed for developers looking to integrate WebRTC functionalities in a server-client architecture without delving deep into the complexities of regional scaling or server management.
+description: Compare Cloudflare Realtime SFU with traditional centralized SFUs for WebRTC applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

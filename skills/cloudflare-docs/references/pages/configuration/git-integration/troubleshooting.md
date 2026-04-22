@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting builds
-description: If your git integration is experiencing issues, you may find the following banners in the Deployment page of your Pages project.
+description: Resolve common Cloudflare Pages git integration errors related to deployments and installations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

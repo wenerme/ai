@@ -116,9 +116,9 @@ Source ports are fixed to `1024`\-`65535` and cannot be overridden.
 
 Run `traceroute`
 
-If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
+If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
 
-Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/traceroute/) for more information.
+Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/) for more information.
 
 ## Test Gateway integration
 

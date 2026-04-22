@@ -1,6 +1,6 @@
 ---
 title: Platform
-description: Information about the Sandbox SDK platform, including pricing and limits.
+description: Sandbox SDK platform information including pricing and resource limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

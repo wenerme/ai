@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference documentation for Flagship, including platform limits, evaluation reasons, and error codes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

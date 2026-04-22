@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: If you are using Media Transformations to transform your video and you experience a failure, the response body contains an error message explaining the reason, as well as the Cf-Resized header containing err=code:
+description: Resolve common Cloudflare Media Transformations error codes and failures.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

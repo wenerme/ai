@@ -1,6 +1,6 @@
 ---
 title: HTTP headers
-description: This page documents the HTTP headers used by Privacy Proxy for authentication, geolocation, and observability. For full observability details, refer to GraphQL Analytics API and OpenTelemetry.
+description: HTTP headers used by Privacy Proxy for authentication, geolocation, and observability, including request and response formats.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

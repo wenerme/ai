@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Cloudflare provides an unlimited number of scripts for Workers for Platforms customers.
+description: Review Workers for Platforms limits for scripts, Durable Objects, cache, tags, and API rate limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

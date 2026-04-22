@@ -1,6 +1,6 @@
 ---
 title: Vectorize API
-description: This page covers the Vectorize API available within Cloudflare Workers, including usage examples.
+description: Vectorize Workers binding API for inserting, upserting, querying, and managing vectors.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -342,8 +342,8 @@ Bindings are defined in either the [Wrangler configuration file](https://develop
 
 Vectorize indexes are bound by name. A binding for an index named `production-doc-search` would resemble the below:
 
-* [  wrangler.jsonc ](#tab-panel-6739)
-* [  wrangler.toml ](#tab-panel-6740)
+* [  wrangler.jsonc ](#tab-panel-9062)
+* [  wrangler.toml ](#tab-panel-9063)
 
 JSONC
 

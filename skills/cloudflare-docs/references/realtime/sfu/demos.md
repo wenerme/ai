@@ -1,6 +1,6 @@
 ---
 title: Demos
-description: Learn how you can use Realtime within your existing architecture.
+description: Explore demo applications and interactive visualizations for Cloudflare Realtime SFU.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

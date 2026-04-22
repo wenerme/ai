@@ -1,6 +1,6 @@
 ---
 title: Read key-value pairs
-description: To get the value for a given key, call the get() method of the KV binding on any KV namespace you have bound to your Worker code:
+description: Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

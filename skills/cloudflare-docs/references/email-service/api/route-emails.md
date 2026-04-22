@@ -1,5 +1,6 @@
 ---
 title: Route emails
+description: API reference for routing incoming emails with the Email Service email() handler in Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

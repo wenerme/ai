@@ -1,6 +1,6 @@
 ---
 title: Use webhooks
-description: Webhooks notify your service when videos successfully finish processing and are ready to stream or if your video enters an error state.
+description: Receive webhook notifications when Cloudflare Stream videos finish processing or encounter errors.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

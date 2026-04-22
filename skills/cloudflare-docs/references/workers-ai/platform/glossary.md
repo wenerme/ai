@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's Workers AI documentation.
+description: Definitions of key terms used in the Workers AI documentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

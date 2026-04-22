@@ -1,7 +1,6 @@
 ---
 title: Getting started
-description: In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests.
-In this example, each container runs a small webserver written in Go.
+description: Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -143,8 +142,8 @@ See the [documentation for Durable Object container methods](https://developers.
 
 Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
 
-* [  wrangler.jsonc ](#tab-panel-4135)
-* [  wrangler.toml ](#tab-panel-4136)
+* [  wrangler.jsonc ](#tab-panel-6262)
+* [  wrangler.toml ](#tab-panel-6263)
 
 JSONC
 

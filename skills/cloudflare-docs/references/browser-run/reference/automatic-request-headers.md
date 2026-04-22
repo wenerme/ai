@@ -1,6 +1,6 @@
 ---
 title: Automatic request headers
-description: Cloudflare automatically attaches headers to every request made through Browser Run. These headers make it easy for destination servers to identify that these requests came from Cloudflare.
+description: Review the headers Cloudflare automatically attaches to every Browser Run request, including User-Agent and bot detection identifiers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

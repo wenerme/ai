@@ -1,5 +1,6 @@
 ---
 title: API reference
+description: REST API and Workers API reference for sending and routing emails with Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

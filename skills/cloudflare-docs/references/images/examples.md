@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Code examples for common Cloudflare Images use cases, including transcoding and watermarking.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

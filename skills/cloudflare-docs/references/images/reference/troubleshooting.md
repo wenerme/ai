@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Does the response have a Cf-Resized header? If not, then resizing has not been attempted. Possible causes:
+description: Diagnose and resolve common Cloudflare Images resizing errors, including error codes and origin configuration issues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

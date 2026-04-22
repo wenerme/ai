@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot and debug
-description: Troubleshoot and debug errors commonly associated with connecting to a database with Hyperdrive.
+description: Resolve common Hyperdrive connection errors and database connectivity issues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

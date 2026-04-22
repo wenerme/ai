@@ -1,6 +1,6 @@
 ---
 title: Environment variables
-description: Pass configuration, secrets, and runtime settings to your sandboxes using environment variables.
+description: Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -30,8 +30,8 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 Controls the transport protocol for SDK-to-container communication. WebSocket transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
-* [  wrangler.jsonc ](#tab-panel-6255)
-* [  wrangler.toml ](#tab-panel-6256)
+* [  wrangler.jsonc ](#tab-panel-8494)
+* [  wrangler.toml ](#tab-panel-8495)
 
 JSONC
 
@@ -73,8 +73,8 @@ Sets a global default timeout for every `exec()` call. When set, any command tha
 
 Per-command `timeout` on `exec()` and session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) both override this value. For more details on timeout precedence, refer to [Execute commands - Timeouts](https://developers.cloudflare.com/sandbox/guides/execute-commands/#timeouts).
 
-* [  wrangler.jsonc ](#tab-panel-6257)
-* [  wrangler.toml ](#tab-panel-6258)
+* [  wrangler.jsonc ](#tab-panel-8496)
+* [  wrangler.toml ](#tab-panel-8497)
 
 JSONC
 

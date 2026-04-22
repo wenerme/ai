@@ -139,6 +139,25 @@ Use IPsec logs to monitor tunnel activity during the key-exchange phase of the I
 
 Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more information about features, including the [available fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/) in the dataset.
 
+## Anti-replay protection
+
+Some customer routers cannot fully disable IPsec anti-replay protection, which is required for optimal Magic Transit operation (packet reordering at the Cloudflare edge can otherwise trigger false drops).
+
+**If your router does not support disabling anti-replay:**
+
+1. Check whether your router supports configuring a **replay window size**. Setting this to `0` is equivalent to disabling anti-replay protection.
+2. If neither disabling anti-replay nor setting the window size to `0` is supported, **the router cannot be used as a Magic Transit IPsec on-ramp**. Consider using a GRE tunnel or Cloudflare Network Interconnect (CNI) instead.
+
+## Health check failures when using IPsec
+
+In the default unidirectional (DSR) configuration, Magic Transit health check responses travel over the public internet back to Cloudflare, not through the IPsec tunnel. This means your ISP or upstream network must allow the health check response packets from your prefix to reach [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips/).
+
+If your ISP is blocking these response packets, health checks will fail even when the IPsec tunnel and data plane are working correctly.
+
+**Symptom:** Health checks fail but application traffic flows normally through the tunnel.
+
+**Resolution:** Switch to bidirectional health checks, which send both the probe and the response through the tunnel. Bidirectional health checks require egress traffic to be turned on for your Magic Transit configuration. For more information, refer to [Tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/).
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/magic-transit/","name":"Magic Transit"}},{"@type":"ListItem","position":3,"item":{"@id":"/magic-transit/troubleshooting/","name":"Troubleshooting"}},{"@type":"ListItem","position":4,"item":{"@id":"/magic-transit/troubleshooting/ipsec-troubleshoot/","name":"Troubleshoot IPsec tunnels"}}]}
 ```

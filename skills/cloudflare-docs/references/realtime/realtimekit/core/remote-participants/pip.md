@@ -1,6 +1,6 @@
 ---
 title: Picture in Picture
-description: Picture-in-Picture API allows you to render meeting.participants.active participant's video as a floating tile outside of the current webpage's context.
+description: Render RealtimeKit participant video as a floating Picture-in-Picture tile in the browser.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

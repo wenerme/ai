@@ -1,6 +1,6 @@
 ---
 title: Upload via URL
-description: Before you upload an image, check the list of supported formats and dimensions to confirm your image will be accepted.
+description: Upload an image to Cloudflare Images by providing a source URL instead of a file.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

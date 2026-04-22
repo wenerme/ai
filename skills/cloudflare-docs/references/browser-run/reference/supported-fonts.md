@@ -1,6 +1,6 @@
 ---
 title: Supported fonts
-description: Browser Run uses a managed Chromium environment that includes a standard set of fonts. When you generate a screenshot or PDF, text is rendered using the fonts available in this environment.
+description: View the list of pre-installed fonts available in the Browser Run Chromium environment for screenshots and PDFs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

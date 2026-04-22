@@ -333,6 +333,11 @@ components:
             - integer
             - 'null'
           description: Native reasoning tokens as reported by provider
+        num_fetches:
+          type:
+            - integer
+            - 'null'
+          description: Number of web fetches performed
         num_input_audio_prompt:
           type:
             - integer
@@ -452,6 +457,7 @@ components:
         - native_tokens_completion_images
         - native_tokens_prompt
         - native_tokens_reasoning
+        - num_fetches
         - num_input_audio_prompt
         - num_media_completion
         - num_media_prompt

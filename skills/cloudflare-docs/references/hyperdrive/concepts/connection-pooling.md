@@ -1,7 +1,6 @@
 ---
 title: Connection pooling
-description: Hyperdrive maintains a pool of connections to your database. These are optimally placed to minimize the latency for your applications. You can configure
-the amount of connections your Hyperdrive configuration uses to connect to your origin database. This enables you to right-size your connection pool based on your database capacity and application requirements.
+description: Hyperdrive maintains a pool of database connections optimally placed to minimize latency for your applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

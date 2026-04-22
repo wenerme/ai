@@ -20,7 +20,7 @@ Sites represent the local network of a data center, office, or other physical lo
 
 To use a site, start by setting up your on-ramps. On-ramps can be:
 
-* [GRE or IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/)
+* [GRE or IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
 * [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
 * Direct [CNI link](https://developers.cloudflare.com/cloudflare-wan/network-interconnect/)
 

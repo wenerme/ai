@@ -1,6 +1,6 @@
 ---
 title: TURN Service
-description: Separately from the SFU, Realtime offers a managed TURN service. TURN acts as a relay point for traffic between WebRTC clients like the browser and SFUs, particularly in scenarios where direct communication is obstructed by NATs or firewalls. TURN maintains an allocation of public IP addresses and ports for each session, ensuring connectivity even in restrictive network environments.
+description: Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -25,13 +25,13 @@ Using Cloudflare Realtime TURN service is available free of charge when used tog
 | Protocol      | Primary address     | Primary port | Alternate port |
 | ------------- | ------------------- | ------------ | -------------- |
 | STUN over UDP | stun.cloudflare.com | 3478/udp     | 53/udp         |
-| TURN over UDP | turn.cloudflare.com | 3478/udp     | 53 udp         |
+| TURN over UDP | turn.cloudflare.com | 3478/udp     | 53/udp         |
 | TURN over TCP | turn.cloudflare.com | 3478/tcp     | 80/tcp         |
 | TURN over TLS | turn.cloudflare.com | 5349/tcp     | 443/tcp        |
 
 Note
 
-Use of alternate port 53 only by itself is not recommended. Port 53 is blocked by many ISPs, and by popular browsers such as [Chrome ↗](https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port%5Futil.cc#44) and [Firefox ↗](https://github.com/mozilla/gecko-dev/blob/master/netwerk/base/nsIOService.cpp#L132). It is useful only in certain specific scenerios.
+Use of alternate port 53 only by itself is not recommended. Port 53 is blocked by many ISPs, and by popular browsers such as [Chrome ↗](https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port%5Futil.cc#44) and [Firefox ↗](https://github.com/mozilla/gecko-dev/blob/master/netwerk/base/nsIOService.cpp#L132). It is useful only in certain specific scenarios.
 
 ## Regions
 

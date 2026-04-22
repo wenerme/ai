@@ -1,6 +1,6 @@
 ---
 title: Serve images from custom domains
-description: Image delivery is supported from all customer domains under the same Cloudflare account. To serve images through custom domains, an image URL should be adjusted to the following format:
+description: Deliver Cloudflare Images through your own custom domain using the cdn-cgi image delivery path.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

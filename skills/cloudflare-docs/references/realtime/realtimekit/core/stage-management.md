@@ -1,6 +1,6 @@
 ---
 title: Stage Management
-description: This guide explains how to use stage management APIs for Webinar (WebRTC) use cases in Cloudflare RealtimeKit.
+description: Manage webinar stage access and publish permissions in RealtimeKit meetings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

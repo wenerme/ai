@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: Learn how to build applications with Sandbox SDK through step-by-step tutorials. Each tutorial takes 20-30 minutes.
+description: Step-by-step Sandbox SDK tutorials for building AI agents, code executors, and testing pipelines.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

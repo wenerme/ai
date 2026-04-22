@@ -1,6 +1,6 @@
 ---
 title: Environments
-description: Environments provide isolated spaces where your code runs with specific dependencies and configurations. This can be useful for a number of reasons, such as compatibility testing or version management. Using different environments can help with code consistency, testing, and production segregation, which reduces the risk of errors when deploying code.
+description: Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,8 +26,8 @@ If you are using Wrangler environments, you must specify any [Durable Object bin
 
 Durable Object bindings are not inherited. For example, you can define an environment named `staging` as below:
 
-* [  wrangler.jsonc ](#tab-panel-4609)
-* [  wrangler.toml ](#tab-panel-4610)
+* [  wrangler.jsonc ](#tab-panel-6812)
+* [  wrangler.toml ](#tab-panel-6813)
 
 JSONC
 
@@ -81,8 +81,8 @@ class_name = "DurableObjectExample"
 
 Because Wrangler appends the [environment name](https://developers.cloudflare.com/workers/wrangler/environments/) to the top-level name when publishing, for a Worker named `worker-name` the above example is equivalent to:
 
-* [  wrangler.jsonc ](#tab-panel-4611)
-* [  wrangler.toml ](#tab-panel-4612)
+* [  wrangler.jsonc ](#tab-panel-6814)
+* [  wrangler.toml ](#tab-panel-6815)
 
 JSONC
 
@@ -142,8 +142,8 @@ script_name = "worker-name-staging"
 
 If you want an environment-specific binding that accesses the same Objects as the top-level binding, specify the top-level Worker code name explicitly using `script_name`:
 
-* [  wrangler.jsonc ](#tab-panel-4613)
-* [  wrangler.toml ](#tab-panel-4614)
+* [  wrangler.jsonc ](#tab-panel-6816)
+* [  wrangler.toml ](#tab-panel-6817)
 
 JSONC
 

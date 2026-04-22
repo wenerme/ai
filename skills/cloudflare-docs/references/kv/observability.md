@@ -1,5 +1,6 @@
 ---
 title: Observability
+description: Monitor and analyze Workers KV operations and storage with metrics and analytics.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

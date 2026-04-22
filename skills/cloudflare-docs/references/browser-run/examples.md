@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Use these Quick Actions examples to perform common tasks with a single HTTP request.
+description: Explore Browser Run code examples for Quick Actions, Puppeteer, Playwright, and CDP integrations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

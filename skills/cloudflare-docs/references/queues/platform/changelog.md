@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Track recent changes, new features, and fixes for Cloudflare Queues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

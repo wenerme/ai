@@ -1,6 +1,6 @@
 ---
 title: Eleventy
-description: Eleventy is a simple static site generator. In this guide, you will create a new Eleventy site and deploy it using Cloudflare Pages. You will be using the eleventy CLI to create a new Eleventy site.
+description: Deploy an Eleventy static site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

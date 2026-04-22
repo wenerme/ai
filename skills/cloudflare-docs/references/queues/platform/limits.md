@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: 1 1 KB is measured as 1000 bytes. Messages can include up to ~100 bytes of internal metadata that counts towards total message limits.
+description: Cloudflare Queues account limits for message size, throughput, retention, and concurrency.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -57,8 +57,8 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 By default, the maximum CPU time per consumer Worker invocation is set to 30 seconds, but can be increased by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-5658)
-* [  wrangler.toml ](#tab-panel-5659)
+* [  wrangler.jsonc ](#tab-panel-7933)
+* [  wrangler.toml ](#tab-panel-7934)
 
 JSONC
 

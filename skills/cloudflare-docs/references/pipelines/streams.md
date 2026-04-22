@@ -1,6 +1,6 @@
 ---
 title: Streams
-description: Streams are durable, buffered queues that receive and store events for processing in Cloudflare Pipelines. They provide reliable data ingestion via HTTP endpoints and Worker bindings, ensuring no data loss even during downstream processing delays or failures.
+description: Durable, buffered queues that receive and store events for processing in Cloudflare Pipelines.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

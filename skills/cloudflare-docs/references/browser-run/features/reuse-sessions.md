@@ -1,6 +1,6 @@
 ---
 title: Reuse sessions
-description: By default, each Browser Sessions request launches a new browser instance. Reusing sessions eliminates cold-start time and improves performance by reconnecting to an existing browser instead of launching a new one.
+description: Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -81,8 +81,8 @@ Note
 
 Your Worker configuration must include the `nodejs_compat` compatibility flag and a `compatibility_date` of 2025-09-15 or later.
 
-* [  wrangler.jsonc ](#tab-panel-3546)
-* [  wrangler.toml ](#tab-panel-3547)
+* [  wrangler.jsonc ](#tab-panel-5373)
+* [  wrangler.toml ](#tab-panel-5374)
 
 JSONC
 
@@ -98,7 +98,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-21",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -127,7 +127,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-21"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -145,8 +145,8 @@ The script below starts by fetching the current running sessions. If there are a
 
 Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-run/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
 
-* [  JavaScript ](#tab-panel-3548)
-* [  TypeScript ](#tab-panel-3549)
+* [  JavaScript ](#tab-panel-5375)
+* [  TypeScript ](#tab-panel-5376)
 
 JavaScript
 

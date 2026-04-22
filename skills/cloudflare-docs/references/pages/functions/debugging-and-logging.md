@@ -1,6 +1,6 @@
 ---
 title: Debugging and logging
-description: Access your Functions logs by using the Cloudflare dashboard or the Wrangler CLI.
+description: Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

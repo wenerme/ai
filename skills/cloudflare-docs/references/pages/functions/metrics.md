@@ -1,6 +1,6 @@
 ---
 title: Metrics
-description: Functions metrics can help you diagnose issues and understand your workloads by showing performance and usage data for your Functions.
+description: View request and performance metrics for your Pages Functions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

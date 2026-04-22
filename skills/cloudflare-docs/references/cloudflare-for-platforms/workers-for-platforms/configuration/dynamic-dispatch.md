@@ -1,6 +1,6 @@
 ---
 title: Dynamic dispatch Worker
-description: A dynamic dispatch Worker is a specialized routing Worker that directs incoming requests to the appropriate user Workers in your dispatch namespace. Instead of using Workers Routes, dispatch Workers let you programmatically control request routing through code.
+description: Create a dynamic dispatch Worker to route incoming requests to user Workers in your dispatch namespace.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -41,8 +41,8 @@ You can also create a dispatch Worker from the Cloudflare dashboard. Go to **Wor
 
 To allow your dynamic dispatch Worker to dynamically route requests to Workers in a namespace, you need to configure a dispatch namespace [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/). This binding enables your dynamic dispatch Worker to call any user Worker within that namespace using `env.dispatcher.get()`.
 
-* [  wrangler.jsonc ](#tab-panel-3384)
-* [  wrangler.toml ](#tab-panel-3385)
+* [  wrangler.jsonc ](#tab-panel-5529)
+* [  wrangler.toml ](#tab-panel-5530)
 
 JSONC
 

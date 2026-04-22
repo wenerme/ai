@@ -1,6 +1,6 @@
 ---
 title: Configure MTA-STS
-description: MTA Strict Transport Security (MTA-STS) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.
+description: Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

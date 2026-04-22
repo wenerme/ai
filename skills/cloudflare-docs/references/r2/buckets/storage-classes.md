@@ -1,6 +1,6 @@
 ---
 title: Storage classes
-description: Storage classes allow you to trade off between the cost of storage and the cost of accessing data. Every object stored in R2 has an associated storage class.
+description: Choose between R2 Standard and Infrequent Access storage to optimize cost and access patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

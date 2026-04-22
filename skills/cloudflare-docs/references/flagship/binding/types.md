@@ -1,6 +1,6 @@
 ---
 title: Types
-description: The Flagship binding uses the following TypeScript types. These are available from the @cloudflare/workers-types package after running npx wrangler types.
+description: TypeScript type definitions for the Flagship binding, including Flagship, FlagshipEvaluationContext, and FlagshipEvaluationDetails.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

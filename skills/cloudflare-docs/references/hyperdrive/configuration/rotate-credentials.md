@@ -1,6 +1,6 @@
 ---
 title: Rotating database credentials
-description: You can change the connection information and credentials of your Hyperdrive configuration in one of two ways:
+description: Update or rotate database credentials for an existing Hyperdrive configuration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -40,8 +40,8 @@ npx wrangler hyperdrive create my-updated-hyperdrive --connection-string="<YOUR_
 
 The command above will output the ID of your Hyperdrive. Set this ID in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project:
 
-* [  wrangler.jsonc ](#tab-panel-4708)
-* [  wrangler.toml ](#tab-panel-4709)
+* [  wrangler.jsonc ](#tab-panel-7000)
+* [  wrangler.toml ](#tab-panel-7001)
 
 JSONC
 
@@ -59,7 +59,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -88,7 +88,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]

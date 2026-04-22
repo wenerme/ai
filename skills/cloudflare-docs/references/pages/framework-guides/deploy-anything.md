@@ -1,6 +1,6 @@
 ---
 title: Static HTML
-description: Cloudflare supports deploying any static HTML website to Cloudflare Pages. If you manage your website without using a framework or static site generator, or if your framework is not listed in Framework guides, you can still deploy it using this guide.
+description: Deploy any static HTML website to Cloudflare Pages without a framework.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

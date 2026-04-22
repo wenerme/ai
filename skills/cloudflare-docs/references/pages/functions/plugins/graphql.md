@@ -1,6 +1,6 @@
 ---
 title: GraphQL
-description: The GraphQL Pages Plugin creates a GraphQL server which can respond to application/json and application/graphql POST requests. It responds with the GraphQL Playground for GET requests.
+description: Set up a GraphQL server on Cloudflare Pages using the GraphQL Pages Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

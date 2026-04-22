@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Having access to Cloudflare’s provisioning capabilities allows you to more easily create and manage Cloudflare accounts. The following steps will get you started on making API calls to provision accounts, users, and services.
+description: Set up your partner account and make your first Cloudflare Tenant API calls.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -38,8 +38,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-8845)
-* [ API ](#tab-panel-8846)
+* [ Dashboard ](#tab-panel-8969)
+* [ API ](#tab-panel-8970)
 
 To create an account under your tenant using the dashboard:
 

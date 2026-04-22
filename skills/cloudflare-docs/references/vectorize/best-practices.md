@@ -1,5 +1,6 @@
 ---
 title: Best practices
+description: Best practices for creating indexes, inserting vectors, and querying in Vectorize.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

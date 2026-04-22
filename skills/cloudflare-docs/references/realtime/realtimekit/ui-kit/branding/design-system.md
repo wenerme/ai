@@ -1,6 +1,6 @@
 ---
 title: Design System
-description: RealtimeKit's UI Kit provides all the necessary UI components to allow complete customization of all its UI Kit components. You can customize your brand colours, fonts, logo and more.
+description: Override RealtimeKit UI Kit design tokens for colors, fonts, borders, and spacing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

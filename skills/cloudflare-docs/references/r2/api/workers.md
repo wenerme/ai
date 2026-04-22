@@ -1,5 +1,6 @@
 ---
 title: Workers API
+description: Interact with R2 buckets and objects directly from Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

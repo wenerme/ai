@@ -1,6 +1,6 @@
 ---
 title: Astro
-description: Astro is an all-in-one web framework for building fast, content-focused websites. By default, Astro builds websites that have zero JavaScript runtime code.
+description: Deploy an Astro site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

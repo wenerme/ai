@@ -1,6 +1,6 @@
 ---
 title: Ember
-description: Ember.js is a productive, battle-tested JavaScript framework for building modern web applications. It includes everything you need to build rich UIs that work on any device.
+description: Deploy an Ember.js application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Server provider
-description: The FlagshipServerProvider implements the OpenFeature server provider interface. The provider works in Cloudflare Workers, Node.js, and any server-side JavaScript runtime that supports the Fetch API.
+description: Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,13 +22,13 @@ Inside a Cloudflare Worker, you can pass the Flagship [binding](https://develope
 
 ## Setup
 
-* [ With binding ](#tab-panel-6879)
-* [ With app ID ](#tab-panel-6880)
+* [ With binding ](#tab-panel-6925)
+* [ With app ID ](#tab-panel-6926)
 
 Pass the Flagship binding directly to the provider. This is the recommended approach inside a Worker.
 
-* [  JavaScript ](#tab-panel-6877)
-* [  TypeScript ](#tab-panel-6878)
+* [  JavaScript ](#tab-panel-6923)
+* [  TypeScript ](#tab-panel-6924)
 
 JavaScript
 
@@ -136,8 +136,8 @@ Explain Code
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). The provider makes HTTP requests to the Flagship evaluation endpoint. Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship read permissions.
 
-* [  JavaScript ](#tab-panel-6873)
-* [  TypeScript ](#tab-panel-6874)
+* [  JavaScript ](#tab-panel-6919)
+* [  TypeScript ](#tab-panel-6920)
 
 JavaScript
 
@@ -236,8 +236,8 @@ OpenFeature uses an evaluation context to pass user attributes to the flag provi
 
 Pass additional attributes alongside `targetingKey` to match [targeting rules](https://developers.cloudflare.com/flagship/targeting/). For example, you can include `plan`, `country`, or any custom attribute your rules reference.
 
-* [  JavaScript ](#tab-panel-6869)
-* [  TypeScript ](#tab-panel-6870)
+* [  JavaScript ](#tab-panel-6915)
+* [  TypeScript ](#tab-panel-6916)
 
 JavaScript
 
@@ -280,8 +280,8 @@ The SDK ships with two hooks that you can attach to the OpenFeature client.
 * **LoggingHook** — Logs structured information for every evaluation.
 * **TelemetryHook** — Captures timing and event data for observability.
 
-* [  JavaScript ](#tab-panel-6871)
-* [  TypeScript ](#tab-panel-6872)
+* [  JavaScript ](#tab-panel-6917)
+* [  TypeScript ](#tab-panel-6918)
 
 JavaScript
 
@@ -311,8 +311,8 @@ OpenFeature.addHooks(new LoggingHook(), new TelemetryHook());
 
 If you use another OpenFeature-compatible provider (for example, LaunchDarkly or Flagsmith), switch to Flagship by replacing the provider initialization. No changes are needed at evaluation call sites.
 
-* [  JavaScript ](#tab-panel-6875)
-* [  TypeScript ](#tab-panel-6876)
+* [  JavaScript ](#tab-panel-6921)
+* [  TypeScript ](#tab-panel-6922)
 
 JavaScript
 

@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure D1 database settings including data location, environments, and bindings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

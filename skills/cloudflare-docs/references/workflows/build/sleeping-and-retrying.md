@@ -156,25 +156,6 @@ let someState = await step.do(
 
 Explain Code
 
-## Access step context
-
-Workflow step callbacks receive a context object containing the current attempt number (1-indexed). This allows you to access which retry attempt is currently executing.
-
-TypeScript
-
-```
-
-await step.do("my-step", async (ctx) => {
-
-  // ctx.attempt is 1 on first try, 2 on first retry, etc.
-
-  console.log(`Attempt ${ctx.attempt}`);
-
-});
-
-
-```
-
 ## Force a Workflow instance to fail
 
 You can also force a Workflow instance to fail and _not_ retry by throwing a `NonRetryableError` from within the step.

@@ -1,6 +1,6 @@
 ---
 title: Remote development
-description: D1 supports remote development using the dashboard playground. The dashboard playground uses a browser version of Visual Studio Code, allowing you to rapidly iterate on your Worker entirely in your browser.
+description: Develop against a D1 database remotely using the Cloudflare dashboard playground.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Remote development
 
-**Last reviewed:**  7 months ago 
+**Last reviewed:**  8 months ago 
 
 D1 supports remote development using the [dashboard playground](https://developers.cloudflare.com/workers/playground/#use-the-playground). The dashboard playground uses a browser version of Visual Studio Code, allowing you to rapidly iterate on your Worker entirely in your browser.
 

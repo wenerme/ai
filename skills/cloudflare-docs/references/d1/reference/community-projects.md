@@ -1,6 +1,6 @@
 ---
 title: Community projects
-description: Members of the Cloudflare developer community and broader developer ecosystem have built and/or contributed tooling — including ORMs (Object Relational Mapper) libraries, query builders, and CLI tools — that build on top of D1.
+description: Explore community-built ORMs, query builders, and tools that integrate with D1.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

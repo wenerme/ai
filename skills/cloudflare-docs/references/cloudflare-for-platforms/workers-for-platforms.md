@@ -1,6 +1,6 @@
 ---
 title: Workers for Platforms
-description: Workers for Platforms lets you run untrusted code written by your customers, or by AI, in a secure hosted sandbox. Each customer runs code in their own Worker, a secure and isolated environment.
+description: Run untrusted code from your customers or AI in secure, isolated sandboxes on Cloudflare's global network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

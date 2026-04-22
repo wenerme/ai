@@ -1,6 +1,6 @@
 ---
 title: DuckDB
-description: Below is an example of using DuckDB to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with DuckDB, refer to DuckDB documentation.
+description: Connect DuckDB to R2 Data Catalog to query and manage Iceberg tables.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

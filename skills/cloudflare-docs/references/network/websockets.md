@@ -24,8 +24,8 @@ WebSockets are open connections sustained between the client and the origin serv
 
 ## Enable WebSockets
 
-* [ Dashboard ](#tab-panel-5417)
-* [ API ](#tab-panel-5418)
+* [ Dashboard ](#tab-panel-7692)
+* [ API ](#tab-panel-7693)
 
 To enable **WebSockets** connections to your origin server in the dashboard:
 
@@ -77,6 +77,16 @@ When Cloudflare releases new code to its global network, we may restart servers,
 Investigating issues with Websocket can be facilitated with client tools like [wscat ↗](https://github.com/websockets/wscat). Being able to reproduce an issue on a single URL with a minimalistic tool helps narrowing down the issue.
 
 The `EdgeStartTimestamp` and `EdgeStopTimestamp` fields in [HTTP requests logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) represent the duration of the WebSocket connection (they do not represent the initial HTTP connection).
+
+## Connection limits
+
+### Idle timeout
+
+Cloudflare will close a WebSocket connection when no data is transmitted in either direction for a period of time. Enterprise customers can contact their account team to configure a custom idle timeout. To keep long-lived connections alive during periods of inactivity, implement a client-side heartbeat (ping/pong) mechanism.
+
+### Session affinity for load-balanced WebSocket origins
+
+If your WebSocket origin is behind a Cloudflare Load Balancer, turn on **Session affinity** to ensure all requests from the same client are routed to the same origin server. Without session affinity, a WebSocket reconnect may land on a different origin that does not have the session state.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/network/","name":"Network"}},{"@type":"ListItem","position":3,"item":{"@id":"/network/websockets/","name":"WebSockets"}}]}

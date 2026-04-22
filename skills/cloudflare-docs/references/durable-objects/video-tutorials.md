@@ -1,5 +1,6 @@
 ---
 title: Videos
+description: Watch video tutorials on building stateful applications with Durable Objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

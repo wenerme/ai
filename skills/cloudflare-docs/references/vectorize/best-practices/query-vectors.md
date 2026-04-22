@@ -1,6 +1,6 @@
 ---
 title: Query vectors
-description: Querying an index, or vector search, enables you to search an index by providing an input vector and returning the nearest vectors based on the configured distance metric.
+description: Search a Vectorize index for similar vectors using queries, metadata filters, and namespaces.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

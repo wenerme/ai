@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: Configure your Sandbox SDK deployment with Wrangler, customize container images, and manage environment variables.
+description: Configure Sandbox SDK deployments with Wrangler, Dockerfiles, environment variables, and transport modes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

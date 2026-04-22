@@ -1,6 +1,6 @@
 ---
 title: Add a custom domain to a branch
-description: In this guide, you will learn how to add a custom domain (staging.example.com) that will point to a specific branch (staging) on your Pages project.
+description: Point a custom domain to a specific branch deployment of your Cloudflare Pages project.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

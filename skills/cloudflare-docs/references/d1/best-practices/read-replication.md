@@ -1,6 +1,6 @@
 ---
 title: Global read replication
-description: D1 read replication can lower latency for read queries and scale read throughput by adding read-only database copies, called read replicas, across regions globally closer to clients.
+description: Reduce read latency and scale throughput by replicating D1 databases across regions globally.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -30,8 +30,8 @@ Tip: Place your database further away for the read replication demo
 
 To simulate how read replication can improve a worst case latency scenario, set your D1 database location hint to be in a farther away region. For example, if you are in Europe create your database in Western North America (WNAM).
 
-* [  JavaScript ](#tab-panel-4093)
-* [  TypeScript ](#tab-panel-4094)
+* [  JavaScript ](#tab-panel-6296)
+* [  TypeScript ](#tab-panel-6297)
 
 JavaScript
 
@@ -350,8 +350,8 @@ With the REST API, set `read_replication.mode: auto` to enable read replication 
 
 For this REST endpoint, you need to have an API token with `D1:Edit` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-4087)
-* [ TypeScript ](#tab-panel-4088)
+* [ cURL ](#tab-panel-6290)
+* [ TypeScript ](#tab-panel-6291)
 
 Terminal window
 
@@ -410,8 +410,8 @@ Note
 
 Disabling read replication takes up to 24 hours for replicas to stop processing requests. Sessions API works with databases that do not have read replication enabled, so it is safe to run code with Sessions API even after disabling read replication.
 
-* [ cURL ](#tab-panel-4089)
-* [ TypeScript ](#tab-panel-4090)
+* [ cURL ](#tab-panel-6292)
+* [ TypeScript ](#tab-panel-6293)
 
 Terminal window
 
@@ -468,8 +468,8 @@ Alternatively, `GET` D1 database REST endpoint returns if read replication is en
 
 For this REST endpoint, you need to have an API token with `D1:Read` permission. If you do not have an API token, follow the guide: [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
-* [ cURL ](#tab-panel-4091)
-* [ TypeScript ](#tab-panel-4092)
+* [ cURL ](#tab-panel-6294)
+* [ TypeScript ](#tab-panel-6295)
 
 Terminal window
 

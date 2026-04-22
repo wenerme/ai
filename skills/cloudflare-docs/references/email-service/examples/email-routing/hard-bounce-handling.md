@@ -1,6 +1,6 @@
 ---
 title: Handle hard bounce emails
-description: Handle hard bounce notifications to automatically remove invalid email addresses from your mailing lists and maintain good sender reputation.
+description: Detect and process hard bounce notifications in Email Service to maintain sender reputation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -33,8 +33,8 @@ Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
 Configure your worker to handle bounce notifications:
 
-* [  wrangler.jsonc ](#tab-panel-6726)
-* [  wrangler.toml ](#tab-panel-6727)
+* [  wrangler.jsonc ](#tab-panel-6875)
+* [  wrangler.toml ](#tab-panel-6876)
 
 JSONC
 
@@ -48,7 +48,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-21",
 
   "send_email": [
 
@@ -87,7 +87,7 @@ name = "bounce-handler"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-21"
 
 
 [[send_email]]

@@ -1,6 +1,6 @@
 ---
 title: Configure custom headers
-description: Some of R2's extensions require setting a specific header when using them in the S3 compatible API. For some functionality you may want to set a request header on an entire category of requests. Other times you may want to configure a different header for each individual request. This page contains some examples on how to do so with boto3 and with aws-sdk-js-v3.
+description: Set custom request headers for R2 S3 API extensions using boto3 or aws-sdk-js-v3.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

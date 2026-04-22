@@ -1,5 +1,6 @@
 ---
 title: Partners
+description: R2 partner integration guides for connecting with third-party platforms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

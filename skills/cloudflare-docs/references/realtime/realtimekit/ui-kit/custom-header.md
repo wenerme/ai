@@ -1,6 +1,6 @@
 ---
 title: Add Custom Header
-description: In this guide, we will learn how to add a custom header for your RealtimeKit meeting experience.
+description: Add a custom header to your RealtimeKit meeting UI with individual components.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: DDoS managed rulesets configuration using Terraform
-description: This page provides examples of configuring DDoS managed rulesets in your zone or account using Terraform. It covers the following configurations:
+description: Configure Cloudflare DDoS managed rulesets at the zone or account level using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

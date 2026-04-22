@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Email Service
-description: Cloudflare Email Service provides powerful email capabilities:
+description: Send transactional emails and route incoming emails to Workers or email addresses with Cloudflare Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -39,9 +39,9 @@ Together, these two features make it possible for you to send and receive emails
 
 Access Email Service using the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) from any platform, or directly from Cloudflare Workers using [bindings](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/):
 
-* [ REST API (curl) ](#tab-panel-6693)
-* [ index.ts (Workers) ](#tab-panel-6694)
-* [ wrangler.jsonc ](#tab-panel-6695)
+* [ REST API (curl) ](#tab-panel-6842)
+* [ index.ts (Workers) ](#tab-panel-6843)
+* [ wrangler.jsonc ](#tab-panel-6844)
 
 Terminal window
 

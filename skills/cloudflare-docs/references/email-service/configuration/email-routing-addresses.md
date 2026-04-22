@@ -1,6 +1,6 @@
 ---
 title: Email routing rules and addresses
-description: In Email routing, an email rule is a pair of a custom email address and a destination address, or a custom email address and an associated Worker. You can route emails to either:
+description: Create and manage custom email addresses, forwarding rules, and catch-all routing in Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

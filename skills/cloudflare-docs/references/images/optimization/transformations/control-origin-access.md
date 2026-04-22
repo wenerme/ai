@@ -1,6 +1,6 @@
 ---
 title: Control origin access
-description: You can serve resized images without giving access to the original image. Images can be hosted on another server outside of your zone, and the true source of the image can be entirely hidden. The origin server may require authentication to disclose the original image, without needing visitors to be aware of it. Access to the full-size image may be prevented by making it impossible to manipulate resizing parameters.
+description: Hide original image sources and restrict access using Cloudflare Workers with image transformations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

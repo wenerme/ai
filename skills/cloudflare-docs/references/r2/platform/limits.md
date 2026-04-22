@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Limits specified in MiB (mebibyte), GiB (gibibyte), or TiB (tebibyte) are storage units of measurement based on base-2. 1 GiB (gibibyte) is equivalent to 230 bytes (or 10243 bytes). This is distinct from 1 GB (gigabyte), which is 109 bytes (or 10003 bytes).
+description: Account, bucket, and object limits for Cloudflare R2 storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

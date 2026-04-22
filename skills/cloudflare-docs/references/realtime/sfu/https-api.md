@@ -1,6 +1,6 @@
 ---
 title: Connection API
-description: Cloudflare Realtime simplifies the management of peer connections and media tracks through HTTPS API endpoints. These endpoints allow developers to efficiently manage sessions, add or remove tracks, and gather session information.
+description: Manage Realtime SFU sessions and media tracks using the HTTPS connection API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -31,7 +31,7 @@ Cloudflare Realtime simplifies the management of peer connections and media trac
 * **Retrieve Session Information**: Fetches detailed information about a specific session.  
    * `GET /apps/{appId}/sessions/{sessionId}`
 
-[View full API and schema (OpenAPI format)](https://developers.cloudflare.com/realtime/static/calls-api-2024-05-21.yaml)
+[View full API and schema (OpenAPI format)](https://developers.cloudflare.com/realtime/static/realtime-api-2024-05-21.yaml)
 
 ## Handling Secrets
 

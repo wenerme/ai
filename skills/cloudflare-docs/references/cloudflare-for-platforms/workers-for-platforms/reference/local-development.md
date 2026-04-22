@@ -1,6 +1,6 @@
 ---
 title: Local development
-description: Test changes to your dynamic dispatch Worker by running the dynamic dispatch Worker locally but connecting it to user Workers that have been deployed to Cloudflare.
+description: Test your dynamic dispatch Worker locally while connecting to deployed user Workers in a Workers for Platforms namespace.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -32,8 +32,8 @@ This is helpful when:
 
 In the dynamic dispatch Worker's Wrangler file, configure the [dispatch namespace binding](https://developers.cloudflare.com/workers/wrangler/configuration/#dispatch-namespace-bindings-workers-for-platforms) to connect to the remote namespace by setting [remote = true](https://developers.cloudflare.com/workers/development-testing/#remote-bindings):
 
-* [  wrangler.jsonc ](#tab-panel-3384)
-* [  wrangler.toml ](#tab-panel-3385)
+* [  wrangler.jsonc ](#tab-panel-5535)
+* [  wrangler.toml ](#tab-panel-5536)
 
 JSONC
 

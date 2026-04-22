@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Flagship organizes feature flags into apps. You define flags with variations and targeting rules, then evaluate them within Cloudflare's global network.
+description: Understand Flagship core concepts including apps, flags, variations, targeting rules, evaluation context, and flag propagation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

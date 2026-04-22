@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: These pages explain how the Sandbox SDK works, why it's designed the way it is, and the concepts you need to understand to use it effectively.
+description: Learn how the Sandbox SDK works, including architecture, lifecycle, security, and sessions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

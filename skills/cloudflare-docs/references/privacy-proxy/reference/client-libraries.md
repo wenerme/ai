@@ -1,6 +1,6 @@
 ---
 title: Client libraries
-description: This page lists open source libraries and tools you can use to connect to Privacy Proxy.
+description: Open source libraries and tools for connecting to Privacy Proxy, including tokio-quiche, Chaussette, and privacypass-ts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference information for Workers for Platforms, including limits, pricing, isolation modes, and API examples.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

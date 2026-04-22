@@ -1,6 +1,6 @@
 ---
 title: Hyperdrive
-description: Hyperdrive is a service that accelerates queries you make to existing databases, making it faster to access your data from across the globe from Cloudflare Workers, irrespective of your users' location.
+description: Accelerate access to your existing databases from Cloudflare Workers with Hyperdrive's global connection pooling and query caching.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,11 +26,11 @@ Hyperdrive supports any Postgres or MySQL database, including those hosted on AW
 
 Use Hyperdrive's connection string from your Cloudflare Workers application with your existing Postgres drivers and object-relational mapping (ORM) libraries:
 
-* [ PostgreSQL ](#tab-panel-4680)
-* [ MySQL ](#tab-panel-4681)
+* [ PostgreSQL ](#tab-panel-6972)
+* [ MySQL ](#tab-panel-6973)
 
-* [ index.ts ](#tab-panel-4676)
-* [ wrangler.jsonc ](#tab-panel-4677)
+* [ index.ts ](#tab-panel-6968)
+* [ wrangler.jsonc ](#tab-panel-6969)
 
 TypeScript
 
@@ -127,8 +127,8 @@ Explain Code
 
 Explain Code
 
-* [ index.ts ](#tab-panel-4678)
-* [ wrangler.jsonc ](#tab-panel-4679)
+* [ index.ts ](#tab-panel-6970)
+* [ wrangler.jsonc ](#tab-panel-6971)
 
 TypeScript
 

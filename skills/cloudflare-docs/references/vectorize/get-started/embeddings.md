@@ -1,6 +1,6 @@
 ---
 title: Vectorize and Workers AI
-description: Vectorize allows you to generate vector embeddings using a machine-learning model, including the models available in Workers AI.
+description: Generate vector embeddings with Workers AI and store them in a Vectorize index.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -148,8 +148,8 @@ You must create a binding for your Worker to connect to your Vectorize index. [B
 
 To bind your index to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6791)
-* [  wrangler.toml ](#tab-panel-6792)
+* [  wrangler.jsonc ](#tab-panel-9056)
+* [  wrangler.toml ](#tab-panel-9057)
 
 JSONC
 
@@ -199,8 +199,8 @@ Before you deploy your embedding example, ensure your Worker uses your model cat
 
 From within the `embeddings-tutorial` directory, open your Wrangler file in your editor and add the new `[[ai]]` binding to make Workers AI's models available in your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-6793)
-* [  wrangler.toml ](#tab-panel-6794)
+* [  wrangler.jsonc ](#tab-panel-9058)
+* [  wrangler.toml ](#tab-panel-9059)
 
 JSONC
 

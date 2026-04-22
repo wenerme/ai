@@ -1,6 +1,6 @@
 ---
 title: Meeting Object Explained
-description: The meeting object is the core interface for interacting with a RealtimeKit session. It provides access to participants, local user controls, chat, polls, plugins, and more. This object is returned when you initialize the SDK.
+description: Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

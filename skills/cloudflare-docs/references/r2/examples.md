@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples of how to use SDKs and other tools with R2.
+description: Example configurations for using SDKs, Terraform, rclone, and other tools with R2.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

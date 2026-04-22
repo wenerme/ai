@@ -1,5 +1,6 @@
 ---
 title: Features
+description: Explore Browser Run features including session reuse, custom fonts, live view, session recording, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

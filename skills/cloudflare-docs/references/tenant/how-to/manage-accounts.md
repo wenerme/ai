@@ -1,6 +1,6 @@
 ---
 title: Manage accounts
-description: Each customer or team that uses Cloudflare should have their own account. This ensures proper security and access of resources. Each account acts as a container of zones and other resources. Depending on your needs, you may even provision multiple accounts for a single customer or team.
+description: Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -26,8 +26,8 @@ Each customer or team that uses Cloudflare should have their own account. This e
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-6724)
-* [ API ](#tab-panel-6725)
+* [ Dashboard ](#tab-panel-8973)
+* [ API ](#tab-panel-8974)
 
 To create an account under your tenant using the dashboard:
 
@@ -204,8 +204,8 @@ Explain Code
 
 When you create an account with the Tenant API, your Cloudflare user owns that account from creation, ongoing management, and finally deletion.
 
-* [ Dashboard ](#tab-panel-6722)
-* [ API ](#tab-panel-6723)
+* [ Dashboard ](#tab-panel-8971)
+* [ API ](#tab-panel-8972)
 
 To view any accounts owned by your tenant using the dashboard:
 

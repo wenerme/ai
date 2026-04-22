@@ -1,6 +1,6 @@
 ---
 title: Create indexes
-description: Indexes are the &#34;atom&#34; of Vectorize. Vectors are inserted into an index and enable you to query the index for similar vectors for a given input vector.
+description: Learn how to create Vectorize indexes, configure dimensions, and choose distance metrics.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

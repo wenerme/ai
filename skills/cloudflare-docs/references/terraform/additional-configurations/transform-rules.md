@@ -1,6 +1,6 @@
 ---
 title: Transform Rules configuration using Terraform
-description: This page provides examples of creating Transform Rules in a zone using Terraform. The examples cover the following scenarios:
+description: Create URL rewrites, request header, and response header Transform Rules using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

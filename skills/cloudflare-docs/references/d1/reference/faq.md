@@ -1,6 +1,6 @@
 ---
 title: FAQs
-description: Yes, the Workers Free plan will always include the ability to prototype and experiment with D1 for free.
+description: Frequently asked questions about D1 pricing, limits, and usage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

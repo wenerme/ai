@@ -1,6 +1,6 @@
 ---
 title: Audit Logs
-description: Audit logs provide a comprehensive summary of changes made within your Cloudflare account, including those made to Queues. This functionality is always enabled.
+description: Review audit log events for configuration changes made to Cloudflare Queues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

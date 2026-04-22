@@ -1,9 +1,6 @@
 ---
 title: Manage Participants in a Session
-description: Use RealtimeKit host controls to manage other participants in a live session. You can mute audio or video, pin a participant, or remove participants from the session.
-These actions require specific host control permissions enabled in the local participant's Preset.
-Before you show UI controls or call these methods, verify that the local participant has the necessary permissions.
-In this guide, the local participant refers to the user performing the actions.
+description: Use RealtimeKit host controls to mute, pin, or remove participants in a live session.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

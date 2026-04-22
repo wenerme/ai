@@ -1,6 +1,6 @@
 ---
 title: Proxy status reference
-description: The proxyStatus dimension provides proxy-level error classification. This field is available in both GraphQL Analytics API and OpenTelemetry metrics. The value is an empty string when no proxy-level error occurred.
+description: All possible proxyStatus values for Privacy Proxy error classification in GraphQL Analytics and OpenTelemetry metrics.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

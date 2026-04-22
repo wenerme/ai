@@ -1,6 +1,6 @@
 ---
 title: Evaluation reasons and error codes
-description: When you evaluate a flag using the binding's *Details methods or the OpenFeature SDK, the response includes a reason field that explains why a particular value was returned. If an error occurs, the response includes an errorCode field.
+description: Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -41,8 +41,8 @@ When an evaluation error occurs, the method returns the default value you provid
 
 The following example inspects evaluation details returned by `getBooleanDetails`:
 
-* [  JavaScript ](#tab-panel-6865)
-* [  TypeScript ](#tab-panel-6866)
+* [  JavaScript ](#tab-panel-6911)
+* [  TypeScript ](#tab-panel-6912)
 
 JavaScript
 

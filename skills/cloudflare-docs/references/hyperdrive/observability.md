@@ -1,5 +1,6 @@
 ---
 title: Observability
+description: Monitor and debug Hyperdrive with metrics, analytics, and troubleshooting tools.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

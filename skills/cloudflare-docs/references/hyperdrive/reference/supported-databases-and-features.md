@@ -1,6 +1,6 @@
 ---
 title: Supported databases and features
-description: The following table shows which database engines and/or specific database providers are supported.
+description: Database engines, providers, and driver libraries compatible with Hyperdrive.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

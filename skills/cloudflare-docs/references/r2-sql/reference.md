@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: R2 SQL reference documentation for limitations, best practices, and Wrangler commands.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

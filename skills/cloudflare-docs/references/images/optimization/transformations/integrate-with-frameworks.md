@@ -1,5 +1,6 @@
 ---
 title: Integrate with frameworks
+description: Use Cloudflare Images transformations with Next.js and Nuxt image components.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: DNS records
-description: If there is a problem with your SPF records, refer to Troubleshooting SPF records.
+description: Fix missing or misconfigured DNS records that prevent Email Routing from working on your domain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with Durable Objects.
+description: Step-by-step Durable Objects tutorials for building real-world applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -21,7 +21,7 @@ View tutorials to help you get started with Durable Objects.
 | Name                                                                                                                                             | Last Updated     | Difficulty   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ------------ |
 | [Build a seat booking app with SQLite in Durable Objects](https://developers.cloudflare.com/durable-objects/tutorials/build-a-seat-booking-app/) | over 1 year ago  | Intermediate |
-| [Deploy a Browser Rendering Worker with Durable Objects](https://developers.cloudflare.com/browser-rendering/how-to/browser-rendering-with-do/)  | over 2 years ago | Beginner     |
+| [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)                    | over 2 years ago | Beginner     |
 | [Deploy a real-time chat application](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/)                           | over 2 years ago | Intermediate |
 
 ```json

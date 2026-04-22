@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Durable Objects
-description: Durable Objects provide a building block for stateful applications and distributed systems.
+description: Build stateful serverless applications with Durable Objects, including AI agents, real-time chat, and collaborative apps.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

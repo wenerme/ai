@@ -1,6 +1,6 @@
 ---
 title: Tools based on OpenAPI Spec
-description: Oftentimes APIs are defined and documented via OpenAPI specification. The Cloudflare ai-utils package's createToolsFromOpenAPISpec function creates tools from the OpenAPI spec, which the LLM can then leverage to fulfill the prompt.
+description: Generate Workers AI function calling tools from an OpenAPI specification using the ai-utils package.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

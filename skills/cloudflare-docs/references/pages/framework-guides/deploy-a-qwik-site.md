@@ -1,6 +1,6 @@
 ---
 title: Qwik
-description: Qwik is an open-source, DOM-centric, resumable web application framework designed for best possible time to interactive by focusing on resumability, server-side rendering of HTML and fine-grained lazy-loading of code.
+description: Deploy a Qwik City application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

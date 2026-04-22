@@ -1,6 +1,6 @@
 ---
 title: Branch deployment controls
-description: When connected to your git repository, Pages allows you to control which environments and branches you would like to automatically deploy to. By default, Pages will trigger a deployment any time you commit to either your production or preview environment. However, with branch deployment controls, you can configure automatic deployments to suit your preference on a per project basis.
+description: Control which branches trigger automatic deployments in your Cloudflare Pages project.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

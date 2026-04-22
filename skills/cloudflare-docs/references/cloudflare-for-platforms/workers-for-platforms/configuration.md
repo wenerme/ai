@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure Workers for Platforms bindings, dispatch Workers, custom limits, observability, and routing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

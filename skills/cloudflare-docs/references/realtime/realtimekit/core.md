@@ -1,6 +1,6 @@
 ---
 title: Build using Core SDK
-description: To integrate the Core SDK, you will need to initialize it with a participant's auth token, and then use the provided SDK APIs to control the peer in the session.
+description: Initialize and build with the RealtimeKit Core SDK for full control over video calls.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

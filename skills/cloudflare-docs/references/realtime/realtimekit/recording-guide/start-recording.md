@@ -1,6 +1,6 @@
 ---
 title: Start Recording
-description: This topic explains how to use RealtimeKit to implement composite recording.
+description: Start composite recording of a RealtimeKit meeting using the API, SDK, or auto-record flag.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Display thumbnails
-description: A thumbnail from your video can be generated using a special link where you specify the time from the video you'd like to get the thumbnail from.
+description: Generate and customize thumbnail images from Cloudflare Stream videos.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Data migration
-description: Quickly and easily migrate data from other cloud providers to R2. Explore each option further by navigating to their respective documentation page.
+description: Migrate data from other cloud providers to R2 using Super Slurper or Sippy.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

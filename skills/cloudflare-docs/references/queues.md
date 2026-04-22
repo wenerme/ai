@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Queues
-description: Cloudflare Queues integrate with Cloudflare Workers and enable you to build applications that can guarantee delivery, offload work from a request, send data from Worker to Worker, and buffer or batch data.
+description: Send and receive messages with guaranteed delivery using Cloudflare Queues integrated with Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

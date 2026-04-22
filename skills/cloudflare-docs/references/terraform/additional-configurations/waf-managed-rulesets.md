@@ -1,6 +1,6 @@
 ---
 title: WAF Managed Rules configuration using Terraform
-description: This page provides examples of deploying and configuring WAF Managed Rules in your zone or account using Terraform. It covers the following configurations:
+description: Deploy and configure Cloudflare WAF Managed Rules at the zone or account level using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

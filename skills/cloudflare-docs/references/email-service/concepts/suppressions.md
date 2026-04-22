@@ -1,6 +1,6 @@
 ---
 title: Suppressions lists
-description: Suppression lists prevent emails from being sent to addresses that should not receive them, protecting your sender reputation and ensuring compliance with anti-spam regulations.
+description: Manage Email Service suppression lists to prevent sending to invalid or complaining addresses.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

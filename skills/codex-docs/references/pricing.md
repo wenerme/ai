@@ -674,13 +674,13 @@ Select your appropriate plan type in the table below to see rates.
             </td>
           </tr>
           <tr>
-            <td>GPT-Image-1.5 (image)</td>
+            <td>GPT-Image-2 (image)</td>
             <td style="text-align:center">200 credits</td>
             <td style="text-align:center">50 credits</td>
-            <td style="text-align:center">800 credits</td>
+            <td style="text-align:center">750 credits</td>
           </tr>
           <tr>
-            <td>GPT-Image-1.5 (text)</td>
+            <td>GPT-Image-2 (text)</td>
             <td style="text-align:center">125 credits</td>
             <td style="text-align:center">31.25 credits</td>
             <td style="text-align:center">250 credits</td>

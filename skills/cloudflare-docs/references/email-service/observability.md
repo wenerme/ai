@@ -1,5 +1,6 @@
 ---
 title: Observability &#38; Logs
+description: Monitor Email Service performance with logs, metrics, and analytics for sending and routing activity.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

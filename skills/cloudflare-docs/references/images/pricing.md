@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: By default, all users are on the Images Free plan. The Free plan includes access to the transformations feature, which lets you optimize images stored outside of Images, like in R2.
+description: Cloudflare Images pricing for transformations, storage, and delivery on Free and Paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

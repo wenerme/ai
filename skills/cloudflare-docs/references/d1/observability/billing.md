@@ -1,6 +1,6 @@
 ---
 title: Billing
-description: D1 exposes analytics to track billing metrics (rows read, rows written, and total storage) across all databases in your account.
+description: Track D1 billing metrics including rows read, rows written, and storage usage across your account.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

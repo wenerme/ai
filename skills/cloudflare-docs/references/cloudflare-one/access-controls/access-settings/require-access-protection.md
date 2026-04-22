@@ -31,15 +31,15 @@ Warning
 Turning on Access protection blocks traffic to any hostname that does not have an Access application. Before turning on this setting, verify that all publicly accessible hostnames have an [Access application with an Allow or Bypass policy](#allow-traffic-to-a-hostname).
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and go to **Zero Trust** \> **Access controls** \> **Access settings**.
-2. Turn on **Require Cloudflare Access Protection**. You will see a dialog confirming you understand the scope of this change. Select **Confirm**.  
+2. Turn on **Block traffic to all domains in this account**. You will see a dialog confirming you understand the scope of this change. Select **Confirm**.  
 Traffic to all hostnames in the account is now blocked unless an Access application exists for the hostname.
-3. (Optional) Under **Hostnames to Exempt**, select specific domains to exempt from the **Require Cloudflare Access Protection** setting. Traffic to exempted hostnames is allowed even if no Access application exists.  
+3. (Optional) Under **Hostnames to Exempt**, select specific domains to exempt from the **Block traffic to all domains in this account** setting. Traffic to exempted hostnames is allowed even if no Access application exists.  
 Note  
 Cloudflare recommends limiting exemptions to hostnames that host only public-facing content. Internal applications should have an Access application configured.
 
 ## Allow traffic to a hostname
 
-To allow traffic to a hostname when **Require Cloudflare Access Protection** is turned on:
+To allow traffic to a hostname when **Block traffic to all domains in this account** is turned on:
 
 1. [Create an Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) for the hostname.
 2. Add an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#allow) to grant access to authorized users.

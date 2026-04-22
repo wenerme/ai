@@ -1,6 +1,6 @@
 ---
 title: UI Kit Addons
-description: A collection of UI Kit addons that extend RealtimeKit's prebuilt UI Kit capabilities with additional interactive components and controls for enhanced meeting experiences.
+description: Extend RealtimeKit UI Kit with addon components for host controls, reactions, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

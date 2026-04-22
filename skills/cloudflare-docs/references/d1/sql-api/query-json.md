@@ -1,6 +1,6 @@
 ---
 title: Query JSON
-description: D1 has built-in support for querying and parsing JSON data stored within a database. This enables you to:
+description: Extract, insert, and manipulate JSON data stored in D1 using built-in SQLite JSON functions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

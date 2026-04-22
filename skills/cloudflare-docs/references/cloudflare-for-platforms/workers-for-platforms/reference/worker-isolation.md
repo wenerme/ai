@@ -1,6 +1,6 @@
 ---
 title: Worker Isolation
-description: By default, Workers inside of a dispatch namespace are considered &#34;untrusted.&#34; This provides the strongest isolation between Workers and is best in cases where your customers have control over the code that's being deployed.
+description: Choose between untrusted and trusted isolation modes for user Workers in a Workers for Platforms dispatch namespace.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

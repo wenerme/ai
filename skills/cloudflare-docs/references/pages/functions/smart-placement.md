@@ -1,6 +1,6 @@
 ---
 title: Smart Placement
-description: By default, Workers and Pages Functions are invoked in a data center closest to where the request was received. If you are running back-end logic in a Pages Function, it may be more performant to run that Pages Function closer to your back-end infrastructure rather than the end user. Smart Placement (beta) automatically places your workloads in an optimal location that minimizes latency and speeds up your applications.
+description: Automatically run Pages Functions closer to your back-end infrastructure to reduce latency.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Unicode interoperability
-description: R2 is built on top of Workers and supports Unicode natively. One nuance of Unicode that is often overlooked is the issue of filename interoperability due to Unicode equivalence.
+description: R2 NFC-normalizes object key names by default to ensure cross-platform Unicode consistency.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure domains, routing rules, and MTA-STS for Cloudflare Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

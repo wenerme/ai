@@ -1,5 +1,6 @@
 ---
 title: Concepts
+description: Core concepts behind Durable Objects, including identity, storage, lifecycle, and coordination.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

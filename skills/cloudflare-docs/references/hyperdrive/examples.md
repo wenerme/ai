@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Code examples demonstrating Hyperdrive with various database drivers and frameworks.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

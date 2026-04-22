@@ -1,6 +1,6 @@
 ---
 title: Recording
-description: Learn how RealtimeKit records the audio and video of multiple users in a meeting, as well as interacts with RealtimeKit plugins, in a single file using composite recording mode.
+description: Record audio and video from RealtimeKit meetings using composite recording mode.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

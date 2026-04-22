@@ -40,7 +40,8 @@ Follow the steps below to ensure that your environment is properly configured.
 
 1. Verify your browser compatibility.  
    * Turnstile supports all major browsers, except Internet Explorer.  
-   * Ensure your browser is up to date. For more information, refer to our [Supported browsers](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/).
+   * Ensure your browser is up to date. For more information, refer to our [Supported browsers](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/).  
+   * Run a test on the [compatibility checking tool ↗](https://browser-compat.turnstile.workers.dev/).
 2. Disable your browser extensions.  
    * Some browser extensions, such as ad blockers, may block the scripts Turnstile needs to operate.  
    * Temporarily disable all extensions and reload the page.

@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Below you will find answers to our most commonly asked questions about Browser Run (formerly Browser Rendering).
+description: Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

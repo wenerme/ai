@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples for Vectorize.
+description: Code examples and integrations for building with Vectorize.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

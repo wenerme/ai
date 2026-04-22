@@ -1,6 +1,6 @@
 ---
 title: Gridsome
-description: Gridsome is a Vue.js powered Jamstack framework for building static generated websites and applications that are fast by default. In this guide, you will create a new Gridsome project and deploy it using Cloudflare Pages. You will use the @gridsome/cli, a command line tool for creating new Gridsome projects.
+description: Deploy a Gridsome site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

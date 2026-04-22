@@ -1,6 +1,6 @@
 ---
 title: State Management
-description: This page builds upon the Basic Implementation Guide. Make sure you've read those first.
+description: Manage and synchronize meeting state across RealtimeKit UI Kit components.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

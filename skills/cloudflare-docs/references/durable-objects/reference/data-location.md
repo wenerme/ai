@@ -1,6 +1,6 @@
 ---
 title: Data location
-description: Jurisdictions are used to create Durable Objects that only run and store data within a region to comply with local regulations such as the GDPR or FedRAMP.
+description: Restrict Durable Objects to specific jurisdictions or provide location hints to control where data is stored and processed.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

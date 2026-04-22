@@ -1,6 +1,6 @@
 ---
 title: Use Browser Run with AI
-description: The ability to browse websites can be crucial when building workflows with AI. Here, we provide an example where we use Browser Run to visit https://labs.apnic.net/ and then, using a machine learning model available in Workers AI, extract the first post as JSON with a specified schema.
+description: Combine Browser Run with Workers AI to scrape a webpage and extract structured data using a machine learning model.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -61,8 +61,8 @@ npm i zod-to-json-schema
 
 1. Activate the nodejs compatibility flag and add your Browser Run binding to your new Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-3556)
-* [  wrangler.toml ](#tab-panel-3557)
+* [  wrangler.jsonc ](#tab-panel-5383)
+* [  wrangler.toml ](#tab-panel-5384)
 
 JSONC
 
@@ -90,8 +90,8 @@ compatibility_flags = [ "nodejs_compat" ]
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-3558)
-* [  wrangler.toml ](#tab-panel-3559)
+* [  wrangler.jsonc ](#tab-panel-5385)
+* [  wrangler.toml ](#tab-panel-5386)
 
 JSONC
 

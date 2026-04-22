@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Requests to your Functions are billed as Cloudflare Workers requests. Workers plans and pricing can be found in the Workers documentation.
+description: Pages Functions requests are billed as Cloudflare Workers requests across free and paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

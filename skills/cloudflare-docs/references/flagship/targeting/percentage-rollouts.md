@@ -1,6 +1,6 @@
 ---
 title: Percentage rollouts
-description: Percentage rollouts let you gradually release a feature to a fraction of your users. Any targeting rule can include a rollout percentage between 0 and 100.
+description: Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

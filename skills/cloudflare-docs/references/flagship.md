@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Flagship
-description: Flagship is Cloudflare's feature flag service. It lets you control feature visibility in your applications without redeploying code. Define flags with targeting rules and percentage-based rollouts, then evaluate them directly inside your Workers through a native binding.
+description: Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

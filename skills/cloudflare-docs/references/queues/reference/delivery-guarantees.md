@@ -1,6 +1,6 @@
 ---
 title: Delivery guarantees
-description: Delivery guarantees define how strongly a messaging system enforces the delivery of messages it processes.
+description: Cloudflare Queues provides at-least-once message delivery by default.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

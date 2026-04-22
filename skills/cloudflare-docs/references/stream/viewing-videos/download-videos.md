@@ -1,7 +1,6 @@
 ---
 title: Download video or audio
-description: When you upload a video to Stream, it can be streamed using HLS/DASH. However, for certain use-cases, you may want to download the MP4 or M4A file.
-For cases such as offline viewing, you may want to download the MP4 file. Whereas, for downstream tasks like AI summarization, if you want to extract only the audio, downloading an M4A file may be more useful.
+description: Generate downloadable MP4 video or M4A audio files from Cloudflare Stream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

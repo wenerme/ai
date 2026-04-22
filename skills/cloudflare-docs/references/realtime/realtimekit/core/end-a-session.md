@@ -1,6 +1,6 @@
 ---
 title: End a session
-description: To end the current session for all participants, remove all participants using kickAll(). This stops any ongoing recording for that session and sets the session status to ENDED.
+description: End a RealtimeKit session for all participants and stop active recordings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: S3 SDKs
+description: Use AWS S3 SDKs to interact with R2 storage through the S3-compatible API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Tutorials
+description: Step-by-step Cloudflare Queues tutorials for common messaging patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

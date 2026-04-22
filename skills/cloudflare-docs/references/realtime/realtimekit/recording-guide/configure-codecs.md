@@ -1,6 +1,6 @@
 ---
 title: Configure Video Settings
-description: Video codecs are software programs that compress and decompress digital video data for transmission, storage, or playback. Configuring the appropriate video codec can help reduce file size, enhance video quality, and ensure compatibility with different playback devices.
+description: Configure video codecs, resolution, and container formats for RealtimeKit recordings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

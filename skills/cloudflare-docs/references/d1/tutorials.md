@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with D1.
+description: Step-by-step D1 tutorials for building applications, importing data, and using read replication.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,10 +22,10 @@ View tutorials to help you get started with D1.
 
 | Name                                                                                                                                                        | Last Updated      | Difficulty   |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------ |
-| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/)                                                                | 18 days ago       | Intermediate |
-| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                        | 5 months ago      | Beginner     |
-| [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/)                                                              | 10 months ago     | Beginner     |
-| [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/)                   | 12 months ago     | Beginner     |
+| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/)                                                                | about 1 month ago | Intermediate |
+| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                        | 6 months ago      | Beginner     |
+| [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/)                                                              | 11 months ago     | Beginner     |
+| [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/)                   | about 1 year ago  | Beginner     |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | over 1 year ago   | Beginner     |
 | [Bulk import to D1 using REST API](https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/)                                              | over 1 year ago   | Beginner     |
 | [Build an API to access D1 using a proxy Worker](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/)                                 | over 1 year ago   | Intermediate |

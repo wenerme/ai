@@ -1,5 +1,6 @@
 ---
 title: Workers Binding API
+description: Use the Workers KV binding API to read, write, delete, and list key-value pairs from your Worker code.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

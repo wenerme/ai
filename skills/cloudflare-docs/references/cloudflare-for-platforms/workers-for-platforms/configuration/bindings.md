@@ -1,6 +1,6 @@
 ---
 title: Bindings
-description: When you deploy User Workers through Workers for Platforms, you can attach bindings to give them access to resources like KV namespaces, D1 databases, R2 buckets, and more. This enables your end customers to build more powerful applications without you having to build the infrastructure components yourself.
+description: Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

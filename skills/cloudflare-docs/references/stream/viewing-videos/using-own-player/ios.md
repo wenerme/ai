@@ -1,6 +1,6 @@
 ---
 title: iOS
-description: You can stream both on-demand and live video to native iOS, tvOS and macOS apps using AVPlayer.
+description: Stream on-demand and live Cloudflare Stream video in native iOS, tvOS, and macOS apps using AVPlayer.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

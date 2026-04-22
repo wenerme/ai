@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Email Routing warns you when your DNS records are not properly configured. In Email Routing's Overview page, you will see a message explaining what type of problem your account's DNS records have.
+description: Diagnose and fix common Email Routing issues including misconfigured DNS records and SPF conflicts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

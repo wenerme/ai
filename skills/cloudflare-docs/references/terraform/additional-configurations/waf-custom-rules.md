@@ -1,6 +1,6 @@
 ---
 title: WAF custom rules configuration using Terraform
-description: This page provides examples of creating WAF custom rules in a zone or account using Terraform. The examples cover the following scenarios:
+description: Create and deploy Cloudflare WAF custom rules at the zone or account level using Terraform.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

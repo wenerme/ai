@@ -1,6 +1,6 @@
 ---
 title: Debugging Pages
-description: When setting up your Pages project, you may encounter various errors that prevent you from successfully deploying your site. This guide gives an overview of some common errors and solutions.
+description: Troubleshoot common Cloudflare Pages build errors and deployment failures.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -215,7 +215,7 @@ example.com.  300  IN  CAA  0 issue "amazon.com"
 
 Explain Code
 
-In the above example, there is only a single CAA record which is allowing Amazon to issue ceritficates.
+In the above example, there is only a single CAA record which is allowing Amazon to issue certificates.
 
 To resolve this, you will need to add the following CAA records which allows all of the Certificate Authorities (CAs) Cloudflare uses to issue certificates:
 

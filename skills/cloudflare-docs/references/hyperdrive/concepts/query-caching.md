@@ -1,6 +1,6 @@
 ---
 title: Query caching
-description: Hyperdrive automatically caches all cacheable queries executed against your database when query caching is turned on, reducing the need to go back to your database (incurring latency and database load) for every query which can be especially useful for popular queries. Query caching is enabled by default.
+description: Hyperdrive automatically caches read queries to reduce database load and improve performance.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,8 +26,8 @@ Besides determining the difference between a `SELECT` and an `INSERT`, Hyperdriv
 
 For example, a read query that populates the front page of a news site would be cached:
 
-* [ PostgreSQL ](#tab-panel-4684)
-* [ MySQL ](#tab-panel-4685)
+* [ PostgreSQL ](#tab-panel-6976)
+* [ MySQL ](#tab-panel-6977)
 
 ```
 
@@ -53,8 +53,8 @@ ORDER BY published_time DESC LIMIT 50
 
 Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [volatile ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [stable ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
-* [ PostgreSQL ](#tab-panel-4686)
-* [ MySQL ](#tab-panel-4687)
+* [ PostgreSQL ](#tab-panel-6978)
+* [ MySQL ](#tab-panel-6979)
 
 ```
 
@@ -162,8 +162,8 @@ You can also configure multiple Hyperdrive connections from a single application
 
 For example, using database drivers:
 
-* [ PostgreSQL ](#tab-panel-4688)
-* [ MySQL ](#tab-panel-4689)
+* [ PostgreSQL ](#tab-panel-6980)
+* [ MySQL ](#tab-panel-6981)
 
 index.ts
 
@@ -243,8 +243,8 @@ Explain Code
 
 The Wrangler configuration remains the same both for PostgreSQL and MySQL.
 
-* [  wrangler.jsonc ](#tab-panel-4690)
-* [  wrangler.toml ](#tab-panel-4691)
+* [  wrangler.jsonc ](#tab-panel-6982)
+* [  wrangler.toml ](#tab-panel-6983)
 
 JSONC
 

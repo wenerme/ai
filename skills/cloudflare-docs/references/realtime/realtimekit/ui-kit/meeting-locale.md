@@ -1,6 +1,6 @@
 ---
 title: Meeting Locale
-description: RealtimeKit's UI Kit allows you to customize all the text within the video call interface. You can personalize the text to align with your specific locale needs.
+description: Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

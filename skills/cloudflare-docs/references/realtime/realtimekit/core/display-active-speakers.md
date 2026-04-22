@@ -1,6 +1,6 @@
 ---
 title: Display active speakers
-description: RealtimeKit automatically detects and tracks participants who are actively speaking in a meeting. You can display either a single active speaker or multiple active speakers in your application UI, depending on your design requirements.
+description: Detect and display active speakers in RealtimeKit meetings using the Core SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

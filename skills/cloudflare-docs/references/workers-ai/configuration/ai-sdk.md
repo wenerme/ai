@@ -1,6 +1,6 @@
 ---
 title: Vercel AI SDK
-description: Workers AI can be used with the Vercel AI SDK for JavaScript and TypeScript codebases.
+description: Use Workers AI with the Vercel AI SDK for streaming text generation, tool calls, and structured output.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

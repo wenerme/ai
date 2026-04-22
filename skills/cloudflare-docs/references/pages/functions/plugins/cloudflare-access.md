@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Access
-description: The Cloudflare Access Pages Plugin is a middleware to validate Cloudflare Access JWT assertions. It also includes an API to lookup additional information about a given user's JWT.
+description: Validate Cloudflare Access JWT assertions in Pages Functions using this Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

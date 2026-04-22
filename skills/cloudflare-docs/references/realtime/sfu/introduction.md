@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: Cloudflare Realtime can be used to add realtime audio, video and data into your applications. Cloudflare Realtime uses WebRTC, which is the lowest latency way to communicate across a broad range of platforms like browsers, mobile, and native apps.
+description: Cloudflare Realtime SFU adds low-latency WebRTC audio, video, and data to your applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

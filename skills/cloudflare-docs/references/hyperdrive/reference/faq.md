@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Below you will find answers to our most commonly asked questions regarding Hyperdrive.
+description: Frequently asked questions about Hyperdrive connectivity, caching, and supported databases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

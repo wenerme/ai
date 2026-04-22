@@ -1,6 +1,6 @@
 ---
 title: Edit sources
-description: The Sourcing Kit main page has a list of all the import jobs and sources you have defined. This is where you can edit details for your sources or abort running import jobs.
+description: Rename, delete, or abort import jobs for your Sourcing Kit sources in Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

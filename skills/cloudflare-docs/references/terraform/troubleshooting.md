@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The following pages are useful for troubleshooting Terraform issues.
+description: Solutions for common issues when using the Cloudflare Terraform provider.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

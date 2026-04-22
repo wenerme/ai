@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 518 models available."
+description: "Use NanoGPT models with Mastra. 525 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 518 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 525 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.08,
     "outputCost": 0.24000000000000002
+  },
+  {
+    "model": "nano-gpt/alibaba/qwen3.6-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 991800,
+    "maxOutput": 65536,
+    "inputCost": 0.19,
+    "outputCost": 1.16
   },
   {
     "model": "nano-gpt/allenai/molmo-2-8b",
@@ -4036,6 +4048,30 @@ for await (const chunk of stream) {
     "outputCost": 1.9
   },
   {
+    "model": "nano-gpt/moonshotai/kimi-k2.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 256000,
+    "maxOutput": 65536,
+    "inputCost": 0.53,
+    "outputCost": 2.73
+  },
+  {
+    "model": "nano-gpt/moonshotai/kimi-k2.6:thinking",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 65536,
+    "inputCost": 0.53,
+    "outputCost": 2.73
+  },
+  {
     "model": "nano-gpt/NeverSleep/Llama-3-Lumimaid-70B-v0.1",
     "imageInput": false,
     "audioInput": false,
@@ -4816,6 +4852,18 @@ for await (const chunk of stream) {
     "outputCost": 5.3
   },
   {
+    "model": "nano-gpt/qwen-3.6-plus",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 991800,
+    "maxOutput": 65536,
+    "inputCost": 0.45,
+    "outputCost": 2.7
+  },
+  {
     "model": "nano-gpt/qwen-image",
     "imageInput": true,
     "audioInput": false,
@@ -4886,6 +4934,30 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.6,
     "outputCost": 3.6
+  },
+  {
+    "model": "nano-gpt/qwen/Qwen3.6-35B-A3B",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
+    "inputCost": 0.29,
+    "outputCost": 1.74
+  },
+  {
+    "model": "nano-gpt/qwen/Qwen3.6-35B-A3B:thinking",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
+    "inputCost": 0.29,
+    "outputCost": 1.74
   },
   {
     "model": "nano-gpt/Qwen2.5-32B-EVA-v0.2",
@@ -4970,6 +5042,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.5,
     "outputCost": 6
+  },
+  {
+    "model": "nano-gpt/qwen3.6-max-preview",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 245800,
+    "maxOutput": 65536,
+    "inputCost": 1.3,
+    "outputCost": 7.8
   },
   {
     "model": "nano-gpt/qwq-32b",

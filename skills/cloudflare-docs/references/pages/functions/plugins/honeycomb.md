@@ -1,6 +1,6 @@
 ---
 title: Honeycomb
-description: The Honeycomb Pages Plugin automatically sends traces to Honeycomb for analysis and observability.
+description: Send traces from Pages Functions to Honeycomb for observability using this Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

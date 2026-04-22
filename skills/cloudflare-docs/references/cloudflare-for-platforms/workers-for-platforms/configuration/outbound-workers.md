@@ -1,6 +1,6 @@
 ---
 title: Outbound Workers
-description: Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into all outgoing fetch() requests from user Workers.
+description: Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -41,8 +41,8 @@ To use Outbound Workers:
 
 Make sure that you have `wrangler@3.3.0` or later [installed](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-* [  wrangler.jsonc ](#tab-panel-3386)
-* [  wrangler.toml ](#tab-panel-3387)
+* [  wrangler.jsonc ](#tab-panel-5531)
+* [  wrangler.toml ](#tab-panel-5532)
 
 JSONC
 

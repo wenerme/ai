@@ -1,6 +1,6 @@
 ---
 title: Data Studio
-description: Each Durable Object can access private storage using Storage API available on ctx.storage. To view and write to an object's stored data, you can use Durable Objects Data Studio as a UI editor available on the Cloudflare dashboard.
+description: View and edit SQLite-backed Durable Object storage data through the Cloudflare dashboard UI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

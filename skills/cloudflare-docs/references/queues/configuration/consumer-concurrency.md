@@ -1,6 +1,6 @@
 ---
 title: Consumer concurrency
-description: Consumer concurrency allows a consumer Worker processing messages from a queue to automatically scale out horizontally to keep up with the rate that messages are being written to a queue.
+description: Automatically scale out Queues consumer Workers horizontally to process messages faster.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -89,8 +89,8 @@ Ensure you are using the latest version of [wrangler](https://developers.cloudfl
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5673)
-* [  wrangler.toml ](#tab-panel-5674)
+* [  wrangler.jsonc ](#tab-panel-7904)
+* [  wrangler.toml ](#tab-panel-7905)
 
 JSONC
 

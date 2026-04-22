@@ -1,6 +1,6 @@
 ---
 title: Generate Credentials
-description: Cloudflare will issue TURN keys, but these keys cannot be used as credentials with turn.cloudflare.com. To use TURN, you need to create credentials with a expiring TTL value.
+description: Create TURN keys and generate short-lived credentials for Cloudflare Realtime TURN clients.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

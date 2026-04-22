@@ -1,6 +1,6 @@
 ---
 title: Meeting
-description: Meeting is a re-usable virtual room that you can join and interact in, in real-time.
+description: RealtimeKit meetings are reusable virtual rooms for real-time audio and video interaction.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Custom TURN domains
-description: Cloudflare Realtime TURN service supports using custom domains for UDP, and TCP - but not TLS protocols. Custom domains do not affect any of the performance of Cloudflare Realtime TURN and is set up via a simple CNAME DNS record on your domain.
+description: Use custom domains with Cloudflare Realtime TURN via CNAME DNS records.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

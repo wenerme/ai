@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Workers KV platform details including limits, pricing, and storage options.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

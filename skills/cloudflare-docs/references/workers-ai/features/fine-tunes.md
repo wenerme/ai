@@ -1,6 +1,6 @@
 ---
 title: Fine-tunes
-description: Learn how to use Workers AI to get fine-tuned inference.
+description: Run fine-tuned inference on Workers AI using LoRA adapters.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry
-description: Privacy Proxy exports telemetry data using the OpenTelemetry Protocol (OTLP). You can configure an endpoint to receive this data and forward it to your observability platform.
+description: Export Privacy Proxy metrics and traces to your observability platform using the OpenTelemetry Protocol (OTLP).
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure builds, deployments, custom domains, and other settings for Cloudflare Pages projects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

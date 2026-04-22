@@ -1,6 +1,6 @@
 ---
 title: Conversion Options
-description: By default, the toMarkdown service extracts text content from your files. To further extend the capabilities of the conversion process, you can pass options to the service to control how specific file types are converted.
+description: Configure per-format options for Workers AI Markdown Conversion, including HTML and image settings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

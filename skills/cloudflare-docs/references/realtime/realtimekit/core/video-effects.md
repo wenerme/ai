@@ -1,6 +1,6 @@
 ---
 title: Video Effects
-description: Add video background effects and blur to participant video feeds in your RealtimeKit meetings using the Core SDK.
+description: Add background blur and virtual backgrounds to video feeds in RealtimeKit meetings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

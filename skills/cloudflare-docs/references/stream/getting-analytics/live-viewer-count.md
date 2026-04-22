@@ -1,6 +1,6 @@
 ---
 title: Get live viewer counts
-description: The Stream player has full support for live viewer counts by default. To get the viewer count for live videos for use with third party players, make a GET request to the /views endpoint.
+description: Retrieve real-time viewer counts for Cloudflare Stream live videos using the views endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

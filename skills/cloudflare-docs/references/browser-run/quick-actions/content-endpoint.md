@@ -1,6 +1,6 @@
 ---
 title: /content - Fetch HTML
-description: The /content endpoint instructs the browser to navigate to a website and capture the fully rendered HTML of a page, including the head section, after JavaScript execution. This is ideal for capturing content from JavaScript-heavy or interactive websites.
+description: Capture fully rendered HTML from a webpage after JavaScript execution using the Browser Run /content endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -45,8 +45,8 @@ You must provide either `url` or `html`:
 
 ### Fetch rendered HTML from a URL
 
-* [ curl ](#tab-panel-3580)
-* [ TypeScript SDK ](#tab-panel-3581)
+* [ curl ](#tab-panel-5407)
+* [ TypeScript SDK ](#tab-panel-5408)
 
 Go to `https://developers.cloudflare.com/` and return the rendered HTML.
 

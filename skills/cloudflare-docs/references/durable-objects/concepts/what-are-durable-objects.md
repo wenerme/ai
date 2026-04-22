@@ -1,6 +1,6 @@
 ---
 title: What are Durable Objects?
-description: A Durable Object is a special kind of Cloudflare Worker which uniquely combines compute with storage. Like a Worker, a Durable Object is automatically provisioned geographically close to where it is first requested, starts up quickly when needed, and shuts down when idle. You can have millions of them around the world. However, unlike regular Workers:
+description: Durable Objects provide globally unique, single-threaded compute instances with persistent storage on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Edit videos
+description: Add captions, watermarks, audio tracks, and other enhancements to Cloudflare Stream videos.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

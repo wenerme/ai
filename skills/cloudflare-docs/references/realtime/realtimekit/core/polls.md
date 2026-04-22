@@ -1,6 +1,6 @@
 ---
 title: Polls
-description: This guide explains how to create, vote on, and interact with polls in a meeting using Cloudflare RealtimeKit.
+description: Create, vote on, and manage polls in RealtimeKit meetings using the Core SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

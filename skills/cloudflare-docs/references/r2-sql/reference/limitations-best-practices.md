@@ -1,6 +1,6 @@
 ---
 title: Limitations and best practices
-description: This page summarizes supported features, limitations, and best practices.
+description: Supported features, known limitations, and best practices for R2 SQL queries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Authentication
-description: You can generate an API token to serve as the Access Key for usage with existing S3-compatible SDKs or XML APIs.
+description: Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

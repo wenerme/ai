@@ -1,6 +1,6 @@
 ---
 title: Metadata filtering
-description: In addition to providing an input vector to your query, you can also filter by vector metadata associated with every vector. Query results will only include vectors that match the filter criteria, meaning that filter is applied first, and the topK results are taken from the filtered set.
+description: Filter Vectorize query results by vector metadata using supported operators and indexes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

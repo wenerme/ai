@@ -1,6 +1,6 @@
 ---
 title: Metrics and analytics
-description: Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
+description: View Durable Objects namespace-level and request-level metrics, analytics, and logs via the Cloudflare dashboard or GraphQL API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -43,8 +43,8 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:  
-   * [  wrangler.jsonc ](#tab-panel-4587)  
-   * [  wrangler.toml ](#tab-panel-4588)  
+   * [  wrangler.jsonc ](#tab-panel-6790)  
+   * [  wrangler.toml ](#tab-panel-6791)  
 JSONC  
 ```  
 {  

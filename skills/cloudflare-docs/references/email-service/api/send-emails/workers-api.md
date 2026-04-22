@@ -1,6 +1,6 @@
 ---
 title: Workers API
-description: The Workers API provides native email sending capabilities directly from your Cloudflare Workers through bindings. If you are not using Workers, you can send emails using the REST API instead.
+description: Send emails directly from Cloudflare Workers using the Email Service binding and send() method.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,8 +22,8 @@ The Workers API provides native email sending capabilities directly from your Cl
 
 Configure email bindings in your Wrangler configuration file to enable email sending:
 
-* [  wrangler.jsonc ](#tab-panel-6715)
-* [  wrangler.toml ](#tab-panel-6716)
+* [  wrangler.jsonc ](#tab-panel-6864)
+* [  wrangler.toml ](#tab-panel-6865)
 
 JSONC
 
@@ -161,9 +161,9 @@ Explain Code
 
 ### Basic usage
 
-* [ Simple email ](#tab-panel-6710)
-* [ Multiple recipients ](#tab-panel-6711)
-* [ With CC and BCC ](#tab-panel-6712)
+* [ Simple email ](#tab-panel-6859)
+* [ Multiple recipients ](#tab-panel-6860)
+* [ With CC and BCC ](#tab-panel-6861)
 
 TypeScript
 
@@ -232,8 +232,8 @@ Explain Code
 
 ### Attachments
 
-* [ PDF attachment ](#tab-panel-6713)
-* [ Inline image ](#tab-panel-6714)
+* [ PDF attachment ](#tab-panel-6862)
+* [ Inline image ](#tab-panel-6863)
 
 TypeScript
 
@@ -323,7 +323,7 @@ Explain Code
 
 Handle email sending errors gracefully:
 
-* [ Single send errors ](#tab-panel-6709)
+* [ Single send errors ](#tab-panel-6858)
 
 TypeScript
 

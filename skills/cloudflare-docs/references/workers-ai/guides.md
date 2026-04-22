@@ -1,5 +1,6 @@
 ---
 title: Guides
+description: Tutorials, demos, and reference architectures for building with Workers AI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

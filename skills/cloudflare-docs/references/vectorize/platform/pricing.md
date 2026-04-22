@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Vectorize bills are based on:
+description: Vectorize pricing based on queried and stored vector dimensions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

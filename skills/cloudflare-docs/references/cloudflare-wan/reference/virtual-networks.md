@@ -127,7 +127,7 @@ To create and configure virtual networks, refer to [Virtual networks (Tunnel con
 
 To configure which routes belong to which virtual network, refer to [Add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/).
 
-To add static routes or configure BGP peering within the Cloudflare Virtual Network routing table, refer to [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/).
+To add static routes or configure BGP peering within the Cloudflare Virtual Network routing table, refer to [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/).
 
 ## Related resources
 

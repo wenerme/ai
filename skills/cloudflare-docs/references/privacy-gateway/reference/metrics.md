@@ -1,6 +1,6 @@
 ---
 title: Privacy Gateway Metrics
-description: Privacy Gateway now supports enhanced monitoring through our GraphQL API, providing detailed insights into your gateway traffic and performance. To access these metrics, ensure you have:
+description: Query Privacy Gateway traffic and performance data using the GraphQL Analytics API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Community Plugins
-description: The following are some of the community-maintained Pages Plugins. If you have created a Pages Plugin and would like to share it with developers, create a PR to add it to this alphabetically-ordered list using the link in the footer.
+description: Browse community-maintained Pages Plugins for asset negotiation, reverse proxying, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

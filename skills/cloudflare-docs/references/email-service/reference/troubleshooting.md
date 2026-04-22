@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot SPF, DKIM and DMARC
-description: Email authentication is critical for successful email delivery. This guide helps you troubleshoot common SPF, DKIM, and DMARC issues with Email Service.
+description: Diagnose and fix SPF, DKIM, and DMARC authentication issues for Email Service delivery.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

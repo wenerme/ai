@@ -1,6 +1,6 @@
 ---
 title: SQL statements
-description: D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. D1 supports a number of database-level statements that allow you to list tables, indexes, and inspect the schema for a given table or index.
+description: Supported SQL statements, PRAGMA commands, and SQLite extensions available in D1.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Participant
-description: Before a user can join a meeting through the RealtimeKit SDK, your backend must add that user as a participant to that meeting using the Add Participant API.
-In RealtimeKit, a participant represents a user who is allowed to join a specific meeting.
+description: Add and manage participants in RealtimeKit meetings with tokens and presets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

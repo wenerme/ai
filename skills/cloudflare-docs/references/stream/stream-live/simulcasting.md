@@ -1,6 +1,6 @@
 ---
 title: Simulcast (restream) videos
-description: Simulcasting lets you forward your live stream to third-party platforms such as Twitch, YouTube, Facebook, Twitter, and more. You can simulcast to up to 50 concurrent destinations from each live input. To begin simulcasting, select an input and add one or more Outputs.
+description: Forward Cloudflare Stream live broadcasts to third-party platforms like YouTube, Twitch, and Facebook.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

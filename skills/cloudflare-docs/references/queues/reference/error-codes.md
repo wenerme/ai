@@ -1,6 +1,6 @@
 ---
 title: Error codes
-description: This page documents error codes returned by Queues when using the Queues Cloudflare API.
+description: Error codes returned by the Cloudflare Queues JavaScript and REST APIs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

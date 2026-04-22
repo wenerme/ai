@@ -1,9 +1,6 @@
 ---
 title: Rollouts
-description: When you run wrangler deploy, the Worker code is updated immediately and Container
-instances are updated using a rolling deploy strategy. The default rollout configuration is two steps,
-where the first step updates 10% of the instances, and the second step updates the remaining 90%.
-This can be configured in your Wrangler config file using the rollout_step_percentage property.
+description: Configure rolling deployments for Containers, including step percentages and grace periods for active instances.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -31,8 +28,8 @@ Because Worker code updates immediately while container instances roll out gradu
 
 Here is an example configuration that sets a 5 minute grace period and a two step rollout where the first step updates 10% of instances and the second step updates 100% of instances:
 
-* [  wrangler.jsonc ](#tab-panel-4149)
-* [  wrangler.toml ](#tab-panel-4150)
+* [  wrangler.jsonc ](#tab-panel-6278)
+* [  wrangler.toml ](#tab-panel-6279)
 
 JSONC
 

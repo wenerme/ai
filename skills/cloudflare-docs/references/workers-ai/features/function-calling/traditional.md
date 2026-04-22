@@ -1,6 +1,6 @@
 ---
 title: Traditional
-description: This page shows how you can do traditional function calling, as defined by industry standards. Workers AI also offers embedded function calling, which is drastically easier than traditional function calling.
+description: Define tools and schemas for industry-standard function calling with Workers AI models.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

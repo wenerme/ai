@@ -1,6 +1,6 @@
 ---
 title: Receive Live Webhooks
-description: Stream Live offers webhooks to notify your service when an Input connects, disconnects, or encounters an error with Stream Live.
+description: Configure webhook notifications for Cloudflare Stream Live connect, disconnect, and error events.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -100,7 +100,7 @@ If there are issues detected with the input, the `event_type` will be `live_inpu
 * `ERR_GOP_OUT_OF_RANGE` – The input GOP size or keyframe interval is out of range.
 * `ERR_UNSUPPORTED_VIDEO_CODEC` – The input video codec is unsupported for the protocol used.
 * `ERR_UNSUPPORTED_AUDIO_CODEC` – The input audio codec is unsupported for the protocol used.
-* `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purcahse additional storage.
+* `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
 * `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
 
 Example live\_input.errored webhook payload

@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Terraform ships as a single binary file. The examples below include installation information for popular operating systems.
+description: Install Terraform and configure the Cloudflare provider on your operating system.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

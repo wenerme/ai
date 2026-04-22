@@ -1,6 +1,6 @@
 ---
 title: robots.txt and sitemaps
-description: This page provides general guidance on configuring robots.txt and sitemaps for websites you plan to access with Browser Run.
+description: Configure robots.txt rules and sitemaps to control how Browser Run accesses your website.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

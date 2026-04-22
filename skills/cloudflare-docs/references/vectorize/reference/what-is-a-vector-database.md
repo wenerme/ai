@@ -1,6 +1,6 @@
 ---
 title: Vector databases
-description: Vector databases are a key part of building scalable AI-powered applications. Vector databases provide long term memory, on top of an existing machine learning model.
+description: Understand vector databases, embeddings, and how they power search, RAG, and classification.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

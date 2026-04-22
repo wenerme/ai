@@ -1,6 +1,6 @@
 ---
 title: Breakout Rooms
-description: If you prefer to learn by seeing examples, please check out the respective example repositories.
+description: Create and manage breakout rooms in RealtimeKit meetings for smaller group discussions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

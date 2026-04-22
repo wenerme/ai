@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Code examples for common Cloudflare Stream video and live streaming use cases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

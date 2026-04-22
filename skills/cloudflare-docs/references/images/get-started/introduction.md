@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: Cloudflare provides a platform for building and scaling media applications with Images. On this page, we'll answer the following questions:
+description: Cloudflare Images provides a platform for optimizing, storing, and serving images at scale.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

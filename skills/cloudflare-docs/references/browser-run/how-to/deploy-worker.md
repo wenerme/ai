@@ -1,6 +1,6 @@
 ---
 title: Deploy a Browser Run Worker
-description: By following this guide, you will create a Worker that uses the Browser Run API to take screenshots from web pages. This is a common use case for browser automation.
+description: Create and deploy a Cloudflare Worker that uses Browser Run to take screenshots from web pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -102,8 +102,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-3566)
-* [  wrangler.toml ](#tab-panel-3567)
+* [  wrangler.jsonc ](#tab-panel-5393)
+* [  wrangler.toml ](#tab-panel-5394)
 
 JSONC
 
@@ -119,7 +119,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-21",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -162,7 +162,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-21"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -187,8 +187,8 @@ Explain Code
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-3564)
-* [  TypeScript ](#tab-panel-3565)
+* [  JavaScript ](#tab-panel-5391)
+* [  TypeScript ](#tab-panel-5392)
 
 Update `src/index.js` with your Worker code:
 

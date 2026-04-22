@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: There are several options to build your Workers AI projects on Cloudflare. To get started, choose your preferred method:
+description: Set up your first Workers AI project using the dashboard, CLI, or REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

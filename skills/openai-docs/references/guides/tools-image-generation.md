@@ -1,9 +1,9 @@
 # Image generation
 
-The image generation tool allows you to generate images using a text prompt, and optionally image inputs. It leverages GPT Image models (`gpt-image-1`, `gpt-image-1-mini`, and `gpt-image-1.5`), and automatically optimizes text inputs for improved performance.
+The image generation tool allows you to generate images using a text prompt, and optionally image inputs. It uses GPT Image models, including `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, and automatically optimizes text inputs for improved performance.
 
 To learn more about image generation, refer to our dedicated [image generation
-  guide](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=gpt-image&api=responses).
+  guide](https://developers.openai.com/api/docs/guides/image-generation?api=responses).
 
 ## Usage
 
@@ -18,7 +18,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-    model: "gpt-5",
+    model: "gpt-5.4",
     input: "Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools: [{type: "image_generation"}],
 });
@@ -42,7 +42,7 @@ import base64
 client = OpenAI() 
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -69,8 +69,8 @@ To force the image generation tool call, you can set the parameter `tool_choice`
 
 You can configure the following output options as parameters for the [image generation tool](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-tools):
 
-- Size: Image dimensions (e.g., 1024x1024, 1024x1536)
-- Quality: Rendering quality (e.g. low, medium, high)
+- Size: Image dimensions, for example, 1024 × 1024 or 1024 × 1536
+- Quality: Rendering quality, for example, low, medium, or high
 - Format: File output format
 - Compression: Compression level (0-100%) for JPEG and WebP formats
 - Background: Transparent or opaque
@@ -78,13 +78,15 @@ You can configure the following output options as parameters for the [image gene
 
 `size`, `quality`, and `background` support the `auto` option, where the model will automatically select the best option based on the prompt.
 
+`gpt-image-2` supports flexible `size` values that meet its [resolution constraints](https://developers.openai.com/api/docs/guides/image-generation#size-and-quality-options). It doesn't currently support transparent backgrounds, so requests with `background: "transparent"` fail.
+
 For more details on available options, refer to the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation#customize-image-output).
 
-For `gpt-image-1.5` and `chatgpt-image-latest` when used with the Responses API, you can optionally set the `action` parameter (`auto`, `generate`, or `edit`) to control whether the request performs image generation or editing. We recommend leaving it at `auto` so the model chooses whether to generate a new image or edit one already in context, but if your use case requires always editing or always creating images, you can force the behavior by setting `action`. If not specified, the default is `auto`.
+When using the Responses API image generation tool, supported GPT Image models can choose whether to generate a new image or edit one already in the conversation. The optional `action` parameter controls this behavior: keep `action` set to `auto` so the model chooses whether to generate or edit, or set it to `generate` or `edit` to force that behavior. If not specified, the default is `auto`.
 
 ### Revised prompt
 
-When using the image generation tool, the mainline model (e.g. `gpt-4.1`) will automatically revise your prompt for improved performance.
+When using the image generation tool, the mainline model, for example, `gpt-5.4`, will automatically revise your prompt for improved performance.
 
 You can access the revised prompt in the `revised_prompt` field of the image generation call:
 
@@ -100,13 +102,13 @@ You can access the revised prompt in the `revised_prompt` field of the image gen
 
 ### Prompting tips
 
-Image generation works best when you use terms like "draw" or "edit" in your prompt.
+Image generation works best when you use terms like `draw` or `edit` in your prompt.
 
-For example, if you want to combine images, instead of saying "combine" or "merge", you can say something like "edit the first image by adding this element from the second image".
+For example, if you want to combine images, instead of saying `combine` or `merge`, you can say something like "edit the first image by adding this element from the second image."
 
 ## Multi-turn editing
 
-You can iteratively edit images by referencing previous response or image IDs. This allows you to refine images across multiple turns in a conversation.
+You can iteratively edit images by referencing previous response or image IDs. This allows you to refine images across conversation turns.
 
 
 
@@ -119,7 +121,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -138,7 +140,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   previous_response_id: response.id,
   input: "Now make it look realistic",
   tools: [{ type: "image_generation" }],
@@ -165,7 +167,7 @@ import base64
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -186,7 +188,7 @@ if image_data:
 # Follow up
 
 response_fwup = client.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     previous_response_id=response.id,
     input="Now make it look realistic",
     tools=[{"type": "image_generation"}],
@@ -214,7 +216,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 const response = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input:
     "Generate an image of gray tabby cat hugging an otter with an orange scarf",
   tools: [{ type: "image_generation" }],
@@ -235,7 +237,7 @@ if (imageData.length > 0) {
 // Follow up
 
 const response_fwup = await openai.responses.create({
-  model: "gpt-5",
+  model: "gpt-5.4",
   input: [
     {
       role: "user",
@@ -268,7 +270,7 @@ import openai
 import base64
 
 response = openai.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input="Generate an image of gray tabby cat hugging an otter with an orange scarf",
     tools=[{"type": "image_generation"}],
 )
@@ -291,7 +293,7 @@ if image_data:
 # Follow up
 
 response_fwup = openai.responses.create(
-    model="gpt-5",
+    model="gpt-5.4",
     input=[
         {
             "role": "user",
@@ -323,7 +325,7 @@ if image_data_fwup:
 
 ## Streaming
 
-The image generation tool supports streaming partial images as the final result is being generated. This provides faster visual feedback for users and improves perceived latency.
+The image generation tool supports streaming partial images while it generates the final result. This provides faster visual feedback for users and improves perceived latency.
 
 You can set the number of partial images (1-3) with the `partial_images` parameter.
 
@@ -339,7 +341,7 @@ const prompt =
   "Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape";
 const stream = await openai.images.generate({
   prompt: prompt,
-  model: "gpt-image-1.5",
+  model: "gpt-image-2",
   stream: true,
   partial_images: 2,
 });
@@ -362,7 +364,7 @@ client = OpenAI()
 
 stream = client.images.generate(
     prompt="Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape",
-    model="gpt-image-1.5",
+    model="gpt-image-2",
     stream=True,
     partial_images=2,
 )
@@ -379,7 +381,7 @@ for event in stream:
 
 ## Supported models
 
-The image generation tool is supported for the following models:
+The following models support the image generation tool:
 
 - `gpt-4o`
 - `gpt-4o-mini`
@@ -394,4 +396,4 @@ The image generation tool is supported for the following models:
 - `gpt-5.4`
 - `gpt-5.2`
 
-The model used for the image generation process is always a GPT Image model (`gpt-image-1.5`, `gpt-image-1`, or `gpt-image-1-mini`), but these models are not valid values for the `model` field in the Responses API. Use a text-capable mainline model (for example, `gpt-4.1` or `gpt-5`) with the hosted `image_generation` tool.
+The model used for the image generation process is always a GPT Image model, including `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, but these models aren't valid values for the `model` field in the Responses API. Use a text-capable mainline model (for example, `gpt-5.4` or `gpt-5`) with the hosted `image_generation` tool.

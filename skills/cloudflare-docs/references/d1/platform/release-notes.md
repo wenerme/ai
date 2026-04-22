@@ -1,6 +1,6 @@
 ---
 title: Release notes
-description: Subscribe to RSS
+description: Track D1 feature updates, bug fixes, and breaking changes over time.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

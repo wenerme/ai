@@ -1,6 +1,6 @@
 ---
 title: Add additional audio tracks
-description: A video must be uploaded before additional audio tracks can be attached to it. In the following example URLs, the video’s UID is referenced as VIDEO_UID.
+description: Upload and manage additional audio tracks for Cloudflare Stream videos via the API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

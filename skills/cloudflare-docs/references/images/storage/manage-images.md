@@ -1,5 +1,6 @@
 ---
 title: Manage hosted images
+description: Edit, export, and delete images stored in Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

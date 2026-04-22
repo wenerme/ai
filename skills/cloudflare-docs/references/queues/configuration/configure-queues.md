@@ -1,6 +1,6 @@
 ---
 title: Configure Queues
-description: Cloudflare Queues can be configured using Wrangler, the command-line interface for Cloudflare's Developer Platform, which includes Workers, R2, and other developer products.
+description: Set up Cloudflare Queues bindings, producers, and consumers using Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -54,8 +54,8 @@ A producer is a [Cloudflare Worker](https://developers.cloudflare.com/workers/) 
 
 To produce to a queue, set up a binding in your Wrangler file. These options should be used when a Worker wants to send messages to a queue.
 
-* [  wrangler.jsonc ](#tab-panel-5669)
-* [  wrangler.toml ](#tab-panel-5670)
+* [  wrangler.jsonc ](#tab-panel-7900)
+* [  wrangler.toml ](#tab-panel-7901)
 
 JSONC
 
@@ -108,8 +108,8 @@ binding = "MY_QUEUE"
 
 To consume messages from one or more queues, set up a binding in your Wrangler file. These options should be used when a Worker wants to receive messages from a queue.
 
-* [  wrangler.jsonc ](#tab-panel-5671)
-* [  wrangler.toml ](#tab-panel-5672)
+* [  wrangler.jsonc ](#tab-panel-7902)
+* [  wrangler.toml ](#tab-panel-7903)
 
 JSONC
 

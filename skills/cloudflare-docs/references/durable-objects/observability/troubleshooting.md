@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: wrangler dev and wrangler tail are both available to help you debug your Durable Objects.
+description: Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Notices
-description: Subscribe to RSS
+description: Important notices and announcements for the RealtimeKit platform.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

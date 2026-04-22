@@ -1,6 +1,6 @@
 ---
 title: Client provider
-description: The FlagshipClientProvider implements the OpenFeature web provider interface for browser applications. It pre-fetches a declared set of flag values on initialization and resolves evaluations synchronously from an in-memory cache.
+description: Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -38,8 +38,8 @@ The client provider requires an API token to fetch flag values. This token is no
 
 The following example initializes the provider with a set of pre-fetched flags and evaluates them in a browser application.
 
-* [  JavaScript ](#tab-panel-6867)
-* [  TypeScript ](#tab-panel-6868)
+* [  JavaScript ](#tab-panel-6913)
+* [  TypeScript ](#tab-panel-6914)
 
 JavaScript
 

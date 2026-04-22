@@ -1,6 +1,6 @@
 ---
 title: Events
-description: This page provides an overview of the events emitted by meeting.participants and related participant maps, which you can use to keep your UI in sync with changes such as participants joining or leaving, pinning updates, active speaker changes, and grid view mode or page changes.
+description: Events emitted by RealtimeKit participants for join, leave, pin, and grid changes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

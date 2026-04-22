@@ -1,6 +1,6 @@
 ---
 title: Consistency model
-description: This page details R2's consistency model, including where R2 is strongly, globally consistent and which operations this applies to.
+description: R2 provides strong global consistency for reads, writes, deletes, and list operations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

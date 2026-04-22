@@ -1,6 +1,6 @@
 ---
 title: Snowflake
-description: Below is an example of using Snowflake to connect and query data from R2 Data Catalog (read-only).
+description: Query R2 Data Catalog tables from Snowflake using a catalog integration.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

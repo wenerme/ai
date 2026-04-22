@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Durable Objects are a special kind of Worker, so Workers Limits apply according to your Workers plan. In addition, Durable Objects have specific limits as listed in this page.
+description: Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -100,8 +100,8 @@ Durable Objects are Worker scripts, and have the same [per invocation CPU limits
 
 By default, the maximum CPU time per Durable Objects invocation (HTTP request, WebSocket message, or Alarm) is set to 30 seconds, but can be increased for all Durable Objects associated with a Durable Object definition by setting `limits.cpu_ms` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-4589)
-* [  wrangler.toml ](#tab-panel-4590)
+* [  wrangler.jsonc ](#tab-panel-6792)
+* [  wrangler.toml ](#tab-panel-6793)
 
 JSONC
 

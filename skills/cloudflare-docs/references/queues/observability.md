@@ -1,5 +1,6 @@
 ---
 title: Observability
+description: Monitor Cloudflare Queues with metrics, dashboards, and the GraphQL Analytics API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

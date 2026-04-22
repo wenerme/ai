@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Learn how you can use Queues within your existing application and architecture.
+description: Explore demos and reference architectures that use Cloudflare Queues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

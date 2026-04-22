@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Since the Sandbox SDK is built on top of the Containers platform, it shares the same underlying platform characteristics. Refer to these pages to understand how pricing and limits work for your sandbox deployments.
+description: Resource limits for Sandbox SDK including vCPU, memory, disk, and container constraints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -41,8 +41,8 @@ When using the Sandbox SDK from Workers or Durable Objects, you are subject to [
 
 Enable WebSocket transport to multiplex all SDK calls over a single persistent connection:
 
-* [  wrangler.jsonc ](#tab-panel-6623)
-* [  wrangler.toml ](#tab-panel-6624)
+* [  wrangler.jsonc ](#tab-panel-8784)
+* [  wrangler.toml ](#tab-panel-8785)
 
 JSONC
 

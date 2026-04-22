@@ -1,6 +1,6 @@
 ---
 title: Sinks
-description: Sinks define destinations for your data in Cloudflare Pipelines. They support writing to R2 Data Catalog as Apache Iceberg tables or to R2 as raw JSON or Parquet files.
+description: Configure data destinations in Cloudflare Pipelines to write to R2 or R2 Data Catalog.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

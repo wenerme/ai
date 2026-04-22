@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Sandbox SDK pricing is determined by the underlying Containers platform it's built on.
+description: Sandbox SDK pricing is based on the underlying Containers platform usage rates.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

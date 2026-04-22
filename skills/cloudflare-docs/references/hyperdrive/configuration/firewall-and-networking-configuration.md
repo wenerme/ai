@@ -1,6 +1,6 @@
 ---
 title: Firewall and networking configuration
-description: Hyperdrive uses the Cloudflare IP address ranges to connect to your database. If you decide to restrict the IP addresses that can access your database with firewall rules, the IP address ranges listed in this reference need to be allow-listed in your database's firewall and networking configurations.
+description: Configure firewall rules and networking to allow Hyperdrive to connect to your database.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

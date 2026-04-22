@@ -1,6 +1,6 @@
 ---
 title: How Hyperdrive works
-description: Connecting to traditional centralized databases from Cloudflare's global network which consists of over 300 data center locations presents a few challenges as queries can originate from any of these locations.
+description: Hyperdrive accelerates database queries through edge connection setup, connection pooling, and query caching.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

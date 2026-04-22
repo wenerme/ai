@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting a live stream
-description: In addition to following the live stream troubleshooting steps in this guide, make sure that your video settings align with Cloudflare live stream recommendations. If you use OBS, you can also check these OBS-specific recommendations.
+description: Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

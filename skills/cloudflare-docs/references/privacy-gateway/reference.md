@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Reference documentation for Privacy Gateway, including legal details, limitations, metrics, and product compatibility.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

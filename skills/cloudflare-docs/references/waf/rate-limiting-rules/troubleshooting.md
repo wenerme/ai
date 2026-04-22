@@ -31,6 +31,14 @@ and (cf.worker.upstream_zone == "" or cf.worker.upstream_zone != "<YOUR_ZONE>")
 
 The first condition (testing for an empty string) will match direct visitor requests, while the second condition will match subrequests not originating from your zone, effectively excluding subrequests from the same zone from the rate limiting rule.
 
+## Rate limiting fail-open behavior
+
+Cloudflare rate limiting rules operate in **fail-open mode** (allowing requests through rather than blocking them) during infrastructure overload. When the underlying infrastructure experiences high load, Cloudflare may skip rate counter updates and rate limit enforcement for affected requests rather than blocking legitimate traffic.
+
+There is no customer-visible signal for fail-open events. If a rate limiting rule is not blocking traffic that it should be catching (a false negative) and the rule configuration is correct, infrastructure load at the affected data center may be a factor.
+
+**Per-data-center counting:** Rate limiting counters are maintained per Cloudflare data center. Traffic distributed across many data centers may keep per-data-center rates below the threshold even when the aggregate rate exceeds it. Consider this when setting thresholds for globally distributed traffic.
+
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/waf/","name":"WAF"}},{"@type":"ListItem","position":3,"item":{"@id":"/waf/rate-limiting-rules/","name":"Rate limiting rules"}},{"@type":"ListItem","position":4,"item":{"@id":"/waf/rate-limiting-rules/troubleshooting/","name":"Troubleshoot rate limiting rules"}}]}
 ```

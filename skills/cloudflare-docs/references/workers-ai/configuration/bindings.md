@@ -1,6 +1,6 @@
 ---
 title: Workers Bindings
-description: Workers provides a serverless execution environment that allows you to create new applications or augment existing ones.
+description: Create an AI binding to connect your Cloudflare Worker to Workers AI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -24,8 +24,8 @@ To use Workers AI with Workers, you must create a Workers AI [binding](https://d
 
 To bind Workers AI to your Worker, add the following to the end of your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-6921)
-* [  wrangler.toml ](#tab-panel-6922)
+* [  wrangler.jsonc ](#tab-panel-9244)
+* [  wrangler.toml ](#tab-panel-9245)
 
 JSONC
 

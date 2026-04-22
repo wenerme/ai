@@ -1,7 +1,6 @@
 ---
 title: Preset
-description: A Preset is a re-usable configuration that defines a participant’s experience in a Meeting.
-It determines:
+description: Configure participant roles, permissions, and meeting experience with RealtimeKit presets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

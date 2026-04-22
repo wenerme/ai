@@ -1,6 +1,6 @@
 ---
 title: Email deliverability
-description: When you send an email, there is no guarantee it reaches the recipient's inbox. Inbox providers like Gmail, Yahoo, Outlook, and iCloud invest heavily in filtering out unwanted email. If you send poorly targeted emails, have high bounce rates, or trigger spam complaints, these providers may flag your domain as untrustworthy. Once that happens, even your legitimate emails can end up in spam or be blocked outright.
+description: Understand bounce handling and reputation management for optimal email delivery with Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Sandbox lifecycle
-description: A sandbox is an isolated execution environment where your code runs. Each sandbox:
+description: Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

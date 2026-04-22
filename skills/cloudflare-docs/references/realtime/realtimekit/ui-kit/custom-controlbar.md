@@ -1,6 +1,6 @@
 ---
 title: Add Custom Controlbar
-description: In this guide, we will learn how to add a custom controlbar for your RealtimeKit meeting experience.
+description: Add a custom controlbar to your RealtimeKit meeting UI with individual components.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -875,6 +875,756 @@ export class EnhancedControlbarComponent implements AfterViewInit {
 Explain Code
 
 This approach gives you complete control over the controlbar layout while maintaining Angular's component architecture and leveraging RealtimeKit's built-in functionality.
+
+The iOS UI Kit provides `RtkMeetingControlBar` as the default controlbar for group call meetings. To build a custom controlbar, compose individual button components inside a `RtkTabBar`.
+
+### Available controlbar button components
+
+| Component                       | Description                                       |
+| ------------------------------- | ------------------------------------------------- |
+| RtkAudioButtonControlBar        | Microphone toggle with automatic state management |
+| RtkVideoButtonControlBar        | Camera toggle with automatic state management     |
+| RtkEndMeetingControlBarButton   | Leave/end meeting button with confirmation dialog |
+| RtkMoreButtonControlBar         | "More" menu button with bottom sheet              |
+| RtkSwitchCameraButtonControlBar | Front/back camera switch                          |
+| RtkStageActionButtonControlBar  | Stage join/leave for webinar and livestream       |
+| RtkControlBarButton             | Base button class for custom buttons              |
+| RtkControlBarSpacerButton       | Invisible spacer for layout                       |
+
+### Build a custom controlbar using RtkTabBar
+
+Create a `RtkTabBar` and add individual button components:
+
+Swift
+
+```
+
+import RealtimeKitUI
+
+import RealtimeKit
+
+
+func buildCustomControlBar(
+
+    meeting: RealtimeKitClient,
+
+    viewController: UIViewController
+
+) -> RtkTabBar {
+
+    let tabBar = RtkTabBar(delegate: nil)
+
+
+    let micButton = RtkAudioButtonControlBar(meeting: meeting)
+
+    let videoButton = RtkVideoButtonControlBar(rtkClient: meeting)
+
+    let switchCameraButton = RtkSwitchCameraButtonControlBar(meeting: meeting)
+
+    let endCallButton = RtkEndMeetingControlBarButton(
+
+        meeting: meeting,
+
+        alertViewController: viewController
+
+    )
+
+
+    tabBar.setButtons([micButton, videoButton, switchCameraButton, endCallButton])
+
+    return tabBar
+
+}
+
+
+```
+
+Explain Code
+
+### Add the custom controlbar to your view controller
+
+Swift
+
+```
+
+override func viewDidLoad() {
+
+    super.viewDidLoad()
+
+
+    let controlBar = buildCustomControlBar(
+
+        meeting: meeting,
+
+        viewController: self
+
+    )
+
+    controlBar.translatesAutoresizingMaskIntoConstraints = false
+
+    view.addSubview(controlBar)
+
+
+    NSLayoutConstraint.activate([
+
+        controlBar.bottomAnchor.constraint(
+
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor
+
+        ),
+
+        controlBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+
+        controlBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+        controlBar.heightAnchor.constraint(equalToConstant: 80),
+
+    ])
+
+}
+
+
+```
+
+Explain Code
+
+### Use the DataSource pattern for button replacement
+
+Implement `RtkMeetingControlBarDataSource` to replace specific buttons while keeping the default controlbar layout:
+
+Swift
+
+```
+
+class CustomControlBarDataSource: RtkMeetingControlBarDataSource {
+
+    func getMicControlBarButton(
+
+        for meeting: RealtimeKitClient
+
+    ) -> RtkControlBarButton? {
+
+        // Return a custom mic button, or nil to use the default
+
+        let button = RtkAudioButtonControlBar(meeting: meeting)
+
+        return button
+
+    }
+
+
+    func getVideoControlBarButton(
+
+        for meeting: RealtimeKitClient
+
+    ) -> RtkControlBarButton? {
+
+        // Return a custom video button, or nil to use the default
+
+        let button = RtkVideoButtonControlBar(rtkClient: meeting)
+
+        return button
+
+    }
+
+}
+
+
+// Assign the data source
+
+let controlBar = RtkMeetingControlBar(
+
+    meeting: meeting,
+
+    delegate: nil,
+
+    presentingViewController: self
+
+)
+
+controlBar.dataSource = CustomControlBarDataSource()
+
+
+```
+
+Explain Code
+
+### Add custom buttons
+
+Create a custom button using `RtkControlBarButton`:
+
+Swift
+
+```
+
+let customButton = RtkControlBarButton(
+
+    image: RtkImage(image: UIImage(systemName: "hand.raised.fill")),
+
+    title: "Raise Hand"
+
+)
+
+customButton.addTarget(self, action: #selector(onRaiseHand), for: .touchUpInside)
+
+
+// Add it alongside other buttons
+
+tabBar.setButtons([micButton, videoButton, customButton, endCallButton])
+
+
+```
+
+The Android UI Kit provides `RtkMeetingControlBarView` as the default controlbar. To build a custom controlbar, use individual button components in an XML layout and activate them with the meeting object.
+
+### Available controlbar button components
+
+| Component             | Activate with     | Description                                       |
+| --------------------- | ----------------- | ------------------------------------------------- |
+| RtkMicToggleButton    | RealtimeKitClient | Microphone toggle with state management           |
+| RtkCameraToggleButton | RealtimeKitClient | Camera toggle with state management               |
+| RtkLeaveButton        | RealtimeKitClient | Leave/end meeting button with confirmation dialog |
+| RtkMoreToggleButton   | RealtimeKitClient | "More" menu button                                |
+| RtkControlBarButton   | —                 | Base button class for custom buttons              |
+
+### Define a custom controlbar layout in XML
+
+layout\_custom\_controlbar.xml
+
+```
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.cloudflare.realtimekit.ui.view.controlbars.RtkControlBarView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/customControlBar"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+
+    android:gravity="center"
+
+    android:padding="8dp">
+
+
+    <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMicToggleButton
+
+        android:id="@+id/micToggle"
+
+        android:layout_width="48dp"
+
+        android:layout_height="48dp"
+
+        android:layout_margin="4dp" />
+
+
+    <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkCameraToggleButton
+
+        android:id="@+id/cameraToggle"
+
+        android:layout_width="48dp"
+
+        android:layout_height="48dp"
+
+        android:layout_margin="4dp" />
+
+
+    <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton
+
+        android:id="@+id/moreToggle"
+
+        android:layout_width="48dp"
+
+        android:layout_height="48dp"
+
+        android:layout_margin="4dp" />
+
+
+    <com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton
+
+        android:id="@+id/leaveButton"
+
+        android:layout_width="48dp"
+
+        android:layout_height="48dp"
+
+        android:layout_margin="4dp" />
+
+
+</com.cloudflare.realtimekit.ui.view.controlbars.RtkControlBarView>
+
+
+```
+
+Explain Code
+
+### Activate the controlbar buttons in your Activity
+
+CustomMeetingActivity.kt
+
+```
+
+import android.os.Bundle
+
+import androidx.appcompat.app.AppCompatActivity
+
+import com.cloudflare.realtimekit.RealtimeKitClient
+
+import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMicToggleButton
+
+import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkCameraToggleButton
+
+import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkMoreToggleButton
+
+import com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkLeaveButton
+
+
+class CustomMeetingActivity : AppCompatActivity() {
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+
+        setContentView(R.layout.activity_custom_meeting)
+
+
+        // Your meeting initialization code...
+
+    }
+
+
+    fun activateControlBar(meeting: RealtimeKitClient) {
+
+        findViewById<RtkMicToggleButton>(R.id.micToggle).activate(meeting)
+
+        findViewById<RtkCameraToggleButton>(R.id.cameraToggle).activate(meeting)
+
+        findViewById<RtkMoreToggleButton>(R.id.moreToggle).activate(meeting)
+
+        findViewById<RtkLeaveButton>(R.id.leaveButton).activate(meeting)
+
+    }
+
+}
+
+
+```
+
+Explain Code
+
+### Add custom buttons using RtkControlBarButton
+
+Create a custom button in XML:
+
+```
+
+<com.cloudflare.realtimekit.ui.view.controlbarbuttons.RtkControlBarButton
+
+    android:id="@+id/raiseHandButton"
+
+    android:layout_width="48dp"
+
+    android:layout_height="48dp"
+
+    android:layout_margin="4dp"
+
+    android:text="Raise Hand"
+
+    app:rtk_cbb_icon="@drawable/ic_raise_hand"
+
+    app:rtk_cbb_variant="BUTTON"
+
+    app:rtk_cbb_showText="true" />
+
+
+```
+
+Handle the click in Kotlin:
+
+Kotlin
+
+```
+
+val raiseHandButton = findViewById<RtkControlBarButton>(R.id.raiseHandButton)
+
+raiseHandButton.setOnClickListener {
+
+    // Custom raise hand logic
+
+}
+
+
+```
+
+Note
+
+Call `activate(meeting)` on each button after the meeting room is joined. Buttons will not function until they are activated with a valid `RealtimeKitClient` instance.
+
+The Flutter UI Kit provides individual toggle button widgets that you can compose into a custom controlbar using standard Flutter layout widgets.
+
+### Available controlbar button widgets
+
+| Widget                   | Required parameter | Description                                   |
+| ------------------------ | ------------------ | --------------------------------------------- |
+| RtkSelfAudioToggleButton | RealtimekitClient  | Microphone toggle with permission handling    |
+| RtkSelfVideoToggleButton | RealtimekitClient  | Camera toggle with permission handling        |
+| RtkLeaveButton           | RealtimekitClient  | Leave meeting button with confirmation dialog |
+
+### Build a custom controlbar
+
+Wrap the button widgets in a `Row` or any custom layout:
+
+Dart
+
+```
+
+import 'package:flutter/material.dart';
+
+import 'package:realtimekit_ui/realtimekit_ui.dart';
+
+
+class CustomControlBar extends StatelessWidget {
+
+  final RealtimekitClient meeting;
+
+
+  const CustomControlBar({required this.meeting, super.key});
+
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    return Container(
+
+      color: Colors.black,
+
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+
+      child: Row(
+
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+        children: [
+
+          RtkSelfAudioToggleButton(meeting: meeting),
+
+          RtkSelfVideoToggleButton(meeting: meeting),
+
+          RtkLeaveButton(meeting: meeting),
+
+        ],
+
+      ),
+
+    );
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+### Use the custom controlbar in your meeting screen
+
+Replace the default controlbar in your `Scaffold`:
+
+Dart
+
+```
+
+import 'package:flutter/material.dart';
+
+import 'package:realtimekit_ui/realtimekit_ui.dart';
+
+
+class CustomMeetingScreen extends StatelessWidget {
+
+  final RealtimekitClient meeting;
+
+
+  const CustomMeetingScreen({required this.meeting, super.key});
+
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    return RtkProvider(
+
+      meeting: meeting,
+
+      uiKitInfo: uiKitInfo,
+
+      child: Scaffold(
+
+        backgroundColor: Colors.black,
+
+        body: Column(
+
+          children: [
+
+            RtkMeetingTitle(meeting: meeting),
+
+            // Your participant grid here
+
+            const Spacer(),
+
+          ],
+
+        ),
+
+        bottomNavigationBar: CustomControlBar(meeting: meeting),
+
+      ),
+
+    );
+
+  }
+
+}
+
+
+```
+
+Explain Code
+
+### Add custom buttons alongside RealtimeKit widgets
+
+Add your own `IconButton` or any Flutter widget next to the RealtimeKit buttons:
+
+Dart
+
+```
+
+Row(
+
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+  children: [
+
+    RtkSelfAudioToggleButton(meeting: meeting),
+
+    RtkSelfVideoToggleButton(meeting: meeting),
+
+    // Custom raise hand button
+
+    IconButton(
+
+      onPressed: () {
+
+        // Custom raise hand logic
+
+      },
+
+      icon: const Icon(Icons.back_hand, color: Colors.white),
+
+    ),
+
+    RtkLeaveButton(meeting: meeting),
+
+  ],
+
+)
+
+
+```
+
+Explain Code
+
+### Customize button appearance with design tokens
+
+Pass `individualDesignToken` to style buttons individually:
+
+Dart
+
+```
+
+RtkSelfAudioToggleButton(
+
+  meeting: meeting,
+
+  iconSize: 28.0,
+
+  iconColor: Colors.cyan,
+
+  showLabel: true,
+
+)
+
+
+```
+
+Note
+
+All Flutter controlbar widgets require [RtkProvider](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/flutter/rtk-provider/) as an ancestor in the widget tree.
+
+The React Native UI Kit provides individual toggle components that you can compose into a custom controlbar.
+
+### Available controlbar components
+
+| Component            | Required prop | Description                                       |
+| -------------------- | ------------- | ------------------------------------------------- |
+| RtkMicToggle         | meeting       | Microphone toggle with permission handling        |
+| RtkCameraToggle      | meeting       | Camera toggle with permission handling            |
+| RtkLeaveButton       | —             | Leave/end meeting button with confirmation dialog |
+| RtkMoreToggle        | meeting       | "More" menu toggle with notification badge        |
+| RtkScreenShareToggle | meeting       | Screen share toggle                               |
+| RtkControlbarButton  | —             | Base button for custom actions                    |
+
+### Build a custom controlbar
+
+Replace `RtkControlbar` with individual components in a `View`:
+
+```
+
+import React from "react";
+
+import { View, StyleSheet } from "react-native";
+
+import {
+
+  RtkMicToggle,
+
+  RtkCameraToggle,
+
+  RtkLeaveButton,
+
+  RtkMoreToggle,
+
+  RtkScreenShareToggle,
+
+} from "@cloudflare/realtimekit-react-native-ui";
+
+
+function CustomControlbar({ meeting }) {
+
+  return (
+
+    <View style={styles.controlbar}>
+
+      <RtkMicToggle meeting={meeting} variant="horizontal" />
+
+      <RtkCameraToggle meeting={meeting} variant="horizontal" />
+
+      <RtkScreenShareToggle meeting={meeting} variant="horizontal" />
+
+      <RtkMoreToggle meeting={meeting} variant="horizontal" />
+
+      <RtkLeaveButton />
+
+    </View>
+
+  );
+
+}
+
+
+const styles = StyleSheet.create({
+
+  controlbar: {
+
+    flexDirection: "row",
+
+    justifyContent: "space-evenly",
+
+    alignItems: "center",
+
+    backgroundColor: "#1A1A1A",
+
+    paddingVertical: 8,
+
+    paddingHorizontal: 16,
+
+  },
+
+});
+
+
+```
+
+Explain Code
+
+### Use the custom controlbar in your meeting screen
+
+In your `MeetingScreens` component from [Build Your Own UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/build-your-own-ui/), replace:
+
+```
+
+<RtkControlbar meeting={meeting} />
+
+
+```
+
+with:
+
+```
+
+<CustomControlbar meeting={meeting} />
+
+
+```
+
+### Add custom buttons using RtkControlbarButton
+
+Use `RtkControlbarButton` to create buttons that match the RealtimeKit design:
+
+```
+
+import { RtkControlbarButton } from "@cloudflare/realtimekit-react-native-ui";
+
+
+function CustomControlbar({ meeting }) {
+
+  return (
+
+    <View style={styles.controlbar}>
+
+      <RtkMicToggle meeting={meeting} variant="horizontal" />
+
+      <RtkCameraToggle meeting={meeting} variant="horizontal" />
+
+      <RtkControlbarButton
+
+        label="Raise Hand"
+
+        icon={raiseHandSvg}
+
+        onClick={() => {
+
+          // Custom raise hand logic
+
+        }}
+
+        variant="horizontal"
+
+      />
+
+      <RtkLeaveButton />
+
+    </View>
+
+  );
+
+}
+
+
+```
+
+Explain Code
+
+Note
+
+Wrap your component tree in `RtkUIProvider`. All UI Kit components read design tokens and state from `RtkUIContext`.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/realtime/","name":"Realtime"}},{"@type":"ListItem","position":3,"item":{"@id":"/realtime/realtimekit/","name":"RealtimeKit"}},{"@type":"ListItem","position":4,"item":{"@id":"/realtime/realtimekit/ui-kit/","name":"Build using UI Kit"}},{"@type":"ListItem","position":5,"item":{"@id":"/realtime/realtimekit/ui-kit/custom-controlbar/","name":"Add Custom Controlbar"}}]}

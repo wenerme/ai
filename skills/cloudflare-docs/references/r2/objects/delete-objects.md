@@ -1,6 +1,6 @@
 ---
 title: Delete objects
-description: You can delete objects from R2 using the dashboard, Workers API, S3 API, or command-line tools.
+description: Delete objects from R2 using the dashboard, Workers API, S3 API, or CLI tools.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -56,8 +56,8 @@ For complete documentation, refer to [Workers API](https://developers.cloudflare
 
 Use S3-compatible SDKs to delete objects. You'll need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [R2 API token](https://developers.cloudflare.com/r2/api/tokens/).
 
-* [ JavaScript ](#tab-panel-5846)
-* [ Python ](#tab-panel-5847)
+* [ JavaScript ](#tab-panel-8077)
+* [ Python ](#tab-panel-8078)
 
 TypeScript
 

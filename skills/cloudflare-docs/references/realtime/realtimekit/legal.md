@@ -1,5 +1,6 @@
 ---
 title: Legal
+description: Privacy policy, terms of service, and third-party licenses for RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

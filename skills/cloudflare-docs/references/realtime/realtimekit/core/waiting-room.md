@@ -1,6 +1,6 @@
 ---
 title: Waiting Room
-description: The waiting room feature allows hosts to control who can join a meeting. When enabled, participants must wait for approval before entering the meeting.
+description: Control meeting access with a waiting room that requires host approval in RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

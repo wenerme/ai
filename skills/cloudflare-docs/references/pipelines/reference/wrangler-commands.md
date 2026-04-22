@@ -1,6 +1,6 @@
 ---
 title: Wrangler commands
-description: Interactive setup for a complete pipeline
+description: Wrangler CLI commands for managing Pipelines streams, sinks, and pipelines.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -20,9 +20,9 @@ Copy page
 
 Interactive setup for a complete pipeline
 
-* [  npm ](#tab-panel-5486)
-* [  pnpm ](#tab-panel-5487)
-* [  yarn ](#tab-panel-5488)
+* [  npm ](#tab-panel-7761)
+* [  pnpm ](#tab-panel-7762)
+* [  yarn ](#tab-panel-7763)
 
 Terminal window
 
@@ -75,9 +75,9 @@ Automatically provision draft bindings with new resources
 
 Create a new pipeline
 
-* [  npm ](#tab-panel-5489)
-* [  pnpm ](#tab-panel-5490)
-* [  yarn ](#tab-panel-5491)
+* [  npm ](#tab-panel-7764)
+* [  pnpm ](#tab-panel-7765)
+* [  yarn ](#tab-panel-7766)
 
 Terminal window
 
@@ -134,9 +134,9 @@ Automatically provision draft bindings with new resources
 
 List all pipelines
 
-* [  npm ](#tab-panel-5492)
-* [  pnpm ](#tab-panel-5493)
-* [  yarn ](#tab-panel-5494)
+* [  npm ](#tab-panel-7767)
+* [  pnpm ](#tab-panel-7768)
+* [  yarn ](#tab-panel-7769)
 
 Terminal window
 
@@ -193,9 +193,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific pipeline
 
-* [  npm ](#tab-panel-5495)
-* [  pnpm ](#tab-panel-5496)
-* [  yarn ](#tab-panel-5497)
+* [  npm ](#tab-panel-7770)
+* [  pnpm ](#tab-panel-7771)
+* [  yarn ](#tab-panel-7772)
 
 Terminal window
 
@@ -250,9 +250,9 @@ Automatically provision draft bindings with new resources
 
 Update a pipeline configuration (legacy pipelines only)
 
-* [  npm ](#tab-panel-5498)
-* [  pnpm ](#tab-panel-5499)
-* [  yarn ](#tab-panel-5500)
+* [  npm ](#tab-panel-7773)
+* [  pnpm ](#tab-panel-7774)
+* [  yarn ](#tab-panel-7775)
 
 Terminal window
 
@@ -329,9 +329,9 @@ Automatically provision draft bindings with new resources
 
 Delete a pipeline
 
-* [  npm ](#tab-panel-5501)
-* [  pnpm ](#tab-panel-5502)
-* [  yarn ](#tab-panel-5503)
+* [  npm ](#tab-panel-7776)
+* [  pnpm ](#tab-panel-7777)
+* [  yarn ](#tab-panel-7778)
 
 Terminal window
 
@@ -386,9 +386,9 @@ Automatically provision draft bindings with new resources
 
 Create a new stream
 
-* [  npm ](#tab-panel-5504)
-* [  pnpm ](#tab-panel-5505)
-* [  yarn ](#tab-panel-5506)
+* [  npm ](#tab-panel-7779)
+* [  pnpm ](#tab-panel-7780)
+* [  yarn ](#tab-panel-7781)
 
 Terminal window
 
@@ -449,9 +449,9 @@ Automatically provision draft bindings with new resources
 
 List all streams
 
-* [  npm ](#tab-panel-5507)
-* [  pnpm ](#tab-panel-5508)
-* [  yarn ](#tab-panel-5509)
+* [  npm ](#tab-panel-7782)
+* [  pnpm ](#tab-panel-7783)
+* [  yarn ](#tab-panel-7784)
 
 Terminal window
 
@@ -510,9 +510,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific stream
 
-* [  npm ](#tab-panel-5510)
-* [  pnpm ](#tab-panel-5511)
-* [  yarn ](#tab-panel-5512)
+* [  npm ](#tab-panel-7785)
+* [  pnpm ](#tab-panel-7786)
+* [  yarn ](#tab-panel-7787)
 
 Terminal window
 
@@ -567,9 +567,9 @@ Automatically provision draft bindings with new resources
 
 Delete a stream
 
-* [  npm ](#tab-panel-5513)
-* [  pnpm ](#tab-panel-5514)
-* [  yarn ](#tab-panel-5515)
+* [  npm ](#tab-panel-7788)
+* [  pnpm ](#tab-panel-7789)
+* [  yarn ](#tab-panel-7790)
 
 Terminal window
 
@@ -624,9 +624,9 @@ Automatically provision draft bindings with new resources
 
 Create a new sink
 
-* [  npm ](#tab-panel-5516)
-* [  pnpm ](#tab-panel-5517)
-* [  yarn ](#tab-panel-5518)
+* [  npm ](#tab-panel-7791)
+* [  pnpm ](#tab-panel-7792)
+* [  yarn ](#tab-panel-7793)
 
 Terminal window
 
@@ -707,9 +707,9 @@ Automatically provision draft bindings with new resources
 
 List all sinks
 
-* [  npm ](#tab-panel-5519)
-* [  pnpm ](#tab-panel-5520)
-* [  yarn ](#tab-panel-5521)
+* [  npm ](#tab-panel-7794)
+* [  pnpm ](#tab-panel-7795)
+* [  yarn ](#tab-panel-7796)
 
 Terminal window
 
@@ -768,9 +768,9 @@ Automatically provision draft bindings with new resources
 
 Get details about a specific sink
 
-* [  npm ](#tab-panel-5522)
-* [  pnpm ](#tab-panel-5523)
-* [  yarn ](#tab-panel-5524)
+* [  npm ](#tab-panel-7797)
+* [  pnpm ](#tab-panel-7798)
+* [  yarn ](#tab-panel-7799)
 
 Terminal window
 
@@ -825,9 +825,9 @@ Automatically provision draft bindings with new resources
 
 Delete a sink
 
-* [  npm ](#tab-panel-5525)
-* [  pnpm ](#tab-panel-5526)
-* [  yarn ](#tab-panel-5527)
+* [  npm ](#tab-panel-7800)
+* [  pnpm ](#tab-panel-7801)
+* [  yarn ](#tab-panel-7802)
 
 Terminal window
 

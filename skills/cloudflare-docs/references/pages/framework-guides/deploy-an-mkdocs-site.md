@@ -1,6 +1,6 @@
 ---
 title: MkDocs
-description: MkDocs is a modern documentation platform where teams can document products, internal knowledge bases and APIs.
+description: Deploy an MkDocs documentation site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

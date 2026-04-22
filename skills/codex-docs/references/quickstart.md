@@ -13,10 +13,11 @@ You can also use Codex with API credits by signing in with an OpenAI API key.
 (() => {
   const platform =
     (navigator.userAgentData?.platform || navigator.platform || "").toLowerCase();
-  const isMac =
+  const isDesktopAppPlatform =
     platform.includes("mac") ||
-    /macintosh|mac os x/i.test(navigator.userAgent || "");
-  if (!isMac) return;
+    platform.includes("win") ||
+    /macintosh|mac os x|windows|win64|win32/i.test(navigator.userAgent || "");
+  if (!isDesktopAppPlatform) return;
 
   const shouldPreferApp = () => {
     try {
@@ -56,10 +57,13 @@ You can also use Codex with API credits by signing in with an OpenAI API key.
   <div slot="app">
 The Codex app is available on macOS and Windows.
 
+Most Codex app features are available on both platforms. Platform-specific
+exceptions are noted in the relevant docs.
+
 <WorkflowSteps variant="headings">
 1. Download and install the Codex app
 
-    Download the Codex app for Windows or macOS. Choose the Intel build if you're using an Intel-based Mac.
+    Download the Codex app for macOS or Windows. Choose the Intel build if you're using an Intel-based Mac.
 
     <CodexAppDownloadCta client:load className="mb-4" />
 

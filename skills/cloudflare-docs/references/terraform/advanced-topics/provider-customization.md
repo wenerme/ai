@@ -1,6 +1,6 @@
 ---
 title: Provider customization
-description: Terraform communicates with cloud and global network provider APIs such as Cloudflare through modules known as providers. These providers are installed automatically when you run terraform init in a directory that has a .tf file containing a provider.
+description: Customize the Cloudflare Terraform provider settings using configuration parameters or environment variables.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

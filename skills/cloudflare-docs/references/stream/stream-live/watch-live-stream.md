@@ -1,8 +1,6 @@
 ---
 title: Watch a live stream
-description: When a Live Input begins receiving a
-broadcast, a new video is automatically created if the input's mode property
-is set to automatic.
+description: Play Cloudflare Stream live video using the Stream Player or custom HLS and DASH players.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

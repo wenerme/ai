@@ -1,5 +1,6 @@
 ---
 title: Setup
+description: Configure Email Routing rules, addresses, DNS records, MTA-STS, and subdomains for your domain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

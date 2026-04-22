@@ -1,5 +1,6 @@
 ---
 title: Workers Binding API
+description: Reference documentation for Durable Objects binding APIs, including namespaces, stubs, state, and storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Email Service reference material including headers, postmaster info, FAQ, and troubleshooting.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

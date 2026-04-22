@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Privacy Gateway
-description: Privacy Gateway is a managed service deployed on Cloudflare’s global network that implements part of the Oblivious HTTP (OHTTP) IETF standard. The goal of Privacy Gateway and Oblivious HTTP is to hide the client's IP address when interacting with an application backend.
+description: Privacy Gateway is a managed Oblivious HTTP (OHTTP) relay service that hides client IP addresses from application backends.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

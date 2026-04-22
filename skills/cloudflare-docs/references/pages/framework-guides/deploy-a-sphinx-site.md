@@ -1,6 +1,6 @@
 ---
 title: Sphinx
-description: Sphinx is a tool that makes it easy to create documentation and was originally made for the publication of Python documentation. It is well known for its simplicity and ease of use.
+description: Deploy a Sphinx documentation site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

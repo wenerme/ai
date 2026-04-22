@@ -1,6 +1,6 @@
 ---
 title: Metrics and analytics
-description: KV exposes analytics that allow you to inspect requests and storage across all namespaces in your account.
+description: Query Workers KV operations and storage metrics via the dashboard or the GraphQL Analytics API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Getting started
-description: This guide will instruct you through:
+description: Create and deploy your first Durable Object with SQLite storage and a companion Worker.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -121,9 +121,9 @@ If you do not use JavaScript or TypeScript, you will need a [shim ↗](https://d
 
 Your `MyDurableObject` class will have a constructor with two parameters. The first parameter, `ctx`, passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter, `env`, contains any bindings you have associated with the Worker when you uploaded it.
 
-* [  JavaScript ](#tab-panel-4575)
-* [  TypeScript ](#tab-panel-4576)
-* [  Python ](#tab-panel-4577)
+* [  JavaScript ](#tab-panel-6778)
+* [  TypeScript ](#tab-panel-6779)
+* [  Python ](#tab-panel-6780)
 
 JavaScript
 
@@ -183,9 +183,9 @@ Workers communicate with a Durable Object using [remote-procedure call](https://
 
 Your file should now look like:
 
-* [  JavaScript ](#tab-panel-4581)
-* [  TypeScript ](#tab-panel-4582)
-* [  Python ](#tab-panel-4583)
+* [  JavaScript ](#tab-panel-6784)
+* [  TypeScript ](#tab-panel-6785)
+* [  Python ](#tab-panel-6786)
 
 JavaScript
 
@@ -296,9 +296,9 @@ A Worker is used to [access Durable Objects](https://developers.cloudflare.com/d
 
 To communicate with a Durable Object, the Worker's fetch handler should look like the following:
 
-* [  JavaScript ](#tab-panel-4578)
-* [  TypeScript ](#tab-panel-4579)
-* [  Python ](#tab-panel-4580)
+* [  JavaScript ](#tab-panel-6781)
+* [  TypeScript ](#tab-panel-6782)
+* [  Python ](#tab-panel-6783)
 
 JavaScript
 
@@ -387,8 +387,8 @@ Refer to [Access a Durable Object from a Worker](https://developers.cloudflare.c
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to interact with resources on the Cloudflare developer platform. The Durable Object bindings in your Worker project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) will include a binding name (for this guide, use `MY_DURABLE_OBJECT`) and the class name (`MyDurableObject`).
 
-* [  wrangler.jsonc ](#tab-panel-4571)
-* [  wrangler.toml ](#tab-panel-4572)
+* [  wrangler.jsonc ](#tab-panel-6774)
+* [  wrangler.toml ](#tab-panel-6775)
 
 JSONC
 
@@ -446,8 +446,8 @@ Migrations are performed through the `[[migrations]]` configurations key in your
 
 The Durable Object migration to create a new Durable Object class with SQLite storage backend will look like the following in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4573)
-* [  wrangler.toml ](#tab-panel-4574)
+* [  wrangler.jsonc ](#tab-panel-6776)
+* [  wrangler.toml ](#tab-panel-6777)
 
 JSONC
 
@@ -531,9 +531,9 @@ Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.de
 
 Your final code should look like this:
 
-* [  JavaScript ](#tab-panel-4584)
-* [  TypeScript ](#tab-panel-4585)
-* [  Python ](#tab-panel-4586)
+* [  JavaScript ](#tab-panel-6787)
+* [  TypeScript ](#tab-panel-6788)
+* [  Python ](#tab-panel-6789)
 
 JavaScript
 

@@ -1,6 +1,6 @@
 ---
 title: /crawl - Crawl web content
-description: The /crawl endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
+description: Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Local Development
-description: You can test the behavior of an Email Worker script in local development using Wrangler with wrangler dev, or using the Cloudflare Vite plugin.
+description: Test Email Workers locally using Wrangler dev or the Cloudflare Vite plugin to simulate receiving, replying, and sending emails.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -20,8 +20,8 @@ You can test the behavior of an Email Worker script in local development using W
 
 This is the minimal wrangler configuration required to run an Email Worker locally:
 
-* [  wrangler.jsonc ](#tab-panel-4629)
-* [  wrangler.toml ](#tab-panel-4630)
+* [  wrangler.jsonc ](#tab-panel-6836)
+* [  wrangler.toml ](#tab-panel-6837)
 
 JSONC
 

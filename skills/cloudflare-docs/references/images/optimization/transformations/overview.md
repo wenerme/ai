@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: When you ship applications on Cloudflare, you can use Images to automatically optimize and cache your images from any origin.
+description: Cloudflare Images transformations optimize and cache remote images from any origin at the edge.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

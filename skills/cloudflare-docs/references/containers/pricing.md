@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Containers are billed for every 10ms that they are actively running at the following rates, with included monthly usage as part of the $5 USD per month Workers Paid plan:
+description: Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

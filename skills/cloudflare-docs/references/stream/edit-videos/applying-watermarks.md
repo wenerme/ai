@@ -1,6 +1,6 @@
 ---
 title: Apply watermarks
-description: You can add watermarks to videos uploaded using the Stream API.
+description: Create watermark profiles and apply them to Cloudflare Stream video uploads via the API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

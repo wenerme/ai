@@ -1,6 +1,6 @@
 ---
 title: Migration Strategies
-description: You can use a combination of Super Slurper and Sippy to effectively migrate all objects with minimal downtime.
+description: Combine Super Slurper and Sippy to migrate objects to R2 with minimal downtime.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

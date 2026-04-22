@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: R2 reference documentation covering consistency, data location, security, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

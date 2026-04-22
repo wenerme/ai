@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: If you prefer to work directly with the REST API instead of a Cloudflare Worker, below are the steps on how to do it:
+description: Send and retrieve batch inference requests using the Workers AI REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

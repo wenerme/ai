@@ -1,6 +1,6 @@
 ---
 title: Get Started
-description: This guide will instruct you through setting up and deploying your first Workers AI project with embedded function calling. You will use Workers, a Workers AI binding, the ai-utils package, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network with embedded function calling.
+description: Set up and deploy your first Workers AI project with embedded function calling.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -48,8 +48,8 @@ bun add @cloudflare/ai-utils
 
 Update the `index.ts` file in your application directory with the following code:
 
-* [  JavaScript ](#tab-panel-6985)
-* [  TypeScript ](#tab-panel-6986)
+* [  JavaScript ](#tab-panel-9250)
+* [  TypeScript ](#tab-panel-9251)
 
 index.js
 

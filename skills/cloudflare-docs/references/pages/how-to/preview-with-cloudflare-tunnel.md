@@ -1,6 +1,6 @@
 ---
 title: Preview Local Projects with Cloudflare Tunnel
-description: Cloudflare Tunnel runs a lightweight daemon (cloudflared) in your infrastructure that establishes outbound connections (Tunnels) between your origin web server and the Cloudflare global network. In practical terms, you can use Cloudflare Tunnel to allow remote access to services running on your local machine. It is an alternative to popular tools like Ngrok, and provides free, long-running tunnels via the TryCloudflare service.
+description: Use Cloudflare Tunnel to share locally running Pages projects over a public URL.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

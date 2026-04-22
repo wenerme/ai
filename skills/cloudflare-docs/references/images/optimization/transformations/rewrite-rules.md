@@ -1,6 +1,6 @@
 ---
 title: Set up rewrite rules
-description: You can use Transform Rules to rewrite URLs for every image that you transform through Images.
+description: Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

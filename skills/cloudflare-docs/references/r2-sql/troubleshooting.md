@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting guide
-description: This guide covers potential errors and limitations you may encounter when using R2 SQL. R2 SQL is in open beta, and supported functionality will evolve and change over time.
+description: Troubleshoot common R2 SQL errors including query structure, type, and timeout issues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

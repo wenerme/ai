@@ -1,5 +1,6 @@
 ---
 title: FAQ
+description: Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

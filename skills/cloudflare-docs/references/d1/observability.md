@@ -1,5 +1,6 @@
 ---
 title: Observability
+description: Monitor D1 database performance, billing metrics, and debug query errors.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

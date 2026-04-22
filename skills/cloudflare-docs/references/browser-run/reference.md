@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Browse Browser Run reference documentation for headers, fonts, timeouts, Wrangler configuration, and more.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

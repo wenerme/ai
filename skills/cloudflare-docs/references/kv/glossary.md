@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's KV documentation.
+description: Definitions of terms used across Cloudflare Workers KV documentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Preview deployments
-description: Preview deployments allow you to preview new versions of your project without deploying it to production. To view preview deployments:
+description: Preview new versions of your Cloudflare Pages project with unique URLs before deploying to production.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -74,6 +74,25 @@ Branch name aliases are lowercased and non-alphanumeric characters are replaced 
 To view branch aliases within your Pages project, select **View build** for any preview deployment. **Deployment details** will display all aliases associated with that deployment.
 
 You can attach a Preview alias to a custom domain by [adding a custom domain to a branch ↗](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/).
+
+## Delete preview deployments
+
+To clean up old preview deployments, you can delete them using Wrangler:
+
+Terminal window
+
+```
+
+npx wrangler pages deployment delete <DEPLOYMENT_ID> --project-name <PROJECT_NAME>
+
+
+```
+
+Use the `--force` (or `-f`) flag to skip the confirmation prompt, and to force deletion of aliased deployments. You can find deployment IDs by running [wrangler pages deployment list](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-list).
+
+Note
+
+The latest deployment for a branch cannot be deleted.
 
 ## Preview indexing by search engines
 

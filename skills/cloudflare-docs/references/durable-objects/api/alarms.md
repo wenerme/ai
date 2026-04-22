@@ -1,6 +1,6 @@
 ---
 title: Alarms
-description: Durable Objects alarms allow you to schedule the Durable Object to be woken up at a time in the future. When the alarm's scheduled time comes, the alarm() handler method will be called. Alarms are modified using the Storage API, and alarm operations follow the same rules as other storage operations.
+description: Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -173,8 +173,8 @@ This example shows how to both set alarms with the `setAlarm(timestamp)` method 
 * If an unexpected error terminates the Durable Object, the `alarm()` handler may be re-instantiated on another machine.
 * Following a short delay, the `alarm()` handler will run from the beginning on the other machine.
 
-* [  JavaScript ](#tab-panel-4380)
-* [  Python ](#tab-panel-4381)
+* [  JavaScript ](#tab-panel-6583)
+* [  Python ](#tab-panel-6584)
 
 JavaScript
 
@@ -295,8 +295,8 @@ Explain Code
 
 The following example shows how to use the `alarmInfo` property to identify if the alarm event has been attempted before.
 
-* [  JavaScript ](#tab-panel-4382)
-* [  Python ](#tab-panel-4383)
+* [  JavaScript ](#tab-panel-6585)
+* [  Python ](#tab-panel-6586)
 
 JavaScript
 

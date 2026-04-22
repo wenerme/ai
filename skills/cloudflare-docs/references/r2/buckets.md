@@ -1,6 +1,6 @@
 ---
 title: Buckets
-description: With object storage, all of your objects are stored in buckets. Buckets do not contain folders that group the individual files, but instead, buckets have a flat structure which simplifies the way you access and retrieve the objects in your bucket.
+description: Create and manage R2 buckets for storing objects with flat-structure organization.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

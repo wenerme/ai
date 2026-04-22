@@ -1,6 +1,6 @@
 ---
-title: Code Interpreter
-description: Execute Python, JavaScript, and TypeScript code with support for data visualizations, tables, and rich output formats. Contexts maintain state (variables, imports, functions) across executions.
+title: Code interpreter
+description: Execute Python, JavaScript, and TypeScript code with rich output formats in Sandbox SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-# Code Interpreter
+# Code interpreter
 
 Execute Python, JavaScript, and TypeScript code with support for data visualizations, tables, and rich output formats. Contexts maintain state (variables, imports, functions) across executions.
 
@@ -43,8 +43,8 @@ const context = await sandbox.createCodeContext(options?: CreateContextOptions):
 
 **Returns**: `Promise<CodeContext>` with `id`, `language`, `cwd`, `createdAt`, `lastUsed`
 
-* [  JavaScript ](#tab-panel-6195)
-* [  TypeScript ](#tab-panel-6196)
+* [  JavaScript ](#tab-panel-8426)
+* [  TypeScript ](#tab-panel-8427)
 
 JavaScript
 
@@ -108,8 +108,8 @@ const result = await sandbox.runCode(code: string, options?: RunCodeOptions): Pr
 
 **Recommended usage - create explicit context**:
 
-* [  JavaScript ](#tab-panel-6197)
-* [  TypeScript ](#tab-panel-6198)
+* [  JavaScript ](#tab-panel-8428)
+* [  TypeScript ](#tab-panel-8429)
 
 JavaScript
 
@@ -149,8 +149,8 @@ Default context behavior
 
 If no `context` is provided, a default context is automatically created/reused for the specified `language`. While convenient for quick tests, **explicitly creating contexts is recommended** for production use to maintain predictable state.
 
-* [  JavaScript ](#tab-panel-6203)
-* [  TypeScript ](#tab-panel-6204)
+* [  JavaScript ](#tab-panel-8434)
+* [  TypeScript ](#tab-panel-8435)
 
 JavaScript
 
@@ -206,8 +206,8 @@ console.log(result.results[0].text); // "15"
 
 **Error handling**:
 
-* [  JavaScript ](#tab-panel-6199)
-* [  TypeScript ](#tab-panel-6200)
+* [  JavaScript ](#tab-panel-8430)
+* [  TypeScript ](#tab-panel-8431)
 
 JavaScript
 
@@ -253,8 +253,8 @@ if (result.error) {
 
 JavaScript and TypeScript code execution supports top-level `await` and persistent variables across executions within the same context.
 
-* [  JavaScript ](#tab-panel-6209)
-* [  TypeScript ](#tab-panel-6210)
+* [  JavaScript ](#tab-panel-8440)
+* [  TypeScript ](#tab-panel-8441)
 
 JavaScript
 
@@ -322,8 +322,8 @@ Explain Code
 
 Variables declared with `const`, `let`, or `var` persist across executions, enabling multi-step workflows:
 
-* [  JavaScript ](#tab-panel-6205)
-* [  TypeScript ](#tab-panel-6206)
+* [  JavaScript ](#tab-panel-8436)
+* [  TypeScript ](#tab-panel-8437)
 
 JavaScript
 
@@ -376,8 +376,8 @@ const contexts = await sandbox.listCodeContexts(): Promise<CodeContext[]>
 
 ```
 
-* [  JavaScript ](#tab-panel-6201)
-* [  TypeScript ](#tab-panel-6202)
+* [  JavaScript ](#tab-panel-8432)
+* [  TypeScript ](#tab-panel-8433)
 
 JavaScript
 
@@ -414,8 +414,8 @@ await sandbox.deleteCodeContext(contextId: string): Promise<void>
 
 ```
 
-* [  JavaScript ](#tab-panel-6207)
-* [  TypeScript ](#tab-panel-6208)
+* [  JavaScript ](#tab-panel-8438)
+* [  TypeScript ](#tab-panel-8439)
 
 JavaScript
 
@@ -449,8 +449,8 @@ Results include: `text`, `html`, `png`, `jpeg`, `svg`, `latex`, `markdown`, `jso
 
 **Charts (matplotlib)**:
 
-* [  JavaScript ](#tab-panel-6213)
-* [  TypeScript ](#tab-panel-6214)
+* [  JavaScript ](#tab-panel-8444)
+* [  TypeScript ](#tab-panel-8445)
 
 JavaScript
 
@@ -534,8 +534,8 @@ Explain Code
 
 **Tables (pandas)**:
 
-* [  JavaScript ](#tab-panel-6211)
-* [  TypeScript ](#tab-panel-6212)
+* [  JavaScript ](#tab-panel-8442)
+* [  TypeScript ](#tab-panel-8443)
 
 JavaScript
 
@@ -610,5 +610,5 @@ Explain Code
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- File operations
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/interpreter/","name":"Code Interpreter"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/interpreter/","name":"Code interpreter"}}]}
 ```

@@ -1,7 +1,6 @@
 ---
 title: WebP may be skipped
-description: Polish avoids converting images to the WebP format when such conversion would increase the file size, or significantly degrade image quality.
-Polish also optimizes JPEG images, and the WebP format is not always better than a well-optimized JPEG.
+description: Cloudflare Polish skips WebP conversion when it would increase file size or degrade image quality.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

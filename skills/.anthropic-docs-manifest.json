@@ -610,10 +610,10 @@
   "anthropic-docs/managed-agents/events-and-streaming.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/events-and-streaming",
     "skill": "anthropic-docs",
-    "etag": "W/\"ca1e-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 51742,
-    "updatedAt": "2026-04-17T00:18:31.758Z"
+    "etag": "W/\"cebc-19db1d26950\"",
+    "lastModified": "Tue, 21 Apr 2026 20:54:10 GMT",
+    "size": 52924,
+    "updatedAt": "2026-04-22T00:16:41.967Z"
   },
   "anthropic-docs/managed-agents/define-outcomes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/define-outcomes",

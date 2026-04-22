@@ -1,6 +1,6 @@
 ---
 title: Add custom ingest domains
-description: With custom ingest domains, you can configure your RTMPS feeds to use an ingest URL that you specify instead of using live.cloudflare.com.
+description: Configure custom RTMPS ingest domains for Cloudflare Stream live inputs instead of using the default URL.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

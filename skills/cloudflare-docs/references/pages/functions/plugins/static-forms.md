@@ -1,6 +1,6 @@
 ---
 title: Static Forms
-description: The Static Forms Pages Plugin intercepts all form submissions made which have the data-static-form-name attribute set. This allows you to take action on these form submissions by, for example, saving the submission to KV.
+description: Intercept and process HTML form submissions in Pages Functions with the Static Forms Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

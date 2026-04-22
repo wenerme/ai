@@ -1,7 +1,6 @@
 ---
 title: Audio Only Calls
-description: RealtimeKit supports voice calls, allowing you to build audio-only experiences such as audio rooms, support lines, or community hangouts.
-In these meetings, participants use their microphones and hear others, but cannot use their camera. Voice meetings reduce bandwidth requirements and focus on audio communication.
+description: Build audio-only experiences like voice rooms and support lines with RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

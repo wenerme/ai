@@ -1,6 +1,6 @@
 ---
 title: Architectures
-description: Learn how you can use Vectorize within your existing architecture.
+description: Reference architectures and design guides that use Vectorize.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

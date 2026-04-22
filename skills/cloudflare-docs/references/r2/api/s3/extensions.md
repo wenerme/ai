@@ -1,6 +1,6 @@
 ---
 title: Extensions
-description: R2 implements some extensions on top of the basic S3 API. This page outlines these additional, available features. Some of the functionality described in this page requires setting a custom header. For examples on how to do so, refer to Configure custom headers.
+description: R2 extensions to the S3 API, including Unicode metadata and custom headers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -94,7 +94,7 @@ Post-quantum key agreement for IPsec tunnels with third-party devices is current
 
 [IPsec ↗](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/) is a group of protocols that work together to set up encrypted connections between devices. It helps keep data you send over public networks secure. Organizations often use IPsec to set up Virtual Private Networks (VPNs), and it works by encrypting IP packets and authenticating the source where the packets come from.
 
-For information on how to set up an IPsec tunnel, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/). To learn more about the configuration parameters Cloudflare WAN uses to create an IPsec tunnel, keep reading.
+For information on how to set up an IPsec tunnel, refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). To learn more about the configuration parameters Cloudflare WAN uses to create an IPsec tunnel, keep reading.
 
 ### How IKEv2 establishes an IPsec tunnel
 
@@ -206,7 +206,7 @@ Additionally, Cloudflare supports the IKE ID type of `ID_IPV4_ADDR` if the follo
 
 Warning
 
-Make sure each IPsec tunnel has a unique combination of a [Cloudflare endpoint and customer endpoint](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/). If this combination is not unique among your IPsec tunnels, you should use one of the custom IKE formats (`ID_RFC822_ADDR`, `ID_FQDN`, or `ID_KEY_ID`) to specify the tunnel ID and account ID. This helps Cloudflare link the IKE packet to the right IPsec tunnel for tasks like authentication.
+Make sure each IPsec tunnel has a unique combination of a [Cloudflare endpoint and customer endpoint](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). If this combination is not unique among your IPsec tunnels, you should use one of the custom IKE formats (`ID_RFC822_ADDR`, `ID_FQDN`, or `ID_KEY_ID`) to specify the tunnel ID and account ID. This helps Cloudflare link the IKE packet to the right IPsec tunnel for tasks like authentication.
 
 ### Route-based vs. policy-based VPNs
 

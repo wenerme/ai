@@ -1,6 +1,6 @@
 ---
 title: Bind to Workers API
-description: A binding connects your Worker to external resources on the Developer Platform, like Images, R2 buckets, or KV Namespaces.
+description: Bind the Cloudflare Images API to a Worker to transform images without requiring a public URL.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -40,8 +40,8 @@ You can define variables in the Wrangler configuration file of your Worker proje
 
 To bind Images to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7138)
-* [  wrangler.toml ](#tab-panel-7139)
+* [  wrangler.jsonc ](#tab-panel-7229)
+* [  wrangler.toml ](#tab-panel-7230)
 
 JSONC
 
@@ -87,8 +87,8 @@ Within your Worker code, you can interact with this binding by using `env.IMAGES
 
 For example, to draw a resized watermark on an image:
 
-* [  JavaScript ](#tab-panel-7140)
-* [  TypeScript ](#tab-panel-7141)
+* [  JavaScript ](#tab-panel-7231)
+* [  TypeScript ](#tab-panel-7232)
 
 JavaScript
 
@@ -175,8 +175,8 @@ Explain Code
 
 For example, to rotate, resize, and blur an image, then output the image as AVIF:
 
-* [  JavaScript ](#tab-panel-7142)
-* [  TypeScript ](#tab-panel-7143)
+* [  JavaScript ](#tab-panel-7233)
+* [  TypeScript ](#tab-panel-7234)
 
 JavaScript
 

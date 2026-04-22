@@ -90,7 +90,7 @@ Anyone on the Internet can now access the application at the specified hostname.
 
 ## Add a WAN route
 
-WAN routes define the IP network segments (such as `10.0.0.0/24`) that are reachable via a GRE or IPsec tunnel. To add a WAN route, refer to the [WAN Connectors documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/).
+WAN routes define the IP network segments (such as `10.0.0.0/24`) that are reachable via a GRE or IPsec tunnel. To add a WAN route, refer to the [WAN Connectors documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/).
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/networks/","name":"Networks"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/networks/routes/","name":"Routes"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/networks/routes/add-routes/","name":"Add routes"}}]}

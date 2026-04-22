@@ -1,6 +1,6 @@
 ---
 title: Local Development
-description: Queues support local development workflows using Wrangler, the command-line interface for Workers. Wrangler runs the same version of Queues as Cloudflare runs globally.
+description: Develop and test Cloudflare Queues locally using Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

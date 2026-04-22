@@ -1,6 +1,6 @@
 ---
 title: Markdown Conversion
-description: Markdown is essential for text generation and large language models (LLMs) in training and inference because it can provide structured, semantic, human, and machine-readable input. Likewise, Markdown facilitates chunking and structuring input data for better retrieval and synthesis in the context of RAGs, and its simplicity and ease of parsing and rendering make it ideal for AI Agents.
+description: Convert documents in multiple formats to Markdown using the Workers AI toMarkdown method.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

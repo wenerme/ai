@@ -1,6 +1,6 @@
 ---
 title: Delete images
-description: You can delete an image from the Cloudflare Images storage using the dashboard or the API.
+description: Remove images from Cloudflare Images storage using the dashboard or API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

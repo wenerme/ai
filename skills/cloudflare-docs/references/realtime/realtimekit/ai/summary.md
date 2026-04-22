@@ -1,6 +1,6 @@
 ---
 title: Summary
-description: RealtimeKit generates AI-powered meeting summaries from transcript data.
+description: Generate AI-powered meeting summaries from transcript data in RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

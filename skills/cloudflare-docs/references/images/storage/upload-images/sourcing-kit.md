@@ -1,6 +1,6 @@
 ---
 title: Upload via Sourcing Kit
-description: With Sourcing Kit you can define one or multiple repositories of images to bulk import from Amazon S3. Once you have these set up, you can reuse those sources and import only new images to your Cloudflare Images account. This helps you make sure that only usable images are imported, and skip any other objects or files that might exist in that source.
+description: Bulk import images from Amazon S3 into Cloudflare Images using Sourcing Kit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

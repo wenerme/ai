@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: D1 bills based on:
+description: D1 pricing based on rows read, rows written, and storage with scale-to-zero billing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

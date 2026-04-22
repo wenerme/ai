@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: D1 platform details including pricing, limits, release notes, and migration guides.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

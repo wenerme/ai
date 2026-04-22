@@ -1,6 +1,6 @@
 ---
 title: Get account details
-description: An Account will contain various settings, resources, and subscriptions to products for users. Each Tenant can have multiple associated accounts.
+description: Retrieve account information for tenant-managed Cloudflare accounts using the API.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

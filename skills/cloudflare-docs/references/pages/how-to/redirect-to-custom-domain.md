@@ -1,6 +1,6 @@
 ---
 title: Redirecting *.pages.dev to a Custom Domain
-description: Learn how to use Bulk Redirects to redirect your *.pages.dev subdomain to your custom domain.
+description: Use Bulk Redirects to redirect your pages.dev subdomain to a custom domain.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

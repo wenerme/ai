@@ -1,6 +1,6 @@
 ---
 title: Draw overlays and watermarks
-description: You can draw additional images on top of a resized image, with transparency and blending effects. This enables adding of watermarks, logos, signatures, vignettes, and other effects to resized images.
+description: Add watermarks, logos, and overlay images on top of transformed images using Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

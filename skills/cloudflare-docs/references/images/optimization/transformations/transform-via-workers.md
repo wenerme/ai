@@ -1,6 +1,6 @@
 ---
 title: Transform via Workers
-description: Using Workers to transform with a custom URL scheme gives you powerful programmatic control over every image request.
+description: Use Cloudflare Workers to programmatically resize, format, and optimize images with custom URL schemes.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

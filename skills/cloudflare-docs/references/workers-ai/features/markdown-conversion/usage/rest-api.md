@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: You can also use the Markdown Conversion REST API to convert your documents into Markdown.
+description: Convert documents to Markdown using the Workers AI REST API endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

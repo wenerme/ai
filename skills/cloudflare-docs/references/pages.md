@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Pages
-description: Deploy your Pages project by connecting to your Git provider, uploading prebuilt assets directly to Pages with Direct Upload or using C3 from the command line.
+description: Deploy full-stack applications instantly to the Cloudflare global network with Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

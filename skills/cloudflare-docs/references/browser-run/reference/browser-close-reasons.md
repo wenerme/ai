@@ -1,6 +1,6 @@
 ---
 title: Browser close reasons
-description: A browser session may close for a variety of reasons, occasionally due to connection errors or errors in the headless browser instance. As a best practice, wrap puppeteer.connect or puppeteer.launch in a try...catch statement.
+description: Identify why a Browser Run session closed and review common close reason codes in the dashboard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

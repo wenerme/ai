@@ -3,6 +3,9 @@
 The Codex app is a focused desktop experience for working on Codex threads in parallel,
 with built-in worktree support, automations, and Git functionality.
 
+Most Codex app features are available on both macOS and Windows.
+Platform-specific exceptions are noted below.
+
 <YouTubeEmbed
   title="Introducing the Codex app"
   videoId="HFM3se4lNiw"
@@ -429,7 +432,7 @@ Ask Codex to generate or edit images directly in a thread. This is useful for UI
 
 You can ask in natural language or explicitly invoke the image generation skill by including `$imagegen` in your prompt.
 
-Built-in image generation uses `gpt-image-1.5`, counts toward your general Codex usage limits, and uses included limits 3-5x faster on average than similar turns without image generation, depending on image quality and size. For details, see [Pricing](https://developers.openai.com/codex/pricing#image-generation-usage-limits). For prompting tips and model details, see the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation).
+Built-in image generation uses `gpt-image-2`, counts toward your general Codex usage limits, and uses included limits 3-5x faster on average than similar turns without image generation, depending on image quality and size. For details, see [Pricing](https://developers.openai.com/codex/pricing#image-generation-usage-limits). For prompting tips and model details, see the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation).
 
 For larger batches of image generation, set `OPENAI_API_KEY` in your environment variables and ask Codex to generate images through the API so API pricing applies instead.
 

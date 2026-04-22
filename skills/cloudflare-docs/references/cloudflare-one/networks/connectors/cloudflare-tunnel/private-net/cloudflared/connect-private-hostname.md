@@ -82,8 +82,8 @@ This section covers how to enable remote access to a private hostname applicatio
 
 Before you can connect to private hostnames, you must enable the Gateway proxy.
 
-* [ Dashboard ](#tab-panel-5672)
-* [ Terraform (v5) ](#tab-panel-5673)
+* [ Dashboard ](#tab-panel-5716)
+* [ Terraform (v5) ](#tab-panel-5717)
 
 1. Go to **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
@@ -129,7 +129,7 @@ Cloudflare Mesh
 
 Cloudflare WAN
 
-1. Ensure that the initial resolved IP listed above [route through Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/) to Cloudflare.
+1. Ensure that the initial resolved IP listed above [route through Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/) to Cloudflare.
 2. [Point the DNS resolver](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/#dns-filtering) for your Cloudflare WAN network to Cloudflare Gateway.
 
 ### 1\. Connect the application to Cloudflare

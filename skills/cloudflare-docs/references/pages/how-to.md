@@ -1,5 +1,6 @@
 ---
 title: How to
+description: Step-by-step guides for common Cloudflare Pages tasks and configurations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

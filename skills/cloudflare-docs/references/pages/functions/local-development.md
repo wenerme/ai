@@ -1,6 +1,6 @@
 ---
 title: Local development
-description: Run your Pages application locally with our Wrangler Command Line Interface (CLI).
+description: Run and test your Pages application locally using Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

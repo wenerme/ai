@@ -1,7 +1,6 @@
 ---
 title: Frequently Asked Questions
-description: To get logs in the Dashboard, including live tailing of logs, toggle observability to true
-in your Worker's wrangler config:
+description: Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -21,8 +20,8 @@ Copy page
 
 To get logs in the Dashboard, including live tailing of logs, toggle `observability` to true in your Worker's wrangler config:
 
-* [  wrangler.jsonc ](#tab-panel-4133)
-* [  wrangler.toml ](#tab-panel-4134)
+* [  wrangler.jsonc ](#tab-panel-6260)
+* [  wrangler.toml ](#tab-panel-6261)
 
 JSONC
 

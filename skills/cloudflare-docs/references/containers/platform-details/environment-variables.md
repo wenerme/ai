@@ -1,6 +1,6 @@
 ---
 title: Environment Variables
-description: The container runtime automatically sets the following variables:
+description: Runtime and user-defined environment variables available inside Container instances.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

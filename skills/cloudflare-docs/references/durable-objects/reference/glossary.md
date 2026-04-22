@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's Durable Objects documentation.
+description: Definitions of key terms used in Cloudflare Durable Objects documentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

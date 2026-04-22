@@ -1,6 +1,6 @@
 ---
 title: Environments
-description: KV namespaces can be used with environments. This is useful when you have code in your Worker that refers to a KV binding like MY_KV, and you want to have these bindings point to different KV namespaces (for example, one for staging and one for production).
+description: Bind different Workers KV namespaces to the same Worker across staging and production environments.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -20,8 +20,8 @@ KV namespaces can be used with [environments](https://developers.cloudflare.com/
 
 The following code in the Wrangler file shows you how to have two environments that have two different KV namespaces but the same binding name:
 
-* [  wrangler.jsonc ](#tab-panel-5065)
-* [  wrangler.toml ](#tab-panel-5066)
+* [  wrangler.jsonc ](#tab-panel-7296)
+* [  wrangler.toml ](#tab-panel-7297)
 
 JSONC
 
@@ -128,8 +128,8 @@ Specifying an environment with the optional `--env` flag allows you to publish W
 
 For example, you could use separate staging and production KV namespaces for KV data in your Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-5067)
-* [  wrangler.toml ](#tab-panel-5068)
+* [  wrangler.jsonc ](#tab-panel-7298)
+* [  wrangler.toml ](#tab-panel-7299)
 
 JSONC
 

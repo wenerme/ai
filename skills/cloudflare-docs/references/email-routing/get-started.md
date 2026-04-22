@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: To enable Email Routing, start by creating a custom email address linked to a destination address or Email Worker. This forms an email rule. You can enable or disable rules from the Cloudflare dashboard. Refer to Enable Email Routing for more details.
+description: Set up Email Routing to create custom email addresses and forward incoming emails to your preferred mailbox.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

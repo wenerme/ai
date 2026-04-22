@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Workers AI can be used to build dynamic and performant services. The following demo applications and reference architectures showcase how to use Workers AI optimally within your architecture.
+description: Explore demo applications and reference architectures built with Workers AI.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

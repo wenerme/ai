@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Practical code examples for sending and routing emails with Cloudflare Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

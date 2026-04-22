@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: This guide will instruct you on creating and deploying a Pages Function.
+description: Create and deploy your first Pages Function on Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

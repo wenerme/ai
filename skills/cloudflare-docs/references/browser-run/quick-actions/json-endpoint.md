@@ -1,6 +1,6 @@
 ---
 title: /json - Capture structured data using AI
-description: The /json endpoint extracts structured data from a webpage. You can specify the expected output using either a prompt or a response_format parameter which accepts a JSON schema. The endpoint returns the extracted data in JSON format.
+description: Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -59,8 +59,8 @@ And at least one of:
 
 ### With a Prompt and JSON schema
 
-* [ curl ](#tab-panel-3582)
-* [ TypeScript SDK ](#tab-panel-3583)
+* [ curl ](#tab-panel-5409)
+* [ TypeScript SDK ](#tab-panel-5410)
 
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 

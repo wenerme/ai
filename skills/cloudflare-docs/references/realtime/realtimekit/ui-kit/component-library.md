@@ -1,6 +1,6 @@
 ---
 title: Component Library
-description: The UI Kit components library provides a comprehensive set of pre-built, customizable components that you can use to build your own custom meeting interface.
+description: Browse prebuilt RealtimeKit UI Kit components for building custom meeting interfaces.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

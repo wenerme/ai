@@ -1,6 +1,6 @@
 ---
 title: Release notes
-description: Subscribe to RSS
+description: Latest changes and updates to Cloudflare R2 object storage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

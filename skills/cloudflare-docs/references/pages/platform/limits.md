@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Below are limits observed by the Cloudflare Free plan. For more details on removing these limits, refer to the Cloudflare plans page.
+description: Build, deployment, and custom domain limits for Cloudflare Pages by plan type.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

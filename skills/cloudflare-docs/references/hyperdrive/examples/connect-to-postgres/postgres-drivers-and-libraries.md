@@ -1,5 +1,6 @@
 ---
 title: Libraries and Drivers
+description: Supported PostgreSQL libraries and drivers for use with Hyperdrive.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

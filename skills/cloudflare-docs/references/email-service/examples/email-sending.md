@@ -1,6 +1,6 @@
 ---
 title: Email sending
-description: Advanced patterns and examples for sending emails with Cloudflare Email Service. These examples use the Workers binding. If you are using the REST API, the same EmailMessage fields (to, from, subject, html, attachments, headers) apply — send them as JSON in your HTTP request body.
+description: Advanced patterns and examples for sending transactional emails with Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Configure CORS
-description: Cross-Origin Resource Sharing (CORS) is a standardized method that prevents domain X from accessing the resources of domain Y. It does so by using special headers in HTTP responses from domain Y, that allow your browser to verify that domain Y permits domain X to access these resources.
+description: Set up Cross-Origin Resource Sharing (CORS) policies on R2 buckets for browser access.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

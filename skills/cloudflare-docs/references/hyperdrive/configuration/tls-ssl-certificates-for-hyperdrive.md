@@ -1,6 +1,6 @@
 ---
 title: SSL/TLS certificates
-description: Hyperdrive provides additional ways to secure connectivity to your database. Hyperdrive supports:
+description: Configure SSL/TLS server and client certificates for secure Hyperdrive database connections.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -74,8 +74,8 @@ You must use the CA certificate bundle that is for your specific region. You can
 
 Once your CA certificate has been created, you can create a Hyperdrive configuration with the newly created certificates using either the dashboard or Wrangler. You must also specify the SSL mode to use (`verify-ca`/`verify-full` for PostgreSQL or `VERIFY_CA`/`VERIFY_IDENTITY` for MySQL).
 
-* [ Wrangler ](#tab-panel-4666)
-* [ Dashboard ](#tab-panel-4667)
+* [ Wrangler ](#tab-panel-7002)
+* [ Dashboard ](#tab-panel-7003)
 
 Using Wrangler, enter the following command in your terminal to create a Hyperdrive configuration with the CA certificate and SSL mode:
 
@@ -147,8 +147,8 @@ ID: <YOUR_ID_FOR_THE_CLIENT_CERTIFICATE_PAIR>
 
 You can now create a Hyperdrive configuration using the newly created client certificate bundle using the dashboard or Wrangler.
 
-* [ Wrangler ](#tab-panel-4668)
-* [ Dashboard ](#tab-panel-4669)
+* [ Wrangler ](#tab-panel-7004)
+* [ Dashboard ](#tab-panel-7005)
 
 Using Wrangler, enter the following command in your terminal to create a Hyperdrive configuration with the client certificate pair:
 

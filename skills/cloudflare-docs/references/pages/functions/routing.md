@@ -1,6 +1,6 @@
 ---
 title: Routing
-description: Functions utilize file-based routing. Your /functions directory structure determines the designated routes that your Functions will run on. You can create a /functions directory with as many levels as needed for your project's use case. Review the following directory:
+description: Learn how Pages Functions uses file-based routing to map URL patterns to function files.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

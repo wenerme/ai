@@ -1,6 +1,6 @@
 ---
 title: Customise Branding
-description: RealtimeKit's UI Kit provides all the necessary UI components to allow complete customization of all its UI Kit components. You can customize your meeting icons such as chat, clock, leave meeting, mic on and off, and more.
+description: Customize meeting icons and branding in the RealtimeKit UI Kit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

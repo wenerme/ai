@@ -1,7 +1,6 @@
 ---
 title: Quickstart guide
-description: Every Realtime App is a separate environment, so you can make one for development, staging and production versions for your product.
-Either using Dashboard, or the API create a Realtime App. When you create a Realtime App, you will get:
+description: Create your first Realtime SFU app and get your App ID and secret.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

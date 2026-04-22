@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: The REST API allows you to send emails from any application using standard HTTP requests. Use it from any backend, serverless function, or CI/CD pipeline — no Cloudflare Workers binding is required.
+description: Send emails from any application using the Email Service REST API with standard HTTP requests.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -42,9 +42,9 @@ Authorization: Bearer <API_TOKEN>
 
 ## Send an email
 
-* [ Simple email ](#tab-panel-6706)
-* [ Multiple recipients ](#tab-panel-6707)
-* [ With CC and BCC ](#tab-panel-6708)
+* [ Simple email ](#tab-panel-6855)
+* [ Multiple recipients ](#tab-panel-6856)
+* [ With CC and BCC ](#tab-panel-6857)
 
 Terminal window
 

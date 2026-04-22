@@ -1,6 +1,6 @@
 ---
 title: Spark (PySpark)
-description: Below is an example of using PySpark to connect to R2 Data Catalog.
+description: Connect PySpark to R2 Data Catalog to read and write Iceberg tables.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

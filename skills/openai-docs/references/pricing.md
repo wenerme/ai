@@ -330,7 +330,7 @@ Image generation models
       <div
         className="pricing-section-meta"
         style={{ marginBottom: "12px" }}
-        set:html={`Per-image output pricing for GPT Image and DALL·E models is listed in the <a href="/api/docs/guides/image-generation#calculating-costs">Calculating costs</a> section of the image generation guide.`}
+        set:html={`For image generation cost estimates, use the <a href="/api/docs/guides/image-generation#calculating-costs">calculator</a> in the image generation guide.`}
       />
       </div>
     <div data-content-switcher-pane data-value="batch" hidden>
@@ -339,7 +339,7 @@ Image generation models
       <div
         className="pricing-section-meta"
         style={{ marginBottom: "12px" }}
-        set:html={`Per-image output pricing for GPT Image and DALL·E models is listed in the <a href="/api/docs/guides/image-generation#calculating-costs">Calculating costs</a> section of the image generation guide.`}
+        set:html={`For image generation cost estimates, use the <a href="/api/docs/guides/image-generation#calculating-costs">calculator</a> in the image generation guide.`}
       />
       </div>
 

@@ -109,14 +109,14 @@ Manifest entry paths are workspace-relative. They can't be absolute paths or
 escape the workspace with `..`, which keeps the workspace contract portable
 across local, Docker, and hosted clients.
 
-| Manifest input                                                     | Use it for                                                                            |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| `File`, `Dir`                                                      | Small synthetic inputs, helper files, or output directories.                          |
-| `LocalFile`, `LocalDir`                                            | Host files or directories to materialize into the sandbox.                            |
-| `GitRepo`                                                          | A repository to fetch into the workspace.                                             |
-| `S3Mount`, `GCSMount`, `R2Mount`, `AzureBlobMount`, `S3FilesMount` | External storage to make available inside the sandbox.                                |
-| `environment`                                                      | Environment variables the sandbox needs when it starts.                               |
-| `users` and `groups`                                               | Sandbox-local OS accounts and groups for providers that support account provisioning. |
+| Manifest input                                                                 | Use it for                                                                            |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| `File`, `Dir`                                                                  | Small synthetic inputs, helper files, or output directories.                          |
+| `LocalFile`, `LocalDir`                                                        | Host files or directories to materialize into the sandbox.                            |
+| `GitRepo`                                                                      | A repository to fetch into the workspace.                                             |
+| `S3Mount`, `GCSMount`, `R2Mount`, `AzureBlobMount`, `BoxMount`, `S3FilesMount` | External storage to make available inside the sandbox.                                |
+| `environment`                                                                  | Environment variables the sandbox needs when it starts.                               |
+| `users` and `groups`                                                           | Sandbox-local OS accounts and groups for providers that support account provisioning. |
 
 Good manifest design means:
 

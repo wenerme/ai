@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Learn how you can use a Durable Object within your existing application and architecture.
+description: Explore demo applications and reference architectures that use Durable Objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

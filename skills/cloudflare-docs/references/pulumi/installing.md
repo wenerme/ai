@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Follow the recommended steps for your operating system below. For official instructions on installing Pulumi and other install options, refer to Install Pulumi.
+description: Install the Pulumi CLI on Mac, Linux, or Windows and verify your installation.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

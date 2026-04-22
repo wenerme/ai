@@ -1,5 +1,6 @@
 ---
 title: SQL API
+description: D1 SQL API reference covering supported SQL statements, foreign keys, and JSON query functions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

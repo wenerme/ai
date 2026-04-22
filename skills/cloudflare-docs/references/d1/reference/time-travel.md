@@ -1,6 +1,6 @@
 ---
 title: Time Travel and backups
-description: Time Travel is D1's approach to backups and point-in-time-recovery, and allows you to restore a database to any minute within the last 30 days.
+description: Restore a D1 database to any minute within the last 30 days using Time Travel point-in-time recovery.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

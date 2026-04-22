@@ -1,6 +1,6 @@
 ---
 title: Use Pages Functions for A/B testing
-description: In this guide, you will learn how to use Pages Functions for A/B testing in your Pages projects. A/B testing is a user experience research methodology applied when comparing two or more versions of a web page or application. With A/B testing, you can serve two or more versions of a webpage to users and divide traffic to your site.
+description: Implement A/B testing in Cloudflare Pages using Pages Functions and cookies.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Legal
-description: Privacy Gateway is a managed gateway service deployed on Cloudflare’s global network that implements the Oblivious HTTP IETF standard to improve client privacy when connecting to an application backend.
+description: Understand what data Cloudflare sees, stores, and shares when operating the Privacy Gateway relay service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

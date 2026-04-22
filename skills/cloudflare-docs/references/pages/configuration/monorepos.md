@@ -1,6 +1,6 @@
 ---
 title: Monorepos
-description: While some apps are built from a single repository, Pages also supports apps with more complex setups. A monorepo is a repository that has multiple subdirectories each containing its own application.
+description: Deploy multiple Cloudflare Pages projects from a single monorepo repository.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Turnstile
-description: Turnstile is Cloudflare's smart CAPTCHA alternative.
+description: Validate Cloudflare Turnstile tokens in Pages Functions using the Turnstile Plugin.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: KV namespaces
-description: A KV namespace is a key-value database replicated to Cloudflare’s global network.
+description: A KV namespace is a key-value database replicated across Cloudflare's global network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -37,8 +37,8 @@ To bind KV namespaces to your Worker, assign an array of the below object to the
 
 Example:
 
-* [  wrangler.jsonc ](#tab-panel-4986)
-* [  wrangler.toml ](#tab-panel-4987)
+* [  wrangler.jsonc ](#tab-panel-7261)
+* [  wrangler.toml ](#tab-panel-7262)
 
 JSONC
 

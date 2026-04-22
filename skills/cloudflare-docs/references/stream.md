@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Stream
-description: Cloudflare Stream lets you or your end users upload, store, encode, and deliver live and on-demand video with one API, without configuring or maintaining infrastructure.
+description: Serverless live and on-demand video streaming with adaptive bitrate encoding and global delivery.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Build caching
-description: Improve Pages build times by caching dependencies and build output between builds with a project-wide shared cache.
+description: Speed up Cloudflare Pages builds by caching dependencies and build output between deployments.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

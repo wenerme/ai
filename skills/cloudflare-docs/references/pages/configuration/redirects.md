@@ -1,6 +1,6 @@
 ---
 title: Redirects
-description: To apply custom redirects on Cloudflare Pages, declare your redirects in a plain text file called _redirects without a file extension, in the static asset directory of your project. This file will not itself be served as a static asset, but will instead be parsed by Cloudflare Pages and its rules will be applied to static asset responses.
+description: Define URL redirects for your Cloudflare Pages site using a _redirects file.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

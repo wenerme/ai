@@ -1,5 +1,6 @@
 ---
 title: Reference
+description: Technical reference documentation for D1, including migrations, Time Travel backups, generated columns, and data security.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

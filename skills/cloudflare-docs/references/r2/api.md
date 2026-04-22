@@ -1,5 +1,6 @@
 ---
 title: API
+description: Access R2 storage through the S3-compatible API or the Workers API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

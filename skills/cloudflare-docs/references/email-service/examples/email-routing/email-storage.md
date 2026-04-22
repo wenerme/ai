@@ -1,6 +1,6 @@
 ---
 title: Email storage and processing
-description: Store and process incoming emails with comprehensive storage, queue processing, and support ticket automation for streamlined email workflow management.
+description: Store incoming emails in KV and process them with Queues for support tickets and workflow automation in Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

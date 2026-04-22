@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples for Durable Objects.
+description: Code examples demonstrating common Durable Objects patterns, including counters, WebSockets, and alarms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

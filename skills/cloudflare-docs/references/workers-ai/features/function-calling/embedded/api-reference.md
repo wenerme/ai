@@ -1,6 +1,6 @@
 ---
 title: API Reference
-description: Learn more about the API reference for embedded function calling.
+description: Reference for the runWithTools and autoTrimTools methods in embedded function calling.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Operators
-description: Flagship supports 11 comparison operators for targeting rule conditions. Each operator compares an attribute from the evaluation context against a specified value.
+description: Reference for the 11 comparison operators available in Flagship targeting rule conditions, including equality, comparison, string, and array operators.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

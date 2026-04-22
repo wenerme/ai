@@ -1,6 +1,6 @@
 ---
 title: Object lifecycles
-description: Object lifecycles determine the retention period of objects uploaded to your bucket and allow you to specify when objects should transition from Standard storage to Infrequent Access storage.
+description: Configure retention and storage class transition rules for objects in R2 buckets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

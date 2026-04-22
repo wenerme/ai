@@ -1,6 +1,6 @@
 ---
 title: Function calling
-description: Function calling enables people to take Large Language Models (LLMs) and use the model response to execute functions or interact with external APIs. The developer usually defines a set of functions and the required input schema for each function, which we call tools. The model then intelligently understands when it needs to do a tool call, and it returns a JSON output which the user needs to feed to another function or API.
+description: Enable Workers AI models to execute functions and interact with external APIs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -32,8 +32,8 @@ For industry-standard function calling, take a look at the documentation on [Tra
 
 To show you the value of embedded function calling, take a look at the example below that compares traditional function calling with embedded function calling. Embedded function calling allowed us to cut down the lines of code from 77 to 31.
 
-* [ Embedded ](#tab-panel-6983)
-* [ Traditional ](#tab-panel-6984)
+* [ Embedded ](#tab-panel-9248)
+* [ Traditional ](#tab-panel-9249)
 
 Terminal window
 

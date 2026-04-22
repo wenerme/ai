@@ -1,6 +1,6 @@
 ---
 title: Platform templates
-description: Deploy a fully working platform to your Cloudflare account and customize it for your use case.
+description: Deploy pre-built Workers for Platforms templates to quickly launch a multi-tenant platform on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

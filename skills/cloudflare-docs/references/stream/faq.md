@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: You cannot download the exact input file that you uploaded. However, depending on your use case, you can use the Downloadable Videos feature to get encoded MP4s for use cases like offline viewing.
+description: Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Email lifecycle
-description: The email lifecycle describes the complete journey of an email from the initial send request through final delivery status. Understanding this process helps you optimize your email implementation and troubleshoot delivery issues.
+description: The complete email processing flow from send request to final delivery status in Email Service.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Hyperdrive is included in both the Free and Paid Workers plans.
+description: Hyperdrive pricing details for Free and Workers Paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

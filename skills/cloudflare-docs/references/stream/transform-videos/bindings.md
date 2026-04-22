@@ -1,6 +1,6 @@
 ---
 title: Bind to Workers API
-description: A binding connects your Worker to external resources on the Developer Platform, like Media Transformations, R2 buckets, or KV namespaces.
+description: Bind the Media Transformations API to a Cloudflare Worker to transform videos programmatically.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -42,8 +42,8 @@ The Media binding is enabled on a per-Worker basis.
 
 To bind Media Transformations to your Worker, add the following to the end of your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-8803)
-* [  wrangler.toml ](#tab-panel-8804)
+* [  wrangler.jsonc ](#tab-panel-8894)
+* [  wrangler.toml ](#tab-panel-8895)
 
 JSONC
 
@@ -502,8 +502,8 @@ The Media Transformations API is available _in remote mode_ for local developmen
 
 To enable usage in local development, add `remote` to the binding configuration:
 
-* [  wrangler.jsonc ](#tab-panel-8805)
-* [  wrangler.toml ](#tab-panel-8806)
+* [  wrangler.jsonc ](#tab-panel-8896)
+* [  wrangler.toml ](#tab-panel-8897)
 
 JSONC
 

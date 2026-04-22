@@ -1,5 +1,6 @@
 ---
 title: Send emails
+description: API reference for sending outbound emails using the Email Service Workers API or REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

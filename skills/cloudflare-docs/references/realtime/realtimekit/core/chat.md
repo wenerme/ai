@@ -1,6 +1,6 @@
 ---
 title: Chat
-description: This guide explains how to send and receive chat messages in a meeting using Cloudflare RealtimeKit.
+description: Send and receive chat messages in RealtimeKit meetings using the Core SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

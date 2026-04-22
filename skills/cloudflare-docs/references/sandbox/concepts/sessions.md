@@ -1,6 +1,6 @@
 ---
 title: Session management
-description: Sessions are bash shell execution contexts within a sandbox. Think of them like terminal tabs or panes in the same container.
+description: Sandbox SDK sessions are independent shell execution contexts within a single container.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Preact
-description: Preact is a popular, open-source framework for building modern web applications. Preact can also be used as a lightweight alternative to React because the two share the same API and component model.
+description: Deploy a Preact application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

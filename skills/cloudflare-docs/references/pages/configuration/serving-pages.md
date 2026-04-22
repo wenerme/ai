@@ -1,6 +1,6 @@
 ---
 title: Serving Pages
-description: Cloudflare Pages includes a number of defaults for serving your Pages sites. This page details some of those decisions, so you can understand how Pages works, and how you might want to override some of the default behaviors.
+description: Learn how Cloudflare Pages handles route matching, 404 behavior, SPA rendering, and caching.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

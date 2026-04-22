@@ -1,6 +1,6 @@
 ---
 title: Angular
-description: Angular is an incredibly popular framework for building reactive and powerful front-end applications.
+description: Deploy an Angular application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

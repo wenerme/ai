@@ -1,6 +1,6 @@
 ---
 title: Terminal connections
-description: Terminal connections let browser-based UIs interact directly with sandbox shells. Instead of executing discrete commands with exec(), a terminal connection opens a persistent, bidirectional channel to a bash shell — the same model as SSH or a local terminal emulator.
+description: Sandbox SDK terminal connections stream bidirectional data between browser UIs and container shells.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

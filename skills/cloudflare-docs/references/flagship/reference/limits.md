@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Flagship enforces the following limits.
+description: Platform limits for Flagship, including maximum apps per account, flags per app, condition nesting depth, and configuration size.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

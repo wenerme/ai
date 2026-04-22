@@ -1,6 +1,6 @@
 ---
 title: Local development
-description: Test and develop your email applications locally using Wrangler before deploying to production.
+description: Test and develop Email Service applications locally using Wrangler before deploying to production.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

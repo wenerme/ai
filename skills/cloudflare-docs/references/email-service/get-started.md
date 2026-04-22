@@ -1,5 +1,6 @@
 ---
 title: Getting started
+description: Set up Cloudflare Email Service to send transactional emails and route incoming messages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

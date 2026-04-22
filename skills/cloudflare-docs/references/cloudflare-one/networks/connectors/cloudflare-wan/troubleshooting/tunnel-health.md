@@ -480,7 +480,7 @@ Collect output from these commands (syntax varies by vendor):
 
 * [Tunnel health checks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/): Technical details on health check behavior
 * [Anti-replay protection](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/): Why anti-replay must be disabled
-* [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/): Tunnel setup instructions
+* [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/): Tunnel setup instructions
 * [Check tunnel health in the dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/): Dashboard navigation guide
 * [Network Analytics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/): Traffic analysis tools
 

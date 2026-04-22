@@ -1,6 +1,6 @@
 ---
 title: Asynchronous Batch API
-description: Asynchronous batch processing lets you send a collection (batch) of inference requests in a single call. Instead of expecting immediate responses for every request, the system queues them for processing and returns the results later.
+description: Queue large inference workloads for asynchronous processing with the Workers AI Batch API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

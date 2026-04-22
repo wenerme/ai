@@ -1,6 +1,6 @@
 ---
 title: Breakout Rooms
-description: Breakout rooms allow participants of a meeting to split into smaller groups for targeted discussions and collaboration. With the rise of remote work and online learning, breakout rooms have become an essential tool for enhancing engagement and building community in virtual settings. They are an ideal choice for workshops, online classrooms, or when you need to speak privately with select participants outside the main meeting.
+description: Create and manage breakout rooms to split participants into smaller groups in RealtimeKit.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

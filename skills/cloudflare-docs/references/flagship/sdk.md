@@ -1,6 +1,6 @@
 ---
 title: OpenFeature SDK
-description: OpenFeature is the CNCF standard for feature flag interfaces. It provides a vendor-neutral API so you can switch between flag providers without changing evaluation code.
+description: Use the @cloudflare/flagship OpenFeature SDK to evaluate Flagship feature flags from Workers, Node.js, or the browser.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

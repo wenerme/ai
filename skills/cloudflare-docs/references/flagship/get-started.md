@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: In this guide, you will create a feature flag in Flagship and evaluate it inside a Cloudflare Worker.
+description: Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -33,8 +33,8 @@ In this example, you will create a boolean flag called `new-checkout` that contr
 
 Add the Flagship binding in your Wrangler configuration file so your Worker can evaluate flags through a binding.
 
-* [  wrangler.jsonc ](#tab-panel-6855)
-* [  wrangler.toml ](#tab-panel-6856)
+* [  wrangler.jsonc ](#tab-panel-6901)
+* [  wrangler.toml ](#tab-panel-6902)
 
 JSONC
 
@@ -76,8 +76,8 @@ After updating the Wrangler configuration, run `npx wrangler types` to generate 
 
 Use the `env.FLAGS` binding to evaluate the flag. The binding provides type-safe methods that return the flag value and fall back to the default you provide if evaluation fails.
 
-* [  JavaScript ](#tab-panel-6857)
-* [  TypeScript ](#tab-panel-6858)
+* [  JavaScript ](#tab-panel-6903)
+* [  TypeScript ](#tab-panel-6904)
 
 JavaScript
 
@@ -217,13 +217,13 @@ bun add @cloudflare/flagship @openfeature/server-sdk
 
 Evaluate flags using the OpenFeature client:
 
-* [ With binding ](#tab-panel-6863)
-* [ With app ID ](#tab-panel-6864)
+* [ With binding ](#tab-panel-6909)
+* [ With app ID ](#tab-panel-6910)
 
 Pass the Flagship binding directly to the provider. This avoids additional HTTP requests and is the recommended approach inside a Worker. Authentication is handled automatically through the binding.
 
-* [  JavaScript ](#tab-panel-6861)
-* [  TypeScript ](#tab-panel-6862)
+* [  JavaScript ](#tab-panel-6907)
+* [  TypeScript ](#tab-panel-6908)
 
 JavaScript
 
@@ -325,8 +325,8 @@ Explain Code
 
 Use an app ID, account ID, and an API token when running outside of a Worker (for example, in Node.js). The provider makes HTTP requests to the Flagship evaluation endpoint. Generate an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) from your Cloudflare account with Flagship Evaluate permission.
 
-* [  JavaScript ](#tab-panel-6859)
-* [  TypeScript ](#tab-panel-6860)
+* [  JavaScript ](#tab-panel-6905)
+* [  TypeScript ](#tab-panel-6906)
 
 JavaScript
 

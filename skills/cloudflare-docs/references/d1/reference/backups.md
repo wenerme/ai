@@ -1,6 +1,6 @@
 ---
 title: Backups (Legacy)
-description: D1 has built-in support for creating and restoring backups of your databases with wrangler v3, including support for scheduled automatic backups and manual backup management.
+description: Create, list, download, and restore legacy snapshot-based backups for D1 alpha databases using Wrangler.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

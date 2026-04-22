@@ -1,6 +1,6 @@
 ---
 title: How Privacy Proxy works
-description: Privacy Proxy uses the MASQUE protocol suite to create encrypted tunnels between clients and destination servers. This page explains the protocol mechanics and how privacy is preserved.
+description: Learn how Privacy Proxy uses MASQUE protocols to create encrypted tunnels that separate user identity from user activity.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

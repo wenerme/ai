@@ -1,6 +1,6 @@
 ---
 title: Sandbox SDK
-description: The Sandbox SDK enables you to run untrusted code securely in isolated environments. Built on Containers, Sandbox SDK provides a simple API for executing commands, managing files, running background processes, and exposing services — all from your Workers applications.
+description: Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,12 +26,12 @@ Sandboxes are ideal for building AI agents that need to execute code, interactiv
 
 With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
 
-* [ Execute Commands ](#tab-panel-6207)
-* [ Code Interpreter ](#tab-panel-6208)
-* [ File Operations ](#tab-panel-6209)
-* [ File Watching ](#tab-panel-6210)
-* [ Terminal Access ](#tab-panel-6211)
-* [ WebSocket Connections ](#tab-panel-6212)
+* [ Execute Commands ](#tab-panel-8360)
+* [ Code interpreter ](#tab-panel-8361)
+* [ File Operations ](#tab-panel-8362)
+* [ File watching ](#tab-panel-8363)
+* [ Terminal Access ](#tab-panel-8364)
+* [ WebSocket connections ](#tab-panel-8365)
 
 TypeScript
 
@@ -422,7 +422,7 @@ Explore complete examples including AI code execution, data analysis, and intera
 
 Learn how to solve specific problems and implement features with the Sandbox SDK.
 
-[API Reference](https://developers.cloudflare.com/sandbox/api/) 
+[API reference](https://developers.cloudflare.com/sandbox/api/) 
 
 Explore the complete API documentation for the Sandbox SDK.
 

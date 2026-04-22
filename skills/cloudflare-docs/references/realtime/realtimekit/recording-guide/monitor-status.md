@@ -1,6 +1,6 @@
 ---
 title: Monitor Recording Status
-description: The recording of a meeting can have the following states:
+description: Track RealtimeKit recording states from invocation through upload completion.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

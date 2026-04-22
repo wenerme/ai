@@ -1,6 +1,6 @@
 ---
 title: Stop Recording
-description: RealtimeKit recordings can be stopped in any of the following ways:
+description: Stop a RealtimeKit recording automatically or manually using the Stop Recording API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: View tutorials to help you get started with Vectorize.
+description: Step-by-step Vectorize tutorials for building AI-powered applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Pelican
-description: Pelican is a static site generator, written in Python. With Pelican, you can write your content directly with your editor of choice in reStructuredText or Markdown formats.
+description: Deploy a Pelican static site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

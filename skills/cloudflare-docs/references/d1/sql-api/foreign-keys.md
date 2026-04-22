@@ -1,6 +1,6 @@
 ---
 title: Define foreign keys
-description: D1 supports defining and enforcing foreign key constraints across tables in a database.
+description: Enforce relational integrity across D1 tables by defining and deferring foreign key constraints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

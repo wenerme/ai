@@ -1,6 +1,6 @@
 ---
 title: JavaScript APIs
-description: Cloudflare Queues is integrated with Cloudflare Workers. To send and receive messages, you must use a Worker.
+description: Produce and consume Cloudflare Queues messages using the Workers JavaScript API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -28,9 +28,9 @@ These APIs allow a producer Worker to send messages to a Queue.
 
 An example of writing a single message to a Queue:
 
-* [  JavaScript ](#tab-panel-5854)
-* [  TypeScript ](#tab-panel-5855)
-* [  Python ](#tab-panel-5856)
+* [  JavaScript ](#tab-panel-7911)
+* [  TypeScript ](#tab-panel-7912)
+* [  Python ](#tab-panel-7913)
 
 index.js
 
@@ -129,9 +129,9 @@ Explain Code
 
 The Queues API also supports writing multiple messages at once:
 
-* [  JavaScript ](#tab-panel-5851)
-* [  TypeScript ](#tab-panel-5852)
-* [  Python ](#tab-panel-5853)
+* [  JavaScript ](#tab-panel-7908)
+* [  TypeScript ](#tab-panel-7909)
+* [  Python ](#tab-panel-7910)
 
 index.js
 
@@ -315,9 +315,9 @@ Note
 
 `waitUntil()` is the only supported method to run tasks (such as logging or metrics calls) that resolve after a queue handler has completed. Promises that have not resolved by the time the queue handler returns may not complete and will not block completion of execution.
 
-* [  JavaScript ](#tab-panel-5857)
-* [  TypeScript ](#tab-panel-5858)
-* [  Python ](#tab-panel-5859)
+* [  JavaScript ](#tab-panel-7914)
+* [  TypeScript ](#tab-panel-7915)
+* [  Python ](#tab-panel-7916)
 
 index.js
 

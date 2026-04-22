@@ -1,6 +1,6 @@
 ---
 title: SolidStart
-description: Solid is an open-source web application framework focused on generating performant applications with a modern developer experience based on JSX.
+description: Deploy a SolidStart application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

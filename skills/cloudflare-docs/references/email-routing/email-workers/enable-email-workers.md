@@ -1,6 +1,6 @@
 ---
 title: Enable Email Workers
-description: Follow these steps to enable and add your first Email Worker. If you have never used Cloudflare Workers before, Cloudflare will create a subdomain for you, and assign you to the Workers free pricing plan.
+description: Set up your first Email Worker to process incoming emails with custom logic on Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

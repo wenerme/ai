@@ -8,4 +8,4 @@ title: mode | Config
 - **CLI:** `--mode=staging`
 - **Default:** `'test'`
 
-Overrides Vite mode
+Overrides Vite mode.

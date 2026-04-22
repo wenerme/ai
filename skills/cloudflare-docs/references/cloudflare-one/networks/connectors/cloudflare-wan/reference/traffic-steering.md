@@ -59,7 +59,7 @@ Cloudflare WAN steers traffic along tunnel routes based on route entry prioritie
 
 ### Set priority and weights for static routes
 
-The priority value for static routes is directly configured as part of the route object in the Cloudflare [dashboard or through the API](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/#create-a-static-route). For example:
+The priority value for static routes is directly configured as part of the route object in the Cloudflare [dashboard or through the API](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route). For example:
 
 | Prefix          | NextHop        | Priority |
 | --------------- | -------------- | -------- |
@@ -200,7 +200,7 @@ For Cloudflare One customers, there are several reasons to consider moving to Un
 
 * [Automatic Return Routing](#automatic-return-routing-beta)
 * [BGP over IPsec/GRE](#release-status)
-* [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-cloudflare-source-ips/) using private IP space with customizable IPv4 range
+* [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) using private IP space with customizable IPv4 range
 * Customizable Cloudflare One Client IPv4 ranges
 * IPv6 support
 * Improved performance between Cloudflare One Client and IPsec/GRE/CNI
@@ -344,7 +344,7 @@ Cloudflare has nine geographic regions:
 | WEUR        | Western Europe        |
 | WNAM        | Western North America |
 
-Configure scoping for your traffic in the **Region code** section when adding or editing a static route. Refer to [Create a static route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/#create-a-static-route) and [Edit a static route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/#edit-a-static-route) for more information.
+Configure scoping for your traffic in the **Region code** section when adding or editing a static route. Refer to [Create a static route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route) and [Edit a static route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#edit-a-static-route) for more information.
 
 ## Equal-cost multi-path routing
 
@@ -519,7 +519,7 @@ Once connectivity between the Cloudflare edge and the centralized relay is resto
 
 ### BGP peering with the Cloudflare Virtual Network routing table
 
-Cloudflare WAN BGP peering is with the Cloudflare Virtual Network routing table (as opposed to peering with the Cloudflare Internet global network). BGP peers configured by following this guide will receive advertisements for all prefixes in the Cloudflare Virtual Network routing table plus any additional prefixes configured in the on-ramp [Advertised prefix list](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/#set-up-bgp-peering).
+Cloudflare WAN BGP peering is with the Cloudflare Virtual Network routing table (as opposed to peering with the Cloudflare Internet global network). BGP peers configured by following this guide will receive advertisements for all prefixes in the Cloudflare Virtual Network routing table plus any additional prefixes configured in the on-ramp [Advertised prefix list](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#set-up-bgp-peering).
 
 If instead you are seeking to do public peering with the Cloudflare ASN 13335 at one of the Cloudflare data centers, refer to [PNI and peering setup](https://developers.cloudflare.com/network-interconnect/). It is not currently possible to share Cloudflare Virtual Network BGP peering and PNI on the same physical interconnect port.
 

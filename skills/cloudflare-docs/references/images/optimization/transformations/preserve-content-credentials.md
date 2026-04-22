@@ -1,6 +1,6 @@
 ---
 title: Preserve Content Credentials
-description: Content Credentials (or C2PA metadata) are a type of metadata that includes the full provenance chain of a digital asset. This provides information about an image's creation, authorship, and editing flow. This data is cryptographically authenticated and can be verified using an open-source verification service.
+description: Retain C2PA metadata and provenance data when transforming remote images with Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

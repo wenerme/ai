@@ -1,6 +1,6 @@
 ---
 title: Known issues
-description: Durable Objects is generally available. However, there are some known issues.
+description: Known issues with Durable Objects, including global uniqueness guarantees, code updates, and development tool limitations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

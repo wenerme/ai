@@ -1,6 +1,6 @@
 ---
 title: Search for videos
-description: You can search for videos by name through the Stream API by adding a search query parameter to the list media files endpoint.
+description: Search your Cloudflare Stream video library by name using the Stream API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

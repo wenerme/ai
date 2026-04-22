@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Understand the key concepts behind Privacy Proxy, including how the protocol works, deployment architectures, and privacy-preserving authentication.
+description: Key concepts behind Privacy Proxy, including MASQUE protocols, deployment architectures, and privacy-preserving authentication.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

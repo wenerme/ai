@@ -1,6 +1,6 @@
 ---
 title: How-to guides
-description: The following guides explain how to complete common Terraform tasks.
+description: Step-by-step guides for common Cloudflare Terraform tasks like creating zones.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

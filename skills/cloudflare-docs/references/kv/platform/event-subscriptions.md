@@ -1,6 +1,6 @@
 ---
 title: Event subscriptions
-description: Event subscriptions allow you to receive messages when events occur across your Cloudflare account. Cloudflare products (e.g., KV, Workers AI, Workers) can publish structured events to a queue, which you can then consume with Workers or HTTP pull consumers to build custom workflows, integrations, or logic.
+description: Subscribe to Workers KV change events and process them with Cloudflare Queues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

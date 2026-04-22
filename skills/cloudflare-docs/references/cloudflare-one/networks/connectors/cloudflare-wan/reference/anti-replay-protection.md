@@ -22,7 +22,7 @@ Copy page
 
 If you use Cloudflare WAN and anycast IPsec tunnels, we recommend disabling anti-replay protection. Cloudflare disables this setting by default. However, you can enable it through the API or the Cloudflare dashboard for devices that do not support disabling it, including Cisco Meraki, Velocloud, and AWS VPN Gateway.
 
-Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to set up replay protection. This page explains replay attacks, why Cloudflare recommends disabling IPsec anti-replay, and related considerations.
+Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to set up replay protection. This page explains replay attacks, why Cloudflare recommends disabling IPsec anti-replay, and related considerations.
 
 ## Replay attacks
 

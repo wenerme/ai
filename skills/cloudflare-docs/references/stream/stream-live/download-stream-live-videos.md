@@ -1,6 +1,6 @@
 ---
 title: Download live stream videos
-description: You can enable downloads for live stream videos from the Cloudflare dashboard. Videos are available for download after they enter the Ready state.
+description: Enable MP4 downloads for Cloudflare Stream live recordings under four hours.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

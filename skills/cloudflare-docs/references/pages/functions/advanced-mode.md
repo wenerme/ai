@@ -1,6 +1,6 @@
 ---
 title: Advanced mode
-description: Advanced mode allows you to develop your Pages Functions with a _worker.js file rather than the /functions directory.
+description: Use a _worker.js file to develop Pages Functions instead of the /functions directory.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -28,8 +28,8 @@ In advanced mode, your Function will assume full control of all incoming HTTP re
 
 After making a `_worker.js` file in your output directory, add the following code snippet:
 
-* [  JavaScript ](#tab-panel-5477)
-* [  TypeScript ](#tab-panel-5478)
+* [  JavaScript ](#tab-panel-7708)
+* [  TypeScript ](#tab-panel-7709)
 
 JavaScript
 

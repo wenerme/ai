@@ -1,6 +1,6 @@
 ---
 title: Custom limits
-description: Custom limits allow you to programmatically enforce limits on your customers' Workers' resource usage. You can set limits for the maximum CPU time and number of subrequests per invocation. If a user Worker hits either of these limits, the user Worker will immediately throw an exception.
+description: Set per-customer CPU time and subrequest limits on user Workers in Workers for Platforms.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

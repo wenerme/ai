@@ -1,6 +1,6 @@
 ---
 title: Remote R2 backend
-description: Cloudflare R2 and Terraform remote backends can interact with each other to provide a seamless experience for Terraform state management.
+description: Store Terraform state files remotely using Cloudflare R2 as an S3-compatible backend.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
@@ -26,8 +26,8 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 
 Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
 
-* [ Wrangler ](#tab-panel-6726)
-* [ API ](#tab-panel-6727)
+* [ Wrangler ](#tab-panel-8975)
+* [ API ](#tab-panel-8976)
 
 Terminal window
 

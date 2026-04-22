@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Durable Objects platform details including pricing, limits, known issues, and storage options.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

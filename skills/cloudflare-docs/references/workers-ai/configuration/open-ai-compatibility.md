@@ -1,6 +1,6 @@
 ---
 title: OpenAI compatible API endpoints
-description: Workers AI supports OpenAI compatible endpoints for text generation (/v1/chat/completions) and text embedding models (/v1/embeddings). This allows you to use the same code as you would for your OpenAI commands, but swap in Workers AI easily.
+description: Use the OpenAI SDK to call Workers AI models through compatible API endpoints.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

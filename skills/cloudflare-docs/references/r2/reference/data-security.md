@@ -1,6 +1,6 @@
 ---
 title: Data security
-description: This page details the data security properties of R2, including encryption-at-rest (EAR), encryption-in-transit (EIT), and Cloudflare's compliance certifications.
+description: R2 encrypts all objects at rest with AES-256 and in transit with TLS.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

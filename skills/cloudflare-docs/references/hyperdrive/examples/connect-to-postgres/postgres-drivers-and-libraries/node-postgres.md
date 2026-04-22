@@ -1,6 +1,6 @@
 ---
 title: node-postgres (pg)
-description: node-postgres (pg) is a widely-used PostgreSQL driver for Node.js applications. This example demonstrates how to use node-postgres with Cloudflare Hyperdrive in a Workers application.
+description: Use node-postgres (pg) with Hyperdrive to query PostgreSQL databases from Cloudflare Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -70,8 +70,8 @@ bun add -d @types/pg
 
 Add the required Node.js compatibility flags and Hyperdrive binding to your `wrangler.jsonc` file:
 
-* [  wrangler.jsonc ](#tab-panel-4849)
-* [  wrangler.toml ](#tab-panel-4850)
+* [  wrangler.jsonc ](#tab-panel-7141)
+* [  wrangler.toml ](#tab-panel-7142)
 
 JSONC
 
@@ -89,7 +89,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-21",
 
   "hyperdrive": [
 
@@ -118,7 +118,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-21"
 
 
 [[hyperdrive]]

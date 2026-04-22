@@ -1,6 +1,6 @@
 ---
 title: Containers
-description: Run code written in any programming language, built for any runtime, as part of apps built on Workers.
+description: Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -32,8 +32,8 @@ With Containers you can run:
 
 Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
 
-* [ Worker Code ](#tab-panel-4085)
-* [ Worker Config ](#tab-panel-4086)
+* [ Worker Code ](#tab-panel-6212)
+* [ Worker Config ](#tab-panel-6213)
 
 JavaScript
 
@@ -74,8 +74,8 @@ export default {
 
 Explain Code
 
-* [  wrangler.jsonc ](#tab-panel-4083)
-* [  wrangler.toml ](#tab-panel-4084)
+* [  wrangler.jsonc ](#tab-panel-6210)
+* [  wrangler.toml ](#tab-panel-6211)
 
 JSONC
 
@@ -89,7 +89,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-13",
+  "compatibility_date": "2026-04-21",
 
   "containers": [
 
@@ -150,7 +150,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-13"
+compatibility_date = "2026-04-21"
 
 
 [[containers]]

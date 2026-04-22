@@ -51,14 +51,15 @@ The setup wizard [configures your account for Mesh networking](#what-the-wizard-
 4. Select **Create node**.
 5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.  
 Installation commands  
-   * [ Debian / Ubuntu ](#tab-panel-5617)  
-   * [ RedHat / CentOS ](#tab-panel-5618)  
+   * [ Debian / Ubuntu ](#tab-panel-5661)  
+   * [ RedHat / CentOS ](#tab-panel-5662)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&  
-sudo apt-get update && sudo apt-get install -y cloudflare-warp &&  
-sudo sysctl -w net.ipv4.ip_forward=1  
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&  
+sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&  
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&  
+sudo sysctl --system  
 ```  
 Terminal window  
 ```  
@@ -68,7 +69,8 @@ Terminal window
 ```  
 sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&  
 sudo yum install -y cloudflare-warp &&  
-sudo sysctl -w net.ipv4.ip_forward=1  
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&  
+sudo sysctl --system  
 ```  
 Terminal window  
 ```  
@@ -86,8 +88,8 @@ Connect a laptop or phone to your Mesh network:
 
 To enroll your device using the client GUI:
 
-* [ Version 2026.2+ ](#tab-panel-5619)
-* [ Version 2026.1 and earlier ](#tab-panel-5620)
+* [ Version 2026.2+ ](#tab-panel-5663)
+* [ Version 2026.1 and earlier ](#tab-panel-5664)
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
 2. Launch the Cloudflare One Client.
@@ -160,6 +162,7 @@ If your account already has a Cloudflare One deployment, the setup wizard will n
 * **Device profile for Mesh nodes** — Your Mesh nodes need a [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) that uses **Include mode** with the Mesh IP range (`100.96.0.0/12`) included. If your nodes use Exclude mode instead, remove `100.64.0.0/10` (the default CGNAT exclusion) from the exclude list.
 * **Mesh connectivity** — In your device profile settings, enable [Allow all Cloudflare One traffic to reach enrolled devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-all-cloudflare-one-traffic-to-reach-enrolled-devices).
 * **Unique device IPs** — Enable [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) so that each participant gets a routable Mesh IP.
+* **Client mode** — Mesh nodes must run in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/). DNS-only or proxy-only modes are not supported.
 * **Traffic proxying** — Enable the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/) for TCP, UDP, and ICMP so that Mesh traffic can flow between devices.
 
 ## Troubleshooting

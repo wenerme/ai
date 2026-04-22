@@ -1,5 +1,6 @@
 ---
 title: Get started
+description: Get started with Vectorize by creating your first index and querying vectors.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

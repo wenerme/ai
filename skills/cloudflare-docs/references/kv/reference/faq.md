@@ -1,6 +1,6 @@
 ---
 title: FAQ
-description: Frequently asked questions regarding Workers KV.
+description: Frequently asked questions about Workers KV, including consistency, rate limits, and access methods.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Vite 3
-description: Vite is a next-generation build tool for front-end developers. With the release of Vite 3, developers can make use of new command line (CLI) improvements, starter templates, and more to help build their front-end applications.
+description: Deploy a Vite 3 front-end project to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

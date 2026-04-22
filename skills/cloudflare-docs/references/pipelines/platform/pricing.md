@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Cloudflare Pipelines is in open beta and available to any developer with a Workers Paid plan.
+description: Cloudflare Pipelines pricing details and billing information during open beta.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

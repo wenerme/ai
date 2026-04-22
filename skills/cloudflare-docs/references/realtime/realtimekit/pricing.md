@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Cloudflare RealtimeKit is currently in Beta and is available at no cost during this period.
+description: RealtimeKit pricing for audio, video, recording, and transcription features.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Write key-value pairs
-description: To create a new key-value pair, or to update the value for a particular key, call the put() method of the KV binding on any KV namespace you have bound to your Worker code:
+description: Store data in a Workers KV namespace using the put() method, with options for expiration and metadata.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

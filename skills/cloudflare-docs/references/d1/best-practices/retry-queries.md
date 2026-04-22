@@ -1,6 +1,6 @@
 ---
 title: Retry queries
-description: It is useful to retry write queries from your application when you encounter a transient error. From the list of D1_ERRORs, refer to the Recommended action column to determine if a query should be retried.
+description: Handle transient D1 errors by retrying write queries with exponential backoff.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Upload via batch API
-description: The Images batch API lets you make several requests in sequence while bypassing Cloudflare’s global API rate limits.
+description: Use the Cloudflare Images batch API to make sequential requests while bypassing global API rate limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

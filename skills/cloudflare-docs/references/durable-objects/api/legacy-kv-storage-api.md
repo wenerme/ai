@@ -1,6 +1,6 @@
 ---
 title: KV-backed Durable Object Storage (Legacy)
-description: The Durable Object Storage API allows Durable Objects to access transactional and strongly consistent storage. A Durable Object's attached storage is private to its unique instance and cannot be accessed by other objects.
+description: API reference for the legacy KV-backed Durable Objects storage methods, including get, put, delete, and list.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -56,9 +56,9 @@ Durable Objects gain access to Storage API via the `DurableObjectStorage` interf
 
 The following code snippet shows you how to store and retrieve data using the Durable Object Storage API.
 
-* [  JavaScript ](#tab-panel-6560)
-* [  TypeScript ](#tab-panel-6561)
-* [  Python ](#tab-panel-6562)
+* [  JavaScript ](#tab-panel-6606)
+* [  TypeScript ](#tab-panel-6607)
+* [  Python ](#tab-panel-6608)
 
 JavaScript
 

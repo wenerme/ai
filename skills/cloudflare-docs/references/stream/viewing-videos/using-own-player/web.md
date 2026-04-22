@@ -1,6 +1,6 @@
 ---
 title: Web
-description: Cloudflare Stream works with all web video players that support HLS and DASH.
+description: Play Cloudflare Stream videos on the web using HLS and DASH-compatible players.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

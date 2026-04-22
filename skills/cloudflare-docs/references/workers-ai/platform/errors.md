@@ -1,6 +1,6 @@
 ---
 title: Errors
-description: Below is a list of Workers AI errors.
+description: Reference table of Workers AI error codes, HTTP statuses, and descriptions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

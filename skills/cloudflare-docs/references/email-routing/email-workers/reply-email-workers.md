@@ -1,6 +1,6 @@
 ---
 title: Reply to emails from Workers
-description: You can reply to incoming emails with another new message and implement smart auto-responders programmatically, adding any content and context in the main body of the message. Think of a customer support email automatically generating a ticket and returning the link to the sender, an out-of-office reply with instructions when you are on vacation, or a detailed explanation of why you rejected an email.
+description: Build smart auto-responders by replying to incoming emails programmatically with Email Workers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Email Service platform details including limits, pricing, and plan information.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Google Chat
-description: The Google Chat Pages Plugin creates a Google Chat bot which can respond to messages. It also includes an API for interacting with Google Chat (for example, for creating messages) without the need for user input. This API is useful for situations such as alerts.
+description: Create a Google Chat bot with the Pages Plugin for responding to messages and sending alerts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Cloudflare Pages platform details including limits, known issues, and changelog.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

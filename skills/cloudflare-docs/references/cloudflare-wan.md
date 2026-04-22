@@ -59,7 +59,7 @@ Use Cloudflare One Appliance to automatically connect, steer, and shape any IP t
 
 Set up Cloudflare WAN with your existing routers and firewalls. If you do not have Cloudflare One Appliance, start here to configure IPsec or GRE tunnels from a third-party device.
 
-[ Use a third-party device ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/third-party/) 
+[ Use a third-party device ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/) 
 
 ###  Automatic cloud on-ramps 
 
@@ -77,7 +77,7 @@ Learn how you can use Cloudflare WAN with other Cloudflare Zero Trust products.
 
 Use Border Gateway Protocol (BGP) peering between your networks and Cloudflare to automatically announce and withdraw routes as your network changes, rather than managing static routes manually.
 
-[ Use BGP peering (beta) ](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-routes/#configure-bgp-routes) 
+[ Use BGP peering (beta) ](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) 
 
 ###  WAN transformation 
 

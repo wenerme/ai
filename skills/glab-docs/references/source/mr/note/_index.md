@@ -17,32 +17,6 @@ glab mr note [<id> | <branch>] [flags]
 comment
 ```
 
-## Examples
-
-```console
-# Add a comment to merge request with ID 123
-glab mr note 123 -m "Looks good to me!"
-
-# Add a comment to the merge request for the current branch
-glab mr note -m "LGTM"
-
-# Open your editor to compose a multi-line comment
-glab mr note 123
-
-# Resolve a discussion by note ID
-glab mr note resolve 123 3107030349
-
-# Reopen a discussion by note ID
-glab mr note reopen 123 3107030349
-```
-
-## Options
-
-```plaintext
-  -m, --message string   Comment or note message.
-      --unique           Don't create a comment or note if it already exists.
-```
-
 ## Options inherited from parent commands
 
 ```plaintext
@@ -52,6 +26,7 @@ glab mr note reopen 123 3107030349
 
 ## Subcommands
 
+- [`create`](create.md)
 - [`list`](list.md)
 - [`reopen`](reopen.md)
 - [`resolve`](resolve.md)

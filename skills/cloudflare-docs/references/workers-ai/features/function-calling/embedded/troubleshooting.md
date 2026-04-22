@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: This section will describe tools for troubleshooting and address common errors.
+description: Debug and resolve common issues with Workers AI embedded function calling.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

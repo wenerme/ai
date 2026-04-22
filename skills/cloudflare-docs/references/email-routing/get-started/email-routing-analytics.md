@@ -1,6 +1,6 @@
 ---
 title: Analytics
-description: The Overview page shows you a summary of your account. You can check details such as how many custom and destination addresses you have configured, as well as the status of your routing service.
+description: Review Email Routing metrics for received, forwarded, dropped, and rejected emails, and inspect activity logs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Architecture
-description: Sandbox SDK lets you execute untrusted code safely from your Workers. It combines three Cloudflare technologies to provide secure, stateful, and isolated execution:
+description: Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -135,8 +135,8 @@ Multiplexes all SDK calls over a single persistent WebSocket connection. Avoids 
 
 Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
 
-* [  wrangler.jsonc ](#tab-panel-6209)
-* [  wrangler.toml ](#tab-panel-6210)
+* [  wrangler.jsonc ](#tab-panel-8492)
+* [  wrangler.toml ](#tab-panel-8493)
 
 JSONC
 

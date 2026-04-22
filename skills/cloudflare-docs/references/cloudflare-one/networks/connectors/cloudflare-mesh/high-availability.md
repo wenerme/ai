@@ -50,8 +50,8 @@ flowchart LR
 
 ## Create a node with high availability
 
-* [ Dashboard ](#tab-panel-5621)
-* [ API ](#tab-panel-5622)
+* [ Dashboard ](#tab-panel-5665)
+* [ API ](#tab-panel-5666)
 
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
@@ -90,8 +90,8 @@ The response includes a `token` field. Use this token to register replicas.
 
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
-* [ Dashboard ](#tab-panel-5627)
-* [ API ](#tab-panel-5628)
+* [ Dashboard ](#tab-panel-5671)
+* [ API ](#tab-panel-5672)
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.  
 [ Go to **Mesh** ](https://dash.cloudflare.com/?to=/:account/mesh)
@@ -102,8 +102,8 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
-* [ Debian / Ubuntu ](#tab-panel-5623)
-* [ RedHat / CentOS ](#tab-panel-5624)
+* [ Debian / Ubuntu ](#tab-panel-5667)
+* [ RedHat / CentOS ](#tab-panel-5668)
 
 Terminal window
 
@@ -111,11 +111,13 @@ Terminal window
 
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
 
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
 
-sudo apt-get update && sudo apt-get install -y cloudflare-warp &&
+sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&
 
-sudo sysctl -w net.ipv4.ip_forward=1
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
+
+sudo sysctl --system
 
 
 ```
@@ -137,7 +139,9 @@ sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&
 
 sudo yum install -y cloudflare-warp &&
 
-sudo sysctl -w net.ipv4.ip_forward=1
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
+
+sudo sysctl --system
 
 
 ```
@@ -159,14 +163,15 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```  
 The response contains the token string.
 2. Install the client and register on a new Linux host:  
-   * [ Debian / Ubuntu ](#tab-panel-5625)  
-   * [ RedHat / CentOS ](#tab-panel-5626)  
+   * [ Debian / Ubuntu ](#tab-panel-5669)  
+   * [ RedHat / CentOS ](#tab-panel-5670)  
 Terminal window  
 ```  
 curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&  
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&  
-sudo apt-get update && sudo apt-get install -y cloudflare-warp &&  
-sudo sysctl -w net.ipv4.ip_forward=1  
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&  
+sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&  
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&  
+sudo sysctl --system  
 ```  
 Terminal window  
 ```  
@@ -176,7 +181,8 @@ Terminal window
 ```  
 sudo rpm -ivh https://pkg.cloudflareclient.com/cloudflare-release-el8.rpm &&  
 sudo yum install -y cloudflare-warp &&  
-sudo sysctl -w net.ipv4.ip_forward=1  
+printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&  
+sudo sysctl --system  
 ```  
 Terminal window  
 ```  

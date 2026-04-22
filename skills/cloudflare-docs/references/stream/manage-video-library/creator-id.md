@@ -1,6 +1,6 @@
 ---
 title: Manage creators
-description: You can set the creator field with an internal user ID at the time a tokenized upload URL is requested. When the video is uploaded, the creator property is automatically set to the internal user ID which can be used for analytics data or when searching for videos by a specific creator.
+description: Set and use creator IDs to associate Cloudflare Stream videos with internal user accounts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

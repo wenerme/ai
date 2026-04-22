@@ -1,5 +1,6 @@
 ---
 title: Tutorials
+description: Step-by-step R2 SQL tutorials for querying data stored in R2.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

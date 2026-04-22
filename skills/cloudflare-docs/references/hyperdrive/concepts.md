@@ -1,6 +1,6 @@
 ---
 title: Concepts
-description: Learn about the core concepts and architecture behind Hyperdrive.
+description: Core concepts and architecture behind Hyperdrive, including connection pooling and query caching.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Android Core SDK
-description: Subscribe to RSS
+description: Release notes and changelog for the RealtimeKit Android Core SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -17,6 +17,22 @@ Copy page
 # Android Core SDK
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/android-core/index.xml)
+
+## 2026-04-20
+
+**RealtimeKit Android Core 2.0.0**
+
+**Breaking changes**
+
+* Removed Hive SFU support. Only the Cloudflare SFU is supported going forward.
+* The default base URI is now `realtime.cloudflare.com`. Calling `init()` with a `dyte.io` base domain now fails immediately with `MeetingError.InvalidBaseUrl`
+
+**Fixes**
+
+* Added compatibility with new backend plugins API field naming
+* Fixed a crash that could occur when accessing the socket controller before `init()` was called
+* Fixed auth token not being sent to the callstats collector endpoint
+* Removed custom ping-pong keepalive logic that was only required for the previous infrastructure
 
 ## 2026-03-06
 

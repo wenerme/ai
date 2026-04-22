@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples for KV.
+description: Code examples demonstrating common Workers KV use cases and patterns.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

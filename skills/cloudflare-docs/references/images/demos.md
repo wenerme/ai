@@ -1,6 +1,6 @@
 ---
 title: Demos and architectures
-description: Learn how you can use Images within your existing architecture.
+description: Explore demo applications and reference architectures for Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

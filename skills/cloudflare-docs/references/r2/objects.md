@@ -1,6 +1,6 @@
 ---
 title: Objects
-description: Objects are individual files or data that you store in an R2 bucket.
+description: Manage objects stored in Cloudflare R2 buckets.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

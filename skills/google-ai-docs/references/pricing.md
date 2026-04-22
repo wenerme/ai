@@ -1,5 +1,3 @@
-# Gemini Developer API pricing
-
 > [!IMPORTANT]
 > We have updated our [Terms of Service](https://ai.google.dev/gemini-api/terms).
 
@@ -1012,7 +1010,7 @@ consumption and usage of the tools.
 
 |   | Model | Tools |
 |---|---|---|
-| [Gemini Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research) | All model inference is charged at standard [Gemini 3 Pro](https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-preview) list rates, including input, output, and intermediate input / reasoning tokens generated during agentic loops. | Tool usage fees apply per existing pricing structure, maintaining standard distinctions for Search Grounding (retrieved tokens excluded) versus Url_context / File Search (retrieved tokens included in all other tools). |
+| [Gemini Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research) | All model inference is charged at standard Gemini list rates, including input, output, and intermediate input / reasoning tokens generated during agentic loops. | Tool usage fees apply per existing pricing structure, maintaining standard distinctions for Search Grounding (retrieved tokens excluded) versus Url_context / File Search (retrieved tokens included in all other tools). |
 
 ## Notes
 

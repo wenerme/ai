@@ -1,6 +1,6 @@
 ---
 title: Stream live video
-description: Cloudflare Stream lets you or your users stream live video, and play live video in your website or app, without managing and configuring any of your own infrastructure.
+description: Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

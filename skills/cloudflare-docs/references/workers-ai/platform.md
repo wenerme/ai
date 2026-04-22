@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Workers AI platform details including pricing, limits, errors, and data usage policies.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

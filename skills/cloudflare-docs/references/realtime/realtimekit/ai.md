@@ -1,6 +1,6 @@
 ---
 title: AI
-description: RealtimeKit provides AI-powered features using Cloudflare's AI infrastructure to enhance your meetings with transcription and summarization capabilities.
+description: Add AI-powered transcription and summarization to RealtimeKit meetings.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

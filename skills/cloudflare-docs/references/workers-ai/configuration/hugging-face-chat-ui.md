@@ -1,6 +1,6 @@
 ---
 title: Hugging Face Chat UI
-description: Use Workers AI with Chat UI, an open-source chat interface offered by Hugging Face.
+description: Connect Workers AI models to Hugging Face's open-source Chat UI interface.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

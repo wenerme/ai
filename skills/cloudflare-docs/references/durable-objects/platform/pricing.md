@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Durable Objects can incur two types of billing: compute and storage.
+description: Durable Objects compute and storage billing, including pricing examples and free tier limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

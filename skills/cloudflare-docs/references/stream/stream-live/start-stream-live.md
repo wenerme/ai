@@ -1,6 +1,6 @@
 ---
 title: Start a live stream
-description: After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
+description: Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

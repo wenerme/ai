@@ -1,6 +1,6 @@
 ---
 title: List vectors
-description: The list-vectors operation allows you to enumerate all vector identifiers in a Vectorize index using paginated requests. This guide covers best practices for efficiently using this operation.
+description: Enumerate vector identifiers in a Vectorize index using paginated list operations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

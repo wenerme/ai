@@ -1,6 +1,6 @@
 ---
 title: Delete variants
-description: You can delete variants via the Images dashboard or API. The only variant you cannot delete is public.
+description: Remove image variants from Cloudflare Images using the dashboard or API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

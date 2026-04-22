@@ -28,10 +28,10 @@ To configure health checks frequency in Cloudflare One Appliance, refer to [Conf
 
 ## Manual configuration
 
-* [ Dashboard ](#tab-panel-6152)
-* [ API ](#tab-panel-6153)
+* [ Dashboard ](#tab-panel-6196)
+* [ API ](#tab-panel-6197)
 
-1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/manually/how-to/configure-tunnel-endpoints/#add-tunnels).
+1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels).
 2. Change the **Health check rate** to your desired rate. For example, _Low_.
 3. Save your changes.
 

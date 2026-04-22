@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Browse code examples for producing and consuming messages with Cloudflare Queues.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

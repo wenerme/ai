@@ -1,6 +1,6 @@
 ---
 title: Use the Stream Player
-description: Cloudflare provides a customizable web player that can play both on-demand and live video, and requires zero additional engineering work.
+description: Embed and customize the Cloudflare Stream Player for on-demand and live video playback.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

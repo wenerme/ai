@@ -45,6 +45,7 @@ Because you compose the Worker that runs the code at runtime, you control how th
 * **[Bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/)**: Decide which bindings and structured data the dynamic Worker receives.
 * **[Observability](https://developers.cloudflare.com/dynamic-workers/usage/observability/)**: Attach Tail Workers and capture logs for each run.
 * **[Network access](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/)**: Intercept or block Internet access for outbound requests.
+* **[Limits](https://developers.cloudflare.com/dynamic-workers/usage/limits/)**: Enforce custom limits on the dynamic Worker's resource usage.
 * **[Durable Object Facets](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/)**: Run dynamically-loaded code as a Durable Object with its own isolated SQLite storage.
 
 ```json

@@ -1,6 +1,6 @@
 ---
 title: Authentication
-description: Privacy Proxy requires clients to authenticate before proxying traffic. This page explains the supported authentication methods and when to use them.
+description: Privacy Proxy authentication methods, including pre-shared keys, Privacy Pass tokens, and mutual TLS.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

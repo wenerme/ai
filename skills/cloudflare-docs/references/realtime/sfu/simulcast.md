@@ -1,6 +1,6 @@
 ---
 title: Simulcast
-description: Simulcast is a feature of WebRTC that allows a publisher to send multiple video streams of the same media at different qualities. For example, this is useful for scenarios where you want to send a high quality stream for desktop users and a lower quality stream for mobile users.
+description: Send multiple video quality levels with WebRTC simulcast on Realtime SFU.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

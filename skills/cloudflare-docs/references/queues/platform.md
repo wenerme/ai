@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Cloudflare Queues platform details including pricing, limits, and changelog.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

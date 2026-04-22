@@ -228,7 +228,7 @@ Explain Code
 ## Resources
 
 * [Traffic steering](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#route-prioritization): Route prioritization, BGP communities, and ECMP behavior
-* [Configure routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/manually/how-to/configure-routes/): Static route configuration
+* [Configure routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/): Static route configuration
 * [Network Interconnect](https://developers.cloudflare.com/network-interconnect/): CNI setup and BGP peering
 * [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/): Tunnel-specific diagnostic steps
 * [Network Analytics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/): Traffic analysis and monitoring

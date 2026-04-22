@@ -1,5 +1,5 @@
 ---
-title: Changelog
+title: Release notes
 description: Subscribe to RSS
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-# Changelog
+# Release notes
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/workflows/reference/changelog/index.xml)
 
@@ -173,5 +173,5 @@ A Workflow allows you to define multiple, independent steps that encapsulate err
 You can learn more about Workflows in [our announcement blog](https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/), or start building in our [get started guide](https://developers.cloudflare.com/workflows/get-started/guide/).
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/changelog/","name":"Changelog"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}},{"@type":"ListItem","position":4,"item":{"@id":"/workflows/reference/changelog/","name":"Release notes"}}]}
 ```

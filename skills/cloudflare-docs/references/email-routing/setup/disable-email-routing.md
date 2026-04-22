@@ -1,6 +1,6 @@
 ---
 title: Disable Email Routing
-description: Email Routing provides two options for disabling the service:
+description: Delete and disable Email Routing or unlock DNS records to migrate to another email provider.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

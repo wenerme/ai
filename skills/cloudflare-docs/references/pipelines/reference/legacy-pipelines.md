@@ -1,6 +1,6 @@
 ---
 title: Legacy pipelines
-description: Legacy pipelines, those created before September 25, 2025 via the legacy API, are on a deprecation path.
+description: Migration guide for pipelines created before September 2025 to the new Pipelines architecture.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

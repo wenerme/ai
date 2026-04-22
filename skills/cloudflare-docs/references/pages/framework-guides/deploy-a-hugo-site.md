@@ -1,6 +1,6 @@
 ---
 title: Hugo
-description: Hugo is a tool for generating static sites, written in Go. It is incredibly fast and has great high-level, flexible primitives for managing your content using different content formats.
+description: Deploy a Hugo static site to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -34,9 +34,9 @@ Go to [Deploy with Cloudflare Pages](#deploy-with-cloudflare-pages) if you alrea
 
 Install the Hugo CLI, using the specific instructions for your operating system.
 
-* [ macos ](#tab-panel-5428)
-* [ windows ](#tab-panel-5429)
-* [ linux ](#tab-panel-5430)
+* [ macos ](#tab-panel-7703)
+* [ windows ](#tab-panel-7704)
+* [ linux ](#tab-panel-7705)
 
 If you use the package manager [Homebrew ↗](https://brew.sh), run the `brew install` command in your terminal to install Hugo:
 

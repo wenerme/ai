@@ -1,6 +1,6 @@
 ---
 title: Generated columns
-description: D1 allows you to define generated columns based on the values of one or more other columns, SQL functions, or even extracted JSON values.
+description: Define virtual or stored generated columns in D1 to automatically compute values from other columns, SQL functions, or JSON data.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

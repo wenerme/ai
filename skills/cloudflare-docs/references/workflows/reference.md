@@ -20,7 +20,7 @@ Copy page
 * [ Event subscriptions ](https://developers.cloudflare.com/workflows/reference/event-subscriptions/)
 * [ Glossary ](https://developers.cloudflare.com/workflows/reference/glossary/)
 * [ Wrangler commands ](https://developers.cloudflare.com/workflows/reference/wrangler-commands/)
-* [ Changelog ](https://developers.cloudflare.com/workflows/reference/changelog/)
+* [ Release notes ](https://developers.cloudflare.com/workflows/reference/changelog/)
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workflows/","name":"Workflows"}},{"@type":"ListItem","position":3,"item":{"@id":"/workflows/reference/","name":"Platform"}}]}

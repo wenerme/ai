@@ -1,11 +1,6 @@
 ---
 title: Access Durable Objects Storage
-description: Durable Objects are a
-powerful compute API that provides a compute with storage building block. Each
-Durable Object has its own private, transactional, and strongly consistent
-storage. Durable Objects
-Storage API provides
-access to a Durable Object's attached storage.
+description: Read and write persistent data in Durable Objects using the Storage API, from within a Worker or externally.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -47,8 +42,8 @@ Only Durable Object classes with a SQLite storage backend can access SQL API.
 
 Use `new_sqlite_classes` on the migration in your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-4433)
-* [  wrangler.toml ](#tab-panel-4434)
+* [  wrangler.jsonc ](#tab-panel-6636)
+* [  wrangler.toml ](#tab-panel-6637)
 
 JSONC
 

@@ -1,6 +1,6 @@
 ---
 title: Geolocation
-description: Privacy Proxy preserves user geolocation without exposing real IP addresses. This ensures location-based services work correctly while maintaining privacy.
+description: Privacy Proxy preserves user geolocation using geohashes to select egress IPs that match the client's geographic region.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

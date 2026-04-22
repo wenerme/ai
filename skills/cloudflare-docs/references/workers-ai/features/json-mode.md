@@ -1,6 +1,6 @@
 ---
 title: JSON Mode
-description: When we want text-generation AI models to interact with databases, services, and external systems programmatically, typically when using tool calling or building AI agents, we must have structured response formats rather than natural language.
+description: Force Workers AI text generation models to return valid JSON output using response_format or JSON schemas.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

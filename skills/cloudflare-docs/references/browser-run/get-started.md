@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Cloudflare Browser Run (formerly Browser Rendering) allows you to programmatically control a headless browser, enabling you to do things like take screenshots, generate PDFs, and perform automated browser tasks. This guide will help you choose the right integration method and get you started with your first project.
+description: Choose an integration method and set up your first Browser Run project using Quick Actions, Puppeteer, or Playwright.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -162,8 +162,8 @@ Configure your `browser-worker` project's [Wrangler configuration file](https://
 
 Update your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the Browser Run API binding and the KV namespaces you created:
 
-* [  wrangler.jsonc ](#tab-panel-3554)
-* [  wrangler.toml ](#tab-panel-3555)
+* [  wrangler.jsonc ](#tab-panel-5381)
+* [  wrangler.toml ](#tab-panel-5382)
 
 JSONC
 
@@ -179,7 +179,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-21",
 
   "compatibility_flags": ["nodejs_compat"],
 
@@ -222,7 +222,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-21"
 
 compatibility_flags = [ "nodejs_compat" ]
 
@@ -247,8 +247,8 @@ Explain Code
 
 #### 5\. Code
 
-* [  JavaScript ](#tab-panel-3552)
-* [  TypeScript ](#tab-panel-3553)
+* [  JavaScript ](#tab-panel-5379)
+* [  TypeScript ](#tab-panel-5380)
 
 Update `src/index.js` with your Worker code:
 

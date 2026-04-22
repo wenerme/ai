@@ -1,6 +1,6 @@
 ---
 title: REST API
-description: The Pages API empowers you to build automations and integrate Pages with your development workflow. At a high level, the API endpoints let you manage deployments and builds and configure projects. Cloudflare supports Deploy Hooks for headless CMS deployments. Refer to the API documentation for a full breakdown of object types and endpoints.
+description: Manage Cloudflare Pages projects, deployments, and builds programmatically using the REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -108,6 +108,10 @@ After you have deployed the JavaScript Worker, set a cron trigger in your Worker
 ### Deleting old deployments after a week
 
 Cloudflare Pages hosts and serves all project deployments on preview links. Suppose you want to keep your project private and prevent access to your old deployments. You can use the API to delete deployments after a month, so that they are no longer public online. The latest deployment for a branch cannot be deleted.
+
+Note
+
+To delete individual deployments from the command line, you can use [wrangler pages deployment delete](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-deployment-delete).
 
 JavaScript
 

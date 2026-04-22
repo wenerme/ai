@@ -1,6 +1,6 @@
 ---
 title: Tutorials
-description: Before you begin, make sure you install Pulumi.
+description: Step-by-step Pulumi tutorials for adding sites, managing secrets, and deploying Workers on Cloudflare.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 

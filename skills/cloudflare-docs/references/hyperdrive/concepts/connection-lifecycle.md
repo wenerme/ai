@@ -1,6 +1,6 @@
 ---
 title: Connection lifecycle
-description: Understanding how connections work between Workers, Hyperdrive, and your origin database is essential for building efficient applications with Hyperdrive.
+description: Understand how connections are managed between Workers, Hyperdrive, and your origin database.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -93,8 +93,8 @@ You should always create database clients inside your request handlers (`fetch`,
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
-* [  JavaScript ](#tab-panel-4682)
-* [  TypeScript ](#tab-panel-4683)
+* [  JavaScript ](#tab-panel-6974)
+* [  TypeScript ](#tab-panel-6975)
 
 index.js
 

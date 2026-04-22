@@ -1,6 +1,6 @@
 ---
 title: Alpha database migration guide
-description: D1's open beta launched in October 2023, and newly created databases use a different underlying architecture that is significantly more reliable and performant, with increased database sizes, improved query throughput, and reduced latency.
+description: Migrate D1 alpha databases to the production-ready storage backend.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

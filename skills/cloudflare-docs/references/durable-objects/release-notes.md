@@ -1,6 +1,6 @@
 ---
 title: Release notes
-description: Subscribe to RSS
+description: Track the latest changes, fixes, and new features for Durable Objects.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

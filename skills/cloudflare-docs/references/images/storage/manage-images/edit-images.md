@@ -1,6 +1,6 @@
 ---
 title: Edit images
-description: The Edit option provides you available options to modify a specific image. After choosing to edit an image, you can:
+description: Modify image settings in Cloudflare Images, including signed URL requirements and variant URLs.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

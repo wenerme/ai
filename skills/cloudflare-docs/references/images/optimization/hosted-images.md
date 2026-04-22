@@ -1,5 +1,6 @@
 ---
 title: Hosted images
+description: Serve and manage images stored in Cloudflare Images with variants and custom domains.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

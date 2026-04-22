@@ -1,5 +1,6 @@
 ---
 title: Usage
+description: Use Workers AI Markdown Conversion via a Workers binding or the REST API.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

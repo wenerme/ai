@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's D1 documentation.
+description: Definitions of key terms used throughout the D1 documentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Enable Sourcing Kit
-description: Enabling Sourcing Kit will set it up with the necessary information to start importing images from your Amazon S3 account.
+description: Set up Sourcing Kit to create import jobs and start importing images from Amazon S3 into Cloudflare Images.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

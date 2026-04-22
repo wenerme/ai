@@ -1,6 +1,6 @@
 ---
 title: Tune connection pooling
-description: Hyperdrive maintains a pool of connections to your database that are shared across Worker invocations. You can configure the maximum number of these connections based on your database capacity and application requirements.
+description: Configure the maximum number of database connections in your Hyperdrive connection pool.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -28,9 +28,9 @@ Hyperdrive does have a limit of _origin_ connections that can be made from Hyper
 
 You can configure the connection pool size using the Cloudflare dashboard, the Wrangler CLI, or the Cloudflare API.
 
-* [ Dashboard ](#tab-panel-4670)
-* [ Wrangler ](#tab-panel-4671)
-* [ API ](#tab-panel-4672)
+* [ Dashboard ](#tab-panel-7006)
+* [ Wrangler ](#tab-panel-7007)
+* [ API ](#tab-panel-7008)
 
 To configure connection pool size via the dashboard:
 

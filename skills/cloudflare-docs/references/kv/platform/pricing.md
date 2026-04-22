@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Workers KV is included in both the Free and Paid Workers plans.
+description: Workers KV pricing for read, write, delete, and list operations, plus storage costs and billing FAQ.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

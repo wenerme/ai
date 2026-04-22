@@ -1,5 +1,6 @@
 ---
 title: Concepts
+description: Core concepts behind Cloudflare Email Service, including deliverability, authentication, and suppressions.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

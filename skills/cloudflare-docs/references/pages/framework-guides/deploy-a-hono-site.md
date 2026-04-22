@@ -1,6 +1,6 @@
 ---
 title: Hono
-description: Hono is a small, simple, and ultrafast web framework for Cloudflare Pages and Workers, Deno, and Bun. Learn more about the creation of Hono by watching an interview with its creator, Yusuke Wada.
+description: Deploy a Hono web application to Cloudflare Pages.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

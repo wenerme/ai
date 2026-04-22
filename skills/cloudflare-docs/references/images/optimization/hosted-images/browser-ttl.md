@@ -1,6 +1,6 @@
 ---
 title: Browser TTL
-description: Browser TTL controls how long an image stays in a browser's cache and specifically configures the cache-control response header.
+description: Configure cache-control settings for Cloudflare Images at the account or variant level.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

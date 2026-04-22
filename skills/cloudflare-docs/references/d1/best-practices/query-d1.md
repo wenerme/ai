@@ -1,6 +1,6 @@
 ---
 title: Query a database
-description: D1 is compatible with most SQLite's SQL convention since it leverages SQLite's query engine. You can use SQL commands to query D1.
+description: Query D1 using SQL statements through the Workers Binding API, REST API, or Wrangler commands.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

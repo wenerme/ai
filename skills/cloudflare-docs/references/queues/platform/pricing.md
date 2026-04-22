@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Cloudflare Queues charges for the total number of operations against each of your queues during a given month.
+description: Cloudflare Queues pricing for standard operations with included free usage.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

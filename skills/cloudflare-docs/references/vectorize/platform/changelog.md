@@ -1,6 +1,6 @@
 ---
 title: Changelog
-description: Subscribe to RSS
+description: Track recent changes, updates, and new features in Vectorize.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
