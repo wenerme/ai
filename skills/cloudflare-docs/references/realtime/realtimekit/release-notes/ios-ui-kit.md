@@ -1,6 +1,6 @@
 ---
 title: iOS UI Kit SDK
-description: Subscribe to RSS
+description: Release notes and changelog for the RealtimeKit iOS UI Kit SDK.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -17,6 +17,15 @@ Copy page
 # iOS UI Kit SDK
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/index.xml)
+
+## 2026-04-20
+
+**RealtimeKit iOS UI Kit 1.0.0**
+
+**Breaking changes**
+
+* Upgraded to [RealtimeKit Core v2.0.0](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-core/#2026-04-20) which removes support for Dyte APIs and SFU.
+* Minimum deployment target is now iOS 15.6
 
 ## 2026-01-14
 

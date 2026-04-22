@@ -146,10 +146,10 @@
   "anthropic-docs/build-with-claude/embeddings.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/embeddings",
     "skill": "anthropic-docs",
-    "etag": "W/\"3fdb-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 16337,
-    "updatedAt": "2026-04-17T00:18:12.209Z"
+    "etag": "W/\"449f-19db2f54258\"",
+    "lastModified": "Wed, 22 Apr 2026 02:11:51 GMT",
+    "size": 17557,
+    "updatedAt": "2026-04-22T10:29:34.247Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/overview.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview",
@@ -610,10 +610,10 @@
   "anthropic-docs/managed-agents/events-and-streaming.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/events-and-streaming",
     "skill": "anthropic-docs",
-    "etag": "W/\"cebc-19db1d26950\"",
-    "lastModified": "Tue, 21 Apr 2026 20:54:10 GMT",
-    "size": 52924,
-    "updatedAt": "2026-04-22T00:16:41.967Z"
+    "etag": "W/\"cebb-19db2f54640\"",
+    "lastModified": "Wed, 22 Apr 2026 02:11:52 GMT",
+    "size": 52923,
+    "updatedAt": "2026-04-22T10:29:52.942Z"
   },
   "anthropic-docs/managed-agents/define-outcomes.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/define-outcomes",

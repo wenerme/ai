@@ -67,9 +67,9 @@
   },
   "claude-directory.md": {
     "url": "https://code.claude.com/docs/en/claude-directory",
-    "lastModified": "Tue, 21 Apr 2026 09:20:41 GMT",
-    "size": 83491,
-    "updatedAt": "2026-04-21T10:29:17.477Z"
+    "lastModified": "Wed, 22 Apr 2026 00:40:45 GMT",
+    "size": 76477,
+    "updatedAt": "2026-04-22T10:29:03.667Z"
   },
   "cli-reference.md": {
     "url": "https://code.claude.com/docs/en/cli-reference",
@@ -118,6 +118,12 @@
     "lastModified": "Wed, 22 Apr 2026 00:15:50 GMT",
     "size": 12626,
     "updatedAt": "2026-04-22T00:15:50.130Z"
+  },
+  "debug-your-config.md": {
+    "url": "https://code.claude.com/docs/en/debug-your-config",
+    "lastModified": "Wed, 22 Apr 2026 00:46:41 GMT",
+    "size": 14087,
+    "updatedAt": "2026-04-22T10:29:06.647Z"
   },
   "desktop.md": {
     "url": "https://code.claude.com/docs/en/desktop",
@@ -211,9 +217,9 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Wed, 22 Apr 2026 00:13:11 GMT",
-    "size": 148042,
-    "updatedAt": "2026-04-22T00:15:56.618Z"
+    "lastModified": "Wed, 22 Apr 2026 00:42:42 GMT",
+    "size": 148184,
+    "updatedAt": "2026-04-22T10:29:11.905Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
@@ -265,9 +271,9 @@
   },
   "memory.md": {
     "url": "https://code.claude.com/docs/en/memory",
-    "lastModified": "Tue, 14 Apr 2026 21:00:43 GMT",
-    "size": 27275,
-    "updatedAt": "2026-04-15T00:19:20.342Z"
+    "lastModified": "Wed, 22 Apr 2026 00:43:33 GMT",
+    "size": 27384,
+    "updatedAt": "2026-04-22T10:29:14.863Z"
   },
   "microsoft-foundry.md": {
     "url": "https://code.claude.com/docs/en/microsoft-foundry",
@@ -391,9 +397,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Wed, 22 Apr 2026 00:10:44 GMT",
-    "size": 101036,
-    "updatedAt": "2026-04-22T00:16:08.555Z"
+    "lastModified": "Wed, 22 Apr 2026 00:37:57 GMT",
+    "size": 101161,
+    "updatedAt": "2026-04-22T10:29:21.781Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

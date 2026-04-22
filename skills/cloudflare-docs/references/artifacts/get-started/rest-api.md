@@ -25,7 +25,7 @@ By the end of this guide, you will create a repo inside an existing namespace, r
 You need:
 
 * A Cloudflare account with access to Artifacts.
-* A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Edit**.
+* A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with **Artifacts** \> **Read** and **Artifacts** \> **Edit**.
 * An existing Artifacts namespace, for example `default`.
 * A local `git` client.
 * `jq`, if you want to extract response fields automatically.
@@ -68,8 +68,8 @@ Authorization: Bearer $CLOUDFLARE_API_TOKEN
 
 Choose one of the following ways to create a repo inside that namespace:
 
-* [ Manual ](#tab-panel-5285)
-* [ jq ](#tab-panel-5286)
+* [ Manual ](#tab-panel-5317)
+* [ jq ](#tab-panel-5318)
 
 Terminal window
 

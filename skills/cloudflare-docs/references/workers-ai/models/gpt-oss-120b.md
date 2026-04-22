@@ -1,6 +1,6 @@
 ---
 title: gpt-oss-120b
-description: OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
+description: OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,7 +22,7 @@ Text Generation • OpenAI • Hosted
 
 `@cf/openai/gpt-oss-120b` 
 
-OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
+OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.
 
 | Model Info                                                                           |                                                     |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------- |
@@ -33,9 +33,9 @@ OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, an
 
 ## Usage
 
-* [  TypeScript ](#tab-panel-3148)
-* [  Python ](#tab-panel-3149)
-* [  curl ](#tab-panel-3150)
+* [  TypeScript ](#tab-panel-3168)
+* [  Python ](#tab-panel-3169)
+* [  curl ](#tab-panel-3170)
 
 ```
 
@@ -128,8 +128,8 @@ This model supports three different API formats:
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3157)
-* [ Output ](#tab-panel-3158)
+* [ Input ](#tab-panel-3177)
+* [ Output ](#tab-panel-3178)
 
 Input format
 
@@ -193,18 +193,22 @@ presence\_penalty
 
 `number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
 
-type
+response
 
-`object`
+`string`The generated text response from the model
 
-contentType
+▶usage{}
 
-`application/json`
+`object`Usage statistics for the inference request
+
+▶tool\_calls\[\]
+
+`array`An array of tool calls requests made during the response generation
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3159)
-* [ Output ](#tab-panel-3160)
+* [ Input ](#tab-panel-3179)
+* [ Output ](#tab-panel-3180)
 
 Input format
 
@@ -272,6 +276,14 @@ type
 
 `string`
 
+title
+
+`Stream_Output`
+
+description
+
+`Server-Sent Events stream when streaming is enabled`
+
 contentType
 
 `text/event-stream`
@@ -282,27 +294,31 @@ format
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3161)
-* [ Output ](#tab-panel-3162)
+* [ Input ](#tab-panel-3181)
+* [ Output ](#tab-panel-3182)
 
 ▶requests\[\]
 
 `array`required
 
-type
+response
 
-`object`
+`string`The generated text response from the model
 
-contentType
+▶usage{}
 
-`application/json`
+`object`Usage statistics for the inference request
+
+▶tool\_calls\[\]
+
+`array`An array of tool calls requests made during the response generation
 
 ## API Schemas (Raw)
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3153)
-* [ Output ](#tab-panel-3154)
+* [ Input ](#tab-panel-3173)
+* [ Output ](#tab-panel-3174)
 
 ```
 
@@ -1067,17 +1083,115 @@ Explain Code
 
   "type": "object",
 
-  "contentType": "application/json"
+  "title": "Prompt_Output",
+
+  "description": "Output when using the Prompt input format",
+
+  "properties": {
+
+    "response": {
+
+      "type": "string",
+
+      "description": "The generated text response from the model"
+
+    },
+
+    "usage": {
+
+      "type": "object",
+
+      "description": "Usage statistics for the inference request",
+
+      "properties": {
+
+        "prompt_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of tokens in input",
+
+          "default": 0
+
+        },
+
+        "completion_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of tokens in output",
+
+          "default": 0
+
+        },
+
+        "total_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of input and output tokens",
+
+          "default": 0
+
+        }
+
+      }
+
+    },
+
+    "tool_calls": {
+
+      "type": "array",
+
+      "description": "An array of tool calls requests made during the response generation",
+
+      "items": {
+
+        "type": "object",
+
+        "properties": {
+
+          "arguments": {
+
+            "type": "object",
+
+            "description": "The arguments to be passed to the tool call request"
+
+          },
+
+          "name": {
+
+            "type": "string",
+
+            "description": "The name of the tool to be called"
+
+          }
+
+        }
+
+      }
+
+    }
+
+  },
+
+  "required": [
+
+    "response"
+
+  ]
 
 }
 
 
 ```
 
+Explain Code
+
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3155)
-* [ Output ](#tab-panel-3156)
+* [ Input ](#tab-panel-3175)
+* [ Output ](#tab-panel-3176)
 
 ```
 
@@ -1842,6 +1956,10 @@ Explain Code
 
   "type": "string",
 
+  "title": "Stream_Output",
+
+  "description": "Server-Sent Events stream when streaming is enabled",
+
   "contentType": "text/event-stream",
 
   "format": "binary"
@@ -1853,8 +1971,8 @@ Explain Code
 
 Batch — Send multiple requests in a single API call 
 
-* [ Input ](#tab-panel-3151)
-* [ Output ](#tab-panel-3152)
+* [ Input ](#tab-panel-3171)
+* [ Output ](#tab-panel-3172)
 
 ```
 
@@ -1979,12 +2097,110 @@ Explain Code
 
   "type": "object",
 
-  "contentType": "application/json"
+  "title": "Prompt_Output",
+
+  "description": "Output when using the Prompt input format",
+
+  "properties": {
+
+    "response": {
+
+      "type": "string",
+
+      "description": "The generated text response from the model"
+
+    },
+
+    "usage": {
+
+      "type": "object",
+
+      "description": "Usage statistics for the inference request",
+
+      "properties": {
+
+        "prompt_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of tokens in input",
+
+          "default": 0
+
+        },
+
+        "completion_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of tokens in output",
+
+          "default": 0
+
+        },
+
+        "total_tokens": {
+
+          "type": "number",
+
+          "description": "Total number of input and output tokens",
+
+          "default": 0
+
+        }
+
+      }
+
+    },
+
+    "tool_calls": {
+
+      "type": "array",
+
+      "description": "An array of tool calls requests made during the response generation",
+
+      "items": {
+
+        "type": "object",
+
+        "properties": {
+
+          "arguments": {
+
+            "type": "object",
+
+            "description": "The arguments to be passed to the tool call request"
+
+          },
+
+          "name": {
+
+            "type": "string",
+
+            "description": "The name of the tool to be called"
+
+          }
+
+        }
+
+      }
+
+    }
+
+  },
+
+  "required": [
+
+    "response"
+
+  ]
 
 }
 
 
 ```
+
+Explain Code
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/workers-ai/","name":"Workers AI"}},{"@type":"ListItem","position":3,"item":{"@id":"/workers-ai/models/","name":"Models"}}]}

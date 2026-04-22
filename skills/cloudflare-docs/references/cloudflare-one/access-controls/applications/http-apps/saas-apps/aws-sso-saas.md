@@ -20,7 +20,7 @@ Copy page
 
 # AWS
 
-**Last reviewed:**  almost 2 years ago 
+**Last reviewed:**  about 2 years ago 
 
 This guide covers how to configure [AWS ↗](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-idp.html) as a SAML application in Cloudflare One.
 

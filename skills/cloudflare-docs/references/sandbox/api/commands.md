@@ -1,6 +1,6 @@
 ---
 title: Commands
-description: Execute commands and manage background processes in the sandbox's isolated container environment.
+description: Execute commands and manage background processes in Sandbox SDK containers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -46,8 +46,8 @@ const result = await sandbox.exec(command: string, options?: ExecOptions): Promi
 
 **Returns**: `Promise<ExecuteResponse>` with `success`, `stdout`, `stderr`, `exitCode`
 
-* [  JavaScript ](#tab-panel-6169)
-* [  TypeScript ](#tab-panel-6170)
+* [  JavaScript ](#tab-panel-8400)
+* [  TypeScript ](#tab-panel-8401)
 
 JavaScript
 
@@ -219,8 +219,8 @@ const stream = await sandbox.execStream(command: string, options?: ExecOptions):
 
 **Returns**: `Promise<ReadableStream>` emitting `ExecEvent` objects (`start`, `stdout`, `stderr`, `complete`, `error`)
 
-* [  JavaScript ](#tab-panel-6165)
-* [  TypeScript ](#tab-panel-6166)
+* [  JavaScript ](#tab-panel-8396)
+* [  TypeScript ](#tab-panel-8397)
 
 JavaScript
 
@@ -388,8 +388,8 @@ const process = await sandbox.startProcess(command: string, options?: ProcessOpt
 * `waitForLog()` \- Wait for pattern in process output
 * `waitForExit()` \- Wait for process to terminate and return exit code
 
-* [  JavaScript ](#tab-panel-6149)
-* [  TypeScript ](#tab-panel-6150)
+* [  JavaScript ](#tab-panel-8380)
+* [  TypeScript ](#tab-panel-8381)
 
 JavaScript
 
@@ -470,8 +470,8 @@ const processes = await sandbox.listProcesses(): Promise<ProcessInfo[]>
 
 ```
 
-* [  JavaScript ](#tab-panel-6145)
-* [  TypeScript ](#tab-panel-6146)
+* [  JavaScript ](#tab-panel-8376)
+* [  TypeScript ](#tab-panel-8377)
 
 JavaScript
 
@@ -525,8 +525,8 @@ await sandbox.killProcess(processId: string, signal?: string): Promise<void>
 
 Sends the signal to the entire process group, ensuring that both the main process and any child processes it spawned are terminated. This prevents orphaned processes from continuing to run after the parent is killed.
 
-* [  JavaScript ](#tab-panel-6151)
-* [  TypeScript ](#tab-panel-6152)
+* [  JavaScript ](#tab-panel-8382)
+* [  TypeScript ](#tab-panel-8383)
 
 JavaScript
 
@@ -585,8 +585,8 @@ await sandbox.killAllProcesses(): Promise<void>
 
 ```
 
-* [  JavaScript ](#tab-panel-6147)
-* [  TypeScript ](#tab-panel-6148)
+* [  JavaScript ](#tab-panel-8378)
+* [  TypeScript ](#tab-panel-8379)
 
 JavaScript
 
@@ -625,8 +625,8 @@ const stream = await sandbox.streamProcessLogs(processId: string): Promise<Reada
 
 **Returns**: `Promise<ReadableStream>` emitting `LogEvent` objects
 
-* [  JavaScript ](#tab-panel-6155)
-* [  TypeScript ](#tab-panel-6156)
+* [  JavaScript ](#tab-panel-8386)
+* [  TypeScript ](#tab-panel-8387)
 
 JavaScript
 
@@ -699,8 +699,8 @@ const logs = await sandbox.getProcessLogs(processId: string): Promise<string>
 
 **Returns**: `Promise<string>` with all accumulated output
 
-* [  JavaScript ](#tab-panel-6153)
-* [  TypeScript ](#tab-panel-6154)
+* [  JavaScript ](#tab-panel-8384)
+* [  TypeScript ](#tab-panel-8385)
 
 JavaScript
 
@@ -748,8 +748,8 @@ When you provide the `stdin` option:
 
 This approach prevents shell injection attacks that could occur when embedding user data directly in commands.
 
-* [  JavaScript ](#tab-panel-6157)
-* [  TypeScript ](#tab-panel-6158)
+* [  JavaScript ](#tab-panel-8388)
+* [  TypeScript ](#tab-panel-8389)
 
 JavaScript
 
@@ -799,8 +799,8 @@ const result = await sandbox.exec('python validate_email.py', {
 
 **Processing form data:**
 
-* [  JavaScript ](#tab-panel-6161)
-* [  TypeScript ](#tab-panel-6162)
+* [  JavaScript ](#tab-panel-8392)
+* [  TypeScript ](#tab-panel-8393)
 
 JavaScript
 
@@ -848,8 +848,8 @@ const result = await sandbox.exec('python process_form.py', {
 
 **Interactive command-line tools:**
 
-* [  JavaScript ](#tab-panel-6159)
-* [  TypeScript ](#tab-panel-6160)
+* [  JavaScript ](#tab-panel-8390)
+* [  TypeScript ](#tab-panel-8391)
 
 JavaScript
 
@@ -887,8 +887,8 @@ const result = await sandbox.exec('npm init', {
 
 **Data transformation:**
 
-* [  JavaScript ](#tab-panel-6163)
-* [  TypeScript ](#tab-panel-6164)
+* [  JavaScript ](#tab-panel-8394)
+* [  TypeScript ](#tab-panel-8395)
 
 JavaScript
 
@@ -955,8 +955,8 @@ await process.waitForPort(port: number, options?: WaitForPortOptions): Promise<v
 
 **HTTP mode** (default) makes an HTTP GET request and checks the response status:
 
-* [  JavaScript ](#tab-panel-6171)
-* [  TypeScript ](#tab-panel-6172)
+* [  JavaScript ](#tab-panel-8402)
+* [  TypeScript ](#tab-panel-8403)
 
 JavaScript
 
@@ -1018,8 +1018,8 @@ Explain Code
 
 **TCP mode** checks if the port accepts connections:
 
-* [  JavaScript ](#tab-panel-6167)
-* [  TypeScript ](#tab-panel-6168)
+* [  JavaScript ](#tab-panel-8398)
+* [  TypeScript ](#tab-panel-8399)
 
 JavaScript
 
@@ -1089,8 +1089,8 @@ const result = await process.waitForLog(pattern: string | RegExp, timeout?: numb
 * `line` \- The matching line of output
 * `matches` \- Array of capture groups (for RegExp patterns)
 
-* [  JavaScript ](#tab-panel-6175)
-* [  TypeScript ](#tab-panel-6176)
+* [  JavaScript ](#tab-panel-8406)
+* [  TypeScript ](#tab-panel-8407)
 
 JavaScript
 
@@ -1178,8 +1178,8 @@ const result = await process.waitForExit(timeout?: number): Promise<WaitForExitR
 
 * `exitCode` \- The process exit code
 
-* [  JavaScript ](#tab-panel-6173)
-* [  TypeScript ](#tab-panel-6174)
+* [  JavaScript ](#tab-panel-8404)
+* [  TypeScript ](#tab-panel-8405)
 
 JavaScript
 
@@ -1233,5 +1233,5 @@ const result = await build.waitForExit(60000); // 60 second timeout
 * [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- File operations
 
 ```json
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API Reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/commands/","name":"Commands"}}]}
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/sandbox/","name":"Sandbox SDK"}},{"@type":"ListItem","position":3,"item":{"@id":"/sandbox/api/","name":"API reference"}},{"@type":"ListItem","position":4,"item":{"@id":"/sandbox/api/commands/","name":"Commands"}}]}
 ```

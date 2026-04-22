@@ -37,6 +37,8 @@ Feature availability
 
 An HTTP test sends a `GET` request from an end-user device to a specific web application. You can use the response metrics to troubleshoot connectivity issues. For example, you can check whether the application is inaccessible for all users in your organization, or only certain ones.
 
+HTTP tests run periodically from devices that have the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) installed and turned on. You can use them to verify that an internal application is reachable after a configuration change or to monitor a SaaS application for outages that affect your organization.
+
 ## Create a test
 
 To set up an HTTP test for an application:
@@ -64,13 +66,15 @@ An HTTP test measures the following data:
 | DNS response time    | Round-trip time for the DNS query to resolve.                                                                                                                             |
 | HTTP status codes    | [Status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) returned by the target.                                                               |
 
+Use these metrics together to identify where in the connection a problem occurs. For example, a high DNS response time with a normal server response time points to a DNS resolution issue rather than a problem with the target server.
+
 ## Export DEX application test logs
 
-The log data for all [DEX application tests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fapplication%5Ftests/) (including HTTP tests) can be exported to [R2](https://developers.cloudflare.com/r2/), a cloud bucket, or a SIEM via [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+You can use [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/) to export [DEX application test](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fapplication%5Ftests/) data to [R2](https://developers.cloudflare.com/r2/) (Cloudflare's object storage), a third-party cloud storage bucket, or a Security Information and Event Management (SIEM) tool. This is useful if you need to retain test data beyond the [7-day log retention period](https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention) or correlate DEX data with other log sources.
 
 ## Related resources
 
-* [DEX rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/) \- Specify the target group of a test.
+* [DEX rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/) \- Define which users or groups a test applies to, using selectors such as user email, user group, operating system, or managed network.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cloudflare-one/","name":"Cloudflare One"}},{"@type":"ListItem","position":3,"item":{"@id":"/cloudflare-one/insights/","name":"Insights"}},{"@type":"ListItem","position":4,"item":{"@id":"/cloudflare-one/insights/dex/","name":"Digital experience"}},{"@type":"ListItem","position":5,"item":{"@id":"/cloudflare-one/insights/dex/tests/","name":"Synthetic tests"}},{"@type":"ListItem","position":6,"item":{"@id":"/cloudflare-one/insights/dex/tests/http/","name":"HTTP test"}}]}
