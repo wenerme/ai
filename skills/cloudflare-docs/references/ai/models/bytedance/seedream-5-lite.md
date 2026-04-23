@@ -24,9 +24,10 @@ Text-to-Image • ByteDance • Proxied
 
 Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi-reference and batch generation support.
 
-| Model Info       |                                                              |
-| ---------------- | ------------------------------------------------------------ |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream5%5F0%5Flite) |
+| Model Info       |                                                                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream5%5F0%5Flite)                                                                |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-lite) |
 
 ## Usage
 
@@ -61,8 +62,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-70)
-* [ Output ](#tab-panel-71)
+* [ Input ](#tab-panel-136)
+* [ Output ](#tab-panel-137)
 
 ```
 
@@ -81,7 +82,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/P3tn7Cb6LqrVOJujUhMyW7vTVw2SjmzMtqgkCdicjR5sTNmF/tmp40gc10ey.png"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/simple-generation-0.jpeg"
 
     ]
 
@@ -110,9 +111,9 @@ const response = await env.AI.run(
 
     size: '3K',
 
-    output_format: 'png',
-
     aspect_ratio: '16:9',
+
+    output_format: 'png',
 
   },
 
@@ -133,8 +134,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-72)
-* [ Output ](#tab-panel-73)
+* [ Input ](#tab-panel-138)
+* [ Output ](#tab-panel-139)
 
 ```
 
@@ -144,9 +145,9 @@ Input / Output JSON
 
     "size": "3K",
 
-    "output_format": "png",
+    "aspect_ratio": "16:9",
 
-    "aspect_ratio": "16:9"
+    "output_format": "png"
 
 }
 
@@ -159,7 +160,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/v8WigeO3ss1bHCMcpejgxcSknPaKJre3f2sW9PJzyfrDeTNmF/tmpw9lduzh0.png"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/high-resolution-png-0.png"
 
     ]
 
@@ -186,9 +187,9 @@ const response = await env.AI.run(
 
     size: '2K',
 
-    output_format: 'jpeg',
-
     aspect_ratio: '3:4',
+
+    output_format: 'jpeg',
 
   },
 
@@ -209,8 +210,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-74)
-* [ Output ](#tab-panel-75)
+* [ Input ](#tab-panel-140)
+* [ Output ](#tab-panel-141)
 
 ```
 
@@ -220,9 +221,9 @@ Input / Output JSON
 
     "size": "2K",
 
-    "output_format": "jpeg",
+    "aspect_ratio": "3:4",
 
-    "aspect_ratio": "3:4"
+    "output_format": "jpeg"
 
 }
 
@@ -235,7 +236,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/0hfH1l5S6fhF3EzDwZUFTfDPTaeAeJLFJNNpfwCWemTJDoaMLA/tmpb32_cbxa.jpg"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/portrait-photo-0.jpeg"
 
     ]
 
@@ -260,11 +261,11 @@ const response = await env.AI.run(
 
       'A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it',
 
+    aspect_ratio: '4:3',
+
     sequential_image_generation: 'auto',
 
     max_images: 4,
-
-    aspect_ratio: '4:3',
 
   },
 
@@ -285,8 +286,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-76)
-* [ Output ](#tab-panel-77)
+* [ Input ](#tab-panel-142)
+* [ Output ](#tab-panel-143)
 
 ```
 
@@ -294,11 +295,11 @@ Input / Output JSON
 
     "prompt": "A four-panel comic strip showing a cat discovering a cardboard box and deciding to sit in it",
 
+    "aspect_ratio": "4:3",
+
     "sequential_image_generation": "auto",
 
-    "max_images": 4,
-
-    "aspect_ratio": "4:3"
+    "max_images": 4
 
 }
 
@@ -311,7 +312,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/YH2RGRLXJ569JxZn52sdZdOqVY2ilGTqWOp3eJ7ekznvQ1YWA/tmp0_talk8q.png"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/sequential-comic-0.jpeg"
 
     ]
 
@@ -340,9 +341,9 @@ const response = await env.AI.run(
 
     ],
 
-    aspect_ratio: 'match_input_image',
-
     size: '2K',
+
+    aspect_ratio: 'match_input_image',
 
   },
 
@@ -363,8 +364,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-78)
-* [ Output ](#tab-panel-79)
+* [ Input ](#tab-panel-144)
+* [ Output ](#tab-panel-145)
 
 ```
 
@@ -378,9 +379,9 @@ Input / Output JSON
 
     ],
 
-    "aspect_ratio": "match_input_image",
+    "size": "2K",
 
-    "size": "2K"
+    "aspect_ratio": "match_input_image"
 
 }
 
@@ -393,7 +394,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/WrzzelpFP52EVqaXrD8vFjYHv5yi5beRTbdefyhBKFCSlWjZB/tmpw2z1atr3.png"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-5-lite/image-variation-0.jpeg"
 
     ]
 
@@ -404,8 +405,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-82)
-* [ Output ](#tab-panel-83)
+* [ Input ](#tab-panel-148)
+* [ Output ](#tab-panel-149)
 
 prompt
 
@@ -441,8 +442,8 @@ output\_format
 
 ## API Schemas
 
-* [ Input ](#tab-panel-80)
-* [ Output ](#tab-panel-81)
+* [ Input ](#tab-panel-146)
+* [ Output ](#tab-panel-147)
 
 ```
 

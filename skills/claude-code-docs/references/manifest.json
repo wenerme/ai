@@ -37,9 +37,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"ef59f35dabc73d70cc27f46aebdf80f2cf42800d9f4475f6d1c440f889d07bfd\"",
-    "size": 245971,
-    "updatedAt": "2026-04-23T00:21:01.722Z"
+    "etag": "W/\"322a60382be5664623975b27a9d2a82297cb58234934bd5b33ec3e44a7e67769\"",
+    "size": 249881,
+    "updatedAt": "2026-04-23T10:30:16.582Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -313,9 +313,9 @@
   },
   "overview.md": {
     "url": "https://code.claude.com/docs/en/overview",
-    "lastModified": "Wed, 22 Apr 2026 00:14:59 GMT",
-    "size": 39801,
-    "updatedAt": "2026-04-22T00:16:02.577Z"
+    "lastModified": "Thu, 23 Apr 2026 02:55:17 GMT",
+    "size": 39935,
+    "updatedAt": "2026-04-23T10:30:05.256Z"
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
@@ -361,9 +361,9 @@
   },
   "quickstart.md": {
     "url": "https://code.claude.com/docs/en/quickstart",
-    "lastModified": "Wed, 22 Apr 2026 00:16:05 GMT",
-    "size": 32470,
-    "updatedAt": "2026-04-22T00:16:05.742Z"
+    "lastModified": "Thu, 23 Apr 2026 02:58:59 GMT",
+    "size": 32600,
+    "updatedAt": "2026-04-23T10:30:07.915Z"
   },
   "remote-control.md": {
     "url": "https://code.claude.com/docs/en/remote-control",
@@ -409,9 +409,9 @@
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
-    "lastModified": "Wed, 22 Apr 2026 00:13:56 GMT",
-    "size": 19374,
-    "updatedAt": "2026-04-22T00:16:08.921Z"
+    "lastModified": "Thu, 23 Apr 2026 02:59:01 GMT",
+    "size": 23072,
+    "updatedAt": "2026-04-23T10:30:10.589Z"
   },
   "slack.md": {
     "url": "https://code.claude.com/docs/en/slack",

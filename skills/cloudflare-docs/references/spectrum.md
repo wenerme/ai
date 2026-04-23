@@ -22,7 +22,7 @@ Spectrum provides security and acceleration for any [TCP ↗](https://www.cloudf
 
 Spectrum allows you to route MQTT, email, file transfer, version control, games, and more over TCP or UDP through Cloudflare to mask the origin and protect it from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 
----
+## **Note:** Custom TCP/UDP applications require an Enterprise plan with Spectrum as a paid add-on. See [Protocols per plan](https://developers.cloudflare.com/spectrum/protocols-per-plan/) for details, or contact your account team to enable.
 
 ## Features
 

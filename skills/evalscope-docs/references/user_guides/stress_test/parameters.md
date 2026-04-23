@@ -87,25 +87,50 @@ For details on using the SLA auto-tuning feature, see the [Auto-tuning Guide](./
 
 ### Dataset Mode Description
 
+**Text / Chat**
+
 | Mode | Description | Supports dataset-path |
 |------|-------------|----------------------|
 | `openqa` | Automatically downloads [OpenQA](https://www.modelscope.cn/datasets/AI-ModelScope/HC3-Chinese/summary) from ModelScopePrompts are relatively short (usually <100 tokens)Uses `question` field from jsonl file when `dataset_path` is specified | ✓ |
 | `longalpaca` | Automatically downloads [LongAlpaca-12k](https://www.modelscope.cn/datasets/AI-ModelScope/LongAlpaca-12k/dataPeview) from ModelScopePrompts are much longer (generally >6000 tokens)Uses `instruction` field from jsonl file when `dataset_path` is specified | ✓ |
 | `line_by_line` | Each line in txt file is used as a separate prompt**Requires `dataset_path`** | ✓ (Required) |
+| `random` | Randomly generates prompts based on `prefix-length`, `max-prompt-length`, and `min-prompt-length`**Requires `tokenizer-path`**[Usage example](./examples.md#using-the-random-dataset) | ✗ |
+| `custom` | Custom dataset parserSee [Custom Dataset Guide](custom.md#custom-dataset) | ✓ |
+
+**Multimodal**
+
+| Mode | Description | Supports dataset-path |
+|------|-------------|----------------------|
 | `flickr8k` | Automatically downloads [Flick8k](https://www.modelscope.cn/datasets/clip-benchmark/wds_flickr8k/dataPeview) from ModelScopeBuilds image-text inputs; large dataset suitable for evaluating multimodal models | ✗ |
 | `kontext_bench` | Automatically downloads [Kontext-Bench](https://modelscope.cn/datasets/black-forest-labs/kontext-bench/dataPeview) from ModelScopeBuilds image-text inputs; approximately 1,000 samples, suitable for quick evaluation of multimodal models | ✗ |
-| `random` | Randomly generates prompts based on `prefix-length`, `max-prompt-length`, and `min-prompt-length`**Requires `tokenizer-path`**[Usage example](./examples.md#using-the-random-dataset) | ✗ |
 | `random_vl` | Randomly generates both image and text inputsBased on `random`, with additional image-related parameters[Usage example](./examples.md#using-the-random-multimodal-dataset) | ✗ |
+
+**Embedding**
+
+| Mode | Description | Supports dataset-path |
+|------|-------------|----------------------|
 | `embedding` | Load text data from file to evaluate Embedding modelSupports Line-by-line (TXT) or JSONL format (with `text` field) | ✓ (Required) |
 | `random_embedding` | Randomly generate queries based on `max-prompt-length` and `min-prompt-length` to evaluate Embedding model**Must specify `tokenizer-path`** | ✗ |
 | `embedding_batch` | Batch send text data to evaluate Embedding modelLoad data from fileSupports `--extra-args '{"batch_size": 8}'` to set batch size | ✓ (Required) |
-| `random_embedding_batch` | Batch send randomly generated query data based on `max-prompt-length` and `min-prompt-length` to evaluate Embedding model**Must specify `tokenizer-path`**Supports `--extra-args '{"batch_size": 8}'` to set batch size | ✗ |
+| `random_embedding_batch` | Batch send randomly generated query data to evaluate Embedding model**Must specify `tokenizer-path`**Supports `--extra-args '{"batch_size": 8}'` to set batch size | ✗ |
+
+**Rerank**
+
+| Mode | Description | Supports dataset-path |
+|------|-------------|----------------------|
 | `rerank` | Load Query-Document pairs from file to evaluate Rerank modelSupports JSONL format (with `query` and `documents` fields) | ✓ (Required) |
-| `random_rerank` | Randomly generate query data based on `max-prompt-length` and `min-prompt-length` to evaluate Rerank model**Must specify `tokenizer-path`**Supports `--extra-args '{"num_documents": 10, "document_length_ratio": 5}'` to set number of documents and length ratio relative to query | ✗ |
-| `custom` | Custom dataset parserSee [Custom Dataset Guide](custom.md#custom-dataset) | ✓ |
-| `random_multi_turn` | Synthetic multi-turn conversations; each turn randomly generates a token sequenceMust be used with `--multi-turn`**Requires `--tokenizer-path` and `--max-turns`**[Usage example](./multi_turn.md#1-using-random_multi_turn-synthetic-multi-turn-conversations) | ✗ |
-| `share_gpt_zh_multi_turn` | Automatically downloads the Chinese [ShareGPT](https://www.modelscope.cn/datasets/swift/sharegpt) dataset (~70k conversations) from ModelScope, preserving full multi-turn conversationsMust be used with `--multi-turn`[Usage example](./multi_turn.md#2-using-share_gpt_zh_multi_turn-real-chinese-conversations) | ✓ |
-| `share_gpt_en_multi_turn` | Automatically downloads the English [ShareGPT](https://www.modelscope.cn/datasets/swift/sharegpt) dataset (~70k conversations) from ModelScope, preserving full multi-turn conversationsMust be used with `--multi-turn` | ✓ |
+| `random_rerank` | Randomly generate query data to evaluate Rerank model**Must specify `tokenizer-path`**Supports `--extra-args '{"num_documents": 10, "document_length_ratio": 5}'` to set number of documents and length ratio | ✗ |
+
+**Multi-turn Conversation**
+
+Must be used with `--multi-turn`. See the [Multi-turn Benchmark Guide](./multi_turn.md) for details.
+
+| Mode | Description | Supports dataset-path |
+|------|-------------|----------------------|
+| `random_multi_turn` | Synthetic multi-turn conversations; each turn randomly generates a token sequence**Requires `--tokenizer-path` and `--max-turns`**[Usage example](./multi_turn.md#1-using-random_multi_turn-synthetic-multi-turn-conversations) | ✗ |
+| `share_gpt_zh_multi_turn` | Automatically downloads the Chinese [ShareGPT](https://www.modelscope.cn/datasets/swift/sharegpt) dataset (~70k conversations) from ModelScope, preserving full multi-turn conversations[Usage example](./multi_turn.md#2-using-share_gpt_zh_multi_turn-real-chinese-conversations) | ✓ |
+| `share_gpt_en_multi_turn` | Automatically downloads the English [ShareGPT](https://www.modelscope.cn/datasets/swift/sharegpt) dataset (~70k conversations) from ModelScope, preserving full multi-turn conversations | ✓ |
+| `custom_multi_turn` | Uses a local JSONL file as a custom multi-turn datasetEach line must be a JSON array of OpenAI message dicts; ideal for benchmarking with your own conversation data**Requires `--dataset-path`**[Usage example](./multi_turn.md#3-using-custom_multi_turn-custom-local-conversations) | ✓ (Required) |
 
 ## Model Settings
 

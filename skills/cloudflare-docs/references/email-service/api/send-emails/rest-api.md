@@ -42,9 +42,9 @@ Authorization: Bearer <API_TOKEN>
 
 ## Send an email
 
-* [ Simple email ](#tab-panel-6855)
-* [ Multiple recipients ](#tab-panel-6856)
-* [ With CC and BCC ](#tab-panel-6857)
+* [ Simple email ](#tab-panel-7027)
+* [ Multiple recipients ](#tab-panel-7028)
+* [ With CC and BCC ](#tab-panel-7029)
 
 Terminal window
 
@@ -141,7 +141,7 @@ Explain Code
 
 ## Attachments
 
-Send files by including base64-encoded content in the `attachments` array:
+Send files by including base64-encoded content in the `attachments` array. The total message size must not exceed **5 MiB** (including attachments).
 
 Terminal window
 

@@ -10,6 +10,8 @@ title: browser.trace | Config
 
 Capture a trace of your browser test runs. You can preview traces with [Playwright Trace Viewer](https://trace.playwright.dev/).
 
+See [Playwright Traces](/guide/browser/playwright-traces) for the full workflow.
+
 This options supports the following values:
 
 - `'on'` - capture trace for all tests. (not recommended as it's performance heavy)

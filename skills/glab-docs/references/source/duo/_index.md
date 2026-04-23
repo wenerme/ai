@@ -27,5 +27,4 @@ glab duo <command> prompt [flags]
 
 ## Subcommands
 
-- [`ask`](ask.md)
 - [`cli`](cli.md)

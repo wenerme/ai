@@ -14,7 +14,7 @@ YesNo
 
 Copy page
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg) 
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg) 
 
 #  glm-4.7-flash 
 
@@ -39,10 +39,10 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 
 ## Usage
 
-* [  Worker (Streaming) ](#tab-panel-3140)
-* [  TypeScript ](#tab-panel-3141)
-* [  Python ](#tab-panel-3142)
-* [  curl ](#tab-panel-3143)
+* [  Worker (Streaming) ](#tab-panel-3332)
+* [  TypeScript ](#tab-panel-3333)
+* [  Python ](#tab-panel-3334)
+* [  curl ](#tab-panel-3335)
 
 TypeScript
 
@@ -207,8 +207,8 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3148)
-* [ Output ](#tab-panel-3149)
+* [ Input ](#tab-panel-3340)
+* [ Output ](#tab-panel-3341)
 
 prompt
 
@@ -372,8 +372,8 @@ service\_tier
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3150)
-* [ Output ](#tab-panel-3151)
+* [ Input ](#tab-panel-3342)
+* [ Output ](#tab-panel-3343)
 
 prompt
 
@@ -519,8 +519,8 @@ format
 
 Synchronous — Send a request and receive a complete response 
 
-* [ Input ](#tab-panel-3144)
-* [ Output ](#tab-panel-3145)
+* [ Input ](#tab-panel-3336)
+* [ Output ](#tab-panel-3337)
 
 ```
 
@@ -3192,8 +3192,8 @@ Explain Code
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events 
 
-* [ Input ](#tab-panel-3146)
-* [ Output ](#tab-panel-3147)
+* [ Input ](#tab-panel-3338)
+* [ Output ](#tab-panel-3339)
 
 ```
 

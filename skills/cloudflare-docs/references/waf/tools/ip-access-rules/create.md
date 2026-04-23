@@ -20,9 +20,13 @@ Recommendation: Use custom rules instead
 
 Cloudflare recommends that you create [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of IP Access rules to perform IP-based or geography-based blocking (geoblocking).
 
-* [  New dashboard ](#tab-panel-9169)
-* [ Old dashboard ](#tab-panel-9170)
-* [ API ](#tab-panel-9171)
+Warning
+
+For [Spectrum](https://developers.cloudflare.com/spectrum/) applications configured with the non-HTTP/HTTPS application type, IP Access rules are the only supported mechanism for filtering traffic by IP address, IP range, country, or ASN. To use them, enable IP Access rules in your [Spectrum app configuration](https://developers.cloudflare.com/spectrum/reference/configuration-options/#ip-access-rules).
+
+* [  New dashboard ](#tab-panel-9387)
+* [ Old dashboard ](#tab-panel-9388)
+* [ API ](#tab-panel-9389)
 
 Note
 

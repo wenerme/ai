@@ -611,8 +611,8 @@
   },
   "api/api-reference/responses/create-responses.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-responses.md",
-    "size": 147493,
-    "updatedAt": "2026-04-23T00:32:34.290Z"
+    "size": 156790,
+    "updatedAt": "2026-04-23T10:42:18.807Z"
   },
   "api/api-reference/o-auth/exchange-auth-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key.md",

@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"b8d2e63a86b41af6e14664bcdf46a6d1\"",
-    "lastModified": "Thu, 23 Apr 2026 00:12:44 GMT",
-    "size": 25989,
-    "updatedAt": "2026-04-23T00:25:35.548Z"
+    "etag": "W/\"6ed11ad3b265736dc33348493fe0334c\"",
+    "lastModified": "Thu, 23 Apr 2026 04:51:54 GMT",
+    "size": 26917,
+    "updatedAt": "2026-04-23T10:34:44.125Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",

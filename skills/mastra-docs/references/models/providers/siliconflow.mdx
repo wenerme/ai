@@ -1,11 +1,11 @@
 ---
 title: "SiliconFlow | Models"
-description: "Use SiliconFlow models with Mastra. 73 models available."
+description: "Use SiliconFlow models with Mastra. 74 models available."
 ---
 
 # [SiliconFlow logo]SiliconFlow
 
-Access 73 SiliconFlow models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_API_KEY` environment variable.
+Access 74 SiliconFlow models through Mastra's model router. Authentication is handled automatically using the `SILICONFLOW_API_KEY` environment variable.
 
 Learn more in the [SiliconFlow documentation](https://cloud.siliconflow.com/models).
 
@@ -288,8 +288,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262000,
     "maxOutput": 262000,
-    "inputCost": 0.55,
-    "outputCost": 3
+    "inputCost": 0.45,
+    "outputCost": 2.25
+  },
+  {
+    "model": "siliconflow/moonshotai/Kimi-K2.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262000,
+    "maxOutput": 262000,
+    "inputCost": 0.95,
+    "outputCost": 4
   },
   {
     "model": "siliconflow/nex-agi/DeepSeek-V3.1-Nex-N1",
