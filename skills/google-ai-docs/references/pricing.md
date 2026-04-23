@@ -29,7 +29,7 @@ For production applications that require higher volumes and advanced features.
 
 ### Enterprise
 
-For large-scale deployments with custom needs for security, support, and compliance, powered by [Vertex AI](https://cloud.google.com/vertex-ai).
+For large-scale deployments with custom needs for security, support, and compliance, powered by [Gemini Enterprise Agent Platform](https://cloud.google.com/gemini-enterprise-agent-platform).
 
 - check_circleAll features in Paid, plus optional access to:
 - check_circleDedicated support channels
@@ -848,9 +848,9 @@ before becoming stable and have more restrictive rate limits.
 | Lyria 3 Pro Preview (Full Song) | Not available | $0.08 per song |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Embedding 2 Preview
+## Gemini Embedding 2
 
-*`gemini-embedding-2-preview`*
+*`gemini-embedding-2`*
 
 
 [Try the API](https://ai.google.dev/gemini-api/docs/embeddings)
@@ -1015,5 +1015,5 @@ consumption and usage of the tools.
 ## Notes
 
 - Google AI Studio usage is free of charge in all [available regions](https://ai.google.dev/gemini-api/docs/available-regions). See [Billing FAQs](https://ai.google.dev/gemini-api/docs/billing) for details.
-- Prices may differ from the prices listed here and the prices offered on Vertex AI. For Vertex prices, see the [Vertex AI pricing page](https://cloud.google.com/vertex-ai/generative-ai/pricing).
+- Prices may differ from the prices listed here and the prices offered on Gemini Enterprise Agent Platform. For Gemini Enterprise Agent Platform prices, see the [Gemini Enterprise Agent Platform pricing page](https://cloud.google.com/products/gemini-enterprise-agent-platform).
 - If you are using [dynamic retrieval](https://ai.google.dev/gemini-api/docs/grounding) to optimize costs, only requests that contain at least one grounding support URL from the web in their response are charged for Grounding with Google Search. Costs for Gemini always apply. Rate limits are subject to change.

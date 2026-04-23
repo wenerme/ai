@@ -36,8 +36,8 @@ For example, the following Worker implements the public method `add(a, b)`:
 
 For example, if Worker B implements the public method `add(a, b)`:
 
-* [  wrangler.jsonc ](#tab-panel-7618)
-* [  wrangler.toml ](#tab-panel-7619)
+* [  wrangler.jsonc ](#tab-panel-10063)
+* [  wrangler.toml ](#tab-panel-10064)
 
 JSONC
 
@@ -69,9 +69,9 @@ main = "./src/workerB.js"
 
 ```
 
-* [  JavaScript ](#tab-panel-7625)
-* [  TypeScript ](#tab-panel-7626)
-* [  Python ](#tab-panel-7627)
+* [  JavaScript ](#tab-panel-10070)
+* [  TypeScript ](#tab-panel-10071)
+* [  Python ](#tab-panel-10072)
 
 JavaScript
 
@@ -154,8 +154,8 @@ class Default(WorkerEntrypoint):
 
 Worker A can declare a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to Worker B:
 
-* [  wrangler.jsonc ](#tab-panel-7620)
-* [  wrangler.toml ](#tab-panel-7621)
+* [  wrangler.jsonc ](#tab-panel-10065)
+* [  wrangler.toml ](#tab-panel-10066)
 
 JSONC
 
@@ -210,9 +210,9 @@ service = "worker_b"
 
 Making it possible for Worker A to call the `add()` method from Worker B:
 
-* [  JavaScript ](#tab-panel-7622)
-* [  TypeScript ](#tab-panel-7623)
-* [  Python ](#tab-panel-7624)
+* [  JavaScript ](#tab-panel-10067)
+* [  TypeScript ](#tab-panel-10068)
+* [  Python ](#tab-panel-10069)
 
 JavaScript
 
@@ -300,8 +300,8 @@ The [env](https://developers.cloudflare.com/workers/runtime-apis/bindings) objec
 
 For example, a Worker that declares a binding to the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) `GREETING`:
 
-* [  wrangler.jsonc ](#tab-panel-7608)
-* [  wrangler.toml ](#tab-panel-7609)
+* [  wrangler.jsonc ](#tab-panel-10053)
+* [  wrangler.toml ](#tab-panel-10054)
 
 JSONC
 
@@ -415,8 +415,8 @@ Explain Code
 
 If your Worker has a [static assets binding](https://developers.cloudflare.com/workers/static-assets/binding/), you can call `this.env.ASSETS.fetch()` from within an RPC method. Since RPC methods do not receive a `request` parameter, construct a `Request` or URL with any hostname — the hostname is ignored by the assets binding, only the pathname matters:
 
-* [  JavaScript ](#tab-panel-7616)
-* [  TypeScript ](#tab-panel-7617)
+* [  JavaScript ](#tab-panel-10061)
+* [  TypeScript ](#tab-panel-10062)
 
 JavaScript
 
@@ -464,8 +464,8 @@ export class ImageWorker extends WorkerEntrypoint {
 
 The caller can then invoke this method via RPC:
 
-* [  JavaScript ](#tab-panel-7612)
-* [  TypeScript ](#tab-panel-7613)
+* [  JavaScript ](#tab-panel-10057)
+* [  TypeScript ](#tab-panel-10058)
 
 JavaScript
 
@@ -495,8 +495,8 @@ You can also export any number of named `WorkerEntrypoint` classes from within a
 
 You can use this to group multiple pieces of compute together. For example, you might create a distinct `WorkerEntrypoint` for each permission role in your application, and use these to provide role-specific RPC methods:
 
-* [  wrangler.jsonc ](#tab-panel-7610)
-* [  wrangler.toml ](#tab-panel-7611)
+* [  wrangler.jsonc ](#tab-panel-10055)
+* [  wrangler.toml ](#tab-panel-10056)
 
 JSONC
 
@@ -633,8 +633,8 @@ Explain Code
 
 You can then declare a Service binding directly to `AdminEntrypoint` in another Worker:
 
-* [  wrangler.jsonc ](#tab-panel-7614)
-* [  wrangler.toml ](#tab-panel-7615)
+* [  wrangler.jsonc ](#tab-panel-10059)
+* [  wrangler.toml ](#tab-panel-10060)
 
 JSONC
 

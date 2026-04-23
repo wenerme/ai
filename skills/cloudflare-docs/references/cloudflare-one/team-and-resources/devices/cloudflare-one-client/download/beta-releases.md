@@ -74,7 +74,7 @@ This release contains minor fixes and introduces a brand new visual style for th
    * A custom DNS server address is configured on the primary network adapter.  
    * The custom DNS server address on the primary network adapter is changed while the client is connected. To work around this issue, reconnect the client by selecting **Disconnect** and then **Connect** in the client user interface.
 
-Previous version history (8)
+Previous version history (7)
 
 Windows 2026.1.89.1
 
@@ -270,38 +270,6 @@ This release contains improvements and new exciting features, including [SCCM VP
    * A custom DNS server address is configured on the primary network adapter.  
    * The custom DNS server address on the primary network adapter is changed while WARP is connected. To work around this issue, reconnect the WARP client by toggling off and back on.
 
-Windows 2025.4.589.1
-
-**Version:**  Windows 2025.4.589.1 **Date:**  2025-04-22 **Size:** 130 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.4.589.1) 
-
-#### Release notes
-
-**Changes and improvements**
-
-* Fixed an issue causing reconnection loops when captive portals are detected.
-* Fixed an issue that caused WARP client disk encryption posture checks to fail due to missing drive names.
-* Fixed an issue where managed network policies could incorrectly report network location beacons as missing.
-* Improved error reporting for DEX tests.
-* Improved WARP client UI high contrast mode.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve compatibility with networks on MASQUE.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Added a [Collect Captive Portal Diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/captive-portals/#get-captive-portal-logs) button in the client GUI to make it easier for users to collect captive portal debugging diagnostics.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [ Download latest beta release ](https://downloads.cloudflareclient.com/v1/download/macos/beta) 
@@ -345,7 +313,7 @@ This release contains minor fixes and introduces a brand new visual style for th
 * The client may display an empty white screen upon the device waking from sleep. To resolve this issue, exit and then open the client to re-launch it.
 * Canceling login during a single MDM configuration setup results in an empty page with no way to resume authentication. To work around this issue, exit and relaunch the client.
 
-Previous version history (8)
+Previous version history (7)
 
 macOS 2026.1.89.1
 
@@ -478,32 +446,6 @@ This release contains improvements and new exciting features, including [post-qu
 * The WARP client now applies post-quantum cryptography end-to-end on enabled devices accessing resources behind a Cloudflare Tunnel. This feature can be [enabled by MDM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#enable%5Fpost%5Fquantum).
 * Improvement to gracefully handle changes made by MDM while WARP is not running.
 * Fixed an issue affecting Split Tunnel Include mode, where traffic outside the tunnel was blocked when switching between Wi-Fi and Ethernet networks.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-
-macOS 2025.4.589.1
-
-**Version:**  macOS 2025.4.589.1 **Date:**  2025-04-22 **Size:** 96.4 MB 
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.4.589.1) 
-
-#### Release notes
-
-**Changes and improvements**
-
-* Fixed an issue where managed network policies could incorrectly report network location beacons as missing.
-* Improved DEX test error reporting.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Improved captive portal detection.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve compatibility with networks on MASQUE.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Added a [Collect Captive Portal Diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/captive-portals/#get-captive-portal-logs) button in the client GUI to make it easier for users to collect captive portal debugging diagnostics.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
 
 **Known issues**
 

@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/routing/routers/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/routing/routers/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/routing/routers/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/routing/routers/llms-full.txt.
+
+# Body Builder
 
 The [Body Builder](https://openrouter.ai/openrouter/bodybuilder) (`openrouter/bodybuilder`) transforms natural language prompts into structured OpenRouter API requests, enabling you to easily run the same task across multiple models in parallel.
 

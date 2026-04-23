@@ -1,5 +1,3 @@
-# Generating content
-
 The Gemini API supports content generation with images, audio, code, tools, and more. For details on each of these features, read on and check out the task-focused sample code, or read the comprehensive guides.
 
 - [Text generation](https://ai.google.dev/gemini-api/docs/text-generation)

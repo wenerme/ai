@@ -48,12 +48,12 @@ When you format a CSV file for upload:
 * Trailing whitespace characters are not allowed.
 * CRLF (Windows) and LF (Unix) line endings are valid.
 
-To upload the list to Cloudflare One:
+To upload the list to the Cloudflare dashboard:
 
-* [ Dashboard ](#tab-panel-5174)
-* [ Terraform (v5) ](#tab-panel-5175)
+* [ Dashboard ](#tab-panel-7577)
+* [ Terraform (v5) ](#tab-panel-7578)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Upload CSV**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Drag and drop a file into the **CSV file** window, or select a file.
@@ -82,11 +82,11 @@ You can now use this list in the policy builder by choosing the _in list_ operat
 
 ## Create a list manually
 
-* [ Dashboard ](#tab-panel-5176)
-* [ API ](#tab-panel-5177)
-* [ Terraform (v5) ](#tab-panel-5178)
+* [ Dashboard ](#tab-panel-7579)
+* [ API ](#tab-panel-7580)
+* [ Terraform (v5) ](#tab-panel-7581)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Lists**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
 2. Select **Create manual list**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Enter your list element manually into the **Add entry** field and select **Add**.

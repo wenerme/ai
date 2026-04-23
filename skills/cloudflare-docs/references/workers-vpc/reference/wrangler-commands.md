@@ -1,6 +1,6 @@
 ---
 title: Wrangler commands
-description: The following Wrangler commands allow you to manage Workers VPC services.
+description: Wrangler CLI commands for creating and managing Workers VPC services.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -22,9 +22,9 @@ The following [Wrangler commands](https://developers.cloudflare.com/workers/wran
 
 Create a new VPC service
 
-* [  npm ](#tab-panel-6977)
-* [  pnpm ](#tab-panel-6978)
-* [  yarn ](#tab-panel-6979)
+* [  npm ](#tab-panel-9478)
+* [  pnpm ](#tab-panel-9479)
+* [  yarn ](#tab-panel-9480)
 
 Terminal window
 
@@ -99,9 +99,9 @@ Automatically provision draft bindings with new resources
 
 Delete a VPC service
 
-* [  npm ](#tab-panel-6980)
-* [  pnpm ](#tab-panel-6981)
-* [  yarn ](#tab-panel-6982)
+* [  npm ](#tab-panel-9481)
+* [  pnpm ](#tab-panel-9482)
+* [  yarn ](#tab-panel-9483)
 
 Terminal window
 
@@ -154,9 +154,9 @@ Automatically provision draft bindings with new resources
 
 Get a VPC service
 
-* [  npm ](#tab-panel-6983)
-* [  pnpm ](#tab-panel-6984)
-* [  yarn ](#tab-panel-6985)
+* [  npm ](#tab-panel-9484)
+* [  pnpm ](#tab-panel-9485)
+* [  yarn ](#tab-panel-9486)
 
 Terminal window
 
@@ -209,9 +209,9 @@ Automatically provision draft bindings with new resources
 
 List VPC services
 
-* [  npm ](#tab-panel-6986)
-* [  pnpm ](#tab-panel-6987)
-* [  yarn ](#tab-panel-6988)
+* [  npm ](#tab-panel-9487)
+* [  pnpm ](#tab-panel-9488)
+* [  yarn ](#tab-panel-9489)
 
 Terminal window
 
@@ -261,9 +261,9 @@ Automatically provision draft bindings with new resources
 
 Update a VPC service
 
-* [  npm ](#tab-panel-6989)
-* [  pnpm ](#tab-panel-6990)
-* [  yarn ](#tab-panel-6991)
+* [  npm ](#tab-panel-9490)
+* [  pnpm ](#tab-panel-9491)
+* [  yarn ](#tab-panel-9492)
 
 Terminal window
 

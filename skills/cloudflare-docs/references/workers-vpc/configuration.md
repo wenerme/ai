@@ -1,5 +1,6 @@
 ---
 title: Configuration
+description: Configure tunnels, VPC Services, and VPC Networks for Workers VPC.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

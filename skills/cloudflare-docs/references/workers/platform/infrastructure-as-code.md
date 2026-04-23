@@ -572,8 +572,8 @@ Explain Code
 
 This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
-* [  JavaScript ](#tab-panel-9783)
-* [  TypeScript ](#tab-panel-9784)
+* [  JavaScript ](#tab-panel-10001)
+* [  TypeScript ](#tab-panel-10002)
 
 JavaScript
 
@@ -1186,8 +1186,8 @@ Warning
 
 This API is in beta. See the multipart/form-data API below for the stable API.
 
-* [ ES Module ](#tab-panel-9779)
-* [ Python ](#tab-panel-9780)
+* [ ES Module ](#tab-panel-9997)
+* [ Python ](#tab-panel-9998)
 
 Terminal window
 
@@ -1506,8 +1506,8 @@ Explain Code
 
 This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
-* [ Workers ](#tab-panel-9781)
-* [ Workers for Platforms ](#tab-panel-9782)
+* [ Workers ](#tab-panel-9999)
+* [ Workers for Platforms ](#tab-panel-10000)
 
 Terminal window
 

@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/plugins/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/plugins/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/plugins/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/plugins/llms-full.txt.
+
+# Plugins
 
 OpenRouter plugins extend the capabilities of any model by injecting or mutating a request or response to add functionality like PDF processing, automatic JSON repair, and context compression. Unlike [server tools](/docs/guides/features/server-tools) (which the model can call 0-N times), plugins always run once when enabled. Plugins can be enabled per-request via the API or configured as defaults for all your API requests through the [Plugins settings page](https://openrouter.ai/settings/plugins).
 

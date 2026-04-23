@@ -20,7 +20,7 @@ Copy page
 
 # Sandbox bridge
 
-**Last reviewed:**  3 days ago 
+**Last reviewed:**  10 days ago 
 
 The sandbox bridge is a reference-implementation Cloudflare Worker that exposes the [Sandbox SDK](https://developers.cloudflare.com/sandbox/api/) as an HTTP API. Any HTTP client — Python script, Node.js service, CI pipeline — can create and control sandboxes without writing a Worker.
 
@@ -107,9 +107,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-6613)
-* [ Node.js ](#tab-panel-6614)
-* [ Python ](#tab-panel-6615)
+* [ curl ](#tab-panel-8656)
+* [ Node.js ](#tab-panel-8657)
+* [ Python ](#tab-panel-8658)
 
 Terminal window
 
@@ -300,9 +300,9 @@ Explain Code
 
 ### Write and read files
 
-* [ curl ](#tab-panel-6616)
-* [ Node.js ](#tab-panel-6617)
-* [ Python ](#tab-panel-6618)
+* [ curl ](#tab-panel-8659)
+* [ Node.js ](#tab-panel-8660)
+* [ Python ](#tab-panel-8661)
 
 Terminal window
 

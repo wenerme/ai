@@ -1,6 +1,6 @@
 ---
 title: Release notes
-description: Subscribe to RSS
+description: Latest release notes and changes for Cloudflare Workflows.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -668,6 +668,10 @@ This release contains two significant changes all customers should be aware of:
 
 ## Linux
 
+Support for Cloudflare Mesh on RHEL 9
+
+Starting with Cloudflare One Client version 2026.3.846.0, [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality is supported for both RHEL 9 and RHEL 8, whereas full Cloudflare One Client functionality is currently only supported on RHEL 8\. This note will be removed once RHEL 9 support is complete.
+
 [ Package repository ](https://pkg.cloudflareclient.com/) 
 
 | **OS version**             | CentOS 8, RHEL 8, Debian 12, Debian 13, Fedora 34, Fedora 35, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS |

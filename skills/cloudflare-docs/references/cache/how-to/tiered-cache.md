@@ -20,7 +20,7 @@ Copy page
 
 # Tiered Cache
 
-Tiered Cache uses the size of Cloudflare’s network to reduce requests to customer origins by dramatically increasing cache hit ratios. With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare edge data centers must contact the origin server to receive the cacheable content.
+Tiered Cache uses the size of the Cloudflare network to reduce requests to customer origins by dramatically increasing cache hit ratios. With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare edge data centers must contact the origin server to receive the cacheable content.
 
 Tiered Cache works by dividing Cloudflare’s data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate.
 
@@ -40,17 +40,17 @@ This functionality is now offered as part of Cloudflare's origin server safeguar
 
 Smart Tiered Cache dynamically selects the single closest upper tier for each of your website’s origins with no configuration required, using our in-house performance and routing data. Cloudflare collects latency data for each request to an origin, and uses the latency data to determine how well any upper-tier data center is connected with an origin. As a result, Cloudflare can select the data center with the lowest latency to be the upper-tier for an origin.
 
+#### Public cloud origins
+
+Origins hosted on public cloud providers (AWS, GCP, Azure, or Oracle Cloud) often use [anycast ↗](https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/) or regional unicast networking, which prevents Smart Tiered Cache from determining the origin location through latency probing alone. To solve this, you can set a **cloud region hint** that tells Smart Tiered Cache which cloud provider and region your origin is in. Smart Tiered Cache then selects a primary upper-tier data center close to that cloud region, plus a fallback in a different location for resilience. To set up a cloud region hint, refer to [Set a cloud region hint](https://developers.cloudflare.com/cache/how-to/tiered-cache/#set-a-cloud-region-hint).
+
 #### Load Balancing interaction
 
 While Smart Tiered Cache selects one Upper Tier per origin, when using Load Balancing, Smart Tiered Cache will select the single best Upper Tier for the entire [Load Balancing Pool](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/#pools).
 
 #### Caveats
 
-Smart Tiered Cache does not work when an origin is behind an [anycast ↗](https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/) or a regional unicast network because that will prevent us from knowing where the origin is located. As a result, we are unable to select the optimal upper tier and latency may be negatively impacted.
-
-You need to be careful when updating your origin IPs/DNS records while Smart Tiered Cache is enabled. Depending on the changes made, it may cause the existing assigned upper tiers to change, resulting in an increased `MISS` rate as cache is refilled in the new upper tiers. If the origin is switched to a network behind anycast, it will significantly reduce the effectiveness of Smart Tiered Cache.
-
-If you need to use anycast or regional unicast and want to use Smart Tiered cache, please engage your account team.
+You need to be careful when updating your origin IPs/DNS records while Smart Tiered Cache is enabled. Depending on the changes made, it may cause the existing assigned upper tiers to change, resulting in an increased `MISS` rate as cache is refilled in the new upper tiers. If the origin is switched to a network behind anycast, it will significantly reduce the effectiveness of Smart Tiered Cache unless you set a [cloud region hint](https://developers.cloudflare.com/cache/how-to/tiered-cache/#set-a-cloud-region-hint).
 
 ### Generic Global Tiered Cache
 
@@ -183,9 +183,68 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/regional_tiered_
 
 For more API examples and configuration options for Tiered Cache, refer to the [API documentation](https://developers.cloudflare.com/api/resources/argo/subresources/tiered%5Fcaching/methods/get/).
 
+### Set a cloud region hint
+
+If your origin is hosted on a public cloud provider, set a cloud region hint so Smart Tiered Cache can select the optimal upper tier for your cloud region. For background on why this is needed, refer to [Public cloud origins](https://developers.cloudflare.com/cache/how-to/tiered-cache/#smart-tiered-cache).
+
+Cloud region hints are available on all plan types (Free, Pro, Business, and Enterprise) at no additional cost. Supported providers: AWS, GCP, Azure, and Oracle Cloud.
+
+#### Set a cloud region hint in the dashboard
+
+1. Go to **Caching** \> **Tiered Cache** \> **Origin Configuration**.  
+[ Go to **Tiered Cache** ](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
+2. Find your origin IP or hostname and select **Set Region Hint**.
+3. Select your cloud provider and region (for example, `aws:us-east-1` or `gcp:europe-west1`).
+
+#### List supported cloud regions via API
+
+To see all available cloud providers and regions, use the supported regions endpoint:
+
+List supported cloud vendors and regions
+
+```
+
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions/supported_regions" \
+
+  --request GET \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+
+
+```
+
+#### Set a cloud region hint via API
+
+Create or update an origin cloud region mapping
+
+```
+
+curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions" \
+
+  --request PATCH \
+
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+
+  --json '{
+
+    "ip": "203.0.113.1",
+
+    "vendor": "aws",
+
+    "region": "us-east-1"
+
+  }'
+
+
+```
+
 Note
 
-To confirm that Tiered Cache is working, make sure you have the value of `[CacheTieredFill](/logs/logpush/logpush-job/datasets/zone/http_requests/#cachetieredfill)` in your http\_requests logs, this will indicate if Tiered Cache was used to serve the request.
+Custom Tiered Cache settings take precedence over cloud region hint mappings. If you have a custom topology configured, the cloud region hint will not override it.
+
+Note
+
+To confirm that Tiered Cache is working, make sure you have the value of [CacheTieredFill](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/#cachetieredfill) in your http\_requests logs, this will indicate if Tiered Cache was used to serve the request.
 
 ```json
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/cache/","name":"Cache / CDN"}},{"@type":"ListItem","position":3,"item":{"@id":"/cache/how-to/","name":"Cache configuration"}},{"@type":"ListItem","position":4,"item":{"@id":"/cache/how-to/tiered-cache/","name":"Tiered Cache"}}]}

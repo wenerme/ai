@@ -322,10 +322,10 @@
   "anthropic-docs/build-with-claude/vision.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/vision",
     "skill": "anthropic-docs",
-    "etag": "W/\"cb61-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 52053,
-    "updatedAt": "2026-04-17T00:18:19.559Z"
+    "etag": "W/\"cd4e-19db790bf90\"",
+    "lastModified": "Wed, 22 Apr 2026 23:40:10 GMT",
+    "size": 52546,
+    "updatedAt": "2026-04-23T00:21:16.356Z"
   },
   "anthropic-docs/agents-and-tools/agent-skills/overview.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",

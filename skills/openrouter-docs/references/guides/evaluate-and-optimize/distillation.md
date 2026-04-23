@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/evaluate-and-optimize/llms-full.txt.
+
+# Distillation
 
 Model distillation is the process of training a smaller, more efficient model using outputs from a larger model. While this technique is powerful for creating specialized models, it's important to respect the terms of service set by model providers and creators.
 

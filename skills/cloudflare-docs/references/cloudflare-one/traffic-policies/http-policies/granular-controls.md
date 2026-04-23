@@ -36,10 +36,10 @@ To use Application Granular Controls, you must:
 
 To create a Gateway HTTP policy with Application Granular Controls:
 
-* [ Dashboard ](#tab-panel-6028)
-* [ API ](#tab-panel-6029)
+* [ Dashboard ](#tab-panel-6244)
+* [ API ](#tab-panel-6245)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block. Because granular controls are specific to each application, you must use the _Application_ selector with the _is_ operator.

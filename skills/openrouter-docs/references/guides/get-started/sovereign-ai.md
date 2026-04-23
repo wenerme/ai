@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/get-started/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/get-started/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/get-started/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/get-started/llms-full.txt.
+
+# Sovereign AI
 
 Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads -- including the data they process -- remain within specific geographic and jurisdictional boundaries.
 

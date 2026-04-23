@@ -31,8 +31,8 @@ Note that the Context API is available strictly in stateless contexts, that is, 
 
 For example, imagine that you are configuring a Worker called "frontend-worker", which must talk to another Worker called "doc-worker" in order to manipulate documents. You might configure "frontend-worker" with a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) like:
 
-* [  wrangler.jsonc ](#tab-panel-7636)
-* [  wrangler.toml ](#tab-panel-7637)
+* [  wrangler.jsonc ](#tab-panel-10081)
+* [  wrangler.toml ](#tab-panel-10082)
 
 JSONC
 
@@ -105,8 +105,8 @@ The Workers platform is designed to ensure that `ctx.props` can only be set by s
 
 `ctx.props` can also be used to configure an RPC interface to represent a _specific_ resource, thus creating a "custom binding". For example, we could configure a Service Binding to our "doc-worker" which grants access only to a specific document:
 
-* [  wrangler.jsonc ](#tab-panel-7638)
-* [  wrangler.toml ](#tab-panel-7639)
+* [  wrangler.jsonc ](#tab-panel-10083)
+* [  wrangler.toml ](#tab-panel-10084)
 
 JSONC
 
@@ -227,8 +227,8 @@ In this example, the default fetch handler calls the `Greeter` class over RPC, l
 
 Loopback Service Bindings in `ctx.exports` have an extra capability that regular Service Bindings do not: the caller can specify the value of `ctx.props` that should be delivered to the callee.
 
-* [  JavaScript ](#tab-panel-7634)
-* [  TypeScript ](#tab-panel-7635)
+* [  JavaScript ](#tab-panel-10079)
+* [  TypeScript ](#tab-panel-10080)
 
 JavaScript
 

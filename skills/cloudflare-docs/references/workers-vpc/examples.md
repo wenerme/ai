@@ -1,5 +1,6 @@
 ---
 title: Examples
+description: Example Workers that connect to private services using Workers VPC.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

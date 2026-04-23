@@ -43,10 +43,10 @@ If the answer to a majority of these questions is no and your organization relie
 
 To turn on TLS inspection for your Zero Trust organization:
 
-* [ Dashboard ](#tab-panel-5489)
-* [ Terraform (v5) ](#tab-panel-5490)
+* [ Dashboard ](#tab-panel-7718)
+* [ Terraform (v5) ](#tab-panel-7719)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
 1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):  
@@ -98,8 +98,8 @@ You can build pass-through rules to accommodate any type of device or user group
 
 For example, if users are issued a corporate-managed iPhone with limited permissions, set an additional Do Not Inspect policy for all traffic matching the device posture value. That could include the OS type, OS version, or a list of serial numbers (updated via the API with hooks from your MDM tool) for those iPhones:
 
-* [ Dashboard ](#tab-panel-5493)
-* [ API ](#tab-panel-5494)
+* [ Dashboard ](#tab-panel-7722)
+* [ API ](#tab-panel-7723)
 
 | Selector              | Operator | Value                                   | Logic | Action         |
 | --------------------- | -------- | --------------------------------------- | ----- | -------------- |
@@ -167,8 +167,8 @@ Explain Code
 
 If you filter your network-connected devices with IPsec/GRE tunnels, Cloudflare Mesh, or other devices that do not have a Cloudflare certificate installed, you will need to accommodate by creating pass-through policies. For these devices, you should explicitly exempt TLS inspection for the source network IP range from which that traffic will be originating. For example:
 
-* [ Dashboard ](#tab-panel-5491)
-* [ API ](#tab-panel-5492)
+* [ Dashboard ](#tab-panel-7720)
+* [ API ](#tab-panel-7721)
 
 | Selector           | Operator | Value          | Action         |
 | ------------------ | -------- | -------------- | -------------- |

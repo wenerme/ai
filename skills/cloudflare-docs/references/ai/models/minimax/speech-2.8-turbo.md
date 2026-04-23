@@ -24,10 +24,11 @@ Text-to-Speech • MiniMax • Proxied
 
 MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.
 
-| Model Info        |                                          |
-| ----------------- | ---------------------------------------- |
-| Terms and License | [link ↗](https://www.minimaxi.com/terms) |
-| More information  | [link ↗](https://www.minimaxi.com/)      |
+| Model Info        |                                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.minimaxi.com/terms)                                                                                   |
+| More information  | [link ↗](https://www.minimaxi.com/)                                                                                        |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
 
 ## Usage
 
@@ -42,6 +43,16 @@ const response = await env.AI.run(
   {
 
     text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+    voice_id: 'English_expressive_narrator',
+
+    speed: 1,
+
+    volume: 1,
+
+    pitch: 0,
+
+    format: 'mp3',
 
   },
 
@@ -82,6 +93,12 @@ const response = await env.AI.run(
 
     speed: 1.5,
 
+    volume: 1,
+
+    pitch: 0,
+
+    format: 'mp3',
+
   },
 
   {
@@ -119,7 +136,13 @@ const response = await env.AI.run(
 
     speed: 0.8,
 
+    volume: 1,
+
+    pitch: 0,
+
     emotion: 'calm',
+
+    format: 'mp3',
 
   },
 
@@ -156,7 +179,13 @@ const response = await env.AI.run(
 
     voice_id: 'English_expressive_narrator',
 
+    speed: 1,
+
+    volume: 1,
+
     pitch: -6,
+
+    format: 'mp3',
 
   },
 
@@ -179,8 +208,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-158)
-* [ Output ](#tab-panel-159)
+* [ Input ](#tab-panel-256)
+* [ Output ](#tab-panel-257)
 
 text
 
@@ -220,8 +249,8 @@ audio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-156)
-* [ Output ](#tab-panel-157)
+* [ Input ](#tab-panel-254)
+* [ Output ](#tab-panel-255)
 
 ```
 

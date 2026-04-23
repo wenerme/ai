@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+
+# Grafana Cloud
 
 [Grafana Cloud](https://grafana.com/products/cloud/) is a fully-managed observability platform that includes Grafana Tempo for distributed tracing. OpenRouter sends traces via the standard OTLP HTTP/JSON endpoint.
 

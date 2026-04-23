@@ -1,6 +1,6 @@
 ---
 title: Glossary
-description: Review the definitions for terms used across Cloudflare's Workflows documentation.
+description: Definitions of key terms used in the Cloudflare Workflows documentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

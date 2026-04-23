@@ -1,5 +1,6 @@
 ---
 title: Build with Workflows
+description: Guides for building, configuring, and deploying Cloudflare Workflows applications.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

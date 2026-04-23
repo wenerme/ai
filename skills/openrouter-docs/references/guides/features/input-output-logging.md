@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/llms-full.txt.
+
+# Input & Output Logging
 
 Input & Output Logging lets you privately save and review the full content of your requests and responses. Use it to debug issues, compare model responses, and optimize your prompts. Once enabled, your prompts and completions are accessible from your [Logs](https://openrouter.ai/logs) page.
 

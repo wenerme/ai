@@ -1,6 +1,6 @@
 ---
 title: DAG Workflows
-description: The Python Workflows SDK supports DAG workflows in a declarative way, using step.do and parameter names to define dependencies (other steps that must complete before a step can run).
+description: Define directed acyclic graph (DAG) Workflows in Python with declarative step dependencies.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

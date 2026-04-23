@@ -24,9 +24,10 @@ Text-to-Image • ByteDance • Proxied
 
 Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation, and sequential image generation.
 
-| Model Info       |                                                       |
-| ---------------- | ----------------------------------------------------- |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F5) |
+| Model Info       |                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F5)                                                                    |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.5) |
 
 ## Usage
 
@@ -63,8 +64,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-56)
-* [ Output ](#tab-panel-57)
+* [ Input ](#tab-panel-122)
+* [ Output ](#tab-panel-123)
 
 ```
 
@@ -83,7 +84,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/v9yfL5jL43WoPK3Cbac7MnfkO1YxGSbqea3rfOO06fOJIsGzC/tmp17mjrmct.jpg"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/simple-generation-0.jpeg"
 
     ]
 
@@ -133,8 +134,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-58)
-* [ Output ](#tab-panel-59)
+* [ Input ](#tab-panel-124)
+* [ Output ](#tab-panel-125)
 
 ```
 
@@ -157,7 +158,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/XgK4QxmepmyhMSOG0Jb05jAhIAxeIVleoxytNLjAQqeDFWjZB/tmp5vwo098k.jpg"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/high-resolution-0.jpeg"
 
     ]
 
@@ -209,8 +210,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-60)
-* [ Output ](#tab-panel-61)
+* [ Input ](#tab-panel-126)
+* [ Output ](#tab-panel-127)
 
 ```
 
@@ -237,7 +238,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/A8YsG3WmRgp5OV3XS47jJyMfrIMBIRRRYVYaWEUSicZy0aMLA/tmpgbcs879h.jpg"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/image-to-image-0.jpeg"
 
     ]
 
@@ -262,11 +263,11 @@ const response = await env.AI.run(
 
       'A character design sheet for a fantasy warrior: front view, side view, and back view',
 
+    aspect_ratio: '16:9',
+
     sequential_image_generation: 'auto',
 
     max_images: 3,
-
-    aspect_ratio: '16:9',
 
   },
 
@@ -287,8 +288,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-62)
-* [ Output ](#tab-panel-63)
+* [ Input ](#tab-panel-128)
+* [ Output ](#tab-panel-129)
 
 ```
 
@@ -296,11 +297,11 @@ Input / Output JSON
 
     "prompt": "A character design sheet for a fantasy warrior: front view, side view, and back view",
 
+    "aspect_ratio": "16:9",
+
     "sequential_image_generation": "auto",
 
-    "max_images": 3,
-
-    "aspect_ratio": "16:9"
+    "max_images": 3
 
 }
 
@@ -313,7 +314,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/GhUtCYpyffvUGkI5gyiHfG6XsgZKM47veek1eExlta8lWYNmF/tmpcv5bwg8h.jpg"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/sequential-generation-0.jpeg"
 
     ]
 
@@ -367,8 +368,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-64)
-* [ Output ](#tab-panel-65)
+* [ Input ](#tab-panel-130)
+* [ Output ](#tab-panel-131)
 
 ```
 
@@ -397,7 +398,7 @@ Input / Output JSON
 
     "images": [
 
-        "https://replicate.delivery/xezq/jgYAANfEfZsrTE9p7mtEOssRRcZua7p3s1H6VWPRAey6TrxsA/tmpxntp4kc5.jpg"
+        "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.5/multi-image-edit-0.jpeg"
 
     ]
 
@@ -408,8 +409,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-68)
-* [ Output ](#tab-panel-69)
+* [ Input ](#tab-panel-134)
+* [ Output ](#tab-panel-135)
 
 prompt
 
@@ -445,8 +446,8 @@ disable\_safety\_checker
 
 ## API Schemas
 
-* [ Input ](#tab-panel-66)
-* [ Output ](#tab-panel-67)
+* [ Input ](#tab-panel-132)
+* [ Output ](#tab-panel-133)
 
 ```
 

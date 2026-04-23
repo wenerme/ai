@@ -24,10 +24,11 @@ Text-to-Speech • MiniMax • Proxied
 
 MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion control, multilingual support (40+ languages), and voice cloning.
 
-| Model Info        |                                          |
-| ----------------- | ---------------------------------------- |
-| Terms and License | [link ↗](https://www.minimaxi.com/terms) |
-| More information  | [link ↗](https://www.minimaxi.com/)      |
+| Model Info        |                                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.minimaxi.com/terms)                                                                                |
+| More information  | [link ↗](https://www.minimaxi.com/)                                                                                     |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
 
 ## Usage
 
@@ -42,6 +43,16 @@ const response = await env.AI.run(
   {
 
     text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+    voice_id: 'English_expressive_narrator',
+
+    speed: 1,
+
+    volume: 1,
+
+    pitch: 0,
+
+    format: 'mp3',
 
   },
 
@@ -82,6 +93,12 @@ const response = await env.AI.run(
 
     speed: 0.9,
 
+    volume: 1,
+
+    pitch: 0,
+
+    format: 'mp3',
+
   },
 
   {
@@ -117,7 +134,15 @@ const response = await env.AI.run(
 
     voice_id: 'English_expressive_narrator',
 
+    speed: 1,
+
+    volume: 1,
+
+    pitch: 0,
+
     emotion: 'happy',
+
+    format: 'mp3',
 
   },
 
@@ -152,6 +177,16 @@ const response = await env.AI.run(
 
     text: 'This recording is generated at studio quality sample rate for the highest possible audio fidelity.',
 
+    voice_id: 'English_expressive_narrator',
+
+    speed: 1,
+
+    volume: 1,
+
+    pitch: 0,
+
+    format: 'mp3',
+
     sample_rate: 44100,
 
   },
@@ -175,8 +210,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-154)
-* [ Output ](#tab-panel-155)
+* [ Input ](#tab-panel-252)
+* [ Output ](#tab-panel-253)
 
 text
 
@@ -216,8 +251,8 @@ audio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-152)
-* [ Output ](#tab-panel-153)
+* [ Input ](#tab-panel-250)
+* [ Output ](#tab-panel-251)
 
 ```
 

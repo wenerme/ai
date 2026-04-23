@@ -158,7 +158,7 @@ Maximum comprehensiveness for automated context gathering and synthesis across h
 
 ## Specialized task models
 
-### [Gemini Embedding 2 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2-preview)
+### [Gemini Embedding 2](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2)
 
 Our first multimodal embedding model, mapping text, images, video, audio, and PDFs into a unified embedding space for advanced semantic search and RAG systems.
 

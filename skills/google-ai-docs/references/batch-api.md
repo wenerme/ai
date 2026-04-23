@@ -1,5 +1,3 @@
-# Batch API
-
 The Gemini Batch API is designed to process large volumes of requests
 asynchronously at [50% of the standard cost](https://ai.google.dev/gemini-api/docs/pricing).
 The target turnaround time is 24 hours, but in majority of cases, it is much
@@ -338,14 +336,14 @@ specify the embeddings model.
 
     # Creating an embeddings batch job with an input file request:
     file_job = client.batches.create_embeddings(
-        model="gemini-embedding-001",
+        model="gemini-embedding-2",
         src={'file_name': uploaded_batch_requests.name},
         config={'display_name': "Input embeddings batch"},
     )
 
     # Creating an embeddings batch job with an inline request:
     batch_job = client.batches.create_embeddings(
-        model="gemini-embedding-001",
+        model="gemini-embedding-2",
         # For a predefined list of requests `inlined_requests`
         src={'inlined_requests': inlined_requests},
         config={'display_name': "Inlined embeddings batch"},
@@ -356,7 +354,7 @@ specify the embeddings model.
     // Creating an embeddings batch job with an input file request:
     let fileJob;
     fileJob = await client.batches.createEmbeddings({
-        model: 'gemini-embedding-001',
+        model: 'gemini-embedding-2',
         src: {fileName: uploadedBatchRequests.name},
         config: {displayName: 'Input embeddings batch'},
     });
@@ -365,7 +363,7 @@ specify the embeddings model.
     // Creating an embeddings batch job with an inline request:
     let batchJob;
     batchJob = await client.batches.createEmbeddings({
-        model: 'gemini-embedding-001',
+        model: 'gemini-embedding-2',
         // For a predefined a list of requests `inlinedRequests`
         src: {inlinedRequests: inlinedRequests},
         config: {displayName: 'Inlined embeddings batch'},

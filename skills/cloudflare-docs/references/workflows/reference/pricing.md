@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Workflows pricing is identical to Workers Standard pricing and are billed on three dimensions:
+description: Cloudflare Workflows pricing based on CPU time, requests, and duration, included in Workers Free and Paid plans.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

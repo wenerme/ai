@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+
+# Broadcast
 
 Broadcast allows you to automatically send traces from your OpenRouter requests to external observability and analytics platforms. This feature enables you to monitor, debug, and analyze your LLM usage across your preferred tools without any additional instrumentation in your application code.
 

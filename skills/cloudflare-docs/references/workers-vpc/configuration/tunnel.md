@@ -1,6 +1,6 @@
 ---
 title: Cloudflare Tunnel
-description: Cloudflare Tunnel creates secure connections from your infrastructure to Cloudflare's global network, providing the network connectivity that allows Workers to access your private resources.
+description: Set up Cloudflare Tunnel to connect your private network to Workers VPC.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

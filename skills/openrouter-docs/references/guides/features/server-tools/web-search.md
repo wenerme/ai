@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/server-tools/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/server-tools/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/server-tools/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/server-tools/llms-full.txt.
+
+# Web Search
 
 <Note title="Beta">
   Server tools are currently in beta. The API and behavior may change.
@@ -113,15 +117,15 @@ The web search tool accepts optional `parameters` to customize search behavior:
 }
 ```
 
-| Parameter             | Type      | Default  | Description                                                                                                                           |
-| --------------------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `engine`              | string    | `auto`   | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, or `parallel`                                                             |
-| `max_results`         | integer   | 5        | Maximum results per search call (1–25). Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search          |
-| `max_total_results`   | integer   | —        | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops      |
-| `search_context_size` | string    | `medium` | How much context to retrieve per result: `low`, `medium`, or `high`. Only applies to Exa engine                                       |
-| `user_location`       | object    | —        | Approximate user location for location-biased results (see below)                                                                     |
-| `allowed_domains`     | string\[] | —        | Limit results to these domains. Supported by Exa, Parallel, and most native providers (see [domain filtering](#domain-filtering))     |
-| `excluded_domains`    | string\[] | —        | Exclude results from these domains. Supported by Exa, Parallel, and some native providers (see [domain filtering](#domain-filtering)) |
+| Parameter             | Type      | Default  | Description                                                                                                                                                                                                      |
+| --------------------- | --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engine`              | string    | `auto`   | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, or `parallel`                                                                                                                                        |
+| `max_results`         | integer   | 5        | Maximum results per search call (1–25). Applies to Exa, Firecrawl, and Parallel engines; ignored with native provider search                                                                                     |
+| `max_total_results`   | integer   | —        | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                 |
+| `search_context_size` | string    | `medium` | How much context to retrieve: `low`, `medium`, or `high`. For Exa, controls characters per result; for Parallel, controls total characters across all results. Ignored with native provider search and Firecrawl |
+| `user_location`       | object    | —        | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, and Parallel (see below)                                                 |
+| `allowed_domains`     | string\[] | —        | Limit results to these domains. Supported by Exa, Parallel, and most native providers (see [domain filtering](#domain-filtering))                                                                                |
+| `excluded_domains`    | string\[] | —        | Exclude results from these domains. Supported by Exa, Parallel, and some native providers (see [domain filtering](#domain-filtering))                                                                            |
 
 ### User Location
 
@@ -159,8 +163,14 @@ The web search server tool supports multiple search engines:
 | Feature                  | Exa         | Firecrawl       | Parallel    | Native             |
 | ------------------------ | ----------- | --------------- | ----------- | ------------------ |
 | **Domain filtering**     | Yes         | No              | Yes         | Varies by provider |
-| **Context size control** | Yes         | No              | No          | No                 |
+| **Context size control** | Yes\*       | No              | Yes\*\*     | No                 |
 | **API key**              | Server-side | BYOK (your key) | Server-side | Provider-handled   |
+
+<small>
+  *\* Exa: limit applies **per result***
+
+  *\*\* Parallel: limit applies as a **total across all results***
+</small>
 
 ### Firecrawl (BYOK)
 
@@ -174,7 +184,7 @@ Firecrawl searches use your Firecrawl credits directly — no additional charge 
 
 ### Parallel
 
-[Parallel](https://parallel.ai) supports domain filtering and uses OpenRouter credits at the same rate as Exa (\$4 per 1,000 results).
+[Parallel](https://parallel.ai) supports domain filtering and context size control (`search_context_size`), and uses OpenRouter credits at the same rate as Exa (\$4 per 1,000 results).
 
 ## Domain Filtering
 

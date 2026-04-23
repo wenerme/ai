@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/llms-full.txt.
+
+# Principles
 
 OpenRouter helps developers source and optimize AI usage. We believe the future is multi-model and multi-provider.
 

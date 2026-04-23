@@ -101,10 +101,10 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-6070)
-* [ Terraform (v5) ](#tab-panel-6071)
+* [ Dashboard ](#tab-panel-6286)
+* [ Terraform (v5) ](#tab-panel-6287)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Resolver policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:  
 | Selector | Operator | Value                |  

@@ -1,6 +1,6 @@
 ---
 title: Connect Workers to Cloudflare Mesh
-description: This example demonstrates how to use a VPC Network binding with Cloudflare Mesh (formerly WARP Connector) to connect to any private service in your account from a Worker — without pre-registering individual hosts or specifying a tunnel UUID.
+description: Use a VPC Network binding with Cloudflare Mesh to reach private services from a Worker.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -29,8 +29,8 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
-* [  wrangler.jsonc ](#tab-panel-7227)
-* [  wrangler.toml ](#tab-panel-7228)
+* [  wrangler.jsonc ](#tab-panel-9466)
+* [  wrangler.toml ](#tab-panel-9467)
 
 JSONC
 
@@ -46,7 +46,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-15",
+  "compatibility_date": "2026-04-22",
 
   "vpc_networks": [
 
@@ -81,7 +81,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-15"
+compatibility_date = "2026-04-22"
 
 
 [[vpc_networks]]

@@ -31,8 +31,8 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-* [ Dashboard ](#tab-panel-5203)
-* [ Terraform (v5) ](#tab-panel-5204)
+* [ Dashboard ](#tab-panel-7606)
+* [ Terraform (v5) ](#tab-panel-7607)
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
@@ -150,10 +150,10 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-* [ Dashboard ](#tab-panel-5201)
-* [ Terraform (v5) ](#tab-panel-5202)
+* [ Dashboard ](#tab-panel-7604)
+* [ Terraform (v5) ](#tab-panel-7605)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Resolver policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:  
 | Selector | Operator | Value                |  

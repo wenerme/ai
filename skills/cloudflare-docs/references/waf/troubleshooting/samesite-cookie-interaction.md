@@ -26,11 +26,11 @@ The `SameSite` cookie attribute has three different modes:
 
 `SameSite` settings for [Cloudflare cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/) include:
 
-| Cloudflare cookie | SameSite setting      | HTTPS Only |
-| ----------------- | --------------------- | ---------- |
-| \_\_cf\_bm        | SameSite=None; Secure | Yes        |
-| cf\_clearance     | SameSite=None; Secure | Yes        |
-| \_\_cflb          | SameSite=Lax          | No         |
+| Cloudflare cookie | SameSite setting      | HTTPS Only | Partitioned (CHIPS) |
+| ----------------- | --------------------- | ---------- | ------------------- |
+| \_\_cf\_bm        | SameSite=None; Secure | Yes        | No                  |
+| cf\_clearance     | SameSite=None; Secure | Yes        | Yes                 |
+| \_\_cflb          | SameSite=Lax          | No         | No                  |
 
 ## SameSite attribute in session affinity cookies
 
@@ -76,6 +76,24 @@ To resolve the issue, move your website traffic to HTTPS. Cloudflare offers two 
 
 * [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)
 * [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+
+---
+
+## Partitioned cookies (CHIPS) and `cf_clearance`
+
+Cloudflare sets the `Partitioned` attribute on the `cf_clearance` cookie (and on the internal `cf_chl_*` cookies used by the Challenge Platform) to comply with [Cookies Having Independent Partitioned State (CHIPS) ↗ ↗](https://developers.google.com/privacy-sandbox/cookies/chips).
+
+With CHIPS, a cookie set in a third-party context (for example, inside an iframe or from a cross-site subresource) is stored in a partition keyed to the top-level site, rather than being shared across all sites that embed the third party. On Chromium-based browsers that block third-party cookies, this preserves challenge state for cross-site embeds that would otherwise be broken. On browsers that do not implement CHIPS, the `Partitioned` attribute is ignored and behavior is unchanged.
+
+The `Partitioned` attribute is not applied to `__cf_bm`.
+
+### Impact on embedded challenges
+
+Because `cf_clearance` is partitioned, a clearance obtained in one top-level context is not reused in a different top-level context. A visitor who passes a challenge while browsing a site directly will not automatically carry that clearance into another site that embeds it, and vice versa. This is the intended behavior under CHIPS.
+
+### `Partitioned` requires `SameSite=None; Secure`
+
+The `Partitioned` attribute only takes effect on cookies that are also set with `SameSite=None; Secure`. If your site does not serve all traffic over HTTPS, the `cf_clearance` cookie falls back to `SameSite=Lax` (refer to [Known issues with SameSite and cf\_clearance cookies](#known-issues-with-samesite-and-cf%5Fclearance-cookies)), and the `Partitioned` attribute has no effect.
 
 ---
 

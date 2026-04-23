@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"ab9dbf952da8b7ea0bec1f531a5afda2\"",
-    "lastModified": "Fri, 27 Mar 2026 00:15:31 GMT",
-    "size": 22443,
-    "updatedAt": "2026-03-27T00:15:31.287Z"
+    "etag": "W/\"b8d2e63a86b41af6e14664bcdf46a6d1\"",
+    "lastModified": "Thu, 23 Apr 2026 00:12:44 GMT",
+    "size": 25989,
+    "updatedAt": "2026-04-23T00:25:35.548Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -498,10 +498,10 @@
   "openai-docs/guides/latest-model.md": {
     "url": "https://developers.openai.com/api/docs/guides/latest-model.md",
     "skill": "openai-docs",
-    "etag": "\"a7c22ad244e2c2a2f2a8587561145135\"",
-    "lastModified": "Thu, 19 Mar 2026 07:17:59 GMT",
-    "size": 29499,
-    "updatedAt": "2026-03-19T10:15:42.641Z"
+    "etag": "W/\"527e021a129565cfb14804aea5f41bb9\"",
+    "lastModified": "Thu, 23 Apr 2026 00:12:49 GMT",
+    "size": 29655,
+    "updatedAt": "2026-04-23T00:25:47.956Z"
   },
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
@@ -958,6 +958,14 @@
     "lastModified": "Thu, 05 Mar 2026 06:04:33 GMT",
     "size": 1876,
     "updatedAt": "2026-03-05T06:04:33.598Z"
+  },
+  "openai-docs/guides/upgrading-to-gpt-5p4.md": {
+    "url": "https://developers.openai.com/api/docs/guides/upgrading-to-gpt-5p4.md",
+    "skill": "openai-docs",
+    "etag": "W/\"48b0a7a58af7f8321bc28bf1f39f012e\"",
+    "lastModified": "Thu, 23 Apr 2026 00:26:03 GMT",
+    "size": 8687,
+    "updatedAt": "2026-04-23T00:26:03.221Z"
   },
   "openai-docs/guides/video-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/video-generation.md",
@@ -9194,10 +9202,10 @@
   "codex-docs/concepts/sandboxing.md": {
     "url": "https://developers.openai.com/codex/concepts/sandboxing.md",
     "skill": "codex-docs",
-    "etag": "W/\"aebd04ae83f1a004067aa3cc644ac34f\"",
-    "lastModified": "Tue, 21 Apr 2026 10:40:42 GMT",
-    "size": 7381,
-    "updatedAt": "2026-04-21T10:40:42.498Z"
+    "etag": "W/\"f1e0621a44fafa9cf15507f191bb5356\"",
+    "lastModified": "Thu, 23 Apr 2026 00:31:02 GMT",
+    "size": 8458,
+    "updatedAt": "2026-04-23T00:31:02.688Z"
   },
   "codex-docs/concepts/subagents.md": {
     "url": "https://developers.openai.com/codex/concepts/subagents.md",
@@ -9266,10 +9274,10 @@
   "codex-docs/enterprise/managed-configuration.md": {
     "url": "https://developers.openai.com/codex/enterprise/managed-configuration.md",
     "skill": "codex-docs",
-    "etag": "W/\"55c8acf76b59076e8841e3402333753b\"",
-    "lastModified": "Tue, 21 Apr 2026 10:40:45 GMT",
-    "size": 10832,
-    "updatedAt": "2026-04-21T10:40:45.513Z"
+    "etag": "W/\"60c79b761656536e2f9fb025055503b0\"",
+    "lastModified": "Thu, 23 Apr 2026 00:31:05 GMT",
+    "size": 10894,
+    "updatedAt": "2026-04-23T00:31:05.097Z"
   },
   "codex-docs/feature-maturity.md": {
     "url": "https://developers.openai.com/codex/feature-maturity.md",

@@ -18,6 +18,53 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 All deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-04-22: Legacy GPT model snapshots
+
+To improve reliability and make it easier for developers to choose the right models, we are deprecating a set of older OpenAI models. Access to these models will be shut down on the dates below.
+
+| Shutdown date | Model snapshot                            | Substitute model      |
+| ------------- | ----------------------------------------- | --------------------- |
+| 2026-07-23    | `computer-use-preview-2025-03-11`         | `5.4-mini`            |
+| 2026-07-23    | `gpt-4o-audio-preview-2024-12-17`         | `gpt-audio`           |
+| 2026-07-23    | `gpt-4o-mini-audio-preview-2024-12-17`    | `gpt-audio`           |
+| 2026-07-23    | `gpt-4o-mini-realtime-preview-2024-12-17` | `gpt-realtime-mini`   |
+| 2026-07-23    | `gpt-4o-mini-search-preview-2025-03-11`   | `4.1-mini`            |
+| 2026-07-23    | `gpt-4o-mini-tts-2025-03-20`              | `gpt-realtime`        |
+| 2026-07-23    | `gpt-4o-search-preview-2025-03-11`        | `gpt-4.1-mini`        |
+| 2026-07-23    | `gpt-5-chat-latest`                       | `gpt-5.3-chat-latest` |
+| 2026-07-23    | `gpt-5-codex`                             | `gpt-5.4`             |
+| 2026-07-23    | `gpt-5.1-chat-latest`                     | `gpt-5.3-chat-latest` |
+| 2026-07-23    | `gpt-5.1-codex`                           | `gpt-5`               |
+| 2026-07-23    | `gpt-5.1-codex-max`                       | `gpt-5.4`             |
+| 2026-07-23    | `gpt-5.1-codex-mini`                      | `gpt-5.4-mini`        |
+| 2026-07-23    | `gpt-audio-mini-2025-10-06`               | `gpt-audio`           |
+| 2026-07-23    | `gpt-realtime-mini-2025-10-06`            | `gpt-realtime-mini`   |
+| 2026-07-23    | `o3-deep-research-2025-06-26`             | `5.4-Pro`             |
+| 2026-07-23    | `o4-mini-deep-research-2025-06-26`        | `5.4-Pro`             |
+| 2026-07-23    | `gpt-5.2-codex`                           | `gpt-5.4`             |
+| 2026-10-23    | `gpt-3.5-turbo-0125`                      | `gpt-4.1-mini`        |
+| 2026-10-23    | `gpt-4-0613`                              | `gpt-4.1`             |
+| 2026-10-23    | `gpt-4-1106-preview`                      | `gpt-4.1`             |
+| 2026-10-23    | `gpt-4-turbo`                             | `gpt-4.1`             |
+| 2026-10-23    | `gpt-4.1-nano`                            | `gpt-5-nano`          |
+| 2026-10-23    | `gpt-4o-2024-05-13`                       | `gpt-4.1`             |
+| 2026-10-23    | `gpt-image-1`                             | `gpt-image-1.5`       |
+| 2026-10-23    | `o1-2024-12-17`                           | `o3`                  |
+| 2026-10-23    | `o1-pro-2025-03-19`                       | `5.4-Pro`             |
+| 2026-10-23    | `o3-mini-2025-01-31`                      | `o3`                  |
+| 2026-10-23    | `ft-o4-mini-2025-04-16`                   | `gpt-5-mini`          |
+| 2026-10-23    | `o4-mini-2025-04-16`                      | `gpt-5-mini`          |
+
+We are also removing fine-tuned versions of models being deprecated above.
+
+| Shutdown date | Model snapshot               | Substitute model |
+| ------------- | ---------------------------- | ---------------- |
+| 2026-10-23    | `ft-gpt-3.5-turbo`           | `gpt-4.1-mini`   |
+| 2026-10-23    | `ft-gpt-4`                   | `gpt-4.1`        |
+| 2026-10-23    | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5-nano`     |
+| 2026-10-23    | `ft-babbage-002`             | `gpt-5-mini`     |
+| 2026-10-23    | `ft-davinci-002`             | `gpt-5-mini`     |
+
 ### 2026-03-24: Sora 2 video generation models and Videos API
 
 On March 24th, 2026, we notified developers using the Videos API and Sora 2 video generation model aliases and snapshots of their deprecation and removal from the API on September 24, 2026.

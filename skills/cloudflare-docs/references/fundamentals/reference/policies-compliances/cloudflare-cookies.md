@@ -58,6 +58,8 @@ You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via th
 
 The `cf_clearance` cookie is required for [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/). JavaScript detections are stored in the `cf_clearance` cookie.
 
+The `cf_clearance` cookie is set with `SameSite=None; Secure; Partitioned` so that challenge state is preserved across cross-site requests while complying with [CHIPS ↗ ↗](https://developers.google.com/privacy-sandbox/cookies/chips). When the cookie is issued inside a third-party context, it is stored in a partition keyed to the top-level site and is not shared across embedding sites. For details, refer to [Partitioned cookies (CHIPS) and cf\_clearance](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#partitioned-cookies-chips-and-cf%5Fclearance).
+
 ### cf\_ob\_info and cf\_use\_ob cookie for Cloudflare Always Online
 
 The `cf_ob_info` cookie provides information on:

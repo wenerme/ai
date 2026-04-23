@@ -24,10 +24,11 @@ Text-to-Video • Vidu • Proxied
 
 Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video generation while maintaining audio support and up to 16-second clips.
 
-| Model Info        |                                      |
-| ----------------- | ------------------------------------ |
-| Terms and License | [link ↗](https://www.vidu.com/terms) |
-| More information  | [link ↗](https://www.vidu.com/)      |
+| Model Info        |                                                                                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.vidu.com/terms)                                                                            |
+| More information  | [link ↗](https://www.vidu.com/)                                                                                 |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/vidu/q3-turbo) |
 
 ## Usage
 
@@ -42,6 +43,10 @@ const response = await env.AI.run(
   {
 
     prompt: 'A cat lazily stretching on a sunlit windowsill',
+
+    duration: 5,
+
+    resolution: '720p',
 
   },
 
@@ -80,9 +85,9 @@ const response = await env.AI.run(
 
       'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
 
-    resolution: '1080p',
-
     duration: 5,
+
+    resolution: '1080p',
 
   },
 
@@ -119,9 +124,11 @@ const response = await env.AI.run(
 
       'A waterfall cascading down mossy rocks in a tropical jungle, mist rising',
 
-    aspect_ratio: '9:16',
-
     duration: 5,
+
+    resolution: '720p',
+
+    aspect_ratio: '9:16',
 
   },
 
@@ -195,9 +202,9 @@ const response = await env.AI.run(
 
     prompt: 'A sailboat gliding across calm ocean waters at sunset',
 
-    resolution: '540p',
-
     duration: 3,
+
+    resolution: '540p',
 
   },
 
@@ -220,8 +227,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-250)
-* [ Output ](#tab-panel-251)
+* [ Input ](#tab-panel-426)
+* [ Output ](#tab-panel-427)
 
 prompt
 
@@ -257,8 +264,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-248)
-* [ Output ](#tab-panel-249)
+* [ Input ](#tab-panel-424)
+* [ Output ](#tab-panel-425)
 
 ```
 

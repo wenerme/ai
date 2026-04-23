@@ -1,5 +1,6 @@
 ---
 title: Observability
+description: Monitor and analyze Cloudflare Workflows execution with metrics, analytics, and logging tools.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

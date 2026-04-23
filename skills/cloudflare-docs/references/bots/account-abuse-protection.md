@@ -46,9 +46,9 @@ User profiling was created with privacy in mind. Its design and engineering alig
 
 Other Cloudflare customers cannot access your user profiles. They are unique to your zone.
 
-User ID is enabled by default in the Cloudflare dashboard.
+User ID is an opt-in feature that can be enabled in Security Settings.
 
-To edit or disable the setting:
+To enable, edit, or disable the setting:
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

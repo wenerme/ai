@@ -18,6 +18,16 @@ Copy page
 
 [ Subscribe to RSS ](https://developers.cloudflare.com/stream/changelog/index.xml)
 
+## 2026-04-13
+
+**HLS manifests now reference fragmented MP4 segments**
+
+On-demand HLS manifests now reference fragmented MP4 (`.mp4`) segments for video and audio, replacing the previous MPEG-TS (`.ts`) segments. HLS manifest URLs have not changed.
+
+This change has been transparent to the majority of customers. If you use a third-party player or cache HLS manifests, refresh your cached manifests to pick up the updated segment references. Players that fetch manifests fresh on each playback session are unaffected. To ensure best performance, we recommend that you do not cache HLS/DASH manifests outside of Stream. Old segment references may result in `404` errors after 2026-05-13.
+
+For more information, refer to [Use your own player](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/).
+
 ## 2025-03-12
 
 **Stream Live WebRTC WHIP/WHEP Upgrades**

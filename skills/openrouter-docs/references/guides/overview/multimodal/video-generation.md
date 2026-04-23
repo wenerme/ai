@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+
+# Video Generation
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/models?output_modalities=video).
 

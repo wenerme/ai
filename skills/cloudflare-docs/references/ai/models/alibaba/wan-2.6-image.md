@@ -24,10 +24,11 @@ Text-to-Image • Alibaba • Proxied
 
 Alibaba's Wan 2.6 text-to-image model generating images from text prompts with optional negative prompts and customizable dimensions.
 
-| Model Info        |                                                      |
-| ----------------- | ---------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
-| More information  | [link ↗](https://wan.video/)                         |
+| Model Info        |                                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                    |
+| More information  | [link ↗](https://wan.video/)                                                                                            |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
 
 ## Usage
 
@@ -59,6 +60,8 @@ console.log(response)
 ```
 
 Explain Code
+
+Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/simple-generation.png) 
 
 ## Examples
 
@@ -97,6 +100,8 @@ console.log(response)
 
 Explain Code
 
+Response200 ![Custom Dimensions](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/custom-dimensions.png) 
+
 **Square Format**  — Square image for social media or product photos 
 
 TypeScript
@@ -131,6 +136,8 @@ console.log(response)
 ```
 
 Explain Code
+
+Response200 ![Square Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/square-format.png) 
 
 **Negative Prompt**  — Guide generation away from unwanted elements 
 
@@ -167,6 +174,8 @@ console.log(response)
 
 Explain Code
 
+Response200 ![Negative Prompt](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/negative-prompt.png) 
+
 **Portrait Format**  — Tall vertical image for portraits 
 
 TypeScript
@@ -202,10 +211,12 @@ console.log(response)
 
 Explain Code
 
+Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/alibaba__wan-2.6-image/portrait-format.png) 
+
 ## Parameters
 
-* [ Input ](#tab-panel-10)
-* [ Output ](#tab-panel-11)
+* [ Input ](#tab-panel-30)
+* [ Output ](#tab-panel-31)
 
 prompt
 
@@ -219,18 +230,14 @@ negative\_prompt
 
 `string`
 
-n
-
-`number`const: 1
-
 image
 
 `string`format: uri
 
 ## API Schemas
 
-* [ Input ](#tab-panel-8)
-* [ Output ](#tab-panel-9)
+* [ Input ](#tab-panel-28)
+* [ Output ](#tab-panel-29)
 
 ```
 
@@ -259,14 +266,6 @@ image
     "negative_prompt": {
 
       "type": "string"
-
-    },
-
-    "n": {
-
-      "type": "number",
-
-      "const": 1
 
     }
 

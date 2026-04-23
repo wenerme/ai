@@ -24,10 +24,11 @@ Text-to-Image • Google • Proxied
 
 Google's higher-quality image generation model with improved detail and prompt adherence.
 
-| Model Info        |                                                        |
-| ----------------- | ------------------------------------------------------ |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)       |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Model Info        |                                                                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                         |
+| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                                   |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
 
 ## Usage
 
@@ -66,7 +67,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Product Photography](https://replicate.delivery/xezq/pKxv2F52WJ5aH9RcN4mefOdxvfeeKUfiuxLrXBcziHDGaSNmF/tmp5dsx8j7h.png) 
+Response200 ![Product Photography](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/product-photography.png) 
 
 ## Examples
 
@@ -107,7 +108,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Fantasy Illustration](https://replicate.delivery/xezq/upf6QxJsbj2DLiXFPheoWEpyYVKefseWbhQOqh3ZQ5G7XpGzC/tmp38w8fb13.jpeg) 
+Response200 ![Fantasy Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/fantasy-illustration.png) 
 
 **Architectural Visualization**  — Modern architecture render 
 
@@ -127,9 +128,9 @@ const response = await env.AI.run(
 
     aspect_ratio: '16:9',
 
-    image_size: '4K',
-
     output_format: 'jpg',
+
+    image_size: '4K',
 
   },
 
@@ -148,7 +149,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Architectural Visualization](https://replicate.delivery/xezq/wVDir3Wl4zK6OZ2UdNZZUFfjxRnI0m6qMys09tpNFkiLmaMLA/tmpaeoibzxr.jpeg) 
+Response200 ![Architectural Visualization](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/architectural-visualization.jpg) 
 
 **Character Design**  — Game character concept art 
 
@@ -185,12 +186,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Character Design](https://replicate.delivery/xezq/RvsT0pTkqOqcENng7XvcI3D0RPrYxpJzoh5WzbPz2FFiTNmF/tmpi_j7bnz0.jpeg) 
+Response200 ![Character Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-pro/character-design.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-110)
-* [ Output ](#tab-panel-111)
+* [ Input ](#tab-panel-200)
+* [ Output ](#tab-panel-201)
 
 prompt
 
@@ -218,8 +219,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-108)
-* [ Output ](#tab-panel-109)
+* [ Input ](#tab-panel-198)
+* [ Output ](#tab-panel-199)
 
 ```
 

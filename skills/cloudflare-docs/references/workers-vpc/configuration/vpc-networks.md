@@ -1,6 +1,6 @@
 ---
 title: VPC Networks
-description: VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific Cloudflare Tunnel to reach any service behind that tunnel, or bind to Cloudflare Mesh to reach any Mesh node, client device, or IP route in your account.
+description: Bind Workers to an entire tunnel or Cloudflare Mesh without pre-registering hosts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -32,8 +32,8 @@ Binding directly to a tunnel through a VPC Network binding requires the **Connec
 
 Reference a specific Cloudflare Tunnel directly by its UUID:
 
-* [  wrangler.jsonc ](#tab-panel-9160)
-* [  wrangler.toml ](#tab-panel-9161)
+* [  wrangler.jsonc ](#tab-panel-9458)
+* [  wrangler.toml ](#tab-panel-9459)
 
 JSONC
 
@@ -93,8 +93,8 @@ Your account must have at least one active [Cloudflare Tunnel](https://developer
 
 Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 
-* [  wrangler.jsonc ](#tab-panel-9162)
-* [  wrangler.toml ](#tab-panel-9163)
+* [  wrangler.jsonc ](#tab-panel-9460)
+* [  wrangler.toml ](#tab-panel-9461)
 
 JSONC
 

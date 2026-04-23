@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+
+# Uptime Optimization
 
 OpenRouter continuously monitors the health and availability of AI providers to ensure maximum uptime for your applications. We track response times, error rates, and availability across all providers in real-time, and route based on this feedback.
 

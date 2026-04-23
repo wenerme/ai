@@ -24,10 +24,11 @@ Text-to-Image • Google • Proxied
 
 Google's second-generation image generation model with improved quality and speed.
 
-| Model Info        |                                                        |
-| ----------------- | ------------------------------------------------------ |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)       |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Model Info        |                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                       |
+| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                                 |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2) |
 
 ## Usage
 
@@ -64,7 +65,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Futuristic City](https://replicate.delivery/xezq/pfgMVDPcly3NRadjHLSGX9IzjddIEUXOrngjjeUFhVk860YWA/tmpxll_idao.jpeg) 
+Response200 ![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png) 
 
 ## Examples
 
@@ -105,7 +106,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Abstract Art](https://replicate.delivery/xezq/fbCYosDwVy1gP6OXg7DnPiPafKKpe0lfuST3pMp7jcoSRWjZB/tmpydgbcajy.png) 
+Response200 ![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png) 
 
 **With Google Search**  — Use web search grounding for current events 
 
@@ -144,7 +145,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![With Google Search](https://replicate.delivery/xezq/IhdWyniiCsIVMZlgmrxEi9lzSSMeBDCN0XIpRvvG3fWZH1YWA/tmp4kw10p2y.jpeg) 
+Response200 ![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png) 
 
 **High Resolution Portrait**  — 4K portrait with specific aspect ratio 
 
@@ -164,9 +165,9 @@ const response = await env.AI.run(
 
     aspect_ratio: '3:4',
 
-    resolution: '4K',
-
     output_format: 'jpg',
+
+    resolution: '4K',
 
   },
 
@@ -185,12 +186,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![High Resolution Portrait](https://replicate.delivery/xezq/blTBOLzoFe3tbabQ7LZSRfsEwLCeL0uAnZ6wofdHiuPQaWjZB/tmp5qfopy_p.jpeg) 
+Response200 ![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-106)
-* [ Output ](#tab-panel-107)
+* [ Input ](#tab-panel-196)
+* [ Output ](#tab-panel-197)
 
 prompt
 
@@ -226,8 +227,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-104)
-* [ Output ](#tab-panel-105)
+* [ Input ](#tab-panel-194)
+* [ Output ](#tab-panel-195)
 
 ```
 

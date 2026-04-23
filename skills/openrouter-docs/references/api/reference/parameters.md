@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+
+# Parameters
 
 Sampling parameters shape the token generation process of the model. You may send any parameters from the following list, as well as others, to OpenRouter.
 

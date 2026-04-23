@@ -1,6 +1,6 @@
 ---
 title: Build a Durable AI Agent
-description: In this guide, you will build an AI agent that researches GitHub repositories. Give it a task like &#34;Compare open-source LLM projects&#34; and it will:
+description: Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -560,8 +560,8 @@ Explain Code
 ## 5\. Configure your project
 
 1. Open `wrangler.jsonc` and add the Agent and Workflow configuration:  
-   * [  wrangler.jsonc ](#tab-panel-10817)  
-   * [  wrangler.toml ](#tab-panel-10818)  
+   * [  wrangler.jsonc ](#tab-panel-11119)  
+   * [  wrangler.toml ](#tab-panel-11120)  
 JSONC  
 ```  
 {  
@@ -569,7 +569,7 @@ JSONC
   "name": "durable-ai-agent",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-16",  
+  "compatibility_date": "2026-04-22",  
   "observability": {  
     "enabled": true  
   },  
@@ -603,7 +603,7 @@ TOML
 name = "durable-ai-agent"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-16"  
+compatibility_date = "2026-04-22"  
 [observability]  
 enabled = true  
 [[durable_objects.bindings]]  

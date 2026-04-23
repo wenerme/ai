@@ -40,10 +40,10 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-* [ Dashboard ](#tab-panel-5982)
-* [ API ](#tab-panel-5983)
+* [ Dashboard ](#tab-panel-6198)
+* [ API ](#tab-panel-6199)
 
-1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Traffic policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies**.
 2. Select **Policy settings** and turn on **IDS**.
 
 To start using IDS via the API, first create a new ruleset in the `magic-transit-ids-managed` phase with a rule which is enabled.

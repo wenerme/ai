@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+
+# Multimodal Capabilities
 
 OpenRouter supports multiple input modalities beyond text, allowing you to send images, PDFs, audio, and video files to compatible models through our unified API. This enables rich multimodal interactions for a wide variety of use cases.
 

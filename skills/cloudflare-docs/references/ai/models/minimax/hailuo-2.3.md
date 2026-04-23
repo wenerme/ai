@@ -24,10 +24,11 @@ Text-to-Video • MiniMax • Proxied
 
 A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.
 
-| Model Info        |                                      |
-| ----------------- | ------------------------------------ |
-| Terms and License | [link ↗](https://hailuoai.com/terms) |
-| More information  | [link ↗](https://hailuoai.com/)      |
+| Model Info        |                                                                                                                      |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://hailuoai.com/terms)                                                                                 |
+| More information  | [link ↗](https://hailuoai.com/)                                                                                      |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3) |
 
 ## Usage
 
@@ -42,6 +43,10 @@ const response = await env.AI.run(
   {
 
     prompt: 'A golden retriever playing fetch on a sandy beach at sunset',
+
+    prompt_optimizer: true,
+
+    fast_pretreatment: false,
 
     duration: 6,
 
@@ -84,11 +89,13 @@ const response = await env.AI.run(
 
       'A professional chef preparing sushi in a traditional Japanese kitchen, detailed close-up shots',
 
+    prompt_optimizer: true,
+
+    fast_pretreatment: false,
+
     duration: 6,
 
     resolution: '1080P',
-
-    prompt_optimizer: true,
 
   },
 
@@ -121,13 +128,17 @@ const response = await env.AI.run(
 
   {
 
+    prompt:
+
+      'Slowly zoom in with subtle parallax movement, gentle atmospheric motion',
+
     first_frame_image:
 
       'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
 
-    prompt:
+    prompt_optimizer: true,
 
-      'Slowly zoom in with subtle parallax movement, gentle atmospheric motion',
+    fast_pretreatment: false,
 
     duration: 6,
 
@@ -168,11 +179,13 @@ const response = await env.AI.run(
 
       'Fireworks exploding over a city skyline at night, colorful reflections on water',
 
+    prompt_optimizer: true,
+
+    fast_pretreatment: true,
+
     duration: 6,
 
     resolution: '768P',
-
-    fast_pretreatment: true,
 
   },
 
@@ -195,8 +208,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-138)
-* [ Output ](#tab-panel-139)
+* [ Input ](#tab-panel-228)
+* [ Output ](#tab-panel-229)
 
 prompt
 
@@ -222,10 +235,6 @@ resolution
 
 `string`requireddefault: 768Penum: 768P, 1080P
 
-callback\_url
-
-`string`
-
 video
 
 `string`format: uri
@@ -240,8 +249,8 @@ status
 
 ## API Schemas
 
-* [ Input ](#tab-panel-136)
-* [ Output ](#tab-panel-137)
+* [ Input ](#tab-panel-226)
+* [ Output ](#tab-panel-227)
 
 ```
 
@@ -322,12 +331,6 @@ status
         "1080P"
 
       ]
-
-    },
-
-    "callback_url": {
-
-      "type": "string"
 
     }
 

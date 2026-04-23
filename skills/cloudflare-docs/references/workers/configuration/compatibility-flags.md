@@ -30,8 +30,8 @@ Compatibility flags can be set in a Worker's [Wrangler configuration file](https
 
 This example enables the specific flag `formdata_parser_supports_files`, which is described [below](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#formdata-parsing-supports-file). As of the specified date, `2021-09-14`, this particular flag was not yet enabled by default, but, by specifying it in `compatibility_flags`, we can enable it anyway. `compatibility_flags` can also be used to disable changes that became the default in the past.
 
-* [  wrangler.jsonc ](#tab-panel-9381)
-* [  wrangler.toml ](#tab-panel-9382)
+* [  wrangler.jsonc ](#tab-panel-9553)
+* [  wrangler.toml ](#tab-panel-9554)
 
 JSONC
 
@@ -87,8 +87,8 @@ A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs
 
 To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
 
-* [  wrangler.jsonc ](#tab-panel-9385)
-* [  wrangler.toml ](#tab-panel-9386)
+* [  wrangler.jsonc ](#tab-panel-9557)
+* [  wrangler.toml ](#tab-panel-9558)
 
 JSONC
 
@@ -104,7 +104,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-21"
+  "compatibility_date": "2026-04-22"
 
 }
 
@@ -119,13 +119,13 @@ compatibility_flags = [ "nodejs_compat" ]
 
 # Set this to today's date
 
-compatibility_date = "2026-04-21"
+compatibility_date = "2026-04-22"
 
 
 ```
 
-* [  wrangler.jsonc ](#tab-panel-9379)
-* [  wrangler.toml ](#tab-panel-9380)
+* [  wrangler.jsonc ](#tab-panel-9551)
+* [  wrangler.toml ](#tab-panel-9552)
 
 JSONC
 
@@ -157,8 +157,8 @@ As additional Node.js APIs are added, they will be made available under the `nod
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
-* [  wrangler.jsonc ](#tab-panel-9383)
-* [  wrangler.toml ](#tab-panel-9384)
+* [  wrangler.jsonc ](#tab-panel-9555)
+* [  wrangler.toml ](#tab-panel-9556)
 
 JSONC
 
@@ -190,6 +190,41 @@ compatibility_flags = [ "nodejs_als" ]
 
 Newest flags are listed first.
 
+### Remove Node.js 24.x end-of-life APIs
+
+| **Default as of**   | 2028-04-30                       |
+| ------------------- | -------------------------------- |
+| **Flag to enable**  | remove\_nodejs\_compat\_eol\_v24 |
+| **Flag to disable** | add\_nodejs\_compat\_eol\_v24    |
+
+When `remove_nodejs_compat_eol_v24` is enabled, APIs that reached end-of-life in Node.js 24.x are removed.
+
+This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2028-04-30.
+
+### Remove Node.js 22.x end-of-life APIs
+
+| **Default as of**   | 2027-04-30                       |
+| ------------------- | -------------------------------- |
+| **Flag to enable**  | remove\_nodejs\_compat\_eol\_v22 |
+| **Flag to disable** | add\_nodejs\_compat\_eol\_v22    |
+
+When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in Node.js 22.x are removed.
+
+This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
+
+### Enhanced error serialization
+
+| **Default as of**   | 2026-04-21                     |
+| ------------------- | ------------------------------ |
+| **Flag to enable**  | enhanced\_error\_serialization |
+| **Flag to disable** | legacy\_error\_serialization   |
+
+When `enhanced_error_serialization` is enabled, errors serialized using `structuredClone()` or V8 serialization support more error types and include own properties on the error object.
+
+Note that when enabled, deserialization of errors will not preserve the original stack trace by default.
+
+Previously, only basic `Error` types were serialized, and own properties added to error objects were lost during serialization.
+
 ### Use an isolated PID namespace for containers
 
 | **Default as of**   | 2026-04-01                     |
@@ -200,6 +235,130 @@ Newest flags are listed first.
 When `containers_pid_namespace` is set, containers will use an isolated PID namespace. The `ENTRYPOINT` of your container will have PID 1.
 
 When unset, the container shares the PID namespace with the virtual machine (VM) containing the container. The `ENTRYPOINT` of your container will _not_ have PID 1 and other processes running on the VM (that are not part of your container) will be visible.
+
+### Spec-compliant TextEncoderStream/TextDecoderStream backpressure
+
+| **Default as of**   | 2026-03-24                                         |
+| ------------------- | -------------------------------------------------- |
+| **Flag to enable**  | encoder\_stream\_spec\_compliant\_backpressure     |
+| **Flag to disable** | no\_encoder\_stream\_spec\_compliant\_backpressure |
+
+When `encoder_stream_spec_compliant_backpressure` is enabled, `TextEncoderStream` and `TextDecoderStream` use a readable-side high water mark of 0, as specified by the [WHATWG Encoding Standard ↗](https://encoding.spec.whatwg.org/).
+
+With a high water mark of 0, the readable side starts with backpressure applied, so writes correctly block until a reader pulls. Previously, the high water mark defaulted to 1, which caused `pull()` to fire at startup, clearing backpressure before any write occurred.
+
+### Spec-compliant WritableStream writer behavior
+
+| **Default as of**   | 2026-03-24                                    |
+| ------------------- | --------------------------------------------- |
+| **Flag to enable**  | writable\_stream\_spec\_compliant\_writer     |
+| **Flag to disable** | no\_writable\_stream\_spec\_compliant\_writer |
+
+When `writable_stream_spec_compliant_writer` is enabled, several `WritableStream` spec compliance issues around writer lock and release behavior are fixed to match the [WHATWG Streams Standard ↗](https://streams.spec.whatwg.org/).
+
+### Enable global Performance classes
+
+| **Default as of**   | 2026-03-17                            |
+| ------------------- | ------------------------------------- |
+| **Flag to enable**  | enable\_global\_performance\_classes  |
+| **Flag to disable** | disable\_global\_performance\_classes |
+
+When `enable_global_performance_classes` is enabled, the following classes are available on the global scope: `PerformanceEntry`, `PerformanceMark`, `PerformanceMeasure`, `PerformanceResourceTiming`, `PerformanceObserver`, and `PerformanceObserverEntryList`.
+
+These classes are also implicitly enabled by the `enable_nodejs_perf_hooks_module` flag.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+### Enable `node:child_process` module
+
+| **Default as of**   | 2026-03-17                              |
+| ------------------- | --------------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_child\_process\_module  |
+| **Flag to disable** | disable\_nodejs\_child\_process\_module |
+
+The `enable_nodejs_child_process_module` flag enables the `node:child_process` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/child%5Fprocess.html) for more details about the `node:child_process` API.
+
+### Enable `node:perf_hooks` module
+
+| **Default as of**   | 2026-03-17                           |
+| ------------------- | ------------------------------------ |
+| **Flag to enable**  | enable\_nodejs\_perf\_hooks\_module  |
+| **Flag to disable** | disable\_nodejs\_perf\_hooks\_module |
+
+The `enable_nodejs_perf_hooks_module` flag enables the `node:perf_hooks` module in Workers. This flag also implicitly enables global Performance classes (`PerformanceEntry`, `PerformanceMark`, `PerformanceMeasure`, `PerformanceResourceTiming`, `PerformanceObserver`, and `PerformanceObserverEntryList`).
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/perf%5Fhooks.html) for more details about the `node:perf_hooks` API.
+
+### Enable `node:readline` module
+
+| **Default as of**   | 2026-03-17                        |
+| ------------------- | --------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_readline\_module  |
+| **Flag to disable** | disable\_nodejs\_readline\_module |
+
+The `enable_nodejs_readline_module` flag enables the `node:readline` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/readline.html) for more details about the `node:readline` API.
+
+### Enable `node:repl` module
+
+| **Default as of**   | 2026-03-17                    |
+| ------------------- | ----------------------------- |
+| **Flag to enable**  | enable\_nodejs\_repl\_module  |
+| **Flag to disable** | disable\_nodejs\_repl\_module |
+
+The `enable_nodejs_repl_module` flag enables the `node:repl` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/repl.html) for more details about the `node:repl` API.
+
+### Enable `node:tty` module
+
+| **Default as of**   | 2026-03-17                   |
+| ------------------- | ---------------------------- |
+| **Flag to enable**  | enable\_nodejs\_tty\_module  |
+| **Flag to disable** | disable\_nodejs\_tty\_module |
+
+The `enable_nodejs_tty_module` flag enables the `node:tty` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/tty.html) for more details about the `node:tty` API.
+
+### Enable `node:v8` module
+
+| **Default as of**   | 2026-03-17                  |
+| ------------------- | --------------------------- |
+| **Flag to enable**  | enable\_nodejs\_v8\_module  |
+| **Flag to disable** | disable\_nodejs\_v8\_module |
+
+The `enable_nodejs_v8_module` flag enables the `node:v8` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/v8.html) for more details about the `node:v8` API.
+
+### Enable `node:worker_threads` module
+
+| **Default as of**   | 2026-03-17                               |
+| ------------------- | ---------------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_worker\_threads\_module  |
+| **Flag to disable** | disable\_nodejs\_worker\_threads\_module |
+
+The `enable_nodejs_worker_threads_module` flag enables the `node:worker_threads` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/worker%5Fthreads.html) for more details about the `node:worker_threads` API.
 
 ### WebSocket standard binary type
 
@@ -246,6 +405,15 @@ Explain Code
 If you are not ready to migrate and want to keep `ArrayBuffer` as the default for every WebSocket in your Worker, add the `no_websocket_standard_binary_type` flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 This flag has no effect on the Durable Object hibernatable WebSocket [webSocketMessage](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) handler, which always receives binary data as `ArrayBuffer`.
+
+### Expose error codes in Queue operations
+
+| **Default as of**   | 2026-03-12                      |
+| ------------------- | ------------------------------- |
+| **Flag to enable**  | queue\_expose\_error\_codes     |
+| **Flag to disable** | no\_queue\_expose\_error\_codes |
+
+When `queue_expose_error_codes` is enabled, [Queue](https://developers.cloudflare.com/queues/) operations will include detailed error information, including error codes and causes, making it easier to handle and diagnose queue-related errors programmatically.
 
 ### WebSocket auto-reply to close
 
@@ -354,6 +522,37 @@ Explain Code
 
 For more information, refer to the [WebSocket API documentation](https://developers.cloudflare.com/workers/runtime-apis/websockets/).
 
+### Dedicated CJK TextDecoder implementation
+
+| **Default as of**   | 2026-03-03                           |
+| ------------------- | ------------------------------------ |
+| **Flag to enable**  | text\_decoder\_cjk\_decoder          |
+| **Flag to disable** | disable\_text\_decoder\_cjk\_decoder |
+
+When `text_decoder_cjk_decoder` is enabled, a dedicated CJK `TextDecoder` implementation is used for CJK encoding overrides and Big5 lead-byte handling, instead of the legacy ICU-only code path. This improves spec compliance for CJK text decoding.
+
+### Defer unhandled rejection processing to after microtask checkpoint
+
+| **Default as of**   | 2026-03-03                                             |
+| ------------------- | ------------------------------------------------------ |
+| **Flag to enable**  | unhandled\_rejection\_after\_microtask\_checkpoint     |
+| **Flag to disable** | no\_unhandled\_rejection\_after\_microtask\_checkpoint |
+
+When `unhandled_rejection_after_microtask_checkpoint` is enabled, `unhandledrejection` event processing is deferred until the microtask checkpoint completes. This avoids misfires on multi-tick promise chains where a rejection handler is added in a later microtask.
+
+Previously, unhandled rejection processing could fire prematurely before all microtasks in the current checkpoint had been processed, leading to false `unhandledrejection` events for promises that were actually handled.
+
+### Enforce WebSocket close reason byte limit
+
+| **Default as of**   | 2026-03-03                                |
+| ------------------- | ----------------------------------------- |
+| **Flag to enable**  | websocket\_close\_reason\_byte\_limit     |
+| **Flag to disable** | no\_websocket\_close\_reason\_byte\_limit |
+
+When `websocket_close_reason_byte_limit` is enabled, `WebSocket.close()` throws a `SyntaxError` `DOMException` if the `reason` string exceeds 123 bytes when UTF-8 encoded, as required by the [WHATWG WebSocket spec ↗](https://websockets.spec.whatwg.org/) and [RFC 6455 Section 5.5 ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5).
+
+Previously, Workers allowed arbitrarily long close reasons without validation.
+
 ### Durable Object `deleteAll()` deletes alarms
 
 | **Default as of**   | 2026-02-24                    |
@@ -362,6 +561,104 @@ For more information, refer to the [WebSocket API documentation](https://develop
 | **Flag to disable** | delete\_all\_preserves\_alarm |
 
 With the `delete_all_deletes_alarm` flag set, calling `deleteAll()` on a Durable Object's storage will delete any active alarm in addition to all stored data. Previously, `deleteAll()` only deleted user-stored data, and alarms required a separate `deleteAlarm()` call to remove. This change applies to both KV-backed and SQLite-backed Durable Objects.
+
+### TextDecoder replaces lone surrogates
+
+| **Default as of**   | 2026-02-24                                  |
+| ------------------- | ------------------------------------------- |
+| **Flag to enable**  | text\_decoder\_replace\_surrogates          |
+| **Flag to disable** | disable\_text\_decoder\_replace\_surrogates |
+
+When `text_decoder_replace_surrogates` is enabled, the UTF-16le `TextDecoder` will replace lone surrogates with U+FFFD (the Unicode replacement character) as required by the [Encoding Standard ↗](https://encoding.spec.whatwg.org/). Previously, lone surrogates were passed through unchanged, producing non-well-formed strings.
+
+### Support iterables as fetch Request/Response body
+
+| **Default as of**   | 2026-02-19                         |
+| ------------------- | ---------------------------------- |
+| **Flag to enable**  | fetch\_iterable\_type\_support     |
+| **Flag to disable** | no\_fetch\_iterable\_type\_support |
+
+When `fetch_iterable_type_support` is enabled, sync and async iterables can be passed as the body of a `fetch()` `Request` or `Response` and will be properly iterated over.
+
+Previously, sync iterables like Arrays would be accepted but stringified (e.g., `[1, 2, 3]` would become `"1,2,3"`), and async iterables would be treated as regular objects and not iterated at all. With this flag enabled, iterables are properly consumed as streaming body content.
+
+Note that Arrays will now be treated as iterables instead of being stringified, which is a breaking change for code that relied on the previous behavior.
+
+### Enable Node.js-compatible global timers
+
+| **Default as of**   | 2026-02-10                     |
+| ------------------- | ------------------------------ |
+| **Flag to enable**  | enable\_nodejs\_global\_timers |
+| **Flag to disable** | no\_nodejs\_global\_timers     |
+
+When `enable_nodejs_global_timers` is enabled, `setTimeout`, `setInterval`, `clearTimeout`, and `clearInterval` return Node.js-compatible `Timeout` objects with methods like `refresh()`, `ref()`, `unref()`, and `hasRef()`, matching the behavior of `node:timers`.
+
+This flag requires [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) to be enabled and is automatically enabled for Workers using a compatibility date of 2026-02-10 or later when `nodejs_compat` is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/timers.html) for more details about the timer APIs.
+
+### Enable `node:dgram` module
+
+| **Default as of**   | 2026-01-29                     |
+| ------------------- | ------------------------------ |
+| **Flag to enable**  | enable\_nodejs\_dgram\_module  |
+| **Flag to disable** | disable\_nodejs\_dgram\_module |
+
+The `enable_nodejs_dgram_module` flag enables the `node:dgram` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/dgram.html) for more details about the `node:dgram` API.
+
+### Enable `node:inspector` module
+
+| **Default as of**   | 2026-01-29                         |
+| ------------------- | ---------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_inspector\_module  |
+| **Flag to disable** | disable\_nodejs\_inspector\_module |
+
+The `enable_nodejs_inspector_module` flag enables the `node:inspector` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/inspector.html) for more details about the `node:inspector` API.
+
+### Enable `node:sqlite` module
+
+| **Default as of**   | 2026-01-29                      |
+| ------------------- | ------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_sqlite\_module  |
+| **Flag to disable** | disable\_nodejs\_sqlite\_module |
+
+The `enable_nodejs_sqlite_module` flag enables the `node:sqlite` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/sqlite.html) for more details about the `node:sqlite` API.
+
+### Enable `node:_stream_wrap` module
+
+| **Default as of**   | 2026-01-29                            |
+| ------------------- | ------------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_stream\_wrap\_module  |
+| **Flag to disable** | disable\_nodejs\_stream\_wrap\_module |
+
+The `enable_nodejs_stream_wrap_module` flag enables the `node:_stream_wrap` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+### `require()` returns default export
+
+| **Default as of**   | 2026-01-22                        |
+| ------------------- | --------------------------------- |
+| **Flag to enable**  | require\_returns\_default\_export |
+| **Flag to disable** | require\_returns\_namespace       |
+
+When `require_returns_default_export` is enabled, `require()` will return the default export of a module if it exists. If the default export does not exist, it falls back to returning a mutable copy of the module namespace object.
+
+This matches the behavior that Node.js uses for `require(esm)`, where the default export is returned when available. This flag is useful for frameworks like Next.js that expect to be able to patch module exports.
+
+Previously, `require()` always returned the module namespace object (an object like `{default: module.exports}`).
 
 ### Duplicate stubs in RPC params instead of transferring ownership
 
@@ -379,6 +676,106 @@ This turns out to compose poorly with another rule: in the callee, any stubs rec
 For this reason, the pure-JS implementation of Cap'n Web switched to saying that stubs in params do NOT transfer ownership -- they are simply duplicated. This compat flag fixes the Workers Runtime built-in RPC to match Cap'n Web behavior.
 
 One common use case that this fixes is clients that subscribe to callbacks from a Durable Object via Cap'n Web. In this use case, the client app passes a callback function over a Cap'n Web WebSocket to a stateless Worker, which in turn forwards the stub over Workers RPC to a Durable Object. The Durable Object stores a [dup()](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#the-dup-method) of the stub in order to call it back later to notify the client of events. Unfortunately, before this flag, this didn't work: as soon as the subscribe function itself returned, the Cap'n Web stub in the stateless worker would be disposed (because it was a parameter to a call that returned, and it was not `dup()`ed within the context of the stateless worker). Hence, when the Durable Object later tried to call the subscription callback, it would receive "Error: RPC stub used after being disposed", despite the fact that it had carefully `dup()`ed the stub at its end.
+
+### Fetch iterable body respects toString/toPrimitive overrides
+
+| **Default as of**   | 2026-01-15                                               |
+| ------------------- | -------------------------------------------------------- |
+| **Flag to enable**  | fetch\_iterable\_type\_support\_override\_adjustment     |
+| **Flag to disable** | no\_fetch\_iterable\_type\_support\_override\_adjustment |
+
+When `fetch_iterable_type_support_override_adjustment` is enabled, objects passed as the body of a `fetch()` `Request` or `Response` that are sync iterable but also have a custom `toString` or `Symbol.toPrimitive` method will not be treated as iterables. Instead, they will fall through to being handled as stringified objects, matching the previous behavior for such objects.
+
+This flag refines the behavior introduced by the `fetch_iterable_type_support` flag and is automatically enabled when `fetch_iterable_type_support` is enabled after 2026-01-15.
+
+### Strip UTF-8 BOM in stream `readAllText()`
+
+| **Default as of**   | 2026-01-13                               |
+| ------------------- | ---------------------------------------- |
+| **Flag to enable**  | strip\_bom\_in\_read\_all\_text          |
+| **Flag to disable** | do\_not\_strip\_bom\_in\_read\_all\_text |
+
+When `strip_bom_in_read_all_text` is enabled, the `readAllText()` method on streams will strip a leading UTF-8 Byte Order Mark (BOM) if present, matching the expected behavior per web platform standards.
+
+Previously, the BOM was included in the returned string, which could cause unexpected behavior when parsing text content.
+
+### Enable `node:cluster` module
+
+| **Default as of**   | 2025-12-04                       |
+| ------------------- | -------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_cluster\_module  |
+| **Flag to disable** | disable\_nodejs\_cluster\_module |
+
+The `enable_nodejs_cluster_module` flag enables the `node:cluster` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/cluster.html) for more details about the `node:cluster` API.
+
+### Enable `node:domain` module
+
+| **Default as of**   | 2025-12-04                      |
+| ------------------- | ------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_domain\_module  |
+| **Flag to disable** | disable\_nodejs\_domain\_module |
+
+The `enable_nodejs_domain_module` flag enables the `node:domain` module stub in Workers. Note that `node:domain` is deprecated in Node.js itself.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/domain.html) for more details about the `node:domain` API.
+
+### Enable `node:punycode` module
+
+| **Default as of**   | 2025-12-04                        |
+| ------------------- | --------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_punycode\_module  |
+| **Flag to disable** | disable\_nodejs\_punycode\_module |
+
+The `enable_nodejs_punycode_module` flag enables the `node:punycode` module in Workers. Note that `node:punycode` is deprecated in Node.js itself.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/punycode.html) for more details about the `node:punycode` API.
+
+### Enable `node:trace_events` module
+
+| **Default as of**   | 2025-12-04                             |
+| ------------------- | -------------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_trace\_events\_module  |
+| **Flag to disable** | disable\_nodejs\_trace\_events\_module |
+
+The `enable_nodejs_trace_events_module` flag enables the `node:trace_events` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/tracing.html) for more details about the `node:trace_events` API.
+
+### Enable `node:wasi` module
+
+| **Default as of**   | 2025-12-04                    |
+| ------------------- | ----------------------------- |
+| **Flag to enable**  | enable\_nodejs\_wasi\_module  |
+| **Flag to disable** | disable\_nodejs\_wasi\_module |
+
+The `enable_nodejs_wasi_module` flag enables the `node:wasi` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/wasi.html) for more details about the `node:wasi` API.
+
+### Enable fast JSG struct optimization
+
+| **Default as of**   | 2025-12-03                 |
+| ------------------- | -------------------------- |
+| **Flag to enable**  | enable\_fast\_jsg\_struct  |
+| **Flag to disable** | disable\_fast\_jsg\_struct |
+
+When `enable_fast_jsg_struct` is enabled, internal struct types used by Workers runtime APIs are constructed using a more efficient pattern that reduces object creation time.
+
+However, optional fields will be explicitly set to `undefined` rather than being omitted from the object entirely, which is an observable behavior change. Code that checks for the presence of a property using `"key" in obj` or `Object.hasOwn(obj, "key")` may behave differently, since optional fields that were previously absent will now be present with a value of `undefined`.
+
+To check for a value, prefer `obj.key !== undefined` over `"key" in obj`.
 
 ### Enable ctx.exports
 
@@ -432,6 +829,67 @@ You can also explictly turn on automatic tracing without the flag and with older
 
 ```
 
+### Enable `node:vm` module
+
+| **Default as of**   | 2025-10-01                  |
+| ------------------- | --------------------------- |
+| **Flag to enable**  | enable\_nodejs\_vm\_module  |
+| **Flag to disable** | disable\_nodejs\_vm\_module |
+
+The `enable_nodejs_vm_module` flag enables the `node:vm` module stub in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-10-01 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/vm.html) for more details about the `node:vm` API.
+
+### Enable `node:console` module
+
+| **Default as of**   | 2025-09-21                       |
+| ------------------- | -------------------------------- |
+| **Flag to enable**  | enable\_nodejs\_console\_module  |
+| **Flag to disable** | disable\_nodejs\_console\_module |
+
+The `enable_nodejs_console_module` flag enables the `node:console` module in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-09-21 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/console.html) for more details about the `node:console` API.
+
+### Enable workflow entrypoint validation
+
+| **Default as of**   | 2025-09-20                              |
+| ------------------- | --------------------------------------- |
+| **Flag to enable**  | enable\_validate\_workflow\_entrypoint  |
+| **Flag to disable** | disable\_validate\_workflow\_entrypoint |
+
+When `enable_validate_workflow_entrypoint` is enabled, additional validation checks are performed to ensure that [Workflows](https://developers.cloudflare.com/workflows/) are defined and used correctly. This helps catch configuration errors at upload time rather than at runtime.
+
+### Enable `node:fs` module
+
+| **Default as of**   | 2025-09-15                  |
+| ------------------- | --------------------------- |
+| **Flag to enable**  | enable\_nodejs\_fs\_module  |
+| **Flag to disable** | disable\_nodejs\_fs\_module |
+
+The `enable_nodejs_fs_module` flag enables the `node:fs` module in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-09-15 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/fs.html) for more details about the `node:fs` API.
+
+### Enable `node:os` module
+
+| **Default as of**   | 2025-09-15                  |
+| ------------------- | --------------------------- |
+| **Flag to enable**  | enable\_nodejs\_os\_module  |
+| **Flag to disable** | disable\_nodejs\_os\_module |
+
+The `enable_nodejs_os_module` flag enables the `node:os` module in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-09-15 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/os.html) for more details about the `node:os` API.
+
 ### Enable `process` v2 implementation
 
 | **Default as of**   | 2025-09-15                   |
@@ -467,6 +925,58 @@ This flag must be used in combination with the `enable_nodejs_http_modules` flag
 This flag is automatically enabled for Workers using a compatibility date of 2025-09-01 or later when `nodejs_compat` is enabled.
 
 See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/http.html) for more details about the Node.js HTTP APIs.
+
+### Enable `node:http2` module
+
+| **Default as of**   | 2025-09-01                     |
+| ------------------- | ------------------------------ |
+| **Flag to enable**  | enable\_nodejs\_http2\_module  |
+| **Flag to disable** | disable\_nodejs\_http2\_module |
+
+The `enable_nodejs_http2_module` flag enables the `node:http2` module stubs in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-09-01 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/http2.html) for more details about the `node:http2` API.
+
+### Remove end-of-life Node.js APIs
+
+| **Default as of**   | 2025-09-01                  |
+| ------------------- | --------------------------- |
+| **Flag to enable**  | remove\_nodejs\_compat\_eol |
+| **Flag to disable** | add\_nodejs\_compat\_eol    |
+
+When `remove_nodejs_compat_eol` is enabled, APIs that have reached End-of-Life in Node.js will be removed for Workers. When disabled, the APIs are present but might still be non-functional stubs.
+
+This flag is a roll-up flag. As additional APIs reach EOL in specific Node.js versions, new version-specific compat flags are added (such as `remove_nodejs_compat_eol_v22`, `remove_nodejs_compat_eol_v23`, and `remove_nodejs_compat_eol_v24`) that are implied by this flag after their respective dates.
+
+This flag is automatically enabled for Workers using a compatibility date of 2025-09-01 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+### Remove Node.js 23.x end-of-life APIs
+
+| **Default as of**   | 2025-09-01                       |
+| ------------------- | -------------------------------- |
+| **Flag to enable**  | remove\_nodejs\_compat\_eol\_v23 |
+| **Flag to disable** | add\_nodejs\_compat\_eol\_v23    |
+
+When `remove_nodejs_compat_eol_v23` is enabled, APIs that reached end-of-life in Node.js 23.x (EOL June 2025) are removed.
+
+This flag is automatically enabled when the `remove_nodejs_compat_eol_v24` flag is enabled after 2025-09-01.
+
+### Strip Authorization header on cross-origin redirects
+
+| **Default as of**   | 2025-09-01                                         |
+| ------------------- | -------------------------------------------------- |
+| **Flag to enable**  | strip\_authorization\_on\_cross\_origin\_redirect  |
+| **Flag to disable** | retain\_authorization\_on\_cross\_origin\_redirect |
+
+When `strip_authorization_on_cross_origin_redirect` is enabled, the `Authorization` header is automatically removed when following a redirect to a different origin. This behavior is required by the current [Fetch API specification ↗](https://fetch.spec.whatwg.org/).
+
+This requirement was added to the Fetch spec in 2022, after Cloudflare Workers originally implemented its fetch handling. Workers did not originally implement this requirement, so the new behavior is gated behind a compatibility flag.
+
+The old behavior was not inherently insecure, and could be desirable in some circumstances. For example, if an API that requires authorization wishes to redirect to a new hostname while having the client send along their credentials. Under the new behavior, such a redirect will not include credentials automatically. However, the old behavior could lead to unintentional credential leakage when redirecting to untrusted origins.
+
+To retain the old behavior, set the `retain_authorization_on_cross_origin_redirect` flag.
 
 ### Enable availability of `node:http` and `node:https` modules
 
@@ -622,6 +1132,17 @@ When the `disallow_eval_during_startup` flag is set, using `eval()` or`new Funct
 
 When you use the `enable_request_signal` compatibility flag, you can attach an event listener to [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) objects, using the [signal property ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/signal). This allows you to perform tasks when the request to your Worker is canceled by the client.
 
+### Cache API request `cf` overrides cache rules
+
+| **Default as of**   | 2025-05-19                                           |
+| ------------------- | ---------------------------------------------------- |
+| **Flag to enable**  | cache\_api\_request\_cf\_overrides\_cache\_rules     |
+| **Flag to disable** | no\_cache\_api\_request\_cf\_overrides\_cache\_rules |
+
+When `cache_api_request_cf_overrides_cache_rules` is enabled, cache settings specified in the `cf` object of a request passed to the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) will override cache rules. This applies only to user-owned or grey-clouded sites.
+
+This is the Cache API counterpart to the [request\_cf\_overrides\_cache\_rules](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#fetch-api-request-cf-overrides-cache-rules) flag, which applies to the `fetch()` API.
+
 ### Enable `navigator.language`
 
 | **Default as of**   | 2025-05-19                   |
@@ -670,6 +1191,19 @@ These APIs are fundamentally non-deterministic. The timing and execution of garb
 When the `request_signal_passthrough` flag set, the `AbortSignal` of an incoming request will be passed through to subrequests when the request is forwarded to a subrequest using the `fetch()` API.
 
 The the `no_request_signal_passthrough` flag is set, the `AbortSignal` of the incoming request will not be passed through.
+
+### Spec-compliant URLPattern implementation
+
+| **Default as of**   | 2025-05-01           |
+| ------------------- | -------------------- |
+| **Flag to enable**  | urlpattern\_standard |
+| **Flag to disable** | urlpattern\_original |
+
+The original `URLPattern` implementation was not fully compliant with the [WHATWG URLPattern Standard ↗](https://urlpattern.spec.whatwg.org/), leading to a number of issues reported by users.
+
+With `urlpattern_standard` enabled, Workers uses a spec-compliant URLPattern implementation. This is a breaking change from the original behavior, so it is gated behind a compatibility flag.
+
+If you are using `URLPattern` and encounter unexpected behavior changes after updating your compatibility date, you can set `urlpattern_original` to revert to the previous implementation.
 
 ### Navigation requests prefer asset serving
 
@@ -844,6 +1378,17 @@ This means requests to a Worker's own zone will loop back to the "front door" of
 
 When the `global_fetch_strictly_public` is not enabled, such requests are routed to the zone's origin server, ignoring any Workers mapped to the URL and also bypassing Cloudflare security settings.
 
+### Handle cross-request promise resolution correctly
+
+| **Default as of**   | 2024-10-14                                      |
+| ------------------- | ----------------------------------------------- |
+| **Flag to enable**  | handle\_cross\_request\_promise\_resolution     |
+| **Flag to disable** | no\_handle\_cross\_request\_promise\_resolution |
+
+Historically, it was possible to resolve a promise from an incorrect request context, which could lead to promise continuations being scheduled in the wrong context, causing errors and difficult-to-diagnose bugs.
+
+With `handle_cross_request_promise_resolution` enabled, promise continuations are scheduled to run in the correct request context if it is still alive, or dropped with a warning if the correct context has already ended.
+
 ### Upper-case HTTP methods
 
 | **Default as of**   | 2024-10-14                          |
@@ -863,6 +1408,19 @@ To restore the standard behavior, use the `no_upper_case_all_http_methods`compat
 | **Flag to disable** | do\_not\_set\_tostring\_tag |
 
 A change was made to set the Symbol.toStringTag on all Workers API objects in order to fix several spec compliance bugs. Unfortunately, this change was more breaking than anticipated. The `do_not_set_tostring_tag` compat flag restores the original behavior with compatibility dates of 2024-09-26 or earlier.
+
+### Enable `node:zlib` module
+
+| **Default as of**   | 2024-09-23       |
+| ------------------- | ---------------- |
+| **Flag to enable**  | nodejs\_zlib     |
+| **Flag to disable** | no\_nodejs\_zlib |
+
+The `nodejs_zlib` flag enables the `node:zlib` module in Workers.
+
+This flag is automatically enabled for Workers using a compatibility date of 2024-09-23 or later when [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
+
+See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/zlib.html) for more details about the `node:zlib` API.
 
 ### Allow specifying a custom port when making a subrequest with the fetch() API
 
@@ -891,6 +1449,17 @@ const response = await fetch("https://example.com:8000");
 With allow\_custom\_ports the above example would fetch `https://example.com:8000` rather than`https://example.com:443`.
 
 Note that creating a WebSocket client with a call to `new WebSocket(url)` will also obey this flag.
+
+### WritableStream abort clears pending write queue
+
+| **Default as of**   | 2024-09-02                                                 |
+| ------------------- | ---------------------------------------------------------- |
+| **Flag to enable**  | internal\_writable\_stream\_abort\_clears\_queue           |
+| **Flag to disable** | internal\_writable\_stream\_abort\_does\_not\_clear\_queue |
+
+When using the original WritableStream implementation ("internal" streams), the `abort()` operation was previously handled lazily, meaning that the queue of pending writes would not be cleared until the next time the queue was processed. This behavior could cause the stream to hang if the consumer stopped consuming.
+
+With `internal_writable_stream_abort_clears_queue` enabled, the queue is cleared immediately upon `abort()`, preventing hangs in cases where the consumer has stopped processing writes.
 
 ### Properly extract blob MIME type from `content-type` headers
 

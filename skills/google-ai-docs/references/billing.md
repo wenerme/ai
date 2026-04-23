@@ -1,5 +1,3 @@
-# Billing
-
 This guide provides an overview of different Gemini API billing options,
 explains how to enable billing and monitor usage, and provides answers to
 frequently asked questions (FAQs) about billing.
@@ -486,10 +484,10 @@ To avoid a pause in your Gemini API service, we recommend setting up
 [auto-reload](https://ai.google.dev/gemini-api/docs/billing#auto-reload) to automatically purchase more credits when your
 credit balance falls below a value you specify.
 
-### Can I use my Prepay credits for other Google Cloud services, like Vertex AI?
+### Can I use my Prepay credits for other Google Cloud services, like Gemini Enterprise Agent Platform?
 
 No, Prepay credits are strictly locked to Gemini API usage. Any
-other Google Cloud services you use (Compute, Storage, Vertex) are billed using
+other Google Cloud services you use (Compute, Storage, Gemini Enterprise Agent Platform) are billed using
 the standard [Cloud charging cycle](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle).
 
 ### Can I switch to a Postpay billing plan?

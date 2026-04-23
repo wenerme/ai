@@ -1,6 +1,6 @@
 ---
 title: Access a private S3 bucket
-description: This example demonstrates how to access a private S3 bucket that is not exposed to the public internet. In this guide, we will configure a Workers VPC Service for an internal S3-compatible storage service, create a Worker that makes requests to that bucket, and deploy the Worker to validate our changes.
+description: Use Workers VPC to read objects from a private S3-compatible bucket behind Cloudflare Tunnel.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -16,7 +16,7 @@ Copy page
 
 # Access a private S3 bucket
 
-**Last reviewed:**  5 months ago 
+**Last reviewed:**  6 months ago 
 
 This example demonstrates how to access a private S3 bucket that is not exposed to the public internet. In this guide, we will configure a Workers VPC Service for an internal S3-compatible storage service, create a Worker that makes requests to that bucket, and deploy the Worker to validate our changes.
 
@@ -153,8 +153,8 @@ curl -i https://your-bucket-name.s3.us-west-2.amazonaws.com/test-file.txt
 
 Update your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7027)
-* [  wrangler.toml ](#tab-panel-7028)
+* [  wrangler.jsonc ](#tab-panel-9470)
+* [  wrangler.toml ](#tab-panel-9471)
 
 JSONC
 
@@ -170,7 +170,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-22",
 
   "vpc_services": [
 
@@ -203,7 +203,7 @@ main = "src/index.js"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-22"
 
 
 [[vpc_services]]

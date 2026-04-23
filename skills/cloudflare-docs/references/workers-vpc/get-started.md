@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: This guide will walk you through creating your first Workers VPC Service, allowing your Worker to access resources in your private network.
+description: Create your first Workers VPC Service and connect a Worker to your private network.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -104,8 +104,8 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-* [ Dashboard ](#tab-panel-7031)
-* [ Wrangler CLI ](#tab-panel-7032)
+* [ Dashboard ](#tab-panel-9474)
+* [ Wrangler CLI ](#tab-panel-9475)
 
 1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
@@ -155,8 +155,8 @@ If you encounter permission errors, refer to [Required roles](https://developers
 
 Add the VPC Service binding to your Wrangler configuration file:
 
-* [  wrangler.jsonc ](#tab-panel-7033)
-* [  wrangler.toml ](#tab-panel-7034)
+* [  wrangler.jsonc ](#tab-panel-9476)
+* [  wrangler.toml ](#tab-panel-9477)
 
 JSONC
 
@@ -172,7 +172,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-10",
+  "compatibility_date": "2026-04-22",
 
   "vpc_services": [
 
@@ -205,7 +205,7 @@ main = "src/index.ts"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-10"
+compatibility_date = "2026-04-22"
 
 
 [[vpc_services]]

@@ -45,6 +45,10 @@ The following table describes Cache Response Rules availability per plan.
 
 When troubleshooting Cache Response Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
 
+Warning
+
+Cache Response Rules requires the latest version of our CDN engine. The migration is still ongoing and a small percentage of Enterprise zone have not been upgraded. If your Cache Response Rules are not working on your Enterprise zone, contact your account team to be be manually upgraded.
+
 ## Relationship with Cache Rules
 
 Cache Response Rules operate on the origin response, while [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) operate on the incoming request. When settings from both rule types conflict, Cache Response Rules take precedence.

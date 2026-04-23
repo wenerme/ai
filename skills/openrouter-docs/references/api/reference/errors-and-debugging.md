@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+
+# Errors and Debugging
 
 For errors, OpenRouter returns a JSON response with the following shape:
 
@@ -112,7 +116,7 @@ type MidStreamError = {
 Example SSE data:
 
 ```text
-data: {"id":"cmpl-abc123","object":"chat.completion.chunk","created":1234567890,"model":"gpt-3.5-turbo","provider":"openai","error":{"code":"server_error","message":"Provider disconnected"},"choices":[{"index":0,"delta":{"content":""},"finish_reason":"error"}]}
+data: {"id":"cmpl-abc123","object":"chat.completion.chunk","created":1234567890,"model":"openai/gpt-4o","provider":"openai","error":{"code":"server_error","message":"Provider disconnected"},"choices":[{"index":0,"delta":{"content":""},"finish_reason":"error"}]}
 ```
 
 Key characteristics:

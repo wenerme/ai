@@ -24,10 +24,11 @@ Text-to-Image • Google • Proxied
 
 Google's fast image generation model producing high-quality images from text prompts.
 
-| Model Info        |                                                        |
-| ----------------- | ------------------------------------------------------ |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)       |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Model Info        |                                                                                                                      |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                     |
+| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                               |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
 
 ## Usage
 
@@ -64,7 +65,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Cozy Coffee Shop](https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg) 
+Response200 ![Cozy Coffee Shop](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/cozy-coffee-shop.png) 
 
 ## Examples
 
@@ -103,7 +104,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Vintage Tokyo Poster](https://replicate.delivery/xezq/IeNNble3XUqhpUZTd3CkYTUf8EgkFU1fl1Jnyive3B26MsGzC/tmp51dpln4i.jpeg) 
+Response200 ![Vintage Tokyo Poster](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/vintage-tokyo-poster.png) 
 
 **Dewdrops Macro**  — Photorealistic macro photography 
 
@@ -140,7 +141,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Dewdrops Macro](https://replicate.delivery/xezq/jfh37lJpnDQhaKcAfCrxSCEh7HA7lv5cCWmJW284tYXwh1YWA/tmpw2i437qe.jpeg) 
+Response200 ![Dewdrops Macro](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/dewdrops-macro.png) 
 
 **Pixel Art Marketplace**  — Isometric pixel art scene 
 
@@ -177,7 +178,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Pixel Art Marketplace](https://replicate.delivery/xezq/pUAcLnl2KmpoChqQ7emXoyqpV3ZBUcV6tVyovozvl4N8waMLA/tmppjbe5cua.jpeg) 
+Response200 ![Pixel Art Marketplace](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/pixel-art-marketplace.png) 
 
 **High Resolution Landscape**  — Generate a high-resolution 4K landscape image 
 
@@ -197,9 +198,9 @@ const response = await env.AI.run(
 
     aspect_ratio: '16:9',
 
-    image_size: '4K',
-
     output_format: 'png',
+
+    image_size: '4K',
 
   },
 
@@ -218,12 +219,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![High Resolution Landscape](https://replicate.delivery/xezq/Rh5vNXYjxVJeBqHfy1F11GQY7ppLFzIMeA1XOGFj9DvIErxsA/tmpm17f21_f.png) 
+Response200 ![High Resolution Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana/high-resolution-landscape.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-102)
-* [ Output ](#tab-panel-103)
+* [ Input ](#tab-panel-192)
+* [ Output ](#tab-panel-193)
 
 prompt
 
@@ -251,8 +252,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-100)
-* [ Output ](#tab-panel-101)
+* [ Input ](#tab-panel-190)
+* [ Output ](#tab-panel-191)
 
 ```
 

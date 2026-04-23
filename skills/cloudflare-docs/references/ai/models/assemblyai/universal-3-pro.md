@@ -24,10 +24,11 @@ Automatic Speech Recognition • AssemblyAI • Proxied
 
 AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.
 
-| Model Info        |                                                             |
-| ----------------- | ----------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service) |
-| More information  | [link ↗](https://www.assemblyai.com/)                       |
+| Model Info        |                                                                                                                              |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                  |
+| More information  | [link ↗](https://www.assemblyai.com/)                                                                                        |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
 
 ## Usage
 
@@ -62,8 +63,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-36)
-* [ Output ](#tab-panel-37)
+* [ Input ](#tab-panel-106)
+* [ Output ](#tab-panel-107)
 
 ```
 
@@ -124,8 +125,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-38)
-* [ Output ](#tab-panel-39)
+* [ Input ](#tab-panel-108)
+* [ Output ](#tab-panel-109)
 
 ```
 
@@ -196,8 +197,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-42)
-* [ Output ](#tab-panel-43)
+* [ Input ](#tab-panel-112)
+* [ Output ](#tab-panel-113)
 
 ```
 
@@ -268,8 +269,8 @@ Explain Code
 
 Input / Output JSON 
 
-* [ Input ](#tab-panel-40)
-* [ Output ](#tab-panel-41)
+* [ Input ](#tab-panel-110)
+* [ Output ](#tab-panel-111)
 
 ```
 
@@ -297,8 +298,8 @@ Input / Output JSON
 
 ## Parameters
 
-* [ Input ](#tab-panel-46)
-* [ Output ](#tab-panel-47)
+* [ Input ](#tab-panel-116)
+* [ Output ](#tab-panel-117)
 
 audio\_url
 
@@ -330,7 +331,7 @@ speaker\_labels
 
 speakers\_expected
 
-`integer`minimum: 1maximum: 50Expected number of speakers for speaker diarization.
+`integer`minimum: 1maximum: 9007199254740991Expected number of speakers for speaker diarization.
 
 auto\_chapters
 
@@ -378,11 +379,11 @@ webhook\_url
 
 audio\_start\_from
 
-`integer`minimum: 0Timestamp (in milliseconds) to start transcription from.
+`integer`minimum: 0maximum: 9007199254740991Timestamp (in milliseconds) to start transcription from.
 
 audio\_end\_at
 
-`integer`minimum: 0Timestamp (in milliseconds) to end transcription at.
+`integer`minimum: 0maximum: 9007199254740991Timestamp (in milliseconds) to end transcription at.
 
 ▶word\_boost\[\]
 
@@ -416,14 +417,38 @@ speech\_threshold
 
 `number`minimum: 0maximum: 1Confidence threshold for speech detection.
 
+domain
+
+`string`enum: medical-v1Domain-specific transcription mode. "medical-v1" enables medical terminology optimization.
+
 text
 
 `string`The transcribed text.
 
+words
+
+`array | null`Word-level timestamps and confidence scores.
+
+utterances
+
+`array | null`Speaker-separated utterances (when speaker\_labels is enabled).
+
+confidence
+
+`number | null`Overall confidence score for the transcription.
+
+language\_code
+
+`string | null`Detected or specified language code.
+
+language\_confidence
+
+`number | null`Confidence score for language detection.
+
 ## API Schemas
 
-* [ Input ](#tab-panel-44)
-* [ Output ](#tab-panel-45)
+* [ Input ](#tab-panel-114)
+* [ Output ](#tab-panel-115)
 
 ```
 
@@ -509,7 +534,7 @@ text
 
       "minimum": 1,
 
-      "maximum": 50
+      "maximum": 9007199254740991
 
     },
 
@@ -647,7 +672,9 @@ text
 
       "type": "integer",
 
-      "minimum": 0
+      "minimum": 0,
+
+      "maximum": 9007199254740991
 
     },
 
@@ -657,7 +684,9 @@ text
 
       "type": "integer",
 
-      "minimum": 0
+      "minimum": 0,
+
+      "maximum": 9007199254740991
 
     },
 
@@ -757,6 +786,20 @@ text
 
       "maximum": 1
 
+    },
+
+    "domain": {
+
+      "description": "Domain-specific transcription mode. \"medical-v1\" enables medical terminology optimization.",
+
+      "type": "string",
+
+      "enum": [
+
+        "medical-v1"
+
+      ]
+
     }
 
   },
@@ -791,6 +834,240 @@ Explain Code
       "description": "The transcribed text.",
 
       "type": "string"
+
+    },
+
+    "words": {
+
+      "description": "Word-level timestamps and confidence scores.",
+
+      "anyOf": [
+
+        {
+
+          "type": "array",
+
+          "items": {
+
+            "type": "object",
+
+            "properties": {
+
+              "text": {
+
+                "type": "string"
+
+              },
+
+              "start": {
+
+                "type": "number"
+
+              },
+
+              "end": {
+
+                "type": "number"
+
+              },
+
+              "confidence": {
+
+                "type": "number"
+
+              },
+
+              "speaker": {
+
+                "anyOf": [
+
+                  {
+
+                    "type": "string"
+
+                  },
+
+                  {
+
+                    "type": "null"
+
+                  }
+
+                ]
+
+              }
+
+            },
+
+            "required": [
+
+              "text",
+
+              "start",
+
+              "end",
+
+              "confidence"
+
+            ],
+
+            "additionalProperties": false
+
+          }
+
+        },
+
+        {
+
+          "type": "null"
+
+        }
+
+      ]
+
+    },
+
+    "utterances": {
+
+      "description": "Speaker-separated utterances (when speaker_labels is enabled).",
+
+      "anyOf": [
+
+        {
+
+          "type": "array",
+
+          "items": {
+
+            "type": "object",
+
+            "properties": {
+
+              "text": {
+
+                "type": "string"
+
+              },
+
+              "start": {
+
+                "type": "number"
+
+              },
+
+              "end": {
+
+                "type": "number"
+
+              },
+
+              "confidence": {
+
+                "type": "number"
+
+              },
+
+              "speaker": {
+
+                "type": "string"
+
+              }
+
+            },
+
+            "required": [
+
+              "text",
+
+              "start",
+
+              "end",
+
+              "confidence",
+
+              "speaker"
+
+            ],
+
+            "additionalProperties": false
+
+          }
+
+        },
+
+        {
+
+          "type": "null"
+
+        }
+
+      ]
+
+    },
+
+    "confidence": {
+
+      "description": "Overall confidence score for the transcription.",
+
+      "anyOf": [
+
+        {
+
+          "type": "number"
+
+        },
+
+        {
+
+          "type": "null"
+
+        }
+
+      ]
+
+    },
+
+    "language_code": {
+
+      "description": "Detected or specified language code.",
+
+      "anyOf": [
+
+        {
+
+          "type": "string"
+
+        },
+
+        {
+
+          "type": "null"
+
+        }
+
+      ]
+
+    },
+
+    "language_confidence": {
+
+      "description": "Confidence score for language detection.",
+
+      "anyOf": [
+
+        {
+
+          "type": "number"
+
+        },
+
+        {
+
+          "type": "null"
+
+        }
+
+      ]
 
     }
 

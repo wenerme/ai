@@ -1,4 +1,6 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/models/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/models/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/models/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/api-reference/models/llms-full.txt.
 
 # List all models and their properties
 
@@ -145,7 +147,7 @@ components:
         - audio
         - video
         - rerank
-        - tts
+        - speech
       title: OutputModality
     ModelGroup:
       type: string

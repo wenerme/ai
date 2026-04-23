@@ -24,10 +24,11 @@ Music Generation • MiniMax • Proxied
 
 MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.
 
-| Model Info        |                                          |
-| ----------------- | ---------------------------------------- |
-| Terms and License | [link ↗](https://www.minimaxi.com/terms) |
-| More information  | [link ↗](https://www.minimaxi.com/)      |
+| Model Info        |                                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.minimaxi.com/terms)                                                                            |
+| More information  | [link ↗](https://www.minimaxi.com/)                                                                                 |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
 
 ## Usage
 
@@ -46,6 +47,8 @@ const response = await env.AI.run(
       'An upbeat electronic dance track with a catchy synth melody and driving beat',
 
     lyrics_optimizer: true,
+
+    is_instrumental: false,
 
   },
 
@@ -88,6 +91,10 @@ const response = await env.AI.run(
 
       'Walking down a dusty road\nWith the sunset painting gold\nEvery step a story told\nOf the places I call home',
 
+    lyrics_optimizer: false,
+
+    is_instrumental: false,
+
   },
 
   {
@@ -122,6 +129,8 @@ const response = await env.AI.run(
     prompt:
 
       'A calm lo-fi hip hop instrumental with vinyl crackle and mellow piano chords',
+
+    lyrics_optimizer: false,
 
     is_instrumental: true,
 
@@ -160,11 +169,13 @@ const response = await env.AI.run(
 
       'An orchestral cinematic score building to an epic crescendo with full symphony',
 
-    lyrics_optimizer: true,
-
     sample_rate: 44100,
 
     format: 'wav',
+
+    lyrics_optimizer: true,
+
+    is_instrumental: false,
 
   },
 
@@ -201,6 +212,8 @@ const response = await env.AI.run(
 
     lyrics_optimizer: true,
 
+    is_instrumental: false,
+
   },
 
   {
@@ -222,8 +235,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-150)
-* [ Output ](#tab-panel-151)
+* [ Input ](#tab-panel-248)
+* [ Output ](#tab-panel-249)
 
 prompt
 
@@ -259,8 +272,8 @@ audio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-148)
-* [ Output ](#tab-panel-149)
+* [ Input ](#tab-panel-246)
+* [ Output ](#tab-panel-247)
 
 ```
 

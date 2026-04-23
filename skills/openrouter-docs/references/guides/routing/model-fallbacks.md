@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/routing/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/routing/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/routing/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/routing/llms-full.txt.
+
+# Model Fallbacks
 
 The `models` parameter lets you automatically try other models if the primary model's providers are down, rate-limited, or refuse to reply due to content moderation.
 
@@ -15,7 +19,7 @@ Provide an array of model IDs in priority order. If the first model returns an e
   });
 
   const completion = await openRouter.chat.send({
-    models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+    models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
     messages: [
       {
         role: 'user',
@@ -35,7 +39,7 @@ Provide an array of model IDs in priority order. If the first model returns an e
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+      models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
       messages: [
         {
           role: 'user',
@@ -60,7 +64,7 @@ Provide an array of model IDs in priority order. If the first model returns an e
       "Content-Type": "application/json",
     },
     data=json.dumps({
-      "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
+      "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
       "messages": [
         {
           "role": "user",
@@ -111,7 +115,7 @@ To use the `models` array with the OpenAI SDK, include it in the `extra_body` pa
     completion = openai_client.chat.completions.create(
         model="openai/gpt-4o",
         extra_body={
-            "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
+            "models": ["anthropic/claude-sonnet-4.6", "gryphe/mythomax-l2-13b"],
         },
         messages=[
             {
@@ -136,7 +140,7 @@ To use the `models` array with the OpenAI SDK, include it in the `extra_body` pa
       // @ts-expect-error
       const completion = await openrouterClient.chat.completions.create({
         model: 'openai/gpt-4o',
-        models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+        models: ['anthropic/claude-sonnet-4.6', 'gryphe/mythomax-l2-13b'],
         messages: [
           {
             role: 'user',

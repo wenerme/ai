@@ -33,7 +33,7 @@ You can use a time-based policy duration to set a specific time frame for the po
 
 To set a duration for a DNS policy:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
 3. In **Apply durations and schedules**, turn on **Policy duration**.
 4. In **Input method**, choose the type of duration:  
@@ -65,10 +65,10 @@ For policies with an exact end time, you can change the time before the policy t
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-* [ Dashboard ](#tab-panel-5978)
-* [ API ](#tab-panel-5979)
+* [ Dashboard ](#tab-panel-6194)
+* [ API ](#tab-panel-6195)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
 3. In **Apply durations and schedules**, turn on **Policy schedule**.
 4. (Optional) In **Time Zone**, choose a time zone to apply the policy based on the time zone you select, regardless of the user's location. By default, Gateway will use the end user's time zone to apply the policy based on the local time of the user making the DNS query.
@@ -112,7 +112,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Explain Code
 
-The policy's schedule will appear in Cloudflare One under **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
+The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
 
 ### How Gateway determines time zone
 

@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/llms-full.txt.
+
+# Structured Outputs
 
 OpenRouter supports structured outputs for compatible models, ensuring responses follow a specific JSON Schema format. This feature is particularly useful when you need consistent, well-formatted responses that can be reliably parsed by your application.
 

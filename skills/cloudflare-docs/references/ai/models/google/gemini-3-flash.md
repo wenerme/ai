@@ -24,11 +24,12 @@ Text Generation • Google • Proxied
 
 Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.
 
-| Model Info                                                                 |                                                        |
-| -------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                       |
-| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)       |
-| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Model Info                                                                 |                                                                                                                         |
+| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                        |
+| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
+| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3-flash) |
 
 ## Usage
 
@@ -79,6 +80,53 @@ console.log(response)
 
 Explain Code
 
+Input / Output JSON 
+
+* [ Input ](#tab-panel-150)
+* [ Output ](#tab-panel-151)
+
+```
+
+{
+
+    "contents": [
+
+        {
+
+            "role": "user",
+
+            "parts": [
+
+                {
+
+                    "text": "What are the three laws of thermodynamics?"
+
+                }
+
+            ]
+
+        }
+
+    ]
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+    "text": "While there are actually four laws of thermodynamics (numbered 0 through 3), the \"Three Laws\" usually refer to the following fundamental principles that govern how energy, heat, and matter behave:\n\n### 1. The First Law: The Law of Conservation of Energy\n**\"Energy cannot be created or destroyed, only transformed from one form to another.\"**\n\nThis law states that the total amount of energy in an isolated system remains constant. In practical terms, if you add heat to a system, that energy must either increase the system's internal temperature or be used to do work on the surroundings.\n*   **The Equation:** $\\Delta U = Q - W$\n    *(Change in internal energy = Heat added - Work done by the system)*\n\n### 2. The Second Law: The Law of Entropy\n**\"The total entropy of an isolated system can never decrease over time; it can only remain constant or increase.\"**\n\nEntropy is a measure of \"disorder\" or randomness. This law explains why processes have a specific direction (the \"arrow of time\"). It tells us that heat will always flow spontaneously from a hot object to a cold object, and that no machine can ever be 100% efficient because some energy is always \"lost\" as waste heat.\n*   **Key takeaway:** Systems naturally progress toward a state of maximum disorder.\n\n### 3. The Third Law: The Law of Absolute Zero\n**\"As the temperature of a system approaches absolute zero, its entropy approaches a constant minimum.\"**\n\nAbsolute zero ($0$ Kelvin, or $-273.15^\\circ\\text{C}$) is the theoretical point where all molecular motion stops. This law implies that it is impossible to reach absolute zero in a finite number of steps. At this temperature, a perfect crystal would have zero entropy.\n*   **Key takeaway:** You can get very close to absolute zero, but you can never actually get there.\n\n***\n\n### Bonus: The Zeroth Law (The Law of Equilibrium)\nPhysicists realized they needed this law *after* the first three were already named, so they called it the \"Zeroth\" law because it is the most fundamental. \n*   **The Law:** If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. \n*   **Simplified:** This is the logic that allows us to use **thermometers**. If the thermometer says the water is $100^\\circ$ and the same thermometer says the tea is $100^\\circ$, then the water and the tea are the same temperature.\n\n***\n\n### A Common Way to Remember Them:\nScientists often use a cynical \"gambling\" analogy to remember the laws:\n1.  **First Law:** You can’t win (you can’t get more energy out than you put in).\n2.  **Second Law:** You can’t even break even (entropy always increases; you always lose some energy to heat).\n3.  **Third Law:** You can’t quit the game (you can’t reach absolute zero)."
+
+}
+
+
+```
+
 ## Examples
 
 **With System Instruction**  — Using a system instruction to set context 
@@ -92,20 +140,6 @@ const response = await env.AI.run(
   'google/gemini-3-flash',
 
   {
-
-    systemInstruction: {
-
-      parts: [
-
-        {
-
-          text: 'You are a helpful coding assistant specializing in Python.',
-
-        },
-
-      ],
-
-    },
 
     contents: [
 
@@ -126,6 +160,20 @@ const response = await env.AI.run(
       },
 
     ],
+
+    systemInstruction: {
+
+      parts: [
+
+        {
+
+          text: 'You are a helpful coding assistant specializing in Python.',
+
+        },
+
+      ],
+
+    },
 
     generationConfig: {
 
@@ -149,6 +197,73 @@ console.log(response)
 ```
 
 Explain Code
+
+Input / Output JSON 
+
+* [ Input ](#tab-panel-152)
+* [ Output ](#tab-panel-153)
+
+```
+
+{
+
+    "contents": [
+
+        {
+
+            "role": "user",
+
+            "parts": [
+
+                {
+
+                    "text": "How do I read a JSON file in Python?"
+
+                }
+
+            ]
+
+        }
+
+    ],
+
+    "systemInstruction": {
+
+        "parts": [
+
+            {
+
+                "text": "You are a helpful coding assistant specializing in Python."
+
+            }
+
+        ]
+
+    },
+
+    "generationConfig": {
+
+        "temperature": 0.3
+
+    }
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+    "text": "To read a JSON file in Python, you use the built-in **`json`** module.\n\nHere is the most common and recommended way to do it:\n\n### Basic Example\n```python\nimport json\n\n# Open the file and load the data\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n\n# Now 'data' is a Python dictionary (or list)\nprint(data)\n```\n\n---\n\n### Key Details to Remember\n\n#### 1. `json.load()` vs `json.loads()`\n*   **`json.load(file_object)`**: Used to read from a **file**.\n*   **`json.loads(json_string)`**: Used to parse a **string** that contains JSON data (the \"s\" stands for \"string\").\n\n#### 2. Using the `with` statement\nIt is best practice to use the `with` statement because it automatically closes the file for you, even if an error occurs during reading.\n\n#### 3. Handling Encoding\nIf your JSON file contains special characters (like emojis or non-English letters), it is safer to specify the encoding:\n```python\nwith open('data.json', 'r', encoding='utf-8') as file:\n    data = json.load(file)\n```\n\n---\n\n### Error Handling\nIf the file is missing or the JSON is formatted incorrectly, your program will crash. You can wrap it in a `try-except` block to handle these cases:\n\n```python\nimport json\n\ntry:\n    with open('data.json', 'r') as file:\n        data = json.load(file)\nexcept FileNotFoundError:\n    print(\"The file was not found.\")\nexcept json.JSONDecodeError:\n    print(\"The file is not a valid JSON format.\")\n```\n\n### Reading JSON from a URL\nIf you want to read JSON directly from the web, you can use the `requests` library:\n\n```python\nimport requests\n\nresponse = requests.get('https://api.example.com/data')\ndata = response.json()  # Automatically parses the JSON\nprint(data)\n```"
+
+}
+
+
+```
 
 **Multi-turn Conversation**  — Continuing a conversation with context 
 
@@ -237,6 +352,91 @@ console.log(response)
 
 Explain Code
 
+Input / Output JSON 
+
+* [ Input ](#tab-panel-156)
+* [ Output ](#tab-panel-157)
+
+```
+
+{
+
+    "contents": [
+
+        {
+
+            "role": "user",
+
+            "parts": [
+
+                {
+
+                    "text": "I need help planning a road trip from San Francisco to Los Angeles."
+
+                }
+
+            ]
+
+        },
+
+        {
+
+            "role": "model",
+
+            "parts": [
+
+                {
+
+                    "text": "I'd be happy to help! The drive is about 380 miles and takes roughly 5-6 hours. Would you like suggestions for scenic routes or interesting stops along the way?"
+
+                }
+
+            ]
+
+        },
+
+        {
+
+            "role": "user",
+
+            "parts": [
+
+                {
+
+                    "text": "Yes, what are some good places to stop?"
+
+                }
+
+            ]
+
+        }
+
+    ],
+
+    "generationConfig": {
+
+        "maxOutputTokens": 500
+
+    }
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+    "text": "To give you the best recommendations, it helps to know how much time you have. The drive can"
+
+}
+
+
+```
+
 **Creative Writing**  — Higher temperature for creative output 
 
 TypeScript
@@ -294,10 +494,65 @@ console.log(response)
 
 Explain Code
 
+Input / Output JSON 
+
+* [ Input ](#tab-panel-154)
+* [ Output ](#tab-panel-155)
+
+```
+
+{
+
+    "contents": [
+
+        {
+
+            "role": "user",
+
+            "parts": [
+
+                {
+
+                    "text": "Write a short story opening about a detective finding an unusual clue."
+
+                }
+
+            ]
+
+        }
+
+    ],
+
+    "generationConfig": {
+
+        "temperature": 0.8,
+
+        "maxOutputTokens": 300
+
+    }
+
+}
+
+
+```
+
+Explain Code
+
+```
+
+{
+
+    "text": "The yellow police tape hummed in the drafty"
+
+}
+
+
+```
+
 ## Parameters
 
-* [ Input ](#tab-panel-86)
-* [ Output ](#tab-panel-87)
+* [ Input ](#tab-panel-160)
+* [ Output ](#tab-panel-161)
 
 ▶contents\[\]
 
@@ -337,8 +592,8 @@ modelVersion
 
 ## API Schemas
 
-* [ Input ](#tab-panel-84)
-* [ Output ](#tab-panel-85)
+* [ Input ](#tab-panel-158)
+* [ Output ](#tab-panel-159)
 
 ```
 
@@ -593,115 +848,7 @@ Explain Code
 
       "type": "array",
 
-      "items": {
-
-        "type": "object",
-
-        "properties": {
-
-          "content": {
-
-            "type": "object",
-
-            "properties": {
-
-              "role": {
-
-                "type": "string"
-
-              },
-
-              "parts": {
-
-                "type": "array",
-
-                "items": {
-
-                  "type": "object",
-
-                  "properties": {
-
-                    "text": {
-
-                      "type": "string"
-
-                    }
-
-                  },
-
-                  "additionalProperties": {}
-
-                }
-
-              }
-
-            },
-
-            "required": [
-
-              "parts"
-
-            ],
-
-            "additionalProperties": {}
-
-          },
-
-          "finishReason": {
-
-            "type": "string"
-
-          },
-
-          "safetyRatings": {
-
-            "type": "array",
-
-            "items": {
-
-              "type": "object",
-
-              "properties": {
-
-                "category": {
-
-                  "type": "string"
-
-                },
-
-                "probability": {
-
-                  "type": "string"
-
-                }
-
-              },
-
-              "required": [
-
-                "category",
-
-                "probability"
-
-              ],
-
-              "additionalProperties": {}
-
-            }
-
-          }
-
-        },
-
-        "required": [
-
-          "content"
-
-        ],
-
-        "additionalProperties": {}
-
-      }
+      "items": {}
 
     },
 

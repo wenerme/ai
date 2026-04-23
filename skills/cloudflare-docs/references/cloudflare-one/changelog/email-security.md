@@ -285,7 +285,7 @@ What this means is that messages now have a **Attachments** section. Here, you c
 
 To use this feature, you must:
 
-* Enable **Clientless Web Isolation** in your Zero Trust settings.
+* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
 * Have **Browser Isolation (BISO)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
@@ -311,7 +311,7 @@ From **Investigation**, go to **View details**, and look for the **Links identif
 
 To use this feature, you must:
 
-* Enable **Clientless Web Isolation** in your Zero Trust settings.
+* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
 * Have **Browser Isolation (RBI)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).

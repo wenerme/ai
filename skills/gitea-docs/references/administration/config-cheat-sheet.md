@@ -1320,6 +1320,9 @@ This section only does "set" config, a removed config key from this section won'
 - `JWT_SIGNING_PRIVATE_KEY_FILE`: **jwt/private.pem**: Private key file path used to sign OAuth2 tokens. The path is relative to `APP_DATA_PATH`. This setting is only needed if `JWT_SIGNING_ALGORITHM` is set to `RS256`, `RS384`, `RS512`, `ES256`, `ES384` or `ES512`. The file must contain a RSA or ECDSA private key in the PKCS8 format. If no key exists a 4096 bit key will be created for you.
 - `MAX_TOKEN_LENGTH`: **32767**: Maximum length of token/cookie to accept from OAuth2 provider
 - `DEFAULT_APPLICATIONS`: **git-credential-oauth, git-credential-manager, tea**: Pre-register OAuth applications for some services on startup. See the [OAuth2 documentation](/development/oauth2-provider.md) for the list of available options.
+- `CUSTOM_SCHEMES`: **_empty_**: By default, OAuth2 applications can only use "http" and "https" as their redirect URI schemes.
+  If you need to use other schemes (e.g. for desktop applications), you can specify them here as a comma-separated list.
+  For example: set "my-scheme, com.example.app" to support "my-scheme://..." and "com.example.app://..." redirect URIs.
 
 ## i18n (`i18n`)
 

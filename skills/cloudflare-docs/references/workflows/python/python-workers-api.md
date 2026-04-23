@@ -1,6 +1,6 @@
 ---
 title: Python Workers API
-description: This guide covers the Python Workflows SDK, with instructions on how to build and create workflows using Python.
+description: Reference for the Python Workflows SDK, including WorkflowEntrypoint, step methods, and configuration options.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

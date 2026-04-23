@@ -1,3 +1,10 @@
+---
+latestModelInfo:
+  model: gpt-5.4
+  migrationGuide: /api/docs/guides/upgrading-to-gpt-5p4.md
+  promptingGuide: /api/docs/guides/prompt-guidance.md
+---
+
 # Using GPT-5.4
 
 import {

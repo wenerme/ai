@@ -24,10 +24,11 @@ Text-to-Speech • OpenAI • Proxied
 
 OpenAI's text-to-speech model optimized for real-time use with low latency.
 
-| Model Info        |                                                                  |
-| ----------------- | ---------------------------------------------------------------- |
-| Terms and License | [link ↗](https://openai.com/policies/)                           |
-| More information  | [link ↗](https://platform.openai.com/docs/guides/text-to-speech) |
+| Model Info        |                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://openai.com/policies/)                                                                         |
+| More information  | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                               |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1) |
 
 ## Usage
 
@@ -42,6 +43,12 @@ const response = await env.AI.run(
   {
 
     text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+    voice: 'alloy',
+
+    response_format: 'mp3',
+
+    speed: 1,
 
   },
 
@@ -80,6 +87,10 @@ const response = await env.AI.run(
 
     voice: 'nova',
 
+    response_format: 'mp3',
+
+    speed: 1,
+
   },
 
   {
@@ -114,6 +125,8 @@ const response = await env.AI.run(
     text: 'In the beginning, the universe was a singularity of infinite density. Then, in a fraction of a second, it expanded into everything we know today.',
 
     voice: 'onyx',
+
+    response_format: 'mp3',
 
     speed: 0.85,
 
@@ -152,6 +165,10 @@ const response = await env.AI.run(
 
     voice: 'echo',
 
+    response_format: 'mp3',
+
+    speed: 1,
+
   },
 
   {
@@ -187,6 +204,8 @@ const response = await env.AI.run(
 
     voice: 'shimmer',
 
+    response_format: 'mp3',
+
     speed: 1.5,
 
   },
@@ -210,8 +229,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-210)
-* [ Output ](#tab-panel-211)
+* [ Input ](#tab-panel-386)
+* [ Output ](#tab-panel-387)
 
 text
 
@@ -235,8 +254,8 @@ audio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-208)
-* [ Output ](#tab-panel-209)
+* [ Input ](#tab-panel-384)
+* [ Output ](#tab-panel-385)
 
 ```
 

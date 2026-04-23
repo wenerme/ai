@@ -52,8 +52,8 @@ The following bindings are available today:
 
 When you declare a binding on your Worker, you grant it a specific capability, such as being able to read and write files to an [R2](https://developers.cloudflare.com/r2/) bucket. For example:
 
-* [  wrangler.jsonc ](#tab-panel-9764)
-* [  wrangler.toml ](#tab-panel-9765)
+* [  wrangler.jsonc ](#tab-panel-10029)
+* [  wrangler.toml ](#tab-panel-10030)
 
 JSONC
 
@@ -96,8 +96,8 @@ bucket_name = "<MY_BUCKET_NAME>"
 
 ```
 
-* [  JavaScript ](#tab-panel-9750)
-* [  Python ](#tab-panel-9751)
+* [  JavaScript ](#tab-panel-10015)
+* [  Python ](#tab-panel-10016)
 
 JavaScript
 
@@ -217,8 +217,8 @@ export default {
 };  
 ```
 * It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env),[DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):  
-   * [  JavaScript ](#tab-panel-9752)  
-   * [  Python ](#tab-panel-9753)  
+   * [  JavaScript ](#tab-panel-10017)  
+   * [  Python ](#tab-panel-10018)  
 JavaScript  
 ```  
 export class MyDurableObject extends DurableObject {  
@@ -235,8 +235,8 @@ class Default(WorkerEntrypoint):
     return Response(f"Hi {self.env.NAME}")  
 ```
 * It can be imported from `cloudflare:workers`:  
-   * [  JavaScript ](#tab-panel-9754)  
-   * [  Python ](#tab-panel-9755)  
+   * [  JavaScript ](#tab-panel-10019)  
+   * [  Python ](#tab-panel-10020)  
 JavaScript  
 ```  
 import { env } from "cloudflare:workers";  
@@ -253,8 +253,8 @@ print(f"Hi, {env.NAME}")
 
 Importing `env` from `cloudflare:workers` is useful when you need to access a binding such as [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)in top-level global scope. For example, to initialize an API client:
 
-* [  JavaScript ](#tab-panel-9756)
-* [  Python ](#tab-panel-9757)
+* [  JavaScript ](#tab-panel-10021)
+* [  Python ](#tab-panel-10022)
 
 JavaScript
 
@@ -314,8 +314,8 @@ Workers do not allow I/O from outside a request context. This means that even th
 
 For instance, environment variables and secrets are accessible, and you are able to call `env.NAMESPACE.get` to get a [Durable Object stub](https://developers.cloudflare.com/durable-objects/api/stub/) in the top-level context. However, calling methods on the Durable Object stub, making [calls to a KV store](https://developers.cloudflare.com/kv/api/), and [calling to other Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) will not work.
 
-* [  JavaScript ](#tab-panel-9758)
-* [  Python ](#tab-panel-9759)
+* [  JavaScript ](#tab-panel-10023)
+* [  Python ](#tab-panel-10024)
 
 JavaScript
 
@@ -377,8 +377,8 @@ Explain Code
 
 Additionally, importing `env` from `cloudflare:workers` lets you avoid passing `env`as an argument through many function calls if you need to access a binding from a deeply-nested function. This can be helpful in a complex codebase.
 
-* [  JavaScript ](#tab-panel-9760)
-* [  Python ](#tab-panel-9761)
+* [  JavaScript ](#tab-panel-10025)
+* [  Python ](#tab-panel-10026)
 
 JavaScript
 
@@ -466,8 +466,8 @@ The `withEnv` function provides a mechanism for overriding values of `env`.
 
 Imagine a user has defined the [environment variable](https://developers.cloudflare.com/workers/configuration/environment-variables/)"NAME" to be "Alice" in their Wrangler configuration file and deployed a Worker. By default, logging`env.NAME` would print "Alice". Using the `withEnv` function, you can override the value of "NAME".
 
-* [  JavaScript ](#tab-panel-9762)
-* [  Python ](#tab-panel-9763)
+* [  JavaScript ](#tab-panel-10027)
+* [  Python ](#tab-panel-10028)
 
 JavaScript
 

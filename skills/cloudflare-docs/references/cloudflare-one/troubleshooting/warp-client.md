@@ -19,7 +19,7 @@ Copy page
 This guide helps you diagnose and resolve common issues with the Cloudflare One Client (formerly WARP). It covers how to troubleshoot the Cloudflare One Client on desktop operating systems, including Windows, macOS, and Linux.
 
 1. **Before you start**: [Prerequisites](#prerequisites), permissions, [version control](#check-your-client-version), and client basics.
-2. **Collect logs**: Through [Cloudflare One](#option-a-collect-logs-via-the-cloudflare-dashboard) (with DEX remote capture) or the [command-line interface](#option-b-collect-logs-via-the-cli) (CLI) (`warp-diag`).
+2. **Collect logs**: Through the [Cloudflare dashboard](#option-a-collect-logs-via-the-cloudflare-dashboard) (with DEX remote capture) or the [command-line interface](#option-b-collect-logs-via-the-cli) (CLI) (`warp-diag`).
 3. **Review logs**: [Status](#check-client-status), [settings](#check-client-settings), [profile ID](#profile-id), [split tunnel](#exclude-mode-with-hostsips) configuration, and other settings.
 4. **Fix common misconfigurations**: [Profile mismatch](#wrong-profile-id), [split tunnel issues](#wrong-split-tunnel-configuration), [managed network issues](#review-your-managed-network-settings), [user group mismatch](#check-a-users-group-membership).
 5. **File a support ticket**: [How to file a ticket](#5-file-a-support-ticket) after you have exhausted your troubleshooting options.
@@ -48,8 +48,8 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the device
 
-* [ Version 2026.2+ ](#tab-panel-6080)
-* [ Version 2026.1 and earlier ](#tab-panel-6081)
+* [ Version 2026.2+ ](#tab-panel-6296)
+* [ Version 2026.1 and earlier ](#tab-panel-6297)
 
 1. Open the Cloudflare One Client on your desktop.
 2. Select **About**.
@@ -60,9 +60,9 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 3. Select **About WARP**.
 4. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
 
-#### Via the Cloudflare One dashboard
+#### Via the Cloudflare dashboard
 
-1. Log into [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> go to **Team & Resources** \> **Devices** \> **Your devices**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Your devices**.
 2. Select the device you want to investigate.
 3. Find the device's client version under **Client version** in the side menu.
 4. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
@@ -149,7 +149,7 @@ You can collect diagnostic logs in two ways: the [Cloudflare dashboard](#option-
 
 ### Option A: Collect logs via the Cloudflare dashboard
 
-Collect client diagnostic logs remotely from the Cloudflare One dashboard by using Digital Experience Monitoring's (DEX) remote captures.
+Collect client diagnostic logs remotely from the Cloudflare dashboard by using Digital Experience Monitoring's (DEX) remote captures.
 
 Best practice
 
@@ -212,9 +212,9 @@ Collect client diagnostic logs on your desktop using the `warp-diag` CLI.
 
 To view client logs on desktop devices:
 
-* [ macOS ](#tab-panel-6084)
-* [ Windows ](#tab-panel-6085)
-* [ Linux ](#tab-panel-6086)
+* [ macOS ](#tab-panel-6300)
+* [ Windows ](#tab-panel-6301)
+* [ Linux ](#tab-panel-6302)
 
 1. Open a Terminal window.
 2. Run the `warp-diag` tool:  
@@ -504,17 +504,17 @@ To verify that the Cloudflare One Client is configured and working properly, rev
 
 ### Wrong profile ID
 
-A profile ID is a unique identifier assigned to each [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) in the Cloudflare One dashboard, used to determine which configuration settings apply to a device.
+A profile ID is a unique identifier assigned to each [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) in the Cloudflare dashboard, used to determine which configuration settings apply to a device.
 
 #### Check the applied device profile
 
 To check that the applied device profile is the intended device profile:
 
-1. Go to [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 2. Find and select the device profile intended for the device.
 3. Under **Profile details**, compare the displayed **Profile ID** with the `Profile ID` in the `warp-settings.txt` file.
 
-If your organization has multiple device profiles defined in the Cloudflare One dashboard, a device may be matched to an unexpected profile because:
+If your organization has multiple device profiles defined in the Cloudflare dashboard, a device may be matched to an unexpected profile because:
 
 * How [profile precedence](#review-profile-precedence) is configured.
 * [Managed network](#review-your-managed-network-settings) issues (if you are using a managed network.)
@@ -554,7 +554,7 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 ```  
 If the endpoint is down, you will receive a `Could not find certificate from <stdin>` response.  
 If you received a returned SHA-256 fingerprint:  
-   1. Log into [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Team & Resources** \> **Devices** \> **Device profiles**.  
+   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.  
    2. Go to **Managed networks** \> **Edit**.  
    3. Compare the TLS Cert SHA-256 in the dashboard with the returned fingerprint in your terminal to ensure they match.
 2. Use a single profile for a single location.  
@@ -566,7 +566,7 @@ If a user is having issues with a device profile, it may be because they are not
 
 To check that the user belongs to the intended group:
 
-1. Log into [Cloudflare One ↗](https://one.dash.cloudflare.com/) \> go to **Team & Resources** \> **Devices** \> **Your devices**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Your devices**.
 2. Select the user.
 3. Under **User Registry Identity**, select the user's name.
 4. The **Get-identity endpoint** lists all the groups the user belongs to.
@@ -621,11 +621,11 @@ After downloading the client diagnostic logs, review that your configuration is 
 Exclude mode versus Include mode  
 `Exclude mode` means all traffic will be sent through the WARP tunnel except for the IPs and domains you specify.  
 `Include mode` means only traffic destined to the IPs or domains you specify will be sent through the WARP tunnel.
-2. Log into [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+2. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
 3. Find and select the device profile intended for the device.
 4. Select **Edit**.
 5. Find **Split Tunnels** and note the mode you have selected > select **Manage**.
-6. Cross-reference the IPs/hosts you have configured in the Cloudflare One dashboard with the IPs/hosts listed in `warp-settings.txt`.
+6. Cross-reference the IPs/hosts you have configured in the Cloudflare dashboard with the IPs/hosts listed in `warp-settings.txt`.
 
 If your dashboard split tunnel configuration does not match your `warp-settings.txt` file configuration, you may need to force the Cloudflare One Client to [update its settings](#update-the-cloudflare-one-clients-settings).
 
@@ -639,8 +639,8 @@ Both methods update the client with the latest configuration.
 
 **Option A: Disconnect and reconnect the client**
 
-* [ Version 2026.2+ ](#tab-panel-6082)
-* [ Version 2026.1 and earlier ](#tab-panel-6083)
+* [ Version 2026.2+ ](#tab-panel-6298)
+* [ Version 2026.1 and earlier ](#tab-panel-6299)
 
 1. On the end user device, open the Cloudflare One Client and select **Disconnect**.
 
@@ -668,8 +668,8 @@ The client will fetch new settings when it reconnects.
 
 To reset the encryption keys on an end user's desktop:
 
-* [ Version 2026.2+ ](#tab-panel-6087)
-* [ Version 2026.1 and earlier ](#tab-panel-6088)
+* [ Version 2026.2+ ](#tab-panel-6303)
+* [ Version 2026.1 and earlier ](#tab-panel-6304)
 
 1. Open the Cloudflare One Client on your device.
 2. Go to **Connectivity** \> **Encryption keys**

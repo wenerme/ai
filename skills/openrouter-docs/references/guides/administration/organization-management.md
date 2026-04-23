@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/administration/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/administration/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/administration/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/administration/llms-full.txt.
+
+# Organization Management
 
 OpenRouter organizations enable teams and companies to collaborate effectively by sharing credits, managing API keys centrally, and tracking usage across all team members. Organizations are ideal for companies that want to pool resources, manage inference costs centrally, and maintain oversight of AI usage across their team.
 

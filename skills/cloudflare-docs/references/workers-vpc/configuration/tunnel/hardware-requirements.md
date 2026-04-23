@@ -1,6 +1,6 @@
 ---
 title: Hardware requirements
-description: For production use cases, we recommend the following baseline configuration:
+description: Recommended CPU, memory, and scaling guidelines for cloudflared tunnel hosts.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -20,7 +20,7 @@ Copy page
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, turn on **Modify Gateway block behavior**.
 4. Choose your block behavior:  
@@ -37,10 +37,10 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-5124)
-* [ Terraform (v5) ](#tab-panel-5125)
+* [ Dashboard ](#tab-panel-7527)
+* [ Terraform (v5) ](#tab-panel-7528)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Custom pages**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
 3. Choose **Custom Gateway block page**. Gateway will display a preview of your custom block page. Available customizations include:  
    * Your organization's name  

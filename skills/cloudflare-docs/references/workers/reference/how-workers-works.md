@@ -56,8 +56,8 @@ If you are interested in how Cloudflare handles security with the Workers runtim
 
 Most Workers are a variation on the default Workers flow:
 
-* [  JavaScript ](#tab-panel-7502)
-* [  TypeScript ](#tab-panel-7503)
+* [  JavaScript ](#tab-panel-10007)
+* [  TypeScript ](#tab-panel-10008)
 
 JavaScript
 

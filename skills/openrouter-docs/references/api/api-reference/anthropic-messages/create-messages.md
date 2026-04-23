@@ -1,4 +1,6 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/anthropic-messages/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/anthropic-messages/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/anthropic-messages/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/api-reference/anthropic-messages/llms-full.txt.
 
 # Create a message
 
@@ -1445,6 +1447,7 @@ components:
         - Morph
         - NCompass
         - Nebius
+        - Nex AGI
         - NextBit
         - Novita
         - Nvidia
@@ -2306,8 +2309,8 @@ components:
         - high
       description: >-
         How much context to retrieve per result. Defaults to medium (15000
-        chars). Only applies when using the Exa engine; ignored with native
-        provider search.
+        chars). Applies to Exa and Parallel engines; ignored with native
+        provider search and Firecrawl.
       title: SearchQualityLevel
     WebSearchUserLocationServerToolType:
       type: string

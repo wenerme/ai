@@ -24,10 +24,11 @@ Text-to-Video • Vidu • Proxied
 
 Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips.
 
-| Model Info        |                                      |
-| ----------------- | ------------------------------------ |
-| Terms and License | [link ↗](https://www.vidu.com/terms) |
-| More information  | [link ↗](https://www.vidu.com/)      |
+| Model Info        |                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.vidu.com/terms)                                                                          |
+| More information  | [link ↗](https://www.vidu.com/)                                                                               |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/vidu/q3-pro) |
 
 ## Usage
 
@@ -42,6 +43,10 @@ const response = await env.AI.run(
   {
 
     prompt: 'A golden retriever running through a sunlit meadow in slow motion',
+
+    duration: 5,
+
+    resolution: '720p',
 
   },
 
@@ -64,45 +69,6 @@ Response200
 
 ## Examples
 
-**Custom Duration and Resolution**  — Longer video at higher resolution 
-
-TypeScript
-
-```
-
-const response = await env.AI.run(
-
-  'vidu/q3-pro',
-
-  {
-
-    prompt:
-
-      'Aerial drone shot flying through a misty forest at dawn, rays of sunlight breaking through the trees',
-
-    duration: 10,
-
-    resolution: '1080p',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
-)
-
-console.log(response)
-
-
-```
-
-Explain Code
-
-Response200 
-
 **Portrait Aspect Ratio**  — Vertical video for social media 
 
 TypeScript
@@ -119,9 +85,11 @@ const response = await env.AI.run(
 
       'A busy street in Tokyo at night with neon signs reflecting on wet pavement, rain falling',
 
-    aspect_ratio: '9:16',
-
     duration: 5,
+
+    resolution: '720p',
+
+    aspect_ratio: '9:16',
 
   },
 
@@ -158,11 +126,11 @@ const response = await env.AI.run(
 
       'Abstract paint swirls slowly mixing in water, vivid blues and golds',
 
-    audio: false,
-
     duration: 8,
 
     resolution: '720p',
+
+    audio: false,
 
   },
 
@@ -199,11 +167,11 @@ const response = await env.AI.run(
 
       'A sleek wireless headphone rotating on a pedestal with soft studio lighting and a white background',
 
-    aspect_ratio: '1:1',
-
     duration: 5,
 
     resolution: '720p',
+
+    aspect_ratio: '1:1',
 
   },
 
@@ -226,8 +194,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-246)
-* [ Output ](#tab-panel-247)
+* [ Input ](#tab-panel-422)
+* [ Output ](#tab-panel-423)
 
 prompt
 
@@ -263,8 +231,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-244)
-* [ Output ](#tab-panel-245)
+* [ Input ](#tab-panel-420)
+* [ Output ](#tab-panel-421)
 
 ```
 

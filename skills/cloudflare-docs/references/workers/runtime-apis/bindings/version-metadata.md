@@ -22,8 +22,8 @@ Worker version ID, version tag and timestamp of when the version was created are
 
 To use the version metadata binding, update your Worker's Wrangler file:
 
-* [  wrangler.jsonc ](#tab-panel-7630)
-* [  wrangler.toml ](#tab-panel-7631)
+* [  wrangler.jsonc ](#tab-panel-10075)
+* [  wrangler.toml ](#tab-panel-10076)
 
 JSONC
 
@@ -57,8 +57,8 @@ binding = "CF_VERSION_METADATA"
 
 An example of how to access the version ID and version tag from within a Worker to send events to [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/):
 
-* [  JavaScript ](#tab-panel-7628)
-* [  TypeScript ](#tab-panel-7629)
+* [  JavaScript ](#tab-panel-10073)
+* [  TypeScript ](#tab-panel-10074)
 
 JavaScript
 

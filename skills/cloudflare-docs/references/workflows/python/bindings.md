@@ -1,6 +1,6 @@
 ---
 title: Interact with a Workflow
-description: The Python Workers platform leverages FFI to access bindings to Cloudflare resources. Refer to the bindings documentation for more information.
+description: Trigger and manage Workflows from Python Workers using FFI bindings to Cloudflare resources.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -26,8 +26,8 @@ The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Fo
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
-* [  wrangler.jsonc ](#tab-panel-10823)
-* [  wrangler.toml ](#tab-panel-10824)
+* [  wrangler.jsonc ](#tab-panel-11125)
+* [  wrangler.toml ](#tab-panel-11126)
 
 JSONC
 
@@ -43,7 +43,7 @@ JSONC
 
   // Set this to today's date
 
-  "compatibility_date": "2026-04-16",
+  "compatibility_date": "2026-04-22",
 
   "compatibility_flags": ["python_workflows", "python_workers"],
 
@@ -86,7 +86,7 @@ main = "src/index.py"
 
 # Set this to today's date
 
-compatibility_date = "2026-04-16"
+compatibility_date = "2026-04-22"
 
 compatibility_flags = [ "python_workflows", "python_workers" ]
 

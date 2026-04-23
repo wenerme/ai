@@ -1,6 +1,6 @@
 ---
 title: Pricing
-description: Workers VPC requires a Workers plan. See Workers pricing for current rates.
+description: Workers VPC pricing details and free open beta availability.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

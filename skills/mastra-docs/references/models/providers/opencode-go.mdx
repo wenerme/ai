@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Go | Models"
-description: "Use OpenCode Go models with Mastra. 10 models available."
+description: "Use OpenCode Go models with Mastra. 12 models available."
 ---
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 10 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 12 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/docs/zen).
 
@@ -95,7 +95,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 64000,
+    "maxOutput": 128000,
     "inputCost": 0.4,
     "outputCost": 2
   },
@@ -107,7 +107,31 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 64000,
+    "maxOutput": 128000,
+    "inputCost": 1,
+    "outputCost": 3
+  },
+  {
+    "model": "opencode-go/mimo-v2.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 128000,
+    "inputCost": 0.4,
+    "outputCost": 2
+  },
+  {
+    "model": "opencode-go/mimo-v2.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 128000,
     "inputCost": 1,
     "outputCost": 3
   },

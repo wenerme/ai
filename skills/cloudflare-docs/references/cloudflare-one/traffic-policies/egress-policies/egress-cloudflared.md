@@ -101,7 +101,7 @@ Requires `cloudflared` version 2025.7.0 or later.
 
 To route a public hostname through Cloudflare Tunnel:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Networks** \> **Routes** \> **Hostname routes**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Routes** \> **Hostname routes**.
 2. Select **Create hostname route**.
 3. In **Hostname**, enter the public hostname that represents the application (for example, `app.bank.com`). The hostname should be accessible from the public Internet.
 4. For **Tunnel**, select the Cloudflare Tunnel that is being used to connect the private network to Cloudflare.

@@ -24,10 +24,11 @@ Text-to-Image • Recraft • Proxied
 
 Generate detailed, production-ready SVG vector graphics from text prompts with fine geometry, scalable to any size for print and design work.
 
-| Model Info        |                                        |
-| ----------------- | -------------------------------------- |
-| Terms and License | [link ↗](https://www.recraft.ai/terms) |
-| More information  | [link ↗](https://www.recraft.ai/)      |
+| Model Info        |                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License | [link ↗](https://www.recraft.ai/terms)                                                                                         |
+| More information  | [link ↗](https://www.recraft.ai/)                                                                                              |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro-vector) |
 
 ## Usage
 
@@ -62,7 +63,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Logo Design](https://replicate.delivery/xezq/ADdqVTvbVaJVNpexJBKcfHfaisT6IqHCKMVtdCIfexaCXGOzC/tmpyl5i46hr.svg) 
+Response200 ![Logo Design](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/logo-design.jpg) 
 
 ## Examples
 
@@ -101,7 +102,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Icon Set](https://replicate.delivery/xezq/kAEXVRyFCewUK6mBCZWun3GnQ1nUOgeRmV3VjDeWloAlmhzsA/tmpweqnhf9b.svg) 
+Response200 ![Icon Set](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/icon-set.jpg) 
 
 **Print-Ready Vector**  — High-resolution vector for large-format print 
 
@@ -138,7 +139,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Print-Ready Vector](https://replicate.delivery/xezq/oF6t1Dm9hi6IH9ECfGRUt0FR2mCsSbfMcdfCedXfJVaieMcmF/tmpuiezfalr.svg) 
+Response200 ![Print-Ready Vector](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/print-ready-vector.jpg) 
 
 **Brand Illustration**  — Vector illustration with brand colors 
 
@@ -199,12 +200,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Brand Illustration](https://replicate.delivery/xezq/CIT2K8gZDCJVLd2VhDla0GOkhWwg92eo4eikkCq285IP0wZWA/tmpds4b_4rl.svg) 
+Response200 ![Brand Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro-vector/brand-illustration.jpg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-234)
-* [ Output ](#tab-panel-235)
+* [ Input ](#tab-panel-410)
+* [ Output ](#tab-panel-411)
 
 prompt
 
@@ -228,12 +229,12 @@ substyle
 
 image
 
-`string`format: uricontentMediaType: image/svg+xml
+`string`
 
 ## API Schemas
 
-* [ Input ](#tab-panel-232)
-* [ Output ](#tab-panel-233)
+* [ Input ](#tab-panel-408)
+* [ Output ](#tab-panel-409)
 
 ```
 
@@ -394,11 +395,7 @@ Explain Code
 
     "image": {
 
-      "type": "string",
-
-      "format": "uri",
-
-      "contentMediaType": "image/svg+xml"
+      "type": "string"
 
     }
 

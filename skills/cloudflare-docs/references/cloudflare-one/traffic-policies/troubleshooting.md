@@ -99,7 +99,7 @@ The most important concept is [Gateway policy precedence](https://developers.clo
 
 To resolve Gateway policy precedence issues:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. Review the order of your DNS, Network, and HTTP policies.
 3. Ensure that your most specific Allow, Do Not Scan, or Do Not Inspect policies have a lower order number than your general Block policies.
 4. Drag and drop policies to reorder them as needed. An Allow policy for `teams.microsoft.com` should be placed before a general Block policy for all file sharing applications.
@@ -116,8 +116,8 @@ These applications do not use the operating system's trust store and therefore d
 
 To resolve this issue:
 
-* [ Recommended ](#tab-panel-6074)
-* [ Workaround ](#tab-panel-6075)
+* [ Recommended ](#tab-panel-6290)
+* [ Workaround ](#tab-panel-6291)
 
 Create a targeted HTTP policy to bypass decryption for the specific domains these tools need to access. Place this policy at a higher precedence (lower order number) than your main TLS decryption policy.
 

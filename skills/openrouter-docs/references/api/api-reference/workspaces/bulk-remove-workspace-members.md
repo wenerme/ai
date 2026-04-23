@@ -1,4 +1,6 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/workspaces/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/workspaces/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/workspaces/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/api-reference/workspaces/llms-full.txt.
 
 # Bulk remove members from a workspace
 

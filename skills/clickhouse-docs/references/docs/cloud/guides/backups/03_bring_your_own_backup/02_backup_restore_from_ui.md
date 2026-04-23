@@ -7,6 +7,8 @@ keywords: ['backups', 'disaster recovery', 'data protection', 'restore', 'cloud 
 
 # Backup / restore via user-interface {#ui-experience}
 
+> **note**: Automated backups to your external bucket are configured to run as "full" backups every 24 hours, and the frequency is not configurable.  
+
 ## AWS {#AWS}
 
 ### Taking backups to AWS {#taking-backups-to-aws}

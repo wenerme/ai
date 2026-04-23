@@ -29,8 +29,7 @@ Your browser must [allow third-party cookies](https://developers.cloudflare.com/
 ## Enable Browser Isolation
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** \> **Browser isolation settings**.
-2. Under **Manage remote browser permissions**, select **Manage**.
-3. Enable **Clientless Web Isolation**.
+2. Turn on **Allow users to open a remote browser without the device client**.
 1. Go to **Access controls** \> **Applications**.
 2. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
 3. Go to **Policies**.

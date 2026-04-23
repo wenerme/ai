@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+
+# Latency and Performance
 
 OpenRouter is designed with performance as a top priority. OpenRouter is heavily optimized to add as little latency as possible to your requests.
 

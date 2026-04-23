@@ -1,6 +1,6 @@
 ---
 title: Visualize Workflows
-description: View a visual representation of your parsed Workflow code as a diagram on the Cloudflare dashboard.
+description: View a visual diagram of your Workflow steps, conditionals, and parallel logic in the Cloudflare dashboard.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

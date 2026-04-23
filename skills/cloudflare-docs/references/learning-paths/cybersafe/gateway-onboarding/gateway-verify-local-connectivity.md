@@ -18,10 +18,10 @@ Copy page
 
 To verify that your DNS traffic is sent to Gateway:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Under **Log traffic activity**, enable activity logging for all DNS logs.
 3. On your device, open a browser and go to any website.
-4. In Cloudflare One, go to **Insights** \> **Logs** \> **DNS**.
+4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **DNS**.
 5. Make sure DNS queries from your device appear.
 
 ```json

@@ -44,7 +44,7 @@ A DLP profile only defines detection patterns. DLP scans will not start until yo
 
 DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). To start logging or blocking traffic, create a policy for DLP:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies**. Select **HTTP**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**. Select **HTTP**.
 2. Select **Add a policy**.
 3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:  
 | Selector    | Operator | Value                                                     | Logic | Action |  
@@ -70,7 +70,7 @@ Different sites will send requests in different ways. For example, some sites wi
 
 ## 4\. View DLP logs
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Logs** \> **HTTP request logs**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **HTTP request logs**.
 2. Select **Filter**.
 3. Choose an item under one of the following filters:  
    * **DLP Profiles** shows the requests which matched a specific DLP profile.  

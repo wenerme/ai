@@ -1,6 +1,6 @@
 ---
 title: Events and parameters
-description: When a Workflow is triggered, it can receive an optional event. This event can include data that your Workflow can act on, including request details, user data fetched from your database (such as D1 or KV) or from a webhook, or messages from a Queue consumer.
+description: Pass data to Workflows using events and parameters, including request details, database records, and webhook payloads.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -36,8 +36,8 @@ A `WorkflowEvent` and its associated `payload` property are effectively _immutab
 
 Store state durably by returning it from your `step.do` callbacks.
 
-* [  JavaScript ](#tab-panel-10759)
-* [  TypeScript ](#tab-panel-10760)
+* [  JavaScript ](#tab-panel-11061)
+* [  TypeScript ](#tab-panel-11062)
 
 JavaScript
 
@@ -158,8 +158,8 @@ The `waitForEvent` type parameter only supports letters, digits, `-`, and `_`. C
 
 For example, to wait for billing webhook:
 
-* [  JavaScript ](#tab-panel-10755)
-* [  TypeScript ](#tab-panel-10756)
+* [  JavaScript ](#tab-panel-11057)
+* [  TypeScript ](#tab-panel-11058)
 
 JavaScript
 
@@ -227,8 +227,8 @@ The above example:
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
-* [  JavaScript ](#tab-panel-10753)
-* [  TypeScript ](#tab-panel-10754)
+* [  JavaScript ](#tab-panel-11055)
+* [  TypeScript ](#tab-panel-11056)
 
 JavaScript
 
@@ -266,8 +266,8 @@ Timeout behavior
 
 When `waitForEvent` times out, the Workflow will throw an error and the instance will fail. If you want your Workflow to continue even if the event is not received, wrap the `waitForEvent` call in a `try...catch` block:
 
-* [  JavaScript ](#tab-panel-10757)
-* [  TypeScript ](#tab-panel-10758)
+* [  JavaScript ](#tab-panel-11059)
+* [  TypeScript ](#tab-panel-11060)
 
 JavaScript
 
@@ -331,8 +331,8 @@ Explain Code
 
 Workflow instances that are waiting on events using the `waitForEvent` API can be sent events using the `instance.sendEvent` API:
 
-* [  JavaScript ](#tab-panel-10761)
-* [  TypeScript ](#tab-panel-10762)
+* [  JavaScript ](#tab-panel-11063)
+* [  TypeScript ](#tab-panel-11064)
 
 JavaScript
 

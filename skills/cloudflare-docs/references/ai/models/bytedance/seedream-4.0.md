@@ -24,9 +24,10 @@ Text-to-Image • ByteDance • Proxied
 
 Seedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.
 
-| Model Info       |                                                       |
-| ---------------- | ----------------------------------------------------- |
-| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F0) |
+| Model Info       |                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| More information | [link ↗](https://seed.bytedance.com/en/seedream4%5F0)                                                                    |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.0) |
 
 ## Usage
 
@@ -59,7 +60,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Simple Generation](https://replicate.delivery/xezq/jCypj4MeXYUiRyq7nfgm8z1OvFZF81wh4FznutDsZOuJz0YWA/tmp1iukn307.jpg) 
+Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/simple-generation.jpeg) 
 
 ## Examples
 
@@ -100,7 +101,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![High Resolution](https://replicate.delivery/xezq/fMmA8cw0vv3eC0c3PYt2e1fymQEsD1bR1lpd5UnhTKqmNTjZB/tmpik3_vkq7.jpg) 
+Response200 ![High Resolution](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/high-resolution.jpeg) 
 
 **Widescreen Landscape**  — Cinematic aspect ratio image 
 
@@ -139,7 +140,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Widescreen Landscape](https://replicate.delivery/xezq/0lxxNQSg3NabCZrDiQVAPGVmjP1Q2dd7TgYCOTfI9LpyZaMLA/tmp89gopylq.jpg) 
+Response200 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/widescreen-landscape.jpeg) 
 
 **Portrait Format**  — Vertical image for portraits 
 
@@ -178,9 +179,9 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Portrait Format](https://replicate.delivery/xezq/TRYcLgNMrBpPJVq09ICKXWe4Z8d6olzpK5vtQPOB8O23ZaMLA/tmpaecga26m.jpg) 
+Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/portrait-format.jpeg) 
 
-**Custom Dimensions**  — Specific width and height 
+**Detailed 4K**  — High-resolution detailed botanical illustration 
 
 TypeScript
 
@@ -194,11 +195,9 @@ const response = await env.AI.run(
 
     prompt: 'A detailed botanical illustration of exotic tropical flowers',
 
-    size: 'custom',
+    size: '4K',
 
-    width: 2048,
-
-    height: 3072,
+    aspect_ratio: '3:4',
 
   },
 
@@ -217,12 +216,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Custom Dimensions](https://replicate.delivery/xezq/1SbAc0aXYXbVD9doyrdCW78hYufVefMsaJXBrETN7Lu2npxsA/tmphvkx7emy.jpg) 
+Response200 ![Detailed 4K](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/bytedance__seedream-4.0/detailed-4k.jpeg) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-54)
-* [ Output ](#tab-panel-55)
+* [ Input ](#tab-panel-120)
+* [ Output ](#tab-panel-121)
 
 prompt
 
@@ -254,8 +253,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-52)
-* [ Output ](#tab-panel-53)
+* [ Input ](#tab-panel-118)
+* [ Output ](#tab-panel-119)
 
 ```
 

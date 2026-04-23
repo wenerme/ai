@@ -24,10 +24,11 @@ Text-to-Image • Recraft • Proxied
 
 Recraft V4 generates art-directed images with strong composition, accurate text rendering, and design taste built in. Fast and cost-efficient at standard resolution.
 
-| Model Info        |                                        |
-| ----------------- | -------------------------------------- |
-| Terms and License | [link ↗](https://www.recraft.ai/terms) |
-| More information  | [link ↗](https://www.recraft.ai/)      |
+| Model Info        |                                                                                                                     |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.recraft.ai/terms)                                                                              |
+| More information  | [link ↗](https://www.recraft.ai/)                                                                                   |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4) |
 
 ## Usage
 
@@ -60,11 +61,11 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Simple Generation](https://replicate.delivery/xezq/rffiesPWfSUe6l6jneyhKfO1i52NlHqaER5y68lkB0ybNa4MLA/tmp9j2fyavc.webp) 
+Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/simple-generation.png) 
 
 ## Examples
 
-**With Style**  — Generate with a specific artistic style 
+**Scene Composition**  — Generate a complex compositional scene 
 
 TypeScript
 
@@ -79,8 +80,6 @@ const response = await env.AI.run(
     prompt:
 
       'A cozy cabin in the woods surrounded by tall pine trees, smoke rising from the chimney',
-
-    style: 'realistic_image',
 
   },
 
@@ -99,7 +98,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![With Style](https://replicate.delivery/xezq/yF3RaaZAeY3qOiwx32wcOV89Nc5WgKrZ39QFPkOM52JFT5MLA/tmpssefh11s.webp) 
+Response200 ![Scene Composition](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/scene-composition.png) 
 
 **Custom Size**  — Specify output dimensions 
 
@@ -119,8 +118,6 @@ const response = await env.AI.run(
 
     size: '1024x1024',
 
-    style: 'digital_illustration',
-
   },
 
   {
@@ -138,7 +135,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Custom Size](https://replicate.delivery/xezq/Dyq7HL6CCm49NZPNlguOHy2Qr3Qbo1WtqFmeQAMdqWHTa4MLA/tmp8u1mkfnl.webp) 
+Response200 ![Custom Size](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/custom-size.png) 
 
 **With Color Controls**  — Guide generation with specific brand colors 
 
@@ -193,7 +190,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![With Color Controls](https://replicate.delivery/xezq/0VdYE6Re010Te0fsnRyGHCxnLjqgNJ7Aye6n1XeoGAftMNcmF/tmp4n5wzf9s.webp) 
+Response200 ![With Color Controls](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/with-color-controls.png) 
 
 **Background Color**  — Set a specific background color 
 
@@ -238,12 +235,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Background Color](https://replicate.delivery/xezq/7F4vZhspELqLERfFjVqOMRJgfSBN1PRkcae1q0beKn45TDnZB/tmp37tx7zib.webp) 
+Response200 ![Background Color](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4/background-color.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-226)
-* [ Output ](#tab-panel-227)
+* [ Input ](#tab-panel-402)
+* [ Output ](#tab-panel-403)
 
 prompt
 
@@ -267,12 +264,12 @@ substyle
 
 image
 
-`string`format: uricontentMediaType: image/svg+xml
+`string`
 
 ## API Schemas
 
-* [ Input ](#tab-panel-224)
-* [ Output ](#tab-panel-225)
+* [ Input ](#tab-panel-400)
+* [ Output ](#tab-panel-401)
 
 ```
 
@@ -433,11 +430,7 @@ Explain Code
 
     "image": {
 
-      "type": "string",
-
-      "format": "uri",
-
-      "contentMediaType": "image/svg+xml"
+      "type": "string"
 
     }
 

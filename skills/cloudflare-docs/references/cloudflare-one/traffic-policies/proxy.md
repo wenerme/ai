@@ -81,8 +81,8 @@ Gateway cannot log or filter ICMP traffic.
 
 To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `cloudflared` host to allow ICMP traffic through `cloudflared`.
 
-* [  Linux ](#tab-panel-6068)
-* [  Docker ](#tab-panel-6069)
+* [  Linux ](#tab-panel-6284)
+* [  Docker ](#tab-panel-6285)
 
 1. Ensure that `ping_group_range` includes the Group ID (GID) of the user running `cloudflared`:  
 a. Find the user that owns the `cloudflared` process:  
@@ -133,7 +133,7 @@ By default the [cloudflared Docker container ↗](https://github.com/cloudflare/
 
 The Gateway proxy toggle only applies to traffic from Cloudflare One Client devices. Gateway will always proxy traffic sent with [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) or [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) regardless of this setting.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. In **Proxy and inspection settings**, turn on **Allow Secure Web Gateway to proxy traffic**.
 3. Select **TCP**.
 4. (Optional) Depending on your use case, you can select **UDP** and/or **ICMP**.

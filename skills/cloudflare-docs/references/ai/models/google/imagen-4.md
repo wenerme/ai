@@ -24,10 +24,11 @@ Text-to-Image • Google • Proxied
 
 Google's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.
 
-| Model Info        |                                                        |
-| ----------------- | ------------------------------------------------------ |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)       |
-| More information  | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Model Info        |                                                                                                                   |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                  |
+| More information  | [link ↗](https://deepmind.google/technologies/imagen/)                                                            |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/imagen-4) |
 
 ## Usage
 
@@ -60,7 +61,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Simple Generation](https://replicate.delivery/xezq/UtW29FgOBeTJRakGfCvfbUru8OjFr4VuuNeS4jfhUdtlgOYzC/tmpvhtnlgyb.jpg) 
+Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/simple-generation.png) 
 
 ## Examples
 
@@ -99,7 +100,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Widescreen Landscape](https://replicate.delivery/xezq/2nkCTRdUxw50DdVtXa7f51D4pVyIG6vXGsvmSNjvJGIH6gNLA/tmp73fn5ayw.jpg) 
+Response200 ![Widescreen Landscape](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/widescreen-landscape.png) 
 
 **Portrait Format**  — Vertical portrait-style image 
 
@@ -136,7 +137,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Portrait Format](https://replicate.delivery/xezq/exuPEZJNueg94U1EtcEwf8HlQX8W52vF4JsN5hfN0hlzRHsZB/tmpjd8xlnlv.jpg) 
+Response200 ![Portrait Format](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/portrait-format.png) 
 
 **With People**  — Allow generation of adult people 
 
@@ -173,7 +174,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![With People](https://replicate.delivery/xezq/vRPujMfYTQVZcKT8dmQiDXSazkEsxENaGoeh9J0ceZfgSHsZB/tmp88g1pq9n.jpg) 
+Response200 ![With People](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/with-people.png) 
 
 **Product Photo**  — Square product photography 
 
@@ -210,12 +211,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Product Photo](https://replicate.delivery/xezq/UJ4LsyIMfrXPJqElHCxNUILLjqp5ftyFXuTVQqWbgFLw0BbWA/tmpy8b6nyu2.jpg) 
+Response200 ![Product Photo](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__imagen-4/product-photo.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-98)
-* [ Output ](#tab-panel-99)
+* [ Input ](#tab-panel-188)
+* [ Output ](#tab-panel-189)
 
 prompt
 
@@ -235,8 +236,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-96)
-* [ Output ](#tab-panel-97)
+* [ Input ](#tab-panel-186)
+* [ Output ](#tab-panel-187)
 
 ```
 

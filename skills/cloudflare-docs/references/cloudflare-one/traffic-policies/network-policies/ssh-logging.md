@@ -154,10 +154,10 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Gateway SSH proxy CA and get its public key:
 
-* [ Dashboard ](#tab-panel-6066)
-* [ API ](#tab-panel-6067)
+* [ Dashboard ](#tab-panel-6282)
+* [ API ](#tab-panel-6283)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Access controls** \> **Service credentials** \> **SSH**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Service credentials** \> **SSH**.
 2. Select **Add a certificate**.
 3. Under **SSH with Access for Infrastructure**, select **Generate SSH CA**. A new row will appear in the short-lived certificates table called **SSH with Access for Infrastructure**.
 4. Select the **SSH with Access for Infrastructure** certificate.
@@ -270,8 +270,8 @@ cat /etc/ssh/sshd_config
 
 Once you have modified your `sshd` configuration, reload the SSH service on the remote machine for the changes to take effect.
 
-* [ Debian/Ubuntu ](#tab-panel-6064)
-* [ CentOS/RHEL ](#tab-panel-6065)
+* [ Debian/Ubuntu ](#tab-panel-6280)
+* [ CentOS/RHEL ](#tab-panel-6281)
 
 For Debian/Ubuntu:
 
@@ -297,7 +297,7 @@ sudo systemctl reload sshd
 
 ## 7\. Create an Audit SSH policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.
 3. Name the policy and specify the [Destination IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#destination-ip) for your origin server.  
 You can enter either a public or private IP. To use a private IP, refer to [Connect private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/).
@@ -349,14 +349,14 @@ ls
 README.md    ssh-log-cli    sshkey    sshkey.pub  
 ```  
 This command outputs two files, an `sshkey.pub` public key and a matching `sshkey` private key.
-3. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings**.
+3. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 4. In **SSH log encryption public key**, paste the contents of `sshkey.pub` and select **Save**. Note that this a different public key from the `ca.pub` file you used to configure the SSH server.
 
 All proxied SSH commands are immediately encrypted using this public key. The matching private key is required to view logs.
 
 ## View SSH Logs
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Insights** \>**Logs** \> **SSH command logs**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \>**Logs** \> **SSH command logs**.
 2. If you enabled the **SSH Command Logging** feature, you can **Download** a session's command log.
 3. To decrypt the log, follow the instructions in the [SSH Logging CLI repository ↗](https://github.com/cloudflare/ssh-log-cli/). In the following example, `sshkey` is the private key that matches the public key uploaded to Cloudflare.  
 Terminal window  

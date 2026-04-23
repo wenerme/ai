@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+
+# API Reference
 
 OpenRouter's request and response schemas are very similar to the OpenAI Chat API, with a few small differences. At a high level, **OpenRouter normalizes the schema across models and providers** so you only need to learn one.
 
@@ -409,7 +413,7 @@ Here's an example:
     },
     "cost": 0.00014
   },
-  "model": "openai/gpt-3.5-turbo" // Could also be "anthropic/claude-2.1", etc, depending on the "model" that ends up being used
+  "model": "openai/gpt-4o" // Could also be "anthropic/claude-sonnet-4.6", etc, depending on the "model" that ends up being used
 }
 ```
 

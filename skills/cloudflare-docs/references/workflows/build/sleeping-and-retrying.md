@@ -1,6 +1,6 @@
 ---
 title: Sleeping and retrying
-description: This guide details how to sleep a Workflow and/or configure retries for a Workflow step.
+description: Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

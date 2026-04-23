@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/plugins/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/plugins/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/plugins/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/plugins/llms-full.txt.
+
+# Web Search
 
 <Warning title="Deprecated">
   The web search plugin is deprecated. Use the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search) instead. Server tools give the model control over when and how often to search, rather than always running once per request.

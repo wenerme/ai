@@ -1,6 +1,6 @@
 ---
 title: Build your first Workflow
-description: Workflows allow you to build durable, multi-step applications using the Workers platform. A Workflow can automatically retry, persist state, run for hours or days, and coordinate between third-party APIs.
+description: Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -130,8 +130,8 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 ## 3\. Configure your Workflow
 
 1. Open `wrangler.jsonc`, which is your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Workers project and your Workflow, and add the `workflows` configuration:  
-   * [  wrangler.jsonc ](#tab-panel-10819)  
-   * [  wrangler.toml ](#tab-panel-10820)  
+   * [  wrangler.jsonc ](#tab-panel-11121)  
+   * [  wrangler.toml ](#tab-panel-11122)  
 JSONC  
 ```  
 {  
@@ -139,7 +139,7 @@ JSONC
   "name": "my-workflow",  
   "main": "src/index.ts",  
   // Set this to today's date  
-  "compatibility_date": "2026-04-16",  
+  "compatibility_date": "2026-04-22",  
   "observability": {  
     "enabled": true  
   },  
@@ -159,7 +159,7 @@ TOML
 name = "my-workflow"  
 main = "src/index.ts"  
 # Set this to today's date  
-compatibility_date = "2026-04-16"  
+compatibility_date = "2026-04-22"  
 [observability]  
 enabled = true  
 [[workflows]]  

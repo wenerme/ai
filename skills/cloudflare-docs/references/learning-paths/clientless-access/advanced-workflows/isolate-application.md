@@ -35,8 +35,7 @@ Your browser must [allow third-party cookies](https://developers.cloudflare.com/
 ## Enable Browser Isolation
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** \> **Browser isolation settings**.
-2. Under **Manage remote browser permissions**, select **Manage**.
-3. Enable **Clientless Web Isolation**.
+2. Turn on **Allow users to open a remote browser without the device client**.
 1. Go to **Access controls** \> **Applications**.
 2. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
 3. Go to **Policies**.
@@ -69,8 +68,8 @@ with HTTP policies applied"]
 
 **Policy 1: Allow employees who pass device posture checks**
 
-* [ Dashboard ](#tab-panel-5114)
-* [ API ](#tab-panel-5115)
+* [ Dashboard ](#tab-panel-7517)
+* [ API ](#tab-panel-7518)
 
 | Action  | Rule type                                                                                                                                             | Selector                 | Value     |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------- |
@@ -140,8 +139,8 @@ To create a list of serial numbers, refer to [Create Zero Trust list](https://de
 
 **Policy 2: Allow and isolate contractors**
 
-* [ Dashboard ](#tab-panel-5116)
-* [ API ](#tab-panel-5117)
+* [ Dashboard ](#tab-panel-7519)
+* [ API ](#tab-panel-7520)
 
 | Action | Rule type | Selector         | Value                       |
 | ------ | --------- | ---------------- | --------------------------- |
@@ -212,8 +211,8 @@ Explain Code
 
 Prevents users on unmanaged devices from downloading any files from your private application.
 
-* [ Dashboard ](#tab-panel-5118)
-* [ API ](#tab-panel-5119)
+* [ Dashboard ](#tab-panel-7521)
+* [ API ](#tab-panel-7522)
 
 | Selector                     | Operator | Value                    | Logic | Action  |
 | ---------------------------- | -------- | ------------------------ | ----- | ------- |
@@ -352,8 +351,8 @@ Block users on unmanaged devices from downloading files that contain credit card
 * **Policy 1: [Disable file downloads in isolated browser](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/isolate-application/#disable-file-downloads-in-isolated-browser)**
 * **Policy 2: Block credit card numbers**
 
-* [ Dashboard ](#tab-panel-5120)
-* [ API ](#tab-panel-5121)
+* [ Dashboard ](#tab-panel-7523)
+* [ API ](#tab-panel-7524)
 
 | Selector                                                                                           | Operator | Value                      | Logic | Action |
 | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ----- | ------ |

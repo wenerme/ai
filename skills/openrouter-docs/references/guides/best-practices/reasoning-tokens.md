@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/best-practices/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/best-practices/llms-full.txt.
+
+# Reasoning Tokens
 
 For models that support it, the OpenRouter API can return **Reasoning Tokens**, also known as thinking tokens. OpenRouter normalizes the different ways of customizing the amount of reasoning tokens that the model will use, providing a unified interface across different providers.
 

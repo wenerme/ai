@@ -93,10 +93,10 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-* [ Dashboard ](#tab-panel-5788)
-* [ Terraform (v5) ](#tab-panel-5789)
+* [ Dashboard ](#tab-panel-6004)
+* [ Terraform (v5) ](#tab-panel-6005)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** \> **Custom pages**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
 3. Choose **Custom Gateway block page**. Gateway will display a preview of your custom block page. Available customizations include:  
    * Your organization's name  
@@ -157,10 +157,10 @@ For DNS Block policies, you will need to turn on the block page for each policy 
 
 To turn on the block page or override your global block page setting for an individual policy:
 
-* [ DNS policy ](#tab-panel-5790)
-* [ HTTP policy ](#tab-panel-5791)
+* [ DNS policy ](#tab-panel-6006)
+* [ HTTP policy ](#tab-panel-6007)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, turn on **Modify Gateway block behavior**.
 4. Choose your block behavior:  
@@ -171,7 +171,7 @@ To turn on the block page or override your global block page setting for an indi
 
 Depending on your settings, Gateway will display a block page in your users' browsers or redirect them to a specified URL when they are blocked by this policy.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, go to **Modify Gateway block behavior**.
 4. Choose your block behavior:  

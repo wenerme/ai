@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/auth/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/auth/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/auth/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/auth/llms-full.txt.
+
+# OAuth PKCE
 
 Users can connect to OpenRouter in one click using [Proof Key for Code Exchange (PKCE)](https://oauth.net/2/pkce/).
 

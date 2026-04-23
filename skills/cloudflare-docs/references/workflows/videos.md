@@ -1,5 +1,6 @@
 ---
 title: Videos
+description: Video tutorials and walkthroughs for building applications with Cloudflare Workflows.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

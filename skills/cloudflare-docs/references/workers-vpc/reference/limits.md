@@ -1,6 +1,6 @@
 ---
 title: Limits
-description: Standard Workers limits apply for request size, timeout, and subrequests.
+description: Account-level limits for VPC Services and applicable Workers request limits.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

@@ -24,14 +24,14 @@ You may either use DLP profiles predefined by Cloudflare, or create your own cus
 
 ### Configure a predefined profile
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Data loss prevention** \> **Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
 2. Choose a [predefined profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) and select **Edit**.
 3. Enable one or more **Detection entries** according to your preferences. The DLP Profile matches using the OR logical operator — if multiple entries are enabled, your data needs to match only one of the entries.
 4. Select **Save profile**.
 
 ### Build a custom profile
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Data loss prevention** \> **Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
 4. Add custom or existing detection entries.  
@@ -62,8 +62,8 @@ If your organization is most concerned about general data patterns that fit exis
 
 To help this better match the needs of your organization, you can also build a complex profile that matches data to both an existing library and a custom string detection or database. For example:
 
-* [ Dashboard ](#tab-panel-5279)
-* [ API ](#tab-panel-5280)
+* [ Dashboard ](#tab-panel-7682)
+* [ API ](#tab-panel-7683)
 
 | Selector    | Operator | Value                     | Logic | Action |
 | ----------- | -------- | ------------------------- | ----- | ------ |
@@ -119,8 +119,8 @@ To validate your regex, use [Rustexp ↗](https://rustexp.lpil.uk/).
 
 For example, you can use a custom expression to detect when your users share product SKUs in the format `CF1234-56789`:
 
-* [ Dashboard ](#tab-panel-5281)
-* [ API ](#tab-panel-5282)
+* [ Dashboard ](#tab-panel-7684)
+* [ API ](#tab-panel-7685)
 
 1. [Build a custom profile](#build-a-custom-profile) with the following custom entry:  
 | Detection entry name | Value                     |  
@@ -199,8 +199,8 @@ The best way to start applying data loss prevention to your traffic, minimize th
 
 Many organizations want to detect and log financial information egressing from user devices to critical SaaS applications. To limit the risk of false positives and to filter out logging noise, Cloudflare recommends building your first series of policies to specify both target data and target destination. For example, you can block financial information from being sent to AI chatbots, such as ChatGPT and Gemini:
 
-* [ Dashboard ](#tab-panel-5283)
-* [ API ](#tab-panel-5284)
+* [ Dashboard ](#tab-panel-7686)
+* [ API ](#tab-panel-7687)
 
 | Selector           | Operator | Value                     | Logic | Action |
 | ------------------ | -------- | ------------------------- | ----- | ------ |

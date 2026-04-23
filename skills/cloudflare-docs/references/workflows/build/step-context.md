@@ -1,6 +1,6 @@
 ---
 title: Step context
-description: Every step.do callback receives a context object (WorkflowStepContext) as its first argument. The context gives your step code runtime information about the step itself, the current retry attempt, and the resolved configuration for that step.
+description: Access runtime information in Workflows steps using the WorkflowStepContext object, including step name and retry attempt.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

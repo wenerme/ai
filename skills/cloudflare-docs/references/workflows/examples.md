@@ -1,6 +1,6 @@
 ---
 title: Examples
-description: Explore the following examples for Workflows.
+description: Code examples demonstrating common Cloudflare Workflows patterns and integrations.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

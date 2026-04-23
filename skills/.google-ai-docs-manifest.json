@@ -2,50 +2,50 @@
   "google-ai-api/overview.md": {
     "url": "https://ai.google.dev/api",
     "skill": "google-ai-api",
-    "size": 13221,
-    "updatedAt": "2026-04-10T00:27:17.653Z"
+    "size": 13197,
+    "updatedAt": "2026-04-23T00:34:11.737Z"
   },
   "google-ai-api/generate-content.md": {
     "url": "https://ai.google.dev/api/generate-content",
     "skill": "google-ai-api",
-    "size": 156435,
-    "updatedAt": "2026-04-20T10:46:45.795Z"
+    "size": 156413,
+    "updatedAt": "2026-04-23T00:34:12.145Z"
   },
   "google-ai-api/caching.md": {
     "url": "https://ai.google.dev/api/caching",
     "skill": "google-ai-api",
-    "size": 84185,
-    "updatedAt": "2026-04-20T10:46:46.600Z"
+    "size": 84174,
+    "updatedAt": "2026-04-23T00:34:12.595Z"
   },
   "google-ai-api/embeddings.md": {
     "url": "https://ai.google.dev/api/embeddings",
     "skill": "google-ai-api",
-    "size": 26074,
-    "updatedAt": "2026-04-20T10:46:47.006Z"
+    "size": 26072,
+    "updatedAt": "2026-04-23T00:34:13.528Z"
   },
   "google-ai-api/files.md": {
     "url": "https://ai.google.dev/api/files",
     "skill": "google-ai-api",
-    "size": 39775,
-    "updatedAt": "2026-04-20T10:46:47.413Z"
+    "size": 39760,
+    "updatedAt": "2026-04-23T00:34:13.950Z"
   },
   "google-ai-api/live.md": {
     "url": "https://ai.google.dev/api/live",
     "skill": "google-ai-api",
-    "size": 27468,
-    "updatedAt": "2026-04-10T00:27:19.611Z"
+    "size": 27429,
+    "updatedAt": "2026-04-23T00:34:14.368Z"
   },
   "google-ai-api/models.md": {
     "url": "https://ai.google.dev/api/models",
     "skill": "google-ai-api",
-    "size": 12291,
-    "updatedAt": "2026-04-10T00:27:19.973Z"
+    "size": 12281,
+    "updatedAt": "2026-04-23T00:34:14.765Z"
   },
   "google-ai-api/tokens.md": {
     "url": "https://ai.google.dev/api/tokens",
     "skill": "google-ai-api",
-    "size": 30756,
-    "updatedAt": "2026-04-10T00:27:20.545Z"
+    "size": 30737,
+    "updatedAt": "2026-04-23T00:34:15.170Z"
   },
   "google-ai-api/batch-mode.md": {
     "url": "https://ai.google.dev/api/batch-mode",
@@ -146,14 +146,14 @@
   "google-ai-docs/embeddings.md": {
     "url": "https://ai.google.dev/gemini-api/docs/embeddings",
     "skill": "google-ai-docs",
-    "size": 37497,
-    "updatedAt": "2026-04-20T10:46:57.810Z"
+    "size": 36912,
+    "updatedAt": "2026-04-23T00:34:25.023Z"
   },
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 52268,
-    "updatedAt": "2026-04-22T00:32:15.648Z"
+    "size": 52380,
+    "updatedAt": "2026-04-23T00:34:25.422Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -206,8 +206,8 @@
   "google-ai-docs/model-tuning.md": {
     "url": "https://ai.google.dev/gemini-api/docs/model-tuning",
     "skill": "google-ai-docs",
-    "size": 523,
-    "updatedAt": "2026-04-10T00:27:41.847Z"
+    "size": 515,
+    "updatedAt": "2026-04-23T00:34:33.127Z"
   },
   "google-ai-docs/safety-settings.md": {
     "url": "https://ai.google.dev/gemini-api/docs/safety-settings",
@@ -224,8 +224,8 @@
   "google-ai-api/batch-api.md": {
     "url": "https://ai.google.dev/api/batch-api",
     "skill": "google-ai-api",
-    "size": 35259,
-    "updatedAt": "2026-04-20T10:47:08.205Z"
+    "size": 35246,
+    "updatedAt": "2026-04-23T00:34:35.485Z"
   },
   "google-ai-docs/tokens.md": {
     "url": "https://ai.google.dev/gemini-api/docs/tokens",
@@ -248,8 +248,8 @@
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 11103,
-    "updatedAt": "2026-04-22T00:32:28.708Z"
+    "size": 11087,
+    "updatedAt": "2026-04-23T00:34:38.397Z"
   },
   "google-ai-docs/thought-signatures.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thought-signatures",
@@ -290,8 +290,8 @@
   "google-ai-docs/url-context.md": {
     "url": "https://ai.google.dev/gemini-api/docs/url-context",
     "skill": "google-ai-docs",
-    "size": 11828,
-    "updatedAt": "2026-04-10T00:27:50.316Z"
+    "size": 11836,
+    "updatedAt": "2026-04-23T00:34:43.242Z"
   },
   "google-ai-docs/file-search.md": {
     "url": "https://ai.google.dev/gemini-api/docs/file-search",
@@ -323,17 +323,17 @@
     "size": 1580,
     "updatedAt": "2026-04-10T00:27:52.331Z"
   },
+  "google-ai-docs/batch-api.md": {
+    "url": "https://ai.google.dev/gemini-api/docs/batch-api",
+    "skill": "google-ai-docs",
+    "size": 47962,
+    "updatedAt": "2026-04-23T00:34:48.104Z"
+  },
   "google-ai-docs/deprecations.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deprecations",
     "skill": "google-ai-docs",
     "size": 7843,
     "updatedAt": "2026-04-20T10:47:19.560Z"
-  },
-  "google-ai-docs/batch-api.md": {
-    "url": "https://ai.google.dev/gemini-api/docs/batch-api",
-    "skill": "google-ai-docs",
-    "size": 47983,
-    "updatedAt": "2026-04-10T00:27:53.776Z"
   },
   "google-ai-docs/maps-grounding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/maps-grounding",
@@ -356,14 +356,14 @@
   "google-ai-docs/available-regions.md": {
     "url": "https://ai.google.dev/gemini-api/docs/available-regions",
     "skill": "google-ai-docs",
-    "size": 4277,
-    "updatedAt": "2026-04-10T00:27:55.276Z"
+    "size": 4248,
+    "updatedAt": "2026-04-23T00:34:50.459Z"
   },
   "google-ai-docs/billing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/billing",
     "skill": "google-ai-docs",
-    "size": 32583,
-    "updatedAt": "2026-04-20T10:47:22.279Z"
+    "size": 32621,
+    "updatedAt": "2026-04-23T00:34:50.846Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",

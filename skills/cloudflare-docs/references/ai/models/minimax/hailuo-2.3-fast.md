@@ -24,10 +24,11 @@ Text-to-Video • MiniMax • Proxied
 
 A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.
 
-| Model Info        |                                      |
-| ----------------- | ------------------------------------ |
-| Terms and License | [link ↗](https://hailuoai.com/terms) |
-| More information  | [link ↗](https://hailuoai.com/)      |
+| Model Info        |                                                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://hailuoai.com/terms)                                                                                      |
+| More information  | [link ↗](https://hailuoai.com/)                                                                                           |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
 
 ## Usage
 
@@ -46,6 +47,10 @@ const response = await env.AI.run(
       'https://replicate.delivery/xezq/MQpUhqkESIIQDlWUxtNcsznZLfUTmhEbCV3vdAZGHGPwwaMLA/tmpgl4gvv5n.jpeg',
 
     prompt: 'Gentle movement and subtle animation, natural-looking motion',
+
+    prompt_optimizer: true,
+
+    fast_pretreatment: false,
 
     duration: 6,
 
@@ -90,6 +95,10 @@ const response = await env.AI.run(
 
     prompt: 'Camera slowly pans across the scene with cinematic depth of field',
 
+    prompt_optimizer: true,
+
+    fast_pretreatment: false,
+
     duration: 6,
 
     resolution: '1080P',
@@ -131,11 +140,13 @@ const response = await env.AI.run(
 
     prompt: 'Hair blowing in the wind, eyes blinking naturally',
 
+    prompt_optimizer: true,
+
+    fast_pretreatment: true,
+
     duration: 6,
 
     resolution: '768P',
-
-    fast_pretreatment: true,
 
   },
 
@@ -158,8 +169,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-142)
-* [ Output ](#tab-panel-143)
+* [ Input ](#tab-panel-232)
+* [ Output ](#tab-panel-233)
 
 first\_frame\_image
 
@@ -185,10 +196,6 @@ resolution
 
 `string`requireddefault: 768Penum: 768P, 1080P
 
-callback\_url
-
-`string`
-
 video
 
 `string`format: uri
@@ -203,8 +210,8 @@ status
 
 ## API Schemas
 
-* [ Input ](#tab-panel-140)
-* [ Output ](#tab-panel-141)
+* [ Input ](#tab-panel-230)
+* [ Output ](#tab-panel-231)
 
 ```
 
@@ -287,12 +294,6 @@ status
         "1080P"
 
       ]
-
-    },
-
-    "callback_url": {
-
-      "type": "string"
 
     }
 

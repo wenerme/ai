@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/privacy/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/privacy/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/privacy/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/privacy/llms-full.txt.
+
+# Data Collection
 
 When using AI through OpenRouter, whether via the chat interface or the API, your prompts and responses go through multiple touchpoints. You control how your data is handled at each step.
 

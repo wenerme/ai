@@ -1,4 +1,6 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/tts/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/api-reference/tts/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/tts/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/api-reference/tts/llms-full.txt.
 
 # Create speech
 
@@ -380,6 +382,10 @@ components:
           additionalProperties:
             description: Any type
         nebius:
+          type: object
+          additionalProperties:
+            description: Any type
+        nex-agi:
           type: object
           additionalProperties:
             description: Any type

@@ -1,7 +1,6 @@
 ---
 title: Cloudflare Workflows
-description: With Workflows, you can build applications that chain together multiple steps, automatically retry failed tasks,
-and persist state for minutes, hours, or even weeks - with no infrastructure to manage.
+description: Build durable, multi-step applications on Cloudflare Workers that automatically retry and persist state.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

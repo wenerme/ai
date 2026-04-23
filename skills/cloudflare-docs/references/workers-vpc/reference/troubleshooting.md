@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot and debug
-description: Troubleshoot and debug errors commonly associated with Workers VPC.
+description: Debug Workers VPC connection errors, tunnel issues, and common configuration problems.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

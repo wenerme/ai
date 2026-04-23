@@ -239,7 +239,7 @@ Explain Code
 
 To delete a ruleset, refer to [Delete a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/).
 
-## Cloudflare One dashboard
+## Cloudflare dashboard
 
 ### Enable rules
 

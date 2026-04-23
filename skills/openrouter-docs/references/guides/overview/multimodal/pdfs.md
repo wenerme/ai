@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+
+# PDF Inputs
 
 OpenRouter supports PDF processing through the `/api/v1/chat/completions` API. PDFs can be sent as **direct URLs** or **base64-encoded data URLs** in the messages array, via the file content type. This feature works on **any** model on OpenRouter.
 

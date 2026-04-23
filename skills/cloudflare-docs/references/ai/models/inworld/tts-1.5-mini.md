@@ -24,10 +24,11 @@ Text-to-Speech • Inworld • Proxied
 
 Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 15-language support.
 
-| Model Info        |                                    |
-| ----------------- | ---------------------------------- |
-| Terms and License | [link ↗](https://inworld.ai/terms) |
-| More information  | [link ↗](https://inworld.ai/)      |
+| Model Info        |                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://inworld.ai/terms)                                                                                     |
+| More information  | [link ↗](https://inworld.ai/)                                                                                          |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-mini) |
 
 ## Usage
 
@@ -42,6 +43,14 @@ const response = await env.AI.run(
   {
 
     text: 'Hello! Welcome to Cloudflare AI Gateway. Let me show you what we can do.',
+
+    voice_id: 'Dennis',
+
+    output_format: 'mp3',
+
+    temperature: 1,
+
+    timestamp_type: 'none',
 
   },
 
@@ -78,7 +87,15 @@ const response = await env.AI.run(
 
     text: 'This is a fast-paced summary of the key findings from the quarterly report. Revenue is up fifteen percent and user growth exceeded expectations.',
 
+    voice_id: 'Dennis',
+
+    output_format: 'mp3',
+
     speaking_rate: 1.4,
+
+    temperature: 1,
+
+    timestamp_type: 'none',
 
   },
 
@@ -113,6 +130,14 @@ const response = await env.AI.run(
 
     text: 'Quick response needed. The server is ready.',
 
+    voice_id: 'Dennis',
+
+    output_format: 'mp3',
+
+    temperature: 1,
+
+    timestamp_type: 'none',
+
     apply_text_normalization: false,
 
   },
@@ -136,8 +161,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-134)
-* [ Output ](#tab-panel-135)
+* [ Input ](#tab-panel-224)
+* [ Output ](#tab-panel-225)
 
 text
 
@@ -145,19 +170,19 @@ text
 
 voice\_id
 
-`string`default: Dennisenum: Loretta, Darlene, Marlene, Hank, Evelyn, Celeste, Pippa, Tessa, Liam, Callum, Hamish, Abby, Graham, Rupert, Mortimer, Snik, Anjali, Saanvi, Arjun, Claire, Oliver, Simon, Elliot, James, Serena, Gareth, Vinny, Lauren, Jessica, Ethan, Tyler, Jason, Chloe, Veronica, Victoria, Miranda, Sebastian, Victor, Malcolm, Nate, Brian, Amina, Kelsey, Derek, Evan, Kayla, Jake, Grant, Tristan, Nadia, Selene, Marcus, Riley, Damon, Cedric, Mia, Naomi, Jonah, Levi, Avery, Brandon, Conrad, Bianca, Lucian, Trevor, Alex, Ashley, Craig, Deborah, Dennis, Edward, Elizabeth, Hades, Julia, Pixie, Mark, Olivia, Priya, Ronald, Sarah, Shaun, Theodore, Timothy, Wendy, Dominus, Hana, Clive, Carter, Blake, Luna, Reed, Duncan, Felix, Eleanor, SophieThe ID of the voice to use for synthesizing speech. Defaults to Dennis.
+`string`requireddefault: Dennisenum: Loretta, Darlene, Marlene, Hank, Evelyn, Celeste, Pippa, Tessa, Liam, Callum, Hamish, Abby, Graham, Rupert, Mortimer, Snik, Anjali, Saanvi, Arjun, Claire, Oliver, Simon, Elliot, James, Serena, Gareth, Vinny, Lauren, Jessica, Ethan, Tyler, Jason, Chloe, Veronica, Victoria, Miranda, Sebastian, Victor, Malcolm, Nate, Brian, Amina, Kelsey, Derek, Evan, Kayla, Jake, Grant, Tristan, Nadia, Selene, Marcus, Riley, Damon, Cedric, Mia, Naomi, Jonah, Levi, Avery, Brandon, Conrad, Bianca, Lucian, Trevor, Alex, Ashley, Craig, Deborah, Dennis, Edward, Elizabeth, Hades, Julia, Pixie, Mark, Olivia, Priya, Ronald, Sarah, Shaun, Theodore, Timothy, Wendy, Dominus, Hana, Clive, Carter, Blake, Luna, Reed, Duncan, Felix, Eleanor, SophieThe ID of the voice to use for synthesizing speech. Defaults to Dennis.
 
 output\_format
 
-`string`default: mp3enum: mp3, opus, wav, flacThe output format for the audio. Supported formats are mp3, opus, wav, and flac. Defaults to mp3.
+`string`requireddefault: mp3enum: mp3, opus, wav, flacThe output format for the audio. Supported formats are mp3, opus, wav, and flac. Defaults to mp3.
 
 bit\_rate
 
-`integer`minimum: 0Bits per second of the audio. Only for compressed audio formats (mp3, opus). The default is 128,000.
+`integer`minimum: \-9007199254740991maximum: 9007199254740991Bits per second of the audio. Only for compressed audio formats (mp3, opus). The default is 128,000.
 
 sample\_rate
 
-`integer`enum: 8000, 16000, 22050, 24000, 32000, 44100, 48000The synthesis sample rate in hertz. Accepts: 8000, 16000, 22050, 24000, 32000, 44100, 48000\. The default is 48,000.
+`integer`minimum: \-9007199254740991maximum: 9007199254740991The synthesis sample rate in hertz. Accepts: 8000, 16000, 22050, 24000, 32000, 44100, 48000\. The default is 48,000.
 
 speaking\_rate
 
@@ -165,11 +190,11 @@ speaking\_rate
 
 temperature
 
-`number`default: 1minimum: 0.01maximum: 2Determines the degree of randomness when sampling audio tokens. Defaults to 1.0\. Accepts values between 0 (exclusive) and 2 (inclusive). Higher values = more expressive, lower values = more deterministic.
+`number`requireddefault: 1minimum: 0.01maximum: 2Determines the degree of randomness when sampling audio tokens. Defaults to 1.0\. Accepts values between 0 (exclusive) and 2 (inclusive). Higher values = more expressive, lower values = more deterministic.
 
 timestamp\_type
 
-`string`default: noneenum: none, word, characterControls timestamp metadata returned with the audio. "word" returns word-level timing, "character" returns character-level timing. Note: adds latency. Defaults to none.
+`string`requireddefault: noneenum: none, word, characterControls timestamp metadata returned with the audio. "word" returns word-level timing, "character" returns character-level timing. Note: adds latency. Defaults to none.
 
 apply\_text\_normalization
 
@@ -181,8 +206,8 @@ audio
 
 ## API Schemas
 
-* [ Input ](#tab-panel-132)
-* [ Output ](#tab-panel-133)
+* [ Input ](#tab-panel-222)
+* [ Output ](#tab-panel-223)
 
 ```
 
@@ -436,7 +461,9 @@ audio
 
       "type": "integer",
 
-      "minimum": 0
+      "minimum": -9007199254740991,
+
+      "maximum": 9007199254740991
 
     },
 
@@ -446,23 +473,9 @@ audio
 
       "type": "integer",
 
-      "enum": [
+      "minimum": -9007199254740991,
 
-        8000,
-
-        16000,
-
-        22050,
-
-        24000,
-
-        32000,
-
-        44100,
-
-        48000
-
-      ]
+      "maximum": 9007199254740991
 
     },
 
@@ -524,7 +537,15 @@ audio
 
   "required": [
 
-    "text"
+    "text",
+
+    "voice_id",
+
+    "output_format",
+
+    "temperature",
+
+    "timestamp_type"
 
   ],
 

@@ -3821,7 +3821,7 @@ What this means is that messages now have a **Attachments** section. Here, you c
 
 To use this feature, you must:
 
-* Enable **Clientless Web Isolation** in your Zero Trust settings.
+* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
 * Have **Browser Isolation (BISO)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
@@ -4021,7 +4021,7 @@ From **Investigation**, go to **View details**, and look for the **Links identif
 
 To use this feature, you must:
 
-* Enable **Clientless Web Isolation** in your Zero Trust settings.
+* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
 * Have **Browser Isolation (RBI)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
@@ -4078,8 +4078,8 @@ Zero Trust Dashboard will automatically accept your user-level preferences for s
 
 ![Zero Trust dashboard supports dark mode](https://developers.cloudflare.com/_astro/dark-mode.DfLeS20d_Z2kTwNR.webp) 
 
-* [ Zero Trust Dashboard ](#tab-panel-5620)
-* [ Core Dashboard ](#tab-panel-5621)
+* [ Zero Trust Dashboard ](#tab-panel-5792)
+* [ Core Dashboard ](#tab-panel-5793)
 
 To update your view preference in the Zero Trust dashboard:
 
@@ -4121,66 +4121,6 @@ Cloudflare One administrators can now control which egress IP is used based on a
 ![Egress by FQDN and Hostname](https://developers.cloudflare.com/_astro/Gateway-Egress-FQDN-Policy-preview.Civon5p8_Z2hcuQE.webp) 
 
 This will help apply egress IPs to your users' traffic when an upstream application or network requires it, while the rest of their traffic can take the most performant egress path.
-
-## 2025-04-22
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for Windows (version 2025.4.589.1)**   
-
-A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-**Changes and improvements**
-
-* Fixed an issue causing reconnection loops when captive portals are detected.
-* Fixed an issue that caused WARP client disk encryption posture checks to fail due to missing drive names.
-* Fixed an issue where managed network policies could incorrectly report network location beacons as missing.
-* Improved error reporting for DEX tests.
-* Improved WARP client UI high contrast mode.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve compatibility with networks on MASQUE.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Added a [Collect Captive Portal Diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/captive-portals/#get-captive-portal-logs) button in the client GUI to make it easier for users to collect captive portal debugging diagnostics.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-
-**Known issues**
-
-* DNS resolution may be broken when the following conditions are all true:  
-   * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.  
-   * A custom DNS server address is configured on the primary network adapter.  
-   * The custom DNS server address on the primary network adapter is changed while WARP is connected.  
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-04-22
-
-[ Cloudflare One Client ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) 
-
-  
-**WARP client for macOS (version 2025.4.589.1)**   
-
-A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-**Changes and improvements**
-
-* Fixed an issue where managed network policies could incorrectly report network location beacons as missing.
-* Improved DEX test error reporting.
-* Fixed an issue causing client notifications to fail in IPv6 only environments which prevented the client from receiving configuration changes to settings like device profile.
-* Improved captive portal detection.
-* Added a TCP fallback for the MASQUE tunnel protocol to improve compatibility with networks on MASQUE.
-* Added new IP addresses for [tunnel connectivity checks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#connectivity-checks). If your organization uses a firewall or other policies you will need to exempt these IPs.
-* DNS over HTTPS traffic is now included in the WARP tunnel by default.
-* Improved the error message displayed in the client GUI when the rate limit for entering an incorrect admin override code is met.
-* Added a [Collect Captive Portal Diag](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/captive-portals/#get-captive-portal-logs) button in the client GUI to make it easier for users to collect captive portal debugging diagnostics.
-* Improved handling of non-SLAAC IPv6 interface addresses for better connectivity in IPv6 only environments.
-* Fixed an issue where frequent network changes could cause WARP to become unresponsive.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 
 ## 2025-04-21
 

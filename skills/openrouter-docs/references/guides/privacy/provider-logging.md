@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/privacy/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/privacy/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/privacy/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/privacy/llms-full.txt.
+
+# Provider Logging
 
 Each AI provider on OpenRouter has its own data handling policies for logging and retention. This page explains how to control which providers can access your data.
 

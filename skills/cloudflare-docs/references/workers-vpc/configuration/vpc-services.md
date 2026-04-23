@@ -1,6 +1,6 @@
 ---
 title: VPC Services
-description: VPC Services are the core building block of Workers VPC. They represent specific resources in your private network that Workers can access through Cloudflare Tunnel.
+description: Register private network resources as VPC Services that Workers can access through Cloudflare Tunnel.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
@@ -155,8 +155,8 @@ Explain Code
 
 Once you have created a VPC Service, you can bind it to your Worker:
 
-* [  wrangler.jsonc ](#tab-panel-9164)
-* [  wrangler.toml ](#tab-panel-9165)
+* [  wrangler.jsonc ](#tab-panel-9462)
+* [  wrangler.toml ](#tab-panel-9463)
 
 JSONC
 
@@ -215,8 +215,8 @@ remote = true
 
 You can have multiple VPC service bindings:
 
-* [  wrangler.jsonc ](#tab-panel-9166)
-* [  wrangler.toml ](#tab-panel-9167)
+* [  wrangler.jsonc ](#tab-panel-9464)
+* [  wrangler.toml ](#tab-panel-9465)
 
 JSONC
 

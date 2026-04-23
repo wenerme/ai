@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt. For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/api/reference/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/api/reference/llms-full.txt.
+
+# Limits
 
 <Tip>
   Making additional accounts or API keys will not affect your rate limits, as we

@@ -1,5 +1,6 @@
 ---
 title: Platform
+description: Cloudflare Workflows platform reference, including limits, pricing, and API documentation.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 

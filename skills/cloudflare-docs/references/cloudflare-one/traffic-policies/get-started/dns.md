@@ -56,20 +56,20 @@ Gateway uses different methods to identify which location a query comes from, de
 
 To confirm that your device's DNS queries are flowing through Gateway:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
 2. Under **Log traffic activity**, enable activity logging for all DNS logs.
 3. On your device, open a browser and go to any website.
-4. In Cloudflare One, go to **Insights** \> **Logs** \> **DNS**.
+4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Logs** \> **DNS**.
 5. Make sure DNS queries from your device appear.
 
 ## 3\. Create your first DNS policy
 
 A DNS policy has two parts: a **traffic condition** that defines which queries to match (for example, all queries to gambling sites) and an **action** that defines what to do with matching queries (for example, block them). To create a new DNS policy:
 
-* [ Dashboard ](#tab-panel-5984)
-* [ API ](#tab-panel-5985)
+* [ Dashboard ](#tab-panel-6200)
+* [ API ](#tab-panel-6201)
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
 2. In the **DNS** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, use the condition builder to define which DNS queries this policy applies to. Select a selector (such as **Security Categories**), an operator (such as **in**), and one or more values.

@@ -1,0 +1,57 @@
+---
+title: '`glab search semantic`'
+stage: Create
+group: Code Review
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+---
+
+Search project code using natural language.
+
+## Synopsis
+
+Search project code using natural language (semantic similarity).
+
+Requires the project to have semantic code search enabled via GitLab Duo.
+
+This feature is in beta and might not be ready for production use.
+It might be unstable and breaking changes can occur outside of major releases.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
+```plaintext
+glab search semantic [flags]
+```
+
+## Examples
+
+```console
+# Search for authentication-related code in the current project
+glab search semantic -q "authentication middleware"
+
+# Search within a specific directory
+glab search semantic -q "rate limiting" -d app/services/
+
+# Search in a specific project with JSON output
+glab search semantic -q "CI pipeline triggers" -R gitlab-org/gitlab --output json
+
+# Limit results
+glab search semantic -q "database migrations" --limit 5
+
+```
+
+## Options
+
+```plaintext
+  -d, --directory-path string   Restrict search to files under this path (e.g. app/services/).
+      --knn int                 Nearest neighbours to retrieve (1–100). Defaults to 64 server-side.
+  -l, --limit int               Maximum number of results (1–100). Defaults to 20 server-side.
+  -F, --output string           Format output as: text, json. (default "text")
+  -q, --query string            Natural language search query.
+```
+
+## Options inherited from parent commands
+
+```plaintext
+  -h, --help              Show help for this command.
+  -R, --repo OWNER/REPO   Select another repository. Can use either OWNER/REPO or `GROUP/NAMESPACE/REPO` format. Also accepts full URL or Git URL.
+```

@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/multimodal/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/multimodal/llms-full.txt.
+
+# Audio
 
 OpenRouter supports both sending audio files to compatible models and receiving audio responses via the API. This guide covers how to work with audio inputs and outputs.
 

@@ -24,10 +24,11 @@ Text-to-Video • RunwayML • Proxied
 
 RunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.
 
-| Model Info        |                                             |
-| ----------------- | ------------------------------------------- |
-| Terms and License | [link ↗](https://runwayml.com/terms-of-use) |
-| More information  | [link ↗](https://runwayml.com/)             |
+| Model Info        |                                                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                        |
+| More information  | [link ↗](https://runwayml.com/)                                                                                    |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/gen-4.5) |
 
 ## Usage
 
@@ -109,7 +110,7 @@ Explain Code
 
 Response200 
 
-**Square Video**  — Square aspect ratio video 
+**Nature Close-up**  — Close-up wildlife shot in 16:9 
 
 TypeScript
 
@@ -125,7 +126,7 @@ const response = await env.AI.run(
 
       'Close-up of a hummingbird feeding from a vibrant red flower, slow motion with soft bokeh background',
 
-    ratio: '960:960',
+    ratio: '1280:720',
 
     duration: 5,
 
@@ -312,8 +313,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-242)
-* [ Output ](#tab-panel-243)
+* [ Input ](#tab-panel-418)
+* [ Output ](#tab-panel-419)
 
 prompt
 
@@ -345,8 +346,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-240)
-* [ Output ](#tab-panel-241)
+* [ Input ](#tab-panel-416)
+* [ Output ](#tab-panel-417)
 
 ```
 

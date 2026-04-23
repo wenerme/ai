@@ -24,10 +24,10 @@ The AI Labyrinth adds invisible links on your webpage with specific `Nofollow` t
 
 These links do not impact your search engine optimization (SEO) or your website's appearance, and are only seen by bots. AI bots that respect no-crawl instructions will safely ignore this honeypot.
 
-To enable [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth):
+To enable AI Labyrinth:
 
-* [  New dashboard ](#tab-panel-3504)
-* [ Old dashboard ](#tab-panel-3505)
+* [  New dashboard ](#tab-panel-5507)
+* [ Old dashboard ](#tab-panel-5508)
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.  
 [ Go to **Settings** ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)

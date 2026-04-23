@@ -1,5 +1,3 @@
-# Counting tokens
-
 For a detailed guide on counting tokens using the Gemini API, including how images, audio and video are counted, see the [Token counting guide](https://ai.google.dev/gemini-api/docs/tokens) and accompanying [Cookbook recipe](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Counting_Tokens.ipynb).
 
 ## Method: models.countTokens

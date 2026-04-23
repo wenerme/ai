@@ -24,10 +24,11 @@ Text-to-Image • OpenAI • Proxied
 
 OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes.
 
-| Model Info        |                                        |
-| ----------------- | -------------------------------------- |
-| Terms and License | [link ↗](https://openai.com/policies/) |
-| More information  | [link ↗](https://openai.com/)          |
+| Model Info        |                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information  | [link ↗](https://openai.com/)                                                                                          |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-1.5) |
 
 ## Usage
 
@@ -60,7 +61,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Simple Generation](https://replicate.delivery/xezq/e6OMSz5X7H1sDqhsR2iMNEmeYt6xKtz4dqOG3LDbz1l7CCbWA/tmprm99whd5.webp) 
+Response200 ![Simple Generation](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/simple-generation.png) 
 
 ## Examples
 
@@ -99,85 +100,9 @@ console.log(response)
 
 Explain Code
 
-Response200 ![High Quality](https://replicate.delivery/xezq/rnBZiGNrfi02SiE14PNWfPLPkwpCG0U1itHlfqZtY0rOHE2sA/tmpbxd7pnlz.webp) 
+Response200 ![High Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/high-quality.png) 
 
-**Custom Size**  — Generate a widescreen image 
-
-TypeScript
-
-```
-
-const response = await env.AI.run(
-
-  'openai/gpt-image-1.5',
-
-  {
-
-    prompt:
-
-      'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',
-
-    size: '1792x1024',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
-)
-
-console.log(response)
-
-
-```
-
-Explain Code
-
-Response200 ![Custom Size](https://replicate.delivery/xezq/beYNKTX2VH21ViqZfKtHZV0SJra3P2jsUXHI4wshiwy5DCbWA/tmpg6k0o7rl.webp) 
-
-**Vivid Style**  — Hyper-real, dramatic image style 
-
-TypeScript
-
-```
-
-const response = await env.AI.run(
-
-  'openai/gpt-image-1.5',
-
-  {
-
-    prompt:
-
-      'A neon-lit cyberpunk cityscape at night with rain-slicked streets and holographic billboards',
-
-    style: 'vivid',
-
-    quality: 'high',
-
-  },
-
-  {
-
-    gateway: { id: 'default' },
-
-  }
-
-)
-
-console.log(response)
-
-
-```
-
-Explain Code
-
-Response200 ![Vivid Style](https://replicate.delivery/xezq/qVMMM1dkCI6VHNUokpmXAKf4fjYeizd1qBTq7E6K4EsBJE2sA/tmpmeik2ps6.webp) 
-
-**Natural Style**  — More natural, less hyper-real image style 
+**Low Quality Draft**  — Fast, rough draft for iteration 
 
 TypeScript
 
@@ -193,9 +118,7 @@ const response = await env.AI.run(
 
       'A quiet Japanese garden in morning mist with a stone lantern and koi pond',
 
-    style: 'natural',
-
-    size: '1024x1024',
+    quality: 'low',
 
   },
 
@@ -214,12 +137,86 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Natural Style](https://replicate.delivery/xezq/9Qss2QiMKqaxOx1en1jfhWTZ4I19P1HJcIdlh6BxFk9zECbWA/tmpcqc84swf.webp) 
+Response200 ![Low Quality Draft](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/low-quality-draft.png) 
+
+**Medium Quality**  — Balanced quality for most uses 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/gpt-image-1.5',
+
+  {
+
+    prompt:
+
+      'A neon-lit cyberpunk figure standing in the rain beneath a holographic billboard, cinematic lighting',
+
+    quality: 'medium',
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 ![Medium Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/medium-quality.png) 
+
+**Auto Quality**  — Let the model pick an appropriate quality level 
+
+TypeScript
+
+```
+
+const response = await env.AI.run(
+
+  'openai/gpt-image-1.5',
+
+  {
+
+    prompt:
+
+      'A panoramic view of the northern lights over a snowy mountain range, vivid greens and purples dancing across the sky',
+
+    quality: 'auto',
+
+  },
+
+  {
+
+    gateway: { id: 'default' },
+
+  }
+
+)
+
+console.log(response)
+
+
+```
+
+Explain Code
+
+Response200 ![Auto Quality](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/openai__gpt-image-1.5/auto-quality.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-202)
-* [ Output ](#tab-panel-203)
+* [ Input ](#tab-panel-368)
+* [ Output ](#tab-panel-369)
 
 prompt
 
@@ -247,8 +244,8 @@ image
 
 ## API Schemas
 
-* [ Input ](#tab-panel-200)
-* [ Output ](#tab-panel-201)
+* [ Input ](#tab-panel-366)
+* [ Output ](#tab-panel-367)
 
 ```
 

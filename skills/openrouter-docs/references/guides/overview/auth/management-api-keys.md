@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/overview/auth/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/overview/auth/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/overview/auth/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/overview/auth/llms-full.txt.
+
+# Management API Keys
 
 OpenRouter provides endpoints to programmatically manage your API keys, enabling key creation and management for applications that need to distribute or rotate keys automatically.
 

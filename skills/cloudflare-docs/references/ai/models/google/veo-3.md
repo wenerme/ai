@@ -24,10 +24,11 @@ Text-to-Video • Google • Proxied
 
 Google's video generation model capable of producing high-quality videos with optional audio from text prompts.
 
-| Model Info        |                                                     |
-| ----------------- | --------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)    |
-| More information  | [link ↗](https://deepmind.google/technologies/veo/) |
+| Model Info        |                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                               |
+| More information  | [link ↗](https://deepmind.google/technologies/veo/)                                                            |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3) |
 
 ## Usage
 
@@ -244,8 +245,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-114)
-* [ Output ](#tab-panel-115)
+* [ Input ](#tab-panel-204)
+* [ Output ](#tab-panel-205)
 
 prompt
 
@@ -277,8 +278,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-112)
-* [ Output ](#tab-panel-113)
+* [ Input ](#tab-panel-202)
+* [ Output ](#tab-panel-203)
 
 ```
 

@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/coding-agents/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/coding-agents/llms-full.txt.
+
+# Claude Code
 
 <Warning>
   Claude Code with OpenRouter is only guaranteed to work with the Anthropic first-party provider. For maximum compatibility, we recommend setting [Anthropic 1P as top priority provider](/docs/guides/routing/provider-selection) when using Claude Code.

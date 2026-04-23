@@ -1,5 +1,3 @@
-# Available regions for Google AI Studio and Gemini API
-
 If you reached this page while attempting to access [Google AI Studio](https://aistudio.google.com/), it may
 be due to one of the following reasons:
 
@@ -16,7 +14,7 @@ For further details regarding requirements, review our [Terms of Service](https:
 
 The Gemini API and Google AI Studio are available in the following countries and
 territories. If you're not in one of these countries or territories, try the
-[Gemini API in Vertex AI](https://cloud.google.com/vertex-ai#build-with-gemini):
+[Gemini API in Gemini Enterprise Agent Platform](https://cloud.google.com/gemini-enterprise-agent-platform):
 
 - Albania
 - Algeria

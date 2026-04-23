@@ -61,7 +61,7 @@ You are responsible for understanding and complying with any legal obligations y
 * You likely have an obligation to report apparent CSAM to the appropriate authorities. You can file a report to NCMEC with additional information via NCMEC's CyberTip reporting form or find the preferred reporting portal for your jurisdiction via the INHOPE website.
   
 * You may need to preserve and securely store a copy of the content and related data in the case NCMEC or law enforcement reach out for additional details.
-* You likely have an obligation to securely preserve certain information related to your report for at least 90 days in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.
+* You likely have an obligation to securely preserve certain information related to your report for one year in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.
   
 * You should remove the content and notify Cloudflare of the removal.
 * Once any preservation obligations have been fulfilled, you should remove the content from your website. This is especially important if Cloudflare's notice to you indicates that our block was unsuccessful.

@@ -24,11 +24,12 @@ Text Generation • Anthropic • Proxied
 
 Claude Opus 4.7 is Anthropic's most capable generally available model to date. It is highly autonomous and performs exceptionally well on long-horizon agentic work, knowledge work, vision tasks, and memory tasks.
 
-| Model Info                                                                 |                                                                                        |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                       |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                             |
-| More information                                                           | [link ↗](https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7) |
+| Model Info                                                                 |                                                                                                                             |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
+| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
+| More information                                                           | [link ↗](https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-7)                                      |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.7) |
 
 ## Usage
 
@@ -87,8 +88,6 @@ const response = await env.AI.run(
 
   {
 
-    system: 'You are a helpful coding assistant specializing in Python.',
-
     messages: [
 
       {
@@ -102,6 +101,8 @@ const response = await env.AI.run(
     ],
 
     max_tokens: 1024,
+
+    system: 'You are a helpful coding assistant specializing in Python.',
 
     temperature: 0.3,
 
@@ -279,8 +280,8 @@ Explain Code
 
 ## Parameters
 
-* [ Input ](#tab-panel-22)
-* [ Output ](#tab-panel-23)
+* [ Input ](#tab-panel-62)
+* [ Output ](#tab-panel-63)
 
 ▶messages\[\]
 
@@ -344,8 +345,8 @@ stop\_reason
 
 ## API Schemas
 
-* [ Input ](#tab-panel-20)
-* [ Output ](#tab-panel-21)
+* [ Input ](#tab-panel-60)
+* [ Output ](#tab-panel-61)
 
 ```
 

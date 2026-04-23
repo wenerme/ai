@@ -24,10 +24,11 @@ Text-to-Image • Recraft • Proxied
 
 Recraft V4 Pro generates high-resolution, art-directed images at 2048px+ with strong composition, text rendering, and design taste. Built for print and production work.
 
-| Model Info        |                                        |
-| ----------------- | -------------------------------------- |
-| Terms and License | [link ↗](https://www.recraft.ai/terms) |
-| More information  | [link ↗](https://www.recraft.ai/)      |
+| Model Info        |                                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://www.recraft.ai/terms)                                                                                  |
+| More information  | [link ↗](https://www.recraft.ai/)                                                                                       |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro) |
 
 ## Usage
 
@@ -62,7 +63,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Print-Ready Illustration](https://replicate.delivery/xezq/JrYNZOq5mNJfZKJyJBCUdD2YED51vRw9CVtA0EysOHQ3Q5MLA/tmp_z0l47_v.webp) 
+Response200 ![Print-Ready Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/print-ready-illustration.png) 
 
 ## Examples
 
@@ -84,8 +85,6 @@ const response = await env.AI.run(
 
     size: '2048x2048',
 
-    style: 'digital_illustration',
-
   },
 
   {
@@ -103,7 +102,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Large Format Art](https://replicate.delivery/xezq/z9CHBBfUrDRDSazHffYY2Jx8p9ZeRh57xmbsRHY1eQFISUOzC/tmpq27syd4a.webp) 
+Response200 ![Large Format Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/large-format-art.png) 
 
 **Brand Asset**  — Professional brand asset with controlled colors 
 
@@ -166,7 +165,7 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Brand Asset](https://replicate.delivery/xezq/RleNHzPW0AXCOKAqjNR7sIxCzF56BZzFAQwgfeWvLaghhhzsA/tmpwzh90xti.webp) 
+Response200 ![Brand Asset](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/brand-asset.png) 
 
 **Editorial Illustration**  — Magazine-quality editorial illustration 
 
@@ -183,10 +182,6 @@ const response = await env.AI.run(
     prompt:
 
       'A conceptual illustration of artificial intelligence as a tree with circuit-board branches and glowing data leaves',
-
-    style: 'digital_illustration',
-
-    substyle: 'hand_drawn',
 
   },
 
@@ -205,12 +200,12 @@ console.log(response)
 
 Explain Code
 
-Response200 ![Editorial Illustration](https://replicate.delivery/xezq/eBRR8WuwPBXiXSKkw6bMKNfTrXK1cu0oEeZ2D9Un9qxnFlzsA/tmpo2sylxd4.webp) 
+Response200 ![Editorial Illustration](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/recraft__recraftv4-pro/editorial-illustration.png) 
 
 ## Parameters
 
-* [ Input ](#tab-panel-230)
-* [ Output ](#tab-panel-231)
+* [ Input ](#tab-panel-406)
+* [ Output ](#tab-panel-407)
 
 prompt
 
@@ -234,12 +229,12 @@ substyle
 
 image
 
-`string`format: uricontentMediaType: image/svg+xml
+`string`
 
 ## API Schemas
 
-* [ Input ](#tab-panel-228)
-* [ Output ](#tab-panel-229)
+* [ Input ](#tab-panel-404)
+* [ Output ](#tab-panel-405)
 
 ```
 
@@ -400,11 +395,7 @@ Explain Code
 
     "image": {
 
-      "type": "string",
-
-      "format": "uri",
-
-      "contentMediaType": "image/svg+xml"
+      "type": "string"
 
     }
 

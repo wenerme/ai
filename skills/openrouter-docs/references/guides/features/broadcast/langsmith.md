@@ -1,4 +1,8 @@
-For clean Markdown of any page, append .md to the page URL. For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt. For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://openrouter.ai/docs/guides/features/broadcast/llms.txt.
+> For full documentation content, see https://openrouter.ai/docs/guides/features/broadcast/llms-full.txt.
+
+# LangSmith
 
 [LangSmith](https://smith.langchain.com) is LangChain's platform for debugging, testing, evaluating, and monitoring LLM applications.
 

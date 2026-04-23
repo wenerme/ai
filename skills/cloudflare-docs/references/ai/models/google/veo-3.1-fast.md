@@ -24,10 +24,11 @@ Text-to-Video • Google • Proxied
 
 A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.
 
-| Model Info        |                                                     |
-| ----------------- | --------------------------------------------------- |
-| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)    |
-| More information  | [link ↗](https://deepmind.google/technologies/veo/) |
+| Model Info        |                                                                                                                       |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                      |
+| More information  | [link ↗](https://deepmind.google/technologies/veo/)                                                                   |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1-fast) |
 
 ## Usage
 
@@ -203,8 +204,8 @@ Response200
 
 ## Parameters
 
-* [ Input ](#tab-panel-126)
-* [ Output ](#tab-panel-127)
+* [ Input ](#tab-panel-216)
+* [ Output ](#tab-panel-217)
 
 prompt
 
@@ -236,8 +237,8 @@ video
 
 ## API Schemas
 
-* [ Input ](#tab-panel-124)
-* [ Output ](#tab-panel-125)
+* [ Input ](#tab-panel-214)
+* [ Output ](#tab-panel-215)
 
 ```
 

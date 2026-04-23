@@ -71,8 +71,8 @@ The Web Crypto API differs significantly from the [Node.js Crypto API](https://d
 
 ### Usage
 
-* [  JavaScript ](#tab-panel-7716)
-* [  TypeScript ](#tab-panel-7717)
+* [  JavaScript ](#tab-panel-10161)
+* [  TypeScript ](#tab-panel-10162)
 
 JavaScript
 

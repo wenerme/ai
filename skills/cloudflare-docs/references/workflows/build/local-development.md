@@ -1,6 +1,6 @@
 ---
 title: Local Development
-description: Workflows support local development using Wrangler, the command-line interface for Workers. Wrangler runs an emulated version of Workflows compared to the one that Cloudflare runs globally.
+description: Develop and test Cloudflare Workflows locally using Wrangler's emulated runtime.
 image: https://developers.cloudflare.com/dev-products-preview.png
 ---
 
