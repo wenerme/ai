@@ -530,10 +530,10 @@
   "anthropic-docs/managed-agents/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
     "skill": "anthropic-docs",
-    "etag": "W/\"5e83-19d9a5f0a08\"",
-    "lastModified": "Fri, 17 Apr 2026 07:36:53 GMT",
-    "size": 24195,
-    "updatedAt": "2026-04-17T10:26:26.134Z"
+    "etag": "W/\"5e19-19dbd64dc08\"",
+    "lastModified": "Fri, 24 Apr 2026 02:49:57 GMT",
+    "size": 24089,
+    "updatedAt": "2026-04-24T10:31:45.308Z"
   },
   "anthropic-docs/managed-agents/onboarding.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/onboarding",
@@ -650,10 +650,10 @@
   "anthropic-docs/managed-agents/memory.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/memory",
     "skill": "anthropic-docs",
-    "etag": "W/\"9a47-19dbc9d5db8\"",
-    "lastModified": "Thu, 23 Apr 2026 23:12:03 GMT",
-    "size": 39495,
-    "updatedAt": "2026-04-24T00:20:31.213Z"
+    "etag": "W/\"93ab-19dbd64dc08\"",
+    "lastModified": "Fri, 24 Apr 2026 02:49:57 GMT",
+    "size": 37803,
+    "updatedAt": "2026-04-24T10:31:50.472Z"
   },
   "anthropic-docs/managed-agents/multi-agent.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/multi-agent",
@@ -834,10 +834,10 @@
   "anthropic-api/api/sdks/cli.md": {
     "url": "https://platform.claude.com/docs/en/api/sdks/cli",
     "skill": "anthropic-api",
-    "etag": "W/\"4122-19d98b47300\"",
-    "lastModified": "Thu, 16 Apr 2026 23:50:56 GMT",
-    "size": 16652,
-    "updatedAt": "2026-04-17T00:18:40.953Z"
+    "etag": "W/\"40b8-19dbd64dc08\"",
+    "lastModified": "Fri, 24 Apr 2026 02:49:57 GMT",
+    "size": 16546,
+    "updatedAt": "2026-04-24T10:31:57.720Z"
   },
   "anthropic-api/api/sdks/python.md": {
     "url": "https://platform.claude.com/docs/en/api/sdks/python",

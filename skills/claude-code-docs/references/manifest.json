@@ -13,9 +13,9 @@
   },
   "amazon-bedrock.md": {
     "url": "https://code.claude.com/docs/en/amazon-bedrock",
-    "lastModified": "Thu, 23 Apr 2026 23:34:08 GMT",
-    "size": 27948,
-    "updatedAt": "2026-04-24T00:19:35.824Z"
+    "lastModified": "Fri, 24 Apr 2026 05:36:00 GMT",
+    "size": 27941,
+    "updatedAt": "2026-04-24T10:30:53.509Z"
   },
   "analytics.md": {
     "url": "https://code.claude.com/docs/en/analytics",
@@ -217,9 +217,9 @@
   },
   "google-vertex-ai.md": {
     "url": "https://code.claude.com/docs/en/google-vertex-ai",
-    "lastModified": "Thu, 23 Apr 2026 23:36:22 GMT",
-    "size": 17995,
-    "updatedAt": "2026-04-24T00:19:47.964Z"
+    "lastModified": "Fri, 24 Apr 2026 05:36:19 GMT",
+    "size": 17988,
+    "updatedAt": "2026-04-24T10:31:05.576Z"
   },
   "headless.md": {
     "url": "https://code.claude.com/docs/en/headless",
@@ -289,9 +289,9 @@
   },
   "microsoft-foundry.md": {
     "url": "https://code.claude.com/docs/en/microsoft-foundry",
-    "lastModified": "Thu, 23 Apr 2026 23:36:23 GMT",
-    "size": 11758,
-    "updatedAt": "2026-04-24T00:19:52.132Z"
+    "lastModified": "Fri, 24 Apr 2026 05:36:26 GMT",
+    "size": 11751,
+    "updatedAt": "2026-04-24T10:31:09.771Z"
   },
   "model-config.md": {
     "url": "https://code.claude.com/docs/en/model-config",
@@ -445,9 +445,9 @@
   },
   "third-party-integrations.md": {
     "url": "https://code.claude.com/docs/en/third-party-integrations",
-    "lastModified": "Wed, 15 Apr 2026 22:23:27 GMT",
-    "size": 18198,
-    "updatedAt": "2026-04-16T00:19:31.264Z"
+    "lastModified": "Fri, 24 Apr 2026 05:36:41 GMT",
+    "size": 18191,
+    "updatedAt": "2026-04-24T10:31:19.216Z"
   },
   "tools-reference.md": {
     "url": "https://code.claude.com/docs/en/tools-reference",

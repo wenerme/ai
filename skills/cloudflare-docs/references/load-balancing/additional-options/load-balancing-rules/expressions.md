@@ -1,18 +1,27 @@
 ---
 title: Expressions
-description: Load Balancing rules use two kinds of expressions:
+description: Expression syntax for custom load balancing rules.
 image: https://developers.cloudflare.com/core-services-preview.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/load-balancing/additional-options/load-balancing-rules/expressions.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Expressions
 

@@ -27,10 +27,6 @@ YesNo
 
 Create point-in-time snapshots of sandbox directories and restore them using copy-on-write overlays. Backups are stored in an R2 bucket and use squashfs compression.
 
-Production only
-
-Backup and restore does not work with `wrangler dev` because it requires FUSE support that wrangler does not currently provide. Deploy your Worker with `wrangler deploy` to use this feature. All other Sandbox SDK features work in local development.
-
 ## Prerequisites
 
 1. Create an R2 bucket for storing backups:  
@@ -39,8 +35,8 @@ Terminal window
 npx wrangler r2 bucket create my-backup-bucket  
 ```
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL credentials to your Wrangler configuration:  
-   * [  wrangler.jsonc ](#tab-panel-8722)  
-   * [  wrangler.toml ](#tab-panel-8723)  
+   * [  wrangler.jsonc ](#tab-panel-8726)  
+   * [  wrangler.toml ](#tab-panel-8727)  
 JSONC  
 ```  
 {  
@@ -114,12 +110,16 @@ npx wrangler secret put R2_SECRET_ACCESS_KEY
 ```  
 You can create R2 API tokens in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** \> **Overview** \> **Manage R2 API Tokens**. The token needs **Object Read & Write** permissions for your backup bucket.
 
+Note
+
+The `vars` and API secrets in steps 2 and 3 are only required for production. For local development with `wrangler dev`, only the `BACKUP_BUCKET` R2 binding is required. Refer to [Local development](#local-development) for details.
+
 ## Create a backup
 
 Use `createBackup()` to snapshot a directory and upload it to R2:
 
-* [  JavaScript ](#tab-panel-8724)
-* [  TypeScript ](#tab-panel-8725)
+* [  JavaScript ](#tab-panel-8728)
+* [  TypeScript ](#tab-panel-8729)
 
 JavaScript
 
@@ -165,8 +165,8 @@ The SDK creates a compressed squashfs archive of the directory and uploads it di
 
 Use `restoreBackup()` to restore a directory from a backup:
 
-* [  JavaScript ](#tab-panel-8726)
-* [  TypeScript ](#tab-panel-8727)
+* [  JavaScript ](#tab-panel-8730)
+* [  TypeScript ](#tab-panel-8731)
 
 JavaScript
 
@@ -222,14 +222,14 @@ Explain Code
 
 Ephemeral mount
 
-The FUSE mount is lost when the sandbox sleeps or the container restarts. Re-restore from the backup handle to recover.
+In production, the FUSE mount is lost when the sandbox sleeps or the container restarts. Re-restore from the backup handle to recover. This does not apply to local development.
 
 ## Exclude gitignored files
 
 When backing up a directory inside a git repository, set `useGitignore: true` to exclude files matching `.gitignore` rules. This is useful for skipping large generated directories like `node_modules/`, `dist/`, or `build/` that can be recreated.
 
-* [  JavaScript ](#tab-panel-8728)
-* [  TypeScript ](#tab-panel-8729)
+* [  JavaScript ](#tab-panel-8732)
+* [  TypeScript ](#tab-panel-8733)
 
 JavaScript
 
@@ -289,8 +289,8 @@ Requirements
 
 Save state before risky operations and restore if something fails:
 
-* [  JavaScript ](#tab-panel-8732)
-* [  TypeScript ](#tab-panel-8733)
+* [  JavaScript ](#tab-panel-8736)
+* [  TypeScript ](#tab-panel-8737)
 
 JavaScript
 
@@ -362,8 +362,8 @@ Explain Code
 
 The `DirectoryBackup` handle is serializable. Persist it to KV, D1, or Durable Object storage for later use:
 
-* [  JavaScript ](#tab-panel-8736)
-* [  TypeScript ](#tab-panel-8737)
+* [  JavaScript ](#tab-panel-8740)
+* [  TypeScript ](#tab-panel-8741)
 
 JavaScript
 
@@ -449,8 +449,8 @@ Explain Code
 
 Add a `name` option to identify backups. Names can be up to 256 characters:
 
-* [  JavaScript ](#tab-panel-8730)
-* [  TypeScript ](#tab-panel-8731)
+* [  JavaScript ](#tab-panel-8734)
+* [  TypeScript ](#tab-panel-8735)
 
 JavaScript
 
@@ -498,8 +498,8 @@ console.log(`Backup ID: ${backup.id}`);
 
 Set a custom time-to-live for backups. The default TTL is 3 days (259200 seconds). The `ttl` value must be a positive number of seconds:
 
-* [  JavaScript ](#tab-panel-8738)
-* [  TypeScript ](#tab-panel-8739)
+* [  JavaScript ](#tab-panel-8744)
+* [  TypeScript ](#tab-panel-8745)
 
 JavaScript
 
@@ -583,6 +583,149 @@ To automatically remove expired backup objects from R2, set up an [R2 object lif
 
 For example, if your longest TTL is 7 days, configure a lifecycle rule to delete objects older than 7 days from the `backups/` prefix. This ensures R2 storage does not grow unbounded while giving you a buffer to restore any non-expired backup.
 
+## Local development
+
+You can use backup and restore during local development with `wrangler dev` by passing the `localBucket: true` option to `createBackup()`. This uses the `BACKUP_BUCKET` R2 binding from your Worker environment directly, so no presigned URL credentials are required.
+
+### Configure R2 binding
+
+Add a `BACKUP_BUCKET` R2 binding to your Wrangler configuration:
+
+* [  wrangler.jsonc ](#tab-panel-8724)
+* [  wrangler.toml ](#tab-panel-8725)
+
+JSONC
+
+```
+
+{
+
+  "r2_buckets": [
+
+    {
+
+      "binding": "BACKUP_BUCKET",
+
+      "bucket_name": "my-backup-bucket"
+
+    }
+
+  ]
+
+}
+
+
+```
+
+TOML
+
+```
+
+[[r2_buckets]]
+
+binding = "BACKUP_BUCKET"
+
+bucket_name = "my-backup-bucket"
+
+
+```
+
+### Back up and restore with `localBucket`
+
+Pass `localBucket: true` to `createBackup()` to back up and restore using the R2 binding directly:
+
+* [  JavaScript ](#tab-panel-8742)
+* [  TypeScript ](#tab-panel-8743)
+
+JavaScript
+
+```
+
+const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+
+
+// Create a local backup
+
+const backup = await sandbox.createBackup({
+
+  dir: "/workspace",
+
+  localBucket: true,
+
+});
+
+
+// Restore the backup
+
+const result = await sandbox.restoreBackup(backup);
+
+console.log(`Restored: ${result.success}`);
+
+
+```
+
+Explain Code
+
+TypeScript
+
+```
+
+const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+
+
+// Create a local backup
+
+const backup = await sandbox.createBackup({
+
+  dir: "/workspace",
+
+  localBucket: true,
+
+});
+
+
+// Restore the backup
+
+const result = await sandbox.restoreBackup(backup);
+
+console.log(`Restored: ${result.success}`);
+
+
+```
+
+Explain Code
+
+Note
+
+You can use an environment variable to toggle `localBucket` between local development and production. Set an environment variable such as `LOCAL_DEV` in your Wrangler configuration using `vars` for local development, then reference it in your code:
+
+TypeScript
+
+```
+
+const backup = await sandbox.createBackup({
+
+  dir: "/workspace",
+
+  localBucket: Boolean(env.LOCAL_DEV),
+
+});
+
+
+```
+
+When `localBucket` is `true`, presigned URL credentials are not required and the SDK uses the R2 binding directly. For more information on setting environment variables, refer to [Environment variables in Wrangler configuration](https://developers.cloudflare.com/workers/configuration/environment-variables/).
+
+### Local development considerations
+
+* **No presigned URLs** \- The SDK reads and writes backup archives directly through the R2 binding, so no S3-compatible credentials are needed.
+* **No FUSE required** \- Local restore extracts the archive using `unsquashfs` instead of mounting with FUSE overlayfs. The backup is not applied as a copy-on-write overlay; the directory is replaced on restore.
+* **Same archive format** \- Local backups use the same squashfs archive format as production backups.
+
+Note
+
+These considerations apply to local development with `wrangler dev` only. In production, backup and restore use presigned URLs and FUSE overlayfs.
+
 ## Clean up backup objects in R2
 
 Backup archives are stored in your R2 bucket under the `backups/` prefix with the structure `backups/{backupId}/data.sqsh` and `backups/{backupId}/meta.json`. You can use the `BACKUP_BUCKET` R2 binding to manage these objects directly.
@@ -591,8 +734,8 @@ Backup archives are stored in your R2 bucket under the `backups/` prefix with th
 
 If you only need the most recent backup, delete the previous one before creating a new one:
 
-* [  JavaScript ](#tab-panel-8740)
-* [  TypeScript ](#tab-panel-8741)
+* [  JavaScript ](#tab-panel-8746)
+* [  TypeScript ](#tab-panel-8747)
 
 JavaScript
 
@@ -680,8 +823,8 @@ Explain Code
 
 To clean up multiple old backups, list objects under the `backups/` prefix and delete them by key:
 
-* [  JavaScript ](#tab-panel-8742)
-* [  TypeScript ](#tab-panel-8743)
+* [  JavaScript ](#tab-panel-8748)
+* [  TypeScript ](#tab-panel-8749)
 
 JavaScript
 
@@ -765,8 +908,8 @@ Explain Code
 
 If you have the backup ID, delete both its archive and metadata directly:
 
-* [  JavaScript ](#tab-panel-8734)
-* [  TypeScript ](#tab-panel-8735)
+* [  JavaScript ](#tab-panel-8738)
+* [  TypeScript ](#tab-panel-8739)
 
 JavaScript
 
@@ -798,10 +941,10 @@ await env.BACKUP_BUCKET.delete(`backups/${backupId}/meta.json`);
 
 ## Copy-on-write behavior
 
-Restore uses FUSE overlayfs to mount the backup as a read-only lower layer. New writes go to a writable upper layer and do not affect the original backup:
+In production, restore uses FUSE overlayfs to mount the backup as a read-only lower layer. New writes go to a writable upper layer and do not affect the original backup:
 
-* [  JavaScript ](#tab-panel-8744)
-* [  TypeScript ](#tab-panel-8745)
+* [  JavaScript ](#tab-panel-8750)
+* [  TypeScript ](#tab-panel-8751)
 
 JavaScript
 
@@ -881,8 +1024,8 @@ Explain Code
 
 Backup and restore operations can throw specific errors. Wrap calls in [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks:
 
-* [  JavaScript ](#tab-panel-8746)
-* [  TypeScript ](#tab-panel-8747)
+* [  JavaScript ](#tab-panel-8752)
+* [  TypeScript ](#tab-panel-8753)
 
 JavaScript
 
@@ -1075,7 +1218,7 @@ This means `mksquashfs` could not read one or more files inside the directory yo
 * **Configure R2 lifecycle rules** \- Set up [object lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) to automatically delete expired backups from R2, since TTL is only enforced at restore time
 * **Clean up old backups** \- Delete previous backup objects from R2 when you no longer need them, or use the delete-then-write pattern for rolling backups
 * **Handle errors** \- Wrap backup and restore calls in `try...catch` blocks
-* **Re-restore after restart** \- The FUSE mount is ephemeral, so re-restore from the backup handle after container restarts
+* **Re-restore after restart** \- In production, the FUSE mount is ephemeral, so re-restore from the backup handle after container restarts
 
 ## Related resources
 

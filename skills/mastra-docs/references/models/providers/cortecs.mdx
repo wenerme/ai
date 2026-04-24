@@ -1,11 +1,11 @@
 ---
 title: "Cortecs | Models"
-description: "Use Cortecs models with Mastra. 33 models available."
+description: "Use Cortecs models with Mastra. 34 models available."
 ---
 
 # [Cortecs logo]Cortecs
 
-Access 33 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 34 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -314,6 +314,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.55,
     "outputCost": 2.76
+  },
+  {
+    "model": "cortecs/kimi-k2.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 256000,
+    "inputCost": 0.81,
+    "outputCost": 3.54
   },
   {
     "model": "cortecs/llama-3.1-405b-instruct",

@@ -122,10 +122,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"6ed11ad3b265736dc33348493fe0334c\"",
-    "lastModified": "Thu, 23 Apr 2026 04:51:54 GMT",
-    "size": 26917,
-    "updatedAt": "2026-04-23T10:34:44.125Z"
+    "etag": "W/\"ed333ab6867a7e4216a5b0444d34c99e\"",
+    "lastModified": "Fri, 24 Apr 2026 09:18:52 GMT",
+    "size": 27019,
+    "updatedAt": "2026-04-24T10:36:27.326Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -786,10 +786,10 @@
   "openai-docs/guides/safety-checks/cybersecurity.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity.md",
     "skill": "openai-docs",
-    "etag": "\"1bb9fa34ed873b097d6e2ba7f5ac1f02\"",
-    "lastModified": "Thu, 05 Mar 2026 06:04:21 GMT",
-    "size": 2859,
-    "updatedAt": "2026-03-05T06:04:21.892Z"
+    "etag": "W/\"4123e3e81c55300279b2fd87871c7a2c\"",
+    "lastModified": "Fri, 24 Apr 2026 09:18:53 GMT",
+    "size": 2893,
+    "updatedAt": "2026-04-24T10:36:47.069Z"
   },
   "openai-docs/guides/safety-checks/under-18-api-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks/under-18-api-guidance.md",
@@ -1010,10 +1010,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"6339937d8203e55282136a7f61c3281c\"",
-    "lastModified": "Tue, 14 Apr 2026 23:55:20 GMT",
-    "size": 43553,
-    "updatedAt": "2026-04-15T00:24:28.375Z"
+    "etag": "W/\"bff61f9b6ae4039c7aa6c4d4ae685f4a\"",
+    "lastModified": "Fri, 24 Apr 2026 09:18:53 GMT",
+    "size": 43568,
+    "updatedAt": "2026-04-24T10:36:53.909Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
@@ -9482,10 +9482,10 @@
   "codex-docs/remote-connections.md": {
     "url": "https://developers.openai.com/codex/remote-connections.md",
     "skill": "codex-docs",
-    "etag": "W/\"ec9b39612915cd3f5028273cea3b2035\"",
-    "lastModified": "Tue, 21 Apr 2026 10:40:53 GMT",
-    "size": 2712,
-    "updatedAt": "2026-04-21T10:40:53.699Z"
+    "etag": "W/\"8bafc976d3f9a0dd4f39da2be7d4c4fc\"",
+    "lastModified": "Fri, 24 Apr 2026 08:41:21 GMT",
+    "size": 2720,
+    "updatedAt": "2026-04-24T10:43:25.062Z"
   },
   "codex-docs/rules.md": {
     "url": "https://developers.openai.com/codex/rules.md",

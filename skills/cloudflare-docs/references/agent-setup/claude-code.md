@@ -60,7 +60,7 @@ In Claude Code, run these two slash commands. The plugin installs all 8 Cloudfla
 4. **Try a prompt**  
 For example:  
 ```  
-Create separate staging and production environments for my Worker.  
+Build a Workers AI chatbot with streaming responses.  
 ```
 
 ## Cloudflare platform access

@@ -100,7 +100,7 @@ The table below indicates when application state is stored for each endpoint. Ze
 
 #### `/v1/images`
 
-- Image generation is Zero Data Retention compatible when using `gpt-image-1`, `gpt-image-1.5`, and `gpt-image-1-mini`, not when using `dall-e-3` or `dall-e-2`.
+- Image generation is Zero Data Retention compatible when using `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, not when using `dall-e-3` or `dall-e-2`.
 
 #### `/v1/files`
 

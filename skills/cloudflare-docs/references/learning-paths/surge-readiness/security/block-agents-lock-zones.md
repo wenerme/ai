@@ -1,18 +1,27 @@
 ---
 title: Block user agents and lock zones
-description: User Agent (UA) Blocking rules match against specific User-Agent request headers sent by the browser or application accessing your site. UA rules are applied against the entire domain, and after a rule is triggered, you can decide which action to take against the visitor.
+description: Block user agents and restrict zone access.
 image: https://developers.cloudflare.com/cf-twitter-card.png
 ---
 
 [Skip to content](#%5Ftop) 
+
+### Agents toolkit
+
+* Agent setup
+* Copy as Markdown
+
+Open the Markdown file in a new tab
+
+Ask Claude about this page
+
+Ask ChatGPT about this page
 
 Was this helpful?
 
 YesNo
 
 [ Edit page ](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/learning-paths/surge-readiness/security/block-agents-lock-zones.mdx) [ Report issue ](https://github.com/cloudflare/cloudflare-docs/issues/new/choose) 
-
-Copy page
 
 # Block user agents and lock zones
 

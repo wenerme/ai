@@ -49,7 +49,7 @@ In Cursor, install the Cloudflare Plugin which includes Cloudflare Skills and re
 3. **Try a prompt**  
 For example:  
 ```  
-Show me how to use Hyperdrive to connect my Worker to an existing Postgres database.  
+Create separate staging and production environments for my Worker.  
 ```
 
 ## Cloudflare platform access

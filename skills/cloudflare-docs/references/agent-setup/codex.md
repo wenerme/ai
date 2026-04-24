@@ -66,7 +66,7 @@ codex
 5. **Try a prompt**  
 For example:  
 ```  
-Add a D1 database to my Worker and create a users table with CRUD endpoints.  
+Set up GitHub Actions to auto-deploy this Worker to Cloudflare.  
 ```
 
 ## Cloudflare platform access

@@ -1,8 +1,8 @@
-# Create a response
-
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/responses/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/responses/llms-full.txt.
+
+# Create a response
 
 POST https://openrouter.ai/api/v1/responses
 Content-Type: application/json
@@ -1754,6 +1754,33 @@ components:
       enum:
         - web
       title: WebSearchPluginId
+    WebSearchUserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: WebSearchUserLocationType
+    WebSearchPluginUserLocation:
+      type: object
+      properties:
+        city:
+          type:
+            - string
+            - 'null'
+        country:
+          type:
+            - string
+            - 'null'
+        region:
+          type:
+            - string
+            - 'null'
+        timezone:
+          type:
+            - string
+            - 'null'
+        type:
+          $ref: '#/components/schemas/WebSearchUserLocationType'
+      title: WebSearchPluginUserLocation
     WebSearchPlugin:
       type: object
       properties:
@@ -1784,8 +1811,16 @@ components:
             "openai.com/blog").
         max_results:
           type: integer
+        max_uses:
+          type: integer
+          description: >-
+            Maximum number of times the model can invoke web search in a single
+            turn. Passed through to native providers that support it (e.g.
+            Anthropic).
         search_prompt:
           type: string
+        user_location:
+          $ref: '#/components/schemas/WebSearchPluginUserLocation'
       required:
         - id
       title: WebSearchPlugin
@@ -2751,11 +2786,6 @@ components:
       enum:
         - web_search
       title: LegacyWebSearchServerToolType
-    WebSearchUserLocationType:
-      type: string
-      enum:
-        - approximate
-      title: WebSearchUserLocationType
     WebSearchUserLocation:
       type: object
       properties:

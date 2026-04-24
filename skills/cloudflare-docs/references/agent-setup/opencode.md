@@ -73,7 +73,7 @@ opencode
 5. **Try a prompt**  
 For example:  
 ```  
-Build a WebSocket-based pub/sub app using Durable Objects with hibernation.  
+Create an AI chat agent using the Cloudflare Agents SDK that maintains conversation history.  
 ```
 
 ## Cloudflare platform access

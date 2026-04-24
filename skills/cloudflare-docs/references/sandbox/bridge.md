@@ -64,7 +64,7 @@ If you prefer to deploy step by step, scaffold the project and deploy manually.
 1. Scaffold the bridge project:  
 Terminal window  
 ```  
-npm create cloudflare sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/worker  
+npm create cloudflare -- sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/worker  
 cd sandbox-bridge  
 ```
 2. Authenticate with Cloudflare:  
@@ -116,9 +116,9 @@ export SANDBOX_API_KEY=<your-token>
 
 ### Create a sandbox and run a command
 
-* [ curl ](#tab-panel-8656)
-* [ Node.js ](#tab-panel-8657)
-* [ Python ](#tab-panel-8658)
+* [ curl ](#tab-panel-8658)
+* [ Node.js ](#tab-panel-8659)
+* [ Python ](#tab-panel-8660)
 
 Terminal window
 
@@ -309,9 +309,9 @@ Explain Code
 
 ### Write and read files
 
-* [ curl ](#tab-panel-8659)
-* [ Node.js ](#tab-panel-8660)
-* [ Python ](#tab-panel-8661)
+* [ curl ](#tab-panel-8661)
+* [ Node.js ](#tab-panel-8662)
+* [ Python ](#tab-panel-8663)
 
 Terminal window
 

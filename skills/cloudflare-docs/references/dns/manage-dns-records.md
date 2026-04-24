@@ -76,6 +76,7 @@ If you are an Enterprise customer and require more DNS records, contact your acc
 * [ Create zone apex record ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
 * [ Create subdomain records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
 * [ Set up email records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
+* [ Private network routing ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-network-routing/)
 * [ Import and export records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
 * [ Batch record changes ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
 * [ Dynamically update DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)

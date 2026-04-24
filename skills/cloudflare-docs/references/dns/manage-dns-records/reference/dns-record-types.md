@@ -58,6 +58,7 @@ Alternative notations of IPv4 addresses (`1.1` for `1.0.0.1`, for example) are n
    * If the **Proxy Status** is **Proxied**, this value defaults to **Auto**, which is 300 seconds.  
    * If the **Proxy Status** is **DNS Only**, you can customize the value.
 * **Proxy status**: For more details, refer to [Proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/).
+* **Private network routing**: Some Enterprise customers also have access to [private network routing](https://developers.cloudflare.com/dns/manage-dns-records/how-to/private-network-routing/). For `A` and `AAAA` records, this feature allows you to proxy HTTP/HTTPS traffic from public hostnames to origins in your private network.
 
 #### Example API call
 

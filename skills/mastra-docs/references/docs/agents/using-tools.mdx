@@ -64,6 +64,78 @@ export const weatherAgent = new Agent({
 })
 ```
 
+## Define schemas
+
+You can define the tool's `inputSchema` and `outputSchema` with any library that supports [Standard JSON Schema](https://standardschema.dev/json-schema). This includes libraries like [Zod](https://zod.dev/), [Valibot](https://valibot.dev/), and [ArkType](https://arktype.io/).
+
+  
+    ```typescript title="src/mastra/tools/weather-tool.ts"
+    import { createTool } from '@mastra/core/tools'
+    import { z } from 'zod'
+
+    export const weatherTool = createTool({
+      id: 'weather-tool',
+      description: 'Fetches weather for a location',
+      inputSchema: z.object({
+        location: z.string(),
+      }),
+      outputSchema: z.object({
+        weather: z.string(),
+      }),
+      execute: async inputData => {
+        // Fetch weather data
+      },
+    })
+    ```
+  
+
+  
+    ```typescript title="src/mastra/tools/weather-tool.ts"
+    import { createTool } from '@mastra/core/tools'
+    import * as v from 'valibot'
+    import { toStandardJsonSchema } from '@valibot/to-json-schema'
+
+    export const weatherTool = createTool({
+      id: 'weather-tool',
+      description: 'Fetches weather for a location',
+      inputSchema: toStandardJsonSchema(
+        v.object({
+          location: v.string(),
+        }),
+      ),
+      outputSchema: toStandardJsonSchema(
+        v.object({
+          weather: v.string(),
+        }),
+      ),
+      execute: async inputData => {
+        // Fetch weather data
+      },
+    })
+    ```
+  
+
+  
+    ```typescript title="src/mastra/tools/weather-tool.ts"
+    import { createTool } from '@mastra/core/tools'
+    import { type } from 'arktype'
+
+    export const weatherTool = createTool({
+      id: 'weather-tool',
+      description: 'Fetches weather for a location',
+      inputSchema: type({
+        location: 'string',
+      }),
+      outputSchema: type({
+        weather: 'string',
+      }),
+      execute: async inputData => {
+        // Fetch weather data
+      },
+    })
+    ```
+  
+
 ## Multiple tools
 
 An agent can use multiple tools to handle more complex tasks by delegating specific parts to individual tools. The agent decides which tools to use based on the user's message, the agent's instructions, and the tool descriptions and schemas.

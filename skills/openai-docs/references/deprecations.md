@@ -55,15 +55,15 @@ To improve reliability and make it easier for developers to choose the right mod
 | 2026-10-23    | `ft-o4-mini-2025-04-16`                                                | `gpt-5-mini`          |
 | 2026-10-23    | `o4-mini-2025-04-16` \| `o4-mini`                                      | `gpt-5-mini`          |
 
-We are also removing fine-tuned versions of models being deprecated above.
+We are also removing fine-tuned versions as below:
 
-| Shutdown date | Model snapshot               | Substitute model |
-| ------------- | ---------------------------- | ---------------- |
-| 2026-10-23    | `ft-gpt-3.5-turbo`           | `gpt-4.1-mini`   |
-| 2026-10-23    | `ft-gpt-4`                   | `gpt-4.1`        |
-| 2026-10-23    | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5-nano`     |
-| 2026-10-23    | `ft-babbage-002`             | `gpt-5-mini`     |
-| 2026-10-23    | `ft-davinci-002`             | `gpt-5-mini`     |
+| Shutdown date | Model snapshot               | Recommended replacement base model |
+| ------------- | ---------------------------- | ---------------------------------- |
+| 2026-10-23    | `ft-gpt-3.5-turbo`           | `gpt-4.1-mini`                     |
+| 2026-10-23    | `ft-gpt-4`                   | `gpt-4.1`                          |
+| 2026-10-23    | `ft-gpt-4.1-nano-2025-04-14` | `gpt-5-nano`                       |
+| 2026-10-23    | `ft-babbage-002`             | `gpt-5-mini`                       |
+| 2026-10-23    | `ft-davinci-002`             | `gpt-5-mini`                       |
 
 ### 2026-03-24: Sora 2 video generation models and Videos API
 

@@ -1,8 +1,8 @@
-# Create a chat completion
-
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://openrouter.ai/docs/api/api-reference/chat/llms.txt.
 > For full documentation content, see https://openrouter.ai/docs/api/api-reference/chat/llms-full.txt.
+
+# Create a chat completion
 
 POST https://openrouter.ai/api/v1/chat/completions
 Content-Type: application/json
@@ -783,6 +783,33 @@ components:
       enum:
         - web
       title: WebSearchPluginId
+    WebSearchUserLocationType:
+      type: string
+      enum:
+        - approximate
+      title: WebSearchUserLocationType
+    WebSearchPluginUserLocation:
+      type: object
+      properties:
+        city:
+          type:
+            - string
+            - 'null'
+        country:
+          type:
+            - string
+            - 'null'
+        region:
+          type:
+            - string
+            - 'null'
+        timezone:
+          type:
+            - string
+            - 'null'
+        type:
+          $ref: '#/components/schemas/WebSearchUserLocationType'
+      title: WebSearchPluginUserLocation
     WebSearchPlugin:
       type: object
       properties:
@@ -813,8 +840,16 @@ components:
             "openai.com/blog").
         max_results:
           type: integer
+        max_uses:
+          type: integer
+          description: >-
+            Maximum number of times the model can invoke web search in a single
+            turn. Passed through to native providers that support it (e.g.
+            Anthropic).
         search_prompt:
           type: string
+        user_location:
+          $ref: '#/components/schemas/WebSearchPluginUserLocation'
       required:
         - id
       title: WebSearchPlugin
@@ -1796,13 +1831,21 @@ components:
       type: object
       properties:
         city:
-          type: string
+          type:
+            - string
+            - 'null'
         country:
-          type: string
+          type:
+            - string
+            - 'null'
         region:
-          type: string
+          type:
+            - string
+            - 'null'
         timezone:
-          type: string
+          type:
+            - string
+            - 'null'
         type:
           $ref: '#/components/schemas/WebSearchUserLocationServerToolType'
       description: Approximate user location for location-biased results.

@@ -48,15 +48,16 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
    * `dir` (required) - Absolute path to the directory to back up (for example, `"/workspace"`)  
    * `name` (optional) - Human-readable name for the backup. Maximum 256 characters, no control characters.  
    * `ttl` (optional) - Time-to-live in seconds until the backup expires. Default: `259200` (3 days). Must be a positive number.  
-   * `useGitignore` (optional) - When `true`, excludes files matching `.gitignore` rules from the backup. Default: `false`. If the directory is not inside a git repository, no exclusions are applied. Requires `git` to be available in the container.
+   * `useGitignore` (optional) - When `true`, excludes files matching `.gitignore` rules from the backup. Default: `false`. If the directory is not inside a git repository, no exclusions are applied. Requires `git` to be available in the container.  
+   * `localBucket` (optional) - When `true`, uses the `BACKUP_BUCKET` R2 binding directly instead of presigned URLs. Intended for use with `wrangler dev`. Default: `false`.
 
 **Returns**: `Promise<DirectoryBackup>` containing:
 
 * `id` \- Unique backup identifier (UUID)
 * `dir` \- Directory that was backed up
 
-* [  JavaScript ](#tab-panel-8538)
-* [  TypeScript ](#tab-panel-8539)
+* [  JavaScript ](#tab-panel-8540)
+* [  TypeScript ](#tab-panel-8541)
 
 JavaScript
 
@@ -104,19 +105,28 @@ await sandbox.restoreBackup(backup);
 
 **How it works**:
 
+In production:
+
 1. The container creates a compressed squashfs archive from the directory.
 2. The container uploads the archive directly to R2 using a presigned URL.
 3. Metadata is stored alongside the archive in R2.
 4. The local archive is cleaned up.
 
+With `localBucket: true` (local development):
+
+1. The container creates a compressed squashfs archive from the directory.
+2. The archive is uploaded directly to the `BACKUP_BUCKET` R2 binding.
+3. Metadata is stored alongside the archive in R2.
+4. The local archive is cleaned up.
+
 **Throws**:
 
-* `InvalidBackupConfigError` \- If `dir` is not absolute, contains `..`, the `BACKUP_BUCKET` binding is missing, or the R2 presigned URL credentials are not configured
+* `InvalidBackupConfigError` \- If `dir` is not absolute, contains `..`, the `BACKUP_BUCKET` binding is missing, or (in production) the R2 presigned URL credentials are not configured
 * `BackupCreateError` \- If the container fails to create the archive, the upload to R2 fails, or `useGitignore` is `true` but `git` is not available in the container
 
-R2 binding and credentials required
+R2 binding required
 
-You must configure a `BACKUP_BUCKET` R2 binding and R2 presigned URL credentials (`R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `CLOUDFLARE_ACCOUNT_ID`, `BACKUP_BUCKET_NAME`) in your `wrangler.jsonc` before using backup methods. Refer to the [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) for binding setup.
+You must configure a `BACKUP_BUCKET` R2 binding in your `wrangler.jsonc` before using backup methods. For production, you must also configure R2 presigned URL credentials (`R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `CLOUDFLARE_ACCOUNT_ID`, `BACKUP_BUCKET_NAME`). Refer to the [backup and restore guide](https://developers.cloudflare.com/sandbox/guides/backup-restore/#prerequisites) for setup details.
 
 Path permissions
 
@@ -130,7 +140,7 @@ Partially-written files may not be captured consistently. Only completed writes 
 
 ### `restoreBackup()`
 
-Restore a previously created backup into a directory using FUSE overlayfs (copy-on-write).
+Restore a previously created backup into a directory.
 
 TypeScript
 
@@ -151,8 +161,8 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 * `dir` \- Directory that was restored
 * `id` \- Backup ID that was restored
 
-* [  JavaScript ](#tab-panel-8540)
-* [  TypeScript ](#tab-panel-8541)
+* [  JavaScript ](#tab-panel-8542)
+* [  TypeScript ](#tab-panel-8543)
 
 JavaScript
 
@@ -204,9 +214,17 @@ await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
 
 **How it works**:
 
+In production:
+
 1. Metadata is downloaded from R2 and the TTL is checked. If expired, an error is thrown (with a 60-second buffer).
 2. The container downloads the archive directly from R2 using a presigned URL.
 3. The container mounts the squashfs archive with FUSE overlayfs.
+
+With `localBucket: true` (local development):
+
+1. Metadata is downloaded from the `BACKUP_BUCKET` R2 binding and the TTL is checked.
+2. The archive is downloaded from the R2 binding.
+3. The archive is extracted into the target directory using `unsquashfs`.
 
 **Throws**:
 
@@ -217,11 +235,11 @@ await env.KV.put(`backup:${userId}`, JSON.stringify(backup));
 
 Copy-on-write
 
-Restore uses copy-on-write semantics. The backup is mounted as a read-only lower layer, and new writes go to a writable upper layer. The backup can be restored into a different directory than the original.
+In production, restore uses copy-on-write semantics. The backup is mounted as a read-only lower layer, and new writes go to a writable upper layer. The backup can be restored into a different directory than the original. In local development, the directory is replaced on restore.
 
 Ephemeral mount
 
-The FUSE mount is lost when the sandbox sleeps or restarts. Re-restore from the backup handle to recover. Stop processes writing to the target directory before restoring.
+In production, the FUSE mount is lost when the sandbox sleeps or restarts. Re-restore from the backup handle to recover. Stop processes writing to the target directory before restoring.
 
 ## Usage patterns
 
@@ -229,8 +247,8 @@ The FUSE mount is lost when the sandbox sleeps or restarts. Re-restore from the 
 
 Use `useGitignore` to exclude files matching `.gitignore` rules (such as `node_modules/` or `dist/`) from the backup. This reduces backup size for git repositories.
 
-* [  JavaScript ](#tab-panel-8542)
-* [  TypeScript ](#tab-panel-8543)
+* [  JavaScript ](#tab-panel-8544)
+* [  TypeScript ](#tab-panel-8545)
 
 JavaScript
 
@@ -300,8 +318,8 @@ If the directory is not inside a git repository, `useGitignore` has no effect an
 
 Use backups as checkpoints before risky operations.
 
-* [  JavaScript ](#tab-panel-8544)
-* [  TypeScript ](#tab-panel-8545)
+* [  JavaScript ](#tab-panel-8546)
+* [  TypeScript ](#tab-panel-8547)
 
 JavaScript
 
@@ -361,8 +379,8 @@ Explain Code
 
 ### Error handling
 
-* [  JavaScript ](#tab-panel-8546)
-* [  TypeScript ](#tab-panel-8547)
+* [  JavaScript ](#tab-panel-8548)
+* [  TypeScript ](#tab-panel-8549)
 
 JavaScript
 
@@ -464,6 +482,8 @@ interface BackupOptions {
 
   useGitignore?: boolean;
 
+  localBucket?: boolean;
+
 }
 
 
@@ -475,6 +495,7 @@ interface BackupOptions {
 * `name` (optional) - Human-readable backup name. Maximum 256 characters, no control characters.
 * `ttl` (optional) - Time-to-live in seconds. Default: `259200` (3 days). Must be a positive number.
 * `useGitignore` (optional) - When `true`, excludes files matching `.gitignore` rules if the directory is inside a git repository. Default: `false`. If the directory is not inside a git repository, no git-based exclusions are applied.
+* `localBucket` (optional) - When `true`, uses the `BACKUP_BUCKET` R2 binding directly instead of presigned URLs. Intended for use with `wrangler dev`. Default: `false`.
 
 ### `DirectoryBackup`
 
